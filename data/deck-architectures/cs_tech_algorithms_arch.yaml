@@ -1,0 +1,792 @@
+deck_id: computer_science_algorithms
+name: "CS & Technology — Algorithms & Theory"
+domain: computer_science
+sub_domain: algorithms_theory
+target_facts: 30
+minimum_facts: 25
+
+# NOTE: This is sub-deck 3 of the Computer Science & Technology deck.
+# All facts in this file are sourced from Wikipedia/Wikidata and verified
+# against primary literature references (original papers where available).
+# Wikidata QIDs are included for every entry that has one.
+
+data_sources:
+  - name: Wikipedia — Sorting algorithm
+    url: https://en.wikipedia.org/wiki/Sorting_algorithm
+    license: CC-BY-SA-4.0
+    usage: algorithm family overview, complexity comparisons
+  - name: Wikipedia — Merge sort
+    url: https://en.wikipedia.org/wiki/Merge_sort
+    license: CC-BY-SA-4.0
+    usage: origin, John von Neumann 1945
+  - name: Wikipedia — Quicksort
+    url: https://en.wikipedia.org/wiki/Quicksort
+    license: CC-BY-SA-4.0
+    usage: Tony Hoare 1959/1961, complexity
+  - name: Wikipedia — Heapsort
+    url: https://en.wikipedia.org/wiki/Heapsort
+    license: CC-BY-SA-4.0
+    usage: J.W.J. Williams 1964, heap data structure
+  - name: Wikipedia — Timsort
+    url: https://en.wikipedia.org/wiki/Timsort
+    license: CC-BY-SA-4.0
+    usage: Tim Peters 2002, Python/Java use
+  - name: Wikipedia — Binary search algorithm
+    url: https://en.wikipedia.org/wiki/Binary_search_algorithm
+    license: CC-BY-SA-4.0
+    usage: formalization history 1946
+  - name: Wikipedia — A* search algorithm
+    url: https://en.wikipedia.org/wiki/A*_search_algorithm
+    license: CC-BY-SA-4.0
+    usage: Hart, Nilsson, Raphael 1968
+  - name: Wikipedia — Dijkstra's algorithm
+    url: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+    license: CC-BY-SA-4.0
+    usage: Dijkstra 1956/1959, shortest path
+  - name: Wikipedia — Bellman–Ford algorithm
+    url: https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
+    license: CC-BY-SA-4.0
+    usage: negative-weight edges, 1958
+  - name: Wikipedia — Kruskal's algorithm
+    url: https://en.wikipedia.org/wiki/Kruskal%27s_algorithm
+    license: CC-BY-SA-4.0
+    usage: Joseph Kruskal 1956, minimum spanning tree
+  - name: Wikipedia — Floyd–Warshall algorithm
+    url: https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm
+    license: CC-BY-SA-4.0
+    usage: all-pairs shortest path, 1962
+  - name: Wikipedia — Big O notation
+    url: https://en.wikipedia.org/wiki/Big_O_notation
+    license: CC-BY-SA-4.0
+    usage: Bachmann 1894, Landau notation
+  - name: Wikipedia — P versus NP problem
+    url: https://en.wikipedia.org/wiki/P_versus_NP_problem
+    license: CC-BY-SA-4.0
+    usage: Cook 1971, Levin 1973, Millennium Prize
+  - name: Wikipedia — Halting problem
+    url: https://en.wikipedia.org/wiki/Halting_problem
+    license: CC-BY-SA-4.0
+    usage: Turing 1936, undecidability
+  - name: Wikipedia — Church–Turing thesis
+    url: https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis
+    license: CC-BY-SA-4.0
+    usage: 1936 independent proposals
+  - name: Wikipedia — Boolean algebra
+    url: https://en.wikipedia.org/wiki/Boolean_algebra
+    license: CC-BY-SA-4.0
+    usage: George Boole 1847/1854
+  - name: Wikipedia — NP-completeness
+    url: https://en.wikipedia.org/wiki/NP-completeness
+    license: CC-BY-SA-4.0
+    usage: Cook–Levin theorem 1971, Karp's 21 problems 1972
+  - name: Wikipedia — RSA (cryptosystem)
+    url: https://en.wikipedia.org/wiki/RSA_(cryptosystem)
+    license: CC-BY-SA-4.0
+    usage: Rivest, Shamir, Adleman 1977
+  - name: Wikipedia — PageRank
+    url: https://en.wikipedia.org/wiki/PageRank
+    license: CC-BY-SA-4.0
+    usage: Page, Brin 1996/1998 (paper), Google
+  - name: Wikipedia — MapReduce
+    url: https://en.wikipedia.org/wiki/MapReduce
+    license: CC-BY-SA-4.0
+    usage: Dean, Ghemawat, Google 2004
+  - name: Wikipedia — Cooley–Tukey FFT algorithm
+    url: https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm
+    license: CC-BY-SA-4.0
+    usage: 1965 paper, O(n log n)
+  - name: Wikipedia — Backpropagation
+    url: https://en.wikipedia.org/wiki/Backpropagation
+    license: CC-BY-SA-4.0
+    usage: Rumelhart, Hinton, Williams 1986 paper
+  - name: Wikidata
+    url: https://www.wikidata.org
+    license: CC0
+    usage: structured IDs, publication dates, person–work links
+
+# ============================================================
+# ANSWER TYPE POOLS (estimated, for generation guidance)
+# ============================================================
+answer_type_pools:
+  - id: algorithm_names
+    format: name
+    estimated_count: 20
+    notes: "Proper names of algorithms — Quicksort, Dijkstra's, etc."
+  - id: cs_person_names
+    format: name
+    estimated_count: 15
+    notes: "Creator/inventor names — Tony Hoare, Turing, Rivest, etc."
+  - id: complexity_terms
+    format: term
+    estimated_count: 8
+    notes: "Big-O complexity expressions and CS theory terms"
+  - id: data_structure_names
+    format: name
+    estimated_count: 10
+    notes: "Stack, Queue, Hash table, Heap, etc."
+  - id: year_numbers
+    format: bracket_number
+    estimated_count: 15
+    notes: "Years — use bracket notation e.g. {1959}"
+  - id: cs_concept_terms
+    format: term
+    estimated_count: 12
+    notes: "P vs NP, halting problem, NP-complete, Boolean algebra, etc."
+
+# ============================================================
+# CHAIN THEMES (8 minimum for knowledge deck)
+# ============================================================
+chain_themes:
+  - id: 0
+    name: "Sorting & Searching"
+    description: "Classic sorting algorithms and search strategies"
+  - id: 1
+    name: "Graph Traversal"
+    description: "DFS, BFS, and graph exploration algorithms"
+  - id: 2
+    name: "Shortest Paths"
+    description: "Dijkstra, Bellman-Ford, Floyd-Warshall and optimal routing"
+  - id: 3
+    name: "Theory of Computation"
+    description: "Turing, Church, halting problem, computability limits"
+  - id: 4
+    name: "Complexity Classes"
+    description: "P, NP, NP-complete, Big-O notation"
+  - id: 5
+    name: "Data Structures"
+    description: "Stacks, queues, trees, heaps, hash tables"
+  - id: 6
+    name: "Famous Algorithms"
+    description: "RSA, PageRank, FFT, MapReduce, Backpropagation"
+  - id: 7
+    name: "Logic & Algebra"
+    description: "Boolean algebra, logic gates, mathematical foundations"
+
+# ============================================================
+# VERIFIED SOURCE DATA
+# ============================================================
+
+source_data:
+
+  # ─── SORTING ALGORITHMS ─────────────────────────────────────────────────────
+
+  sorting_algorithms:
+
+    Bubble_Sort:
+      wikidata_id: Q170495
+      chain_theme: 0
+      complexity_time_best: "O(n)"
+      complexity_time_average: "O(n²)"
+      complexity_time_worst: "O(n²)"
+      complexity_space: "O(1)"
+      in_place: true
+      stable: true
+      origin: "Name coined in 1950s, described by mathematicians as early as 1956 (Iverson). Popularized in textbooks as the canonical 'simple but slow' sort."
+      key_facts:
+        - "Repeatedly swaps adjacent elements that are in the wrong order"
+        - "One of the simplest sorting algorithms to understand and implement"
+        - "Worst and average case O(n²) time complexity — very slow on large inputs"
+        - "Best case O(n) when array is already sorted"
+        - "Primarily used for educational purposes, rarely in production"
+        - "Named for the way smaller elements 'bubble' to the top"
+      wikipedia: https://en.wikipedia.org/wiki/Bubble_sort
+
+    Insertion_Sort:
+      wikidata_id: Q578537
+      chain_theme: 0
+      complexity_time_best: "O(n)"
+      complexity_time_average: "O(n²)"
+      complexity_time_worst: "O(n²)"
+      complexity_space: "O(1)"
+      in_place: true
+      stable: true
+      key_facts:
+        - "Builds a sorted list one element at a time, inserting each into its correct position"
+        - "Efficient for small datasets and nearly-sorted arrays"
+        - "Best case O(n) for already-sorted arrays; worst case O(n²)"
+        - "Used as the base case within Timsort and Introsort for small sub-arrays"
+        - "Online algorithm — can sort a list as it receives it"
+      wikipedia: https://en.wikipedia.org/wiki/Insertion_sort
+
+    Selection_Sort:
+      wikidata_id: Q1195975
+      chain_theme: 0
+      complexity_time_best: "O(n²)"
+      complexity_time_average: "O(n²)"
+      complexity_time_worst: "O(n²)"
+      complexity_space: "O(1)"
+      in_place: true
+      stable: false
+      key_facts:
+        - "Divides input into sorted and unsorted regions; repeatedly selects the minimum from unsorted"
+        - "Always O(n²) regardless of input — no best-case improvement"
+        - "Performs at most n−1 swaps, useful when swap cost is high"
+        - "Not stable in its basic form"
+      wikipedia: https://en.wikipedia.org/wiki/Selection_sort
+
+    Merge_Sort:
+      wikidata_id: Q1021459
+      chain_theme: 0
+      year_invented: 1945
+      inventor: "John von Neumann"
+      inventor_wikidata: Q80562
+      complexity_time_best: "O(n log n)"
+      complexity_time_average: "O(n log n)"
+      complexity_time_worst: "O(n log n)"
+      complexity_space: "O(n)"
+      in_place: false
+      stable: true
+      key_facts:
+        - "Invented by John von Neumann in 1945"
+        - "Divide-and-conquer algorithm: recursively splits, sorts, then merges"
+        - "Guaranteed O(n log n) in all cases — best, average, and worst"
+        - "Stable sort — preserves original order of equal elements"
+        - "Requires O(n) extra space (not in-place)"
+        - "Preferred for sorting linked lists and external (disk-based) sorting"
+      wikipedia: https://en.wikipedia.org/wiki/Merge_sort
+
+    Quicksort:
+      wikidata_id: Q1021451
+      chain_theme: 0
+      year_conceived: 1959
+      year_published: 1961
+      inventor: "Tony Hoare"
+      inventor_wikidata: Q92462
+      complexity_time_best: "O(n log n)"
+      complexity_time_average: "O(n log n)"
+      complexity_time_worst: "O(n²)"
+      complexity_space: "O(log n)"
+      in_place: true
+      stable: false
+      source_paper: "Hoare, C.A.R. (1962). 'Quicksort.' The Computer Journal, 5(1):10–16."
+      key_facts:
+        - "Developed by Tony Hoare in 1959 while working at Moscow State University; published 1961"
+        - "Divide-and-conquer: selects a pivot, partitions array into elements less/greater, recurses"
+        - "Average case O(n log n); worst case O(n²) on already-sorted arrays with poor pivot choice"
+        - "Typically the fastest in-memory sort in practice due to cache efficiency"
+        - "Most widely used general-purpose sorting algorithm"
+        - "Not stable — does not preserve order of equal elements"
+        - "In-place: requires only O(log n) stack space"
+      wikipedia: https://en.wikipedia.org/wiki/Quicksort
+
+    Heapsort:
+      wikidata_id: Q732200
+      chain_theme: 0
+      year_invented: 1964
+      inventor: "J.W.J. Williams"
+      # Robert W. Floyd refined it in the same year
+      complexity_time_best: "O(n log n)"
+      complexity_time_average: "O(n log n)"
+      complexity_time_worst: "O(n log n)"
+      complexity_space: "O(1)"
+      in_place: true
+      stable: false
+      source_paper: "Williams, J.W.J. (1964). 'Algorithm 232 – Heapsort.' CACM 7(6):347–348."
+      key_facts:
+        - "Invented by J.W.J. Williams in 1964; refined by Robert W. Floyd in the same year"
+        - "Uses a binary heap data structure to repeatedly extract the maximum element"
+        - "Guaranteed O(n log n) in all cases"
+        - "In-place with O(1) auxiliary space"
+        - "Not stable"
+        - "Slower in practice than Quicksort due to poor cache locality"
+      wikipedia: https://en.wikipedia.org/wiki/Heapsort
+
+    Timsort:
+      wikidata_id: Q2316648
+      chain_theme: 0
+      year_invented: 2002
+      inventor: "Tim Peters"
+      inventor_wikidata: Q92889
+      used_in: ["Python (since 2.3)", "Java (Arrays.sort for objects, since Java 7)", "Android"]
+      complexity_time_best: "O(n)"
+      complexity_time_average: "O(n log n)"
+      complexity_time_worst: "O(n log n)"
+      complexity_space: "O(n)"
+      in_place: false
+      stable: true
+      key_facts:
+        - "Created by Tim Peters in 2002 for Python"
+        - "Hybrid algorithm derived from merge sort and insertion sort"
+        - "Default sort algorithm in Python since version 2.3 (2003)"
+        - "Adopted by Java (for object arrays) since Java 7 (2011)"
+        - "Exploits real-world partially-sorted data (natural runs)"
+        - "Best case O(n) for already-sorted or reverse-sorted input"
+        - "Stable sort — guarantees relative order of equal elements"
+      wikipedia: https://en.wikipedia.org/wiki/Timsort
+
+  # ─── SEARCH ALGORITHMS ───────────────────────────────────────────────────────
+
+  search_algorithms:
+
+    Binary_Search:
+      wikidata_id: Q81809
+      chain_theme: 0
+      # Ancient concept; first published error-free version: D.H. Lehmer 1946
+      year_first_correct_published: 1946
+      inventor_note: "Concept ancient; first correct published algorithm by D.H. Lehmer, 1946. John Mauchly described it in 1946 lectures. Error-free version for all n: Bottenbruch 1962."
+      complexity_time: "O(log n)"
+      complexity_space: "O(1)"
+      key_facts:
+        - "Searches a sorted array by repeatedly halving the search interval"
+        - "O(log n) time complexity — far faster than linear O(n) for large arrays"
+        - "Requires the array to be sorted first"
+        - "The concept is ancient; first described formally in computing by D.H. Lehmer in 1946"
+        - "A correct version for all array sizes was published by Bottenbruch in 1962"
+        - "Foundational algorithm used in database indexing, spell-checkers, game AI"
+      wikipedia: https://en.wikipedia.org/wiki/Binary_search_algorithm
+
+    Depth_First_Search:
+      wikidata_id: Q740222
+      chain_theme: 1
+      abbreviation: DFS
+      complexity_time: "O(V + E)"
+      complexity_space: "O(V)"
+      data_structure_used: "Stack (implicit recursion or explicit)"
+      key_facts:
+        - "Graph traversal that explores as far as possible along each branch before backtracking"
+        - "Uses a stack (or recursion) to track the path"
+        - "Time complexity O(V + E) where V = vertices, E = edges"
+        - "Used for topological sorting, cycle detection, maze solving, connected components"
+        - "Can get stuck in infinite loops on infinite graphs without visited tracking"
+      wikipedia: https://en.wikipedia.org/wiki/Depth-first_search
+
+    Breadth_First_Search:
+      wikidata_id: Q752783
+      chain_theme: 1
+      abbreviation: BFS
+      complexity_time: "O(V + E)"
+      complexity_space: "O(V)"
+      data_structure_used: Queue
+      key_facts:
+        - "Graph traversal that explores all neighbors at the current depth before going deeper"
+        - "Uses a queue to track nodes to visit"
+        - "Finds the shortest path (fewest edges) between two nodes in an unweighted graph"
+        - "Time and space complexity O(V + E)"
+        - "Used in GPS navigation, social network friend suggestions, web crawlers"
+      wikipedia: https://en.wikipedia.org/wiki/Breadth-first_search
+
+    A_Star_Search:
+      wikidata_id: Q1011284
+      chain_theme: 1
+      year_published: 1968
+      inventors: ["Peter Hart", "Nils Nilsson", "Bertram Raphael"]
+      source_paper: "Hart, P.E., Nilsson, N.J., Raphael, B. (1968). 'A Formal Basis for the Heuristic Determination of Minimum Cost Paths.' IEEE Transactions on Systems Science and Cybernetics 4(2):100–107."
+      complexity_time: "O(b^d) where b = branching factor, d = depth of solution"
+      key_facts:
+        - "Published in 1968 by Peter Hart, Nils Nilsson, and Bertram Raphael at SRI International"
+        - "Finds the shortest path from a start node to a goal using a heuristic estimate"
+        - "Combines Dijkstra's algorithm (actual cost g) with a heuristic (estimated cost h)"
+        - "Complete and optimal if the heuristic is admissible (never overestimates)"
+        - "Widely used in game AI pathfinding, GPS route planning, and robotics"
+        - "Named for the asterisk (*) notation in the original paper representing optimal solutions"
+      wikipedia: https://en.wikipedia.org/wiki/A*_search_algorithm
+
+  # ─── GRAPH ALGORITHMS ────────────────────────────────────────────────────────
+
+  graph_algorithms:
+
+    Dijkstra_Algorithm:
+      wikidata_id: Q623418
+      chain_theme: 2
+      year_conceived: 1956
+      year_published: 1959
+      inventor: "Edsger W. Dijkstra"
+      inventor_wikidata: Q46029
+      source_paper: "Dijkstra, E.W. (1959). 'A note on two problems in connexion with graphs.' Numerische Mathematik 1:269–271."
+      problem_solved: "Single-source shortest path in a weighted graph with non-negative weights"
+      complexity_time_naive: "O(V²)"
+      complexity_time_with_heap: "O((V + E) log V)"
+      key_facts:
+        - "Conceived by Edsger W. Dijkstra in 1956 and published in 1959"
+        - "Finds the shortest path from a source node to all other nodes in a weighted graph"
+        - "Only works correctly with non-negative edge weights"
+        - "Greedy algorithm: repeatedly selects the unvisited node with smallest known distance"
+        - "Used in GPS navigation, network routing (OSPF protocol), and airline route planning"
+        - "Dijkstra designed it in 20 minutes as a demonstration of his thinking"
+      wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+
+    Bellman_Ford_Algorithm:
+      wikidata_id: Q836325
+      chain_theme: 2
+      year_published_bellman: 1958
+      year_published_ford_fulkerson: 1962
+      inventors: ["Richard Bellman", "Lester Ford Jr."]
+      problem_solved: "Single-source shortest path, handles negative-weight edges"
+      complexity_time: "O(V × E)"
+      key_facts:
+        - "Published independently by Richard Bellman (1958) and Lester Ford Jr. (Ford-Fulkerson 1956/1962)"
+        - "Finds shortest paths from a source to all other vertices"
+        - "Unlike Dijkstra, handles graphs with negative-weight edges"
+        - "Can detect negative-weight cycles (and reports their presence)"
+        - "Slower than Dijkstra: O(V × E) vs O((V + E) log V)"
+        - "Used in distance-vector routing protocols (e.g., RIP)"
+      wikipedia: https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
+
+    Kruskal_Algorithm:
+      wikidata_id: Q681401
+      chain_theme: 2
+      year_published: 1956
+      inventor: "Joseph Kruskal"
+      inventor_wikidata: Q976068
+      source_paper: "Kruskal, J.B. (1956). 'On the shortest spanning subtree of a graph and the traveling salesman problem.' Proceedings of the AMS 7(1):48–50."
+      problem_solved: "Minimum spanning tree of a connected, undirected, weighted graph"
+      complexity_time: "O(E log E)"
+      key_facts:
+        - "Published by Joseph Kruskal in 1956"
+        - "Finds the minimum spanning tree of a weighted undirected graph"
+        - "Greedy approach: sorts all edges by weight, adds each edge if it doesn't form a cycle"
+        - "Uses a Union-Find (disjoint set union) data structure for cycle detection"
+        - "O(E log E) time — efficient for sparse graphs"
+        - "A minimum spanning tree connects all vertices with minimum total edge weight"
+      wikipedia: https://en.wikipedia.org/wiki/Kruskal%27s_algorithm
+
+    Prim_Algorithm:
+      wikidata_id: Q617794
+      chain_theme: 2
+      year_published_vojtěch: 1930
+      year_published_prim: 1957
+      # Rediscovered independently by Prim (1957) and Dijkstra (1959)
+      inventor: "Robert C. Prim (1957); originally Vojtěch Jarník (1930)"
+      problem_solved: "Minimum spanning tree of a connected, undirected, weighted graph"
+      complexity_time_simple: "O(V²)"
+      complexity_time_binary_heap: "O((V + E) log V)"
+      key_facts:
+        - "Algorithm originally published by Vojtěch Jarník in 1930; rediscovered by Robert Prim in 1957"
+        - "Finds the minimum spanning tree by growing the tree one vertex at a time"
+        - "Greedy: always adds the cheapest edge connecting a tree vertex to a non-tree vertex"
+        - "More efficient than Kruskal for dense graphs"
+        - "Also independently rediscovered by Dijkstra in 1959"
+      wikipedia: https://en.wikipedia.org/wiki/Prim%27s_algorithm
+
+    Floyd_Warshall_Algorithm:
+      wikidata_id: Q745290
+      chain_theme: 2
+      year_published: 1962
+      inventors: ["Robert Floyd", "Stephen Warshall"]
+      # Roy-Floyd-Warshall; Bernard Roy 1959 also has precedence
+      problem_solved: "All-pairs shortest paths in a weighted graph"
+      complexity_time: "O(V³)"
+      complexity_space: "O(V²)"
+      key_facts:
+        - "Published by Robert Floyd and Stephen Warshall in 1962"
+        - "Finds shortest paths between ALL pairs of vertices simultaneously"
+        - "Uses dynamic programming with O(V³) time and O(V²) space"
+        - "Works with negative-weight edges (but not negative cycles)"
+        - "The adjacency matrix is updated iteratively via intermediate vertex consideration"
+        - "Also known as Roy–Floyd–Warshall algorithm; Bernard Roy had a similar result in 1959"
+      wikipedia: https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm
+
+  # ─── DATA STRUCTURES ─────────────────────────────────────────────────────────
+
+  data_structures:
+
+    Stack:
+      wikidata_id: Q128827
+      chain_theme: 5
+      access_pattern: "LIFO — Last In, First Out"
+      operations: ["push", "pop", "peek/top"]
+      complexity: "O(1) for push, pop, peek"
+      key_facts:
+        - "LIFO (Last In, First Out) data structure"
+        - "The last element added (pushed) is the first one removed (popped)"
+        - "Core operations: push (add), pop (remove), peek (view top without removing)"
+        - "All core operations are O(1)"
+        - "Used for: function call stacks, undo operations, expression parsing, DFS"
+        - "Analogous to a stack of plates"
+      wikipedia: https://en.wikipedia.org/wiki/Stack_(abstract_data_type)
+
+    Queue:
+      wikidata_id: Q185610
+      chain_theme: 5
+      access_pattern: "FIFO — First In, First Out"
+      operations: ["enqueue", "dequeue", "peek/front"]
+      complexity: "O(1) for enqueue and dequeue"
+      key_facts:
+        - "FIFO (First In, First Out) data structure"
+        - "The first element added (enqueued) is the first one removed (dequeued)"
+        - "Core operations: enqueue (add to rear), dequeue (remove from front)"
+        - "All core operations are O(1)"
+        - "Used for: BFS, task scheduling, print spoolers, message queues"
+        - "Analogous to a line (queue) of people waiting"
+      wikipedia: https://en.wikipedia.org/wiki/Queue_(abstract_data_type)
+
+    Linked_List:
+      wikidata_id: Q82511
+      chain_theme: 5
+      key_facts:
+        - "Linear data structure where elements (nodes) are connected via pointers"
+        - "Each node contains data and a reference (pointer) to the next node"
+        - "Singly linked: each node points to the next; doubly linked: nodes point to both neighbors"
+        - "Insertion/deletion at head: O(1); search: O(n)"
+        - "No random access — must traverse from head to reach element at index n"
+        - "Efficient for dynamic-size collections when insertions/deletions are frequent"
+      wikipedia: https://en.wikipedia.org/wiki/Linked_list
+
+    Binary_Search_Tree:
+      wikidata_id: Q764558
+      chain_theme: 5
+      abbreviation: BST
+      complexity_search_average: "O(log n)"
+      complexity_search_worst: "O(n)"
+      key_facts:
+        - "Binary tree where each node's left subtree contains only values less than the node, right only greater"
+        - "Average case O(log n) for search, insert, delete"
+        - "Worst case O(n) if tree is unbalanced (degenerate/linked-list shape)"
+        - "Self-balancing variants (AVL tree, Red-Black tree) guarantee O(log n) worst case"
+        - "In-order traversal of a BST produces elements in sorted order"
+      wikipedia: https://en.wikipedia.org/wiki/Binary_search_tree
+
+    Hash_Table:
+      wikidata_id: Q189533
+      chain_theme: 5
+      complexity_average: "O(1) for search, insert, delete"
+      complexity_worst: "O(n) worst case (all keys collide)"
+      key_facts:
+        - "Maps keys to values using a hash function to compute an array index"
+        - "Average case O(1) for lookup, insertion, and deletion"
+        - "Worst case O(n) if many hash collisions occur"
+        - "Collision resolution strategies: chaining (linked lists at each bucket), open addressing"
+        - "Load factor (items / buckets) determines when to resize (rehash)"
+        - "Used in: Python dicts, JavaScript objects, database indexes, caches"
+      wikipedia: https://en.wikipedia.org/wiki/Hash_table
+
+    Heap:
+      wikidata_id: Q274012
+      chain_theme: 5
+      variants: ["Min-heap (smallest at root)", "Max-heap (largest at root)"]
+      complexity_insert: "O(log n)"
+      complexity_find_min_max: "O(1)"
+      complexity_delete_min_max: "O(log n)"
+      key_facts:
+        - "Tree-based data structure satisfying the heap property: parent is always ≥ (max-heap) or ≤ (min-heap) its children"
+        - "Find-min or find-max: O(1)"
+        - "Insert and delete-min/max: O(log n)"
+        - "Typically implemented as an array (binary heap)"
+        - "Basis for Heapsort and priority queues"
+        - "Priority queues are the primary application: scheduling, Dijkstra's algorithm, A*"
+      wikipedia: https://en.wikipedia.org/wiki/Heap_(data_structure)
+
+    Graph:
+      wikidata_id: Q141488
+      chain_theme: 1
+      variants: ["Directed (digraph)", "Undirected", "Weighted", "Unweighted"]
+      representations: ["Adjacency matrix O(V²) space", "Adjacency list O(V + E) space"]
+      key_facts:
+        - "Collection of vertices (nodes) and edges (connections) between them"
+        - "Undirected graph: edges have no direction; directed graph (digraph): edges are one-way"
+        - "Weighted graph: edges have numeric weights representing cost or distance"
+        - "Adjacency matrix uses O(V²) space; adjacency list uses O(V + E) space"
+        - "Real-world applications: social networks, road maps, the internet, dependency graphs"
+      wikipedia: https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)
+
+  # ─── THEORETICAL COMPUTER SCIENCE ───────────────────────────────────────────
+
+  theoretical_cs:
+
+    Big_O_Notation:
+      wikidata_id: Q269764
+      chain_theme: 4
+      # Paul Bachmann introduced in "Die Analytische Zahlentheorie" (1894)
+      # Edmund Landau popularized the notation — now called "Landau notation" or "Big O"
+      year_introduced: 1894
+      introduced_by: "Paul Bachmann"
+      popularized_by: "Edmund Landau (hence 'Landau notation')"
+      key_facts:
+        - "Mathematical notation describing the limiting behavior of a function — used in CS to describe algorithm time/space complexity"
+        - "Introduced by Paul Bachmann in 1894 in 'Die Analytische Zahlentheorie'"
+        - "Popularized by Edmund Landau; also called 'Landau notation' or 'Bachmann-Landau notation'"
+        - "O(1) = constant; O(log n) = logarithmic; O(n) = linear; O(n log n) = linearithmic; O(n²) = quadratic; O(2ⁿ) = exponential"
+        - "Describes worst-case upper bound on growth rate — not exact running time"
+        - "Essential tool for algorithm analysis and comparison"
+      wikipedia: https://en.wikipedia.org/wiki/Big_O_notation
+
+    P_vs_NP:
+      wikidata_id: Q933208
+      chain_theme: 4
+      year_formalized: 1971
+      formalized_by: "Stephen Cook"
+      # Leonid Levin independently formulated an equivalent problem (1973, published)
+      independent_formulation: "Leonid Levin (1973)"
+      source_paper: "Cook, S.A. (1971). 'The complexity of theorem-proving procedures.' STOC '71:151–158."
+      millennium_prize: true
+      prize_amount_usd: 1000000
+      key_facts:
+        - "Asks whether every problem whose solution can be quickly verified (NP) can also be quickly solved (P)"
+        - "Formally posed by Stephen Cook in 1971 in his proof of NP-completeness of SAT"
+        - "Independently formulated by Leonid Levin in 1973"
+        - "One of the seven Millennium Prize Problems; Clay Mathematics Institute offers $1,000,000 for a proof"
+        - "Most computer scientists believe P ≠ NP, but it has not been proven either way"
+        - "If P = NP, most public-key cryptography (RSA, ECC) would become insecure"
+      wikipedia: https://en.wikipedia.org/wiki/P_versus_NP_problem
+
+    Halting_Problem:
+      wikidata_id: Q200538
+      chain_theme: 3
+      year: 1936
+      proved_by: "Alan Turing"
+      inventor_wikidata: Q7251
+      source_paper: "Turing, A.M. (1936). 'On Computable Numbers, with an Application to the Entscheidungsproblem.' Proceedings of the London Mathematical Society 2(42):230–265."
+      key_facts:
+        - "Proved by Alan Turing in 1936 in his landmark paper 'On Computable Numbers'"
+        - "The halting problem asks: given a program and its input, will the program eventually stop (halt)?"
+        - "Turing proved this is undecidable — no algorithm can solve it for all possible inputs"
+        - "Proof uses a diagonal argument (similar to Cantor's diagonalization)"
+        - "First major undecidability result in computer science"
+        - "Established fundamental limits on what computers can compute"
+      wikipedia: https://en.wikipedia.org/wiki/Halting_problem
+
+    Church_Turing_Thesis:
+      wikidata_id: Q211452
+      chain_theme: 3
+      year: 1936
+      authors: ["Alonzo Church", "Alan Turing"]
+      # Church published lambda calculus (1936); Turing published Turing machines (1936)
+      key_facts:
+        - "Proposed independently by Alonzo Church and Alan Turing in 1936"
+        - "States that any function computable by an algorithm can be computed by a Turing machine"
+        - "Church used lambda calculus; Turing used his abstract 'Turing machine' model"
+        - "A thesis, not a proven theorem — it is a definition of 'computable'"
+        - "Implies that all sufficiently powerful programming languages are equivalent in what they can compute"
+        - "Foundation of theoretical computer science"
+      wikipedia: https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis
+
+    Boolean_Algebra:
+      wikidata_id: Q173183
+      chain_theme: 7
+      year_key_work: 1854
+      # Boole's first work "The Mathematical Analysis of Logic" 1847; major work "An Investigation of the Laws of Thought" 1854
+      creator: "George Boole"
+      creator_wikidata: Q28827
+      source_work: "Boole, G. (1854). 'An Investigation of the Laws of Thought.' Walton and Maberly, London."
+      key_facts:
+        - "Created by George Boole in 1847 ('The Mathematical Analysis of Logic') and expanded in 1854 ('The Laws of Thought')"
+        - "Algebraic system where variables have only two values: true (1) and false (0)"
+        - "Core operations: AND, OR, NOT"
+        - "Claude Shannon showed in 1937 that Boolean algebra can describe electrical circuits"
+        - "Foundation of all digital logic, computer circuits, and programming"
+        - "Boolean: named after George Boole — the data type (bool/boolean) in all programming languages"
+      wikipedia: https://en.wikipedia.org/wiki/Boolean_algebra
+
+    NP_Completeness:
+      wikidata_id: Q215676
+      chain_theme: 4
+      year_cook_levin: 1971
+      year_karp: 1972
+      key_figures: ["Stephen Cook", "Leonid Levin", "Richard Karp"]
+      source_paper_cook: "Cook, S.A. (1971). 'The complexity of theorem-proving procedures.' STOC '71."
+      source_paper_karp: "Karp, R.M. (1972). 'Reducibility Among Combinatorial Problems.' In Miller & Thatcher (eds), Complexity of Computer Computations:85–103."
+      karps_21_problems_examples: ["Travelling Salesman", "Hamiltonian Circuit", "Knapsack", "Graph Coloring", "Clique", "Vertex Cover"]
+      key_facts:
+        - "NP-complete problems are the hardest problems in NP — any NP problem can be reduced to them in polynomial time"
+        - "Cook–Levin theorem (1971): Boolean satisfiability (SAT) was the first proven NP-complete problem"
+        - "Richard Karp's 1972 paper showed 21 classic combinatorial problems are NP-complete"
+        - "Karp's 21 NP-complete problems include: Travelling Salesman, Hamiltonian Circuit, Knapsack, Graph Coloring"
+        - "No polynomial-time algorithm is known for any NP-complete problem"
+        - "If any NP-complete problem can be solved in polynomial time, then P = NP"
+      wikipedia: https://en.wikipedia.org/wiki/NP-completeness
+
+    Turing_Completeness:
+      wikidata_id: Q692652
+      chain_theme: 3
+      key_facts:
+        - "A system is Turing-complete if it can simulate any Turing machine (i.e., compute anything computable)"
+        - "Named after Alan Turing and his 1936 abstract computing model"
+        - "All general-purpose programming languages (C, Python, Java, etc.) are Turing-complete"
+        - "Implies: if one Turing-complete language can do it, all of them can (theoretically)"
+        - "Even unexpected systems are Turing-complete: Conway's Game of Life, Minecraft redstone"
+        - "Turing completeness does not guarantee efficiency — only that computation is theoretically possible"
+      wikipedia: https://en.wikipedia.org/wiki/Turing_completeness
+
+  # ─── FAMOUS ALGORITHMS ───────────────────────────────────────────────────────
+
+  famous_algorithms:
+
+    RSA_Encryption:
+      wikidata_id: Q181319
+      chain_theme: 6
+      year_published: 1977
+      # Described publicly in Martin Gardner's Scientific American column, August 1977
+      # MIT Technical Report by Rivest, Shamir, Adleman: April 1977
+      inventors: ["Ron Rivest", "Adi Shamir", "Leonard Adleman"]
+      # GCHQ's Clifford Cocks had earlier discovered an equivalent in 1973 (classified until 1997)
+      institution: "MIT"
+      acronym_source: "R = Rivest, S = Shamir, A = Adleman"
+      patent_filed: 1983
+      patent_expired: 2000
+      key_facts:
+        - "Published by Ron Rivest, Adi Shamir, and Leonard Adleman in 1977 — name is their initials (R-S-A)"
+        - "First practical public-key cryptosystem"
+        - "Security based on the difficulty of factoring the product of two large prime numbers"
+        - "Uses two keys: a public key (anyone can encrypt) and a private key (only recipient can decrypt)"
+        - "Clifford Cocks at GCHQ independently discovered an equivalent algorithm in 1973 — kept classified until 1997"
+        - "RSA patent (US Patent 4,405,829) expired in 2000 and is now in the public domain"
+      wikipedia: https://en.wikipedia.org/wiki/RSA_(cryptosystem)
+
+    PageRank:
+      wikidata_id: Q304022
+      chain_theme: 6
+      year_paper: 1998
+      # Stanford research paper published at WWW7 conference, 1998
+      # Google founded September 4, 1998
+      inventors: ["Larry Page", "Sergey Brin"]
+      institution: "Stanford University"
+      source_paper: "Page, L., Brin, S., Motwani, R., Winograd, T. (1998). 'The PageRank Citation Ranking: Bringing Order to the Web.' Stanford InfoLab Technical Report."
+      key_facts:
+        - "Developed by Larry Page and Sergey Brin at Stanford University; paper published 1998"
+        - "Algorithm that ranks web pages by the number and quality of incoming links"
+        - "Core idea: a link from a high-ranking page transfers more 'rank' than a link from a low-ranking page"
+        - "Named after Larry Page (not 'web page')"
+        - "Became the foundation of Google's search engine, which Page and Brin launched in 1998"
+        - "Modeled mathematically as a random walk on the web graph (stationary distribution)"
+      wikipedia: https://en.wikipedia.org/wiki/PageRank
+
+    MapReduce:
+      wikidata_id: Q849731
+      chain_theme: 6
+      year_paper: 2004
+      inventors: ["Jeffrey Dean", "Sanjay Ghemawat"]
+      company: Google
+      source_paper: "Dean, J., Ghemawat, S. (2004). 'MapReduce: Simplified Data Processing on Large Clusters.' OSDI 2004."
+      key_facts:
+        - "Published by Jeffrey Dean and Sanjay Ghemawat at Google in 2004"
+        - "Programming model for processing large data sets across distributed clusters"
+        - "Two phases: Map (apply function to each item, producing key-value pairs) and Reduce (aggregate by key)"
+        - "Inspired by map and reduce functions from functional programming (Lisp)"
+        - "Google used it internally for building search indexes, processing web logs, etc."
+        - "Open-source implementation: Apache Hadoop (2006) made MapReduce widely accessible"
+      wikipedia: https://en.wikipedia.org/wiki/MapReduce
+
+    Fast_Fourier_Transform:
+      wikidata_id: Q1156482
+      chain_theme: 6
+      year_paper: 1965
+      inventors: ["James Cooley", "John Tukey"]
+      # Note: Gauss had discovered equivalent methods c.1805, not widely known
+      source_paper: "Cooley, J.W., Tukey, J.W. (1965). 'An Algorithm for the Machine Calculation of Complex Fourier Series.' Mathematics of Computation 19(90):297–301."
+      complexity_naive: "O(n²)"
+      complexity_fft: "O(n log n)"
+      key_facts:
+        - "Published by James Cooley and John Tukey in 1965 (hence 'Cooley-Tukey algorithm')"
+        - "Efficient algorithm for computing the Discrete Fourier Transform (DFT) and its inverse"
+        - "Reduces DFT computation from O(n²) to O(n log n)"
+        - "One of the most important algorithms of the 20th century"
+        - "Carl Friedrich Gauss had discovered equivalent methods around 1805 but never published them properly"
+        - "Applications: signal processing, image compression (JPEG), audio (MP3), telecommunications, engineering"
+      wikipedia: https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm
+
+    Backpropagation:
+      wikidata_id: Q909671
+      chain_theme: 6
+      year_key_paper: 1986
+      key_authors: ["David E. Rumelhart", "Geoffrey E. Hinton", "Ronald J. Williams"]
+      # History is complex: Seppo Linnainmaa 1970 (reverse-mode autodiff), Werbos 1974 (applied to neural nets)
+      # Rumelhart/Hinton/Williams 1986 paper popularized it for neural networks
+      source_paper: "Rumelhart, D.E., Hinton, G.E., Williams, R.J. (1986). 'Learning representations by back-propagating errors.' Nature 323:533–536."
+      key_facts:
+        - "Algorithm for training artificial neural networks by computing gradients of the loss function"
+        - "Key 1986 paper by Rumelhart, Hinton, and Williams in Nature popularized the method"
+        - "Earlier work: Paul Werbos applied it to neural networks in his 1974 PhD thesis; Linnainmaa 1970 formalized reverse-mode differentiation"
+        - "Works by propagating error backward through network layers to update weights (gradient descent)"
+        - "Foundation of modern deep learning — without backpropagation, training deep networks was infeasible"
+        - "Geoffrey Hinton received the 2024 Nobel Prize in Physics for contributions to artificial neural networks"
+      wikipedia: https://en.wikipedia.org/wiki/Backpropagation

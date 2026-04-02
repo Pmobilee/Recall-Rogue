@@ -1,0 +1,515 @@
+# CS & Technology: Pioneers & Visionaries — Verified Source Architecture
+# All facts verified via Wikipedia API, April 2026
+# Sources: en.wikipedia.org
+
+deck_id: cs_tech_pioneers
+sub_deck_index: 0
+title: "Pioneers & Visionaries"
+target_facts: 35
+source_url_base: "https://en.wikipedia.org/wiki/"
+
+entities:
+
+  - name: Ada Lovelace
+    birth: 1815-12-10
+    death: 1852-11-27
+    country: United Kingdom
+    wikidata: Q7259
+    source_url: "https://en.wikipedia.org/wiki/Ada_Lovelace"
+    achievement: "Wrote the first published algorithm, intended for Babbage's Analytical Engine"
+    key_facts:
+      - "Born Augusta Ada Byron on 10 December 1815; only legitimate child of poet Lord Byron"
+      - "Translated Luigi Menabrea's 1842 paper on Babbage's Analytical Engine and added her own notes — those notes were three times longer than the original paper"
+      - "Her notes included what is considered the first published algorithm designed for execution by a machine"
+      - "Recognised the machine had applications beyond pure numerical calculation"
+      - "Often called the first computer programmer; the Ada programming language (1980) is named in her honour"
+
+  - name: Charles Babbage
+    birth: 1791-12-26
+    death: 1871-10-18
+    country: United Kingdom
+    wikidata: Q46633
+    source_url: "https://en.wikipedia.org/wiki/Charles_Babbage"
+    achievement: "Designed the Difference Engine and Analytical Engine — conceptual precursors to the modern computer"
+    key_facts:
+      - "Born 26 December 1791; died 18 October 1871"
+      - "Designed the Difference Engine in the 1820s to tabulate polynomial functions; a small working section was demonstrated in 1832"
+      - "Designed the more ambitious Analytical Engine, a general-purpose mechanical computer, borrowing the punch-card idea from the Jacquard loom"
+      - "The Analytical Engine was never built in his lifetime but contained all essential ideas of modern computers"
+      - "Also designed the first mechanical computer printer"
+
+  - name: Alan Turing
+    birth: 1912-06-23
+    death: 1954-06-07
+    country: United Kingdom
+    wikidata: Q7251
+    source_url: "https://en.wikipedia.org/wiki/Alan_Turing"
+    achievement: "Formalised the concept of computation with the Turing machine; broke Enigma; proposed the Turing test"
+    key_facts:
+      - "Born 23 June 1912 in London; died 7 June 1954"
+      - "Introduced the Turing machine in 1936 as a mathematical model of computation — considered the father of theoretical computer science"
+      - "During World War II worked at Bletchley Park where his techniques were critical to breaking the German Enigma cipher"
+      - "Published 'Computing Machinery and Intelligence' in 1950, proposing what became known as the Turing test for machine intelligence"
+      - "The ACM Turing Award, given annually since 1966, is named in his honour"
+
+  - name: John von Neumann
+    birth: 1903-12-28
+    death: 1957-02-08
+    country: "Hungary / United States"
+    wikidata: Q17455
+    source_url: "https://en.wikipedia.org/wiki/John_von_Neumann"
+    achievement: "Described the stored-program computer architecture (von Neumann architecture) in 1945"
+    key_facts:
+      - "Born 28 December 1903 in Budapest; died 8 February 1957"
+      - "His 1945 'First Draft of a Report on the EDVAC' described a stored-program architecture where instructions and data share the same memory"
+      - "This von Neumann architecture (also called Princeton architecture) is the basis for the overwhelming majority of modern computers"
+      - "Also made foundational contributions to mathematics, physics, game theory, and quantum mechanics"
+      - "Contributed to the Manhattan Project and early Cold War nuclear weapons design"
+
+  - name: Claude Shannon
+    birth: 1916-04-30
+    death: 2001-02-24
+    country: United States
+    wikidata: Q92760
+    source_url: "https://en.wikipedia.org/wiki/Claude_Shannon"
+    achievement: "Founded information theory with his 1948 paper 'A Mathematical Theory of Communication'"
+    key_facts:
+      - "Born 30 April 1916; died 24 February 2001"
+      - "His 1948 paper 'A Mathematical Theory of Communication' published in Bell System Technical Journal laid the foundations of information theory"
+      - "Introduced the bit (binary digit) as the fundamental unit of information"
+      - "Was the first to describe the use of Boolean algebra in electronic circuits (1937 master's thesis)"
+      - "Known as the 'father of information theory'; also helped found the field of artificial intelligence"
+
+  - name: Grace Hopper
+    birth: 1906-12-09
+    death: 1992-01-01
+    country: United States
+    wikidata: Q11641
+    source_url: "https://en.wikipedia.org/wiki/Grace_Hopper"
+    achievement: "Pioneered machine-independent programming languages; developed FLOW-MATIC which influenced COBOL"
+    key_facts:
+      - "Born 9 December 1906; died 1 January 1992; reached rank of Rear Admiral in the US Navy"
+      - "One of the first programmers on the Harvard Mark I computer (1944)"
+      - "Devised the theory of machine-independent programming languages and used it to develop FLOW-MATIC"
+      - "FLOW-MATIC directly influenced the design of COBOL (1959)"
+      - "Popularised the term 'computer bug' after her team found a moth stuck in a relay of the Harvard Mark II in 1947"
+
+  - name: Konrad Zuse
+    birth: 1910-06-22
+    death: 1995-12-18
+    country: Germany
+    wikidata: Q60093
+    source_url: "https://en.wikipedia.org/wiki/Konrad_Zuse"
+    achievement: "Built the Z3 (1941), the world's first programmable, Turing-complete computer"
+    key_facts:
+      - "Born 22 June 1910; died 18 December 1995"
+      - "His Z3 computer became operational in May 1941 — the world's first functional program-controlled Turing-complete computer"
+      - "Built his early computers largely with private funding in his parents' living room in Berlin"
+      - "Also developed the first high-level programming language, Plankalkül, around 1945 (though not published until 1972)"
+      - "Founded one of the earliest computer companies, Zuse KG, in 1941"
+
+  - name: Donald Knuth
+    birth: 1938-01-10
+    death: null
+    country: United States
+    wikidata: Q17457
+    source_url: "https://en.wikipedia.org/wiki/Donald_Knuth"
+    achievement: "Authored 'The Art of Computer Programming'; created TeX; won the 1974 ACM Turing Award"
+    key_facts:
+      - "Born 10 January 1938; professor emeritus at Stanford University"
+      - "Won the 1974 ACM Turing Award; known as the 'father of the analysis of algorithms'"
+      - "'The Art of Computer Programming' is a multi-volume series covering fundamental algorithms — volumes 1–3 published 1968–1973"
+      - "Created TeX, a typesetting system, and METAFONT, a font description system"
+      - "Introduced the O (big-O) notation into computer science for describing algorithm complexity"
+
+  - name: Edsger Dijkstra
+    birth: 1930-05-11
+    death: 2002-08-06
+    country: Netherlands
+    wikidata: Q8556
+    source_url: "https://en.wikipedia.org/wiki/Edsger_W._Dijkstra"
+    achievement: "Invented Dijkstra's shortest-path algorithm (1956); championed structured programming"
+    key_facts:
+      - "Born 11 May 1930 in Rotterdam; died 6 August 2002"
+      - "Designed Dijkstra's algorithm for finding shortest paths in a weighted graph in 1956"
+      - "Won the 1972 ACM Turing Award for contributions to developing structured programming languages"
+      - "His famous 1968 letter 'Go To Statement Considered Harmful' in Communications of the ACM helped end unstructured use of GOTO"
+      - "Was the first computer programmer employed in the Netherlands (hired 1952 at Mathematical Centre Amsterdam)"
+
+  - name: Margaret Hamilton
+    birth: 1936-08-17
+    death: null
+    country: United States
+    wikidata: Q11628
+    source_url: "https://en.wikipedia.org/wiki/Margaret_Hamilton_(software_engineer)"
+    achievement: "Led development of Apollo Guidance Computer software; coined the term 'software engineering'"
+    key_facts:
+      - "Born 17 August 1936"
+      - "Directed the Software Engineering Division at MIT Instrumentation Laboratory, leading development of on-board flight software for NASA's Apollo Guidance Computer"
+      - "Coined the term 'software engineering' to describe her discipline"
+      - "Her software prevented an abort of the Apollo 11 lunar landing by recognising and shedding lower-priority tasks during 1202 program alarms"
+      - "Awarded the Presidential Medal of Freedom in 2016"
+
+  - name: Dennis Ritchie
+    birth: 1941-09-09
+    death: 2011-10-12
+    country: United States
+    wikidata: Q45575
+    source_url: "https://en.wikipedia.org/wiki/Dennis_Ritchie"
+    achievement: "Created the C programming language and co-created the Unix operating system"
+    key_facts:
+      - "Born 9 September 1941; died c. 12 October 2011"
+      - "Created the C programming language (developed 1969–1973) at Bell Labs"
+      - "Co-created the Unix operating system with Ken Thompson at Bell Labs beginning in 1969"
+      - "Won the 1983 ACM Turing Award jointly with Ken Thompson"
+      - "Also invented the B programming language, the predecessor to C"
+
+  - name: Ken Thompson
+    birth: 1943-02-04
+    death: null
+    country: United States
+    wikidata: Q1107006
+    source_url: "https://en.wikipedia.org/wiki/Ken_Thompson"
+    achievement: "Co-designed Unix; invented the B language; co-designed the Go programming language"
+    key_facts:
+      - "Born 4 February 1943"
+      - "Designed and implemented the original Unix operating system at Bell Labs"
+      - "Invented the B programming language, the direct predecessor to C"
+      - "Co-designed the Go programming language at Google (announced 2009)"
+      - "Won the 1983 ACM Turing Award jointly with Dennis Ritchie"
+
+  - name: Vint Cerf
+    birth: 1943-06-23
+    death: null
+    country: United States
+    wikidata: Q92743
+    source_url: "https://en.wikipedia.org/wiki/Vint_Cerf"
+    achievement: "Co-designed TCP/IP with Bob Kahn; called one of 'the fathers of the Internet'"
+    key_facts:
+      - "Born 23 June 1943"
+      - "Co-designed the TCP/IP protocol suite with Robert Kahn in the 1970s"
+      - "TCP/IP is the fundamental communication protocol of the Internet"
+      - "Recipients of the 2004 ACM Turing Award (jointly with Kahn)"
+      - "Has received the National Medal of Technology, Presidential Medal of Freedom, and Marconi Prize"
+
+  - name: Robert Kahn
+    birth: 1938-12-23
+    death: null
+    country: United States
+    wikidata: Q62843
+    source_url: "https://en.wikipedia.org/wiki/Robert_Kahn_(computer_scientist)"
+    achievement: "Co-designed TCP/IP with Vint Cerf; first proposed the open-architecture networking concept"
+    key_facts:
+      - "Born 23 December 1938"
+      - "Co-designed the Transmission Control Protocol (TCP) and Internet Protocol (IP) with Vint Cerf"
+      - "First proposed the open-architecture networking concept that became the Internet"
+      - "Won the 2004 ACM Turing Award jointly with Vint Cerf"
+      - "Previously designed the communication protocols for ARPANET"
+
+  - name: Tim Berners-Lee
+    birth: 1955-06-08
+    death: null
+    country: United Kingdom
+    wikidata: Q80
+    source_url: "https://en.wikipedia.org/wiki/Tim_Berners-Lee"
+    achievement: "Invented the World Wide Web, HTML, the URL system, and HTTP"
+    key_facts:
+      - "Born 8 June 1955"
+      - "Proposed an information management system on 12 March 1989 while working at CERN"
+      - "Implemented the first successful HTTP communication between a client and server in late 1990"
+      - "Invented HTML (HyperText Markup Language) and the URL (Uniform Resource Locator) scheme"
+      - "Founded the World Wide Web Consortium (W3C) in 1994 to develop open web standards"
+
+  - name: Linus Torvalds
+    birth: 1969-12-28
+    death: null
+    country: "Finland / United States"
+    wikidata: Q34253
+    source_url: "https://en.wikipedia.org/wiki/Linus_Torvalds"
+    achievement: "Created the Linux kernel (1991) and the Git version-control system (2005)"
+    key_facts:
+      - "Born 28 December 1969 in Helsinki, Finland"
+      - "Created the Linux kernel in 1991 as a free, open-source operating system kernel"
+      - "Linux is the most widely used kernel in the world, powering Android, most web servers, and supercomputers"
+      - "Created the Git distributed version-control system in 2005 to manage Linux kernel development"
+      - "Received the 2012 Millennium Technology Prize from Finland"
+
+  - name: Guido van Rossum
+    birth: 1956-01-31
+    death: null
+    country: Netherlands
+    wikidata: Q30942
+    source_url: "https://en.wikipedia.org/wiki/Guido_van_Rossum"
+    achievement: "Created the Python programming language; first released Python in 1991"
+    key_facts:
+      - "Born 31 January 1956 in the Netherlands"
+      - "Began developing Python in the late 1980s as a successor to the ABC language"
+      - "Released Python 0.9.0 in 1991"
+      - "Served as Python's 'benevolent dictator for life' (BDFL) until stepping down on 12 July 2018"
+      - "Python became one of the most popular programming languages in the world, especially in data science and AI"
+
+  - name: Brendan Eich
+    birth: 1961-07-04
+    death: null
+    country: United States
+    wikidata: Q92648
+    source_url: "https://en.wikipedia.org/wiki/Brendan_Eich"
+    achievement: "Created JavaScript in 1995 while at Netscape; co-founded Mozilla"
+    key_facts:
+      - "Born 4 July 1961"
+      - "Created JavaScript in 1995 while working at Netscape Communications"
+      - "JavaScript was originally called LiveScript before being renamed to capitalise on Java's popularity"
+      - "Co-founded the Mozilla project, the Mozilla Foundation, and the Mozilla Corporation"
+      - "JavaScript became the dominant client-side scripting language of the Web, used by 98.9% of websites as of 2025"
+
+  - name: James Gosling
+    birth: 1955-05-19
+    death: null
+    country: Canada
+    wikidata: Q92622
+    source_url: "https://en.wikipedia.org/wiki/James_Gosling"
+    achievement: "Created the Java programming language at Sun Microsystems"
+    key_facts:
+      - "Born 19 May 1955 in Calgary, Alberta, Canada"
+      - "Founded and led the design of the Java programming language at Sun Microsystems"
+      - "Java was initially called 'Oak' after an oak tree outside Gosling's office, then renamed 'Green', before becoming Java"
+      - "Java first publicly released in 1995 with the 'write once, run anywhere' (WORA) philosophy"
+      - "Elected to the US National Academy of Engineering in 2004"
+
+  - name: Bjarne Stroustrup
+    birth: 1950-12-30
+    death: null
+    country: Denmark
+    wikidata: Q92620
+    source_url: "https://en.wikipedia.org/wiki/Bjarne_Stroustrup"
+    achievement: "Created C++ (developed from 1979; first released 1985)"
+    key_facts:
+      - "Born 30 December 1950 in Aarhus, Denmark"
+      - "Developed C++ beginning in 1979 at Bell Labs as an extension of C with object-oriented features"
+      - "C++ was first released externally in 1985"
+      - "Led the Large-scale Programming Research department at Bell Labs"
+      - "C++ became one of the most widely used programming languages, especially for systems and performance-critical software"
+
+  - name: John McCarthy
+    birth: 1927-09-04
+    death: 2011-10-24
+    country: United States
+    wikidata: Q92739
+    source_url: "https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)"
+    achievement: "Coined the term 'artificial intelligence'; created the Lisp programming language"
+    key_facts:
+      - "Born 4 September 1927; died 24 October 2011"
+      - "Co-authored the Dartmouth Workshop proposal in 1956 that coined the term 'artificial intelligence'"
+      - "Created the Lisp programming language beginning in 1958 at MIT"
+      - "Won the 1971 ACM Turing Award for contributions to AI"
+      - "Also invented the concept of time-sharing and pioneered garbage collection"
+
+  - name: Marvin Minsky
+    birth: 1927-08-09
+    death: 2016-01-24
+    country: United States
+    wikidata: Q204815
+    source_url: "https://en.wikipedia.org/wiki/Marvin_Minsky"
+    achievement: "Co-founded the MIT AI Laboratory; won the 1969 ACM Turing Award for AI research"
+    key_facts:
+      - "Born 9 August 1927; died 24 January 2016"
+      - "Co-founded the Massachusetts Institute of Technology's Artificial Intelligence Laboratory (with John McCarthy) in 1959"
+      - "Won the 1969 ACM Turing Award for contributions to AI"
+      - "Built the first neural network simulator (SNARC) with Dean Edmonds in 1951"
+      - "Author of influential works including 'Perceptrons' (with Seymour Papert, 1969) and 'The Society of Mind' (1986)"
+
+  - name: Geoffrey Hinton
+    birth: 1947-12-06
+    death: null
+    country: "United Kingdom / Canada"
+    wikidata: Q92894
+    source_url: "https://en.wikipedia.org/wiki/Geoffrey_Hinton"
+    achievement: "Pioneered deep learning and backpropagation; won 2024 Nobel Prize in Physics for neural network research"
+    key_facts:
+      - "Born 6 December 1947"
+      - "Known as 'the Godfather of AI' for foundational work on artificial neural networks"
+      - "Key contributor to the development of the backpropagation algorithm for training multi-layer neural networks"
+      - "Co-created AlexNet in 2012, which won the ImageNet competition and launched the deep learning era"
+      - "Shared the 2024 Nobel Prize in Physics with John Hopfield for discoveries enabling machine learning with artificial neural networks"
+
+  - name: Larry Page
+    birth: 1973-03-26
+    death: null
+    country: United States
+    wikidata: Q4934
+    source_url: "https://en.wikipedia.org/wiki/Larry_Page"
+    achievement: "Co-founded Google with Sergey Brin; co-invented the PageRank algorithm"
+    key_facts:
+      - "Born 26 March 1973"
+      - "Co-founded Google with Sergey Brin while both were PhD students at Stanford University"
+      - "Co-invented the PageRank algorithm, which ranked web pages by the number and quality of links pointing to them"
+      - "Served as Google CEO 1997–2001 and again 2011–2015, then became CEO of Alphabet Inc."
+      - "Google was incorporated as a company on 4 September 1998"
+
+  - name: Sergey Brin
+    birth: 1973-08-21
+    death: null
+    country: "Russia / United States"
+    wikidata: Q92764
+    source_url: "https://en.wikipedia.org/wiki/Sergey_Brin"
+    achievement: "Co-founded Google with Larry Page; co-invented the PageRank algorithm"
+    key_facts:
+      - "Born 21 August 1973 in Moscow, Soviet Union; immigrated to the United States at age six"
+      - "Co-founded Google with Larry Page while both were PhD students at Stanford"
+      - "Co-invented PageRank alongside Page"
+      - "Served as President of Google's parent Alphabet Inc. until stepping down 3 December 2019"
+      - "Earned his bachelor's degree from University of Maryland, College Park"
+
+  - name: Hedy Lamarr
+    birth: 1914-11-09
+    death: 2000-01-19
+    country: "Austria / United States"
+    wikidata: Q49034
+    source_url: "https://en.wikipedia.org/wiki/Hedy_Lamarr"
+    achievement: "Co-invented frequency-hopping spread spectrum technology with George Antheil (1942 patent)"
+    key_facts:
+      - "Born Hedwig Eva Maria Kiesler on 9 November 1914 in Vienna; died 19 January 2000"
+      - "Was a major Hollywood film star alongside her career as an inventor"
+      - "Co-invented a radio guidance system using spread spectrum and frequency-hopping technology with composer George Antheil during World War II"
+      - "Their patent (US 2,292,387) was granted in 1942 but the technology was not used until the patent had expired"
+      - "The frequency-hopping concept forms a technical basis for modern Wi-Fi, GPS, and Bluetooth"
+
+  - name: Alonzo Church
+    birth: 1903-06-14
+    death: 1995-08-11
+    country: United States
+    wikidata: Q92741
+    source_url: "https://en.wikipedia.org/wiki/Alonzo_Church"
+    achievement: "Developed the lambda calculus; proved the Entscheidungsproblem unsolvable; co-formulated the Church–Turing thesis"
+    key_facts:
+      - "Born 14 June 1903; died 11 August 1995"
+      - "Developed the lambda calculus in the 1930s — a formal system for expressing computation"
+      - "Proved the Entscheidungsproblem (decision problem) has no solution in 1936, independently from Alan Turing"
+      - "The Church–Turing thesis (with his doctoral student Alan Turing) formalises the intuitive notion of computability"
+      - "Lambda calculus underpins functional programming languages"
+
+  - name: John Backus
+    birth: 1924-12-03
+    death: 2007-03-17
+    country: United States
+    wikidata: Q92746
+    source_url: "https://en.wikipedia.org/wiki/John_Backus"
+    achievement: "Led the team that created FORTRAN (1957); invented Backus–Naur Form (BNF) notation"
+    key_facts:
+      - "Born 3 December 1924; died 17 March 2007"
+      - "Led the IBM team that invented FORTRAN, the first widely used high-level programming language; first compiler delivered April 1957"
+      - "Invented the Backus–Naur Form (BNF), a standard notation for defining formal language grammars"
+      - "Also contributed to the design of ALGOL"
+      - "Won the 1977 ACM Turing Award"
+
+  - name: Frances Allen
+    birth: 1932-08-04
+    death: 2020-08-04
+    country: United States
+    wikidata: Q9602
+    source_url: "https://en.wikipedia.org/wiki/Frances_Allen"
+    achievement: "Pioneered optimising compilers; first woman to win the ACM Turing Award (2006)"
+    key_facts:
+      - "Born 4 August 1932; died 4 August 2020 (her 88th birthday)"
+      - "Worked at IBM from 1957 to 2002"
+      - "First woman to become an IBM Fellow"
+      - "Won the 2006 ACM Turing Award — the first woman to receive it — for foundational contributions to optimising compilers and parallelisation"
+      - "Her work on compiler optimisation made high-level programming languages practical for scientific computing"
+
+  - name: Barbara Liskov
+    birth: 1939-11-07
+    death: null
+    country: United States
+    wikidata: Q16080922
+    source_url: "https://en.wikipedia.org/wiki/Barbara_Liskov"
+    achievement: "Pioneered abstract data types and the Liskov Substitution Principle; won 2008 ACM Turing Award"
+    key_facts:
+      - "Born 7 November 1939"
+      - "Introduced abstract data types and the principle of data abstraction"
+      - "Formulated the Liskov Substitution Principle (LSP), a key principle of object-oriented programming and subtype relationships"
+      - "Won the 2008 ACM Turing Award for contributions to the practical and theoretical foundations of programming language and system design"
+      - "First woman to earn a PhD in Computer Science from an American university (Stanford, 1968)"
+
+  - name: Niklaus Wirth
+    birth: 1934-02-15
+    death: 2024-01-01
+    country: Switzerland
+    wikidata: Q92604
+    source_url: "https://en.wikipedia.org/wiki/Niklaus_Wirth"
+    achievement: "Designed the Pascal programming language; won the 1984 ACM Turing Award"
+    key_facts:
+      - "Born 15 February 1934; died 1 January 2024"
+      - "Designed several programming languages including Euler, Algol W, PL360, Pascal, Modula, Modula-2, and Oberon"
+      - "Pascal (1970) became one of the most important languages in computer science education"
+      - "Won the 1984 ACM Turing Award 'for developing a sequence of innovative computer languages'"
+      - "Formulated Wirth's law: 'Software is getting slower more rapidly than hardware becomes faster'"
+
+  - name: Tony Hoare
+    birth: 1934-01-11
+    death: 2026-03-05
+    country: United Kingdom
+    wikidata: Q92602
+    source_url: "https://en.wikipedia.org/wiki/Tony_Hoare"
+    achievement: "Invented Quicksort (1959); developed Hoare logic for program verification; won 1980 ACM Turing Award"
+    key_facts:
+      - "Born 11 January 1934; died 5 March 2026"
+      - "Invented the Quicksort algorithm in 1959 — one of the most widely used sorting algorithms"
+      - "Developed Hoare logic (axiomatic semantics) for formally verifying correctness of programs"
+      - "Won the 1980 ACM Turing Award for fundamental contributions to the definition and design of programming languages"
+      - "Called the invention of the null reference his 'billion-dollar mistake'"
+
+  - name: Edgar F. Codd
+    birth: 1923-08-19
+    death: 2003-04-18
+    country: "United Kingdom / United States"
+    wikidata: Q92596
+    source_url: "https://en.wikipedia.org/wiki/Edgar_F._Codd"
+    achievement: "Invented the relational model for databases while at IBM; won the 1981 ACM Turing Award"
+    key_facts:
+      - "Born 19 August 1923; died 18 April 2003"
+      - "Invented the relational model for database management, the theoretical basis for all relational databases"
+      - "Published his foundational paper 'A Relational Model of Data for Large Shared Data Banks' in 1970"
+      - "Won the 1981 ACM Turing Award"
+      - "His work at IBM directly influenced the creation of SQL and relational database systems like IBM DB2 and Oracle"
+
+  - name: Douglas Engelbart
+    birth: 1925-01-30
+    death: 2013-07-02
+    country: United States
+    wikidata: Q92614
+    source_url: "https://en.wikipedia.org/wiki/Douglas_Engelbart"
+    achievement: "Invented the computer mouse (prototype 1964); gave the 'Mother of All Demos' in 1968"
+    key_facts:
+      - "Born 30 January 1925; died 2 July 2013"
+      - "Built the first computer mouse prototype in 1964 with engineer Bill English at SRI International"
+      - "The first public demonstration of a mouse controlling a computer was in 1968 at what became known as 'the Mother of All Demos'"
+      - "The 'Mother of All Demos' (9 December 1968) also demonstrated hypertext, video conferencing, and collaborative real-time editing"
+      - "Won the 1997 ACM Turing Award for an inspiring vision of the future of interactive computing"
+
+  - name: Radia Perlman
+    birth: 1951-12-18
+    death: null
+    country: United States
+    wikidata: Q7558
+    source_url: "https://en.wikipedia.org/wiki/Radia_Perlman"
+    achievement: "Invented the Spanning Tree Protocol (STP); known as the 'Mother of the Internet'"
+    key_facts:
+      - "Born 18 December 1951"
+      - "Invented the Spanning Tree Protocol (STP) while working at Digital Equipment Corporation"
+      - "STP is fundamental to the operation of network bridges and Ethernet networks"
+      - "Nicknamed the 'Mother of the Internet' for her foundational contributions to network infrastructure"
+      - "Also made major contributions to network routing and security"
+
+  - name: Lynn Conway
+    birth: 1938-01-02
+    death: 2024-06-09
+    country: United States
+    wikidata: Q11490
+    source_url: "https://en.wikipedia.org/wiki/Lynn_Conway"
+    achievement: "Invented generalised dynamic instruction handling; co-authored the Mead–Conway VLSI design rules"
+    key_facts:
+      - "Born 2 January 1938; died 9 June 2024"
+      - "While at IBM in the 1960s, invented generalised dynamic instruction handling (superscalar architecture), a key advancement used in out-of-order execution in modern CPUs"
+      - "IBM fired Conway in 1968 after she disclosed her intention to undergo gender transition"
+      - "Co-authored 'Introduction to VLSI Systems' (1980) with Carver Mead, which revolutionised chip design education and practice"
+      - "Her VLSI design rules enabled a generation of engineers to design integrated circuits"

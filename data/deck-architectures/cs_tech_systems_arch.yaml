@@ -1,0 +1,825 @@
+deck_id: computer_science_systems
+name: "CS & Technology — Systems, Networks & Security"
+domain: computer_science
+sub_domain: systems_networks_security
+target_facts: 35
+minimum_facts: 28
+
+# NOTE: This is sub-deck 4 of the Computer Science & Technology deck.
+# All facts sourced from Wikipedia/Wikidata. Wikidata QIDs included where available.
+# Acronym facts (TCP, DNS, etc.) are definitionally stable — verified against
+# Wikipedia articles for each protocol/standard.
+
+data_sources:
+  - name: Wikipedia — Unix
+    url: https://en.wikipedia.org/wiki/Unix
+    license: CC-BY-SA-4.0
+    usage: 1969 date, Bell Labs, Thompson & Ritchie
+  - name: Wikipedia — CP/M
+    url: https://en.wikipedia.org/wiki/CP/M
+    license: CC-BY-SA-4.0
+    usage: Gary Kildall 1974
+  - name: Wikipedia — MS-DOS
+    url: https://en.wikipedia.org/wiki/MS-DOS
+    license: CC-BY-SA-4.0
+    usage: 1981, Microsoft, Tim Paterson (86-DOS/QDOS)
+  - name: Wikipedia — macOS
+    url: https://en.wikipedia.org/wiki/Mac_OS
+    license: CC-BY-SA-4.0
+    usage: 1984, original Macintosh System Software
+  - name: Wikipedia — Microsoft Windows
+    url: https://en.wikipedia.org/wiki/Microsoft_Windows
+    license: CC-BY-SA-4.0
+    usage: 1985 first release; Windows 95 1995
+  - name: Wikipedia — Linux kernel
+    url: https://en.wikipedia.org/wiki/Linux_kernel
+    license: CC-BY-SA-4.0
+    usage: Linus Torvalds, 1991 announcement
+  - name: Wikipedia — Android (operating system)
+    url: https://en.wikipedia.org/wiki/Android_(operating_system)
+    license: CC-BY-SA-4.0
+    usage: 2008 release, Google, Andy Rubin
+  - name: Wikipedia — iOS
+    url: https://en.wikipedia.org/wiki/IOS
+    license: CC-BY-SA-4.0
+    usage: 2007, Apple, original iPhone
+  - name: Wikipedia — ARPANET
+    url: https://en.wikipedia.org/wiki/ARPANET
+    license: CC-BY-SA-4.0
+    usage: 1969, first message Oct 29 UCLA to SRI
+  - name: Wikipedia — Internet protocol suite (TCP/IP)
+    url: https://en.wikipedia.org/wiki/Internet_protocol_suite
+    license: CC-BY-SA-4.0
+    usage: Cerf & Kahn 1974 paper
+  - name: Wikipedia — Ethernet
+    url: https://en.wikipedia.org/wiki/Ethernet
+    license: CC-BY-SA-4.0
+    usage: Robert Metcalfe 1973, Xerox PARC; standard 1980
+  - name: Wikipedia — Domain Name System
+    url: https://en.wikipedia.org/wiki/Domain_Name_System
+    license: CC-BY-SA-4.0
+    usage: Paul Mockapetris 1983, RFC 882/883
+  - name: Wikipedia — HTTP
+    url: https://en.wikipedia.org/wiki/HTTP
+    license: CC-BY-SA-4.0
+    usage: Tim Berners-Lee 1991 at CERN
+  - name: Wikipedia — Wi-Fi
+    url: https://en.wikipedia.org/wiki/Wi-Fi
+    license: CC-BY-SA-4.0
+    usage: IEEE 802.11 standard 1997
+  - name: Wikipedia — Packet switching
+    url: https://en.wikipedia.org/wiki/Packet_switching
+    license: CC-BY-SA-4.0
+    usage: Baran 1964, Davies 1965
+  - name: Wikipedia — Enigma machine
+    url: https://en.wikipedia.org/wiki/Enigma_machine
+    license: CC-BY-SA-4.0
+    usage: WWII cipher machine, Bletchley Park
+  - name: Wikipedia — Diffie–Hellman key exchange
+    url: https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange
+    license: CC-BY-SA-4.0
+    usage: 1976 paper, Diffie & Hellman
+  - name: Wikipedia — Pretty Good Privacy
+    url: https://en.wikipedia.org/wiki/Pretty_Good_Privacy
+    license: CC-BY-SA-4.0
+    usage: Phil Zimmermann 1991
+  - name: Wikipedia — Transport Layer Security
+    url: https://en.wikipedia.org/wiki/Transport_Layer_Security
+    license: CC-BY-SA-4.0
+    usage: SSL 1995 Netscape, TLS 1999
+  - name: Wikipedia — Morris worm
+    url: https://en.wikipedia.org/wiki/Morris_worm
+    license: CC-BY-SA-4.0
+    usage: Robert T. Morris, November 2 1988
+  - name: Wikipedia — Bitcoin
+    url: https://en.wikipedia.org/wiki/Bitcoin
+    license: CC-BY-SA-4.0
+    usage: Satoshi Nakamoto whitepaper October 31 2008
+  - name: Wikipedia — IPv4 and IPv6
+    url: https://en.wikipedia.org/wiki/IPv6
+    license: CC-BY-SA-4.0
+    usage: 32-bit vs 128-bit addresses
+  - name: Wikidata
+    url: https://www.wikidata.org
+    license: CC0
+    usage: structured IDs, dates, acronym expansions
+
+# ============================================================
+# ANSWER TYPE POOLS
+# ============================================================
+answer_type_pools:
+  - id: os_names
+    format: name
+    estimated_count: 8
+    notes: "Operating system names — Unix, Linux, macOS, Windows, etc."
+  - id: protocol_person_names
+    format: name
+    estimated_count: 12
+    notes: "Creator names — Torvalds, Berners-Lee, Metcalfe, Cerf, Kahn, etc."
+  - id: protocol_names
+    format: term
+    estimated_count: 10
+    notes: "Protocol/standard names — TCP/IP, HTTP, DNS, SSL, etc."
+  - id: acronym_expansions
+    format: term
+    estimated_count: 22
+    notes: "Full expansions of CS acronyms — what TCP stands for, etc."
+  - id: year_numbers
+    format: bracket_number
+    estimated_count: 15
+    notes: "Years — use bracket notation e.g. {1969}"
+  - id: security_terms
+    format: term
+    estimated_count: 8
+    notes: "Encryption, security, and cryptography terms"
+  - id: institution_names
+    format: name
+    estimated_count: 8
+    notes: "Bell Labs, CERN, ARPA, Xerox PARC, MIT, etc."
+
+# ============================================================
+# CHAIN THEMES (8 minimum for knowledge deck)
+# ============================================================
+chain_themes:
+  - id: 0
+    name: "Operating Systems"
+    description: "Unix, Linux, Windows, macOS, Android — OS history and origins"
+  - id: 1
+    name: "Networking Foundations"
+    description: "ARPANET, TCP/IP, Ethernet, packet switching — how the internet was built"
+  - id: 2
+    name: "Internet Protocols"
+    description: "HTTP, DNS, FTP, SSH, SMTP — the protocols powering the web"
+  - id: 3
+    name: "Security & Cryptography"
+    description: "Enigma, RSA, public-key crypto, SSL, worms, blockchain"
+  - id: 4
+    name: "Acronym Decode"
+    description: "What does TCP stand for? CPU? RAM? Master the acronyms"
+  - id: 5
+    name: "Hardware Alphabet"
+    description: "RAM, ROM, CPU, GPU, SSD, USB, HDMI — hardware acronyms decoded"
+  - id: 6
+    name: "Networking Acronyms"
+    description: "LAN, WAN, IP, URL, DNS — network terminology"
+  - id: 7
+    name: "Founding Moments"
+    description: "The exact dates and firsts that shaped computing history"
+
+# ============================================================
+# VERIFIED SOURCE DATA
+# ============================================================
+
+source_data:
+
+  # ─── OPERATING SYSTEMS ──────────────────────────────────────────────────────
+
+  operating_systems:
+
+    Unix:
+      wikidata_id: Q816
+      chain_theme: 0
+      year_created: 1969
+      creators: ["Ken Thompson", "Dennis Ritchie"]
+      creator_wikidata_thompson: Q92412
+      creator_wikidata_ritchie: Q19618
+      institution: "Bell Labs (AT&T)"
+      language_written_in: "Assembly, then C"
+      # First running version: 1969; PDP-7. Rewritten in C ~1973.
+      key_facts:
+        - "Created in 1969 by Ken Thompson and Dennis Ritchie at Bell Labs (AT&T)"
+        - "Originally written in assembly language for the PDP-7; rewritten in C around 1973"
+        - "Introduced key concepts: hierarchical file system, pipes, shell, plain-text configuration"
+        - "Its design philosophy ('do one thing well') became enormously influential"
+        - "POSIX standard (1988) defined Unix-compatible behavior for portability"
+        - "Direct ancestor of Linux (kernel reimplemented from scratch) and macOS (via BSD)"
+      wikipedia: https://en.wikipedia.org/wiki/Unix
+
+    CP_M:
+      wikidata_id: Q82333
+      chain_theme: 0
+      full_name: "Control Program for Microcomputers"
+      year_created: 1974
+      creator: "Gary Kildall"
+      creator_wikidata: Q310879
+      company: "Digital Research Inc."
+      # Kildall wrote it for Intel 8080-based microcomputers
+      key_facts:
+        - "Created by Gary Kildall in 1974 for Intel 8080-based microcomputers"
+        - "Full name: Control Program for Microcomputers (CP/M)"
+        - "First widely-used operating system for personal microcomputers"
+        - "IBM chose MS-DOS over CP/M in 1981 — a decision that changed computing history"
+        - "Microsoft's MS-DOS was largely compatible with CP/M in its command structure"
+        - "Gary Kildall is often called 'the man who could have been Bill Gates'"
+      wikipedia: https://en.wikipedia.org/wiki/CP/M
+
+    MS_DOS:
+      wikidata_id: Q170803
+      chain_theme: 0
+      full_name: "Microsoft Disk Operating System"
+      year_released: 1981
+      # Tim Paterson wrote 86-DOS (QDOS) at Seattle Computer Products in 1980
+      # Microsoft purchased 86-DOS for $50,000 and licensed it to IBM
+      original_developer: "Tim Paterson (86-DOS/QDOS)"
+      microsoft_acquisition: "Microsoft purchased 86-DOS from Seattle Computer Products"
+      ibm_license: 1981
+      key_facts:
+        - "Released in 1981 as the operating system for the original IBM PC"
+        - "Based on 86-DOS (also called QDOS — 'Quick and Dirty OS') written by Tim Paterson at Seattle Computer Products"
+        - "Microsoft purchased 86-DOS for ~$50,000 and licensed it to IBM as PC-DOS / sold it as MS-DOS"
+        - "Character-based command-line interface; no graphical interface"
+        - "Dominated personal computing through the 1980s and early 1990s"
+        - "Windows was initially a graphical shell running on top of MS-DOS"
+      wikipedia: https://en.wikipedia.org/wiki/MS-DOS
+
+    Mac_OS:
+      wikidata_id: Q14116
+      chain_theme: 0
+      first_version_name: "System Software 1.0 (System 1)"
+      year_released: 1984
+      # Released January 24, 1984 alongside the original Macintosh
+      release_date: "1984-01-24"
+      company: Apple Inc.
+      # Steve Jobs unveiled the Macintosh; Jef Raskin initiated the project
+      key_facts:
+        - "Released January 24, 1984 alongside the original Macintosh computer"
+        - "First commercially successful personal computer OS with a graphical user interface (GUI)"
+        - "Originally called 'System Software' (later Mac System, then Mac OS)"
+        - "GUI concept drawn from Xerox PARC's research (PARC visited by Steve Jobs in 1979)"
+        - "Used a mouse-driven desktop metaphor with icons and windows"
+        - "Modern macOS is based on Darwin (BSD Unix) — a complete architectural rebuild starting with Mac OS X (2001)"
+      wikipedia: https://en.wikipedia.org/wiki/Mac_OS
+
+    Microsoft_Windows:
+      wikidata_id: Q1406
+      chain_theme: 0
+      first_version: "Windows 1.0"
+      year_first_release: 1985
+      # Windows 1.0 released November 20, 1985
+      release_date_v1: "1985-11-20"
+      landmark_version: "Windows 95"
+      year_landmark: 1995
+      # Windows 95 released August 24, 1995
+      release_date_95: "1995-08-24"
+      key_facts:
+        - "Windows 1.0 released November 20, 1985 — a graphical shell over MS-DOS"
+        - "Windows 95 (released August 24, 1995) was a landmark: introduced the Start menu, taskbar, and 32-bit computing for consumers"
+        - "Windows 95 launch featured the Rolling Stones' 'Start Me Up' and sold 7 million copies in 5 weeks"
+        - "Windows XP (2001) unified the consumer and business product lines"
+        - "Windows 10 (2015) introduced a free upgrade model and universal app platform"
+        - "Most widely used desktop OS globally throughout the 1990s–2020s"
+      wikipedia: https://en.wikipedia.org/wiki/Microsoft_Windows
+
+    Linux_Kernel:
+      wikidata_id: Q14579
+      chain_theme: 0
+      year_announced: 1991
+      # Linus Torvalds posted to comp.os.minix on August 25, 1991
+      announcement_date: "1991-08-25"
+      first_release_date: "1991-09-17"
+      # Version 0.01 released September 17, 1991
+      creator: "Linus Torvalds"
+      creator_wikidata: Q34253
+      license: "GNU GPL v2"
+      announcement_quote: "I'm doing a (free) operating system (just a hobby, won't be big and professional like gnu) for 386(486) AT clones."
+      key_facts:
+        - "Linus Torvalds announced the project on August 25, 1991, posting to the comp.os.minix newsgroup"
+        - "First version (0.01) released September 17, 1991; version 1.0 released March 14, 1994"
+        - "Licensed under GNU GPL v2 — free and open source"
+        - "Torvalds was 21 years old, a student at the University of Helsinki, when he began"
+        - "Not a fork of Unix or Minix — written from scratch"
+        - "Powers ~97% of the world's top 500 supercomputers, most Android devices, and most web servers"
+      wikipedia: https://en.wikipedia.org/wiki/Linux_kernel
+
+    Android:
+      wikidata_id: Q94
+      chain_theme: 0
+      year_first_public_release: 2008
+      # Android 1.0 released September 23, 2008 on HTC Dream (T-Mobile G1)
+      first_public_release_date: "2008-09-23"
+      first_device: "HTC Dream (T-Mobile G1)"
+      founded_by: "Andy Rubin"
+      # Android Inc. founded 2003; Google acquired it in 2005 for ~$50 million
+      acquired_by_google: 2005
+      key_facts:
+        - "Android Inc. founded 2003 by Andy Rubin; acquired by Google in 2005 for ~$50 million"
+        - "First commercial Android device: HTC Dream (T-Mobile G1), released September 23, 2008"
+        - "Based on the Linux kernel"
+        - "Open Handset Alliance (led by Google) developed it as an open platform"
+        - "Most widely used mobile operating system globally (>70% market share by 2023)"
+        - "Named after Andy Rubin's nickname; Rubin was also a robotics enthusiast"
+      wikipedia: https://en.wikipedia.org/wiki/Android_(operating_system)
+
+    iOS:
+      wikidata_id: Q48493
+      chain_theme: 0
+      year_first_release: 2007
+      # Original iPhone announced January 9, 2007; released June 29, 2007
+      announcement_date: "2007-01-09"
+      first_release_date: "2007-06-29"
+      company: "Apple Inc."
+      original_name: "iPhone OS"
+      # Renamed from iPhone OS to iOS in 2010
+      renamed_ios: 2010
+      key_facts:
+        - "First released June 29, 2007 on the original iPhone (announced by Steve Jobs January 9, 2007)"
+        - "Originally called 'iPhone OS'; renamed iOS in 2010 when the iPad launched"
+        - "Based on Darwin (BSD Unix kernel), same foundation as macOS"
+        - "Introduced the App Store in July 2008, transforming software distribution"
+        - "Pioneered capacitive multi-touch interface for smartphones at consumer scale"
+        - "Second-most-used mobile OS globally after Android"
+      wikipedia: https://en.wikipedia.org/wiki/IOS
+
+  # ─── NETWORKING ─────────────────────────────────────────────────────────────
+
+  networking:
+
+    ARPANET:
+      wikidata_id: Q8199
+      chain_theme: 1
+      year_created: 1969
+      # First message sent October 29, 1969 between UCLA and SRI International
+      first_message_date: "1969-10-29"
+      first_message_route: "UCLA (Charley Kline) to SRI International (Bill Duvall)"
+      first_message_sent: "lo" # intended "login" but system crashed after "lo"
+      funded_by: "ARPA (Advanced Research Projects Agency), US Department of Defense"
+      key_facts:
+        - "The first operational packet-switching network, developed by ARPA (US DoD) starting in 1969"
+        - "First message sent October 29, 1969 from UCLA to SRI International — 'lo' (system crashed before completing 'login')"
+        - "Predecessor to the modern internet"
+        - "By 1981 had 213 hosts; decommissioned in 1990"
+        - "Proved the viability of packet switching for robust, decentralized communication"
+        - "ARPA = Advanced Research Projects Agency (now DARPA)"
+      wikipedia: https://en.wikipedia.org/wiki/ARPANET
+
+    TCP_IP:
+      wikidata_id: Q35527
+      chain_theme: 1
+      year_paper: 1974
+      inventors: ["Vint Cerf", "Bob Kahn"]
+      inventor_wikidata_cerf: Q92530
+      inventor_wikidata_kahn: Q294627
+      source_paper: "Cerf, V., Kahn, R. (1974). 'A Protocol for Packet Network Intercommunication.' IEEE Transactions on Communications 22(5):637–648."
+      # ARPANET switched to TCP/IP January 1, 1983 — "Flag Day"
+      arpanet_adoption_date: "1983-01-01"
+      key_facts:
+        - "TCP/IP protocol suite designed by Vint Cerf and Bob Kahn; foundational paper published 1974"
+        - "TCP (Transmission Control Protocol) + IP (Internet Protocol) — the core protocols of the internet"
+        - "ARPANET formally switched to TCP/IP on January 1, 1983 — often called the 'birthday of the internet'"
+        - "Cerf and Kahn received the ACM Turing Award in 2004 for this work"
+        - "TCP provides reliable, ordered delivery; IP handles routing packets between networks"
+        - "Often called the 'two fathers of the internet'"
+      wikipedia: https://en.wikipedia.org/wiki/Internet_protocol_suite
+
+    Ethernet:
+      wikidata_id: Q11004
+      chain_theme: 1
+      year_conceived: 1973
+      # Robert Metcalfe memo at Xerox PARC, May 22, 1973; co-inventor David Boggs
+      inventors: ["Robert Metcalfe", "David Boggs"]
+      inventor_wikidata_metcalfe: Q57760
+      institution: "Xerox PARC"
+      first_standard: "1980 (DIX — DEC, Intel, Xerox)"
+      ieee_standard: "IEEE 802.3 (1983)"
+      original_speed: "2.94 Mbit/s"
+      key_facts:
+        - "Invented by Robert Metcalfe and David Boggs at Xerox PARC; Metcalfe's design memo dated May 22, 1973"
+        - "Named after 'luminiferous ether' — the 19th-century concept of a medium carrying light"
+        - "First DIX standard (DEC/Intel/Xerox) published in 1980; IEEE 802.3 in 1983"
+        - "Most widely deployed local area network (LAN) technology in the world"
+        - "Original speed ~2.94 Mbit/s; modern Ethernet reaches 400 Gbit/s"
+        - "Robert Metcalfe co-founded 3Com in 1979 to commercialize Ethernet"
+      wikipedia: https://en.wikipedia.org/wiki/Ethernet
+
+    DNS:
+      wikidata_id: Q8767
+      chain_theme: 2
+      full_name: "Domain Name System"
+      year_created: 1983
+      creator: "Paul Mockapetris"
+      creator_wikidata: Q716568
+      source_rfc: "RFC 882 and RFC 883 (1983)"
+      key_facts:
+        - "Created by Paul Mockapetris in 1983; defined in RFC 882 and RFC 883"
+        - "Translates human-readable domain names (e.g. google.com) into IP addresses"
+        - "Hierarchical distributed database — not a single central lookup table"
+        - "Often called the 'phone book of the internet'"
+        - "DNS hierarchy: root servers → TLD servers (.com, .org) → authoritative servers"
+        - "DNS queries are typically over UDP port 53"
+      wikipedia: https://en.wikipedia.org/wiki/Domain_Name_System
+
+    HTTP:
+      wikidata_id: Q8777
+      chain_theme: 2
+      full_name: "HyperText Transfer Protocol"
+      year_first_version: 1991
+      creator: "Tim Berners-Lee"
+      creator_wikidata: Q80
+      institution: "CERN"
+      # HTTP/0.9 described in 1991; HTTP/1.0 published as RFC 1945 in 1996
+      # HTTP/1.1 RFC 2068 in 1997; HTTP/2 in 2015; HTTP/3 (QUIC) in 2022
+      key_facts:
+        - "Created by Tim Berners-Lee at CERN in 1991 as part of the World Wide Web"
+        - "Application-layer protocol for transmitting hypermedia documents (HTML, etc.)"
+        - "HTTP/0.9 was the initial version (1991); HTTP/1.1 became the dominant standard (1997)"
+        - "HTTP uses a request-response model: client sends request, server returns response"
+        - "Default port 80 (HTTP) and 443 (HTTPS with TLS encryption)"
+        - "Stateless protocol — each request is independent; cookies/sessions add state"
+      wikipedia: https://en.wikipedia.org/wiki/HTTP
+
+    WiFi:
+      wikidata_id: Q113148
+      chain_theme: 1
+      # IEEE 802.11 original standard ratified June 26, 1997
+      year_standard: 1997
+      standard_name: "IEEE 802.11"
+      # Wi-Fi Alliance formed 1999; "Wi-Fi" brand name coined 1999/2000
+      wifi_alliance_formed: 1999
+      original_speed: "2 Mbit/s"
+      key_facts:
+        - "Based on IEEE 802.11 standard, first ratified in 1997"
+        - "Wi-Fi Alliance formed in 1999; the 'Wi-Fi' brand name created in 1999/2000"
+        - "Original 802.11 (1997): 2 Mbit/s; modern Wi-Fi 6E (802.11ax): up to ~9.6 Gbit/s"
+        - "Wi-Fi does NOT stand for 'Wireless Fidelity' — the name is a marketing term without that meaning"
+        - "Australian CSIRO's John O'Sullivan contributed key patents to Wi-Fi's interference solution"
+        - "Operates on 2.4 GHz and 5 GHz radio frequency bands (Wi-Fi 6E adds 6 GHz)"
+      wikipedia: https://en.wikipedia.org/wiki/Wi-Fi
+
+    IPv4_vs_IPv6:
+      chain_theme: 1
+      ipv4:
+        wikidata_id: Q11103
+        year_defined: 1981
+        rfc: "RFC 791 (1981)"
+        address_length_bits: 32
+        address_space: "~4.3 billion addresses (2^32)"
+        exhaustion_note: "IANA exhausted IPv4 pool in February 2011"
+      ipv6:
+        wikidata_id: Q8775
+        year_defined: 1998
+        rfc: "RFC 2460 (1998)"
+        address_length_bits: 128
+        address_space: "~340 undecillion addresses (2^128)"
+      key_facts:
+        - "IPv4: 32-bit addresses, defined in RFC 791 (1981), ~4.3 billion possible addresses"
+        - "IPv6: 128-bit addresses, defined in RFC 2460 (1998), ~340 undecillion addresses"
+        - "IPv4 address pool was exhausted by IANA in February 2011"
+        - "IPv6 addresses written as eight groups of four hex digits, e.g. 2001:0db8:85a3::8a2e:0370:7334"
+        - "IPv4 and IPv6 coexist; full transition to IPv6 is ongoing"
+        - "IPv5 was an experimental streaming protocol and was never deployed publicly"
+      wikipedia_ipv6: https://en.wikipedia.org/wiki/IPv6
+
+    Packet_Switching:
+      wikidata_id: Q184871
+      chain_theme: 1
+      year_baran: 1964
+      year_davies: 1965
+      inventors: ["Paul Baran (RAND Corporation, 1964)", "Donald Davies (NPL, UK, 1965)"]
+      # Baran published 11-volume study for RAND 1964; Davies coined the term "packet" in 1965
+      key_facts:
+        - "Independently developed by Paul Baran (RAND Corporation, 1964) and Donald Davies (NPL UK, 1965)"
+        - "Donald Davies coined the term 'packet' in 1965"
+        - "Data is broken into packets that are sent independently and reassembled at destination"
+        - "Contrasts with circuit switching (dedicated path held open, as in old telephone calls)"
+        - "More efficient and resilient than circuit switching — no single point of failure"
+        - "Foundation of ARPANET and the modern internet"
+      wikipedia: https://en.wikipedia.org/wiki/Packet_switching
+
+  # ─── SECURITY & CRYPTOGRAPHY ────────────────────────────────────────────────
+
+  security_crypto:
+
+    Enigma_Machine:
+      wikidata_id: Q103474
+      chain_theme: 3
+      used_by: "Nazi Germany (Wehrmacht, Luftwaffe, Kriegsmarine, SS)"
+      period: "World War II (1939–1945)"
+      # Invented by Arthur Scherbius ~1918; patented 1918; commercial use 1920s; military adoption 1926+
+      inventor: "Arthur Scherbius"
+      year_patented: 1918
+      broken_by: "Polish mathematicians (Marian Rejewski, Jerzy Różycki, Henryk Zygalski) and British codebreakers at Bletchley Park (Alan Turing, Gordon Welchman)"
+      key_facts:
+        - "Electro-mechanical rotor cipher machine used by Nazi Germany for military communications"
+        - "Invented by Arthur Scherbius; patented 1918; widely adopted by German military from 1926"
+        - "Polish mathematicians (Marian Rejewski et al.) first cracked Enigma in 1932"
+        - "Alan Turing and Gordon Welchman at Bletchley Park developed the Bombe to break Enigma at scale"
+        - "Breaking Enigma is estimated to have shortened WWII by 2–4 years"
+        - "Approximately 200,000 Enigma messages were decrypted by the Allies"
+      wikipedia: https://en.wikipedia.org/wiki/Enigma_machine
+
+    Diffie_Hellman:
+      wikidata_id: Q623891
+      chain_theme: 3
+      year_published: 1976
+      inventors: ["Whitfield Diffie", "Martin Hellman"]
+      # Ralph Merkle also contributed; sometimes called Diffie-Hellman-Merkle
+      source_paper: "Diffie, W., Hellman, M.E. (1976). 'New Directions in Cryptography.' IEEE Transactions on Information Theory 22(6):644–654."
+      # GCHQ's Malcolm Williamson independently discovered it in 1974 (classified)
+      turing_award: 2015
+      key_facts:
+        - "Published by Whitfield Diffie and Martin Hellman in 1976 in 'New Directions in Cryptography'"
+        - "First publicly known public-key cryptography protocol"
+        - "Allows two parties to establish a shared secret over an insecure channel without prior contact"
+        - "Security based on the computational difficulty of the discrete logarithm problem"
+        - "GCHQ's Malcolm Williamson independently discovered it in 1974 (classified until 1997)"
+        - "Diffie and Hellman received the ACM Turing Award in 2015"
+      wikipedia: https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange
+
+    PGP:
+      wikidata_id: Q203778
+      chain_theme: 3
+      full_name: "Pretty Good Privacy"
+      year_released: 1991
+      creator: "Phil Zimmermann"
+      creator_wikidata: Q349861
+      key_facts:
+        - "Created by Phil Zimmermann and released in 1991 as free software"
+        - "Full name: Pretty Good Privacy"
+        - "Provides encryption for email and files using public-key cryptography"
+        - "Zimmermann was investigated by the US government for 3 years (1993–1996) for exporting encryption"
+        - "OpenPGP standard (RFC 4880) is the modern open version"
+        - "Uses a 'web of trust' model rather than centralized certificate authorities"
+      wikipedia: https://en.wikipedia.org/wiki/Pretty_Good_Privacy
+
+    SSL_TLS:
+      wikidata_id: Q207244
+      chain_theme: 3
+      ssl_full_name: "Secure Sockets Layer"
+      tls_full_name: "Transport Layer Security"
+      ssl_year: 1995
+      ssl_creator: "Netscape Communications"
+      # SSL 2.0 released 1995; SSL 3.0 released 1996
+      tls_year: 1999
+      # TLS 1.0 defined in RFC 2246 (1999); current version TLS 1.3 (RFC 8446, 2018)
+      key_facts:
+        - "SSL (Secure Sockets Layer) created by Netscape; SSL 2.0 released in 1995"
+        - "Provides encrypted, authenticated communication over networks (HTTPS uses TLS)"
+        - "TLS (Transport Layer Security) replaced SSL; TLS 1.0 defined in RFC 2246 (1999)"
+        - "Current standard: TLS 1.3 (RFC 8446, 2018)"
+        - "SSL 2.0 and 3.0 are deprecated due to security vulnerabilities"
+        - "HTTPS = HTTP over TLS; the padlock icon in browsers indicates TLS is active"
+      wikipedia: https://en.wikipedia.org/wiki/Transport_Layer_Security
+
+    Morris_Worm:
+      wikidata_id: Q1939003
+      chain_theme: 3
+      year: 1988
+      date: "1988-11-02"
+      creator: "Robert Tappan Morris"
+      creator_wikidata: Q919486
+      affiliation: "Cornell University graduate student"
+      # Infected ~6,000 machines out of ~60,000 on the internet at the time
+      machines_infected: 6000
+      key_facts:
+        - "Released November 2, 1988 by Robert Tappan Morris, a Cornell University graduate student"
+        - "Considered the first worm to gain widespread attention and the first to demonstrate internet-scale damage"
+        - "Infected approximately 6,000 machines (~10% of the internet at the time)"
+        - "Exploited vulnerabilities in Unix sendmail, fingerd, and rsh/rexec"
+        - "Morris was the first person convicted under the Computer Fraud and Abuse Act (1986)"
+        - "Led directly to creation of CERT (Computer Emergency Response Team) in 1988"
+      wikipedia: https://en.wikipedia.org/wiki/Morris_worm
+
+    Bitcoin_Blockchain:
+      wikidata_id: Q131723
+      chain_theme: 3
+      year_whitepaper: 2008
+      whitepaper_date: "2008-10-31"
+      creator: "Satoshi Nakamoto (pseudonym)"
+      # Genesis block mined January 3, 2009
+      genesis_block_date: "2009-01-03"
+      whitepaper_title: "Bitcoin: A Peer-to-Peer Electronic Cash System"
+      key_facts:
+        - "Bitcoin whitepaper 'Bitcoin: A Peer-to-Peer Electronic Cash System' published October 31, 2008 by Satoshi Nakamoto (pseudonym)"
+        - "Satoshi Nakamoto's real identity remains unknown"
+        - "Genesis block (Block 0) mined January 3, 2009"
+        - "Introduced blockchain: a distributed, append-only, cryptographically-linked ledger"
+        - "Uses proof-of-work consensus to prevent double-spending without a central authority"
+        - "First successful decentralized digital currency"
+      wikipedia: https://en.wikipedia.org/wiki/Bitcoin
+
+  # ─── ACRONYMS — PROTOCOLS & INTERNET ────────────────────────────────────────
+
+  acronyms_protocols:
+
+    TCP:
+      acronym: TCP
+      expansion: "Transmission Control Protocol"
+      chain_theme: 4
+      year: 1974
+      # RFC 793 (1981) is the definitive TCP specification
+      rfc: "RFC 793 (1981)"
+      context: "Connection-oriented protocol providing reliable, ordered, error-checked delivery of data between applications over IP networks"
+      wikidata_id: Q21074
+      wikipedia: https://en.wikipedia.org/wiki/Transmission_Control_Protocol
+
+    UDP:
+      acronym: UDP
+      expansion: "User Datagram Protocol"
+      chain_theme: 4
+      year: 1980
+      rfc: "RFC 768 (1980)"
+      context: "Connectionless protocol providing fast but unreliable data transmission — used for video streaming, DNS, VoIP"
+      wikidata_id: Q11755
+      wikipedia: https://en.wikipedia.org/wiki/User_Datagram_Protocol
+
+    HTTP:
+      acronym: HTTP
+      expansion: "HyperText Transfer Protocol"
+      chain_theme: 4
+      year: 1991
+      context: "Application-layer protocol for transmitting web pages and other hypermedia documents"
+      wikidata_id: Q8777
+
+    FTP:
+      acronym: FTP
+      expansion: "File Transfer Protocol"
+      chain_theme: 4
+      year: 1971
+      rfc: "RFC 959 (1985)"
+      context: "Standard network protocol for transferring files between a client and server"
+      wikidata_id: Q42283
+      wikipedia: https://en.wikipedia.org/wiki/File_Transfer_Protocol
+
+    SSH:
+      acronym: SSH
+      expansion: "Secure Shell"
+      chain_theme: 4
+      year: 1995
+      creator: "Tatu Ylönen (Helsinki University of Technology)"
+      context: "Cryptographic network protocol for secure remote login and command execution over an insecure network"
+      wikidata_id: Q851
+      wikipedia: https://en.wikipedia.org/wiki/Secure_Shell
+
+    DNS_acronym:
+      acronym: DNS
+      expansion: "Domain Name System"
+      chain_theme: 4
+      year: 1983
+      context: "Hierarchical naming system that translates domain names (e.g. google.com) into IP addresses"
+      wikidata_id: Q8767
+
+    SMTP:
+      acronym: SMTP
+      expansion: "Simple Mail Transfer Protocol"
+      chain_theme: 4
+      year: 1982
+      rfc: "RFC 821 (1982)"
+      context: "Standard protocol for sending email between mail servers; used by email clients to send outgoing mail"
+      wikidata_id: Q159518
+      wikipedia: https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol
+
+    IP:
+      acronym: IP
+      expansion: "Internet Protocol"
+      chain_theme: 4
+      year: 1974
+      context: "Core protocol of the internet — assigns addresses to devices and routes packets across networks"
+      wikidata_id: Q8775_parent
+
+    URL:
+      acronym: URL
+      expansion: "Uniform Resource Locator"
+      chain_theme: 6
+      year: 1994
+      creator: "Tim Berners-Lee"
+      rfc: "RFC 1738 (1994)"
+      context: "A reference to a web resource specifying its location on the internet (e.g. https://example.com/page)"
+      wikidata_id: Q193213
+      wikipedia: https://en.wikipedia.org/wiki/URL
+
+    API:
+      acronym: API
+      expansion: "Application Programming Interface"
+      chain_theme: 6
+      year_term: 1968
+      # Term used as early as 1968 by Cotton & Greatorex in "Data structures and techniques for remote computer graphics"
+      context: "A set of defined rules allowing different software programs to communicate with each other"
+      wikidata_id: Q19978002
+      wikipedia: https://en.wikipedia.org/wiki/API
+
+    SQL:
+      acronym: SQL
+      expansion: "Structured Query Language"
+      chain_theme: 6
+      year: 1974
+      # IBM researchers Donald Chamberlin and Raymond Boyce developed SEQUEL (later SQL) in 1974
+      creators: ["Donald Chamberlin", "Raymond Boyce"]
+      institution: IBM
+      context: "Domain-specific language for managing and querying relational databases"
+      wikidata_id: Q47607
+      wikipedia: https://en.wikipedia.org/wiki/SQL
+
+  # ─── ACRONYMS — HARDWARE ────────────────────────────────────────────────────
+
+  acronyms_hardware:
+
+    RAM:
+      acronym: RAM
+      expansion: "Random Access Memory"
+      chain_theme: 5
+      context: "Volatile main memory used by computers to store data and program instructions currently in use; data is lost when power is removed"
+      wikidata_id: Q92598
+      wikipedia: https://en.wikipedia.org/wiki/Random-access_memory
+
+    ROM:
+      acronym: ROM
+      expansion: "Read-Only Memory"
+      chain_theme: 5
+      context: "Non-volatile memory whose contents are set during manufacture and cannot normally be modified; stores firmware"
+      wikidata_id: Q188790
+      wikipedia: https://en.wikipedia.org/wiki/Read-only_memory
+
+    CPU:
+      acronym: CPU
+      expansion: "Central Processing Unit"
+      chain_theme: 5
+      context: "The primary component of a computer that executes instructions; the 'brain' of the computer"
+      wikidata_id: Q5300
+      wikipedia: https://en.wikipedia.org/wiki/Central_processing_unit
+
+    GPU:
+      acronym: GPU
+      expansion: "Graphics Processing Unit"
+      chain_theme: 5
+      year_term_coined: 1999
+      # NVIDIA coined "GPU" in 1999 for the GeForce 256
+      by: "NVIDIA (with GeForce 256, 1999)"
+      context: "Specialized processor designed for rendering graphics; massively parallel architecture also used for AI/ML workloads"
+      wikidata_id: Q389411
+      wikipedia: https://en.wikipedia.org/wiki/Graphics_processing_unit
+
+    SSD:
+      acronym: SSD
+      expansion: "Solid State Drive"
+      chain_theme: 5
+      context: "Data storage device using flash memory with no moving parts; faster and more durable than traditional hard disk drives (HDDs)"
+      wikidata_id: Q181508
+      wikipedia: https://en.wikipedia.org/wiki/Solid-state_drive
+
+    BIOS:
+      acronym: BIOS
+      expansion: "Basic Input/Output System"
+      chain_theme: 5
+      year: 1975
+      # Term "BIOS" coined by Gary Kildall in CP/M (1975)
+      coined_by: "Gary Kildall (in CP/M, 1975)"
+      context: "Firmware stored on a chip on the motherboard that initializes hardware during boot and loads the OS; largely replaced by UEFI"
+      wikidata_id: Q42149
+      wikipedia: https://en.wikipedia.org/wiki/BIOS
+
+    ASCII:
+      acronym: ASCII
+      expansion: "American Standard Code for Information Interchange"
+      chain_theme: 5
+      year: 1963
+      # ASCII first published as ASA X3.4-1963
+      standard_year: 1963
+      # 128 characters (7-bit encoding): 33 control characters + 95 printable characters
+      character_count: 128
+      context: "7-bit character encoding standard developed in 1963; assigns numeric codes to letters, digits, and symbols; basis for Unicode"
+      wikidata_id: Q8815
+      wikipedia: https://en.wikipedia.org/wiki/ASCII
+
+    USB:
+      acronym: USB
+      expansion: "Universal Serial Bus"
+      chain_theme: 5
+      year: 1996
+      # USB 1.0 released January 1996; developed by consortium led by Intel's Ajay Bhatt
+      lead_developer: "Ajay Bhatt (Intel)"
+      usb_1_0_date: "1996-01"
+      context: "Industry standard for cables and connectors enabling communication between computers and peripheral devices; also delivers power"
+      wikidata_id: Q42378
+      wikipedia: https://en.wikipedia.org/wiki/USB
+
+    HDMI:
+      acronym: HDMI
+      expansion: "High-Definition Multimedia Interface"
+      chain_theme: 5
+      year: 2002
+      # HDMI 1.0 specification released December 9, 2002
+      spec_date: "2002-12-09"
+      founding_companies: ["Hitachi", "Panasonic", "Philips", "Silicon Image", "Sony", "Thomson", "Toshiba"]
+      context: "Digital interface standard for transmitting uncompressed audio and video data between devices (e.g. TV, Blu-ray player, gaming console)"
+      wikidata_id: Q207869
+      wikipedia: https://en.wikipedia.org/wiki/HDMI
+
+  # ─── ACRONYMS — NETWORKING ──────────────────────────────────────────────────
+
+  acronyms_networking:
+
+    LAN:
+      acronym: LAN
+      expansion: "Local Area Network"
+      chain_theme: 6
+      context: "A computer network confined to a small geographic area (e.g. a home, office, or building); Ethernet and Wi-Fi are the dominant LAN technologies"
+      wikidata_id: Q11381
+      wikipedia: https://en.wikipedia.org/wiki/Local_area_network
+
+    WAN:
+      acronym: WAN
+      expansion: "Wide Area Network"
+      chain_theme: 6
+      context: "A computer network spanning a large geographic area (cities, countries, or globally); the internet is the largest WAN"
+      wikidata_id: Q154336
+      wikipedia: https://en.wikipedia.org/wiki/Wide_area_network

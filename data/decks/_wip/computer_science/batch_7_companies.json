@@ -1,0 +1,1492 @@
+[
+  {
+    "id": "cs_7_hp_garage_location",
+    "correctAnswer": "Palo Alto",
+    "acceptableAlternatives": [
+      "Palo Alto, California"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 2,
+    "funScore": 9,
+    "quizQuestion": "Hewlett-Packard's founding garage \u2014 now a California Historical Landmark dubbed the 'birthplace of Silicon Valley' \u2014 was located in what city?",
+    "explanation": "Bill Hewlett and David Packard started Hewlett-Packard in 1939 in a one-car garage at 367 Addison Avenue in Palo Alto, California. The garage is preserved as California Historical Landmark #976 and is often credited as the starting point for Silicon Valley's tech culture.",
+    "visualDescription": "A small white wooden garage on a quiet residential street, a vintage audio oscillator on a workbench inside, two engineers in 1930s attire tinkering",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hewlett-Packard",
+    "volatile": false,
+    "distractors": [
+      "Cupertino",
+      "Menlo Park",
+      "Mountain View",
+      "San Jose",
+      "Sunnyvale",
+      "Santa Clara",
+      "Los Altos",
+      "Redwood City"
+    ]
+  },
+  {
+    "id": "cs_7_hp_first_product",
+    "correctAnswer": "audio oscillator",
+    "acceptableAlternatives": [
+      "an audio oscillator",
+      "HP 200A audio oscillator"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "product_names",
+    "difficulty": 4,
+    "funScore": 8,
+    "quizQuestion": "HP's first commercial product, sold to Walt Disney Studios for use in the film Fantasia, was what kind of electronic instrument?",
+    "explanation": "HP's first product was the HP 200A audio oscillator, which generated precise audio tones. Walt Disney Studios purchased several for testing theater speaker systems for the film Fantasia (1940). The oscillator sold for $54.40 \u2014 underselling competitors who charged hundreds more.",
+    "visualDescription": "A vintage wooden-cased electronic instrument on a workbench, oscilloscope waveforms on a small screen, old film reels labeled 'Fantasia' nearby",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hewlett-Packard",
+    "volatile": false,
+    "distractors": [
+      "electronic calculator",
+      "frequency counter",
+      "signal generator",
+      "voltmeter",
+      "microprocessor",
+      "cathode-ray oscilloscope",
+      "punch card machine",
+      "teletype terminal"
+    ]
+  },
+  {
+    "id": "cs_7_ibm_original_name",
+    "correctAnswer": "Computing-Tabulating-Recording Company",
+    "acceptableAlternatives": [
+      "CTR",
+      "Computing Tabulating Recording"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "company_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "IBM was formed in 1911 under what unwieldy original name before being renamed 'International Business Machines' in 1924?",
+    "explanation": "IBM traces its origins to 1911 when three companies merged to form the Computing-Tabulating-Recording Company (CTR) in Endicott, New York. In 1924, under CEO Thomas Watson Sr., it was renamed IBM. Watson Sr. drove the company's transformation into a global technology powerhouse.",
+    "visualDescription": "A 1911 company merger document with three company names crossing through to a single new name, early punch card machines lined up in a factory",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/IBM",
+    "volatile": false,
+    "distractors": [
+      "Electronic Computing Corporation",
+      "National Tabulating Company",
+      "American Data Processing Inc.",
+      "United Business Machines",
+      "Federal Computing Corp.",
+      "Mechanical Data Systems",
+      "Business Records Company",
+      "Integrated Machine Company"
+    ]
+  },
+  {
+    "id": "cs_7_intel_founders",
+    "correctAnswer": "Robert Noyce and Gordon Moore",
+    "acceptableAlternatives": [
+      "Gordon Moore and Robert Noyce",
+      "Robert Noyce",
+      "Gordon Moore"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which two co-founders of Intel also previously co-founded Fairchild Semiconductor, helping birth Silicon Valley's chip industry?",
+    "explanation": "Robert Noyce and Gordon Moore co-founded Intel on July 18, 1968, after leaving Fairchild Semiconductor. Noyce co-invented the integrated circuit (with Jack Kilby). Moore's Law \u2014 Moore's 1965 observation that transistor counts double roughly every two years \u2014 remains one of tech's most famous predictions. Their original Intel name was 'NM Electronics.'",
+    "visualDescription": "Two engineers in clean-room suits in a 1960s semiconductor lab, silicon wafers on a tray, circuit diagrams covering the wall behind them",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Intel",
+    "volatile": false,
+    "distractors": [
+      "Bill Gates and Paul Allen",
+      "Steve Jobs and Steve Wozniak",
+      "Larry Ellison and Bob Miner",
+      "Larry Page and Sergey Brin",
+      "Jensen Huang and Chris Malachowsky",
+      "Leonard Bosack and Sandy Lerner",
+      "John Warnock and Charles Geschke",
+      "Martin Eberhard and Marc Tarpenning"
+    ]
+  },
+  {
+    "id": "cs_7_moores_law",
+    "correctAnswer": "Gordon Moore",
+    "acceptableAlternatives": [
+      "Moore"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "Which Intel co-founder's 1965 observation \u2014 that transistor counts roughly double every two years \u2014 became known as 'Moore's Law'?",
+    "explanation": "Gordon Moore published his observation in a 1965 Electronics Magazine article. He noticed transistors were doubling roughly every year (later revised to every two years). Moore's Law became a self-fulfilling prophecy as the semiconductor industry set roadmaps around it. It held remarkably well for over 50 years before physical limits began to slow progress.",
+    "visualDescription": "A logarithmic graph of transistor counts per chip from 1970 to 2020 showing an exponential climb, with Intel chip milestones marked along the curve",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Intel",
+    "volatile": false,
+    "distractors": [
+      "Robert Noyce",
+      "Bill Gates",
+      "Jensen Huang",
+      "Andy Grove",
+      "Jack Kilby",
+      "Carver Mead",
+      "Fred Terman",
+      "Shockley Bardeen"
+    ]
+  },
+  {
+    "id": "cs_7_microsoft_founded_city",
+    "correctAnswer": "Albuquerque",
+    "acceptableAlternatives": [
+      "Albuquerque, New Mexico"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 3,
+    "funScore": 9,
+    "quizQuestion": "Microsoft was founded in 1975 by Bill Gates and Paul Allen \u2014 but NOT in Washington state. What city was it actually founded in?",
+    "explanation": "Microsoft was founded in Albuquerque, New Mexico in 1975, where Bill Gates and Paul Allen were working with MITS on the Altair 8800 microcomputer. Microsoft only relocated to the Seattle, Washington area in 1979. The Albuquerque origins are often overlooked in favor of the company's later Pacific Northwest identity.",
+    "visualDescription": "A 1975 New Mexico office building with a small startup sign reading 'Microsoft', two young men in 70s attire working at early microcomputers",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Microsoft",
+    "volatile": false,
+    "distractors": [
+      "Seattle",
+      "Redmond",
+      "Bellevue",
+      "Portland",
+      "San Jose",
+      "Palo Alto",
+      "Denver",
+      "Phoenix"
+    ]
+  },
+  {
+    "id": "cs_7_microsoft_founders",
+    "correctAnswer": "Bill Gates and Paul Allen",
+    "acceptableAlternatives": [
+      "Paul Allen and Bill Gates",
+      "Bill Gates"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "Which two childhood friends co-founded Microsoft in 1975, bonding over their shared obsession with programming computers at their Seattle high school?",
+    "explanation": "Bill Gates and Paul Allen co-founded Microsoft in 1975. They had met as students at Lakeside School in Seattle, where they spent hours programming on the school's computer terminals. Their first major product was a BASIC interpreter for the Altair 8800. Gates dropped out of Harvard; Allen left Washington State University to join him.",
+    "visualDescription": "Two teenage programmers at a 1970s computer terminal in a school computer room, lines of BASIC code scrolling on a green-screen monitor",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Microsoft",
+    "volatile": false,
+    "distractors": [
+      "Steve Jobs and Steve Wozniak",
+      "Larry Page and Sergey Brin",
+      "Robert Noyce and Gordon Moore",
+      "Larry Ellison and Bob Miner",
+      "Jensen Huang and Chris Malachowsky",
+      "Jeff Bezos and MacKenzie Scott",
+      "Pierre Omidyar and Jeff Skoll",
+      "Jack Dorsey and Evan Williams"
+    ]
+  },
+  {
+    "id": "cs_7_apple_third_founder",
+    "correctAnswer": "Ronald Wayne",
+    "acceptableAlternatives": [
+      "Wayne"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "quizQuestion": "Apple was co-founded by Steve Jobs, Steve Wozniak, and a forgotten third co-founder who sold his 10% stake back for $800 \u2014 what was his name?",
+    "explanation": "Ronald Wayne co-founded Apple on April 1, 1976, and designed Apple's first logo (a Newton sitting under an apple tree). He sold his 10% stake back to Jobs and Wozniak for $800, fearing liability. That stake would have been worth over $350 billion by 2022. Wayne later said he didn't regret it given what he knew at the time.",
+    "visualDescription": "An old hand-drawn Apple logo of Newton under an apple tree, a contract document with three signatures, two men celebrating while a third quietly walks away",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apple_Inc.",
+    "volatile": false,
+    "distractors": [
+      "Paul Allen",
+      "Woz Wozniak Jr.",
+      "Mike Markkula",
+      "John Sculley",
+      "Bill Atkinson",
+      "Andy Hertzfeld",
+      "Jef Raskin",
+      "Randy Wigginton"
+    ]
+  },
+  {
+    "id": "cs_7_apple_founded_day",
+    "correctAnswer": "April 1",
+    "acceptableAlternatives": [
+      "April 1st",
+      "April Fools' Day"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 3,
+    "funScore": 9,
+    "quizQuestion": "On what famous calendar date in 1976 was Apple Computer Company formally incorporated \u2014 leading many to assume it was a joke?",
+    "explanation": "Apple was incorporated on April 1, 1976 \u2014 April Fools' Day. Steve Jobs reportedly chose the date either accidentally or because he enjoyed the irony. The company's first product was the Apple I, a hand-assembled computer sold as a bare circuit board for $666.66.",
+    "visualDescription": "A calendar open to April 1st, an early Apple I circuit board beside it, Steve Jobs' handwritten incorporation documents visible",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apple_Inc.",
+    "volatile": false,
+    "distractors": [
+      "January 1",
+      "July 4",
+      "March 15",
+      "October 31",
+      "December 25",
+      "February 14",
+      "November 11",
+      "June 6"
+    ]
+  },
+  {
+    "id": "cs_7_oracle_founders",
+    "correctAnswer": "Larry Ellison, Bob Miner, and Ed Oates",
+    "acceptableAlternatives": [
+      "Larry Ellison",
+      "Larry Ellison and Bob Miner"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Oracle Corporation was co-founded in 1977 by three people \u2014 Larry Ellison and which two others \u2014 in Santa Clara, California?",
+    "explanation": "Oracle was co-founded in 1977 by Larry Ellison, Bob Miner, and Ed Oates. The company was originally called Software Development Laboratories, then Relational Software Inc., before being renamed Oracle after the CIA project that had been their first customer.",
+    "visualDescription": "A 1977 Silicon Valley office with three founders around a small table, an early database schema diagram on a whiteboard, 'Oracle' being written as a new company name",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oracle_Corporation",
+    "volatile": false,
+    "distractors": [
+      "Bill Gates and Paul Allen",
+      "Robert Noyce and Gordon Moore",
+      "Steve Jobs and Steve Wozniak",
+      "John Warnock and Charles Geschke",
+      "Leonard Bosack and Sandy Lerner",
+      "Jensen Huang and Chris Malachowsky",
+      "Martin Eberhard and Marc Tarpenning",
+      "Peter Thiel and Max Levchin"
+    ]
+  },
+  {
+    "id": "cs_7_adobe_origin",
+    "correctAnswer": "Xerox PARC",
+    "acceptableAlternatives": [
+      "Xerox Palo Alto Research Center",
+      "PARC"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "company_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Adobe founders John Warnock and Charles Geschke left which legendary research lab in 1982 to commercialize the PostScript language they'd developed there?",
+    "explanation": "John Warnock and Charles Geschke both worked at Xerox PARC (Palo Alto Research Center) \u2014 famous for inventing the graphical user interface, the mouse, Ethernet, and many other technologies. They left to found Adobe in December 1982, commercializing PostScript, which revolutionized desktop publishing.",
+    "visualDescription": "A 1982 Silicon Valley office farewell scene, two researchers packing boxes from a legendary corporate research lab, carrying a PostScript language specification document",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Adobe_Inc.",
+    "volatile": false,
+    "distractors": [
+      "Bell Labs",
+      "IBM Research",
+      "MIT Media Lab",
+      "Stanford Research Institute",
+      "DARPA",
+      "Carnegie Mellon",
+      "NASA Ames",
+      "Lawrence Berkeley Lab"
+    ]
+  },
+  {
+    "id": "cs_7_dell_dorm",
+    "correctAnswer": "University of Texas at Austin",
+    "acceptableAlternatives": [
+      "UT Austin",
+      "University of Texas"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "company_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Michael Dell started his computer company in 1984 from his dorm room at which university, initially calling it 'PC's Limited'?",
+    "explanation": "Michael Dell founded what became Dell Technologies from his dorm room at the University of Texas at Austin in May 1984, as a freshman. He started by selling IBM-compatible computers directly to customers, undercutting retailers. The university reportedly asked him to stop \u2014 instead, he dropped out and took the company full-time.",
+    "visualDescription": "A 1984 dorm room crammed with disassembled computer parts and circuit boards, a young student on the phone taking orders, a handwritten 'PC's Limited' sign on the door",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dell",
+    "volatile": false,
+    "distractors": [
+      "Stanford University",
+      "MIT",
+      "Harvard University",
+      "Carnegie Mellon University",
+      "University of Michigan",
+      "Georgia Tech",
+      "Purdue University",
+      "University of California Berkeley"
+    ]
+  },
+  {
+    "id": "cs_7_cisco_founders",
+    "correctAnswer": "Leonard Bosack and Sandy Lerner",
+    "acceptableAlternatives": [
+      "Sandy Lerner and Leonard Bosack",
+      "Leonard Bosack"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Cisco Systems was founded in 1984 by a married couple who wanted to send email between their offices on opposite sides of Stanford's campus \u2014 who were they?",
+    "explanation": "Leonard Bosack and Sandy Lerner were married Stanford computer scientists who wanted to connect the university's incompatible computer networks so they could email each other from different buildings. They developed a multi-protocol router and founded Cisco in December 1984. The company name comes from San franiSCO.",
+    "visualDescription": "A Stanford University map with two buildings on opposite sides circled in red, connected by a glowing network cable \u2014 the original problem that led to Cisco",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cisco",
+    "volatile": false,
+    "distractors": [
+      "Robert Noyce and Gordon Moore",
+      "Bill Gates and Paul Allen",
+      "Steve Jobs and Steve Wozniak",
+      "Larry Ellison and Bob Miner",
+      "John Warnock and Charles Geschke",
+      "Jensen Huang and Chris Malachowsky",
+      "Martin Eberhard and Marc Tarpenning",
+      "Peter Thiel and Max Levchin"
+    ]
+  },
+  {
+    "id": "cs_7_nvidia_founders",
+    "correctAnswer": "Jensen Huang, Chris Malachowsky, and Curtis Priem",
+    "acceptableAlternatives": [
+      "Jensen Huang",
+      "Huang, Malachowsky, and Priem"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Nvidia was founded in 1993 by Jensen Huang and two colleagues \u2014 what is the full trio of founders?",
+    "explanation": "Jensen Huang, Chris Malachowsky, and Curtis Priem founded Nvidia in 1993 in Santa Clara, California. The company started focused on gaming graphics. By the 2020s, Nvidia's GPUs became essential for AI training, propelling Jensen Huang into the ranks of the world's wealthiest people and Nvidia to a multi-trillion-dollar valuation.",
+    "visualDescription": "Three engineers at a 1993 whiteboard designing the first GPU architecture, video game screenshots on a nearby monitor showing the visual quality they were targeting",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nvidia",
+    "volatile": false,
+    "distractors": [
+      "Robert Noyce and Gordon Moore",
+      "Bill Gates and Paul Allen",
+      "Steve Jobs and Steve Wozniak",
+      "Larry Ellison, Bob Miner, and Ed Oates",
+      "John Warnock and Charles Geschke",
+      "Martin Eberhard and Marc Tarpenning",
+      "Leonard Bosack and Sandy Lerner",
+      "Tom Preston-Werner, Chris Wanstrath, and P.J. Hyett"
+    ]
+  },
+  {
+    "id": "cs_7_tesla_real_founders",
+    "correctAnswer": "Martin Eberhard and Marc Tarpenning",
+    "acceptableAlternatives": [
+      "Marc Tarpenning and Martin Eberhard",
+      "Martin Eberhard"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 4,
+    "funScore": 9,
+    "quizQuestion": "Elon Musk is Tesla's CEO but NOT a founder \u2014 who actually founded Tesla on July 1, 2003, with Musk only joining the board in 2004?",
+    "explanation": "Tesla was founded by Martin Eberhard and Marc Tarpenning in San Carlos, California on July 1, 2003 \u2014 named after inventor Nikola Tesla. Elon Musk joined as chairman of the board and lead investor in the Series A funding round in 2004. Musk later became CEO and is widely regarded as the public face of Tesla, but a 2009 legal settlement officially recognized all five early members (including Ian Wright and JB Straubel) as co-founders.",
+    "visualDescription": "A 2003 Silicon Valley conference room with 'Tesla Motors' written on a whiteboard, two engineers sketching an electric roadster concept \u2014 no Elon Musk in sight",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tesla,_Inc.",
+    "volatile": false,
+    "distractors": [
+      "Elon Musk and Jeff Bezos",
+      "JB Straubel and Ian Wright",
+      "Jensen Huang and Chris Malachowsky",
+      "Larry Page and Sergey Brin",
+      "Jack Dorsey and Evan Williams",
+      "Peter Thiel and Max Levchin",
+      "Chad Hurley and Steve Chen",
+      "Reed Hastings and Marc Randolph"
+    ]
+  },
+  {
+    "id": "cs_7_spacex_founder",
+    "correctAnswer": "Elon Musk",
+    "acceptableAlternatives": [
+      "Musk"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "Who founded SpaceX in 2002 with the stated goal of reducing space transportation costs and enabling the colonization of Mars?",
+    "explanation": "Elon Musk founded SpaceX (Space Exploration Technologies Corp.) in 2002 after failing to buy Russian ICBMs and concluding that the only way to make rockets affordable was to build them himself. SpaceX developed reusable rockets (a first for the industry) and in 2020 became the first private company to send humans to the International Space Station.",
+    "visualDescription": "A rocket launching with a trail of fire and smoke on a Florida coastline, the SpaceX logo visible, a grid of solar panels showing it's the ISS nearby",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/SpaceX",
+    "volatile": false,
+    "distractors": [
+      "Jeff Bezos",
+      "Richard Branson",
+      "Paul Allen",
+      "Mark Zuckerberg",
+      "Larry Page",
+      "Bill Gates",
+      "Peter Thiel",
+      "Andy Jassy"
+    ]
+  },
+  {
+    "id": "cs_7_visicalc_year",
+    "correctAnswer": "{1979}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "In what year was VisiCalc released for the Apple II \u2014 the world's first spreadsheet program and the software that convinced businesses to buy personal computers?",
+    "explanation": "VisiCalc was released October 17, 1979. Before VisiCalc, most accountants did calculations by hand or on expensive mainframes. VisiCalc made the Apple II a serious business tool, driving sales so dramatically that it's credited with creating the 'killer application' concept.",
+    "visualDescription": "A 1979 Apple II computer with a spreadsheet of financial numbers on screen, a delighted accountant replacing stacks of paper ledgers with one computer",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/VisiCalc",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_7_visicalc_creators",
+    "correctAnswer": "Dan Bricklin and Bob Frankston",
+    "acceptableAlternatives": [
+      "Bob Frankston and Dan Bricklin",
+      "Dan Bricklin"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "VisiCalc, the world's first spreadsheet program, was created by which two people \u2014 one who had the vision, one who wrote the code?",
+    "explanation": "Dan Bricklin had the idea for a 'visible calculator' as a Harvard Business School student tired of recalculating financial models by hand. Bob Frankston wrote the actual code that made it run on the Apple II with limited memory. Together they founded Software Arts to publish it.",
+    "visualDescription": "A Harvard Business School classroom in 1978, a student frustrated with paper accounting worksheets, a lightbulb appearing above his head with an Apple II computer vision",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/VisiCalc",
+    "volatile": false,
+    "distractors": [
+      "Bill Gates and Paul Allen",
+      "Steve Jobs and Steve Wozniak",
+      "Mitch Kapor and Jonathan Sachs",
+      "Jerry Yang and David Filo",
+      "Larry Page and Sergey Brin",
+      "Larry Ellison and Bob Miner",
+      "Gordon Moore and Robert Noyce",
+      "Michael Dell and Lee Walker"
+    ]
+  },
+  {
+    "id": "cs_7_lotus123_significance",
+    "correctAnswer": "IBM PC",
+    "acceptableAlternatives": [
+      "the IBM PC",
+      "IBM personal computer"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "product_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Lotus 1-2-3, released in 1983, is credited as the 'killer application' that drove mass adoption of which computer platform in corporate America?",
+    "explanation": "Lotus 1-2-3 was released January 26, 1983, and became the first killer application for the IBM PC. It combined spreadsheet, database, and charting into one program. Corporations bought IBM PCs specifically to run Lotus 1-2-3, establishing the IBM PC standard as dominant in business computing.",
+    "visualDescription": "A 1983 corporate office with rows of IBM PCs, executives gathered around a screen running Lotus 1-2-3 analyzing financial projections",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lotus_1-2-3",
+    "volatile": false,
+    "distractors": [
+      "Apple II",
+      "Commodore 64",
+      "TRS-80",
+      "Atari ST",
+      "Amiga",
+      "CP/M machines",
+      "Apple Macintosh",
+      "Sun workstations"
+    ]
+  },
+  {
+    "id": "cs_7_msword_original_name",
+    "correctAnswer": "Multi-Tool Word",
+    "acceptableAlternatives": [
+      "Multi Tool Word"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "product_names",
+    "difficulty": 4,
+    "funScore": 8,
+    "quizQuestion": "Microsoft Word was first released in 1983 under what clunky original name before Microsoft simplified it?",
+    "explanation": "Microsoft Word was first released on October 25, 1983, under the name 'Multi-Tool Word' for the Xenix operating system. It was one of the first word processors to support mouse input. The 'Multi-Tool' prefix was part of a product line strategy that Microsoft quickly abandoned.",
+    "visualDescription": "A 1983 computer screen showing a word processor with the title 'Multi-Tool Word' at the top, a desk mouse (revolutionary for the time) next to the keyboard",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Microsoft_Word",
+    "volatile": false,
+    "distractors": [
+      "Word Perfect",
+      "Word Pro",
+      "WordStar",
+      "Microsoft Text",
+      "Multi-Write",
+      "Write Pro",
+      "Word Processor Plus",
+      "MS Typer"
+    ]
+  },
+  {
+    "id": "cs_7_excel_first_platform",
+    "correctAnswer": "Apple Macintosh",
+    "acceptableAlternatives": [
+      "Mac",
+      "Macintosh"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "product_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Microsoft Excel was first released in 1985 \u2014 but for which Apple computer, before coming to Windows two years later?",
+    "explanation": "Microsoft Excel was first released September 30, 1985, for the Apple Macintosh \u2014 not for Windows or MS-DOS. A Windows version followed in 1987. Excel's success on Mac is often cited as one reason Apple allowed Microsoft to develop software for it, despite the two companies later becoming fierce competitors.",
+    "visualDescription": "A 1985 original Apple Macintosh with Excel's grid of rows and columns on its small screen, a disk labeled 'Microsoft Excel 1.0' beside it",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Microsoft_Excel",
+    "volatile": false,
+    "distractors": [
+      "IBM PC",
+      "Commodore Amiga",
+      "Atari ST",
+      "Apple II",
+      "TRS-80",
+      "Xenix workstation",
+      "CP/M machine",
+      "MS-DOS PC"
+    ]
+  },
+  {
+    "id": "cs_7_photoshop_creators",
+    "correctAnswer": "Thomas Knoll and John Knoll",
+    "acceptableAlternatives": [
+      "John Knoll and Thomas Knoll",
+      "the Knoll brothers"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Adobe Photoshop was originally created by two brothers in 1987-1990 \u2014 what are their names?",
+    "explanation": "Thomas Knoll created the initial image display program as a PhD student at the University of Michigan. His brother John Knoll, who worked at Industrial Light & Magic, encouraged him to expand it into a full image editor. Adobe published it in February 1990. John Knoll later co-wrote the screenplay for The Phantom Menace.",
+    "visualDescription": "Two brothers in a 1988 home computer setup \u2014 one at a Mac workstation coding image filters, another sketching interface wireframes on graph paper",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Adobe_Photoshop",
+    "volatile": false,
+    "distractors": [
+      "Bill Gates and Paul Allen",
+      "Steve Jobs and Jony Ive",
+      "John Warnock and Charles Geschke",
+      "Larry Ellison and Bob Miner",
+      "Brendan Eich and Marc Andreessen",
+      "Ray Tomlinson and Jon Postel",
+      "Dan Bricklin and Bob Frankston",
+      "Bill Atkinson and Andy Hertzfeld"
+    ]
+  },
+  {
+    "id": "cs_7_windows95_launch",
+    "correctAnswer": "{1995}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "In what year did Microsoft release Windows 95 \u2014 the operating system that introduced the iconic Start button and sold over 7 million copies in its first five weeks?",
+    "explanation": "Windows 95 launched August 24, 1995, to massive fanfare with The Rolling Stones' 'Start Me Up' as its ad theme. It introduced the Start button, taskbar, and 32-bit preemptive multitasking. The launch was a cultural event \u2014 people queued outside stores at midnight to buy it.",
+    "visualDescription": "A 1995 midnight line of excited shoppers outside a computer store, Windows 95 boxes being handed over counters, the Start button prominently featured on a demo screen",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Windows_95",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_7_ipod_year",
+    "correctAnswer": "{2001}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "In what year did Apple release the original iPod \u2014 with Steve Jobs famously declaring you could put '1,000 songs in your pocket'?",
+    "explanation": "Apple released the first iPod on November 10, 2001. Steve Jobs' famous 'a thousand songs in your pocket' tagline captured why the iPod was special: it combined a large hard drive with iTunes and a revolutionary scroll wheel interface. The iPod line was finally discontinued in May 2022.",
+    "visualDescription": "Steve Jobs holding up the original white iPod on a stage, a crowd of applauding journalists, '1000 songs in your pocket' displayed on the presentation screen behind him",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/IPod",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_7_iphone_announcement_event",
+    "correctAnswer": "Macworld",
+    "acceptableAlternatives": [
+      "Macworld 2007",
+      "Macworld Expo"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "product_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Steve Jobs announced the first iPhone in January 2007 at which annual Apple conference, calling it 'the most revolutionary product he'd introduced in a decade'?",
+    "explanation": "Steve Jobs introduced the first iPhone at Macworld on January 9, 2007, saying: 'Today, I'm going to show you three things: a widescreen iPod with touch controls, a revolutionary mobile phone, and a breakthrough internet communicator... These are NOT three separate devices. This is one device.' The audience erupted in cheers.",
+    "visualDescription": "Steve Jobs in his signature black turtleneck on a darkened stage holding up a single iPhone, the Macworld conference logo visible, an audience on their feet cheering",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/IPhone",
+    "volatile": false,
+    "distractors": [
+      "WWDC",
+      "CES",
+      "D: All Things Digital",
+      "TED Conference",
+      "Apple Keynote Summit",
+      "E3",
+      "Mobile World Congress",
+      "The Big Apple Expo"
+    ]
+  },
+  {
+    "id": "cs_7_ipad_year",
+    "correctAnswer": "{2010}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "In what year did Apple introduce the first iPad, creating the modern tablet computer category?",
+    "explanation": "Apple introduced the first-generation iPad on January 27, 2010. Critics initially called it a 'big iPod touch,' but it became a massive commercial success, with over 15 million sold in the first year. The iPad created the modern tablet market and was positioned between smartphones and laptops.",
+    "visualDescription": "Steve Jobs seated in a chair on stage in 2010, casually browsing a large-screen iPad, the audience clearly amazed by its thin profile",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/IPad",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_7_android_first_device",
+    "correctAnswer": "HTC Dream",
+    "acceptableAlternatives": [
+      "the HTC Dream",
+      "T-Mobile G1"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "product_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Android was first commercially released in 2008 on which smartphone \u2014 better known in the US as the T-Mobile G1?",
+    "explanation": "Android launched on the HTC Dream (sold in the US as the T-Mobile G1) in October 2008. Originally developed by Android Inc. and acquired by Google in 2005, Android was designed to challenge iPhone. Today Android runs on over 70% of smartphones worldwide.",
+    "visualDescription": "The 2008 HTC Dream phone with a slide-out keyboard, an early Android home screen showing the notification bar and app icons in a simple grid",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Android_(operating_system)",
+    "volatile": false,
+    "distractors": [
+      "Samsung Galaxy S1",
+      "Motorola Droid",
+      "LG Nexus",
+      "Sony Ericsson Xperia",
+      "BlackBerry Storm",
+      "Nokia N97",
+      "Palm Pre",
+      "HTC One"
+    ]
+  },
+  {
+    "id": "cs_7_gnu_founder",
+    "correctAnswer": "Richard Stallman",
+    "acceptableAlternatives": [
+      "Stallman",
+      "RMS"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Who announced the GNU Project in 1983 and founded the Free Software Foundation in 1985, launching the free and open-source software movement?",
+    "explanation": "Richard Stallman announced the GNU Project on September 27, 1983, while a programmer at MIT. He was motivated by his frustration when he couldn't get the source code for a printer driver. Stallman coined the phrase 'Free software is a matter of liberty, not price' \u2014 using 'free' as in freedom, not cost.",
+    "visualDescription": "A 1983 MIT computer lab with a programmer nailing a notice to a bulletin board reading 'GNU Manifesto', colleagues reading over his shoulder with varying expressions",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/GNU_Project",
+    "volatile": false,
+    "distractors": [
+      "Linus Torvalds",
+      "Tim Berners-Lee",
+      "Ken Thompson",
+      "Dennis Ritchie",
+      "Brian Kernighan",
+      "Eric Raymond",
+      "Bruce Perens",
+      "Lawrence Lessig"
+    ]
+  },
+  {
+    "id": "cs_7_linux_creator",
+    "correctAnswer": "Linus Torvalds",
+    "acceptableAlternatives": [
+      "Torvalds"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "Who created the Linux kernel in 1991 while a computer science student in Finland, posting it online with a famous message beginning 'I'm doing a (free) operating system'?",
+    "explanation": "Linus Torvalds created the Linux kernel in 1991 at the University of Helsinki and posted it to Usenet with a note saying it was 'just a hobby, won't be big and professional.' Linux became the most widely deployed operating system kernel in history, powering Android phones, web servers, and supercomputers.",
+    "visualDescription": "A 1991 Finnish university dorm room with a computer running the first Linux kernel, a Usenet post on screen beginning 'Hello everybody out there using minix'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Linux_kernel",
+    "volatile": false,
+    "distractors": [
+      "Richard Stallman",
+      "Ken Thompson",
+      "Dennis Ritchie",
+      "Brian Kernighan",
+      "Andrew Tanenbaum",
+      "Eric Raymond",
+      "Bruce Perens",
+      "Ian Murdock"
+    ]
+  },
+  {
+    "id": "cs_7_linux_year",
+    "correctAnswer": "{1991}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "In what year did Linus Torvalds release the first version of the Linux kernel to the world?",
+    "explanation": "Linus Torvalds posted the first version of the Linux kernel online in 1991. He initially called the project 'Freax' but the server that hosted it was named 'Linux' (Linus + Unix). The name stuck. Combined with the GNU tools Richard Stallman had been building since 1983, Linux formed a complete free operating system.",
+    "visualDescription": "A timeline graphic showing 1991 with a penguin mascot (Tux) appearing, arrows extending forward showing Linux powering servers, Android, and supercomputers",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Linux_kernel",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_7_git_creator",
+    "correctAnswer": "Linus Torvalds",
+    "acceptableAlternatives": [
+      "Torvalds"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Who created the Git version control system in 2005 \u2014 the same person who created Linux \u2014 in just 10 days after a dispute over a proprietary tool?",
+    "explanation": "Linus Torvalds created Git in April 2005 after the Linux kernel team lost access to the proprietary BitKeeper source control system. He wrote the first version in about 10 days and described it as 'the stupid content tracker.' Git became the world's dominant version control system, powering GitHub and essentially all modern software development.",
+    "visualDescription": "A frustrated programmer at a keyboard in 2005, the word 'BitKeeper' crossed out on a whiteboard, 'Git' being written in its place",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Git",
+    "volatile": false,
+    "distractors": [
+      "Richard Stallman",
+      "Tom Preston-Werner",
+      "Chris Wanstrath",
+      "Jeff Atwood",
+      "Joel Spolsky",
+      "Eric Raymond",
+      "Bram Moolenaar",
+      "Julian Seward"
+    ]
+  },
+  {
+    "id": "cs_7_docker_creator",
+    "correctAnswer": "Solomon Hykes",
+    "acceptableAlternatives": [
+      "Hykes"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Who created Docker and first released it in March 2013, popularizing the concept of software containers that transformed modern deployment?",
+    "explanation": "Solomon Hykes, a French-American developer, created Docker while working at dotCloud (a platform-as-a-service company). He released Docker as an open-source project in March 2013. Docker made containerization accessible to mainstream developers, eventually making dotCloud less relevant \u2014 the company rebranded to Docker, Inc.",
+    "visualDescription": "A friendly blue whale carrying a stack of containers on its back \u2014 Docker's mascot \u2014 against a background of microservices diagrams and cloud infrastructure",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Docker_(software)",
+    "volatile": false,
+    "distractors": [
+      "Linus Torvalds",
+      "Tom Preston-Werner",
+      "Jeff Atwood",
+      "Solomon Atiyeh",
+      "Richard Stallman",
+      "Brendan Eich",
+      "Mitchell Baker",
+      "Ben Golub"
+    ]
+  },
+  {
+    "id": "cs_7_kubernetes_creator",
+    "correctAnswer": "Google",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "company_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Kubernetes (K8s), the container orchestration system that became the industry standard after its 2014 release, was originally created by which company?",
+    "explanation": "Kubernetes was created by Google, based on lessons from their internal Borg system which had been running containerized workloads at massive scale since 2003. Google open-sourced Kubernetes in 2014 and donated it to the Cloud Native Computing Foundation. It's now used by virtually every major tech company.",
+    "visualDescription": "A ship's wheel logo (the Kubernetes helm) against a cloud computing diagram, Google's Mountain View campus visible in the background",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kubernetes",
+    "volatile": false,
+    "distractors": [
+      "Amazon",
+      "Microsoft",
+      "Facebook",
+      "IBM",
+      "Red Hat",
+      "VMware",
+      "HashiCorp",
+      "Docker Inc."
+    ]
+  },
+  {
+    "id": "cs_7_agile_manifesto_location",
+    "correctAnswer": "Snowbird, Utah",
+    "acceptableAlternatives": [
+      "Snowbird",
+      "Utah"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 4,
+    "funScore": 8,
+    "quizQuestion": "The Manifesto for Agile Software Development was signed in 2001 by 17 practitioners at a ski resort in what Utah location?",
+    "explanation": "Seventeen software practitioners met at Snowbird ski resort in Utah in February 2001 to discuss lightweight software development methods. They produced the Agile Manifesto's four values and twelve principles. The location \u2014 a ski resort \u2014 reflects the informal, unconference style that characterized Agile's origins.",
+    "visualDescription": "A cozy ski lodge conference room in Utah mountains, 17 software developers gathered around tables with laptops and whiteboards, a manifesto document being finalized",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Agile_software_development",
+    "volatile": false,
+    "distractors": [
+      "Silicon Valley, California",
+      "Austin, Texas",
+      "Seattle, Washington",
+      "Boulder, Colorado",
+      "Portland, Oregon",
+      "Park City, Utah",
+      "Denver, Colorado",
+      "Aspen, Colorado"
+    ]
+  },
+  {
+    "id": "cs_7_agile_manifesto_year",
+    "correctAnswer": "{2001}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "In what year was the Manifesto for Agile Software Development published by 17 practitioners, launching the Agile methodology movement?",
+    "explanation": "The Agile Manifesto was published in 2001, articulating four values: individuals over processes, working software over documentation, customer collaboration over contracts, and responding to change over following a plan. These principles reshaped how software teams around the world organize their work.",
+    "visualDescription": "A formal document titled 'Manifesto for Agile Software Development' with 17 signature lines, a mountain ski resort visible through a window",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Agile_software_development",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_7_stackoverflow_founders",
+    "correctAnswer": "Jeff Atwood and Joel Spolsky",
+    "acceptableAlternatives": [
+      "Joel Spolsky and Jeff Atwood",
+      "Jeff Atwood"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Who launched Stack Overflow on September 15, 2008, creating the Q&A site where developers worldwide debug their code problems?",
+    "explanation": "Jeff Atwood and Joel Spolsky launched Stack Overflow after being frustrated by the low-quality programming discussion on existing forums. Atwood ran the blog Coding Horror; Spolsky ran Joel on Software. Stack Overflow's reputation system with upvotes, accepted answers, and reputation points became a model for knowledge-sharing communities.",
+    "visualDescription": "Two programmers at laptops in 2008 launching a website, the Stack Overflow logo appearing on screen with the first programming questions being posted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stack_Overflow",
+    "volatile": false,
+    "distractors": [
+      "Linus Torvalds and Richard Stallman",
+      "Tom Preston-Werner and Chris Wanstrath",
+      "Larry Page and Sergey Brin",
+      "Steve Huffman and Alexis Ohanian",
+      "Jerry Yang and David Filo",
+      "Mark Zuckerberg and Eduardo Saverin",
+      "Brendan Eich and Mitchell Baker",
+      "Tim Berners-Lee and Robert Cailliau"
+    ]
+  },
+  {
+    "id": "cs_7_github_acquired",
+    "correctAnswer": "Microsoft",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "company_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "GitHub, the world's largest code-hosting platform, was acquired in 2018 for approximately $7.5 billion by which company?",
+    "explanation": "Microsoft acquired GitHub in June 2018 for approximately $7.5 billion in Microsoft stock. Many developers feared Microsoft would restrict the platform, but it largely continued as an independent community. Microsoft's purchase was seen as a bet on developer tools and open source \u2014 a sharp contrast to Steve Ballmer's famously calling Linux a 'cancer' in 2001.",
+    "visualDescription": "Microsoft and GitHub logos side by side, a $7.5B price tag hanging between them, developers worldwide looking at their screens with mixed expressions",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/GitHub",
+    "volatile": false,
+    "distractors": [
+      "Google",
+      "Amazon",
+      "Salesforce",
+      "IBM",
+      "Oracle",
+      "Atlassian",
+      "JetBrains",
+      "GitLab"
+    ]
+  },
+  {
+    "id": "cs_7_github_founders",
+    "correctAnswer": "Tom Preston-Werner, Chris Wanstrath, P.J. Hyett, and Scott Chacon",
+    "acceptableAlternatives": [
+      "Tom Preston-Werner",
+      "Tom Preston-Werner and Chris Wanstrath"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "person_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "GitHub was founded in February 2008 by four people \u2014 which of these is the correct set of founders (not Stack Overflow's Joel Spolsky)?",
+    "explanation": "GitHub was founded by Tom Preston-Werner, Chris Wanstrath, P.J. Hyett, and Scott Chacon. Joel Spolsky co-founded Stack Overflow, not GitHub \u2014 a common confusion. GitHub provided a user-friendly web interface for Git repositories and social coding features that transformed open-source collaboration.",
+    "visualDescription": "Four developers in 2008 launching a website from a San Francisco apartment, the Octocat mascot being sketched on paper, 'github.com' being registered on screen",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/GitHub",
+    "volatile": false,
+    "distractors": [
+      "Jeff Atwood, Joel Spolsky, Geoff Dalgas, and Jarrod Dixon",
+      "Linus Torvalds, Andrew Tridgell, and Junio Hamano",
+      "Mark Zuckerberg, Dustin Moskovitz, Chris Hughes, and Eduardo Saverin",
+      "Steve Huffman, Alexis Ohanian, Aaron Swartz, and Christopher Slowe",
+      "Jack Dorsey, Biz Stone, Noah Glass, and Evan Williams",
+      "Larry Page, Sergey Brin, Eric Schmidt, and Susan Wojcicki",
+      "Peter Thiel, Max Levchin, Luke Nosek, and Keith Rabois",
+      "Chad Hurley, Steve Chen, Jawed Karim, and Yishan Wong"
+    ]
+  },
+  {
+    "id": "cs_7_fsf_license",
+    "correctAnswer": "GNU General Public License",
+    "acceptableAlternatives": [
+      "GPL",
+      "GNU GPL"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "What copyleft software license, created and maintained by the Free Software Foundation, requires any software built on it to also be free \u2014 and became the most widely used free software license?",
+    "explanation": "The GNU General Public License (GPL) was written by Richard Stallman and published by the Free Software Foundation. Its key innovation is 'copyleft' \u2014 any software derived from GPL code must also be GPL. This viral property ensures the software remains free forever. Linux is licensed under the GPL.",
+    "visualDescription": "A legal document with the GNU GPL logo on the cover, a chain of open source projects flowing from it \u2014 Linux, Git, WordPress, and others branching out",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Free_Software_Foundation",
+    "volatile": false,
+    "distractors": [
+      "MIT License",
+      "Apache License",
+      "BSD License",
+      "Creative Commons",
+      "Mozilla Public License",
+      "LGPL",
+      "Affero GPL",
+      "Eclipse Public License"
+    ]
+  },
+  {
+    "id": "cs_7_mysql_acquirer",
+    "correctAnswer": "Oracle",
+    "acceptableAlternatives": [
+      "Oracle Corporation"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "company_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "MySQL, the world's most popular open-source database, was first acquired by Sun Microsystems in 2008 and then by which database giant in 2010?",
+    "explanation": "MySQL was first acquired by Sun Microsystems in 2008 for $1 billion. When Oracle acquired Sun in 2010, it inherited MySQL \u2014 leading to controversy as Oracle was MySQL's biggest commercial competitor. Many MySQL developers forked it to create MariaDB, fearing Oracle would restrict it.",
+    "visualDescription": "A corporate acquisition flowchart: MySQL AB \u2192 Sun Microsystems \u2192 Oracle Corporation, with worried open source developers watching from the sidelines",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/MySQL",
+    "volatile": false,
+    "distractors": [
+      "Microsoft",
+      "IBM",
+      "Google",
+      "Amazon",
+      "SAP",
+      "Salesforce",
+      "VMware",
+      "Red Hat"
+    ]
+  },
+  {
+    "id": "cs_7_apple_first_trillion",
+    "correctAnswer": "{2018}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "In what year did Apple become the first publicly traded US company to reach a $1 trillion market capitalization?",
+    "explanation": "Apple reached a $1 trillion market capitalization in August 2018, becoming the first US publicly traded company to hit that milestone. It went on to become the first company to reach $2 trillion (2020) and $3 trillion (2022).",
+    "visualDescription": "A stock market ticker showing AAPL crossing $207 per share, the $1 trillion milestone marker being crossed, Apple's Cupertino campus in the background",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apple_Inc.",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_7_photoshop_as_verb",
+    "correctAnswer": "Adobe Photoshop",
+    "acceptableAlternatives": [
+      "Photoshop"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "product_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "quizQuestion": "Which image editing software became so dominant that its name entered common usage as a verb meaning 'to digitally alter a photo'?",
+    "explanation": "Adobe Photoshop, released February 19, 1990, became so synonymous with image editing that 'to photoshop' became a widely understood verb. Adobe actually discourages this usage in trademark guidelines, preferring people say 'edit with Photoshop,' but the verb form is now in major dictionaries.",
+    "visualDescription": "A 'before and after' split of a digitally altered celebrity photo, the Photoshop toolbar visible on the side, the Ps logo prominent",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Adobe_Photoshop",
+    "volatile": false,
+    "distractors": [
+      "Microsoft Paint",
+      "CorelDRAW",
+      "GIMP",
+      "Paintbrush",
+      "Illustrator",
+      "Lightroom",
+      "Canva",
+      "Pixelmator"
+    ]
+  },
+  {
+    "id": "cs_7_apache_web_server",
+    "correctAnswer": "Apache HTTP Server",
+    "acceptableAlternatives": [
+      "Apache",
+      "httpd"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "product_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What open-source web server software, first released in 1995, powered the majority of websites on the internet through the late 1990s and 2000s?",
+    "explanation": "The Apache HTTP Server, first released in 1995, quickly became the most widely deployed web server in the world. The name 'Apache' is commonly said to be a pun on 'a patchy server,' referring to its origin as a set of patches to the original NCSA httpd server. It remains one of the most used web servers today.",
+    "visualDescription": "A data center with server racks labeled 'Apache httpd', website requests flowing in as arrows, the Apache feather logo on a blinking server panel",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apache_HTTP_Server",
+    "volatile": false,
+    "distractors": [
+      "Nginx",
+      "IIS",
+      "Tomcat",
+      "Lighttpd",
+      "Cherokee",
+      "Caddy",
+      "HAProxy",
+      "Node.js"
+    ]
+  },
+  {
+    "id": "cs_7_meta_rebranding",
+    "correctAnswer": "{2021}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "In what year did Facebook rename its parent company to 'Meta Platforms' \u2014 a pivot toward the 'metaverse' that was met with widespread skepticism?",
+    "explanation": "Mark Zuckerberg announced the Facebook parent company rebranding to Meta Platforms on October 28, 2021, alongside a pivot toward building the 'metaverse.' The rebranding was widely seen as an attempt to shift attention from ongoing controversies about Facebook's societal impact. Meta invested tens of billions into metaverse development.",
+    "visualDescription": "A 2021 tech announcement stage with the Meta infinity logo replacing the Facebook thumbs-up, a virtual reality headset prominently displayed",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Facebook",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_7_google_alphabet",
+    "correctAnswer": "Alphabet",
+    "acceptableAlternatives": [
+      "Alphabet Inc."
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "company_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "In 2015, Google restructured under a new parent holding company with a name that refers to letters \u2014 what is it called?",
+    "explanation": "In 2015, Google restructured under a new parent holding company called Alphabet Inc. Google remained as the main subsidiary but moonshot projects like Waymo (self-driving cars), Verily (life sciences), and DeepMind were reorganized under Alphabet. The name was chosen because 'alpha-bet' sounds like 'alpha return on investment'.",
+    "visualDescription": "The Alphabet logo with different letters styled as different subsidiary company logos branching off from it \u2014 Google, YouTube, Waymo, DeepMind",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Google",
+    "volatile": false,
+    "distractors": [
+      "Nexus Corp",
+      "Googol Holdings",
+      "Mountain View Inc.",
+      "Beta Corp",
+      "Lexicon Technologies",
+      "Silicon Ventures",
+      "PageRank Holdings",
+      "Sundar Industries"
+    ]
+  },
+  {
+    "id": "cs_7_cisco_name_origin",
+    "correctAnswer": "San Francisco",
+    "acceptableAlternatives": [
+      "San Francisco, California",
+      "San Fran"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "The name 'Cisco' is a shortened form of what major California city, where the networking company was founded in 1984?",
+    "explanation": "Cisco is named after San franiSCO \u2014 the last syllables of San Francisco, where the company was founded. Founders Leonard Bosack and Sandy Lerner were Stanford engineers who had been working to link incompatible campus networks. The company headquarters later moved to San Jose.",
+    "visualDescription": "The Golden Gate Bridge with the Cisco logo overlaid, the letters 'SAN FRAN-cisco' with the last syllables highlighted in the company's color",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cisco",
+    "volatile": false,
+    "distractors": [
+      "Los Angeles",
+      "Sacramento",
+      "San Diego",
+      "San Jose",
+      "Oakland",
+      "Fresno",
+      "San Bernardino",
+      "Palo Alto"
+    ]
+  },
+  {
+    "id": "cs_7_oracle_name_origin",
+    "correctAnswer": "CIA",
+    "acceptableAlternatives": [
+      "the CIA",
+      "Central Intelligence Agency"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "company_names",
+    "difficulty": 4,
+    "funScore": 9,
+    "quizQuestion": "Oracle is named after a project that was its first major customer \u2014 a project run by which government agency for which Larry Ellison and Bob Miner had previously done consulting?",
+    "explanation": "Oracle was named after a CIA project called 'Oracle' for which Larry Ellison, Bob Miner, and Ed Oates had previously done consulting work. The project used a relational database, which inspired them to commercialize the technology. The CIA connection gave the young company its first significant revenue.",
+    "visualDescription": "A nondescript 1970s government building with 'Project Oracle' on a file folder, two engineers in suits receiving a contract and then writing 'Oracle Corporation' on a whiteboard",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oracle_Corporation",
+    "volatile": false,
+    "distractors": [
+      "NSA",
+      "NASA",
+      "FBI",
+      "DARPA",
+      "DoD",
+      "Air Force",
+      "Navy",
+      "Lockheed"
+    ]
+  },
+  {
+    "id": "cs_7_nvidia_original_focus",
+    "correctAnswer": "video games",
+    "acceptableAlternatives": [
+      "gaming",
+      "graphics for video games",
+      "PC gaming"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Nvidia was originally focused on graphics accelerators for what market before its GPUs became essential infrastructure for AI?",
+    "explanation": "Nvidia originally focused on graphics processors for video games. The company's first major product was the RIVA 128 (1997), and it established the GPU category with the GeForce 256 in 1999. The same parallel processing architecture that excels at rendering 3D game graphics proved ideal for training neural networks \u2014 a discovery that transformed Nvidia into one of the world's most valuable companies.",
+    "visualDescription": "A split image: left showing a 1990s video game with improved graphics, right showing AI training diagrams \u2014 both powered by the same Nvidia GPU chip",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nvidia",
+    "volatile": false,
+    "distractors": [
+      "scientific computing",
+      "movie special effects",
+      "medical imaging",
+      "financial modeling",
+      "satellite processing",
+      "automotive navigation",
+      "database operations",
+      "telecommunications"
+    ]
+  },
+  {
+    "id": "cs_7_git_year",
+    "correctAnswer": "{2005}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "In what year did Linus Torvalds create and first release Git, the distributed version control system that now powers most of the world's software development?",
+    "explanation": "Git was first released on April 7, 2005. Torvalds designed it to be fast, secure, and distributed \u2014 meaning every developer has a full copy of the repository. Within a year, Git was managing the Linux kernel's source code. Today it's the foundation of GitHub, GitLab, and Bitbucket, used by virtually every software project.",
+    "visualDescription": "A terminal window showing 'git init' being typed, branching commit tree diagrams flowing outward, the Git logo (a red diamond with angles) glowing",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Git",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_7_ms_dos_deal",
+    "correctAnswer": "IBM",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "company_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Microsoft's dominance was largely built on a 1981 deal to license MS-DOS to which company \u2014 a deal made even more lucrative because Microsoft retained the right to license DOS to others?",
+    "explanation": "In 1981, Microsoft licensed MS-DOS to IBM for its new IBM PC. Crucially, Microsoft retained the right to license the same operating system to other manufacturers \u2014 which it did as IBM-compatible PC clones flooded the market. This made MS-DOS (and later Windows) the standard for an entire industry, not just one computer.",
+    "visualDescription": "A 1981 IBM PC box with 'PC-DOS' on the screen, a handshake between IBM and Microsoft logos, a growing stack of licensed copies spreading to other computer brands",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Microsoft",
+    "volatile": false,
+    "distractors": [
+      "Apple",
+      "Compaq",
+      "HP",
+      "AT&T",
+      "Xerox",
+      "DEC",
+      "Tandy",
+      "Commodore"
+    ]
+  },
+  {
+    "id": "cs_7_docker_year",
+    "correctAnswer": "{2013}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "In what year was Docker first released as an open-source project, kicking off the containerization revolution in software deployment?",
+    "explanation": "Docker was first released on March 20, 2013. Solomon Hykes demonstrated it at PyCon 2013 in a five-minute talk that went viral. Containers \u2014 lightweight, portable environments bundling an app with all its dependencies \u2014 transformed how software was built, shipped, and run. Docker containers now run billions of cloud workloads daily.",
+    "visualDescription": "A 2013 developer conference stage, a presenter showing a quick demo of containers launching in seconds, an audience of engineers leaning forward with interest",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Docker_(software)",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_7_kubernetes_inspiration",
+    "correctAnswer": "Borg",
+    "acceptableAlternatives": [
+      "Google Borg",
+      "Google's Borg system"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 4,
+    "funScore": 8,
+    "quizQuestion": "Kubernetes was inspired by and designed as an open-source version of which internal Google system that had been managing containers at massive scale since 2003?",
+    "explanation": "Kubernetes is based on Google's internal Borg system, a cluster management system that had been running containerized workloads at Google-scale since 2003. When Google open-sourced a reimagined version as Kubernetes in 2014, they effectively gave the world the battle-tested infrastructure that powered Google Search and Gmail.",
+    "visualDescription": "A Google data center with thousands of container workloads running, labeled 'Borg' transforming into the Kubernetes helm wheel logo",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kubernetes",
+    "volatile": false,
+    "distractors": [
+      "Mesos",
+      "Omega",
+      "Tupperware",
+      "Autopilot",
+      "Hermes",
+      "Colossus",
+      "Spanner",
+      "Titan"
+    ]
+  },
+  {
+    "id": "cs_7_spacex_iss_year",
+    "correctAnswer": "{2020}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "In what year did SpaceX become the first private company to send astronauts to the International Space Station \u2014 flying NASA's Crew Dragon mission?",
+    "explanation": "SpaceX's Crew Dragon capsule carried NASA astronauts Bob Behnken and Doug Hurley to the ISS in May 2020, becoming the first commercial human spaceflight from American soil since the Space Shuttle's retirement in 2011. This marked SpaceX's transition from a rocket launch company to a crewed spaceflight operator.",
+    "visualDescription": "A SpaceX Crew Dragon capsule docking with the ISS in orbit, Earth's blue curve below, NASA and SpaceX logos both visible on the spacecraft",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/SpaceX",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_7_windows95_song",
+    "correctAnswer": "Start Me Up",
+    "acceptableAlternatives": [
+      "'Start Me Up'",
+      "Start Me Up by the Rolling Stones"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "product_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "quizQuestion": "Microsoft paid the Rolling Stones $3 million to use which famous song in the Windows 95 marketing campaign \u2014 its title perfectly matching the operating system's new Start button?",
+    "explanation": "Microsoft paid approximately $3 million for the rights to use 'Start Me Up' by the Rolling Stones in the Windows 95 launch campaign. The pun was irresistible: the song's title matched the new Start button perfectly. Windows 95 sold over 7 million copies in its first five weeks in a marketing blitz that turned a software launch into a cultural event.",
+    "visualDescription": "Mick Jagger on stage with a Windows 95 box photoshopped onto a Rolling Stones stage, the Start button glowing like a rock concert spotlight",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Windows_95",
+    "volatile": false,
+    "distractors": [
+      "Satisfaction",
+      "Paint It Black",
+      "Jumpin' Jack Flash",
+      "You Can't Always Get What You Want",
+      "Wild Horses",
+      "Brown Sugar",
+      "Miss You",
+      "Gimme Shelter"
+    ]
+  },
+  {
+    "id": "cs_7_amazon_founded_location",
+    "correctAnswer": "Bellevue, Washington",
+    "acceptableAlternatives": [
+      "Bellevue",
+      "Washington state"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Jeff Bezos founded Amazon in 1994 \u2014 not in Silicon Valley, but in what Washington state city, in his garage?",
+    "explanation": "Jeff Bezos founded Amazon in his garage in Bellevue, Washington in 1994 (the company later moved to nearby Seattle). Bezos quit his job at D.E. Shaw, a hedge fund, drove across country with his wife, and wrote the business plan during the road trip. He chose books as the first product because of the enormous catalog available.",
+    "visualDescription": "A 1994 suburban garage in Washington state converted into a makeshift office, stacks of books in boxes, a handwritten 'Amazon' sign on the desk",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Amazon_(company)",
+    "volatile": false,
+    "distractors": [
+      "Seattle, Washington",
+      "Palo Alto, California",
+      "San Francisco, California",
+      "Portland, Oregon",
+      "Redmond, Washington",
+      "Austin, Texas",
+      "Kirkland, Washington",
+      "Menlo Park, California"
+    ]
+  },
+  {
+    "id": "cs_7_facebook_original_name",
+    "correctAnswer": "TheFacebook",
+    "acceptableAlternatives": [
+      "the facebook",
+      "thefacebook.com"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "product_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "When Mark Zuckerberg launched his social network at Harvard in 2004, what was its original name before dropping the article?",
+    "explanation": "Facebook launched as 'TheFacebook.com' in February 2004, restricted to Harvard students. By summer it expanded to other Ivy League schools and then Stanford. The company purchased the facebook.com domain in 2005 for $200,000 and dropped 'The' from the name. The domain purchase was reportedly suggested by Justin Timberlake.",
+    "visualDescription": "A 2004 Harvard dorm room computer showing the TheFacebook.com interface, a simple blue and white design with the article 'The' prominently in the logo",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Facebook",
+    "volatile": false,
+    "distractors": [
+      "FaceBook",
+      "iFace",
+      "ConnectHarvard",
+      "TheSocialNet",
+      "HarvardBook",
+      "MyFace",
+      "FriendFace",
+      "YourFacebook"
+    ]
+  },
+  {
+    "id": "cs_7_paypal_mafia_companies",
+    "correctAnswer": "YouTube",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "product_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "The 'PayPal Mafia' \u2014 former PayPal employees who went on to found major tech companies \u2014 includes the founders of LinkedIn, Yelp, and which video platform?",
+    "explanation": "Former PayPal employees went on to found an extraordinary number of major companies: YouTube (Chad Hurley, Steve Chen, Jawed Karim), LinkedIn (Reid Hoffman), Yelp (Jeremy Stoppelman, Russel Simmons), Palantir (Peter Thiel), SpaceX (Elon Musk), and many others. The group was dubbed the 'PayPal Mafia' and their influence on Silicon Valley was enormous.",
+    "visualDescription": "A group photo of tech founders with PayPal T-shirts, arrows pointing from each to company logos they later founded \u2014 YouTube, LinkedIn, SpaceX, Palantir",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/PayPal",
+    "volatile": false,
+    "distractors": [
+      "Twitter",
+      "Instagram",
+      "Facebook",
+      "Reddit",
+      "Snapchat",
+      "Pinterest",
+      "TikTok",
+      "WhatsApp"
+    ]
+  },
+  {
+    "id": "cs_7_hp_founded_year",
+    "correctAnswer": "{1939}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "In what year did Bill Hewlett and David Packard found HP in a Palo Alto garage \u2014 a moment so significant the garage is preserved as the 'birthplace of Silicon Valley'?",
+    "explanation": "Hewlett-Packard was founded in 1939, making it one of the oldest major technology companies. The Palo Alto garage where it started is now California Historical Landmark #976. HP's success inspired generations of entrepreneurs to start companies in garages across the region.",
+    "visualDescription": "A small California garage in 1939 with HP test equipment on a workbench, a hand-painted 'HP' sign, trees and a quiet residential street outside",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hewlett-Packard",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_7_intel_founded_year",
+    "correctAnswer": "{1968}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "In what year did Robert Noyce and Gordon Moore found Intel, the company that would go on to create the microprocessor?",
+    "explanation": "Intel was founded on July 18, 1968, by Robert Noyce and Gordon Moore, who left Fairchild Semiconductor to start the new company. Within three years Intel had produced the 4004, the world's first commercially available microprocessor (1971), launching the personal computer revolution.",
+    "visualDescription": "A 1968 Silicon Valley business meeting, Robert Noyce and Gordon Moore shaking hands in front of a whiteboard with semiconductor schematics",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Intel",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_7_mysql_release_year",
+    "correctAnswer": "{1995}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "In what year was MySQL first released, beginning its rise to become the world's most widely deployed open-source relational database?",
+    "explanation": "MySQL was first released on May 23, 1995, by MySQL AB. Its combination of open-source availability, reasonable performance, and the LAMP stack (Linux, Apache, MySQL, PHP) made it the database of choice for web applications throughout the late 1990s and 2000s.",
+    "visualDescription": "A 1995 web server stack diagram showing Linux, Apache, MySQL, and PHP as layered blocks, early websites connecting to the database",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/MySQL",
+    "volatile": false,
+    "distractors": []
+  }
+]

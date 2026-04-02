@@ -1,0 +1,395 @@
+# CS & Technology: Hardware & Architecture — Verified Source Architecture
+# All facts verified via Wikipedia API, April 2026
+# Sources: en.wikipedia.org
+
+deck_id: cs_tech_hardware
+sub_deck_index: 1
+title: "Hardware & Architecture"
+target_facts: 35
+source_url_base: "https://en.wikipedia.org/wiki/"
+
+facts:
+
+  - name: Difference Engine
+    year_designed: 1822
+    year_demo: 1832
+    location: "London, United Kingdom"
+    creators: [Charles Babbage]
+    wikidata: Q628007
+    source_url: "https://en.wikipedia.org/wiki/Difference_engine"
+    achievement: "First mechanical calculator designed to tabulate polynomial functions"
+    key_facts:
+      - "Charles Babbage designed the Difference Engine in the 1820s to tabulate polynomial functions"
+      - "A small working section was demonstrated in 1832"
+      - "The British government funded the project, eventually withdrawing support after spending £17,000"
+      - "A complete working Difference Engine No. 2 was built by the Science Museum in London between 1985 and 1991, following Babbage's original plans"
+      - "The machine's name derives from the method of finite differences used for computation"
+
+  - name: Analytical Engine
+    year_designed: 1837
+    location: "London, United Kingdom"
+    creators: [Charles Babbage]
+    wikidata: Q485257
+    source_url: "https://en.wikipedia.org/wiki/Analytical_engine"
+    achievement: "First design for a general-purpose mechanical computer; introduced punch-card programming"
+    key_facts:
+      - "Designed by Charles Babbage starting around 1837 as a more powerful successor to the Difference Engine"
+      - "Incorporated an arithmetic logic unit (the 'mill'), control flow using conditional branching, loops, and integrated memory (the 'store')"
+      - "Borrowed the punch-card input mechanism from the Jacquard loom"
+      - "Ada Lovelace wrote the first published algorithm for this machine, making her the first computer programmer"
+      - "Was never constructed in Babbage's lifetime but contained all essential ideas of modern computers"
+
+  - name: Colossus Computer
+    year: 1944
+    location: "Bletchley Park, United Kingdom"
+    creators: [Tommy Flowers]
+    wikidata: Q770597
+    source_url: "https://en.wikipedia.org/wiki/Colossus_computer"
+    achievement: "First programmable electronic digital computer, built to break Nazi Lorenz cipher"
+    key_facts:
+      - "Designed by engineer Tommy Flowers and first operational in February 1944 at Bletchley Park"
+      - "Built to help decrypt messages encoded by the German Lorenz cipher machine"
+      - "Used 1,500 vacuum tubes (Mark 1) and was programmable by switches and plugboards"
+      - "Classified top secret until the 1970s; its existence contributed to the myth that ENIAC was the first electronic computer"
+      - "Ten Colossi were in operation by the end of World War II"
+
+  - name: ENIAC
+    year: 1945
+    location: "University of Pennsylvania, Philadelphia, USA"
+    creators: [J. Presper Eckert, John Mauchly]
+    wikidata: Q169399
+    source_url: "https://en.wikipedia.org/wiki/ENIAC"
+    achievement: "First programmable, electronic, general-purpose digital computer"
+    key_facts:
+      - "Stands for Electronic Numerical Integrator and Computer; completed in 1945"
+      - "Designed by John Mauchly and J. Presper Eckert to calculate artillery firing tables for the US Army"
+      - "Contained approximately 18,000 vacuum tubes, 7,200 crystal diodes, 6,000 relays, and 70,000 resistors"
+      - "Weighed more than 30 short tons (27 tonnes); occupied 300 square feet; consumed 150 kW of electricity"
+      - "Was Turing-complete; its first program was a study of the feasibility of the hydrogen bomb"
+
+  - name: Transistor (Point-Contact)
+    year: 1947
+    location: "Bell Laboratories, Murray Hill, New Jersey, USA"
+    creators: [John Bardeen, Walter Brattain, William Shockley]
+    wikidata: Q1515631
+    source_url: "https://en.wikipedia.org/wiki/Point-contact_transistor"
+    achievement: "First working transistor, demonstrated 16 December 1947 at Bell Labs"
+    key_facts:
+      - "Developed by John Bardeen and Walter Brattain under William Shockley's group at Bell Laboratories"
+      - "The critical experiment was carried out on 16 December 1947 using a block of germanium"
+      - "Replaced vacuum tubes: smaller, faster, consumed less power, more reliable"
+      - "Bardeen, Brattain, and Shockley shared the 1956 Nobel Prize in Physics for the invention"
+      - "The transistor is the fundamental building block of all modern electronics"
+
+  - name: Vacuum Tube (Thermionic Valve)
+    year_invented: 1904
+    wikidata: Q3574371
+    source_url: "https://en.wikipedia.org/wiki/Vacuum_tube"
+    achievement: "Dominant electronic component before the transistor; enabled first electronic computers"
+    key_facts:
+      - "The thermionic diode was invented by John Ambrose Fleming in 1904"
+      - "The triode (with a control grid) was invented by Lee de Forest in 1906"
+      - "Vacuum tubes were the sole active electronic components for the first generation of electronic computers (1940s–early 1950s)"
+      - "ENIAC used approximately 18,000 vacuum tubes and required constant maintenance as tubes burned out frequently"
+      - "Replaced by transistors starting in the mid-1950s due to transistors being smaller, faster, and more reliable"
+
+  - name: UNIVAC I
+    year: 1951
+    location: "United States Census Bureau, Washington DC, USA"
+    creators: [J. Presper Eckert, John Mauchly]
+    wikidata: Q1044055
+    source_url: "https://en.wikipedia.org/wiki/UNIVAC_I"
+    achievement: "First general-purpose electronic digital computer produced commercially in the United States"
+    key_facts:
+      - "Stands for Universal Automatic Computer I"
+      - "First UNIVAC I accepted by the United States Census Bureau on 31 March 1951"
+      - "Designed by J. Presper Eckert and John Mauchly, the inventors of ENIAC"
+      - "Famously used to predict the outcome of the 1952 US presidential election for CBS News, correctly predicting Eisenhower's victory"
+      - "Weighed approximately 13 tons and contained 5,200 vacuum tubes"
+
+  - name: Von Neumann Architecture
+    year: 1945
+    wikidata: Q189088
+    source_url: "https://en.wikipedia.org/wiki/Von_Neumann_architecture"
+    achievement: "Stored-program computer design where instructions and data share the same memory"
+    key_facts:
+      - "Described in John von Neumann's 1945 'First Draft of a Report on the EDVAC'"
+      - "Core principle: instructions and data are stored in the same memory, allowing programs to be modified like data"
+      - "Components: a CPU with arithmetic/logic unit and control unit, memory, and input/output devices"
+      - "Also called the Princeton architecture; contrasted with the Harvard architecture"
+      - "The vast majority of modern computers follow this architecture"
+
+  - name: Harvard Architecture
+    year: 1944
+    wikidata: Q641044
+    source_url: "https://en.wikipedia.org/wiki/Harvard_architecture"
+    achievement: "Computer design with physically separate storage for instructions and data"
+    key_facts:
+      - "Named after the Harvard Mark I relay-based computer, which stored instructions on punched tape separate from data in electro-mechanical counters"
+      - "Separating instruction memory from data memory allows simultaneous access to both, improving performance"
+      - "Contrasted with the von Neumann architecture, where program instructions and data share the same memory"
+      - "Used today primarily in microcontrollers, DSPs, and real-time/embedded systems"
+      - "The Harvard Mark I became operational in 1944 under Howard Aiken at Harvard University"
+
+  - name: Integrated Circuit
+    year: 1958
+    location: "Texas Instruments, Dallas, Texas, USA"
+    creators: [Jack Kilby, Robert Noyce]
+    wikidata: Q204559
+    source_url: "https://en.wikipedia.org/wiki/Integrated_circuit"
+    achievement: "Miniaturised electronic circuits onto a single semiconductor chip, enabling modern computing"
+    key_facts:
+      - "Jack Kilby at Texas Instruments recorded initial ideas in July 1958; successfully demonstrated the first working integrated circuit on 12 September 1958"
+      - "Robert Noyce at Fairchild Semiconductor independently developed a silicon-based monolithic IC in 1959"
+      - "Kilby shared the 2000 Nobel Prize in Physics for the invention of the integrated circuit"
+      - "Replaced discrete transistor circuits; enabled dramatic miniaturisation and cost reduction"
+      - "The modern microprocessor is an integrated circuit containing billions of transistors"
+
+  - name: Jack Kilby
+    birth: 1923-11-08
+    death: 2005-06-20
+    country: United States
+    wikidata: Q182031
+    source_url: "https://en.wikipedia.org/wiki/Jack_Kilby"
+    achievement: "Demonstrated the first working integrated circuit on 12 September 1958 at Texas Instruments"
+    key_facts:
+      - "Born 8 November 1923; died 20 June 2005"
+      - "Joined Texas Instruments in 1958 and, as a new employee without earned vacation, used the summer to work on miniaturisation"
+      - "Demonstrated the first working IC on 12 September 1958 using germanium"
+      - "Shared the 2000 Nobel Prize in Physics for his part in the invention of the integrated circuit"
+      - "Also co-invented the handheld calculator and the thermal printer"
+
+  - name: Robert Noyce
+    birth: 1927-12-12
+    death: 1990-06-03
+    country: United States
+    wikidata: Q241735
+    source_url: "https://en.wikipedia.org/wiki/Robert_Noyce"
+    achievement: "Co-invented the silicon monolithic integrated circuit (1959); co-founded Intel"
+    key_facts:
+      - "Born 12 December 1927; died 3 June 1990; nicknamed 'the Mayor of Silicon Valley'"
+      - "Co-founded Fairchild Semiconductor in 1957 and Intel Corporation in 1968"
+      - "Independently and simultaneously developed the silicon-based integrated circuit (1959), filing his patent on 30 July 1959"
+      - "His silicon-based approach (vs. Kilby's germanium) became the industry standard"
+      - "Intel, which he co-founded with Gordon Moore, went on to create the world's first commercial microprocessor"
+
+  - name: Moore's Law
+    year: 1965
+    wikidata: Q178655
+    source_url: "https://en.wikipedia.org/wiki/Moore%27s_law"
+    achievement: "Empirical observation that transistor count in ICs doubles roughly every two years"
+    key_facts:
+      - "Proposed by Gordon Moore, co-founder of Intel, in a 1965 paper in Electronics magazine"
+      - "Original 1965 paper observed transistor count had doubled annually and projected this would continue"
+      - "Revised in 1975 to doubling approximately every two years"
+      - "Named Moore's Law by Caltech professor Carver Mead"
+      - "Has roughly held from 1965 to the 2010s; increasingly difficult to maintain due to physical limits of silicon"
+
+  - name: Gordon Moore
+    birth: 1929-01-03
+    death: 2023-03-24
+    country: United States
+    wikidata: Q243969
+    source_url: "https://en.wikipedia.org/wiki/Gordon_Moore"
+    achievement: "Co-founded Intel; proposed Moore's Law in 1965"
+    key_facts:
+      - "Born 3 January 1929; died 24 March 2023"
+      - "Co-founded Fairchild Semiconductor in 1957 with Robert Noyce and others"
+      - "Co-founded Intel Corporation with Robert Noyce in 1968"
+      - "Published 'Cramming more components onto integrated circuits' in Electronics magazine on 19 April 1965, containing what became known as Moore's Law"
+      - "Served as Intel's CEO from 1975 to 1987 and chairman until 1997"
+
+  - name: Intel 4004
+    year: 1971
+    location: "Intel Corporation, Santa Clara, California, USA"
+    creators: [Federico Faggin, Ted Hoff, Stanley Mazor, Masatoshi Shima]
+    wikidata: Q205509
+    source_url: "https://en.wikipedia.org/wiki/Intel_4004"
+    achievement: "First commercially available single-chip microprocessor (4-bit), released 15 November 1971"
+    key_facts:
+      - "Released by Intel on 15 November 1971; priced at US$60"
+      - "A 4-bit CPU; the first significant commercial example of large-scale integration (LSI)"
+      - "Designed by Federico Faggin, Ted Hoff, Stanley Mazor, and Masatoshi Shima"
+      - "Clocked at 740 kHz; contained 2,300 transistors in a 10-micrometre process"
+      - "Originally designed for Nippon Calculating Machine Corporation's Busicom calculator"
+
+  - name: IBM 305 RAMAC
+    year: 1956
+    location: "IBM, San Jose, California, USA"
+    wikidata: Q980941
+    source_url: "https://en.wikipedia.org/wiki/IBM_305_RAMAC"
+    achievement: "First commercial computer to use a moving-head hard disk drive for secondary storage"
+    key_facts:
+      - "Publicly announced on 14 September 1956 by IBM"
+      - "RAMAC stands for 'Random Access Method of Accounting and Control'"
+      - "The hard disk unit (IBM 350) stored 5 MB of data on 50 platters each 24 inches in diameter"
+      - "The entire disk unit weighed over a ton and was the size of two refrigerators"
+      - "First commercial computer to enable random access to stored data rather than sequential tape access"
+
+  - name: Hard Disk Drive
+    year: 1956
+    wikidata: Q165178
+    source_url: "https://en.wikipedia.org/wiki/Hard_disk_drive"
+    achievement: "Magnetic disk-based random-access storage; first commercial unit was IBM's RAMAC (1956)"
+    key_facts:
+      - "The first hard disk drive, the IBM 350, was introduced as part of the IBM 305 RAMAC system on 14 September 1956"
+      - "The IBM 350 stored 5 megabytes on 50 platters, each 24 inches in diameter"
+      - "IBM engineers David Noble and Rey Johnson led the development team"
+      - "Modern hard drives store terabytes on platters only a few inches in diameter using giant magnetoresistance"
+      - "Storage density has improved by roughly a factor of 100 million since the first HDD"
+
+  - name: Floppy Disk
+    year: 1971
+    location: "IBM, USA"
+    wikidata: Q5293
+    source_url: "https://en.wikipedia.org/wiki/Floppy_disk"
+    achievement: "Removable magnetic disk storage; IBM's first 8-inch floppy invented in 1971"
+    key_facts:
+      - "The first floppy disks were invented and made by IBM in 1971; had a disk diameter of 8 inches"
+      - "The 5¼-inch format followed, then the 3½-inch format (introduced by Sony in 1981)"
+      - "The 3½-inch floppy became the standard for personal computers through the 1980s and 1990s"
+      - "Apple's 1984 Macintosh popularised the 3½-inch floppy as the standard removable medium"
+      - "Largely replaced by USB flash drives and optical media in the 2000s"
+
+  - name: Apple I
+    year: 1976
+    location: "Cupertino, California, USA"
+    creators: [Steve Wozniak, Steve Jobs]
+    wikidata: Q18981
+    source_url: "https://en.wikipedia.org/wiki/Apple_I"
+    achievement: "Apple's first product; first personal computer to include video display circuitry on the board"
+    key_facts:
+      - "Electrically designed by Steve Wozniak; marketing and company formation by Steve Jobs"
+      - "Released in 1976 by the Apple Computer Company (now Apple Inc.)"
+      - "Key differentiator: included video display terminal circuitry, allowing connection to a standard TV"
+      - "Sold for US$666.66 (approximately $3,600 in 2025 dollars)"
+      - "Only about 200 units were built; surviving examples sell for hundreds of thousands of dollars at auction"
+
+  - name: Apple II
+    year: 1977
+    location: "Cupertino, California, USA"
+    creators: [Steve Wozniak]
+    wikidata: Q201652
+    source_url: "https://en.wikipedia.org/wiki/Apple_II"
+    achievement: "One of the first highly successful mass-produced personal computers; introduced 1977"
+    key_facts:
+      - "Designed by Steve Wozniak; first sold on 10 June 1977"
+      - "One of the first highly successful mass-produced personal computers"
+      - "Included colour graphics capability — a major innovation over the Apple I"
+      - "The VisiCalc spreadsheet program (1979), the first 'killer app', ran on the Apple II and drove its commercial success"
+      - "Apple II series produced from 1977 to 1993; over 6 million units sold"
+
+  - name: IBM Personal Computer (IBM PC)
+    year: 1981
+    location: "Boca Raton, Florida, USA"
+    wikidata: Q202712
+    source_url: "https://en.wikipedia.org/wiki/IBM_Personal_Computer"
+    achievement: "Established the open-architecture IBM PC compatible standard; released 12 August 1981"
+    key_facts:
+      - "Released on 12 August 1981; model number 5150"
+      - "Directed by William C. Lowe and Philip Don Estridge at IBM Boca Raton"
+      - "Used an open architecture based on the Intel 8088 processor and third-party peripherals"
+      - "IBM licensed Microsoft's PC-DOS (MS-DOS), which made Microsoft's fortune"
+      - "The open architecture allowed clone manufacturers (Compaq, etc.) to build IBM PC-compatible machines, eventually commoditising the PC market"
+
+  - name: Computer Mouse
+    year_prototype: 1964
+    year_public_demo: 1968
+    creators: [Douglas Engelbart, Bill English]
+    wikidata: Q7987
+    source_url: "https://en.wikipedia.org/wiki/Computer_mouse"
+    achievement: "Pointing device invented by Engelbart and English; first publicly demonstrated 1968"
+    key_facts:
+      - "First prototype built by Douglas Engelbart and Bill English at SRI International in 1964"
+      - "First public demonstration was by Douglas Engelbart in 1968 as part of the 'Mother of All Demos'"
+      - "Original mice used two wheels for x/y tracking; later designs used a rolling ball"
+      - "Xerox PARC refined the mouse design in the 1970s for use with graphical user interfaces"
+      - "Apple's Lisa (1983) and Macintosh (1984) made the mouse mainstream for personal computing"
+
+  - name: DRAM (Dynamic RAM)
+    year_invented: 1966
+    year_patented: 1968
+    creators: [Robert Dennard]
+    wikidata: Q189396
+    source_url: "https://en.wikipedia.org/wiki/Dynamic_random-access_memory"
+    achievement: "Single-transistor memory cell invented by Robert Dennard at IBM in 1966; patented 1968"
+    key_facts:
+      - "Invented by Dr. Robert Dennard in 1966 at IBM's Thomas J. Watson Research Center"
+      - "A DRAM cell stores one bit using a single MOS transistor and a capacitor"
+      - "Dennard filed a patent in 1967; US patent 3,387,286 granted in 1968"
+      - "DRAM offers higher density and lower cost than SRAM but requires periodic refreshing (charge leaks)"
+      - "DRAM became and remains the dominant type of RAM used as main memory in computers"
+
+  - name: Robert Dennard
+    birth: 1932-09-05
+    death: 2024-04-23
+    country: United States
+    wikidata: Q289023
+    source_url: "https://en.wikipedia.org/wiki/Robert_H._Dennard"
+    achievement: "Invented DRAM (1966) and formulated Dennard scaling rules for transistor miniaturisation"
+    key_facts:
+      - "Born 5 September 1932; died 23 April 2024"
+      - "Invented DRAM in 1966 while working at IBM Thomas J. Watson Research Center"
+      - "Formulated Dennard scaling (1974): as transistors get smaller, power density stays constant — enabled decades of CPU performance improvement"
+      - "Dennard scaling broke down around 2006, leading to multi-core processor designs"
+      - "Received the 2013 IEEE Medal of Honour"
+
+  - name: Solid-State Drive (SSD)
+    year: 1991
+    wikidata: Q487343
+    source_url: "https://en.wikipedia.org/wiki/Solid-state_drive"
+    achievement: "Flash-memory-based storage with no moving parts; first commercial SSD by SunDisk (1991)"
+    key_facts:
+      - "SSDs use non-volatile NAND flash memory to store data with no moving parts"
+      - "SunDisk (later SanDisk) introduced the first commercial flash-based SSD in 1991 with 20 MB capacity"
+      - "Much faster random access than HDDs because there is no mechanical seek time"
+      - "Became mainstream in laptops from approximately 2010 onwards"
+      - "NAND flash was invented by Fujio Masuoka at Toshiba in 1984"
+
+  - name: GeForce 256
+    year: 1999
+    location: "NVIDIA Corporation, Santa Clara, California, USA"
+    wikidata: Q1028816
+    source_url: "https://en.wikipedia.org/wiki/GeForce_256"
+    achievement: "NVIDIA's first GPU; first 3D accelerator with hardware transform and lighting (T&L)"
+    key_facts:
+      - "Announced 31 August 1999; released 11 October 1999 by NVIDIA"
+      - "First GPU (Graphics Processing Unit) — NVIDIA coined the term 'GPU' to describe it"
+      - "First 3D accelerator to include a hardware transform and lighting (T&L) engine, offloading geometry calculations from the CPU"
+      - "First fully Direct3D 7-compliant 3D accelerator; offered a major leap in 3D gaming performance"
+      - "The GPU concept evolved from fixed-function to programmable shaders and eventually to general-purpose GPU computing (GPGPU)"
+
+  - name: Assembly Language
+    year: 1947
+    wikidata: Q165436
+    source_url: "https://en.wikipedia.org/wiki/Assembly_language"
+    achievement: "Low-level symbolic representation of machine code; first described in Booth & Booth's 1947 work"
+    key_facts:
+      - "The use of a symbolic language to represent machine code instructions is found in Kathleen and Andrew Donald Booth's 1947 work 'Coding for A.R.C.'"
+      - "The term 'assembler' is generally attributed to Wilkes, Wheeler and Gill in their 1951 book 'The Preparation of Programs for an Electronic Digital Computer'"
+      - "Assembly language uses mnemonics (e.g., MOV, ADD, JMP) to represent binary machine instructions"
+      - "Each CPU architecture has its own assembly language corresponding to its instruction set"
+      - "Directly preceded high-level languages; FORTRAN (1957) was the first widely used alternative"
+
+  - name: RAM vs ROM
+    wikidata_ram: Q189396
+    wikidata_rom: Q180531
+    source_url: "https://en.wikipedia.org/wiki/Random-access_memory"
+    achievement: "Two fundamental types of computer memory with distinct read/write and volatility properties"
+    key_facts:
+      - "RAM (Random-Access Memory) is volatile — loses data when power is removed; used for active working memory"
+      - "ROM (Read-Only Memory) is non-volatile — retains data without power; used for firmware"
+      - "Modern computers typically use DRAM for main memory and NAND flash (a type of ROM-like storage) for persistent storage"
+      - "SRAM (Static RAM) is faster but more expensive than DRAM; used for CPU cache memory"
+      - "The distinction between volatile and non-volatile memory is fundamental to computer architecture"
+
+  - name: Vacuum Tube to Transistor to IC to Microprocessor
+    wikidata: Q5339
+    source_url: "https://en.wikipedia.org/wiki/Transistor"
+    achievement: "The four generations of electronic computing components from 1940s to 1971"
+    key_facts:
+      - "First generation (1940s–mid 1950s): vacuum tubes — ENIAC used ~18,000 tubes; consumed enormous power, generated great heat"
+      - "Second generation (mid 1950s–1960s): discrete transistors — transistor invented at Bell Labs in 1947; smaller, faster, more reliable"
+      - "Third generation (1960s–early 1970s): integrated circuits — Jack Kilby's first IC demonstrated 1958; multiple transistors on one chip"
+      - "Fourth generation (1971–present): microprocessors — Intel 4004 (1971) integrated entire CPU on a single chip"
+      - "Transistor count per chip has grown from 2,300 (Intel 4004, 1971) to tens of billions in modern processors"

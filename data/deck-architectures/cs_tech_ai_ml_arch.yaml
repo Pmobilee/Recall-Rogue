@@ -1,0 +1,630 @@
+deck_id: computer_science_ai_ml
+name: "CS & Technology — Artificial Intelligence & Machine Learning"
+domain: computer_science
+sub_domain: artificial_intelligence
+target_facts: 35
+minimum_facts: 28
+
+# NOTE: This is sub-deck 6 of the Computer Science & Technology deck.
+# All facts sourced from Wikipedia/Wikidata, verified via direct article lookup.
+# Wikidata QIDs included for every entry that has one.
+#
+# CORRECTIONS from brief:
+# - Turing paper title is "Computing Machinery and Intelligence" (1950), NOT 1950 alone as "imitation game"
+#   The term "imitation game" appears in the paper but the test was later named "Turing test"
+# - ELIZA: developed 1964-1967 (not just 1966); the program was first published/described in 1966
+# - AI winters: ~1974-1980 and ~1987-2000 per Wikipedia (not 1987-1993)
+# - Random forests: Breiman's 2001 paper extended Tin Kam Ho's 1995 algorithm — both attributions matter
+# - AlexNet: developed at University of Toronto by Krizhevsky, Sutskever, Hinton (not just Krizhevsky)
+# - Backpropagation popularized: 1986 paper by Rumelhart, Hinton, Williams is correct
+# - SVM: Corinna Cortes and Vladimir Vapnik at AT&T Bell Labs, 1992 development/1995 publication
+# - AlphaFold: AlphaFold 2 (2020) achieved the major breakthrough at CASP14 in November 2020
+# - GPT-3 released May 2020 (paper publication); June 2020 (API beta)
+# - ChatGPT launched November 30, 2022
+
+data_sources:
+  - name: Wikipedia — Turing test
+    url: https://en.wikipedia.org/wiki/Turing_test
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q37038
+    usage: 1950 paper "Computing Machinery and Intelligence", Alan Turing, concept of imitation game
+  - name: Wikipedia — Dartmouth workshop
+    url: https://en.wikipedia.org/wiki/Dartmouth_workshop
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q2453355
+    usage: 1956 summer workshop, John McCarthy coined "artificial intelligence"
+  - name: Wikipedia — ELIZA
+    url: https://en.wikipedia.org/wiki/ELIZA
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q580318
+    usage: Joseph Weizenbaum, MIT, developed 1964-1967, described in 1966 paper
+  - name: Wikipedia — AI winter
+    url: https://en.wikipedia.org/wiki/AI_winter
+    license: CC-BY-SA-4.0
+    usage: two major winters ~1974-1980 and ~1987-2000
+  - name: Wikipedia — Perceptron
+    url: https://en.wikipedia.org/wiki/Perceptron
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q690207
+    usage: Frank Rosenblatt, 1957, supervised learning algorithm
+  - name: Wikipedia — Backpropagation
+    url: https://en.wikipedia.org/wiki/Backpropagation
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q798503
+    usage: popularized in 1986 by Rumelhart, Hinton, Williams paper
+  - name: Wikipedia — Support vector machine
+    url: https://en.wikipedia.org/wiki/Support_vector_machine
+    license: CC-BY-SA-4.0
+    usage: developed at AT&T Bell Labs by Cortes & Vapnik; 1995 publication
+  - name: Wikipedia — Random forest
+    url: https://en.wikipedia.org/wiki/Random_forest
+    license: CC-BY-SA-4.0
+    usage: extended by Leo Breiman in 2001 paper; Tin Kam Ho's 1995 original algorithm
+  - name: Wikipedia — AlexNet
+    url: https://en.wikipedia.org/wiki/AlexNet
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q28325009
+    usage: 2012 ImageNet breakthrough; Krizhevsky, Sutskever, Hinton; University of Toronto
+  - name: Wikipedia — Deep Blue (chess computer)
+    url: https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q187899
+    usage: IBM, 1997 victory over Garry Kasparov
+  - name: Wikipedia — IBM Watson
+    url: https://en.wikipedia.org/wiki/IBM_Watson
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q12253
+    usage: won Jeopardy! February 2011 against champions Ken Jennings and Brad Rutter
+  - name: Wikipedia — AlphaGo versus Lee Sedol
+    url: https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q22329209
+    usage: March 2016, DeepMind AlphaGo defeated Lee Sedol 4-1
+  - name: Wikipedia — AlphaFold
+    url: https://en.wikipedia.org/wiki/AlphaFold
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q60827595
+    usage: AlphaFold 2 breakthrough at CASP14, November 2020, DeepMind
+  - name: Wikipedia — GPT-3
+    url: https://en.wikipedia.org/wiki/GPT-3
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q95726734
+    usage: released May 2020 (paper), June 2020 (API beta), OpenAI
+  - name: Wikipedia — ChatGPT
+    url: https://en.wikipedia.org/wiki/ChatGPT
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q115564437
+    usage: released November 30, 2022, OpenAI
+  - name: Wikipedia — DALL-E
+    url: https://en.wikipedia.org/wiki/DALL-E
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q105078662
+    usage: first announced January 5, 2021, OpenAI, text-to-image model
+  - name: Wikipedia — Attention Is All You Need
+    url: https://en.wikipedia.org/wiki/Attention_Is_All_You_Need
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q30249683
+    usage: 2017 Google paper by Vaswani et al. introducing transformer architecture
+  - name: Wikipedia — Generative adversarial network
+    url: https://en.wikipedia.org/wiki/Generative_adversarial_network
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q25104379
+    usage: Ian Goodfellow, June 2014
+  - name: Wikipedia — Arthur Samuel (computer scientist)
+    url: https://en.wikipedia.org/wiki/Arthur_Samuel_(computer_scientist)
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q710266
+    usage: coined "machine learning" in 1959, checkers-playing program
+  - name: Wikipedia — Yann LeCun
+    url: https://en.wikipedia.org/wiki/Yann_LeCun
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q3571662
+    usage: convolutional neural networks (CNNs), 1989 handwritten digit recognition paper
+  - name: Wikipedia — Demis Hassabis
+    url: https://en.wikipedia.org/wiki/Demis_Hassabis
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q3022141
+    usage: co-founded DeepMind; Nobel Prize in Chemistry 2024 for AlphaFold contributions
+  - name: Wikipedia — Fei-Fei Li
+    url: https://en.wikipedia.org/wiki/Fei-Fei_Li
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q18686107
+    usage: created ImageNet dataset, enabling 2010s deep learning breakthroughs
+  - name: Wikipedia — John McCarthy (computer scientist)
+    url: https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q92739
+    usage: coined "artificial intelligence" at Dartmouth 1956
+
+# ============================================================
+# VERIFIED FACTS
+# ============================================================
+
+facts:
+
+  # --- EARLY AI ---
+
+  - id: ai_turing_test_1950
+    fact: >
+      In 1950, Alan Turing published "Computing Machinery and Intelligence," in which he
+      proposed what he called the "imitation game" — a test for machine intelligence in
+      which a human evaluator tries to distinguish between a human and a machine through
+      text conversation. Later named the Turing test, it became a foundational concept
+      in artificial intelligence.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Turing_test
+    key_fields:
+      year: 1950
+      author: Alan Turing
+      paper_title: "Computing Machinery and Intelligence"
+      original_name: "imitation game"
+      later_name: Turing test
+
+  - id: ai_dartmouth_1956
+    fact: >
+      The Dartmouth Summer Research Project on Artificial Intelligence in 1956 is widely
+      considered the founding event of AI as a formal field. Organized by John McCarthy,
+      Claude Shannon, Marvin Minsky, and Nathaniel Rochester, it was here that John McCarthy
+      coined the term "artificial intelligence."
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Dartmouth_workshop
+    wikidata_qid: Q2453355
+    key_fields:
+      year: 1956
+      term_coined: "artificial intelligence"
+      coined_by: John McCarthy
+      organizers: "John McCarthy, Claude Shannon, Marvin Minsky, Nathaniel Rochester"
+
+  - id: ai_eliza_1966
+    fact: >
+      ELIZA was an early natural language processing program developed from 1964 to 1967
+      at MIT by Joseph Weizenbaum, first described publicly in a 1966 paper. It simulated
+      conversation by pattern matching, most famously as "DOCTOR," which mimicked a
+      Rogerian psychotherapist. Users often attributed understanding to ELIZA despite its
+      lack of genuine comprehension.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/ELIZA
+    wikidata_qid: Q580318
+    key_fields:
+      developed: "1964–1967"
+      published: 1966
+      creator: Joseph Weizenbaum
+      institution: MIT
+      famous_persona: DOCTOR (Rogerian psychotherapist simulation)
+
+  - id: ai_winters
+    fact: >
+      AI research experienced two major "AI winters" — periods of drastically reduced
+      funding and interest. The first lasted approximately 1974–1980, following the Lighthill
+      Report's critical assessment of AI progress. The second lasted approximately 1987–2000,
+      triggered by the collapse of the expert systems market.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/AI_winter
+    key_fields:
+      first_winter: "~1974–1980"
+      second_winter: "~1987–2000"
+      first_cause: Lighthill Report criticisms
+      second_cause: collapse of expert systems market
+
+  # --- MACHINE LEARNING MILESTONES ---
+
+  - id: ml_perceptron_1957
+    fact: >
+      The perceptron, an algorithm for supervised learning of binary classifiers, was
+      invented in 1957 by Frank Rosenblatt at Cornell Aeronautical Laboratory. It is
+      considered one of the first artificial neural network models and a direct ancestor
+      of modern deep learning.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Perceptron
+    wikidata_qid: Q690207
+    key_fields:
+      year: 1957
+      inventor: Frank Rosenblatt
+      institution: Cornell Aeronautical Laboratory
+
+  - id: ml_backprop_1986
+    fact: >
+      Backpropagation — the algorithm for efficiently computing gradients in neural
+      networks — was popularized in 1986 by David Rumelhart, Geoffrey Hinton, and
+      Ronald Williams through their landmark paper "Learning representations by back-propagating
+      errors" in Nature. This enabled practical training of multi-layer neural networks.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Backpropagation
+    wikidata_qid: Q798503
+    key_fields:
+      popularized: 1986
+      authors: "Rumelhart, Hinton, Williams"
+      paper_title: "Learning representations by back-propagating errors"
+
+  - id: ml_svm_1995
+    fact: >
+      Support Vector Machines (SVMs), developed at AT&T Bell Laboratories by Corinna Cortes
+      and Vladimir Vapnik, were formally published in 1995. SVMs find the optimal separating
+      hyperplane between classes and are effective for high-dimensional classification problems.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Support_vector_machine
+    key_fields:
+      publication_year: 1995
+      inventors: "Corinna Cortes and Vladimir Vapnik"
+      institution: AT&T Bell Laboratories
+
+  - id: ml_random_forests_2001
+    fact: >
+      Random forests — an ensemble learning method creating many decision trees — was
+      formalized and named by Leo Breiman in a 2001 paper in the journal Machine Learning.
+      The approach builds on Tin Kam Ho's 1995 random subspace method and produces more
+      robust predictions by averaging many trees trained on random data subsets.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Random_forest
+    key_fields:
+      formalized_year: 2001
+      author: Leo Breiman
+      earlier_work: "Tin Kam Ho, 1995 random subspace method"
+
+  - id: ml_alexnet_2012
+    fact: >
+      AlexNet, developed in 2012 by Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton
+      at the University of Toronto, won the ImageNet Large Scale Visual Recognition Challenge
+      by a wide margin, demonstrating that deep convolutional neural networks could dramatically
+      outperform other approaches on image recognition. This result triggered the modern
+      deep learning revolution.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/AlexNet
+    wikidata_qid: Q28325009
+    key_fields:
+      year: 2012
+      creators: "Alex Krizhevsky, Ilya Sutskever, Geoffrey Hinton"
+      institution: University of Toronto
+      competition: "ImageNet (ILSVRC)"
+
+  # --- LANDMARK AI ACHIEVEMENTS ---
+
+  - id: ai_deep_blue_1997
+    fact: >
+      In May 1997, IBM's Deep Blue became the first computer to defeat a reigning world
+      chess champion under standard tournament conditions, beating Garry Kasparov 3.5–2.5
+      in a six-game match in New York. Deep Blue could evaluate approximately 200 million
+      chess positions per second.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)
+    wikidata_qid: Q187899
+    key_fields:
+      year: 1997
+      computer: Deep Blue
+      company: IBM
+      defeated: "Garry Kasparov (reigning world chess champion)"
+      result: "3.5–2.5 (six-game match)"
+
+  - id: ai_watson_jeopardy_2011
+    fact: >
+      IBM's Watson computer defeated Jeopardy! champions Ken Jennings and Brad Rutter
+      in a televised match in February 2011, winning $1 million (donated to charity).
+      Watson demonstrated that computers could process natural language questions and
+      retrieve accurate answers from a massive knowledge base.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/IBM_Watson
+    wikidata_qid: Q12253
+    key_fields:
+      year: 2011
+      computer: Watson
+      company: IBM
+      game: Jeopardy!
+      defeated: "Ken Jennings and Brad Rutter"
+
+  - id: ai_alphago_2016
+    fact: >
+      In March 2016, Google DeepMind's AlphaGo defeated world Go champion Lee Sedol 4–1
+      in a five-game match in Seoul, South Korea. Go has more possible board positions
+      than atoms in the observable universe, and AlphaGo's victory was widely seen as a
+      landmark moment for artificial intelligence, arriving a decade earlier than experts
+      had predicted.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol
+    wikidata_qid: Q22329209
+    key_fields:
+      date: "March 2016"
+      computer: AlphaGo
+      company: Google DeepMind
+      defeated: Lee Sedol
+      result: "4–1 (five-game match)"
+      location: "Seoul, South Korea"
+
+  - id: ai_alphafold_2020
+    fact: >
+      In November 2020, DeepMind's AlphaFold 2 achieved a major breakthrough in protein
+      structure prediction at the CASP14 competition, predicting protein structures with
+      accuracy comparable to experimental methods. This solved a 50-year-old grand challenge
+      in biology, with transformative implications for drug discovery and disease research.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/AlphaFold
+    wikidata_qid: Q60827595
+    key_fields:
+      breakthrough_date: "November 2020"
+      system: AlphaFold 2
+      company: DeepMind
+      competition: CASP14
+      significance: "protein structure prediction comparable to experimental methods"
+
+  - id: ai_gpt3_2020
+    fact: >
+      GPT-3 (Generative Pre-trained Transformer 3), a large language model with 175 billion
+      parameters, was released by OpenAI in 2020 (paper in May, API beta in June). It demonstrated
+      remarkable ability to generate coherent text, code, and answers across a vast range of topics
+      with minimal task-specific training.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/GPT-3
+    wikidata_qid: Q95726734
+    key_fields:
+      released: "May 2020 (paper); June 2020 (API)"
+      developer: OpenAI
+      parameters: "175 billion"
+
+  - id: ai_chatgpt_2022
+    fact: >
+      ChatGPT was released by OpenAI on November 30, 2022, becoming the fastest consumer
+      technology product to reach 100 million users (in two months). Built on the GPT-3.5
+      large language model, it demonstrated that conversational AI could produce remarkably
+      fluent and useful responses across a wide range of tasks.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/ChatGPT
+    wikidata_qid: Q115564437
+    key_fields:
+      released: "November 30, 2022"
+      developer: OpenAI
+      based_on: "GPT-3.5"
+
+  - id: ai_dalle_2021
+    fact: >
+      DALL-E, a text-to-image AI model developed by OpenAI, was first announced on
+      January 5, 2021. It could generate novel, imaginative images from natural language
+      text descriptions, demonstrating that neural networks could perform creative visual
+      synthesis at a high quality.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/DALL-E
+    wikidata_qid: Q105078662
+    key_fields:
+      announced: "January 5, 2021"
+      developer: OpenAI
+      capability: text-to-image generation
+
+  # --- KEY AI CONCEPTS ---
+
+  - id: ai_cnn_lecun_1989
+    fact: >
+      Convolutional Neural Networks (CNNs), inspired by the structure of the visual cortex,
+      were pioneered by Yann LeCun. His 1989 paper demonstrated their effectiveness for
+      recognizing handwritten zip codes, applying backpropagation to train the network.
+      CNNs became the dominant architecture for computer vision tasks.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Convolutional_neural_network
+    key_fields:
+      pioneer: Yann LeCun
+      key_paper_year: 1989
+      task: handwritten digit recognition
+      technique: backpropagation
+
+  - id: ai_transformer_2017
+    fact: >
+      The transformer architecture, introduced in the 2017 paper "Attention Is All You Need"
+      by eight Google researchers (Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser,
+      Polosukhin), replaced recurrent and convolutional approaches with a self-attention
+      mechanism. It became the foundation for nearly all modern large language models, including
+      GPT and BERT.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Attention_Is_All_You_Need
+    wikidata_qid: Q30249683
+    key_fields:
+      year: 2017
+      paper_title: "Attention Is All You Need"
+      organization: Google
+      key_innovation: self-attention mechanism
+      significance: foundation for GPT, BERT, and modern LLMs
+
+  - id: ai_gan_goodfellow_2014
+    fact: >
+      Generative Adversarial Networks (GANs) were invented by Ian Goodfellow and colleagues
+      in June 2014. A GAN trains two neural networks against each other — a generator creates
+      fake data and a discriminator tries to distinguish it from real data — producing
+      increasingly realistic synthetic content such as images, audio, and video.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Generative_adversarial_network
+    wikidata_qid: Q25104379
+    key_fields:
+      invented: "June 2014"
+      inventor: Ian Goodfellow
+      concept: "generator vs. discriminator adversarial training"
+
+  # --- AI PIONEERS ---
+
+  - id: ai_pioneer_arthur_samuel_1959
+    fact: >
+      Arthur Samuel, an American computer scientist at IBM, is credited with coining
+      the term "machine learning" in 1959. His checkers-playing program, developed from
+      the 1950s, was one of the world's first successful self-learning programs and an
+      early demonstration of AI.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Arthur_Samuel_(computer_scientist)
+    wikidata_qid: Q710266
+    key_fields:
+      person: Arthur Samuel
+      term_coined: "machine learning"
+      year_coined: 1959
+      employer: IBM
+      key_project: checkers-playing program
+
+  - id: ai_pioneer_yann_lecun
+    fact: >
+      Yann LeCun, a French-American computer scientist, pioneered convolutional neural
+      networks (CNNs) and spent years advocating for deep learning when it was out of
+      fashion. He served as Chief AI Scientist at Meta Platforms (Facebook) and is a
+      professor at New York University. He shared the 2018 Turing Award with Geoffrey
+      Hinton and Yoshua Bengio.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Yann_LeCun
+    wikidata_qid: Q3571662
+    key_fields:
+      person: Yann LeCun
+      nationality: "French-American"
+      key_contribution: "convolutional neural networks (CNNs)"
+      employer: "Meta Platforms (formerly Facebook AI)"
+      award: "2018 Turing Award (shared with Hinton and Bengio)"
+
+  - id: ai_pioneer_demis_hassabis
+    fact: >
+      Demis Hassabis is a British AI researcher who co-founded Google DeepMind in 2010.
+      DeepMind created AlphaGo (which defeated world Go champion Lee Sedol in 2016) and
+      AlphaFold (which solved protein structure prediction in 2020). In 2024, Hassabis
+      and John Jumper were awarded the Nobel Prize in Chemistry for AlphaFold's contributions
+      to protein structure research.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Demis_Hassabis
+    wikidata_qid: Q3022141
+    key_fields:
+      person: Demis Hassabis
+      nationality: British
+      company_founded: "Google DeepMind (2010)"
+      key_projects: "AlphaGo, AlphaFold"
+      award: "Nobel Prize in Chemistry 2024"
+
+  - id: ai_pioneer_fei_fei_li
+    fact: >
+      Fei-Fei Li, a Chinese-American computer scientist and professor at Stanford University,
+      created the ImageNet dataset — a massive labeled image database that became the benchmark
+      for the ImageNet Large Scale Visual Recognition Challenge (ILSVRC). The 2012 AlexNet
+      breakthrough on ImageNet triggered the modern deep learning revolution.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Fei-Fei_Li
+    wikidata_qid: Q18686107
+    key_fields:
+      person: Fei-Fei Li
+      nationality: "Chinese-American"
+      institution: Stanford University
+      key_contribution: ImageNet dataset
+      significance: enabled AlexNet breakthrough and deep learning revolution
+
+# ============================================================
+# ANSWER TYPE POOLS (for generation phase)
+# ============================================================
+answer_type_pools:
+  - id: person_names
+    format: name
+    members:
+      - Alan Turing
+      - John McCarthy
+      - Joseph Weizenbaum
+      - Frank Rosenblatt
+      - Geoffrey Hinton
+      - David Rumelhart
+      - Vladimir Vapnik
+      - Corinna Cortes
+      - Leo Breiman
+      - Alex Krizhevsky
+      - Ilya Sutskever
+      - Ian Goodfellow
+      - Arthur Samuel
+      - Yann LeCun
+      - Yoshua Bengio
+      - Demis Hassabis
+      - Fei-Fei Li
+      - Garry Kasparov
+      - Lee Sedol
+
+  - id: system_names
+    format: name
+    members:
+      - ELIZA
+      - Deep Blue
+      - Watson
+      - AlphaGo
+      - AlphaFold
+      - GPT-3
+      - ChatGPT
+      - DALL-E
+      - AlexNet
+
+  - id: concept_terms
+    format: term
+    members:
+      - Turing test
+      - artificial intelligence
+      - machine learning
+      - backpropagation
+      - perceptron
+      - support vector machine
+      - random forest
+      - convolutional neural network
+      - recurrent neural network
+      - transformer
+      - self-attention
+      - generative adversarial network
+      - deep learning
+      - reinforcement learning
+      - ImageNet
+
+  - id: year_dates
+    format: bracket_number
+    members: [1950, 1956, 1957, 1959, 1966, 1986, 1995, 1997, 2001, 2011, 2012, 2014, 2016, 2017, 2020, 2021, 2022]
+
+  - id: organization_names
+    format: name
+    members:
+      - MIT
+      - IBM
+      - Google DeepMind
+      - OpenAI
+      - Stanford University
+      - University of Toronto
+      - Cornell Aeronautical Laboratory
+      - AT&T Bell Laboratories
+
+# ============================================================
+# CHAIN THEMES (for knowledge chain system)
+# ============================================================
+chain_themes:
+  - id: 0
+    name: "AI Foundations"
+    description: "Turing test, Dartmouth Conference, ELIZA — the philosophical and early roots of AI"
+    fact_ids:
+      - ai_turing_test_1950
+      - ai_dartmouth_1956
+      - ai_eliza_1966
+      - ai_winters
+
+  - id: 1
+    name: "Machine Learning Milestones"
+    description: "Perceptron to AlexNet — how machines learned to learn"
+    fact_ids:
+      - ml_perceptron_1957
+      - ml_backprop_1986
+      - ml_svm_1995
+      - ml_random_forests_2001
+      - ml_alexnet_2012
+
+  - id: 2
+    name: "AI Champions"
+    description: "Landmark victories — chess, Jeopardy!, Go, and protein folding"
+    fact_ids:
+      - ai_deep_blue_1997
+      - ai_watson_jeopardy_2011
+      - ai_alphago_2016
+      - ai_alphafold_2020
+
+  - id: 3
+    name: "The Modern AI Era"
+    description: "Transformers, GPT, ChatGPT, DALL-E — the generative AI revolution"
+    fact_ids:
+      - ai_transformer_2017
+      - ai_gan_goodfellow_2014
+      - ai_gpt3_2020
+      - ai_dalle_2021
+      - ai_chatgpt_2022
+
+  - id: 4
+    name: "AI Pioneers"
+    description: "The researchers who built modern AI"
+    fact_ids:
+      - ai_cnn_lecun_1989
+      - ai_pioneer_arthur_samuel_1959
+      - ai_pioneer_yann_lecun
+      - ai_pioneer_demis_hassabis
+      - ai_pioneer_fei_fei_li

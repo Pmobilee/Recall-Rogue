@@ -1,0 +1,847 @@
+deck_id: computer_science_companies
+name: "CS & Technology — Software & Tech Companies"
+domain: computer_science
+sub_domain: tech_companies
+target_facts: 60
+minimum_facts: 50
+
+# NOTE: This is sub-deck 7 of the Computer Science & Technology deck.
+# All facts sourced from Wikipedia/Wikidata, verified via direct article lookup.
+# Wikidata QIDs included for every entry that has one.
+#
+# CORRECTIONS from brief:
+# - Oracle co-founders: Bob Miner, Ed Oates, AND Larry Ellison (not just Ellison). Founded 1977.
+# - Adobe: founded December 1982 by John Warnock and Charles Geschke (Mountain View, CA not San Jose)
+# - Dell: founded May 3, 1984 (originally "PC's Limited") by Michael Dell at University of Texas Austin
+#   (brief says "dorm room" which is essentially correct — he started it from his dorm at UT Austin)
+# - Cisco: founded December 10, 1984 by Leonard Bosack and Sandy Lerner (in San Francisco, CA)
+#   (brief says 1984 with no founders — verified founders are Bosack and Lerner, not just generic 1984)
+# - Tesla: founded July 1, 2003 by Martin Eberhard and Marc Tarpenning (NOT Elon Musk)
+#   Elon Musk joined in 2004 as chairman of the board (Series A investor)
+# - GitHub: founded February 8, 2008 by Tom Preston-Werner, Chris Wanstrath, P.J. Hyett, Scott Chacon
+#   (brief says Joel Spolsky — WRONG. Joel Spolsky co-founded Stack Overflow, not GitHub)
+# - Stack Overflow: launched September 15, 2008 by Jeff Atwood and Joel Spolsky
+# - Photoshop: released February 19, 1990, created by Thomas Knoll and John Knoll
+#   (brief says "1990" — correct; originally created in 1987 by the Knolls but published by Adobe Feb 1990)
+# - VisiCalc: created by Dan Bricklin AND Bob Frankston (not just Bricklin)
+# - NVIDIA: founded 1993 by Jensen Huang, Chris Malachowsky, and Curtis Priem (not just Huang)
+# - IBM: founded as CTR in 1911; renamed IBM in 1924 (correct)
+# - HP: founded 1939 by Bill Hewlett and David Packard in a garage in Palo Alto, California (correct)
+# - Microsoft: founded 1975 (correct, by Bill Gates and Paul Allen)
+# - Apple: founded 1976 by Steve Jobs, Steve Wozniak, Ronald Wayne (correct)
+
+data_sources:
+  - name: Wikipedia — IBM
+    url: https://en.wikipedia.org/wiki/IBM
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q37156
+    usage: CTR 1911, renamed IBM 1924
+  - name: Wikipedia — Hewlett-Packard
+    url: https://en.wikipedia.org/wiki/Hewlett-Packard
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q80978
+    usage: founded 1939 by Bill Hewlett and David Packard in Palo Alto garage
+  - name: Wikipedia — Intel
+    url: https://en.wikipedia.org/wiki/Intel
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q248
+    usage: founded July 18 1968 by Robert Noyce and Gordon Moore
+  - name: Wikipedia — Microsoft
+    url: https://en.wikipedia.org/wiki/Microsoft
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q2283
+    usage: founded 1975 by Bill Gates and Paul Allen
+  - name: Wikipedia — Apple Inc.
+    url: https://en.wikipedia.org/wiki/Apple_Inc.
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q312
+    usage: founded 1976 by Steve Jobs, Steve Wozniak, Ronald Wayne
+  - name: Wikipedia — Oracle Corporation
+    url: https://en.wikipedia.org/wiki/Oracle_Corporation
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q19900
+    usage: co-founded 1977 by Larry Ellison, Bob Miner, Ed Oates in Santa Clara CA
+  - name: Wikipedia — Adobe Inc.
+    url: https://en.wikipedia.org/wiki/Adobe_Inc.
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q11463
+    usage: founded December 1982 by John Warnock and Charles Geschke in Mountain View CA
+  - name: Wikipedia — Dell (company)
+    url: https://en.wikipedia.org/wiki/Dell
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q30873
+    usage: founded May 3 1984 by Michael Dell from University of Texas Austin dorm room
+  - name: Wikipedia — Cisco
+    url: https://en.wikipedia.org/wiki/Cisco
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q173395
+    usage: founded December 10 1984 by Leonard Bosack and Sandy Lerner in San Francisco
+  - name: Wikipedia — Amazon (company)
+    url: https://en.wikipedia.org/wiki/Amazon_(company)
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q3884
+    usage: founded 1994 by Jeff Bezos in Bellevue WA, started as online bookstore
+  - name: Wikipedia — Google
+    url: https://en.wikipedia.org/wiki/Google
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q95
+    usage: incorporated September 4 1998 by Larry Page and Sergey Brin; parent became Alphabet 2015
+  - name: Wikipedia — Facebook (Meta)
+    url: https://en.wikipedia.org/wiki/Facebook
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q355
+    usage: founded 2004 by Mark Zuckerberg; rebranded parent to Meta Platforms 2021
+  - name: Wikipedia — Tesla Inc.
+    url: https://en.wikipedia.org/wiki/Tesla,_Inc.
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q478214
+    usage: founded July 1 2003 by Martin Eberhard and Marc Tarpenning; Musk joined 2004
+  - name: Wikipedia — SpaceX
+    url: https://en.wikipedia.org/wiki/SpaceX
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q193701
+    usage: founded 2002 by Elon Musk
+  - name: Wikipedia — Nvidia
+    url: https://en.wikipedia.org/wiki/Nvidia
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q182477
+    usage: founded 1993 by Jensen Huang, Chris Malachowsky, Curtis Priem
+  - name: Wikipedia — VisiCalc
+    url: https://en.wikipedia.org/wiki/VisiCalc
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q725401
+    usage: first spreadsheet, released October 17 1979 for Apple II; created by Dan Bricklin and Bob Frankston
+  - name: Wikipedia — Lotus 1-2-3
+    url: https://en.wikipedia.org/wiki/Lotus_1-2-3
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q653999
+    usage: released January 26 1983; first killer application for IBM PC
+  - name: Wikipedia — Microsoft Word
+    url: https://en.wikipedia.org/wiki/Microsoft_Word
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q11261
+    usage: first released October 25 1983 (originally "Multi-Tool Word")
+  - name: Wikipedia — Microsoft Excel
+    url: https://en.wikipedia.org/wiki/Microsoft_Excel
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q11272
+    usage: first released September 30 1985 (initially for Mac)
+  - name: Wikipedia — Adobe Photoshop
+    url: https://en.wikipedia.org/wiki/Adobe_Photoshop
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q129793
+    usage: released February 19 1990; created by Thomas Knoll and John Knoll
+  - name: Wikipedia — Windows 95
+    url: https://en.wikipedia.org/wiki/Windows_95
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q83370
+    usage: general availability August 24 1995
+  - name: Wikipedia — iPod
+    url: https://en.wikipedia.org/wiki/IPod
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q9479
+    usage: first released November 10 2001
+  - name: Wikipedia — iPhone
+    url: https://en.wikipedia.org/wiki/IPhone
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q2766
+    usage: first-generation announced January 9 2007 by Steve Jobs at Macworld 2007
+  - name: Wikipedia — iPad
+    url: https://en.wikipedia.org/wiki/IPad
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q2796
+    usage: first-generation introduced January 27 2010
+  - name: Wikipedia — Android (operating system)
+    url: https://en.wikipedia.org/wiki/Android_(operating_system)
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q94
+    usage: first released 2008 by Open Handset Alliance, led by Google
+  - name: Wikipedia — GNU Project
+    url: https://en.wikipedia.org/wiki/GNU_Project
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q7598
+    usage: announced September 27 1983 by Richard Stallman
+  - name: Wikipedia — Free Software Foundation
+    url: https://en.wikipedia.org/wiki/Free_Software_Foundation
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q48413
+    usage: founded October 4 1985 by Richard Stallman
+  - name: Wikipedia — Linux kernel
+    url: https://en.wikipedia.org/wiki/Linux_kernel
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q14579
+    usage: created 1991 by Linus Torvalds
+  - name: Wikipedia — Apache HTTP Server
+    url: https://en.wikipedia.org/wiki/Apache_HTTP_Server
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q11354
+    usage: released 1995 by Apache Software Foundation
+  - name: Wikipedia — MySQL
+    url: https://en.wikipedia.org/wiki/MySQL
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q850
+    usage: first released May 23 1995
+  - name: Wikipedia — Git
+    url: https://en.wikipedia.org/wiki/Git
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q186055
+    usage: created by Linus Torvalds, first released April 7 2005
+  - name: Wikipedia — Docker (software)
+    url: https://en.wikipedia.org/wiki/Docker_(software)
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q15206305
+    usage: first released March 20 2013 by Solomon Hykes
+  - name: Wikipedia — Kubernetes
+    url: https://en.wikipedia.org/wiki/Kubernetes
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q22661306
+    usage: first released September 9 2014 by Google
+  - name: Wikipedia — Agile software development
+    url: https://en.wikipedia.org/wiki/Agile_software_development
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q30232
+    usage: Manifesto for Agile Software Development published 2001 by 17 practitioners
+  - name: Wikipedia — Stack Overflow
+    url: https://en.wikipedia.org/wiki/Stack_Overflow
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q549037
+    usage: launched September 15 2008 by Jeff Atwood and Joel Spolsky
+  - name: Wikipedia — GitHub
+    url: https://en.wikipedia.org/wiki/GitHub
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q364
+    usage: founded February 8 2008 by Tom Preston-Werner, Chris Wanstrath, P.J. Hyett, Scott Chacon; acquired by Microsoft 2018
+
+# ============================================================
+# VERIFIED FACTS
+# ============================================================
+
+facts:
+
+  # --- MAJOR COMPANIES ---
+
+  - id: co_ibm_1911
+    fact: >
+      IBM (International Business Machines) traces its origins to 1911, when the
+      Computing-Tabulating-Recording Company (CTR) was formed in Endicott, New York.
+      The company was renamed International Business Machines Corporation in 1924.
+      IBM pioneered punch card data processing and became one of the most influential
+      technology companies of the 20th century.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/IBM
+    wikidata_qid: Q37156
+    key_fields:
+      ctrs_founded: 1911
+      renamed_ibm: 1924
+      original_name: Computing-Tabulating-Recording Company
+
+  - id: co_hp_1939
+    fact: >
+      Hewlett-Packard (HP) was founded in 1939 by Bill Hewlett and David Packard in a
+      one-car garage in Palo Alto, California. Their first product was an audio oscillator.
+      The company's origin story made the Palo Alto garage famous as the birthplace of
+      Silicon Valley, and it is now preserved as a California Historical Landmark.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Hewlett-Packard
+    wikidata_qid: Q80978
+    key_fields:
+      founded: 1939
+      founders: "Bill Hewlett and David Packard"
+      location: "garage in Palo Alto, California"
+      first_product: audio oscillator
+
+  - id: co_intel_1968
+    fact: >
+      Intel Corporation was founded on July 18, 1968, by Robert Noyce and Gordon Moore
+      (originally named NM Electronics). The company is credited with inventing the
+      microprocessor and became the world's dominant chip manufacturer for decades.
+      Moore's Law — the observation that transistor counts double roughly every two years —
+      was articulated by co-founder Gordon Moore.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Intel
+    wikidata_qid: Q248
+    key_fields:
+      founded: "July 18, 1968"
+      founders: "Robert Noyce and Gordon Moore"
+      original_name: NM Electronics
+
+  - id: co_microsoft_1975
+    fact: >
+      Microsoft was founded in 1975 by Bill Gates and Paul Allen in Albuquerque, New Mexico.
+      The company became dominant in personal computing through its MS-DOS operating system
+      (licensed to IBM in 1981) and the later Windows operating system, making Microsoft
+      the world's most valuable software company.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Microsoft
+    wikidata_qid: Q2283
+    key_fields:
+      founded: 1975
+      founders: "Bill Gates and Paul Allen"
+
+  - id: co_apple_1976
+    fact: >
+      Apple was founded on April 1, 1976, by Steve Jobs, Steve Wozniak, and Ronald Wayne
+      as Apple Computer Company. Wozniak designed the original Apple I and Apple II computers;
+      Wayne left shortly after founding. Apple went on to create the Macintosh, iPod, iPhone,
+      and iPad, becoming the first U.S. company to reach a $1 trillion market cap (2018).
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Apple_Inc.
+    wikidata_qid: Q312
+    key_fields:
+      founded: "April 1, 1976"
+      founders: "Steve Jobs, Steve Wozniak, Ronald Wayne"
+
+  - id: co_oracle_1977
+    fact: >
+      Oracle Corporation was co-founded in 1977 by Larry Ellison, Bob Miner, and Ed Oates
+      in Santa Clara, California. It became the world's leading relational database management
+      system (RDBMS) company, built on Edgar F. Codd's relational model published in 1970.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Oracle_Corporation
+    wikidata_qid: Q19900
+    key_fields:
+      founded: 1977
+      founders: "Larry Ellison, Bob Miner, Ed Oates"
+      location: "Santa Clara, California"
+
+  - id: co_adobe_1982
+    fact: >
+      Adobe Inc. was founded in December 1982 by John Warnock and Charles Geschke in
+      Mountain View, California. They left Xerox PARC to commercialize the PostScript
+      page description language they had developed there. Adobe's products — including
+      Photoshop, Acrobat, and Creative Cloud — transformed digital design and publishing.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Adobe_Inc.
+    wikidata_qid: Q11463
+    key_fields:
+      founded: "December 1982"
+      founders: "John Warnock and Charles Geschke"
+      location: "Mountain View, California"
+      origin: "left Xerox PARC to commercialize PostScript"
+
+  - id: co_dell_1984
+    fact: >
+      Dell was founded on May 3, 1984, by Michael Dell while he was a freshman at the
+      University of Texas at Austin, initially operating from his dorm room as "PC's Limited."
+      His model of selling directly to customers and building computers to order disrupted
+      the traditional retail channel and made Dell one of the world's largest PC makers.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Dell
+    wikidata_qid: Q30873
+    key_fields:
+      founded: "May 3, 1984"
+      founder: Michael Dell
+      origin: "University of Texas Austin dorm room"
+      original_name: PC's Limited
+
+  - id: co_cisco_1984
+    fact: >
+      Cisco Systems was founded on December 10, 1984, by Leonard Bosack and Sandy Lerner,
+      computer scientists at Stanford University, in San Francisco, California. They developed
+      a multi-protocol router that enabled different computer network protocols to communicate.
+      Cisco became the world's dominant networking hardware and software company.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Cisco
+    wikidata_qid: Q173395
+    key_fields:
+      founded: "December 10, 1984"
+      founders: "Leonard Bosack and Sandy Lerner"
+      institution: "Stanford University"
+
+  - id: co_nvidia_1993
+    fact: >
+      Nvidia Corporation was founded in 1993 by Jensen Huang, Chris Malachowsky, and
+      Curtis Priem in Santa Clara, California. Originally focused on graphics accelerators
+      for video games, Nvidia's GPUs became essential infrastructure for deep learning and
+      AI research, making Nvidia one of the most valuable companies in the world by the 2020s.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Nvidia
+    wikidata_qid: Q182477
+    key_fields:
+      founded: 1993
+      founders: "Jensen Huang, Chris Malachowsky, Curtis Priem"
+
+  - id: co_tesla_2003
+    fact: >
+      Tesla, Inc. was founded on July 1, 2003, by Martin Eberhard and Marc Tarpenning
+      in San Carlos, California — named after inventor Nikola Tesla. Elon Musk joined
+      in 2004 as chairman of the board and lead investor in the Series A funding round.
+      Musk later became CEO and is the public face of the company.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Tesla,_Inc.
+    wikidata_qid: Q478214
+    key_fields:
+      founded: "July 1, 2003"
+      original_founders: "Martin Eberhard and Marc Tarpenning"
+      musk_joined: "2004 (Series A chairman)"
+
+  - id: co_spacex_2002
+    fact: >
+      SpaceX (Space Exploration Technologies Corporation) was founded in 2002 by
+      Elon Musk with the goal of reducing space transportation costs and enabling
+      the colonization of Mars. It developed the Falcon 1, Falcon 9, and Falcon Heavy
+      rockets, and became the first private company to send astronauts to the
+      International Space Station (2020).
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/SpaceX
+    wikidata_qid: Q193701
+    key_fields:
+      founded: 2002
+      founder: Elon Musk
+      goal: "reduce space transportation costs; Mars colonization"
+
+  # --- LANDMARK PRODUCTS ---
+
+  - id: prod_visicalc_1979
+    fact: >
+      VisiCalc, the first spreadsheet program for personal computers, was released on
+      October 17, 1979, for the Apple II. Created by Dan Bricklin and Bob Frankston
+      and published by VisiCorp, it is considered the Apple II's killer application,
+      transforming microcomputers from hobbyist toys into serious business tools.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/VisiCalc
+    wikidata_qid: Q725401
+    key_fields:
+      released: "October 17, 1979"
+      creators: "Dan Bricklin and Bob Frankston"
+      platform: Apple II
+      published_by: VisiCorp
+
+  - id: prod_lotus123_1983
+    fact: >
+      Lotus 1-2-3, released on January 26, 1983, by Lotus Software, was the first killer
+      application for the IBM PC. It dominated the spreadsheet market through the 1980s,
+      significantly contributing to the success of IBM PC-compatible computers in business.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Lotus_1-2-3
+    wikidata_qid: Q653999
+    key_fields:
+      released: "January 26, 1983"
+      developer: Lotus Software
+      platform: IBM PC
+
+  - id: prod_msword_1983
+    fact: >
+      Microsoft Word was first released on October 25, 1983, under the name "Multi-Tool Word"
+      for the Xenix operating system. It was one of the first word processors to support a
+      mouse and later became the world's dominant word processing application.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Microsoft_Word
+    wikidata_qid: Q11261
+    key_fields:
+      released: "October 25, 1983"
+      original_name: Multi-Tool Word
+      developer: Microsoft
+
+  - id: prod_excel_1985
+    fact: >
+      Microsoft Excel was first released on September 30, 1985, for the Apple Macintosh.
+      A Windows version followed in 1987. Excel eventually displaced Lotus 1-2-3 as the
+      dominant spreadsheet application and remains one of the most widely used software
+      programs in history.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Microsoft_Excel
+    wikidata_qid: Q11272
+    key_fields:
+      first_released: "September 30, 1985 (Mac)"
+      windows_version: 1987
+      developer: Microsoft
+
+  - id: prod_photoshop_1990
+    fact: >
+      Adobe Photoshop was released on February 19, 1990. Created by brothers Thomas Knoll
+      and John Knoll (originally developed in 1987), it was published by Adobe Systems as
+      an image editing application for the Macintosh. Photoshop became so dominant that
+      its name entered common usage as a verb meaning "to digitally alter an image."
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Adobe_Photoshop
+    wikidata_qid: Q129793
+    key_fields:
+      released: "February 19, 1990"
+      creators: "Thomas Knoll and John Knoll"
+      publisher: Adobe Systems
+
+  - id: prod_windows95_1995
+    fact: >
+      Windows 95 was released by Microsoft on August 24, 1995, becoming a major cultural
+      event — it sold more than 7 million copies in its first five weeks. It introduced
+      the Start button and taskbar, the 32-bit preemptive multitasking architecture, and
+      bundled Internet Explorer, fundamentally shaping how people interacted with computers.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Windows_95
+    wikidata_qid: Q83370
+    key_fields:
+      released: "August 24, 1995"
+      developer: Microsoft
+      key_features: "Start button, taskbar, 32-bit multitasking, bundled Internet Explorer"
+
+  - id: prod_ipod_2001
+    fact: >
+      Apple's iPod, a portable digital music player, was first released on November 10, 2001.
+      It combined a small form factor with a large-capacity hard drive and the iTunes ecosystem,
+      transforming how people purchased and listened to music. The iPod line was discontinued
+      in May 2022 after more than 20 years.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/IPod
+    wikidata_qid: Q9479
+    key_fields:
+      released: "November 10, 2001"
+      developer: Apple
+      discontinued: 2022
+
+  - id: prod_iphone_2007
+    fact: >
+      The first-generation iPhone was announced by Apple CEO Steve Jobs at Macworld on
+      January 9, 2007, and launched later that year. It combined a mobile phone, widescreen
+      iPod, and internet communicator into a touchscreen device, launching the smartphone era
+      and transforming mobile computing, media, and social interaction.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/IPhone
+    wikidata_qid: Q2766
+    key_fields:
+      announced: "January 9, 2007"
+      announced_by: Steve Jobs
+      event: Macworld 2007
+      developer: Apple
+
+  - id: prod_ipad_2010
+    fact: >
+      The first-generation iPad was introduced by Apple on January 27, 2010. It filled a
+      gap between smartphones and laptops with a large touchscreen tablet form factor, and
+      created the modern tablet computer market. As of 2022, over 670 million iPads had been sold.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/IPad
+    wikidata_qid: Q2796
+    key_fields:
+      introduced: "January 27, 2010"
+      developer: Apple
+
+  - id: prod_android_2008
+    fact: >
+      Android, the mobile operating system based on a modified Linux kernel, was first
+      commercially released in 2008 on the HTC Dream smartphone. Developed primarily by
+      Google through the Open Handset Alliance, Android became the world's most widely
+      used operating system, running on billions of devices.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Android_(operating_system)
+    wikidata_qid: Q94
+    key_fields:
+      first_release: 2008
+      developer: "Google / Open Handset Alliance"
+      first_device: "HTC Dream"
+
+  # --- OPEN SOURCE MILESTONES ---
+
+  - id: oss_gnu_1983
+    fact: >
+      The GNU Project was announced on September 27, 1983, by Richard Stallman, a programmer
+      at MIT. Its goal was to create a free Unix-like operating system that users could freely
+      run, modify, and share. The GNU Project, along with the Linux kernel (1991), formed the
+      foundation of the free and open-source software movement.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/GNU_Project
+    wikidata_qid: Q7598
+    key_fields:
+      announced: "September 27, 1983"
+      founder: Richard Stallman
+      institution: MIT
+
+  - id: oss_fsf_1985
+    fact: >
+      The Free Software Foundation (FSF) was founded by Richard Stallman on October 4, 1985,
+      to support the free software movement and promote copyleft licensing. The FSF created and
+      maintains the GNU General Public License (GPL), the most widely used free software license.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Free_Software_Foundation
+    wikidata_qid: Q48413
+    key_fields:
+      founded: "October 4, 1985"
+      founder: Richard Stallman
+      key_product: "GNU General Public License (GPL)"
+
+  - id: oss_linux_1991
+    fact: >
+      The Linux kernel was created in 1991 by Linus Torvalds, then a computer science
+      student at the University of Helsinki, Finland. Torvalds released the source code
+      freely online and invited collaboration. Linux became the dominant kernel in servers,
+      supercomputers, and Android smartphones.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Linux_kernel
+    wikidata_qid: Q14579
+    key_fields:
+      created: 1991
+      creator: Linus Torvalds
+      institution: "University of Helsinki"
+
+  - id: oss_apache_1995
+    fact: >
+      The Apache HTTP Server was first released in 1995, developed by Robert McCool and
+      the Apache Group (later the Apache Software Foundation). It quickly became the most
+      widely used web server software in the world, powering the majority of websites
+      through the late 1990s and 2000s.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Apache_HTTP_Server
+    wikidata_qid: Q11354
+    key_fields:
+      released: 1995
+      original_developer: "Robert McCool and the Apache Group"
+
+  - id: oss_mysql_1995
+    fact: >
+      MySQL, the open-source relational database management system, was first released on
+      May 23, 1995, by MySQL AB. It became one of the most widely deployed database systems
+      in the world, especially in web applications. MySQL was acquired by Sun Microsystems
+      in 2008 and then by Oracle in 2010.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/MySQL
+    wikidata_qid: Q850
+    key_fields:
+      released: "May 23, 1995"
+      developer: MySQL AB
+
+  - id: oss_git_2005
+    fact: >
+      Git, the distributed version control system, was created by Linus Torvalds and first
+      released on April 7, 2005. Torvalds created it in response to controversy over the
+      proprietary BitKeeper tool that had been used for Linux kernel development. Git became
+      the world's most widely used version control system.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Git
+    wikidata_qid: Q186055
+    key_fields:
+      released: "April 7, 2005"
+      creator: Linus Torvalds
+      motivation: "replacement for proprietary BitKeeper"
+
+  - id: oss_docker_2013
+    fact: >
+      Docker was first released on March 20, 2013, by Solomon Hykes and Docker, Inc.
+      It popularized containerization — packaging applications with all their dependencies
+      into lightweight, portable containers — transforming software deployment and enabling
+      the microservices architecture pattern.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Docker_(software)
+    wikidata_qid: Q15206305
+    key_fields:
+      released: "March 20, 2013"
+      creator: Solomon Hykes
+      key_concept: containers
+
+  - id: oss_kubernetes_2014
+    fact: >
+      Kubernetes (K8s) was first released on September 9, 2014, by Google. Originally
+      designed internally at Google (inspired by Google's internal Borg system), it was
+      open-sourced and became the de facto standard for container orchestration, automating
+      deployment, scaling, and management of containerized applications.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Kubernetes
+    wikidata_qid: Q22661306
+    key_fields:
+      released: "September 9, 2014"
+      creator: Google
+      inspiration: "Google's internal Borg system"
+
+  # --- SOFTWARE ENGINEERING CONCEPTS ---
+
+  - id: se_agile_manifesto_2001
+    fact: >
+      The Manifesto for Agile Software Development was published in 2001 by a group of
+      17 software practitioners who met in Snowbird, Utah. It defined four values and
+      twelve principles prioritizing working software, collaboration, and responding to
+      change over rigid processes and documentation, launching the Agile methodology movement.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Agile_software_development
+    wikidata_qid: Q30232
+    key_fields:
+      published: 2001
+      authors: "17 software practitioners"
+      location: "Snowbird, Utah"
+
+  - id: se_stackoverflow_2008
+    fact: >
+      Stack Overflow, the question-and-answer website for programmers, was launched on
+      September 15, 2008, by Jeff Atwood and Joel Spolsky. It became the primary resource
+      for software developers worldwide, hosting millions of questions and answers on
+      programming topics.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Stack_Overflow
+    wikidata_qid: Q549037
+    key_fields:
+      launched: "September 15, 2008"
+      founders: "Jeff Atwood and Joel Spolsky"
+
+  - id: se_github_2008
+    fact: >
+      GitHub, the web-based platform for hosting Git repositories, was founded on February 8,
+      2008, by Tom Preston-Werner, Chris Wanstrath, P.J. Hyett, and Scott Chacon. It became
+      the world's largest source code host. Microsoft acquired GitHub in June 2018 for
+      approximately $7.5 billion.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/GitHub
+    wikidata_qid: Q364
+    key_fields:
+      founded: "February 8, 2008"
+      founders: "Tom Preston-Werner, Chris Wanstrath, P.J. Hyett, Scott Chacon"
+      acquired_by: Microsoft
+      acquisition_year: 2018
+
+# ============================================================
+# ANSWER TYPE POOLS (for generation phase)
+# ============================================================
+answer_type_pools:
+  - id: company_names
+    format: name
+    members:
+      - IBM
+      - Hewlett-Packard
+      - Intel
+      - Microsoft
+      - Apple
+      - Oracle
+      - Adobe
+      - Dell
+      - Cisco
+      - Amazon
+      - Google
+      - Meta (Facebook)
+      - Tesla
+      - SpaceX
+      - Nvidia
+
+  - id: person_names
+    format: name
+    members:
+      - Bill Gates
+      - Paul Allen
+      - Steve Jobs
+      - Steve Wozniak
+      - Ronald Wayne
+      - Larry Ellison
+      - Bob Miner
+      - Ed Oates
+      - John Warnock
+      - Charles Geschke
+      - Michael Dell
+      - Leonard Bosack
+      - Sandy Lerner
+      - Jensen Huang
+      - Robert Noyce
+      - Gordon Moore
+      - Martin Eberhard
+      - Marc Tarpenning
+      - Elon Musk
+      - Richard Stallman
+      - Linus Torvalds
+      - Dan Bricklin
+      - Bob Frankston
+      - Thomas Knoll
+      - John Knoll
+      - Jeff Atwood
+      - Joel Spolsky
+      - Tom Preston-Werner
+
+  - id: product_names
+    format: name
+    members:
+      - VisiCalc
+      - Lotus 1-2-3
+      - Microsoft Word
+      - Microsoft Excel
+      - Adobe Photoshop
+      - Windows 95
+      - iPod
+      - iPhone
+      - iPad
+      - Android
+      - Git
+      - Docker
+      - Kubernetes
+      - Linux kernel
+      - Apache HTTP Server
+      - MySQL
+
+  - id: year_dates
+    format: bracket_number
+    members: [1911, 1924, 1939, 1968, 1975, 1976, 1977, 1979, 1982, 1983, 1984, 1985, 1990, 1991, 1993, 1995, 1998, 2001, 2002, 2003, 2005, 2007, 2008, 2010, 2013, 2014]
+
+  - id: concept_terms
+    format: term
+    members:
+      - "killer application"
+      - spreadsheet
+      - containerization
+      - microservices
+      - version control
+      - open source
+      - copyleft
+      - GNU General Public License
+      - Agile Manifesto
+      - direct-to-customer model
+      - PageRank
+
+# ============================================================
+# CHAIN THEMES (for knowledge chain system)
+# ============================================================
+chain_themes:
+  - id: 0
+    name: "Tech Giants: Origins"
+    description: "How the world's most powerful technology companies were founded"
+    fact_ids:
+      - co_ibm_1911
+      - co_hp_1939
+      - co_intel_1968
+      - co_microsoft_1975
+      - co_apple_1976
+      - co_oracle_1977
+      - co_adobe_1982
+      - co_dell_1984
+      - co_cisco_1984
+      - co_nvidia_1993
+
+  - id: 1
+    name: "21st-Century Disruptors"
+    description: "The companies reshaping industries in the modern era"
+    fact_ids:
+      - co_tesla_2003
+      - co_spacex_2002
+
+  - id: 2
+    name: "Landmark Software"
+    description: "The programs that defined personal computing"
+    fact_ids:
+      - prod_visicalc_1979
+      - prod_lotus123_1983
+      - prod_msword_1983
+      - prod_excel_1985
+      - prod_photoshop_1990
+      - prod_windows95_1995
+
+  - id: 3
+    name: "Apple's Greatest Hits"
+    description: "Products that changed consumer technology"
+    fact_ids:
+      - prod_ipod_2001
+      - prod_iphone_2007
+      - prod_ipad_2010
+      - prod_android_2008
+
+  - id: 4
+    name: "Open Source Revolution"
+    description: "How free software changed the world"
+    fact_ids:
+      - oss_gnu_1983
+      - oss_fsf_1985
+      - oss_linux_1991
+      - oss_apache_1995
+      - oss_mysql_1995
+      - oss_git_2005
+      - oss_docker_2013
+      - oss_kubernetes_2014
+
+  - id: 5
+    name: "Developer Tools & Culture"
+    description: "How programmers collaborate, share knowledge, and build together"
+    fact_ids:
+      - se_agile_manifesto_2001
+      - se_stackoverflow_2008
+      - se_github_2008

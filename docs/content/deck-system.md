@@ -61,10 +61,10 @@ Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-02 it contains **62 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-02 it contains **63 decks**:
 
 - **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
-- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, **Music History**
+- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**
 
 ### Deck Architecture Files
 
@@ -514,3 +514,62 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 **Difficulty:** 1=289, 2=875, 3=765, 4=26 (54 unset)
 
 **Fix (2026-04-02):** 19 `image_answers` facts had duplicate `quizQuestion` text across 9 groups (same structure shown from multiple angles). Fixed by `data/decks/_wip/fix-anatomy-duplicate-questions.mjs` (cleaned up after run). Each question now incorporates a parenthetical view label derived from the explanation: e.g. "Which image shows the Skull (lateral view)?", "Which image shows the Skull (inferior/base view)?". Validation: 2009/2009 PASS.
+
+---
+
+## computer_science Deck
+
+`data/decks/computer_science.json` — 296 facts spanning the full arc of computing history and technology.
+
+| Field | Value |
+|---|---|
+| `id` | `computer_science` |
+| `domain` | `general_knowledge` |
+| `facts` | 296 |
+| `answerTypePools` | 10 |
+| `status` | `available` |
+
+**SubDecks (8):**
+
+| SubDeck ID | Name | chainThemeId | Notes |
+|---|---|---|---|
+| `pioneers` | Pioneers & Visionaries | 0 | Key figures in computing history |
+| `hardware` | Hardware & Architecture | 1 | CPUs, memory, physical components |
+| `languages` | Programming Languages | 2 | Language history, paradigms, syntax trivia |
+| `algorithms` | Algorithms & Theory | 3 | Sorting, search, graph algos, complexity, data structures |
+| `systems_networks` | Systems, Networks & Security | 4 | OS concepts, networking, cybersecurity |
+| `internet_web` | The Internet & World Wide Web | 5 | Protocols, web history, standards |
+| `ai_ml` | Artificial Intelligence & ML | 6 | AI history, machine learning concepts, milestones |
+| `software_companies` | Software & Tech Companies | 7 | Major companies, products, corporate history |
+
+**QA fix script (2026-04-02):** `data/decks/_wip/computer_science/fix-qa.mjs` — applied 23 patches to the deck:
+
+*Deletions (5 facts removed, 301 → 296):*
+- `cs_1_analytical_engine_punch_cards` — near-duplicate of `cs_0_charles_babbage_analytical_engine`
+- `cs_4_arpanet_first_message` — cross-batch duplicate of `cs_5_arpanet_first_message` (kept batch 5 version)
+- `cs_4_arpanet_year` — cross-batch duplicate of `cs_5_arpanet_first_message_date` (kept batch 5 version)
+- `cs_7_linux_creator` — cross-batch duplicate of `cs_4_linux_creator` (kept batch 4 version)
+- `cs_7_linux_year` — cross-batch duplicate of `cs_4_linux_year` (kept batch 4 version)
+
+*Distractor fixes (10 facts):*
+- `cs_0_brendan_eich_javascript_original_name` — removed "Mocha" from distractors (real earlier name), added to `acceptableAlternatives`; updated question wording to target the final pre-rename name; added "JScript" as replacement distractor
+- `cs_4_enigma_breakers` — removed "Gordon Welchman" from distractors (legitimate co-contributor), added to `acceptableAlternatives`; replaced with "Charles Babbage"
+- `cs_5_mosaic_creator` — removed "Eric Bina" from distractors (real co-creator), replaced with "Tim O'Reilly"
+- `cs_6_turing_test_paper` — removed "Can Machines Think?" from distractors (paper's own opening question — ambiguous), replaced with "Artificial Neural Computations"
+- `cs_3_mergesort_complexity` — added "Θ(n log n)" to `acceptableAlternatives` (equivalent notation), replaced in distractors with "O(n + log n)"
+- `cs_3_np_complete_first_problem` — removed "3-SAT" from `acceptableAlternatives` (3-SAT is a separate NP-complete problem, not the Cook-Levin first proof)
+- `cs_1_von_neumann_vs_harvard` — removed "stored-program computer" from distractors (describes the same concept), replaced with "dataflow architecture"
+- `cs_1_harvard_architecture_origin` — removed "stored-program computer" from distractors, replaced with "systolic array architecture"
+- `cs_1_four_generations_summary` — removed "integrated circuit" from distractors (3rd gen, closely related to correct answer "microprocessor"), replaced with "quantum processor"
+- `cs_1_transistor_replaced` — removed "relay" from distractors (partially correct — relays were also replaced by transistors), replaced with "punched card"
+
+*Question/answer fixes (7 facts):*
+- `cs_5_netflix_founders` — fixed question that reversed who charged late fees; new wording correctly positions Netflix as subscription-based vs Blockbuster's brick-and-mortar model
+- `cs_7_github_founders` — removed "(not Stack Overflow's Joel Spolsky)" hint from question text
+- `cs_0_larry_page_pagerank` — removed "named after him" hint from question text
+- `cs_0_vint_cerf_tcp_ip` — changed "father of the Internet" to "one of the 'fathers of the Internet'" (shared credit with Kahn)
+- `cs_6_alphago_creator` — removed "Google" as standalone `acceptableAlternatives` entry (imprecise; kept "DeepMind" and "Google DeepMind")
+- `cs_0_james_gosling_java_name` — added "Green" to `acceptableAlternatives` (Java went Oak → Green → Java)
+- `cs_1_floppy_disk_first_size` — changed `answerTypePoolId` from `bracket_numbers` to `technology_terms` (answer "8" is not in bracket notation); added explicit distractors `["3.5", "5.25", "12", "14", "6", "10", "4", "16"]`
+
+**Validation:** 296/296 PASS, 0 FAIL (via `scripts/verify-curated-deck.mjs`)

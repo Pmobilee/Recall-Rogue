@@ -1,0 +1,754 @@
+# CS & Technology — Master Deck Architecture
+# Top-level manifest for the Computer Science & Technology deck.
+# All entity data verified via Wikipedia/Wikidata; see individual sub-deck files for source URLs.
+# Sub-deck source files contain wikidata QIDs and primary-article URLs for every entity.
+
+deck_id: computer_science
+name: "Computer Science & Technology"
+domain: general_knowledge
+sub_domain: computer_science
+target_facts: 300
+minimum_facts: 240
+
+data_sources:
+  - name: Wikipedia — Computer scientists, hardware, languages, algorithms, systems, internet, AI
+    url: https://en.wikipedia.org
+    license: CC-BY-SA-4.0
+    usage: >
+      Primary source for all narrative facts, dates, biographical data,
+      algorithm complexity values, protocol details, and company founding info.
+      All facts cross-checked against individual Wikipedia articles listed in sub-deck files.
+  - name: Wikidata
+    url: https://www.wikidata.org
+    license: CC0
+    usage: >
+      Structured identifiers (QIDs), birth/death dates, nationality fields,
+      person-to-work links, and acronym expansions. QIDs recorded in sub-deck files.
+
+# ============================================================
+# ANSWER TYPE POOLS
+# Merged from all 8 sub-decks. Every member is a real entity
+# from the verified source data. Synthetic members (marked with
+# [synthetic]) are plausible distractor values added to bring
+# small pools above the 8-member safety threshold.
+# ============================================================
+answer_type_pools:
+
+  - id: person_names
+    format: name
+    estimated_count: 60
+    min_distractors: 4
+    notes: >
+      Full names of computer scientists, inventors, and technology pioneers.
+      Covers all 8 sub-decks. Drawn from pioneers, hardware inventors, language
+      creators, algorithm inventors, systems builders, internet founders, AI researchers,
+      and company founders.
+    members:
+      # Pioneers & Visionaries (sub-deck 0)
+      - Ada Lovelace
+      - Charles Babbage
+      - Alan Turing
+      - John von Neumann
+      - Claude Shannon
+      - Grace Hopper
+      - Konrad Zuse
+      - Donald Knuth
+      - Edsger Dijkstra
+      - Margaret Hamilton
+      - Dennis Ritchie
+      - Ken Thompson
+      - Vint Cerf
+      - Robert Kahn
+      - Tim Berners-Lee
+      - Linus Torvalds
+      - Guido van Rossum
+      - Brendan Eich
+      - James Gosling
+      - Bjarne Stroustrup
+      - John McCarthy
+      - Marvin Minsky
+      - Geoffrey Hinton
+      - Larry Page
+      - Sergey Brin
+      - Hedy Lamarr
+      - Alonzo Church
+      - John Backus
+      - Frances Allen
+      - Barbara Liskov
+      - Niklaus Wirth
+      - Tony Hoare
+      - Edgar F. Codd
+      - Douglas Engelbart
+      - Radia Perlman
+      - Lynn Conway
+      # Hardware (sub-deck 1)
+      - Jack Kilby
+      - Robert Noyce
+      - Gordon Moore
+      - Robert Dennard
+      # AI/ML (sub-deck 6)
+      - Yann LeCun
+      - Demis Hassabis
+      - Fei-Fei Li
+      - Arthur Samuel
+      # Internet/Web (sub-deck 5)
+      - Ray Tomlinson
+      - Marc Andreessen
+      # Companies (sub-deck 7)
+      - Bill Gates
+      - Paul Allen
+      - Steve Jobs
+      - Steve Wozniak
+      - Larry Ellison
+      - Jeff Bezos
+      - Mark Zuckerberg
+      - Jensen Huang
+      - Elon Musk
+      - Richard Stallman
+      - Rasmus Lerdorf
+      - Anders Hejlsberg
+      - Yukihiro Matsumoto
+
+  - id: technology_terms
+    format: term
+    estimated_count: 45
+    min_distractors: 4
+    notes: >
+      General CS and technology concept terms used as answers. Includes hardware
+      concepts, OS concepts, programming paradigms, and architectural terms.
+    members:
+      - transistor
+      - integrated circuit
+      - microprocessor
+      - vacuum tube
+      - stored-program computer
+      - von Neumann architecture
+      - Harvard architecture
+      - Moore's Law
+      - Dennard scaling
+      - object-oriented programming
+      - functional programming
+      - garbage collection
+      - backpropagation
+      - neural network
+      - machine learning
+      - deep learning
+      - blockchain
+      - packet switching
+      - open-source software
+      - graphical user interface
+      - virtual machine
+      - bytecode
+      - compiler
+      - interpreter
+      - lambda calculus
+      - Turing machine
+      - boolean algebra
+      - binary
+      - hexadecimal
+      - assembly language
+      - cloud computing
+      - containerisation
+      - version control
+      - relational database
+      - frequency-hopping spread spectrum
+      - superscalar architecture
+      - dynamic instruction handling
+      - VLSI
+      - Spanning Tree Protocol
+      - PageRank
+      - MapReduce
+      - transformer architecture
+      - convolutional neural network
+      - generative adversarial network
+      - time-sharing
+
+  - id: acronym_expansions
+    format: term
+    estimated_count: 24
+    min_distractors: 4
+    notes: >
+      Full expansions of well-known CS acronyms. Used for "What does X stand for?"
+      questions. Drawn primarily from systems/networks sub-deck.
+    members:
+      - "Electronic Numerical Integrator and Computer"        # ENIAC
+      - "Universal Automatic Computer"                        # UNIVAC
+      - "Random-Access Memory"                                # RAM
+      - "Read-Only Memory"                                    # ROM
+      - "Dynamic Random-Access Memory"                        # DRAM
+      - "Central Processing Unit"                             # CPU
+      - "Graphics Processing Unit"                            # GPU
+      - "Solid-State Drive"                                   # SSD
+      - "Hard Disk Drive"                                     # HDD
+      - "Transmission Control Protocol"                       # TCP
+      - "Internet Protocol"                                   # IP
+      - "HyperText Transfer Protocol"                         # HTTP
+      - "HyperText Markup Language"                           # HTML
+      - "Uniform Resource Locator"                            # URL
+      - "Domain Name System"                                  # DNS
+      - "Structured Query Language"                           # SQL
+      - "Common Business-Oriented Language"                   # COBOL
+      - "Formula Translation"                                 # FORTRAN
+      - "LISt Processing"                                     # LISP
+      - "Beginner's All-purpose Symbolic Instruction Code"    # BASIC
+      - "PROgramming in LOGic"                                # Prolog
+      - "PHP: Hypertext Preprocessor"                         # PHP (recursive)
+      - "Transport Layer Security"                            # TLS
+      - "Secure Shell"                                        # SSH
+
+  - id: language_names
+    format: name
+    estimated_count: 28
+    min_distractors: 4
+    notes: >
+      Programming and markup language names. Used for "What language did X create?"
+      or "Which language was released in year Y?" questions.
+    members:
+      - Assembly
+      - FORTRAN
+      - Lisp
+      - COBOL
+      - ALGOL
+      - BASIC
+      - C
+      - Pascal
+      - Smalltalk
+      - Prolog
+      - Ada
+      - SQL
+      - "C++"
+      - Perl
+      - Haskell
+      - Python
+      - Ruby
+      - Java
+      - JavaScript
+      - PHP
+      - R
+      - "Objective-C"
+      - Go
+      - Rust
+      - Swift
+      - TypeScript
+      - Kotlin
+      - HTML
+
+  - id: company_names
+    format: name
+    estimated_count: 24
+    min_distractors: 4
+    notes: >
+      Tech company names. Used for "Who founded X?" or "Which company created Y?"
+      questions. Drawn from companies sub-deck and cross-referenced throughout.
+    members:
+      - IBM
+      - Hewlett-Packard
+      - Intel
+      - Microsoft
+      - Apple
+      - Oracle
+      - Adobe
+      - Dell
+      - Cisco
+      - Amazon
+      - Google
+      - Meta
+      - Tesla
+      - SpaceX
+      - NVIDIA
+      - Netscape
+      - Sun Microsystems
+      - Bell Labs
+      - Xerox PARC
+      - DeepMind
+      - OpenAI
+      - Mozilla
+      - JetBrains
+      - Twitter
+
+  - id: product_names
+    format: name
+    estimated_count: 28
+    min_distractors: 4
+    notes: >
+      Names of specific hardware products, software products, and services.
+      Includes computers, operating systems, browsers, and consumer devices.
+    members:
+      - ENIAC
+      - UNIVAC I
+      - IBM PC
+      - Apple I
+      - Apple II
+      - Macintosh
+      - Intel 4004
+      - GeForce 256
+      - MS-DOS
+      - Unix
+      - Linux
+      - macOS
+      - Windows 95
+      - Android
+      - iOS
+      - ARPANET
+      - Mosaic
+      - Netscape Navigator
+      - Internet Explorer
+      - VisiCalc
+      - Lotus 1-2-3
+      - Microsoft Word
+      - Microsoft Excel
+      - Adobe Photoshop
+      - Git
+      - Docker
+      - Kubernetes
+      - iPhone
+
+  - id: algorithm_names
+    format: name
+    estimated_count: 18
+    min_distractors: 4
+    notes: >
+      Proper names of algorithms. Used for "Which algorithm does X describe?"
+      or "Who invented Y?" questions. Drawn from algorithms sub-deck.
+    members:
+      - Bubble Sort
+      - Insertion Sort
+      - Selection Sort
+      - Merge Sort
+      - Quicksort
+      - Heapsort
+      - Timsort
+      - Binary Search
+      - "Dijkstra's Algorithm"
+      - "Bellman-Ford Algorithm"
+      - "Floyd-Warshall Algorithm"
+      - "A* Search"
+      - "Kruskal's Algorithm"
+      - RSA
+      - PageRank
+      - MapReduce
+      - "Fast Fourier Transform"
+      - Backpropagation
+
+  - id: bracket_numbers
+    format: bracket_number
+    estimated_count: 30
+    notes: >
+      Year values rendered in bracket notation (e.g. {1969}, {1947}).
+      Do NOT maintain a static pool. Use runtime numeric distractors:
+      generate ±5–15 year offsets from the correct year. All 8 sub-decks
+      contain date-based facts; year distractors are always runtime-computed.
+    runtime_distractors: true
+
+  - id: complexity_terms
+    format: term
+    estimated_count: 12
+    min_distractors: 4
+    notes: >
+      Big-O complexity expressions and CS theory class labels.
+      Pool is small; synthetic members marked [synthetic] are genuine
+      complexity values that appear in algorithm analysis contexts.
+    members:
+      # Real members from verified source data
+      - "O(1)"
+      - "O(log n)"
+      - "O(n)"
+      - "O(n log n)"
+      - "O(n²)"
+      - "O(n³)"
+      - "O(2ⁿ)"
+      # Synthetic distractor members (valid complexity values, added to reach threshold)
+      - "O(n!)"           # [synthetic] factorial — appears in TSP brute-force discussion
+      - "O(√n)"           # [synthetic] square-root — appears in Sieve of Eratosthenes
+      - "O(n log² n)"     # [synthetic] quasi-linear — appears in some divide-and-conquer
+      - "Θ(n log n)"      # [synthetic] tight bound notation — appears in sort proofs
+      - "Ω(n)"            # [synthetic] lower-bound notation — appears in comparison sorts
+
+  - id: protocol_names
+    format: name
+    estimated_count: 14
+    min_distractors: 4
+    notes: >
+      Network protocol and security standard names. Drawn from systems/networks
+      and internet/web sub-decks.
+    members:
+      - TCP/IP
+      - HTTP
+      - HTTPS
+      - DNS
+      - FTP
+      - SSH
+      - SMTP
+      - SSL
+      - TLS
+      - Wi-Fi
+      - Ethernet
+      - IPv4
+      - IPv6
+      - Bluetooth
+
+# ============================================================
+# SUB-DECKS
+# 8 sub-decks, chainThemeId 0–7.
+# Each references its own architecture YAML for verified source data.
+# ============================================================
+sub_decks:
+
+  - id: cs_tech_pioneers
+    name: "Pioneers & Visionaries"
+    chainThemeId: 0
+    target_facts: 35
+    minimum_facts: 28
+    source_file: data/deck-architectures/cs_tech_pioneers_arch.yaml
+    description: >
+      The people who invented computing: Babbage, Lovelace, Turing, von Neumann,
+      Shannon, Hopper, and the language and algorithm pioneers who followed.
+    chain_themes:
+      - "Computing Founders"
+      - "Turing Award Lineage"
+      - "Women in Computing"
+      - "Bell Labs Alumni"
+      - "Language Creators"
+
+  - id: cs_tech_hardware
+    name: "Hardware & Architecture"
+    chainThemeId: 1
+    target_facts: 35
+    minimum_facts: 28
+    source_file: data/deck-architectures/cs_tech_hardware_arch.yaml
+    description: >
+      Physical computing: transistors, integrated circuits, microprocessors,
+      storage media, Moore's Law, and the march from vacuum tubes to silicon.
+    chain_themes:
+      - "Silicon Milestones"
+      - "Storage Evolution"
+      - "Personal Computer Era"
+      - "CPU Architecture"
+      - "Memory Technology"
+
+  - id: cs_tech_languages
+    name: "Programming Languages"
+    chainThemeId: 2
+    target_facts: 35
+    minimum_facts: 28
+    source_file: data/deck-architectures/cs_tech_languages_arch.yaml
+    description: >
+      Every major programming language from FORTRAN (1957) through TypeScript (2012):
+      who made them, when, and why they mattered.
+    chain_themes:
+      - "First-Generation Languages"
+      - "Systems Languages"
+      - "Web Languages"
+      - "Modern Languages"
+      - "Functional & Logic"
+
+  - id: cs_tech_algorithms
+    name: "Algorithms & Theory"
+    chainThemeId: 3
+    target_facts: 30
+    minimum_facts: 25
+    source_file: data/deck-architectures/cs_tech_algorithms_arch.yaml
+    description: >
+      Sorting, searching, graph algorithms, Big-O complexity, P vs NP,
+      the halting problem, RSA, and the mathematical foundations of computing.
+    chain_themes:
+      - "Sorting & Searching"
+      - "Graph Traversal"
+      - "Shortest Paths"
+      - "Theory of Computation"
+      - "Complexity Classes"
+      - "Famous Algorithms"
+      - "Logic & Algebra"
+      - "Data Structures"
+
+  - id: cs_tech_systems
+    name: "Systems, Networks & Security"
+    chainThemeId: 4
+    target_facts: 35
+    minimum_facts: 28
+    source_file: data/deck-architectures/cs_tech_systems_arch.yaml
+    description: >
+      Operating systems (Unix to Android), networking (ARPANET to TCP/IP),
+      security (Enigma to TLS), and the protocols that power modern computing.
+    chain_themes:
+      - "Operating Systems"
+      - "Networking Foundations"
+      - "Internet Protocols"
+      - "Security & Cryptography"
+      - "Acronym Decode"
+      - "Hardware Alphabet"
+      - "Networking Acronyms"
+      - "Founding Moments"
+
+  - id: cs_tech_internet_web
+    name: "The Internet & World Wide Web"
+    chainThemeId: 5
+    target_facts: 35
+    minimum_facts: 28
+    source_file: data/deck-architectures/cs_tech_internet_web_arch.yaml
+    description: >
+      ARPANET's first message, the Web's invention at CERN, browsers, search engines,
+      social media, and how the modern internet was built.
+    chain_themes:
+      - "ARPANET to Internet"
+      - "World Wide Web"
+      - "Browsers & Search"
+      - "Social Media Origins"
+      - "E-Commerce Firsts"
+
+  - id: cs_tech_ai_ml
+    name: "Artificial Intelligence & Machine Learning"
+    chainThemeId: 6
+    target_facts: 35
+    minimum_facts: 28
+    source_file: data/deck-architectures/cs_tech_ai_ml_arch.yaml
+    description: >
+      From the 1956 Dartmouth workshop through deep learning, AlphaGo, AlphaFold,
+      GPT-3, and ChatGPT: the history of AI and machine learning.
+    chain_themes:
+      - "AI Pioneers"
+      - "AI Winters & Revivals"
+      - "Deep Learning Revolution"
+      - "AI Milestones"
+      - "Modern Generative AI"
+
+  - id: cs_tech_companies
+    name: "Software & Tech Companies"
+    chainThemeId: 7
+    target_facts: 60
+    minimum_facts: 50
+    source_file: data/deck-architectures/cs_tech_companies_arch.yaml
+    description: >
+      Founding stories and key products of IBM, HP, Intel, Microsoft, Apple, Google,
+      Meta, Amazon, NVIDIA, and dozens more. The corporate history of the digital age.
+    chain_themes:
+      - "Hardware Empires"
+      - "Software Giants"
+      - "Silicon Valley Origins"
+      - "Garage Startups"
+      - "Open Source Movement"
+      - "Mobile Revolution"
+      - "Cloud & AI Era"
+      - "Product Firsts"
+
+# ============================================================
+# COMMON CONFUSIONS
+# Entity pairs that players frequently conflate.
+# Seeded into the confusion matrix for smarter distractor selection.
+# ============================================================
+common_confusions:
+  # Pioneer pairs
+  - [Ada Lovelace, Grace Hopper]           # Both women, both programming pioneers
+  - [Alan Turing, Alonzo Church]           # Both 1936 computability proofs, Church-Turing thesis
+  - [Dennis Ritchie, Ken Thompson]         # Both Unix, both 1983 Turing Award
+  - [Vint Cerf, Robert Kahn]               # Both TCP/IP, both 2004 Turing Award
+  - [Larry Page, Sergey Brin]              # Both Google co-founders
+  - [John McCarthy, Marvin Minsky]         # Both MIT AI Lab co-founders
+  - [Jack Kilby, Robert Noyce]             # Both integrated circuit inventors
+  - [Dennis Ritchie, Brian Kernighan]      # C language association
+  - [Tim Berners-Lee, Vint Cerf]           # Both "fathers of the internet"
+  # Language pairs
+  - [C, "C++"]                             # Stroustrup extended Ritchie's language
+  - [Java, JavaScript]                     # Similar names, unrelated languages
+  - [Python, Ruby]                         # Both late-1990s scripting languages
+  - [Go, Rust]                             # Both modern systems languages
+  - [Swift, Kotlin]                        # Both modern mobile-first languages
+  - [FORTRAN, COBOL]                       # Both 1950s languages, different domains
+  - [Lisp, Prolog]                         # Both AI languages
+  - [Haskell, Erlang]                      # Both functional languages
+  # Algorithm pairs
+  - [Merge Sort, Quicksort]                # Both O(n log n) average, different trade-offs
+  - ["Dijkstra's Algorithm", "Bellman-Ford Algorithm"]  # Both shortest path, different constraints
+  - [BFS, DFS]                             # Both graph traversal, different order
+  - [RSA, Diffie-Hellman]                  # Both public-key cryptography
+  # Hardware / architecture pairs
+  - [Von Neumann architecture, Harvard architecture]   # Stored-program vs separate memory
+  - [DRAM, SRAM]                           # Both RAM types, different speed/density trade-offs
+  - [SSD, HDD]                             # Both storage, different technology
+  - [Intel 4004, Intel 8080]               # Both early Intel CPUs
+  # Company / product pairs
+  - [Microsoft, Apple]                     # Rival personal computing empires
+  - [Google, Bing]                         # Search engine rivals
+  - [Facebook, Twitter]                    # Social media platforms
+  - [AWS, Azure]                           # Cloud platform rivals
+  - [iOS, Android]                         # Mobile OS rivals
+  - [Git, GitHub]                          # Tool vs hosting platform
+  - [Docker, Kubernetes]                   # Containerisation vs orchestration
+  # AI pairs
+  - [Geoffrey Hinton, Yann LeCun]          # Both deep learning pioneers, both Turing Award 2018
+  - [AlphaGo, AlphaFold]                   # Both DeepMind, different domains
+  - [GPT-3, ChatGPT]                       # Same lineage, different interfaces
+  - [ChatGPT, DALL-E]                      # Both OpenAI, different modalities
+
+# ============================================================
+# QUESTION TEMPLATES
+# ============================================================
+question_templates:
+
+  - id: who_created_language
+    format: "Who created the {language} programming language?"
+    answer_pool: person_names
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: what_language_created_by
+    format: "Which programming language did {person} create?"
+    answer_pool: language_names
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: when_language_released
+    format: "In what year was the {language} programming language first released?"
+    answer_pool: bracket_numbers
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: acronym_expansion
+    format: "What does the acronym {acronym} stand for?"
+    answer_pool: acronym_expansions
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: who_invented_hardware
+    format: "Who invented or developed {hardware_item}?"
+    answer_pool: person_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: algorithm_inventor
+    format: "Who invented {algorithm}?"
+    answer_pool: person_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: algorithm_complexity
+    format: "What is the average-case time complexity of {algorithm}?"
+    answer_pool: complexity_terms
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: company_founder
+    format: "Who co-founded {company}?"
+    answer_pool: person_names
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: company_founded_year
+    format: "In what year was {company} founded?"
+    answer_pool: bracket_numbers
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: product_company
+    format: "Which company developed {product}?"
+    answer_pool: company_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: protocol_expansion
+    format: "What does the protocol acronym {protocol} stand for?"
+    answer_pool: acronym_expansions
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: pioneer_achievement
+    format: "What is {person} best known for in computer science?"
+    answer_pool: technology_terms
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: year_of_event
+    format: "In what year did {event} occur?"
+    answer_pool: bracket_numbers
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: term_definition
+    format: "What is the term for {description}?"
+    answer_pool: technology_terms
+    available_from_mastery: 0
+    difficulty: 1
+
+# ============================================================
+# DIFFICULTY TIERS
+# ============================================================
+difficulty_tiers:
+  easy:
+    description: "Universally known names, products, and straightforward expansions"
+    examples:
+      - "Alan Turing, Tim Berners-Lee, Bill Gates, Steve Jobs"
+      - "What does CPU stand for? Who co-founded Google?"
+      - "Which language did Guido van Rossum create? (Python)"
+      - "In what year was the iPhone announced? (2007)"
+
+  medium:
+    description: "Less obvious creator-language links, algorithm trade-offs, founding years"
+    examples:
+      - "Bjarne Stroustrup, Grace Hopper, Donald Knuth, Brendan Eich"
+      - "Who invented Quicksort? What does COBOL stand for?"
+      - "What is the worst-case complexity of Merge Sort? (O(n log n))"
+      - "Which company developed the first commercial microprocessor? (Intel)"
+
+  hard:
+    description: "Specific dates, algorithm details, theory concepts, lesser-known pioneers"
+    examples:
+      - "Alonzo Church, John Backus, Frances Allen, Edgar F. Codd"
+      - "What year did Dijkstra publish his shortest-path algorithm? (1956/1959)"
+      - "Who invented DRAM and in what year? (Robert Dennard, 1966)"
+      - "What is the Church-Turing thesis? What does Big-O describe?"
+      - "What is Dennard scaling and when did it break down?"
+
+# ============================================================
+# SYNONYM GROUPS
+# Fact IDs that quiz the same underlying fact from different angles.
+# Generator must ensure these are never distractors for each other.
+# ============================================================
+synonym_groups:
+
+  - id: tcp_ip_inventors
+    facts: [vint_cerf, robert_kahn]
+    reason: "Both co-invented TCP/IP — either name can answer 'who designed TCP/IP?'"
+
+  - id: unix_co_creators
+    facts: [dennis_ritchie, ken_thompson]
+    reason: "Both co-created Unix — never distract each other on Unix questions"
+
+  - id: google_founders
+    facts: [larry_page, sergey_brin]
+    reason: "Both co-founded Google — never distract each other on Google questions"
+
+  - id: intel_founders
+    facts: [robert_noyce, gordon_moore]
+    reason: "Both co-founded Intel — never distract each other on Intel questions"
+
+  - id: integrated_circuit_inventors
+    facts: [jack_kilby, robert_noyce]
+    reason: "Both independently invented the IC — context determines which is correct"
+
+  - id: mit_ai_lab_founders
+    facts: [john_mccarthy, marvin_minsky]
+    reason: "Both co-founded MIT AI Lab — never distract each other on that question"
+
+  - id: turing_award_1983
+    facts: [dennis_ritchie, ken_thompson]
+    reason: "Shared the 1983 ACM Turing Award — never distract each other on that"
+
+  - id: turing_award_2004
+    facts: [vint_cerf, robert_kahn]
+    reason: "Shared the 2004 ACM Turing Award — never distract each other on that"
+
+  - id: c_language_family
+    facts: [c_language, cpp_language, objective_c]
+    reason: "All directly related — C++ extends C, Objective-C extends C. Distractor generation must read question carefully."
+
+  - id: java_javascript_names
+    facts: [java_language, javascript_language]
+    reason: "Similar names but unrelated languages. Must never be distractors for each other on creator or year questions."
+
+  - id: unix_linux_relation
+    facts: [unix_os, linux_kernel]
+    reason: "Linux reimplements Unix concepts; both appear in 'OS history' questions. Generator must distinguish."
+
+  - id: www_html_http_url
+    facts: [world_wide_web, html_language, http_protocol, url_system]
+    reason: "All invented by Tim Berners-Lee at CERN — questions about the Web, HTML, HTTP, and URL all point to the same person"

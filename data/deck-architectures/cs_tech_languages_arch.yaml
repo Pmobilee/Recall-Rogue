@@ -1,0 +1,413 @@
+# CS & Technology: Programming Languages — Verified Source Architecture
+# All facts verified via Wikipedia API, April 2026
+# Sources: en.wikipedia.org
+
+deck_id: cs_tech_languages
+sub_deck_index: 2
+title: "Programming Languages"
+target_facts: 35
+source_url_base: "https://en.wikipedia.org/wiki/"
+
+facts:
+
+  - name: Assembly Language
+    year: 1947
+    creators: [Kathleen Booth, Andrew Donald Booth]
+    wikidata: Q165436
+    source_url: "https://en.wikipedia.org/wiki/Assembly_language"
+    achievement: "First symbolic language to represent machine code instructions (Booth & Booth, 1947)"
+    key_facts:
+      - "The use of symbolic language to represent machine code is first found in Kathleen and Andrew Donald Booth's 1947 work 'Coding for A.R.C.'"
+      - "Uses human-readable mnemonics (MOV, ADD, JMP) to represent binary CPU instructions"
+      - "Each CPU architecture has its own distinct assembly language"
+      - "The term 'assembler' (the program that translates assembly to machine code) was coined by Wilkes, Wheeler, and Gill in 1951"
+      - "Assembly was the primary programming method before high-level languages; FORTRAN (1957) was the first widely used alternative"
+
+  - name: FORTRAN
+    year: 1957
+    creators: [John Backus]
+    organization: IBM
+    wikidata: Q83303
+    source_url: "https://en.wikipedia.org/wiki/Fortran"
+    achievement: "First widely used high-level programming language; IBM team led by John Backus, first compiler April 1957"
+    key_facts:
+      - "Originally developed by IBM; a reference manual was released in 1956, but the first compilers that produced accurate code were delivered in April 1957"
+      - "Stands for 'Formula Translation' (or FORmula TRANslation)"
+      - "Led by John Backus, who later won the 1977 ACM Turing Award"
+      - "First widely used high-level programming language — made scientific programming accessible without assembly"
+      - "Still used today in scientific, engineering, and high-performance computing; Fortran 2023 is the current standard"
+
+  - name: Lisp
+    year: 1958
+    creators: [John McCarthy]
+    organization: MIT
+    wikidata: Q132874
+    source_url: "https://en.wikipedia.org/wiki/Lisp_(programming_language)"
+    achievement: "Second-oldest high-level language still in use; invented by John McCarthy at MIT in 1958"
+    key_facts:
+      - "John McCarthy began developing Lisp in 1958 at MIT to create an AI programming language for the IBM 704"
+      - "Stands for 'LISt Processing' — its primary data structure is the linked list"
+      - "Second-oldest high-level programming language still in common use, after Fortran"
+      - "Pioneered many features including dynamic typing, garbage collection, and recursive functions"
+      - "Modern dialects include Common Lisp, Scheme, Racket, and Clojure"
+
+  - name: COBOL
+    year: 1959
+    creators: [Grace Hopper (influence), CODASYL committee]
+    organization: "US Department of Defense / CODASYL"
+    wikidata: Q131140
+    source_url: "https://en.wikipedia.org/wiki/COBOL"
+    achievement: "Business-oriented language designed in 1959; influenced by Grace Hopper's FLOW-MATIC"
+    key_facts:
+      - "Stands for Common Business-Oriented Language"
+      - "Design started in 1959 by the CODASYL (Conference/Committee on Data Systems Languages) committee"
+      - "Partly based on FLOW-MATIC, designed by Grace Hopper — she was a key influence"
+      - "Created as part of a US Department of Defense effort to create a portable language for data processing"
+      - "Still widely used in business, finance, and mainframe systems; estimated 800 billion lines of COBOL code remain in production"
+
+  - name: BASIC
+    year: 1964
+    creators: [John G. Kemeny, Thomas E. Kurtz]
+    organization: "Dartmouth College"
+    wikidata: Q42979
+    source_url: "https://en.wikipedia.org/wiki/BASIC"
+    achievement: "Beginners' All-purpose Symbolic Instruction Code; created at Dartmouth College in 1964"
+    key_facts:
+      - "Stands for Beginner's All-purpose Symbolic Instruction Code"
+      - "Created by John G. Kemeny and Thomas E. Kurtz at Dartmouth College in 1964"
+      - "Designed to allow students in non-scientific fields to write and use computer programs"
+      - "Microsoft was founded in part on Gates and Allen's BASIC interpreter for the Altair 8800 (1975)"
+      - "Influenced the home computer era of the 1970s and 1980s; BASIC was included on most home computers"
+
+  - name: Smalltalk
+    year: 1972
+    creators: [Alan Kay, Dan Ingalls, Adele Goldberg]
+    organization: "Xerox PARC"
+    wikidata: Q235086
+    source_url: "https://en.wikipedia.org/wiki/Smalltalk"
+    achievement: "Pioneered object-oriented programming; created at Xerox PARC from 1970, first version 1972"
+    key_facts:
+      - "Created at Xerox PARC's Learning Research Group by Alan Kay, Dan Ingalls, Adele Goldberg, and others"
+      - "Smalltalk-71 was an early design; a working interpreter was demonstrated by Alan Kay in September 1972"
+      - "One of the first purely object-oriented programming languages — everything is an object"
+      - "Pioneered graphical user interfaces, the desktop metaphor, and the model-view-controller (MVC) pattern"
+      - "Heavily influenced Java, Python, Ruby, and most subsequent object-oriented languages"
+
+  - name: C
+    year: 1972
+    creators: [Dennis Ritchie]
+    organization: "Bell Labs"
+    wikidata: Q15777
+    source_url: "https://en.wikipedia.org/wiki/C_(programming_language)"
+    achievement: "General-purpose systems language created by Dennis Ritchie at Bell Labs; developed 1969–1973"
+    key_facts:
+      - "Created by Dennis Ritchie at Bell Labs during 1969–1973"
+      - "Developed alongside the Unix operating system — Unix was rewritten in C, making it portable across hardware"
+      - "Provides relatively direct access to CPU features while remaining a high-level language"
+      - "Influenced the design of countless later languages including C++, Java, C#, Objective-C, JavaScript, Python, and Rust"
+      - "The influential book 'The C Programming Language' (Kernighan & Ritchie, 1978) is known as 'K&R C'"
+
+  - name: SQL
+    year: 1974
+    creators: [Donald D. Chamberlin, Raymond F. Boyce]
+    organization: "IBM San Jose Research Laboratory"
+    wikidata: Q47607
+    source_url: "https://en.wikipedia.org/wiki/SQL"
+    achievement: "Domain-specific language for managing relational databases; developed at IBM in the early 1970s"
+    key_facts:
+      - "Developed at IBM's San Jose Research Laboratory by Donald D. Chamberlin and Raymond F. Boyce after learning about the relational model from Edgar Codd"
+      - "Originally called SEQUEL (Structured English Query Language); after moving to San Jose in 1973, they began work on a 'sequel to SQUARE'"
+      - "The name was shortened to SQL (dropping the vowels) due to trademark issues"
+      - "First published description appeared in 1974; IBM's commercial version (System R) released in the late 1970s"
+      - "The most widely used database language; ISO/IEC SQL standard maintained since 1987"
+
+  - name: C++
+    year_developed: 1979
+    year_released: 1985
+    creators: [Bjarne Stroustrup]
+    organization: "Bell Labs"
+    wikidata: Q2407
+    source_url: "https://en.wikipedia.org/wiki/C%2B%2B"
+    achievement: "Extension of C with object-oriented features; developed from 1979, first released 1985"
+    key_facts:
+      - "Created by Bjarne Stroustrup at Bell Labs; development began in 1979 as 'C with Classes'"
+      - "First released externally as C++ in 1985"
+      - "Extended C with object-oriented features: classes, inheritance, polymorphism"
+      - "Standardised as C++98 in 1997/1998; subsequent standards: C++11, C++14, C++17, C++20, C++23"
+      - "Used extensively in systems programming, game development, embedded systems, and performance-critical applications"
+
+  - name: Objective-C
+    year: 1984
+    creators: [Brad Cox, Tom Love]
+    organization: "Stepstone / NeXT"
+    wikidata: Q188531
+    source_url: "https://en.wikipedia.org/wiki/Objective-C"
+    achievement: "Object-oriented extension of C; developed in the early 1980s; became Apple's primary language for macOS and iOS"
+    key_facts:
+      - "Developed by Brad Cox and Tom Love in the early 1980s at their company Stepstone"
+      - "Adds Smalltalk-style message passing to the C programming language"
+      - "Selected by Steve Jobs' NeXT company for the NeXTSTEP operating system"
+      - "Became the primary programming language for macOS (via Cocoa) and iOS (via Cocoa Touch) from 1997 until being superseded by Swift (announced 2014)"
+      - "Apple published the first Objective-C compiler under the GNU General Public License in 1992"
+
+  - name: Perl
+    year: 1987
+    creators: [Larry Wall]
+    wikidata: Q42478
+    source_url: "https://en.wikipedia.org/wiki/Perl"
+    achievement: "General-purpose scripting language developed by Larry Wall in 1987 for Unix text processing"
+    key_facts:
+      - "Developed by Larry Wall in 1987 as a general-purpose Unix scripting language for report processing"
+      - "Known for the principle 'there is more than one way to do it' (TIMTOWTDI)"
+      - "Became the dominant language for CGI web programming in the 1990s"
+      - "Named 'Perl' — though not officially an acronym, 'Practical Extraction and Reporting Language' is a common backronym"
+      - "Perl 5 (1994) is the most widely used version; Perl 7 is the planned successor"
+
+  - name: Python
+    year: 1991
+    creators: [Guido van Rossum]
+    wikidata: Q28865
+    source_url: "https://en.wikipedia.org/wiki/Python_(programming_language)"
+    achievement: "High-level general-purpose language created by Guido van Rossum; first released 1991"
+    key_facts:
+      - "Guido van Rossum began working on Python in the late 1980s as a successor to the ABC language"
+      - "Van Rossum first released it in 1991 as Python 0.9.0"
+      - "Named after the BBC comedy series 'Monty Python's Flying Circus', not the snake"
+      - "Emphasises code readability via significant indentation"
+      - "Became one of the most popular programming languages in the world, dominant in data science, AI/ML, and scripting"
+
+  - name: Ruby
+    year_conceived: 1993
+    year_released: 1995
+    creators: [Yukihiro Matsumoto]
+    wikidata: Q161053
+    source_url: "https://en.wikipedia.org/wiki/Ruby_(programming_language)"
+    achievement: "Object-oriented scripting language conceived 1993 by Matsumoto; publicly released December 1995"
+    key_facts:
+      - "Conceived by Yukihiro 'Matz' Matsumoto in 1993 in Japan"
+      - "First public release of Ruby 0.95 announced on Japanese domestic newsgroups on 21 December 1995"
+      - "Everything in Ruby is an object, including primitive data types"
+      - "Influenced by Perl, Smalltalk, Eiffel, Ada, and Lisp"
+      - "The Ruby on Rails framework (2004) made Ruby highly popular for web development"
+
+  - name: Java
+    year: 1995
+    creators: [James Gosling]
+    organization: "Sun Microsystems"
+    wikidata: Q251
+    source_url: "https://en.wikipedia.org/wiki/Java_(programming_language)"
+    achievement: "Platform-independent OO language created at Sun; 'write once, run anywhere'; first released 1995"
+    key_facts:
+      - "Created by James Gosling at Sun Microsystems; first publicly released in 1995"
+      - "Originally called 'Oak' (after a tree outside Gosling's office), then 'Green', then finally 'Java' (after Java coffee)"
+      - "The 'write once, run anywhere' (WORA) model: Java bytecode runs on any Java Virtual Machine (JVM)"
+      - "Quickly became one of the most popular languages in the world for enterprise and web applications"
+      - "Acquired by Oracle when Oracle bought Sun Microsystems in 2010"
+
+  - name: JavaScript
+    year: 1995
+    creators: [Brendan Eich]
+    organization: "Netscape Communications"
+    wikidata: Q2005
+    source_url: "https://en.wikipedia.org/wiki/JavaScript"
+    achievement: "Client-side web scripting language created by Brendan Eich at Netscape in 1995"
+    key_facts:
+      - "Created by Brendan Eich in 1995 while working at Netscape Communications"
+      - "Originally called LiveScript; renamed JavaScript to capitalise on Java's popularity at the time"
+      - "Despite the similar name, JavaScript and Java are unrelated languages with very different designs"
+      - "Used by 98.9% of websites as of 2025 for client-side behaviour"
+      - "Standardised as ECMAScript (first edition 1997); modern standard is ECMAScript 2024"
+
+  - name: PHP
+    year: 1995
+    creators: [Rasmus Lerdorf]
+    wikidata: Q59
+    source_url: "https://en.wikipedia.org/wiki/PHP"
+    achievement: "Server-side web scripting language created by Rasmus Lerdorf; created 1993/released 1995"
+    key_facts:
+      - "Created by Danish-Canadian programmer Rasmus Lerdorf in 1993 and released in 1995"
+      - "Originally stood for 'Personal Home Page'; now stands for the recursive backronym 'PHP: Hypertext Preprocessor'"
+      - "Designed specifically for web development and easily embeds into HTML"
+      - "Powers a large portion of the web including WordPress (which runs approximately 43% of all websites)"
+      - "PHP 8.0 (2020) introduced JIT compilation; PHP 8.4 released in 2024"
+
+  - name: Haskell
+    year: 1990
+    creators: [Committee — Simon Peyton Jones, Paul Hudak, Philip Wadler and others]
+    wikidata: Q34010
+    source_url: "https://en.wikipedia.org/wiki/Haskell"
+    achievement: "Purely functional, statically typed language; 'Haskell 1.0' standard defined in 1990"
+    key_facts:
+      - "Named after logician Haskell Curry"
+      - "In 1987 at FPCA '87 (Portland, Oregon), researchers agreed to form a committee to define an open standard for lazy functional languages"
+      - "The first version 'Haskell 1.0' was defined in 1990 by the committee"
+      - "Features include type classes, monadic I/O, lazy evaluation, and strong static typing with type inference"
+      - "The Glasgow Haskell Compiler (GHC) is the primary implementation"
+
+  - name: R
+    year: 1993
+    creators: [Ross Ihaka, Robert Gentleman]
+    organization: "University of Auckland"
+    wikidata: Q206904
+    source_url: "https://en.wikipedia.org/wiki/R_(programming_language)"
+    achievement: "Statistical computing language created at University of Auckland; first binary posted August 1993"
+    key_facts:
+      - "Created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand"
+      - "In August 1993, Ihaka and Gentleman posted a binary of R on StatLib"
+      - "Named R partly from the shared first initial of its authors (Ross and Robert) and as a reference to the S language it was inspired by"
+      - "Became freely available under the GNU General Public License on 5 December 1997"
+      - "Widely used in data mining, bioinformatics, data analysis, and statistical research"
+
+  - name: Go
+    year_designed: 2007
+    year_announced: 2009
+    creators: [Robert Griesemer, Rob Pike, Ken Thompson]
+    organization: "Google"
+    wikidata: Q37227
+    source_url: "https://en.wikipedia.org/wiki/Go_(programming_language)"
+    achievement: "Statically typed, compiled language designed at Google in 2007; publicly announced November 2009"
+    key_facts:
+      - "Designed at Google in 2007 by Robert Griesemer, Rob Pike, and Ken Thompson"
+      - "Publicly announced in November 2009"
+      - "Features garbage collection, structural typing, and CSP-style concurrency (goroutines and channels)"
+      - "Often referred to as 'Golang' due to its domain name golang.org"
+      - "Widely used at Google and in cloud/infrastructure software including Docker and Kubernetes"
+
+  - name: Rust
+    year_created: 2006
+    year_stable: 2015
+    creators: [Graydon Hoare]
+    organization: "Mozilla Research"
+    wikidata: Q575650
+    source_url: "https://en.wikipedia.org/wiki/Rust_(programming_language)"
+    achievement: "Memory-safe systems language; created by Graydon Hoare in 2006; first stable release May 2015"
+    key_facts:
+      - "Software developer Graydon Hoare created Rust in 2006 while working at Mozilla"
+      - "Mozilla officially sponsored the project in 2009"
+      - "The first stable release, Rust 1.0, was published in May 2015"
+      - "Emphasises memory safety without a garbage collector, using an ownership and borrowing system"
+      - "Named the most-loved programming language in Stack Overflow's developer survey every year from 2016 to 2023"
+
+  - name: Swift
+    year_created: 2010
+    year_released: 2014
+    creators: [Chris Lattner]
+    organization: "Apple Inc."
+    wikidata: Q17118377
+    source_url: "https://en.wikipedia.org/wiki/Swift_(programming_language)"
+    achievement: "Multi-paradigm compiled language created by Chris Lattner in 2010 for Apple; first released June 2014"
+    key_facts:
+      - "Created by Chris Lattner in 2010 for Apple Inc."
+      - "First released publicly in June 2014; Xcode 6 shipped with the Swift toolchain in September 2014"
+      - "Designed to be safer, faster, and more modern than Objective-C for macOS and iOS development"
+      - "Open-sourced by Apple in December 2015"
+      - "Uses an LLVM-based compiler; Chris Lattner also created LLVM"
+
+  - name: TypeScript
+    year: 2012
+    creators: [Anders Hejlsberg]
+    organization: "Microsoft"
+    wikidata: Q978185
+    source_url: "https://en.wikipedia.org/wiki/TypeScript"
+    achievement: "Statically typed superset of JavaScript; released publicly by Microsoft in October 2012"
+    key_facts:
+      - "Released to the public in October 2012 with version 0.8, after two years of internal development at Microsoft"
+      - "Developed by Anders Hejlsberg — also the lead architect of C# and creator of Delphi and Turbo Pascal"
+      - "A strict syntactical superset of JavaScript: any valid JavaScript is also valid TypeScript"
+      - "Transpiles to JavaScript; enables catching type errors at compile time rather than runtime"
+      - "Became widely adopted for large-scale JavaScript applications; used in Angular, VS Code, and many major projects"
+
+  - name: Kotlin
+    year_unveiled: 2011
+    year_stable: 2016
+    creators: [JetBrains]
+    wikidata: Q3816639
+    source_url: "https://en.wikipedia.org/wiki/Kotlin_(programming_language)"
+    achievement: "Cross-platform JVM language by JetBrains; unveiled July 2011; first stable release February 2016"
+    key_facts:
+      - "First commit to the Kotlin Git repository was 8 November 2010"
+      - "JetBrains unveiled Project Kotlin in July 2011; had been under development for about a year at that point"
+      - "Designed to interoperate fully with Java while fixing many of Java's pain points"
+      - "Google announced first-class Android support for Kotlin at Google I/O 2017; made preferred language for Android in 2019"
+      - "First stable release (Kotlin 1.0) was on 15 February 2016"
+
+  - name: HTML
+    year: 1991
+    creators: [Tim Berners-Lee]
+    wikidata: Q8811
+    source_url: "https://en.wikipedia.org/wiki/HTML"
+    achievement: "HyperText Markup Language; the standard markup language for web pages; first described 1991"
+    key_facts:
+      - "First mentioned on the Internet by Tim Berners-Lee in late 1991 in a document called 'HTML Tags', describing 18 elements"
+      - "Stands for HyperText Markup Language"
+      - "Defines the structure and content of web pages using elements/tags"
+      - "The HTML 4.01 standard (1999) and HTML5 (2014) are the most significant versions"
+      - "HTML is not a programming language but a markup language — it does not contain logic, only structure"
+
+  - name: CSS
+    year_proposed: 1994
+    year_first_standard: 1996
+    creators: [Håkon Wium Lie, Bert Bos]
+    wikidata: Q46441
+    source_url: "https://en.wikipedia.org/wiki/CSS"
+    achievement: "Style sheet language for web page presentation; proposed 10 October 1994 by Håkon Wium Lie"
+    key_facts:
+      - "CSS was first proposed by Håkon Wium Lie on 10 October 1994, while working with Tim Berners-Lee at CERN"
+      - "Bert Bos's proposal was also influential; he became co-author of CSS1 and is regarded as co-creator of CSS"
+      - "The first W3C CSS Recommendation (CSS1) was released in 1996"
+      - "Stands for Cascading Style Sheets — describes how HTML elements should be displayed"
+      - "CSS2 published 1998; CSS3 introduced as modular specifications from 1999 onwards with continuous updates"
+
+  - name: Algol
+    year: 1958
+    creators: [Peter Naur, John Backus, and international committee]
+    wikidata: Q188436
+    source_url: "https://en.wikipedia.org/wiki/ALGOL"
+    achievement: "Algorithmic language family (1958–1968) that introduced block structure and influenced almost every subsequent language"
+    key_facts:
+      - "ALGOL (Algorithmic Language) was first specified in 1958 by an international committee of European and American computer scientists"
+      - "Introduced block structure (begin/end), lexical scoping, and nested functions"
+      - "ALGOL 60 (1960) was enormously influential — described using Backus-Naur Form (BNF)"
+      - "Most modern languages (C, Pascal, Java, etc.) are direct descendants of ALGOL's design"
+      - "ALGOL 68 (1968) was the final major version; though complex, it pioneered many modern language features"
+
+  - name: Pascal
+    year: 1970
+    creators: [Niklaus Wirth]
+    wikidata: Q81571
+    source_url: "https://en.wikipedia.org/wiki/Pascal_(programming_language)"
+    achievement: "Structured programming language designed by Niklaus Wirth in 1968–1970; influential in CS education"
+    key_facts:
+      - "Designed by Niklaus Wirth in 1968–1970; named after mathematician and philosopher Blaise Pascal"
+      - "Designed to encourage good programming practices using structured programming and data structuring"
+      - "Became the dominant teaching language in university computer science courses during the 1970s and 1980s"
+      - "Apple's Lisa and early Macintosh were primarily programmed in Pascal"
+      - "Influenced Modula-2, Oberon, Ada, and Delphi"
+
+  - name: Ada
+    year: 1980
+    creators: [Jean Ichbiah and team; named after Ada Lovelace]
+    organization: "US Department of Defense"
+    wikidata: Q154755
+    source_url: "https://en.wikipedia.org/wiki/Ada_(programming_language)"
+    achievement: "High-integrity language developed for US DoD; named after Ada Lovelace; first standardised 1983"
+    key_facts:
+      - "Designed in the late 1970s by a team led by Jean Ichbiah at CII Honeywell Bull under US DoD contract"
+      - "Named in honour of Ada Lovelace, the first computer programmer"
+      - "First standardised as ANSI/MIL-STD-1815 in 1983; Ada 95 was the first internationally standardised OO language"
+      - "Designed for safety-critical systems: aviation, military, space, railway systems"
+      - "Used in the Boeing 777, Airbus aircraft, and European Space Agency missions"
+
+  - name: Prolog
+    year: 1972
+    creators: [Alain Colmerauer, Philippe Roussel]
+    organization: "Université de Marseille"
+    wikidata: Q163468
+    source_url: "https://en.wikipedia.org/wiki/Prolog"
+    achievement: "Logic programming language; first implemented 1972 by Colmerauer and Roussel in Marseille"
+    key_facts:
+      - "Developed by Alain Colmerauer and Philippe Roussel at the Université de Marseille in 1972"
+      - "Stands for PROgramming in LOGic"
+      - "Based on formal logic: programs declare facts and rules; the interpreter uses resolution to find solutions"
+      - "Heavily used in artificial intelligence and computational linguistics"
+      - "The Japan Fifth Generation Computer Systems project (1982–1992) chose Prolog as its core language"

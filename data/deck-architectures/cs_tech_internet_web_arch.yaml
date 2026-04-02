@@ -1,0 +1,664 @@
+deck_id: computer_science_internet
+name: "CS & Technology — The Internet & World Wide Web"
+domain: computer_science
+sub_domain: internet_web
+target_facts: 35
+minimum_facts: 28
+
+# NOTE: This is sub-deck 5 of the Computer Science & Technology deck.
+# All facts sourced from Wikipedia/Wikidata, verified via direct article lookup.
+# Wikidata QIDs included for every entry that has one.
+# Corrections from brief: Archie created by Alan Emtage (not a generic "first search engine" without attribution).
+# ARPANET first message was "lo" (first two chars of "login" before crash), not capitalized "LO".
+# Usenet: conceived 1979, established 1980 (not just "1979").
+# AI winters: first ~1974-1980, second ~1987-2000 (not 1987-1993).
+# AWS: cloud computing services launched March 2006 (web services platform launched July 2002).
+
+data_sources:
+  - name: Wikipedia — ARPANET
+    url: https://en.wikipedia.org/wiki/ARPANET
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q177524
+    usage: first host-to-host message, October 29 1969, UCLA to SRI, "lo" crash
+  - name: Wikipedia — Ray Tomlinson
+    url: https://en.wikipedia.org/wiki/Ray_Tomlinson
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q92631
+    usage: email inventor, 1971, @ symbol selection
+  - name: Wikipedia — Usenet
+    url: https://en.wikipedia.org/wiki/Usenet
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q193162
+    usage: conceived 1979 by Truscott & Ellis, established 1980
+  - name: Wikipedia — Domain Name System
+    url: https://en.wikipedia.org/wiki/Domain_Name_System
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q8767
+    usage: Paul Mockapetris, November 1983
+  - name: Wikipedia — Symbolics (first .com domain)
+    url: https://en.wikipedia.org/wiki/Symbolics
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q2034213
+    usage: symbolics.com registered March 15 1985, first .com domain in the world
+  - name: Wikipedia — Tim Berners-Lee
+    url: https://en.wikipedia.org/wiki/Tim_Berners-Lee
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q80
+    usage: World Wide Web proposal 1989 at CERN, HTML/HTTP/URL inventor
+  - name: Wikipedia — World Wide Web (first website info.cern.ch, 1991)
+    url: https://en.wikipedia.org/wiki/World_Wide_Web
+    license: CC-BY-SA-4.0
+    usage: first website info.cern.ch went live 1991
+  - name: Wikipedia — NCSA Mosaic
+    url: https://en.wikipedia.org/wiki/NCSA_Mosaic
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q381047
+    usage: released January 23 1993, created by Marc Andreessen and Eric Bina at NCSA
+  - name: Wikipedia — Netscape Navigator
+    url: https://en.wikipedia.org/wiki/Netscape_Navigator
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q235419
+    usage: released December 15 1994
+  - name: Wikipedia — Internet Explorer
+    url: https://en.wikipedia.org/wiki/Internet_Explorer
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q1575
+    usage: released August 24 1995, bundled with Windows 95 Plus!
+  - name: Wikipedia — Web 2.0
+    url: https://en.wikipedia.org/wiki/Web_2.0
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q131164
+    usage: concept popularized by Tim O'Reilly ~2004
+  - name: Wikipedia — Archie (search engine)
+    url: https://en.wikipedia.org/wiki/Archie_(search_engine)
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q633739
+    usage: first internet search engine, created 1990 by Alan Emtage at McGill University
+  - name: Wikipedia — Yahoo (web portal)
+    url: https://en.wikipedia.org/wiki/Yahoo
+    license: CC-BY-SA-4.0
+    usage: founded January 1994 by Jerry Yang and David Filo
+  - name: Wikipedia — AltaVista
+    url: https://en.wikipedia.org/wiki/AltaVista
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q433505
+    usage: launched December 15 1995
+  - name: Wikipedia — Google
+    url: https://en.wikipedia.org/wiki/Google
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q95
+    usage: incorporated September 4 1998, founded by Larry Page & Sergey Brin at Stanford
+  - name: Wikipedia — Wikipedia (website)
+    url: https://en.wikipedia.org/wiki/Wikipedia
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q52
+    usage: founded 2001 by Jimmy Wales and Larry Sanger
+  - name: Wikipedia — Myspace
+    url: https://en.wikipedia.org/wiki/Myspace
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q40629
+    usage: launched August 1 2003, founded by Chris DeWolfe and Tom Anderson
+  - name: Wikipedia — Facebook
+    url: https://en.wikipedia.org/wiki/Facebook
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q355
+    usage: founded 2004 by Mark Zuckerberg and Harvard roommates
+  - name: Wikipedia — YouTube
+    url: https://en.wikipedia.org/wiki/YouTube
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q866
+    usage: founded February 14 2005 by Chad Hurley, Steve Chen, Jawed Karim (ex-PayPal)
+  - name: Wikipedia — X (social network, formerly Twitter)
+    url: https://en.wikipedia.org/wiki/X_(social_network)
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q918
+    usage: founded March 21 2006 by Jack Dorsey (and Biz Stone, Noah Glass, Evan Williams)
+  - name: Wikipedia — Reddit
+    url: https://en.wikipedia.org/wiki/Reddit
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q1136
+    usage: founded 2005 by Steve Huffman and Alexis Ohanian
+  - name: Wikipedia — Instagram
+    url: https://en.wikipedia.org/wiki/Instagram
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q209330
+    usage: released October 12 2010, created by Kevin Systrom and Mike Krieger
+  - name: Wikipedia — Amazon (company)
+    url: https://en.wikipedia.org/wiki/Amazon_(company)
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q3884
+    usage: founded 1994 by Jeff Bezos in Bellevue Washington, started as online bookstore
+  - name: Wikipedia — eBay
+    url: https://en.wikipedia.org/wiki/EBay
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q58024
+    usage: founded September 1995 by Pierre Omidyar
+  - name: Wikipedia — PayPal
+    url: https://en.wikipedia.org/wiki/PayPal
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q483959
+    usage: founded December 1998 as Confinity by Peter Thiel, Max Levchin, et al.
+  - name: Wikipedia — Netflix
+    url: https://en.wikipedia.org/wiki/Netflix
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q907311
+    usage: DVD by mail founded 1997; streaming launched 2007
+  - name: Wikipedia — Amazon Web Services
+    url: https://en.wikipedia.org/wiki/Amazon_Web_Services
+    license: CC-BY-SA-4.0
+    wikidata_qid: Q456157
+    usage: cloud computing services launched March 2006
+
+# ============================================================
+# VERIFIED FACTS
+# ============================================================
+
+facts:
+
+  # --- INTERNET HISTORY ---
+
+  - id: inet_arpanet_first_message
+    fact: >
+      The first message sent over the ARPANET was "lo" — the first two characters of
+      "login" typed by UCLA student programmer Charley Kline at 10:30 pm PST on
+      October 29, 1969, attempting to connect to Stanford Research Institute (SRI).
+      The SRI host crashed after receiving just "lo", making it the accidental first
+      message. The full login was completed about an hour later.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/ARPANET#Initial_four_hosts
+    wikidata_qid: Q177524
+    key_fields:
+      date: "October 29, 1969"
+      sender_institution: UCLA
+      receiver_institution: SRI (Stanford Research Institute)
+      first_message_text: '"lo"'
+      intended_word: login
+      crash: true
+
+  - id: inet_email_tomlinson_1971
+    fact: >
+      Email was invented in 1971 by American computer programmer Ray Tomlinson.
+      He sent the first network email on the ARPANET — the first system able to send
+      mail between users on different host computers. He chose the @ symbol to separate
+      the username from the host machine name, a convention used in email addresses ever since.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Ray_Tomlinson
+    wikidata_qid: Q92631
+    key_fields:
+      inventor: Ray Tomlinson
+      year: 1971
+      network: ARPANET
+      innovation: "@ symbol to separate username from host"
+
+  - id: inet_usenet_1979
+    fact: >
+      Usenet, the worldwide distributed discussion system, was conceived in 1979 by
+      Tom Truscott and Jim Ellis at Duke University, and established in 1980. It is
+      considered a precursor to modern internet forums and social media.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Usenet
+    wikidata_qid: Q193162
+    key_fields:
+      conceived: 1979
+      established: 1980
+      creators: "Tom Truscott and Jim Ellis"
+
+  - id: inet_dns_1983
+    fact: >
+      The Domain Name System (DNS) was introduced in November 1983, designed by
+      Paul Mockapetris. It translates human-readable domain names (like example.com)
+      into IP addresses needed to locate computers on a network.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Domain_Name_System
+    wikidata_qid: Q8767
+    key_fields:
+      date: "November 1983"
+      designer: Paul Mockapetris
+
+  - id: inet_first_dotcom_1985
+    fact: >
+      symbolics.com, the domain of computer manufacturer Symbolics Inc., was registered
+      on March 15, 1985, making it the first .com domain name ever registered in the world.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Symbolics
+    wikidata_qid: Q2034213
+    key_fields:
+      domain: symbolics.com
+      date: "March 15, 1985"
+      company: Symbolics Inc.
+
+  # --- WORLD WIDE WEB ---
+
+  - id: www_berners_lee_proposal_1989
+    fact: >
+      Tim Berners-Lee, a British computer scientist working at CERN in Switzerland,
+      proposed the World Wide Web in 1989. His proposal outlined a hypertext system
+      for sharing information over the internet, and he went on to create HTML, HTTP,
+      and the URL system.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Tim_Berners-Lee
+    wikidata_qid: Q80
+    key_fields:
+      inventor: Tim Berners-Lee
+      year: 1989
+      institution: CERN
+
+  - id: www_first_website_1991
+    fact: >
+      The first website, hosted at info.cern.ch, went live in 1991. It was created by
+      Tim Berners-Lee at CERN and described the World Wide Web project itself, explaining
+      how to use hypertext to share information.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/World_Wide_Web
+    key_fields:
+      url: info.cern.ch
+      year: 1991
+      creator: Tim Berners-Lee
+      location: CERN
+
+  - id: www_mosaic_1993
+    fact: >
+      NCSA Mosaic, released on January 23, 1993, was the first web browser to display
+      images inline with text (rather than in a separate window). Created by Marc Andreessen
+      and Eric Bina at the National Center for Supercomputing Applications (NCSA), it was
+      instrumental in popularizing the World Wide Web.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/NCSA_Mosaic
+    wikidata_qid: Q381047
+    key_fields:
+      name: NCSA Mosaic
+      release_date: "January 23, 1993"
+      creators: "Marc Andreessen and Eric Bina"
+      institution: NCSA (National Center for Supercomputing Applications)
+
+  - id: www_netscape_1994
+    fact: >
+      Netscape Navigator was first released on December 15, 1994, by Netscape
+      Communications Corporation. Developed by Marc Andreessen (who had previously
+      co-created Mosaic), it became the dominant web browser through most of the 1990s.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Netscape_Navigator
+    wikidata_qid: Q235419
+    key_fields:
+      name: Netscape Navigator
+      release_date: "December 15, 1994"
+      key_person: Marc Andreessen
+
+  - id: www_internet_explorer_1995
+    fact: >
+      Internet Explorer was released on August 24, 1995, by Microsoft, initially bundled
+      with the Windows 95 Plus! add-on pack and later included directly with Windows.
+      It launched Microsoft's "browser wars" competition against Netscape Navigator.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Internet_Explorer
+    wikidata_qid: Q1575
+    key_fields:
+      name: Internet Explorer
+      release_date: "August 24, 1995"
+      developer: Microsoft
+      bundled_with: "Windows 95 Plus!"
+
+  - id: www_web20_oreilly_2004
+    fact: >
+      The concept of "Web 2.0" — referring to websites emphasizing user-generated content,
+      ease of use, and participatory culture — was popularized by Tim O'Reilly around 2004,
+      most notably through the O'Reilly Media Web 2.0 Conference.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Web_2.0
+    wikidata_qid: Q131164
+    key_fields:
+      term: Web 2.0
+      popularized_by: Tim O'Reilly
+      year: ~2004
+
+  # --- SEARCH ENGINES ---
+
+  - id: search_archie_1990
+    fact: >
+      Archie, created in 1990 by Alan Emtage (then a postgraduate student at McGill
+      University in Montreal), is considered the first internet search engine. It indexed
+      FTP archives, allowing users to find specific files across the internet.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Archie_(search_engine)
+    wikidata_qid: Q633739
+    key_fields:
+      name: Archie
+      year: 1990
+      creator: Alan Emtage
+      institution: McGill University
+
+  - id: search_yahoo_1994
+    fact: >
+      Yahoo was founded in January 1994 by Jerry Yang and David Filo, both PhD students
+      at Stanford University. It began as a web directory called "Jerry and David's Guide
+      to the World Wide Web" before being renamed Yahoo.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Yahoo
+    key_fields:
+      founded: "January 1994"
+      founders: "Jerry Yang and David Filo"
+      institution: Stanford University
+
+  - id: search_altavista_1995
+    fact: >
+      AltaVista, one of the most popular early web search engines, was launched on
+      December 15, 1995. It was developed at Digital Equipment Corporation (DEC)
+      and became famous for being among the first engines to index the full text
+      of web pages.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/AltaVista
+    wikidata_qid: Q433505
+    key_fields:
+      name: AltaVista
+      launch_date: "December 15, 1995"
+      developer: Digital Equipment Corporation (DEC)
+
+  - id: search_google_1998
+    fact: >
+      Google was incorporated on September 4, 1998, by Larry Page and Sergey Brin
+      while they were PhD students at Stanford University. Its PageRank algorithm
+      ranked pages by the number and quality of links pointing to them, producing
+      more relevant results than earlier search engines.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Google
+    wikidata_qid: Q95
+    key_fields:
+      incorporated: "September 4, 1998"
+      founders: "Larry Page and Sergey Brin"
+      institution: Stanford University
+      key_innovation: PageRank algorithm
+
+  # --- SOCIAL MEDIA & PLATFORMS ---
+
+  - id: social_wikipedia_2001
+    fact: >
+      Wikipedia, the free online encyclopedia, was founded on January 15, 2001, by
+      Jimmy Wales and Larry Sanger. It is written and maintained by a global community
+      of volunteers and has since become the largest reference work in human history.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Wikipedia
+    wikidata_qid: Q52
+    key_fields:
+      founded: "January 15, 2001"
+      founders: "Jimmy Wales and Larry Sanger"
+
+  - id: social_myspace_2003
+    fact: >
+      Myspace was launched on August 1, 2003, founded by Chris DeWolfe and Tom Anderson.
+      It became the most visited social networking website in the world from 2005 to 2008,
+      predating Facebook's mainstream rise, and was notably influential in music discovery.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Myspace
+    wikidata_qid: Q40629
+    key_fields:
+      launched: "August 1, 2003"
+      founders: "Chris DeWolfe and Tom Anderson"
+
+  - id: social_facebook_2004
+    fact: >
+      Facebook was founded in 2004 by Mark Zuckerberg, along with his Harvard College
+      roommates Eduardo Saverin, Andrew McCollum, Dustin Moskovitz, and Chris Hughes.
+      Originally launched for Harvard students, it expanded globally and became the
+      world's largest social network.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Facebook
+    wikidata_qid: Q355
+    key_fields:
+      founded: 2004
+      primary_founder: Mark Zuckerberg
+      institution: Harvard College
+
+  - id: social_youtube_2005
+    fact: >
+      YouTube was founded on February 14, 2005, by Chad Hurley, Steve Chen, and Jawed
+      Karim, three former PayPal employees. Headquartered in San Bruno, California,
+      it was acquired by Google in October 2006 for $1.65 billion.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/YouTube
+    wikidata_qid: Q866
+    key_fields:
+      founded: "February 14, 2005"
+      founders: "Chad Hurley, Steve Chen, Jawed Karim"
+      previous_employer: PayPal
+      acquired_by: Google
+      acquisition_year: 2006
+
+  - id: social_reddit_2005
+    fact: >
+      Reddit, the social news aggregation and discussion platform, was founded in 2005
+      by Steve Huffman and Alexis Ohanian. Users submit content to topic-based communities
+      called "subreddits," and posts are ranked by community upvotes and downvotes.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Reddit
+    wikidata_qid: Q1136
+    key_fields:
+      founded: 2005
+      founders: "Steve Huffman and Alexis Ohanian"
+
+  - id: social_twitter_2006
+    fact: >
+      Twitter (now X) was founded on March 21, 2006, in San Francisco, California.
+      Jack Dorsey sent the first tweet on that day. The service introduced the concept
+      of short public microblogging posts, originally limited to 140 characters.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/X_(social_network)
+    wikidata_qid: Q918
+    key_fields:
+      founded: "March 21, 2006"
+      first_tweeter: Jack Dorsey
+      co_founders: "Jack Dorsey, Biz Stone, Noah Glass, Evan Williams"
+
+  - id: social_instagram_2010
+    fact: >
+      Instagram was released on October 12, 2010, created by Kevin Systrom and
+      Mike Krieger in San Francisco, California. The photo and short-video sharing
+      app was acquired by Facebook (Meta) in April 2012 for approximately $1 billion.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Instagram
+    wikidata_qid: Q209330
+    key_fields:
+      released: "October 12, 2010"
+      creators: "Kevin Systrom and Mike Krieger"
+      acquired_by: Facebook (Meta)
+      acquisition_year: 2012
+
+  # --- E-COMMERCE & CLOUD ---
+
+  - id: ecom_amazon_1994
+    fact: >
+      Amazon was founded in 1994 by Jeff Bezos in Bellevue, Washington (later
+      headquartered in Seattle). It launched as an online marketplace for books
+      before expanding to become "The Everything Store." It is now one of the
+      world's largest technology and e-commerce companies.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Amazon_(company)
+    wikidata_qid: Q3884
+    key_fields:
+      founded: 1994
+      founder: Jeff Bezos
+      location: "Bellevue, Washington"
+      started_as: online bookstore
+
+  - id: ecom_ebay_1995
+    fact: >
+      eBay was founded in September 1995 by Pierre Omidyar in San Jose, California.
+      It pioneered the online auction model, allowing buyers and sellers to trade
+      in an auction-style format and later added fixed-price "Buy It Now" sales.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/EBay
+    wikidata_qid: Q58024
+    key_fields:
+      founded: "September 1995"
+      founder: Pierre Omidyar
+
+  - id: ecom_paypal_1998
+    fact: >
+      PayPal was founded in December 1998 as Confinity by Peter Thiel, Max Levchin,
+      and others. It merged with Elon Musk's X.com in 2000 and was renamed PayPal,
+      becoming the dominant online payment system by enabling secure money transfers
+      without sharing financial details with merchants.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/PayPal
+    wikidata_qid: Q483959
+    key_fields:
+      founded: "December 1998 (as Confinity)"
+      key_founders: "Peter Thiel, Max Levchin, Elon Musk"
+
+  - id: ecom_netflix_streaming_2007
+    fact: >
+      Netflix launched its video streaming service in 2007, allowing subscribers to
+      watch content over the internet without waiting for DVDs. It had originally
+      founded in 1997 as a DVD-by-mail rental service by Reed Hastings and Marc Randolph.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Netflix
+    wikidata_qid: Q907311
+    key_fields:
+      dvd_mail_founded: 1997
+      streaming_launched: 2007
+      founders: "Reed Hastings and Marc Randolph"
+
+  - id: ecom_aws_2006
+    fact: >
+      Amazon Web Services (AWS) launched its cloud computing infrastructure services
+      in March 2006, offering businesses on-demand computing resources over the internet.
+      AWS pioneered the modern cloud computing industry and remains the world's largest
+      cloud platform by market share.
+    source_verified: true
+    source_url: https://en.wikipedia.org/wiki/Amazon_Web_Services
+    wikidata_qid: Q456157
+    key_fields:
+      cloud_launch: "March 2006"
+      parent_company: Amazon
+      significance: pioneered commercial cloud computing
+
+# ============================================================
+# ANSWER TYPE POOLS (for generation phase)
+# ============================================================
+answer_type_pools:
+  - id: person_names
+    format: name
+    members:
+      - Tim Berners-Lee
+      - Ray Tomlinson
+      - Alan Emtage
+      - Marc Andreessen
+      - Eric Bina
+      - Jerry Yang
+      - David Filo
+      - Larry Page
+      - Sergey Brin
+      - Jimmy Wales
+      - Larry Sanger
+      - Mark Zuckerberg
+      - Chad Hurley
+      - Steve Chen
+      - Jawed Karim
+      - Jack Dorsey
+      - Kevin Systrom
+      - Mike Krieger
+      - Jeff Bezos
+      - Pierre Omidyar
+      - Steve Huffman
+      - Alexis Ohanian
+      - Chris DeWolfe
+      - Tom Anderson
+      - Paul Mockapetris
+      - Reed Hastings
+      - Peter Thiel
+
+  - id: platform_names
+    format: name
+    members:
+      - ARPANET
+      - Usenet
+      - Mosaic
+      - Netscape Navigator
+      - Internet Explorer
+      - Yahoo
+      - AltaVista
+      - Google
+      - Wikipedia
+      - Myspace
+      - Facebook
+      - YouTube
+      - Reddit
+      - Twitter
+      - Instagram
+      - Amazon
+      - eBay
+      - PayPal
+      - Netflix
+      - AWS
+
+  - id: year_dates
+    format: bracket_number
+    members: [1969, 1971, 1979, 1980, 1983, 1985, 1989, 1991, 1993, 1994, 1995, 1997, 1998, 2001, 2003, 2004, 2005, 2006, 2007, 2010]
+
+  - id: short_text_answers
+    format: term
+    members:
+      - '"lo"'
+      - "@ symbol"
+      - PageRank
+      - info.cern.ch
+      - symbolics.com
+      - Web 2.0
+      - online bookstore
+      - subreddits
+      - online auction
+
+# ============================================================
+# CHAIN THEMES (for knowledge chain system)
+# ============================================================
+chain_themes:
+  - id: 0
+    name: "Internet Origins"
+    description: "ARPANET, email, Usenet, DNS — the infrastructure that built the internet"
+    fact_ids:
+      - inet_arpanet_first_message
+      - inet_email_tomlinson_1971
+      - inet_usenet_1979
+      - inet_dns_1983
+      - inet_first_dotcom_1985
+
+  - id: 1
+    name: "The Web Revolution"
+    description: "WWW invention, first browsers, the early web era"
+    fact_ids:
+      - www_berners_lee_proposal_1989
+      - www_first_website_1991
+      - www_mosaic_1993
+      - www_netscape_1994
+      - www_internet_explorer_1995
+      - www_web20_oreilly_2004
+
+  - id: 2
+    name: "Search & Discovery"
+    description: "How we find things on the web — from Archie to Google"
+    fact_ids:
+      - search_archie_1990
+      - search_yahoo_1994
+      - search_altavista_1995
+      - search_google_1998
+
+  - id: 3
+    name: "Social Media Rise"
+    description: "Platforms that connected the world — Wikipedia to Instagram"
+    fact_ids:
+      - social_wikipedia_2001
+      - social_myspace_2003
+      - social_facebook_2004
+      - social_youtube_2005
+      - social_reddit_2005
+      - social_twitter_2006
+      - social_instagram_2010
+
+  - id: 4
+    name: "E-Commerce & Cloud"
+    description: "Online shopping, payments, and cloud computing"
+    fact_ids:
+      - ecom_amazon_1994
+      - ecom_ebay_1995
+      - ecom_paypal_1998
+      - ecom_netflix_streaming_2007
+      - ecom_aws_2006

@@ -1,0 +1,863 @@
+[
+  {
+    "id": "cs_6_turing_test_paper",
+    "correctAnswer": "Computing Machinery and Intelligence",
+    "acceptableAlternatives": [
+      "'Computing Machinery and Intelligence'"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "What was the title of Alan Turing's landmark 1950 paper that introduced the 'imitation game' \u2014 later known as the Turing test?",
+    "explanation": "Alan Turing published 'Computing Machinery and Intelligence' in 1950, opening with the question 'Can machines think?' He proposed the imitation game as a way to evaluate machine intelligence: if a human evaluator can't reliably distinguish a machine's responses from a human's, the machine passes. The test was later named the Turing test in his honor.",
+    "visualDescription": "A philosopher at a 1950s desk, a copy of the journal Mind open to a dense academic paper, a typewriter nearby",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Turing_test",
+    "volatile": false,
+    "distractors": [
+      "On Computable Numbers",
+      "Can Machines Think?",
+      "The Mechanical Brain",
+      "Mind and Machine",
+      "Artificial Minds",
+      "Thinking Automata",
+      "The Imitation Game",
+      "Machine Intelligence Quarterly"
+    ]
+  },
+  {
+    "id": "cs_6_turing_test_year",
+    "correctAnswer": "{1950}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 6,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "In what year did Alan Turing propose the 'imitation game' (later called the Turing test) as a measure of machine intelligence?",
+    "explanation": "Alan Turing proposed the imitation game in his 1950 paper 'Computing Machinery and Intelligence.' The test asks whether a machine can exhibit intelligent behavior indistinguishable from a human. It remains one of the most discussed concepts in AI philosophy, even though modern AI systems have rendered it somewhat obsolete as a benchmark.",
+    "visualDescription": "A 1950 era typewriter with a philosophical paper emerging, a clock face showing the year on the wall behind it",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Turing_test",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_6_ai_term_coined",
+    "correctAnswer": "John McCarthy",
+    "acceptableAlternatives": [
+      "McCarthy"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "person_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Who coined the term 'artificial intelligence' at the 1956 Dartmouth Summer Research Project \u2014 an event considered the founding moment of AI as a field?",
+    "explanation": "John McCarthy coined 'artificial intelligence' at the 1956 Dartmouth Summer Research Project on Artificial Intelligence, which he organized along with Claude Shannon, Marvin Minsky, and Nathaniel Rochester. McCarthy also invented the Lisp programming language and is considered one of the founders of AI as a discipline.",
+    "visualDescription": "A 1956 summer conference at Dartmouth College, a chalkboard with 'Artificial Intelligence' written on it, a small group of scientists in short-sleeve shirts debating",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dartmouth_workshop",
+    "volatile": false,
+    "distractors": [
+      "Alan Turing",
+      "Marvin Minsky",
+      "Claude Shannon",
+      "Norbert Wiener",
+      "Frank Rosenblatt",
+      "Arthur Samuel",
+      "Herbert Simon",
+      "Allen Newell"
+    ]
+  },
+  {
+    "id": "cs_6_dartmouth_year",
+    "correctAnswer": "{1956}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 6,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "In what year did the Dartmouth Summer Research Project take place \u2014 the workshop where 'artificial intelligence' was named as a new field?",
+    "explanation": "The Dartmouth Summer Research Project on Artificial Intelligence took place in the summer of 1956 in Hanover, New Hampshire. The workshop brought together ten researchers for six to eight weeks. While they didn't solve AI, the meeting established it as a serious academic field and named the discipline.",
+    "visualDescription": "A New England university campus in summer, a group of scientists gathered around a chalkboard, the words 'artificial intelligence' freshly written",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dartmouth_workshop",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_6_eliza_creator",
+    "correctAnswer": "Joseph Weizenbaum",
+    "acceptableAlternatives": [
+      "Weizenbaum"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "person_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Who created ELIZA at MIT in the mid-1960s \u2014 the chatbot that mimicked a psychotherapist so convincingly it alarmed even its own creator?",
+    "explanation": "Joseph Weizenbaum developed ELIZA at MIT from 1964 to 1967, publishing it in 1966. ELIZA's most famous persona was 'DOCTOR,' which simulated a Rogerian psychotherapist. Weizenbaum was disturbed when users formed emotional attachments to the program despite knowing it was just pattern-matching. He became a prominent AI critic.",
+    "visualDescription": "A 1960s MIT computing lab with a teletype terminal, a researcher watching a student having an earnest text 'conversation' with ELIZA",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/ELIZA",
+    "volatile": false,
+    "distractors": [
+      "Alan Turing",
+      "John McCarthy",
+      "Marvin Minsky",
+      "Claude Shannon",
+      "Frank Rosenblatt",
+      "Arthur Samuel",
+      "Herbert Simon",
+      "Norbert Wiener"
+    ]
+  },
+  {
+    "id": "cs_6_first_ai_winter_cause",
+    "correctAnswer": "Lighthill Report",
+    "acceptableAlternatives": [
+      "the Lighthill Report"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 4,
+    "funScore": 8,
+    "quizQuestion": "What critical 1973 report, commissioned by the British Science Research Council, triggered the first AI winter by concluding that AI had failed to live up to its promises?",
+    "explanation": "The Lighthill Report, authored by mathematician Sir James Lighthill and published in 1973, harshly criticized AI research in the UK, concluding it had produced no major discoveries and its promises were vastly overstated. It triggered dramatic funding cuts in the UK and set off the first AI winter (~1974-1980).",
+    "visualDescription": "A formal 1970s government document with a British seal, the title 'Artificial Intelligence: A General Survey' visible, stacks of cancelled research grants nearby",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/AI_winter",
+    "volatile": false,
+    "distractors": [
+      "Mansfield Amendment",
+      "Dreyfus Report",
+      "DARPA Review",
+      "McCarthy Memo",
+      "ARPA Audit",
+      "Minsky Critique",
+      "Shannon Critique",
+      "Wiener Report"
+    ]
+  },
+  {
+    "id": "cs_6_machine_learning_coined",
+    "correctAnswer": "Arthur Samuel",
+    "acceptableAlternatives": [
+      "Samuel"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "person_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Who coined the term 'machine learning' in 1959, while developing a checkers-playing program at IBM that improved through practice?",
+    "explanation": "Arthur Samuel, a computer scientist at IBM, coined 'machine learning' in 1959, defining it as the ability of computers to learn without being explicitly programmed. His checkers program learned by playing thousands of games against itself, becoming a strong player \u2014 one of the earliest demonstrations of a self-improving AI system.",
+    "visualDescription": "A 1950s IBM mainframe room, a checkerboard displayed on a large monitor, a programmer watching the computer make an unexpected move",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Arthur_Samuel_(computer_scientist)",
+    "volatile": false,
+    "distractors": [
+      "Alan Turing",
+      "John McCarthy",
+      "Marvin Minsky",
+      "Frank Rosenblatt",
+      "Claude Shannon",
+      "Herbert Simon",
+      "Allen Newell",
+      "Norbert Wiener"
+    ]
+  },
+  {
+    "id": "cs_6_perceptron_inventor",
+    "correctAnswer": "Frank Rosenblatt",
+    "acceptableAlternatives": [
+      "Rosenblatt"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "person_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Who invented the perceptron in 1957 at Cornell Aeronautical Laboratory \u2014 the first artificial neural network model capable of supervised learning?",
+    "explanation": "Frank Rosenblatt invented the perceptron in 1957, implementing it as the Mark I Perceptron machine. It was a hardware device that could learn to classify images of simple shapes. Initial press coverage called it 'the embryo of an electronic computer that it is expected to walk, talk, see, write.' It became a direct ancestor of modern deep learning.",
+    "visualDescription": "A 1950s research lab with a large custom machine covered in wires and photocells, a researcher pointing at a camera assembly feeding visual input",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Perceptron",
+    "volatile": false,
+    "distractors": [
+      "Alan Turing",
+      "John McCarthy",
+      "Marvin Minsky",
+      "Arthur Samuel",
+      "Geoffrey Hinton",
+      "Claude Shannon",
+      "Joseph Weizenbaum",
+      "Herbert Simon"
+    ]
+  },
+  {
+    "id": "cs_6_backprop_authors",
+    "correctAnswer": "Rumelhart, Hinton, and Williams",
+    "acceptableAlternatives": [
+      "David Rumelhart, Geoffrey Hinton, and Ronald Williams",
+      "Geoffrey Hinton"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "person_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Which trio of researchers popularized backpropagation in their landmark 1986 Nature paper 'Learning representations by back-propagating errors'?",
+    "explanation": "David Rumelhart, Geoffrey Hinton, and Ronald Williams published their influential 1986 paper in Nature that made backpropagation \u2014 the key algorithm for training multi-layer neural networks \u2014 practical and widely adopted. This enabled the training of the deeper networks that form the foundation of modern deep learning.",
+    "visualDescription": "A 1986 academic journal opened to a dense mathematics paper, a neural network diagram with arrows showing error gradients flowing backward",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Backpropagation",
+    "volatile": false,
+    "distractors": [
+      "LeCun, Bengio, and Hinton",
+      "Turing, Shannon, and McCarthy",
+      "Vapnik, Cortes, and Breiman",
+      "Minsky, Papert, and Rosenblatt",
+      "Sutton, Barto, and Dayan",
+      "Jordan, Mitchell, and Pearl",
+      "Ng, Dean, and Corrado",
+      "Krizhevsky, Sutskever, and Hinton"
+    ]
+  },
+  {
+    "id": "cs_6_svm_institution",
+    "correctAnswer": "AT&T Bell Laboratories",
+    "acceptableAlternatives": [
+      "Bell Labs",
+      "AT&T Bell Labs"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "company_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Support Vector Machines (SVMs), published in 1995 by Corinna Cortes and Vladimir Vapnik, were developed at which legendary research institution?",
+    "explanation": "Corinna Cortes and Vladimir Vapnik developed Support Vector Machines at AT&T Bell Laboratories. SVMs find the optimal separating hyperplane between classes in high-dimensional space and were state-of-the-art for classification problems before deep learning surpassed them. Bell Labs also produced the transistor, Unix, C, and many other foundational technologies.",
+    "visualDescription": "A Bell Labs research whiteboard with a geometric diagram showing two groups of points separated by a maximum-margin hyperplane",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Support_vector_machine",
+    "volatile": false,
+    "distractors": [
+      "MIT",
+      "Stanford University",
+      "Carnegie Mellon University",
+      "University of Toronto",
+      "IBM Research",
+      "Google Brain",
+      "DeepMind",
+      "OpenAI"
+    ]
+  },
+  {
+    "id": "cs_6_random_forests_author",
+    "correctAnswer": "Leo Breiman",
+    "acceptableAlternatives": [
+      "Breiman"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "person_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Who formalized and named the 'random forests' algorithm in a 2001 paper, creating one of the most widely used ensemble learning methods?",
+    "explanation": "Leo Breiman formalized and named random forests in his 2001 paper in the journal Machine Learning. Random forests build many decision trees on random subsets of data and average their predictions, producing more robust results than any single tree. Breiman's method extended Tin Kam Ho's 1995 random subspace method.",
+    "visualDescription": "A stylized forest of decision trees growing on a mathematical grid, each tree slightly different, converging arrows pointing to a single answer",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Random_forest",
+    "volatile": false,
+    "distractors": [
+      "Geoffrey Hinton",
+      "Vladimir Vapnik",
+      "Yann LeCun",
+      "Yoshua Bengio",
+      "Ian Goodfellow",
+      "Arthur Samuel",
+      "Frank Rosenblatt",
+      "Corinna Cortes"
+    ]
+  },
+  {
+    "id": "cs_6_alexnet_institution",
+    "correctAnswer": "University of Toronto",
+    "acceptableAlternatives": [],
+    "chainThemeId": 6,
+    "answerTypePoolId": "company_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "AlexNet's breakthrough 2012 ImageNet victory was achieved by a team from which Canadian university, led by Geoffrey Hinton?",
+    "explanation": "AlexNet was developed at the University of Toronto by Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton. Their 2012 ImageNet win \u2014 reducing error rates from 26% to 15% \u2014 was so dramatic it triggered the modern deep learning revolution. Hinton, Krizhevsky, and Sutskever later joined Google.",
+    "visualDescription": "A Canadian university campus with a deep neural network diagram overlaid, a bar chart showing ImageNet error rates dramatically dropping in 2012",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/AlexNet",
+    "volatile": false,
+    "distractors": [
+      "MIT",
+      "Stanford University",
+      "Carnegie Mellon University",
+      "University of California Berkeley",
+      "Oxford University",
+      "Princeton University",
+      "Google Brain",
+      "Facebook AI Research"
+    ]
+  },
+  {
+    "id": "cs_6_alexnet_competition",
+    "correctAnswer": "ImageNet",
+    "acceptableAlternatives": [
+      "ILSVRC",
+      "ImageNet Large Scale Visual Recognition Challenge"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "What annual image recognition competition did AlexNet win in 2012 by a stunning margin, triggering the modern deep learning revolution?",
+    "explanation": "AlexNet won the ImageNet Large Scale Visual Recognition Challenge (ILSVRC) in 2012 with a top-5 error rate of 15.3%, compared to 26.2% for the runner-up. The magnitude of the gap convinced the AI research community that deep convolutional neural networks were the future.",
+    "visualDescription": "A 2012 competition scoreboard with a massive gap between first place (AlexNet) and second place, surprised researchers looking at the results",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/AlexNet",
+    "volatile": false,
+    "distractors": [
+      "MNIST Challenge",
+      "PASCAL VOC",
+      "CIFAR-10",
+      "Open Images",
+      "COCO Challenge",
+      "Kaggle Vision Cup",
+      "VGGNet Challenge",
+      "ResNet Competition"
+    ]
+  },
+  {
+    "id": "cs_6_deep_blue_defeated",
+    "correctAnswer": "Garry Kasparov",
+    "acceptableAlternatives": [
+      "Kasparov"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "person_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "quizQuestion": "IBM's Deep Blue made history in May 1997 by defeating which reigning world chess champion \u2014 the first time a computer beat a human champion under standard tournament conditions?",
+    "explanation": "IBM's Deep Blue defeated Garry Kasparov 3.5-2.5 in a six-game match in New York in May 1997. Deep Blue could evaluate approximately 200 million positions per second. The defeat was a cultural landmark \u2014 Kasparov accused IBM of cheating and demanded a rematch, which IBM refused, and then retired Deep Blue.",
+    "visualDescription": "A tense chess match under bright lights \u2014 a Russian grandmaster staring intensely at the board across from a tall black IBM computer terminal",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)",
+    "volatile": false,
+    "distractors": [
+      "Magnus Carlsen",
+      "Bobby Fischer",
+      "Anatoly Karpov",
+      "Vladimir Kramnik",
+      "Viswanathan Anand",
+      "Boris Spassky",
+      "Lee Sedol",
+      "Hikaru Nakamura"
+    ]
+  },
+  {
+    "id": "cs_6_watson_game",
+    "correctAnswer": "Jeopardy!",
+    "acceptableAlternatives": [
+      "Jeopardy"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "product_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "quizQuestion": "IBM's Watson AI defeated human champions Ken Jennings and Brad Rutter in February 2011 on what television quiz show?",
+    "explanation": "IBM's Watson beat Jeopardy! champions Ken Jennings and Brad Rutter in a televised three-game match in February 2011, winning the $1 million prize (which IBM donated to charity). Watson had to understand natural language 'answers' and formulate correct 'questions' \u2014 a much harder challenge than chess. Ken Jennings wrote 'I for one welcome our new computer overlords' on his Final Jeopardy answer.",
+    "visualDescription": "A TV game show stage with three podiums: two human champions on the sides and a large IBM Watson computer terminal in the center, colored buzzers lit up",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/IBM_Watson",
+    "volatile": false,
+    "distractors": [
+      "Who Wants to Be a Millionaire?",
+      "Wheel of Fortune",
+      "The Price Is Right",
+      "Family Feud",
+      "Are You Smarter Than a 5th Grader?",
+      "Deal or No Deal",
+      "Press Your Luck",
+      "25 Words or Less"
+    ]
+  },
+  {
+    "id": "cs_6_alphago_defeat_year",
+    "correctAnswer": "{2016}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 6,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "In what year did Google DeepMind's AlphaGo defeat world Go champion Lee Sedol 4-1, arriving a decade ahead of expert predictions?",
+    "explanation": "AlphaGo defeated Lee Sedol in March 2016, years before experts expected a computer to beat a top human player. Go has more possible board positions than atoms in the observable universe, making it far harder than chess. AlphaGo used deep reinforcement learning and Monte Carlo tree search \u2014 a radically different approach from Deep Blue's brute-force search.",
+    "visualDescription": "A Go board with black and white stones in the final positions of a historic game, a split screen showing the AI system interface on one side",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_6_alphago_creator",
+    "correctAnswer": "Google DeepMind",
+    "acceptableAlternatives": [
+      "DeepMind",
+      "Google"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "company_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "Which AI research company, founded by Demis Hassabis and acquired by Google, created AlphaGo and AlphaFold?",
+    "explanation": "Google DeepMind (originally DeepMind Technologies, founded in London in 2010 by Demis Hassabis, Shane Legg, and Mustafa Suleyman) was acquired by Google in 2014. It created AlphaGo, AlphaFold, and many other landmark AI systems. In 2024 Hassabis shared the Nobel Prize in Chemistry for AlphaFold's contributions.",
+    "visualDescription": "A modern London AI research lab, neural network visualizations on large monitors, a Go board and protein structure model on the same desk",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol",
+    "volatile": false,
+    "distractors": [
+      "OpenAI",
+      "IBM Research",
+      "Meta AI",
+      "Microsoft Research",
+      "Stanford AI Lab",
+      "MIT CSAIL",
+      "Anthropic",
+      "Amazon AI"
+    ]
+  },
+  {
+    "id": "cs_6_alphafold_achievement",
+    "correctAnswer": "protein structure prediction",
+    "acceptableAlternatives": [
+      "protein folding",
+      "predicting protein structures"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "What 50-year-old grand challenge in biology did DeepMind's AlphaFold 2 essentially solve at the CASP14 competition in November 2020?",
+    "explanation": "AlphaFold 2 achieved accuracy in predicting how proteins fold into 3D shapes comparable to expensive experimental methods. This 'protein folding problem' had stumped scientists for 50 years because a protein's shape determines its function \u2014 knowing the shape enables drug discovery and disease understanding.",
+    "visualDescription": "A 3D ribbon diagram of a protein structure glowing in blue and orange, a researcher comparing it to an experimental X-ray crystallography image with astonishment",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/AlphaFold",
+    "volatile": false,
+    "distractors": [
+      "drug synthesis optimization",
+      "genome sequencing",
+      "cancer cell classification",
+      "DNA structure prediction",
+      "antibody design",
+      "RNA folding",
+      "enzyme catalysis simulation",
+      "chemical reaction prediction"
+    ]
+  },
+  {
+    "id": "cs_6_demis_hassabis_nobel",
+    "correctAnswer": "{2024}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 6,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "In what year did DeepMind co-founder Demis Hassabis and John Jumper share the Nobel Prize in Chemistry for AlphaFold's contributions to protein structure research?",
+    "explanation": "Demis Hassabis and John Jumper of Google DeepMind shared the 2024 Nobel Prize in Chemistry (along with David Baker of the University of Washington) for computational protein design and protein structure prediction. This marked a historic recognition of AI research at the highest level of scientific achievement.",
+    "visualDescription": "A Nobel Prize medal against a backdrop of protein structure ribbon diagrams and a DNA helix, Stockholm concert hall in the background",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Demis_Hassabis",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_6_gpt3_parameters",
+    "correctAnswer": "175 billion",
+    "acceptableAlternatives": [
+      "175B",
+      "175 billion parameters"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "How many parameters did GPT-3, OpenAI's 2020 large language model, contain \u2014 shocking the research community with its scale?",
+    "explanation": "GPT-3 contained 175 billion parameters when released in 2020, roughly 100 times more than its predecessor GPT-2. The scale was so large it could perform tasks it was never explicitly trained on, just by reading a few examples \u2014 a capability researchers called 'few-shot learning.'",
+    "visualDescription": "A visualization of neural network nodes branching to countless connections, labeled '175 billion parameters', server racks glowing in the background",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/GPT-3",
+    "volatile": false,
+    "distractors": [
+      "1 billion",
+      "10 billion",
+      "100 billion",
+      "500 billion",
+      "1 trillion",
+      "17 billion",
+      "45 billion",
+      "1.5 billion"
+    ]
+  },
+  {
+    "id": "cs_6_chatgpt_launch_year",
+    "correctAnswer": "{2022}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 6,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "In what year did OpenAI release ChatGPT, which reached 100 million users in just two months \u2014 the fastest consumer tech product to do so?",
+    "explanation": "ChatGPT launched November 30, 2022, and reached 100 million users in two months \u2014 far faster than Instagram (2.5 years) or TikTok (9 months). It was built on GPT-3.5 and used reinforcement learning from human feedback (RLHF) to make it safer and more helpful than its predecessor.",
+    "visualDescription": "A smartphone screen showing the ChatGPT interface with a question being typed, a line chart in the background showing user growth rocketing skyward",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/ChatGPT",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_6_dalle_announced",
+    "correctAnswer": "{2021}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 6,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "In what year did OpenAI first announce DALL-E, the text-to-image AI model that could generate novel images from written descriptions?",
+    "explanation": "DALL-E was first announced January 5, 2021. The name is a portmanteau of the artist Salvador Dal\u00ed and the Pixar robot WALL-E. It demonstrated that neural networks could generate surprisingly creative and detailed images from text prompts, launching the generative image AI era.",
+    "visualDescription": "An AI-generated surrealist painting of an armchair shaped like an avocado \u2014 the famous original DALL-E demo \u2014 floating in a clean white gallery",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/DALL-E",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_6_transformer_paper",
+    "correctAnswer": "Attention Is All You Need",
+    "acceptableAlternatives": [
+      "'Attention Is All You Need'"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 2,
+    "funScore": 9,
+    "quizQuestion": "What is the title of the 2017 Google paper that introduced the transformer architecture \u2014 the foundation for GPT, BERT, and essentially all modern large language models?",
+    "explanation": "'Attention Is All You Need' was published in 2017 by eight Google researchers. It introduced the transformer architecture, replacing recurrent neural networks with self-attention mechanisms. The title is now famous for its boldness \u2014 and accuracy. The paper has been cited hundreds of thousands of times.",
+    "visualDescription": "An academic paper with the bold title 'Attention Is All You Need' on the cover, neural network attention heatmaps visualizing which words attend to other words in a sentence",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Attention_Is_All_You_Need",
+    "volatile": false,
+    "distractors": [
+      "Deep Learning Revolution",
+      "The Bitter Lesson",
+      "ImageNet Moment",
+      "Scaling Laws for LLMs",
+      "Self-Attention Networks",
+      "Beyond Recurrence",
+      "Transforming Language Models",
+      "Neural Machine Translation"
+    ]
+  },
+  {
+    "id": "cs_6_transformer_key_innovation",
+    "correctAnswer": "self-attention",
+    "acceptableAlternatives": [
+      "attention mechanism",
+      "self-attention mechanism"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "The transformer architecture replaced recurrent neural networks with what key mechanism, allowing it to relate any two positions in a sequence regardless of distance?",
+    "explanation": "The self-attention mechanism allows each position in a sequence to attend to every other position simultaneously, rather than processing sequences step-by-step. This made transformers massively parallelizable (fast to train) and gave them much better performance on long-range dependencies in language.",
+    "visualDescription": "A diagram of a transformer block showing multiple arrows connecting each word token to every other word token with varying weights highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Attention_Is_All_You_Need",
+    "volatile": false,
+    "distractors": [
+      "backpropagation",
+      "recurrent gates",
+      "convolutional filters",
+      "dropout regularization",
+      "batch normalization",
+      "skip connections",
+      "pooling layers",
+      "embedding layers"
+    ]
+  },
+  {
+    "id": "cs_6_gan_inventor",
+    "correctAnswer": "Ian Goodfellow",
+    "acceptableAlternatives": [
+      "Goodfellow"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "person_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "quizQuestion": "Who invented Generative Adversarial Networks (GANs) in June 2014, reportedly working out the idea over drinks and implementing it the same night?",
+    "explanation": "Ian Goodfellow invented GANs in June 2014. The story goes that he came up with the idea of pitting two networks against each other (a generator and a discriminator) at a bar after a friend's PhD defense. He went home, wrote the code, and it worked on the first try \u2014 a remarkable feat. GANs enabled unprecedented realistic synthetic image generation.",
+    "visualDescription": "Two neural networks illustrated as rival artists \u2014 one sketching fake images, one examining them under a magnifying glass \u2014 in an adversarial loop",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Generative_adversarial_network",
+    "volatile": false,
+    "distractors": [
+      "Yann LeCun",
+      "Geoffrey Hinton",
+      "Yoshua Bengio",
+      "Andrew Ng",
+      "Demis Hassabis",
+      "Ilya Sutskever",
+      "Pieter Abbeel",
+      "Andrej Karpathy"
+    ]
+  },
+  {
+    "id": "cs_6_cnn_pioneer",
+    "correctAnswer": "Yann LeCun",
+    "acceptableAlternatives": [
+      "LeCun"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "person_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Who pioneered convolutional neural networks (CNNs) in 1989, training them to recognize handwritten zip codes using backpropagation?",
+    "explanation": "Yann LeCun demonstrated CNNs in a 1989 paper on handwritten zip code recognition. Inspired by the visual cortex, CNNs use learned convolutional filters to detect local patterns in images. His later LeNet-5 system (1998) was deployed to read checks at banks. CNNs became the dominant architecture for computer vision.",
+    "visualDescription": "A 1989 research lab with a paper going through a document scanner, a CNN visualization on screen showing feature maps detecting edges and curves",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Convolutional_neural_network",
+    "volatile": false,
+    "distractors": [
+      "Geoffrey Hinton",
+      "Yoshua Bengio",
+      "Ian Goodfellow",
+      "Andrew Ng",
+      "Demis Hassabis",
+      "Alex Krizhevsky",
+      "Frank Rosenblatt",
+      "Arthur Samuel"
+    ]
+  },
+  {
+    "id": "cs_6_yann_lecun_turing_award",
+    "correctAnswer": "{2018}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 6,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "In what year did Yann LeCun share the Turing Award \u2014 often called the 'Nobel Prize of computing' \u2014 with Geoffrey Hinton and Yoshua Bengio for deep learning contributions?",
+    "explanation": "Yann LeCun, Geoffrey Hinton, and Yoshua Bengio shared the 2018 ACM Turing Award, often called the Nobel Prize of computing. The three are collectively known as the 'Godfathers of Deep Learning' for their decades of work on neural networks during times when the approach was deeply unfashionable.",
+    "visualDescription": "Three researchers on a stage receiving awards, a neural network diagram projected behind them, the text 'ACM Turing Award' visible on the podium",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Yann_LeCun",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_6_imagenet_creator",
+    "correctAnswer": "Fei-Fei Li",
+    "acceptableAlternatives": [
+      "Li"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "person_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Who created the ImageNet dataset at Stanford \u2014 the massive labeled image database that enabled the 2012 AlexNet breakthrough and launched the modern deep learning era?",
+    "explanation": "Fei-Fei Li and her colleagues created ImageNet starting in 2006, using Amazon Mechanical Turk to label millions of images across thousands of categories. The ImageNet Large Scale Visual Recognition Challenge (ILSVRC) became the benchmark for computer vision \u2014 and AlexNet's 2012 victory on it sparked the deep learning revolution.",
+    "visualDescription": "A Stanford professor surrounded by thousands of tiny labeled images projected on a large screen \u2014 dogs, cars, chairs, all tagged with category names",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fei-Fei_Li",
+    "volatile": false,
+    "distractors": [
+      "Yann LeCun",
+      "Geoffrey Hinton",
+      "Andrew Ng",
+      "Ian Goodfellow",
+      "Yoshua Bengio",
+      "Demis Hassabis",
+      "Alex Krizhevsky",
+      "Ilya Sutskever"
+    ]
+  },
+  {
+    "id": "cs_6_second_ai_winter_cause",
+    "correctAnswer": "expert systems",
+    "acceptableAlternatives": [
+      "collapse of expert systems",
+      "the expert systems market"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 4,
+    "funScore": 8,
+    "quizQuestion": "What AI approach \u2014 which encoded human expertise as hand-crafted rules \u2014 collapsed in the late 1980s, triggering the second AI winter (~1987-2000)?",
+    "explanation": "Expert systems were AI programs encoding domain expertise as thousands of hand-crafted 'if-then' rules. They were popular in the 1980s but proved brittle, expensive to maintain, and unable to handle the complexity of the real world. When businesses stopped investing in them, AI funding dried up, beginning the second winter.",
+    "visualDescription": "A 1980s mainframe terminal running a medical diagnosis expert system, displaying rows of coded rules and decision trees, a frustrated programmer adding yet another rule",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/AI_winter",
+    "volatile": false,
+    "distractors": [
+      "neural networks",
+      "genetic algorithms",
+      "Lisp machines",
+      "natural language processing",
+      "robotics",
+      "symbolic AI",
+      "fuzzy logic",
+      "Prolog programs"
+    ]
+  },
+  {
+    "id": "cs_6_deepmind_founded_year",
+    "correctAnswer": "{2010}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 6,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "In what year did Demis Hassabis co-found Google DeepMind \u2014 the London-based AI research company that created AlphaGo and AlphaFold?",
+    "explanation": "Demis Hassabis, Shane Legg, and Mustafa Suleyman co-founded DeepMind Technologies in London in 2010. Google acquired it in 2014 for approximately $500 million. DeepMind's string of breakthroughs \u2014 from beating Atari games to solving protein folding \u2014 established it as one of the world's foremost AI research organizations.",
+    "visualDescription": "A stylish London office in 2010, neural network visualizations on large screens, the DeepMind logo being designed on a whiteboard",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Demis_Hassabis",
+    "volatile": false,
+    "distractors": []
+  },
+  {
+    "id": "cs_6_gpt3_developer",
+    "correctAnswer": "OpenAI",
+    "acceptableAlternatives": [],
+    "chainThemeId": 6,
+    "answerTypePoolId": "company_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "Which AI research company released GPT-3 in 2020 and ChatGPT in 2022, triggering a global wave of generative AI development?",
+    "explanation": "OpenAI, founded in 2015 as a non-profit by Elon Musk, Sam Altman, Greg Brockman, and others, released GPT-3 in 2020 and ChatGPT on November 30, 2022. ChatGPT's viral success turned OpenAI into one of the world's most valuable AI companies and spurred massive investment in generative AI.",
+    "visualDescription": "The OpenAI logo on a modern tech building, a ChatGPT conversation window on a laptop screen, users typing questions worldwide connected by glowing lines",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/GPT-3",
+    "volatile": false,
+    "distractors": [
+      "Google DeepMind",
+      "Meta AI",
+      "Anthropic",
+      "Microsoft Research",
+      "IBM Research",
+      "Stanford AI Lab",
+      "MIT CSAIL",
+      "Baidu AI"
+    ]
+  },
+  {
+    "id": "cs_6_svm_purpose",
+    "correctAnswer": "support vector machine",
+    "acceptableAlternatives": [
+      "SVM",
+      "support vector machines"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "algorithm_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "What classification algorithm, developed by Cortes and Vapnik at Bell Labs and published in 1995, finds the maximum-margin hyperplane between two classes of data?",
+    "explanation": "Support Vector Machines (SVMs) find the optimal decision boundary \u2014 the hyperplane that maximizes the margin between two classes in feature space. They can be extended to non-linear classification using the 'kernel trick.' SVMs were state-of-the-art for many classification tasks in the late 1990s and 2000s before deep learning surpassed them.",
+    "visualDescription": "A 2D scatter plot with two clusters of points (circles and crosses) separated by a bold line with maximum margin dashed lines on either side",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Support_vector_machine",
+    "volatile": false,
+    "distractors": [
+      "random forest",
+      "decision tree",
+      "naive Bayes",
+      "k-nearest neighbors",
+      "logistic regression",
+      "neural network",
+      "k-means clustering",
+      "gradient boosting"
+    ]
+  },
+  {
+    "id": "cs_6_deep_blue_company",
+    "correctAnswer": "IBM",
+    "acceptableAlternatives": [],
+    "chainThemeId": 6,
+    "answerTypePoolId": "company_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "Deep Blue \u2014 the chess computer that defeated Garry Kasparov in 1997 \u2014 was built by which technology company?",
+    "explanation": "IBM built Deep Blue, which could evaluate approximately 200 million chess positions per second using specialized hardware. IBM used Deep Blue's victory as a major marketing triumph. After retiring Deep Blue following the 1997 match, IBM moved on to new AI challenges, eventually building Watson.",
+    "visualDescription": "The IBM logo on a tall black computer cabinet labeled 'Deep Blue', a chess board with pieces mid-game in front of it, Kasparov's face reflected in the machine's dark surface",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)",
+    "volatile": false,
+    "distractors": [
+      "Google",
+      "Microsoft",
+      "Carnegie Mellon University",
+      "MIT",
+      "Bell Labs",
+      "Stanford University",
+      "DeepMind",
+      "Apple"
+    ]
+  },
+  {
+    "id": "cs_6_alphago_game",
+    "correctAnswer": "Go",
+    "acceptableAlternatives": [
+      "the game of Go"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "technology_terms",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "AlphaGo made history in 2016 by becoming the first AI to defeat a world champion at what ancient board game, considered harder than chess?",
+    "explanation": "AlphaGo defeated world champion Lee Sedol at Go in March 2016. Go is played on a 19x19 board with more possible positions than atoms in the observable universe, making brute-force search impossible. AlphaGo used deep reinforcement learning and Monte Carlo tree search to evaluate positions intuitively, more like a human master.",
+    "visualDescription": "A Go board with black and white stones, the massive branching game tree of possible moves illustrated behind it, dwarfing the comparatively simple chess tree",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol",
+    "volatile": false,
+    "distractors": [
+      "chess",
+      "checkers",
+      "shogi",
+      "backgammon",
+      "mahjong",
+      "poker",
+      "bridge",
+      "Othello"
+    ]
+  },
+  {
+    "id": "cs_6_ai_pioneer_john_mccarthy",
+    "correctAnswer": "Lisp",
+    "acceptableAlternatives": [
+      "the Lisp programming language",
+      "LISP"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "language_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "John McCarthy \u2014 who coined 'artificial intelligence' at the 1956 Dartmouth conference \u2014 also invented which influential programming language still used in AI research today?",
+    "explanation": "John McCarthy invented Lisp (LISt Processing) in 1958, making it the second-oldest high-level programming language still in use. Lisp was designed for symbolic computation and became foundational in AI research. It introduced many concepts now common in programming: automatic garbage collection, dynamic typing, and higher-order functions.",
+    "visualDescription": "A 1960s computer lab with a Lisp interpreter running on a terminal, parentheses-heavy code filling the screen, a list structure diagram on the blackboard",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)",
+    "volatile": false,
+    "distractors": [
+      "Prolog",
+      "FORTRAN",
+      "COBOL",
+      "Smalltalk",
+      "APL",
+      "Scheme",
+      "ML",
+      "Haskell"
+    ]
+  }
+]
