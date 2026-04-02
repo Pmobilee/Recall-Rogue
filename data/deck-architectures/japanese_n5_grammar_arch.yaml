@@ -1,0 +1,1072 @@
+# Japanese N5 Grammar Architecture
+# Deck: japanese_n5_grammar
+# Created: 2026-04-02
+#
+# Source cross-reference:
+#   FJSD = Full Japanese Study Deck (takoboto.jp/bunpo/[id])
+#   16 FJSD N5 grammar points mapped by ID below.
+#
+# FJSD IDs found in source file grammar_n5.json:
+#   249  — だけ
+#   249  — だけ
+#   574  — の (possessive)
+#   576  — も (also)
+#   580  — これ/それ/あれ
+#   623  — いくら
+#   624  — で (means/location of action)
+#   626  — に (location/time/direction)
+#   629  — 何 (what)
+#   659  — に (indirect object)
+#   719  — まで (till/to)
+#   725  — が (but/however)
+#   754  — が (subject marker)
+#   765  — を (object marker)
+#   1216 — から (because)
+#   1269 — てから (after doing)
+#   1538 — たい (want to)
+
+deck_id: japanese_n5_grammar
+name: "Japanese N5 Grammar"
+domain: vocabulary
+sub_domain: japanese_grammar
+target_facts: 300
+minimum_facts: 200
+
+data_sources:
+  - name: Full Japanese Study Deck (FJSD)
+    url: https://github.com/Ronokof/Full-Japanese-Study-Deck
+    license: CC BY-SA 4.0
+    usage: 16 N5 grammar point definitions with example sentences (IDs listed in file header)
+  - name: Tatoeba / Tanaka Corpus
+    url: https://tatoeba.org/
+    license: CC BY 2.0
+    usage: Example sentences for grammar points not covered by FJSD
+  - name: JLPT Sensei
+    url: https://jlptsensei.com/jlpt-n5-grammar-list/
+    license: Reference only (list verified against multiple sources)
+    usage: Canonical N5 grammar point inventory (84 points, deduplicated to ~80 unique)
+
+# -------------------------------------------------------------------
+# Grammar Points
+# Categories:
+#   particle         — post-noun/verb grammatical particles
+#   copula           — to-be forms and negations
+#   verb_form        — verb conjugation patterns and suffixes
+#   adjective        — い-adj and な-adj classes
+#   sentence_pattern — multi-word constructions and compound patterns
+#   question_word    — interrogatives
+#   demonstrative    — ko/so/a/do series
+#   conjunction      — clause connectors and discourse markers
+#   adverb           — standalone adverbial expressions
+#   counter          — numerical/quantity expressions
+#   honorific        — politeness prefixes/registers
+#
+# Difficulty:
+#   1 — basic particles, core copula (learned first week)
+#   2 — common verb forms, frequent patterns
+#   3 — conjugations, negative/conditional forms
+#   4 — complex patterns, formal variants, nuanced usage
+# -------------------------------------------------------------------
+
+grammar_points:
+
+  # ---- PARTICLES (core) -------------------------------------------
+
+  - id: "n5-particle-wa"
+    point: "は"
+    reading: "wa"
+    meaning: "topic marker particle"
+    category: particle
+    usages:
+      - "Noun + は + comment"
+      - "Sentence element + は + predicate (sets topic for rest of sentence)"
+    fjsd_id: null
+    difficulty: 1
+
+  - id: "n5-particle-ga-subject"
+    point: "が"
+    reading: "ga"
+    meaning: "subject marker particle"
+    category: particle
+    usages:
+      - "Subject (Noun) + が + Verb/Adjective"
+      - "Used to mark new information or emphasize the subject"
+    fjsd_id: "754"
+    difficulty: 1
+
+  - id: "n5-particle-ga-contrast"
+    point: "〜が"
+    reading: "ga"
+    meaning: "but; however; still (clause connector)"
+    category: particle
+    usages:
+      - "Sentence 1 + が + Sentence 2"
+    fjsd_id: "725"
+    difficulty: 2
+
+  - id: "n5-particle-wo"
+    point: "を"
+    reading: "wo/o"
+    meaning: "object marker particle (direct object)"
+    category: particle
+    usages:
+      - "Noun + を + Verb"
+    fjsd_id: "765"
+    difficulty: 1
+
+  - id: "n5-particle-ni-location"
+    point: "〜に"
+    reading: "ni"
+    meaning: "location marker; time marker; direction marker"
+    category: particle
+    usages:
+      - "Noun (place) + に + existential verb (います/あります)"
+      - "Noun (time) + に + Verb"
+      - "Noun (destination) + に + 行く/来る/帰る"
+    fjsd_id: "626"
+    difficulty: 1
+
+  - id: "n5-particle-ni-indirect"
+    point: "〜に"
+    reading: "ni"
+    meaning: "indirect object marker; to; from (agent in passive/giving)"
+    category: particle
+    usages:
+      - "Person + に + Verb (give/receive/say/teach)"
+      - "Person + に + もらう/あげる/くれる"
+    fjsd_id: "659"
+    difficulty: 2
+
+  - id: "n5-particle-de"
+    point: "〜で"
+    reading: "de"
+    meaning: "by means of; with; at (location of action)"
+    category: particle
+    usages:
+      - "Means/Tool + で + Verb"
+      - "Place + で + Action Verb"
+    fjsd_id: "624"
+    difficulty: 1
+
+  - id: "n5-particle-no"
+    point: "〜の"
+    reading: "no"
+    meaning: "possessive particle; of; 's"
+    category: particle
+    usages:
+      - "Noun A + の + Noun B (A's B / B of A)"
+      - "の at end of phrase as pronoun substitute"
+    fjsd_id: "574"
+    difficulty: 1
+
+  - id: "n5-particle-mo"
+    point: "〜も"
+    reading: "mo"
+    meaning: "too; also; as well; even"
+    category: particle
+    usages:
+      - "Noun + も + Verb/Adjective (replaces は/が/を)"
+    fjsd_id: "576"
+    difficulty: 1
+
+  - id: "n5-particle-ka"
+    point: "か"
+    reading: "ka"
+    meaning: "question particle"
+    category: particle
+    usages:
+      - "Statement + か (rising intonation = question)"
+      - "Wh-word + か (embedded question)"
+    fjsd_id: null
+    difficulty: 1
+
+  - id: "n5-particle-ka-or"
+    point: "か〜か"
+    reading: "ka ~ ka"
+    meaning: "or (between options)"
+    category: particle
+    usages:
+      - "Option A + か + Option B + か"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-particle-kara-from"
+    point: "から"
+    reading: "kara"
+    meaning: "from; since (starting point)"
+    category: particle
+    usages:
+      - "Noun (place/time) + から (starting point)"
+      - "から〜まで (from... to...)"
+    fjsd_id: null
+    difficulty: 1
+
+  - id: "n5-particle-made"
+    point: "まで"
+    reading: "made"
+    meaning: "until; as far as; to; even"
+    category: particle
+    usages:
+      - "Noun (place/time) + まで (endpoint)"
+      - "から〜まで (from... to...)"
+      - "Unexpected item + まで (even X)"
+    fjsd_id: "719"
+    difficulty: 1
+
+  - id: "n5-particle-to"
+    point: "と"
+    reading: "to"
+    meaning: "and; with; if; when; quotation marker"
+    category: particle
+    usages:
+      - "Noun A + と + Noun B (exhaustive and)"
+      - "Person + と + Verb (together with)"
+      - "Plain form + と + Verb (automatic consequence / quotation)"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-particle-ya"
+    point: "や"
+    reading: "ya"
+    meaning: "and (non-exhaustive list); among other things"
+    category: particle
+    usages:
+      - "Noun A + や + Noun B (+ など) — listing some examples"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-particle-he"
+    point: "へ"
+    reading: "he/e"
+    meaning: "to; toward (direction)"
+    category: particle
+    usages:
+      - "Destination + へ + 行く/来る/帰る"
+    fjsd_id: null
+    difficulty: 1
+
+  - id: "n5-particle-ni-he"
+    point: "に/へ"
+    reading: "ni/e"
+    meaning: "to (direction/destination) — に and へ often interchangeable for direction"
+    category: particle
+    usages:
+      - "Destination + に/へ + movement verb"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-particle-de-mo"
+    point: "でも"
+    reading: "demo"
+    meaning: "but; however; though (conjunction between sentences)"
+    category: conjunction
+    usages:
+      - "Sentence 1。でも、Sentence 2 (contrast/unexpected result)"
+    fjsd_id: null
+    difficulty: 1
+
+  - id: "n5-particle-no-possessive"
+    point: "は〜がある"
+    reading: "wa ~ ga aru"
+    meaning: "[topic] has [thing]; there is [thing] for [topic]"
+    category: sentence_pattern
+    usages:
+      - "Topic + は + Thing + がある"
+    fjsd_id: null
+    difficulty: 2
+
+  # ---- COPULA -------------------------------------------------------
+
+  - id: "n5-copula-da"
+    point: "だ / です"
+    reading: "da / desu"
+    meaning: "to be (copula); plain / polite forms"
+    category: copula
+    usages:
+      - "Noun/Na-adjective + だ (plain)"
+      - "Noun/Na-adjective + です (polite)"
+    fjsd_id: null
+    difficulty: 1
+
+  - id: "n5-copula-janai"
+    point: "じゃない / ではない"
+    reading: "ja nai / de wa nai"
+    meaning: "to not be (negative copula); plain / formal forms"
+    category: copula
+    usages:
+      - "Noun/Na-adjective + じゃない (casual negative)"
+      - "Noun/Na-adjective + ではない (formal negative)"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-copula-darou"
+    point: "だろう"
+    reading: "darou"
+    meaning: "I think; probably; right? (plain conjecture)"
+    category: copula
+    usages:
+      - "Plain form + だろう"
+      - "Noun/Na-adj + だろう"
+    fjsd_id: null
+    difficulty: 3
+
+  - id: "n5-copula-deshou"
+    point: "でしょう"
+    reading: "deshou"
+    meaning: "I think; probably; right? (polite conjecture)"
+    category: copula
+    usages:
+      - "Polite form + でしょう"
+      - "Noun/Na-adj + でしょう"
+      - "Statement + でしょう? (seeking agreement)"
+    fjsd_id: null
+    difficulty: 3
+
+  # ---- ADJECTIVES ---------------------------------------------------
+
+  - id: "n5-adj-i"
+    point: "い-adjective"
+    reading: "i-keiyoushi"
+    meaning: "descriptive adjective ending in い"
+    category: adjective
+    usages:
+      - "い-adj + Noun (attributive)"
+      - "Noun + は + い-adj + い (predicative)"
+      - "い-adj stem + くない (negative)"
+      - "い-adj stem + かった (past)"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-adj-na"
+    point: "な-adjective"
+    reading: "na-keiyoushi"
+    meaning: "descriptive adjective requiring な before nouns"
+    category: adjective
+    usages:
+      - "な-adj + な + Noun (attributive)"
+      - "Noun + は + な-adj + だ/です (predicative)"
+      - "な-adj + ではない (negative)"
+    fjsd_id: null
+    difficulty: 2
+
+  # ---- VERB FORMS ---------------------------------------------------
+
+  - id: "n5-verb-tai"
+    point: "〜たい"
+    reading: "tai"
+    meaning: "want to do something (speaker's desire)"
+    category: verb_form
+    usages:
+      - "Verb stem (ます-stem) + たい"
+      - "たい conjugates like an い-adjective"
+    fjsd_id: "1538"
+    difficulty: 2
+
+  - id: "n5-verb-te-iru"
+    point: "〜ている"
+    reading: "te iru"
+    meaning: "ongoing action or resulting state"
+    category: verb_form
+    usages:
+      - "Verb て-form + いる (action in progress)"
+      - "Verb て-form + いる (resultant state)"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-verb-te-kara"
+    point: "〜てから"
+    reading: "te kara"
+    meaning: "after doing [verb]; since doing"
+    category: verb_form
+    usages:
+      - "Verb て-form + から + next action"
+    fjsd_id: "1269"
+    difficulty: 2
+
+  - id: "n5-verb-te-kudasai"
+    point: "〜てください"
+    reading: "te kudasai"
+    meaning: "please do [verb] (polite request)"
+    category: verb_form
+    usages:
+      - "Verb て-form + ください"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-verb-nai-de-kudasai"
+    point: "〜ないでください"
+    reading: "nai de kudasai"
+    meaning: "please don't do [verb]"
+    category: verb_form
+    usages:
+      - "Verb ない-form + でください"
+    fjsd_id: null
+    difficulty: 3
+
+  - id: "n5-verb-te-mo-ii"
+    point: "〜てもいい"
+    reading: "te mo ii"
+    meaning: "it's okay to; may I? (permission)"
+    category: verb_form
+    usages:
+      - "Verb て-form + もいい (granting permission)"
+      - "Verb て-form + もいいですか (asking permission)"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-verb-te-wa-ikenai"
+    point: "〜てはいけない"
+    reading: "te wa ikenai"
+    meaning: "must not; may not (prohibition)"
+    category: verb_form
+    usages:
+      - "Verb て-form + はいけない"
+    fjsd_id: null
+    difficulty: 3
+
+  - id: "n5-verb-cha-ikenai"
+    point: "ちゃいけない / じゃいけない"
+    reading: "cha ikenai / ja ikenai"
+    meaning: "must not do (spoken/casual contraction)"
+    category: verb_form
+    usages:
+      - "Verb て-form contraction + ちゃいけない (ては → ちゃ)"
+      - "でては → じゃいけない"
+    fjsd_id: null
+    difficulty: 3
+
+  - id: "n5-verb-te-aru"
+    point: "〜てある"
+    reading: "te aru"
+    meaning: "has been done; resultant state (purposely made)"
+    category: verb_form
+    usages:
+      - "Transitive verb て-form + ある"
+      - "Contrasts with ている: emphasizes deliberate prior action"
+    fjsd_id: null
+    difficulty: 3
+
+  - id: "n5-verb-ta-koto-ga-aru"
+    point: "〜たことがある"
+    reading: "ta koto ga aru"
+    meaning: "to have done before; have the experience of"
+    category: verb_form
+    usages:
+      - "Verb た-form + ことがある"
+    fjsd_id: null
+    difficulty: 3
+
+  - id: "n5-verb-tari-tari"
+    point: "〜たり〜たり"
+    reading: "tari ~ tari"
+    meaning: "do things like A and B; alternating or representative actions"
+    category: verb_form
+    usages:
+      - "Verb た-form + り + Verb た-form + り + する"
+    fjsd_id: null
+    difficulty: 3
+
+  - id: "n5-verb-sugiru"
+    point: "〜すぎる"
+    reading: "sugiru"
+    meaning: "too much; excessively"
+    category: verb_form
+    usages:
+      - "Verb stem (ます-stem) + すぎる"
+      - "い-adj stem + すぎる"
+      - "な-adj stem + すぎる"
+    fjsd_id: null
+    difficulty: 3
+
+  - id: "n5-verb-naru"
+    point: "〜なる"
+    reading: "naru"
+    meaning: "to become"
+    category: verb_form
+    usages:
+      - "い-adj stem + くなる"
+      - "な-adj + になる"
+      - "Noun + になる"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-verb-ni-iku"
+    point: "〜に行く"
+    reading: "ni iku"
+    meaning: "go to do [verb]; go in order to"
+    category: verb_form
+    usages:
+      - "Verb stem (ます-stem) + に行く/来る/帰る"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-verb-ni-suru"
+    point: "〜にする"
+    reading: "ni suru"
+    meaning: "to decide on; to make it"
+    category: verb_form
+    usages:
+      - "Noun + にする (decide on something)"
+    fjsd_id: null
+    difficulty: 2
+
+  # ---- OBLIGATION / MUST / PERMISSION --------------------------------
+
+  - id: "n5-must-nakereba-naranai"
+    point: "なくてはいけない"
+    reading: "nakute wa ikenai"
+    meaning: "must do; need to do (negative condition = obligation)"
+    category: sentence_pattern
+    usages:
+      - "Verb ない-form stem + くてはいけない"
+    fjsd_id: null
+    difficulty: 3
+
+  - id: "n5-must-nakute-naranai"
+    point: "なくてはならない"
+    reading: "nakute wa naranai"
+    meaning: "must do; need to (formal/written variant)"
+    category: sentence_pattern
+    usages:
+      - "Verb ない-form stem + くてはならない"
+    fjsd_id: null
+    difficulty: 4
+
+  - id: "n5-must-naito-ikenai"
+    point: "ないといけない"
+    reading: "nai to ikenai"
+    meaning: "must do; have to (conditional must)"
+    category: sentence_pattern
+    usages:
+      - "Verb ない-form + といけない"
+    fjsd_id: null
+    difficulty: 3
+
+  - id: "n5-must-nakucha"
+    point: "なくちゃ"
+    reading: "nakucha"
+    meaning: "must do; gotta do (casual contraction)"
+    category: sentence_pattern
+    usages:
+      - "Verb ない-form stem + くちゃ (contraction of なくては)"
+    fjsd_id: null
+    difficulty: 3
+
+  - id: "n5-must-nakute-mo-ii"
+    point: "なくてもいい"
+    reading: "nakute mo ii"
+    meaning: "don't have to; it's okay not to"
+    category: sentence_pattern
+    usages:
+      - "Verb ない-form stem + くてもいい"
+    fjsd_id: null
+    difficulty: 3
+
+  - id: "n5-should-hou-ga-ii"
+    point: "〜ほうがいい"
+    reading: "hou ga ii"
+    meaning: "had better; should (advice/recommendation)"
+    category: sentence_pattern
+    usages:
+      - "Verb た-form + ほうがいい (positive advice)"
+      - "Verb ない-form + ほうがいい (negative advice)"
+    fjsd_id: null
+    difficulty: 3
+
+  # ---- DESIRE / WANT ------------------------------------------------
+
+  - id: "n5-want-ga-hoshii"
+    point: "〜がほしい"
+    reading: "ga hoshii"
+    meaning: "to want something (noun desire)"
+    category: sentence_pattern
+    usages:
+      - "Noun + がほしい (I want [noun])"
+      - "Conjugates like い-adjective"
+    fjsd_id: null
+    difficulty: 2
+
+  # ---- EXISTENCE ----------------------------------------------------
+
+  - id: "n5-exist-ga-aru"
+    point: "〜がある"
+    reading: "ga aru"
+    meaning: "there is; to exist; to have (non-living things)"
+    category: sentence_pattern
+    usages:
+      - "Place + に + Thing + がある"
+      - "Thing + がある (thing exists)"
+    fjsd_id: null
+    difficulty: 1
+
+  - id: "n5-exist-ga-iru"
+    point: "〜がいる"
+    reading: "ga iru"
+    meaning: "there is; to exist (living things: people, animals)"
+    category: sentence_pattern
+    usages:
+      - "Place + に + Person/Animal + がいる"
+    fjsd_id: null
+    difficulty: 1
+
+  # ---- SENTENCE-FINAL PARTICLES -------------------------------------
+
+  - id: "n5-sfp-ne"
+    point: "ね"
+    reading: "ne"
+    meaning: "isn't it?; right?; eh? (seeking agreement/shared feeling)"
+    category: particle
+    usages:
+      - "Statement + ね (confirmation/empathy)"
+    fjsd_id: null
+    difficulty: 1
+
+  - id: "n5-sfp-yo"
+    point: "よ"
+    reading: "yo"
+    meaning: "you know; emphasis; asserting information"
+    category: particle
+    usages:
+      - "Statement + よ (asserting, informing, mild emphasis)"
+    fjsd_id: null
+    difficulty: 1
+
+  # ---- QUESTION WORDS -----------------------------------------------
+
+  - id: "n5-qw-nani"
+    point: "何 (何)"
+    reading: "nani / nan"
+    meaning: "what"
+    category: question_word
+    usages:
+      - "何 + の + Noun (what kind of noun)"
+      - "何 + Verb (what do/did)"
+      - "nan before counters and です"
+    fjsd_id: "629"
+    difficulty: 1
+
+  - id: "n5-qw-ikura"
+    point: "いくら (幾等)"
+    reading: "ikura"
+    meaning: "how much (price/quantity)"
+    category: question_word
+    usages:
+      - "Noun + は + いくらですか"
+    fjsd_id: "623"
+    difficulty: 1
+
+  - id: "n5-qw-doshite"
+    point: "どうして"
+    reading: "doushite"
+    meaning: "why; for what reason; how"
+    category: question_word
+    usages:
+      - "どうして + [reason clause]"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-qw-douyatte"
+    point: "どうやって"
+    reading: "douyatte"
+    meaning: "how; in what way; by what means"
+    category: question_word
+    usages:
+      - "どうやって + Verb (how does one do X)"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-qw-donna"
+    point: "どんな"
+    reading: "donna"
+    meaning: "what kind of; what sort of"
+    category: question_word
+    usages:
+      - "どんな + Noun (what kind of noun)"
+    fjsd_id: null
+    difficulty: 2
+
+  # ---- DEMONSTRATIVES -----------------------------------------------
+
+  - id: "n5-dem-kore-sore-are"
+    point: "これ / それ / あれ"
+    reading: "kore / sore / are"
+    meaning: "this / that / that over there (standalone pronouns)"
+    category: demonstrative
+    usages:
+      - "これ = this (near speaker)"
+      - "それ = that (near listener)"
+      - "あれ = that over there (far from both)"
+    fjsd_id: "580"
+    difficulty: 1
+
+  - id: "n5-dem-kono-sono-ano"
+    point: "この / その / あの"
+    reading: "kono / sono / ano"
+    meaning: "this [noun] / that [noun] / that [noun] over there (prenominal)"
+    category: demonstrative
+    usages:
+      - "この/その/あの + Noun"
+    fjsd_id: null
+    difficulty: 1
+
+  - id: "n5-dem-koko-soko-asoko"
+    point: "ここ / そこ / あそこ"
+    reading: "koko / soko / asoko"
+    meaning: "here / there / over there (locations)"
+    category: demonstrative
+    usages:
+      - "ここ/そこ/あそこ + に/で + Verb"
+    fjsd_id: null
+    difficulty: 1
+
+  # ---- ADVERBS ------------------------------------------------------
+
+  - id: "n5-adv-issho-ni"
+    point: "いっしょに"
+    reading: "issho ni"
+    meaning: "together; at the same time"
+    category: adverb
+    usages:
+      - "Person + と + いっしょに + Verb"
+      - "いっしょに + Verb (together)"
+    fjsd_id: null
+    difficulty: 1
+
+  - id: "n5-adv-itsumo"
+    point: "いつも"
+    reading: "itsumo"
+    meaning: "always; usually; habitually"
+    category: adverb
+    usages:
+      - "いつも + Verb (always does)"
+    fjsd_id: null
+    difficulty: 1
+
+  - id: "n5-adv-ichiban"
+    point: "いちばん"
+    reading: "ichiban"
+    meaning: "the most; the best (superlative marker)"
+    category: adverb
+    usages:
+      - "いちばん + い-adj / な-adj"
+      - "Group + の中で + いちばん + adj"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-adv-mada"
+    point: "まだ"
+    reading: "mada"
+    meaning: "still; not yet"
+    category: adverb
+    usages:
+      - "まだ + Verb/Adjective (still in that state)"
+      - "まだ + Negative (not yet)"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-adv-mou"
+    point: "もう"
+    reading: "mou"
+    meaning: "already; anymore; again; soon"
+    category: adverb
+    usages:
+      - "もう + Affirmative (already done)"
+      - "もう + Negative (not anymore)"
+    fjsd_id: null
+    difficulty: 2
+
+  # ---- CONJUNCTIONS / DISCOURSE MARKERS ----------------------------
+
+  - id: "n5-conj-shikashi"
+    point: "しかし"
+    reading: "shikashi"
+    meaning: "but; however (formal written)"
+    category: conjunction
+    usages:
+      - "Sentence 1。しかし、Sentence 2 (formal contrast)"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-conj-sorekara"
+    point: "それから"
+    reading: "sore kara"
+    meaning: "and; and then; after that (sequence)"
+    category: conjunction
+    usages:
+      - "Action 1。それから、Action 2 (then after that)"
+    fjsd_id: null
+    difficulty: 1
+
+  - id: "n5-conj-soshite"
+    point: "そして"
+    reading: "soshite"
+    meaning: "and; and then; thus (additive)"
+    category: conjunction
+    usages:
+      - "Statement 1。そして、Statement 2 (adding related info)"
+    fjsd_id: null
+    difficulty: 1
+
+  - id: "n5-conj-kedo"
+    point: "けど"
+    reading: "kedo"
+    meaning: "but; however; although (casual)"
+    category: conjunction
+    usages:
+      - "Sentence 1 + けど + Sentence 2"
+      - "Trailing けど (soften statement, add nuance)"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-conj-keredomo"
+    point: "けれども"
+    reading: "keredomo"
+    meaning: "but; however; although (formal)"
+    category: conjunction
+    usages:
+      - "Sentence 1 + けれども + Sentence 2 (more formal than けど)"
+    fjsd_id: null
+    difficulty: 3
+
+  # ---- REASON CONNECTORS -------------------------------------------
+
+  - id: "n5-reason-kara"
+    point: "から (reason)"
+    reading: "kara"
+    meaning: "because; since (reason for previous or following clause)"
+    category: conjunction
+    usages:
+      - "Plain/Polite form + から + result (reason first)"
+      - "Result + から (reason at end, common in speech)"
+    fjsd_id: "1216"
+    difficulty: 2
+
+  - id: "n5-reason-node"
+    point: "ので"
+    reading: "node"
+    meaning: "because of; given that; since (more objective/formal than から)"
+    category: conjunction
+    usages:
+      - "Plain form + ので + result"
+      - "な-adj + なので / Noun + なので"
+    fjsd_id: null
+    difficulty: 3
+
+  # ---- TIME / SEQUENCE ---------------------------------------------
+
+  - id: "n5-time-mae-ni"
+    point: "前に (まえに)"
+    reading: "mae ni"
+    meaning: "before; in front of"
+    category: sentence_pattern
+    usages:
+      - "Verb dictionary form + 前に + action"
+      - "Noun + の前に + action"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-time-mada-te-imasen"
+    point: "まだ〜ていません"
+    reading: "mada ~ te imasen"
+    meaning: "have not yet; still haven't done"
+    category: sentence_pattern
+    usages:
+      - "まだ + Verb て-form + いません"
+    fjsd_id: null
+    difficulty: 2
+
+  # ---- INTENTS / PLANS ---------------------------------------------
+
+  - id: "n5-intent-tsumori"
+    point: "〜つもり"
+    reading: "tsumori"
+    meaning: "intend to; plan to"
+    category: sentence_pattern
+    usages:
+      - "Verb dictionary form + つもりだ"
+      - "Verb ない-form + つもりだ (don't intend to)"
+    fjsd_id: null
+    difficulty: 3
+
+  # ---- EXPLANATION / EMPHASIS --------------------------------------
+
+  - id: "n5-exp-n-desu"
+    point: "んです / のです"
+    reading: "n desu / no desu"
+    meaning: "to explain; show emphasis; seeking explanation"
+    category: sentence_pattern
+    usages:
+      - "Plain form + んです/のです (explaining/emphasizing)"
+      - "Plain form + んですか (seeking explanation)"
+    fjsd_id: null
+    difficulty: 3
+
+  # ---- COMPARISONS -------------------------------------------------
+
+  - id: "n5-comp-wa-yori"
+    point: "は〜より"
+    reading: "wa ~ yori"
+    meaning: "[A] is more than [B]; [A] compared to [B]"
+    category: sentence_pattern
+    usages:
+      - "A + は + B + より + Adjective"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-comp-yori-hou-ga"
+    point: "より〜ほうが"
+    reading: "yori ~ hou ga"
+    meaning: "[B] is more than [A]; [B] is better than [A]"
+    category: sentence_pattern
+    usages:
+      - "A + より + B + のほうが + Adjective"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-comp-no-naka-de-ichiban"
+    point: "の中で〜が一番"
+    reading: "no naka de ~ ga ichiban"
+    meaning: "out of [group], [A] is the best/most"
+    category: sentence_pattern
+    usages:
+      - "Group + の中で + A + が一番 + Adjective"
+    fjsd_id: null
+    difficulty: 2
+
+  # ---- INVITATIONS / SUGGESTIONS -----------------------------------
+
+  - id: "n5-inv-mashou"
+    point: "〜ましょう"
+    reading: "mashou"
+    meaning: "let's; shall we (volitional polite)"
+    category: verb_form
+    usages:
+      - "Verb ます-stem + ましょう"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-inv-masen-ka"
+    point: "〜ませんか"
+    reading: "masen ka"
+    meaning: "won't you?; would you? (polite invitation)"
+    category: verb_form
+    usages:
+      - "Verb ます-stem + ませんか (inviting someone to join)"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-inv-mashou-ka"
+    point: "〜ましょうか"
+    reading: "mashou ka"
+    meaning: "shall I?; shall we? (offering help or suggesting)"
+    category: verb_form
+    usages:
+      - "Verb ます-stem + ましょうか (offering)"
+    fjsd_id: null
+    difficulty: 2
+
+  - id: "n5-inv-dou-desu-ka"
+    point: "はどうですか"
+    reading: "wa dou desu ka"
+    meaning: "how about; how is (suggestion or asking for opinion)"
+    category: sentence_pattern
+    usages:
+      - "Noun + はどうですか (how about [noun]?)"
+      - "Verb て-form + はどうですか (how about doing X?)"
+    fjsd_id: null
+    difficulty: 2
+
+  # ---- SKILLS / ABILITY --------------------------------------------
+
+  - id: "n5-skill-no-ga-jozu"
+    point: "のが上手"
+    reading: "no ga jouzu"
+    meaning: "to be good at doing"
+    category: sentence_pattern
+    usages:
+      - "Verb plain form + のが上手だ"
+    fjsd_id: null
+    difficulty: 3
+
+  - id: "n5-skill-no-ga-heta"
+    point: "のが下手"
+    reading: "no ga heta"
+    meaning: "to be bad at doing"
+    category: sentence_pattern
+    usages:
+      - "Verb plain form + のが下手だ"
+    fjsd_id: null
+    difficulty: 3
+
+  - id: "n5-skill-no-ga-suki"
+    point: "のが好き"
+    reading: "no ga suki"
+    meaning: "to like doing"
+    category: sentence_pattern
+    usages:
+      - "Verb plain form + のが好きだ"
+    fjsd_id: null
+    difficulty: 2
+
+  # ---- REQUESTS / GIVING -------------------------------------------
+
+  - id: "n5-req-wo-kudasai"
+    point: "〜をください"
+    reading: "wo kudasai"
+    meaning: "please give me [noun]"
+    category: sentence_pattern
+    usages:
+      - "Noun + をください"
+    fjsd_id: null
+    difficulty: 1
+
+  # ---- HONORIFIC PREFIX -------------------------------------------
+
+  - id: "n5-honor-o-go"
+    point: "お / ご"
+    reading: "o / go"
+    meaning: "polite/honorific prefix (beautifying language)"
+    category: honorific
+    usages:
+      - "お + Japanese-origin noun (おみず, おかね)"
+      - "ご + Sino-Japanese noun (ごかぞく, ごちそう)"
+    fjsd_id: null
+    difficulty: 2
+
+  # ---- QUOTATION / THOUGHT -----------------------------------------
+
+  - id: "n5-quote-to-omou"
+    point: "と思う"
+    reading: "to omou"
+    meaning: "I think that; I think it is"
+    category: sentence_pattern
+    usages:
+      - "Plain form + と思う (I think...)"
+      - "Plain form + と思っています (ongoing opinion)"
+    fjsd_id: null
+    difficulty: 2
+
+  # ---- METHOD / WAY ------------------------------------------------
+
+  - id: "n5-way-kata"
+    point: "方 (かた)"
+    reading: "kata"
+    meaning: "the way of doing something; how to do"
+    category: sentence_pattern
+    usages:
+      - "Verb ます-stem + 方 (e.g. 食べ方 = way of eating)"
+    fjsd_id: null
+    difficulty: 3
+
+  # ---- LIMIT / ONLY ------------------------------------------------
+
+  - id: "n5-limit-dake"
+    point: "だけ"
+    reading: "dake"
+    meaning: "only; just; merely; as much as one wants"
+    category: particle
+    usages:
+      - "Noun/Verb/Adj + だけ (only; nothing but)"
+      - "Verb plain form + だけ (as much as you can/want)"
+    fjsd_id: "249"
+    difficulty: 2

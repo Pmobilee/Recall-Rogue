@@ -49,11 +49,13 @@ Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
 | `grammarNote` | no | Rich grammar explanation for language/grammar facts |
 | `targetLanguageWord` | no | The target-language word (vocabulary decks) |
 | `pronunciation` | no | Reading (e.g. hiragana for Japanese kanji) |
-| `partOfSpeech` | no | Used for POS-matched distractor selection |
+| `partOfSpeech` | no | Used for POS-matched distractor selection; all vocab decks have this field as of 2026-04-02 |
 | `examTags` | no | Filtering tags (e.g. `"USMLE_Step1"`, `"high_yield"`) |
 | `quizResponseMode` | no | `'choice'` (default) or `'typing'` (text input) |
 | `quizMode` | no | `'text'`, `'image_question'`, or `'image_answers'` |
 | `volatile` | no | `true` if the answer may become outdated |
+
+**partOfSpeech coverage:** As of 2026-04-02 all vocabulary decks (Japanese N1–N5, Korean TOPIK 1–2, Chinese HSK, Spanish, French, etc.) have `partOfSpeech` on every fact. Values are lowercase: noun, verb, adjective, adverb, pronoun, conjunction, interjection, suffix, prefix, particle, number, phrase, expression. The word POS label (used in older JLPT source data for suffixes, particles, and compound forms) is mapped to phrase on ingest. Backfilled 2026-04-02 by `scripts/backfill-pos-field.mjs`.
 
 **Non-standard fields that must NOT appear in final decks:** `statement`, `wowFactor`, `tags`, `ageGroup` — these are WIP-generation artifacts and must be stripped before a deck is live.
 
@@ -61,9 +63,9 @@ Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-02 it contains **63 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-02 it contains **64 decks**:
 
-- **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
+- **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N5 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
 - **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**
 
 ### Deck Architecture Files
@@ -573,3 +575,55 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 - `cs_1_floppy_disk_first_size` — changed `answerTypePoolId` from `bracket_numbers` to `technology_terms` (answer "8" is not in bracket notation); added explicit distractors `["3.5", "5.25", "12", "14", "6", "10", "4", "16"]`
 
 **Validation:** 296/296 PASS, 0 FAIL (via `scripts/verify-curated-deck.mjs`)
+
+---
+
+## japanese_n5_grammar Deck
+
+`data/decks/japanese_n5_grammar.json` — generated 2026-04-02 by `scripts/content-pipeline/vocab/build-n5-grammar-fill-blanks.mjs`.
+
+**Fill-in-the-blank format.** Each fact presents a Japanese sentence with the target grammar point replaced by `{___}`. The player chooses the correct grammar point to complete the sentence.
+
+| Field | Value |
+|---|---|
+| `id` | `japanese_n5_grammar` |
+| `domain` | `vocabulary` |
+| `subDomain` | `japanese_grammar` |
+| `facts` | 375 |
+| `minimumFacts` | 200 |
+| `targetFacts` | 375 |
+
+**Source files:**
+- `data/raw/japanese/grammar-n5-sentences.json` — 90 grammar points × 3–5 example sentences each
+- `data/raw/japanese/grammar-n5-confusion-groups.json` — confusion groups, syntactic slots, synonym groups
+
+**Build script pipeline (3 phases):**
+1. **Phase 1 — extraction:** For each sentence, locates the grammar point and replaces it with `{___}`. Single-char particles (は, が, を, に, で, へ, も, の, か, と, や) are found by first occurrence. Multi-char patterns use a `pointId`-keyed surface-form lookup table.
+2. **Phase 2 — distractors:** 3-tier priority: same confusion group (3–4), same syntactic slot (3–4), broad pool (1–2). Target 8–10 distractors per fact.
+3. **Phase 3 — assembly:** Builds `answerTypePools` (one per syntactic slot ≥5 facts + `grammar_misc` + `grammar_all` master pool), `synonymGroups`, `difficultyTiers`, and the full `CuratedDeck` JSON.
+
+**Answer Type Pools (10):**
+
+| Pool ID | Facts |
+|---|---|
+| `grammar_all` (master) | 375 |
+| `particle_case` | 148 |
+| `verb_form` | 133 |
+| `sentence_ender` | 38 |
+| `request_permission` | 30 |
+| `question_word` | 22 |
+| `particle_topic_focus` | 15 |
+| `demonstrative` | 15 |
+| `existence_pattern` | 9 |
+| `adjective_form` | 6 |
+
+**Difficulty distribution:**
+- Easy (1–2): 195 facts — basic particles (は, が, を, に, で), common copula, question particles
+- Medium (3): 180 facts — te-form patterns, reason/cause connectors, compound patterns
+- Hard (4–5): 0 facts (all N5 content falls in easy/medium)
+
+**Distractor coverage:** 375/375 facts have ≥5 distractors (100%).
+
+**Validator note:** The `verify-curated-deck.mjs` script flags every fact with "Question contains literal braces" — this is a known false-positive for fill-blank grammar decks (identical behaviour in `japanese_n3_grammar`). The `{___}` marker is the intended question blank format, not a template literal.
+
+**chainThemeId:** Rotates 0–5 sequentially across all facts (grammar decks use generic chain slots, not named themes).

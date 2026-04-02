@@ -477,3 +477,23 @@ All are now at the same floor 1 HP floor (7–9 base) as the rest of Act 1 commo
 **What went wrong:** `stopRewardRoom()` calls `bringToTop('CombatScene')`. On the next call to `startRewardRoom()`, the new RewardRoom scene started but rendered behind CombatScene because CombatScene was still on top.
 
 **Fix:** Added `this.game.scene.bringToTop('RewardRoom')` immediately after `this.game.scene.start('RewardRoom', data)` in `startRewardRoom()`.
+
+### 2026-04-02 — Japanese Grammar Deck: に vs へ Ambiguity Creates Unwinnable Questions
+
+**What went wrong:** The Japanese N5 Grammar deck (`data/decks/japanese_n5_grammar.json`) was generated with 9 facts where に and へ are interchangeable but only one is accepted as correct, while the other appears as a distractor. E.g., "学校{___}行きます" has correctAnswer=へ with に as a distractor — but both are equally correct in modern Japanese. Players selecting に would be marked wrong for a correct answer.
+
+**Why it happens:** LLM generation chose one particle as canonical without accounting for interchangeability. The content-pipeline rule is that workers receive pre-verified source data — but particle interchangeability nuances weren't specified in the architecture.
+
+**Fix:** For any directional movement verb (行く, 来る, 帰る), both に and へ must be accepted. Add the other particle to `acceptableAlternatives` and remove it from `distractors`. Do NOT use "に/へ" as a correctAnswer — pick one and list the other in acceptableAlternatives.
+
+### 2026-04-02 — Japanese Grammar Deck: から/ので Are Interchangeable Reason Connectors (Both Directions)
+
+**What went wrong:** から (reason) fill-in facts list ので as a distractor, and ので fill-in facts list から as a distractor. In every sentence in this deck, both から and ので function as valid reason/cause connectors. A player who knows the correct grammar but picks the "other" reason connector is marked wrong.
+
+**Fix:** Remove ので from all から-reason distractors. Remove から from all ので distractors. If the goal is to teach the stylistic difference (から = casual/direct, ので = objective/polite), use sentences that make the register distinction undeniable, OR teach them as near-synonyms in one card.
+
+### 2026-04-02 — Japanese Grammar Deck: Grammar Label Strings Are Invalid Distractors
+
+**What went wrong:** ~30+ facts use strings like "い-adjective", "な-adjective", "に/へ", "は〜がある", "より〜ほうが", "の中で〜が一番", "まだ〜ていません", "か〜か", "たり〜たり" as distractors. These are grammar pattern labels, not Japanese expressions that a player could write as an answer. They break the fill-in-the-blank contract and are trivially eliminable.
+
+**Fix:** Replace every grammar label distractor with an actual Japanese expression of the same word class. "い-adjective" → "たかい". "な-adjective" → "きれい". "に/へ" → pick either に or へ. Pattern labels with tildes (〜) are never valid single-blank answers.

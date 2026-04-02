@@ -1,0 +1,982 @@
+{
+  "syntacticSlots": {
+    "particle_case": {
+      "label": "Case Particles",
+      "description": "Post-noun grammatical particles marking role: は, が, を, に, で, へ, と, や, の, も, から, まで, だけ"
+    },
+    "particle_topic_focus": {
+      "label": "Topic/Focus Particles",
+      "description": "Particles that set topic or focus: は (topic), も (also/even), だけ (only)"
+    },
+    "sentence_ender": {
+      "label": "Sentence-Final Particles",
+      "description": "Particles ending a sentence: か (question), ね (agreement), よ (assertion)"
+    },
+    "verb_form": {
+      "label": "Verb Forms & Conjugations",
+      "description": "Verb conjugation patterns: ます/ません, た/なかった, て-form, ない-form, たい, ている, てある, てから, etc."
+    },
+    "adjective_form": {
+      "label": "Adjective Forms",
+      "description": "い-adjective and な-adjective conjugation patterns including negatives, past, and prenominal use"
+    },
+    "existence_pattern": {
+      "label": "Existence Patterns",
+      "description": "Patterns expressing existence or possession: がある vs がいる"
+    },
+    "request_permission": {
+      "label": "Request & Permission Forms",
+      "description": "Patterns for requests, permission, and prohibition: てください, てもいい, てはいけない, ないでください"
+    },
+    "demonstrative": {
+      "label": "Demonstratives (ko-so-a-do)",
+      "description": "The ko/so/a/do system: これ/それ/あれ, この/その/あの, ここ/そこ/あそこ"
+    },
+    "question_word": {
+      "label": "Question Words (疑問詞)",
+      "description": "Interrogative words: 何, いくら, どうして, どうやって, どんな"
+    }
+  },
+  "confusionGroups": [
+    {
+      "id": "particle_subject_topic",
+      "label": "Subject vs Topic (は vs が)",
+      "description": "は marks the topic (what you are talking about); が marks the subject (who/what does the action)",
+      "members": ["n5-particle-wa", "n5-particle-ga-subject"],
+      "pedagogicalNote": "は for known information, general statements, and setting the topic. が for new/specific information, emphasizing the subject, and with existential verbs. 「私は学生です」(topic) vs 「私が行きます」(it is I who will go, emphasis). は can replace が/を when they are the topic; が cannot replace は for pure topic-setting."
+    },
+    {
+      "id": "particle_location",
+      "label": "Location: Existence vs Action (に vs で)",
+      "description": "に marks location of existence (where something is); で marks location of action (where something happens)",
+      "members": ["n5-particle-ni-location", "n5-particle-de"],
+      "pedagogicalNote": "に for static location with ある/いる: 「公園に犬がいる」(dog exists at park). で for active location: 「公園で遊ぶ」(play at park). Key test: can you substitute ある/いる? Yes → に. Is it an action happening somewhere? → で."
+    },
+    {
+      "id": "particle_direction",
+      "label": "Direction Particles (に vs へ)",
+      "description": "Both に and へ express direction/destination; へ emphasizes the direction itself",
+      "members": ["n5-particle-ni-location", "n5-particle-he", "n5-particle-ni-he"],
+      "pedagogicalNote": "Both are largely interchangeable for direction with movement verbs (行く/来る/帰る). に is more versatile (also time, location, indirect object). へ stresses the direction/destination more. For arrival/attachment に is required: 「椅子に座る」. へ cannot replace に for time or indirect objects."
+    },
+    {
+      "id": "particle_object_means",
+      "label": "Object vs Means (を vs で)",
+      "description": "を marks the direct object of a transitive verb; で marks the means or tool used",
+      "members": ["n5-particle-wo", "n5-particle-de"],
+      "pedagogicalNote": "を marks what is acted upon: 「ご飯を食べる」(eat rice). で marks what is used to do it: 「箸で食べる」(eat with chopsticks). Both can appear in one sentence: 「ペンで手紙を書く」(write a letter with a pen)."
+    },
+    {
+      "id": "existence_verbs",
+      "label": "Existence Verbs (ある vs いる)",
+      "description": "ある for non-living things; いる for living things (people and animals)",
+      "members": ["n5-exist-ga-aru", "n5-exist-ga-iru"],
+      "pedagogicalNote": "ある = inanimate objects, concepts, events, scheduled things: 「本がある」「授業がある」. いる = animate beings (people, animals): 「犬がいる」「先生がいる」. Edge case: robots and plants — いる can be used for loved/personified things. Phones/cars → ある even though modern usage varies."
+    },
+    {
+      "id": "copula_forms",
+      "label": "Copula Forms (だ / です / じゃない / ではない)",
+      "description": "Plain and polite affirmative/negative forms of the copula",
+      "members": ["n5-copula-da", "n5-copula-janai"],
+      "pedagogicalNote": "だ = plain/casual affirmative. です = polite affirmative. じゃない = casual negative (contraction of では+ない). ではない = formal negative. Past: だった / でした / じゃなかった / ではなかった. じゃ is casual spoken; では is written/formal. Both mean the same thing."
+    },
+    {
+      "id": "conjecture_forms",
+      "label": "Conjecture Forms (だろう vs でしょう)",
+      "description": "Plain and polite forms of conjecture/probability",
+      "members": ["n5-copula-darou", "n5-copula-deshou"],
+      "pedagogicalNote": "だろう = plain conjecture (probably, I think). でしょう = polite conjecture, also used as tag question seeking agreement (「そうでしょう?」). Both follow plain/polite register of the sentence. でしょう at end of statement = 'right?'; at end of question = just polite."
+    },
+    {
+      "id": "te_form_requests",
+      "label": "Te-form Requests & Permission",
+      "description": "Forms built on the て-form expressing requests, permission, and prohibition",
+      "members": ["n5-verb-te-kudasai", "n5-verb-te-mo-ii", "n5-verb-te-wa-ikenai", "n5-verb-nai-de-kudasai", "n5-verb-cha-ikenai"],
+      "pedagogicalNote": "てください = polite request (please do). てもいい = permission (it's OK to). てはいけない = prohibition (must not). ないでください = polite request not to do. ちゃいけない = casual spoken prohibition (てはいけない contraction). Register progression: てください (polite) > ちゃいけない (casual)."
+    },
+    {
+      "id": "obligation_forms",
+      "label": "Must / Obligation Forms",
+      "description": "Multiple expressions meaning 'must do' ranging from casual to formal",
+      "members": ["n5-must-nakereba-naranai", "n5-must-nakute-naranai", "n5-must-naito-ikenai", "n5-must-nakucha"],
+      "pedagogicalNote": "All express obligation. なくてはいけない = standard spoken must (negative condition + cannot be bad). なくてはならない = formal/written variant. ないといけない = conditional must (common in casual speech). なくちゃ = very casual contraction of なくては. All translate to 'must do / have to do'. None interchangeable with なくてもいい (don't have to)."
+    },
+    {
+      "id": "desire_intent",
+      "label": "Desire & Intent (たい / ほしい / つもり / ほうがいい)",
+      "description": "Expressions for personal desire, wanting objects, plans, and advice",
+      "members": ["n5-verb-tai", "n5-want-ga-hoshii", "n5-intent-tsumori", "n5-should-hou-ga-ii"],
+      "pedagogicalNote": "たい = want to DO (verb desire, 1st person): 「行きたい」. がほしい = want to HAVE (noun desire): 「新しい車がほしい」. つもり = intend to / plan to: 「来週行くつもりだ」. ほうがいい = had better / should (advice): 「早く寝たほうがいい」. たい conjugates like い-adj; ほしい also conjugates like い-adj."
+    },
+    {
+      "id": "reason_cause",
+      "label": "Reason / Cause (から vs ので)",
+      "description": "Two ways to say 'because': から (subjective/assertive) vs ので (objective/soft)",
+      "members": ["n5-reason-kara", "n5-reason-node"],
+      "pedagogicalNote": "から = spoken, subjective reason, can sound assertive or blunt: 「眠いから帰る」. ので = more objective, polite, shows the reason gently: 「眠いので帰ります」. ので pairs better with polite endings; から is neutral to register. Rule of thumb: use ので in formal/written; から in casual speech."
+    },
+    {
+      "id": "contrast_conjunction",
+      "label": "Contrast Conjunctions (が / けど / けれども / しかし / でも)",
+      "description": "Multiple ways to say 'but/however' with varying formality",
+      "members": ["n5-particle-ga-contrast", "n5-conj-kedo", "n5-conj-keredomo", "n5-conj-shikashi", "n5-particle-de-mo"],
+      "pedagogicalNote": "が (clause-internal) = softest 'but', often polite. けど = casual spoken contrast. けれども = more formal than けど. しかし = formal written, starts a new sentence. でも = casual sentence-starter. Formality: しかし > けれども > が > けど ≈ でも. でも and しかし only start sentences; が/けど/けれども connect two clauses in one sentence."
+    },
+    {
+      "id": "question_words",
+      "label": "Question Words (疑問詞)",
+      "description": "Interrogative words: what, how much, why, how, what kind",
+      "members": ["n5-qw-nani", "n5-qw-ikura", "n5-qw-doshite", "n5-qw-douyatte", "n5-qw-donna"],
+      "pedagogicalNote": "何/なに = what (general). なん = what (before counters and です: 何歳, 何ですか). いくら = how much (price). どうして = why (also casual). どうやって = how (by what means/method). どんな = what kind of (attributive, before nouns). All are interrogative pronouns that stay in situ in Japanese (not fronted like in English)."
+    },
+    {
+      "id": "demonstratives",
+      "label": "Ko-So-A-Do Demonstratives",
+      "description": "The three-way distance system: near speaker (ko-), near listener (so-), far from both (a-)",
+      "members": ["n5-dem-kore-sore-are", "n5-dem-kono-sono-ano", "n5-dem-koko-soko-asoko"],
+      "pedagogicalNote": "Ko- = near speaker (これ/この/ここ). So- = near listener or previously mentioned (それ/その/そこ). A- = far from both or shared knowledge (あれ/あの/あそこ). これ/それ/あれ = standalone pronouns (this/that thing). この/その/あの = prenominal modifiers (this/that + noun). ここ/そこ/あそこ = locations (here/there/over there)."
+    },
+    {
+      "id": "time_sequence",
+      "label": "Time & Sequence (前に / てから / まだ / もう)",
+      "description": "Temporal expressions: before, after doing, still/not yet, already/anymore",
+      "members": ["n5-time-mae-ni", "n5-verb-te-kara", "n5-adv-mada", "n5-adv-mou", "n5-time-mada-te-imasen"],
+      "pedagogicalNote": "前に = before (dictionary form + 前に). てから = after doing (て-form + から, then next action). まだ = still (+ positive); not yet (+ negative). もう = already (+ positive); not anymore (+ negative). Common error: confusing まだ (still/not yet) with もう (already/anymore). 「まだ食べていません」 = haven't eaten yet vs 「もう食べました」 = already ate."
+    }
+  ],
+  "synonymGroups": [
+    {
+      "id": "syn_direction",
+      "members": ["n5-particle-ni-location", "n5-particle-he"],
+      "reason": "に and へ are largely interchangeable for expressing direction/destination with movement verbs (行く, 来る, 帰る). へ emphasizes directionality; に is more general."
+    },
+    {
+      "id": "syn_why",
+      "members": ["n5-qw-doshite"],
+      "note": "どうして and なぜ (not in N5 arch but related) both mean 'why'. どうして is more conversational; なぜ more formal/written.",
+      "reason": "どうして = why (casual/spoken). At N5 level only どうして is listed, but learners encounter なぜ in reading."
+    },
+    {
+      "id": "syn_but",
+      "members": ["n5-conj-kedo", "n5-conj-keredomo"],
+      "reason": "けど and けれども are the same word at different formality levels. けど = casual/spoken; けれども = slightly more formal. Both contrast two clauses within a sentence."
+    },
+    {
+      "id": "syn_must",
+      "members": ["n5-must-nakereba-naranai", "n5-must-nakute-naranai", "n5-must-naito-ikenai", "n5-must-nakucha", "n5-verb-cha-ikenai"],
+      "reason": "All express obligation ('must do'/'have to do') with different levels of formality and construction. なくちゃ (casual) through なくてはならない (formal). ちゃいけない expresses prohibition ('must not') — related but opposite in polarity."
+    }
+  ],
+  "grammarPoints": [
+    {
+      "sourceId": "n5-particle-wa",
+      "point": "は",
+      "reading": "wa",
+      "meaning": "topic marker particle",
+      "slots": ["particle_case", "particle_topic_focus"],
+      "confusionGroups": ["particle_subject_topic"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-particle-ga-subject",
+      "point": "が",
+      "reading": "ga",
+      "meaning": "subject marker particle",
+      "slots": ["particle_case"],
+      "confusionGroups": ["particle_subject_topic", "existence_verbs"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-particle-ga-contrast",
+      "point": "〜が",
+      "reading": "ga",
+      "meaning": "but; however (clause connector)",
+      "slots": ["particle_case"],
+      "confusionGroups": ["contrast_conjunction"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-particle-wo",
+      "point": "を",
+      "reading": "wo/o",
+      "meaning": "object marker particle",
+      "slots": ["particle_case"],
+      "confusionGroups": ["particle_object_means"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-particle-ni-location",
+      "point": "〜に",
+      "reading": "ni",
+      "meaning": "location marker; time marker; direction marker",
+      "slots": ["particle_case"],
+      "confusionGroups": ["particle_location", "particle_direction"],
+      "synonymGroupId": "syn_direction"
+    },
+    {
+      "sourceId": "n5-particle-ni-indirect",
+      "point": "〜に",
+      "reading": "ni",
+      "meaning": "indirect object marker; to; from",
+      "slots": ["particle_case"],
+      "confusionGroups": ["particle_direction"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-particle-de",
+      "point": "〜で",
+      "reading": "de",
+      "meaning": "by means of; at (location of action)",
+      "slots": ["particle_case"],
+      "confusionGroups": ["particle_location", "particle_object_means"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-particle-no",
+      "point": "〜の",
+      "reading": "no",
+      "meaning": "possessive particle; of; 's",
+      "slots": ["particle_case"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-particle-mo",
+      "point": "〜も",
+      "reading": "mo",
+      "meaning": "too; also; even",
+      "slots": ["particle_case", "particle_topic_focus"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-particle-ka",
+      "point": "か",
+      "reading": "ka",
+      "meaning": "question particle",
+      "slots": ["sentence_ender"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-particle-ka-or",
+      "point": "か〜か",
+      "reading": "ka ~ ka",
+      "meaning": "or (between options)",
+      "slots": ["particle_case"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-particle-kara-from",
+      "point": "から",
+      "reading": "kara",
+      "meaning": "from; since (starting point)",
+      "slots": ["particle_case"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-particle-made",
+      "point": "まで",
+      "reading": "made",
+      "meaning": "until; as far as; even",
+      "slots": ["particle_case"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-particle-to",
+      "point": "と",
+      "reading": "to",
+      "meaning": "and; with; quotation marker",
+      "slots": ["particle_case"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-particle-ya",
+      "point": "や",
+      "reading": "ya",
+      "meaning": "and (non-exhaustive list)",
+      "slots": ["particle_case"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-particle-he",
+      "point": "へ",
+      "reading": "he/e",
+      "meaning": "to; toward (direction)",
+      "slots": ["particle_case"],
+      "confusionGroups": ["particle_direction"],
+      "synonymGroupId": "syn_direction"
+    },
+    {
+      "sourceId": "n5-particle-ni-he",
+      "point": "に/へ",
+      "reading": "ni/e",
+      "meaning": "to (direction/destination) — interchangeable for direction",
+      "slots": ["particle_case"],
+      "confusionGroups": ["particle_direction"],
+      "synonymGroupId": "syn_direction"
+    },
+    {
+      "sourceId": "n5-particle-de-mo",
+      "point": "でも",
+      "reading": "demo",
+      "meaning": "but; however (conjunction between sentences)",
+      "slots": ["particle_case"],
+      "confusionGroups": ["contrast_conjunction"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-particle-no-possessive",
+      "point": "は〜がある",
+      "reading": "wa ~ ga aru",
+      "meaning": "[topic] has [thing]",
+      "slots": ["existence_pattern"],
+      "confusionGroups": ["existence_verbs"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-copula-da",
+      "point": "だ / です",
+      "reading": "da / desu",
+      "meaning": "to be (copula); plain / polite",
+      "slots": ["sentence_ender"],
+      "confusionGroups": ["copula_forms"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-copula-janai",
+      "point": "じゃない / ではない",
+      "reading": "ja nai / de wa nai",
+      "meaning": "to not be (negative copula)",
+      "slots": ["sentence_ender"],
+      "confusionGroups": ["copula_forms"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-copula-darou",
+      "point": "だろう",
+      "reading": "darou",
+      "meaning": "I think; probably; right? (plain conjecture)",
+      "slots": ["sentence_ender"],
+      "confusionGroups": ["conjecture_forms"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-copula-deshou",
+      "point": "でしょう",
+      "reading": "deshou",
+      "meaning": "I think; probably; right? (polite conjecture)",
+      "slots": ["sentence_ender"],
+      "confusionGroups": ["conjecture_forms"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-adj-i",
+      "point": "い-adjective",
+      "reading": "i-keiyoushi",
+      "meaning": "descriptive adjective ending in い",
+      "slots": ["adjective_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-adj-na",
+      "point": "な-adjective",
+      "reading": "na-keiyoushi",
+      "meaning": "descriptive adjective requiring な before nouns",
+      "slots": ["adjective_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-verb-tai",
+      "point": "〜たい",
+      "reading": "tai",
+      "meaning": "want to do (speaker's desire)",
+      "slots": ["verb_form"],
+      "confusionGroups": ["desire_intent"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-verb-te-iru",
+      "point": "〜ている",
+      "reading": "te iru",
+      "meaning": "ongoing action or resulting state",
+      "slots": ["verb_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-verb-te-kara",
+      "point": "〜てから",
+      "reading": "te kara",
+      "meaning": "after doing [verb]",
+      "slots": ["verb_form"],
+      "confusionGroups": ["time_sequence"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-verb-te-kudasai",
+      "point": "〜てください",
+      "reading": "te kudasai",
+      "meaning": "please do [verb] (polite request)",
+      "slots": ["verb_form", "request_permission"],
+      "confusionGroups": ["te_form_requests"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-verb-nai-de-kudasai",
+      "point": "〜ないでください",
+      "reading": "nai de kudasai",
+      "meaning": "please don't do [verb]",
+      "slots": ["verb_form", "request_permission"],
+      "confusionGroups": ["te_form_requests"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-verb-te-mo-ii",
+      "point": "〜てもいい",
+      "reading": "te mo ii",
+      "meaning": "it's okay to; may I? (permission)",
+      "slots": ["verb_form", "request_permission"],
+      "confusionGroups": ["te_form_requests"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-verb-te-wa-ikenai",
+      "point": "〜てはいけない",
+      "reading": "te wa ikenai",
+      "meaning": "must not; may not (prohibition)",
+      "slots": ["verb_form", "request_permission"],
+      "confusionGroups": ["te_form_requests"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-verb-cha-ikenai",
+      "point": "ちゃいけない / じゃいけない",
+      "reading": "cha ikenai / ja ikenai",
+      "meaning": "must not do (casual spoken contraction)",
+      "slots": ["verb_form", "request_permission"],
+      "confusionGroups": ["te_form_requests"],
+      "synonymGroupId": "syn_must"
+    },
+    {
+      "sourceId": "n5-verb-te-aru",
+      "point": "〜てある",
+      "reading": "te aru",
+      "meaning": "has been done; resultant state (purposely made)",
+      "slots": ["verb_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-verb-ta-koto-ga-aru",
+      "point": "〜たことがある",
+      "reading": "ta koto ga aru",
+      "meaning": "to have done before; have the experience of",
+      "slots": ["verb_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-verb-tari-tari",
+      "point": "〜たり〜たり",
+      "reading": "tari ~ tari",
+      "meaning": "do things like A and B; alternating actions",
+      "slots": ["verb_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-verb-sugiru",
+      "point": "〜すぎる",
+      "reading": "sugiru",
+      "meaning": "too much; excessively",
+      "slots": ["verb_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-verb-naru",
+      "point": "〜なる",
+      "reading": "naru",
+      "meaning": "to become",
+      "slots": ["verb_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-verb-ni-iku",
+      "point": "〜に行く",
+      "reading": "ni iku",
+      "meaning": "go to do [verb]; go in order to",
+      "slots": ["verb_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-verb-ni-suru",
+      "point": "〜にする",
+      "reading": "ni suru",
+      "meaning": "to decide on; to make it",
+      "slots": ["verb_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-must-nakereba-naranai",
+      "point": "なくてはいけない",
+      "reading": "nakute wa ikenai",
+      "meaning": "must do; need to do",
+      "slots": ["verb_form"],
+      "confusionGroups": ["obligation_forms"],
+      "synonymGroupId": "syn_must"
+    },
+    {
+      "sourceId": "n5-must-nakute-naranai",
+      "point": "なくてはならない",
+      "reading": "nakute wa naranai",
+      "meaning": "must do (formal/written variant)",
+      "slots": ["verb_form"],
+      "confusionGroups": ["obligation_forms"],
+      "synonymGroupId": "syn_must"
+    },
+    {
+      "sourceId": "n5-must-naito-ikenai",
+      "point": "ないといけない",
+      "reading": "nai to ikenai",
+      "meaning": "must do; have to (conditional)",
+      "slots": ["verb_form"],
+      "confusionGroups": ["obligation_forms"],
+      "synonymGroupId": "syn_must"
+    },
+    {
+      "sourceId": "n5-must-nakucha",
+      "point": "なくちゃ",
+      "reading": "nakucha",
+      "meaning": "must do; gotta do (casual contraction)",
+      "slots": ["verb_form"],
+      "confusionGroups": ["obligation_forms"],
+      "synonymGroupId": "syn_must"
+    },
+    {
+      "sourceId": "n5-must-nakute-mo-ii",
+      "point": "なくてもいい",
+      "reading": "nakute mo ii",
+      "meaning": "don't have to; it's okay not to",
+      "slots": ["verb_form", "request_permission"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-should-hou-ga-ii",
+      "point": "〜ほうがいい",
+      "reading": "hou ga ii",
+      "meaning": "had better; should (advice)",
+      "slots": ["verb_form"],
+      "confusionGroups": ["desire_intent"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-want-ga-hoshii",
+      "point": "〜がほしい",
+      "reading": "ga hoshii",
+      "meaning": "to want something (noun desire)",
+      "slots": ["verb_form"],
+      "confusionGroups": ["desire_intent"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-exist-ga-aru",
+      "point": "〜がある",
+      "reading": "ga aru",
+      "meaning": "there is; to exist; to have (non-living things)",
+      "slots": ["existence_pattern"],
+      "confusionGroups": ["existence_verbs"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-exist-ga-iru",
+      "point": "〜がいる",
+      "reading": "ga iru",
+      "meaning": "there is; to exist (living things)",
+      "slots": ["existence_pattern"],
+      "confusionGroups": ["existence_verbs"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-sfp-ne",
+      "point": "ね",
+      "reading": "ne",
+      "meaning": "isn't it?; right? (seeking agreement)",
+      "slots": ["sentence_ender"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-sfp-yo",
+      "point": "よ",
+      "reading": "yo",
+      "meaning": "you know; asserting information",
+      "slots": ["sentence_ender"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-qw-nani",
+      "point": "何 (何)",
+      "reading": "nani / nan",
+      "meaning": "what",
+      "slots": ["question_word"],
+      "confusionGroups": ["question_words"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-qw-ikura",
+      "point": "いくら (幾等)",
+      "reading": "ikura",
+      "meaning": "how much (price/quantity)",
+      "slots": ["question_word"],
+      "confusionGroups": ["question_words"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-qw-doshite",
+      "point": "どうして",
+      "reading": "doushite",
+      "meaning": "why; for what reason",
+      "slots": ["question_word"],
+      "confusionGroups": ["question_words"],
+      "synonymGroupId": "syn_why"
+    },
+    {
+      "sourceId": "n5-qw-douyatte",
+      "point": "どうやって",
+      "reading": "douyatte",
+      "meaning": "how; in what way; by what means",
+      "slots": ["question_word"],
+      "confusionGroups": ["question_words"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-qw-donna",
+      "point": "どんな",
+      "reading": "donna",
+      "meaning": "what kind of; what sort of",
+      "slots": ["question_word"],
+      "confusionGroups": ["question_words"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-dem-kore-sore-are",
+      "point": "これ / それ / あれ",
+      "reading": "kore / sore / are",
+      "meaning": "this / that / that over there (standalone pronouns)",
+      "slots": ["demonstrative"],
+      "confusionGroups": ["demonstratives"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-dem-kono-sono-ano",
+      "point": "この / その / あの",
+      "reading": "kono / sono / ano",
+      "meaning": "this [noun] / that [noun] / that [noun] over there (prenominal)",
+      "slots": ["demonstrative"],
+      "confusionGroups": ["demonstratives"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-dem-koko-soko-asoko",
+      "point": "ここ / そこ / あそこ",
+      "reading": "koko / soko / asoko",
+      "meaning": "here / there / over there (locations)",
+      "slots": ["demonstrative"],
+      "confusionGroups": ["demonstratives"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-adv-issho-ni",
+      "point": "いっしょに",
+      "reading": "issho ni",
+      "meaning": "together; at the same time",
+      "slots": ["particle_case"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-adv-itsumo",
+      "point": "いつも",
+      "reading": "itsumo",
+      "meaning": "always; usually; habitually",
+      "slots": ["particle_case"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-adv-ichiban",
+      "point": "いちばん",
+      "reading": "ichiban",
+      "meaning": "the most; the best (superlative marker)",
+      "slots": ["particle_case"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-adv-mada",
+      "point": "まだ",
+      "reading": "mada",
+      "meaning": "still; not yet",
+      "slots": ["particle_case"],
+      "confusionGroups": ["time_sequence"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-adv-mou",
+      "point": "もう",
+      "reading": "mou",
+      "meaning": "already; anymore; again; soon",
+      "slots": ["particle_case"],
+      "confusionGroups": ["time_sequence"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-conj-shikashi",
+      "point": "しかし",
+      "reading": "shikashi",
+      "meaning": "but; however (formal written)",
+      "slots": ["particle_case"],
+      "confusionGroups": ["contrast_conjunction"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-conj-sorekara",
+      "point": "それから",
+      "reading": "sore kara",
+      "meaning": "and; and then; after that (sequence)",
+      "slots": ["particle_case"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-conj-soshite",
+      "point": "そして",
+      "reading": "soshite",
+      "meaning": "and; and then; thus (additive)",
+      "slots": ["particle_case"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-conj-kedo",
+      "point": "けど",
+      "reading": "kedo",
+      "meaning": "but; however; although (casual)",
+      "slots": ["particle_case"],
+      "confusionGroups": ["contrast_conjunction"],
+      "synonymGroupId": "syn_but"
+    },
+    {
+      "sourceId": "n5-conj-keredomo",
+      "point": "けれども",
+      "reading": "keredomo",
+      "meaning": "but; however; although (formal)",
+      "slots": ["particle_case"],
+      "confusionGroups": ["contrast_conjunction"],
+      "synonymGroupId": "syn_but"
+    },
+    {
+      "sourceId": "n5-reason-kara",
+      "point": "から (reason)",
+      "reading": "kara",
+      "meaning": "because; since (reason connector)",
+      "slots": ["particle_case"],
+      "confusionGroups": ["reason_cause"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-reason-node",
+      "point": "ので",
+      "reading": "node",
+      "meaning": "because of; given that; since (objective/polite)",
+      "slots": ["particle_case"],
+      "confusionGroups": ["reason_cause"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-time-mae-ni",
+      "point": "前に (まえに)",
+      "reading": "mae ni",
+      "meaning": "before; in front of",
+      "slots": ["particle_case"],
+      "confusionGroups": ["time_sequence"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-time-mada-te-imasen",
+      "point": "まだ〜ていません",
+      "reading": "mada ~ te imasen",
+      "meaning": "have not yet; still haven't done",
+      "slots": ["verb_form"],
+      "confusionGroups": ["time_sequence"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-intent-tsumori",
+      "point": "〜つもり",
+      "reading": "tsumori",
+      "meaning": "intend to; plan to",
+      "slots": ["verb_form"],
+      "confusionGroups": ["desire_intent"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-exp-n-desu",
+      "point": "んです / のです",
+      "reading": "n desu / no desu",
+      "meaning": "to explain; show emphasis; seeking explanation",
+      "slots": ["sentence_ender"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-comp-wa-yori",
+      "point": "は〜より",
+      "reading": "wa ~ yori",
+      "meaning": "[A] is more than [B]",
+      "slots": ["particle_case"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-comp-yori-hou-ga",
+      "point": "より〜ほうが",
+      "reading": "yori ~ hou ga",
+      "meaning": "[B] is more than [A]; [B] is better than [A]",
+      "slots": ["particle_case"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-comp-no-naka-de-ichiban",
+      "point": "の中で〜が一番",
+      "reading": "no naka de ~ ga ichiban",
+      "meaning": "out of [group], [A] is the best/most",
+      "slots": ["particle_case"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-inv-mashou",
+      "point": "〜ましょう",
+      "reading": "mashou",
+      "meaning": "let's; shall we (volitional polite)",
+      "slots": ["verb_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-inv-masen-ka",
+      "point": "〜ませんか",
+      "reading": "masen ka",
+      "meaning": "won't you?; would you? (polite invitation)",
+      "slots": ["verb_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-inv-mashou-ka",
+      "point": "〜ましょうか",
+      "reading": "mashou ka",
+      "meaning": "shall I?; shall we? (offering help)",
+      "slots": ["verb_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-inv-dou-desu-ka",
+      "point": "はどうですか",
+      "reading": "wa dou desu ka",
+      "meaning": "how about; how is (suggestion or opinion)",
+      "slots": ["sentence_ender"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-skill-no-ga-jozu",
+      "point": "のが上手",
+      "reading": "no ga jouzu",
+      "meaning": "to be good at doing",
+      "slots": ["verb_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-skill-no-ga-heta",
+      "point": "のが下手",
+      "reading": "no ga heta",
+      "meaning": "to be bad at doing",
+      "slots": ["verb_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-skill-no-ga-suki",
+      "point": "のが好き",
+      "reading": "no ga suki",
+      "meaning": "to like doing",
+      "slots": ["verb_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-req-wo-kudasai",
+      "point": "〜をください",
+      "reading": "wo kudasai",
+      "meaning": "please give me [noun]",
+      "slots": ["request_permission"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-honor-o-go",
+      "point": "お / ご",
+      "reading": "o / go",
+      "meaning": "polite/honorific prefix",
+      "slots": ["particle_case"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-quote-to-omou",
+      "point": "と思う",
+      "reading": "to omou",
+      "meaning": "I think that; I think it is",
+      "slots": ["verb_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-way-kata",
+      "point": "方 (かた)",
+      "reading": "kata",
+      "meaning": "the way of doing something; how to do",
+      "slots": ["verb_form"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n5-limit-dake",
+      "point": "だけ",
+      "reading": "dake",
+      "meaning": "only; just; merely; as much as one wants",
+      "slots": ["particle_case", "particle_topic_focus"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    }
+  ]
+}
