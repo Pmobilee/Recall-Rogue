@@ -1,7 +1,7 @@
 # Testing Strategy
 
 > **Purpose:** Overview of all testing layers in Recall Rogue — when to use each method, where tests live, and how to run them.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-02
 > **Source files:** `vitest.config.ts`, `tests/unit/*.test.ts`, `src/services/__tests__/`, `CLAUDE.md`
 
 ## Four Testing Layers
@@ -74,6 +74,16 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless
 # Relic audit
 npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/relic-audit.ts
 ```
+
+### Advanced Balance Analysis (`/advanced-balance`)
+
+After running the basic headless sim, run `/advanced-balance` for deeper insight. The basic sim tells you **win rates** — advanced balance tells you **why** those rates are what they are:
+
+- **Per-card win-rate contribution** — which cards correlate with winning vs losing runs
+- **Tension metrics** — HP-at-death (close loss vs steamroll?), turns-to-outcome, meaningful-choice ratio
+- **Predictability scoring** — can you tell by floor 3 whether you'll win? (high = boring mid-game)
+
+Run after ANY balance change (enemy stats, card values, fizzle ratio, relic tuning). The basic sim shows the number moved; advanced balance shows whether the change made the game more or less fun to lose.
 
 ## Visual Testing (Playwright)
 

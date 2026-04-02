@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-01
+> **Last verified:** 2026-04-02
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`
 
 ---
@@ -101,6 +101,8 @@ Chains now **decay by 1** per turn end (`CHAIN_DECAY_PER_TURN=1`) instead of ful
 - Adds fact to `cursedFactIds` if `masteryLevel === 0` and not first attempt
 - Increases fog by 1 (`adjustAura(1)`)
 - AP deducted — no refund on wrong answer
+
+After balance constant changes (fizzle ratio, charge multipliers, AP costs), run `/balance-sim` then `/advanced-balance` for per-card contribution and tension metrics.
 
 ---
 

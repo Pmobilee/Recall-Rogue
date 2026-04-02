@@ -167,3 +167,7 @@ Enemies telegraph next action via `EnemyIntent.telegraph`. Selected by `weighted
 | `onPhaseTransition(enemy)` | When phase 1 → 2 transition fires |
 
 `chainMultiplierOverride` (used by The Nullifier): forces all Knowledge Chain multipliers to a fixed value while the enemy is alive.
+
+## Balance Testing After Enemy Changes
+
+After enemy stat changes, run `/balance-sim` for win rates, then `/advanced-balance` for tension metrics (HP-at-death, turns-to-outcome, meaningful-choice ratio). The basic sim says "win rate dropped 6%"; advanced balance says whether that's healthy tension or frustrating attrition.
