@@ -20,6 +20,7 @@ import { shuffled } from './randomUtils';
 import { getRunRng, isRunRngActive, seededShuffled } from './seededRng';
 import { funScoreWeight } from './funnessBoost';
 import { factMatchesDomainSelection, factMatchesPresetSelection } from './presetSelectionService';
+import type { ChainDistribution } from './chainDistribution';
 
 /** Maps domain IDs to the category strings used in the facts DB. */
 const DOMAIN_TO_CATEGORY: Record<string, string[]> = {
@@ -286,6 +287,8 @@ function factIsTrivia(fact: Fact): boolean {
  * 3. Backfill with random facts if pool is below target
  * 4. Filter tier 3 (mastered passive) cards
  * 5. Assign card types and mechanics
+ * 6. Assign chain types: proportional by distribution group sizes if chainDistribution
+ *    provided, else round-robin seeded shuffle
  *
  * @param domainSelections - Map of domain ID → subcategory filters (empty array = all).
  * @param allReviewStates - All review states for the player.
@@ -302,6 +305,15 @@ export function buildPresetRunPool(
     includeOutsideDueReviews?: boolean;
     /** Character level for mechanic unlock gating. Defaults to 0 (all existing mechanics). */
     characterLevel?: number;
+    /**
+     * Pre-computed topic-to-chain distribution from chainDistribution.ts.
+     * When provided (Study Temple / curated deck runs), each card's chainType is
+     * assigned proportionally based on the distribution's group sizes, preserving
+     * the relative weighting of each chain's topic groups without requiring factId
+     * overlap between the curated deck JSON and the factsDB pool.
+     * Falls back to round-robin when absent (trivia runs).
+     */
+    chainDistribution?: ChainDistribution;
   },
 ): Card[] {
   const poolSize = options?.poolSize ?? DEFAULT_POOL_SIZE;
@@ -451,18 +463,73 @@ export function buildPresetRunPool(
   const unlockedMechanicIds = getUnlockedMechanics(options?.characterLevel ?? 0);
   pool = applyMechanics(pool, unlockedMechanicIds);
 
-  // Assign chain types evenly across the pool using 3 run-specific types
-  // Using 3 types instead of 6 increases chain frequency from ~15% to ~50% of hands
+  // ── Step 7: Assign chain types ──
+  // Using 3 types instead of 6 increases chain frequency from ~15% to ~50% of hands.
+  //
+  // When a chainDistribution is provided (Study Temple curated runs), we use
+  // PROPORTIONAL assignment based on how many facts each chain's topic groups contain.
+  // We CANNOT use factToChain.get(card.factId) because the pool cards come from
+  // factsDB (SQLite integer IDs) while the distribution was built from the curated
+  // deck JSON (string IDs like "ww_anc_pyramid_giza_height") — zero ID overlap.
+  // Instead, the proportion of cards each chain receives mirrors the proportion of
+  // facts in its topic groups, preserving the intended weighting across the run.
   const chainRng = isRunRngActive() ? getRunRng('chainSelect') : null;
   const chainSeed = chainRng ? chainRng.getState() : Math.floor(Math.random() * 0xFFFFFFFF);
   const runChainTypes = selectRunChainTypes(chainSeed);
 
-  const chainIndices = pool.map((_, i) => i);
-  const shuffledChainIndices = isRunRngActive()
-    ? seededShuffled(getRunRng('chain'), chainIndices)
-    : shuffled(chainIndices);
-  for (let i = 0; i < shuffledChainIndices.length; i++) {
-    pool[shuffledChainIndices[i]].chainType = runChainTypes[i % runChainTypes.length];
+  const chainDistribution = options?.chainDistribution;
+  if (chainDistribution) {
+    // Build proportional weights from distribution group sizes.
+    // E.g., chain 0 covers 39 facts, chain 2 covers 81, chain 4 covers 75 →
+    // assign pool cards in those proportions so deck sub-topic weighting is preserved.
+    const chainWeights: { chainType: number; weight: number }[] = [];
+    for (let i = 0; i < chainDistribution.runChainTypes.length; i++) {
+      const chainType = chainDistribution.runChainTypes[i];
+      const groups = chainDistribution.assignments[i];
+      const totalFacts = groups.reduce((sum, g) => sum + g.factIds.length, 0);
+      chainWeights.push({ chainType, weight: totalFacts });
+    }
+
+    const totalWeight = chainWeights.reduce((s, cw) => s + cw.weight, 0);
+
+    if (totalWeight === 0 || chainWeights.length === 0) {
+      // Edge case: distribution exists but all groups are empty — equal distribution fallback.
+      for (let i = 0; i < pool.length; i++) {
+        pool[i].chainType = chainDistribution.runChainTypes[i % chainDistribution.runChainTypes.length];
+      }
+    } else {
+      // Shuffle pool indices first for randomness within each proportional bucket.
+      const shuffledIndices = isRunRngActive()
+        ? seededShuffled(getRunRng('chain'), [...pool.keys()])
+        : shuffled([...pool.keys()]);
+
+      // Build expanded chain slot array matching proportions, then trim/pad to exact pool size.
+      const chainSlots: number[] = [];
+      for (const cw of chainWeights) {
+        const count = Math.round((cw.weight / totalWeight) * pool.length);
+        for (let j = 0; j < count; j++) {
+          chainSlots.push(cw.chainType);
+        }
+      }
+      // Pad any rounding shortfall using round-robin over the chain types.
+      while (chainSlots.length < pool.length) {
+        chainSlots.push(chainWeights[chainSlots.length % chainWeights.length].chainType);
+      }
+      chainSlots.length = pool.length;
+
+      for (let i = 0; i < shuffledIndices.length; i++) {
+        pool[shuffledIndices[i]].chainType = chainSlots[i];
+      }
+    }
+  } else {
+    // Fallback: round-robin seeded shuffle for trivia/general runs without distribution.
+    const chainIndices = pool.map((_, i) => i);
+    const shuffledChainIndices = isRunRngActive()
+      ? seededShuffled(getRunRng('chain'), chainIndices)
+      : shuffled(chainIndices);
+    for (let i = 0; i < shuffledChainIndices.length; i++) {
+      pool[shuffledChainIndices[i]].chainType = runChainTypes[i % runChainTypes.length];
+    }
   }
 
   return isRunRngActive() ? seededShuffled(getRunRng('rewards'), pool) : shuffled(pool);
@@ -483,6 +550,11 @@ export function buildGeneralRunPool(
     categoryFilters?: Record<string, string[]>;
     funnessBoostFactor?: number;
     includeOutsideDueReviews?: boolean;
+    /**
+     * Pre-computed topic-to-chain distribution. Forwarded to buildPresetRunPool.
+     * Used when a knowledge curated deck run has a chain distribution computed at run start.
+     */
+    chainDistribution?: ChainDistribution;
   },
 ): Card[] {
   const domainSelections: Record<string, string[]> = {};
@@ -494,6 +566,8 @@ export function buildGeneralRunPool(
 
 /**
  * Build a run pool for a single language mode (e.g. language:ja).
+ * Accepts chainDistribution so Study Temple vocabulary runs receive
+ * the same proportional chain-type assignment as knowledge deck runs.
  */
 export function buildLanguageRunPool(
   languageCode: string,
@@ -503,6 +577,11 @@ export function buildLanguageRunPool(
     categoryFilters?: Record<string, string[]>;
     funnessBoostFactor?: number;
     includeOutsideDueReviews?: boolean;
+    /**
+     * Pre-computed topic-to-chain distribution. Forwarded to buildPresetRunPool.
+     * Used when a language curated deck run has a chain distribution computed at run start.
+     */
+    chainDistribution?: ChainDistribution;
   },
 ): Card[] {
   const normalizedCode = String(languageCode || '').trim().toLowerCase();

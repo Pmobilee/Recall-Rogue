@@ -1,16 +1,37 @@
 # Chain System
 
-> **Purpose:** How the Knowledge Chain system works — consecutive correct answers, multiplier scaling, chain types, and break conditions.
-> **Last verified:** 2026-03-31
-> **Source files:** `src/services/chainSystem.ts`, `src/data/chainTypes.ts`, `src/services/chainVisuals.ts`, `src/data/balance.ts`
+> **Purpose:** How the Knowledge Chain system works — consecutive correct answers, multiplier scaling, chain types, break conditions, rotating chain color, and themed chain distribution.
+> **Last verified:** 2026-04-02
+> **Source files:** `src/services/chainSystem.ts`, `src/data/chainTypes.ts`, `src/services/chainVisuals.ts`, `src/data/balance.ts`, `src/services/chainDistribution.ts`, `src/services/presetPoolBuilder.ts`, `src/services/gameFlowController.ts`, `src/services/encounterBridge.ts`
 
 ---
 
 ## What Chains Are
 
-A **Knowledge Chain** forms when a player plays consecutive cards via Charge Correct that share the same `chainType` (0–5). Each matching card extends the chain and applies a higher damage multiplier. The chain resets at the start of each player turn.
+A **Knowledge Chain** forms when a player plays cards via Charge Correct that match the **active chain color** for the current turn. Each matching card extends the chain and applies a higher damage multiplier. The chain decays at the end of each player turn (not a full reset — `decayChain()` reduces length by 1 each turn so momentum carries forward).
 
-Chains only form through **Charge Correct** plays — Quick Play and Charge Wrong do not extend a chain. A card with no `chainType` (undefined/null) resets the chain to 0 with no multiplier.
+Chains only form through **Charge Correct** plays — Quick Play and Charge Wrong do not extend a chain. A card with no `chainType` (undefined/null) resets the chain to 0.
+
+---
+
+## Rotating Active Chain Color (AR-310)
+
+Each turn, one of the 3 run chain types is deterministically selected as the **active chain color**. Only cards matching the active color extend the chain multiplier. Cards of non-active colors preserve the current chain length (the multiplier is NOT lost, just not extended).
+
+This forces variety — players cannot hoard a single color to build chains indefinitely.
+
+- **Active color rotates** every turn via `rotateActiveChainColor(turnNumber)`
+- **Chain multiplier persists** across turns regardless of which color is active
+- **Rotation is deterministic** — seeded from `RunState.runSeed` + turn number so it is predictable and reproducible
+- `getActiveChainColor()` — returns the active chain type index for the current turn (used by `CardHand.svelte` to highlight matching cards)
+
+### `initChainSystem(runChainTypes, seed)`
+
+Must be called from `encounterBridge.ts` before `startEncounter()` for each new combat encounter. Stores the run chain types and rotation seed so `rotateActiveChainColor()` can compute the active color for each turn. For curated runs, uses `run.chainDistribution.runChainTypes`; for trivia runs uses `selectRunChainTypes(run.runSeed)`.
+
+### `rotateActiveChainColor(turnNumber)`
+
+Called at encounter start and at the end of each player turn (in `endPlayerTurn()` after `turnState.turnNumber += 1`). Returns the active chain type index for the next turn and sets `_activeChainColor`. Returns `null` if no run chain types are configured.
 
 ---
 
@@ -35,40 +56,56 @@ Cards are assigned a `chainType` integer (0–5) at run start from the active 3-
 
 ## Multiplier Scaling
 
-Defined in `CHAIN_MULTIPLIERS` in `balance.ts` (AR-59.3):
+Defined in `CHAIN_MULTIPLIERS` in `balance.ts`:
 
 ```typescript
-export const CHAIN_MULTIPLIERS: number[] = [1.0, 1.0, 1.3, 1.7, 2.2, 3.0];
+export const CHAIN_MULTIPLIERS: number[] = [1.0, 1.2, 1.5, 2.0, 2.5, 3.5];
 export const MAX_CHAIN_LENGTH = 5;
 ```
 
 | Chain Length | Multiplier | Cards Played |
 |-------------|-----------|-------------|
-| 0 | 1.0× | no cards yet |
-| 1 | 1.0× | first card (no bonus) |
-| 2 | 1.3× | second matching card |
-| 3 | 1.7× | third matching card |
-| 4 | 2.2× | fourth matching card |
-| 5 | 3.0× | fifth+ matching card (cap) |
+| 0 | 1.0× | no cards played yet |
+| 1 | 1.2× | first matching card |
+| 2 | 1.5× | second matching card |
+| 3 | 2.0× | third matching card |
+| 4 | 2.5× | fourth matching card |
+| 5 | 3.5× | fifth+ matching card (cap) |
 
-Once `MAX_CHAIN_LENGTH = 5` is reached, the multiplier stays at `3.0×`. Capped via `Math.min(_chain.length + 1, MAX_CHAIN_LENGTH)` in `extendOrResetChain()`.
+Once `MAX_CHAIN_LENGTH = 5` is reached, the multiplier stays at `3.5×`. Capped via `Math.min(_chain.length + 1, MAX_CHAIN_LENGTH)` in `extendOrResetChain()`.
 
 ---
 
 ## Core Functions (`chainSystem.ts`)
 
+### `initChainSystem(runChainTypes, seed)`
+
+Stores run chain types and rotation seed for active chain color selection. Call once per encounter from `encounterBridge.ts`.
+
 ### `extendOrResetChain(chainType, chainMultiplierOverride?)`
 
 Called by `turnManager` on every Charge Correct play:
 
-- If `chainType === null/undefined` — resets chain, returns `1.0`
-- If `chainType === _chain.chainType` — increments `_chain.length` (capped at 5), returns `CHAIN_MULTIPLIERS[length]`
-- If `chainType !== _chain.chainType` — resets to new chain with `length: 1`, returns `1.0`
+- If `chainType === null/undefined` — resets chain to 0, returns `1.0`
+- **Rotation mode** (when `_runChainTypes` is configured):
+  - If `chainType === _activeChainColor` — extends chain (length + 1), returns new multiplier
+  - If `chainType !== _activeChainColor` — chain length preserved (multiplier unchanged), no extension
+- **Legacy mode** (no run chain types configured — trivia/test contexts):
+  - If `chainType === _chain.chainType` — increments `_chain.length`, returns `CHAIN_MULTIPLIERS[length]`
+  - If `chainType !== _chain.chainType` — resets to new chain with `length: 1`, returns `1.2`
 - `chainMultiplierOverride` — clamps the multiplier to a fixed value (used by The Nullifier enemy, AR-59.13)
+
+### `rotateActiveChainColor(turnNumber)`
+
+Selects active chain color for the given turn. LCG: `(seed * 1664525 + turnNumber * 1013904223) & 0xFFFFFFFF`. Returns one of the 3 run chain types or `null` if none configured.
 
 ### `resetChain()`
 
-Called at the start of each player turn. Resets state to `{ chainType: null, length: 0 }`.
+Fully resets chain to `{ chainType: null, length: 0 }`. Called at encounter start.
+
+### `decayChain()`
+
+Called at end of each player turn. Reduces chain length by `CHAIN_DECAY_PER_TURN` (1). If length reaches 0, clears chain type. Partial momentum carries into the next turn.
 
 ### `getChainMultiplier(length)`
 
@@ -77,6 +114,10 @@ Returns `CHAIN_MULTIPLIERS[clamp(0, length, MAX_CHAIN_LENGTH)]`. Safe lookup wit
 ### `getChainState()`
 
 Returns a snapshot `{ chainType: number | null, length: number }` for UI consumption.
+
+### `getActiveChainColor()`
+
+Returns the active chain type index for the current turn, or `null` if not configured. Used by the UI to highlight cards that would extend the chain.
 
 ---
 
@@ -102,15 +143,19 @@ The chain multiplier applies to the **full resolved damage** after base + master
 
 ---
 
-## Break Conditions
+## Break / Preserve Conditions (AR-310 update)
 
 The chain resets in these cases:
 
-1. **Turn start** — `resetChain()` is called by `turnManager` at every new turn
-2. **Quick Play** — QP does not call `extendOrResetChain()`; chain is not extended or broken [UNVERIFIED — turnManager behavior]
-3. **Charge Wrong** — does not extend chain; whether it resets depends on turnManager [UNVERIFIED]
-4. **No chainType** — passing `null/undefined` to `extendOrResetChain()` resets chain to 0
-5. **Wrong chain type** — playing a Charge Correct card with a different `chainType` starts a new chain at length 1
+1. **Encounter start** — `resetChain()` is called by `startEncounter()` for a clean slate
+2. **No chainType** — passing `null/undefined` to `extendOrResetChain()` resets chain to 0
+3. **Turn decay** — `decayChain()` at end of each turn reduces length by 1 (not a full reset)
+
+The chain does NOT reset when:
+
+4. **Non-active color played** (AR-310) — playing a card whose color does not match the active chain color. The chain length is preserved; only extension is skipped.
+5. **Quick Play** — QP does not call `extendOrResetChain()`; chain state unchanged [UNVERIFIED — turnManager behavior]
+6. **Charge Wrong** — does not extend chain; behavior in turnManager [UNVERIFIED]
 
 ---
 
@@ -122,7 +167,7 @@ The chain resets in these cases:
 - `getChainGlowColor(chainType)` — returns rgba glow color; `rgba(136,136,136,0.30)` if undefined
 - `getChainColorGroups(cards)` — groups card IDs by shared `chainType`; only includes groups with 2+ cards (potential chain partners worth highlighting)
 
-Cards with the same `chainType` in hand are visually grouped so players can identify chain opportunities before playing.
+Cards with the same `chainType` in hand are visually grouped so players can identify chain opportunities before playing. The `activeChainColor` field on `TurnState` (set by `rotateActiveChainColor`) allows the UI to highlight which cards would extend the chain this turn.
 
 ---
 
@@ -136,3 +181,118 @@ export const SURGE_INTERVAL = 4;
 ```
 
 Surge turns occur on turn 2, then every 4 turns (turns 2, 6, 10, ...). Surge provides a bonus that stacks with chain multipliers. Exact Surge bonuses are defined in `turnManager.ts` [UNVERIFIED — not in chainSystem.ts].
+
+---
+
+## Themed Chain Distribution (`chainDistribution.ts`)
+
+For curated deck runs (Study Temple mode), chain types are assigned to deck sub-topics rather than randomly to individual cards. This lets players learn that "the Azure chain is vocabulary" or "Crimson chain covers grammar" within a run.
+
+### Types
+
+```typescript
+interface TopicGroup {
+  id: string;        // sub-deck ID or synthetic id like "pos_noun", "theme_2"
+  label: string;     // display name: "Ancient Wonders", "Nouns", "Group 1"
+  deckId: string;
+  factIds: string[]; // filtered to active run pool
+  fsrs: { new: number; learning: number; review: number; mastered: number };
+}
+
+interface ChainDistribution {
+  runChainTypes: number[];                          // 3 indices, e.g. [0, 2, 4]
+  assignments: [TopicGroup[], TopicGroup[], TopicGroup[]]; // topics per chain slot
+  factToChain: Map<string, number>;                // factId → chain type index
+}
+```
+
+`ChainDistribution` lives on `RunState.chainDistribution` (optional). The `Map` it contains is NOT JSON-serializable — it is excluded from `runSaveService.ts` serialization (listed in the `Omit<>` type) and must be recomputed on run resume if needed.
+
+### TopicGroup Extraction Waterfall
+
+`extractTopicGroups(deck, factIds, reviewStates)` applies these rules in priority order:
+
+1. **Sub-decks** — if the deck JSON has a `subDecks[]` array, each sub-deck becomes one TopicGroup.
+   - Sub-decks with an explicit `factIds` array use those directly.
+   - Sub-decks with only a `chainThemeId` (e.g. ancient_greece) match facts by their `fact.chainThemeId` field so real sub-deck names are used (not generic "Group N" labels).
+   - Sub-decks with no pool facts are skipped.
+2. **Part of speech** — if facts have `partOfSpeech` field, group by POS. Groups with fewer than 5 facts are merged into a single "Other" group. Label: capitalize POS + "s" (e.g., "Nouns", "Verbs").
+3. **chainThemeId fallback** — group by `fact.chainThemeId` value. Labels are generic ("Group 1", "Group 2", …). Only reached if sub-deck extraction produced no groups.
+
+For multi-deck playlists, call `extractTopicGroupsMultiDeck(decks, factIds, reviewStates)` which pools results from all decks.
+
+### FSRS-Balanced Bin-Packing
+
+`distributeTopicGroups(groups, runChainTypes, seed)` uses greedy LPT (Longest Processing Time) bin-packing:
+
+1. **Load score** per group: `new×3 + learning×2 + review×1 + mastered×0.5`
+2. **Seeded shuffle** of equal-score groups using the same LCG RNG as `selectRunChainTypes()` (seed = `RunState.runSeed`)
+3. **Sort descending** by score (heaviest groups assigned first)
+4. **Greedy assignment**: each group goes to the chain slot with the lowest cumulative load
+5. **Edge-case guard**: if fewer than 3 groups, the largest group is split via round-robin index assignment until 3 chains exist (bounded by total fact count — can't produce more groups than facts)
+
+The result is stored in `RunState.chainDistribution` and the `factToChain` Map provides O(1) lookup during card assignment in `presetPoolBuilder.ts`.
+
+### Full Pipeline: `precomputeChainDistribution()`
+
+`precomputeChainDistribution(deckMode, reviewStates, seed)` in `chainDistribution.ts` runs the full pipeline in one call:
+
+1. Guards: only runs for `{ type: 'study' }` DeckMode variants, skips `all:*` aggregates
+2. Loads the curated deck via `getCuratedDeck(deckId)`
+3. Filters factIds by `subDeckId` if specified (supports both `factIds` and `chainThemeId` sub-deck styles)
+4. Calls `extractTopicGroups()` → `distributeTopicGroups()`
+5. Returns `ChainDistribution | undefined` (undefined for non-curated runs)
+
+### Wiring into `gameFlowController.ts`
+
+In `onArchetypeSelected()`, after `createRunState()` and before `activeRunState.set(run)`:
+- Calls `precomputeChainDistribution(run.deckMode, reviewStates, run.runSeed)`
+- If a distribution is returned, stores it on `run.chainDistribution`
+- Routes to `currentScreen.set('runPreview')` if distribution exists (Study Temple)
+- Routes to `currentScreen.set('dungeonMap')` if no distribution (Trivia/General)
+
+`gameFlowState` has a new `'runPreview'` variant for this routing.
+
+### Run Preview Helpers (`gameFlowController.ts`)
+
+```typescript
+reshuffleChainDistribution(seedOffset: number): void
+```
+Recomputes the distribution with `run.runSeed + seedOffset` (unsigned 32-bit wrap) and updates `RunState`. Called by the RunPreviewScreen "Shuffle" button.
+
+```typescript
+confirmChainDistribution(): void
+```
+Transitions `gameFlowState` and `currentScreen` to `'dungeonMap'`. Called by the RunPreviewScreen "Begin Expedition" button.
+
+### Pool Builder Integration (`presetPoolBuilder.ts`)
+
+`buildPresetRunPool()`, `buildGeneralRunPool()`, and `buildLanguageRunPool()` all accept `chainDistribution?: ChainDistribution` in their options.
+
+**Important — factId space mismatch:** Curated deck JSON files use string fact IDs (e.g. `"ww_anc_pyramid_giza_height"`), while `factsDB` (SQLite) uses integer IDs. The `chainDistribution.factToChain` Map is keyed on curated deck IDs, so `factToChain.get(card.factId)` returns `undefined` for every pool card — they come from different ID spaces. Do NOT attempt to use `factToChain` for card assignment in `presetPoolBuilder.ts`.
+
+**Proportional assignment (current implementation):**
+When `chainDistribution` is provided, chain types are assigned proportionally based on how many facts each chain's topic groups contain:
+1. Compute total fact count per chain slot (sum of all `g.factIds.length` across that chain's groups)
+2. Shuffle pool card indices seeded with `getRunRng('chain')`
+3. Build a `chainSlots[]` array sized to the pool, filling each chain's share by proportion
+4. Assign each shuffled card index to the corresponding slot
+
+This preserves the intended topic-group weighting across the run while avoiding any factId dependency.
+
+When `chainDistribution` is absent (trivia/general runs):
+- Round-robin seeded shuffle assigns chain types (`i % runChainTypes.length`)
+
+In `encounterBridge.ts`, ALL Study Temple paths now pass `chainDistribution: run.chainDistribution`:
+- `type: 'language'` mode → `buildLanguageRunPool()`
+- `type: 'study'`, `all:` aggregate → `buildLanguageRunPool()`
+- `type: 'study'`, single vocabulary deck → `buildLanguageRunPool()`
+- `type: 'study'`, single knowledge deck → `buildGeneralRunPool()`
+
+### Old vs. New Assignment
+
+Previously: all cards received chain types via a seeded shuffle with `i % 3` round-robin — purely random with no semantic meaning.
+
+Then: topic-aware lookup via `factToChain.get(card.factId)` was introduced but was silently broken because curated deck fact IDs and factsDB fact IDs are different ID spaces — every lookup returned `undefined`, causing all cards to fall back to `runChainTypes[0]` (a single color for the whole run).
+
+Current: proportional assignment by chain group size. The distribution's weighting is preserved (chains with more facts get proportionally more cards), and language/vocabulary deck paths all receive chain distribution so Study Temple runs always show multiple colors.

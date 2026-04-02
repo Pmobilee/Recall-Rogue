@@ -18,7 +18,7 @@
   import { getMasteryBaseBonus } from '../../services/cardUpgradeService'
   import { activeRunState } from '../../services/runStateStore'
   import { getChainColor, getChainColorGroups } from '../../services/chainVisuals'
-  import { getChainTypeName } from '../../data/chainTypes'
+  import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
   import ChainIcon from './ChainIcon.svelte'
   import { isLandscape } from '../../stores/layoutStore'
   import { inputService } from '../../services/inputService'
@@ -57,6 +57,8 @@
     showGuaranteed?: boolean
     /** Effective damage previews per card — computed by CardCombatOverlay from current combat state. */
     damagePreviews?: Record<string, import('../../services/damagePreviewService').DamagePreview>
+    /** AR-310: Active chain color for this turn — matching cards get a glow highlight. */
+    activeChainColor?: number | null
   }
 
   // Session-level preload guard: avoid creating duplicate Image objects for the same URL.
@@ -85,6 +87,7 @@
     cureFlashes = {},
     showGuaranteed = false,
     damagePreviews = {},
+    activeChainColor = null,
   }: Props = $props()
 
   interface TierUpVisualSignature {
@@ -817,6 +820,8 @@
     {@const scatterX = getHoverScatterX(i, hoveredIndex, cards.length)}
     {@const hoverLiftLs = isHovered ? 60 : 0}
     {@const hoverScaleLs = isHovered ? 1.15 : 1}
+    {@const isActiveChainMatch = activeChainColor !== null && card.chainType === activeChainColor}
+    {@const activeChainHex = isActiveChainMatch ? getChainTypeColor(activeChainColor!) : null}
 
     <button
       class="card-in-hand card-landscape"
@@ -841,6 +846,7 @@
       class:card--cursed={card.isCursed && !cureFlashes[card.id]}
       class:card--curing={cureFlashes[card.id]}
       class:card--locked={card.isLocked}
+      class:card--active-chain={isActiveChainMatch && !isSelected && selectedIndex === null}
       style="
         {isAnimating ? '' : isDraggingThis
           ? `transform: translate3d(${lsXOffset + cardDragX}px, ${(isSelected ? -riseAmount : -lsArcOffset) - cardDragRawY}px, 0) rotate(0deg) scale(${cardDragScale});`
@@ -848,7 +854,7 @@
         animation-delay: {i * 60}ms;
         opacity: {isOther ? 0.35 : 1};
         z-index: {isDraggingThis ? 2000 : isSelected ? 2000 : isHovered ? 2000 : 1000 + i};
-        {isDraggingThis && chargeProgress > 0.05 ? `filter: drop-shadow(0 0 ${8 + chargeProgress * 8}px rgba(250, 204, 21, ${chargeProgress * 0.8})) drop-shadow(0 0 ${16 + chargeProgress * 16}px rgba(250, 204, 21, ${chargeProgress * 0.4}));` : ''}
+        {isDraggingThis && chargeProgress > 0.05 ? `filter: drop-shadow(0 0 ${8 + chargeProgress * 8}px rgba(250, 204, 21, ${chargeProgress * 0.8})) drop-shadow(0 0 ${16 + chargeProgress * 16}px rgba(250, 204, 21, ${chargeProgress * 0.4}));` : (isActiveChainMatch && !isSelected && !isDraggingThis && selectedIndex === null && activeChainHex ? `filter: drop-shadow(0 0 6px ${activeChainHex}99) drop-shadow(0 0 12px ${activeChainHex}55);` : '')}
       "
       data-testid="card-hand-{i}"
       aria-label="{card.mechanicName}: costs {card.apCost ?? 1} AP, {getShortCardDescription(card)}. Card {i + 1} of {cards.length}."
@@ -1190,6 +1196,8 @@
     {@const effectVal = preview ? (isChargePreview ? preview.ccValue : preview.qpValue) : getEffectValue(card, isChargePreview)}
     {@const modState = preview ? (isChargePreview ? preview.ccModified : preview.qpModified) : 'neutral'}
     {@const descPower = effectVal}
+    {@const isActiveChainMatch = activeChainColor !== null && card.chainType === activeChainColor}
+    {@const activeChainHex = isActiveChainMatch ? getChainTypeColor(activeChainColor!) : null}
 
     <button
       class="card-in-hand card-has-frame"
@@ -1227,12 +1235,13 @@
       class:card--cursed={card.isCursed && !cureFlashes[card.id]}
       class:card--curing={cureFlashes[card.id]}
       class:card--locked={card.isLocked}
+      class:card--active-chain={isActiveChainMatch && !isSelected && selectedIndex === null}
       style="
         {isAnimating ? '' : isDraggingThis ? `transform: translate3d(${xOffset + cardDragX}px, ${(isSelected ? -riseAmount : -arcOffset) - cardDragRawY}px, 0) rotate(0deg) scale(${cardDragScale});` : `transform: translate3d(${xOffset}px, ${isSelected ? -riseAmount : isOther ? 15 : -(arcOffset + hoverLift)}px, 0) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : hoverScale});`}
         animation-delay: {i * 80}ms;
         opacity: {isOther ? 0.3 : 1};
         z-index: {isDraggingThis ? 20 : isHovered ? 10 : ''};
-        {isDraggingThis && chargeProgress > 0.05 ? `filter: drop-shadow(0 0 ${8 + chargeProgress * 8}px rgba(250, 204, 21, ${chargeProgress * 0.8})) drop-shadow(0 0 ${16 + chargeProgress * 16}px rgba(250, 204, 21, ${chargeProgress * 0.4}));` : ''}
+        {isDraggingThis && chargeProgress > 0.05 ? `filter: drop-shadow(0 0 ${8 + chargeProgress * 8}px rgba(250, 204, 21, ${chargeProgress * 0.8})) drop-shadow(0 0 ${16 + chargeProgress * 16}px rgba(250, 204, 21, ${chargeProgress * 0.4}));` : (isActiveChainMatch && !isSelected && !isDraggingThis && selectedIndex === null && activeChainHex ? `filter: drop-shadow(0 0 6px ${activeChainHex}99) drop-shadow(0 0 12px ${activeChainHex}55);` : '')}
       "
       data-testid="card-hand-{i}"
       aria-label="{card.mechanicName}: costs {card.apCost ?? 1} AP, {getShortCardDescription(card)}. Card {i + 1} of {cards.length}."
@@ -2934,4 +2943,10 @@
     background: rgba(255, 255, 255, 0.16);
     color: #fff;
   }
+  /* AR-310: Active chain color highlight — subtle glow on cards matching this turn's active chain */
+  .card--active-chain {
+    outline: calc(2px * var(--layout-scale, 1)) solid rgba(255, 255, 255, 0.25);
+    outline-offset: calc(2px * var(--layout-scale, 1));
+  }
+
 </style>

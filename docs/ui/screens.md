@@ -1,7 +1,7 @@
 # Screen Flow & State Machine
 
 > **Purpose:** Complete list of all Screen values, routing logic, transition rules, and component mappings.
-> **Last verified:** 2026-04-01
+> **Last verified:** 2026-04-02
 > **Source files:** `src/ui/stores/gameState.ts`, `src/CardApp.svelte`, `src/services/screenController.ts`
 
 ---
@@ -45,6 +45,7 @@ Defined as a TypeScript union type in `src/ui/stores/gameState.ts`:
 | `social` | Social hub: friends, guilds, duels, trades |
 | `settings` | In-game settings panel |
 | `studyTemple` | Study Temple screen for dedicated flashcard study |
+| `runPreview` | Pre-run chain distribution preview — shows topic assignments across 3 chains before expedition begins |
 
 ---
 
@@ -103,6 +104,7 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 | `social` | `SocialScreen` | |
 | `settings` | `SettingsPanel` | |
 | `studyTemple` | `StudyTempleScreen` | |
+| `runPreview` | `RunPreviewScreen` | Shows chain distribution; `onShuffle` calls `reshuffleChainDistribution()`; `onBeginExpedition` calls `confirmChainDistribution()` |
 | `relicSanctum` | `RelicCollectionScreen` | |
 
 ---
@@ -151,7 +153,7 @@ rewardRoom, masteryChallenge, relicSwapOverlay
 ### Start a Run
 ```
 hub → (handleStartRun) → deckSelectionHub → triviaDungeon or studyTemple
-    → archetypeSelection → dungeonMap → [room nodes] → combat/shop/rest/mystery
+    → archetypeSelection → runPreview → (confirm) → dungeonMap → [room nodes] → combat/shop/rest/mystery
 ```
 
 If a saved run exists, `handleStartRun` shows a Run Guard popup (continue vs. abandon).
@@ -184,6 +186,51 @@ combat (boss) → retreatOrDelve
     → resume → previous screen
     → return to hub → hub (run saved, resumable)
 ```
+
+---
+
+## Run Preview Screen
+
+**Source file:** `src/ui/components/RunPreviewScreen.svelte`
+**Added:** 2026-04-02
+
+### Purpose
+
+Shows the player how their selected deck's topic groups are distributed across the three run chain colors before the expedition begins. Allows reshuffling the distribution for variety.
+
+### Navigation
+
+- Reached from: `archetypeSelection` (via game-logic's `onArchetypeSelected`) or directly from `triviaDungeon`/`studyTemple` confirmation
+- Leaves to: `dungeonMap` (via "Begin Expedition") or reshuffles in-place (via "Shuffle Chains")
+
+### Props
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `onShuffle` | `() => void` | Called when "Shuffle Chains" is clicked. Calls `reshuffleChainDistribution(++shuffleSeedOffset)`. |
+| `onBeginExpedition` | `() => void` | Called when "Begin Expedition" is clicked. Calls `confirmChainDistribution()`. |
+
+### Data Source
+
+Reads `$activeRunState?.chainDistribution` reactively via the `activeRunState` store (`src/services/runStateStore.ts`).
+
+`ChainDistribution.assignments` is a tuple `[TopicGroup[], TopicGroup[], TopicGroup[]]` — index 0/1/2 map to `runChainTypes[0/1/2]` from `ChainDistribution.runChainTypes`.
+
+### FSRS Legend
+
+Topic group cards show a compact breakdown: `5N 8L 10R 3M` where:
+- **N** = New (never seen)
+- **L** = Learning (in progress)
+- **R** = Review (due for review)
+- **M** = Mastered (stability > 30 days)
+
+### CardApp Handlers
+
+`CardApp.svelte` wires the real service functions directly:
+
+- `handleRunPreviewShuffle()` — calls `reshuffleChainDistribution(++shuffleSeedOffset)` (imported from `gameFlowController`); `shuffleSeedOffset` increments each shuffle so each press produces a different seed
+- `handleRunPreviewBeginExpedition()` — calls `confirmChainDistribution()` (imported from `gameFlowController`)
+- `handleOpenRunPreview()` — removed (was unused; navigation to `runPreview` handled by game-logic directly)
 
 ---
 

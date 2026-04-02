@@ -119,6 +119,7 @@ import { getConfusionMatrix } from './confusionMatrixStore';
 import type { ShopInventory } from './shopService';
 import { generateShopRelics, priceShopCards, removalPrice, transformPrice, applySaleDiscount, getSalePrice } from './shopService';
 import type { DeckMode } from '../data/studyPreset'
+import { precomputeChainDistribution } from './chainDistribution'
 import { generateActMap, selectMapNode, deriveFloorFromNode, type ActMap } from './mapGenerator'
 import { getBossForFloor } from './floorManager'
 import { ENEMY_TEMPLATES } from '../data/enemies'
@@ -164,7 +165,8 @@ export type GameFlowState =
   | 'postMiniBossRest'
   | 'relicSwapOverlay'
   | 'restStudy'
-  | 'restMeditate';
+  | 'restMeditate'
+  | 'runPreview';
   // 'starterRelicSelection' removed AR-59.12 — runs start directly at dungeonMap
 
 export const gameFlowState = writable<GameFlowState>('idle');
@@ -833,6 +835,17 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
   run.bounties = updateBounties(run.bounties, { type: 'floor_reached', floor: run.floor.currentFloor });
   // Generate the initial ActMap for the first segment
   run.floor.actMap = generateActMap(run.floor.segment, run.runSeed);
+
+  // Precompute chain distribution for curated study runs (eager, before pool build).
+  // This allows the RunPreviewScreen to show topic-to-chain mapping before combat starts.
+  if (run.deckMode) {
+    const reviewStates = get(playerSave)?.reviewStates ?? [];
+    const dist = precomputeChainDistribution(run.deckMode, reviewStates, run.runSeed);
+    if (dist) {
+      run.chainDistribution = dist;
+    }
+  }
+
   activeRunState.set(run);
   playCardAudio('domain-select');
   playCardAudio('run-start');
@@ -843,9 +856,18 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
     activateDeterministicRandom(run.runSeed);
   }
   pendingDomainSelection = null;
-  // AR-59.12: No starter relic. Runs start with 0 relics. First relic earned at Act 1 mini-boss.
-  gameFlowState.set('dungeonMap');
-  currentScreen.set('dungeonMap');
+
+  // Route to run preview screen if a chain distribution was computed (Study Temple).
+  // Trivia/general runs go directly to the dungeon map (no preview).
+  if (run.chainDistribution) {
+    // AR-59.12: No starter relic. Runs start with 0 relics. First relic earned at Act 1 mini-boss.
+    gameFlowState.set('runPreview');
+    currentScreen.set('runPreview');
+  } else {
+    // AR-59.12: No starter relic. Runs start with 0 relics. First relic earned at Act 1 mini-boss.
+    gameFlowState.set('dungeonMap');
+    currentScreen.set('dungeonMap');
+  }
 }
 
 /**
@@ -2692,4 +2714,48 @@ export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endl
   activeDailySeed = null
   deactivateDeterministicRandom()
   destroyRunRng()
+}
+
+// ---------------------------------------------------------------------------
+// Run preview helpers — used by RunPreviewScreen
+// ---------------------------------------------------------------------------
+
+/**
+ * Recompute the chain distribution for the active run with a new seed offset.
+ * Called by the RunPreviewScreen "Shuffle" button so the player can explore
+ * different topic-to-chain arrangements before committing.
+ *
+ * The seed offset is added to the run's base seed to produce a deterministic
+ * but distinct arrangement each time the button is pressed.
+ *
+ * Does nothing if no active run, no deckMode, or no distribution was computed.
+ */
+export function reshuffleChainDistribution(seedOffset: number): void {
+  const run = get(activeRunState);
+  if (!run?.deckMode) return;
+
+  const reviewStates = get(playerSave)?.reviewStates ?? [];
+  const newSeed = (run.runSeed + seedOffset) >>> 0; // unsigned 32-bit wrap
+  const dist = precomputeChainDistribution(run.deckMode, reviewStates, newSeed);
+  if (!dist) return;
+
+  activeRunState.update(r => {
+    if (!r) return r;
+    r.chainDistribution = dist;
+    return r;
+  });
+}
+
+/**
+ * Confirm the current chain distribution and proceed to the dungeon map.
+ * Called by the RunPreviewScreen "Begin Expedition" button.
+ *
+ * Does nothing if no active run.
+ */
+export function confirmChainDistribution(): void {
+  const run = get(activeRunState);
+  if (!run) return;
+
+  gameFlowState.set('dungeonMap');
+  currentScreen.set('dungeonMap');
 }

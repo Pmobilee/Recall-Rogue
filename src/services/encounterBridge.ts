@@ -5,6 +5,8 @@
 import { writable, get } from 'svelte/store';
 import type { TurnState } from './turnManager';
 import { startEncounter, playCardAction, skipCard, endPlayerTurn, resolveInscription, getActiveInscription, applyPendingChoice, revertTransmutedCards, resetFactLastSeenEncounter } from './turnManager';
+import { initChainSystem } from './chainSystem';
+import { selectRunChainTypes } from '../data/chainTypes';
 import { buildRunPool, recordRunFacts } from './runPoolBuilder';
 import { addCardToDeck, createDeck, drawHand, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts, exhaustCard } from './deckManager';
 import { createEnemy } from './enemyManager';
@@ -332,9 +334,11 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
         });
       } else if (run.deckMode.type === 'language') {
         // Language mode — strict language-only pool.
+        // Pass chainDistribution so Study Temple language runs get proportional chain assignment.
         activeRunPool = buildLanguageRunPool(run.deckMode.languageCode, reviewStates, {
           categoryFilters,
           funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+          chainDistribution: run.chainDistribution,
         });
       } else if (run.deckMode.type === 'study') {
         const studyDeckId = run.deckMode.deckId;
@@ -350,9 +354,11 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
           };
           const langName = studyDeckId.substring(4).toLowerCase(); // e.g. 'japanese'
           const langCode = LANG_PREFIX_TO_CODE[langName] ?? langName;
+          // Pass chainDistribution so Study Temple all-language runs get proportional chain assignment.
           activeRunPool = buildLanguageRunPool(langCode, reviewStates, {
             categoryFilters,
             funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+            chainDistribution: run.chainDistribution,
           });
         } else {
           // Single curated deck.
@@ -367,16 +373,20 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
           const langCode = LANG_PREFIX_TO_CODE[deckPrefix];
 
           if (langCode) {
-            // Vocabulary deck — use language-specific pool so facts have language field
+            // Vocabulary deck — use language-specific pool so facts have language field.
+            // Pass chainDistribution so Study Temple vocabulary runs get proportional chain assignment.
             activeRunPool = buildLanguageRunPool(langCode, reviewStates, {
               categoryFilters,
               funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+              chainDistribution: run.chainDistribution,
             });
           } else {
-            // Knowledge curated deck — build general pool and stamp domain
+            // Knowledge curated deck — build general pool and stamp domain.
+            // Pass chainDistribution so topic-aware chain assignment is used (Study Temple).
             activeRunPool = buildGeneralRunPool(reviewStates, {
               categoryFilters,
               funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+              chainDistribution: run.chainDistribution,
             });
             const curatedDeck = getCuratedDeck(studyDeckId);
             if (curatedDeck) {
@@ -514,6 +524,11 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
     ? 0.85 + Math.random() * 0.30
     : 1.0;
   const enemy = createEnemy(ascensionTemplate, run.floor.currentFloor, { hpMultiplier: enemyHpMultiplier, difficultyVariance });
+  // AR-310: Initialise chain color rotation before startEncounter so the first-turn
+  // active chain color is set correctly. Use the pre-computed chain distribution's
+  // runChainTypes for curated runs; fall back to selectRunChainTypes for trivia runs.
+  const encounterChainTypes = run.chainDistribution?.runChainTypes ?? selectRunChainTypes(run.runSeed);
+  initChainSystem(encounterChainTypes, run.runSeed);
   const turnState = startEncounter(activeDeck, enemy, run.playerMaxHp, run.globalTurnCounter ?? 1);
   // AR-269: Thread encounter number for Akashic Record fact-spacing mechanic.
   // Use a global encounter counter = (floor - 1) * encountersPerFloor + currentEncounter.

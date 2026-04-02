@@ -4,6 +4,7 @@
  */
 
 import type { FactDomain } from '../data/card-types';
+import type { ChainDistribution } from './chainDistribution';
 import type { FloorState } from './floorManager';
 import { createFloorState, getSegment } from './floorManager';
 import { PLAYER_START_HP, PLAYER_MAX_HP, DEATH_PENALTY, DIFFICULTY_REWARD_MULTIPLIER } from '../data/balance';
@@ -162,6 +163,13 @@ export interface RunState {
    * Cleared on new run.
    */
   meditatedThemeId?: number;
+  /**
+   * Chain distribution for this run — maps topic groups to the 3 active chain types.
+   * Computed at run start from deck sub-topics, FSRS-balanced via LPT bin-packing.
+   * Contains a Map so it is excluded from localStorage serialization (see runSaveService.ts).
+   * Undefined for trivia (non-curated) runs.
+   */
+  chainDistribution?: ChainDistribution;
 }
 
 export interface RunEndData {

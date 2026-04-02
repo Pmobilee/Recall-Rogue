@@ -6,7 +6,7 @@ import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-t
 import { isFirstChargeFree, markFirstChargeUsed, getFirstChargeWrongMultiplier } from './discoverySystem';
 import { canMasteryUpgrade, canMasteryDowngrade, masteryUpgrade, masteryDowngrade, resetEncounterMasteryFlags, getMasteryBaseBonus } from './cardUpgradeService';
 import { getSurgeChargeSurcharge, isSurgeTurn } from './surgeSystem';
-import { resetChain, decayChain, extendOrResetChain, getChainState, getCurrentChainLength } from './chainSystem';
+import { resetChain, decayChain, extendOrResetChain, getChainState, getCurrentChainLength, initChainSystem, rotateActiveChainColor, getActiveChainColor } from './chainSystem';
 import { resetAura, adjustAura, getAuraState } from './knowledgeAuraSystem';
 import { resetReviewQueue, addToReviewQueue, clearReviewQueueFact, isReviewQueueFact } from './reviewQueueSystem';
 import { CHAIN_MOMENTUM_ENABLED, CHARGE_AP_SURCHARGE, FIRST_CHARGE_FREE_AP_SURCHARGE, RELIC_AEGIS_STONE_MAX_CARRY } from '../data/balance';
@@ -249,6 +249,14 @@ export interface TurnState {
   chainLength: number;
   /** Current chain type index (0-5), or null if no chain active. Exposed for UI. */
   chainType: number | null;
+  /**
+   * AR-310: Active chain color for the current turn — the chain type index that
+   * extends the chain multiplier when played via Charge Correct.
+   * Rotates each turn via rotateActiveChainColor(). null before initChainSystem
+   * is called (trivia runs without runChainTypes configured).
+   * Exposed for UI so CardHand.svelte can highlight matching cards.
+   */
+  activeChainColor: number | null;
   /** Whether double_down has already been consumed this encounter. */
   doubleDownUsedThisEncounter: boolean;
   /** Whether mirror_of_knowledge has already been used this encounter (once per encounter). */
@@ -576,6 +584,7 @@ export function startEncounter(
     chainMultiplier: 1.0,
     chainLength: 0,
     chainType: null,
+    activeChainColor: null,
     doubleDownUsedThisEncounter: false,
     mirrorUsedThisEncounter: false,
     nextChargeFreeForChainType: null,
@@ -602,6 +611,10 @@ export function startEncounter(
 
   // Reset chain at encounter start (clean slate)
   resetChain();
+  // AR-310: Set the active chain color for the first turn of this encounter.
+  // initChainSystem() is called from encounterBridge before startEncounter.
+  const firstTurnColor = rotateActiveChainColor(globalTurnCounter);
+  initialState.activeChainColor = firstTurnColor;
   // AR-261: Reset Knowledge Aura and Review Queue at encounter start
   resetAura();
   resetReviewQueue();
@@ -2757,6 +2770,8 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.turnNumber += 1;
   turnState.encounterTurnNumber += 1;
   turnState.isSurge = isSurgeTurn(turnState.turnNumber);
+  // AR-310: Rotate the active chain color for the upcoming turn.
+  turnState.activeChainColor = rotateActiveChainColor(turnState.turnNumber);
 
   const discardedAtTurnEnd = discardHand(deck);
   if (discardedAtTurnEnd.length > 0) {

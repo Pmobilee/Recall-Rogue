@@ -89,6 +89,8 @@
     rerollRelicSelection,
     isRelicPityActive,
     onCombatExitComplete,
+    reshuffleChainDistribution,
+    confirmChainDistribution,
   } from './services/gameFlowController'
   import {
     activeTurnState,
@@ -154,6 +156,7 @@
   import DeckSelectionHub from './ui/components/DeckSelectionHub.svelte'
   import TriviaDungeonScreen from './ui/components/TriviaDungeonScreen.svelte'
   import StudyTempleScreen from './ui/components/StudyTempleScreen.svelte'
+  import RunPreviewScreen from './ui/components/RunPreviewScreen.svelte'
   import RewardCardDetail from './ui/components/RewardCardDetail.svelte'
   import { rewardCardDetail, getCardDetailCallbacks } from './services/rewardRoomBridge'
   import { updateRichPresence } from './services/steamService'
@@ -185,6 +188,8 @@
     const nextScreen = navigateToScreen(target, $currentScreen)
     currentScreen.set(nextScreen)
   }
+
+  let shuffleSeedOffset = 0
 
   let showOutsideDuePrompt = $state(false)
   let outsideDueCount = $state(0)
@@ -263,6 +268,15 @@
       startNewRun({ includeOutsideDueReviews: false })
     }, 100)
   }
+
+  function handleRunPreviewShuffle(): void {
+    reshuffleChainDistribution(++shuffleSeedOffset)
+  }
+
+  function handleRunPreviewBeginExpedition(): void {
+    confirmChainDistribution()
+  }
+
 
   function handleGuardContinue(): void {
     showRunGuardPopup = false
@@ -1495,6 +1509,15 @@
       <StudyTempleScreen
         onback={handleBackToDeckHub}
         onStartRun={handleDungeonRunStart}
+      />
+    </div>
+  {/if}
+
+  {#if $currentScreen === 'runPreview'}
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <RunPreviewScreen
+        onShuffle={handleRunPreviewShuffle}
+        onBeginExpedition={handleRunPreviewBeginExpedition}
       />
     </div>
   {/if}

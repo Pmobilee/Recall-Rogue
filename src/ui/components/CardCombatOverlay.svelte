@@ -396,6 +396,7 @@
   let chainLength = $derived(turnState?.chainLength ?? 0)
   let chainType = $derived(turnState?.chainType ?? null)
   let chainMultiplier = $derived(turnState?.chainMultiplier ?? 1.0)
+  let activeChainColor = $derived(turnState?.activeChainColor ?? null)
   let displayRelics = $derived(
     [...(turnState?.activeRelicIds ?? [])].map((id) => {
       const def = RELIC_BY_ID[id];
@@ -2799,7 +2800,7 @@
       </div>
     </div>
 
-    <ChainCounter {isPerfectTurn} {chainLength} {chainType} {chainMultiplier} />
+    <ChainCounter {isPerfectTurn} {chainLength} {chainType} {chainMultiplier} {activeChainColor} />
 
     <CardHand
       cards={handCards}
@@ -2821,6 +2822,7 @@
       {cureFlashes}
       {showGuaranteed}
       {damagePreviews}
+      {activeChainColor}
     />
 
     {#if showEndTurn}

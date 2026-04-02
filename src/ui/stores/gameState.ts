@@ -39,6 +39,7 @@ export type Screen =
   | 'deckSelectionHub'
   | 'triviaDungeon'
   | 'studyTemple'
+  | 'runPreview'
   // 'starterRelicSelection' removed in AR-59.12 — runs start directly at dungeonMap
 
 const SCREEN_STORAGE_KEY = 'card:currentScreen'
@@ -77,6 +78,7 @@ const VALID_SCREENS: Screen[] = [
   'deckSelectionHub',
   'triviaDungeon',
   'studyTemple',
+  'runPreview',
   // 'starterRelicSelection' removed AR-59.12
 ]
 
