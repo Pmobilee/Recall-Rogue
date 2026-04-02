@@ -4470,48 +4470,6 @@
       "reason": "Washington state / Washington D.C."
     }
   ],
-  "questionTemplates": [
-    {
-      "id": "capital_from_state",
-      "answerPoolId": "state_capitals",
-      "questionFormat": "What is the capital of {state}?",
-      "availableFromMastery": 0,
-      "difficulty": 1,
-      "reverseCapable": true
-    },
-    {
-      "id": "state_from_capital",
-      "answerPoolId": "state_names",
-      "questionFormat": "Which state's capital is {capital}?",
-      "availableFromMastery": 1,
-      "difficulty": 2,
-      "reverseCapable": false
-    },
-    {
-      "id": "state_from_nickname",
-      "answerPoolId": "state_names",
-      "questionFormat": "Which state is known as the {nickname}?",
-      "availableFromMastery": 1,
-      "difficulty": 2,
-      "reverseCapable": false
-    },
-    {
-      "id": "state_from_fact",
-      "answerPoolId": "state_names",
-      "questionFormat": "Which state {fact}?",
-      "availableFromMastery": 2,
-      "difficulty": 3,
-      "reverseCapable": false
-    },
-    {
-      "id": "admission_year",
-      "answerPoolId": "bracket_numbers",
-      "questionFormat": "In what year was {state} admitted to the Union?",
-      "availableFromMastery": 3,
-      "difficulty": 4,
-      "reverseCapable": false
-    }
-  ],
   "difficultyTiers": {
     "easy": [
       "us_states_massachusetts_capital",

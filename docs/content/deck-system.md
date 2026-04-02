@@ -67,9 +67,9 @@ Two backfill scripts produced full coverage:
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-02 it contains **64 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-02 it contains **65 decks**:
 
-- **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N5 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
+- **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
 - **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**
 
 ### Deck Architecture Files
@@ -212,7 +212,7 @@ See `.claude/skills/deck-art/SKILL.md` for full generation workflow, prompt temp
 
 Some answer type pools have too few real facts to produce varied distractors at runtime. **Synthetic pool members** (`AnswerTypePool.syntheticDistractors`) are plausible wrong answers added directly to a pool object that pad the candidate list without having corresponding quiz facts.
 
-**Current state (2026-04-02):** All 230 non-numeric pools across all 64 decks have been padded to ≥ 15 members. The script `scripts/content-pipeline/pad-small-pools.mjs` was run to pad 50 pools, adding 225 synthetic distractors in total. Numeric pools (`bracket_number`, `number`, `year`) are permanently excluded from synthetic padding — they use runtime bracket-notation generation instead.
+**Current state (2026-04-02):** All 230 non-numeric pools across all 65 decks have been padded to ≥ 15 members. The script `scripts/content-pipeline/pad-small-pools.mjs` was run to pad 50 pools, adding 225 synthetic distractors in total. Numeric pools (`bracket_number`, `number`, `year`) are permanently excluded from synthetic padding — they use runtime bracket-notation generation instead.
 
 **When to add synthetics:**
 - Pool total (real + synthetic) **< 5** — runtime falls back to per-fact `distractors[]` entirely; synthetics are required to reach the floor
@@ -670,5 +670,60 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 **Distractor coverage:** 375/375 facts have ≥5 distractors (100%).
 
 **Validator note:** The `verify-curated-deck.mjs` script flags every fact with "Question contains literal braces" — this is a known false-positive for fill-blank grammar decks (identical behaviour in `japanese_n3_grammar`). The `{___}` marker is the intended question blank format, not a template literal.
+
+**chainThemeId:** Rotates 0–5 sequentially across all facts (grammar decks use generic chain slots, not named themes).
+
+---
+
+## japanese_n4_grammar Deck
+
+`data/decks/japanese_n4_grammar.json` — 400 facts covering intermediate JLPT N4 grammar patterns.
+
+**Fill-in-the-blank format.** Each fact presents a Japanese sentence with the target grammar point replaced by `{___}`. The player chooses the correct grammar point to complete the sentence.
+
+| Field | Value |
+|---|---|
+| `id` | `japanese_n4_grammar` |
+| `domain` | `vocabulary` |
+| `subDomain` | `japanese_grammar` |
+| `facts` | 400 (was 401 before QA — deleted mislabeled kara-tsukuru-fill-2) |
+| `minimumFacts` | 300 |
+| `targetFacts` | 401 |
+
+**Answer Type Pools (14):**
+
+| Pool ID | Facts |
+|---|---|
+| `grammar_all` (master) | 400 |
+| `grammar_misc` | 144 |
+| `temporal` | 33 |
+| `appearance_hearsay` | 33 |
+| `conditional` | 26 |
+| `te_form_giving` | 24 |
+| `te_form_aspect` | 23 |
+| `obligation` | 17 |
+| `negation_degree` | 17 |
+| `honorific` | 16 |
+| `causative_passive` | 13 |
+| `difficulty_ease` | 13 |
+| `quotation` | 12 |
+| `purpose_intent` | 29 |
+
+**Difficulty distribution:**
+- Easy (2): 96 facts
+- Medium (3): 263 facts
+- Hard (4): 41 facts
+
+**Synonym groups (8):** `syn_must`, `syn_appearance` (ようだ/みたいだ), `syn_difficulty` (にくい/づらい), `syn_but_formal` (しかし/でも/けれども), `syn_wonder` (かな/かしら), `syn_reason` (ので/なので), `syn_conditional_ba_tara` (ば/たら), `syn_favor` (てあげる/てやる)
+
+**QA fixes applied 2026-04-02:**
+- Removed interchangeable synonyms from each other's distractor arrays and added to `acceptableAlternatives` for: ようだ/みたいだ, にくい/づらい, なので/ので, しかし/でも/けれども, ば/たら, てあげる/てやる, 場合は/たら
+- Fixed `kudasai-fill-0` through `-fill-3`: blank repositioned to test full `ください` (was testing fragment `さい`)
+- Deleted `kara-tsukuru-fill-2`: mislabeled — correctAnswer was `ています`, not a から作る pattern
+- Fixed `ni-ki-ga-tsuku-fill-0/1/2`: `targetLanguageWord` truncation に気がつ → に気がつく
+- Added 3 new synonym groups: `syn_reason`, `syn_conditional_ba_tara`, `syn_favor`
+- Rebuilt `grammar_all` master pool to 400 facts; `grammar_misc` pool synced to 144
+
+**Validator note:** The `verify-curated-deck.mjs` script flags every fact with "Question contains literal braces" — this is a known false-positive for fill-blank grammar decks. The `{___}` marker is the intended question blank format, not a template literal.
 
 **chainThemeId:** Rotates 0–5 sequentially across all facts (grammar decks use generic chain slots, not named themes).

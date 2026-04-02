@@ -4510,24 +4510,6 @@
       "reason": "South Africa has three capitals: Pretoria (executive), Cape Town (legislative), and Bloemfontein (judicial)."
     }
   ],
-  "questionTemplates": [
-    {
-      "id": "capital_of_country",
-      "answerPoolId": "capital_names",
-      "questionFormat": "What is the capital of {country}?",
-      "availableFromMastery": 0,
-      "difficulty": 1,
-      "reverseCapable": false
-    },
-    {
-      "id": "country_of_capital",
-      "answerPoolId": "country_names_caps",
-      "questionFormat": "{correctAnswer} is the capital of which country?",
-      "availableFromMastery": 2,
-      "difficulty": 3,
-      "reverseCapable": false
-    }
-  ],
   "difficultyTiers": [
     {
       "tier": "easy",

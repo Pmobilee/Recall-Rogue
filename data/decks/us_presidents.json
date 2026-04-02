@@ -10650,48 +10650,6 @@
       ]
     }
   ],
-  "questionTemplates": [
-    {
-      "id": "president_from_achievement",
-      "answerPoolId": "president_names",
-      "questionFormat": "Which president {achievement}?",
-      "availableFromMastery": 0,
-      "difficulty": 1,
-      "reverseCapable": true
-    },
-    {
-      "id": "president_from_distinction",
-      "answerPoolId": "president_names",
-      "questionFormat": "Which president was the first/only to {distinction}?",
-      "availableFromMastery": 1,
-      "difficulty": 2,
-      "reverseCapable": true
-    },
-    {
-      "id": "president_from_era",
-      "answerPoolId": "president_names",
-      "questionFormat": "Which president {event} during the {era}?",
-      "availableFromMastery": 2,
-      "difficulty": 3,
-      "reverseCapable": false
-    },
-    {
-      "id": "president_from_counterintuitive",
-      "answerPoolId": "president_names",
-      "questionFormat": "Which president {counterintuitive_fact}?",
-      "availableFromMastery": 3,
-      "difficulty": 4,
-      "reverseCapable": true
-    },
-    {
-      "id": "year_from_president",
-      "answerPoolId": "inauguration_years",
-      "questionFormat": "In what year was {president} inaugurated?",
-      "availableFromMastery": 2,
-      "difficulty": 3,
-      "reverseCapable": false
-    }
-  ],
   "difficultyTiers": [
     {
       "tier": "easy",

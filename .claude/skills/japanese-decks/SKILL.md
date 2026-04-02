@@ -26,6 +26,8 @@ Single source of truth for all Japanese language content in Recall Rogue. Covers
 | `japanese_n4.json` | Vocabulary | - | Shipped |
 | `japanese_n3.json` | Vocabulary | - | Shipped |
 | `japanese_n3_grammar.json` | Grammar | 670 | Shipped (audited 2026-03-29) |
+| `japanese_n4_grammar.json` | Grammar | 401 | Shipped 2026-04-02 (fill-blank, 133 points) |
+| `japanese_n5_grammar.json` | Grammar | 375 | Shipped (fill-blank, 90 points) |
 | `japanese_n2.json` | Vocabulary | - | Shipped |
 | `japanese_n1.json` | Vocabulary | - | Shipped |
 
@@ -45,6 +47,10 @@ Single source of truth for all Japanese language content in Recall Rogue. Covers
 | FJSD grammar source | `data/references/full-japanese-study-deck/results/grammar/json/grammar_n{1-5}.json` |
 | FJSD vocab IDs | `data/references/full-japanese-study-deck/results/vocabJLPT/ids/vocab_n{1-5}.json` |
 | Confusion groups (N3) | `data/raw/japanese/grammar-n3-confusion-groups.json` |
+| Confusion groups (N4) | `data/raw/japanese/grammar-n4-confusion-groups.json` |
+| Sentences (N4) | `data/raw/japanese/grammar-n4-sentences.json` |
+| Sentences (N5) | `data/raw/japanese/grammar-n5-sentences.json` |
+| Confusion groups (N5) | `data/raw/japanese/grammar-n5-confusion-groups.json` |
 | JMdict common | `data/references/jmdict/jmdict-eng-common-3.6.2.json` (22,576 entries) |
 | JMdict compact | `public/assets/dict/jdict-compact.json` (37,956 entries, built for runtime hover) |
 | Kuromoji dicts | `public/assets/kuromoji/*.dat.gz` (17MB, tokenizer dictionary files) |
@@ -156,7 +162,9 @@ Script: `scripts/content-pipeline/vocab/build-grammar-fill-blanks.mjs`
 
 Scripts in `scripts/content-pipeline/vocab/`:
 - `build-japanese-grammar-v2.mjs` — grammar deck generation
-- `build-grammar-fill-blanks.mjs` — fill-in-the-blank extraction
+- `build-grammar-fill-blanks.mjs` — N3 fill-in-the-blank extraction (reference)
+- `build-n4-grammar-fill-blanks.mjs` — N4 fill-in-the-blank extraction (401 facts)
+- `build-n5-grammar-fill-blanks.mjs` — N5 fill-in-the-blank extraction (375 facts)
 - `build-jdict-compact.mjs` — compact dictionary for runtime hover
 
 ### Quality Validation Scripts
@@ -193,7 +201,7 @@ Reference data at `data/raw/japanese/n3-vocab-validation.json`:
 
 ## Future Work
 
-- Build N4, N5 grammar decks following the N3 reference implementation
+- N4 grammar deck shipped (2026-04-02); N5 grammar deck shipped
 - Enable typing mode at mastery level 3+ (currently opt-in per fact)
 - Curate vocab validation results — replace genuinely difficult sentences
 - Extend dictionary hover to vocabulary decks (not just grammar)

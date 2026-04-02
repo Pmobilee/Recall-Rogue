@@ -1,0 +1,1598 @@
+{
+  "syntacticSlots": {
+    "conditional": {
+      "id": "conditional",
+      "name": "Conditional & Hypothetical",
+      "members": [
+        "n4-cond-ba",
+        "n4-cond-baai-wa",
+        "n4-cond-tara",
+        "n4-cond-tara-dou",
+        "n4-cond-tara-ii-desu-ka",
+        "n4-cond-nara",
+        "n4-cond-to"
+      ]
+    },
+    "te_form_giving": {
+      "id": "te_form_giving",
+      "name": "Te-Form Giving & Receiving",
+      "members": [
+        "n4-te-ageru",
+        "n4-te-morau",
+        "n4-te-kureru",
+        "n4-te-yaru",
+        "n4-te-hoshii",
+        "n4-other-hoshii",
+        "n4-other-itadakimasu",
+        "n4-te-itadakemasen-ka"
+      ]
+    },
+    "te_form_aspect": {
+      "id": "te_form_aspect",
+      "name": "Te-Form Aspectual Auxiliaries",
+      "members": [
+        "n4-te-miru",
+        "n4-te-oku",
+        "n4-te-shimau",
+        "n4-te-iku",
+        "n4-te-kuru",
+        "n4-te-yokatta",
+        "n4-te-sumimasen",
+        "n4-te-de-conjunctive"
+      ]
+    },
+    "appearance_hearsay": {
+      "id": "appearance_hearsay",
+      "name": "Appearance, Hearsay & Resemblance",
+      "members": [
+        "n4-app-sou-da-visual",
+        "n4-app-sou-da-hearsay",
+        "n4-app-sou-ni-na",
+        "n4-app-rashii",
+        "n4-app-you-da",
+        "n4-app-you-ni-na",
+        "n4-app-mitai-da",
+        "n4-app-mitai-na",
+        "n4-app-mitai-ni",
+        "n4-app-ni-mieru"
+      ]
+    },
+    "causative_passive": {
+      "id": "causative_passive",
+      "name": "Causative, Passive & Combined",
+      "members": [
+        "n4-caus-saseru",
+        "n4-caus-rareru",
+        "n4-caus-saserareru",
+        "n4-caus-sasete-kudasai"
+      ]
+    },
+    "honorific": {
+      "id": "honorific",
+      "name": "Honorific & Humble Speech",
+      "members": [
+        "n4-hon-de-gozaimasu",
+        "n4-hon-gozaimasu",
+        "n4-hon-irassharu",
+        "n4-hon-nasaru",
+        "n4-hon-itashimasu",
+        "n4-hon-o-kudasai",
+        "n4-hon-o-ni-naru"
+      ]
+    },
+    "obligation": {
+      "id": "obligation",
+      "name": "Obligation, Must & Expectation",
+      "members": [
+        "n4-obl-nakereba-ikenai",
+        "n4-obl-nakereba-naranai",
+        "n4-obl-hazu-da",
+        "n4-obl-hazu-ga-nai",
+        "n4-other-ga-hitsuyou",
+        "n4-other-hitsuyou-ga-aru"
+      ]
+    },
+    "temporal": {
+      "id": "temporal",
+      "name": "Temporal: While, During & Just Finished",
+      "members": [
+        "n4-temp-aida",
+        "n4-temp-aida-ni",
+        "n4-temp-nagara",
+        "n4-temp-tokoro",
+        "n4-temp-ta-tokoro",
+        "n4-temp-teiru-tokoro",
+        "n4-temp-mama",
+        "n4-temp-made-ni",
+        "n4-temp-mae-ni",
+        "n4-vm-ta-bakari",
+        "n4-adv-sakki"
+      ]
+    },
+    "difficulty_ease": {
+      "id": "difficulty_ease",
+      "name": "Ease & Difficulty Suffixes",
+      "members": [
+        "n4-comp-yasui",
+        "n4-comp-nikui",
+        "n4-comp-zurai",
+        "n4-comp-sugiru"
+      ]
+    },
+    "purpose_intent": {
+      "id": "purpose_intent",
+      "name": "Purpose, Intent & Decision",
+      "members": [
+        "n4-purp-you-ni-naru",
+        "n4-purp-you-ni-suru",
+        "n4-purp-you-to-omou",
+        "n4-purp-yotei-da",
+        "n4-purp-koto-ni-suru",
+        "n4-purp-koto-ni-naru",
+        "n4-purp-koto-ga-aru",
+        "n4-purp-koto-ga-dekiru",
+        "n4-purp-tsumori",
+        "n4-other-ni-suru"
+      ]
+    },
+    "quotation": {
+      "id": "quotation",
+      "name": "Quotation & Naming",
+      "members": [
+        "n4-quot-to-iu",
+        "n4-quot-to-iu-koto",
+        "n4-quot-to-ittemo-ii",
+        "n4-quot-to-iwarete-iru"
+      ]
+    },
+    "negation_degree": {
+      "id": "negation_degree",
+      "name": "Negation Degree Adverbs",
+      "members": [
+        "n4-neg-nakanaka-nai",
+        "n4-neg-zenzen-nai",
+        "n4-neg-amari-nai",
+        "n4-neg-naide",
+        "n4-neg-nai-you-ni"
+      ]
+    }
+  },
+
+  "confusionGroups": [
+    {
+      "id": "cond_ba_tara_nara_to",
+      "name": "Conditional: ば / たら / なら / と",
+      "note": "All four express 'if/when' but with distinct nuances: ば is hypothetical/general, たら is sequential or completed condition, なら is contextual/assumed condition, と is automatic natural consequence. Mixing them changes register, implication, and the relationship between clauses.",
+      "members": [
+        "n4-cond-ba",
+        "n4-cond-tara",
+        "n4-cond-nara",
+        "n4-cond-to"
+      ]
+    },
+    {
+      "id": "giving_receiving",
+      "name": "Giving & Receiving: てあげる / てもらう / てくれる / てやる",
+      "note": "These four express favors between people but differ by direction (toward speaker vs away) and social register (neutral vs condescending). てあげる = speaker/in-group does for out-group; てくれる = someone does for the speaker; てもらう = speaker receives the favor; てやる = casual/condescending downward direction.",
+      "members": [
+        "n4-te-ageru",
+        "n4-te-morau",
+        "n4-te-kureru",
+        "n4-te-yaru"
+      ]
+    },
+    {
+      "id": "appearance_visual",
+      "name": "Visual Appearance: そうだ(looks) / ように見える",
+      "note": "Both express a visual impression but differ in structure: そうだ(visual) attaches directly to verb/adjective stems, while ように見える uses a full predicate and emphasizes perceptual judgment. そうだ is more immediate; ように見える can involve more subjective interpretation.",
+      "members": [
+        "n4-app-sou-da-visual",
+        "n4-app-sou-ni-na",
+        "n4-app-ni-mieru"
+      ]
+    },
+    {
+      "id": "appearance_hearsay_all",
+      "name": "Hearsay & Inference: そうだ(heard) / らしい / ようだ / みたいだ",
+      "note": "All express 'it seems' or 'I heard' but differ in evidence basis and register: そうだ(hearsay) quotes second-hand information, らしい conveys evidence-based inference or rumor, ようだ is based on speaker's direct observation/reasoning (formal), みたいだ is the casual colloquial equivalent of ようだ.",
+      "members": [
+        "n4-app-sou-da-hearsay",
+        "n4-app-rashii",
+        "n4-app-you-da",
+        "n4-app-mitai-da"
+      ]
+    },
+    {
+      "id": "causative_vs_passive",
+      "name": "Causative vs Passive: させる / られる / させられる",
+      "note": "させる (causative) means the subject causes/lets someone act; られる (passive/potential) means the subject receives an action or is able to act; させられる (causative-passive) means the subject is made to do something against their will. Confusing させる with させられる reverses who controls the action.",
+      "members": [
+        "n4-caus-saseru",
+        "n4-caus-rareru",
+        "n4-caus-saserareru"
+      ]
+    },
+    {
+      "id": "honorific_humble",
+      "name": "Honorific vs Humble: いらっしゃる / なさる / いたします",
+      "note": "Keigo (polite speech) uses different verb sets for talking about others (sonkeigo/respectful) vs oneself (kenjougo/humble). いらっしゃる and なさる elevate the other person's actions; いたします humbles the speaker's own actions. Using sonkeigo for yourself or kenjougo for others is a serious politeness error.",
+      "members": [
+        "n4-hon-irassharu",
+        "n4-hon-nasaru",
+        "n4-hon-itashimasu",
+        "n4-hon-de-gozaimasu",
+        "n4-hon-gozaimasu"
+      ]
+    },
+    {
+      "id": "difficulty_suffixes",
+      "name": "Difficulty Suffixes: やすい / にくい / づらい",
+      "note": "All attach to the ます-stem to express ease or difficulty of an action. やすい means easy to / prone to; にくい means hard to (physical or practical difficulty); づらい means hard to (emotionally painful or uncomfortable to do). にくい and づらい are near-synonyms but づらい carries a more personal, uncomfortable nuance.",
+      "members": [
+        "n4-comp-yasui",
+        "n4-comp-nikui",
+        "n4-comp-zurai"
+      ]
+    },
+    {
+      "id": "purpose_become_make",
+      "name": "Become / Make / Decide: ようになる / ようにする / ことにする / ことになる",
+      "note": "These four express change or decision but differ by agency and verb type. ようになる = gradual change into a state (no direct control); ようにする = make an effort toward a goal; ことにする = personal decision to do something; ことになる = an outcome decided by external forces or circumstances.",
+      "members": [
+        "n4-purp-you-ni-naru",
+        "n4-purp-you-ni-suru",
+        "n4-purp-koto-ni-suru",
+        "n4-purp-koto-ni-naru"
+      ]
+    },
+    {
+      "id": "just_happened",
+      "name": "Just Happened: たばかり / たところ / さっき",
+      "note": "All three refer to recent past events but differ in structure and precision. たばかり (just did, recency still relevant) focuses on freshness of the completed action. たところ (just finished, immediate past) emphasizes the point of completion. さっき is a standalone adverb meaning 'a moment ago' with no structural attachment.",
+      "members": [
+        "n4-vm-ta-bakari",
+        "n4-temp-ta-tokoro",
+        "n4-adv-sakki"
+      ]
+    },
+    {
+      "id": "while_during",
+      "name": "While / During: 間 / 間に / ながら",
+      "note": "All three involve two overlapping time spans but differ in focus. 間 means for the entire duration of A, B is also true (simultaneous ongoing). 間に means within the duration of A, B occurs (a separate event happened). ながら means two actions performed simultaneously by the same subject, emphasizing parallel activity.",
+      "members": [
+        "n4-temp-aida",
+        "n4-temp-aida-ni",
+        "n4-temp-nagara"
+      ]
+    },
+    {
+      "id": "negation_degree",
+      "name": "Negation Degree: なかなか〜ない / 全然〜ない / あまり〜ない",
+      "note": "All three intensify negative sentences but by different degrees. 全然〜ない = complete negation (not at all). あまり〜ない = partial negation (not very / not much). なかなか〜ない = contrary-to-expectation negation (try as one might, it just won't happen). Choosing the wrong adverb produces a different nuance of failure or absence.",
+      "members": [
+        "n4-neg-nakanaka-nai",
+        "n4-neg-zenzen-nai",
+        "n4-neg-amari-nai"
+      ]
+    },
+    {
+      "id": "must_should",
+      "name": "Must / Should: なければいけない / なければならない / はずだ",
+      "note": "These express obligation and expectation but differ in source and strength. なければいけない = must (personal/spoken obligation). なければならない = must (formal/impersonal, stronger). はずだ = should/ought to be (reasonable expectation based on logic or prior knowledge, not command). はずがない is the negative denial: there is no way.",
+      "members": [
+        "n4-obl-nakereba-ikenai",
+        "n4-obl-nakereba-naranai",
+        "n4-obl-hazu-da",
+        "n4-obl-hazu-ga-nai"
+      ]
+    },
+    {
+      "id": "te_completion",
+      "name": "Te-Form Completion Nuances: てしまう / ておく / てみる",
+      "note": "All attach to the て-form but express different relations to the action's outcome. てしまう = completed fully (often with regret or finality). ておく = done in advance and left as is (preparation). てみる = try doing to see what happens (experimental, tentative). These are among the most frequent and most confused N4 te-form auxiliaries.",
+      "members": [
+        "n4-te-shimau",
+        "n4-te-oku",
+        "n4-te-miru"
+      ]
+    },
+    {
+      "id": "te_direction",
+      "name": "Te-Form Direction: ていく / てくる",
+      "note": "Both attach to the て-form to express ongoing direction of change or movement. ていく = action moves away from the speaker's viewpoint or continues into the future. てくる = action moves toward the speaker or has been ongoing up to now. The spatial metaphor extends to abstract change over time.",
+      "members": [
+        "n4-te-iku",
+        "n4-te-kuru"
+      ]
+    },
+    {
+      "id": "because_reason",
+      "name": "Because / Since: なので / ので",
+      "note": "Both express soft, objective causal reasoning (contrasting with から which is more subjective). ので follows plain verb/adjective forms; なので follows nouns and な-adjectives directly. They are near-synonyms — なので is a contraction of noun+な+ので. Both pair naturally with polite sentence endings.",
+      "members": [
+        "n4-other-nanode",
+        "n4-other-node"
+      ]
+    },
+    {
+      "id": "but_contrast",
+      "name": "But / Contrast: けれども / しかし / でも / のに",
+      "note": "All express contrast or concession but differ in position, register, and emotional weight. しかし is formal sentence-initial 'however'. でも is casual sentence-initial 'but'. けれども is a clause connector (can be within or between sentences) with variants けれど/けど for casual use. のに is a clause connector expressing unexpected result with emotional undertone (frustration or surprise).",
+      "members": [
+        "n4-other-keredomo",
+        "n4-other-shikashi",
+        "n4-other-demo-but",
+        "n4-part-noni-although"
+      ]
+    },
+    {
+      "id": "question_wonder",
+      "name": "Wonder / Rhetorical: かな / かしら / かどうか / ではないか",
+      "note": "All express wondering or uncertainty but differ in gender register and function. かな is neutral self-directed wondering. かしら is feminine-speech soft uncertainty. かどうか embeds a yes/no question into a larger clause (whether or not). ではないか (and its casual form じゃないか) seeks agreement from the listener, functioning as a rhetorical tag question.",
+      "members": [
+        "n4-part-kana",
+        "n4-part-kashira",
+        "n4-q-ka-dou-ka",
+        "n4-q-dewa-nai-ka"
+      ]
+    },
+    {
+      "id": "want_desire",
+      "name": "Want / Desire: てほしい / たがる / 欲しい",
+      "note": "All express desire but differ in subject, object type, and directional nuance. 欲しい = want to have a thing (speaker's desire for a noun, 1st person). てほしい = want someone else to do something for you (directed desire toward another's action). たがる = appears to want to do (third-person visible desire for an action, used because Japanese avoids stating others' inner feelings directly).",
+      "members": [
+        "n4-te-hoshii",
+        "n4-vm-tagaru",
+        "n4-other-hoshii"
+      ]
+    }
+  ],
+
+  "synonymGroups": {
+    "syn_must": {
+      "id": "syn_must",
+      "label": "Must (obligation synonyms)",
+      "note": "なければいけない and なければならない are interchangeable in meaning; ならない is slightly more formal/written.",
+      "members": [
+        "n4-obl-nakereba-ikenai",
+        "n4-obl-nakereba-naranai"
+      ]
+    },
+    "syn_appearance": {
+      "id": "syn_appearance",
+      "label": "Appears / Seems (ようだ ≈ みたいだ)",
+      "note": "ようだ and みたいだ are largely interchangeable in meaning; みたいだ is casual spoken, ようだ is neutral-to-formal.",
+      "members": [
+        "n4-app-you-da",
+        "n4-app-mitai-da"
+      ]
+    },
+    "syn_difficulty": {
+      "id": "syn_difficulty",
+      "label": "Hard to do (にくい ≈ づらい)",
+      "note": "にくい and づらい both mean 'difficult to do' and are often interchangeable; づらい carries a more uncomfortable or emotionally painful nuance.",
+      "members": [
+        "n4-comp-nikui",
+        "n4-comp-zurai"
+      ]
+    },
+    "syn_but_formal": {
+      "id": "syn_but_formal",
+      "label": "However (formal) (けれども ≈ しかし)",
+      "note": "けれども and しかし both mean 'however/but' in formal registers and are largely interchangeable as sentence-initial connectors, though しかし is more strictly sentence-initial while けれども can connect clauses.",
+      "members": [
+        "n4-other-keredomo",
+        "n4-other-shikashi"
+      ]
+    },
+    "syn_wonder": {
+      "id": "syn_wonder",
+      "label": "I wonder (かな ≈ かしら)",
+      "note": "かな and かしら are both sentence-final particles for self-directed wondering; かしら is associated with feminine or older-generation speech.",
+      "members": [
+        "n4-part-kana",
+        "n4-part-kashira"
+      ]
+    }
+  },
+
+  "grammarPoints": [
+    {
+      "sourceId": "n4-cond-ba",
+      "point": "ば",
+      "reading": "ba",
+      "meaning": "conditional if/then",
+      "slots": ["conditional"],
+      "confusionGroups": ["cond_ba_tara_nara_to"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-cond-baai-wa",
+      "point": "場合は",
+      "reading": "baai wa",
+      "meaning": "in the event of; in case",
+      "slots": ["conditional"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-cond-tara",
+      "point": "たら",
+      "reading": "tara",
+      "meaning": "if; after; when (conditional/temporal)",
+      "slots": ["conditional"],
+      "confusionGroups": ["cond_ba_tara_nara_to"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-cond-tara-dou",
+      "point": "たらどう",
+      "reading": "tara dou",
+      "meaning": "why don't you; how about doing",
+      "slots": ["conditional"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-cond-tara-ii-desu-ka",
+      "point": "たらいいですか",
+      "reading": "tara ii desu ka",
+      "meaning": "what should I do?; what would be good?",
+      "slots": ["conditional"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-cond-nara",
+      "point": "なら",
+      "reading": "nara",
+      "meaning": "if; in the case that; if it is the case that",
+      "slots": ["conditional"],
+      "confusionGroups": ["cond_ba_tara_nara_to"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-cond-to",
+      "point": "と",
+      "reading": "to",
+      "meaning": "whenever A happens, B naturally happens; if (natural consequence)",
+      "slots": ["conditional"],
+      "confusionGroups": ["cond_ba_tara_nara_to"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-te-ageru",
+      "point": "てあげる",
+      "reading": "te ageru",
+      "meaning": "to do something for someone (speaker or in-group acts for out-group)",
+      "slots": ["te_form_giving"],
+      "confusionGroups": ["giving_receiving"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-te-morau",
+      "point": "てもらう",
+      "reading": "te morau",
+      "meaning": "to get/have someone do something for you; to receive the favor of",
+      "slots": ["te_form_giving"],
+      "confusionGroups": ["giving_receiving"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-te-kureru",
+      "point": "てくれる",
+      "reading": "te kureru",
+      "meaning": "to do something for me/us (someone does a favor for the speaker)",
+      "slots": ["te_form_giving"],
+      "confusionGroups": ["giving_receiving"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-te-yaru",
+      "point": "てやる",
+      "reading": "te yaru",
+      "meaning": "to do for (casual/condescending; speaker acts for someone of lower status)",
+      "slots": ["te_form_giving"],
+      "confusionGroups": ["giving_receiving"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-te-miru",
+      "point": "てみる",
+      "reading": "te miru",
+      "meaning": "to try doing; to do and see (experiment with an action)",
+      "slots": ["te_form_aspect"],
+      "confusionGroups": ["te_completion"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-te-oku",
+      "point": "ておく",
+      "reading": "te oku",
+      "meaning": "to do something in advance; to do and leave it that way",
+      "slots": ["te_form_aspect"],
+      "confusionGroups": ["te_completion"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-te-shimau",
+      "point": "てしまう / ちゃう",
+      "reading": "te shimau / chau",
+      "meaning": "to finish completely; to do something by accident/regrettably",
+      "slots": ["te_form_aspect"],
+      "confusionGroups": ["te_completion"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-te-iku",
+      "point": "ていく",
+      "reading": "te iku",
+      "meaning": "to continue doing; to go on doing; (action moves away from speaker)",
+      "slots": ["te_form_aspect"],
+      "confusionGroups": ["te_direction"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-te-kuru",
+      "point": "てくる",
+      "reading": "te kuru",
+      "meaning": "to come to be; to continue; to start (action moves toward speaker or begins)",
+      "slots": ["te_form_aspect"],
+      "confusionGroups": ["te_direction"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-te-hoshii",
+      "point": "てほしい",
+      "reading": "te hoshii",
+      "meaning": "I want you to do; I want (someone else) to do",
+      "slots": ["te_form_giving"],
+      "confusionGroups": ["want_desire"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-te-yokatta",
+      "point": "てよかった",
+      "reading": "te yokatta",
+      "meaning": "I'm glad that; it was good that (expression of relief)",
+      "slots": ["te_form_aspect"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-te-sumimasen",
+      "point": "てすみません",
+      "reading": "te sumimasen",
+      "meaning": "I'm sorry for doing; sorry to have done",
+      "slots": ["te_form_aspect"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-te-itadakemasen-ka",
+      "point": "ていただけませんか",
+      "reading": "te itadakemasen ka",
+      "meaning": "could you please do; would you mind doing (polite request)",
+      "slots": ["te_form_giving"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-te-de-conjunctive",
+      "point": "て / で",
+      "reading": "te / de",
+      "meaning": "conjunctive; so; because of (て-form as clause connector)",
+      "slots": ["te_form_aspect"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-app-sou-da-visual",
+      "point": "そうだ (visual inference)",
+      "reading": "sou da",
+      "meaning": "looks like; appears; seems (based on direct visual evidence)",
+      "slots": ["appearance_hearsay"],
+      "confusionGroups": ["appearance_visual", "appearance_hearsay_all"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-app-sou-da-hearsay",
+      "point": "そうだ (hearsay)",
+      "reading": "sou da",
+      "meaning": "I heard that; it is said that (second-hand information)",
+      "slots": ["appearance_hearsay"],
+      "confusionGroups": ["appearance_hearsay_all"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-app-sou-ni-na",
+      "point": "そうに / そうな",
+      "reading": "sou ni / sou na",
+      "meaning": "seems like; looks like (adverbial/adjectival form of そうだ)",
+      "slots": ["appearance_hearsay"],
+      "confusionGroups": ["appearance_visual"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-app-rashii",
+      "point": "らしい",
+      "reading": "rashii",
+      "meaning": "it seems; apparently; I hear that (inference from evidence/rumor)",
+      "slots": ["appearance_hearsay"],
+      "confusionGroups": ["appearance_hearsay_all"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-app-you-da",
+      "point": "ようだ",
+      "reading": "you da",
+      "meaning": "appears; seems; looks as if (inference based on observation)",
+      "slots": ["appearance_hearsay"],
+      "confusionGroups": ["appearance_hearsay_all"],
+      "synonymGroupId": "syn_appearance"
+    },
+    {
+      "sourceId": "n4-app-you-ni-na",
+      "point": "ように / ような",
+      "reading": "you ni / you na",
+      "meaning": "like; as; similar to (comparison or manner)",
+      "slots": ["appearance_hearsay"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-app-mitai-da",
+      "point": "みたいだ",
+      "reading": "mitai da",
+      "meaning": "like; similar to; resembling; it seems (casual ようだ)",
+      "slots": ["appearance_hearsay"],
+      "confusionGroups": ["appearance_hearsay_all"],
+      "synonymGroupId": "syn_appearance"
+    },
+    {
+      "sourceId": "n4-app-mitai-na",
+      "point": "みたいな",
+      "reading": "mitai na",
+      "meaning": "like; similar to (adjectival form; modifies nouns)",
+      "slots": ["appearance_hearsay"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-app-mitai-ni",
+      "point": "みたいに",
+      "reading": "mitai ni",
+      "meaning": "like; similar to; in the same way as (adverbial form)",
+      "slots": ["appearance_hearsay"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-app-ni-mieru",
+      "point": "に見える",
+      "reading": "ni mieru",
+      "meaning": "to look; to seem; to appear (used for visual/perceptual judgments)",
+      "slots": ["appearance_hearsay"],
+      "confusionGroups": ["appearance_visual"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-caus-saseru",
+      "point": "させる",
+      "reading": "saseru",
+      "meaning": "causative; to make someone do; to let someone do",
+      "slots": ["causative_passive"],
+      "confusionGroups": ["causative_vs_passive"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-caus-rareru",
+      "point": "られる",
+      "reading": "rareru",
+      "meaning": "potential form; to be able to do; can do",
+      "slots": ["causative_passive"],
+      "confusionGroups": ["causative_vs_passive"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-caus-saserareru",
+      "point": "させられる",
+      "reading": "saserareru",
+      "meaning": "causative-passive; to be made to do (by someone else)",
+      "slots": ["causative_passive"],
+      "confusionGroups": ["causative_vs_passive"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-caus-sasete-kudasai",
+      "point": "させてください",
+      "reading": "sasete kudasai",
+      "meaning": "please let me do; may I do (polite request for permission)",
+      "slots": ["causative_passive"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-hon-de-gozaimasu",
+      "point": "でございます",
+      "reading": "de gozaimasu",
+      "meaning": "to be (honorific/formal equivalent of です)",
+      "slots": ["honorific"],
+      "confusionGroups": ["honorific_humble"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-hon-gozaimasu",
+      "point": "ございます",
+      "reading": "gozaimasu",
+      "meaning": "to be; to exist (polite equivalent of あります)",
+      "slots": ["honorific"],
+      "confusionGroups": ["honorific_humble"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-hon-irassharu",
+      "point": "いらっしゃる",
+      "reading": "irassharu",
+      "meaning": "to be; to come; to go (honorific equivalent of いる/くる/いく)",
+      "slots": ["honorific"],
+      "confusionGroups": ["honorific_humble"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-hon-nasaru",
+      "point": "なさる",
+      "reading": "nasaru",
+      "meaning": "to do (honorific equivalent of する; for respected people's actions)",
+      "slots": ["honorific"],
+      "confusionGroups": ["honorific_humble"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-hon-itashimasu",
+      "point": "いたします",
+      "reading": "itashimasu",
+      "meaning": "to do (humble equivalent of します; speaker humbles their own action)",
+      "slots": ["honorific"],
+      "confusionGroups": ["honorific_humble"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-hon-o-kudasai",
+      "point": "お〜ください",
+      "reading": "o~kudasai",
+      "meaning": "please do (honorific request form)",
+      "slots": ["honorific"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-hon-o-ni-naru",
+      "point": "お〜になる",
+      "reading": "o~ni naru",
+      "meaning": "to do (honorific form for describing respected person's actions)",
+      "slots": ["honorific"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-obl-nakereba-ikenai",
+      "point": "なければいけない",
+      "reading": "nakereba ikenai",
+      "meaning": "must do; have to do (obligation)",
+      "slots": ["obligation"],
+      "confusionGroups": ["must_should"],
+      "synonymGroupId": "syn_must"
+    },
+    {
+      "sourceId": "n4-obl-nakereba-naranai",
+      "point": "なければならない",
+      "reading": "nakereba naranai",
+      "meaning": "must do; have to do (stronger formal obligation)",
+      "slots": ["obligation"],
+      "confusionGroups": ["must_should"],
+      "synonymGroupId": "syn_must"
+    },
+    {
+      "sourceId": "n4-obl-hazu-da",
+      "point": "はずだ",
+      "reading": "hazu da",
+      "meaning": "it must be; should be; expected to be (reasonable expectation)",
+      "slots": ["obligation"],
+      "confusionGroups": ["must_should"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-obl-hazu-ga-nai",
+      "point": "はずがない",
+      "reading": "hazu ga nai",
+      "meaning": "cannot be; there is no way; impossible (denial of expectation)",
+      "slots": ["obligation"],
+      "confusionGroups": ["must_should"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-temp-aida",
+      "point": "間",
+      "reading": "aida",
+      "meaning": "while; during; between (for the entire duration of A)",
+      "slots": ["temporal"],
+      "confusionGroups": ["while_during"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-temp-aida-ni",
+      "point": "間に",
+      "reading": "aida ni",
+      "meaning": "while; during (something else happened within the duration of A)",
+      "slots": ["temporal"],
+      "confusionGroups": ["while_during"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-temp-nagara",
+      "point": "ながら",
+      "reading": "nagara",
+      "meaning": "while doing; simultaneously (two actions at once)",
+      "slots": ["temporal"],
+      "confusionGroups": ["while_during"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-temp-tokoro",
+      "point": "ところ",
+      "reading": "tokoro",
+      "meaning": "about to do; just started; at the point of (depending on verb form)",
+      "slots": ["temporal"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-temp-ta-tokoro",
+      "point": "たところ",
+      "reading": "ta tokoro",
+      "meaning": "just finished doing; just did (immediate past)",
+      "slots": ["temporal"],
+      "confusionGroups": ["just_happened"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-temp-teiru-tokoro",
+      "point": "ているところ",
+      "reading": "teiru tokoro",
+      "meaning": "in the process of doing; in the middle of (action ongoing right now)",
+      "slots": ["temporal"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-temp-mama",
+      "point": "まま",
+      "reading": "mama",
+      "meaning": "as it is; without changing; leaving in the current state",
+      "slots": ["temporal"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-temp-made-ni",
+      "point": "までに",
+      "reading": "made ni",
+      "meaning": "by; by the time; no later than (deadline)",
+      "slots": ["temporal"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-temp-mae-ni",
+      "point": "前に",
+      "reading": "mae ni",
+      "meaning": "before doing; before a time (prior to an action or event)",
+      "slots": ["temporal"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-comp-yori",
+      "point": "より",
+      "reading": "yori",
+      "meaning": "more than; rather than; compared to",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-comp-yasui",
+      "point": "やすい",
+      "reading": "yasui",
+      "meaning": "easy to do; prone to; tends to",
+      "slots": ["difficulty_ease"],
+      "confusionGroups": ["difficulty_suffixes"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-comp-nikui",
+      "point": "にくい",
+      "reading": "nikui",
+      "meaning": "difficult to do; hard to do",
+      "slots": ["difficulty_ease"],
+      "confusionGroups": ["difficulty_suffixes"],
+      "synonymGroupId": "syn_difficulty"
+    },
+    {
+      "sourceId": "n4-comp-zurai",
+      "point": "づらい",
+      "reading": "zurai",
+      "meaning": "difficult to do; painful/uncomfortable to do (more emotional nuance than にくい)",
+      "slots": ["difficulty_ease"],
+      "confusionGroups": ["difficulty_suffixes"],
+      "synonymGroupId": "syn_difficulty"
+    },
+    {
+      "sourceId": "n4-comp-sugiru",
+      "point": "すぎる",
+      "reading": "sugiru",
+      "meaning": "too much; excessively; over-",
+      "slots": ["difficulty_ease"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-quot-to-iu",
+      "point": "という",
+      "reading": "to iu",
+      "meaning": "called; named; that; a thing called",
+      "slots": ["quotation"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-quot-to-iu-koto",
+      "point": "ということ",
+      "reading": "to iu koto",
+      "meaning": "the fact that; means that (nominalizes a clause)",
+      "slots": ["quotation"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-quot-to-ittemo-ii",
+      "point": "と言ってもいい",
+      "reading": "to ittemo ii",
+      "meaning": "you could say; it would be fair to say",
+      "slots": ["quotation"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-quot-to-iwarete-iru",
+      "point": "と言われている",
+      "reading": "to iwarete iru",
+      "meaning": "it is said that; they say that; reportedly",
+      "slots": ["quotation"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-purp-you-ni-naru",
+      "point": "ようになる",
+      "reading": "you ni naru",
+      "meaning": "to reach the point that; to come to be able to; to come to do",
+      "slots": ["purpose_intent"],
+      "confusionGroups": ["purpose_become_make"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-purp-you-ni-suru",
+      "point": "ようにする",
+      "reading": "you ni suru",
+      "meaning": "to try to; to make sure; to make an effort to",
+      "slots": ["purpose_intent"],
+      "confusionGroups": ["purpose_become_make"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-purp-you-to-omou",
+      "point": "ようと思う",
+      "reading": "you to omou",
+      "meaning": "thinking of doing; planning to; intending to",
+      "slots": ["purpose_intent"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-purp-yotei-da",
+      "point": "予定だ",
+      "reading": "yotei da",
+      "meaning": "plan to; intend to; scheduled to (concrete plan)",
+      "slots": ["purpose_intent"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-purp-koto-ni-suru",
+      "point": "ことにする",
+      "reading": "koto ni suru",
+      "meaning": "to decide to do; to make it a rule to do (speaker's decision)",
+      "slots": ["purpose_intent"],
+      "confusionGroups": ["purpose_become_make"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-purp-koto-ni-naru",
+      "point": "ことになる",
+      "reading": "koto ni naru",
+      "meaning": "it has been decided; it turns out that (result of outside decision)",
+      "slots": ["purpose_intent"],
+      "confusionGroups": ["purpose_become_make"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-purp-koto-ga-aru",
+      "point": "ことがある",
+      "reading": "koto ga aru",
+      "meaning": "there are times when; sometimes (habitual or occasional occurrence)",
+      "slots": ["purpose_intent"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-purp-koto-ga-dekiru",
+      "point": "ことができる",
+      "reading": "koto ga dekiru",
+      "meaning": "to be able to do; can do (ability or possibility)",
+      "slots": ["purpose_intent"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-purp-tsumori",
+      "point": "つもり",
+      "reading": "tsumori",
+      "meaning": "one's intention; conviction; plan to do",
+      "slots": ["purpose_intent"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-part-noni-although",
+      "point": "のに (concessive)",
+      "reading": "noni",
+      "meaning": "although; in spite of; even though (unexpected contrast)",
+      "slots": [],
+      "confusionGroups": ["but_contrast"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-part-noni-purpose",
+      "point": "のに (purpose)",
+      "reading": "noni",
+      "meaning": "in order to; for the purpose of; needed for",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-part-temo",
+      "point": "ても",
+      "reading": "temo",
+      "meaning": "even if; even though; no matter how",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-part-ka-dou-ka",
+      "point": "かどうか",
+      "reading": "ka dou ka",
+      "meaning": "whether or not; if or not",
+      "slots": [],
+      "confusionGroups": ["question_wonder"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-part-kamoshirenai",
+      "point": "かもしれない",
+      "reading": "kamoshirenai",
+      "meaning": "might; perhaps; may; possibly (uncertain possibility)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-part-kashira",
+      "point": "かしら",
+      "reading": "kashira",
+      "meaning": "I wonder; I wonder if (feminine speech; soft uncertainty)",
+      "slots": [],
+      "confusionGroups": ["question_wonder"],
+      "synonymGroupId": "syn_wonder"
+    },
+    {
+      "sourceId": "n4-part-kana",
+      "point": "かな",
+      "reading": "kana",
+      "meaning": "I wonder; should I; is it (self-directed wondering)",
+      "slots": [],
+      "confusionGroups": ["question_wonder"],
+      "synonymGroupId": "syn_wonder"
+    },
+    {
+      "sourceId": "n4-part-kai",
+      "point": "かい",
+      "reading": "kai",
+      "meaning": "question particle (casual masculine speech)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-part-dake-de",
+      "point": "だけで",
+      "reading": "dake de",
+      "meaning": "just by doing; just with; only by",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-part-nado",
+      "point": "など",
+      "reading": "nado",
+      "meaning": "such as; things like; and so on; et cetera",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-part-matawa",
+      "point": "または",
+      "reading": "matawa",
+      "meaning": "or; otherwise; either...or",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-part-wa-topic",
+      "point": "〜は",
+      "reading": "wa",
+      "meaning": "topic marker particle (marks the topic of the sentence)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-part-mo",
+      "point": "〜も",
+      "reading": "mo",
+      "meaning": "as many as; up to; nearly; also not / neither...nor",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-part-ne",
+      "point": "〜ね",
+      "reading": "ne",
+      "meaning": "isn't it; right; seeking agreement or confirmation",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-part-ka",
+      "point": "〜か",
+      "reading": "ka",
+      "meaning": "question particle (marks sentences as questions)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-vm-hajimeru",
+      "point": "始める",
+      "reading": "hajimeru",
+      "meaning": "to start doing; to begin doing",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-vm-owaru",
+      "point": "終わる",
+      "reading": "owaru",
+      "meaning": "to finish doing; to be done doing",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-vm-dasu",
+      "point": "出す",
+      "reading": "dasu",
+      "meaning": "to start doing suddenly; to burst into (sudden onset)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-vm-garu",
+      "point": "がる / がっている",
+      "reading": "garu / gatteiru",
+      "meaning": "to show signs of; to feel or appear to feel (third person emotions/desires)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-vm-tagaru",
+      "point": "たがる",
+      "reading": "tagaru",
+      "meaning": "wants to do; appears to want to do (third person desires)",
+      "slots": [],
+      "confusionGroups": ["want_desire"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-vm-ta-bakari",
+      "point": "たばかり",
+      "reading": "ta bakari",
+      "meaning": "just finished; just happened; just did (very recent past)",
+      "slots": ["temporal"],
+      "confusionGroups": ["just_happened"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-vm-bakari",
+      "point": "ばかり",
+      "reading": "bakari",
+      "meaning": "only; nothing but; all one does is",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-neg-nakanaka-nai",
+      "point": "なかなか〜ない",
+      "reading": "nakanaka~nai",
+      "meaning": "not easy to; struggling to; just won't (contrary to expectations)",
+      "slots": ["negation_degree"],
+      "confusionGroups": ["negation_degree"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-neg-zenzen-nai",
+      "point": "全然〜ない",
+      "reading": "zenzen~nai",
+      "meaning": "not at all; absolutely not; completely not",
+      "slots": ["negation_degree"],
+      "confusionGroups": ["negation_degree"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-neg-amari-nai",
+      "point": "あまり〜ない",
+      "reading": "amari~nai",
+      "meaning": "not very; not much; not often (partial negation)",
+      "slots": ["negation_degree"],
+      "confusionGroups": ["negation_degree"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-neg-naide",
+      "point": "ないで",
+      "reading": "naide",
+      "meaning": "without doing; please don't do (negative て-form connector)",
+      "slots": ["negation_degree"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-neg-nai-you-ni",
+      "point": "ないように",
+      "reading": "nai you ni",
+      "meaning": "in order not to; so as not to; to avoid",
+      "slots": ["negation_degree"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-q-dewa-nai-ka",
+      "point": "ではないか",
+      "reading": "dewa nai ka",
+      "meaning": "right?; isn't it?; don't you think? (seeking agreement, formal)",
+      "slots": [],
+      "confusionGroups": ["question_wonder"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-q-janai-ka",
+      "point": "じゃないか",
+      "reading": "janai ka",
+      "meaning": "right?; isn't it?; let's (casual equivalent of ではないか)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-q-doushite",
+      "point": "どうして",
+      "reading": "doushite",
+      "meaning": "why?; what for?; how come? (interrogative)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-q-ka-dou-ka",
+      "point": "かどうか",
+      "reading": "ka dou ka",
+      "meaning": "whether or not; if (embedded question)",
+      "slots": [],
+      "confusionGroups": ["question_wonder"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-adv-kitto",
+      "point": "きっと",
+      "reading": "kitto",
+      "meaning": "surely; undoubtedly; certainly; I'm sure (speaker's strong conviction)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-adv-sakki",
+      "point": "さっき",
+      "reading": "sakki",
+      "meaning": "just now; a moment ago; a little while ago",
+      "slots": ["temporal"],
+      "confusionGroups": ["just_happened"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-adv-yatto",
+      "point": "やっと",
+      "reading": "yatto",
+      "meaning": "at last; finally; barely; with great effort",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-adv-zehi",
+      "point": "ぜひ",
+      "reading": "zehi",
+      "meaning": "by all means; definitely; please (strong encouragement or request)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-adv-sukoshi",
+      "point": "少し",
+      "reading": "sukoshi",
+      "meaning": "a bit; a little; slightly",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-ga-suru",
+      "point": "がする",
+      "reading": "ga suru",
+      "meaning": "to smell; to hear; to taste; to feel (sensory perception verb)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-ga-hitsuyou",
+      "point": "が必要",
+      "reading": "ga hitsuyou",
+      "meaning": "need; necessary; required",
+      "slots": ["obligation"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-hitsuyou-ga-aru",
+      "point": "必要がある",
+      "reading": "hitsuyou ga aru",
+      "meaning": "need to; it is necessary to; must",
+      "slots": ["obligation"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-ni-ki-ga-tsuku",
+      "point": "に気がつく",
+      "reading": "ni ki ga tsuku",
+      "meaning": "to notice; to realize; to become aware of",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-ni-suru",
+      "point": "にする",
+      "reading": "ni suru",
+      "meaning": "to decide on; to make something (decision or transformation)",
+      "slots": ["purpose_intent"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-no-naka-de",
+      "point": "の中で",
+      "reading": "no naka de",
+      "meaning": "in; inside; among; within",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-nowa-da",
+      "point": "のは〜だ",
+      "reading": "nowa~da",
+      "meaning": "the reason for ~ is; it is ~ that (cleft sentence / emphasis)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-nasai",
+      "point": "なさい",
+      "reading": "nasai",
+      "meaning": "do this (soft command; often used by superiors/parents)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-na-prohibit",
+      "point": "な (prohibition)",
+      "reading": "na",
+      "meaning": "don't do; prohibition (plain speech command not to do)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-nanode",
+      "point": "なので",
+      "reading": "nanode",
+      "meaning": "since; because (soft causal explanation; slightly more casual than ので)",
+      "slots": [],
+      "confusionGroups": ["because_reason"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-node",
+      "point": "ので",
+      "reading": "node",
+      "meaning": "because; since (objective/factual reason; softer than から)",
+      "slots": [],
+      "confusionGroups": ["because_reason"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-sa-nominalizer",
+      "point": "さ (nominalizer)",
+      "reading": "sa",
+      "meaning": "nominalizer for adjectives; turns adjectives into nouns",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-oki-ni",
+      "point": "おきに",
+      "reading": "oki ni",
+      "meaning": "every; at intervals of; at regular intervals",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-goro-koro",
+      "point": "頃",
+      "reading": "goro / koro",
+      "meaning": "around that time; approximately; about (approximate time)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-kara-tsukuru",
+      "point": "から作る",
+      "reading": "kara tsukuru",
+      "meaning": "made from; made with; produced from (raw material transformation)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-kara-made",
+      "point": "から〜まで",
+      "reading": "kara~made",
+      "meaning": "from... until; from... to (range in time or space)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-shikashi",
+      "point": "しかし",
+      "reading": "shikashi",
+      "meaning": "however; but; nevertheless (formal sentence-initial connector)",
+      "slots": [],
+      "confusionGroups": ["but_contrast"],
+      "synonymGroupId": "syn_but_formal"
+    },
+    {
+      "sourceId": "n4-other-demo-but",
+      "point": "でも (conjunctive)",
+      "reading": "demo",
+      "meaning": "but; however (sentence-initial; casual equivalent of しかし)",
+      "slots": [],
+      "confusionGroups": ["but_contrast"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-demo-or-something",
+      "point": "でも (suggestive)",
+      "reading": "demo",
+      "meaning": "or something; how about; something like (mild suggestion)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-keredomo",
+      "point": "けれども",
+      "reading": "keredomo",
+      "meaning": "but; however; although (clause connector; multiple formality variants)",
+      "slots": [],
+      "confusionGroups": ["but_contrast"],
+      "synonymGroupId": "syn_but_formal"
+    },
+    {
+      "sourceId": "n4-other-ijou",
+      "point": "以上",
+      "reading": "ijou",
+      "meaning": "exceeding; above; more than; over (quantity or degree)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-kudasai",
+      "point": "下さい / ください",
+      "reading": "kudasai",
+      "meaning": "please (polite request to do or give)",
+      "slots": [],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-hoshii",
+      "point": "欲しい",
+      "reading": "hoshii",
+      "meaning": "to want something; desirative adjective for objects",
+      "slots": ["te_form_giving"],
+      "confusionGroups": ["want_desire"],
+      "synonymGroupId": null
+    },
+    {
+      "sourceId": "n4-other-itadakimasu",
+      "point": "頂きます",
+      "reading": "itadakimasu",
+      "meaning": "to receive (humble); set phrase before meals",
+      "slots": ["te_form_giving"],
+      "confusionGroups": [],
+      "synonymGroupId": null
+    }
+  ]
+}

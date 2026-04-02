@@ -7551,30 +7551,6 @@
       "minimumSize": 5
     },
     {
-      "id": "algorithm_names",
-      "label": "Algorithm & Data Structure Names",
-      "answerFormat": "term",
-      "factIds": [],
-      "minimumSize": 5,
-      "syntheticDistractors": [
-        "Insertion Sort",
-        "Selection Sort",
-        "Heapsort",
-        "Binary Search",
-        "Bellman-Ford Algorithm",
-        "Kruskal's Algorithm",
-        "Prim's Algorithm",
-        "Floyd-Warshall",
-        "Radix Sort",
-        "Counting Sort",
-        "Red-Black Tree",
-        "Topological Sort",
-        "Depth-First Search",
-        "Breadth-First Search",
-        "A* Algorithm"
-      ]
-    },
-    {
       "id": "bracket_numbers",
       "label": "Years & Numbers",
       "answerFormat": "bracket_number",
@@ -7663,30 +7639,6 @@
         "O(√n)",
         "O(log log n)"
       ]
-    },
-    {
-      "id": "protocol_names",
-      "label": "Protocol & Standard Names",
-      "answerFormat": "name",
-      "factIds": [],
-      "minimumSize": 5,
-      "syntheticDistractors": [
-        "HTTP",
-        "HTTPS",
-        "FTP",
-        "SSH",
-        "SMTP",
-        "SSL",
-        "TLS",
-        "Wi-Fi",
-        "DNS",
-        "DHCP",
-        "SNMP",
-        "IMAP",
-        "POP3",
-        "NTP",
-        "LDAP"
-      ]
     }
   ],
   "synonymGroups": [
@@ -7765,120 +7717,6 @@
         "cs_7_linux_year"
       ],
       "reason": "Linux reimplements Unix concepts — questions about OS history need careful distractor selection"
-    }
-  ],
-  "questionTemplates": [
-    {
-      "id": "who_created_language",
-      "answerPoolId": "person_names",
-      "questionFormat": "Who created the {language} programming language?",
-      "availableFromMastery": 0,
-      "difficulty": 1,
-      "reverseCapable": true
-    },
-    {
-      "id": "what_language_created_by",
-      "answerPoolId": "language_names",
-      "questionFormat": "Which programming language did {person} create?",
-      "availableFromMastery": 0,
-      "difficulty": 1,
-      "reverseCapable": true
-    },
-    {
-      "id": "when_language_released",
-      "answerPoolId": "bracket_numbers",
-      "questionFormat": "In what year was the {language} programming language first released?",
-      "availableFromMastery": 1,
-      "difficulty": 2,
-      "reverseCapable": false
-    },
-    {
-      "id": "acronym_expansion",
-      "answerPoolId": "acronym_expansions",
-      "questionFormat": "What does the acronym {acronym} stand for?",
-      "availableFromMastery": 0,
-      "difficulty": 1,
-      "reverseCapable": false
-    },
-    {
-      "id": "who_invented_hardware",
-      "answerPoolId": "person_names",
-      "questionFormat": "Who invented or developed {hardware_item}?",
-      "availableFromMastery": 1,
-      "difficulty": 2,
-      "reverseCapable": false
-    },
-    {
-      "id": "algorithm_inventor",
-      "answerPoolId": "person_names",
-      "questionFormat": "Who invented {algorithm}?",
-      "availableFromMastery": 1,
-      "difficulty": 2,
-      "reverseCapable": false
-    },
-    {
-      "id": "algorithm_complexity",
-      "answerPoolId": "complexity_terms",
-      "questionFormat": "What is the average-case time complexity of {algorithm}?",
-      "availableFromMastery": 2,
-      "difficulty": 3,
-      "reverseCapable": false
-    },
-    {
-      "id": "company_founder",
-      "answerPoolId": "person_names",
-      "questionFormat": "Who co-founded {company}?",
-      "availableFromMastery": 0,
-      "difficulty": 1,
-      "reverseCapable": false
-    },
-    {
-      "id": "company_founded_year",
-      "answerPoolId": "bracket_numbers",
-      "questionFormat": "In what year was {company} founded?",
-      "availableFromMastery": 1,
-      "difficulty": 2,
-      "reverseCapable": false
-    },
-    {
-      "id": "product_company",
-      "answerPoolId": "company_names",
-      "questionFormat": "Which company developed {product}?",
-      "availableFromMastery": 1,
-      "difficulty": 2,
-      "reverseCapable": false
-    },
-    {
-      "id": "protocol_expansion",
-      "answerPoolId": "acronym_expansions",
-      "questionFormat": "What does the protocol acronym {protocol} stand for?",
-      "availableFromMastery": 0,
-      "difficulty": 1,
-      "reverseCapable": false
-    },
-    {
-      "id": "pioneer_achievement",
-      "answerPoolId": "technology_terms",
-      "questionFormat": "What is {person} best known for in computer science?",
-      "availableFromMastery": 2,
-      "difficulty": 3,
-      "reverseCapable": false
-    },
-    {
-      "id": "year_of_event",
-      "answerPoolId": "bracket_numbers",
-      "questionFormat": "In what year did {event} occur?",
-      "availableFromMastery": 1,
-      "difficulty": 2,
-      "reverseCapable": false
-    },
-    {
-      "id": "term_definition",
-      "answerPoolId": "technology_terms",
-      "questionFormat": "What is the term for {description}?",
-      "availableFromMastery": 0,
-      "difficulty": 1,
-      "reverseCapable": false
     }
   ],
   "difficultyTiers": [
