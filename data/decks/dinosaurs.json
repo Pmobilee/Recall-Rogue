@@ -4929,7 +4929,15 @@
         "dino_plesiosaurus_neck_myth",
         "dino_archaeopteryx_teeth"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Ornithischia",
+        "Saurischia",
+        "Pterosauria",
+        "Ankylosauria",
+        "Ceratopsia",
+        "Hadrosauridae"
+      ]
     },
     {
       "id": "bracket_numbers",

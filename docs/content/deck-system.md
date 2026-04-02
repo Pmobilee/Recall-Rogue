@@ -170,6 +170,27 @@ The 4 `world_wonders` architecture files total 195 facts in the live deck. They 
 
 ---
 
+## Answer Type Pools — Synthetic Pool Members
+
+Some answer type pools have too few real facts to produce varied distractors at runtime. **Synthetic pool members** (`AnswerTypePool.syntheticDistractors`) are plausible wrong answers added directly to a pool object that pad the candidate list without having corresponding quiz facts.
+
+**When to add synthetics:**
+- Pool has **< 8 real facts** — add 7–12 synthetics
+- Pool has **< 5 real facts** — critical: without synthetics the runtime skips pool-based selection entirely and falls back to per-fact `distractors[]`
+- Never use synthetics for numeric pools — use bracket notation (`{N}`) instead
+
+**Runtime behavior:** Synthetic members enter the candidate pool at score 0.5 (vs 1.0 for real facts). Real members are always preferred. The pool viability check counts real + synthetic combined — if total ≥ 5, pool-based selection proceeds.
+
+**Data format example:**
+```json
+{ "id": "place_names", "format": "place", "factIds": [...],
+  "syntheticDistractors": ["Memphis", "Chicago", "Detroit", "Nashville", "Liverpool"] }
+```
+
+For full rules (overlap constraints, best practices, the music_history worked example), see `.claude/skills/deck-master/SKILL.md` — "Synthetic Pool Members" section.
+
+---
+
 ## Load and Registration Pipeline
 
 `initializeCuratedDecks()` in `curatedDeckStore.ts` runs once at startup (guarded by `_initCalled` flag):
@@ -397,3 +418,36 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 - `data/decks/_wip/music_history_world.json` (40 facts, chainThemeId 4)
 
 **Assembly script:** `data/decks/_wip/assemble-music-history.mjs` — reads all 5 WIP files, checks for duplicate IDs, validates required fields, normalizes missing `acceptableAlternatives`/`volatile` fields, builds `answerTypePools` by scanning facts, builds `difficultyTiers` by difficulty range, builds `subDecks` by chainThemeId, wraps in CuratedDeck envelope, writes output, updates manifest, runs structural validation.
+
+---
+
+## Synthetic Distractor Pools (2026-04-02)
+
+`scripts/add-synthetic-pool-members.mjs` added `syntheticDistractors` arrays to 14 small answer-type pools across 12 knowledge decks. These entries pad pools that had fewer than 8 fact members so the runtime distractor selector always has enough candidates to build a 4-choice question without reaching for facts from other pools.
+
+**Rules enforced by the script:**
+- Every synthetic is checked against ALL `correctAnswer` values in the deck (case-insensitive)
+- Any synthetic matching an existing correct answer is dropped (20 dropped on this run)
+- Synthetics are deduplicated within each pool
+- `bracket_number` and `launch_years` pools are excluded — the runtime bracket notation handles those pools automatically
+
+**Pools updated (76 synthetics added total):**
+
+| Deck | Pool ID | Facts | Synthetics Added |
+|---|---|---|---|
+| `solar_system` | `system_facts` | 3 | 8 |
+| `constellations` | `deep_sky_names` | 3 | 5 (3 dropped — already correct answers) |
+| `egyptian_mythology` | `god_names` | 3 | 8 |
+| `egyptian_mythology` | `symbols_objects` | 5 | 7 |
+| `us_presidents` | `party_names` | 7 | 6 (1 dropped — Federalist) |
+| `us_presidents` | `home_states` | 7 | 4 (3 dropped — MA, NY, IL) |
+| `periodic_table` | `element_categories` | 5 | 5 |
+| `nasa_missions` | `spacecraft_names` | 5 | 3 (4 dropped — Gemini, Mercury, Challenger, Discovery) |
+| `human_anatomy` | `organ_names` | 7 | 2 (5 dropped — matched existing correct answers) |
+| `ancient_rome` | `text_work_names` | 6 | 6 |
+| `famous_paintings` | `country_names` | 5 | 5 (2 dropped — Netherlands, Germany) |
+| `medieval_world` | `structure_names` | 7 | 5 (1 dropped — Krak des Chevaliers) |
+| `world_wonders` | `location_country` | 7 | 6 (1 dropped — Indonesia) |
+| `dinosaurs` | `clade_names` | 5 | 6 |
+
+**Validation:** All 12 modified decks pass 0 FAIL after the change. Run `node scripts/verify-curated-deck.mjs <deck_id>` to verify.

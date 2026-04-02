@@ -13758,7 +13758,15 @@
         "rome_chr_nicene_creed_product",
         "rome_life_bread_circuses"
       ],
-      "minimumSize": 3
+      "minimumSize": 3,
+      "syntheticDistractors": [
+        "De Rerum Natura",
+        "Metamorphoses",
+        "Histories",
+        "Germania",
+        "Natural History",
+        "Satyricon"
+      ]
     },
     {
       "id": "battle_names",

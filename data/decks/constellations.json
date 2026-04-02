@@ -4441,7 +4441,14 @@
         "const_mc_cygnus_black_hole",
         "const_dso_pleiades_name"
       ],
-      "minimumSize": 3
+      "minimumSize": 3,
+      "syntheticDistractors": [
+        "Pleiades",
+        "Betelgeuse",
+        "Vega",
+        "Polaris",
+        "Proxima Centauri"
+      ]
     },
     {
       "id": "concept_terms",

@@ -5798,7 +5798,17 @@
         "egypt_temp_philae_deity",
         "egypt_temp_gods_wife_end"
       ],
-      "minimumSize": 3
+      "minimumSize": 3,
+      "syntheticDistractors": [
+        "Sekhmet",
+        "Sobek",
+        "Hathor",
+        "Ptah",
+        "Khnum",
+        "Nut",
+        "Nephthys",
+        "Khonsu"
+      ]
     },
     {
       "id": "numbers_dates",
@@ -5857,7 +5867,16 @@
         "egypt_god_maat_feather",
         "egypt_sym_nekhbet_shen"
       ],
-      "minimumSize": 3
+      "minimumSize": 3,
+      "syntheticDistractors": [
+        "sistrum",
+        "Was scepter",
+        "Djed pillar",
+        "Uraeus",
+        "Cartouche",
+        "Canopic jar",
+        "Shen ring"
+      ]
     },
     {
       "id": "descriptions_roles",

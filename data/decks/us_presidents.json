@@ -10561,7 +10561,15 @@
         "pres_party_johnson_andrew",
         "pres_party_reagan"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Know-Nothing",
+        "Bull Moose",
+        "Free Soil",
+        "Anti-Masonic",
+        "Populist",
+        "Progressive"
+      ]
     },
     {
       "id": "home_states",
@@ -10576,7 +10584,13 @@
         "pres_state_massachusetts",
         "pres_state_tennessee"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Pennsylvania",
+        "Georgia",
+        "California",
+        "Connecticut"
+      ]
     },
     {
       "id": "inauguration_years",

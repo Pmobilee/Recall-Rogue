@@ -5326,7 +5326,15 @@
         "ww_pal_alhambra_columbus",
         "ww_mod_the_shard_ownership"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Mexico",
+        "Greece",
+        "Cambodia",
+        "Turkey",
+        "Morocco",
+        "Australia"
+      ]
     },
     {
       "id": "architect_designer",

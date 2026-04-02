@@ -6871,7 +6871,17 @@
         "solar_system_sun_medium_star",
         "solar_system_prograde_orbits"
       ],
-      "minimumSize": 1
+      "minimumSize": 1,
+      "syntheticDistractors": [
+        "planetary rings",
+        "retrograde rotation",
+        "tidal locking",
+        "solar wind",
+        "magnetic field",
+        "orbital resonance",
+        "escape velocity",
+        "albedo"
+      ]
     }
   ],
   "synonymGroups": [

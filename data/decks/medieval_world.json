@@ -7140,7 +7140,14 @@
         "med_4_cru_krak_des_chevaliers",
         "med_4_cru_dome_of_rock"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Alhambra",
+        "Carcassonne",
+        "Mont-Saint-Michel",
+        "Tower of London",
+        "Cologne Cathedral"
+      ]
     },
     {
       "id": "scholar_names",

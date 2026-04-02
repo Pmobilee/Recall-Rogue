@@ -991,6 +991,46 @@ Every worker prompt MUST include these rules. They prevent factual errors that c
 
 **When generating facts, workers MUST always provide 8 pre-generated distractors** regardless of pool size. The runtime decides whether to use pool or pre-generated based on pool viability. This is NOT optional — facts with empty `distractors[]` in small pools will have no distractors at all.
 
+### Synthetic Pool Members — Padding Small Pools
+
+Some answer type pools have too few real facts to provide good distractor variety, but pooled selection is still preferable to per-fact pre-generated distractors. **Synthetic pool members** solve this: plausible wrong answers stored in `AnswerTypePool.syntheticDistractors` that pad the candidate pool at runtime without corresponding quiz facts.
+
+**What they are:** Strings added to the `syntheticDistractors` array on an `AnswerTypePool` object. They appear as distractors at runtime but have no quiz fact, no FSRS history, and no chainThemeId. They exist solely to widen the distractor candidate pool.
+
+**When to use:**
+- Pools with **< 8 real facts** — add synthetics to bring total candidates up
+- Critical for pools with **< 5 real facts**: below this threshold the runtime falls back to pre-generated distractors entirely (pool-based selection is skipped). Synthetics can prevent this fallback.
+- **Numeric pools**: do NOT use synthetics — use bracket notation instead. The runtime generates numeric distractors automatically.
+
+**How the runtime uses them:**
+- Real pool members enter the candidate pool with score **1.0** (always preferred)
+- Synthetic pool members enter with score **0.5** (used when real members are exhausted or when more candidates are needed)
+- The **pool viability check** counts real + synthetic members combined: if total ≥ 5, pool-based selection proceeds instead of falling back to pre-generated distractors
+
+**Best practices:**
+- Add **7–12 synthetics** per small pool — enough for multiple questions without repetition
+- Must be **semantically coherent** with the pool (all cities for a city pool, all instrument names for an instrument pool)
+- Must **NOT overlap** with any `correctAnswer` in the same pool — that would create two correct answers for the same question
+- Must **NOT overlap** with `correctAnswers` in other pools — would confuse the confusion matrix and corrupt adaptive difficulty
+- Must be **plausible enough** that a learner could reasonably confuse them with correct answers — the whole point is realistic distractor variety
+- For numeric pools: use bracket notation (`{N}`) instead — never add numeric synthetics
+
+**Data format:**
+
+```json
+{
+  "id": "place_names",
+  "format": "place",
+  "factIds": ["fact_new_orleans", "fact_ms_delta", "fact_salzburg"],
+  "syntheticDistractors": ["Memphis", "Chicago", "Detroit", "Nashville", "Liverpool", "Vienna", "Berlin", "Paris", "London", "St. Louis"]
+}
+```
+
+**Example — music_history `place_names` pool:**
+- 3 real facts: New Orleans, Mississippi Delta, Salzburg
+- 10 synthetic distractors: Memphis, Chicago, Detroit, Nashville, Liverpool, Vienna, Berlin, Paris, London, St. Louis
+- Combined: 13 candidates for distractor selection — pool viability check passes (≥ 5), pool-based selection proceeds
+
 ### Distractor variation is BY DESIGN — do not "fix" it
 
 Pool-based distractors deliberately vary between repetitions of the same fact (via jitter shuffle). This is intentional and superior to fixed distractors:
@@ -1338,6 +1378,7 @@ Sub-decks let players focus on a subset of the deck's content. They appear as se
 | Sub-deck splitting | Large decks (100+ entities) must be evaluated for splitting into standalone sub-decks |
 | Bracket notation | Use `{N}` for numeric answers with `distractors: []`. Runtime generates numeric distractors. Pool is `bracket_numbers` (organizational only). |
 | Wow factor field | Every fact MUST have a `wowFactor` string — 1 punchy sentence shown after correct answers. Must be deck-specific. |
+| Synthetic pool padding | Pools with < 8 real facts should have 7–12 `syntheticDistractors`. Critical for pools < 5 real facts (below this the runtime skips pool-based selection entirely). Never use synthetics for numeric pools — use bracket notation instead. |
 
 ---
 
