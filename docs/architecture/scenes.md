@@ -1,7 +1,7 @@
 # Scenes
 
 > **Purpose:** Phaser scenes, lifecycle, and scene transitions
-> **Last verified:** 2026-04-01
+> **Last verified:** 2026-04-02
 > **Source files:** `src/game/scenes/BootScene.ts`, `src/game/scenes/BootAnimScene.ts`, `src/game/scenes/CombatScene.ts`, `src/game/scenes/RewardRoomScene.ts`, `src/game/CardGameManager.ts`
 
 > See also: [systems.md](systems.md) for the 10 game systems
@@ -25,7 +25,7 @@ Owns the `Phaser.Game` instance. Boots Phaser, manages all scene start/stop, and
 | `boot(startAnimation?)` | Creates Phaser.Game, subscribes to layoutMode |
 | `startCombat()` | Starts `CombatScene` if not already active |
 | `stopCombat()` | Stops `CombatScene` |
-| `startRewardRoom(data)` | Stops then starts `RewardRoom` with `RewardRoomData` |
+| `startRewardRoom(data)` | Stops then starts `RewardRoom` with `RewardRoomData`; calls `bringToTop('RewardRoom')` to ensure it renders above CombatScene (which `stopRewardRoom` pushed to top) |
 | `stopRewardRoom()` | Stops `RewardRoom`, brings `CombatScene` to top |
 | `stopBootAnim()` | Stops `BootAnimScene` regardless of sleep/active state |
 | `getCombatScene()` | Returns typed `CombatScene` instance |
@@ -103,7 +103,7 @@ Displays collectible reward items on a background. Players tap items to collect 
 
 **Assets preloaded:** `reward_bg.webp`, `reward_bg_landscape.jpg`, `gold_tier_0-5.png`, `health_vial_small/large.png`, all 30+ mechanic card art PNGs, v2 card frame WebPs.
 
-**`shutdown()`:** Kills all tweens/timers, clears overlay, then removes all scene-level event listeners (`this.events.removeAllListeners()`) and keyboard listeners (`this.input.keyboard?.removeAllListeners()`). Also calls `removeAllListeners()` on each item sprite before destroying it. This prevents listener accumulation when the scene is stopped and restarted between encounters (crashes with `Cannot read properties of undefined (reading 'trigger')` were caused by missing this cleanup).
+**`shutdown()`:** Kills all tweens/timers, clears overlay, removes keyboard listeners (`this.input.keyboard?.removeAllListeners()`), and calls `removeAllListeners()` on each item sprite before destroying it. Does NOT call `this.events.removeAllListeners()` — bridge listeners (`goldCollected`, `vialCollected`, `cardAccepted`, `relicAccepted`, `sceneComplete`, `cardTapped`) are owned by `rewardRoomBridge.ts` and removed via its `cleanup()` when `sceneComplete` fires. Calling `this.events.removeAllListeners()` here would kill those listeners before `sceneComplete` fires, stalling the screen on the 2nd encounter.
 
 **Note:** Stone slab art is placeholder (TODO AR-225).
 
@@ -115,6 +115,6 @@ Displays collectible reward items on a background. Players tap items to collect 
 |---|---|
 | Boot → Combat | `BootScene.create()` emits `'boot-complete'`; Svelte starts combat |
 | Boot anim → Hub | `'boot-anim-complete'` event; `CardApp.svelte` hides Phaser canvas |
-| Combat → Reward | `CardGameManager.startRewardRoom(data)` stops/starts `RewardRoom` |
+| Combat → Reward | `CardGameManager.startRewardRoom(data)` stops/starts `RewardRoom`, then brings `RewardRoom` to top |
 | Reward → Combat | `CardGameManager.stopRewardRoom()` stops `RewardRoom`, brings `CombatScene` to top |
 | Any → Any (Svelte) | `currentScreen` store in `gameState.ts`; Svelte conditional rendering |

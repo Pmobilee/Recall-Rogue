@@ -461,3 +461,19 @@ All are now at the same floor 1 HP floor (7–9 base) as the rest of Act 1 commo
 **What went wrong:** BATCH-002 test prompt specified calling `getScreen()`, `startRun()`, etc. as direct window globals, but the game exposes them as methods of `window.__rrPlay`. Direct calls return undefined.
 
 **Correct usage:** `window.__rrPlay.getScreen()`, `window.__rrPlay.startRun()`, etc. All gameplay API is under `window.__rrPlay`.
+
+### 2026-04-02 — RewardRoomScene.shutdown() wiped bridge listeners with removeAllListeners()
+
+**What went wrong:** `shutdown()` called `this.events.removeAllListeners()`, which removed the bridge's `sceneComplete` listener (attached by `rewardRoomBridge.ts` after every `startRewardRoom` call). On the 2nd encounter the reward room scene fired `sceneComplete` but the bridge never received it, leaving the screen stuck.
+
+**Why:** `this.events.removeAllListeners()` is indiscriminate — it removes every listener on the scene's EventEmitter, including those attached by external consumers like the bridge.
+
+**Fix:** Removed the `this.events.removeAllListeners()` call entirely. Bridge listeners are managed by `rewardRoomBridge.ts`'s own `cleanup()` function (called inside `handleComplete` when `sceneComplete` fires). The scene only removes what it owns: keyboard listeners via `this.input.keyboard?.removeAllListeners()` and per-sprite listeners via `item.sprite.removeAllListeners()`.
+
+**Rule:** Never call `this.events.removeAllListeners()` on a Phaser scene in `shutdown()`. Remove only the specific listeners you created. External consumers own their own cleanup.
+
+### 2026-04-02 — startRewardRoom() rendered behind CombatScene on 2nd encounter
+
+**What went wrong:** `stopRewardRoom()` calls `bringToTop('CombatScene')`. On the next call to `startRewardRoom()`, the new RewardRoom scene started but rendered behind CombatScene because CombatScene was still on top.
+
+**Fix:** Added `this.game.scene.bringToTop('RewardRoom')` immediately after `this.game.scene.start('RewardRoom', data)` in `startRewardRoom()`.

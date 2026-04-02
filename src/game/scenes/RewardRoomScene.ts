@@ -1224,10 +1224,10 @@ export class RewardRoomScene extends Phaser.Scene {
     this.time.removeAllEvents()
     this.clearOverlay()
 
-    // Remove scene-level event listeners to prevent accumulation across restarts.
-    // Without this, goldCollected/sceneComplete/etc. listeners pile up each encounter.
-    this.events.removeAllListeners()
-    // Remove keyboard listeners added in createContinueButton() (ENTER/SPACE handlers).
+    // Bridge listeners (goldCollected, vialCollected, cardAccepted, relicAccepted,
+    // sceneComplete, cardTapped) are managed by rewardRoomBridge.ts cleanup() and must
+    // NOT be removed here — doing so kills them before sceneComplete fires on 2nd encounter.
+    // Remove only keyboard listeners added in createContinueButton() (ENTER/SPACE handlers).
     this.input.keyboard?.removeAllListeners()
 
     for (const fly of this.fireflies) {

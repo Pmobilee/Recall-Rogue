@@ -111,7 +111,7 @@ async function selectDomain(domain: string): Promise<PlayResult> {
 
     // Step 1: If on deckSelectionHub, click Trivia Dungeon panel first
     if (screen === 'deckSelectionHub') {
-      const triviaPanel = document.querySelector('[data-testid="panel--trivia"]') as HTMLElement | null;
+      const triviaPanel = document.querySelector('button.panel--trivia') as HTMLElement | null;
       if (!triviaPanel) return { ok: false, message: 'Trivia Dungeon panel not found on deckSelectionHub' };
       triviaPanel.click();
       await wait(turboDelay(1000));
@@ -125,7 +125,7 @@ async function selectDomain(domain: string): Promise<PlayResult> {
     }
 
     // Step 3: Click Start Run footer button
-    const startBtn = document.querySelector('[data-testid="footer-start-btn"]') as HTMLElement | null;
+    const startBtn = document.querySelector('button.footer-start-btn') as HTMLElement | null;
     if (startBtn) {
       startBtn.click();
       await wait(turboDelay(1500));

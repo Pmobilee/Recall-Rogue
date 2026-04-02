@@ -151,6 +151,8 @@ export class CardGameManager {
       this.game.scene.stop('RewardRoom')
     }
     this.game.scene.start('RewardRoom', data)
+    // Bring RewardRoom above CombatScene, which may have been pushed to top by stopRewardRoom().
+    this.game.scene.bringToTop('RewardRoom')
   }
 
   /** Stop the reward room scene. */
