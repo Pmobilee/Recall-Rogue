@@ -3,7 +3,7 @@
 > Navigation hub for all modular documentation. Each file is independently useful —
 > an agent reading just that file should understand that system.
 >
-> **Last rebuilt:** 2026-04-01
+> **Last rebuilt:** 2026-04-02
 
 ---
 
@@ -77,6 +77,14 @@
 | [playwright](testing/playwright.md) | Visual testing with Playwright MCP and E2E scripts — screenshots, scenario loading, debug tools, and gotchas |
 | [dev-presets](testing/DEVPRESET-REFERENCE.md) | Dev scenario presets and query parameters |
 | [playtest-dashboard](testing/PLAYTEST-DASHBOARD.md) | Playtest dashboard server and data locations |
+
+---
+
+## Marketing
+
+| Doc | Summary |
+|-----|---------|
+| [steam-store-page](marketing/steam-store-page.md) | Steam storefront strategy: exact graphic specs, screenshot sequence, capsule art direction, trailer structure, store copy, competitor analysis, and production workflow |
 
 ---
 
