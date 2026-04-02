@@ -35,6 +35,8 @@ import {
   serializeEncounterSnapshot,
   sellCardFromActiveDeck,
   startEncounterForRoom,
+  getLastNarrativeEncounterSnapshot,
+  clearNarrativeEncounterSnapshot,
 } from './encounterBridge';
 import { activeRunState } from './runStateStore';
 import {
@@ -126,6 +128,20 @@ import { ENEMY_TEMPLATES } from '../data/enemies'
 import { ambientAudio } from './ambientAudioService'
 import type { AmbientContext } from './ambientAudioService'
 import { getFloorTheme } from '../data/roomAtmosphere'
+import {
+  initNarrative,
+  recordEncounterResults,
+  getNarrativeLines,
+  recordShopPurchase,
+  recordRestAction,
+  resetNarrative,
+} from './narrativeEngine'
+import { preloadNarrativeData } from './narrativeLoader'
+import { showNarrative } from '../ui/stores/narrativeStore'
+import { CHAIN_TYPES } from '../data/chainTypes'
+// Fire-and-forget: preload narrative JSON data in parallel with other init.
+// The loader warns but never throws if narrative files are absent.
+void preloadNarrativeData();
 
 /**
  * Set ambient audio context for a combat encounter based on floor and boss status.
@@ -567,6 +583,8 @@ export function rescheduleNotificationsFromPlayerState(): void {
 function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
   // Always clear the encounter-result guard when a run ends, regardless of path.
   isProcessingEncounterResult = false;
+  // Clear narrative state on run end
+  resetNarrative();
   if (activeRunMode === 'daily_expedition') {
     const score = calculateDailyExpeditionScore(endData)
     const completedAttempt = completeDailyExpeditionAttempt({
@@ -847,6 +865,8 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
   }
 
   activeRunState.set(run);
+  // Wire narrative engine for this run
+  initNarrative(run);
   playCardAudio('domain-select');
   playCardAudio('run-start');
   // Initialize forked RNG system for all modes that use a seed
@@ -1415,6 +1435,63 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     run.floor.encountersPerFloor = justCompletedEncounter;
   }
 
+  // Record encounter results in narrative engine using the snapshot captured in encounterBridge
+  // before activeTurnState was cleared. Non-blocking; skips silently if narrative not ready.
+  {
+    const narrativeSnap = getLastNarrativeEncounterSnapshot();
+    if (narrativeSnap) {
+      const domain = run.primaryDomain ?? 'general_knowledge';
+      const fizzledSet = new Set(narrativeSnap.fizzledFactIds);
+      const correctAnswers: Array<{ factId: string; answer: string; quizQuestion: string }> = [];
+      const wrongAnswers: Array<{ factId: string; answer: string; quizQuestion: string }> = [];
+      for (const factId of narrativeSnap.answeredFactIds) {
+        const fact = factsDB.getById(factId);
+        if (!fact) continue;
+        const entry = { factId: fact.id, answer: fact.correctAnswer, quizQuestion: fact.quizQuestion };
+        if (fizzledSet.has(factId)) {
+          wrongAnswers.push(entry);
+        } else {
+          correctAnswers.push(entry);
+        }
+      }
+      recordEncounterResults({
+        correctAnswers,
+        wrongAnswers,
+        chainCompletions: [],
+        enemyId: narrativeSnap.enemyId,
+        isBoss: narrativeSnap.isBoss,
+        isElite: narrativeSnap.isElite,
+        domain,
+      });
+      clearNarrativeEncounterSnapshot();
+
+      // Show post-encounter narrative lines (non-blocking auto-fade).
+      // The overlay auto-dismisses independently; reward screen still proceeds on its own.
+      const chainColors = run.chainDistribution?.runChainTypes.map(
+        (i: number) => CHAIN_TYPES[i]?.name ?? 'Unknown',
+      ) ?? [];
+      const topicLabels = run.chainDistribution?.assignments.flatMap(
+        (g: Array<{ label?: string }>) => g.map(t => t.label ?? '').filter(Boolean),
+      );
+      const narrativeLines = getNarrativeLines({
+        roomType: narrativeSnap.isBoss ? 'boss' : narrativeSnap.isElite ? 'elite' : 'combat',
+        isPostBoss: narrativeSnap.isBoss,
+        isPostEncounter: true,
+        floor: justCompletedFloor,
+        segment: run.floor.segment,
+        playerHp: run.playerHp,
+        playerMaxHp: run.playerMaxHp,
+        relicIds: run.runRelics.map(r => r.definitionId),
+        currentStreak: narrativeSnap.streakAtEnd,
+        chainColors,
+        topicLabels,
+      });
+      if (narrativeLines.length > 0) {
+        showNarrative(narrativeLines, 'auto-fade');
+      }
+    }
+  }
+
   pendingFloorCompleted = advanceEncounter(run.floor);
   pendingClearedFloor = run.floor.currentFloor;
   activeRunState.set(run);
@@ -1625,6 +1702,7 @@ export function onShopBuyRelic(relicId: string, haggled = false): boolean {
   run.currency -= finalPrice;
   if (haggled) run.haggleSuccesses = (run.haggleSuccesses ?? 0) + 1;
   addRelicToRun(item.relic);
+  recordShopPurchase('relic');
   inventory.relics = inventory.relics.filter(r => r.relic.id !== relicId);
   activeShopInventory.set(inventory);
   activeRunState.set(run);
@@ -1660,6 +1738,7 @@ export function onShopBuyCard(cardIndex: number, haggled = false): boolean {
   if (haggled) run.haggleSuccesses = (run.haggleSuccesses ?? 0) + 1;
   run.consumedRewardFactIds.add(item.card.factId);
   addRewardCardToActiveDeck(item.card);
+  recordShopPurchase('card');
   inventory.cards.splice(cardIndex, 1);
   activeShopInventory.set(inventory);
   activeRunState.set(run);
@@ -1999,6 +2078,32 @@ export async function onRoomSelected(room: RoomOption): Promise<void> {
       },
     });
   }
+  // Show narrative lines for room transitions (non-blocking auto-fade for combat, click-through for special rooms)
+  if (run && (room.type === 'shop' || room.type === 'rest' || room.type === 'mystery' || room.type === 'treasure')) {
+    const chainColors = run.chainDistribution?.runChainTypes.map(
+      (i: number) => CHAIN_TYPES[i]?.name ?? 'Unknown',
+    ) ?? [];
+    const topicLabels = run.chainDistribution?.assignments.flatMap(
+      (g: Array<{ label?: string }>) => g.map(t => t.label ?? '').filter(Boolean),
+    );
+    const roomNarrativeLines = getNarrativeLines({
+      roomType: room.type as 'shop' | 'rest' | 'mystery' | 'treasure',
+      isPostBoss: false,
+      isPostEncounter: false,
+      floor: run.floor.currentFloor,
+      segment: run.floor.segment,
+      playerHp: run.playerHp,
+      playerMaxHp: run.playerMaxHp,
+      relicIds: run.runRelics.map(r => r.definitionId),
+      currentStreak: 0,
+      chainColors,
+      topicLabels,
+    });
+    if (roomNarrativeLines.length > 0) {
+      showNarrative(roomNarrativeLines, 'auto-fade');
+    }
+  }
+
   switch (room.type) {
     case 'combat':
       // Set ambient for regular combat encounter
@@ -2222,6 +2327,7 @@ export function onUpgradeSelected(cardId: string): void {
     activeRunState.set(run);
   }
 
+  recordRestAction('upgrade');
   activeUpgradeCandidates.set([]);
   onRestResolved();
 }

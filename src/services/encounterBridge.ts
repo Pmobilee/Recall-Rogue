@@ -63,6 +63,30 @@ export interface EncounterSnapshot {
   activeRunPool: Card[]
 }
 
+/**
+ * Snapshot of narrative-relevant encounter data captured just before TurnState is cleared.
+ * Populated in the victory settlement timer; consumed by gameFlowController.onEncounterComplete().
+ */
+export interface NarrativeEncounterSnapshot {
+  /** All fact IDs answered (any mode) during this encounter. */
+  answeredFactIds: string[];
+  /** Fact IDs that produced a fizzle (charge-wrong). */
+  fizzledFactIds: string[];
+  /** Map of cardId → factId for deck cards, used to resolve fizzle cardIds to factIds. */
+  cardIdToFactId: Map<string, string>;
+  /** Whether the completed encounter was a boss. */
+  isBoss: boolean;
+  /** Whether the completed encounter was an elite. */
+  isElite: boolean;
+  /** Enemy template ID, if known. */
+  enemyId?: string;
+  /** Consecutive correct streak at encounter end. */
+  streakAtEnd: number;
+}
+
+/** Module-level storage: snapshot from the most recent victory, cleared after consumption. */
+let _lastNarrativeSnapshot: NarrativeEncounterSnapshot | null = null;
+
 /** Create a shallow copy of TurnState with fresh array references for Svelte reactivity. */
 function freshTurnState(ts: TurnState): TurnState {
   return {
@@ -907,6 +931,35 @@ export function handlePlayCard(
       if (ts?.enemy?.template?.id) {
         combatExitEnemyId.set(ts.enemy.template.id);
       }
+      // Capture narrative snapshot BEFORE clearing activeTurnState
+      if (ts) {
+        const allDeckCards = [
+          ...ts.deck.hand,
+          ...ts.deck.drawPile,
+          ...ts.deck.discardPile,
+          ...(ts.deck.exhaustPile ?? []),
+        ];
+        const cardIdToFactId = new Map<string, string>(
+          allDeckCards.filter(c => c.factId).map(c => [c.id, c.factId]),
+        );
+        const fizzledFactIds = ts.turnLog
+          .filter(e => e.type === 'fizzle' && e.cardId)
+          .map(e => cardIdToFactId.get(e.cardId!) ?? '')
+          .filter(Boolean);
+        const run = get(activeRunState);
+        const currentNode = run?.floor?.actMap?.nodes[run?.floor?.actMap?.currentNodeId ?? ''];
+        _lastNarrativeSnapshot = {
+          answeredFactIds: [...ts.encounterAnsweredFacts],
+          fizzledFactIds,
+          cardIdToFactId,
+          isBoss:
+            (run ? (isBossFloor(run.floor.currentFloor) && run.floor.currentEncounter >= run.floor.encountersPerFloor) : false)
+            || currentNode?.type === 'boss',
+          isElite: currentNode?.type === 'elite',
+          enemyId: ts.enemy?.template?.id,
+          streakAtEnd: ts.consecutiveCorrectThisEncounter,
+        };
+      }
       activeTurnState.set(null);
       notifyEncounterComplete('victory');
     }, turboDelay(550));
@@ -1205,8 +1258,24 @@ export function resetEncounterBridge(): void {
   activeTurnState.set(null);
   activeDeck = null;
   activeRunPool = [];
+  _lastNarrativeSnapshot = null;
   // Invalidate any pending victory/defeat timers from the previous run.
   encounterGeneration++;
   // AR-269: Clear Akashic Record fact-spacing history so it doesn't persist across runs.
   resetFactLastSeenEncounter();
+}
+
+/**
+ * Return the narrative snapshot captured from the last completed encounter victory.
+ * Returns null if no victory snapshot is available (defeat, or not yet populated).
+ */
+export function getLastNarrativeEncounterSnapshot(): NarrativeEncounterSnapshot | null {
+  return _lastNarrativeSnapshot;
+}
+
+/**
+ * Clear the narrative snapshot after it has been consumed by gameFlowController.
+ */
+export function clearNarrativeEncounterSnapshot(): void {
+  _lastNarrativeSnapshot = null;
 }
