@@ -599,3 +599,92 @@ describe('extractTopicGroupsMultiDeck', () => {
     expect(groups.map(g => g.deckId)).toContain('deck2');
   });
 });
+
+// ---------------------------------------------------------------------------
+// 12. No facts silently dropped (invariant tests)
+// ---------------------------------------------------------------------------
+
+describe('no facts silently dropped', () => {
+  it('POS grouping includes facts without partOfSpeech field', () => {
+    // Create a deck where 50% of facts have POS and 50% don't.
+    // This replicates Chinese/Spanish decks that mix POS-tagged and untagged facts.
+    const facts = [
+      // Facts WITH partOfSpeech
+      makeFact('f1', { partOfSpeech: 'noun' }),
+      makeFact('f2', { partOfSpeech: 'noun' }),
+      makeFact('f3', { partOfSpeech: 'noun' }),
+      makeFact('f4', { partOfSpeech: 'noun' }),
+      makeFact('f5', { partOfSpeech: 'noun' }),
+      makeFact('f6', { partOfSpeech: 'verb' }),
+      makeFact('f7', { partOfSpeech: 'verb' }),
+      makeFact('f8', { partOfSpeech: 'verb' }),
+      makeFact('f9', { partOfSpeech: 'verb' }),
+      makeFact('f10', { partOfSpeech: 'verb' }),
+      // Facts WITHOUT partOfSpeech
+      makeFact('f11'),
+      makeFact('f12'),
+      makeFact('f13'),
+      makeFact('f14'),
+      makeFact('f15'),
+      makeFact('f16'),
+      makeFact('f17'),
+      makeFact('f18'),
+    ];
+    const allIds = facts.map(f => f.id);
+    const deck = makeDeck('mixed_pos', facts);
+    const groups = extractTopicGroups(deck, allIds, []);
+
+    // ALL 18 facts must appear in groups — no silent drops
+    const totalInGroups = groups.reduce((s, g) => s + g.factIds.length, 0);
+    expect(totalInGroups).toBe(18);
+
+    // Every factId must appear exactly once
+    const allGroupedIds = groups.flatMap(g => g.factIds);
+    expect(new Set(allGroupedIds).size).toBe(18);
+    for (const id of allIds) {
+      expect(allGroupedIds).toContain(id);
+    }
+  });
+
+  it('POS grouping with small named groups still captures ungrouped facts', () => {
+    // 4 nouns (< MIN_POS_GROUP=5 so merged into Other), plus facts without POS.
+    // Ungrouped facts should land in the Other bucket.
+    const facts = [
+      makeFact('n1', { partOfSpeech: 'noun' }),
+      makeFact('n2', { partOfSpeech: 'noun' }),
+      makeFact('n3', { partOfSpeech: 'noun' }),
+      makeFact('n4', { partOfSpeech: 'noun' }),
+      makeFact('v1', { partOfSpeech: 'verb' }),
+      makeFact('v2', { partOfSpeech: 'verb' }),
+      makeFact('v3', { partOfSpeech: 'verb' }),
+      makeFact('v4', { partOfSpeech: 'verb' }),
+      makeFact('v5', { partOfSpeech: 'verb' }),
+      // No partOfSpeech
+      makeFact('x1'),
+      makeFact('x2'),
+    ];
+    const allIds = facts.map(f => f.id);
+    const deck = makeDeck('mixed_pos_small', facts);
+    const groups = extractTopicGroups(deck, allIds, []);
+
+    const totalInGroups = groups.reduce((s, g) => s + g.factIds.length, 0);
+    expect(totalInGroups).toBe(11);
+
+    const allGroupedIds = groups.flatMap(g => g.factIds);
+    expect(new Set(allGroupedIds).size).toBe(11);
+  });
+
+  it('distributeTopicGroups output contains all input facts', () => {
+    const groups: TopicGroup[] = [
+      { id: 'g1', label: 'A', deckId: 'd', factIds: ['f1', 'f2', 'f3'],
+        fsrs: { new: 3, learning: 0, review: 0, mastered: 0 } },
+      { id: 'g2', label: 'B', deckId: 'd', factIds: ['f4', 'f5'],
+        fsrs: { new: 2, learning: 0, review: 0, mastered: 0 } },
+    ];
+    const dist = distributeTopicGroups(groups, [0, 2, 4], 42);
+    expect(dist.factToChain.size).toBe(5);
+    for (const fid of ['f1', 'f2', 'f3', 'f4', 'f5']) {
+      expect(dist.factToChain.has(fid)).toBe(true);
+    }
+  });
+});

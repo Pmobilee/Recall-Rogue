@@ -217,6 +217,8 @@ interface ChainDistribution {
    - Sub-decks with only a `chainThemeId` (e.g. ancient_greece) match facts by their `fact.chainThemeId` field so real sub-deck names are used (not generic "Group N" labels).
    - Sub-decks with no pool facts are skipped.
 2. **Part of speech** — if facts have `partOfSpeech` field, group by POS. Groups with fewer than 5 facts are merged into a single "Other" group. Label: capitalize POS + "s" (e.g., "Nouns", "Verbs").
+   - **No-drop safety net**: facts in the run pool that have NO `partOfSpeech` field are distributed round-robin across the existing POS groups. This prevents mixed decks (e.g. Chinese/Spanish with partially-tagged facts) from silently losing ungrouped facts. Without this fix, a 466-fact deck showed only 70 facts.
+   - FSRS summaries are recomputed after round-robin distribution.
 3. **chainThemeId fallback** — group by `fact.chainThemeId` value. Labels are generic ("Group 1", "Group 2", …). Only reached if sub-deck extraction produced no groups.
 
 For multi-deck playlists, call `extractTopicGroupsMultiDeck(decks, factIds, reviewStates)` which pools results from all decks.
@@ -230,6 +232,7 @@ For multi-deck playlists, call `extractTopicGroupsMultiDeck(decks, factIds, revi
 3. **Sort descending** by score (heaviest groups assigned first)
 4. **Greedy assignment**: each group goes to the chain slot with the lowest cumulative load
 5. **Edge-case guard**: if fewer than 3 groups, the largest group is split via round-robin index assignment until 3 chains exist (bounded by total fact count — can't produce more groups than facts)
+6. **Dev-mode invariant**: when `window.__rrDebug` is set, logs a `console.warn` if the output `factToChain.size` does not match the total input fact count. This catches any future regression where facts are lost before reaching `distributeTopicGroups`.
 
 The result is stored in `RunState.chainDistribution` and the `factToChain` Map provides O(1) lookup during card assignment in `presetPoolBuilder.ts`.
 

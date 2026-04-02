@@ -55,7 +55,11 @@ Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
 | `quizMode` | no | `'text'`, `'image_question'`, or `'image_answers'` |
 | `volatile` | no | `true` if the answer may become outdated |
 
-**partOfSpeech coverage:** As of 2026-04-02 all vocabulary decks (Japanese N1–N5, Korean TOPIK 1–2, Chinese HSK, Spanish, French, etc.) have `partOfSpeech` on every fact. Values are lowercase: noun, verb, adjective, adverb, pronoun, conjunction, interjection, suffix, prefix, particle, number, phrase, expression. The word POS label (used in older JLPT source data for suffixes, particles, and compound forms) is mapped to phrase on ingest. Backfilled 2026-04-02 by `scripts/backfill-pos-field.mjs`.
+**partOfSpeech coverage:** As of 2026-04-02 all vocabulary decks (Japanese N1–5, Korean TOPIK 1–2, Chinese HSK 1–6, Spanish A1–B2, French A1–B2, German A1–B2, Dutch A1–B2, Czech A1–B2) have `partOfSpeech` on every fact. Values are lowercase: noun, verb, adjective, adverb, pronoun, preposition, conjunction, interjection, determiner, particle, number, phrase, expression.
+
+Two backfill scripts produced full coverage:
+- `scripts/backfill-pos-field.mjs` — Japanese/Korean source-data pass (2026-04-02). Maps JLPT `word` POS label to `phrase` on ingest.
+- `scripts/backfill-pos-from-english.mjs` — English-heuristic pass (2026-04-02). Infers POS from the English `correctAnswer` field for the 26 non-Japanese/Korean language decks (18,650 facts newly tagged, 100% final coverage across 26,454 facts). Rules fire in priority order: grammar-metadata suffixes (“completion marker” → particle), `to `–prefix (verb), exact-match word lists (pronouns, prepositions, conjunctions, adverbs, interjections, determiners), article prefix (`a/an/the ` → noun), morphological noun suffixes (-tion/-ness/-ment/-ity/-ance/-ence/-er/-or etc.), adjective suffixes (-ous/-ful/-al/-ic/-ive/-able), -ing suffix (verb, with noun exceptions list), -ed suffix (verb), number words, default → noun.
 
 **Non-standard fields that must NOT appear in final decks:** `statement`, `wowFactor`, `tags`, `ageGroup` — these are WIP-generation artifacts and must be stripped before a deck is live.
 

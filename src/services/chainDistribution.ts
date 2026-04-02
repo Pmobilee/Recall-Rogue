@@ -141,7 +141,9 @@ function splitGroup(group: TopicGroup, n: number): TopicGroup[] {
  * 1. deck has `subDecks[]` array  → one TopicGroup per sub-deck.
  *    Sub-decks with explicit `factIds` use them; sub-decks with only `chainThemeId`
  *    fall back to matching facts by their `chainThemeId` field (e.g. ancient_greece).
- * 2. facts have `partOfSpeech`    → group by POS; merge groups < 5 into "Other"
+ * 2. facts have `partOfSpeech`    → group by POS; merge groups < 5 into "Other".
+ *    Facts WITHOUT a `partOfSpeech` field are distributed round-robin into
+ *    existing POS groups so no facts are silently dropped.
  * 3. fallback                      → group by `chainThemeId`
  *
  * All groups are filtered to `factIds` (the active run pool subset).
@@ -233,7 +235,28 @@ export function extractTopicGroups(
         fsrs: buildFsrsSummary(otherFacts, reviewMap),
       });
     }
-    if (groups.length > 0) return groups;
+
+    // Safety net: distribute facts without partOfSpeech proportionally across
+    // existing groups. Without this, mixed decks (e.g. Chinese/Spanish with
+    // some facts missing the partOfSpeech field) silently lose those facts —
+    // causing 70 visible facts instead of 466.
+    // Round-robin keeps chains balanced (no giant "Other" catchall group).
+    if (groups.length > 0) {
+      const groupedIds = new Set(groups.flatMap(g => g.factIds));
+      const ungrouped = [...runPool].filter(fid => !groupedIds.has(fid));
+
+      if (ungrouped.length > 0) {
+        for (let i = 0; i < ungrouped.length; i++) {
+          groups[i % groups.length].factIds.push(ungrouped[i]);
+        }
+        // Recompute FSRS summaries since factIds changed
+        for (const g of groups) {
+          g.fsrs = buildFsrsSummary(g.factIds, reviewMap);
+        }
+      }
+
+      return groups;
+    }
   }
 
   // ── Priority 3: chainThemeId fallback ──────────────────────────────────
@@ -373,6 +396,19 @@ export function distributeTopicGroups(
       for (const fid of group.factIds) {
         factToChain.set(fid, chainTypeIdx);
       }
+    }
+  }
+
+  // Dev-mode invariant: warn if any input facts were lost in distribution.
+  // This should never fire after the POS ungrouped-facts safety net is in place,
+  // but keeps the contract visible during development.
+  if (typeof window !== 'undefined' && (window as any).__rrDebug) {
+    const inputFacts = groups.reduce((s, g) => s + g.factIds.length, 0);
+    const outputFacts = factToChain.size;
+    if (inputFacts !== outputFacts) {
+      console.warn(
+        `[ChainDistribution] Fact count mismatch: ${inputFacts} input, ${outputFacts} output`,
+      );
     }
   }
 

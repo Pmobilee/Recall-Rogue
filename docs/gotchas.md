@@ -570,3 +570,13 @@ Similarly, `general_knowledge-hindi-fourth-language-world` had "Bengali" (single
 **Fix:** Added check #13 to `verifyDeck()` in `scripts/verify-all-decks.mjs`. For each `questionTemplate`, extracts all `{placeholder}` names from `questionFormat`, finds all facts in the referenced pool, and flags any fact missing a value for any placeholder. Also introduced `addDeckIssue()` helper (which increments both `issueCounts` and `deckLevelFailCount`) so deck-level check failures surface in the summary table `failCount` column. Check #12 (empty pools) was also upgraded from `addIssue()` to `addDeckIssue()` for consistency.
 
 **Rule:** When adding a `questionTemplate` to a deck, every fact in the referenced pool MUST have non-empty values for every `{placeholder}` in the `questionFormat`. Run `node scripts/verify-all-decks.mjs` after any template or pool change.
+
+### 2026-04-02 — POS grouping in extractTopicGroups silently dropped facts without partOfSpeech
+
+**What happened:** `extractTopicGroups()` Priority 2 (part-of-speech grouping) iterated deck facts and only pushed facts with a `partOfSpeech` field into POS buckets. Facts without the field were never added to any bucket. When the POS path fired (because at least one fact had a POS), the function returned immediately — all untagged facts vanished. Mixed decks like Chinese/Spanish showed ~70 facts instead of 466.
+
+**Why:** The loop condition `if (fact.partOfSpeech)` was correct intent (group by POS), but the code contained no fallback for untagged facts. The branch `if (posBuckets.size > 0) { ... return groups; }` exited as soon as any POS group existed, never giving untagged facts a home.
+
+**Fix:** After building POS groups (including the "Other" merge), compute `ungrouped` as all run pool IDs not in `groupedIds`. Distribute them round-robin across existing groups, then recompute FSRS summaries. The safety net is inside the `if (groups.length > 0)` guard so it only fires when POS grouping actually produced usable groups.
+
+**Rule:** Any extraction path that produces groups must ensure `sum(groups[].factIds.length) === runPool.size`. The dev-mode warning in `distributeTopicGroups` (`window.__rrDebug` check) will surface regressions at runtime.
