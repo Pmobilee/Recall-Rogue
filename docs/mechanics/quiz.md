@@ -48,6 +48,10 @@ pool is used as a fallback so the function never returns `null` due to exhaustio
 
 Template placeholders in `questionFormat` are replaced via `renderTemplate`: `{targetLanguageWord}`, `{correctAnswer}`, `{language}`, `{reading}`, `{explanation}`, `{quizQuestion}`, and any other fact field key.
 
+`renderTemplate` falls back to `fact.quizQuestion` in two cases:
+- Any `{placeholder}` pattern remains unresolved after substitution (key not found on fact)
+- Any placeholder resolves to an empty or whitespace-only string (e.g. a non-language fact with no `targetLanguageWord` or `language` field matched a language-specific template via a shared answer pool — this would otherwise produce nonsensical questions like "Who created the  programming language?")
+
 Special template IDs: `reverse` (answer = `targetLanguageWord`), `reading` (answer = `fact.reading`), default (answer = `fact.correctAnswer`).
 
 **Note:** Different question templates can reference different `answerPoolId` values for the same fact. A vocabulary fact might use the `english_meanings` pool for forward questions and the `target_language_words` pool for reverse questions. The pool used is always determined by the selected template, not the fact itself.
@@ -72,13 +76,25 @@ Mastery Trial overrides (`MASTERY_TRIAL` constant): 5 options, close distractors
 `selectDistractors` priority order:
 1. Synonym group exclusion (mandatory — synonyms never appear as distractors)
 2. Pool size check: if fewer than 5 unique answers available (real + synthetic combined), use pre-generated `fact.distractors[]`
-3. Scoring from `answerPool.factIds`: known confusions (+10.0×count), reverse confusions (+5.0×count), in-run struggles (+3.0), same part-of-speech (+4.0 or ×0.3 penalty), similar difficulty ±1 (+2.0)
-4. Synthetic pool members scored at base 0.5 (lower than real pool members at 1.0 — real facts always preferred)
+3. Scoring from `answerPool.factIds`: known confusions (+10.0×count), reverse confusions (+5.0×count), in-run struggles (+3.0), same part-of-speech (+4.0 or ×0.3 penalty), **same measurement unit (+5.0 or ×0.1 penalty — see below)**, similar difficulty ±1 (+2.0)
+4. Synthetic pool members scored at base 0.5 (lower than real pool members at 1.0 — real facts always preferred); unit matching also applied to synthetics
 5. Jitter (0–0.5) seeded from `totalCharges × fact ID hash` for per-encounter variety
 6. Deduplication: skips distractor answers that appear by name in the question text
 7. Fallback to `fact.distractors[]` if pool yields insufficient candidates
 
 `inRunTracker` parameter accepts `InRunFactTracker | null`. When `null` (trivia mode bridge path), in-run struggle scoring is skipped and jitter seed uses `totalCharges = 0`.
+
+#### Unit Matching (`extractUnit` helper)
+
+`extractUnit(answer)` parses an answer string and returns the measurement unit suffix, or `null` if the answer is not a measurement. Examples: `"10 metres"` → `"metres"`, `"52,800 tonnes"` → `"tonnes"`, `"120 years"` → `"years"`, `"Great Wall"` → `null`.
+
+When the correct answer has a detectable unit, the scoring step applies:
+- **+5.0** for candidates whose unit matches exactly (e.g., metres with metres)
+- **×0.1** penalty for candidates with a different unit (e.g., tonnes when correct is metres)
+
+This prevents cross-unit contamination in broad measurement pools (such as `measurement_number` in world-wonders decks) that mix heights, weights, durations, and counts in the same pool. When fewer same-unit candidates exist than the requested distractor count, the penalty is overridden and mixed-unit candidates fill remaining slots rather than leaving the response underfilled.
+
+The unit penalty is a scoring heuristic, not a hard filter — confusion matrix data (+10.0×count) still overrides the penalty when a player genuinely confuses two measurements of different units.
 
 #### Synthetic Distractor Members (`AnswerTypePool.syntheticDistractors`)
 
@@ -88,6 +104,7 @@ Key rules for synthetic members:
 - They count toward the pool's viability threshold (5 unique answers minimum)
 - They are injected into the internal `factById` lookup as pseudo-`DeckFact` objects with `id: '_synthetic_{answer}'`
 - They are scored at base 0.5 (real pool members start at 1.0), so they are selected only after all eligible real pool members
+- Unit matching is applied to synthetic members — a synthetic `"100 tonnes"` is penalised when the correct answer is `"10 metres"`
 - A synthetic answer equal to `correctFact.correctAnswer` is always excluded (case-insensitive)
 - They appear as distractors only — never as quiz questions (`quizQuestion: ''`)
 - Content authors set this field in the deck JSON; it is never auto-generated at runtime

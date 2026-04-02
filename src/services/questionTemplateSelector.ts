@@ -129,6 +129,12 @@ export function selectQuestionTemplate(
  * - {quizQuestion} — fact.quizQuestion
  * - {reading} — fact.reading
  * - Any other {key} — looked up from fact as (fact as any)[key]
+ *
+ * Falls back to fact.quizQuestion if any placeholder resolves to an
+ * empty or whitespace-only string. This prevents nonsensical questions
+ * like "Who created the  programming language?" when a non-language fact
+ * (missing targetLanguageWord/language/reading) matches a language-specific
+ * template via a shared answer pool.
  */
 export function renderTemplate(
   template: QuestionTemplate,
@@ -161,18 +167,37 @@ export function renderTemplate(
     reading: fact.reading ?? '',
   };
 
+  // Track whether any placeholder resolved to empty/whitespace. If so the
+  // rendered question would be nonsensical (e.g. a language-specific template
+  // applied to a non-language fact that shares an answer pool), so we fall
+  // back to fact.quizQuestion the same way unresolved placeholders do.
+  let hasEmptyReplacement = false;
+
   // Replace all {placeholder} patterns
   result = result.replace(/\{(\w+)\}/g, (match, key) => {
-    if (key in replacements) return replacements[key];
+    if (key in replacements) {
+      const value = replacements[key];
+      if (value.trim() === '') {
+        hasEmptyReplacement = true;
+      }
+      return value;
+    }
     // Try looking up on the fact object directly
     // Dynamic key lookup on fact — safe since we only use string values
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const val = (fact as any)[key];
-    return typeof val === 'string' ? val : match;
+    if (typeof val === 'string') {
+      if (val.trim() === '') {
+        hasEmptyReplacement = true;
+      }
+      return val;
+    }
+    return match;
   });
 
-  // If any {placeholder} patterns remain unresolved, fall back to fact's own question
-  if (/\{\w+\}/.test(result)) {
+  // If any placeholder was unresolved or resolved to empty/whitespace,
+  // fall back to the fact's own question to avoid nonsensical output.
+  if (/\{\w+\}/.test(result) || hasEmptyReplacement) {
     return fact.quizQuestion;
   }
 

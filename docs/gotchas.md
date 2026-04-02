@@ -497,3 +497,66 @@ All are now at the same floor 1 HP floor (7–9 base) as the rest of Act 1 commo
 **What went wrong:** ~30+ facts use strings like "い-adjective", "な-adjective", "に/へ", "は〜がある", "より〜ほうが", "の中で〜が一番", "まだ〜ていません", "か〜か", "たり〜たり" as distractors. These are grammar pattern labels, not Japanese expressions that a player could write as an answer. They break the fill-in-the-blank contract and are trivially eliminable.
 
 **Fix:** Replace every grammar label distractor with an actual Japanese expression of the same word class. "い-adjective" → "たかい". "な-adjective" → "きれい". "に/へ" → pick either に or へ. Pattern labels with tildes (〜) are never valid single-blank answers.
+
+### 2026-04-02 — Study Temple chain distribution: factToChain lookup always returned undefined
+
+**What went wrong:** All cards in Study Temple curated deck runs received the same chain type (only one color visible in hand), so players could never build chains across topics.
+
+**Why:** `chainDistribution.factToChain` is a `Map<string, number>` keyed on curated deck JSON fact IDs (e.g. `"ww_anc_pyramid_giza_height"`). The pool builder (`presetPoolBuilder.ts`) creates cards from `factsDB` (SQLite), which uses integer IDs (e.g. `"1234"`). These are different ID spaces with zero overlap. Every `factToChain.get(card.factId)` call returned `undefined`, causing all cards to fall back to `runChainTypes[0]` — a single chain color for the entire run.
+
+**Fix:** Replaced the `factToChain` lookup with proportional assignment based on chain group sizes from `chainDistribution.assignments`. Each chain's share of pool cards is proportional to the total `factIds.length` across its topic groups. Cards are shuffled by the seeded RNG before assignment so the proportional spread is random across the deck.
+
+**Also fixed:** `buildLanguageRunPool()` did not accept or forward `chainDistribution` at all. All three `buildLanguageRunPool()` call sites in `encounterBridge.ts` now pass `chainDistribution: run.chainDistribution` so vocabulary/language Study Temple runs also receive multi-color chain assignment.
+
+**Rule:** Never use `chainDistribution.factToChain` for card assignment in `presetPoolBuilder.ts`. The `factToChain` Map is only valid for curated deck JSON operations (e.g., run preview display). For pool card assignment, always use proportional group-size-based distribution.
+
+### 2026-04-02 — citation_needed heal overshoot: two independent HP sources in same turn
+**What happened:** Playtester reported +9 HP heal on a Citation Needed enemy when intent only shows "+5".
+**Why (WAI):** The enemy has two completely independent HP gain paths that can overlap in the same turn window:
+  1. Heal intent (`value: 5`, telegraph: "Consume remains") — fires on the ENEMY's turn.
+  2. `onPlayerChargeWrong` block-steal (up to +5 HP) — fires on the PLAYER's turn when they wrong-charge.
+  Both paths can trigger in the same turn, allowing up to +10 HP total. This is working as intended.
+**UX gap identified:** There is no floating text or combat log entry when the block-steal fires. Players lose shield silently and the enemy HP bar jumps without a labeled source. This is a telegraph clarity problem.
+**Fix needed (ui-agent):** Emit a labeled floating combat text event (e.g. "Block stolen!") from the `drainPlayerBlock` callback in `turnManager.ts` so the block-steal is distinguishable from standard healing.
+**Rule:** When an enemy has both an intent and a reactive hook that affect the same stat, document the interaction and ensure both sources are visible to the player.
+
+### 2026-04-02 — Sub-deck names showing as "Group 1/2/3" for decks like ancient_greece
+**What happened:** Knowledge decks with subDecks that only have `chainThemeId` (no `factIds`) fell through to Priority 3 in `extractTopicGroups()`, generating generic "Group 1", "Group 2" labels instead of real sub-deck names.
+**Why:** The Priority 1 sub-deck path did `(sd.factIds ?? []).filter(...)` — when `factIds` is undefined, this returns an empty array, so every sub-deck was skipped, producing 0 groups. Execution then fell through to Priority 3.
+**Root cause:** `ancient_greece` (and other knowledge decks) store sub-deck membership via `chainThemeId` on facts rather than an explicit `factIds` array. The extraction function didn't handle this format.
+**Fix:** In the Priority 1 sub-deck loop, when `sd.factIds` is absent/empty but `sd.chainThemeId` is set, fall back to matching facts by `fact.chainThemeId === sd.chainThemeId`. The cast type was also updated: `factIds?: string[]` and `chainThemeId?: number` (both optional).
+**Rule:** When adding new deck formats, ensure `extractTopicGroups()` handles both `factIds` and `chainThemeId` sub-deck styles. Test with real decks like `ancient_greece`, not just mock data with explicit factIds.
+
+### 2026-04-02 — CHAIN_MULTIPLIERS in docs were wrong
+**What happened:** `docs/mechanics/chains.md` showed `[1.0, 1.0, 1.3, 1.7, 2.2, 3.0]` but the actual values in `balance.ts` are `[1.0, 1.2, 1.5, 2.0, 2.5, 3.5]`.
+**Why:** Docs had stale values from an earlier balance iteration and were never updated.
+**Fix:** Always read `src/data/balance.ts` directly for canonical multiplier values. Updated in the doc during the AR-310 chain rotation feature.
+**Rule:** When writing tests for multiplier values, read `balance.ts` — never assume from docs.
+
+### 2026-04-02 — acceptReward() called getCardDetailCallbacks() for relics (returns null)
+**What happened:** `acceptReward()` in `src/dev/playtestAPI.ts` used `getCardDetailCallbacks().onAccept()` for relic rewards, but that bridge is only set for card rewards via the Svelte `CardDetailOverlay`. Relics never open a Svelte overlay, so `getCardDetailCallbacks()` always returns null, leaving the relic uncollected.
+**Why:** Relic and card acceptance look similar at the sprite tap level but diverge after: cards use a Svelte overlay bridge, relics use a Phaser Graphics overlay with native Phaser event listeners.
+**Fix:** After tapping the relic sprite (which calls `showRelicDetail`), find the accept button by filtering `scene.overlayObjects` for `obj.input?.enabled`. The order among interactives is: [0] dim rectangle, [1] accept button, [2] leave button. Emit `pointerdown` on `interactives[1]`.
+**Rule:** Never assume card and relic reward acceptance share the same code path. Check `RewardRoomScene.ts` `showRelicDetail` vs `showCardDetail` — they use completely different overlay systems.
+
+### 2026-04-02 — Broad measurement pools produce cross-unit distractors ("52,800 tonnes" for "10 metres")
+**What happened:** The `measurement_number` pool in world_wonders deck mixes heights (metres), weights (tonnes), durations (years), and counts in one pool. A Moai height fact ("10 metres") was getting weight distractors like "52,800 tonnes" because both are in the same pool and scored equally.
+**Why:** `selectDistractors` only had POS matching and confusion-matrix signals for ranking. All measurement facts in a shared pool were equally ranked at base 1.0, so random jitter determined selection.
+**Fix:** Added `extractUnit(answer)` helper that parses `"10 metres"` → `"metres"`. In the scoring loop, same-unit candidates get +5.0 and different-unit candidates get ×0.1 penalty. Applied to both real and synthetic pool members. The penalty is a scoring heuristic, not a hard filter — confusion matrix data (+10.0×count) still overrides when genuine confusion exists. When fewer same-unit candidates exist than requested, mixed-unit candidates fill remaining slots rather than underfilling.
+**Rule:** When content pools mix heterogeneous measurement types (heights, weights, durations), the unit-matching heuristic handles it at the code level. For best quality, split into per-unit sub-pools in the deck architecture. The code-level fix is a safety net, not a replacement for good pool design.
+
+### 2026-04-02 — Answer type pools must not mix list-format and single-name facts
+
+**What went wrong:** `rome_aug_five_good_emperors_list` (correct answer: "Nerva, Trajan, Hadrian, Antoninus Pius, Marcus Aurelius") was added to the `general_politician_names` answer pool alongside single-name facts like `rome_pun_metaurus` (correct answer: "Hasdrubal Barca"). At runtime the pool would surface the 5-name list as a distractor against a single-name question — a clear format mismatch that confuses players.
+
+Similarly, `general_knowledge-hindi-fourth-language-world` had "Bengali" (single word) as a distractor against a correct answer of "Mandarin, Spanish, English" (a 3-language list). All distractors must match the answer's format and length.
+
+**Why:** Pools are built by scanning `answerTypePoolId` fields without checking whether each fact's `correctAnswer` format is consistent with the pool's `answerFormat`.
+
+**Fix:** (1) Removed `rome_aug_five_good_emperors_list` from the `general_politician_names` pool `factIds` in `data/decks/ancient_rome.json`. (2) Replaced "Bengali" with "Mandarin, French, Arabic" (a 3-language list) in `src/data/seed/knowledge-general_knowledge.json`. Rule: before adding a fact to a pool, verify its `correctAnswer` format matches every other fact in that pool.
+
+### 2026-04-02 — renderTemplate empty-string replacements produced nonsensical questions
+**What happened:** `renderTemplate` in `questionTemplateSelector.ts` replaced `{language}`, `{targetLanguageWord}`, and `{reading}` placeholders with `''` (empty string) when a non-language fact was matched to a language-specific template via a shared answer pool. The unresolved-placeholder guard (`/\{\w+\}/.test(result)`) only caught still-braced tokens, not empty-string substitutions. Result: questions like "Who created the  programming language?" with double-spaces and blank fields.
+**Why:** Optional fact fields default to `''` in the replacements map. An empty string is a valid JS string — the replacement succeeded silently. The guard regex had no way to distinguish a meaningful empty from a missing field.
+**Fix:** Added `hasEmptyReplacement` tracking inside the `.replace()` callback. If any substituted value is empty/whitespace, the flag is set and the function falls back to `fact.quizQuestion` — same as the unresolved-placeholder path.
+**Rule:** In `renderTemplate`, any placeholder that resolves to empty/whitespace is treated identically to an unresolved placeholder. Both trigger a fallback to `fact.quizQuestion`.
