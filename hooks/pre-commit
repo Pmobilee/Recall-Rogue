@@ -1,0 +1,17 @@
+#!/bin/sh
+# Pre-commit hook: verify curated decks if any deck files are staged
+
+# Check if any deck JSON files are staged
+STAGED_DECKS=$(git diff --cached --name-only -- 'data/decks/*.json')
+
+if [ -n "$STAGED_DECKS" ]; then
+  echo "Deck files staged — running batch verification..."
+  node scripts/verify-all-decks.mjs 2>&1
+  if [ $? -ne 0 ]; then
+    echo ""
+    echo "ERROR: Deck verification failed. Fix issues before committing."
+    echo "Run: node scripts/verify-all-decks.mjs --verbose"
+    exit 1
+  fi
+  echo "All decks pass verification."
+fi
