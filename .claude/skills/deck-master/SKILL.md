@@ -109,6 +109,7 @@ This applies to: dates, casualty figures, names, quotes, locations, statistics, 
 | questionTemplates field missing | world_cuisines.json was missing `questionTemplates` entirely → `selectQuestionTemplate` crashed with "Cannot read properties of undefined" (2026-03-29) | EVERY deck JSON MUST have `"questionTemplates": []` and `"synonymGroups": []` even if empty. Run the field-check script after assembly. The code now has a `?? []` fallback but the data should still be correct. |
 | No visual in-game testing before shipping | 10 decks were built and validated via CLI only. When tested in-game, cuisines crashed immediately because of the missing field. CLI validation doesn't test the runtime rendering path. (2026-03-29) | ALWAYS run `__rrScenario.load('study-deck-DECKNAME')` in Playwright after CLI validation passes. Both gates must pass before a deck ships. |
 | Distractors matching other facts' correct answers in same pool | World Wonders (2026-04-01): 97 of 195 facts (50%) had distractors that were correct answers for sibling facts in the same pool. LLM-generated distractors pull from world knowledge, which includes the exact values in the pool. This causes "two right answers" to silently appear in quiz choices. | Check 7 in the structural validation script catches this automatically. ALWAYS run validation after generation. When generating distractors, instruct the worker to avoid using any value from the pool's `correctAnswer` set. |
+| Pool field naming / ID mismatches | WWII used `members` instead of `factIds` in pools; hiragana/katakana/hangul facts referenced `english_meanings` but pools were named `romanizations`/`characters`; norse_mythology had 8 facts referencing non-existent pools (2026-04-02) | ALWAYS use `factIds` (never `members`, `facts`, `items`). ALWAYS verify pool IDs match between facts and pool definitions. Run `node scripts/verify-all-decks.mjs` after every deck build — it catches ALL structural mismatches across all decks at once. |
 
 ### Lessons Learned: Grammar / Fill-Blank Deck Builds (2026-03-28)
 
@@ -207,6 +208,19 @@ VALIDATE
 ```
 
 **Zero issues = ship it. Any issues = fix before committing.**
+
+### Batch Verification — Run After Every Build
+
+The per-deck validation script above checks ONE deck. After building or modifying any deck, also run the batch verifier to catch cross-deck issues and ensure no regressions:
+
+```bash
+node scripts/verify-all-decks.mjs           # Summary: all 63 decks
+node scripts/verify-all-decks.mjs --verbose  # Per-fact failure details
+```
+
+12 checks per fact: braces in answer/question, answer-in-distractors, duplicate distractors, distractor count, pool size, missing fields, non-numeric bracket distractors, missing explanation, duplicate questions, orphaned pool refs, empty pools.
+
+Target: **0 failures, 0 warnings** across all decks. Any failure = fix before committing.
 
 ### Parallel Worker Deduplication Rules
 

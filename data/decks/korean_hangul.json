@@ -2928,9 +2928,7 @@
   ],
   "answerTypePools": [
     {
-      "id": "romanizations",
-      "label": "Sound Romanizations",
-      "answerFormat": "word",
+      "id": "english_meanings",
       "factIds": [
         "ko-hangul-gk-forward",
         "ko-hangul-n-forward",
@@ -2985,15 +2983,7 @@
         "ko-hangul-ka-forward",
         "ko-hangul-ta-forward",
         "ko-hangul-pa-forward",
-        "ko-hangul-ha-forward"
-      ],
-      "minimumSize": 5
-    },
-    {
-      "id": "characters",
-      "label": "Hangul Characters",
-      "answerFormat": "word",
-      "factIds": [
+        "ko-hangul-ha-forward",
         "ko-hangul-gk-reverse",
         "ko-hangul-n-reverse",
         "ko-hangul-dt-reverse",
@@ -3048,8 +3038,7 @@
         "ko-hangul-ta-reverse",
         "ko-hangul-pa-reverse",
         "ko-hangul-ha-reverse"
-      ],
-      "minimumSize": 5
+      ]
     }
   ],
   "synonymGroups": [

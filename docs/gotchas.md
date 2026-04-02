@@ -422,3 +422,18 @@ All are now at the same floor 1 HP floor (7–9 base) as the rest of Act 1 commo
 **Fix:** `selectDomain()` now checks `getScreen()` first. If on `deckSelectionHub`, it clicks `[data-testid="panel--trivia"]` first, then clicks the domain card, then clicks the Start Run footer button.
 
 **Rule:** When writing `__rrPlay` API navigation helpers, map the FULL user flow — don't assume the game is already on the expected sub-screen. Check `getScreen()` and navigate forward from wherever the player is.
+
+### 2026-04-02 — Batch deck audit found structural issues in 7 of 63 decks
+
+**What went wrong:** First-ever batch run of `verify-all-decks.mjs` across all 63 curated decks found:
+- world_war_ii: 9 pools used `members` instead of `factIds` (wrong field name), plus 255 facts referenced 76 non-canonical pool IDs
+- norse_mythology: 8 facts referenced non-existent pools (`creation_facts`, `numbers`)
+- japanese_hiragana/katakana, korean_hangul: all facts referenced `english_meanings` pool but pools were named `romanizations`/`characters`
+- human_anatomy: 19 non-image duplicate questions (`image_answers` facts without view disambiguation)
+- 3 false positives correctly excluded: world_flags/countries (image-based identical questions by design), japanese_n3_grammar (`{___}` fill-in-blank by design)
+
+**Why:** Each deck was validated individually at build time but never cross-checked with the same verifier. Different build sessions used inconsistent pool naming conventions.
+
+**Fix:** Created `scripts/verify-all-decks.mjs` batch verifier (12 checks per fact). Fixed all 7 decks. Added false-positive exclusions for `image_question` duplicates and `{___}` braces.
+
+**Prevention:** Run `node scripts/verify-all-decks.mjs` after ANY deck modification. Added to `.claude/rules/content-pipeline.md` as mandatory step.

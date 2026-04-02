@@ -112,6 +112,22 @@ Skills that auto-stamp the registry after running: `/inspect`, `/visual-inspect`
 
 Use `/inspect` as the master orchestrator — it fires all applicable methods in parallel.
 
+## Deck Structural Validation
+
+Curated deck quality is verified at two levels:
+
+**Per-deck** (during build): Inline validation script in `/deck-master` skill — run against the specific deck being built.
+
+**Batch** (after any deck change):
+```bash
+node scripts/verify-all-decks.mjs           # All decks, summary table
+node scripts/verify-all-decks.mjs --verbose  # Per-fact details on failures
+```
+
+Checks 12 quality dimensions across all 63 decks (45K+ facts): pool field naming, orphaned pool references, duplicate questions (excluding image-based), braces in questions (excluding fill-in-blank `{___}`), distractor collisions, missing fields, pool size minimums.
+
+Run after modifying any deck JSON or assembly script. Target: 0 failures.
+
 ## Standard Verification Sequence
 
 After any code change, run in order:

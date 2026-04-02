@@ -39,6 +39,23 @@ Every fact-generation worker MUST receive verified source data IN ITS PROMPT.
 - Chain themes ≥8 per knowledge deck, ≥3 themes selected per run
 - Total facts ≥30-50 per deck
 - Synonyms computed
-- No duplicate questions
+- No duplicate questions (image_question facts excluded — image differentiates them)
 - funScore and difficulty assigned
 - No ambiguous answers
+- `answerTypePools` uses `factIds` array — NEVER `members`, `facts`, or `items`
+- Every fact's `answerTypePoolId` references an existing pool in the deck
+- Pool `id` fields match what facts reference — no naming mismatches
+- Image-based facts (`imageAssetPath`) must have `quizMode: "image_question"` or `"image_answers"`
+- Fill-in-blank `{___}` in quizQuestion is valid grammar syntax, not a braces error
+- Pool `factIds` populated by scanning facts, never hand-crafted
+
+## Batch Deck Verification — MANDATORY
+
+After modifying ANY curated deck, run the batch verifier:
+
+```bash
+node scripts/verify-all-decks.mjs           # Summary table (all decks)
+node scripts/verify-all-decks.mjs --verbose  # Per-fact details on failures
+```
+
+12 checks per fact: braces in answer/question, answer-in-distractors, duplicate distractors, distractor count, pool size, missing fields, non-numeric bracket distractors, missing explanation, duplicate questions, orphaned pool refs, empty pools. Target: **0 failures** across all decks.

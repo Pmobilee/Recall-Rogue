@@ -3123,7 +3123,7 @@
       "answerTypePoolId": "english_meanings",
       "difficulty": 4,
       "funScore": 3,
-      "quizQuestion": "Which katakana character represents 'ji'?",
+      "quizQuestion": "Which katakana character represents 'ji' (alternate form ヂ)?",
       "explanation": "In katakana, the sound 'ji' is represented by the character ヂ.",
       "visualDescription": "",
       "sourceName": "Standard Japanese Kana Chart",
@@ -3178,7 +3178,7 @@
       "answerTypePoolId": "english_meanings",
       "difficulty": 4,
       "funScore": 3,
-      "quizQuestion": "Which katakana character represents 'zu'?",
+      "quizQuestion": "Which katakana character represents 'zu' (alternate form ヅ)?",
       "explanation": "In katakana, the sound 'zu' is represented by the character ヅ.",
       "visualDescription": "",
       "sourceName": "Standard Japanese Kana Chart",
@@ -5630,9 +5630,7 @@
   ],
   "answerTypePools": [
     {
-      "id": "romanizations",
-      "label": "Sound Romanizations",
-      "answerFormat": "word",
+      "id": "english_meanings",
       "factIds": [
         "ja-katakana-a-forward",
         "ja-katakana-i-forward",
@@ -5737,15 +5735,7 @@
         "ja-katakana-byo-forward",
         "ja-katakana-pya-forward",
         "ja-katakana-pyu-forward",
-        "ja-katakana-pyo-forward"
-      ],
-      "minimumSize": 5
-    },
-    {
-      "id": "characters",
-      "label": "Katakana Characters",
-      "answerFormat": "word",
-      "factIds": [
+        "ja-katakana-pyo-forward",
         "ja-katakana-a-reverse",
         "ja-katakana-i-reverse",
         "ja-katakana-u-reverse",
@@ -5850,8 +5840,7 @@
         "ja-katakana-pya-reverse",
         "ja-katakana-pyu-reverse",
         "ja-katakana-pyo-reverse"
-      ],
-      "minimumSize": 5
+      ]
     }
   ],
   "synonymGroups": [

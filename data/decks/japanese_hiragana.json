@@ -3123,7 +3123,7 @@
       "answerTypePoolId": "english_meanings",
       "difficulty": 4,
       "funScore": 3,
-      "quizQuestion": "Which hiragana character represents 'ji'?",
+      "quizQuestion": "Which hiragana character represents 'ji' (alternate form ぢ)?",
       "explanation": "In hiragana, the sound 'ji' is represented by the character ぢ.",
       "visualDescription": "",
       "sourceName": "Standard Japanese Kana Chart",
@@ -3178,7 +3178,7 @@
       "answerTypePoolId": "english_meanings",
       "difficulty": 4,
       "funScore": 3,
-      "quizQuestion": "Which hiragana character represents 'zu'?",
+      "quizQuestion": "Which hiragana character represents 'zu' (alternate form づ)?",
       "explanation": "In hiragana, the sound 'zu' is represented by the character づ.",
       "visualDescription": "",
       "sourceName": "Standard Japanese Kana Chart",
@@ -5630,9 +5630,7 @@
   ],
   "answerTypePools": [
     {
-      "id": "romanizations",
-      "label": "Sound Romanizations",
-      "answerFormat": "word",
+      "id": "english_meanings",
       "factIds": [
         "ja-hiragana-a-forward",
         "ja-hiragana-i-forward",
@@ -5737,15 +5735,7 @@
         "ja-hiragana-byo-forward",
         "ja-hiragana-pya-forward",
         "ja-hiragana-pyu-forward",
-        "ja-hiragana-pyo-forward"
-      ],
-      "minimumSize": 5
-    },
-    {
-      "id": "characters",
-      "label": "Hiragana Characters",
-      "answerFormat": "word",
-      "factIds": [
+        "ja-hiragana-pyo-forward",
         "ja-hiragana-a-reverse",
         "ja-hiragana-i-reverse",
         "ja-hiragana-u-reverse",
@@ -5850,8 +5840,7 @@
         "ja-hiragana-pya-reverse",
         "ja-hiragana-pyu-reverse",
         "ja-hiragana-pyo-reverse"
-      ],
-      "minimumSize": 5
+      ]
     }
   ],
   "synonymGroups": [
