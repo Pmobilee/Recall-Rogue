@@ -141,8 +141,8 @@
     width: calc(40px * var(--layout-scale, 1));
     height: calc(40px * var(--layout-scale, 1));
     border-radius: 50%;
-    border: calc(1px * var(--layout-scale, 1)) solid rgba(255, 255, 255, 0.4);
-    background: rgba(20, 28, 40, 0.6);
+    border: none;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -150,7 +150,7 @@
     -webkit-tap-highlight-color: transparent;
     padding: 0;
     font-family: inherit;
-    /* White outline glow instead of dark drop-shadow for better icon visibility */
+    /* White outline glow for icon visibility against varied backgrounds */
     filter: drop-shadow(0 0 calc(1px * var(--layout-scale, 1)) rgba(255,255,255,0.7)) drop-shadow(0 0 calc(1px * var(--layout-scale, 1)) rgba(255,255,255,0.5));
   }
 
@@ -259,8 +259,8 @@
   }
 
   .effect-sprite-icon {
-    width: calc(28px * var(--layout-scale, 1));
-    height: calc(28px * var(--layout-scale, 1));
+    width: calc(32px * var(--layout-scale, 1));
+    height: calc(32px * var(--layout-scale, 1));
     image-rendering: pixelated;
     object-fit: contain;
   }
