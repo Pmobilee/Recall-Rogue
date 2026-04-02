@@ -9,7 +9,7 @@
 ## Card Play Values
 - Quick Play = quickPlayValue + masteryBonus (1.0× effective)
 - Charge Correct = (quickPlayValue + masteryBonus) × 1.5 — mastery included BEFORE multiplier
-- Charge Wrong = FIZZLE_EFFECT_RATIO (0.25×) — NEVER zero, always resolves
+- Charge Wrong = FIZZLE_EFFECT_RATIO (0.25×) — NEVER zero, always resolves. Applies to baseEffectValue, not quickPlayValue. Was 0.5× briefly (2026-04-01) but reverted — at 0.5× fizzle exceeded quick play damage.
 - +1 AP surcharge for Charging, waived during Surge turns and Chain Momentum
 
 ## Mastery Scaling (2-3× targets, rebalanced 2026-03-31)

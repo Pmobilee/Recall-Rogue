@@ -164,7 +164,7 @@ describe('selectDistractors — synthetic distractors', () => {
   });
 
   it('synthetic candidates appear as distractors when real pool is exhausted', () => {
-    // 2 real pool members + correct fact + 3 synthetics — enough for pool path
+    // 2 real pool members + correct + 3 synthetics — enough for pool path
     const realFacts = [
       makeFact('f1', 'Alpha'),
       makeFact('f2', 'Beta'),
@@ -286,5 +286,133 @@ describe('selectDistractors — synonym exclusion', () => {
     // f2 (Beta) must not appear since it's in the synonym group
     const answers = result.distractors.map(d => d.correctAnswer.toLowerCase());
     expect(answers).not.toContain('beta');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// selectDistractors — unit matching
+// ---------------------------------------------------------------------------
+
+describe('selectDistractors — unit matching', () => {
+  /**
+   * Build a mixed measurement pool containing heights (metres), weights (tonnes),
+   * and counts (years). This simulates the world_wonders measurement_number pool.
+   */
+  function makeMixedMeasurementPool() {
+    const heightFacts = [
+      makeFact('h1', '8 metres'),
+      makeFact('h2', '12 metres'),
+      makeFact('h3', '21 metres'),
+      makeFact('h4', '30 metres'),
+      makeFact('h5', '137 metres'),
+    ];
+    const weightFacts = [
+      makeFact('w1', '100 tonnes'),
+      makeFact('w2', '820 tonnes'),
+      makeFact('w3', '5,000 tonnes'),
+      makeFact('w4', '52,800 tonnes'),
+      makeFact('w5', '6,000,000 tonnes'),
+    ];
+    const yearFacts = [
+      makeFact('y1', '50 years'),
+      makeFact('y2', '120 years'),
+      makeFact('y3', '500 years'),
+    ];
+    const allFacts = [...heightFacts, ...weightFacts, ...yearFacts];
+    const pool = makePool(allFacts.map(f => f.id));
+    return { heightFacts, weightFacts, yearFacts, allFacts, pool };
+  }
+
+  it('prefers same-unit distractors over different-unit distractors', () => {
+    const { heightFacts, weightFacts, allFacts, pool } = makeMixedMeasurementPool();
+    // Correct fact is a height measurement
+    const correctFact = makeFact('moai', '10 metres', { answerTypePoolId: 'pool_main', distractors: [] });
+    const allWithCorrect = [...allFacts, correctFact];
+    const poolWithCorrect: AnswerTypePool = {
+      ...pool,
+      factIds: [...pool.factIds, correctFact.id],
+    };
+
+    const result = selectDistractors(correctFact, poolWithCorrect, allWithCorrect, noSynonymGroups, emptyConfusion, null, 3, 1);
+
+    const answers = result.distractors.map(d => d.correctAnswer);
+    const weightAnswers = weightFacts.map(f => f.correctAnswer);
+    const hasWeightDistractor = answers.some(a => weightAnswers.includes(a));
+
+    // All 3 distractors should be heights, not weights
+    expect(hasWeightDistractor).toBe(false);
+    // Each selected distractor should end in "metres"
+    for (const answer of answers) {
+      expect(answer).toMatch(/metres$/);
+    }
+  });
+
+  it('does not penalise non-measurement answers (no unit extracted)', () => {
+    // When the correct answer has no unit, unit matching is a no-op
+    const nameFacts = [
+      makeFact('n1', 'Great Wall of China'),
+      makeFact('n2', 'Colosseum'),
+      makeFact('n3', 'Eiffel Tower'),
+      makeFact('n4', 'Machu Picchu'),
+      makeFact('n5', 'Taj Mahal'),
+      makeFact('n6', 'Angkor Wat'),
+    ];
+    const correctFact = nameFacts[0];
+    const pool = makePool(nameFacts.map(f => f.id));
+
+    // Should still return the right count without error
+    const result = selectDistractors(correctFact, pool, nameFacts, noSynonymGroups, emptyConfusion, null, 3, 1);
+    expect(result.distractors.length).toBe(3);
+  });
+
+  it('same-unit distractors outrank different-unit distractors even without confusion data', () => {
+    // Pool has 3 metres facts and 5 tonnes facts.
+    // Correct answer is in metres — all 3 returned distractors must be metres.
+    const metresFacts = [
+      makeFact('m1', '5 metres'),
+      makeFact('m2', '15 metres'),
+      makeFact('m3', '25 metres'),
+    ];
+    const tonnesFacts = [
+      makeFact('t1', '100 tonnes'),
+      makeFact('t2', '200 tonnes'),
+      makeFact('t3', '300 tonnes'),
+      makeFact('t4', '400 tonnes'),
+      makeFact('t5', '500 tonnes'),
+    ];
+    const correctFact = makeFact('target', '10 metres', { answerTypePoolId: 'pool_main', distractors: [] });
+    const allFacts = [...metresFacts, ...tonnesFacts, correctFact];
+    const pool = makePool(allFacts.map(f => f.id));
+
+    const result = selectDistractors(correctFact, pool, allFacts, noSynonymGroups, emptyConfusion, null, 3, 1);
+    const answers = result.distractors.map(d => d.correctAnswer);
+
+    // Must return exactly the 3 metres facts as distractors
+    for (const answer of answers) {
+      expect(answer).toMatch(/metres$/);
+    }
+    expect(answers).not.toContain(expect.stringMatching(/tonnes$/));
+  });
+
+  it('falls back gracefully to mixed units when not enough same-unit candidates exist', () => {
+    // Only 1 other metres fact available — must fill remaining slots from other units
+    const metresFact = makeFact('m1', '5 metres');
+    const tonnesFacts = [
+      makeFact('t1', '100 tonnes'),
+      makeFact('t2', '200 tonnes'),
+      makeFact('t3', '300 tonnes'),
+      makeFact('t4', '400 tonnes'),
+    ];
+    const correctFact = makeFact('target', '10 metres', { answerTypePoolId: 'pool_main', distractors: [] });
+    const allFacts = [metresFact, ...tonnesFacts, correctFact];
+    const pool = makePool(allFacts.map(f => f.id));
+
+    const result = selectDistractors(correctFact, pool, allFacts, noSynonymGroups, emptyConfusion, null, 3, 1);
+    const answers = result.distractors.map(d => d.correctAnswer);
+
+    // Should still return 3 distractors total (no crash, no underfill)
+    expect(answers.length).toBe(3);
+    // The metres fact should be included (highest score)
+    expect(answers).toContain('5 metres');
   });
 });

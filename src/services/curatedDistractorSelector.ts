@@ -60,6 +60,25 @@ function makeSyntheticFact(synAnswer: string, answerTypePoolId: string): DeckFac
 }
 
 /**
+ * Extract the measurement unit from an answer string.
+ * Returns the unit suffix (e.g., "metres", "tonnes", "years") or null if no unit found.
+ *
+ * This is used by selectDistractors to prevent cross-unit contamination in broad
+ * measurement pools — e.g., "52,800 tonnes" appearing as a distractor for "10 metres".
+ */
+function extractUnit(answer: string): string | null {
+  // Normalize: strip brackets, trim
+  const clean = answer.replace(/[{}]/g, '').trim();
+  // Match: number (with optional commas/decimals) followed by unit word(s)
+  // e.g., "10 metres" → "metres", "52,800 tonnes" → "tonnes", "120 years" → "years"
+  const match = clean.match(/[\d,.]+\s+(.+)$/);
+  if (match) {
+    return match[1].toLowerCase().trim();
+  }
+  return null;
+}
+
+/**
  * Select distractors from the deck's answer type pool, weighted by confusion matrix.
  *
  * Priority order (§4.4):
@@ -175,6 +194,10 @@ export function selectDistractors(
 
   const candidates: ScoredCandidate[] = [];
 
+  // Pre-extract the correct answer's unit once, outside the candidate loop.
+  // Only non-null when the correct answer is a measurement like "10 metres".
+  const correctUnit = extractUnit(correctFact.correctAnswer);
+
   for (const factId of answerPool.factIds) {
     if (synonymExcludeIds.has(factId)) continue;
 
@@ -217,6 +240,18 @@ export function selectDistractors(
       }
     }
 
+    // Unit matching: boost candidates that share the same measurement unit/format.
+    // This prevents "52,800 tonnes" from appearing as a distractor for a "10 metres" answer
+    // in broad measurement pools that mix heights, weights, counts, durations, etc.
+    if (correctUnit) {
+      const candidateUnit = extractUnit(candidateFact.correctAnswer);
+      if (candidateUnit === correctUnit) {
+        score += 5.0;  // Strong boost for same unit
+      } else if (candidateUnit && candidateUnit !== correctUnit) {
+        score *= 0.1;  // Very heavy penalty for different unit
+      }
+    }
+
     // Similar difficulty band (±1)
     const diffDelta = Math.abs(correctFact.difficulty - candidateFact.difficulty);
     if (diffDelta <= 1) {
@@ -242,7 +277,20 @@ export function selectDistractors(
       if (synAnswer.toLowerCase() === correctFact.correctAnswer.toLowerCase()) continue;
       // Skip if the synthetic ID is in the synonym exclusion set (defensive)
       if (synonymExcludeIds.has(synId)) continue;
-      candidates.push({ factId: synId, score: 0.5, source: 'pool_fill' });
+
+      // Apply unit matching to synthetic distractors as well.
+      // A synthetic "100 tonnes" must not appear for a "10 metres" correct answer.
+      let synScore = 0.5;
+      if (correctUnit) {
+        const synUnit = extractUnit(synAnswer);
+        if (synUnit === correctUnit) {
+          synScore += 5.0;  // Strong boost for same unit
+        } else if (synUnit && synUnit !== correctUnit) {
+          synScore *= 0.1;  // Very heavy penalty for different unit
+        }
+      }
+
+      candidates.push({ factId: synId, score: synScore, source: 'pool_fill' });
     }
   }
 

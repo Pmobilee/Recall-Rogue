@@ -1,7 +1,7 @@
 # Visual Testing with Playwright
 
 > **Purpose:** How to visually test Recall Rogue using Playwright MCP and E2E scripts — screenshots, scenario loading, debug tools, and known gotchas.
-> **Last verified:** 2026-04-01
+> **Last verified:** 2026-04-02
 > **Source files:** `src/dev/screenshotHelper.ts`, `src/dev/scenarioSimulator.ts`, `src/dev/debugBridge.ts`, `src/dev/layoutDump.ts`, `tests/e2e/01-app-loads.cjs`, `tests/e2e/03-save-resume.cjs`
 
 ## Two Modes
@@ -157,8 +157,25 @@ Key selectors for interactive elements:
 | `btn-delve` | Delve deeper |
 | `combo-counter` | Combo display |
 | `room-choice-0` … `room-choice-2` | Dungeon map room choices |
+| `rest-heal` | Rest option — heals 30% HP (`RestRoomOverlay.svelte`) |
+| `rest-study` | Study option on rest screen — triggers `StudyQuizOverlay` (`RestRoomOverlay.svelte`) |
+| `rest-meditate` | Meditate option — remove card from deck (`RestRoomOverlay.svelte`) |
 
 Note: Playwright cannot click Phaser canvas objects — clicks do not reach Phaser's input system. Use `browser_evaluate` to trigger game actions programmatically, or use `__rrScenario` to set up the state you need.
+
+## Rest Room Study Flow
+
+The rest-room study session uses two components:
+
+1. **RestRoomOverlay.svelte** — rendered at screen `restStudy`. Has `data-testid="rest-study"` on the Study button. Clicking it calls `onstudy()` which mounts `StudyQuizOverlay`.
+2. **StudyQuizOverlay.svelte** — the quiz overlay rendered during the in-run study session. It has **no `data-testid` attributes**. To interact with it:
+   - Answer buttons: `.answer-btn` (text choices) or `.answer-img-btn` (image choices)
+   - The overlay auto-advances 1200ms after each answer
+   - Continue button at end: `.continue-btn`
+
+The old selectors `study-size-N` and `btn-start-study` belonged to the unmounted `StudySession.svelte` and do not exist in the live game.
+
+`window.__rrPlay.startStudy()` navigates to `restStudy` and clicks `[data-testid="rest-study"]`. The `size` parameter is accepted for backward-compatibility but is not used — session size is fixed by the game logic.
 
 ## Reward Room: Phaser-Only Screen
 
@@ -168,7 +185,8 @@ The reward room is rendered entirely in the Phaser `RewardRoomScene` — there a
 2. Otherwise accesses `CardGameManager` via `Symbol.for('rr:cardGameManager')` and gets the `RewardRoomScene`.
 3. Emits `pointerdown` on gold/vial sprite objects to collect them (each sprite has a Phaser input listener).
 4. For card rewards, emits `pointerdown` on the card sprite (opens the Svelte card detail overlay), then calls `getCardDetailCallbacks().onAccept()` from `rewardRoomBridge`.
-5. Waits for `checkAutoAdvance` to fire the `sceneComplete` event once all items are collected.
+5. For relic rewards, emits `pointerdown` on the relic sprite (opens the Phaser `showRelicDetail` overlay), then emits `pointerdown` on the Phaser Graphics accept button. The accept button is the second interactive object in `scene.overlayObjects` (index 1 among objects where `obj.input?.enabled` is true). Do NOT use `getCardDetailCallbacks()` for relics — that returns null because relics have no Svelte overlay.
+6. Waits for `checkAutoAdvance` to fire the `sceneComplete` event once all items are collected.
 
 ```javascript
 // Bot usage — accepts all rewards and waits for auto-advance

@@ -62,7 +62,19 @@ Report findings as:
 - **DRIFT**: Registry/GDD out of sync with code
 - **RANGE**: Value outside expected bounds
 
+### 6. Curated Deck Pool-Template Compatibility
+- For every deck with `questionTemplates`, check that each template's `answerPoolId` references a pool where ALL facts have the fields the template's `questionFormat` placeholders require
+- Example: template `"Who created the {language} programming language?"` uses `{language}` → every fact in that pool must have a non-empty `language` field (or equivalent fact property)
+- Extract placeholders from `questionFormat` via `/\{(\w+)\}/g`, then check each fact in the referenced pool has that field non-empty
+- Flag: **TEMPLATE_POOL_MISMATCH**: Template X references pool Y, but fact Z in pool Y has no value for placeholder `{field}`
+- This prevents nonsensical questions like "Who created the  programming language?" (answer: Elon Musk) from 2026-04-02 incident
+
+### 7. Answer Format Consistency Within Pools
+- Every fact in a pool must have a `correctAnswer` in the same format (single name vs list, number vs text, with-unit vs without-unit)
+- Flag: **FORMAT_MISMATCH**: Pool X has mixed answer formats (e.g., single names and comma-separated lists)
+
 ## When to Use
 - After adding any new enemy, relic, card mechanic, or status effect
 - After removing or renaming game elements
+- After adding or modifying curated decks (especially answer type pools and question templates)
 - Periodically as a health check (suggest monthly or before major releases)

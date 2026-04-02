@@ -560,3 +560,13 @@ Similarly, `general_knowledge-hindi-fourth-language-world` had "Bengali" (single
 **Why:** Optional fact fields default to `''` in the replacements map. An empty string is a valid JS string — the replacement succeeded silently. The guard regex had no way to distinguish a meaningful empty from a missing field.
 **Fix:** Added `hasEmptyReplacement` tracking inside the `.replace()` callback. If any substituted value is empty/whitespace, the flag is set and the function falls back to `fact.quizQuestion` — same as the unresolved-placeholder path.
 **Rule:** In `renderTemplate`, any placeholder that resolves to empty/whitespace is treated identically to an unresolved placeholder. Both trigger a fallback to `fact.quizQuestion`.
+
+### 2026-04-02 — 9 decks had template-pool placeholder mismatches undetected before check #13
+
+**What happened:** `scripts/verify-all-decks.mjs` only had 12 checks. `questionTemplates` that reference an `answerPoolId` can specify `{placeholder}` names in their `questionFormat` (e.g., `{language}`, `{domain}`, `{symbol}`) — but the facts in those pools never had those fields populated. The `renderTemplate` fix (same day) added a fallback to `fact.quizQuestion`, which silently masked the underlying data gap. 3,855 fact/template combinations across 9 decks were affected (computer_science, greek_mythology, norse_mythology, us_presidents, periodic_table, solar_system, nasa_missions, us_states, world_capitals).
+
+**Why:** No automated check existed to verify that pool facts actually carry the fields a template requires. The deck verifier only checked per-fact distractor quality, not template-to-pool field compatibility.
+
+**Fix:** Added check #13 to `verifyDeck()` in `scripts/verify-all-decks.mjs`. For each `questionTemplate`, extracts all `{placeholder}` names from `questionFormat`, finds all facts in the referenced pool, and flags any fact missing a value for any placeholder. Also introduced `addDeckIssue()` helper (which increments both `issueCounts` and `deckLevelFailCount`) so deck-level check failures surface in the summary table `failCount` column. Check #12 (empty pools) was also upgraded from `addIssue()` to `addDeckIssue()` for consistency.
+
+**Rule:** When adding a `questionTemplate` to a deck, every fact in the referenced pool MUST have non-empty values for every `{placeholder}` in the `questionFormat`. Run `node scripts/verify-all-decks.mjs` after any template or pool change.

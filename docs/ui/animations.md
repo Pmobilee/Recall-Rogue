@@ -1,8 +1,8 @@
 # Animation Systems
 
 > **Purpose:** Documents all three animation layers (CSS transitions, Web Animations API, Phaser tweens), their conventions, and when to use each. Reference when adding any animated element.
-> **Last verified:** 2026-03-31
-> **Source files:** `src/ui/utils/mechanicAnimations.ts`, `src/ui/utils/roomPopIn.ts`, `src/ui/utils/cardFrameV2.ts`, `src/ui/components/CardHand.svelte`, `src/ui/components/ParallaxTransition.svelte`, `src/ui/components/DamageNumber.svelte`, `src/game/systems/ScreenShakeSystem.ts`
+> **Last verified:** 2026-04-02
+> **Source files:** `src/ui/utils/mechanicAnimations.ts`, `src/ui/utils/roomPopIn.ts`, `src/ui/utils/cardFrameV2.ts`, `src/ui/components/CardHand.svelte`, `src/ui/components/ParallaxTransition.svelte`, `src/ui/components/DamageNumber.svelte`, `src/game/systems/ScreenShakeSystem.ts`, `src/data/petAnimations.ts`, `src/data/petWaypoints.ts`, `src/ui/effects/petBehavior.ts`
 
 ---
 
@@ -115,7 +115,7 @@ After each animation, inline `opacity`/`transform` styles are cleared so CSS tak
 
 Plays `'ui_pop_in'` audio per element via `audioManager`.
 
-Respects `prefers-reduced-motion` and `localStorage['card:reduceMotionMode'] === 'true'` — skips all animation if either is set.
+Respects `prefers-reduced-motion`, `localStorage['card:reduceMotionMode'] === 'true'`, and `isTurboMode()` — skips all animation if any condition is true. Turbo skip ensures bots and automated testers see fully visible, interactive elements immediately instead of waiting up to 2.5s.
 
 `popInHidden(el)` — Svelte action to pre-hide elements before `staggerPopIn` runs.
 
@@ -181,3 +181,116 @@ Camera pinned to `(0,0)` every frame before applying shake offset — prevents d
 `setIntensity(0.0–1.0)` — user-facing shake intensity preference. Respects `prefers-reduced-motion`.
 
 Call `update(deltaMs)` each frame from the scene's `update()`. Call `stop()` to cancel immediately.
+
+---
+
+## Pet Animation System
+
+**Source files:**
+- `src/data/petAnimations.ts` — Spritesheet configs per species and behavior
+- `src/data/petWaypoints.ts` — Hub waypoint definitions and weighted selection
+- `src/ui/effects/petBehavior.ts` — Pure-function state machine
+- `src/ui/components/AnimatedPet.svelte` — Canvas renderer and hub integration
+- Tests: `src/ui/effects/petBehavior.test.ts` (27 tests)
+
+### Architecture
+
+The pet system separates concerns into three layers:
+
+1. **Animation data** (`petAnimations.ts`) — Spritesheet frame counts, frame durations, and loop flags per species/behavior. No runtime logic.
+2. **Spatial data** (`petWaypoints.ts`) — Named positions on the hub screen expressed as percentage of the hub-center container (scales automatically with `--layout-scale`). Includes attraction weights for biased destination selection.
+3. **State machine** (`petBehavior.ts`) — Tick-driven pure functions. Consumed by `AnimatedPet.svelte`.
+
+### Types
+
+```ts
+type PetSpecies = 'cat' | 'owl' | 'fox' | 'dragon_whelp'
+type PetBehavior = 'idle' | 'walk' | 'sit' | 'lick' | 'sleep' | 'react'
+```
+
+Only `'cat'` has art configs currently. `getPetConfig(species)` falls back to cat for undefined species.
+
+### Cat Display Size
+
+The cat renders at **96×96px** (CSS display size, before `--layout-scale`). The spritesheet frames are 64×64px native; CSS upscaling is applied via `.pet-canvas { width: calc(96px * var(--layout-scale, 1)); height: calc(96px * var(--layout-scale, 1)); }` with `image-rendering: pixelated` to keep pixels crisp.
+
+`displayWidth` / `displayHeight` on `PetSpeciesConfig` record the pre-scale display size. Update both the config and the `.pet-canvas` CSS if changing this.
+
+### Cat Frame Durations
+
+| Behavior | frameDuration | loop | Notes |
+|---|---|---|---|
+| `idle` | 600ms | true | Slow, relaxed look-around loop |
+| `walk` | 180ms | true | Walking patrol |
+| `sit` | 800ms | true | Slow tail flick loop |
+| `lick` | 400ms | true | Grooming pace loop |
+| `sleep` | 1200ms | **false** | Tuck-in plays once, holds last frame for the nap duration |
+| `react` | 200ms | false | One-shot startled; returns to previous behavior |
+
+**Sleep loop note:** `loop: false` on sleep prevents the tuck-in sequence from replaying. The behavior state machine holds the `sleep` state for 15–30s, so the final sleeping frame persists naturally.
+
+### Behaviors
+
+| Behavior | Duration | Notes |
+|---|---|---|
+| `idle` | 5–15 s | Default resting state |
+| `walk` | Distance-driven | ~1.8%/sec in hub-container % coords |
+| `sit` | 8–20 s | Near campfire: 1.5× weight |
+| `lick` | 4–8 s | Self-grooming |
+| `sleep` | 15–30 s | Near campfire: 1.5× weight |
+| `react` | 1 s fixed | Triggered by click; returns to previous behavior |
+
+Walk speed constant: `WALK_SPEED_PER_MS = 0.0018` (relaxed stroll, was 0.0025).
+
+### Waypoints
+
+6 named ground-level waypoints forming a walkable path along the bottom of the hub campfire scene (Y 74–78%, X 18–80%). All waypoints are clear of camp UI elements (doors, library, shop, tent).
+
+| Waypoint | X% | Y% | Weight | Notes |
+|---|---|---|---|---|
+| `campfire` | 45 | 75 | 2.0 | `nearCampfire: true` — boosts sleep/sit |
+| `near_character` | 58 | 74 | 1.2 | Near the player character |
+| `ground_left` | 18 | 78 | 0.8 | Left edge of floor |
+| `ground_right` | 80 | 78 | 0.8 | Right edge of floor |
+| `ground_center_left` | 32 | 76 | 0.6 | Left-center floor |
+| `ground_center_right` | 62 | 76 | 0.6 | Right-center floor |
+
+`pickNextWaypoint(currentId, recentlyVisited)` excludes current, penalizes last 3 visited (0.3× weight), uses weighted random.
+
+### State Machine API
+
+All functions are pure (no side effects):
+
+| Function | Purpose |
+|---|---|
+| `createInitialPetState(startWaypoint?)` | Fresh state at given waypoint (default: campfire) |
+| `tickPet(state, deltaMs, animConfig)` | Main update — advance frames, walk, transition |
+| `selectNextBehavior(current, nearCampfire, previous?)` | Weighted next behavior; react returns previous |
+| `triggerReact(state)` | Interrupt with react animation, saves previous behavior |
+| `startWalk(state, waypointId, targetPos)` | Begin walking to a specific waypoint |
+
+### Integration Pattern
+
+```ts
+// In AnimatedPet.svelte
+import { createInitialPetState, tickPet, triggerReact } from '../effects/petBehavior'
+import { getPetConfig } from '../../data/petAnimations'
+
+let petState = $state(createInitialPetState())
+const config = getPetConfig('cat')
+
+// Called from requestAnimationFrame or hubAnimationLoop
+function onFrame(deltaMs: number) {
+  const animConfig = config.animations[petState.behavior]
+  petState = tickPet(petState, deltaMs, animConfig)
+}
+
+// On click/tap
+function onClick() {
+  petState = triggerReact(petState)
+}
+```
+
+### Campfire Bias
+
+When `nearCampfire` is true (only the `campfire` waypoint), the transition table boosts `sleep` and `sit` weights by 1.5×. Combined sleep+sit selection rate from `idle` rises from ~40% to ~50% near campfire.

@@ -1,4 +1,5 @@
 import { audioManager } from '../../services/audioService'
+import { isTurboMode } from '../../utils/turboMode'
 
 /**
  * Staggers pop-in animations for room UI elements after a transition settles.
@@ -22,7 +23,8 @@ const EASING = 'cubic-bezier(0.34, 1.56, 0.64, 1)'
 /**
  * Staggers pop-in animations for room UI elements after a transition settles.
  * Uses a sine-based delay distribution for slow→fast→slow timing.
- * Respects prefers-reduced-motion and card:reduceMotionMode localStorage flag.
+ * Respects prefers-reduced-motion, card:reduceMotionMode localStorage flag,
+ * and turbo mode (bot/automated testing).
  */
 export function staggerPopIn(options: PopInOptions): void {
   const { elements, container, totalDuration, onComplete } = options
@@ -51,10 +53,10 @@ export function staggerPopIn(options: PopInOptions): void {
     el.style.pointerEvents = 'none'
   }
 
-  // Reduce motion check
+  // Reduce motion check — also skips in turbo mode so bots see interactive elements immediately
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const reduceMotionStorage = localStorage.getItem('card:reduceMotionMode') === 'true'
-  if (prefersReducedMotion || reduceMotionStorage) {
+  if (prefersReducedMotion || reduceMotionStorage || isTurboMode()) {
     for (const el of resolved) {
       el.style.opacity = ''
       el.style.transform = ''

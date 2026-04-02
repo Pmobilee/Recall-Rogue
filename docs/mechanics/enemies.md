@@ -1,14 +1,14 @@
 # Enemy System
 
 > **Purpose:** Complete reference for the enemy roster, categories, scaling formulas, special behaviors, and encounter selection.
-> **Last verified:** 2026-04-01
+> **Last verified:** 2026-04-02
 > **Source files:** `src/data/enemies.ts`, `src/services/enemyManager.ts`, `src/data/balance.ts`, `src/services/ascension.ts`
 
 ## Enemy Categories
 
 | Category | Description | HP Range (base) |
 |---|---|---|
-| `common` | Standard combat nodes. Weighted random from act pool. | 7–9 (Act 1); 4–9 overall |
+| `common` | Standard combat nodes. Weighted random from act pool. | 25–40 (Act 1); 4–40 overall |
 | `elite` | Elite nodes. More HP, phase transitions. | 7–12 |
 | `mini_boss` | Gate encounters mid-act. | 6–9 |
 | `boss` | Act-ending encounters. Two phases, high HP. | 11–19 |
@@ -47,18 +47,26 @@ Charged attacks with `bypassDamageCap: true` skip these caps.
 - High ascension: `miniBossBossTierAttacks` flag upgrades mini-boss intent pools to boss-tier attacks
 - Brain Fog aura: all enemy attacks deal ×1.2 damage
 
-### Floor 1 Base Attack Intent Values (2026-04-01)
-Shallow Depths common enemies were updated so attack intents are not trivially negated by basic block:
+### Act 1 Base Stats (2026-04-02 rebalance)
+Act 1 commons were rebalanced from HP 7-9 to HP 25-40 and attack values 2-4 to 4-7.
+Rationale: player deals 8-20 damage/turn, so 7-9 HP enemies died in 1-2 turns. 25-40 HP targets 4-7 turn combats.
 
-| Enemy | Attack intent value | Effective floor 1 damage (×1.2, cap 6) |
-|---|---|---|
-| `page_flutter` | 3 | 4 |
-| `mold_puff` | 3 | 4 |
-| `ink_slug` | 3 | 4 |
-| `staple_bug` (Mandible snap / Chittering strike) | 4 | 5 |
-| `thesis_construct` (multi-attack 2×2) | 2 per hit | 2 per hit |
+| Enemy | Base HP | Attack intent value | Effective floor 1 damage (×1.2, cap 6) | Notes |
+|---|---|---|---|---|
+| `page_flutter` | 30 | 5 / 5 | 6 / 6 | Defend 4 |
+| `thesis_construct` | 28 | 4 (atk) / 6 (charge) | 5 / cap-bypass | Defend 5; multi 2×2 kept |
+| `mold_puff` | 27 | 5 | 6 | Primarily a debuffer |
+| `ink_slug` | 32 | 5 | 6 | Defend 3; slow poisoner |
+| `bookmark_vine` | 28 | 4 (single) | 5 | Multi 2×3 kept; chainVulnerable |
+| `staple_bug` | 35 | 6 (snap) / 3×2 (chittering) | cap / cap | Defend 5; chargeResistant; highest-threat common |
+| `margin_gremlin` | 30 | 5 / 4 | 6 / 5 | Self-buffs Strength |
+| `index_weaver` | 28 | 3 per hit × 3 (barrage) | cap | Multi 3×3; chainVulnerable |
+| `overdue_golem` | 40 | 4 | 5 | Heal 9/turn; tankiest common |
+| `pop_quiz` | 27 | 4 | 5 | Quiz-reactive; stuns on correct Charge |
+| `eraser_worm` | 25 | 4 (single) | 5 | Multi 2×4 kept; rare; chainVulnerable |
 
-`thesis_construct` keeps 2×2 multi-attack — it is already effective via hit count.
+`thesis_construct`'s charge uses `bypassDamageCap: true` so the 6-base attack exceeds the floor 1 cap.
+Status effect values (poison, weakness, vulnerable) kept at 1-2 per application — already impactful without scaling.
 
 ## Act Enemy Pools (`ACT_ENEMY_POOLS`)
 
@@ -88,19 +96,19 @@ Enemy selection uses `getEnemiesForNode(act, nodeType)` which maps to `ACT_ENEMY
 
 | ID | base HP | Rarity | Special mechanic |
 |---|---|---|---|
-| `page_flutter` | 8 | standard | Can self-buff Strength 1 for 2 turns |
-| `thesis_construct` | 7 | standard | `chargeResistant` — Quick Play deals 50% damage |
-| `mold_puff` | 8 | standard | Stacks Poison 2 for 3 turns each attack |
+| `page_flutter` | 30 | standard | Can self-buff Strength 1 for 2 turns |
+| `thesis_construct` | 28 | standard | `chargeResistant` — Quick Play deals 50% damage |
+| `mold_puff` | 27 | standard | Stacks Poison 2 for 3 turns each attack |
 | `crib_sheet` | 4 | standard | `onPlayerChargeWrong`: reflects card's base damage to player |
-| `citation_needed` | 7 | standard | `onPlayerChargeWrong`: steals up to 5 block, heals enemy that amount |
-| `pop_quiz` | 7 | uncommon | `onPlayerChargeCorrect`: stuns enemy next turn; `onPlayerNoCharge`: +1 permanent `enrageBonusDamage` |
-| `eraser_worm` | 7 | rare | `chainVulnerable` — chain attacks deal +50% damage |
-| `bookmark_vine` | 7 | uncommon | `chainVulnerable`; multi-hit 3×vine lash |
-| `margin_gremlin` | 7 | uncommon | Self-buffs Strength 1 for 2 turns; fast repeated jabs |
-| `index_weaver` | 7 | standard | `chainVulnerable`; multi-hit 3×fang barrage + Poison 2×3 turns |
-| `overdue_golem` | 7 | standard | Heals 6 HP per turn from bog absorption |
-| `ink_slug` | 9 | standard | Stacks Poison 2 per attack; slow attacker |
-| `staple_bug` | 8 | standard | `chargeResistant`; heavy Mandible snap (4) + 2-hit Chittering strike |
+| `citation_needed` | 7 | standard | `onPlayerChargeWrong`: steals up to 5 block, heals enemy that amount. **Heal overshoot WAI**: heal intent (+5) and block-steal (+up to 5) are independent — both can fire in the same turn window for up to +10 HP total. **UX gap**: no floating text on block-steal; planned fix via ui-agent. |
+| `pop_quiz` | 27 | uncommon | `onPlayerChargeCorrect`: stuns enemy next turn; `onPlayerNoCharge`: +1 permanent `enrageBonusDamage` |
+| `eraser_worm` | 25 | rare | `chainVulnerable` — chain attacks deal +50% damage |
+| `bookmark_vine` | 28 | uncommon | `chainVulnerable`; multi-hit 3×vine lash |
+| `margin_gremlin` | 30 | uncommon | Self-buffs Strength 1 for 2 turns; fast repeated jabs |
+| `index_weaver` | 28 | standard | `chainVulnerable`; multi-hit 3×3 fang barrage (3 per hit) + Poison 2×3 turns |
+| `overdue_golem` | 40 | standard | Heals 9 HP per turn from bog absorption |
+| `ink_slug` | 32 | standard | Stacks Poison 2 per attack; slow attacker |
+| `staple_bug` | 35 | standard | `chargeResistant`; heavy Mandible snap (6) + 2-hit Chittering strike (3 per hit) |
 
 ### Elite Enemies
 

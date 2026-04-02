@@ -360,7 +360,7 @@ All calls go through `mcp__playwright__browser_evaluate`. Example: `window.__rrP
 - `previewCardQuiz(index)` — Preview the quiz for a card WITHOUT playing it. Returns: `{ok, state: {question, choices[], correctAnswer, correctIndex, factId, domain, cardType}}`. Use this to see the question before deciding whether to answer correctly or incorrectly.
 - `quickPlayCard(index)` — Play card at index without quiz. Returns `{ok: boolean, damage?, block?}`.
 - `chargePlayCard(index, answerCorrectly)` — Play card with quiz. `answerCorrectly` is boolean — `true` = correct answer, `false` = wrong. Returns `{ok: boolean, damage?, quizData?}`. NOTE: This bypasses the visual quiz UI — the quiz is answered programmatically.
-- `endTurn()` — End player turn. Returns `{ok: boolean}`.
+- `endTurn()` — End player turn. Returns `{ok: boolean}`. NOTE: Returns `{ok: true}` even after combat ends (graceful degradation — no longer errors when enemy is dead).
 - `getQuiz()` — Returns active quiz: `{question, choices: string[], correctIndex: number, mode: string}` or null if no active quiz.
 
 **QUIZ DATA CAPTURE STRATEGY**:
@@ -371,7 +371,7 @@ All calls go through `mcp__playwright__browser_evaluate`. Example: `window.__rrP
 
 **Post-Combat:**
 - `getRunState()` — Returns: `{floor, segment, currency, deckSize, relics: string[], playerHp, playerMaxHp, encountersCompleted}`.
-- `acceptReward()` — Accept card reward (takes first option).
+- `acceptReward()` — Accept reward (handles cards, relics, gold, and vials). Relics use Phaser overlay accept button; cards use Svelte callbacks.
 - `selectRewardType(cardType)` — Pick reward card type by type name.
 - `delve()` — Delve deeper at checkpoint screen.
 - `retreat()` — Cash out at checkpoint screen.
@@ -627,13 +627,13 @@ All calls go through `mcp__playwright__browser_evaluate`.
   ```
 - `previewCardQuiz(index)` — Preview the quiz for a card WITHOUT playing it. Returns: `{ok, state: {question, choices[], correctAnswer, correctIndex, factId, domain, cardType}}`. Use this to see quiz difficulty before choosing quick vs charge play.
 - `quickPlayCard(index)` — Quick play (1x damage, 1 AP). Returns: `{ok, damage?, block?}`
-- `chargePlayCard(index, answerCorrectly)` — Charge play with quiz (1.5x if correct, ~0.7x if wrong). Returns: `{ok, damage?, quizData?}`
+- `chargePlayCard(index, answerCorrectly)` — Charge play with quiz (1.5x if correct, ~0.25x if wrong — FIZZLE_EFFECT_RATIO). Returns: `{ok, damage?, quizData?}`
 - `endTurn()` — End turn. Returns: `{ok}`
 - `getRunState()` — Returns: `{floor, segment, currency, deckSize, relics: string[], playerHp, playerMaxHp, encountersCompleted}`
 - `getRelicDetails()` — Returns: `[{id, name, description, rarity, trigger, acquiredAtFloor, triggerCount}]`
 
 **Post-Combat:**
-- `acceptReward()` — Accept first card reward
+- `acceptReward()` — Accept first reward (cards + relics)
 - `selectRewardType(cardType)` — Pick reward card by type
 - `selectRelic(index)` — Pick relic by index
 - `rerollReward()` — Reroll card reward options
@@ -984,13 +984,13 @@ You are the Study Temple Tester for Recall Rogue. Your job is to verify the stud
 All calls via `mcp__playwright__browser_evaluate`.
 
 **Study Mode:**
-- `startStudy(size)` — Start study session. `size` = number of cards to study. Returns `{ok: boolean, cardCount: number}`.
+- `startStudy(size)` — Start study session. Returns `{ok: boolean, cardCount: number}`. NOTE: The `size` parameter is no longer functional. The function navigates to the Study screen and clicks the Study button in RestRoomOverlay. Use `__rrScenario.spawn({ screen: 'restStudy' })` for direct access.
 - `getStudyCard()` — Get current card: `{question, answer, category, choices?: string[], interval?: number, reps?: number}`. Returns null when session complete.
 - `gradeCard(button)` — Grade current card: `'again'` | `'hard'` | `'good'` | `'easy'`. Returns `{ok, nextInterval?: number}`.
 - `endStudy()` — End study session. Returns `{ok, studied: number}`.
 
 **Time Control:**
-- `fastForward(hours)` — Advance game clock by N hours (for SM-2 testing). Returns `{ok}`.
+- `fastForward(hours)` — Advance game clock by N hours (for SM-2 testing). Returns `{ok}`. Shifts all FSRS scheduling fields (nextReviewAt, due, lastReviewAt, lastReview). Fixed in BATCH-004.
 
 **Diagnostics:**
 - `getLeechInfo()` — Returns `{suspended: [], nearLeech: []}` — cards that failed too many times.
@@ -1215,7 +1215,7 @@ All calls go through `mcp__playwright__browser_evaluate`.
 - `endTurn()` → `{ok}`
 
 **Post-Combat:**
-- `acceptReward()` — Collect rewards
+- `acceptReward()` — Accept reward (cards, relics, gold, vials)
 - `selectRewardType(cardType)` — Pick card type in card reward
 - `delve()` — Continue to next floor
 - `retreat()` — End run as victory
@@ -1430,7 +1430,7 @@ After EVERY action, check `getScreen()` and route:
 1. **Fact repetition** (~8-10 unique facts per 22 charges) — this is the Anki learning algorithm working, not a bug
 2. **Quick play damage lower than charge** — intended 1:1.5 ratio
 3. **Audio muted** — we muted it in setup
-4. **Combat ending in 2 turns on floor 1** — this is a KNOWN balance issue, not a transition bug. Only report if the transition AFTER combat breaks.
+4. **Combat length on floor 1** — Combat should last 4-7 turns after BATCH-004 enemy rebalance (Act 1 HP 25-40, attack 4-7). If combats are consistently shorter than 4 turns, report as a balance issue. Only report transition bugs separately.
 5. **No separate cardReward screen** — card selection is integrated into the rewardRoom Phaser scene. acceptReward() transitions directly to dungeonMap after collecting all items.
 
 ---

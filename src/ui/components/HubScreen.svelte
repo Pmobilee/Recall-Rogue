@@ -10,6 +10,7 @@
   import { preloadImages } from '../utils/assetPreloader'
   import { isLandscape } from '../../stores/layoutStore'
   import CampSpriteButton from './CampSpriteButton.svelte'
+  import AnimatedPet from './AnimatedPet.svelte'
   import CampfireCanvas from './CampfireCanvas.svelte'
   import CampSpeechBubble from './CampSpeechBubble.svelte'
   import CampHudOverlay from './CampHudOverlay.svelte'
@@ -98,7 +99,6 @@
     getCampUpgradeUrl('campfire', $campState.forms?.campfire ?? $campState.tiers.campfire),
     getCampUpgradeUrl('tent', $campState.forms?.tent ?? $campState.tiers.tent),
     getCampUpgradeUrl('character', $campState.forms?.character ?? $campState.tiers.character),
-    getCampUpgradeUrl('pet', $campState.forms?.pet ?? $campState.tiers.pet),
     getCampUpgradeUrl('journal', $campState.forms?.journal ?? $campState.tiers.journal),
     getCampUpgradeUrl('questboard', $campState.forms?.questboard ?? $campState.tiers.questboard),
     getCampUpgradeUrl('shop', $campState.forms?.shop ?? $campState.tiers.shop),
@@ -502,15 +502,11 @@
         showBorder
       />
 
-      <!-- 11. Pet (Cat) - shows speech bubble -->
-      <CampSpriteButton
-        spriteUrl={getCampUpgradeUrl('pet', forms.pet)}
-        label="Pet"
-        zIndex={35}
+      <!-- 11. Pet (Cat) - animated -->
+      <AnimatedPet
+        species="cat"
+        {disableEffects}
         onclick={showPetBubble}
-        hitTop="69%" hitLeft="66%" hitWidth="11%" hitHeight="6%"
-        brightness={petBright}
-        showBorder
       />
 
       <!-- Pet speech bubble -->
@@ -723,15 +719,11 @@
       showBorder
     />
 
-    <!-- 11. Pet (Cat) - shows speech bubble -->
-    <CampSpriteButton
-      spriteUrl={getCampUpgradeUrl('pet', forms.pet)}
-      label="Pet"
-      zIndex={35}
+    <!-- 11. Pet (Cat) - animated -->
+    <AnimatedPet
+      species="cat"
+      {disableEffects}
       onclick={showPetBubble}
-      hitTop="69%" hitLeft="66%" hitWidth="11%" hitHeight="6%"
-      brightness={petBright}
-      showBorder
     />
 
     <!-- Pet speech bubble -->

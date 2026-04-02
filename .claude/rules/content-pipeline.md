@@ -50,6 +50,19 @@ Every fact-generation worker MUST receive verified source data IN ITS PROMPT.
 - Fill-in-blank `{___}` in quizQuestion is valid grammar syntax, not a braces error
 - Pool `factIds` populated by scanning facts, never hand-crafted
 
+## Answer Pool Homogeneity — CRITICAL
+
+**Pools shared by questionTemplates MUST only contain facts that make sense for ALL templates using that pool.**
+
+On 2026-04-02, a `person_names` pool contained both programming language creators AND tech company founders (SpaceX/Elon Musk). The template "Who created the {language} programming language?" was applied to the SpaceX fact, producing "Who created the  programming language?" with answer "Elon Musk".
+
+The code now catches empty-placeholder replacements and falls back to `fact.quizQuestion`, but **pool design must still be correct**:
+
+- If a pool is used by a `questionTemplate`, every fact in that pool must have the fields the template's placeholders reference (e.g., `{language}` requires all facts to have a non-empty language-related field)
+- Split broad pools into domain-specific sub-pools when templates reference domain-specific placeholders: `person_names_language_creators`, `person_names_company_founders`, etc.
+- Facts about different domains (languages vs companies vs hardware) should NOT share pools used by domain-specific templates
+- `correctAnswer` format must be consistent within a pool (no mixing "Elon Musk" single names with "Nerva, Trajan, Hadrian..." lists)
+
 ## Batch Deck Verification — MANDATORY
 
 After modifying ANY curated deck, run the batch verifier:
@@ -59,4 +72,4 @@ node scripts/verify-all-decks.mjs           # Summary table (all decks)
 node scripts/verify-all-decks.mjs --verbose  # Per-fact details on failures
 ```
 
-12 checks per fact: braces in answer/question, answer-in-distractors, duplicate distractors, distractor count, pool size, missing fields, non-numeric bracket distractors, missing explanation, duplicate questions, orphaned pool refs, empty pools. Target: **0 failures** across all decks.
+13 checks per fact/deck: braces in answer/question, answer-in-distractors, duplicate distractors, distractor count, pool size, missing fields, non-numeric bracket distractors, missing explanation, duplicate questions, orphaned pool refs, empty pools, template-pool placeholder compatibility. Target: **0 failures** across all decks.

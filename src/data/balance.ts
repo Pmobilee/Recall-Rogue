@@ -568,8 +568,9 @@ export const SPEED_BONUS_THRESHOLD = 0.25;    // answer in first 25% of timer
 export const SPEED_BONUS_MULTIPLIER = 1.5;
 
 /** Wrong answer still applies this fraction of card effect (0 = full fizzle, 1 = no penalty).
- * Buffed from 0.25 → 0.5 in 2026-04-01 balance pass so wrong charges feel less punishing. */
-export const FIZZLE_EFFECT_RATIO = 0.5;
+ * Reverted from 0.5 back to 0.25 — at 0.5× fizzle damage exceeded quick play, undermining
+ * knowledge-as-power mechanic (BATCH-2026-04-02-004 H-2). */
+export const FIZZLE_EFFECT_RATIO = 0.25;
 
 // === BOSS QUIZ PHASE SYSTEM (AR-59.7) ===
 

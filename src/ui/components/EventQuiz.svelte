@@ -155,9 +155,10 @@
     <p class="quiz-question">{currentQuestion.question}</p>
 
     <div class="quiz-choices">
-      {#each currentQuestion.choices as choice (choice)}
+      {#each currentQuestion.choices as choice, i (choice)}
         <button
           class="choice-btn"
+          data-testid="quiz-answer-{i}"
           class:correct={showResult && choice === currentQuestion.correctAnswer}
           class:wrong={showResult && selectedAnswer === choice && !isCorrect}
           class:dim={showResult && choice !== currentQuestion.correctAnswer && choice !== selectedAnswer}

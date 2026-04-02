@@ -256,12 +256,12 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Page Flutter',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 8, // raised — floor 1 HP floor (BATCH-003)
+    baseHP: 30, // rebalanced — Act 1 HP target 25-40 (2026-04-02)
     intentPool: [
-      { type: 'attack', value: 3, weight: 3, telegraph: 'Swooping strike' },
-      { type: 'attack', value: 3, weight: 2, telegraph: 'Frenzied bite' },
+      { type: 'attack', value: 5, weight: 3, telegraph: 'Swooping strike' },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Frenzied bite' },
       { type: 'buff', value: 2, weight: 1, telegraph: 'Screeching', statusEffect: { type: 'strength', value: 1, turns: 2 } },
-      { type: 'defend', value: 1, weight: 1, telegraph: 'Wing cover' },
+      { type: 'defend', value: 4, weight: 1, telegraph: 'Wing cover' },
     ],
     description: 'Common cave predator. Fast and fragile. First thing you\'ll see down here.',
     rarity: 'standard',
@@ -274,11 +274,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Thesis Construct',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 7, // raised — floor 1 HP floor (BATCH-003)
+    baseHP: 28, // rebalanced — Act 1 HP target 25-40 (2026-04-02)
     intentPool: [
-      { type: 'attack', value: 2, weight: 2, telegraph: 'Crystal slam' },
-      { type: 'defend', value: 2, weight: 2, telegraph: 'Hardening crystals' },
-      { type: 'charge', value: 4, weight: 1, telegraph: 'Charging: Crystal Crush!', bypassDamageCap: true },
+      { type: 'attack', value: 4, weight: 2, telegraph: 'Crystal slam' },
+      { type: 'defend', value: 5, weight: 2, telegraph: 'Hardening crystals' },
+      { type: 'charge', value: 6, weight: 1, telegraph: 'Charging: Crystal Crush!', bypassDamageCap: true },
       { type: 'multi_attack', value: 2, weight: 1, telegraph: 'Crystal barrage', hitCount: 2 },
     ],
     description: 'Crystal-encrusted and slow. Blocks on off-turns, then charges a heavy spike.',
@@ -293,9 +293,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Mold Puff',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 8, // raised — floor 1 HP floor (BATCH-003)
+    baseHP: 27, // rebalanced — Act 1 HP target 25-40 (2026-04-02)
     intentPool: [
-      { type: 'attack', value: 3, weight: 2, telegraph: 'Spore burst' },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Spore burst' },
       { type: 'debuff', value: 2, weight: 3, telegraph: 'Toxic cloud', statusEffect: { type: 'poison', value: 2, turns: 3 } },
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Weakening mist', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
     ],
@@ -700,12 +700,28 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'lurcher',
+    // WAI NOTE (heal overshoot investigation, 2026-04-02):
+    // This enemy has TWO independent sources of HP gain that can coincide in the same turn:
+    //   1. Heal intent (value: 5, telegraph: 'Consume remains') -- fired on the ENEMY's turn.
+    //   2. onPlayerChargeWrong block-steal (up to +5 HP) -- fired on the PLAYER's turn.
+    // A playtester observed +9 HP in one turn. This is working as intended -- if the player
+    // wrong-charges while the enemy has 'Consume remains' queued, total HP gain can be up
+    // to +10 HP (+5 heal intent + up to +5 stolen block).
+    //
+    // UX GAP: There is no floating text or combat log entry when the block-steal fires.
+    // The player loses shield and the enemy HP bar jumps with no labeled source, making
+    // the mechanic invisible. This is a telegraph clarity problem, not a balance bug.
+    // TODO (ui-agent): Emit a floating combat text event (e.g. 'Block stolen!') from the
+    // drainPlayerBlock callback so players can distinguish stolen HP from normal healing.
+    // See docs/mechanics/enemies.md -- citation_needed entry.
     onPlayerChargeWrong: (ctx) => {
-      // Steals up to 5 block from player on wrong Charge
+      // Steals up to 5 block from player on wrong Charge and converts it to enemy HP.
+      // WAI: this is separate from the heal intent; both can fire in the same turn window,
+      // making the apparent heal appear higher than the telegraphed +5 value.
       const stealAmount = Math.min(5, ctx.playerBlock ?? 0);
       if (stealAmount > 0 && ctx.drainPlayerBlock) {
         ctx.drainPlayerBlock(stealAmount);
-        // Enemy gains the stolen block as HP
+        // Enemy gains the stolen block as HP (capped at maxHP)
         ctx.enemy.currentHP = Math.min(ctx.enemy.maxHP, ctx.enemy.currentHP + stealAmount);
       }
     },
@@ -718,11 +734,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Ink Slug',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 9, // raised — floor 1 HP floor (BATCH-003)
+    baseHP: 32, // rebalanced — Act 1 HP target 25-40 (2026-04-02)
     intentPool: [
-      { type: 'attack', value: 3, weight: 2, telegraph: 'Mud slash' },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Mud slash' },
       { type: 'debuff', value: 2, weight: 3, telegraph: 'Bog grasp', statusEffect: { type: 'poison', value: 2, turns: 2 } },
-      { type: 'defend', value: 1, weight: 1, telegraph: 'Sliming' },
+      { type: 'defend', value: 3, weight: 1, telegraph: 'Sliming' },
     ],
     description: 'Slug-shaped and wet. Poison seeps from its touch.',
     rarity: 'standard',
@@ -735,11 +751,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Bookmark Vine',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 7, // raised — floor 1 HP floor (BATCH-004)
+    baseHP: 28, // rebalanced — Act 1 HP target 25-40 (2026-04-02)
     intentPool: [
       { type: 'multi_attack', value: 2, weight: 3, telegraph: 'Vine lash', hitCount: 3 },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Poisoned thorns', statusEffect: { type: 'poison', value: 2, turns: 2 } },
-      { type: 'attack', value: 2, weight: 1, telegraph: 'Root strike' },
+      { type: 'attack', value: 4, weight: 1, telegraph: 'Root strike' },
     ],
     description: 'Roots that move on their own. Vines, poison, persistence.',
     rarity: 'uncommon',
@@ -753,11 +769,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Staple Bug',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 8, // raised — floor 1 HP floor (BATCH-003)
+    baseHP: 35, // rebalanced — Act 1 HP target 25-40 (2026-04-02)
     intentPool: [
-      { type: 'defend', value: 2, weight: 3, telegraph: 'Harden shell' },
-      { type: 'attack', value: 4, weight: 2, telegraph: 'Mandible snap' },
-      { type: 'multi_attack', value: 4, weight: 1, telegraph: 'Chittering strike', hitCount: 2 },
+      { type: 'defend', value: 5, weight: 3, telegraph: 'Harden shell' },
+      { type: 'attack', value: 6, weight: 2, telegraph: 'Mandible snap' },
+      { type: 'multi_attack', value: 3, weight: 1, telegraph: 'Chittering strike', hitCount: 2 },
     ],
     description: 'Heavy carapace. Prefers to block and wait.',
     rarity: 'standard',
@@ -771,11 +787,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Margin Gremlin',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 7, // raised — floor 1 HP floor (BATCH-004)
+    baseHP: 30, // rebalanced — Act 1 HP target 25-40 (2026-04-02)
     intentPool: [
-      { type: 'attack', value: 2, weight: 3, telegraph: 'Nimble jab' },
+      { type: 'attack', value: 5, weight: 3, telegraph: 'Nimble jab' },
       { type: 'buff', value: 1, weight: 2, telegraph: 'Rocky surge', statusEffect: { type: 'strength', value: 1, turns: 2 } },
-      { type: 'attack', value: 2, weight: 1, telegraph: 'Stone kick' },
+      { type: 'attack', value: 4, weight: 1, telegraph: 'Stone kick' },
     ],
     description: 'Pale limestone imp. Quick, aggressive, annoying.',
     rarity: 'uncommon',
@@ -788,11 +804,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Index Weaver',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 7, // raised — floor 1 HP floor (BATCH-004)
+    baseHP: 28, // rebalanced — Act 1 HP target 25-40 (2026-04-02)
     intentPool: [
-      { type: 'multi_attack', value: 2, weight: 3, telegraph: 'Fang barrage', hitCount: 3 },
+      { type: 'multi_attack', value: 3, weight: 3, telegraph: 'Fang barrage', hitCount: 3 },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Web poison', statusEffect: { type: 'poison', value: 2, turns: 3 } },
-      { type: 'attack', value: 2, weight: 1, telegraph: 'Puncture' },
+      { type: 'attack', value: 4, weight: 1, telegraph: 'Puncture' },
     ],
     description: 'Venomous and fast. Multiple attacks per encounter.',
     rarity: 'standard',
@@ -806,11 +822,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Overdue Golem',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 7, // tanky
+    baseHP: 40, // rebalanced — Act 1 HP target 25-40 (2026-04-02)
     intentPool: [
-      { type: 'heal', value: 6, weight: 2, telegraph: 'Bog absorption' },
+      { type: 'heal', value: 9, weight: 2, telegraph: 'Bog absorption' },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Peat decay', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-      { type: 'attack', value: 2, weight: 1, telegraph: 'Sludge swing' },
+      { type: 'attack', value: 4, weight: 1, telegraph: 'Sludge swing' },
     ],
     description: 'Bog water and peat, barely held together. Heals from the muck.',
     rarity: 'standard',
@@ -823,11 +839,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Pop Quiz',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 7, // tanky
+    baseHP: 27, // rebalanced — Act 1 HP target 25-40 (2026-04-02)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Spore shower', statusEffect: { type: 'poison', value: 2, turns: 3 } },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Fungal decay', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-      { type: 'attack', value: 2, weight: 1, telegraph: 'Cap strike' },
+      { type: 'attack', value: 4, weight: 1, telegraph: 'Cap strike' },
     ],
     description: 'Correct Charge stuns it next turn. No Charge makes it stronger permanently.',
     rarity: 'uncommon',
@@ -849,11 +865,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Eraser Worm',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 7, // raised — floor 1 HP floor (BATCH-004)
+    baseHP: 25, // rebalanced — Act 1 HP target 25-40 (2026-04-02)
     intentPool: [
       { type: 'multi_attack', value: 2, weight: 3, telegraph: 'Bite frenzy', hitCount: 4 },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Larval grasp', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
-      { type: 'attack', value: 2, weight: 1, telegraph: 'Mandible crush' },
+      { type: 'attack', value: 4, weight: 1, telegraph: 'Mandible crush' },
     ],
     description: 'No eyes, hunts by vibration. Never stops biting.',
     rarity: 'rare',

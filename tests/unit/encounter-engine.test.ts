@@ -339,14 +339,14 @@ describe('Enemy Templates', () => {
     expect(miniBoss).toHaveLength(24);
   });
 
-  it('page_flutter has 8 baseHP (BATCH-003 floor 1 HP raise)', () => {
+  it('page_flutter has 30 baseHP (Act 1 rebalance 2026-04-02)', () => {
     const bat = ENEMY_TEMPLATES.find(t => t.id === 'page_flutter');
-    expect(bat?.baseHP).toBe(8);
+    expect(bat?.baseHP).toBe(30);
   });
 
-  it('thesis_construct has 7 baseHP (BATCH-003 floor 1 HP raise)', () => {
+  it('thesis_construct has 28 baseHP (Act 1 rebalance 2026-04-02)', () => {
     const golem = ENEMY_TEMPLATES.find(t => t.id === 'thesis_construct');
-    expect(golem?.baseHP).toBe(7);
+    expect(golem?.baseHP).toBe(28);
   });
 
   it('algorithm has 12 baseHP (AR-59.13 v2 stats)', () => {

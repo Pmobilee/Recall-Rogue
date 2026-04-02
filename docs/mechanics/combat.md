@@ -94,7 +94,7 @@ Chains now **decay by 1** per turn end (`CHAIN_DECAY_PER_TURN=1`) instead of ful
 - Clears fact from review queue
 
 **Charge Wrong (`playMode = 'charge'`, `answeredCorrectly = false`)**
-- Partial effect at `FIZZLE_EFFECT_RATIO = 0.5×` of base effect (buffed from 0.25×, 2026-04-01 — wrong answers feel less punishing)
+- Partial effect at `FIZZLE_EFFECT_RATIO = 0.25×` of base effect (reverted from 0.5× — at 0.5× fizzle damage equaled or exceeded quick play, undermining knowledge-as-power mechanic; BATCH-2026-04-02-004 H-2)
 - Free First Charge wrong = 0.0× (total fizzle, `FIRST_CHARGE_FREE_WRONG_MULTIPLIER`)
 - Breaks Knowledge Chain, loses Chain Momentum
 - Mastery downgrade (skipped on first attempt at a fact, `isFirstAttempt` flag)

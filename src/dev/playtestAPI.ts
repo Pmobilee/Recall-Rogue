@@ -346,8 +346,13 @@ async function previewCardQuiz(index: number): Promise<PlayResult> {
 /** End the current combat turn. Polls until the turn actually advances (max 3s). */
 async function endTurn(): Promise<PlayResult> {
   return safeAction(async () => {
+    // If we're no longer in combat, the turn is already over (enemy died, etc.)
+    const screen = getScreen();
+    if (screen !== 'combat') return { ok: true, message: `Combat already ended. Screen: ${screen}` };
+
     const btn = document.querySelector('[data-testid="btn-end-turn"]') as HTMLButtonElement | null;
-    if (!btn) return { ok: false, message: 'End turn button not found' };
+    // Button gone but still nominally in combat — enemy likely just died, treat as success
+    if (!btn) return { ok: true, message: 'End turn button gone — combat likely ended' };
     if (btn.disabled) return { ok: false, message: 'End turn button is disabled' };
 
     // Read current screen before clicking
@@ -414,7 +419,8 @@ async function selectMapNode(nodeId: string): Promise<PlayResult> {
  *    - Emits 'pointerdown' on gold/vial sprites to collect them immediately.
  *    - For card items, emits 'pointerdown' on the sprite (shows the card detail overlay),
  *      then accepts via getCardDetailCallbacks().onAccept().
- *    - For relic items, follows the same accept-via-callbacks pattern.
+ *    - For relic items, emits pointerdown on the Phaser Graphics accept button
+ *      found in the scene overlayObjects array (index 1 among interactive objects).
  * 3. Waits for the scene to auto-advance (checkAutoAdvance fires when all collected).
  */
 async function acceptReward(): Promise<PlayResult> {
@@ -472,16 +478,30 @@ async function acceptReward(): Promise<PlayResult> {
     }
 
     // Handle first uncollected relic item.
+    // Relics use a Phaser Graphics accept button inside an overlay — NOT the Svelte card
+    // detail overlay. The overlay objects are stored in scene.overlayObjects in order:
+    //   [0] dim rectangle (interactive)
+    //   [1] panel (not interactive)
+    //   ... text objects (not interactive)
+    //   [N] acceptBtn (interactive, index 1 among interactives)
+    //   [N+1] acceptLabel (not interactive)
+    //   [N+2] leaveBtn (interactive, index 2 among interactives)
+    // We emit 'pointerdown' on the second interactive object (acceptBtn).
     const relicItem = items.find(i => !i.collected && i.reward.type === 'relic');
     if (relicItem) {
       (relicItem.sprite as any)?.emit('pointerdown');
       await wait(turboDelay(300));
 
-      const { getCardDetailCallbacks } = await import('../services/rewardRoomBridge');
-      const callbacks = getCardDetailCallbacks();
-      if (callbacks) {
-        callbacks.onAccept();
-        await wait(turboDelay(500));
+      const overlayObjects = (scene as any).overlayObjects as any[] | undefined;
+      if (overlayObjects) {
+        // Filter to objects that have input enabled (interactive)
+        const interactives = overlayObjects.filter((obj: any) => obj.input?.enabled);
+        // interactives[0] = dim overlay, interactives[1] = accept button
+        const acceptBtn = interactives[1];
+        if (acceptBtn) {
+          acceptBtn.emit('pointerdown');
+          await wait(turboDelay(500));
+        }
       }
     }
 
@@ -805,27 +825,51 @@ async function forceQuizForFact(factId: string): Promise<PlayResult> {
 // Study
 // ---------------------------------------------------------------------------
 
-/** Navigate to the study screen and optionally start a session. */
+/**
+ * Navigate to the rest-site study screen and click the Study option.
+ *
+ * The real rest-room UI is RestRoomOverlay.svelte, which renders a button with
+ * data-testid="rest-study". Clicking it calls onstudy() which opens
+ * StudyQuizOverlay.svelte with a fixed set of questions prepared by the game logic.
+ *
+ * NOTE: The `size` parameter is accepted for API backward-compatibility but is
+ * NOT used. The study session size (number of questions) is fixed by the game —
+ * there is no DOM-based size selector in the live UI. The old selectors
+ * study-size-N and btn-start-study belong to the unmounted StudySession.svelte
+ * and do not exist at runtime.
+ *
+ * AUTOMATION GAP: StudyQuizOverlay.svelte has no data-testid attributes. To
+ * interact with its answer buttons, use class selector `.answer-btn` or
+ * `.answer-img-btn`. The overlay auto-advances after 1200ms per answer and
+ * ends with a `.continue-btn` to exit. Alternatively, use:
+ *   window.__rrScenario.spawn({ screen: 'restStudy' })
+ * to jump directly to the rest screen if scenario support is added.
+ */
 async function startStudy(size?: number): Promise<PlayResult> {
+  // Acknowledge size param to satisfy TypeScript without unused-var warnings.
+  void size;
   return safeAction(async () => {
+    // Navigate to the rest room — RestRoomOverlay.svelte will mount.
     writeStore('rr:currentScreen', 'restStudy');
     await wait(turboDelay(500));
 
-    if (size) {
-      const sizeBtn = document.querySelector(`[data-testid="study-size-${size}"]`) as HTMLButtonElement | null;
-      if (sizeBtn) {
-        sizeBtn.click();
-        await wait(turboDelay(500));
-      }
-
-      const startBtn = document.querySelector('[data-testid="btn-start-study"]') as HTMLButtonElement | null;
-      if (startBtn) {
-        startBtn.click();
-        await wait(turboDelay(500));
-      }
+    // Click the Study option on the rest room. RestRoomOverlay.svelte exposes
+    // data-testid=rest-study on the Study button, which triggers onstudy()
+    // and opens StudyQuizOverlay.svelte.
+    const studyBtn = document.querySelector('[data-testid="rest-study"]') as HTMLButtonElement | null;
+    if (studyBtn && !studyBtn.disabled) {
+      studyBtn.click();
+      await wait(turboDelay(500));
+      return { ok: true, message: 'Study option selected — StudyQuizOverlay should now be active' };
     }
 
-    return { ok: true, message: `Study screen opened${size ? ` (size ${size})` : ''}` };
+    if (studyBtn && studyBtn.disabled) {
+      return { ok: false, message: 'Study button found but is disabled (studyDisabled=true — no upgradeable cards in deck)' };
+    }
+
+    // rest-study button not found: we may be on the wrong screen or
+    // RestRoomOverlay has not mounted yet.
+    return { ok: false, message: 'Study button [data-testid="rest-study"] not found. Is the rest room open? Use writeStore("rr:currentScreen","restStudy") to navigate there first.' };
   });
 }
 
@@ -954,11 +998,13 @@ async function fastForward(hours: number): Promise<PlayResult> {
       if (!s) return s;
       const updated = { ...s };
 
-      // Shift review states' nextReview dates backward (simulating time passing)
+      // Shift review scheduling dates backward (simulating time passing)
       if (Array.isArray(updated.reviewStates)) {
         updated.reviewStates = updated.reviewStates.map((rs: any) => ({
           ...rs,
-          nextReview: rs.nextReview ? rs.nextReview - msShift : rs.nextReview,
+          nextReviewAt: rs.nextReviewAt ? rs.nextReviewAt - msShift : rs.nextReviewAt,
+          due: rs.due ? rs.due - msShift : rs.due,
+          lastReviewAt: rs.lastReviewAt ? rs.lastReviewAt - msShift : rs.lastReviewAt,
           lastReview: rs.lastReview ? rs.lastReview - msShift : rs.lastReview,
         }));
       }
