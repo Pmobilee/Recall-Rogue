@@ -3,7 +3,7 @@
 > Navigation hub for all modular documentation. Each file is independently useful —
 > an agent reading just that file should understand that system.
 >
-> **Last rebuilt:** 2026-04-02
+> **Last rebuilt:** 2026-04-03
 
 ---
 
@@ -36,6 +36,7 @@
 | [status-effects](mechanics/status-effects.md) | All status effects, stacking rules, tick timing, and application behavior |
 | [quiz](mechanics/quiz.md) | Quiz question lifecycle, fact selection, FSRS spaced repetition scheduling, and answer grading |
 | [progression](mechanics/progression.md) | Run lifecycle, floor/room generation, map layout, room types, ascension system, and shop mechanics |
+| [narrative](mechanics/narrative.md) | Woven Narrative Architecture: 4 concurrent threads (Descent/Echo/Seeker/Inhabitants), archetypes, domain lenses, fact-reactive echo system, NPC dialogue, gravity scoring |
 
 ---
 
@@ -106,6 +107,7 @@ Skill definitions live in `.claude/skills/`. Invoke with `/skill-name`. Key art 
 | `/deck-art` | `.claude/skills/deck-art/SKILL.md` | Generate and deploy curated deck cover art with depth-based 3D parallax for Study Temple |
 | `/artstudio` | `.claude/skills/artstudio/SKILL.md` | Generate all other game art (enemies, backgrounds, relics, icons) via OpenRouter / ComfyUI |
 | `/depth-transitions` | `.claude/skills/depth-transitions/SKILL.md` | Generate depth maps and manage parallax room transition shader |
+| `/narration` | `.claude/skills/narration/SKILL.md` | Author, implement, and iterate on the Woven Narrative Architecture |
 
 ---
 
