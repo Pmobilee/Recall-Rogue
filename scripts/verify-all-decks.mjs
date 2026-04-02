@@ -250,7 +250,7 @@ function getPoolDistractors(fact, deck, count = 3) {
 }
 
 // ---------------------------------------------------------------------------
-// Issue checking — 12 checks total (8 original + 4 new)
+// Issue checking — 13 checks total (8 original + 4 new + 1 template-pool compatibility)
 // ---------------------------------------------------------------------------
 
 /**
@@ -423,7 +423,9 @@ function verifyDeck(deckId, deck) {
 
   // Deck-level issue accumulator: issueName -> count
   const issueCounts = {};
+  let deckLevelFailCount = 0; // incremented by deck-level checks (#12, #13)
   const addIssue = (name) => { issueCounts[name] = (issueCounts[name] || 0) + 1; };
+  const addDeckIssue = (name) => { addIssue(name); deckLevelFailCount++; };
 
   // Per-fact failure detail (for --verbose)
   const factFailures = []; // { index, factId, issues }
@@ -435,7 +437,43 @@ function verifyDeck(deckId, deck) {
   // Check #12: empty answer pools (deck-level)
   const emptyPools = findEmptyPools(deck);
   for (const p of emptyPools) {
-    addIssue(`empty pool "${p.id}"`);
+    addDeckIssue(`empty pool "${p.id}"`);
+  }
+
+  // Check #13: template-pool placeholder compatibility (deck-level)
+  // Each questionTemplate references an answerPoolId and uses {placeholder} names
+  // in its questionFormat. Every fact in that pool must have a non-empty value for
+  // each placeholder, otherwise the runtime would render a blank question slot.
+  if (deck.questionTemplates && deck.questionTemplates.length > 0) {
+    const factById = new Map((deck.facts || []).map(f => [f.id, f]));
+    const poolById = new Map((deck.answerTypePools || []).map(p => [p.id, p]));
+    const PLACEHOLDER_RE = /\{(\w+)\}/g;
+
+    for (const template of deck.questionTemplates) {
+      const pool13 = poolById.get(template.answerPoolId);
+      if (!pool13) continue; // missing pool already caught by check #11
+
+      const placeholders = [];
+      let m;
+      PLACEHOLDER_RE.lastIndex = 0;
+      while ((m = PLACEHOLDER_RE.exec(template.questionFormat)) !== null) {
+        placeholders.push(m[1]);
+      }
+      if (placeholders.length === 0) continue;
+
+      for (const factId of poolFactIds(pool13)) {
+        const fact13 = factById.get(factId);
+        if (!fact13) continue;
+
+        for (const ph of placeholders) {
+          const val = fact13[ph];
+          const isEmpty = val === undefined || val === null || (typeof val === 'string' && val.trim() === '');
+          if (isEmpty) {
+            addDeckIssue(`template-pool mismatch: template "${template.id}" has {${ph}} but fact "${factId}" has no value for it`);
+          }
+        }
+      }
+    }
   }
 
   // Build a set of factIds that have duplicate questions (for per-fact flagging)
@@ -489,7 +527,7 @@ function verifyDeck(deckId, deck) {
     }
   }
 
-  const failCount = factFailures.reduce((acc, f) => acc + f.issues.length, 0);
+  const failCount = factFailures.reduce((acc, f) => acc + f.issues.length, 0) + deckLevelFailCount;
   const warnCount = factWarnings.length;
 
   return {
