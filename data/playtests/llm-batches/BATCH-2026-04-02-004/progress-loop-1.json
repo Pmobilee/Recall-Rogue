@@ -1,0 +1,65 @@
+{
+  "label": "loop-1",
+  "screen": "combat",
+  "roomLog": [
+    {
+      "type": "combat",
+      "floor": 1,
+      "roomNum": 1,
+      "time": "2026-04-02T13:25:58.034Z"
+    }
+  ],
+  "transitionLog": [
+    {
+      "from": null,
+      "to": "hub",
+      "time": "2026-04-02T13:25:43.910Z"
+    },
+    {
+      "from": "hub",
+      "to": "deckSelectionHub",
+      "time": "2026-04-02T13:25:47.417Z"
+    },
+    {
+      "from": "deckSelectionHub",
+      "to": "onboarding",
+      "time": "2026-04-02T13:25:53.427Z"
+    },
+    {
+      "from": "onboarding",
+      "to": "dungeonMap",
+      "time": "2026-04-02T13:25:55.440Z"
+    },
+    {
+      "from": "dungeonMap",
+      "to": "combat",
+      "time": "2026-04-02T13:25:58.032Z"
+    }
+  ],
+  "combatLog": [
+    {
+      "floor": 1,
+      "isBoss": false,
+      "turns": 0,
+      "cardsPlayed": 11,
+      "outcome": "victory",
+      "startHP": 100,
+      "endHP": 100,
+      "enemyName": "Margin Gremlin"
+    }
+  ],
+  "bugLog": [],
+  "consoleErrors": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:25:37.341Z"
+    },
+    {
+      "type": "error",
+      "text": "Connecting to 'http://100.74.153.81:5175/api/game/cardback-updates' violates the following Content Security Policy directive: \"connect-src 'self' ws: wss: http://localhost:* http://*:3001\". The action has been blocked.",
+      "time": "2026-04-02T13:25:37.354Z"
+    }
+  ],
+  "time": "2026-04-02T13:26:07.440Z"
+}

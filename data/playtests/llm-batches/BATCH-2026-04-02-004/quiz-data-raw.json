@@ -1,0 +1,1067 @@
+{
+  "meta": {
+    "date": "2026-04-02T12:06:11.496Z",
+    "encountersCompleted": 3,
+    "totalQuizzes": 20,
+    "uniqueFacts": 9,
+    "withDistractors": 20
+  },
+  "allQuizData": [
+    {
+      "encounterId": 1,
+      "turn": 1,
+      "cardIndex": 0,
+      "factId": "cs_3_pagerank_inventors",
+      "question": "PageRank is named after one of its creators. Which two Stanford PhD students invented it in 1998 and used it to build the world's dominant search engine?",
+      "choices": [
+        "John Backus",
+        "Larry Page and Sergey Brin",
+        "Tim O'Reilly",
+        "Fei-Fei Li"
+      ],
+      "correctIndex": 1,
+      "correctAnswer": "Larry Page and Sergey Brin",
+      "domain": "general_knowledge",
+      "source": "cs_3_pagerank_inventors",
+      "cardType": "attack",
+      "mechanic": "strike",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 1,
+      "turn": 2,
+      "cardIndex": 0,
+      "factId": "geography-hong-kong-most-skyscrapers",
+      "question": "Which city has the most skyscrapers in the world?",
+      "choices": [
+        "New York City",
+        "Shanghai",
+        "Hong Kong",
+        "Tokyo"
+      ],
+      "correctIndex": 2,
+      "correctAnswer": "Hong Kong",
+      "domain": "geography",
+      "source": "geography-hong-kong-most-skyscrapers",
+      "cardType": "shield",
+      "mechanic": "block",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 1,
+      "turn": 3,
+      "cardIndex": 0,
+      "factId": "ww_pal_neuschwanstein_disney",
+      "question": "Which famous Disney theme park castle was directly inspired by Neuschwanstein Castle in Bavaria?",
+      "choices": [
+        "Mosi-oa-Tunya",
+        "River of January",
+        "Sleeping Beauty Castle",
+        "The Coathanger"
+      ],
+      "correctIndex": 2,
+      "correctAnswer": "Sleeping Beauty Castle",
+      "domain": "geography",
+      "source": "ww_pal_neuschwanstein_disney",
+      "cardType": "attack",
+      "mechanic": "strike",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 1,
+      "turn": 5,
+      "cardIndex": 0,
+      "factId": "rome_pun_metaurus",
+      "question": "Which of Hannibal's brothers marched from Spain to reinforce him in Italy, but was defeated and killed at the Battle of the Metaurus River in 207 BCE?",
+      "choices": [
+        "Nerva, Trajan, Hadrian, Antoninus Pius, Marcus Aurelius",
+        "Hasdrubal Barca",
+        "Marcus Agrippa",
+        "Niccolò Machiavelli"
+      ],
+      "correctIndex": 1,
+      "correctAnswer": "Hasdrubal Barca",
+      "domain": "history",
+      "source": "rome_pun_metaurus",
+      "cardType": "utility",
+      "mechanic": "foresight",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 1,
+      "turn": 6,
+      "cardIndex": 0,
+      "factId": "rome_pun_metaurus",
+      "question": "Which of Hannibal's brothers marched from Spain to reinforce him in Italy, but was defeated and killed at the Battle of the Metaurus River in 207 BCE?",
+      "choices": [
+        "Niccolò Machiavelli",
+        "Nerva, Trajan, Hadrian, Antoninus Pius, Marcus Aurelius",
+        "Hasdrubal Barca",
+        "Marcus Agrippa"
+      ],
+      "correctIndex": 2,
+      "correctAnswer": "Hasdrubal Barca",
+      "domain": "history",
+      "source": "rome_pun_metaurus",
+      "cardType": "utility",
+      "mechanic": "foresight",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 1,
+      "turn": 7,
+      "cardIndex": 0,
+      "factId": "ww_pal_neuschwanstein_disney",
+      "question": "Which famous Disney theme park castle was directly inspired by Neuschwanstein Castle in Bavaria?",
+      "choices": [
+        "The Coathanger",
+        "River of January",
+        "Sleeping Beauty Castle",
+        "Mosi-oa-Tunya"
+      ],
+      "correctIndex": 2,
+      "correctAnswer": "Sleeping Beauty Castle",
+      "domain": "geography",
+      "source": "ww_pal_neuschwanstein_disney",
+      "cardType": "attack",
+      "mechanic": "strike",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 1,
+      "turn": 8,
+      "cardIndex": 0,
+      "factId": "geography-hong-kong-most-skyscrapers",
+      "question": "Which city has the most skyscrapers in the world?",
+      "choices": [
+        "Hong Kong",
+        "Shanghai",
+        "Kuala Lumpur",
+        "Chicago"
+      ],
+      "correctIndex": 0,
+      "correctAnswer": "Hong Kong",
+      "domain": "geography",
+      "source": "geography-hong-kong-most-skyscrapers",
+      "cardType": "attack",
+      "mechanic": "strike",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 3,
+      "turn": 1,
+      "cardIndex": 0,
+      "factId": "geography-hong-kong-most-skyscrapers",
+      "question": "Which city has the most skyscrapers in the world?",
+      "choices": [
+        "Shanghai",
+        "Hong Kong",
+        "Tokyo",
+        "Shenzhen"
+      ],
+      "correctIndex": 1,
+      "correctAnswer": "Hong Kong",
+      "domain": "geography",
+      "source": "geography-hong-kong-most-skyscrapers",
+      "cardType": "shield",
+      "mechanic": "thorns",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 3,
+      "turn": 2,
+      "cardIndex": 0,
+      "factId": "general_knowledge-nanotechnology-named-after-nanometre",
+      "question": "What unit of length gives nanotechnology its name?",
+      "choices": [
+        "Light year",
+        "Centimetre",
+        "Femtometre",
+        "Nanometre"
+      ],
+      "correctIndex": 3,
+      "correctAnswer": "Nanometre",
+      "domain": "general_knowledge",
+      "source": "general_knowledge-nanotechnology-named-after-nanometre",
+      "cardType": "utility",
+      "mechanic": "foresight",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 3,
+      "turn": 3,
+      "cardIndex": 0,
+      "factId": "gk-condom-proper-use-2pct-pregnancy",
+      "question": "What is the annual pregnancy rate with perfect condom use?",
+      "choices": [
+        "2% per year",
+        "6% per year",
+        "1% per year",
+        "7% per year"
+      ],
+      "correctIndex": 0,
+      "correctAnswer": "2% per year",
+      "domain": "general_knowledge",
+      "source": "gk-condom-proper-use-2pct-pregnancy",
+      "cardType": "attack",
+      "mechanic": "strike",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 3,
+      "turn": 4,
+      "cardIndex": 0,
+      "factId": "ww_mon_moai_paro_height",
+      "question": "How tall is Paro, the tallest erected moai statue on Easter Island, which weighs approximately 82 tonnes?",
+      "choices": [
+        "95",
+        "52,800 tonnes",
+        "42,000 tonnes",
+        "10 metres"
+      ],
+      "correctIndex": 3,
+      "correctAnswer": "10 metres",
+      "domain": "geography",
+      "source": "ww_mon_moai_paro_height",
+      "cardType": "attack",
+      "mechanic": "strike",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 3,
+      "turn": 6,
+      "cardIndex": 0,
+      "factId": "cs_3_pagerank_inventors",
+      "question": "PageRank is named after one of its creators. Which two Stanford PhD students invented it in 1998 and used it to build the world's dominant search engine?",
+      "choices": [
+        "John Backus",
+        "Larry Page and Sergey Brin",
+        "Fei-Fei Li",
+        "Tim O'Reilly"
+      ],
+      "correctIndex": 1,
+      "correctAnswer": "Larry Page and Sergey Brin",
+      "domain": "general_knowledge",
+      "source": "cs_3_pagerank_inventors",
+      "cardType": "shield",
+      "mechanic": "block",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 3,
+      "turn": 7,
+      "cardIndex": 0,
+      "factId": "cs_3_pagerank_inventors",
+      "question": "PageRank is named after one of its creators. Which two Stanford PhD students invented it in 1998 and used it to build the world's dominant search engine?",
+      "choices": [
+        "Tim O'Reilly",
+        "John Backus",
+        "Fei-Fei Li",
+        "Larry Page and Sergey Brin"
+      ],
+      "correctIndex": 3,
+      "correctAnswer": "Larry Page and Sergey Brin",
+      "domain": "general_knowledge",
+      "source": "cs_3_pagerank_inventors",
+      "cardType": "shield",
+      "mechanic": "block",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 3,
+      "turn": 8,
+      "cardIndex": 0,
+      "factId": "ww_mon_moai_paro_height",
+      "question": "How tall is Paro, the tallest erected moai statue on Easter Island, which weighs approximately 82 tonnes?",
+      "choices": [
+        "52,800 tonnes",
+        "95",
+        "42,000 tonnes",
+        "10 metres"
+      ],
+      "correctIndex": 3,
+      "correctAnswer": "10 metres",
+      "domain": "geography",
+      "source": "ww_mon_moai_paro_height",
+      "cardType": "attack",
+      "mechanic": "strike",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 3,
+      "turn": 9,
+      "cardIndex": 0,
+      "factId": "geography-hong-kong-most-skyscrapers",
+      "question": "Which city has the most skyscrapers in the world?",
+      "choices": [
+        "Tokyo",
+        "New York City",
+        "Singapore",
+        "Hong Kong"
+      ],
+      "correctIndex": 3,
+      "correctAnswer": "Hong Kong",
+      "domain": "geography",
+      "source": "geography-hong-kong-most-skyscrapers",
+      "cardType": "shield",
+      "mechanic": "thorns",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 3,
+      "turn": 11,
+      "cardIndex": 0,
+      "factId": "ww_sac_borobudur_location",
+      "question": "In which country is Borobudur, the world's largest Buddhist temple, located?",
+      "choices": [
+        "Yucatan, Mexico",
+        "Granada",
+        "Pakistan",
+        "Indonesia"
+      ],
+      "correctIndex": 3,
+      "correctAnswer": "Indonesia",
+      "domain": "geography",
+      "source": "ww_sac_borobudur_location",
+      "cardType": "shield",
+      "mechanic": "block",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 3,
+      "turn": 12,
+      "cardIndex": 0,
+      "factId": "ww_sac_borobudur_location",
+      "question": "In which country is Borobudur, the world's largest Buddhist temple, located?",
+      "choices": [
+        "Granada",
+        "Yucatan, Mexico",
+        "Indonesia",
+        "Pakistan"
+      ],
+      "correctIndex": 2,
+      "correctAnswer": "Indonesia",
+      "domain": "geography",
+      "source": "ww_sac_borobudur_location",
+      "cardType": "shield",
+      "mechanic": "block",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 3,
+      "turn": 13,
+      "cardIndex": 0,
+      "factId": "general_knowledge-hindi-fourth-language-world",
+      "question": "Hindi is the fourth-most-spoken first language in the world — which three languages rank above it?",
+      "choices": [
+        "English, Portuguese, Mandarin",
+        "English, German, Spanish",
+        "Bengali",
+        "Mandarin, Spanish, English"
+      ],
+      "correctIndex": 3,
+      "correctAnswer": "Mandarin, Spanish, English",
+      "domain": "general_knowledge",
+      "source": "general_knowledge-hindi-fourth-language-world",
+      "cardType": "shield",
+      "mechanic": "block",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 3,
+      "turn": 14,
+      "cardIndex": 0,
+      "factId": "gk-condom-proper-use-2pct-pregnancy",
+      "question": "What is the annual pregnancy rate with perfect condom use?",
+      "choices": [
+        "1% per year",
+        "7% per year",
+        "2% per year",
+        "6% per year"
+      ],
+      "correctIndex": 2,
+      "correctAnswer": "2% per year",
+      "domain": "general_knowledge",
+      "source": "gk-condom-proper-use-2pct-pregnancy",
+      "cardType": "shield",
+      "mechanic": "block",
+      "fromPreview": true,
+      "anomalies": []
+    },
+    {
+      "encounterId": 3,
+      "turn": 16,
+      "cardIndex": 0,
+      "factId": "cs_3_pagerank_inventors",
+      "question": "PageRank is named after one of its creators. Which two Stanford PhD students invented it in 1998 and used it to build the world's dominant search engine?",
+      "choices": [
+        "John Backus",
+        "Tim O'Reilly",
+        "Fei-Fei Li",
+        "Larry Page and Sergey Brin"
+      ],
+      "correctIndex": 3,
+      "correctAnswer": "Larry Page and Sergey Brin",
+      "domain": "general_knowledge",
+      "source": "cs_3_pagerank_inventors",
+      "cardType": "attack",
+      "mechanic": "strike",
+      "fromPreview": true,
+      "anomalies": []
+    }
+  ],
+  "encounterLog": [
+    {
+      "encounter": 1,
+      "quizzes": [
+        {
+          "encounterId": 1,
+          "turn": 1,
+          "cardIndex": 0,
+          "factId": "cs_3_pagerank_inventors",
+          "question": "PageRank is named after one of its creators. Which two Stanford PhD students invented it in 1998 and used it to build the world's dominant search engine?",
+          "choices": [
+            "John Backus",
+            "Larry Page and Sergey Brin",
+            "Tim O'Reilly",
+            "Fei-Fei Li"
+          ],
+          "correctIndex": 1,
+          "correctAnswer": "Larry Page and Sergey Brin",
+          "domain": "general_knowledge",
+          "source": "cs_3_pagerank_inventors",
+          "cardType": "attack",
+          "mechanic": "strike",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 1,
+          "turn": 2,
+          "cardIndex": 0,
+          "factId": "geography-hong-kong-most-skyscrapers",
+          "question": "Which city has the most skyscrapers in the world?",
+          "choices": [
+            "New York City",
+            "Shanghai",
+            "Hong Kong",
+            "Tokyo"
+          ],
+          "correctIndex": 2,
+          "correctAnswer": "Hong Kong",
+          "domain": "geography",
+          "source": "geography-hong-kong-most-skyscrapers",
+          "cardType": "shield",
+          "mechanic": "block",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 1,
+          "turn": 3,
+          "cardIndex": 0,
+          "factId": "ww_pal_neuschwanstein_disney",
+          "question": "Which famous Disney theme park castle was directly inspired by Neuschwanstein Castle in Bavaria?",
+          "choices": [
+            "Mosi-oa-Tunya",
+            "River of January",
+            "Sleeping Beauty Castle",
+            "The Coathanger"
+          ],
+          "correctIndex": 2,
+          "correctAnswer": "Sleeping Beauty Castle",
+          "domain": "geography",
+          "source": "ww_pal_neuschwanstein_disney",
+          "cardType": "attack",
+          "mechanic": "strike",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 1,
+          "turn": 5,
+          "cardIndex": 0,
+          "factId": "rome_pun_metaurus",
+          "question": "Which of Hannibal's brothers marched from Spain to reinforce him in Italy, but was defeated and killed at the Battle of the Metaurus River in 207 BCE?",
+          "choices": [
+            "Nerva, Trajan, Hadrian, Antoninus Pius, Marcus Aurelius",
+            "Hasdrubal Barca",
+            "Marcus Agrippa",
+            "Niccolò Machiavelli"
+          ],
+          "correctIndex": 1,
+          "correctAnswer": "Hasdrubal Barca",
+          "domain": "history",
+          "source": "rome_pun_metaurus",
+          "cardType": "utility",
+          "mechanic": "foresight",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 1,
+          "turn": 6,
+          "cardIndex": 0,
+          "factId": "rome_pun_metaurus",
+          "question": "Which of Hannibal's brothers marched from Spain to reinforce him in Italy, but was defeated and killed at the Battle of the Metaurus River in 207 BCE?",
+          "choices": [
+            "Niccolò Machiavelli",
+            "Nerva, Trajan, Hadrian, Antoninus Pius, Marcus Aurelius",
+            "Hasdrubal Barca",
+            "Marcus Agrippa"
+          ],
+          "correctIndex": 2,
+          "correctAnswer": "Hasdrubal Barca",
+          "domain": "history",
+          "source": "rome_pun_metaurus",
+          "cardType": "utility",
+          "mechanic": "foresight",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 1,
+          "turn": 7,
+          "cardIndex": 0,
+          "factId": "ww_pal_neuschwanstein_disney",
+          "question": "Which famous Disney theme park castle was directly inspired by Neuschwanstein Castle in Bavaria?",
+          "choices": [
+            "The Coathanger",
+            "River of January",
+            "Sleeping Beauty Castle",
+            "Mosi-oa-Tunya"
+          ],
+          "correctIndex": 2,
+          "correctAnswer": "Sleeping Beauty Castle",
+          "domain": "geography",
+          "source": "ww_pal_neuschwanstein_disney",
+          "cardType": "attack",
+          "mechanic": "strike",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 1,
+          "turn": 8,
+          "cardIndex": 0,
+          "factId": "geography-hong-kong-most-skyscrapers",
+          "question": "Which city has the most skyscrapers in the world?",
+          "choices": [
+            "Hong Kong",
+            "Shanghai",
+            "Kuala Lumpur",
+            "Chicago"
+          ],
+          "correctIndex": 0,
+          "correctAnswer": "Hong Kong",
+          "domain": "geography",
+          "source": "geography-hong-kong-most-skyscrapers",
+          "cardType": "attack",
+          "mechanic": "strike",
+          "fromPreview": true,
+          "anomalies": []
+        }
+      ],
+      "uniqueQuizzes": [
+        {
+          "encounterId": 1,
+          "turn": 1,
+          "cardIndex": 0,
+          "factId": "cs_3_pagerank_inventors",
+          "question": "PageRank is named after one of its creators. Which two Stanford PhD students invented it in 1998 and used it to build the world's dominant search engine?",
+          "choices": [
+            "John Backus",
+            "Larry Page and Sergey Brin",
+            "Tim O'Reilly",
+            "Fei-Fei Li"
+          ],
+          "correctIndex": 1,
+          "correctAnswer": "Larry Page and Sergey Brin",
+          "domain": "general_knowledge",
+          "source": "cs_3_pagerank_inventors",
+          "cardType": "attack",
+          "mechanic": "strike",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 1,
+          "turn": 2,
+          "cardIndex": 0,
+          "factId": "geography-hong-kong-most-skyscrapers",
+          "question": "Which city has the most skyscrapers in the world?",
+          "choices": [
+            "New York City",
+            "Shanghai",
+            "Hong Kong",
+            "Tokyo"
+          ],
+          "correctIndex": 2,
+          "correctAnswer": "Hong Kong",
+          "domain": "geography",
+          "source": "geography-hong-kong-most-skyscrapers",
+          "cardType": "shield",
+          "mechanic": "block",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 1,
+          "turn": 3,
+          "cardIndex": 0,
+          "factId": "ww_pal_neuschwanstein_disney",
+          "question": "Which famous Disney theme park castle was directly inspired by Neuschwanstein Castle in Bavaria?",
+          "choices": [
+            "Mosi-oa-Tunya",
+            "River of January",
+            "Sleeping Beauty Castle",
+            "The Coathanger"
+          ],
+          "correctIndex": 2,
+          "correctAnswer": "Sleeping Beauty Castle",
+          "domain": "geography",
+          "source": "ww_pal_neuschwanstein_disney",
+          "cardType": "attack",
+          "mechanic": "strike",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 1,
+          "turn": 5,
+          "cardIndex": 0,
+          "factId": "rome_pun_metaurus",
+          "question": "Which of Hannibal's brothers marched from Spain to reinforce him in Italy, but was defeated and killed at the Battle of the Metaurus River in 207 BCE?",
+          "choices": [
+            "Nerva, Trajan, Hadrian, Antoninus Pius, Marcus Aurelius",
+            "Hasdrubal Barca",
+            "Marcus Agrippa",
+            "Niccolò Machiavelli"
+          ],
+          "correctIndex": 1,
+          "correctAnswer": "Hasdrubal Barca",
+          "domain": "history",
+          "source": "rome_pun_metaurus",
+          "cardType": "utility",
+          "mechanic": "foresight",
+          "fromPreview": true,
+          "anomalies": []
+        }
+      ],
+      "totalPlays": 7,
+      "turnsCompleted": 1
+    },
+    {
+      "encounter": 2,
+      "quizzes": [],
+      "uniqueQuizzes": [],
+      "totalPlays": 0,
+      "turnsCompleted": 0
+    },
+    {
+      "encounter": 3,
+      "quizzes": [
+        {
+          "encounterId": 3,
+          "turn": 1,
+          "cardIndex": 0,
+          "factId": "geography-hong-kong-most-skyscrapers",
+          "question": "Which city has the most skyscrapers in the world?",
+          "choices": [
+            "Shanghai",
+            "Hong Kong",
+            "Tokyo",
+            "Shenzhen"
+          ],
+          "correctIndex": 1,
+          "correctAnswer": "Hong Kong",
+          "domain": "geography",
+          "source": "geography-hong-kong-most-skyscrapers",
+          "cardType": "shield",
+          "mechanic": "thorns",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 3,
+          "turn": 2,
+          "cardIndex": 0,
+          "factId": "general_knowledge-nanotechnology-named-after-nanometre",
+          "question": "What unit of length gives nanotechnology its name?",
+          "choices": [
+            "Light year",
+            "Centimetre",
+            "Femtometre",
+            "Nanometre"
+          ],
+          "correctIndex": 3,
+          "correctAnswer": "Nanometre",
+          "domain": "general_knowledge",
+          "source": "general_knowledge-nanotechnology-named-after-nanometre",
+          "cardType": "utility",
+          "mechanic": "foresight",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 3,
+          "turn": 3,
+          "cardIndex": 0,
+          "factId": "gk-condom-proper-use-2pct-pregnancy",
+          "question": "What is the annual pregnancy rate with perfect condom use?",
+          "choices": [
+            "2% per year",
+            "6% per year",
+            "1% per year",
+            "7% per year"
+          ],
+          "correctIndex": 0,
+          "correctAnswer": "2% per year",
+          "domain": "general_knowledge",
+          "source": "gk-condom-proper-use-2pct-pregnancy",
+          "cardType": "attack",
+          "mechanic": "strike",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 3,
+          "turn": 4,
+          "cardIndex": 0,
+          "factId": "ww_mon_moai_paro_height",
+          "question": "How tall is Paro, the tallest erected moai statue on Easter Island, which weighs approximately 82 tonnes?",
+          "choices": [
+            "95",
+            "52,800 tonnes",
+            "42,000 tonnes",
+            "10 metres"
+          ],
+          "correctIndex": 3,
+          "correctAnswer": "10 metres",
+          "domain": "geography",
+          "source": "ww_mon_moai_paro_height",
+          "cardType": "attack",
+          "mechanic": "strike",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 3,
+          "turn": 6,
+          "cardIndex": 0,
+          "factId": "cs_3_pagerank_inventors",
+          "question": "PageRank is named after one of its creators. Which two Stanford PhD students invented it in 1998 and used it to build the world's dominant search engine?",
+          "choices": [
+            "John Backus",
+            "Larry Page and Sergey Brin",
+            "Fei-Fei Li",
+            "Tim O'Reilly"
+          ],
+          "correctIndex": 1,
+          "correctAnswer": "Larry Page and Sergey Brin",
+          "domain": "general_knowledge",
+          "source": "cs_3_pagerank_inventors",
+          "cardType": "shield",
+          "mechanic": "block",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 3,
+          "turn": 7,
+          "cardIndex": 0,
+          "factId": "cs_3_pagerank_inventors",
+          "question": "PageRank is named after one of its creators. Which two Stanford PhD students invented it in 1998 and used it to build the world's dominant search engine?",
+          "choices": [
+            "Tim O'Reilly",
+            "John Backus",
+            "Fei-Fei Li",
+            "Larry Page and Sergey Brin"
+          ],
+          "correctIndex": 3,
+          "correctAnswer": "Larry Page and Sergey Brin",
+          "domain": "general_knowledge",
+          "source": "cs_3_pagerank_inventors",
+          "cardType": "shield",
+          "mechanic": "block",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 3,
+          "turn": 8,
+          "cardIndex": 0,
+          "factId": "ww_mon_moai_paro_height",
+          "question": "How tall is Paro, the tallest erected moai statue on Easter Island, which weighs approximately 82 tonnes?",
+          "choices": [
+            "52,800 tonnes",
+            "95",
+            "42,000 tonnes",
+            "10 metres"
+          ],
+          "correctIndex": 3,
+          "correctAnswer": "10 metres",
+          "domain": "geography",
+          "source": "ww_mon_moai_paro_height",
+          "cardType": "attack",
+          "mechanic": "strike",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 3,
+          "turn": 9,
+          "cardIndex": 0,
+          "factId": "geography-hong-kong-most-skyscrapers",
+          "question": "Which city has the most skyscrapers in the world?",
+          "choices": [
+            "Tokyo",
+            "New York City",
+            "Singapore",
+            "Hong Kong"
+          ],
+          "correctIndex": 3,
+          "correctAnswer": "Hong Kong",
+          "domain": "geography",
+          "source": "geography-hong-kong-most-skyscrapers",
+          "cardType": "shield",
+          "mechanic": "thorns",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 3,
+          "turn": 11,
+          "cardIndex": 0,
+          "factId": "ww_sac_borobudur_location",
+          "question": "In which country is Borobudur, the world's largest Buddhist temple, located?",
+          "choices": [
+            "Yucatan, Mexico",
+            "Granada",
+            "Pakistan",
+            "Indonesia"
+          ],
+          "correctIndex": 3,
+          "correctAnswer": "Indonesia",
+          "domain": "geography",
+          "source": "ww_sac_borobudur_location",
+          "cardType": "shield",
+          "mechanic": "block",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 3,
+          "turn": 12,
+          "cardIndex": 0,
+          "factId": "ww_sac_borobudur_location",
+          "question": "In which country is Borobudur, the world's largest Buddhist temple, located?",
+          "choices": [
+            "Granada",
+            "Yucatan, Mexico",
+            "Indonesia",
+            "Pakistan"
+          ],
+          "correctIndex": 2,
+          "correctAnswer": "Indonesia",
+          "domain": "geography",
+          "source": "ww_sac_borobudur_location",
+          "cardType": "shield",
+          "mechanic": "block",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 3,
+          "turn": 13,
+          "cardIndex": 0,
+          "factId": "general_knowledge-hindi-fourth-language-world",
+          "question": "Hindi is the fourth-most-spoken first language in the world — which three languages rank above it?",
+          "choices": [
+            "English, Portuguese, Mandarin",
+            "English, German, Spanish",
+            "Bengali",
+            "Mandarin, Spanish, English"
+          ],
+          "correctIndex": 3,
+          "correctAnswer": "Mandarin, Spanish, English",
+          "domain": "general_knowledge",
+          "source": "general_knowledge-hindi-fourth-language-world",
+          "cardType": "shield",
+          "mechanic": "block",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 3,
+          "turn": 14,
+          "cardIndex": 0,
+          "factId": "gk-condom-proper-use-2pct-pregnancy",
+          "question": "What is the annual pregnancy rate with perfect condom use?",
+          "choices": [
+            "1% per year",
+            "7% per year",
+            "2% per year",
+            "6% per year"
+          ],
+          "correctIndex": 2,
+          "correctAnswer": "2% per year",
+          "domain": "general_knowledge",
+          "source": "gk-condom-proper-use-2pct-pregnancy",
+          "cardType": "shield",
+          "mechanic": "block",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 3,
+          "turn": 16,
+          "cardIndex": 0,
+          "factId": "cs_3_pagerank_inventors",
+          "question": "PageRank is named after one of its creators. Which two Stanford PhD students invented it in 1998 and used it to build the world's dominant search engine?",
+          "choices": [
+            "John Backus",
+            "Tim O'Reilly",
+            "Fei-Fei Li",
+            "Larry Page and Sergey Brin"
+          ],
+          "correctIndex": 3,
+          "correctAnswer": "Larry Page and Sergey Brin",
+          "domain": "general_knowledge",
+          "source": "cs_3_pagerank_inventors",
+          "cardType": "attack",
+          "mechanic": "strike",
+          "fromPreview": true,
+          "anomalies": []
+        }
+      ],
+      "uniqueQuizzes": [
+        {
+          "encounterId": 3,
+          "turn": 2,
+          "cardIndex": 0,
+          "factId": "general_knowledge-nanotechnology-named-after-nanometre",
+          "question": "What unit of length gives nanotechnology its name?",
+          "choices": [
+            "Light year",
+            "Centimetre",
+            "Femtometre",
+            "Nanometre"
+          ],
+          "correctIndex": 3,
+          "correctAnswer": "Nanometre",
+          "domain": "general_knowledge",
+          "source": "general_knowledge-nanotechnology-named-after-nanometre",
+          "cardType": "utility",
+          "mechanic": "foresight",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 3,
+          "turn": 3,
+          "cardIndex": 0,
+          "factId": "gk-condom-proper-use-2pct-pregnancy",
+          "question": "What is the annual pregnancy rate with perfect condom use?",
+          "choices": [
+            "2% per year",
+            "6% per year",
+            "1% per year",
+            "7% per year"
+          ],
+          "correctIndex": 0,
+          "correctAnswer": "2% per year",
+          "domain": "general_knowledge",
+          "source": "gk-condom-proper-use-2pct-pregnancy",
+          "cardType": "attack",
+          "mechanic": "strike",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 3,
+          "turn": 4,
+          "cardIndex": 0,
+          "factId": "ww_mon_moai_paro_height",
+          "question": "How tall is Paro, the tallest erected moai statue on Easter Island, which weighs approximately 82 tonnes?",
+          "choices": [
+            "95",
+            "52,800 tonnes",
+            "42,000 tonnes",
+            "10 metres"
+          ],
+          "correctIndex": 3,
+          "correctAnswer": "10 metres",
+          "domain": "geography",
+          "source": "ww_mon_moai_paro_height",
+          "cardType": "attack",
+          "mechanic": "strike",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 3,
+          "turn": 11,
+          "cardIndex": 0,
+          "factId": "ww_sac_borobudur_location",
+          "question": "In which country is Borobudur, the world's largest Buddhist temple, located?",
+          "choices": [
+            "Yucatan, Mexico",
+            "Granada",
+            "Pakistan",
+            "Indonesia"
+          ],
+          "correctIndex": 3,
+          "correctAnswer": "Indonesia",
+          "domain": "geography",
+          "source": "ww_sac_borobudur_location",
+          "cardType": "shield",
+          "mechanic": "block",
+          "fromPreview": true,
+          "anomalies": []
+        },
+        {
+          "encounterId": 3,
+          "turn": 13,
+          "cardIndex": 0,
+          "factId": "general_knowledge-hindi-fourth-language-world",
+          "question": "Hindi is the fourth-most-spoken first language in the world — which three languages rank above it?",
+          "choices": [
+            "English, Portuguese, Mandarin",
+            "English, German, Spanish",
+            "Bengali",
+            "Mandarin, Spanish, English"
+          ],
+          "correctIndex": 3,
+          "correctAnswer": "Mandarin, Spanish, English",
+          "domain": "general_knowledge",
+          "source": "general_knowledge-hindi-fourth-language-world",
+          "cardType": "shield",
+          "mechanic": "block",
+          "fromPreview": true,
+          "anomalies": []
+        }
+      ],
+      "totalPlays": 13,
+      "turnsCompleted": 3
+    }
+  ]
+}

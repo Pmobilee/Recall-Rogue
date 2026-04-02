@@ -1,0 +1,414 @@
+{
+  "summary": {
+    "floorsReached": 1,
+    "roomsCompleted": 30,
+    "rewardTransitions": 2,
+    "finalScreen": "campfire",
+    "runComplete": false,
+    "timestamp": "2026-04-02T13:19:59.081Z"
+  },
+  "bugs": [
+    {
+      "severity": "MEDIUM",
+      "category": "Combat",
+      "description": "getCombatState null on turn 1 but still on combat screen",
+      "evidence": "",
+      "time": "2026-04-02T13:18:34.441Z"
+    },
+    {
+      "severity": "MEDIUM",
+      "category": "Combat",
+      "description": "getCombatState null on turn 6 but still on combat screen",
+      "evidence": "",
+      "time": "2026-04-02T13:19:04.828Z"
+    }
+  ],
+  "transitions": [
+    {
+      "from": null,
+      "to": "hub",
+      "time": "2026-04-02T13:17:46.220Z"
+    },
+    {
+      "from": "hub",
+      "to": "dungeonMap",
+      "time": "2026-04-02T13:18:07.334Z"
+    },
+    {
+      "from": "dungeonMap",
+      "to": "combat",
+      "time": "2026-04-02T13:18:09.932Z"
+    },
+    {
+      "from": "combat",
+      "to": "rewardRoom",
+      "time": "2026-04-02T13:18:36.145Z"
+    },
+    {
+      "from": "rewardRoom",
+      "to": "dungeonMap",
+      "time": "2026-04-02T13:18:42.366Z"
+    },
+    {
+      "from": "dungeonMap",
+      "to": "combat",
+      "time": "2026-04-02T13:18:44.945Z"
+    },
+    {
+      "from": "combat",
+      "to": "rewardRoom",
+      "time": "2026-04-02T13:19:06.530Z"
+    },
+    {
+      "from": "rewardRoom",
+      "to": "dungeonMap",
+      "time": "2026-04-02T13:19:12.746Z"
+    },
+    {
+      "from": "dungeonMap",
+      "to": "restRoom",
+      "time": "2026-04-02T13:19:15.305Z"
+    },
+    {
+      "from": "restRoom",
+      "to": "campfire",
+      "time": "2026-04-02T13:19:18.313Z"
+    }
+  ],
+  "rooms": [
+    {
+      "type": "combat",
+      "floor": 1,
+      "roomNum": 1,
+      "time": "2026-04-02T13:18:09.934Z"
+    },
+    {
+      "type": "combat",
+      "floor": 1,
+      "roomNum": 2,
+      "time": "2026-04-02T13:18:33.739Z"
+    },
+    {
+      "type": "rewardRoom",
+      "floor": 1,
+      "transition": 1,
+      "time": "2026-04-02T13:18:37.649Z"
+    },
+    {
+      "type": "combat",
+      "floor": 1,
+      "roomNum": 3,
+      "time": "2026-04-02T13:18:44.946Z"
+    },
+    {
+      "type": "rewardRoom",
+      "floor": 1,
+      "transition": 2,
+      "time": "2026-04-02T13:19:08.032Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:18.314Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:19.820Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:21.325Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:22.830Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:24.337Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:25.845Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:27.352Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:28.857Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:30.363Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:31.867Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:33.372Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:34.877Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:36.381Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:37.886Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:39.390Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:40.895Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:42.400Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:43.906Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:45.413Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:46.919Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:48.425Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:49.965Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:51.521Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:53.044Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:54.551Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:56.058Z"
+    },
+    {
+      "type": "rest",
+      "floor": 1,
+      "time": "2026-04-02T13:19:57.568Z"
+    }
+  ],
+  "combatLog": [
+    {
+      "floor": 1,
+      "isBoss": false,
+      "turns": 0,
+      "cardsPlayed": 18,
+      "outcome": "unknown"
+    },
+    {
+      "floor": 1,
+      "isBoss": false,
+      "turns": 0,
+      "cardsPlayed": 0,
+      "outcome": "completed",
+      "startHP": 0,
+      "endHP": 0,
+      "endScreen": "rewardRoom"
+    },
+    {
+      "floor": 1,
+      "isBoss": false,
+      "turns": 0,
+      "cardsPlayed": 16,
+      "outcome": "completed",
+      "endScreen": "rewardRoom"
+    }
+  ],
+  "consoleErrors": [
+    {
+      "type": "error",
+      "text": "Connecting to 'http://100.74.153.81:5175/api/game/cardback-updates' violates the following Content Security Policy directive: \"connect-src 'self' ws: wss: http://localhost:* http://*:3001\". The action has been blocked.",
+      "time": "2026-04-02T13:17:42.569Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:17:42.574Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:14.720Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:31.422Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:35.003Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:38.361Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:42.401Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:45.654Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:46.471Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:48.446Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:49.264Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:50.082Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:52.053Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:52.871Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:53.688Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:55.658Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:56.475Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:57.292Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:59.264Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:19:00.083Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:19:00.902Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:19:01.755Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:19:02.909Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:19:06.487Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:19:08.739Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:19:12.772Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:19:42.753Z"
+    }
+  ],
+  "runState": {
+    "currency": 40,
+    "playerHp": 100,
+    "playerMaxHp": 100
+  }
+}

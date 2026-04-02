@@ -1,0 +1,112 @@
+{
+  "label": "post-combat-2",
+  "screen": "dungeonMap",
+  "roomLog": [
+    {
+      "type": "combat",
+      "floor": 1,
+      "roomNum": 1,
+      "time": "2026-04-02T13:18:09.934Z"
+    },
+    {
+      "type": "combat",
+      "floor": 1,
+      "roomNum": 2,
+      "time": "2026-04-02T13:18:33.739Z"
+    },
+    {
+      "type": "rewardRoom",
+      "floor": 1,
+      "transition": 1,
+      "time": "2026-04-02T13:18:37.649Z"
+    }
+  ],
+  "transitionLog": [
+    {
+      "from": null,
+      "to": "hub",
+      "time": "2026-04-02T13:17:46.220Z"
+    },
+    {
+      "from": "hub",
+      "to": "dungeonMap",
+      "time": "2026-04-02T13:18:07.334Z"
+    },
+    {
+      "from": "dungeonMap",
+      "to": "combat",
+      "time": "2026-04-02T13:18:09.932Z"
+    },
+    {
+      "from": "combat",
+      "to": "rewardRoom",
+      "time": "2026-04-02T13:18:36.145Z"
+    },
+    {
+      "from": "rewardRoom",
+      "to": "dungeonMap",
+      "time": "2026-04-02T13:18:42.366Z"
+    }
+  ],
+  "combatLog": [
+    {
+      "floor": 1,
+      "isBoss": false,
+      "turns": 0,
+      "cardsPlayed": 18,
+      "outcome": "unknown"
+    },
+    {
+      "floor": 1,
+      "isBoss": false,
+      "turns": 0,
+      "cardsPlayed": 0,
+      "outcome": "completed",
+      "startHP": 0,
+      "endHP": 0,
+      "endScreen": "rewardRoom"
+    }
+  ],
+  "bugLog": [
+    {
+      "severity": "MEDIUM",
+      "category": "Combat",
+      "description": "getCombatState null on turn 1 but still on combat screen",
+      "evidence": "",
+      "time": "2026-04-02T13:18:34.441Z"
+    }
+  ],
+  "consoleErrors": [
+    {
+      "type": "error",
+      "text": "Connecting to 'http://100.74.153.81:5175/api/game/cardback-updates' violates the following Content Security Policy directive: \"connect-src 'self' ws: wss: http://localhost:* http://*:3001\". The action has been blocked.",
+      "time": "2026-04-02T13:17:42.569Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:17:42.574Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:14.720Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:31.422Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:35.003Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:18:38.361Z"
+    }
+  ],
+  "time": "2026-04-02T13:18:42.367Z"
+}

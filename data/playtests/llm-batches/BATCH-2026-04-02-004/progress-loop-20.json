@@ -1,0 +1,206 @@
+{
+  "label": "loop-20",
+  "screen": "mysteryEvent",
+  "roomLog": [
+    {
+      "type": "combat",
+      "floor": 1,
+      "roomNum": 1,
+      "time": "2026-04-02T13:25:58.034Z"
+    },
+    {
+      "type": "combat",
+      "floor": 1,
+      "roomNum": 2,
+      "time": "2026-04-02T13:26:07.442Z"
+    },
+    {
+      "type": "rewardRoom",
+      "floor": 1,
+      "rewardNum": 1,
+      "time": "2026-04-02T13:26:11.427Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:26:18.734Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:26:22.249Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:26:24.759Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:26:27.269Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:26:29.786Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:26:32.302Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:26:34.821Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:26:37.372Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:26:39.897Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:26:42.453Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:26:45.064Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:26:47.573Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:26:50.081Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:26:52.587Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:26:55.094Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:26:57.601Z"
+    },
+    {
+      "type": "mystery",
+      "floor": 1,
+      "time": "2026-04-02T13:27:00.107Z"
+    }
+  ],
+  "transitionLog": [
+    {
+      "from": null,
+      "to": "hub",
+      "time": "2026-04-02T13:25:43.910Z"
+    },
+    {
+      "from": "hub",
+      "to": "deckSelectionHub",
+      "time": "2026-04-02T13:25:47.417Z"
+    },
+    {
+      "from": "deckSelectionHub",
+      "to": "onboarding",
+      "time": "2026-04-02T13:25:53.427Z"
+    },
+    {
+      "from": "onboarding",
+      "to": "dungeonMap",
+      "time": "2026-04-02T13:25:55.440Z"
+    },
+    {
+      "from": "dungeonMap",
+      "to": "combat",
+      "time": "2026-04-02T13:25:58.032Z"
+    },
+    {
+      "from": "combat",
+      "to": "rewardRoom",
+      "time": "2026-04-02T13:26:09.807Z"
+    },
+    {
+      "from": "rewardRoom",
+      "to": "dungeonMap",
+      "time": "2026-04-02T13:26:16.148Z"
+    },
+    {
+      "from": "dungeonMap",
+      "to": "mysteryEvent",
+      "time": "2026-04-02T13:26:18.732Z"
+    }
+  ],
+  "combatLog": [
+    {
+      "floor": 1,
+      "isBoss": false,
+      "turns": 0,
+      "cardsPlayed": 11,
+      "outcome": "victory",
+      "startHP": 100,
+      "endHP": 100,
+      "enemyName": "Margin Gremlin"
+    },
+    {
+      "floor": 1,
+      "isBoss": false,
+      "turns": 0,
+      "cardsPlayed": 0,
+      "outcome": "completed",
+      "startHP": 0,
+      "endHP": 0,
+      "enemyName": "",
+      "endScreen": "rewardRoom"
+    }
+  ],
+  "bugLog": [
+    {
+      "severity": "MEDIUM",
+      "category": "Combat",
+      "description": "getCombatState null on turn 1 while screen=combat",
+      "evidence": "",
+      "time": "2026-04-02T13:26:08.043Z"
+    }
+  ],
+  "consoleErrors": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:25:37.341Z"
+    },
+    {
+      "type": "error",
+      "text": "Connecting to 'http://100.74.153.81:5175/api/game/cardback-updates' violates the following Content Security Policy directive: \"connect-src 'self' ws: wss: http://localhost:* http://*:3001\". The action has been blocked.",
+      "time": "2026-04-02T13:25:37.354Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:26:09.306Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "time": "2026-04-02T13:26:42.145Z"
+    }
+  ],
+  "time": "2026-04-02T13:27:02.614Z"
+}
