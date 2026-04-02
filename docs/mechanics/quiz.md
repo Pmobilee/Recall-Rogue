@@ -50,6 +50,8 @@ Template placeholders in `questionFormat` are replaced via `renderTemplate`: `{t
 
 Special template IDs: `reverse` (answer = `targetLanguageWord`), `reading` (answer = `fact.reading`), default (answer = `fact.correctAnswer`).
 
+**Note:** Different question templates can reference different `answerPoolId` values for the same fact. A vocabulary fact might use the `english_meanings` pool for forward questions and the `target_language_words` pool for reverse questions. The pool used is always determined by the selected template, not the fact itself.
+
 ### 3. Question Formatting (`questionFormatter.ts`)
 
 `getQuestionPresentation` controls how a question is rendered based on card tier:
@@ -89,6 +91,22 @@ Key rules for synthetic members:
 - A synthetic answer equal to `correctFact.correctAnswer` is always excluded (case-insensitive)
 - They appear as distractors only — never as quiz questions (`quizQuestion: ''`)
 - Content authors set this field in the deck JSON; it is never auto-generated at runtime
+
+#### Pool Sizing Guidelines
+
+| Pool Size (real + synthetic) | Behavior | Quality |
+|------------------------------|----------|---------|
+| < 5 | Pool-based selection skipped entirely — falls back to `fact.distractors[]` | No pool variety |
+| 5–14 | Pool-based selection active, but limited variety | Players may memorize which answers appear together after several encounters |
+| 15+ | Good distractor variety; confusion matrix rotates effectively | Recommended minimum |
+
+**Runtime minimum: 5 unique members** (real + synthetic combined). Below this threshold, the system falls back to the per-fact `distractors[]` array entirely.
+
+**Recommended minimum: 15+.** Pools of 5–14 are technically functional but risk repetitive patterns — players can begin memorizing which 4 answers appear with which question after enough encounters. The confusion matrix partially mitigates this by preferring the player's personal confusion pairs, but variety is still limited when total candidates are few.
+
+**Padding with synthetics:** For pools with 5–14 real facts, add `syntheticDistractors` to reach at least 15 total members. At exactly 5 real members a player will always see 4 of the same 5 answers — synthetics break that predictability. Synthetics score lower than real facts (0.5 vs 1.0) so real members are always drawn first; synthetics appear only when real options are exhausted or when they are the strongest-scoring available candidates.
+
+**Numeric pools are exempt:** Bracket-notation facts (`{8848}`, `{1789}`) generate distractors at runtime via `getNumericalDistractors` — pool sizing rules do not apply to them.
 
 **Trivia mode distractor path** (`quizService.ts: getQuizChoices`):
 

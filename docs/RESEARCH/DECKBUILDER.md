@@ -93,11 +93,11 @@ interface AnswerTypePool {
   label: string;                 // Human-readable label
   answerFormat: string;          // "name" | "year" | "number" | "term" | "place" | "word" | etc.
   factIds: string[];             // Facts belonging to this pool
-  minimumSize: number;           // Minimum 5 facts per pool (1 correct + 4 distractors)
+  minimumSize: number;           // Runtime floor: 5 facts (real + synthetic). Recommended: 15+ for good variety.
 }
 ```
 
-**Minimum pool size: 5 facts.** With fewer than 5, the player will pattern-match distractors within 2-3 encounters. If a sub-pool has fewer than 5 facts, it must be merged with a related pool or use the existing bracket-number generation system for numeric answers.
+**Minimum pool size: 5 members (real + synthetic combined)** — this is the runtime floor. Below 5, the system skips pool-based selection entirely and falls back to per-fact `distractors[]`. With fewer than 5 real facts, add `syntheticDistractors` to reach this threshold. **Recommended minimum: 15+ members.** Pools of 5–14 are functional but risk repetitive patterns — at exactly 5 members a player will always see 4 of the same 5 answers across every encounter. Add `syntheticDistractors` to pad pools below 15 to at least 15 total members. If a sub-pool cannot reach 15 (even with synthetics), merge it with a related pool or use bracket-number notation for numeric answers.
 
 **Example — US Presidents deck:**
 
@@ -795,13 +795,13 @@ A single Claude agent skill with three invocable phases for creating high-qualit
 **Process:**
 1. **Deep domain research** — Wikipedia, Wikidata, authoritative sources. Understand the full scope of the topic.
 2. **Identify natural answer types** — What kinds of answers exist in this domain? Names, dates, places, terms, categories?
-3. **Define answer type pools** — Group potential facts by answer format. Verify each pool has 5+ members.
+3. **Define answer type pools** — Group potential facts by answer format. Verify each pool has 5+ real members (runtime floor). Target 15+ total members (real + synthetic) for good distractor variety.
 4. **Design question templates** — For each answer type pool, what question formats make sense? What's easy vs. hard?
 5. **Identify common confusions** — What do people typically mix up in this domain? (Washington/Adams/Jefferson for early presidents; noble gases for each other; Monroe/Madison for "James M___" presidents)
 6. **Identify synonym groups** — Which answers are semantically interchangeable? For vocabulary: run `acceptableAlternatives` intersection. For knowledge: flag facts with overlapping correct answers (e.g., "Civil War" / "War Between the States"). Ensure synonym-grouped facts never appear as each other's distractors.
 7. **Define chain themes** — What are the natural sub-groupings within this topic? Minimum 3, no upper limit. These become chain types. A Periodic Table deck might have 8+ themes; a US Presidents deck has 6; a small vocabulary deck might have exactly 3.
 8. **Set difficulty tiers** — Which facts are universally known (easy), commonly known (medium), and obscure (hard)?
-9. **Validate structure** — Ensure every answer type pool has ≥5 members (after synonym exclusions), every chain theme has ≥8 facts, total facts ≥ target. Verify no synonym group is so large that it starves the distractor pool.
+9. **Validate structure** — Ensure every answer type pool has ≥5 members (after synonym exclusions) to pass the runtime floor; target 15+ total members (real + synthetic) for quality variety. Every chain theme ≥8 facts, total facts ≥ target. Verify no synonym group is so large that it starves the distractor pool. Pools of 5–14 real facts should have `syntheticDistractors` added during generation.
 
 **Output:** A deck architecture specification:
 ```yaml
@@ -871,7 +871,8 @@ difficulty_tiers:
 3. **Assign facts to answer type pools** and chain themes
 4. **Compute synonym groups** by running `acceptableAlternatives` intersection algorithm (§4.6). For vocabulary decks this is fully automated. For knowledge decks, review flagged overlaps manually.
 5. **Validate completeness:**
-   - Every answer type pool has ≥5 members (after accounting for synonym group exclusions)
+   - Every answer type pool has ≥5 members (real + synthetic combined, after synonym group exclusions) — runtime floor
+   - Pools with <15 total members have `syntheticDistractors` added to reach 15+ for good distractor variety
    - Every chain theme has ≥8 facts
    - Total facts ≥ minimum deck size
    - No duplicate answers within a pool

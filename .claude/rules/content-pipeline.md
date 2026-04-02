@@ -35,7 +35,8 @@ Every fact-generation worker MUST receive verified source data IN ITS PROMPT.
 **Why:** LLMs confidently produce wrong dates/numbers. QA by another LLM has the SAME blind spots. One wrong fact undermines educational trust in the entire product.
 
 ## Deck Quality Checklist
-- Answer pools ≥5 per question
+- Answer pools ≥5 per question (runtime floor), ≥15 recommended for distractor variety
+- Pools with 5-14 members: add syntheticDistractors to reach 15+
 - Chain themes ≥8 per knowledge deck, ≥3 themes selected per run
 - Total facts ≥30-50 per deck
 - Synonyms computed
