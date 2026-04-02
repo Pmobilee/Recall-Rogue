@@ -13832,7 +13832,15 @@
         "ja-gram-n5-n5-exist-ga-iru-fill-0",
         "ja-gram-n5-n5-exist-ga-iru-fill-1"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "がいません",
+        "にあります",
+        "にいます",
+        "はあります",
+        "はいます",
+        "でいます"
+      ]
     },
     {
       "id": "sentence_ender",
@@ -13914,7 +13922,18 @@
         "ja-gram-n5-n5-adj-na-fill-1",
         "ja-gram-n5-n5-adj-na-fill-3"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "い形容詞",
+        "な形容詞",
+        "くない",
+        "ではない",
+        "かった",
+        "ではなかった",
+        "に",
+        "く",
+        "さ"
+      ]
     }
   ],
   "synonymGroups": [

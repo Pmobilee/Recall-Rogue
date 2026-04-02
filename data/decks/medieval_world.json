@@ -7023,7 +7023,16 @@
         "med_5_goryeo_tripitaka",
         "med_6_afr_mansa_musa_catalan"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Beowulf",
+        "Canterbury Tales",
+        "Divine Comedy",
+        "Song of Roland",
+        "El Cid",
+        "Nibelungenlied",
+        "Arthurian Legends"
+      ]
     },
     {
       "id": "battle_event_names",
@@ -7045,7 +7054,10 @@
         "med_6_afr_songhai_fall",
         "med_6_afr_almoravid_sagrajas"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Battle of Hastings"
+      ]
     },
     {
       "id": "concept_terms",
@@ -7146,7 +7158,10 @@
         "Carcassonne",
         "Mont-Saint-Michel",
         "Tower of London",
-        "Cologne Cathedral"
+        "Cologne Cathedral",
+        "Notre-Dame de Paris",
+        "Chartres Cathedral",
+        "Westminster Abbey"
       ]
     },
     {
@@ -7166,7 +7181,13 @@
         "med_5_song_dream_pool",
         "med_6_afr_kilwa_ibn_battuta"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Roger Bacon",
+        "Peter Abelard",
+        "Thomas Aquinas",
+        "Albertus Magnus"
+      ]
     }
   ],
   "synonymGroups": [],

@@ -4404,7 +4404,14 @@
         "const_dso_crux_flags",
         "const_sci_ophiuchus_13th"
       ],
-      "minimumSize": 3
+      "minimumSize": 3,
+      "syntheticDistractors": [
+        "Orion",
+        "Ursa Major",
+        "Cassiopeia",
+        "Leo",
+        "Scorpius"
+      ]
     },
     {
       "id": "god_figure_names",
@@ -4447,7 +4454,14 @@
         "Betelgeuse",
         "Vega",
         "Polaris",
-        "Proxima Centauri"
+        "Proxima Centauri",
+        "Andromeda Galaxy",
+        "Triangulum Galaxy",
+        "Whirlpool Galaxy",
+        "Sombrero Galaxy",
+        "Pinwheel Galaxy",
+        "Messier 87",
+        "Centaurus A"
       ]
     },
     {

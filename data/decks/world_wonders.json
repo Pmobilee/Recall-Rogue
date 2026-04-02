@@ -5311,7 +5311,16 @@
         "ww_nat_everest_nepali_name",
         "ww_nat_guanabara_bay_name_origin"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Machu Picchu",
+        "Stonehenge",
+        "Angkor Wat",
+        "Chichen Itza",
+        "Colosseum",
+        "Great Wall of China",
+        "Taj Mahal"
+      ]
     },
     {
       "id": "location_country",
@@ -5333,7 +5342,9 @@
         "Cambodia",
         "Turkey",
         "Morocco",
-        "Australia"
+        "Australia",
+        "Peru",
+        "United Kingdom"
       ]
     },
     {

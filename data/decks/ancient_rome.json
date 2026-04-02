@@ -13623,7 +13623,10 @@
         "rome_fall_ravenna_capital",
         "rome_fall_hunnic_origin"
       ],
-      "minimumSize": 3
+      "minimumSize": 3,
+      "syntheticDistractors": [
+        "Alexandria"
+      ]
     },
     {
       "id": "general_politician_names",
@@ -13765,7 +13768,10 @@
         "Histories",
         "Germania",
         "Natural History",
-        "Satyricon"
+        "Satyricon",
+        "Confessions",
+        "Aeneid",
+        "Odes of Horace"
       ]
     },
     {
@@ -13783,7 +13789,15 @@
         "rome_fall_milvian_bridge",
         "rome_pun_aegates_islands"
       ],
-      "minimumSize": 3
+      "minimumSize": 3,
+      "syntheticDistractors": [
+        "Battle of Stalingrad",
+        "Battle of Midway",
+        "Battle of the Bulge",
+        "Battle of Britain",
+        "Battle of Kursk",
+        "Battle of El Alamein"
+      ]
     },
     {
       "id": "structure_names",
@@ -13841,7 +13855,11 @@
         "rome_fall_praetorian_disbanding",
         "rome_fall_western_end_480"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Augustus",
+        "Tiberius"
+      ]
     },
     {
       "id": "roman_god_names",
@@ -13858,7 +13876,15 @@
         "rome_god_cereal_ceres",
         "rome_life_vulcan_volcano"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Juno",
+        "Minerva",
+        "Mercury",
+        "Neptune",
+        "Pluto",
+        "Bacchus"
+      ]
     }
   ],
   "synonymGroups": [],

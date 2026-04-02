@@ -6860,7 +6860,12 @@
         "solar_system_pioneer10_asteroid_belt",
         "solar_system_messenger_mercury_orbit"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Apollo 11",
+        "Apollo 13",
+        "Mariner 4"
+      ]
     },
     {
       "id": "system_facts",
@@ -6880,7 +6885,11 @@
         "magnetic field",
         "orbital resonance",
         "escape velocity",
-        "albedo"
+        "albedo",
+        "magnetosphere",
+        "obliquity",
+        "perihelion",
+        "aphelion"
       ]
     }
   ],

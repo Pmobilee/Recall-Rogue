@@ -7482,7 +7482,14 @@
         "cs_2_algol_block_structure",
         "cs_6_ai_pioneer_john_mccarthy"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "FORTRAN",
+        "COBOL",
+        "Pascal",
+        "Ada",
+        "Prolog"
+      ]
     },
     {
       "id": "company_names",
@@ -7554,7 +7561,17 @@
         "Selection Sort",
         "Heapsort",
         "Binary Search",
-        "Bellman-Ford Algorithm"
+        "Bellman-Ford Algorithm",
+        "Kruskal's Algorithm",
+        "Prim's Algorithm",
+        "Floyd-Warshall",
+        "Radix Sort",
+        "Counting Sort",
+        "Red-Black Tree",
+        "Topological Sort",
+        "Depth-First Search",
+        "Breadth-First Search",
+        "A* Algorithm"
       ]
     },
     {
@@ -7637,7 +7654,15 @@
         "cs_3_fft_complexity_improvement",
         "cs_3_heap_findmin_complexity"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "O(n)",
+        "O(n³)",
+        "O(2^n)",
+        "O(n!)",
+        "O(√n)",
+        "O(log log n)"
+      ]
     },
     {
       "id": "protocol_names",
@@ -7653,7 +7678,14 @@
         "SMTP",
         "SSL",
         "TLS",
-        "Wi-Fi"
+        "Wi-Fi",
+        "DNS",
+        "DHCP",
+        "SNMP",
+        "IMAP",
+        "POP3",
+        "NTP",
+        "LDAP"
       ]
     }
   ],

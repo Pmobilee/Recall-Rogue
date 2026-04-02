@@ -4190,7 +4190,15 @@
         "paint_mod_mondrian_broadway",
         "paint_rom_hokusai_series_name"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "The Starry Night",
+        "Girl with a Pearl Earring",
+        "The Birth of Venus",
+        "The Last Supper",
+        "The Persistence of Memory",
+        "Water Lilies"
+      ]
     },
     {
       "id": "movement_names",
@@ -4238,7 +4246,15 @@
         "paint_imp_post_impressionism_cezanne_bridge",
         "paint_mov_art_nouveau_period"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Post-Impressionism",
+        "Surrealism",
+        "Abstract Expressionism",
+        "Dadaism",
+        "Fauvism",
+        "Minimalism"
+      ]
     },
     {
       "id": "museum_names",
@@ -4360,7 +4376,13 @@
         "paint_mov_moma_new_york",
         "paint_imp_scream_versions"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "15th century",
+        "16th century",
+        "17th century",
+        "18th century"
+      ]
     },
     {
       "id": "technique_terms",
@@ -4409,7 +4431,11 @@
         "paint_imp_degas_preferred_medium",
         "paint_mov_camera_obscura_vermeer"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Fresco",
+        "Tempera"
+      ]
     },
     {
       "id": "country_names",
@@ -4452,7 +4478,12 @@
         "Belgium",
         "Austria",
         "Russia",
-        "Japan"
+        "Japan",
+        "France",
+        "Italy",
+        "Mexico",
+        "Norway",
+        "Denmark"
       ]
     }
   ],

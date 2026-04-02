@@ -4412,7 +4412,12 @@
         "us_states_california_capital",
         "us_states_north_carolina_capital"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Montgomery",
+        "Juneau",
+        "Phoenix"
+      ]
     },
     {
       "id": "bracket_numbers",

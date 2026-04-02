@@ -7300,7 +7300,12 @@
         "mh_2_armstrong_instrument",
         "mh_2_charlie_parker_instrument"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "harpsichord",
+        "lute",
+        "theorbo"
+      ]
     },
     {
       "id": "music_terms",
@@ -7492,7 +7497,11 @@
         "Capitol Records",
         "Decca Records",
         "Chess Records",
-        "Stax Records"
+        "Stax Records",
+        "Epic Records",
+        "Island Records",
+        "Elektra Records",
+        "Interscope Records"
       ]
     },
     {
@@ -7536,7 +7545,11 @@
         "Les Paul",
         "Heinrich Steinweg",
         "Johann Christoph Denner",
-        "Yamaha Torakusu"
+        "Yamaha Torakusu",
+        "Étienne Oehlert",
+        "Henry Distin",
+        "Charles Wheatstone",
+        "Johann Sebastian Bach"
       ],
       "minimumSize": 3
     },
@@ -7556,7 +7569,11 @@
         "Hungarian",
         "Norwegian",
         "Finnish",
-        "Spanish"
+        "Spanish",
+        "English",
+        "Dutch",
+        "Belgian",
+        "Swedish"
       ],
       "minimumSize": 1
     }

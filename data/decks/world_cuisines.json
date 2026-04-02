@@ -7137,7 +7137,12 @@
         "food_tech_umami_foods_rich",
         "food_spice_vanilla_aztec"
       ],
-      "minimumSize": 3
+      "minimumSize": 3,
+      "syntheticDistractors": [
+        "turmeric",
+        "cardamom",
+        "fenugreek"
+      ]
     }
   ],
   "difficultyTiers": [

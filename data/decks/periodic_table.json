@@ -7224,6 +7224,10 @@
         "periodic_table_tin_symbol",
         "periodic_table_lead_symbol_plumbing",
         "periodic_table_antimony_symbol_stibium"
+      ],
+      "syntheticDistractors": [
+        "H",
+        "He"
       ]
     },
     {
@@ -7242,7 +7246,12 @@
         "actinide",
         "post-transition metal",
         "semimetal",
-        "superactinide"
+        "superactinide",
+        "alkaline earth metal",
+        "halogen",
+        "unknown properties",
+        "halogen",
+        "radioactive metal"
       ]
     },
     {

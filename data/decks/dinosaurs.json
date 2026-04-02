@@ -4936,7 +4936,11 @@
         "Pterosauria",
         "Ankylosauria",
         "Ceratopsia",
-        "Hadrosauridae"
+        "Hadrosauridae",
+        "Stegosauria",
+        "Pachycephalosauria",
+        "Sauropoda",
+        "Theropoda"
       ]
     },
     {
@@ -4997,7 +5001,16 @@
         "dino_mary_anning_sea_shells",
         "dino_bone_wars_rivals"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Edward Drinker Cope",
+        "Henry Fairfield Osborn",
+        "Robert T. Bakker",
+        "Jack Horner",
+        "Phil Currie",
+        "José Bonaparte",
+        "Fernando Novas"
+      ]
     }
   ],
   "synonymGroups": [

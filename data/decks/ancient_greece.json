@@ -12536,7 +12536,11 @@
         "greece_alex_egypt_pharaoh",
         "greece_rel_schliemann_troy"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Athens",
+        "Corinth"
+      ]
     },
     {
       "id": "battle_names",
@@ -12552,7 +12556,16 @@
         "greece_ga_aeschylus_epitaph",
         "greece_ga_thucydides_plague"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Battle of Stalingrad",
+        "Battle of Midway",
+        "Battle of the Bulge",
+        "Battle of Britain",
+        "Battle of Kursk",
+        "Battle of El Alamein",
+        "D-Day (Normandy)"
+      ]
     },
     {
       "id": "work_text_names",

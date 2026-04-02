@@ -7209,7 +7209,15 @@
         "nasa_artemis_program",
         "nasa_iss_partner_agencies"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Pioneer",
+        "Ranger",
+        "Surveyor",
+        "Mariner",
+        "Viking",
+        "Voyager"
+      ]
     },
     {
       "id": "astronaut_names",
@@ -7230,7 +7238,11 @@
         "nasa_koch_meir_first_all_female_spacewalk",
         "nasa_borman_apollo_8_earthrise"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Michael Collins",
+        "Yuri Gagarin"
+      ]
     },
     {
       "id": "launch_years",
@@ -7261,7 +7273,14 @@
       "syntheticDistractors": [
         "Voyager",
         "Pioneer",
-        "Soyuz"
+        "Soyuz",
+        "Atlantis",
+        "Endeavour",
+        "Enterprise",
+        "Orion",
+        "Ares I",
+        "Saturn V",
+        "Titan II"
       ]
     }
   ],

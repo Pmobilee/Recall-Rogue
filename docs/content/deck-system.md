@@ -178,12 +178,23 @@ The 4 `world_wonders` architecture files total 195 facts in the live deck. They 
 
 Some answer type pools have too few real facts to produce varied distractors at runtime. **Synthetic pool members** (`AnswerTypePool.syntheticDistractors`) are plausible wrong answers added directly to a pool object that pad the candidate list without having corresponding quiz facts.
 
+**Current state (2026-04-02):** All 230 non-numeric pools across all 64 decks have been padded to ≥ 15 members. The script `scripts/content-pipeline/pad-small-pools.mjs` was run to pad 50 pools, adding 225 synthetic distractors in total. Numeric pools (`bracket_number`, `number`, `year`) are permanently excluded from synthetic padding — they use runtime bracket-notation generation instead.
+
 **When to add synthetics:**
-- Pool has **< 8 real facts** — add 7–12 synthetics
-- Pool has **< 5 real facts** — critical: without synthetics the runtime skips pool-based selection entirely and falls back to per-fact `distractors[]`
+- Pool total (real + synthetic) **< 5** — runtime falls back to per-fact `distractors[]` entirely; synthetics are required to reach the floor
+- Pool total **5–14** — pool-based selection works but variety is limited; players may memorize which 4 answers appear with a given question after several encounters
+- Pool total **< 15** — add synthetics to reach **15+ total members** (recommended minimum for good variety)
 - Never use synthetics for numeric pools — use bracket notation (`{N}`) instead
 
 **Runtime behavior:** Synthetic members enter the candidate pool at score 0.5 (vs 1.0 for real facts). Real members are always preferred. The pool viability check counts real + synthetic combined — if total ≥ 5, pool-based selection proceeds.
+
+**Pool size summary:**
+
+| Total members (real + synthetic) | Behavior |
+|----------------------------------|----------|
+| < 5 | Falls back to `fact.distractors[]` — no pool variety |
+| 5–14 | Pool-based selection active; limited variety |
+| 15+ | Good variety; recommended minimum |
 
 **Data format example:**
 ```json

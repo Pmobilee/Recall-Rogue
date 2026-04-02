@@ -21105,7 +21105,11 @@
         "myth_demeter_ceres_cereal",
         "myth_hestia_vestal_virgins"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Apollo",
+        "Proserpina"
+      ]
     },
     {
       "id": "titan_names",
@@ -21123,7 +21127,14 @@
         "myth_hyperion_sun",
         "myth_themis_justice"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Coeus",
+        "Crius",
+        "Mnemosyne",
+        "Phoebe",
+        "Tethys"
+      ]
     },
     {
       "id": "location_names",

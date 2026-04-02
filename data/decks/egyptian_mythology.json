@@ -5807,7 +5807,11 @@
         "Khnum",
         "Nut",
         "Nephthys",
-        "Khonsu"
+        "Khonsu",
+        "Ra",
+        "Osiris",
+        "Horus",
+        "Seth"
       ]
     },
     {
@@ -5854,7 +5858,13 @@
         "egypt_temp_amun_karnak_location",
         "egypt_temp_bastet_bubastis"
       ],
-      "minimumSize": 3
+      "minimumSize": 3,
+      "syntheticDistractors": [
+        "Thebes",
+        "Memphis",
+        "Abydos",
+        "Giza"
+      ]
     },
     {
       "id": "symbols_objects",
@@ -5875,7 +5885,10 @@
         "Uraeus",
         "Cartouche",
         "Canopic jar",
-        "Shen ring"
+        "Shen ring",
+        "Ankh",
+        "Scarab",
+        "Eye of Horus"
       ]
     },
     {
