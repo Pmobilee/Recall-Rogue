@@ -15,7 +15,7 @@
 import type { CuratedDeck } from '../data/curatedDeckTypes';
 import type { ReviewState } from '../data/types';
 import type { DeckMode } from '../data/studyPreset';
-import { getCuratedDeck } from '../data/curatedDeckStore';
+import { getCuratedDeck, getAllLoadedDecks } from '../data/curatedDeckStore';
 import { selectRunChainTypes } from '../data/chainTypes';
 
 // ---------------------------------------------------------------------------
@@ -141,15 +141,21 @@ function splitGroup(group: TopicGroup, n: number): TopicGroup[] {
  * 1. deck has `subDecks[]` array  → one TopicGroup per sub-deck.
  *    Sub-decks with explicit `factIds` use them; sub-decks with only `chainThemeId`
  *    fall back to matching facts by their `chainThemeId` field (e.g. ancient_greece).
- * 2. facts have `partOfSpeech`    → group by POS; merge groups < 5 into "Other".
+ * 2. facts have `partOfSpeech`    → group by POS; merge groups below the proportional
+ *    threshold (max(5, 3% of pool) facts) into "Other" to avoid visual noise from
+ *    tiny groups in large multi-deck pools (~7000 facts for All Chinese).
  *    Facts WITHOUT a `partOfSpeech` field are distributed round-robin into
  *    existing POS groups so no facts are silently dropped.
  * 3. fallback                      → group by `chainThemeId`
  *
  * All groups are filtered to `factIds` (the active run pool subset).
  *
+ * IMPORTANT: `factIds` must only contain IDs from THIS deck. When calling from
+ * `extractTopicGroupsMultiDeck`, pass per-deck fact IDs, not the cross-deck pool —
+ * otherwise the ungrouped-facts safety net absorbs fact IDs from other decks.
+ *
  * @param deck         - Loaded CuratedDeck.
- * @param factIds      - Fact IDs in the run pool (may be a subset of deck.facts).
+ * @param factIds      - Fact IDs in the run pool (must be from this deck only).
  * @param reviewStates - All ReviewStates for the player (used for FSRS summary).
  */
 export function extractTopicGroups(
@@ -208,8 +214,11 @@ export function extractTopicGroups(
   }
 
   if (posBuckets.size > 0) {
-    // Merge small POS groups (< 5 facts) into "Other"
-    const MIN_POS_GROUP = 5;
+    // Merge small POS groups into "Other". The threshold is proportional to pool
+    // size — at least 3% of total facts, minimum 5. This prevents dozens of tiny
+    // groups (e.g. "Pronouns (14)", "Particles (8)") when the pool is large
+    // (all-Chinese ~7000 facts), while keeping the fixed minimum for small decks.
+    const MIN_POS_GROUP = Math.max(5, Math.floor(runPool.size * 0.03));
     const otherFacts: string[] = [];
     const groups: TopicGroup[] = [];
     for (const [pos, fids] of posBuckets) {
@@ -241,6 +250,7 @@ export function extractTopicGroups(
     // some facts missing the partOfSpeech field) silently lose those facts —
     // causing 70 visible facts instead of 466.
     // Round-robin keeps chains balanced (no giant "Other" catchall group).
+    // NOTE: factIds must be scoped to this deck only (see extractTopicGroupsMultiDeck).
     if (groups.length > 0) {
       const groupedIds = new Set(groups.flatMap(g => g.factIds));
       const ungrouped = [...runPool].filter(fid => !groupedIds.has(fid));
@@ -285,10 +295,15 @@ export function extractTopicGroups(
 
 /**
  * Extract TopicGroups from multiple decks (mixed playlist).
- * Calls extractTopicGroups per deck and pools all results.
+ * Calls extractTopicGroups per deck, passing ONLY that deck's own fact IDs
+ * as the run pool. This prevents the ungrouped-facts safety net from absorbing
+ * fact IDs from other decks, which would inflate group sizes incorrectly.
+ *
+ * The global `factIds` parameter acts as an additional filter — only fact IDs
+ * present in both `factIds` AND the deck's own facts are included.
  *
  * @param decks        - Array of loaded CuratedDecks.
- * @param factIds      - Fact IDs in the run pool across ALL decks.
+ * @param factIds      - Fact IDs in the run pool across ALL decks (used as a filter).
  * @param reviewStates - All ReviewStates for the player.
  */
 export function extractTopicGroupsMultiDeck(
@@ -296,9 +311,16 @@ export function extractTopicGroupsMultiDeck(
   factIds: string[],
   reviewStates: ReviewState[],
 ): TopicGroup[] {
+  const globalPool = new Set(factIds);
   const groups: TopicGroup[] = [];
   for (const deck of decks) {
-    groups.push(...extractTopicGroups(deck, factIds, reviewStates));
+    // Scope fact IDs to this deck only — prevents cross-deck contamination
+    // in the POS ungrouped-facts safety net.
+    const deckFactIds = deck.facts
+      .map(f => f.id)
+      .filter(fid => globalPool.has(fid));
+    if (deckFactIds.length === 0) continue;
+    groups.push(...extractTopicGroups(deck, deckFactIds, reviewStates));
   }
   return groups;
 }
@@ -422,10 +444,16 @@ export function distributeTopicGroups(
 /**
  * Full pipeline: compute a ChainDistribution for a study-mode DeckMode run.
  *
- * Only produces a distribution for `{ type: 'study' }` DeckMode variants that
- * reference a single curated knowledge/language deck (not `all:` prefix decks).
+ * Handles two cases:
+ * - Single deck (`deckMode.deckId` without `all:` prefix): loads the one deck,
+ *   optionally filtered to a subDeckId.
+ * - Multi-deck language aggregate (`deckMode.deckId` with `all:` prefix, e.g.
+ *   `"all:chinese"`): loads ALL curated decks whose ID starts with the language
+ *   key (e.g. `chinese_hsk1` through `chinese_hsk6`) and combines their topic
+ *   groups. This gives "All Chinese" its full ~7000 facts instead of only HSK1.
+ *
  * Returns `undefined` for trivia, general, preset, language, or any mode where
- * a curated deck is not directly available.
+ * no curated decks are available.
  *
  * Call this at run-start (eager, before the preview screen) so the distribution
  * is available when the pool is first built by encounterBridge.
@@ -439,11 +467,28 @@ export function precomputeChainDistribution(
   reviewStates: ReviewState[],
   seed: number,
 ): ChainDistribution | undefined {
-  // Only curated single-deck study runs get topic-aware chain distribution.
+  // Only curated study runs get topic-aware chain distribution.
   if (deckMode.type !== 'study') return undefined;
-  // "all:japanese" etc. are multi-deck language aggregates — skip for now.
-  if (deckMode.deckId.startsWith('all:')) return undefined;
 
+  if (deckMode.deckId.startsWith('all:')) {
+    // Multi-deck language aggregate: load ALL loaded decks whose ID starts with
+    // the language key. e.g. 'all:chinese' → chinese_hsk1, chinese_hsk2, …, chinese_hsk6.
+    const langKey = deckMode.deckId.slice(4); // e.g. 'chinese' from 'all:chinese'
+    const prefix = langKey + '_';
+    const allDecks = getAllLoadedDecks().filter(
+      d => d.id.startsWith(prefix) || d.id === langKey,
+    );
+    if (allDecks.length === 0) return undefined;
+
+    const allFactIds = allDecks.flatMap(d => d.facts.map(f => f.id));
+    if (allFactIds.length === 0) return undefined;
+
+    const groups = extractTopicGroupsMultiDeck(allDecks, allFactIds, reviewStates);
+    const runChainTypes = selectRunChainTypes(seed);
+    return distributeTopicGroups(groups, runChainTypes, seed);
+  }
+
+  // Single curated deck path (existing behavior).
   const deck = getCuratedDeck(deckMode.deckId);
   if (!deck) return undefined;
 

@@ -580,3 +580,19 @@ Similarly, `general_knowledge-hindi-fourth-language-world` had "Bengali" (single
 **Fix:** After building POS groups (including the "Other" merge), compute `ungrouped` as all run pool IDs not in `groupedIds`. Distribute them round-robin across existing groups, then recompute FSRS summaries. The safety net is inside the `if (groups.length > 0)` guard so it only fires when POS grouping actually produced usable groups.
 
 **Rule:** Any extraction path that produces groups must ensure `sum(groups[].factIds.length) === runPool.size`. The dev-mode warning in `distributeTopicGroups` (`window.__rrDebug` check) will surface regressions at runtime.
+
+### 2026-04-02 — `all:` language aggregates loaded only the first sub-deck (466 facts instead of ~7000)
+**What went wrong:** Selecting "All Chinese" in Study Temple launched a run with only HSK1 facts (466) instead of all 6 HSK levels (~7000). The run preview showed "Chinese" but combat only had beginner vocabulary.
+
+**Why:** Two bugs compounded:
+1. `StudyTempleScreen.svelte:handleStartStudyRun()` resolved `all:chinese` to `chinese_hsk1` (the first available matching deck) before passing to downstream systems. The TODO comment acknowledged this was wrong.
+2. `precomputeChainDistribution()` had an explicit early return for `all:` prefixes: `if (deckMode.deckId.startsWith('all:')) return undefined` — no chain distribution was computed at all.
+
+`encounterBridge.ts` already handled `all:` correctly (line 346) by routing to `buildLanguageRunPool`, but it never received the `all:chinese` deckId because `StudyTempleScreen` replaced it first.
+
+**Fix:**
+- `StudyTempleScreen.svelte`: removed the first-match fallback; `all:` prefixes now pass through unchanged.
+- `chainDistribution.ts` `precomputeChainDistribution()`: replaced the bail-out with multi-deck loading using `getAllLoadedDecks().filter(d => d.id.startsWith(langKey + '_'))`.
+- `extractTopicGroupsMultiDeck()`: fixed a secondary bug where passing cross-deck factIds to each `extractTopicGroups()` call caused the ungrouped-facts safety net to absorb IDs from other decks, inflating group sizes 3×. Now scopes each call to per-deck fact IDs.
+
+**Rule:** Never resolve `all:` prefixes in the UI layer. The downstream systems (`encounterBridge`, `chainDistribution`) are the correct place to expand multi-deck aggregates. The UI's only job is to pass the intent through.

@@ -2,7 +2,7 @@
 
 > **Purpose:** How the Knowledge Chain system works — consecutive correct answers, multiplier scaling, chain types, break conditions, rotating chain color, and themed chain distribution.
 > **Last verified:** 2026-04-02
-> **Source files:** `src/services/chainSystem.ts`, `src/data/chainTypes.ts`, `src/services/chainVisuals.ts`, `src/data/balance.ts`, `src/services/chainDistribution.ts`, `src/services/presetPoolBuilder.ts`, `src/services/gameFlowController.ts`, `src/services/encounterBridge.ts`
+> **Source files:** `src/services/chainSystem.ts`, `src/data/chainTypes.ts`, `src/services/chainVisuals.ts`, `src/data/balance.ts`, `src/services/chainDistribution.ts`, `src/services/presetPoolBuilder.ts`, `src/services/gameFlowController.ts`, `src/services/encounterBridge.ts`, `src/ui/components/StudyTempleScreen.svelte`
 
 ---
 
@@ -195,7 +195,7 @@ interface TopicGroup {
   id: string;        // sub-deck ID or synthetic id like "pos_noun", "theme_2"
   label: string;     // display name: "Ancient Wonders", "Nouns", "Group 1"
   deckId: string;
-  factIds: string[]; // filtered to active run pool
+  factIds: string[]; // filtered to active run pool (per-deck only, not cross-deck)
   fsrs: { new: number; learning: number; review: number; mastered: number };
 }
 
@@ -212,16 +212,18 @@ interface ChainDistribution {
 
 `extractTopicGroups(deck, factIds, reviewStates)` applies these rules in priority order:
 
+**IMPORTANT:** `factIds` must be scoped to the current deck only. When calling from `extractTopicGroupsMultiDeck`, the function internally scopes fact IDs per deck — do NOT pass the full cross-deck pool directly to `extractTopicGroups`.
+
 1. **Sub-decks** — if the deck JSON has a `subDecks[]` array, each sub-deck becomes one TopicGroup.
    - Sub-decks with an explicit `factIds` array use those directly.
    - Sub-decks with only a `chainThemeId` (e.g. ancient_greece) match facts by their `fact.chainThemeId` field so real sub-deck names are used (not generic "Group N" labels).
    - Sub-decks with no pool facts are skipped.
-2. **Part of speech** — if facts have `partOfSpeech` field, group by POS. Groups with fewer than 5 facts are merged into a single "Other" group. Label: capitalize POS + "s" (e.g., "Nouns", "Verbs").
+2. **Part of speech** — if facts have `partOfSpeech` field, group by POS. Groups below the proportional threshold are merged into a single "Other" group. Threshold: `max(5, floor(poolSize × 0.03))` — scales with pool size to avoid dozens of tiny groups (e.g. "Pronouns (14)") for large pools like All Chinese (~7000 facts). Label: capitalize POS + "s" (e.g., "Nouns", "Verbs").
    - **No-drop safety net**: facts in the run pool that have NO `partOfSpeech` field are distributed round-robin across the existing POS groups. This prevents mixed decks (e.g. Chinese/Spanish with partially-tagged facts) from silently losing ungrouped facts. Without this fix, a 466-fact deck showed only 70 facts.
    - FSRS summaries are recomputed after round-robin distribution.
 3. **chainThemeId fallback** — group by `fact.chainThemeId` value. Labels are generic ("Group 1", "Group 2", …). Only reached if sub-deck extraction produced no groups.
 
-For multi-deck playlists, call `extractTopicGroupsMultiDeck(decks, factIds, reviewStates)` which pools results from all decks.
+`extractTopicGroupsMultiDeck(decks, factIds, reviewStates)` pools results from all decks. It scopes each `extractTopicGroups()` call to only that deck's own fact IDs (intersected with the global pool), preventing cross-deck contamination in the ungrouped-facts safety net.
 
 ### FSRS-Balanced Bin-Packing
 
@@ -240,11 +242,33 @@ The result is stored in `RunState.chainDistribution` and the `factToChain` Map p
 
 `precomputeChainDistribution(deckMode, reviewStates, seed)` in `chainDistribution.ts` runs the full pipeline in one call:
 
-1. Guards: only runs for `{ type: 'study' }` DeckMode variants, skips `all:*` aggregates
-2. Loads the curated deck via `getCuratedDeck(deckId)`
-3. Filters factIds by `subDeckId` if specified (supports both `factIds` and `chainThemeId` sub-deck styles)
-4. Calls `extractTopicGroups()` → `distributeTopicGroups()`
-5. Returns `ChainDistribution | undefined` (undefined for non-curated runs)
+**Single deck** (`deckMode.deckId` without `all:` prefix):
+1. Loads the curated deck via `getCuratedDeck(deckId)`
+2. Filters factIds by `subDeckId` if specified (supports both `factIds` and `chainThemeId` sub-deck styles)
+3. Calls `extractTopicGroups()` → `distributeTopicGroups()`
+4. Returns `ChainDistribution | undefined` (undefined for non-curated runs)
+
+**Multi-deck language aggregate** (`deckMode.deckId` with `all:` prefix, e.g. `"all:chinese"`):
+1. Finds all loaded curated decks whose ID starts with the language key (e.g. `chinese_hsk1` through `chinese_hsk6`)
+2. Combines all fact IDs from all matching decks
+3. Calls `extractTopicGroupsMultiDeck()` → `distributeTopicGroups()`
+4. This gives "All Chinese" the full ~7000 facts instead of only HSK1 (466 facts)
+
+Previously, `all:` runs returned `undefined` from `precomputeChainDistribution` and `StudyTempleScreen.svelte` resolved `all:chinese` to `chinese_hsk1` (first match only), limiting the pool to 466 facts. Both bugs are now fixed.
+
+### StudyTempleScreen `all:` Routing Fix
+
+`handleStartStudyRun()` in `StudyTempleScreen.svelte` now passes the `all:` prefix through to downstream systems unchanged when no `subDeckId` is selected:
+
+```typescript
+// Before (broken): resolved to first sub-deck only
+actualDeckId = firstMatch.id; // 'chinese_hsk1'
+
+// After (fixed): passes through for downstream handling
+actualDeckId = deckId; // 'all:chinese'
+```
+
+`encounterBridge.ts` already handled `all:` correctly via `buildLanguageRunPool`, and `precomputeChainDistribution` now handles it too.
 
 ### Wiring into `gameFlowController.ts`
 
@@ -299,3 +323,5 @@ Previously: all cards received chain types via a seeded shuffle with `i % 3` rou
 Then: topic-aware lookup via `factToChain.get(card.factId)` was introduced but was silently broken because curated deck fact IDs and factsDB fact IDs are different ID spaces — every lookup returned `undefined`, causing all cards to fall back to `runChainTypes[0]` (a single color for the whole run).
 
 Current: proportional assignment by chain group size. The distribution's weighting is preserved (chains with more facts get proportionally more cards), and language/vocabulary deck paths all receive chain distribution so Study Temple runs always show multiple colors.
+
+`all:` language aggregates (e.g. "All Chinese") now correctly load all sub-decks (~7000 facts) instead of only the first matching sub-deck (466 facts).

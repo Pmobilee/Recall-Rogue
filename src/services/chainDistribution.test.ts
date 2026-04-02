@@ -1,7 +1,8 @@
 /**
  * Unit tests for the Chain Distribution Engine.
  * Covers TopicGroup extraction (all 3 waterfall paths), FSRS classification,
- * LPT bin-packing, edge cases (0/1/2 groups), and determinism.
+ * LPT bin-packing, edge cases (0/1/2 groups), determinism, and proportional
+ * POS merge threshold for large multi-deck pools.
  */
 
 import { describe, it, expect } from 'vitest';
@@ -289,6 +290,47 @@ describe('extractTopicGroups – POS path', () => {
     expect(other).toBeDefined();
     expect(other!.factIds).toHaveLength(2);
     expect(other!.label).toBe('Other');
+  });
+
+  it('uses proportional MIN_POS_GROUP for large pools (3% threshold)', () => {
+    // With 400 facts, threshold = max(5, floor(400 * 0.03)) = max(5, 12) = 12.
+    // A group with 10 facts should be merged into Other even though 10 > 5.
+    // Build: 380 nouns, 10 particles. Pool size = 390 (nouns + particles).
+    // Threshold = max(5, floor(390 * 0.03)) = max(5, 11) = 11.
+    // Particles (10) < 11 → merged into Other.
+    const nounFacts = Array.from({ length: 380 }, (_, i) => makeFact(`n${i}`, { partOfSpeech: 'noun' }));
+    const particleFacts = Array.from({ length: 10 }, (_, i) => makeFact(`p${i}`, { partOfSpeech: 'particle' }));
+    const facts = [...nounFacts, ...particleFacts];
+    const deck = makeDeck('large_pool', facts);
+    const allIds = facts.map(f => f.id);
+
+    const groups = extractTopicGroups(deck, allIds, []);
+
+    // particles group should be merged into Other because 10 < floor(390 * 0.03) = 11
+    const particles = groups.find(g => g.id === 'pos_particle');
+    const other = groups.find(g => g.id === 'pos_other');
+    expect(particles).toBeUndefined(); // merged into Other for large pool
+    expect(other).toBeDefined();
+    // All 390 facts must still be accounted for
+    const total = groups.reduce((s, g) => s + g.factIds.length, 0);
+    expect(total).toBe(390);
+  });
+
+  it('still uses minimum threshold of 5 for small pools where 3% < 5', () => {
+    // With 10 facts, threshold = max(5, floor(10 * 0.03)) = max(5, 0) = 5.
+    // A group with exactly 5 facts should NOT be merged.
+    const nounFacts = Array.from({ length: 5 }, (_, i) => makeFact(`n${i}`, { partOfSpeech: 'noun' }));
+    const verbFacts = Array.from({ length: 5 }, (_, i) => makeFact(`v${i}`, { partOfSpeech: 'verb' }));
+    const facts = [...nounFacts, ...verbFacts];
+    const deck = makeDeck('small_pool', facts);
+    const allIds = facts.map(f => f.id);
+
+    const groups = extractTopicGroups(deck, allIds, []);
+
+    const nouns = groups.find(g => g.id === 'pos_noun');
+    const verbs = groups.find(g => g.id === 'pos_verb');
+    expect(nouns).toBeDefined(); // 5 >= threshold of 5, not merged
+    expect(verbs).toBeDefined(); // 5 >= threshold of 5, not merged
   });
 });
 
@@ -597,6 +639,38 @@ describe('extractTopicGroupsMultiDeck', () => {
     expect(groups).toHaveLength(2);
     expect(groups.map(g => g.deckId)).toContain('deck1');
     expect(groups.map(g => g.deckId)).toContain('deck2');
+  });
+
+  it('combines all facts from multiple decks for language aggregates', () => {
+    // Simulate all:chinese merging hsk1 (3 facts) + hsk2 (3 facts) + hsk3 (3 facts)
+    const hsk1 = makeDeck('chinese_hsk1', [
+      makeFact('zh1_1', { partOfSpeech: 'noun' }),
+      makeFact('zh1_2', { partOfSpeech: 'noun' }),
+      makeFact('zh1_3', { partOfSpeech: 'verb' }),
+    ]);
+    const hsk2 = makeDeck('chinese_hsk2', [
+      makeFact('zh2_1', { partOfSpeech: 'noun' }),
+      makeFact('zh2_2', { partOfSpeech: 'verb' }),
+      makeFact('zh2_3', { partOfSpeech: 'verb' }),
+    ]);
+    const hsk3 = makeDeck('chinese_hsk3', [
+      makeFact('zh3_1', { partOfSpeech: 'adjective' }),
+      makeFact('zh3_2', { partOfSpeech: 'adjective' }),
+      makeFact('zh3_3', { partOfSpeech: 'adjective' }),
+    ]);
+
+    const allFactIds = [...hsk1.facts, ...hsk2.facts, ...hsk3.facts].map(f => f.id);
+    const groups = extractTopicGroupsMultiDeck([hsk1, hsk2, hsk3], allFactIds, []);
+
+    // All 9 facts should appear in groups
+    const totalInGroups = groups.reduce((s, g) => s + g.factIds.length, 0);
+    expect(totalInGroups).toBe(9);
+
+    // Groups come from all three decks
+    const deckIds = new Set(groups.map(g => g.deckId));
+    expect(deckIds.has('chinese_hsk1')).toBe(true);
+    expect(deckIds.has('chinese_hsk2')).toBe(true);
+    expect(deckIds.has('chinese_hsk3')).toBe(true);
   });
 });
 

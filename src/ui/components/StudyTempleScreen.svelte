@@ -256,15 +256,11 @@ import DeckSearchBar from './DeckSearchBar.svelte';
         actualDeckId = subDeckId;
         actualSubDeckId = undefined;
       } else {
-        // "All sub-decks" selected — fall back to the first matching deck for this language.
-        // TODO: ideally merge facts from all sub-decks so the user gets all levels combined.
-        const langKey = deckId.slice(4); // e.g. 'dutch' from 'all:dutch'
-        const allDecks = getAllDecks();
-        const firstMatch = allDecks.find(d => d.id.startsWith(langKey + '_') && d.status === 'available');
-        if (firstMatch) {
-          actualDeckId = firstMatch.id;
-        }
-        // else: actualDeckId stays as 'all:dutch' and will fail gracefully downstream
+        // "Play All" selected — pass the all: prefix through to downstream systems.
+        // encounterBridge.ts handles all: by calling buildLanguageRunPool with all
+        // matching decks, and precomputeChainDistribution now handles it too.
+        // Do NOT resolve to the first sub-deck — that only loads one level's facts.
+        actualDeckId = deckId; // keep 'all:chinese', 'all:dutch', etc.
         actualSubDeckId = undefined;
       }
     }
