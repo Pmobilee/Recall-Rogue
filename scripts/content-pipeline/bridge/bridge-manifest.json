@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-04-02T04:31:36.468Z",
-  "totalBridgedFacts": 2213,
+  "lastRun": "2026-04-02T10:11:29.048Z",
+  "totalBridgedFacts": 2449,
   "decks": {
     "ancient_greece": {
       "totalFacts": 246,
@@ -145,6 +145,12 @@
       "totalFacts": 230,
       "entities": 138,
       "bridged": 138,
+      "skipped": 0
+    },
+    "computer_science": {
+      "totalFacts": 296,
+      "entities": 236,
+      "bridged": 236,
       "skipped": 0
     }
   }

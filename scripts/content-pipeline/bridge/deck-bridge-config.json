@@ -197,5 +197,13 @@
     "entitySegments": 1,
     "ageRating": "kid",
     "categoryL2": "music_history"
+  },
+
+  "computer_science": {
+    "domain": "general_knowledge",
+    "prefixSegments": 2,
+    "entitySegments": 2,
+    "ageRating": "teen",
+    "categoryL2": "inventions_tech"
   }
 }
