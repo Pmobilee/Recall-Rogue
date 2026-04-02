@@ -1,7 +1,7 @@
 # Quiz Engine Mechanics
 
 > **Purpose:** Documents how quiz questions are selected, formatted, graded, and how the FSRS spaced repetition algorithm schedules fact reviews.
-> **Last verified:** 2026-04-01
+> **Last verified:** 2026-04-02
 > **Source files:** `src/services/quizService.ts`, `src/services/fsrsScheduler.ts`, `src/services/questionFormatter.ts`, `src/services/questionTemplateSelector.ts`, `src/services/curatedFactSelector.ts`, `src/services/accuracyGradeSystem.ts`, `src/services/curatedDistractorSelector.ts`
 
 ---
@@ -69,13 +69,26 @@ Mastery Trial overrides (`MASTERY_TRIAL` constant): 5 options, close distractors
 
 `selectDistractors` priority order:
 1. Synonym group exclusion (mandatory — synonyms never appear as distractors)
-2. Pool size check: if fewer than 5 unique answers available, use pre-generated `fact.distractors[]`
+2. Pool size check: if fewer than 5 unique answers available (real + synthetic combined), use pre-generated `fact.distractors[]`
 3. Scoring from `answerPool.factIds`: known confusions (+10.0×count), reverse confusions (+5.0×count), in-run struggles (+3.0), same part-of-speech (+4.0 or ×0.3 penalty), similar difficulty ±1 (+2.0)
-4. Jitter (0–0.5) seeded from `totalCharges × fact ID hash` for per-encounter variety
-5. Deduplication: skips distractor answers that appear by name in the question text
-6. Fallback to `fact.distractors[]` if pool yields insufficient candidates
+4. Synthetic pool members scored at base 0.5 (lower than real pool members at 1.0 — real facts always preferred)
+5. Jitter (0–0.5) seeded from `totalCharges × fact ID hash` for per-encounter variety
+6. Deduplication: skips distractor answers that appear by name in the question text
+7. Fallback to `fact.distractors[]` if pool yields insufficient candidates
 
 `inRunTracker` parameter accepts `InRunFactTracker | null`. When `null` (trivia mode bridge path), in-run struggle scoring is skipped and jitter seed uses `totalCharges = 0`.
+
+#### Synthetic Distractor Members (`AnswerTypePool.syntheticDistractors`)
+
+`AnswerTypePool` supports an optional `syntheticDistractors?: string[]` field. These are answer strings that belong semantically to the pool but aren't the `correctAnswer` of any real fact — they pad small pools so pool-based selection is used instead of falling back to per-fact pre-generated distractors.
+
+Key rules for synthetic members:
+- They count toward the pool's viability threshold (5 unique answers minimum)
+- They are injected into the internal `factById` lookup as pseudo-`DeckFact` objects with `id: '_synthetic_{answer}'`
+- They are scored at base 0.5 (real pool members start at 1.0), so they are selected only after all eligible real pool members
+- A synthetic answer equal to `correctFact.correctAnswer` is always excluded (case-insensitive)
+- They appear as distractors only — never as quiz questions (`quizQuestion: ''`)
+- Content authors set this field in the deck JSON; it is never auto-generated at runtime
 
 **Trivia mode distractor path** (`quizService.ts: getQuizChoices`):
 

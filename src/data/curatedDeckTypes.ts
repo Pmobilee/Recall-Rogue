@@ -72,6 +72,10 @@ export interface AnswerTypePool {
   factIds: string[];
   /** Default 5. */
   minimumSize: number;
+  /** Synthetic distractor values that belong to this pool but aren't any fact's correctAnswer.
+   *  Used to pad small pools so they have enough variety for pool-based distractor selection.
+   *  These appear as distractors but never as quiz questions. */
+  syntheticDistractors?: string[];
 }
 
 export interface SynonymGroup {

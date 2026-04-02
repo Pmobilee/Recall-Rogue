@@ -9,10 +9,10 @@
   "facts": [
     {
       "id": "mh_0_bach_birth_year",
-      "correctAnswer": "1685",
+      "correctAnswer": "{1685}",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "In what year was Johann Sebastian Bach born?",
@@ -26,16 +26,7 @@
       "ageGroup": "all",
       "categoryL1": "art_architecture",
       "categoryL2": "music_history",
-      "distractors": [
-        "1678",
-        "1681",
-        "1690",
-        "1695",
-        "1700",
-        "1712",
-        "1732",
-        "1756"
-      ]
+      "distractors": []
     },
     {
       "id": "mh_0_bach_well_tempered",
@@ -77,7 +68,7 @@
         "200+"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "description_terms",
       "difficulty": 4,
       "funScore": 7,
       "quizQuestion": "Approximately how many cantatas did Bach compose for the Lutheran church?",
@@ -110,7 +101,7 @@
         "St Thomas Church Leipzig"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "place_names",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "Which Leipzig church employed Bach as Cantor from 1723 until his death?",
@@ -176,7 +167,7 @@
         "Red Priest"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "nickname_terms",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "What colorful nickname was given to the red-haired Vivaldi?",
@@ -242,7 +233,7 @@
         "United Kingdom"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "place_names",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "Handel was born in Germany but spent most of his career in which country?",
@@ -275,7 +266,7 @@
         "Father of the String Quartet"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "nickname_terms",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What affectionate nickname did musicians give to Joseph Haydn?",
@@ -302,10 +293,10 @@
     },
     {
       "id": "mh_0_haydn_symphony_count",
-      "correctAnswer": "104",
+      "correctAnswer": "{104}",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 7,
       "quizQuestion": "How many symphonies did Haydn compose in his lifetime?",
@@ -319,23 +310,14 @@
       "ageGroup": "teen+",
       "categoryL1": "art_architecture",
       "categoryL2": "music_history",
-      "distractors": [
-        "9",
-        "41",
-        "68",
-        "80",
-        "120",
-        "150",
-        "200",
-        "over 300"
-      ]
+      "distractors": []
     },
     {
       "id": "mh_0_mozart_birth_city",
       "correctAnswer": "Salzburg",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "place_names",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "In which Austrian city was Mozart born in 1756?",
@@ -395,12 +377,12 @@
     },
     {
       "id": "mh_0_mozart_death_age",
-      "correctAnswer": "35",
+      "correctAnswer": "{35}",
       "acceptableAlternatives": [
         "thirty-five"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "At what age did Mozart die in Vienna in 1791?",
@@ -414,25 +396,16 @@
       "ageGroup": "all",
       "categoryL1": "art_architecture",
       "categoryL2": "music_history",
-      "distractors": [
-        "25",
-        "28",
-        "31",
-        "40",
-        "45",
-        "52",
-        "57",
-        "63"
-      ]
+      "distractors": []
     },
     {
       "id": "mh_0_mozart_symphonies_count",
-      "correctAnswer": "41",
+      "correctAnswer": "{41}",
       "acceptableAlternatives": [
         "forty-one"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "How many symphonies did Mozart compose, with his last titled 'Jupiter'?",
@@ -446,23 +419,14 @@
       "ageGroup": "teen+",
       "categoryL1": "art_architecture",
       "categoryL2": "music_history",
-      "distractors": [
-        "9",
-        "20",
-        "28",
-        "35",
-        "50",
-        "68",
-        "80",
-        "104"
-      ]
+      "distractors": []
     },
     {
       "id": "mh_0_beethoven_birth_city",
       "correctAnswer": "Bonn",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "place_names",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "In which German city was Beethoven born in 1770?",
@@ -562,7 +526,7 @@
         "total deafness"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "description_terms",
       "difficulty": 1,
       "funScore": 10,
       "quizQuestion": "What physical condition did Beethoven suffer from, worsening throughout his career?",
@@ -660,7 +624,7 @@
         "pianoforte"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "instrument_names",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "Chopin composed almost exclusively for which instrument?",
@@ -692,7 +656,7 @@
         "Poland"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "nationality_names",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "What nationality was Romantic composer Frédéric Chopin?",
@@ -823,7 +787,7 @@
         "leading motif"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "music_terms",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "What musical technique, pioneered by Wagner, assigns recurring themes to characters or ideas?",
@@ -912,12 +876,12 @@
     },
     {
       "id": "mh_0_brahms_four_symphonies",
-      "correctAnswer": "4",
+      "correctAnswer": "{4}",
       "acceptableAlternatives": [
         "four"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "How many symphonies did Brahms compose in his lifetime?",
@@ -931,16 +895,7 @@
       "ageGroup": "teen+",
       "categoryL1": "art_architecture",
       "categoryL2": "music_history",
-      "distractors": [
-        "9",
-        "41",
-        "104",
-        "2",
-        "6",
-        "8",
-        "12",
-        "25"
-      ]
+      "distractors": []
     },
     {
       "id": "mh_0_brahms_lullaby",
@@ -1213,7 +1168,7 @@
         "musical Impressionism"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "genre_names",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What artistic movement in music did Debussy pioneer, evoking atmosphere over narrative?",
@@ -1600,7 +1555,7 @@
         "Bayreuth Festspielhaus"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "place_names",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Wagner built a dedicated opera house in which German city to stage his epic works?",
@@ -1634,7 +1589,7 @@
         "songs"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "music_terms",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "What German art-song form did Schubert master with over 600 works?",
@@ -1661,12 +1616,12 @@
     },
     {
       "id": "mh_0_verdi_opera_count",
-      "correctAnswer": "28",
+      "correctAnswer": "{28}",
       "acceptableAlternatives": [
         "twenty-eight"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "era_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "How many operas did Verdi compose over his 50-year career?",
@@ -1680,16 +1635,7 @@
       "ageGroup": "teen+",
       "categoryL1": "art_architecture",
       "categoryL2": "music_history",
-      "distractors": [
-        "9",
-        "41",
-        "104",
-        "14",
-        "20",
-        "35",
-        "50",
-        "over 60"
-      ]
+      "distractors": []
     },
     {
       "id": "mh_0_handel_water_music",
@@ -1792,7 +1738,7 @@
         "Cristofori"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "instrument_names",
+      "answerTypePoolId": "person_names",
       "difficulty": 3,
       "funScore": 8,
       "distractors": [
@@ -1819,22 +1765,13 @@
     },
     {
       "id": "mh_1_piano_keys",
-      "correctAnswer": "88",
+      "correctAnswer": "{88}",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
-      "answerTypePoolId": "music_terms",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
-      "distractors": [
-        "76",
-        "84",
-        "90",
-        "72",
-        "96",
-        "80",
-        "64",
-        "92"
-      ],
+      "distractors": [],
       "quizQuestion": "How many keys does a standard piano have?",
       "explanation": "A standard modern piano has 88 keys — 52 white and 36 black — spanning seven octaves plus a minor third. This range was standardized in the late 19th century by Steinway and has been the norm ever since.",
       "wowFactor": "The 88-key range covers almost every note the human ear can perceive as musical pitch.",
@@ -1855,7 +1792,7 @@
         "Stradivarius"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "instrument_names",
+      "answerTypePoolId": "person_names",
       "difficulty": 2,
       "funScore": 9,
       "distractors": [
@@ -1918,7 +1855,7 @@
         "Adolphe-Sax"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "instrument_names",
+      "answerTypePoolId": "person_names",
       "difficulty": 2,
       "funScore": 8,
       "distractors": [
@@ -1951,7 +1888,7 @@
         "not in standard orchestra"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "music_terms",
+      "answerTypePoolId": "description_terms",
       "difficulty": 3,
       "funScore": 8,
       "distractors": [
@@ -2046,7 +1983,7 @@
         "plucks"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "music_terms",
+      "answerTypePoolId": "description_terms",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -2141,7 +2078,7 @@
         "single"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "music_terms",
+      "answerTypePoolId": "description_terms",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -2204,7 +2141,7 @@
         "double"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "music_terms",
+      "answerTypePoolId": "description_terms",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -2264,22 +2201,13 @@
     },
     {
       "id": "mh_1_harp_strings",
-      "correctAnswer": "47",
+      "correctAnswer": "{47}",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
-      "answerTypePoolId": "music_terms",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 8,
-      "distractors": [
-        "36",
-        "42",
-        "52",
-        "46",
-        "48",
-        "40",
-        "44",
-        "50"
-      ],
+      "distractors": [],
       "quizQuestion": "How many strings does a standard concert harp have?",
       "explanation": "A standard concert (pedal) harp has 47 strings and 7 pedals. Each pedal, when pressed, raises all strings of that pitch class by a semitone, allowing the harpist to play in any key. The harp is one of the oldest instruments, depicted in ancient Mesopotamian art from 3500 BCE.",
       "wowFactor": "A concert harp weighs around 80 lbs and stands nearly 6 feet tall — the player embraces it against their right shoulder to play.",
@@ -2300,7 +2228,7 @@
         "slide mechanism"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "music_terms",
+      "answerTypePoolId": "description_terms",
       "difficulty": 2,
       "funScore": 7,
       "distractors": [
@@ -2391,24 +2319,15 @@
     },
     {
       "id": "mh_1_violin_strings",
-      "correctAnswer": "4",
+      "correctAnswer": "{4}",
       "acceptableAlternatives": [
         "four"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "music_terms",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 5,
-      "distractors": [
-        "3",
-        "5",
-        "6",
-        "7",
-        "2",
-        "8",
-        "12",
-        "9"
-      ],
+      "distractors": [],
       "quizQuestion": "How many strings does a standard violin have?",
       "explanation": "A standard violin has four strings tuned G–D–A–E from lowest to highest. The violin emerged in northern Italy in the early 16th century and became the backbone of the modern orchestra. Its strings are typically made from steel, gut, or synthetic materials.",
       "wowFactor": "The highest violin string — the E string — is under about 13 pounds of tension while the whole instrument weighs less than a pound.",
@@ -2423,24 +2342,15 @@
     },
     {
       "id": "mh_1_symphony_movements",
-      "correctAnswer": "4",
+      "correctAnswer": "{4}",
       "acceptableAlternatives": [
         "four"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "music_terms",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
-      "distractors": [
-        "1",
-        "2",
-        "3",
-        "5",
-        "6",
-        "7",
-        "8",
-        "12"
-      ],
+      "distractors": [],
       "quizQuestion": "How many movements does a typical classical symphony have?",
       "explanation": "A classical symphony typically has four movements: a fast opening (often in sonata form), a slow lyrical second movement, a minuet or scherzo, and a fast finale. Haydn and Mozart established this structure, which Beethoven and later composers both followed and subverted.",
       "wowFactor": "Beethoven's Fifth Symphony opens with four notes — three short and one long — possibly the most recognized musical motif in history.",
@@ -2735,7 +2645,7 @@
         "short detached notes"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "music_terms",
+      "answerTypePoolId": "description_terms",
       "difficulty": 2,
       "funScore": 7,
       "distractors": [
@@ -3051,7 +2961,7 @@
         "Pops"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "artist_names",
+      "answerTypePoolId": "nickname_terms",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "What was Louis Armstrong's most famous nickname?",
@@ -3404,7 +3314,7 @@
         "the Cotton Club"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "artist_names",
+      "answerTypePoolId": "place_names",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "At which famous Harlem venue did Duke Ellington become a national star through radio broadcasts?",
@@ -3628,7 +3538,7 @@
       "correctAnswer": "Lady Day",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "artist_names",
+      "answerTypePoolId": "nickname_terms",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "What was Billie Holiday's famous nickname, given to her by Lester Young?",
@@ -3950,7 +3860,7 @@
         "Deep South"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "genre_names",
+      "answerTypePoolId": "place_names",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "In which American region did the blues music genre originate in the late 19th century?",
@@ -3982,7 +3892,7 @@
         "New Orleans, Louisiana"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "genre_names",
+      "answerTypePoolId": "place_names",
       "difficulty": 1,
       "funScore": 8,
       "quizQuestion": "In which American city did jazz music originate around 1900?",
@@ -4112,7 +4022,7 @@
         "Improv"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "genre_names",
+      "answerTypePoolId": "music_terms",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "What is the essential defining characteristic of jazz performance — creating melodies spontaneously?",
@@ -4139,10 +4049,10 @@
     },
     {
       "id": "mh_2_1959_jazz_year",
-      "correctAnswer": "1959",
+      "correctAnswer": "{1959}",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "genre_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 9,
       "quizQuestion": "Which year saw the simultaneous release of Kind of Blue, Time Out, A Love Supreme, and Mingus Ah Um?",
@@ -4156,16 +4066,7 @@
       "ageGroup": "teen+",
       "categoryL1": "art_architecture",
       "categoryL2": "music_history",
-      "distractors": [
-        "1955",
-        "1962",
-        "1965",
-        "1970",
-        "1975",
-        "1967",
-        "1953",
-        "1948"
-      ]
+      "distractors": []
     },
     {
       "id": "mh_2_kind_of_blue_modal",
@@ -4557,10 +4458,10 @@
     },
     {
       "id": "mh_3_beatles_breakup",
-      "correctAnswer": "1970",
+      "correctAnswer": "{1970}",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "artist_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "In what year did The Beatles officially break up?",
@@ -4574,16 +4475,7 @@
       "ageGroup": "all",
       "categoryL1": "art_architecture",
       "categoryL2": "music_history",
-      "distractors": [
-        "1968",
-        "1969",
-        "1971",
-        "1972",
-        "1973",
-        "1967",
-        "1966",
-        "1974"
-      ]
+      "distractors": []
     },
     {
       "id": "mh_3_beatles_british_invasion",
@@ -4659,7 +4551,7 @@
         "Sun"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "artist_names",
+      "answerTypePoolId": "company_names",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "At which Memphis label did Elvis Presley record his first tracks in 1954?",
@@ -5112,10 +5004,10 @@
     },
     {
       "id": "mh_3_woodstock_1969",
-      "correctAnswer": "1969",
+      "correctAnswer": "{1969}",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "genre_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 8,
       "quizQuestion": "In what year did the Woodstock Music Festival, defining the hippie counterculture, take place?",
@@ -5129,16 +5021,7 @@
       "ageGroup": "all",
       "categoryL1": "art_architecture",
       "categoryL2": "music_history",
-      "distractors": [
-        "1967",
-        "1968",
-        "1970",
-        "1971",
-        "1972",
-        "1965",
-        "1966",
-        "1973"
-      ]
+      "distractors": []
     },
     {
       "id": "mh_3_rock_and_roll_birth",
@@ -6113,7 +5996,7 @@
         "the King of Pop"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "genre_names",
+      "answerTypePoolId": "nickname_terms",
       "difficulty": 1,
       "funScore": 8,
       "quizQuestion": "What title was Michael Jackson universally given by fans and media?",
@@ -6586,12 +6469,12 @@
     },
     {
       "id": "mh_4_stevie_wonder_25_grammys",
-      "correctAnswer": "25",
+      "correctAnswer": "{25}",
       "acceptableAlternatives": [
         "twenty-five"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "album_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "How many Grammy Awards has Stevie Wonder won, the most by any non-classical solo artist?",
@@ -6605,16 +6488,7 @@
       "ageGroup": "all",
       "categoryL1": "art_architecture",
       "categoryL2": "music_history",
-      "distractors": [
-        "18",
-        "20",
-        "22",
-        "27",
-        "30",
-        "32",
-        "15",
-        "28"
-      ]
+      "distractors": []
     },
     {
       "id": "mh_4_motown_soul",
@@ -6651,12 +6525,12 @@
     },
     {
       "id": "mh_4_mtv_launch_1981",
-      "correctAnswer": "1981",
+      "correctAnswer": "{1981}",
       "acceptableAlternatives": [
         "August 1981"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "album_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "In what year did MTV launch, transforming music into a visual medium?",
@@ -6670,16 +6544,7 @@
       "ageGroup": "all",
       "categoryL1": "art_architecture",
       "categoryL2": "music_history",
-      "distractors": [
-        "1979",
-        "1980",
-        "1982",
-        "1983",
-        "1984",
-        "1985",
-        "1978",
-        "1986"
-      ]
+      "distractors": []
     },
     {
       "id": "mh_4_prince_purple_rain",
@@ -6934,12 +6799,12 @@
     },
     {
       "id": "mh_4_walkman_1979",
-      "correctAnswer": "1979",
+      "correctAnswer": "{1979}",
       "acceptableAlternatives": [
         "July 1979"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "album_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "In what year did Sony launch the Walkman, making music portable for the first time?",
@@ -6953,23 +6818,14 @@
       "ageGroup": "all",
       "categoryL1": "art_architecture",
       "categoryL2": "music_history",
-      "distractors": [
-        "1975",
-        "1977",
-        "1978",
-        "1980",
-        "1981",
-        "1982",
-        "1983",
-        "1976"
-      ]
+      "distractors": []
     },
     {
       "id": "mh_4_napster_1999",
       "correctAnswer": "Napster",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "artist_names",
+      "answerTypePoolId": "company_names",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "Which 1999 file-sharing service disrupted the music industry and triggered mass piracy?",
@@ -6999,7 +6855,7 @@
       "correctAnswer": "Spotify",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "artist_names",
+      "answerTypePoolId": "company_names",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Which streaming service launched in 2008 and led the shift from music ownership to access?",
@@ -7221,10 +7077,10 @@
     },
     {
       "id": "mh_4_compact_disc_1982",
-      "correctAnswer": "1982",
+      "correctAnswer": "{1982}",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "album_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "In what year was the compact disc (CD) first sold commercially, by Sony and Philips?",
@@ -7238,16 +7094,7 @@
       "ageGroup": "all",
       "categoryL1": "art_architecture",
       "categoryL2": "music_history",
-      "distractors": [
-        "1979",
-        "1980",
-        "1981",
-        "1983",
-        "1984",
-        "1985",
-        "1986",
-        "1977"
-      ]
+      "distractors": []
     },
     {
       "id": "mh_4_madonna_like_a_virgin",
@@ -7316,36 +7163,8 @@
   ],
   "answerTypePools": [
     {
-      "id": "era_names",
-      "label": "Music Eras & Periods",
-      "answerFormat": "term",
-      "factIds": [
-        "mh_0_bach_birth_year",
-        "mh_0_bach_cantatas_count",
-        "mh_0_bach_employer_leipzig",
-        "mh_0_vivaldi_red_priest",
-        "mh_0_handel_nationality",
-        "mh_0_haydn_papa_nickname",
-        "mh_0_haydn_symphony_count",
-        "mh_0_mozart_birth_city",
-        "mh_0_mozart_death_age",
-        "mh_0_mozart_symphonies_count",
-        "mh_0_beethoven_birth_city",
-        "mh_0_beethoven_deafness",
-        "mh_0_chopin_instrument",
-        "mh_0_chopin_nationality",
-        "mh_0_wagner_leitmotif",
-        "mh_0_brahms_four_symphonies",
-        "mh_0_debussy_impressionism",
-        "mh_0_wagner_bayreuth",
-        "mh_0_schubert_lieder",
-        "mh_0_verdi_opera_count"
-      ],
-      "minimumSize": 5
-    },
-    {
       "id": "work_names",
-      "label": "Musical Work Titles",
+      "label": "Musical Works & Compositions",
       "answerFormat": "title",
       "factIds": [
         "mh_0_bach_well_tempered",
@@ -7385,13 +7204,12 @@
     },
     {
       "id": "artist_names",
-      "label": "Artist & Performer Names",
+      "label": "Artists & Composers",
       "answerFormat": "name",
       "factIds": [
         "mh_0_liszt_piano_virtuoso",
         "mh_0_verdi_risorgimento",
         "mh_0_mozart_child_prodigy",
-        "mh_2_armstrong_nickname",
         "mh_2_armstrong_wonderful_world",
         "mh_2_armstrong_solo_art",
         "mh_2_armstrong_scat",
@@ -7399,11 +7217,9 @@
         "mh_2_miles_davis_reinvention",
         "mh_2_ellington_take_a_train",
         "mh_2_ellington_compositions",
-        "mh_2_ellington_cotton_club",
         "mh_2_charlie_parker_bebop",
         "mh_2_dizzy_bent_trumpet",
         "mh_2_billie_holiday_strange_fruit",
-        "mh_2_billie_holiday_nickname",
         "mh_2_ella_fitzgerald_scat",
         "mh_2_brubeck_take_five",
         "mh_2_monk_piano",
@@ -7419,9 +7235,7 @@
         "mh_2_ma_rainey",
         "mh_2_coltrane_sheets_of_sound",
         "mh_3_beatles_ed_sullivan",
-        "mh_3_beatles_breakup",
         "mh_3_elvis_king",
-        "mh_3_elvis_sun_records",
         "mh_3_dylan_nobel",
         "mh_3_dylan_newport",
         "mh_3_chuck_berry_guitar",
@@ -7462,8 +7276,6 @@
         "mh_4_madonna_queen_of_pop",
         "mh_4_public_enemy_fight_the_power",
         "mh_4_kraftwerk_electronic_pioneers",
-        "mh_4_napster_1999",
-        "mh_4_streaming_revolution",
         "mh_4_nirvana_smells_like_teen_spirit",
         "mh_4_notorious_big",
         "mh_4_madonna_like_a_virgin"
@@ -7472,13 +7284,11 @@
     },
     {
       "id": "instrument_names",
-      "label": "Instrument Names",
+      "label": "Musical Instruments",
       "answerFormat": "name",
       "factIds": [
-        "mh_1_piano_inventor",
-        "mh_1_violin_stradivari",
+        "mh_0_chopin_instrument",
         "mh_1_guitar_popular",
-        "mh_1_saxophone_inventor",
         "mh_1_trumpet_brass",
         "mh_1_organ_largest",
         "mh_1_cello_family",
@@ -7494,18 +7304,11 @@
     },
     {
       "id": "music_terms",
-      "label": "Music Theory Terms",
+      "label": "Music Terms & Concepts",
       "answerFormat": "term",
       "factIds": [
-        "mh_1_piano_keys",
-        "mh_1_saxophone_orchestra",
-        "mh_1_harpsichord_vs_piano",
-        "mh_1_clarinet_reed",
-        "mh_1_oboe_double_reed",
-        "mh_1_harp_strings",
-        "mh_1_trombone_slide",
-        "mh_1_violin_strings",
-        "mh_1_symphony_movements",
+        "mh_0_wagner_leitmotif",
+        "mh_0_schubert_lieder",
         "mh_1_concerto_solo",
         "mh_1_sonata_form",
         "mh_1_aria_opera",
@@ -7515,7 +7318,6 @@
         "mh_1_crescendo_dynamics",
         "mh_1_fortissimo",
         "mh_1_pianissimo",
-        "mh_1_staccato_meaning",
         "mh_1_legato_meaning",
         "mh_1_fermata",
         "mh_1_opus_meaning",
@@ -7524,13 +7326,14 @@
         "mh_1_time_signature_4_4",
         "mh_1_time_signature_3_4",
         "mh_1_tempo_definition",
-        "mh_1_opera_definition"
+        "mh_1_opera_definition",
+        "mh_2_improvisation"
       ],
       "minimumSize": 5
     },
     {
       "id": "album_names",
-      "label": "Album Names",
+      "label": "Albums & Recordings",
       "answerFormat": "title",
       "factIds": [
         "mh_2_kind_of_blue",
@@ -7556,39 +7359,30 @@
         "mh_4_mj_mtv_billie_jean",
         "mh_4_aretha_respect",
         "mh_4_nwa_straight_outta_compton",
-        "mh_4_stevie_wonder_25_grammys",
-        "mh_4_mtv_launch_1981",
         "mh_4_prince_purple_rain",
         "mh_4_marvin_gaye_whats_going_on",
-        "mh_4_walkman_1979",
-        "mh_4_miseducation_lauryn_hill",
-        "mh_4_compact_disc_1982"
+        "mh_4_miseducation_lauryn_hill"
       ],
       "minimumSize": 5
     },
     {
       "id": "genre_names",
-      "label": "Genre & Style Names",
+      "label": "Music Genres & Styles",
       "answerFormat": "term",
       "factIds": [
-        "mh_2_blues_origins",
-        "mh_2_jazz_new_orleans",
+        "mh_0_debussy_impressionism",
         "mh_2_bebop_revolution",
         "mh_2_cool_jazz",
         "mh_2_jazz_fusion",
-        "mh_2_improvisation",
-        "mh_2_1959_jazz_year",
         "mh_2_kind_of_blue_modal",
         "mh_2_free_jazz",
         "mh_2_blue_notes",
         "mh_3_beatles_british_invasion",
-        "mh_3_woodstock_1969",
         "mh_3_rock_and_roll_birth",
         "mh_3_punk_1976",
         "mh_3_grunge_1991",
         "mh_3_sex_pistols_punk",
         "mh_3_stones_exile_genre",
-        "mh_4_mj_king_of_pop",
         "mh_4_bob_marley_rastafari",
         "mh_4_reggae_jamaica_origins",
         "mh_4_hiphop_genre",
@@ -7600,6 +7394,171 @@
         "mh_4_james_brown_funk_groove"
       ],
       "minimumSize": 5
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Numbers & Counts",
+      "answerFormat": "bracket_number",
+      "factIds": [
+        "mh_0_bach_birth_year",
+        "mh_0_haydn_symphony_count",
+        "mh_0_mozart_death_age",
+        "mh_0_mozart_symphonies_count",
+        "mh_0_brahms_four_symphonies",
+        "mh_0_verdi_opera_count",
+        "mh_1_piano_keys",
+        "mh_1_harp_strings",
+        "mh_1_violin_strings",
+        "mh_1_symphony_movements",
+        "mh_2_1959_jazz_year",
+        "mh_3_beatles_breakup",
+        "mh_3_woodstock_1969",
+        "mh_4_stevie_wonder_25_grammys",
+        "mh_4_mtv_launch_1981",
+        "mh_4_walkman_1979",
+        "mh_4_compact_disc_1982"
+      ],
+      "minimumSize": 3
+    },
+    {
+      "id": "place_names",
+      "label": "Cities, Countries & Places",
+      "answerFormat": "place",
+      "factIds": [
+        "mh_0_bach_employer_leipzig",
+        "mh_0_handel_nationality",
+        "mh_0_mozart_birth_city",
+        "mh_0_beethoven_birth_city",
+        "mh_0_wagner_bayreuth",
+        "mh_2_ellington_cotton_club",
+        "mh_2_blues_origins",
+        "mh_2_jazz_new_orleans"
+      ],
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Memphis",
+        "Chicago",
+        "Detroit",
+        "Nashville",
+        "Liverpool",
+        "Vienna",
+        "Berlin",
+        "Paris",
+        "London",
+        "St. Louis",
+        "St. Thomas Church"
+      ]
+    },
+    {
+      "id": "nickname_terms",
+      "label": "Nicknames & Personal Epithets",
+      "answerFormat": "term",
+      "factIds": [
+        "mh_0_vivaldi_red_priest",
+        "mh_0_haydn_papa_nickname",
+        "mh_2_armstrong_nickname",
+        "mh_2_billie_holiday_nickname",
+        "mh_4_mj_king_of_pop"
+      ],
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "The Waltz King",
+        "The March King",
+        "Bird",
+        "Pops",
+        "The Boss",
+        "The Killer",
+        "Ol' Blue Eyes",
+        "The Man in Black",
+        "The Fab Four",
+        "The King of Swing"
+      ]
+    },
+    {
+      "id": "company_names",
+      "label": "Record Labels & Music Companies",
+      "answerFormat": "name",
+      "factIds": [
+        "mh_3_elvis_sun_records",
+        "mh_4_napster_1999",
+        "mh_4_streaming_revolution"
+      ],
+      "minimumSize": 3,
+      "syntheticDistractors": [
+        "Motown Records",
+        "Atlantic Records",
+        "Columbia Records",
+        "Apple Records",
+        "Capitol Records",
+        "Decca Records",
+        "Chess Records",
+        "Stax Records"
+      ]
+    },
+    {
+      "id": "description_terms",
+      "label": "Mechanism & Technique Descriptions",
+      "answerFormat": "term",
+      "factIds": [
+        "mh_0_bach_cantatas_count",
+        "mh_0_beethoven_deafness",
+        "mh_1_saxophone_orchestra",
+        "mh_1_harpsichord_vs_piano",
+        "mh_1_clarinet_reed",
+        "mh_1_oboe_double_reed",
+        "mh_1_trombone_slide",
+        "mh_1_staccato_meaning"
+      ],
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Hammers the strings",
+        "Vibrates air column",
+        "Plucks with plectrum",
+        "Bows the strings",
+        "Buzzes lips into mouthpiece",
+        "Strikes a membrane",
+        "Blows across an edge"
+      ]
+    },
+    {
+      "id": "person_names",
+      "label": "Person Names",
+      "factIds": [
+        "mh_1_piano_inventor",
+        "mh_1_violin_stradivari",
+        "mh_1_saxophone_inventor"
+      ],
+      "syntheticDistractors": [
+        "Robert Moog",
+        "Leo Fender",
+        "Theobald Boehm",
+        "Laurens Hammond",
+        "Les Paul",
+        "Heinrich Steinweg",
+        "Johann Christoph Denner",
+        "Yamaha Torakusu"
+      ],
+      "minimumSize": 3
+    },
+    {
+      "id": "nationality_names",
+      "label": "Nationality Names",
+      "factIds": [
+        "mh_0_chopin_nationality"
+      ],
+      "syntheticDistractors": [
+        "German",
+        "French",
+        "Austrian",
+        "Italian",
+        "Russian",
+        "Czech",
+        "Hungarian",
+        "Norwegian",
+        "Finnish",
+        "Spanish"
+      ],
+      "minimumSize": 1
     }
   ],
   "synonymGroups": [],

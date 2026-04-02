@@ -342,7 +342,7 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 
 ## music_history Deck
 
-`data/decks/music_history.json` — assembled 2026-04-02 from 5 WIP partial files by `data/decks/_wip/assemble-music-history.mjs`.
+`data/decks/music_history.json` — assembled 2026-04-02 from 5 WIP partial files by `data/decks/_wip/assemble-music-history.mjs`. Pool assignments fixed 2026-04-02 by `data/decks/_wip/fix-music-history-pools.mjs`.
 
 | Field | Value |
 |---|---|
@@ -363,24 +363,29 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 | `rock_pop` | Rock & Pop Revolution | 3 | 50 |
 | `world_modern` | World Music & Modern Era | 4 | 40 |
 
-**Answer Type Pools (7):**
+**Answer Type Pools (12):**
 
-| Pool ID | Format | Facts |
-|---|---|---|
-| `artist_names` | name | 79 (includes 3 reclassified from composer_names) |
-| `work_names` | title | 32 |
-| `album_names` | title | 30 |
-| `genre_names` | term | 27 |
-| `music_terms` | term | 28 |
-| `instrument_names` | name | 14 |
-| `era_names` | term | 20 |
+| Pool ID | Format | Facts | Synthetics | Notes |
+|---|---|---|---|---|
+| `artist_names` | name | 72 | — | Real person names only |
+| `work_names` | title | 32 | — | Compositions, pieces |
+| `album_names` | title | 26 | — | Albums, recordings |
+| `genre_names` | term | 22 | — | Genre/style terms |
+| `music_terms` | term | 19 | — | Single-word music terminology |
+| `instrument_names` | name | 14 | — | Instrument names |
+| `bracket_numbers` | bracket_number | 17 | — | Runtime numeric generation |
+| `era_names` | term | 8 | — | Era/period labels |
+| `place_names` | place | 7 | 10 | Cities, countries, venues |
+| `nickname_terms` | term | 5 | 10 | Personal nicknames and epithets |
+| `description_terms` | term | 5 | 7 | Multi-word mechanism/technique phrases |
+| `company_names` | name | 3 | 8 | Record labels, tech services; minimumSize=3 |
 
-**Pool note:** An initial `composer_names` pool had only 3 facts (below the 5-fact minimum). Those 3 facts (`mh_0_liszt_piano_virtuoso`, `mh_0_verdi_risorgimento`, `mh_0_mozart_child_prodigy`) were reclassified into `artist_names`, which is semantically correct since their correct answers are musician names and the pool now has 79 members.
+**Pool fix (2026-04-02):** `data/decks/_wip/fix-music-history-pools.mjs` — 17 pure-number answers (years, counts) converted to bracket notation (`{1685}`, `{88}`, etc.) with `bracket_numbers` pool. 20 facts reassigned to correct semantic pools: 7 to `place_names` (England, Salzburg, Bonn, Bayreuth, Cotton Club, Mississippi Delta, New Orleans), 5 to `nickname_terms` (The Red Priest, Papa Haydn, Satchmo, Lady Day, King of Pop), 3 to `company_names` (Sun Records, Napster, Spotify), 5 to `description_terms` (Plucks the strings, Single reed, Double reed, Slide, Short and detached). Four new pools added with syntheticDistractors arrays for sufficient runtime distractor selection.
 
 **Difficulty:**
-- easy (1–2): 155 facts
+- easy (1-2): 155 facts
 - medium (3): 66 facts
-- hard (4–5): 9 facts
+- hard (4-5): 9 facts
 
 **Validation:** 230/230 PASS, 0 FAIL (via `scripts/verify-curated-deck.mjs`)
 

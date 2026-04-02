@@ -38,6 +38,28 @@ export function getDistractorCount(
 }
 
 /**
+ * Build a minimal pseudo-DeckFact for a synthetic distractor string.
+ * Synthetic members are pool values that aren't any fact's correctAnswer —
+ * they pad small pools to avoid falling back to pre-generated distractors.
+ */
+function makeSyntheticFact(synAnswer: string, answerTypePoolId: string): DeckFact {
+  return {
+    id: `_synthetic_${synAnswer}`,
+    correctAnswer: synAnswer,
+    acceptableAlternatives: [],
+    chainThemeId: 0,
+    answerTypePoolId,
+    difficulty: 3,
+    funScore: 1,
+    quizQuestion: '',
+    explanation: '',
+    visualDescription: '',
+    sourceName: '',
+    distractors: [],
+  };
+}
+
+/**
  * Select distractors from the deck's answer type pool, weighted by confusion matrix.
  *
  * Priority order (§4.4):
@@ -46,8 +68,10 @@ export function getDistractorCount(
  * 3. In-run struggles (from in-run FSRS)
  * 4. Same pool, similar difficulty (±1)
  * 5. Same pool, any difficulty (fill remaining)
+ * 6. Synthetic pool members (pool_fill, lower base score than real facts)
  *
- * Falls back to the fact's pre-generated distractors[] if pool is too small.
+ * Falls back to the fact's pre-generated distractors[] if pool is too small
+ * even after counting synthetic members.
  *
  * @param inRunTracker - In-run fact tracker, or null when called from trivia mode (no active run).
  */
@@ -80,6 +104,18 @@ export function selectDistractors(
     factById.set(f.id, f);
   }
 
+  // Add synthetic pool members to the lookup map as pseudo-facts.
+  // This allows the scoring loop and selection loop to treat them uniformly
+  // with real facts without special-casing their IDs everywhere.
+  if (answerPool.syntheticDistractors) {
+    for (const synAnswer of answerPool.syntheticDistractors) {
+      const synId = `_synthetic_${synAnswer}`;
+      if (!factById.has(synId)) {
+        factById.set(synId, makeSyntheticFact(synAnswer, answerPool.id));
+      }
+    }
+  }
+
   // Early exit: if pool has too few unique answers for sensible distractors,
   // use the fact's pre-generated distractors[] directly.
   // A pool needs at least (count + 1) unique correctAnswer values to provide
@@ -92,11 +128,15 @@ export function selectDistractors(
   }
   uniquePoolAnswers.delete(correctFact.correctAnswer.toLowerCase());
 
-  // Use pre-generated distractors when pool has fewer than 5 unique answers.
-  // Pools this small produce nonsensical distractors (e.g., "Kuiper Belt" as
-  // distractor for "In which direction do planets orbit?"). 5 is the minimum
-  // for meaningful pool-based selection.
-  if (uniquePoolAnswers.size < 5 && correctFact.distractors.length >= count) {
+  // Count synthetic members toward pool viability.
+  // They are valid distractors even though they have no quiz questions of their own.
+  const syntheticCount = answerPool.syntheticDistractors?.length ?? 0;
+
+  // Use pre-generated distractors when pool has fewer than 5 unique answers
+  // (including synthetics). Pools this small produce nonsensical distractors
+  // (e.g., "Kuiper Belt" as distractor for "In which direction do planets orbit?").
+  // 5 is the minimum for meaningful pool-based selection.
+  if (uniquePoolAnswers.size + syntheticCount < 5 && correctFact.distractors.length >= count) {
     // Pool too small — fall back to pre-generated distractors
     const fallbackDistractors: DeckFact[] = [];
     const fallbackSources: DistractorSelectionResult['sources'] = [];
@@ -190,6 +230,20 @@ export function selectDistractors(
     }
 
     candidates.push({ factId, score, source });
+  }
+
+  // Score synthetic pool members as low-priority candidates (base score 0.5).
+  // Lower than real pool members (1.0 base) so real facts are always preferred,
+  // but they still beat the fallback path when the real pool is too small.
+  if (answerPool.syntheticDistractors) {
+    for (const synAnswer of answerPool.syntheticDistractors) {
+      const synId = `_synthetic_${synAnswer}`;
+      // Skip if this synthetic answer is identical to the correct answer
+      if (synAnswer.toLowerCase() === correctFact.correctAnswer.toLowerCase()) continue;
+      // Skip if the synthetic ID is in the synonym exclusion set (defensive)
+      if (synonymExcludeIds.has(synId)) continue;
+      candidates.push({ factId: synId, score: 0.5, source: 'pool_fill' });
+    }
   }
 
   // Add jitter to break ties between equal-scored candidates.
