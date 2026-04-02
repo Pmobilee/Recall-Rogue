@@ -97,6 +97,18 @@
 
 ---
 
+## Skills Reference
+
+Skill definitions live in `.claude/skills/`. Invoke with `/skill-name`. Key art pipeline skills:
+
+| Skill | File | When to use |
+|-------|------|-------------|
+| `/deck-art` | `.claude/skills/deck-art/SKILL.md` | Generate and deploy curated deck cover art with depth-based 3D parallax for Study Temple |
+| `/artstudio` | `.claude/skills/artstudio/SKILL.md` | Generate all other game art (enemies, backgrounds, relics, icons) via OpenRouter / ComfyUI |
+| `/depth-transitions` | `.claude/skills/depth-transitions/SKILL.md` | Generate depth maps and manage parallax room transition shader |
+
+---
+
 ## Legacy (archived)
 
 | Doc | Notes |

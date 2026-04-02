@@ -29,7 +29,7 @@ The Art Studio is an internal dev tool (runs on `http://localhost:5175/artstudio
 | `mysteryrooms` | Mystery event backgrounds | OpenRouter |
 | `rewardrooms` | Reward room backgrounds | OpenRouter |
 | `relicicons` | Relic icons | ComfyUI |
-| `deckfronts` | Deck card fronts | ComfyUI |
+| `deckfronts` | Deck card fronts (768×1024, pixel art RPG style) | OpenRouter |
 | `cardtype_icons` | Card type icons | ComfyUI |
 | `domain_icons` | Knowledge domain icons | ComfyUI |
 | `status_icons` | Status effect icons | ComfyUI |

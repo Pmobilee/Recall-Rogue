@@ -87,6 +87,36 @@ The 4 `world_wonders` architecture files total 195 facts in the live deck. They 
 
 ---
 
+## Deck Front Images
+
+All 63 curated decks have pixel art RPG dungeon cover art as of 2026-04-02. Images are served from `public/assets/sprites/deckfronts/` and rendered by `DeckTileV2.svelte` with a CSS parallax hover effect.
+
+**33 unique images** cover all 63 decks. Language sub-decks (e.g. `japanese_n5_vocab`, `japanese_n4`) share their parent image (e.g. `japanese.webp`).
+
+### Naming Convention
+
+| Deck type | Image path | Example |
+|---|---|---|
+| Knowledge deck | `deckfronts/{deckId}.webp` | `deckfronts/ancient_greece.webp` |
+| Language parent | `deckfronts/{language}.webp` | `deckfronts/japanese.webp` |
+| Language sub-deck | resolves to parent | `japanese_n5_vocab` → `japanese.webp` |
+| ALL-tab synthetic ID | strips `all:` prefix then resolves | `all:japanese` → `japanese.webp` |
+
+**Parent prefix list:** `japanese`, `chinese`, `korean`, `spanish`, `french`, `german`, `dutch`, `czech`.
+
+### Image Specs
+
+- Format: WebP, 768×1024 (3:4 portrait)
+- Style: 16-bit pixel art RPG dungeon scene, JRPG tileset aesthetic
+- Generated via OpenRouter (`google/gemini-2.5-flash-image`) through the artstudio tool
+- Depth maps (`{id}_depth.webp`) stored alongside each image but not currently used in the CSS
+
+Tiles without a matching image fall back to the CSS gradient derived from domain color metadata.
+
+See `.claude/skills/deck-art/SKILL.md` for full generation workflow, prompt templates, and deployment steps.
+
+---
+
 ## dinosaurs Deck
 
 `data/decks/dinosaurs.json` — assembled 2026-04-01 from 3 WIP partial files. Fixed 2026-04-01 by `data/decks/_wip/fix-dinosaurs.mjs`.

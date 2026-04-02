@@ -15941,120 +15941,532 @@
   ],
   "deckfronts": [
     {
-      "id": "df-japanese-master",
-      "name": "Japanese — Master",
-      "concept": "Stone torii gate on warm grey stone, subtle cherry blossom accent",
-      "prompt": "a small stone torii gate sitting on warm grey flagstone, a few pink cherry blossom petals resting at its base, soft warm light, simple clean composition, centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors against a muted stone background, hand-pixeled, clean hard pixel edges, strong dark outlines, flat shading with minimal dithering, no gradients, no text no letters no numbers no words no readable symbols, no UI elements, no border frame, no watermark, game asset card art, vertical portrait composition, minimalist composition single focal object",
-      "targetWidth": 512,
-      "targetHeight": 728,
+      "id": "japanese",
+      "name": "Japanese — All Decks",
+      "concept": "Ancient stone shrine deep underground, lanterns and moss, mysterious dungeon atmosphere",
+      "prompt": "16-bit pixel art RPG scene, an ancient stone shrine hidden deep in a dark dungeon cavern, moss-covered torii arch, glowing paper lanterns hanging from chains, shallow offering pool reflecting amber light, crumbling stone steps, mushrooms and vines growing from cracks, mysterious fog, JRPG dungeon tileset aesthetic, rich pixel detail, warm amber and deep indigo palette, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
       "variants": [
         {
           "variant": 0,
-          "seed": 3998160588,
+          "seed": 3548250020,
           "status": "done",
           "accepted": false
         }
       ]
     },
     {
-      "id": "df-japanese-hiragana",
-      "name": "Japanese — Hiragana",
-      "concept": "Calligraphy brush and inkstone on warm stone",
-      "prompt": "a calligraphy brush resting across a small round inkstone on warm grey stone surface, a drop of black ink beside it, soft warm light, simple clean composition, centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors against a muted stone background, hand-pixeled, clean hard pixel edges, strong dark outlines, flat shading with minimal dithering, no gradients, no text no letters no numbers no words no readable symbols, no UI elements, no border frame, no watermark, game asset card art, vertical portrait composition, minimalist composition single focal object",
-      "targetWidth": 512,
-      "targetHeight": 728,
+      "id": "ancient_greece",
+      "name": "Ancient Greece",
+      "concept": "Ruined marble temple in underground cavern, moonlight shaft, pixel RPG dungeon",
+      "prompt": "16-bit pixel art RPG scene, a crumbling marble temple deep inside an underground cavern, broken fluted columns draped with ivy, a bronze shield and amphora resting on mossy flagstones, moonlight shaft piercing through a crack in the cavern ceiling, shallow puddles reflecting blue light, fallen stone blocks overgrown with lichen, JRPG dungeon tileset aesthetic, rich pixel detail, cool marble white warm gold and deep teal palette, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
       "variants": [
         {
           "variant": 0,
-          "seed": 1635222944,
+          "seed": 1048767809,
           "status": "done",
           "accepted": false
         }
       ]
     },
     {
-      "id": "df-japanese-katakana",
-      "name": "Japanese — Katakana",
-      "concept": "Angular folded shuriken on stone",
-      "prompt": "a single angular metal shuriken throwing star resting on warm grey stone surface, faint blue steel reflections, simple clean composition, centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors against a muted stone background, hand-pixeled, clean hard pixel edges, strong dark outlines, flat shading with minimal dithering, no gradients, no text no letters no numbers no words no readable symbols, no UI elements, no border frame, no watermark, game asset card art, vertical portrait composition, minimalist composition single focal object",
-      "targetWidth": 512,
-      "targetHeight": 728,
+      "id": "ancient_rome",
+      "name": "Ancient Rome",
+      "concept": "Underground Roman colosseum arena, crumbling arches, torchlit gladiator pit",
+      "prompt": "16-bit pixel art RPG scene, underground Roman colosseum arena deep beneath crumbling arches, iron torches mounted on carved stone pillars casting orange glow, a battered gladiator helmet and round shield resting on blood-stained flagstones foreground, sand-covered arena floor stretching back to shadowed archways, chains hanging from vaulted ceiling, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by burnt sienna warm amber and deep charcoal, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
       "variants": [
         {
           "variant": 0,
-          "seed": 2557674030,
+          "seed": 1518601844,
           "status": "done",
           "accepted": false
         }
       ]
     },
     {
-      "id": "df-japanese-n5",
-      "name": "Japanese — N5",
-      "concept": "Small wooden token with one carved rune, warm amber",
-      "prompt": "a small round wooden token with one simple carved eastern rune on its face resting on warm grey stone, faint warm amber glow from the carving, simple clean composition, centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors against a muted stone background, hand-pixeled, clean hard pixel edges, strong dark outlines, flat shading with minimal dithering, no gradients, no text no letters no numbers no words no readable symbols, no UI elements, no border frame, no watermark, game asset card art, vertical portrait composition, minimalist composition single focal object",
-      "targetWidth": 512,
-      "targetHeight": 728,
+      "id": "chinese",
+      "name": "Chinese",
+      "concept": "Subterranean jade palace chamber, silk lanterns, dragon statue, incense mist",
+      "prompt": "16-bit pixel art RPG scene, subterranean jade palace chamber carved deep underground, ornate dragon statue on raised dais foreground with incense smoke curling upward, silk lanterns hanging on golden chains casting red and gold light, lacquered pillars with carved cloud motifs, silk tapestry draped over far wall, shallow reflecting pool of jade-green water, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by deep jade green crimson red and burnished gold, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
       "variants": [
         {
           "variant": 0,
-          "seed": 2886935722,
+          "seed": 2582848064,
           "status": "done",
           "accepted": false
         }
       ]
     },
     {
-      "id": "df-japanese-n4",
-      "name": "Japanese — N4",
-      "concept": "Two wooden tokens with carved runes, green tint",
-      "prompt": "two round wooden tokens with carved eastern runes resting on warm grey stone, faint jade green glow from the carvings, simple clean composition, centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors against a muted stone background, hand-pixeled, clean hard pixel edges, strong dark outlines, flat shading with minimal dithering, no gradients, no text no letters no numbers no words no readable symbols, no UI elements, no border frame, no watermark, game asset card art, vertical portrait composition, minimalist composition single focal object",
-      "targetWidth": 512,
-      "targetHeight": 728,
+      "id": "computer_science",
+      "name": "Computer Science",
+      "concept": "Retro dungeon server room, circuit boards, floating binary runes, crystal data cores",
+      "prompt": "16-bit pixel art RPG scene, retro dungeon server room carved into stone, glowing circuit board panels embedded in cavern walls with pulsing neon traces, large crystal data cores hovering over stone pedestals foreground, floating geometric rune fragments drifting through dim air, tangled cable bundles running along floor like roots, cooling fans visible in alcoves, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by electric cyan dark slate and vivid green, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
       "variants": [
         {
           "variant": 0,
-          "seed": 1718318756,
+          "seed": 339201454,
           "status": "done",
           "accepted": false
         }
       ]
     },
     {
-      "id": "df-japanese-n3",
-      "name": "Japanese — N3",
-      "concept": "Stone tablet with three runes, soft blue",
-      "prompt": "a smooth stone tablet standing upright on warm grey stone, three carved eastern runes with soft indigo blue glow, simple clean composition, centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors against a muted stone background, hand-pixeled, clean hard pixel edges, strong dark outlines, flat shading with minimal dithering, no gradients, no text no letters no numbers no words no readable symbols, no UI elements, no border frame, no watermark, game asset card art, vertical portrait composition, minimalist composition single focal object",
-      "targetWidth": 512,
-      "targetHeight": 728,
-      "variants": []
+      "id": "constellations",
+      "name": "Constellations",
+      "concept": "Underground observatory dome, cracked ceiling starfield, brass telescope, star charts",
+      "prompt": "16-bit pixel art RPG scene, ancient underground observatory dome with cracked stone ceiling revealing a glittering starfield above, massive brass telescope on pivoting mount foreground, star charts and celestial maps unrolled on stone tables, glowing constellation lines etched into the domed ceiling, circular zodiac mosaic on the floor, oil lanterns in iron brackets along curved walls, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by midnight blue pale gold and deep violet, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3367876746,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
-      "id": "df-japanese-n3-grammar",
-      "name": "Japanese — N3 Grammar",
-      "concept": "Interlocking stone puzzle cube, soft blue grooves",
-      "prompt": "a small stone cube with interlocking geometric grooves carved into its faces resting on warm grey stone, soft indigo light in the grooves, simple clean composition, centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors against a muted stone background, hand-pixeled, clean hard pixel edges, strong dark outlines, flat shading with minimal dithering, no gradients, no text no letters no numbers no words no readable symbols, no UI elements, no border frame, no watermark, game asset card art, vertical portrait composition, minimalist composition single focal object",
-      "targetWidth": 512,
-      "targetHeight": 728,
-      "variants": []
+      "id": "czech",
+      "name": "Czech",
+      "concept": "Gothic dungeon beneath Prague castle, gargoyles, iron chandelier, stained glass shards",
+      "prompt": "16-bit pixel art RPG scene, gothic dungeon chamber beneath a great castle, stone gargoyle statues crouching in shadowed alcoves foreground, massive iron chandelier hanging from ribbed vaulted ceiling with dripping candles, shattered stained glass fragments scattered across stone floor with faint colored light falling through broken window above, spiral iron staircase in background, carved stone tracery along archways, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by slate grey deep crimson and amber candlelight, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1441784082,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
-      "id": "df-japanese-n2",
-      "name": "Japanese — N2",
-      "concept": "Tall stone obelisk with dense carved runes, violet",
-      "prompt": "a stone obelisk with many carved eastern runes on warm grey stone floor, soft violet glow from the carvings, simple clean composition, centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors against a muted stone background, hand-pixeled, clean hard pixel edges, strong dark outlines, flat shading with minimal dithering, no gradients, no text no letters no numbers no words no readable symbols, no UI elements, no border frame, no watermark, game asset card art, vertical portrait composition, minimalist composition single focal object",
-      "targetWidth": 512,
-      "targetHeight": 728,
-      "variants": []
+      "id": "dinosaurs",
+      "name": "Dinosaurs",
+      "concept": "Deep cavern with massive fossil skeleton in rock wall, amber crystals, fern fossils",
+      "prompt": "16-bit pixel art RPG scene, deep prehistoric cavern with a massive dinosaur skeleton embedded in the rock wall background, enormous ribcage and spine visible in cross-section of stone strata, large amber crystal formations in foreground glowing warm orange, fossilized fern fronds pressed into cave floor, dripping stalactites overhead, pools of golden amber liquid in rock depressions, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by earthy sienna warm amber and deep charcoal grey, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1985448406,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
-      "id": "df-japanese-n1",
-      "name": "Japanese — N1",
-      "concept": "Ornate circular seal medallion, gold glow",
-      "prompt": "an ornate circular stone medallion with a complex interlocking rune seal pattern resting on warm grey stone, rich golden glow from the seal, simple clean composition, centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors against a muted stone background, hand-pixeled, clean hard pixel edges, strong dark outlines, flat shading with minimal dithering, no gradients, no text no letters no numbers no words no readable symbols, no UI elements, no border frame, no watermark, game asset card art, vertical portrait composition, minimalist composition single focal object",
-      "targetWidth": 512,
-      "targetHeight": 728,
-      "variants": []
+      "id": "dutch",
+      "name": "Dutch",
+      "concept": "Flooded canal cellar, windmill gears, wooden clogs on ledge, tulip in cracks",
+      "prompt": "16-bit pixel art RPG scene, flooded canal cellar deep underground with dark water covering the stone floor, massive wooden windmill gear mechanism mounted in back wall still slowly turning, a pair of carved wooden clogs resting on a dry stone ledge foreground, single bright orange tulip growing from a crack in the damp stone wall, iron pulleys and rope systems hanging from low timber ceiling, lantern reflected in still black water, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by muted terracotta deep teal and aged oak brown, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3367333334,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "egyptian_mythology",
+      "name": "Egyptian Mythology",
+      "concept": "Pharaoh's burial chamber, golden sarcophagus, hieroglyph walls, scarab beetles, blue torchlight",
+      "prompt": "16-bit pixel art RPG scene, pharaoh's burial chamber deep underground, massive golden sarcophagus on raised stone dais in foreground gleaming with blue torchlight, walls carved floor to ceiling with mythological scenes and ankh motifs, golden canopic jars arranged beside the sarcophagus, scarab beetles crawling across the sandy floor, lotus-topped pillars flanking the chamber, blue and gold funerary offerings piled in alcoves, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by deep lapis blue burnished gold and desert sand, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3197537280,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "famous_inventions",
+      "name": "Famous Inventions",
+      "concept": "Steampunk workshop dungeon, gears, tesla coils, blueprint scrolls, brass instruments",
+      "prompt": "16-bit pixel art RPG scene, steampunk inventor's workshop carved into dungeon stone, massive interlocking brass gears mounted on the back wall slowly turning, two tesla coils in foreground crackling with arcing electricity, blueprint scrolls and mechanical drawings pinned to wooden boards, scattered brass measuring instruments on workbench, glass tubes filled with glowing liquids, copper pipes running along ceiling, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by burnished brass electric blue and deep iron grey, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 492770006,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "famous_paintings",
+      "name": "Famous Paintings",
+      "concept": "Underground art vault, gilded frames on dungeon walls, easel with palette, paint-stained floor",
+      "prompt": "16-bit pixel art RPG scene, underground art vault with ornate gilded frames hanging on damp dungeon stone walls holding glowing canvases, a wooden easel with stretched canvas and paint palette on ledge foreground, paint-stained flagstone floor with colorful dried drips, velvet-draped pedestals holding sculpted busts, oil lanterns in bronze wall sconces casting warm light, rolled canvas tubes leaning against the wall, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by warm ochre deep burgundy and aged gilt gold, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 514318202,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "french",
+      "name": "French",
+      "concept": "Wine cellar catacombs, dusty bottles on stone racks, iron candelabra, fleur-de-lis carved wall",
+      "prompt": "16-bit pixel art RPG scene, wine cellar catacombs running deep underground, stone bottle racks stretching into darkness holding hundreds of dusty wine bottles foreground, tall wrought iron candelabra with dripping white candles casting warm amber glow, fleur-de-lis motif carved into an arched stone doorway, wine barrels stacked in the back alcove, cobwebs on vaulted stone ceiling, damp moss growing along the lower walls, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by rich burgundy aged stone and warm candlelight gold, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 443742771,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "german",
+      "name": "German",
+      "concept": "Deep mountain beer hall cavern, wooden kegs, iron steins, medieval banner on stone",
+      "prompt": "16-bit pixel art RPG scene, deep mountain beer hall cavern with timber-beamed ceiling hewn from rock, enormous wooden barrels stacked in alcoves background, iron drinking steins on a rough-hewn oak table foreground, a medieval heraldic banner hanging on stone wall, torch brackets of wrought iron along the cave walls, stone floor strewn with hay, narrow windows cut into rock showing darkness outside, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by warm chestnut brown deep amber and iron grey, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2552895289,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "greek_mythology",
+      "name": "Greek Mythology",
+      "concept": "Olympus throne cavern, lightning bolt in marble floor, golden laurel wreath, storm clouds above",
+      "prompt": "16-bit pixel art RPG scene, underground throne room of Olympian gods carved from white marble, a crackling lightning bolt embedded upright in the marble floor foreground radiating golden energy, golden laurel wreath resting on marble throne armrest, storm clouds roiling through a crack in the cavern ceiling with lightning flickering above, carved eagle frieze along the walls, marble steps leading up to the throne platform, scattered golden coins and laurel leaves on the floor, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by marble white electric gold and stormy grey, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3677268146,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "human_anatomy",
+      "name": "Human Anatomy",
+      "concept": "Alchemist laboratory dungeon, anatomical model, glass specimen jars, medical tomes",
+      "prompt": "16-bit pixel art RPG scene, alchemist's laboratory carved into dungeon stone, articulated anatomical model standing on wooden base foreground showing internal structure, shelves lined with glass specimen jars containing glowing contents, heavy medical tomes stacked on stone table, bubbling alembic with orange liquid over a small brazier, brass magnifying lens on an arm mount, candles and oil lanterns on every surface, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by pale parchment amber glow and dark walnut brown, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1913352290,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "korean",
+      "name": "Korean",
+      "concept": "Underground hanok palace, celadon vases, paper screen doors with shadows, moon jar pedestal",
+      "prompt": "16-bit pixel art RPG scene, underground hanok palace chamber with lacquered timber pillars and tiled ceiling, tall celadon ceramic vases in foreground glowing with inner blue-green luminescence, ornate paper screen doors with delicate shadow silhouettes cast by lanterns behind them, a large white moon jar on a carved stone pedestal center stage, dried flower arrangements in carved niches, warm yellow lantern light filtering through the screens, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by celadon blue-green ivory white and warm lantern amber, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 559079184,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "mammals_world",
+      "name": "Mammals of the World",
+      "concept": "Natural history museum basement, taxidermy displays, specimen drawers, oil lanterns",
+      "prompt": "16-bit pixel art RPG scene, natural history museum basement storage vault underground, taxidermy animal displays in glass cases foreground catching dust-filled lamplight, rows of wooden specimen drawer cabinets stretching into the dark background, oil lanterns on iron posts casting pools of warm light, mounted antlers and skulls on stone walls, velvet-lined display trays on a central table, crates and packing straw visible in corners, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by warm mahogany aged brass and shadow grey, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2354615742,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "medieval_world",
+      "name": "Medieval World",
+      "concept": "Castle dungeon throne room, tapestry, crossed swords above fireplace, iron torch brackets",
+      "prompt": "16-bit pixel art RPG scene, great hall of a castle dungeon with roaring stone fireplace as centerpiece, crossed longswords mounted above the mantle foreground, a faded heraldic tapestry hanging on the left stone wall, iron torch brackets with burning torches along the walls, a heavy oak throne on a dais at back, suits of empty plate armor standing at attention flanking the throne, rushes and bones scattered on the stone floor, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by deep iron grey warm firelight orange and aged teal, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 4279946404,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "music_history",
+      "name": "Music History",
+      "concept": "Underground concert hall, pipe organ in stone alcove, music sheets, violin on velvet chair",
+      "prompt": "16-bit pixel art RPG scene, underground concert hall carved from stone with grand pipe organ built into a vaulted alcove background, massive gilded organ pipes rising to the ceiling, a violin resting on a red velvet chair foreground with scattered music sheets on the floor around it, ornate candelabras flanking the organ, carved musical motifs along the stone balcony railing, faint sound waves etched as glowing arcs in the stone ceiling, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by deep burgundy aged ivory and burnished gold, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2208095201,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "nasa_missions",
+      "name": "NASA Missions",
+      "concept": "Retro mission control bunker, vintage screens with orbital data, model rocket, star maps",
+      "prompt": "16-bit pixel art RPG scene, retro NASA mission control bunker hewn into underground stone, banks of vintage cathode ray monitors displaying glowing orbital trajectory lines in green phosphor foreground, a scale model rocket on a display stand center stage, rolled star maps pinned to a corkboard wall, analog clock gauges and toggle switches on instrument panels, fluorescent tube lights flickering overhead, steel blast door with vault wheel visible in background, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by phosphor green dark gunmetal and warm amber console light, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2023395336,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "norse_mythology",
+      "name": "Norse Mythology",
+      "concept": "Viking mead hall in mountain, Mjolnir on wooden table, rune-carved pillars, aurora through smoke hole",
+      "prompt": "16-bit pixel art RPG scene, great Viking mead hall carved deep inside a mountain, a stone-headed war hammer resting on a scarred oak table foreground flanked by iron drinking horns, massive rune-carved wooden pillars holding up the vaulted timber ceiling, aurora borealis light shimmering through a circular smoke hole far above, animal pelts and shields hanging on the stone walls, fire pit glowing amber at center, ravens perched in the shadowed rafters, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by deep forest green icy teal and warm firelight amber, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1937062672,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "periodic_table",
+      "name": "Periodic Table",
+      "concept": "Alchemist's element chamber, bubbling potions, glowing stone tablets with element symbols",
+      "prompt": "16-bit pixel art RPG scene, alchemist's element chamber deep underground, rows of crystal flasks bubbling with differently colored glowing liquids on stone shelves foreground, large stone tablets on wooden easels glowing with carved geometric element sigils, a central stone workbench with mortar and crucible over flame, hanging bundles of dried herbs and mineral crystals, smoke rising to the vaulted ceiling, elemental fire and ice motifs carved into arch above doorway, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by vivid emerald deep violet and molten orange, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2628010286,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "solar_system",
+      "name": "Solar System",
+      "concept": "Ancient underground planetarium, brass orrery with spinning planets, constellation ceiling, meteorite pedestal",
+      "prompt": "16-bit pixel art RPG scene, ancient stone planetarium deep underground, enormous brass orrery at center with glowing planet spheres on mechanical arms foreground slowly orbiting a radiant sun core, constellation map carved and glowing on the domed stone ceiling, a meteorite specimen on a velvet-topped stone pedestal to the side, copper telescoping instruments along the curved walls, dim blue starfield light filtering through a cracked ceiling, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by deep space navy warm brass and solar gold, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1654414106,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "spanish",
+      "name": "Spanish",
+      "concept": "Moorish palace cellar, horseshoe arches, ceramic tiles, flamenco guitar on cushion, orange tree light",
+      "prompt": "16-bit pixel art RPG scene, Moorish palace underground cellar with elegant horseshoe arches framing doorways carved from pale stone, intricately patterned ceramic floor tiles in blue and white, a flamenco guitar resting on an embroidered cushion foreground, a small orange tree in a terracotta pot bathed in a single shaft of warm light from above, a carved stone fountain dry in the corner, arabesque plaster carvings along the arched ceiling, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by terracotta orange deep cobalt blue and warm ivory, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1606490947,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "us_presidents",
+      "name": "US Presidents",
+      "concept": "Secret oval office bunker, presidential seal on floor, vintage desk with quill, flag in shadow",
+      "prompt": "16-bit pixel art RPG scene, secret underground oval office bunker carved into stone, the great presidential seal mosaic on the stone floor foreground, a heavy mahogany desk with an ink well and feather quill in center, a tattered national flag standing in shadow beside the desk, framed portraits on curved stone walls lit by desk lamp, a red emergency telephone on the desk corner, low vaulted stone ceiling with a single bare bulb, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by deep navy red and aged parchment gold, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3011669277,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "us_states",
+      "name": "US States",
+      "concept": "Frontier saloon basement, rustic wooden bar, vintage map on wall, oil lantern, cowboy hat on hook",
+      "prompt": "16-bit pixel art RPG scene, frontier saloon basement storage room underground, rough-hewn wooden bar with whiskey bottles on shelves foreground, an aged hand-drawn continental map pinned to the wood-plank wall, a dusty cowboy hat hanging on an iron hook, oil lantern swinging on a chain from low ceiling beams, barrels and wooden crates stacked in shadows, sawdust on the floor, an old wanted poster on the wall rendered as illegible silhouette, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by warm sepia dusty ochre and weathered wood brown, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3069858997,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "world_capitals",
+      "name": "World Capitals",
+      "concept": "Underground map room, massive globe at center, compass rose floor, embassy flags along walls",
+      "prompt": "16-bit pixel art RPG scene, underground map room of an ancient intelligence organization, a massive antique globe on a brass stand at center foreground with glowing route lines across its surface, a large compass rose mosaic inlaid in the stone floor, rows of colorful embassy flag banners lining the arched stone walls, parchment world maps spread on angled drafting tables, wax candles and magnifying glasses on every surface, arched ceiling vault above, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by aged parchment gold deep oak brown and diplomatic navy, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1921767663,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "world_countries",
+      "name": "World Countries",
+      "concept": "Explorer's vault, open treasure chest with world artifacts, compass, antique globe, travel journals",
+      "prompt": "16-bit pixel art RPG scene, explorer's underground vault bursting with treasures from around the world, an open wooden chest overflowing with cultural artifacts and exotic curios foreground, a brass compass and antique globe on a side table, stacks of leather-bound travel journals tied with rope, woven baskets pottery and carved masks arranged on stone shelves, a world map pinned to the wall rendered in silhouette, oil lantern light casting warm pools, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by warm teak brown burnt umber and aged ivory, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 898661859,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "world_cuisines",
+      "name": "World Cuisines",
+      "concept": "Medieval kitchen dungeon, bubbling cauldron over fire, spice jars on shelves, hanging herbs and garlic",
+      "prompt": "16-bit pixel art RPG scene, medieval underground kitchen dungeon with roaring stone hearth, a large iron cauldron bubbling over fire foreground with aromatic steam rising, wooden shelves covering the back wall lined with ceramic spice jars and clay pots, bundles of dried herbs and garlic braids hanging from iron hooks in the low ceiling, a heavy oak cutting table with cleavers and ladles, copper pans stacked in the corner, rushes on the stone floor, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by warm terracotta charcoal grey and herb garden green, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1792318043,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "world_flags",
+      "name": "World Flags",
+      "concept": "Diplomatic vault, ornate flag stands in stone alcove, wax-sealed scrolls, golden treaty pen",
+      "prompt": "16-bit pixel art RPG scene, underground diplomatic vault with a ceremonial stone alcove housing a row of tall ornate flag stands topped with golden finials foreground, wax-sealed scroll bundles stacked on a carved stone table, a golden ceremonial quill pen in an inkwell at center, candelabras with many candles flanking the alcove, a heavy iron vault door ajar in the background, red velvet rope cordoning the treaty table, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by diplomatic crimson burnished gold and pale stone, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1311970338,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "world_war_ii",
+      "name": "World War II",
+      "concept": "Wartime command bunker, strategy table with map, radio equipment, military medals in case, dim light",
+      "prompt": "16-bit pixel art RPG scene, wartime underground command bunker with thick concrete walls, a large strategy table center foreground spread with a battle map marked with pins and lines, a bulky radio transceiver on a side desk with headphones hanging off it, a glass case on the wall displaying military medals and ribbons, a single bare incandescent bulb hanging overhead casting harsh shadows, sandbags stacked by a reinforced door, gas mask on hook beside the entrance, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by olive drab khaki tan and shadow black, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 914815012,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "world_wonders",
+      "name": "World Wonders",
+      "concept": "Treasure room with wonder replicas on pedestals, golden light, ancient stone archways",
+      "prompt": "16-bit pixel art RPG scene, underground treasure room with ancient stone archways framing glowing alcoves, miniature replica monuments displayed on marble pedestals foreground bathed in golden light shafts, carved stone archways with vine and leaf motifs along the walls, a domed ceiling with cracked frescoes, scattered golden coins and gem stones on the flagstone floor, pillar-mounted braziers burning with blue-gold flame, deep shadows in the vaulted recesses beyond the alcoves, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by warm gold deep stone grey and luminous teal, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 4045300499,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     }
   ],
   "enemy_power_icons": [
@@ -16463,6 +16875,176 @@
           "seed": 522607225,
           "status": "done",
           "accepted": true
+        }
+      ]
+    }
+  ],
+  "camp_pets": [
+    {
+      "id": "cat_idle",
+      "name": "Cat Idle",
+      "concept": "Pixel art cat idle animation spritesheet",
+      "prompt": "Pixel art horizontal spritesheet strip of a small orange tabby cat idle animation, 6 frames each exactly 64x64 pixels side by side, the cat is sitting relaxed and occasionally blinking, subtle breathing motion, 16-bit RPG fantasy game style, warm earthy tones, transparent background, clean pixel art, consistent style across all frames, NO text NO words NO letters",
+      "targetWidth": 384,
+      "targetHeight": 64,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1361441718,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 2305488093,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 3000545493,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "cat_walk",
+      "name": "Cat Walk",
+      "concept": "Pixel art cat walk cycle animation spritesheet",
+      "prompt": "Pixel art horizontal spritesheet strip of a small orange tabby cat walk cycle animation, 8 frames each exactly 64x64 pixels side by side, the cat walks to the right with a cute bouncy gait showing all four legs moving, 16-bit RPG fantasy game style, warm earthy tones, transparent background, clean pixel art, consistent style across all frames, NO text NO words NO letters",
+      "targetWidth": 512,
+      "targetHeight": 64,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1683129023,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 3225797677,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 2790735876,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "cat_sit",
+      "name": "Cat Sit",
+      "concept": "Pixel art cat sitting upright animation spritesheet",
+      "prompt": "Pixel art horizontal spritesheet strip of a small orange tabby cat sitting upright animation, 4 frames each exactly 64x64 pixels side by side, the cat sits upright with its tail gently swishing back and forth, alert ears, 16-bit RPG fantasy game style, warm earthy tones, transparent background, clean pixel art, consistent style across all frames, NO text NO words NO letters",
+      "targetWidth": 256,
+      "targetHeight": 64,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 59544779,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 476654451,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 1962559702,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "cat_lick",
+      "name": "Cat Lick",
+      "concept": "Pixel art cat grooming animation spritesheet",
+      "prompt": "Pixel art horizontal spritesheet strip of a small orange tabby cat grooming animation, 6 frames each exactly 64x64 pixels side by side, the cat licks its paw and washes its face in a cute self-grooming cycle, 16-bit RPG fantasy game style, warm earthy tones, transparent background, clean pixel art, consistent style across all frames, NO text NO words NO letters",
+      "targetWidth": 384,
+      "targetHeight": 64,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3250714450,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1810991549,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 2,
+          "seed": 1744301467,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "cat_sleep",
+      "name": "Cat Sleep",
+      "concept": "Pixel art cat sleeping animation spritesheet",
+      "prompt": "Pixel art horizontal spritesheet strip of a small orange tabby cat sleeping animation, 4 frames each exactly 64x64 pixels side by side, the cat is curled up asleep with gentle breathing rise and fall motion, very peaceful and cozy, 16-bit RPG fantasy game style, warm earthy tones, transparent background, clean pixel art, consistent style across all frames, NO text NO words NO letters",
+      "targetWidth": 256,
+      "targetHeight": 64,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 542046808,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 303181995,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 2641657694,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "cat_react",
+      "name": "Cat React",
+      "concept": "Pixel art cat startled reaction animation spritesheet",
+      "prompt": "Pixel art horizontal spritesheet strip of a small orange tabby cat startled reaction animation, 4 frames each exactly 64x64 pixels side by side, the cat perks its ears up in surprise then does a cute little jump, wide eyes, 16-bit RPG fantasy game style, warm earthy tones, transparent background, clean pixel art, consistent style across all frames, NO text NO words NO letters",
+      "targetWidth": 256,
+      "targetHeight": 64,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2084501478,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 1279358298,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 1294525178,
+          "status": "done",
+          "accepted": false
         }
       ]
     }

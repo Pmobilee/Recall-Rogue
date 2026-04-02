@@ -23,6 +23,28 @@
   let rafId = 0;
   const isTouchDevice = typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches;
 
+  // Parallax image state
+  let hasImage = $state(false);
+  let imageUrl = $state('');
+
+  // Language family prefixes — children share the parent's deck front art
+  const PARENT_PREFIXES = ['japanese', 'chinese', 'korean', 'spanish', 'french', 'german', 'dutch', 'czech'];
+
+  function resolveDeckFrontPath(deckId: string): string {
+    // Strip synthetic "all:" prefix used by the ALL tab for language family representatives
+    const id = deckId.startsWith('all:') ? deckId.slice(4) : deckId;
+    const parent = PARENT_PREFIXES.find(p => id.startsWith(p + '_'));
+    return `/assets/sprites/deckfronts/${parent ?? id}.webp`;
+  }
+
+  $effect(() => {
+    const path = resolveDeckFrontPath(deck.id);
+    const img = new Image();
+    img.onload = () => { hasImage = true; imageUrl = path; };
+    img.onerror = () => { hasImage = false; };
+    img.src = path;
+  });
+
   function handlePointerMove(e: PointerEvent) {
     if (isTouchDevice || rafId) return;
     rafId = requestAnimationFrame(() => {
@@ -133,7 +155,16 @@
     "
   >
     <!-- Art Area -->
-    <div class="art-area" class:grayscale={!isAvailable}>
+    <div class="art-area" class:grayscale={!isAvailable} class:has-image={hasImage}>
+      {#if hasImage}
+        <div class="parallax-wrap">
+          <!-- Background layer: full image, shifts against pointer -->
+          <img class="plx-layer plx-bg" src={imageUrl} alt=""
+            style="transform: translate({(shineX - 50) * -0.08}%, {(shineY - 50) * -0.08}%) scale(1.08)" />
+          <!-- Foreground layer disabled — depth-cut approach looked like a bad cutout -->
+        </div>
+      {/if}
+
       <span class="deck-title-3d">{deck.name}</span>
 
       <!-- Status Badge -->
@@ -220,7 +251,7 @@
     cursor: not-allowed;
   }
 
-  /* Shine overlay */
+  /* Shine overlay — always on top (z-index 10) */
   .shine-overlay {
     position: absolute;
     inset: 0;
@@ -266,6 +297,48 @@
     filter: grayscale(1);
   }
 
+  /* When a deck front image is present: bottom-center, floating in 3D */
+  .has-image .deck-title-3d {
+    position: absolute;
+    bottom: calc(8px * var(--layout-scale, 1));
+    left: 50%;
+    transform: translateX(-50%) translateZ(calc(40px * var(--layout-scale, 1)));
+    width: 90%;
+    color: #ffffff;
+    text-shadow:
+      calc(-2px * var(--layout-scale, 1)) 0 0 rgba(0, 0, 0, 0.9),
+      calc(2px * var(--layout-scale, 1)) 0 0 rgba(0, 0, 0, 0.9),
+      0 calc(-2px * var(--layout-scale, 1)) 0 rgba(0, 0, 0, 0.9),
+      0 calc(2px * var(--layout-scale, 1)) 0 rgba(0, 0, 0, 0.9),
+      0 calc(4px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.7),
+      0 calc(8px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.4);
+    filter: drop-shadow(0 calc(2px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.8));
+  }
+
+  /* Parallax image layers — rendered behind title and badge (z-index 0/1) */
+  .parallax-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: inherit;
+    z-index: 0;
+  }
+
+  .plx-layer {
+    position: absolute;
+    inset: calc(-12px * var(--layout-scale, 1));
+    width: calc(100% + calc(24px * var(--layout-scale, 1)));
+    height: calc(100% + calc(24px * var(--layout-scale, 1)));
+    object-fit: cover;
+    pointer-events: none;
+    transition: transform 0.12s ease-out;
+  }
+
+  .plx-fg {
+    z-index: 1;
+  }
+
+  /* Deck title floats above parallax layers */
   .deck-title-3d {
     font-size: calc(20px * var(--text-scale, 1));
     font-weight: 900;
@@ -289,8 +362,13 @@
     word-break: normal;
     hyphens: none;
     max-width: 92%;
+    position: relative;
+    z-index: 2;
   }
 
+  /* text-shadow and color for has-image title are in the combined rule above */
+
+  /* Badge stays absolutely positioned in art area, floats above parallax */
   .badge {
     position: absolute;
     top: calc(8px * var(--layout-scale, 1));
@@ -301,6 +379,12 @@
     padding: calc(3px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
     border-radius: calc(4px * var(--layout-scale, 1));
     letter-spacing: 0.05em;
+    z-index: 2;
+  }
+
+  /* When image is present, badges also float forward in 3D space */
+  .has-image .badge {
+    transform: translateZ(calc(30px * var(--layout-scale, 1)));
   }
 
   .badge-new {
@@ -397,6 +481,10 @@
     }
     .shine-overlay {
       display: none;
+    }
+    /* Keep image visible but disable parallax movement */
+    .plx-layer {
+      transition: none !important;
     }
   }
 </style>

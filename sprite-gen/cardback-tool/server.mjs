@@ -1714,7 +1714,7 @@ const ARTSTUDIO_ITEMS_PATH = resolve(__dirname, 'artstudio-items.json');
 const ARTSTUDIO_OUTPUT_DIR = resolve(__dirname, 'artstudio-output');
 const ARTSTUDIO_CATEGORIES = [
   'cardframes', 'enemies', 'cardart', 'backgrounds', 'relicicons',
-  'noncombat', 'mysteryrooms', 'rewardrooms', 'deckfronts',
+  'noncombat', 'mysteryrooms', 'rewardrooms', 'deckfronts', 'camp_pets',
   // Icon categories (all use ComfyUI + ISNet bg removal)
   'cardtype_icons', 'domain_icons', 'status_icons', 'intent_icons',
   'reward_icons', 'nav_icons', 'archetype_icons',
@@ -1731,7 +1731,6 @@ const ICON_COMFYUI_CONFIG = { defaultWidth: 512, defaultHeight: 512, bgRemoval: 
 
 const COMFYUI_CATEGORIES = {
   relicicons: { defaultWidth: 512, defaultHeight: 512, bgRemoval: 'workflow', finalWidth: 512, finalHeight: 512, resizeKernel: 'nearest' },
-  deckfronts: { defaultWidth: 512, defaultHeight: 728, bgRemoval: false,      finalWidth: 512, finalHeight: 728, resizeKernel: 'nearest' },
   // All icon categories share same config
   cardtype_icons:  ICON_COMFYUI_CONFIG,
   domain_icons:    ICON_COMFYUI_CONFIG,
@@ -1878,6 +1877,7 @@ function checkDeployed(category, itemId) {
     currency_icons:    `public/assets/sprites/icons/icon_currency_${itemId}.png`,
     relicicons:        `public/assets/sprites/icons/icon_relic_${itemId}.png`,
     enemies:           `public/assets/sprites/enemies/${itemId}.png`,
+    deckfronts:        `public/assets/sprites/deckfronts/${itemId}.webp`,
     audio_loops:       `public/assets/audio/sfx/loops/${itemId}.m4a`,
     audio_combat:      `public/assets/audio/sfx/combat/${itemId}.m4a`,
     audio_quiz:        `public/assets/audio/sfx/quiz/${itemId}.m4a`,

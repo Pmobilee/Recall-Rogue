@@ -1,8 +1,8 @@
 # UI Component Catalog
 
 > **Purpose:** Gameplay-critical Svelte components: Combat UI, Quiz & Study, Hub & Navigation, Dungeon & Map, Card Management, Rooms & Events, Rewards & Progression, Relics.
-> **Last verified:** 2026-04-01
-> **Source files:** `src/ui/components/**/*.svelte` (186 files), `src/CardApp.svelte`, `src/ui/effects/hubAnimationLoop.ts`, `src/ui/effects/hubLightingState.ts`, `src/ui/effects/HubGlowEffect.ts`, `src/ui/effects/CampfireEffect.ts`
+> **Last verified:** 2026-04-02
+> **Source files:** `src/ui/components/**/*.svelte` (188 files), `src/CardApp.svelte`, `src/ui/effects/hubAnimationLoop.ts`, `src/ui/effects/hubLightingState.ts`, `src/ui/effects/HubGlowEffect.ts`, `src/ui/effects/CampfireEffect.ts`, `src/ui/effects/spritesheetPlayer.ts`, `src/ui/effects/petBehavior.ts`
 
 > **See also:** [`components-social.md`](components-social.md) — Social & Multiplayer, Profile & Account, Auth & Legal, Monetization & Seasons, Onboarding & Cutscenes, Utility & Effects.
 
@@ -83,7 +83,7 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 | `StudyQuizOverlay.svelte` | Rest-room study quiz: boss-quiz–style questions to upgrade card charges. Shows inline `SRS +` / `SRS -` indicator (green/red, 0.65 opacity, scaled `10px`) alongside correct/wrong feedback text. |
 | `MasteryChallengeOverlay.svelte` | Mastery challenge room: timed quiz sequence for card mastery rewards. Calls `ambientAudio.setContext('mastery_challenge')` on `$effect` when challenge is set |
 | `ScholarQuizPanel.svelte` | Scholar-challenge run quiz panel with extended question formats |
-| `EventQuiz.svelte` | Quiz embedded inside mystery/special events for branching outcomes |
+| `EventQuiz.svelte` | Quiz embedded inside mystery/special events for branching outcomes. Choice buttons have `data-testid="quiz-answer-{i}"` (0-indexed) for automated testing — matches pattern used in `QuizOverlay.svelte`. |
 | `GrammarTypingInput.svelte` | Free-text typing input for grammar deck tilde-fragment answers |
 | `WordHover.svelte` | Hoverable word revealing dictionary definition on hover/tap |
 | `StudySession.svelte` | Standalone study session for the Study Temple screen. After player taps a rating button, shows a floating `SRS +` (green) or `SRS -` (red) label above the rating buttons for the 300ms pause before advancing. State: `srsIndicator: '+' | '-' | null`. |
@@ -104,6 +104,7 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 | `CampHudOverlay.svelte` | HUD overlay on the hub: streak, gold, XP progress bar |
 | `CampSpriteButton.svelte` | Clickable NPC sprite button in the hub scene. Props: `spriteOffsetX`/`spriteOffsetY` for CSS translate repositioning; `brightness` (default 1.0) for campfire lighting via `--sprite-brightness` CSS custom property. `fireShadow` prop removed 2026-04-01 (full-frame sprites caused alpha-channel blob halos). `.sprite-hitbox` uses `cursor: inherit` (updated 2026-04-01, was `cursor: pointer`) so the hub `cursor: none` is not overridden by child buttons — the custom glow cursor IS the hover feedback when effects are active. See "Hub Lighting" section below. |
 | `CampSpeechBubble.svelte` | Speech bubble overlay for hub NPC characters |
+| `AnimatedPet.svelte` | Canvas-based animated hub pet. Renders 64×64 px horizontal spritesheet strips for 6 `PetBehavior` states (`idle`, `walk`, `sit`, `lick`, `sleep`, `react`) driven by the `petBehavior.ts` state machine and the shared 30fps `hubAnimationLoop`. Position follows `petState.position` (% of `.hub-center` container). Walk bob: sine-wave vertical offset `sin(now * 0.006) * 2` px during walk. Flip: `facingLeft` passed as `flipX` to `drawSpritesheetFrame`. Props: `species?: PetSpecies` (default `'cat'`), `disableEffects?: boolean` (reduces to static frame 0 at campfire, no loop), `onclick?: () => void`. Click triggers `triggerReact()` then the callback. Minimum tap target 44×44px hitbox button overlay. Graceful degradation: if a behavior spritesheet fails to load, that behavior renders nothing. z-index 35. CSS size `calc(64px * var(--layout-scale, 1))`. Replaces `CampSpriteButton` pet in `HubScreen.svelte` (both landscape and portrait) — 2026-04-02. |
 | `CampfireCanvas.svelte` | Canvas-based animated campfire flicker effect. CSS size is `calc(200px * var(--layout-scale, 1))` × `calc(250px * var(--layout-scale, 1))`. **z-index: 26** — above campfire sprite (z-25) so ember particles render on top of the fire art. On mount, canvas pixel dimensions are set from `clientWidth`/`clientHeight`; a `ResizeObserver` keeps them in sync. Scale factor (`clientWidth / 200`) is passed to `CampfireEffect` constructor and updated via `setScale()`. |
 | `HubGlowCanvas.svelte` | Two-canvas hub glow system (updated 2026-04-01 perf pass): (1) `position: fixed` canvas with `mix-blend-mode: screen` for additive warm orange radial glow; (2) sibling `<canvas class="hub-vignette-canvas">` with `mix-blend-mode: normal` for vignette darkening — replaces the old CSS `<div>` whose reactive `radial-gradient` was being reparsed by Chrome each frame. Props: `campfireCenterFn: () => {x, y}` (absolute viewport pixels), `zIndex?: number` (default 1; vignette canvas gets `zIndex + 1`), `mouseX?: number` / `mouseY?: number` — forwarded to `HubGlowEffect.setMousePosition()`. No longer imports `getHubLightingStore()` — vignette gradient is drawn directly by `HubGlowEffect` onto the second canvas each frame. |
 | `HubFireflies.svelte` | Ambient firefly particles driven by **shared-loop sine-wave motion** (updated 2026-04-01 perf pass). Uses `hubAnimationLoop.ts` shared 30fps loop instead of own RAF. Spawns 15 fireflies on mount; keeps count stable by respawning dead ones immediately. **Motion:** each firefly has per-fly `phase`, `ampX`/`ampY`, `freqX`/`freqY`, `depthLayer` (0.5–1.0). Position updated every 30fps tick; Svelte `tick` $state only incremented every 3rd frame (~10fps) to reduce 15-element DOM style-recalc cascade. **Lifecycle:** fadingIn 600ms → alive 4–8s → fadingOut 800ms → dead → respawn. **Alpha:** `maxAlpha = 0.4 + depthLayer * 0.4` (0.6–0.8). **No CSS keyframes** — all motion is JS-driven. **Spawn:** full-screen excluding campfire zone 40–60%x / 55–75%y. **Size:** `(size * depthLayer)px * var(--layout-scale, 1)`. **Reduce-motion:** static positions, no callback registration. |
@@ -297,7 +298,7 @@ Node blur and opacity applied via CSS `filter: blur(...)` and `opacity: ...` on 
 | `CardBrowser.svelte` | Card collection browser with filtering and sorting in the Library |
 | `CardExpanded.svelte` | Full-screen expanded card view with all details and fact text |
 | `CardPickerOverlay.svelte` | Pick a specific card from the deck (e.g., transmute target) |
-| `DeckTileV2.svelte` | Tile component for a curated deck in the selection grid |
+| `DeckTileV2.svelte` | Tile component for a curated deck in the selection grid. 3D tilt on hover, shine overlay, deal animation. Single-image CSS parallax when `/assets/sprites/deckfronts/{id}.webp` is found (single image shifts against pointer, 0.08% multiplier, scale 1.08). When `hasImage` is true, adds `.has-image` class: title uses `position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%) translateZ(40px)` (bottom-center of art area, floating in 3D space), and badges float at `translateZ(30px)`. |
 | `DeckDetailModal.svelte` | Modal showing deck contents, stats, and subcategory breakdown |
 | `DeckFilterChips.svelte` | Filter chips for filtering decks by domain/language/tag |
 | `DeckSearchBar.svelte` | Search bar for the deck browser |
@@ -310,6 +311,53 @@ Node blur and opacity applied via CSS `filter: blur(...)` and `opacity: ...` on 
 | `PlaylistBar.svelte` | Horizontal bar showing the active study playlist |
 | `PlaylistPickerPopup.svelte` | Popup for choosing a study playlist |
 | `LanguageGroupHeader.svelte` | Section header grouping language deck entries by family |
+
+### DeckTileV2 parallax (single-image approach)
+
+When `/assets/sprites/deckfronts/{deckId}.webp` exists (checked at runtime via `Image.onload`), the art area renders a single background image with pointer-driven parallax shift instead of just the plain CSS gradient.
+
+**Parallax formula:** `(pointer - center) * -0.08` % translation against pointer direction. The image is scaled to 1.08× to prevent edge gaps during the shift.
+
+The combined effect has three layers of motion:
+1. Image shifts against pointer (the parallax)
+2. Card tilts ±24° on X/Y axes (pre-existing 3D rotation driven by pointer position)
+3. Title floats at `translateZ(40px)`, visually separating from the image during tilt
+
+> **Why not fg/bg depth layers?** A two-layer depth approach (foreground masked by `_depth.webp` luminance, shifting independently from background) was prototyped and rejected. The masked foreground produced a visible "bad cutout moving over the other" artifact. Depth maps are still generated and stored as `{id}_depth.webp` in case the approach is revisited.
+
+**Image path resolution** uses `PARENT_PREFIXES` (japanese, chinese, korean, spanish, french, german, dutch, czech). A deck id of `japanese_n5_vocab` resolves to `deckfronts/japanese.webp`. The Study Temple ALL tab uses synthetic IDs with an `all:` prefix (e.g., `all:japanese`) — the resolver strips this prefix before lookup, so no separate image is needed for ALL-tab entries.
+
+**Z-order inside `.art-area`:**
+- `.parallax-img` — z-index 0
+- `.deck-title-3d`, `.badge` — z-index 2
+- `.shine-overlay` (on `.deck-tile`, covers whole card) — z-index 10
+
+**Reduced motion** — the parallax translation has `transition: none !important` in the reduced-motion media query. The static image remains visible; only the movement is disabled.
+
+The CSS gradient `background-image` on `.art-area` is always present as a fallback; the parallax image renders on top when available.
+
+### DeckTileV2 floating title (has-image mode)
+
+When `hasImage` is `true`, the `.art-area` receives the `.has-image` class which activates a 3D floating title effect:
+
+**Layout change** —  uses absolute positioning instead of flex layout to anchor the title at bottom-center of the art area:
+
+
+
+The  plus  centers the title horizontally over the art, independent of its text width. This replaces the previous  approach, which left-aligned the title when text was narrower than the container.
+
+**Title depth layer** — the  in the transform places the text 40px closer to the viewer in 3D space. Because  has , when the card tilts on hover (±24° rotation) the text visually separates from the background image — the stronger the tilt, the more pronounced the floating effect.
+
+**Text styling override** — The default 3D stacked text-shadow (8 layers, used on text-only tiles) is replaced by two focused shadow groups:
+- Four directional 2px offsets at 0.9 opacity — creates a crisp pixel outline around each letter
+- Two soft drop shadows (4px and 8px) at 0.7/0.4 opacity — simulates the shadow cast by text floating above the card surface
+- `color: #ffffff` (full white, not the 0.95 alpha default)
+- `filter: drop-shadow(...)` for an additional outer glow
+
+**Badge depth layer** — `.has-image .badge` applies `transform: translateZ(calc(30px * var(--layout-scale, 1)))` — slightly less depth than the title so the badge and title have distinct Z planes.
+
+**Non-image tiles** — The original centered layout and stacked text-shadow are unchanged when `hasImage` is `false`. Both code paths are fully independent.
+
 
 ---
 
