@@ -1,7 +1,7 @@
 # Curated Deck System
 
 > **Purpose:** Explains what curated decks are, how they are structured, loaded, registered, and how player progression is tracked against them.
-> **Last verified:** 2026-04-02
+> **Last verified:** 2026-04-03
 > **Source files:** `src/data/curatedDeckStore.ts`, `src/data/deckRegistry.ts`, `src/data/deckFactIndex.ts`, `src/data/curatedDeckTypes.ts`, `src/services/deckManager.ts`, `src/services/deckOptionsService.ts`, `src/services/deckProgressService.ts`, `data/decks/manifest.json`
 
 ---
@@ -55,10 +55,10 @@ Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
 | `quizMode` | no | `'text'`, `'image_question'`, or `'image_answers'` |
 | `volatile` | no | `true` if the answer may become outdated |
 
-**partOfSpeech coverage:** As of 2026-04-02 all vocabulary decks (Japanese N1–5, Korean TOPIK 1–2, Chinese HSK 1–6, Spanish A1–B2, French A1–B2, German A1–B2, Dutch A1–B2, Czech A1–B2) have `partOfSpeech` on every fact. Values are lowercase: noun, verb, adjective, adverb, pronoun, preposition, conjunction, interjection, determiner, particle, number, phrase, expression.
+**partOfSpeech coverage:** As of 2026-04-03 all vocabulary decks (Japanese N1–5, Korean TOPIK 1–2, Chinese HSK 1–6, Spanish A1–B2, French A1–B2, German A1–B2, Dutch A1–B2, Czech A1–B2) have `partOfSpeech` on every fact. Values are lowercase: noun, verb, adjective, adverb, pronoun, preposition, conjunction, interjection, determiner, particle, number, phrase, expression. Note: japanese_n4 had 49 facts missing the field (facts with POS "word" in explanation) — backfilled 2026-04-03 using the same regex as `backfill-pos-field.mjs`.
 
 Two backfill scripts produced full coverage:
-- `scripts/backfill-pos-field.mjs` — Japanese/Korean source-data pass (2026-04-02). Maps JLPT `word` POS label to `phrase` on ingest.
+- `scripts/backfill-pos-field.mjs` — Japanese/Korean source-data pass (2026-04-02). Maps JLPT `word` POS label to `phrase` on ingest. NOTE: skips japanese_n4 (incorrectly believed complete); n4 was separately fixed 2026-04-03 (49 facts, inline patch).
 - `scripts/backfill-pos-from-english.mjs` — English-heuristic pass (2026-04-02). Infers POS from the English `correctAnswer` field for the 26 non-Japanese/Korean language decks (18,650 facts newly tagged, 100% final coverage across 26,454 facts). Rules fire in priority order: grammar-metadata suffixes (“completion marker” → particle), `to `–prefix (verb), exact-match word lists (pronouns, prepositions, conjunctions, adverbs, interjections, determiners), article prefix (`a/an/the ` → noun), morphological noun suffixes (-tion/-ness/-ment/-ity/-ance/-ence/-er/-or etc.), adjective suffixes (-ous/-ful/-al/-ic/-ive/-able), -ing suffix (verb, with noun exceptions list), -ed suffix (verb), number words, default → noun.
 
 **Non-standard fields that must NOT appear in final decks:** `statement`, `wowFactor`, `tags`, `ageGroup` — these are WIP-generation artifacts and must be stripped before a deck is live.
@@ -93,9 +93,9 @@ The 4 `world_wonders` architecture files total 195 facts in the live deck. They 
 
 ## Deck Front Images
 
-All 63 curated decks have pixel art RPG dungeon cover art as of 2026-04-02. Images are served from `public/assets/sprites/deckfronts/` and rendered by `DeckTileV2.svelte` with a CSS parallax hover effect.
+All 65 curated decks have pixel art RPG dungeon cover art as of 2026-04-02. Images are served from `public/assets/sprites/deckfronts/` and rendered by `DeckTileV2.svelte` with a CSS parallax hover effect.
 
-**33 unique images** cover all 63 decks. Language sub-decks (e.g. `japanese_n5_vocab`, `japanese_n4`) share their parent image (e.g. `japanese.webp`).
+**33 unique images** cover all 65 decks. Language sub-decks (e.g. `japanese_n5_vocab`, `japanese_n4`) share their parent image (e.g. `japanese.webp`).
 
 ### Naming Convention
 
@@ -500,6 +500,8 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 | `dinosaurs` | `clade_names` | 5 | 6 |
 
 **Validation:** All 12 modified decks pass 0 FAIL after the change. Run `node scripts/verify-curated-deck.mjs <deck_id>` to verify.
+
+**periodic_table subDeck fix (2026-04-03):** The `common_elements` subDeck originally contained only 49 of 90 facts. The remaining 41 facts (rare/exotic element trivia) were not listed in any subDeck, making them unreachable by topic-group extraction. All 41 missing factIds were appended to `subDecks[0].factIds`. The deck now has 1 subDeck covering all 90 facts. Verified: 0 failures in `node scripts/verify-all-decks.mjs`.
 
 ---
 
