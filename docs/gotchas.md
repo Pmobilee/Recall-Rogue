@@ -437,3 +437,27 @@ All are now at the same floor 1 HP floor (7–9 base) as the rest of Act 1 commo
 **Fix:** Created `scripts/verify-all-decks.mjs` batch verifier (12 checks per fact). Fixed all 7 decks. Added false-positive exclusions for `image_question` duplicates and `{___}` braces.
 
 **Prevention:** Run `node scripts/verify-all-decks.mjs` after ANY deck modification. Added to `.claude/rules/content-pipeline.md` as mandatory step.
+
+### 2026-04-02 — removeAllListeners() in RewardRoomScene.shutdown() too aggressive — broke 2nd reward room
+
+**What went wrong:** The BATCH-001 fix added `this.events.removeAllListeners()` to `RewardRoomScene.shutdown()` to prevent listener accumulation. This resolved the `trigger`/`blendModes` crash BUT introduced a new stuck state: on the 2nd reward room, `sceneComplete` is emitted but never triggers the screen transition. Items are marked collected but the bridge's `handleComplete` never fires. Additionally, `stopRewardRoom()` calls `bringToTop('CombatScene')`, causing the 2nd reward room to render behind CombatScene (invisible to player).
+
+**Why:** `this.events.removeAllListeners()` is too broad — it may also remove Phaser's internal scene lifecycle listeners. Calling `bringToTop('CombatScene')` in `stopRewardRoom()` leaves CombatScene on top for the next reward room activation.
+
+**Fix required:** (1) Replace `removeAllListeners()` with targeted removal of only user-defined listeners (store references in `create()`, remove individually in `shutdown()`). (2) In `startRewardRoom()` or `RewardRoomScene.create()`, call `this.scene.bringToTop()` to ensure RewardRoom renders above CombatScene.
+
+**Rule:** Never call `emitter.removeAllListeners()` on a Phaser scene's `events` object in `shutdown()`. Remove only the specific listeners you own, referenced by their callback functions.
+
+### 2026-04-02 — selectDomain() fix used wrong selector (data-testid vs CSS class)
+
+**What went wrong:** The BATCH-001 bonus fix updated `selectDomain()` to click the Trivia Dungeon panel using `[data-testid="panel--trivia"]`. But `DeckSelectionHub.svelte` renders the panel as `<button class="panel panel--trivia">` with NO `data-testid` attribute. The footer Start Run button also has no `data-testid` — only class `footer-start-btn`. Result: selectDomain() returns ok:false on every call.
+
+**Fix:** Change selectors to CSS class: `document.querySelector('button.panel--trivia')` and `document.querySelector('button.footer-start-btn')`.
+
+**Rule:** Before writing DOM selectors in `__rrPlay` API helpers, verify the actual element attributes in the component source. Never assume data-testid exists — check the .svelte file first.
+
+### 2026-04-02 — __rrPlay APIs not exposed as direct window globals
+
+**What went wrong:** BATCH-002 test prompt specified calling `getScreen()`, `startRun()`, etc. as direct window globals, but the game exposes them as methods of `window.__rrPlay`. Direct calls return undefined.
+
+**Correct usage:** `window.__rrPlay.getScreen()`, `window.__rrPlay.startRun()`, etc. All gameplay API is under `window.__rrPlay`.

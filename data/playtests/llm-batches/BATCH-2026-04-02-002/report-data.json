@@ -1,0 +1,224 @@
+{
+  "startTime": "2026-04-02T09:30:22.429Z",
+  "endTime": "2026-04-02T09:31:24.058Z",
+  "combats": [
+    {
+      "num": 1,
+      "won": true,
+      "turns": 7,
+      "exitScreen": "rewardRoom"
+    },
+    {
+      "num": 2,
+      "won": true,
+      "turns": 7,
+      "exitScreen": "rewardRoom"
+    }
+  ],
+  "rewards": [
+    {
+      "combatNum": 1,
+      "goldBefore": 10,
+      "goldAfter": 20,
+      "rewardOk": true,
+      "rewardMessage": "Reward accepted via Phaser scene. Screen: dungeonMap",
+      "postScreen": "dungeonMap",
+      "newErrors": []
+    },
+    {
+      "combatNum": 2,
+      "goldBefore": 30,
+      "goldAfter": 40,
+      "rewardOk": true,
+      "rewardMessage": "Reward accepted via Phaser scene. Screen: rewardRoom",
+      "postScreen": "rewardRoom",
+      "newErrors": []
+    },
+    {
+      "combatNum": 2,
+      "goldBefore": 40,
+      "goldAfter": 40,
+      "rewardOk": true,
+      "rewardMessage": "Reward accepted via Phaser scene. Screen: rewardRoom",
+      "postScreen": "rewardRoom",
+      "newErrors": []
+    },
+    {
+      "combatNum": 2,
+      "goldBefore": 40,
+      "goldAfter": 40,
+      "rewardOk": true,
+      "rewardMessage": "Reward accepted via Phaser scene. Screen: rewardRoom",
+      "postScreen": "rewardRoom",
+      "newErrors": []
+    },
+    {
+      "combatNum": 2,
+      "goldBefore": 40,
+      "goldAfter": 40,
+      "rewardOk": true,
+      "rewardMessage": "Reward accepted via Phaser scene. Screen: rewardRoom",
+      "postScreen": "rewardRoom",
+      "newErrors": []
+    }
+  ],
+  "rooms": [
+    {
+      "index": 0,
+      "nodeId": "r0-n0",
+      "nodeType": "unknown",
+      "screen": "combat"
+    },
+    {
+      "index": 3,
+      "nodeId": "r1-n0",
+      "nodeType": "unknown",
+      "screen": "combat"
+    }
+  ],
+  "screenTransitions": [
+    {
+      "from": "hub",
+      "to": "deckSelectionHub",
+      "action": "startRun"
+    },
+    {
+      "from": "dungeonMap",
+      "to": "combat",
+      "action": "selectMapNode(r0-n0)"
+    },
+    {
+      "from": "combat",
+      "to": "rewardRoom",
+      "action": "combat_1"
+    },
+    {
+      "from": "rewardRoom",
+      "to": "dungeonMap",
+      "action": "acceptReward"
+    },
+    {
+      "from": "dungeonMap",
+      "to": "combat",
+      "action": "selectMapNode(r1-n0)"
+    },
+    {
+      "from": "combat",
+      "to": "rewardRoom",
+      "action": "combat_2"
+    },
+    {
+      "from": "rewardRoom",
+      "to": "rewardRoom",
+      "action": "acceptReward"
+    },
+    {
+      "from": "rewardRoom",
+      "to": "rewardRoom",
+      "action": "acceptReward"
+    },
+    {
+      "from": "rewardRoom",
+      "to": "rewardRoom",
+      "action": "acceptReward"
+    },
+    {
+      "from": "rewardRoom",
+      "to": "rewardRoom",
+      "action": "acceptReward"
+    }
+  ],
+  "fixVerification": {
+    "bug001_rewardCrash": "INSUFFICIENT_DATA - only 2 combats completed (need 3+)",
+    "bug002_acceptRewardRace": "FIXED - ok:true at combat 1",
+    "bug003_cardRewardScreen": "BY_DESIGN — acceptReward() handles card selection inline per docs",
+    "bug004_getCombatStateNull": "FIXED - returns null on screen 'rewardRoom' after combat 2",
+    "bonus_selectDomain": "STILL BROKEN - selectDomain() uses wrong selector [data-testid=\"panel--trivia\"] but element only has CSS class. selectDomain() returned ok:false: \"Trivia Dungeon panel not found on deckSelectionHub\". Panel has CSS class panel--trivia but no data-testid=\"panel--trivia\" — selector mismatch in fix."
+  },
+  "bugs": [
+    {
+      "id": "BUG-BONUS-REGRESSION",
+      "severity": "MEDIUM",
+      "title": "selectDomain() fix uses wrong selector — data-testid vs CSS class",
+      "detail": "selectDomain() looks for [data-testid=\"panel--trivia\"] but DeckSelectionHub.svelte has <button class=\"panel panel--trivia\"> with NO data-testid attribute",
+      "evidence": "selectDomain() returned ok:false: \"Trivia Dungeon panel not found on deckSelectionHub\". Panel has CSS class panel--trivia but no data-testid=\"panel--trivia\" — selector mismatch in fix.",
+      "workaround": "Clicked .panel--trivia by CSS class directly"
+    },
+    {
+      "id": "STUCK-rewardRoom-9",
+      "severity": "HIGH",
+      "title": "Stuck on screen 'rewardRoom' for 4 iterations",
+      "evidence": {
+        "recentEvents": [
+          {
+            "ts": 1775122223562,
+            "type": "state-change",
+            "detail": "Debug bridge initialized"
+          },
+          {
+            "ts": 1775122223562,
+            "type": "state-change",
+            "detail": "Screenshot helper initialized"
+          },
+          {
+            "ts": 1775122223562,
+            "type": "state-change",
+            "detail": "Layout dump initialized"
+          }
+        ]
+      }
+    }
+  ],
+  "selectDomainEvidence": {
+    "steps": [
+      "selectDomain() FAILED — bug in fix: wrong selector (data-testid vs class)",
+      "Click .panel--trivia: OK",
+      "Screen after panel click: triviaDungeon",
+      "Click domain card: No domain cards found",
+      "Click Start Run: OK",
+      "Clicked enter-btn (onboarding skip)"
+    ],
+    "selectDomainWorked": false,
+    "workaroundNeeded": true,
+    "selectDomainResult": {
+      "ok": false,
+      "message": "Trivia Dungeon panel not found on deckSelectionHub"
+    },
+    "selectDomainBugEvidence": "selectDomain() returned ok:false: \"Trivia Dungeon panel not found on deckSelectionHub\". Panel has CSS class panel--trivia but no data-testid=\"panel--trivia\" — selector mismatch in fix.",
+    "finalScreen": "dungeonMap",
+    "reachedDungeonMap": true
+  },
+  "finalState": {
+    "screen": "rewardRoom",
+    "floor": 1,
+    "combatCount": 2,
+    "roomCount": 2,
+    "runState": {
+      "currency": 40,
+      "playerHp": 100,
+      "playerMaxHp": 100
+    },
+    "totalConsoleErrors": 3,
+    "criticalErrors": [],
+    "recentEvents": [
+      {
+        "ts": 1775122223562,
+        "type": "state-change",
+        "detail": "Debug bridge initialized"
+      },
+      {
+        "ts": 1775122223562,
+        "type": "state-change",
+        "detail": "Screenshot helper initialized"
+      },
+      {
+        "ts": 1775122223562,
+        "type": "state-change",
+        "detail": "Layout dump initialized"
+      }
+    ]
+  },
+  "initialScreen": "hub",
+  "reachedMap": true,
+  "summary": "2 combats, 2 rooms, floor 1, final: rewardRoom, console_errors: 3"
+}

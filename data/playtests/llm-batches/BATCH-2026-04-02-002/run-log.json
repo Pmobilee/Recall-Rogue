@@ -1,0 +1,1184 @@
+[
+  {
+    "time": "2026-04-02T09:30:23.553Z",
+    "event": "console-error",
+    "data": {
+      "text": "Connecting to 'http://100.74.153.81:5175/api/game/cardback-updates' violates the following Content Security Policy directive: \"connect-src 'self' ws: wss: http://localhost:* http://*:3001\". The action"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:23.554Z",
+    "event": "console-error",
+    "data": {
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:28.557Z",
+    "event": "api-check",
+    "data": {
+      "available": true
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:28.558Z",
+    "event": "audio-muted",
+    "data": {}
+  },
+  {
+    "time": "2026-04-02T09:30:28.560Z",
+    "event": "layout",
+    "data": {
+      "label": "initial",
+      "dump": "LAYOUT DUMP  2026-04-02T09:30:28.559Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n  (no Phaser game running)\n\n▸ DOM LAYER ────────────────────────────\n  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN\n    [div.hub-wrapper.svelte-2meh4s]                                (0, 0)                  HIDDEN\n      [div.hub-landscape.svelte-1lu7iy2]                           (0, 0)  1920x1080       HIDDEN\n        [canvas.hub-glow-canvas.svelte-10j2h25]                    (0, 0)  1920x1080       HIDDEN\n        [canvas.hub-vignette-canvas.svelte-10j2h25]                (0, 0)  1920x1080       HIDDEN\n        [div.hub-center.svelte-1lu7iy2]                            (656, 0)  608x1080    \n          [div.h"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:28.973Z",
+    "event": "screenshot",
+    "data": {
+      "label": "01_initial",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/01_initial.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:28.974Z",
+    "event": "initial-screen",
+    "data": {
+      "screen": "hub"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:30.477Z",
+    "event": "startRun",
+    "data": {
+      "result": {
+        "ok": true,
+        "message": "Run started. Screen: deckSelectionHub"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:32.596Z",
+    "event": "screenshot",
+    "data": {
+      "label": "02_after_startRun",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/02_after_startRun.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:32.598Z",
+    "event": "selectDomain-attempt",
+    "data": {
+      "result": {
+        "ok": false,
+        "message": "Trivia Dungeon panel not found on deckSelectionHub"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:32.696Z",
+    "event": "click-panel-workaround",
+    "data": {
+      "result": {
+        "ok": true,
+        "msg": "Clicked button.panel--trivia"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:34.198Z",
+    "event": "screen-after-panel-click",
+    "data": {
+      "screen": "triviaDungeon"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:34.199Z",
+    "event": "click-domain-workaround",
+    "data": {
+      "result": {
+        "ok": false,
+        "msg": "No domain cards found"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:35.004Z",
+    "event": "click-start-workaround",
+    "data": {
+      "result": {
+        "ok": true,
+        "msg": "Clicked Start Run"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:37.025Z",
+    "event": "clicked-enter-btn",
+    "data": {}
+  },
+  {
+    "time": "2026-04-02T09:30:38.528Z",
+    "event": "navigate-to-dungeon-map",
+    "data": {
+      "evidence": {
+        "steps": [
+          "selectDomain() FAILED — bug in fix: wrong selector (data-testid vs class)",
+          "Click .panel--trivia: OK",
+          "Screen after panel click: triviaDungeon",
+          "Click domain card: No domain cards found",
+          "Click Start Run: OK",
+          "Clicked enter-btn (onboarding skip)"
+        ],
+        "selectDomainWorked": false,
+        "workaroundNeeded": true,
+        "selectDomainResult": {
+          "ok": false,
+          "message": "Trivia Dungeon panel not found on deckSelectionHub"
+        },
+        "selectDomainBugEvidence": "selectDomain() returned ok:false: \"Trivia Dungeon panel not found on deckSelectionHub\". Panel has CSS class panel--trivia but no data-testid=\"panel--trivia\" — selector mismatch in fix.",
+        "finalScreen": "dungeonMap",
+        "reachedDungeonMap": true
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:38.690Z",
+    "event": "screenshot",
+    "data": {
+      "label": "03_after_navigation",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/03_after_navigation.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:38.691Z",
+    "event": "map-screen",
+    "data": {
+      "screen": "dungeonMap"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:38.693Z",
+    "event": "layout",
+    "data": {
+      "label": "dungeonMap",
+      "dump": "LAYOUT DUMP  2026-04-02T09:30:38.691Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n  (no Phaser game running)\n\n▸ DOM LAYER ────────────────────────────\n  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN\n    [div.topbar.svelte-1ramr3r]                                    (0, 0)  1920x49         HIDDEN\n      [div.hp-group.svelte-1ramr3r]                                (18, 9)  622x28       \n        [div.hp-bar-track.svelte-1ramr3r]                          (18, 9)  622x28       \n          [div.hp-bar-fill.svelte-1ramr3r]                         (19, 10)  620x26      \n          [span.hp-text.svelte-1ramr3r]                            (19, 15)  620x15      \n            [span.hp-value.svelte-1ramr3"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:38.856Z",
+    "event": "screenshot",
+    "data": {
+      "label": "04_dungeonMap",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/04_dungeonMap.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:38.857Z",
+    "event": "room-loop",
+    "data": {
+      "roomIdx": 0,
+      "screen": "dungeonMap",
+      "floor": 1,
+      "combatCount": 0,
+      "roomCount": 0
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:38.858Z",
+    "event": "available-nodes",
+    "data": {
+      "count": 3,
+      "nodes": [
+        "r0-n0(unknown)",
+        "r0-n1(unknown)",
+        "r0-n2(unknown)"
+      ]
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:38.858Z",
+    "event": "selecting-node",
+    "data": {
+      "id": "r0-n0",
+      "type": "unknown"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:38.950Z",
+    "event": "selectMapNode",
+    "data": {
+      "id": "r0-n0",
+      "type": "unknown",
+      "result": {
+        "ok": true,
+        "message": "Selected map node r0-n0. Screen: combat"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:41.451Z",
+    "event": "entered-room",
+    "data": {
+      "screen": "combat",
+      "nodeId": "r0-n0",
+      "nodeType": "unknown"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:41.455Z",
+    "event": "layout",
+    "data": {
+      "label": "room_0",
+      "dump": "LAYOUT DUMP  2026-04-02T09:30:41.452Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n▸ PHASER LAYER (CombatScene) ──────────\n  [Container] relicContainer                     (38, 54)                depth:0  children:0\n  [Image] combatBackground                       (960, 540)  1939x1091   depth:0  frame:__BASE  tex:bg-enemy-page_flutter-landscape\n  [Graphics] vignetteGfx                         (0, 0)                  depth:1\n  [Graphics] edgeGlowTop                         (0, 0)                  depth:2  α:0.00\n  [Graphics] edgeGlowLeft                        (0, 0)                  depth:2  α:0.00\n  [Graphics] edgeGlowRight                       (0, 0)                  depth:2  α:0.00\n  [Graphics] nearDeathVignette                   (0,"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:41.720Z",
+    "event": "screenshot",
+    "data": {
+      "label": "room_0_combat",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/room_0_combat.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:41.721Z",
+    "event": "room-loop",
+    "data": {
+      "roomIdx": 1,
+      "screen": "combat",
+      "floor": 1,
+      "combatCount": 0,
+      "roomCount": 1
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:41.721Z",
+    "event": "entering-combat",
+    "data": {
+      "combatNum": 1
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:41.948Z",
+    "event": "screenshot",
+    "data": {
+      "label": "combat_1_start",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/combat_1_start.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:41.948Z",
+    "event": "combat-start",
+    "data": {
+      "combatNum": 1
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:41.951Z",
+    "event": "combat-state",
+    "data": {
+      "turn": 0,
+      "state": {
+        "ap": 3,
+        "playerHp": 100,
+        "enemyHp": 31,
+        "handSize": 5,
+        "enemyName": "Page Flutter"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:41.970Z",
+    "event": "chargePlayCard",
+    "data": {
+      "idx": 0,
+      "ok": true
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:42.286Z",
+    "event": "chargePlayCard",
+    "data": {
+      "idx": 1,
+      "ok": true
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:42.642Z",
+    "event": "endTurn",
+    "data": {
+      "turn": 0,
+      "ok": true,
+      "message": "Turn ended. Screen: combat"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:43.445Z",
+    "event": "combat-state",
+    "data": {
+      "turn": 1,
+      "state": {
+        "ap": 3,
+        "playerHp": 100,
+        "enemyHp": 23,
+        "handSize": 7,
+        "enemyName": "Page Flutter"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:43.460Z",
+    "event": "chargePlayCard",
+    "data": {
+      "idx": 0,
+      "ok": true
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:43.777Z",
+    "event": "chargePlayCard",
+    "data": {
+      "idx": 1,
+      "ok": true
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:44.132Z",
+    "event": "endTurn",
+    "data": {
+      "turn": 1,
+      "ok": true,
+      "message": "Turn ended. Screen: combat"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:44.933Z",
+    "event": "combat-state",
+    "data": {
+      "turn": 2,
+      "state": "null"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:45.538Z",
+    "event": "combat-state",
+    "data": {
+      "turn": 3,
+      "state": "null"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:46.141Z",
+    "event": "combat-state",
+    "data": {
+      "turn": 4,
+      "state": "null"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:46.743Z",
+    "event": "combat-state",
+    "data": {
+      "turn": 5,
+      "state": "null"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:47.346Z",
+    "event": "combat-state",
+    "data": {
+      "turn": 6,
+      "state": "null"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:47.949Z",
+    "event": "combat-left",
+    "data": {
+      "turn": 7,
+      "screen": "rewardRoom"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:47.949Z",
+    "event": "combat-complete",
+    "data": {
+      "combatCount": 1,
+      "result": {
+        "won": true,
+        "turns": 7,
+        "exitScreen": "rewardRoom"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:49.452Z",
+    "event": "post-combat-screen",
+    "data": {
+      "combatCount": 1,
+      "screen": "rewardRoom"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:49.455Z",
+    "event": "layout",
+    "data": {
+      "label": "post_combat_1",
+      "dump": "LAYOUT DUMP  2026-04-02T09:30:49.454Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n▸ PHASER LAYER (CombatScene) ──────────\n  [Container] relicContainer                     (38, 54)                depth:0  children:0\n  [Image] combatBackground                       (960, 540)  1939x1091   depth:0  frame:__BASE  tex:bg-enemy-page_flutter-landscape\n  [Graphics] vignetteGfx                         (0, 0)                  depth:1\n  [Graphics] edgeGlowTop                         (0, 0)                  depth:2  α:0.00\n  [Graphics] edgeGlowLeft                        (0, 0)                  depth:2  α:0.00\n  [Graphics] edgeGlowRight                       (0, 0)                  depth:2  α:0.00\n  [Graphics] nearDeathVignette                   (0,"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:49.770Z",
+    "event": "screenshot",
+    "data": {
+      "label": "combat_1_end",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/combat_1_end.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:49.771Z",
+    "event": "fix004-check",
+    "data": {
+      "combatCount": 1,
+      "state": null
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:49.772Z",
+    "event": "room-loop",
+    "data": {
+      "roomIdx": 2,
+      "screen": "rewardRoom",
+      "floor": 1,
+      "combatCount": 1,
+      "roomCount": 1
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:49.772Z",
+    "event": "reward-room",
+    "data": {
+      "combatNum": 1
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:49.774Z",
+    "event": "layout",
+    "data": {
+      "label": "reward_before_1",
+      "dump": "LAYOUT DUMP  2026-04-02T09:30:49.773Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n▸ PHASER LAYER (CombatScene) ──────────\n  [Container] relicContainer                     (38, 54)                depth:0  children:0\n  [Image] combatBackground                       (960, 540)  1939x1091   depth:0  frame:__BASE  tex:bg-enemy-page_flutter-landscape\n  [Graphics] vignetteGfx                         (0, 0)                  depth:1\n  [Graphics] edgeGlowTop                         (0, 0)                  depth:2  α:0.00\n  [Graphics] edgeGlowLeft                        (0, 0)                  depth:2  α:0.00\n  [Graphics] edgeGlowRight                       (0, 0)                  depth:2  α:0.00\n  [Graphics] nearDeathVignette                   (0,"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:50.155Z",
+    "event": "screenshot",
+    "data": {
+      "label": "reward_1_before",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/reward_1_before.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:50.156Z",
+    "event": "gold-before-reward",
+    "data": {
+      "gold": 10
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:52.365Z",
+    "event": "acceptReward",
+    "data": {
+      "combatNum": 1,
+      "result": {
+        "ok": true,
+        "message": "Reward accepted via Phaser scene. Screen: dungeonMap"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:54.868Z",
+    "event": "post-reward-screen",
+    "data": {
+      "combatNum": 1,
+      "screen": "dungeonMap"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:54.871Z",
+    "event": "layout",
+    "data": {
+      "label": "reward_after_1",
+      "dump": "LAYOUT DUMP  2026-04-02T09:30:54.869Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n▸ PHASER LAYER (CombatScene) ──────────\n  [Container] relicContainer                     (38, 54)                depth:0  children:0\n  [Image] combatBackground                       (960, 540)  1939x1091   depth:0  frame:__BASE  tex:bg-enemy-page_flutter-landscape\n  [Graphics] vignetteGfx                         (0, 0)                  depth:1\n  [Graphics] edgeGlowTop                         (0, 0)                  depth:2  α:0.00\n  [Graphics] edgeGlowLeft                        (0, 0)                  depth:2  α:0.00\n  [Graphics] edgeGlowRight                       (0, 0)                  depth:2  α:0.00\n  [Graphics] nearDeathVignette                   (0,"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:55.025Z",
+    "event": "screenshot",
+    "data": {
+      "label": "reward_1_after",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/reward_1_after.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:55.028Z",
+    "event": "room-loop",
+    "data": {
+      "roomIdx": 3,
+      "screen": "dungeonMap",
+      "floor": 1,
+      "combatCount": 1,
+      "roomCount": 1
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:55.029Z",
+    "event": "available-nodes",
+    "data": {
+      "count": 2,
+      "nodes": [
+        "r1-n0(unknown)",
+        "r1-n1(unknown)"
+      ]
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:55.030Z",
+    "event": "selecting-node",
+    "data": {
+      "id": "r1-n0",
+      "type": "unknown"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:55.144Z",
+    "event": "selectMapNode",
+    "data": {
+      "id": "r1-n0",
+      "type": "unknown",
+      "result": {
+        "ok": true,
+        "message": "Selected map node r1-n0. Screen: combat"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:55.339Z",
+    "event": "console-error",
+    "data": {
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:57.646Z",
+    "event": "entered-room",
+    "data": {
+      "screen": "combat",
+      "nodeId": "r1-n0",
+      "nodeType": "unknown"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:57.648Z",
+    "event": "layout",
+    "data": {
+      "label": "room_3",
+      "dump": "LAYOUT DUMP  2026-04-02T09:30:57.646Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n▸ PHASER LAYER (CombatScene) ──────────\n  [Container] relicContainer                     (38, 54)                depth:0  children:0\n  [Image] combatBackground                       (960, 540)  1939x1091   depth:0  frame:__BASE  tex:bg-enemy-mold_puff-landscape\n  [Graphics] edgeGlowTop                         (0, 0)                  depth:2  α:0.00\n  [Graphics] edgeGlowLeft                        (0, 0)                  depth:2  α:0.00\n  [Graphics] edgeGlowRight                       (0, 0)                  depth:2  α:0.00\n  [Graphics] nearDeathVignette                   (0, 0)                  depth:3  α:0.00\n  [ParticleEmitter]                            "
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:57.966Z",
+    "event": "screenshot",
+    "data": {
+      "label": "room_3_combat",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/room_3_combat.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:57.967Z",
+    "event": "room-loop",
+    "data": {
+      "roomIdx": 4,
+      "screen": "combat",
+      "floor": 1,
+      "combatCount": 1,
+      "roomCount": 2
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:57.967Z",
+    "event": "entering-combat",
+    "data": {
+      "combatNum": 2
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:58.286Z",
+    "event": "screenshot",
+    "data": {
+      "label": "combat_2_start",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/combat_2_start.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:58.287Z",
+    "event": "combat-start",
+    "data": {
+      "combatNum": 2
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:58.288Z",
+    "event": "combat-state",
+    "data": {
+      "turn": 0,
+      "state": {
+        "ap": 3,
+        "playerHp": 100,
+        "enemyHp": 33,
+        "handSize": 5,
+        "enemyName": "Mold Puff"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:58.305Z",
+    "event": "chargePlayCard",
+    "data": {
+      "idx": 0,
+      "ok": true
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:58.620Z",
+    "event": "chargePlayCard",
+    "data": {
+      "idx": 1,
+      "ok": true
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:58.975Z",
+    "event": "endTurn",
+    "data": {
+      "turn": 0,
+      "ok": true,
+      "message": "Turn ended. Screen: combat"
+    }
+  },
+  {
+    "time": "2026-04-02T09:30:59.779Z",
+    "event": "combat-state",
+    "data": {
+      "turn": 1,
+      "state": {
+        "ap": 3,
+        "playerHp": 100,
+        "enemyHp": 8,
+        "handSize": 6,
+        "enemyName": "Mold Puff"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:00.334Z",
+    "event": "chargePlayCard",
+    "data": {
+      "idx": 0,
+      "ok": true
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:00.650Z",
+    "event": "chargePlayCard",
+    "data": {
+      "idx": 1,
+      "ok": true
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:00.967Z",
+    "event": "chargePlayCard",
+    "data": {
+      "idx": 2,
+      "ok": true
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:01.270Z",
+    "event": "endTurn",
+    "data": {
+      "turn": 1,
+      "ok": false,
+      "message": "End turn button not found"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:02.073Z",
+    "event": "combat-state",
+    "data": {
+      "turn": 2,
+      "state": "null"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:02.675Z",
+    "event": "combat-state",
+    "data": {
+      "turn": 3,
+      "state": "null"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:03.279Z",
+    "event": "combat-state",
+    "data": {
+      "turn": 4,
+      "state": "null"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:03.881Z",
+    "event": "combat-state",
+    "data": {
+      "turn": 5,
+      "state": "null"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:04.486Z",
+    "event": "combat-state",
+    "data": {
+      "turn": 6,
+      "state": "null"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:05.088Z",
+    "event": "combat-left",
+    "data": {
+      "turn": 7,
+      "screen": "rewardRoom"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:05.089Z",
+    "event": "combat-complete",
+    "data": {
+      "combatCount": 2,
+      "result": {
+        "won": true,
+        "turns": 7,
+        "exitScreen": "rewardRoom"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:06.591Z",
+    "event": "post-combat-screen",
+    "data": {
+      "combatCount": 2,
+      "screen": "rewardRoom"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:06.593Z",
+    "event": "layout",
+    "data": {
+      "label": "post_combat_2",
+      "dump": "LAYOUT DUMP  2026-04-02T09:31:06.591Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n▸ PHASER LAYER (RewardRoom) ──────────\n  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape\n  [Ellipse]                                      (1013, 589)  91x23      depth:2\n  [Ellipse]                                      (1074, 417)  47x12      depth:2\n  [Ellipse]                                      (912, 378)  67x17       depth:2\n  [Ellipse]                                      (927, 702)  67x17       depth:2\n  [Ellipse]                                      (815, 560)  67x17       depth:2\n  [Image]                                        (1013, 561)             depth:3  frame:__BASE  tex:g"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:06.801Z",
+    "event": "screenshot",
+    "data": {
+      "label": "combat_2_end",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/combat_2_end.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:06.803Z",
+    "event": "fix004-check",
+    "data": {
+      "combatCount": 2,
+      "state": null
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:06.803Z",
+    "event": "room-loop",
+    "data": {
+      "roomIdx": 5,
+      "screen": "rewardRoom",
+      "floor": 1,
+      "combatCount": 2,
+      "roomCount": 2
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:06.804Z",
+    "event": "reward-room",
+    "data": {
+      "combatNum": 2
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:06.805Z",
+    "event": "layout",
+    "data": {
+      "label": "reward_before_2",
+      "dump": "LAYOUT DUMP  2026-04-02T09:31:06.804Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n▸ PHASER LAYER (RewardRoom) ──────────\n  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape\n  [Ellipse]                                      (1013, 589)  91x23      depth:2\n  [Ellipse]                                      (1074, 417)  47x12      depth:2\n  [Ellipse]                                      (912, 378)  67x17       depth:2\n  [Ellipse]                                      (927, 702)  67x17       depth:2\n  [Ellipse]                                      (815, 560)  67x17       depth:2\n  [Image]                                        (1013, 562)             depth:3  frame:__BASE  tex:g"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:07.010Z",
+    "event": "screenshot",
+    "data": {
+      "label": "reward_2_before",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/reward_2_before.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:07.011Z",
+    "event": "gold-before-reward",
+    "data": {
+      "gold": 30
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:09.222Z",
+    "event": "acceptReward",
+    "data": {
+      "combatNum": 2,
+      "result": {
+        "ok": true,
+        "message": "Reward accepted via Phaser scene. Screen: rewardRoom"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:11.724Z",
+    "event": "post-reward-screen",
+    "data": {
+      "combatNum": 2,
+      "screen": "rewardRoom"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:11.726Z",
+    "event": "layout",
+    "data": {
+      "label": "reward_after_2",
+      "dump": "LAYOUT DUMP  2026-04-02T09:31:11.725Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n▸ PHASER LAYER (RewardRoom) ──────────\n  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape\n  [Ellipse]                                      (1013, 589)  91x23      depth:2\n  [Ellipse]                                      (1074, 417)  47x12      depth:2\n  [Ellipse]                                      (912, 378)  67x17       depth:2\n  [Ellipse]                                      (927, 702)  67x17       depth:2\n  [Ellipse]                                      (815, 560)  67x17       depth:2\n  [Image]                                        (1013, 563)             depth:3  frame:__BASE  tex:g"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:11.950Z",
+    "event": "screenshot",
+    "data": {
+      "label": "reward_2_after",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/reward_2_after.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:11.953Z",
+    "event": "room-loop",
+    "data": {
+      "roomIdx": 6,
+      "screen": "rewardRoom",
+      "floor": 1,
+      "combatCount": 2,
+      "roomCount": 2
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:11.953Z",
+    "event": "reward-room",
+    "data": {
+      "combatNum": 2
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:11.957Z",
+    "event": "layout",
+    "data": {
+      "label": "reward_before_2",
+      "dump": "LAYOUT DUMP  2026-04-02T09:31:11.956Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n▸ PHASER LAYER (RewardRoom) ──────────\n  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape\n  [Ellipse]                                      (1013, 589)  91x23      depth:2\n  [Ellipse]                                      (1074, 417)  47x12      depth:2\n  [Ellipse]                                      (912, 378)  67x17       depth:2\n  [Ellipse]                                      (927, 702)  67x17       depth:2\n  [Ellipse]                                      (815, 560)  67x17       depth:2\n  [Image]                                        (1013, 563)             depth:3  frame:__BASE  tex:g"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:12.175Z",
+    "event": "screenshot",
+    "data": {
+      "label": "reward_2_before",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/reward_2_before.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:12.178Z",
+    "event": "gold-before-reward",
+    "data": {
+      "gold": 40
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:13.180Z",
+    "event": "acceptReward",
+    "data": {
+      "combatNum": 2,
+      "result": {
+        "ok": true,
+        "message": "Reward accepted via Phaser scene. Screen: rewardRoom"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:15.682Z",
+    "event": "post-reward-screen",
+    "data": {
+      "combatNum": 2,
+      "screen": "rewardRoom"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:15.684Z",
+    "event": "layout",
+    "data": {
+      "label": "reward_after_2",
+      "dump": "LAYOUT DUMP  2026-04-02T09:31:15.683Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n▸ PHASER LAYER (RewardRoom) ──────────\n  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape\n  [Ellipse]                                      (1013, 589)  91x23      depth:2\n  [Ellipse]                                      (1074, 417)  47x12      depth:2\n  [Ellipse]                                      (912, 378)  67x17       depth:2\n  [Ellipse]                                      (927, 702)  67x17       depth:2\n  [Ellipse]                                      (815, 560)  67x17       depth:2\n  [Image]                                        (1013, 563)             depth:3  frame:__BASE  tex:g"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:15.908Z",
+    "event": "screenshot",
+    "data": {
+      "label": "reward_2_after",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/reward_2_after.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:15.909Z",
+    "event": "room-loop",
+    "data": {
+      "roomIdx": 7,
+      "screen": "rewardRoom",
+      "floor": 1,
+      "combatCount": 2,
+      "roomCount": 2
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:15.910Z",
+    "event": "reward-room",
+    "data": {
+      "combatNum": 2
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:15.912Z",
+    "event": "layout",
+    "data": {
+      "label": "reward_before_2",
+      "dump": "LAYOUT DUMP  2026-04-02T09:31:15.911Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n▸ PHASER LAYER (RewardRoom) ──────────\n  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape\n  [Ellipse]                                      (1013, 589)  91x23      depth:2\n  [Ellipse]                                      (1074, 417)  47x12      depth:2\n  [Ellipse]                                      (912, 378)  67x17       depth:2\n  [Ellipse]                                      (927, 702)  67x17       depth:2\n  [Ellipse]                                      (815, 560)  67x17       depth:2\n  [Image]                                        (1013, 563)             depth:3  frame:__BASE  tex:g"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:16.133Z",
+    "event": "screenshot",
+    "data": {
+      "label": "reward_2_before",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/reward_2_before.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:16.134Z",
+    "event": "gold-before-reward",
+    "data": {
+      "gold": 40
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:17.137Z",
+    "event": "acceptReward",
+    "data": {
+      "combatNum": 2,
+      "result": {
+        "ok": true,
+        "message": "Reward accepted via Phaser scene. Screen: rewardRoom"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:19.640Z",
+    "event": "post-reward-screen",
+    "data": {
+      "combatNum": 2,
+      "screen": "rewardRoom"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:19.642Z",
+    "event": "layout",
+    "data": {
+      "label": "reward_after_2",
+      "dump": "LAYOUT DUMP  2026-04-02T09:31:19.641Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n▸ PHASER LAYER (RewardRoom) ──────────\n  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape\n  [Ellipse]                                      (1013, 589)  91x23      depth:2\n  [Ellipse]                                      (1074, 417)  47x12      depth:2\n  [Ellipse]                                      (912, 378)  67x17       depth:2\n  [Ellipse]                                      (927, 702)  67x17       depth:2\n  [Ellipse]                                      (815, 560)  67x17       depth:2\n  [Image]                                        (1013, 563)             depth:3  frame:__BASE  tex:g"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:19.871Z",
+    "event": "screenshot",
+    "data": {
+      "label": "reward_2_after",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/reward_2_after.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:19.874Z",
+    "event": "room-loop",
+    "data": {
+      "roomIdx": 8,
+      "screen": "rewardRoom",
+      "floor": 1,
+      "combatCount": 2,
+      "roomCount": 2
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:19.874Z",
+    "event": "reward-room",
+    "data": {
+      "combatNum": 2
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:19.875Z",
+    "event": "layout",
+    "data": {
+      "label": "reward_before_2",
+      "dump": "LAYOUT DUMP  2026-04-02T09:31:19.874Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n▸ PHASER LAYER (RewardRoom) ──────────\n  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape\n  [Ellipse]                                      (1013, 589)  91x23      depth:2\n  [Ellipse]                                      (1074, 417)  47x12      depth:2\n  [Ellipse]                                      (912, 378)  67x17       depth:2\n  [Ellipse]                                      (927, 702)  67x17       depth:2\n  [Ellipse]                                      (815, 560)  67x17       depth:2\n  [Image]                                        (1013, 563)             depth:3  frame:__BASE  tex:g"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:20.106Z",
+    "event": "screenshot",
+    "data": {
+      "label": "reward_2_before",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/reward_2_before.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:20.107Z",
+    "event": "gold-before-reward",
+    "data": {
+      "gold": 40
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:21.111Z",
+    "event": "acceptReward",
+    "data": {
+      "combatNum": 2,
+      "result": {
+        "ok": true,
+        "message": "Reward accepted via Phaser scene. Screen: rewardRoom"
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:23.612Z",
+    "event": "post-reward-screen",
+    "data": {
+      "combatNum": 2,
+      "screen": "rewardRoom"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:23.614Z",
+    "event": "layout",
+    "data": {
+      "label": "reward_after_2",
+      "dump": "LAYOUT DUMP  2026-04-02T09:31:23.613Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n▸ PHASER LAYER (RewardRoom) ──────────\n  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape\n  [Ellipse]                                      (1013, 589)  91x23      depth:2\n  [Ellipse]                                      (1074, 417)  47x12      depth:2\n  [Ellipse]                                      (912, 378)  67x17       depth:2\n  [Ellipse]                                      (927, 702)  67x17       depth:2\n  [Ellipse]                                      (815, 560)  67x17       depth:2\n  [Image]                                        (1013, 563)             depth:3  frame:__BASE  tex:g"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:23.834Z",
+    "event": "screenshot",
+    "data": {
+      "label": "reward_2_after",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/reward_2_after.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:23.837Z",
+    "event": "room-loop",
+    "data": {
+      "roomIdx": 9,
+      "screen": "rewardRoom",
+      "floor": 1,
+      "combatCount": 2,
+      "roomCount": 2
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:23.838Z",
+    "event": "stuck-detected",
+    "data": {
+      "screen": "rewardRoom",
+      "stuckCount": 4,
+      "events": [
+        {
+          "ts": 1775122223562,
+          "type": "state-change",
+          "detail": "Debug bridge initialized"
+        },
+        {
+          "ts": 1775122223562,
+          "type": "state-change",
+          "detail": "Screenshot helper initialized"
+        },
+        {
+          "ts": 1775122223562,
+          "type": "state-change",
+          "detail": "Layout dump initialized"
+        }
+      ]
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:23.839Z",
+    "event": "final-state",
+    "data": {
+      "screen": "rewardRoom",
+      "runState": {
+        "currency": 40,
+        "playerHp": 100,
+        "playerMaxHp": 100
+      }
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:23.841Z",
+    "event": "layout",
+    "data": {
+      "label": "final",
+      "dump": "LAYOUT DUMP  2026-04-02T09:31:23.840Z\nViewport: 1920 x 1080  (landscape)\n════════════════════════════════════════════════════════════\n\n▸ PHASER LAYER (RewardRoom) ──────────\n  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape\n  [Ellipse]                                      (1013, 589)  91x23      depth:2\n  [Ellipse]                                      (1074, 417)  47x12      depth:2\n  [Ellipse]                                      (912, 378)  67x17       depth:2\n  [Ellipse]                                      (927, 702)  67x17       depth:2\n  [Ellipse]                                      (815, 560)  67x17       depth:2\n  [Image]                                        (1013, 563)             depth:3  frame:__BASE  tex:g"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:24.057Z",
+    "event": "screenshot",
+    "data": {
+      "label": "99_final",
+      "path": "/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-04-02-002/screenshots/99_final.png"
+    }
+  },
+  {
+    "time": "2026-04-02T09:31:24.153Z",
+    "event": "done",
+    "data": {
+      "summary": "2 combats, 2 rooms, floor 1, final: rewardRoom, console_errors: 3"
+    }
+  }
+]

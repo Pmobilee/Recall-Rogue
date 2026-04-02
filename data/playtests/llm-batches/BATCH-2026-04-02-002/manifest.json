@@ -1,0 +1,26 @@
+{
+  "batchId": "BATCH-2026-04-02-002",
+  "createdAt": "2026-04-02T09:13:00Z",
+  "completedAt": "2026-04-02T09:45:00Z",
+  "testers": ["full-run-verification"],
+  "args": { "floors": 2, "domain": "general_knowledge", "type": "verification-run" },
+  "status": "complete",
+  "smokeTestPassed": true,
+  "verifying": "BATCH-2026-04-02-001",
+  "verdict": "FAIL",
+  "reports": {
+    "full-run": "full-run.md"
+  },
+  "fixVerification": {
+    "BUG-001_rewardCrash": "STILL_BROKEN_V2 - crash gone but new stuck state on 2nd reward",
+    "BUG-002_acceptRewardRace": "FIXED",
+    "BUG-003_cardRewardScreen": "BY_DESIGN",
+    "BUG-004_getCombatStateNull": "FIXED",
+    "BONUS_selectDomain": "STILL_BROKEN - wrong DOM selector (data-testid vs CSS class)"
+  },
+  "newBugs": [
+    "BUG-001-V2 [CRITICAL] RewardRoomScene stuck on 2nd activation (removeAllListeners too aggressive + Z-order)",
+    "BUG-002-V2 [MEDIUM] selectDomain() wrong selectors",
+    "BUG-003-V2 [MEDIUM] RewardRoom Z-order (renders behind CombatScene on 2nd activation)"
+  ]
+}
