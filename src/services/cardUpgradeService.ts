@@ -59,7 +59,1133 @@ export interface MasteryStatTable {
  * Empty in Phase 1 — populated incrementally in Phase 2 as mechanics are rebalanced.
  * When a mechanic's key exists here, getMasteryStats() uses this table exclusively.
  */
-export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {};
+export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
+  // ─── ATTACK CARDS (20) — Phase 2 Batch 1 ────────────────────────────────────
+
+  // ── Core Attacks (7) ────────────────────────────────────────────────────────
+
+  /** Standard reliable attack. L3 and L5 are the big damage jumps. */
+  strike: {
+    levels: [
+      { qpValue: 3 },                                                         // L0 — Weak but reliable
+      { qpValue: 4 },                                                         // L1
+      { qpValue: 5 },                                                         // L2
+      { qpValue: 6 },                                                         // L3
+      { qpValue: 7 },                                                         // L4
+      { qpValue: 8 },                                                         // L5 — Bread and butter, fully grown
+    ],
+  },
+
+  /** Multi-hit: low per-hit, scales by adding hits. L1 = 3rd hit, L4 = 4th hit. */
+  multi_hit: {
+    levels: [
+      { qpValue: 1, hitCount: 2 },                                           // L0 — Plinks
+      { qpValue: 1, hitCount: 3 },                                           // L1 — Extra hit!
+      { qpValue: 2, hitCount: 3 },                                           // L2
+      { qpValue: 2, hitCount: 3, tags: ['multi_bleed1'] },                  // L3 — +1 Bleed per hit
+      { qpValue: 2, hitCount: 4 },                                           // L4 — Four hits!
+      { qpValue: 3, hitCount: 4, tags: ['multi_bleed1'] },                  // L5 — Death by a thousand cuts
+    ],
+  },
+
+  /** High-base slow attack. L5 AP reduction is the WOW moment. */
+  heavy_strike: {
+    levels: [
+      { qpValue: 7 },                                                         // L0 — Big but expensive
+      { qpValue: 8 },                                                         // L1
+      { qpValue: 9 },                                                         // L2
+      { qpValue: 10 },                                                        // L3
+      { qpValue: 11 },                                                        // L4
+      { qpValue: 12, apCost: 1 },                                           // L5 — WOW: costs 1 AP now!
+    ],
+  },
+
+  /** Piercing: ignores block. L3 strips enemy block, L5 adds Vuln. */
+  piercing: {
+    levels: [
+      { qpValue: 2 },                                                         // L0 — Weak pierce
+      { qpValue: 3 },                                                         // L1
+      { qpValue: 3 },                                                         // L2
+      { qpValue: 4, tags: ['pierce_strip3'] },                              // L3 — also strips 3 enemy block
+      { qpValue: 5 },                                                         // L4
+      { qpValue: 6, tags: ['pierce_strip3', 'pierce_vuln1'] },             // L5 — also applies Vuln 1t
+    ],
+  },
+
+  /** Reckless: high damage, self-damage decreases as you master it. */
+  reckless: {
+    levels: [
+      { qpValue: 4,  extras: { selfDmg: 4 } },                             // L0 — Hurts you a lot
+      { qpValue: 5,  extras: { selfDmg: 4 } },                             // L1
+      { qpValue: 6,  extras: { selfDmg: 3 } },                             // L2 — Self-damage drops!
+      { qpValue: 8,  extras: { selfDmg: 3 } },                             // L3
+      { qpValue: 10, extras: { selfDmg: 2 } },                             // L4 — Mastering the recklessness
+      { qpValue: 12, extras: { selfDmg: 1 } },                             // L5 — Near-zero risk, full power
+    ],
+  },
+
+  /** Execute: bonus damage below HP threshold. L3 widens to 40%, L5 to 50%. */
+  execute: {
+    levels: [
+      { qpValue: 2, extras: { execBonus: 4 } },                            // L0 — Weak finisher
+      { qpValue: 3, extras: { execBonus: 5 } },                            // L1
+      { qpValue: 3, extras: { execBonus: 6 } },                            // L2
+      { qpValue: 4, extras: { execBonus: 8,  execThreshold: 0.4 } },      // L3 — triggers at 40% HP!
+      { qpValue: 4, extras: { execBonus: 10, execThreshold: 0.4 } },      // L4
+      { qpValue: 5, extras: { execBonus: 12, execThreshold: 0.5 } },      // L5 — triggers at 50%! Massive finisher
+    ],
+  },
+
+  /** Lifetap: heals % of damage dealt. L2 improves heal rate, L5 reduces AP cost. */
+  lifetap: {
+    levels: [
+      { qpValue: 3 },                                                         // L0 — Low base for a 2AP card
+      { qpValue: 4 },                                                         // L1
+      { qpValue: 5, tags: ['lifetap_heal30'] },                             // L2 — heals 30% instead of 20%
+      { qpValue: 6 },                                                         // L3
+      { qpValue: 7 },                                                         // L4
+      { qpValue: 8, apCost: 1 },                                           // L5 — costs 1 AP! Sustain machine
+    ],
+  },
+
+  // ── Expansion Attacks (8) ────────────────────────────────────────────────────
+
+  /** Power Strike: clean scaling, L5 applies Vulnerable 1t. */
+  power_strike: {
+    levels: [
+      { qpValue: 4 },                                                         // L0
+      { qpValue: 5 },                                                         // L1
+      { qpValue: 6 },                                                         // L2
+      { qpValue: 7 },                                                         // L3
+      { qpValue: 8 },                                                         // L4
+      { qpValue: 9, tags: ['power_vuln1'] },                                // L5 — applies Vulnerable 1t
+    ],
+  },
+
+  /** Twin Strike: two hits, L3 adds third hit, L5 adds Burn per hit. */
+  twin_strike: {
+    levels: [
+      { qpValue: 2, hitCount: 2 },                                           // L0
+      { qpValue: 3, hitCount: 2 },                                           // L1
+      { qpValue: 3, hitCount: 2 },                                           // L2
+      { qpValue: 3, hitCount: 3 },                                           // L3 — third strike!
+      { qpValue: 4, hitCount: 3 },                                           // L4
+      { qpValue: 4, hitCount: 3, tags: ['twin_burn2'] },                   // L5 — each hit applies 2 Burn
+    ],
+  },
+
+  /** Iron Wave: attack + block simultaneously. Both scale together. */
+  iron_wave: {
+    levels: [
+      { qpValue: 2, secondaryValue: 3 },                                     // L0 — 2 dmg + 3 block
+      { qpValue: 3, secondaryValue: 4 },                                     // L1
+      { qpValue: 3, secondaryValue: 5 },                                     // L2
+      { qpValue: 4, secondaryValue: 5 },                                     // L3
+      { qpValue: 4, secondaryValue: 6 },                                     // L4
+      { qpValue: 5, secondaryValue: 7 },                                     // L5 — Balanced fighter's dream
+    ],
+  },
+
+  /** Bash: applies Vulnerable. L3 extends to 2 turns, L5 adds Weak. ap=2 at L0 only; L1+ inherits mechanic default. */
+  bash: {
+    levels: [
+      { qpValue: 3, apCost: 2 },                                            // L0 — 3 dmg + Vuln 1t
+      { qpValue: 4 },                                                         // L1
+      { qpValue: 5 },                                                         // L2
+      { qpValue: 5, tags: ['bash_vuln2t'] },                                // L3 — Vuln lasts 2 turns!
+      { qpValue: 6 },                                                         // L4
+      { qpValue: 7, tags: ['bash_vuln2t', 'bash_weak1t'] },                // L5 — also Weakens!
+    ],
+  },
+
+  /** Rupture: attack + Bleed stacks. L5 Bleed becomes permanent (no decay). */
+  rupture: {
+    levels: [
+      { qpValue: 2, secondaryValue: 2 },                                     // L0 — 2 dmg + 2 Bleed
+      { qpValue: 3, secondaryValue: 2 },                                     // L1
+      { qpValue: 3, secondaryValue: 3 },                                     // L2 — More bleed
+      { qpValue: 4, secondaryValue: 3 },                                     // L3
+      { qpValue: 4, secondaryValue: 4 },                                     // L4
+      { qpValue: 5, secondaryValue: 5, tags: ['rupture_bleed_perm'] },     // L5 — Bleed doesn't decay!
+    ],
+  },
+
+  /** Lacerate: Bleed-heavy debuff-style attack. Low direct damage. L5 adds Vuln. */
+  lacerate: {
+    levels: [
+      { qpValue: 1, secondaryValue: 3 },                                     // L0 — 1 dmg + 3 Bleed
+      { qpValue: 2, secondaryValue: 3 },                                     // L1
+      { qpValue: 2, secondaryValue: 4 },                                     // L2
+      { qpValue: 2, secondaryValue: 5 },                                     // L3 — Bleed specialist
+      { qpValue: 3, secondaryValue: 5 },                                     // L4
+      { qpValue: 3, secondaryValue: 6, tags: ['lacerate_vuln1t'] },        // L5 — also Vulnerable 1t
+    ],
+  },
+
+  /** Kindle: deals Burn stacks that trigger immediately. L5 triggers Burn twice. */
+  kindle: {
+    levels: [
+      { qpValue: 1, secondaryValue: 2 },                                     // L0 — 1 dmg + 2 Burn (trigger)
+      { qpValue: 2, secondaryValue: 3 },                                     // L1
+      { qpValue: 2, secondaryValue: 4 },                                     // L2
+      { qpValue: 3, secondaryValue: 4 },                                     // L3
+      { qpValue: 3, secondaryValue: 5 },                                     // L4
+      { qpValue: 4, secondaryValue: 6, tags: ['kindle_double_trigger'] },  // L5 — triggers Burn TWICE
+    ],
+  },
+
+  /** Overcharge: bonus scales with Charges used this encounter. L3 doubles that scaling. */
+  overcharge: {
+    levels: [
+      { qpValue: 2 },                                                         // L0
+      { qpValue: 3 },                                                         // L1
+      { qpValue: 3 },                                                         // L2
+      { qpValue: 4, tags: ['overcharge_bonus_x2'] },                       // L3 — encounter scaling x2!
+      { qpValue: 4 },                                                         // L4
+      { qpValue: 5, tags: ['overcharge_bonus_x2', 'overcharge_draw1'] },  // L5 — also draw 1
+    ],
+  },
+
+  // ── Flagship Attacks (5) ────────────────────────────────────────────────────
+
+  /** Gambit: QP deals damage + self-damage; CC heals. Risk falls as mastery rises. */
+  gambit: {
+    levels: [
+      { qpValue: 4,  extras: { selfDmg: 4, healOnCC: 3 } },               // L0 — Risky
+      { qpValue: 5,  extras: { selfDmg: 4, healOnCC: 4 } },               // L1
+      { qpValue: 6,  extras: { selfDmg: 3, healOnCC: 4 } },               // L2 — Less self-damage
+      { qpValue: 7,  extras: { selfDmg: 3, healOnCC: 5 } },               // L3
+      { qpValue: 8,  extras: { selfDmg: 2, healOnCC: 6 } },               // L4
+      { qpValue: 10, extras: { selfDmg: 1, healOnCC: 8 } },               // L5 — nearly free + massive heal on CC
+    ],
+  },
+
+  /** Chain Lightning: CC scales with chain length. L3 min chain = 2, L5 costs 1 AP. */
+  chain_lightning: {
+    levels: [
+      { qpValue: 3, apCost: 2 },                                            // L0 — Weak without chains
+      { qpValue: 4 },                                                         // L1
+      { qpValue: 4 },                                                         // L2
+      { qpValue: 5, tags: ['chain_lightning_min2'] },                      // L3 — minimum chain count = 2
+      { qpValue: 5 },                                                         // L4
+      { qpValue: 6, apCost: 1, tags: ['chain_lightning_min2'] },          // L5 — 1 AP! Chain nuke
+    ],
+  },
+
+  /** Volatile Slash: CC exhausts the card. L5 removes exhaust penalty — repeatable nuke. */
+  volatile_slash: {
+    levels: [
+      { qpValue: 4  },                                                        // L0 — CC + exhaust
+      { qpValue: 5  },                                                        // L1
+      { qpValue: 6  },                                                        // L2
+      { qpValue: 8  },                                                        // L3
+      { qpValue: 10 },                                                        // L4
+      { qpValue: 12, tags: ['volatile_no_exhaust'] },                      // L5 — no longer exhausts! Repeatable nuke
+    ],
+  },
+
+  /** Precision Strike: CC bonus scales with question difficulty. L3 +50% timer, L5 doubles bonus. */
+  precision_strike: {
+    levels: [
+      { qpValue: 5 },                                                         // L0 — CC + difficulty bonus
+      { qpValue: 6 },                                                         // L1
+      { qpValue: 6 },                                                         // L2
+      { qpValue: 7, tags: ['precision_timer_ext50'] },                     // L3 — +50% quiz timer
+      { qpValue: 8 },                                                         // L4
+      { qpValue: 9, tags: ['precision_timer_ext50', 'precision_bonus_x2'] }, // L5 — difficulty bonus x2
+    ],
+  },
+
+  /** Riposte: attack + block. L5 draws a card. */
+  riposte: {
+    levels: [
+      { qpValue: 2, secondaryValue: 3 },                                     // L0 — 2 dmg + 3 block
+      { qpValue: 3, secondaryValue: 3 },                                     // L1
+      { qpValue: 3, secondaryValue: 4 },                                     // L2
+      { qpValue: 4, secondaryValue: 5 },                                     // L3
+      { qpValue: 4, secondaryValue: 6 },                                     // L4
+      { qpValue: 5, secondaryValue: 7, tags: ['riposte_draw1'] },          // L5 — also draws 1 card
+    ],
+  },
+
+  // ── Chase Attacks (5) ────────────────────────────────────────────────────────
+
+  /** Smite: scales with Aura. L3 doubles Aura scaling, L5 costs 1 AP. */
+  smite: {
+    levels: [
+      { qpValue: 6,  apCost: 2 },                                           // L0 — CC + Aura bonus
+      { qpValue: 7  },                                                        // L1
+      { qpValue: 8  },                                                        // L2
+      { qpValue: 9,  tags: ['smite_aura_x2'] },                            // L3 — Aura scaling x2
+      { qpValue: 10 },                                                        // L4
+      { qpValue: 12, apCost: 1, tags: ['smite_aura_x2'] },                // L5 — 1 AP! Knowledge smash
+    ],
+  },
+
+  /** Feedback Loop: CW = 0 + Aura crash. L3 halves crash, L5 makes CW deal damage instead of 0. */
+  feedback_loop: {
+    levels: [
+      { qpValue: 3 },                                                         // L0 — CW = 0 + crash
+      { qpValue: 4 },                                                         // L1
+      { qpValue: 5 },                                                         // L2
+      { qpValue: 6, tags: ['feedback_crash_half'] },                       // L3 — CW Aura crash halved
+      { qpValue: 7 },                                                         // L4
+      { qpValue: 8, tags: ['feedback_crash_half', 'feedback_cw_nonzero'] }, // L5 — CW deals 50% instead of 0
+    ],
+  },
+
+  /** Recall: bonus CC when card is from review queue. L3 heals on review CC, L5 draws. */
+  recall: {
+    levels: [
+      { qpValue: 5  },                                                        // L0 — CC + review bonus
+      { qpValue: 6  },                                                        // L1
+      { qpValue: 7  },                                                        // L2
+      { qpValue: 8,  tags: ['recall_heal3'] },                             // L3 — also heals 3 on review CC
+      { qpValue: 9  },                                                        // L4
+      { qpValue: 10, tags: ['recall_heal3', 'recall_draw1'] },             // L5 — also draws 1 on review CC
+    ],
+  },
+
+  /** Hemorrhage: consumes all enemy Bleed stacks (damage = bleedMult × stacks). L5 costs 1 AP. */
+  hemorrhage: {
+    levels: [
+      { qpValue: 2, apCost: 2, extras: { bleedMult: 3 } },                 // L0 — 3x Bleed stacks
+      { qpValue: 2, apCost: 2, extras: { bleedMult: 4 } },                 // L1
+      { qpValue: 2, apCost: 2, extras: { bleedMult: 4 } },                 // L2
+      { qpValue: 3, apCost: 2, extras: { bleedMult: 5 } },                 // L3 — 5x Bleed!
+      { qpValue: 3, apCost: 2, extras: { bleedMult: 6 } },                 // L4
+      { qpValue: 4, apCost: 1, extras: { bleedMult: 7 } },                 // L5 — 1 AP! 7x Bleed finisher
+    ],
+  },
+
+  /** Eruption: X-cost (spends all AP), deals dmgPerAp x AP. L5 refunds 1 AP after play. */
+  eruption: {
+    levels: [
+      { qpValue: 0, extras: { dmgPerAp: 6  } },                            // L0 — 6 dmg per AP spent
+      { qpValue: 0, extras: { dmgPerAp: 7  } },                            // L1
+      { qpValue: 0, extras: { dmgPerAp: 8  } },                            // L2
+      { qpValue: 0, extras: { dmgPerAp: 9  } },                            // L3
+      { qpValue: 0, extras: { dmgPerAp: 10 } },                            // L4
+      { qpValue: 0, extras: { dmgPerAp: 12 }, tags: ['eruption_refund1'] }, // L5 — refunds 1 AP after play
+    ],
+  },
+
+
+  // ─── Shield Cards — Phase 2 Batch 2 ────────────────────────────────────────
+
+  // ── Core Shields (7) ──────────────────────────────────────────────────────
+
+  /** block: simple block scaling, reliable baseline */
+  block: {
+    levels: [
+      { qpValue: 3 },                                          // L0: weak but reliable
+      { qpValue: 4 },                                          // L1
+      { qpValue: 5 },                                          // L2
+      { qpValue: 6 },                                          // L3
+      { qpValue: 7 },                                          // L4
+      { qpValue: 8 },                                          // L5: bread-and-butter, fully grown
+    ],
+  },
+
+  /** thorns: block + reflect damage — sec=reflect value */
+  thorns: {
+    levels: [
+      { qpValue: 2, secondaryValue: 1 },                       // L0: 2 block + 1 reflect
+      { qpValue: 3, secondaryValue: 2 },                       // L1
+      { qpValue: 3, secondaryValue: 2 },                       // L2
+      { qpValue: 4, secondaryValue: 3 },                       // L3: real reflect damage
+      { qpValue: 5, secondaryValue: 3 },                       // L4
+      { qpValue: 6, secondaryValue: 4, tags: ['thorns_persist'] }, // L5: thorns persist entire encounter!
+    ],
+  },
+
+  /** emergency: doubles below 30% HP — extras.emergThreshold controls trigger threshold */
+  emergency: {
+    levels: [
+      { qpValue: 2 },                                          // L0: CC=4 (x2 if <30%)
+      { qpValue: 3 },                                          // L1
+      { qpValue: 4 },                                          // L2
+      { qpValue: 5, extras: { emergThreshold: 0.4 } },         // L3: triggers at 40% HP!
+      { qpValue: 6 },                                          // L4
+      { qpValue: 7, extras: { emergThreshold: 0.5 } },         // L5: triggers at 50% HP — defensive anchor
+    ],
+  },
+
+  /** fortify: ap=2, doubles current block — big block potential */
+  fortify: {
+    levels: [
+      { qpValue: 4, apCost: 2 },                               // L0
+      { qpValue: 5 },                                          // L1
+      { qpValue: 6 },                                          // L2
+      { qpValue: 7 },                                          // L3
+      { qpValue: 8 },                                          // L4
+      { qpValue: 10, tags: ['fortify_carry'] },                 // L5: block persists next turn!
+    ],
+  },
+
+  /** brace: block = enemy telegraph value — extra block value from plan is QP base */
+  brace: {
+    levels: [
+      { qpValue: 2 },                                          // L0: CC=4 + telegraph match
+      { qpValue: 3 },                                          // L1
+      { qpValue: 4 },                                          // L2
+      { qpValue: 4, tags: ['brace_exceed2'] },                  // L3: block exceeds telegraph by +2
+      { qpValue: 5 },                                          // L4
+      { qpValue: 6, tags: ['brace_exceed2', 'brace_draw1'] },   // L5: also draws 1
+    ],
+  },
+
+  /** overheal: ap=2, doubles below 50% HP — hybrid offensive/defensive */
+  overheal: {
+    levels: [
+      { qpValue: 3, apCost: 2 },                               // L0
+      { qpValue: 4 },                                          // L1
+      { qpValue: 5 },                                          // L2
+      { qpValue: 6, tags: ['overheal_heal2'] },                 // L3: also heals 2 HP!
+      { qpValue: 7 },                                          // L4
+      { qpValue: 8, tags: ['overheal_heal2', 'overheal_heal_pct5'] }, // L5: also heals 5% max HP
+    ],
+  },
+
+  /** parry: block + draw if enemy attacks — sec=drawCount on enemy attack */
+  parry: {
+    levels: [
+      { qpValue: 1, secondaryValue: 1 },                       // L0: 1 block + draw 1 on enemy atk
+      { qpValue: 2, secondaryValue: 1 },                       // L1
+      { qpValue: 3, secondaryValue: 1 },                       // L2
+      { qpValue: 3, secondaryValue: 2 },                       // L3: draws 2 on enemy attack!
+      { qpValue: 4, secondaryValue: 2 },                       // L4
+      { qpValue: 5, secondaryValue: 2, tags: ['parry_counter3'] }, // L5: also deals 3 damage to attacker
+    ],
+  },
+
+  // ── Expansion Shields (5) ─────────────────────────────────────────────────
+
+  /** reinforce: solid block scaling with late-game draw payoff */
+  reinforce: {
+    levels: [
+      { qpValue: 5 },                                          // L0
+      { qpValue: 6 },                                          // L1
+      { qpValue: 6 },                                          // L2
+      { qpValue: 7 },                                          // L3
+      { qpValue: 8 },                                          // L4
+      { qpValue: 9, tags: ['reinforce_draw1'] },                // L5: also draws 1
+    ],
+  },
+
+  /** shrug_it_off: block + draw — drawCount field */
+  shrug_it_off: {
+    levels: [
+      { qpValue: 2, drawCount: 1 },                            // L0: 2 block + draw 1
+      { qpValue: 3, drawCount: 1 },                            // L1
+      { qpValue: 4, drawCount: 1 },                            // L2
+      { qpValue: 4, drawCount: 2 },                            // L3: draws 2!
+      { qpValue: 5, drawCount: 2 },                            // L4
+      { qpValue: 6, drawCount: 2, tags: ['shrug_cleanse1'] },   // L5: also removes 1 debuff
+    ],
+  },
+
+  /** guard: ap=2, big block with late taunt */
+  guard: {
+    levels: [
+      { qpValue: 8, apCost: 2 },                               // L0
+      { qpValue: 9 },                                          // L1
+      { qpValue: 10 },                                         // L2
+      { qpValue: 11 },                                         // L3
+      { qpValue: 12 },                                         // L4
+      { qpValue: 14, tags: ['guard_taunt1t'] },                 // L5: enemy MUST attack you next turn (taunt)
+    ],
+  },
+
+  /** absorb: block with CC draw payoff — tags activate CC-only effects */
+  absorb: {
+    levels: [
+      { qpValue: 2 },                                          // L0: CC=4 + draw 1
+      { qpValue: 3 },                                          // L1
+      { qpValue: 4 },                                          // L2
+      { qpValue: 4, tags: ['absorb_draw2cc'] },                 // L3: CC draws 2!
+      { qpValue: 5 },                                          // L4
+      { qpValue: 6, tags: ['absorb_draw2cc', 'absorb_heal1cc'] }, // L5: CC also heals 1
+    ],
+  },
+
+  /** reactive_shield: block + thorns — sec=thorns value */
+  reactive_shield: {
+    levels: [
+      { qpValue: 2, secondaryValue: 1 },                       // L0: 2 block + 1 thorns
+      { qpValue: 2, secondaryValue: 2 },                       // L1
+      { qpValue: 3, secondaryValue: 2 },                       // L2
+      { qpValue: 3, secondaryValue: 3 },                       // L3: 3 thorns damage
+      { qpValue: 4, secondaryValue: 3 },                       // L4
+      { qpValue: 5, secondaryValue: 4, tags: ['reactive_thorns_persist'] }, // L5: thorns persist this encounter
+    ],
+  },
+
+  // ── Phase 3 Chase Shields (3) ─────────────────────────────────────────────
+
+  /** bulwark: ap=3, exhausts on CC — massive block ceiling */
+  bulwark: {
+    maxLevel: 5,
+    levels: [
+      { qpValue: 7, apCost: 3 },                               // L0: CC=12 + exhaust
+      { qpValue: 8 },                                          // L1
+      { qpValue: 10 },                                         // L2
+      { qpValue: 12 },                                         // L3
+      { qpValue: 14 },                                         // L4
+      { qpValue: 16, apCost: 2, tags: ['bulwark_no_exhaust'] }, // L5: 2 AP + no exhaust!
+    ],
+  },
+
+  /** conversion (Shield Bash): deal damage = current block — sec block treated separately */
+  conversion: {
+    maxLevel: 5,
+    levels: [
+      { qpValue: 3 },                                          // L0: CC=5 + deals block as dmg
+      { qpValue: 4 },                                          // L1
+      { qpValue: 5 },                                          // L2
+      { qpValue: 5, tags: ['conversion_bonus_50pct'] },         // L3: deals 150% of block
+      { qpValue: 6 },                                          // L4
+      { qpValue: 7, tags: ['conversion_bonus_50pct', 'conversion_keep_block'] }, // L5: doesn't consume block!
+    ],
+  },
+
+  /** ironhide: ap=2, block + Strength — extras.str and extras.strPerm */
+  ironhide: {
+    maxLevel: 5,
+    levels: [
+      { qpValue: 3, apCost: 2, extras: { str: 1, strPerm: 0 } },  // L0: +1 Str (temporary)
+      { qpValue: 4,            extras: { str: 1, strPerm: 0 } },  // L1
+      { qpValue: 5,            extras: { str: 1, strPerm: 0 } },  // L2
+      { qpValue: 5,            extras: { str: 1, strPerm: 1 } },  // L3: Strength is PERMANENT on CC!
+      { qpValue: 6,            extras: { str: 2, strPerm: 1 } },  // L4: +2 Str!
+      { qpValue: 7, apCost: 1, extras: { str: 2, strPerm: 1 } },  // L5: 1 AP!
+    ],
+  },
+  // ── Buff Cards ──
+
+  empower: {
+    levels: [
+      { qpValue: 30 },                                           // L0: 30% boost
+      { qpValue: 35 },                                           // L1
+      { qpValue: 40 },                                           // L2
+      { qpValue: 45, tags: ['empower_2cards'] },                 // L3: boosts next 2 cards!
+      { qpValue: 50 },                                           // L4
+      { qpValue: 60, tags: ['empower_2cards'] },                 // L5: 60% to next 2 cards
+    ],
+  },
+
+  quicken: {
+    levels: [
+      { qpValue: 1, apCost: 0 },                                 // L0: +1 AP
+      { qpValue: 1, tags: ['quicken_draw1'] },                   // L1: also draws 1!
+      { qpValue: 1, tags: ['quicken_draw1'] },                   // L2
+      { qpValue: 1, tags: ['quicken_draw2'] },                   // L3: draws 2!
+      { qpValue: 1, tags: ['quicken_draw2'] },                   // L4
+      { qpValue: 1, tags: ['quicken_draw2', 'quicken_ap2'] },    // L5: +2 AP instead of +1!
+    ],
+  },
+
+  focus: {
+    levels: [
+      { qpValue: 1 },                                            // L0: next card -1 AP
+      { qpValue: 1 },                                            // L1
+      { qpValue: 1, tags: ['focus_draw1'] },                     // L2: also draws 1
+      { qpValue: 1, apCost: 0, tags: ['focus_draw1', 'focus_ap0'] }, // L3: Focus itself costs 0 AP!
+      { qpValue: 1, apCost: 0, tags: ['focus_draw1', 'focus_ap0'] }, // L4
+      { qpValue: 1, apCost: 0, tags: ['focus_draw1', 'focus_next2free'] }, // L5: next 2 cards cost 0!
+    ],
+  },
+
+  double_strike: {
+    levels: [
+      { qpValue: 1, apCost: 2, extras: { hitMult: 75 } },        // L0: 75% power per hit (QP)
+      { qpValue: 1, apCost: 2, extras: { hitMult: 80 } },        // L1
+      { qpValue: 1, apCost: 2, extras: { hitMult: 85 } },        // L2
+      { qpValue: 1, apCost: 2, extras: { hitMult: 90 } },        // L3
+      { qpValue: 1, apCost: 2, extras: { hitMult: 95 } },        // L4
+      { qpValue: 1, apCost: 2, extras: { hitMult: 100 }, tags: ['double_strike_pierce'] }, // L5: 100% power + pierces block!
+    ],
+  },
+
+  inscription_fury: {
+    levels: [
+      { qpValue: 1, apCost: 2 },                                 // L0: +1 flat ATK all combat
+      { qpValue: 1, apCost: 2 },                                 // L1
+      { qpValue: 2, apCost: 2 },                                 // L2: +2 flat ATK
+      { qpValue: 2, apCost: 2 },                                 // L3
+      { qpValue: 3, apCost: 2 },                                 // L4: +3 flat ATK
+      { qpValue: 3, apCost: 2, tags: ['insc_fury_cc_bonus2'] },  // L5: CC gets extra +2 on top
+    ],
+  },
+
+  inscription_iron: {
+    levels: [
+      { qpValue: 1, apCost: 2 },                                 // L0: +1 block per turn all combat
+      { qpValue: 2, apCost: 2 },                                 // L1: +2
+      { qpValue: 2, apCost: 2 },                                 // L2
+      { qpValue: 3, apCost: 2 },                                 // L3: +3
+      { qpValue: 3, apCost: 2 },                                 // L4
+      { qpValue: 4, apCost: 2, tags: ['insc_iron_thorns1'] },    // L5: also +1 thorns per turn
+    ],
+  },
+
+  warcry: {
+    levels: [
+      { qpValue: 1, extras: { str: 1, strTurns: 1 } },           // L0: +1 Str (this turn)
+      { qpValue: 1, extras: { str: 2, strTurns: 1 } },           // L1
+      { qpValue: 1, extras: { str: 2, strTurns: 2 } },           // L2: lasts 2 turns
+      { qpValue: 1, extras: { str: 2, strTurns: 2 }, tags: ['warcry_freecharge'] }, // L3: next Charge free!
+      { qpValue: 1, extras: { str: 3, strTurns: 2 } },           // L4
+      { qpValue: 1, extras: { str: 3, strTurns: 99 }, tags: ['warcry_freecharge'] }, // L5: +3 Str PERMANENT on CC!
+    ],
+  },
+
+  battle_trance: {
+    levels: [
+      { qpValue: 0, drawCount: 2 },                              // L0: Draw 2 (lockout on QP/CW)
+      { qpValue: 0, drawCount: 2 },                              // L1
+      { qpValue: 0, drawCount: 3 },                              // L2: Draw 3!
+      { qpValue: 0, drawCount: 3, tags: ['trance_no_lockout_qp'] }, // L3: QP no longer locks you out!
+      { qpValue: 0, drawCount: 4 },                              // L4: Draw 4!
+      { qpValue: 0, drawCount: 4, tags: ['trance_no_lockout_qp', 'trance_cc_ap1'] }, // L5: CC grants +1 AP
+    ],
+  },
+
+  frenzy: {
+    levels: [
+      { qpValue: 1, apCost: 2, extras: { freeCards: 1 } },       // L0: Next 1 card free
+      { qpValue: 1, apCost: 2, extras: { freeCards: 2 } },       // L1: Next 2 free!
+      { qpValue: 1, apCost: 2, extras: { freeCards: 2 } },       // L2
+      { qpValue: 1, apCost: 2, extras: { freeCards: 3 } },       // L3: next 3 free!
+      { qpValue: 1, apCost: 2, extras: { freeCards: 3 } },       // L4
+      { qpValue: 1, apCost: 1, extras: { freeCards: 3 }, tags: ['frenzy_draw1'] }, // L5: 1 AP + draws 1
+    ],
+  },
+
+  mastery_surge: {
+    levels: [
+      { qpValue: 0, extras: { targets: 1 } },                    // L0: +1 mastery to 1 card
+      { qpValue: 0, extras: { targets: 1 } },                    // L1
+      { qpValue: 0, extras: { targets: 2 } },                    // L2: 2 cards!
+      { qpValue: 0, extras: { targets: 2 }, tags: ['msurge_choose'] }, // L3: choose which cards (not random)
+      { qpValue: 0, extras: { targets: 3 } },                    // L4: 3 cards!
+      { qpValue: 0, extras: { targets: 3 }, tags: ['msurge_choose', 'msurge_plus2'] }, // L5: +2 mastery per card!
+    ],
+  },
+
+  // ── Debuff Cards ──
+
+  weaken: {
+    levels: [
+      { qpValue: 0, extras: { stacks: 1, turns: 1 } },           // L0: 1 Weakness, 1 turn
+      { qpValue: 0, extras: { stacks: 1, turns: 2 } },           // L1: Lasts 2 turns
+      { qpValue: 0, extras: { stacks: 1, turns: 2 } },           // L2
+      { qpValue: 0, extras: { stacks: 2, turns: 2 } },           // L3: 2 stacks!
+      { qpValue: 0, extras: { stacks: 2, turns: 3 } },           // L4
+      { qpValue: 0, extras: { stacks: 3, turns: 3 } },           // L5: 3 stacks, 3 turns
+    ],
+  },
+
+  expose: {
+    levels: [
+      { qpValue: 0, extras: { stacks: 1, turns: 1 } },           // L0: 1 Vulnerable, 1 turn
+      { qpValue: 0, extras: { stacks: 1, turns: 1 } },           // L1
+      { qpValue: 0, extras: { stacks: 1, turns: 2 } },           // L2: Lasts 2 turns
+      { qpValue: 0, extras: { stacks: 2, turns: 2 } },           // L3: 2 stacks!
+      { qpValue: 0, extras: { stacks: 2, turns: 2 } },           // L4
+      { qpValue: 0, extras: { stacks: 2, turns: 3 }, tags: ['expose_dmg3'] }, // L5: also deals 3 damage
+    ],
+  },
+
+  hex: {
+    levels: [
+      { qpValue: 0, extras: { stacks: 2, turns: 2 } },           // L0: 2 Poison, 2 turns
+      { qpValue: 0, extras: { stacks: 2, turns: 3 } },           // L1
+      { qpValue: 0, extras: { stacks: 3, turns: 3 } },           // L2
+      { qpValue: 0, extras: { stacks: 3, turns: 3 }, tags: ['hex_vuln1t'] }, // L3: also Vulnerable 1t
+      { qpValue: 0, extras: { stacks: 4, turns: 3 } },           // L4
+      { qpValue: 0, extras: { stacks: 5, turns: 4 }, tags: ['hex_vuln1t'] }, // L5: massive poison
+    ],
+  },
+
+  slow: {
+    levels: [
+      { qpValue: 0, apCost: 2 },                                 // L0: Skip enemy defend/buff
+      { qpValue: 0, apCost: 2 },                                 // L1
+      { qpValue: 0, apCost: 2, tags: ['slow_any_action'] },      // L2: can skip ANY action, not just defend/buff!
+      { qpValue: 0, apCost: 1, tags: ['slow_any_action'] },      // L3: costs 1 AP!
+      { qpValue: 0, apCost: 1 },                                 // L4
+      { qpValue: 0, apCost: 1, tags: ['slow_any_action', 'slow_weak1t'] }, // L5: also applies Weakness 1t
+    ],
+  },
+
+  sap: {
+    levels: [
+      { qpValue: 1 },                                            // L0: 1 dmg + Weakness 1t
+      { qpValue: 2 },                                            // L1: 2 dmg
+      { qpValue: 2, tags: ['sap_weak2t'] },                      // L2: Weakness lasts 2t
+      { qpValue: 3, tags: ['sap_weak2t'] },                      // L3
+      { qpValue: 3 },                                            // L4
+      { qpValue: 4, tags: ['sap_weak2t', 'sap_strip3block'] },   // L5: also strips 3 enemy block
+    ],
+  },
+
+  corrode: {
+    levels: [
+      { qpValue: 2 },                                            // L0: CC=4 + strip block + Weak 1t
+      { qpValue: 3 },                                            // L1
+      { qpValue: 3 },                                            // L2
+      { qpValue: 4, tags: ['corrode_vuln1t'] },                  // L3: also Vulnerable 1t
+      { qpValue: 4 },                                            // L4
+      { qpValue: 5, tags: ['corrode_vuln1t', 'corrode_strip_all'] }, // L5: strips ALL enemy block
+    ],
+  },
+
+  curse_of_doubt: {
+    levels: [
+      { qpValue: 0, extras: { pctBonus: 15, turns: 1 } },        // L0: +15% charge dmg, 1t
+      { qpValue: 0, extras: { pctBonus: 20, turns: 2 } },        // L1
+      { qpValue: 0, extras: { pctBonus: 25, turns: 2 } },        // L2
+      { qpValue: 0, extras: { pctBonus: 30, turns: 2 } },        // L3
+      { qpValue: 0, extras: { pctBonus: 35, turns: 3 } },        // L4
+      { qpValue: 0, extras: { pctBonus: 45, turns: 3 } },        // L5: nearly half more damage for 3 turns
+    ],
+  },
+
+  mark_of_ignorance: {
+    levels: [
+      { qpValue: 0, extras: { flatBonus: 2, turns: 1 } },        // L0: +2 flat charge dmg, 1t
+      { qpValue: 0, extras: { flatBonus: 2, turns: 2 } },        // L1
+      { qpValue: 0, extras: { flatBonus: 3, turns: 2 } },        // L2
+      { qpValue: 0, extras: { flatBonus: 3, turns: 3 } },        // L3: 3 turns!
+      { qpValue: 0, extras: { flatBonus: 4, turns: 3 } },        // L4
+      { qpValue: 0, extras: { flatBonus: 5, turns: 3 } },        // L5: +5 flat per charge
+    ],
+  },
+
+  corroding_touch: {
+    levels: [
+      { qpValue: 0, apCost: 0, extras: { weakStacks: 1, weakTurns: 1 } }, // L0
+      { qpValue: 0, extras: { weakStacks: 1, weakTurns: 2 } },   // L1
+      { qpValue: 0, extras: { weakStacks: 2, weakTurns: 2 } },   // L2
+      { qpValue: 0, extras: { weakStacks: 2, weakTurns: 2 }, tags: ['corrtouch_vuln1t'] }, // L3: also Vulnerable 1t
+      { qpValue: 0, extras: { weakStacks: 2, weakTurns: 3 } },   // L4
+      { qpValue: 0, extras: { weakStacks: 3, weakTurns: 3 }, tags: ['corrtouch_vuln1t'] }, // L5: 3 stacks + Vuln
+    ],
+  },
+
+  entropy: {
+    levels: [
+      { qpValue: 0, apCost: 2, extras: { burn: 2, poison: 1, poisonTurns: 2 } },  // L0
+      { qpValue: 0, apCost: 2, extras: { burn: 3, poison: 2, poisonTurns: 2 } },  // L1
+      { qpValue: 0, apCost: 2, extras: { burn: 4, poison: 2, poisonTurns: 2 } },  // L2
+      { qpValue: 0, apCost: 2, extras: { burn: 4, poison: 3, poisonTurns: 3 } },  // L3: poison lasts 3t
+      { qpValue: 0, apCost: 2, extras: { burn: 5, poison: 3, poisonTurns: 3 } },  // L4
+      { qpValue: 0, apCost: 1, extras: { burn: 6, poison: 4, poisonTurns: 3 } },  // L5: 1 AP!
+    ],
+  },
+
+  // ── Utility Cards ──
+
+  cleanse: {
+    levels: [
+      { qpValue: 0, drawCount: 0 },                              // L0: Remove debuffs
+      { qpValue: 0, drawCount: 1 },                              // L1: also draws 1!
+      { qpValue: 0, drawCount: 1 },                              // L2
+      { qpValue: 0, drawCount: 1, tags: ['cleanse_heal3'] },     // L3: also heals 3 HP
+      { qpValue: 0, drawCount: 2 },                              // L4: draws 2!
+      { qpValue: 0, drawCount: 2, tags: ['cleanse_heal3', 'cleanse_block3'] }, // L5: +3 block too
+    ],
+  },
+
+  scout: {
+    levels: [
+      { qpValue: 0, drawCount: 1, apCost: 1 },                   // L0: Draw 1
+      { qpValue: 0, drawCount: 2 },                              // L1: Draw 2!
+      { qpValue: 0, drawCount: 2 },                              // L2
+      { qpValue: 0, drawCount: 2, tags: ['scout_scry2'] },       // L3: also scry 2
+      { qpValue: 0, drawCount: 3 },                              // L4: Draw 3!
+      { qpValue: 0, drawCount: 3, apCost: 0, tags: ['scout_scry2'] }, // L5: FREE! Draw 3 + scry 2
+    ],
+  },
+
+  recycle: {
+    levels: [
+      { qpValue: 0, drawCount: 2 },                              // L0: Draw 2
+      { qpValue: 0, drawCount: 2 },                              // L1
+      { qpValue: 0, drawCount: 3 },                              // L2: Draw 3!
+      { qpValue: 0, drawCount: 3, tags: ['recycle_discard_pick'] }, // L3: choose which card from discard
+      { qpValue: 0, drawCount: 3 },                              // L4
+      { qpValue: 0, drawCount: 4, tags: ['recycle_discard_pick'] }, // L5: draw 4 + pick from discard
+    ],
+  },
+
+  foresight: {
+    levels: [
+      { qpValue: 0, drawCount: 1, apCost: 0 },                   // L0: Free draw 1
+      { qpValue: 0, drawCount: 1 },                              // L1
+      { qpValue: 0, drawCount: 2 },                              // L2: Draw 2!
+      { qpValue: 0, drawCount: 2, tags: ['foresight_intent'] },  // L3: see enemy's NEXT intent too
+      { qpValue: 0, drawCount: 2 },                              // L4
+      { qpValue: 0, drawCount: 3, tags: ['foresight_intent'] },  // L5: free draw 3 + see next intent
+    ],
+  },
+
+  conjure: {
+    levels: [
+      { qpValue: 0, extras: { picks: 1, tier: 1 } },             // L0: Choose 1 of 3 common cards
+      { qpValue: 0, extras: { picks: 1, tier: 1 } },             // L1
+      { qpValue: 0, extras: { picks: 1, tier: 2 } },             // L2: uncommon cards!
+      { qpValue: 0, extras: { picks: 2, tier: 2 } },             // L3: pick 2 cards!
+      { qpValue: 0, extras: { picks: 2, tier: 2 } },             // L4
+      { qpValue: 0, extras: { picks: 2, tier: 3 } },             // L5: pick 2 rare cards!
+    ],
+  },
+
+  forge: {
+    levels: [
+      { qpValue: 0, extras: { upgrades: 1, amount: 1 } },        // L0: +1 mastery to 1 card
+      { qpValue: 0, extras: { upgrades: 1, amount: 1 } },        // L1
+      { qpValue: 0, extras: { upgrades: 1, amount: 2 } },        // L2: +2 mastery!
+      { qpValue: 0, extras: { upgrades: 2, amount: 1 } },        // L3: upgrade 2 cards
+      { qpValue: 0, extras: { upgrades: 2, amount: 2 } },        // L4
+      { qpValue: 0, extras: { upgrades: 3, amount: 2 } },        // L5: +2 mastery to 3 cards!
+    ],
+  },
+
+  transmute: {
+    levels: [
+      { qpValue: 0, extras: { transforms: 1 } },                 // L0: Transform weakest card
+      { qpValue: 0, extras: { transforms: 1 } },                 // L1
+      { qpValue: 0, extras: { transforms: 1 }, tags: ['transmute_choose'] }, // L2: choose which card
+      { qpValue: 0, extras: { transforms: 1 }, tags: ['transmute_choose', 'transmute_upgrade1'] }, // L3: transformed card gets +1 mastery
+      { qpValue: 0, extras: { transforms: 1 }, tags: ['transmute_choose', 'transmute_upgrade1'] }, // L4
+      { qpValue: 0, extras: { transforms: 2 }, tags: ['transmute_choose', 'transmute_upgrade1'] }, // L5: transform 2 cards!
+    ],
+  },
+
+  immunity: {
+    levels: [
+      { qpValue: 0, extras: { absorb: 4 } },                     // L0: Absorb up to 4 dmg
+      { qpValue: 0, extras: { absorb: 5 } },                     // L1
+      { qpValue: 0, extras: { absorb: 6 } },                     // L2
+      { qpValue: 0, extras: { absorb: 8 } },                     // L3: absorbs 8!
+      { qpValue: 0, extras: { absorb: 10 } },                    // L4
+      { qpValue: 0, extras: { absorb: 12 }, tags: ['immunity_reflect50'] }, // L5: reflects 50% of absorbed damage
+    ],
+  },
+
+  sift: {
+    levels: [
+      { qpValue: 0, extras: { scryCount: 2 } },                  // L0: Look at top 2
+      { qpValue: 0, extras: { scryCount: 3 } },                  // L1
+      { qpValue: 0, extras: { scryCount: 3 } },                  // L2
+      { qpValue: 0, extras: { scryCount: 4 }, tags: ['sift_draw1'] }, // L3: also draw 1
+      { qpValue: 0, extras: { scryCount: 5 } },                  // L4
+      { qpValue: 0, extras: { scryCount: 5 }, tags: ['sift_draw1', 'sift_discard_dmg2'] }, // L5: discarded cards deal 2 dmg each
+    ],
+  },
+
+  scavenge: {
+    levels: [
+      { qpValue: 0, extras: { picks: 1 } },                      // L0: Put 1 card from discard on top
+      { qpValue: 0, extras: { picks: 1 } },                      // L1
+      { qpValue: 0, extras: { picks: 1 }, tags: ['scavenge_draw1'] }, // L2: also draw 1
+      { qpValue: 0, extras: { picks: 2 }, tags: ['scavenge_draw1'] }, // L3: pick 2 cards!
+      { qpValue: 0, extras: { picks: 2 } },                      // L4
+      { qpValue: 0, apCost: 0, extras: { picks: 2 }, tags: ['scavenge_draw1'] }, // L5: costs 0 AP!
+    ],
+  },
+
+  swap: {
+    levels: [
+      { qpValue: 0, drawCount: 1, apCost: 0 },                   // L0: Discard 1, draw 1 (free)
+      { qpValue: 0, drawCount: 1 },                              // L1
+      { qpValue: 0, drawCount: 2 },                              // L2: Discard 1, draw 2!
+      { qpValue: 0, drawCount: 2, tags: ['swap_cc_draw3'] },     // L3: CC draws 3!
+      { qpValue: 0, drawCount: 2 },                              // L4
+      { qpValue: 0, drawCount: 3, tags: ['swap_cc_draw3'] },     // L5: discard 1, draw 3
+    ],
+  },
+
+  archive: {
+    levels: [
+      { qpValue: 0, extras: { retain: 1 } },                     // L0: Retain 1 card
+      { qpValue: 0, extras: { retain: 1 } },                     // L1
+      { qpValue: 0, extras: { retain: 2 } },                     // L2: retain 2!
+      { qpValue: 0, extras: { retain: 2 }, tags: ['archive_block2_per'] }, // L3: retained cards gain +2 block
+      { qpValue: 0, extras: { retain: 3 } },                     // L4: Retain 3!
+      { qpValue: 0, extras: { retain: 3 }, tags: ['archive_block2_per', 'archive_draw1'] }, // L5: also draw 1
+    ],
+  },
+
+  reflex: {
+    levels: [
+      { qpValue: 0, drawCount: 1, extras: { passiveBlock: 2 } }, // L0: Draw 1; passive: discard=2 block
+      { qpValue: 0, drawCount: 2, extras: { passiveBlock: 2 } }, // L1: Draw 2!
+      { qpValue: 0, drawCount: 2, extras: { passiveBlock: 3 } }, // L2
+      { qpValue: 0, drawCount: 2, extras: { passiveBlock: 3 }, tags: ['reflex_draw3cc'] }, // L3: CC draws 3
+      { qpValue: 0, drawCount: 3, extras: { passiveBlock: 4 } }, // L4
+      { qpValue: 0, drawCount: 3, extras: { passiveBlock: 5 }, tags: ['reflex_draw3cc'] }, // L5: draw 3 + 5 block on discard
+    ],
+  },
+
+  recollect: {
+    levels: [
+      { qpValue: 0, extras: { returns: 1 } },                    // L0: Return 1 exhausted
+      { qpValue: 0, extras: { returns: 1 } },                    // L1
+      { qpValue: 0, extras: { returns: 2 } },                    // L2: return 2!
+      { qpValue: 0, extras: { returns: 2 }, tags: ['recollect_upgrade1'] }, // L3: returned cards +1 mastery
+      { qpValue: 0, extras: { returns: 3 } },                    // L4
+      { qpValue: 0, extras: { returns: 3 }, tags: ['recollect_upgrade1', 'recollect_play_free'] }, // L5: play 1 returned card free!
+    ],
+  },
+
+  synapse: {
+    levels: [
+      { qpValue: 0, drawCount: 1 },                              // L0: Draw 1
+      { qpValue: 0, drawCount: 2 },                              // L1: Draw 2!
+      { qpValue: 0, drawCount: 2 },                              // L2
+      { qpValue: 0, drawCount: 2, tags: ['synapse_chain_link'] }, // L3: CC counts as wildcard chain link!
+      { qpValue: 0, drawCount: 3 },                              // L4: Draw 3!
+      { qpValue: 0, drawCount: 3, tags: ['synapse_chain_link', 'synapse_chain_plus1'] }, // L5: chain link +1 bonus
+    ],
+  },
+
+  siphon_knowledge: {
+    levels: [
+      { qpValue: 0, drawCount: 1, apCost: 2, extras: { previewSec: 2 } }, // L0: Draw 1, 2s preview
+      { qpValue: 0, drawCount: 2, apCost: 2, extras: { previewSec: 3 } }, // L1
+      { qpValue: 0, drawCount: 2, apCost: 2, extras: { previewSec: 3 } }, // L2
+      { qpValue: 0, drawCount: 2, apCost: 1, extras: { previewSec: 4 } }, // L3: 1 AP! 4s preview
+      { qpValue: 0, drawCount: 3, apCost: 1, extras: { previewSec: 4 } }, // L4
+      { qpValue: 0, drawCount: 3, apCost: 1, extras: { previewSec: 5 }, tags: ['siphon_eliminate1'] }, // L5: eliminate 1 wrong answer
+    ],
+  },
+
+  tutor: {
+    levels: [
+      { qpValue: 0, extras: { search: 1 } },                     // L0: Search for 1 card
+      { qpValue: 0, extras: { search: 1 } },                     // L1
+      { qpValue: 0, extras: { search: 1 }, tags: ['tutor_free_play'] }, // L2: found card costs 0 AP this turn!
+      { qpValue: 0, extras: { search: 2 }, tags: ['tutor_free_play'] }, // L3: search top 2 choices
+      { qpValue: 0, extras: { search: 2 } },                     // L4
+      { qpValue: 0, apCost: 0, extras: { search: 3 }, tags: ['tutor_free_play'] }, // L5: 0 AP! Search 3, play free
+    ],
+  },
+
+  // ── Wild Cards ──
+
+  mirror: {
+    levels: [
+      { qpValue: 0, extras: { copyMult: 70 } },                  // L0: Copy at 70% (stored ×100)
+      { qpValue: 0, extras: { copyMult: 80 } },                  // L1
+      { qpValue: 0, extras: { copyMult: 90 } },                  // L2
+      { qpValue: 0, extras: { copyMult: 100 } },                 // L3: 100% copy!
+      { qpValue: 0, extras: { copyMult: 100 } },                 // L4
+      { qpValue: 0, extras: { copyMult: 100 }, tags: ['mirror_chain_inherit'] }, // L5: inherits chain type
+    ],
+  },
+
+  adapt: {
+    levels: [
+      { qpValue: 3 },                                            // L0: 3 dmg or 3 block or cleanse
+      { qpValue: 4 },                                            // L1
+      { qpValue: 5 },                                            // L2
+      { qpValue: 5, tags: ['adapt_draw1'] },                     // L3: also draws 1
+      { qpValue: 6 },                                            // L4
+      { qpValue: 7, tags: ['adapt_draw1', 'adapt_dual'] },       // L5: does BOTH attack and block
+    ],
+  },
+
+  overclock: {
+    levels: [
+      { qpValue: 0, apCost: 2, extras: { mult: 150 } },          // L0: Next card ×1.5 (stored ×100)
+      { qpValue: 0, apCost: 2, extras: { mult: 160 } },          // L1
+      { qpValue: 0, apCost: 2, extras: { mult: 170 } },          // L2
+      { qpValue: 0, apCost: 2, extras: { mult: 180 } },          // L3
+      { qpValue: 0, apCost: 2, extras: { mult: 190 } },          // L4
+      { qpValue: 0, apCost: 1, extras: { mult: 200 } },          // L5: 1 AP + full ×2.0!
+    ],
+  },
+
+  phase_shift: {
+    levels: [
+      { qpValue: 3 },                                            // L0: 3 dmg OR 3 block; CC=5 both
+      { qpValue: 4 },                                            // L1
+      { qpValue: 5 },                                            // L2
+      { qpValue: 6 },                                            // L3
+      { qpValue: 7 },                                            // L4
+      { qpValue: 8, tags: ['phase_shift_draw1'] },               // L5: also draws 1
+    ],
+  },
+
+  chameleon: {
+    levels: [
+      { qpValue: 0, extras: { qpMult: 70, ccMult: 100, cwMult: 50 } },   // L0
+      { qpValue: 0, extras: { qpMult: 80, ccMult: 100, cwMult: 50 } },   // L1
+      { qpValue: 0, extras: { qpMult: 90, ccMult: 110, cwMult: 60 } },   // L2
+      { qpValue: 0, extras: { qpMult: 100, ccMult: 120, cwMult: 70 } },  // L3: QP copy at 100%!
+      { qpValue: 0, extras: { qpMult: 100, ccMult: 130, cwMult: 70 } },  // L4
+      { qpValue: 0, extras: { qpMult: 100, ccMult: 150, cwMult: 80 }, tags: ['chameleon_chain'] }, // L5: CC at 150% + chain
+    ],
+  },
+
+  dark_knowledge: {
+    levels: [
+      { qpValue: 0, extras: { dmgPerCurse: 2 } },                // L0: 2 dmg per curse
+      { qpValue: 0, extras: { dmgPerCurse: 3 } },                // L1
+      { qpValue: 0, extras: { dmgPerCurse: 3 } },                // L2
+      { qpValue: 0, extras: { dmgPerCurse: 4 } },                // L3
+      { qpValue: 0, extras: { dmgPerCurse: 5 } },                // L4
+      { qpValue: 0, extras: { dmgPerCurse: 6 }, tags: ['dark_heal1_per_curse'] }, // L5: also heals 1 per curse
+    ],
+  },
+
+  chain_anchor: {
+    levels: [
+      { qpValue: 0, drawCount: 1 },                              // L0: Draw 1 + CC sets chain to 2
+      { qpValue: 0, drawCount: 1 },                              // L1
+      { qpValue: 0, drawCount: 2 },                              // L2: Draw 2!
+      { qpValue: 0, drawCount: 2, tags: ['chain_anchor_set3'] }, // L3: sets chain to 3!
+      { qpValue: 0, drawCount: 2 },                              // L4
+      { qpValue: 0, drawCount: 3, apCost: 0, tags: ['chain_anchor_set3', 'chain_anchor_ap0'] }, // L5: 0 AP + draw 3 + chain 3
+    ],
+  },
+
+  unstable_flux: {
+    levels: [
+      { qpValue: 4 },                                            // L0: Random effect at ×0.8
+      { qpValue: 5 },                                            // L1
+      { qpValue: 6 },                                            // L2
+      { qpValue: 6, tags: ['flux_choose_qp'] },                  // L3: QP also lets you choose!
+      { qpValue: 7 },                                            // L4
+      { qpValue: 8, tags: ['flux_choose_qp', 'flux_double'] },   // L5: effect fires twice!
+    ],
+  },
+
+  sacrifice: {
+    levels: [
+      { qpValue: 0, apCost: 0, extras: { hpCost: 6, draw: 1, apGain: 1 } },  // L0
+      { qpValue: 0, apCost: 0, extras: { hpCost: 5, draw: 2, apGain: 1 } },  // L1: Less HP cost, draw 2
+      { qpValue: 0, apCost: 0, extras: { hpCost: 5, draw: 2, apGain: 1 } },  // L2
+      { qpValue: 0, apCost: 0, extras: { hpCost: 4, draw: 2, apGain: 2 } },  // L3: +2 AP!
+      { qpValue: 0, apCost: 0, extras: { hpCost: 3, draw: 3, apGain: 2 } },  // L4
+      { qpValue: 0, apCost: 0, extras: { hpCost: 2, draw: 3, apGain: 2 } },  // L5: only 2 HP for 3 draw + 2 AP
+    ],
+  },
+
+  catalyst: {
+    levels: [
+      { qpValue: 0, tags: ['catalyst_poison'] },                 // L0: Double Poison
+      { qpValue: 0, tags: ['catalyst_poison'] },                 // L1
+      { qpValue: 0, tags: ['catalyst_poison', 'catalyst_burn'] }, // L2: also doubles Burn!
+      { qpValue: 0, tags: ['catalyst_poison', 'catalyst_burn'] }, // L3
+      { qpValue: 0, tags: ['catalyst_poison', 'catalyst_burn', 'catalyst_bleed'] }, // L4: also doubles Bleed!
+      { qpValue: 0, tags: ['catalyst_poison', 'catalyst_burn', 'catalyst_bleed', 'catalyst_triple'] }, // L5: TRIPLE instead of double!
+    ],
+  },
+
+  mimic: {
+    levels: [
+      { qpValue: 0, extras: { qpMult: 60 } },                    // L0: Random discard at 60%
+      { qpValue: 0, extras: { qpMult: 70 } },                    // L1
+      { qpValue: 0, extras: { qpMult: 80 } },                    // L2
+      { qpValue: 0, extras: { qpMult: 80 }, tags: ['mimic_choose'] }, // L3: choose which card!
+      { qpValue: 0, extras: { qpMult: 90 } },                    // L4
+      { qpValue: 0, extras: { qpMult: 100 }, tags: ['mimic_choose'] }, // L5: 100% power + choose
+    ],
+  },
+
+  aftershock: {
+    levels: [
+      { qpValue: 0, extras: { qpMult: 40, ccMult: 50 } },        // L0
+      { qpValue: 0, extras: { qpMult: 50, ccMult: 60 } },        // L1
+      { qpValue: 0, extras: { qpMult: 50, ccMult: 70 } },        // L2
+      { qpValue: 0, extras: { qpMult: 60, ccMult: 80 } },        // L3
+      { qpValue: 0, extras: { qpMult: 70, ccMult: 90 } },        // L4
+      { qpValue: 0, extras: { qpMult: 80, ccMult: 100 }, tags: ['aftershock_no_quiz'] }, // L5: CC repeat at 100%, no quiz!
+    ],
+  },
+
+  knowledge_bomb: {
+    levels: [
+      { qpValue: 0, apCost: 2, extras: { perCorrect: 3 } },      // L0: 3 dmg per correct charge
+      { qpValue: 0, apCost: 2, extras: { perCorrect: 3 } },      // L1
+      { qpValue: 0, apCost: 2, extras: { perCorrect: 4 } },      // L2
+      { qpValue: 0, apCost: 2, extras: { perCorrect: 4 }, tags: ['kbomb_count_past'] }, // L3: counts ALL charges this run, not encounter
+      { qpValue: 0, apCost: 2, extras: { perCorrect: 5 } },      // L4
+      { qpValue: 0, apCost: 1, extras: { perCorrect: 6 }, tags: ['kbomb_count_past'] }, // L5: 1 AP! 6 per charge this run
+    ],
+  },
+
+  ignite: {
+    levels: [
+      { qpValue: 0, extras: { burnStacks: 2 } },                 // L0: Next attack +2 Burn
+      { qpValue: 0, extras: { burnStacks: 3 } },                 // L1
+      { qpValue: 0, extras: { burnStacks: 3 } },                 // L2
+      { qpValue: 0, extras: { burnStacks: 4 }, tags: ['ignite_2attacks'] }, // L3: applies to next 2 attacks!
+      { qpValue: 0, extras: { burnStacks: 5 } },                 // L4
+      { qpValue: 0, extras: { burnStacks: 6 }, tags: ['ignite_2attacks'] }, // L5: 6 Burn on next 2 attacks
+    ],
+  },
+
+  war_drum: {
+    levels: [
+      { qpValue: 0, extras: { bonus: 1 } },                      // L0: +1 to all hand cards
+      { qpValue: 0, extras: { bonus: 1 } },                      // L1
+      { qpValue: 0, extras: { bonus: 2 } },                      // L2: +2!
+      { qpValue: 0, extras: { bonus: 2 } },                      // L3
+      { qpValue: 0, extras: { bonus: 3 } },                      // L4: +3!
+      { qpValue: 0, extras: { bonus: 4 }, tags: ['war_drum_draw1'] }, // L5: +4 to all + draw 1
+    ],
+  },
+
+  inscription_wisdom: {
+    levels: [
+      { qpValue: 0, apCost: 2, extras: { drawPerCC: 1, healPerCC: 0 } }, // L0: Each future CC draws 1 extra
+      { qpValue: 0, apCost: 2, extras: { drawPerCC: 1, healPerCC: 0 } }, // L1
+      { qpValue: 0, apCost: 2, extras: { drawPerCC: 1, healPerCC: 1 } }, // L2: also heal 1 per CC!
+      { qpValue: 0, apCost: 2, extras: { drawPerCC: 1, healPerCC: 1 } }, // L3
+      { qpValue: 0, apCost: 2, extras: { drawPerCC: 2, healPerCC: 1 } }, // L4: draw 2 per CC!
+      { qpValue: 0, apCost: 2, extras: { drawPerCC: 2, healPerCC: 2 } }, // L5: draw 2 + heal 2 per CC
+    ],
+  },
+
+  aegis_pulse: {
+    levels: [
+      { qpValue: 2 },                                            // L0: 2 block; CC: same-chain cards +2 block
+      { qpValue: 3 },                                            // L1
+      { qpValue: 4 },                                            // L2
+      { qpValue: 4, tags: ['aegis_chain_buff3'] },               // L3: chain cards get +3 block
+      { qpValue: 5 },                                            // L4
+      { qpValue: 6, tags: ['aegis_chain_buff3', 'aegis_draw1cc'] }, // L5: CC also draws 1
+    ],
+  },
+
+  siphon_strike: {
+    levels: [
+      { qpValue: 2, extras: { minHeal: 1, maxHeal: 6 } },        // L0
+      { qpValue: 3, extras: { minHeal: 1, maxHeal: 7 } },        // L1
+      { qpValue: 3, extras: { minHeal: 2, maxHeal: 8 } },        // L2
+      { qpValue: 4, extras: { minHeal: 2, maxHeal: 10 } },       // L3: heals up to 10
+      { qpValue: 5, extras: { minHeal: 3, maxHeal: 10 } },       // L4
+      { qpValue: 6, extras: { minHeal: 3, maxHeal: 12 } },       // L5: guaranteed 3 heal, up to 12
+    ],
+  },
+
+  stagger: {
+    levels: [
+      { qpValue: 1 },                                            // L0: Skip enemy action
+      { qpValue: 1 },                                            // L1
+      { qpValue: 1, tags: ['stagger_weak1t'] },                  // L2: also Weakness 1t
+      { qpValue: 1, tags: ['stagger_weak1t', 'stagger_draw1'] }, // L3: also draws 1
+      { qpValue: 1, tags: ['stagger_weak1t', 'stagger_draw1'] }, // L4
+      { qpValue: 0, apCost: 0, tags: ['stagger_weak1t', 'stagger_draw1'] }, // L5: costs 0 AP!
+    ],
+  },
+
+};
 
 /**
  * Get resolved stats for a mechanic at a given mastery level.

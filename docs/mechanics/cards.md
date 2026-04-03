@@ -150,24 +150,32 @@ Cards gain mastery during a run by answering Charge correctly; lose mastery on w
 - `MASTERY_BASE_DISTRACTORS = 2` (L0), `MASTERY_UPGRADED_DISTRACTORS = 3` (L1+)
 - Colors: L0=none, L1=green `#22c55e`, L2=blue `#3b82f6`, L3=purple `#a855f7`, L4=orange `#f97316`, L5=gold `#eab308`
 
-### Mastery Scaling — Stat Table System (Phase 1 Infrastructure, 2026-04-03)
+### Mastery Scaling — Stat Table System (Phase 2 Complete, 2026-04-03)
 
-The mastery system is being migrated from a linear `perLevelDelta` model to per-level explicit stat snapshots. Two systems run in parallel:
+The mastery system uses two systems in parallel:
 
-**Old system (still active for all 98 mechanics):**
+**Old system (bridge, still active for mechanics not in stat tables):**
 ```typescript
 // MASTERY_UPGRADE_DEFS in cardUpgradeService.ts
 getMasteryBaseBonus(mechanicId, level) = perLevelDelta × level
 getMasterySecondaryBonus(mechanicId, level) = secondaryPerLevelDelta × level
 ```
 
-**New system (infrastructure only in Phase 1 — no mechanics migrated yet):**
+**New system (Phase 2 complete — 96 mechanics now have explicit per-level tables):**
 ```typescript
-// MASTERY_STAT_TABLES in cardUpgradeService.ts (empty until Phase 2)
+// MASTERY_STAT_TABLES in cardUpgradeService.ts (96 entries across all card types)
 getMasteryStats(mechanicId, level): MasteryLevelStats | null
 ```
 
 `getMasteryStats()` is the unified lookup. It checks `MASTERY_STAT_TABLES` first; if the mechanic has no entry there, it synthesizes an identical `MasteryLevelStats` from `MASTERY_UPGRADE_DEFS` so all callers work without behavior change.
+
+**Stat table coverage (96 entries in 4 groups):**
+- Attacks (20): core attacks, expansion attacks, flagship attacks, chase attacks
+- Shields (20): core shields, expansion shields, phase 3 chase shields
+- Buffs (10): empower, quicken, focus, double_strike, inscription_fury, inscription_iron, warcry, battle_trance, frenzy, mastery_surge
+- Debuffs (10): weaken, expose, hex, slow, sap, corrode, curse_of_doubt, mark_of_ignorance, corroding_touch, entropy
+- Utility (16): cleanse, scout, recycle, foresight, conjure, forge, transmute, immunity, sift, scavenge, swap, archive, reflex, recollect, synapse, siphon_knowledge, tutor
+- Wild (20): mirror, adapt, overclock, phase_shift, chameleon, dark_knowledge, chain_anchor, unstable_flux, sacrifice, catalyst, mimic, aftershock, knowledge_bomb, ignite, war_drum, inscription_wisdom, aegis_pulse, siphon_strike, stagger, and more
 
 All consumers (`cardEffectResolver.ts`, `damagePreviewService.ts`, `cardDescriptionService.ts`, `turnManager.ts`) now call `getMasteryStats()`. The old helpers (`getMasteryBaseBonus`, `getMasterySecondaryBonus`, `getMasteryAddedTag`, `getMasteryApReduction`) are marked `@deprecated` but remain for the bridge.
 

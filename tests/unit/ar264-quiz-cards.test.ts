@@ -85,12 +85,12 @@ describe('Recall (AR-264)', () => {
     resetReviewQueue();
   });
 
-  it('QP: deals 10 damage', () => {
+  it('QP: deals 5 damage (stat table L0 QP=5)', () => {
     const card = makeCard({ mechanicId: 'recall' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'quick',
     });
-    expect(result.damageDealt).toBe(10);
+    expect(result.damageDealt).toBe(5);
   });
 
   it('CC (normal fact): deals 20 damage, no heal', () => {
@@ -122,12 +122,12 @@ describe('Recall (AR-264)', () => {
     expect(result.healApplied).toBe(0);
   });
 
-  it('CW: deals 6 damage', () => {
+  it('CW: deals 1 damage (chargeWrongValue=6 + masteryBonus=-5 = 1, stat table L0 QP=5 vs mechanic QP=10)', () => {
     const card = makeCard({ mechanicId: 'recall' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'charge_wrong',
     });
-    expect(result.damageDealt).toBe(6);
+    expect(result.damageDealt).toBe(1);
   });
 });
 
@@ -141,12 +141,12 @@ describe('Precision Strike (AR-264)', () => {
     resetReviewQueue();
   });
 
-  it('QP: deals 8 damage', () => {
+  it('QP: deals 5 damage (stat table L0 QP=5)', () => {
     const card = makeCard({ mechanicId: 'precision_strike' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'quick',
     });
-    expect(result.damageDealt).toBe(8);
+    expect(result.damageDealt).toBe(5);
   });
 
   it('CC at 2 distractors (mastery 0): deals 24 damage (8 × 3)', () => {
@@ -184,12 +184,12 @@ describe('Precision Strike (AR-264)', () => {
     expect(result.damageDealt).toBe(24);
   });
 
-  it('CW: deals 4 damage', () => {
+  it('CW: deals 1 damage (chargeWrongValue=4 + masteryBonus=-3 = 1, stat table L0 QP=5 vs mechanic QP=8)', () => {
     const card = makeCard({ mechanicId: 'precision_strike' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'charge_wrong',
     });
-    expect(result.damageDealt).toBe(4);
+    expect(result.damageDealt).toBe(1);
   });
 });
 
@@ -295,12 +295,12 @@ describe('Smite (AR-264)', () => {
     resetReviewQueue();
   });
 
-  it('QP: deals 10 damage (flat, independent of fog)', () => {
+  it('QP: deals 6 damage (stat table L0 QP=6; flat, independent of fog)', () => {
     const card = makeCard({ mechanicId: 'smite' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'quick',
     });
-    expect(result.damageDealt).toBe(10);
+    expect(result.damageDealt).toBe(6);
   });
 
   it('CC at fog 0 (flow_state, start): deals 70 damage (10 + 6×(10-0))', () => {
@@ -370,12 +370,12 @@ describe('Feedback Loop (AR-264)', () => {
     resetReviewQueue();
   });
 
-  it('QP: deals 5 damage', () => {
+  it('QP: deals 3 damage (stat table L0 QP=3)', () => {
     const card = makeCard({ mechanicId: 'feedback_loop' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'quick',
     });
-    expect(result.damageDealt).toBe(5);
+    expect(result.damageDealt).toBe(3);
   });
 
   it('CC at fog 0 (flow_state, start): deals 56 damage (40 + 16 bonus)', () => {
