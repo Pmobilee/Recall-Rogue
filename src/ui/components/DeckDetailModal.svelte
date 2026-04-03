@@ -307,7 +307,7 @@
 
   /* LEFT COLUMN — scrollable */
   .col-left {
-    flex: 1;
+    flex: 3;
     min-width: 0;
     overflow-y: auto;
     padding: calc(24px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1)) calc(28px * var(--layout-scale, 1));
@@ -320,13 +320,15 @@
 
   /* RIGHT COLUMN — fixed, vertically centered */
   .col-right {
-    flex: 0 0 calc(240px * var(--layout-scale, 1));
+    flex: 1;
+    min-width: calc(180px * var(--layout-scale, 1));
+    max-width: calc(220px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
     gap: calc(20px * var(--layout-scale, 1));
-    padding: calc(24px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
+    padding: calc(20px * var(--layout-scale, 1));
   }
 
   /* Deck header */
@@ -565,7 +567,7 @@
 
   .btn-start {
     width: 100%;
-    height: calc(52px * var(--layout-scale, 1));
+    height: calc(44px * var(--layout-scale, 1));
     background: linear-gradient(135deg, #16a34a, #15803d);
     border: none;
     border-radius: calc(10px * var(--layout-scale, 1));
@@ -589,7 +591,7 @@
 
   .btn-playlist {
     width: 100%;
-    height: calc(40px * var(--layout-scale, 1));
+    height: calc(36px * var(--layout-scale, 1));
     background: transparent;
     border: 1px solid rgba(99, 102, 241, 0.5);
     border-radius: calc(8px * var(--layout-scale, 1));
