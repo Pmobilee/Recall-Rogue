@@ -2,7 +2,7 @@ import Phaser from 'phaser'
 import { DepthLightingFX } from '../shaders/DepthLightingFX'
 import { getCombatDepthMap } from '../../data/backgroundManifest'
 import { getDeviceTier } from '../../services/deviceTierService'
-import type { AtmosphereConfig } from '../../data/roomAtmosphere'
+import type { AtmosphereConfig, MicroAnimConfig } from '../../data/roomAtmosphere'
 import { resolveCombatLights, getFlickerForLight } from '../../data/lightSourceResolver'
 import type { BackgroundLightSource } from '../../data/lightSourceManifest'
 
@@ -243,6 +243,16 @@ export class DepthLightingSystem {
       this.activePipeline.setBreathing(0.0015, 0.6)
     }
 
+    // ── Depth shader micro-animations (Spec 08) ───────────────────────
+    // Tier gating: low-end = all off (system disabled at constructor level);
+    // mid = torch flicker + fog drift; flagship = all three including water ripple.
+    // reduce-motion = all off.
+    if (reduceMotion) {
+      this.disableMicroAnim()
+    } else {
+      this.setMicroAnimConfig(config.depthShaderAnim)
+    }
+
     // ── Point lights from manifest ───────────────────────────────────────
     // lightConfig was resolved earlier (needed for ambient calculation).
     // For backgrounds with NO manifest lights, add a synthetic overhead light
@@ -272,6 +282,40 @@ export class DepthLightingSystem {
 
     // Push initial (un-flickered) light data
     this.pushPointLightsToShader(0)
+  }
+
+  // ── Micro-animation control (Spec 08) ──────────────────────────────────
+
+  /**
+   * Apply depth-shader micro-animation uniforms with device tier gating.
+   *
+   * Tier gating:
+   * - low-end: entire system is disabled at constructor level — this method is
+   *   only called when `this.enabled` is true (mid or flagship).
+   * - mid: torch flicker + fog drift enabled; water ripple disabled.
+   * - flagship: all three effects enabled.
+   *
+   * @param config Per-biome micro-animation intensities from AtmosphereConfig.depthShaderAnim
+   */
+  public setMicroAnimConfig(config: MicroAnimConfig): void {
+    if (!this.enabled || !this.activePipeline) return
+    const tier = getDeviceTier()
+    const isFlagship = tier === 'flagship'
+    this.activePipeline.setMicroAnimation(
+      config.torchFlickerIntensity,            // mid + flagship
+      isFlagship ? config.waterRippleStrength : 0,  // flagship only
+      config.fogDriftOpacity,                  // mid + flagship
+    )
+  }
+
+  /**
+   * Disable all three micro-animation effects immediately.
+   * Called when reduce-motion is active (all uniforms set to 0.0).
+   * No-op if no pipeline is active.
+   */
+  public disableMicroAnim(): void {
+    if (!this.activePipeline) return
+    this.activePipeline.setMicroAnimation(0, 0, 0)
   }
 
   // ── Chain light override methods (Spec 03) ──────────────────────────────

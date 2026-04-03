@@ -2,7 +2,7 @@
 
 > **Purpose:** Phaser game systems — visual effects, enemy rendering, atmosphere, and game tick management
 > **Last verified:** 2026-04-03
-> **Source files:** `src/game/systems/TickSystem.ts`, `src/game/systems/ImpactSystem.ts`, `src/game/systems/StatusEffectVisualSystem.ts`, `src/game/systems/CombatParticleSystem.ts`, `src/game/systems/EnemySpriteSystem.ts`, `src/game/systems/WeaponAnimationSystem.ts`, `src/game/systems/DepthLightingSystem.ts`, `src/game/systems/CombatAtmosphereSystem.ts`, `src/game/systems/ScreenShakeSystem.ts`, `src/game/systems/ChallengeTracker.ts`
+> **Source files:** `src/game/systems/TickSystem.ts`, `src/game/systems/ImpactSystem.ts`, `src/game/systems/StatusEffectVisualSystem.ts`, `src/game/systems/CombatParticleSystem.ts`, `src/game/systems/EnemySpriteSystem.ts`, `src/game/systems/WeaponAnimationSystem.ts`, `src/game/systems/DepthLightingSystem.ts`, `src/game/systems/CombatAtmosphereSystem.ts`, `src/game/systems/ScreenShakeSystem.ts`, `src/game/systems/ChallengeTracker.ts`, `src/game/systems/ForegroundParallaxSystem.ts`
 
 > See also: [scenes.md](scenes.md) for CardGameManager, BootScene, CombatScene, RewardRoomScene, and scene transitions
 
@@ -113,8 +113,10 @@ Attaches `DepthLightingFX` PostFX pipeline to the combat background image for de
 |---|---|
 | `queueDepthMapLoad(enemyId, bgKey)` | Queue depth map PNG in current Phaser load batch |
 | `setEnemyContext(enemyId, floor)` | Store context for point light resolution |
-| `attachToBackground(bgImage, atm)` | Attach PostFX pipeline to the background image |
-| `applyAtmosphere(config)` | Configure pipeline with atmosphere color/intensity |
+| `attachToBackground(bgImage)` | Attach PostFX pipeline to the background image |
+| `applyAtmosphere(config)` | Configure pipeline with atmosphere color/intensity; also applies depth shader micro-animations |
+| `setMicroAnimConfig(config)` | Apply `MicroAnimConfig` with device tier gating (mid: torch+fog; flagship: all three) |
+| `disableMicroAnim()` | Set all three micro-animation uniforms to 0 (for reduce-motion) |
 | `animateLightsIn(durationMs)` | Fade all point light intensities from 0 to base over duration; called during enemy entrance reveal; no-op on low-end or when no pipeline active |
 | `pulseLight(color, intensity, durationMs, x, y)` | One-shot radial glow at screen position (ADD blend Graphics circle, depth 997); tweens alpha 0→peak→0 with quadratic ease; fire-and-forget; no-op on low-end |
 | `flickerOnePointLight(durationMs)` | Dims first registered point light to 0 and restores over durationMs (3 equal phases: dim/hold/restore); silent no-op if no point lights active |
@@ -123,6 +125,16 @@ Attaches `DepthLightingFX` PostFX pipeline to the combat background image for de
 Depth map key format: `depth-{bgKey}`. Depth map path resolved by `getCombatDepthMap(enemyId)`.
 
 **Ambient level resolution** (inside `applyAtmosphere`): uses `lightSourceManifest` `ambientOverride` when present, otherwise `0.15` for rooms with point lights or `0.40` for rooms without. A hard floor clamp of `Math.max(ambientLevel, 0.30)` is applied after all logic so no enemy background ever goes below 30% brightness — prevents the near-black overlay that low `ambientOverride` values (e.g. `0.06` on `ink_slug`) caused.
+
+**Depth shader micro-animations (Spec 08):** Three GLSL effects added to `DepthLightingFX` driven by the depth map and `uTime`. All read from `AtmosphereConfig.depthShaderAnim` (`MicroAnimConfig` interface in `src/data/roomAtmosphere.ts`):
+
+| Effect | GLSL uniform | Depth mask | Tier |
+|---|---|---|---|
+| Torch flicker | `uTorchFlickerIntensity` | bright/near (depth > 0.6) | mid + flagship |
+| Water ripple | `uWaterRippleStrength` | dark/far (depth < 0.35) | flagship only |
+| Fog drift | `uFogDriftOpacity` | far regions (additive fog) | mid + flagship |
+
+Per-biome intensities: `dust` (0.08/0.000/0.04), `embers` (0.12/0.000/0.06), `ice` (0.04/0.002/0.03), `arcane` (0.06/0.001/0.08), `void` (0.03/0.003/0.10). All disabled when `card:reduceMotionMode` is true.
 
 ### CombatAtmosphereSystem
 
@@ -186,6 +198,49 @@ Tracks weekly challenge progress stored in `PlayerSave.weeklyChallenge`. Auto-re
 **Stats tracked:** `blocksMinedThisWeek`, `factsLearnedThisWeek`, `fossilsFoundThisWeek`, `deepestLayerThisWeek`, `artifactsFoundThisWeek`, `studySessionsThisWeek`, `diveCompletionsThisWeek`, `quizCorrectThisWeek`, `mineralsCollectedThisWeek`, `dataDiscsFoundThisWeek`.
 
 Constructor takes `getSave: () => PlayerSave` and `persistSave: () => void` callbacks. Key methods: `increment(key, by?)`, `updateMax(key, value)`, `getProgress(key)`, plus convenience methods like `recordFactLearned()`, `recordRunComplete()`, etc.
+
+---
+
+### ForegroundParallaxSystem
+
+**File:** `src/game/systems/ForegroundParallaxSystem.ts`
+**Data:** `src/data/foregroundElements.ts`
+**Spec:** `docs/immersion/07-foreground-parallax.md`
+
+Renders sparse semi-transparent foreground overlay sprites at Phaser **depth 13** (above front particles at 12, below HUD/UI layers) to create a depth illusion. Per-biome element pools are defined in `FOREGROUND_ELEMENTS` (dust/embers/ice/arcane/void). Element count is gated by device tier (low=1, mid=2, flagship=3).
+
+**Placeholder textures:** Generated procedurally via `Phaser.GameObjects.Graphics.generateTexture()` in `createPlaceholderTextures()`. Only creates a texture if it doesn't already exist in the cache — so real PNG assets placed at `src/assets/sprites/foreground/fg_[name].png` and loaded via `this.load.image()` take precedence.
+
+**Element selection:** `selectForegroundElements(theme)` picks N without replacement from the biome pool. For N=2, prefers `top-left` + `bottom-right` for balanced visual weight. Anchor slots resolve to edge positions via `resolveAnchorPosition()` — always within 60px of screen edges so enemy sprites and card hand UI are never obscured.
+
+| Method | Description |
+|---|---|
+| `createPlaceholderTextures()` | Generate procedural placeholder textures once in `CombatScene.create()` |
+| `start(theme, w, h)` | Begin the layer for an encounter; stops any existing elements first |
+| `update(delta)` | Idle breathing drift: 8s period X (±0.5px), 10s period Y (±0.3px), per-element phase offset prevents lockstep |
+| `onDamage(shakeOffset)` | Shift elements 1.5× the shake offset via short yoyo tween; no-op on reduce-motion or low-end |
+| `onTurnTransition()` | 1px rightward yoyo tween (150ms); no-op on reduce-motion |
+| `resize(w, h)` | Recalculate all base positions for new viewport dimensions |
+| `stop()` | Destroy sprites; safe to call when not active |
+| `destroy()` | Full teardown including container; call on scene shutdown |
+
+**Reduce-motion:** Sprites display statically at base positions; `update()`, `onDamage()`, and `onTurnTransition()` are all no-ops.
+
+**Device tier gating:**
+| Tier | Elements | Breathing | Reactive shift |
+|---|---|---|---|
+| low-end | 1 | Disabled | Disabled |
+| mid | 2 | Enabled | Enabled |
+| flagship | 3 | Enabled | Enabled |
+
+**CombatScene wiring:**
+- Instantiated and `createPlaceholderTextures()` called in `create()`
+- `start(theme, w, h)` called in `setEnemy()` after `atmosphereSystem.start()`
+- `update(delta)` called in scene `update()` loop
+- `onTurnTransition()` called in `playTurnTransitionToPlayer()`
+- `resize(w, h)` called in `onScaleResize()`
+- `destroy()` called in `onShutdown()`
+
 
 ---
 

@@ -49,6 +49,11 @@ uniform vec3 uPointLightPos[MAX_LIGHTS];    // x,y in UV space, z = depth (0=far
 uniform vec3 uPointLightColor[MAX_LIGHTS];  // RGB 0-1
 uniform vec2 uPointLightParams[MAX_LIGHTS]; // x=radius(UV), y=intensity
 
+// Micro-animation
+uniform float uTorchFlickerIntensity;  // 0.0 = off, 0.08 = subtle default
+uniform float uWaterRippleStrength;    // 0.0 = off, 0.002 = subtle default
+uniform float uFogDriftOpacity;        // 0.0 = off, 0.06 = subtle default
+
 varying vec2 outTexCoord;
 
 // Convert FBO UV (viewport space) to image UV (full image space) for depth map
@@ -94,8 +99,39 @@ void main() {
     imgUV = fboToImageUV(fboUV);
   }
 
+  // --------------------------------------------------------
+  // Water ripple: UV distortion in dark/far depth regions.
+  // Must go AFTER breathing UV modification and BEFORE color sample
+  // so the distorted UV is used for the final texture read.
+  // Flagship only (uQualityLevel >= 2).
+  // --------------------------------------------------------
+  if (uWaterRippleStrength > 0.0 && uQualityLevel >= 2) {
+    // Sample depth at current (post-breathing) imgUV to compute mask
+    float rawDepth = sampleDepth(imgUV);
+    // farMask: full effect below depth 0.15, fades out above 0.35
+    float farMask = smoothstep(0.35, 0.15, rawDepth);
+    // Horizontal ripple wave scrolling upward in UV space
+    float ripple = sin(fboUV.y * 20.0 + uTime * 1.5) * uWaterRippleStrength * farMask;
+    fboUV += vec2(ripple, 0.0);
+    fboUV = clamp(fboUV, vec2(0.0), vec2(1.0));
+    imgUV = fboToImageUV(fboUV);
+  }
+
   vec4 color = texture2D(uMainSampler, fboUV);
   float depth = sampleDepth(imgUV);
+
+  // --------------------------------------------------------
+  // Torch flicker: animated brightness in near/bright depth regions.
+  // Applied after color sample so it multiplies the sampled color.
+  // Mid and flagship (uQualityLevel >= 1).
+  // --------------------------------------------------------
+  if (uTorchFlickerIntensity > 0.0 && uQualityLevel >= 1) {
+    // nearMask: full effect above depth 0.8, fades in from 0.6
+    float nearMask = smoothstep(0.6, 0.8, depth);
+    // Nested sin pattern: cheap spatial noise without texture reads
+    float flicker = sin(uTime * 3.0 + sin(fboUV.x * 4.0) * sin(fboUV.y * 3.7)) * uTorchFlickerIntensity;
+    color.rgb *= 1.0 + flicker * nearMask;
+  }
 
   float tw = uTexelSize.x;
   float th = uTexelSize.y;
@@ -230,6 +266,21 @@ void main() {
   float fogFactor = smoothstep(uFogNear, uFogFar, 1.0 - depth) * uFogDensity;
 
   // --------------------------------------------------------
+  // Fog drift: slow-scrolling noise overlay that adds density
+  // variation to the existing fog, confined to far regions.
+  // Mid and flagship (uQualityLevel >= 1).
+  // --------------------------------------------------------
+  if (uFogDriftOpacity > 0.0 && uQualityLevel >= 1) {
+    // Scrolling UV: mostly horizontal drift, very slow (full cycle ~125s)
+    vec2 driftUV = fboUV * 3.0 + vec2(uTime * 0.05, uTime * 0.01);
+    // Product of two sines at different frequencies: cellular-like noise, no texture read
+    float driftNoise = sin(driftUV.x) * sin(driftUV.y * 1.4) * 0.5 + 0.5;  // normalize to 0-1
+    // Add to existing fog factor, stronger in far (low depth) regions
+    fogFactor += driftNoise * uFogDriftOpacity * (1.0 - depth);
+    fogFactor = clamp(fogFactor, 0.0, 1.0);
+  }
+
+  // --------------------------------------------------------
   // 5. Combine: base lighting (multiplicative) + point lights (additive)
   //    Point lights are added AFTER base darkening so they can illuminate
   //    even in rooms with very low ambient. This creates vivid colored
@@ -274,6 +325,8 @@ const MAX_LIGHTS = 8
  * - Directional lighting with 5-step quantization (pixel-art aesthetic)
  * - Depth-based atmospheric fog (far = more fog)
  * - SSAO: 4-tap on mid quality, 8-tap on flagship quality
+ * - Micro-animations: torch flicker (near regions), water ripple (far UV distortion),
+ *   fog drift (slow-scrolling density variation) — all depth-masked and tier-gated
  */
 export class DepthLightingFX extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline {
   private _depthGlTexture: WebGLTexture | null = null
@@ -295,6 +348,11 @@ export class DepthLightingFX extends Phaser.Renderer.WebGL.Pipelines.PostFXPipel
   private _ssaoStrength = 0.3
   private _breathAmplitude = 0
   private _breathFreq = 1.0
+
+  // Micro-animation uniforms (Spec 08)
+  private _torchFlickerIntensity = 0
+  private _waterRippleStrength = 0
+  private _fogDriftOpacity = 0
 
   // Cover-crop remapping (viewport UV → image UV)
   private _cropScale: [number, number] = [1, 1]
@@ -432,6 +490,28 @@ export class DepthLightingFX extends Phaser.Renderer.WebGL.Pipelines.PostFXPipel
   }
 
   /**
+   * Configure all three depth-map-driven micro-animations (Spec 08).
+   *
+   * - Torch flicker: multiplies color brightness in near/bright depth regions (depth > 0.6)
+   *   using a spatial sin-noise pattern. Mid + flagship.
+   * - Water ripple: distorts UV horizontally in far/dark depth regions (depth < 0.35)
+   *   before texture sampling. Flagship only.
+   * - Fog drift: adds slow-scrolling noise variation to the fog density factor,
+   *   stronger in far regions. Mid + flagship.
+   *
+   * Set all to 0 to disable (used for reduce-motion and low-end devices).
+   *
+   * @param torch Torch flicker intensity. 0.0 = off. 0.08 = subtle default.
+   * @param ripple Water ripple UV strength. 0.0 = off. 0.002 = subliminal default.
+   * @param fogDrift Fog drift opacity. 0.0 = off. 0.06 = subtle default.
+   */
+  setMicroAnimation(torch: number, ripple: number, fogDrift: number): void {
+    this._torchFlickerIntensity = torch
+    this._waterRippleStrength = ripple
+    this._fogDriftOpacity = fogDrift
+  }
+
+  /**
    * Set point light positions, colors, and parameters.
    * @param lights Array of light data objects. Max 8 lights.
    */
@@ -501,6 +581,11 @@ export class DepthLightingFX extends Phaser.Renderer.WebGL.Pipelines.PostFXPipel
 
     // Point lights — set count here, arrays set in onDraw via raw GL
     this.set1i('uLightCount', this._lightCount)
+
+    // Micro-animation (Spec 08)
+    this.set1f('uTorchFlickerIntensity', this._torchFlickerIntensity)
+    this.set1f('uWaterRippleStrength', this._waterRippleStrength)
+    this.set1f('uFogDriftOpacity', this._fogDriftOpacity)
   }
 
   onDraw(renderTarget: Phaser.Renderer.WebGL.RenderTarget): void {

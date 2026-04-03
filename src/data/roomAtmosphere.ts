@@ -8,6 +8,19 @@
 /** Visual theme tied to dungeon floor range. */
 export type FloorTheme = 'dust' | 'embers' | 'ice' | 'arcane' | 'void'
 
+/**
+ * Configuration for the three depth-map-driven micro-animations in DepthLightingFX (Spec 08).
+ * All values map directly to GLSL uniforms — 0.0 disables the effect.
+ */
+export interface MicroAnimConfig {
+  /** Torch flicker intensity in near/bright depth regions. 0.0 = off, 0.08 = subtle. */
+  torchFlickerIntensity: number
+  /** Water ripple UV distortion strength in dark/far depth regions. 0.0 = off, 0.002 = subliminal. */
+  waterRippleStrength: number
+  /** Fog drift density variation opacity. 0.0 = off, 0.06 = subtle. */
+  fogDriftOpacity: number
+}
+
 /** Full atmosphere configuration for a floor theme. */
 export interface AtmosphereConfig {
   theme: FloorTheme
@@ -136,6 +149,14 @@ export interface AtmosphereConfig {
     /** Scale of the enemy reaction effect (0.0–1.0). */
     reactionIntensity: number
   }
+
+  // ── Depth shader micro-animation (Spec 08) ────────────────
+  /**
+   * Per-biome config for the three depth-map-driven background animations in DepthLightingFX.
+   * Applied by DepthLightingSystem.applyAtmosphere() with tier gating:
+   *   low-end: all off | mid: torch + fogDrift only | flagship: all three
+   */
+  depthShaderAnim: MicroAnimConfig
 }
 
 /** Master presets for all five floor themes. */
@@ -174,6 +195,7 @@ export const ATMOSPHERE_PRESETS: Record<FloorTheme, AtmosphereConfig> = {
     parallax: { swayAmplitudeX: 3, swayAmplitudeY: 2, swayDuration: 5000 },
     haze: { enabled: false, strength: 0, yStart: 0 },
     microAnimation: { oscillatorFreq: 0.003, enemyReaction: 'torch_flicker', reactionIntensity: 0.3 },
+    depthShaderAnim: { torchFlickerIntensity: 0.08, waterRippleStrength: 0.000, fogDriftOpacity: 0.04 },
   },
 
   // ── Embers — floors 4-6 — hot orange, lava ─────────────────────────────
@@ -211,6 +233,7 @@ export const ATMOSPHERE_PRESETS: Record<FloorTheme, AtmosphereConfig> = {
     parallax: { swayAmplitudeX: 2, swayAmplitudeY: 1, swayDuration: 4000 },
     haze: { enabled: true, strength: 0.005, yStart: 0.5 },
     microAnimation: { oscillatorFreq: 0.004, enemyReaction: 'torch_flicker', reactionIntensity: 0.5 },
+    depthShaderAnim: { torchFlickerIntensity: 0.12, waterRippleStrength: 0.000, fogDriftOpacity: 0.06 },
   },
 
   // ── Ice — floors 7-9 — cool blue ────────────────────────────────────────
@@ -247,6 +270,7 @@ export const ATMOSPHERE_PRESETS: Record<FloorTheme, AtmosphereConfig> = {
     parallax: { swayAmplitudeX: 2, swayAmplitudeY: 1, swayDuration: 6000 },
     haze: { enabled: false, strength: 0, yStart: 0 },
     microAnimation: { oscillatorFreq: 0.002, enemyReaction: 'ice_shiver', reactionIntensity: 0.4 },
+    depthShaderAnim: { torchFlickerIntensity: 0.04, waterRippleStrength: 0.002, fogDriftOpacity: 0.03 },
   },
 
   // ── Arcane — floors 10-12 — pale purple ─────────────────────────────────
@@ -284,6 +308,7 @@ export const ATMOSPHERE_PRESETS: Record<FloorTheme, AtmosphereConfig> = {
     parallax: { swayAmplitudeX: 4, swayAmplitudeY: 2, swayDuration: 7000 },
     haze: { enabled: false, strength: 0, yStart: 0 },
     microAnimation: { oscillatorFreq: 0.0025, enemyReaction: 'arcane_pulse', reactionIntensity: 0.4 },
+    depthShaderAnim: { torchFlickerIntensity: 0.06, waterRippleStrength: 0.001, fogDriftOpacity: 0.08 },
   },
 
   // ── Void — floors 13+ — dark purple, abyss ──────────────────────────────
@@ -321,6 +346,7 @@ export const ATMOSPHERE_PRESETS: Record<FloorTheme, AtmosphereConfig> = {
     parallax: { swayAmplitudeX: 5, swayAmplitudeY: 3, swayDuration: 8000 },
     haze: { enabled: true, strength: 0.003, yStart: 0.3 },
     microAnimation: { oscillatorFreq: 0.002, enemyReaction: 'void_phase', reactionIntensity: 0.5 },
+    depthShaderAnim: { torchFlickerIntensity: 0.03, waterRippleStrength: 0.003, fogDriftOpacity: 0.10 },
   },
 }
 

@@ -8,6 +8,7 @@ import { getAtmosphereConfig, getFloorTheme, FLOOR_THEME_COLORS, type Atmosphere
 import { StatusEffectVisualSystem } from '../systems/StatusEffectVisualSystem'
 import { WeaponAnimationSystem } from '../systems/WeaponAnimationSystem'
 import { ScreenShakeSystem } from '../systems/ScreenShakeSystem'
+import { ForegroundParallaxSystem } from '../systems/ForegroundParallaxSystem'
 import type { AnimArchetype } from '../../data/enemyAnimations'
 import { getRandomCombatBg, getCombatBgForEnemy } from '../../data/backgroundManifest'
 import { ENEMY_TEMPLATES } from '../../data/enemies'
@@ -230,6 +231,7 @@ export class CombatScene extends Phaser.Scene {
   private statusEffectVisuals!: StatusEffectVisualSystem
   private weaponAnimations!: WeaponAnimationSystem
   public screenShake!: ScreenShakeSystem
+  private foregroundParallax!: ForegroundParallaxSystem
 
   // ── Chain combo visual state (Spec 03) ────────────
   /** Active vignette pulse tween for chain 5+ escalation. */
@@ -280,6 +282,7 @@ export class CombatScene extends Phaser.Scene {
       const h = this.scale.height
       this.chainVignetteOverlay?.setPosition(w / 2, h / 2).setSize(w, h)
       this.chainTintOverlay?.setPosition(w / 2, h / 2).setSize(w, h)
+      this.foregroundParallax?.resize(w, h)
     }
   }
 
@@ -886,6 +889,10 @@ export class CombatScene extends Phaser.Scene {
     // ── Screen shake system ─────────────────────────
     this.screenShake = new ScreenShakeSystem(this)
 
+    // ── Foreground parallax system (Spec 07) ─────────────
+    this.foregroundParallax = new ForegroundParallaxSystem(this)
+    this.foregroundParallax.createPlaceholderTextures()
+
     // ── Combat atmosphere system ────────────────────
     this.atmosphereSystem = new CombatAtmosphereSystem(this)
 
@@ -934,6 +941,7 @@ export class CombatScene extends Phaser.Scene {
   update(time: number, delta: number): void {
     this.screenShake?.update(delta)
     this.depthLightingSystem?.update(time)
+    this.foregroundParallax?.update(delta)
   }
 
   // ═════════════════════════════════════════════════════════
@@ -1008,6 +1016,10 @@ export class CombatScene extends Phaser.Scene {
     // Start atmosphere effects
     this.atmosphereSystem.start(this.currentFloor, this.currentEnemyCategory === 'boss')
     this.atmosphereSystem.setEnemyPosition(enemyX)
+
+    // Start foreground parallax layer (Spec 07)
+    const _fgTheme = getFloorTheme(this.currentFloor)
+    this.foregroundParallax?.start(_fgTheme, this.scale.width, this.scale.height)
 
     // Apply atmosphere visual effects (tinting, AO, color grading)
     const atmConfig = this.atmosphereSystem.getConfig() ?? getAtmosphereConfig(this.currentFloor)
@@ -1589,6 +1601,9 @@ export class CombatScene extends Phaser.Scene {
         },
       })
     }
+
+    // Foreground parallax turn drift (Spec 07)
+    this.foregroundParallax?.onTurnTransition()
 
     // DOM event for card hand CSS animation (listened to by CardHand.svelte)
     if (!this.reduceMotion && !isTurboMode()) {
@@ -2602,6 +2617,7 @@ export class CombatScene extends Phaser.Scene {
     }
     this.enemySpriteSystem?.destroy()
     this.atmosphereSystem?.stop()
+    this.foregroundParallax?.destroy()
     this.depthLightingSystem?.stop()
     this.statusEffectVisuals?.destroy()
     this.weaponAnimations?.destroy()
