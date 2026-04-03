@@ -1,7 +1,7 @@
 # Quiz Engine Mechanics
 
 > **Purpose:** Documents how quiz questions are selected, formatted, graded, and how the FSRS spaced repetition algorithm schedules fact reviews.
-> **Last verified:** 2026-04-02
+> **Last verified:** 2026-04-03
 > **Source files:** `src/services/quizService.ts`, `src/services/fsrsScheduler.ts`, `src/services/questionFormatter.ts`, `src/services/questionTemplateSelector.ts`, `src/services/curatedFactSelector.ts`, `src/services/accuracyGradeSystem.ts`, `src/services/curatedDistractorSelector.ts`
 
 ---
@@ -23,11 +23,14 @@ Two parallel selection paths depending on run mode:
 - `selectDifficultyWeightedQuestion` uses depth-based weighting: `depthExponent = 0.3 + depthRatio * 2.7` — shallow floors prefer easy facts (high easeFactor), deep floors prefer hard facts (low easeFactor)
 
 **Curated deck mode** (`curatedFactSelector.ts: selectFactForCharge`):
-Anki three-priority system:
-1. **Due learning cards** — time-critical, always served first (`selectionReason: 'struggling'`)
-2. **Main queue** — Anki Intersperser: proportional mixing of due graduated reviews + new cards. New cards sorted by `difficulty` ascending (easier first). New cards only introduced when `canIntroduceNew()` returns true (`MAX_LEARNING = 8`)
+Anki-faithful four-priority system:
+0. **Forced new card introduction** — every `NEW_CARD_INTERVAL = 3` charges without a new card being served, a new card is force-introduced if one is available and the learning queue permits it (`canIntroduceNew()`). Prevents learning/review cards from starving new card introduction. Calls `tracker.recordNewCardServed()` to reset the counter (`selectionReason: 'unseen'`).
+1. **Due learning cards** — time-critical, always served first unless Priority 0 fires (`selectionReason: 'struggling'`)
+2. **Main queue** — Anki Intersperser: proportional mixing of due graduated reviews + new cards. New cards sorted by `difficulty` ascending (easier first). New cards only introduced when `canIntroduceNew()` returns true (`MAX_LEARNING = 8`). Calls `recordNewCardServed()` when a new card is served.
 3. **Ahead learning** — cards in learning but not yet due, only when nothing else available
 4. **Fallback** — any card except the immediately previous fact (avoids consecutive repeats)
+
+**Dedup rule:** The ONLY dedup is `lastFactId` — prevents back-to-back repetition of the same fact. Learning cards CAN and SHOULD come back within the same encounter — that is correct Anki behavior. The longer step delays ([4, 10] charges) provide natural in-encounter spacing.
 
 **Multi-question batch dedup** (`nonCombatQuizSelector.ts`):
 `selectNonCombatStudyQuestion` accepts an optional `excludeFactIds: ReadonlySet<string>` parameter.

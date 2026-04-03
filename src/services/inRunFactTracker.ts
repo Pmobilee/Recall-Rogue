@@ -39,10 +39,15 @@ export class InRunFactTracker {
   private learningCards: Map<string, { step: number; dueAtCharge: number }> = new Map();
   private graduatedCards: Map<string, number> = new Map(); // factId → charge number when due
 
+  /** Charges since the last NEW card was introduced (not learning/review) */
+  private chargesSinceLastNew = 0;
+  /** Force a new card introduction every this many charges (Anki-style even spacing) */
+  private static readonly NEW_CARD_INTERVAL = 3;
+
   /** Learning step delays (charges until card is due again after correct answer) */
-  private static readonly STEP_DELAYS = [2, 5];
+  private static readonly STEP_DELAYS = [4, 10];
   /** Charges until a graduated card is due for review */
-  private static readonly GRADUATE_DELAY = 10;
+  private static readonly GRADUATE_DELAY = 15;
   /** Max cards allowed in learning state simultaneously */
   private static readonly MAX_LEARNING = 8;
 
@@ -147,6 +152,7 @@ export class InRunFactTracker {
   recordCharge(factId: string, correct: boolean): void {
     this.lastFactId = factId;
     this.totalCharges++;
+    this.chargesSinceLastNew++;
 
     if (correct) {
       const learning = this.learningCards.get(factId);
@@ -212,6 +218,23 @@ export class InRunFactTracker {
   /** True if we can introduce more new cards (learning queue not full) */
   canIntroduceNew(): boolean {
     return this.learningCards.size < InRunFactTracker.MAX_LEARNING;
+  }
+  /**
+   * True when enough charges have passed to force-introduce a new card.
+   * Fires every NEW_CARD_INTERVAL (3) charges without a new card being served,
+   * preventing the learning queue from starving new card introduction.
+   */
+  shouldForceNewCard(): boolean {
+    return this.chargesSinceLastNew >= InRunFactTracker.NEW_CARD_INTERVAL;
+  }
+
+  /**
+   * Reset the new card counter. Call when a new (unseen) card is actually served.
+   * This resets the force-new timer so the next forced introduction is
+   * NEW_CARD_INTERVAL charges later.
+   */
+  recordNewCardServed(): void {
+    this.chargesSinceLastNew = 0;
   }
 
   getLastFactId(): string | null {

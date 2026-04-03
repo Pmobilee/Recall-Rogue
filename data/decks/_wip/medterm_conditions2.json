@@ -1,0 +1,1262 @@
+[
+  {
+    "id": "medterm_cond_neuralgia",
+    "correctAnswer": "Neuralgia",
+    "acceptableAlternatives": ["nerve pain"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Neuropathy",
+      "Encephalitis",
+      "Meningitis",
+      "Hemiplegia",
+      "Epilepsy",
+      "Myalgia",
+      "Arthritis",
+      "Cystitis"
+    ],
+    "quizQuestion": "What medical condition is defined as pain along the course of a nerve or nerves?",
+    "explanation": "Neuralgia breaks down as: neur/o (nerve, from Greek 'neuron') + -algia (pain, from Greek 'algos'). Together: nerve pain. Trigeminal neuralgia — lightning-bolt facial pain along cranial nerve V — is considered one of the most painful conditions known to medicine. Treatment includes anticonvulsants (carbamazepine) and surgical options like microvascular decompression.",
+    "statement": "Neuralgia means nerve pain.",
+    "wowFactor": "Trigeminal neuralgia is nicknamed 'the suicide disease' because its attacks — electric-shock pain lasting seconds to minutes — can be so severe and frequent that patients historically had no relief options. Modern neurosurgery can cure most cases permanently.",
+    "visualDescription": "Pixel art of a glowing nerve fiber branching along a jaw and face, with lightning-bolt pain indicators",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Neuralgia",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'neuralgia': neur/o means nerve, and -algia means ___.",
+        "correctAnswer": "pain",
+        "distractors": ["inflammation", "disease", "paralysis"]
+      },
+      {
+        "quizQuestion": "Trigeminal neuralgia affects which structure?",
+        "correctAnswer": "a nerve (the trigeminal nerve)",
+        "distractors": ["a joint", "a muscle", "the spinal cord"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_encephalitis",
+    "correctAnswer": "Encephalitis",
+    "acceptableAlternatives": ["brain inflammation"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Meningitis",
+      "Neuralgia",
+      "Neuropathy",
+      "Epilepsy",
+      "Narcolepsy",
+      "Nephritis",
+      "Arthritis",
+      "Bursitis"
+    ],
+    "quizQuestion": "What condition involves inflammation of the brain itself, often caused by viral infection?",
+    "explanation": "Encephalitis breaks down as: encephal/o (brain, from Greek 'enkephalos' — en meaning 'within' + kephale meaning 'head') + -itis (inflammation). Causes include herpes simplex virus (most common in adults), arboviruses, and autoimmune processes. Hallmarks are fever, headache, altered consciousness, and seizures. Herpes encephalitis requires urgent IV acyclovir.",
+    "statement": "Encephalitis means inflammation of the brain.",
+    "wowFactor": "The 1917–1928 encephalitis lethargica pandemic ('sleeping sickness') struck over 500,000 people. Survivors sometimes remained in a frozen, sleep-like stupor for decades before being temporarily awakened by L-DOPA in the 1960s — the basis of Oliver Sacks' book 'Awakenings.'",
+    "visualDescription": "Pixel art of a glowing brain with visible redness and swelling at its surface",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Encephalitis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'encephalitis': encephal/o means brain, and -itis means ___.",
+        "correctAnswer": "inflammation",
+        "distractors": ["pain", "disease", "softening"]
+      },
+      {
+        "quizQuestion": "Herpes simplex virus causing encephalitis primarily inflames which organ?",
+        "correctAnswer": "brain",
+        "distractors": ["spinal cord", "meninges", "kidney"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_meningitis",
+    "correctAnswer": "Meningitis",
+    "acceptableAlternatives": ["meninges inflammation", "inflammation of the meninges"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Encephalitis",
+      "Neuralgia",
+      "Neuropathy",
+      "Epilepsy",
+      "Nephritis",
+      "Arthritis",
+      "Osteomyelitis",
+      "Pyelonephritis"
+    ],
+    "quizQuestion": "What condition involves inflammation of the protective membranes (meninges) surrounding the brain and spinal cord?",
+    "explanation": "Meningitis breaks down as: mening/o (meninges, the three protective membranes: dura mater, arachnoid mater, pia mater — from Greek 'meninx' meaning membrane) + -itis (inflammation). Bacterial meningitis (especially Neisseria meningitidis) is a medical emergency — classic triad is fever, neck stiffness, and photophobia. Viral causes are more common and less severe. Lumbar puncture (spinal tap) is diagnostic.",
+    "statement": "Meningitis means inflammation of the meninges.",
+    "wowFactor": "The meningococcal meningitis rash (petechiae) is one of medicine's key 'glass test' signs — if the rash does not blanch when pressed with a glass, it indicates bleeding under the skin from bacterial septicemia, demanding immediate emergency treatment.",
+    "visualDescription": "Pixel art cross-section of the skull and brain showing the three meningeal layers highlighted in red",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Meningitis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'meningitis': mening/o means meninges, and -itis means ___.",
+        "correctAnswer": "inflammation",
+        "distractors": ["pain", "tumor", "disease"]
+      },
+      {
+        "quizQuestion": "The classic triad of meningitis includes fever, photophobia, and ___.",
+        "correctAnswer": "neck stiffness (nuchal rigidity)",
+        "distractors": ["chest pain", "lower back pain", "joint swelling"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_neuropathy",
+    "correctAnswer": "Neuropathy",
+    "acceptableAlternatives": ["nerve disease", "peripheral neuropathy"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Neuralgia",
+      "Encephalitis",
+      "Hemiplegia",
+      "Epilepsy",
+      "Myalgia",
+      "Arthritis",
+      "Nephritis",
+      "Scoliosis"
+    ],
+    "quizQuestion": "What term describes disease or dysfunction of one or more peripheral nerves, often causing weakness, numbness, or tingling?",
+    "explanation": "Neuropathy breaks down as: neur/o (nerve, from Greek 'neuron') + -pathy (disease or disorder, from Greek 'pathos' meaning suffering or disease). Peripheral neuropathy is the most common form — diabetes mellitus is the leading cause worldwide, damaging nerves through chronic high blood glucose. Symptoms typically begin in feet and hands ('stocking-glove' distribution).",
+    "statement": "Neuropathy means nerve disease or nerve disorder.",
+    "wowFactor": "Diabetic peripheral neuropathy affects approximately 50% of all people with diabetes over their lifetime, making it the most prevalent neuropathy worldwide. Paradoxically, damaged nerves can cause both loss of sensation AND severe burning pain simultaneously.",
+    "visualDescription": "Pixel art of glowing nerve fibers in feet showing patchy damage, with numbness indicated by faded sections",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Peripheral_neuropathy",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'neuropathy': neur/o means nerve, and -pathy means ___.",
+        "correctAnswer": "disease (disorder)",
+        "distractors": ["pain", "inflammation", "paralysis"]
+      },
+      {
+        "quizQuestion": "Diabetic neuropathy most commonly begins in which body region, in a 'stocking-glove' pattern?",
+        "correctAnswer": "feet and hands",
+        "distractors": ["face and scalp", "chest and back", "hips and shoulders"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_hemiplegia",
+    "correctAnswer": "Hemiplegia",
+    "acceptableAlternatives": ["paralysis of one side", "one-sided paralysis"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Quadriplegia",
+      "Paraplegia",
+      "Neuralgia",
+      "Neuropathy",
+      "Epilepsy",
+      "Dysphasia",
+      "Arthritis",
+      "Kyphosis"
+    ],
+    "quizQuestion": "What condition involves paralysis affecting one entire side of the body — arm, leg, and sometimes face?",
+    "explanation": "Hemiplegia breaks down as: hemi- (half, from Greek 'hemi') + -plegia (paralysis, from Greek 'plege' meaning stroke or blow). The 'half' refers to one lateral side of the body. Stroke (CVA) is the most common cause — a left hemisphere stroke causes right hemiplegia and typically also affects language (Broca's area). Distinguishing from hemiparesis (weakness without complete paralysis).",
+    "statement": "Hemiplegia means paralysis of one half (side) of the body.",
+    "wowFactor": "Because motor pathways cross (decussate) in the brainstem, a stroke in the LEFT hemisphere causes RIGHT-sided hemiplegia — and vice versa. This crossover was first systematically documented by the 19th-century neurologist Charles-Édouard Brown-Séquard.",
+    "visualDescription": "Pixel art figure with one half highlighted in blue showing paralysis, the other half in normal color",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hemiplegia",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'hemiplegia': hemi- means half, and -plegia means ___.",
+        "correctAnswer": "paralysis",
+        "distractors": ["pain", "inflammation", "weakness"]
+      },
+      {
+        "quizQuestion": "A left-hemisphere stroke typically causes hemiplegia of which side of the body?",
+        "correctAnswer": "right side",
+        "distractors": ["left side", "both sides", "lower body only"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_quadriplegia",
+    "correctAnswer": "Quadriplegia",
+    "acceptableAlternatives": ["tetraplegia", "paralysis of all four limbs"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Hemiplegia",
+      "Paraplegia",
+      "Neuropathy",
+      "Epilepsy",
+      "Dysphasia",
+      "Encephalitis",
+      "Osteoporosis",
+      "Nephritis"
+    ],
+    "quizQuestion": "What condition involves paralysis of all four limbs due to injury or disease of the cervical spinal cord?",
+    "explanation": "Quadriplegia breaks down as: quadri- (four, from Latin 'quattuor') + -plegia (paralysis, from Greek 'plege'). Also called tetraplegia (from Greek 'tetra' = four). Caused by injury or disease at the cervical (neck) level of the spinal cord — above C4, breathing muscles may also be affected, requiring ventilator support. Injuries at C1-C2 are typically fatal without immediate intervention.",
+    "statement": "Quadriplegia means paralysis of all four limbs.",
+    "wowFactor": "The term 'tetraplegia' is now preferred internationally (Greek-Greek roots rather than Latin-Greek hybrid), but 'quadriplegia' remains standard in North American clinical practice. Both words mean exactly the same thing: paralysis of four limbs.",
+    "visualDescription": "Pixel art of a spinal column with the cervical section highlighted and injury markers at the neck level",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tetraplegia",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'quadriplegia': quadri- means four, and -plegia means ___.",
+        "correctAnswer": "paralysis",
+        "distractors": ["pain", "disease", "inflammation"]
+      },
+      {
+        "quizQuestion": "Quadriplegia results from injury at which level of the spinal cord?",
+        "correctAnswer": "cervical (neck)",
+        "distractors": ["thoracic (chest)", "lumbar (lower back)", "sacral (pelvis)"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_paraplegia",
+    "correctAnswer": "Paraplegia",
+    "acceptableAlternatives": ["paralysis of lower body", "lower body paralysis"],
+    "chainThemeId": 6,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Hemiplegia",
+      "Quadriplegia",
+      "Neuropathy",
+      "Dysphasia",
+      "Epilepsy",
+      "Osteoporosis",
+      "Nephritis",
+      "Arthritis"
+    ],
+    "quizQuestion": "What condition involves paralysis of the lower half of the body, including both legs, typically from thoracic or lumbar spinal cord injury?",
+    "explanation": "Paraplegia breaks down as: para- (beside, beyond, or two-sided — here meaning 'both sides of the lower body,' from Greek 'para') + -plegia (paralysis, from Greek 'plege'). Caused by injury or disease at the thoracic (T1-T12) or lumbar (L1-L5) spinal cord levels. Upper limbs remain functional. Most common causes: motor vehicle accidents, falls, and sports injuries.",
+    "statement": "Paraplegia means paralysis of the lower body (both legs).",
+    "wowFactor": "Paralympic athletes with paraplegia compete at levels that regularly surpass Olympic able-bodied records in wheelchair racing events — a wheelchair racer holds the marathon record for some course conditions, demonstrating how adaptation and training can overcome spinal cord injury.",
+    "visualDescription": "Pixel art figure with lower half in faded blue showing paralysis, upper body in full color",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Paraplegia",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'paraplegia': para- here means beside/both sides, and -plegia means ___.",
+        "correctAnswer": "paralysis",
+        "distractors": ["pain", "weakness", "disease"]
+      },
+      {
+        "quizQuestion": "Paraplegia is caused by spinal cord injury at which level?",
+        "correctAnswer": "thoracic or lumbar",
+        "distractors": ["cervical (neck)", "sacral (pelvis)", "brainstem"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_epilepsy",
+    "correctAnswer": "Epilepsy",
+    "acceptableAlternatives": ["seizure disorder"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Narcolepsy",
+      "Encephalitis",
+      "Neuralgia",
+      "Neuropathy",
+      "Dysphasia",
+      "Arthritis",
+      "Cystitis",
+      "Nephritis"
+    ],
+    "quizQuestion": "What chronic neurological disorder is characterized by recurrent, unprovoked seizures due to abnormal electrical activity in the brain?",
+    "explanation": "Epilepsy comes from Greek 'epilepsia' (epi- meaning 'upon' + lepsy from 'lambanein' meaning to seize or take hold). The term literally suggests something 'seizing hold' of the person. Over 50 million people worldwide have epilepsy. Seizure types range from brief absence seizures (staring spells) to tonic-clonic (grand mal) convulsions. Most cases are controlled with antiepileptic drugs (AEDs).",
+    "statement": "Epilepsy is a chronic seizure disorder caused by abnormal brain electrical activity.",
+    "wowFactor": "Julius Caesar, Napoleon Bonaparte, Fyodor Dostoevsky, and Vincent van Gogh all reportedly had epilepsy. Dostoevsky described his aura (pre-seizure sensation) as a feeling of supreme happiness and harmony he said was worth ten years of life — an extreme example of 'ecstatic' seizures.",
+    "visualDescription": "Pixel art of a brain with lightning-bolt electrical discharge patterns emanating from the cortex",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Epilepsy",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'epilepsy': epi- means upon, and -lepsy means ___.",
+        "correctAnswer": "seizure (a seizing)",
+        "distractors": ["sleep", "pain", "inflammation"]
+      },
+      {
+        "quizQuestion": "Epilepsy is defined by recurrent, unprovoked seizures. Approximately how many people worldwide have it?",
+        "correctAnswer": "over 50 million",
+        "distractors": ["over 5 million", "over 500,000", "over 500 million"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_narcolepsy",
+    "correctAnswer": "Narcolepsy",
+    "acceptableAlternatives": ["sudden sleep episodes", "sleep disorder with sudden sleep attacks"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Epilepsy",
+      "Dysphasia",
+      "Encephalitis",
+      "Neuropathy",
+      "Hemiplegia",
+      "Polyuria",
+      "Scoliosis",
+      "Kyphosis"
+    ],
+    "quizQuestion": "What chronic sleep disorder causes overwhelming daytime sleepiness and sudden uncontrollable sleep attacks, sometimes with sudden muscle weakness triggered by emotion?",
+    "explanation": "Narcolepsy breaks down as: narc/o (sleep or stupor, from Greek 'narke' meaning numbness or stupor — same root as 'narcotic') + -lepsy (seizure, from Greek 'lambanein' to seize). Together: 'sleep seizure.' Type 1 narcolepsy is caused by loss of orexin (hypocretin)-producing neurons in the hypothalamus. Cataplexy (sudden muscle weakness triggered by strong emotion like laughter) affects ~70% of Type 1 patients.",
+    "statement": "Narcolepsy means sudden, uncontrollable sleep episodes (literally 'sleep seizure').",
+    "wowFactor": "Narcolepsy with cataplexy is naturally found in dogs — Labrador Retrievers and Doberman Pinschers can suddenly collapse limp when excited or given food. Canine narcolepsy research directly led to the discovery of orexin (hypocretin) deficiency as the cause of human Type 1 narcolepsy.",
+    "visualDescription": "Pixel art figure suddenly slumping asleep mid-stride, with Z-symbols and a dog also collapsed nearby",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Narcolepsy",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'narcolepsy': narc/o means sleep/stupor, and -lepsy means ___.",
+        "correctAnswer": "seizure",
+        "distractors": ["pain", "disease", "inflammation"]
+      },
+      {
+        "quizQuestion": "Type 1 narcolepsy is caused by the loss of neurons that produce which neurotransmitter?",
+        "correctAnswer": "orexin (hypocretin)",
+        "distractors": ["serotonin", "dopamine", "acetylcholine"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_dysphasia",
+    "correctAnswer": "Dysphasia",
+    "acceptableAlternatives": ["difficulty with speech", "impaired speech and language"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Neuralgia",
+      "Neuropathy",
+      "Hemiplegia",
+      "Epilepsy",
+      "Narcolepsy",
+      "Encephalitis",
+      "Oliguria",
+      "Myalgia"
+    ],
+    "quizQuestion": "What condition involves difficulty using or understanding language, often due to stroke or brain injury affecting the language centers?",
+    "explanation": "Dysphasia breaks down as: dys- (difficult, abnormal, or impaired — from Greek 'dys' meaning bad or difficult) + -phasia (speech, from Greek 'phasis' meaning utterance, from 'phainein' to speak). Together: difficulty with speech/language. Often used interchangeably with aphasia (complete loss). Broca's dysphasia: difficulty producing speech (frontal lobe). Wernicke's dysphasia: difficulty understanding speech (temporal lobe).",
+    "statement": "Dysphasia means difficulty with speech and language.",
+    "wowFactor": "Broca's area (left frontal lobe) and Wernicke's area (left temporal lobe) were the first brain regions ever mapped to a specific cognitive function — in the 1860s, by Paul Broca and Carl Wernicke. This was the birth of neurological localization, the foundation of all modern brain mapping.",
+    "visualDescription": "Pixel art of a brain with speech bubble containing garbled letters, highlighting left hemisphere language areas",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Aphasia",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'dysphasia': dys- means difficult/impaired, and -phasia means ___.",
+        "correctAnswer": "speech (language)",
+        "distractors": ["swallowing", "movement", "vision"]
+      },
+      {
+        "quizQuestion": "Broca's dysphasia primarily affects which language ability?",
+        "correctAnswer": "producing speech (expressive)",
+        "distractors": ["understanding speech (receptive)", "reading silently", "writing comprehension"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_arthritis",
+    "correctAnswer": "Arthritis",
+    "acceptableAlternatives": ["joint inflammation"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Bursitis",
+      "Tendinitis",
+      "Myalgia",
+      "Osteoporosis",
+      "Osteomyelitis",
+      "Scoliosis",
+      "Nephritis",
+      "Neuralgia"
+    ],
+    "quizQuestion": "What broad term describes inflammation of one or more joints, causing pain, swelling, stiffness, and reduced range of motion?",
+    "explanation": "Arthritis breaks down as: arthr/o (joint, from Greek 'arthron') + -itis (inflammation). Over 100 distinct types exist. Osteoarthritis (OA) is degenerative 'wear and tear' — the most common form, affecting cartilage. Rheumatoid arthritis (RA) is autoimmune — the immune system attacks synovial membrane. Gout is crystal-induced (uric acid crystals in joints). The -itis suffix correctly signals that inflammation is a core feature.",
+    "statement": "Arthritis means inflammation of the joints.",
+    "wowFactor": "Ancient Egyptian mummies show clear radiological signs of osteoarthritis, making it one of the oldest documented diseases in human history — over 3,000 years old in the medical record. Even dinosaur skeletons show evidence of arthritis.",
+    "visualDescription": "Pixel art of a knee joint cross-section with redness and swelling in the joint space, cartilage worn away",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Arthritis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'arthritis': arthr/o means joint, and -itis means ___.",
+        "correctAnswer": "inflammation",
+        "distractors": ["pain", "disease", "softening"]
+      },
+      {
+        "quizQuestion": "Rheumatoid arthritis is classified as what type of disease?",
+        "correctAnswer": "autoimmune",
+        "distractors": ["degenerative", "infectious", "metabolic"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_osteoporosis",
+    "correctAnswer": "Osteoporosis",
+    "acceptableAlternatives": ["porous bones", "brittle bone disease"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Osteomalacia",
+      "Osteomyelitis",
+      "Arthritis",
+      "Chondromalacia",
+      "Scoliosis",
+      "Kyphosis",
+      "Nephritis",
+      "Myalgia"
+    ],
+    "quizQuestion": "What skeletal condition is characterized by reduced bone density and quality, making bones weak and prone to fractures?",
+    "explanation": "Osteoporosis breaks down as: oste/o (bone, from Greek 'osteon') + por/o (pore or passage, from Greek 'poros') + -osis (condition or abnormal state). Together: 'porous bone condition.' Bone mass peaks around age 30, then gradually declines. Estrogen deficiency after menopause accelerates bone loss in women. DEXA scan measures bone mineral density (T-score below -2.5 = osteoporosis). Bisphosphonates are first-line treatment.",
+    "statement": "Osteoporosis means a condition of porous (weakened) bones.",
+    "wowFactor": "Each year, osteoporosis causes more than 8.9 million fractures worldwide. In women over 50, a hip fracture carries a 20-24% mortality rate within one year — making osteoporosis prevention as critical as cardiovascular disease prevention.",
+    "visualDescription": "Pixel art cross-section of bone showing honeycomb-like porous structure versus dense healthy bone side-by-side",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Osteoporosis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'osteoporosis': oste/o means bone, por/o means pore, and -osis means ___.",
+        "correctAnswer": "condition (abnormal state)",
+        "distractors": ["inflammation", "tumor", "pain"]
+      },
+      {
+        "quizQuestion": "Which imaging test is used to diagnose osteoporosis by measuring bone mineral density?",
+        "correctAnswer": "DEXA scan",
+        "distractors": ["MRI", "PET scan", "CT angiography"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_osteomyelitis",
+    "correctAnswer": "Osteomyelitis",
+    "acceptableAlternatives": ["bone marrow infection", "bone infection"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Osteoporosis",
+      "Osteomalacia",
+      "Arthritis",
+      "Bursitis",
+      "Tendinitis",
+      "Nephritis",
+      "Pyelonephritis",
+      "Glomerulonephritis"
+    ],
+    "quizQuestion": "What serious infection involves inflammation of bone and bone marrow, typically caused by Staphylococcus aureus?",
+    "explanation": "Osteomyelitis breaks down as: oste/o (bone, from Greek 'osteon') + myel/o (bone marrow — or sometimes spinal cord, from Greek 'myelos' meaning marrow) + -itis (inflammation). Together: inflammation of bone and marrow. Staphylococcus aureus is the most common cause. Hematogenous spread (via bloodstream) is the most common route, especially in children. Diabetics and people with vascular disease are at highest risk for chronic osteomyelitis.",
+    "statement": "Osteomyelitis means inflammation/infection of bone and bone marrow.",
+    "wowFactor": "Before antibiotics, osteomyelitis was often fatal or led to amputation. Even today, chronic osteomyelitis — where bacteria hide inside biofilms within bone — can persist for decades despite treatment, earning it the nickname 'the disease that never goes away' among orthopedic surgeons.",
+    "visualDescription": "Pixel art cross-section of a long bone with red infection spreading through the marrow cavity",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Osteomyelitis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'osteomyelitis': oste/o = bone, myel/o = bone marrow, and -itis = ___.",
+        "correctAnswer": "inflammation",
+        "distractors": ["disease", "tumor", "softening"]
+      },
+      {
+        "quizQuestion": "What bacterium is the most common cause of osteomyelitis?",
+        "correctAnswer": "Staphylococcus aureus",
+        "distractors": ["Escherichia coli", "Streptococcus pneumoniae", "Pseudomonas aeruginosa"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_tendinitis",
+    "correctAnswer": "Tendinitis",
+    "acceptableAlternatives": ["tendon inflammation", "tendinopathy"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Bursitis",
+      "Arthritis",
+      "Myalgia",
+      "Osteomyelitis",
+      "Chondromalacia",
+      "Neuralgia",
+      "Nephritis",
+      "Cystitis"
+    ],
+    "quizQuestion": "What condition involves inflammation of a tendon — the fibrous cord connecting muscle to bone — often from repetitive strain?",
+    "explanation": "Tendinitis breaks down as: tendin/o (tendon, from Latin 'tendo' meaning to stretch — tendons are the tough cords that anchor muscles to bones) + -itis (inflammation). Common sites: Achilles tendon (heel), rotator cuff (shoulder), patellar tendon (knee), and lateral epicondyle (tennis elbow). Rest, ice, NSAIDs, and physical therapy are standard initial treatment. Repeated cortisone injections can weaken tendon tissue.",
+    "statement": "Tendinitis means inflammation of a tendon.",
+    "wowFactor": "The Achilles tendon — named after the Greek hero Achilles whose only vulnerability was his heel — is the strongest tendon in the human body, capable of withstanding forces up to 12.5 times body weight during sprinting. When it ruptures, patients describe hearing a 'pop' like a gun shot.",
+    "visualDescription": "Pixel art of a heel and ankle showing the Achilles tendon highlighted in red with inflammation markers",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tendinitis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'tendinitis': tendin/o means tendon, and -itis means ___.",
+        "correctAnswer": "inflammation",
+        "distractors": ["pain", "disease", "weakness"]
+      },
+      {
+        "quizQuestion": "What colloquial name is given to lateral epicondyle tendinitis of the elbow?",
+        "correctAnswer": "Tennis elbow",
+        "distractors": ["Golfer's elbow", "Pitcher's shoulder", "Runner's knee"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_bursitis",
+    "correctAnswer": "Bursitis",
+    "acceptableAlternatives": ["bursa inflammation"],
+    "chainThemeId": 6,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Tendinitis",
+      "Arthritis",
+      "Myalgia",
+      "Chondromalacia",
+      "Osteomyelitis",
+      "Neuralgia",
+      "Cystitis",
+      "Nephritis"
+    ],
+    "quizQuestion": "What condition involves inflammation of a bursa — the small fluid-filled sac that cushions bones, tendons, and muscles near joints?",
+    "explanation": "Bursitis breaks down as: burs/o (bursa, from Latin 'bursa' meaning purse or pouch — bursae are purse-like sacs filled with synovial fluid that reduce friction) + -itis (inflammation). Common sites: shoulder (subacromial), hip (trochanteric), knee (prepatellar — 'housemaid's knee'), and elbow (olecranon). Repetitive motion, prolonged pressure, or infection can trigger inflammation. Aspiration of bursa fluid is both diagnostic and therapeutic.",
+    "statement": "Bursitis means inflammation of a bursa (fluid-filled cushioning sac).",
+    "wowFactor": "Prepatellar bursitis was historically called 'housemaid's knee' because it developed from prolonged kneeling during household scrubbing. 'Clergyman's knee' was a related term for a slightly different bursa inflamed by kneeling in prayer — demonstrating how occupational postures shaped medical vocabulary.",
+    "visualDescription": "Pixel art of a knee joint showing the prepatellar bursa as an inflamed red pouch at the front of the knee",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bursitis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'bursitis': burs/o means bursa (fluid-filled sac), and -itis means ___.",
+        "correctAnswer": "inflammation",
+        "distractors": ["pain", "disease", "rupture"]
+      },
+      {
+        "quizQuestion": "What colloquial name is given to prepatellar bursitis of the knee?",
+        "correctAnswer": "Housemaid's knee",
+        "distractors": ["Tennis knee", "Runner's knee", "Jumper's knee"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_myalgia",
+    "correctAnswer": "Myalgia",
+    "acceptableAlternatives": ["muscle pain"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Neuralgia",
+      "Arthritis",
+      "Tendinitis",
+      "Bursitis",
+      "Osteoporosis",
+      "Nephritis",
+      "Cystitis",
+      "Hematuria"
+    ],
+    "quizQuestion": "What medical term describes pain in one or more muscles, ranging from mild soreness to severe aching?",
+    "explanation": "Myalgia breaks down as: my/o (muscle, from Greek 'mys' meaning muscle) + -algia (pain, from Greek 'algos'). Together: muscle pain. Causes range from exercise-induced (delayed onset muscle soreness, DOMS) to infections (influenza, COVID-19) to medications (statins — one of the most reported side effects) to systemic conditions (fibromyalgia, polymyalgia rheumatica). Diffuse myalgia is often a hallmark of viral illness.",
+    "statement": "Myalgia means muscle pain.",
+    "wowFactor": "Statin-induced myalgia affects 5-10% of patients taking cholesterol-lowering medications — yet statins are among the most prescribed drugs worldwide. In rare cases, statins cause rhabdomyolysis, a severe muscle breakdown that can lead to kidney failure from myoglobin flooding the bloodstream.",
+    "visualDescription": "Pixel art of a human leg muscle with pain radiating lines and a red glow indicating soreness",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Myalgia",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'myalgia': my/o means muscle, and -algia means ___.",
+        "correctAnswer": "pain",
+        "distractors": ["inflammation", "disease", "weakness"]
+      },
+      {
+        "quizQuestion": "Myalgia (muscle pain) is a well-known side effect of which class of cholesterol-lowering medications?",
+        "correctAnswer": "statins",
+        "distractors": ["beta-blockers", "ACE inhibitors", "calcium channel blockers"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_scoliosis",
+    "correctAnswer": "Scoliosis",
+    "acceptableAlternatives": ["abnormal spine curvature", "lateral spinal curvature"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Kyphosis",
+      "Osteoporosis",
+      "Osteomalacia",
+      "Arthritis",
+      "Osteomyelitis",
+      "Hemiplegia",
+      "Nephritis",
+      "Epilepsy"
+    ],
+    "quizQuestion": "What spinal condition is characterized by an abnormal lateral (sideways) curvature of the spine, often appearing as an S or C curve on X-ray?",
+    "explanation": "Scoliosis breaks down as: scoli/o (curved or bent, from Greek 'skolios' meaning crooked or curved) + -osis (condition or abnormal state). Together: condition of curvature. Idiopathic scoliosis (no known cause) is most common, typically appearing during adolescent growth spurts (more common in girls). Curves are measured using the Cobb angle on X-ray — above 10° = scoliosis, above 40-50° may require surgical correction (spinal fusion).",
+    "statement": "Scoliosis means an abnormal sideways (lateral) curvature of the spine.",
+    "wowFactor": "Scoliosis screening — where students bend forward at the waist during school health checks (the 'Adam's forward bend test') — was once mandatory in many US schools. It remains one of the few adolescent health screening programs shown to reduce the rate of surgery when curves are caught early.",
+    "visualDescription": "Pixel art of a spine viewed from behind showing an S-shaped lateral curve with Cobb angle measurement lines",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Scoliosis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'scoliosis': scoli/o means curved/crooked, and -osis means ___.",
+        "correctAnswer": "condition (abnormal state)",
+        "distractors": ["inflammation", "pain", "disease of unknown cause"]
+      },
+      {
+        "quizQuestion": "Scoliosis is measured by the Cobb angle on X-ray. What minimum angle is required for a diagnosis?",
+        "correctAnswer": "10 degrees",
+        "distractors": ["5 degrees", "25 degrees", "45 degrees"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_kyphosis",
+    "correctAnswer": "Kyphosis",
+    "acceptableAlternatives": ["hunchback", "excessive outward spine curvature", "dowager's hump"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Scoliosis",
+      "Osteoporosis",
+      "Osteomalacia",
+      "Arthritis",
+      "Hemiplegia",
+      "Osteomyelitis",
+      "Glomerulonephritis",
+      "Paraplegia"
+    ],
+    "quizQuestion": "What spinal deformity involves excessive outward (posterior) curvature of the thoracic spine, creating a rounded or hunched upper back?",
+    "explanation": "Kyphosis breaks down as: kyph/o (hump or bend, from Greek 'kyphos' meaning hump) + -osis (condition or abnormal state). Together: condition of humped curvature. Normal thoracic kyphosis is 20-45°; pathological kyphosis exceeds 45°. Causes include osteoporosis-related vertebral compression fractures ('dowager's hump'), Scheuermann's disease (in adolescents), and poor posture. Severe cases can compress the lungs and compromise breathing.",
+    "statement": "Kyphosis means excessive outward (posterior) curvature of the spine — a 'hunchback' deformity.",
+    "wowFactor": "Richard III of England — the last English king to die in battle (Bosworth Field, 1485) — had his skeleton analyzed after discovery under a Leicester parking lot in 2012. DNA confirmed his identity and his skeleton showed severe adolescent-onset scoliosis AND mild kyphosis — making Shakespeare's 'hunchback' portrayal partially, but not entirely, accurate.",
+    "visualDescription": "Pixel art side-view of a spine showing exaggerated outward curve in the thoracic region creating a visible hump",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kyphosis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'kyphosis': kyph/o means hump/bend, and -osis means ___.",
+        "correctAnswer": "condition (abnormal state)",
+        "distractors": ["inflammation", "pain", "tumor"]
+      },
+      {
+        "quizQuestion": "Kyphosis associated with osteoporotic vertebral fractures in elderly women is colloquially called ___.",
+        "correctAnswer": "dowager's hump",
+        "distractors": ["lordosis hump", "gibbus deformity", "Pott's curvature"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_osteomalacia",
+    "correctAnswer": "Osteomalacia",
+    "acceptableAlternatives": ["bone softening", "soft bones"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Osteoporosis",
+      "Osteomyelitis",
+      "Chondromalacia",
+      "Arthritis",
+      "Scoliosis",
+      "Kyphosis",
+      "Nephritis",
+      "Myalgia"
+    ],
+    "quizQuestion": "What metabolic bone disease is characterized by inadequate mineralization of newly formed bone, making bones soft and prone to bending or fracture?",
+    "explanation": "Osteomalacia breaks down as: oste/o (bone, from Greek 'osteon') + -malacia (softening, from Greek 'malakia' meaning softness). Together: bone softening. Caused primarily by vitamin D deficiency (impairs calcium absorption) or phosphate deficiency. In children, the same process is called rickets. Classic X-ray finding: Looser zones (pseudo-fractures). Treatment is vitamin D and calcium supplementation. Distinct from osteoporosis — which is low bone QUANTITY, not poor bone QUALITY.",
+    "statement": "Osteomalacia means softening of the bones due to poor mineralization.",
+    "wowFactor": "Rickets (childhood osteomalacia) was so widespread in 17th-19th century industrial Britain that children were called 'English children' by European physicians — a direct consequence of coal-smoke-blocked sunlight and vitamin D deficiency. It remained common in Europe until cod liver oil supplementation became standard practice.",
+    "visualDescription": "Pixel art of leg bones showing bowing and bending from softening, contrasted with straight healthy bones",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Osteomalacia",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'osteomalacia': oste/o means bone, and -malacia means ___.",
+        "correctAnswer": "softening",
+        "distractors": ["inflammation", "porous", "tumor"]
+      },
+      {
+        "quizQuestion": "Osteomalacia in children has a specific name. What is it?",
+        "correctAnswer": "Rickets",
+        "distractors": ["Paget's disease", "Osteogenesis imperfecta", "Chondrodysplasia"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_chondromalacia",
+    "correctAnswer": "Chondromalacia",
+    "acceptableAlternatives": ["cartilage softening", "runner's knee"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Osteomalacia",
+      "Osteoporosis",
+      "Arthritis",
+      "Bursitis",
+      "Tendinitis",
+      "Myalgia",
+      "Scoliosis",
+      "Nephritis"
+    ],
+    "quizQuestion": "What condition involves degeneration and softening of the cartilage on the underside of the kneecap (patella), causing anterior knee pain?",
+    "explanation": "Chondromalacia breaks down as: chondr/o (cartilage, from Greek 'chondros' meaning cartilage or grain) + -malacia (softening, from Greek 'malakia'). Together: cartilage softening. Chondromalacia patellae — the most common form — is caused by abnormal patellar tracking, causing the patella to grind against the femur. Common in runners and young athletes. Symptoms: pain behind/around the kneecap worsened by stairs, prolonged sitting, or squatting. Conservative treatment: quadriceps strengthening, orthotics.",
+    "statement": "Chondromalacia means softening of cartilage.",
+    "wowFactor": "Articular cartilage has no blood vessels, nerves, or lymphatics — it relies entirely on diffusion from synovial fluid for nutrition. This makes it one of the most poorly healing tissues in the body. Once damaged, cartilage cannot regenerate itself, which is why chondromalacia and arthritis are progressive conditions.",
+    "visualDescription": "Pixel art of a kneecap (patella) with the underside cartilage shown cracked and eroded in red",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chondromalacia_patellae",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'chondromalacia': chondr/o means cartilage, and -malacia means ___.",
+        "correctAnswer": "softening",
+        "distractors": ["inflammation", "disease", "porous"]
+      },
+      {
+        "quizQuestion": "Chondromalacia patellae most commonly affects which structure?",
+        "correctAnswer": "cartilage under the kneecap (patella)",
+        "distractors": ["meniscus", "anterior cruciate ligament", "patellar tendon"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_nephritis",
+    "correctAnswer": "Nephritis",
+    "acceptableAlternatives": ["kidney inflammation"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Pyelonephritis",
+      "Glomerulonephritis",
+      "Nephrolithiasis",
+      "Cystitis",
+      "Uremia",
+      "Arthritis",
+      "Encephalitis",
+      "Osteomyelitis"
+    ],
+    "quizQuestion": "What broad term describes inflammation of the kidneys, which can affect kidney function and lead to impaired urine production?",
+    "explanation": "Nephritis breaks down as: nephr/o (kidney, from Greek 'nephros') + -itis (inflammation). Together: kidney inflammation. Nephritis is a broad category — subtypes include glomerulonephritis (glomeruli affected), interstitial nephritis (tubules/interstitium), and pyelonephritis (pelvis from infection). Lupus nephritis is a common autoimmune cause. Nephritis can cause hematuria, proteinuria, hypertension, and edema — collectively called nephritic syndrome.",
+    "statement": "Nephritis means inflammation of the kidneys.",
+    "wowFactor": "The kidneys filter approximately 180 liters (47 gallons) of blood plasma per day, yet only produce 1-2 liters of urine — reclaiming over 99% of filtered water and solutes. Nephritis disrupts this extraordinary filtration machinery, allowing protein and red blood cells to leak into the urine.",
+    "visualDescription": "Pixel art of two kidneys with red inflammation visible throughout the renal cortex",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nephritis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'nephritis': nephr/o means kidney, and -itis means ___.",
+        "correctAnswer": "inflammation",
+        "distractors": ["stone", "disease", "without urine"]
+      },
+      {
+        "quizQuestion": "Nephritic syndrome — caused by nephritis — classically includes hematuria, hypertension, and ___.",
+        "correctAnswer": "proteinuria (protein in urine)",
+        "distractors": ["glycosuria", "polyuria", "anuria"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_nephrolithiasis",
+    "correctAnswer": "Nephrolithiasis",
+    "acceptableAlternatives": ["kidney stones", "renal calculi"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Nephritis",
+      "Pyelonephritis",
+      "Glomerulonephritis",
+      "Cystitis",
+      "Uremia",
+      "Osteomyelitis",
+      "Epilepsy",
+      "Osteoporosis"
+    ],
+    "quizQuestion": "What condition describes the formation of solid mineral and salt deposits (stones) within the kidneys or urinary tract?",
+    "explanation": "Nephrolithiasis breaks down as: nephr/o (kidney, from Greek 'nephros') + lith/o (stone, from Greek 'lithos') + -iasis (condition or pathological process). Together: condition of kidney stones. Calcium oxalate stones are most common (80%). Passage of a stone through the ureter causes renal colic — described as the most severe pain a human can experience. Management includes hydration, pain control, and lithotripsy (sound-wave stone breaking) for larger stones.",
+    "statement": "Nephrolithiasis means the condition of having kidney stones.",
+    "wowFactor": "Kidney stones have been found in 7,000-year-old Egyptian mummies — one of the oldest known diseases. Ancient physicians treated them with wine, herbs, and 'magical' incantations. Modern shock-wave lithotripsy (ESWL) can shatter stones from outside the body with no incision, a technology developed in the 1980s.",
+    "visualDescription": "Pixel art of a kidney cross-section showing crystalline stone deposits in the renal pelvis",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kidney_stone_disease",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'nephrolithiasis': nephr/o = kidney, lith/o = stone, and -iasis = ___.",
+        "correctAnswer": "condition (pathological state)",
+        "distractors": ["inflammation", "pain", "surgical removal"]
+      },
+      {
+        "quizQuestion": "What is the most common type of kidney stone by chemical composition?",
+        "correctAnswer": "calcium oxalate",
+        "distractors": ["uric acid", "struvite (magnesium ammonium phosphate)", "cystine"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_cystitis",
+    "correctAnswer": "Cystitis",
+    "acceptableAlternatives": ["bladder inflammation", "urinary bladder infection"],
+    "chainThemeId": 6,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Nephritis",
+      "Pyelonephritis",
+      "Nephrolithiasis",
+      "Uremia",
+      "Hematuria",
+      "Arthritis",
+      "Tendinitis",
+      "Bursitis"
+    ],
+    "quizQuestion": "What very common urinary condition involves inflammation of the urinary bladder, typically due to bacterial infection, causing burning urination and urgency?",
+    "explanation": "Cystitis breaks down as: cyst/o (bladder — specifically the urinary bladder, from Greek 'kystis' meaning sac or bladder) + -itis (inflammation). Together: bladder inflammation. E. coli causes approximately 80-85% of cases. Much more common in women due to shorter urethra. Classic symptoms: dysuria (painful urination), increased frequency, urgency, and suprapubic discomfort. Uncomplicated cases are treated with a short antibiotic course (3-5 days).",
+    "statement": "Cystitis means inflammation of the urinary bladder.",
+    "wowFactor": "Approximately 50-60% of women will develop at least one urinary tract infection (cystitis) during their lifetime, and 20-30% will have recurrent infections. Cranberry products, once thought to 'acidify urine,' are now understood to work by blocking E. coli from adhering to the bladder wall — though evidence for prevention remains mixed.",
+    "visualDescription": "Pixel art of the urinary bladder shown in cross-section with inflamed red lining and bacteria illustrated inside",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cystitis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'cystitis': cyst/o means bladder, and -itis means ___.",
+        "correctAnswer": "inflammation",
+        "distractors": ["stone", "disease", "pain"]
+      },
+      {
+        "quizQuestion": "What bacterium causes approximately 80-85% of cystitis (bladder infection) cases?",
+        "correctAnswer": "Escherichia coli (E. coli)",
+        "distractors": ["Staphylococcus aureus", "Klebsiella pneumoniae", "Pseudomonas aeruginosa"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_pyelonephritis",
+    "correctAnswer": "Pyelonephritis",
+    "acceptableAlternatives": ["kidney infection", "upper urinary tract infection"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Nephritis",
+      "Glomerulonephritis",
+      "Cystitis",
+      "Nephrolithiasis",
+      "Uremia",
+      "Osteomyelitis",
+      "Encephalitis",
+      "Meningitis"
+    ],
+    "quizQuestion": "What serious bacterial infection affects the renal pelvis and kidney itself, often ascending from the bladder, causing flank pain, fever, and chills?",
+    "explanation": "Pyelonephritis breaks down as: pyel/o (renal pelvis — the funnel-shaped collecting area of the kidney, from Greek 'pyelos' meaning trough or basin) + nephr/o (kidney, from Greek 'nephros') + -itis (inflammation). Together: inflammation of the renal pelvis and kidney. E. coli causes most cases via ascending infection from the bladder. Classic triad: fever, costovertebral angle tenderness (flank pain), and urinary symptoms. IV antibiotics required for severe cases. Can lead to renal scarring if untreated.",
+    "statement": "Pyelonephritis means inflammation/infection of the renal pelvis and kidney.",
+    "wowFactor": "Vesicoureteral reflux (VUR) — where urine flows backward from the bladder up to the kidneys — is the most common anatomical cause of recurrent pyelonephritis in children. It affects 1-3% of children, and if untreated, repeated kidney infections can cause permanent renal scarring and eventual kidney failure.",
+    "visualDescription": "Pixel art of a kidney with ascending infection arrows from the bladder through the ureter to the renal pelvis",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pyelonephritis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'pyelonephritis': pyel/o = renal pelvis, nephr/o = kidney, and -itis = ___.",
+        "correctAnswer": "inflammation",
+        "distractors": ["stone", "disease", "blood"]
+      },
+      {
+        "quizQuestion": "Pyelonephritis classically causes costovertebral angle (CVA) tenderness, which is pain located where?",
+        "correctAnswer": "flank (lower back/side)",
+        "distractors": ["groin", "suprapubic (lower abdomen)", "mid-abdomen"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_uremia",
+    "correctAnswer": "Uremia",
+    "acceptableAlternatives": ["uraemia", "urea in blood", "uremic syndrome"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Hematuria",
+      "Polyuria",
+      "Oliguria",
+      "Anuria",
+      "Nephritis",
+      "Pyelonephritis",
+      "Epilepsy",
+      "Encephalitis"
+    ],
+    "quizQuestion": "What dangerous condition describes the accumulation of urea and other waste products in the blood due to severe kidney failure?",
+    "explanation": "Uremia breaks down as: ur/o (urine or urinary, from Greek 'ouron' meaning urine) + -emia (blood condition, from Greek 'haima' meaning blood). Together: urine (waste) in the blood. Healthy kidneys filter ~50g of urea per day into urine. In kidney failure, urea and uremic toxins accumulate, causing nausea, fatigue, confusion, pericarditis, peripheral neuropathy, and ultimately coma. Dialysis (hemodialysis or peritoneal) removes these waste products artificially. Uremia is a medical emergency requiring dialysis.",
+    "statement": "Uremia means the accumulation of urine waste products (especially urea) in the blood.",
+    "wowFactor": "Patients with severe uremia sometimes develop 'uremic frost' — white crystalline deposits of urea on the skin, visible to the naked eye, as the body attempts to excrete waste through sweat glands when the kidneys have completely failed. This striking finding was once a reliable clinical sign before blood testing was available.",
+    "visualDescription": "Pixel art of kidneys shown darkened and failing, with toxic waste molecules accumulating in a blood vessel cross-section",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Uremia",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'uremia': ur/o means urine/urinary, and -emia means ___.",
+        "correctAnswer": "blood condition",
+        "distractors": ["inflammation", "disease", "pain"]
+      },
+      {
+        "quizQuestion": "Uremia is treated by artificially replacing kidney filtration function using which procedure?",
+        "correctAnswer": "dialysis",
+        "distractors": ["lithotripsy", "cystoscopy", "ureteroscopy"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_hematuria",
+    "correctAnswer": "Hematuria",
+    "acceptableAlternatives": ["blood in urine"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Polyuria",
+      "Oliguria",
+      "Anuria",
+      "Uremia",
+      "Nephritis",
+      "Cystitis",
+      "Myalgia",
+      "Neuralgia"
+    ],
+    "quizQuestion": "What medical sign is defined by the presence of blood in the urine, which may be visible to the eye (gross) or detectable only by microscopy (microscopic)?",
+    "explanation": "Hematuria breaks down as: hemat/o (blood, from Greek 'haima') + -uria (urine or urinary condition, from Greek 'ouron'). Together: blood in the urine. Gross hematuria: visibly red or brown urine. Microscopic hematuria: ≥3 red blood cells per high-power field. Causes range from benign (UTI, vigorous exercise, kidney stones) to serious (bladder cancer, kidney cancer, glomerulonephritis). Painless gross hematuria in adults over 50 is a red-flag symptom that must be urgently investigated for malignancy.",
+    "statement": "Hematuria means blood in the urine.",
+    "wowFactor": "Painless gross hematuria in an adult over 50 is considered a urological emergency. Bladder cancer — which causes blood in the urine in over 85% of cases — is the 4th most common cancer in men. Its characteristic feature is that the hematuria can be intermittent, causing patients to falsely believe the problem has resolved.",
+    "visualDescription": "Pixel art of a urine sample in a clear container showing red-tinged blood, with a microscope view of red blood cells",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hematuria",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'hematuria': hemat/o means blood, and -uria means ___.",
+        "correctAnswer": "urine (urinary condition)",
+        "distractors": ["inflammation", "disease", "pain"]
+      },
+      {
+        "quizQuestion": "Painless gross hematuria in an adult over 50 must be urgently investigated to rule out which condition?",
+        "correctAnswer": "bladder cancer (or kidney cancer)",
+        "distractors": ["urinary tract infection", "kidney stones", "benign prostatic hyperplasia"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_polyuria",
+    "correctAnswer": "Polyuria",
+    "acceptableAlternatives": ["excessive urination", "excessive urine production"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Oliguria",
+      "Anuria",
+      "Hematuria",
+      "Uremia",
+      "Cystitis",
+      "Nephritis",
+      "Myalgia",
+      "Neuralgia"
+    ],
+    "quizQuestion": "What urinary symptom is defined by the production of abnormally large amounts of urine (>3 liters/day in adults)?",
+    "explanation": "Polyuria breaks down as: poly- (many or much, from Greek 'polys') + -uria (urine or urinary condition, from Greek 'ouron'). Together: condition of much urine. Causes: diabetes mellitus (osmotic diuresis from glucose), diabetes insipidus (lack of ADH), psychogenic polydipsia (excessive drinking), and certain medications (lithium, diuretics). Polyuria is a classic triad symptom of uncontrolled diabetes: polydipsia (thirst) + polyuria (urination) + polyphagia (hunger) — the '3 Ps.'",
+    "statement": "Polyuria means producing excessive amounts of urine.",
+    "wowFactor": "The word 'diabetes' itself comes from Greek meaning 'to pass through' or 'siphon' — referring to the massive urine output. Ancient physicians tasted urine to distinguish diabetes mellitus ('sweet' from glucose) from diabetes insipidus ('tasteless/insipid') — a distasteful but surprisingly accurate diagnostic technique.",
+    "visualDescription": "Pixel art of a measuring cylinder overflowing with urine output, with a diabetes mellitus glucose icon nearby",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Polyuria",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'polyuria': poly- means many/much, and -uria means ___.",
+        "correctAnswer": "urine (urinary condition)",
+        "distractors": ["inflammation", "blood", "pain"]
+      },
+      {
+        "quizQuestion": "Polyuria, polydipsia, and polyphagia are the classic '3 Ps' of which uncontrolled condition?",
+        "correctAnswer": "diabetes mellitus",
+        "distractors": ["diabetes insipidus", "chronic kidney disease", "Addison's disease"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_oliguria",
+    "correctAnswer": "Oliguria",
+    "acceptableAlternatives": ["decreased urine output", "low urine production"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Polyuria",
+      "Anuria",
+      "Hematuria",
+      "Uremia",
+      "Cystitis",
+      "Nephritis",
+      "Epilepsy",
+      "Dysphasia"
+    ],
+    "quizQuestion": "What clinical sign describes urine output below 400 mL per day in adults, indicating impaired kidney function or severe dehydration?",
+    "explanation": "Oliguria breaks down as: oligo- (scanty, few, or little — from Greek 'oligos') + -uria (urine or urinary condition). Together: scanty urine. The threshold is typically <400 mL/day (or <0.5 mL/kg/hour). Causes: prerenal (dehydration, blood loss, heart failure — most common), intrinsic renal (acute kidney injury — ATN), or postrenal (obstruction). Oliguria is a critical early warning of acute kidney injury (AKI) in hospitalized patients. A Foley catheter allows precise hourly urine monitoring.",
+    "statement": "Oliguria means abnormally decreased urine output.",
+    "wowFactor": "In intensive care, urine output is monitored every hour via Foley catheter. A drop below 0.5 mL/kg/hour — just 35 mL/hour in a 70 kg patient — triggers immediate assessment for acute kidney injury. This tiny number can be the first sign of impending organ failure.",
+    "visualDescription": "Pixel art of a urine collection bag with only a small amount of dark concentrated urine visible",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oliguria",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'oliguria': oligo- means scanty/little, and -uria means ___.",
+        "correctAnswer": "urine (urinary condition)",
+        "distractors": ["blood", "inflammation", "disease"]
+      },
+      {
+        "quizQuestion": "In clinical practice, oliguria in adults is typically defined as urine output below what threshold per day?",
+        "correctAnswer": "400 mL per day",
+        "distractors": ["100 mL per day", "1,000 mL per day", "2,000 mL per day"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_anuria",
+    "correctAnswer": "Anuria",
+    "acceptableAlternatives": ["no urine output", "absent urine production"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Oliguria",
+      "Polyuria",
+      "Hematuria",
+      "Uremia",
+      "Nephritis",
+      "Cystitis",
+      "Meningitis",
+      "Epilepsy"
+    ],
+    "quizQuestion": "What critical condition describes the near-complete or total absence of urine production (less than 100 mL/day), indicating severe kidney failure?",
+    "explanation": "Anuria breaks down as: an- (without or absence of, from Greek 'an-' negative prefix) + -uria (urine or urinary condition, from Greek 'ouron'). Together: without urine. Distinguished from oliguria (<400 mL/day) by its severity — anuria (<100 mL/day) indicates near-complete kidney shutdown. Causes: bilateral ureteral obstruction, severe renal artery occlusion (bilateral), cortical necrosis, or end-stage kidney disease. Anuria is a true medical emergency — uremia develops rapidly, and dialysis must be initiated urgently.",
+    "statement": "Anuria means the complete or near-complete absence of urine output.",
+    "wowFactor": "The kidneys are so critical that total anuria — no urine at all — leads to fatal uremia within days without dialysis. Yet during cardiac surgery requiring cardiopulmonary bypass, kidney function is temporarily suppressed for hours without permanent damage, demonstrating how controlled hypothermia can protect organs from anuria-related injury.",
+    "visualDescription": "Pixel art of completely empty kidneys and an empty urine collection bag, with danger symbols indicating crisis",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Anuria",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'anuria': an- means without/absence, and -uria means ___.",
+        "correctAnswer": "urine (urinary condition)",
+        "distractors": ["inflammation", "blood", "disease"]
+      },
+      {
+        "quizQuestion": "Anuria is defined as urine output below what threshold per day?",
+        "correctAnswer": "100 mL per day",
+        "distractors": ["400 mL per day", "500 mL per day", "1,000 mL per day"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_cond_glomerulonephritis",
+    "correctAnswer": "Glomerulonephritis",
+    "acceptableAlternatives": ["kidney glomeruli inflammation", "GN"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Pyelonephritis",
+      "Nephritis",
+      "Nephrolithiasis",
+      "Cystitis",
+      "Uremia",
+      "Osteomyelitis",
+      "Encephalitis",
+      "Meningitis"
+    ],
+    "quizQuestion": "What condition involves inflammation of the glomeruli — the tiny filtering units of the kidney — often leading to hematuria, proteinuria, and hypertension?",
+    "explanation": "Glomerulonephritis breaks down as: glomerul/o (glomerulus — tiny knot of capillaries in the kidney where filtration occurs, from Latin 'glomerulus' meaning small ball of thread) + nephr/o (kidney) + -itis (inflammation). Together: inflammation of the kidney glomeruli. Causes: IgA nephropathy (most common worldwide), post-streptococcal GN (after strep throat in children), lupus nephritis, Goodpasture syndrome. Presents with nephritic syndrome: hematuria, hypertension, edema, oliguria, and proteinuria.",
+    "statement": "Glomerulonephritis means inflammation of the glomeruli — the kidney's filtering units.",
+    "wowFactor": "Each human kidney contains approximately 1 million glomeruli — tiny capillary tufts that generate the initial filtrate driving urine production. Post-streptococcal glomerulonephritis was first described in the 1800s when physicians noticed kidney disease appearing 2-3 weeks after strep throat — the immune complex deposition mechanism was not understood until the 1950s.",
+    "visualDescription": "Pixel art cross-section of a glomerulus showing capillary loops with immune complex deposits and inflammation markers",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Glomerulonephritis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "conditions",
+    "variants": [
+      {
+        "quizQuestion": "Break down 'glomerulonephritis': glomerul/o = glomerulus, nephr/o = kidney, and -itis = ___.",
+        "correctAnswer": "inflammation",
+        "distractors": ["stone", "disease", "softening"]
+      },
+      {
+        "quizQuestion": "Post-streptococcal glomerulonephritis develops after infection with which organism?",
+        "correctAnswer": "Group A Streptococcus (Strep pyogenes)",
+        "distractors": ["Staphylococcus aureus", "Escherichia coli", "Klebsiella pneumoniae"]
+      }
+    ]
+  }
+]

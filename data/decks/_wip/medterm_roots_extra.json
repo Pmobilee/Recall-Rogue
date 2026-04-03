@@ -1,0 +1,2102 @@
+[
+  {
+    "id": "medterm_root_dermato",
+    "correctAnswer": "skin",
+    "acceptableAlternatives": ["skin tissue"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "hair",
+      "nail",
+      "fat",
+      "muscle",
+      "bone",
+      "nerve",
+      "blood vessel",
+      "gland"
+    ],
+    "quizQuestion": "What does the medical combining form 'dermat/o' mean?",
+    "explanation": "Dermat/o is the fuller Greek variant of derm/o, from Greek 'dermatos' (genitive of 'derma,' meaning skin). It appears in dermatologist (skin specialist), dermatitis (skin inflammation), and dermatome (a skin area supplied by one spinal nerve). This variant is especially common when the next element starts with a consonant.",
+    "statement": "The combining form dermat/o means skin.",
+    "wowFactor": "Human skin is the body's largest organ — in an average adult it covers about 1.7 square metres and accounts for roughly 15% of total body weight.",
+    "visualDescription": "Pixel art cross-section of skin layers with 'DERMAT/O' labeled in glowing text",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Skin",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A dermatologist specialises in diseases of which tissue? (Root: dermat/o)",
+        "correctAnswer": "skin",
+        "distractors": ["hair", "muscle", "bone"]
+      },
+      {
+        "quizQuestion": "Dermatitis is inflammation of the ___.",
+        "correctAnswer": "skin",
+        "distractors": ["nail", "gland", "nerve"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_cutaneo",
+    "correctAnswer": "skin",
+    "acceptableAlternatives": ["skin tissue"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "hair",
+      "nail",
+      "fat",
+      "muscle",
+      "bone",
+      "nerve",
+      "blood vessel",
+      "gland"
+    ],
+    "quizQuestion": "What does the medical combining form 'cutane/o' mean?",
+    "explanation": "Cutane/o comes from the Latin 'cutis' meaning skin. It is the Latin-origin counterpart to the Greek dermat/o. It appears in subcutaneous (under the skin), transcutaneous (through the skin), and percutaneous (through the skin by puncture or abrasion).",
+    "statement": "The combining form cutane/o means skin.",
+    "wowFactor": "A subcutaneous injection goes into the fat layer just beneath the skin — syringes used for insulin are designed precisely so they reach that layer without hitting muscle.",
+    "visualDescription": "Pixel art diagram showing 'CUTANE/O' labeling the outermost tissue layer in a cross-section",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Subcutaneous_tissue",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A subcutaneous injection is delivered under which tissue? (Root: cutane/o)",
+        "correctAnswer": "skin",
+        "distractors": ["muscle", "bone", "nerve"]
+      },
+      {
+        "quizQuestion": "Transcutaneous drug delivery means the drug passes through the ___.",
+        "correctAnswer": "skin",
+        "distractors": ["stomach lining", "lung tissue", "blood vessel wall"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_pilo",
+    "correctAnswer": "hair",
+    "acceptableAlternatives": ["hair follicle"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "nail",
+      "skin",
+      "gland",
+      "fat",
+      "muscle",
+      "bone",
+      "nerve",
+      "blood vessel"
+    ],
+    "quizQuestion": "What does the medical combining form 'pil/o' mean?",
+    "explanation": "Pil/o comes from the Latin 'pilus' meaning hair. It appears in piloerection (hair standing on end — goosebumps), pilosebaceous (relating to hair follicles and sebaceous glands), and pilonidal (nest of hair, as in pilonidal cyst). It is the Latin counterpart to the Greek trich/o.",
+    "statement": "The combining form pil/o means hair.",
+    "wowFactor": "A pilonidal cyst ('nest of hair') at the base of the spine can contain a small ball of loose hairs — the Latin root pil/o literally describes what is inside.",
+    "visualDescription": "Pixel art hair follicle cross-section with 'PIL/O' labeled at the shaft",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pilonidal_disease",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Piloerection — the standing of hair on end — involves which structure? (Root: pil/o)",
+        "correctAnswer": "hair",
+        "distractors": ["skin", "nail", "gland"]
+      },
+      {
+        "quizQuestion": "Pil/o is the Latin counterpart to the Greek root trich/o; both mean ___.",
+        "correctAnswer": "hair",
+        "distractors": ["nail", "skin", "fat"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_lipo",
+    "correctAnswer": "fat",
+    "acceptableAlternatives": ["fatty tissue", "lipid"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "muscle",
+      "bone",
+      "blood",
+      "skin",
+      "nerve",
+      "gland",
+      "protein",
+      "sugar"
+    ],
+    "quizQuestion": "What does the medical combining form 'lip/o' mean?",
+    "explanation": "Lip/o comes from the Greek 'lipos' meaning fat or fatty. It appears in lipoma (a benign fatty tumor), liposuction (surgical removal of fat), lipase (an enzyme that breaks down fats), lipid (any fat-like molecule), and hyperlipidemia (excess fat in the blood). It is the Greek counterpart to the Latin adip/o.",
+    "statement": "The combining form lip/o means fat.",
+    "wowFactor": "Liposuction — lip/o (fat) + suction — removes fat cells permanently; those specific cells never grow back, though remaining fat cells can still enlarge with weight gain.",
+    "visualDescription": "Pixel art fat cell cluster with 'LIP/O' floating above it in bold text",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lipid",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A lipoma is a benign tumor composed of which tissue? (Root: lip/o)",
+        "correctAnswer": "fat",
+        "distractors": ["muscle", "bone", "nerve"]
+      },
+      {
+        "quizQuestion": "Hyperlipidemia is an excess of which type of molecule in the blood?",
+        "correctAnswer": "fat",
+        "distractors": ["protein", "sugar", "water"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_thyroido",
+    "correctAnswer": "thyroid gland",
+    "acceptableAlternatives": ["thyroid"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "parathyroid gland",
+      "pituitary gland",
+      "adrenal gland",
+      "pancreas",
+      "pineal gland",
+      "thymus",
+      "ovary",
+      "testis"
+    ],
+    "quizQuestion": "What does the medical combining form 'thyroid/o' mean?",
+    "explanation": "Thyroid/o is derived from Greek 'thyreoeidēs' meaning shield-shaped, referring to the butterfly-shaped thyroid gland in the neck. It appears in thyroiditis (inflammation of the thyroid), thyroidectomy (surgical removal of the thyroid), and hypothyroidism (underactive thyroid). It is the specific-gland variant of thyr/o.",
+    "statement": "The combining form thyroid/o means thyroid gland.",
+    "wowFactor": "The thyroid gland was named 'shield-shaped' by ancient Greek anatomists because the thyroid cartilage of the larynx resembles a Greek shield — thyroid/o literally means 'like a shield.'",
+    "visualDescription": "Pixel art thyroid gland butterfly shape in the neck with 'THYROID/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thyroid",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Thyroiditis is inflammation of which gland? (Root: thyroid/o)",
+        "correctAnswer": "thyroid gland",
+        "distractors": ["parathyroid gland", "pituitary gland", "adrenal gland"]
+      },
+      {
+        "quizQuestion": "A thyroidectomy is the surgical removal of which organ?",
+        "correctAnswer": "thyroid gland",
+        "distractors": ["thymus", "pancreas", "pineal gland"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_ovario",
+    "correctAnswer": "ovary",
+    "acceptableAlternatives": ["ovaries"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "uterus",
+      "fallopian tube",
+      "vagina",
+      "cervix",
+      "testis",
+      "prostate",
+      "kidney",
+      "adrenal gland"
+    ],
+    "quizQuestion": "What does the medical combining form 'ovari/o' mean?",
+    "explanation": "Ovari/o comes from Latin 'ovarium,' the diminutive of 'ovum' (egg), referring to the egg-producing female gonad. It appears in ovariectomy (surgical removal of an ovary, also called oophorectomy), ovarian (relating to the ovary), and ovariotomy (incision into the ovary). It is the Latin counterpart to the Greek oophor/o.",
+    "statement": "The combining form ovari/o means ovary.",
+    "wowFactor": "A woman is born with approximately 1 to 2 million egg follicles in her ovaries — by puberty only about 300,000 remain, and during her lifetime she ovulates roughly 400 eggs total.",
+    "visualDescription": "Pixel art female reproductive anatomy with ovary highlighted and 'OVARI/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ovary",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "An ovariectomy is the surgical removal of which organ? (Root: ovari/o)",
+        "correctAnswer": "ovary",
+        "distractors": ["uterus", "fallopian tube", "cervix"]
+      },
+      {
+        "quizQuestion": "Ovari/o and oophor/o are both combining forms for which female reproductive organ?",
+        "correctAnswer": "ovary",
+        "distractors": ["uterus", "vagina", "fallopian tube"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_utero",
+    "correctAnswer": "uterus",
+    "acceptableAlternatives": ["womb"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "ovary",
+      "fallopian tube",
+      "vagina",
+      "cervix",
+      "bladder",
+      "rectum",
+      "kidney",
+      "breast"
+    ],
+    "quizQuestion": "What does the medical combining form 'uter/o' mean?",
+    "explanation": "Uter/o comes from Latin 'uterus' meaning womb. It appears in uterine (relating to the uterus), uterotomy (incision into the uterus), and uteroplacental (relating to the uterus and placenta). It is the Latin counterpart to the Greek hyster/o and metr/o, all three of which mean uterus.",
+    "statement": "The combining form uter/o means uterus.",
+    "wowFactor": "The uterus can expand during pregnancy from roughly the size of a pear (7 cm long) to accommodate a full-term baby — increasing its volume about 500-fold while the muscle walls thicken and then stretch thin.",
+    "visualDescription": "Pixel art pear-shaped uterus with 'UTER/O' labeled, shown beside a grown uterus for scale comparison",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Uterus",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Uter/o, hyster/o, and metr/o are all combining forms for which organ?",
+        "correctAnswer": "uterus",
+        "distractors": ["ovary", "vagina", "fallopian tube"]
+      },
+      {
+        "quizQuestion": "A uteroplacental complication involves which organ and the placenta?",
+        "correctAnswer": "uterus",
+        "distractors": ["ovary", "cervix", "kidney"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_metro",
+    "correctAnswer": "uterus",
+    "acceptableAlternatives": ["womb"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "ovary",
+      "fallopian tube",
+      "vagina",
+      "cervix",
+      "bladder",
+      "measurement",
+      "kidney",
+      "breast"
+    ],
+    "quizQuestion": "In medical terminology, what does the combining form 'metr/o' mean?",
+    "explanation": "In medical terminology, metr/o comes from Greek 'metra' meaning uterus. (Do not confuse with the unrelated metr/o meaning measurement, from Greek 'metron.') It appears in endometrium (inner lining of the uterus), endometriosis (endometrial tissue outside the uterus), and metroplasty (surgical reconstruction of the uterus). The three Greek/Latin forms for uterus are hyster/o, metr/o, and uter/o.",
+    "statement": "In medical terminology, the combining form metr/o means uterus.",
+    "wowFactor": "Endometriosis — from metr/o (uterus) — affects an estimated 190 million people with a uterus worldwide and takes an average of 7 to 10 years to diagnose because its symptoms overlap with many other conditions.",
+    "visualDescription": "Pixel art uterus cross-section showing the endometrium (inner lining) with 'METR/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Endometrium",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Endometriosis involves tissue similar to the lining of which organ? (Root: metr/o)",
+        "correctAnswer": "uterus",
+        "distractors": ["ovary", "vagina", "bladder"]
+      },
+      {
+        "quizQuestion": "Metr/o (uterus) appears in 'endometrium,' which is the inner lining of the ___.",
+        "correctAnswer": "uterus",
+        "distractors": ["ovary", "fallopian tube", "cervix"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_mammo",
+    "correctAnswer": "breast",
+    "acceptableAlternatives": ["mammary gland"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "uterus",
+      "ovary",
+      "chest wall",
+      "skin",
+      "lymph node",
+      "rib",
+      "lung",
+      "nipple"
+    ],
+    "quizQuestion": "What does the medical combining form 'mamm/o' mean?",
+    "explanation": "Mamm/o comes from Latin 'mamma' meaning breast or mammary gland. It appears in mammogram (X-ray image of the breast), mammography (imaging of the breast), mammoplasty (surgical reshaping of the breast), and mammary (relating to the breast). It is the Latin counterpart to the Greek mast/o.",
+    "statement": "The combining form mamm/o means breast.",
+    "wowFactor": "Mammography uses low-energy X-rays to examine the breast and can detect tumours as small as a few millimetres — far smaller than can be felt by hand, making it a key screening tool.",
+    "visualDescription": "Pixel art X-ray image silhouette of a breast with 'MAMM/O' labeled in glowing text",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mammography",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A mammogram is an X-ray image of which body part? (Root: mamm/o)",
+        "correctAnswer": "breast",
+        "distractors": ["ovary", "lung", "lymph node"]
+      },
+      {
+        "quizQuestion": "Mamm/o and mast/o are both combining forms for which anatomical structure?",
+        "correctAnswer": "breast",
+        "distractors": ["uterus", "ovary", "chest wall"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_orchido",
+    "correctAnswer": "testis",
+    "acceptableAlternatives": ["testicle", "testes"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "ovary",
+      "prostate",
+      "epididymis",
+      "seminal vesicle",
+      "kidney",
+      "adrenal gland",
+      "bladder",
+      "penis"
+    ],
+    "quizQuestion": "What does the medical combining form 'orchid/o' mean?",
+    "explanation": "Orchid/o comes from Greek 'orchis' meaning testis. It appears in orchidectomy (surgical removal of a testis, also called orchiectomy), orchidopexy (surgical fixation of an undescended testis), and orchiditis (inflammation of the testis). The plant orchid was named from this same Greek root because its tubers resemble testes.",
+    "statement": "The combining form orchid/o means testis.",
+    "wowFactor": "The orchid flower takes its name from the same Greek root orchis — ancient Greek botanists noted that the plant's double bulb-shaped roots resembled testes.",
+    "visualDescription": "Pixel art split image: an orchid flower on one side, a labeled testis on the other, both sharing the 'ORCHID/O' root",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Orchiectomy",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "An orchidectomy is the surgical removal of which organ? (Root: orchid/o)",
+        "correctAnswer": "testis",
+        "distractors": ["prostate", "kidney", "epididymis"]
+      },
+      {
+        "quizQuestion": "Orchid/o and orchi/o are both combining forms referring to which male reproductive organ?",
+        "correctAnswer": "testis",
+        "distractors": ["prostate", "penis", "bladder"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_prostato",
+    "correctAnswer": "prostate gland",
+    "acceptableAlternatives": ["prostate"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "testis",
+      "seminal vesicle",
+      "epididymis",
+      "bladder",
+      "kidney",
+      "urethra",
+      "penis",
+      "adrenal gland"
+    ],
+    "quizQuestion": "What does the medical combining form 'prostat/o' mean?",
+    "explanation": "Prostat/o comes from Greek 'prostates' meaning one who stands before, referring to the prostate gland's anatomical position in front of (before) the bladder. It appears in prostatitis (inflammation of the prostate), prostatectomy (surgical removal of the prostate), and prostate-specific antigen (PSA), used to screen for prostate cancer.",
+    "statement": "The combining form prostat/o means prostate gland.",
+    "wowFactor": "The word 'prostate' comes from Greek 'prostates' — 'one who stands before' — because the gland stands guard in front of the bladder, surrounding the urethra as it exits.",
+    "visualDescription": "Pixel art sagittal view of male pelvis showing prostate position with 'PROSTAT/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Prostate",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Prostatitis is inflammation of which male gland? (Root: prostat/o)",
+        "correctAnswer": "prostate gland",
+        "distractors": ["seminal vesicle", "testis", "kidney"]
+      },
+      {
+        "quizQuestion": "A prostatectomy is the surgical removal of which organ?",
+        "correctAnswer": "prostate gland",
+        "distractors": ["testis", "bladder", "epididymis"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_spermo",
+    "correctAnswer": "sperm",
+    "acceptableAlternatives": ["semen", "seed"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "egg",
+      "embryo",
+      "testis",
+      "prostate",
+      "bladder",
+      "blood",
+      "urine",
+      "hormone"
+    ],
+    "quizQuestion": "What does the medical combining form 'sperm/o' (or 'spermat/o') mean?",
+    "explanation": "Sperm/o and spermat/o both come from Greek 'sperma' meaning seed or sperm. They appear in spermatogenesis (production of sperm cells), spermicide (agent that kills sperm), azoospermia (absence of sperm in semen), and oligospermia (low sperm count). The fuller form spermat/o is used before consonant-starting suffixes.",
+    "statement": "The combining forms sperm/o and spermat/o mean sperm.",
+    "wowFactor": "A single millilitre of semen typically contains 15 to 200 million sperm cells — yet only one is needed to fertilise an egg. Spermatogenesis — the production cycle — takes about 74 days from start to finish.",
+    "visualDescription": "Pixel art sperm cells swimming toward an egg, with 'SPERM/O' labeled above",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Spermatogenesis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Spermatogenesis is the process of producing which cells? (Root: spermat/o)",
+        "correctAnswer": "sperm",
+        "distractors": ["eggs", "red blood cells", "hormones"]
+      },
+      {
+        "quizQuestion": "Azoospermia means the absence of which substance in semen?",
+        "correctAnswer": "sperm",
+        "distractors": ["testosterone", "fructose", "prostate fluid"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_vagino",
+    "correctAnswer": "vagina",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "uterus",
+      "ovary",
+      "cervix",
+      "fallopian tube",
+      "vulva",
+      "bladder",
+      "rectum",
+      "urethra"
+    ],
+    "quizQuestion": "What does the medical combining form 'vagin/o' mean?",
+    "explanation": "Vagin/o comes from Latin 'vagina' meaning sheath or scabbard, referring to the muscular canal of the female reproductive tract. It appears in vaginitis (inflammation of the vagina), vaginoscopy (visual examination of the vagina), and vaginoplasty (surgical reconstruction of the vagina). The Greek equivalent is colp/o.",
+    "statement": "The combining form vagin/o means vagina.",
+    "wowFactor": "The Latin word 'vagina' literally meant a scabbard (the sheath for a sword) — Roman anatomists used the metaphor of a sword and its sheath to describe the anatomy they were naming.",
+    "visualDescription": "Pixel art female pelvic anatomy with vagina highlighted and 'VAGIN/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vagina",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Vaginitis is inflammation of which anatomical structure? (Root: vagin/o)",
+        "correctAnswer": "vagina",
+        "distractors": ["uterus", "ovary", "cervix"]
+      },
+      {
+        "quizQuestion": "Vagin/o and colp/o are both combining forms for which structure?",
+        "correctAnswer": "vagina",
+        "distractors": ["uterus", "vulva", "fallopian tube"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_vulvo",
+    "correctAnswer": "vulva",
+    "acceptableAlternatives": ["external female genitalia"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "vagina",
+      "uterus",
+      "ovary",
+      "cervix",
+      "bladder",
+      "urethra",
+      "perineum",
+      "labia"
+    ],
+    "quizQuestion": "What does the medical combining form 'vulv/o' mean?",
+    "explanation": "Vulv/o comes from Latin 'vulva' meaning covering or wrapper, referring to the external female genitalia. It appears in vulvitis (inflammation of the vulva), vulvodynia (chronic vulvar pain), and vulvectomy (surgical removal of the vulva). The term encompasses the labia majora, labia minora, clitoris, and vaginal opening.",
+    "statement": "The combining form vulv/o means vulva.",
+    "wowFactor": "Vulvodynia — chronic vulvar pain with no identifiable cause — affects an estimated 16% of people with a vulva at some point in their lives, yet it remained largely undiagnosed and unstudied until the late 20th century.",
+    "visualDescription": "Pixel art anatomical diagram of external female genitalia with 'VULV/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vulva",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Vulvitis is inflammation of which anatomical structure? (Root: vulv/o)",
+        "correctAnswer": "vulva",
+        "distractors": ["vagina", "uterus", "ovary"]
+      },
+      {
+        "quizQuestion": "Vulvodynia refers to chronic pain in which area? (Root: vulv/o)",
+        "correctAnswer": "vulva",
+        "distractors": ["vagina", "uterus", "bladder"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_oculo",
+    "correctAnswer": "eye",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "ear",
+      "nose",
+      "tongue",
+      "lens",
+      "cornea",
+      "retina",
+      "optic nerve",
+      "skull"
+    ],
+    "quizQuestion": "What does the medical combining form 'ocul/o' mean?",
+    "explanation": "Ocul/o comes from Latin 'oculus' meaning eye. It appears in ocular (relating to the eye), oculomotor (controlling eye movement), oculoplasty (eye reconstructive surgery), intraocular (within the eye), and binoculars (two-eye viewing device). It is the Latin counterpart to the Greek ophthalm/o.",
+    "statement": "The combining form ocul/o means eye.",
+    "wowFactor": "The oculomotor nerve (cranial nerve III) controls four of the six muscles that move the eyeball — if it is damaged, the eye typically drifts 'down and out' because the two muscles it does not control pull it that way.",
+    "visualDescription": "Pixel art human eye with 'OCUL/O' labeled beneath it in Latin-style lettering",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Eye",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Intraocular pressure is measured inside which structure? (Root: ocul/o)",
+        "correctAnswer": "eye",
+        "distractors": ["ear", "skull", "nose"]
+      },
+      {
+        "quizQuestion": "Ocul/o and ophthalm/o are both combining forms for which sense organ?",
+        "correctAnswer": "eye",
+        "distractors": ["ear", "nose", "tongue"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_conjunctivo",
+    "correctAnswer": "conjunctiva",
+    "acceptableAlternatives": ["mucous membrane of the eye"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "cornea",
+      "retina",
+      "iris",
+      "sclera",
+      "lens",
+      "eyelid",
+      "tear duct",
+      "optic nerve"
+    ],
+    "quizQuestion": "What does the medical combining form 'conjunctiv/o' mean?",
+    "explanation": "Conjunctiv/o comes from Latin 'conjunctiva' (from conjungere, to join together), referring to the thin transparent mucous membrane that lines the inner surface of the eyelids and covers the front of the eye (except the cornea). It appears in conjunctivitis (inflammation of the conjunctiva, commonly called 'pink eye') and conjunctivoplasty (conjunctival reconstruction).",
+    "statement": "The combining form conjunctiv/o means conjunctiva.",
+    "wowFactor": "Conjunctivitis ('pink eye') is one of the most common eye conditions in the world — viral forms spread extremely easily because the virus can survive on surfaces for hours and is transferred by simply touching the eye after touching a contaminated surface.",
+    "visualDescription": "Pixel art eye showing the clear conjunctival layer with 'CONJUNCTIV/O' labeled in an annotation",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Conjunctiva",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Conjunctivitis (pink eye) is inflammation of which eye structure? (Root: conjunctiv/o)",
+        "correctAnswer": "conjunctiva",
+        "distractors": ["cornea", "retina", "iris"]
+      },
+      {
+        "quizQuestion": "The conjunctiva is the membrane that lines the inner eyelids and covers the front of the ___ (except the cornea).",
+        "correctAnswer": "eye",
+        "distractors": ["nose", "ear canal", "mouth"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_dacryo",
+    "correctAnswer": "tear",
+    "acceptableAlternatives": ["tears", "tear duct", "lacrimal"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "cornea",
+      "eyelid",
+      "conjunctiva",
+      "retina",
+      "iris",
+      "lens",
+      "optic nerve",
+      "sclera"
+    ],
+    "quizQuestion": "What does the medical combining form 'dacry/o' (or 'lacrim/o') mean?",
+    "explanation": "Dacry/o comes from Greek 'dakryon' meaning tear, while lacrim/o comes from Latin 'lacrima' meaning tear. Both refer to tears and the lacrimal (tear-producing) system. They appear in dacryocystitis (infection of the lacrimal sac), dacryostenosis (narrowing of the tear duct), and lacrimal gland (the gland that produces tears).",
+    "statement": "The combining forms dacry/o and lacrim/o mean tear (as in tears from the eye).",
+    "wowFactor": "The lacrimal gland produces about 1 to 2 millilitres of tears per day in normal circumstances — but emotional weeping can momentarily exceed the drainage capacity of the tear ducts, causing tears to overflow down the cheeks.",
+    "visualDescription": "Pixel art eye with a teardrop falling and the lacrimal gland labeled with 'DACRY/O'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lacrimal_gland",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Dacryocystitis is an infection of the lacrimal sac — what does dacry/o refer to?",
+        "correctAnswer": "tear",
+        "distractors": ["eyelid", "cornea", "iris"]
+      },
+      {
+        "quizQuestion": "The lacrimal gland (lacrim/o) is the gland responsible for producing which fluid?",
+        "correctAnswer": "tears",
+        "distractors": ["aqueous humour", "vitreous humour", "sebum"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_audio",
+    "correctAnswer": "hearing",
+    "acceptableAlternatives": ["sound", "to hear"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "sight",
+      "smell",
+      "touch",
+      "balance",
+      "taste",
+      "speech",
+      "pain",
+      "vibration"
+    ],
+    "quizQuestion": "What does the medical combining form 'audi/o' mean?",
+    "explanation": "Audi/o comes from Latin 'audire' meaning to hear. It appears in audiology (study of hearing and balance disorders), audiogram (a chart of hearing ability), audiologist (hearing specialist), and audiometer (device that measures hearing). The related Latin term 'auditorium' literally means a place for hearing.",
+    "statement": "The combining form audi/o means hearing.",
+    "wowFactor": "An audiogram plots how soft a sound must be before you can no longer hear it — normal hearing can detect sounds as quiet as 0 dB HL (hearing level), roughly the sound of a mosquito flying 3 metres away.",
+    "visualDescription": "Pixel art audiogram chart with 'AUDI/O' labeled, showing frequency vs. threshold",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Audiology",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Audiology is the study and treatment of disorders of which sense? (Root: audi/o)",
+        "correctAnswer": "hearing",
+        "distractors": ["sight", "balance", "smell"]
+      },
+      {
+        "quizQuestion": "An audiometer is a device used to measure which ability?",
+        "correctAnswer": "hearing",
+        "distractors": ["vision", "balance", "smell"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_cochleo",
+    "correctAnswer": "cochlea",
+    "acceptableAlternatives": ["inner ear hearing organ"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "eardrum",
+      "semicircular canal",
+      "ossicles",
+      "eustachian tube",
+      "outer ear",
+      "ear canal",
+      "mastoid bone",
+      "auditory nerve"
+    ],
+    "quizQuestion": "What does the medical combining form 'cochle/o' mean?",
+    "explanation": "Cochle/o comes from Latin 'cochlea' meaning snail or snail shell, referring to the spiral-shaped, fluid-filled inner ear structure that transduces sound vibrations into nerve signals. It appears in cochlear implant (device that electrically stimulates the cochlear nerve), cochleotomy (surgical incision of the cochlea), and cochlear duct (the membranous tube within the cochlea).",
+    "statement": "The combining form cochle/o means cochlea (the snail-shaped hearing organ of the inner ear).",
+    "wowFactor": "A cochlear implant bypasses damaged hair cells and directly stimulates the auditory nerve with electrical pulses — restoring a form of hearing to people with profound deafness. The cochlea is only about 9 mm across but contains about 3,500 inner hair cells.",
+    "visualDescription": "Pixel art cross-section of the inner ear showing the snail-spiral cochlea with 'COCHLE/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cochlea",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A cochlear implant stimulates the auditory nerve through which inner ear structure? (Root: cochle/o)",
+        "correctAnswer": "cochlea",
+        "distractors": ["eardrum", "ossicles", "semicircular canal"]
+      },
+      {
+        "quizQuestion": "Cochle/o is named from the Latin for snail because the cochlea has a ___ shape.",
+        "correctAnswer": "spiral (snail-shell)",
+        "distractors": ["straight tubular", "dome-shaped", "Y-shaped"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_myringo",
+    "correctAnswer": "eardrum",
+    "acceptableAlternatives": ["tympanic membrane"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "cochlea",
+      "ossicles",
+      "eustachian tube",
+      "outer ear canal",
+      "semicircular canal",
+      "mastoid",
+      "auditory nerve",
+      "middle ear cavity"
+    ],
+    "quizQuestion": "What does the medical combining form 'myring/o' mean?",
+    "explanation": "Myring/o comes from Latin 'myringa' meaning membrane, specifically the tympanic membrane (eardrum). It appears in myringotomy (surgical incision of the eardrum, as for ear tube placement), myringoplasty (surgical repair of the eardrum), and myringitis (inflammation of the eardrum). It is a variant of tympan/o, which comes from Greek.",
+    "statement": "The combining form myring/o means eardrum (tympanic membrane).",
+    "wowFactor": "A myringotomy — from myring/o (eardrum) + -tomy (incision) — is one of the most common surgical procedures in children. The tiny incision drains fluid from the middle ear and usually heals on its own within a few weeks.",
+    "visualDescription": "Pixel art of the eardrum (tympanic membrane) with a small incision labeled 'myringotomy' and 'MYRING/O' indicated",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Myringotomy",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A myringotomy is a surgical incision into which structure? (Root: myring/o)",
+        "correctAnswer": "eardrum",
+        "distractors": ["cochlea", "mastoid bone", "ear canal"]
+      },
+      {
+        "quizQuestion": "Myring/o and tympan/o are both combining forms for which ear structure?",
+        "correctAnswer": "eardrum",
+        "distractors": ["cochlea", "semicircular canal", "ossicles"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_linguo",
+    "correctAnswer": "tongue",
+    "acceptableAlternatives": ["language"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "lip",
+      "palate",
+      "throat",
+      "tooth",
+      "jaw",
+      "salivary gland",
+      "nose",
+      "cheek"
+    ],
+    "quizQuestion": "What does the medical combining form 'lingu/o' mean?",
+    "explanation": "Lingu/o comes from Latin 'lingua' meaning tongue. In anatomy it appears in lingual tonsils (lymphoid tissue at the base of the tongue), sublingual (under the tongue, as in sublingual medication), and lingual nerve (the nerve supplying sensation to the tongue). It is the Latin counterpart to the Greek gloss/o.",
+    "statement": "The combining form lingu/o means tongue.",
+    "wowFactor": "Sublingual medications (from lingu/o) placed under the tongue are absorbed directly into the bloodstream through the thin mucous membrane — bypassing the digestive tract and liver for faster action, used in nitroglycerin tablets for angina.",
+    "visualDescription": "Pixel art open mouth showing the tongue with 'LINGU/O' labeled at the underside",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tongue",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A sublingual tablet is placed under which anatomical structure? (Root: lingu/o)",
+        "correctAnswer": "tongue",
+        "distractors": ["lip", "palate", "cheek"]
+      },
+      {
+        "quizQuestion": "Lingu/o and gloss/o are both combining forms for which organ?",
+        "correctAnswer": "tongue",
+        "distractors": ["lip", "palate", "throat"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_odonto",
+    "correctAnswer": "tooth",
+    "acceptableAlternatives": ["teeth"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "gum",
+      "jaw bone",
+      "tongue",
+      "lip",
+      "palate",
+      "salivary gland",
+      "tonsil",
+      "enamel"
+    ],
+    "quizQuestion": "What does the medical combining form 'odont/o' mean?",
+    "explanation": "Odont/o comes from Greek 'odous' (genitive 'odontos') meaning tooth. It appears in orthodontics (straightening of teeth), periodontist (specialist in gum and bone support of teeth), odontoma (a tooth-derived tumor), and odontology (the scientific study of teeth, used in forensic dentistry). It is the Greek counterpart to the Latin dent/o.",
+    "statement": "The combining form odont/o means tooth.",
+    "wowFactor": "Forensic odontology — the scientific study of teeth for legal purposes — can identify victims and suspects through dental records, bite-mark analysis, and even estimate a person's age from tooth wear. It has been critical in solving major criminal cases.",
+    "visualDescription": "Pixel art cross-section of a tooth with root and crown labeled, 'ODONT/O' in Greek font",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Odontology",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Orthodontics is a dental specialty focused on straightening which structures? (Root: odont/o)",
+        "correctAnswer": "teeth",
+        "distractors": ["gums", "jaw bones", "tongue"]
+      },
+      {
+        "quizQuestion": "Odont/o and dent/o are both combining forms for which oral structure?",
+        "correctAnswer": "tooth",
+        "distractors": ["gum", "palate", "jaw"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_palato",
+    "correctAnswer": "palate",
+    "acceptableAlternatives": ["roof of the mouth"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "tongue",
+      "lip",
+      "tooth",
+      "gum",
+      "jaw bone",
+      "throat",
+      "salivary gland",
+      "tonsil"
+    ],
+    "quizQuestion": "What does the medical combining form 'palat/o' mean?",
+    "explanation": "Palat/o comes from Latin 'palatum' meaning palate or roof of the mouth. It appears in palatoplasty (surgical repair of the palate, as for cleft palate), palatine tonsils (tonsils at the sides of the soft palate), and palatine bone (the bone forming part of the hard palate and nasal floor). A cleft palate is a gap in the roof of the mouth from incomplete fusion during fetal development.",
+    "statement": "The combining form palat/o means palate (roof of the mouth).",
+    "wowFactor": "Cleft palate repair — palatoplasty — is one of the most transformative surgeries in medicine. Without it, a child cannot feed normally or develop speech; with it, most children go on to speak normally. It is among the most common birth defect corrections worldwide.",
+    "visualDescription": "Pixel art open mouth viewed from below showing the hard and soft palate with 'PALAT/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Palate",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Palatoplasty is surgery to repair a defect in which anatomical structure? (Root: palat/o)",
+        "correctAnswer": "palate",
+        "distractors": ["tongue", "lip", "jaw"]
+      },
+      {
+        "quizQuestion": "A cleft palate is a gap in which part of the mouth?",
+        "correctAnswer": "roof of the mouth",
+        "distractors": ["lower jaw", "tongue", "lip"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_spleno",
+    "correctAnswer": "spleen",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "liver",
+      "kidney",
+      "pancreas",
+      "stomach",
+      "lymph node",
+      "thymus",
+      "gallbladder",
+      "appendix"
+    ],
+    "quizQuestion": "What does the medical combining form 'splen/o' mean?",
+    "explanation": "Splen/o comes from Greek 'splen' meaning spleen. It appears in splenomegaly (enlarged spleen), splenectomy (surgical removal of the spleen), and splenitis (inflammation of the spleen). The spleen is the largest lymphoid organ in the body, filtering blood and storing platelets and red blood cells.",
+    "statement": "The combining form splen/o means spleen.",
+    "wowFactor": "Humans can live without a spleen — but become more susceptible to certain bacterial infections. The spleen filters about 1 litre of blood per minute and stores up to 30% of the body's platelet supply for release when needed.",
+    "visualDescription": "Pixel art left upper abdomen showing the spleen tucked under the ribcage with 'SPLEN/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Spleen",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Splenomegaly refers to abnormal enlargement of which organ? (Root: splen/o)",
+        "correctAnswer": "spleen",
+        "distractors": ["liver", "kidney", "pancreas"]
+      },
+      {
+        "quizQuestion": "A splenectomy is the surgical removal of which organ?",
+        "correctAnswer": "spleen",
+        "distractors": ["liver", "gallbladder", "appendix"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_immuno",
+    "correctAnswer": "immune system",
+    "acceptableAlternatives": ["immunity", "immune"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "nervous system",
+      "lymph",
+      "blood",
+      "hormone",
+      "infection",
+      "inflammation",
+      "antibody",
+      "allergy"
+    ],
+    "quizQuestion": "What does the medical combining form 'immun/o' mean?",
+    "explanation": "Immun/o comes from Latin 'immunis' meaning exempt or free from (public service or disease burden). It appears in immunology (study of the immune system), immunodeficiency (impaired immune function), autoimmune (immune response against self), immunotherapy (using immune mechanisms to treat disease), and immunoglobulin (antibody protein). The immune system distinguishes 'self' from 'non-self' to defend the body.",
+    "statement": "The combining form immun/o means immune system (or immunity).",
+    "wowFactor": "The word 'immune' comes from Latin 'immunis' — originally meaning a citizen exempt from taxes or civic duties. By the 17th century it was adopted to describe people who had survived a disease and were now 'exempt' from getting it again.",
+    "visualDescription": "Pixel art antibody molecule shape with shield icon and 'IMMUN/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Immune_system",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Immunology is the study of which body system? (Root: immun/o)",
+        "correctAnswer": "immune system",
+        "distractors": ["nervous system", "endocrine system", "digestive system"]
+      },
+      {
+        "quizQuestion": "Immunotherapy uses which system's mechanisms to treat disease?",
+        "correctAnswer": "immune system",
+        "distractors": ["nervous system", "circulatory system", "lymphatic system"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_phago",
+    "correctAnswer": "eat",
+    "acceptableAlternatives": ["engulf", "swallow", "to eat"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "digest",
+      "destroy",
+      "produce",
+      "absorb",
+      "transport",
+      "filter",
+      "secrete",
+      "bind"
+    ],
+    "quizQuestion": "What does the medical combining form 'phag/o' mean?",
+    "explanation": "Phag/o comes from Greek 'phagein' meaning to eat. It appears in phagocyte (a cell that 'eats' pathogens), phagocytosis (the process of a cell engulfing and digesting particles), dysphagia (difficulty swallowing), and bacteriophage (a virus that 'eats' bacteria). Macrophages — from macro (large) + phag/o — are large immune cells that engulf debris and pathogens.",
+    "statement": "The combining form phag/o means to eat or engulf.",
+    "wowFactor": "A single macrophage (large eater) can consume up to 100 bacteria in a day — and after eating, it displays the bacterial protein fragments on its surface to alert the rest of the immune system.",
+    "visualDescription": "Pixel art macrophage engulfing a bacterium with a 'chomping' animation frame, 'PHAG/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Phagocytosis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A phagocyte is an immune cell that literally 'eats' pathogens — what does phag/o mean?",
+        "correctAnswer": "eat",
+        "distractors": ["destroy", "transport", "produce"]
+      },
+      {
+        "quizQuestion": "Dysphagia is difficulty doing which action? (Root: phag/o)",
+        "correctAnswer": "swallowing (eating)",
+        "distractors": ["breathing", "digesting", "speaking"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_coagulo",
+    "correctAnswer": "clotting",
+    "acceptableAlternatives": ["coagulation", "to clot"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "bleeding",
+      "dissolving",
+      "filtering",
+      "clumping",
+      "circulation",
+      "inflammation",
+      "platelet production",
+      "vessel repair"
+    ],
+    "quizQuestion": "What does the medical combining form 'coagul/o' mean?",
+    "explanation": "Coagul/o comes from Latin 'coagulare' meaning to curdle or congeal. It appears in coagulation (the process of blood clotting), coagulopathy (a disorder of blood clotting), anticoagulant (a drug that prevents clotting), and coagulation cascade (the sequence of enzyme activations that forms a clot). The international normalised ratio (INR) measures coagulation time.",
+    "statement": "The combining form coagul/o means clotting (coagulation).",
+    "wowFactor": "Blood coagulation is a cascade of 13 clotting factors — if any one is missing, the whole system can fail. Haemophilia A is caused by a deficiency of just one factor (Factor VIII), yet it can cause life-threatening bleeds from minor injuries.",
+    "visualDescription": "Pixel art cross-section of a wound showing platelets and fibrin net forming a clot, 'COAGUL/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Coagulation",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Anticoagulants are drugs that prevent which blood process? (Root: coagul/o)",
+        "correctAnswer": "clotting",
+        "distractors": ["bleeding", "filtering", "production"]
+      },
+      {
+        "quizQuestion": "Coagulopathy is a disorder of which blood process?",
+        "correctAnswer": "clotting",
+        "distractors": ["oxygen transport", "immune response", "platelet formation"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_erythro",
+    "correctAnswer": "red",
+    "acceptableAlternatives": ["red colour", "red-coloured"],
+    "chainThemeId": 6,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "white",
+      "blue",
+      "yellow",
+      "pale",
+      "dark",
+      "pink",
+      "orange",
+      "green"
+    ],
+    "quizQuestion": "What does the medical combining form 'erythr/o' mean?",
+    "explanation": "Erythr/o comes from Greek 'erythros' meaning red. It appears in erythrocyte (red blood cell — the oxygen-carrying blood cell coloured red by haemoglobin), erythropoiesis (production of red blood cells), erythropoietin (EPO, the hormone stimulating red blood cell production), and erythema (redness of the skin). It is used both as a root and as a colour descriptor.",
+    "statement": "The combining form erythr/o means red.",
+    "wowFactor": "Erythropoietin (EPO) — from erythr/o (red) + poiesis (making) — is produced by the kidneys in response to low oxygen. EPO became notorious as a performance-enhancing drug in endurance sports because it boosts red blood cell production.",
+    "visualDescription": "Pixel art red blood cells (biconcave discs) in a blood vessel with 'ERYTHR/O' labeled in red",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Red_blood_cell",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "An erythrocyte is a red blood cell — what colour does erythr/o indicate?",
+        "correctAnswer": "red",
+        "distractors": ["white", "blue", "yellow"]
+      },
+      {
+        "quizQuestion": "Erythema is redness of the skin — erythr/o refers to which colour?",
+        "correctAnswer": "red",
+        "distractors": ["white", "blue", "pale"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_leuko",
+    "correctAnswer": "white",
+    "acceptableAlternatives": ["white colour"],
+    "chainThemeId": 6,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "red",
+      "blue",
+      "yellow",
+      "pale",
+      "dark",
+      "clear",
+      "orange",
+      "green"
+    ],
+    "quizQuestion": "What does the medical combining form 'leuk/o' mean?",
+    "explanation": "Leuk/o comes from Greek 'leukos' meaning white. It appears in leukocyte (white blood cell — the immune cell of the blood), leukaemia (cancer of white blood cells), leukopenia (too few white blood cells), leukoplakia (white patches on mucous membranes), and leukorrhea (white vaginal discharge). It is the colour counterpart to erythr/o (red) and cyan/o (blue).",
+    "statement": "The combining form leuk/o means white.",
+    "wowFactor": "Leukocytes (white blood cells) are not actually white — they appear that way because, unlike red blood cells, they contain no haemoglobin. They make up less than 1% of blood volume but are the body's entire circulating immune force.",
+    "visualDescription": "Pixel art white blood cell (round with bumpy nucleus) next to red blood cells with 'LEUK/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/White_blood_cell",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A leukocyte is a white blood cell — what colour does leuk/o indicate?",
+        "correctAnswer": "white",
+        "distractors": ["red", "blue", "yellow"]
+      },
+      {
+        "quizQuestion": "Leukaemia is a cancer of which blood cell type?",
+        "correctAnswer": "white blood cells",
+        "distractors": ["red blood cells", "platelets", "plasma cells"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_musculo",
+    "correctAnswer": "muscle",
+    "acceptableAlternatives": ["muscles"],
+    "chainThemeId": 6,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "bone",
+      "tendon",
+      "ligament",
+      "nerve",
+      "joint",
+      "cartilage",
+      "skin",
+      "blood vessel"
+    ],
+    "quizQuestion": "What does the medical combining form 'muscul/o' mean?",
+    "explanation": "Muscul/o comes from Latin 'musculus' meaning muscle (also literally 'little mouse,' because the movement of a flexed muscle under skin resembles a mouse under a cloth). It appears in musculoskeletal (relating to both muscles and bones), musculature (the system of muscles), and musculocutaneous (relating to both muscle and skin). It is the Latin counterpart to the Greek my/o.",
+    "statement": "The combining form muscul/o means muscle.",
+    "wowFactor": "The Latin word 'musculus' means both 'muscle' and 'little mouse' — Roman anatomists described the rippling of a bicep under the skin as looking like a mouse moving under cloth, and the name stuck.",
+    "visualDescription": "Pixel art bicep muscle labeled 'MUSCUL/O' with a small mouse silhouette for context",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Muscle",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Musculoskeletal medicine deals with diseases of muscles and which other system? (Root: muscul/o)",
+        "correctAnswer": "skeletal (bones)",
+        "distractors": ["nervous system", "circulatory system", "digestive system"]
+      },
+      {
+        "quizQuestion": "Muscul/o and my/o are both combining forms for which tissue type?",
+        "correctAnswer": "muscle",
+        "distractors": ["bone", "tendon", "cartilage"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_tendino",
+    "correctAnswer": "tendon",
+    "acceptableAlternatives": ["tendons"],
+    "chainThemeId": 6,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "ligament",
+      "muscle",
+      "bone",
+      "cartilage",
+      "joint",
+      "bursa",
+      "nerve",
+      "fascia"
+    ],
+    "quizQuestion": "What does the medical combining form 'tendin/o' mean?",
+    "explanation": "Tendin/o comes from Latin 'tendere' meaning to stretch, referring to the tough fibrous cords (tendons) that attach muscles to bones. It appears in tendinitis (inflammation of a tendon), tendinopathy (any tendon disorder), tendinous (relating to tendons), and tendinoscopy (scope examination of a tendon). It is a variant of tend/o; both refer to tendons.",
+    "statement": "The combining form tendin/o means tendon.",
+    "wowFactor": "The Achilles tendon — named after the Greek hero Achilles, whose only weakness was his heel — is the thickest tendon in the body and can withstand forces of over 800 kg during running.",
+    "visualDescription": "Pixel art heel anatomy showing the Achilles tendon connecting calf muscle to heel bone, 'TENDIN/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tendon",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Tendinitis is inflammation of which connective tissue structure? (Root: tendin/o)",
+        "correctAnswer": "tendon",
+        "distractors": ["ligament", "muscle", "cartilage"]
+      },
+      {
+        "quizQuestion": "Tendin/o and tend/o are both combining forms for which structure?",
+        "correctAnswer": "tendon",
+        "distractors": ["ligament", "bone", "bursa"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_synovia",
+    "correctAnswer": "synovial membrane",
+    "acceptableAlternatives": ["synovium", "joint lining"],
+    "chainThemeId": 6,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "cartilage",
+      "tendon",
+      "ligament",
+      "bursa",
+      "joint capsule",
+      "bone",
+      "fascia",
+      "periosteum"
+    ],
+    "quizQuestion": "What does the medical combining form 'synovi/o' mean?",
+    "explanation": "Synovi/o derives from 'synovia,' coined by Paracelsus from Greek 'syn' (with) + 'oon' (egg), because synovial fluid resembles egg white. It refers to the synovial membrane — the connective tissue lining the inner surface of joint capsules — and the synovial fluid it produces to lubricate joints. It appears in synovitis (inflammation of the synovial membrane) and synovioma (a tumor of synovial tissue).",
+    "statement": "The combining form synovi/o means synovial membrane.",
+    "wowFactor": "Synovial fluid resembles egg white so closely that it was named 'synovia' from the Greek for 'with egg' — and like egg white, it is viscous and slippery, reducing joint friction to a coefficient lower than ice on ice.",
+    "visualDescription": "Pixel art knee joint cross-section showing the synovial membrane lining with golden synovial fluid, 'SYNOVI/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Synovial_membrane",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Synovitis is inflammation of which joint structure? (Root: synovi/o)",
+        "correctAnswer": "synovial membrane",
+        "distractors": ["cartilage", "tendon", "ligament"]
+      },
+      {
+        "quizQuestion": "Synovial fluid — from synovi/o — lubricates which structures?",
+        "correctAnswer": "joints",
+        "distractors": ["tendons", "muscles", "bones"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_scapulo",
+    "correctAnswer": "shoulder blade",
+    "acceptableAlternatives": ["scapula"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "collarbone",
+      "humerus",
+      "rib",
+      "sternum",
+      "vertebra",
+      "clavicle",
+      "pelvis",
+      "shoulder joint"
+    ],
+    "quizQuestion": "What does the medical combining form 'scapul/o' mean?",
+    "explanation": "Scapul/o comes from Latin 'scapula' meaning shoulder blade. It appears in scapular (relating to the shoulder blade), subscapular (beneath the shoulder blade), and scapulohumeral (relating to both the shoulder blade and humerus). The scapula is the triangular bone at the back of the shoulder that provides attachment points for many muscles of the shoulder and arm.",
+    "statement": "The combining form scapul/o means shoulder blade (scapula).",
+    "wowFactor": "The scapula ('shoulder blade') is one of the most mobile bones in the body — it can rotate, tilt, and glide across the ribcage because it is held in place almost entirely by muscles, with only one bony articulation (to the clavicle at the acromioclavicular joint).",
+    "visualDescription": "Pixel art posterior view of the upper back showing the triangular shoulder blade with 'SCAPUL/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Scapula",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "The subscapular region is located beneath which bone? (Root: scapul/o)",
+        "correctAnswer": "shoulder blade",
+        "distractors": ["collarbone", "humerus", "sternum"]
+      },
+      {
+        "quizQuestion": "Scapulohumeral rhythm describes coordinated movement between the shoulder blade and which other bone?",
+        "correctAnswer": "humerus",
+        "distractors": ["clavicle", "sternum", "rib"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_sacro",
+    "correctAnswer": "sacrum",
+    "acceptableAlternatives": ["sacral bone"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "tailbone",
+      "lumbar vertebra",
+      "pelvis",
+      "hip bone",
+      "ilium",
+      "ischium",
+      "pubis",
+      "femur"
+    ],
+    "quizQuestion": "What does the medical combining form 'sacr/o' mean?",
+    "explanation": "Sacr/o comes from Latin 'os sacrum' meaning sacred bone — ancient anatomists named the triangular bone at the base of the spine 'sacred' because it was used in animal sacrifices and was believed to be the last bone to decompose. It appears in sacroiliac (relating to the sacrum and ilium), sacral (relating to the sacrum), and sacrococcygeal (relating to the sacrum and coccyx).",
+    "statement": "The combining form sacr/o means sacrum.",
+    "wowFactor": "The sacrum was called 'os sacrum' (sacred bone) by Roman anatomists, possibly because it was used in animal sacrifices, was believed to be the last part of the body to decay, or because it protected the pelvic organs considered sacred to reproduction.",
+    "visualDescription": "Pixel art posterior view of the sacrum and pelvis with 'SACR/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sacrum",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "The sacroiliac joint connects the sacrum to which pelvic bone? (Root: sacr/o)",
+        "correctAnswer": "ilium",
+        "distractors": ["femur", "ischium", "coccyx"]
+      },
+      {
+        "quizQuestion": "Sacrococcygeal refers to the region between the sacrum and which other bone?",
+        "correctAnswer": "coccyx (tailbone)",
+        "distractors": ["ilium", "lumbar vertebra", "pubis"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_cervico",
+    "correctAnswer": "neck",
+    "acceptableAlternatives": ["cervix", "neck or cervix"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "shoulder",
+      "thorax",
+      "head",
+      "jaw",
+      "uterus body",
+      "spine",
+      "throat",
+      "lumbar"
+    ],
+    "quizQuestion": "What does the medical combining form 'cervic/o' mean?",
+    "explanation": "Cervic/o comes from Latin 'cervix' meaning neck or neck-like structure. It has a dual anatomical meaning: it refers to the neck of the body (cervical vertebrae, cervicalgia = neck pain) AND to the cervix uteri — the neck-like lower portion of the uterus (cervical cancer, cervicitis = cervical inflammation). Context usually clarifies which meaning applies.",
+    "statement": "The combining form cervic/o means neck (or cervix — the neck-like part of the uterus).",
+    "wowFactor": "Cervic/o has a dual meaning that catches students off guard — the same root describes both the neck of the body (cervical vertebrae C1-C7) and the cervix of the uterus, because both are narrow neck-like structures at the junction of larger regions.",
+    "visualDescription": "Pixel art split image: neck with cervical vertebrae labeled on the left, uterus with cervix labeled on the right, both connected by 'CERVIC/O'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cervix",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Cervical vertebrae are the bones of which part of the body? (Root: cervic/o)",
+        "correctAnswer": "neck",
+        "distractors": ["thorax", "lumbar region", "head"]
+      },
+      {
+        "quizQuestion": "Cervicitis is inflammation of the cervix — cervic/o refers to which anatomical feature both the neck and the cervix share?",
+        "correctAnswer": "being a narrow neck-like junction",
+        "distractors": ["being a round structure", "being a long bone", "being an endocrine organ"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_humero",
+    "correctAnswer": "humerus",
+    "acceptableAlternatives": ["upper arm bone"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "radius",
+      "ulna",
+      "scapula",
+      "clavicle",
+      "femur",
+      "tibia",
+      "fibula",
+      "forearm bone"
+    ],
+    "quizQuestion": "What does the medical combining form 'humer/o' mean?",
+    "explanation": "Humer/o comes from Latin 'humerus' meaning shoulder or upper arm. It refers to the bone of the upper arm — the long bone running from the shoulder joint (glenohumeral joint) to the elbow, where it articulates with the radius and ulna. It appears in humeral (relating to the humerus), humeroscapular (relating to the humerus and scapula), and the glenohumeral joint.",
+    "statement": "The combining form humer/o means humerus (the bone of the upper arm).",
+    "wowFactor": "A fracture of the surgical neck of the humerus — the narrow region just below the humeral head — is common in elderly patients who fall on an outstretched hand. The 'funny bone' sensation when you hit your elbow comes from the ulnar nerve passing just behind the humerus.",
+    "visualDescription": "Pixel art arm skeleton showing the humerus bone between shoulder and elbow with 'HUMER/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Humerus",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "The glenohumeral joint connects the glenoid (shoulder socket) to which bone? (Root: humer/o)",
+        "correctAnswer": "humerus",
+        "distractors": ["radius", "ulna", "clavicle"]
+      },
+      {
+        "quizQuestion": "Humer/o refers to the bone of which part of the arm?",
+        "correctAnswer": "upper arm",
+        "distractors": ["forearm", "wrist", "hand"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_tibio",
+    "correctAnswer": "tibia",
+    "acceptableAlternatives": ["shin bone"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "fibula",
+      "femur",
+      "patella",
+      "calcaneus",
+      "talus",
+      "metatarsal",
+      "tarsus",
+      "lower leg bone"
+    ],
+    "quizQuestion": "What does the medical combining form 'tibi/o' mean?",
+    "explanation": "Tibi/o comes from Latin 'tibia' meaning shinbone (originally a flute — because Roman flutes were made from shin bones). The tibia is the larger of the two lower leg bones, bearing most of the body's weight. It appears in tibial (relating to the tibia), tibialis (muscles named for the tibia), and tibiofibular (relating to both the tibia and fibula).",
+    "statement": "The combining form tibi/o means tibia (shinbone).",
+    "wowFactor": "The Romans called the shin bone 'tibia' because early flutes were carved from them — making tibi/o literally mean 'flute bone.' The tibia is the second largest bone in the body and supports roughly 80% of body weight.",
+    "visualDescription": "Pixel art lower leg skeleton showing the larger tibia alongside the slender fibula, 'TIBI/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tibia",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "The tibiofibular joint connects the tibia to which other lower leg bone? (Root: tibi/o)",
+        "correctAnswer": "fibula",
+        "distractors": ["femur", "patella", "talus"]
+      },
+      {
+        "quizQuestion": "Tibi/o refers to which bone, also known as the shinbone?",
+        "correctAnswer": "tibia",
+        "distractors": ["fibula", "femur", "calcaneus"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_fibulo",
+    "correctAnswer": "fibula",
+    "acceptableAlternatives": ["calf bone"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "tibia",
+      "femur",
+      "patella",
+      "calcaneus",
+      "talus",
+      "metatarsal",
+      "tarsus",
+      "shin bone"
+    ],
+    "quizQuestion": "What does the medical combining form 'fibul/o' mean?",
+    "explanation": "Fibul/o comes from Latin 'fibula' meaning clasp or buckle — the thin bone on the lateral side of the lower leg was thought to resemble the pin of a brooch clasping the tibia to the ankle. It appears in fibular (relating to the fibula), tibiofibular (relating to both bones of the lower leg), and fibulectomy (partial or total removal of the fibula). The fibula bears little body weight but is important for ankle stability.",
+    "statement": "The combining form fibul/o means fibula (the slender outer bone of the lower leg).",
+    "wowFactor": "Fibula means 'clasp' or 'buckle' in Latin — Roman anatomists named it because the tibia and fibula together resemble a Roman brooch with its long pin. The fibula bears almost no body weight but its removal (fibulectomy) is used as a source of bone grafts.",
+    "visualDescription": "Pixel art lower leg showing the thin fibula alongside the larger tibia with 'FIBUL/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fibula",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "The fibula is the slender bone on the lateral side of the lower leg — what does fibul/o mean?",
+        "correctAnswer": "fibula",
+        "distractors": ["tibia", "femur", "talus"]
+      },
+      {
+        "quizQuestion": "A tibiofibular fracture involves damage to the tibia and which other bone?",
+        "correctAnswer": "fibula",
+        "distractors": ["femur", "patella", "calcaneus"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_ulno",
+    "correctAnswer": "ulna",
+    "acceptableAlternatives": ["medial forearm bone"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "radius",
+      "humerus",
+      "carpal bone",
+      "metacarpal",
+      "scapula",
+      "clavicle",
+      "elbow bone",
+      "tibia"
+    ],
+    "quizQuestion": "What does the medical combining form 'uln/o' mean?",
+    "explanation": "Uln/o comes from Latin 'ulna' meaning elbow or forearm. The ulna is the medial (pinky-side) bone of the forearm — its prominence at the elbow (the olecranon) forms the bony point of the elbow. It appears in ulnar (relating to the ulna), ulnar nerve (the nerve running along the ulna that causes 'funny bone' sensation), and radioulnar (relating to the radius and ulna).",
+    "statement": "The combining form uln/o means ulna (the medial bone of the forearm).",
+    "wowFactor": "The 'funny bone' tingle when you hit your elbow is actually the ulnar nerve being compressed against the ulna — the nerve travels through a groove at the medial epicondyle and controls sensation in the ring and little fingers.",
+    "visualDescription": "Pixel art forearm skeleton showing the ulna (medial) and radius (lateral) bones, 'ULN/O' labeled at the ulna",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ulna",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "The ulnar nerve travels along which forearm bone? (Root: uln/o)",
+        "correctAnswer": "ulna",
+        "distractors": ["radius", "humerus", "carpal bone"]
+      },
+      {
+        "quizQuestion": "The radioulnar joint connects the radius to which other forearm bone?",
+        "correctAnswer": "ulna",
+        "distractors": ["humerus", "carpal bone", "metacarpal"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_radio_bone",
+    "correctAnswer": "radius",
+    "acceptableAlternatives": ["lateral forearm bone"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "ulna",
+      "humerus",
+      "carpal bone",
+      "metacarpal",
+      "tibia",
+      "fibula",
+      "scapula",
+      "clavicle"
+    ],
+    "quizQuestion": "In anatomy, the combining form 'radi/o' can refer to which specific bone of the forearm?",
+    "explanation": "In musculoskeletal anatomy, radi/o refers to the radius — the lateral (thumb-side) bone of the forearm, named from Latin 'radius' meaning spoke of a wheel. This is distinct from the radi/o root used in radiology (radiation). It appears in radial (relating to the radius), radioulnar (relating to both forearm bones), and Colles' fracture (a break at the distal end of the radius). The radius rotates around the ulna to allow pronation and supination.",
+    "statement": "In anatomy, the combining form radi/o refers to the radius (the lateral bone of the forearm).",
+    "wowFactor": "The radius (Latin 'spoke of a wheel') rotates around the stationary ulna during pronation and supination — the motion of turning your palm up and down. A Colles' fracture at the wrist end of the radius is the most common fracture in adults over 50.",
+    "visualDescription": "Pixel art forearm skeleton with the radius (thumb side) highlighted, 'RADI/O (bone)' labeled alongside the ulna",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Radius_(bone)",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A radial fracture is a break in which forearm bone? (Anatomical radi/o)",
+        "correctAnswer": "radius",
+        "distractors": ["ulna", "humerus", "carpal bone"]
+      },
+      {
+        "quizQuestion": "Radi/o can mean either 'radiation' or (in anatomy) which specific bone?",
+        "correctAnswer": "radius",
+        "distractors": ["ulna", "tibia", "femur"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_carpo",
+    "correctAnswer": "wrist",
+    "acceptableAlternatives": ["wrist bones", "carpal bones"],
+    "chainThemeId": 8,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "hand bones",
+      "finger bones",
+      "ankle bones",
+      "forearm",
+      "elbow",
+      "metacarpal",
+      "phalanges",
+      "radius"
+    ],
+    "quizQuestion": "What does the medical combining form 'carp/o' mean?",
+    "explanation": "Carp/o comes from Greek 'karpos' meaning wrist. It refers to the eight carpal bones that form the wrist joint. It appears in carpal tunnel syndrome (compression of the median nerve in the wrist), carpectomy (surgical removal of one or more carpal bones), and carpometacarpal (the joint between the wrist and hand bones). The eight carpal bones are arranged in two rows of four.",
+    "statement": "The combining form carp/o means wrist (carpal bones).",
+    "wowFactor": "Carpal tunnel syndrome — from carp/o (wrist) — affects about 3% of adults and is caused by compression of the median nerve as it passes through a narrow passage formed by the eight carpal bones and a ligament. It is the most common peripheral nerve compression disorder.",
+    "visualDescription": "Pixel art wrist X-ray showing the eight carpal bones with 'CARP/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carpal_bones",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Carpal tunnel syndrome involves compression of a nerve passing through which region? (Root: carp/o)",
+        "correctAnswer": "wrist",
+        "distractors": ["elbow", "hand", "forearm"]
+      },
+      {
+        "quizQuestion": "Carpometacarpal joints connect the wrist bones (carp/o) to which other bones?",
+        "correctAnswer": "metacarpals (hand bones)",
+        "distractors": ["finger bones", "radius and ulna", "forearm"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_metacarpo",
+    "correctAnswer": "hand bones",
+    "acceptableAlternatives": ["metacarpal bones", "palm bones"],
+    "chainThemeId": 8,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "wrist bones",
+      "finger bones",
+      "forearm bones",
+      "thumb bones",
+      "phalanges",
+      "carpal bones",
+      "tarsal bones",
+      "ankle bones"
+    ],
+    "quizQuestion": "What does the medical combining form 'metacarp/o' mean?",
+    "explanation": "Metacarp/o comes from Greek 'meta' (beyond, after) + 'karpos' (wrist), meaning the bones beyond the wrist. The five metacarpal bones form the palm of the hand, connecting the wrist (carpals) to the fingers (phalanges). It appears in metacarpal fracture (a break in a palm bone, sometimes called a boxer's fracture), and carpometacarpal joint (the wrist–palm joint).",
+    "statement": "The combining form metacarp/o means metacarpal bones (the palm bones of the hand).",
+    "wowFactor": "A 'boxer's fracture' is a break at the neck of the fifth metacarpal — the metacarpal leading to the little finger — typically caused by punching a hard surface with a closed fist. The meta- prefix means 'beyond the wrist.'",
+    "visualDescription": "Pixel art hand skeleton showing the five metacarpal palm bones with 'METACARP/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Metacarpal_bones",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A boxer's fracture is a break in a metacarpal — which part of the hand do the metacarpals form? (Root: metacarp/o)",
+        "correctAnswer": "palm",
+        "distractors": ["wrist", "fingers", "thumb tip"]
+      },
+      {
+        "quizQuestion": "Metacarp/o refers to the bones that are literally 'beyond' (meta-) which other wrist/hand bones?",
+        "correctAnswer": "carpal bones (wrist)",
+        "distractors": ["phalanges (fingers)", "radius and ulna", "tarsal bones"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_tarso",
+    "correctAnswer": "ankle bones",
+    "acceptableAlternatives": ["tarsal bones", "ankle"],
+    "chainThemeId": 8,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "metatarsal bones",
+      "toe bones",
+      "heel bone",
+      "wrist bones",
+      "carpal bones",
+      "tibia",
+      "fibula",
+      "shin bones"
+    ],
+    "quizQuestion": "What does the medical combining form 'tars/o' mean?",
+    "explanation": "Tars/o comes from Greek 'tarsos' meaning flat of the foot or wicker basket (referring to the grouped ankle bones). The seven tarsal bones form the ankle and rear foot, including the calcaneus (heel), talus (the bone that articulates with the tibia and fibula), and five others. It appears in tarsal tunnel syndrome (analogous to carpal tunnel but at the ankle), tarsectomy (removal of a tarsal bone), and metatarsal (the foot bones beyond the tarsals).",
+    "statement": "The combining form tars/o means ankle bones (tarsal bones).",
+    "wowFactor": "Tarsal tunnel syndrome — tars/o (ankle) — compresses the tibial nerve at the ankle and mimics carpal tunnel syndrome at the wrist. The calcaneus (heel bone) is the largest of the seven tarsal bones and the most commonly fractured.",
+    "visualDescription": "Pixel art foot skeleton showing the seven tarsal bones at the ankle/rear foot with 'TARS/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tarsal_bones",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Tarsal tunnel syndrome involves nerve compression at which region? (Root: tars/o)",
+        "correctAnswer": "ankle",
+        "distractors": ["wrist", "knee", "hip"]
+      },
+      {
+        "quizQuestion": "Tars/o refers to the bones of the ankle — the metatarsals are the bones 'beyond' (meta-) which bones?",
+        "correctAnswer": "tarsal bones",
+        "distractors": ["phalanges", "carpal bones", "tibia and fibula"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_phalango",
+    "correctAnswer": "finger or toe bones",
+    "acceptableAlternatives": ["phalanges", "finger bones", "toe bones"],
+    "chainThemeId": 8,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "metacarpal bones",
+      "metatarsal bones",
+      "carpal bones",
+      "tarsal bones",
+      "knuckle joint",
+      "thumb bone",
+      "palm bone",
+      "wrist bone"
+    ],
+    "quizQuestion": "What does the medical combining form 'phalang/o' mean?",
+    "explanation": "Phalang/o comes from Greek 'phalanx' (plural 'phalanges') meaning a row of soldiers or a bone of the finger or toe. Each finger has three phalanges (proximal, middle, distal), except the thumb and great toe which have two. It appears in phalangeal fracture (a broken finger or toe bone), interphalangeal joint (the knuckle joint between two phalanges), and polydactyly (extra fingers or toes).",
+    "statement": "The combining form phalang/o means phalanges (the finger and toe bones).",
+    "wowFactor": "The term 'phalanx' — a tight military formation where soldiers stood like interlocking bones — gave its name to the finger bones because each bone is a tight link in the chain of the finger. Greek generals named both: a military tactic and the bones of the hand.",
+    "visualDescription": "Pixel art hand skeleton with the phalange bones of each finger labeled, 'PHALANG/O' annotated",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Phalanx_bone",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "An interphalangeal joint is a knuckle joint between two phalanges — what structures are phalanges? (Root: phalang/o)",
+        "correctAnswer": "finger or toe bones",
+        "distractors": ["metacarpal bones", "carpal bones", "wrist bones"]
+      },
+      {
+        "quizQuestion": "A phalangeal fracture is a broken bone in which part of the body?",
+        "correctAnswer": "finger or toe",
+        "distractors": ["wrist", "ankle", "palm"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_parathyroido",
+    "correctAnswer": "parathyroid gland",
+    "acceptableAlternatives": ["parathyroid"],
+    "chainThemeId": 8,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "thyroid gland",
+      "pituitary gland",
+      "adrenal gland",
+      "thymus",
+      "pineal gland",
+      "pancreas",
+      "ovary",
+      "testis"
+    ],
+    "quizQuestion": "What does the medical combining form 'parathyroid/o' mean?",
+    "explanation": "Parathyroid/o is formed from Greek 'para' (beside) + thyroid/o (thyroid gland), literally meaning 'beside the thyroid.' The four parathyroid glands are embedded in the posterior surface of the thyroid gland. They produce parathyroid hormone (PTH), which regulates blood calcium levels. It appears in parathyroiditis (inflammation of the parathyroid glands), parathyroidectomy (surgical removal), and hyperparathyroidism (excess PTH causing high blood calcium).",
+    "statement": "The combining form parathyroid/o means parathyroid gland.",
+    "wowFactor": "The four parathyroid glands are each about the size of a grain of rice — together weighing less than 130 mg — yet they control the body's entire calcium balance. Early thyroid surgeons unknowingly removed them, causing fatal tetanic muscle spasms from calcium collapse.",
+    "visualDescription": "Pixel art posterior thyroid gland showing four tiny parathyroid glands with 'PARATHYROID/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Parathyroid_gland",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Hyperparathyroidism is excess activity of which gland? (Root: parathyroid/o)",
+        "correctAnswer": "parathyroid gland",
+        "distractors": ["thyroid gland", "pituitary gland", "adrenal gland"]
+      },
+      {
+        "quizQuestion": "Parathyroid hormone (PTH) regulates blood levels of which mineral?",
+        "correctAnswer": "calcium",
+        "distractors": ["sodium", "iron", "potassium"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_pituito",
+    "correctAnswer": "pituitary gland",
+    "acceptableAlternatives": ["pituitary"],
+    "chainThemeId": 8,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "hypothalamus",
+      "pineal gland",
+      "thyroid gland",
+      "adrenal gland",
+      "thymus",
+      "pancreas",
+      "thalamus",
+      "parathyroid gland"
+    ],
+    "quizQuestion": "What does the medical combining form 'pituit/o' mean?",
+    "explanation": "Pituit/o comes from Latin 'pituita' meaning phlegm or mucus — early anatomists incorrectly believed the pituitary gland produced nasal mucus (phlegm). The pituitary gland (also called the hypophysis) hangs from the base of the hypothalamus in the brain and is the 'master gland,' producing hormones that regulate growth, reproduction, thyroid, and adrenal function. It appears in pituitary adenoma (benign pituitary tumor), hypopituitarism, and hyperpituitarism.",
+    "statement": "The combining form pituit/o means pituitary gland.",
+    "wowFactor": "The pituitary gland is the size of a pea yet coordinates the entire endocrine system — it secretes nine major hormones including growth hormone, TSH, ACTH, FSH, LH, prolactin, ADH, and oxytocin. Its name comes from the Latin for 'phlegm' due to a misconception by early anatomists.",
+    "visualDescription": "Pixel art brain sagittal cross-section with the tiny pituitary gland highlighted at the base, 'PITUIT/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pituitary_gland",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Hypopituitarism is reduced function of which gland? (Root: pituit/o)",
+        "correctAnswer": "pituitary gland",
+        "distractors": ["thyroid gland", "adrenal gland", "pineal gland"]
+      },
+      {
+        "quizQuestion": "The pituitary gland is called the 'master gland' because it produces hormones that control which other glands?",
+        "correctAnswer": "thyroid, adrenal, and reproductive glands",
+        "distractors": ["liver, pancreas, and spleen", "lymph nodes and thymus", "parathyroid and pineal glands"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_insulino",
+    "correctAnswer": "insulin",
+    "acceptableAlternatives": ["islets of Langerhans"],
+    "chainThemeId": 8,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "glucagon",
+      "adrenaline",
+      "cortisol",
+      "thyroid hormone",
+      "growth hormone",
+      "somatostatin",
+      "amylase",
+      "lipase"
+    ],
+    "quizQuestion": "What does the medical combining form 'insulin/o' mean?",
+    "explanation": "Insulin/o is derived from Latin 'insula' meaning island, referring to the islets of Langerhans — the clusters of endocrine cells within the pancreas that produce insulin. The combining form appears in insulinoma (a tumor of insulin-producing cells), insulinopenia (deficiency of insulin), and insulinotherapy (treatment with insulin). Type 1 diabetes results from autoimmune destruction of the insulin-producing beta cells.",
+    "statement": "The combining form insulin/o means insulin (named from Latin 'insula' = island, for the pancreatic islets).",
+    "wowFactor": "The word 'insulin' comes from Latin 'insula' (island) — the hormone is produced by the islets of Langerhans, tiny islands of endocrine cells scattered through the exocrine pancreas. Before insulin's discovery in 1921, a Type 1 diabetes diagnosis was a death sentence within months.",
+    "visualDescription": "Pixel art pancreas cross-section with an islet of Langerhans (island cluster) highlighted, 'INSULIN/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Insulin",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "An insulinoma is a tumor of cells that produce which hormone? (Root: insulin/o)",
+        "correctAnswer": "insulin",
+        "distractors": ["glucagon", "cortisol", "adrenaline"]
+      },
+      {
+        "quizQuestion": "Insulin is named from Latin 'insula' (island) because it is produced in which pancreatic structures?",
+        "correctAnswer": "islets of Langerhans",
+        "distractors": ["acinar cells", "ductal cells", "exocrine glands"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_pinealo",
+    "correctAnswer": "pineal gland",
+    "acceptableAlternatives": ["pineal body"],
+    "chainThemeId": 8,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "pituitary gland",
+      "hypothalamus",
+      "thyroid gland",
+      "adrenal gland",
+      "thymus",
+      "parathyroid gland",
+      "thalamus",
+      "cerebellum"
+    ],
+    "quizQuestion": "What does the medical combining form 'pineal/o' mean?",
+    "explanation": "Pineal/o comes from Latin 'pinealis' relating to 'pinea' (pine cone), because the pineal gland's shape resembles a tiny pine cone. The pineal gland is a small endocrine gland in the brain that produces melatonin, regulating the sleep-wake cycle (circadian rhythm). It appears in pinealoma (pineal gland tumor), pinealectomy (surgical removal of the pineal gland), and pinealocyte (the secretory cells of the pineal gland).",
+    "statement": "The combining form pineal/o means pineal gland.",
+    "wowFactor": "René Descartes called the pineal gland 'the seat of the soul' — the only unpaired structure in the brain and thus, he theorized, where the immaterial soul met the physical body. The gland is actually just 5-8 mm long and primarily regulates melatonin and sleep.",
+    "visualDescription": "Pixel art brain sagittal section with the tiny pine-cone-shaped pineal gland highlighted, 'PINEAL/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pineal_gland",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "The pineal gland produces which hormone that regulates the sleep-wake cycle? (Root: pineal/o)",
+        "correctAnswer": "melatonin",
+        "distractors": ["serotonin", "cortisol", "dopamine"]
+      },
+      {
+        "quizQuestion": "Pineal/o refers to a gland shaped like a small ___.",
+        "correctAnswer": "pine cone",
+        "distractors": ["almond", "kidney bean", "pear"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_labyrintho",
+    "correctAnswer": "inner ear",
+    "acceptableAlternatives": ["labyrinth of the ear", "bony labyrinth"],
+    "chainThemeId": 9,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "middle ear",
+      "outer ear",
+      "cochlea only",
+      "semicircular canals only",
+      "eardrum",
+      "eustachian tube",
+      "mastoid",
+      "auditory cortex"
+    ],
+    "quizQuestion": "What does the medical combining form 'labyrinth/o' mean?",
+    "explanation": "Labyrinth/o comes from Greek 'labyrinthos' meaning labyrinth or maze, referring to the complex bony maze of the inner ear that houses both the cochlea (hearing) and the vestibular system (balance). It appears in labyrinthitis (inflammation of the inner ear labyrinth, causing vertigo and hearing loss), labyrinthectomy (surgical removal of the labyrinth), and labyrinthine (relating to or resembling the inner ear maze).",
+    "statement": "The combining form labyrinth/o means labyrinth (the maze-like inner ear structure).",
+    "wowFactor": "The bony labyrinth of the inner ear is carved into the densest bone in the human body (the petrous part of the temporal bone) and is just 7-10 mm across, yet it houses both the cochlea (hearing) and the vestibular organs (balance) in an intricate, maze-like cavity.",
+    "visualDescription": "Pixel art inner ear showing the bony labyrinth maze structure with cochlea and semicircular canals, 'LABYRINTH/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Labyrinth_(inner_ear)",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Labyrinthitis is inflammation of which inner ear structure? (Root: labyrinth/o)",
+        "correctAnswer": "labyrinth (inner ear)",
+        "distractors": ["eardrum", "eustachian tube", "middle ear ossicles"]
+      },
+      {
+        "quizQuestion": "The labyrinth of the inner ear (labyrinth/o) contains structures for both hearing and which other function?",
+        "correctAnswer": "balance",
+        "distractors": ["taste", "smell", "vision"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_mastoido",
+    "correctAnswer": "mastoid process",
+    "acceptableAlternatives": ["mastoid", "mastoid bone"],
+    "chainThemeId": 9,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "eardrum",
+      "cochlea",
+      "outer ear",
+      "temporal bone",
+      "eustachian tube",
+      "middle ear cavity",
+      "semicircular canal",
+      "auditory canal"
+    ],
+    "quizQuestion": "What does the medical combining form 'mastoid/o' mean?",
+    "explanation": "Mastoid/o comes from Greek 'mastos' (breast) + '-oid' (resembling) — the mastoid process of the temporal bone was named because its rounded, nipple-like protrusion resembles a breast. It is the bony prominence felt behind the ear. It appears in mastoiditis (a serious infection of the mastoid air cells, a complication of untreated otitis media), mastoidectomy (surgical removal of infected mastoid cells), and mastoid air cells (air-filled cavities within the mastoid process).",
+    "statement": "The combining form mastoid/o means mastoid process (the breast-shaped bony prominence behind the ear).",
+    "wowFactor": "Mastoiditis — infection of the mastoid process — was the leading cause of death from ear infections before antibiotics. The mastoid is filled with honeycomb-like air cells connected to the middle ear, and pre-antibiotic era surgeons performed mastoidectomy (chiseling out the infected bone) as a life-saving operation.",
+    "visualDescription": "Pixel art lateral skull view showing the rounded mastoid process behind the ear with 'MASTOID/O' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mastoid_part_of_the_temporal_bone",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Mastoiditis is a serious infection of the bony prominence behind which sense organ? (Root: mastoid/o)",
+        "correctAnswer": "ear",
+        "distractors": ["eye", "nose", "jaw"]
+      },
+      {
+        "quizQuestion": "The mastoid process (mastoid/o) is named because it resembles which shape?",
+        "correctAnswer": "breast or nipple",
+        "distractors": ["almond", "pea", "mushroom cap"]
+      }
+    ]
+  }
+]

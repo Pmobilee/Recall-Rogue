@@ -1,0 +1,922 @@
+deck_id: ap_world_history
+name: "AP World History: Modern"
+domain: history
+sub_domain: world_history
+description: "Master the complete AP World History: Modern curriculum — from the Global Tapestry of c. 1200 to contemporary Globalization. Covers all 9 CED units: The Global Tapestry, Networks of Exchange, Land-Based Empires, Transoceanic Interconnections, Revolutions, Consequences of Industrialization, Global Conflict, Cold War and Decolonization, and Globalization. Aligned to the College Board AP World History: Modern Course and Exam Description. Emphasizes causation, continuity and change over time, comparison, and contextualization across world regions and chronological periods."
+minimum_facts: 550
+target_facts: 620
+
+# COMPLETENESS PHILOSOPHY:
+# This deck covers the COMPLETE College Board AP World History: Modern Course and Exam
+# Description (CED). A student who masters this deck should be prepared for every question
+# type on the AP World History: Modern exam. Scope is curriculum-driven, not topic-sampled —
+# every CED topic (1.1 through 9.9) across all 9 units is represented. Unit weights (percent
+# of exam) directly inform fact counts per chain theme. Units 3, 4, 5, and 6 (12-15% each)
+# are the heaviest, and their chain themes receive proportionally more facts (~80 each).
+# Units 1, 2, 7, 8, and 9 (8-10% each) receive ~55-65 facts each. The four AP historical
+# thinking skills (causation, continuity and change over time, comparison, contextualization)
+# are embedded throughout every unit. Total target: 620 facts across 9 chain themes.
+
+# Sourcing & licensing
+data_sources:
+  - name: College Board AP World History — Modern Course and Exam Description (CED)
+    url: https://apcentral.collegeboard.org/media/pdf/ap-world-history-modern-course-and-exam-description.pdf
+    license: public educational resource
+    usage: Authoritative unit/topic structure, learning objectives, key concepts, exam weight distribution, historical thinking skills framework
+  - name: Wikipedia — History
+    url: https://en.wikipedia.org/wiki/Portal:History
+    license: CC-BY-SA-4.0
+    usage: Empire descriptions, battle details, treaty terms, leader biographies, event summaries, verified dates and facts
+  - name: Wikidata
+    url: https://www.wikidata.org/
+    license: CC0
+    usage: Dates, population figures, geographic data, verified proper nouns, battle outcomes
+
+asset_sources: []
+
+# ============================================================
+# CHAIN THEMES — 9 thematic zones mapping to CED units 1-9
+# Each theme is a distinct "dungeon zone" with its own facts pool
+# Fact counts weighted by exam percentage per CED
+# ============================================================
+
+chain_themes:
+
+  - id: 0
+    name: "The Global Tapestry"
+    ced_coverage: "Unit 1 Topics 1.1-1.7 (c. 1200-1450): East Asia, Dar al-Islam, South/Southeast Asia, Americas, Africa, Europe, Comparison"
+    target_facts: 65
+    description: >
+      The interconnected world of c. 1200-1450 before European overseas expansion. Players explore
+      Song Dynasty China and Neo-Confucianism, the fragmented Abbasid Caliphate and rising Islamic
+      empires (Delhi Sultanate, Mamluk Egypt), Vijayanagara and Khmer in South and Southeast Asia,
+      the Aztec and Inca empires of the Americas, Mali and Great Zimbabwe in Africa, and feudal
+      Europe anchored by the Catholic Church. This unit establishes the baseline: who held power,
+      how societies were organized, and what belief systems dominated before the world became
+      dramatically more interconnected.
+    key_concepts:
+      - Song Dynasty China (960-1279) — commercialization, urbanization, merit-based bureaucracy via civil service exams
+      - Song innovations — woodblock printing, movable type, paper money (jiaozi), gunpowder weaponry, magnetic compass
+      - Neo-Confucianism — synthesis of Confucian ethics with Buddhist and Daoist metaphysics; scholar-gentry class
+      - Chan (Zen) Buddhism — meditation and direct experience; influence on art and governance
+      - Abbasid Caliphate decline — fragmented authority after 861; Buyid, Seljuk, and ultimately Mongol takeover (1258)
+      - Post-Abbasid Islamic political diversity — Mamluk Sultanate (Egypt), Delhi Sultanate (India), Seljuk Turks (Anatolia)
+      - Delhi Sultanate (1206-1526) — first major Islamic sultanate in South Asia; Qutb-ud-Din Aibak founder
+      - Vijayanagara Empire (1336-1646) — Hindu empire in southern India; resistance to Islamic expansion
+      - Khmer Empire (802-1431) — based in Angkor; Hindu-Buddhist syncretism; monumental architecture (Angkor Wat)
+      - Majapahit Empire (1293-1527) — Hindu-Buddhist maritime empire in Southeast Asia
+      - Aztec (Mexica) Empire — Triple Alliance formed 1428; Tenochtitlan capital on Lake Texcoco; tribute system
+      - Aztec religion and society — human sacrifice, chinampas agriculture, calpulli social units
+      - Inca Empire (Tawantinsuyu) — emerged c. 1438 under Pachacuti; mit'a labor system; no written language
+      - Inca administration — quipu recordkeeping, road network (Qhapaq Nan), split inheritance succession crises
+      - Mali Empire (c. 1235-1600) — Mansa Musa (r. 1312-1337); trans-Saharan gold-salt trade; Timbuktu as Islamic learning center
+      - Great Zimbabwe (c. 1100-1450) — stone-walled city; center of gold trade between interior and Indian Ocean coast
+      - Ethiopian Christian Kingdom (Zagwe, then Solomonid dynasty) — Lalibela rock-hewn churches; Red Sea trade
+      - Swahili city-states — Indian Ocean trading cities (Kilwa, Mombasa, Zanzibar); mix of African and Islamic cultures
+      - Feudalism in Europe — lords, vassals, serfs; manorial system; decentralized political authority
+      - Catholic Church in medieval Europe — Pope vs. secular rulers; Crusades (1096-1291); monasticism
+      - Magna Carta (1215) — English nobility limits royal power; precedent for constitutional government
+      - Black Death precursor — bubonic plague first described in Central Asia c. 1330s before spreading via Mongol trade routes
+      - Comparison focus — similarities and differences in state-building strategies across regions (tribute, bureaucracy, religion)
+
+  - id: 1
+    name: "Webs of Exchange"
+    ced_coverage: "Unit 2 Topics 2.1-2.7 (c. 1200-1450): Silk Roads, Mongol Empire, Indian Ocean, Trans-Saharan Trade, Cultural Consequences, Environmental Consequences, Comparison"
+    target_facts: 65
+    description: >
+      The trade networks and cross-cultural exchanges that stitched the world together between
+      1200 and 1450. Players trace goods, ideas, religions, and diseases along the Silk Roads,
+      follow Mongol conquests that disrupted and then reconnected Eurasia, navigate Indian Ocean
+      dhow routes linking East Africa to South and Southeast Asia, and cross the Sahara with
+      camel caravans carrying gold and salt. The Black Death — carried along these same routes —
+      demonstrates that connectivity has deadly consequences alongside cultural richness.
+    key_concepts:
+      - Silk Roads — overland network of routes linking China to Central Asia, Persia, and the Mediterranean; goods included silk, spices, porcelain, glassware
+      - Caravanserais — roadside inns every 30-40 km along Silk Road; maintained by rulers to facilitate trade
+      - Spread of religions along Silk Roads — Buddhism to China and East Asia; Islam to Central Asia; Nestorian Christianity to China
+      - Mongol Empire (1206-1368) — Genghis Khan unified Mongol tribes 1206; largest contiguous land empire in history
+      - Mongol conquests — Central Asia, Persia (1258 sack of Baghdad), Russia (Golden Horde), China (Yuan Dynasty)
+      - Pax Mongolica — relative peace and trade facilitation across Mongol-controlled Eurasia after conquests
+      - Yuan Dynasty (1271-1368) — Kublai Khan; Marco Polo's visit; Chinese population drop; paper currency; tributary system
+      - Limits of Mongol expansion — Battle of Ain Jalut (1260) — Mamluks stop Mongols in Palestine; failed Japan invasions (1274, 1281)
+      - Indian Ocean trade network — seasonal monsoon winds enabled predictable sailing routes
+      - Ibn Battuta (1304-1368/9) — Moroccan scholar; traveled 75,000 miles; documented Dar al-Islam's reach
+      - Zheng He voyages (1405-1433) — Ming Dynasty treasure fleets; reached East Africa, Arabia, Southeast Asia; tributary missions
+      - Indian Ocean goods — spices (cloves, cinnamon, nutmeg), cotton textiles, porcelain, slaves, horses, ivory
+      - Swahili coast — gold from Great Zimbabwe interior traded to Indian Ocean merchants via Kilwa
+      - Dhow — lateen-sailed boat adapted for Indian Ocean monsoon sailing
+      - Trans-Saharan trade — camel caravans (camels domesticated by c. 1000 BCE; critical for Saharan crossing)
+      - Primary trans-Saharan commodities — gold and kola nuts from West Africa; salt from Saharan mines (Taghaza)
+      - Mali and trans-Saharan trade — Mansa Musa's 1324 pilgrimage to Mecca; flooded gold markets in Cairo and Medina
+      - Spread of Islam via trade — merchants carried Islam to West Africa, East Africa, and Southeast Asia
+      - Cultural consequences of connectivity — spread of crops (citrus, sugarcane, cotton), artistic styles, technological innovations (paper, printing)
+      - Black Death (1347-1353) — bubonic plague spread from Central Asia via Mongol-linked trade routes; killed 30-60% of European population
+      - Black Death origins — Yersinia pestis bacterium; transmitted by fleas on rodents; reached Crimea via Mongol siege of Caffa (1346)
+      - Environmental consequences — Black Death labor shortage accelerated serfdom's decline in Europe; land abandonment; flagellant movements
+
+  - id: 2
+    name: "Empires of the Land"
+    ced_coverage: "Unit 3 Topics 3.1-3.4 (c. 1450-1750): Empires Expand, Administration, Belief Systems, Comparison"
+    target_facts: 80
+    description: >
+      The great land-based empires that dominated Eurasia between 1450 and 1750 — the Ottoman,
+      Safavid, Mughal, Qing, and Russian empires. Players explore how these empires expanded
+      through military innovation (especially gunpowder), administered vast multiethnic territories
+      through bureaucracy and patronage, and used religion (whether enforcing orthodoxy or
+      practicing tolerance) as a tool of statecraft. The comparison topic (3.4) asks students
+      to identify what the Gunpowder Empires have in common and where they diverge.
+    key_concepts:
+      - Gunpowder Empires — term for Ottoman, Safavid, and Mughal empires that used gunpowder technology for expansion
+      - Ottoman Empire (1299-1922) — founded by Osman I; captured Constantinople 1453 (Mehmed II); peak under Suleiman the Magnificent (r. 1520-1566)
+      - Ottoman administration — devshirme system (enslaved Christian boys trained as Janissaries and bureaucrats); millet system for non-Muslim communities
+      - Ottoman economy — controlled key trade routes between Europe and Asia; tax farming (iltizam) for revenue collection
+      - Safavid Empire (1501-1736) — founded by Shah Ismail I; based in Persia (modern Iran); Twelver Shia Islam as state religion
+      - Safavid-Ottoman conflict — Sunni-Shia divide drove wars; Battle of Chaldiran (1514) — Ottomans defeat Safavids with artillery
+      - Shah Abbas I (r. 1588-1629) — Safavid peak; reformed military; capital Isfahan; patronage of arts and architecture
+      - Mughal Empire (1526-1857) — founded by Babur after Battle of Panipat (1526); based in Indian subcontinent
+      - Akbar the Great (r. 1556-1605) — religious tolerance (Din-i-Ilahi syncretic movement); centralized bureaucracy; Mansabdari system for nobility
+      - Aurangzeb (r. 1658-1707) — reversed Akbar's tolerance; imposed jizya tax on Hindus; Mughal decline accelerated
+      - Qing Dynasty (1644-1912) — Manchu conquest of Ming China; maintained Chinese bureaucracy (Confucian civil service exams); Han Chinese majority governed by Manchu minority
+      - Qing administration — Grand Council; provincial governors; Six Boards; tribute system from neighboring states
+      - Russian Empire expansion (Ivan III-Peter the Great) — absorbed Mongol successor states (Kazan 1552, Astrakhan 1556); expanded east across Siberia by 1639
+      - Peter the Great (r. 1682-1725) — Westernization reforms; founded St. Petersburg 1703; Table of Ranks; expanded to Baltic
+      - Russian serfdom — serfs legally bound to land under Romanov tsars; similar to but distinct from Western European feudal serfs
+      - Comparative administration — all empires used bureaucracy, tax farming, and co-opting local elites; differed in degree of religious enforcement
+      - Religious tolerance comparison — Akbar (high tolerance) vs. Aurangzeb (low tolerance); Ottoman millet system (moderate, structured tolerance); Safavid Shia orthodoxy enforcement
+      - Janissaries — elite Ottoman infantry corps recruited via devshirme; key to Ottoman military dominance; later became politically destabilizing force
+      - Tax farming — selling right to collect taxes to private contractors; raised immediate revenue but created corruption and local resentment
+      - Tributary systems — neighbors paid tribute to recognize imperial authority (Qing's tribute system; Ottoman vassal states)
+      - Manchu Queue Order (1645) — Qing forced Han men to adopt Manchu hairstyle; symbol of submission to new dynasty
+      - Ming to Qing transition — Ming collapse due to internal rebellions, fiscal crisis, and Li Zicheng's revolt (1644); Manchu armies invited in
+
+  - id: 3
+    name: "Oceans Connected"
+    ced_coverage: "Unit 4 Topics 4.1-4.8 (c. 1450-1750): Technological Innovations, Exploration, Columbian Exchange, Maritime Empires, Challenges to State Power, Social Hierarchies, Continuity and Change"
+    target_facts: 80
+    description: >
+      The age of European maritime expansion and its world-transforming consequences. Players
+      examine the navigational and shipbuilding technologies that made oceanic voyaging possible,
+      trace the causes and events of exploration from Portuguese voyages down the African coast to
+      Columbus and Magellan, analyze the Columbian Exchange of crops, animals, and diseases that
+      permanently altered demographics and ecologies on every continent, and explore how Spain,
+      Portugal, Britain, France, and the Netherlands built and maintained maritime empires through
+      joint-stock companies, plantation slavery, and coercive labor systems.
+    key_concepts:
+      - Portuguese navigation innovations — caravel (lateen sails for sailing into wind), astrolabe (latitude measurement), portolan charts
+      - Prince Henry the Navigator (1394-1460) — Portuguese patron of exploration; established school at Sagres; African coast voyages
+      - Bartolomeu Dias (1488) — first European to round Cape of Good Hope; opened sea route to Indian Ocean
+      - Vasco da Gama (1498) — first European to sail from Europe to India (Calicut); established direct spice trade route
+      - Christopher Columbus (1492) — reached Caribbean under Spanish patronage; believed he reached Asia; four voyages 1492-1504
+      - Treaty of Tordesillas (1494) — Spain and Portugal divided non-European world along a meridian; Spain got Americas, Portugal got Africa/Asia route
+      - Ferdinand Magellan / Juan Sebastián Elcano (1519-1522) — first circumnavigation of globe; proved Earth's spherical shape practically
+      - Spanish Conquistadors — Hernán Cortés conquered Aztec Empire (1519-1521); Francisco Pizarro conquered Inca Empire (1532-1572)
+      - Columbian Exchange — transfer of plants, animals, diseases, and people between Eastern and Western Hemispheres after 1492
+      - Columbian Exchange: Old World to New — smallpox, measles, influenza (devastated indigenous populations by up to 90%); horses, cattle, pigs; wheat, sugar, coffee
+      - Columbian Exchange: New World to Old — potatoes, maize (corn), tomatoes, cacao, tobacco, sweet potatoes; transformed European and Asian diets
+      - Demographic collapse — indigenous American population dropped from ~50 million to ~5 million in a century due to disease
+      - Atlantic slave trade — began mid-1400s (Portuguese); accelerated after indigenous labor collapse; estimated 12.5 million Africans transported 1500-1900
+      - Middle Passage — brutal transatlantic voyage of enslaved Africans; ~15% mortality on ships
+      - Encomienda system — Spanish crown granted conquistadors rights to indigenous labor in exchange for Christian conversion and military service
+      - Hacienda system — large agricultural estates using coerced indigenous and mestizo labor; replaced encomienda over time
+      - Mit'a adaptation — Spanish used Inca labor draft system (mit'a) at Potosí silver mines in Bolivia
+      - Potosí silver mine (Bolivia) — largest silver deposit in world; peak production 1560s-1590s; funded Spanish Empire; caused global inflation
+      - Joint-stock companies — Dutch East India Company (VOC, 1602) and British East India Company (EIC, 1600) — spread risk; pooled capital for long voyages
+      - Dutch commercial empire — VOC controlled spice trade from Indonesia (Batavia/Jakarta); dominant 17th-century maritime power
+      - Casta system — racial hierarchy in Spanish colonies; peninsulares > criollos > mestizos > mulattos > indigenous > enslaved Africans
+      - Sugar plantation system — Caribbean and Brazil; relied on enslaved African labor; most profitable colonial enterprise
+      - Internal challenges — indigenous rebellions (Tupac Amaru II, 1780); colonial Creole resentment of Spanish-born administrators
+      - Maroon communities — escaped enslaved Africans formed independent communities (Quilombo dos Palmares in Brazil)
+      - Continuity — established trade routes (Indian Ocean, trans-Saharan) continued alongside new Atlantic routes; existing power hierarchies often reinforced
+
+  - id: 4
+    name: "Age of Revolution"
+    ced_coverage: "Unit 5 Topics 5.1-5.7 (c. 1750-1900): Enlightenment, Nationalism and Revolutions, Industrial Revolution (origins, spread, technology, government role, economic innovations)"
+    target_facts: 80
+    description: >
+      The twin revolutions — intellectual and industrial — that remade politics and economies
+      between 1750 and 1900. Players explore Enlightenment thinkers who challenged divine-right
+      monarchy, trace how Enlightenment ideals ignited the American, French, Haitian, and Latin
+      American revolutions, then shift to the Industrial Revolution beginning in Britain: why
+      it started there, the key technological innovations (steam engine, textile machinery),
+      how it spread to Europe and North America, and how governments shaped — or tried to shape —
+      industrial development through mercantilism, free trade, and socialist responses.
+    key_concepts:
+      - Enlightenment core ideas — reason, natural rights, social contract, separation of powers, religious toleration, progress
+      - John Locke (1632-1704) — natural rights (life, liberty, property); government by consent; right to revolution
+      - Jean-Jacques Rousseau (1712-1778) — social contract; popular sovereignty; general will
+      - Voltaire (1694-1778) — religious toleration; criticism of Church; satire as political tool
+      - Montesquieu (1689-1755) — separation of powers (executive, legislative, judicial); The Spirit of the Laws (1748)
+      - Adam Smith (1723-1790) — The Wealth of Nations (1776); free market economics; laissez-faire; specialization and division of labor
+      - American Revolution (1775-1783) — colonial Enlightenment applied; Declaration of Independence (1776); Articles of Confederation → U.S. Constitution (1787)
+      - French Revolution (1789-1799) — Declaration of the Rights of Man and Citizen (1789); phases (liberal, radical Terror, conservative reaction); Napoleon Bonaparte
+      - Haitian Revolution (1791-1804) — only successful slave revolution in history; Toussaint Louverture; first Black republic; inspired by French Revolution ideals
+      - Latin American independence movements — Simón Bolívar (Venezuela, Colombia, Peru, Bolivia); José de San Martín (Argentina, Chile); Miguel Hidalgo (Mexico, 1810)
+      - Nationalism — belief that people sharing language, culture, history should form independent states; spread after French Revolution
+      - German and Italian unification — Germany unified 1871 (Otto von Bismarck's "blood and iron"); Italy unified 1861-1870 (Garibaldi, Cavour)
+      - Industrial Revolution origins in Britain — coal and iron deposits; commercial agriculture releasing rural labor; capital from colonial trade; strong patent law; textile demand
+      - Steam engine — James Watt's improvements (1769); powered textile mills, railways, and steamships
+      - Spinning jenny (James Hargreaves, 1764) and spinning frame (Richard Arkwright, 1769) — mechanized textile production
+      - Railways — George Stephenson's Rocket (1829); transformed goods movement, settlement patterns, nationalism
+      - Industrial spread — Belgium first (1820s), France and German states (1840s-1870s), United States (post-Civil War), Japan (Meiji era after 1868)
+      - Meiji Restoration (1868) — Japan abolished feudal system; adopted Western industrial and military technology; "civilization and enlightenment" (bunmei kaika)
+      - Factory system — replaced cottage industry; concentrated workers in cities; created new industrial working class (proletariat)
+      - Urbanization and social problems — child labor, 14-hour workdays, tenements; sparked labor movement and socialist thought
+      - Karl Marx and Friedrich Engels — The Communist Manifesto (1848); Das Kapital (1867); class struggle; bourgeoisie vs. proletariat; predicted communist revolution
+      - Trade unions and labor rights — Luddites (machine-breaking 1811-1816); Chartist movement (UK, 1838-1857); 8-hour workday campaigns
+      - Free trade vs. protectionism — Corn Laws debate in Britain (repealed 1846); United States used high tariffs to protect industries
+      - Capitalism developments — joint-stock corporations, investment banking, stock exchanges; economies of scale; market expansion
+
+  - id: 5
+    name: "The Imperial Age"
+    ced_coverage: "Unit 6 Topics 6.1-6.8 (c. 1750-1900): Rationales for Imperialism, State Expansion, Indigenous Responses, Global Economic Development, Economic Imperialism, Causes and Effects of Migration"
+    target_facts: 80
+    description: >
+      European industrial power deployed outward — the age of New Imperialism and its economic,
+      social, and human consequences. Players analyze the ideological justifications for empire
+      (Social Darwinism, mission civilisatrice, White Man's Burden), trace the formal territorial
+      conquests that carved up Africa and Asia, examine how indigenous peoples responded (from
+      accommodation to armed resistance), and explore the economic imperialism that subjugated
+      formally independent states (China, Latin America, Ottoman Empire). Migration flows —
+      both free and coerced — transformed demographics worldwide.
+    key_concepts:
+      - New Imperialism (c. 1870-1914) — accelerated European conquest of Africa and Asia; driven by industrial competition, nationalism, and ideology
+      - Social Darwinism — misapplication of Darwin's evolution to argue "superior" races/nations should dominate "inferior" ones
+      - White Man's Burden — Rudyard Kipling's poem (1899); ideology that European colonialism was a civilizing mission
+      - Mission civilisatrice — French colonial ideology of "civilizing mission"; justified conquest as spreading French culture
+      - Scramble for Africa — European powers divided Africa at Berlin Conference (1884-1885); Britain, France, Germany, Belgium, Portugal, Italy
+      - Berlin Conference (1884-1885) — Otto von Bismarck presided; established rules for European colonization of Africa; no African representatives
+      - By 1914 — only Ethiopia and Liberia remained independent in Africa; Ethiopia defeated Italy at Battle of Adwa (1896)
+      - British India — EIC ruled India until Sepoy Mutiny (1857); British Crown took direct control (Raj) in 1858; viceroy system
+      - Sepoy Mutiny (Indian Rebellion of 1857) — Indian soldiers (sepoys) in EIC revolted over greased cartridges and grievances; led to British Crown takeover
+      - Opium Wars — Britain forced China to accept opium imports; First Opium War (1839-1842) ended with Treaty of Nanking; Hong Kong ceded; unequal treaties
+      - Unequal treaties — China forced to grant extraterritoriality, most-favored-nation status, open treaty ports; similar treaties imposed on Ottoman Empire and Japan
+      - Boxer Rebellion (1900) — Chinese nationalist uprising against foreign influence; crushed by multinational Eight-Nation Alliance
+      - Congo Free State (1885-1908) — King Leopold II's personal colony; brutal rubber extraction; 10 million deaths; international scandal led to Belgian takeover
+      - Economic imperialism — control economies of formally independent nations through investment, debt, and trade dependency (British influence in Argentina, Ottoman debt crisis)
+      - Indentured labor — workers from India and China contracted to work in Caribbean, South Africa, Pacific; replaced enslaved labor after abolition
+      - Great Atlantic Migration (1840s-1920s) — 35+ million Europeans emigrated to Americas; Irish Famine (1845-1852); push-pull factors
+      - Chinese diaspora — coolies to build transcontinental railroads (US, 1869), mines, and plantations; Chinese Exclusion Act (US, 1882)
+      - Indian Ocean migration — Indian indentured labor to Fiji, Trinidad, Natal; East Asian migration to Southeast Asian tin mines
+      - Indigenous resistance — Zulu Wars (1879); Mahdist War in Sudan (1881-1899); Philippine-American War (1899-1902); Maji Maji Rebellion (Tanzania, 1905-1907)
+      - Accommodation strategies — some rulers adopted European weapons/tactics; signed unequal treaties to preserve partial sovereignty
+      - Abolition of the slave trade — Britain abolished 1807 (trade), 1833 (slavery in empire); US abolition 1865; Brazil last major slaveholding society (1888)
+      - Demographic transformation — migration created multiethnic societies; Chinese and Indian diasporas worldwide; European settler colonies in Americas, Australia, South Africa
+
+  - id: 6
+    name: "Global Conflict"
+    ced_coverage: "Unit 7 Topics 7.1-7.9 (c. 1900-present): Shifting Power, Causes of WWI, Conducting WWI, Interwar Economy, Unresolved Tensions, Causes of WWII, Conducting WWII, Mass Atrocities, Causation"
+    target_facts: 55
+    description: >
+      The two world wars and the turbulent interwar period that shaped the modern political order.
+      Players navigate the tangled causes of WWI (MAIN: militarism, alliances, imperialism,
+      nationalism), the industrialized slaughter of trench warfare and new weapons, the flawed
+      peace at Versailles, the Great Depression's global economic shockwaves, the rise of fascism
+      and totalitarianism, the causes and conduct of WWII, and the mass atrocities (Holocaust,
+      Armenian Genocide, Nanjing Massacre) that define the 20th century's darkest chapters.
+    key_concepts:
+      - MAIN causes of WWI — Militarism (arms race), Alliances (Triple Alliance vs. Triple Entente), Imperialism (competition for colonies), Nationalism (ethnic tensions in Balkans)
+      - Assassination of Archduke Franz Ferdinand (June 28, 1914) — immediate trigger; killed by Gavrilo Princip (Serbian nationalist) in Sarajevo
+      - Alliance system — Central Powers (Germany, Austria-Hungary, Ottoman Empire) vs. Allied Powers (Britain, France, Russia, later USA, Italy)
+      - WWI new technologies — poison gas (chlorine, mustard), machine guns, tanks, aircraft, submarines (U-boats), artillery barrages
+      - Trench warfare — Western Front stalemate; Battle of the Somme (1916) — 1 million casualties; Battle of Verdun (1916)
+      - Armenian Genocide (1915-1923) — Ottoman Empire systematically killed 1-1.5 million Armenians; first genocide of 20th century
+      - Russian Revolution — March Revolution (1917) overthrew Tsar; Bolshevik October Revolution (1917); Lenin's government signed Treaty of Brest-Litovsk
+      - US entry into WWI (April 1917) — Zimmermann Telegram (Germany proposed Mexico attack US); unrestricted submarine warfare
+      - Treaty of Versailles (1919) — blamed Germany (War Guilt Clause); 132 billion gold marks reparations; lost territory; reduced military; League of Nations created
+      - Woodrow Wilson's 14 Points — national self-determination; freedom of seas; no secret treaties; League of Nations; mostly rejected at Versailles
+      - Interwar period — Great Depression (1929); worldwide unemployment; demand for authoritarian solutions; failure of League of Nations
+      - Rise of fascism — Benito Mussolini in Italy (1922); Adolf Hitler in Germany (1933 — appointed Chancellor); totalitarian nationalism
+      - Hitler's expansionism — Rhineland remilitarized (1936); Anschluss with Austria (1938); Munich Agreement (Sudetenland, 1938); Poland invaded (Sept. 1939)
+      - WWII in Europe — Blitzkrieg tactics; Fall of France (1940); Battle of Britain; Operation Barbarossa (1941) invaded USSR; D-Day (June 6, 1944)
+      - WWII in Asia/Pacific — Japan invaded Manchuria (1931) and China (1937); Nanjing Massacre (1937-1938) — estimated 200,000+ killed; Pearl Harbor (December 7, 1941)
+      - Holocaust — systematic genocide of ~6 million Jews by Nazi Germany; also killed Roma, disabled, LGBTQ+, Slavs, political prisoners; Final Solution (1942)
+      - Atomic bombs — US dropped on Hiroshima (August 6, 1945) and Nagasaki (August 9, 1945); Japan surrendered August 15, 1945
+      - Cost of WWII — approximately 70-85 million total deaths (both civilian and military); deadliest conflict in human history
+      - Nuremberg Trials (1945-1946) — first international war crimes tribunal; established precedent for crimes against humanity
+      - Causation skill — historians debate relative weight of Versailles, economic depression, and ideology in causing WWII
+
+  - id: 7
+    name: "Cold War and Liberation"
+    ced_coverage: "Unit 8 Topics 8.1-8.9 (c. 1900-present): Setting the Stage, Cold War, Cold War Effects, Spread of Communism, Decolonization, Newly Independent States, Global Resistance, End of Cold War, Causation"
+    target_facts: 55
+    description: >
+      The bipolar Cold War world and the simultaneous wave of decolonization that created dozens
+      of new nations. Players trace the ideological, economic, and proxy conflict between the
+      US and USSR, examine how communism spread to China, Korea, Vietnam, and Cuba, follow the
+      independence movements that ended European colonial empires in Asia and Africa, and explore
+      how newly independent states navigated superpower rivalry through non-alignment. The Cold War
+      ended not with nuclear conflict but with the Soviet Union's internal collapse.
+    key_concepts:
+      - Origins of Cold War — Yalta Conference (1945) disagreements over Eastern Europe; ideological conflict between US capitalism and Soviet communism
+      - Iron Curtain speech (Winston Churchill, 1946) — described Soviet domination of Eastern Europe; named the Cold War division
+      - Truman Doctrine (1947) — US policy of containing communist expansion; $400 million to Greece and Turkey
+      - Marshall Plan (1948) — US economic aid to rebuild Western Europe; $13 billion; also strengthened anti-communist governments
+      - Berlin Blockade (1948-1949) and Berlin Airlift — Soviet blockade; Western Allies flew in supplies; ended Soviet attempt
+      - NATO (1949) — North Atlantic Treaty Organization; US-led Western military alliance; Article 5 collective defense
+      - Warsaw Pact (1955) — Soviet-led Eastern Bloc military alliance; response to NATO and West Germany's NATO membership
+      - Korean War (1950-1953) — North Korea (Soviet/Chinese backed) vs. South Korea (US/UN backed); ended in armistice; peninsula still divided
+      - McCarthyism — US internal anti-communist hysteria; Senator Joseph McCarthy; House Un-American Activities Committee (HUAC)
+      - Chinese Communist Revolution (1949) — Mao Zedong's People's Liberation Army defeated Chiang Kai-shek's Nationalists (KMT)
+      - Great Leap Forward (1958-1962) — Mao's collectivization and industrialization campaign; caused famine killing 15-55 million
+      - Cuban Missile Crisis (October 1962) — USSR placed nuclear missiles in Cuba; 13 days; Kennedy vs. Khrushchev; missiles withdrawn; closest nuclear confrontation
+      - Cuban Revolution — Fidel Castro overthrew US-backed Batista dictatorship (1959); Bay of Pigs invasion (1961) failed; Cuba aligned with USSR
+      - Vietnam War — France defeated at Dien Bien Phu (1954); US escalation 1965-1973; Tet Offensive (1968); Paris Peace Accords (1973); communist unification 1975
+      - Non-Aligned Movement — Bandung Conference (1955); India (Nehru), Egypt (Nasser), Yugoslavia (Tito), Indonesia (Sukarno); refused to align with either superpower
+      - Indian independence (1947) — Gandhi's nonviolent movement; Partition into India and Pakistan; massive communal violence (500,000-2 million deaths)
+      - African decolonization — "Year of Africa" (1960) — 17 African nations independent; Algeria's brutal war of independence (1954-1962) from France
+      - Apartheid in South Africa (1948-1994) — institutionalized racial segregation; Nelson Mandela imprisoned 27 years; freed 1990; first multiracial elections 1994
+      - Iranian Revolution (1979) — overthrew US-backed Shah Pahlavi; Ayatollah Khomeini established Islamic Republic; US hostage crisis
+      - Soviet invasion of Afghanistan (1979-1989) — USSR's "Vietnam"; US-backed mujahideen; accelerated Soviet economic decline
+      - Gorbachev's reforms — glasnost (openness) and perestroika (restructuring) 1986-1991; meant to save Soviet system but accelerated its collapse
+      - Fall of Berlin Wall (November 9, 1989) — symbolized Cold War's end; German reunification 1990
+      - Soviet dissolution (December 25, 1991) — USSR formally dissolved into 15 independent republics; Cold War officially ended
+
+  - id: 8
+    name: "The Globalized World"
+    ced_coverage: "Unit 9 Topics 9.1-9.9 (c. 1900-present): Technology and Exchange, Disease, Environment Debates, Global Economics, Calls for Reform, Globalized Culture, Resistance to Globalization, Institutions, Continuity and Change"
+    target_facts: 60
+    description: >
+      The interconnected, contested world of the late 20th and early 21st centuries. Players
+      examine the technological revolution (computers, internet, telecommunications) that
+      accelerated global integration, track new and resurgent disease epidemics, debate whether
+      economic globalization has reduced or increased inequality, survey resistance movements from
+      religious fundamentalism to anti-globalization protests, and assess the institutions (UN,
+      WTO, IMF, World Bank) designed to manage a world no state can govern alone. This unit
+      is explicitly comparative and thematic — the capstone of the entire AP World History course.
+    key_concepts:
+      - Green Revolution (1940s-1970s) — high-yield crop varieties, synthetic fertilizers, irrigation; doubled grain production; prevented famines but increased inequality
+      - Technological revolution — transistor (1947), personal computer (1970s-1980s), World Wide Web (Tim Berners-Lee, 1991), smartphones (2007)
+      - Telecommunications — satellite communications, fiber optic cables, cellular networks; reduced communication costs dramatically
+      - Economic globalization — international trade increased from 15% to 25% of global GDP 1960-2000; multinational corporations; outsourcing
+      - World Trade Organization (WTO, 1995) — replaced GATT; enforces international trade rules; 164 member nations
+      - International Monetary Fund (IMF) — founded 1944 at Bretton Woods; stabilizes currencies; makes loans conditional on austerity measures
+      - World Bank — founded 1944; provides development loans; controversially linked to structural adjustment programs
+      - HIV/AIDS pandemic — identified 1981; 36+ million deaths; disproportionate impact on Sub-Saharan Africa; antiretroviral treatment developed 1990s
+      - COVID-19 pandemic (2019-present) — SARS-CoV-2; global spread via modern air travel; 7+ million deaths (official count); vaccine developed in under a year (Pfizer-BioNTech, 2020)
+      - Climate change debate — IPCC (Intergovernmental Panel on Climate Change) established 1988; Paris Agreement (2015) — 196 parties pledged emissions reductions
+      - Kyoto Protocol (1997) — first binding international agreement on greenhouse gas reduction; US did not ratify; developing nations exempt
+      - Anti-globalization movements — 1999 Seattle WTO protests; opposition to free trade agreements; concern about labor exploitation and cultural homogenization
+      - Religious fundamentalism as resistance — Iranian Islamic Revolution (1979); Taliban in Afghanistan; Hindu nationalism (BJP) in India; Christian right in US
+      - Al-Qaeda and September 11 (2001) — Osama bin Laden; attacks on World Trade Center and Pentagon; War on Terror; US invasions of Afghanistan (2001) and Iraq (2003)
+      - United Nations (UN, 1945) — replaced League of Nations; 193 member states; Security Council (5 permanent members with veto: US, UK, France, Russia, China)
+      - EU and regional integration — European Union (Maastricht Treaty 1993); euro currency (1999/2002); free movement of people and goods
+      - Rise of China — Deng Xiaoping's economic reforms (1978); "reform and opening up"; WTO membership (2001); second largest economy by 2010
+      - Feminism and women's rights globally — voting rights waves; UN Convention on Elimination of All Forms of Discrimination Against Women (CEDAW, 1979)
+      - Microfinance and development — Muhammad Yunus, Grameen Bank (1983); small loans to poor entrepreneurs; Nobel Peace Prize (2006)
+      - Cultural globalization — spread of American popular culture; McDonaldization; Bollywood; K-pop; global English as lingua franca
+      - Refugee crises — Syrian Civil War (2011-present) created 5.6 million refugees; largest displacement since WWII
+      - Continuity and change — global inequality persists despite growth; democracy spread but also authoritarianism resurged; technology enables both connection and surveillance
+
+# ============================================================
+# ANSWER TYPE POOLS — 15 pools for distractor selection
+# Apply the "pick any 2 members" rule: every member must be
+# a plausible wrong answer when another member is correct.
+# Pools are semantically tight — homogeneous answer types only.
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: Ruler Names
+  # "Which ruler united the Mongol tribes in 1206?" → "Genghis Khan"
+  - id: ruler_names
+    label: "Rulers, Emperors, Sultans, and Khans"
+    answerFormat: name
+    estimated_size: 40
+    note: >
+      Major rulers tested across AP World History periods. Confusable within their era and region.
+      Examples: Genghis Khan, Kublai Khan, Mansa Musa, Suleiman the Magnificent, Mehmed II,
+      Shah Abbas I, Shah Ismail I, Akbar the Great, Aurangzeb, Babur, Pachacuti,
+      Moctezuma II, Montezuma, Peter the Great, Catherine the Great, Ivan the Terrible,
+      Louis XIV, Napoleon Bonaparte, Toussaint Louverture, Simón Bolívar, Queen Victoria,
+      Mao Zedong, Ho Chi Minh, Fidel Castro, Mohandas Gandhi, Nelson Mandela.
+      Key confusions: Mehmed II vs. Suleiman (both major Ottoman sultans); Genghis vs. Kublai Khan
+      (grandfather/grandson; different empires); Akbar vs. Aurangzeb (one tolerant, one not).
+
+  # POOL 2: Empire and Dynasty Names
+  # "Which empire was ruled from Constantinople?" → "Ottoman Empire"
+  - id: empire_dynasty_names
+    label: "Empire and Dynasty Names"
+    answerFormat: name
+    estimated_size: 35
+    note: >
+      Major empires and dynasties from 1200 to present.
+      Examples: Ottoman Empire, Safavid Empire, Mughal Empire, Qing Dynasty, Ming Dynasty,
+      Yuan Dynasty, Song Dynasty, Mali Empire, Aztec (Mexica) Empire, Inca Empire,
+      Byzantine Empire, Delhi Sultanate, Vijayanagara Empire, Khmer Empire, Majapahit Empire,
+      Russian Empire, British Empire, French Empire, Holy Roman Empire, Habsburg Empire,
+      Mongol Empire, Golden Horde, Timur's Empire, Mamluk Sultanate.
+      Key confusions: Safavid vs. Mughal (both Islamic, different regions); Qing vs. Ming
+      (successive Chinese dynasties); Aztec vs. Inca (Americas but different regions/structures).
+
+  # POOL 3: Revolutionary and Enlightenment Leaders
+  # "Who wrote The Wealth of Nations (1776)?" → "Adam Smith"
+  - id: revolution_leaders
+    label: "Enlightenment Thinkers and Revolutionary Figures"
+    answerFormat: name
+    estimated_size: 30
+    note: >
+      Thinkers and leaders associated with Enlightenment and revolutions.
+      Examples: John Locke, Jean-Jacques Rousseau, Voltaire, Montesquieu, Adam Smith,
+      Thomas Jefferson, George Washington, Maximilien Robespierre, Napoleon Bonaparte,
+      Toussaint Louverture, Simón Bolívar, José de San Martín, Miguel Hidalgo,
+      Karl Marx, Friedrich Engels, Vladimir Lenin, Leon Trotsky, Mao Zedong,
+      Mahatma Gandhi, Kwame Nkrumah, Patrice Lumumba, Ho Chi Minh.
+      Key confusions: Locke vs. Rousseau (both social contract theorists but different conclusions);
+      Bolívar vs. San Martín (both Latin American liberators, different regions);
+      Marx vs. Engels (co-authors but different roles).
+
+  # POOL 4: Battle and Event Names
+  # "Which battle in 1260 halted Mongol expansion into the Middle East?" → "Battle of Ain Jalut"
+  - id: battle_event_names
+    label: "Major Battles and Pivotal Events"
+    answerFormat: name
+    estimated_size: 35
+    note: >
+      Major military engagements and pivotal historical events.
+      Examples: Battle of Ain Jalut (1260), Battle of Chaldiran (1514), Battle of Panipat (1526),
+      Battle of Lepanto (1571), Spanish Armada (1588), Battle of Plassey (1757),
+      Battle of the Somme (1916), Battle of Verdun (1916), Battle of Stalingrad (1942-1943),
+      D-Day / Normandy Invasion (June 6, 1944), Battle of Midway (1942), Dien Bien Phu (1954),
+      Bay of Pigs (1961), Tet Offensive (1968), Fall of Berlin Wall (1989),
+      Battle of Adwa (1896), Sepoy Mutiny (1857), Boxer Rebellion (1900).
+      Key confusions: Battle of Ain Jalut vs. Chaldiran vs. Panipat (all decisive battles,
+      different centuries and regions); D-Day vs. Battle of Stalingrad (both WWII turning points).
+
+  # POOL 5: Treaty and Document Names
+  # "Which treaty ended WWI and placed sole war guilt on Germany?" → "Treaty of Versailles"
+  - id: treaty_document_names
+    label: "Treaties, Declarations, and Foundational Documents"
+    answerFormat: name
+    estimated_size: 25
+    note: >
+      Major treaties, declarations, constitutions, and charters.
+      Examples: Treaty of Tordesillas (1494), Treaty of Nanking (1842), Treaty of Brest-Litovsk (1918),
+      Treaty of Versailles (1919), Magna Carta (1215), Declaration of the Rights of Man and Citizen (1789),
+      Declaration of Independence (1776), Berlin Conference Final Act (1885),
+      Atlantic Charter (1941), UN Charter (1945), Marshall Plan (European Recovery Act),
+      Kyoto Protocol (1997), Paris Agreement (2015), CEDAW (1979).
+      Key confusions: Treaty of Nanking vs. Treaty of Versailles (both significant, different eras);
+      Atlantic Charter vs. UN Charter (precursor vs. founding document).
+
+  # POOL 6: Key Date Periods (Bracket Notation)
+  # "In what year did the Mongols sack Baghdad, ending the Abbasid Caliphate?" → "{1258}"
+  - id: date_periods
+    label: "Key Dates and Years (Bracket Notation)"
+    answerFormat: "{N}"
+    estimated_size: 50
+    note: >
+      Testable dates across all 9 CED units. Format: {YEAR} with curly braces.
+      Examples: {1206} (Genghis Khan unification), {1258} (Mongol sack of Baghdad),
+      {1325} (Tenochtitlan founded), {1347} (Black Death reaches Europe), {1453} (Fall of Constantinople),
+      {1492} (Columbus reaches Caribbean), {1498} (Vasco da Gama reaches India), {1517} (Luther's 95 Theses),
+      {1526} (Battle of Panipat — Mughal Empire begins), {1776} (US Declaration of Independence),
+      {1789} (French Revolution begins), {1804} (Haitian independence), {1848} (Communist Manifesto, Year of Revolutions),
+      {1857} (Sepoy Mutiny), {1884} (Berlin Conference), {1914} (WWI begins), {1917} (Russian Revolution),
+      {1919} (Treaty of Versailles), {1929} (Great Depression begins), {1945} (WWII ends),
+      {1947} (Indian independence), {1949} (Chinese Communist Revolution), {1962} (Cuban Missile Crisis),
+      {1989} (Fall of Berlin Wall), {1991} (Soviet dissolution).
+      Distractors must be within ±10-25 years of correct answer (e.g., 1492 vs. 1498 vs. 1488).
+
+  # POOL 7: Concept Terms
+  # "What term describes the social contract theory that people can overthrow governments that violate natural rights?" → "Right to revolution"
+  - id: concept_terms
+    label: "Political, Economic, and Social Concepts"
+    answerFormat: term
+    estimated_size: 40
+    note: >
+      Abstract political, economic, and social concepts tested across all units.
+      Examples: Feudalism, Manorialism, Mercantilism, Laissez-faire, Capitalism, Communism,
+      Fascism, Nationalism, Imperialism, Colonialism, Social Darwinism, Socialism,
+      Decolonization, Non-Alignment, Globalization, Tributary system, Devshirme,
+      Encomienda, Hacienda, Mit'a, Tax farming, Millet system, Casta system,
+      Pax Mongolica, Social contract, Natural rights, Popular sovereignty, Totalitarianism,
+      Containment, Détente, Proxy war, Structural adjustment, Microfinance.
+      Key confusions: Mercantilism vs. Capitalism (state-directed vs. market); Colonialism vs. Imperialism
+      (formal control vs. broader political/economic domination); Socialism vs. Communism (degree/type).
+
+  # POOL 8: Trade Goods and Columbian Exchange Items
+  # "Which crop, originally from the Americas, transformed European and Asian diets after 1492?" → "Potato"
+  - id: trade_goods
+    label: "Trade Commodities and Columbian Exchange Items"
+    answerFormat: name
+    estimated_size: 30
+    note: >
+      Specific commodities and Columbian Exchange items.
+      New World to Old World: Potato, Maize (corn), Tomato, Cacao (chocolate), Tobacco,
+      Sweet potato, Chili pepper, Peanut (groundnut), Vanilla, Rubber, Pineapple, Cassava.
+      Old World to New World: Smallpox, Measles, Influenza, Horse, Pig, Cattle, Sheep,
+      Wheat, Sugar, Coffee, Banana, Citrus, Rice, Silk, Porcelain.
+      Silk Roads goods: Silk, Spices (pepper, cinnamon, cloves, nutmeg), Glassware, Cotton,
+      Lapis lazuli, Paper, Gunpowder, Horses (Central Asian steppe breeds).
+      Key confusions: Tomato vs. Potato (both from Americas, easily confused); Horse (Old to New) vs.
+      crops going New to Old — students mix up direction.
+
+  # POOL 9: Place Names and Regions
+  # "Which city was the capital of the Aztec Empire, built on an island in a lake?" → "Tenochtitlan"
+  - id: place_names
+    label: "Cities, Regions, and Trade Routes"
+    answerFormat: name
+    estimated_size: 35
+    note: >
+      Significant cities, regions, and geographic markers tested on the exam.
+      Examples: Tenochtitlan, Cuzco (Inca capital), Timbuktu, Kilwa, Constantinople/Istanbul,
+      Samarkand, Calicut (Kozhikode), Malacca, Angkor (Khmer capital), Potosí,
+      Versailles, St. Petersburg, Hiroshima, Nagasaki, Berlin, Sarajevo, Bandung,
+      Normandy (D-Day beaches), Dien Bien Phu, Hanoi, Havana, Beijing (Peking).
+      Trade routes: Silk Road, Indian Ocean trade network, Trans-Saharan routes,
+      Atlantic Triangle Trade, Spice Route.
+      Key confusions: Tenochtitlan (Aztec) vs. Cuzco (Inca); Calicut vs. Calcutta
+      (Vasco da Gama's destination vs. British colonial city); Samarkand vs. Timbuktu
+      (both Silk Road/trade hubs but Central Asia vs. West Africa).
+
+  # POOL 10: Religion and Belief System Terms
+  # "Which syncretic religious movement did Mughal Emperor Akbar found to unite his diverse subjects?" → "Din-i-Ilahi"
+  - id: religion_belief_terms
+    label: "Religious Movements, Philosophies, and Sects"
+    answerFormat: term
+    estimated_size: 25
+    note: >
+      Religious movements, philosophies, and denominational distinctions tested on the exam.
+      Examples: Sunni Islam, Shia (Twelver) Islam, Sufism, Neo-Confucianism, Chan (Zen) Buddhism,
+      Theravada Buddhism, Mahayana Buddhism, Hinduism, Sikhism, Din-i-Ilahi,
+      Protestant Reformation, Lutheranism, Calvinism, Counter-Reformation (Council of Trent),
+      Social Gospel movement, Wahhabism, Islamic fundamentalism, Liberation theology,
+      Deism (Enlightenment), Secular humanism, Shintoism (Meiji era state religion).
+      Key confusions: Sunni vs. Shia (core Islamic split; Ottoman-Safavid tension); Neo-Confucianism
+      vs. Confucianism (same tradition, different metaphysical synthesis); Sufism (mystical Islam —
+      students often misidentify as separate religion).
+
+  # POOL 11: Technology and Innovation Names
+  # "Which Chinese invention, adopted in the West, made mass book production possible?" → "Movable type printing"
+  - id: technology_inventions
+    label: "Key Technologies and Inventions"
+    answerFormat: name
+    estimated_size: 25
+    note: >
+      Technologies and inventions that changed the course of history.
+      Examples: Magnetic compass, Gunpowder, Movable type printing, Paper money (jiaozi),
+      Caravel (ship design), Astrolabe, Lateen sail, Steam engine, Spinning jenny,
+      Spinning frame (water frame), Power loom, Railways (locomotive), Telegraph,
+      Suez Canal, Panama Canal, Dynamite, Machine gun, Poison gas, Tank, Airplane,
+      Atomic bomb, Transistor, World Wide Web, Antiretroviral therapy.
+      Key confusions: Spinning jenny (Hargreaves) vs. spinning frame/water frame (Arkwright) — both
+      mechanized textiles; astrolabe vs. sextant (earlier vs. later navigation tool).
+
+  # POOL 12: International Organization Names
+  # "Which organization, founded in 1945, has 193 member states and a Security Council with veto power?" → "United Nations"
+  - id: organization_names
+    label: "International Organizations and Alliances"
+    answerFormat: name
+    estimated_size: 20
+    note: >
+      Major international organizations, alliances, and institutions.
+      Examples: United Nations (UN), NATO, Warsaw Pact, League of Nations, Non-Aligned Movement,
+      European Union (EU), African Union (AU), World Trade Organization (WTO),
+      International Monetary Fund (IMF), World Bank, OPEC (Organization of Petroleum Exporting Countries),
+      Dutch East India Company (VOC), British East India Company (EIC),
+      Interpol, International Criminal Court (ICC), ASEAN.
+      Key confusions: League of Nations vs. United Nations (WWI vs. WWII aftermath); NATO vs. Warsaw Pact
+      (opposing alliances); IMF vs. World Bank (stabilization loans vs. development loans).
+
+  # POOL 13: Ideological Doctrine Names
+  # "Which US Cold War policy committed America to supporting free peoples resisting subjugation?" → "Truman Doctrine"
+  - id: ideological_doctrine_names
+    label: "Policies, Doctrines, and Ideological Programs"
+    answerFormat: name
+    estimated_size: 20
+    note: >
+      Named policies, doctrines, and programs that shaped political history.
+      Examples: Monroe Doctrine, Truman Doctrine, Marshall Plan, containment policy,
+      Domino Theory, détente, glasnost, perestroika, New Deal, 14 Points,
+      "White Man's Burden," mission civilisatrice, Social Darwinism, Manifest Destiny,
+      Great Leap Forward, Cultural Revolution, Meiji Restoration, Pax Mongolica,
+      Green Revolution, Structural adjustment programs.
+      Key confusions: Marshall Plan vs. Truman Doctrine (both early Cold War; aid vs. military commitment);
+      glasnost vs. perestroika (openness/transparency vs. economic restructuring — both Gorbachev);
+      Great Leap Forward vs. Cultural Revolution (both Mao, different decades and goals).
+
+  # POOL 14: Genocide and Mass Atrocity Names
+  # "Which systematic killing campaign in 1915 targeted a Christian minority in the Ottoman Empire?" → "Armenian Genocide"
+  - id: mass_atrocity_names
+    label: "Genocides, Mass Atrocities, and Humanitarian Crises"
+    answerFormat: name
+    estimated_size: 15
+    note: >
+      Named genocides, mass atrocities, and humanitarian crises tested on the exam.
+      Examples: Armenian Genocide (1915-1923), Holocaust / Shoah (1941-1945),
+      Nanjing Massacre (1937-1938), Rwandan Genocide (1994), Cambodian Genocide (1975-1979),
+      Holodomor (Ukraine, 1932-1933), Congo Free State atrocities (1885-1908),
+      Partition of India violence (1947), Transatlantic slave trade,
+      Middle Passage, Forced collectivization (Soviet Union, 1929-1933).
+      Key confusions: Armenian Genocide vs. Holocaust (WWI vs. WWII; Ottoman vs. Nazi perpetrators);
+      Rwandan vs. Cambodian genocide (different continents, different ideological contexts).
+
+  # POOL 15: Economic System and Labor Terms
+  # "What labor system required conquered peoples to provide labor to the Spanish crown in exchange for Christian instruction?" → "Encomienda"
+  - id: labor_economic_terms
+    label: "Labor Systems and Economic Arrangements"
+    answerFormat: term
+    estimated_size: 20
+    note: >
+      Specific labor systems and economic arrangements across all periods.
+      Examples: Encomienda, Hacienda, Mit'a (Inca/Spanish), Devshirme (Ottoman),
+      Feudalism, Serfdom, Indentured servitude, Chattel slavery, Wage labor,
+      Tribute system, Tax farming (iltizam), Mercantilism, Free trade,
+      Plantation system, Putting-out system (proto-industrialization), Factory system,
+      Structural adjustment, Microfinance, Joint-stock company, Monopoly trading company.
+      Key confusions: Encomienda vs. hacienda (both Spanish colonial labor; earlier grant system vs.
+      later estate system); Mit'a (Inca labor draft adapted by Spanish) vs. devshirme (Ottoman
+      slave levy — both coercive state labor systems); indentured servitude vs. chattel slavery
+      (temporary contract vs. permanent hereditary bondage).
+
+# ============================================================
+# EXAM TAGS SCHEMA — CED-aligned metadata for each fact
+# ============================================================
+
+exam_tags_schema:
+  description: >
+    Every fact MUST include an examTags object. These drive difficulty calibration
+    and allow filtering by CED unit/topic for targeted study. AP World History: Modern
+    has 9 units and 73 topics (1.1 through 9.9).
+
+  fields:
+    exam:
+      type: string
+      value: "AP World History: Modern"
+      description: "Always this exact string for all facts in this deck"
+    unit:
+      type: integer
+      range: [1, 9]
+      description: "CED unit number (1=Global Tapestry, 2=Networks of Exchange, 3=Land-Based Empires, 4=Transoceanic Interconnections, 5=Revolutions, 6=Consequences of Industrialization, 7=Global Conflict, 8=Cold War and Decolonization, 9=Globalization)"
+    topic:
+      type: string
+      description: "CED topic code, e.g. '3.2' (Unit 3, Topic 2 — Empires: Administration)"
+    historical_thinking_skill:
+      type: string
+      enum: ["causation", "continuity_and_change_over_time", "comparison", "contextualization"]
+      description: "Primary AP historical thinking skill alignment (College Board 4 historical thinking skills)"
+      required: false
+    exam_weight:
+      type: string
+      enum: ["high", "medium", "low"]
+      description: >
+        Estimated AP exam frequency. High = core concept tested most years,
+        medium = appears regularly, low = depth/enrichment content.
+    time_period:
+      type: string
+      enum: ["c_1200_1450", "c_1450_1750", "c_1750_1900", "c_1900_present"]
+      description: "AP World History chronological period"
+    region:
+      type: string
+      enum: ["east_asia", "south_southeast_asia", "central_asia", "middle_east", "africa", "europe", "americas", "global"]
+      description: "Primary geographic region; use 'global' for multi-region or global events"
+      required: false
+
+  example: >
+    examTags:
+      exam: "AP World History: Modern"
+      unit: 4
+      topic: "4.3"
+      historical_thinking_skill: "causation"
+      exam_weight: "high"
+      time_period: "c_1450_1750"
+      region: "global"
+
+# ============================================================
+# FACT COUNT TARGETS BY UNIT — weighted by CED exam percentages
+# ============================================================
+
+fact_count_targets:
+  unit_1_global_tapestry:
+    exam_weight_pct: "8-10%"
+    target_facts: 65
+    chain_theme_id: 0
+  unit_2_networks_of_exchange:
+    exam_weight_pct: "8-10%"
+    target_facts: 65
+    chain_theme_id: 1
+  unit_3_land_based_empires:
+    exam_weight_pct: "12-15%"
+    target_facts: 80
+    chain_theme_id: 2
+  unit_4_transoceanic_interconnections:
+    exam_weight_pct: "12-15%"
+    target_facts: 80
+    chain_theme_id: 3
+  unit_5_revolutions:
+    exam_weight_pct: "12-15%"
+    target_facts: 80
+    chain_theme_id: 4
+  unit_6_consequences_of_industrialization:
+    exam_weight_pct: "12-15%"
+    target_facts: 80
+    chain_theme_id: 5
+  unit_7_global_conflict:
+    exam_weight_pct: "8-10%"
+    target_facts: 55
+    chain_theme_id: 6
+  unit_8_cold_war_decolonization:
+    exam_weight_pct: "8-10%"
+    target_facts: 55
+    chain_theme_id: 7
+  unit_9_globalization:
+    exam_weight_pct: "8-10%"
+    target_facts: 60
+    chain_theme_id: 8
+  total_target: 620
+
+# ============================================================
+# SUB-DECKS — 9 sub-decks, one per CED unit
+# ============================================================
+
+sub_decks:
+  - id: sd_unit1_global_tapestry
+    name: "Unit 1: The Global Tapestry (c. 1200-1450)"
+    chainThemeIds: [0]
+    description: >
+      Covers the major civilizations and state-building strategies of c. 1200-1450 across East Asia,
+      Dar al-Islam, South and Southeast Asia, the Americas, Africa, and Europe. Emphasizes comparison
+      of state structures, belief systems, and economic organization before transoceanic contact.
+
+  - id: sd_unit2_networks_exchange
+    name: "Unit 2: Networks of Exchange (c. 1200-1450)"
+    chainThemeIds: [1]
+    description: >
+      Covers the Silk Roads, Mongol Empire, Indian Ocean trade, trans-Saharan routes, and their
+      cultural and environmental consequences (including the Black Death). Emphasizes connectivity
+      and its benefits and costs across Eurasia and Africa.
+
+  - id: sd_unit3_land_empires
+    name: "Unit 3: Land-Based Empires (c. 1450-1750)"
+    chainThemeIds: [2]
+    description: >
+      Covers Ottoman, Safavid, Mughal, Qing, and Russian empire expansion, administrative
+      techniques (devshirme, bureaucracy, tax farming), and use of religion as a tool of
+      statecraft. The "Gunpowder Empires" and their comparison.
+
+  - id: sd_unit4_transoceanic
+    name: "Unit 4: Transoceanic Interconnections (c. 1450-1750)"
+    chainThemeIds: [3]
+    description: >
+      Covers navigational technologies, causes and events of European exploration, the Columbian
+      Exchange, establishment and maintenance of maritime empires, social hierarchies (casta system),
+      and coercive labor systems (encomienda, slavery). Highest-stakes new-world-meets-old-world unit.
+
+  - id: sd_unit5_revolutions
+    name: "Unit 5: Revolutions (c. 1750-1900)"
+    chainThemeIds: [4]
+    description: >
+      Covers Enlightenment ideas, the American / French / Haitian / Latin American revolutions,
+      nationalism, and the Industrial Revolution (origins, spread, technology, government role,
+      and economic ideologies from capitalism to communism).
+
+  - id: sd_unit6_imperialism
+    name: "Unit 6: Consequences of Industrialization (c. 1750-1900)"
+    chainThemeIds: [5]
+    description: >
+      Covers rationales for imperialism, the Scramble for Africa, British India, economic
+      imperialism (China, Ottoman Empire), indigenous responses (resistance and accommodation),
+      migration patterns (indentured labor, Atlantic migration, Chinese diaspora), and abolition.
+
+  - id: sd_unit7_global_conflict
+    name: "Unit 7: Global Conflict (c. 1900-present)"
+    chainThemeIds: [6]
+    description: >
+      Covers WWI causes (MAIN), trench warfare and new weapons, Armenian Genocide, Treaty of
+      Versailles, Great Depression, rise of fascism, causes and conduct of WWII, Holocaust,
+      Nanjing Massacre, atomic bombs, and Nuremberg Trials.
+
+  - id: sd_unit8_cold_war
+    name: "Unit 8: Cold War and Decolonization (c. 1900-present)"
+    chainThemeIds: [7]
+    description: >
+      Covers Cold War origins (Truman Doctrine, Marshall Plan), Korean War, Cuban Missile Crisis,
+      spread of communism (China, Vietnam, Cuba), Non-Aligned Movement, decolonization of Asia
+      and Africa, apartheid, Iranian Revolution, Soviet dissolution.
+
+  - id: sd_unit9_globalization
+    name: "Unit 9: Globalization (c. 1900-present)"
+    chainThemeIds: [8]
+    description: >
+      Covers technological revolution (computers, internet), disease (HIV/AIDS, COVID-19),
+      climate change debates, economic globalization (WTO, IMF, World Bank), anti-globalization
+      resistance, rise of China, cultural globalization, and international institutions (UN, EU).
+
+# ============================================================
+# QUESTION TEMPLATES — 18 templates spanning mastery 0-5
+# ============================================================
+
+question_templates:
+
+  # --- MASTERY 0: Foundational identification ---
+  - id: tmpl_ruler_identification
+    template: "Which ruler {action_description}?"
+    answer_pool: ruler_names
+    mastery_range: [0, 1]
+    note: "Pure recall of rulers from descriptions of their major actions or characteristics."
+
+  - id: tmpl_empire_location
+    template: "Which empire was centered in {region_or_capital}?"
+    answer_pool: empire_dynasty_names
+    mastery_range: [0, 1]
+    note: "Identifies empires from geographic or capital clues — tests basic spatial knowledge."
+
+  - id: tmpl_date_identification
+    template: "In what year did {event} occur?"
+    answer_pool: date_periods
+    mastery_range: [0, 1]
+    note: "Pure chronological recall; distractors must be nearby dates (within 10-25 years)."
+
+  - id: tmpl_treaty_document
+    template: "What was the name of the {description_of_treaty_or_document}?"
+    answer_pool: treaty_document_names
+    mastery_range: [0, 1]
+    note: "Identifies founding documents and treaties from their content description."
+
+  # --- MASTERY 1: Conceptual understanding ---
+  - id: tmpl_concept_definition
+    template: "What term describes {concept_definition}?"
+    answer_pool: concept_terms
+    mastery_range: [1, 2]
+    note: "Concept-to-term mapping; tests understanding of political, economic, and social vocabulary."
+
+  - id: tmpl_trade_good_origin
+    template: "Which {commodity_type} originated in {region} and spread through {exchange_network}?"
+    answer_pool: trade_goods
+    mastery_range: [1, 2]
+    note: "Trade goods with directional exchange context; requires knowing origin AND spread direction."
+
+  - id: tmpl_technology_inventor
+    template: "Which technology or invention {function_description}?"
+    answer_pool: technology_inventions
+    mastery_range: [1, 2]
+    note: "Technology identification from function; tests understanding of how innovations changed history."
+
+  - id: tmpl_religion_movement
+    template: "Which religious movement or philosophy {characteristic_or_belief}?"
+    answer_pool: religion_belief_terms
+    mastery_range: [1, 2]
+    note: "Religion/belief system identification from theological or historical characteristics."
+
+  # --- MASTERY 2: Causal and structural understanding ---
+  - id: tmpl_labor_system
+    template: "What labor system {description_of_coercive_arrangement}?"
+    answer_pool: labor_economic_terms
+    mastery_range: [2, 3]
+    note: "Distinguishes labor systems by specific characteristics (who, where, when, how coercive)."
+
+  - id: tmpl_battle_significance
+    template: "What was the significance of {battle_or_event}?"
+    answer_pool: battle_event_names
+    mastery_range: [2, 3]
+    note: "Requires understanding WHY battles mattered — causation and consequence."
+
+  - id: tmpl_organization_purpose
+    template: "Which organization {purpose_or_action}?"
+    answer_pool: organization_names
+    mastery_range: [2, 3]
+    note: "International organization identification from purpose; tests post-WWII institutional knowledge."
+
+  - id: tmpl_doctrine_policy
+    template: "What was the name of the policy or doctrine that {description_of_commitment_or_program}?"
+    answer_pool: ideological_doctrine_names
+    mastery_range: [2, 3]
+    note: "Policy identification from purpose/content — Cold War and colonial era policies especially tested."
+
+  # --- MASTERY 3: Comparative and analytical ---
+  - id: tmpl_region_compare
+    template: "How was {aspect} in {empire_or_region_A} similar to OR different from {empire_or_region_B}?"
+    answer_pool: concept_terms
+    mastery_range: [3, 4]
+    note: "Comparison questions targeting CED historical thinking skill; answer is a concept or characteristic."
+
+  - id: tmpl_cause_effect
+    template: "What was a major cause of {event_or_development}?"
+    answer_pool: concept_terms
+    mastery_range: [3, 4]
+    note: "Causation questions — the most tested AP historical thinking skill across all units."
+
+  - id: tmpl_empire_admin
+    template: "Which administrative technique did {empire} use to {administrative_goal}?"
+    answer_pool: labor_economic_terms
+    mastery_range: [3, 4]
+    note: "Empire administration facts — connects empire name to specific bureaucratic or labor mechanism."
+
+  # --- MASTERY 4-5: Synthesis and evaluation ---
+  - id: tmpl_continuity_change
+    template: "Which of the following represents a continuity (or change) from {earlier_period} to {later_period} regarding {topic}?"
+    answer_pool: concept_terms
+    mastery_range: [4, 5]
+    note: "CCOT questions — second most common AP WH:M SAQ/essay prompt type; requires span of knowledge."
+
+  - id: tmpl_mass_atrocity_context
+    template: "Which mass atrocity or genocide {contextual_description}?"
+    answer_pool: mass_atrocity_names
+    mastery_range: [4, 5]
+    note: "Requires knowing specific atrocities, their perpetrators, victims, and historical context."
+
+  - id: tmpl_place_significance
+    template: "Which location {significance_description}?"
+    answer_pool: place_names
+    mastery_range: [4, 5]
+    note: "Place significance questions — geographic knowledge in historical context; requires deeper understanding."

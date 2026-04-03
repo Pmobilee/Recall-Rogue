@@ -21,17 +21,26 @@ function seededRandom(seed: number): () => number {
 }
 
 /**
- * Anki-style three-priority fact selection for curated deck charges.
+ * Anki-style four-priority fact selection for curated deck charges.
  *
  * Priorities, served in order:
+ * 0. Forced new card introduction — every NEW_CARD_INTERVAL (3) charges without a new
+ *    card being served, a new card is force-introduced if one is available and the
+ *    learning queue permits it (canIntroduceNew). This prevents learning/review cards
+ *    from starving new card introduction.
  * 1. Due learning cards — cards in the learning state whose timer has expired.
- *    These are time-critical (like Anki's learning queue) and always served first.
+ *    These are time-critical (like Anki's learning queue) and always served first
+ *    unless a forced new card introduction is triggered.
  * 2. Intersperser of due graduated reviews + new cards — proportional mixing
  *    (Anki Intersperser). New cards only introduced when learning queue is below
  *    MAX_LEARNING (8). Due reviews take the remaining share proportionally.
  * 3. Ahead learning — cards in learning whose timer has NOT yet expired, served
  *    only when nothing else is available (rare edge case at small pool sizes).
  * Fallback: any card except the immediately previous fact (prevents all repetition).
+ *
+ * The ONLY dedup is lastFactId — prevents back-to-back repetition of the same fact.
+ * Learning cards CAN and SHOULD come back within the same encounter — that is correct
+ * Anki behavior. The longer step delays ([4, 10] charges) provide natural spacing.
  *
  * @param factPool - Chain theme subset (knowledge decks) or full pool (vocabulary decks)
  * @param tracker - In-run fact tracker (Anki learning step state machine)
@@ -47,6 +56,26 @@ export function selectFactForCharge(
 ): FactSelectionResult {
   const rand = seededRandom(runSeed + tracker.getTotalCharges() + tracker.getAndIncrementChargeCount());
   const lastFactId = tracker.getLastFactId();
+
+  // === PRIORITY 0: Forced new card introduction (Anki-style even spacing) ===
+  // Every NEW_CARD_INTERVAL charges, introduce a new card if available.
+  // This prevents learning/review cards from starving new card introduction.
+  if (tracker.shouldForceNewCard() && tracker.canIntroduceNew()) {
+    const forcedNew = factPool.filter(f =>
+      f.id !== lastFactId &&
+      !tracker.isInLearning(f.id) &&
+      !tracker.isGraduated(f.id)
+    );
+    // Sort by difficulty ascending (easier first)
+    forcedNew.sort((a, b) => {
+      const diffDelta = (a.difficulty ?? 3) - (b.difficulty ?? 3);
+      return diffDelta !== 0 ? diffDelta : rand() - 0.5;
+    });
+    if (forcedNew.length > 0) {
+      tracker.recordNewCardServed();
+      return { fact: forcedNew[0], selectionReason: 'unseen' };
+    }
+  }
 
   // === PRIORITY 1: Due learning cards (Anki: learning cards are time-critical) ===
   const dueLearning = tracker.getDueLearningCards()
@@ -97,6 +126,7 @@ export function selectFactForCharge(
     if (rand() < reviewProb) {
       return { fact: dueReviews[Math.floor(rand() * dueReviews.length)], selectionReason: 'moderate' };
     } else {
+      tracker.recordNewCardServed();
       return { fact: newCards[0], selectionReason: 'unseen' };
     }
   }
@@ -106,6 +136,7 @@ export function selectFactForCharge(
   }
 
   if (newCards.length > 0) {
+    tracker.recordNewCardServed();
     return { fact: newCards[0], selectionReason: 'unseen' };
   }
 

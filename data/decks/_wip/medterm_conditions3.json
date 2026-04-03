@@ -1,0 +1,1322 @@
+[
+  {
+    "id": "medterm_cond_hyperthyroidism",
+    "correctAnswer": "Overactive thyroid gland producing excess thyroid hormone",
+    "acceptableAlternatives": ["Overactive thyroid", "Excess thyroid hormone production", "Thyroid overactivity"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Underactive thyroid gland producing insufficient hormone",
+      "Inflammation of the thyroid gland",
+      "Benign tumor of the thyroid gland",
+      "Surgical removal of the thyroid gland",
+      "Enlarged thyroid gland without hormone excess",
+      "Absence of the thyroid gland from birth",
+      "Autoimmune destruction of thyroid tissue",
+      "Deficiency of calcium in the blood"
+    ],
+    "quizQuestion": "What is hyperthyroidism?",
+    "explanation": "Hyperthyroidism breaks into: hyper- (excessive/above normal) + thyroid (the thyroid gland) + -ism (condition or state). The result is a condition of excessive thyroid activity. The thyroid gland produces too much thyroxine (T4) and triiodothyronine (T3), speeding up metabolism. Common causes include Graves' disease (autoimmune stimulation) and toxic nodular goiter.",
+    "statement": "Hyperthyroidism is a condition of excessive thyroid hormone production.",
+    "wowFactor": "Graves' disease, the most common cause of hyperthyroidism, is named after Irish physician Robert Graves — yet the condition was actually first described by German physician Karl von Basedow, and in Europe it is called Basedow's disease!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hyperthyroidism",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which condition is characterized by excessive thyroid hormone production?",
+        "correctAnswer": "Hyperthyroidism",
+        "distractors": ["Hypothyroidism", "Addison's disease", "Cushing's syndrome"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'hyperthyroidism', what does the prefix hyper- tell you about thyroid hormone levels?",
+        "correctAnswer": "Hormone levels are excessive or above normal",
+        "distractors": ["Hormone levels are below normal", "Hormone levels are absent", "Hormone levels fluctuate unpredictably"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "endocrine", "thyroid"]
+  },
+  {
+    "id": "medterm_cond_hypothyroidism",
+    "correctAnswer": "Underactive thyroid gland producing insufficient thyroid hormone",
+    "acceptableAlternatives": ["Underactive thyroid", "Insufficient thyroid hormone", "Thyroid underactivity"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Overactive thyroid gland producing excess thyroid hormone",
+      "Inflammation of the thyroid gland",
+      "Benign tumor of the thyroid gland",
+      "Surgical removal of the thyroid gland",
+      "Elevated calcium levels in the blood",
+      "Elevated blood glucose levels",
+      "Deficient white blood cell count",
+      "Inflammation of the adrenal gland"
+    ],
+    "quizQuestion": "What is hypothyroidism?",
+    "explanation": "Hypothyroidism breaks into: hypo- (deficient/below normal) + thyroid (the thyroid gland) + -ism (condition or state). The thyroid gland fails to produce enough thyroxine, slowing metabolism. The most common cause worldwide is iodine deficiency; in iodine-sufficient countries, Hashimoto's thyroiditis (autoimmune attack on the thyroid) is the leading cause.",
+    "statement": "Hypothyroidism is a condition of insufficient thyroid hormone production.",
+    "wowFactor": "Severe untreated hypothyroidism in newborns causes cretinism — a form of intellectual disability. Adding iodine to table salt (iodized salt) was one of the 20th century's most effective public health interventions, nearly eliminating this condition.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hypothyroidism",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which condition is characterized by insufficient thyroid hormone production?",
+        "correctAnswer": "Hypothyroidism",
+        "distractors": ["Hyperthyroidism", "Hyperaldosteronism", "Cushing's syndrome"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'hypothyroidism', what does the prefix hypo- indicate about thyroid function?",
+        "correctAnswer": "Thyroid function is below normal",
+        "distractors": ["Thyroid function is above normal", "Thyroid function is absent", "Thyroid function is intermittent"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "endocrine", "thyroid"]
+  },
+  {
+    "id": "medterm_cond_hyperglycemia",
+    "correctAnswer": "Abnormally high blood glucose (sugar) level",
+    "acceptableAlternatives": ["High blood sugar", "Elevated blood glucose", "Excess glucose in the blood"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Abnormally low blood glucose level",
+      "Excess glucose in the urine",
+      "Elevated calcium levels in the blood",
+      "Elevated sodium levels in the blood",
+      "Overactive thyroid gland",
+      "Deficiency of red blood cells",
+      "Elevated white blood cell count",
+      "Abnormal fat accumulation in the liver"
+    ],
+    "quizQuestion": "What is hyperglycemia?",
+    "explanation": "Hyperglycemia breaks into: hyper- (excessive) + glyc/o (sugar/glucose) + -emia (blood condition). It literally means 'excessive sugar in the blood.' Fasting blood glucose above 126 mg/dL (7.0 mmol/L) on two occasions is diagnostic of diabetes mellitus. It is a hallmark of both Type 1 and Type 2 diabetes.",
+    "statement": "Hyperglycemia is an abnormally high level of glucose in the blood.",
+    "wowFactor": "The word 'glucose' itself comes from Greek 'glykys' meaning sweet — the same root as glyc/o. Ancient physicians actually tasted urine to detect diabetes, noticing its sweet flavor from glucose spilling into the urine!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hyperglycemia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which condition describes an abnormally high blood glucose level?",
+        "correctAnswer": "Hyperglycemia",
+        "distractors": ["Hypoglycemia", "Hypernatremia", "Hypercalcemia"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'hyperglycemia', what does the root glyc/o refer to?",
+        "correctAnswer": "Sugar or glucose",
+        "distractors": ["Calcium", "Sodium", "Lipid or fat"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "endocrine", "metabolic"]
+  },
+  {
+    "id": "medterm_cond_hypoglycemia",
+    "correctAnswer": "Abnormally low blood glucose (sugar) level",
+    "acceptableAlternatives": ["Low blood sugar", "Deficient blood glucose", "Insufficient glucose in the blood"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Abnormally high blood glucose level",
+      "Glucose in the urine",
+      "Low calcium levels in the blood",
+      "Low sodium levels in the blood",
+      "Underactive thyroid gland",
+      "Deficiency of red blood cells",
+      "Elevated white blood cell count",
+      "Excessive insulin in the blood"
+    ],
+    "quizQuestion": "What is hypoglycemia?",
+    "explanation": "Hypoglycemia breaks into: hypo- (deficient/below normal) + glyc/o (sugar/glucose) + -emia (blood condition). Blood glucose below 70 mg/dL (3.9 mmol/L) is clinically significant. Common causes include excessive insulin dosing in diabetics, prolonged fasting, alcohol consumption, and insulinoma (insulin-secreting pancreatic tumor). Symptoms include shakiness, sweating, confusion, and in severe cases, seizures or loss of consciousness.",
+    "statement": "Hypoglycemia is an abnormally low level of glucose in the blood.",
+    "wowFactor": "The brain consumes roughly 20% of the body's glucose despite being only about 2% of body weight. Because the brain cannot store glucose, hypoglycemia can cause unconsciousness within minutes — the organ most dependent on blood sugar is also the most vulnerable to its absence.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hypoglycemia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which condition describes an abnormally low blood glucose level?",
+        "correctAnswer": "Hypoglycemia",
+        "distractors": ["Hyperglycemia", "Hyponatremia", "Hypocalcemia"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'hypoglycemia', what does the prefix hypo- indicate about blood sugar?",
+        "correctAnswer": "Blood sugar is below normal levels",
+        "distractors": ["Blood sugar is above normal levels", "Blood sugar is absent", "Blood sugar fluctuates rapidly"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "endocrine", "metabolic"]
+  },
+  {
+    "id": "medterm_cond_adenoma",
+    "correctAnswer": "Benign tumor arising from glandular epithelial tissue",
+    "acceptableAlternatives": ["Benign glandular tumor", "Non-cancerous gland tumor", "Glandular tissue tumor"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Malignant tumor of glandular tissue",
+      "Inflammation of a gland",
+      "Enlargement of a gland without tumor formation",
+      "Surgical removal of a gland",
+      "Benign tumor of connective tissue",
+      "Benign tumor arising from smooth muscle",
+      "Cancer of squamous epithelial cells",
+      "Fibrous scarring of glandular tissue"
+    ],
+    "quizQuestion": "What is an adenoma?",
+    "explanation": "Adenoma breaks into: aden/o (gland) + -oma (tumor). It is a benign (non-cancerous) tumor that arises from glandular epithelial cells. Adenomas can occur in many organs: the colon (colon polyps), the pituitary gland (pituitary adenoma), the thyroid, the adrenal glands, and the liver. Although benign, some adenomas can become malignant over time — colorectal adenomas are the precursor lesion for most colorectal carcinomas.",
+    "statement": "An adenoma is a benign tumor arising from glandular epithelial tissue.",
+    "wowFactor": "Colorectal cancer almost always starts as an adenoma — a benign polyp. Colonoscopy's cancer-prevention power comes from finding and removing these adenomas before they turn malignant, potentially decades before a cancer would have developed.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Adenoma",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes a benign tumor of glandular tissue?",
+        "correctAnswer": "Adenoma",
+        "distractors": ["Adenocarcinoma", "Lipoma", "Fibroma"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'adenoma', what does the root aden/o refer to?",
+        "correctAnswer": "A gland",
+        "distractors": ["A muscle", "A nerve", "A vessel"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "endocrine", "oncology", "tumor"]
+  },
+  {
+    "id": "medterm_cond_hypercalcemia",
+    "correctAnswer": "Abnormally elevated calcium level in the blood",
+    "acceptableAlternatives": ["High blood calcium", "Elevated serum calcium", "Excess calcium in the blood"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Abnormally low calcium level in the blood",
+      "Elevated glucose levels in the blood",
+      "Elevated sodium levels in the blood",
+      "Abnormal calcium deposits in soft tissue",
+      "Overactive thyroid gland",
+      "Overactive parathyroid gland condition name",
+      "Deficiency of calcium in the diet",
+      "Elevated potassium levels in the blood"
+    ],
+    "quizQuestion": "What is hypercalcemia?",
+    "explanation": "Hypercalcemia breaks into: hyper- (excessive) + calc/i (calcium, from Latin 'calx' meaning lime/chalk) + -emia (blood condition). Serum calcium above 10.5 mg/dL (2.62 mmol/L) is considered hypercalcemic. The two most common causes are primary hyperparathyroidism (excess parathyroid hormone causing calcium release from bone) and malignancy (cancer releasing PTH-related protein or causing bone destruction).",
+    "statement": "Hypercalcemia is an abnormally high level of calcium in the blood.",
+    "wowFactor": "The mnemonic 'Bones, Stones, Groans, and Psychic Moans' captures hypercalcemia's symptoms: bone pain, kidney stones (calcium deposits), constipation/abdominal groans, and neuropsychiatric symptoms like depression and confusion.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hypercalcaemia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which condition describes an abnormally high blood calcium level?",
+        "correctAnswer": "Hypercalcemia",
+        "distractors": ["Hypocalcemia", "Hyperkalemia", "Hypernatremia"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'hypercalcemia', the root calc/i derives from Latin 'calx' meaning lime or chalk. What does this root refer to in the bloodstream?",
+        "correctAnswer": "Calcium",
+        "distractors": ["Potassium", "Magnesium", "Phosphorus"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "endocrine", "electrolyte"]
+  },
+  {
+    "id": "medterm_cond_dermatitis",
+    "correctAnswer": "Inflammation of the skin",
+    "acceptableAlternatives": ["Skin inflammation", "Inflammatory skin condition"],
+    "chainThemeId": 6,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Skin cancer arising from melanocytes",
+      "Fungal infection of the skin",
+      "Abnormal skin dryness",
+      "Bacterial infection of deep skin layers",
+      "Excessive skin growth or thickening",
+      "Loss of skin pigmentation",
+      "Fungal nail infection",
+      "Hair loss condition"
+    ],
+    "quizQuestion": "What is dermatitis?",
+    "explanation": "Dermatitis breaks into: dermat/o (skin, from Greek 'derma') + -itis (inflammation). It refers to inflammation of the skin and presents as red, itchy, swollen, or blistered skin. Major types include atopic dermatitis (eczema — linked to allergies and asthma), contact dermatitis (reaction to substances touching the skin), and seborrheic dermatitis (affecting oily areas like the scalp).",
+    "statement": "Dermatitis is inflammation of the skin.",
+    "wowFactor": "Atopic dermatitis (eczema) affects up to 20% of children worldwide, making it one of the most common skin conditions. 'Atopic' means 'out of place' — the immune system mounts an inflammatory response where it shouldn't!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dermatitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term means inflammation of the skin?",
+        "correctAnswer": "Dermatitis",
+        "distractors": ["Dermatosis", "Cellulitis", "Erythema"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'dermatitis', what does the root dermat/o refer to?",
+        "correctAnswer": "The skin",
+        "distractors": ["The nail", "The hair follicle", "The sebaceous gland"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "integumentary", "inflammation"]
+  },
+  {
+    "id": "medterm_cond_melanoma",
+    "correctAnswer": "Malignant skin cancer arising from pigment-producing melanocytes",
+    "acceptableAlternatives": ["Skin cancer from melanocytes", "Malignant melanocyte tumor", "Pigment cell skin cancer"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Skin inflammation from allergic reaction",
+      "Benign pigmented mole",
+      "Fungal infection of the skin",
+      "Skin cancer arising from squamous cells",
+      "Skin cancer arising from basal cells",
+      "Abnormal skin dryness",
+      "Loss of skin pigmentation",
+      "Bacterial infection of deep skin layers"
+    ],
+    "quizQuestion": "What is melanoma?",
+    "explanation": "Melanoma breaks into: melan/o (black/dark, from Greek 'melas') + -oma (tumor). It is the most dangerous form of skin cancer, arising from melanocytes — the pigment-producing cells of the skin. Despite accounting for only about 1% of skin cancers, melanoma causes the vast majority of skin cancer deaths due to its tendency to metastasize (spread) early to lymph nodes and distant organs.",
+    "statement": "Melanoma is a malignant tumor arising from melanocytes, the pigment-producing cells of the skin.",
+    "wowFactor": "The ABCDE rule for melanoma detection — Asymmetry, Border irregularity, Color variation, Diameter over 6mm, and Evolution — can be life-saving. Melanoma detected at stage I has a 5-year survival rate over 98%; at stage IV, it drops to around 30%.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Melanoma",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which skin cancer arises from melanocytes, the pigment-producing cells?",
+        "correctAnswer": "Melanoma",
+        "distractors": ["Basal cell carcinoma", "Squamous cell carcinoma", "Merkel cell carcinoma"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'melanoma', the root melan/o comes from the Greek word for 'black'. What gives melanocytes their dark color?",
+        "correctAnswer": "The pigment melanin they produce",
+        "distractors": ["High iron content in the cells", "Dense nuclear chromatin", "Melanocyte surface receptors"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "integumentary", "oncology", "cancer"]
+  },
+  {
+    "id": "medterm_cond_onychomycosis",
+    "correctAnswer": "Fungal infection of the nail",
+    "acceptableAlternatives": ["Nail fungal infection", "Fungal nail disease", "Tinea unguium"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Bacterial infection of the nail bed",
+      "Inflammation of the nail matrix",
+      "Abnormal nail thickening without infection",
+      "Loss or shedding of a nail",
+      "Skin inflammation from fungal infection",
+      "Fungal infection of the scalp",
+      "Ingrown toenail condition",
+      "Nail discoloration from trauma"
+    ],
+    "quizQuestion": "What is onychomycosis?",
+    "explanation": "Onychomycosis breaks into: onych/o (nail, from Greek 'onyx') + myc/o (fungus, from Greek 'mykes') + -osis (abnormal condition). It is the most common nail disorder, estimated to affect 10% of the general population. Dermatophyte fungi (especially Trichophyton rubrum) are the cause in about 90% of cases. The infection causes thickening, discoloration, brittleness, and distortion of the nail.",
+    "statement": "Onychomycosis is a fungal infection of the fingernails or toenails.",
+    "wowFactor": "Onychomycosis is notoriously difficult to treat because antifungal drugs must penetrate the nail plate — one of the densest structures the human body produces. Oral treatment typically requires 3 months for fingernails and 6 months for toenails, with recurrence rates up to 40%.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Onychomycosis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes a fungal infection of the nail?",
+        "correctAnswer": "Onychomycosis",
+        "distractors": ["Paronychia", "Onycholysis", "Onychia"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'onychomycosis', what does the root myc/o indicate about the cause of this nail condition?",
+        "correctAnswer": "The condition is caused by fungus",
+        "distractors": ["The condition is caused by bacteria", "The condition is caused by a virus", "The condition is caused by a parasite"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "integumentary", "fungal", "nail"]
+  },
+  {
+    "id": "medterm_cond_alopecia",
+    "correctAnswer": "Partial or complete hair loss from areas where hair normally grows",
+    "acceptableAlternatives": ["Hair loss", "Baldness", "Loss of hair"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Excessive hair growth in unusual areas",
+      "Fungal infection of the scalp",
+      "Inflammation of the hair follicles",
+      "Abnormal skin dryness",
+      "Skin inflammation causing scalp itching",
+      "Scarring of the scalp from burns",
+      "Nail loss or shedding",
+      "Thickening of the scalp skin"
+    ],
+    "quizQuestion": "What is alopecia?",
+    "explanation": "Alopecia comes from Greek 'alopekia' (fox mange) and Latin 'alopecia', referring to hair loss. It describes partial or complete absence of hair from areas where it normally grows. Types include alopecia areata (autoimmune patchy hair loss), androgenetic alopecia (male/female pattern baldness driven by genetics and hormones), and alopecia totalis (complete scalp hair loss) or universalis (complete body hair loss).",
+    "statement": "Alopecia is hair loss from the scalp or body.",
+    "wowFactor": "Alopecia areata, an autoimmune form of hair loss, was historically called 'moth-eaten' hair loss because the patchy pattern resembles cloth damaged by moths. The immune system mistakenly attacks hair follicles — but follicles can recover, making regrowth possible even after years of hair loss.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Alopecia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes hair loss from the scalp or body?",
+        "correctAnswer": "Alopecia",
+        "distractors": ["Hirsutism", "Folliculitis", "Seborrhea"]
+      },
+      {
+        "type": "context",
+        "question": "Alopecia areata is an autoimmune condition. What does the immune system mistakenly attack?",
+        "correctAnswer": "Hair follicles",
+        "distractors": ["Sebaceous glands", "Sweat glands", "Scalp blood vessels"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "integumentary", "hair"]
+  },
+  {
+    "id": "medterm_cond_xerosis",
+    "correctAnswer": "Abnormal dryness of the skin",
+    "acceptableAlternatives": ["Dry skin condition", "Pathological skin dryness", "Skin xerosis"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Excessive oiliness of the skin",
+      "Skin inflammation with redness and itching",
+      "Fungal infection of the skin",
+      "Abnormal thickening or hardening of skin",
+      "Skin cancer arising from melanocytes",
+      "Hair loss from the scalp",
+      "Abnormal dryness of the eyes",
+      "Fungal nail infection"
+    ],
+    "quizQuestion": "What is xerosis in dermatology?",
+    "explanation": "Xerosis breaks into: xer/o (dry, from Greek 'xeros') + -osis (abnormal condition). It refers to abnormally dry skin, formally called xerosis cutis. Risk factors include age (sebaceous and sweat gland function declines), low humidity environments, excessive bathing, and systemic conditions like hypothyroidism, diabetes, and chronic kidney disease. Severe xerosis can lead to cracking, fissuring, and secondary infections.",
+    "statement": "Xerosis is a condition of abnormal skin dryness.",
+    "wowFactor": "The Greek root xer/o meaning 'dry' appears in other medical terms too: xerophthalmia (dry eyes from vitamin A deficiency) and xerostomia (dry mouth). The ancient Greek physician Hippocrates used the concept of 'dryness' as one of the fundamental bodily imbalances causing disease.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Xerosis_cutis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes abnormal dryness of the skin?",
+        "correctAnswer": "Xerosis",
+        "distractors": ["Seborrhea", "Hyperhidrosis", "Pruritus"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'xerosis', the root xer/o means 'dry'. Which other medical term shares this root and describes dry eyes?",
+        "correctAnswer": "Xerophthalmia",
+        "distractors": ["Conjunctivitis", "Blepharitis", "Keratitis"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "integumentary", "skin"]
+  },
+  {
+    "id": "medterm_cond_leukemia",
+    "correctAnswer": "Cancer of the blood characterized by abnormal proliferation of white blood cells",
+    "acceptableAlternatives": ["White blood cell cancer", "Blood cancer from abnormal leukocytes", "Malignant white blood cell proliferation"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Cancer of the lymph nodes",
+      "Cancer arising from red blood cells",
+      "Deficiency of red blood cells",
+      "Deficiency of platelets",
+      "Elevated white blood cell count from infection",
+      "Cancer of connective tissue",
+      "Malignant tumor of the bone marrow without blood cell involvement",
+      "Elevated red blood cell count"
+    ],
+    "quizQuestion": "What is leukemia?",
+    "explanation": "Leukemia breaks into: leuk/o (white, from Greek 'leukos') + -emia (blood condition). It is a cancer of the blood and bone marrow characterized by abnormal proliferation of white blood cells (leukocytes). Major categories are acute versus chronic, and myeloid versus lymphoid: ALL (acute lymphoblastic), AML (acute myeloid), CLL (chronic lymphocytic), and CML (chronic myeloid). Leukemia accounts for about 3% of all cancer deaths in the United States.",
+    "statement": "Leukemia is a cancer of the blood characterized by uncontrolled production of abnormal white blood cells.",
+    "wowFactor": "Acute lymphoblastic leukemia (ALL), the most common childhood cancer, had a nearly 0% long-term survival rate in the 1960s. Today, combination chemotherapy cures approximately 90% of children with ALL — one of medicine's most dramatic therapeutic successes.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Leukemia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which cancer is characterized by abnormal proliferation of white blood cells?",
+        "correctAnswer": "Leukemia",
+        "distractors": ["Lymphoma", "Myeloma", "Polycythemia vera"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'leukemia', what does the root leuk/o refer to?",
+        "correctAnswer": "White (referring to white blood cells)",
+        "distractors": ["Red (referring to red blood cells)", "Blood clotting", "Bone marrow"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "hematologic", "oncology", "cancer"]
+  },
+  {
+    "id": "medterm_cond_thrombocytopenia",
+    "correctAnswer": "Abnormally low platelet count in the blood",
+    "acceptableAlternatives": ["Low platelet count", "Platelet deficiency", "Deficient thrombocytes"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Abnormally high platelet count",
+      "Deficiency of white blood cells",
+      "Deficiency of red blood cells",
+      "Excessive blood clotting tendency",
+      "Abnormal platelet shape without low count",
+      "Cancer of platelet-producing cells",
+      "Elevated white blood cell count",
+      "Platelet aggregation disorder without low count"
+    ],
+    "quizQuestion": "What is thrombocytopenia?",
+    "explanation": "Thrombocytopenia breaks into: thromb/o (clot/platelet, from Greek 'thrombos' meaning clump) + cyt/o (cell) + -penia (deficiency). Platelets (thrombocytes) are below 150,000 per microliter. Common causes include immune thrombocytopenic purpura (ITP), drug-induced thrombocytopenia, bone marrow failure, and hypersplenism. Severe thrombocytopenia (below 10,000/µL) carries significant risk of spontaneous bleeding, including intracranial hemorrhage.",
+    "statement": "Thrombocytopenia is a deficiency of platelets (thrombocytes) in the blood.",
+    "wowFactor": "Platelets are not true cells — they are fragments of large bone marrow cells called megakaryocytes. A single megakaryocyte can release up to 10,000 platelets into the bloodstream. Despite their small size (2-3 micrometers), platelets are the first responders to any vascular injury.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thrombocytopenia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes an abnormally low platelet count?",
+        "correctAnswer": "Thrombocytopenia",
+        "distractors": ["Thrombocytosis", "Leukopenia", "Pancytopenia"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'thrombocytopenia', what does the suffix -penia indicate about platelet levels?",
+        "correctAnswer": "Platelets are deficient or below normal",
+        "distractors": ["Platelets are elevated above normal", "Platelets are dysfunctional", "Platelets are absent from birth"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "hematologic", "platelets"]
+  },
+  {
+    "id": "medterm_cond_hemophilia",
+    "correctAnswer": "Hereditary bleeding disorder caused by deficiency of clotting factors",
+    "acceptableAlternatives": ["Clotting factor deficiency disorder", "Inherited bleeding disorder", "Blood coagulation disorder"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Low platelet count causing bleeding tendency",
+      "Excessive blood clotting disorder",
+      "Iron deficiency causing anemia",
+      "Cancer of white blood cells",
+      "Autoimmune destruction of red blood cells",
+      "Vitamin K deficiency causing bruising",
+      "Platelet aggregation disorder without factor deficiency",
+      "Hereditary elevated red blood cell count"
+    ],
+    "quizQuestion": "What is hemophilia?",
+    "explanation": "Hemophilia breaks into: hem/o (blood, from Greek 'haima') + -philia (attraction to, tendency toward, from Greek 'philia'). The -philia suffix here refers to a tendency toward (excess) bleeding — a 'love of bleeding' in the literal sense. Hemophilia A is caused by deficiency of clotting Factor VIII and Hemophilia B by Factor IX deficiency. Both are X-linked recessive, so males are predominantly affected. Without treatment, minor injuries can cause prolonged or fatal hemorrhage.",
+    "statement": "Hemophilia is a hereditary bleeding disorder caused by deficiency of specific blood clotting factors.",
+    "wowFactor": "Hemophilia B is sometimes called 'the Royal Disease' because Queen Victoria of Britain was a carrier. She passed the gene to several royal families across Europe, including the Russian Romanovs — the Tsarevich Alexei's hemophilia profoundly influenced Rasputin's rise to power, helping alter the course of Russian history.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Haemophilia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which hereditary disorder is caused by deficiency of clotting factors such as Factor VIII or IX?",
+        "correctAnswer": "Hemophilia",
+        "distractors": ["Von Willebrand disease", "Thrombocytopenia", "Disseminated intravascular coagulation"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'hemophilia', the root hem/o means blood and -philia means tendency toward. What does the combined term literally describe?",
+        "correctAnswer": "A tendency toward bleeding",
+        "distractors": ["A tendency toward clotting", "An attraction of blood to tissue", "A deficiency of blood cells"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "hematologic", "hereditary", "bleeding"]
+  },
+  {
+    "id": "medterm_cond_leukocytosis",
+    "correctAnswer": "Abnormally elevated white blood cell count",
+    "acceptableAlternatives": ["Elevated white blood cells", "High leukocyte count", "Increased white cell count"],
+    "chainThemeId": 6,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Abnormally low white blood cell count",
+      "Cancer of white blood cells",
+      "Elevated red blood cell count",
+      "Low platelet count",
+      "Abnormal white blood cell morphology without elevation",
+      "Excessive production of platelets",
+      "White blood cell deficiency from bone marrow failure",
+      "Elevated white blood cell count restricted to lymphocytes"
+    ],
+    "quizQuestion": "What is leukocytosis?",
+    "explanation": "Leukocytosis breaks into: leuk/o (white) + cyt/o (cell) + -osis (abnormal condition/increase). A white blood cell count above 11,000 per microliter (11 × 10⁹/L) in adults is considered leukocytosis. The most common cause is infection (bacterial infections often trigger neutrophilia; viral infections often cause lymphocytosis). Other causes include inflammation, corticosteroid use, physical stress, and leukemia.",
+    "statement": "Leukocytosis is an abnormally elevated white blood cell count.",
+    "wowFactor": "Leukocytosis can be so dramatic in chronic myeloid leukemia (CML) that white blood cell counts sometimes exceed 300,000/µL — over 30 times the upper limit of normal. At such levels, blood can become viscous enough to impede flow through small vessels, a condition called leukostasis.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Leukocytosis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes an abnormally elevated white blood cell count?",
+        "correctAnswer": "Leukocytosis",
+        "distractors": ["Leukopenia", "Erythrocytosis", "Thrombocytosis"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'leukocytosis', what does the suffix -osis indicate about the white blood cell count?",
+        "correctAnswer": "The count is abnormally increased",
+        "distractors": ["The count is abnormally decreased", "The cells are abnormally shaped", "The cells are cancerous"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "hematologic", "white_blood_cells"]
+  },
+  {
+    "id": "medterm_cond_erythrocytosis",
+    "correctAnswer": "Abnormally elevated red blood cell count",
+    "acceptableAlternatives": ["Elevated red blood cells", "High red cell count", "Increased erythrocyte count", "Polycythemia"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Abnormally low red blood cell count",
+      "Elevated white blood cell count",
+      "Low platelet count",
+      "Cancer of red blood cell precursors",
+      "Abnormal red blood cell shape without elevated count",
+      "Iron deficiency affecting red cell size",
+      "Excessive destruction of red blood cells",
+      "Deficiency of hemoglobin within red cells"
+    ],
+    "quizQuestion": "What is erythrocytosis?",
+    "explanation": "Erythrocytosis breaks into: erythr/o (red, from Greek 'erythros') + cyt/o (cell) + -osis (abnormal condition/increase). It refers to an elevated red blood cell count (above 5.5 million/µL in men, 5.0 million/µL in women). Primary erythrocytosis includes polycythemia vera (a bone marrow neoplasm). Secondary causes include chronic hypoxia (high altitude, lung disease, sleep apnea), EPO-secreting tumors, and exogenous erythropoietin (EPO doping in athletes).",
+    "statement": "Erythrocytosis is an abnormally elevated red blood cell count.",
+    "wowFactor": "Elite endurance athletes at high altitude develop physiologic erythrocytosis — their bodies produce more red blood cells to compensate for lower oxygen. This is why altitude training camps exist: the extra red blood cells persist for weeks after returning to sea level, boosting oxygen delivery during competition.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Erythrocytosis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes an abnormally elevated red blood cell count?",
+        "correctAnswer": "Erythrocytosis",
+        "distractors": ["Erythropenia", "Leukocytosis", "Thrombocytosis"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'erythrocytosis', what does the root erythr/o refer to?",
+        "correctAnswer": "Red (referring to red blood cells)",
+        "distractors": ["White (referring to white blood cells)", "Clotting (referring to platelets)", "Iron (referring to hemoglobin)"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "hematologic", "red_blood_cells"]
+  },
+  {
+    "id": "medterm_cond_mastitis",
+    "correctAnswer": "Inflammation of the breast tissue",
+    "acceptableAlternatives": ["Breast inflammation", "Breast tissue inflammation"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Benign tumor of breast tissue",
+      "Malignant cancer of the breast",
+      "Inflammation of the ovary",
+      "Inflammation of the uterus",
+      "Excessive milk production",
+      "Absence of breast tissue",
+      "Abnormal nipple discharge without inflammation",
+      "Cyst formation in breast tissue"
+    ],
+    "quizQuestion": "What is mastitis?",
+    "explanation": "Mastitis breaks into: mast/o (breast, from Greek 'mastos') + -itis (inflammation). It is inflammation of the breast, most commonly occurring in breastfeeding women (lactation mastitis) — affecting 10–33% of nursing mothers. It is usually caused by bacterial infection (most commonly Staphylococcus aureus) entering through cracked nipples, combined with milk stasis. Non-lactational mastitis can occur due to duct ectasia or periductal mastitis.",
+    "statement": "Mastitis is inflammation of the breast tissue.",
+    "wowFactor": "The word 'mastitis' shares its root with mastectomy (surgical breast removal) and the mastoid bone behind the ear — named 'mastoid' because early anatomists thought the breast-like nipple-shaped bony prominence resembled a breast!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mastitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes inflammation of the breast tissue?",
+        "correctAnswer": "Mastitis",
+        "distractors": ["Mammoplasia", "Mastalgia", "Gynecomastia"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'mastitis', what does the root mast/o refer to?",
+        "correctAnswer": "The breast",
+        "distractors": ["The uterus", "The ovary", "The nipple only"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "reproductive", "breast", "inflammation"]
+  },
+  {
+    "id": "medterm_cond_endometriosis",
+    "correctAnswer": "Condition where endometrial-like tissue grows outside the uterus",
+    "acceptableAlternatives": ["Uterine tissue growing outside the uterus", "Ectopic endometrial tissue growth", "Endometrial tissue outside uterus"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Inflammation of the inner uterine lining",
+      "Benign uterine muscle tumors",
+      "Painful menstruation without displaced tissue",
+      "Inflammation of the outer uterine wall",
+      "Abnormal uterine bleeding without tissue displacement",
+      "Ovarian cyst formation",
+      "Breast tissue inflammation",
+      "Absence of menstruation"
+    ],
+    "quizQuestion": "What is endometriosis?",
+    "explanation": "Endometriosis breaks into: endo- (within) + metr/o (uterus, from Greek 'metra') + -osis (abnormal condition). Despite the name meaning 'condition within the uterus,' this disease involves endometrial-like tissue growing outside the uterus — commonly on the ovaries, fallopian tubes, and pelvic peritoneum. This tissue still responds to monthly hormonal cycles, causing internal bleeding and scarring with no outlet, leading to severe pelvic pain, dysmenorrhea, and infertility.",
+    "statement": "Endometriosis is a condition in which tissue similar to the uterine lining grows outside the uterus.",
+    "wowFactor": "Endometriosis affects an estimated 190 million people worldwide, yet takes an average of 7–10 years to diagnose. There is no cure, and it is the leading gynecological cause of chronic pelvic pain and one of the top causes of female infertility — largely because symptoms are normalized as 'bad periods.'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Endometriosis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which condition is characterized by endometrial-like tissue growing outside the uterus?",
+        "correctAnswer": "Endometriosis",
+        "distractors": ["Adenomyosis", "Endometritis", "Uterine fibroids"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'endometriosis', the root metr/o refers to the uterus. What does the prefix endo- mean?",
+        "correctAnswer": "Within",
+        "distractors": ["Outside", "Behind", "Below"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "reproductive", "gynecologic"]
+  },
+  {
+    "id": "medterm_cond_oophoritis",
+    "correctAnswer": "Inflammation of the ovary",
+    "acceptableAlternatives": ["Ovarian inflammation", "Ovary inflammation"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Inflammation of the fallopian tube",
+      "Inflammation of the uterus lining",
+      "Ovarian cyst formation",
+      "Ovarian cancer",
+      "Inflammation of the breast tissue",
+      "Absence of ovarian function",
+      "Benign tumor of the ovary",
+      "Inflammation of the cervix"
+    ],
+    "quizQuestion": "What is oophoritis?",
+    "explanation": "Oophoritis breaks into: oophor/o (ovary, from Greek 'oophoros' meaning egg-bearing) + -itis (inflammation). It is inflammation of one or both ovaries, most commonly caused by bacterial infection — often from sexually transmitted infections such as Chlamydia trachomatis and Neisseria gonorrhoeae spreading upward from the lower genital tract (pelvic inflammatory disease, or PID). Viral causes include mumps virus, which can cause oophoritis and ovarian failure. It often occurs alongside salpingitis (fallopian tube inflammation).",
+    "statement": "Oophoritis is inflammation of the ovary.",
+    "wowFactor": "The Greek root 'oophoros' literally means 'egg-bearer' — the ovaries are named for their role in producing eggs (oocytes). The same root appears in 'oogenesis' (egg production) and 'oophorectomy' (surgical ovary removal).",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oophoritis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes inflammation of the ovary?",
+        "correctAnswer": "Oophoritis",
+        "distractors": ["Salpingitis", "Endometritis", "Cervicitis"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'oophoritis', what does the root oophor/o literally mean?",
+        "correctAnswer": "Egg-bearer (the ovary)",
+        "distractors": ["Egg destroyer", "Egg carrier tube", "Womb or uterus"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "reproductive", "ovary", "inflammation"]
+  },
+  {
+    "id": "medterm_cond_orchitis",
+    "correctAnswer": "Inflammation of the testis",
+    "acceptableAlternatives": ["Testicular inflammation", "Testis inflammation"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Inflammation of the epididymis",
+      "Testicular cancer",
+      "Benign testicular cyst",
+      "Abnormal accumulation of fluid around the testis",
+      "Twisted testis cutting off blood supply",
+      "Inflammation of the prostate gland",
+      "Undescended testis condition",
+      "Inflammation of the vas deferens"
+    ],
+    "quizQuestion": "What is orchitis?",
+    "explanation": "Orchitis breaks into: orchi/o (testis, from Greek 'orchis' meaning testicle) + -itis (inflammation). It is inflammation of one or both testes. Causes include bacterial infection (often spread from epididymitis caused by STIs such as gonorrhea and chlamydia), and viral infection — most notably mumps virus, which can cause mumps orchitis in post-pubertal males in about 30% of cases, sometimes leading to testicular atrophy and reduced fertility.",
+    "statement": "Orchitis is inflammation of the testis.",
+    "wowFactor": "The ancient Greeks called the testis 'orchis' because they thought it resembled an orchid bulb in shape — and that is exactly where the orchid flower gets its name. So orchitis (testicular inflammation) and orchid (the flower) share the same Greek root!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Orchitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes inflammation of the testis?",
+        "correctAnswer": "Orchitis",
+        "distractors": ["Epididymitis", "Prostatitis", "Balanitis"]
+      },
+      {
+        "type": "etymology",
+        "question": "The Greek root orchi/o means testis and gave its name to which common flowering plant?",
+        "correctAnswer": "Orchid",
+        "distractors": ["Iris", "Narcissus", "Hyacinth"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "reproductive", "testis", "inflammation"]
+  },
+  {
+    "id": "medterm_cond_dysmenorrhea",
+    "correctAnswer": "Painful menstruation",
+    "acceptableAlternatives": ["Painful periods", "Painful menstrual cramps", "Menstrual pain"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Absence of menstruation",
+      "Abnormally heavy menstrual bleeding",
+      "Abnormally light menstrual bleeding",
+      "Irregular menstrual cycles",
+      "Painful sexual intercourse",
+      "Excessive menstrual flow lasting longer than normal",
+      "Uterine tissue outside the uterus causing pain",
+      "Premenstrual syndrome without menstrual pain"
+    ],
+    "quizQuestion": "What is dysmenorrhea?",
+    "explanation": "Dysmenorrhea breaks into: dys- (painful/difficult/abnormal) + men/o (menstruation, from Greek 'men' meaning month) + -rrhea (flow, from Greek 'rhoia'). It literally means 'difficult/painful menstrual flow.' Primary dysmenorrhea has no underlying pathology — it results from prostaglandins causing uterine contractions. Secondary dysmenorrhea is caused by a pelvic disorder such as endometriosis, uterine fibroids, or adenomyosis.",
+    "statement": "Dysmenorrhea is painful menstruation.",
+    "wowFactor": "Prostaglandins are the key culprits in primary dysmenorrhea — these hormone-like compounds trigger uterine muscle contractions so strong they can temporarily restrict blood flow, causing ischemic pain similar to a heart attack in intensity. NSAIDs like ibuprofen work by blocking prostaglandin synthesis.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dysmenorrhea",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes painful menstruation?",
+        "correctAnswer": "Dysmenorrhea",
+        "distractors": ["Amenorrhea", "Menorrhagia", "Metrorrhagia"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'dysmenorrhea', what does the prefix dys- indicate about the menstrual flow?",
+        "correctAnswer": "The flow is painful or difficult",
+        "distractors": ["The flow is absent", "The flow is excessive", "The flow is irregular"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "reproductive", "menstruation"]
+  },
+  {
+    "id": "medterm_cond_conjunctivitis",
+    "correctAnswer": "Inflammation of the conjunctiva (transparent membrane lining the eyelid and eyeball)",
+    "acceptableAlternatives": ["Pink eye", "Conjunctival inflammation", "Inflammation of the eye lining"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Inflammation of the retina",
+      "Inflammation of the cornea",
+      "Inflammation of the iris",
+      "Inflammation of the eyelid margin",
+      "Inflammation of the ear canal",
+      "Elevated intraocular pressure damaging the optic nerve",
+      "Clouding of the eye lens",
+      "Infection of the tear ducts"
+    ],
+    "quizQuestion": "What is conjunctivitis?",
+    "explanation": "Conjunctivitis breaks into: conjunctiv/o (conjunctiva — the transparent membrane covering the inner eyelids and white of the eye) + -itis (inflammation). Commonly called 'pink eye,' it presents with redness, discharge, and irritation. Types include viral (most common — usually adenovirus), bacterial (e.g., Staphylococcus, Streptococcus, gonorrhea in newborns), and allergic conjunctivitis. Neonatal conjunctivitis (ophthalmia neonatorum) can cause blindness if untreated.",
+    "statement": "Conjunctivitis is inflammation of the conjunctiva, commonly called pink eye.",
+    "wowFactor": "Gonorrheal conjunctivitis (ophthalmia neonatorum) was a leading cause of childhood blindness before routine newborn eye drops became standard practice. The erythromycin ointment or silver nitrate drops given to newborns in many countries today still prevent this condition — a practice begun by German physician Carl Credé in 1881.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Conjunctivitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes inflammation of the conjunctiva, commonly called pink eye?",
+        "correctAnswer": "Conjunctivitis",
+        "distractors": ["Keratitis", "Uveitis", "Blepharitis"]
+      },
+      {
+        "type": "context",
+        "question": "Viral conjunctivitis is highly contagious. Which virus is the most common cause?",
+        "correctAnswer": "Adenovirus",
+        "distractors": ["Herpes simplex virus", "Influenza virus", "Rhinovirus"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "sensory", "eye", "inflammation"]
+  },
+  {
+    "id": "medterm_cond_otitis",
+    "correctAnswer": "Inflammation of the ear",
+    "acceptableAlternatives": ["Ear inflammation", "Ear infection inflammation"],
+    "chainThemeId": 6,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Ringing or buzzing in the ears",
+      "Inflammation of the eye conjunctiva",
+      "Hearing loss from noise damage",
+      "Blockage of the ear canal by wax",
+      "Inflammation of the nose lining",
+      "Fluid in the middle ear without inflammation",
+      "Deterioration of the outer ear cartilage",
+      "Vertigo from inner ear crystal dislocation"
+    ],
+    "quizQuestion": "What is otitis?",
+    "explanation": "Otitis breaks into: ot/o (ear, from Greek 'ous/otos') + -itis (inflammation). It describes inflammation of the ear in general. Otitis externa (swimmer's ear) is inflammation of the outer ear canal, commonly caused by Pseudomonas aeruginosa or Staphylococcus aureus. Otitis media is inflammation of the middle ear — the most common childhood infection requiring antibiotic treatment. Otitis interna (labyrinthitis) affects the inner ear and causes vertigo and hearing loss.",
+    "statement": "Otitis is inflammation of the ear.",
+    "wowFactor": "Acute otitis media (middle ear infection) is the most common reason children visit doctors and receive antibiotics in the United States. Children are more susceptible because their Eustachian tubes run nearly horizontally (in adults they angle at 45°), making it easier for bacteria to travel from the throat to the middle ear.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Otitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes inflammation of the ear?",
+        "correctAnswer": "Otitis",
+        "distractors": ["Tinnitus", "Presbycusis", "Otalgia"]
+      },
+      {
+        "type": "context",
+        "question": "Otitis externa is commonly called 'swimmer's ear'. Which area of the ear is affected?",
+        "correctAnswer": "The outer ear canal",
+        "distractors": ["The middle ear", "The inner ear", "The eardrum (tympanic membrane)"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "sensory", "ear", "inflammation"]
+  },
+  {
+    "id": "medterm_cond_retinopathy",
+    "correctAnswer": "Disease or damage of the retina",
+    "acceptableAlternatives": ["Retinal disease", "Disease of the retina", "Retinal damage"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Inflammation of the retina",
+      "Detachment of the retina without disease",
+      "Disease of the optic nerve",
+      "Clouding of the eye lens",
+      "Elevated intraocular pressure damaging the optic nerve",
+      "Inflammation of the cornea",
+      "Disease of the iris",
+      "Macular degeneration without vascular disease"
+    ],
+    "quizQuestion": "What is retinopathy?",
+    "explanation": "Retinopathy breaks into: retin/o (retina, the light-sensitive layer at the back of the eye) + -pathy (disease, from Greek 'pathos'). It refers to any non-inflammatory disease of the retina. The most clinically significant form is diabetic retinopathy — damage to retinal blood vessels from chronic hyperglycemia — which is the leading cause of new blindness in working-age adults in developed countries. Hypertensive retinopathy results from high blood pressure damaging retinal vessels.",
+    "statement": "Retinopathy is disease or damage of the retina.",
+    "wowFactor": "Diabetic retinopathy is preventable: good blood sugar control can reduce the risk by up to 76%. The retina is the only place in the body where blood vessels can be directly visualized without invasive procedures — making the eye a unique window to assess cardiovascular and metabolic health throughout the body.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Diabetic_retinopathy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes disease or damage affecting the retina?",
+        "correctAnswer": "Retinopathy",
+        "distractors": ["Retinitis", "Optic neuritis", "Keratopathy"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'retinopathy', what does the suffix -pathy indicate about the retina?",
+        "correctAnswer": "The retina has a disease or pathological condition",
+        "distractors": ["The retina is inflamed", "The retina is surgically repaired", "The retina is examined"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "sensory", "eye", "retina"]
+  },
+  {
+    "id": "medterm_cond_tinnitus",
+    "correctAnswer": "Perception of ringing, buzzing, or other sounds in the ears without an external source",
+    "acceptableAlternatives": ["Ringing in the ears", "Phantom ear sounds", "Ear ringing condition"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Inflammation of the ear",
+      "Progressive hearing loss from aging",
+      "Dizziness and balance disorder from inner ear",
+      "Blocked ear canal from wax buildup",
+      "Ear pain without ringing",
+      "Hypersensitivity to loud sounds",
+      "Fluid accumulation in the middle ear",
+      "Perforation of the eardrum"
+    ],
+    "quizQuestion": "What is tinnitus?",
+    "explanation": "Tinnitus comes from Latin 'tinnire' meaning to ring or tinkle. It is the perception of sound (ringing, buzzing, hissing, clicking) in one or both ears without any external acoustic source. It affects approximately 15% of the global population. Common causes include noise-induced hearing loss, age-related hearing loss (presbycusis), ear infections, earwax blockage, medications (especially aspirin in high doses, NSAIDs, some antibiotics and chemotherapy agents), and Meniere's disease.",
+    "statement": "Tinnitus is the perception of noise or ringing in the ears in the absence of an external sound source.",
+    "wowFactor": "Ludwig van Beethoven suffered from severe tinnitus along with his progressive deafness, describing it as a constant roaring in his ears. He composed some of his greatest works — including his Ninth Symphony — entirely deaf, relying on memory and vibrations felt through his piano.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tinnitus",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes the perception of ringing or buzzing sounds in the ears without an external source?",
+        "correctAnswer": "Tinnitus",
+        "distractors": ["Otitis", "Hyperacusis", "Presbycusis"]
+      },
+      {
+        "type": "etymology",
+        "question": "Tinnitus derives from Latin 'tinnire'. What does this Latin verb mean?",
+        "correctAnswer": "To ring or tinkle",
+        "distractors": ["To hear", "To ache or hurt", "To echo or resonate"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "sensory", "ear", "hearing"]
+  },
+  {
+    "id": "medterm_cond_carcinoma",
+    "correctAnswer": "Malignant cancer arising from epithelial tissue",
+    "acceptableAlternatives": ["Epithelial cell cancer", "Malignant epithelial tumor", "Cancer from epithelial cells"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Malignant cancer arising from connective tissue",
+      "Benign tumor of epithelial tissue",
+      "Cancer arising from white blood cells",
+      "Malignant cancer of the lymph nodes",
+      "Benign glandular tumor",
+      "Cancer arising from bone-forming cells",
+      "Malignant cancer of muscle tissue",
+      "Cancer of pigment-producing cells"
+    ],
+    "quizQuestion": "What is a carcinoma?",
+    "explanation": "Carcinoma breaks into: carcin/o (cancer, from Greek 'karkinos' meaning crab) + -oma (tumor). It is a malignant tumor arising from epithelial cells — the cells that line the surfaces and cavities of the body and form glands. Carcinomas account for about 80–90% of all human cancers. They are further classified by cell type: adenocarcinoma (glandular epithelium), squamous cell carcinoma (squamous epithelium), transitional cell carcinoma (bladder lining), and others.",
+    "statement": "A carcinoma is a malignant cancer arising from epithelial tissue.",
+    "wowFactor": "The Greek word for cancer — 'karkinos' (crab) — was chosen by Hippocrates because the swollen veins spreading from a breast tumor resembled a crab's legs. Two thousand years later, the same metaphor became part of the zodiac: Cancer the crab is the constellation rising when summer arrives, just as the disease 'blooms' in apparent silence.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carcinoma",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What type of malignant tumor arises from epithelial tissue?",
+        "correctAnswer": "Carcinoma",
+        "distractors": ["Sarcoma", "Lymphoma", "Glioma"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'carcinoma', the root carcin/o comes from the Greek word for crab. Why did ancient physicians use this metaphor for cancer?",
+        "correctAnswer": "Tumor blood vessels spreading outward resembled crab legs",
+        "distractors": ["Tumors were thought to be caused by crabs", "Cancer was first found in coastal populations who ate crabs", "The disease moved sideways like a crab does"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "general", "oncology", "cancer"]
+  },
+  {
+    "id": "medterm_cond_sarcoma",
+    "correctAnswer": "Malignant cancer arising from connective tissue such as bone, muscle, or fat",
+    "acceptableAlternatives": ["Connective tissue cancer", "Malignant connective tissue tumor", "Cancer from mesenchymal tissue"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Malignant cancer arising from epithelial tissue",
+      "Benign tumor of connective tissue",
+      "Cancer arising from white blood cells",
+      "Cancer arising from pigment-producing cells",
+      "Malignant lymph node cancer",
+      "Benign bone-forming tumor",
+      "Malignant cancer of glandular tissue",
+      "Cancer of the blood without solid tumor"
+    ],
+    "quizQuestion": "What is a sarcoma?",
+    "explanation": "Sarcoma breaks into: sarc/o (flesh/connective tissue, from Greek 'sarx' meaning flesh) + -oma (tumor). It is a malignant tumor arising from mesenchymal (connective) tissue: bone (osteosarcoma), cartilage (chondrosarcoma), smooth muscle (leiomyosarcoma), skeletal muscle (rhabdomyosarcoma), fat (liposarcoma), and fibrous tissue (fibrosarcoma). Sarcomas represent only about 1% of adult cancers but up to 15% of pediatric cancers.",
+    "statement": "A sarcoma is a malignant cancer arising from connective tissue such as bone, muscle, or fat.",
+    "wowFactor": "Osteosarcoma (bone sarcoma) disproportionately affects adolescents during growth spurts, particularly around the knee — the metaphysis of rapidly growing long bones. The association with growth suggests rapidly dividing cells may be more vulnerable to the genetic errors that initiate cancer.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sarcoma",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What type of malignant tumor arises from connective tissue such as bone, muscle, or fat?",
+        "correctAnswer": "Sarcoma",
+        "distractors": ["Carcinoma", "Lymphoma", "Adenoma"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'sarcoma', what does the root sarc/o mean?",
+        "correctAnswer": "Flesh or connective tissue",
+        "distractors": ["Cancer or malignancy", "Blood or hematologic tissue", "Epithelial or surface tissue"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "general", "oncology", "cancer", "connective_tissue"]
+  },
+  {
+    "id": "medterm_cond_necrosis",
+    "correctAnswer": "Death of living tissue due to injury, disease, or inadequate blood supply",
+    "acceptableAlternatives": ["Tissue death", "Cell death from pathological cause", "Localized tissue death"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Programmed cell death (apoptosis)",
+      "Excessive connective tissue formation",
+      "Inflammation of living tissue without death",
+      "Abnormal cell growth without death",
+      "Deficient blood supply without tissue death",
+      "Death of the entire organism",
+      "Infection spreading through tissue planes",
+      "Calcification of tissue without death"
+    ],
+    "quizQuestion": "What is necrosis?",
+    "explanation": "Necrosis breaks into: necr/o (death, from Greek 'nekros' meaning corpse) + -osis (abnormal condition/process). It refers to the premature death of cells or tissues from factors such as injury, infection, toxins, or ischemia (inadequate blood supply). Unlike apoptosis (programmed cell death), necrosis is uncontrolled and triggers inflammation. Major morphological types include coagulative necrosis (ischemia), liquefactive necrosis (bacterial infections, brain infarcts), caseous necrosis (tuberculosis), and gangrenous necrosis.",
+    "statement": "Necrosis is the death of living tissue due to pathological causes such as injury or ischemia.",
+    "wowFactor": "Gas gangrene is a form of necrosis caused by Clostridium perfringens bacteria that produce gas as they destroy tissue. The bacteria can spread through flesh at a rate of 2 centimeters per hour — fast enough that surgeons in the pre-antibiotic era sometimes amputated limbs within hours of diagnosis just to save the patient's life.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Necrosis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes the death of tissue due to injury, infection, or loss of blood supply?",
+        "correctAnswer": "Necrosis",
+        "distractors": ["Apoptosis", "Fibrosis", "Atrophy"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'necrosis', the root necr/o comes from the Greek word for corpse. Which other medical term uses this root to describe examination of a dead body?",
+        "correctAnswer": "Necropsy (or autopsy)",
+        "distractors": ["Nephrology", "Neurology", "Neonatology"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "general", "pathology", "tissue_death"]
+  },
+  {
+    "id": "medterm_cond_septicemia",
+    "correctAnswer": "Presence of bacteria or their toxins in the bloodstream causing systemic infection",
+    "acceptableAlternatives": ["Blood poisoning", "Bacterial infection in the blood", "Systemic bloodstream infection"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Local infection confined to one tissue",
+      "Viral infection of the bloodstream",
+      "Inflammation without microbial infection",
+      "Elevated white blood cell count from sterile inflammation",
+      "Fungal infection of the nails",
+      "Tissue death from inadequate blood supply",
+      "Bacterial infection of the skin surface",
+      "Toxin in the bloodstream from a distant wound"
+    ],
+    "quizQuestion": "What is septicemia?",
+    "explanation": "Septicemia breaks into: sept/o (infection/putrefaction, from Greek 'septos' meaning rotten) + -emia (blood condition). It refers to the presence of pathogenic bacteria or their toxins in the bloodstream, causing systemic illness. Modern usage often distinguishes septicemia (bacteria in blood = bacteremia with systemic effects) from sepsis (life-threatening organ dysfunction from infection-triggered immune response). Sepsis is a medical emergency with a mortality rate of 15–30%, rising to over 40% in septic shock.",
+    "statement": "Septicemia is the presence of harmful bacteria or their toxins in the bloodstream, causing a serious systemic infection.",
+    "wowFactor": "Ignaz Semmelweis discovered in 1847 that puerperal fever (childbed fever) — a form of septicemia — was spread by doctors who went from performing autopsies to delivering babies without washing their hands. He reduced mortality from over 10% to under 2% with handwashing, yet was ridiculed by the medical community and died in an asylum before germ theory vindicated him.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sepsis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes the presence of bacteria or their toxins in the bloodstream causing systemic illness?",
+        "correctAnswer": "Septicemia",
+        "distractors": ["Bacteriuria", "Viremia", "Toxemia"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'septicemia', the root sept/o relates to decay or putrefaction. What does -emia tell you about where this condition occurs?",
+        "correctAnswer": "In the blood",
+        "distractors": ["In the tissues", "In the lymph nodes", "In the organs"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "general", "infection", "blood"]
+  },
+  {
+    "id": "medterm_cond_fibrosis",
+    "correctAnswer": "Excessive formation of fibrous connective tissue in an organ or tissue",
+    "acceptableAlternatives": ["Excessive scar tissue formation", "Abnormal fibrous tissue buildup", "Pathological fibrotic change"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Tissue death from inadequate blood supply",
+      "Inflammation of fibrous tissue",
+      "Benign tumor of fibrous tissue",
+      "Deficiency of collagen in connective tissue",
+      "Malignant cancer of fibrous tissue",
+      "Excessive fat tissue formation",
+      "Abnormal calcification of fibrous tissue",
+      "Insufficient fibrous tissue repair after injury"
+    ],
+    "quizQuestion": "What is fibrosis?",
+    "explanation": "Fibrosis breaks into: fibr/o (fiber/fibrous tissue, from Latin 'fibra' meaning fiber or thread) + -osis (abnormal condition). It refers to the excessive accumulation of fibrous connective tissue (mainly collagen) in an organ, replacing normal functional tissue — a process called fibrogenesis. Common forms include pulmonary fibrosis (lung scarring, impairing gas exchange), liver cirrhosis (liver fibrosis from alcohol, hepatitis, or fatty liver disease), and cardiac fibrosis. Fibrosis is a common endpoint of chronic organ damage.",
+    "statement": "Fibrosis is the excessive formation of fibrous connective tissue, causing scarring and impaired organ function.",
+    "wowFactor": "Idiopathic pulmonary fibrosis (IPF) turns the lungs progressively stiff and woody — the lung tissue literally becomes fibrotic scar. The lung sounds in IPF are described as 'Velcro crackles' on auscultation, resembling the sound of Velcro being pulled apart because of the stiff scarred alveoli snapping open with each breath.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fibrosis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What medical term describes the excessive formation of fibrous scar tissue in an organ?",
+        "correctAnswer": "Fibrosis",
+        "distractors": ["Fibrillation", "Fibroma", "Fibrodysplasia"]
+      },
+      {
+        "type": "etymology",
+        "question": "In 'fibrosis', what does the root fibr/o refer to?",
+        "correctAnswer": "Fiber or fibrous connective tissue",
+        "distractors": ["Fever or inflammation", "Muscle fiber activity", "Fine blood capillaries"]
+      }
+    ],
+    "tags": ["medical_terminology", "condition", "general", "pathology", "connective_tissue"]
+  }
+]

@@ -1,0 +1,1179 @@
+{
+  "id": "medterm_roots_general_01",
+  "name": "Medical Terminology — General Pathology & Medical Roots",
+  "domain": "medical",
+  "subDomain": "medical_terminology",
+  "description": "Thirty foundational Greek and Latin roots that appear across all medical specialties: pathology, oncology, pharmacology, radiology, and more. Master these roots and hundreds of medical terms become transparent.",
+  "minimumFacts": 30,
+  "targetFacts": 30,
+  "facts": [
+    {
+      "id": "medroot_gen_001",
+      "correctAnswer": "Disease",
+      "acceptableAlternatives": ["Suffering", "Illness"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 1,
+      "funScore": 8,
+      "ageGroup": "adult",
+      "distractors": [
+        "Poison",
+        "Death",
+        "Tumor",
+        "Treatment",
+        "Infection",
+        "Tissue",
+        "Cell",
+        "Cause"
+      ],
+      "quizQuestion": "What does the medical root path/o mean?",
+      "explanation": "Path/o comes from the Greek 'pathos' meaning disease or suffering. It forms the core of pathology (study of disease), pathogen (disease-causing agent), neuropathy (nerve disease), psychopathy (mental disorder), and cardiopathy (heart disease). The root appears in hundreds of compound terms across every medical specialty.",
+      "statement": "The root path/o means disease.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Pathology",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The root path/o means {___}, as in pathology (the study of ___) and pathogen (a disease-causing agent).",
+          "correctAnswer": "Disease",
+          "distractors": ["Poison", "Death", "Tissue"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_002",
+      "correctAnswer": "Tumor",
+      "acceptableAlternatives": ["Mass", "Neoplasm"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 1,
+      "funScore": 8,
+      "ageGroup": "adult",
+      "distractors": [
+        "Cancer",
+        "Cell",
+        "Disease",
+        "Growth factor",
+        "Flesh",
+        "Poison",
+        "Hard tissue",
+        "Death"
+      ],
+      "quizQuestion": "What does the medical root onc/o mean?",
+      "explanation": "Onc/o derives from the Greek 'onkos' meaning mass or bulk. It is the root of oncology (the study and treatment of tumors), oncologist (cancer specialist), oncogene (a gene that can cause tumor formation), and proto-oncogene. The root is virtually synonymous with cancer medicine in modern usage.",
+      "statement": "The root onc/o means tumor.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Oncology",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "An oncologist is a physician who specializes in treating tumors. The root onc/o means {___}.",
+          "correctAnswer": "Tumor",
+          "distractors": ["Cancer (malignant only)", "Disease", "Cell"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_003",
+      "correctAnswer": "Cell",
+      "acceptableAlternatives": ["Cells"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 1,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Tissue",
+        "Nucleus",
+        "Fiber",
+        "Membrane",
+        "Organ",
+        "Blood",
+        "Disease",
+        "Form"
+      ],
+      "quizQuestion": "What does the medical root cyt/o mean?",
+      "explanation": "Cyt/o comes from the Greek 'kytos' meaning hollow vessel or cell. It appears in cytology (study of cells), cytoplasm (material inside a cell), leukocyte (white blood cell), erythrocyte (red blood cell), cytokine (cell-signaling protein), and cytotoxic (toxic to cells). The root is foundational to all of cell biology and hematology.",
+      "statement": "The root cyt/o means cell.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cell_(biology)",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "A leukocyte is a white blood {___}. The root cyt/o means {___}.",
+          "correctAnswer": "Cell",
+          "distractors": ["Tissue", "Fiber", "Nucleus"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_004",
+      "correctAnswer": "Tissue",
+      "acceptableAlternatives": ["Body tissue"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Cell",
+        "Fiber",
+        "Skin",
+        "Organ",
+        "Bone",
+        "Muscle",
+        "Disease",
+        "Form"
+      ],
+      "quizQuestion": "What does the medical root hist/o mean?",
+      "explanation": "Hist/o comes from the Greek 'histos' meaning web or tissue. It is the root of histology (the microscopic study of tissue structure), histopathology (microscopic examination of diseased tissue), histochemistry (chemical analysis of tissues), and histiocyte (a tissue macrophage). Histology is the bridge between anatomy and cellular biology.",
+      "statement": "The root hist/o means tissue.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Histology",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Histology is the microscopic study of {___} structure. The root hist/o means {___}.",
+          "correctAnswer": "Tissue",
+          "distractors": ["Cell", "Organ", "Disease"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_005",
+      "correctAnswer": "Physician / Treatment",
+      "acceptableAlternatives": ["Physician", "Doctor", "Medical treatment", "Healer"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Disease",
+        "Drug",
+        "Surgery",
+        "Patient",
+        "Healing",
+        "Diagnosis",
+        "Poison",
+        "Hospital"
+      ],
+      "quizQuestion": "What does the medical root iatr/o mean?",
+      "explanation": "Iatr/o comes from the Greek 'iatros' meaning physician or healer. It forms iatrogenic (caused by medical treatment — literally 'physician-produced'), pediatrics (physician care of children), psychiatry (physician treatment of the mind), geriatrics (physician care of the elderly), and podiatry (foot treatment). An iatrogenic complication is one inadvertently introduced by a medical procedure.",
+      "statement": "The root iatr/o means physician or treatment.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Iatrogenesis",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "An iatrogenic disease is one caused by {___} treatment. The root iatr/o means {___}.",
+          "correctAnswer": "Physician",
+          "distractors": ["Drug", "Disease", "Surgery"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_006",
+      "correctAnswer": "Cancer",
+      "acceptableAlternatives": ["Malignancy", "Carcinoma"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 1,
+      "funScore": 8,
+      "ageGroup": "adult",
+      "distractors": [
+        "Tumor",
+        "Flesh",
+        "Disease",
+        "Cell",
+        "Death",
+        "Poison",
+        "Infection",
+        "Growth"
+      ],
+      "quizQuestion": "What does the medical root carcin/o mean?",
+      "explanation": "Carcin/o derives from the Greek 'karkinos' meaning crab (cancer was named for the crab-like spreading of tumors). It forms carcinoma (malignant epithelial tumor), carcinogen (cancer-causing substance), carcinogenesis (the process of cancer formation), and carcinoid (a slow-growing type of neuroendocrine tumor). Carcinomas are the most common category of cancers, including breast, lung, and colon cancers.",
+      "statement": "The root carcin/o means cancer.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Carcinoma",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "A carcinogen is a {___}-causing substance. The root carcin/o means {___}.",
+          "correctAnswer": "Cancer",
+          "distractors": ["Tumor", "Disease", "Poison"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_007",
+      "correctAnswer": "Flesh / Connective tissue",
+      "acceptableAlternatives": ["Flesh", "Connective tissue", "Soft tissue"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Cancer",
+        "Bone",
+        "Blood",
+        "Muscle fiber",
+        "Fat",
+        "Skin",
+        "Nerve",
+        "Cell"
+      ],
+      "quizQuestion": "What does the medical root sarc/o mean?",
+      "explanation": "Sarc/o comes from the Greek 'sarx' meaning flesh. It is the root of sarcoma (a malignant tumor of connective tissue such as bone, muscle, or fat), sarcoidosis (a granulomatous inflammatory disease affecting soft tissues), sarcomere (the contractile unit of muscle), and sarcoplasm (the cytoplasm of a muscle cell). Sarcomas are distinct from carcinomas, which arise from epithelial tissue.",
+      "statement": "The root sarc/o means flesh or connective tissue.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sarcoma",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "A sarcoma is a malignant tumor of {___} tissue. The root sarc/o means {___}.",
+          "correctAnswer": "Connective tissue",
+          "distractors": ["Epithelial", "Glandular", "Vascular"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_008",
+      "correctAnswer": "Death (of cells or tissue)",
+      "acceptableAlternatives": ["Death", "Tissue death", "Cell death"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Disease",
+        "Decay",
+        "Poison",
+        "Inflammation",
+        "Tumor",
+        "Infection",
+        "Hardness",
+        "Pus"
+      ],
+      "quizQuestion": "What does the medical root necr/o mean?",
+      "explanation": "Necr/o derives from the Greek 'nekros' meaning dead body or corpse. It forms necrosis (death of living tissue, whether from injury, infection, or infarction), necrotic (relating to tissue death), necropsy (autopsy — literally 'viewing the dead'), and necrotizing fasciitis ('flesh-eating' bacterial infection). Necrosis is pathological cell death, distinct from programmed apoptosis.",
+      "statement": "The root necr/o means death (of cells or tissue).",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Necrosis",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Necrosis is the pathological {___} of tissue. The root necr/o means {___}.",
+          "correctAnswer": "Death",
+          "distractors": ["Decay", "Inflammation", "Infection"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_009",
+      "correctAnswer": "Pus",
+      "acceptableAlternatives": ["Purulent discharge", "Purulent fluid"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Infection",
+        "Blood",
+        "Fluid",
+        "Inflammation",
+        "Death",
+        "Fever",
+        "Mucus",
+        "Edema"
+      ],
+      "quizQuestion": "What does the medical root py/o mean?",
+      "explanation": "Py/o comes from the Greek 'pyon' meaning pus. It forms pyuria (pus in the urine), pyoderma (pus-producing skin infection), pyemia (pus-forming bacteria in the bloodstream), pyogenic (pus-producing, as in pyogenic bacteria), and pyothorax (pus in the pleural cavity). Pus consists mainly of dead neutrophils, bacteria, and cellular debris from an acute inflammatory response.",
+      "statement": "The root py/o means pus.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Pus",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Pyuria is the presence of {___} in the urine. The root py/o means {___}.",
+          "correctAnswer": "Pus",
+          "distractors": ["Blood", "Infection", "Bacteria"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_010",
+      "correctAnswer": "Hard / Hardening",
+      "acceptableAlternatives": ["Hard", "Hardness", "Hardening"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Narrow",
+        "Stiff",
+        "Dense",
+        "Scar",
+        "Fiber",
+        "Stone",
+        "Calcification",
+        "Thickening"
+      ],
+      "quizQuestion": "What does the medical root scler/o mean?",
+      "explanation": "Scler/o derives from the Greek 'skleros' meaning hard. It forms sclerosis (abnormal hardening of tissue, as in multiple sclerosis or atherosclerosis), scleroderma (hardening of the skin), scleritis (inflammation of the sclera of the eye), arteriosclerosis (hardening of arteries), and nephrosclerosis (hardening of kidney tissue). The suffix -sclerosis specifically describes pathological tissue hardening.",
+      "statement": "The root scler/o means hard or hardening.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sclerosis_(medicine)",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Arteriosclerosis is the {___} of artery walls. The root scler/o means {___}.",
+          "correctAnswer": "Hardening",
+          "distractors": ["Narrowing", "Inflammation", "Calcification"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_011",
+      "correctAnswer": "Fiber / Fibrous tissue",
+      "acceptableAlternatives": ["Fiber", "Fibrous", "Thread"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Hard",
+        "Scar",
+        "Connective tissue",
+        "Muscle",
+        "Collagen",
+        "Skin",
+        "Tissue",
+        "Thread-like vessel"
+      ],
+      "quizQuestion": "What does the medical root fibr/o mean?",
+      "explanation": "Fibr/o comes from the Latin 'fibra' meaning fiber or thread. It forms fibrosis (excess deposition of fibrous connective tissue — scarring), fibroblast (cell that produces fibrous tissue), fibroma (benign fibrous tumor), fibromyalgia (pain in fibrous muscles and connective tissue), and fibrin (the protein network that forms blood clots). Fibrosis underlies cirrhosis, pulmonary fibrosis, and cardiac scarring.",
+      "statement": "The root fibr/o means fiber or fibrous tissue.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fibrosis",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Fibrosis is the excess deposition of {___} connective tissue. The root fibr/o means {___}.",
+          "correctAnswer": "Fibrous",
+          "distractors": ["Scar", "Collagen", "Dense"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_012",
+      "correctAnswer": "Cause / Origin of disease",
+      "acceptableAlternatives": ["Cause", "Causation", "Origin"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Treatment",
+        "Diagnosis",
+        "Disease",
+        "Producing",
+        "Study of",
+        "Development",
+        "Mechanism",
+        "Prognosis"
+      ],
+      "quizQuestion": "What does the medical root eti/o mean?",
+      "explanation": "Eti/o derives from the Greek 'aitia' meaning cause. Etiology (or aetiology) is the study of the causes or origins of disease — asking 'why does this disease occur?' A disease of unknown cause is called idiopathic (no identified etiology). Knowing a disease's etiology guides prevention and treatment: e.g., the etiology of scurvy is vitamin C deficiency; of rabies, the rabies virus.",
+      "statement": "The root eti/o means cause (specifically the cause of disease).",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Etiology",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Etiology is the study of the {___} of disease. The root eti/o means {___}.",
+          "correctAnswer": "Cause",
+          "distractors": ["Treatment", "Prognosis", "Mechanism"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_013",
+      "correctAnswer": "Producing / Origin / Formation",
+      "acceptableAlternatives": ["Producing", "Origin", "To produce", "Forming", "Generating"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Cause",
+        "Study of",
+        "Growing",
+        "Reproducing",
+        "Development",
+        "Beginning",
+        "Cancer-causing",
+        "Dividing"
+      ],
+      "quizQuestion": "What does the medical root gen/o mean?",
+      "explanation": "Gen/o comes from the Greek 'genes' meaning birth, origin, or producing. It appears in genesis (origin or formation), pathogenesis (the origin and development of disease), carcinogenesis (cancer formation), cytogenetics (study of chromosomes and cell inheritance), iatrogenic (produced by a physician), and endogenous (originating within the body). The root indicates the source or productive origin of something.",
+      "statement": "The root gen/o means producing, origin, or formation.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Pathogenesis",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Pathogenesis describes the {___} and development of disease. The root gen/o means {___}.",
+          "correctAnswer": "Origin",
+          "distractors": ["Cause", "Mechanism", "Treatment"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_014",
+      "correctAnswer": "Form / Shape",
+      "acceptableAlternatives": ["Form", "Shape", "Structure"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Size",
+        "Color",
+        "Pattern",
+        "Type",
+        "Tissue",
+        "Change",
+        "Appearance",
+        "Classification"
+      ],
+      "quizQuestion": "What does the medical root morph/o mean?",
+      "explanation": "Morph/o derives from the Greek 'morphe' meaning form or shape. It forms morphology (the study of shape and structure), morphogenesis (development of form during embryology), polymorphic (having many forms, as in polymorphic neutrophils), dysmorphia (abnormal form or appearance), and amorphous (without definite shape). In pathology, cell morphology under a microscope is key to diagnosis.",
+      "statement": "The root morph/o means form or shape.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Morphology_(biology)",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Morphology is the study of {___} and structure. The root morph/o means {___}.",
+          "correctAnswer": "Form",
+          "distractors": ["Color", "Size", "Tissue type"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_015",
+      "correctAnswer": "Poison",
+      "acceptableAlternatives": ["Toxin", "Toxic substance", "Venom"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 1,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Drug",
+        "Chemical",
+        "Acid",
+        "Allergen",
+        "Irritant",
+        "Infection",
+        "Radiation",
+        "Substance"
+      ],
+      "quizQuestion": "What does the medical root tox/o mean?",
+      "explanation": "Tox/o comes from the Greek 'toxikon' (from 'toxon' meaning bow, because poison was applied to arrows). It forms toxicology (study of poisons), toxin (a poison produced by a biological organism), cytotoxic (poisonous to cells), nephrotoxic (toxic to the kidneys), hepatotoxicity (liver toxicity), and antitoxin (substance that neutralizes a toxin). The root appears in -toxic, -toxin, and toxemia.",
+      "statement": "The root tox/o means poison.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Toxicology",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Toxicology is the scientific study of {___}. The root tox/o means {___}.",
+          "correctAnswer": "Poison",
+          "distractors": ["Drugs", "Chemicals", "Disease agents"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_016",
+      "correctAnswer": "Drug / Medicine",
+      "acceptableAlternatives": ["Drug", "Medicine", "Medication", "Pharmaceutical"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 1,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Poison",
+        "Treatment",
+        "Chemical",
+        "Supplement",
+        "Herb",
+        "Dose",
+        "Remedy",
+        "Substance"
+      ],
+      "quizQuestion": "What does the medical root pharmac/o mean?",
+      "explanation": "Pharmac/o derives from the Greek 'pharmakon' meaning drug or remedy (the same Greek word also meant poison — early medicines were double-edged). It forms pharmacology (scientific study of drugs and their effects), pharmacokinetics (how the body processes drugs — absorption, distribution, metabolism, excretion), pharmacodynamics (how drugs affect the body), pharmacist, and pharmacy.",
+      "statement": "The root pharmac/o means drug or medicine.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Pharmacology",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Pharmacology is the scientific study of {___}. The root pharmac/o means {___}.",
+          "correctAnswer": "Drug",
+          "distractors": ["Poison", "Treatment", "Chemistry"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_017",
+      "correctAnswer": "Treatment / Therapy",
+      "acceptableAlternatives": ["Treatment", "Therapy", "Healing", "Cure"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 1,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Disease",
+        "Drug",
+        "Physician",
+        "Diagnosis",
+        "Surgery",
+        "Prevention",
+        "Cure",
+        "Recovery"
+      ],
+      "quizQuestion": "What does the medical root therap/o mean?",
+      "explanation": "Therap/o comes from the Greek 'therapeia' meaning healing or treatment. It forms therapy (treatment of disease), therapeutics (the branch of medicine concerned with treatment), therapeutic (having healing benefit), radiotherapy (radiation treatment of cancer), chemotherapy (drug treatment of cancer), physiotherapy (physical treatment), and psychotherapy (psychological treatment).",
+      "statement": "The root therap/o means treatment or therapy.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Therapy",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Radiotherapy is the use of radiation as a {___}. The root therap/o means {___}.",
+          "correctAnswer": "Treatment",
+          "distractors": ["Diagnosis", "Prevention", "Drug"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_018",
+      "correctAnswer": "Infection / Putrefaction / Partition",
+      "acceptableAlternatives": ["Infection", "Putrefaction", "Partition", "Dividing wall", "Septum"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Fever",
+        "Pus",
+        "Inflammation",
+        "Bacteria",
+        "Death",
+        "Disease",
+        "Toxin",
+        "Decay"
+      ],
+      "quizQuestion": "What does the medical root sept/o mean?",
+      "explanation": "Sept/o has two distinct Latin/Greek origins: (1) from Latin 'septum' meaning partition or dividing wall (as in the nasal septum dividing the nasal cavity, or the cardiac septum), and (2) from Greek 'sepein' meaning to putrefy/infect, giving sepsis (systemic infection), septicemia (bacteria in the bloodstream), septic (infected), and antiseptic (against infection). Context determines which meaning applies.",
+      "statement": "The root sept/o means infection/putrefaction (sepsis) or partition/dividing wall (septum).",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sepsis",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Septicemia is bacteria in the bloodstream — a systemic {___}. The root sept/o can mean {___}.",
+          "correctAnswer": "Infection",
+          "distractors": ["Fever", "Pus", "Inflammation"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_019",
+      "correctAnswer": "Fever / Fire",
+      "acceptableAlternatives": ["Fever", "Fire", "Heat"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Infection",
+        "Inflammation",
+        "Burning pain",
+        "Heat stroke",
+        "Swelling",
+        "Redness",
+        "Poison",
+        "Pus"
+      ],
+      "quizQuestion": "What does the medical root pyr/o mean?",
+      "explanation": "Pyr/o derives from the Greek 'pyr' meaning fire. In medicine it refers to fever: pyrexia (fever — elevated body temperature), pyrogenic (fever-producing, as in pyrogens like bacterial endotoxins that trigger the hypothalamus), antipyretic (fever-reducing, e.g. aspirin and ibuprofen), pyromania (fire obsession), and pyrosis (heartburn — literally 'burning'). The root is also used in chemistry for heat-related processes.",
+      "statement": "The root pyr/o means fever or fire.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fever",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "An antipyretic is a drug that reduces {___}. The root pyr/o means {___}.",
+          "correctAnswer": "Fever",
+          "distractors": ["Inflammation", "Pain", "Infection"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_020",
+      "correctAnswer": "Pain",
+      "acceptableAlternatives": ["Pain sensation", "Painful sensation"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Numbness",
+        "Inflammation",
+        "Sensitivity",
+        "Spasm",
+        "Ache",
+        "Pressure",
+        "Tingling",
+        "Discomfort"
+      ],
+      "quizQuestion": "What does the medical root alg/o mean?",
+      "explanation": "Alg/o comes from the Greek 'algos' meaning pain. It forms neuralgia (nerve pain), myalgia (muscle pain), arthralgia (joint pain), analgesic (pain-relieving — 'without pain'), fibromyalgia (widespread musculoskeletal pain), and cephalgia (headache pain). The suffix -algia is extremely common in symptom terminology: cardialgia, otalgia, gastralgia.",
+      "statement": "The root alg/o means pain.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Pain",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Neuralgia is {___} in a nerve. The root alg/o means {___}.",
+          "correctAnswer": "Pain",
+          "distractors": ["Numbness", "Inflammation", "Spasm"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_021",
+      "correctAnswer": "Narrow / Constricted",
+      "acceptableAlternatives": ["Narrow", "Narrowing", "Constriction", "Stricture"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Hard",
+        "Blocked",
+        "Small",
+        "Closed",
+        "Compressed",
+        "Reduced",
+        "Restricted",
+        "Dilated"
+      ],
+      "quizQuestion": "What does the medical root sten/o mean?",
+      "explanation": "Sten/o comes from the Greek 'stenos' meaning narrow. It forms stenosis (abnormal narrowing of a passage, vessel, or orifice), aortic stenosis (narrowing of the aortic valve), pyloric stenosis (narrowing of the stomach outlet), carotid stenosis (narrowing of carotid artery), and bronchostenosis (narrowing of a bronchus). Stenosis is one of the most common pathological processes in cardiovascular medicine.",
+      "statement": "The root sten/o means narrow or constricted.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Stenosis",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Aortic stenosis is a {___} of the aortic valve. The root sten/o means {___}.",
+          "correctAnswer": "Narrowing",
+          "distractors": ["Blockage", "Hardening", "Enlargement"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_022",
+      "correctAnswer": "Sound / Ultrasound",
+      "acceptableAlternatives": ["Sound", "Ultrasound waves"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Light",
+        "Radiation",
+        "Vibration",
+        "Wave",
+        "Frequency",
+        "Echo",
+        "Signal",
+        "Pulse"
+      ],
+      "quizQuestion": "What does the medical root son/o mean?",
+      "explanation": "Son/o derives from the Latin 'sonus' meaning sound. In medicine it specifically relates to ultrasound: sonography (ultrasound imaging — using high-frequency sound waves to visualize internal structures), sonogram (the image produced by ultrasound), sonographer (ultrasound technician), and infrasound/ultrasound (below/above audible frequency). Sonography is the primary imaging method for obstetrics, cardiac (echocardiography), and abdominal studies.",
+      "statement": "The root son/o means sound, especially as used in ultrasound imaging.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Medical_ultrasound",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Sonography uses high-frequency {___} waves to produce images. The root son/o means {___}.",
+          "correctAnswer": "Sound",
+          "distractors": ["Light", "Radiation", "Magnetic"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_023",
+      "correctAnswer": "Radiation / X-rays",
+      "acceptableAlternatives": ["Radiation", "X-ray", "Radiant energy", "Radiology"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 1,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Light",
+        "Sound",
+        "Electricity",
+        "Magnetism",
+        "Heat",
+        "Energy",
+        "Wavelength",
+        "Scanning"
+      ],
+      "quizQuestion": "What does the medical root radi/o mean?",
+      "explanation": "Radi/o derives from the Latin 'radius' meaning ray. In medicine it relates to radiation and X-ray imaging: radiology (the specialty using radiation and imaging for diagnosis), radiograph (X-ray image), radiologist, radiotherapy (radiation cancer treatment), radioactive (emitting radiation), and radiolucent/radiopaque (allowing/blocking X-rays to pass through). The root also appears in radio waves (electromagnetic radiation).",
+      "statement": "The root radi/o means radiation or X-rays.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Radiology",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Radiology is the medical specialty using {___} and imaging. The root radi/o means {___}.",
+          "correctAnswer": "Radiation",
+          "distractors": ["Sound", "Electricity", "Magnetism"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_024",
+      "correctAnswer": "Cut / Section / Slice",
+      "acceptableAlternatives": ["Cut", "Section", "Incision", "Slice", "Cutting"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "adult",
+      "distractors": [
+        "Layer",
+        "Scan",
+        "Image",
+        "View",
+        "Plane",
+        "Depth",
+        "Volume",
+        "Anatomy"
+      ],
+      "quizQuestion": "What does the medical root tom/o mean?",
+      "explanation": "Tom/o derives from the Greek 'temnein' meaning to cut. It forms tomography (imaging by sectioning — creating cross-sectional images), computed tomography (CT scan — computerized X-ray cross-sections), positron emission tomography (PET scan), dermatome (skin segment 'cut' by a spinal nerve), microtome (instrument that cuts tissue sections for microscopy), and anatomy (literally 'cutting up' — dissection). The root captures the idea of looking inside by cutting through.",
+      "statement": "The root tom/o means cut or section.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tomography",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "A CT scan creates cross-sectional images by 'cutting' through the body with X-rays. The root tom/o means {___}.",
+          "correctAnswer": "Cut",
+          "distractors": ["Layer", "Scan", "Image"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_025",
+      "correctAnswer": "Electricity",
+      "acceptableAlternatives": ["Electrical", "Electrical activity", "Electric current"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 1,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Wave",
+        "Signal",
+        "Energy",
+        "Nerve impulse",
+        "Magnetic field",
+        "Current",
+        "Charge",
+        "Radiation"
+      ],
+      "quizQuestion": "What does the medical root electr/o mean?",
+      "explanation": "Electr/o comes from the Greek 'elektron' (amber, which produces static electricity when rubbed). In medicine it refers to electrical activity in the body: electrocardiogram (ECG/EKG — electrical tracing of the heart), electroencephalogram (EEG — brain electrical activity), electromyography (EMG — muscle electrical activity), electrolyte (ion that carries electrical charge), electroconvulsive therapy (ECT), and electrophoresis (separation by electrical charge).",
+      "statement": "The root electr/o means electricity.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Electrophysiology",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "An electrocardiogram records the {___} activity of the heart. The root electr/o means {___}.",
+          "correctAnswer": "Electrical",
+          "distractors": ["Mechanical", "Chemical", "Magnetic"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_026",
+      "correctAnswer": "Tissue (variant form)",
+      "acceptableAlternatives": ["Tissue", "Body tissue", "Histiocyte-related tissue"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 3,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Cell",
+        "Fiber",
+        "Organ",
+        "Membrane",
+        "Skin",
+        "Connective tissue specific",
+        "Bone marrow",
+        "Gland"
+      ],
+      "quizQuestion": "What does the medical root histi/o mean, and how does it differ from hist/o?",
+      "explanation": "Histi/o is an alternative combining form of hist/o, both meaning tissue (from Greek 'histos'). The histi/o form is most prominently associated with histiocyte (a tissue macrophage — a large phagocytic cell resident in connective tissue), histiocytosis (abnormal accumulation of histiocytes, as in Langerhans cell histiocytosis), and histiocytoma (a tumor of histiocytes). The two forms (hist/o and histi/o) are essentially interchangeable but histi/o specifically clusters around macrophage-related terms.",
+      "statement": "The root histi/o means tissue, and is an alternate form of hist/o most often seen in terms related to tissue macrophages (histiocytes).",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Histiocyte",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "A histiocyte is a large phagocytic cell resident in {___}. The root histi/o means {___}.",
+          "correctAnswer": "Tissue",
+          "distractors": ["Blood", "Bone marrow", "Lymph nodes"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_027",
+      "correctAnswer": "Fever (variant form)",
+      "acceptableAlternatives": ["Fever", "Pyrexia", "Elevated temperature"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 3,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Fire",
+        "Heat stroke",
+        "Inflammation",
+        "Infection",
+        "Sweating",
+        "Burning",
+        "Chills",
+        "Hypothermia"
+      ],
+      "quizQuestion": "What does the medical root pyret/o mean, and how does it relate to pyr/o?",
+      "explanation": "Pyret/o is a variant combining form meaning fever, derived from the Greek 'pyretos' (fever), itself from 'pyr' (fire). It is specifically used in antipyretic (a drug that reduces fever — 'against fever'), pyrexia (fever), and febrile/afebrile states. While pyr/o is the more common combining form for fire and fever, pyret/o appears specifically in terms where fever as a clinical phenomenon is emphasized. Both roots share the fire metaphor for the heat of a febrile state.",
+      "statement": "The root pyret/o means fever, and is a variant of pyr/o specifically emphasizing fever as a clinical state.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fever",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "An antipyretic drug works against {___}. The root pyret/o means {___}.",
+          "correctAnswer": "Fever",
+          "distractors": ["Infection", "Inflammation", "Pain"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_028",
+      "correctAnswer": "Pain sensitivity / Pain perception",
+      "acceptableAlternatives": ["Pain", "Pain sensation", "Sensitivity to pain", "Pain perception"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 3,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Numbness",
+        "Nerve impulse",
+        "Inflammation",
+        "Touch sensation",
+        "Temperature",
+        "Pressure",
+        "Reflex",
+        "Anesthesia"
+      ],
+      "quizQuestion": "What does the medical root algesi/o mean, and how does it differ from alg/o?",
+      "explanation": "Algesi/o (from Greek 'algesis') emphasizes the perception or sensitivity to pain rather than pain itself. It appears in analgesia (absence of pain sensation — 'without pain perception'), hyperalgesia (increased sensitivity to pain — a pathological state seen after nerve injury or opioid use), hypoalgesia (reduced pain sensitivity), and algesiometer (instrument measuring pain threshold). While alg/o denotes pain in compound terms (-algia suffix), algesi/o specifically focuses on the sensory and perceptual dimension of pain.",
+      "statement": "The root algesi/o means pain sensitivity or pain perception, emphasizing the sensory dimension of pain.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hyperalgesia",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Hyperalgesia is increased {___} to pain stimuli. The root algesi/o means {___}.",
+          "correctAnswer": "Sensitivity",
+          "distractors": ["Response", "Tolerance", "Inflammation"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_029",
+      "correctAnswer": "Sound / Echo / Reflected sound",
+      "acceptableAlternatives": ["Sound", "Echo", "Reflected sound", "Sound reflection"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Ultrasound",
+        "Signal",
+        "Wave",
+        "Vibration",
+        "Pulse",
+        "Light reflection",
+        "Resonance",
+        "Frequency"
+      ],
+      "quizQuestion": "What does the medical root ech/o mean?",
+      "explanation": "Ech/o comes from the Greek 'echo' meaning sound or reflected sound (from the mythological nymph Echo who could only repeat sounds). In medicine: echocardiography (ultrasound imaging of the heart using reflected sound waves — an 'echo'), echolalia (automatic repetition of words heard, as in autism or Tourette's), echoencephalography (ultrasound brain imaging), and echo-free (anechoic — producing no sound reflection on ultrasound, as in a fluid-filled cyst). The 'echo' in cardiac ultrasound is the reflected pulse returning to the transducer.",
+      "statement": "The root ech/o means sound or reflected sound, as heard in echocardiography.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Echocardiography",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Echocardiography images the heart using reflected {___} waves. The root ech/o means {___}.",
+          "correctAnswer": "Sound",
+          "distractors": ["Light", "Radiation", "Electricity"]
+        }
+      ]
+    },
+    {
+      "id": "medroot_gen_030",
+      "correctAnswer": "Poison (variant form)",
+      "acceptableAlternatives": ["Poison", "Toxic substance", "Toxin"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "root_meanings",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Drug",
+        "Chemical agent",
+        "Allergen",
+        "Irritant",
+        "Venom only",
+        "Bacterial product",
+        "Radiation",
+        "Acid"
+      ],
+      "quizQuestion": "What does the medical root toxic/o mean, and how does it relate to tox/o?",
+      "explanation": "Toxic/o is an extended combining form of tox/o, both deriving from Greek 'toxikon' (poison for arrows). Toxic/o appears in: toxicology (the science of poisons — their sources, properties, effects, and antidotes), toxicosis (any diseased state caused by poisoning, e.g. thyrotoxicosis = poisoning by excess thyroid hormone), toxicodermia (skin condition caused by a toxin), and pharmacotoxicology (study of drug toxicity). The two forms (tox/o and toxic/o) are largely interchangeable, with toxic/o appearing more in the formal study of poisons.",
+      "statement": "The root toxic/o means poison, and is an extended form of tox/o used particularly in the scientific study of poisons (toxicology).",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Toxicology",
+      "volatile": false,
+      "categoryL1": "medical",
+      "categoryL2": "medical_terminology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Toxicology is the scientific study of {___}. The root toxic/o means {___}.",
+          "correctAnswer": "Poison",
+          "distractors": ["Drugs", "Disease agents", "Allergens"]
+        }
+      ]
+    }
+  ],
+  "answerTypePools": [
+    {
+      "id": "root_meanings",
+      "label": "Medical Root Word Meanings",
+      "answerFormat": "term",
+      "factIds": [
+        "medroot_gen_001",
+        "medroot_gen_002",
+        "medroot_gen_003",
+        "medroot_gen_004",
+        "medroot_gen_005",
+        "medroot_gen_006",
+        "medroot_gen_007",
+        "medroot_gen_008",
+        "medroot_gen_009",
+        "medroot_gen_010",
+        "medroot_gen_011",
+        "medroot_gen_012",
+        "medroot_gen_013",
+        "medroot_gen_014",
+        "medroot_gen_015",
+        "medroot_gen_016",
+        "medroot_gen_017",
+        "medroot_gen_018",
+        "medroot_gen_019",
+        "medroot_gen_020",
+        "medroot_gen_021",
+        "medroot_gen_022",
+        "medroot_gen_023",
+        "medroot_gen_024",
+        "medroot_gen_025",
+        "medroot_gen_026",
+        "medroot_gen_027",
+        "medroot_gen_028",
+        "medroot_gen_029",
+        "medroot_gen_030"
+      ],
+      "minimumSize": 5
+    }
+  ],
+  "synonymGroups": [],
+  "difficultyTiers": [
+    {
+      "tier": "easy",
+      "factIds": [
+        "medroot_gen_001",
+        "medroot_gen_002",
+        "medroot_gen_003",
+        "medroot_gen_006",
+        "medroot_gen_016",
+        "medroot_gen_017",
+        "medroot_gen_023",
+        "medroot_gen_025"
+      ]
+    },
+    {
+      "tier": "medium",
+      "factIds": [
+        "medroot_gen_004",
+        "medroot_gen_005",
+        "medroot_gen_007",
+        "medroot_gen_008",
+        "medroot_gen_009",
+        "medroot_gen_010",
+        "medroot_gen_011",
+        "medroot_gen_013",
+        "medroot_gen_014",
+        "medroot_gen_015",
+        "medroot_gen_019",
+        "medroot_gen_020",
+        "medroot_gen_021",
+        "medroot_gen_022",
+        "medroot_gen_024",
+        "medroot_gen_029",
+        "medroot_gen_030"
+      ]
+    },
+    {
+      "tier": "hard",
+      "factIds": [
+        "medroot_gen_012",
+        "medroot_gen_018",
+        "medroot_gen_026",
+        "medroot_gen_027",
+        "medroot_gen_028"
+      ]
+    }
+  ]
+}

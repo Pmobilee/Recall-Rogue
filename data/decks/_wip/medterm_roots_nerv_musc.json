@@ -1,0 +1,1262 @@
+[
+  {
+    "id": "medterm_root_neuro",
+    "correctAnswer": "nerve",
+    "acceptableAlternatives": ["nerves", "nerve tissue"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "bone",
+      "muscle",
+      "blood vessel",
+      "brain",
+      "joint",
+      "skin",
+      "kidney",
+      "heart"
+    ],
+    "quizQuestion": "What does the medical root 'neur/o' mean?",
+    "explanation": "Neur/o comes from the Greek 'neuron' meaning nerve. It appears in: neurology (study of the nervous system), neuralgia (nerve pain), neuropathy (nerve disease), neurotransmitter (chemical that carries signals across nerve synapses), and neuroma (nerve tumor). Recognizing this root unlocks hundreds of clinical terms.",
+    "statement": "The medical root 'neur/o' means nerve.",
+    "wowFactor": "The human body contains roughly 86 billion neurons — and even more glial support cells. If you lined up all the nerve fibers in one body, they would stretch about 150,000 km — nearly halfway to the Moon.",
+    "visualDescription": "Pixel art of a branching neuron with its axon and dendrites glowing electric blue",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A patient is diagnosed with 'neuralgia.' Based on the root 'neur/o,' this condition involves pain in which structure?",
+        "correctAnswer": "nerve",
+        "distractors": ["muscle", "bone", "joint"]
+      },
+      {
+        "quizQuestion": "Neurology is the medical specialty that studies and treats diseases of the ___.",
+        "correctAnswer": "nerves (nervous system)",
+        "distractors": ["muscles", "bones", "kidneys"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_encephalo",
+    "correctAnswer": "brain",
+    "acceptableAlternatives": ["the brain"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "spinal cord",
+      "skull",
+      "nerve",
+      "meninges",
+      "cerebellum",
+      "muscle",
+      "blood vessel",
+      "gland"
+    ],
+    "quizQuestion": "What does the medical root 'encephal/o' mean?",
+    "explanation": "Encephal/o comes from Greek 'enkephalos' meaning brain (en = within + kephale = head). It appears in: encephalitis (inflammation of the brain), encephalopathy (brain disease or disorder), encephalogram (recording of brain activity), and anencephaly (born without a brain). It refers to the whole brain, not just one region.",
+    "statement": "The medical root 'encephal/o' means brain.",
+    "wowFactor": "Encephalitis lethargica — the 'sleeping sickness' epidemic of 1917–1928 — struck over 500,000 people worldwide. Survivors sometimes remained in a frozen, sleep-like state for decades before being 'awakened' by L-DOPA in the 1960s, the subject of Oliver Sacks' book Awakenings.",
+    "visualDescription": "Pixel art of a glowing human brain viewed from above, with visible gyri and sulci",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Encephalitis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Encephalitis is inflammation of which organ?",
+        "correctAnswer": "brain",
+        "distractors": ["spinal cord", "meninges", "skull"]
+      },
+      {
+        "quizQuestion": "The medical prefix 'encephal/o' originates from the Greek for 'within the ___.'",
+        "correctAnswer": "head (brain)",
+        "distractors": ["spine", "chest", "abdomen"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_cerebro",
+    "correctAnswer": "cerebrum",
+    "acceptableAlternatives": ["the cerebrum", "largest part of brain"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "cerebellum",
+      "brainstem",
+      "spinal cord",
+      "meninges",
+      "nerve",
+      "skull",
+      "thalamus",
+      "hippocampus"
+    ],
+    "quizQuestion": "What does the medical root 'cerebr/o' mean?",
+    "explanation": "Cerebr/o comes from Latin 'cerebrum' meaning brain, but specifically refers to the cerebrum — the largest part of the brain containing the cerebral cortex. It appears in: cerebral (relating to the cerebrum), cerebrovascular (pertaining to blood vessels of the cerebrum), cerebral palsy (a movement disorder from cerebral damage), and cerebrospinal fluid (fluid surrounding the brain and spinal cord).",
+    "statement": "The medical root 'cerebr/o' means cerebrum (the largest division of the brain).",
+    "wowFactor": "The cerebral cortex, if unfolded completely, would cover an area of about 2,500 cm² — roughly the size of a pillowcase. Its heavy folding (gyri and sulci) is what allows that much cortex to fit inside the skull.",
+    "visualDescription": "Pixel art sagittal brain slice showing the large, folded cerebrum in pink above the brainstem",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cerebrum",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A 'cerebrovascular accident' (CVA) involves the blood vessels of which brain structure?",
+        "correctAnswer": "cerebrum",
+        "distractors": ["cerebellum", "brainstem", "spinal cord"]
+      },
+      {
+        "quizQuestion": "Cerebral palsy is a condition affecting movement caused by damage to the ___ during early development.",
+        "correctAnswer": "cerebrum",
+        "distractors": ["spinal cord", "brainstem", "peripheral nerves"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_cerebello",
+    "correctAnswer": "cerebellum",
+    "acceptableAlternatives": ["the cerebellum", "little brain"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "cerebrum",
+      "brainstem",
+      "spinal cord",
+      "meninges",
+      "thalamus",
+      "nerve",
+      "medulla oblongata",
+      "hippocampus"
+    ],
+    "quizQuestion": "What does the medical root 'cerebell/o' mean?",
+    "explanation": "Cerebell/o comes from Latin 'cerebellum' meaning 'little brain' (a diminutive of cerebrum). It appears in: cerebellar (relating to the cerebellum), cerebellar ataxia (loss of muscle coordination from cerebellar damage), cerebellopontine angle (anatomical region between the cerebellum and pons), and cerebellitis (inflammation of the cerebellum). The cerebellum coordinates movement and balance.",
+    "statement": "The medical root 'cerebell/o' means cerebellum (the 'little brain' at the back of the skull that coordinates movement).",
+    "wowFactor": "The cerebellum contains more than half of all the neurons in the entire brain — about 50–80 billion — packed into a structure that is only about 10% of the brain's total volume.",
+    "visualDescription": "Pixel art of the posterior brain with the cerebellum highlighted in teal, showing its distinctive folded 'cauliflower' texture",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cerebellum",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Cerebellar ataxia refers to loss of coordination caused by dysfunction of which brain structure?",
+        "correctAnswer": "cerebellum",
+        "distractors": ["cerebrum", "brainstem", "thalamus"]
+      },
+      {
+        "quizQuestion": "The root 'cerebell/o' literally means 'little ___' in Latin.",
+        "correctAnswer": "brain",
+        "distractors": ["nerve", "skull", "spine"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_meningo",
+    "correctAnswer": "meninges",
+    "acceptableAlternatives": ["meninx", "protective brain membranes", "membrane covering the brain"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "brain",
+      "spinal cord",
+      "skull",
+      "nerve",
+      "cerebellum",
+      "ventricle",
+      "blood vessel",
+      "gland"
+    ],
+    "quizQuestion": "What does the medical root 'mening/o' mean?",
+    "explanation": "Mening/o comes from Greek 'meninx' meaning membrane, specifically the three protective membranes (dura mater, arachnoid mater, pia mater) surrounding the brain and spinal cord. It appears in: meningitis (inflammation of the meninges), meningioma (tumor of the meninges), meningocele (herniation of the meninges), and meningoencephalitis (inflammation of both meninges and brain).",
+    "statement": "The medical root 'mening/o' means meninges — the three protective membranes covering the brain and spinal cord.",
+    "wowFactor": "Bacterial meningitis can kill within 24 hours. The characteristic non-blanching purpuric rash of meningococcal meningitis — caused by blood leaking under the skin — is a medical emergency: if pressing a glass against the rash doesn't make it disappear, it is a sign of septicemia.",
+    "visualDescription": "Pixel art cross-section of the skull showing three layered membranes (dura, arachnoid, pia) wrapping the brain in blue, gray, and pink",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Meninges",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Meningitis is an inflammation of the ___ surrounding the brain and spinal cord.",
+        "correctAnswer": "meninges",
+        "distractors": ["neurons", "ventricles", "skull bones"]
+      },
+      {
+        "quizQuestion": "A meningioma is a tumor arising from which structure?",
+        "correctAnswer": "meninges",
+        "distractors": ["brain tissue", "skull bone", "cranial nerves"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_myelo",
+    "correctAnswer": "spinal cord or bone marrow",
+    "acceptableAlternatives": ["spinal cord", "bone marrow", "spinal cord and bone marrow"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "nerve",
+      "brain",
+      "muscle",
+      "blood vessel",
+      "meninges",
+      "cartilage",
+      "tendon",
+      "lymph node"
+    ],
+    "quizQuestion": "What does the medical root 'myel/o' mean? (Caution: it has two distinct meanings.)",
+    "explanation": "Myel/o comes from Greek 'myelos' meaning marrow. It has two distinct clinical meanings: (1) spinal cord — as in myelopathy (spinal cord disease), myelitis (spinal cord inflammation), and amyotrophic lateral sclerosis (ALS) which involves spinal cord motor neurons; and (2) bone marrow — as in myeloma (bone marrow cancer), myeloid cells (produced in bone marrow), and myelofibrosis (scarring of bone marrow). Context determines which meaning applies.",
+    "statement": "The medical root 'myel/o' has a dual meaning: it refers to the spinal cord in neurological terms and to bone marrow in hematological terms.",
+    "wowFactor": "Multiple myeloma — a bone marrow cancer — was one of the first cancers to be successfully treated with targeted therapy. The drug thalidomide, once infamous for causing birth defects in the 1950s, was repurposed in the 1990s and became one of the first effective myeloma treatments.",
+    "visualDescription": "Pixel art split panel: left shows a cross-section of the spinal cord in blue, right shows red bone marrow inside a femur",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Myelin",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Multiple myeloma is a cancer originating in which tissue, reflected by the root 'myel/o'?",
+        "correctAnswer": "bone marrow",
+        "distractors": ["spinal cord", "nerve tissue", "muscle"]
+      },
+      {
+        "quizQuestion": "Myelopathy refers to a disease or compression of which structure?",
+        "correctAnswer": "spinal cord",
+        "distractors": ["bone marrow", "peripheral nerves", "meninges"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_glio",
+    "correctAnswer": "glial cells",
+    "acceptableAlternatives": ["glia", "neuroglia", "glue cells", "support cells of the nervous system"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "nerve",
+      "brain",
+      "muscle",
+      "blood",
+      "meninges",
+      "spinal cord",
+      "bone marrow",
+      "lymph"
+    ],
+    "quizQuestion": "What does the medical root 'gli/o' mean?",
+    "explanation": "Gli/o comes from Greek 'glia' meaning glue, referring to the glial cells (neuroglia) that support, nourish, and protect neurons. It appears in: glioma (tumor of glial cells), glioblastoma (most aggressive brain tumor, a grade IV glioma), gliosis (scarring of brain tissue by reactive glial cells), and astroglia (star-shaped glial cells). Glial cells outnumber neurons approximately 10:1.",
+    "statement": "The medical root 'gli/o' means glial cells — the non-neuronal support and structural cells of the nervous system.",
+    "wowFactor": "Glioblastoma multiforme (GBM) is the most aggressive primary brain tumor, with a median survival of about 15 months even with surgery, radiation, and chemotherapy. Senator John McCain and Senator Ted Kennedy both died from GBM.",
+    "visualDescription": "Pixel art of star-shaped astrocytes (glial cells) surrounding a neuron in the brain tissue",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Glioma",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A glioblastoma is an aggressive tumor that originates in which type of cell?",
+        "correctAnswer": "glial cells",
+        "distractors": ["neurons", "meningeal cells", "blood vessel cells"]
+      },
+      {
+        "quizQuestion": "The root 'gli/o' derives from the Greek word for 'glue,' referring to cells that ___ the nervous system.",
+        "correctAnswer": "support (hold together)",
+        "distractors": ["conduct signals through", "protect from infection only", "form the outer covering of"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_psycho",
+    "correctAnswer": "mind",
+    "acceptableAlternatives": ["the mind", "mental processes", "psyche"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "brain",
+      "nerve",
+      "behavior",
+      "emotion",
+      "memory",
+      "consciousness",
+      "skull",
+      "spinal cord"
+    ],
+    "quizQuestion": "What does the medical root 'psych/o' mean?",
+    "explanation": "Psych/o comes from Greek 'psyche' meaning mind or soul. It appears in: psychology (study of the mind and behavior), psychiatry (medical treatment of mental disorders), psychosis (severe mental disorder losing touch with reality), psychotherapy (treating mental illness through conversation), and psychosomatic (physical symptoms caused by mental/emotional factors). It is one of the most widely used roots in medicine and social sciences.",
+    "statement": "The medical root 'psych/o' means mind.",
+    "wowFactor": "The word 'psyche' in Greek mythology was also the name of the goddess of the soul — a mortal woman so beautiful that Aphrodite became jealous. The butterfly was sacred to Psyche, which is why the word for butterfly in Greek is also 'psyche' and why butterflies are often used as symbols of the soul.",
+    "visualDescription": "Pixel art of a human silhouette with a glowing brain, surrounded by floating thought bubbles and a small butterfly",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Psychology",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Psychiatry is the medical specialty that treats disorders of the ___.",
+        "correctAnswer": "mind",
+        "distractors": ["brain (physical only)", "nerves (peripheral)", "skull"]
+      },
+      {
+        "quizQuestion": "A psychosomatic illness is one where ___ factors produce physical symptoms.",
+        "correctAnswer": "mental/emotional (mind)",
+        "distractors": ["genetic", "infectious", "traumatic"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_somno",
+    "correctAnswer": "sleep",
+    "acceptableAlternatives": ["sleeping"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "stupor",
+      "numbness",
+      "unconsciousness",
+      "mind",
+      "dream",
+      "sedation",
+      "nerve",
+      "sensation"
+    ],
+    "quizQuestion": "What does the medical root 'somn/o' mean?",
+    "explanation": "Somn/o comes from Latin 'somnus' meaning sleep. It appears in: somnolence (excessive sleepiness or drowsiness), somnambulism (sleepwalking — walking while asleep), insomnia (inability to sleep; in = not + somnia), somniferous (inducing sleep), and polysomnography (comprehensive sleep study recording multiple body parameters). The Roman god of sleep was Somnus.",
+    "statement": "The medical root 'somn/o' means sleep.",
+    "wowFactor": "Fatal Familial Insomnia is a prion disease — caused by a misfolded protein, not a germ — that makes it physically impossible to sleep. Sufferers experience progressively worsening insomnia, hallucinations, dementia, and death, typically within 7–18 months. There is no treatment.",
+    "visualDescription": "Pixel art of a person sleeping in bed with crescent moons and neural wave patterns drifting above",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sleep",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Somnambulism is the medical term for which sleep-related behavior?",
+        "correctAnswer": "sleepwalking",
+        "distractors": ["sleep talking", "sleep paralysis", "narcolepsy"]
+      },
+      {
+        "quizQuestion": "The root 'somn/o' appears in 'insomnia.' The prefix 'in-' meaning 'not' tells us insomnia means inability to ___.",
+        "correctAnswer": "sleep",
+        "distractors": ["breathe", "feel sensation", "move"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_narco",
+    "correctAnswer": "stupor or numbness",
+    "acceptableAlternatives": ["stupor", "numbness", "deep sleep", "narcosis"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "sleep",
+      "mind",
+      "nerve",
+      "pain",
+      "sedation",
+      "unconsciousness",
+      "sensation",
+      "paralysis"
+    ],
+    "quizQuestion": "What does the medical root 'narc/o' mean?",
+    "explanation": "Narc/o comes from Greek 'narke' meaning numbness or stupor. It appears in: narcotic (substance causing stupor or sleep, particularly opioids), narcosis (drug-induced state of stupor), narcolepsy (sudden uncontrollable attacks of sleep — narco + lepsy from 'seizure'), and narcotize (to render insensible). The root emphasizes the dulling of sensation and consciousness rather than ordinary sleep.",
+    "statement": "The medical root 'narc/o' means stupor or numbness (a state of unconsciousness or dulled sensation).",
+    "wowFactor": "The word 'narcissus' — the flower — shares the same Greek root 'narke' because the plant's scent was believed by the ancients to cause a numbing stupor. Narcissus in myth became transfixed (numbed) by his own reflection. Narcissus flowers do contain toxic alkaloids.",
+    "visualDescription": "Pixel art of a drooping poppy flower beside a brain with its activity waves flattened and dim",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Narcotic",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Narcolepsy is a neurological disorder characterized by sudden attacks of what, as suggested by the root 'narc/o'?",
+        "correctAnswer": "sleep (stupor)",
+        "distractors": ["pain", "paralysis", "hallucination"]
+      },
+      {
+        "quizQuestion": "The root 'narc/o' in 'narcotic' indicates these substances primarily cause ___ or stupor.",
+        "correctAnswer": "numbness",
+        "distractors": ["excitement", "hallucination", "muscle contraction"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_esthesio",
+    "correctAnswer": "sensation",
+    "acceptableAlternatives": ["feeling", "sense", "sensory perception"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "movement",
+      "pain",
+      "nerve",
+      "muscle",
+      "consciousness",
+      "speech",
+      "smell",
+      "touch"
+    ],
+    "quizQuestion": "What does the medical root 'esthesi/o' mean?",
+    "explanation": "Esthesi/o comes from Greek 'aisthesis' meaning sensation or feeling. It appears in: anesthesia (without sensation — the state of not feeling pain during surgery; an = without), hyperesthesia (abnormally increased sensitivity to sensory stimuli), paresthesia (abnormal sensation such as tingling or 'pins and needles'; para = beside/abnormal), and synesthesia (a perceptual phenomenon where stimulating one sense triggers another, e.g., 'seeing' sounds).",
+    "statement": "The medical root 'esthesi/o' means sensation.",
+    "wowFactor": "Synesthesia — where stimulating one sense involuntarily triggers another — affects about 4% of people. Some musicians experience 'chromesthesia,' seeing colors when hearing specific musical notes. Composers Rimsky-Korsakov, Scriabin, and Duke Ellington all reportedly had this form of synesthesia.",
+    "visualDescription": "Pixel art of a hand touching a surface with sensory waves radiating outward in multiple colors representing different sensory modalities",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Anesthesia",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Anesthesia means 'without ___,' using the root 'esthesi/o' with the prefix 'an-' meaning not.",
+        "correctAnswer": "sensation",
+        "distractors": ["movement", "consciousness", "pain (specifically)"]
+      },
+      {
+        "quizQuestion": "Paresthesia (the 'pins and needles' sensation) involves an abnormal form of what, per the root 'esthesi/o'?",
+        "correctAnswer": "sensation",
+        "distractors": ["movement", "reflexes", "muscle tone"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_phaso",
+    "correctAnswer": "speech",
+    "acceptableAlternatives": ["language", "speech production", "spoken language"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "hearing",
+      "voice",
+      "mind",
+      "nerve",
+      "sensation",
+      "movement",
+      "swallowing",
+      "writing"
+    ],
+    "quizQuestion": "What does the medical root 'phas/o' mean?",
+    "explanation": "Phas/o comes from Greek 'phasis' meaning speech or utterance. It appears in: aphasia (loss of ability to speak or understand speech; a = without), dysphasia (difficulty speaking; dys = bad/difficult), paraphasia (substituting wrong words while speaking), and polyphasia (excessive or incoherent talking). Aphasia most commonly results from stroke damaging Broca's area (expressive aphasia) or Wernicke's area (receptive aphasia) in the dominant hemisphere.",
+    "statement": "The medical root 'phas/o' means speech.",
+    "wowFactor": "Broca's aphasia patients know exactly what they want to say — they simply cannot produce the words. Wernicke's aphasia patients can speak fluently and at length — but produce meaningless 'word salad' they do not realize is nonsensical. The two disorders were named after the neurologists Paul Broca (1861) and Carl Wernicke (1874) who first described them.",
+    "visualDescription": "Pixel art of a brain profile with speech bubbles emanating from Broca's area, one intact and one crossed out to show aphasia",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Aphasia",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Aphasia is a condition characterized by impaired ___, using the root 'phas/o' and the prefix 'a-' meaning without.",
+        "correctAnswer": "speech",
+        "distractors": ["hearing", "vision", "movement"]
+      },
+      {
+        "quizQuestion": "Dysphasia refers to difficulty with ___, from the root 'phas/o' and prefix 'dys-' meaning difficult.",
+        "correctAnswer": "speech",
+        "distractors": ["swallowing", "breathing", "walking"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_taxo",
+    "correctAnswer": "order or coordination",
+    "acceptableAlternatives": ["coordination", "order", "arrangement", "muscular coordination"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "movement",
+      "balance",
+      "nerve",
+      "muscle",
+      "sensation",
+      "rhythm",
+      "strength",
+      "reflex"
+    ],
+    "quizQuestion": "What does the medical root 'tax/o' mean?",
+    "explanation": "Tax/o comes from Greek 'taxis' meaning arrangement, order, or coordination. In medicine it appears in: ataxia (lack of coordination of voluntary movements; a = without + taxis), bradytaxia (slow, uncoordinated movement), and syntaxis (arrangement/articulation). In biology it gives 'taxonomy' (the classification/ordering of living things). Ataxia is a key neurological sign indicating cerebellar or sensory pathway dysfunction.",
+    "statement": "The medical root 'tax/o' means order or coordination (specifically of muscle movements).",
+    "wowFactor": "The Romberg test — standing with feet together and eyes closed — specifically tests sensory ataxia. If you fall with eyes closed but are steady with eyes open, your cerebellum is working but your proprioceptive (position sense) pathways are damaged. Neurologists have used this test since 1853.",
+    "visualDescription": "Pixel art of a human figure walking a straight line with coordination arrows, contrasted with a figure stumbling showing ataxia",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ataxia",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Ataxia means loss of ___ of voluntary movements, from 'tax/o' with prefix 'a-' meaning without.",
+        "correctAnswer": "coordination",
+        "distractors": ["sensation", "strength", "reflexes"]
+      },
+      {
+        "quizQuestion": "The root 'tax/o' meaning 'order' also gives us the biological term ___, meaning the classification of organisms.",
+        "correctAnswer": "taxonomy",
+        "distractors": ["taxidermy (incorrect — different root)", "syntax", "tax (financial — unrelated)"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_osteo",
+    "correctAnswer": "bone",
+    "acceptableAlternatives": ["bones"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "cartilage",
+      "joint",
+      "muscle",
+      "tendon",
+      "ligament",
+      "marrow",
+      "nerve",
+      "skin"
+    ],
+    "quizQuestion": "What does the medical root 'oste/o' mean?",
+    "explanation": "Oste/o comes from Greek 'osteon' meaning bone. It appears in: osteoporosis (porous bones — loss of bone density), osteoarthritis (degenerative joint disease affecting bone and cartilage), osteomyelitis (bone infection), osteoblast (bone-forming cell), osteoclast (bone-resorbing cell), osteosarcoma (bone cancer), and osteopenia (reduced bone density, less severe than osteoporosis). It is one of the most productive roots in musculoskeletal medicine.",
+    "statement": "The medical root 'oste/o' means bone.",
+    "wowFactor": "Bone is not inert — it is constantly being remodeled. Every 10 years, the adult human skeleton replaces virtually all of its bone tissue through the coordinated action of osteoblasts (builders) and osteoclasts (destroyers). You have an almost entirely new skeleton compared to 10 years ago.",
+    "visualDescription": "Pixel art of a cross-sectioned long bone showing compact cortical bone outside and spongy cancellous bone inside",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bone",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Osteoporosis involves a decrease in density of which tissue?",
+        "correctAnswer": "bone",
+        "distractors": ["cartilage", "muscle", "ligament"]
+      },
+      {
+        "quizQuestion": "An osteosarcoma is a malignant tumor originating in which tissue?",
+        "correctAnswer": "bone",
+        "distractors": ["muscle", "cartilage", "fat"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_arthro",
+    "correctAnswer": "joint",
+    "acceptableAlternatives": ["joints", "articulation"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "bone",
+      "cartilage",
+      "muscle",
+      "tendon",
+      "ligament",
+      "bursa",
+      "nerve",
+      "skin"
+    ],
+    "quizQuestion": "What does the medical root 'arthr/o' mean?",
+    "explanation": "Arthr/o comes from Greek 'arthron' meaning joint. It appears in: arthritis (joint inflammation), arthroscopy (visual examination of a joint interior via scope), arthroplasty (surgical joint replacement or repair; plasty = surgical forming), arthrodesis (surgical joint fusion), arthralgia (joint pain; algia = pain), and hemarthrosis (blood in a joint). The same Greek root gives us 'arthropod' — jointed-legged animals.",
+    "statement": "The medical root 'arthr/o' means joint.",
+    "wowFactor": "The knee is the most commonly replaced joint in the world — over 600,000 total knee replacements are performed in the US each year. A modern knee implant is expected to last 15–20 years and is made of metal alloys, polyethylene, and sometimes ceramic.",
+    "visualDescription": "Pixel art cutaway of a knee joint showing cartilage surfaces, joint space, and menisci between femur and tibia",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Arthritis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Arthroscopy is a procedure where a camera is inserted into a ___ to examine it.",
+        "correctAnswer": "joint",
+        "distractors": ["bone", "muscle", "blood vessel"]
+      },
+      {
+        "quizQuestion": "Arthralgia is pain in a ___, from the root 'arthr/o' and 'algia' meaning pain.",
+        "correctAnswer": "joint",
+        "distractors": ["muscle", "bone", "nerve"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_myo",
+    "correctAnswer": "muscle",
+    "acceptableAlternatives": ["muscles", "muscle tissue"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "bone",
+      "tendon",
+      "nerve",
+      "ligament",
+      "joint",
+      "cartilage",
+      "fat",
+      "skin"
+    ],
+    "quizQuestion": "What does the medical root 'my/o' mean?",
+    "explanation": "My/o comes from Greek 'mys' meaning muscle. It appears in: myopathy (any muscle disease), myositis (muscle inflammation), myocardium (heart muscle; cardium = heart), myoma (benign muscle tumor), rhabdomyolysis (breakdown of skeletal muscle releasing contents into the bloodstream — a medical emergency), and myalgia (muscle pain). Note: 'muscul/o' is the Latin equivalent and both roots are used in medical terminology.",
+    "statement": "The medical root 'my/o' means muscle.",
+    "wowFactor": "Rhabdomyolysis — the catastrophic breakdown of skeletal muscle — releases myoglobin into the bloodstream that can clog and destroy kidneys. It can be caused by extreme exercise, crush injuries, or certain statin drugs. Urine turning dark brown (like cola) is the classic warning sign.",
+    "visualDescription": "Pixel art cross-section of skeletal muscle fiber showing bundled myofibrils and sarcomere striations",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Myopathy",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "The myocardium is the ___ of the heart.",
+        "correctAnswer": "muscle",
+        "distractors": ["outer membrane", "inner lining", "valve"]
+      },
+      {
+        "quizQuestion": "Myositis refers to inflammation of which tissue?",
+        "correctAnswer": "muscle",
+        "distractors": ["bone", "joint", "nerve"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_chondro",
+    "correctAnswer": "cartilage",
+    "acceptableAlternatives": ["gristle", "hyaline cartilage"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "bone",
+      "joint",
+      "muscle",
+      "tendon",
+      "ligament",
+      "bursa",
+      "marrow",
+      "nerve"
+    ],
+    "quizQuestion": "What does the medical root 'chondr/o' mean?",
+    "explanation": "Chondr/o comes from Greek 'chondros' meaning cartilage (originally 'grain' or 'groat,' referring to the pebbly texture of cartilage). It appears in: chondritis (cartilage inflammation), chondrosarcoma (cartilage cancer), chondroplasty (surgical repair of cartilage), costochondritis (inflammation of the cartilage joining ribs to the sternum — a common cause of chest pain), and achondroplasia (the most common cause of dwarfism, where long bone cartilage fails to ossify normally).",
+    "statement": "The medical root 'chondr/o' means cartilage.",
+    "wowFactor": "Cartilage has no blood vessels (it is avascular). This is why cartilage injuries heal extremely slowly — nutrients must diffuse in from surrounding synovial fluid. A torn meniscus (knee cartilage) may never heal on its own, which is why surgical repair or removal is often necessary.",
+    "visualDescription": "Pixel art of a joint surface covered in smooth, pale blue-white hyaline cartilage with no visible blood vessels",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cartilage",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Achondroplasia is a skeletal disorder affecting the normal development of which tissue?",
+        "correctAnswer": "cartilage",
+        "distractors": ["bone marrow", "muscle", "tendon"]
+      },
+      {
+        "quizQuestion": "Costochondritis is inflammation of the ___ connecting the ribs to the sternum.",
+        "correctAnswer": "cartilage",
+        "distractors": ["tendons", "ligaments", "bursae"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_tendo",
+    "correctAnswer": "tendon",
+    "acceptableAlternatives": ["tendons", "sinew"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "ligament",
+      "cartilage",
+      "muscle",
+      "bone",
+      "bursa",
+      "joint capsule",
+      "nerve",
+      "fascia"
+    ],
+    "quizQuestion": "What does the medical root 'tend/o' (also written 'tendin/o') mean?",
+    "explanation": "Tend/o and tendin/o both come from Latin 'tendere' meaning to stretch, referring to the fibrous cords (tendons) that connect muscle to bone. Both forms appear clinically: tendinitis or tendonitis (tendon inflammation), tendinopathy (tendon disease), tenodesis (surgical fixation of a tendon), and tenosynovitis (inflammation of the tendon sheath). The Achilles tendon — the largest tendon in the body — connects the calf muscles to the heel bone.",
+    "statement": "The medical root 'tend/o' (also 'tendin/o') means tendon — the fibrous tissue that connects muscle to bone.",
+    "wowFactor": "The Achilles tendon can withstand forces of up to 12.5 times body weight during running. Despite this, Achilles tendon rupture is common in recreational athletes. The characteristic 'pop' sound at the moment of rupture is often described as being struck by a ball, even when no contact occurred.",
+    "visualDescription": "Pixel art of the lower leg showing the Achilles tendon as a thick white cord connecting the calf muscle to the heel bone",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tendon",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Tendinitis (tendonitis) refers to inflammation of which connective tissue structure?",
+        "correctAnswer": "tendon",
+        "distractors": ["ligament", "bursa", "cartilage"]
+      },
+      {
+        "quizQuestion": "Which structure — reflected in the root 'tend/o' — connects muscle to bone?",
+        "correctAnswer": "tendon",
+        "distractors": ["ligament", "cartilage", "fascia"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_ligamento",
+    "correctAnswer": "ligament",
+    "acceptableAlternatives": ["ligaments", "joint ligament"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "tendon",
+      "cartilage",
+      "muscle",
+      "bone",
+      "bursa",
+      "fascia",
+      "joint capsule",
+      "nerve"
+    ],
+    "quizQuestion": "What does the medical root 'ligament/o' mean?",
+    "explanation": "Ligament/o comes from Latin 'ligamentum' meaning bond or tie, from 'ligare' meaning to bind. Ligaments bind bone to bone at joints. The root appears in: ligamentous (relating to ligaments), ligamentotaxis (realigning bone fragments using intact ligament attachments), and sprains (which are ligament injuries, not to be confused with strains which are muscle/tendon injuries). Common examples include the ACL (anterior cruciate ligament) and MCL (medial collateral ligament) of the knee.",
+    "statement": "The medical root 'ligament/o' means ligament — the fibrous tissue that connects bone to bone at joints.",
+    "wowFactor": "The ACL (anterior cruciate ligament) cannot repair itself because it lacks adequate blood supply. Surgical reconstruction requires harvesting a graft from elsewhere in the body — usually the patellar tendon or hamstring — and the graft goes through a process called 'ligamentization' over 1–2 years before reaching full strength.",
+    "visualDescription": "Pixel art of a knee joint cutaway showing the crossed anterior and posterior cruciate ligaments inside the joint capsule",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ligament",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A sprain is an injury to a ___, while a strain is an injury to a muscle or tendon.",
+        "correctAnswer": "ligament",
+        "distractors": ["tendon", "cartilage", "bursa"]
+      },
+      {
+        "quizQuestion": "The root 'ligament/o' comes from the Latin 'ligare' meaning to ___.",
+        "correctAnswer": "bind",
+        "distractors": ["stretch", "support", "cushion"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_burso",
+    "correctAnswer": "bursa",
+    "acceptableAlternatives": ["bursae", "synovial bursa", "fluid-filled sac near joint"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "joint",
+      "tendon",
+      "cartilage",
+      "ligament",
+      "bone",
+      "muscle",
+      "synovial membrane",
+      "nerve"
+    ],
+    "quizQuestion": "What does the medical root 'burs/o' mean?",
+    "explanation": "Burs/o comes from Medieval Latin 'bursa' meaning purse or bag (from Greek 'byrsa' meaning hide or wineskin). In anatomy, a bursa is a small fluid-filled sac that reduces friction between bones, tendons, and skin. The root appears in: bursitis (inflammation of a bursa — common at the shoulder, hip, and knee), bursectomy (surgical removal of a bursa), and prepatellar bursitis ('housemaid's knee' — from prolonged kneeling).",
+    "statement": "The medical root 'burs/o' means bursa — a small fluid-filled sac that cushions areas of friction near joints.",
+    "wowFactor": "The term 'purse' in English also comes from the same Latin root 'bursa.' Medieval pharmacists and students carried their money in a leather bag called a 'bursa,' and European universities (including the old Colleges of Surgeons) still call their student accommodation a 'burse.'",
+    "visualDescription": "Pixel art of a shoulder joint with a small blue fluid-filled sac (bursa) visible between the rotator cuff tendon and the acromion",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bursitis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Bursitis is inflammation of a ___, a fluid-filled sac that reduces friction at joints.",
+        "correctAnswer": "bursa",
+        "distractors": ["tendon", "ligament", "cartilage"]
+      },
+      {
+        "quizQuestion": "The root 'burs/o' comes from a Latin word meaning 'purse' or ___.",
+        "correctAnswer": "bag",
+        "distractors": ["cushion", "joint", "membrane"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_costo",
+    "correctAnswer": "rib",
+    "acceptableAlternatives": ["ribs"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "sternum",
+      "spine",
+      "clavicle",
+      "scapula",
+      "cartilage",
+      "vertebra",
+      "pelvis",
+      "bone"
+    ],
+    "quizQuestion": "What does the medical root 'cost/o' mean?",
+    "explanation": "Cost/o comes from Latin 'costa' meaning rib or side. It appears in: costal (relating to the ribs — e.g., costal cartilage, intercostal muscles), costochondritis (inflammation of the rib cartilage at the sternum), subcostal (below the ribs), costectomy (surgical removal of a rib), and the costovertebral angle (the junction of ribs and vertebrae, where kidney pain is assessed by percussion). The same Latin root gives us the Spanish 'costa' (coast) and 'Costa Rica' (rich coast).",
+    "statement": "The medical root 'cost/o' means rib.",
+    "wowFactor": "Cervical ribs — extra ribs growing from the cervical (neck) vertebrae — occur in about 0.5–1% of the population. They can compress the brachial plexus nerves or subclavian artery, causing thoracic outlet syndrome: pain, numbness, and weakness in the arm and hand.",
+    "visualDescription": "Pixel art of the thoracic cage showing twelve pairs of ribs curving around the chest with intercostal spaces labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rib",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Intercostal muscles are the muscles located between the ___.",
+        "correctAnswer": "ribs",
+        "distractors": ["vertebrae", "sternum segments", "pelvic bones"]
+      },
+      {
+        "quizQuestion": "Costochondritis is inflammation of the cartilage connecting the ___ to the sternum.",
+        "correctAnswer": "ribs",
+        "distractors": ["clavicle", "scapula", "vertebrae"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_cranio",
+    "correctAnswer": "skull",
+    "acceptableAlternatives": ["cranium", "skull bones", "braincase"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "brain",
+      "jaw",
+      "face",
+      "meninges",
+      "vertebra",
+      "neck",
+      "nerve",
+      "eye socket"
+    ],
+    "quizQuestion": "What does the medical root 'crani/o' mean?",
+    "explanation": "Crani/o comes from Greek 'kranion' meaning skull. It appears in: cranial (relating to the skull — e.g., cranial nerves, intracranial pressure), craniotomy (surgical opening of the skull to access the brain), craniectomy (removal of a piece of skull), craniosynostosis (premature fusion of skull sutures in infants causing abnormal head shape), and craniology (the now-discredited study of skull shape as a measure of intelligence, used historically in phrenology).",
+    "statement": "The medical root 'crani/o' means skull.",
+    "wowFactor": "Phrenology — the 19th-century pseudoscience of reading personality from skull bumps — was taken seriously by many scientists for decades. Even Abraham Lincoln reportedly had his skull 'read' by a phrenologist. It was eventually revealed as scientifically baseless and was used to justify harmful racial theories.",
+    "visualDescription": "Pixel art of a human skull in profile with the cranium highlighted separately from the facial bones",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Skull",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A craniotomy involves surgically opening which structure to access the brain?",
+        "correctAnswer": "skull",
+        "distractors": ["meninges", "scalp only", "spinal canal"]
+      },
+      {
+        "quizQuestion": "The 12 cranial nerves emerge from the brain and exit through which bony structure?",
+        "correctAnswer": "skull",
+        "distractors": ["vertebral column", "rib cage", "pelvis"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_vertebro",
+    "correctAnswer": "vertebra",
+    "acceptableAlternatives": ["vertebrae", "spinal bone", "back bone"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "skull",
+      "rib",
+      "disc",
+      "spinal cord",
+      "pelvis",
+      "sacrum",
+      "joint",
+      "nerve"
+    ],
+    "quizQuestion": "What does the medical root 'vertebr/o' mean?",
+    "explanation": "Vertebr/o comes from Latin 'vertebra' meaning joint or vertebra, from 'vertere' meaning to turn. It appears in: vertebral (relating to the vertebrae — e.g., vertebral column, vertebral fracture), vertebroplasty (injecting cement into a fractured vertebra to stabilize it), and vertebral artery (artery running through the transverse foramina of cervical vertebrae supplying the posterior brain). Note: 'spondyl/o' is the Greek equivalent and both are used in medicine.",
+    "statement": "The medical root 'vertebr/o' means vertebra — the individual bones forming the spinal column.",
+    "wowFactor": "Vertebroplasty — injecting bone cement into a collapsed vertebra — can relieve severe back pain caused by osteoporotic compression fractures in elderly patients within hours of the procedure. The technique was developed in France in 1984 by radiologist Hervé Deramond.",
+    "visualDescription": "Pixel art of a lateral view of the lumbar spine with vertebrae labeled, showing the intervertebral discs as cushions between each bone",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vertebra",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "The vertebral column (spine) is made up of 33 individual ___.",
+        "correctAnswer": "vertebrae",
+        "distractors": ["ribs", "discs", "ligaments"]
+      },
+      {
+        "quizQuestion": "Vertebroplasty is a procedure that stabilizes fractured ___ using injected bone cement.",
+        "correctAnswer": "vertebrae",
+        "distractors": ["ribs", "pelvic bones", "skull plates"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_spondylo",
+    "correctAnswer": "vertebra",
+    "acceptableAlternatives": ["vertebrae", "spinal vertebra"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "spinal cord",
+      "disc",
+      "rib",
+      "pelvis",
+      "nerve root",
+      "sacrum",
+      "joint capsule",
+      "meninges"
+    ],
+    "quizQuestion": "What does the medical root 'spondyl/o' mean? (Note: this is the Greek equivalent of the Latin root 'vertebr/o.')",
+    "explanation": "Spondyl/o comes from Greek 'spondylos' meaning vertebra. It appears in: spondylitis (vertebral inflammation — as in ankylosing spondylitis, which fuses the spine), spondylosis (degenerative changes in the vertebral column), spondylolisthesis (forward slipping of one vertebra over another; listhesis = slipping), and spondylolysis (stress fracture in the vertebral arch). Both 'spondyl/o' and 'vertebr/o' mean vertebra, but 'spondyl/o' is more common in degenerative spine conditions.",
+    "statement": "The medical root 'spondyl/o' means vertebra (the Greek equivalent of the Latin 'vertebr/o').",
+    "wowFactor": "Ankylosing spondylitis can fuse the entire spine into a rigid column over decades — a condition called 'bamboo spine' on X-ray. The disease disproportionately affects young men and often starts with low back pain in teenagers and 20-year-olds, years before the diagnosis is made.",
+    "visualDescription": "Pixel art X-ray view of a lumbar spine showing the squared-off vertebral bodies and fused facet joints characteristic of ankylosing spondylitis",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ankylosing_spondylitis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Spondylolisthesis is the forward slipping of one ___ over another.",
+        "correctAnswer": "vertebra",
+        "distractors": ["disc", "rib", "joint surface"]
+      },
+      {
+        "quizQuestion": "Ankylosing spondylitis is an inflammatory disease that fuses the ___ together over time.",
+        "correctAnswer": "vertebrae",
+        "distractors": ["ribs", "hip joints", "sacroiliac joints only"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_pelvo",
+    "correctAnswer": "pelvis",
+    "acceptableAlternatives": ["the pelvis", "pelvic basin"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "hip joint",
+      "sacrum",
+      "femur",
+      "lumbar spine",
+      "abdomen",
+      "groin",
+      "kidney",
+      "bladder"
+    ],
+    "quizQuestion": "What does the medical root 'pelv/o' mean?",
+    "explanation": "Pelv/o comes from Latin 'pelvis' meaning basin (a bowl-shaped vessel). In anatomy it refers to the bony pelvis — the ring of bones formed by the two hip bones (ilium, ischium, pubis), sacrum, and coccyx. It appears in: pelvic (relating to the pelvis), pelvimetry (measuring the pelvis — historically to predict delivery), pelvic inflammatory disease (PID), pelvic floor (muscles supporting the pelvic organs), and pyelectasis (dilation of the renal pelvis inside the kidney).",
+    "statement": "The medical root 'pelv/o' means pelvis — the basin-shaped ring of bones at the base of the trunk.",
+    "wowFactor": "The male and female pelvis are so distinctly shaped that a forensic anthropologist can determine biological sex with 95%+ accuracy from the skeleton alone — even from a single hip bone. The wider female pelvis is an adaptation for childbirth, and its shape affects gait, making females slightly more prone to ACL injuries.",
+    "visualDescription": "Pixel art frontal view of the pelvic girdle showing the iliac wings, sacrum, and pubic symphysis forming a basin shape",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pelvis",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Pelvic inflammatory disease (PID) affects structures within the bony ___.",
+        "correctAnswer": "pelvis",
+        "distractors": ["abdomen (above the pelvis)", "thorax", "lumbar spine"]
+      },
+      {
+        "quizQuestion": "The root 'pelv/o' comes from Latin for 'basin,' describing the ___ shape of this bony structure.",
+        "correctAnswer": "pelvis",
+        "distractors": ["spine", "hip joint", "femur"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_femoro",
+    "correctAnswer": "femur",
+    "acceptableAlternatives": ["thigh bone", "femoral bone"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "tibia",
+      "fibula",
+      "pelvis",
+      "patella",
+      "humerus",
+      "sacrum",
+      "ilium",
+      "radius"
+    ],
+    "quizQuestion": "What does the medical root 'femor/o' mean?",
+    "explanation": "Femor/o comes from Latin 'femur' meaning thigh. It appears in: femoral (relating to the femur — e.g., femoral artery, femoral nerve, femoral head), femoroacetabular impingement (FAI — abnormal contact between the femoral head and the acetabulum of the pelvis), and intertrochanteric femoral fracture (common hip fracture in the elderly at the upper femur). The femur is the longest and strongest bone in the human body.",
+    "statement": "The medical root 'femor/o' means femur — the thigh bone, the longest bone in the human body.",
+    "wowFactor": "The femoral artery carries such a large blood flow that an uncontrolled femoral artery laceration can cause fatal exsanguination (complete blood loss) in as little as 3 minutes. US military medics gave this artery its own informal nickname — 'the bleeder' — and improvised tourniquets saved thousands of lives in Iraq and Afghanistan before modern combat hemostatic dressings were developed.",
+    "visualDescription": "Pixel art of the full-length femur bone showing the rounded head at top that fits into the hip socket and the condyles at the knee below",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Femur",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "The femoral artery runs alongside which bone in the thigh?",
+        "correctAnswer": "femur",
+        "distractors": ["tibia", "fibula", "pelvis"]
+      },
+      {
+        "quizQuestion": "Femoroacetabular impingement involves abnormal contact between the head of the ___ and the hip socket.",
+        "correctAnswer": "femur",
+        "distractors": ["tibia", "fibula", "patella"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_sterno",
+    "correctAnswer": "sternum",
+    "acceptableAlternatives": ["breastbone", "breast bone"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "rib",
+      "clavicle",
+      "spine",
+      "scapula",
+      "vertebra",
+      "pelvis",
+      "skull",
+      "humerus"
+    ],
+    "quizQuestion": "What does the medical root 'stern/o' mean?",
+    "explanation": "Stern/o comes from Greek 'sternon' meaning breast or chest, referring to the sternum — the flat bone in the center of the chest. It appears in: sternal (relating to the sternum), sternotomy (surgical incision through the sternum — performed for open heart surgery), sternoclavicular joint (where the sternum meets the clavicle), sternocleidomastoid muscle (from sternum + clavicle to the mastoid process behind the ear), and xiphoid process (the inferior tip of the sternum — 'xipho' means sword in Greek).",
+    "statement": "The medical root 'stern/o' means sternum — the flat breastbone in the center of the chest.",
+    "wowFactor": "A median sternotomy — sawing through the sternum to open the chest for heart surgery — takes only about 60 seconds. The sternum then heals back together over 6–8 weeks, held together initially only by stainless steel wires. Patients are told not to drive or push a shopping cart for 6–8 weeks while the bone heals.",
+    "visualDescription": "Pixel art of the anterior thorax showing the sternum as a vertical flat bone in the center with the manubrium, body, and xiphoid process labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sternum",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A sternotomy is a surgical incision through which bone to access the heart?",
+        "correctAnswer": "sternum",
+        "distractors": ["rib", "clavicle", "vertebra"]
+      },
+      {
+        "quizQuestion": "The sternoclavicular joint connects the ___ to the clavicle.",
+        "correctAnswer": "sternum",
+        "distractors": ["scapula", "rib", "humerus"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_lumbo",
+    "correctAnswer": "lower back",
+    "acceptableAlternatives": ["lumbar region", "lumbar area", "the lumbar spine"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "upper back",
+      "thoracic spine",
+      "cervical spine",
+      "sacrum",
+      "pelvis",
+      "kidney",
+      "hip",
+      "buttock"
+    ],
+    "quizQuestion": "What does the medical root 'lumb/o' mean?",
+    "explanation": "Lumb/o comes from Latin 'lumbus' meaning loin or lower back. It refers to the lumbar region — the area between the thoracic cage and the pelvis, containing five lumbar vertebrae (L1–L5). It appears in: lumbar (relating to the lower back — e.g., lumbar vertebrae, lumbar lordosis), lumbalgia or lumbago (lower back pain), lumbar puncture (spinal tap performed between lumbar vertebrae to sample cerebrospinal fluid), and lumbosacral (relating to the lumbar region and sacrum).",
+    "statement": "The medical root 'lumb/o' means lower back (the lumbar region between the thorax and pelvis).",
+    "wowFactor": "Low back pain is the leading cause of disability worldwide — more years lived with disability than any other condition. About 80% of adults will experience significant low back pain at some point in their lives. The L4–L5 and L5–S1 disc levels are the most commonly herniated in the entire spine.",
+    "visualDescription": "Pixel art lateral view of the lumbar spine showing the five L1–L5 vertebrae with their characteristic forward curve (lordosis) above the sacrum",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lumbar_vertebrae",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "A lumbar puncture (spinal tap) is performed in the ___ region of the spine.",
+        "correctAnswer": "lower back",
+        "distractors": ["neck (cervical)", "mid-back (thoracic)", "sacral"]
+      },
+      {
+        "quizQuestion": "Lumbago is the older medical term for pain in the ___.",
+        "correctAnswer": "lower back",
+        "distractors": ["neck", "thoracic spine", "hip"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_kinesio",
+    "correctAnswer": "movement",
+    "acceptableAlternatives": ["motion", "body movement", "muscular movement"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "coordination",
+      "nerve",
+      "muscle",
+      "strength",
+      "balance",
+      "sensation",
+      "reflex",
+      "bone"
+    ],
+    "quizQuestion": "What does the medical root 'kinesi/o' mean?",
+    "explanation": "Kinesi/o comes from Greek 'kinesis' meaning motion or movement. It appears in: kinesiology (the scientific study of human movement), kinesiotherapy (therapeutic exercise treatment), dyskinesia (impaired or involuntary movement — as in tardive dyskinesia from antipsychotic drugs or Parkinson's disease), hyperkinesia (excessive, uncontrollable movement), and akinesia (absence of movement). The same root gives us cinema (motion pictures) and kinetic energy.",
+    "statement": "The medical root 'kinesi/o' means movement.",
+    "wowFactor": "Tardive dyskinesia — involuntary repetitive movements of the face and tongue caused by long-term antipsychotic medication use — may be irreversible even after stopping the drug. The movements (lip smacking, tongue rolling, grimacing) can be severely disabling and stigmatizing. It affects an estimated 20–30% of long-term antipsychotic users.",
+    "visualDescription": "Pixel art of a human figure in motion with directional arrows showing range of movement at multiple joints",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kinesiology",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Dyskinesia refers to impaired or abnormal ___, as seen in Parkinson's disease.",
+        "correctAnswer": "movement",
+        "distractors": ["sensation", "muscle tone", "reflexes"]
+      },
+      {
+        "quizQuestion": "The root 'kinesi/o' also gives us the words 'kinetic energy' and 'cinema' — both related to ___.",
+        "correctAnswer": "movement",
+        "distractors": ["light", "nerve signals", "muscle contraction"]
+      }
+    ]
+  },
+  {
+    "id": "medterm_root_patello",
+    "correctAnswer": "patella",
+    "acceptableAlternatives": ["kneecap", "knee cap"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "femur",
+      "tibia",
+      "fibula",
+      "meniscus",
+      "bursa",
+      "ligament",
+      "talus",
+      "calcaneus"
+    ],
+    "quizQuestion": "What does the medical root 'patell/o' mean?",
+    "explanation": "Patell/o comes from Latin 'patella' meaning little pan or small plate, from 'patina' meaning pan (referring to the flat, round shape of the kneecap). The patella is a sesamoid bone — a bone embedded within the quadriceps tendon that improves mechanical advantage. It appears in: patellar (relating to the patella — e.g., patellar tendon reflex, patellar fracture), patellofemoral syndrome (pain from maltracking of the patella over the femur), and patellectomy (surgical removal of the patella). The patellar tendon reflex is the classic 'knee jerk' reflex.",
+    "statement": "The medical root 'patell/o' means patella — the kneecap, a sesamoid bone embedded in the quadriceps tendon.",
+    "wowFactor": "The patella is the largest sesamoid bone in the body. Without it, the quadriceps would need to generate about 30% more force to extend the knee — it acts like a pulley, redirecting and amplifying the force of the thigh muscles. Some people are born without patellas, a condition called nail-patella syndrome.",
+    "visualDescription": "Pixel art frontal view of the knee joint with the patella highlighted as a round flat bone at the front of the knee, showing its position over the femoral condyles",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Patella",
+    "volatile": false,
+    "categoryL1": "medical_terminology",
+    "categoryL2": "root_words",
+    "variants": [
+      {
+        "quizQuestion": "Patellofemoral syndrome involves pain from maltracking of the ___ over the femur.",
+        "correctAnswer": "patella (kneecap)",
+        "distractors": ["meniscus", "patellar tendon", "cruciate ligament"]
+      },
+      {
+        "quizQuestion": "The patellar tendon reflex tests the function of the ___ nerve root.",
+        "correctAnswer": "L4 (lumbar 4)",
+        "distractors": ["S1", "L2", "L5"]
+      }
+    ]
+  }
+]

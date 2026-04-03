@@ -1,0 +1,4800 @@
+[
+  {
+    "id": "medterm_pre_ab",
+    "correctAnswer": "Away from",
+    "acceptableAlternatives": [
+      "Away"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Toward",
+      "Around",
+      "Within",
+      "Below",
+      "Before",
+      "Behind",
+      "Through",
+      "Between"
+    ],
+    "quizQuestion": "What does the prefix ab- mean in medical terminology?",
+    "explanation": "Ab- comes from Latin 'ab' meaning away from. It appears in abduction (moving a limb away from the midline), abnormal (away from normal), and aboral (away from the mouth).",
+    "statement": "The prefix ab- means away from.",
+    "wowFactor": "Abduction means 'leading away' — when you raise your arm sideways, you are abducting it away from your body's midline!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'away from'?",
+        "correctAnswer": "Ab-",
+        "distractors": [
+          "Ad-",
+          "Epi-",
+          "Para-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'abduction', what does 'ab-' indicate about the movement?",
+        "correctAnswer": "Movement away from the midline",
+        "distractors": [
+          "Movement toward the midline",
+          "Movement around a joint",
+          "Movement through a plane"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_ad",
+    "correctAnswer": "Toward",
+    "acceptableAlternatives": [
+      "Near to",
+      "Toward something"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Away from",
+      "Around",
+      "Within",
+      "Below",
+      "Before",
+      "Behind",
+      "Through",
+      "Between"
+    ],
+    "quizQuestion": "What does the prefix ad- mean in medical terminology?",
+    "explanation": "Ad- comes from Latin 'ad' meaning toward or near. It appears in adduction (moving a limb toward the midline), adhesion (sticking toward), and adrenal (toward the kidney — the adrenal glands sit atop the kidneys).",
+    "statement": "The prefix ad- means toward.",
+    "wowFactor": "Adrenal literally means 'toward the kidney' — the adrenal glands sit right on top of each kidney, which is exactly where the prefix points you!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'toward'?",
+        "correctAnswer": "Ad-",
+        "distractors": [
+          "Ab-",
+          "Retro-",
+          "Ecto-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'adduction', what does 'ad-' indicate about the movement?",
+        "correctAnswer": "Movement toward the midline",
+        "distractors": [
+          "Movement away from the midline",
+          "Movement above a structure",
+          "Movement below a structure"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_ante",
+    "correctAnswer": "Before, in front of",
+    "acceptableAlternatives": [
+      "Before",
+      "In front of",
+      "Anterior"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "After",
+      "Behind",
+      "Below",
+      "Above",
+      "Between",
+      "Around",
+      "Within",
+      "Beyond"
+    ],
+    "quizQuestion": "What does the prefix ante- mean in medical terminology?",
+    "explanation": "Ante- comes from Latin 'ante' meaning before or in front of. It appears in antepartum (before birth), antecubital (in front of the elbow), and antenatal (before birth).",
+    "statement": "The prefix ante- means before or in front of.",
+    "wowFactor": "Antepartum means 'before birth' — doctors use this term for everything that happens during pregnancy, before the baby arrives!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'before or in front of'?",
+        "correctAnswer": "Ante-",
+        "distractors": [
+          "Post-",
+          "Retro-",
+          "Meta-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'antecubital fossa', what does 'ante-' tell you about this region?",
+        "correctAnswer": "It is in front of the elbow",
+        "distractors": [
+          "It is behind the elbow",
+          "It is below the elbow",
+          "It is around the elbow"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_circum",
+    "correctAnswer": "Around",
+    "acceptableAlternatives": [
+      "Surrounding",
+      "All around"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Through",
+      "Within",
+      "Below",
+      "Above",
+      "Before",
+      "After",
+      "Away from",
+      "Toward"
+    ],
+    "quizQuestion": "What does the prefix circum- mean in medical terminology?",
+    "explanation": "Circum- comes from Latin 'circum' meaning around. It appears in circumcision (cutting around), circumduction (circular movement of a limb), and circumoral (around the mouth).",
+    "statement": "The prefix circum- means around.",
+    "wowFactor": "Circumduction is a full circular movement — think of swinging your arm in a complete circle. The prefix circum- (around) + duction (leading) perfectly describes the motion!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'around'?",
+        "correctAnswer": "Circum-",
+        "distractors": [
+          "Peri-",
+          "Trans-",
+          "Dia-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'circumoral pallor', what does 'circum-' indicate about the pale area?",
+        "correctAnswer": "Paleness around the mouth",
+        "distractors": [
+          "Paleness within the mouth",
+          "Paleness below the mouth",
+          "Paleness above the mouth"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_de",
+    "correctAnswer": "Down, away from",
+    "acceptableAlternatives": [
+      "Down from",
+      "Removing",
+      "Away from"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Upward",
+      "Through",
+      "Within",
+      "Around",
+      "Before",
+      "After",
+      "Toward",
+      "Between"
+    ],
+    "quizQuestion": "What does the prefix de- mean in medical terminology?",
+    "explanation": "De- comes from Latin 'de' meaning down, from, or removal. It appears in dehydration (removal of water), decubitus (lying down), and debridement (removal of damaged tissue).",
+    "statement": "The prefix de- means down or away from, often indicating removal.",
+    "wowFactor": "Debridement — removing dead tissue from a wound — uses de- (removal) to show that something is being taken away, like clearing debris from a wound!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'down or away from', often indicating removal?",
+        "correctAnswer": "De-",
+        "distractors": [
+          "Ab-",
+          "Ecto-",
+          "Sub-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'dehydration', what does 'de-' indicate about the body's water?",
+        "correctAnswer": "Water has been removed",
+        "distractors": [
+          "Water has been added",
+          "Water has moved through cells",
+          "Water has been stored"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_dia",
+    "correctAnswer": "Through, across",
+    "acceptableAlternatives": [
+      "Through",
+      "Across",
+      "Complete"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Around",
+      "Within",
+      "Above",
+      "Below",
+      "Before",
+      "Away from",
+      "Between",
+      "Behind"
+    ],
+    "quizQuestion": "What does the prefix dia- mean in medical terminology?",
+    "explanation": "Dia- comes from Greek 'dia' meaning through or across. It appears in dialysis (separation through a membrane), diagnosis (knowing through examination), and diarrhea (flowing through).",
+    "statement": "The prefix dia- means through or across.",
+    "wowFactor": "Diagnosis literally means 'knowing through' — dia (through) + gnosis (knowledge). A doctor 'sees through' your symptoms to the underlying condition!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'through or across'?",
+        "correctAnswer": "Dia-",
+        "distractors": [
+          "Trans-",
+          "Circum-",
+          "Peri-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'dialysis', what does 'dia-' tell you about how the procedure works?",
+        "correctAnswer": "Waste passes through a membrane",
+        "distractors": [
+          "Waste is collected around the kidney",
+          "Waste is removed from below",
+          "Waste is filtered from above"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_ecto",
+    "correctAnswer": "Outside, external",
+    "acceptableAlternatives": [
+      "Outside",
+      "Outer",
+      "External",
+      "Out"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Within",
+      "Between",
+      "Above",
+      "Below",
+      "Around",
+      "Before",
+      "Through",
+      "Toward"
+    ],
+    "quizQuestion": "What does the prefix ecto- (or exo-) mean in medical terminology?",
+    "explanation": "Ecto- comes from Greek 'ektos' meaning outside. It appears in ectopic (out of normal place), ectoderm (outer skin layer), and ectomy (surgical removal — taking outside the body).",
+    "statement": "The prefix ecto- means outside or external.",
+    "wowFactor": "An ectopic pregnancy is one that occurs 'outside' the uterus — the prefix ecto- tells you immediately that something is in the wrong, outside location!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'outside or external'?",
+        "correctAnswer": "Ecto-",
+        "distractors": [
+          "Endo-",
+          "Intra-",
+          "Epi-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'ectopic pregnancy', what does 'ecto-' tell you about the pregnancy location?",
+        "correctAnswer": "It is outside the uterus",
+        "distractors": [
+          "It is inside the uterus",
+          "It is below the uterus",
+          "It is above the uterus"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_endo",
+    "correctAnswer": "Within, inside",
+    "acceptableAlternatives": [
+      "Within",
+      "Inside",
+      "Inner"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Outside",
+      "Around",
+      "Above",
+      "Below",
+      "Between",
+      "Beyond",
+      "Behind",
+      "Through"
+    ],
+    "quizQuestion": "What does the prefix endo- mean in medical terminology?",
+    "explanation": "Endo- comes from Greek 'endon' meaning within. It appears in endoscopy (looking within), endocrine (secreting within), and endometrium (within the uterus).",
+    "statement": "The prefix endo- means within or inside.",
+    "wowFactor": "An endoscope literally means 'looking within' — endo (within) + scope (to view). Doctors use this instrument to see inside your body without surgery!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'within or inside'?",
+        "correctAnswer": "Endo-",
+        "distractors": [
+          "Exo-",
+          "Epi-",
+          "Peri-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'endoscopy', what does 'endo-' tell you about the procedure?",
+        "correctAnswer": "It looks within the body",
+        "distractors": [
+          "It looks outside the body",
+          "It looks around the organ",
+          "It looks above the organ"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_epi",
+    "correctAnswer": "Upon, above",
+    "acceptableAlternatives": [
+      "Upon",
+      "Above",
+      "On top of",
+      "Over"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Below",
+      "Within",
+      "Between",
+      "Outside",
+      "Behind",
+      "Before",
+      "Away from",
+      "Toward"
+    ],
+    "quizQuestion": "What does the prefix epi- mean in medical terminology?",
+    "explanation": "Epi- comes from Greek 'epi' meaning upon or above. It appears in epidermis (upon the skin — the outer skin layer), epicardium (upon the heart), and epigastric (upon the stomach).",
+    "statement": "The prefix epi- means upon or above.",
+    "wowFactor": "The epidermis is literally the layer 'upon' the skin — epi (upon) + dermis (skin). It's your body's outermost shield, sitting right on top!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'upon or above'?",
+        "correctAnswer": "Epi-",
+        "distractors": [
+          "Hypo-",
+          "Sub-",
+          "Infra-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'epidermis', what does 'epi-' indicate about its position?",
+        "correctAnswer": "It sits upon the skin layer beneath",
+        "distractors": [
+          "It sits within the skin",
+          "It sits below the skin",
+          "It sits between skin layers"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_extra",
+    "correctAnswer": "Outside, beyond",
+    "acceptableAlternatives": [
+      "Outside",
+      "Beyond",
+      "External"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Within",
+      "Around",
+      "Above",
+      "Below",
+      "Before",
+      "Between",
+      "Toward",
+      "Through"
+    ],
+    "quizQuestion": "What does the prefix extra- mean in medical terminology?",
+    "explanation": "Extra- comes from Latin 'extra' meaning outside or beyond. It appears in extracellular (outside the cell), extrauterine (outside the uterus), and extravasation (escape of fluid outside a vessel).",
+    "statement": "The prefix extra- means outside or beyond normal boundaries.",
+    "wowFactor": "Extravasation — when an IV drug leaks out of a vein — uses extra- (outside) because the fluid has escaped outside its vessel!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'outside or beyond'?",
+        "correctAnswer": "Extra-",
+        "distractors": [
+          "Intra-",
+          "Endo-",
+          "Inter-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'extracellular fluid', what does 'extra-' tell you about where the fluid is?",
+        "correctAnswer": "It is outside the cells",
+        "distractors": [
+          "It is inside the cells",
+          "It is between the cells in vessels",
+          "It is above the cells"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_infra",
+    "correctAnswer": "Below, beneath",
+    "acceptableAlternatives": [
+      "Below",
+      "Beneath",
+      "Under",
+      "Inferior to"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Above",
+      "Around",
+      "Within",
+      "Between",
+      "Before",
+      "Beyond",
+      "Through",
+      "Toward"
+    ],
+    "quizQuestion": "What does the prefix infra- mean in medical terminology?",
+    "explanation": "Infra- comes from Latin 'infra' meaning below or beneath. It appears in infraspinatus (below the spine of the scapula), infraclavicular (below the clavicle), and infraorbital (below the eye socket).",
+    "statement": "The prefix infra- means below or beneath a structure.",
+    "wowFactor": "The infraspinatus muscle sits below the spine of the shoulder blade — infra tells you exactly where to find it on any anatomy diagram!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'below or beneath'?",
+        "correctAnswer": "Infra-",
+        "distractors": [
+          "Supra-",
+          "Epi-",
+          "Meta-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'infraclavicular region', what does 'infra-' tell you about this area?",
+        "correctAnswer": "It is below the clavicle",
+        "distractors": [
+          "It is above the clavicle",
+          "It is around the clavicle",
+          "It is within the clavicle"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_inter",
+    "correctAnswer": "Between",
+    "acceptableAlternatives": [
+      "Among",
+      "In between"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Within",
+      "Around",
+      "Above",
+      "Below",
+      "Outside",
+      "Before",
+      "Through",
+      "Toward"
+    ],
+    "quizQuestion": "What does the prefix inter- mean in medical terminology?",
+    "explanation": "Inter- comes from Latin 'inter' meaning between. It appears in intercostal (between the ribs), interstitial (between tissue cells), and intervertebral (between the vertebrae).",
+    "statement": "The prefix inter- means between structures.",
+    "wowFactor": "Intercostal muscles sit between the ribs — next time you breathe deeply, those inter (between) + costal (rib) muscles are expanding your chest!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'between'?",
+        "correctAnswer": "Inter-",
+        "distractors": [
+          "Intra-",
+          "Para-",
+          "Peri-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'intervertebral disc', what does 'inter-' tell you about where the disc sits?",
+        "correctAnswer": "It sits between vertebrae",
+        "distractors": [
+          "It sits within a vertebra",
+          "It sits around vertebrae",
+          "It sits above vertebrae"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_intra",
+    "correctAnswer": "Within, inside",
+    "acceptableAlternatives": [
+      "Within",
+      "Inside",
+      "Into"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Between",
+      "Outside",
+      "Around",
+      "Above",
+      "Below",
+      "Before",
+      "Beyond",
+      "Through"
+    ],
+    "quizQuestion": "What does the prefix intra- mean in medical terminology?",
+    "explanation": "Intra- comes from Latin 'intra' meaning within or inside. It appears in intravenous (within a vein), intramuscular (within muscle), and intracranial (within the skull).",
+    "statement": "The prefix intra- means within or inside a structure.",
+    "wowFactor": "Intravenous (IV) literally means 'within the vein' — the medication goes directly inside the vein, which is why IVs work so much faster than pills!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'within or inside a structure'?",
+        "correctAnswer": "Intra-",
+        "distractors": [
+          "Inter-",
+          "Extra-",
+          "Circum-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'intramuscular injection', what does 'intra-' tell you about where the injection goes?",
+        "correctAnswer": "Into the muscle tissue itself",
+        "distractors": [
+          "Between muscle groups",
+          "Around the muscle",
+          "Above the muscle"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_meso",
+    "correctAnswer": "Middle",
+    "acceptableAlternatives": [
+      "Middle part",
+      "Intermediate"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Outer",
+      "Inner",
+      "Above",
+      "Below",
+      "Before",
+      "After",
+      "Around",
+      "Between"
+    ],
+    "quizQuestion": "What does the prefix meso- mean in medical terminology?",
+    "explanation": "Meso- comes from Greek 'mesos' meaning middle. It appears in mesoderm (middle germ layer), mesentery (middle intestine support), and mesothelium (middle cell lining).",
+    "statement": "The prefix meso- means middle.",
+    "wowFactor": "The mesoderm is the middle of the three embryonic germ layers — sandwiched between the ectoderm (outer) and endoderm (inner) — and it gives rise to muscles and bones!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'middle'?",
+        "correctAnswer": "Meso-",
+        "distractors": [
+          "Ecto-",
+          "Endo-",
+          "Para-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'mesoderm', what does 'meso-' tell you about this embryonic layer?",
+        "correctAnswer": "It is the middle of three layers",
+        "distractors": [
+          "It is the outermost layer",
+          "It is the innermost layer",
+          "It is an extra outer layer"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_meta",
+    "correctAnswer": "Beyond, change",
+    "acceptableAlternatives": [
+      "Beyond",
+      "Change",
+      "After",
+      "Transformation"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Before",
+      "Within",
+      "Around",
+      "Below",
+      "Toward",
+      "Away from",
+      "Between",
+      "Outside"
+    ],
+    "quizQuestion": "What does the prefix meta- mean in medical terminology?",
+    "explanation": "Meta- comes from Greek 'meta' meaning beyond or change. It appears in metastasis (cancer spreading beyond its origin), metabolism (chemical changes in the body), and metacarpal (beyond the wrist).",
+    "statement": "The prefix meta- means beyond or involving change.",
+    "wowFactor": "Metastasis — when cancer spreads to new locations — literally means 'standing beyond' the original tumor. The prefix meta- warns us the cancer has gone beyond its starting point!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'beyond or change'?",
+        "correctAnswer": "Meta-",
+        "distractors": [
+          "Para-",
+          "Ante-",
+          "Pro-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'metastasis', what does 'meta-' indicate about the cancer?",
+        "correctAnswer": "It has spread beyond its original site",
+        "distractors": [
+          "It has stayed within its origin",
+          "It has grown around an organ",
+          "It has developed before symptoms"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_para",
+    "correctAnswer": "Beside, near",
+    "acceptableAlternatives": [
+      "Beside",
+      "Near",
+      "Alongside",
+      "Abnormal"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Within",
+      "Around",
+      "Above",
+      "Below",
+      "Before",
+      "Through",
+      "Away from",
+      "Between"
+    ],
+    "quizQuestion": "What does the prefix para- mean in medical terminology?",
+    "explanation": "Para- comes from Greek 'para' meaning beside or near. It appears in paramedic (beside the medical team), parathyroid (beside the thyroid gland), and paraplegia (abnormal paralysis beside the spine).",
+    "statement": "The prefix para- means beside, near, or alongside.",
+    "wowFactor": "The four parathyroid glands are literally sitting right beside the thyroid gland — para (beside) + thyroid tells you exactly where to look in the neck!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'beside or near'?",
+        "correctAnswer": "Para-",
+        "distractors": [
+          "Peri-",
+          "Inter-",
+          "Epi-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'parathyroid glands', what does 'para-' tell you about their location?",
+        "correctAnswer": "They are beside the thyroid gland",
+        "distractors": [
+          "They are within the thyroid gland",
+          "They are above the thyroid gland",
+          "They are around the thyroid gland"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_peri",
+    "correctAnswer": "Around, surrounding",
+    "acceptableAlternatives": [
+      "Around",
+      "Surrounding",
+      "About"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Within",
+      "Between",
+      "Above",
+      "Below",
+      "Before",
+      "Through",
+      "Away from",
+      "Toward"
+    ],
+    "quizQuestion": "What does the prefix peri- mean in medical terminology?",
+    "explanation": "Peri- comes from Greek 'peri' meaning around. It appears in pericardium (around the heart), peritoneum (around the abdomen), and periodontitis (inflammation around the tooth).",
+    "statement": "The prefix peri- means around or surrounding.",
+    "wowFactor": "Pericarditis is inflammation of the pericardium — the sac that wraps around the heart. Peri (around) + cardio (heart) + itis (inflammation) — three prefixes tell the whole story!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'around or surrounding'?",
+        "correctAnswer": "Peri-",
+        "distractors": [
+          "Para-",
+          "Circum-",
+          "Epi-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'pericardium', what does 'peri-' tell you about this membrane?",
+        "correctAnswer": "It surrounds the heart",
+        "distractors": [
+          "It is within the heart",
+          "It is above the heart",
+          "It is between heart chambers"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_post",
+    "correctAnswer": "After, behind",
+    "acceptableAlternatives": [
+      "After",
+      "Behind",
+      "Posterior",
+      "Following"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Before",
+      "Within",
+      "Around",
+      "Above",
+      "Below",
+      "Through",
+      "Between",
+      "Away from"
+    ],
+    "quizQuestion": "What does the prefix post- mean in medical terminology?",
+    "explanation": "Post- comes from Latin 'post' meaning after or behind. It appears in postoperative (after surgery), postpartum (after birth), and posterior (behind or toward the back).",
+    "statement": "The prefix post- means after or behind.",
+    "wowFactor": "Postpartum depression occurs after (post) birth (partum). Knowing this prefix helps you immediately recognize that 'post-' anything in medicine means it happens after an event!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'after or behind'?",
+        "correctAnswer": "Post-",
+        "distractors": [
+          "Ante-",
+          "Pre-",
+          "Pro-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'postoperative care', what does 'post-' indicate about when care is given?",
+        "correctAnswer": "After the surgery",
+        "distractors": [
+          "Before the surgery",
+          "During the surgery",
+          "Around the time of surgery"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_pre",
+    "correctAnswer": "Before",
+    "acceptableAlternatives": [
+      "Prior to",
+      "In advance of"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 1,
+    "funScore": 4,
+    "ageGroup": "all",
+    "distractors": [
+      "After",
+      "Around",
+      "Within",
+      "Below",
+      "Above",
+      "Between",
+      "Through",
+      "Away from"
+    ],
+    "quizQuestion": "What does the prefix pre- mean in medical terminology?",
+    "explanation": "Pre- comes from Latin 'prae' meaning before. It appears in prenatal (before birth), preoperative (before surgery), and precancerous (before becoming cancer).",
+    "statement": "The prefix pre- means before in time or position.",
+    "wowFactor": "Prenatal vitamins are taken before (pre) birth (natal). Catching this prefix on a test can be the difference between knowing something happens before vs. after a critical event!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'before'?",
+        "correctAnswer": "Pre-",
+        "distractors": [
+          "Post-",
+          "Meta-",
+          "Retro-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'preoperative assessment', what does 'pre-' indicate about when assessment occurs?",
+        "correctAnswer": "Before the operation",
+        "distractors": [
+          "After the operation",
+          "During the operation",
+          "Around the time of surgery"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_pro",
+    "correctAnswer": "Before, forward",
+    "acceptableAlternatives": [
+      "Before",
+      "Forward",
+      "In favor of",
+      "In front"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "After",
+      "Behind",
+      "Within",
+      "Around",
+      "Below",
+      "Above",
+      "Away from",
+      "Between"
+    ],
+    "quizQuestion": "What does the prefix pro- mean in medical terminology?",
+    "explanation": "Pro- comes from Greek and Latin meaning before or forward. It appears in prognosis (before knowing the outcome), prolapse (falling forward/down), and prophylaxis (preventing before illness).",
+    "statement": "The prefix pro- means before or forward.",
+    "wowFactor": "A prognosis is literally 'knowing before' the outcome — pro (before) + gnosis (knowledge). Doctors give a prognosis to predict what will happen before it does!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'before or forward'?",
+        "correctAnswer": "Pro-",
+        "distractors": [
+          "Retro-",
+          "Post-",
+          "Trans-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'prolapse', what does 'pro-' suggest about the direction of movement?",
+        "correctAnswer": "A structure has fallen forward or downward",
+        "distractors": [
+          "A structure has moved backward",
+          "A structure has moved upward",
+          "A structure has expanded outward"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_retro",
+    "correctAnswer": "Behind, backward",
+    "acceptableAlternatives": [
+      "Behind",
+      "Backward",
+      "Posterior to"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Before",
+      "Forward",
+      "Above",
+      "Below",
+      "Within",
+      "Around",
+      "Between",
+      "Through"
+    ],
+    "quizQuestion": "What does the prefix retro- mean in medical terminology?",
+    "explanation": "Retro- comes from Latin 'retro' meaning backward or behind. It appears in retroperitoneal (behind the peritoneum), retrograde (going backward), and retrosternal (behind the sternum).",
+    "statement": "The prefix retro- means behind or backward.",
+    "wowFactor": "Retrograde amnesia — forgetting things that happened before an injury — uses retro (backward) because memory is lost going backward in time!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'behind or backward'?",
+        "correctAnswer": "Retro-",
+        "distractors": [
+          "Pro-",
+          "Ante-",
+          "Meta-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'retroperitoneal organs', what does 'retro-' tell you about their location?",
+        "correctAnswer": "They are behind the peritoneum",
+        "distractors": [
+          "They are within the peritoneum",
+          "They are in front of the peritoneum",
+          "They are around the peritoneum"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_sub",
+    "correctAnswer": "Below, under",
+    "acceptableAlternatives": [
+      "Below",
+      "Under",
+      "Beneath",
+      "Less than"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Above",
+      "Within",
+      "Around",
+      "Before",
+      "Between",
+      "Through",
+      "Away from",
+      "Beyond"
+    ],
+    "quizQuestion": "What does the prefix sub- mean in medical terminology?",
+    "explanation": "Sub- comes from Latin 'sub' meaning below or under. It appears in subcutaneous (under the skin), sublingual (under the tongue), and subdural (below the dura mater).",
+    "statement": "The prefix sub- means below or under.",
+    "wowFactor": "Sublingual medications — like nitroglycerin tablets — dissolve under (sub) the tongue (lingual), absorbing directly into the bloodstream for rapid action!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'below or under'?",
+        "correctAnswer": "Sub-",
+        "distractors": [
+          "Supra-",
+          "Epi-",
+          "Hyper-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'subcutaneous injection', what does 'sub-' indicate about where the injection goes?",
+        "correctAnswer": "Just under the skin",
+        "distractors": [
+          "Into the muscle below",
+          "Above the skin surface",
+          "Between skin layers"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_supra",
+    "correctAnswer": "Above, over",
+    "acceptableAlternatives": [
+      "Above",
+      "Over",
+      "Superior to"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Below",
+      "Within",
+      "Around",
+      "Before",
+      "Between",
+      "Through",
+      "Away from",
+      "Toward"
+    ],
+    "quizQuestion": "What does the prefix supra- (or super-) mean in medical terminology?",
+    "explanation": "Supra- comes from Latin 'supra' meaning above or over. It appears in suprarenal (above the kidney — another name for the adrenal glands), supraclavicular (above the clavicle), and supraspinatus (above the spine of the scapula).",
+    "statement": "The prefix supra- means above or over a structure.",
+    "wowFactor": "The suprarenal glands are another name for the adrenal glands — both mean 'above the kidney'. Supra (above) + renal (kidney) = perfectly descriptive anatomy!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'above or over'?",
+        "correctAnswer": "Supra-",
+        "distractors": [
+          "Infra-",
+          "Sub-",
+          "Para-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'supraclavicular lymph nodes', what does 'supra-' tell you about where they are?",
+        "correctAnswer": "Above the clavicle",
+        "distractors": [
+          "Below the clavicle",
+          "Around the clavicle",
+          "Within the clavicle"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_syn",
+    "correctAnswer": "Together, with",
+    "acceptableAlternatives": [
+      "Together",
+      "With",
+      "Joined",
+      "United"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Apart",
+      "Against",
+      "Without",
+      "Below",
+      "Above",
+      "Before",
+      "Beyond",
+      "Outside"
+    ],
+    "quizQuestion": "What does the prefix syn- (or sym-) mean in medical terminology?",
+    "explanation": "Syn-/sym- comes from Greek 'syn' meaning together or with. It appears in syndrome (symptoms running together), symphysis (growing together), and synapse (junction between neurons).",
+    "statement": "The prefix syn- means together or with.",
+    "wowFactor": "A syndrome is literally a 'running together' of symptoms — syn (together) + dromos (running). All those different symptoms belong to the same underlying condition!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'together or with'?",
+        "correctAnswer": "Syn-",
+        "distractors": [
+          "Anti-",
+          "A-",
+          "Contra-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'synapse', what does 'syn-' indicate about the junction?",
+        "correctAnswer": "Two neurons come together to communicate",
+        "distractors": [
+          "Neurons are separated for signaling",
+          "Neurons fire against each other",
+          "Neurons grow in opposite directions"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_trans",
+    "correctAnswer": "Across, through",
+    "acceptableAlternatives": [
+      "Across",
+      "Through",
+      "Beyond"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Within",
+      "Around",
+      "Above",
+      "Below",
+      "Before",
+      "Between",
+      "Away from",
+      "Toward"
+    ],
+    "quizQuestion": "What does the prefix trans- mean in medical terminology?",
+    "explanation": "Trans- comes from Latin 'trans' meaning across or through. It appears in transfusion (pouring across/into another person), transdermal (across/through the skin), and transplant (placing across into another location).",
+    "statement": "The prefix trans- means across or through.",
+    "wowFactor": "A transdermal patch delivers medication across (trans) the skin (dermal) directly into the bloodstream — no needle required, because the drug travels right through your skin!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'across or through'?",
+        "correctAnswer": "Trans-",
+        "distractors": [
+          "Dia-",
+          "Circum-",
+          "Peri-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'transdermal drug delivery', what does 'trans-' tell you about how the drug moves?",
+        "correctAnswer": "It passes across or through the skin",
+        "distractors": [
+          "It stays on the skin surface",
+          "It stays below the skin",
+          "It circulates around the skin"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "direction"
+    ]
+  },
+  {
+    "id": "medterm_pre_mono",
+    "correctAnswer": "One, single",
+    "acceptableAlternatives": [
+      "One",
+      "Single",
+      "Alone"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Two",
+      "Many",
+      "Half",
+      "All",
+      "Large",
+      "Small",
+      "Few",
+      "Four"
+    ],
+    "quizQuestion": "What does the prefix mono- (or uni-) mean in medical terminology?",
+    "explanation": "Mono- comes from Greek 'monos' meaning one or single. It appears in mononucleosis (disease of single-nucleus cells), monoplegia (paralysis of one limb), and monozygotic (from one fertilized egg — identical twins).",
+    "statement": "The prefix mono- means one or single.",
+    "wowFactor": "Mononucleosis — 'mono' — is named for the single-lobed nucleus found in the abnormal lymphocytes it produces. The kissing disease has a prefix hidden in plain sight!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'one or single'?",
+        "correctAnswer": "Mono-",
+        "distractors": [
+          "Bi-",
+          "Poly-",
+          "Hemi-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'monoplegia', what does 'mono-' tell you about which limbs are affected?",
+        "correctAnswer": "Only one limb is paralyzed",
+        "distractors": [
+          "Two limbs are paralyzed",
+          "All four limbs are paralyzed",
+          "Half the body is paralyzed"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "quantity"
+    ]
+  },
+  {
+    "id": "medterm_pre_bi",
+    "correctAnswer": "Two, double",
+    "acceptableAlternatives": [
+      "Two",
+      "Double",
+      "Twice"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "One",
+      "Three",
+      "Four",
+      "Many",
+      "Half",
+      "All",
+      "Large",
+      "Small"
+    ],
+    "quizQuestion": "What does the prefix bi- (or di-) mean in medical terminology?",
+    "explanation": "Bi- comes from Latin 'bis' meaning twice or two. It appears in biceps (two heads of muscle), bifurcation (splitting into two branches), and bilateral (on both sides).",
+    "statement": "The prefix bi- means two or double.",
+    "wowFactor": "The biceps brachii has two (bi) heads (ceps) — that's literally built into the name! When you flex your arm, both heads of the biceps contract together!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'two or double'?",
+        "correctAnswer": "Bi-",
+        "distractors": [
+          "Mono-",
+          "Tri-",
+          "Quadri-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'bilateral pneumonia', what does 'bi-' tell you about which lungs are affected?",
+        "correctAnswer": "Both lungs are affected",
+        "distractors": [
+          "Only one lung is affected",
+          "All parts of one lung are affected",
+          "The upper portion of both lungs"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "quantity"
+    ]
+  },
+  {
+    "id": "medterm_pre_tri",
+    "correctAnswer": "Three",
+    "acceptableAlternatives": [
+      "Three",
+      "Triple"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "One",
+      "Two",
+      "Four",
+      "Many",
+      "Half",
+      "All",
+      "Large",
+      "Small"
+    ],
+    "quizQuestion": "What does the prefix tri- mean in medical terminology?",
+    "explanation": "Tri- comes from Latin/Greek meaning three. It appears in triceps (three muscle heads), tricuspid valve (three cusps/flaps), and trimester (three-month period of pregnancy).",
+    "statement": "The prefix tri- means three.",
+    "wowFactor": "The tricuspid valve has three (tri) leaflets (cusps) separating the right atrium from the right ventricle — and the triceps on your arm has three (tri) heads (ceps)!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'three'?",
+        "correctAnswer": "Tri-",
+        "distractors": [
+          "Bi-",
+          "Quadri-",
+          "Poly-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'trimester', what does 'tri-' indicate about the pregnancy period?",
+        "correctAnswer": "Pregnancy is divided into three periods",
+        "distractors": [
+          "Pregnancy is divided into two periods",
+          "Pregnancy lasts three weeks",
+          "The baby develops in three stages per week"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "quantity"
+    ]
+  },
+  {
+    "id": "medterm_pre_quadri",
+    "correctAnswer": "Four",
+    "acceptableAlternatives": [
+      "Four",
+      "Fourfold"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "One",
+      "Two",
+      "Three",
+      "Many",
+      "Half",
+      "All",
+      "Large",
+      "Small"
+    ],
+    "quizQuestion": "What does the prefix quadri- mean in medical terminology?",
+    "explanation": "Quadri- comes from Latin 'quattuor' meaning four. It appears in quadriplegia (paralysis of all four limbs), quadriceps (four-headed thigh muscle), and quadrant (one of four sections).",
+    "statement": "The prefix quadri- means four.",
+    "wowFactor": "The quadriceps muscle has four (quadri) heads (ceps) across the front of your thigh — the rectus femoris, vastus lateralis, vastus medialis, and vastus intermedius all working as one!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'four'?",
+        "correctAnswer": "Quadri-",
+        "distractors": [
+          "Tri-",
+          "Poly-",
+          "Bi-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'quadriplegia', what does 'quadri-' tell you about the extent of paralysis?",
+        "correctAnswer": "All four limbs are paralyzed",
+        "distractors": [
+          "Two limbs are paralyzed",
+          "Half the body is paralyzed",
+          "One limb is paralyzed"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "quantity"
+    ]
+  },
+  {
+    "id": "medterm_pre_poly",
+    "correctAnswer": "Many, multiple",
+    "acceptableAlternatives": [
+      "Many",
+      "Multiple",
+      "Several",
+      "Much"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "One",
+      "Two",
+      "Four",
+      "Half",
+      "All",
+      "Large",
+      "Small",
+      "Few"
+    ],
+    "quizQuestion": "What does the prefix poly- (or multi-) mean in medical terminology?",
+    "explanation": "Poly- comes from Greek 'polys' meaning many. It appears in polyuria (excessive urination — many urinations), polycystic (many cysts), and polyneuropathy (affecting many nerves).",
+    "statement": "The prefix poly- means many or multiple.",
+    "wowFactor": "Polycystic ovary syndrome (PCOS) has many (poly) cysts on the ovaries — the prefix literally describes what a doctor sees on ultrasound!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'many or multiple'?",
+        "correctAnswer": "Poly-",
+        "distractors": [
+          "Mono-",
+          "Bi-",
+          "Oligo-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'polyneuropathy', what does 'poly-' indicate about the nerve damage?",
+        "correctAnswer": "Many nerves are affected",
+        "distractors": [
+          "Only one nerve is affected",
+          "A nerve is partially damaged",
+          "Two specific nerves are affected"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "quantity"
+    ]
+  },
+  {
+    "id": "medterm_pre_hemi",
+    "correctAnswer": "Half",
+    "acceptableAlternatives": [
+      "One half",
+      "Half of"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "One",
+      "Two",
+      "All",
+      "Many",
+      "Few",
+      "Large",
+      "Small",
+      "Double"
+    ],
+    "quizQuestion": "What does the prefix hemi- (or semi-) mean in medical terminology?",
+    "explanation": "Hemi- comes from Greek 'hemi' meaning half. It appears in hemiplegia (paralysis of one half of the body), hemisphere (half of a sphere, like brain hemispheres), and hemianopia (blindness in half the visual field).",
+    "statement": "The prefix hemi- means half.",
+    "wowFactor": "Hemiplegia — paralysis of the left or right half of the body — uses hemi (half) because a stroke typically affects only one side, the half controlled by the damaged brain region!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'half'?",
+        "correctAnswer": "Hemi-",
+        "distractors": [
+          "Mono-",
+          "Pan-",
+          "Bi-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'hemiplegia', what does 'hemi-' indicate about the paralysis?",
+        "correctAnswer": "One side of the body is affected",
+        "distractors": [
+          "Both sides are equally affected",
+          "One limb is affected",
+          "The entire body is affected"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "quantity"
+    ]
+  },
+  {
+    "id": "medterm_pre_oligo",
+    "correctAnswer": "Few, scanty",
+    "acceptableAlternatives": [
+      "Few",
+      "Scanty",
+      "Little",
+      "Deficient amount"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Many",
+      "All",
+      "One",
+      "Large",
+      "Half",
+      "Excessive",
+      "Normal",
+      "Two"
+    ],
+    "quizQuestion": "What does the prefix oligo- mean in medical terminology?",
+    "explanation": "Oligo- comes from Greek 'oligos' meaning few or little. It appears in oliguria (little urine output), oligodendrocyte (few-branched nerve cell), and oligospermia (low sperm count).",
+    "statement": "The prefix oligo- means few or scanty in amount.",
+    "wowFactor": "Oliguria — producing less than 400mL of urine per day — is a critical sign of kidney failure. The prefix oligo (few) tells a clinician immediately that urine output is dangerously low!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'few or scanty'?",
+        "correctAnswer": "Oligo-",
+        "distractors": [
+          "Poly-",
+          "Pan-",
+          "Macro-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'oliguria', what does 'oligo-' indicate about urine production?",
+        "correctAnswer": "Very little urine is being produced",
+        "distractors": [
+          "Too much urine is being produced",
+          "Urine production has stopped completely",
+          "Normal amounts of urine are produced"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "quantity"
+    ]
+  },
+  {
+    "id": "medterm_pre_macro",
+    "correctAnswer": "Large, long",
+    "acceptableAlternatives": [
+      "Large",
+      "Big",
+      "Long",
+      "Enlarged"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Small",
+      "Few",
+      "Many",
+      "Half",
+      "Normal",
+      "Slow",
+      "Fast",
+      "Equal"
+    ],
+    "quizQuestion": "What does the prefix macro- mean in medical terminology?",
+    "explanation": "Macro- comes from Greek 'makros' meaning large or long. It appears in macrophage (large eating cell of the immune system), macrocephaly (abnormally large head), and macroscopic (visible to the naked eye — large enough to see).",
+    "statement": "The prefix macro- means large.",
+    "wowFactor": "Macrophages are literally 'large eaters' — macro (large) + phage (to eat). These giant immune cells engulf and destroy bacteria and debris, and they really are much bigger than other immune cells!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'large'?",
+        "correctAnswer": "Macro-",
+        "distractors": [
+          "Micro-",
+          "Mega-",
+          "Oligo-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'macrophage', what does 'macro-' tell you about this immune cell?",
+        "correctAnswer": "It is a large cell",
+        "distractors": [
+          "It is a fast-moving cell",
+          "It produces many antibodies",
+          "It is found in many organs"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "size"
+    ]
+  },
+  {
+    "id": "medterm_pre_mega",
+    "correctAnswer": "Very large, great",
+    "acceptableAlternatives": [
+      "Very large",
+      "Greatly enlarged",
+      "Enormous"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Small",
+      "Normal",
+      "Half",
+      "Few",
+      "Many",
+      "Slow",
+      "New",
+      "Without"
+    ],
+    "quizQuestion": "What does the prefix mega- (or megalo-) mean in medical terminology?",
+    "explanation": "Mega- comes from Greek 'megas' meaning great or very large. It appears in megacolon (abnormally enlarged colon), megaloblast (abnormally large blood cell precursor), and splenomegaly (enlarged spleen).",
+    "statement": "The prefix mega- means very large or greatly enlarged.",
+    "wowFactor": "Cardiomegaly — an enlarged heart — sounds alarming because it is: cardio (heart) + megaly (very large). When a heart grows too big, it can't pump effectively!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'very large or greatly enlarged'?",
+        "correctAnswer": "Mega-",
+        "distractors": [
+          "Macro-",
+          "Hyper-",
+          "Pan-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'megacolon', what does 'mega-' indicate about the colon?",
+        "correctAnswer": "The colon is abnormally enlarged",
+        "distractors": [
+          "The colon contains many segments",
+          "The colon is functioning at high speed",
+          "The colon is below normal size"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "size"
+    ]
+  },
+  {
+    "id": "medterm_pre_micro",
+    "correctAnswer": "Small, tiny",
+    "acceptableAlternatives": [
+      "Small",
+      "Tiny",
+      "Minute",
+      "Very small"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Large",
+      "Many",
+      "All",
+      "Half",
+      "Normal",
+      "Fast",
+      "Equal",
+      "Without"
+    ],
+    "quizQuestion": "What does the prefix micro- mean in medical terminology?",
+    "explanation": "Micro- comes from Greek 'mikros' meaning small. It appears in microscope (instrument for viewing small things), microcephaly (abnormally small head), and microorganism (tiny living thing).",
+    "statement": "The prefix micro- means small or tiny.",
+    "wowFactor": "A microscope allows you to view things too micro (small) for the naked eye — and microcephaly (small head) is immediately understood by anyone who knows this one prefix!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'small or tiny'?",
+        "correctAnswer": "Micro-",
+        "distractors": [
+          "Macro-",
+          "Mega-",
+          "Poly-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'microcephaly', what does 'micro-' indicate about the head size?",
+        "correctAnswer": "The head is abnormally small",
+        "distractors": [
+          "The head is abnormally large",
+          "There are many small structures in the skull",
+          "The head shape is abnormal"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "size"
+    ]
+  },
+  {
+    "id": "medterm_pre_pan",
+    "correctAnswer": "All, entire",
+    "acceptableAlternatives": [
+      "All",
+      "Entire",
+      "Whole",
+      "Universal"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Half",
+      "Few",
+      "One",
+      "Many specific",
+      "Small",
+      "Large",
+      "New",
+      "Without"
+    ],
+    "quizQuestion": "What does the prefix pan- mean in medical terminology?",
+    "explanation": "Pan- comes from Greek 'pas/pan' meaning all. It appears in pandemic (affecting all people across a wide area), pancreas (glandular tissue spanning the entire area), and panacea (a remedy for all diseases).",
+    "statement": "The prefix pan- means all or entire.",
+    "wowFactor": "A pandemic affects pan (all) people (demos) — it is a disease outbreak that has spread to affect the entire world population, unlike an epidemic affecting just one region!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'all or entire'?",
+        "correctAnswer": "Pan-",
+        "distractors": [
+          "Poly-",
+          "Mega-",
+          "Macro-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'pandemic', what does 'pan-' indicate about disease spread?",
+        "correctAnswer": "The disease affects all people worldwide",
+        "distractors": [
+          "The disease is very severe in one region",
+          "The disease affects only elderly people",
+          "The disease recurs many times"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "quantity"
+    ]
+  },
+  {
+    "id": "medterm_pre_hyper",
+    "correctAnswer": "Excessive, above normal",
+    "acceptableAlternatives": [
+      "Excessive",
+      "Above normal",
+      "Over",
+      "Too much"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Deficient",
+      "Normal",
+      "Equal",
+      "Different",
+      "Same",
+      "False",
+      "Without",
+      "Abnormal"
+    ],
+    "quizQuestion": "What does the prefix hyper- mean in medical terminology?",
+    "explanation": "Hyper- comes from Greek 'hyper' meaning over or above. It appears in hypertension (above-normal blood pressure), hyperglycemia (excessive blood glucose), and hyperthyroidism (overactive thyroid).",
+    "statement": "The prefix hyper- means excessive or above normal levels.",
+    "wowFactor": "Hypertension — high blood pressure — is literally 'excessive tension' in the vessels. Hyper (above normal) warns you immediately that a value is dangerously elevated!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'excessive or above normal'?",
+        "correctAnswer": "Hyper-",
+        "distractors": [
+          "Hypo-",
+          "Dys-",
+          "A-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'hyperglycemia', what does 'hyper-' indicate about blood glucose levels?",
+        "correctAnswer": "Blood glucose is above normal",
+        "distractors": [
+          "Blood glucose is below normal",
+          "Blood glucose is unstable",
+          "Blood glucose is absent"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "degree"
+    ]
+  },
+  {
+    "id": "medterm_pre_hypo",
+    "correctAnswer": "Deficient, below normal",
+    "acceptableAlternatives": [
+      "Deficient",
+      "Below normal",
+      "Under",
+      "Too little"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Excessive",
+      "Normal",
+      "Equal",
+      "Different",
+      "Same",
+      "False",
+      "Without",
+      "Abnormal"
+    ],
+    "quizQuestion": "What does the prefix hypo- mean in medical terminology?",
+    "explanation": "Hypo- comes from Greek 'hypo' meaning under or below. It appears in hypoglycemia (low blood sugar), hypothyroidism (underactive thyroid), and hypodermic (under the skin).",
+    "statement": "The prefix hypo- means deficient or below normal levels.",
+    "wowFactor": "A hypodermic needle goes hypo (under/below) the dermis (skin). This same prefix tells you that hypoglycemia means your blood sugar is below normal — dangerous low levels!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'deficient or below normal'?",
+        "correctAnswer": "Hypo-",
+        "distractors": [
+          "Hyper-",
+          "Eu-",
+          "Iso-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'hypoglycemia', what does 'hypo-' indicate about blood glucose?",
+        "correctAnswer": "Blood glucose is below normal",
+        "distractors": [
+          "Blood glucose is above normal",
+          "Blood glucose is fluctuating",
+          "Blood glucose is absent"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "degree"
+    ]
+  },
+  {
+    "id": "medterm_pre_iso",
+    "correctAnswer": "Equal, same",
+    "acceptableAlternatives": [
+      "Equal",
+      "Same",
+      "Uniform"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Different",
+      "Excessive",
+      "Deficient",
+      "Without",
+      "False",
+      "Good",
+      "Bad",
+      "New"
+    ],
+    "quizQuestion": "What does the prefix iso- mean in medical terminology?",
+    "explanation": "Iso- comes from Greek 'isos' meaning equal or same. It appears in isotonic (equal tension — same osmolarity as blood), isometric (equal measure — muscle contraction without length change), and isoelectric (equal electrical potential).",
+    "statement": "The prefix iso- means equal or the same.",
+    "wowFactor": "Isotonic saline is the IV fluid that matches (iso = equal) the tonicity of blood — it won't cause cells to shrink or swell because it has the same salt concentration as your blood!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'equal or same'?",
+        "correctAnswer": "Iso-",
+        "distractors": [
+          "Hetero-",
+          "Homo-",
+          "Dys-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'isotonic solution', what does 'iso-' tell you about its concentration compared to blood?",
+        "correctAnswer": "It has equal osmolarity to blood",
+        "distractors": [
+          "It has higher osmolarity than blood",
+          "It has lower osmolarity than blood",
+          "It has no dissolved particles"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "comparison"
+    ]
+  },
+  {
+    "id": "medterm_pre_hetero",
+    "correctAnswer": "Different, other",
+    "acceptableAlternatives": [
+      "Different",
+      "Other",
+      "Varied",
+      "Dissimilar"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Same",
+      "Equal",
+      "Self",
+      "False",
+      "Good",
+      "Bad",
+      "Without",
+      "All"
+    ],
+    "quizQuestion": "What does the prefix hetero- mean in medical terminology?",
+    "explanation": "Hetero- comes from Greek 'heteros' meaning other or different. It appears in heterozygous (having two different alleles), heterosexual (attracted to the other sex), and heterogeneous (composed of different elements).",
+    "statement": "The prefix hetero- means different or other.",
+    "wowFactor": "A heterozygous person has two different (hetero) alleles at a gene location — one from each parent — which can create carriers of genetic diseases!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'different or other'?",
+        "correctAnswer": "Hetero-",
+        "distractors": [
+          "Homo-",
+          "Iso-",
+          "Pseudo-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'heterozygous', what does 'hetero-' tell you about the alleles?",
+        "correctAnswer": "The two alleles are different from each other",
+        "distractors": [
+          "The two alleles are identical",
+          "The alleles are both mutated",
+          "The alleles are missing"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "comparison"
+    ]
+  },
+  {
+    "id": "medterm_pre_homo",
+    "correctAnswer": "Same, alike",
+    "acceptableAlternatives": [
+      "Same",
+      "Alike",
+      "Identical",
+      "Uniform"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Different",
+      "False",
+      "Without",
+      "Excessive",
+      "Deficient",
+      "New",
+      "Bad",
+      "Good"
+    ],
+    "quizQuestion": "What does the prefix homo- mean in medical terminology?",
+    "explanation": "Homo- comes from Greek 'homos' meaning same. It appears in homozygous (having two identical alleles), homologous (corresponding in structure), and homeostasis (maintaining the same stable internal state).",
+    "statement": "The prefix homo- means same or alike.",
+    "wowFactor": "Homeostasis — the body's drive to maintain a stable internal environment — uses homo (same) + stasis (standing still). Your body constantly works to keep everything the same!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'same or alike'?",
+        "correctAnswer": "Homo-",
+        "distractors": [
+          "Hetero-",
+          "Pseudo-",
+          "Idio-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'homozygous', what does 'homo-' tell you about the alleles?",
+        "correctAnswer": "Both alleles at the gene locus are identical",
+        "distractors": [
+          "The alleles are completely different",
+          "Only one allele is present",
+          "The alleles are abnormal mutations"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "comparison"
+    ]
+  },
+  {
+    "id": "medterm_pre_pseudo",
+    "correctAnswer": "False, fake",
+    "acceptableAlternatives": [
+      "False",
+      "Fake",
+      "Not real",
+      "Resembling but not truly"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "True",
+      "Real",
+      "Good",
+      "Excessive",
+      "Deficient",
+      "Same",
+      "Different",
+      "New"
+    ],
+    "quizQuestion": "What does the prefix pseudo- mean in medical terminology?",
+    "explanation": "Pseudo- comes from Greek 'pseudos' meaning false. It appears in pseudoseizure (apparent seizure without true epileptic activity), pseudogout (resembles gout but has a different cause), and pseudomembrane (false membrane).",
+    "statement": "The prefix pseudo- means false or resembling something without truly being it.",
+    "wowFactor": "Pseudogout looks exactly like gout — joint pain and inflammation — but pseudo (false) warns us the cause is different crystals. Knowing this prefix saves patients from wrong treatment!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'false or resembling without being real'?",
+        "correctAnswer": "Pseudo-",
+        "distractors": [
+          "Eu-",
+          "Homo-",
+          "Idio-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'pseudoseizure', what does 'pseudo-' indicate about this episode?",
+        "correctAnswer": "It looks like a seizure but lacks true epileptic brain activity",
+        "distractors": [
+          "It is an extremely severe seizure",
+          "It is a seizure with an unknown cause",
+          "It is a new type of seizure"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "comparison"
+    ]
+  },
+  {
+    "id": "medterm_pre_eu",
+    "correctAnswer": "Good, normal",
+    "acceptableAlternatives": [
+      "Good",
+      "Normal",
+      "Well",
+      "True"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Bad",
+      "False",
+      "Excessive",
+      "Deficient",
+      "Without",
+      "Different",
+      "Same",
+      "Self"
+    ],
+    "quizQuestion": "What does the prefix eu- mean in medical terminology?",
+    "explanation": "Eu- comes from Greek 'eu' meaning good or well. It appears in euthyroid (normal thyroid function), eupnea (normal breathing), and eukaryote (cells with a true, well-formed nucleus).",
+    "statement": "The prefix eu- means good or normal.",
+    "wowFactor": "Eupnea — normal, effortless breathing — uses eu (good/normal) + pnea (breathing). When a patient is in eupnea, their breathing is working exactly as it should!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'good or normal'?",
+        "correctAnswer": "Eu-",
+        "distractors": [
+          "Dys-",
+          "Mal-",
+          "A-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'euthyroid', what does 'eu-' indicate about thyroid function?",
+        "correctAnswer": "The thyroid is functioning normally",
+        "distractors": [
+          "The thyroid is overactive",
+          "The thyroid is underactive",
+          "The thyroid is absent"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "degree"
+    ]
+  },
+  {
+    "id": "medterm_pre_dys",
+    "correctAnswer": "Abnormal, difficult",
+    "acceptableAlternatives": [
+      "Abnormal",
+      "Difficult",
+      "Painful",
+      "Impaired"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Good",
+      "Normal",
+      "Easy",
+      "Excessive",
+      "Deficient",
+      "False",
+      "Same",
+      "Without"
+    ],
+    "quizQuestion": "What does the prefix dys- mean in medical terminology?",
+    "explanation": "Dys- comes from Greek 'dys' meaning bad, difficult, or abnormal. It appears in dyspnea (difficult breathing), dysphagia (difficulty swallowing), and dysrhythmia (abnormal heart rhythm).",
+    "statement": "The prefix dys- means abnormal, difficult, or painful.",
+    "wowFactor": "Dyslexia — difficulty reading — uses dys (difficulty) + lexia (reading). Even outside medicine, this prefix signals something is not working as it should!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'abnormal or difficult'?",
+        "correctAnswer": "Dys-",
+        "distractors": [
+          "Eu-",
+          "Hyper-",
+          "Pseudo-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'dyspnea', what does 'dys-' indicate about breathing?",
+        "correctAnswer": "Breathing is difficult or labored",
+        "distractors": [
+          "Breathing is faster than normal",
+          "Breathing is absent",
+          "Breathing is abnormally slow"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "degree"
+    ]
+  },
+  {
+    "id": "medterm_pre_mal",
+    "correctAnswer": "Bad, abnormal",
+    "acceptableAlternatives": [
+      "Bad",
+      "Abnormal",
+      "Poor",
+      "Ill"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Good",
+      "Normal",
+      "Excessive",
+      "Deficient",
+      "False",
+      "Without",
+      "New",
+      "Self"
+    ],
+    "quizQuestion": "What does the prefix mal- mean in medical terminology?",
+    "explanation": "Mal- comes from Latin 'malus' meaning bad or ill. It appears in malnutrition (poor nutrition), malignant (bad/harmful tumor — likely to spread), and malabsorption (poor nutrient absorption).",
+    "statement": "The prefix mal- means bad or abnormally poor function.",
+    "wowFactor": "Malignant vs. benign tumors — malignant uses mal (bad) because these cancers behave badly: they invade nearby tissue and spread to distant organs!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'bad or abnormally poor'?",
+        "correctAnswer": "Mal-",
+        "distractors": [
+          "Eu-",
+          "Dys-",
+          "A-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'malnutrition', what does 'mal-' indicate about nutrition status?",
+        "correctAnswer": "Nutrition is inadequate or of poor quality",
+        "distractors": [
+          "Nutrition is excessive",
+          "Nutrition cannot be absorbed",
+          "Nutrition is completely absent"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "degree"
+    ]
+  },
+  {
+    "id": "medterm_pre_an",
+    "correctAnswer": "Without, absence of",
+    "acceptableAlternatives": [
+      "Without",
+      "Absence of",
+      "Not",
+      "Lacking"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "With",
+      "Excessive",
+      "Normal",
+      "Good",
+      "Bad",
+      "Many",
+      "New",
+      "Equal"
+    ],
+    "quizQuestion": "What does the prefix a- (or an-) mean in medical terminology?",
+    "explanation": "A-/an- comes from Greek meaning without or absence of. It appears in anemia (without normal blood — low red cells), apnea (without breathing), and anuria (without urine output).",
+    "statement": "The prefix a- (or an-) means without or absence of something.",
+    "wowFactor": "Apnea means 'without breathing' — a (without) + pnea (breathing). Sleep apnea literally means your breathing stops while you sleep. One prefix, an entire diagnosis!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'without or absence of'?",
+        "correctAnswer": "A-/An-",
+        "distractors": [
+          "Eu-",
+          "Poly-",
+          "Syn-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'anuria', what does 'an-' indicate about urine output?",
+        "correctAnswer": "No urine is being produced",
+        "distractors": [
+          "Very little urine is produced",
+          "Too much urine is produced",
+          "Urine has an abnormal color"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "degree"
+    ]
+  },
+  {
+    "id": "medterm_pre_brady",
+    "correctAnswer": "Slow",
+    "acceptableAlternatives": [
+      "Slow",
+      "Abnormally slow"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Fast",
+      "Normal",
+      "Excessive",
+      "Without",
+      "New",
+      "Self",
+      "Against",
+      "Again"
+    ],
+    "quizQuestion": "What does the prefix brady- mean in medical terminology?",
+    "explanation": "Brady- comes from Greek 'bradys' meaning slow. It appears in bradycardia (abnormally slow heart rate), bradypnea (abnormally slow breathing), and bradykinesia (slowness of movement, a Parkinson's symptom).",
+    "statement": "The prefix brady- means slow.",
+    "wowFactor": "Bradycardia — a heart rate below 60 beats per minute — is immediately decoded as brady (slow) + cardia (heart). When a patient is bradycardic, their heart is beating too slowly!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'slow'?",
+        "correctAnswer": "Brady-",
+        "distractors": [
+          "Tachy-",
+          "Dys-",
+          "Hypo-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'bradycardia', what does 'brady-' indicate about the heart rate?",
+        "correctAnswer": "The heart rate is abnormally slow",
+        "distractors": [
+          "The heart rate is abnormally fast",
+          "The heart has an irregular rhythm",
+          "The heart is not pumping effectively"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "speed"
+    ]
+  },
+  {
+    "id": "medterm_pre_tachy",
+    "correctAnswer": "Fast, rapid",
+    "acceptableAlternatives": [
+      "Fast",
+      "Rapid",
+      "Swift",
+      "Abnormally fast"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Slow",
+      "Normal",
+      "Without",
+      "New",
+      "Self",
+      "Against",
+      "Again",
+      "Excessive"
+    ],
+    "quizQuestion": "What does the prefix tachy- mean in medical terminology?",
+    "explanation": "Tachy- comes from Greek 'tachys' meaning fast or swift. It appears in tachycardia (rapid heart rate — over 100 bpm at rest), tachypnea (rapid breathing), and tachyarrhythmia (fast abnormal heart rhythm).",
+    "statement": "The prefix tachy- means fast or rapid.",
+    "wowFactor": "Tachycardia — a resting heart rate over 100 beats per minute — is tachy (fast) + cardia (heart). This paired with bradycardia (slow heart) is one of the most useful prefix pairs to memorize!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'fast or rapid'?",
+        "correctAnswer": "Tachy-",
+        "distractors": [
+          "Brady-",
+          "Hyper-",
+          "Poly-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'tachypnea', what does 'tachy-' indicate about breathing?",
+        "correctAnswer": "Breathing is abnormally fast",
+        "distractors": [
+          "Breathing is abnormally slow",
+          "Breathing is absent",
+          "Breathing is labored"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "speed"
+    ]
+  },
+  {
+    "id": "medterm_pre_auto",
+    "correctAnswer": "Self",
+    "acceptableAlternatives": [
+      "Self",
+      "One's own"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Other",
+      "New",
+      "Against",
+      "Together",
+      "Again",
+      "Many",
+      "Without",
+      "False"
+    ],
+    "quizQuestion": "What does the prefix auto- mean in medical terminology?",
+    "explanation": "Auto- comes from Greek 'autos' meaning self. It appears in autoimmune (self-attacking immune response), autopsy (self-examination — viewing for oneself), and autograft (tissue transplanted from the same person).",
+    "statement": "The prefix auto- means self or one's own.",
+    "wowFactor": "Autoimmune diseases are when the immune system attacks auto (self) — your body's own tissues. Rheumatoid arthritis, lupus, and type 1 diabetes are all auto (self) + immune attacks!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'self'?",
+        "correctAnswer": "Auto-",
+        "distractors": [
+          "Idio-",
+          "Homo-",
+          "Neo-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'autoimmune disease', what does 'auto-' indicate about the immune response?",
+        "correctAnswer": "The immune system is attacking the body's own tissues",
+        "distractors": [
+          "The immune system is attacking a foreign pathogen",
+          "The immune system is overreacting to medication",
+          "The immune system has been transplanted from another person"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "function"
+    ]
+  },
+  {
+    "id": "medterm_pre_contra",
+    "correctAnswer": "Against, opposite",
+    "acceptableAlternatives": [
+      "Against",
+      "Opposite",
+      "Counter to"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "With",
+      "For",
+      "Same",
+      "Self",
+      "New",
+      "Again",
+      "Together",
+      "Within"
+    ],
+    "quizQuestion": "What does the prefix contra- (or anti-) mean in medical terminology?",
+    "explanation": "Contra- comes from Latin 'contra' meaning against or opposite. It appears in contraindication (a reason against using a treatment), contraceptive (against conception), and contralateral (on the opposite side).",
+    "statement": "The prefix contra- means against or opposite.",
+    "wowFactor": "A contraindication is literally a 'direction against' using a drug — if a patient has a contraindication, something about them makes that treatment potentially harmful!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'against or opposite'?",
+        "correctAnswer": "Contra-",
+        "distractors": [
+          "Syn-",
+          "Pro-",
+          "Auto-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'contraindication', what does 'contra-' tell you about using the treatment?",
+        "correctAnswer": "There is a reason against using that treatment",
+        "distractors": [
+          "The treatment is recommended",
+          "The treatment is uncertain",
+          "The treatment is experimental"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "function"
+    ]
+  },
+  {
+    "id": "medterm_pre_neo",
+    "correctAnswer": "New",
+    "acceptableAlternatives": [
+      "New",
+      "Recent",
+      "Newly formed"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Old",
+      "Self",
+      "Against",
+      "Together",
+      "Again",
+      "Without",
+      "False",
+      "Different"
+    ],
+    "quizQuestion": "What does the prefix neo- mean in medical terminology?",
+    "explanation": "Neo- comes from Greek 'neos' meaning new. It appears in neoplasm (new abnormal growth — a tumor), neonatal (pertaining to the newborn period), and neovascularization (new blood vessel formation).",
+    "statement": "The prefix neo- means new or newly formed.",
+    "wowFactor": "Neoplasm — the medical word for tumor — literally means 'new growth': neo (new) + plasm (formation). All tumors, benign or malignant, are abnormal new tissue growth!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'new or newly formed'?",
+        "correctAnswer": "Neo-",
+        "distractors": [
+          "Retro-",
+          "Pseudo-",
+          "Re-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'neoplasm', what does 'neo-' indicate about this tissue?",
+        "correctAnswer": "It is newly and abnormally formed tissue",
+        "distractors": [
+          "It is old scar tissue",
+          "It is tissue that has returned after removal",
+          "It is tissue from another organism"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "function"
+    ]
+  },
+  {
+    "id": "medterm_pre_re",
+    "correctAnswer": "Again, back",
+    "acceptableAlternatives": [
+      "Again",
+      "Back",
+      "Repeat",
+      "Return"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "New",
+      "First time",
+      "Self",
+      "Against",
+      "Together",
+      "Without",
+      "Forward",
+      "Beyond"
+    ],
+    "quizQuestion": "What does the prefix re- mean in medical terminology?",
+    "explanation": "Re- comes from Latin 're' meaning again or back. It appears in relapse (falling back into illness), resection (cutting back — surgical removal), and rehabilitation (restoring to a former state again).",
+    "statement": "The prefix re- means again or returning to a previous state.",
+    "wowFactor": "A relapse is when a disease 'falls back' — re (back/again) + lapse (to fall). When a patient relapses, their illness that seemed controlled has returned!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'again or back'?",
+        "correctAnswer": "Re-",
+        "distractors": [
+          "Neo-",
+          "Pro-",
+          "Retro-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'relapse', what does 're-' indicate about the disease?",
+        "correctAnswer": "The disease has returned after a period of improvement",
+        "distractors": [
+          "The disease is appearing for the first time",
+          "The disease is spreading to new locations",
+          "The disease is becoming more severe"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "function"
+    ]
+  },
+  {
+    "id": "medterm_pre_idio",
+    "correctAnswer": "One's own, peculiar",
+    "acceptableAlternatives": [
+      "One's own",
+      "Peculiar",
+      "Self-generated",
+      "Unknown cause"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "External cause",
+      "Same",
+      "False",
+      "Together",
+      "Against",
+      "New",
+      "Normal",
+      "Different"
+    ],
+    "quizQuestion": "What does the prefix idio- mean in medical terminology?",
+    "explanation": "Idio- comes from Greek 'idios' meaning one's own or peculiar. It appears in idiopathic (disease of unknown or self-generated cause), idiosyncrasy (peculiar individual response), and idiotype (unique antibody characteristics).",
+    "statement": "The prefix idio- means one's own or peculiar — often indicating an unknown or self-generated cause.",
+    "wowFactor": "Idiopathic is used when doctors cannot find the cause of a disease — idio (one's own) + pathic (disease). In other words, the body generated the disease by itself for unknown reasons!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'one's own' or indicates an unknown self-generated cause?",
+        "correctAnswer": "Idio-",
+        "distractors": [
+          "Auto-",
+          "Pseudo-",
+          "Hetero-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'idiopathic disease', what does 'idio-' indicate about the disease cause?",
+        "correctAnswer": "The cause is unknown or arises from within the body",
+        "distractors": [
+          "The cause is a known infection",
+          "The cause is a genetic mutation",
+          "The cause is an environmental toxin"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "function"
+    ]
+  },
+  {
+    "id": "medterm_pre_erythro",
+    "correctAnswer": "Red",
+    "acceptableAlternatives": [
+      "Red color"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "White",
+      "Blue",
+      "Black",
+      "Green",
+      "Yellow",
+      "Color",
+      "Many",
+      "Normal"
+    ],
+    "quizQuestion": "What does the prefix erythr/o- mean in medical terminology?",
+    "explanation": "Erythr/o- comes from Greek 'erythros' meaning red. It appears in erythrocyte (red blood cell), erythropoietin (hormone stimulating red cell production), and erythema (redness of skin).",
+    "statement": "The prefix erythr/o- means red.",
+    "wowFactor": "Erythrocytes — red blood cells — get their name from erythro (red). They appear red because they contain hemoglobin, which carries oxygen bound to iron!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'red'?",
+        "correctAnswer": "Erythr/o-",
+        "distractors": [
+          "Leuk/o-",
+          "Cyan/o-",
+          "Melan/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'erythema', what does 'erythr-' tell you about the skin appearance?",
+        "correctAnswer": "The skin is red or flushed",
+        "distractors": [
+          "The skin is pale",
+          "The skin is blue",
+          "The skin is yellow"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "color"
+    ]
+  },
+  {
+    "id": "medterm_pre_leuko",
+    "correctAnswer": "White",
+    "acceptableAlternatives": [
+      "White color"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Red",
+      "Blue",
+      "Black",
+      "Green",
+      "Yellow",
+      "Color",
+      "Large",
+      "Many"
+    ],
+    "quizQuestion": "What does the prefix leuk/o- mean in medical terminology?",
+    "explanation": "Leuk/o- comes from Greek 'leukos' meaning white. It appears in leukocyte (white blood cell), leukemia (cancer of white blood cells), and leukorrhea (white vaginal discharge).",
+    "statement": "The prefix leuk/o- means white.",
+    "wowFactor": "Leukemia is literally a 'white blood' disease — leuko (white) + emia (blood condition). In leukemia, malignant white blood cells (leukocytes) multiply uncontrollably!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'white'?",
+        "correctAnswer": "Leuk/o-",
+        "distractors": [
+          "Erythr/o-",
+          "Cyan/o-",
+          "Xanth/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'leukocyte', what does 'leuk-' tell you about this type of blood cell?",
+        "correctAnswer": "It is a white blood cell",
+        "distractors": [
+          "It is a red blood cell",
+          "It is a platelet",
+          "It is a blue-staining cell"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "color"
+    ]
+  },
+  {
+    "id": "medterm_pre_cyano",
+    "correctAnswer": "Blue",
+    "acceptableAlternatives": [
+      "Blue color",
+      "Bluish"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Red",
+      "White",
+      "Black",
+      "Green",
+      "Yellow",
+      "Large",
+      "Small",
+      "Normal"
+    ],
+    "quizQuestion": "What does the prefix cyan/o- mean in medical terminology?",
+    "explanation": "Cyan/o- comes from Greek 'kyanos' meaning blue. It appears in cyanosis (blue discoloration of skin from lack of oxygen), cyanide (historically named for the blue pigment), and acrocyanosis (blue extremities).",
+    "statement": "The prefix cyan/o- means blue.",
+    "wowFactor": "Cyanosis — the blue color of a patient who isn't getting enough oxygen — is immediately understood as cyan (blue) + osis (abnormal condition). Blue lips are a critical emergency sign!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'blue'?",
+        "correctAnswer": "Cyan/o-",
+        "distractors": [
+          "Erythr/o-",
+          "Melan/o-",
+          "Chlor/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'cyanosis', what does 'cyan-' indicate about the patient's skin color?",
+        "correctAnswer": "The skin has a bluish color due to low oxygen",
+        "distractors": [
+          "The skin is pale due to anemia",
+          "The skin is red due to inflammation",
+          "The skin is yellow due to liver disease"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "color"
+    ]
+  },
+  {
+    "id": "medterm_pre_melano",
+    "correctAnswer": "Black, dark",
+    "acceptableAlternatives": [
+      "Black",
+      "Dark",
+      "Dark pigment"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "White",
+      "Red",
+      "Blue",
+      "Green",
+      "Yellow",
+      "Large",
+      "Small",
+      "Normal"
+    ],
+    "quizQuestion": "What does the prefix melan/o- mean in medical terminology?",
+    "explanation": "Melan/o- comes from Greek 'melas' meaning black or dark. It appears in melanoma (dark skin cancer), melanin (dark pigment in skin and hair), and melena (dark tarry stools from bleeding).",
+    "statement": "The prefix melan/o- means black or dark.",
+    "wowFactor": "Melanoma — one of the deadliest skin cancers — is named melan (black/dark) + oma (tumor) because these cancers often appear as dark, irregularly pigmented lesions!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'black or dark'?",
+        "correctAnswer": "Melan/o-",
+        "distractors": [
+          "Leuk/o-",
+          "Xanth/o-",
+          "Cyan/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'melanin', what does 'melan-' indicate about this substance?",
+        "correctAnswer": "It produces dark pigmentation in skin and hair",
+        "distractors": [
+          "It produces red coloration in blood",
+          "It produces yellow coloration in bile",
+          "It produces white areas in the skin"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "color"
+    ]
+  },
+  {
+    "id": "medterm_pre_chloro",
+    "correctAnswer": "Green",
+    "acceptableAlternatives": [
+      "Green color",
+      "Greenish"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Red",
+      "White",
+      "Blue",
+      "Black",
+      "Yellow",
+      "Large",
+      "Small",
+      "Normal"
+    ],
+    "quizQuestion": "What does the prefix chlor/o- mean in medical terminology?",
+    "explanation": "Chlor/o- comes from Greek 'chloros' meaning green or pale green. It appears in chlorosis (greenish anemia historically seen in young women), chlorophyll (the green pigment in plants), and chloroma (green tumor of leukemia cells).",
+    "statement": "The prefix chlor/o- means green.",
+    "wowFactor": "Chloroma — a tumor formed by leukemia cells — appears greenish because the cells contain myeloperoxidase enzyme that looks green! The prefix chlor (green) literally describes the tumor's color!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'green'?",
+        "correctAnswer": "Chlor/o-",
+        "distractors": [
+          "Cyan/o-",
+          "Xanth/o-",
+          "Erythr/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'chlorosis', what does 'chlor-' tell you about the appearance of this condition?",
+        "correctAnswer": "The skin has a pale greenish color",
+        "distractors": [
+          "The skin is blue from oxygen deprivation",
+          "The skin is yellow from jaundice",
+          "The skin is red from inflammation"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "color"
+    ]
+  },
+  {
+    "id": "medterm_pre_xantho",
+    "correctAnswer": "Yellow",
+    "acceptableAlternatives": [
+      "Yellow color"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Red",
+      "White",
+      "Blue",
+      "Black",
+      "Green",
+      "Large",
+      "Small",
+      "Normal"
+    ],
+    "quizQuestion": "What does the prefix xanth/o- mean in medical terminology?",
+    "explanation": "Xanth/o- comes from Greek 'xanthos' meaning yellow. It appears in xanthelasma (yellow plaques near the eye from cholesterol), xanthoma (yellow skin deposits), and xanthochromia (yellow color of cerebrospinal fluid after bleeding).",
+    "statement": "The prefix xanth/o- means yellow.",
+    "wowFactor": "Xanthelasma — yellow patches of cholesterol around the eyelids — uses xanth (yellow) because that's exactly what they look like. Spotting these tells a doctor the patient may have high cholesterol!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'yellow'?",
+        "correctAnswer": "Xanth/o-",
+        "distractors": [
+          "Melan/o-",
+          "Erythr/o-",
+          "Chlor/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'xanthochromia' of cerebrospinal fluid, what does 'xanth-' indicate?",
+        "correctAnswer": "The fluid has a yellow color, indicating old blood",
+        "distractors": [
+          "The fluid is clear and normal",
+          "The fluid is cloudy from infection",
+          "The fluid contains red blood from active bleeding"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "color"
+    ]
+  },
+  {
+    "id": "medterm_pre_chromo",
+    "correctAnswer": "Color",
+    "acceptableAlternatives": [
+      "Color",
+      "Pigment",
+      "Colored"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Colorless",
+      "Black",
+      "Red",
+      "White",
+      "Large",
+      "Small",
+      "New",
+      "Normal"
+    ],
+    "quizQuestion": "What does the prefix chrom/o- mean in medical terminology?",
+    "explanation": "Chrom/o- comes from Greek 'chroma' meaning color. It appears in chromosome (colored body — named because chromosomes absorb colored stains), chromatin (color-absorbing nuclear material), and achromia (absence of color).",
+    "statement": "The prefix chrom/o- means color.",
+    "wowFactor": "Chromosomes were named 'colored bodies' because early microscopists saw them absorb the colored stains they used — chrom (color) + some (body). The name stuck even though color has nothing to do with their function!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'color' or relates to pigment?",
+        "correctAnswer": "Chrom/o-",
+        "distractors": [
+          "Melan/o-",
+          "Leuk/o-",
+          "Xanth/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 'chromosome', what does 'chrom-' indicate about why chromosomes got this name?",
+        "correctAnswer": "They absorbed colored stains when viewed under early microscopes",
+        "distractors": [
+          "They produce the color of the cell",
+          "They are found in colored blood cells",
+          "They regulate pigment production"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "color"
+    ]
+  },
+  {
+    "id": "medterm_pre_acro",
+    "correctAnswer": "Extremity, tip, topmost",
+    "acceptableAlternatives": [
+      "Extremity",
+      "Tip",
+      "Top",
+      "End"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Middle",
+      "Below",
+      "Within",
+      "Around",
+      "Before",
+      "After",
+      "Many",
+      "Small"
+    ],
+    "quizQuestion": "What does the prefix acro- mean in medical terminology?",
+    "explanation": "Acro- comes from Greek \"akros\" meaning topmost, tip, or extremity. It appears in acromegaly (enlargement of extremities — hands, feet, face), acrophobia (fear of heights), and acrocyanosis (blue discoloration of the extremities).",
+    "statement": "The prefix acro- means extremity or tip of a structure.",
+    "wowFactor": "Acromegaly — excessive growth hormone enlarging the hands, feet, and face — uses acro (extremity) because the extremities are disproportionately affected, even though the whole body is involved!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"extremity or tip\"?",
+        "correctAnswer": "Acro-",
+        "distractors": [
+          "Macro-",
+          "Micro-",
+          "Meso-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"acrocyanosis\", what does \"acro-\" indicate about where the blue color appears?",
+        "correctAnswer": "At the tips and extremities like fingers and toes",
+        "distractors": [
+          "Around the lips and mouth",
+          "Across the entire body",
+          "Above the waist only"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "position"
+    ]
+  },
+  {
+    "id": "medterm_pre_ambi",
+    "correctAnswer": "Both, on both sides",
+    "acceptableAlternatives": [
+      "Both",
+      "On both sides",
+      "Double",
+      "Either"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "One side",
+      "Without",
+      "Against",
+      "Many",
+      "Small",
+      "Large",
+      "Normal",
+      "Around"
+    ],
+    "quizQuestion": "What does the prefix ambi- mean in medical terminology?",
+    "explanation": "Ambi- comes from Latin \"ambo\" meaning both or on both sides. It appears in ambidextrous (equally skilled with both hands), ambivalence (having feelings on both sides), and amblyopia (lazy eye — reduced vision affecting the eye on one side).",
+    "statement": "The prefix ambi- means both or on both sides.",
+    "wowFactor": "Ambidextrous people can use both (ambi) hands equally well — dexter means right in Latin, so ambidextrous literally means \"right-handed on both sides\"!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"both or on both sides\"?",
+        "correctAnswer": "Ambi-",
+        "distractors": [
+          "Bi-",
+          "Mono-",
+          "Semi-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"ambidextrous\", what does \"ambi-\" indicate about hand use?",
+        "correctAnswer": "Both hands are equally skilled",
+        "distractors": [
+          "The right hand is dominant",
+          "One hand is stronger",
+          "Hand skill alternates day to day"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "quantity"
+    ]
+  },
+  {
+    "id": "medterm_pre_cephal",
+    "correctAnswer": "Head",
+    "acceptableAlternatives": [
+      "Head",
+      "Of the head"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Neck",
+      "Brain",
+      "Face",
+      "Skull",
+      "Below",
+      "Above",
+      "Within",
+      "Around"
+    ],
+    "quizQuestion": "What does the prefix cephal/o- mean in medical terminology?",
+    "explanation": "Cephal/o- comes from Greek \"kephale\" meaning head. It appears in cephalic (relating to the head), cephalopelvic disproportion (head too large for the pelvis), and microcephaly (abnormally small head).",
+    "statement": "The prefix cephal/o- means head.",
+    "wowFactor": "Cephalopelvic disproportion — when a baby's head is too big to fit through the pelvis during birth — is one of the most critical obstetric complications, and cephal (head) tells you exactly what is too large!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"head\"?",
+        "correctAnswer": "Cephal/o-",
+        "distractors": [
+          "Cervic/o-",
+          "Cranio-",
+          "Encephal/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"cephalic presentation\", what does \"cephal-\" indicate about the baby's position?",
+        "correctAnswer": "The baby's head is positioned toward the birth canal",
+        "distractors": [
+          "The baby is in a sideways position",
+          "The baby's feet are first",
+          "The baby's back faces outward"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "medterm_pre_cardi",
+    "correctAnswer": "Heart",
+    "acceptableAlternatives": [
+      "Heart",
+      "Of the heart"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Vessel",
+      "Lung",
+      "Brain",
+      "Kidney",
+      "Liver",
+      "Blood",
+      "Muscle",
+      "Nerve"
+    ],
+    "quizQuestion": "What does the prefix cardi/o- mean in medical terminology?",
+    "explanation": "Cardi/o- comes from Greek \"kardia\" meaning heart. It appears in cardiology (study of the heart), cardiomegaly (enlarged heart), and cardiomyopathy (disease of the heart muscle).",
+    "statement": "The prefix cardi/o- means heart.",
+    "wowFactor": "Cardiopulmonary resuscitation (CPR) combines cardi (heart) + pulmonary (lung) because the technique restores both heartbeat and breathing simultaneously — two vital functions in three letters!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"heart\"?",
+        "correctAnswer": "Cardi/o-",
+        "distractors": [
+          "Pneum/o-",
+          "Hepat/o-",
+          "Neur/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"cardiomyopathy\", what does \"cardi-\" indicate about which organ is diseased?",
+        "correctAnswer": "The heart muscle is diseased",
+        "distractors": [
+          "The lung tissue is diseased",
+          "The blood vessels are diseased",
+          "The kidney is diseased"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "medterm_pre_encephalo",
+    "correctAnswer": "Brain",
+    "acceptableAlternatives": [
+      "Brain",
+      "Within the head"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Heart",
+      "Nerve",
+      "Head",
+      "Skull",
+      "Spinal cord",
+      "Vessel",
+      "Lung",
+      "Kidney"
+    ],
+    "quizQuestion": "What does the prefix encephal/o- mean in medical terminology?",
+    "explanation": "Encephal/o- comes from Greek \"enkephalos\" meaning brain (literally \"within the head\"). It appears in encephalitis (inflammation of the brain), encephalopathy (brain disease), and electroencephalogram (EEG — recording of brain electrical activity).",
+    "statement": "The prefix encephal/o- means brain.",
+    "wowFactor": "Encephalitis — brain inflammation — sounds alarming because it is: encephal (brain) + itis (inflammation). Identifying this prefix helps students immediately recognize what organ is affected!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"brain\"?",
+        "correctAnswer": "Encephal/o-",
+        "distractors": [
+          "Cephal/o-",
+          "Neur/o-",
+          "Cerebell/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"encephalopathy\", what does \"encephal-\" indicate about where the pathology is?",
+        "correctAnswer": "The disease is affecting the brain",
+        "distractors": [
+          "The disease is affecting the spinal cord",
+          "The disease is affecting the skull",
+          "The disease is affecting the peripheral nerves"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "medterm_pre_gastr",
+    "correctAnswer": "Stomach",
+    "acceptableAlternatives": [
+      "Stomach",
+      "Of the stomach"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Intestine",
+      "Liver",
+      "Kidney",
+      "Heart",
+      "Lung",
+      "Spleen",
+      "Esophagus",
+      "Colon"
+    ],
+    "quizQuestion": "What does the prefix gastr/o- mean in medical terminology?",
+    "explanation": "Gastr/o- comes from Greek \"gaster\" meaning stomach. It appears in gastritis (stomach inflammation), gastroscopy (viewing the stomach with a scope), and gastroparesis (paralysis of the stomach — slow emptying).",
+    "statement": "The prefix gastr/o- means stomach.",
+    "wowFactor": "Gastroenterology — the medical specialty for gut diseases — uses gastr (stomach) + entero (intestine) + logy (study of). One word covers the entire digestive tract!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"stomach\"?",
+        "correctAnswer": "Gastr/o-",
+        "distractors": [
+          "Hepat/o-",
+          "Enter/o-",
+          "Col/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"gastritis\", what does \"gastr-\" indicate about which organ is inflamed?",
+        "correctAnswer": "The stomach is inflamed",
+        "distractors": [
+          "The intestine is inflamed",
+          "The esophagus is inflamed",
+          "The liver is inflamed"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "medterm_pre_hepat",
+    "correctAnswer": "Liver",
+    "acceptableAlternatives": [
+      "Liver",
+      "Of the liver"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Stomach",
+      "Kidney",
+      "Heart",
+      "Lung",
+      "Spleen",
+      "Pancreas",
+      "Gallbladder",
+      "Intestine"
+    ],
+    "quizQuestion": "What does the prefix hepat/o- mean in medical terminology?",
+    "explanation": "Hepat/o- comes from Greek \"hepar\" meaning liver. It appears in hepatitis (liver inflammation — as in hepatitis A, B, C), hepatomegaly (enlarged liver), and hepatocyte (liver cell).",
+    "statement": "The prefix hepat/o- means liver.",
+    "wowFactor": "Hepatitis A, B, and C — three different viral diseases — share hepat (liver) because they all attack the same organ. The prefix unifies them despite having completely different viruses and transmission routes!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"liver\"?",
+        "correctAnswer": "Hepat/o-",
+        "distractors": [
+          "Gastr/o-",
+          "Nephr/o-",
+          "Splen/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"hepatomegaly\", what does \"hepat-\" tell you about which organ is enlarged?",
+        "correctAnswer": "The liver is enlarged",
+        "distractors": [
+          "The spleen is enlarged",
+          "The stomach is enlarged",
+          "The kidneys are enlarged"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "medterm_pre_nephr",
+    "correctAnswer": "Kidney",
+    "acceptableAlternatives": [
+      "Kidney",
+      "Of the kidney"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Liver",
+      "Bladder",
+      "Ureter",
+      "Heart",
+      "Adrenal gland",
+      "Spleen",
+      "Lung",
+      "Stomach"
+    ],
+    "quizQuestion": "What does the prefix nephr/o- mean in medical terminology?",
+    "explanation": "Nephr/o- comes from Greek \"nephros\" meaning kidney. It appears in nephritis (kidney inflammation), nephrology (study of kidney diseases), and nephrotic syndrome (kidney disorder causing protein leakage).",
+    "statement": "The prefix nephr/o- means kidney.",
+    "wowFactor": "Nephrology — the specialty that treats kidney disease — uses nephr (kidney) + logy (study). Nephrologists manage everything from kidney stones to end-stage renal disease requiring dialysis!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"kidney\"?",
+        "correctAnswer": "Nephr/o-",
+        "distractors": [
+          "Hepat/o-",
+          "Cyst/o-",
+          "Ren/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"nephrotic syndrome\", what does \"nephr-\" indicate about which organ is affected?",
+        "correctAnswer": "The kidneys are damaged and leaking protein",
+        "distractors": [
+          "The liver is failing to produce proteins",
+          "The bladder cannot retain fluids",
+          "The ureter is blocked"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "medterm_pre_oste",
+    "correctAnswer": "Bone",
+    "acceptableAlternatives": [
+      "Bone",
+      "Of the bone"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Joint",
+      "Cartilage",
+      "Muscle",
+      "Tendon",
+      "Ligament",
+      "Marrow",
+      "Nerve",
+      "Vessel"
+    ],
+    "quizQuestion": "What does the prefix oste/o- mean in medical terminology?",
+    "explanation": "Oste/o- comes from Greek \"osteon\" meaning bone. It appears in osteoporosis (porous/weak bones), osteomyelitis (bone infection), and osteosarcoma (bone cancer).",
+    "statement": "The prefix oste/o- means bone.",
+    "wowFactor": "Osteoporosis — porous, fragile bones — uses osteo (bone) + porosis (porous). It is the world's most common bone disease, and recognizing osteo- immediately tells you the skeleton is involved!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"bone\"?",
+        "correctAnswer": "Oste/o-",
+        "distractors": [
+          "Arthr/o-",
+          "My/o-",
+          "Chondr/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"osteomyelitis\", what does \"osteo-\" indicate about the location of infection?",
+        "correctAnswer": "The infection is within the bone",
+        "distractors": [
+          "The infection is in the joint",
+          "The infection is in the muscle",
+          "The infection is in the bone marrow only"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "medterm_pre_path",
+    "correctAnswer": "Disease, suffering",
+    "acceptableAlternatives": [
+      "Disease",
+      "Suffering",
+      "Condition of disease"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Health",
+      "Treatment",
+      "Study of",
+      "Normal",
+      "Good",
+      "Growth",
+      "Within",
+      "New"
+    ],
+    "quizQuestion": "What does the prefix path/o- mean in medical terminology?",
+    "explanation": "Path/o- comes from Greek \"pathos\" meaning disease or suffering. It appears in pathology (study of disease), pathogen (disease-causing organism), and psychopathology (mental disease conditions).",
+    "statement": "The prefix path/o- means disease or suffering.",
+    "wowFactor": "A pathogen is any organism that causes (path = disease) you to suffer — bacteria, viruses, fungi, and parasites are all pathogens. Recognizing this prefix helps decode countless disease terms!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"disease or suffering\"?",
+        "correctAnswer": "Path/o-",
+        "distractors": [
+          "Eu-",
+          "Logy-",
+          "Thera-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"cardiomyopathy\", what does \"-pathy\" indicate about the condition?",
+        "correctAnswer": "There is a disease of the heart muscle",
+        "distractors": [
+          "The heart muscle is inflamed",
+          "The heart muscle is studied",
+          "The heart muscle is treated"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "function"
+    ]
+  },
+  {
+    "id": "medterm_pre_pneum",
+    "correctAnswer": "Lung, air, breath",
+    "acceptableAlternatives": [
+      "Lung",
+      "Air",
+      "Breath",
+      "Breathing"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Heart",
+      "Blood",
+      "Kidney",
+      "Liver",
+      "Brain",
+      "Vessel",
+      "Stomach",
+      "Skin"
+    ],
+    "quizQuestion": "What does the prefix pneum/o- mean in medical terminology?",
+    "explanation": "Pneum/o- comes from Greek \"pneumon\" meaning lung or air. It appears in pneumonia (lung infection), pneumothorax (air in the chest cavity), and pneumococcus (bacteria that infects the lung).",
+    "statement": "The prefix pneum/o- means lung or air.",
+    "wowFactor": "Pneumothorax — a collapsed lung — uses pneumo (air) + thorax (chest): air has entered the chest cavity outside the lung, collapsing it. The prefix immediately tells clinicians air is where it should not be!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"lung or air\"?",
+        "correctAnswer": "Pneum/o-",
+        "distractors": [
+          "Cardi/o-",
+          "Hepat/o-",
+          "Neur/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"pneumonia\", what does \"pneum-\" indicate about which organ is infected?",
+        "correctAnswer": "The lungs are infected",
+        "distractors": [
+          "The airways above the lungs are infected",
+          "The pleura around the lungs is infected",
+          "The bronchioles only are infected"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "medterm_pre_psych",
+    "correctAnswer": "Mind, mental",
+    "acceptableAlternatives": [
+      "Mind",
+      "Mental",
+      "Of the mind"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Body",
+      "Brain",
+      "Nerve",
+      "Behavior",
+      "Emotion",
+      "Soul",
+      "Normal",
+      "Disease"
+    ],
+    "quizQuestion": "What does the prefix psych/o- mean in medical terminology?",
+    "explanation": "Psych/o- comes from Greek \"psyche\" meaning mind or soul. It appears in psychiatry (medicine of the mind), psychosis (severe mental disorder), and psychosomatic (mind-body connection).",
+    "statement": "The prefix psych/o- means mind or mental.",
+    "wowFactor": "Psychosomatic conditions — real physical symptoms caused by mental factors — show how psych (mind) and soma (body) are inseparable. Stress really can cause physical illness!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"mind or mental\"?",
+        "correctAnswer": "Psych/o-",
+        "distractors": [
+          "Neur/o-",
+          "Encephal/o-",
+          "Cerebr/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"psychosis\", what does \"psych-\" indicate about the nature of this condition?",
+        "correctAnswer": "It is a severe disturbance of the mind",
+        "distractors": [
+          "It is a disease of the nervous system",
+          "It is a disease of the brain tissue",
+          "It is a behavioral disorder from external causes"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "medterm_pre_thromb",
+    "correctAnswer": "Clot, thrombus",
+    "acceptableAlternatives": [
+      "Clot",
+      "Blood clot",
+      "Thrombus"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Bleeding",
+      "Vessel",
+      "Platelet",
+      "Red blood cell",
+      "White blood cell",
+      "Infection",
+      "Artery",
+      "Inflammation"
+    ],
+    "quizQuestion": "What does the prefix thromb/o- mean in medical terminology?",
+    "explanation": "Thromb/o- comes from Greek \"thrombos\" meaning lump or clot. It appears in thrombosis (clot formation in a vessel), thrombocyte (platelet — clot-forming cell), and thrombolysis (dissolving a clot).",
+    "statement": "The prefix thromb/o- means clot or thrombus.",
+    "wowFactor": "Thrombolysis — \"clot-busting\" therapy used in heart attacks and strokes — uses thromb (clot) + lysis (breaking apart). Recognizing this prefix helped name one of medicine's most life-saving treatments!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"clot or thrombus\"?",
+        "correctAnswer": "Thromb/o-",
+        "distractors": [
+          "Hem/o-",
+          "Phleb/o-",
+          "Angi/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"thrombosis\", what does \"thromb-\" indicate about what has formed in the vessel?",
+        "correctAnswer": "A blood clot has formed",
+        "distractors": [
+          "A plaque has built up",
+          "The vessel wall has inflamed",
+          "The vessel has collapsed"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "function"
+    ]
+  },
+  {
+    "id": "medterm_pre_hem",
+    "correctAnswer": "Blood",
+    "acceptableAlternatives": [
+      "Blood",
+      "Of the blood"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Vessel",
+      "Clot",
+      "Platelet",
+      "Oxygen",
+      "Fluid",
+      "Lymph",
+      "Plasma",
+      "Bone marrow"
+    ],
+    "quizQuestion": "What does the prefix hem/o- (or hemat/o-) mean in medical terminology?",
+    "explanation": "Hem/o- comes from Greek \"haima\" meaning blood. It appears in hemoglobin (blood protein carrying oxygen), hematology (study of blood), and hemorrhage (excessive blood loss).",
+    "statement": "The prefix hem/o- means blood.",
+    "wowFactor": "Hemoglobin — the protein that gives blood its red color and carries oxygen — literally means \"blood protein\": hemo (blood) + globin (protein type). Without it, your blood could not transport oxygen!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"blood\"?",
+        "correctAnswer": "Hem/o-",
+        "distractors": [
+          "Thromb/o-",
+          "Lymph/o-",
+          "Angi/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"hemorrhage\", what does \"hem-\" indicate about what is being lost?",
+        "correctAnswer": "Blood is being lost from vessels",
+        "distractors": [
+          "Fluid is leaking from cells",
+          "Lymph is being lost",
+          "Plasma is being filtered out"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "medterm_pre_angi",
+    "correctAnswer": "Vessel, blood vessel",
+    "acceptableAlternatives": [
+      "Vessel",
+      "Blood vessel",
+      "Lymph vessel"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Blood",
+      "Clot",
+      "Heart",
+      "Lung",
+      "Lymph node",
+      "Artery",
+      "Nerve",
+      "Tissue"
+    ],
+    "quizQuestion": "What does the prefix angi/o- mean in medical terminology?",
+    "explanation": "Angi/o- comes from Greek \"angeion\" meaning vessel. It appears in angioplasty (reshaping a blood vessel), angiography (imaging of blood vessels), and angiogenesis (new blood vessel formation).",
+    "statement": "The prefix angi/o- means vessel or blood vessel.",
+    "wowFactor": "Angioplasty — the balloon procedure that reopens blocked arteries — uses angio (vessel) + plasty (reshaping). A tiny balloon expands inside the vessel to push the blockage aside!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"vessel or blood vessel\"?",
+        "correctAnswer": "Angi/o-",
+        "distractors": [
+          "Hem/o-",
+          "Cardi/o-",
+          "Thromb/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"angiography\", what does \"angio-\" indicate about what is being imaged?",
+        "correctAnswer": "Blood vessels are being visualized",
+        "distractors": [
+          "The heart chambers are being imaged",
+          "Blood cell counts are being measured",
+          "Tissue oxygenation is being mapped"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "medterm_pre_neur",
+    "correctAnswer": "Nerve",
+    "acceptableAlternatives": [
+      "Nerve",
+      "Nervous system",
+      "Of the nerve"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Brain",
+      "Muscle",
+      "Spinal cord",
+      "Vessel",
+      "Receptor",
+      "Gland",
+      "Bone",
+      "Heart"
+    ],
+    "quizQuestion": "What does the prefix neur/o- mean in medical terminology?",
+    "explanation": "Neur/o- comes from Greek \"neuron\" meaning nerve. It appears in neurology (study of the nervous system), neuropathy (nerve disease), and neurotransmitter (chemical carried across nerve synapses).",
+    "statement": "The prefix neur/o- means nerve.",
+    "wowFactor": "Neurotransmitters — the chemical messengers of the brain — use neuro (nerve) + transmitter (carrier). Dopamine, serotonin, and acetylcholine are all neurotransmitters crossing nerve synapses!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"nerve\"?",
+        "correctAnswer": "Neur/o-",
+        "distractors": [
+          "Psych/o-",
+          "Encephal/o-",
+          "My/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"neuropathy\", what does \"neur-\" indicate about what structure is diseased?",
+        "correctAnswer": "The nerves are damaged or diseased",
+        "distractors": [
+          "The brain tissue is diseased",
+          "The spinal cord is damaged",
+          "The neuromuscular junctions are blocked"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "medterm_pre_my",
+    "correctAnswer": "Muscle",
+    "acceptableAlternatives": [
+      "Muscle",
+      "Of the muscle"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Bone",
+      "Tendon",
+      "Nerve",
+      "Joint",
+      "Ligament",
+      "Fascia",
+      "Cartilage",
+      "Skin"
+    ],
+    "quizQuestion": "What does the prefix my/o- mean in medical terminology?",
+    "explanation": "My/o- comes from Greek \"mys\" meaning muscle. It appears in myocardium (heart muscle), myopathy (muscle disease), and myositis (muscle inflammation).",
+    "statement": "The prefix my/o- means muscle.",
+    "wowFactor": "The myocardium — the heart's muscular wall — uses myo (muscle) + cardium (heart). It is the most important muscle in the body, contracting about 100,000 times every single day!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"muscle\"?",
+        "correctAnswer": "My/o-",
+        "distractors": [
+          "Oste/o-",
+          "Neur/o-",
+          "Arthr/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"myocardial infarction\", what does \"myo-\" indicate about which tissue is injured?",
+        "correctAnswer": "The heart muscle tissue has died",
+        "distractors": [
+          "The heart's electrical system has failed",
+          "The coronary vessels have ruptured",
+          "The heart valves have closed permanently"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "medterm_pre_necr",
+    "correctAnswer": "Death, dead tissue",
+    "acceptableAlternatives": [
+      "Death",
+      "Dead tissue",
+      "Tissue death"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Infection",
+      "Inflammation",
+      "New growth",
+      "Blood",
+      "Pain",
+      "Without",
+      "Abnormal",
+      "Removal"
+    ],
+    "quizQuestion": "What does the prefix necr/o- mean in medical terminology?",
+    "explanation": "Necr/o- comes from Greek \"nekros\" meaning dead. It appears in necrosis (tissue death), necrotizing fasciitis (flesh-eating disease causing tissue death), and necropsy (examination of a dead body — same as autopsy).",
+    "statement": "The prefix necr/o- means death or dead tissue.",
+    "wowFactor": "Necrotizing fasciitis — \"flesh-eating disease\" — uses necro (dead) + tizing (causing) + fascia (connective tissue). The bacteria literally cause death of the tissue as they spread!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"death or dead tissue\"?",
+        "correctAnswer": "Necr/o-",
+        "distractors": [
+          "Path/o-",
+          "Mal-",
+          "Dys-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"necrosis\", what does \"necr-\" indicate about what has happened to the tissue?",
+        "correctAnswer": "The tissue has died",
+        "distractors": [
+          "The tissue is inflamed",
+          "The tissue is infected",
+          "The tissue has been surgically removed"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "function"
+    ]
+  },
+  {
+    "id": "medterm_pre_arthr",
+    "correctAnswer": "Joint",
+    "acceptableAlternatives": [
+      "Joint",
+      "Of the joint"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Bone",
+      "Muscle",
+      "Tendon",
+      "Cartilage",
+      "Ligament",
+      "Bursa",
+      "Nerve",
+      "Vessel"
+    ],
+    "quizQuestion": "What does the prefix arthr/o- mean in medical terminology?",
+    "explanation": "Arthr/o- comes from Greek \"arthron\" meaning joint. It appears in arthritis (joint inflammation), arthroscopy (viewing inside a joint with a scope), and arthralgia (joint pain).",
+    "statement": "The prefix arthr/o- means joint.",
+    "wowFactor": "Arthroscopy — a minimally invasive procedure to look inside a joint — uses arthr (joint) + scope (to view). Surgeons can examine and repair a torn knee meniscus through a tiny hole!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"joint\"?",
+        "correctAnswer": "Arthr/o-",
+        "distractors": [
+          "Oste/o-",
+          "My/o-",
+          "Chondr/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"arthritis\", what does \"arthr-\" indicate about where the inflammation is?",
+        "correctAnswer": "The joints are inflamed",
+        "distractors": [
+          "The muscles around joints are inflamed",
+          "The bones at the joint are eroded",
+          "The tendons attached to joints are torn"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "medterm_pre_derm",
+    "correctAnswer": "Skin",
+    "acceptableAlternatives": [
+      "Skin",
+      "Of the skin"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Hair",
+      "Nail",
+      "Muscle",
+      "Fat",
+      "Vessel",
+      "Nerve",
+      "Gland",
+      "Bone"
+    ],
+    "quizQuestion": "What does the prefix derm/o- (or dermat/o-) mean in medical terminology?",
+    "explanation": "Derm/o- comes from Greek \"derma\" meaning skin. It appears in dermatology (study of the skin), dermis (the skin layer below the epidermis), and dermatitis (skin inflammation).",
+    "statement": "The prefix derm/o- means skin.",
+    "wowFactor": "The epidermis sits \"upon\" the dermis — epi (upon) + derm (skin). Dermatology as a specialty encompasses everything from acne to melanoma, because derm covers the body's largest organ!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means \"skin\"?",
+        "correctAnswer": "Derm/o-",
+        "distractors": [
+          "Integument-",
+          "Cut/o-",
+          "Kerat/o-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In \"dermatitis\", what does \"dermat-\" indicate about which tissue is inflamed?",
+        "correctAnswer": "The skin is inflamed",
+        "distractors": [
+          "The subcutaneous fat is inflamed",
+          "The mucous membranes are inflamed",
+          "The hair follicles are inflamed"
+        ]
+      }
+    ],
+    "tags": [
+      "medical_terminology",
+      "prefix",
+      "anatomy"
+    ]
+  }
+]

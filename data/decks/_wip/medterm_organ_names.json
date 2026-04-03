@@ -1,0 +1,1802 @@
+[
+  {
+    "id": "medterm_organ_heart",
+    "correctAnswer": "Heart",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Liver", "Kidney", "Lung", "Brain", "Stomach", "Spleen", "Pancreas", "Bone"],
+    "quizQuestion": "The combining form cardi/o refers to which organ?",
+    "explanation": "Cardi/o comes from Greek 'kardia' meaning heart. Found in cardiology, tachycardia, myocardium, and cardiomegaly.",
+    "statement": "Cardi/o refers to the heart.",
+    "wowFactor": "Every 'cardio' workout is named after the Greek word for heart — kardia!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'heart'?",
+        "correctAnswer": "Cardi/o",
+        "distractors": ["Hepat/o", "Nephr/o", "Pulmon/o"]
+      },
+      {
+        "type": "context",
+        "question": "A cardiologist specializes in which organ?",
+        "correctAnswer": "Heart",
+        "distractors": ["Brain", "Lung", "Kidney"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "cardiovascular"],
+    "visualDescription": "CARDI/O connecting to anatomical heart with arrow"
+  },
+  {
+    "id": "medterm_organ_liver",
+    "correctAnswer": "Liver",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Heart", "Kidney", "Pancreas", "Spleen", "Gallbladder", "Stomach", "Intestine", "Bladder"],
+    "quizQuestion": "The combining form hepat/o refers to which organ?",
+    "explanation": "Hepat/o comes from Greek 'hepar' meaning liver. Found in hepatitis (liver inflammation), hepatomegaly (enlarged liver), and hepatocyte (liver cell).",
+    "statement": "Hepat/o refers to the liver.",
+    "wowFactor": "The liver is the only internal organ that can fully regenerate — hepat/o from Greek 'hepar' captures this powerful organ!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'liver'?",
+        "correctAnswer": "Hepat/o",
+        "distractors": ["Cardi/o", "Nephr/o", "Gastr/o"]
+      },
+      {
+        "type": "context",
+        "question": "Hepatitis is inflammation of which organ?",
+        "correctAnswer": "Liver",
+        "distractors": ["Kidney", "Pancreas", "Gallbladder"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "digestive"],
+    "visualDescription": "HEPAT/O connecting to anatomical liver illustration"
+  },
+  {
+    "id": "medterm_organ_kidney",
+    "correctAnswer": "Kidney",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Liver", "Heart", "Bladder", "Ureter", "Urethra", "Spleen", "Adrenal gland", "Pancreas"],
+    "quizQuestion": "The combining form nephr/o refers to which organ?",
+    "explanation": "Nephr/o comes from Greek 'nephros' meaning kidney. Found in nephrology, nephritis (kidney inflammation), and nephrectomy (surgical removal of a kidney).",
+    "statement": "Nephr/o refers to the kidney.",
+    "wowFactor": "Your kidneys filter about 200 liters of blood every day — nephr/o from Greek 'nephros' names this tireless filter!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'kidney'?",
+        "correctAnswer": "Nephr/o",
+        "distractors": ["Hepat/o", "Cyst/o", "Ureter/o"]
+      },
+      {
+        "type": "context",
+        "question": "Nephritis is inflammation of which organ?",
+        "correctAnswer": "Kidney",
+        "distractors": ["Liver", "Bladder", "Spleen"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "urinary"],
+    "visualDescription": "NEPHR/O connecting to anatomical kidney cross-section"
+  },
+  {
+    "id": "medterm_organ_brain",
+    "correctAnswer": "Brain",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Spinal cord", "Nerve", "Skull", "Retina", "Eye", "Ear", "Heart", "Lung"],
+    "quizQuestion": "The combining form encephal/o refers to which organ?",
+    "explanation": "Encephal/o comes from Greek 'enkephalos' meaning brain. Found in encephalitis (brain inflammation), encephalopathy (brain disease), and electroencephalogram (EEG).",
+    "statement": "Encephal/o refers to the brain.",
+    "wowFactor": "An electroencephalogram (EEG) records your brain's electrical activity — encephal/o literally means 'in the head' in Greek!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'brain'?",
+        "correctAnswer": "Encephal/o",
+        "distractors": ["Neur/o", "Myel/o", "Crani/o"]
+      },
+      {
+        "type": "context",
+        "question": "Encephalitis is inflammation of which organ?",
+        "correctAnswer": "Brain",
+        "distractors": ["Spinal cord", "Nerve", "Skull"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "nervous"],
+    "visualDescription": "ENCEPHAL/O connecting to anatomical brain illustration"
+  },
+  {
+    "id": "medterm_organ_lung",
+    "correctAnswer": "Lung",
+    "acceptableAlternatives": ["Lungs"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Heart", "Trachea", "Bronchus", "Larynx", "Pharynx", "Diaphragm", "Esophagus", "Nose"],
+    "quizQuestion": "The combining form pulmon/o refers to which organ?",
+    "explanation": "Pulmon/o comes from Latin 'pulmo' meaning lung. Found in pulmonology, pulmonary artery (lung artery), and pulmonary embolism (blood clot in the lung).",
+    "statement": "Pulmon/o refers to the lung.",
+    "wowFactor": "Pulmonary embolisms are blood clots in the lungs — pulmon/o from Latin 'pulmo' is why lung diseases are called pulmonary!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'lung'?",
+        "correctAnswer": "Pulmon/o",
+        "distractors": ["Bronch/o", "Trache/o", "Pneum/o"]
+      },
+      {
+        "type": "context",
+        "question": "A pulmonologist specializes in which organ?",
+        "correctAnswer": "Lung",
+        "distractors": ["Heart", "Trachea", "Esophagus"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "respiratory"],
+    "visualDescription": "PULMON/O connecting to anatomical lung pair illustration"
+  },
+  {
+    "id": "medterm_organ_stomach",
+    "correctAnswer": "Stomach",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Liver", "Intestine", "Esophagus", "Colon", "Pancreas", "Gallbladder", "Appendix", "Rectum"],
+    "quizQuestion": "The combining form gastr/o refers to which organ?",
+    "explanation": "Gastr/o comes from Greek 'gaster' meaning stomach. Found in gastritis (stomach inflammation), gastroenterology, and gastroparesis (stomach paralysis).",
+    "statement": "Gastr/o refers to the stomach.",
+    "wowFactor": "Gastronomy — the art of fine dining — shares its root with gastritis: gastr/o, the Greek word for stomach!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'stomach'?",
+        "correctAnswer": "Gastr/o",
+        "distractors": ["Enter/o", "Col/o", "Esophag/o"]
+      },
+      {
+        "type": "context",
+        "question": "Gastritis is inflammation of which organ?",
+        "correctAnswer": "Stomach",
+        "distractors": ["Intestine", "Esophagus", "Colon"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "digestive"],
+    "visualDescription": "GASTR/O connecting to anatomical stomach illustration"
+  },
+  {
+    "id": "medterm_organ_bone",
+    "correctAnswer": "Bone",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Joint", "Cartilage", "Tendon", "Muscle", "Skull", "Vertebra", "Skin", "Ligament"],
+    "quizQuestion": "The combining form oste/o refers to which organ?",
+    "explanation": "Oste/o comes from Greek 'osteon' meaning bone. Found in osteoporosis (porous bone), osteomyelitis (bone infection), and osteoarthritis (joint degeneration).",
+    "statement": "Oste/o refers to bone.",
+    "wowFactor": "Osteoporosis literally means 'porous bone' — oste/o from Greek 'osteon' is why bone doctors are called orthopedists!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'bone'?",
+        "correctAnswer": "Oste/o",
+        "distractors": ["Arthr/o", "Chondr/o", "Tend/o"]
+      },
+      {
+        "type": "context",
+        "question": "Osteoporosis is a disease affecting which tissue?",
+        "correctAnswer": "Bone",
+        "distractors": ["Cartilage", "Muscle", "Tendon"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "skeletal"],
+    "visualDescription": "OSTE/O connecting to cross-section of bone showing trabecular structure"
+  },
+  {
+    "id": "medterm_organ_joint",
+    "correctAnswer": "Joint",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Bone", "Cartilage", "Tendon", "Muscle", "Ligament", "Skin", "Vertebra", "Skull"],
+    "quizQuestion": "The combining form arthr/o refers to which organ?",
+    "explanation": "Arthr/o comes from Greek 'arthron' meaning joint. Found in arthritis (joint inflammation), arthroscopy (joint camera inspection), and arthroplasty (joint replacement).",
+    "statement": "Arthr/o refers to a joint.",
+    "wowFactor": "Arthroscopic surgery uses a tiny camera inserted into your joint — arthr/o from Greek 'arthron' means 'joint'!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'joint'?",
+        "correctAnswer": "Arthr/o",
+        "distractors": ["Oste/o", "My/o", "Chondr/o"]
+      },
+      {
+        "type": "context",
+        "question": "Arthritis is inflammation of which structure?",
+        "correctAnswer": "Joint",
+        "distractors": ["Bone", "Muscle", "Tendon"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "skeletal"],
+    "visualDescription": "ARTHR/O connecting to anatomical knee joint cross-section"
+  },
+  {
+    "id": "medterm_organ_muscle",
+    "correctAnswer": "Muscle",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Tendon", "Bone", "Joint", "Nerve", "Skin", "Cartilage", "Heart", "Ligament"],
+    "quizQuestion": "The combining form my/o refers to which organ?",
+    "explanation": "My/o comes from Greek 'mys' meaning muscle. Found in myocardium (heart muscle), myalgia (muscle pain), myopathy (muscle disease), and myositis (muscle inflammation).",
+    "statement": "My/o refers to muscle.",
+    "wowFactor": "The myocardium is literally 'heart muscle' — my/o (muscle) + cardi/o (heart) combined into one word!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'muscle'?",
+        "correctAnswer": "My/o",
+        "distractors": ["Neur/o", "Oste/o", "Tend/o"]
+      },
+      {
+        "type": "context",
+        "question": "Myalgia is pain in which tissue?",
+        "correctAnswer": "Muscle",
+        "distractors": ["Bone", "Tendon", "Nerve"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "muscular"],
+    "visualDescription": "MY/O connecting to anatomical muscle fiber cross-section"
+  },
+  {
+    "id": "medterm_organ_nerve",
+    "correctAnswer": "Nerve",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Brain", "Spinal cord", "Muscle", "Eye", "Ear", "Skin", "Blood vessel", "Gland"],
+    "quizQuestion": "The combining form neur/o refers to which organ?",
+    "explanation": "Neur/o comes from Greek 'neuron' meaning nerve or sinew. Found in neurology, neuritis (nerve inflammation), neuralgia (nerve pain), and neuropathy (nerve disease).",
+    "statement": "Neur/o refers to a nerve.",
+    "wowFactor": "The word 'neuron' comes from the same Greek root — neur/o — and refers to the individual nerve cells that make up your nervous system!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'nerve'?",
+        "correctAnswer": "Neur/o",
+        "distractors": ["Encephal/o", "Myel/o", "My/o"]
+      },
+      {
+        "type": "context",
+        "question": "Neuritis is inflammation of which structure?",
+        "correctAnswer": "Nerve",
+        "distractors": ["Brain", "Muscle", "Spinal cord"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "nervous"],
+    "visualDescription": "NEUR/O connecting to anatomical nerve fiber with axon illustration"
+  },
+  {
+    "id": "medterm_organ_skin",
+    "correctAnswer": "Skin",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Muscle", "Bone", "Gland", "Blood vessel", "Nerve", "Cartilage", "Tendon", "Breast"],
+    "quizQuestion": "The combining form derm/o refers to which organ?",
+    "explanation": "Derm/o comes from Greek 'derma' meaning skin. Found in dermatology, dermatitis (skin inflammation), dermis (inner skin layer), and epidermis (outer skin layer).",
+    "statement": "Derm/o refers to the skin.",
+    "wowFactor": "Your skin is actually your largest organ by surface area — derm/o from Greek 'derma' gives us dermatology!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'skin'?",
+        "correctAnswer": "Derm/o",
+        "distractors": ["My/o", "Neur/o", "Aden/o"]
+      },
+      {
+        "type": "context",
+        "question": "Dermatitis is inflammation of which organ?",
+        "correctAnswer": "Skin",
+        "distractors": ["Muscle", "Gland", "Bone"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "integumentary"],
+    "visualDescription": "DERM/O connecting to skin layer cross-section diagram"
+  },
+  {
+    "id": "medterm_organ_eye",
+    "correctAnswer": "Eye",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Ear", "Nose", "Retina", "Skin", "Brain", "Nerve", "Gland", "Mouth"],
+    "quizQuestion": "The combining form ophthalm/o refers to which organ?",
+    "explanation": "Ophthalm/o comes from Greek 'ophthalmos' meaning eye. Found in ophthalmology (eye study), ophthalmoscope (eye examination tool), and ophthalmia (eye inflammation).",
+    "statement": "Ophthalm/o refers to the eye.",
+    "wowFactor": "Ophthalmoscopy lets doctors look through your pupil to see your retina directly — ophthalm/o from Greek 'ophthalmos' means eye!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'eye'?",
+        "correctAnswer": "Ophthalm/o",
+        "distractors": ["Ot/o", "Rhin/o", "Retin/o"]
+      },
+      {
+        "type": "context",
+        "question": "An ophthalmologist specializes in which organ?",
+        "correctAnswer": "Eye",
+        "distractors": ["Ear", "Nose", "Retina"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "sensory"],
+    "visualDescription": "OPHTHALM/O connecting to anatomical eye cross-section"
+  },
+  {
+    "id": "medterm_organ_ear",
+    "correctAnswer": "Ear",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Eye", "Nose", "Mouth", "Throat", "Skin", "Brain", "Nerve", "Tongue"],
+    "quizQuestion": "The combining form ot/o refers to which organ?",
+    "explanation": "Ot/o comes from Greek 'ous/otos' meaning ear. Found in otology (ear study), otitis (ear inflammation), and otoscope (ear examination device).",
+    "statement": "Ot/o refers to the ear.",
+    "wowFactor": "Otitis media is the medical term for a middle ear infection — ot/o from Greek 'otos' simply means ear!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'ear'?",
+        "correctAnswer": "Ot/o",
+        "distractors": ["Ophthalm/o", "Rhin/o", "Laryng/o"]
+      },
+      {
+        "type": "context",
+        "question": "Otitis is inflammation of which organ?",
+        "correctAnswer": "Ear",
+        "distractors": ["Eye", "Nose", "Throat"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "sensory"],
+    "visualDescription": "OT/O connecting to anatomical ear cross-section showing cochlea"
+  },
+  {
+    "id": "medterm_organ_nose",
+    "correctAnswer": "Nose",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Ear", "Mouth", "Throat", "Larynx", "Pharynx", "Eye", "Tongue", "Trachea"],
+    "quizQuestion": "The combining form rhin/o refers to which organ?",
+    "explanation": "Rhin/o comes from Greek 'rhis/rhinos' meaning nose. Found in rhinitis (nasal inflammation), rhinoplasty (nose reshaping surgery), and rhinovirus (common cold virus).",
+    "statement": "Rhin/o refers to the nose.",
+    "wowFactor": "Rhinoplasty — a nose job — literally means 'nose shaping' surgery: rhin/o (nose) + plasty (shaping)!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'nose'?",
+        "correctAnswer": "Rhin/o",
+        "distractors": ["Ot/o", "Stomat/o", "Gloss/o"]
+      },
+      {
+        "type": "context",
+        "question": "Rhinitis is inflammation of which organ?",
+        "correctAnswer": "Nose",
+        "distractors": ["Ear", "Throat", "Mouth"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "respiratory"],
+    "visualDescription": "RHIN/O connecting to anatomical nose and nasal cavity illustration"
+  },
+  {
+    "id": "medterm_organ_mouth",
+    "correctAnswer": "Mouth",
+    "acceptableAlternatives": ["Oral cavity"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Tongue", "Tooth", "Throat", "Pharynx", "Esophagus", "Nose", "Larynx", "Lip"],
+    "quizQuestion": "The combining form stomat/o refers to which organ?",
+    "explanation": "Stomat/o comes from Greek 'stoma/stomatos' meaning mouth or opening. Found in stomatitis (mouth inflammation), stomatology (study of the mouth), and stoma (a surgically created opening).",
+    "statement": "Stomat/o refers to the mouth.",
+    "wowFactor": "A stoma is a surgically created opening — stomat/o from Greek 'stoma' means any mouth or opening, not just yours!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'mouth'?",
+        "correctAnswer": "Stomat/o",
+        "distractors": ["Gloss/o", "Dent/o", "Pharyng/o"]
+      },
+      {
+        "type": "context",
+        "question": "Stomatitis is inflammation of which structure?",
+        "correctAnswer": "Mouth",
+        "distractors": ["Tongue", "Throat", "Tooth"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "digestive"],
+    "visualDescription": "STOMAT/O connecting to open mouth anatomy illustration"
+  },
+  {
+    "id": "medterm_organ_tongue",
+    "correctAnswer": "Tongue",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Mouth", "Tooth", "Throat", "Pharynx", "Larynx", "Nose", "Ear", "Lip"],
+    "quizQuestion": "The combining form gloss/o refers to which organ?",
+    "explanation": "Gloss/o comes from Greek 'glossa' meaning tongue. Found in glossitis (tongue inflammation), glossopharyngeal nerve (tongue-throat nerve), and hypoglossal nerve (under-tongue nerve).",
+    "statement": "Gloss/o refers to the tongue.",
+    "wowFactor": "The hypoglossal nerve controls tongue movement — hypo (under) + gloss/o (tongue) in one anatomical name!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'tongue'?",
+        "correctAnswer": "Gloss/o",
+        "distractors": ["Stomat/o", "Dent/o", "Rhin/o"]
+      },
+      {
+        "type": "context",
+        "question": "Glossitis is inflammation of which organ?",
+        "correctAnswer": "Tongue",
+        "distractors": ["Mouth", "Throat", "Tooth"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "digestive"],
+    "visualDescription": "GLOSS/O connecting to anatomical tongue illustration"
+  },
+  {
+    "id": "medterm_organ_tooth",
+    "correctAnswer": "Tooth",
+    "acceptableAlternatives": ["Teeth"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Tongue", "Mouth", "Gum", "Jaw", "Bone", "Cartilage", "Throat", "Lip"],
+    "quizQuestion": "The combining form dent/o refers to which organ?",
+    "explanation": "Dent/o comes from Latin 'dens/dentis' meaning tooth. Found in dentistry, dentist, dental, dentures, and orthodontics (straight teeth).",
+    "statement": "Dent/o refers to a tooth.",
+    "wowFactor": "The word 'dandelion' literally means 'lion's tooth' in French (dent-de-lion) — the same Latin root dent/o for tooth!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'tooth'?",
+        "correctAnswer": "Dent/o",
+        "distractors": ["Gloss/o", "Stomat/o", "Oste/o"]
+      },
+      {
+        "type": "context",
+        "question": "Dental procedures involve which structure?",
+        "correctAnswer": "Tooth",
+        "distractors": ["Tongue", "Gum", "Jaw bone"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "dental"],
+    "visualDescription": "DENT/O connecting to anatomical tooth cross-section showing enamel and pulp"
+  },
+  {
+    "id": "medterm_organ_pharynx",
+    "correctAnswer": "Pharynx",
+    "acceptableAlternatives": ["Throat"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Larynx", "Trachea", "Esophagus", "Mouth", "Nose", "Bronchus", "Tongue", "Lung"],
+    "quizQuestion": "The combining form pharyng/o refers to which organ?",
+    "explanation": "Pharyng/o comes from Greek 'pharynx' meaning throat. Found in pharyngitis (throat inflammation), pharyngoscopy (throat examination), and nasopharynx (nasal throat region).",
+    "statement": "Pharyng/o refers to the pharynx (throat).",
+    "wowFactor": "Pharyngitis is the medical term for a sore throat — pharyng/o from Greek 'pharynx' means the throat passage!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'pharynx'?",
+        "correctAnswer": "Pharyng/o",
+        "distractors": ["Laryng/o", "Trache/o", "Esophag/o"]
+      },
+      {
+        "type": "context",
+        "question": "Pharyngitis is inflammation of which structure?",
+        "correctAnswer": "Pharynx",
+        "distractors": ["Larynx", "Trachea", "Esophagus"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "respiratory"],
+    "visualDescription": "PHARYNG/O connecting to throat anatomy showing pharynx location"
+  },
+  {
+    "id": "medterm_organ_larynx",
+    "correctAnswer": "Larynx",
+    "acceptableAlternatives": ["Voice box"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Pharynx", "Trachea", "Esophagus", "Bronchus", "Mouth", "Tongue", "Thyroid", "Nose"],
+    "quizQuestion": "The combining form laryng/o refers to which organ?",
+    "explanation": "Laryng/o comes from Greek 'larynx' meaning voice box. Found in laryngitis (voice box inflammation), laryngoscopy (voice box examination), and laryngectomy (voice box removal).",
+    "statement": "Laryng/o refers to the larynx (voice box).",
+    "wowFactor": "Laryngitis makes you lose your voice because it inflames the vocal cords inside the larynx — laryng/o means 'voice box'!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'larynx'?",
+        "correctAnswer": "Laryng/o",
+        "distractors": ["Pharyng/o", "Trache/o", "Bronch/o"]
+      },
+      {
+        "type": "context",
+        "question": "Laryngitis is inflammation of which structure?",
+        "correctAnswer": "Larynx",
+        "distractors": ["Pharynx", "Trachea", "Bronchus"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "respiratory"],
+    "visualDescription": "LARYNG/O connecting to anatomical larynx illustration with vocal cords visible"
+  },
+  {
+    "id": "medterm_organ_trachea",
+    "correctAnswer": "Trachea",
+    "acceptableAlternatives": ["Windpipe"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Larynx", "Pharynx", "Esophagus", "Bronchus", "Lung", "Mouth", "Nose", "Aorta"],
+    "quizQuestion": "The combining form trache/o refers to which organ?",
+    "explanation": "Trache/o comes from Greek 'tracheia' meaning rough (referring to the rough rings of cartilage). Found in tracheotomy (cutting into the trachea), tracheitis (trachea inflammation), and tracheostomy.",
+    "statement": "Trache/o refers to the trachea (windpipe).",
+    "wowFactor": "A tracheotomy is an emergency cut into the windpipe to restore breathing — trache/o from Greek 'tracheia' means 'rough-surfaced' for its cartilage rings!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'trachea'?",
+        "correctAnswer": "Trache/o",
+        "distractors": ["Laryng/o", "Bronch/o", "Esophag/o"]
+      },
+      {
+        "type": "context",
+        "question": "A tracheotomy is a surgical opening into which structure?",
+        "correctAnswer": "Trachea",
+        "distractors": ["Larynx", "Bronchus", "Esophagus"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "respiratory"],
+    "visualDescription": "TRACHE/O connecting to trachea illustration showing cartilage rings"
+  },
+  {
+    "id": "medterm_organ_bronchus",
+    "correctAnswer": "Bronchus",
+    "acceptableAlternatives": ["Bronchi"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Trachea", "Larynx", "Lung", "Pharynx", "Esophagus", "Nose", "Alveolus", "Pleura"],
+    "quizQuestion": "The combining form bronch/o refers to which organ?",
+    "explanation": "Bronch/o comes from Greek 'bronchos' meaning windpipe or bronchus. Found in bronchitis (bronchus inflammation), bronchoscopy (bronchus examination), and bronchodilator (airway widening drug).",
+    "statement": "Bronch/o refers to the bronchus.",
+    "wowFactor": "Bronchodilators like asthma inhalers work by widening the bronchi — bronch/o from Greek 'bronchos' means 'windpipe branch'!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'bronchus'?",
+        "correctAnswer": "Bronch/o",
+        "distractors": ["Trache/o", "Pulmon/o", "Laryng/o"]
+      },
+      {
+        "type": "context",
+        "question": "Bronchitis is inflammation of which structure?",
+        "correctAnswer": "Bronchus",
+        "distractors": ["Trachea", "Lung", "Larynx"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "respiratory"],
+    "visualDescription": "BRONCH/O connecting to bronchial tree branching from trachea"
+  },
+  {
+    "id": "medterm_organ_esophagus",
+    "correctAnswer": "Esophagus",
+    "acceptableAlternatives": ["Food pipe", "Gullet"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Stomach", "Trachea", "Pharynx", "Intestine", "Colon", "Larynx", "Mouth", "Rectum"],
+    "quizQuestion": "The combining form esophag/o refers to which organ?",
+    "explanation": "Esophag/o comes from Greek 'oisophagos' meaning gullet or food carrier. Found in esophagitis (esophagus inflammation), esophagoscopy, and esophageal cancer.",
+    "statement": "Esophag/o refers to the esophagus.",
+    "wowFactor": "GERD (acid reflux) is damage to the esophagus from stomach acid — esophag/o from Greek means 'what carries food'!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'esophagus'?",
+        "correctAnswer": "Esophag/o",
+        "distractors": ["Gastr/o", "Pharyng/o", "Enter/o"]
+      },
+      {
+        "type": "context",
+        "question": "Esophagitis is inflammation of which structure?",
+        "correctAnswer": "Esophagus",
+        "distractors": ["Stomach", "Pharynx", "Trachea"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "digestive"],
+    "visualDescription": "ESOPHAG/O connecting to esophagus illustration between throat and stomach"
+  },
+  {
+    "id": "medterm_organ_intestine",
+    "correctAnswer": "Intestine",
+    "acceptableAlternatives": ["Small intestine"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Colon", "Stomach", "Rectum", "Esophagus", "Appendix", "Liver", "Pancreas", "Gallbladder"],
+    "quizQuestion": "The combining form enter/o refers to which organ?",
+    "explanation": "Enter/o comes from Greek 'enteron' meaning intestine. Found in enteritis (intestine inflammation), gastroenterology, parenteral (outside the gut), and enterococcus bacteria.",
+    "statement": "Enter/o refers to the intestine.",
+    "wowFactor": "Parenteral nutrition (IV feeding) literally means 'bypassing the intestine' — enter/o from Greek 'enteron' means gut!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'intestine'?",
+        "correctAnswer": "Enter/o",
+        "distractors": ["Col/o", "Gastr/o", "Rect/o"]
+      },
+      {
+        "type": "context",
+        "question": "Enteritis is inflammation of which organ?",
+        "correctAnswer": "Intestine",
+        "distractors": ["Colon", "Stomach", "Rectum"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "digestive"],
+    "visualDescription": "ENTER/O connecting to small intestine coils illustration"
+  },
+  {
+    "id": "medterm_organ_colon",
+    "correctAnswer": "Colon",
+    "acceptableAlternatives": ["Large intestine"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Intestine", "Rectum", "Appendix", "Stomach", "Liver", "Esophagus", "Bladder", "Pancreas"],
+    "quizQuestion": "The combining form col/o refers to which organ?",
+    "explanation": "Col/o comes from Greek 'kolon' meaning the large intestine. Found in colitis (colon inflammation), colonoscopy (colon camera examination), and colorectal cancer.",
+    "statement": "Col/o refers to the colon.",
+    "wowFactor": "A colonoscopy uses a camera threaded through the entire colon — col/o from Greek 'kolon' is the large intestine!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'colon'?",
+        "correctAnswer": "Col/o",
+        "distractors": ["Enter/o", "Rect/o", "Appendic/o"]
+      },
+      {
+        "type": "context",
+        "question": "Colitis is inflammation of which organ?",
+        "correctAnswer": "Colon",
+        "distractors": ["Intestine", "Rectum", "Stomach"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "digestive"],
+    "visualDescription": "COL/O connecting to large intestine/colon anatomy illustration"
+  },
+  {
+    "id": "medterm_organ_rectum",
+    "correctAnswer": "Rectum",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Colon", "Intestine", "Appendix", "Bladder", "Urethra", "Stomach", "Gallbladder", "Liver"],
+    "quizQuestion": "The combining form rect/o refers to which organ?",
+    "explanation": "Rect/o comes from Latin 'rectus' meaning straight (the rectum is the straight terminal section of the large intestine). Found in rectal, rectoscopy, and colorectal.",
+    "statement": "Rect/o refers to the rectum.",
+    "wowFactor": "The rectum gets its name from Latin 'rectus' (straight) — rect/o because it is the straightest portion of the digestive tract!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'rectum'?",
+        "correctAnswer": "Rect/o",
+        "distractors": ["Col/o", "Enter/o", "Appendic/o"]
+      },
+      {
+        "type": "context",
+        "question": "Colorectal surgery involves the colon and which other organ?",
+        "correctAnswer": "Rectum",
+        "distractors": ["Appendix", "Bladder", "Intestine"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "digestive"],
+    "visualDescription": "RECT/O connecting to rectum at end of digestive tract illustration"
+  },
+  {
+    "id": "medterm_organ_appendix",
+    "correctAnswer": "Appendix",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Colon", "Rectum", "Intestine", "Gallbladder", "Spleen", "Liver", "Pancreas", "Stomach"],
+    "quizQuestion": "The combining form appendic/o refers to which organ?",
+    "explanation": "Appendic/o comes from Latin 'appendix' meaning appendage or attachment. Found in appendicitis (appendix inflammation), appendectomy (appendix removal), and appendicular.",
+    "statement": "Appendic/o refers to the appendix.",
+    "wowFactor": "Appendicitis is one of the most common surgical emergencies — appendic/o from Latin 'appendix' means 'little attachment' hanging from the colon!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'appendix'?",
+        "correctAnswer": "Appendic/o",
+        "distractors": ["Col/o", "Rect/o", "Enter/o"]
+      },
+      {
+        "type": "context",
+        "question": "Appendicitis is inflammation of which organ?",
+        "correctAnswer": "Appendix",
+        "distractors": ["Colon", "Intestine", "Gallbladder"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "digestive"],
+    "visualDescription": "APPENDIC/O connecting to appendix location at junction of small and large intestine"
+  },
+  {
+    "id": "medterm_organ_gallbladder",
+    "correctAnswer": "Gallbladder",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Liver", "Pancreas", "Spleen", "Kidney", "Bladder", "Stomach", "Appendix", "Intestine"],
+    "quizQuestion": "The combining form cholecyst/o refers to which organ?",
+    "explanation": "Cholecyst/o comes from Greek 'chole' (bile) + 'kystis' (bladder). Found in cholecystitis (gallbladder inflammation), cholecystectomy (gallbladder removal), and cholecystography.",
+    "statement": "Cholecyst/o refers to the gallbladder.",
+    "wowFactor": "Cholecystectomy — gallbladder removal — is one of the most common surgeries: chole (bile) + cyst/o (bladder) + ectomy (removal)!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'gallbladder'?",
+        "correctAnswer": "Cholecyst/o",
+        "distractors": ["Hepat/o", "Pancreat/o", "Cyst/o"]
+      },
+      {
+        "type": "context",
+        "question": "Cholecystitis is inflammation of which organ?",
+        "correctAnswer": "Gallbladder",
+        "distractors": ["Liver", "Pancreas", "Bladder"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "digestive"],
+    "visualDescription": "CHOLECYST/O connecting to gallbladder illustration beneath the liver"
+  },
+  {
+    "id": "medterm_organ_pancreas",
+    "correctAnswer": "Pancreas",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Liver", "Gallbladder", "Spleen", "Kidney", "Stomach", "Adrenal gland", "Thyroid", "Intestine"],
+    "quizQuestion": "The combining form pancreat/o refers to which organ?",
+    "explanation": "Pancreat/o comes from Greek 'pankreas' meaning all flesh (pan = all, kreas = flesh). Found in pancreatitis (pancreas inflammation), pancreatectomy (pancreas removal), and pancreatic cancer.",
+    "statement": "Pancreat/o refers to the pancreas.",
+    "wowFactor": "The pancreas does double duty: it makes digestive enzymes AND insulin — pancreat/o from Greek means 'all flesh' for its meaty appearance!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'pancreas'?",
+        "correctAnswer": "Pancreat/o",
+        "distractors": ["Hepat/o", "Splen/o", "Adren/o"]
+      },
+      {
+        "type": "context",
+        "question": "Pancreatitis is inflammation of which organ?",
+        "correctAnswer": "Pancreas",
+        "distractors": ["Liver", "Gallbladder", "Spleen"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "digestive"],
+    "visualDescription": "PANCREAT/O connecting to pancreas illustration behind the stomach"
+  },
+  {
+    "id": "medterm_organ_spleen",
+    "correctAnswer": "Spleen",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Liver", "Pancreas", "Kidney", "Gallbladder", "Stomach", "Appendix", "Adrenal gland", "Lymph node"],
+    "quizQuestion": "The combining form splen/o refers to which organ?",
+    "explanation": "Splen/o comes from Greek 'splen' meaning spleen. Found in splenomegaly (enlarged spleen), splenectomy (spleen removal), and splenitis (spleen inflammation).",
+    "statement": "Splen/o refers to the spleen.",
+    "wowFactor": "A ruptured spleen is a life-threatening emergency — splen/o from Greek 'splen' names this blood-filtering organ tucked under your left ribs!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'spleen'?",
+        "correctAnswer": "Splen/o",
+        "distractors": ["Hepat/o", "Pancreat/o", "Lymph/o"]
+      },
+      {
+        "type": "context",
+        "question": "Splenomegaly is enlargement of which organ?",
+        "correctAnswer": "Spleen",
+        "distractors": ["Liver", "Pancreas", "Kidney"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "lymphatic"],
+    "visualDescription": "SPLEN/O connecting to spleen illustration at upper left abdomen"
+  },
+  {
+    "id": "medterm_organ_bladder",
+    "correctAnswer": "Bladder",
+    "acceptableAlternatives": ["Urinary bladder"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Kidney", "Ureter", "Urethra", "Gallbladder", "Rectum", "Uterus", "Prostate", "Colon"],
+    "quizQuestion": "The combining form cyst/o refers to which organ?",
+    "explanation": "Cyst/o comes from Greek 'kystis' meaning bladder or sac. Found in cystitis (bladder inflammation), cystoscopy (bladder camera exam), and cystectomy (bladder removal).",
+    "statement": "Cyst/o refers to the bladder.",
+    "wowFactor": "A cystoscope is a camera inserted into the bladder through the urethra — cyst/o from Greek 'kystis' means sac or bladder!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'bladder'?",
+        "correctAnswer": "Cyst/o",
+        "distractors": ["Nephr/o", "Urethr/o", "Ureter/o"]
+      },
+      {
+        "type": "context",
+        "question": "Cystitis is inflammation of which organ?",
+        "correctAnswer": "Bladder",
+        "distractors": ["Kidney", "Urethra", "Ureter"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "urinary"],
+    "visualDescription": "CYST/O connecting to urinary bladder anatomy illustration"
+  },
+  {
+    "id": "medterm_organ_urethra",
+    "correctAnswer": "Urethra",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Ureter", "Bladder", "Kidney", "Prostate", "Uterus", "Vagina", "Rectum", "Colon"],
+    "quizQuestion": "The combining form urethr/o refers to which organ?",
+    "explanation": "Urethr/o comes from Greek 'urethra' meaning the canal for urine from bladder to outside the body. Found in urethritis (urethra inflammation), urethroplasty (urethra repair), and urethroscopy.",
+    "statement": "Urethr/o refers to the urethra.",
+    "wowFactor": "The urethra and ureter are often confused — urethr/o is the EXIT tube from the bladder; ureter/o carries urine from kidney to bladder!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'urethra'?",
+        "correctAnswer": "Urethr/o",
+        "distractors": ["Ureter/o", "Cyst/o", "Nephr/o"]
+      },
+      {
+        "type": "context",
+        "question": "Urethritis is inflammation of which structure?",
+        "correctAnswer": "Urethra",
+        "distractors": ["Ureter", "Bladder", "Kidney"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "urinary"],
+    "visualDescription": "URETHR/O connecting to urethra exiting the bladder illustration"
+  },
+  {
+    "id": "medterm_organ_ureter",
+    "correctAnswer": "Ureter",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Urethra", "Kidney", "Bladder", "Uterus", "Rectum", "Colon", "Adrenal gland", "Prostate"],
+    "quizQuestion": "The combining form ureter/o refers to which organ?",
+    "explanation": "Ureter/o refers to the ureter, the tube carrying urine from the kidney to the bladder. Found in ureteritis (ureter inflammation), ureteroplasty (ureter repair), and ureterolithiasis (kidney stones in the ureter).",
+    "statement": "Ureter/o refers to the ureter.",
+    "wowFactor": "Kidney stones that enter the ureter cause extreme pain — ureter/o is the tube from kidney to bladder, distinct from the urethra (bladder to outside)!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'ureter'?",
+        "correctAnswer": "Ureter/o",
+        "distractors": ["Urethr/o", "Nephr/o", "Cyst/o"]
+      },
+      {
+        "type": "context",
+        "question": "The ureter connects the kidney to which organ?",
+        "correctAnswer": "Bladder",
+        "distractors": ["Urethra", "Rectum", "Colon"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "urinary"],
+    "visualDescription": "URETER/O connecting to ureter tube between kidney and bladder"
+  },
+  {
+    "id": "medterm_organ_uterus",
+    "correctAnswer": "Uterus",
+    "acceptableAlternatives": ["Womb"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Ovary", "Breast", "Vagina", "Fallopian tube", "Bladder", "Kidney", "Rectum", "Cervix"],
+    "quizQuestion": "The combining form hyster/o refers to which organ?",
+    "explanation": "Hyster/o comes from Greek 'hystera' meaning uterus or womb. Found in hysterectomy (uterus removal), hysteroscopy (uterus camera exam), and hysteria (historically and incorrectly attributed to the uterus).",
+    "statement": "Hyster/o refers to the uterus.",
+    "wowFactor": "The word 'hysteria' was once blamed on the uterus by ancient Greeks — hyster/o from Greek 'hystera' meaning womb!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'uterus'?",
+        "correctAnswer": "Hyster/o",
+        "distractors": ["Oophor/o", "Mast/o", "Vagin/o"]
+      },
+      {
+        "type": "context",
+        "question": "A hysterectomy is surgical removal of which organ?",
+        "correctAnswer": "Uterus",
+        "distractors": ["Ovary", "Bladder", "Breast"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "reproductive"],
+    "visualDescription": "HYSTER/O connecting to anatomical uterus illustration"
+  },
+  {
+    "id": "medterm_organ_ovary",
+    "correctAnswer": "Ovary",
+    "acceptableAlternatives": ["Ovaries"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Uterus", "Breast", "Fallopian tube", "Vagina", "Testis", "Adrenal gland", "Thyroid", "Kidney"],
+    "quizQuestion": "The combining form oophor/o refers to which organ?",
+    "explanation": "Oophor/o comes from Greek 'oophoron' meaning egg bearer (oon = egg, phoros = bearing). Found in oophorectomy (ovary removal), oophoritis (ovary inflammation), and oophoropexy.",
+    "statement": "Oophor/o refers to the ovary.",
+    "wowFactor": "Oophor/o literally means 'egg bearer' in Greek — oon (egg) + phoros (bearer) — because the ovaries produce and release eggs!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'ovary'?",
+        "correctAnswer": "Oophor/o",
+        "distractors": ["Hyster/o", "Mast/o", "Orchi/o"]
+      },
+      {
+        "type": "context",
+        "question": "Oophoritis is inflammation of which organ?",
+        "correctAnswer": "Ovary",
+        "distractors": ["Uterus", "Breast", "Fallopian tube"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "reproductive"],
+    "visualDescription": "OOPHOR/O connecting to ovary illustration with follicles"
+  },
+  {
+    "id": "medterm_organ_breast",
+    "correctAnswer": "Breast",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Ovary", "Uterus", "Skin", "Gland", "Lung", "Muscle", "Rib", "Lymph node"],
+    "quizQuestion": "The combining form mast/o refers to which organ?",
+    "explanation": "Mast/o comes from Greek 'mastos' meaning breast. Found in mastitis (breast inflammation), mastectomy (breast removal), and gynecomastia (enlarged breast tissue in males).",
+    "statement": "Mast/o refers to the breast.",
+    "wowFactor": "Mastodons were named for their breast-shaped tooth cusps — mast/o from Greek 'mastos' means breast, the same root as mastectomy!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'breast'?",
+        "correctAnswer": "Mast/o",
+        "distractors": ["Oophor/o", "Hyster/o", "Aden/o"]
+      },
+      {
+        "type": "context",
+        "question": "Mastitis is inflammation of which organ?",
+        "correctAnswer": "Breast",
+        "distractors": ["Ovary", "Gland", "Skin"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "reproductive"],
+    "visualDescription": "MAST/O connecting to breast anatomy cross-section illustration"
+  },
+  {
+    "id": "medterm_organ_testis",
+    "correctAnswer": "Testis",
+    "acceptableAlternatives": ["Testes", "Testicle"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Prostate", "Ovary", "Kidney", "Adrenal gland", "Bladder", "Urethra", "Epididymis", "Seminal vesicle"],
+    "quizQuestion": "The combining form orchi/o refers to which organ?",
+    "explanation": "Orchi/o comes from Greek 'orchis' meaning testis. Found in orchitis (testis inflammation), orchidectomy (testis removal), and cryptorchidism (undescended testis).",
+    "statement": "Orchi/o refers to the testis.",
+    "wowFactor": "Orchids were named after the testis — orchi/o from Greek 'orchis' — because their tubers resemble the shape of testes!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'testis'?",
+        "correctAnswer": "Orchi/o",
+        "distractors": ["Prostat/o", "Oophor/o", "Adren/o"]
+      },
+      {
+        "type": "context",
+        "question": "Orchitis is inflammation of which organ?",
+        "correctAnswer": "Testis",
+        "distractors": ["Prostate", "Kidney", "Adrenal gland"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "reproductive"],
+    "visualDescription": "ORCHI/O connecting to testis anatomy illustration"
+  },
+  {
+    "id": "medterm_organ_prostate",
+    "correctAnswer": "Prostate",
+    "acceptableAlternatives": ["Prostate gland"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Testis", "Bladder", "Urethra", "Kidney", "Seminal vesicle", "Rectum", "Epididymis", "Adrenal gland"],
+    "quizQuestion": "The combining form prostat/o refers to which organ?",
+    "explanation": "Prostat/o comes from Greek 'prostates' meaning one who stands before (it stands before the bladder). Found in prostatitis (prostate inflammation), prostatectomy (prostate removal), and prostate-specific antigen (PSA).",
+    "statement": "Prostat/o refers to the prostate.",
+    "wowFactor": "The prostate literally 'stands before' the bladder — prostat/o from Greek 'prostates' meaning 'one who stands in front'!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'prostate'?",
+        "correctAnswer": "Prostat/o",
+        "distractors": ["Orchi/o", "Cyst/o", "Urethr/o"]
+      },
+      {
+        "type": "context",
+        "question": "Prostatitis is inflammation of which gland?",
+        "correctAnswer": "Prostate",
+        "distractors": ["Testis", "Bladder", "Kidney"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "reproductive"],
+    "visualDescription": "PROSTAT/O connecting to prostate gland anatomy below the bladder"
+  },
+  {
+    "id": "medterm_organ_thyroid",
+    "correctAnswer": "Thyroid",
+    "acceptableAlternatives": ["Thyroid gland"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Adrenal gland", "Parathyroid", "Pituitary", "Pancreas", "Ovary", "Testis", "Thymus", "Pineal gland"],
+    "quizQuestion": "The combining form thyr/o refers to which organ?",
+    "explanation": "Thyr/o comes from Greek 'thyreos' meaning shield (the thyroid cartilage resembles a shield). Found in thyroiditis (thyroid inflammation), thyroidectomy (thyroid removal), and hypothyroidism.",
+    "statement": "Thyr/o refers to the thyroid.",
+    "wowFactor": "The thyroid is shaped like a butterfly and controls your metabolism — thyr/o from Greek 'thyreos' means 'shield' for its protective cartilage!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'thyroid'?",
+        "correctAnswer": "Thyr/o",
+        "distractors": ["Adren/o", "Aden/o", "Pancreat/o"]
+      },
+      {
+        "type": "context",
+        "question": "Hypothyroidism is underactivity of which gland?",
+        "correctAnswer": "Thyroid",
+        "distractors": ["Adrenal gland", "Pituitary", "Pancreas"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "endocrine"],
+    "visualDescription": "THYR/O connecting to butterfly-shaped thyroid gland at the throat"
+  },
+  {
+    "id": "medterm_organ_adrenal_gland",
+    "correctAnswer": "Adrenal gland",
+    "acceptableAlternatives": ["Adrenal"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Thyroid", "Kidney", "Pancreas", "Pituitary", "Ovary", "Testis", "Thymus", "Spleen"],
+    "quizQuestion": "The combining form adren/o refers to which organ?",
+    "explanation": "Adren/o comes from Latin 'ad' (near) + 'renes' (kidneys) — the adrenal glands sit atop the kidneys. Found in adrenaline (epinephrine), adrenalitis, and adrenal cortex/medulla.",
+    "statement": "Adren/o refers to the adrenal gland.",
+    "wowFactor": "Adrenaline — the fight-or-flight hormone — is named for the adrenal glands: adren/o from Latin meaning 'near the kidney'!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'adrenal gland'?",
+        "correctAnswer": "Adren/o",
+        "distractors": ["Thyr/o", "Aden/o", "Nephr/o"]
+      },
+      {
+        "type": "context",
+        "question": "Adrenaline is secreted by which gland?",
+        "correctAnswer": "Adrenal gland",
+        "distractors": ["Thyroid", "Pituitary", "Pancreas"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "endocrine"],
+    "visualDescription": "ADREN/O connecting to adrenal gland sitting atop kidney illustration"
+  },
+  {
+    "id": "medterm_organ_gland",
+    "correctAnswer": "Gland",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Lymph node", "Thyroid", "Adrenal gland", "Muscle", "Nerve", "Organ", "Tissue", "Vessel"],
+    "quizQuestion": "The combining form aden/o refers to which organ?",
+    "explanation": "Aden/o comes from Greek 'aden' meaning gland. Found in adenitis (gland inflammation), adenoma (gland tumor), adenopathy (gland disease), and adenocarcinoma (gland cancer).",
+    "statement": "Aden/o refers to a gland.",
+    "wowFactor": "Adenoids (the lymphoid tissue in your throat) literally means 'gland-like' — aden/o from Greek 'aden' means gland!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'gland'?",
+        "correctAnswer": "Aden/o",
+        "distractors": ["Thyr/o", "Adren/o", "Lymph/o"]
+      },
+      {
+        "type": "context",
+        "question": "An adenoma is a tumor originating in which tissue?",
+        "correctAnswer": "Gland",
+        "distractors": ["Muscle", "Nerve", "Blood vessel"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "endocrine"],
+    "visualDescription": "ADEN/O connecting to generic gland cross-section with secretory cells"
+  },
+  {
+    "id": "medterm_organ_blood_vessel",
+    "correctAnswer": "Blood vessel",
+    "acceptableAlternatives": ["Vessel"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Artery", "Vein", "Heart", "Blood", "Lymph vessel", "Capillary", "Nerve", "Tendon"],
+    "quizQuestion": "The combining form angi/o refers to which organ?",
+    "explanation": "Angi/o comes from Greek 'angeion' meaning vessel or container. Found in angiography (blood vessel imaging), angioplasty (vessel repair), and angiogenesis (new vessel growth).",
+    "statement": "Angi/o refers to a blood vessel.",
+    "wowFactor": "Tumor angiogenesis — when cancers grow their own blood supply — is a key target for cancer drugs: angi/o means 'vessel' in Greek!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'blood vessel'?",
+        "correctAnswer": "Angi/o",
+        "distractors": ["Arteri/o", "Phleb/o", "Hemat/o"]
+      },
+      {
+        "type": "context",
+        "question": "Angiography is an imaging technique for which structure?",
+        "correctAnswer": "Blood vessel",
+        "distractors": ["Heart", "Nerve", "Lymph node"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "cardiovascular"],
+    "visualDescription": "ANGI/O connecting to branching blood vessel network illustration"
+  },
+  {
+    "id": "medterm_organ_artery",
+    "correctAnswer": "Artery",
+    "acceptableAlternatives": ["Arteries"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Vein", "Blood vessel", "Heart", "Capillary", "Aorta", "Blood", "Lymph vessel", "Nerve"],
+    "quizQuestion": "The combining form arteri/o refers to which organ?",
+    "explanation": "Arteri/o comes from Greek 'arteria' meaning airway or artery (ancient Greeks thought arteries carried air). Found in arteriosclerosis (artery hardening), arteriography (artery imaging), and arteritis.",
+    "statement": "Arteri/o refers to an artery.",
+    "wowFactor": "Ancient Greeks named arteries 'arteriai' thinking they carried air — the word arteria meant 'air carrier' before it was corrected!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'artery'?",
+        "correctAnswer": "Arteri/o",
+        "distractors": ["Phleb/o", "Angi/o", "Cardi/o"]
+      },
+      {
+        "type": "context",
+        "question": "Arteriosclerosis is hardening of which structure?",
+        "correctAnswer": "Artery",
+        "distractors": ["Vein", "Heart", "Capillary"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "cardiovascular"],
+    "visualDescription": "ARTERI/O connecting to cross-section of artery with thick muscular wall"
+  },
+  {
+    "id": "medterm_organ_vein",
+    "correctAnswer": "Vein",
+    "acceptableAlternatives": ["Veins"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Artery", "Blood vessel", "Heart", "Capillary", "Blood", "Lymph vessel", "Nerve", "Aorta"],
+    "quizQuestion": "The combining form phleb/o refers to which organ?",
+    "explanation": "Phleb/o comes from Greek 'phleps/phlebos' meaning vein. Found in phlebotomy (blood drawing from a vein), phlebitis (vein inflammation), and phlebology (vein study).",
+    "statement": "Phleb/o refers to a vein.",
+    "wowFactor": "Phlebotomy — drawing blood — literally means 'cutting a vein': phleb/o (vein) + tomy (cutting). It's one of the oldest medical procedures!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'vein'?",
+        "correctAnswer": "Phleb/o",
+        "distractors": ["Arteri/o", "Angi/o", "Hemat/o"]
+      },
+      {
+        "type": "context",
+        "question": "Phlebitis is inflammation of which structure?",
+        "correctAnswer": "Vein",
+        "distractors": ["Artery", "Capillary", "Lymph vessel"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "cardiovascular"],
+    "visualDescription": "PHLEB/O connecting to vein cross-section with one-way valve visible"
+  },
+  {
+    "id": "medterm_organ_blood",
+    "correctAnswer": "Blood",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Vein", "Artery", "Heart", "Blood vessel", "Bone marrow", "Lymph", "Plasma", "Spleen"],
+    "quizQuestion": "The combining form hemat/o refers to which organ?",
+    "explanation": "Hemat/o comes from Greek 'haima/haimatos' meaning blood. Found in hematology (blood study), hematoma (blood pooling), hematuria (blood in urine), and hematocrit (blood cell percentage).",
+    "statement": "Hemat/o refers to blood.",
+    "wowFactor": "A hematoma is a pocket of blood — hemat/o from Greek 'haima' meaning blood, the same root as hemoglobin and hemorrhage!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'blood'?",
+        "correctAnswer": "Hemat/o",
+        "distractors": ["Phleb/o", "Arteri/o", "Splen/o"]
+      },
+      {
+        "type": "context",
+        "question": "A hematologist specializes in the study of which substance?",
+        "correctAnswer": "Blood",
+        "distractors": ["Lymph", "Bone marrow", "Plasma only"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "cardiovascular"],
+    "visualDescription": "HEMAT/O connecting to red blood cells under microscope illustration"
+  },
+  {
+    "id": "medterm_organ_cartilage",
+    "correctAnswer": "Cartilage",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Bone", "Tendon", "Ligament", "Joint", "Muscle", "Skin", "Vertebra", "Skull"],
+    "quizQuestion": "The combining form chondr/o refers to which organ?",
+    "explanation": "Chondr/o comes from Greek 'chondros' meaning cartilage or grain. Found in chondritis (cartilage inflammation), chondroma (cartilage tumor), and chondrocyte (cartilage cell).",
+    "statement": "Chondr/o refers to cartilage.",
+    "wowFactor": "Chondrichthyes — sharks and rays — are named for their cartilage skeletons: chondr/o (cartilage) + ichthys (fish)!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'cartilage'?",
+        "correctAnswer": "Chondr/o",
+        "distractors": ["Oste/o", "Arthr/o", "Tend/o"]
+      },
+      {
+        "type": "context",
+        "question": "Chondritis is inflammation of which tissue?",
+        "correctAnswer": "Cartilage",
+        "distractors": ["Bone", "Joint", "Tendon"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "skeletal"],
+    "visualDescription": "CHONDR/O connecting to hyaline cartilage cross-section showing chondrocytes"
+  },
+  {
+    "id": "medterm_organ_tendon",
+    "correctAnswer": "Tendon",
+    "acceptableAlternatives": ["Tendons"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Muscle", "Ligament", "Bone", "Cartilage", "Joint", "Nerve", "Fascia", "Bursa"],
+    "quizQuestion": "The combining form tend/o refers to which organ?",
+    "explanation": "Tend/o comes from Latin 'tendo' meaning to stretch (tendons stretch from muscle to bone). Found in tendinitis (tendon inflammation), tendinopathy (tendon disease), and tenotomy (tendon cutting).",
+    "statement": "Tend/o refers to a tendon.",
+    "wowFactor": "The Achilles tendon — the thickest tendon in your body — connects your calf muscle to your heel bone, a classic tend/o structure!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'tendon'?",
+        "correctAnswer": "Tend/o",
+        "distractors": ["My/o", "Oste/o", "Chondr/o"]
+      },
+      {
+        "type": "context",
+        "question": "Tendinitis is inflammation of which structure?",
+        "correctAnswer": "Tendon",
+        "distractors": ["Muscle", "Ligament", "Bursa"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "muscular"],
+    "visualDescription": "TEND/O connecting to tendon attaching muscle to bone illustration"
+  },
+  {
+    "id": "medterm_organ_skull",
+    "correctAnswer": "Skull",
+    "acceptableAlternatives": ["Cranium"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Brain", "Vertebra", "Jaw", "Bone", "Spinal cord", "Facial bone", "Sinus", "Ear"],
+    "quizQuestion": "The combining form crani/o refers to which organ?",
+    "explanation": "Crani/o comes from Greek 'kranion' meaning skull or head. Found in craniotomy (skull opening surgery), craniology (skull study), and intracranial (inside the skull).",
+    "statement": "Crani/o refers to the skull.",
+    "wowFactor": "A craniotomy — opening the skull for brain surgery — is named crani/o (skull) + tomy (cutting): one of the most dramatic surgical procedures!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'skull'?",
+        "correctAnswer": "Crani/o",
+        "distractors": ["Encephal/o", "Vertebr/o", "Oste/o"]
+      },
+      {
+        "type": "context",
+        "question": "Intracranial pressure refers to pressure inside which structure?",
+        "correctAnswer": "Skull",
+        "distractors": ["Brain", "Vertebra", "Spinal cord"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "skeletal"],
+    "visualDescription": "CRANI/O connecting to skull anatomy illustration showing cranial bones"
+  },
+  {
+    "id": "medterm_organ_vertebra",
+    "correctAnswer": "Vertebra",
+    "acceptableAlternatives": ["Vertebrae", "Spine"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Spinal cord", "Skull", "Bone", "Disc", "Rib", "Cartilage", "Joint", "Pelvis"],
+    "quizQuestion": "The combining form vertebr/o refers to which organ?",
+    "explanation": "Vertebr/o comes from Latin 'vertebra' meaning joint or bone of the spine (from 'vertere' meaning to turn). Found in vertebral column, vertebroplasty (vertebra repair), and vertebral fracture.",
+    "statement": "Vertebr/o refers to a vertebra.",
+    "wowFactor": "There are 33 vertebrae in the human spine — vertebr/o from Latin 'vertere' (to turn) because the spine allows rotation!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'vertebra'?",
+        "correctAnswer": "Vertebr/o",
+        "distractors": ["Crani/o", "Myel/o", "Oste/o"]
+      },
+      {
+        "type": "context",
+        "question": "Vertebroplasty is a procedure to repair which structure?",
+        "correctAnswer": "Vertebra",
+        "distractors": ["Spinal cord", "Disc", "Skull"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "skeletal"],
+    "visualDescription": "VERTEBR/O connecting to spinal column illustration with individual vertebra highlighted"
+  },
+  {
+    "id": "medterm_organ_spinal_cord",
+    "correctAnswer": "Spinal cord",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Vertebra", "Brain", "Nerve", "Bone marrow", "Disc", "Skull", "Muscle", "Tendon"],
+    "quizQuestion": "The combining form myel/o refers to which organ?",
+    "explanation": "Myel/o comes from Greek 'myelos' meaning marrow or spinal cord. Found in myelitis (spinal cord inflammation), myelogram (spinal cord imaging), and myelopathy (spinal cord disease). Note: it also refers to bone marrow.",
+    "statement": "Myel/o refers to the spinal cord.",
+    "wowFactor": "Myel/o is a tricky root — it means BOTH spinal cord AND bone marrow: myelitis is spinal cord inflammation, but myeloma is a bone marrow cancer!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'spinal cord'?",
+        "correctAnswer": "Myel/o",
+        "distractors": ["Encephal/o", "Vertebr/o", "Neur/o"]
+      },
+      {
+        "type": "context",
+        "question": "Myelitis is inflammation of which structure?",
+        "correctAnswer": "Spinal cord",
+        "distractors": ["Brain", "Nerve", "Vertebra"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "nervous"],
+    "visualDescription": "MYEL/O connecting to spinal cord cross-section inside vertebral column"
+  },
+  {
+    "id": "medterm_organ_retina",
+    "correctAnswer": "Retina",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "organ_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Eye", "Cornea", "Lens", "Optic nerve", "Iris", "Pupil", "Sclera", "Choroid"],
+    "quizQuestion": "The combining form retin/o refers to which organ?",
+    "explanation": "Retin/o comes from Latin 'rete' meaning net (the retina looks like a fine net of photoreceptor cells). Found in retinitis (retina inflammation), retinopathy (retina disease), and retinal detachment.",
+    "statement": "Retin/o refers to the retina.",
+    "wowFactor": "Diabetic retinopathy is damage to the light-sensing retina — retin/o from Latin 'rete' (net) for its web-like photoreceptor structure!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form means 'retina'?",
+        "correctAnswer": "Retin/o",
+        "distractors": ["Ophthalm/o", "Ot/o", "Neur/o"]
+      },
+      {
+        "type": "context",
+        "question": "Retinopathy is disease affecting which structure of the eye?",
+        "correctAnswer": "Retina",
+        "distractors": ["Cornea", "Lens", "Iris"]
+      }
+    ],
+    "tags": ["medical_terminology", "organ", "sensory"],
+    "visualDescription": "RETIN/O connecting to retina at back of eye cross-section"
+  }
+]

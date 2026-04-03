@@ -1,0 +1,1827 @@
+[
+  {
+    "id": "medterm_proc_appendectomy",
+    "correctAnswer": "Appendectomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Cholecystectomy",
+      "Mastectomy",
+      "Gastrectomy",
+      "Nephrectomy",
+      "Tonsillectomy",
+      "Splenectomy",
+      "Hysterectomy",
+      "Thyroidectomy"
+    ],
+    "quizQuestion": "What is the surgical removal of the appendix called?",
+    "explanation": "Appendectomy: appendic/o (appendix) + -ectomy (surgical removal). One of the most common emergency surgeries, performed for appendicitis before rupture.",
+    "statement": "Appendectomy is the surgical removal of the appendix.",
+    "wowFactor": "The suffix -ectomy always means 'surgical removal' \u2014 from the Greek ektome (excision). Once you know -ectomy, you can decode dozens of surgical terms instantly!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Appendectomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "ectomy"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'appendectomy' mean, breaking down its word parts?",
+        "correctAnswer": "Surgical removal of the appendix",
+        "distractors": [
+          "Surgical incision of the appendix",
+          "Creation of an appendix opening",
+          "Imaging of the appendix"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A patient with appendicitis needs emergency surgery to remove the appendix \u2014 this procedure is called a(n) ___?",
+        "correctAnswer": "Appendectomy",
+        "distractors": [
+          "Appendotomy",
+          "Appendostomy",
+          "Appendoplasty",
+          "Appendopexy"
+        ]
+      }
+    ],
+    "visualDescription": "Word APPENDECTOMY split into segments APPENDIC + ECTOMY with a surgical scissors icon"
+  },
+  {
+    "id": "medterm_proc_cholecystectomy",
+    "correctAnswer": "Cholecystectomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Appendectomy",
+      "Gastrectomy",
+      "Nephrectomy",
+      "Splenectomy",
+      "Thyroidectomy",
+      "Hysterectomy",
+      "Hepatectomy",
+      "Pancreatectomy"
+    ],
+    "quizQuestion": "What is the surgical removal of the gallbladder called?",
+    "explanation": "Cholecystectomy: chol/e (bile) + cyst/o (bladder/sac) + -ectomy (surgical removal). The gallbladder stores bile produced by the liver. This is the most common elective abdominal surgery.",
+    "statement": "Cholecystectomy is the surgical removal of the gallbladder.",
+    "wowFactor": "Chole- means bile and cysto- means bladder \u2014 so cholecystectomy literally means 'bile-bladder removal'. The same roots appear in cholesterol and cystoscopy!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cholecystectomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "ectomy"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'cholecystectomy' \u2014 what organ is removed?",
+        "correctAnswer": "Gallbladder",
+        "distractors": [
+          "Liver",
+          "Pancreas",
+          "Spleen"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Gallstones blocking bile flow require removal of the gallbladder \u2014 this surgery is called a(n) ___?",
+        "correctAnswer": "Cholecystectomy",
+        "distractors": [
+          "Choledochotomy",
+          "Cholostomy",
+          "Choleplasty",
+          "Biliary resection"
+        ]
+      }
+    ],
+    "visualDescription": "Word CHOLECYSTECTOMY split into CHOL/E + CYST/O + ECTOMY with a gallbladder diagram"
+  },
+  {
+    "id": "medterm_proc_mastectomy",
+    "correctAnswer": "Mastectomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Lumpectomy",
+      "Thyroidectomy",
+      "Hysterectomy",
+      "Oophorectomy",
+      "Appendectomy",
+      "Nephrectomy",
+      "Cholecystectomy",
+      "Splenectomy"
+    ],
+    "quizQuestion": "What is the surgical removal of a breast called?",
+    "explanation": "Mastectomy: mast/o (breast) + -ectomy (surgical removal). Performed primarily for breast cancer treatment. A lumpectomy removes only the tumor, while a mastectomy removes the whole breast.",
+    "statement": "Mastectomy is the surgical removal of a breast.",
+    "wowFactor": "Mast/o comes from the Greek mastos (breast) \u2014 the same root appears in mastitis (breast inflammation) and the Amazon warrior women whose name some etymologists link to this root!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mastectomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "ectomy",
+      "oncology"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'mast/o' mean in medical terminology?",
+        "correctAnswer": "Breast",
+        "distractors": [
+          "Muscle",
+          "Bone marrow",
+          "Stomach"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A surgeon removing an entire breast for cancer treatment performs a(n) ___?",
+        "correctAnswer": "Mastectomy",
+        "distractors": [
+          "Lumpectomy",
+          "Mastotomy",
+          "Mastoplasty",
+          "Mastostomy"
+        ]
+      }
+    ],
+    "visualDescription": "Word MASTECTOMY split into MAST/O + ECTOMY with a medical cross symbol"
+  },
+  {
+    "id": "medterm_proc_hysterectomy",
+    "correctAnswer": "Hysterectomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Oophorectomy",
+      "Salpingectomy",
+      "Mastectomy",
+      "Colposcopy",
+      "Cystectomy",
+      "Appendectomy",
+      "Myomectomy",
+      "Vaginoplasty"
+    ],
+    "quizQuestion": "What is the surgical removal of the uterus called?",
+    "explanation": "Hysterectomy: hyster/o (uterus) + -ectomy (surgical removal). The hyster- root comes from Greek hystera (uterus). It is one of the most commonly performed gynecological surgeries.",
+    "statement": "Hysterectomy is the surgical removal of the uterus.",
+    "wowFactor": "Hystero- comes from the Greek for 'womb' \u2014 ancient Greeks believed the uterus caused erratic emotional behavior, giving us the word 'hysteria'! Medical etymology can be surprisingly revealing about historical attitudes.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hysterectomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "ectomy",
+      "gynecology"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'hyster/o' mean in medical terminology?",
+        "correctAnswer": "Uterus",
+        "distractors": [
+          "Ovary",
+          "Fallopian tube",
+          "Cervix"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Surgical removal of the uterus to treat fibroids or cancer is called a(n) ___?",
+        "correctAnswer": "Hysterectomy",
+        "distractors": [
+          "Oophorectomy",
+          "Hysterotomy",
+          "Hysteropexy",
+          "Uteroplasty"
+        ]
+      }
+    ],
+    "visualDescription": "Word HYSTERECTOMY split into HYSTER/O + ECTOMY with uterus anatomical diagram"
+  },
+  {
+    "id": "medterm_proc_thyroidectomy",
+    "correctAnswer": "Thyroidectomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Parathyroidectomy",
+      "Thyrotomy",
+      "Lymphadenectomy",
+      "Tonsillectomy",
+      "Adrenalectomy",
+      "Appendectomy",
+      "Pancreatectomy",
+      "Thymectomy"
+    ],
+    "quizQuestion": "What is the surgical removal of the thyroid gland called?",
+    "explanation": "Thyroidectomy: thyroid (thyroid gland) + -ectomy (surgical removal). The thyroid gland in the neck produces hormones regulating metabolism. Performed for thyroid cancer, goiter, or hyperthyroidism.",
+    "statement": "Thyroidectomy is the surgical removal of the thyroid gland.",
+    "wowFactor": "The thyroid is named for its shield shape \u2014 thyreoeides in Greek means 'shield-shaped'. So thyroidectomy literally means 'removal of the shield-shaped gland'!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thyroidectomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "ectomy",
+      "endocrine"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Where is the thyroid gland located, making thyroidectomy a neck surgery?",
+        "correctAnswer": "Neck (anterior, below larynx)",
+        "distractors": [
+          "Chest (mediastinum)",
+          "Abdomen (retroperitoneal)",
+          "Brain (base of skull)"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Removal of the thyroid gland to treat thyroid cancer is called a(n) ___?",
+        "correctAnswer": "Thyroidectomy",
+        "distractors": [
+          "Thyrotomy",
+          "Thyrostomy",
+          "Thyropexy",
+          "Parathyroidectomy"
+        ]
+      }
+    ],
+    "visualDescription": "Word THYROIDECTOMY split into THYROID + ECTOMY with butterfly-shaped thyroid gland diagram"
+  },
+  {
+    "id": "medterm_proc_tonsillectomy",
+    "correctAnswer": "Tonsillectomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Adenoidectomy",
+      "Laryngectomy",
+      "Thyroidectomy",
+      "Appendectomy",
+      "Cholecystectomy",
+      "Mastectomy",
+      "Splenectomy",
+      "Septoplasty"
+    ],
+    "quizQuestion": "What is the surgical removal of the tonsils called?",
+    "explanation": "Tonsillectomy: tonsill/o (tonsil) + -ectomy (surgical removal). The tonsils are lymphoid tissue at the back of the throat. This is one of the most common pediatric surgeries, performed for recurrent tonsillitis or obstructive sleep apnea.",
+    "statement": "Tonsillectomy is the surgical removal of the tonsils.",
+    "wowFactor": "Tonsillectomy is so common it's often a child's first surgery \u2014 over half a million are performed in the US each year! The tonsil name comes from Latin tonsillae, akin to the word for 'mooring posts' due to their paired shape.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tonsillectomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "ectomy",
+      "ENT"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'tonsill/o' refer to in medical terminology?",
+        "correctAnswer": "Tonsils (lymphoid tissue at back of throat)",
+        "distractors": [
+          "Tongue",
+          "Larynx",
+          "Uvula"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Frequent strep throat may lead a doctor to recommend removal of the tonsils \u2014 this operation is called a(n) ___?",
+        "correctAnswer": "Tonsillectomy",
+        "distractors": [
+          "Adenoidectomy",
+          "Laryngectomy",
+          "Pharyngotomy",
+          "Uvuloplasty"
+        ]
+      }
+    ],
+    "visualDescription": "Word TONSILLECTOMY split into TONSILL/O + ECTOMY with throat diagram highlighting tonsil locations"
+  },
+  {
+    "id": "medterm_proc_nephrectomy",
+    "correctAnswer": "Nephrectomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Cystectomy",
+      "Ureterectomy",
+      "Nephrostomy",
+      "Pyeloplasty",
+      "Splenectomy",
+      "Adrenalectomy",
+      "Appendectomy",
+      "Gastrectomy"
+    ],
+    "quizQuestion": "What is the surgical removal of a kidney called?",
+    "explanation": "Nephrectomy: nephr/o (kidney) + -ectomy (surgical removal). The nephro- root comes from Greek nephros (kidney). Performed for kidney cancer, severe kidney disease, or living-donor transplant.",
+    "statement": "Nephrectomy is the surgical removal of a kidney.",
+    "wowFactor": "Nephr/o (kidney) appears in nephrology, nephritis, and nephron \u2014 the basic functional unit of the kidney. One healthy kidney is sufficient for normal life, which is why living donors can give one kidney!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nephrectomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "ectomy",
+      "urology"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'nephr/o' mean in medical terminology?",
+        "correctAnswer": "Kidney",
+        "distractors": [
+          "Liver",
+          "Spleen",
+          "Bladder"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A surgeon removes a diseased kidney in a procedure called a(n) ___?",
+        "correctAnswer": "Nephrectomy",
+        "distractors": [
+          "Nephrotomy",
+          "Nephrostomy",
+          "Nephropexy",
+          "Pyeloplasty"
+        ]
+      }
+    ],
+    "visualDescription": "Word NEPHRECTOMY split into NEPHR/O + ECTOMY with kidney anatomical diagram"
+  },
+  {
+    "id": "medterm_proc_splenectomy",
+    "correctAnswer": "Splenectomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Hepatectomy",
+      "Pancreatectomy",
+      "Nephrectomy",
+      "Appendectomy",
+      "Cholecystectomy",
+      "Gastrectomy",
+      "Thymectomy",
+      "Adrenalectomy"
+    ],
+    "quizQuestion": "What is the surgical removal of the spleen called?",
+    "explanation": "Splenectomy: splen/o (spleen) + -ectomy (surgical removal). The spleen filters blood and supports immune function. Splenectomy is performed after traumatic rupture or for hematologic conditions like immune thrombocytopenia.",
+    "statement": "Splenectomy is the surgical removal of the spleen.",
+    "wowFactor": "After splenectomy, patients need vaccinations against encapsulated bacteria (pneumococcus, meningococcus, Haemophilus) because the spleen is uniquely important for clearing these organisms from the blood!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Splenectomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "ectomy",
+      "hematology"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'splen/o' mean in medical terminology?",
+        "correctAnswer": "Spleen",
+        "distractors": [
+          "Liver",
+          "Pancreas",
+          "Lymph node"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Emergency surgery after a ruptured spleen involves removal of the organ in a procedure called a(n) ___?",
+        "correctAnswer": "Splenectomy",
+        "distractors": [
+          "Splenotomy",
+          "Splenoplasty",
+          "Hepatectomy",
+          "Pancreatectomy"
+        ]
+      }
+    ],
+    "visualDescription": "Word SPLENECTOMY split into SPLEN/O + ECTOMY with spleen diagram showing its left-side abdominal position"
+  },
+  {
+    "id": "medterm_proc_gastrectomy",
+    "correctAnswer": "Gastrectomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Colectomy",
+      "Esophagectomy",
+      "Duodenectomy",
+      "Cholecystectomy",
+      "Pancreatectomy",
+      "Hepatectomy",
+      "Appendectomy",
+      "Ileectomy"
+    ],
+    "quizQuestion": "What is the surgical removal of all or part of the stomach called?",
+    "explanation": "Gastrectomy: gastr/o (stomach) + -ectomy (surgical removal). The gastr- root comes from Greek gaster (stomach). Performed for stomach cancer or severe peptic ulcers. Compare gastroscopy (visual examination of the stomach).",
+    "statement": "Gastrectomy is the surgical removal of all or part of the stomach.",
+    "wowFactor": "Gastr/o appears everywhere in medicine: gastritis (stomach inflammation), gastroenterology, gastroscopy \u2014 and even 'gastronomy', the art of good eating! Same Greek root gaster meaning belly.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gastrectomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "ectomy",
+      "gastroenterology"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Compare gastrectomy vs gastroscopy \u2014 what does the -ectomy vs -scopy difference indicate?",
+        "correctAnswer": "-ectomy = surgical removal; -scopy = visual examination",
+        "distractors": [
+          "-ectomy = visual examination; -scopy = surgical removal",
+          "-ectomy = repair; -scopy = incision",
+          "-ectomy = creation of opening; -scopy = X-ray imaging"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Stomach cancer may require partial or total removal of the stomach \u2014 this procedure is called a(n) ___?",
+        "correctAnswer": "Gastrectomy",
+        "distractors": [
+          "Gastrotomy",
+          "Gastrostomy",
+          "Gastroplasty",
+          "Gastroplication"
+        ]
+      }
+    ],
+    "visualDescription": "Word GASTRECTOMY split into GASTR/O + ECTOMY with stomach diagram"
+  },
+  {
+    "id": "medterm_proc_pneumonectomy",
+    "correctAnswer": "Pneumonectomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Lobectomy",
+      "Thoracotomy",
+      "Pleurodesis",
+      "Tracheotomy",
+      "Bronchoplasty",
+      "Decortication",
+      "Segmentectomy",
+      "Esophagectomy"
+    ],
+    "quizQuestion": "What is the surgical removal of an entire lung called?",
+    "explanation": "Pneumonectomy: pneumon/o (lung) + -ectomy (surgical removal). The pneumon- root comes from Greek pneumon (lung). This is the most radical lung resection, typically performed for lung cancer involving a central tumor. A lobectomy removes just one lobe.",
+    "statement": "Pneumonectomy is the surgical removal of an entire lung.",
+    "wowFactor": "After pneumonectomy, the remaining lung compensates by expanding slightly and the mediastinum shifts toward the empty side. People can live with one lung \u2014 it just limits strenuous activity!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pneumonectomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "ectomy",
+      "pulmonology",
+      "thoracic"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'pneumon/o' mean in medical terminology?",
+        "correctAnswer": "Lung",
+        "distractors": [
+          "Air",
+          "Breath",
+          "Chest cavity"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "The most extensive lung surgery \u2014 removing an entire lung \u2014 is called a(n) ___?",
+        "correctAnswer": "Pneumonectomy",
+        "distractors": [
+          "Lobectomy",
+          "Segmentectomy",
+          "Thoracotomy",
+          "Pleurodesis"
+        ]
+      }
+    ],
+    "visualDescription": "Word PNEUMONECTOMY split into PNEUMON/O + ECTOMY with lung pair diagram, one highlighted for removal"
+  },
+  {
+    "id": "medterm_proc_tracheotomy",
+    "correctAnswer": "Tracheotomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Tracheostomy",
+      "Laryngotomy",
+      "Thoracotomy",
+      "Bronchoscopy",
+      "Cricothyrotomy",
+      "Intubation",
+      "Laryngectomy",
+      "Pharyngotomy"
+    ],
+    "quizQuestion": "What is a surgical incision into the trachea (windpipe) to create a temporary airway called?",
+    "explanation": "Tracheotomy: trache/o (trachea/windpipe) + -otomy (surgical incision). Creates a temporary opening for emergency airway access. Contrast with tracheostomy (-ostomy = permanent opening). The -otomy suffix always means incision, not removal.",
+    "statement": "Tracheotomy is a surgical incision into the trachea to establish an emergency airway.",
+    "wowFactor": "Tracheotomy vs tracheostomy trips up even medical students! Tracheotomy (-otomy) is a temporary incision; tracheostomy (-ostomy) creates a permanent stoma. Same organ, two different operations!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tracheotomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "otomy",
+      "airway"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does the suffix -otomy mean in medical terminology?",
+        "correctAnswer": "Surgical incision (cutting into)",
+        "distractors": [
+          "Surgical removal",
+          "Creation of permanent opening",
+          "Visual examination"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "An ER surgeon cuts into the trachea for emergency airway access \u2014 this temporary incision is called a(n) ___?",
+        "correctAnswer": "Tracheotomy",
+        "distractors": [
+          "Tracheostomy",
+          "Laryngotomy",
+          "Cricothyrotomy",
+          "Bronchoscopy"
+        ]
+      }
+    ],
+    "visualDescription": "Word TRACHEOTOMY split into TRACHE/O + OTOMY with trachea diagram and incision arrow"
+  },
+  {
+    "id": "medterm_proc_craniotomy",
+    "correctAnswer": "Craniotomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Craniectomy",
+      "Trepanation",
+      "Lobotomy",
+      "Laminectomy",
+      "Burr hole",
+      "Ventriculostomy",
+      "Myelotomy",
+      "Stereotaxy"
+    ],
+    "quizQuestion": "What is the surgical procedure that involves cutting into the skull to access the brain called?",
+    "explanation": "Craniotomy: crani/o (skull) + -otomy (surgical incision). A section of skull is temporarily removed to access the brain, then replaced. One of the most dramatic surgical procedures in neurosurgery.",
+    "statement": "Craniotomy is a surgical incision into the skull to access the brain.",
+    "wowFactor": "Trepanation \u2014 drilling holes in skulls \u2014 is one of humanity's oldest surgeries, with evidence from 8000 BCE! Modern craniotomy is its descendant, now guided by MRI with millimeter precision.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Craniotomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "otomy",
+      "neurosurgery"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'crani/o' mean in medical terminology?",
+        "correctAnswer": "Skull",
+        "distractors": [
+          "Brain",
+          "Spine",
+          "Neck"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A neurosurgeon opens the skull to remove a brain tumor in a procedure called a(n) ___?",
+        "correctAnswer": "Craniotomy",
+        "distractors": [
+          "Craniectomy",
+          "Lobotomy",
+          "Laminectomy",
+          "Ventriculostomy"
+        ]
+      }
+    ],
+    "visualDescription": "Word CRANIOTOMY split into CRANI/O + OTOMY with skull diagram showing bone flap removal"
+  },
+  {
+    "id": "medterm_proc_thoracotomy",
+    "correctAnswer": "Thoracotomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Thoracoscopy",
+      "Sternotomy",
+      "Pleurotomy",
+      "Laparotomy",
+      "Pneumonectomy",
+      "Pericardiotomy",
+      "Tracheotomy",
+      "Mediastinotomy"
+    ],
+    "quizQuestion": "What is a surgical incision through the chest wall to access the thoracic cavity called?",
+    "explanation": "Thoracotomy: thorac/o (chest/thorax) + -otomy (surgical incision). Provides access to the lungs, heart, esophagus, and great vessels. A posterolateral thoracotomy is the classic approach for lung surgery.",
+    "statement": "Thoracotomy is a surgical incision through the chest wall to access the thoracic cavity.",
+    "wowFactor": "A resuscitative thoracotomy in the ER \u2014 cracking open the chest to manually pump the heart \u2014 can save lives when cardiac arrest results from trauma. It's as dramatic as it sounds!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thoracotomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "otomy",
+      "thoracic"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'thorac/o' mean in medical terminology?",
+        "correctAnswer": "Chest / thorax",
+        "distractors": [
+          "Abdomen",
+          "Lung",
+          "Heart"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A surgeon cuts through the chest wall to reach the lungs in a procedure called a(n) ___?",
+        "correctAnswer": "Thoracotomy",
+        "distractors": [
+          "Thoracoscopy",
+          "Sternotomy",
+          "Laparotomy",
+          "Pneumonectomy"
+        ]
+      }
+    ],
+    "visualDescription": "Word THORACOTOMY split into THORAC/O + OTOMY with chest cross-section diagram"
+  },
+  {
+    "id": "medterm_proc_laparotomy",
+    "correctAnswer": "Laparotomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Laparoscopy",
+      "Celiotomy",
+      "Thoracotomy",
+      "Herniotomy",
+      "Appendectomy",
+      "Colostomy",
+      "Peritoneal lavage",
+      "Exploratory surgery"
+    ],
+    "quizQuestion": "What is a large surgical incision through the abdominal wall to access the abdominal cavity called?",
+    "explanation": "Laparotomy: lapar/o (abdominal wall/flank) + -otomy (surgical incision). The lapar- root comes from Greek lapara (flank). An exploratory laparotomy is performed when the cause of abdominal pathology is unknown. Compare laparoscopy (minimally invasive visualization).",
+    "statement": "Laparotomy is a surgical incision through the abdominal wall to access the abdominal cavity.",
+    "wowFactor": "Before laparoscopy, every abdominal surgery required a laparotomy \u2014 a large open incision. Laparoscopy (camera through tiny holes) revolutionized surgery in the 1980s, making 'open' laparotomy far less common!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Laparotomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "otomy",
+      "abdominal"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Laparotomy vs laparoscopy \u2014 both access the abdomen, but how do they differ?",
+        "correctAnswer": "Laparotomy = large open incision; laparoscopy = minimally invasive camera",
+        "distractors": [
+          "Laparotomy = camera visualization; laparoscopy = large incision",
+          "Laparotomy = bowel surgery; laparoscopy = liver surgery",
+          "Laparotomy = emergency only; laparoscopy = elective only"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A surgeon makes a large abdominal incision to explore unexplained internal bleeding \u2014 this open procedure is called a(n) ___?",
+        "correctAnswer": "Laparotomy",
+        "distractors": [
+          "Laparoscopy",
+          "Celiotomy",
+          "Peritoneal lavage",
+          "Herniotomy"
+        ]
+      }
+    ],
+    "visualDescription": "Word LAPAROTOMY split into LAPAR/O + OTOMY with abdomen diagram showing incision line"
+  },
+  {
+    "id": "medterm_proc_phlebotomy",
+    "correctAnswer": "Phlebotomy",
+    "acceptableAlternatives": [
+      "Venipuncture"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Arteriotomy",
+      "Venesection",
+      "Angioplasty",
+      "Thrombectomy",
+      "Embolectomy",
+      "Sclerotherapy",
+      "Catheterization",
+      "Paracentesis"
+    ],
+    "quizQuestion": "What is the medical term for making an incision into a vein to draw blood or relieve pressure?",
+    "explanation": "Phlebotomy: phleb/o (vein) + -otomy (surgical incision). From Greek phleps (vein) + tome (cutting). Today used broadly for any blood draw. Historically, bloodletting (therapeutic phlebotomy) was used for conditions like hemochromatosis \u2014 still a valid treatment today!",
+    "statement": "Phlebotomy is an incision into a vein, used today to mean drawing blood for testing or donation.",
+    "wowFactor": "Phlebotomy was the most common medical procedure for 2,000 years \u2014 ancient physicians drained blood to 'rebalance humors'. Today it's still the most performed invasive procedure, just for drawing blood samples!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Phlebotomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "otomy",
+      "vascular",
+      "blood"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'phleb/o' mean in medical terminology?",
+        "correctAnswer": "Vein",
+        "distractors": [
+          "Artery",
+          "Blood",
+          "Heart"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A lab technician draws blood by puncturing a vein \u2014 this procedure is broadly called ___?",
+        "correctAnswer": "Phlebotomy",
+        "distractors": [
+          "Arteriotomy",
+          "Angioplasty",
+          "Thrombectomy",
+          "Venesection"
+        ]
+      }
+    ],
+    "visualDescription": "Word PHLEBOTOMY split into PHLEB/O + OTOMY with vein cross-section and needle diagram"
+  },
+  {
+    "id": "medterm_proc_colostomy",
+    "correctAnswer": "Colostomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Ileostomy",
+      "Colectomy",
+      "Gastrostomy",
+      "Sigmoidoscopy",
+      "Anastomosis",
+      "Bowel resection",
+      "Cecostomy",
+      "Proctectomy"
+    ],
+    "quizQuestion": "What is the surgical creation of an opening from the colon through the abdominal wall called?",
+    "explanation": "Colostomy: col/o (colon) + -ostomy (surgical creation of an opening/stoma). The stoma (Greek for 'mouth') diverts fecal matter into an external bag. Performed after colon cancer resection, Crohn's disease, or traumatic injury. Compare colotomy (incision into colon, -otomy).",
+    "statement": "Colostomy is the surgical creation of an opening from the colon to the abdominal surface.",
+    "wowFactor": "The suffix -ostomy (from Greek stoma, mouth) creates a new 'mouth' \u2014 an artificial opening. Colostomy, ileostomy, gastrostomy all create external openings, while -otomy just cuts in temporarily!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Colostomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "ostomy",
+      "colorectal"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does the suffix -ostomy mean in medical terminology?",
+        "correctAnswer": "Surgical creation of a permanent opening (stoma)",
+        "distractors": [
+          "Surgical incision",
+          "Surgical removal",
+          "Visual examination"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "After colon cancer surgery, waste is diverted through an abdominal opening in a procedure called a(n) ___?",
+        "correctAnswer": "Colostomy",
+        "distractors": [
+          "Ileostomy",
+          "Colectomy",
+          "Gastrostomy",
+          "Cecostomy"
+        ]
+      }
+    ],
+    "visualDescription": "Word COLOSTOMY split into COL/O + OSTOMY with colon diagram and stoma illustration"
+  },
+  {
+    "id": "medterm_proc_tracheostomy",
+    "correctAnswer": "Tracheostomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Tracheotomy",
+      "Laryngostomy",
+      "Esophagostomy",
+      "Bronchostomy",
+      "Laryngectomy",
+      "Intubation",
+      "Cricothyrotomy",
+      "Pharyngostomy"
+    ],
+    "quizQuestion": "What is the surgical creation of a permanent opening in the trachea through the neck called?",
+    "explanation": "Tracheostomy: trache/o (trachea) + -ostomy (creation of a permanent opening). Creates a stoma (permanent hole) in the neck for long-term ventilation. Key distinction: tracheotomy (-otomy) is a temporary incision; tracheostomy (-ostomy) is a permanent stoma.",
+    "statement": "Tracheostomy is the surgical creation of a permanent opening in the trachea through the neck.",
+    "wowFactor": "The tracheotomy vs tracheostomy distinction is medically critical: -otomy is temporary (stitched closed later), -ostomy is permanent. Same trachea, opposite long-term outcomes \u2014 suffix mastery saves lives in communication!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tracheostomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "ostomy",
+      "airway"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "How does tracheostomy differ from tracheotomy?",
+        "correctAnswer": "Tracheostomy creates a permanent stoma; tracheotomy is a temporary incision",
+        "distractors": [
+          "Tracheostomy is temporary; tracheotomy is permanent",
+          "They are synonyms for the same procedure",
+          "Tracheostomy uses a tube; tracheotomy uses a camera"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A long-term ventilator-dependent patient needs a permanent neck airway opening called a(n) ___?",
+        "correctAnswer": "Tracheostomy",
+        "distractors": [
+          "Tracheotomy",
+          "Laryngostomy",
+          "Intubation",
+          "Cricothyrotomy"
+        ]
+      }
+    ],
+    "visualDescription": "Word TRACHEOSTOMY split into TRACHE/O + OSTOMY with trachea diagram showing permanent stoma tube"
+  },
+  {
+    "id": "medterm_proc_ileostomy",
+    "correctAnswer": "Ileostomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Colostomy",
+      "Jejunostomy",
+      "Duodenostomy",
+      "Gastrostomy",
+      "Colectomy",
+      "Ileectomy",
+      "Cecostomy",
+      "Anastomosis"
+    ],
+    "quizQuestion": "What is the surgical creation of an opening from the ileum (small intestine) through the abdominal wall called?",
+    "explanation": "Ileostomy: ile/o (ileum, the final section of small intestine) + -ostomy (creation of a permanent opening). Liquid waste exits through the stoma since the colon is bypassed. Common in Crohn's disease and ulcerative colitis when the colon must be removed.",
+    "statement": "Ileostomy is the surgical creation of an opening from the ileum to the abdominal surface.",
+    "wowFactor": "The small intestine has three sections: duodenum, jejunum, and ileum. An ileostomy uses the ileum (last section) \u2014 its output is liquid because the colon (which absorbs water) is bypassed entirely!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ileostomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "ostomy",
+      "gastroenterology"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'ile/o' refer to in medical terminology?",
+        "correctAnswer": "Ileum (final section of small intestine)",
+        "distractors": [
+          "Large intestine (colon)",
+          "First section of small intestine (duodenum)",
+          "Middle section of small intestine (jejunum)"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "After total colectomy for Crohn's disease, waste exits via a small-intestine stoma called a(n) ___?",
+        "correctAnswer": "Ileostomy",
+        "distractors": [
+          "Colostomy",
+          "Jejunostomy",
+          "Gastrostomy",
+          "Cecostomy"
+        ]
+      }
+    ],
+    "visualDescription": "Word ILEOSTOMY split into ILE/O + OSTOMY with small intestine diagram highlighting ileum"
+  },
+  {
+    "id": "medterm_proc_gastrostomy",
+    "correctAnswer": "Gastrostomy",
+    "acceptableAlternatives": [
+      "PEG tube placement"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Gastrectomy",
+      "Gastrotomy",
+      "Gastroplasty",
+      "Jejunostomy",
+      "Esophagostomy",
+      "Duodenostomy",
+      "Colostomy",
+      "Gastroscopy"
+    ],
+    "quizQuestion": "What is the surgical creation of an opening through the abdominal wall directly into the stomach for tube feeding called?",
+    "explanation": "Gastrostomy: gastr/o (stomach) + -ostomy (creation of a permanent opening). A feeding tube is inserted directly into the stomach. Percutaneous endoscopic gastrostomy (PEG) is the minimally invasive version. Used when patients cannot swallow safely.",
+    "statement": "Gastrostomy is the surgical creation of an opening into the stomach through the abdominal wall for tube feeding.",
+    "wowFactor": "The PEG tube (Percutaneous Endoscopic Gastrostomy) uses a camera down the throat while a needle comes in from outside \u2014 the light from the scope guides exactly where to place the tube. Precision from two directions at once!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gastrostomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "ostomy",
+      "nutrition"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the difference between gastrectomy and gastrostomy?",
+        "correctAnswer": "Gastrectomy removes the stomach; gastrostomy creates an opening into it",
+        "distractors": [
+          "Gastrectomy creates an opening; gastrostomy removes the stomach",
+          "Both remove the stomach but via different approaches",
+          "Gastrectomy is for cancer; gastrostomy is for ulcers"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A patient who cannot swallow receives a direct stomach feeding tube via a procedure called a(n) ___?",
+        "correctAnswer": "Gastrostomy",
+        "distractors": [
+          "Gastrectomy",
+          "Gastrotomy",
+          "Jejunostomy",
+          "Gastroplasty"
+        ]
+      }
+    ],
+    "visualDescription": "Word GASTROSTOMY split into GASTR/O + OSTOMY with stomach diagram showing tube placement through abdominal wall"
+  },
+  {
+    "id": "medterm_proc_nephrostomy",
+    "correctAnswer": "Nephrostomy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Nephrectomy",
+      "Nephrotomy",
+      "Pyelostomy",
+      "Ureterostomy",
+      "Cystostomy",
+      "Urostomy",
+      "Nephropexy",
+      "Pyeloplasty"
+    ],
+    "quizQuestion": "What is the surgical creation of an opening from the kidney directly through the back for urine drainage called?",
+    "explanation": "Nephrostomy: nephr/o (kidney) + -ostomy (creation of a permanent opening). A tube is inserted percutaneously (through the skin) into the renal pelvis to drain urine when the normal urinary pathway is blocked. Compare nephrectomy (removal) and nephrotomy (incision).",
+    "statement": "Nephrostomy is the creation of an opening into the kidney for direct urine drainage.",
+    "wowFactor": "A nephrostomy tube bypasses the entire ureter and bladder \u2014 urine drains directly from the kidney through the back. The same nephr/o root appears in nephron, nephritis, nephrotic syndrome, and nephrectomy!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nephrostomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "ostomy",
+      "urology"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Compare nephrostomy, nephrotomy, and nephrectomy \u2014 what suffix corresponds to each action?",
+        "correctAnswer": "-ostomy = opening; -otomy = incision; -ectomy = removal",
+        "distractors": [
+          "-ostomy = removal; -otomy = opening; -ectomy = incision",
+          "-ostomy = incision; -otomy = removal; -ectomy = opening",
+          "All three suffixes mean different types of removal"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A blocked ureter requires direct kidney drainage via a tube through the back \u2014 this procedure is called a(n) ___?",
+        "correctAnswer": "Nephrostomy",
+        "distractors": [
+          "Nephrectomy",
+          "Nephrotomy",
+          "Ureterostomy",
+          "Pyeloplasty"
+        ]
+      }
+    ],
+    "visualDescription": "Word NEPHROSTOMY split into NEPHR/O + OSTOMY with kidney diagram showing posterior tube placement"
+  },
+  {
+    "id": "medterm_proc_rhinoplasty",
+    "correctAnswer": "Rhinoplasty",
+    "acceptableAlternatives": [
+      "Nose job"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Septoplasty",
+      "Blepharoplasty",
+      "Otoplasty",
+      "Mentoplasty",
+      "Cheiloplasty",
+      "Palatoplasty",
+      "Dermoplasty",
+      "Arthroplasty"
+    ],
+    "quizQuestion": "What is the surgical repair or reshaping of the nose called?",
+    "explanation": "Rhinoplasty: rhin/o (nose) + -plasty (surgical repair/reshaping). The -plasty suffix comes from Greek plassein (to mold). Performed for cosmetic reshaping or functional correction (deviated septum, breathing obstruction).",
+    "statement": "Rhinoplasty is the surgical repair or reshaping of the nose.",
+    "wowFactor": "Rhinoplasty was performed in ancient India as early as 600 BCE \u2014 surgeons used cheek skin flaps to reconstruct noses. The technique was brought to Europe in the 1800s and is the ancestor of modern plastic surgery!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rhinoplasty",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "plasty",
+      "cosmetic"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'rhin/o' mean in medical terminology?",
+        "correctAnswer": "Nose",
+        "distractors": [
+          "Ear",
+          "Lip",
+          "Chin"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A surgeon reshapes a patient's nose for cosmetic or breathing purposes in a procedure called a(n) ___?",
+        "correctAnswer": "Rhinoplasty",
+        "distractors": [
+          "Septoplasty",
+          "Blepharoplasty",
+          "Otoplasty",
+          "Mentoplasty"
+        ]
+      }
+    ],
+    "visualDescription": "Word RHINOPLASTY split into RHIN/O + PLASTY with nose profile diagram"
+  },
+  {
+    "id": "medterm_proc_arthroplasty",
+    "correctAnswer": "Arthroplasty",
+    "acceptableAlternatives": [
+      "Joint replacement"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Arthroscopy",
+      "Arthrodesis",
+      "Osteotomy",
+      "Synovectomy",
+      "Tenoplasty",
+      "Chondroplasty",
+      "Rhinoplasty",
+      "Blepharoplasty"
+    ],
+    "quizQuestion": "What is the surgical reconstruction or replacement of a joint called?",
+    "explanation": "Arthroplasty: arthr/o (joint) + -plasty (surgical repair/reshaping). The arthr- root comes from Greek arthron (joint). Total hip and knee replacements are the most common arthroplasties performed, restoring mobility in arthritis patients.",
+    "statement": "Arthroplasty is the surgical reconstruction or replacement of a joint.",
+    "wowFactor": "Over 1 million knee replacements and 450,000 hip replacements are performed in the US each year \u2014 arthroplasty is one of the most successful surgeries in medicine, with 90%+ of patients reporting significant pain relief!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Arthroplasty",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "plasty",
+      "orthopedic"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'arthr/o' mean in medical terminology?",
+        "correctAnswer": "Joint",
+        "distractors": [
+          "Bone",
+          "Cartilage",
+          "Tendon"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A worn-out hip joint replaced with a prosthetic implant undergoes a procedure called a(n) ___?",
+        "correctAnswer": "Arthroplasty",
+        "distractors": [
+          "Arthroscopy",
+          "Arthrodesis",
+          "Osteotomy",
+          "Synovectomy"
+        ]
+      }
+    ],
+    "visualDescription": "Word ARTHROPLASTY split into ARTHR/O + PLASTY with hip joint replacement diagram"
+  },
+  {
+    "id": "medterm_proc_angioplasty",
+    "correctAnswer": "Angioplasty",
+    "acceptableAlternatives": [
+      "Balloon angioplasty",
+      "PCI"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Angiography",
+      "Atherectomy",
+      "Bypass surgery",
+      "Stenting",
+      "Embolectomy",
+      "Thrombectomy",
+      "Arthroplasty",
+      "Valvuloplasty"
+    ],
+    "quizQuestion": "What is the procedure to mechanically widen a narrowed or obstructed blood vessel called?",
+    "explanation": "Angioplasty: angi/o (vessel) + -plasty (surgical repair/reshaping). A balloon catheter is inflated inside the narrowed vessel. Coronary angioplasty (PCI \u2014 percutaneous coronary intervention) restores blood flow in heart attacks.",
+    "statement": "Angioplasty is the procedure to widen narrowed blood vessels, typically using a balloon catheter.",
+    "wowFactor": "Andreas Gr\u00fcntzig performed the first balloon angioplasty in a conscious patient in 1977. The patient walked out of the hospital! Today, angioplasty with stenting saves over a million lives a year from heart attacks.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Angioplasty",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "plasty",
+      "cardiology",
+      "vascular"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'angi/o' mean in medical terminology?",
+        "correctAnswer": "Blood vessel",
+        "distractors": [
+          "Heart",
+          "Artery only",
+          "Lymph vessel"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A cardiologist inflates a balloon in a blocked coronary artery to restore blood flow \u2014 this is called a(n) ___?",
+        "correctAnswer": "Angioplasty",
+        "distractors": [
+          "Angiography",
+          "Atherectomy",
+          "Bypass surgery",
+          "Embolectomy"
+        ]
+      }
+    ],
+    "visualDescription": "Word ANGIOPLASTY split into ANGI/O + PLASTY with artery cross-section showing balloon inflation"
+  },
+  {
+    "id": "medterm_proc_dermoplasty",
+    "correctAnswer": "Dermoplasty",
+    "acceptableAlternatives": [
+      "Dermatoplasty"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Rhinoplasty",
+      "Blepharoplasty",
+      "Arthroplasty",
+      "Skin grafting",
+      "Dermabrasion",
+      "Dermoscopy",
+      "Rhytidoplasty",
+      "Lipoplasty"
+    ],
+    "quizQuestion": "What is the surgical repair or grafting of skin called?",
+    "explanation": "Dermoplasty: derm/o (skin) + -plasty (surgical repair/reshaping). Also called dermatoplasty (dermat/o = skin). Used for burn reconstruction, wound closure, or scar revision. The derm- root comes from Greek derma (skin).",
+    "statement": "Dermoplasty is the surgical repair or grafting of skin.",
+    "wowFactor": "Derm/o and dermat/o both mean skin \u2014 that's why you'll see both dermoplasty AND dermatoplasty for the same procedure. Dermatology, epidermis, and hypodermic needle all share the same Greek root derma!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Skin_grafting",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "plasty",
+      "dermatology"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'derm/o' mean in medical terminology?",
+        "correctAnswer": "Skin",
+        "distractors": [
+          "Muscle",
+          "Fascia",
+          "Fat tissue"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A burn surgeon repairs damaged skin with grafts in a procedure called a(n) ___?",
+        "correctAnswer": "Dermoplasty",
+        "distractors": [
+          "Rhinoplasty",
+          "Dermabrasion",
+          "Rhytidoplasty",
+          "Lipoplasty"
+        ]
+      }
+    ],
+    "visualDescription": "Word DERMOPLASTY split into DERM/O + PLASTY with skin layer diagram"
+  },
+  {
+    "id": "medterm_proc_blepharoplasty",
+    "correctAnswer": "Blepharoplasty",
+    "acceptableAlternatives": [
+      "Eyelid surgery"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Rhinoplasty",
+      "Ptosis repair",
+      "Canthopexy",
+      "Browplasty",
+      "Dermoplasty",
+      "Arthroplasty",
+      "Otoplasty",
+      "Mentoplasty"
+    ],
+    "quizQuestion": "What is the surgical repair of the eyelid(s) \u2014 removing excess skin or fat \u2014 called?",
+    "explanation": "Blepharoplasty: blephar/o (eyelid) + -plasty (surgical repair). The blephar- root comes from Greek blepharon (eyelid). Performed for drooping eyelids (ptosis) that impair vision, or cosmetically to remove excess eyelid skin.",
+    "statement": "Blepharoplasty is the surgical repair of the eyelids, removing excess skin or fat.",
+    "wowFactor": "Blephar/o (eyelid) appears in blepharitis (eyelid inflammation) and blepharospasm (involuntary eyelid twitching). At 5 syllables, blepharoplasty is one of the most tongue-twisting surgical terms \u2014 but it's just eyelid + repair!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blepharoplasty",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "plasty",
+      "ophthalmology",
+      "cosmetic"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'blephar/o' mean in medical terminology?",
+        "correctAnswer": "Eyelid",
+        "distractors": [
+          "Eyebrow",
+          "Cornea",
+          "Tear duct"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Drooping eyelids impair a patient's vision \u2014 surgical correction of the eyelid is called a(n) ___?",
+        "correctAnswer": "Blepharoplasty",
+        "distractors": [
+          "Ptosis repair",
+          "Canthopexy",
+          "Browplasty",
+          "Rhinoplasty"
+        ]
+      }
+    ],
+    "visualDescription": "Word BLEPHAROPLASTY split into BLEPHAR/O + PLASTY with eye diagram highlighting eyelid"
+  },
+  {
+    "id": "medterm_proc_arthrodesis",
+    "correctAnswer": "Arthrodesis",
+    "acceptableAlternatives": [
+      "Joint fusion"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Arthroplasty",
+      "Arthroscopy",
+      "Arthrectomy",
+      "Osteotomy",
+      "Synovectomy",
+      "Chondroplasty",
+      "Arthrocentesis",
+      "Tenodesis"
+    ],
+    "quizQuestion": "What is the surgical fusion of two bones at a joint to eliminate movement and relieve pain called?",
+    "explanation": "Arthrodesis: arthr/o (joint) + -desis (binding/fusion). The -desis suffix comes from Greek desis (binding). Unlike arthroplasty (replacement), arthrodesis permanently immobilizes the joint by fusing the bones together \u2014 trading mobility for pain relief.",
+    "statement": "Arthrodesis is the surgical fusion of bones at a joint to eliminate painful movement.",
+    "wowFactor": "The -desis suffix means 'binding together' \u2014 it appears in syndesmosis (ligament binding), tenodesis (tendon anchoring), and pleurodesis (lung lining fusion). Arthrodesis trades motion for stability \u2014 permanent but effective for severe arthritis!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Arthrodesis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "orthopedic",
+      "desis"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does the suffix -desis mean in medical terminology?",
+        "correctAnswer": "Binding or surgical fusion",
+        "distractors": [
+          "Surgical removal",
+          "Creation of opening",
+          "Visual examination"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Severe ankle arthritis is treated by fusing the joint bones \u2014 this procedure is called a(n) ___?",
+        "correctAnswer": "Arthrodesis",
+        "distractors": [
+          "Arthroplasty",
+          "Arthroscopy",
+          "Osteotomy",
+          "Synovectomy"
+        ]
+      }
+    ],
+    "visualDescription": "Word ARTHRODESIS split into ARTHR/O + DESIS with joint fusion diagram showing bone screws"
+  },
+  {
+    "id": "medterm_proc_herniorrhaphy",
+    "correctAnswer": "Herniorrhaphy",
+    "acceptableAlternatives": [
+      "Hernia repair"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Hernioplasty",
+      "Laparotomy",
+      "Appendectomy",
+      "Omentopexy",
+      "Bowel repair",
+      "Mesh repair",
+      "Enterorrhaphy",
+      "Colorrhaphy"
+    ],
+    "quizQuestion": "What is the surgical repair of a hernia by suturing the weakened tissue called?",
+    "explanation": "Herniorrhaphy: herni/o (hernia) + -rrhaphy (surgical suturing/repair). The -rrhaphy suffix comes from Greek rhaphe (seam/suture). The weakened abdominal wall is stitched back together. Compare hernioplasty (mesh reinforcement).",
+    "statement": "Herniorrhaphy is the surgical repair of a hernia using sutures.",
+    "wowFactor": "The suffix -rrhaphy (suture repair) appears in many surgical terms: herniorrhaphy, enterorrhaphy (intestine repair), colorrhaphy (colon repair). It always means sewing tissue back together \u2014 surgical needlework!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hernia_repair",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "rrhaphy",
+      "abdominal"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does the suffix -rrhaphy mean in medical terminology?",
+        "correctAnswer": "Surgical suturing or repair by sewing",
+        "distractors": [
+          "Surgical removal",
+          "Creation of an opening",
+          "Surgical fusion"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A surgeon stitches a weakened abdominal wall to repair a hernia \u2014 this suture repair is called a(n) ___?",
+        "correctAnswer": "Herniorrhaphy",
+        "distractors": [
+          "Hernioplasty",
+          "Laparotomy",
+          "Appendectomy",
+          "Enterorrhaphy"
+        ]
+      }
+    ],
+    "visualDescription": "Word HERNIORRHAPHY split into HERNI/O + RRHAPHY with hernia diagram showing suture lines"
+  },
+  {
+    "id": "medterm_proc_lithotripsy",
+    "correctAnswer": "Lithotripsy",
+    "acceptableAlternatives": [
+      "ESWL"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Nephrostomy",
+      "Ureteroscopy",
+      "Cystoscopy",
+      "Nephrectomy",
+      "Pyeloplasty",
+      "Ureterotomy",
+      "Choledochoscopy",
+      "Stone extraction"
+    ],
+    "quizQuestion": "What is the procedure that uses shock waves to break up kidney stones or other calculi called?",
+    "explanation": "Lithotripsy: lith/o (stone) + -tripsy (crushing). The lith- root comes from Greek lithos (stone) and -tripsy from tribein (to crush). Extracorporeal shock wave lithotripsy (ESWL) uses external sound waves to shatter stones without incision.",
+    "statement": "Lithotripsy is the procedure using shock waves to crush kidney stones or other calculi.",
+    "wowFactor": "Lithotripsy is one of medicine's most elegant solutions \u2014 sound waves focused from outside the body shatter stones inside it. No incisions! The suffix -tripsy (crushing) also appears in neurotripsy and phlebotripsy!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lithotripsy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "tripsy",
+      "urology",
+      "non-surgical"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'lith/o' mean in medical terminology?",
+        "correctAnswer": "Stone (calculus)",
+        "distractors": [
+          "Crystal",
+          "Salt deposit",
+          "Calcium"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A patient with kidney stones is treated with external shock waves that shatter the stones \u2014 this is called ___?",
+        "correctAnswer": "Lithotripsy",
+        "distractors": [
+          "Nephrostomy",
+          "Ureteroscopy",
+          "Pyeloplasty",
+          "Stone extraction"
+        ]
+      }
+    ],
+    "visualDescription": "Word LITHOTRIPSY split into LITH/O + TRIPSY with kidney diagram showing shock wave paths converging on stone"
+  },
+  {
+    "id": "medterm_proc_paracentesis",
+    "correctAnswer": "Paracentesis",
+    "acceptableAlternatives": [
+      "Abdominal tap"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Thoracentesis",
+      "Pericardiocentesis",
+      "Arthrocentesis",
+      "Amniocentesis",
+      "Lumbar puncture",
+      "Laparotomy",
+      "Peritoneal lavage",
+      "Culdocentesis"
+    ],
+    "quizQuestion": "What is the procedure of inserting a needle into the abdominal cavity to drain excess fluid (ascites) called?",
+    "explanation": "Paracentesis: para- (beside/near) + kentesis (puncture). The -centesis suffix always means surgical puncture to withdraw fluid. Specifically refers to abdominal fluid drainage. Compare thoracentesis (chest), pericardiocentesis (heart sac), arthrocentesis (joint).",
+    "statement": "Paracentesis is needle puncture into the abdominal cavity to drain excess fluid (ascites).",
+    "wowFactor": "The -centesis suffix (Greek kentesis, puncture) lets you locate where fluid is being drained: para- (abdominal), thoraco- (chest), pericardio- (heart sac), arthro- (joint), amnio- (amniotic sac). One suffix, five different procedures!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Paracentesis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "centesis",
+      "gastroenterology"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does the suffix -centesis mean in medical terminology?",
+        "correctAnswer": "Surgical puncture to withdraw fluid",
+        "distractors": [
+          "Surgical incision",
+          "Creation of an opening",
+          "Visual examination"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Liver cirrhosis causes fluid buildup in the abdomen \u2014 draining this fluid with a needle is called ___?",
+        "correctAnswer": "Paracentesis",
+        "distractors": [
+          "Thoracentesis",
+          "Arthrocentesis",
+          "Pericardiocentesis",
+          "Laparotomy"
+        ]
+      }
+    ],
+    "visualDescription": "Word PARACENTESIS split into PARA + CENTESIS with abdomen diagram showing needle insertion site"
+  },
+  {
+    "id": "medterm_proc_oophoropexy",
+    "correctAnswer": "Oophoropexy",
+    "acceptableAlternatives": [
+      "Ovarian transposition"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 5,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Oophorectomy",
+      "Salpingopexy",
+      "Hysteropexy",
+      "Orchiopexy",
+      "Nephropexy",
+      "Splenopexy",
+      "Gastropexy",
+      "Colpopexy"
+    ],
+    "quizQuestion": "What is the surgical fixation or repositioning of an ovary (as before radiation therapy) called?",
+    "explanation": "Oophoropexy: oophor/o (ovary) + -pexy (surgical fixation). The -pexy suffix means 'surgical fastening/fixation' (from Greek pexis, fixation). The ovaries are moved out of a radiation field to preserve fertility, then may be repositioned afterward.",
+    "statement": "Oophoropexy is the surgical fixation or repositioning of an ovary, often to preserve fertility before radiation.",
+    "wowFactor": "The -pexy suffix (surgical fixation) appears in orchiopexy (anchoring undescended testicle), nephropexy (securing a floating kidney), and gastropexy (anchoring stomach). Oophoropexy saves ovarian function from radiation by simply moving the ovaries out of the way!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oophoropexy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": [
+      "medical_terminology",
+      "procedure",
+      "surgery",
+      "pexy",
+      "gynecology",
+      "oncology"
+    ],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does the suffix -pexy mean in medical terminology?",
+        "correctAnswer": "Surgical fixation or repositioning",
+        "distractors": [
+          "Surgical removal",
+          "Surgical repair/reshaping",
+          "Creation of opening"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Before pelvic radiation, a surgeon moves the ovaries out of the radiation field in a procedure called a(n) ___?",
+        "correctAnswer": "Oophoropexy",
+        "distractors": [
+          "Oophorectomy",
+          "Hysteropexy",
+          "Salpingopexy",
+          "Orchiopexy"
+        ]
+      }
+    ],
+    "visualDescription": "Word OOPHOROPEXY split into OOPHOR/O + PEXY with pelvic diagram showing ovary repositioning"
+  }
+]

@@ -4,11 +4,11 @@
   import { getAllDecks, getDecksForDomain, getDeckById } from '../../data/deckRegistry';
   import type { DeckRegistryEntry } from '../../data/deckRegistry';
   import { getDeckProgress } from '../../services/deckProgressService';
+  import { getDomainMetadata } from '../../data/domainMetadata';
   import { playerSave, persistPlayer } from '../stores/playerData';
-  import CategoryTabs from './CategoryTabs.svelte';
   import DeckTileV2 from './DeckTileV2.svelte';
   import DeckDetailModal from './DeckDetailModal.svelte';
-import DeckSearchBar from './DeckSearchBar.svelte';
+  import DeckSearchBar from './DeckSearchBar.svelte';
   import DeckSortDropdown from './DeckSortDropdown.svelte';
   import DeckFilterChips from './DeckFilterChips.svelte';
   import PlaylistBar from './PlaylistBar.svelte';
@@ -37,6 +37,7 @@ import DeckSearchBar from './DeckSearchBar.svelte';
   let pendingCustomItem = $state<CustomPlaylistItem | null>(null);
   let dealKey = $state(0);
   let initialTabSet = false;
+  let sidebarCollapsed = $state(false);
 
   const LANGUAGE_MAP: Record<string, { name: string; flag: string }> = {
     japanese: { name: 'Japanese', flag: '\u{1F1EF}\u{1F1F5}' },
@@ -158,7 +159,7 @@ import DeckSearchBar from './DeckSearchBar.svelte';
       decks = decks.filter(d => {
         const p = getDeckProgress(d.id);
         if (activeFilters.includes('not-started') && p.factsEncountered === 0) return true;
-        if (activeFilters.includes('in-progress') && p.progressPercent > 0 && p.progressPercent < 100) return true;
+        if (activeFilters.includes('in-progress') && p.factsEncountered > 0 && p.progressPercent < 100) return true;
         if (activeFilters.includes('mastered') && p.progressPercent >= 100) return true;
         return false;
       });
@@ -176,6 +177,26 @@ import DeckSearchBar from './DeckSearchBar.svelte';
     });
 
     return decks;
+  });
+
+  /** Category list for the sidebar */
+  const categoryList = $derived.by(() => {
+    const decks = getAllDecks().filter(d => d.status === 'available');
+    const domains = new Set(decks.map(d => d.domain));
+    const result: Array<{ id: string | null; label: string; count: number }> = [
+      { id: null, label: 'All', count: decks.length },
+    ];
+    if (domains.has('vocabulary')) {
+      result.push({ id: 'vocabulary', label: 'Languages', count: decks.filter(d => d.domain === 'vocabulary').length });
+    }
+    for (const domain of domains) {
+      if (domain === 'vocabulary') continue;
+      try {
+        const meta = getDomainMetadata(domain as Parameters<typeof getDomainMetadata>[0]);
+        result.push({ id: domain, label: meta.shortName, count: decks.filter(d => d.domain === domain).length });
+      } catch { /* skip unknown */ }
+    }
+    return result;
   });
 
   const selectedDeck = $derived.by(() => {
@@ -255,15 +276,10 @@ import DeckSearchBar from './DeckSearchBar.svelte';
 
     if (deckId.startsWith('all:')) {
       if (subDeckId) {
-        // A specific sub-deck was selected — use it as the real deck id
         actualDeckId = subDeckId;
         actualSubDeckId = undefined;
       } else {
-        // "Play All" selected — pass the all: prefix through to downstream systems.
-        // encounterBridge.ts handles all: by calling buildLanguageRunPool with all
-        // matching decks, and precomputeChainDistribution now handles it too.
-        // Do NOT resolve to the first sub-deck — that only loads one level's facts.
-        actualDeckId = deckId; // keep 'all:chinese', 'all:dutch', etc.
+        actualDeckId = deckId;
         actualSubDeckId = undefined;
       }
     }
@@ -357,12 +373,16 @@ import DeckSearchBar from './DeckSearchBar.svelte';
     sortOption = v;
   }
 
+  function handleSidebarTab(tabId: string | null) {
+    activeTab = tabId;
+    playCardAudio('tab-switch');
+  }
+
   $effect(() => {
     void activeTab;
     untrack(() => {
       selectedDeckId = null;
       if (!initialTabSet) {
-        // Skip the first run — initial deal is triggered from onMount
         initialTabSet = true;
         return;
       }
@@ -374,40 +394,61 @@ import DeckSearchBar from './DeckSearchBar.svelte';
 
 <div class="study-temple-screen">
   <header class="header">
-    <button class="back-btn" onclick={handleBack}>&larr; Back</button>
+    <button class="back-btn" onclick={handleBack}>&larr;</button>
     <h1 class="title">THE LIBRARY</h1>
-    <div class="header-controls">
-      <DeckSearchBar value={searchQuery} onsearchchange={handleSearchChange} placeholder="Search decks..." />
-      <DeckSortDropdown value={sortOption} onsortchange={handleSortChange} />
-      <DeckFilterChips {activeFilters} onFiltersChange={(f) => { activeFilters = f; }} />
-    </div>
+    <DeckSearchBar value={searchQuery} onsearchchange={handleSearchChange} placeholder="Search decks..." />
+    <DeckSortDropdown value={sortOption} onsortchange={handleSortChange} />
+    <DeckFilterChips {activeFilters} onFiltersChange={(f) => { activeFilters = f; }} />
   </header>
 
-  <CategoryTabs {activeTab} onTabChange={(t) => { activeTab = t; }} />
+  <div class="body-layout">
+    <aside class="sidebar" class:collapsed={sidebarCollapsed}>
+      <button class="sidebar-toggle" class:breathing={sidebarCollapsed} onclick={() => { sidebarCollapsed = !sidebarCollapsed; }} type="button">
+        <span class="toggle-arrow" class:collapsed-arrow={sidebarCollapsed}>{sidebarCollapsed ? '\u25B6' : '\u25C0'}</span>
+      </button>
+      {#if !sidebarCollapsed}
+        <nav class="sidebar-categories">
+          {#each categoryList as cat (cat.id ?? '__all__')}
+            <button
+              class="sidebar-item"
+              class:active={activeTab === cat.id}
+              onclick={() => handleSidebarTab(cat.id)}
+              type="button"
+            >
+              <span class="sidebar-label">{cat.label}</span>
+              <span class="sidebar-count">{cat.count}</span>
+            </button>
+          {/each}
+        </nav>
+      {/if}
+    </aside>
 
-  <div class="deck-summary">
-    {filteredDecks.length} deck{filteredDecks.length !== 1 ? 's' : ''}
-    {#if searchQuery || activeFilters.length > 0}
-      <span class="summary-filter-note">(filtered)</span>
-    {/if}
-  </div>
-
-  <div class="deck-scroll">
-  <div class="deck-grid">
-    {#if filteredDecks.length === 0}
-      <div class="empty-state">
-        <p class="empty-title">{searchQuery ? 'No matching decks' : 'No decks available'}</p>
-        <p class="empty-sub">{searchQuery ? 'Try a different search term' : 'Decks for this category are coming soon.'}</p>
+    <div class="main-content">
+      <div class="deck-summary">
+        {filteredDecks.length} deck{filteredDecks.length !== 1 ? 's' : ''}
+        {#if searchQuery || activeFilters.length > 0}
+          <span class="summary-filter-note">(filtered)</span>
+        {/if}
       </div>
-    {:else}
-      {#each filteredDecks as deck, i (deck.id)}
-        {@const progress = getDeckProgress(deck.id)}
-        <DeckTileV2 {deck} {progress} onclick={() => handleDeckSelect(deck.id)} dealIndex={i} {dealKey} />
-      {/each}
-    {/if}
+
+      <div class="deck-scroll">
+        <div class="deck-grid">
+          {#if filteredDecks.length === 0}
+            <div class="empty-state">
+              <p class="empty-title">{searchQuery ? 'No matching decks' : 'No decks available'}</p>
+              <p class="empty-sub">{searchQuery ? 'Try a different search term' : 'Decks for this category are coming soon.'}</p>
+            </div>
+          {:else}
+            {#each filteredDecks as deck, i (deck.id)}
+              {@const progress = getDeckProgress(deck.id)}
+              <DeckTileV2 {deck} {progress} onclick={() => handleDeckSelect(deck.id)} dealIndex={i} {dealKey} />
+            {/each}
+          {/if}
+        </div>
+      </div>
+      <div class="scroll-fade" aria-hidden="true"></div>
+    </div>
   </div>
-  </div>
-  <div class="scroll-fade" aria-hidden="true"></div>
 
   {#if showPlaylistBar}
     <PlaylistBar
@@ -450,14 +491,18 @@ import DeckSearchBar from './DeckSearchBar.svelte';
     color: #e0e0e0;
   }
 
+  /* ── Header: single row ── */
+
   .header {
     display: flex;
     align-items: center;
-    gap: calc(12px * var(--layout-scale, 1));
-    padding: calc(12px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    gap: calc(10px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     background: linear-gradient(180deg, rgba(10, 14, 26, 0.98) 0%, rgba(26, 16, 53, 0.92) 100%);
     border-bottom: 1px solid rgba(99, 102, 241, 0.15);
     flex-shrink: 0;
+    flex-wrap: nowrap;
+    overflow: hidden;
   }
 
   .back-btn {
@@ -465,11 +510,13 @@ import DeckSearchBar from './DeckSearchBar.svelte';
     border: none;
     cursor: pointer;
     color: #8b949e;
-    font-size: calc(14px * var(--text-scale, 1));
-    padding: calc(6px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    font-size: calc(16px * var(--text-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
     border-radius: calc(4px * var(--layout-scale, 1));
     white-space: nowrap;
     flex-shrink: 0;
+    min-width: calc(28px * var(--layout-scale, 1));
+    min-height: calc(28px * var(--layout-scale, 1));
   }
 
   .back-btn:hover {
@@ -477,7 +524,7 @@ import DeckSearchBar from './DeckSearchBar.svelte';
   }
 
   .title {
-    font-size: calc(18px * var(--text-scale, 1));
+    font-size: calc(16px * var(--text-scale, 1));
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -485,15 +532,146 @@ import DeckSearchBar from './DeckSearchBar.svelte';
     margin: 0;
     white-space: nowrap;
     flex-shrink: 0;
+    margin-right: calc(4px * var(--layout-scale, 1));
   }
 
-  .header-controls {
+  /* ── Body: sidebar + main content ── */
+
+  .body-layout {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* ── Sidebar ── */
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    width: calc(200px * var(--layout-scale, 1));
+    flex-shrink: 0;
+    background: rgba(10, 14, 26, 0.6);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    transition: width 0.2s ease;
+    overflow: hidden;
+  }
+
+  .sidebar.collapsed {
+    width: calc(36px * var(--layout-scale, 1));
+  }
+
+  .sidebar-toggle {
     display: flex;
     align-items: center;
-    gap: calc(8px * var(--layout-scale, 1));
+    justify-content: flex-start;
+    width: 100%;
+    height: calc(32px * var(--layout-scale, 1));
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: #64748b;
+    font-size: calc(11px * var(--text-scale, 1));
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: color 0.15s;
+    padding-left: calc(12px * var(--layout-scale, 1));
+  }
+
+  .sidebar-toggle:hover {
+    color: #e2e8f0;
+  }
+
+  .toggle-arrow {
+    transition: color 0.15s;
+  }
+
+  .collapsed-arrow {
+    animation: breathe-gold 2s ease-in-out infinite;
+  }
+
+  @keyframes breathe-gold {
+    0%, 100% { color: rgba(255, 215, 0, 0.35); }
+    50% { color: rgba(255, 215, 0, 1); }
+  }
+
+  .sidebar-toggle.breathing:hover .toggle-arrow {
+    animation: none;
+    color: #ffd700;
+  }
+
+  .sidebar-categories {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
     flex: 1;
-    justify-content: flex-end;
-    flex-wrap: wrap;
+    padding: calc(4px * var(--layout-scale, 1)) 0;
+    scrollbar-width: none;
+  }
+
+  .sidebar-categories::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sidebar-item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    background: transparent;
+    border: none;
+    border-left: calc(3px * var(--layout-scale, 1)) solid transparent;
+    color: rgba(255, 255, 255, 0.22);
+    font-size: calc(16px * var(--text-scale, 1));
+    font-weight: 700;
+    font-family: 'Cinzel', Georgia, serif;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: color 0.12s, background 0.12s, border-color 0.12s;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .sidebar-item:hover:not(.active) {
+    color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .sidebar-item.active {
+    color: rgba(255, 255, 255, 0.65);
+    background: rgba(99, 102, 241, 0.08);
+    border-left-color: #818cf8;
+  }
+
+  .sidebar-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sidebar-count {
+    font-size: calc(11px * var(--text-scale, 1));
+    font-family: inherit;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    opacity: 0.4;
+    flex-shrink: 0;
+    margin-left: calc(8px * var(--layout-scale, 1));
+  }
+
+  .sidebar-item.active .sidebar-count {
+    opacity: 0.6;
+  }
+
+  /* ── Main content area ── */
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    position: relative;
   }
 
   .deck-scroll {
@@ -515,8 +693,8 @@ import DeckSearchBar from './DeckSearchBar.svelte';
   }
 
   .deck-summary {
-    padding: calc(6px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
-    font-size: calc(11px * var(--text-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--text-scale, 1));
     color: #4b5563;
     flex-shrink: 0;
   }

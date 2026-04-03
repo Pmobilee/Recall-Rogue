@@ -210,6 +210,37 @@ describe('tickPet — walk movement', () => {
       expect(isInsideExclusion(current.position.x, current.position.y)).toBe(false)
     }
   })
+
+  it('stuck cat snaps back to safe waypoint when stuckCounter exceeds 30', () => {
+    // Place the cat mid-walk with stuckCounter at 30 (one tick away from triggering)
+    // at a position inside an exclusion zone (campfire: x1:35, y1:52, x2:59, y2:82)
+    // so wasBlocked will be true and stuckCounter increments to 31
+    const currentWaypoint = 'below_campfire'
+    const waypointPos = HUB_WAYPOINTS[currentWaypoint]
+
+    const stuckState: PetState = {
+      ...createInitialPetState(currentWaypoint),
+      behavior: 'walk',
+      targetWaypoint: 'ground_right',
+      currentWaypoint,
+      // Position inside campfire exclusion zone so wasBlocked triggers
+      position: { x: 47, y: 67 },
+      stuckCounter: 30,
+      stateTimer: 0,
+    }
+
+    const config = makeAnimConfig()
+    // One tick — stuckCounter goes from 30 to 31 (> 30), triggering snap-back
+    const next = tickPet(stuckState, 16, config)
+
+    // Position should snap back to the currentWaypoint coords, not stay at stuck pos
+    expect(next.position.x).toBe(waypointPos.x)
+    expect(next.position.y).toBe(waypointPos.y)
+
+    // The stuck position (47, 67) is inside the campfire exclusion zone —
+    // verify that the result position is NOT inside any exclusion zone
+    expect(isInsideExclusion(next.position.x, next.position.y)).toBe(false)
+  })
 })
 
 // ---------------------------------------------------------------------------
@@ -311,6 +342,27 @@ describe('triggerReact', () => {
     expect(reacted.position).toEqual(state.position)
     expect(reacted.currentWaypoint).toBe(state.currentWaypoint)
     expect(reacted.targetWaypoint).toBe(state.targetWaypoint)
+  })
+
+  it('triggerReact during react preserves original previousBehavior (no infinite loop)', () => {
+    // Start in walk behavior
+    const walkState: PetState = { ...createInitialPetState(), behavior: 'walk' }
+
+    // First react: should save 'walk' as previousBehavior
+    const firstReact = triggerReact(walkState)
+    expect(firstReact.behavior).toBe('react')
+    expect(firstReact.previousBehavior).toBe('walk')
+
+    // Second react while already in react: previousBehavior must stay 'walk', not become 'react'
+    const secondReact = triggerReact(firstReact)
+    expect(secondReact.behavior).toBe('react')
+    expect(secondReact.previousBehavior).toBe('walk')
+
+    // After react timer expires, the cat should return to 'walk', not 'react'
+    const config = makeAnimConfig()
+    // Tick past the 1000ms react duration
+    const afterReact = tickPet(secondReact, 1001, config)
+    expect(afterReact.behavior).toBe('walk')
   })
 })
 

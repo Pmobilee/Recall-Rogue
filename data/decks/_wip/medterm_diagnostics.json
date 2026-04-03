@@ -1,0 +1,1327 @@
+[
+  {
+    "id": "medterm_diag_colonoscopy",
+    "correctAnswer": "Colonoscopy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Endoscopy",
+      "Arthroscopy",
+      "Bronchoscopy",
+      "Laparoscopy",
+      "Cystoscopy",
+      "Gastroscopy",
+      "Ophthalmoscopy",
+      "Laryngoscopy"
+    ],
+    "quizQuestion": "What diagnostic procedure visually examines the inner lining of the colon using a flexible scope?",
+    "explanation": "Colonoscopy: col/o (colon) + -scopy (visual examination). A flexible camera-tipped tube is inserted rectally to inspect the large intestine. Commonly used for colorectal cancer screening and polyp removal.",
+    "statement": "Colonoscopy is the visual examination of the colon using an endoscopic scope.",
+    "wowFactor": "A colonoscopy scope can be up to 1.5 metres long — long enough to travel the entire length of the large intestine!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Colonoscopy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'colonoscopy' mean when broken into its word parts?",
+        "correctAnswer": "Visual examination of the colon",
+        "distractors": [
+          "Surgical removal of the colon",
+          "Incision into the colon",
+          "X-ray imaging of the colon"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "col/o (colon) + -scopy (visual examination) = ?",
+        "correctAnswer": "Colonoscopy",
+        "distractors": [
+          "Colostomy",
+          "Colectomy",
+          "Colotomy"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "scopy"],
+    "visualDescription": "Word COLONOSCOPY split into COL/O + SCOPY with a flexible scope instrument icon"
+  },
+  {
+    "id": "medterm_diag_endoscopy",
+    "correctAnswer": "Endoscopy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Colonoscopy",
+      "Arthroscopy",
+      "Bronchoscopy",
+      "Laparoscopy",
+      "Cystoscopy",
+      "Gastroscopy",
+      "Ophthalmoscopy",
+      "Laryngoscopy"
+    ],
+    "quizQuestion": "What broad term describes any procedure using a flexible tube with a camera to visually examine internal organs?",
+    "explanation": "Endoscopy: endo- (within) + -scopy (visual examination). The umbrella term for inserting a scope inside the body to view internal structures. Colonoscopy, gastroscopy, and bronchoscopy are all types of endoscopy.",
+    "statement": "Endoscopy is the visual examination of internal organs using a flexible instrument inserted into the body.",
+    "wowFactor": "The first endoscope was built in 1806 — a metal tube lit by candles! Modern fibre-optic endoscopes emerged in the 1950s.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Endoscopy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'endoscopy' mean broken into its word parts?",
+        "correctAnswer": "Visual examination within (the body)",
+        "distractors": [
+          "Surgical removal from within",
+          "Measurement of internal pressure",
+          "Recording of internal activity"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "endo- (within) + -scopy (visual examination) = ?",
+        "correctAnswer": "Endoscopy",
+        "distractors": [
+          "Endotomy",
+          "Endoplasty",
+          "Endometry"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "scopy"],
+    "visualDescription": "Word ENDOSCOPY split into ENDO + SCOPY with an internal camera tube icon"
+  },
+  {
+    "id": "medterm_diag_arthroscopy",
+    "correctAnswer": "Arthroscopy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Colonoscopy",
+      "Endoscopy",
+      "Bronchoscopy",
+      "Laparoscopy",
+      "Cystoscopy",
+      "Gastroscopy",
+      "Ophthalmoscopy",
+      "Laryngoscopy"
+    ],
+    "quizQuestion": "What procedure uses a small camera inserted into a joint to visually examine the interior?",
+    "explanation": "Arthroscopy: arthr/o (joint) + -scopy (visual examination). A thin camera called an arthroscope is inserted through a small incision to view joint structures such as cartilage, ligaments, and bone surfaces.",
+    "statement": "Arthroscopy is the visual examination of the interior of a joint using a small camera.",
+    "wowFactor": "Arthroscopy revolutionised knee surgery — instead of opening the entire knee, surgeons now work through cuts smaller than a centimetre!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Arthroscopy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'arthroscopy' mean broken into its word parts?",
+        "correctAnswer": "Visual examination of a joint",
+        "distractors": [
+          "Surgical repair of a joint",
+          "Measurement of joint pressure",
+          "Removal of joint fluid"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "arthr/o (joint) + -scopy (visual examination) = ?",
+        "correctAnswer": "Arthroscopy",
+        "distractors": [
+          "Arthroplasty",
+          "Arthrodesis",
+          "Arthrotomy"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "scopy"],
+    "visualDescription": "Word ARTHROSCOPY split into ARTHR/O + SCOPY with a joint diagram and camera icon"
+  },
+  {
+    "id": "medterm_diag_bronchoscopy",
+    "correctAnswer": "Bronchoscopy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Colonoscopy",
+      "Endoscopy",
+      "Arthroscopy",
+      "Laparoscopy",
+      "Cystoscopy",
+      "Gastroscopy",
+      "Ophthalmoscopy",
+      "Laryngoscopy"
+    ],
+    "quizQuestion": "What procedure visually examines the airways and bronchi of the lungs using a scope?",
+    "explanation": "Bronchoscopy: bronch/o (bronchus/airway) + -scopy (visual examination). A thin flexible tube is passed through the mouth or nose into the bronchi to visualise the airways, collect samples, and diagnose lung conditions.",
+    "statement": "Bronchoscopy is the visual examination of the bronchi and airways using a flexible scope.",
+    "wowFactor": "During a bronchoscopy, doctors can flush the airways with saline and retrieve the fluid — a technique called bronchoalveolar lavage — to diagnose hidden infections.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bronchoscopy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'bronchoscopy' mean broken into its word parts?",
+        "correctAnswer": "Visual examination of the bronchi",
+        "distractors": [
+          "Surgical removal of the bronchi",
+          "Measurement of airway pressure",
+          "Recording of breathing patterns"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "bronch/o (bronchus) + -scopy (visual examination) = ?",
+        "correctAnswer": "Bronchoscopy",
+        "distractors": [
+          "Bronchoplasty",
+          "Bronchostomy",
+          "Bronchotomy"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "scopy"],
+    "visualDescription": "Word BRONCHOSCOPY split into BRONCH/O + SCOPY with a lung diagram and flexible scope icon"
+  },
+  {
+    "id": "medterm_diag_laparoscopy",
+    "correctAnswer": "Laparoscopy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Colonoscopy",
+      "Endoscopy",
+      "Arthroscopy",
+      "Bronchoscopy",
+      "Cystoscopy",
+      "Gastroscopy",
+      "Ophthalmoscopy",
+      "Laryngoscopy"
+    ],
+    "quizQuestion": "What minimally-invasive procedure uses a camera inserted through the abdomen to examine pelvic and abdominal organs?",
+    "explanation": "Laparoscopy: lapar/o (abdomen/flank) + -scopy (visual examination). A small camera is inserted through a tiny incision in the abdomen, often with CO2 gas inflated to create viewing space. Used diagnostically and surgically.",
+    "statement": "Laparoscopy is the visual examination of the abdominal cavity using a camera inserted through a small incision.",
+    "wowFactor": "Laparoscopy is called 'keyhole surgery' — surgeons operate through incisions as small as 5mm, leaving almost no scar compared to open surgery.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Laparoscopy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'laparoscopy' mean broken into its word parts?",
+        "correctAnswer": "Visual examination of the abdomen",
+        "distractors": [
+          "Surgical incision into the abdomen",
+          "Measurement of abdominal pressure",
+          "Recording of abdominal organ activity"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "lapar/o (abdomen) + -scopy (visual examination) = ?",
+        "correctAnswer": "Laparoscopy",
+        "distractors": [
+          "Laparotomy",
+          "Laparoplasty",
+          "Laparostomy"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "scopy"],
+    "visualDescription": "Word LAPAROSCOPY split into LAPAR/O + SCOPY with an abdomen outline and camera trocar icon"
+  },
+  {
+    "id": "medterm_diag_cystoscopy",
+    "correctAnswer": "Cystoscopy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Colonoscopy",
+      "Endoscopy",
+      "Arthroscopy",
+      "Bronchoscopy",
+      "Laparoscopy",
+      "Gastroscopy",
+      "Ophthalmoscopy",
+      "Laryngoscopy"
+    ],
+    "quizQuestion": "What procedure uses a scope passed through the urethra to visually examine the bladder?",
+    "explanation": "Cystoscopy: cyst/o (bladder) + -scopy (visual examination). A thin lighted tube is inserted through the urethra into the bladder to diagnose bladder stones, tumours, inflammation, and other urinary tract conditions.",
+    "statement": "Cystoscopy is the visual examination of the urinary bladder using a scope passed through the urethra.",
+    "wowFactor": "Cystoscopy can detect bladder cancer at an early, highly treatable stage — making it one of the most important urological diagnostic tools.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cystoscopy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'cystoscopy' mean broken into its word parts?",
+        "correctAnswer": "Visual examination of the bladder",
+        "distractors": [
+          "Surgical removal of the bladder",
+          "Measurement of bladder pressure",
+          "Recording of bladder contractions"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "cyst/o (bladder) + -scopy (visual examination) = ?",
+        "correctAnswer": "Cystoscopy",
+        "distractors": [
+          "Cystectomy",
+          "Cystotomy",
+          "Cystoplasty"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "scopy"],
+    "visualDescription": "Word CYSTOSCOPY split into CYST/O + SCOPY with a bladder cross-section and scope icon"
+  },
+  {
+    "id": "medterm_diag_gastroscopy",
+    "correctAnswer": "Gastroscopy",
+    "acceptableAlternatives": ["Upper endoscopy", "OGD"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Colonoscopy",
+      "Endoscopy",
+      "Arthroscopy",
+      "Bronchoscopy",
+      "Laparoscopy",
+      "Cystoscopy",
+      "Ophthalmoscopy",
+      "Laryngoscopy"
+    ],
+    "quizQuestion": "What procedure uses a flexible scope passed through the mouth to visually examine the stomach?",
+    "explanation": "Gastroscopy: gastr/o (stomach) + -scopy (visual examination). A thin flexible endoscope is passed through the mouth, oesophagus, and into the stomach to diagnose ulcers, gastritis, and tumours.",
+    "statement": "Gastroscopy is the visual examination of the stomach using a flexible endoscope passed through the mouth.",
+    "wowFactor": "During a gastroscopy, doctors can take biopsies and stop bleeding — all without a single surgical incision!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Esophagogastroduodenoscopy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'gastroscopy' mean broken into its word parts?",
+        "correctAnswer": "Visual examination of the stomach",
+        "distractors": [
+          "Surgical removal of the stomach",
+          "Measurement of stomach acid",
+          "Recording of stomach contractions"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "gastr/o (stomach) + -scopy (visual examination) = ?",
+        "correctAnswer": "Gastroscopy",
+        "distractors": [
+          "Gastrectomy",
+          "Gastrostomy",
+          "Gastropexy"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "scopy"],
+    "visualDescription": "Word GASTROSCOPY split into GASTR/O + SCOPY with a stomach outline and flexible scope icon"
+  },
+  {
+    "id": "medterm_diag_ophthalmoscopy",
+    "correctAnswer": "Ophthalmoscopy",
+    "acceptableAlternatives": ["Fundoscopy"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Colonoscopy",
+      "Endoscopy",
+      "Arthroscopy",
+      "Bronchoscopy",
+      "Laparoscopy",
+      "Cystoscopy",
+      "Gastroscopy",
+      "Laryngoscopy"
+    ],
+    "quizQuestion": "What procedure uses a handheld instrument with a light and lenses to visually examine the interior of the eye?",
+    "explanation": "Ophthalmoscopy: ophthalm/o (eye) + -scopy (visual examination). A doctor shines a bright light into the eye to examine the retina, optic disc, and blood vessels at the back of the eye. Used to detect glaucoma, retinal disease, and diabetes-related eye damage.",
+    "statement": "Ophthalmoscopy is the visual examination of the interior of the eye using an ophthalmoscope.",
+    "wowFactor": "The retina is the only place in the body where blood vessels can be directly observed without surgery — making ophthalmoscopy a window into your vascular health!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ophthalmoscopy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'ophthalmoscopy' mean broken into its word parts?",
+        "correctAnswer": "Visual examination of the eye",
+        "distractors": [
+          "Surgical removal of the eye lens",
+          "Measurement of eye pressure",
+          "Recording of eye movement"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "ophthalm/o (eye) + -scopy (visual examination) = ?",
+        "correctAnswer": "Ophthalmoscopy",
+        "distractors": [
+          "Ophthalmoplasty",
+          "Ophthalmectomy",
+          "Ophthalmometry"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "scopy"],
+    "visualDescription": "Word OPHTHALMOSCOPY split into OPHTHALM/O + SCOPY with an eye cross-section and ophthalmoscope icon"
+  },
+  {
+    "id": "medterm_diag_radiography",
+    "correctAnswer": "Radiography",
+    "acceptableAlternatives": ["X-ray imaging"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Mammography",
+      "Angiography",
+      "Echocardiography",
+      "Electroencephalography",
+      "Electrocardiography",
+      "Ultrasonography",
+      "Tomography",
+      "Fluoroscopy"
+    ],
+    "quizQuestion": "What imaging technique uses X-rays to produce a recorded image of internal body structures?",
+    "explanation": "Radiography: radi/o (radiation/X-ray) + -graphy (recording/imaging). X-rays are passed through the body and captured on film or a digital detector. Dense structures like bone absorb more X-rays and appear white; soft tissues appear grey.",
+    "statement": "Radiography is the technique of recording internal body structures using X-ray radiation.",
+    "wowFactor": "Wilhelm Röntgen discovered X-rays in 1895 and took the first radiograph of his wife's hand — she saw her own skeleton and declared 'I have seen my death!'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Radiography",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'radiography' mean broken into its word parts?",
+        "correctAnswer": "Recording using radiation",
+        "distractors": [
+          "Measurement of radiation levels",
+          "Visual examination using light",
+          "Treatment using radiation"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "radi/o (radiation) + -graphy (recording) = ?",
+        "correctAnswer": "Radiography",
+        "distractors": [
+          "Radiology",
+          "Radiometry",
+          "Radioscopy"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "graphy", "imaging"],
+    "visualDescription": "Word RADIOGRAPHY split into RADI/O + GRAPHY with an X-ray beam and skeletal hand image icon"
+  },
+  {
+    "id": "medterm_diag_mammography",
+    "correctAnswer": "Mammography",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Radiography",
+      "Angiography",
+      "Echocardiography",
+      "Electroencephalography",
+      "Electrocardiography",
+      "Ultrasonography",
+      "Tomography",
+      "Fluoroscopy"
+    ],
+    "quizQuestion": "What X-ray imaging procedure is used specifically to examine breast tissue for tumours and abnormalities?",
+    "explanation": "Mammography: mamm/o (breast) + -graphy (recording/imaging). Low-dose X-rays are used to image breast tissue. The breast is compressed between two plates to spread the tissue and produce clearer images. Used as a primary screening tool for breast cancer.",
+    "statement": "Mammography is the X-ray imaging of breast tissue, used primarily for breast cancer screening.",
+    "wowFactor": "Regular mammography screening reduces breast cancer mortality by approximately 20% — it remains one of the most effective cancer detection tools available.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mammography",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'mammography' mean broken into its word parts?",
+        "correctAnswer": "Recording/imaging of the breast",
+        "distractors": [
+          "Surgical removal of breast tissue",
+          "Visual examination of the breast",
+          "Measurement of breast density"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "mamm/o (breast) + -graphy (recording) = ?",
+        "correctAnswer": "Mammography",
+        "distractors": [
+          "Mammectomy",
+          "Mammoplasty",
+          "Mammometry"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "graphy", "imaging"],
+    "visualDescription": "Word MAMMOGRAPHY split into MAMM/O + GRAPHY with a breast X-ray image icon"
+  },
+  {
+    "id": "medterm_diag_angiography",
+    "correctAnswer": "Angiography",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Radiography",
+      "Mammography",
+      "Echocardiography",
+      "Electroencephalography",
+      "Electrocardiography",
+      "Ultrasonography",
+      "Tomography",
+      "Fluoroscopy"
+    ],
+    "quizQuestion": "What imaging procedure uses contrast dye and X-rays to record images of blood vessels?",
+    "explanation": "Angiography: angi/o (vessel) + -graphy (recording/imaging). A contrast dye is injected into the bloodstream and X-rays are taken to create images of arteries and veins. Used to detect blockages, aneurysms, and vascular malformations.",
+    "statement": "Angiography is the X-ray imaging of blood vessels using an injected contrast dye.",
+    "wowFactor": "Coronary angiography can pinpoint the exact millimetre of an arterial blockage — guiding surgeons to the precise spot for a stent or bypass.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Angiography",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'angiography' mean broken into its word parts?",
+        "correctAnswer": "Recording/imaging of blood vessels",
+        "distractors": [
+          "Surgical repair of blood vessels",
+          "Measurement of blood vessel pressure",
+          "Visual examination of blood vessels"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "angi/o (vessel) + -graphy (recording) = ?",
+        "correctAnswer": "Angiography",
+        "distractors": [
+          "Angioplasty",
+          "Angioscopy",
+          "Angiometry"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "graphy", "imaging"],
+    "visualDescription": "Word ANGIOGRAPHY split into ANGI/O + GRAPHY with a blood vessel network and contrast dye icon"
+  },
+  {
+    "id": "medterm_diag_echocardiography",
+    "correctAnswer": "Echocardiography",
+    "acceptableAlternatives": ["Echo", "Cardiac ultrasound"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Radiography",
+      "Mammography",
+      "Angiography",
+      "Electroencephalography",
+      "Electrocardiography",
+      "Ultrasonography",
+      "Tomography",
+      "Fluoroscopy"
+    ],
+    "quizQuestion": "What imaging procedure uses sound waves to record moving images of the heart's structure and function?",
+    "explanation": "Echocardiography: echo (sound/reflection) + cardi/o (heart) + -graphy (recording). Ultrasound waves are bounced off heart structures to produce real-time images of the beating heart, including valves, chambers, and blood flow.",
+    "statement": "Echocardiography is the ultrasound imaging of the heart, using reflected sound waves to record cardiac structure and function.",
+    "wowFactor": "Echocardiography lets doctors watch the heart valves opening and closing in real time — a live movie of your heart in action, using only sound waves!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Echocardiography",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'echocardiography' mean broken into its word parts?",
+        "correctAnswer": "Recording of the heart using reflected sound",
+        "distractors": [
+          "Recording of heart electrical activity",
+          "Visual examination of the heart",
+          "Measurement of heart chamber size"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "echo (sound reflection) + cardi/o (heart) + -graphy (recording) = ?",
+        "correctAnswer": "Echocardiography",
+        "distractors": [
+          "Electrocardiography",
+          "Cardioscopy",
+          "Cardiotomography"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "graphy", "imaging", "cardiology"],
+    "visualDescription": "Word ECHOCARDIOGRAPHY split into ECHO + CARDI/O + GRAPHY with a heart ultrasound waveform icon"
+  },
+  {
+    "id": "medterm_diag_electroencephalography",
+    "correctAnswer": "Electroencephalography",
+    "acceptableAlternatives": ["EEG recording"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Radiography",
+      "Mammography",
+      "Angiography",
+      "Echocardiography",
+      "Electrocardiography",
+      "Ultrasonography",
+      "Tomography",
+      "Fluoroscopy"
+    ],
+    "quizQuestion": "What procedure records the brain's electrical activity using electrodes attached to the scalp?",
+    "explanation": "Electroencephalography: electr/o (electricity) + encephal/o (brain) + -graphy (recording). Electrodes placed on the scalp detect tiny electrical signals produced by neuron activity. The recording (EEG) is used to diagnose epilepsy, sleep disorders, and brain injury.",
+    "statement": "Electroencephalography (EEG) is the recording of the brain's electrical activity using scalp electrodes.",
+    "wowFactor": "The brain generates about 23 watts of electrical power continuously — enough to power a dim light bulb — and EEG captures those signals from outside the skull!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Electroencephalography",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'electroencephalography' mean broken into its word parts?",
+        "correctAnswer": "Recording of electrical activity of the brain",
+        "distractors": [
+          "Recording of electrical activity of the heart",
+          "Measurement of brain chemical levels",
+          "Visual examination of brain tissue"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "electr/o (electricity) + encephal/o (brain) + -graphy (recording) = ?",
+        "correctAnswer": "Electroencephalography",
+        "distractors": [
+          "Electrocardiography",
+          "Electromyography",
+          "Encephaloscopy"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "graphy", "neurology"],
+    "visualDescription": "Word ELECTROENCEPHALOGRAPHY split into ELECTR/O + ENCEPHAL/O + GRAPHY with a brain and EEG waveform icon"
+  },
+  {
+    "id": "medterm_diag_electrocardiography",
+    "correctAnswer": "Electrocardiography",
+    "acceptableAlternatives": ["ECG recording", "EKG recording"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Radiography",
+      "Mammography",
+      "Angiography",
+      "Echocardiography",
+      "Electroencephalography",
+      "Ultrasonography",
+      "Tomography",
+      "Fluoroscopy"
+    ],
+    "quizQuestion": "What procedure records the heart's electrical activity using electrodes placed on the skin?",
+    "explanation": "Electrocardiography: electr/o (electricity) + cardi/o (heart) + -graphy (recording). Electrodes on the skin detect the heart's electrical impulses as it beats. The resulting ECG trace shows the timing and pattern of each heartbeat, used to diagnose arrhythmias and heart attacks.",
+    "statement": "Electrocardiography (ECG/EKG) is the recording of the heart's electrical activity using skin electrodes.",
+    "wowFactor": "An ECG can detect a heart attack that happened days ago — the electrical signature of damaged heart muscle persists in the waveform long after the event.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Electrocardiography",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'electrocardiography' mean broken into its word parts?",
+        "correctAnswer": "Recording of the heart's electrical activity",
+        "distractors": [
+          "Recording of the brain's electrical activity",
+          "Imaging of the heart using sound waves",
+          "Measurement of heart rate and rhythm"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "electr/o (electricity) + cardi/o (heart) + -graphy (recording) = ?",
+        "correctAnswer": "Electrocardiography",
+        "distractors": [
+          "Electroencephalography",
+          "Echocardiography",
+          "Cardiography"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "graphy", "cardiology"],
+    "visualDescription": "Word ELECTROCARDIOGRAPHY split into ELECTR/O + CARDI/O + GRAPHY with a heart ECG waveform icon"
+  },
+  {
+    "id": "medterm_diag_ultrasonography",
+    "correctAnswer": "Ultrasonography",
+    "acceptableAlternatives": ["Ultrasound imaging"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Radiography",
+      "Mammography",
+      "Angiography",
+      "Echocardiography",
+      "Electroencephalography",
+      "Electrocardiography",
+      "Tomography",
+      "Fluoroscopy"
+    ],
+    "quizQuestion": "What imaging technique records internal body structures using high-frequency sound waves reflected from tissues?",
+    "explanation": "Ultrasonography: ultra- (beyond/above) + son/o (sound) + -graphy (recording). A transducer emits high-frequency sound waves that bounce off internal structures; the returning echoes are processed into real-time images. No radiation is involved, making it safe for pregnancy monitoring.",
+    "statement": "Ultrasonography is the recording of internal body images using reflected high-frequency sound waves.",
+    "wowFactor": "Ultrasound frequencies used in medicine are typically 1–20 MHz — thousands of times higher than the upper limit of human hearing (20 kHz)!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Medical_ultrasound",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'ultrasonography' mean broken into its word parts?",
+        "correctAnswer": "Recording using beyond-range sound waves",
+        "distractors": [
+          "Recording using radiation waves",
+          "Visual examination using light waves",
+          "Measurement using magnetic fields"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "ultra- (beyond) + son/o (sound) + -graphy (recording) = ?",
+        "correctAnswer": "Ultrasonography",
+        "distractors": [
+          "Ultrascopy",
+          "Ultrasometry",
+          "Sonotomography"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "graphy", "imaging"],
+    "visualDescription": "Word ULTRASONOGRAPHY split into ULTRA + SON/O + GRAPHY with a sound wave and fetal scan icon"
+  },
+  {
+    "id": "medterm_diag_ecg",
+    "correctAnswer": "Electrocardiogram",
+    "acceptableAlternatives": ["ECG", "EKG"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Mammogram",
+      "Electroencephalogram",
+      "Angiogram",
+      "Myelogram",
+      "Sonogram",
+      "Tomogram",
+      "Cardiogram",
+      "Scintigram"
+    ],
+    "quizQuestion": "What is the NAME of the recorded output (the trace or image) produced by measuring the heart's electrical activity?",
+    "explanation": "Electrocardiogram: electr/o (electricity) + cardi/o (heart) + -gram (record/image). The ECG is the actual printed or digital trace — the record itself — produced by the process of electrocardiography. The P, QRS, and T waves on the trace represent different phases of the heartbeat.",
+    "statement": "An electrocardiogram (ECG or EKG) is the recorded tracing of the heart's electrical activity.",
+    "wowFactor": "The distinctive 'PQRST' wave pattern on an ECG was named by Willem Einthoven in 1895 — he chose those letters arbitrarily to leave room for future discoveries before and after!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Electrocardiography",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'electrocardiogram' mean broken into its word parts?",
+        "correctAnswer": "The recorded trace of the heart's electrical activity",
+        "distractors": [
+          "The process of recording heart electrical activity",
+          "The instrument used to record heart activity",
+          "The image produced by heart ultrasound"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "electr/o (electricity) + cardi/o (heart) + -gram (record) = ?",
+        "correctAnswer": "Electrocardiogram",
+        "distractors": [
+          "Electroencephalogram",
+          "Echocardiogram",
+          "Electrocardiograph"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "gram", "cardiology"],
+    "visualDescription": "Word ELECTROCARDIOGRAM split into ELECTR/O + CARDI/O + GRAM with a printed ECG paper trace icon"
+  },
+  {
+    "id": "medterm_diag_mammogram",
+    "correctAnswer": "Mammogram",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Electrocardiogram",
+      "Electroencephalogram",
+      "Angiogram",
+      "Myelogram",
+      "Sonogram",
+      "Tomogram",
+      "Radiogram",
+      "Scintigram"
+    ],
+    "quizQuestion": "What is the term for the X-ray image or record produced from imaging the breast?",
+    "explanation": "Mammogram: mamm/o (breast) + -gram (record/image). The mammogram is the actual image produced — the X-ray film or digital record of the breast tissue. Distinguishing the -gram (the image) from mammography (the process) is a key medical terminology concept.",
+    "statement": "A mammogram is the X-ray image of the breast produced during mammography.",
+    "wowFactor": "A single mammogram exposes each breast to roughly 0.4 millisieverts of radiation — less than the background radiation you absorb from the environment over two months.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mammography",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'mammogram' mean broken into its word parts?",
+        "correctAnswer": "The recorded image of the breast",
+        "distractors": [
+          "The process of imaging the breast",
+          "The instrument used to image the breast",
+          "The surgical examination of the breast"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "mamm/o (breast) + -gram (record/image) = ?",
+        "correctAnswer": "Mammogram",
+        "distractors": [
+          "Mammography",
+          "Mammograph",
+          "Mammoscopy"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "gram", "imaging"],
+    "visualDescription": "Word MAMMOGRAM split into MAMM/O + GRAM with an X-ray film sheet showing breast tissue icon"
+  },
+  {
+    "id": "medterm_diag_eeg",
+    "correctAnswer": "Electroencephalogram",
+    "acceptableAlternatives": ["EEG"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Electrocardiogram",
+      "Mammogram",
+      "Angiogram",
+      "Myelogram",
+      "Sonogram",
+      "Tomogram",
+      "Scintigram",
+      "Radiogram"
+    ],
+    "quizQuestion": "What is the term for the recorded tracing of the brain's electrical activity captured via scalp electrodes?",
+    "explanation": "Electroencephalogram: electr/o (electricity) + encephal/o (brain) + -gram (record/image). The EEG is the actual recorded trace — the printed or digital output showing brain wave patterns. Different wave types (alpha, beta, delta, theta) indicate different brain states.",
+    "statement": "An electroencephalogram (EEG) is the recorded tracing of the brain's electrical activity.",
+    "wowFactor": "EEG can detect the precise moment you fall asleep by tracking the transition from alert alpha waves to slow theta waves — your brain's electrical signature changes within seconds!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Electroencephalography",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'electroencephalogram' mean broken into its word parts?",
+        "correctAnswer": "The recorded trace of the brain's electrical activity",
+        "distractors": [
+          "The process of recording brain electrical activity",
+          "The recorded trace of the heart's electrical activity",
+          "The image of the brain produced by MRI"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "electr/o (electricity) + encephal/o (brain) + -gram (record) = ?",
+        "correctAnswer": "Electroencephalogram",
+        "distractors": [
+          "Electrocardiogram",
+          "Electromyogram",
+          "Encephalogram"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "gram", "neurology"],
+    "visualDescription": "Word ELECTROENCEPHALOGRAM split into ELECTR/O + ENCEPHAL/O + GRAM with a brain wave tracing printout icon"
+  },
+  {
+    "id": "medterm_diag_angiogram",
+    "correctAnswer": "Angiogram",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Electrocardiogram",
+      "Mammogram",
+      "Electroencephalogram",
+      "Myelogram",
+      "Sonogram",
+      "Tomogram",
+      "Scintigram",
+      "Radiogram"
+    ],
+    "quizQuestion": "What is the term for the X-ray image of blood vessels produced after injecting contrast dye?",
+    "explanation": "Angiogram: angi/o (vessel) + -gram (record/image). The angiogram is the recorded image produced during angiography — the actual X-ray film or digital image showing the outline of blood vessels filled with contrast dye. Blockages appear as narrow or absent sections.",
+    "statement": "An angiogram is the recorded X-ray image of blood vessels produced during angiography.",
+    "wowFactor": "Coronary angiograms are performed on over 1 million patients per year in the US — they remain the gold standard for diagnosing coronary artery disease.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Angiography",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'angiogram' mean broken into its word parts?",
+        "correctAnswer": "The recorded image of blood vessels",
+        "distractors": [
+          "The process of imaging blood vessels",
+          "The surgical repair of a blood vessel",
+          "The measurement of blood vessel pressure"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "angi/o (vessel) + -gram (record/image) = ?",
+        "correctAnswer": "Angiogram",
+        "distractors": [
+          "Angiography",
+          "Angioplasty",
+          "Angioscopy"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "gram", "imaging"],
+    "visualDescription": "Word ANGIOGRAM split into ANGI/O + GRAM with a contrast-filled vessel X-ray image icon"
+  },
+  {
+    "id": "medterm_diag_myelogram",
+    "correctAnswer": "Myelogram",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Electrocardiogram",
+      "Mammogram",
+      "Electroencephalogram",
+      "Angiogram",
+      "Sonogram",
+      "Tomogram",
+      "Scintigram",
+      "Radiogram"
+    ],
+    "quizQuestion": "What is the term for the recorded X-ray image of the spinal cord and surrounding structures after contrast dye injection?",
+    "explanation": "Myelogram: myel/o (spinal cord/bone marrow) + -gram (record/image). Contrast dye is injected into the spinal canal (subarachnoid space) and X-rays or CT scans are taken. The myelogram reveals the spinal cord, nerve roots, and any compression from herniated discs or tumours.",
+    "statement": "A myelogram is the recorded image of the spinal cord produced after injecting contrast dye into the spinal canal.",
+    "wowFactor": "Before MRI existed, myelograms were the only way to visualise spinal cord compression — doctors used oil-based dyes that had to be manually retrieved after the procedure!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Myelography",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'myelogram' mean broken into its word parts?",
+        "correctAnswer": "The recorded image of the spinal cord",
+        "distractors": [
+          "The recorded image of bone marrow biopsy",
+          "The recording of nerve electrical activity",
+          "The surgical imaging of the vertebrae"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "myel/o (spinal cord) + -gram (record/image) = ?",
+        "correctAnswer": "Myelogram",
+        "distractors": [
+          "Myelography",
+          "Myeloscopy",
+          "Myelotomy"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "gram", "imaging", "neurology"],
+    "visualDescription": "Word MYELOGRAM split into MYEL/O + GRAM with a spinal column cross-section and contrast dye icon"
+  },
+  {
+    "id": "medterm_diag_spirometry",
+    "correctAnswer": "Spirometry",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Audiometry",
+      "Oximetry",
+      "Optometry",
+      "Thermometry",
+      "Spirography",
+      "Tonometry",
+      "Densitometry",
+      "Manometry"
+    ],
+    "quizQuestion": "What diagnostic measurement test assesses lung function by measuring the volume and speed of air inhaled and exhaled?",
+    "explanation": "Spirometry: spir/o (breath/breathing) + -metry (measurement). The patient breathes into a mouthpiece connected to a spirometer, which records the volume and flow rate of air. Key measurements include FVC (forced vital capacity) and FEV1, used to diagnose asthma and COPD.",
+    "statement": "Spirometry is the measurement of lung function by recording the volume and speed of breathing.",
+    "wowFactor": "Spirometry can detect COPD years before symptoms appear — catching the disease when lungs still have enough reserve to make lifestyle changes meaningful.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Spirometry",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'spirometry' mean broken into its word parts?",
+        "correctAnswer": "Measurement of breathing/lung volumes",
+        "distractors": [
+          "Recording of breathing patterns",
+          "Visual examination of the airways",
+          "Measurement of blood oxygen levels"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "spir/o (breath) + -metry (measurement) = ?",
+        "correctAnswer": "Spirometry",
+        "distractors": [
+          "Spirography",
+          "Spiroscopy",
+          "Pneumometry"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "metry", "pulmonology"],
+    "visualDescription": "Word SPIROMETRY split into SPIR/O + METRY with a lung outline and flow-volume curve graph icon"
+  },
+  {
+    "id": "medterm_diag_audiometry",
+    "correctAnswer": "Audiometry",
+    "acceptableAlternatives": ["Hearing test"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Spirometry",
+      "Oximetry",
+      "Optometry",
+      "Thermometry",
+      "Tonometry",
+      "Densitometry",
+      "Manometry",
+      "Tympanometry"
+    ],
+    "quizQuestion": "What diagnostic test measures the range and sensitivity of a person's hearing?",
+    "explanation": "Audiometry: audi/o (hearing/sound) + -metry (measurement). Tones of varying frequency and volume are played through headphones; the patient indicates which they can hear. Results are plotted on an audiogram to identify hearing loss type and degree.",
+    "statement": "Audiometry is the measurement of hearing ability across a range of frequencies and sound levels.",
+    "wowFactor": "A normal human ear can hear frequencies from 20 Hz to 20,000 Hz — audiometry maps exactly which part of that range has been lost and by how many decibels.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Audiometry",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'audiometry' mean broken into its word parts?",
+        "correctAnswer": "Measurement of hearing",
+        "distractors": [
+          "Recording of sound waves",
+          "Visual examination of the ear canal",
+          "Measurement of ear pressure"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "audi/o (hearing) + -metry (measurement) = ?",
+        "correctAnswer": "Audiometry",
+        "distractors": [
+          "Audiography",
+          "Audioscopy",
+          "Tympanometry"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "metry", "audiology"],
+    "visualDescription": "Word AUDIOMETRY split into AUDI/O + METRY with an ear cross-section and audiogram chart icon"
+  },
+  {
+    "id": "medterm_diag_oximetry",
+    "correctAnswer": "Oximetry",
+    "acceptableAlternatives": ["Pulse oximetry"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Spirometry",
+      "Audiometry",
+      "Optometry",
+      "Thermometry",
+      "Tonometry",
+      "Densitometry",
+      "Manometry",
+      "Tympanometry"
+    ],
+    "quizQuestion": "What non-invasive measurement technique uses light wavelengths to determine the oxygen saturation of blood?",
+    "explanation": "Oximetry: ox/i (oxygen) + -metry (measurement). A pulse oximeter clips onto a fingertip and shines red and infrared light through the skin. Oxygenated and deoxygenated haemoglobin absorb these wavelengths differently, allowing the device to calculate the percentage of haemoglobin carrying oxygen (SpO2).",
+    "statement": "Oximetry is the non-invasive measurement of blood oxygen saturation using light absorption.",
+    "wowFactor": "Pulse oximetry became widespread during COVID-19 because it could silently detect 'happy hypoxia' — patients with dangerously low oxygen levels who felt no breathlessness.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pulse_oximetry",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'oximetry' mean broken into its word parts?",
+        "correctAnswer": "Measurement of oxygen (saturation)",
+        "distractors": [
+          "Recording of oxygen consumption",
+          "Visual examination of blood oxygen",
+          "Measurement of breathing rate"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "ox/i (oxygen) + -metry (measurement) = ?",
+        "correctAnswer": "Oximetry",
+        "distractors": [
+          "Oxiscopy",
+          "Spirometry",
+          "Capnometry"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "metry", "pulmonology"],
+    "visualDescription": "Word OXIMETRY split into OX/I + METRY with a fingertip pulse oximeter and SpO2 readout icon"
+  },
+  {
+    "id": "medterm_diag_optometry",
+    "correctAnswer": "Optometry",
+    "acceptableAlternatives": ["Eye exam", "Vision test"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Spirometry",
+      "Audiometry",
+      "Oximetry",
+      "Thermometry",
+      "Tonometry",
+      "Densitometry",
+      "Ophthalmoscopy",
+      "Tympanometry"
+    ],
+    "quizQuestion": "What health discipline measures vision and examines the eyes to prescribe corrective lenses?",
+    "explanation": "Optometry: opt/o (eye/vision) + -metry (measurement). Optometrists measure visual acuity, refraction, and eye health. They prescribe glasses and contact lenses and can identify conditions like glaucoma and cataracts. Note: optometrists are not medical doctors (ophthalmologists are).",
+    "statement": "Optometry is the measurement and examination of vision and eye health, performed by an optometrist.",
+    "wowFactor": "The Snellen eye chart was invented in 1862 — optometrists still use essentially the same design over 160 years later, with the big 'E' at the top representing 20/200 vision.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Optometry",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'optometry' mean broken into its word parts?",
+        "correctAnswer": "Measurement of vision/eyesight",
+        "distractors": [
+          "Surgical correction of vision",
+          "Visual examination of the retina",
+          "Recording of eye electrical activity"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "opt/o (eye/vision) + -metry (measurement) = ?",
+        "correctAnswer": "Optometry",
+        "distractors": [
+          "Ophthalmoscopy",
+          "Optography",
+          "Optoscopy"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "metry", "ophthalmology"],
+    "visualDescription": "Word OPTOMETRY split into OPT/O + METRY with a Snellen eye chart and refraction lens icon"
+  },
+  {
+    "id": "medterm_diag_thermometry",
+    "correctAnswer": "Thermometry",
+    "acceptableAlternatives": ["Temperature measurement"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "ageGroup": "all",
+    "distractors": [
+      "Spirometry",
+      "Audiometry",
+      "Oximetry",
+      "Optometry",
+      "Tonometry",
+      "Densitometry",
+      "Manometry",
+      "Tympanometry"
+    ],
+    "quizQuestion": "What diagnostic measurement involves using a device to determine body temperature?",
+    "explanation": "Thermometry: therm/o (heat/temperature) + -metry (measurement). Thermometers measure body temperature in degrees Celsius or Fahrenheit. Fever is defined as a core body temperature above 38°C (100.4°F) and is a key diagnostic indicator of infection and inflammation.",
+    "statement": "Thermometry is the measurement of body temperature using a thermometer.",
+    "wowFactor": "The clinical mercury thermometer was invented in 1714 and took about 25 minutes to give a reading — modern digital thermometers do it in under 10 seconds!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thermometry",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'thermometry' mean broken into its word parts?",
+        "correctAnswer": "Measurement of heat/temperature",
+        "distractors": [
+          "Recording of temperature changes",
+          "Treatment using heat therapy",
+          "Visual examination of skin temperature"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "therm/o (heat) + -metry (measurement) = ?",
+        "correctAnswer": "Thermometry",
+        "distractors": [
+          "Thermography",
+          "Thermoscopy",
+          "Calorimetry"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "diagnostic", "metry"],
+    "visualDescription": "Word THERMOMETRY split into THERM/O + METRY with a thermometer showing temperature scale icon"
+  }
+]

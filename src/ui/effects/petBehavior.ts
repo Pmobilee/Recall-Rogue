@@ -308,16 +308,17 @@ export function tickPet(
           wasBlocked = true
         }
 
-        // Track consecutive blocked ticks — if stuck for 30+ ticks, abandon walk
+        // Track consecutive blocked ticks — if stuck for 30+ ticks, abandon walk.
+        // Snap back to currentWaypoint (last known-good safe position) instead of
+        // staying at the stuck position where exclusion zones are clustered.
         const newStuckCounter = wasBlocked ? (state.stuckCounter + 1) : 0
         if (newStuckCounter > 30) {
-          // Stuck — give up on this walk, transition to idle at current safe position
+          const safePos = HUB_WAYPOINTS[currentWaypoint]
+          const safePosition = safePos ? { x: safePos.x, y: safePos.y } : { x: newX, y: newY }
           return executeTransition(
-            'walk',
-            currentWaypoint,
-            { x: newX, y: newY },
+            'walk', currentWaypoint, safePosition,
             0, 0, facingLeft, recentWaypoints, previousBehavior,
-            { ...state, position: { x: newX, y: newY }, targetWaypoint: null, stuckCounter: 0 },
+            { ...state, position: safePosition, targetWaypoint: null, stuckCounter: 0 },
           )
         }
 
@@ -403,13 +404,17 @@ export function selectNextBehavior(
  * Saves the current behavior so it can be restored after the react animation
  * completes. The react state duration is fixed at 1000ms.
  *
+ * If the pet is already in 'react' state when triggered again, the original
+ * previousBehavior is preserved — not overwritten with 'react' — so the cat
+ * always returns to the correct pre-react behavior and never loops react→react.
+ *
  * @param state - Current pet state
  * @returns New PetState with behavior = 'react'
  */
 export function triggerReact(state: PetState): PetState {
   return {
     ...state,
-    previousBehavior: state.behavior,
+    previousBehavior: state.behavior === 'react' ? state.previousBehavior : state.behavior,
     behavior: 'react',
     frame: 0,
     frameTimer: 0,

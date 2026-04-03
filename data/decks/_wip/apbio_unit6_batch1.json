@@ -1,0 +1,2557 @@
+[
+  {
+    "id": "ap_bio_u6_001",
+    "correctAnswer": "deoxyribose sugar, phosphate group, and a nitrogenous base",
+    "acceptableAlternatives": [
+      "deoxyribose, phosphate, nitrogenous base"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "What are the three components of a DNA nucleotide?",
+    "explanation": "A DNA nucleotide consists of a deoxyribose sugar, a phosphate group, and one of four nitrogenous bases (A, T, G, or C). These units are covalently linked by phosphodiester bonds to form the sugar-phosphate backbone of each strand.",
+    "visualDescription": "Diagram of a DNA nucleotide showing the pentagon deoxyribose sugar connected to a phosphate group and a nitrogenous base",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "ribose sugar, phosphate group, and a nitrogenous base",
+      "deoxyribose sugar, sulfate group, and a nitrogenous base",
+      "ribose sugar, phosphate group, and a lipid tail",
+      "deoxyribose sugar, phosphate group, and an amino acid",
+      "deoxyribose sugar, hydroxyl group, and a nitrogenous base",
+      "ribose sugar, sulfate group, and a nitrogenous base",
+      "glucose, phosphate group, and a nitrogenous base",
+      "deoxyribose sugar, phosphate group, and a fatty acid"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_002",
+    "correctAnswer": "ribose sugar, phosphate group, and a nitrogenous base",
+    "acceptableAlternatives": [
+      "ribose, phosphate, nitrogenous base"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "What are the three components of an RNA nucleotide?",
+    "explanation": "RNA nucleotides contain a ribose sugar (with a 2'-OH group absent in DNA), a phosphate group, and one of four nitrogenous bases (A, U, G, or C). The extra hydroxyl on ribose makes RNA more chemically reactive and less stable than DNA.",
+    "visualDescription": "Diagram comparing RNA nucleotide with its ribose sugar to DNA's deoxyribose",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "deoxyribose sugar, phosphate group, and a nitrogenous base",
+      "ribose sugar, sulfate group, and a nitrogenous base",
+      "ribose sugar, phosphate group, and an amino acid",
+      "deoxyribose sugar, phosphate group, and a lipid tail",
+      "glucose, phosphate group, and a nitrogenous base",
+      "ribose sugar, hydroxyl group, and a nitrogenous base",
+      "fructose, phosphate group, and a nitrogenous base",
+      "ribose sugar, phosphate group, and a fatty acid"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_003",
+    "correctAnswer": "Uracil replaces thymine",
+    "acceptableAlternatives": [
+      "RNA uses uracil instead of thymine",
+      "uracil instead of thymine"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "comparison_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which base is found in RNA but NOT in DNA?",
+    "explanation": "RNA contains uracil (U) in place of thymine (T). Both bases pair with adenine, but uracil lacks the methyl group found on thymine. This substitution makes RNA cheaper to synthesize and is one of several structural differences between RNA and DNA.",
+    "visualDescription": "Side-by-side comparison of thymine and uracil molecular structures highlighting the missing methyl group",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "Cytosine replaces adenine",
+      "Guanine replaces thymine",
+      "Adenine replaces thymine",
+      "Thymine replaces uracil",
+      "Hypoxanthine replaces cytosine",
+      "Xanthine replaces guanine",
+      "Inosine replaces adenine",
+      "Pseudouridine replaces guanine"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_004",
+    "correctAnswer": "Adenine and guanine",
+    "acceptableAlternatives": [
+      "guanine and adenine",
+      "A and G"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which two nitrogenous bases are classified as purines?",
+    "explanation": "Purines (adenine and guanine) have a double-ring structure — a pyrimidine ring fused to an imidazole ring. Pyrimidines (cytosine, thymine, uracil) have only a single ring. In the double helix, a purine always pairs with a pyrimidine to maintain uniform width.",
+    "visualDescription": "Chemical structures of adenine and guanine showing their fused double-ring arrangement",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "Cytosine and thymine",
+      "Adenine and cytosine",
+      "Guanine and uracil",
+      "Thymine and uracil",
+      "Adenine and thymine",
+      "Cytosine and guanine",
+      "Uracil and adenine",
+      "Thymine and guanine"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_005",
+    "correctAnswer": "In DNA, A=T and G=C (complementary bases are in equal molar ratios)",
+    "acceptableAlternatives": [
+      "A equals T and G equals C",
+      "Chargaff's rules"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What do Chargaff's rules state about base composition in double-stranded DNA?",
+    "explanation": "Erwin Chargaff found that in any double-stranded DNA sample, the amount of adenine equals thymine and the amount of guanine equals cytosine. This 1:1 ratio reflects Watson-Crick base pairing — A pairs with T via 2 hydrogen bonds, G pairs with C via 3 hydrogen bonds.",
+    "visualDescription": "Bar chart showing equal molar quantities of A=T and G=C in a double-stranded DNA molecule",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "A=G and T=C",
+      "A=C and G=T",
+      "A=U and G=C",
+      "All four bases are present in equal amounts",
+      "A+T always equals G+C",
+      "Purines equal pyrimidines only in RNA",
+      "G=T and A=C in single-stranded DNA",
+      "A equals U and G equals C in double-stranded DNA"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_006",
+    "correctAnswer": "Watson and Crick (1953)",
+    "acceptableAlternatives": [
+      "Watson and Crick",
+      "James Watson and Francis Crick"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "organism_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which scientists proposed the double-helix model of DNA structure in 1953?",
+    "explanation": "James Watson and Francis Crick proposed the double-helix model in 1953, relying critically on Rosalind Franklin's X-ray crystallography data (Photo 51) and Maurice Wilkins's work. Franklin's contribution was not credited in the original paper and she did not share the Nobel Prize awarded in 1962.",
+    "visualDescription": "Black-and-white portrait of Watson and Crick beside a model of the DNA double helix",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "Meselson and Stahl",
+      "Rosalind Franklin and Maurice Wilkins",
+      "Hershey and Chase",
+      "Avery, MacLeod, and McCarty",
+      "Griffith and Chargaff",
+      "Pauling and Corey",
+      "Crick and Franklin",
+      "Watson and Franklin"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_007",
+    "correctAnswer": "Rosalind Franklin",
+    "acceptableAlternatives": [
+      "Franklin"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "organism_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Whose X-ray crystallography data (Photo 51) was critical to Watson and Crick's discovery of the DNA double helix?",
+    "explanation": "Rosalind Franklin's X-ray diffraction image known as Photo 51 revealed the helical structure and key dimensions of DNA. Watson and Crick used this data — without Franklin's knowledge — as a key piece of evidence for their model. Franklin died in 1958 before the Nobel Prize was awarded.",
+    "visualDescription": "Grainy X-ray diffraction image (Photo 51) showing the X-shaped pattern of the DNA double helix",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "Francis Crick",
+      "James Watson",
+      "Maurice Wilkins",
+      "Erwin Chargaff",
+      "Linus Pauling",
+      "Frederick Griffith",
+      "Alfred Hershey",
+      "Martha Chase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_008",
+    "correctAnswer": "2 hydrogen bonds",
+    "acceptableAlternatives": [
+      "two hydrogen bonds"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "How many hydrogen bonds form between adenine and thymine in the DNA double helix?",
+    "explanation": "Adenine and thymine form 2 hydrogen bonds, while guanine and cytosine form 3. This difference means G-C base pairs are slightly stronger. DNA with a higher G-C content has a higher melting temperature.",
+    "visualDescription": "Structural diagram showing A-T base pair with two dashed hydrogen bonds between them",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "3 hydrogen bonds",
+      "1 hydrogen bond",
+      "4 hydrogen bonds",
+      "2 covalent bonds",
+      "3 covalent bonds",
+      "1 ionic bond",
+      "2 ionic bonds",
+      "4 hydrogen bonds"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_009",
+    "correctAnswer": "3 hydrogen bonds",
+    "acceptableAlternatives": [
+      "three hydrogen bonds"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "How many hydrogen bonds form between guanine and cytosine in the DNA double helix?",
+    "explanation": "Guanine and cytosine form 3 hydrogen bonds, compared to 2 for A-T pairs. The extra hydrogen bond makes G-C pairs slightly more thermally stable. Regions of DNA rich in G-C require more energy (higher temperature) to separate the strands.",
+    "visualDescription": "Structural diagram showing G-C base pair with three dashed hydrogen bonds",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "2 hydrogen bonds",
+      "4 hydrogen bonds",
+      "1 hydrogen bond",
+      "3 covalent bonds",
+      "2 ionic bonds",
+      "4 covalent bonds",
+      "1 hydrogen bond",
+      "5 hydrogen bonds"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_010",
+    "correctAnswer": "mRNA, tRNA, and rRNA",
+    "acceptableAlternatives": [
+      "messenger RNA, transfer RNA, ribosomal RNA"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "What are the three major types of RNA involved in gene expression?",
+    "explanation": "mRNA (messenger RNA) carries genetic instructions from DNA to the ribosome. tRNA (transfer RNA) delivers amino acids to the ribosome during translation. rRNA (ribosomal RNA) is a structural and catalytic component of ribosomes, including catalyzing peptide bond formation.",
+    "visualDescription": "Diagram showing the three RNA types in their roles during translation at a ribosome",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "mRNA, snRNA, and hnRNA",
+      "tRNA, rRNA, and miRNA",
+      "mRNA, siRNA, and rRNA",
+      "hnRNA, tRNA, and snRNA",
+      "mRNA, tRNA, and miRNA",
+      "rRNA, siRNA, and mRNA",
+      "tRNA, snRNA, and siRNA",
+      "mRNA, hnRNA, and tRNA"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_011",
+    "correctAnswer": "{64}",
+    "acceptableAlternatives": [
+      "64 codons",
+      "sixty-four"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "How many possible codons (triplet combinations of the 4 RNA bases) exist?",
+    "explanation": "With 4 bases and 3 positions per codon, there are 4^3 = 64 possible codons. Of these, 61 encode amino acids and 3 are stop codons (UAA, UAG, UGA). The extra codons beyond the 20 amino acids explain why the genetic code is degenerate — most amino acids have multiple codons.",
+    "visualDescription": "4×4×4 codon table showing all 64 possible triplet combinations",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "{61}",
+      "{20}",
+      "{3}",
+      "{48}",
+      "{32}",
+      "{16}",
+      "{128}",
+      "{60}"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_012",
+    "correctAnswer": "Semiconservative replication",
+    "acceptableAlternatives": [
+      "semiconservative"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What model of DNA replication — demonstrated by Meselson and Stahl in 1958 — produces daughter molecules each containing one original strand and one new strand?",
+    "explanation": "In semiconservative replication, the two parental strands separate and each serves as a template for a new complementary strand. Meselson and Stahl proved this using 15N/14N density gradient centrifugation — after one generation, all DNA appeared at an intermediate density, ruling out conservative and dispersive models.",
+    "visualDescription": "Diagram of the Meselson-Stahl experiment showing 15N heavy band shifting to an intermediate hybrid band after one round of replication",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "Conservative replication",
+      "Dispersive replication",
+      "Rolling circle replication",
+      "Bidirectional replication",
+      "Theta replication",
+      "Strand displacement replication",
+      "Translesion replication",
+      "Template-independent replication"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_013",
+    "correctAnswer": "Meselson and Stahl (1958)",
+    "acceptableAlternatives": [
+      "Meselson and Stahl",
+      "Matthew Meselson and Franklin Stahl"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "organism_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Which scientists demonstrated semiconservative DNA replication using 15N and 14N isotopes in a density gradient centrifugation experiment?",
+    "explanation": "In 1958, Matthew Meselson and Franklin Stahl grew E. coli in 15N medium (heavy nitrogen), then switched to 14N medium and sampled DNA after each generation. Cesium chloride density gradient centrifugation showed a hybrid-density band after one generation, proving the semiconservative model.",
+    "visualDescription": "Timeline diagram showing E. coli generations and shifting CsCl gradient bands from heavy to hybrid to light",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "Watson and Crick",
+      "Hershey and Chase",
+      "Griffith and Avery",
+      "Franklin and Wilkins",
+      "Chargaff and Todd",
+      "Pauling and Corey",
+      "Kornberg and Lehman",
+      "Okazaki and Okazaki"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_014",
+    "correctAnswer": "Helicase",
+    "acceptableAlternatives": [],
+    "chainThemeId": 11,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which enzyme unwinds the DNA double helix at the replication fork by breaking hydrogen bonds between base pairs?",
+    "explanation": "Helicase uses ATP energy to break the hydrogen bonds between complementary base pairs and unwind the double helix, creating the replication fork. Single-strand binding proteins (SSBPs) then stabilize the separated strands to prevent re-annealing.",
+    "visualDescription": "Diagram of helicase moving along the DNA double helix and separating the two strands at the replication fork",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "Topoisomerase",
+      "Primase",
+      "DNA polymerase III",
+      "DNA ligase",
+      "DNA polymerase I",
+      "Gyrase",
+      "Exonuclease",
+      "Restriction enzyme"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_015",
+    "correctAnswer": "Topoisomerase",
+    "acceptableAlternatives": [],
+    "chainThemeId": 11,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which enzyme relieves the torsional stress (supercoiling) that builds up ahead of the replication fork as helicase unwinds DNA?",
+    "explanation": "As helicase unwinds the double helix, positive supercoils accumulate ahead of the fork. Topoisomerase cuts, rotates, and rejoins DNA strands to relieve this tension. Topoisomerase II makes double-strand cuts and is the target of certain antibiotics (fluoroquinolones) and anticancer drugs.",
+    "visualDescription": "Diagram showing supercoiled DNA ahead of the replication fork and topoisomerase cutting and rejoining strands to relax it",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "Helicase",
+      "Primase",
+      "DNA polymerase III",
+      "DNA ligase",
+      "Single-strand binding protein",
+      "Telomerase",
+      "DNA polymerase I",
+      "Gyrase only (not topoisomerase)"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_016",
+    "correctAnswer": "Primase",
+    "acceptableAlternatives": [],
+    "chainThemeId": 11,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which enzyme synthesizes the short RNA primer needed to start DNA replication, providing the 3'-OH group that DNA polymerase requires?",
+    "explanation": "Primase is a specialized RNA polymerase that synthesizes a short (~10 nucleotide) RNA primer complementary to the template strand. DNA polymerase cannot start a new strand from scratch — it can only extend an existing 3'-OH group, so primase must go first.",
+    "visualDescription": "Diagram of primase laying down an RNA primer on a single-stranded DNA template at the replication fork",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "DNA polymerase III",
+      "DNA polymerase I",
+      "Helicase",
+      "DNA ligase",
+      "Topoisomerase",
+      "RNA polymerase II",
+      "Telomerase",
+      "Single-strand binding protein"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_017",
+    "correctAnswer": "Lagging strand",
+    "acceptableAlternatives": [
+      "the lagging strand"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "comparison_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which strand at the replication fork is synthesized discontinuously as a series of Okazaki fragments?",
+    "explanation": "The lagging strand runs antiparallel to the direction of fork movement, so DNA polymerase must synthesize it in short, discontinuous segments called Okazaki fragments (each starting with its own RNA primer). These fragments are later joined by DNA polymerase I (primer removal) and DNA ligase.",
+    "visualDescription": "Replication fork diagram labeling the leading strand (continuous) and lagging strand (Okazaki fragments) with arrows showing 5'→3' synthesis direction",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "Leading strand",
+      "Both strands equally",
+      "Template strand",
+      "Coding strand",
+      "Sense strand",
+      "Antisense strand",
+      "Neither strand — both are continuous",
+      "The displaced strand"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_018",
+    "correctAnswer": "Okazaki fragments",
+    "acceptableAlternatives": [],
+    "chainThemeId": 11,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What are the short, discontinuous DNA segments synthesized on the lagging strand during DNA replication called?",
+    "explanation": "Okazaki fragments are synthesized in the 5'→3' direction away from the replication fork on the lagging strand. In prokaryotes they are ~1,000-2,000 nucleotides long; in eukaryotes ~100-200 nucleotides. DNA polymerase I removes each RNA primer, fills the gap, and ligase seals the nicks.",
+    "visualDescription": "Lagging strand showing multiple short labeled Okazaki fragments each beginning with an RNA primer",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "RNA primers",
+      "Replication bubbles",
+      "Telomeres",
+      "Nucleosomes",
+      "SSB fragments",
+      "Primer extensions",
+      "Replicons",
+      "Primase products"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_019",
+    "correctAnswer": "DNA ligase",
+    "acceptableAlternatives": [
+      "ligase"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which enzyme seals the phosphodiester bond gaps between adjacent Okazaki fragments after primer removal?",
+    "explanation": "After DNA polymerase I removes the RNA primers and fills the gaps with DNA, small nicks remain in the sugar-phosphate backbone between adjacent fragments. DNA ligase seals these nicks by forming covalent phosphodiester bonds, creating a continuous lagging strand.",
+    "visualDescription": "Lagging strand diagram showing DNA ligase sealing the final nick between adjacent Okazaki fragments",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "DNA polymerase I",
+      "DNA polymerase III",
+      "Helicase",
+      "Primase",
+      "Topoisomerase",
+      "Telomerase",
+      "Restriction enzyme",
+      "Exonuclease"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_020",
+    "correctAnswer": "DNA polymerase I",
+    "acceptableAlternatives": [
+      "Pol I",
+      "DNA Pol I"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which DNA polymerase removes RNA primers from Okazaki fragments and replaces them with DNA?",
+    "explanation": "DNA polymerase I uses its 5'→3' exonuclease activity to remove each RNA primer while simultaneously synthesizing replacement DNA using the adjacent Okazaki fragment as a primer. This leaves only a nick that DNA ligase then seals.",
+    "visualDescription": "Close-up diagram of DNA polymerase I removing an RNA primer segment while laying down replacement DNA nucleotides",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "DNA polymerase III",
+      "DNA polymerase II",
+      "RNA polymerase",
+      "Primase",
+      "DNA ligase",
+      "Helicase",
+      "Topoisomerase",
+      "Telomerase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_021",
+    "correctAnswer": "Telomeres",
+    "acceptableAlternatives": [
+      "telomere sequences"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What are the repetitive non-coding DNA sequences at the ends of linear eukaryotic chromosomes that protect coding DNA from shortening during replication?",
+    "explanation": "Telomeres consist of hundreds to thousands of repeats of the sequence TTAGGG in humans. Because the lagging strand cannot be fully replicated at the chromosome end, a small amount of telomeric DNA is lost each replication cycle in somatic cells. Telomere shortening is linked to cellular aging.",
+    "visualDescription": "Chromosome diagram showing the telomere caps at both ends with the repeated TTAGGG sequence highlighted",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "Centromeres",
+      "Origins of replication",
+      "Okazaki fragments",
+      "Replication bubbles",
+      "Nucleosomes",
+      "Promoters",
+      "Enhancers",
+      "Introns"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_022",
+    "correctAnswer": "Telomerase",
+    "acceptableAlternatives": [],
+    "chainThemeId": 11,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Which enzyme extends telomeres using an RNA template, and is active in stem cells and cancer cells but inactive in most differentiated somatic cells?",
+    "explanation": "Telomerase is a reverse transcriptase that carries its own RNA template (complementary to the telomere repeat). It extends the 3' end of chromosomes, preventing telomere shortening. Cancer cells reactivate telomerase to achieve replicative immortality — making it a cancer therapy target.",
+    "visualDescription": "Diagram of telomerase enzyme using its internal RNA template to add TTAGGG repeats to the chromosome end",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "Helicase",
+      "DNA polymerase I",
+      "DNA polymerase III",
+      "Primase",
+      "DNA ligase",
+      "RNA polymerase",
+      "Reverse transcriptase (from a retrovirus)",
+      "Topoisomerase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_023",
+    "correctAnswer": "Multiple origins of replication that fire simultaneously",
+    "acceptableAlternatives": [
+      "many origins of replication",
+      "multiple origins"
+    ],
+    "chainThemeId": 11,
+    "answerTypePoolId": "comparison_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Why can eukaryotes replicate their very large chromosomes in a reasonable time frame, unlike prokaryotes which have only one origin of replication?",
+    "explanation": "Eukaryotic chromosomes have thousands of origins of replication that are licensed and fired in a coordinated temporal program. Replication proceeds bidirectionally from each origin simultaneously. The resulting replication bubbles expand and merge until entire chromosomes are replicated.",
+    "visualDescription": "Diagram of a eukaryotic chromosome with multiple replication bubbles expanding simultaneously",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/14-introduction",
+    "distractors": [
+      "A single faster replication fork",
+      "RNA-primed continuous synthesis on both strands",
+      "Rolling circle replication from one origin",
+      "Bidirectional replication from a single origin",
+      "Telomerase-mediated replication",
+      "Plasmid-like circular chromosome replication",
+      "Simultaneous replication of all chromosomes from a central organelle",
+      "Higher-fidelity polymerase that works faster"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_024",
+    "correctAnswer": "Transcription",
+    "acceptableAlternatives": [],
+    "chainThemeId": 12,
+    "answerTypePoolId": "process_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "What is the process of synthesizing an RNA molecule from a DNA template called?",
+    "explanation": "Transcription converts the information in a DNA sequence into an RNA sequence. In eukaryotes it occurs in the nucleus; in prokaryotes it occurs in the cytoplasm. RNA polymerase reads the template strand 3'→5' and synthesizes RNA 5'→3'.",
+    "visualDescription": "Central dogma diagram with an arrow labeled Transcription pointing from DNA to RNA",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Translation",
+      "DNA replication",
+      "RNA splicing",
+      "Reverse transcription",
+      "Post-translational modification",
+      "RNA interference",
+      "Transformation",
+      "Transduction"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_025",
+    "correctAnswer": "RNA polymerase",
+    "acceptableAlternatives": [],
+    "chainThemeId": 12,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "Which enzyme reads the DNA template strand and synthesizes the complementary mRNA during transcription?",
+    "explanation": "RNA polymerase binds the promoter with the help of transcription factors, reads the template strand in the 3'→5' direction, and synthesizes mRNA in the 5'→3' direction. Unlike DNA polymerase, RNA polymerase does not need a primer to initiate synthesis.",
+    "visualDescription": "Diagram of RNA polymerase moving along a DNA template and synthesizing a growing mRNA strand",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "DNA polymerase III",
+      "DNA polymerase I",
+      "Primase",
+      "Helicase",
+      "Aminoacyl-tRNA synthetase",
+      "Reverse transcriptase",
+      "Telomerase",
+      "Ligase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_026",
+    "correctAnswer": "Promoter",
+    "acceptableAlternatives": [],
+    "chainThemeId": 12,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "What is the specific DNA sequence upstream of a gene where RNA polymerase and transcription factors bind to initiate transcription?",
+    "explanation": "The promoter is located 5' (upstream) of the gene. In eukaryotes it often contains a TATA box ~25 bp upstream of the transcription start site. RNA polymerase cannot bind the promoter alone in eukaryotes — general transcription factors must assemble first.",
+    "visualDescription": "Gene map showing the promoter region upstream of the coding sequence with an arrow at the transcription start site",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Operator",
+      "Enhancer",
+      "Silencer",
+      "Start codon",
+      "5' cap",
+      "TATA box alone",
+      "Origin of replication",
+      "Coding strand"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_027",
+    "correctAnswer": "TATA box",
+    "acceptableAlternatives": [
+      "TATAAA element"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which eukaryotic promoter element, with the consensus sequence TATAAA located ~25 bp upstream of the transcription start site, is recognized by TATA-binding protein (TBP)?",
+    "explanation": "The TATA box is one of the best-characterized core promoter elements in eukaryotes. TATA-binding protein (TBP), a component of the TFIID complex, binds the TATA box and bends the DNA, nucleating the assembly of the full pre-initiation complex including RNA polymerase II.",
+    "visualDescription": "Promoter region diagram marking the TATA box position 25 bp upstream and TBP protein binding to it",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Enhancer element",
+      "Silencer sequence",
+      "CAAT box",
+      "GC box",
+      "Operator sequence",
+      "CpG island",
+      "Kozak sequence",
+      "Shine-Dalgarno sequence"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_028",
+    "correctAnswer": "Template strand (antisense strand)",
+    "acceptableAlternatives": [
+      "template strand",
+      "antisense strand"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which DNA strand is read 3'→5' by RNA polymerase to produce the mRNA transcript?",
+    "explanation": "The template strand (also called the antisense strand) is read by RNA polymerase in the 3'→5' direction. The resulting mRNA has the same sequence as the non-template (coding) strand, with U in place of T. Knowing which strand is the template is essential for predicting mRNA sequences.",
+    "visualDescription": "Diagram of a double-stranded DNA segment with the template strand labeled below and its complementary mRNA above",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Coding strand (sense strand)",
+      "Leading strand",
+      "Lagging strand",
+      "Non-template strand",
+      "Promoter strand",
+      "Top strand by convention",
+      "The strand with the promoter sequence",
+      "The strand with codons"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_029",
+    "correctAnswer": "7-methylguanosine (m7G) cap",
+    "acceptableAlternatives": [
+      "5' cap",
+      "m7G cap",
+      "methylguanosine cap"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "What modified nucleotide is added to the 5' end of eukaryotic pre-mRNA to protect it from degradation and facilitate ribosome binding?",
+    "explanation": "The 5' cap is a 7-methylguanosine (m7G) nucleotide added in an unusual 5'-to-5' triphosphate linkage to the pre-mRNA immediately after transcription begins. It protects the mRNA from nuclease attack at its 5' end and is recognized by eukaryotic initiation factors to begin translation.",
+    "visualDescription": "mRNA diagram showing the m7G cap at the 5' end with the 5'→5' triphosphate linkage highlighted",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Poly-A tail",
+      "Shine-Dalgarno sequence",
+      "Kozak sequence",
+      "5'-methylcytosine cap",
+      "Triphosphorylated adenosine",
+      "snRNA cap",
+      "5' UTR methylation",
+      "Pseudouridine cap"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_030",
+    "correctAnswer": "~200 adenine nucleotides added to the 3' end",
+    "acceptableAlternatives": [
+      "poly-A tail",
+      "approximately 200 adenines at the 3' end"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "What is added to the 3' end of eukaryotic pre-mRNA to protect it from degradation, aid nuclear export, and signal mRNA stability?",
+    "explanation": "Poly-A polymerase adds approximately 200 adenine nucleotides to the 3' end of pre-mRNA after the cleavage of the primary transcript at the polyadenylation signal (AAUAAA). The poly-A tail protects mRNA from 3' exonucleases, facilitates export from the nucleus, and is recognized by translation factors.",
+    "visualDescription": "mRNA diagram showing the poly-A tail (string of A's) at the 3' end with poly-A polymerase indicated",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "~200 guanine nucleotides at the 5' end",
+      "~100 cytosine nucleotides at the 3' end",
+      "A 7-methylguanosine cap at the 3' end",
+      "A Shine-Dalgarno sequence at the 3' end",
+      "~50 uracil nucleotides at the 3' end",
+      "A stop codon-like sequence at the 3' end",
+      "A tRNA acceptor stem at the 3' end",
+      "~200 thymine nucleotides added to the 3' end"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_031",
+    "correctAnswer": "RNA splicing",
+    "acceptableAlternatives": [
+      "splicing"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What is the process called in which introns are removed and exons are joined together to produce mature mRNA?",
+    "explanation": "RNA splicing occurs in the nucleus of eukaryotes after transcription. The spliceosome — a complex of snRNPs — recognizes splice sites at intron-exon boundaries, excises the intron as a lariat-shaped intermediate, and ligates the flanking exons together.",
+    "visualDescription": "Pre-mRNA diagram showing introns (non-coding regions) being looped out and cut while exons are spliced together",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Alternative splicing",
+      "Polyadenylation",
+      "RNA editing",
+      "Capping",
+      "RNA interference",
+      "Transcription termination",
+      "tRNA processing",
+      "RNA export"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_032",
+    "correctAnswer": "Spliceosome",
+    "acceptableAlternatives": [
+      "the spliceosome"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "What large ribonucleoprotein complex composed of snRNPs catalyzes the removal of introns from eukaryotic pre-mRNA?",
+    "explanation": "The spliceosome is one of the largest molecular machines in the cell, assembled from five snRNPs (U1, U2, U4, U5, U6) and many associated proteins. It recognizes conserved sequences at the 5' and 3' splice sites and the branch point, catalyzes two transesterification reactions to excise the intron and join exons.",
+    "visualDescription": "Diagram of the spliceosome complex assembled around the pre-mRNA intron, forming a lariat intermediate",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Ribosome",
+      "Proteasome",
+      "RISC complex",
+      "Mediator complex",
+      "RNA polymerase II complex",
+      "Editosome",
+      "Exosome",
+      "Poly-A polymerase complex"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_033",
+    "correctAnswer": "Alternative splicing",
+    "acceptableAlternatives": [],
+    "chainThemeId": 12,
+    "answerTypePoolId": "process_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "What process allows a single gene to produce multiple different protein variants by joining different combinations of exons from the same pre-mRNA?",
+    "explanation": "Alternative splicing greatly expands proteome diversity. Humans have ~20,000 protein-coding genes but can produce more than 100,000 distinct protein variants. The spliceosome selects different exon combinations in response to cell-type-specific splicing factors, producing functionally distinct protein isoforms.",
+    "visualDescription": "Pre-mRNA diagram showing different exon combinations selected in two different cell types to produce two distinct mature mRNAs",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "RNA editing",
+      "Constitutive splicing",
+      "Trans-splicing",
+      "RNA interference",
+      "Post-translational modification",
+      "Exon duplication",
+      "Intron retention",
+      "mRNA stability regulation"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_034",
+    "correctAnswer": "No 5' cap, no poly-A tail, no splicing; translation begins during transcription",
+    "acceptableAlternatives": [
+      "coupled transcription-translation; no cap, tail, or splicing"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "comparison_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "How does prokaryotic transcription differ from eukaryotic transcription in terms of RNA processing and coupling with translation?",
+    "explanation": "Prokaryotes lack a nuclear membrane, so ribosomes can begin translating the 5' end of an mRNA before transcription of the 3' end is complete — a process called coupled transcription-translation. Prokaryotic mRNA is also polycistronic (encodes multiple proteins) and requires no 5' cap, poly-A tail, or splicing.",
+    "visualDescription": "Split diagram: eukaryote showing nucleus with processing steps vs. prokaryote showing ribosomes attaching to mRNA as it is still being transcribed",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Prokaryotes add a 5' cap but no poly-A tail",
+      "Prokaryotes require splicing but no capping",
+      "Prokaryotes use RNA polymerase II like eukaryotes",
+      "Prokaryotes transcribe in the nucleus",
+      "Prokaryotes produce monocistronic mRNA only",
+      "Prokaryotes add a poly-A tail but no 5' cap",
+      "Prokaryotic translation occurs only after transcription is complete",
+      "Prokaryotes have introns that must be spliced"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_035",
+    "correctAnswer": "Translation",
+    "acceptableAlternatives": [],
+    "chainThemeId": 12,
+    "answerTypePoolId": "process_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "What is the process of synthesizing a polypeptide from an mRNA template at the ribosome called?",
+    "explanation": "Translation is the second step of the central dogma (DNA → RNA → Protein). Ribosomes read the mRNA codon by codon, and tRNAs deliver the corresponding amino acids. The ribosome catalyzes peptide bond formation between successive amino acids to build the polypeptide chain.",
+    "visualDescription": "Ribosome diagram with mRNA threading through it and a growing polypeptide chain emerging from the exit tunnel",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Transcription",
+      "DNA replication",
+      "RNA splicing",
+      "Post-translational modification",
+      "Transduction",
+      "Transformation",
+      "RNA interference",
+      "Reverse transcription"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_036",
+    "correctAnswer": "AUG (methionine)",
+    "acceptableAlternatives": [
+      "AUG",
+      "the start codon AUG"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What is the universal start codon that signals the beginning of translation and sets the reading frame?",
+    "explanation": "AUG encodes methionine (Met) and is the canonical start codon in nearly all organisms. In bacteria, the initiator tRNA carries formyl-methionine (fMet). AUG establishes the reading frame — every subsequent codon is read as a non-overlapping triplet from this point forward.",
+    "visualDescription": "mRNA diagram with the AUG start codon highlighted and the initiator Met-tRNA positioned at the P site of the ribosome",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "UAG",
+      "UAA",
+      "UGA",
+      "GUG",
+      "CUG",
+      "UUG",
+      "AUA",
+      "ACG"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_037",
+    "correctAnswer": "UAA, UAG, and UGA",
+    "acceptableAlternatives": [
+      "UAA, UAG, UGA",
+      "the three stop codons"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What are the three stop codons that signal termination of translation?",
+    "explanation": "UAA (ochre), UAG (amber), and UGA (opal/umber) are the three stop codons. No tRNA recognizes them; instead, release factors (RF1/RF2 in prokaryotes, eRF1 in eukaryotes) bind the A site and trigger hydrolysis of the polypeptide from the final tRNA.",
+    "visualDescription": "Codon table with UAA, UAG, and UGA highlighted in red as stop codons",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "UAA, UAG, and AUG",
+      "UAG, UGA, and AAA",
+      "UGA, UAA, and GGG",
+      "UAA, UUU, and UGA",
+      "UAG, CCC, and UAA",
+      "UGA, AAU, and UAG",
+      "UAA, AGG, and UGA",
+      "UAG, UAA, and GUA"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_038",
+    "correctAnswer": "A site (aminoacyl site)",
+    "acceptableAlternatives": [
+      "A site",
+      "aminoacyl site"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "location_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which ribosomal site receives the incoming aminoacyl-tRNA carrying the next amino acid during translation elongation?",
+    "explanation": "The ribosome has three tRNA-binding sites: A (aminoacyl), P (peptidyl), and E (exit). During elongation, the aminoacyl-tRNA carrying the next amino acid enters the A site, where codon-anticodon matching occurs. Peptide bond formation then transfers the growing chain from the P-site tRNA to the A-site amino acid.",
+    "visualDescription": "Ribosome cross-section labeling the A, P, and E sites with aminoacyl-tRNA entering the A site",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "P site (peptidyl site)",
+      "E site (exit site)",
+      "The 5' cap binding site",
+      "The decoding center of the small subunit only",
+      "The peptidyl transferase center",
+      "The mRNA entry channel",
+      "The polypeptide exit tunnel",
+      "The GTPase center"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_039",
+    "correctAnswer": "P site (peptidyl site)",
+    "acceptableAlternatives": [
+      "P site",
+      "peptidyl site"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "location_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which ribosomal site holds the tRNA attached to the growing polypeptide chain during translation?",
+    "explanation": "The P site holds the peptidyl-tRNA — the tRNA covalently linked to the nascent polypeptide. When a new amino acid arrives at the A site, peptidyl transferase (the catalytic rRNA of the large subunit) transfers the polypeptide from the P-site tRNA to the A-site amino acid, extending the chain by one residue.",
+    "visualDescription": "Ribosome diagram with the P site highlighted and a tRNA carrying the growing polypeptide chain labeled inside it",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "A site (aminoacyl site)",
+      "E site (exit site)",
+      "The peptidyl transferase center only",
+      "The 60S large subunit surface",
+      "The decoding site",
+      "The mRNA channel",
+      "The signal recognition particle binding site",
+      "The GTPase activation site"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_040",
+    "correctAnswer": "tRNA anticodon loop and 3' CCA amino acid attachment site",
+    "acceptableAlternatives": [
+      "anticodon loop and 3' CCA terminus"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "What are the two functionally critical parts of a tRNA molecule: one that reads the mRNA codon and one that carries the amino acid?",
+    "explanation": "tRNA folds into a cloverleaf secondary structure. The anticodon loop contains 3 bases that are complementary to a specific mRNA codon, enabling codon-anticodon base pairing. The 3' CCA terminus (universal to all tRNAs) is where aminoacyl-tRNA synthetase attaches the cognate amino acid.",
+    "visualDescription": "Cloverleaf tRNA diagram with the anticodon loop at the bottom and the 3'-CCA amino acid attachment site at the top",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "5' cap and poly-A tail",
+      "Promoter sequence and start codon",
+      "Variable loop and acceptor stem only",
+      "D-loop and T-loop only",
+      "Signal peptide and GTPase domain",
+      "5' UTR and 3' UTR",
+      "Ribozyme domain and anticodon stem",
+      "Shine-Dalgarno sequence and CCA terminus"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_041",
+    "correctAnswer": "Aminoacyl-tRNA synthetase",
+    "acceptableAlternatives": [
+      "aminoacyl tRNA synthetase"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Which enzyme attaches the correct amino acid to its corresponding tRNA, using ATP energy — ensuring accurate translation of the genetic code?",
+    "explanation": "Each of the 20 aminoacyl-tRNA synthetases recognizes one specific amino acid and all the tRNAs that carry it. The enzyme catalyzes a two-step reaction: first activating the amino acid with ATP (forming an aminoacyl-AMP intermediate), then transferring it to the 3'-OH of the correct tRNA. This 'second genetic code' step is where translational accuracy is primarily set.",
+    "visualDescription": "Diagram of aminoacyl-tRNA synthetase binding its cognate amino acid and tRNA to form a charged aminoacyl-tRNA",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Ribosome",
+      "RNA polymerase",
+      "DNA polymerase",
+      "Release factor",
+      "Elongation factor EF-Tu",
+      "Peptidyl transferase",
+      "Initiation factor eIF2",
+      "Translocase EF-G"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_042",
+    "correctAnswer": "Peptide bond formation by rRNA (a ribozyme)",
+    "acceptableAlternatives": [
+      "rRNA catalyzes peptide bond formation",
+      "ribozyme activity of rRNA"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "function_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "What catalyzes the formation of peptide bonds between amino acids during translation, and what type of catalyst is it?",
+    "explanation": "Peptide bond formation is catalyzed by the peptidyl transferase center of the large ribosomal subunit. Crucially, the catalyst is the 23S rRNA (in prokaryotes) or 28S rRNA (in eukaryotes) — not a protein. This makes the ribosome a ribozyme, supporting the RNA World hypothesis.",
+    "visualDescription": "Close-up of the ribosome peptidyl transferase center showing rRNA directly catalyzing the peptide bond between two amino acids",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Protein enzyme peptidyl transferase",
+      "Aminoacyl-tRNA synthetase",
+      "Release factor binding",
+      "Elongation factor EF-Tu",
+      "Large ribosomal protein L16",
+      "DNA polymerase activity",
+      "tRNA synthetase",
+      "GTPase activity of EF-G"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_043",
+    "correctAnswer": "A release factor binds the stop codon at the A site and triggers polypeptide release",
+    "acceptableAlternatives": [
+      "release factor triggers termination at a stop codon"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "function_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "How does translation termination occur when a stop codon enters the ribosomal A site?",
+    "explanation": "No aminoacyl-tRNA matches a stop codon. Instead, a protein called a release factor (RF1 or RF2 in prokaryotes; eRF1 in eukaryotes) recognizes the stop codon and enters the A site. It stimulates peptidyl transferase to hydrolyze the bond between the polypeptide and the P-site tRNA, releasing the finished protein.",
+    "visualDescription": "Ribosome diagram with a stop codon at the A site, release factor occupying the A site, and the polypeptide being released",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "A tRNA with an anticodon complementary to the stop codon arrives",
+      "Aminoacyl-tRNA synthetase cleaves the polypeptide",
+      "The ribosome runs off the end of the mRNA",
+      "The 5' cap is removed, destabilizing the mRNA",
+      "A ribozyme directly cleaves the polypeptide chain",
+      "GTPase activity of EF-G releases the chain",
+      "The poly-A tail signals termination",
+      "The spliceosome signals the ribosome to stop"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_044",
+    "correctAnswer": "Polysomes (polyribosomes)",
+    "acceptableAlternatives": [
+      "polysomes",
+      "polyribosomes"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What is the name for the structure formed when multiple ribosomes simultaneously translate the same mRNA, increasing protein production efficiency?",
+    "explanation": "After the first ribosome moves away from the start codon, a second ribosome can attach and begin translating the same mRNA. A single mRNA molecule can be simultaneously translated by dozens of ribosomes, forming a polysome or polyribosome. This dramatically amplifies protein output.",
+    "visualDescription": "Electron micrograph-style illustration of a string of ribosomes (polysome) threaded along a single mRNA molecule, each producing a growing polypeptide",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Spliceosome",
+      "Proteasome",
+      "Signal recognition particle",
+      "Nucleosome",
+      "Mediator complex",
+      "RISC complex",
+      "Editosome",
+      "Replication complex"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_045",
+    "correctAnswer": "Wobble",
+    "acceptableAlternatives": [
+      "wobble position",
+      "wobble base pairing"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "What term describes the flexible base-pairing at the 3rd codon position that allows some tRNAs to recognize multiple codons encoding the same amino acid?",
+    "explanation": "The wobble hypothesis (Francis Crick, 1966) explains why the ~45 tRNA species in a cell can decode all 61 sense codons. Non-Watson-Crick base pairs are tolerated at the 3rd codon position (wobble position), so one tRNA anticodon can pair with multiple synonymous codons differing only at that position.",
+    "visualDescription": "Diagram showing a single tRNA anticodon pairing with two different codons via wobble at the third position",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Degeneracy of the genetic code",
+      "Ambiguity of the genetic code",
+      "Frame shifting",
+      "Codon-anticodon mismatch repair",
+      "Aminoacyl-tRNA proofreading",
+      "Ribosome slippage",
+      "Suppressor tRNA activity",
+      "Readthrough translation"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_046",
+    "correctAnswer": "The genetic code is universal",
+    "acceptableAlternatives": [
+      "universality of the genetic code"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What property of the genetic code means that nearly all organisms — from bacteria to humans — use the same codon-amino acid assignments?",
+    "explanation": "The near-universality of the genetic code is strong evidence for common ancestry of all life on Earth. AUG means methionine in E. coli, yeast, plants, and humans. This property allows genes from one organism to be expressed in another — the basis of recombinant DNA technology.",
+    "visualDescription": "Globe graphic with organisms from different kingdoms (bacterium, plant, animal) all sharing the same codon table",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "The genetic code is degenerate",
+      "The genetic code is ambiguous",
+      "The genetic code is species-specific",
+      "The genetic code is redundant only in eukaryotes",
+      "The genetic code is overlapping",
+      "The genetic code is triplet in bacteria but doublet in eukaryotes",
+      "The genetic code is tissue-specific in mammals",
+      "The genetic code is non-degenerate"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_047",
+    "correctAnswer": "Post-translational modifications (folding, phosphorylation, glycosylation, cleavage)",
+    "acceptableAlternatives": [
+      "post-translational modification",
+      "PTMs"
+    ],
+    "chainThemeId": 12,
+    "answerTypePoolId": "process_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "What category of events — including protein folding by chaperones, phosphorylation, glycosylation, and signal peptide cleavage — occurs after translation to produce a functional protein?",
+    "explanation": "After the ribosome releases a polypeptide, it must fold into its correct 3D structure (often assisted by chaperone proteins). Additional modifications include: phosphorylation (adds –PO4 groups, often regulates activity), glycosylation (adds sugar chains, important for cell recognition), and ubiquitination (tags proteins for proteasomal degradation).",
+    "visualDescription": "Protein processing diagram showing a newly synthesized polypeptide going through folding, phosphorylation, and glycosylation steps",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "RNA splicing",
+      "Transcription factor binding",
+      "mRNA capping",
+      "Polyadenylation",
+      "DNA methylation",
+      "Alternative splicing",
+      "tRNA charging",
+      "Ribosome assembly"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_048",
+    "correctAnswer": "Operon",
+    "acceptableAlternatives": [],
+    "chainThemeId": 13,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What is the prokaryotic gene organization unit consisting of a promoter, an operator, and a cluster of co-regulated structural genes transcribed as a single polycistronic mRNA?",
+    "explanation": "The operon model (Jacob and Monod, 1961) explains how bacteria efficiently regulate groups of functionally related genes as a single transcriptional unit. Key examples include the lac operon (lactose metabolism) and trp operon (tryptophan biosynthesis). Operons are rare in eukaryotes.",
+    "visualDescription": "Diagram of an operon showing promoter, operator, and structural genes arranged linearly on a prokaryotic chromosome",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Regulon",
+      "Cistron",
+      "Replicon",
+      "Transcriptome",
+      "Enhancesome",
+      "Gene cluster",
+      "Chromosome domain",
+      "Codon"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_049",
+    "correctAnswer": "The operator",
+    "acceptableAlternatives": [
+      "operator"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What short DNA sequence between the promoter and the structural genes of a prokaryotic operon serves as the binding site for a repressor protein?",
+    "explanation": "When a repressor protein binds the operator, it physically blocks RNA polymerase from transcribing the structural genes. Repressors can be inactivated by inducer molecules (as in the lac operon) or activated by corepressors (as in the trp operon), giving bacteria flexible, rapid gene control.",
+    "visualDescription": "Operon diagram with the operator region highlighted and a repressor protein (shown as a block) bound to it between the promoter and structural genes",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "The promoter",
+      "The enhancer",
+      "The TATA box",
+      "The silencer",
+      "The terminator sequence",
+      "The Shine-Dalgarno sequence",
+      "The start codon",
+      "The poly-A signal"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_050",
+    "correctAnswer": "Allolactose binds the lac repressor, releasing it from the operator",
+    "acceptableAlternatives": [
+      "allolactose induces the lac operon by inactivating the repressor"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "function_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "How does lactose trigger induction of the lac operon?",
+    "explanation": "Lactose is converted to allolactose by a small amount of beta-galactosidase always present in the cell. Allolactose is the true inducer: it binds the lac repressor and causes a conformational change that reduces its affinity for the operator DNA, allowing RNA polymerase to transcribe the lac genes. This is a classic negative control mechanism.",
+    "visualDescription": "Lac operon diagram showing allolactose molecule binding the repressor and causing it to fall off the operator, allowing transcription",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Lactose directly binds RNA polymerase to activate transcription",
+      "Glucose activates the lac repressor to bind the operator",
+      "cAMP directly blocks the lac repressor",
+      "Allolactose binds the promoter to recruit RNA polymerase",
+      "Lactose methylates the operator DNA",
+      "Beta-galactosidase directly activates the promoter",
+      "Allolactose phosphorylates CAP to activate it",
+      "Glucose is absent so tryptophan induces the lac operon"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_051",
+    "correctAnswer": "CAP-cAMP complex binds upstream of the promoter, enhancing RNA polymerase binding",
+    "acceptableAlternatives": [
+      "CAP-cAMP activates transcription when glucose is absent"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "function_terms",
+    "difficulty": 4,
+    "funScore": 8,
+    "quizQuestion": "How does catabolite repression ensure the lac operon is maximally expressed only when glucose is absent AND lactose is present?",
+    "explanation": "When glucose is absent, adenylyl cyclase produces high levels of cAMP. cAMP binds CAP (catabolite activator protein), and the CAP-cAMP complex binds a site upstream of the lac promoter, bending DNA and directly stimulating RNA polymerase binding. This positive regulation means the lac genes are only fully transcribed when glucose is absent (high cAMP) AND lactose is present (repressor off the operator).",
+    "visualDescription": "Lac operon diagram showing CAP-cAMP bound upstream of the promoter and RNA polymerase strongly bound, with the repressor absent from the operator",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "When glucose is high, cAMP rises and activates CAP",
+      "Allolactose directly activates CAP without cAMP",
+      "CAP binds the operator to block the repressor",
+      "Glucose directly binds CAP to activate it",
+      "When glucose is absent, cAMP falls and CAP is inactivated",
+      "CAP acts as a repressor when cAMP is high",
+      "The lac repressor itself converts to an activator in the absence of glucose",
+      "Tryptophan activates CAP in the absence of glucose"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_052",
+    "correctAnswer": "Tryptophan binds the trp aporepressor, activating it to block transcription",
+    "acceptableAlternatives": [
+      "tryptophan corepressor activates the trp repressor to turn the operon off"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "function_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "How is the trp operon repressed when tryptophan is abundant?",
+    "explanation": "The trp operon is a repressible operon — normally transcribed unless repressed. The trp repressor is inactive (an aporepressor) without tryptophan. When tryptophan is abundant, it acts as a corepressor: it binds the trp aporepressor, causing a conformational change that allows the repressor-tryptophan complex to bind the operator and block transcription of the tryptophan biosynthesis genes.",
+    "visualDescription": "Trp operon diagram with the tryptophan-repressor complex bound to the operator, blocking RNA polymerase",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Tryptophan inactivates the repressor, turning the operon on",
+      "Allolactose binds the trp repressor and activates it",
+      "Tryptophan directly blocks RNA polymerase binding at the promoter",
+      "cAMP activates the trp repressor",
+      "The trp operon is always on; tryptophan has no regulatory role",
+      "Tryptophan methylates the operator DNA",
+      "Tryptophan acts as an inducer for the trp operon",
+      "Glucose activates the trp repressor"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_053",
+    "correctAnswer": "Histone acetylation",
+    "acceptableAlternatives": [
+      "acetylation of histones"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "process_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Which chromatin modification — catalyzed by histone acetyltransferases (HATs) — neutralizes the positive charge of histone tails, loosening DNA packing and increasing gene expression?",
+    "explanation": "Histone proteins (especially their N-terminal tails) are rich in positively charged lysine and arginine residues that tightly bind negatively charged DNA. Acetylation of lysine residues by HATs removes the positive charge, weakening histone-DNA interactions and creating more open (euchromatic) chromatin accessible to transcription machinery.",
+    "visualDescription": "Diagram showing histone tails before (tightly coiled DNA) and after acetylation (open chromatin) by HAT enzyme",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "DNA methylation",
+      "Histone deacetylation",
+      "Histone phosphorylation only",
+      "Histone ubiquitination only",
+      "Chromatin condensation",
+      "Heterochromatin formation",
+      "Nucleosome disassembly by helicase",
+      "Promoter methylation"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_054",
+    "correctAnswer": "DNA methylation",
+    "acceptableAlternatives": [
+      "methylation of cytosine residues"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "process_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Which epigenetic modification — addition of methyl groups to cytosine residues at CpG dinucleotides — is generally associated with long-term gene silencing?",
+    "explanation": "DNA methyltransferases add –CH3 groups to cytosine at CpG sites. Heavily methylated regions (like the inactive X chromosome and silenced tumor suppressor genes in cancer) are transcriptionally silent. Methylation patterns are inherited through cell divisions (maintenance methylation by DNMT1) and are a major mechanism of epigenetic inheritance.",
+    "visualDescription": "CpG dinucleotide diagram showing the cytosine base with a methyl group (CH3) attached, associated with condensed heterochromatin",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Histone acetylation",
+      "RNA methylation by m7G capping",
+      "Histone deacetylation",
+      "DNA demethylation",
+      "Nucleosome remodeling",
+      "CpG phosphorylation",
+      "Adenine methylation in eukaryotes",
+      "Histone H3K4 methylation (activating)"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_055",
+    "correctAnswer": "Enhancers",
+    "acceptableAlternatives": [
+      "enhancer sequences"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "What are the regulatory DNA sequences that increase transcription of a target gene by binding activator proteins and acting through DNA looping — even from thousands of base pairs away?",
+    "explanation": "Enhancers are cis-regulatory elements that can function regardless of their distance from or orientation relative to the gene. Activator proteins bound to enhancers make contact with the promoter complex through DNA looping (often stabilized by cohesin), dramatically increasing the rate of transcription initiation.",
+    "visualDescription": "Gene map showing DNA looping that brings an enhancer (with activator proteins) into contact with the promoter complex",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Silencers",
+      "Operators",
+      "Promoters",
+      "TATA boxes",
+      "Repressors",
+      "Terminators",
+      "5' UTR sequences",
+      "CpG islands"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_056",
+    "correctAnswer": "microRNA (miRNA)",
+    "acceptableAlternatives": [
+      "miRNA"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Which ~22-nucleotide non-coding RNA is incorporated into RISC and regulates gene expression by binding partially complementary sequences in mRNA 3' UTRs, causing translational inhibition or mRNA degradation?",
+    "explanation": "miRNAs are processed from longer hairpin precursors by the enzymes Drosha and Dicer. One strand is loaded into the RNA-Induced Silencing Complex (RISC). Because miRNA-mRNA base pairing is partial (imperfect), it usually causes translational repression or mRNA destabilization rather than cleavage. Thousands of miRNAs fine-tune gene expression across development.",
+    "visualDescription": "Diagram of RISC complex carrying a miRNA binding to the 3' UTR of an mRNA, with translation being blocked",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "siRNA (small interfering RNA)",
+      "snRNA (small nuclear RNA)",
+      "rRNA",
+      "tRNA",
+      "lncRNA (long non-coding RNA)",
+      "piRNA",
+      "hnRNA (pre-mRNA)",
+      "snoRNA"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_057",
+    "correctAnswer": "siRNA binds perfectly complementary mRNA sequences, causing mRNA cleavage",
+    "acceptableAlternatives": [
+      "siRNA causes mRNA cleavage via perfect complementarity"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "comparison_terms",
+    "difficulty": 4,
+    "funScore": 8,
+    "quizQuestion": "How does siRNA (small interfering RNA) differ from miRNA in how it silences gene expression?",
+    "explanation": "siRNAs (~21 nt) are double-stranded and typically derived from exogenous dsRNA (e.g., viral dsRNA) or laboratory-introduced dsRNA. When incorporated into RISC, one strand guides RISC to a perfectly complementary mRNA target, which Argonaute 2 then cleaves — destroying the mRNA. miRNAs act on partially complementary targets and mostly inhibit translation.",
+    "visualDescription": "Comparison diagram: siRNA-RISC cleaving a perfectly matched mRNA vs. miRNA-RISC blocking translation on a partially matched mRNA",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "siRNA inhibits translation without mRNA degradation",
+      "siRNA binds partially complementary sequences like miRNA",
+      "miRNA causes mRNA cleavage while siRNA inhibits translation",
+      "siRNA targets DNA directly rather than mRNA",
+      "siRNA blocks the spliceosome from splicing",
+      "Both siRNA and miRNA cause identical mRNA cleavage",
+      "siRNA and miRNA are identical in function but different in size",
+      "siRNA acts only in the nucleus while miRNA acts in the cytoplasm"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_058",
+    "correctAnswer": "Ubiquitin-proteasome pathway",
+    "acceptableAlternatives": [
+      "ubiquitin-proteasome system",
+      "proteasomal degradation"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "process_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Which post-translational regulatory pathway tags proteins with chains of ubiquitin, directing them to the 26S proteasome for degradation?",
+    "explanation": "The ubiquitin-proteasome system is the cell's primary mechanism for controlled protein degradation. Ubiquitin ligase enzymes attach a chain of ubiquitin molecules to target proteins (often on lysine residues). The 26S proteasome recognizes the ubiquitin tag, unfolds the protein, and degrades it into small peptides.",
+    "visualDescription": "Diagram showing a target protein being tagged with a ubiquitin chain and fed into the barrel-shaped proteasome complex",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Lysosomal autophagy pathway",
+      "RISC-mediated protein degradation",
+      "Chaperone-mediated protein folding",
+      "Signal recognition particle pathway",
+      "mRNA decay pathway",
+      "Spliceosome-dependent regulation",
+      "CRISPR-based protein knockout",
+      "Histone deacetylase pathway"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_059",
+    "correctAnswer": "Differential gene expression",
+    "acceptableAlternatives": [
+      "differential expression of genes"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What explains how different cell types in the same organism — all carrying the same DNA — develop distinct structures and functions?",
+    "explanation": "Every somatic cell in an organism contains the complete genome. Cell-type differences arise because different cells express different subsets of genes. Transcription factors, chromatin states, signaling pathways, and epigenetic marks determine which genes are active in each cell type.",
+    "visualDescription": "Organism diagram showing that a muscle cell, neuron, and liver cell all have the same DNA but different subsets of genes are expressed (shown as different colored bars)",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Somatic mutation accumulation",
+      "Alternative splicing only",
+      "Different DNA sequences in each cell type",
+      "Horizontal gene transfer between cell types",
+      "Epigenetic mutations that alter the DNA sequence",
+      "Different numbers of chromosomes in each cell type",
+      "Protein folding differences without gene expression changes",
+      "Ribosome specialization by cell type"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_060",
+    "correctAnswer": "MyoD",
+    "acceptableAlternatives": [],
+    "chainThemeId": 13,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Which master regulatory transcription factor drives skeletal muscle cell differentiation, and can even convert fibroblasts into muscle cells when overexpressed?",
+    "explanation": "MyoD is a bHLH (basic helix-loop-helix) transcription factor that acts as a master switch for muscle differentiation. It activates hundreds of muscle-specific genes. The discovery that a single transcription factor could reprogram cell fate was a landmark finding in developmental biology.",
+    "visualDescription": "Diagram showing MyoD protein binding to muscle-specific gene promoters and activating a battery of muscle differentiation genes",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "PAX6",
+      "Oct4",
+      "Sox2",
+      "GATA-1",
+      "Nanog",
+      "p53",
+      "Myc",
+      "HoxA1"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_061",
+    "correctAnswer": "Epigenetic inheritance",
+    "acceptableAlternatives": [
+      "epigenetics"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "What term describes heritable changes in gene expression that do NOT involve changes to the DNA nucleotide sequence, transmitted via DNA methylation and histone modification patterns?",
+    "explanation": "Epigenetic marks including DNA methylation patterns and histone modifications can be maintained through cell divisions. Maintenance methyltransferase (DNMT1) copies methylation patterns onto daughter strands after replication. This allows differentiated cell types to 'remember' their identity across many cell divisions without altering their DNA sequence.",
+    "visualDescription": "Cell division diagram showing DNA methylation marks being faithfully copied to daughter cells, maintaining the same gene expression pattern",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Genetic inheritance via DNA sequence changes",
+      "Horizontal gene transfer",
+      "RNA interference",
+      "Alternative splicing inheritance",
+      "Protein-level inheritance (prions only)",
+      "Somatic mutation inheritance",
+      "Chromosomal rearrangement inheritance",
+      "Plasmid-based inheritance in eukaryotes"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_062",
+    "correctAnswer": "Pluripotent",
+    "acceptableAlternatives": [
+      "pluripotency"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Which stem cell potency category describes cells that can differentiate into cells from all three embryonic germ layers but not extraembryonic tissues — as seen in embryonic stem (ES) cells?",
+    "explanation": "Pluripotent stem cells (like embryonic stem cells derived from the inner cell mass of the blastocyst) can give rise to any somatic cell type but cannot form the placenta or other extraembryonic structures. Totipotent cells (fertilized egg, first cleavage blastomeres) can form every cell type including placenta.",
+    "visualDescription": "Potency hierarchy diagram from totipotent → pluripotent → multipotent → unipotent with example cell types at each level",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Totipotent",
+      "Multipotent",
+      "Unipotent",
+      "Omnipotent",
+      "Bipotent",
+      "Oligopotent",
+      "Transdifferentiated",
+      "Progenitor-restricted"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_063",
+    "correctAnswer": "Silent (synonymous) mutation",
+    "acceptableAlternatives": [
+      "silent mutation",
+      "synonymous mutation"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What type of point mutation changes a codon but does NOT change the amino acid encoded — usually occurring at the third (wobble) codon position?",
+    "explanation": "Silent mutations exploit the degeneracy of the genetic code. For example, changing CUU to CUC still encodes leucine — no amino acid change occurs. Because the protein sequence is unchanged, silent mutations usually have no effect on phenotype, though they can rarely affect splicing or mRNA stability.",
+    "visualDescription": "Codon table excerpt showing two different codons pointing to the same amino acid, illustrating a silent mutation",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Missense mutation",
+      "Nonsense mutation",
+      "Frameshift mutation",
+      "In-frame deletion",
+      "Chromosomal inversion",
+      "Insertion mutation",
+      "Promoter mutation",
+      "Germline mutation"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_064",
+    "correctAnswer": "Missense mutation",
+    "acceptableAlternatives": [],
+    "chainThemeId": 13,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What type of point mutation changes one codon so it encodes a different amino acid — as in sickle cell anemia (GAG→GTG, glutamic acid→valine)?",
+    "explanation": "Missense mutations change one amino acid in the protein. The functional consequence depends on where the substitution occurs and how chemically different the new amino acid is. The sickle cell anemia missense mutation (glutamic acid→valine in hemoglobin beta chain) causes protein aggregation under low oxygen — a classic example of a missense mutation with severe consequences.",
+    "visualDescription": "Hemoglobin protein diagram showing the single amino acid change (Glu→Val) at position 6 of the beta chain that causes sickle cell anemia",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Nonsense mutation",
+      "Silent mutation",
+      "Frameshift mutation",
+      "In-frame deletion",
+      "Synonymous mutation",
+      "Chromosomal translocation",
+      "Promoter mutation",
+      "Splice-site mutation"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_065",
+    "correctAnswer": "Nonsense mutation",
+    "acceptableAlternatives": [],
+    "chainThemeId": 13,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What type of point mutation changes an amino acid-coding codon into a stop codon (UAA, UAG, or UGA), producing a truncated, usually nonfunctional protein?",
+    "explanation": "Nonsense mutations are often severe because translation terminates prematurely, producing a truncated polypeptide that is usually nonfunctional and may be rapidly degraded by nonsense-mediated mRNA decay (NMD). The earlier in the gene the stop codon appears, the more of the protein function is lost.",
+    "visualDescription": "mRNA diagram showing a premature stop codon midway through the coding sequence with the ribosome stopping early",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Missense mutation",
+      "Silent mutation",
+      "Frameshift mutation",
+      "In-frame insertion",
+      "Chromosomal deletion",
+      "Promoter mutation",
+      "Synonymous mutation",
+      "Splice-site mutation"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_066",
+    "correctAnswer": "Frameshift mutation",
+    "acceptableAlternatives": [
+      "frame-shift mutation"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What type of mutation results from an insertion or deletion of a number of nucleotides NOT divisible by three, shifting all downstream codons and usually producing a nonfunctional protein?",
+    "explanation": "Because codons are read as non-overlapping triplets, inserting or deleting 1 or 2 nucleotides (or any number not divisible by 3) shifts the reading frame for all codons downstream. The resulting protein has a completely scrambled amino acid sequence after the mutation site and is almost always nonfunctional.",
+    "visualDescription": "mRNA sequence diagram showing a single nucleotide insertion and the resulting completely different codon sequence downstream of the insertion",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Missense mutation",
+      "Nonsense mutation",
+      "Silent mutation",
+      "In-frame deletion",
+      "Chromosomal inversion",
+      "Point mutation",
+      "Promoter mutation",
+      "Synonymous substitution"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_067",
+    "correctAnswer": "UV light causes thymine dimers (covalent bonds between adjacent thymines)",
+    "acceptableAlternatives": [
+      "UV radiation causes thymine dimers"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "function_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "What type of DNA damage does UV light cause, and how does it disrupt replication and transcription?",
+    "explanation": "UV radiation causes adjacent thymine residues on the same strand to form covalent thymine-thymine dimers (cyclobutane pyrimidine dimers). These dimers distort the DNA helix and block DNA polymerase and RNA polymerase. If unrepaired, they cause mutations (C→T transitions) and can lead to skin cancer. Nucleotide excision repair (NER) removes these lesions.",
+    "visualDescription": "DNA strand diagram showing two adjacent thymine bases with a cyclobutane ring fusing them after UV irradiation",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "UV light causes G-C to A-T transitions by deaminating cytosine",
+      "UV light causes single-strand breaks in the phosphate backbone",
+      "UV light causes double-strand breaks at restriction sites",
+      "UV light cross-links guanine bases between strands",
+      "UV light alkylates the N7 position of guanine",
+      "UV light causes intercalation between base pairs",
+      "UV light converts adenine to hypoxanthine",
+      "UV light causes random base deletions throughout the genome"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_068",
+    "correctAnswer": "Germline mutations are heritable; somatic mutations affect only the individual",
+    "acceptableAlternatives": [
+      "germline mutations pass to offspring; somatic do not"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "comparison_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What is the key difference between germline mutations and somatic mutations in terms of heritability?",
+    "explanation": "Germline mutations occur in egg or sperm cells (or their precursors) and can be transmitted to offspring, contributing to heritable genetic diseases and evolutionary variation. Somatic mutations occur in non-reproductive body cells; they affect only the individual (and their mitotic cell lineage) and cannot be passed to children — but they can lead to cancer.",
+    "visualDescription": "Body diagram showing germline cells (gametes) and somatic cells, with arrows showing germline mutations passed to offspring vs. somatic mutations staying within the individual",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Somatic mutations are heritable; germline mutations affect only the individual",
+      "Both types are equally heritable",
+      "Neither type can be inherited by offspring",
+      "Germline mutations only cause cancer; somatic mutations are inherited",
+      "Somatic mutations occur in gametes; germline mutations occur in body cells",
+      "Germline mutations only occur via mutagen exposure; somatic mutations are always spontaneous",
+      "Both types require UV exposure to occur",
+      "Germline mutations change gene regulation only; somatic mutations change protein sequences"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_069",
+    "correctAnswer": "Restriction enzymes (restriction endonucleases)",
+    "acceptableAlternatives": [
+      "restriction endonucleases",
+      "restriction enzymes"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which bacterial enzymes recognize specific short palindromic DNA sequences and cut both strands — serving as the molecular 'scissors' of recombinant DNA technology?",
+    "explanation": "Restriction enzymes evolved as a bacterial defense against viral DNA. They recognize palindromic sequences (usually 4-8 bp) and cut the DNA, often producing single-stranded overhangs called sticky ends. These sticky ends allow DNA from different sources cut with the same enzyme to be joined by DNA ligase.",
+    "visualDescription": "Diagram of a restriction enzyme binding its palindromic recognition sequence and making staggered cuts to produce sticky ends",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "DNA ligase",
+      "PCR primers",
+      "CRISPR-Cas9 nuclease",
+      "DNA polymerase III",
+      "Taq polymerase",
+      "Topoisomerase II",
+      "Integrase",
+      "Transposase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_070",
+    "correctAnswer": "Sticky ends",
+    "acceptableAlternatives": [
+      "cohesive ends"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What are the short, single-stranded DNA overhangs produced when restriction enzymes make staggered cuts — allowing different DNA fragments to be joined by complementary base pairing?",
+    "explanation": "Sticky ends have short complementary single-stranded overhangs (typically 4-6 bases) that can spontaneously base-pair with any other DNA fragment cut by the same restriction enzyme. DNA ligase then seals the nicks, creating recombinant DNA. This is the basis of molecular cloning.",
+    "visualDescription": "Diagram showing restriction enzyme cutting to produce 5' single-stranded overhangs (sticky ends) and two fragments coming together via complementary base pairing",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Blunt ends",
+      "Phosphorylated ends",
+      "Ligated ends",
+      "Recessed 3' ends",
+      "Okazaki fragment ends",
+      "Hairpin loops",
+      "Palindromic junctions",
+      "Cohesive junctions (different from sticky ends)"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_071",
+    "correctAnswer": "Gel electrophoresis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 13,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which laboratory technique separates DNA fragments by size using an electric field through an agarose gel, with smaller fragments migrating farther toward the positive electrode?",
+    "explanation": "DNA is negatively charged (due to phosphate groups) and migrates toward the positive pole when current is applied. The agarose gel matrix acts as a molecular sieve — larger fragments are retarded more by the gel fibers. A DNA ladder (known-size fragments) run alongside allows size determination of unknown fragments.",
+    "visualDescription": "Gel electrophoresis image showing DNA bands from largest (near the negative electrode/wells) to smallest (near the positive electrode) with a labeled ladder lane",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "PCR (polymerase chain reaction)",
+      "DNA sequencing",
+      "Southern blotting",
+      "Column chromatography",
+      "Density gradient centrifugation",
+      "Northern blotting",
+      "Mass spectrometry",
+      "CRISPR cleavage assay"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_072",
+    "correctAnswer": "PCR (polymerase chain reaction)",
+    "acceptableAlternatives": [
+      "PCR",
+      "polymerase chain reaction"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which technique exponentially amplifies a specific DNA sequence in vitro using two sequence-specific primers, dNTPs, and thermostable Taq DNA polymerase through repeated heating and cooling cycles?",
+    "explanation": "PCR is the workhorse of molecular biology. Each thermal cycle (denaturation ~95°C → annealing ~55°C → extension ~72°C) approximately doubles the target sequence. After 30 cycles, a single target molecule can be amplified to over a billion copies. PCR requires only tiny amounts of starting DNA — enabling forensic analysis, pathogen detection, and many other applications.",
+    "visualDescription": "PCR tube diagram with a thermocycler cycling through three temperatures, showing exponential doubling of target DNA bands",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "DNA cloning in E. coli",
+      "Gel electrophoresis",
+      "DNA sequencing",
+      "Restriction digestion",
+      "Southern blotting",
+      "CRISPR-Cas9 editing",
+      "Transformation of bacteria",
+      "Northern blotting"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_073",
+    "correctAnswer": "Thermus aquaticus",
+    "acceptableAlternatives": [
+      "T. aquaticus"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "organism_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Which hot-spring bacterium is the source of Taq DNA polymerase — the thermostable enzyme used in PCR that withstands the ~95°C denaturation step?",
+    "explanation": "Taq polymerase was isolated from Thermus aquaticus, a thermophilic bacterium found in hot springs at Yellowstone National Park. Its heat stability was essential for developing automated PCR — earlier protocols used regular polymerase that was denatured every cycle and had to be re-added manually.",
+    "visualDescription": "Hot spring at Yellowstone with a Thermus aquaticus bacteria illustration and a PCR thermal cycler beside it",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Bacillus thuringiensis",
+      "E. coli",
+      "Sulfolobus acidocaldarius",
+      "Pyrococcus furiosus",
+      "Deinococcus radiodurans",
+      "Methanococcus jannaschii",
+      "Archaeoglobus fulgidus",
+      "Bacillus subtilis"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_074",
+    "correctAnswer": "PCR thermal cycling: denaturation at ~95°C, annealing at ~55°C, extension at ~72°C",
+    "acceptableAlternatives": [
+      "95°C denaturation, 55°C annealing, 72°C extension"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "What are the three temperatures used in each PCR thermal cycle and what happens at each step?",
+    "explanation": "In PCR: (1) ~95°C denaturation separates the double-stranded template DNA into single strands; (2) ~55°C annealing allows the specific oligonucleotide primers to bind their complementary sequences flanking the target; (3) ~72°C extension is the optimal temperature for Taq polymerase to synthesize new DNA from the primers.",
+    "visualDescription": "Temperature graph of one PCR cycle showing the three-step thermal profile: 95°C peak, 55°C valley, 72°C plateau",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "72°C denaturation, 95°C annealing, 55°C extension",
+      "95°C denaturation, 72°C annealing, 37°C extension",
+      "65°C denaturation, 45°C annealing, 72°C extension",
+      "100°C denaturation, 60°C annealing, 37°C extension",
+      "95°C denaturation, 55°C annealing, 37°C extension",
+      "85°C denaturation, 55°C annealing, 72°C extension",
+      "95°C denaturation, 40°C annealing, 65°C extension",
+      "37°C denaturation, 55°C annealing, 72°C extension"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_075",
+    "correctAnswer": "DNA cloning using a plasmid vector and E. coli host",
+    "acceptableAlternatives": [
+      "molecular cloning",
+      "DNA cloning"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What process uses restriction enzymes and DNA ligase to insert a gene of interest into a plasmid vector, which is then transformed into bacteria for propagation?",
+    "explanation": "In DNA cloning, restriction enzymes cut the gene of interest and a plasmid vector with the same enzyme to generate compatible sticky ends. DNA ligase seals the nicks to create recombinant plasmids. The plasmid is introduced into E. coli by transformation, and bacteria with the plasmid are selected on antibiotic plates. Bacterial replication produces millions of copies of the gene.",
+    "visualDescription": "Step-by-step cloning diagram: restriction digest → ligation → transformation → antibiotic selection of bacterial colonies",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "PCR amplification alone",
+      "CRISPR-Cas9 genome editing",
+      "RNA interference",
+      "Gel electrophoresis separation",
+      "Gel elution and sequencing",
+      "Transformation without a vector",
+      "Transduction using a bacteriophage only",
+      "Transposon-mediated gene insertion"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_076",
+    "correctAnswer": "Plasmid",
+    "acceptableAlternatives": [],
+    "chainThemeId": 13,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What is the small, circular, double-stranded DNA molecule used as a cloning vector in bacteria, which must contain an origin of replication and a selectable marker?",
+    "explanation": "Plasmids replicate independently of the bacterial chromosome using their own origin of replication. The selectable marker (commonly an antibiotic resistance gene) allows identification of bacteria that have successfully taken up the plasmid. Multiple cloning sites (MCS) contain restriction sites for inserting foreign DNA.",
+    "visualDescription": "Circular plasmid map showing origin of replication, antibiotic resistance gene, and multiple cloning site (MCS)",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Bacteriophage genome",
+      "Cosmid",
+      "Bacterial chromosome",
+      "YAC (yeast artificial chromosome)",
+      "Linear DNA vector",
+      "Retroviral vector",
+      "Transposon",
+      "Episome only (different from a plasmid)"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_077",
+    "correctAnswer": "CRISPR-Cas9",
+    "acceptableAlternatives": [
+      "CRISPR"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "quizQuestion": "Which genome-editing system uses a single guide RNA (sgRNA) to direct the Cas9 nuclease to make a precise double-strand break at a target DNA sequence in virtually any genome?",
+    "explanation": "CRISPR-Cas9 was adapted from a bacterial immune system. The sgRNA is designed to be complementary to the target DNA sequence. Cas9 binds the sgRNA and cuts both DNA strands at the target. The resulting double-strand break triggers cellular repair that can knock out a gene or, with a repair template, precisely edit it. CRISPR-Cas9 won the 2020 Nobel Prize in Chemistry for Doudna and Charpentier.",
+    "visualDescription": "CRISPR-Cas9 diagram showing the Cas9 protein, sgRNA guide, and the target DNA strand with the precise double-strand cut site",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "PCR amplification",
+      "Restriction enzyme cloning",
+      "Zinc finger nuclease editing",
+      "TALEN editing (similar but different)",
+      "siRNA-mediated gene silencing",
+      "DNA methylation editing",
+      "Retroviral gene therapy",
+      "Plasmid-based overexpression"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_078",
+    "correctAnswer": "DNA fingerprinting using short tandem repeat (STR) profiles",
+    "acceptableAlternatives": [
+      "DNA profiling",
+      "STR analysis"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "process_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Which biotechnology technique identifies individuals based on their unique pattern of short tandem repeats (STRs) at specific chromosomal loci — used in forensics, paternity testing, and population genetics?",
+    "explanation": "STRs (short tandem repeats) are regions of the genome where a short sequence (2-6 bp) is repeated a variable number of times. Because STR lengths are highly variable between individuals, the combination of STR profiles at ~20 loci is statistically unique to an individual (except identical twins). FBI's CODIS database uses 20 STR loci for forensic matching.",
+    "visualDescription": "Gel electrophoresis image comparing STR band patterns from a crime scene sample and multiple suspect samples",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "PCR amplification alone",
+      "Gel electrophoresis of restriction fragments only",
+      "Whole-genome sequencing comparison",
+      "Protein fingerprinting by mass spectrometry",
+      "CRISPR-based allele identification",
+      "RFLP analysis only",
+      "Blood type typing",
+      "Karyotyping"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_079",
+    "correctAnswer": "Bacillus thuringiensis (Bt toxin gene)",
+    "acceptableAlternatives": [
+      "Bacillus thuringiensis",
+      "B. thuringiensis"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "organism_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Which bacterium's insecticidal toxin gene has been engineered into Bt crop plants (corn, cotton) to provide resistance to specific insect pests?",
+    "explanation": "Bacillus thuringiensis produces a crystalline (Cry) protein that is toxic to specific insect larvae (e.g., corn borers, cotton bollworms) because it binds receptors in their midgut. Bt crops express the cry gene in their tissues. Bt toxins are considered safe for humans and most non-target organisms because the specific receptor is absent.",
+    "visualDescription": "Diagram of a Bt corn plant with the Bt toxin gene inserted in its genome, and a corn borer larva dying after consuming the plant tissue",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Thermus aquaticus",
+      "E. coli",
+      "Agrobacterium tumefaciens",
+      "Streptococcus pyogenes",
+      "Deinococcus radiodurans",
+      "Clostridium botulinum",
+      "Rhizobium leguminosarum",
+      "Pseudomonas fluorescens"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u6_080",
+    "correctAnswer": "Euchromatin is loosely packed and transcriptionally active; heterochromatin is tightly packed and transcriptionally silent",
+    "acceptableAlternatives": [
+      "euchromatin = active; heterochromatin = silent"
+    ],
+    "chainThemeId": 13,
+    "answerTypePoolId": "comparison_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "What is the functional difference between euchromatin and heterochromatin in gene regulation?",
+    "explanation": "Euchromatin is less condensed, associated with histone acetylation and low DNA methylation, and is accessible to transcription factors and RNA polymerase — meaning its genes can be actively expressed. Heterochromatin is highly condensed (associated with histone deacetylation and DNA methylation), and its genes are transcriptionally silenced. The inactive X chromosome (Barr body) is an example of facultative heterochromatin.",
+    "visualDescription": "Chromosome diagram showing a lightly staining euchromatic region (open DNA) beside a dark heterochromatic region (densely packed DNA)",
+    "sourceName": "OpenStax Biology 2e",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/16-introduction",
+    "distractors": [
+      "Euchromatin is tightly packed and silent; heterochromatin is loosely packed and active",
+      "Both types are equally accessible to transcription factors",
+      "Heterochromatin contains all active genes near centromeres",
+      "Euchromatin is found only at centromeres and telomeres",
+      "Euchromatin is transcribed only during S phase; heterochromatin during G1",
+      "Heterochromatin contains only tRNA genes",
+      "Euchromatin is methylated; heterochromatin is acetylated",
+      "Both are identical in transcriptional activity"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit6"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  }
+]

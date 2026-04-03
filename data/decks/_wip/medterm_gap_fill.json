@@ -1,0 +1,488 @@
+[
+  {
+    "id": "medterm_pre_amphi",
+    "correctAnswer": "Both, double, on both sides",
+    "acceptableAlternatives": [
+      "Both sides",
+      "Double",
+      "Around"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Half",
+      "Many",
+      "One",
+      "Three",
+      "New",
+      "False",
+      "Together",
+      "Without"
+    ],
+    "quizQuestion": "What does the prefix amphi- mean in medical terminology?",
+    "explanation": "Amphi- comes from Greek meaning 'on both sides' or 'around'. It appears in amphiarthrosis (a slightly movable joint where motion occurs on both sides, like the pubic symphysis), amphipathic (a molecule having both hydrophilic and hydrophobic regions), and amphicyte (a type of satellite cell surrounding neurons).",
+    "statement": "The prefix amphi- means both or on both sides.",
+    "wowFactor": "The pubic symphysis is an amphiarthrosis — it allows just enough movement on both sides to let the pelvis flex slightly during childbirth!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'on both sides' or 'double'?",
+        "correctAnswer": "Amphi-",
+        "distractors": [
+          "Hemi-",
+          "Mono-",
+          "Bi-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "An amphiarthrosis is a slightly movable joint. What does 'amphi-' indicate about this joint's movement?",
+        "correctAnswer": "Movement occurs on both sides",
+        "distractors": [
+          "The joint is completely fixed",
+          "The joint moves in only one direction",
+          "The joint allows free rotation"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "prefix", "position"]
+  },
+  {
+    "id": "medterm_pre_brachy",
+    "correctAnswer": "Short",
+    "acceptableAlternatives": [
+      "Short range",
+      "Brief"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Long",
+      "Slow",
+      "Wide",
+      "Fast",
+      "Small",
+      "Large",
+      "Narrow",
+      "Deep"
+    ],
+    "quizQuestion": "What does the prefix brachy- mean in medical terminology?",
+    "explanation": "Brachy- comes from Greek 'brachys' meaning short. It appears in brachytherapy (cancer treatment using short-range radiation from implanted radioactive seeds), brachydactyly (abnormally short fingers or toes), and brachycephalic (short, wide skull shape — common in certain dog breeds).",
+    "statement": "The prefix brachy- means short.",
+    "wowFactor": "Brachytherapy places tiny radioactive seeds directly inside a tumor — the 'short' in its name refers to the millimeter-range reach of the radiation, sparing surrounding healthy tissue!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'short'?",
+        "correctAnswer": "Brachy-",
+        "distractors": [
+          "Dolicho-",
+          "Macro-",
+          "Brady-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A patient receives brachytherapy for prostate cancer. What does 'brachy-' tell you about this radiation treatment?",
+        "correctAnswer": "It uses short-range radiation",
+        "distractors": [
+          "It is a brief one-session treatment",
+          "It uses low-energy X-rays from outside the body",
+          "It targets short tumors only"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "prefix", "size"]
+  },
+  {
+    "id": "medterm_pre_nulli",
+    "correctAnswer": "None, no",
+    "acceptableAlternatives": [
+      "None",
+      "Zero",
+      "No, none"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "prefix_meanings",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "One",
+      "Many",
+      "Few",
+      "All",
+      "Both",
+      "New",
+      "Again",
+      "First"
+    ],
+    "quizQuestion": "What does the prefix nulli- mean in medical terminology?",
+    "explanation": "Nulli- comes from Latin 'nullus' meaning none or not any. It appears in nullipara (a woman who has never given birth to a viable infant), nulligravida (a woman who has never been pregnant), and nulliparous (adjective describing a woman with no prior births). The prefix is used primarily in obstetrics and gynecology.",
+    "statement": "The prefix nulli- means none.",
+    "wowFactor": "Obstetrics uses a precise Latin number system: a nullipara has had zero births, a primipara one, a multipara several — each prefix is an exact obstetric history in a single word!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which medical prefix means 'none'?",
+        "correctAnswer": "Nulli-",
+        "distractors": [
+          "Primi-",
+          "Multi-",
+          "Uni-"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A patient is documented as a nullipara in her obstetric history. What does this mean?",
+        "correctAnswer": "She has never given birth to a viable infant",
+        "distractors": [
+          "She has given birth once",
+          "She has had multiple pregnancies",
+          "She has had no prenatal care"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "prefix", "quantity", "obstetrics"]
+  },
+  {
+    "id": "medterm_suf_cidal",
+    "correctAnswer": "Killing, destroying",
+    "acceptableAlternatives": [
+      "Kill",
+      "To kill",
+      "Destroys"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "suffix_meanings",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Inhibiting",
+      "Growing",
+      "Preventing",
+      "Treating",
+      "Detecting",
+      "Infecting",
+      "Rupturing",
+      "Softening"
+    ],
+    "quizQuestion": "What does the suffix -cidal (-cide) mean in medical terminology?",
+    "explanation": "The suffix -cidal (adjective form) and -cide (noun form) come from Latin 'caedere' meaning to kill or cut down. They appear in bactericidal (killing bacteria), fungicidal (killing fungi), virucidal (killing viruses), germicide (agent that kills germs), and suicide (killing oneself). A bacteriostatic drug only inhibits growth; a bactericidal drug actively kills.",
+    "statement": "The suffix -cidal / -cide means killing or destroying.",
+    "wowFactor": "Bacteriostatic vs. bactericidal is a critical clinical distinction — one halts bacterial growth while the other actively kills. The suffix -cidal literally tells you the agent kills!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which suffix indicates an agent that kills or destroys?",
+        "correctAnswer": "-cidal / -cide",
+        "distractors": [
+          "-static",
+          "-lytic",
+          "-penia"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A bactericidal antibiotic differs from a bacteriostatic one. What does '-cidal' tell you about the bactericidal drug's action?",
+        "correctAnswer": "It kills bacteria",
+        "distractors": [
+          "It stops bacteria from reproducing",
+          "It detects bacterial infection",
+          "It makes bacteria visible under a microscope"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "suffix", "pharmacology"]
+  },
+  {
+    "id": "medterm_suf_rrhexis",
+    "correctAnswer": "Rupture, breaking",
+    "acceptableAlternatives": [
+      "Rupture",
+      "Tearing",
+      "Bursting"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "suffix_meanings",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Flow",
+      "Discharge",
+      "Hardening",
+      "Softening",
+      "Narrowing",
+      "Dilation",
+      "Suture",
+      "Inflammation"
+    ],
+    "quizQuestion": "What does the suffix -rrhexis mean in medical terminology?",
+    "explanation": "-Rrhexis comes from Greek 'rhexis' meaning rupture or breaking. It appears in amniorrhexis (rupture of the amniotic membranes — 'water breaking'), cardiorrhexis (rupture of the heart wall, a catastrophic complication of myocardial infarction), hysterorrhexis (uterine rupture), and karyorrhexis (fragmentation of the cell nucleus during apoptosis).",
+    "statement": "The suffix -rrhexis means rupture or breaking.",
+    "wowFactor": "Amniorrhexis — the 'water breaking' of childbirth — literally means rupture of the amniotic membrane. The -rrhexis suffix turns an everyday phrase into a precise medical event!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which suffix means 'rupture' or 'breaking'?",
+        "correctAnswer": "-rrhexis",
+        "distractors": [
+          "-rrhea",
+          "-rrhaphy",
+          "-rrhagia"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Cardiorrhexis is a rare but fatal complication of heart attack. What does '-rrhexis' tell you about what happens to the heart?",
+        "correctAnswer": "The heart wall ruptures",
+        "distractors": [
+          "The heart muscle hardens",
+          "The heart enlarges",
+          "The heart beat becomes irregular"
+        ]
+      }
+    ],
+    "tags": ["medical_terminology", "suffix", "pathology"]
+  },
+  {
+    "id": "medterm_root_reticulo",
+    "correctAnswer": "Net, network",
+    "acceptableAlternatives": [
+      "Net-like",
+      "Network structure"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "adult",
+    "distractors": [
+      "Red",
+      "Cell",
+      "Mesh",
+      "Fiber",
+      "Thread",
+      "Muscle",
+      "Vessel",
+      "Bone"
+    ],
+    "quizQuestion": "What does the medical root reticul/o mean?",
+    "explanation": "Reticul/o comes from Latin 'reticulum' meaning small net. It appears in reticulocyte (an immature red blood cell whose remaining ribosomal RNA gives it a net-like appearance under staining), endoplasmic reticulum (the net-like membrane system inside cells), reticuloendothelial system (network of phagocytic cells), and reticular formation (network of neurons in the brainstem).",
+    "statement": "The root reticul/o means net or network.",
+    "wowFactor": "The endoplasmic reticulum — named for its net-like structure — is the cell's protein and lipid production factory. A reticulocyte gets its name from the net-like ribosome remnants visible when it is freshly released from bone marrow!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "A reticulocyte is an immature red blood cell named for the {___}-like pattern of its remaining ribosomes visible under staining.",
+        "correctAnswer": "Net",
+        "distractors": ["Star", "Ring", "Rod"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "cell_biology"]
+  },
+  {
+    "id": "medterm_root_schizo",
+    "correctAnswer": "Split, cleft",
+    "acceptableAlternatives": [
+      "Split",
+      "Divided",
+      "To split"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "adult",
+    "distractors": [
+      "Mind",
+      "Brain",
+      "Broken",
+      "Torn",
+      "Loose",
+      "Double",
+      "Confused",
+      "Scattered"
+    ],
+    "quizQuestion": "What does the medical root schiz/o mean?",
+    "explanation": "Schiz/o comes from Greek 'schizein' meaning to split or cleave. It appears in schizophrenia (literally 'split mind' — from schiz/o + phren meaning mind), schizocyte (a fragmented red blood cell), schizogony (asexual reproduction by splitting, used by malaria parasites), and schizoid (having a split or divided personality profile). Importantly, schizophrenia does not mean 'split personality' clinically — it refers to fragmented thinking.",
+    "statement": "The root schiz/o means split or cleft.",
+    "wowFactor": "Schizophrenia literally means 'split mind' in Greek — but the split refers to the fragmentation of thought, emotion, and perception, not to multiple personalities as popular culture often misunderstands!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Schizophrenia combines schiz/o ({___}) with phren (mind), reflecting the fragmented thinking characteristic of the disorder.",
+        "correctAnswer": "Split",
+        "distractors": ["Lost", "Diseased", "Abnormal"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "psychiatry"]
+  },
+  {
+    "id": "medterm_root_bucco",
+    "correctAnswer": "Cheek",
+    "acceptableAlternatives": [
+      "Of the cheek",
+      "Cheeks"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "adult",
+    "distractors": [
+      "Lip",
+      "Jaw",
+      "Mouth",
+      "Tongue",
+      "Gum",
+      "Tooth",
+      "Throat",
+      "Palate"
+    ],
+    "quizQuestion": "What does the medical root bucc/o mean?",
+    "explanation": "Bucc/o comes from Latin 'bucca' meaning cheek or mouth cavity. It appears in buccal (pertaining to the cheek or inside of the mouth), buccinator muscle (the cheek muscle used in chewing and blowing), buccal fat pad (Bichat's fat pad in the cheek), and buccal administration (placing medication between the cheek and gum for absorption).",
+    "statement": "The root bucc/o means cheek.",
+    "wowFactor": "Buccal drug administration — placing a tablet between your cheek and gum — uses the cheek's rich blood supply to absorb medication directly into the bloodstream, bypassing the digestive system entirely!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Buccal administration means placing medication in the {___}, between the gum and the inner surface, for sublingual-style absorption.",
+        "correctAnswer": "Cheek",
+        "distractors": ["Throat", "Lip", "Tongue"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "anatomy", "dentistry"]
+  },
+  {
+    "id": "medterm_root_ischio",
+    "correctAnswer": "Ischium, hip bone",
+    "acceptableAlternatives": [
+      "Ischium",
+      "Hip bone",
+      "Lower hip bone"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "adult",
+    "distractors": [
+      "Ilium",
+      "Femur",
+      "Sacrum",
+      "Pubis",
+      "Knee",
+      "Coccyx",
+      "Tibia",
+      "Hip joint"
+    ],
+    "quizQuestion": "What does the medical root ischi/o mean?",
+    "explanation": "Ischi/o comes from Greek 'ischion' meaning hip joint or the ischium bone. The ischium is the lower and back part of the hip bone (os coxae). It appears in ischialgia (pain in the ischium region, sometimes used synonymously with sciatica), ischiopubic (pertaining to both the ischium and pubis), ischiocavernosus muscle (muscle attaching to the ischium), and ischial tuberosity (the 'sitting bone').",
+    "statement": "The root ischi/o means ischium or hip bone.",
+    "wowFactor": "The ischial tuberosity — the bony protrusion you sit on — is literally called the 'sitting bone'. Every time you sit down, you are resting your weight on your ischi/o!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The ischial tuberosity is the bony projection of the {___} on which you bear your weight when sitting.",
+        "correctAnswer": "Ischium",
+        "distractors": ["Ilium", "Femur", "Sacrum"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "anatomy", "skeletal"]
+  },
+  {
+    "id": "medterm_root_lacto",
+    "correctAnswer": "Milk",
+    "acceptableAlternatives": [
+      "Of milk",
+      "Relating to milk"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "adult",
+    "distractors": [
+      "Sugar",
+      "Fat",
+      "Cream",
+      "Fluid",
+      "White",
+      "Breast",
+      "Gland",
+      "Protein"
+    ],
+    "quizQuestion": "What does the medical root lact/o mean?",
+    "explanation": "Lact/o comes from Latin 'lac' (genitive 'lactis') meaning milk. It appears in lactation (milk production and secretion), lactose (the sugar found in milk), lactalbumin (a milk protein), lactiferous ducts (ducts carrying milk in the breast), prolactin (the hormone that promotes milk production — from pro + lact + in), and lactic acid (first isolated from sour milk).",
+    "statement": "The root lact/o means milk.",
+    "wowFactor": "Prolactin literally means 'for milk' (pro = for, lact = milk) — it is the pituitary hormone that triggers milk production after childbirth, and its name tells you exactly what it does!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Prolactin is the hormone that promotes {___} production. Its name combines pro- (for) with the root lact/o ({___}) and the suffix -in.",
+        "correctAnswer": "Milk",
+        "distractors": ["Fat", "Sugar", "Protein"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "endocrinology", "reproduction"]
+  }
+]

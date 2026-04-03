@@ -1,0 +1,1082 @@
+[
+  {
+    "id": "medterm_root_cardio",
+    "correctAnswer": "Heart",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Lung", "Liver", "Kidney", "Brain", "Bone", "Stomach", "Blood vessel", "Nerve"],
+    "quizQuestion": "What does the combining form cardi/o mean?",
+    "explanation": "Cardi/o comes from Greek 'kardia' meaning heart. It appears in cardiology (study of the heart), cardiomegaly (enlarged heart), tachycardia (fast heart rate), and myocardium (heart muscle).",
+    "statement": "The combining form cardi/o means heart.",
+    "wowFactor": "Every 'cardio' workout is literally named after your heart — cardi/o is Greek for heart!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'heart'?",
+        "correctAnswer": "Cardi/o",
+        "distractors": ["Hepat/o", "Nephr/o", "Pulmon/o"]
+      },
+      {
+        "type": "context",
+        "question": "A cardiologist specializes in which organ?",
+        "correctAnswer": "Heart",
+        "distractors": ["Brain", "Lungs", "Kidneys"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "cardiovascular"],
+    "visualDescription": "A glowing root word 'CARDI/O' hovering over an anatomical heart illustration"
+  },
+  {
+    "id": "medterm_root_angio",
+    "correctAnswer": "Blood vessel",
+    "acceptableAlternatives": ["Vessel"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Heart", "Lung", "Nerve", "Bone", "Liver", "Kidney", "Muscle", "Skin"],
+    "quizQuestion": "What does the combining form angi/o mean?",
+    "explanation": "Angi/o comes from Greek 'angeion' meaning vessel or container. It appears in angiography (imaging of blood vessels), angioplasty (repair of blood vessels), and angioma (a tumor made of blood vessels).",
+    "statement": "The combining form angi/o means blood vessel.",
+    "wowFactor": "Angiography lets doctors see inside your blood vessels by injecting dye — angi/o literally means 'vessel' in Greek!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'blood vessel'?",
+        "correctAnswer": "Angi/o",
+        "distractors": ["Cardi/o", "Hem/o", "Vas/o"]
+      },
+      {
+        "type": "context",
+        "question": "An angiogram is an image of which structure?",
+        "correctAnswer": "Blood vessel",
+        "distractors": ["Heart chamber", "Bone", "Nerve"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "cardiovascular"],
+    "visualDescription": "The root word 'ANGI/O' with branching vessel illustrations in red and blue"
+  },
+  {
+    "id": "medterm_root_arterio",
+    "correctAnswer": "Artery",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Vein", "Nerve", "Muscle", "Heart", "Lung", "Bone", "Skin", "Kidney"],
+    "quizQuestion": "What does the combining form arteri/o mean?",
+    "explanation": "Arteri/o comes from Greek 'arteria' meaning artery (windpipe or artery). It appears in arteriosclerosis (hardening of arteries), arteriotomy (surgical incision into an artery), and arteriole (a small artery).",
+    "statement": "The combining form arteri/o means artery.",
+    "wowFactor": "Ancient Greeks thought arteries carried air, not blood — 'arteria' originally meant windpipe before they understood circulation!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'artery'?",
+        "correctAnswer": "Arteri/o",
+        "distractors": ["Phleb/o", "Ven/o", "Angi/o"]
+      },
+      {
+        "type": "context",
+        "question": "Arteriosclerosis is the hardening of which structures?",
+        "correctAnswer": "Arteries",
+        "distractors": ["Veins", "Bones", "Nerves"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "cardiovascular"],
+    "visualDescription": "The root 'ARTERI/O' over a cross-section of an artery showing thick muscular walls"
+  },
+  {
+    "id": "medterm_root_phlebo",
+    "correctAnswer": "Vein",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Artery", "Heart", "Nerve", "Muscle", "Bone", "Lung", "Kidney", "Skin"],
+    "quizQuestion": "What does the combining form phleb/o mean?",
+    "explanation": "Phleb/o comes from Greek 'phleps' meaning vein. It appears in phlebotomy (drawing blood from a vein), phlebitis (inflammation of a vein), and phlebectomy (surgical removal of a vein). Note: ven/o is a Latin synonym also meaning vein.",
+    "statement": "The combining form phleb/o means vein.",
+    "wowFactor": "Phlebotomists who draw your blood are named after phleb/o (vein) — the 'blood-letters' of the ancient world used the same root!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the Greek-origin combining form for 'vein'?",
+        "correctAnswer": "Phleb/o",
+        "distractors": ["Arteri/o", "Angi/o", "Vas/o"]
+      },
+      {
+        "type": "context",
+        "question": "A phlebotomist is a specialist who works with which vessels?",
+        "correctAnswer": "Veins",
+        "distractors": ["Arteries", "Lymph vessels", "Capillaries"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "cardiovascular"],
+    "visualDescription": "The root 'PHLEB/O' over a blue vein cross-section with thin walls"
+  },
+  {
+    "id": "medterm_root_veno",
+    "correctAnswer": "Vein",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Artery", "Heart", "Nerve", "Muscle", "Bone", "Lung", "Kidney", "Skin"],
+    "quizQuestion": "What does the combining form ven/o mean?",
+    "explanation": "Ven/o comes from Latin 'vena' meaning vein. It appears in venous (relating to veins), venipuncture (piercing a vein), and intravenous (within a vein, abbreviated IV). Note: phleb/o is the Greek synonym also meaning vein.",
+    "statement": "The combining form ven/o means vein.",
+    "wowFactor": "When a nurse gives you an IV (intravenous) drip, the 'ven' is Latin for vein — you're getting medicine directly into your vena!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the Latin-origin combining form for 'vein'?",
+        "correctAnswer": "Ven/o",
+        "distractors": ["Arteri/o", "Angi/o", "Phleb/o"]
+      },
+      {
+        "type": "context",
+        "question": "Intravenous (IV) medication is delivered directly into which vessel?",
+        "correctAnswer": "Vein",
+        "distractors": ["Artery", "Capillary", "Lymph duct"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "cardiovascular"],
+    "visualDescription": "The root 'VEN/O' beside a syringe inserted into a blue vein illustration"
+  },
+  {
+    "id": "medterm_root_hemo",
+    "correctAnswer": "Blood",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Heart", "Lung", "Liver", "Vein", "Bone", "Kidney", "Nerve", "Skin"],
+    "quizQuestion": "What does the combining form hem/o mean?",
+    "explanation": "Hem/o comes from Greek 'haima' meaning blood. It appears in hemoglobin (blood protein that carries oxygen), hemophilia (inability of blood to clot), and hemorrhage (excessive bleeding). Hemat/o is an alternate form of the same root.",
+    "statement": "The combining form hem/o means blood.",
+    "wowFactor": "Hemoglobin — the protein making your blood red — literally contains hem/o (blood) in its name!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'blood' (Greek, short form)?",
+        "correctAnswer": "Hem/o",
+        "distractors": ["Cardi/o", "Phleb/o", "Thromb/o"]
+      },
+      {
+        "type": "context",
+        "question": "Hemophilia is a disorder affecting which substance in the body?",
+        "correctAnswer": "Blood",
+        "distractors": ["Bone marrow", "Lymph fluid", "Stomach acid"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "cardiovascular"],
+    "visualDescription": "The root 'HEM/O' over a red blood cell illustration with the Greek letters highlighted"
+  },
+  {
+    "id": "medterm_root_hemato",
+    "correctAnswer": "Blood",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Heart", "Lung", "Liver", "Vein", "Bone", "Kidney", "Nerve", "Skin"],
+    "quizQuestion": "What does the combining form hemat/o mean?",
+    "explanation": "Hemat/o comes from Greek 'haimatos' (genitive of haima) meaning blood. It appears in hematology (study of blood), hematoma (a bruise or blood clot under skin), and hematopoiesis (formation of blood cells). Hem/o is the shorter alternate form.",
+    "statement": "The combining form hemat/o means blood.",
+    "wowFactor": "A hematologist studies blood diseases — hemat/o is the full Greek genitive form of haima, giving us a longer but equally 'bloody' root!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'blood' (Greek, long form)?",
+        "correctAnswer": "Hemat/o",
+        "distractors": ["Thromb/o", "Phleb/o", "Angi/o"]
+      },
+      {
+        "type": "context",
+        "question": "A hematologist is a specialist in the study of which body fluid?",
+        "correctAnswer": "Blood",
+        "distractors": ["Lymph", "Urine", "Cerebrospinal fluid"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "cardiovascular"],
+    "visualDescription": "The root 'HEMAT/O' over a microscope slide showing blood cells"
+  },
+  {
+    "id": "medterm_root_thrombo",
+    "correctAnswer": "Clot",
+    "acceptableAlternatives": ["Blood clot"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Blood", "Vein", "Heart", "Lung", "Nerve", "Bone", "Skin", "Vessel"],
+    "quizQuestion": "What does the combining form thromb/o mean?",
+    "explanation": "Thromb/o comes from Greek 'thrombos' meaning lump or clot. It appears in thrombosis (formation of a blood clot), thrombocyte (platelet — a clot-forming blood cell), and thrombolysis (breaking down a clot).",
+    "statement": "The combining form thromb/o means clot.",
+    "wowFactor": "DVT (deep vein thrombosis) gets its scary name from thromb/o — Greek for 'clot.' Knowing the root tells you exactly what's happening!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'clot'?",
+        "correctAnswer": "Thromb/o",
+        "distractors": ["Hem/o", "Ather/o", "Phleb/o"]
+      },
+      {
+        "type": "context",
+        "question": "Thrombosis is the formation of which pathological structure in a blood vessel?",
+        "correctAnswer": "Clot",
+        "distractors": ["Plaque", "Tumor", "Abscess"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "cardiovascular"],
+    "visualDescription": "The root 'THROMB/O' over a diagram of a clot blocking a blood vessel"
+  },
+  {
+    "id": "medterm_root_athero",
+    "correctAnswer": "Fatty plaque",
+    "acceptableAlternatives": ["Plaque", "Fatty deposit"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Clot", "Blood", "Heart", "Bone", "Nerve", "Muscle", "Skin", "Lymph"],
+    "quizQuestion": "What does the combining form ather/o mean?",
+    "explanation": "Ather/o comes from Greek 'athere' meaning gruel or porridge — describing the soft, paste-like fatty deposits. It appears in atherosclerosis (hardening due to fatty plaques), atherogenesis (formation of plaques), and atherectomy (surgical removal of plaque).",
+    "statement": "The combining form ather/o means fatty plaque.",
+    "wowFactor": "Ather/o comes from the Greek word for 'porridge' — ancient Greeks noticed that arterial plaques looked like mushy gruel inside the vessels!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'fatty plaque'?",
+        "correctAnswer": "Ather/o",
+        "distractors": ["Thromb/o", "Scler/o", "Lip/o"]
+      },
+      {
+        "type": "context",
+        "question": "Atherosclerosis refers to hardening of the arteries caused by buildup of what?",
+        "correctAnswer": "Fatty plaque",
+        "distractors": ["Blood clots", "Calcium crystals", "Scar tissue"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "cardiovascular"],
+    "visualDescription": "The root 'ATHER/O' over a cross-section of an artery with yellow plaque deposits on the inner wall"
+  },
+  {
+    "id": "medterm_root_aorto",
+    "correctAnswer": "Aorta",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Heart", "Vein", "Artery", "Lung", "Kidney", "Liver", "Nerve", "Valve"],
+    "quizQuestion": "What does the combining form aort/o mean?",
+    "explanation": "Aort/o comes from Greek 'aorte' meaning aorta — from 'aeirein' (to lift or carry). It appears in aortography (imaging of the aorta), aortic stenosis (narrowing of the aortic valve), and aortoplasty (surgical repair of the aorta).",
+    "statement": "The combining form aort/o means aorta.",
+    "wowFactor": "The aorta is the body's largest artery — aort/o comes from Greek 'to lift,' because it carries blood upward from the heart!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'aorta'?",
+        "correctAnswer": "Aort/o",
+        "distractors": ["Cardi/o", "Arteri/o", "Angi/o"]
+      },
+      {
+        "type": "context",
+        "question": "Aortic stenosis is a narrowing of a valve connected to which vessel?",
+        "correctAnswer": "Aorta",
+        "distractors": ["Pulmonary artery", "Vena cava", "Coronary artery"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "cardiovascular"],
+    "visualDescription": "The root 'AORT/O' with an anatomical diagram of the aorta arching from the heart"
+  },
+  {
+    "id": "medterm_root_valvulo",
+    "correctAnswer": "Valve",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Heart", "Vein", "Artery", "Lung", "Muscle", "Bone", "Nerve", "Clot"],
+    "quizQuestion": "What does the combining form valvul/o mean?",
+    "explanation": "Valvul/o comes from Latin 'valvula' meaning small valve (diminutive of 'valva,' a door panel). It appears in valvuloplasty (surgical repair of a heart valve), valvulitis (inflammation of a valve), and valvulotomy (incision into a valve).",
+    "statement": "The combining form valvul/o means valve.",
+    "wowFactor": "Heart valves work like tiny doors — valvul/o comes from Latin 'valva' meaning door panel, perfectly describing how valves open and close!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'valve'?",
+        "correctAnswer": "Valvul/o",
+        "distractors": ["Aort/o", "Sept/o", "Cardi/o"]
+      },
+      {
+        "type": "context",
+        "question": "Valvuloplasty is a surgical procedure to repair which cardiac structure?",
+        "correctAnswer": "Valve",
+        "distractors": ["Chamber wall", "Septum", "Coronary artery"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "cardiovascular"],
+    "visualDescription": "The root 'VALVUL/O' above an illustration of the four heart valves in open and closed positions"
+  },
+  {
+    "id": "medterm_root_sphygmo",
+    "correctAnswer": "Pulse",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": ["Blood", "Heart", "Breath", "Vein", "Pressure", "Nerve", "Muscle", "Bone"],
+    "quizQuestion": "What does the combining form sphygm/o mean?",
+    "explanation": "Sphygm/o comes from Greek 'sphygmos' meaning pulse. It appears in sphygmomanometer (blood pressure cuff — a device measuring the arterial pulse), sphygmogram (a graphical recording of the pulse), and sphygmology (study of the pulse).",
+    "statement": "The combining form sphygm/o means pulse.",
+    "wowFactor": "The word 'sphygmomanometer' — that blood pressure cuff — hides sphygm/o (pulse) inside it. It's one of medicine's most unpronounceable words!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'pulse'?",
+        "correctAnswer": "Sphygm/o",
+        "distractors": ["Cardi/o", "Rythm/o", "Angi/o"]
+      },
+      {
+        "type": "context",
+        "question": "A sphygmomanometer is a device used to measure what?",
+        "correctAnswer": "Blood pressure (pulse)",
+        "distractors": ["Heart rate only", "Oxygen saturation", "Respiratory rate"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "cardiovascular"],
+    "visualDescription": "The root 'SPHYGM/O' with a blood pressure cuff and waveform display showing a pulse reading"
+  },
+  {
+    "id": "medterm_root_vaso",
+    "correctAnswer": "Vessel",
+    "acceptableAlternatives": ["Blood vessel"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Heart", "Nerve", "Lung", "Bone", "Muscle", "Skin", "Kidney", "Clot"],
+    "quizQuestion": "What does the combining form vas/o mean?",
+    "explanation": "Vas/o comes from Latin 'vas' meaning vessel or duct. It appears in vasodilation (widening of blood vessels), vasoconstriction (narrowing of blood vessels), vasectomy (cutting of the vas deferens duct), and cardiovascular (relating to heart and vessels).",
+    "statement": "The combining form vas/o means vessel.",
+    "wowFactor": "Vas/o gives us vasodilation AND vasectomy — the same root covers blood vessels and reproductive ducts because both are tubular vessel-like structures!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'vessel' (Latin origin)?",
+        "correctAnswer": "Vas/o",
+        "distractors": ["Angi/o", "Phleb/o", "Arteri/o"]
+      },
+      {
+        "type": "context",
+        "question": "Vasodilation refers to the widening of which structures?",
+        "correctAnswer": "Blood vessels",
+        "distractors": ["Airways", "Lymph nodes", "Heart chambers"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "cardiovascular"],
+    "visualDescription": "The root 'VAS/O' over branching vessel diagrams with arrows showing dilation and constriction"
+  },
+  {
+    "id": "medterm_root_corono",
+    "correctAnswer": "Crown",
+    "acceptableAlternatives": ["Heart", "Crown/heart"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": ["Vessel", "Valve", "Artery", "Lung", "Bone", "Nerve", "Muscle", "Skin"],
+    "quizQuestion": "What does the combining form coron/o mean?",
+    "explanation": "Coron/o comes from Latin 'corona' meaning crown. The coronary arteries are so named because they encircle the heart like a crown. It appears in coronary artery disease, coronary bypass surgery, and coronavirus (so named for its crown-like spike proteins).",
+    "statement": "The combining form coron/o means crown.",
+    "wowFactor": "Coronavirus gets its name from coron/o (crown) — its spike proteins look like a royal crown under an electron microscope. Same root as coronary arteries!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'crown'?",
+        "correctAnswer": "Coron/o",
+        "distractors": ["Cardi/o", "Valvul/o", "Aort/o"]
+      },
+      {
+        "type": "context",
+        "question": "Why are the coronary arteries named after a crown?",
+        "correctAnswer": "They encircle the heart like a crown",
+        "distractors": ["They supply the brain", "They have a crown-shaped cross-section", "They were discovered by a king"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "cardiovascular"],
+    "visualDescription": "The root 'CORON/O' above a heart with the coronary arteries highlighted encircling it like a crown"
+  },
+  {
+    "id": "medterm_root_septo",
+    "correctAnswer": "Septum",
+    "acceptableAlternatives": ["Partition", "Wall"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Valve", "Chamber", "Artery", "Vein", "Nerve", "Bone", "Lung", "Muscle"],
+    "quizQuestion": "What does the combining form sept/o mean?",
+    "explanation": "Sept/o comes from Latin 'septum' meaning partition or dividing wall. It appears in septal defect (a hole in the heart's dividing wall), septoplasty (surgical repair of the nasal septum), and ventricular septal defect (VSD), a congenital heart condition.",
+    "statement": "The combining form sept/o means septum.",
+    "wowFactor": "A 'hole in the heart' is technically a septal defect — sept/o means partition because the septum divides the heart's chambers like a wall!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'septum' or 'partition'?",
+        "correctAnswer": "Sept/o",
+        "distractors": ["Valvul/o", "Cardi/o", "Aort/o"]
+      },
+      {
+        "type": "context",
+        "question": "A ventricular septal defect (VSD) is a hole in which cardiac structure?",
+        "correctAnswer": "Septum (dividing wall between ventricles)",
+        "distractors": ["Heart valve", "Coronary artery", "Aortic wall"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "cardiovascular"],
+    "visualDescription": "The root 'SEPT/O' with a heart cross-section showing the septum dividing left and right chambers"
+  },
+  {
+    "id": "medterm_root_pulmono",
+    "correctAnswer": "Lung",
+    "acceptableAlternatives": ["Lungs"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Heart", "Bronchus", "Trachea", "Nose", "Liver", "Kidney", "Stomach", "Skin"],
+    "quizQuestion": "What does the combining form pulmon/o mean?",
+    "explanation": "Pulmon/o comes from Latin 'pulmo' meaning lung. It appears in pulmonology (medical specialty for lungs), pulmonary embolism (blood clot in the lungs), and pulmonary hypertension (high blood pressure in the lungs).",
+    "statement": "The combining form pulmon/o means lung.",
+    "wowFactor": "A pulmonologist treats your lungs — pulmon/o is Latin for lung, the same root hiding inside 'pulmonary' on your medical chart!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the Latin-origin combining form for 'lung'?",
+        "correctAnswer": "Pulmon/o",
+        "distractors": ["Pneumon/o", "Bronch/o", "Thorac/o"]
+      },
+      {
+        "type": "context",
+        "question": "Pulmonary embolism refers to a blood clot affecting which organ?",
+        "correctAnswer": "Lung",
+        "distractors": ["Heart", "Kidney", "Brain"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "respiratory"],
+    "visualDescription": "The root 'PULMON/O' over an anatomical illustration of two inflated lungs"
+  },
+  {
+    "id": "medterm_root_pneumono",
+    "correctAnswer": "Lung",
+    "acceptableAlternatives": ["Lungs"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Bronchus", "Trachea", "Heart", "Nose", "Pleura", "Diaphragm", "Liver", "Kidney"],
+    "quizQuestion": "What does the combining form pneumon/o mean?",
+    "explanation": "Pneumon/o comes from Greek 'pneumon' meaning lung. It appears in pneumonia (lung infection), pneumonectomy (surgical removal of a lung), and pneumoconiosis (lung disease from inhaling dust). Note: pneum/o is a shorter alternate form meaning air or lung.",
+    "statement": "The combining form pneumon/o means lung.",
+    "wowFactor": "Pneumonia literally means 'lung condition' — pneumon/o is the Greek root for lung, making the disease name a direct translation of what's affected!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the Greek combining form for 'lung' (long form)?",
+        "correctAnswer": "Pneumon/o",
+        "distractors": ["Pulmon/o", "Bronch/o", "Pleur/o"]
+      },
+      {
+        "type": "context",
+        "question": "Pneumonia is an infection of which organ?",
+        "correctAnswer": "Lung",
+        "distractors": ["Bronchus", "Trachea", "Pleura"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "respiratory"],
+    "visualDescription": "The root 'PNEUMON/O' with a glowing lung illustration and Greek letters"
+  },
+  {
+    "id": "medterm_root_broncho",
+    "correctAnswer": "Bronchus",
+    "acceptableAlternatives": ["Bronchi", "Airway"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Lung", "Trachea", "Larynx", "Nose", "Pleura", "Heart", "Stomach", "Kidney"],
+    "quizQuestion": "What does the combining form bronch/o mean?",
+    "explanation": "Bronch/o comes from Greek 'bronchos' meaning windpipe or bronchus. It appears in bronchitis (inflammation of the bronchi), bronchoscopy (visual exam of the bronchi), and bronchodilator (medication that widens the airways).",
+    "statement": "The combining form bronch/o means bronchus.",
+    "wowFactor": "Bronchodilators in asthma inhalers literally 'dilate the bronchus' — bronch/o tells you exactly which airway is being opened up!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'bronchus'?",
+        "correctAnswer": "Bronch/o",
+        "distractors": ["Trache/o", "Laryng/o", "Pulmon/o"]
+      },
+      {
+        "type": "context",
+        "question": "Bronchitis is inflammation of which airway structure?",
+        "correctAnswer": "Bronchi",
+        "distractors": ["Trachea", "Alveoli", "Larynx"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "respiratory"],
+    "visualDescription": "The root 'BRONCH/O' over a respiratory tree diagram with bronchi highlighted in orange"
+  },
+  {
+    "id": "medterm_root_pneumo",
+    "correctAnswer": "Air",
+    "acceptableAlternatives": ["Air/lung", "Lung"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Blood", "Water", "Breath", "Lung", "Oxygen", "Gas", "Heart", "Fluid"],
+    "quizQuestion": "What does the combining form pneum/o primarily mean?",
+    "explanation": "Pneum/o comes from Greek 'pneuma' meaning air, breath, or spirit. In medical terms it can mean air OR lung. It appears in pneumothorax (air in the chest cavity), pneumococcus (lung bacterium), and pneumatic (operated by air pressure).",
+    "statement": "The combining form pneum/o means air (or lung).",
+    "wowFactor": "Pneuma meant 'breath' or even 'spirit' in ancient Greek philosophy — pneum/o carries this dual sense of air and life into modern medicine!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'air' (as in pneumothorax)?",
+        "correctAnswer": "Pneum/o",
+        "distractors": ["Ox/i", "Capn/o", "Spir/o"]
+      },
+      {
+        "type": "context",
+        "question": "A pneumothorax is a dangerous buildup of what in the chest cavity?",
+        "correctAnswer": "Air",
+        "distractors": ["Blood", "Fluid", "Pus"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "respiratory"],
+    "visualDescription": "The root 'PNEUM/O' with a chest X-ray showing a collapsed lung with air space"
+  },
+  {
+    "id": "medterm_root_laryngo",
+    "correctAnswer": "Larynx",
+    "acceptableAlternatives": ["Voice box"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Pharynx", "Trachea", "Bronchus", "Lung", "Nose", "Esophagus", "Sinus", "Epiglottis"],
+    "quizQuestion": "What does the combining form laryng/o mean?",
+    "explanation": "Laryng/o comes from Greek 'larynx' meaning upper part of the windpipe or voice box. It appears in laryngitis (inflammation of the larynx), laryngoscopy (visual examination of the larynx), and laryngectomy (surgical removal of the larynx).",
+    "statement": "The combining form laryng/o means larynx.",
+    "wowFactor": "Laryngitis makes you lose your voice because laryng/o is the larynx — your voice box. Inflammation swells the vocal cords closed!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'larynx' (voice box)?",
+        "correctAnswer": "Laryng/o",
+        "distractors": ["Pharyng/o", "Trache/o", "Bronch/o"]
+      },
+      {
+        "type": "context",
+        "question": "Laryngitis is an inflammation of which structure?",
+        "correctAnswer": "Larynx (voice box)",
+        "distractors": ["Pharynx (throat)", "Trachea (windpipe)", "Epiglottis"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "respiratory"],
+    "visualDescription": "The root 'LARYNG/O' over an anatomical illustration of the larynx and vocal cords"
+  },
+  {
+    "id": "medterm_root_tracheo",
+    "correctAnswer": "Trachea",
+    "acceptableAlternatives": ["Windpipe"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Larynx", "Bronchus", "Pharynx", "Lung", "Esophagus", "Nose", "Sinus", "Epiglottis"],
+    "quizQuestion": "What does the combining form trache/o mean?",
+    "explanation": "Trache/o comes from Greek 'tracheia arteria' meaning rough artery (windpipe). It appears in tracheotomy (surgical incision into the trachea to create an airway), tracheitis (inflammation of the trachea), and tracheomalacia (softening of the tracheal cartilage).",
+    "statement": "The combining form trache/o means trachea.",
+    "wowFactor": "A tracheotomy cuts into the trache/o (trachea/windpipe) to create an emergency airway — it's one of medicine's oldest life-saving procedures!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'trachea' (windpipe)?",
+        "correctAnswer": "Trache/o",
+        "distractors": ["Laryng/o", "Bronch/o", "Pharyng/o"]
+      },
+      {
+        "type": "context",
+        "question": "A tracheotomy is a surgical incision into which airway structure?",
+        "correctAnswer": "Trachea (windpipe)",
+        "distractors": ["Larynx", "Bronchus", "Pharynx"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "respiratory"],
+    "visualDescription": "The root 'TRACHE/O' over an anatomical diagram of the trachea with its C-shaped cartilage rings"
+  },
+  {
+    "id": "medterm_root_pharyngo",
+    "correctAnswer": "Pharynx",
+    "acceptableAlternatives": ["Throat"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Larynx", "Trachea", "Esophagus", "Bronchus", "Nose", "Sinus", "Lung", "Epiglottis"],
+    "quizQuestion": "What does the combining form pharyng/o mean?",
+    "explanation": "Pharyng/o comes from Greek 'pharynx' meaning throat or gullet. It appears in pharyngitis (sore throat, inflammation of the pharynx), pharyngoscopy (examination of the throat), and nasopharynx (the region where nasal passages meet the pharynx).",
+    "statement": "The combining form pharyng/o means pharynx.",
+    "wowFactor": "Pharyngitis is the medical term for a sore throat — pharyng/o means pharynx (throat), so pharyngitis is literally 'throat inflammation'!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'pharynx' (throat)?",
+        "correctAnswer": "Pharyng/o",
+        "distractors": ["Laryng/o", "Trache/o", "Nas/o"]
+      },
+      {
+        "type": "context",
+        "question": "Pharyngitis is the clinical term for what common ailment?",
+        "correctAnswer": "Sore throat",
+        "distractors": ["Runny nose", "Ear infection", "Laryngitis"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "respiratory"],
+    "visualDescription": "The root 'PHARYNG/O' with an illustration of the throat anatomy showing the pharynx region"
+  },
+  {
+    "id": "medterm_root_naso",
+    "correctAnswer": "Nose",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Throat", "Sinus", "Larynx", "Lung", "Mouth", "Ear", "Eye", "Skin"],
+    "quizQuestion": "What does the combining form nas/o mean?",
+    "explanation": "Nas/o comes from Latin 'nasus' meaning nose. It appears in nasal (relating to the nose), nasopharynx (throat region behind the nose), nasogastric tube (tube through nose to stomach), and nasal septum (the dividing wall of the nose). Rhin/o is the Greek synonym.",
+    "statement": "The combining form nas/o means nose.",
+    "wowFactor": "A nasogastric (NG) tube goes from the nas/o (nose) all the way to the stomach — nas/o is Latin for nose, the same root hiding in 'nasal spray'!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the Latin-origin combining form for 'nose'?",
+        "correctAnswer": "Nas/o",
+        "distractors": ["Rhin/o", "Sinus/o", "Or/o"]
+      },
+      {
+        "type": "context",
+        "question": "A nasogastric tube is inserted through which facial structure?",
+        "correctAnswer": "Nose",
+        "distractors": ["Mouth", "Throat", "Ear"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "respiratory"],
+    "visualDescription": "The root 'NAS/O' above a side-profile illustration of the nasal anatomy"
+  },
+  {
+    "id": "medterm_root_rhino",
+    "correctAnswer": "Nose",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": ["Throat", "Sinus", "Larynx", "Lung", "Mouth", "Ear", "Eye", "Skin"],
+    "quizQuestion": "What does the combining form rhin/o mean?",
+    "explanation": "Rhin/o comes from Greek 'rhis/rhinos' meaning nose. It appears in rhinitis (inflammation of the nose, i.e. a stuffy nose), rhinoplasty (cosmetic nose surgery), and rhinovirus (the common cold virus named for infecting nasal passages). Nas/o is the Latin synonym.",
+    "statement": "The combining form rhin/o means nose.",
+    "wowFactor": "Rhinoplasty (a 'nose job') literally means reshaping the rhin/o (nose) — and a rhinoceros has a rhin/o (nose) with a keras (horn) on it!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the Greek-origin combining form for 'nose'?",
+        "correctAnswer": "Rhin/o",
+        "distractors": ["Nas/o", "Pharyng/o", "Sinus/o"]
+      },
+      {
+        "type": "context",
+        "question": "Rhinitis causes inflammation and congestion of which structure?",
+        "correctAnswer": "Nose",
+        "distractors": ["Throat", "Sinuses", "Bronchi"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "respiratory"],
+    "visualDescription": "The root 'RHIN/O' with a cartoon rhinoceros whose prominent horn-nose highlights the word origin"
+  },
+  {
+    "id": "medterm_root_pleuro",
+    "correctAnswer": "Pleura",
+    "acceptableAlternatives": ["Side", "Rib"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Lung", "Chest wall", "Diaphragm", "Bronchus", "Heart", "Spine", "Muscle", "Skin"],
+    "quizQuestion": "What does the combining form pleur/o mean?",
+    "explanation": "Pleur/o comes from Greek 'pleura' meaning rib or side. In medicine it refers to the pleural membranes lining the lungs and chest cavity. It appears in pleuritis/pleurisy (inflammation of the pleural membrane), pleural effusion (fluid around the lungs), and pneumopleural fistula.",
+    "statement": "The combining form pleur/o means pleura.",
+    "wowFactor": "Pleurisy — the painful condition where every breath hurts — takes its name from pleur/o, meaning the pleural membranes that rub together when inflamed!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'pleura'?",
+        "correctAnswer": "Pleur/o",
+        "distractors": ["Thorac/o", "Pulmon/o", "Pneum/o"]
+      },
+      {
+        "type": "context",
+        "question": "Pleural effusion is an accumulation of fluid around which organ?",
+        "correctAnswer": "Lung",
+        "distractors": ["Heart", "Kidney", "Liver"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "respiratory"],
+    "visualDescription": "The root 'PLEUR/O' with a chest diagram showing the pleural membrane lining the lung and chest wall"
+  },
+  {
+    "id": "medterm_root_thoraco",
+    "correctAnswer": "Chest",
+    "acceptableAlternatives": ["Thorax"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Lung", "Abdomen", "Back", "Heart", "Rib", "Spine", "Shoulder", "Neck"],
+    "quizQuestion": "What does the combining form thorac/o mean?",
+    "explanation": "Thorac/o comes from Greek 'thorax' meaning chest or breastplate. It appears in thoracotomy (surgical incision into the chest), thoracoscopy (visual examination of the chest cavity), and thoracocentesis (needle drainage of fluid from the chest).",
+    "statement": "The combining form thorac/o means chest.",
+    "wowFactor": "Ancient Greek armor was called a 'thorax' — the same word we use for the chest cavity. Thorac/o preserves this warrior's breastplate in medical language!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'chest' or 'thorax'?",
+        "correctAnswer": "Thorac/o",
+        "distractors": ["Pleur/o", "Pulmon/o", "Stern/o"]
+      },
+      {
+        "type": "context",
+        "question": "A thoracotomy is a surgical incision into which region of the body?",
+        "correctAnswer": "Chest",
+        "distractors": ["Abdomen", "Back", "Neck"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "respiratory"],
+    "visualDescription": "The root 'THORAC/O' above a skeleton diagram with the chest/rib cage highlighted in gold"
+  },
+  {
+    "id": "medterm_root_oxi",
+    "correctAnswer": "Oxygen",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Carbon dioxide", "Nitrogen", "Hydrogen", "Blood", "Air", "Breath", "Lung", "Glucose"],
+    "quizQuestion": "What does the combining form ox/i mean?",
+    "explanation": "Ox/i comes from Greek 'oxys' meaning sharp, acid, or swift — which gave us oxygen (the element that creates acids). In medical terms it refers to oxygen. It appears in oximetry (measuring blood oxygen), hypoxia (low oxygen), and pulse oximeter (device clipping on your finger to measure oxygen saturation).",
+    "statement": "The combining form ox/i means oxygen.",
+    "wowFactor": "The pulse oximeter clipped to your finger during surgery uses ox/i (oxygen) in its name — it measures how saturated your blood is with oxygen!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'oxygen'?",
+        "correctAnswer": "Ox/i",
+        "distractors": ["Capn/o", "Pneum/o", "Spir/o"]
+      },
+      {
+        "type": "context",
+        "question": "Hypoxia is a medical condition caused by insufficient levels of what?",
+        "correctAnswer": "Oxygen",
+        "distractors": ["Carbon dioxide", "Blood glucose", "Water"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "respiratory"],
+    "visualDescription": "The root 'OX/I' with a pulse oximeter reading showing SpO2 percentage and an oxygen molecule"
+  },
+  {
+    "id": "medterm_root_capno",
+    "correctAnswer": "Carbon dioxide",
+    "acceptableAlternatives": ["CO2"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Oxygen", "Nitrogen", "Hydrogen", "Blood", "Air", "Carbon monoxide", "Glucose", "Water"],
+    "quizQuestion": "What does the combining form capn/o mean?",
+    "explanation": "Capn/o comes from Greek 'kapnos' meaning smoke. In medicine it refers to carbon dioxide, since CO2 is a waste gas exhaled like smoke. It appears in capnography (monitoring CO2 in exhaled breath), hypercapnia (excess CO2 in the blood), and capnometer (device measuring CO2 levels).",
+    "statement": "The combining form capn/o means carbon dioxide.",
+    "wowFactor": "Capn/o means 'smoke' in Greek — ancient Greeks noticed exhaled breath was visible like smoke in cold air. Now capnography monitors your CO2 in surgery!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'carbon dioxide'?",
+        "correctAnswer": "Capn/o",
+        "distractors": ["Ox/i", "Pneum/o", "Spir/o"]
+      },
+      {
+        "type": "context",
+        "question": "Hypercapnia is a condition of excess levels of which gas in the blood?",
+        "correctAnswer": "Carbon dioxide",
+        "distractors": ["Oxygen", "Nitrogen", "Carbon monoxide"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "respiratory"],
+    "visualDescription": "The root 'CAPN/O' with a capnography waveform showing CO2 levels during breathing cycles"
+  },
+  {
+    "id": "medterm_root_spiro",
+    "correctAnswer": "Breathing",
+    "acceptableAlternatives": ["Breath", "Respiration"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Oxygen", "Lung", "Chest", "Air", "Carbon dioxide", "Heart", "Blood", "Nerve"],
+    "quizQuestion": "What does the combining form spir/o mean?",
+    "explanation": "Spir/o comes from Latin 'spirare' meaning to breathe. It appears in spirometry (measurement of lung breathing capacity), spirogram (recorded breathing pattern), and inspiration/expiration (the acts of breathing in and out). The word 'spirit' shares this root.",
+    "statement": "The combining form spir/o means breathing.",
+    "wowFactor": "The words 'inspiration' and 'spirit' share the same root as spir/o (breathing) — ancient Romans saw breathing as the essence of life and spirit!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'breathing'?",
+        "correctAnswer": "Spir/o",
+        "distractors": ["Capn/o", "Ox/i", "Pneum/o"]
+      },
+      {
+        "type": "context",
+        "question": "Spirometry is a test that measures the capacity of which bodily function?",
+        "correctAnswer": "Breathing (lung function)",
+        "distractors": ["Heart rate", "Blood oxygenation", "Muscle strength"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "respiratory"],
+    "visualDescription": "The root 'SPIR/O' with a spirometry chart showing lung volume measurements during a full breath"
+  },
+  {
+    "id": "medterm_root_sinuso",
+    "correctAnswer": "Sinus",
+    "acceptableAlternatives": ["Cavity", "Hollow"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Nose", "Throat", "Lung", "Ear", "Bone", "Nerve", "Larynx", "Skull"],
+    "quizQuestion": "What does the combining form sinus/o mean?",
+    "explanation": "Sinus/o comes from Latin 'sinus' meaning curve, fold, or hollow cavity. In medicine it refers to air-filled cavities in the skull bones. It appears in sinusitis (inflammation of the sinuses), sinusotomy (surgical incision into a sinus), and paranasal sinuses (the four pairs of facial sinuses).",
+    "statement": "The combining form sinus/o means sinus.",
+    "wowFactor": "Latin 'sinus' meant a bay or curved hollow — perfect for the hollow air spaces in your skull bones. Sinusitis means those bays are inflamed!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the combining form for 'sinus'?",
+        "correctAnswer": "Sinus/o",
+        "distractors": ["Nas/o", "Rhin/o", "Pharyng/o"]
+      },
+      {
+        "type": "context",
+        "question": "Sinusitis is inflammation of which structures in the skull?",
+        "correctAnswer": "Sinuses (air-filled cavities)",
+        "distractors": ["Nasal passages", "Ear canals", "Eye sockets"]
+      }
+    ],
+    "tags": ["medical_terminology", "root", "respiratory"],
+    "visualDescription": "The root 'SINUS/O' over a facial X-ray highlighting the four pairs of paranasal sinuses in the skull"
+  }
+]

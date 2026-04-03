@@ -107,6 +107,15 @@
   /** Whether the live language options popup is open. */
   let showLiveOptions = $state(false)
 
+  /** Whether the question image is expanded inline (landscape only). */
+  let imageExpanded = $state(false)
+  /** Whether Zone A (question area) has overflow content — shows scroll gradient. */
+  let zoneAOverflows = $state(false)
+  /** DOM ref for Zone A (question area). */
+  let zoneAEl = $state<HTMLElement | null>(null)
+  /** DOM ref for the landscape stage container. */
+  let stageEl = $state<HTMLElement | null>(null)
+
   /** The language code of the current fact (null if not a language fact). */
   const factLanguage = $derived(fact.language ?? null)
   /** Whether the current fact's language has configurable options. */
@@ -123,9 +132,16 @@
   /** CSS class for question text auto-scaling based on character count. */
   const questionLengthClass = $derived.by(() => {
     const len = fact.quizQuestion.length
-    if (len < 30) return 'quiz-text-short'
-    if (len < 80) return 'quiz-text-medium'
+    if (len < 60) return 'quiz-text-short'
+    if (len < 120) return 'quiz-text-medium'
     return 'quiz-text-long'
+  })
+
+  /** CSS class for answer buttons based on choice count. */
+  const answerSizeClass = $derived.by(() => {
+    if (choices.length <= 2) return 'answer-spacious'
+    if (choices.length >= 5) return 'answer-compact'
+    return ''
   })
 
   const CORRECT_PHRASES = ["That's it!", "Nailed it!", "Locked in!"] as const
@@ -232,6 +248,7 @@
       attemptsRemaining = totalAttempts
     }
     waitingForTap = false
+    imageExpanded = false
   })
 
   /** Expression id for the GAIA reaction bubble after answering */
@@ -361,6 +378,19 @@
     }
   }
 
+  /** Toggle question image expand/collapse (landscape only). */
+  function toggleImageExpand(): void {
+    imageExpanded = !imageExpanded
+  }
+
+  /** Keyboard handler for image expand toggle (Enter/Space). */
+  function handleImageKeydown(e: KeyboardEvent): void {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      toggleImageExpand()
+    }
+  }
+
   onMount(() => {
     playCardAudio('quiz-appear')
 
@@ -386,16 +416,62 @@
       selectAnswerByIndex(action.index, true)
     })
 
+    // ResizeObserver: anchor quiz stage to fog meter bottom / card hand top
+    let resizeObs: ResizeObserver | undefined
+    const gameRoot = document.querySelector('.card-app') ?? document.documentElement
+
+    resizeObs = new ResizeObserver(() => {
+      if (!$isLandscape || !stageEl) return
+
+      requestAnimationFrame(() => {
+        // Find fog meter/topbar bottom edge
+        const fogWing = document.querySelector('.fog-wing-wrapper')
+        const topbar = document.querySelector('.topbar')
+        let stageTop = 0
+        if (fogWing) {
+          stageTop = fogWing.getBoundingClientRect().bottom
+        } else if (topbar) {
+          stageTop = topbar.getBoundingClientRect().bottom
+        }
+
+        // Find card hand top edge
+        const cardHand = document.querySelector('.card-hand-landscape')
+        let stageBottom = 0
+        if (cardHand) {
+          stageBottom = window.innerHeight - cardHand.getBoundingClientRect().top
+        }
+
+        // Apply as CSS custom properties on the stage element
+        stageEl!.style.setProperty('--quiz-stage-top', `${stageTop}px`)
+        stageEl!.style.setProperty('--quiz-stage-bottom', `${stageBottom}px`)
+
+        // Check Zone A overflow for scroll indicator
+        if (zoneAEl) {
+          zoneAOverflows = zoneAEl.scrollHeight > zoneAEl.clientHeight + 2
+
+          // Calculate max expanded image height
+          const questionText = zoneAEl.querySelector('.question')
+          const questionH = questionText?.getBoundingClientRect().height ?? 0
+          const zoneH = zoneAEl.clientHeight
+          const maxImgH = Math.max(100, zoneH - questionH - 40)
+          zoneAEl.style.setProperty('--image-max-expanded', `${maxImgH}px`)
+        }
+      })
+    })
+
+    resizeObs.observe(gameRoot)
+
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
       unsubInputService()
+      resizeObs?.disconnect()
     }
   })
 </script>
 
 {#if $isLandscape}
   <!-- AR-76: Landscape quiz — center stage area (left 70% of viewport, above card hand) -->
-  <div class="quiz-landscape-stage" role="dialog" aria-modal="true" aria-label="Quiz Question">
+  <div class="quiz-landscape-stage" role="dialog" aria-modal="true" aria-label="Quiz Question" bind:this={stageEl}>
     <div class={`quiz-landscape-panel quiz-card-enter ${cardOutcomeClass}`} class:high-contrast-quiz={$highContrastQuiz}>
       <button class="close-button" type="button" onclick={onClose} aria-label="Close field scan">x</button>
 
@@ -414,162 +490,184 @@
         {/if}
       {/if}
 
-      {#if mode === 'random'}
-        <p class="pop-quiz-header">Scanner ping!</p>
-        <p class="pop-quiz-sub">Residual data detected...</p>
-        <p class="pop-quiz-reward">Answer to earn bonus resources!</p>
-      {/if}
+      <!-- Zone A: question area — scrollable, flex-grows to fill available space -->
+      <div class="quiz-zone-question" class:has-overflow={zoneAOverflows} bind:this={zoneAEl}>
+        {#if fact.categoryL2 || fact.category?.[0]}
+          <span class="quiz-category-label">{(fact.categoryL2 || fact.category[0] || '').replace(/[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu, '').trim()}</span>
+        {/if}
 
-      {#if mode === 'gate' && gateProgress}
-        <p class="gate-progress">Knowledge Gate: {gateProgress.total - gateProgress.remaining + 1} / {gateProgress.total}</p>
-      {/if}
+        {#if mode === 'random'}
+          <p class="pop-quiz-header">Scanner ping!</p>
+          <p class="pop-quiz-sub">Residual data detected...</p>
+          <p class="pop-quiz-reward">Answer to earn bonus resources!</p>
+        {/if}
 
-      {#if mode === 'artifact' && gateProgress}
-        <p class="artifact-appraisal-header">Artifact Analysis {gateProgress.total - gateProgress.remaining + 1} / {gateProgress.total}</p>
-        <p class="artifact-appraisal-hint">Artifact uplink — your knowledge calibrates the analysis.</p>
-      {/if}
+        {#if mode === 'gate' && gateProgress}
+          <p class="gate-progress">Knowledge Gate: {gateProgress.total - gateProgress.remaining + 1} / {gateProgress.total}</p>
+        {/if}
 
-      {#if mode === 'artifact_boost'}
-        <p class="artifact-boost-header">Analyze This Discovery!</p>
-        <p class="artifact-boost-hint">Correct answers boost the artifact's rarity before you claim it</p>
-      {/if}
+        {#if mode === 'artifact' && gateProgress}
+          <p class="artifact-appraisal-header">Artifact Analysis {gateProgress.total - gateProgress.remaining + 1} / {gateProgress.total}</p>
+          <p class="artifact-appraisal-hint">Artifact uplink — your knowledge calibrates the analysis.</p>
+        {/if}
 
-      {#if mode === 'layer'}
-        <p class="layer-entrance-header">Depth Calibration</p>
-        {#if layerChallengeProgress}
-          <div class="layer-progress">
-            <span class="layer-progress-text">Question {layerChallengeProgress.current} of {layerChallengeProgress.total}</span>
-            <div class="layer-progress-bar">
-              {#each Array(layerChallengeProgress.total) as _, i}
-                <div class="layer-progress-pip" class:filled={i < layerChallengeProgress.current}></div>
-              {/each}
+        {#if mode === 'artifact_boost'}
+          <p class="artifact-boost-header">Analyze This Discovery!</p>
+          <p class="artifact-boost-hint">Correct answers boost the artifact's rarity before you claim it</p>
+        {/if}
+
+        {#if mode === 'layer'}
+          <p class="layer-entrance-header">Depth Calibration</p>
+          {#if layerChallengeProgress}
+            <div class="layer-progress">
+              <span class="layer-progress-text">Question {layerChallengeProgress.current} of {layerChallengeProgress.total}</span>
+              <div class="layer-progress-bar">
+                {#each Array(layerChallengeProgress.total) as _, i}
+                  <div class="layer-progress-pip" class:filled={i < layerChallengeProgress.current}></div>
+                {/each}
+              </div>
             </div>
+          {/if}
+          <p class="layer-entrance-hint">Depth calibration sequence — what do you recall?</p>
+        {/if}
+
+        {#if fact?.hasPixelArt}
+          <div class="fact-art-wrapper">
+            <FactArtwork factId={fact.id} size={80} />
           </div>
         {/if}
-        <p class="layer-entrance-hint">Depth calibration sequence — what do you recall?</p>
-      {/if}
 
-      {#if fact?.hasPixelArt}
-        <div class="fact-art-wrapper">
-          <FactArtwork factId={fact.id} size={80} />
-        </div>
-      {/if}
-
-      {#if quizMode === 'image_question' && imageAssetPath}
-        <div class="quiz-image-container">
-          <img src={imageAssetPath} alt="Identify this" class="quiz-image" />
-        </div>
-      {/if}
-
-      {#if japaneseParts}
-        <p class="question {questionLengthClass}" data-testid="quiz-question">
-          {japaneseParts.before}<FuriganaText text={kanaOnly && japaneseParts.reading ? japaneseParts.reading : japaneseParts.word} reading={japaneseParts.reading} size="md" />{japaneseParts.after}
-        </p>
-      {:else if chineseParts}
-        <p class="question {questionLengthClass}" data-testid="quiz-question">
-          {chineseParts.before}<FuriganaText text={pinyinOnly && chineseParts.reading ? chineseParts.reading : chineseParts.word} reading={chineseParts.reading} size="md" />{chineseParts.after}
-        </p>
-      {:else if koreanParts}
-        <p class="question {questionLengthClass}" data-testid="quiz-question">
-          {koreanParts.before}<FuriganaText text={koreanParts.word} reading={koreanParts.reading} size="md" />{koreanParts.after}
-        </p>
-      {:else if isGrammarFillBlank}
-        {@const parts = fact.quizQuestion.split('\n')}
-        {@const sentence = parts[0]}
-        {@const translation = parts[1] || ''}
-        <p class="question grammar-fill-blank {questionLengthClass}" data-testid="quiz-question">
-          {#each sentence.split('{___}') as segment, i}
-            {#if i > 0}<span class="grammar-blank">______</span>{/if}{segment}
-          {/each}
-        </p>
-        {#if translation}
-          <p class="grammar-translation">{translation}</p>
+        {#if quizMode === 'image_question' && imageAssetPath}
+          <div class="quiz-image-container">
+            <button
+              type="button"
+              class="quiz-image-toggle"
+              onclick={toggleImageExpand}
+              aria-label={imageExpanded ? 'Collapse image' : 'Expand image'}
+            >
+              <img
+                src={imageAssetPath}
+                alt="Identify this"
+                class="quiz-image"
+                class:image-expanded={imageExpanded}
+              />
+            </button>
+          </div>
         {/if}
-      {:else}
-        <p class="question {questionLengthClass}" data-testid="quiz-question">{displayAnswer(fact.quizQuestion)}</p>
-      {/if}
 
-      {#if mode === 'gate'}
-        <p class="attempts">Attempts: {attemptsRemaining}/{totalAttempts}</p>
-      {/if}
+        {#if japaneseParts}
+          <p class="question {questionLengthClass}" data-testid="quiz-question">
+            {japaneseParts.before}<FuriganaText text={kanaOnly && japaneseParts.reading ? japaneseParts.reading : japaneseParts.word} reading={japaneseParts.reading} size="md" />{japaneseParts.after}
+          </p>
+        {:else if chineseParts}
+          <p class="question {questionLengthClass}" data-testid="quiz-question">
+            {chineseParts.before}<FuriganaText text={pinyinOnly && chineseParts.reading ? chineseParts.reading : chineseParts.word} reading={chineseParts.reading} size="md" />{chineseParts.after}
+          </p>
+        {:else if koreanParts}
+          <p class="question {questionLengthClass}" data-testid="quiz-question">
+            {koreanParts.before}<FuriganaText text={koreanParts.word} reading={koreanParts.reading} size="md" />{koreanParts.after}
+          </p>
+        {:else if isGrammarFillBlank}
+          {@const parts = fact.quizQuestion.split('\n')}
+          {@const sentence = parts[0]}
+          {@const translation = parts[1] || ''}
+          <p class="question grammar-fill-blank {questionLengthClass}" data-testid="quiz-question">
+            {#each sentence.split('{___}') as segment, i}
+              {#if i > 0}<span class="grammar-blank">______</span>{/if}{segment}
+            {/each}
+          </p>
+          {#if translation}
+            <p class="grammar-translation">{translation}</p>
+          {/if}
+        {:else}
+          <p class="question {questionLengthClass}" data-testid="quiz-question">{displayAnswer(fact.quizQuestion)}</p>
+        {/if}
 
-      {#if quizMode === 'image_answers' && answerImagePaths?.length}
-        <div class="choices-image-grid">
-          {#each choices as choice, i}
-            <button
-              class="image-choice-btn {getChoiceClass(choice)} {getResultAnimClass(choice)} choice-stagger"
-              class:choice-kbd-highlight={kbdHighlightIndex === i}
-              style="animation-delay: {STAGGER_DELAYS[i] ?? 350}ms"
-              type="button"
-              disabled={showResult}
-              aria-label="Choice {i + 1}: {choice}"
-              onclick={() => void handleAnswer(choice)}
-              data-testid="quiz-answer-{i}"
-            >
-              <span class="key-badge" aria-hidden="true">{i + 1}</span>
-              <img src={answerImagePaths[i]} alt="" class="choice-flag-img" />
-              {#if showResult}
-                <span class="image-choice-label">{displayAnswer(choice)}</span>
+        {#if mode === 'gate'}
+          <p class="attempts">Attempts: {attemptsRemaining}/{totalAttempts}</p>
+        {/if}
+      </div>
+
+      <!-- Zone B: answer area — content-sized, anchored to bottom of panel -->
+      <div class="quiz-zone-answers">
+        {#if quizMode === 'image_answers' && answerImagePaths?.length}
+          <div class="choices-image-grid">
+            {#each choices as choice, i}
+              <button
+                class="image-choice-btn {getChoiceClass(choice)} {getResultAnimClass(choice)} choice-stagger"
+                class:choice-kbd-highlight={kbdHighlightIndex === i}
+                style="animation-delay: {STAGGER_DELAYS[i] ?? 350}ms"
+                type="button"
+                disabled={showResult}
+                aria-label="Choice {i + 1}: {choice}"
+                onclick={() => void handleAnswer(choice)}
+                data-testid="quiz-answer-{i}"
+              >
+                <span class="key-badge" aria-hidden="true">{i + 1}</span>
+                <img src={answerImagePaths[i]} alt="" class="choice-flag-img" />
+                {#if showResult}
+                  <span class="image-choice-label">{displayAnswer(choice)}</span>
+                {/if}
+              </button>
+            {/each}
+          </div>
+        {:else}
+          <div class="choices choices-landscape" class:choices-landscape-5={choices.length === 5}>
+            {#each choices as choice, i}
+              <button
+                class={`choice-button ${answerSizeClass} ${getChoiceClass(choice)} ${getResultAnimClass(choice)} choice-stagger`}
+                class:choice-kbd-highlight={kbdHighlightIndex === i}
+                style="animation-delay: {STAGGER_DELAYS[i] ?? 350}ms"
+                type="button"
+                disabled={showResult}
+                aria-label="Choice {i + 1}: {choice}"
+                onclick={() => void handleAnswer(choice)}
+                data-testid="quiz-answer-{i}"
+              >
+                <span class="key-badge" aria-hidden="true">{i + 1}</span>
+                <span class="choice-text">{displayAnswer(choice)}</span>
+              </button>
+            {/each}
+          </div>
+        {/if}
+
+        {#if isDev && !showResult}
+          <button class="dev-skip-btn" type="button" onclick={() => onAnswer(true)}>⏭ Skip (✓)</button>
+        {/if}
+
+        {#if showResult}
+          <p class={`result-text ${resultClass}`} data-testid="quiz-result-text">{resultText}</p>
+        {/if}
+
+        {#if showResult && isCorrect !== null}
+          <div class="gaia-reaction" class:gaia-reaction-correct={isCorrect} class:gaia-reaction-wrong={!isCorrect} role="note" aria-label="GAIA reaction">
+            <img class="gaia-reaction-sprite" src={gaiaReactionSpriteUrl} alt={`G.A.I.A. ${gaiaReactionExpressionId}`} width="28" height="28" />
+            <span class="gaia-reaction-name">{KEEPER_NAME}</span>
+            <span class="gaia-reaction-text" data-testid="gaia-reaction-text">
+              {#if isCorrect}
+                {["Great work!", "Nailed it!", "Excellent!", "Well done!"][Math.floor(Math.random() * 4)]}
+              {:else}
+                {["Keep at it.", "Almost!", "Not quite.", "Hmm, let me remind you..."][Math.floor(Math.random() * 4)]}
               {/if}
-            </button>
-          {/each}
-        </div>
-      {:else}
-        <div class="choices choices-landscape" class:choices-landscape-5={choices.length === 5}>
-          {#each choices as choice, i}
-            <button
-              class={`choice-button ${getChoiceClass(choice)} ${getResultAnimClass(choice)} choice-stagger`}
-              class:choice-kbd-highlight={kbdHighlightIndex === i}
-              style="animation-delay: {STAGGER_DELAYS[i] ?? 350}ms"
-              type="button"
-              disabled={showResult}
-              aria-label="Choice {i + 1}: {choice}"
-              onclick={() => void handleAnswer(choice)}
-              data-testid="quiz-answer-{i}"
-            >
-              <span class="key-badge" aria-hidden="true">{i + 1}</span>
-              <span class="choice-text">{displayAnswer(choice)}</span>
-            </button>
-          {/each}
-        </div>
-      {/if}
+            </span>
+          </div>
+        {/if}
 
-      {#if isDev && !showResult}
-        <button class="dev-skip-btn" type="button" onclick={() => onAnswer(true)}>⏭ Skip (✓)</button>
-      {/if}
+        {#if showMemoryTip}
+          <div class="memory-tip" role="note" aria-label="Memory Tip">
+            <span class="memory-tip-label">💡 Memory Tip:</span>
+            <span class="memory-tip-text" data-testid="quiz-memory-tip">{memoryTipText}</span>
+          </div>
+        {/if}
 
-      {#if showResult}
-        <p class={`result-text ${resultClass}`} data-testid="quiz-result-text">{resultText}</p>
-      {/if}
+        {#if waitingForTap}
+          <button class="got-it-btn" type="button" onclick={handleWrongAnswerTap}>Continue</button>
+        {/if}
 
-      {#if showResult && isCorrect !== null}
-        <div class="gaia-reaction" class:gaia-reaction-correct={isCorrect} class:gaia-reaction-wrong={!isCorrect} role="note" aria-label="GAIA reaction">
-          <img class="gaia-reaction-sprite" src={gaiaReactionSpriteUrl} alt={`G.A.I.A. ${gaiaReactionExpressionId}`} width="28" height="28" />
-          <span class="gaia-reaction-name">{KEEPER_NAME}</span>
-          <span class="gaia-reaction-text" data-testid="gaia-reaction-text">
-            {#if isCorrect}
-              {["Great work!", "Nailed it!", "Excellent!", "Well done!"][Math.floor(Math.random() * 4)]}
-            {:else}
-              {["Keep at it.", "Almost!", "Not quite.", "Hmm, let me remind you..."][Math.floor(Math.random() * 4)]}
-            {/if}
-          </span>
-        </div>
-      {/if}
-
-      {#if showMemoryTip}
-        <div class="memory-tip" role="note" aria-label="Memory Tip">
-          <span class="memory-tip-label">💡 Memory Tip:</span>
-          <span class="memory-tip-text" data-testid="quiz-memory-tip">{memoryTipText}</span>
-        </div>
-      {/if}
-
-      {#if waitingForTap}
-        <button class="got-it-btn" type="button" onclick={handleWrongAnswerTap}>Continue</button>
-      {/if}
-
-      {#if showResult && isCorrect === false}
-        <button class="report-fact-btn" type="button" onclick={() => (showReportModal = true)}>Report this fact</button>
-      {/if}
+        {#if showResult && isCorrect === false}
+          <button class="report-fact-btn" type="button" onclick={() => (showReportModal = true)}>Report this fact</button>
+        {/if}
+      </div>
     </div>
   </div>
 {:else}
@@ -1503,18 +1601,21 @@
   /* ── AR-76: Landscape quiz layout ─────────────────────────────────────── */
 
   /**
-   * Transparent backdrop covering center stage (left 70%, above card hand).
+   * Transparent backdrop anchored dynamically between the fog meter bottom and
+   * the card hand top via --quiz-stage-top / --quiz-stage-bottom CSS custom
+   * properties set by the ResizeObserver in onMount.
+   * Falls back to top: 0 / bottom: 0 before observer fires.
    * Does NOT cover the right-30% enemy panel.
    */
   .quiz-landscape-stage {
     position: fixed;
     left: 0;
     right: 30%;
-    top: 0;
-    bottom: calc(80px * var(--layout-scale, 1));
+    top: var(--quiz-stage-top, 0);
+    bottom: var(--quiz-stage-bottom, 0);
     z-index: 50;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     background: rgba(0, 0, 0, 0.45);
     animation: landscape-stage-fade-in 200ms ease-out both;
@@ -1525,22 +1626,24 @@
     to   { background: rgba(0, 0, 0, 0.45); }
   }
 
-  /** The quiz card panel inside the center stage */
+  /** The quiz card panel inside the center stage — two-zone flex column */
   .quiz-landscape-panel {
     position: relative;
     width: min(50vw, calc(640px * var(--layout-scale, 1)));
-    max-width: min(50vw, calc(640px * var(--layout-scale, 1)));
-    max-height: 74vh;
+    height: calc(100% - calc(16px * var(--layout-scale, 1)));
+    margin: calc(8px * var(--layout-scale, 1)) 0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: calc(8px * var(--layout-scale, 1));
+    gap: calc(6px * var(--layout-scale, 1));
     border: calc(2px * var(--layout-scale, 1)) solid var(--color-primary);
     border-radius: calc(16px * var(--layout-scale, 1));
-    padding: calc(12px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     background: var(--color-surface);
     color: var(--color-text);
     pointer-events: auto;
+    container-type: inline-size;
+    container-name: quiz-panel;
   }
 
   /** Landscape answer grid: 2 columns for 3-4 options, 3+2 for 5 */
@@ -1602,5 +1705,142 @@
     z-index: 20;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     border-radius: calc(10px * var(--layout-scale, 1));
+  }
+
+  /* ── Quiz two-zone layout (landscape) ──────────────────────────────────── */
+
+  /** Zone A: question area — greedy height, scrolls if needed */
+  .quiz-zone-question {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: calc(6px * var(--layout-scale, 1));
+  }
+
+  /** Scroll fade indicator when Zone A overflows */
+  .quiz-zone-question.has-overflow::after {
+    content: '';
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(24px * var(--layout-scale, 1));
+    background: linear-gradient(transparent, var(--color-surface));
+    pointer-events: none;
+    flex-shrink: 0;
+  }
+
+  /** Zone B: answer area — content-sized, anchored to bottom */
+  .quiz-zone-answers {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: calc(6px * var(--layout-scale, 1));
+    max-height: 55%;
+    overflow-y: auto;
+  }
+
+  /** Subtle separator between zones */
+  .quiz-zone-answers::before {
+    content: '';
+    display: block;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin-bottom: calc(2px * var(--layout-scale, 1));
+  }
+
+  /** Category label — flush top-left, unobtrusive */
+  .quiz-category-label {
+    align-self: flex-start;
+    font-size: calc(11px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.45);
+    text-transform: uppercase;
+    letter-spacing: calc(1px * var(--layout-scale, 1));
+    padding: 0;
+    margin: 0;
+  }
+
+  /** Container query: question text sizing tied to panel width */
+  @container quiz-panel (inline-size > 0px) {
+    .question.quiz-text-short {
+      font-size: clamp(calc(18px * var(--text-scale, 1)), 4cqi, calc(24px * var(--text-scale, 1)));
+    }
+    .question.quiz-text-medium {
+      font-size: clamp(calc(15px * var(--text-scale, 1)), 3.2cqi, calc(20px * var(--text-scale, 1)));
+    }
+    .question.quiz-text-long {
+      font-size: clamp(calc(12px * var(--text-scale, 1)), 2.5cqi, calc(16px * var(--text-scale, 1)));
+    }
+  }
+
+  /* ── Landscape answer button overrides ─────────────────────────────────── */
+
+  /** Remove fixed min-height, use padding-driven sizing */
+  .quiz-zone-answers .choice-button {
+    min-height: unset;
+    padding: calc(8px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    font-size: clamp(calc(12px * var(--text-scale, 1)), 1.5vw, calc(16px * var(--text-scale, 1)));
+    white-space: normal;
+    word-break: break-word;
+    align-self: start;
+    border-radius: calc(12px * var(--layout-scale, 1));
+  }
+
+  /** Spacious: 2 or fewer choices */
+  .quiz-zone-answers .choice-button.answer-spacious {
+    padding: calc(12px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+  }
+
+  /** Compact: 5+ choices */
+  .quiz-zone-answers .choice-button.answer-compact {
+    padding: calc(6px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    font-size: clamp(calc(11px * var(--text-scale, 1)), 1.3vw, calc(14px * var(--text-scale, 1)));
+  }
+
+  /** Tighter gap for landscape answer grid */
+  .quiz-zone-answers .choices-landscape {
+    gap: calc(6px * var(--layout-scale, 1));
+  }
+
+  /* ── Image expand/collapse (landscape) ─────────────────────────────────── */
+
+  /** Button wrapper for the expandable question image — resets browser button styles */
+  .quiz-zone-question .quiz-image-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .quiz-zone-question .quiz-image {
+    cursor: pointer;
+    transition: max-width 200ms ease, max-height 200ms ease;
+  }
+
+  .quiz-zone-question .quiz-image.image-expanded {
+    max-width: 100%;
+    max-height: var(--image-max-expanded, calc(300px * var(--layout-scale, 1)));
+    cursor: zoom-out;
+  }
+
+  /* ── Focus states (accessibility) ──────────────────────────────────────── */
+
+  .quiz-zone-answers .choice-button:focus-visible {
+    outline: calc(2px * var(--layout-scale, 1)) solid #60a5fa;
+    outline-offset: calc(2px * var(--layout-scale, 1));
+    box-shadow: 0 0 0 calc(4px * var(--layout-scale, 1)) rgba(96, 165, 250, 0.25);
+  }
+
+  .quiz-zone-question .quiz-image:focus-visible {
+    outline: calc(2px * var(--layout-scale, 1)) solid #60a5fa;
+    outline-offset: calc(2px * var(--layout-scale, 1));
   }
 </style>

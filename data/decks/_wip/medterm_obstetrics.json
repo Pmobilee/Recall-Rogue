@@ -1,0 +1,1227 @@
+[
+  {
+    "id": "medterm_ob_gravida",
+    "correctAnswer": "Gravida",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Para",
+      "Nullipara",
+      "Primigravida",
+      "Multipara",
+      "Nulligravida",
+      "Eclampsia",
+      "Postpartum",
+      "Antepartum"
+    ],
+    "quizQuestion": "What obstetric term describes the total number of pregnancies a woman has had, regardless of outcome?",
+    "explanation": "Gravida comes from Latin 'gravidus' (heavy, burdened, pregnant). It counts every pregnancy including the current one, twins count as one pregnancy. A woman pregnant for the first time is primigravida; one who has never been pregnant is nulligravida. Doctors use the G notation: G3 means three total pregnancies.",
+    "statement": "Gravida refers to the total number of times a woman has been pregnant, regardless of outcome.",
+    "wowFactor": "Doctors describe pregnancy history in shorthand — G3P2 means 3 pregnancies (gravida 3), 2 births (para 2). A single notation tells the whole obstetric story!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gravidity_and_parity",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does the term 'gravida' mean in obstetrics?",
+        "correctAnswer": "Total number of pregnancies",
+        "distractors": [
+          "Total number of births",
+          "Weeks of current pregnancy",
+          "Number of live births only"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Latin 'gravidus' (heavy/pregnant) → obstetric term for total pregnancy count = ___",
+        "correctAnswer": "Gravida",
+        "distractors": ["Para", "Primigravida", "Nullipara"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "pregnancy_terms"],
+    "visualDescription": "Medical chart showing G3P2 notation with gravida and para labeled, pregnancy symbols beside each number"
+  },
+  {
+    "id": "medterm_ob_para",
+    "correctAnswer": "Para",
+    "acceptableAlternatives": ["Parity"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Gravida",
+      "Nulligravida",
+      "Primigravida",
+      "Multipara",
+      "Antepartum",
+      "Postpartum",
+      "Neonatal",
+      "Prenatal"
+    ],
+    "quizQuestion": "What obstetric term describes the number of births a woman has had at viable gestational age, including both live births and stillbirths?",
+    "explanation": "Para (or parity) counts deliveries at viable gestational age — it includes both live births and stillbirths, but NOT miscarriages or abortions. Twins carried to viability count as one para. Notation: P2 means two such births. Combined with gravida, G3P2 means 3 pregnancies with 2 viable deliveries.",
+    "statement": "Para refers to the number of births at viable gestational age, including live births and stillbirths.",
+    "wowFactor": "Para comes from Latin 'parere' (to bring forth). The same Latin root gave us 'parent', 'compare' (to bring alongside), and even 'repair' (to bring back together)!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gravidity_and_parity",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "In obstetrics, 'para' or 'parity' counts which events?",
+        "correctAnswer": "Births at viable gestational age (including stillbirths)",
+        "distractors": [
+          "Total number of pregnancies",
+          "Live births only",
+          "Miscarriages and abortions"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Latin 'parere' (to bring forth) → obstetric term counting viable births = ___",
+        "correctAnswer": "Para",
+        "distractors": ["Gravida", "Abortus", "Nullipara"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "pregnancy_terms"],
+    "visualDescription": "Medical chart showing P2 notation beside two delivery symbols, with a note that twins count as one para"
+  },
+  {
+    "id": "medterm_ob_nulligravida",
+    "correctAnswer": "Nulligravida",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Nullipara",
+      "Primigravida",
+      "Multipara",
+      "Gravida",
+      "Para",
+      "Primipara",
+      "Postpartum",
+      "Antepartum"
+    ],
+    "quizQuestion": "What obstetric term describes a woman who has never been pregnant?",
+    "explanation": "Nulligravida combines nulli- (none, zero) + gravida (pregnant). A woman who has never experienced any pregnancy at all. Contrast with nullipara (never given birth — she could have been pregnant but not carried to viability) and primigravida (currently or previously pregnant for the first time).",
+    "statement": "Nulligravida describes a woman who has never been pregnant.",
+    "wowFactor": "Nulli- comes from Latin 'nullus' (none). The same prefix appears in 'null' (nothing), 'annul' (to make nothing), and 'nullify'. In law, a 'null and void' contract is legally nothing!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gravidity_and_parity",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'nulligravida': what do nulli- and gravida mean?",
+        "correctAnswer": "nulli- (none/zero) + gravida (pregnant) = never pregnant",
+        "distractors": [
+          "nulli- (first) + gravida (pregnant) = first pregnancy",
+          "nulli- (none) + gravida (birth) = never given birth",
+          "nulli- (many) + gravida (pregnant) = many pregnancies"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "nulli- (none) + gravida (pregnant) = woman who has never been pregnant = ___",
+        "correctAnswer": "Nulligravida",
+        "distractors": ["Nullipara", "Primigravida", "Multipara"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "pregnancy_terms"],
+    "visualDescription": "Word split NULLI + GRAVIDA with 'none' and 'pregnant' labeled below each segment, G0 notation shown"
+  },
+  {
+    "id": "medterm_ob_nullipara",
+    "correctAnswer": "Nullipara",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Nulligravida",
+      "Primigravida",
+      "Multipara",
+      "Gravida",
+      "Para",
+      "Primipara",
+      "Postpartum",
+      "Antepartum"
+    ],
+    "quizQuestion": "What obstetric term describes a woman who has never given birth at viable gestational age?",
+    "explanation": "Nullipara combines nulli- (none) + para (births at viable age). A nullipara may have been pregnant (and lost the pregnancy before viability), but has never delivered at viable gestational age. This is distinct from nulligravida (never pregnant at all). Both are important in obstetric history-taking.",
+    "statement": "Nullipara describes a woman who has never delivered a pregnancy at viable gestational age.",
+    "wowFactor": "A woman can be nullipara but NOT nulligravida — she could have had pregnancies that ended before viability. These fine distinctions matter clinically because prior viable deliveries change birth canal risk predictions!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gravidity_and_parity",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the key difference between nullipara and nulligravida?",
+        "correctAnswer": "Nullipara = never given birth at viability; nulligravida = never been pregnant",
+        "distractors": [
+          "They mean the same thing — both mean never pregnant",
+          "Nullipara = never pregnant; nulligravida = never given birth",
+          "Nullipara = first birth; nulligravida = no living children"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "nulli- (none) + para (births at viable age) = woman who has never given birth at viability = ___",
+        "correctAnswer": "Nullipara",
+        "distractors": ["Nulligravida", "Primipara", "Multipara"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "pregnancy_terms"],
+    "visualDescription": "Word split NULLI + PARA with 'none' and 'births' labeled, P0 notation shown"
+  },
+  {
+    "id": "medterm_ob_primigravida",
+    "correctAnswer": "Primigravida",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Multigravida",
+      "Nulligravida",
+      "Primipara",
+      "Multipara",
+      "Nullipara",
+      "Gravida",
+      "Para",
+      "Antepartum"
+    ],
+    "quizQuestion": "What obstetric term describes a woman who is pregnant for the first time, or has been pregnant only once?",
+    "explanation": "Primigravida combines primi- (first) + gravida (pregnant). This term applies while the woman is in her first pregnancy or if she has been pregnant exactly once. First-time pregnancies carry different statistical risks — primigravidas have higher rates of pre-eclampsia, for example, compared to women on subsequent pregnancies.",
+    "statement": "Primigravida describes a woman who is pregnant for the first time (G1).",
+    "wowFactor": "Pre-eclampsia is much more common in a first pregnancy (primigravida) than in subsequent ones — the immune system's tolerance of fetal antigens improves with each pregnancy. First pregnancies are biologically more challenging!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gravidity_and_parity",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'primigravida': what does each part mean?",
+        "correctAnswer": "primi- (first) + gravida (pregnant)",
+        "distractors": [
+          "primi- (many) + gravida (pregnant)",
+          "primi- (first) + gravida (birth)",
+          "primi- (none) + gravida (pregnant)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "primi- (first) + gravida (pregnant) = woman in her first pregnancy = ___",
+        "correctAnswer": "Primigravida",
+        "distractors": ["Nulligravida", "Multigravida", "Primipara"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "pregnancy_terms"],
+    "visualDescription": "Word split PRIMI + GRAVIDA labeled 'first' and 'pregnant', G1 notation with a single pregnancy symbol"
+  },
+  {
+    "id": "medterm_ob_multipara",
+    "correctAnswer": "Multipara",
+    "acceptableAlternatives": ["Multiparous"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Multigravida",
+      "Primipara",
+      "Nullipara",
+      "Primigravida",
+      "Nulligravida",
+      "Para",
+      "Gravida",
+      "Postpartum"
+    ],
+    "quizQuestion": "What obstetric term describes a woman who has given birth two or more times at viable gestational age?",
+    "explanation": "Multipara combines multi- (many) + para (births at viable age). The threshold is two or more viable deliveries. Grand multipara refers to five or more. Multiparous women have lower rates of pre-eclampsia than primigravidas, and labor often progresses faster in subsequent deliveries due to cervical and uterine changes from prior births.",
+    "statement": "Multipara describes a woman who has given birth two or more times at viable gestational age.",
+    "wowFactor": "Grand multipara (5+ births) was once common globally. In populations where large families are typical, grand multiparas face increased risks of uterine atony (failure to contract after delivery) — the uterus can become less effective over many pregnancies.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gravidity_and_parity",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'multipara': what does each part mean?",
+        "correctAnswer": "multi- (many) + para (births at viable age)",
+        "distractors": [
+          "multi- (many) + para (pregnancies)",
+          "multi- (first) + para (births)",
+          "multi- (none) + para (births)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "multi- (many) + para (viable births) = woman with 2+ viable deliveries = ___",
+        "correctAnswer": "Multipara",
+        "distractors": ["Primipara", "Nullipara", "Multigravida"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "pregnancy_terms"],
+    "visualDescription": "Word split MULTI + PARA with 'many' and 'births' labeled, P3 notation with three delivery symbols"
+  },
+  {
+    "id": "medterm_ob_antepartum",
+    "correctAnswer": "Antepartum",
+    "acceptableAlternatives": ["Ante partum"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Postpartum",
+      "Prenatal",
+      "Perinatal",
+      "Intrapartum",
+      "Neonatal",
+      "Primigravida",
+      "Eclampsia",
+      "Gravida"
+    ],
+    "quizQuestion": "What obstetric term means 'before birth' and refers to the period or events occurring before the onset of labor?",
+    "explanation": "Antepartum comes from Latin ante- (before) + partum (birth, from parere = to bring forth). It describes events, hemorrhages, or care occurring before labor begins. Antepartum hemorrhage is a specific clinical concern. Compare intrapartum (during labor) and postpartum (after birth).",
+    "statement": "Antepartum means before birth, from Latin ante- (before) + partum (birth).",
+    "wowFactor": "Ante- (before) appears everywhere in English: 'antenatal', 'anteroom' (room before the main room), 'antebellum' (before the war), and even 'antecedent' (what came before). Latin ante is a remarkably productive prefix!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Obstetrics",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'antepartum': what does each Latin part mean?",
+        "correctAnswer": "ante- (before) + partum (birth)",
+        "distractors": [
+          "anti- (against) + partum (birth)",
+          "ante- (before) + partum (labor pain)",
+          "ante- (after) + partum (birth)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "ante- (before) + partum (birth) = period or events before labor = ___",
+        "correctAnswer": "Antepartum",
+        "distractors": ["Postpartum", "Intrapartum", "Perinatal"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "pregnancy_terms", "prefixes"],
+    "visualDescription": "Timeline bar showing ANTEPARTUM before birth, INTRAPARTUM during, POSTPARTUM after, each labeled with Latin roots"
+  },
+  {
+    "id": "medterm_ob_postpartum",
+    "correctAnswer": "Postpartum",
+    "acceptableAlternatives": ["Postnatal"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Antepartum",
+      "Prenatal",
+      "Perinatal",
+      "Intrapartum",
+      "Neonatal",
+      "Primigravida",
+      "Eclampsia",
+      "Postoperative"
+    ],
+    "quizQuestion": "What obstetric term describes the period after childbirth, typically considered to last six to eight weeks?",
+    "explanation": "Postpartum comes from Latin post- (after) + partum (birth). The postpartum period begins immediately after delivery and typically lasts 6–8 weeks according to the WHO. There are three phases: acute (6–12 hours after birth), subacute (up to 6 weeks), and delayed (up to 6 months). Postpartum depression is a well-known condition occurring in this period.",
+    "statement": "Postpartum means after birth (post- = after, partum = birth), covering the period following delivery.",
+    "wowFactor": "The WHO calls the postpartum period 'the most critical and yet most neglected phase in the lives of mothers and babies'. Most maternal deaths occur in this window, not during labor itself — making postpartum care essential.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Postpartum_period",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'postpartum': what does each Latin part mean?",
+        "correctAnswer": "post- (after) + partum (birth)",
+        "distractors": [
+          "post- (before) + partum (birth)",
+          "post- (after) + partum (labor)",
+          "post- (during) + partum (birth)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "post- (after) + partum (birth) = period following delivery = ___",
+        "correctAnswer": "Postpartum",
+        "distractors": ["Antepartum", "Intrapartum", "Perinatal"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "pregnancy_terms", "prefixes"],
+    "visualDescription": "Timeline bar highlighting the POST-PARTUM section after a birth symbol, with 6-8 weeks span labeled"
+  },
+  {
+    "id": "medterm_ob_prenatal",
+    "correctAnswer": "Prenatal",
+    "acceptableAlternatives": ["Antenatal"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Postnatal",
+      "Antepartum",
+      "Perinatal",
+      "Neonatal",
+      "Postpartum",
+      "Intrapartum",
+      "Congenital",
+      "Primigravida"
+    ],
+    "quizQuestion": "What term describes care, screening, and health measures provided to a pregnant woman before birth to prevent complications?",
+    "explanation": "Prenatal means 'before birth' from Latin pre- (before) + natalis (birth, from natus = born). Prenatal care includes medical checkups, nutrition guidance, and screening tests throughout pregnancy. Also called antenatal care (ante- = before). The availability of routine prenatal care has significantly reduced maternal death, miscarriages, and birth defects.",
+    "statement": "Prenatal means before birth, from Latin pre- (before) + natalis (birth), referring to care and events during pregnancy.",
+    "wowFactor": "Routine prenatal care is one of medicine's greatest public health wins — it reduced maternal mortality dramatically in the 20th century. A simple 28-week check can catch pre-eclampsia before it becomes life-threatening eclampsia!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Prenatal_care",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'prenatal': what do pre- and natal mean?",
+        "correctAnswer": "pre- (before) + natal (birth, from Latin natus)",
+        "distractors": [
+          "pre- (after) + natal (birth)",
+          "pre- (before) + natal (labor)",
+          "pre- (during) + natal (newborn)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "pre- (before) + natalis (of birth) = care during pregnancy before delivery = ___",
+        "correctAnswer": "Prenatal",
+        "distractors": ["Postnatal", "Neonatal", "Perinatal"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "pregnancy_terms", "prefixes"],
+    "visualDescription": "Word split PRE + NATAL with 'before' and 'birth' labeled, pregnant figure with checkmark representing prenatal visit"
+  },
+  {
+    "id": "medterm_ob_neonatal",
+    "correctAnswer": "Neonatal",
+    "acceptableAlternatives": ["Neonatal period"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Prenatal",
+      "Postnatal",
+      "Antepartum",
+      "Perinatal",
+      "Postpartum",
+      "Infantile",
+      "Congenital",
+      "Primigravida"
+    ],
+    "quizQuestion": "What medical term describes the first 28 days of life after birth, covering premature, full-term, and postmature infants?",
+    "explanation": "Neonatal comes from Greek neo- (new) + Latin natalis (birth). The neonatal period is defined medically as the first 28 days after birth (day 0–27), applying to premature, full-term, and postmature infants alike. This is when newborns (neonates) are at highest physiological risk. NICUs (neonatal intensive care units) specialize in this period.",
+    "statement": "Neonatal refers to the first 28 days after birth, from neo- (new) + natal (birth).",
+    "wowFactor": "Neo- (new) comes from Greek 'neos'. You see it in 'neoclassical' (new classical style), 'neolithic' (new stone age), 'neon' (new element when discovered), and 'neonate'. The Greeks loved labeling things as new!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Infant",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "How long does the neonatal period last?",
+        "correctAnswer": "First 28 days after birth",
+        "distractors": [
+          "First 7 days after birth",
+          "First 3 months after birth",
+          "First year of life"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "neo- (new) + natal (birth) = the first 28 days of life = ___",
+        "correctAnswer": "Neonatal",
+        "distractors": ["Prenatal", "Perinatal", "Postnatal"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "pregnancy_terms", "prefixes"],
+    "visualDescription": "Timeline from day 0 to day 28 labeled NEONATAL PERIOD, with NICU incubator icon and NEO + NATAL breakdown"
+  },
+  {
+    "id": "medterm_ob_eclampsia",
+    "correctAnswer": "Eclampsia",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Pre-eclampsia",
+      "Gestational diabetes",
+      "Hyperemesis gravidarum",
+      "Oligohydramnios",
+      "Abruptio placentae",
+      "Placenta previa",
+      "Ectopic pregnancy",
+      "HELLP syndrome"
+    ],
+    "quizQuestion": "What obstetric emergency is characterized by the onset of tonic-clonic seizures in a pregnant woman who has pre-eclampsia?",
+    "explanation": "Eclampsia is the dangerous progression of pre-eclampsia to seizures. Pre-eclampsia involves high blood pressure and proteinuria after 20 weeks. Eclampsia adds tonic-clonic seizures that typically last about one minute, followed by confusion or coma. Treatment includes IV magnesium sulfate (seizure prevention) and emergency delivery. It affects about 1.4% of deliveries globally.",
+    "statement": "Eclampsia is the onset of seizures in a pregnant woman with pre-eclampsia, a life-threatening obstetric emergency.",
+    "wowFactor": "The word eclampsia comes from Greek 'eklampsis' meaning 'sudden flash of light' — because patients sometimes report visual disturbances (flashing lights) before seizures strike. Ancient Greeks noticed this warning sign millennia ago!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Eclampsia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the key clinical distinction between pre-eclampsia and eclampsia?",
+        "correctAnswer": "Eclampsia adds seizures (tonic-clonic) to the features of pre-eclampsia",
+        "distractors": [
+          "Pre-eclampsia has seizures; eclampsia does not",
+          "Eclampsia occurs before 20 weeks; pre-eclampsia after 20 weeks",
+          "They are the same condition with different names"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Greek 'eklampsis' (sudden flash) → seizures in pregnancy with pre-eclampsia = ___",
+        "correctAnswer": "Eclampsia",
+        "distractors": ["Pre-eclampsia", "HELLP syndrome", "Gestational hypertension"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "conditions", "emergency"],
+    "visualDescription": "Split diagram: pre-eclampsia (hypertension + proteinuria) with an arrow labeled 'progression' leading to eclampsia (+ seizures symbol)"
+  },
+  {
+    "id": "medterm_ob_preeclampsia",
+    "correctAnswer": "Pre-eclampsia",
+    "acceptableAlternatives": ["Preeclampsia"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Eclampsia",
+      "Gestational diabetes",
+      "Gestational hypertension",
+      "Hyperemesis gravidarum",
+      "Abruptio placentae",
+      "HELLP syndrome",
+      "Oligohydramnios",
+      "Placenta previa"
+    ],
+    "quizQuestion": "What multi-system pregnancy disorder, appearing after 20 weeks gestation, is characterized by new-onset high blood pressure and proteinuria or end-organ damage?",
+    "explanation": "Pre-eclampsia is a multi-system disorder of pregnancy characterized by new hypertension (BP >140/90 mmHg at two readings 4+ hours apart) after 20 weeks, plus proteinuria or end-organ damage. It complicates about 5% of deliveries globally. If untreated it can progress to eclampsia (seizures). Risk factors include obesity, prior hypertension, first pregnancy, and diabetes. Aspirin helps prevent it in high-risk patients.",
+    "statement": "Pre-eclampsia is a pregnancy disorder after 20 weeks marked by hypertension and proteinuria or end-organ damage.",
+    "wowFactor": "Low-dose aspirin taken daily from 12 weeks can reduce the risk of pre-eclampsia by about 10–25% in high-risk women. A common over-the-counter painkiller is one of obstetrics' most important preventive medications!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pre-eclampsia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "At what gestational age does pre-eclampsia characteristically begin?",
+        "correctAnswer": "After 20 weeks of pregnancy",
+        "distractors": [
+          "In the first trimester (before 13 weeks)",
+          "At any point in pregnancy",
+          "Only in the first week after delivery"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "New hypertension + proteinuria after 20 weeks of pregnancy = ___",
+        "correctAnswer": "Pre-eclampsia",
+        "distractors": ["Eclampsia", "Gestational hypertension", "Gestational diabetes"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "conditions"],
+    "visualDescription": "Blood pressure cuff and urine test strip beside a pregnancy silhouette at the third trimester, 20 WEEKS threshold labeled"
+  },
+  {
+    "id": "medterm_ob_ectopic_pregnancy",
+    "correctAnswer": "Ectopic pregnancy",
+    "acceptableAlternatives": ["Extrauterine pregnancy"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Placenta previa",
+      "Abruptio placentae",
+      "Pre-eclampsia",
+      "Gestational diabetes",
+      "Hyperemesis gravidarum",
+      "Oligohydramnios",
+      "Molar pregnancy",
+      "Miscarriage"
+    ],
+    "quizQuestion": "What pregnancy complication occurs when the embryo implants and grows outside the uterus, most commonly in the fallopian tube?",
+    "explanation": "Ectopic pregnancy (from Greek ektopos = out of place) occurs when the embryo implants outside the uterine cavity. About 90% are tubal pregnancies (in the fallopian tube). The fetus cannot survive, and the growing tissue risks rupture and severe internal hemorrhage. Diagnosis uses hCG blood tests and ultrasound. It affects less than 2% of pregnancies annually.",
+    "statement": "Ectopic pregnancy is when the embryo implants outside the uterus, usually in the fallopian tube.",
+    "wowFactor": "Ectopic comes from Greek 'ektopos' (out of place). An ectopic beat in cardiology is a heartbeat originating from the wrong place; an ectopic kidney is one that formed in the wrong location. The word is medicine's way of saying 'this is where it should NOT be'!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ectopic_pregnancy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Where do approximately 90% of ectopic pregnancies implant?",
+        "correctAnswer": "In the fallopian tube (tubal pregnancy)",
+        "distractors": [
+          "On the cervix",
+          "In the ovary",
+          "In the abdominal cavity"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Greek 'ektopos' (out of place) → pregnancy outside the uterus = ___",
+        "correctAnswer": "Ectopic pregnancy",
+        "distractors": ["Molar pregnancy", "Abruptio placentae", "Placenta previa"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "conditions", "emergency"],
+    "visualDescription": "Diagram of uterus and fallopian tubes with embryo shown implanted in the tube rather than the uterus, labeled 'ectopic = out of place'"
+  },
+  {
+    "id": "medterm_ob_placenta_previa",
+    "correctAnswer": "Placenta previa",
+    "acceptableAlternatives": ["Placenta praevia"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Abruptio placentae",
+      "Placental abruption",
+      "Ectopic pregnancy",
+      "Pre-eclampsia",
+      "Oligohydramnios",
+      "Uterine rupture",
+      "Vasa previa",
+      "Placenta accreta"
+    ],
+    "quizQuestion": "What obstetric condition occurs when the placenta attaches inside the uterus partially or completely covering the cervical opening?",
+    "explanation": "Placenta previa (Latin praevia = going before, preceding) occurs when the placenta implants low in the uterus, covering the cervical os (opening). This blocks the normal birth canal. It causes painless bright-red vaginal bleeding in the second half of pregnancy and typically requires cesarean delivery. It affects about 0.5% of pregnancies; rate rises to 10% after four cesarean sections.",
+    "statement": "Placenta previa is when the placenta covers the cervical opening, requiring cesarean delivery.",
+    "wowFactor": "The word 'previa' means 'going before' in Latin — the placenta literally blocks the way before the baby. After four C-sections, the placenta previa risk rises from 0.5% to 10%, which is why surgical scar tissue in the uterus profoundly affects future pregnancies!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Placenta_praevia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the hallmark symptom of placenta previa?",
+        "correctAnswer": "Painless bright-red vaginal bleeding in the second half of pregnancy",
+        "distractors": [
+          "Severe abdominal pain with vaginal bleeding",
+          "Seizures in the third trimester",
+          "Swelling of face and hands with hypertension"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Placenta covering the cervical opening = ___",
+        "correctAnswer": "Placenta previa",
+        "distractors": ["Abruptio placentae", "Placenta accreta", "Vasa previa"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "conditions"],
+    "visualDescription": "Cross-section of uterus showing placenta covering the cervix at the bottom, arrows indicating blocked birth canal"
+  },
+  {
+    "id": "medterm_ob_abruptio_placentae",
+    "correctAnswer": "Abruptio placentae",
+    "acceptableAlternatives": ["Placental abruption", "Placenta abruptio"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Placenta previa",
+      "Placenta accreta",
+      "Ectopic pregnancy",
+      "Pre-eclampsia",
+      "Oligohydramnios",
+      "Uterine rupture",
+      "Vasa previa",
+      "Postpartum hemorrhage"
+    ],
+    "quizQuestion": "What obstetric emergency occurs when the placenta prematurely separates from the uterine wall before childbirth, most commonly around 25 weeks?",
+    "explanation": "Abruptio placentae (Latin abruptio = tearing away + placentae = of the placenta) is premature separation of the placenta from the uterus. It occurs in about 1 in 200 pregnancies, most commonly around 25 weeks. Symptoms include vaginal bleeding, severe abdominal pain, and low blood pressure. Complications include DIC (disseminated intravascular coagulopathy), kidney failure, stillbirth, and low birthweight.",
+    "statement": "Abruptio placentae is premature separation of the placenta from the uterine wall, a serious obstetric emergency.",
+    "wowFactor": "Abruptio comes from Latin 'abrumpere' — to break off suddenly. The same root gives us 'abrupt' in English. When a conversation ends abruptly, you're borrowing the same Latin word obstetricians use for a medical emergency!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Placental_abruption",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "How does abruptio placentae typically differ from placenta previa in presentation?",
+        "correctAnswer": "Abruptio: painful bleeding; placenta previa: painless bleeding",
+        "distractors": [
+          "Abruptio: painless bleeding; placenta previa: painful bleeding",
+          "They present identically with the same symptoms",
+          "Abruptio causes no bleeding; previa causes heavy bleeding"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Latin 'abrumpere' (to break off) + placentae = premature placental separation = ___",
+        "correctAnswer": "Abruptio placentae",
+        "distractors": ["Placenta previa", "Uterine rupture", "Placenta accreta"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "conditions", "emergency"],
+    "visualDescription": "Diagram of uterus with placenta partially detached from uterine wall, bleeding shown behind the placenta, labeled ABRUPTION"
+  },
+  {
+    "id": "medterm_ob_gestational_diabetes",
+    "correctAnswer": "Gestational diabetes",
+    "acceptableAlternatives": ["Gestational diabetes mellitus", "GDM"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Pre-eclampsia",
+      "Type 2 diabetes",
+      "Hyperemesis gravidarum",
+      "Oligohydramnios",
+      "Eclampsia",
+      "Placenta previa",
+      "Polycystic ovary syndrome",
+      "Insulin resistance"
+    ],
+    "quizQuestion": "What condition occurs when a person without pre-existing diabetes develops high blood sugar levels during pregnancy, typically screened for between 24 and 28 weeks?",
+    "explanation": "Gestational diabetes develops during pregnancy due to insulin resistance or reduced insulin production driven by placental hormones. It is screened for at 24–28 weeks with a glucose tolerance test. Poorly controlled gestational diabetes can cause macrosomia (oversized baby), neonatal hypoglycemia, jaundice, and stillbirth. Most women manage it with diet and exercise; some require metformin or insulin.",
+    "statement": "Gestational diabetes is high blood sugar that develops during pregnancy in someone without pre-existing diabetes.",
+    "wowFactor": "Babies born to mothers with poorly controlled gestational diabetes can be so large (macrosomic) that cesarean delivery becomes necessary. After delivery, the baby's insulin-overproducing pancreas can cause dangerous hypoglycemia — a clinical emergency requiring immediate glucose!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gestational_diabetes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "At what gestational weeks is routine gestational diabetes screening typically performed?",
+        "correctAnswer": "24 to 28 weeks",
+        "distractors": [
+          "8 to 12 weeks",
+          "36 to 40 weeks",
+          "At the first prenatal visit"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "High blood sugar first diagnosed during pregnancy in a non-diabetic person = ___",
+        "correctAnswer": "Gestational diabetes",
+        "distractors": ["Pre-eclampsia", "Type 2 diabetes", "Hyperemesis gravidarum"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "conditions", "endocrine"],
+    "visualDescription": "Blood glucose monitor beside a pregnant silhouette, 24-28 WEEKS screening window highlighted on pregnancy timeline"
+  },
+  {
+    "id": "medterm_ob_hyperemesis_gravidarum",
+    "correctAnswer": "Hyperemesis gravidarum",
+    "acceptableAlternatives": ["HG"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Morning sickness",
+      "Eclampsia",
+      "Gestational diabetes",
+      "Pre-eclampsia",
+      "Oligohydramnios",
+      "Placenta previa",
+      "Abruptio placentae",
+      "Cholestasis of pregnancy"
+    ],
+    "quizQuestion": "What severe pregnancy complication, considered an extreme form of morning sickness, is characterized by intractable nausea, vomiting, weight loss of 5%+ and ketonuria?",
+    "explanation": "Hyperemesis gravidarum combines hyper- (excessive) + emesis (vomiting) + gravidarum (of pregnant women, genitive plural of gravida). It is technically defined as 3+ vomiting episodes per day with 5% or 3 kg weight loss and urinary ketones. Unlike normal morning sickness it may persist the entire pregnancy. A 2023 Nature study linked it to abnormally high GDF15 hormone and increased sensitivity to it.",
+    "statement": "Hyperemesis gravidarum is severe pregnancy vomiting causing weight loss and dehydration, from hyper- (excessive) + emesis (vomiting) + gravidarum (of pregnant women).",
+    "wowFactor": "Catherine, Princess of Wales, was publicly hospitalized with hyperemesis gravidarum during all three of her pregnancies. A 2023 Nature study finally identified the hormonal cause: GDF15, a stress hormone the fetus produces that some women are hypersensitive to.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hyperemesis_gravidarum",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'hyperemesis gravidarum': what does each part mean?",
+        "correctAnswer": "hyper- (excessive) + emesis (vomiting) + gravidarum (of pregnant women)",
+        "distractors": [
+          "hyper- (high) + emesis (nausea) + gravidarum (of newborns)",
+          "hypo- (low) + emesis (vomiting) + gravidarum (of pregnant women)",
+          "hyper- (excessive) + emesis (fever) + gravidarum (of labor)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "hyper- (excessive) + emesis (vomiting) + gravidarum (of pregnant women) = severe pregnancy vomiting = ___",
+        "correctAnswer": "Hyperemesis gravidarum",
+        "distractors": ["Morning sickness", "Gestational nausea", "Pre-eclampsia"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "conditions"],
+    "visualDescription": "Word split HYPER + EMESIS + GRAVIDARUM labeled 'excessive' + 'vomiting' + 'of pregnant women', with a severity scale showing HG as extreme end"
+  },
+  {
+    "id": "medterm_ob_oligohydramnios",
+    "correctAnswer": "Oligohydramnios",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 5,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Polyhydramnios",
+      "Anhydramnios",
+      "Pre-eclampsia",
+      "Eclampsia",
+      "Gestational diabetes",
+      "Placenta previa",
+      "Hyperemesis gravidarum",
+      "Abruptio placentae"
+    ],
+    "quizQuestion": "What pregnancy condition is characterized by deficient amniotic fluid, typically diagnosed by ultrasound when the amniotic fluid index measures less than 5 cm?",
+    "explanation": "Oligohydramnios combines oligo- (few, scanty) + hydro- (water) + amnios (amniotic sac). It is diagnosed by ultrasound when the amniotic fluid index (AFI) is less than 5 cm or the single deepest pocket (SDP) is less than 2 cm. Amniotic fluid is essential for fetal movement, lung development, and protection from uterine compression. The opposite condition is polyhydramnios (excess fluid).",
+    "statement": "Oligohydramnios is deficient amniotic fluid during pregnancy, from oligo- (scanty) + hydro- (water) + amnios (amniotic sac).",
+    "wowFactor": "The fetus actually swallows amniotic fluid and urinates it back out — it's a recycling system! Oligohydramnios can result from fetal kidney problems because if the kidneys don't function, fetal urine production stops, depleting the fluid. The fetus's kidneys effectively maintain their own 'swimming pool'!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oligohydramnios",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'oligohydramnios': what does each root mean?",
+        "correctAnswer": "oligo- (few/scanty) + hydro- (water) + amnios (amniotic sac)",
+        "distractors": [
+          "poly- (many) + hydro- (water) + amnios (amniotic sac)",
+          "oligo- (few) + hemo- (blood) + amnios (amniotic sac)",
+          "oligo- (low) + hydro- (birth fluid) + amnios (placenta)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "oligo- (scanty) + hydro- (water) + amnios = low amniotic fluid = ___",
+        "correctAnswer": "Oligohydramnios",
+        "distractors": ["Polyhydramnios", "Anhydramnios", "Amnionitis"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "conditions"],
+    "visualDescription": "Ultrasound diagram showing small amniotic fluid pockets labeled AFI <5cm, word roots OLIGO + HYDRO + AMNIOS annotated"
+  },
+  {
+    "id": "medterm_ob_cesarean_section",
+    "correctAnswer": "Cesarean section",
+    "acceptableAlternatives": ["Caesarean section", "C-section", "Cesarean delivery"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Episiotomy",
+      "Amniotomy",
+      "Amniocentesis",
+      "Hysterectomy",
+      "Hysterotomy",
+      "Vacuum extraction",
+      "Forceps delivery",
+      "Version procedure"
+    ],
+    "quizQuestion": "What surgical procedure delivers a baby through an incision in the mother's abdomen and uterus, used when vaginal delivery would put mother or child at risk?",
+    "explanation": "Cesarean section (C-section) involves a ~15 cm incision through the abdomen and uterus to deliver the baby. It takes 45 minutes to an hour and can be performed under spinal block or general anesthesia. Indications include obstructed labor, breech birth, placenta previa, twin pregnancy, and previous C-section. The WHO recommends it only when medically necessary.",
+    "statement": "Cesarean section is surgical delivery of a baby through an abdominal and uterine incision.",
+    "wowFactor": "Despite the legend, Julius Caesar was almost certainly NOT delivered by C-section — his mother Aurelia lived long after his birth, and the procedure was fatal for mothers in ancient Rome. The name likely comes from a Roman law ('lex caesarea') requiring the procedure when a pregnant woman died near term.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Caesarean_section",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the approximate length of the abdominal incision in a standard cesarean section?",
+        "correctAnswer": "About 15 cm (5.9 inches)",
+        "distractors": [
+          "About 5 cm (2 inches)",
+          "About 30 cm (12 inches)",
+          "About 25 cm (10 inches)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Surgical delivery through abdominal incision when vaginal birth is unsafe = ___",
+        "correctAnswer": "Cesarean section",
+        "distractors": ["Episiotomy", "Amniotomy", "Hysterotomy"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "procedures"],
+    "visualDescription": "Diagram of lower abdomen with incision line marked, baby silhouette being delivered, 15 cm incision length labeled"
+  },
+  {
+    "id": "medterm_ob_amniocentesis",
+    "correctAnswer": "Amniocentesis",
+    "acceptableAlternatives": ["Amniotic fluid test", "AFT"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Chorionic villus sampling",
+      "Cordocentesis",
+      "Amniotomy",
+      "Episiotomy",
+      "Cesarean section",
+      "Fetal echocardiography",
+      "Nuchal translucency scan",
+      "Percutaneous umbilical blood sampling"
+    ],
+    "quizQuestion": "What prenatal diagnostic procedure uses a thin needle inserted into the abdomen to sample amniotic fluid for genetic analysis, typically performed at 15–20 weeks gestation?",
+    "explanation": "Amniocentesis combines amnion (inner fetal membrane) + centesis (puncture, from Greek kentesis). A thin needle punctures the amnion to collect ~20 mL of amniotic fluid containing fetal cells. It is the gold standard for prenatal genetic diagnosis after 15 weeks, able to detect chromosomal abnormalities and many genetic disorders. It carries a 0.1–0.3% risk of pregnancy loss.",
+    "statement": "Amniocentesis is prenatal sampling of amniotic fluid by needle puncture for genetic diagnosis, from amnion + centesis (puncture).",
+    "wowFactor": "The amniotic fluid contains actual fetal cells sloughed off from the fetus's skin and lungs. By analyzing these cells, doctors can diagnose Down syndrome, cystic fibrosis, and hundreds of other conditions before birth — all from fluid the fetus is swimming in!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Amniocentesis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'amniocentesis': what does each part mean?",
+        "correctAnswer": "amnion (inner fetal membrane) + centesis (puncture/tapping)",
+        "distractors": [
+          "amnion (amniotic fluid) + centesis (removal by surgery)",
+          "amnio- (birth sac) + centesis (visual examination)",
+          "amnion (placenta) + centesis (incision)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "amnion (fetal membrane) + centesis (puncture) = needle sampling of amniotic fluid = ___",
+        "correctAnswer": "Amniocentesis",
+        "distractors": ["Amniotomy", "Chorionic villus sampling", "Cordocentesis"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "procedures", "diagnostic"],
+    "visualDescription": "Diagram showing ultrasound-guided needle entering the amniotic sac through the abdomen, fetal cells in fluid labeled, AMNION + CENTESIS word breakdown"
+  },
+  {
+    "id": "medterm_ob_episiotomy",
+    "correctAnswer": "Episiotomy",
+    "acceptableAlternatives": ["Perineotomy"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Amniotomy",
+      "Cesarean section",
+      "Amniocentesis",
+      "Hysterotomy",
+      "Colpotomy",
+      "Perineal massage",
+      "Vacuum extraction",
+      "Forceps delivery"
+    ],
+    "quizQuestion": "What obstetric procedure involves a surgical incision of the perineum and posterior vaginal wall during the second stage of labor to enlarge the birth opening?",
+    "explanation": "Episiotomy (from Greek epision = pubic area + tomy = incision/cutting) is a surgical cut made by an obstetrician to widen the vaginal opening during delivery. It can be midline (toward the anus) or medio-lateral (to one side). Once routine, it is no longer routinely recommended — perineal massage is preferred. As of 2012 it was performed in about 12% of vaginal births in the US.",
+    "statement": "Episiotomy is a surgical incision of the perineum to enlarge the vaginal opening during delivery, from Greek epision (pubic region) + tomy (incision).",
+    "wowFactor": "Episiotomy was once performed routinely for nearly every vaginal birth, assumed to prevent worse tearing. Clinical trials proved this assumption wrong — the procedure causes more harm than good when used routinely. Medicine reversing a universal practice based on evidence is science working as intended!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Episiotomy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'episiotomy': what do the Greek roots mean?",
+        "correctAnswer": "epision (pubic/perineal region) + tomy (incision/cutting)",
+        "distractors": [
+          "epi- (upon/over) + sio (birth) + tomy (viewing)",
+          "epision (uterus) + tomy (removal)",
+          "epi- (after) + sion (labor) + tomy (incision)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "epision (pubic region) + tomy (incision) = perineal cut to enlarge birth opening = ___",
+        "correctAnswer": "Episiotomy",
+        "distractors": ["Amniotomy", "Hysterotomy", "Colpotomy"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "procedures"],
+    "visualDescription": "Diagram showing perineum with medio-lateral incision line labeled, EPISION + TOMY word breakdown beside it"
+  },
+  {
+    "id": "medterm_ob_amniotomy",
+    "correctAnswer": "Amniotomy",
+    "acceptableAlternatives": ["Artificial rupture of membranes", "AROM"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 4,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Amniocentesis",
+      "Episiotomy",
+      "Cesarean section",
+      "Oxytocin induction",
+      "Colpotomy",
+      "Hysterotomy",
+      "Membrane sweep",
+      "Cordocentesis"
+    ],
+    "quizQuestion": "What obstetric procedure involves the artificial rupture of the fetal membranes (amniotic sac) using a sterile hook or instrument to induce or augment labor?",
+    "explanation": "Amniotomy (amnion + tomy = incision of the amnion) is the deliberate puncturing of the amniotic sac using an amnihook or amnicot. Also called artificial rupture of membranes (AROM). With membranes broken, the fluid buffer is removed, stimulating uterine contractions via prostaglandins from the amniotic fluid. A 2013 Cochrane Review found limited evidence for routine use in speeding first-stage labor.",
+    "statement": "Amniotomy is the artificial rupture of the amniotic membranes using a sterile instrument, from amnion + tomy (incision).",
+    "wowFactor": "The amnihook used in amniotomy looks like a small crochet hook. It is inserted into the vagina past the baby's presenting part and gently scratches a hole in the amniotic sac — one precise snag and a river of amniotic fluid follows. Simple tools, powerful effects!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Artificial_rupture_of_membranes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'amniotomy': what does each part mean?",
+        "correctAnswer": "amnion (fetal membrane/amniotic sac) + tomy (incision/cutting)",
+        "distractors": [
+          "amnion (amniotic fluid) + tomy (visual examination)",
+          "amnio- (birth) + tomy (removal)",
+          "amnion (placenta) + tomy (puncture)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "amnion (fetal membrane) + tomy (incision) = artificial membrane rupture = ___",
+        "correctAnswer": "Amniotomy",
+        "distractors": ["Amniocentesis", "Episiotomy", "Membrane sweep"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "procedures"],
+    "visualDescription": "Diagram of amnihook instrument puncturing the amniotic sac, amniotic fluid flowing out, AMNION + TOMY word breakdown"
+  },
+  {
+    "id": "medterm_ob_oxytocin_induction",
+    "correctAnswer": "Oxytocin induction",
+    "acceptableAlternatives": ["Labor induction with oxytocin", "Pitocin induction"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Amniotomy",
+      "Episiotomy",
+      "Amniocentesis",
+      "Cesarean section",
+      "Membrane sweep",
+      "Prostaglandin induction",
+      "Corticosteroid administration",
+      "Magnesium sulfate therapy"
+    ],
+    "quizQuestion": "What obstetric procedure uses an intravenous peptide hormone — naturally produced in the hypothalamus — to stimulate uterine contractions and initiate or augment labor?",
+    "explanation": "Oxytocin (from Greek oxys = swift + tokos = birth) is a peptide hormone normally produced in the hypothalamus and released by the posterior pituitary. It stimulates uterine contractions during labor via a positive feedback loop — each contraction triggers more oxytocin release, intensifying subsequent contractions. Pharmaceutical oxytocin (brand name Pitocin) is given IV to induce or augment labor.",
+    "statement": "Oxytocin induction uses IV oxytocin — the 'birth hormone' from the posterior pituitary — to stimulate uterine contractions.",
+    "wowFactor": "Oxytocin is also called the 'love hormone' or 'bonding hormone' — it is released during hugging, social bonding, and breastfeeding. The same hormone that triggers life's most intense physical experience (labor contractions) also floods the brain during warm social moments. Evolution repurposed one molecule for many connections!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oxytocin",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Where is oxytocin naturally produced and where is it released?",
+        "correctAnswer": "Produced in the hypothalamus; released by the posterior pituitary",
+        "distractors": [
+          "Produced in the anterior pituitary; released directly into the bloodstream",
+          "Produced in the ovaries; released by the adrenal glands",
+          "Produced in the placenta; released by the uterus"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Greek oxys (swift) + tokos (birth) = posterior pituitary hormone used to stimulate labor = ___",
+        "correctAnswer": "Oxytocin",
+        "distractors": ["Progesterone", "Estrogen", "Prolactin"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "procedures", "hormones"],
+    "visualDescription": "IV drip labeled OXYTOCIN with hypothalamus and posterior pituitary diagram showing natural production, uterus with contraction waves"
+  },
+  {
+    "id": "medterm_ob_obstetric_ultrasound",
+    "correctAnswer": "Obstetric ultrasonography",
+    "acceptableAlternatives": ["Prenatal ultrasound", "Obstetric ultrasound"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "procedure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Amniocentesis",
+      "Chorionic villus sampling",
+      "Doppler echocardiography",
+      "Fetal MRI",
+      "Non-stress test",
+      "Biophysical profile",
+      "Cordocentesis",
+      "Nuchal translucency measurement"
+    ],
+    "quizQuestion": "What standard prenatal procedure uses sound waves to create real-time images of the developing fetus in the uterus, with the anatomy scan recommended at 18–22 weeks?",
+    "explanation": "Obstetric ultrasonography (prenatal ultrasound) uses high-frequency sound waves to image the fetus in real time. The International Society of Ultrasound in Obstetrics and Gynecology (ISUOG) recommends a routine anatomy scan at 18–22 weeks to confirm dating, assess growth, and detect congenital malformations. An early nuchal scan at 11–13+6 weeks screens for chromosomal abnormalities.",
+    "statement": "Obstetric ultrasonography uses sound waves to image the fetus; the standard anatomy scan is at 18–22 weeks gestation.",
+    "wowFactor": "Before ultrasound (pre-1960s), doctors had no way to see the fetus before birth — they guessed sex by the shape of the abdomen or the heartbeat's pitch. Ian Donald pioneered obstetric ultrasound in 1958 using a ship-welding flaw detector. Industrial inspection technology became the window into the womb!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Obstetric_ultrasonography",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "At what gestational weeks does ISUOG recommend the routine anatomy ultrasound scan?",
+        "correctAnswer": "18 to 22 weeks",
+        "distractors": [
+          "8 to 12 weeks",
+          "28 to 32 weeks",
+          "34 to 38 weeks"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Standard prenatal imaging using sound waves, with anatomy scan at 18–22 weeks = ___",
+        "correctAnswer": "Obstetric ultrasonography",
+        "distractors": ["Amniocentesis", "Fetal MRI", "Chorionic villus sampling"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "procedures", "diagnostic"],
+    "visualDescription": "Ultrasound probe on pregnant abdomen with fetus image on screen, 18-22 WEEKS label, sound wave lines illustrated"
+  },
+  {
+    "id": "medterm_ob_apgar_score",
+    "correctAnswer": "Apgar score",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Bishop score",
+      "Glasgow Coma Scale",
+      "BALLARD score",
+      "Dubowitz score",
+      "Fetal biophysical profile",
+      "Non-stress test",
+      "APGAR acronym",
+      "Neonatal resuscitation score"
+    ],
+    "quizQuestion": "What newborn assessment system, developed in 1952 by Virginia Apgar, evaluates five criteria — Appearance, Pulse, Grimace, Activity, and Respiration — at one and five minutes after birth?",
+    "explanation": "The Apgar score (developed 1952 by anesthesiologist Virginia Apgar at Columbia University) evaluates newborns on five criteria: Appearance (skin color), Pulse (heart rate), Grimace (reflex irritability), Activity (muscle tone), and Respiration. Each scores 0–2, giving a maximum of 10. The criteria names are a backronym of Apgar's surname. Scores are assessed at 1 and 5 minutes after birth.",
+    "statement": "The Apgar score assesses newborn health at 1 and 5 minutes after birth on five criteria: Appearance, Pulse, Grimace, Activity, Respiration.",
+    "wowFactor": "Virginia Apgar invented this score in 1952 because she was frustrated that obstetricians were ignoring the newborn's health status after delivery. She wrote the criteria on a napkin during a medical conference breakfast. The APGAR acronym was created AFTER the score was named for her — a backronym honoring its inventor!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apgar_score",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What do the five letters of the APGAR backronym stand for?",
+        "correctAnswer": "Appearance, Pulse, Grimace, Activity, Respiration",
+        "distractors": [
+          "Alertness, Pulse, Girth, Agility, Reflexes",
+          "Appearance, Pain response, Grip, Alertness, Respiration",
+          "Apnea, Pulse, Glucose, Activity, Reflexes"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Five-criterion newborn scoring system developed by Virginia Apgar in 1952, assessed at 1 and 5 minutes = ___",
+        "correctAnswer": "Apgar score",
+        "distractors": ["Bishop score", "Glasgow Coma Scale", "Ballard score"]
+      }
+    ],
+    "tags": ["medical_terminology", "obstetrics", "procedures", "neonatal", "assessment"],
+    "visualDescription": "Five-column table showing APGAR criteria with 0/1/2 scores each, Virginia Apgar's portrait beside it, score 0-10 scale at bottom"
+  }
+]

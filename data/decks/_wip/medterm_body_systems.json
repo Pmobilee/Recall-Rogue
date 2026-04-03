@@ -1,0 +1,722 @@
+[
+  {
+    "id": "medterm_sys_cardio",
+    "correctAnswer": "Cardiovascular",
+    "acceptableAlternatives": ["Circulatory"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Respiratory", "Digestive", "Nervous", "Urinary", "Musculoskeletal", "Endocrine", "Integumentary", "Reproductive"],
+    "quizQuestion": "Which body system does cardi/o belong to?",
+    "explanation": "Cardi/o (heart) belongs to the cardiovascular system. Other cardiovascular roots include arteri/o (artery), phleb/o (vein), angi/o (vessel), and ven/o (vein).",
+    "statement": "Cardi/o belongs to the cardiovascular system.",
+    "wowFactor": "The cardiovascular system has more root words than almost any other system — cardi/o, angi/o, arteri/o, phleb/o, ven/o, and hem/o all belong here!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Name a combining form from the cardiovascular system.",
+        "correctAnswer": "Cardi/o",
+        "distractors": ["Gastr/o", "Neur/o", "Oste/o"]
+      },
+      {
+        "type": "context",
+        "question": "A cardiologist specializes in which body system?",
+        "correctAnswer": "Cardiovascular",
+        "distractors": ["Respiratory", "Nervous", "Digestive"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root CARDI/O with an arrow pointing to a cardiovascular system diagram"
+  },
+  {
+    "id": "medterm_sys_arterio",
+    "correctAnswer": "Cardiovascular",
+    "acceptableAlternatives": ["Circulatory"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Respiratory", "Digestive", "Nervous", "Urinary", "Musculoskeletal", "Endocrine", "Hematologic/Lymphatic", "Reproductive"],
+    "quizQuestion": "Which body system does arteri/o belong to?",
+    "explanation": "Arteri/o (artery) belongs to the cardiovascular system. Other cardiovascular roots include cardi/o (heart), phleb/o (vein), angi/o (vessel), and aort/o (aorta).",
+    "statement": "Arteri/o belongs to the cardiovascular system.",
+    "wowFactor": "Arteries carry oxygenated blood away from the heart — arteri/o comes from the Greek word for airway, because ancient physicians thought arteries carried air!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form refers to an artery?",
+        "correctAnswer": "Arteri/o",
+        "distractors": ["Phleb/o", "Nephr/o", "Bronch/o"]
+      },
+      {
+        "type": "context",
+        "question": "Arteriosclerosis is a hardening of the walls of which body system?",
+        "correctAnswer": "Cardiovascular",
+        "distractors": ["Respiratory", "Musculoskeletal", "Urinary"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root ARTERI/O with an arrow pointing to an artery cross-section"
+  },
+  {
+    "id": "medterm_sys_pulmono",
+    "correctAnswer": "Respiratory",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Digestive", "Nervous", "Urinary", "Musculoskeletal", "Endocrine", "Integumentary", "Hematologic/Lymphatic"],
+    "quizQuestion": "Which body system does pulmon/o belong to?",
+    "explanation": "Pulmon/o (lung) belongs to the respiratory system. Other respiratory roots include bronch/o (bronchial tubes), trache/o (trachea), rhin/o (nose), and thorac/o (chest/thorax).",
+    "statement": "Pulmon/o belongs to the respiratory system.",
+    "wowFactor": "Pulmon/o comes from the Latin 'pulmo' for lung — giving us 'pulmonary' medicine, meaning anything related to the lungs and breathing!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Name a combining form from the respiratory system.",
+        "correctAnswer": "Pulmon/o",
+        "distractors": ["Hepat/o", "Nephr/o", "Oste/o"]
+      },
+      {
+        "type": "context",
+        "question": "Pulmonary embolism is a blockage affecting which body system?",
+        "correctAnswer": "Respiratory",
+        "distractors": ["Cardiovascular", "Digestive", "Urinary"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root PULMON/O with an arrow pointing to a lung diagram"
+  },
+  {
+    "id": "medterm_sys_broncho",
+    "correctAnswer": "Respiratory",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Digestive", "Nervous", "Urinary", "Musculoskeletal", "Endocrine", "Integumentary", "Reproductive"],
+    "quizQuestion": "Which body system does bronch/o belong to?",
+    "explanation": "Bronch/o (bronchial tubes) belongs to the respiratory system. Other respiratory roots include pulmon/o (lung), trache/o (trachea), rhin/o (nose), and laryng/o (larynx).",
+    "statement": "Bronch/o belongs to the respiratory system.",
+    "wowFactor": "The bronchi are the branching airways inside the lungs — bronchoscopy lets doctors look directly into these airways with a tiny camera!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form refers to the bronchial tubes?",
+        "correctAnswer": "Bronch/o",
+        "distractors": ["Esophag/o", "Cardi/o", "Cyst/o"]
+      },
+      {
+        "type": "context",
+        "question": "Bronchitis is inflammation within which body system?",
+        "correctAnswer": "Respiratory",
+        "distractors": ["Digestive", "Cardiovascular", "Nervous"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root BRONCH/O with an arrow pointing to bronchial tube diagram"
+  },
+  {
+    "id": "medterm_sys_gastro",
+    "correctAnswer": "Digestive",
+    "acceptableAlternatives": ["Gastrointestinal"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Respiratory", "Nervous", "Urinary", "Musculoskeletal", "Endocrine", "Integumentary", "Reproductive"],
+    "quizQuestion": "Which body system does gastr/o belong to?",
+    "explanation": "Gastr/o (stomach) belongs to the digestive system. Other digestive roots include hepat/o (liver), enter/o (intestines), col/o (colon), and esophag/o (esophagus).",
+    "statement": "Gastr/o belongs to the digestive system.",
+    "wowFactor": "Gastr/o appears in 'gastronomy' (the art of cooking) AND medicine — proving that whether you're a chef or a doctor, it all comes back to the stomach!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Name a combining form from the digestive system.",
+        "correctAnswer": "Gastr/o",
+        "distractors": ["Neur/o", "Cardi/o", "Nephr/o"]
+      },
+      {
+        "type": "context",
+        "question": "Gastroenteritis is inflammation affecting which body system?",
+        "correctAnswer": "Digestive",
+        "distractors": ["Respiratory", "Urinary", "Cardiovascular"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root GASTR/O with an arrow pointing to a stomach diagram"
+  },
+  {
+    "id": "medterm_sys_hepato",
+    "correctAnswer": "Digestive",
+    "acceptableAlternatives": ["Gastrointestinal"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Respiratory", "Nervous", "Urinary", "Musculoskeletal", "Endocrine", "Hematologic/Lymphatic", "Reproductive"],
+    "quizQuestion": "Which body system does hepat/o belong to?",
+    "explanation": "Hepat/o (liver) belongs to the digestive system. The liver is the largest digestive gland. Other digestive roots include gastr/o (stomach), enter/o (intestines), pancreat/o (pancreas), and col/o (colon).",
+    "statement": "Hepat/o belongs to the digestive system.",
+    "wowFactor": "The liver performs over 500 distinct functions — hepat/o is one of the busiest roots in medicine, appearing in hepatitis, hepatomegaly, and hepatocellular carcinoma!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form refers to the liver?",
+        "correctAnswer": "Hepat/o",
+        "distractors": ["Nephr/o", "Neur/o", "Thyr/o"]
+      },
+      {
+        "type": "context",
+        "question": "Hepatitis is inflammation of an organ in which body system?",
+        "correctAnswer": "Digestive",
+        "distractors": ["Urinary", "Endocrine", "Hematologic/Lymphatic"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root HEPAT/O with an arrow pointing to a liver diagram"
+  },
+  {
+    "id": "medterm_sys_nephro",
+    "correctAnswer": "Urinary",
+    "acceptableAlternatives": ["Renal"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Respiratory", "Digestive", "Nervous", "Musculoskeletal", "Endocrine", "Integumentary", "Reproductive"],
+    "quizQuestion": "Which body system does nephr/o belong to?",
+    "explanation": "Nephr/o (kidney) belongs to the urinary system. Other urinary roots include cyst/o (bladder), ureter/o (ureter), urethr/o (urethra), and pyel/o (renal pelvis).",
+    "statement": "Nephr/o belongs to the urinary system.",
+    "wowFactor": "Nephr/o comes from the Greek 'nephros' — the same root behind nephrite jade, which ancient peoples believed could cure kidney disease when worn or ingested!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Name a combining form from the urinary system.",
+        "correctAnswer": "Nephr/o",
+        "distractors": ["Hepat/o", "Oste/o", "Bronch/o"]
+      },
+      {
+        "type": "context",
+        "question": "Nephrology is the medical specialty focused on which body system?",
+        "correctAnswer": "Urinary",
+        "distractors": ["Digestive", "Endocrine", "Cardiovascular"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root NEPHR/O with an arrow pointing to a kidney diagram"
+  },
+  {
+    "id": "medterm_sys_cysto",
+    "correctAnswer": "Urinary",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 3,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Respiratory", "Digestive", "Nervous", "Musculoskeletal", "Endocrine", "Integumentary", "Hematologic/Lymphatic"],
+    "quizQuestion": "Which body system does cyst/o belong to?",
+    "explanation": "Cyst/o (bladder) belongs to the urinary system. Other urinary roots include nephr/o (kidney), ureter/o (ureter), urethr/o (urethra), and ren/o (kidney, Latin root).",
+    "statement": "Cyst/o belongs to the urinary system.",
+    "wowFactor": "Cyst/o technically means 'sac' or 'bag' and originally referred to the bladder — a perfect name for an organ that's essentially a muscular storage sac for urine!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form refers to the urinary bladder?",
+        "correctAnswer": "Cyst/o",
+        "distractors": ["Gastr/o", "Cardi/o", "Arteri/o"]
+      },
+      {
+        "type": "context",
+        "question": "Cystitis is inflammation of an organ in which body system?",
+        "correctAnswer": "Urinary",
+        "distractors": ["Digestive", "Reproductive", "Musculoskeletal"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root CYST/O with an arrow pointing to a urinary bladder diagram"
+  },
+  {
+    "id": "medterm_sys_neuro",
+    "correctAnswer": "Nervous",
+    "acceptableAlternatives": ["Neurological"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Respiratory", "Digestive", "Urinary", "Musculoskeletal", "Endocrine", "Integumentary", "Reproductive"],
+    "quizQuestion": "Which body system does neur/o belong to?",
+    "explanation": "Neur/o (nerve) belongs to the nervous system. Other nervous system roots include encephal/o (brain), myel/o (spinal cord), cerebr/o (cerebrum), and gangli/o (ganglion).",
+    "statement": "Neur/o belongs to the nervous system.",
+    "wowFactor": "The human nervous system has roughly 86 billion neurons — neur/o is Greek for 'sinew' or 'nerve', and ancient physicians used it for both tendons and nerves since they looked similar!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Name a combining form from the nervous system.",
+        "correctAnswer": "Neur/o",
+        "distractors": ["Gastr/o", "Cardi/o", "Oste/o"]
+      },
+      {
+        "type": "context",
+        "question": "Neurology is the medical specialty focused on which body system?",
+        "correctAnswer": "Nervous",
+        "distractors": ["Endocrine", "Musculoskeletal", "Cardiovascular"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root NEUR/O with an arrow pointing to a nerve cell diagram"
+  },
+  {
+    "id": "medterm_sys_encephalo",
+    "correctAnswer": "Nervous",
+    "acceptableAlternatives": ["Neurological"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Respiratory", "Digestive", "Urinary", "Musculoskeletal", "Endocrine", "Integumentary", "Hematologic/Lymphatic"],
+    "quizQuestion": "Which body system does encephal/o belong to?",
+    "explanation": "Encephal/o (brain) belongs to the nervous system. Other nervous system roots include neur/o (nerve), myel/o (spinal cord), cerebr/o (cerebrum), and mening/o (meninges).",
+    "statement": "Encephal/o belongs to the nervous system.",
+    "wowFactor": "Encephalitis (inflammation of the brain) and encephalogram (brain scan) both come from encephal/o — Greek for 'within the head', literally describing the brain's location!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form refers to the brain?",
+        "correctAnswer": "Encephal/o",
+        "distractors": ["Hepat/o", "Arthr/o", "Cyst/o"]
+      },
+      {
+        "type": "context",
+        "question": "An electroencephalogram (EEG) measures electrical activity in which body system?",
+        "correctAnswer": "Nervous",
+        "distractors": ["Cardiovascular", "Endocrine", "Musculoskeletal"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root ENCEPHAL/O with an arrow pointing to a brain diagram"
+  },
+  {
+    "id": "medterm_sys_osteo",
+    "correctAnswer": "Musculoskeletal",
+    "acceptableAlternatives": ["Skeletal"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Respiratory", "Digestive", "Urinary", "Nervous", "Endocrine", "Integumentary", "Reproductive"],
+    "quizQuestion": "Which body system does oste/o belong to?",
+    "explanation": "Oste/o (bone) belongs to the musculoskeletal system. Other musculoskeletal roots include arthr/o (joint), my/o (muscle), tend/o (tendon), and chondr/o (cartilage).",
+    "statement": "Oste/o belongs to the musculoskeletal system.",
+    "wowFactor": "Oste/o comes from Greek 'osteon' for bone — osteoporosis literally means 'porous bones', vividly describing how this condition makes bones fragile and full of holes!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Name a combining form from the musculoskeletal system.",
+        "correctAnswer": "Oste/o",
+        "distractors": ["Pulmon/o", "Neur/o", "Thyr/o"]
+      },
+      {
+        "type": "context",
+        "question": "Osteoporosis is a disease affecting which body system?",
+        "correctAnswer": "Musculoskeletal",
+        "distractors": ["Endocrine", "Cardiovascular", "Urinary"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root OSTE/O with an arrow pointing to a bone cross-section diagram"
+  },
+  {
+    "id": "medterm_sys_arthro",
+    "correctAnswer": "Musculoskeletal",
+    "acceptableAlternatives": ["Skeletal"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Respiratory", "Digestive", "Urinary", "Nervous", "Endocrine", "Integumentary", "Hematologic/Lymphatic"],
+    "quizQuestion": "Which body system does arthr/o belong to?",
+    "explanation": "Arthr/o (joint) belongs to the musculoskeletal system. Other musculoskeletal roots include oste/o (bone), my/o (muscle), chondr/o (cartilage), and ligament/o (ligament).",
+    "statement": "Arthr/o belongs to the musculoskeletal system.",
+    "wowFactor": "Arthr/o is easily confused with arteri/o (artery) — arthroscopy examines joints, while arteriosclerosis affects blood vessels. One extra letter makes a big difference!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form refers to a joint?",
+        "correctAnswer": "Arthr/o",
+        "distractors": ["Arteri/o", "Aden/o", "Bronch/o"]
+      },
+      {
+        "type": "context",
+        "question": "Arthritis is inflammation of structures in which body system?",
+        "correctAnswer": "Musculoskeletal",
+        "distractors": ["Nervous", "Cardiovascular", "Digestive"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root ARTHR/O with an arrow pointing to a joint diagram"
+  },
+  {
+    "id": "medterm_sys_dermo",
+    "correctAnswer": "Integumentary",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Respiratory", "Digestive", "Urinary", "Nervous", "Musculoskeletal", "Endocrine", "Reproductive"],
+    "quizQuestion": "Which body system does derm/o belong to?",
+    "explanation": "Derm/o (skin) belongs to the integumentary system. Other integumentary roots include cutane/o (skin), onych/o (nail), trich/o (hair), and hidr/o (sweat).",
+    "statement": "Derm/o belongs to the integumentary system.",
+    "wowFactor": "The integumentary system is the largest organ system by surface area — derm/o comes from Greek 'derma', giving us dermatology, epidermis, and even 'taxidermy' (arrangement of skin)!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Name a combining form from the integumentary system.",
+        "correctAnswer": "Derm/o",
+        "distractors": ["Gastr/o", "Neur/o", "Nephr/o"]
+      },
+      {
+        "type": "context",
+        "question": "Dermatitis is inflammation within which body system?",
+        "correctAnswer": "Integumentary",
+        "distractors": ["Musculoskeletal", "Digestive", "Urinary"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root DERM/O with an arrow pointing to a skin layer diagram"
+  },
+  {
+    "id": "medterm_sys_thyro",
+    "correctAnswer": "Endocrine",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Respiratory", "Digestive", "Urinary", "Nervous", "Musculoskeletal", "Integumentary", "Reproductive"],
+    "quizQuestion": "Which body system does thyr/o belong to?",
+    "explanation": "Thyr/o (thyroid gland) belongs to the endocrine system. Other endocrine roots include aden/o (gland), adren/o (adrenal gland), pancreat/o (pancreas), and gonad/o (gonads).",
+    "statement": "Thyr/o belongs to the endocrine system.",
+    "wowFactor": "Thyr/o comes from Greek 'thyreos' meaning shield — the thyroid gland was named for its shield shape! It controls metabolism, growth, and body temperature through hormone secretion.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Name a combining form from the endocrine system.",
+        "correctAnswer": "Thyr/o",
+        "distractors": ["Oste/o", "Cardi/o", "Gastr/o"]
+      },
+      {
+        "type": "context",
+        "question": "Hypothyroidism is a disorder of which body system?",
+        "correctAnswer": "Endocrine",
+        "distractors": ["Nervous", "Cardiovascular", "Musculoskeletal"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root THYR/O with an arrow pointing to a thyroid gland diagram"
+  },
+  {
+    "id": "medterm_sys_adeno",
+    "correctAnswer": "Endocrine",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 4,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Respiratory", "Digestive", "Urinary", "Nervous", "Musculoskeletal", "Integumentary", "Hematologic/Lymphatic"],
+    "quizQuestion": "Which body system does aden/o belong to?",
+    "explanation": "Aden/o (gland) belongs to the endocrine system. Other endocrine roots include thyr/o (thyroid), adren/o (adrenal gland), pancreat/o (pancreas, as an endocrine organ), and hypophys/o (pituitary).",
+    "statement": "Aden/o belongs to the endocrine system.",
+    "wowFactor": "Aden/o means 'gland' and is used for both endocrine and exocrine glands — but in system classification, it is associated with the endocrine system since glands are the defining organ of that system!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form refers to a gland?",
+        "correctAnswer": "Aden/o",
+        "distractors": ["Arthr/o", "Lymph/o", "Encephal/o"]
+      },
+      {
+        "type": "context",
+        "question": "Adenoma (a gland tumor) is most closely associated with which body system?",
+        "correctAnswer": "Endocrine",
+        "distractors": ["Digestive", "Hematologic/Lymphatic", "Reproductive"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root ADEN/O with an arrow pointing to an endocrine gland diagram"
+  },
+  {
+    "id": "medterm_sys_gyneco",
+    "correctAnswer": "Reproductive",
+    "acceptableAlternatives": ["Female Reproductive"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Respiratory", "Digestive", "Urinary", "Nervous", "Musculoskeletal", "Endocrine", "Integumentary"],
+    "quizQuestion": "Which body system does gynec/o belong to?",
+    "explanation": "Gynec/o (woman/female) belongs to the reproductive system. Other reproductive roots include orchi/o (testis), hyster/o (uterus), oophor/o (ovary), and colp/o (vagina).",
+    "statement": "Gynec/o belongs to the reproductive system.",
+    "wowFactor": "Gynec/o comes from Greek 'gyne' for woman — the same root that gives us 'gynecology', the medical specialty devoted to female reproductive health!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Name a combining form from the reproductive system.",
+        "correctAnswer": "Gynec/o",
+        "distractors": ["Nephr/o", "Pulmon/o", "Hepat/o"]
+      },
+      {
+        "type": "context",
+        "question": "A gynecologist specializes in which body system?",
+        "correctAnswer": "Reproductive",
+        "distractors": ["Urinary", "Endocrine", "Digestive"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root GYNEC/O with an arrow pointing to a female reproductive anatomy diagram"
+  },
+  {
+    "id": "medterm_sys_orchio",
+    "correctAnswer": "Reproductive",
+    "acceptableAlternatives": ["Male Reproductive"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 4,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Respiratory", "Digestive", "Urinary", "Nervous", "Musculoskeletal", "Endocrine", "Integumentary"],
+    "quizQuestion": "Which body system does orchi/o belong to?",
+    "explanation": "Orchi/o (testis) belongs to the reproductive system. Other reproductive roots include gynec/o (female), hyster/o (uterus), prostat/o (prostate), and sperm/o (sperm).",
+    "statement": "Orchi/o belongs to the reproductive system.",
+    "wowFactor": "Orchi/o comes from Greek 'orchis' meaning testis — the orchid flower was named after it due to its bulb shape! Orchidectomy (surgical removal) uses this root.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form refers to the testis?",
+        "correctAnswer": "Orchi/o",
+        "distractors": ["Arthr/o", "Lymph/o", "Thyr/o"]
+      },
+      {
+        "type": "context",
+        "question": "Orchitis is inflammation of an organ in which body system?",
+        "correctAnswer": "Reproductive",
+        "distractors": ["Urinary", "Endocrine", "Digestive"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root ORCHI/O with an arrow pointing to a male reproductive anatomy diagram"
+  },
+  {
+    "id": "medterm_sys_ophthalmo",
+    "correctAnswer": "Sensory (Eye)",
+    "acceptableAlternatives": ["Sensory", "Visual"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Respiratory", "Digestive", "Nervous", "Musculoskeletal", "Endocrine", "Sensory (Ear)", "Hematologic/Lymphatic"],
+    "quizQuestion": "Which body system does ophthalm/o belong to?",
+    "explanation": "Ophthalm/o (eye) belongs to the sensory system (eye). Other eye-related roots include ocul/o (eye, Latin), retin/o (retina), ir/o (iris), and conjunctiv/o (conjunctiva).",
+    "statement": "Ophthalm/o belongs to the sensory system — specifically the eye.",
+    "wowFactor": "Ophthalm/o is one of the hardest-to-spell roots in medical terminology — ophthalmology has two 'h's and three vowels in a row! Medical students have struggled with this spelling for centuries.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Name a combining form from the sensory eye system.",
+        "correctAnswer": "Ophthalm/o",
+        "distractors": ["Ot/o", "Neur/o", "Derm/o"]
+      },
+      {
+        "type": "context",
+        "question": "An ophthalmologist specializes in which sense organ?",
+        "correctAnswer": "Sensory (Eye)",
+        "distractors": ["Sensory (Ear)", "Nervous", "Integumentary"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root OPHTHALM/O with an arrow pointing to an eye anatomy diagram"
+  },
+  {
+    "id": "medterm_sys_oto",
+    "correctAnswer": "Sensory (Ear)",
+    "acceptableAlternatives": ["Sensory", "Auditory"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Respiratory", "Digestive", "Nervous", "Musculoskeletal", "Endocrine", "Sensory (Eye)", "Hematologic/Lymphatic"],
+    "quizQuestion": "Which body system does ot/o belong to?",
+    "explanation": "Ot/o (ear) belongs to the sensory system (ear). Other ear-related roots include audi/o (hearing), tympan/o (eardrum), myring/o (eardrum), and cochle/o (cochlea).",
+    "statement": "Ot/o belongs to the sensory system — specifically the ear.",
+    "wowFactor": "Ot/o appears in 'otolaryngology' (ENT medicine) — the combined specialty of ear (ot/o), nose (rhin/o), and throat (laryng/o). It is one of the longest specialty names in medicine!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which combining form refers to the ear?",
+        "correctAnswer": "Ot/o",
+        "distractors": ["Ophthalm/o", "Neur/o", "Gastr/o"]
+      },
+      {
+        "type": "context",
+        "question": "Otitis media (middle ear infection) affects which body system?",
+        "correctAnswer": "Sensory (Ear)",
+        "distractors": ["Sensory (Eye)", "Nervous", "Respiratory"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root OT/O with an arrow pointing to an ear anatomy diagram"
+  },
+  {
+    "id": "medterm_sys_lympho",
+    "correctAnswer": "Hematologic/Lymphatic",
+    "acceptableAlternatives": ["Lymphatic", "Hematologic"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "body_systems",
+    "difficulty": 4,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Cardiovascular", "Respiratory", "Digestive", "Urinary", "Nervous", "Musculoskeletal", "Endocrine", "Reproductive"],
+    "quizQuestion": "Which body system does lymph/o belong to?",
+    "explanation": "Lymph/o (lymph/lymphatic tissue) belongs to the hematologic/lymphatic system. Other hematologic/lymphatic roots include hem/o (blood), splen/o (spleen), thromb/o (clot), and leuk/o (white blood cell).",
+    "statement": "Lymph/o belongs to the hematologic/lymphatic system.",
+    "wowFactor": "The lymphatic system has no pump — unlike blood which is pushed by the heart, lymph fluid moves through muscle contractions and breathing. Lymph/o comes from Latin 'lympha' meaning clear water!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Name a combining form from the hematologic/lymphatic system.",
+        "correctAnswer": "Lymph/o",
+        "distractors": ["Arthr/o", "Pulmon/o", "Thyr/o"]
+      },
+      {
+        "type": "context",
+        "question": "Lymphoma is a cancer originating in which body system?",
+        "correctAnswer": "Hematologic/Lymphatic",
+        "distractors": ["Endocrine", "Digestive", "Reproductive"]
+      }
+    ],
+    "tags": ["medical_terminology", "body_system", "classification"],
+    "visualDescription": "Root LYMPH/O with an arrow pointing to a lymphatic system diagram"
+  }
+]

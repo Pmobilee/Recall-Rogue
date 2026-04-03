@@ -1,0 +1,1384 @@
+[
+  {
+    "id": "medterm_cond_arrhythmia",
+    "correctAnswer": "Arrhythmia",
+    "acceptableAlternatives": ["cardiac arrhythmia", "irregular heartbeat", "dysrhythmia"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Tachycardia",
+      "Bradycardia",
+      "Endocarditis",
+      "Pericarditis",
+      "Myocarditis",
+      "Cardiomyopathy",
+      "Atherosclerosis",
+      "Hypertension"
+    ],
+    "quizQuestion": "What condition is named from a- (without) + rhythm + -ia (condition), meaning an abnormal or irregular heart rhythm?",
+    "explanation": "Arrhythmia breaks down as: a- (without/absence of) + rhythm (from Greek 'rhythmos', regular beat) + -ia (condition). It literally means 'without rhythm'. Any deviation from the normal sinus rhythm of the heart qualifies — from benign palpitations to life-threatening ventricular fibrillation. The alternative spelling dysrhythmia uses dys- (abnormal) instead of a- (without), meaning 'abnormal rhythm'.",
+    "statement": "Arrhythmia means abnormal or irregular heart rhythm, from a- (without) + rhythm + -ia (condition).",
+    "wowFactor": "Atrial fibrillation — the most common arrhythmia — causes the atria to quiver at 300–600 impulses per minute instead of beating. The heart is literally 'fibrillating' like a bag of wriggling worms rather than pumping.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Arrhythmia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "cardiovascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'arrhythmia' — what does each part mean?",
+        "correctAnswer": "a- (without) + rhythm (regular beat) + -ia (condition)",
+        "distractors": [
+          "brady- (slow) + rhythm (regular beat) + -ia (condition)",
+          "hyper- (excessive) + rhythm (regular beat) + -ia (condition)",
+          "a- (without) + cardi/o (heart) + -ia (condition)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "a- (without) + rhythm + -ia (condition) = ___",
+        "correctAnswer": "Arrhythmia",
+        "distractors": ["Tachycardia", "Bradycardia", "Endocarditis"]
+      }
+    ],
+    "visualDescription": "The word ARRHYTHMIA split into glowing segments: A + RHYTHM + IA, with 'without', 'regular beat', 'condition' labeled below"
+  },
+  {
+    "id": "medterm_cond_endocarditis",
+    "correctAnswer": "Endocarditis",
+    "acceptableAlternatives": ["infective endocarditis", "heart lining inflammation"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Pericarditis",
+      "Myocarditis",
+      "Arrhythmia",
+      "Cardiomyopathy",
+      "Tachycardia",
+      "Atherosclerosis",
+      "Endometriosis",
+      "Encephalitis"
+    ],
+    "quizQuestion": "What condition is named from endo- (within) + cardi/o (heart) + -itis (inflammation), meaning inflammation of the inner lining of the heart?",
+    "explanation": "Endocarditis breaks down as: endo- (within, inside) + cardi/o (heart, from Greek 'kardia') + -itis (inflammation). The endocardium is the inner layer lining the heart chambers and valves. Infective endocarditis is caused by bacteria (most commonly Streptococcus or Staphylococcus) colonizing the heart valves, forming vegetations. It is a serious and potentially fatal infection requiring weeks of IV antibiotics.",
+    "statement": "Endocarditis means inflammation of the inner lining (endocardium) of the heart, from endo- (within) + cardi/o (heart) + -itis (inflammation).",
+    "wowFactor": "IV drug users are at high risk for endocarditis because injecting with non-sterile needles launches bacteria directly into the bloodstream, where they travel straight to the heart valves. The tricuspid valve (right side) is most often affected in this group.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Endocarditis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "cardiovascular", "infectious"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'endocarditis' — what does each part mean?",
+        "correctAnswer": "endo- (within) + cardi/o (heart) + -itis (inflammation)",
+        "distractors": [
+          "peri- (around) + cardi/o (heart) + -itis (inflammation)",
+          "endo- (within) + arthr/o (joint) + -itis (inflammation)",
+          "endo- (within) + cardi/o (heart) + -osis (condition)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "endo- (within) + cardi/o (heart) + -itis (inflammation) = ___",
+        "correctAnswer": "Endocarditis",
+        "distractors": ["Pericarditis", "Myocarditis", "Cardiomegaly"]
+      }
+    ],
+    "visualDescription": "Cross-section of a heart with the inner lining glowing red-orange, the word ENDOCARDITIS split: ENDO + CARDI + ITIS"
+  },
+  {
+    "id": "medterm_cond_pericarditis",
+    "correctAnswer": "Pericarditis",
+    "acceptableAlternatives": ["heart sac inflammation"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Endocarditis",
+      "Myocarditis",
+      "Cardiomyopathy",
+      "Arrhythmia",
+      "Pleuritis",
+      "Peritonitis",
+      "Pericardial effusion",
+      "Atherosclerosis"
+    ],
+    "quizQuestion": "What condition is named from peri- (around) + cardi/o (heart) + -itis (inflammation), meaning inflammation of the sac surrounding the heart?",
+    "explanation": "Pericarditis breaks down as: peri- (around, surrounding) + cardi/o (heart, from Greek 'kardia') + -itis (inflammation). The pericardium is the double-walled fibrous sac enclosing the heart. Inflammation causes sharp chest pain that classically worsens when lying down and improves when leaning forward (sitting up reduces pressure on the inflamed pericardium). Most cases are viral in origin.",
+    "statement": "Pericarditis means inflammation of the pericardium (sac surrounding the heart), from peri- (around) + cardi/o (heart) + -itis (inflammation).",
+    "wowFactor": "The hallmark physical finding of pericarditis is a 'friction rub' heard through a stethoscope — the sound of inflamed pericardial layers rubbing against each other, like two pieces of leather being rubbed together, audible at the left sternal border.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pericarditis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "cardiovascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'pericarditis' — what does each part mean?",
+        "correctAnswer": "peri- (around) + cardi/o (heart) + -itis (inflammation)",
+        "distractors": [
+          "endo- (within) + cardi/o (heart) + -itis (inflammation)",
+          "peri- (around) + arthr/o (joint) + -itis (inflammation)",
+          "peri- (around) + cardi/o (heart) + -osis (condition)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "peri- (around) + cardi/o (heart) + -itis (inflammation) = ___",
+        "correctAnswer": "Pericarditis",
+        "distractors": ["Endocarditis", "Myocarditis", "Pleuritis"]
+      }
+    ],
+    "visualDescription": "Heart with its outer sac glowing red-orange, the word PERICARDITIS split: PERI + CARDI + ITIS"
+  },
+  {
+    "id": "medterm_cond_myocarditis",
+    "correctAnswer": "Myocarditis",
+    "acceptableAlternatives": ["heart muscle inflammation"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Endocarditis",
+      "Pericarditis",
+      "Cardiomyopathy",
+      "Myalgia",
+      "Arrhythmia",
+      "Osteomyelitis",
+      "Rhabdomyolysis",
+      "Atherosclerosis"
+    ],
+    "quizQuestion": "What condition is named from my/o (muscle) + cardi/o (heart) + -itis (inflammation), meaning inflammation of the heart muscle itself?",
+    "explanation": "Myocarditis breaks down as: my/o (muscle, from Greek 'mys') + cardi/o (heart) + -itis (inflammation). The myocardium is the muscular middle layer of the heart wall responsible for pumping. Inflammation weakens the myocardium, reducing the heart's ability to pump and potentially causing arrhythmias or sudden cardiac death. Viral infections (especially enteroviruses like Coxsackie B) are the most common cause.",
+    "statement": "Myocarditis means inflammation of the myocardium (heart muscle), from my/o (muscle) + cardi/o (heart) + -itis (inflammation).",
+    "wowFactor": "Myocarditis is one of the leading causes of sudden cardiac death in young athletes. A young person collapsing on the sports field — often during a viral illness or shortly after — raises immediate suspicion for myocarditis.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Myocarditis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "cardiovascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'myocarditis' — what does each part mean?",
+        "correctAnswer": "my/o (muscle) + cardi/o (heart) + -itis (inflammation)",
+        "distractors": [
+          "peri- (around) + cardi/o (heart) + -itis (inflammation)",
+          "my/o (muscle) + arthr/o (joint) + -itis (inflammation)",
+          "my/o (muscle) + cardi/o (heart) + -osis (condition)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "my/o (muscle) + cardi/o (heart) + -itis (inflammation) = ___",
+        "correctAnswer": "Myocarditis",
+        "distractors": ["Pericarditis", "Endocarditis", "Rhabdomyolysis"]
+      }
+    ],
+    "visualDescription": "Heart with middle muscular layer glowing red, word MYOCARDITIS split: MYO + CARDI + ITIS"
+  },
+  {
+    "id": "medterm_cond_emphysema",
+    "correctAnswer": "Emphysema",
+    "acceptableAlternatives": ["pulmonary emphysema"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Asthma",
+      "Bronchitis",
+      "Pneumonia",
+      "Pneumothorax",
+      "Pleuritis",
+      "Pneumoconiosis",
+      "Dyspnea",
+      "Atelectasis"
+    ],
+    "quizQuestion": "What chronic lung condition is named from the Greek 'emphysema' (inflation/puffing up), involving destruction of alveolar walls and air trapping?",
+    "explanation": "Emphysema derives from Greek 'emphysema' meaning 'inflation' or 'puffing up' (from 'emphysaein' — to inflate). In this condition, the walls between alveoli (air sacs) are progressively destroyed, merging small sacs into larger, inefficient spaces. Air becomes trapped, the lungs over-inflate, and oxygen exchange diminishes. Cigarette smoking is the leading cause; alpha-1 antitrypsin deficiency causes hereditary emphysema. It is a component of COPD (chronic obstructive pulmonary disease).",
+    "statement": "Emphysema means inflation or puffing up (Greek), describing the destruction of alveolar walls causing air trapping in the lungs.",
+    "wowFactor": "A classic emphysema patient is called a 'pink puffer' — they work so hard to breathe (pursed-lip breathing, barrel chest) that they maintain near-normal oxygen levels until late disease, unlike the 'blue bloaters' of chronic bronchitis who tolerate low oxygen.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Emphysema",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "respiratory", "COPD"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "In emphysema, which structures are progressively destroyed?",
+        "correctAnswer": "Alveolar walls (air sac walls)",
+        "distractors": ["Bronchial smooth muscle", "Pleural membranes", "Pulmonary capillaries"]
+      },
+      {
+        "type": "etymology",
+        "question": "The Greek root of 'emphysema' means:",
+        "correctAnswer": "inflation or puffing up",
+        "distractors": ["difficult breathing", "lung scarring", "without air"]
+      }
+    ],
+    "visualDescription": "Side-by-side pixel art: healthy lung with small alveoli vs emphysematous lung with enlarged, merged air spaces"
+  },
+  {
+    "id": "medterm_cond_asthma",
+    "correctAnswer": "Asthma",
+    "acceptableAlternatives": ["bronchial asthma"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Emphysema",
+      "Bronchitis",
+      "Pneumonia",
+      "Laryngitis",
+      "Dyspnea",
+      "Rhinitis",
+      "Pleuritis",
+      "Sinusitis"
+    ],
+    "quizQuestion": "What condition derives from the Greek 'asthma' (panting), characterized by reversible bronchospasm, wheezing, and airway inflammation?",
+    "explanation": "Asthma comes from the Greek 'asthma' meaning 'panting' or 'short-drawn breath' (from 'azein', to breathe hard). It is a chronic inflammatory airway disease in which the bronchi undergo reversible narrowing (bronchoconstriction) in response to triggers such as allergens, cold air, exercise, or irritants. The cardinal symptoms are wheezing, coughing, chest tightness, and shortness of breath. Unlike emphysema, airway obstruction in asthma is largely reversible with bronchodilators.",
+    "statement": "Asthma comes from the Greek word for 'panting', describing the reversible bronchial constriction and wheezing that characterize the condition.",
+    "wowFactor": "Asthma has affected humans for millennia — ancient Egyptian papyri from 1550 BCE describe its treatment with herbal vapor inhalation. Some historians believe Tutankhamun may have suffered from asthma.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Asthma",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "respiratory", "inflammatory"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What Greek word meaning 'panting' gives us the name for the reversible bronchospasm condition?",
+        "correctAnswer": "asthma",
+        "distractors": ["pneuma", "dyspnoia", "bronkhos"]
+      },
+      {
+        "type": "etymology",
+        "question": "Unlike emphysema, what feature of asthma's airway narrowing distinguishes it clinically?",
+        "correctAnswer": "It is largely reversible with bronchodilators",
+        "distractors": ["It permanently destroys alveoli", "It only affects the larynx", "It is caused exclusively by infection"]
+      }
+    ],
+    "visualDescription": "Pixel art of a bronchus cross-section — normal vs constricted with inflammation, word ASTHMA glowing above"
+  },
+  {
+    "id": "medterm_cond_esophagitis",
+    "correctAnswer": "Esophagitis",
+    "acceptableAlternatives": ["oesophagitis", "esophagus inflammation"],
+    "chainThemeId": 6,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Gastritis",
+      "Hepatitis",
+      "Pancreatitis",
+      "Laryngitis",
+      "Cholecystitis",
+      "Colitis",
+      "Diverticulitis",
+      "Pharyngitis"
+    ],
+    "quizQuestion": "What condition is named from esophag/o (esophagus) + -itis (inflammation), meaning inflammation of the tube connecting the throat to the stomach?",
+    "explanation": "Esophagitis breaks down as: esophag/o (esophagus, from Greek 'oisophagos' — gullet or food carrier) + -itis (inflammation). The esophagus is the muscular tube transporting food from the pharynx to the stomach. The most common cause is gastroesophageal reflux disease (GERD), where stomach acid repeatedly contacts the esophageal lining. Other causes include eosinophilic esophagitis (allergic), infections (Candida, herpes), and caustic ingestion.",
+    "statement": "Esophagitis means inflammation of the esophagus, from esophag/o (esophagus) + -itis (inflammation).",
+    "wowFactor": "Eosinophilic esophagitis — an allergic form of esophagitis — was barely recognized before 1990 but is now one of the most common causes of food impaction (food getting stuck) and swallowing difficulties in young adults. It has risen dramatically alongside other atopic diseases.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Esophagitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "gastrointestinal"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'esophagitis' — what does each part mean?",
+        "correctAnswer": "esophag/o (esophagus) + -itis (inflammation)",
+        "distractors": [
+          "gastr/o (stomach) + -itis (inflammation)",
+          "esophag/o (esophagus) + -osis (condition)",
+          "pharyn/o (pharynx) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "esophag/o (esophagus) + -itis (inflammation) = ___",
+        "correctAnswer": "Esophagitis",
+        "distractors": ["Gastritis", "Laryngitis", "Colitis"]
+      }
+    ],
+    "visualDescription": "Diagram of the throat-to-stomach tube with the esophagus highlighted red-orange, word ESOPHAGITIS split: ESOPHAG + ITIS"
+  },
+  {
+    "id": "medterm_cond_diverticulitis",
+    "correctAnswer": "Diverticulitis",
+    "acceptableAlternatives": ["intestinal diverticulitis", "colonic diverticulitis"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Appendicitis",
+      "Colitis",
+      "Gastritis",
+      "Pancreatitis",
+      "Cholecystitis",
+      "Esophagitis",
+      "Peritonitis",
+      "Crohn's disease"
+    ],
+    "quizQuestion": "What condition is named from diverticul/o (small pouch/sac) + -itis (inflammation), meaning inflammation of pouches that form in the intestinal wall?",
+    "explanation": "Diverticulitis breaks down as: diverticul/o (small pouch or sac, from Latin 'diverticulum' — a byway or side road) + -itis (inflammation). Diverticula are small pouches that protrude through the muscular wall of the colon (most commonly the sigmoid colon). When one becomes blocked with fecal matter and inflamed, the condition is diverticulitis. Symptoms include left lower quadrant pain, fever, and change in bowel habits. A low-fiber diet is a major risk factor.",
+    "statement": "Diverticulitis means inflammation of diverticula (pouches in the intestinal wall), from diverticul/o (small pouch) + -itis (inflammation).",
+    "wowFactor": "Diverticular disease was virtually unknown before 1900. Its dramatic rise in Western countries throughout the 20th century correlates exactly with the introduction of refined flour and reduced dietary fiber — making it a disease of modern processed eating.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Diverticulitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "gastrointestinal"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'diverticulitis' — what does each part mean?",
+        "correctAnswer": "diverticul/o (small pouch) + -itis (inflammation)",
+        "distractors": [
+          "append/o (appendix) + -itis (inflammation)",
+          "diverticul/o (small pouch) + -osis (condition)",
+          "col/o (colon) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "diverticul/o (small pouch) + -itis (inflammation) = ___",
+        "correctAnswer": "Diverticulitis",
+        "distractors": ["Appendicitis", "Colitis", "Gastritis"]
+      }
+    ],
+    "visualDescription": "Cross-section of colon with a small bulging pouch glowing red, word DIVERTICULITIS split: DIVERTICUL + ITIS"
+  },
+  {
+    "id": "medterm_cond_hemorrhoids",
+    "correctAnswer": "Hemorrhoids",
+    "acceptableAlternatives": ["haemorrhoids", "piles", "hemorrhoidal disease"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Diverticulitis",
+      "Colitis",
+      "Appendicitis",
+      "Anemia",
+      "Hematuria",
+      "Thrombosis",
+      "Phlebitis",
+      "Varicose veins"
+    ],
+    "quizQuestion": "What condition derives from hem/o (blood) + rhoid (flowing/stream), describing swollen vascular cushions in and around the rectum?",
+    "explanation": "Hemorrhoids derives from Greek 'haimorrhois' — haima (blood) + rhein (to flow) — literally 'blood flowing'. The term reflects the bleeding that swollen rectal veins produce. Hemorrhoids are actually normal vascular cushions present in everyone; the condition arises when they become swollen, inflamed, or prolapsed. They are classified as internal (above the dentate line, usually painless) or external (below, often painful). Straining at stool, constipation, and pregnancy are major contributing factors.",
+    "statement": "Hemorrhoids derives from Greek hem/o (blood) + rhoid (flowing), describing swollen venous cushions in the rectum and anus.",
+    "wowFactor": "Napoleon Bonaparte famously suffered from severe hemorrhoids at the Battle of Waterloo in 1815. Some historians argue his hemorrhoidal pain prevented him from mounting his horse to personally direct the battle, contributing to his defeat and exile.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hemorrhoid",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "gastrointestinal", "vascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'hemorrhoids' — what does each part mean?",
+        "correctAnswer": "hem/o (blood) + rhoid (flowing)",
+        "distractors": [
+          "hem/o (blood) + -oid (resembling)",
+          "hepat/o (liver) + rhoid (flowing)",
+          "hem/o (blood) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "hem/o (blood) + rhoid (flowing) = ___ (swollen rectal veins)",
+        "correctAnswer": "Hemorrhoids",
+        "distractors": ["Hematuria", "Hemophilia", "Phlebitis"]
+      }
+    ],
+    "visualDescription": "Anatomical diagram of the rectum with swollen vascular cushions highlighted, word HEMORRHOIDS split: HEMO + RRHOIDS"
+  },
+  {
+    "id": "medterm_cond_hydrocephalus",
+    "correctAnswer": "Hydrocephalus",
+    "acceptableAlternatives": ["water on the brain", "hydrocephaly"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Encephalitis",
+      "Meningitis",
+      "Cerebrovascular accident",
+      "Hemiplegia",
+      "Epilepsy",
+      "Neuralgia",
+      "Macrocephaly",
+      "Craniosynostosis"
+    ],
+    "quizQuestion": "What condition is named from hydr/o (water) + cephal/o (head) + -us (noun), meaning abnormal accumulation of cerebrospinal fluid in the brain?",
+    "explanation": "Hydrocephalus breaks down as: hydr/o (water, from Greek 'hydor') + cephal/o (head, from Greek 'kephale') + -us (noun suffix). It means 'water on the brain'. Cerebrospinal fluid (CSF) normally circulates through the ventricles and around the brain; when its flow, absorption, or production is disrupted, it accumulates and expands the ventricles, increasing intracranial pressure. In infants (before skull fusion), the head visibly enlarges. Treatment is surgical, using a shunt to drain excess CSF.",
+    "statement": "Hydrocephalus means water in the head, from hydr/o (water) + cephal/o (head), describing abnormal CSF accumulation in the brain ventricles.",
+    "wowFactor": "The Ommaya reservoir — a device implanted under the scalp to access CSF — was invented in 1963. Today, programmable ventricular shunts can be adjusted non-invasively using a magnet held to the patient's head, changing CSF drainage rates without surgery.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hydrocephalus",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "neurological"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'hydrocephalus' — what does each part mean?",
+        "correctAnswer": "hydr/o (water) + cephal/o (head)",
+        "distractors": [
+          "hydr/o (water) + encephal/o (brain)",
+          "hyper- (excessive) + cephal/o (head)",
+          "hydr/o (water) + cerebr/o (cerebrum)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "hydr/o (water) + cephal/o (head) = ___ (fluid in the brain)",
+        "correctAnswer": "Hydrocephalus",
+        "distractors": ["Encephalitis", "Meningitis", "Cephalgia"]
+      }
+    ],
+    "visualDescription": "Brain MRI-style illustration with enlarged fluid-filled ventricles glowing blue, word HYDROCEPHALUS split: HYDRO + CEPHAL + US"
+  },
+  {
+    "id": "medterm_cond_cva_stroke",
+    "correctAnswer": "Cerebrovascular accident",
+    "acceptableAlternatives": ["CVA", "stroke", "brain attack"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Transient ischemic attack",
+      "Encephalitis",
+      "Meningitis",
+      "Hydrocephalus",
+      "Hemiplegia",
+      "Aneurysm",
+      "Epilepsy",
+      "Subdural hematoma"
+    ],
+    "quizQuestion": "What condition is named from cerebr/o (brain) + vascul/o (vessel) + -ar (pertaining to) + accident, meaning a sudden interruption of blood supply to the brain?",
+    "explanation": "Cerebrovascular accident (CVA) breaks down as: cerebr/o (brain, from Latin 'cerebrum') + vascul/o (vessel, from Latin 'vasculum') + -ar (pertaining to) + accident (sudden event). A CVA, commonly called a stroke, occurs when brain tissue is deprived of blood — either by blockage (ischemic stroke, ~85% of cases) or by bleeding (hemorrhagic stroke, ~15%). The FAST acronym identifies symptoms: Face drooping, Arm weakness, Speech difficulty, Time to call emergency services.",
+    "statement": "Cerebrovascular accident means a sudden vascular event in the brain, from cerebr/o (brain) + vascul/o (vessel), commonly called a stroke.",
+    "wowFactor": "Every minute a stroke goes untreated, approximately 1.9 million neurons die. This led to the phrase 'time is brain' in emergency medicine — driving the shift from 'stroke' to 'brain attack' to create the same urgency as 'heart attack'.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stroke",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "neurological", "vascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'cerebrovascular accident' — what does cerebr/o mean?",
+        "correctAnswer": "brain",
+        "distractors": ["blood vessel", "skull", "spinal cord"]
+      },
+      {
+        "type": "etymology",
+        "question": "The 'vascular' component of cerebrovascular refers to which structures?",
+        "correctAnswer": "Blood vessels supplying the brain",
+        "distractors": ["The brain's grey matter", "The ventricular system", "The cerebral cortex neurons"]
+      }
+    ],
+    "visualDescription": "Brain illustration with a blocked artery and infarcted region, word CEREBROVASCULAR ACCIDENT split: CEREBRO + VASCULAR + ACCIDENT"
+  },
+  {
+    "id": "medterm_cond_paresthesia",
+    "correctAnswer": "Paresthesia",
+    "acceptableAlternatives": ["paraesthesia", "pins and needles", "tingling and numbness"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Neuralgia",
+      "Neuropathy",
+      "Anesthesia",
+      "Hyperesthesia",
+      "Dysphasia",
+      "Hemiplegia",
+      "Analgesia",
+      "Myalgia"
+    ],
+    "quizQuestion": "What condition is named from para- (abnormal/beside) + esthesi/o (sensation) + -ia (condition), meaning abnormal sensations such as tingling, numbness, or 'pins and needles'?",
+    "explanation": "Paresthesia breaks down as: para- (beside, abnormal, from Greek 'para') + esthesi/o (sensation/feeling, from Greek 'aisthesis') + -ia (condition). It describes abnormal spontaneous sensations including tingling, prickling, burning, or numbness — the 'pins and needles' feeling. Common causes include compression of a nerve (sitting on your foot), vitamin B12 deficiency, diabetes, multiple sclerosis, and Raynaud's phenomenon. Compare anesthesia (an- = without sensation) and hyperesthesia (hyper- = excessive sensation).",
+    "statement": "Paresthesia means abnormal sensation (tingling, numbness), from para- (abnormal) + esthesi/o (sensation) + -ia (condition).",
+    "wowFactor": "Paresthesia from crossing your legs cuts off blood to the peroneal nerve, causing the familiar 'pins and needles'. The sensation when blood flow returns is actually the nerve misfiring as it reperfuses — your nervous system literally rebooting.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Paresthesia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "neurological", "sensory"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'paresthesia' — what does esthesi/o mean?",
+        "correctAnswer": "sensation or feeling",
+        "distractors": ["pain", "paralysis", "movement"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "para- (abnormal) + esthesi/o (sensation) + -ia = ___",
+        "correctAnswer": "Paresthesia",
+        "distractors": ["Neuralgia", "Anesthesia", "Dysphasia"]
+      }
+    ],
+    "visualDescription": "Arm and hand with tingling sparkles radiating from a compressed nerve point, word PARESTHESIA split: PARA + ESTHESI + IA"
+  },
+  {
+    "id": "medterm_cond_osteoarthritis",
+    "correctAnswer": "Osteoarthritis",
+    "acceptableAlternatives": ["OA", "degenerative joint disease", "wear-and-tear arthritis"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Rheumatoid arthritis",
+      "Gout",
+      "Bursitis",
+      "Tendinitis",
+      "Chondromalacia",
+      "Spondylosis",
+      "Osteomyelitis",
+      "Ankylosing spondylitis"
+    ],
+    "quizQuestion": "What condition is named from oste/o (bone) + arthr/o (joint) + -itis (inflammation), describing degenerative cartilage breakdown in joints?",
+    "explanation": "Osteoarthritis breaks down as: oste/o (bone, from Greek 'osteon') + arthr/o (joint, from Greek 'arthron') + -itis (inflammation). Despite the -itis suffix, OA is primarily a degenerative process rather than inflammatory — it involves breakdown and loss of articular cartilage, subchondral bone thickening, and osteophyte (bone spur) formation. It is the most common form of arthritis worldwide, affecting weight-bearing joints (knees, hips, spine) and the hands. Risk factors include age, obesity, joint injury, and genetics.",
+    "statement": "Osteoarthritis means bone-joint inflammation (degenerative), from oste/o (bone) + arthr/o (joint) + -itis, describing cartilage breakdown in joints.",
+    "wowFactor": "Osteoarthritis has been found in dinosaur fossils — a hadrosaur (duck-billed dinosaur) from 70 million years ago shows classic OA changes in its spine. Joint degeneration is apparently an ancient vertebrate problem, not a modern one.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Osteoarthritis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "musculoskeletal"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'osteoarthritis' — what does arthr/o mean?",
+        "correctAnswer": "joint",
+        "distractors": ["bone", "cartilage", "muscle"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "oste/o (bone) + arthr/o (joint) + -itis = ___",
+        "correctAnswer": "Osteoarthritis",
+        "distractors": ["Osteomyelitis", "Rheumatoid arthritis", "Bursitis"]
+      }
+    ],
+    "visualDescription": "Knee joint cross-section showing worn cartilage and bone spurs, word OSTEOARTHRITIS split: OSTEO + ARTHR + ITIS"
+  },
+  {
+    "id": "medterm_cond_rheumatoid_arthritis",
+    "correctAnswer": "Rheumatoid arthritis",
+    "acceptableAlternatives": ["RA", "rheumatoid disease"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Osteoarthritis",
+      "Gout",
+      "Psoriatic arthritis",
+      "Lupus",
+      "Spondylosis",
+      "Bursitis",
+      "Tendinitis",
+      "Ankylosing spondylitis"
+    ],
+    "quizQuestion": "What autoimmune condition is named from rheum/o (flowing/watery) + -oid (resembling) + arthr/o (joint) + -itis (inflammation), describing chronic inflammatory joint destruction?",
+    "explanation": "Rheumatoid arthritis breaks down as: rheum/o (flowing, watery discharge, from Greek 'rheuma') + -oid (resembling) + arthr/o (joint) + -itis (inflammation). The 'rheuma' referred to the ancient Greek theory of flowing humors causing joint pain. RA is a systemic autoimmune disease in which the immune system attacks the synovial lining of joints, causing symmetric joint swelling, pain, stiffness (especially morning stiffness), and eventual joint destruction. The small joints of the hands and feet are typically affected first.",
+    "statement": "Rheumatoid arthritis describes flowing/watery joint inflammation (autoimmune), from rheum/o (flowing) + -oid (resembling) + arthr/o (joint) + -itis (inflammation).",
+    "wowFactor": "Rheumatoid arthritis is 2-3 times more common in women than men. The discovery of methotrexate as an RA treatment was accidental — it was developed as a chemotherapy drug, and physicians noticed it also dramatically reduced joint inflammation.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rheumatoid_arthritis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "musculoskeletal", "autoimmune"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "In 'rheumatoid', the root rheum/o originally referred to what in ancient Greek medicine?",
+        "correctAnswer": "Flowing watery humors thought to cause pain",
+        "distractors": ["Inflammation of the joints", "Red swollen tissue", "Stiffness of the bones"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "rheum/o (flowing) + -oid (resembling) + arthr/o (joint) + -itis = ___",
+        "correctAnswer": "Rheumatoid arthritis",
+        "distractors": ["Osteoarthritis", "Gout", "Spondylosis"]
+      }
+    ],
+    "visualDescription": "Hands with symmetrically swollen finger joints glowing red, word RHEUMATOID ARTHRITIS split: RHEUMA + OID + ARTHR + ITIS"
+  },
+  {
+    "id": "medterm_cond_spondylosis",
+    "correctAnswer": "Spondylosis",
+    "acceptableAlternatives": ["spinal osteoarthritis", "cervical spondylosis", "lumbar spondylosis"],
+    "chainThemeId": 6,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Scoliosis",
+      "Kyphosis",
+      "Osteoarthritis",
+      "Ankylosing spondylitis",
+      "Spondylitis",
+      "Herniated disc",
+      "Osteoporosis",
+      "Lordosis"
+    ],
+    "quizQuestion": "What condition is named from spondyl/o (vertebra) + -osis (degenerative condition), meaning degenerative changes and wear-and-tear of the spinal vertebrae?",
+    "explanation": "Spondylosis breaks down as: spondyl/o (vertebra, from Greek 'spondylos') + -osis (degenerative or abnormal condition). It describes age-related degenerative changes of the intervertebral discs, vertebral bodies, and facet joints, often producing osteophytes (bone spurs). When it affects the cervical spine it is cervical spondylosis; the lumbar spine, lumbar spondylosis. It is extremely common — visible on imaging in over 90% of adults over 65. Contrast with spondylitis (-itis = inflammation, as in ankylosing spondylitis).",
+    "statement": "Spondylosis means vertebral degeneration, from spondyl/o (vertebra) + -osis (degenerative condition).",
+    "wowFactor": "Spondylosis has been found in Egyptian mummies — ancient Egyptians who survived into middle age almost universally developed spinal degeneration, just like modern populations. Even Ramesses II (died ~1213 BCE) showed extensive cervical spondylosis on CT scanning.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Spondylosis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "musculoskeletal", "spinal"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'spondylosis' — what does spondyl/o mean?",
+        "correctAnswer": "vertebra",
+        "distractors": ["spine (whole)", "intervertebral disc", "spinal cord"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "spondyl/o (vertebra) + -osis (degeneration) = ___",
+        "correctAnswer": "Spondylosis",
+        "distractors": ["Scoliosis", "Kyphosis", "Spondylitis"]
+      }
+    ],
+    "visualDescription": "Lateral spine view with osteophytes (bone spurs) on vertebrae, word SPONDYLOSIS split: SPONDYL + OSIS"
+  },
+  {
+    "id": "medterm_cond_rhabdomyolysis",
+    "correctAnswer": "Rhabdomyolysis",
+    "acceptableAlternatives": ["rhabdo", "muscle fiber breakdown"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Myocarditis",
+      "Myalgia",
+      "Osteomyelitis",
+      "Rhabdomyosarcoma",
+      "Necrotizing fasciitis",
+      "Compartment syndrome",
+      "Polymyositis",
+      "Tendinitis"
+    ],
+    "quizQuestion": "What condition is named from rhabd/o (rod-shaped) + my/o (muscle) + -lysis (breakdown/dissolution), meaning the breakdown of skeletal muscle fibers releasing myoglobin into the bloodstream?",
+    "explanation": "Rhabdomyolysis breaks down as: rhabd/o (rod-shaped, from Greek 'rhabdos' — striated/rod) + my/o (muscle) + -lysis (breakdown, dissolution). The rhabdo- refers to the rod-like striations of skeletal muscle (as opposed to smooth muscle). In rhabdomyolysis, skeletal muscle fibers break down and release their contents — especially myoglobin — into the bloodstream. Myoglobin is toxic to the kidneys, making acute kidney injury the primary complication. Classic presentation includes muscle pain, weakness, and dark 'cola-colored' urine (myoglobinuria).",
+    "statement": "Rhabdomyolysis means rod-muscle breakdown, from rhabd/o (rod-shaped/striated) + my/o (muscle) + -lysis (breakdown), describing skeletal muscle fiber destruction.",
+    "wowFactor": "Crush syndrome from earthquake victims — first described after the 1908 Messina earthquake and systematically studied after the 1940 London Blitz — is rhabdomyolysis caused by prolonged muscle compression. Survivors of being trapped for hours paradoxically develop kidney failure after rescue when the crushed muscle releases its contents.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rhabdomyolysis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "musculoskeletal", "renal"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'rhabdomyolysis' — what does rhabd/o refer to?",
+        "correctAnswer": "Rod-shaped striations of skeletal muscle",
+        "distractors": ["Rapid muscle contractions", "Rigid bone structure", "Rhythmic cardiac contractions"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "rhabd/o (rod) + my/o (muscle) + -lysis (breakdown) = ___",
+        "correctAnswer": "Rhabdomyolysis",
+        "distractors": ["Myocarditis", "Osteomyelitis", "Myalgia"]
+      }
+    ],
+    "visualDescription": "Muscle fiber cross-section with broken striated fibers leaking into bloodstream, word RHABDOMYOLYSIS split: RHABD + MYO + LYSIS"
+  },
+  {
+    "id": "medterm_cond_urticaria",
+    "correctAnswer": "Urticaria",
+    "acceptableAlternatives": ["hives", "nettle rash", "wheals"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Dermatitis",
+      "Psoriasis",
+      "Eczema",
+      "Erythema",
+      "Angioedema",
+      "Rosacea",
+      "Purpura",
+      "Xerosis"
+    ],
+    "quizQuestion": "What skin condition is named from the Latin 'urtica' (stinging nettle), characterized by raised, itchy wheals appearing suddenly on the skin?",
+    "explanation": "Urticaria comes from Latin 'urtica' meaning stinging nettle — because the itchy, burning wheals (hives) resemble the skin reaction from touching a nettle plant. The wheals are caused by mast cell degranulation releasing histamine, which causes localized edema in the dermis. Triggers include allergens, medications (especially NSAIDs, antibiotics), foods, infections, cold, pressure, or emotional stress. In acute urticaria, lesions resolve within 24 hours; chronic urticaria persists beyond 6 weeks.",
+    "statement": "Urticaria (hives) is named from the Latin 'urtica' (stinging nettle), describing raised, itchy wheals caused by histamine release in the skin.",
+    "wowFactor": "Dermographism — 'skin writing' — is a form of urticaria where firm stroking of the skin causes wheals to appear in the stroke pattern within minutes. About 5% of the population can literally write on their own skin with their fingernail and have the raised letters remain readable for 30 minutes.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Urticaria",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "dermatological", "allergic"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The word 'urticaria' is named after which plant because of the similar skin reaction it causes?",
+        "correctAnswer": "Stinging nettle (Urtica)",
+        "distractors": ["Poison ivy", "Deadly nightshade", "Wild parsnip"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Latin 'urtica' (stinging nettle) → ___ (itchy raised wheals on skin)",
+        "correctAnswer": "Urticaria",
+        "distractors": ["Dermatitis", "Psoriasis", "Erythema"]
+      }
+    ],
+    "visualDescription": "Arm with raised red wheal patches resembling nettle sting marks, word URTICARIA above with Latin root labeled"
+  },
+  {
+    "id": "medterm_cond_psoriasis",
+    "correctAnswer": "Psoriasis",
+    "acceptableAlternatives": ["plaque psoriasis", "psoriasis vulgaris"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Dermatitis",
+      "Urticaria",
+      "Eczema",
+      "Seborrheic dermatitis",
+      "Tinea",
+      "Rosacea",
+      "Vitiligo",
+      "Xerosis"
+    ],
+    "quizQuestion": "What chronic skin condition is named from the Greek 'psora' (itch), characterized by thickened, scaly plaques caused by accelerated skin cell turnover?",
+    "explanation": "Psoriasis comes from Greek 'psora' meaning itch or mange (from 'psoriasis' — being itchy). It is a chronic autoimmune condition in which T-cell activation accelerates keratinocyte (skin cell) proliferation from the normal 28-day cycle to just 3-4 days. This creates thickened, silvery-scaled plaques most commonly on elbows, knees, scalp, and lower back. The Auspitz sign — pinpoint bleeding when a scale is lifted — is characteristic. Psoriasis is associated with psoriatic arthritis in up to 30% of patients.",
+    "statement": "Psoriasis means the itching condition, from Greek 'psora' (itch), describing the scaly, itchy plaques of this autoimmune skin disease.",
+    "wowFactor": "Psoriasis has affected famous people throughout history — King Philip II of Spain had severe psoriasis, and there is debate that Goliath (the biblical giant) may have had psoriasis based on ancient descriptions. About 2-3% of the world population is affected.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Psoriasis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "dermatological", "autoimmune"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The Greek root 'psora' in psoriasis means:",
+        "correctAnswer": "itch or mange",
+        "distractors": ["scale or flake", "red or inflamed", "dry or cracked"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Greek 'psora' (itch) → ___ (autoimmune scaly skin plaques)",
+        "correctAnswer": "Psoriasis",
+        "distractors": ["Dermatitis", "Urticaria", "Vitiligo"]
+      }
+    ],
+    "visualDescription": "Elbow with silver-scaled plaque patches, word PSORIASIS with Greek root PSORA highlighted"
+  },
+  {
+    "id": "medterm_cond_lymphoma",
+    "correctAnswer": "Lymphoma",
+    "acceptableAlternatives": ["lymphatic cancer", "Hodgkin lymphoma", "non-Hodgkin lymphoma"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Leukemia",
+      "Carcinoma",
+      "Sarcoma",
+      "Myeloma",
+      "Melanoma",
+      "Lymphadenitis",
+      "Thrombocytopenia",
+      "Leukocytosis"
+    ],
+    "quizQuestion": "What condition is named from lymph/o (lymph/lymphatic system) + -oma (tumor), meaning cancer originating in the lymphatic system's lymphocytes?",
+    "explanation": "Lymphoma breaks down as: lymph/o (lymph, lymphatic tissue, from Latin 'lympha' — clear water) + -oma (tumor, from Greek 'oma'). It refers to cancers arising from lymphocytes (white blood cells of the lymphatic system). The two main categories are Hodgkin lymphoma (characterized by Reed-Sternberg cells, generally very treatable) and non-Hodgkin lymphoma (a diverse group, over 60 subtypes). Swollen lymph nodes (lymphadenopathy), night sweats, unexplained fever, and weight loss ('B symptoms') are classic presentations.",
+    "statement": "Lymphoma means lymphatic tumor, from lymph/o (lymph) + -oma (tumor), describing cancer of the lymphatic system's lymphocytes.",
+    "wowFactor": "Hodgkin lymphoma was one of the first cancers to be curable with radiation therapy and chemotherapy — a landmark in oncology history. Thomas Hodgkin, who first described it in 1832, could not have imagined that by the late 20th century 80-90% of early-stage patients would be cured.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lymphoma",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "oncology", "hematological"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'lymphoma' — what does -oma mean?",
+        "correctAnswer": "tumor",
+        "distractors": ["inflammation", "disease", "excess"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "lymph/o (lymph tissue) + -oma (tumor) = ___",
+        "correctAnswer": "Lymphoma",
+        "distractors": ["Leukemia", "Carcinoma", "Melanoma"]
+      }
+    ],
+    "visualDescription": "Lymph node cluster with one enlarged glowing node, word LYMPHOMA split: LYMPH + OMA"
+  },
+  {
+    "id": "medterm_cond_aneurysm",
+    "correctAnswer": "Aneurysm",
+    "acceptableAlternatives": ["aneurism", "vascular aneurysm", "aortic aneurysm"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Atherosclerosis",
+      "Thrombosis",
+      "Embolism",
+      "Vasculitis",
+      "Phlebitis",
+      "Arteriovenous malformation",
+      "Hematoma",
+      "Cerebrovascular accident"
+    ],
+    "quizQuestion": "What condition derives from Greek 'aneurysma' (widening/dilation), describing an abnormal bulging or ballooning of a blood vessel wall?",
+    "explanation": "Aneurysm derives from Greek 'aneurysma' (a widening) — from 'ana' (up/throughout) + 'eurys' (wide). It describes a localized dilation (bulge) of a blood vessel wall, typically an artery, due to weakness in the vessel wall. Types include saccular (berry-shaped outpouching) and fusiform (spindle-shaped dilation). Aortic aneurysms and cerebral (berry) aneurysms are the most clinically significant. Rupture of a cerebral aneurysm causes subarachnoid hemorrhage — described by patients as 'the worst headache of my life'.",
+    "statement": "Aneurysm means widening or dilation (Greek 'aneurysma'), describing a bulging weakness in a blood vessel wall.",
+    "wowFactor": "The aortic aneurysm that killed Albert Einstein in 1955 had been identified years earlier. He was offered surgery but declined, reportedly saying 'It is tasteless to prolong life artificially. I have done my share; it is time to go.'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Aneurysm",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "vascular", "cardiovascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The Greek root of 'aneurysm' (eurys) means:",
+        "correctAnswer": "wide",
+        "distractors": ["burst", "hollow", "twisted"]
+      },
+      {
+        "type": "etymology",
+        "question": "A ruptured cerebral (berry) aneurysm typically causes which type of bleed?",
+        "correctAnswer": "Subarachnoid hemorrhage",
+        "distractors": ["Subdural hematoma", "Epidural hematoma", "Intracerebral hemorrhage"]
+      }
+    ],
+    "visualDescription": "Artery cross-section with a balloon-like bulge at a weak point, word ANEURYSM with Greek root EURYS (wide) highlighted"
+  },
+  {
+    "id": "medterm_cond_amenorrhea",
+    "correctAnswer": "Amenorrhea",
+    "acceptableAlternatives": ["amenorrhoea", "absent menstruation", "absent periods"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Dysmenorrhea",
+      "Menorrhagia",
+      "Metrorrhagia",
+      "Endometriosis",
+      "Oligomenorrhea",
+      "Polymenorrhea",
+      "Oophoritis",
+      "Hypogonadism"
+    ],
+    "quizQuestion": "What condition is named from a- (without) + men/o (menstruation/month) + -rrhea (flow/discharge), meaning the absence of menstrual periods?",
+    "explanation": "Amenorrhea breaks down as: a- (without, absence of) + men/o (menstruation, month, from Greek 'men') + -rrhea (flow, discharge, from Greek 'rhein' — to flow). It means 'without menstrual flow'. Primary amenorrhea is when menstruation never begins by age 15-16. Secondary amenorrhea is when established periods stop for 3+ months (non-pregnant). Causes include pregnancy (most common), low body fat (athletes, anorexia), hyperprolactinemia, thyroid disorders, polycystic ovary syndrome (PCOS), and premature ovarian insufficiency.",
+    "statement": "Amenorrhea means absence of menstrual flow, from a- (without) + men/o (menstruation) + -rrhea (flow).",
+    "wowFactor": "The 'female athlete triad' — amenorrhea + disordered eating + osteoporosis — occurs because extreme exercise and caloric restriction suppress reproductive hormones so severely that bones begin losing density. Elite female athletes can have the bone density of 50-year-old women.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Amenorrhea",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "reproductive", "gynecological"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'amenorrhea' — what does men/o mean?",
+        "correctAnswer": "menstruation (related to month)",
+        "distractors": ["ovary", "uterus", "female hormones"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "a- (without) + men/o (menstruation) + -rrhea (flow) = ___",
+        "correctAnswer": "Amenorrhea",
+        "distractors": ["Dysmenorrhea", "Menorrhagia", "Endometriosis"]
+      }
+    ],
+    "visualDescription": "Calendar with menstruation cycle days marked absent, word AMENORRHEA split: A + MEN + RRHEA"
+  },
+  {
+    "id": "medterm_cond_presbyopia",
+    "correctAnswer": "Presbyopia",
+    "acceptableAlternatives": ["age-related farsightedness", "age-related hyperopia", "reading glasses condition"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Myopia",
+      "Hyperopia",
+      "Astigmatism",
+      "Glaucoma",
+      "Cataracts",
+      "Retinopathy",
+      "Macular degeneration",
+      "Amblyopia"
+    ],
+    "quizQuestion": "What condition is named from presby- (old/elder) + -opia (vision condition), meaning age-related loss of near-vision as the eye lens loses flexibility?",
+    "explanation": "Presbyopia breaks down as: presby- (old man/elder, from Greek 'presbys') + -opia (vision, eye condition, from Greek 'ops'). It literally means 'old man's vision'. Starting around age 40-45, the crystalline lens of the eye progressively loses elasticity, reducing the ability to accommodate (focus on near objects). This is a universal age-related change — not a disease — and is the reason most people eventually need reading glasses. It is distinct from hyperopia (far-sightedness), which results from eyeball shape, not lens stiffness.",
+    "statement": "Presbyopia means old-person vision, from presby- (elder) + -opia (vision), describing age-related loss of near-focusing ability due to lens stiffening.",
+    "wowFactor": "Presbyopia affects nearly every human who lives past 45 — it is one of the few truly universal age-related changes. Benjamin Franklin, tired of swapping between his reading glasses and distance glasses, invented bifocal lenses around 1784 specifically to address presbyopia.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Presbyopia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "sensory", "ophthalmology"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'presbyopia' — what does presby- mean?",
+        "correctAnswer": "old man or elder",
+        "distractors": ["far distance", "dim light", "double"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "presby- (elder) + -opia (vision) = ___ (age-related near-vision loss)",
+        "correctAnswer": "Presbyopia",
+        "distractors": ["Myopia", "Hyperopia", "Glaucoma"]
+      }
+    ],
+    "visualDescription": "Eye diagram with stiff lens indicated by arrows, blurry close-up text in foreground, word PRESBYOPIA split: PRESBY + OPIA"
+  },
+  {
+    "id": "medterm_cond_glaucoma",
+    "correctAnswer": "Glaucoma",
+    "acceptableAlternatives": ["ocular hypertension glaucoma", "open-angle glaucoma"],
+    "chainThemeId": 6,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Cataracts",
+      "Retinopathy",
+      "Macular degeneration",
+      "Presbyopia",
+      "Conjunctivitis",
+      "Uveitis",
+      "Amblyopia",
+      "Trachoma"
+    ],
+    "quizQuestion": "What eye condition derives from Greek 'glaukos' (grey-blue/gleaming), in which elevated intraocular pressure damages the optic nerve?",
+    "explanation": "Glaucoma derives from Greek 'glaukos' meaning grey-blue, gleaming, or cloudy — describing the bluish-grey appearance of the eye in advanced cases. It is a group of eye conditions characterized by damage to the optic nerve, usually (but not always) from elevated intraocular pressure (IOP). Open-angle glaucoma (the most common form) develops slowly and painlessly, causing progressive peripheral vision loss often unnoticed until advanced — earning it the name 'silent thief of sight'. It is the leading cause of irreversible blindness worldwide.",
+    "statement": "Glaucoma derives from Greek 'glaukos' (grey-blue/cloudy), describing elevated intraocular pressure that progressively damages the optic nerve.",
+    "wowFactor": "Ancient Egyptians described a condition called 'water on the eye' that blinded the elderly — likely glaucoma. For 4,000 years there was no treatment. Today, eye drops that reduce pressure, taken daily, can prevent blindness — a straightforward intervention if caught early.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Glaucoma",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "sensory", "ophthalmology"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The Greek root 'glaukos' in glaucoma originally described what color or appearance?",
+        "correctAnswer": "Grey-blue or gleaming/cloudy",
+        "distractors": ["Bright red", "Deep yellow", "Jet black"]
+      },
+      {
+        "type": "etymology",
+        "question": "Why is open-angle glaucoma called the 'silent thief of sight'?",
+        "correctAnswer": "It causes painless, gradual peripheral vision loss often unnoticed until advanced",
+        "distractors": ["It causes sudden total blindness overnight", "It only affects one eye at a time", "It causes pain but no visible changes"]
+      }
+    ],
+    "visualDescription": "Eye cross-section with elevated pressure indicated by arrows, damaged optic nerve highlighted, word GLAUCOMA with Greek root GLAUKOS labeled"
+  },
+  {
+    "id": "medterm_cond_otosclerosis",
+    "correctAnswer": "Otosclerosis",
+    "acceptableAlternatives": ["ear bone hardening", "otospongiosis"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Otitis",
+      "Tinnitus",
+      "Presbycusis",
+      "Labyrinthitis",
+      "Cholesteatoma",
+      "Vertigo",
+      "Acoustic neuroma",
+      "Meniere's disease"
+    ],
+    "quizQuestion": "What condition is named from ot/o (ear) + -sclerosis (hardening), meaning abnormal bone growth in the middle ear causing progressive conductive hearing loss?",
+    "explanation": "Otosclerosis breaks down as: ot/o (ear, from Greek 'ous/otos') + -sclerosis (hardening, from Greek 'skleros'). Abnormal bone remodeling occurs in the bony labyrinth of the inner ear, typically causing the stapes (the smallest bone in the body) to become fixed to the oval window, preventing sound transmission. It typically presents in young adults as progressive conductive hearing loss, often with paracusis Willisii (paradoxical ability to hear better in noisy environments). Surgical stapedectomy — replacing the stapes with a prosthesis — is highly effective.",
+    "statement": "Otosclerosis means ear hardening, from ot/o (ear) + -sclerosis (hardening), describing abnormal bony fixation of the stapes causing conductive deafness.",
+    "wowFactor": "Ludwig van Beethoven almost certainly had otosclerosis. His hearing loss began in his late 20s (the classic age of onset), was bilateral, and progressive — and he notably kept his piano on the floor to feel vibrations through the floorboards as he went deaf, a classic strategy for otosclerosis patients.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Otosclerosis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "sensory", "ENT"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'otosclerosis' — what does ot/o mean?",
+        "correctAnswer": "ear",
+        "distractors": ["bone", "hearing nerve", "middle ear"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "ot/o (ear) + -sclerosis (hardening) = ___",
+        "correctAnswer": "Otosclerosis",
+        "distractors": ["Otitis", "Tinnitus", "Presbycusis"]
+      }
+    ],
+    "visualDescription": "Middle ear diagram with the stapes highlighted as fused/fixed to oval window, word OTOSCLEROSIS split: OTO + SCLEROSIS"
+  },
+  {
+    "id": "medterm_cond_pneumoconiosis",
+    "correctAnswer": "Pneumoconiosis",
+    "acceptableAlternatives": ["dust lung disease", "occupational lung disease", "black lung"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Emphysema",
+      "Silicosis",
+      "Asbestosis",
+      "Pneumonia",
+      "Bronchitis",
+      "Sarcoidosis",
+      "Pulmonary fibrosis",
+      "Mesothelioma"
+    ],
+    "quizQuestion": "What condition is named from pneum/o (lung) + coni/o (dust) + -osis (condition), meaning lung disease caused by inhaling mineral or organic dust particles?",
+    "explanation": "Pneumoconiosis breaks down as: pneum/o (lung, from Greek 'pneumon') + coni/o (dust, from Greek 'konis') + -osis (condition/disease). It is a group of interstitial lung diseases caused by long-term inhalation of dust particles that trigger fibrosis. Major subtypes include: silicosis (silica dust — miners, sandblasters), asbestosis (asbestos — shipyard workers), coal workers' pneumoconiosis ('black lung' — coal miners), and byssinosis ('brown lung' — textile workers). All cause progressive, irreversible lung scarring.",
+    "statement": "Pneumoconiosis means dust lung disease, from pneum/o (lung) + coni/o (dust) + -osis (condition), describing fibrosis from inhaled mineral particles.",
+    "wowFactor": "Coal workers' pneumoconiosis ('black lung') was declared virtually eliminated in the US by the 1990s — then staged a massive comeback. Cases have surged since 2000, driven by new mining techniques exposing workers to higher-silica rock mixed with coal, with miners developing disease at younger ages than ever recorded.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pneumoconiosis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "respiratory", "occupational"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'pneumoconiosis' — what does coni/o mean?",
+        "correctAnswer": "dust",
+        "distractors": ["coal", "scar tissue", "infection"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "pneum/o (lung) + coni/o (dust) + -osis = ___",
+        "correctAnswer": "Pneumoconiosis",
+        "distractors": ["Emphysema", "Pneumonia", "Pulmonary fibrosis"]
+      }
+    ],
+    "visualDescription": "Lung cross-section with dark dust particles embedded in scarred tissue, word PNEUMOCONIOSIS split: PNEUMO + CONI + OSIS"
+  },
+  {
+    "id": "medterm_cond_hepatomegaly",
+    "correctAnswer": "Hepatomegaly",
+    "acceptableAlternatives": ["liver enlargement", "enlarged liver"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Splenomegaly",
+      "Cardiomegaly",
+      "Acromegaly",
+      "Hepatitis",
+      "Cirrhosis",
+      "Portal hypertension",
+      "Nephromegaly",
+      "Cholecystitis"
+    ],
+    "quizQuestion": "What condition is named from hepat/o (liver) + -megaly (enlargement), meaning abnormal enlargement of the liver?",
+    "explanation": "Hepatomegaly breaks down as: hepat/o (liver, from Greek 'hepar/hepatos') + -megaly (enlargement, from Greek 'megas/megale' — great). It describes a liver enlarged beyond normal size (>15 cm by percussion). Hepatomegaly is a physical finding, not a diagnosis in itself — it indicates an underlying cause such as hepatitis, fatty liver disease, congestive heart failure (congestion backs up into the liver), cirrhosis, or malignancy (primary liver cancer or metastases). Clinically detected by palpation or percussion below the right costal margin.",
+    "statement": "Hepatomegaly means liver enlargement, from hepat/o (liver) + -megaly (enlargement).",
+    "wowFactor": "The liver is the only internal organ that can regenerate itself. A donor can give 60% of their liver to a recipient — both donor and recipient livers regrow to full functional size within 6-8 weeks. Ancient Greeks may have intuited this: Prometheus's liver was eaten by an eagle each day and regrew overnight.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hepatomegaly",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "gastrointestinal", "hepatic"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'hepatomegaly' — what does -megaly mean?",
+        "correctAnswer": "enlargement",
+        "distractors": ["inflammation", "tumor", "hardening"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "hepat/o (liver) + -megaly (enlargement) = ___",
+        "correctAnswer": "Hepatomegaly",
+        "distractors": ["Splenomegaly", "Cardiomegaly", "Hepatitis"]
+      }
+    ],
+    "visualDescription": "Torso outline with an oversized liver highlighted, word HEPATOMEGALY split: HEPATO + MEGALY"
+  },
+  {
+    "id": "medterm_cond_splenomegaly",
+    "correctAnswer": "Splenomegaly",
+    "acceptableAlternatives": ["spleen enlargement", "enlarged spleen"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Hepatomegaly",
+      "Cardiomegaly",
+      "Acromegaly",
+      "Lymphoma",
+      "Splenitis",
+      "Thrombocytopenia",
+      "Leukemia",
+      "Nephromegaly"
+    ],
+    "quizQuestion": "What condition is named from splen/o (spleen) + -megaly (enlargement), meaning abnormal enlargement of the spleen?",
+    "explanation": "Splenomegaly breaks down as: splen/o (spleen, from Greek 'splen') + -megaly (enlargement, from Greek 'megas'). The spleen is normally about the size of a fist and not palpable; splenomegaly occurs when it becomes palpable below the left costal margin. Causes include infections (mononucleosis — 'mono' — is a classic cause, as are malaria and bacterial endocarditis), hematological disorders (leukemia, lymphoma), portal hypertension from liver disease, and autoimmune conditions. An enlarged spleen risks rupture from even mild trauma.",
+    "statement": "Splenomegaly means spleen enlargement, from splen/o (spleen) + -megaly (enlargement).",
+    "wowFactor": "Mononucleosis ('mono', caused by Epstein-Barr virus) causes splenomegaly so severe that contact sports are strictly forbidden for 3-4 weeks — a splenic rupture from a tackle can be fatal. Athletes testing positive for mono are benched until ultrasound confirms the spleen has returned to normal size.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Splenomegaly",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "hematological", "immunological"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'splenomegaly' — what does splen/o mean?",
+        "correctAnswer": "spleen",
+        "distractors": ["liver", "lymph node", "pancreas"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "splen/o (spleen) + -megaly (enlargement) = ___",
+        "correctAnswer": "Splenomegaly",
+        "distractors": ["Hepatomegaly", "Cardiomegaly", "Lymphoma"]
+      }
+    ],
+    "visualDescription": "Left upper abdomen with an oversized spleen visible, word SPLENOMEGALY split: SPLENO + MEGALY"
+  },
+  {
+    "id": "medterm_cond_cardiomegaly",
+    "correctAnswer": "Cardiomegaly",
+    "acceptableAlternatives": ["enlarged heart", "cardiac enlargement"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Hepatomegaly",
+      "Splenomegaly",
+      "Acromegaly",
+      "Cardiomyopathy",
+      "Hypertension",
+      "Heart failure",
+      "Myocarditis",
+      "Pericardial effusion"
+    ],
+    "quizQuestion": "What condition is named from cardi/o (heart) + -megaly (enlargement), meaning abnormal enlargement of the heart?",
+    "explanation": "Cardiomegaly breaks down as: cardi/o (heart, from Greek 'kardia') + -megaly (enlargement, from Greek 'megas'). It is defined as a cardiothoracic ratio >0.5 on chest X-ray (heart width more than half the chest width). Cardiomegaly is a sign, not a diagnosis — causes include dilated cardiomyopathy (the heart muscle weakens and the chambers dilate), hypertension (chronic pressure overload), valve disease, and pericardial effusion (fluid around the heart mimicking enlargement). Athletes can develop physiological cardiomegaly ('athlete's heart') from training.",
+    "statement": "Cardiomegaly means heart enlargement, from cardi/o (heart) + -megaly (enlargement).",
+    "wowFactor": "Tour de France cyclists develop such pronounced 'athlete's heart' (physiological cardiomegaly) that their resting heart rate can drop to 28-35 bpm — rates that would indicate severe bradycardia and possible cardiac arrest in a non-athlete.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cardiomegaly",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "cardiovascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'cardiomegaly' — what does cardi/o mean?",
+        "correctAnswer": "heart",
+        "distractors": ["blood vessel", "chest", "muscle"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "cardi/o (heart) + -megaly (enlargement) = ___",
+        "correctAnswer": "Cardiomegaly",
+        "distractors": ["Hepatomegaly", "Cardiomyopathy", "Splenomegaly"]
+      }
+    ],
+    "visualDescription": "Chest X-ray style illustration with an oversized heart shadow, word CARDIOMEGALY split: CARDIO + MEGALY"
+  },
+  {
+    "id": "medterm_cond_acromegaly",
+    "correctAnswer": "Acromegaly",
+    "acceptableAlternatives": ["gigantism variant", "growth hormone excess"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Hepatomegaly",
+      "Splenomegaly",
+      "Cardiomegaly",
+      "Hyperpituitarism",
+      "Gigantism",
+      "Adenoma",
+      "Cushing's syndrome",
+      "Hypothyroidism"
+    ],
+    "quizQuestion": "What condition is named from acr/o (extremity/tip) + -megaly (enlargement), meaning enlargement of the hands, feet, and facial features due to excess growth hormone in adults?",
+    "explanation": "Acromegaly breaks down as: acr/o (extremity, tip, from Greek 'akron' — outermost point) + -megaly (enlargement). In adults with fused growth plates, excess growth hormone (from a pituitary adenoma in 95%+ of cases) cannot cause height increase — instead it causes acral (extremity) growth: enlarged hands, feet, jaw (prognathism), brow, and tongue. Symptoms develop slowly over years and include ring and shoe size increases, coarsened facial features, and headaches from the tumor. Compare gigantism (same excess hormone in children before growth plate fusion — causes height increase).",
+    "statement": "Acromegaly means extremity enlargement, from acr/o (extremity/tip) + -megaly (enlargement), describing adult growth hormone excess causing enlarged hands, feet, and face.",
+    "wowFactor": "Andre the Giant, the wrestling icon and actor, had acromegaly from a pituitary tumor. He stood 7'4\" and wore size 24 shoes. His condition was never surgically treated, and he died of heart failure at 46 — cardiomegaly from growth hormone excess eventually kills most untreated acromegaly patients.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Acromegaly",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "endocrine", "pituitary"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'acromegaly' — what does acr/o mean?",
+        "correctAnswer": "extremity or outermost tip",
+        "distractors": ["rapid or fast", "abnormal or irregular", "sharp or acute"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "acr/o (extremity) + -megaly (enlargement) = ___",
+        "correctAnswer": "Acromegaly",
+        "distractors": ["Cardiomegaly", "Hepatomegaly", "Adenoma"]
+      }
+    ],
+    "visualDescription": "Hands and feet comparison — normal vs. enlarged, with enlarged jaw and brow, word ACROMEGALY split: ACRO + MEGALY"
+  },
+  {
+    "id": "medterm_cond_edema",
+    "correctAnswer": "Edema",
+    "acceptableAlternatives": ["oedema", "fluid retention", "swelling"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Ascites",
+      "Anasarca",
+      "Lymphedema",
+      "Effusion",
+      "Hematoma",
+      "Cellulitis",
+      "Thrombosis",
+      "Phlebitis"
+    ],
+    "quizQuestion": "What condition derives from the Greek 'oidema' (swelling), describing abnormal accumulation of fluid in body tissues causing visible swelling?",
+    "explanation": "Edema derives from Greek 'oidema' meaning swelling (from 'oidein' — to swell). It describes the abnormal accumulation of interstitial fluid (fluid outside of blood vessels and cells) in body tissues. Pitting edema — when pressure on the swollen area leaves an indentation (pit) — indicates fluid in the interstitium. Causes are classified by mechanism: increased hydrostatic pressure (heart failure), decreased oncotic pressure (low albumin in liver disease), increased capillary permeability (inflammation, allergy), and impaired lymphatic drainage (lymphedema). Pulmonary edema (fluid in the lungs) is a medical emergency.",
+    "statement": "Edema means swelling (Greek 'oidema'), describing abnormal interstitial fluid accumulation in body tissues.",
+    "wowFactor": "Astronauts develop facial edema (and a characteristic 'puffy face') within hours of reaching microgravity — without gravity pulling fluid downward, it redistributes cephalad (toward the head). Meanwhile their legs become thin as fluid leaves them. Their sinuses fill and they get what astronauts call 'stuffy head syndrome'.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Edema",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "general", "cardiovascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The Greek root 'oidema' in edema means:",
+        "correctAnswer": "swelling",
+        "distractors": ["fluid", "inflammation", "fullness"]
+      },
+      {
+        "type": "etymology",
+        "question": "What is 'pitting edema'?",
+        "correctAnswer": "Edema where pressing the swollen area leaves an indentation (pit)",
+        "distractors": ["Edema only affecting the armpits", "Edema caused by pit viper venom", "Edema with small ulcerations on the skin"]
+      }
+    ],
+    "visualDescription": "Ankle and lower leg with visible swelling, finger pressing in to show pitting, word EDEMA with Greek root OIDEMA labeled"
+  }
+]

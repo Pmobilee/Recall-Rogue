@@ -1,0 +1,1082 @@
+[
+  {
+    "id": "medterm_pos_supine",
+    "correctAnswer": "Supine",
+    "acceptableAlternatives": ["Supine position"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Prone", "Lithotomy", "Trendelenburg", "Fowler", "Sims", "Lateral recumbent", "Dorsal recumbent", "Semi-Fowler"],
+    "quizQuestion": "What anatomical position describes a patient lying face up on their back?",
+    "explanation": "Supine position means lying on the back with the face directed upward. It is the opposite of prone (face down). Supine is one of the most common positions for physical examinations, surgical procedures, and resuscitation. The word derives from the Latin 'supinus' meaning 'bent backward.'",
+    "statement": "Supine position means lying face up on the back.",
+    "wowFactor": "Memory trick: SUPINE = SPINE is on the bed. Your spine touches the surface, so you face UP. Prone = face DOWN (like falling on a prone surface).",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Supine_position",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "A patient in supine position is lying in which orientation?",
+        "correctAnswer": "Face up (on their back)",
+        "distractors": ["Face down (on their stomach)", "On their left side", "Sitting upright at 45 degrees"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The position where a patient lies flat on their back, face upward, is called {___} position.",
+        "correctAnswer": "Supine",
+        "distractors": ["Prone", "Fowler", "Sims", "Lithotomy"]
+      }
+    ],
+    "tags": ["medical_terminology", "anatomical_positions", "nursing"],
+    "visualDescription": "Patient lying flat on hospital bed face up, SUPINE label with upward arrow indicating face direction"
+  },
+  {
+    "id": "medterm_pos_prone",
+    "correctAnswer": "Prone",
+    "acceptableAlternatives": ["Prone position"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Supine", "Lithotomy", "Trendelenburg", "Fowler", "Sims", "Lateral recumbent", "Dorsal recumbent", "Semi-Fowler"],
+    "quizQuestion": "What anatomical position describes a patient lying face down on their stomach?",
+    "explanation": "Prone position means lying on the abdomen (stomach) with the face directed downward. It is used for certain spinal surgeries, back examinations, and increasingly in critical care for patients with severe ARDS (acute respiratory distress syndrome) to improve oxygenation.",
+    "statement": "Prone position means lying face down on the stomach.",
+    "wowFactor": "Prone positioning became widely discussed during COVID-19 — turning severely ill patients face-down (prone) significantly improved oxygen levels by changing how air distributes through the lungs!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Prone_position",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "A patient in prone position is lying in which orientation?",
+        "correctAnswer": "Face down (on their stomach)",
+        "distractors": ["Face up (on their back)", "On their right side", "Sitting up with head elevated"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The position where a patient lies flat on their stomach, face downward, is called {___} position.",
+        "correctAnswer": "Prone",
+        "distractors": ["Supine", "Fowler", "Sims", "Lateral recumbent"]
+      }
+    ],
+    "tags": ["medical_terminology", "anatomical_positions", "nursing"],
+    "visualDescription": "Patient lying face down on hospital bed, PRONE label with downward arrow indicating face direction"
+  },
+  {
+    "id": "medterm_pos_trendelenburg",
+    "correctAnswer": "Trendelenburg",
+    "acceptableAlternatives": ["Trendelenburg position"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Supine", "Reverse Trendelenburg", "Lithotomy", "Fowler", "Sims", "Lateral recumbent", "Semi-Fowler", "Dorsal recumbent"],
+    "quizQuestion": "In which anatomical position is the patient placed supine on a tilted surface with the head lower than the feet?",
+    "explanation": "Trendelenburg position places the patient on their back on a surface tilted so the feet are higher than the head, typically at 15-30 degrees. It is named after German surgeon Friedrich Trendelenburg. Historically used for shock management, it is now used mainly for certain abdominal and pelvic surgeries and to improve venous access.",
+    "statement": "Trendelenburg position: patient lies on back with head lower than feet.",
+    "wowFactor": "Named after Friedrich Trendelenburg (1844-1924), a German surgeon who pioneered the position. Despite decades of use for shock, modern research shows it does NOT reliably improve cardiac output in hypotensive patients!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Trendelenburg_position",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "In Trendelenburg position, which part of the patient's body is elevated higher?",
+        "correctAnswer": "The feet (feet higher than head)",
+        "distractors": ["The head (head higher than feet)", "Neither — the surface is flat", "The right side of the body"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "When a surgical table is tilted so the patient's head is lower than the feet, this is called {___} position.",
+        "correctAnswer": "Trendelenburg",
+        "distractors": ["Reverse Trendelenburg", "Fowler", "Lithotomy", "Semi-Fowler"]
+      }
+    ],
+    "tags": ["medical_terminology", "anatomical_positions", "nursing", "surgery"],
+    "visualDescription": "Hospital bed tilted at angle with patient's head at lower end, feet elevated, Trendelenburg label with tilt angle arrow"
+  },
+  {
+    "id": "medterm_pos_reverse_trendelenburg",
+    "correctAnswer": "Reverse Trendelenburg",
+    "acceptableAlternatives": ["Reverse Trendelenburg position"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Trendelenburg", "Supine", "Lithotomy", "Fowler", "Sims", "Lateral recumbent", "Semi-Fowler", "Dorsal recumbent"],
+    "quizQuestion": "In which anatomical position is the patient placed supine on a tilted surface with the feet lower than the head?",
+    "explanation": "Reverse Trendelenburg position is the opposite of Trendelenburg: the patient lies on their back on a tilted surface with the head end raised and feet lowered. It is used in head and neck surgery, laparoscopic upper abdominal procedures (to move abdominal organs away from the surgical site), and to reduce intracranial pressure.",
+    "statement": "Reverse Trendelenburg: patient lies on back with head higher than feet.",
+    "wowFactor": "Reverse Trendelenburg is preferred for laparoscopic bariatric surgery because gravity pulls abdominal fat and organs downward, giving the surgeon a clearer working space!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Trendelenburg_position#Reverse_Trendelenburg_position",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "In Reverse Trendelenburg position, which part of the patient's body is elevated?",
+        "correctAnswer": "The head (head higher than feet)",
+        "distractors": ["The feet (feet higher than head)", "Neither — the body is fully flat", "The left side only"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The supine position with head end raised and feet lowered is called {___} position.",
+        "correctAnswer": "Reverse Trendelenburg",
+        "distractors": ["Trendelenburg", "Fowler", "Semi-Fowler", "Supine"]
+      }
+    ],
+    "tags": ["medical_terminology", "anatomical_positions", "nursing", "surgery"],
+    "visualDescription": "Hospital bed tilted with head at upper end and feet lowered, Reverse Trendelenburg label with upward tilt arrow toward head"
+  },
+  {
+    "id": "medterm_pos_lithotomy",
+    "correctAnswer": "Lithotomy",
+    "acceptableAlternatives": ["Lithotomy position"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Supine", "Prone", "Trendelenburg", "Fowler", "Sims", "Lateral recumbent", "Dorsal recumbent", "Semi-Fowler"],
+    "quizQuestion": "Which position places the patient on their back with hips and knees flexed and legs elevated in stirrups, used for gynecological exams?",
+    "explanation": "Lithotomy position places the patient supine with the hips flexed, legs elevated and apart, supported in stirrups. It is the standard position for gynecological and urological examinations, childbirth, and pelvic surgeries. The name comes from the historical use of this position for surgical removal of kidney stones (Greek 'lithos' = stone).",
+    "statement": "Lithotomy position: patient on back, legs raised and separated in stirrups.",
+    "wowFactor": "The name 'lithotomy' comes from the Greek for stone cutting — this position was originally used for surgical removal of bladder stones, a common (and brutal) pre-anesthetic operation!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lithotomy_position",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The position used for gynecological exams, with legs elevated in stirrups, is called what?",
+        "correctAnswer": "Lithotomy",
+        "distractors": ["Sims", "Fowler", "Dorsal recumbent", "Lateral recumbent"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A patient on their back with hips and knees flexed and legs supported in stirrups is in {___} position.",
+        "correctAnswer": "Lithotomy",
+        "distractors": ["Sims", "Dorsal recumbent", "Fowler", "Supine"]
+      }
+    ],
+    "tags": ["medical_terminology", "anatomical_positions", "nursing", "gynecology"],
+    "visualDescription": "Patient on exam table with legs elevated in stirrups, stirrup supports visible, LITHOTOMY label"
+  },
+  {
+    "id": "medterm_pos_fowler",
+    "correctAnswer": "Fowler",
+    "acceptableAlternatives": ["Fowler position", "Fowler's position"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Supine", "Prone", "Trendelenburg", "Semi-Fowler", "Sims", "Lateral recumbent", "Dorsal recumbent", "Lithotomy"],
+    "quizQuestion": "Which position places a patient in a semi-sitting position with the head of the bed elevated between 45 and 90 degrees?",
+    "explanation": "Fowler's position raises the head of the bed to 45-90 degrees (full Fowler at 90 degrees). It improves breathing, prevents aspiration, eases eating, and is the standard position for patients with respiratory distress or heart failure. Named after American surgeon George Ryerson Fowler (1848-1906).",
+    "statement": "Fowler position: patient sitting with head of bed at 45-90 degrees.",
+    "wowFactor": "High Fowler (90 degrees) is used for patients having difficulty breathing — sitting upright lets the diaphragm drop and the lungs expand fully, dramatically improving air intake!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fowler%27s_position",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Fowler's position elevates the head of the bed to approximately what angle range?",
+        "correctAnswer": "45 to 90 degrees",
+        "distractors": ["15 to 30 degrees", "30 to 45 degrees", "10 to 20 degrees"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The {___} position raises the head of the bed to 45-90 degrees and is used to improve breathing in patients.",
+        "correctAnswer": "Fowler",
+        "distractors": ["Semi-Fowler", "Trendelenburg", "Supine", "Lateral recumbent"]
+      }
+    ],
+    "tags": ["medical_terminology", "anatomical_positions", "nursing", "respiratory"],
+    "visualDescription": "Hospital bed with back raised to approximately 60-degree angle, patient sitting up, FOWLER label with angle indicator"
+  },
+  {
+    "id": "medterm_pos_semi_fowler",
+    "correctAnswer": "Semi-Fowler",
+    "acceptableAlternatives": ["Semi-Fowler position", "Semi Fowler"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Fowler", "Supine", "Prone", "Trendelenburg", "Sims", "Lateral recumbent", "Dorsal recumbent", "Lithotomy"],
+    "quizQuestion": "Which position raises the head of the bed to 30 to 45 degrees, midway between supine and full sitting?",
+    "explanation": "Semi-Fowler position elevates the head of the bed to 30-45 degrees. It is a compromise between flat (supine) and fully upright (Fowler) that reduces aspiration risk, aids breathing, and is often used post-operatively and for patients receiving nasogastric tube feedings. Many ICU protocols mandate a minimum of 30-degree elevation to prevent ventilator-associated pneumonia.",
+    "statement": "Semi-Fowler position: head of bed at 30-45 degrees.",
+    "wowFactor": "ICU ventilator bundles mandate at least 30-degree head elevation (Semi-Fowler) to prevent ventilator-associated pneumonia — one of the most effective infection-prevention measures in critical care!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fowler%27s_position",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "At what angle is the head of bed elevated in Semi-Fowler position?",
+        "correctAnswer": "30 to 45 degrees",
+        "distractors": ["45 to 90 degrees", "15 to 30 degrees", "60 to 90 degrees"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The {___} position elevates the head of the bed to 30-45 degrees and is standard in ICU ventilator care bundles.",
+        "correctAnswer": "Semi-Fowler",
+        "distractors": ["Fowler", "Trendelenburg", "Reverse Trendelenburg", "Supine"]
+      }
+    ],
+    "tags": ["medical_terminology", "anatomical_positions", "nursing", "icu"],
+    "visualDescription": "Hospital bed with back raised to 30-45 degree angle, angle indicator arc shown, SEMI-FOWLER label"
+  },
+  {
+    "id": "medterm_pos_sims",
+    "correctAnswer": "Sims",
+    "acceptableAlternatives": ["Sims position", "Sims' position"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Supine", "Prone", "Lithotomy", "Fowler", "Semi-Fowler", "Lateral recumbent", "Dorsal recumbent", "Trendelenburg"],
+    "quizQuestion": "Which position places the patient lying on their left side with the right knee drawn up toward the chest, used for rectal exams and enemas?",
+    "explanation": "Sims' position (left lateral Sims) places the patient on their left side with the right knee flexed and drawn up, left arm extended behind, and right arm forward. It relaxes the abdominal muscles and gives access to the rectum. Named after American gynecologist J. Marion Sims (1813-1883). Used for enemas, rectal exams, and certain obstetric positions.",
+    "statement": "Sims position: lying on left side with right knee bent toward chest.",
+    "wowFactor": "Sims position uses gravity to direct enema fluid toward the sigmoid colon — lying on the left side means the fluid flows naturally through the descending colon, making the procedure more effective!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sim%27s_position",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Sims' position is typically used for which procedures?",
+        "correctAnswer": "Rectal examination and enemas",
+        "distractors": ["Gynecological examinations using stirrups", "Respiratory distress management", "Central venous line insertion"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The {___} position places a patient on their left side with the right knee flexed toward the chest.",
+        "correctAnswer": "Sims",
+        "distractors": ["Lateral recumbent", "Prone", "Dorsal recumbent", "Lithotomy"]
+      }
+    ],
+    "tags": ["medical_terminology", "anatomical_positions", "nursing"],
+    "visualDescription": "Patient lying on left side with right knee drawn up, anatomical labels showing left and right orientation, SIMS label"
+  },
+  {
+    "id": "medterm_pos_lateral_recumbent",
+    "correctAnswer": "Lateral recumbent",
+    "acceptableAlternatives": ["Lateral recumbent position", "Lateral position", "Recovery position"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Supine", "Prone", "Lithotomy", "Fowler", "Sims", "Dorsal recumbent", "Trendelenburg", "Semi-Fowler"],
+    "quizQuestion": "What anatomical position describes a patient lying on their side (either left or right)?",
+    "explanation": "Lateral recumbent position means lying on the side — either left lateral (lying on the left) or right lateral (lying on the right). It is also called the recovery position when used in first aid to prevent aspiration in unconscious patients. It is used for spinal anesthesia, lumbar puncture, and certain surgical procedures.",
+    "statement": "Lateral recumbent position means lying on one side.",
+    "wowFactor": "The lateral recumbent position is the same as the 'recovery position' used in first aid for unconscious patients — lying on the side prevents the tongue from blocking the airway and lets vomit drain away safely!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Recovery_position",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "In first aid, the 'recovery position' is the same as which anatomical position?",
+        "correctAnswer": "Lateral recumbent",
+        "distractors": ["Supine", "Prone", "Sims"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A patient lying on their side (left or right) is in {___} position.",
+        "correctAnswer": "Lateral recumbent",
+        "distractors": ["Sims", "Prone", "Dorsal recumbent", "Supine"]
+      }
+    ],
+    "tags": ["medical_terminology", "anatomical_positions", "nursing"],
+    "visualDescription": "Patient lying on their side on hospital bed, lateral position indicator arrows, LATERAL RECUMBENT label"
+  },
+  {
+    "id": "medterm_pos_dorsal_recumbent",
+    "correctAnswer": "Dorsal recumbent",
+    "acceptableAlternatives": ["Dorsal recumbent position"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Supine", "Prone", "Lithotomy", "Fowler", "Sims", "Lateral recumbent", "Trendelenburg", "Semi-Fowler"],
+    "quizQuestion": "Which anatomical position places the patient lying on their back with knees bent and feet flat on the table?",
+    "explanation": "Dorsal recumbent position places the patient supine (on their back) with knees flexed and feet flat on the examination table. Unlike lithotomy, the legs are not elevated in stirrups. It is used for abdominal examination, female urinary catheterization, and vaginal examinations. 'Dorsal' refers to the back surface, 'recumbent' means lying down.",
+    "statement": "Dorsal recumbent: lying on back with knees bent, feet flat on table.",
+    "wowFactor": "Dorsal recumbent is easily confused with lithotomy — both start on the back with knees bent, but dorsal recumbent keeps feet on the table while lithotomy puts legs up in stirrups!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dorsal_recumbent_position",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Dorsal recumbent differs from lithotomy in what way?",
+        "correctAnswer": "Feet remain flat on the table (not elevated in stirrups)",
+        "distractors": ["The patient is face down instead of face up", "The head is elevated instead of the feet", "The patient sits upright at 45 degrees"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lying on the back with knees flexed and feet flat on the table is the {___} position.",
+        "correctAnswer": "Dorsal recumbent",
+        "distractors": ["Lithotomy", "Supine", "Sims", "Fowler"]
+      }
+    ],
+    "tags": ["medical_terminology", "anatomical_positions", "nursing"],
+    "visualDescription": "Patient on exam table lying face up, knees bent with feet flat on table surface, DORSAL RECUMBENT label"
+  },
+  {
+    "id": "medterm_abbr_cbc",
+    "correctAnswer": "Complete blood count",
+    "acceptableAlternatives": ["Complete Blood Count", "CBC"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Basic metabolic panel", "Comprehensive metabolic panel", "Arterial blood gas", "Blood urea nitrogen", "Urinalysis", "Erythrocyte sedimentation rate", "C-reactive protein", "Prothrombin time"],
+    "quizQuestion": "What does the medical abbreviation CBC stand for?",
+    "explanation": "CBC (Complete Blood Count) is one of the most commonly ordered blood tests. It measures white blood cells (WBC), red blood cells (RBC), hemoglobin (Hgb), hematocrit (Hct), mean corpuscular volume (MCV), and platelets. A CBC with differential further classifies WBCs into neutrophils, lymphocytes, monocytes, eosinophils, and basophils.",
+    "statement": "CBC stands for Complete Blood Count.",
+    "wowFactor": "A CBC is often the very FIRST test a doctor orders — it gives a snapshot of overall blood health from a single blood draw, and abnormalities can hint at infections, anemia, clotting disorders, and even leukemia!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Complete_blood_count",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation is used for a complete blood count?",
+        "correctAnswer": "CBC",
+        "distractors": ["BMP", "CMP", "ABG", "BUN"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The most commonly ordered blood panel, which measures WBC, RBC, hemoglobin and platelets, is abbreviated {___}.",
+        "correctAnswer": "CBC",
+        "distractors": ["BMP", "CMP", "ESR", "CRP"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "lab", "blood_tests"],
+    "visualDescription": "Lab report with CBC highlighted, showing rows for WBC, RBC, Hgb, Hct, Platelets with reference ranges"
+  },
+  {
+    "id": "medterm_abbr_bmp",
+    "correctAnswer": "Basic metabolic panel",
+    "acceptableAlternatives": ["Basic Metabolic Panel", "BMP"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Complete blood count", "Comprehensive metabolic panel", "Arterial blood gas", "Blood urea nitrogen", "Urinalysis", "Erythrocyte sedimentation rate", "C-reactive protein", "Prothrombin time"],
+    "quizQuestion": "What does the medical abbreviation BMP stand for?",
+    "explanation": "BMP (Basic Metabolic Panel) is a blood test measuring 8 substances: sodium, potassium, chloride, bicarbonate (CO2), blood urea nitrogen (BUN), creatinine, glucose, and calcium. It assesses kidney function, electrolyte balance, blood sugar, and acid-base status. It is a subset of the more comprehensive CMP.",
+    "statement": "BMP stands for Basic Metabolic Panel.",
+    "wowFactor": "The BMP covers 8 tests in one blood draw — electrolytes (Na, K, Cl, CO2), kidney markers (BUN, creatinine), glucose, and calcium. Doctors call the electrolyte sub-group the 'Chem-4' or 'lytes'!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Basic_metabolic_panel",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation is used for a basic metabolic panel?",
+        "correctAnswer": "BMP",
+        "distractors": ["CBC", "CMP", "ABG", "ESR"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The blood panel measuring sodium, potassium, BUN, creatinine, glucose, and calcium is abbreviated {___}.",
+        "correctAnswer": "BMP",
+        "distractors": ["CMP", "CBC", "ABG", "UA"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "lab", "blood_tests"],
+    "visualDescription": "Lab report with BMP highlighted, showing 8-item panel: Na, K, Cl, CO2, BUN, Creat, Glucose, Calcium"
+  },
+  {
+    "id": "medterm_abbr_cmp",
+    "correctAnswer": "Comprehensive metabolic panel",
+    "acceptableAlternatives": ["Comprehensive Metabolic Panel", "CMP"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Complete blood count", "Basic metabolic panel", "Arterial blood gas", "Blood urea nitrogen", "Urinalysis", "Erythrocyte sedimentation rate", "Glycated hemoglobin", "Prothrombin time"],
+    "quizQuestion": "What does the medical abbreviation CMP stand for?",
+    "explanation": "CMP (Comprehensive Metabolic Panel) is a blood test of 14 substances that includes everything in the BMP plus liver function tests: total protein, albumin, total bilirubin, direct bilirubin, alkaline phosphatase (ALP), aspartate aminotransferase (AST), and alanine aminotransferase (ALT). It evaluates kidney function, liver health, electrolytes, and blood sugar together.",
+    "statement": "CMP stands for Comprehensive Metabolic Panel.",
+    "wowFactor": "The CMP adds 6 liver function tests to the BMP — it tells you about both kidney and liver health in a single draw. Abnormal liver enzymes (AST/ALT) within a CMP are often the first clue to liver disease!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Comprehensive_metabolic_panel",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation is used for a comprehensive metabolic panel?",
+        "correctAnswer": "CMP",
+        "distractors": ["BMP", "CBC", "ABG", "LFT"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The 14-test panel that includes liver enzymes (AST, ALT) plus the BMP is abbreviated {___}.",
+        "correctAnswer": "CMP",
+        "distractors": ["BMP", "CBC", "ESR", "CRP"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "lab", "blood_tests", "liver"],
+    "visualDescription": "Lab report with CMP highlighted, showing 14-item panel including liver enzyme rows AST and ALT"
+  },
+  {
+    "id": "medterm_abbr_abg",
+    "correctAnswer": "Arterial blood gas",
+    "acceptableAlternatives": ["Arterial Blood Gas", "ABG"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Complete blood count", "Basic metabolic panel", "Comprehensive metabolic panel", "Blood urea nitrogen", "Urinalysis", "Erythrocyte sedimentation rate", "C-reactive protein", "Peripheral oxygen saturation"],
+    "quizQuestion": "What does the medical abbreviation ABG stand for?",
+    "explanation": "ABG (Arterial Blood Gas) is a blood test drawn from an artery (typically the radial artery) that measures pH, partial pressure of oxygen (PaO2), partial pressure of carbon dioxide (PaCO2), bicarbonate (HCO3-), and oxygen saturation (SaO2). It directly assesses acid-base balance and respiratory function. Essential for ventilator management and respiratory failure.",
+    "statement": "ABG stands for Arterial Blood Gas.",
+    "wowFactor": "Unlike most blood tests drawn from veins, an ABG requires arterial puncture — arteries are deeper, under pressure, and more painful to access. The radial artery at the wrist is the standard site after an Allen test confirms adequate ulnar circulation!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Arterial_blood_gas_test",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation is used for an arterial blood gas test?",
+        "correctAnswer": "ABG",
+        "distractors": ["CBC", "BMP", "SpO2", "RR"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The test measuring arterial pH, PaO2, PaCO2, and bicarbonate to assess acid-base and respiratory status is abbreviated {___}.",
+        "correctAnswer": "ABG",
+        "distractors": ["SpO2", "BMP", "CBC", "CMP"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "lab", "blood_tests", "respiratory"],
+    "visualDescription": "Arterial blood gas syringe with orange cap (indicates arterial), results panel showing pH, PaO2, PaCO2 values"
+  },
+  {
+    "id": "medterm_abbr_bun",
+    "correctAnswer": "Blood urea nitrogen",
+    "acceptableAlternatives": ["Blood Urea Nitrogen", "BUN"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Complete blood count", "Basic metabolic panel", "Arterial blood gas", "C-reactive protein", "Urinalysis", "Erythrocyte sedimentation rate", "Glycated hemoglobin", "Comprehensive metabolic panel"],
+    "quizQuestion": "What does the medical abbreviation BUN stand for?",
+    "explanation": "BUN (Blood Urea Nitrogen) measures the amount of nitrogen in the blood from urea, a waste product formed in the liver when protein is broken down and excreted by the kidneys. Elevated BUN indicates impaired kidney function, dehydration, high protein diet, or gastrointestinal bleeding. Normal range is typically 7-25 mg/dL. BUN is always reported as part of the BMP and CMP.",
+    "statement": "BUN stands for Blood Urea Nitrogen.",
+    "wowFactor": "Elevated BUN with elevated creatinine (the BUN/Cr ratio) helps pinpoint the TYPE of kidney failure — pre-renal (dehydration, ratio >20:1), intrinsic renal damage (ratio ~10:1), or post-renal obstruction!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blood_urea_nitrogen",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation refers to a blood test for the nitrogen-containing waste product filtered by the kidneys?",
+        "correctAnswer": "BUN",
+        "distractors": ["CRP", "ESR", "CBC", "CMP"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The lab value measuring urea waste in the blood to assess kidney function is abbreviated {___}.",
+        "correctAnswer": "BUN",
+        "distractors": ["CRP", "ESR", "ABG", "CMP"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "lab", "blood_tests", "kidney"],
+    "visualDescription": "Kidney diagram with waste arrows pointing to BUN label, blood test tube with numeric BUN value highlighted"
+  },
+  {
+    "id": "medterm_abbr_hba1c",
+    "correctAnswer": "Glycated hemoglobin",
+    "acceptableAlternatives": ["Hemoglobin A1c", "Glycosylated hemoglobin", "HbA1c"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Complete blood count", "Basic metabolic panel", "Arterial blood gas", "Blood urea nitrogen", "Urinalysis", "Erythrocyte sedimentation rate", "C-reactive protein", "Fasting blood glucose"],
+    "quizQuestion": "What does the medical abbreviation HbA1c stand for?",
+    "explanation": "HbA1c (Hemoglobin A1c, or glycated hemoglobin) measures the percentage of hemoglobin coated with sugar (glucose). Because red blood cells live about 90-120 days, HbA1c reflects average blood sugar control over the past 2-3 months. Normal: below 5.7%; prediabetes: 5.7-6.4%; diabetes diagnosis: 6.5% or higher. The gold standard test for long-term diabetes management.",
+    "statement": "HbA1c stands for glycated hemoglobin, a 3-month average blood sugar marker.",
+    "wowFactor": "HbA1c is essentially a 3-month blood sugar report card — glucose permanently sticks to hemoglobin throughout the red blood cell's life, so one test reveals how well diabetes has (or hasn't) been controlled over the entire past quarter!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Glycated_hemoglobin",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation is used for the glycated hemoglobin test that reflects 3-month average blood sugar?",
+        "correctAnswer": "HbA1c",
+        "distractors": ["BUN", "CRP", "ESR", "CBC"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The diabetes management test measuring average blood glucose over 2-3 months is abbreviated {___}.",
+        "correctAnswer": "HbA1c",
+        "distractors": ["BMP", "CBC", "CRP", "UA"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "lab", "blood_tests", "diabetes"],
+    "visualDescription": "Red blood cell with glucose molecules attached, HbA1c percentage dial showing normal/prediabetes/diabetes zones"
+  },
+  {
+    "id": "medterm_abbr_pt_inr",
+    "correctAnswer": "Prothrombin time / International normalized ratio",
+    "acceptableAlternatives": ["Prothrombin time", "International normalized ratio", "PT/INR", "PT INR"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Complete blood count", "Basic metabolic panel", "Arterial blood gas", "Erythrocyte sedimentation rate", "C-reactive protein", "Glycated hemoglobin", "Blood urea nitrogen", "Comprehensive metabolic panel"],
+    "quizQuestion": "What does the medical abbreviation PT/INR stand for?",
+    "explanation": "PT (Prothrombin Time) measures how long it takes blood to clot via the extrinsic coagulation pathway. INR (International Normalized Ratio) standardizes PT results across different laboratories. PT/INR is used to monitor warfarin (Coumadin) anticoagulation therapy and to assess liver function and bleeding risk. A normal INR is approximately 1.0; therapeutic anticoagulation with warfarin targets 2.0-3.0.",
+    "statement": "PT/INR stands for Prothrombin Time / International Normalized Ratio — a clotting test.",
+    "wowFactor": "Patients on warfarin (a blood thinner) require regular PT/INR monitoring because warfarin has a narrow therapeutic window — too low and clots form, too high and dangerous bleeding occurs. The INR was invented specifically to standardize results across labs worldwide!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Prothrombin_time",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which lab test is used to monitor warfarin (blood thinner) therapy and assess clotting ability?",
+        "correctAnswer": "PT/INR",
+        "distractors": ["CBC", "BMP", "ESR", "CRP"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The clotting time test used to monitor warfarin therapy, standardized across labs, is abbreviated {___}.",
+        "correctAnswer": "PT/INR",
+        "distractors": ["CBC", "ESR", "BUN", "ABG"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "lab", "blood_tests", "coagulation"],
+    "visualDescription": "Coagulation cascade diagram with PT/INR label, warfarin pill icon, INR meter dial showing therapeutic range 2.0-3.0"
+  },
+  {
+    "id": "medterm_abbr_esr",
+    "correctAnswer": "Erythrocyte sedimentation rate",
+    "acceptableAlternatives": ["Erythrocyte Sedimentation Rate", "ESR", "sed rate"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Complete blood count", "Basic metabolic panel", "Arterial blood gas", "C-reactive protein", "Prothrombin time", "Glycated hemoglobin", "Blood urea nitrogen", "Urinalysis"],
+    "quizQuestion": "What does the medical abbreviation ESR stand for?",
+    "explanation": "ESR (Erythrocyte Sedimentation Rate) measures how quickly red blood cells settle to the bottom of a test tube. When inflammation is present, proteins called acute phase reactants cause red blood cells to clump and fall faster. ESR is a nonspecific marker of inflammation used to screen for and monitor inflammatory conditions like rheumatoid arthritis, temporal arteritis, and infections. Normal: men <15 mm/hr, women <20 mm/hr.",
+    "statement": "ESR stands for Erythrocyte Sedimentation Rate — a non-specific inflammation marker.",
+    "wowFactor": "ESR is one of the oldest lab tests still in clinical use — it was developed in the 1920s. The test literally just times how fast red blood cells sink in a tube, yet it remains a useful tool for monitoring inflammatory diseases like giant cell arteritis!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Erythrocyte_sedimentation_rate",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation is used for the test that measures how quickly red blood cells settle in a tube, used as an inflammation marker?",
+        "correctAnswer": "ESR",
+        "distractors": ["CRP", "CBC", "BMP", "BUN"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The non-specific inflammation marker that measures red blood cell settling rate is abbreviated {___}.",
+        "correctAnswer": "ESR",
+        "distractors": ["CRP", "CBC", "ABG", "PT/INR"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "lab", "blood_tests", "inflammation"],
+    "visualDescription": "Test tube with red blood cells settling at bottom, millimeter ruler beside tube showing sedimentation distance, ESR label"
+  },
+  {
+    "id": "medterm_abbr_crp",
+    "correctAnswer": "C-reactive protein",
+    "acceptableAlternatives": ["C-Reactive Protein", "CRP"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Complete blood count", "Erythrocyte sedimentation rate", "Arterial blood gas", "Basic metabolic panel", "Prothrombin time", "Glycated hemoglobin", "Blood urea nitrogen", "Urinalysis"],
+    "quizQuestion": "What does the medical abbreviation CRP stand for?",
+    "explanation": "CRP (C-reactive protein) is a protein produced by the liver in response to inflammation. It rises sharply within hours of an acute inflammatory event, making it a faster and more sensitive marker than ESR. CRP is used to detect bacterial infections, monitor inflammatory diseases (Crohn's, rheumatoid arthritis), and assess cardiovascular risk (high-sensitivity CRP or hs-CRP). Normal CRP is below 10 mg/L.",
+    "statement": "CRP stands for C-reactive protein — a fast-rising inflammation marker.",
+    "wowFactor": "CRP can rise 1000-fold within 24-48 hours of severe infection or tissue damage, making it one of the fastest-responding biological markers for acute illness. It was discovered in 1930 in patients with pneumococcal pneumonia!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/C-reactive_protein",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation refers to a liver-produced protein that rises sharply during acute inflammation?",
+        "correctAnswer": "CRP",
+        "distractors": ["ESR", "BUN", "CBC", "BMP"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The acute-phase protein that rises within hours of infection or inflammation is abbreviated {___}.",
+        "correctAnswer": "CRP",
+        "distractors": ["ESR", "HbA1c", "BMP", "UA"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "lab", "blood_tests", "inflammation"],
+    "visualDescription": "Liver icon with protein arrow pointing to CRP label, inflammation timeline graph showing CRP rising faster than ESR"
+  },
+  {
+    "id": "medterm_abbr_wbc",
+    "correctAnswer": "White blood cell count",
+    "acceptableAlternatives": ["White Blood Cell Count", "White blood cell", "WBC"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Red blood cell count", "Hemoglobin", "Hematocrit", "Platelet count", "Complete blood count", "Erythrocyte sedimentation rate", "C-reactive protein", "Neutrophil count"],
+    "quizQuestion": "What does the medical abbreviation WBC stand for?",
+    "explanation": "WBC (White Blood Cell Count) measures the total number of leukocytes (immune cells) in a given volume of blood. Normal range is approximately 4,500-11,000 cells per microliter. Elevated WBC (leukocytosis) suggests infection, inflammation, or leukemia. Low WBC (leukopenia) may indicate bone marrow suppression, autoimmune disease, or viral infection. WBC is a core component of the CBC.",
+    "statement": "WBC stands for White Blood Cell count — a component of the CBC.",
+    "wowFactor": "A WBC differential takes the count further — it tells you WHICH type of white cells are elevated. High neutrophils = bacterial infection; high lymphocytes = viral infection; high eosinophils = allergy or parasites. Each immune cell tells a different story!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/White_blood_cell",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation refers to the count of immune cells in the blood?",
+        "correctAnswer": "WBC",
+        "distractors": ["RBC", "Hgb", "Hct", "CBC"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The count of leukocytes (immune cells) in the blood, part of a CBC, is abbreviated {___}.",
+        "correctAnswer": "WBC",
+        "distractors": ["RBC", "Hgb", "Hct", "ESR"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "lab", "blood_tests", "immunology"],
+    "visualDescription": "Microscope view of blood smear with white blood cell highlighted and labeled WBC among red blood cells"
+  },
+  {
+    "id": "medterm_abbr_rbc",
+    "correctAnswer": "Red blood cell count",
+    "acceptableAlternatives": ["Red Blood Cell Count", "Red blood cell", "RBC"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["White blood cell count", "Hemoglobin", "Hematocrit", "Platelet count", "Complete blood count", "Erythrocyte sedimentation rate", "Blood urea nitrogen", "Mean corpuscular volume"],
+    "quizQuestion": "What does the medical abbreviation RBC stand for?",
+    "explanation": "RBC (Red Blood Cell Count) measures the number of erythrocytes per microliter of blood. Normal: men 4.7-6.1 million/μL; women 4.2-5.4 million/μL. RBCs carry oxygen via hemoglobin from the lungs to tissues. Low RBC = anemia; high RBC = polycythemia. RBC count, along with Hgb and Hct, are the primary measures of red cell mass in a CBC.",
+    "statement": "RBC stands for Red Blood Cell count.",
+    "wowFactor": "Each red blood cell is a biconcave disc with no nucleus — it sacrifices its DNA-containing nucleus to maximize space for hemoglobin. A single RBC carries about 270 million hemoglobin molecules, each capable of binding 4 oxygen molecules!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Red_blood_cell",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation refers to the count of erythrocytes (oxygen-carrying cells) in the blood?",
+        "correctAnswer": "RBC",
+        "distractors": ["WBC", "Hgb", "Hct", "CBC"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The count of erythrocytes (oxygen-carrying cells) in the blood is abbreviated {___}.",
+        "correctAnswer": "RBC",
+        "distractors": ["WBC", "Hgb", "Hct", "ESR"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "lab", "blood_tests"],
+    "visualDescription": "Microscope blood smear showing dense field of biconcave red blood cells, RBC count displayed in corner"
+  },
+  {
+    "id": "medterm_abbr_hgb",
+    "correctAnswer": "Hemoglobin",
+    "acceptableAlternatives": ["Haemoglobin", "Hgb"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Hematocrit", "Red blood cell count", "White blood cell count", "Platelet count", "Mean corpuscular volume", "Complete blood count", "Erythrocyte sedimentation rate", "Glycated hemoglobin"],
+    "quizQuestion": "What does the medical abbreviation Hgb stand for?",
+    "explanation": "Hgb (Hemoglobin) is the iron-containing protein in red blood cells that carries oxygen. It is measured in grams per deciliter (g/dL). Normal: men 13.5-17.5 g/dL; women 12.0-15.5 g/dL. Low hemoglobin defines anemia. HbA1c (glycated hemoglobin) is a separate test using the same protein to measure long-term blood glucose.",
+    "statement": "Hgb stands for Hemoglobin — the oxygen-carrying protein in red blood cells.",
+    "wowFactor": "Hemoglobin is what makes blood red — the iron in heme groups reflects red light when bound to oxygen (oxygenated blood is bright red) and blue-red light when deoxygenated (making veins appear blue through the skin)!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hemoglobin",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation is used for the iron-containing oxygen-carrying protein measured in a CBC?",
+        "correctAnswer": "Hgb",
+        "distractors": ["Hct", "RBC", "WBC", "HbA1c"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The iron-containing protein in red blood cells that carries oxygen, measured in g/dL, is abbreviated {___}.",
+        "correctAnswer": "Hgb",
+        "distractors": ["Hct", "RBC", "MCV", "ESR"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "lab", "blood_tests"],
+    "visualDescription": "Red blood cell cross-section showing hemoglobin protein structure, Hgb label with g/dL unit indicator"
+  },
+  {
+    "id": "medterm_abbr_hct",
+    "correctAnswer": "Hematocrit",
+    "acceptableAlternatives": ["Haematocrit", "Packed cell volume", "PCV", "Hct"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Hemoglobin", "Red blood cell count", "White blood cell count", "Platelet count", "Mean corpuscular volume", "Complete blood count", "Erythrocyte sedimentation rate", "Blood urea nitrogen"],
+    "quizQuestion": "What does the medical abbreviation Hct stand for?",
+    "explanation": "Hct (Hematocrit) is the percentage of total blood volume made up of red blood cells. It is measured by centrifuging blood and calculating the packed cell volume ratio. Normal: men 41-53%; women 36-46%. Low hematocrit indicates anemia or blood loss; high hematocrit (polycythemia) may suggest dehydration or oxygen deprivation. Hct is approximately 3 times the hemoglobin value.",
+    "statement": "Hct stands for Hematocrit — the percentage of blood volume that is red blood cells.",
+    "wowFactor": "Hematocrit and hemoglobin are mathematically linked: Hct ≈ 3 × Hgb. This 'rule of 3' is a quick bedside check — if a patient's Hgb is 10 g/dL, their Hct should be about 30%. A mismatch signals lab error or extreme dehydration!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hematocrit",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation refers to the percentage of blood volume occupied by red blood cells?",
+        "correctAnswer": "Hct",
+        "distractors": ["Hgb", "RBC", "WBC", "MCV"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The percentage of total blood volume made up of red blood cells, measured by centrifugation, is abbreviated {___}.",
+        "correctAnswer": "Hct",
+        "distractors": ["Hgb", "RBC", "CBC", "ESR"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "lab", "blood_tests"],
+    "visualDescription": "Centrifuge tube showing separated blood layers: plasma on top, buffy coat in middle, packed red cells at bottom with Hct percentage arrow"
+  },
+  {
+    "id": "medterm_abbr_ua",
+    "correctAnswer": "Urinalysis",
+    "acceptableAlternatives": ["Urine analysis", "UA"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Complete blood count", "Basic metabolic panel", "Arterial blood gas", "Comprehensive metabolic panel", "Blood urea nitrogen", "Erythrocyte sedimentation rate", "C-reactive protein", "Prothrombin time"],
+    "quizQuestion": "What does the medical abbreviation UA stand for?",
+    "explanation": "UA (Urinalysis) is a panel of physical, chemical, and microscopic urine tests. Physical: color, clarity, odor. Chemical (dipstick): pH, specific gravity, protein, glucose, ketones, blood, leukocyte esterase, nitrites, bilirubin. Microscopic: casts, cells, crystals, bacteria. UA is used to screen for urinary tract infections, kidney disease, diabetes, and dehydration.",
+    "statement": "UA stands for Urinalysis — a urine examination panel.",
+    "wowFactor": "A UA dipstick can detect 10+ different conditions in under 2 minutes from a single urine sample — including UTI (leukocyte esterase + nitrites), kidney disease (protein), diabetes (glucose), and even liver disease (bilirubin)!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Urinalysis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation is used for a urine examination panel that tests for UTI, kidney disease, and glucose?",
+        "correctAnswer": "UA",
+        "distractors": ["BMP", "CMP", "CBC", "BUN"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The test panel examining urine for color, pH, protein, glucose, and microscopic cells is abbreviated {___}.",
+        "correctAnswer": "UA",
+        "distractors": ["BMP", "BUN", "CMP", "ABG"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "lab", "urine"],
+    "visualDescription": "Urine dipstick over specimen cup, colorimetric test pad squares visible, UA label with positive UTI indicators highlighted"
+  },
+  {
+    "id": "medterm_abbr_ekg",
+    "correctAnswer": "Electrocardiogram",
+    "acceptableAlternatives": ["Electrocardiograph", "ECG", "EKG"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Blood pressure", "Heart rate", "Respiratory rate", "Peripheral oxygen saturation", "Complete blood count", "Arterial blood gas", "Urinalysis", "Echocardiogram"],
+    "quizQuestion": "What does the medical abbreviation EKG (also ECG) stand for?",
+    "explanation": "EKG or ECG (Electrocardiogram) records the electrical activity of the heart over time via electrodes placed on the skin. EKG comes from the German 'Elektrokardiogramm' (hence K), while ECG is the English spelling. It detects arrhythmias, myocardial infarction (heart attack), ischemia, electrolyte disturbances, and cardiac hypertrophy. A standard 12-lead EKG provides 12 different views of electrical activity.",
+    "statement": "EKG/ECG stands for Electrocardiogram — a recording of the heart's electrical activity.",
+    "wowFactor": "EKG uses 'K' from the German 'Kardiogramm' — the test was invented by Dutch physician Willem Einthoven in 1902 (Nobel Prize 1924). He used a string galvanometer so sensitive it required a room full of equipment and buckets of water for the patient's hands and feet!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Electrocardiography",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation is used for the test that records the heart's electrical activity via skin electrodes?",
+        "correctAnswer": "EKG (or ECG)",
+        "distractors": ["BP", "SpO2", "HR", "ABG"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The 12-lead test recording the heart's electrical activity to detect arrhythmias and heart attacks is abbreviated {___}.",
+        "correctAnswer": "EKG",
+        "distractors": ["BP", "HR", "SpO2", "ABG"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "diagnostic", "cardiology"],
+    "visualDescription": "12-lead EKG paper strip showing P-QRS-T wave complex, electrode placement diagram on body outline, EKG label"
+  },
+  {
+    "id": "medterm_abbr_bp",
+    "correctAnswer": "Blood pressure",
+    "acceptableAlternatives": ["Blood Pressure", "BP"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Heart rate", "Respiratory rate", "Peripheral oxygen saturation", "Body mass index", "Electrocardiogram", "Arterial blood gas", "Complete blood count", "Temperature"],
+    "quizQuestion": "What does the medical abbreviation BP stand for?",
+    "explanation": "BP (Blood Pressure) is the pressure exerted by circulating blood on the walls of blood vessels. It is measured in millimeters of mercury (mmHg) as two values: systolic (peak pressure when heart contracts) over diastolic (lowest pressure when heart relaxes), e.g., 120/80 mmHg. Normal BP: below 120/80; hypertension (Stage 1): 130-139/80-89; hypertension (Stage 2): 140+/90+.",
+    "statement": "BP stands for Blood Pressure.",
+    "wowFactor": "Blood pressure varies every heartbeat — 'white coat hypertension' is a real phenomenon where just being in a doctor's office raises BP by 10-30 mmHg due to anxiety. Some patients need 24-hour ambulatory monitoring to get their true resting blood pressure!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blood_pressure",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation is used for the vital sign measured in mmHg with systolic/diastolic values?",
+        "correctAnswer": "BP",
+        "distractors": ["HR", "RR", "SpO2", "BMI"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The vital sign recorded as two numbers (e.g., 120/80 mmHg) measuring vascular pressure is abbreviated {___}.",
+        "correctAnswer": "BP",
+        "distractors": ["HR", "RR", "SpO2", "BMI"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "vital_signs"],
+    "visualDescription": "Sphygmomanometer cuff on arm with mercury column showing 120/80 reading, BP label with systolic/diastolic arrows"
+  },
+  {
+    "id": "medterm_abbr_hr",
+    "correctAnswer": "Heart rate",
+    "acceptableAlternatives": ["Heart Rate", "Pulse rate", "HR"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Blood pressure", "Respiratory rate", "Peripheral oxygen saturation", "Body mass index", "Electrocardiogram", "Arterial blood gas", "Temperature", "Complete blood count"],
+    "quizQuestion": "What does the medical abbreviation HR stand for?",
+    "explanation": "HR (Heart Rate) is the number of times the heart beats per minute (bpm). Normal resting HR: 60-100 bpm. Bradycardia: below 60 bpm; tachycardia: above 100 bpm. HR is measured by palpating a pulse (radial, carotid, brachial), auscultating the heart, or via continuous EKG monitoring. Athletes may have resting HR as low as 40 bpm due to cardiac adaptation.",
+    "statement": "HR stands for Heart Rate — measured in beats per minute.",
+    "wowFactor": "A trained endurance athlete like a marathon runner can have a resting heart rate of 35-40 bpm — their heart has enlarged and pumps so efficiently per beat that it barely needs to increase rate to deliver adequate oxygen at rest!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart_rate",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation is used for the vital sign measuring cardiac beats per minute?",
+        "correctAnswer": "HR",
+        "distractors": ["BP", "RR", "SpO2", "BMI"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The vital sign measuring cardiac contractions per minute, with normal range 60-100 bpm, is abbreviated {___}.",
+        "correctAnswer": "HR",
+        "distractors": ["BP", "RR", "SpO2", "EKG"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "vital_signs"],
+    "visualDescription": "EKG strip with beats marked and bpm counter showing 72 HR label, pulse waveform illustration"
+  },
+  {
+    "id": "medterm_abbr_rr",
+    "correctAnswer": "Respiratory rate",
+    "acceptableAlternatives": ["Respiratory Rate", "Breathing rate", "RR"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": ["Heart rate", "Blood pressure", "Peripheral oxygen saturation", "Body mass index", "Electrocardiogram", "Temperature", "Arterial blood gas", "Complete blood count"],
+    "quizQuestion": "What does the medical abbreviation RR stand for?",
+    "explanation": "RR (Respiratory Rate) is the number of breaths taken per minute. Normal adult RR: 12-20 breaths per minute. Tachypnea: greater than 20 breaths/min; bradypnea: below 12 breaths/min; apnea: no breathing. RR is one of the five vital signs and an early, sensitive indicator of physiological deterioration — a rising RR often precedes other signs of decompensation.",
+    "statement": "RR stands for Respiratory Rate — breaths per minute.",
+    "wowFactor": "RR is the 'forgotten vital sign' — studies show nurses often estimate rather than count it, yet RR is one of the MOST sensitive early warning indicators of patient deterioration. A rising RR in a hospitalized patient predicts deterioration hours before BP drops!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Respiratory_rate",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation is used for the vital sign measuring breaths per minute?",
+        "correctAnswer": "RR",
+        "distractors": ["HR", "BP", "SpO2", "BMI"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The vital sign measuring breathing frequency (normal 12-20 per minute in adults) is abbreviated {___}.",
+        "correctAnswer": "RR",
+        "distractors": ["HR", "BP", "SpO2", "EKG"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "vital_signs"],
+    "visualDescription": "Chest rise-and-fall animation stills with breath count timer, RR label showing 16 breaths/min"
+  },
+  {
+    "id": "medterm_abbr_spo2",
+    "correctAnswer": "Peripheral oxygen saturation",
+    "acceptableAlternatives": ["Oxygen saturation", "Pulse oximetry", "SpO2"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Heart rate", "Blood pressure", "Respiratory rate", "Body mass index", "Arterial blood gas", "Electrocardiogram", "Complete blood count", "Blood urea nitrogen"],
+    "quizQuestion": "What does the medical abbreviation SpO2 stand for?",
+    "explanation": "SpO2 (peripheral oxygen saturation) is the percentage of hemoglobin binding sites occupied by oxygen, measured non-invasively by a pulse oximeter clipped to the finger or earlobe. Normal SpO2: 95-100%. Below 90% is hypoxemia requiring intervention. The 'S' means saturation, 'p' means peripheral (non-invasive/pulse), 'O2' is oxygen. SaO2 (arterial) requires an ABG for direct measurement.",
+    "statement": "SpO2 stands for peripheral oxygen saturation — measured by pulse oximeter.",
+    "wowFactor": "Pulse oximetry uses two wavelengths of light (red and infrared) that oxygenated and deoxygenated hemoglobin absorb differently. The device calculates SpO2 by measuring which wavelength passes through your finger more easily — a Nobel Prize-worthy insight from the 1970s!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oxygen_saturation_(medicine)",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation refers to the oxygen saturation reading from a pulse oximeter on the finger?",
+        "correctAnswer": "SpO2",
+        "distractors": ["ABG", "BP", "HR", "RR"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The non-invasive percentage of hemoglobin saturated with oxygen, measured with a finger clip, is abbreviated {___}.",
+        "correctAnswer": "SpO2",
+        "distractors": ["ABG", "RR", "BP", "EKG"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "vital_signs", "respiratory"],
+    "visualDescription": "Pulse oximeter clip on finger showing 98% SpO2 reading and heart rate, waveform display visible"
+  },
+  {
+    "id": "medterm_abbr_bmi",
+    "correctAnswer": "Body mass index",
+    "acceptableAlternatives": ["Body Mass Index", "BMI"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Blood pressure", "Heart rate", "Respiratory rate", "Peripheral oxygen saturation", "Basal metabolic rate", "Body fat percentage", "Electrocardiogram", "Basic metabolic panel"],
+    "quizQuestion": "What does the medical abbreviation BMI stand for?",
+    "explanation": "BMI (Body Mass Index) is a numerical value calculated from a person's weight and height: BMI = weight (kg) / height (m)². WHO classification: underweight <18.5; normal 18.5-24.9; overweight 25-29.9; obese ≥30. BMI is a population-level screening tool and does not directly measure body fat or distinguish between muscle and adipose tissue. It has known limitations across different ethnicities.",
+    "statement": "BMI stands for Body Mass Index — weight divided by height squared.",
+    "wowFactor": "BMI was invented by Belgian mathematician Adolphe Quetelet in the 1830s — not a doctor! He designed it to describe normal weight distribution in populations, not to evaluate individuals. Modern critics note BMI misclassifies about 20% of people because it ignores muscle mass and body fat distribution!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Body_mass_index",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What abbreviation is used for the weight-to-height ratio used to screen for underweight, overweight, and obesity?",
+        "correctAnswer": "BMI",
+        "distractors": ["BP", "HR", "RR", "SpO2"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The index calculated as weight (kg) divided by height (m) squared, used to screen for obesity, is abbreviated {___}.",
+        "correctAnswer": "BMI",
+        "distractors": ["BP", "HR", "SpO2", "BMP"]
+      }
+    ],
+    "tags": ["medical_terminology", "abbreviation", "vital_signs", "anthropometry"],
+    "visualDescription": "BMI classification chart showing four colored zones (underweight/normal/overweight/obese) with sample calculation, BMI label"
+  }
+]

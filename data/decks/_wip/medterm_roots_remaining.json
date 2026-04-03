@@ -1,0 +1,1022 @@
+[
+  {
+    "id": "mtr_001",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "skin",
+    "acceptableAlternatives": [],
+    "chainThemeId": "0",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root derm/o mean?",
+    "explanation": "Derm/o comes from Greek 'derma' meaning skin. It appears in dermatology (study of skin), dermatitis (skin inflammation), and hypodermic (beneath the skin). The synonym form dermat/o is also common.",
+    "visualDescription": "Cross-section of skin with Greek word 'derma' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dermatology",
+    "volatile": false,
+    "distractors": [
+      "hair",
+      "nail",
+      "gland",
+      "muscle",
+      "bone",
+      "nerve",
+      "blood",
+      "fat"
+    ],
+    "synonymRoots": ["dermat/o", "cutane/o"],
+    "variants": [
+      {
+        "quizQuestion": "A dermatologist specializes in diseases of which tissue? (Root: derm/o)",
+        "correctAnswer": "skin",
+        "explanation": "The root derm/o is from Greek 'derma' (skin). Dermatologists diagnose and treat conditions affecting the skin, hair, and nails."
+      }
+    ]
+  },
+  {
+    "id": "mtr_002",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "hard tissue / horn",
+    "acceptableAlternatives": ["hard", "horn", "cornea", "hardened tissue"],
+    "chainThemeId": "1",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "What does the medical root kerat/o mean?",
+    "explanation": "Kerat/o comes from Greek 'keras' (horn or hard substance). It refers to keratin — the tough protein in nails, hair, and the outer skin — and also to the cornea of the eye. Keratosis is a thickening of the outer skin layer.",
+    "visualDescription": "Diagram showing nail plate and cornea both labeled with kerat/o",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Keratin",
+    "volatile": false,
+    "distractors": [
+      "soft tissue",
+      "fluid",
+      "gland",
+      "muscle",
+      "fat",
+      "blood vessel",
+      "nerve",
+      "mucus"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "The root kerat/o appears in keratin and keratosis. What body substance does it refer to?",
+        "correctAnswer": "hard tissue / horn",
+        "explanation": "Kerat/o derives from Greek 'keras' (horn). Keratin is the fibrous structural protein that makes nails, hair, and the skin's outer layer hard and tough."
+      }
+    ]
+  },
+  {
+    "id": "mtr_003",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "nail",
+    "acceptableAlternatives": ["fingernail", "toenail"],
+    "chainThemeId": "2",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root onych/o mean?",
+    "explanation": "Onych/o comes from Greek 'onyx' (nail). Onychomycosis is a fungal nail infection, onycholysis is separation of the nail from the nail bed, and onychophagia is nail-biting. Students frequently confuse this with similar-sounding roots.",
+    "visualDescription": "Close-up of fingernail with Greek label 'onyx' beneath",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nail_(anatomy)",
+    "volatile": false,
+    "distractors": [
+      "hair",
+      "skin",
+      "bone",
+      "eyelid",
+      "cornea",
+      "muscle",
+      "gland",
+      "joint"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "Onychomycosis is a fungal infection of the ___. (Root: onych/o)",
+        "correctAnswer": "nail",
+        "explanation": "Onych/o = nail (Greek 'onyx'). Onychomycosis — the most common nail disorder — is a fungal infection causing thickened, discolored, and brittle nails."
+      }
+    ]
+  },
+  {
+    "id": "mtr_004",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "hair",
+    "acceptableAlternatives": [],
+    "chainThemeId": "3",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root trich/o mean?",
+    "explanation": "Trich/o comes from Greek 'thrix' (hair). Trichology is the study of hair and scalp diseases, trichomoniasis is a parasitic infection named for the hair-like flagella of the organism, and trichotillomania is compulsive hair-pulling.",
+    "visualDescription": "Hair follicle cross-section with Greek label 'thrix' and root trich/o noted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hair",
+    "volatile": false,
+    "distractors": [
+      "nail",
+      "skin",
+      "sweat",
+      "oil",
+      "bone",
+      "muscle",
+      "nerve",
+      "blood"
+    ],
+    "synonymRoots": ["pil/o"],
+    "variants": [
+      {
+        "quizQuestion": "Trichotillomania is the compulsive urge to pull out one's ___. (Root: trich/o)",
+        "correctAnswer": "hair",
+        "explanation": "Trich/o = hair (Greek 'thrix'). Trichotillomania is classified as an impulse-control disorder involving repetitive, compulsive hair-pulling."
+      }
+    ]
+  },
+  {
+    "id": "mtr_005",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "sebum / oil",
+    "acceptableAlternatives": ["sebum", "oil", "oily secretion"],
+    "chainThemeId": "4",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root seb/o mean?",
+    "explanation": "Seb/o comes from Latin 'sebum' (tallow, grease). Sebaceous glands secrete sebum — an oily substance that lubricates and waterproofs the skin and hair. Seborrhea is excessive sebum production; seborrheic dermatitis is the resulting skin condition.",
+    "visualDescription": "Diagram of sebaceous gland opening onto hair follicle with 'sebum' labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sebaceous_gland",
+    "volatile": false,
+    "distractors": [
+      "sweat",
+      "mucus",
+      "fat tissue",
+      "water",
+      "blood",
+      "lymph",
+      "bile",
+      "urine"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "Sebaceous glands produce sebum. The root seb/o means what substance?",
+        "correctAnswer": "sebum / oil",
+        "explanation": "Seb/o is from Latin 'sebum' (grease/tallow). Sebaceous glands are found in most skin areas and secrete the oily sebum that protects and lubricates the skin and hair shaft."
+      }
+    ]
+  },
+  {
+    "id": "mtr_006",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "sweat",
+    "acceptableAlternatives": ["perspiration"],
+    "chainThemeId": "5",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "What does the medical root hidr/o mean?",
+    "explanation": "Hidr/o comes from Greek 'hidros' (sweat). Anhidrosis is the inability to sweat normally, hyperhidrosis is excessive sweating, and hidradenitis is inflammation of sweat glands. Students often confuse hidr/o (sweat) with hydr/o (water) — note the different spelling.",
+    "visualDescription": "Sweat pore on skin surface with Greek label 'hidros' and a water droplet for contrast",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sweat_gland",
+    "volatile": false,
+    "distractors": [
+      "water",
+      "oil",
+      "sebum",
+      "mucus",
+      "lymph",
+      "urine",
+      "saliva",
+      "blood"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "Hyperhidrosis is a condition of excessive ___. (Root: hidr/o — not hydr/o!)",
+        "correctAnswer": "sweat",
+        "explanation": "Hidr/o = sweat (Greek 'hidros'). Hyperhidrosis is excessive sweating beyond what is needed for thermoregulation. Do not confuse with hydr/o (water), which has a different spelling."
+      }
+    ]
+  },
+  {
+    "id": "mtr_007",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "dry",
+    "acceptableAlternatives": ["dryness"],
+    "chainThemeId": "0",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What does the medical root xer/o mean?",
+    "explanation": "Xer/o comes from Greek 'xeros' (dry). Xerosis is abnormal skin dryness, xerostomia is dry mouth (reduced saliva), and xerophthalmia is dry eye disease caused by vitamin A deficiency. The root appears in photocopier brand name Xerox (dry writing).",
+    "visualDescription": "Cracked dry skin patch with Greek label 'xeros' beneath",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Xerosis_cutis",
+    "volatile": false,
+    "distractors": [
+      "wet",
+      "oily",
+      "swollen",
+      "hard",
+      "rough",
+      "yellow",
+      "dark",
+      "inflamed"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "Xerostomia and xerophthalmia both involve which condition? (Root: xer/o)",
+        "correctAnswer": "dry",
+        "explanation": "Xer/o = dry (Greek 'xeros'). Xerostomia is dry mouth and xerophthalmia is dry eye — both named for the dryness of the affected tissue."
+      }
+    ]
+  },
+  {
+    "id": "mtr_008",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "fat / fatty tissue",
+    "acceptableAlternatives": ["fat", "adipose", "fatty tissue"],
+    "chainThemeId": "1",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What does the medical root adip/o mean?",
+    "explanation": "Adip/o comes from Latin 'adeps' (fat). Adipose tissue is body fat, adipocytes are fat cells, and adipogenesis is the formation of fat cells. The synonym lip/o (from Greek 'lipos') is equally common — liposuction, lipoma (benign fat tumor).",
+    "visualDescription": "Adipose tissue cells (lipocytes) with 'adeps' label and lip/o synonym noted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Adipose_tissue",
+    "volatile": false,
+    "distractors": [
+      "muscle",
+      "bone",
+      "gland",
+      "skin",
+      "nerve",
+      "cartilage",
+      "blood vessel",
+      "lymph"
+    ],
+    "synonymRoots": ["lip/o"],
+    "variants": [
+      {
+        "quizQuestion": "Adipose tissue and adipocytes both involve what substance? (Root: adip/o)",
+        "correctAnswer": "fat / fatty tissue",
+        "explanation": "Adip/o = fat (Latin 'adeps'). Adipose tissue is the body's fat storage organ. The synonym root lip/o (Greek 'lipos') appears in lipoma and liposuction."
+      }
+    ]
+  },
+  {
+    "id": "mtr_009",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "gland",
+    "acceptableAlternatives": [],
+    "chainThemeId": "2",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What does the medical root aden/o mean?",
+    "explanation": "Aden/o comes from Greek 'aden' (gland). Adenoma is a benign glandular tumor, adenocarcinoma is a malignant glandular cancer, and adenopathy is disease of the glands (often lymph nodes). This root is essential for describing endocrine and exocrine gland disorders.",
+    "visualDescription": "Generic endocrine gland with Greek label 'aden' and arrows showing secretion",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gland",
+    "volatile": false,
+    "distractors": [
+      "duct",
+      "vessel",
+      "hormone",
+      "muscle",
+      "bone",
+      "nerve",
+      "skin",
+      "organ"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "An adenoma is a benign tumor of what type of tissue? (Root: aden/o)",
+        "correctAnswer": "gland",
+        "explanation": "Aden/o = gland (Greek 'aden'). An adenoma is a non-cancerous glandular tumor; when it becomes malignant it is called an adenocarcinoma."
+      }
+    ]
+  },
+  {
+    "id": "mtr_010",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "thyroid gland",
+    "acceptableAlternatives": ["thyroid", "thyroid shield"],
+    "chainThemeId": "3",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root thyr/o mean?",
+    "explanation": "Thyr/o comes from Greek 'thyreos' (oblong shield), referring to the shield-shaped thyroid gland. Thyrotoxicosis is excess thyroid hormone, hypothyroidism is underactivity, and a thyroidectomy is surgical removal. The synonym thyroid/o is used in some terms.",
+    "visualDescription": "Neck anatomy diagram with butterfly-shaped thyroid gland labeled 'thyreos'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thyroid",
+    "volatile": false,
+    "distractors": [
+      "parathyroid gland",
+      "pituitary gland",
+      "adrenal gland",
+      "thymus",
+      "pancreas",
+      "pineal gland",
+      "hypothalamus",
+      "ovary"
+    ],
+    "synonymRoots": ["thyroid/o"],
+    "variants": [
+      {
+        "quizQuestion": "Hypothyroidism involves underactivity of which gland? (Root: thyr/o)",
+        "correctAnswer": "thyroid gland",
+        "explanation": "Thyr/o = thyroid (Greek 'thyreos,' a large oblong shield). The thyroid gland regulates metabolism, growth, and development through hormones T3 and T4."
+      }
+    ]
+  },
+  {
+    "id": "mtr_011",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "adrenal gland",
+    "acceptableAlternatives": ["adrenal", "suprarenal gland"],
+    "chainThemeId": "4",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root adren/o mean?",
+    "explanation": "Adren/o comes from Latin 'ad' (near/toward) + 'renes' (kidneys), referring to the adrenal glands which sit atop the kidneys. Adrenaline (epinephrine) is the fight-or-flight hormone. Adrenal hyperplasia is abnormal gland growth. The root captures both the location and the gland itself.",
+    "visualDescription": "Diagram showing adrenal glands perched on top of both kidneys",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Adrenal_gland",
+    "volatile": false,
+    "distractors": [
+      "thyroid gland",
+      "pituitary gland",
+      "thymus",
+      "kidney",
+      "pancreas",
+      "liver",
+      "spleen",
+      "ovary"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "Adrenaline is secreted by which gland? (Root: adren/o)",
+        "correctAnswer": "adrenal gland",
+        "explanation": "Adren/o = adrenal gland (Latin 'ad-renes,' near the kidneys). The adrenal medulla secretes adrenaline (epinephrine) and the cortex secretes cortisol and aldosterone."
+      }
+    ]
+  },
+  {
+    "id": "mtr_012",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "sex glands / gonads",
+    "acceptableAlternatives": ["sex glands", "gonads", "reproductive glands"],
+    "chainThemeId": "5",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root gonad/o mean?",
+    "explanation": "Gonad/o comes from Greek 'gone' (seed, generation). Gonads are the primary sex organs — ovaries in females and testes in males — that produce gametes and sex hormones. Gonadotropins are hormones from the pituitary that stimulate the gonads.",
+    "visualDescription": "Diagram showing ovaries and testes labeled as gonads with Greek root 'gone'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gonad",
+    "volatile": false,
+    "distractors": [
+      "adrenal gland",
+      "thyroid gland",
+      "pituitary gland",
+      "thymus",
+      "pancreas",
+      "sweat gland",
+      "salivary gland",
+      "pineal gland"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "Gonadotropin-releasing hormone stimulates which glands? (Root: gonad/o)",
+        "correctAnswer": "sex glands / gonads",
+        "explanation": "Gonad/o = gonads (Greek 'gone,' seed). Gonadotropins LH and FSH from the pituitary stimulate the gonads (ovaries and testes) to produce sex hormones and gametes."
+      }
+    ]
+  },
+  {
+    "id": "mtr_013",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "thymus gland",
+    "acceptableAlternatives": ["thymus"],
+    "chainThemeId": "0",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root thym/o mean?",
+    "explanation": "Thym/o comes from Greek 'thymos' (thyme plant, warty excrescence — the gland resembled a bunch of thyme). The thymus is a lymphoid gland behind the sternum where T-lymphocytes mature. Thymoma is a thymus tumor; thymectomy is its surgical removal. Students confuse thym/o (thymus) with thyr/o (thyroid).",
+    "visualDescription": "Chest diagram with thymus gland labeled behind sternum, distinct from thyroid in neck",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thymus",
+    "volatile": false,
+    "distractors": [
+      "thyroid gland",
+      "pituitary gland",
+      "adrenal gland",
+      "lymph node",
+      "spleen",
+      "pancreas",
+      "parathyroid gland",
+      "tonsil"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "T-lymphocytes mature in which gland? The root thym/o names it.",
+        "correctAnswer": "thymus gland",
+        "explanation": "Thym/o = thymus (Greek 'thymos'). The thymus is located in the mediastinum and is essential for T-cell maturation during childhood. It involutes after puberty."
+      }
+    ]
+  },
+  {
+    "id": "mtr_014",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "sugar / glucose",
+    "acceptableAlternatives": ["sugar", "glucose", "blood sugar"],
+    "chainThemeId": "1",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root gluc/o mean?",
+    "explanation": "Gluc/o comes from Greek 'glykys' (sweet). Glucagon is the hormone that raises blood sugar, gluconeogenesis is new glucose synthesis, and glucosuria is glucose in the urine. The synonym glyc/o appears in glycolysis, glycogen, and glycated hemoglobin (HbA1c).",
+    "visualDescription": "Molecular diagram of glucose with Greek label 'glykys' (sweet)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Glucose",
+    "volatile": false,
+    "distractors": [
+      "fat",
+      "protein",
+      "salt",
+      "calcium",
+      "potassium",
+      "acid",
+      "oxygen",
+      "water"
+    ],
+    "synonymRoots": ["glyc/o"],
+    "variants": [
+      {
+        "quizQuestion": "Gluconeogenesis is the synthesis of new ___. (Root: gluc/o)",
+        "correctAnswer": "sugar / glucose",
+        "explanation": "Gluc/o = sugar/glucose (Greek 'glykys,' sweet). Gluconeogenesis literally means 'new glucose creation' — the liver and kidneys make glucose from non-carbohydrate precursors."
+      }
+    ]
+  },
+  {
+    "id": "mtr_015",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "calcium",
+    "acceptableAlternatives": [],
+    "chainThemeId": "2",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "What does the medical root calc/i mean?",
+    "explanation": "Calc/i comes from Latin 'calx' (lime, limestone — calcium-containing rock). Hypercalcemia is excess calcium in blood, hypocalcemia is deficiency, calcitonin is the thyroid hormone that lowers blood calcium, and calcification is mineral deposit in tissue. The root is always linked to calcium metabolism.",
+    "visualDescription": "Bone cross-section with calcium crystal deposits labeled with Latin root 'calx'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Calcium_in_biology",
+    "volatile": false,
+    "distractors": [
+      "sodium",
+      "potassium",
+      "iron",
+      "phosphorus",
+      "magnesium",
+      "zinc",
+      "copper",
+      "chloride"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "Hypercalcemia is excess ___ in the blood. (Root: calc/i)",
+        "correctAnswer": "calcium",
+        "explanation": "Calc/i = calcium (Latin 'calx,' lime). Calcitonin — secreted by thyroid parafollicular cells — lowers blood calcium by promoting calcium deposition into bone."
+      }
+    ]
+  },
+  {
+    "id": "mtr_016",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "female / woman",
+    "acceptableAlternatives": ["female", "woman", "women"],
+    "chainThemeId": "3",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What does the medical root gynec/o mean?",
+    "explanation": "Gynec/o comes from Greek 'gyne' (woman). Gynecology is the branch of medicine dealing with female reproductive health, gynecomastia is breast enlargement in males (abnormal female-pattern tissue), and gynecoid refers to female body characteristics. It is one of the most recognizable medical roots.",
+    "visualDescription": "Medical symbol for female with Greek label 'gyne' and gynecology text",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gynaecology",
+    "volatile": false,
+    "distractors": [
+      "male",
+      "child",
+      "uterus",
+      "ovary",
+      "breast",
+      "pregnancy",
+      "birth",
+      "menstruation"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "Gynecology is the medical specialty focused on the health of ___. (Root: gynec/o)",
+        "correctAnswer": "female / woman",
+        "explanation": "Gynec/o = woman/female (Greek 'gyne'). Gynecology covers the female reproductive system including uterus, ovaries, and breasts."
+      }
+    ]
+  },
+  {
+    "id": "mtr_017",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "male / man",
+    "acceptableAlternatives": ["male", "man", "masculine"],
+    "chainThemeId": "4",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root andr/o mean?",
+    "explanation": "Andr/o comes from Greek 'aner/andros' (man). Androgens are male sex hormones (testosterone, DHT), androgen excess causes androgenization, and andrology is the study of male reproductive medicine. Students sometimes confuse andr/o (male) with andro- in other compound words — always trace it back to the Greek root.",
+    "visualDescription": "Medical symbol for male with Greek label 'aner/andros' and testosterone molecular structure",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Androgen",
+    "volatile": false,
+    "distractors": [
+      "female",
+      "child",
+      "old age",
+      "muscle",
+      "bone",
+      "hormone",
+      "testis",
+      "prostate"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "Androgens are the primary ___ sex hormones. (Root: andr/o)",
+        "correctAnswer": "male / man",
+        "explanation": "Andr/o = male/man (Greek 'aner'). Androgens such as testosterone are produced mainly in the testes and drive male sexual development and characteristics."
+      }
+    ]
+  },
+  {
+    "id": "mtr_018",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "ovary",
+    "acceptableAlternatives": ["ovaries"],
+    "chainThemeId": "5",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root oophor/o mean?",
+    "explanation": "Oophor/o comes from Greek 'oophoron' (egg-bearing). An oophorectomy is surgical removal of an ovary, oophoritis is inflammation of the ovary, and salpingo-oophorectomy removes both the fallopian tube and ovary together. The synonym ovari/o comes from Latin. Students often struggle with oophor/o because it is less intuitively recognizable.",
+    "visualDescription": "Female pelvic anatomy with ovary labeled 'oophoron' and synonym ovari/o noted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ovary",
+    "volatile": false,
+    "distractors": [
+      "uterus",
+      "fallopian tube",
+      "cervix",
+      "vagina",
+      "breast",
+      "vulva",
+      "placenta",
+      "endometrium"
+    ],
+    "synonymRoots": ["ovari/o"],
+    "variants": [
+      {
+        "quizQuestion": "An oophorectomy is the surgical removal of the ___. (Root: oophor/o)",
+        "correctAnswer": "ovary",
+        "explanation": "Oophor/o = ovary (Greek 'oophoron,' egg-bearer). Bilateral oophorectomy removes both ovaries and induces surgical menopause by eliminating the main source of estrogen."
+      }
+    ]
+  },
+  {
+    "id": "mtr_019",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "fallopian tube / trumpet",
+    "acceptableAlternatives": ["fallopian tube", "uterine tube", "trumpet"],
+    "chainThemeId": "0",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "What does the medical root salping/o mean?",
+    "explanation": "Salping/o comes from Greek 'salpinx' (trumpet), referring to the trumpet-shaped fallopian tubes. Salpingitis is inflammation of the fallopian tubes (often from PID), salpingectomy is surgical removal, and salpingostomy is creating an opening in a tube. The root also refers to the Eustachian tube in ear anatomy.",
+    "visualDescription": "Fallopian tube shape compared to a trumpet with Greek label 'salpinx'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fallopian_tube",
+    "volatile": false,
+    "distractors": [
+      "ovary",
+      "uterus",
+      "cervix",
+      "vagina",
+      "bladder",
+      "ureter",
+      "breast",
+      "placenta"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "Salpingitis is inflammation of which structure? (Root: salping/o = trumpet)",
+        "correctAnswer": "fallopian tube / trumpet",
+        "explanation": "Salping/o = fallopian tube (Greek 'salpinx,' trumpet). The fallopian tubes transport ova from the ovaries to the uterus. Salpingitis, often due to pelvic inflammatory disease, can cause tubal scarring and infertility."
+      }
+    ]
+  },
+  {
+    "id": "mtr_020",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "uterus / womb",
+    "acceptableAlternatives": ["uterus", "womb"],
+    "chainThemeId": "1",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root hyster/o mean?",
+    "explanation": "Hyster/o comes from Greek 'hystera' (uterus). A hysterectomy is surgical removal of the uterus, hysteroscopy is visual examination of the uterine cavity, and hysteria — historically misattributed to the uterus — derives from this root. Synonyms include uter/o (Latin) and metr/o (Greek). This is the most commonly tested uterus root.",
+    "visualDescription": "Uterus labeled with Greek 'hystera' and synonym roots uter/o and metr/o noted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Uterus",
+    "volatile": false,
+    "distractors": [
+      "ovary",
+      "vagina",
+      "fallopian tube",
+      "cervix",
+      "placenta",
+      "endometrium",
+      "breast",
+      "bladder"
+    ],
+    "synonymRoots": ["uter/o", "metr/o"],
+    "variants": [
+      {
+        "quizQuestion": "A hysterectomy is the surgical removal of the ___. (Root: hyster/o)",
+        "correctAnswer": "uterus / womb",
+        "explanation": "Hyster/o = uterus (Greek 'hystera'). Hysterectomy — one of the most common gynecologic surgeries — may be total (removing uterus and cervix) or partial (uterus only)."
+      }
+    ]
+  },
+  {
+    "id": "mtr_021",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "breast",
+    "acceptableAlternatives": ["breast tissue"],
+    "chainThemeId": "2",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What does the medical root mast/o mean?",
+    "explanation": "Mast/o comes from Greek 'mastos' (breast). Mastitis is breast inflammation (common during breastfeeding), mastectomy is surgical removal of the breast, and gynecomastia is male breast enlargement. The synonym mamm/o (from Latin 'mamma') appears in mammography and mammogram.",
+    "visualDescription": "Breast anatomy diagram labeled with Greek root 'mastos' and synonym mamm/o",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Breast",
+    "volatile": false,
+    "distractors": [
+      "uterus",
+      "ovary",
+      "nipple",
+      "chest wall",
+      "muscle",
+      "lymph node",
+      "rib",
+      "skin"
+    ],
+    "synonymRoots": ["mamm/o"],
+    "variants": [
+      {
+        "quizQuestion": "A mastectomy is the surgical removal of the ___. (Root: mast/o)",
+        "correctAnswer": "breast",
+        "explanation": "Mast/o = breast (Greek 'mastos'). Mastectomy is a primary surgical treatment for breast cancer. The synonym mamm/o appears in mammography, the imaging technique for breast cancer screening."
+      }
+    ]
+  },
+  {
+    "id": "mtr_022",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "testis / testicle",
+    "acceptableAlternatives": ["testis", "testicle", "testes"],
+    "chainThemeId": "3",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root orchi/o mean?",
+    "explanation": "Orchi/o comes from Greek 'orchis' (testicle — also the name of an orchid plant whose bulbs resemble testes). Orchitis is inflammation of the testis (often from mumps), orchidectomy (orchiectomy) is surgical removal, and cryptorchidism is undescended testis. Students frequently misspell this root or confuse it with orchid/o.",
+    "visualDescription": "Anatomy of testis labeled with Greek root 'orchis' and clinical terms orchitis, orchiectomy",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Testicle",
+    "volatile": false,
+    "distractors": [
+      "prostate gland",
+      "epididymis",
+      "seminal vesicle",
+      "penis",
+      "scrotum",
+      "vas deferens",
+      "ovary",
+      "adrenal gland"
+    ],
+    "synonymRoots": ["orchid/o"],
+    "variants": [
+      {
+        "quizQuestion": "Orchitis is inflammation of the ___. (Root: orchi/o)",
+        "correctAnswer": "testis / testicle",
+        "explanation": "Orchi/o = testis (Greek 'orchis'). Orchitis can be caused by bacterial infection or viral mumps, and may lead to reduced fertility if bilateral. The root also explains the flower name 'orchid.'"
+      }
+    ]
+  },
+  {
+    "id": "mtr_023",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "menstruation / month",
+    "acceptableAlternatives": ["menstruation", "menses", "monthly cycle", "month"],
+    "chainThemeId": "4",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root men/o mean?",
+    "explanation": "Men/o comes from Greek 'men' (month), reflecting the monthly menstrual cycle. Menorrhagia is heavy menstrual bleeding, amenorrhea is absence of menstruation, dysmenorrhea is painful menstruation, and menopause is the permanent cessation of menses. This root underlies almost all menstrual terminology.",
+    "visualDescription": "Calendar marking monthly cycle with Greek root 'men' (month) and common terms menorrhagia, amenorrhea",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Menstrual_cycle",
+    "volatile": false,
+    "distractors": [
+      "pregnancy",
+      "ovulation",
+      "uterus",
+      "hormone",
+      "blood",
+      "pain",
+      "birth",
+      "breast"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "Amenorrhea is the absence of ___. (Root: men/o = month)",
+        "correctAnswer": "menstruation / month",
+        "explanation": "Men/o = menstruation/month (Greek 'men'). Amenorrhea (a- = without, men/o = menstruation, -rrhea = flow) is absence of periods, which may be primary (never started) or secondary (previously present, now absent)."
+      }
+    ]
+  },
+  {
+    "id": "mtr_024",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "eye",
+    "acceptableAlternatives": [],
+    "chainThemeId": "5",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What does the medical root ophthalm/o mean?",
+    "explanation": "Ophthalm/o comes from Greek 'ophthalmos' (eye). Ophthalmology is the medical specialty for eye disorders, an ophthalmoscope examines the eye interior, and ophthalmitis is eye inflammation. This is the longer, clinical root — the synonym ocul/o (from Latin 'oculus') is used in terms like oculomotor and binocular.",
+    "visualDescription": "Cross-section of human eye with Greek label 'ophthalmos' and synonym ocul/o noted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Eye",
+    "volatile": false,
+    "distractors": [
+      "ear",
+      "nose",
+      "eyelid",
+      "retina",
+      "cornea",
+      "optic nerve",
+      "iris",
+      "sclera"
+    ],
+    "synonymRoots": ["ocul/o"],
+    "variants": [
+      {
+        "quizQuestion": "Ophthalmology is the branch of medicine dealing with the ___. (Root: ophthalm/o)",
+        "correctAnswer": "eye",
+        "explanation": "Ophthalm/o = eye (Greek 'ophthalmos'). Ophthalmology encompasses diagnosis and treatment of all eye disorders, from refractive errors to retinal diseases and cataracts."
+      }
+    ]
+  },
+  {
+    "id": "mtr_025",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "retina",
+    "acceptableAlternatives": ["retina of the eye"],
+    "chainThemeId": "0",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root retin/o mean?",
+    "explanation": "Retin/o comes from Medieval Latin 'retina' (net), referring to the net-like inner layer of the eye that contains photoreceptors. Retinopathy is disease of the retina (including diabetic retinopathy), retinal detachment is a medical emergency, and retinoblastoma is a malignant retinal tumor in children.",
+    "visualDescription": "Eye cross-section with retina highlighted and Latin root 'rete' (net) labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Retina",
+    "volatile": false,
+    "distractors": [
+      "cornea",
+      "lens",
+      "iris",
+      "sclera",
+      "choroid",
+      "vitreous humor",
+      "optic nerve",
+      "conjunctiva"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "Diabetic retinopathy affects which structure of the eye? (Root: retin/o)",
+        "correctAnswer": "retina",
+        "explanation": "Retin/o = retina (Latin 'rete,' net). The retina is the light-sensitive layer lining the back of the eye. Diabetic retinopathy damages retinal blood vessels and is a leading cause of blindness."
+      }
+    ]
+  },
+  {
+    "id": "mtr_026",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "eyelid",
+    "acceptableAlternatives": ["eyelid / palpebra"],
+    "chainThemeId": "1",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root blephar/o mean?",
+    "explanation": "Blephar/o comes from Greek 'blepharon' (eyelid). Blepharitis is eyelid inflammation, blepharospasm is involuntary eyelid contraction, ptosis (drooping eyelid) involves blephar/o in compound terms, and blepharoplasty is cosmetic eyelid surgery. Students routinely confuse this with other eye roots — it specifically means the eyelid, not the eye itself.",
+    "visualDescription": "Close-up of eye with eyelid labeled 'blepharon' separate from the eyeball",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Eyelid",
+    "volatile": false,
+    "distractors": [
+      "cornea",
+      "retina",
+      "iris",
+      "sclera",
+      "conjunctiva",
+      "lens",
+      "tear duct",
+      "eyebrow"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "Blepharitis is inflammation of the ___. (Root: blephar/o)",
+        "correctAnswer": "eyelid",
+        "explanation": "Blephar/o = eyelid (Greek 'blepharon'). Blepharitis causes red, swollen, scaly eyelid margins and is often associated with seborrheic dermatitis or bacterial infection."
+      }
+    ]
+  },
+  {
+    "id": "mtr_027",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "iris / colored part of eye",
+    "acceptableAlternatives": ["iris", "iris of the eye"],
+    "chainThemeId": "2",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "What does the medical root irid/o mean?",
+    "explanation": "Irid/o comes from Greek 'iris/iridos' (rainbow), referring to the colorful iris of the eye. Iritis (uveitis) is inflammation of the iris, iridocyclitis involves the iris and ciliary body, and iridology is the pseudoscientific practice of diagnosing disease from iris patterns. The root also names the flower genus Iris for the same color reason.",
+    "visualDescription": "Front view of eye with colorful iris labeled 'iris/iridos' (rainbow)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Iris_(anatomy)",
+    "volatile": false,
+    "distractors": [
+      "cornea",
+      "retina",
+      "pupil",
+      "sclera",
+      "lens",
+      "eyelid",
+      "conjunctiva",
+      "choroid"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "Iritis is inflammation of the ___ of the eye. (Root: irid/o = rainbow)",
+        "correctAnswer": "iris / colored part of eye",
+        "explanation": "Irid/o = iris (Greek 'iris,' rainbow). The iris controls pupil size and gives the eye its color. Iritis (anterior uveitis) causes a red, painful eye with photophobia."
+      }
+    ]
+  },
+  {
+    "id": "mtr_028",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "ear",
+    "acceptableAlternatives": [],
+    "chainThemeId": "3",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What does the medical root ot/o mean?",
+    "explanation": "Ot/o comes from Greek 'ous/otos' (ear). Otitis media is middle ear infection (one of the most common childhood infections), otology is the study of ear diseases, an otoscope examines the ear canal, and otalgia is ear pain. The root is brief but appears in countless clinical terms.",
+    "visualDescription": "Ear anatomy cross-section with Greek label 'otos' and otoscope illustration",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ear",
+    "volatile": false,
+    "distractors": [
+      "eye",
+      "nose",
+      "throat",
+      "eardrum",
+      "cochlea",
+      "hearing",
+      "vestibule",
+      "mastoid"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "Otitis media is an infection of the ___. (Root: ot/o)",
+        "correctAnswer": "ear",
+        "explanation": "Ot/o = ear (Greek 'otos'). Otitis media — middle ear infection — is most common in children ages 6 months to 2 years and is a leading reason for antibiotic prescriptions."
+      }
+    ]
+  },
+  {
+    "id": "mtr_029",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "eardrum / tympanic membrane",
+    "acceptableAlternatives": ["eardrum", "tympanic membrane", "tympanum"],
+    "chainThemeId": "4",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What does the medical root tympan/o mean?",
+    "explanation": "Tympan/o comes from Greek 'tympanon' (drum). The tympanic membrane (eardrum) vibrates like a drum when struck by sound waves. Tympanometry measures eardrum compliance, tympanoplasty is surgical repair of the eardrum, and tympanocentesis punctures the drum to drain middle ear fluid. Synonym: myring/o.",
+    "visualDescription": "Ear canal cross-section with eardrum labeled 'tympanon' (drum) at its end",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Eardrum",
+    "volatile": false,
+    "distractors": [
+      "outer ear canal",
+      "cochlea",
+      "ossicles",
+      "semicircular canal",
+      "Eustachian tube",
+      "mastoid bone",
+      "inner ear",
+      "auditory nerve"
+    ],
+    "synonymRoots": ["myring/o"],
+    "variants": [
+      {
+        "quizQuestion": "Tympanoplasty is surgical repair of the ___. (Root: tympan/o = drum)",
+        "correctAnswer": "eardrum / tympanic membrane",
+        "explanation": "Tympan/o = eardrum/tympanic membrane (Greek 'tympanon,' drum). Tympanoplasty reconstructs a perforated eardrum using a tissue graft to restore hearing and prevent infection."
+      }
+    ]
+  },
+  {
+    "id": "mtr_030",
+    "subDeckId": "medical_terminology_roots",
+    "correctAnswer": "lymph / lymphatic fluid",
+    "acceptableAlternatives": ["lymph", "lymphatic fluid"],
+    "chainThemeId": "5",
+    "answerTypePoolId": "root_meanings",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What does the medical root lymph/o mean?",
+    "explanation": "Lymph/o comes from Latin 'lympha' (clear water, water goddess). Lymphocytes are white blood cells of the lymphatic/immune system, lymphadenopathy is enlarged lymph nodes, lymphedema is swelling from lymphatic obstruction, and lymphoma is cancer of lymphoid tissue. This root bridges the lymphatic and immune systems.",
+    "visualDescription": "Lymph node diagram with lymph vessels entering and lymphocytes labeled with Latin root 'lympha'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lymph",
+    "volatile": false,
+    "distractors": [
+      "blood",
+      "plasma",
+      "serum",
+      "interstitial fluid",
+      "cerebrospinal fluid",
+      "bile",
+      "mucus",
+      "urine"
+    ],
+    "synonymRoots": [],
+    "variants": [
+      {
+        "quizQuestion": "Lymphedema is swelling caused by obstruction of which fluid system? (Root: lymph/o)",
+        "correctAnswer": "lymph / lymphatic fluid",
+        "explanation": "Lymph/o = lymph (Latin 'lympha,' clear water). The lymphatic system returns interstitial fluid to the blood. Obstruction — from cancer treatment, filariasis, or surgery — causes lymphedema."
+      }
+    ]
+  }
+]

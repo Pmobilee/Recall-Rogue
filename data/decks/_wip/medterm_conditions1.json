@@ -1,0 +1,1472 @@
+[
+  {
+    "id": "medterm_cond_tachycardia",
+    "correctAnswer": "Tachycardia",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Bradycardia",
+      "Cardiomyopathy",
+      "Endocarditis",
+      "Pericarditis",
+      "Myocarditis",
+      "Hypertension",
+      "Arrhythmia",
+      "Atherosclerosis"
+    ],
+    "quizQuestion": "What condition is named from tachy- (fast) + cardi/o (heart) + -ia (condition), meaning abnormally fast heart rate?",
+    "explanation": "Tachycardia breaks down as: tachy- (fast) + cardi/o (heart) + -ia (condition). A normal resting heart rate is 60–100 bpm; tachycardia is above 100 bpm at rest. Compare with bradycardia (brady- = slow), which is below 60 bpm. The same root cardi/o appears in cardiology, cardiac arrest, and cardiomyopathy.",
+    "statement": "Tachycardia means abnormally fast heart rate, from tachy- (fast) + cardi/o (heart) + -ia (condition).",
+    "wowFactor": "Tachy- means fast and brady- means slow — so tachycardia and bradycardia are literally 'fast heart' and 'slow heart'. The Greek runners at the ancient Olympics gave us these speed prefixes!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tachycardia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "cardiovascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'tachycardia' — what does each part mean?",
+        "correctAnswer": "tachy- (fast) + cardi/o (heart) + -ia (condition)",
+        "distractors": [
+          "brady- (slow) + cardi/o (heart) + -ia (condition)",
+          "tachy- (fast) + pulmon/o (lung) + -ia (condition)",
+          "hyper- (above) + cardi/o (heart) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "tachy- (fast) + cardi/o (heart) + -ia (condition) = ___",
+        "correctAnswer": "Tachycardia",
+        "distractors": ["Bradycardia", "Cardiomyopathy", "Endocarditis"]
+      }
+    ],
+    "visualDescription": "The word TACHYCARDIA split into glowing segments: TACHY + CARDI + IA, with 'fast', 'heart', 'condition' labeled below each segment"
+  },
+  {
+    "id": "medterm_cond_bradycardia",
+    "correctAnswer": "Bradycardia",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Tachycardia",
+      "Cardiomyopathy",
+      "Arrhythmia",
+      "Endocarditis",
+      "Hypotension",
+      "Atherosclerosis",
+      "Phlebitis",
+      "Pericarditis"
+    ],
+    "quizQuestion": "What condition is named from brady- (slow) + cardi/o (heart) + -ia (condition), meaning abnormally slow heart rate?",
+    "explanation": "Bradycardia breaks down as: brady- (slow) + cardi/o (heart) + -ia (condition). A heart rate below 60 bpm at rest is classified as bradycardia. In trained athletes this can be normal, but in others it may cause fatigue, dizziness, or fainting. Contrast with tachycardia (tachy- = fast, above 100 bpm).",
+    "statement": "Bradycardia means abnormally slow heart rate, from brady- (slow) + cardi/o (heart) + -ia (condition).",
+    "wowFactor": "Elite endurance athletes like cyclists often have resting heart rates of 40–50 bpm — technically bradycardia — because their hearts pump so efficiently. Lance Armstrong's resting rate was reportedly 32 bpm!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bradycardia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "cardiovascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'bradycardia' — what does each part mean?",
+        "correctAnswer": "brady- (slow) + cardi/o (heart) + -ia (condition)",
+        "distractors": [
+          "tachy- (fast) + cardi/o (heart) + -ia (condition)",
+          "brady- (slow) + pulmon/o (lung) + -ia (condition)",
+          "hypo- (below) + cardi/o (heart) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "brady- (slow) + cardi/o (heart) + -ia (condition) = ___",
+        "correctAnswer": "Bradycardia",
+        "distractors": ["Tachycardia", "Cardiomyopathy", "Arrhythmia"]
+      }
+    ],
+    "visualDescription": "The word BRADYCARDIA split into glowing segments: BRADY + CARDI + IA, with 'slow', 'heart', 'condition' labeled below each"
+  },
+  {
+    "id": "medterm_cond_cardiomyopathy",
+    "correctAnswer": "Cardiomyopathy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Endocarditis",
+      "Pericarditis",
+      "Myocarditis",
+      "Tachycardia",
+      "Atherosclerosis",
+      "Cardiomegaly",
+      "Thrombosis",
+      "Aneurysm"
+    ],
+    "quizQuestion": "What condition is named from cardi/o (heart) + my/o (muscle) + -pathy (disease), meaning disease of the heart muscle?",
+    "explanation": "Cardiomyopathy breaks down as: cardi/o (heart) + my/o (muscle) + -pathy (disease). It refers to diseases that affect the heart muscle itself, making it harder for the heart to pump blood. Types include dilated, hypertrophic, and restrictive cardiomyopathy. The suffix -pathy (disease, suffering) also appears in neuropathy (nerve disease) and myopathy (muscle disease).",
+    "statement": "Cardiomyopathy means disease of the heart muscle, from cardi/o (heart) + my/o (muscle) + -pathy (disease).",
+    "wowFactor": "The suffix -pathy comes from Greek 'pathos' meaning suffering — the same root behind 'empathy' (feeling another's suffering) and 'apathy' (without feeling). Medicine borrowed it to mean 'disease of'.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cardiomyopathy",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "cardiovascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'cardiomyopathy' — what does each part mean?",
+        "correctAnswer": "cardi/o (heart) + my/o (muscle) + -pathy (disease)",
+        "distractors": [
+          "cardi/o (heart) + my/o (muscle) + -itis (inflammation)",
+          "cardi/o (heart) + neur/o (nerve) + -pathy (disease)",
+          "my/o (muscle) + -pathy (disease) without cardi/o"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "cardi/o (heart) + my/o (muscle) + -pathy (disease) = ___",
+        "correctAnswer": "Cardiomyopathy",
+        "distractors": ["Endocarditis", "Myocarditis", "Pericarditis"]
+      }
+    ],
+    "visualDescription": "The word CARDIOMYOPATHY split into three glowing segments: CARDIO + MYO + PATHY, with 'heart', 'muscle', 'disease' labeled below"
+  },
+  {
+    "id": "medterm_cond_atherosclerosis",
+    "correctAnswer": "Atherosclerosis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Arteriosclerosis",
+      "Thrombosis",
+      "Aneurysm",
+      "Phlebitis",
+      "Cardiomyopathy",
+      "Endocarditis",
+      "Hypertension",
+      "Embolism"
+    ],
+    "quizQuestion": "What condition is named from ather/o (fatty plaque) + -sclerosis (hardening), meaning hardening of arteries with fatty deposits?",
+    "explanation": "Atherosclerosis breaks down as: ather/o (fatty plaque, from Greek 'athera' meaning porridge) + -sclerosis (hardening). Fatty plaques (atheroma) build up inside artery walls, narrowing the lumen and reducing blood flow. It is the underlying cause of most heart attacks and strokes. The suffix -sclerosis also appears in multiple sclerosis (hardening of nerve tissue) and arteriosclerosis.",
+    "statement": "Atherosclerosis means hardening of arteries with fatty plaque deposits, from ather/o (fatty plaque) + -sclerosis (hardening).",
+    "wowFactor": "The root ather/o comes from Greek 'athera' meaning porridge — ancient Greek physicians noted that arterial plaques resembled a porridge-like paste when they cut open vessels. The name stuck for 2,000 years!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Atherosclerosis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "cardiovascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'atherosclerosis' — what does each part mean?",
+        "correctAnswer": "ather/o (fatty plaque) + -sclerosis (hardening)",
+        "distractors": [
+          "arteri/o (artery) + -sclerosis (hardening)",
+          "ather/o (fatty plaque) + -osis (condition without hardening meaning)",
+          "thromb/o (clot) + -sclerosis (hardening)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "ather/o (fatty plaque) + -sclerosis (hardening) = ___",
+        "correctAnswer": "Atherosclerosis",
+        "distractors": ["Arteriosclerosis", "Thrombosis", "Embolism"]
+      }
+    ],
+    "visualDescription": "The word ATHEROSCLEROSIS split into glowing segments: ATHERO + SCLEROSIS, with 'fatty plaque' and 'hardening' labeled below, next to an artery cross-section showing plaque buildup"
+  },
+  {
+    "id": "medterm_cond_thrombosis",
+    "correctAnswer": "Thrombosis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Embolism",
+      "Atherosclerosis",
+      "Phlebitis",
+      "Aneurysm",
+      "Hematoma",
+      "Ischemia",
+      "Infarction",
+      "Hemostasis"
+    ],
+    "quizQuestion": "What condition is named from thromb/o (clot) + -osis (condition/process), meaning the formation of a blood clot inside a vessel?",
+    "explanation": "Thrombosis breaks down as: thromb/o (clot, from Greek 'thrombos' meaning lump or clot) + -osis (condition or abnormal process). It refers to the formation of a blood clot (thrombus) within a blood vessel. Deep vein thrombosis (DVT) occurs in the legs; coronary thrombosis occurs in heart arteries. The -osis suffix appears in many conditions: cirrhosis, fibrosis, necrosis.",
+    "statement": "Thrombosis means blood clot formation inside a vessel, from thromb/o (clot) + -osis (condition).",
+    "wowFactor": "A thrombus (clot) that stays in place causes thrombosis. If it breaks off and travels, it becomes an embolus — causing embolism. The same clot gets a different name when it moves. Medical terms track the journey!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thrombosis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "cardiovascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'thrombosis' — what does each part mean?",
+        "correctAnswer": "thromb/o (clot) + -osis (condition)",
+        "distractors": [
+          "thromb/o (clot) + -itis (inflammation)",
+          "hem/o (blood) + -osis (condition)",
+          "thromb/o (clot) + -ectomy (surgical removal)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "thromb/o (clot) + -osis (abnormal condition) = ___",
+        "correctAnswer": "Thrombosis",
+        "distractors": ["Embolism", "Phlebitis", "Hematoma"]
+      }
+    ],
+    "visualDescription": "The word THROMBOSIS split into glowing segments: THROMB + OSIS, with 'clot' and 'condition' labeled below, alongside a vessel diagram showing a clot"
+  },
+  {
+    "id": "medterm_cond_anemia",
+    "correctAnswer": "Anemia",
+    "acceptableAlternatives": ["Anaemia"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Leukemia",
+      "Polycythemia",
+      "Thrombocytopenia",
+      "Hemophilia",
+      "Thalassemia",
+      "Sickle Cell Disease",
+      "Lymphoma",
+      "Hypotension"
+    ],
+    "quizQuestion": "What condition is named from an- (without) + -emia (blood condition), meaning a deficiency of red blood cells or hemoglobin?",
+    "explanation": "Anemia breaks down as: an- (without, absence of) + -emia (blood condition, from Greek 'haima' meaning blood). It refers to a deficiency in red blood cells or hemoglobin, reducing the blood's ability to carry oxygen. Symptoms include fatigue, pallor, and shortness of breath. The prefix an- also appears in anesthesia (an- without + -esthesia feeling) and apnea (an- without + -pnea breathing).",
+    "statement": "Anemia means deficiency of red blood cells/hemoglobin, from an- (without) + -emia (blood condition).",
+    "wowFactor": "The suffix -emia appears throughout blood medicine: leukemia (leuk/o = white), septicemia (septic = infected), hyperglycemia (hyper + glyc/o = sugar). Once you know -emia = blood condition, dozens of diagnoses become readable!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Anemia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "cardiovascular", "blood"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'anemia' — what does each part mean?",
+        "correctAnswer": "an- (without) + -emia (blood condition)",
+        "distractors": [
+          "hypo- (below) + -emia (blood condition)",
+          "an- (without) + -itis (inflammation)",
+          "a- (without) + -pnea (breathing)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "an- (without) + -emia (blood condition) = ___",
+        "correctAnswer": "Anemia",
+        "distractors": ["Leukemia", "Polycythemia", "Hemophilia"]
+      }
+    ],
+    "visualDescription": "The word ANEMIA split into glowing segments: AN + EMIA, with 'without' and 'blood condition' labeled below, next to pale vs. healthy red blood cells"
+  },
+  {
+    "id": "medterm_cond_hypertension",
+    "correctAnswer": "Hypertension",
+    "acceptableAlternatives": ["High blood pressure"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Hypotension",
+      "Tachycardia",
+      "Atherosclerosis",
+      "Cardiomyopathy",
+      "Phlebitis",
+      "Aneurysm",
+      "Thrombosis",
+      "Arrhythmia"
+    ],
+    "quizQuestion": "What condition is named from hyper- (excessive/above normal) + tension (pressure), meaning chronically elevated blood pressure?",
+    "explanation": "Hypertension breaks down as: hyper- (above normal, excessive) + tension (pressure, from Latin 'tensio'). Blood pressure consistently above 130/80 mmHg is classified as hypertension. The hyper- prefix (from Greek 'hyper' meaning over) contrasts with hypo- (under), giving us the pair hypertension/hypotension just as we have hyperglycemia/hypoglycemia.",
+    "statement": "Hypertension means chronically high blood pressure, from hyper- (excessive) + tension (pressure).",
+    "wowFactor": "Hyper- and hypo- are a matched pair in medicine: hypertension (too high) vs. hypotension (too low), hyperglycemia (too much sugar) vs. hypoglycemia (too little). These two prefixes alone decode hundreds of medical terms!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hypertension",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "cardiovascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'hypertension' — what does each part mean?",
+        "correctAnswer": "hyper- (above normal) + tension (pressure)",
+        "distractors": [
+          "hypo- (below normal) + tension (pressure)",
+          "hyper- (above normal) + -emia (blood)",
+          "hyper- (above normal) + cardi/o (heart)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "hyper- (above normal) + tension (pressure) = ___",
+        "correctAnswer": "Hypertension",
+        "distractors": ["Hypotension", "Tachycardia", "Atherosclerosis"]
+      }
+    ],
+    "visualDescription": "The word HYPERTENSION split into glowing segments: HYPER + TENSION, with 'above normal' and 'pressure' labeled below, with a blood pressure gauge reading high"
+  },
+  {
+    "id": "medterm_cond_hypotension",
+    "correctAnswer": "Hypotension",
+    "acceptableAlternatives": ["Low blood pressure"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Hypertension",
+      "Bradycardia",
+      "Anemia",
+      "Phlebitis",
+      "Thrombosis",
+      "Syncope",
+      "Cardiomyopathy",
+      "Arrhythmia"
+    ],
+    "quizQuestion": "What condition is named from hypo- (below/deficient) + tension (pressure), meaning abnormally low blood pressure?",
+    "explanation": "Hypotension breaks down as: hypo- (below normal, deficient) + tension (pressure). Blood pressure below 90/60 mmHg is generally considered hypotension. Symptoms include dizziness, fainting, and shock. Orthostatic hypotension occurs when blood pressure drops sharply upon standing. The prefix hypo- (from Greek 'hypo' meaning under) is the opposite of hyper-, creating parallel medical term pairs.",
+    "statement": "Hypotension means abnormally low blood pressure, from hypo- (below) + tension (pressure).",
+    "wowFactor": "Orthostatic hypotension — the dizzy head-rush you get when you stand up too fast — is experienced by about 20% of people over 65. It happens because gravity pulls blood downward faster than the body can compensate.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hypotension",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "cardiovascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'hypotension' — what does each part mean?",
+        "correctAnswer": "hypo- (below normal) + tension (pressure)",
+        "distractors": [
+          "hyper- (above normal) + tension (pressure)",
+          "hypo- (below normal) + -emia (blood)",
+          "hypo- (below normal) + cardi/o (heart)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "hypo- (below normal) + tension (pressure) = ___",
+        "correctAnswer": "Hypotension",
+        "distractors": ["Hypertension", "Bradycardia", "Syncope"]
+      }
+    ],
+    "visualDescription": "The word HYPOTENSION split into glowing segments: HYPO + TENSION, with 'below normal' and 'pressure' labeled below, with a blood pressure gauge reading low"
+  },
+  {
+    "id": "medterm_cond_phlebitis",
+    "correctAnswer": "Phlebitis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Thrombosis",
+      "Atherosclerosis",
+      "Aneurysm",
+      "Arteritis",
+      "Vasculitis",
+      "Embolism",
+      "Varicose Veins",
+      "Lymphedema"
+    ],
+    "quizQuestion": "What condition is named from phleb/o (vein) + -itis (inflammation), meaning inflammation of a vein?",
+    "explanation": "Phlebitis breaks down as: phleb/o (vein, from Greek 'phleps' meaning vein) + -itis (inflammation). It refers to inflammation of a vein, most commonly in the legs. Thrombophlebitis is phlebitis accompanied by a blood clot. The suffix -itis (inflammation) is one of the most common in medicine, appearing in appendicitis, arthritis, bronchitis, gastritis, and hundreds more.",
+    "statement": "Phlebitis means inflammation of a vein, from phleb/o (vein) + -itis (inflammation).",
+    "wowFactor": "The Greek word 'phleps' (vein) also gives us phlebotomy — literally 'cutting of a vein' — which is the medical term for drawing blood. The ancient practice of bloodletting was called phlebotomy, making today's blood draws a tamer descendant!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Phlebitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "cardiovascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'phlebitis' — what does each part mean?",
+        "correctAnswer": "phleb/o (vein) + -itis (inflammation)",
+        "distractors": [
+          "arteri/o (artery) + -itis (inflammation)",
+          "phleb/o (vein) + -osis (condition)",
+          "thromb/o (clot) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "phleb/o (vein) + -itis (inflammation) = ___",
+        "correctAnswer": "Phlebitis",
+        "distractors": ["Arteritis", "Thrombosis", "Vasculitis"]
+      }
+    ],
+    "visualDescription": "The word PHLEBITIS split into glowing segments: PHLEB + ITIS, with 'vein' and 'inflammation' labeled below, next to a diagram of an inflamed vein"
+  },
+  {
+    "id": "medterm_cond_aneurysm",
+    "correctAnswer": "Aneurysm",
+    "acceptableAlternatives": ["Aneurism"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Thrombosis",
+      "Embolism",
+      "Atherosclerosis",
+      "Phlebitis",
+      "Hematoma",
+      "Varicose Veins",
+      "Arteritis",
+      "Fistula"
+    ],
+    "quizQuestion": "What vascular condition — from Greek 'aneurysma' meaning widening — describes a localized abnormal dilation or bulge in a blood vessel wall?",
+    "explanation": "Aneurysm comes from Greek 'aneurysma' (a widening), from 'ana-' (up, throughout) + 'eurys' (wide). It describes a localized bulge or dilation in a blood vessel wall caused by weakness in the vessel. Common sites include the aorta (aortic aneurysm) and brain arteries (cerebral/berry aneurysm). Rupture can be life-threatening. The word 'eurys' (wide) also gives us 'eureka' (wide discovery) indirectly via 'eurys'.",
+    "statement": "Aneurysm means an abnormal dilation/bulge in a blood vessel wall, from Greek 'aneurysma' (a widening).",
+    "wowFactor": "A cerebral (brain) aneurysm is sometimes called a 'berry aneurysm' because it bulges from an artery like a small berry on a stem. Unruptured brain aneurysms are present in about 3% of the population — most people never know they have one.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Aneurysm",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "cardiovascular"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does the Greek root of 'aneurysm' — 'aneurysma' — literally mean?",
+        "correctAnswer": "A widening",
+        "distractors": [
+          "A clotting",
+          "A rupture",
+          "A narrowing"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A localized bulge or dilation in a blood vessel wall caused by vessel weakness is called ___",
+        "correctAnswer": "Aneurysm",
+        "distractors": ["Thrombosis", "Embolism", "Hematoma"]
+      }
+    ],
+    "visualDescription": "The word ANEURYSM with 'ana- (up/throughout) + eurys (wide)' labeled below, alongside a diagram of an artery with a balloon-like bulge"
+  },
+  {
+    "id": "medterm_cond_bronchitis",
+    "correctAnswer": "Bronchitis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Pneumonia",
+      "Laryngitis",
+      "Sinusitis",
+      "Pleuritis",
+      "Tracheitis",
+      "Rhinitis",
+      "Asthma",
+      "Emphysema"
+    ],
+    "quizQuestion": "What condition is named from bronch/o (bronchus/airway) + -itis (inflammation), meaning inflammation of the bronchial tubes?",
+    "explanation": "Bronchitis breaks down as: bronch/o (bronchus, the large airways leading to the lungs, from Greek 'bronchos' meaning windpipe) + -itis (inflammation). Acute bronchitis is usually caused by viral infection; chronic bronchitis (lasting 3+ months) is often related to smoking. The bronchi branch from the trachea into the right and left lungs. Compare with bronchiectasis (bronch/o + -ectasis = dilation).",
+    "statement": "Bronchitis means inflammation of the bronchial tubes, from bronch/o (bronchus) + -itis (inflammation).",
+    "wowFactor": "The bronchi look exactly like an upside-down tree — the trachea is the trunk, the bronchi are the main branches, and smaller bronchioles are the twigs. Doctors actually call this the 'bronchial tree'!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bronchitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "respiratory"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'bronchitis' — what does each part mean?",
+        "correctAnswer": "bronch/o (bronchus/airway) + -itis (inflammation)",
+        "distractors": [
+          "bronch/o (bronchus) + -osis (condition)",
+          "pneumon/o (lung) + -itis (inflammation)",
+          "bronch/o (bronchus) + -pathy (disease)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "bronch/o (bronchus) + -itis (inflammation) = ___",
+        "correctAnswer": "Bronchitis",
+        "distractors": ["Pneumonia", "Laryngitis", "Tracheitis"]
+      }
+    ],
+    "visualDescription": "The word BRONCHITIS split into glowing segments: BRONCH + ITIS, with 'bronchus/airway' and 'inflammation' labeled below, next to a lung diagram highlighting inflamed bronchial tubes"
+  },
+  {
+    "id": "medterm_cond_pneumonia",
+    "correctAnswer": "Pneumonia",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Bronchitis",
+      "Pleuritis",
+      "Pneumothorax",
+      "Tuberculosis",
+      "Emphysema",
+      "Sinusitis",
+      "Laryngitis",
+      "Asthma"
+    ],
+    "quizQuestion": "What condition is named from pneumon/o (lung) + -ia (condition), meaning infection and inflammation of the lung tissue?",
+    "explanation": "Pneumonia breaks down as: pneumon/o (lung, from Greek 'pneumon' meaning lung) + -ia (condition). It refers to infection or inflammation of lung tissue, causing air sacs to fill with fluid or pus. Causes include bacteria (Streptococcus pneumoniae), viruses, and fungi. The root pneum/o also appears in pneumothorax (air in chest) and pneumococcal. Related: pulmonary (from Latin 'pulmo' = lung) is a synonym for pneumon/o.",
+    "statement": "Pneumonia means lung infection/inflammation, from pneumon/o (lung) + -ia (condition).",
+    "wowFactor": "The root pneum/o means both 'lung' and 'air' — which is why pneumonia (lung disease) and pneumothorax (air in chest) share the same prefix. Ancient Greeks didn't distinguish between the lung organ and the air it contained!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pneumonia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "respiratory"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'pneumonia' — what does each part mean?",
+        "correctAnswer": "pneumon/o (lung) + -ia (condition)",
+        "distractors": [
+          "pneum/o (air) + thorax (chest)",
+          "bronch/o (airway) + -ia (condition)",
+          "pulmon/o (lung) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "pneumon/o (lung) + -ia (condition) = ___",
+        "correctAnswer": "Pneumonia",
+        "distractors": ["Bronchitis", "Pneumothorax", "Pleuritis"]
+      }
+    ],
+    "visualDescription": "The word PNEUMONIA split into glowing segments: PNEUMON + IA, with 'lung' and 'condition' labeled below, next to lungs with one showing fluid-filled (white) patches"
+  },
+  {
+    "id": "medterm_cond_pneumothorax",
+    "correctAnswer": "Pneumothorax",
+    "acceptableAlternatives": ["Collapsed lung"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Hemothorax",
+      "Pleuritis",
+      "Pneumonia",
+      "Emphysema",
+      "Atelectasis",
+      "Pleurisy",
+      "Hydrothorax",
+      "Chylothorax"
+    ],
+    "quizQuestion": "What condition is named from pneum/o (air) + thorax (chest), meaning air trapped in the chest cavity causing lung collapse?",
+    "explanation": "Pneumothorax breaks down as: pneum/o (air, from Greek 'pneuma' meaning air/breath) + thorax (chest, from Greek 'thorax' meaning chest or breastplate). Air enters the pleural space between the lung and chest wall, causing the lung to collapse. A tension pneumothorax is a medical emergency. Other 'thorax' combinations: hemothorax (hem/o + thorax = blood in chest), hydrothorax (hydr/o + thorax = fluid in chest).",
+    "statement": "Pneumothorax means air in the chest cavity causing lung collapse, from pneum/o (air) + thorax (chest).",
+    "wowFactor": "Thorax is Greek for 'breastplate' — the ancient armor that protected warriors' chests. When doctors say 'thoracic surgery', they're using the word for armor to describe the operation. Your ribcage really is your body's breastplate!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pneumothorax",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "respiratory"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'pneumothorax' — what does each part mean?",
+        "correctAnswer": "pneum/o (air) + thorax (chest)",
+        "distractors": [
+          "pneumon/o (lung) + -ia (condition)",
+          "hem/o (blood) + thorax (chest)",
+          "pneum/o (air) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "pneum/o (air) + thorax (chest) = ___",
+        "correctAnswer": "Pneumothorax",
+        "distractors": ["Hemothorax", "Pleuritis", "Emphysema"]
+      }
+    ],
+    "visualDescription": "The word PNEUMOTHORAX split into glowing segments: PNEUMO + THORAX, with 'air' and 'chest' labeled below, next to a chest diagram showing air in the pleural space and a collapsed lung"
+  },
+  {
+    "id": "medterm_cond_laryngitis",
+    "correctAnswer": "Laryngitis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Pharyngitis",
+      "Rhinitis",
+      "Bronchitis",
+      "Sinusitis",
+      "Tonsillitis",
+      "Tracheitis",
+      "Epiglottitis",
+      "Stomatitis"
+    ],
+    "quizQuestion": "What condition is named from laryng/o (larynx/voice box) + -itis (inflammation), meaning inflammation of the voice box?",
+    "explanation": "Laryngitis breaks down as: laryng/o (larynx, the voice box, from Greek 'larynx') + -itis (inflammation). It causes hoarseness, voice loss, and throat discomfort. Most cases are caused by viral infection or vocal strain. The larynx houses the vocal cords. Compare with pharyngitis (pharynx = throat) and tracheitis (trachea = windpipe) — all -itis conditions of the upper airway.",
+    "statement": "Laryngitis means inflammation of the larynx (voice box), from laryng/o (larynx) + -itis (inflammation).",
+    "wowFactor": "The larynx is the only organ in the body whose primary job is to make sound. Every other organ does something 'practical' like pump blood or filter waste — but the larynx exists largely to let us speak and sing!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Laryngitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "respiratory"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'laryngitis' — what does each part mean?",
+        "correctAnswer": "laryng/o (larynx/voice box) + -itis (inflammation)",
+        "distractors": [
+          "pharyng/o (pharynx/throat) + -itis (inflammation)",
+          "laryng/o (larynx) + -osis (condition)",
+          "trache/o (trachea/windpipe) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "laryng/o (larynx/voice box) + -itis (inflammation) = ___",
+        "correctAnswer": "Laryngitis",
+        "distractors": ["Pharyngitis", "Tracheitis", "Epiglottitis"]
+      }
+    ],
+    "visualDescription": "The word LARYNGITIS split into glowing segments: LARYNG + ITIS, with 'larynx/voice box' and 'inflammation' labeled below"
+  },
+  {
+    "id": "medterm_cond_rhinitis",
+    "correctAnswer": "Rhinitis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Sinusitis",
+      "Laryngitis",
+      "Pharyngitis",
+      "Bronchitis",
+      "Otitis",
+      "Conjunctivitis",
+      "Tonsillitis",
+      "Epistaxis"
+    ],
+    "quizQuestion": "What condition is named from rhin/o (nose) + -itis (inflammation), meaning inflammation of the nasal mucous membranes?",
+    "explanation": "Rhinitis breaks down as: rhin/o (nose, from Greek 'rhis/rhinos' meaning nose) + -itis (inflammation). It refers to inflammation of the nasal lining, causing runny nose, sneezing, and congestion. Allergic rhinitis (hay fever) is triggered by allergens; non-allergic rhinitis by infections or irritants. The root rhin/o also appears in rhinoplasty (nose reshaping surgery) and rhinoceros — literally 'nose horn'!",
+    "statement": "Rhinitis means inflammation of the nasal mucous membranes, from rhin/o (nose) + -itis (inflammation).",
+    "wowFactor": "Rhinoceros literally means 'nose horn' in Greek — rhin/o (nose) + keras (horn). So every time you say rhinitis, you're using the same root as rhinoceros. Hay fever and a rhino share their naming root!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rhinitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "respiratory"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'rhinitis' — what does each part mean?",
+        "correctAnswer": "rhin/o (nose) + -itis (inflammation)",
+        "distractors": [
+          "sinus/o (sinus) + -itis (inflammation)",
+          "rhin/o (nose) + -osis (condition)",
+          "pharyng/o (pharynx) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "rhin/o (nose) + -itis (inflammation) = ___",
+        "correctAnswer": "Rhinitis",
+        "distractors": ["Sinusitis", "Pharyngitis", "Epistaxis"]
+      }
+    ],
+    "visualDescription": "The word RHINITIS split into glowing segments: RHIN + ITIS, with 'nose' and 'inflammation' labeled below, alongside a fun note 'rhin/o also = rhinoceros (nose horn)'"
+  },
+  {
+    "id": "medterm_cond_apnea",
+    "correctAnswer": "Apnea",
+    "acceptableAlternatives": ["Apnoea", "Sleep apnea"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Dyspnea",
+      "Tachypnea",
+      "Bradypnea",
+      "Hyperpnea",
+      "Orthopnea",
+      "Hypopnea",
+      "Cheyne-Stokes Respiration",
+      "Hyperventilation"
+    ],
+    "quizQuestion": "What condition is named from a- (without) + -pnea (breathing), meaning temporary cessation of breathing?",
+    "explanation": "Apnea breaks down as: a- (without, absence of — the Greek 'alpha privative') + -pnea (breathing, from Greek 'pnein' meaning to breathe). It refers to a temporary pause in breathing. Sleep apnea is the most common form, where breathing repeatedly stops during sleep. The -pnea root appears in dyspnea (dys- + pnea = difficult breathing) and tachypnea (tachy- + pnea = fast breathing).",
+    "statement": "Apnea means absence of breathing/temporary breathing cessation, from a- (without) + -pnea (breathing).",
+    "wowFactor": "The Greek 'alpha privative' (a-/an-) is the same as the English 'un-' — it negates whatever follows. So a-pnea (no breathing), a-nemia (no blood cells), an-esthesia (no sensation). Ancient Greek gave English its most productive negating prefix!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apnea",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "respiratory"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'apnea' — what does each part mean?",
+        "correctAnswer": "a- (without) + -pnea (breathing)",
+        "distractors": [
+          "dys- (difficult) + -pnea (breathing)",
+          "a- (without) + -emia (blood)",
+          "tachy- (fast) + -pnea (breathing)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "a- (without) + -pnea (breathing) = ___",
+        "correctAnswer": "Apnea",
+        "distractors": ["Dyspnea", "Tachypnea", "Hypopnea"]
+      }
+    ],
+    "visualDescription": "The word APNEA split into glowing segments: A + PNEA, with 'without' and 'breathing' labeled below, next to a flat breathing waveform indicating no breath"
+  },
+  {
+    "id": "medterm_cond_dyspnea",
+    "correctAnswer": "Dyspnea",
+    "acceptableAlternatives": ["Dyspnoea", "Shortness of breath"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Apnea",
+      "Tachypnea",
+      "Bradypnea",
+      "Orthopnea",
+      "Hyperpnea",
+      "Hyperventilation",
+      "Asthma",
+      "Pneumonia"
+    ],
+    "quizQuestion": "What condition is named from dys- (difficult/painful) + -pnea (breathing), meaning labored or difficult breathing?",
+    "explanation": "Dyspnea breaks down as: dys- (difficult, painful, abnormal — from Greek 'dys' meaning bad or hard) + -pnea (breathing). It describes the subjective sensation of difficult or labored breathing, often called 'shortness of breath'. It is a symptom of many conditions including asthma, heart failure, and pneumonia. The prefix dys- appears widely: dysphagia (difficulty swallowing), dyslexia (difficulty reading), dysphonia (difficulty speaking).",
+    "statement": "Dyspnea means difficult or labored breathing, from dys- (difficult) + -pnea (breathing).",
+    "wowFactor": "Dys- is the Greek opposite of eu- (good, easy). Dyspnea (bad breathing) contrasts with eupnea (good, normal breathing). The eu- prefix appears in euphoria (good feeling), eulogy (good words), and euthanasia (easy death).",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dyspnea",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "respiratory"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'dyspnea' — what does each part mean?",
+        "correctAnswer": "dys- (difficult) + -pnea (breathing)",
+        "distractors": [
+          "a- (without) + -pnea (breathing)",
+          "tachy- (fast) + -pnea (breathing)",
+          "dys- (difficult) + -phagia (swallowing)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "dys- (difficult/painful) + -pnea (breathing) = ___",
+        "correctAnswer": "Dyspnea",
+        "distractors": ["Apnea", "Tachypnea", "Orthopnea"]
+      }
+    ],
+    "visualDescription": "The word DYSPNEA split into glowing segments: DYS + PNEA, with 'difficult' and 'breathing' labeled below"
+  },
+  {
+    "id": "medterm_cond_tachypnea",
+    "correctAnswer": "Tachypnea",
+    "acceptableAlternatives": ["Tachypnoea"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Bradypnea",
+      "Dyspnea",
+      "Apnea",
+      "Hyperpnea",
+      "Tachycardia",
+      "Hyperventilation",
+      "Orthopnea",
+      "Hypopnea"
+    ],
+    "quizQuestion": "What condition is named from tachy- (fast) + -pnea (breathing), meaning abnormally rapid breathing rate?",
+    "explanation": "Tachypnea breaks down as: tachy- (fast, from Greek 'tachys') + -pnea (breathing). A normal adult breathing rate is 12–20 breaths per minute; tachypnea is defined as more than 20 breaths per minute in adults. It is often a sign of underlying disease (pneumonia, anxiety, fever). Compare with tachycardia (tachy- + cardi/o = fast heart) — the same prefix describes excessive speed in different organ systems.",
+    "statement": "Tachypnea means abnormally rapid breathing, from tachy- (fast) + -pnea (breathing).",
+    "wowFactor": "Tachy- describes speed in multiple body systems: tachycardia (fast heart), tachypnea (fast breathing), and even tachyarrhythmia (fast irregular heart rhythm). Once you know tachy- = fast, you can decode an entire family of medical urgencies!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tachypnea",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "respiratory"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'tachypnea' — what does each part mean?",
+        "correctAnswer": "tachy- (fast) + -pnea (breathing)",
+        "distractors": [
+          "brady- (slow) + -pnea (breathing)",
+          "tachy- (fast) + cardi/o (heart)",
+          "dys- (difficult) + -pnea (breathing)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "tachy- (fast) + -pnea (breathing) = ___",
+        "correctAnswer": "Tachypnea",
+        "distractors": ["Bradypnea", "Dyspnea", "Apnea"]
+      }
+    ],
+    "visualDescription": "The word TACHYPNEA split into glowing segments: TACHY + PNEA, with 'fast' and 'breathing' labeled below, next to a rapid breathing waveform"
+  },
+  {
+    "id": "medterm_cond_pleuritis",
+    "correctAnswer": "Pleuritis",
+    "acceptableAlternatives": ["Pleurisy"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Pneumothorax",
+      "Pneumonia",
+      "Pericarditis",
+      "Peritonitis",
+      "Bronchitis",
+      "Empyema",
+      "Mesothelioma",
+      "Pleurodesis"
+    ],
+    "quizQuestion": "What condition is named from pleur/o (pleura/lung lining) + -itis (inflammation), meaning inflammation of the membrane surrounding the lungs?",
+    "explanation": "Pleuritis (also called pleurisy) breaks down as: pleur/o (pleura, from Greek 'pleura' meaning side or rib) + -itis (inflammation). The pleura is a two-layered membrane that wraps each lung and lines the chest wall. Inflammation causes sharp chest pain that worsens with breathing. Causes include viral infections, pneumonia, pulmonary embolism, and autoimmune diseases like lupus.",
+    "statement": "Pleuritis means inflammation of the pleura (membrane surrounding the lungs), from pleur/o (pleura) + -itis (inflammation).",
+    "wowFactor": "The pleura operates on the same principle as a water-lubricated bearing — a thin film of pleural fluid (just a few milliliters) allows the two layers to slide silently against each other with every breath. Pleuritis destroys this lubrication, causing the scraping sound doctors call a 'pleural rub'.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pleuritis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "respiratory"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'pleuritis' — what does each part mean?",
+        "correctAnswer": "pleur/o (pleura/lung lining) + -itis (inflammation)",
+        "distractors": [
+          "pneumon/o (lung) + -itis (inflammation)",
+          "pleur/o (pleura) + -osis (condition)",
+          "pericard/o (pericardium) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "pleur/o (pleura/lung lining) + -itis (inflammation) = ___",
+        "correctAnswer": "Pleuritis",
+        "distractors": ["Pericarditis", "Pneumonia", "Peritonitis"]
+      }
+    ],
+    "visualDescription": "The word PLEURITIS split into glowing segments: PLEUR + ITIS, with 'pleura/lung lining' and 'inflammation' labeled below, next to a lung diagram showing inflamed pleural membranes"
+  },
+  {
+    "id": "medterm_cond_sinusitis",
+    "correctAnswer": "Sinusitis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Rhinitis",
+      "Laryngitis",
+      "Otitis",
+      "Conjunctivitis",
+      "Pharyngitis",
+      "Tonsillitis",
+      "Mastoiditis",
+      "Meningitis"
+    ],
+    "quizQuestion": "What condition is named from sinus/o (sinus) + -itis (inflammation), meaning inflammation of the paranasal sinuses?",
+    "explanation": "Sinusitis breaks down as: sinus/o (sinus, from Latin 'sinus' meaning cavity or hollow) + -itis (inflammation). The paranasal sinuses are air-filled cavities in the skull bones around the nose. Sinusitis causes facial pain, congestion, and headache. Acute sinusitis lasts less than 4 weeks; chronic sinusitis lasts 12+ weeks. The Latin 'sinus' also gives us 'sinuous' (winding, curved) — sinuses are hollow curves in the skull.",
+    "statement": "Sinusitis means inflammation of the sinuses, from sinus/o (sinus) + -itis (inflammation).",
+    "wowFactor": "Humans have four pairs of sinuses — frontal, ethmoid, sphenoid, and maxillary — but scientists still debate why we have them. Theories include voice resonance, skull lightening, and mucus production. We don't fully understand our own anatomy!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sinusitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "respiratory"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'sinusitis' — what does each part mean?",
+        "correctAnswer": "sinus/o (sinus/cavity) + -itis (inflammation)",
+        "distractors": [
+          "rhin/o (nose) + -itis (inflammation)",
+          "sinus/o (sinus) + -osis (condition)",
+          "mastoid/o (mastoid) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "sinus/o (sinus) + -itis (inflammation) = ___",
+        "correctAnswer": "Sinusitis",
+        "distractors": ["Rhinitis", "Otitis", "Mastoiditis"]
+      }
+    ],
+    "visualDescription": "The word SINUSITIS split into glowing segments: SINUS + ITIS, with 'sinus/cavity' and 'inflammation' labeled below, next to a skull showing highlighted sinus cavities"
+  },
+  {
+    "id": "medterm_cond_hepatitis",
+    "correctAnswer": "Hepatitis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Cirrhosis",
+      "Pancreatitis",
+      "Cholecystitis",
+      "Gastritis",
+      "Appendicitis",
+      "Colitis",
+      "Steatohepatitis",
+      "Cholangitis"
+    ],
+    "quizQuestion": "What condition is named from hepat/o (liver) + -itis (inflammation), meaning inflammation of the liver?",
+    "explanation": "Hepatitis breaks down as: hepat/o (liver, from Greek 'hepar/hepatos' meaning liver) + -itis (inflammation). It refers to inflammation of the liver, most commonly caused by viral infection (Hepatitis A, B, C, D, E) but also by alcohol, medications, and autoimmune disease. The root hepat/o also appears in hepatomegaly (enlarged liver), hepatocellular (liver cell), and hepatectomy (surgical removal of liver). The liver is the only internal organ that can fully regenerate.",
+    "statement": "Hepatitis means inflammation of the liver, from hepat/o (liver) + -itis (inflammation).",
+    "wowFactor": "The liver is named from the Old English 'lifer' (related to 'live') — ancient people believed the liver was the seat of life and emotion, not the heart! The Greek 'hepar' root confirms this reverence: hepatitis literally targets the organ once thought to be the center of the human soul.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hepatitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "digestive"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'hepatitis' — what does each part mean?",
+        "correctAnswer": "hepat/o (liver) + -itis (inflammation)",
+        "distractors": [
+          "pancreat/o (pancreas) + -itis (inflammation)",
+          "hepat/o (liver) + -osis (condition)",
+          "gastr/o (stomach) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "hepat/o (liver) + -itis (inflammation) = ___",
+        "correctAnswer": "Hepatitis",
+        "distractors": ["Pancreatitis", "Cirrhosis", "Cholecystitis"]
+      }
+    ],
+    "visualDescription": "The word HEPATITIS split into glowing segments: HEPAT + ITIS, with 'liver' and 'inflammation' labeled below, next to a liver diagram"
+  },
+  {
+    "id": "medterm_cond_gastritis",
+    "correctAnswer": "Gastritis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Gastroenteritis",
+      "Hepatitis",
+      "Colitis",
+      "Pancreatitis",
+      "Appendicitis",
+      "Esophagitis",
+      "Duodenitis",
+      "Cholecystitis"
+    ],
+    "quizQuestion": "What condition is named from gastr/o (stomach) + -itis (inflammation), meaning inflammation of the stomach lining?",
+    "explanation": "Gastritis breaks down as: gastr/o (stomach, from Greek 'gaster' meaning stomach or belly) + -itis (inflammation). It refers to inflammation of the stomach's mucosal lining. Causes include Helicobacter pylori bacterial infection, NSAIDs, alcohol, and stress. Symptoms include nausea, vomiting, and abdominal pain. The root gastr/o also appears in gastronomy (the art of good eating), gastroenterology (study of digestive system), and gastroparesis (stomach paralysis).",
+    "statement": "Gastritis means inflammation of the stomach lining, from gastr/o (stomach) + -itis (inflammation).",
+    "wowFactor": "Gastronomy — the art and culture of good eating — shares its root with gastritis. Greek 'gaster' (stomach) spawned both the medical term for stomach inflammation AND the French word for fine dining culture. What we eat can both delight and inflame the same organ!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gastritis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "digestive"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'gastritis' — what does each part mean?",
+        "correctAnswer": "gastr/o (stomach) + -itis (inflammation)",
+        "distractors": [
+          "enter/o (intestine) + -itis (inflammation)",
+          "gastr/o (stomach) + -osis (condition)",
+          "hepat/o (liver) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "gastr/o (stomach) + -itis (inflammation) = ___",
+        "correctAnswer": "Gastritis",
+        "distractors": ["Gastroenteritis", "Esophagitis", "Duodenitis"]
+      }
+    ],
+    "visualDescription": "The word GASTRITIS split into glowing segments: GASTR + ITIS, with 'stomach' and 'inflammation' labeled below"
+  },
+  {
+    "id": "medterm_cond_gastroenteritis",
+    "correctAnswer": "Gastroenteritis",
+    "acceptableAlternatives": ["Stomach flu"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Gastritis",
+      "Enteritis",
+      "Colitis",
+      "Hepatitis",
+      "Appendicitis",
+      "Pancreatitis",
+      "Cholecystitis",
+      "Ileitis"
+    ],
+    "quizQuestion": "What condition is named from gastr/o (stomach) + enter/o (intestine) + -itis (inflammation), meaning simultaneous inflammation of the stomach and intestines?",
+    "explanation": "Gastroenteritis breaks down as: gastr/o (stomach) + enter/o (intestine, from Greek 'enteron') + -itis (inflammation). It refers to inflammation of both the stomach and intestines, typically caused by viral or bacterial infection. Symptoms include diarrhea, vomiting, cramps, and fever. Popularly called 'stomach flu', though it is not caused by influenza. The term combines two anatomical roots: gastr/o and enter/o, making it a compound medical term.",
+    "statement": "Gastroenteritis means inflammation of the stomach and intestines, from gastr/o (stomach) + enter/o (intestine) + -itis (inflammation).",
+    "wowFactor": "Enter/o (intestine) appears throughout medicine: enterococcus (bacteria of the intestine), parenteral nutrition (par- = beside + enter/o = bypassing the intestine, given by IV), and enteroscopy (viewing the small intestine). Three roots in one word: stomach + intestine + inflammation!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gastroenteritis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "digestive"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'gastroenteritis' — what do all three parts mean?",
+        "correctAnswer": "gastr/o (stomach) + enter/o (intestine) + -itis (inflammation)",
+        "distractors": [
+          "gastr/o (stomach) + hepat/o (liver) + -itis (inflammation)",
+          "col/o (colon) + enter/o (intestine) + -itis (inflammation)",
+          "gastr/o (stomach) + enter/o (intestine) + -osis (condition)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "gastr/o (stomach) + enter/o (intestine) + -itis (inflammation) = ___",
+        "correctAnswer": "Gastroenteritis",
+        "distractors": ["Gastritis", "Enteritis", "Colitis"]
+      }
+    ],
+    "visualDescription": "The word GASTROENTERITIS split into three glowing segments: GASTRO + ENTER + ITIS, with 'stomach', 'intestine', 'inflammation' labeled below"
+  },
+  {
+    "id": "medterm_cond_cholecystitis",
+    "correctAnswer": "Cholecystitis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Cholelithiasis",
+      "Cholangitis",
+      "Hepatitis",
+      "Pancreatitis",
+      "Appendicitis",
+      "Peritonitis",
+      "Cholestasis",
+      "Gastritis"
+    ],
+    "quizQuestion": "What condition is named from cholecyst/o (gallbladder) + -itis (inflammation), meaning inflammation of the gallbladder?",
+    "explanation": "Cholecystitis breaks down as: chole- (bile, from Greek 'chole' meaning bile/gall) + cyst/o (bladder or sac, from Greek 'kystis') + -itis (inflammation). The gallbladder stores bile produced by the liver. Inflammation is most often caused by gallstones blocking the cystic duct. Acute cholecystitis causes severe right upper quadrant pain. The prefix chole- also appears in cholesterol (chole- + sterol = solid bile-related substance) — cholesterol was first isolated from gallstones.",
+    "statement": "Cholecystitis means inflammation of the gallbladder, from cholecyst/o (gallbladder = bile + sac) + -itis (inflammation).",
+    "wowFactor": "Cholesterol was first discovered in gallstones in 1769 — that's why its name literally means 'solid bile': chole- (bile) + stereos (solid) + -ol (alcohol/chemical). The substance we now know as a blood lipid was named after its discovery site in inflamed gallbladders!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cholecystitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "digestive"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'cholecystitis' — what does each part mean?",
+        "correctAnswer": "chole- (bile) + cyst/o (sac/bladder) + -itis (inflammation)",
+        "distractors": [
+          "chole- (bile) + cyst/o (sac) + -osis (condition)",
+          "hepat/o (liver) + cyst/o (sac) + -itis (inflammation)",
+          "choledoch/o (bile duct) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "cholecyst/o (gallbladder: bile + sac) + -itis (inflammation) = ___",
+        "correctAnswer": "Cholecystitis",
+        "distractors": ["Cholelithiasis", "Cholangitis", "Hepatitis"]
+      }
+    ],
+    "visualDescription": "The word CHOLECYSTITIS split into glowing segments: CHOLE + CYST + ITIS, with 'bile', 'sac/bladder', 'inflammation' labeled below, next to a gallbladder diagram"
+  },
+  {
+    "id": "medterm_cond_pancreatitis",
+    "correctAnswer": "Pancreatitis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Hepatitis",
+      "Cholecystitis",
+      "Gastritis",
+      "Appendicitis",
+      "Peritonitis",
+      "Duodenitis",
+      "Colitis",
+      "Splenitis"
+    ],
+    "quizQuestion": "What condition is named from pancreat/o (pancreas) + -itis (inflammation), meaning inflammation of the pancreas?",
+    "explanation": "Pancreatitis breaks down as: pancreat/o (pancreas, from Greek 'pankreas' meaning 'all flesh' — pan = all + kreas = flesh) + -itis (inflammation). The pancreas has both exocrine functions (digestive enzymes) and endocrine functions (insulin and glucagon). In pancreatitis, digestive enzymes activate prematurely inside the pancreas and begin digesting it. Causes include gallstones and alcohol. It ranges from mild to life-threatening.",
+    "statement": "Pancreatitis means inflammation of the pancreas, from pancreat/o (pancreas) + -itis (inflammation).",
+    "wowFactor": "The word 'pancreas' comes from Greek pan- (all) + kreas (flesh/meat) — meaning 'all flesh'. Ancient Greek anatomists gave it this name because it appeared to be pure flesh with no distinctive structure. The organ responsible for diabetes was named 'all flesh' because it looked so unremarkable!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pancreatitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "digestive"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'pancreatitis' — what does each part mean?",
+        "correctAnswer": "pancreat/o (pancreas) + -itis (inflammation)",
+        "distractors": [
+          "pancreat/o (pancreas) + -osis (condition)",
+          "hepat/o (liver) + -itis (inflammation)",
+          "pan- (all) + cardi/o (heart) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "pancreat/o (pancreas) + -itis (inflammation) = ___",
+        "correctAnswer": "Pancreatitis",
+        "distractors": ["Hepatitis", "Cholecystitis", "Splenitis"]
+      }
+    ],
+    "visualDescription": "The word PANCREATITIS split into glowing segments: PANCREAT + ITIS, with 'pancreas (pan=all + kreas=flesh)' and 'inflammation' labeled below"
+  },
+  {
+    "id": "medterm_cond_appendicitis",
+    "correctAnswer": "Appendicitis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Colitis",
+      "Pancreatitis",
+      "Peritonitis",
+      "Gastroenteritis",
+      "Ileitis",
+      "Cholecystitis",
+      "Diverticulitis",
+      "Mesenteric Ischemia"
+    ],
+    "quizQuestion": "What condition is named from appendic/o (appendix) + -itis (inflammation), meaning inflammation of the appendix?",
+    "explanation": "Appendicitis breaks down as: appendic/o (appendix, from Latin 'appendere' meaning to hang upon) + -itis (inflammation). The appendix is a small finger-shaped pouch hanging from the large intestine. Inflammation, typically from obstruction, causes severe right lower quadrant pain, fever, and nausea. It is the most common cause of emergency abdominal surgery worldwide. Untreated, it can rupture and cause peritonitis (inflammation of the abdominal lining).",
+    "statement": "Appendicitis means inflammation of the appendix, from appendic/o (appendix) + -itis (inflammation).",
+    "wowFactor": "The appendix was long considered a useless evolutionary remnant — but research now suggests it may serve as a reservoir for beneficial gut bacteria, ready to re-colonize the intestines after diarrheal illness. Your 'useless' appendix might be a bacterial backup drive!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Appendicitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "digestive"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'appendicitis' — what does each part mean?",
+        "correctAnswer": "appendic/o (appendix) + -itis (inflammation)",
+        "distractors": [
+          "col/o (colon) + -itis (inflammation)",
+          "appendic/o (appendix) + -ectomy (removal)",
+          "enter/o (intestine) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "appendic/o (appendix) + -itis (inflammation) = ___",
+        "correctAnswer": "Appendicitis",
+        "distractors": ["Colitis", "Peritonitis", "Diverticulitis"]
+      }
+    ],
+    "visualDescription": "The word APPENDICITIS split into glowing segments: APPENDIC + ITIS, with 'appendix' and 'inflammation' labeled below, next to a large intestine diagram with the appendix highlighted"
+  },
+  {
+    "id": "medterm_cond_colitis",
+    "correctAnswer": "Colitis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Gastritis",
+      "Enteritis",
+      "Appendicitis",
+      "Ileitis",
+      "Proctitis",
+      "Diverticulitis",
+      "Colonic Polyps",
+      "Irritable Bowel Syndrome"
+    ],
+    "quizQuestion": "What condition is named from col/o (colon) + -itis (inflammation), meaning inflammation of the large intestine?",
+    "explanation": "Colitis breaks down as: col/o (colon, from Greek 'kolon' meaning large intestine) + -itis (inflammation). It refers to inflammation of the colon (large intestine). Types include ulcerative colitis (UC, an inflammatory bowel disease), Crohn's colitis, infectious colitis, and ischemic colitis. Symptoms include abdominal pain, diarrhea, and rectal bleeding. The root col/o also appears in colonoscopy (visual examination of the colon) and colostomy (surgical opening of the colon).",
+    "statement": "Colitis means inflammation of the colon (large intestine), from col/o (colon) + -itis (inflammation).",
+    "wowFactor": "The colon is about 5 feet (1.5 meters) long — impressive for an organ that mostly just absorbs water. Ulcerative colitis affects only the colon, while Crohn's disease (another -itis condition) can affect any part of the digestive tract from mouth to anus.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Colitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "digestive"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'colitis' — what does each part mean?",
+        "correctAnswer": "col/o (colon/large intestine) + -itis (inflammation)",
+        "distractors": [
+          "gastr/o (stomach) + -itis (inflammation)",
+          "col/o (colon) + -osis (condition)",
+          "enter/o (small intestine) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "col/o (colon/large intestine) + -itis (inflammation) = ___",
+        "correctAnswer": "Colitis",
+        "distractors": ["Gastritis", "Ileitis", "Proctitis"]
+      }
+    ],
+    "visualDescription": "The word COLITIS split into glowing segments: COL + ITIS, with 'colon/large intestine' and 'inflammation' labeled below"
+  },
+  {
+    "id": "medterm_cond_cirrhosis",
+    "correctAnswer": "Cirrhosis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Hepatitis",
+      "Steatohepatitis",
+      "Fibrosis",
+      "Cholestasis",
+      "Hepatomegaly",
+      "Portal Hypertension",
+      "Ascites",
+      "Jaundice"
+    ],
+    "quizQuestion": "What chronic liver disease is named from Greek 'kirrhos' (tawny/yellow-orange) + -osis (condition), describing the discolored scarred liver tissue?",
+    "explanation": "Cirrhosis breaks down as: cirrh/o (from Greek 'kirrhos' meaning tawny, orange-yellow) + -osis (condition or process). The -osis suffix denotes a pathological process. It refers to chronic scarring (fibrosis) of the liver where healthy tissue is replaced by fibrous scar tissue, impairing liver function. The yellowish discoloration of the scarred liver gave it this name. Causes include chronic hepatitis, alcohol use, and non-alcoholic fatty liver disease. It can lead to liver failure and liver cancer.",
+    "statement": "Cirrhosis means chronic liver scarring/fibrosis, named from Greek 'kirrhos' (tawny/yellow-orange) + -osis (condition).",
+    "wowFactor": "Cirrhosis was named by French pathologist René Laënnec in 1819 — the same man who invented the stethoscope. He named it after the orange-yellow color of the scarred liver he observed at autopsy. The same doctor who let us listen to hearts also named the disease that destroys livers.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cirrhosis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "digestive"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does the Greek root 'kirrhos' (which gives us 'cirrhosis') mean?",
+        "correctAnswer": "Tawny or yellow-orange (the color of scarred liver tissue)",
+        "distractors": [
+          "Hardening or stiffening",
+          "Scarring or fibrosis",
+          "Yellow bile or jaundice"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "cirrh/o (tawny/yellow-orange) + -osis (condition) = ___",
+        "correctAnswer": "Cirrhosis",
+        "distractors": ["Hepatitis", "Fibrosis", "Cholestasis"]
+      }
+    ],
+    "visualDescription": "The word CIRRHOSIS split into glowing segments: CIRRH + OSIS, with 'tawny/yellow-orange' and 'condition' labeled below, next to a liver showing orange-yellow scarred tissue"
+  },
+  {
+    "id": "medterm_cond_dysphagia",
+    "correctAnswer": "Dysphagia",
+    "acceptableAlternatives": ["Difficulty swallowing"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Dyspepsia",
+      "Dyspnea",
+      "Aphasia",
+      "Odynophagia",
+      "Achalasia",
+      "Esophagitis",
+      "Aphagia",
+      "Dysphonia"
+    ],
+    "quizQuestion": "What condition is named from dys- (difficult) + -phagia (swallowing), meaning difficulty swallowing?",
+    "explanation": "Dysphagia breaks down as: dys- (difficult, painful, abnormal) + -phagia (swallowing, from Greek 'phagein' meaning to eat). It refers to difficulty swallowing, which may involve solids, liquids, or both. Causes include stroke (neurological), esophageal stricture, tumors, and GERD. The root -phagia also appears in aphagia (a- + phagia = inability to swallow), odynophagia (pain on swallowing), and polyphagia (excessive eating/hunger). Macrophage literally means 'big eater' — the immune cell that devours pathogens.",
+    "statement": "Dysphagia means difficulty swallowing, from dys- (difficult) + -phagia (swallowing/eating).",
+    "wowFactor": "Macrophage — the immune cell that engulfs and destroys bacteria — literally means 'big eater' in Greek: macro- (large) + -phage (eater, from phagein). So dysphagia (difficult swallowing) shares its root with the immune system's most voracious predator!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dysphagia",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "digestive"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'dysphagia' — what does each part mean?",
+        "correctAnswer": "dys- (difficult) + -phagia (swallowing)",
+        "distractors": [
+          "dys- (difficult) + -pnea (breathing)",
+          "a- (without) + -phagia (swallowing)",
+          "dys- (difficult) + -phasia (speech)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "dys- (difficult) + -phagia (swallowing) = ___",
+        "correctAnswer": "Dysphagia",
+        "distractors": ["Dyspepsia", "Aphagia", "Odynophagia"]
+      }
+    ],
+    "visualDescription": "The word DYSPHAGIA split into glowing segments: DYS + PHAGIA, with 'difficult' and 'swallowing' labeled below, next to a throat cross-section diagram"
+  },
+  {
+    "id": "medterm_cond_gingivitis",
+    "correctAnswer": "Gingivitis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "condition_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Periodontitis",
+      "Stomatitis",
+      "Glossitis",
+      "Cheilitis",
+      "Xerostomia",
+      "Candidiasis",
+      "Sialadenitis",
+      "Tonsillitis"
+    ],
+    "quizQuestion": "What condition is named from gingiv/o (gums) + -itis (inflammation), meaning inflammation of the gums?",
+    "explanation": "Gingivitis breaks down as: gingiv/o (gums, from Latin 'gingiva' meaning gum) + -itis (inflammation). It refers to inflammation of the gingiva (gums), the tissue surrounding the teeth. Caused by bacterial plaque buildup, it causes red, swollen, bleeding gums. Gingivitis is the mildest form of gum disease and is reversible with proper dental hygiene. If untreated, it can progress to periodontitis (peri- around + odont/o tooth + -itis), which can cause tooth loss.",
+    "statement": "Gingivitis means inflammation of the gums, from gingiv/o (gums) + -itis (inflammation).",
+    "wowFactor": "Gingivitis is one of the most common human diseases — studies suggest over 50% of adults have it at any given time. It's also entirely reversible: unlike most -itis conditions, gingivitis can be completely cured with just brushing, flossing, and a dental cleaning. Most diseases treated with this ease would be considered miracles!",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gingivitis",
+    "volatile": false,
+    "categoryL1": "human_body_health",
+    "categoryL2": "medical_science",
+    "tags": ["medical_terminology", "condition", "digestive", "oral"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Break down 'gingivitis' — what does each part mean?",
+        "correctAnswer": "gingiv/o (gums) + -itis (inflammation)",
+        "distractors": [
+          "gingiv/o (gums) + -osis (condition)",
+          "gloss/o (tongue) + -itis (inflammation)",
+          "stomat/o (mouth) + -itis (inflammation)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "gingiv/o (gums) + -itis (inflammation) = ___",
+        "correctAnswer": "Gingivitis",
+        "distractors": ["Periodontitis", "Stomatitis", "Glossitis"]
+      }
+    ],
+    "visualDescription": "The word GINGIVITIS split into glowing segments: GINGIV + ITIS, with 'gums' and 'inflammation' labeled below, next to a tooth and gum cross-section showing inflamed red gum tissue"
+  }
+]

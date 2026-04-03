@@ -23,7 +23,7 @@ Unless it's a simple couple-line fix, you MUST break work into **granular** task
 
 ## Commands
 ```
-npm run dev              # Dev server (port 5173)
+npm run dev              # Dev server (port 5173) — ALWAYS clear cache first: rm -rf node_modules/.vite
 npm run build            # Production build
 npm run typecheck        # TypeScript/Svelte type checking
 npm run check            # Full type check (app + node configs)
