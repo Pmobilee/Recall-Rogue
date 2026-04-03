@@ -1,0 +1,312 @@
+deck_id: ap_biology_unit2
+name: "AP Biology — Unit 2: Cell Structure and Function"
+domain: natural_sciences
+sub_domain: biology
+description: "Master AP Biology Unit 2 — Cell Structure and Function (10-13% of exam weight). Covers prokaryotic and eukaryotic cell organization, organelle structure and function, plasma membrane composition and the fluid mosaic model, all mechanisms of membrane transport (passive, active, bulk), water potential calculations, osmosis and tonicity, compartmentalization, the endomembrane system, and endosymbiotic theory. Aligned to the College Board AP Biology CED Topics 2.1-2.11 (Fall 2025)."
+minimum_facts: 115
+target_facts: 130
+
+# COMPLETENESS PHILOSOPHY:
+# This deck covers the COMPLETE College Board AP Biology Unit 2 (Topics 2.1-2.11).
+# A student who masters this deck should be able to answer every AP exam question
+# that touches Cell Structure and Function. Scope is curriculum-driven: every
+# Essential Knowledge (EK) statement and Learning Objective (LO) for Unit 2 is
+# represented. Fact counts per chain theme are weighted by topic density and
+# AP exam emphasis.
+
+# Sourcing & licensing
+data_sources:
+  - name: College Board AP Biology Course and Exam Description (CED) Effective Fall 2025
+    url: https://apcentral.collegeboard.org/media/pdf/ap-biology-course-and-exam-description-effective-fall-2025.pdf
+    license: public educational resource
+    usage: Authoritative unit/topic structure, learning objectives (LOs), essential knowledge (EK) statements, exam weight distribution (10-13% for Unit 2), illustrative examples for Topics 2.1-2.11
+  - name: OpenStax Biology 2e — Chapter 4 (Cell Structure) and Chapter 5 (Structure and Function of Plasma Membranes)
+    url: https://openstax.org/books/biology-2e/pages/4-introduction
+    license: CC-BY-4.0
+    usage: Organelle structure/function facts, membrane transport mechanisms, osmosis, water potential formula, endosymbiotic theory evidence, cell size rationale
+  - name: Khan Academy AP Biology — Unit 2
+    url: https://www.khanacademy.org/science/ap-biology/cell-structure-and-function
+    license: free educational resource (CC-BY-NC-SA)
+    usage: Cross-referencing key concepts, water potential worked examples, tonicity comparisons, Na+/K+ pump mechanics
+  - name: Wikipedia — Cell (biology), Fluid mosaic model, Endosymbiotic theory, Osmosis
+    url: https://en.wikipedia.org/wiki/Cell_(biology)
+    license: CC-BY-SA-4.0
+    usage: Definitions, historical context (Singer & Nicolson 1972, Lynn Margulis), organelle dimensions, prokaryotic/eukaryotic distinctions
+
+asset_sources: []
+
+# ============================================================
+# CHAIN THEMES — 2 thematic zones for Unit 2
+# Theme assignment: 2.1, 2.2, 2.9-2.11 → cell_organelles
+#                   2.3-2.8             → membrane_transport
+# ============================================================
+
+chain_themes:
+
+  - id: 0
+    name: "Cellular Architecture"
+    ced_coverage: "Unit 2 Topics 2.1, 2.2, 2.9-2.11: Cell Structure, Cell Size, Compartmentalization, Endomembrane System, Endosymbiosis"
+    target_facts: 70
+    description: >
+      The cell as a structural unit — from the defining features of prokaryotic and eukaryotic
+      cells to the membrane-bound organelles that allow cellular compartmentalization. Players
+      master every major organelle (nucleus, ribosomes, ER, Golgi, mitochondria, chloroplasts,
+      lysosomes, vacuoles, cytoskeleton, centrioles, cell walls), understand why surface area
+      to volume ratio limits cell size, trace the endomembrane system's protein trafficking
+      pathway, and encounter the endosymbiotic evidence linking mitochondria and chloroplasts
+      to their free-living prokaryotic ancestors.
+    key_concepts:
+      # --- Topic 2.1: Cell Structure and Function ---
+      # Cell Theory
+      - Cell theory: (1) all organisms are composed of cells, (2) the cell is the basic unit of life, (3) all cells arise from pre-existing cells
+      # Prokaryotic cells
+      - Prokaryotic cells lack a membrane-bound nucleus and membrane-bound organelles; include bacteria and archaea
+      - Prokaryotic cell components: cell wall, plasma membrane, ribosomes (70S), nucleoid region (circular DNA), flagella (some)
+      - Prokaryotic ribosomes are 70S; composed of 30S and 50S subunits
+      # Eukaryotic cells
+      - Eukaryotic cells have a membrane-bound nucleus and membrane-bound organelles; include plants, animals, fungi, and protists
+      # Nucleus
+      - Nucleus: enclosed by a double membrane (nuclear envelope) perforated by nuclear pores; contains chromatin (DNA + histone proteins)
+      - Nucleolus: region within nucleus; site of ribosomal RNA (rRNA) synthesis and ribosome subunit assembly
+      - Nuclear pores: channels in nuclear envelope that regulate movement of RNA and proteins between nucleus and cytoplasm
+      # Ribosomes
+      - Eukaryotic ribosomes are 80S; composed of 40S small subunit and 60S large subunit
+      - Ribosomes are the site of protein synthesis (translation); found free in cytoplasm or bound to rough ER
+      - Free ribosomes synthesize proteins destined for the cytoplasm; bound ribosomes synthesize secretory, membrane, or organelle-targeted proteins
+      # Rough ER
+      - Rough ER: studded with ribosomes; synthesizes and processes secretory proteins and membrane proteins; continuous with nuclear envelope
+      # Smooth ER
+      - Smooth ER: lacks ribosomes; functions in lipid synthesis, steroid hormone production, detoxification of drugs, and calcium ion storage
+      # Golgi apparatus
+      - Golgi apparatus: stacked flattened membrane sacs (cisternae); modifies, sorts, and packages proteins and lipids for secretion or transport
+      - Golgi cis face (receiving side) receives vesicles from ER; trans face (shipping side) buds off vesicles to plasma membrane or other destinations
+      # Lysosomes
+      - Lysosomes: membrane-bound sacs containing hydrolytic enzymes; maintain acidic interior (~pH 5) optimal for enzyme function
+      - Lysosome functions: intracellular digestion, autophagy (recycling damaged organelles), and execution of apoptosis (programmed cell death)
+      - Lysosomes are found primarily in animal cells; plant cells use the central vacuole for similar degradation functions
+      # Mitochondria
+      - Mitochondria: site of aerobic cellular respiration; have a double membrane — smooth outer membrane and folded inner membrane (cristae)
+      - Mitochondrial compartments: outer membrane, inner membrane (cristae), intermembrane space (between membranes), matrix (innermost fluid)
+      - Mitochondria contain their own circular DNA and 70S ribosomes — evidence supporting endosymbiotic origin
+      # Chloroplasts
+      - Chloroplasts: site of photosynthesis in plant and algal cells; have three membrane compartments — outer membrane, inner membrane, thylakoids
+      - Thylakoids: flattened membrane sacs inside chloroplast; stacked into grana; site of light-dependent reactions; contain chlorophyll
+      - Stroma: fluid-filled space inside inner chloroplast membrane surrounding thylakoids; site of Calvin cycle (light-independent reactions)
+      - Chloroplasts contain their own circular DNA and 70S ribosomes — evidence supporting endosymbiotic origin
+      # Central vacuole
+      - Central vacuole: large organelle in mature plant cells; maintains turgor pressure, stores water and solutes, stores waste products, and degrades macromolecules
+      - Turgor pressure: pressure exerted by water-filled central vacuole against cell wall; maintains rigidity of plant cells
+      # Cell wall
+      - Cell wall: rigid outer layer outside plasma membrane; provides structural support and protection
+      - Cell wall composition by organism: cellulose (plants), chitin (fungi), peptidoglycan (bacteria); archaea have varied wall compositions
+      # Cytoskeleton
+      - Cytoskeleton: network of protein fibers in eukaryotic cells; provides structural support, anchors organelles, enables cell movement
+      - Microfilaments: composed of actin; ~7 nm diameter; involved in muscle contraction, cell movement (amoeboid motion), and cell division (cleavage furrow)
+      - Intermediate filaments: ~10 nm diameter; diverse proteins (keratins, lamins); provide structural stability; anchor nucleus and organelles
+      - Microtubules: composed of tubulin dimers (alpha and beta); ~25 nm diameter; form spindle fibers during mitosis, cilia, flagella, and centrioles
+      # Centrioles
+      - Centrioles: cylindrical structures of microtubule triplets; found in animal cells; form centrosomes that organize spindle fibers during cell division
+      # --- Topic 2.2: Cell Size ---
+      - Surface area to volume ratio (SA:V) is the key constraint on cell size; as a cell grows, volume increases faster than surface area
+      - Cube law: for a cube of side s, SA = 6s²; V = s³; SA:V = 6/s; doubling side length halves the SA:V ratio
+      - Sphere formulas: SA = 4πr²; V = (4/3)πr³; SA:V = 3/r; halving radius doubles SA:V
+      - Smaller cells have higher SA:V — more efficient exchange of nutrients, gases, and waste products with the environment
+      - Typical bacterial cell size: 1-10 μm; typical eukaryotic cell size: 10-100 μm
+      - Exceptions to small-cell rule: neurons (axons up to ~1 m long); unfertilized egg cells (ostrich egg ~15 cm); cells are large because specialized structure reduces diffusion requirement
+      # --- Topic 2.9-2.11: Compartmentalization, Endomembrane System, Endosymbiosis ---
+      - Compartmentalization: membrane-bound organelles maintain distinct internal conditions (pH, ion concentration, enzyme identity) that allow incompatible reactions to occur simultaneously
+      - Compartmentalization increases metabolic efficiency by concentrating reactants and sequestering harmful processes (e.g., lysosomal enzymes)
+      - Endomembrane system: interconnected set of membranes including nuclear envelope, rough ER, smooth ER, Golgi apparatus, lysosomes, vesicles, and plasma membrane
+      - Protein secretory pathway: ribosomes on rough ER → protein enters ER lumen → vesicle buds off → vesicle fuses with Golgi cis face → Golgi modifies/sorts → vesicle buds from trans face → delivered to destination
+      - Vesicle trafficking: transport vesicles bud from one membrane compartment and fuse with another, carrying membrane lipids and proteins
+      - Endosymbiotic theory (proposed by Lynn Margulis, 1967): mitochondria and chloroplasts evolved from free-living prokaryotes that were engulfed by an ancestral eukaryotic cell and became permanent endosymbionts
+      - Evidence for endosymbiotic origin: (1) own circular DNA similar to bacterial chromosomes, (2) own 70S ribosomes identical in size to prokaryotic ribosomes, (3) double membrane (outer = ancestral host's engulfing membrane; inner = original prokaryote's membrane), (4) replicate by binary fission independently of cell cycle, (5) similar size to modern bacteria
+      - Mitochondria evolved from aerobic proteobacteria (gram-negative alphaproteobacteria); supported by phylogenetic analysis
+      - Chloroplasts evolved from photosynthetic cyanobacteria; supported by rRNA sequence similarity to modern cyanobacteria
+
+  - id: 1
+    name: "The Membrane Gateway"
+    ced_coverage: "Unit 2 Topics 2.3-2.8: Plasma Membrane Structure, Passive Transport, Active Transport, Facilitated Diffusion, Tonicity, Bulk Transport"
+    target_facts: 60
+    description: >
+      The plasma membrane as a dynamic, selective barrier. Players learn the fluid mosaic
+      model — phospholipid bilayer, embedded proteins, cholesterol, glycoproteins — and
+      then master every mechanism by which substances cross it: simple diffusion, osmosis,
+      facilitated diffusion via channels and carriers, primary active transport (Na+/K+ pump),
+      and bulk endocytosis/exocytosis. Water potential calculations (Ψ = Ψs + Ψp,
+      Ψs = -iCRT) and tonicity effects (hypotonic/hypertonic/isotonic) on plant and animal
+      cells round out this densely testable theme.
+    key_concepts:
+      # --- Topic 2.3: Plasma Membrane ---
+      # Fluid mosaic model
+      - Fluid mosaic model (proposed by Singer and Nicolson, 1972): the plasma membrane is a fluid phospholipid bilayer with a mosaic of proteins, cholesterol, glycoproteins, and glycolipids embedded throughout
+      - Phospholipid bilayer: two layers of phospholipids arranged with hydrophilic (phosphate) heads facing aqueous environments (extracellular fluid and cytoplasm) and hydrophobic (fatty acid) tails facing the membrane interior
+      - The hydrophobic interior of the bilayer is the primary barrier to polar molecules, ions, and large molecules
+      # Membrane proteins
+      - Integral (transmembrane) proteins: span the entire lipid bilayer; include channel proteins, carrier proteins, and receptor proteins; cannot be removed without disrupting the membrane
+      - Peripheral proteins: attached loosely to the membrane surface (cytoplasmic or extracellular); can be removed without disrupting the bilayer; include enzymes and cytoskeletal anchors
+      - Glycoproteins: integral or peripheral proteins with attached carbohydrate chains on the extracellular surface; function in cell-cell recognition, immune response, and signaling
+      - Glycolipids: phospholipids with attached carbohydrate chains on the extracellular surface; function in cell recognition and cell adhesion
+      # Cholesterol
+      - Cholesterol: hydrophobic molecule embedded between phospholipid tails; acts as a fluidity buffer — increases fluidity at low temperatures (prevents tight packing/crystallization) and decreases fluidity at high temperatures (reduces lateral movement)
+      - Cholesterol stabilizes membrane fluidity across a range of temperatures; makes up ~20-25% of animal cell membrane lipids
+      # Fluidity factors
+      - Membrane fluidity is affected by: (1) temperature — higher temperature increases fluidity; (2) cholesterol content; (3) degree of fatty acid saturation
+      - Unsaturated fatty acids (with C=C double bonds creating kinks) prevent tight packing → more fluid membrane
+      - Saturated fatty acids (straight chains) pack tightly → less fluid, more rigid membrane
+      # Selective permeability
+      - Selective permeability: the plasma membrane allows some substances to cross freely while restricting others; determined by size, polarity, and charge of the molecule
+      - Molecules that cross freely (no protein needed): small nonpolar molecules (O₂, CO₂, N₂), small uncharged polar molecules (H₂O crosses slowly without aquaporins, ethanol, urea)
+      - Molecules that require transport proteins: ions (Na⁺, K⁺, Ca²⁺, Cl⁻), glucose, amino acids, large polar molecules
+      # --- Topics 2.4-2.5: Membrane Transport ---
+      # Passive transport — general
+      - Passive transport: movement of substances DOWN their concentration gradient (from high to low concentration); requires NO ATP
+      # Simple diffusion
+      - Simple diffusion: small nonpolar molecules (O₂, CO₂, N₂) dissolve directly through the phospholipid bilayer; rate proportional to concentration gradient
+      # Osmosis
+      - Osmosis: diffusion of water molecules across a selectively permeable membrane; water moves from a region of lower solute concentration (higher water potential) to a region of higher solute concentration (lower water potential)
+      - Osmosis requires no transport protein in most membranes but is greatly accelerated by aquaporin channel proteins
+      # Facilitated diffusion
+      - Facilitated diffusion: passive transport aided by membrane transport proteins (channels or carriers); moves substances DOWN their concentration gradient; requires no ATP
+      - Channel proteins: form hydrophilic pores through the membrane; allow specific ions or water to pass through; may be gated (open/close in response to signals) or ungated (always open)
+      - Aquaporins: specialized channel proteins that facilitate rapid water transport across membranes; found in cells with high water flux (red blood cells, kidney tubules, plant root cells)
+      - Carrier proteins (permeases): bind a specific substrate, undergo conformational change to move substrate across membrane; slower than channels; selective
+      - Glucose transporters (GLUT proteins): carrier proteins that facilitate glucose uptake into cells by facilitated diffusion; concentration-gradient driven
+      - Ion channels: membrane proteins that form selective pores for Na⁺, K⁺, Ca²⁺, or Cl⁻; critical for nerve impulses and muscle contraction; may be ligand-gated or voltage-gated
+      # Active transport
+      - Active transport: movement of substances AGAINST their concentration gradient (from low to high); requires ATP (or electrochemical gradient from ATP-driven pumps)
+      - Na⁺/K⁺ ATPase pump: transports 3 Na⁺ out of and 2 K⁺ into the cell per ATP molecule hydrolyzed; maintains resting membrane potential; found in all animal cells
+      - Na⁺/K⁺ pump establishes the electrochemical gradient that drives many co-transport (secondary active transport) processes
+      - Electrochemical gradient: the combined driving force of concentration gradient and electrical charge difference across a membrane; ions move toward lower concentration AND toward oppositely charged side
+      # Water potential
+      - Water potential (Ψ): a measure of the tendency of water to move from one region to another; water moves from regions of higher Ψ to regions of lower Ψ
+      - Water potential equation: Ψ = Ψs + Ψp (total water potential = solute potential + pressure potential)
+      - Solute potential (Ψs): Ψs = -iCRT; always zero or negative; i = ionization constant (van't Hoff factor), C = molar concentration, R = 0.0083 L·MPa/mol·K (pressure constant), T = temperature in Kelvin
+      - Pressure potential (Ψp): the physical pressure on a solution; positive in turgid plant cells (wall pressure), zero in open containers, negative in xylem under tension
+      - Pure water at atmospheric pressure: Ψ = 0 MPa (reference point)
+      - Adding solute lowers Ψs (more negative), lowering total Ψ; water moves into regions with more solute
+      - In a plant cell immersed in solution: water enters if Ψsolution > Ψcell; water exits if Ψsolution < Ψcell; no net movement if Ψsolution = Ψcell
+      # --- Topics 2.6-2.7: Tonicity ---
+      - Tonicity: the ability of a surrounding solution to cause a cell to gain or lose water by osmosis; depends on the concentration of solutes that CANNOT cross the membrane
+      - Isotonic solution: solute concentration outside equals solute concentration inside cell; no net water movement; animal cells normal, plant cells flaccid (no turgor)
+      - Hypotonic solution: lower solute concentration outside than inside cell; net water movement INTO cell; animal cells swell and may lyse; plant cells become turgid (desirable for plants)
+      - Hypertonic solution: higher solute concentration outside than inside cell; net water movement OUT of cell; animal cells shrink (crenation); plant cells lose turgor and undergo plasmolysis (membrane pulls away from cell wall)
+      - Plasmolysis: detachment of the plasma membrane from the cell wall in plant cells placed in hypertonic solution; results in wilting
+      - Turgor pressure: the pressure exerted by a water-filled cell against its rigid cell wall; provides structural support to non-woody plants; requires hypotonic environment
+      - Osmoregulation: the process by which organisms control their internal solute/water balance; examples include contractile vacuoles in Paramecium (freshwater protist), kidneys in vertebrates
+      # --- Topic 2.8: Bulk Transport Mechanisms ---
+      - Endocytosis: process by which a cell engulfs material by infolding its plasma membrane to form a vesicle; energy-requiring (not passive)
+      - Phagocytosis ("cell eating"): type of endocytosis in which the cell engulfs large solid particles (e.g., white blood cells engulfing bacteria); forms a phagosome
+      - Pinocytosis ("cell drinking"): type of endocytosis in which the cell engulfs extracellular fluid and dissolved molecules; forms small vesicles continuously
+      - Receptor-mediated endocytosis: specific ligands bind to membrane receptor proteins → receptors cluster in coated pits → membrane invaginates to form a coated vesicle; highly selective; example: LDL cholesterol uptake
+      - Exocytosis: vesicles inside the cell fuse with the plasma membrane and release their contents to the extracellular space; used for secretion (hormones, digestive enzymes, neurotransmitters) and membrane addition
+      - Bulk transport: the collective term for endocytosis and exocytosis; moves large molecules or particles that cannot cross the membrane through simple or facilitated diffusion
+
+# ============================================================
+# ANSWER TYPE POOLS
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: term_definitions
+  # "What is [term]?" or "Which term describes [definition]?"
+  # Definitions of biological terms, models, laws, and concepts
+  - id: term_definitions
+    format: term
+    estimated_count: 30
+    note: >
+      Cell theory, fluid mosaic model, selective permeability, endosymbiotic theory,
+      water potential, turgor pressure, tonicity, osmosis, plasmolysis, osmoregulation,
+      compartmentalization, surface area to volume ratio. Answers are single nouns or
+      short phrases. Key confusions: osmosis vs. diffusion, plasmolysis vs. lysis,
+      facilitated vs. simple diffusion.
+
+  # POOL 2: process_names
+  # "What type of transport is [description]?" or "What process [does X]?"
+  # Names of transport mechanisms, cellular processes
+  - id: process_names
+    format: term
+    estimated_count: 18
+    note: >
+      Simple diffusion, osmosis, facilitated diffusion, active transport, phagocytosis,
+      pinocytosis, receptor-mediated endocytosis, exocytosis, binary fission,
+      plasmolysis, osmoregulation, autophagy, chemiosmosis. Answers are process names.
+      Key confusions: phagocytosis vs. pinocytosis, endocytosis vs. exocytosis,
+      passive vs. active transport.
+
+  # POOL 3: organelle_names
+  # "Which organelle [does X]?" or "What is the [Y] of the cell?"
+  # Names of organelles and cell structures
+  - id: organelle_names
+    format: term
+    estimated_count: 20
+    note: >
+      Nucleus, nucleolus, rough ER, smooth ER, Golgi apparatus, lysosome, mitochondria,
+      chloroplast, central vacuole, cytoskeleton, microfilament, intermediate filament,
+      microtubule, centriole, ribosome, nuclear envelope, thylakoid, stroma, cristae,
+      intermembrane space. Key confusions: rough vs. smooth ER function, stroma vs. matrix.
+
+  # POOL 4: location_terms
+  # "Where does [process] occur?" or "In which cell compartment is [molecule] found?"
+  - id: location_terms
+    format: term
+    estimated_count: 15
+    note: >
+      Cytoplasm, nucleus, nucleolus, rough ER lumen, smooth ER, Golgi cis face,
+      Golgi trans face, thylakoid membrane, thylakoid lumen, stroma, matrix,
+      intermembrane space, cytosol, plasma membrane, cell wall. Key confusions:
+      stroma (Calvin cycle) vs. thylakoid (light reactions); matrix (Krebs) vs.
+      intermembrane space (H+ gradient).
+
+  # POOL 5: function_terms
+  # "What is the function of [organelle/protein/structure]?"
+  # Descriptions of function — single sentence answers
+  - id: function_terms
+    format: short_answer
+    estimated_count: 25
+    note: >
+      What does the Golgi apparatus do? What is the role of aquaporins? What is the
+      function of cholesterol in the membrane? What does the Na+/K+ pump do? What is
+      the role of lysosomes? Answers describe a function. Key confusions: Golgi vs.
+      ER function; lysosome vs. vacuole; cholesterol at high vs. low temperature.
+
+  # POOL 6: molecule_names
+  # "What molecule [does X]?" or "Which molecule [has property Y]?"
+  - id: molecule_names
+    format: term
+    estimated_count: 15
+    note: >
+      Cholesterol, aquaporin, actin, tubulin, cellulose, chitin, peptidoglycan,
+      phospholipid, glycoprotein, glycolipid, ATP, rRNA, circular DNA, GLUT (glucose
+      transporter). Answers are molecule or protein names. Key confusions:
+      actin vs. tubulin function; cellulose vs. chitin vs. peptidoglycan cell wall.
+
+  # POOL 7: bracket_numbers
+  # Facts containing numeric values testable as fill-in-the-blank
+  # e.g., "{70}S ribosomes in prokaryotes", "{3} Na+ ions pumped out per ATP"
+  - id: bracket_numbers
+    format: numeric
+    estimated_count: 12
+    note: >
+      70S (prokaryotic ribosome), 80S (eukaryotic ribosome), 30S + 50S = 70S subunits,
+      40S + 60S = 80S subunits, 3 Na+ out per pump cycle, 2 K+ in per pump cycle,
+      ~pH 5 (lysosome interior), 7 nm (microfilament diameter), 10 nm (intermediate
+      filament), 25 nm (microtubule diameter), 1-10 μm (prokaryote size range),
+      10-100 μm (eukaryote size range). Distractors must be nearby plausible numbers.
+
+  # POOL 8: comparison_terms
+  # Facts framing a comparison between two related things
+  # "Prokaryotic vs. eukaryotic", "Plant vs. animal cell", "Hypotonic vs. hypertonic"
+  - id: comparison_terms
+    format: term
+    estimated_count: 15
+    note: >
+      Prokaryotic vs. eukaryotic cells (nucleus, organelles, ribosome size),
+      plant vs. animal cells (cell wall, central vacuole, centrioles, chloroplasts),
+      rough ER vs. smooth ER (ribosomes, function), cis face vs. trans face (Golgi),
+      hypotonic vs. hypertonic (water movement direction, cell effects),
+      channel proteins vs. carrier proteins (mechanism, speed),
+      passive vs. active transport (ATP requirement, gradient direction),
+      endocytosis vs. exocytosis (direction of vesicle movement),
+      phagocytosis vs. pinocytosis (what is engulfed),
+      saturated vs. unsaturated fatty acids (membrane fluidity effect).

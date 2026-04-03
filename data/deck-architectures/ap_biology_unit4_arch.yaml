@@ -1,0 +1,1014 @@
+deck_id: ap_biology_unit4
+name: "AP Biology — Unit 4: Cell Communication and Cell Cycle"
+domain: science
+sub_domain: biology
+parent_deck_id: ap_biology
+description: "Master every concept in AP Biology Unit 4 — cell signaling pathways, feedback mechanisms, the cell cycle, mitosis phases, and cell cycle regulation. Aligned to College Board CED Topics 4.1–4.6."
+target_facts: 140
+minimum_facts: 100
+exam_weight: "10-15%"
+
+# COMPLETENESS PHILOSOPHY:
+# Every learning objective and essential knowledge statement from CED Topics 4.1–4.6
+# is represented here. Students who master this unit deck should be fully prepared
+# for all Unit 4 content on the AP Biology exam.
+
+exam_alignment:
+  exam: "AP Biology"
+  authority: "College Board"
+  document: "AP Biology Course and Exam Description (CED)"
+  url: "https://apcentral.collegeboard.org/courses/ap-biology/course"
+  unit: 4
+  topics:
+    - "4.1 Cell Communication"
+    - "4.2 Introduction to Signal Transduction"
+    - "4.3 Signal Transduction Pathways"
+    - "4.4 Feedback"
+    - "4.5 Cell Cycle"
+    - "4.6 Regulation of Cell Cycle"
+  big_ideas:
+    - "IST: Information Storage and Transmission"
+    - "SYI: Systems Interactions"
+
+# Sourcing & licensing
+data_sources:
+  - name: College Board AP Biology CED
+    url: https://apcentral.collegeboard.org/courses/ap-biology/course
+    license: educational reference
+    usage: Official topics, learning objectives, essential knowledge statements for Unit 4
+  - name: OpenStax Biology 2e — Chapters 9, 11, 12
+    url: https://openstax.org/details/books/biology-2e
+    license: CC-BY-4.0
+    usage: Verified definitions, process descriptions, and molecular mechanism details
+  - name: Khan Academy AP Biology — Unit 4
+    url: https://www.khanacademy.org/science/ap-biology/cell-communication-and-cell-cycle
+    license: educational reference
+    usage: Secondary cross-reference for topic coverage and concept explanations
+  - name: Wikipedia — Cell signaling, Cell cycle, Cyclin
+    url: https://en.wikipedia.org/wiki/Cell_signaling
+    license: CC-BY-SA-4.0
+    usage: Cross-reference for definitions, molecular names, pathway components
+
+asset_sources: []
+
+# ============================================================
+# VERIFIED SOURCE DATA — Pre-researched facts by topic
+# Workers format this data into DeckFact JSON — they do NOT
+# generate facts from LLM knowledge.
+# ============================================================
+
+verified_facts:
+
+  # ----------------------------------------------------------
+  # Topic 4.1: Cell Communication (~15 facts)
+  # Source: OpenStax Biology 2e Ch. 9.1; College Board CED 4.1
+  # ----------------------------------------------------------
+  topic_4_1_cell_communication:
+    - fact: "Cells communicate via chemical signals (ligands) that bind to receptors on target cells"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 1
+      fun_score: 6
+
+    - fact: "A ligand is a signaling molecule that binds to a specific receptor"
+      pool: molecule_names
+      chain_theme: signal_transduction
+      difficulty: 1
+      fun_score: 5
+
+    - fact: "Specificity in cell signaling: only cells that express the appropriate receptor respond to a given signal"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 6
+
+    - fact: "Direct contact signaling — gap junctions (animal cells): protein channels connecting adjacent cells allowing direct passage of ions and small molecules"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 6
+
+    - fact: "Direct contact signaling — plasmodesmata (plant cells): cytoplasmic channels through cell walls allowing cell-to-cell communication"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 6
+
+    - fact: "Paracrine signaling: local signals released by one cell affect nearby target cells (examples: growth factors, neurotransmitters)"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Endocrine signaling: hormones secreted into the bloodstream to travel to distant target cells"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Autocrine signaling: a cell releases a signal that binds to receptors on itself"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 6
+
+    - fact: "Synaptic signaling: a specialized form of paracrine signaling — neurotransmitters released across the synaptic cleft"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Three stages of cell signaling: reception, transduction, response"
+      pool: process_names
+      chain_theme: signal_transduction
+      difficulty: 1
+      fun_score: 8
+
+    - fact: "Reception: the stage of cell signaling when a ligand binds to a receptor, causing a conformational change in the receptor"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 6
+
+    - fact: "Transduction: the stage of cell signaling that converts the receptor signal into a cellular response through a signaling cascade"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 6
+
+    - fact: "Response: the final stage of cell signaling — changes in gene expression, enzyme activity, cytoskeletal rearrangement, or cell division"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 6
+
+    - fact: "Comparison — paracrine vs. endocrine signaling: paracrine signals act locally on nearby cells; endocrine signals travel via the bloodstream to distant cells"
+      pool: comparison_terms
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Gap junctions vs. plasmodesmata: gap junctions are found in animal cells; plasmodesmata are found in plant cells — both allow direct cell-to-cell communication"
+      pool: comparison_terms
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 6
+
+  # ----------------------------------------------------------
+  # Topic 4.2: Introduction to Signal Transduction (~18 facts)
+  # Source: OpenStax Biology 2e Ch. 9.2; College Board CED 4.2
+  # ----------------------------------------------------------
+  topic_4_2_signal_transduction_intro:
+    - fact: "G protein-coupled receptors (GPCRs): have 7 transmembrane domains; activate heterotrimeric G proteins when ligand binds"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "G proteins: heterotrimeric proteins with α, β, and γ subunits; α subunit binds and hydrolyzes GTP; activates effector enzymes when GTP-bound"
+      pool: molecule_names
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Receptor tyrosine kinases (RTKs): dimerize when ligand binds; undergo autophosphorylation that activates intracellular signaling cascades"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Ligand-gated ion channel receptors: open or close in response to a specific signaling molecule (e.g., neurotransmitter receptors at synapses)"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Intracellular receptors: located inside the cell; bind hydrophobic signals (e.g., steroid hormones) that diffuse across the plasma membrane"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Intracellular receptors bound to their ligand can enter the nucleus and directly activate gene transcription"
+      pool: function_terms
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Second messengers: small intracellular signaling molecules that amplify and relay the signal from the receptor into the cell interior"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "cAMP (cyclic adenosine monophosphate): a second messenger produced by adenylyl cyclase from ATP; activates protein kinase A (PKA)"
+      pool: molecule_names
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Adenylyl cyclase: the enzyme that converts ATP to cAMP; activated by the α subunit of stimulatory G proteins"
+      pool: molecule_names
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Protein kinase A (PKA): enzyme activated by cAMP; phosphorylates target proteins to activate or inactivate them"
+      pool: molecule_names
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Calcium ions (Ca²⁺) as second messengers: released from the endoplasmic reticulum in response to IP₃; activate numerous enzymes and signaling proteins"
+      pool: molecule_names
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "IP₃ (inositol trisphosphate): a second messenger produced from PIP₂ by phospholipase C; triggers Ca²⁺ release from the endoplasmic reticulum"
+      pool: molecule_names
+      chain_theme: signal_transduction
+      difficulty: 4
+      fun_score: 7
+
+    - fact: "DAG (diacylglycerol): a second messenger produced alongside IP₃ by phospholipase C; remains in the membrane and activates protein kinase C (PKC)"
+      pool: molecule_names
+      chain_theme: signal_transduction
+      difficulty: 4
+      fun_score: 6
+
+    - fact: "Protein kinase C (PKC): an enzyme activated by DAG and Ca²⁺; phosphorylates target proteins in diverse signaling pathways"
+      pool: molecule_names
+      chain_theme: signal_transduction
+      difficulty: 4
+      fun_score: 6
+
+    - fact: "GPCR vs. RTK: GPCRs have 7 transmembrane domains and act through G proteins; RTKs are single-pass receptors that dimerize and autophosphorylate"
+      pool: comparison_terms
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Hydrophilic signals (e.g., epinephrine) cannot cross the plasma membrane and must bind surface receptors"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 6
+
+    - fact: "Hydrophobic signals (e.g., steroid hormones like cortisol, estrogen) diffuse across the plasma membrane to bind intracellular receptors"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Autophosphorylation: the process by which a receptor tyrosine kinase adds phosphate groups to its own tyrosine residues upon dimerization"
+      pool: process_names
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 7
+
+  # ----------------------------------------------------------
+  # Topic 4.3: Signal Transduction Pathways (~15 facts)
+  # Source: OpenStax Biology 2e Ch. 9.3; College Board CED 4.3
+  # ----------------------------------------------------------
+  topic_4_3_signal_transduction_pathways:
+    - fact: "Phosphorylation cascade: a series of sequential protein kinase activations where each activated kinase phosphorylates and activates the next"
+      pool: process_names
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Protein kinases: enzymes that transfer a phosphate group from ATP to a target protein, activating or inactivating it"
+      pool: function_terms
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Protein phosphatases: enzymes that remove phosphate groups from phosphorylated proteins, reversing kinase effects"
+      pool: function_terms
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "MAPK/ERK pathway: Ras (small GTPase) → Raf (kinase) → MEK (kinase) → ERK (kinase) → transcription factor phosphorylation → gene expression changes"
+      pool: process_names
+      chain_theme: signal_transduction
+      difficulty: 4
+      fun_score: 8
+
+    - fact: "Ras: a small GTPase proto-oncogene that relays signals from RTKs to the MAPK/ERK kinase cascade"
+      pool: molecule_names
+      chain_theme: signal_transduction
+      difficulty: 4
+      fun_score: 8
+
+    - fact: "Signal amplification: one receptor activates many G proteins; each G protein activates many enzyme molecules; each produces many second messengers — exponential signal multiplication"
+      pool: process_names
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 9
+
+    - fact: "Scaffold proteins: proteins that hold signaling pathway components together in a complex, increasing efficiency and specificity"
+      pool: function_terms
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Signal termination via GTPase activity: G protein α subunit hydrolyzes GTP → GDP, inactivating itself"
+      pool: process_names
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Signal termination via receptor internalization: ligand-bound receptors are endocytosed, removing them from the cell surface"
+      pool: process_names
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Signal termination via phosphatases: phosphoprotein phosphatases remove phosphate groups, inactivating phosphorylated signaling proteins"
+      pool: process_names
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 6
+
+    - fact: "Cellular responses to signaling: changes in gene expression (nucleus), enzyme activation/inactivation, cytoskeletal rearrangement, or initiation of cell division"
+      pool: function_terms
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Kinase vs. phosphatase: kinases add phosphate groups (phosphorylation); phosphatases remove phosphate groups (dephosphorylation) — opposing regulatory enzymes"
+      pool: comparison_terms
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "ERK (extracellular signal-regulated kinase): a MAP kinase that, once activated, enters the nucleus to phosphorylate transcription factors"
+      pool: molecule_names
+      chain_theme: signal_transduction
+      difficulty: 4
+      fun_score: 7
+
+    - fact: "Crosstalk between pathways: the same second messenger or kinase can be shared by multiple signaling pathways, coordinating diverse cellular responses"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 4
+      fun_score: 7
+
+    - fact: "Convergence in signaling: multiple different signals can activate the same intracellular pathway and produce the same cellular response"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 6
+
+  # ----------------------------------------------------------
+  # Topic 4.4: Feedback (~10 facts)
+  # Source: OpenStax Biology 2e Ch. 9.4; College Board CED 4.4
+  # ----------------------------------------------------------
+  topic_4_4_feedback:
+    - fact: "Negative feedback: the output of a process inhibits the process itself; the primary mechanism for maintaining homeostasis"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 1
+      fun_score: 8
+
+    - fact: "Positive feedback: the output of a process amplifies the process; drives a response to completion rather than maintaining equilibrium"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 1
+      fun_score: 8
+
+    - fact: "Homeostasis: maintenance of a stable internal environment despite changes in external conditions"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Set point: the target value that a homeostatic system maintains (e.g., 37°C body temperature, ~90 mg/dL blood glucose)"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 6
+
+    - fact: "Example of negative feedback — thermoregulation: rising body temperature triggers sweating and vasodilation, which cool the body back toward set point"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Example of negative feedback — blood glucose: rising blood glucose stimulates insulin release from beta cells; insulin drives glucose into cells, lowering blood glucose"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Example of positive feedback — blood clotting cascade: clotting factors activate more clotting factors, rapidly amplifying the coagulation response until the wound is sealed"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Example of positive feedback — oxytocin during childbirth: uterine contractions stimulate more oxytocin release, intensifying contractions until delivery"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Example of positive feedback — action potential depolarization: Na⁺ influx depolarizes membrane → more Na⁺ channels open → more depolarization (all-or-nothing)"
+      pool: term_definitions
+      chain_theme: signal_transduction
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Negative vs. positive feedback: negative feedback is more common and maintains homeostasis; positive feedback is less common and drives self-amplifying processes to completion"
+      pool: comparison_terms
+      chain_theme: signal_transduction
+      difficulty: 2
+      fun_score: 8
+
+  # ----------------------------------------------------------
+  # Topic 4.5: Cell Cycle (~22 facts)
+  # Source: OpenStax Biology 2e Ch. 10.1-10.3; College Board CED 4.5
+  # ----------------------------------------------------------
+  topic_4_5_cell_cycle:
+    - fact: "Cell cycle: the ordered sequence of events from the time a cell forms to when it divides into two daughter cells"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 1
+      fun_score: 6
+
+    - fact: "Interphase: the longest phase of the cell cycle; consists of G1, S, and G2 subphases; cell grows and prepares for division"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 1
+      fun_score: 6
+
+    - fact: "G1 phase (first gap): cell grows in size, synthesizes proteins and organelles; prepares to copy its DNA"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 1
+      fun_score: 6
+
+    - fact: "S phase (synthesis phase): DNA replication occurs; each chromosome is copied to produce two identical sister chromatids joined at the centromere"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "G2 phase (second gap): cell continues to grow; proteins needed for mitosis (e.g., tubulin for spindle fibers) are synthesized"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 1
+      fun_score: 6
+
+    - fact: "M phase (mitotic phase): includes mitosis (nuclear division) and cytokinesis (cytoplasmic division)"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 1
+      fun_score: 6
+
+    - fact: "G0 phase: a non-dividing, quiescent state; many differentiated cells (neurons, cardiac muscle cells) reside permanently in G0"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Order of mitotic phases: prophase → prometaphase → metaphase → anaphase → telophase → cytokinesis"
+      pool: process_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 1
+      fun_score: 8
+
+    - fact: "Prophase: chromatin condenses into visible chromosomes; centrioles migrate to opposite poles; mitotic spindle begins to form"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Prometaphase: nuclear envelope breaks down; kinetochore microtubules attach to centromeres of chromosomes"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Metaphase: chromosomes align at the metaphase plate (cell equator); all kinetochores are attached to spindle fibers from opposite poles"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Anaphase: cohesin proteins are cleaved; sister chromatids separate and are pulled to opposite poles by shortening kinetochore microtubules"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Telophase: nuclear envelopes reform around each set of chromosomes; chromosomes decondense; spindle apparatus disassembles"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 6
+
+    - fact: "Cytokinesis in animal cells: a cleavage furrow forms via a contractile ring of actin filaments and myosin motors, pinching the cell in two"
+      pool: process_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Cytokinesis in plant cells: a cell plate forms at the cell equator from Golgi-derived vesicles containing cell wall material; grows outward to divide the cell"
+      pool: process_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Animal vs. plant cytokinesis: animal cells use a cleavage furrow (actin/myosin); plant cells build a cell plate (Golgi vesicles) — plant cell walls prevent furrowing"
+      pool: comparison_terms
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Sister chromatids: two identical copies of a duplicated chromosome, joined at the centromere after S phase; separated during anaphase"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Kinetochore: protein structure at the centromere of each chromatid where spindle microtubules attach during mitosis"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Metaphase plate: an imaginary plane at the cell equator where chromosomes align during metaphase — not a physical structure"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 6
+
+    - fact: "Cohesin: protein complex holding sister chromatids together after replication; cleaved by separase enzyme at the onset of anaphase"
+      pool: molecule_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 4
+      fun_score: 8
+
+    - fact: "Binary fission: prokaryotic cell division — circular chromosome replicates, then the cell elongates and divides; does not involve mitosis or a spindle"
+      pool: process_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Mitosis vs. binary fission: mitosis involves a spindle apparatus, condensed chromosomes, and nuclear envelope breakdown; binary fission is simpler, used by prokaryotes"
+      pool: comparison_terms
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 7
+
+  # ----------------------------------------------------------
+  # Topic 4.6: Regulation of Cell Cycle (~20 facts)
+  # Source: OpenStax Biology 2e Ch. 10.4; College Board CED 4.6
+  # ----------------------------------------------------------
+  topic_4_6_cell_cycle_regulation:
+    - fact: "Cyclins: regulatory proteins whose concentration rises and falls in a predictable pattern during the cell cycle; activate CDKs"
+      pool: molecule_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "CDKs (cyclin-dependent kinases): protein kinases that are only active when bound to their specific cyclin partner; phosphorylate target proteins to advance the cell cycle"
+      pool: molecule_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Cyclin D + CDK4/6: active during G1; phosphorylates Rb, pushing the cell toward the G1 checkpoint and commitment to division"
+      pool: molecule_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 4
+      fun_score: 8
+
+    - fact: "Cyclin E + CDK2: drives the G1-to-S transition (restriction point passage); triggers initiation of DNA replication"
+      pool: molecule_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 4
+      fun_score: 7
+
+    - fact: "Cyclin A + CDK2: required during S phase to maintain and complete DNA replication"
+      pool: molecule_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 4
+      fun_score: 7
+
+    - fact: "Cyclin B + CDK1 (MPF, M-Phase Promoting Factor): drives entry into mitosis; phosphorylates proteins needed for chromosome condensation and spindle formation"
+      pool: molecule_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 4
+      fun_score: 9
+
+    - fact: "MPF (M-Phase Promoting Factor): the cyclin B + CDK1 complex; first identified in frog egg extracts; triggers M phase entry"
+      pool: molecule_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 4
+      fun_score: 8
+
+    - fact: "G1 checkpoint (restriction point): the major cell cycle decision point; checks cell size, nutrient availability, growth factor signals, and DNA integrity"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "G2 checkpoint: verifies that DNA replication is complete and no DNA damage is present before allowing entry into mitosis"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Spindle assembly checkpoint (M checkpoint): ensures all kinetochores are properly attached to spindle fibers before anaphase proceeds; prevents chromosome mis-segregation"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 3
+      fun_score: 9
+
+    - fact: "p53: tumor suppressor protein; the 'guardian of the genome'; activated by DNA damage; triggers cell cycle arrest for repair or apoptosis if damage is irreparable"
+      pool: molecule_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 3
+      fun_score: 10
+
+    - fact: "Rb (retinoblastoma protein): tumor suppressor; in its unphosphorylated form, binds and blocks E2F transcription factors, preventing G1-to-S transition"
+      pool: molecule_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 4
+      fun_score: 9
+
+    - fact: "E2F transcription factors: activate genes needed for S phase entry; held inactive by unphosphorylated Rb; released when Rb is phosphorylated by Cyclin D-CDK4/6"
+      pool: molecule_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 4
+      fun_score: 8
+
+    - fact: "Proto-oncogenes: normal cellular genes that promote cell growth and division (e.g., Ras, Myc); gain-of-function mutation converts them into oncogenes"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 3
+      fun_score: 9
+
+    - fact: "Oncogenes: mutated or overexpressed proto-oncogenes that drive uncontrolled cell proliferation; act as constitutively active accelerators"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 3
+      fun_score: 9
+
+    - fact: "Tumor suppressor genes: genes that inhibit cell division or promote apoptosis (e.g., p53, Rb, APC); loss of function contributes to cancer"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Proto-oncogene vs. tumor suppressor: proto-oncogenes accelerate the cell cycle (gain-of-function mutations drive cancer); tumor suppressors brake the cycle (loss-of-function mutations drive cancer)"
+      pool: comparison_terms
+      chain_theme: cell_cycle_mitosis
+      difficulty: 3
+      fun_score: 9
+
+    - fact: "Cancer: disease of uncontrolled cell division resulting from accumulation of mutations in both proto-oncogenes AND tumor suppressor genes"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Apoptosis: programmed cell death; executed by caspase protease cascade; important for normal development, immune function, and preventing cancer"
+      pool: process_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Growth factors: extracellular proteins that stimulate cell division by binding receptors (e.g., PDGF — platelet-derived growth factor; EGF — epidermal growth factor)"
+      pool: molecule_names
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Contact inhibition: normal cells stop dividing when they come into physical contact with neighboring cells; lost in cancer cells, enabling uncontrolled growth"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Metastasis: the spread of cancer cells from the primary tumor to distant sites via the bloodstream or lymphatic system"
+      pool: term_definitions
+      chain_theme: cell_cycle_mitosis
+      difficulty: 2
+      fun_score: 8
+
+# ============================================================
+# ANSWER TYPE POOLS — 5 pools for Unit 4
+# Pool factIds are populated by the assembly worker scanning facts.
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: Term Definitions — "What is [term]?"
+  - id: term_definitions
+    format: term
+    estimated_count: 60
+    note: >
+      Definitions and descriptions of signaling concepts, cell cycle phases,
+      checkpoint mechanisms, and cancer-related terms. Largest pool.
+      Common confusions: paracrine/endocrine, positive/negative feedback,
+      G1/G2 phase roles, oncogene/tumor suppressor.
+
+  # POOL 2: Process Names — "Which process does X?"
+  - id: process_names
+    format: name
+    estimated_count: 20
+    note: >
+      Named biological processes: phosphorylation cascade, MAPK/ERK pathway,
+      cytokinesis variants, binary fission, apoptosis, signal amplification,
+      signal termination mechanisms. Answers are process names.
+      Common confusions: animal vs. plant cytokinesis, binary fission vs. mitosis.
+
+  # POOL 3: Molecule Names — "What molecule does X?"
+  - id: molecule_names
+    format: name
+    estimated_count: 35
+    note: >
+      Named signaling molecules, second messengers, cyclins, CDKs, tumor suppressors:
+      cAMP, Ca²+, IP3, DAG, PKA, PKC, Ras, ERK, cyclin B, CDK1, MPF, p53, Rb.
+      Students confuse: cyclin/CDK pairs, GPCR/RTK mechanisms,
+      IP3/DAG functions, p53/Rb roles.
+    syntheticDistractors:
+      - "NADH"
+      - "ATP synthase"
+      - "RNA polymerase"
+      - "Helicase"
+      - "Telomerase"
+      - "GTPase-activating protein"
+
+  # POOL 4: Function Terms — "What is the function of X?"
+  - id: function_terms
+    format: term
+    estimated_count: 15
+    note: >
+      Function descriptions for signaling pathway components:
+      protein kinases (add phosphate), protein phosphatases (remove phosphate),
+      scaffold proteins (organize signaling complexes), intracellular receptors
+      (bind to DNA), signal amplification mechanism.
+    syntheticDistractors:
+      - "Degrades excess cyclin after mitosis"
+      - "Pumps protons across the inner mitochondrial membrane"
+      - "Catalyzes peptide bond formation during translation"
+      - "Unwinds the DNA double helix ahead of the replication fork"
+      - "Joins Okazaki fragments on the lagging strand"
+
+  # POOL 5: Comparison Terms — "How does X differ from Y?"
+  - id: comparison_terms
+    format: term
+    estimated_count: 15
+    note: >
+      Comparative facts: positive vs. negative feedback, paracrine vs. endocrine,
+      GPCR vs. RTK, animal vs. plant cytokinesis, proto-oncogene vs. tumor suppressor,
+      kinase vs. phosphatase, mitosis vs. binary fission.
+    syntheticDistractors:
+      - "Both are types of passive transport"
+      - "Both involve the electron transport chain"
+      - "Both require ATP hydrolysis"
+      - "Both occur only in prokaryotes"
+      - "Both are forms of active transport"
+
+# ============================================================
+# QUESTION TEMPLATES
+# ============================================================
+
+question_templates:
+  - id: define_term
+    questionFormat: "What is {term} in cell biology?"
+    answerPoolId: term_definitions
+    availableFromMastery: 0
+    difficulty: 1
+
+  - id: identify_process
+    questionFormat: "Which process {description}?"
+    answerPoolId: process_names
+    availableFromMastery: 0
+    difficulty: 2
+
+  - id: identify_molecule
+    questionFormat: "What molecule or protein {description}?"
+    answerPoolId: molecule_names
+    availableFromMastery: 1
+    difficulty: 2
+
+  - id: identify_function
+    questionFormat: "What is the function of {structure}?"
+    answerPoolId: function_terms
+    availableFromMastery: 2
+    difficulty: 3
+
+  - id: compare_concepts
+    questionFormat: "How does {concept_a} differ from {concept_b}?"
+    answerPoolId: comparison_terms
+    availableFromMastery: 3
+    difficulty: 4
+
+# ============================================================
+# CHAIN THEMES — 2 named themes for Unit 4
+# (Full deck requires ≥8; unit sub-deck uses themes from parent)
+# ============================================================
+
+chain_themes:
+  - id: signal_transduction
+    name: "Signal Transduction"
+    topics: "4.1, 4.2, 4.3, 4.4"
+    description: >
+      Covers all aspects of cell communication and signaling: types of signaling
+      (paracrine, endocrine, autocrine, synaptic), receptor classes (GPCR, RTK,
+      ion channels, intracellular), second messengers (cAMP, Ca²⁺, IP₃, DAG),
+      phosphorylation cascades (MAPK/ERK), signal amplification, termination,
+      and feedback mechanisms (positive vs. negative, homeostasis).
+
+  - id: cell_cycle_mitosis
+    name: "Cell Cycle and Mitosis"
+    topics: "4.5, 4.6"
+    description: >
+      Covers the complete cell cycle (G1, S, G2, M, G0), all phases of mitosis
+      (prophase through telophase), cytokinesis in animal and plant cells,
+      binary fission, and regulation (cyclins, CDKs, checkpoints, p53, Rb,
+      proto-oncogenes, tumor suppressors, apoptosis, cancer, contact inhibition).
+
+# ============================================================
+# COMMON CONFUSIONS — drives distractor pairing during generation
+# ============================================================
+
+common_confusions:
+  # Signaling types
+  - ["paracrine signaling", "endocrine signaling", "autocrine signaling", "synaptic signaling"]
+  - ["reception", "transduction", "response"]
+
+  # Receptor classes
+  - ["G protein-coupled receptor", "receptor tyrosine kinase", "ligand-gated ion channel", "intracellular receptor"]
+  - ["hydrophilic signals", "hydrophobic signals"]
+
+  # Second messengers and kinases
+  - ["cAMP", "Ca²⁺", "IP₃", "DAG"]
+  - ["protein kinase A (PKA)", "protein kinase C (PKC)"]
+  - ["adenylyl cyclase", "phospholipase C"]
+  - ["protein kinase", "protein phosphatase"]
+
+  # Feedback
+  - ["positive feedback", "negative feedback"]
+  - ["homeostasis", "set point"]
+
+  # Cell cycle phases
+  - ["G1 phase", "S phase", "G2 phase", "M phase", "G0 phase"]
+  - ["prophase", "prometaphase", "metaphase", "anaphase", "telophase"]
+
+  # Regulation
+  - ["cyclin", "CDK"]
+  - ["cyclin D", "cyclin E", "cyclin A", "cyclin B"]
+  - ["G1 checkpoint", "G2 checkpoint", "spindle assembly checkpoint"]
+  - ["proto-oncogene", "oncogene", "tumor suppressor gene"]
+  - ["p53", "Rb (retinoblastoma protein)"]
+  - ["apoptosis", "cell cycle arrest", "senescence"]
+
+  # Cytokinesis
+  - ["cleavage furrow", "cell plate"]
+
+# ============================================================
+# SYNONYM GROUPS
+# ============================================================
+
+synonym_groups:
+  - id: mpf_names
+    terms: ["MPF", "M-Phase Promoting Factor", "Cyclin B-CDK1 complex"]
+    reason: "MPF, M-Phase Promoting Factor, and Cyclin B + CDK1 all refer to the same kinase complex"
+
+  - id: restriction_point
+    terms: ["G1 checkpoint", "restriction point", "start checkpoint"]
+    reason: "The G1 checkpoint is also called the restriction point (in mammals) or Start (in yeast)"
+
+  - id: spindle_checkpoint
+    terms: ["spindle assembly checkpoint", "M checkpoint", "spindle checkpoint"]
+    reason: "These all refer to the checkpoint ensuring proper kinetochore-microtubule attachment"
+
+  - id: cyclic_amp
+    terms: ["cAMP", "cyclic AMP", "cyclic adenosine monophosphate", "3',5'-cyclic AMP"]
+    reason: "All names for the same second messenger molecule"
+
+  - id: programmed_cell_death
+    terms: ["apoptosis", "programmed cell death"]
+    reason: "Apoptosis is synonymous with programmed cell death in AP Biology context"
+
+# ============================================================
+# DIFFICULTY TIERS
+# ============================================================
+
+difficulty_tiers:
+  easy:
+    description: "Core vocabulary every AP Bio student must know first — naming the three signaling stages, naming cell cycle phases in order, basic definitions of positive/negative feedback"
+    examples:
+      - "Three stages of cell signaling: reception, transduction, response"
+      - "G1 → S → G2 → M phase order"
+      - "Negative feedback maintains homeostasis"
+      - "S phase is when DNA replication occurs"
+      - "Metaphase: chromosomes align at the metaphase plate"
+
+  medium:
+    description: "Mechanism-level understanding required — how second messengers work, what each cyclin/CDK pair does, what checkpoints verify"
+    examples:
+      - "cAMP produced by adenylyl cyclase, activates PKA"
+      - "G1 checkpoint checks cell size, nutrients, growth factors, DNA damage"
+      - "Rb blocks E2F until phosphorylated by Cyclin D-CDK4/6"
+      - "RTKs dimerize and autophosphorylate upon ligand binding"
+      - "Animal cytokinesis: cleavage furrow; plant: cell plate"
+
+  hard:
+    description: "Multi-step pathway logic, molecular details, and integrated cancer biology"
+    examples:
+      - "MAPK/ERK pathway: Ras → Raf → MEK → ERK → transcription factor"
+      - "IP₃ triggers Ca²⁺ release from ER; DAG activates PKC in membrane"
+      - "p53 activates DNA repair OR apoptosis depending on damage severity"
+      - "Cyclin B + CDK1 = MPF; drives M phase entry via phosphorylation targets"
+      - "Contact inhibition lost in cancer cells enabling uncontrolled growth"
+
+# ============================================================
+# EXAM TAGS — for AP Biology exam filtering
+# ============================================================
+
+exam_tags:
+  primary: "AP_Biology"
+  unit_tag: "AP_Bio_Unit4"
+  topic_tags:
+    - "AP_Bio_4_1"
+    - "AP_Bio_4_2"
+    - "AP_Bio_4_3"
+    - "AP_Bio_4_4"
+    - "AP_Bio_4_5"
+    - "AP_Bio_4_6"
+  big_idea_tags:
+    - "AP_Bio_IST"
+    - "AP_Bio_SYI"
+
+# ============================================================
+# GENERATION INSTRUCTIONS FOR WORKERS
+# ============================================================
+
+generation_instructions: >
+  WORKERS: You are a FORMATTER, not a researcher. Every fact above is pre-verified
+  source data. Your job is to convert each verified_facts entry into a valid
+  DeckFact JSON object. You do NOT invent facts, modify meanings, or add claims
+  not present in the source data above.
+
+  REQUIRED FIELDS per DeckFact:
+    - id: "ap_bio_u4_NNN" (3-digit zero-padded, sequential within topic)
+    - correctAnswer: exact canonical answer (concise, ≤15 words where possible)
+    - acceptableAlternatives: [] or list of synonymous correct answers
+    - distractors: 8-12 LLM-generated plausible wrong answers (NEVER from database)
+    - quizQuestion: clear question targeting the fact
+    - explanation: 1-2 sentence post-answer explanation reinforcing the fact
+    - difficulty: 1-5 (use value from architecture)
+    - funScore: 1-10 (use value from architecture)
+    - chainThemeId: "signal_transduction" or "cell_cycle_mitosis" (as assigned above)
+    - answerTypePoolId: pool id from above (term_definitions / process_names /
+                        molecule_names / function_terms / comparison_terms)
+    - examTags: ["AP_Biology", "AP_Bio_Unit4", "AP_Bio_4_{topic_number}"]
+
+  DISTRACTOR RULES:
+    - ALL distractors must be LLM-generated by reading the specific question
+    - Distractors must be plausible wrong answers (same format, semantically related)
+    - NEVER pull distractors from correctAnswer fields of other facts
+    - Use common_confusions pairs to guide distractor selection
+    - Verify no distractor is accidentally correct
+
+  POOL ASSIGNMENT CHECK:
+    - Every fact's answerTypePoolId MUST match a pool id listed in answer_type_pools
+    - Pool factIds in the final deck JSON are populated by scanning facts — do NOT
+      hand-craft factIds lists during generation
+
+  TARGET: 140 facts total (100 minimum).
+  Current verified source data: ~100 fact seeds across 6 topics.
+  Workers should expand each seed into 1-2 quiz questions as appropriate
+  (e.g., a seed about GPCRs can yield one "what is a GPCR" and one "what are the
+  7 transmembrane domains of" question if both add distinct learning value).
+
+# ============================================================
+# NOTES
+# ============================================================
+
+notes: >
+  Unit 4 covers 10-15% of the AP Biology exam (College Board CED).
+  This is one of the more conceptually dense units — students must understand
+  molecular mechanisms (receptor types, second messengers, kinase cascades)
+  AND apply them to cell biology (cell cycle control, cancer).
+
+  TWO CHAIN THEMES: signal_transduction (Topics 4.1-4.4) and cell_cycle_mitosis
+  (Topics 4.5-4.6). These align with the parent deck's chain theme definitions
+  in ap_biology_arch.yaml. The unit deck will draw from both theme pools.
+
+  CANCER BIOLOGY NOTE: Facts about proto-oncogenes, tumor suppressors, p53, Rb,
+  contact inhibition, and metastasis are high-priority for exam prep and have
+  high funScore values (8-10). These facts appear frequently on AP exam FRQs.
+
+  PARENT DECK: ap_biology (data/deck-architectures/ap_biology_arch.yaml).
+  This file provides verified source data for generating ap_biology_unit4.json
+  (or for populating the unit4_cell_communication sub-deck of ap_biology.json).

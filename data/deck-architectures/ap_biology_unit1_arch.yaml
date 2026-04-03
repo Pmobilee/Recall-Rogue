@@ -1,0 +1,911 @@
+deck_id: ap_biology_unit1
+parent_deck_id: ap_biology
+name: "AP Biology — Unit 1: Chemistry of Life"
+domain: natural_sciences
+sub_domain: biology
+description: >
+  Per-unit architecture for AP Biology Unit 1: Chemistry of Life (8-11% of exam, Topics 1.1-1.7).
+  This file contains VERIFIED SOURCE DATA. Generation workers FORMAT this data into DeckFact JSON —
+  they do NOT invent content. Every entity traces to an authoritative curriculum source.
+  Covers water chemistry, elements of life, biological macromolecules, lipids, nucleic acids,
+  and proteins including enzyme function.
+target_facts: 110
+minimum_facts: 90
+chain_theme_assignment:
+  topics_1_1_to_1_2: water_chemistry
+  topics_1_3_to_1_6: macromolecules
+  topic_1_7: enzymes
+
+# Sourcing & licensing
+data_sources:
+  - name: OpenStax Biology 2e — Chapter 2 (The Chemical Foundation of Life)
+    url: https://openstax.org/books/biology-2e/pages/2-introduction
+    license: CC-BY-4.0
+    usage: >
+      Verified definitions and values for water properties (specific heat, heat of vaporization,
+      density anomaly), CHNOPS elements, macromolecule classes, bond types, nucleotide structure,
+      protein structure levels, enzyme kinetics.
+  - name: OpenStax Biology 2e — Chapter 3 (Biological Macromolecules)
+    url: https://openstax.org/books/biology-2e/pages/3-introduction
+    license: CC-BY-4.0
+    usage: >
+      Verified data on carbohydrates, lipids (triglycerides, phospholipids, steroids, waxes),
+      nucleic acids (DNA vs RNA differences, base pairing, purine/pyrimidine classification),
+      protein structure (primary through quaternary), denaturation, enzyme mechanism and inhibition.
+  - name: College Board AP Biology CED — Effective Fall 2025
+    url: https://apcentral.collegeboard.org/media/pdf/ap-biology-course-and-exam-description-effective-fall-2025.pdf
+    license: public educational resource
+    usage: >
+      Topic numbering (1.1-1.7), learning objectives, essential knowledge statements,
+      exam weighting (8-11%), Big Idea alignment, required content scope.
+  - name: Khan Academy AP Biology — Unit 1
+    url: https://www.khanacademy.org/science/ap-biology/chemistry-of-life
+    license: CC-BY-NC-SA
+    usage: Concept cross-referencing, common student misconception identification.
+
+asset_sources: []
+
+# ============================================================
+# ANSWER TYPE POOLS
+# ============================================================
+answer_type_pools:
+
+  - id: term_definitions
+    label: "Term Definitions (Chemistry of Life vocabulary)"
+    format: definition
+    estimated_count: 45
+    note: >
+      Definitions for core terms: hydrogen bond, cohesion, adhesion, surface tension,
+      capillary action, specific heat capacity, heat of vaporization, hydrophobic,
+      hydrophilic, pH, buffer, CHNOPS, isotope, monomer, polymer, dehydration synthesis,
+      hydrolysis, covalent bond, peptide bond, glycosidic bond, phosphodiester bond,
+      functional group, structural isomer, geometric isomer, enantiomer, triglyceride,
+      saturated fat, unsaturated fat, phospholipid, steroid, wax, nucleotide, purine,
+      pyrimidine, Chargaff's rules, antiparallel, primary structure, secondary structure,
+      tertiary structure, quaternary structure, denaturation, active site, cofactor,
+      coenzyme, competitive inhibitor, allosteric inhibitor, feedback inhibition.
+      Key confusions: cohesion vs. adhesion; saturated vs. unsaturated; purine vs. pyrimidine;
+      competitive vs. noncompetitive inhibition; coenzyme vs. cofactor.
+
+  - id: process_names
+    label: "Biological Process Names"
+    format: term
+    estimated_count: 12
+    note: >
+      Process names: dehydration synthesis (condensation), hydrolysis, denaturation,
+      evaporative cooling, capillary action, feedback inhibition, competitive inhibition,
+      allosteric inhibition, induced fit, lock-and-key model, hydrogen bonding, ester linkage.
+      Key confusions: dehydration synthesis vs. hydrolysis (opposite reactions);
+      lock-and-key vs. induced fit (rigid vs. flexible active site model).
+
+  - id: molecule_names
+    label: "Named Molecules and Macromolecules"
+    format: name
+    estimated_count: 20
+    note: >
+      Molecule names: ATP, DNA, RNA, cholesterol, cellulose, starch, glycogen, glucose,
+      fructose, galactose, glycerol, fatty acid, phospholipid, triglyceride, hemoglobin,
+      insulin, collagen, keratin, chitin, adenine, guanine, cytosine, thymine, uracil.
+      Key confusions: cellulose vs. starch (same monomer, different glycosidic linkages);
+      DNA vs. RNA (deoxyribose vs. ribose, thymine vs. uracil);
+      ATP vs. ADP (three phosphates vs. two).
+
+  - id: bracket_numbers
+    label: "Numerical Facts (fill-in bracket format)"
+    format: number
+    estimated_count: 18
+    syntheticDistractors:
+      - "3"
+      - "6"
+      - "8"
+      - "22"
+      - "100"
+    note: >
+      Numerical values: 4.184 J/(g·°C) [specific heat of water], 2260 J/g [heat of vaporization],
+      0-14 [pH scale range], 7 [neutral pH], 4 [carbon covalent bonds], 20 [amino acids],
+      9 [kcal/g for fats], 4 [kcal/g for carbs/proteins], 2 [H-bonds in A-T pairing],
+      3 [H-bonds in G-C pairing], 4 [protein structure levels], 4 [subunits of hemoglobin],
+      5 [carbon atoms in ribose/deoxyribose], 6 [CHNOPS elements], 3 [phosphate groups in ATP],
+      2 [fatty acids in phospholipid], 3 [fatty acids in triglyceride], 4 [fused rings in steroids].
+      Key confusions: specific heat 4.184 vs. heat of vaporization 2260 (J/g units differ);
+      20 amino acids vs. 4 DNA bases; 9 kcal/g fat vs. 4 kcal/g carb/protein.
+
+  - id: function_terms
+    label: "Functional Role Descriptions"
+    format: description
+    estimated_count: 25
+    note: >
+      Function facts: what enzymes do (lower activation energy), what cholesterol does
+      (regulate membrane fluidity), what ATP does (energy currency), what buffers do
+      (resist pH change), what cohesion enables (surface tension), what adhesion enables
+      (capillary action), what high specific heat does (moderate temperature), what
+      heat of vaporization enables (evaporative cooling), what ice floating does
+      (insulates aquatic life), what phospholipid bilayer does (selectively permeable membrane),
+      what primary structure determines (all higher structure levels), what R-groups determine
+      (protein function and folding), what denaturation destroys (shape/function not sequence).
+      Key confusions: enzyme lowers Ea but does not change ΔG; denaturation destroys
+      3°/4° structure first, primary structure last (covalent peptide bonds remain intact).
+
+# ============================================================
+# TOPIC-LEVEL ENTITIES — Pre-verified source data
+# Workers format these into DeckFact JSON. No invention.
+# ============================================================
+
+topic_1_1:
+  name: "Structure of Water and Hydrogen Bonding"
+  source: "OpenStax Biology 2e, Chapter 2.2"
+  source_url: "https://openstax.org/books/biology-2e/pages/2-2-water"
+  ced_topic: "1.1"
+  entities:
+
+    - term: "Water polarity"
+      definition: "Water is a polar molecule because oxygen is more electronegative than hydrogen, creating a partial negative charge (δ−) on oxygen and partial positive charges (δ+) on each hydrogen"
+      pool: term_definitions
+      chain_theme: water_chemistry
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Hydrogen bond"
+      definition: "Weak electrostatic attraction between a partially positive hydrogen atom (bonded to an electronegative atom) and a partially negative electronegative atom (N, O, or F) on another molecule"
+      pool: term_definitions
+      chain_theme: water_chemistry
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Cohesion"
+      definition: "The tendency of water molecules to be attracted to one another via hydrogen bonds; responsible for surface tension"
+      pool: term_definitions
+      chain_theme: water_chemistry
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Adhesion"
+      definition: "The attraction of water molecules to other polar or charged surfaces (such as plant cell walls); responsible for capillary action"
+      pool: term_definitions
+      chain_theme: water_chemistry
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Surface tension (water)"
+      definition: "A measure of how difficult it is to break the surface of water; results from cohesive hydrogen bonds between surface water molecules"
+      pool: function_terms
+      chain_theme: water_chemistry
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Capillary action"
+      definition: "The upward movement of water through a narrow tube or porous material; result of adhesion to vessel walls exceeding gravity; critical for water transport in plant xylem"
+      pool: function_terms
+      chain_theme: water_chemistry
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Specific heat capacity of water"
+      definition: "4.184 J/(g·°C) — the amount of heat required to raise 1 gram of water by 1°C; among the highest of any common substance due to hydrogen bonding"
+      pool: bracket_numbers
+      chain_theme: water_chemistry
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "4.184 J/(g·°C)"
+      verified_source: "OpenStax Biology 2e, Chapter 2.2; NIST Webbook"
+
+    - term: "High specific heat — biological significance"
+      definition: "Water's high specific heat (4.184 J/g·°C) moderates temperature fluctuations in organisms and aquatic environments, stabilizing climate"
+      pool: function_terms
+      chain_theme: water_chemistry
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Heat of vaporization of water"
+      definition: "2,260 J/g — the energy required to convert 1 gram of liquid water to vapor at 100°C; enables evaporative cooling (sweating, transpiration)"
+      pool: bracket_numbers
+      chain_theme: water_chemistry
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "2,260 J/g at 100°C; ~2,430 J/g at 25°C (skin temperature)"
+      verified_source: "OpenStax Biology 2e, Chapter 2.2; NIST"
+
+    - term: "Evaporative cooling"
+      definition: "When water evaporates from a surface it carries heat away; high heat of vaporization means each gram of evaporated water removes substantial heat from the body"
+      pool: process_names
+      chain_theme: water_chemistry
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Ice density anomaly"
+      definition: "Ice is less dense than liquid water because hydrogen bonds form a stable, open lattice structure that spaces molecules farther apart than in liquid water"
+      pool: term_definitions
+      chain_theme: water_chemistry
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Ice floating — biological significance"
+      definition: "Because ice is less dense than water it floats, forming an insulating layer that prevents bodies of water from freezing solid and allows aquatic life to survive winter"
+      pool: function_terms
+      chain_theme: water_chemistry
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Water as universal solvent"
+      definition: "Water dissolves more substances than any other common solvent; polar water molecules surround and isolate ions and polar molecules (hydration shells), disrupting their interactions"
+      pool: function_terms
+      chain_theme: water_chemistry
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Hydrophobic interactions"
+      definition: "Nonpolar molecules are excluded from water because they cannot form hydrogen bonds; they cluster together to minimize their surface area in contact with water"
+      pool: term_definitions
+      chain_theme: water_chemistry
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "pH scale"
+      definition: "A logarithmic scale from 0-14 measuring hydrogen ion concentration [H+]; pH = −log[H+]; neutral pH = 7, below 7 is acidic, above 7 is basic"
+      pool: bracket_numbers
+      chain_theme: water_chemistry
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "0-14 scale; neutral = 7; each unit = 10-fold change in [H+]"
+      verified_source: "OpenStax Biology 2e, Chapter 2.3"
+
+    - term: "Buffer"
+      definition: "A solution that resists changes in pH when small amounts of acid or base are added; contains a weak acid and its conjugate base; bicarbonate (HCO3−/CO2) is the primary blood buffer"
+      pool: term_definitions
+      chain_theme: water_chemistry
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+topic_1_2:
+  name: "Elements of Life"
+  source: "OpenStax Biology 2e, Chapter 2.1"
+  source_url: "https://openstax.org/books/biology-2e/pages/2-1-atoms-isotopes-ions-and-molecules-the-building-blocks"
+  ced_topic: "1.2"
+  entities:
+
+    - term: "CHNOPS elements"
+      definition: "Carbon, Hydrogen, Nitrogen, Oxygen, Phosphorus, and Sulfur — the six most abundant elements in living organisms, making up approximately 98% of the mass of living matter"
+      pool: term_definitions
+      chain_theme: water_chemistry
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "C, H, N, O, P, S — six elements"
+      verified_source: "OpenStax Biology 2e, Chapter 2.1"
+
+    - term: "Carbon bonding capacity"
+      definition: "Carbon forms 4 covalent bonds, allowing it to bond with up to 4 other atoms simultaneously; this tetravalence makes carbon the backbone of all organic molecules"
+      pool: bracket_numbers
+      chain_theme: water_chemistry
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "4 covalent bonds"
+      verified_source: "OpenStax Biology 2e, Chapter 2.1"
+
+    - term: "Iron (Fe) — biological role"
+      definition: "Trace element essential for hemoglobin structure; iron (Fe) in the heme group binds oxygen for transport in red blood cells"
+      pool: function_terms
+      chain_theme: water_chemistry
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Iodine — biological role"
+      definition: "Trace element required for thyroid hormone synthesis (thyroxine, T3/T4); iodine deficiency causes goiter (enlarged thyroid)"
+      pool: function_terms
+      chain_theme: water_chemistry
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Calcium — biological role"
+      definition: "Trace element (macronutrient) essential for bone and tooth structure (calcium phosphate/hydroxyapatite), muscle contraction, and cell signaling; most abundant mineral in the body"
+      pool: function_terms
+      chain_theme: water_chemistry
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Isotope"
+      definition: "Atoms of the same element that have the same number of protons but different numbers of neutrons; same atomic number, different mass number (e.g., Carbon-12 vs. Carbon-14)"
+      pool: term_definitions
+      chain_theme: water_chemistry
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Carbon-14 — application"
+      definition: "Radioactive isotope of carbon (14C) used in radiometric dating; decays at a known rate (half-life ~5,730 years) allowing estimation of the age of organic materials"
+      pool: function_terms
+      chain_theme: water_chemistry
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "Half-life of Carbon-14 = 5,730 years"
+      verified_source: "OpenStax Biology 2e, Chapter 2.1; NIST"
+
+    - term: "Zinc — biological role"
+      definition: "Trace element that acts as a cofactor for over 300 enzymes; required for DNA synthesis, protein synthesis, and immune function"
+      pool: function_terms
+      chain_theme: water_chemistry
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+topic_1_3:
+  name: "Introduction to Biological Macromolecules"
+  source: "OpenStax Biology 2e, Chapter 3.1-3.2"
+  source_url: "https://openstax.org/books/biology-2e/pages/3-1-synthesis-of-biological-macromolecules"
+  ced_topic: "1.3"
+  entities:
+
+    - term: "Dehydration synthesis"
+      definition: "A chemical reaction in which two monomers are joined by a covalent bond with the release of one water molecule (H2O); also called condensation reaction; builds polymers from monomers"
+      pool: process_names
+      chain_theme: macromolecules
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Hydrolysis"
+      definition: "A chemical reaction in which a polymer is broken into monomers by adding a water molecule (H2O) across each bond; the reverse of dehydration synthesis; used in digestion"
+      pool: process_names
+      chain_theme: macromolecules
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Four classes of biological macromolecules"
+      definition: "Carbohydrates, lipids, proteins, and nucleic acids — the four major classes of biological macromolecules; carbohydrates, proteins, and nucleic acids are true polymers; lipids are not"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Covalent bond"
+      definition: "A strong chemical bond formed by the sharing of one or more electron pairs between atoms; forms the backbone of all biological macromolecules"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Peptide bond"
+      definition: "A covalent bond between the carboxyl group (-COOH) of one amino acid and the amino group (-NH2) of the next, with release of water; links amino acids into polypeptides (C-N bond)"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Glycosidic bond"
+      definition: "A covalent bond formed by dehydration synthesis between two monosaccharides; links sugar monomers into disaccharides and polysaccharides"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Phosphodiester bond"
+      definition: "A covalent bond linking nucleotides in DNA and RNA; connects the 3' carbon of one sugar to the 5' carbon of the next via a phosphate group; forms the sugar-phosphate backbone"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Hydroxyl group (-OH)"
+      definition: "Functional group consisting of an oxygen atom bonded to a hydrogen atom; found in alcohols and carbohydrates; makes molecules polar and more water-soluble"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Carboxyl group (-COOH)"
+      definition: "Functional group consisting of a carbon double-bonded to oxygen and single-bonded to a hydroxyl group; confers acidic properties; present in all amino acids and fatty acids"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Amino group (-NH2)"
+      definition: "Functional group consisting of a nitrogen atom bonded to two hydrogen atoms; confers basic properties; present in all amino acids"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Phosphate group (-PO4)"
+      definition: "Functional group consisting of a phosphorus atom bonded to four oxygen atoms; found in ATP, phospholipids, and the nucleotide backbone of DNA/RNA; confers negative charge at physiological pH"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Sulfhydryl group (-SH)"
+      definition: "Functional group consisting of sulfur bonded to hydrogen; two sulfhydryl groups can form a disulfide bond (-S-S-), critical for stabilizing protein tertiary structure"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Carbonyl group (C=O)"
+      definition: "Functional group consisting of a carbon atom double-bonded to oxygen; present in aldehydes (terminal) and ketones (internal); found in sugars and many metabolic intermediates"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Methyl group (-CH3)"
+      definition: "Functional group consisting of a carbon bonded to three hydrogen atoms; nonpolar; involved in epigenetic regulation (DNA methylation silences gene expression)"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+topic_1_4:
+  name: "Properties of Biological Macromolecules"
+  source: "OpenStax Biology 2e, Chapter 3.2"
+  source_url: "https://openstax.org/books/biology-2e/pages/3-2-carbohydrates"
+  ced_topic: "1.4"
+  entities:
+
+    - term: "Structural isomers"
+      definition: "Molecules with the same molecular formula but different arrangements of covalent bonds; e.g., glucose and galactose are both C6H12O6 but with different hydroxyl group placements"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Geometric (cis-trans) isomers"
+      definition: "Molecules with the same molecular formula and bonding arrangement but different spatial positioning of groups around a double bond; cis has substituents on same side, trans on opposite sides"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Enantiomers"
+      definition: "Molecules that are non-superimposable mirror images of each other; in biology, L-amino acids are used in proteins and D-sugars are used in carbohydrates/nucleotides"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "L-amino acids vs. D-amino acids"
+      definition: "Life on Earth uses almost exclusively L-form (levo) amino acids in proteins; D-amino acids exist but are rare in living organisms; the L configuration is the biological standard"
+      pool: function_terms
+      chain_theme: macromolecules
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "R-group (side chain) properties of amino acids"
+      definition: "Amino acids are categorized by their R-groups: nonpolar (hydrophobic), polar (hydrophilic), positively charged (basic), or negatively charged (acidic); R-groups determine folding and function"
+      pool: function_terms
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Functional groups determine chemical properties"
+      definition: "The specific functional groups attached to a molecule determine its chemical reactivity, polarity, solubility, and interactions with other molecules; functional groups are the chemically active regions"
+      pool: function_terms
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+topic_1_5:
+  name: "Lipids"
+  source: "OpenStax Biology 2e, Chapter 3.3"
+  source_url: "https://openstax.org/books/biology-2e/pages/3-3-lipids"
+  ced_topic: "1.5"
+  entities:
+
+    - term: "Lipids — not true polymers"
+      definition: "Lipids are not considered true polymers because they lack a repeating monomer unit joined by the same type of bond; they are diverse hydrophobic molecules grouped by their solubility in nonpolar solvents"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Triglyceride structure"
+      definition: "A lipid composed of one glycerol molecule bonded to three fatty acid chains via ester linkages; formed by dehydration synthesis; primary form of long-term energy storage in animals"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Ester linkage"
+      definition: "A covalent bond formed between the carboxyl group of a fatty acid and a hydroxyl group of glycerol, with release of water; the bond type joining fatty acids to glycerol in triglycerides"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Energy density of fats vs. carbohydrates"
+      definition: "Fats yield approximately 9 kcal/g; carbohydrates and proteins yield approximately 4 kcal/g; fats store more than twice the energy per gram because they are more highly reduced (more C-H bonds)"
+      pool: bracket_numbers
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "Fat: 9 kcal/g; Carbohydrate: 4 kcal/g; Protein: 4 kcal/g"
+      verified_source: "OpenStax Biology 2e, Chapter 3.3"
+
+    - term: "Saturated fatty acid"
+      definition: "A fatty acid with no carbon-carbon double bonds; all carbons are fully saturated with hydrogen; straight chain allows tight packing; solid at room temperature (e.g., butter, lard)"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Unsaturated fatty acid"
+      definition: "A fatty acid with one or more carbon-carbon double bonds; the double bond creates a kink that prevents tight packing; liquid at room temperature (e.g., olive oil, fish oil)"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Trans fat"
+      definition: "An artificially hydrogenated unsaturated fat in which hydrogen atoms are on opposite sides of the double bond; straighter chain than cis unsaturated fat; associated with cardiovascular disease"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Phospholipid structure"
+      definition: "A lipid consisting of a glycerol backbone, two fatty acid tails (nonpolar), and a phosphate-containing head group (polar); the result is an amphipathic molecule with both hydrophilic and hydrophobic regions"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Amphipathic"
+      definition: "A molecule that has both hydrophilic (polar/charged) and hydrophobic (nonpolar) regions; phospholipids are amphipathic, enabling them to form bilayers in aqueous environments"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Phospholipid bilayer function"
+      definition: "The amphipathic nature of phospholipids causes them to spontaneously form bilayers in water, with hydrophobic tails facing inward and hydrophilic heads facing outward; basis of all cell membranes"
+      pool: function_terms
+      chain_theme: macromolecules
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Steroids — structure"
+      definition: "Lipids characterized by four fused carbon rings; include cholesterol, steroid hormones (testosterone, estrogen, cortisol), and bile salts; distinct from fats in structure but grouped with lipids by solubility"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "4 fused carbon rings"
+      verified_source: "OpenStax Biology 2e, Chapter 3.3"
+
+    - term: "Cholesterol — biological roles"
+      definition: "A steroid found in animal cell membranes; regulates membrane fluidity (prevents membranes from becoming too rigid in cold or too fluid in heat); precursor for steroid hormones, vitamin D, and bile acids"
+      pool: function_terms
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Waxes — function"
+      definition: "Lipids composed of a fatty acid chain linked to a long alcohol chain; extremely hydrophobic; function as waterproofing agents (plant cuticle, earwax, feather coating in waterfowl)"
+      pool: function_terms
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+topic_1_6:
+  name: "Nucleic Acids"
+  source: "OpenStax Biology 2e, Chapter 3.5"
+  source_url: "https://openstax.org/books/biology-2e/pages/3-5-nucleic-acids"
+  ced_topic: "1.6"
+  entities:
+
+    - term: "DNA — structural features"
+      definition: "Deoxyribonucleic acid; double-stranded, contains deoxyribose sugar, bases adenine (A), thymine (T), guanine (G), cytosine (C); stores genetic information in base sequence"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "RNA — structural features"
+      definition: "Ribonucleic acid; single-stranded, contains ribose sugar, bases adenine (A), uracil (U), guanine (G), cytosine (C); roles include mRNA (messenger), rRNA (ribosomal), tRNA (transfer)"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "DNA vs. RNA — key differences"
+      definition: "DNA uses deoxyribose (lacks 2' -OH); RNA uses ribose (has 2' -OH). DNA uses thymine (T); RNA uses uracil (U). DNA is double-stranded; RNA is single-stranded. DNA stores genes; RNA carries and expresses them"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Nucleotide structure"
+      definition: "A nucleotide consists of three components: a five-carbon sugar (ribose or deoxyribose), a phosphate group, and a nitrogenous base; nucleotides are the monomers of nucleic acids"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Purines"
+      definition: "Nitrogenous bases with a double-ring structure; in nucleic acids: adenine (A) and guanine (G) are purines; mnemonic: PURe As Gold"
+      pool: molecule_names
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "Adenine and Guanine are purines (double ring)"
+      verified_source: "OpenStax Biology 2e, Chapter 3.5"
+
+    - term: "Pyrimidines"
+      definition: "Nitrogenous bases with a single-ring structure; in nucleic acids: cytosine (C), thymine (T, DNA only), and uracil (U, RNA only) are pyrimidines; mnemonic: CUT (Cytosine, Uracil, Thymine)"
+      pool: molecule_names
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "Cytosine, Thymine, Uracil are pyrimidines (single ring)"
+      verified_source: "OpenStax Biology 2e, Chapter 3.5"
+
+    - term: "Chargaff's rules"
+      definition: "In a DNA double helix, the amount of adenine equals the amount of thymine (A=T) and the amount of guanine equals the amount of cytosine (G=C); established by Erwin Chargaff in 1950"
+      pool: process_names
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "A=T, G=C in double-stranded DNA"
+      verified_source: "OpenStax Biology 2e, Chapter 14.2; Chargaff 1950"
+
+    - term: "Antiparallel strand orientation"
+      definition: "The two strands of a DNA double helix run in opposite directions: one strand runs 5'→3' and the complementary strand runs 3'→5'; essential for replication and transcription enzymes"
+      pool: term_definitions
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "A-T base pair hydrogen bonds"
+      definition: "In DNA, adenine pairs with thymine via 2 hydrogen bonds; the A-T pairing requires less energy to break than G-C pairing"
+      pool: bracket_numbers
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "A-T: 2 hydrogen bonds; G-C: 3 hydrogen bonds"
+      verified_source: "OpenStax Biology 2e, Chapter 3.5"
+
+    - term: "G-C base pair hydrogen bonds"
+      definition: "In DNA, guanine pairs with cytosine via 3 hydrogen bonds; G-C pairs are stronger than A-T pairs; DNA strands with higher GC content have higher melting temperature"
+      pool: bracket_numbers
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "G-C: 3 hydrogen bonds; A-T: 2 hydrogen bonds"
+      verified_source: "OpenStax Biology 2e, Chapter 3.5"
+
+    - term: "ATP structure"
+      definition: "Adenosine triphosphate; consists of the nitrogenous base adenine, the sugar ribose, and three phosphate groups; hydrolysis of the terminal phosphate bond releases energy for cellular work"
+      pool: molecule_names
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "ATP = adenosine (adenine + ribose) + 3 phosphate groups"
+      verified_source: "OpenStax Biology 2e, Chapter 6.4"
+
+    - term: "ATP — energy release mechanism"
+      definition: "Hydrolysis of ATP (ATP + H2O → ADP + Pi) releases approximately 7.3 kcal/mol (30.5 kJ/mol) of free energy; the terminal phosphate group's removal is exergonic due to charge repulsion relief"
+      pool: function_terms
+      chain_theme: macromolecules
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "~7.3 kcal/mol (30.5 kJ/mol) released per terminal phosphate hydrolysis"
+      verified_source: "OpenStax Biology 2e, Chapter 6.4"
+
+topic_1_7:
+  name: "Proteins"
+  source: "OpenStax Biology 2e, Chapter 3.4"
+  source_url: "https://openstax.org/books/biology-2e/pages/3-4-proteins"
+  ced_topic: "1.7"
+  entities:
+
+    - term: "Number of standard amino acids"
+      definition: "There are 20 standard amino acids used to build proteins in all living organisms; each differs only in its R-group (side chain) while sharing the same backbone (central carbon, amino group, carboxyl group, H)"
+      pool: bracket_numbers
+      chain_theme: enzymes
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "20 standard amino acids"
+      verified_source: "OpenStax Biology 2e, Chapter 3.4"
+
+    - term: "Amino acid general structure"
+      definition: "Every amino acid has a central (alpha) carbon bonded to: an amino group (-NH2), a carboxyl group (-COOH), a hydrogen atom, and a variable R-group (side chain) that distinguishes each amino acid"
+      pool: term_definitions
+      chain_theme: enzymes
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Primary protein structure"
+      definition: "The unique linear sequence of amino acids in a polypeptide chain, held together by peptide bonds; determined by the DNA sequence; all higher levels of structure are determined by the primary structure"
+      pool: term_definitions
+      chain_theme: enzymes
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Secondary protein structure"
+      definition: "Local folding patterns of the polypeptide backbone stabilized by hydrogen bonds between backbone amino (-NH) and carbonyl (C=O) groups; the two main types are alpha helix and beta pleated sheet"
+      pool: term_definitions
+      chain_theme: enzymes
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Alpha helix"
+      definition: "A type of secondary protein structure in which the polypeptide backbone is coiled into a right-handed helix, stabilized by hydrogen bonds between every 4th amino acid in the backbone"
+      pool: molecule_names
+      chain_theme: enzymes
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Beta pleated sheet"
+      definition: "A type of secondary protein structure in which the polypeptide backbone forms parallel or antiparallel strands connected by hydrogen bonds between backbone groups, creating a sheet-like structure"
+      pool: molecule_names
+      chain_theme: enzymes
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Tertiary protein structure"
+      definition: "The overall 3D folding of a single polypeptide chain, determined by R-group interactions: hydrophobic core formation, ionic bonds, hydrogen bonds, and disulfide bridges between cysteines"
+      pool: term_definitions
+      chain_theme: enzymes
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Disulfide bond"
+      definition: "A covalent bond (-S-S-) between two cysteine R-groups (sulfhydryl groups); one of the strongest stabilizing forces in tertiary protein structure; not disrupted by mild denaturation"
+      pool: term_definitions
+      chain_theme: enzymes
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Quaternary protein structure"
+      definition: "The association of two or more polypeptide subunits into a single functional protein complex; stabilized by the same forces as tertiary structure; e.g., hemoglobin has 4 subunits"
+      pool: term_definitions
+      chain_theme: enzymes
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Hemoglobin quaternary structure"
+      definition: "Hemoglobin consists of 4 polypeptide subunits (2 alpha and 2 beta chains), each containing a heme group with Fe²⁺ that binds one oxygen molecule; an example of quaternary protein structure"
+      pool: molecule_names
+      chain_theme: enzymes
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+      verified_value: "Hemoglobin = 4 subunits (2 alpha + 2 beta chains)"
+      verified_source: "OpenStax Biology 2e, Chapter 3.4"
+
+    - term: "Denaturation"
+      definition: "The loss of a protein's native 3D shape (secondary, tertiary, and/or quaternary structure) due to disruption of noncovalent interactions by heat, extreme pH, or chemical agents; usually results in loss of function"
+      pool: process_names
+      chain_theme: enzymes
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Denaturation — what remains intact"
+      definition: "Denaturation breaks hydrogen bonds, ionic bonds, and hydrophobic interactions but does NOT break peptide bonds; primary structure (amino acid sequence) remains intact after denaturation"
+      pool: function_terms
+      chain_theme: enzymes
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Enzyme — definition and function"
+      definition: "A biological catalyst (nearly always a protein) that speeds up a chemical reaction by lowering the activation energy (Ea); enzymes are not consumed in the reaction and can be reused"
+      pool: function_terms
+      chain_theme: enzymes
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Active site"
+      definition: "The specific region of an enzyme where substrate binds and the chemical reaction occurs; the active site's shape is complementary to the substrate; even small changes in shape can abolish enzyme function"
+      pool: term_definitions
+      chain_theme: enzymes
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Lock-and-key model"
+      definition: "An early model of enzyme-substrate interaction stating that the enzyme's active site is a rigid, pre-formed shape exactly complementary to the substrate, like a key fitting a lock"
+      pool: process_names
+      chain_theme: enzymes
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Induced fit model"
+      definition: "The current model of enzyme-substrate interaction: the active site is flexible and changes shape slightly upon substrate binding, optimizing the fit and positioning catalytic groups; more accurate than lock-and-key"
+      pool: process_names
+      chain_theme: enzymes
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Enzyme-substrate complex"
+      definition: "The temporary molecular complex formed when a substrate binds to an enzyme's active site; forms before the chemical reaction occurs and dissolves when products are released"
+      pool: term_definitions
+      chain_theme: enzymes
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Cofactor"
+      definition: "An inorganic ion (e.g., Zn²⁺, Mg²⁺, Fe²⁺) required for proper enzyme activity; binds to the enzyme (often at or near the active site) and helps catalysis but is not altered by the reaction"
+      pool: term_definitions
+      chain_theme: enzymes
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Coenzyme"
+      definition: "An organic molecule (e.g., NAD⁺, FAD, coenzyme A; derived from vitamins) that functions as a cofactor; acts as an electron/hydrogen carrier; participates in reactions and is regenerated"
+      pool: term_definitions
+      chain_theme: enzymes
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Competitive inhibition"
+      definition: "A type of enzyme inhibition in which an inhibitor molecule binds to the active site of an enzyme, directly competing with the substrate; inhibition can be overcome by increasing substrate concentration"
+      pool: term_definitions
+      chain_theme: enzymes
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Noncompetitive (allosteric) inhibition"
+      definition: "A type of enzyme inhibition in which an inhibitor binds to an allosteric site (not the active site), changing the enzyme's shape and reducing its catalytic activity; cannot be overcome by adding more substrate"
+      pool: term_definitions
+      chain_theme: enzymes
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Allosteric regulation"
+      definition: "Regulation of enzyme activity through binding of a molecule at an allosteric site (a site other than the active site); can activate or inhibit the enzyme by inducing a conformational change"
+      pool: term_definitions
+      chain_theme: enzymes
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+    - term: "Feedback inhibition"
+      definition: "A regulatory mechanism in which the end product of a metabolic pathway inhibits an enzyme earlier in that same pathway, preventing overproduction; a form of allosteric inhibition"
+      pool: process_names
+      chain_theme: enzymes
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit1"]
+
+# ============================================================
+# FACT COUNT SUMMARY
+# ============================================================
+fact_count_summary:
+  topic_1_1_water: 16
+  topic_1_2_elements: 8
+  topic_1_3_macromolecules_intro: 14
+  topic_1_4_properties: 6
+  topic_1_5_lipids: 13
+  topic_1_6_nucleic_acids: 12
+  topic_1_7_proteins: 23
+  total: 92
+
+  # Note: Workers should expand each entity into 1-2 DeckFacts (quizQuestion variants)
+  # to reach the 110-fact target. Entities with verified_value fields are high priority
+  # for fill-in-blank ({___}) question format in addition to standard MCQ.
+
+# ============================================================
+# CHAIN THEME DISTRIBUTION
+# ============================================================
+chain_theme_distribution:
+  water_chemistry:
+    topics: ["1.1", "1.2"]
+    entity_count: 24
+    description: "Water structure, hydrogen bonding, pH, buffers, CHNOPS elements, isotopes"
+  macromolecules:
+    topics: ["1.3", "1.4", "1.5", "1.6"]
+    entity_count: 45
+    description: "Dehydration synthesis, hydrolysis, bond types, functional groups, lipids, nucleic acids"
+  enzymes:
+    topics: ["1.7"]
+    entity_count: 23
+    description: "Protein structure levels, denaturation, enzymes, cofactors, inhibition types, feedback"
+
+# ============================================================
+# GENERATION NOTES FOR WORKERS
+# ============================================================
+generation_notes: >
+  Workers receive individual entities and produce DeckFact JSON. Key rules:
+
+  1. TERM DEFINITIONS pool: quizQuestion = "What is [term]?" OR "Define [term]." Answer = definition field.
+  2. PROCESS NAMES pool: quizQuestion = "What is the name of the process in which [description]?" Answer = term field.
+  3. MOLECULE NAMES pool: quizQuestion = "What molecule [description]?" Answer = term field.
+  4. BRACKET NUMBERS pool: Use {___} fill-in format, e.g. "Water has a specific heat of {___} J/(g·°C)."
+     Answer must match verified_value exactly.
+  5. FUNCTION TERMS pool: quizQuestion = "What is the function/role of [term]?" Answer = function description.
+
+  For all entities with verified_value: the correctAnswer MUST use that exact value.
+  Distractors are LLM-generated — plausible but WRONG. Never pull from other correctAnswer fields.
+  Assign funScore 1-5 and difficulty 1-5 matching the entity difficulty field.
+  Use explanation field to add 1 sentence of biological context beyond the definition.

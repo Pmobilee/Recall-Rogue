@@ -1,0 +1,361 @@
+deck_id: ap_biology_unit6
+name: "AP Biology — Unit 6: Gene Expression and Regulation"
+domain: natural_sciences
+sub_domain: biology
+description: "Master AP Biology Unit 6 — Gene Expression and Regulation (12-16% of exam weight). Covers DNA and RNA structure, DNA replication machinery, transcription and RNA processing in prokaryotes and eukaryotes, translation and the genetic code, regulation of gene expression at every level (chromatin remodeling, transcription factors, post-transcriptional, translational, post-translational), cell specialization through differential gene expression, mutation types and consequences, and biotechnology applications (PCR, gel electrophoresis, CRISPR-Cas9, restriction enzymes, DNA cloning). Aligned to College Board AP Biology CED Topics 6.1-6.8."
+minimum_facts: 140
+target_facts: 160
+
+# COMPLETENESS PHILOSOPHY:
+# This deck covers the COMPLETE College Board AP Biology Unit 6 (Topics 6.1-6.8).
+# A student who masters this deck should be able to answer every AP exam question
+# that touches Gene Expression and Regulation. Scope is curriculum-driven: every
+# Essential Knowledge (EK) statement and Learning Objective (LO) for Unit 6 is
+# represented. Fact counts per chain theme are weighted by topic density and
+# AP exam emphasis (12-16% — the highest-weighted unit on the AP Biology exam).
+
+# Sourcing & licensing
+data_sources:
+  - name: College Board AP Biology Course and Exam Description (CED) Effective Fall 2025
+    url: https://apcentral.collegeboard.org/media/pdf/ap-biology-course-and-exam-description-effective-fall-2025.pdf
+    license: public educational resource
+    usage: Authoritative unit/topic structure, learning objectives (LOs), essential knowledge (EK) statements, exam weight distribution (12-16% for Unit 6), illustrative examples for Topics 6.1-6.8
+  - name: OpenStax Biology 2e — Chapters 14-17 (Molecular Biology)
+    url: https://openstax.org/books/biology-2e/pages/14-introduction
+    license: CC-BY-4.0
+    usage: DNA/RNA structure, DNA replication machinery, transcription and translation mechanisms, gene regulation operons, mutations, biotechnology techniques, CRISPR, PCR
+  - name: Khan Academy AP Biology — Unit 6
+    url: https://www.khanacademy.org/science/ap-biology/gene-expression-and-regulation
+    license: free educational resource (CC-BY-NC-SA)
+    usage: Cross-referencing key concepts, lac operon diagrams, translation initiation/elongation/termination, mutation type examples, eukaryotic gene regulation levels
+  - name: Wikipedia — DNA replication, Transcription (biology), Translation (biology), Lac operon, CRISPR, PCR
+    url: https://en.wikipedia.org/wiki/DNA_replication
+    license: CC-BY-SA-4.0
+    usage: Enzyme names and functions, historical experiments (Meselson-Stahl 1958, Watson-Crick 1953), specific numerical facts (Okazaki fragment lengths, codon table, telomere repeat sequence TTAGGG)
+
+asset_sources: []
+
+# ============================================================
+# CHAIN THEMES — 3 thematic zones for Unit 6
+# Theme assignment: 6.1-6.2 → dna_replication
+#                   6.3-6.4 → transcription_translation
+#                   6.5-6.8 → gene_regulation
+# ============================================================
+
+chain_themes:
+
+  - id: 0
+    name: "The Blueprint and Its Copying"
+    ced_coverage: "Unit 6 Topics 6.1-6.2: DNA and RNA Structure, DNA Replication"
+    target_facts: 33
+    description: >
+      DNA and RNA as information molecules — from nucleotide building blocks and base-pairing
+      rules to the elegant machinery of semiconservative replication. Players master nucleotide
+      composition (deoxyribose vs. ribose, DNA vs. RNA bases), Chargaff's rules, Watson-Crick
+      double helix geometry, the antiparallel orientation of strands, and every enzyme at the
+      replication fork — helicase, primase, DNA polymerase III, DNA polymerase I, and ligase.
+      Leading and lagging strand synthesis, Okazaki fragments, telomeres, and the Meselson-Stahl
+      experiment establishing semiconservative replication are all covered.
+    key_concepts:
+      # --- Topic 6.1: DNA and RNA Structure ---
+      - "DNA nucleotide components: deoxyribose sugar + phosphate group + nitrogenous base (adenine, thymine, guanine, or cytosine)"
+      - "RNA nucleotide components: ribose sugar + phosphate group + nitrogenous base (adenine, uracil, guanine, or cytosine)"
+      - "DNA bases: adenine (A), thymine (T), guanine (G), cytosine (C)"
+      - "RNA bases: adenine (A), uracil (U), guanine (G), cytosine (C); uracil replaces thymine in RNA"
+      - "Purines: adenine and guanine — double-ring structure; found in both DNA and RNA"
+      - "Pyrimidines: cytosine, thymine (DNA only), and uracil (RNA only) — single-ring structure"
+      - "Chargaff's rules: in double-stranded DNA, A=T and G=C (molar ratios of complementary bases are always equal)"
+      - "DNA double helix: discovered by Watson and Crick in 1953, building on Rosalind Franklin's X-ray crystallography diffraction data (Photo 51)"
+      - "Antiparallel strands: one strand runs 5'→3', the complementary strand runs 3'→5'"
+      - "Sugar-phosphate backbone: phosphodiester bonds covalently link nucleotides; the backbone is on the outside of the double helix"
+      - "Hydrogen bonds between complementary base pairs: A-T forms 2 hydrogen bonds; G-C forms 3 hydrogen bonds"
+      - "DNA is double-stranded; RNA is typically single-stranded"
+      - "Three major types of RNA: mRNA (messenger RNA — carries genetic information from DNA to ribosome), tRNA (transfer RNA — carries amino acids), rRNA (ribosomal RNA — structural and catalytic component of ribosomes)"
+      - "Codon: a triplet of three consecutive mRNA bases that specifies one amino acid (or a stop signal); 64 possible codons"
+      - "Genetic code is universal: nearly all organisms use the identical codon table (e.g., AUG = methionine in bacteria, humans, and plants)"
+      - "Genetic code is redundant (degenerate): most amino acids are encoded by multiple codons (e.g., leucine has 6 codons); reduces impact of mutations at the wobble position"
+      # --- Topic 6.2: DNA Replication ---
+      - "Semiconservative replication: each daughter DNA molecule contains one original (parental) strand and one newly synthesized strand; demonstrated by Meselson and Stahl (1958) using 15N/14N density gradient centrifugation"
+      - "Origin of replication: specific DNA sequence where replication begins; prokaryotes have 1 origin (oriC); eukaryotes have multiple origins that fire simultaneously to replicate large chromosomes efficiently"
+      - "Replication fork: Y-shaped structure formed where the double helix is unwound and new DNA is synthesized"
+      - "Helicase: enzyme that unwinds the DNA double helix by breaking hydrogen bonds between complementary base pairs at the replication fork"
+      - "Single-strand binding proteins (SSBPs): stabilize the separated single strands at the replication fork, preventing them from re-annealing"
+      - "Topoisomerase: relieves torsional stress (supercoiling) ahead of the replication fork by cutting, rotating, and rejoining the DNA strands"
+      - "Primase: RNA polymerase that synthesizes a short RNA primer (~10 nucleotides); provides the 3'-OH group that DNA polymerase requires to begin adding nucleotides"
+      - "DNA polymerase III (prokaryotes): primary replication enzyme; adds nucleotides 5'→3' complementary to the template strand; has 3'→5' exonuclease proofreading activity"
+      - "Leading strand: synthesized continuously in the 5'→3' direction toward the replication fork; requires only one primer"
+      - "Lagging strand: synthesized discontinuously in the 5'→3' direction away from the replication fork; requires multiple primers; produces Okazaki fragments"
+      - "Okazaki fragments: short discontinuous DNA segments synthesized on the lagging strand; ~1,000-2,000 nucleotides long in prokaryotes; ~100-200 nucleotides long in eukaryotes"
+      - "DNA polymerase I: removes RNA primers from Okazaki fragments and replaces them with DNA using the adjacent Okazaki fragment as a primer"
+      - "DNA ligase: seals the nick (phosphodiester bond gap) between adjacent Okazaki fragments after primer removal, joining them into a continuous strand"
+      - "Telomeres: repetitive non-coding DNA sequences (TTAGGG in humans) at the ends of linear eukaryotic chromosomes; protect coding DNA from shortening during replication"
+      - "Telomerase: enzyme that extends telomeres using an RNA template; active in stem cells, germ cells, and cancer cells; inactive in most differentiated somatic cells — accounts for cell aging"
+
+  - id: 1
+    name: "From Gene to Protein"
+    ced_coverage: "Unit 6 Topics 6.3-6.4: Transcription and RNA Processing, Translation"
+    target_facts: 40
+    description: >
+      The central dogma in action — from DNA to mRNA to protein. Players master the machinery
+      of transcription (RNA polymerase, promoters, TATA box, transcription factors, template
+      strand directionality, termination signals) and all eukaryotic RNA processing steps
+      (5' cap, 3' poly-A tail, splicing by the spliceosome, alternative splicing). Then
+      translation at the ribosome — the genetic code, start and stop codons, the three ribosomal
+      sites (A, P, E), tRNA structure, aminoacyl-tRNA synthetases, peptide bond formation as a
+      ribozyme reaction, initiation/elongation/termination, polysomes, and post-translational
+      modifications. Prokaryotic transcription-translation coupling contrasted with eukaryotic
+      compartmentalization throughout.
+    key_concepts:
+      # --- Topic 6.3: Transcription and RNA Processing ---
+      - "Transcription: the process of synthesizing RNA from a DNA template (DNA → RNA); occurs in the nucleus of eukaryotes and in the cytoplasm of prokaryotes"
+      - "RNA polymerase: enzyme that reads the template strand of DNA in the 3'→5' direction and synthesizes mRNA in the 5'→3' direction by adding complementary RNA nucleotides"
+      - "Promoter: a specific DNA sequence upstream (5') of a gene that signals where transcription begins and to which RNA polymerase and transcription factors bind"
+      - "TATA box: a common eukaryotic promoter element (consensus sequence TATAAA) located approximately 25 bp upstream of the transcription start site; recognized by TATA-binding protein (TBP)"
+      - "Transcription factors: proteins that bind to promoter and enhancer sequences to facilitate or block RNA polymerase binding and transcription initiation"
+      - "Template strand (antisense strand): the DNA strand that serves as the template for RNA synthesis; read 3'→5' by RNA polymerase"
+      - "Coding strand (sense strand, non-template strand): the DNA strand with the same sequence as the mRNA (except T is replaced by U); read 5'→3'"
+      - "Transcription initiation: RNA polymerase and transcription factors assemble at the promoter and RNA polymerase unwinds the DNA at the transcription start site"
+      - "Transcription elongation: RNA polymerase moves along the template strand, unwinding DNA ahead and rewinding behind, adding complementary ribonucleotides to the 3' end of the growing RNA chain"
+      - "Transcription termination: specific DNA sequences signal RNA polymerase to stop transcription and release the newly synthesized RNA transcript"
+      - "Pre-mRNA (primary transcript): the raw, unprocessed RNA product of transcription in eukaryotes; contains introns and exons and requires processing before export from the nucleus"
+      - "5' cap: a 7-methylguanosine (m7G) cap added to the 5' end of pre-mRNA; protects from degradation by nucleases, facilitates ribosome binding during translation"
+      - "3' poly-A tail: a stretch of approximately 200 adenine nucleotides added enzymatically to the 3' end of pre-mRNA by poly-A polymerase; protects from degradation, facilitates nuclear export, and signals mRNA stability"
+      - "RNA splicing: introns (intervening, non-coding sequences) are removed and exons (expressed, coding sequences) are joined together to produce mature mRNA"
+      - "Spliceosome: large ribonucleoprotein complex composed of snRNPs (small nuclear ribonucleoproteins) that catalyzes the splicing of introns from pre-mRNA"
+      - "Alternative splicing: different combinations of exons from the same pre-mRNA are joined to produce different mature mRNA sequences → different protein variants from a single gene; greatly increases proteome diversity (humans: ~20,000 genes → ~100,000+ proteins)"
+      - "Prokaryotic transcription: no 5' cap, no poly-A tail, no splicing required; translation begins on the mRNA while transcription is still occurring (coupled transcription-translation); mRNA is polycistronic (encodes multiple proteins)"
+      # --- Topic 6.4: Translation ---
+      - "Translation: the process of synthesizing a polypeptide chain from an mRNA template; occurs at ribosomes in the cytoplasm (free ribosomes) or on the rough ER"
+      - "Genetic code: 64 codons total; 61 sense codons encode amino acids; 3 stop codons (UAA, UAG, UGA) signal termination"
+      - "Start codon: AUG encodes methionine (Met) and signals the beginning of translation; sets the reading frame"
+      - "Reading frame: the non-overlapping way codons are read as triplets, set by the position of the start codon AUG; a frameshift mutation shifts all downstream codons"
+      - "Ribosome structure: large subunit (60S in eukaryotes, 50S in prokaryotes) catalyzes peptide bond formation; small subunit (40S in eukaryotes, 30S in prokaryotes) reads mRNA codons"
+      - "Ribosomal A site (aminoacyl site): receives incoming aminoacyl-tRNA carrying the next amino acid specified by the mRNA codon"
+      - "Ribosomal P site (peptidyl site): holds the tRNA attached to the growing polypeptide chain"
+      - "Ribosomal E site (exit site): holds the empty (uncharged) tRNA as it exits the ribosome after transferring its amino acid"
+      - "tRNA structure: cloverleaf secondary structure; anticodon loop (3 bases complementary to the mRNA codon) at one end; 3' CCA terminus that accepts and carries the specific amino acid"
+      - "Aminoacyl-tRNA synthetase: enzyme that attaches the correct amino acid to its corresponding tRNA; 20 different aminoacyl-tRNA synthetases exist, one for each amino acid; uses ATP"
+      - "Wobble: flexibility in base-pairing at the 3rd position of the codon (wobble position) allows some tRNAs to recognize multiple codons encoding the same amino acid"
+      - "Translation initiation: small ribosomal subunit binds mRNA near the 5' cap → scans for the AUG start codon → initiator tRNA (Met-tRNA) enters the P site → large subunit joins; requires initiation factors and GTP"
+      - "Translation elongation: aminoacyl-tRNA enters A site (codon-anticodon matching) → peptide bond forms between growing chain and new amino acid (catalyzed by rRNA) → ribosome translocates one codon (3 nucleotides) in the 5'→3' direction → empty tRNA exits E site; repeats"
+      - "Peptide bond: covalent bond between the carboxyl group of one amino acid and the amino group of the next; formed by peptidyl transferase activity of the large ribosomal subunit, which is catalytic rRNA (a ribozyme)"
+      - "Translation termination: a stop codon (UAA, UAG, or UGA) enters the A site → release factor (not a tRNA) binds → polypeptide chain is hydrolyzed and released → ribosome disassembles into subunits"
+      - "Polyribosomes (polysomes): multiple ribosomes simultaneously translating the same mRNA molecule; increases protein production efficiency"
+      - "Post-translational modifications: include protein folding (assisted by chaperone proteins), signal peptide cleavage, phosphorylation (addition of phosphate groups), glycosylation (addition of carbohydrate chains), and ubiquitination (tagging proteins for proteasomal degradation)"
+
+  - id: 2
+    name: "The Control Room"
+    ced_coverage: "Unit 6 Topics 6.5-6.8: Regulation of Gene Expression, Cell Specialization, Mutations, Biotechnology"
+    target_facts: 87
+    description: >
+      How cells control which genes are expressed, when, and how much — from the elegant
+      simplicity of bacterial operons to the multi-layered regulatory hierarchy of eukaryotic
+      genomes. Players master the lac operon (inducible) and trp operon (repressible), then
+      move to eukaryotic gene regulation across all levels: chromatin remodeling (histone
+      acetylation, DNA methylation), transcription factor binding at enhancers, post-
+      transcriptional regulation (miRNA, siRNA, mRNA stability), and post-translational
+      modification. Cell specialization through differential gene expression, master regulatory
+      genes, and epigenetics lead into mutations (silent, missense, nonsense, frameshift) and
+      biotechnology (restriction enzymes, gel electrophoresis, PCR, DNA cloning, CRISPR-Cas9,
+      DNA fingerprinting).
+    key_concepts:
+      # --- Topic 6.5: Regulation of Gene Expression — Prokaryotic ---
+      - "Operon: a unit of prokaryotic gene organization consisting of a promoter, an operator, and a cluster of structurally related genes transcribed together as a single polycistronic mRNA"
+      - "Operator: a short DNA sequence between the promoter and the structural genes of an operon; functions as a binding site for a repressor protein; repressor binding blocks RNA polymerase access"
+      - "Repressor protein: a regulatory protein that binds the operator and blocks transcription; can be inactivated by an inducer molecule or activated by a corepressor"
+      - "Lac operon (inducible operon): encodes enzymes for lactose metabolism (lacZ — beta-galactosidase, lacY — permease, lacA — transacetylase); normally OFF when repressor occupies the operator"
+      - "Lac operon induction: when lactose is present, it is converted to allolactose; allolactose binds the lac repressor and causes a conformational change that releases it from the operator, allowing transcription"
+      - "Lac operon positive regulation (catabolite repression): when glucose is absent, cAMP levels rise; high cAMP binds CAP (catabolite activator protein); CAP-cAMP complex binds a site upstream of the promoter and enhances RNA polymerase binding, increasing transcription rate"
+      - "Trp operon (repressible operon): encodes enzymes for tryptophan biosynthesis; normally ON when tryptophan is absent"
+      - "Trp operon repression: when tryptophan is abundant, it binds the trp aporepressor (corepressor role); tryptophan-repressor complex changes shape and binds the operator, blocking transcription of tryptophan-synthesis genes"
+      # --- Topic 6.5: Regulation of Gene Expression — Eukaryotic ---
+      - "Eukaryotic gene expression is regulated at multiple levels: (1) chromatin structure, (2) transcription initiation, (3) RNA processing, (4) mRNA stability and export, (5) translation, (6) post-translational modification"
+      - "Chromatin remodeling: covalent modifications to histone proteins alter how tightly DNA is packaged, controlling access of transcription factors and RNA polymerase"
+      - "Histone acetylation: acetyl groups added to lysine residues of histone tails by histone acetyltransferases (HATs); neutralizes positive charge of histones → histones bind DNA less tightly → chromatin opens → gene expression increases"
+      - "Histone deacetylation: acetyl groups removed by histone deacetylases (HDACs); histones bind DNA more tightly → chromatin condenses → gene expression decreases"
+      - "DNA methylation: addition of methyl groups (-CH3) to cytosine residues (usually at CpG dinucleotide sequences) by DNA methyltransferases; generally associated with long-term gene silencing and heterochromatin formation"
+      - "Euchromatin: loosely packed, transcriptionally active chromatin; regions of active genes; associated with histone acetylation and low DNA methylation"
+      - "Heterochromatin: tightly packed, transcriptionally silent chromatin; includes constitutive heterochromatin (centromeres, telomeres) and facultative heterochromatin (silenced genes, e.g., inactive X chromosome)"
+      - "Transcription factors: sequence-specific DNA-binding proteins that activate or repress transcription by binding regulatory sequences (promoters, enhancers, silencers)"
+      - "Enhancers: regulatory DNA sequences that increase the transcription rate of a target gene; can be thousands of base pairs away from the gene; work by DNA looping that brings bound activator proteins into contact with the promoter complex"
+      - "Silencers: regulatory DNA sequences that decrease transcription of a target gene; bound by repressor proteins; also function through DNA looping"
+      - "Mediator complex: large multi-protein complex that bridges transcription factors bound at distant enhancers to RNA polymerase II assembled at the gene promoter"
+      - "Alternative splicing as post-transcriptional regulation: different exon combinations in the same pre-mRNA produce multiple distinct mRNA isoforms → multiple protein variants from a single gene"
+      - "mRNA stability regulation: the 5' cap and 3' poly-A tail protect mRNA from degradation; AU-rich elements (AREs) in the 3' UTR can destabilize mRNA; regulated mRNA half-life controls protein production"
+      - "microRNA (miRNA): small non-coding RNA molecules (~22 nucleotides); processed from hairpin RNA precursors; incorporated into the RISC (RNA-Induced Silencing Complex); bind partially complementary sequences in mRNA 3' UTR → mRNA degradation or translation inhibition"
+      - "siRNA (small interfering RNA): short double-stranded RNA (~21 nucleotides); incorporated into RISC; binds perfectly complementary mRNA sequences → mRNA cleavage and degradation; forms the basis of RNA interference (RNAi)"
+      - "RNA interference (RNAi): gene-silencing mechanism in which small RNAs (miRNA or siRNA) guide the RISC to complementary mRNA sequences, resulting in reduced protein output; evolutionarily conserved across eukaryotes"
+      - "Ubiquitin-proteasome pathway: proteins are tagged with chains of ubiquitin molecules by ubiquitin ligases; ubiquitinated proteins are recognized and degraded by the 26S proteasome; post-translational regulation of protein levels"
+      # --- Topic 6.6: Cell Specialization ---
+      - "All cells in a multicellular organism carry the same complete genome (DNA sequence); cell-type differences arise from differential gene expression, not DNA differences"
+      - "Cell determination: an irreversible commitment by a cell to a specific developmental pathway; precedes visible differentiation"
+      - "Cell differentiation: the process by which a determined cell develops its specialized structure, gene expression pattern, and function"
+      - "Master regulatory genes: encode transcription factors that control batteries of downstream genes; a single master regulator can switch on entire developmental programs"
+      - "MyoD: a master regulatory transcription factor that drives skeletal muscle cell differentiation; overexpression of MyoD in fibroblasts can convert them into muscle cells"
+      - "Epigenetic inheritance: heritable changes in gene expression that do not involve changes to the DNA nucleotide sequence; transmitted through cell divisions via DNA methylation patterns and histone modification states"
+      - "Stem cells: undifferentiated cells that can both self-renew (divide to produce more stem cells) and differentiate into one or more specialized cell types"
+      - "Totipotent stem cells: can differentiate into any cell type including placental cells (fertilized egg and early cleavage cells)"
+      - "Pluripotent stem cells: can differentiate into cells from all three embryonic germ layers (ectoderm, mesoderm, endoderm) but not extraembryonic tissues; example: embryonic stem (ES) cells"
+      - "Multipotent stem cells: can differentiate into a limited number of closely related cell types within one germ layer; example: hematopoietic stem cells give rise to all blood cell types"
+      - "Unipotent stem cells: can differentiate into only one specific cell type; example: muscle satellite cells that regenerate skeletal muscle"
+      # --- Topic 6.7: Mutations ---
+      - "Mutation: any heritable change in the nucleotide sequence of DNA; can arise from replication errors or from mutagen exposure"
+      - "Point mutation: a change in a single nucleotide base pair in the DNA sequence"
+      - "Silent mutation (synonymous mutation): a point mutation that changes a codon but does NOT change the amino acid encoded; usually occurs at the third (wobble) position of a codon; no effect on protein structure or function"
+      - "Missense mutation: a point mutation that changes one codon to a codon encoding a different amino acid; may or may not affect protein function depending on location and chemical similarity; example: sickle cell anemia — GAG→GTG changes glutamic acid to valine in hemoglobin beta chain"
+      - "Nonsense mutation: a point mutation that changes an amino acid-coding codon to a stop codon (UAA, UAG, or UGA); results in a truncated, usually nonfunctional protein"
+      - "Insertion: addition of one or more extra nucleotide(s) into the DNA sequence"
+      - "Deletion: removal of one or more nucleotide(s) from the DNA sequence"
+      - "Frameshift mutation: an insertion or deletion of a number of nucleotides NOT divisible by three; shifts the reading frame of all downstream codons → completely different amino acid sequence downstream of the mutation → usually nonfunctional protein"
+      - "In-frame insertion or deletion: an insertion or deletion of a number of nucleotides divisible by three; adds or removes amino acid(s) without shifting the reading frame; may preserve some protein function"
+      - "Mutagens: physical or chemical agents that increase the mutation rate above the spontaneous background; UV light causes thymine dimers (covalent links between adjacent thymines); chemical mutagens include base analogs, intercalating agents, and alkylating agents"
+      - "Spontaneous mutation rate: approximately 1 error per 10^9 base pairs per replication cycle in humans after DNA polymerase proofreading and mismatch repair"
+      - "Somatic mutations: mutations arising in body (non-germ) cells; affect only the individual and their somatic cell descendants; not inherited by offspring; can lead to cancer if they occur in proto-oncogenes or tumor suppressor genes"
+      - "Germline mutations: mutations in gametes or cells that give rise to gametes; can be passed to offspring; basis of heritable genetic variation"
+      - "Promoter and enhancer mutations: alter the regulation of gene expression (timing, level, cell type) without changing the protein sequence; can have major phenotypic effects"
+      - "Chromosomal mutations: large-scale changes affecting chromosome structure; types include deletion (loss of a chromosomal segment), duplication (extra copy of a segment), inversion (segment reversed in orientation), and translocation (segment moved to a non-homologous chromosome)"
+      # --- Topic 6.8: Biotechnology ---
+      - "Restriction enzymes (restriction endonucleases): bacterial proteins that recognize specific short DNA sequences (usually 4-8 bp palindromes) and cut both strands; used to cut DNA at predictable sites"
+      - "Sticky ends: short single-stranded overhangs produced when restriction enzymes cut DNA in a staggered fashion; complementary sticky ends from different DNA sources can anneal and be joined by DNA ligase"
+      - "Blunt ends: flush double-stranded cuts produced by some restriction enzymes; can be ligated but with lower efficiency than sticky ends"
+      - "Gel electrophoresis: technique that separates DNA (or protein) fragments by size using an electric field through an agarose gel matrix; DNA is negatively charged → migrates toward the positive electrode; smaller fragments migrate faster and farther"
+      - "DNA ladder (size marker): a mixture of DNA fragments of known sizes run alongside samples in gel electrophoresis to allow size determination of unknown fragments"
+      - "PCR (polymerase chain reaction): technique that exponentially amplifies a specific target DNA sequence in vitro; requires template DNA, two sequence-specific primers, dNTPs, and thermostable Taq DNA polymerase"
+      - "PCR thermal cycling: (1) Denaturation at ~95°C — strands separate; (2) Annealing at ~55°C — primers bind complementary sequences flanking the target; (3) Extension at ~72°C — Taq polymerase extends from primers; each cycle approximately doubles the amount of target DNA"
+      - "Taq DNA polymerase: thermostable DNA polymerase from Thermus aquaticus (a hot spring bacterium); withstands PCR denaturation temperatures; synthesizes DNA at optimal temperature of ~72°C"
+      - "DNA cloning: process of inserting a gene of interest into a vector (typically a bacterial plasmid) using restriction enzymes and DNA ligase, then introducing the recombinant vector into a host cell (usually E. coli) for propagation"
+      - "Plasmid: small, circular, double-stranded DNA molecule in bacteria that replicates independently of the main chromosome; used as a cloning vector; must contain an origin of replication and a selectable marker (typically an antibiotic resistance gene)"
+      - "Transformation: uptake and incorporation of foreign DNA by a bacterial cell; in laboratory cloning, induced by heat shock (42°C) or electroporation"
+      - "Recombinant DNA: DNA molecule containing sequences from two or more different organisms or sources joined together artificially"
+      - "Antibiotic selection: colonies of bacteria that took up a plasmid with an antibiotic-resistance gene will grow on antibiotic-containing media; colonies without the plasmid die — used to select transformed cells"
+      - "DNA sequencing: determination of the exact nucleotide order of a DNA molecule; Sanger (dideoxy chain-termination) method uses ddNTPs to produce fragments of varying length; modern next-generation sequencing (NGS) uses massively parallel short-read sequencing"
+      - "CRISPR-Cas9: a programmable genome-editing system; a single guide RNA (sgRNA) complementary to the target DNA sequence directs the Cas9 nuclease to make a precise double-strand break at the target locus; the break triggers cellular DNA repair that can knock out or modify the gene"
+      - "Gene therapy: the therapeutic introduction of a functional copy of a gene into a patient's cells to correct a genetic disorder; delivery methods include viral vectors (retroviruses, adeno-associated viruses) and CRISPR"
+      - "GMO (genetically modified organism): any organism whose genome has been altered through recombinant DNA technology or other genetic engineering methods"
+      - "Bt crops: crop plants engineered to express the Bacillus thuringiensis (Bt) toxin gene; the toxin is lethal to specific insect pests but safe for most other animals; widely used in corn and cotton"
+      - "DNA fingerprinting (DNA profiling): identification of individuals based on their unique pattern of short tandem repeats (STRs) at specific loci; STR profiles are compared across samples for forensic identification, paternity testing, or population genetics"
+      - "Bioinformatics: the application of computational and statistical tools to the analysis of large biological datasets, including genome sequences, protein structures, transcriptomes, and phylogenetic trees"
+
+# ============================================================
+# ANSWER TYPE POOLS
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: term_definitions
+  # "What is [term]?" or "Which term describes [definition]?"
+  # Definitions of biological terms, models, and concepts
+  - id: term_definitions
+    format: term
+    estimated_count: 32
+    note: >
+      Codon, anticodon, operon, operator, promoter, enhancer, silencer, transcription factor,
+      spliceosome, intron, exon, mutation, point mutation, frameshift, missense, nonsense,
+      silent mutation, mutagen, epigenetics, telomere, replication fork, Okazaki fragment,
+      leading strand, lagging strand, reading frame, recombinant DNA, plasmid, transformation,
+      totipotent, pluripotent, multipotent, euchromatin, heterochromatin, wobble.
+      Answers are single-term or short-phrase definitions. Key confusions: intron vs. exon,
+      missense vs. nonsense vs. silent mutation, enhancer vs. promoter vs. operator.
+
+  # POOL 2: process_names
+  # "What process [does X]?" or "What is the name of [description]?"
+  # Names of biological processes and mechanisms
+  - id: process_names
+    format: term
+    estimated_count: 22
+    note: >
+      Transcription, translation, DNA replication, RNA splicing, alternative splicing,
+      semiconservative replication, RNA interference (RNAi), histone acetylation,
+      histone deacetylation, DNA methylation, chromatin remodeling, transformation,
+      PCR, gel electrophoresis, DNA cloning, CRISPR-Cas9, gene therapy, DNA fingerprinting,
+      cell differentiation, cell determination, epigenetic inheritance. Answers are process
+      or technique names. Key confusions: transcription vs. translation, PCR vs. DNA cloning,
+      RNAi vs. siRNA vs. miRNA.
+
+  # POOL 3: molecule_names
+  # "What molecule [does X]?" or "Which molecule [is responsible for Y]?"
+  # Names of enzymes, proteins, RNA types, and other molecules
+  - id: molecule_names
+    format: term
+    estimated_count: 28
+    note: >
+      RNA polymerase, DNA polymerase III, DNA polymerase I, helicase, primase, DNA ligase,
+      topoisomerase, single-strand binding protein (SSBP), telomerase, aminoacyl-tRNA synthetase,
+      release factor, Taq polymerase, restriction enzyme, CAP (catabolite activator protein),
+      repressor, spliceosome / snRNP, RISC, miRNA, siRNA, MyoD, ubiquitin, proteasome,
+      Cas9, histone acetyltransferase (HAT), histone deacetylase (HDAC). Answers are protein
+      or molecule names. Key confusions: helicase vs. topoisomerase, DNA Pol I vs. Pol III,
+      miRNA vs. siRNA, primase vs. DNA polymerase.
+
+  # POOL 4: location_terms
+  # "Where does [process] occur?" or "In which cellular location is [molecule] found?"
+  - id: location_terms
+    format: term
+    estimated_count: 14
+    note: >
+      Nucleus (transcription in eukaryotes), cytoplasm (translation, prokaryotic transcription),
+      ribosome (translation), rough ER (secretory protein translation), A site / P site / E site
+      (ribosomal sites), replication fork (DNA replication), nucleoid (prokaryotic DNA),
+      operator (repressor binding), telomere (chromosome ends). Key confusions:
+      nucleus vs. cytoplasm for transcription (eukaryotic vs. prokaryotic), A vs. P vs. E site
+      functions during translation.
+
+  # POOL 5: function_terms
+  # "What is the function of [enzyme/structure/sequence]?"
+  # Descriptions of molecular functions
+  - id: function_terms
+    format: short_answer
+    estimated_count: 28
+    note: >
+      What does helicase do at the replication fork? What is the function of the 5' cap?
+      What does the 3' poly-A tail do? What is the role of the spliceosome? What does
+      telomerase do? What is the function of the A site? What does aminoacyl-tRNA synthetase
+      do? What is the role of the TATA box? What does the lac repressor do? What is the
+      function of CAP-cAMP? What does histone acetylation accomplish? What is the role of
+      miRNA in gene regulation? Answers describe a function. Key confusions: helicase vs.
+      topoisomerase roles; 5' cap vs. poly-A tail functions; lac repressor vs. CAP roles.
+
+  # POOL 6: comparison_terms
+  # Facts that frame a direct comparison between two related things
+  - id: comparison_terms
+    format: term
+    estimated_count: 18
+    note: >
+      DNA vs. RNA structure (sugar, bases, strandedness), leading vs. lagging strand
+      synthesis, introns vs. exons, prokaryotic vs. eukaryotic transcription (cap, tail,
+      splicing, location), lac operon (inducible) vs. trp operon (repressible),
+      euchromatin vs. heterochromatin, missense vs. nonsense vs. silent mutation,
+      somatic vs. germline mutations, miRNA vs. siRNA, totipotent vs. pluripotent vs.
+      multipotent stem cells, Sanger sequencing vs. next-generation sequencing,
+      sticky ends vs. blunt ends, PCR vs. DNA cloning purpose. Answers identify one
+      member of the contrast pair or the key distinguishing feature.
+
+  # POOL 7: bracket_numbers
+  # Facts with specific numerical values testable as fill-in-the-blank
+  - id: bracket_numbers
+    format: numeric
+    estimated_count: 18
+    note: >
+      64 (total codons), 61 (sense codons), 3 (stop codons), 20 (amino acids in genetic
+      code), 2 (hydrogen bonds in A-T), 3 (hydrogen bonds in G-C), ~200 (poly-A tail
+      adenines), ~25 bp upstream (TATA box position), ~22 nucleotides (miRNA length),
+      ~21 nucleotides (siRNA length), 1958 (Meselson-Stahl experiment), 1953 (Watson-Crick
+      double helix), ~1,000-2,000 nt (prokaryotic Okazaki fragments), ~100-200 nt (eukaryotic
+      Okazaki fragments), 95°C / 55°C / 72°C (PCR temperatures), 3 Na+ out / 2 K+ in
+      (not Unit 6 but cross-referenced), 10^9 (spontaneous mutation rate denominator).
+      Distractors must be nearby plausible numbers (e.g., 3 vs. 2 hydrogen bonds,
+      61 vs. 64 vs. 60 codons).
+
+  # POOL 8: organism_names
+  # Facts referencing a specific organism or scientist as the answer
+  - id: organism_names
+    format: term
+    estimated_count: 10
+    note: >
+      Watson and Crick (double helix discovery), Rosalind Franklin (X-ray crystallography
+      data), Meselson and Stahl (semiconservative replication experiment), E. coli (lac
+      operon organism, DNA cloning host), Bacillus thuringiensis (Bt toxin source),
+      Thermus aquaticus (Taq polymerase source), Drosophila (model organism for gene
+      regulation research), Lynn Margulis (endosymbiotic theory — cross-reference Unit 2).
+      Answers are scientist names or organism names. Key confusions: Watson vs. Crick vs.
+      Franklin; Meselson-Stahl vs. Hershey-Chase experiments.

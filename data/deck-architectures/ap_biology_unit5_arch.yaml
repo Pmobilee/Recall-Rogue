@@ -1,0 +1,1006 @@
+deck_id: ap_biology_unit5
+name: "AP Biology — Unit 5: Heredity"
+domain: natural_sciences
+sub_domain: biology
+description: "Master AP Biology Unit 5 — Heredity (8-11% of exam weight). Covers meiosis mechanics and the two divisions, sources of genetic variation (crossing over, independent assortment, random fertilization), nondisjunction and aneuploidy, Mendelian genetics (segregation, independent assortment, mono- and dihybrid crosses, test crosses, probability rules), non-Mendelian inheritance patterns (incomplete dominance, codominance, multiple alleles, polygenic traits, epistasis, pleiotropy, sex-linked traits, X-inactivation, genomic imprinting, organelle inheritance), environmental effects on phenotype, and the chromosomal basis of inheritance (Morgan's experiments, karyotypes, chromosomal mutations, chi-square analysis). Aligned to College Board AP Biology CED Topics 5.1-5.6 (Fall 2025)."
+minimum_facts: 90
+target_facts: 110
+
+# COMPLETENESS PHILOSOPHY:
+# This deck covers the COMPLETE College Board AP Biology Unit 5 (Topics 5.1-5.6).
+# A student who masters this deck should be able to answer every AP exam question
+# that touches Heredity. Scope is curriculum-driven: every Essential Knowledge (EK)
+# statement and Learning Objective (LO) for Unit 5 is represented. Fact counts per
+# chain theme are weighted by topic density and AP exam emphasis.
+
+# Sourcing & licensing
+data_sources:
+  - name: College Board AP Biology Course and Exam Description (CED) Effective Fall 2025
+    url: https://apcentral.collegeboard.org/media/pdf/ap-biology-course-and-exam-description-effective-fall-2025.pdf
+    license: public educational resource
+    usage: Authoritative unit/topic structure, learning objectives (LOs), essential knowledge (EK) statements, exam weight distribution (8-11% for Unit 5), illustrative examples for Topics 5.1-5.6
+  - name: OpenStax Biology 2e — Chapter 11 (Meiosis and Sexual Reproduction) and Chapter 12 (Mendel's Experiments and Heredity)
+    url: https://openstax.org/books/biology-2e/pages/11-introduction
+    license: CC-BY-4.0
+    usage: Meiosis phase-by-phase mechanics, crossing over, nondisjunction, aneuploidy, polyploidy, Mendel's laws, Punnett square ratios, probability rules
+  - name: OpenStax Biology 2e — Chapter 13 (Modern Understandings of Inheritance) and Chapter 15 (Chromosomal Theory and Genetic Linkage)
+    url: https://openstax.org/books/biology-2e/pages/13-introduction
+    license: CC-BY-4.0
+    usage: Non-Mendelian inheritance, incomplete dominance, codominance, multiple alleles, polygenic traits, epistasis, pleiotropy, sex-linked traits, X-inactivation, Morgan's experiments, linkage and recombination frequency, chromosomal mutations
+  - name: Khan Academy AP Biology — Unit 5 Heredity
+    url: https://www.khanacademy.org/science/ap-biology/heredity
+    license: free educational resource (CC-BY-NC-SA)
+    usage: Cross-referencing key concepts, dihybrid cross ratios, chi-square worked examples, sex-linked trait pedigrees
+  - name: Wikipedia — Meiosis, Mendelian inheritance, Chromosomal crossover, Nondisjunction, Aneuploidy, X-inactivation, Genomic imprinting
+    url: https://en.wikipedia.org/wiki/Meiosis
+    license: CC-BY-SA-4.0
+    usage: Definitions, historical context (Mendel 1860s, Morgan Drosophila, Sutton-Boveri 1902, X-inactivation Mary Lyon 1961), numerical values, chromosomal mutation types, Philadelphia chromosome
+
+asset_sources: []
+
+# ============================================================
+# CHAIN THEMES — 2 thematic zones for Unit 5
+# Theme assignment: 5.1-5.2 → meiosis_genetics
+#                   5.3-5.6 → mendelian_inheritance
+# ============================================================
+
+chain_themes:
+
+  - id: 0
+    name: "Meiosis and Genetic Diversity"
+    ced_coverage: "Unit 5 Topics 5.1-5.2: Meiosis, Sources of Genetic Variation, Nondisjunction, Aneuploidy"
+    target_facts: 32
+    description: >
+      The mechanics of meiosis and how sexual reproduction generates genetic variation.
+      Players master each phase of meiosis I and meiosis II, understand the critical
+      distinction between reductional division (meiosis I, homologs separate) and
+      equational division (meiosis II, sister chromatids separate), and trace three
+      sources of genetic diversity: crossing over at chiasmata during prophase I,
+      random orientation of homologous pairs at metaphase I (independent assortment),
+      and random fertilization. Nondisjunction, aneuploidy, trisomy, monosomy, and
+      polyploidy are covered with human examples.
+    key_concepts:
+      # --- Topic 5.1: Meiosis ---
+      - "Meiosis: two rounds of cell division producing 4 haploid daughter cells from 1 diploid parent cell"
+      - "Purpose of meiosis: produce gametes (sperm and egg) with half the chromosome number of the parent"
+      - "Diploid (2n) to haploid (n): humans go from 2n=46 to n=23 during meiosis"
+      - "Meiosis I: reductional division — homologous chromosomes separate; reduces chromosome number by half"
+      - "Meiosis II: equational division — sister chromatids separate; similar to mitosis but starts with haploid cells"
+      - "Prophase I: chromosomes condense; homologous chromosomes pair up (synapsis) forming tetrads (bivalents); crossing over occurs at chiasmata"
+      - "Crossing over: exchange of genetic material between non-sister chromatids of homologous chromosomes; occurs during prophase I at points called chiasmata"
+      - "Metaphase I: homologous pairs (tetrads) align at the metaphase plate; orientation of each pair is random (basis of independent assortment)"
+      - "Anaphase I: homologous chromosomes separate and move to opposite poles; sister chromatids remain joined at centromere"
+      - "Telophase I and Cytokinesis I: two haploid cells form; each cell has n chromosomes but each chromosome still consists of two joined sister chromatids"
+      - "Prophase II: chromosomes condense again in each of the two haploid cells; no crossing over occurs"
+      - "Metaphase II: individual chromosomes (not pairs) align at the metaphase plate in each cell"
+      - "Anaphase II: sister chromatids separate at the centromere and move to opposite poles"
+      - "Telophase II and Cytokinesis II: four haploid daughter cells produced; each has n unreplicated chromosomes"
+      - "Key difference from mitosis: meiosis has two divisions and produces 4 haploid cells; mitosis has one division and produces 2 diploid cells"
+      - "Homologous chromosomes: a matched pair of chromosomes (one from each parent) carrying genes for the same traits but possibly different alleles"
+      - "Sister chromatids: two identical DNA copies of a chromosome joined at the centromere; produced during DNA replication in S phase"
+      # --- Topic 5.2: Meiosis and Genetic Diversity ---
+      - "Three sources of genetic variation in sexual reproduction: crossing over, independent assortment, and random fertilization"
+      - "Independent assortment: random orientation of homologous pairs at metaphase I; each pair orients independently, producing 2^n possible gamete chromosome combinations"
+      - "Number of possible gamete combinations from independent assortment in humans: 2^23 = approximately 8.4 million"
+      - "Crossing over creates recombinant chromosomes: new allele combinations not present in either parent chromosome"
+      - "Random fertilization: any sperm can fertilize any egg; vastly multiplies the number of genetically unique offspring possible"
+      - "Nondisjunction: failure of chromosomes or chromatids to separate properly during meiosis"
+      - "Nondisjunction in meiosis I: both homologous chromosomes go to the same pole → gametes with n+1 or n-1 chromosomes"
+      - "Nondisjunction in meiosis II: sister chromatids fail to separate → gametes with n+1 or n-1 chromosomes"
+      - "Aneuploidy: condition of having an abnormal number of chromosomes (not a multiple of the haploid number)"
+      - "Trisomy: having three copies of a particular chromosome (2n+1); example: Down syndrome is trisomy 21 (three copies of chromosome 21)"
+      - "Monosomy: having only one copy of a particular chromosome (2n-1); often lethal; Turner syndrome (45,X) is an exception surviving to birth"
+      - "Polyploidy: having more than two complete sets of chromosomes; common and often viable in plants; usually lethal in animals"
+
+  - id: 1
+    name: "Mendelian and Non-Mendelian Inheritance"
+    ced_coverage: "Unit 5 Topics 5.3-5.6: Mendelian Genetics, Non-Mendelian Genetics, Environmental Effects, Chromosomal Inheritance"
+    target_facts: 78
+    description: >
+      The full landscape of inheritance from Mendel's pea plant experiments to complex
+      non-Mendelian patterns. Players master core vocabulary (gene, allele, genotype,
+      phenotype, dominant, recessive), Mendel's two laws (segregation and independent
+      assortment), Punnett square analysis for mono- and dihybrid crosses, test crosses,
+      and probability rules. They then encounter situations Mendel's laws alone cannot
+      explain: incomplete dominance, codominance, multiple alleles, polygenic traits,
+      epistasis, pleiotropy, sex-linked traits, X-inactivation, genomic imprinting, and
+      organelle inheritance. Environmental effects on phenotype, Morgan's Drosophila
+      experiments, karyotypes, chromosomal mutations, and chi-square analysis complete
+      the unit.
+    key_concepts:
+      # --- Topic 5.3: Mendelian Genetics ---
+      - "Gregor Mendel: the father of genetics; studied inheritance in pea plants (Pisum sativum) in the 1860s using true-breeding lines"
+      - "Gene: the basic unit of heredity; a segment of DNA that encodes a protein or functional RNA"
+      - "Allele: an alternative form of a gene at a given chromosomal locus"
+      - "Genotype: the genetic makeup of an individual for one or more genes (e.g., Bb)"
+      - "Phenotype: the observable physical or biochemical characteristics of an individual (e.g., brown eyes)"
+      - "Homozygous: having two identical alleles at a locus (BB or bb)"
+      - "Heterozygous: having two different alleles at a locus (Bb)"
+      - "Dominant allele: allele that is expressed in the phenotype of a heterozygote; represented by an uppercase letter"
+      - "Recessive allele: allele whose expression is masked by a dominant allele; expressed only in homozygous recessive condition; represented by lowercase letter"
+      - "Law of Segregation: the two alleles for a gene separate from each other during gamete formation; each gamete receives only one allele"
+      - "Law of Independent Assortment: genes located on different (non-homologous) chromosomes assort independently into gametes during meiosis"
+      - "Monohybrid cross Bb × Bb genotypic ratio: 1 BB : 2 Bb : 1 bb"
+      - "Monohybrid cross Bb × Bb phenotypic ratio: 3 dominant phenotype : 1 recessive phenotype"
+      - "Dihybrid cross BbRr × BbRr phenotypic ratio: 9:3:3:1 (assuming independent assortment and complete dominance)"
+      - "Test cross: crossing an individual of unknown genotype with a homozygous recessive individual (bb) to determine whether the unknown is BB or Bb"
+      - "Punnett square: a grid diagram used to predict the genotypic and phenotypic ratios of offspring from a genetic cross"
+      - "Probability multiplication rule: for independent events, P(A and B) = P(A) × P(B)"
+      - "Probability addition rule: for mutually exclusive events, P(A or B) = P(A) + P(B)"
+      # --- Topic 5.4: Non-Mendelian Genetics ---
+      - "Incomplete dominance: the heterozygote shows a phenotype intermediate between the two homozygous phenotypes; example: red × white snapdragons produce pink offspring"
+      - "Codominance: both alleles are fully and simultaneously expressed in the heterozygote; example: blood type AB (I^A I^B) — both A and B antigens present on red blood cells"
+      - "Multiple alleles: more than two alleles exist in the population for a single gene; example: ABO blood type has three alleles: I^A, I^B, and i"
+      - "Polygenic inheritance: a single trait is controlled by two or more genes; produces a range of continuous phenotypic variation; examples: skin color, height, eye color"
+      - "Epistasis: one gene influences or masks the expression of another gene; example: in Labrador retrievers, the E gene controls whether the B/b pigment gene is expressed (ee dogs are yellow regardless of B genotype)"
+      - "Pleiotropy: a single gene affects multiple phenotypic traits; example: the sickle cell allele causes hemolytic anemia, increased malaria resistance, and multi-organ damage"
+      - "Linked genes: genes located on the same chromosome tend to be inherited together and do not assort independently"
+      - "Recombination frequency: the percentage of recombinant offspring produced by crossing over; used to estimate map distance between genes; 1% recombination frequency equals 1 centimorgan (cM)"
+      - "Sex-linked traits: traits encoded by genes on the X chromosome; males (XY) have only one X chromosome and therefore express X-linked recessive traits more often than females (XX)"
+      - "Color blindness: X-linked recessive trait; more common in males than females"
+      - "Hemophilia: X-linked recessive bleeding disorder; clotting factor gene on X chromosome"
+      - "Duchenne muscular dystrophy: X-linked recessive disorder caused by mutations in the dystrophin gene on the X chromosome"
+      - "X-inactivation: one of the two X chromosomes in each cell of XX females is randomly and permanently inactivated early in development; the inactivated X condenses into a Barr body"
+      - "Calico cats as evidence of X-inactivation: patches of orange and black fur result from random inactivation of different X chromosomes in different cell lineages"
+      - "Genomic imprinting: gene expression depends on which parent contributed the allele; one parental copy is silenced by methylation; example: Prader-Willi and Angelman syndromes"
+      - "Mitochondrial inheritance: mitochondria contain their own DNA and are inherited maternally through the egg cytoplasm; mitochondrial disorders are passed from mothers to all children"
+      - "Chloroplast inheritance: chloroplasts contain their own DNA and are typically inherited maternally through the egg in most plant species"
+      # --- Topic 5.5: Environmental Effects on Phenotype ---
+      - "Phenotype is determined by both genotype and environment: phenotype = genotype + environment"
+      - "Norm of reaction: the range of phenotypes that a single genotype can produce across a range of environmental conditions"
+      - "Temperature-sensitive coat color in Siamese cats: the tyrosinase enzyme is heat-sensitive; cooler body extremities (ears, nose, paws, tail) produce dark pigment; warmer body core remains pale"
+      - "Hydrangea flower color and soil pH: blue flowers in acidic soil (aluminum available) versus pink flowers in alkaline soil (aluminum unavailable)"
+      - "Human height: polygenic inheritance significantly modified by environmental factors including nutrition, health, and disease"
+      - "Phenylketonuria (PKU): autosomal recessive genetic disorder of phenylalanine metabolism; intellectual disability is prevented by strict dietary restriction of phenylalanine from birth"
+      - "Twin studies: identical (monozygotic) twins raised apart allow researchers to separate the contributions of genetics from environment to phenotypic differences"
+      - "Penetrance: the proportion of individuals with a given genotype who exhibit the expected phenotype; incomplete penetrance occurs when less than 100% of individuals with the genotype show the phenotype"
+      # --- Topic 5.6: Chromosomal Inheritance ---
+      - "Chromosome theory of inheritance (Sutton and Boveri, ~1902): genes are located on chromosomes; the behavior of chromosomes during meiosis explains Mendel's laws of segregation and independent assortment"
+      - "Thomas Hunt Morgan: used Drosophila melanogaster (fruit fly) to demonstrate that genes are physically located on chromosomes; discovered X-linked inheritance through white-eye trait experiments"
+      - "Morgan's white-eye experiment: white-eyed males crossed with red-eyed females; F2 showed white eyes only in males, proving eye-color gene is on the X chromosome"
+      - "Karyotype: an organized display of an individual's chromosomes arranged by size and banding pattern; used clinically to detect aneuploidy and large chromosomal mutations"
+      - "Deletion: a chromosomal mutation in which a segment of a chromosome is lost"
+      - "Duplication: a chromosomal mutation in which a segment of a chromosome is copied, resulting in an extra copy"
+      - "Inversion: a chromosomal mutation in which a segment of a chromosome is reversed end to end"
+      - "Translocation: a chromosomal mutation in which a segment from one chromosome moves to a non-homologous chromosome; example: Philadelphia chromosome results from translocation between chromosomes 9 and 22 and causes chronic myelogenous leukemia (CML)"
+      - "Chi-square test formula: χ² = Σ((observed - expected)² / expected); tests whether observed genetic ratios match expected Mendelian ratios"
+      - "Chi-square degrees of freedom: number of phenotypic classes minus 1 (df = n - 1)"
+      - "Chi-square interpretation: compare calculated χ² to critical value at p=0.05; if χ² exceeds critical value, reject null hypothesis that observed fits expected ratio"
+
+# ============================================================
+# ANSWER TYPE POOLS
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: term_definitions
+  # "What is [term]?" or "Which term describes [definition]?"
+  # Definitions of genetic and cell-division terms
+  - id: term_definitions
+    format: term
+    estimated_count: 32
+    note: >
+      Meiosis, gamete, diploid, haploid, tetrad, bivalent, chiasma, synapsis, crossing
+      over, independent assortment, aneuploidy, trisomy, monosomy, polyploidy, gene,
+      allele, genotype, phenotype, homozygous, heterozygous, dominant, recessive,
+      incomplete dominance, codominance, multiple alleles, polygenic inheritance,
+      epistasis, pleiotropy, sex-linked trait, X-inactivation, Barr body, genomic
+      imprinting, penetrance, norm of reaction, recombination frequency, centimorgan,
+      karyotype, deletion, duplication, inversion, translocation. Answers are single
+      terms or short noun phrases. Key confusions: incomplete dominance vs. codominance;
+      epistasis vs. pleiotropy; trisomy vs. monosomy.
+
+  # POOL 2: process_names
+  # "What process [does X]?" or "What is the name of [biological event]?"
+  # Names of meiotic events, inheritance mechanisms, and laboratory techniques
+  - id: process_names
+    format: term
+    estimated_count: 18
+    note: >
+      Meiosis I, meiosis II, synapsis, crossing over, independent assortment, random
+      fertilization, nondisjunction, X-inactivation, genomic imprinting, test cross,
+      chi-square test, karyotyping. Answers are process or technique names.
+      Key confusions: meiosis I vs. meiosis II events; nondisjunction in meiosis I
+      vs. meiosis II outcomes; test cross vs. dihybrid cross.
+
+  # POOL 3: bracket_numbers
+  # Facts containing numeric values testable as fill-in-the-blank
+  # e.g., "{4} haploid cells produced by meiosis", "2^{23} gamete combinations"
+  - id: bracket_numbers
+    format: numeric
+    estimated_count: 10
+    note: >
+      4 haploid cells from meiosis, 2 diploid cells from mitosis, 46 (human 2n),
+      23 (human n), 2^23 = ~8.4 million gamete combinations from independent assortment,
+      3:1 monohybrid phenotypic ratio, 9:3:3:1 dihybrid phenotypic ratio,
+      1 cM = 1% recombination, trisomy 21 (Down syndrome chromosome number),
+      45,X (Turner syndrome karyotype). Distractors must be adjacent plausible numbers.
+
+  # POOL 4: comparison_terms
+  # "What is the difference between [X] and [Y]?"
+  # Comparisons of related concepts, phases, or mechanisms
+  - id: comparison_terms
+    format: term
+    estimated_count: 14
+    note: >
+      Meiosis I vs. meiosis II (type of division, what separates), meiosis vs. mitosis
+      (divisions, products, ploidy), dominant vs. recessive (expression in heterozygote),
+      homozygous vs. heterozygous, incomplete dominance vs. codominance, trisomy vs.
+      monosomy, linked vs. unlinked genes (assortment behavior), sex-linked vs. autosomal
+      traits (inheritance pattern by sex), penetrance vs. expressivity. Key confusions:
+      equational vs. reductional division; homologs vs. sister chromatids.
+
+  # POOL 5: organism_names
+  # "Which organism is the classic model for [genetics concept]?"
+  # Organism names associated with landmark experiments or genetic examples
+  - id: organism_names
+    format: term
+    estimated_count: 5
+    note: >
+      Pisum sativum (pea plant — Mendel), Drosophila melanogaster (fruit fly — Morgan),
+      Felis catus (calico cats — X-inactivation), Antirrhinum majus (snapdragons —
+      incomplete dominance), Labrador retriever (epistasis coat color example).
+      Answers are scientific or common species names.
+
+  # POOL 6: experiment_terms
+  # "What experimental tool or cross [does X]?"
+  # Names of genetic analysis methods and cross types
+  - id: experiment_terms
+    format: term
+    estimated_count: 8
+    note: >
+      Punnett square, test cross, monohybrid cross, dihybrid cross, chi-square test,
+      karyotype, twin study, norm of reaction experiment. Answers are experimental
+      method or cross-type names. Key confusions: test cross purpose (determine BB vs Bb)
+      vs. other cross types; chi-square null hypothesis interpretation.
+
+  # POOL 7: person_names
+  # "Which scientist [did X]?" or "Who discovered [Y]?"
+  # Scientists associated with genetics discoveries
+  - id: person_names
+    format: term
+    estimated_count: 5
+    note: >
+      Gregor Mendel (laws of heredity, pea plants), Thomas Hunt Morgan (X-linkage,
+      Drosophila), Walter Sutton and Theodor Boveri (chromosome theory of inheritance),
+      Mary Lyon (X-inactivation, 1961). Answers are scientist surnames or full names.
+      Key confusions: Mendel vs. Morgan contributions; Sutton vs. Boveri roles.
+
+  # POOL 8: disease_syndrome_names
+  # "Which condition results from [chromosomal event]?"
+  # Names of genetic disorders and syndromes
+  - id: disease_syndrome_names
+    format: term
+    estimated_count: 8
+    note: >
+      Down syndrome (trisomy 21), Turner syndrome (45,X monosomy), color blindness
+      (X-linked recessive), hemophilia (X-linked recessive), Duchenne muscular dystrophy
+      (X-linked recessive), phenylketonuria/PKU (autosomal recessive), sickle cell
+      anemia (pleiotropy example), chronic myelogenous leukemia/CML (Philadelphia
+      chromosome translocation). Answers are disease or syndrome names.
+
+# ============================================================
+# ENTITY LIST — ALL VERIFIED SOURCE FACTS
+# Workers format these into DeckFact JSON — DO NOT invent content
+# ============================================================
+
+# --- TOPIC 5.1: MEIOSIS ---
+topic_5_1:
+  name: "Meiosis"
+  source: "OpenStax Biology 2e, Chapter 11"
+  source_url: "https://openstax.org/books/biology-2e/pages/11-introduction"
+  entities:
+
+    - term: "Meiosis"
+      definition: "Two rounds of cell division producing 4 haploid daughter cells from 1 diploid parent cell"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Purpose of meiosis"
+      definition: "To produce gametes (sperm and egg) with half the chromosome number of somatic cells"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Diploid to haploid in humans"
+      definition: "Diploid (2n=46) reduces to haploid (n=23) during meiosis"
+      pool: bracket_numbers
+      chain_theme: meiosis_genetics
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Meiosis I"
+      definition: "The first meiotic division; homologous chromosomes separate (reductional division); chromosome number is halved"
+      pool: process_names
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Meiosis II"
+      definition: "The second meiotic division; sister chromatids separate (equational division); analogous to mitosis but starts with haploid cells"
+      pool: process_names
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Prophase I"
+      definition: "First phase of meiosis I; chromosomes condense, homologs pair up (synapsis) forming tetrads, and crossing over occurs at chiasmata"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Synapsis"
+      definition: "The pairing of homologous chromosomes during prophase I to form a tetrad (bivalent); the paired structure is held together at chiasmata"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Crossing over"
+      definition: "Exchange of genetic material between non-sister chromatids of homologous chromosomes during prophase I; occurs at points called chiasmata"
+      pool: process_names
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Metaphase I"
+      definition: "Homologous pairs (tetrads) align at the metaphase plate; orientation of each pair is random, forming the basis of independent assortment"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Anaphase I"
+      definition: "Homologous chromosomes separate and move to opposite poles; sister chromatids remain joined at the centromere"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Telophase I and Cytokinesis I"
+      definition: "Two haploid cells form; each cell has n chromosomes, each still consisting of two joined sister chromatids"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Prophase II"
+      definition: "Chromosomes condense again in each of the two haploid cells from meiosis I; no crossing over occurs"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Metaphase II"
+      definition: "Individual chromosomes (not homologous pairs) align at the metaphase plate in each haploid cell"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Anaphase II"
+      definition: "Sister chromatids separate at the centromere and move to opposite poles"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Telophase II and Cytokinesis II"
+      definition: "Four haploid daughter cells produced; each has n unreplicated chromosomes"
+      pool: bracket_numbers
+      chain_theme: meiosis_genetics
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Meiosis vs. mitosis comparison"
+      definition: "Meiosis: two divisions, 4 haploid daughter cells; mitosis: one division, 2 diploid daughter cells"
+      pool: comparison_terms
+      chain_theme: meiosis_genetics
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Homologous chromosomes"
+      definition: "A matched pair of chromosomes — one inherited from each parent — carrying the same genes at the same loci but possibly different alleles"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Sister chromatids"
+      definition: "Two identical DNA copies of a chromosome joined at the centromere; produced during DNA replication in S phase before meiosis"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Tetrad (bivalent)"
+      definition: "The structure formed when two homologous chromosomes (each consisting of two sister chromatids) pair during prophase I of meiosis; contains 4 chromatids total"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+    - term: "Reductional vs. equational division"
+      definition: "Meiosis I is reductional (chromosome number halved, homologs separate); meiosis II is equational (sister chromatids separate, chromosome number unchanged)"
+      pool: comparison_terms
+      chain_theme: meiosis_genetics
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.1"]
+
+# --- TOPIC 5.2: MEIOSIS AND GENETIC DIVERSITY ---
+topic_5_2:
+  name: "Meiosis and Genetic Diversity"
+  source: "OpenStax Biology 2e, Chapter 11"
+  source_url: "https://openstax.org/books/biology-2e/pages/11-introduction"
+  entities:
+
+    - term: "Three sources of genetic variation"
+      definition: "Crossing over, independent assortment, and random fertilization are the three main sources of genetic variation in sexually reproducing organisms"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.2"]
+
+    - term: "Independent assortment mechanism"
+      definition: "Random orientation of homologous chromosome pairs at metaphase I; each pair orients independently, generating 2^n possible gamete chromosome combinations"
+      pool: process_names
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.2"]
+
+    - term: "Human gamete combinations from independent assortment"
+      definition: "Humans (n=23) can produce 2^23 ≈ 8.4 million genetically different gametes from independent assortment alone"
+      pool: bracket_numbers
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.2"]
+
+    - term: "Recombinant chromosomes"
+      definition: "Chromosomes with new allele combinations created by crossing over; carry combinations of alleles not present in either parental chromosome"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.2"]
+
+    - term: "Random fertilization"
+      definition: "Any sperm can fertilize any egg; vastly multiplies the number of genetically unique offspring beyond what crossing over and independent assortment alone produce"
+      pool: process_names
+      chain_theme: meiosis_genetics
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.2"]
+
+    - term: "Nondisjunction"
+      definition: "Failure of chromosomes or chromatids to separate properly during meiosis I or meiosis II; results in gametes with abnormal chromosome numbers"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.2"]
+
+    - term: "Nondisjunction in meiosis I vs. meiosis II"
+      definition: "Meiosis I nondisjunction: both homologs go to same pole (all resulting gametes are aneuploid); meiosis II nondisjunction: sister chromatids fail to separate (two of four gametes are aneuploid)"
+      pool: comparison_terms
+      chain_theme: meiosis_genetics
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.2"]
+
+    - term: "Aneuploidy"
+      definition: "Condition of having an abnormal chromosome number that is not a multiple of the haploid number; caused by nondisjunction during meiosis"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.2"]
+
+    - term: "Trisomy"
+      definition: "A type of aneuploidy in which a cell has three copies of one chromosome (2n+1); example: Down syndrome is trisomy 21"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.2"]
+
+    - term: "Down syndrome karyotype"
+      definition: "Trisomy 21; the presence of three copies of chromosome 21; results from nondisjunction during meiosis"
+      pool: disease_syndrome_names
+      chain_theme: meiosis_genetics
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.2"]
+
+    - term: "Monosomy"
+      definition: "A type of aneuploidy in which a cell has only one copy of a particular chromosome (2n-1); often lethal; example: Turner syndrome (45,X)"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.2"]
+
+    - term: "Turner syndrome"
+      definition: "Monosomy of the sex chromosome: 45,X karyotype (one X chromosome, no second sex chromosome); one of the few monosomies viable in humans"
+      pool: disease_syndrome_names
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.2"]
+
+    - term: "Polyploidy"
+      definition: "Having more than two complete sets of chromosomes (e.g., 3n, 4n); common in plants and often results in new species; usually lethal in animals"
+      pool: term_definitions
+      chain_theme: meiosis_genetics
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.2"]
+
+# --- TOPIC 5.3: MENDELIAN GENETICS ---
+topic_5_3:
+  name: "Mendelian Genetics"
+  source: "OpenStax Biology 2e, Chapter 12"
+  source_url: "https://openstax.org/books/biology-2e/pages/12-introduction"
+  entities:
+
+    - term: "Gregor Mendel"
+      definition: "The father of genetics; Austrian monk who studied inheritance in pea plants (Pisum sativum) in the 1860s using true-breeding lines and statistical analysis"
+      pool: person_names
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Gene"
+      definition: "The basic unit of heredity; a segment of DNA that encodes a protein or functional RNA molecule"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Allele"
+      definition: "An alternative form of a gene; multiple alleles can exist at a given chromosomal locus in a population"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Genotype"
+      definition: "The genetic makeup of an individual for one or more genes (e.g., Bb for a heterozygous individual)"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Phenotype"
+      definition: "The observable physical or biochemical characteristics of an individual determined by genotype and environment (e.g., brown eyes, tall)"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Homozygous"
+      definition: "Having two identical alleles at a given locus (e.g., BB or bb)"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Heterozygous"
+      definition: "Having two different alleles at a given locus (e.g., Bb)"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Dominant allele"
+      definition: "The allele whose phenotypic effect is expressed in the heterozygote; represented by an uppercase letter"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Recessive allele"
+      definition: "The allele whose expression is masked by the dominant allele in a heterozygote; expressed only in the homozygous recessive condition; represented by a lowercase letter"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Law of Segregation"
+      definition: "Mendel's first law: the two alleles for any gene separate during gamete formation, and each gamete receives only one allele"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Law of Independent Assortment"
+      definition: "Mendel's second law: genes located on different (non-homologous) chromosomes assort independently into gametes during meiosis"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Monohybrid cross genotypic ratio"
+      definition: "A Bb × Bb cross produces offspring in a 1 BB : 2 Bb : 1 bb genotypic ratio"
+      pool: bracket_numbers
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Monohybrid cross phenotypic ratio"
+      definition: "A Bb × Bb cross produces a 3:1 phenotypic ratio (3 dominant phenotype : 1 recessive phenotype) when dominance is complete"
+      pool: bracket_numbers
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Dihybrid cross phenotypic ratio"
+      definition: "A BbRr × BbRr cross with independent assortment produces a 9:3:3:1 phenotypic ratio among offspring"
+      pool: bracket_numbers
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Test cross"
+      definition: "A cross between an individual of unknown genotype and a homozygous recessive individual (e.g., bb) to determine whether the unknown is homozygous dominant (BB) or heterozygous (Bb)"
+      pool: experiment_terms
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Punnett square"
+      definition: "A grid diagram used to predict the genotypic and phenotypic ratios of offspring from a genetic cross by systematically combining parental gametes"
+      pool: experiment_terms
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Probability multiplication rule"
+      definition: "For independent genetic events, P(A and B) = P(A) × P(B); used to calculate the probability of inheriting multiple traits simultaneously"
+      pool: experiment_terms
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Probability addition rule"
+      definition: "For mutually exclusive genetic outcomes, P(A or B) = P(A) + P(B); used when calculating the probability of alternative genotypes"
+      pool: experiment_terms
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+    - term: "Pisum sativum"
+      definition: "The garden pea; the model organism used by Gregor Mendel in the 1860s to discover the fundamental laws of heredity"
+      pool: organism_names
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.3"]
+
+# --- TOPIC 5.4: NON-MENDELIAN GENETICS ---
+topic_5_4:
+  name: "Non-Mendelian Genetics"
+  source: "OpenStax Biology 2e, Chapter 13"
+  source_url: "https://openstax.org/books/biology-2e/pages/13-introduction"
+  entities:
+
+    - term: "Incomplete dominance"
+      definition: "Inheritance pattern in which the heterozygote shows a phenotype intermediate between the two homozygous phenotypes; example: red × white snapdragons produce pink offspring"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Snapdragon incomplete dominance example"
+      definition: "Red-flowered snapdragons (R¹R¹) crossed with white-flowered (R²R²) produce pink-flowered heterozygotes (R¹R²) — a classic example of incomplete dominance"
+      pool: organism_names
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Codominance"
+      definition: "Inheritance pattern in which both alleles are fully and simultaneously expressed in the heterozygote; example: AB blood type (I^A I^B) displays both A and B antigens"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Incomplete dominance vs. codominance"
+      definition: "Incomplete dominance: heterozygote shows blended intermediate phenotype; codominance: both parental phenotypes are fully expressed simultaneously in the heterozygote"
+      pool: comparison_terms
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Multiple alleles"
+      definition: "When more than two alleles exist in the population for a single gene; example: ABO blood type is controlled by three alleles: I^A, I^B, and i"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "ABO blood type multiple alleles"
+      definition: "ABO blood group system has three alleles: I^A (dominant, produces A antigen), I^B (dominant, produces B antigen), and i (recessive, no antigen); I^A and I^B are codominant with each other"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Polygenic inheritance"
+      definition: "A trait controlled by two or more genes, each contributing additively to the phenotype; produces continuous variation in the population; examples: skin color, height, eye color"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Epistasis"
+      definition: "Interaction in which one gene influences or masks the expression of another gene; example: in Labrador retrievers, the E gene controls whether pigment encoded by the B gene is deposited (ee dogs are yellow regardless of B/b genotype)"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Labrador retriever coat color epistasis"
+      definition: "Two genes interact: B gene determines black (B_) vs. chocolate (bb) pigment; E gene controls pigment deposition — ee dogs lack pigment and are yellow regardless of B genotype"
+      pool: organism_names
+      chain_theme: mendelian_inheritance
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Pleiotropy"
+      definition: "A single gene that affects multiple phenotypic traits; example: the sickle cell allele causes hemolytic anemia, malaria resistance, and multi-organ damage"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Sickle cell as pleiotropy example"
+      definition: "The sickle cell allele is a classic example of pleiotropy: one mutation causes hemolytic anemia, increased malaria resistance, splenic damage, and other multi-organ effects"
+      pool: disease_syndrome_names
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Linked genes"
+      definition: "Genes located on the same chromosome that tend to be inherited together and do not assort independently (violating Mendel's second law)"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Recombination frequency"
+      definition: "The percentage of offspring that are recombinants (result of crossing over); used to estimate genetic map distance; 1% recombination frequency = 1 centimorgan (cM) = 1 map unit"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Sex-linked traits"
+      definition: "Traits encoded by genes on the X chromosome; because males (XY) have only one X, X-linked recessive traits are expressed more frequently in males than females"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Color blindness"
+      definition: "X-linked recessive trait affecting red-green color discrimination; more common in males (XY) than females (XX) because males need only one recessive allele to be affected"
+      pool: disease_syndrome_names
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Hemophilia"
+      definition: "X-linked recessive blood-clotting disorder caused by mutations in clotting factor genes on the X chromosome; affected males express the disorder; females are carriers if heterozygous"
+      pool: disease_syndrome_names
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Duchenne muscular dystrophy"
+      definition: "X-linked recessive disorder caused by mutations in the dystrophin gene on the X chromosome; causes progressive muscle weakness; almost exclusively affects males"
+      pool: disease_syndrome_names
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "X-inactivation"
+      definition: "Random and permanent inactivation of one X chromosome in each cell of XX females early in development; the inactivated X condenses into a visible Barr body"
+      pool: process_names
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Barr body"
+      definition: "The condensed, transcriptionally inactive X chromosome visible in the nucleus of XX female cells; result of X-inactivation; females with 2 X chromosomes have 1 Barr body"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Calico cats and X-inactivation"
+      definition: "Calico cats are almost always female (XX); patches of orange and black fur arise because different cells randomly inactivate different X chromosomes carrying different coat-color alleles"
+      pool: organism_names
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Genomic imprinting"
+      definition: "An epigenetic phenomenon in which gene expression depends on which parent contributed the allele; one parental copy is silenced by methylation; examples include Prader-Willi and Angelman syndromes"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Mitochondrial inheritance"
+      definition: "Mitochondria contain their own circular DNA and are inherited exclusively maternally through the cytoplasm of the egg; mitochondrial disorders are passed from mothers to all offspring"
+      pool: process_names
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+    - term: "Chloroplast inheritance"
+      definition: "Chloroplasts contain their own DNA and are typically inherited maternally through the egg in most plant species; not subject to Mendelian segregation"
+      pool: process_names
+      chain_theme: mendelian_inheritance
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.4"]
+
+# --- TOPIC 5.5: ENVIRONMENTAL EFFECTS ON PHENOTYPE ---
+topic_5_5:
+  name: "Environmental Effects on Phenotype"
+  source: "OpenStax Biology 2e, Chapter 13"
+  source_url: "https://openstax.org/books/biology-2e/pages/13-introduction"
+  entities:
+
+    - term: "Phenotype equals genotype plus environment"
+      definition: "The observable phenotype of an organism results from the interaction of its genotype with environmental conditions; genotype alone does not determine phenotype"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.5"]
+
+    - term: "Norm of reaction"
+      definition: "The range of phenotypes that a single genotype can produce across a spectrum of environmental conditions; illustrates phenotypic plasticity"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.5"]
+
+    - term: "Siamese cat temperature-sensitive coat color"
+      definition: "Siamese cats show dark pigment on cooler extremities (ears, nose, paws, tail) and pale fur on the warm body core; the tyrosinase enzyme is heat-sensitive and inactive above ~33°C"
+      pool: organism_names
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.5"]
+
+    - term: "Hydrangea flower color and soil pH"
+      definition: "Hydrangea flowers are blue in acidic soil (aluminum ions available to petals) and pink in alkaline soil (aluminum unavailable); same genotype produces different phenotypes based on soil chemistry"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.5"]
+
+    - term: "Human height as polygenic plus environmental"
+      definition: "Human height is controlled by many genes (polygenic) and is substantially influenced by environmental factors including nutrition, disease, and health during development"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.5"]
+
+    - term: "Phenylketonuria (PKU)"
+      definition: "Autosomal recessive disorder of phenylalanine metabolism; intellectual disability caused by phenylalanine accumulation is prevented by strict dietary restriction of phenylalanine beginning at birth — a gene-environment interaction"
+      pool: disease_syndrome_names
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.5"]
+
+    - term: "Twin studies for separating genetics and environment"
+      definition: "Identical (monozygotic) twins raised apart have the same genotype but different environments; differences between them reveal environmental contributions to phenotype"
+      pool: experiment_terms
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.5"]
+
+    - term: "Penetrance"
+      definition: "The proportion of individuals with a given genotype who exhibit the expected phenotype; incomplete penetrance occurs when less than 100% of individuals with the genotype display the phenotype"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.5"]
+
+# --- TOPIC 5.6: CHROMOSOMAL INHERITANCE ---
+topic_5_6:
+  name: "Chromosomal Inheritance"
+  source: "OpenStax Biology 2e, Chapter 15"
+  source_url: "https://openstax.org/books/biology-2e/pages/15-introduction"
+  entities:
+
+    - term: "Chromosome theory of inheritance"
+      definition: "The theory, developed by Walter Sutton and Theodor Boveri (~1902), that genes are physically located on chromosomes and that chromosome behavior during meiosis explains Mendel's laws of segregation and independent assortment"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.6"]
+
+    - term: "Sutton and Boveri"
+      definition: "Walter Sutton and Theodor Boveri independently proposed the chromosome theory of inheritance (~1902), connecting Mendel's hereditary factors to the behavior of chromosomes during meiosis"
+      pool: person_names
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.6"]
+
+    - term: "Thomas Hunt Morgan"
+      definition: "American biologist who used Drosophila melanogaster to prove genes are physically located on chromosomes; discovered X-linked inheritance through the white-eye trait"
+      pool: person_names
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.6"]
+
+    - term: "Morgan's white-eye Drosophila experiment"
+      definition: "Morgan crossed white-eyed males with red-eyed females; F2 generation showed white eyes only in males, proving the eye-color gene is located on the X chromosome — first direct proof of chromosomal gene location"
+      pool: experiment_terms
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.6"]
+
+    - term: "Drosophila melanogaster"
+      definition: "The fruit fly; Thomas Hunt Morgan's model organism used to demonstrate X-linked inheritance and the physical location of genes on chromosomes"
+      pool: organism_names
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.6"]
+
+    - term: "Karyotype"
+      definition: "An organized display of an individual's full chromosome complement, arranged by size and banding pattern; used clinically to detect aneuploidy, translocations, and other large chromosomal abnormalities"
+      pool: experiment_terms
+      chain_theme: mendelian_inheritance
+      difficulty: 1
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.6"]
+
+    - term: "Deletion"
+      definition: "A chromosomal mutation in which a segment of a chromosome is lost; can cause haploinsufficiency if deleted genes are essential"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.6"]
+
+    - term: "Duplication"
+      definition: "A chromosomal mutation in which a segment of a chromosome is copied, resulting in an extra copy of those genes in the genome"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.6"]
+
+    - term: "Inversion"
+      definition: "A chromosomal mutation in which a chromosome segment is excised and reinserted in the reverse orientation; may disrupt gene expression at breakpoints"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.6"]
+
+    - term: "Translocation"
+      definition: "A chromosomal mutation in which a segment from one chromosome moves to a non-homologous chromosome; example: Philadelphia chromosome results from a reciprocal translocation between chromosomes 9 and 22"
+      pool: term_definitions
+      chain_theme: mendelian_inheritance
+      difficulty: 2
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.6"]
+
+    - term: "Philadelphia chromosome"
+      definition: "A chromosomal translocation between chromosomes 9 and 22; creates the BCR-ABL fusion oncogene; causes chronic myelogenous leukemia (CML)"
+      pool: disease_syndrome_names
+      chain_theme: mendelian_inheritance
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.6"]
+
+    - term: "Chi-square test formula"
+      definition: "χ² = Σ((observed - expected)² / expected); used to determine whether observed genetic ratios differ significantly from expected Mendelian ratios"
+      pool: experiment_terms
+      chain_theme: mendelian_inheritance
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.6"]
+
+    - term: "Chi-square degrees of freedom"
+      definition: "Degrees of freedom for a genetics chi-square test = number of phenotypic classes minus 1 (df = n - 1)"
+      pool: experiment_terms
+      chain_theme: mendelian_inheritance
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.6"]
+
+    - term: "Chi-square interpretation"
+      definition: "If the calculated χ² value exceeds the critical value at p=0.05 for the given degrees of freedom, reject the null hypothesis that observed ratios fit the expected Mendelian ratio"
+      pool: experiment_terms
+      chain_theme: mendelian_inheritance
+      difficulty: 3
+      tags: ["AP_Biology", "AP_Bio_Unit5", "5.6"]

@@ -1,0 +1,1021 @@
+deck_id: ap_biology_unit8
+name: "AP Biology — Unit 8: Ecology"
+domain: science
+sub_domain: biology
+parent_deck_id: ap_biology
+description: "Master every concept in AP Biology Unit 8 — behavioral responses, energy flow, population ecology, community interactions, biodiversity, and ecosystem disruptions. Aligned to College Board CED Topics 8.1–8.7."
+target_facts: 120
+minimum_facts: 90
+exam_weight: "10-15%"
+
+# COMPLETENESS PHILOSOPHY:
+# Every learning objective and essential knowledge statement from CED Topics 8.1–8.7
+# is represented here. Students who master this unit deck should be fully prepared
+# for all Unit 8 content on the AP Biology exam.
+
+exam_alignment:
+  exam: "AP Biology"
+  authority: "College Board"
+  document: "AP Biology Course and Exam Description (CED)"
+  url: "https://apcentral.collegeboard.org/courses/ap-biology/course"
+  unit: 8
+  topics:
+    - "8.1 Responses to the Environment"
+    - "8.2 Energy Flow Through Ecosystems"
+    - "8.3 Population Ecology"
+    - "8.4 Effect of Density on Populations"
+    - "8.5 Community Ecology"
+    - "8.6 Biodiversity"
+    - "8.7 Disruptions to Ecosystems"
+  big_ideas:
+    - "ENE: Energetics"
+    - "SYI: Systems Interactions"
+    - "EVO: Evolution"
+
+# Sourcing & licensing
+data_sources:
+  - name: College Board AP Biology CED
+    url: https://apcentral.collegeboard.org/courses/ap-biology/course
+    license: educational reference
+    usage: Official topics, learning objectives, and essential knowledge statements for Unit 8
+  - name: OpenStax Biology 2e — Chapters 35, 45-47
+    url: https://openstax.org/details/books/biology-2e
+    license: CC-BY-4.0
+    usage: Verified definitions, process descriptions, and ecology concept details
+  - name: Khan Academy AP Biology — Unit 8
+    url: https://www.khanacademy.org/science/ap-biology/ecology
+    license: educational reference
+    usage: Secondary cross-reference for topic coverage and concept explanations
+  - name: Wikipedia — Ecology, Population ecology, Community ecology
+    url: https://en.wikipedia.org/wiki/Ecology
+    license: CC-BY-SA-4.0
+    usage: Cross-reference for definitions, examples, and process descriptions
+
+asset_sources: []
+
+# ============================================================
+# VERIFIED SOURCE DATA — Pre-researched facts by topic
+# Workers format this data into DeckFact JSON — they do NOT
+# generate facts from LLM knowledge.
+# ============================================================
+
+verified_facts:
+
+  # ----------------------------------------------------------
+  # Topic 8.1: Responses to the Environment (~12 facts)
+  # Source: OpenStax Biology 2e Ch. 45; College Board CED 8.1
+  # chain_theme: population_ecology
+  # ----------------------------------------------------------
+  topic_8_1_responses_to_environment:
+    - fact: "Behavior: observable action an organism performs in response to a stimulus from its environment"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 1
+      fun_score: 5
+
+    - fact: "Innate behavior: genetically programmed behavior present at birth; not learned through experience (examples: fixed action patterns, reflexes, web-spinning in spiders)"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Learned behavior: behavior modified by experience; includes imprinting, classical conditioning, operant conditioning, and habituation"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Taxis: directed movement toward (positive taxis) or away from (negative taxis) a stimulus; examples include phototaxis (light) and chemotaxis (chemicals)"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Kinesis: undirected change in movement speed or turning rate in response to a stimulus — direction of movement is random, unlike taxis"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 6
+
+    - fact: "Circadian rhythms: biological cycles of approximately 24 hours that regulate sleep-wake cycles, hormone release, and other physiological processes"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Photoperiodism: an organism's response to the relative lengths of day and night; triggers flowering in plants and migration or hibernation in animals"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Hibernation/torpor: a state of dramatically reduced metabolic rate, body temperature, and activity adopted by some animals during unfavorable seasonal conditions"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 1
+      fun_score: 8
+
+    - fact: "Migration: seasonal movement of animals between habitats; examples include monarch butterflies migrating to Mexico and Arctic terns traveling pole to pole"
+      pool: organism_names
+      chain_theme: population_ecology
+      difficulty: 1
+      fun_score: 9
+
+    - fact: "Communication: transfer of information between organisms via signals — chemical (pheromones), visual (firefly bioluminescence), or auditory (birdsong)"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Thermoregulation comparison — endotherms vs. ectotherms: endotherms (birds, mammals) generate body heat internally; ectotherms (reptiles, fish) rely on external environmental heat"
+      pool: comparison_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Optimal foraging theory: predicts that animals will forage in ways that maximize energy gained per unit time spent foraging, balancing energy benefit against foraging cost"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 3
+      fun_score: 8
+
+  # ----------------------------------------------------------
+  # Topic 8.2: Energy Flow Through Ecosystems (~20 facts)
+  # Source: OpenStax Biology 2e Ch. 46.1-46.3; College Board CED 8.2
+  # chain_theme: ecosystem_energy
+  # ----------------------------------------------------------
+  topic_8_2_energy_flow:
+    - fact: "Ecosystem: a community of interacting organisms together with the abiotic (non-living) physical environment they inhabit"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 5
+
+    - fact: "Producers (autotrophs): organisms that make organic molecules from inorganic sources via photosynthesis or chemosynthesis; occupy the first trophic level"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 6
+
+    - fact: "Primary consumers (herbivores): organisms that eat producers; occupy the second trophic level"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 6
+
+    - fact: "Secondary consumers: organisms that eat primary consumers (herbivores); occupy the third trophic level"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 5
+
+    - fact: "Tertiary consumers: organisms that eat secondary consumers; occupy the fourth trophic level; examples include hawks, orcas, large sharks"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 5
+
+    - fact: "Decomposers (detritivores): organisms that break down dead organic matter; primarily bacteria and fungi; essential for recycling nutrients back into the ecosystem"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Trophic levels: feeding positions in a food chain; level 1 = producers, level 2 = primary consumers, level 3 = secondary consumers, level 4 = tertiary consumers"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 6
+
+    - fact: "Food chain: a linear pathway showing energy transfer from producers through successive levels of consumers"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 5
+
+    - fact: "Food web: a network of interconnected food chains showing the complex feeding relationships within an ecosystem"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 6
+
+    - fact: "10% rule: only approximately 10% of energy at one trophic level is transferred to the next; approximately 90% is lost as heat or used for metabolism"
+      pool: bracket_numbers
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Energy is lost as heat at each trophic level because of the second law of thermodynamics — energy conversions are never 100% efficient"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Gross primary productivity (GPP): total amount of energy fixed by autotrophs per unit area per unit time via photosynthesis or chemosynthesis"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Net primary productivity (NPP): energy available to consumers after autotrophs use some for their own cellular respiration; NPP = GPP − R"
+      pool: bracket_numbers
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Biomass: total mass of living organisms at each trophic level; decreases at higher trophic levels due to the 10% rule"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 6
+
+    - fact: "Ecological pyramids: graphical models showing energy, biomass, or numbers at each trophic level; always narrow at the top except inverted biomass pyramids in some aquatic ecosystems"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Carbon cycle: CO₂ in the atmosphere is fixed via photosynthesis into organic carbon → passed through food webs → returned to atmosphere via respiration, decomposition, and combustion of fossil fuels"
+      pool: process_names
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Nitrogen cycle: N₂ in atmosphere → nitrogen fixation by bacteria (Rhizobium) → NH₃/NH₄⁺ → nitrification by Nitrosomonas and Nitrobacter → NO₃⁻ → plant assimilation → decomposition → denitrification → N₂"
+      pool: process_names
+      chain_theme: ecosystem_energy
+      difficulty: 3
+      fun_score: 9
+
+    - fact: "Water cycle: water moves through evaporation, transpiration, condensation, precipitation, runoff, and infiltration to groundwater"
+      pool: process_names
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 6
+
+    - fact: "Phosphorus cycle: unlike carbon and nitrogen, phosphorus has no significant atmospheric phase; moves from rocks via weathering → soil → plants → animals → decomposition → sediment"
+      pool: process_names
+      chain_theme: ecosystem_energy
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Nitrogen fixation: conversion of atmospheric N₂ into ammonia (NH₃) or ammonium (NH₄⁺) by nitrogen-fixing bacteria such as Rhizobium in root nodules of legumes"
+      pool: process_names
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 8
+
+  # ----------------------------------------------------------
+  # Topic 8.3: Population Ecology (~18 facts)
+  # Source: OpenStax Biology 2e Ch. 45.1-45.4; College Board CED 8.3
+  # chain_theme: population_ecology
+  # ----------------------------------------------------------
+  topic_8_3_population_ecology:
+    - fact: "Population: a group of individuals of the same species living in the same geographic area at the same time and capable of interbreeding"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 1
+      fun_score: 5
+
+    - fact: "Population density: number of individuals per unit area or volume; e.g., 50 oak trees per hectare"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 1
+      fun_score: 5
+
+    - fact: "Dispersion patterns — clumped: most common pattern; individuals aggregate where resources are patchy (herds, schools of fish, wolf packs)"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Dispersion patterns — uniform: individuals are evenly spaced due to territorial behavior or competitive interactions (nesting seabirds, creosote bushes)"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Dispersion patterns — random: unpredictable spacing with no strong interactions among individuals; rare in nature (dandelions in a field)"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 6
+
+    - fact: "Four factors affecting population size: birth rate (natality), death rate (mortality), immigration, and emigration"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Exponential growth: J-shaped population growth curve; occurs when resources are unlimited; described by dN/dt = rₘₐₓN"
+      pool: bracket_numbers
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Intrinsic rate of increase (rₘₐₓ): the maximum per capita growth rate a population can achieve under ideal conditions with unlimited resources"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Logistic growth: S-shaped population growth curve that levels off at carrying capacity; described by dN/dt = rₘₐₓN((K−N)/K)"
+      pool: bracket_numbers
+      chain_theme: population_ecology
+      difficulty: 3
+      fun_score: 9
+
+    - fact: "Carrying capacity (K): the maximum population size that a given environment can support indefinitely given available resources"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 1
+      fun_score: 8
+
+    - fact: "As population size (N) approaches carrying capacity (K), the growth rate approaches zero because (K−N)/K approaches zero"
+      pool: bracket_numbers
+      chain_theme: population_ecology
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "r-selected species: small body size, many offspring, little parental care, short lifespan, rapid reproduction; examples: bacteria, insects, annual plants"
+      pool: comparison_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "K-selected species: large body size, few offspring, extensive parental care, long lifespan, slow reproduction; examples: elephants, whales, humans"
+      pool: comparison_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Survivorship curves — Type I (late loss): high survival throughout life until old age; characteristic of humans and large mammals with extensive parental care"
+      pool: comparison_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Survivorship curves — Type II (constant loss): constant death rate throughout life; characteristic of birds, many lizards, and some rodents"
+      pool: comparison_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Survivorship curves — Type III (early loss): very high mortality of young individuals, few survivors reach reproductive age; characteristic of fish, insects, and plants producing many offspring"
+      pool: comparison_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Age structure diagrams: graphical models showing the distribution of a population by age class; used to predict future population growth — a wide base indicates rapid growth"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Demographic transition: the historical shift in human populations from high birth and death rates to low birth and death rates that accompanies economic development"
+      pool: process_names
+      chain_theme: population_ecology
+      difficulty: 3
+      fun_score: 7
+
+  # ----------------------------------------------------------
+  # Topic 8.4: Effect of Density on Populations (~10 facts)
+  # Source: OpenStax Biology 2e Ch. 45.3; College Board CED 8.4
+  # chain_theme: population_ecology
+  # ----------------------------------------------------------
+  topic_8_4_density_effects:
+    - fact: "Density-dependent factors: environmental factors whose effects on population growth increase in intensity as population density increases (disease, intraspecific competition, predation)"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Density-independent factors: environmental factors that affect population size regardless of density (weather, natural disasters, fire, flood)"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Intraspecific competition: competition between members of the same species for limited resources such as food, space, water, or mates"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Interspecific competition: competition between individuals of different species for the same limiting resources"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Competitive exclusion principle (Gause's law): two species competing for exactly the same limiting resources in the same habitat cannot coexist — one will be eliminated or driven to extinction locally"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 3
+      fun_score: 9
+
+    - fact: "Resource partitioning: the division of limiting resources among species to reduce interspecific competition; classic example: MacArthur's warblers foraging at different heights in spruce trees"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 3
+      fun_score: 9
+
+    - fact: "Predation as density-dependent regulation: predators remove more prey individuals when prey is abundant, reducing prey population toward equilibrium"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Predator-prey population cycles: predator and prey populations oscillate in linked cycles; classic example: Canadian lynx and snowshoe hare cycles documented by Hudson's Bay Company records"
+      pool: organism_names
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 10
+
+    - fact: "Sea otters as keystone species: sea otters prey on sea urchins, which overgraze kelp; without otters, sea urchin populations explode and destroy kelp forests, demonstrating keystone species effects"
+      pool: organism_names
+      chain_theme: population_ecology
+      difficulty: 3
+      fun_score: 10
+
+    - fact: "Disease as density-dependent factor: pathogens spread more easily in dense populations — contact rates increase, enabling faster transmission"
+      pool: ecology_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Comparison — density-dependent vs. density-independent: density-dependent factors (competition, disease, predation) intensify with crowding; density-independent factors (drought, flood, frost) impact populations regardless of density"
+      pool: comparison_terms
+      chain_theme: population_ecology
+      difficulty: 2
+      fun_score: 8
+
+  # ----------------------------------------------------------
+  # Topic 8.5: Community Ecology (~18 facts)
+  # Source: OpenStax Biology 2e Ch. 45.5-45.7; College Board CED 8.5
+  # chain_theme: ecosystem_energy
+  # ----------------------------------------------------------
+  topic_8_5_community_ecology:
+    - fact: "Community: all populations of different species living together and interacting in the same area at the same time"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 5
+
+    - fact: "Species richness: the total number of different species present in a community; one component of biodiversity"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 6
+
+    - fact: "Species evenness: the relative abundance of each species in a community; a community dominated by one species has low evenness"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 6
+
+    - fact: "Species diversity: a combined measure of species richness and species evenness; often quantified with the Shannon diversity index"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Mutualism (+/+): a symbiotic relationship in which both species benefit; examples: mycorrhizal fungi and plant roots, pollination, Rhizobium bacteria and legumes"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 8
+
+    - fact: "Commensalism (+/0): a symbiotic relationship in which one species benefits and the other is neither helped nor harmed; examples: barnacles on whale skin, birds nesting in trees"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Parasitism (+/−): a symbiotic relationship in which one organism (the parasite) benefits at the expense of another (the host); examples: tapeworms, ticks, mistletoe"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 8
+
+    - fact: "Batesian mimicry: a harmless species (mimic) resembles a harmful or unpalatable species (model) to deter predators; example: harmless scarlet kingsnake mimics venomous coral snake"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 3
+      fun_score: 10
+
+    - fact: "Müllerian mimicry: two or more genuinely harmful or unpalatable species resemble each other, reinforcing predator avoidance learning; example: multiple species of stinging wasps share yellow-black banding"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 3
+      fun_score: 9
+
+    - fact: "Aposematic coloration: bright warning coloration that signals to predators that an organism is dangerous, toxic, or unpalatable; examples: poison dart frogs, monarch butterflies"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Cryptic coloration: camouflage that allows an organism to blend into its environment, reducing detection by predators or prey"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Ecological succession: the gradual, directional change in species composition and community structure over time following a disturbance or colonization of new substrate"
+      pool: process_names
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Primary succession: succession beginning on bare substrate where no soil exists — volcanic lava flows, glacial moraines; pioneer species (lichens, mosses) create soil over time"
+      pool: process_names
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Secondary succession: succession following a disturbance that removes the existing community but leaves the soil intact; proceeds faster than primary succession; example: abandoned farmland"
+      pool: process_names
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Pioneer species: the first organisms to colonize a bare or disturbed area; typically lichens and mosses in primary succession; they modify the environment to allow other species to establish"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Climax community: the relatively stable, mature community that develops at the end of succession under a given set of environmental conditions"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Keystone species: a species that has a disproportionately large effect on its community relative to its abundance; removal causes dramatic community change; examples: sea otters, wolves in Yellowstone"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 10
+
+    - fact: "Comparison — primary vs. secondary succession: primary succession begins on bare substrate with no soil; secondary succession begins after disturbance that leaves soil intact and proceeds more quickly"
+      pool: comparison_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 7
+
+  # ----------------------------------------------------------
+  # Topic 8.6: Biodiversity (~10 facts)
+  # Source: OpenStax Biology 2e Ch. 47.1; College Board CED 8.6
+  # chain_theme: ecosystem_energy
+  # ----------------------------------------------------------
+  topic_8_6_biodiversity:
+    - fact: "Biodiversity: the variety of life on Earth at three levels: genetic diversity (allele variation within species), species diversity (variety of species), and ecosystem diversity (variety of ecosystems)"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Genetic diversity: variation in the alleles present within a species or population; provides the raw material for evolution and adaptation"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 6
+
+    - fact: "Species diversity: the variety and abundance of species in a given area; communities with high species diversity tend to be more stable and productive"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 6
+
+    - fact: "Ecosystem diversity: the variety of habitats, communities, and ecological processes in a given region; includes forests, wetlands, grasslands, coral reefs"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 6
+
+    - fact: "Greater biodiversity leads to greater ecosystem resilience: the ability of an ecosystem to recover from disturbance increases with the number of species filling functional roles"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Biodiversity hotspots: regions with exceptionally high species richness and a high proportion of endemic species that are also under severe threat; tropical rainforests and coral reefs are prime examples"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Island biogeography (MacArthur & Wilson): species richness on islands is determined by the balance between immigration and extinction rates; larger islands and islands closer to the mainland support more species"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 3
+      fun_score: 9
+
+    - fact: "Ecosystem services: the direct and indirect benefits humans derive from functioning ecosystems — clean water, air purification, pollination, climate regulation, food production, and disease control"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Intrinsic value of biodiversity: the concept that biodiversity has inherent value independent of any direct benefit to humans — an ethical argument for conservation"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Conservation biology: an interdisciplinary science focused on protecting biodiversity; strategies include habitat preservation, wildlife corridors, captive breeding programs, and seed banks"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 8
+
+  # ----------------------------------------------------------
+  # Topic 8.7: Disruptions to Ecosystems (~12 facts)
+  # Source: OpenStax Biology 2e Ch. 47.2-47.3; College Board CED 8.7
+  # chain_theme: ecosystem_energy
+  # ----------------------------------------------------------
+  topic_8_7_disruptions:
+    - fact: "Habitat destruction: the number one threat to global biodiversity; caused by deforestation, urbanization, and conversion of land to agriculture"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 8
+
+    - fact: "Habitat fragmentation: the breaking of continuous habitat into smaller, isolated patches; reduces gene flow between populations, increases edge effects, and makes species vulnerable to extinction"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Invasive species: non-native organisms introduced to a new environment where they outcompete, prey on, or displace native species; examples: kudzu in North America, cane toads in Australia, zebra mussels in the Great Lakes"
+      pool: organism_names
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 9
+
+    - fact: "Wolves as keystone species in Yellowstone: reintroduction of gray wolves in 1995 reduced elk overgrazing of willows and aspens, causing a trophic cascade that reshaped riverbank vegetation and stabilized stream channels"
+      pool: organism_names
+      chain_theme: ecosystem_energy
+      difficulty: 3
+      fun_score: 10
+
+    - fact: "Overexploitation: harvesting wild species faster than they can reproduce; major cause of population decline and extinction; examples: commercial overfishing, illegal poaching of elephants for ivory"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 8
+
+    - fact: "Eutrophication: excess nutrients (especially nitrogen and phosphorus from agricultural fertilizer runoff) enter water bodies → explosive algal bloom → algae die → decomposition by bacteria → oxygen depletion → hypoxic dead zone"
+      pool: process_names
+      chain_theme: ecosystem_energy
+      difficulty: 3
+      fun_score: 10
+
+    - fact: "Biological magnification (biomagnification): the increasing concentration of a persistent toxin (e.g., DDT, mercury) at successively higher trophic levels in a food chain"
+      pool: process_names
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 10
+
+    - fact: "Climate change: rising global temperatures driven by accumulation of greenhouse gases (CO₂, CH₄, N₂O) from fossil fuel combustion; causes ocean acidification, glacier retreat, and shifts in species ranges"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Ocean acidification: CO₂ dissolves in seawater to form carbonic acid (H₂CO₃), lowering ocean pH and dissolving calcium carbonate structures of corals and shellfish"
+      pool: process_names
+      chain_theme: ecosystem_energy
+      difficulty: 3
+      fun_score: 10
+
+    - fact: "Ozone depletion: chlorofluorocarbons (CFCs) break down ozone (O₃) molecules in the stratosphere, reducing the ozone layer's ability to absorb UV radiation; leads to increased UV reaching Earth's surface"
+      pool: process_names
+      chain_theme: ecosystem_energy
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Endangered species: species at significant risk of extinction throughout all or a significant portion of their range; protected in the US under the Endangered Species Act"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Biodiversity threats hierarchy: habitat destruction is the #1 cause of biodiversity loss, followed by invasive species, overexploitation, pollution, and climate change"
+      pool: ecology_terms
+      chain_theme: ecosystem_energy
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Comparison — eutrophication vs. biological magnification: eutrophication involves nutrient enrichment causing algal blooms and oxygen depletion; biological magnification involves toxin concentration increasing up the food chain"
+      pool: comparison_terms
+      chain_theme: ecosystem_energy
+      difficulty: 3
+      fun_score: 9
+
+# ============================================================
+# ANSWER TYPE POOLS — 6 pools for Unit 8
+# Pool factIds are populated by the assembly worker scanning facts.
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: Ecology Terms — "What is [term]?" / "Define [concept]"
+  - id: ecology_terms
+    format: term
+    estimated_count: 70
+    note: >
+      Definitions and descriptions of ecology concepts: ecosystem, population,
+      community, biodiversity, carrying capacity, trophic levels, symbiosis types,
+      succession stages, biodiversity threats, behavior types.
+      Largest pool. Common confusions: primary vs. secondary succession,
+      mutualism vs. commensalism vs. parasitism, density-dependent vs. -independent,
+      innate vs. learned behavior.
+
+  # POOL 2: Term Definitions — alternate pool used for definitional facts
+  - id: term_definitions
+    format: term
+    estimated_count: 10
+    note: >
+      Overflow definitional facts not captured in ecology_terms.
+      Same format — answers are definitions of ecology terms.
+
+  # POOL 3: Process Names — "What process describes X?"
+  - id: process_names
+    format: name
+    estimated_count: 15
+    note: >
+      Named ecological and biogeochemical processes: nitrogen fixation, nitrification,
+      denitrification, eutrophication, ocean acidification, ozone depletion,
+      biological magnification, ecological succession, demographic transition,
+      carbon cycle, water cycle, phosphorus cycle.
+      Common confusions: nitrogen fixation vs. nitrification vs. denitrification,
+      primary vs. secondary succession.
+
+  # POOL 4: Organism Names — "What organism is an example of X?"
+  - id: organism_names
+    format: name
+    estimated_count: 8
+    note: >
+      Named organisms used as ecological examples: monarch butterfly, Arctic tern
+      (migration), snowshoe hare and lynx (predator-prey cycles), kudzu, cane toads,
+      zebra mussels (invasive species), sea otters (keystone species).
+      Common confusions: organisms representing different ecological roles.
+    syntheticDistractors:
+      - "gray wolf"
+      - "European starling"
+      - "Asian carp"
+      - "common carp"
+      - "Burmese python"
+      - "sea lamprey"
+
+  # POOL 5: Bracket Numbers — equations, percentages, and quantitative facts
+  - id: bracket_numbers
+    format: number
+    estimated_count: 5
+    note: >
+      Quantitative facts: 10% energy transfer rule, NPP = GPP − R equation,
+      exponential growth equation dN/dt = rₘₐₓN, logistic growth equation
+      dN/dt = rₘₐₓN((K−N)/K). Answers involve numbers or formulas.
+      Common confusions: GPP vs. NPP, exponential vs. logistic growth equations.
+    syntheticDistractors:
+      - "20%"
+      - "25%"
+      - "50%"
+      - "5%"
+      - "1%"
+
+  # POOL 6: Comparison Terms — "How does X differ from Y?"
+  - id: comparison_terms
+    format: term
+    estimated_count: 12
+    note: >
+      Comparative ecology facts: r-selected vs. K-selected, survivorship curve types,
+      density-dependent vs. density-independent, primary vs. secondary succession,
+      endotherms vs. ectotherms, eutrophication vs. biomagnification,
+      Batesian vs. Müllerian mimicry.
+    syntheticDistractors:
+      - "Both are examples of positive feedback"
+      - "Both increase biodiversity"
+      - "Both occur only in aquatic ecosystems"
+      - "Both require photosynthesis"
+      - "Both are forms of mutualism"
+
+  # POOL 7: Function Terms — "What is the function/role of X?"
+  - id: function_terms
+    format: term
+    estimated_count: 5
+    note: >
+      Functional role descriptions: ecosystem services, role of decomposers,
+      role of keystone species, role of pioneer species, role of nitrogen-fixing bacteria.
+    syntheticDistractors:
+      - "Fixes carbon dioxide into organic molecules via photosynthesis"
+      - "Breaks down rock via physical and chemical weathering"
+      - "Converts ammonia to nitrate via nitrification"
+      - "Produces oxygen as a byproduct of the light reactions"
+      - "Reduces soil pH through acid secretion"
+
+# ============================================================
+# QUESTION TEMPLATES
+# ============================================================
+
+question_templates:
+  - id: define_ecology_term
+    questionFormat: "What is {term} in ecology?"
+    answerPoolId: ecology_terms
+    availableFromMastery: 0
+    difficulty: 1
+
+  - id: identify_process
+    questionFormat: "Which ecological process {description}?"
+    answerPoolId: process_names
+    availableFromMastery: 0
+    difficulty: 2
+
+  - id: identify_organism
+    questionFormat: "Which organism is an example of {role}?"
+    answerPoolId: organism_names
+    availableFromMastery: 1
+    difficulty: 2
+
+  - id: identify_quantity
+    questionFormat: "What value or equation describes {relationship}?"
+    answerPoolId: bracket_numbers
+    availableFromMastery: 1
+    difficulty: 3
+
+  - id: compare_concepts
+    questionFormat: "How does {concept_a} differ from {concept_b}?"
+    answerPoolId: comparison_terms
+    availableFromMastery: 2
+    difficulty: 3
+
+  - id: identify_function
+    questionFormat: "What is the ecological role of {organism_or_structure}?"
+    answerPoolId: function_terms
+    availableFromMastery: 2
+    difficulty: 3
+
+# ============================================================
+# CHAIN THEMES — 2 named themes for Unit 8
+# (Full deck requires ≥8; unit sub-deck uses themes from parent)
+# ============================================================
+
+chain_themes:
+  - id: population_ecology
+    name: "Population Ecology"
+    topics: "8.1, 8.3, 8.4"
+    description: >
+      Covers individual and population-level biology: behavior types (innate,
+      learned, taxis, kinesis), thermoregulation, circadian rhythms, migration,
+      optimal foraging, population growth models (exponential and logistic),
+      carrying capacity, r-selected vs. K-selected strategies, survivorship curves,
+      age structure, density-dependent and density-independent factors,
+      competitive exclusion, resource partitioning, and predator-prey dynamics.
+
+  - id: ecosystem_energy
+    name: "Ecosystem and Energy Flow"
+    topics: "8.2, 8.5, 8.6, 8.7"
+    description: >
+      Covers ecosystem-level processes: trophic levels, food webs, the 10% rule,
+      primary productivity (GPP and NPP), biogeochemical cycles (carbon, nitrogen,
+      water, phosphorus), community ecology (succession, symbiosis, keystone species,
+      mimicry), biodiversity (genetic, species, ecosystem levels, island biogeography),
+      and major ecosystem disruptions (habitat destruction, invasive species,
+      eutrophication, biomagnification, climate change, ocean acidification).
+
+# ============================================================
+# COMMON CONFUSIONS — drives distractor pairing during generation
+# ============================================================
+
+common_confusions:
+  # Behavior types
+  - ["innate behavior", "learned behavior"]
+  - ["taxis", "kinesis"]
+  - ["phototaxis", "chemotaxis"]
+  - ["hibernation", "torpor", "migration"]
+
+  # Thermoregulation
+  - ["endotherm", "ectotherm"]
+
+  # Trophic levels
+  - ["producer", "primary consumer", "secondary consumer", "tertiary consumer", "decomposer"]
+  - ["food chain", "food web"]
+  - ["gross primary productivity (GPP)", "net primary productivity (NPP)"]
+
+  # Biogeochemical cycles
+  - ["nitrogen fixation", "nitrification", "denitrification", "assimilation"]
+  - ["carbon cycle", "nitrogen cycle", "phosphorus cycle", "water cycle"]
+
+  # Population growth
+  - ["exponential growth", "logistic growth"]
+  - ["carrying capacity (K)", "intrinsic rate of increase (rₘₐₓ)"]
+  - ["r-selected species", "K-selected species"]
+  - ["Type I survivorship", "Type II survivorship", "Type III survivorship"]
+
+  # Density factors
+  - ["density-dependent factors", "density-independent factors"]
+  - ["intraspecific competition", "interspecific competition"]
+  - ["competitive exclusion", "resource partitioning"]
+
+  # Symbiosis
+  - ["mutualism", "commensalism", "parasitism"]
+  - ["Batesian mimicry", "Müllerian mimicry"]
+  - ["aposematic coloration", "cryptic coloration"]
+
+  # Succession
+  - ["primary succession", "secondary succession"]
+  - ["pioneer species", "climax community", "keystone species"]
+
+  # Disruptions
+  - ["eutrophication", "biological magnification"]
+  - ["habitat destruction", "habitat fragmentation"]
+  - ["invasive species", "native species"]
+  - ["ocean acidification", "ozone depletion"]
+
+# ============================================================
+# SYNONYM GROUPS
+# ============================================================
+
+synonym_groups:
+  - id: autotroph_names
+    terms: ["producer", "autotroph"]
+    reason: "Producers and autotrophs are the same organisms — both refer to organisms that make their own food from inorganic sources"
+
+  - id: heterotroph_consumer
+    terms: ["consumer", "heterotroph"]
+    reason: "Consumers and heterotrophs both refer to organisms that obtain organic molecules by eating other organisms"
+
+  - id: decomposer_names
+    terms: ["decomposer", "detritivore", "saprotroph"]
+    reason: "These terms all refer to organisms that break down dead organic matter; detritivore and decomposer are often used interchangeably in AP Biology"
+
+  - id: biomagnification_names
+    terms: ["biological magnification", "biomagnification", "bioaccumulation"]
+    reason: "Biological magnification and biomagnification are synonymous AP Biology terms; bioaccumulation sometimes used interchangeably"
+
+  - id: primary_productivity_names
+    terms: ["net primary productivity", "NPP"]
+    reason: "NPP is the standard abbreviation for net primary productivity"
+
+  - id: gpp_names
+    terms: ["gross primary productivity", "GPP"]
+    reason: "GPP is the standard abbreviation for gross primary productivity"
+
+  - id: carrying_capacity
+    terms: ["carrying capacity", "K"]
+    reason: "K is the standard symbol for carrying capacity in population ecology equations"
+
+  - id: growth_rate_symbol
+    terms: ["intrinsic rate of increase", "rₘₐₓ", "r-max"]
+    reason: "rₘₐₓ is the standard notation for the intrinsic (maximum) rate of natural increase"
+
+# ============================================================
+# DIFFICULTY TIERS
+# ============================================================
+
+difficulty_tiers:
+  easy:
+    description: "Core vocabulary every AP Bio student must master first — naming trophic levels, defining key terms, identifying symbiosis types"
+    examples:
+      - "Producers make organic molecules from inorganic sources"
+      - "The 10% rule: only ~10% of energy transfers between trophic levels"
+      - "Mutualism: both species benefit (+/+)"
+      - "Habitat destruction is the #1 threat to biodiversity"
+      - "Carrying capacity: maximum population an environment can sustain"
+
+  medium:
+    description: "Mechanism-level understanding — applying growth equations, distinguishing density-dependent vs. independent factors, explaining biogeochemical cycles"
+    examples:
+      - "Logistic growth equation: dN/dt = rₘₐₓN((K−N)/K)"
+      - "NPP = GPP minus autotroph respiration"
+      - "Nitrogen cycle: fixation → nitrification → assimilation → denitrification"
+      - "r-selected vs. K-selected life history tradeoffs"
+      - "Competitive exclusion principle and resource partitioning"
+
+  hard:
+    description: "Integrated ecosystem thinking — combining multiple concepts, explaining island biogeography, tracing biomagnification, and evaluating conservation strategies"
+    examples:
+      - "Island biogeography: immigration rate and extinction rate determine species richness equilibrium"
+      - "Eutrophication cascade: nutrient runoff → algal bloom → decomposition → O₂ depletion → dead zone"
+      - "Biomagnification: persistent toxins concentrate at higher trophic levels"
+      - "Ocean acidification mechanism: CO₂ → H₂CO₃ → lower pH → CaCO₃ dissolution"
+      - "Batesian vs. Müllerian mimicry: harmless mimics harmful vs. two harmful species resemble each other"
+
+# ============================================================
+# EXAM TAGS — for AP Biology exam filtering
+# ============================================================
+
+exam_tags:
+  - ap_biology
+  - unit_8
+  - ecology
+  - population_ecology
+  - community_ecology
+  - ecosystem_ecology
+  - biodiversity
+  - biogeochemical_cycles
+  - energy_flow
+  - conservation

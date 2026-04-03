@@ -93,6 +93,13 @@ Architecture YAML files in `data/deck-architectures/` hold the verified source d
 | `world_wonders_research_04.yaml` | `world_wonders` | complete — live | ~50 | Batch 4: palaces + monuments + natural + modern |
 | `cs_tech_algorithms_arch.yaml` | `computer_science_algorithms` | research complete — pending generation | ~30 | Sub-deck 3: Sorting, search, graph algos, data structures, theory |
 | `cs_tech_systems_arch.yaml` | `computer_science_systems` | research complete — pending generation | ~35 | Sub-deck 4: OS, networking, security, acronyms |
+| `ap_biology_arch_meta.yaml` | `ap_biology` | generation reference — live deck exists | 363 | Chain-theme-organized generation reference (meta file) |
+| `ap_biology_arch.yaml` | `ap_biology` | master architecture — pending full fact generation | 1100 target | Master arch: 11 pools, 11 templates, 18 chain themes, 8 sub-decks, 12 CED equations |
+| `ap_chemistry_arch.yaml` | `ap_chemistry` | architecture complete — live deck exists | 620 target (assembled) | CED-aligned, 6 chain themes, 16 pools, 22 templates, 5 sub-decks; exam Fall 2024 |
+| `ap_world_history_arch.yaml` | `ap_world_history` | architecture complete — pending generation | 620 target | CED-aligned, 9 chain themes, 15 pools, 18 templates, 9 sub-decks; AP WH: Modern |
+| `ap_biology_unit2_arch.yaml` | `ap_biology_unit2` | architecture complete — pending fact generation | 130 target | Unit 2: Cell Structure and Function (Topics 2.1–2.11); 2 chain themes, 8 pools, ~130 verified facts in arch |
+| `ap_biology_unit3_arch.yaml` | `ap_biology_unit3` | architecture complete — pending fact generation | 160 target | Unit 3: Cellular Energetics (Topics 3.1–3.7); 3 chain themes, 7 pools, 7 templates, ~110 verified facts in arch |
+| `ap_biology_unit5_arch.yaml` | `ap_biology_unit5` | architecture complete — pending fact generation | 110 target | Unit 5: Heredity (Topics 5.1–5.6); 2 chain themes, 8 pools, 97 verified entities in arch |
 
 The 4 `world_wonders` architecture files total 195 facts in the live deck. They were merged by `data/decks/_wip/assemble-world-wonders.mjs`.
 
@@ -403,7 +410,8 @@ film_titles 55/55 OK, director_names 39/28 OK, actor_names 35/35 OK, character_n
 
 `data/decks/ap_biology.json` — assembled 2026-04-03. Exam-aligned to the College Board AP Biology CED (2025-26, effective Fall 2025), covering all 8 units and Topics 1.1 through 8.7.
 
-Architecture: `data/deck-architectures/ap_biology_arch_meta.yaml`
+Architecture (generation reference): `data/deck-architectures/ap_biology_arch_meta.yaml`
+Master architecture (1100-fact target): `data/deck-architectures/ap_biology_arch.yaml`
 Research: `data/deck-architectures/_research/ap_biology_ced_extraction.md`
 Assembly script: `scripts/assemble-ap-biology-deck.mjs`
 

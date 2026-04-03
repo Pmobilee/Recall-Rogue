@@ -1,0 +1,593 @@
+deck_id: ap_biology
+name: "AP Biology"
+domain: science
+sub_domain: biology
+description: "Master every concept tested on the AP Biology exam — from molecular chemistry to ecosystem ecology. Aligned to the College Board Course and Exam Description (CED)."
+target_facts: 1100
+minimum_facts: 900
+
+# COMPLETENESS PHILOSOPHY:
+# This deck covers EVERY topic, learning objective, and essential knowledge statement
+# in the College Board AP Biology CED. An AP Biology student who masters this deck
+# should be prepared for every concept tested on the exam.
+
+exam_alignment:
+  exam: "AP Biology"
+  authority: "College Board"
+  document: "AP Biology Course and Exam Description (CED)"
+  url: "https://apcentral.collegeboard.org/courses/ap-biology"
+  units: 8
+  big_ideas:
+    - "EVO: Evolution"
+    - "ENE: Energetics"
+    - "IST: Information Storage and Transmission"
+    - "SYI: Systems Interactions"
+
+# Sourcing & licensing
+data_sources:
+  - name: College Board AP Biology CED
+    url: https://apcentral.collegeboard.org/courses/ap-biology/course
+    license: educational reference
+    usage: Official course structure, units, topics, learning objectives, essential knowledge statements
+  - name: OpenStax Biology 2e
+    url: https://openstax.org/details/books/biology-2e
+    license: CC-BY-4.0
+    usage: Verified factual data, definitions, process descriptions, numerical values
+  - name: Wikipedia — Biology topics
+    url: https://en.wikipedia.org/wiki/Biology
+    license: CC-BY-SA-4.0
+    usage: Cross-reference for definitions, dates, scientist names
+  - name: Khan Academy AP Biology
+    url: https://www.khanacademy.org/science/ap-biology
+    license: educational reference
+    usage: Secondary cross-reference for topic coverage and explanations
+
+asset_sources: []
+
+# ============================================================
+# ANSWER TYPE POOLS — 11 pools covering all AP Bio question types
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: Term Definitions — "What is [term] in biology?"
+  # Answer is a short definition or description
+  - id: term_definitions
+    format: term
+    estimated_count: 300
+    note: >
+      Largest pool. "What is [term]?" format. Answers are short definitions or descriptions.
+      Examples: "Chemiosmosis", "Dehydration synthesis", "Selective permeability"
+      Students confuse similar terms: transcription/translation, mitosis/meiosis,
+      endocytosis/exocytosis, homologous/analogous.
+
+  # POOL 2: Process Names — "Which process does X?"
+  - id: process_names
+    format: name
+    estimated_count: 80
+    note: >
+      "Which process does X?" format. Answers are process names.
+      Examples: "Glycolysis", "Calvin cycle", "Transcription", "Natural selection"
+      Students confuse: glycolysis/gluconeogenesis, light reactions/Calvin cycle,
+      transcription/translation, replication/transcription.
+
+  # POOL 3: Molecule Names — "What molecule does X?"
+  - id: molecule_names
+    format: name
+    estimated_count: 60
+    note: >
+      "What molecule does X?" format. ATP, NADH, DNA polymerase, RuBisCO, etc.
+      Students confuse: NADH/NADPH/FADH2, DNA polymerase/RNA polymerase,
+      mRNA/tRNA/rRNA, glucose/fructose/galactose.
+
+  # POOL 4: Organelle Names — "Which organelle performs X?"
+  - id: organelle_names
+    format: name
+    estimated_count: 30
+    syntheticDistractors:
+      - "Centriole"
+      - "Peroxisome"
+      - "Nucleolus"
+      - "Plasmodesma"
+      - "Tonoplast"
+    note: >
+      "Which organelle performs X?" format. Smaller pool — needs synthetics.
+      Mitochondria, chloroplast, nucleus, ribosome, ER, Golgi, lysosome, vacuole, etc.
+
+  # POOL 5: Organism Names — model organisms and notable species
+  - id: organism_names
+    format: name
+    estimated_count: 20
+    syntheticDistractors:
+      - "Paramecium"
+      - "Hydra"
+      - "Planaria"
+      - "Amoeba"
+      - "Euglena"
+      - "Saccharomyces"
+      - "Chlamydomonas"
+      - "Neurospora"
+      - "Xenopus"
+      - "Danio rerio"
+    note: >
+      Model organisms and notable species. E. coli, Drosophila, C. elegans,
+      Arabidopsis, etc. Small pool — needs many synthetics.
+
+  # POOL 6: Location Terms — "Where does [process] occur?"
+  - id: location_terms
+    format: term
+    estimated_count: 40
+    note: >
+      "Where does [process] occur?" Answers: cytoplasm, stroma, thylakoid membrane,
+      inner mitochondrial membrane, matrix, nucleus, ribosome, etc.
+      Students confuse: stroma/matrix, thylakoid/cristae, cytoplasm/cytosol.
+
+  # POOL 7: Function Terms — "What is the function of X?"
+  - id: function_terms
+    format: term
+    estimated_count: 60
+    note: >
+      "What is the function of X?" Answers describe what something does.
+      "Catalyzes carbon fixation", "Separates sister chromatids",
+      "Pumps protons across membrane", etc.
+
+  # POOL 8: Bracket Numbers — numerical facts
+  - id: bracket_numbers
+    format: bracket_number
+    estimated_count: 40
+    note: >
+      Numerical answers. "{46} chromosomes", "{23} pairs", "{3} domains of life",
+      "{10}% energy transfer between trophic levels", "{2} ATP net from glycolysis",
+      "{30-32} ATP from complete glucose oxidation", etc.
+
+  # POOL 9: Comparison Terms — "How does X differ from Y?"
+  - id: comparison_terms
+    format: term
+    estimated_count: 30
+    syntheticDistractors:
+      - "Convergent vs divergent"
+      - "Dominant vs recessive"
+      - "Endothermic vs exothermic"
+    note: >
+      Comparative questions. "How does X differ from Y?"
+      Prokaryotic vs eukaryotic, mitosis vs meiosis, DNA vs RNA,
+      light reactions vs Calvin cycle, C3 vs C4 vs CAM plants.
+
+  # POOL 10: Experiment Terms — lab and experimental design
+  - id: experiment_terms
+    format: term
+    estimated_count: 25
+    syntheticDistractors:
+      - "Null hypothesis"
+      - "Type I error"
+      - "Type II error"
+      - "Regression analysis"
+      - "Correlation coefficient"
+      - "Peer review"
+      - "Replication"
+      - "Blinding"
+    note: >
+      Lab and experimental design vocabulary. Control group, independent variable,
+      dependent variable, hypothesis, chi-square test. Smaller pool — needs synthetics.
+
+  # POOL 11: Ecology Terms — ecology-specific vocabulary
+  - id: ecology_terms
+    format: term
+    estimated_count: 40
+    note: >
+      Ecology-specific terms. Carrying capacity, trophic level, pioneer species,
+      keystone species, r-selected/K-selected, mutualism, commensalism, parasitism,
+      eutrophication, primary/secondary succession.
+
+# ============================================================
+# QUESTION TEMPLATES
+# ============================================================
+
+question_templates:
+  - id: define_term
+    questionFormat: "What is {term} in biology?"
+    answerPoolId: term_definitions
+    availableFromMastery: 0
+    difficulty: 1
+
+  - id: identify_process
+    questionFormat: "Which process {description}?"
+    answerPoolId: process_names
+    availableFromMastery: 0
+    difficulty: 2
+
+  - id: identify_molecule
+    questionFormat: "What molecule {description}?"
+    answerPoolId: molecule_names
+    availableFromMastery: 1
+    difficulty: 2
+
+  - id: identify_organelle
+    questionFormat: "Which organelle {description}?"
+    answerPoolId: organelle_names
+    availableFromMastery: 1
+    difficulty: 2
+
+  - id: identify_location
+    questionFormat: "Where does {process} occur?"
+    answerPoolId: location_terms
+    availableFromMastery: 1
+    difficulty: 2
+
+  - id: identify_function
+    questionFormat: "What is the function of {structure}?"
+    answerPoolId: function_terms
+    availableFromMastery: 2
+    difficulty: 3
+
+  - id: identify_organism
+    questionFormat: "Which organism {description}?"
+    answerPoolId: organism_names
+    availableFromMastery: 2
+    difficulty: 3
+
+  - id: numerical_fact
+    questionFormat: "How many {item}?"
+    answerPoolId: bracket_numbers
+    availableFromMastery: 0
+    difficulty: 2
+
+  - id: compare_concepts
+    questionFormat: "How does {concept_a} differ from {concept_b}?"
+    answerPoolId: comparison_terms
+    availableFromMastery: 3
+    difficulty: 4
+
+  - id: experiment_design
+    questionFormat: "In an experiment, what is the {component}?"
+    answerPoolId: experiment_terms
+    availableFromMastery: 2
+    difficulty: 3
+
+  - id: ecology_concept
+    questionFormat: "What ecological concept describes {description}?"
+    answerPoolId: ecology_terms
+    availableFromMastery: 1
+    difficulty: 2
+
+# ============================================================
+# COMMON CONFUSIONS — drives distractor pairing
+# ============================================================
+
+common_confusions:
+  # Unit 1: Chemistry of Life
+  - ["dehydration synthesis", "hydrolysis"]
+  - ["saturated fat", "unsaturated fat"]
+  - ["primary structure", "secondary structure", "tertiary structure", "quaternary structure"]
+
+  # Unit 2: Cell Structure
+  - ["prokaryotic", "eukaryotic"]
+  - ["rough ER", "smooth ER"]
+  - ["mitochondria", "chloroplast"]
+  - ["diffusion", "osmosis", "facilitated diffusion", "active transport"]
+  - ["endocytosis", "exocytosis"]
+  - ["hypotonic", "hypertonic", "isotonic"]
+
+  # Unit 3: Cellular Energetics
+  - ["light reactions", "Calvin cycle"]
+  - ["glycolysis", "citric acid cycle", "electron transport chain"]
+  - ["NADH", "NADPH", "FADH2"]
+  - ["competitive inhibition", "allosteric inhibition"]
+  - ["Photosystem I", "Photosystem II"]
+  - ["C3 plants", "C4 plants", "CAM plants"]
+  - ["aerobic", "anaerobic"]
+  - ["lactate fermentation", "alcoholic fermentation"]
+
+  # Unit 4: Cell Communication & Cell Cycle
+  - ["G1 phase", "S phase", "G2 phase", "M phase"]
+  - ["prophase", "metaphase", "anaphase", "telophase"]
+  - ["cyclin", "CDK"]
+  - ["proto-oncogene", "tumor suppressor"]
+  - ["paracrine signaling", "endocrine signaling"]
+  - ["positive feedback", "negative feedback"]
+
+  # Unit 5: Heredity
+  - ["mitosis", "meiosis"]
+  - ["homologous chromosomes", "sister chromatids"]
+  - ["genotype", "phenotype"]
+  - ["dominant", "recessive"]
+  - ["incomplete dominance", "codominance"]
+  - ["epistasis", "pleiotropy"]
+  - ["crossing over", "independent assortment"]
+
+  # Unit 6: Gene Expression
+  - ["transcription", "translation"]
+  - ["DNA", "RNA"]
+  - ["mRNA", "tRNA", "rRNA"]
+  - ["introns", "exons"]
+  - ["lac operon", "trp operon"]
+  - ["promoter", "enhancer", "silencer"]
+  - ["silent mutation", "missense mutation", "nonsense mutation"]
+  - ["euchromatin", "heterochromatin"]
+
+  # Unit 7: Evolution
+  - ["homologous structures", "analogous structures"]
+  - ["allopatric speciation", "sympatric speciation"]
+  - ["directional selection", "stabilizing selection", "disruptive selection"]
+  - ["genetic drift", "gene flow", "natural selection"]
+  - ["bottleneck effect", "founder effect"]
+  - ["gradualism", "punctuated equilibrium"]
+
+  # Unit 8: Ecology
+  - ["exponential growth", "logistic growth"]
+  - ["r-selected", "K-selected"]
+  - ["density-dependent", "density-independent"]
+  - ["mutualism", "commensalism", "parasitism"]
+  - ["primary succession", "secondary succession"]
+  - ["food chain", "food web"]
+
+# ============================================================
+# SYNONYM GROUPS
+# ============================================================
+
+synonym_groups:
+  - id: krebs_cycle_names
+    reason: "Citric acid cycle, Krebs cycle, and TCA cycle are all the same process"
+  - id: light_independent_names
+    reason: "Calvin cycle and light-independent reactions are the same"
+  - id: cell_respiration_location
+    reason: "Mitochondrial matrix and matrix are the same location"
+  - id: water_splitting
+    reason: "Photolysis and water splitting refer to the same process"
+
+# ============================================================
+# DIFFICULTY TIERS
+# ============================================================
+
+difficulty_tiers:
+  easy:
+    description: "Core vocabulary and basic processes every AP Bio student should know first"
+    examples: ["DNA structure", "mitosis phases", "ATP as energy currency", "cell organelle functions"]
+  medium:
+    description: "Standard AP content requiring understanding of mechanisms"
+    examples: ["chemiosmosis", "signal transduction steps", "Hardy-Weinberg equilibrium", "operon regulation"]
+  hard:
+    description: "Complex topics requiring multi-step reasoning or calculation"
+    examples: ["water potential calculations", "chi-square analysis", "gene regulation hierarchy", "phylogenetic tree interpretation"]
+
+# ============================================================
+# SUB-DECKS — 8 sub-decks, one per CED unit
+# ============================================================
+
+sub_decks:
+  - id: unit1_chemistry_of_life
+    name: "Unit 1: Chemistry of Life"
+    description: "Water properties, elements of life, macromolecules, enzymes"
+    estimated_facts: 110
+    exam_weight: "8-11%"
+    topics: "1.1-1.7"
+
+  - id: unit2_cell_structure
+    name: "Unit 2: Cell Structure and Function"
+    description: "Cell organelles, membrane structure, transport mechanisms"
+    estimated_facts: 130
+    exam_weight: "10-13%"
+    topics: "2.1-2.11"
+
+  - id: unit3_cellular_energetics
+    name: "Unit 3: Cellular Energetics"
+    description: "Enzymes, photosynthesis, cellular respiration, fermentation"
+    estimated_facts: 160
+    exam_weight: "12-16%"
+    topics: "3.1-3.7"
+
+  - id: unit4_cell_communication
+    name: "Unit 4: Cell Communication and Cell Cycle"
+    description: "Signal transduction, feedback, cell cycle, mitosis regulation"
+    estimated_facts: 140
+    exam_weight: "10-15%"
+    topics: "4.1-4.6"
+
+  - id: unit5_heredity
+    name: "Unit 5: Heredity"
+    description: "Meiosis, Mendelian genetics, non-Mendelian inheritance, chromosomal inheritance"
+    estimated_facts: 110
+    exam_weight: "8-11%"
+    topics: "5.1-5.6"
+
+  - id: unit6_gene_expression
+    name: "Unit 6: Gene Expression and Regulation"
+    description: "DNA/RNA, replication, transcription, translation, gene regulation, mutations, biotechnology"
+    estimated_facts: 160
+    exam_weight: "12-16%"
+    topics: "6.1-6.8"
+
+  - id: unit7_evolution
+    name: "Unit 7: Natural Selection and Evolution"
+    description: "Natural selection, population genetics, Hardy-Weinberg, evidence for evolution, speciation"
+    estimated_facts: 170
+    exam_weight: "13-20%"
+    topics: "7.1-7.13"
+
+  - id: unit8_ecology
+    name: "Unit 8: Ecology"
+    description: "Energy flow, population dynamics, community ecology, biodiversity, human impacts"
+    estimated_facts: 120
+    exam_weight: "10-15%"
+    topics: "8.1-8.7"
+
+# ============================================================
+# CHAIN THEMES — 18 named themes (≥8 per knowledge deck requirement)
+# ============================================================
+
+chain_themes:
+  - id: water_chemistry
+    name: "Water & Chemistry"
+    unit: 1
+    description: "Water properties, elements, bonds"
+
+  - id: macromolecules
+    name: "Macromolecules"
+    unit: 1
+    description: "Carbs, lipids, proteins, nucleic acids"
+
+  - id: enzymes
+    name: "Enzymes"
+    unit: 1
+    description: "Enzyme structure, function, regulation"
+
+  - id: cell_organelles
+    name: "Cell Organelles"
+    unit: 2
+    description: "Organelle structure and function"
+
+  - id: membrane_transport
+    name: "Membrane & Transport"
+    unit: 2
+    description: "Membrane structure, diffusion, osmosis, active transport"
+
+  - id: photosynthesis
+    name: "Photosynthesis"
+    unit: 3
+    description: "Light reactions, Calvin cycle, C3/C4/CAM"
+
+  - id: cellular_respiration
+    name: "Cellular Respiration"
+    unit: 3
+    description: "Glycolysis, Krebs cycle, ETC, fermentation"
+
+  - id: signal_transduction
+    name: "Signal Transduction"
+    unit: 4
+    description: "Cell signaling, receptors, second messengers"
+
+  - id: cell_cycle_mitosis
+    name: "Cell Cycle & Mitosis"
+    unit: 4
+    description: "Cell cycle phases, mitosis, regulation, cancer"
+
+  - id: meiosis_genetics
+    name: "Meiosis & Genetics"
+    unit: 5
+    description: "Meiosis, genetic diversity, Mendelian inheritance"
+
+  - id: mendelian_inheritance
+    name: "Inheritance Patterns"
+    unit: 5
+    description: "Dominance, codominance, epistasis, linkage"
+
+  - id: dna_replication
+    name: "DNA Replication"
+    unit: 6
+    description: "DNA/RNA structure, replication enzymes, semiconservative"
+
+  - id: transcription_translation
+    name: "Transcription & Translation"
+    unit: 6
+    description: "mRNA processing, codons, ribosomes, protein synthesis"
+
+  - id: gene_regulation
+    name: "Gene Regulation"
+    unit: 6
+    description: "Operons, chromatin, epigenetics, mutations, biotech"
+
+  - id: natural_selection
+    name: "Natural Selection"
+    unit: 7
+    description: "Selection types, adaptation, fitness"
+
+  - id: speciation_phylogenetics
+    name: "Speciation & Phylogenetics"
+    unit: 7
+    description: "Speciation, cladograms, evidence for evolution, Hardy-Weinberg"
+
+  - id: population_ecology
+    name: "Population Ecology"
+    unit: 8
+    description: "Population growth, carrying capacity, r/K selection"
+
+  - id: ecosystem_energy
+    name: "Ecosystem & Energy"
+    unit: 8
+    description: "Trophic levels, nutrient cycles, biodiversity, human impacts"
+
+# ============================================================
+# REQUIRED EQUATIONS — from College Board CED appendix
+# ============================================================
+
+required_equations:
+  - name: "Hardy-Weinberg allele frequencies"
+    formula: "p + q = 1"
+    variables: "p = dominant allele frequency, q = recessive allele frequency"
+    unit: 7
+
+  - name: "Hardy-Weinberg genotype frequencies"
+    formula: "p² + 2pq + q² = 1"
+    variables: "p² = homozygous dominant, 2pq = heterozygous, q² = homozygous recessive"
+    unit: 7
+
+  - name: "Water potential"
+    formula: "Ψ = Ψs + Ψp"
+    variables: "Ψ = water potential, Ψs = solute potential, Ψp = pressure potential"
+    unit: 2
+
+  - name: "Solute potential"
+    formula: "Ψs = -iCRT"
+    variables: "i = ionization constant, C = molar concentration, R = pressure constant, T = temperature (K)"
+    unit: 2
+
+  - name: "Exponential population growth"
+    formula: "dN/dt = rₘₐₓN"
+    variables: "N = population size, rₘₐₓ = max per capita growth rate, t = time"
+    unit: 8
+
+  - name: "Logistic population growth"
+    formula: "dN/dt = rₘₐₓN((K-N)/K)"
+    variables: "K = carrying capacity"
+    unit: 8
+
+  - name: "Chi-square"
+    formula: "χ² = Σ((o-e)²/e)"
+    variables: "o = observed, e = expected"
+    unit: 5
+
+  - name: "Gibbs free energy"
+    formula: "ΔG = ΔH - TΔS"
+    variables: "ΔG = free energy change, ΔH = enthalpy change, T = temperature, ΔS = entropy change"
+    unit: 3
+
+  - name: "Surface area of sphere"
+    formula: "SA = 4πr²"
+    variables: "r = radius"
+    unit: 2
+
+  - name: "Volume of sphere"
+    formula: "V = (4/3)πr³"
+    variables: "r = radius"
+    unit: 2
+
+  - name: "Surface area of cube"
+    formula: "SA = 6s²"
+    variables: "s = side length"
+    unit: 2
+
+  - name: "Volume of cube"
+    formula: "V = s³"
+    variables: "s = side length"
+    unit: 2
+
+# ============================================================
+# NOTES
+# ============================================================
+
+notes: >
+  COMPLETENESS PHILOSOPHY: This deck covers EVERY topic, learning objective, and
+  essential knowledge statement in the College Board AP Biology CED. An AP Biology
+  student who masters this deck should be prepared for every concept tested on the exam.
+
+  EXAM ALIGNMENT: Facts are tagged with examTags: ["AP_Biology", "AP_Bio_Unit{N}"]
+  and organized into 8 sub-decks matching CED units exactly.
+
+  OVERLAP WITH HUMAN ANATOMY: Minimal and intentional. Human Anatomy focuses on
+  gross anatomy and clinical applications. AP Biology focuses on molecular/cellular
+  fundamentals and organism-level ecology. Different audience, different depth.
+  Students studying both get reinforcement, not redundancy.
+
+  Domain: science (pairs with existing computer_science, periodic_table, solar_system decks)
+  Age: "teen+" (AP-level content appropriate for high school juniors/seniors and above)
+  Volatile: none — biological principles don't change

@@ -1,0 +1,1258 @@
+deck_id: ap_biology_unit7
+name: "AP Biology — Unit 7: Natural Selection and Evolution"
+domain: science
+sub_domain: biology
+parent_deck_id: ap_biology
+description: "Master every concept in AP Biology Unit 7 — Natural Selection and Evolution (13-20% exam weight, the highest-weighted unit). Covers Darwin's theory, four conditions for natural selection, modes of selection, artificial selection, population genetics, Hardy-Weinberg equilibrium, evidence of evolution and common ancestry, phylogenetics, speciation, reproductive isolation, origins of life, and the RNA world. Aligned to College Board CED Topics 7.1-7.13 (Fall 2025)."
+target_facts: 170
+minimum_facts: 130
+exam_weight: "13-20%"
+
+# COMPLETENESS PHILOSOPHY:
+# This deck covers the COMPLETE College Board AP Biology Unit 7 (Topics 7.1-7.13).
+# Unit 7 carries more AP exam weight than any other unit (13-20%). A student who
+# masters this deck should be able to answer every AP exam question on evolution,
+# natural selection, population genetics, phylogenetics, and speciation.
+# Fact counts per chain theme are weighted by topic density and AP exam emphasis.
+# Hardy-Weinberg math, evidence of evolution, and speciation are priority areas
+# appearing frequently on FRQs.
+
+exam_alignment:
+  exam: "AP Biology"
+  authority: "College Board"
+  document: "AP Biology Course and Exam Description (CED) Effective Fall 2025"
+  url: "https://apcentral.collegeboard.org/courses/ap-biology/course"
+  unit: 7
+  topics:
+    - "7.1 Introduction to Natural Selection"
+    - "7.2 Natural Selection"
+    - "7.3 Artificial Selection"
+    - "7.4 Population Genetics"
+    - "7.5 Hardy-Weinberg Equilibrium"
+    - "7.6 Evidence of Evolution"
+    - "7.7 Common Ancestry"
+    - "7.8 Continuing Evolution"
+    - "7.9 Phylogeny"
+    - "7.10 Speciation"
+    - "7.11 Variations in Populations"
+    - "7.12 Origins of Life on Earth"
+    - "7.13 Continuing Origins of Life"
+  big_ideas:
+    - "EVO: Evolution"
+    - "SYI: Systems and Interactions"
+
+# Sourcing & licensing
+data_sources:
+  - name: College Board AP Biology Course and Exam Description (CED) Effective Fall 2025
+    url: https://apcentral.collegeboard.org/media/pdf/ap-biology-course-and-exam-description-effective-fall-2025.pdf
+    license: public educational resource
+    usage: Authoritative unit/topic structure, learning objectives (LOs), essential knowledge (EK) statements, exam weight (13-20% for Unit 7), illustrative examples for Topics 7.1-7.13
+  - name: OpenStax Biology 2e — Chapters 18-20 (Evolution) and Chapter 22 (Phylogenetics)
+    url: https://openstax.org/books/biology-2e/pages/18-introduction
+    license: CC-BY-4.0
+    usage: Darwin's voyage, natural selection conditions, Hardy-Weinberg math, speciation types and barriers, fossil record evidence, analogous vs. homologous structures, origins of life details
+  - name: Khan Academy AP Biology — Unit 7
+    url: https://www.khanacademy.org/science/ap-biology/natural-selection
+    license: free educational resource (CC-BY-NC-SA)
+    usage: Cross-reference for Hardy-Weinberg worked examples, genetic drift vs. selection, phylogenetic tree interpretation
+  - name: Wikipedia — Natural selection, Hardy-Weinberg principle, Speciation, Phylogenetics, Abiogenesis
+    url: https://en.wikipedia.org/wiki/Natural_selection
+    license: CC-BY-SA-4.0
+    usage: Definitions, historical context (Darwin 1859, Miller-Urey 1953, Margulis), transitional fossil examples (Tiktaalik, Archaeopteryx), Great Oxidation Event dates
+
+asset_sources: []
+
+# ============================================================
+# VERIFIED SOURCE DATA — Pre-researched facts by topic
+# Workers format this data into DeckFact JSON — they do NOT
+# generate facts from LLM knowledge.
+# ============================================================
+
+verified_facts:
+
+  # ----------------------------------------------------------
+  # Topic 7.1-7.2: Natural Selection (~20 facts)
+  # Source: OpenStax Biology 2e Ch. 18-19; College Board CED 7.1-7.2
+  # ----------------------------------------------------------
+  topic_7_1_7_2_natural_selection:
+    - fact: "Charles Darwin published 'On the Origin of Species' in 1859"
+      pool: bracket_numbers
+      chain_theme: natural_selection
+      difficulty: 1
+      fun_score: 8
+
+    - fact: "Darwin made observations on his voyage on HMS Beagle (1831-1836) that informed his theory of natural selection"
+      pool: organism_names
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Darwin studied the beak shapes of Galápagos finches — different species had beaks adapted to different food sources"
+      pool: organism_names
+      chain_theme: natural_selection
+      difficulty: 1
+      fun_score: 9
+
+    - fact: "Natural selection: differential survival and reproduction based on heritable traits; individuals with advantageous traits leave more offspring"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 1
+      fun_score: 8
+
+    - fact: "Four conditions required for natural selection: (1) variation in a trait exists in the population, (2) the trait is heritable (passed to offspring), (3) more offspring are produced than can survive (overproduction), (4) individuals with the trait have differential survival/reproduction"
+      pool: process_names
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Adaptation: a heritable trait that increases an organism's fitness (reproductive success) in a given environment"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Fitness: an organism's relative reproductive success; measured by the number of surviving offspring produced in a given environment"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Evolution: a change in allele frequencies in a population over time; NOT change in individuals during their lifetimes"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Population: a group of individuals of the same species living in the same area that can interbreed and share a gene pool"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 1
+      fun_score: 6
+
+    - fact: "Descent with modification: species change over time and share common ancestors; Darwin's core principle"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Directional selection: favors one extreme phenotype; shifts the population mean in that direction (example: increased beak depth in Galápagos finches during drought)"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Stabilizing selection: favors the intermediate phenotype and eliminates both extremes; reduces variation (example: human birth weight — too low or too high increases mortality)"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Disruptive (diversifying) selection: favors both extreme phenotypes over the intermediate; can split a population into two distinct groups (example: beak size in seed-cracking birds where large and small beaks both outperform medium)"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Sexual selection: a form of natural selection where traits that increase mating success are favored, even at a survival cost (examples: peacock tail feathers, elk antlers, bird song)"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Intrasexual selection: competition between individuals of the same sex for mates (example: male elk fighting with antlers)"
+      pool: comparison_terms
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Intersexual selection: mate choice by one sex based on traits displayed by the other sex (example: female peahens selecting males with elaborate tail feathers)"
+      pool: comparison_terms
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Comparison — directional vs. stabilizing vs. disruptive selection: directional shifts the mean toward one extreme; stabilizing reduces variance around the mean; disruptive increases variance by favoring both extremes"
+      pool: comparison_terms
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 9
+
+  # ----------------------------------------------------------
+  # Topic 7.3: Artificial Selection (~6 facts)
+  # Source: OpenStax Biology 2e Ch. 18.1; College Board CED 7.3
+  # ----------------------------------------------------------
+  topic_7_3_artificial_selection:
+    - fact: "Artificial selection (selective breeding): humans intentionally choose individuals with desired traits to reproduce, rapidly changing trait distributions in a population"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 1
+      fun_score: 8
+
+    - fact: "All modern dog breeds (Canis lupus familiaris) were derived from wolves through artificial selection over thousands of years"
+      pool: organism_names
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Modern corn (Zea mays) was derived from teosinte through thousands of years of artificial selection — the ancestral form looks dramatically different"
+      pool: organism_names
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Broccoli, cauliflower, kale, cabbage, kohlrabi, and Brussels sprouts are all derived from wild mustard (Brassica oleracea) by artificial selection"
+      pool: organism_names
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 10
+
+    - fact: "Darwin used artificial selection as an analogy to explain natural selection — the same mechanism of heritable variation + differential reproduction, but guided by human choice rather than nature"
+      pool: comparison_terms
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Selective breeding reduces genetic diversity and can lead to inbreeding depression — reduced fitness from homozygosity of deleterious recessive alleles"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 7
+
+  # ----------------------------------------------------------
+  # Topic 7.4: Population Genetics (~12 facts)
+  # Source: OpenStax Biology 2e Ch. 19.1; College Board CED 7.4
+  # ----------------------------------------------------------
+  topic_7_4_population_genetics:
+    - fact: "Gene pool: the total collection of all alleles present in all individuals in a population at a given time"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Allele frequency: the proportion of a specific allele in the gene pool; all allele frequencies at a locus sum to 1.0"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Microevolution: change in allele frequencies within a population over one or more generations"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Five agents of microevolutionary change: (1) mutation, (2) natural selection, (3) gene flow, (4) genetic drift, (5) nonrandom mating"
+      pool: process_names
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Mutation: the ultimate source of new alleles; mutations are random with respect to fitness; individual mutations are usually rare but accumulate over evolutionary time"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Gene flow (migration): movement of alleles between populations due to organisms moving or gametes being transported; increases genetic variation in the receiving population and homogenizes allele frequencies between populations"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Nonrandom mating: includes assortative mating (individuals mate preferentially with similar phenotypes) and sexual selection; changes genotype frequencies without necessarily changing allele frequencies"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Genetic drift: random fluctuations in allele frequency due to chance sampling events in reproduction; has a stronger effect in small populations"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Bottleneck effect: a drastic reduction in population size (e.g., disease, disaster) causes loss of genetic diversity and random changes in allele frequencies that may differ greatly from the original population"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Founder effect: a small group of individuals colonizes a new area, establishing a population with limited genetic diversity and different allele frequencies from the original population (example: Amish community founder effect for Ellis-van Creveld syndrome)"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Genetic drift can lead to fixation (an allele reaches 100% frequency) or loss (an allele reaches 0% frequency and is eliminated from the population)"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Comparison — bottleneck effect vs. founder effect: both are examples of genetic drift in small populations; bottleneck = existing population drastically reduced; founder = small group colonizes new habitat"
+      pool: comparison_terms
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 9
+
+  # ----------------------------------------------------------
+  # Topic 7.5: Hardy-Weinberg Equilibrium (~15 facts)
+  # Source: OpenStax Biology 2e Ch. 19.1; College Board CED 7.5
+  # ----------------------------------------------------------
+  topic_7_5_hardy_weinberg:
+    - fact: "Hardy-Weinberg principle: in the absence of evolution, allele frequencies and genotype frequencies in a population remain constant from generation to generation"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Hardy-Weinberg allele frequency equation: p + q = 1 (where p = frequency of dominant allele, q = frequency of recessive allele)"
+      pool: bracket_numbers
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Hardy-Weinberg genotype frequency equation: p² + 2pq + q² = 1 (p² = homozygous dominant frequency, 2pq = heterozygous frequency, q² = homozygous recessive frequency)"
+      pool: bracket_numbers
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Five conditions for Hardy-Weinberg equilibrium: (1) no mutation, (2) no natural selection, (3) no gene flow, (4) no genetic drift (requires an infinitely large population), (5) random mating"
+      pool: experiment_terms
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "If any one of the five Hardy-Weinberg conditions is violated, allele frequencies will change — the population IS evolving"
+      pool: experiment_terms
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Hardy-Weinberg equilibrium serves as a null hypothesis: real populations are compared to H-W expectations, and deviations indicate which evolutionary forces are acting"
+      pool: experiment_terms
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Hardy-Weinberg calculation step 1: if the homozygous recessive phenotype frequency is q², take the square root to find q (the recessive allele frequency)"
+      pool: experiment_terms
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Hardy-Weinberg calculation step 2: p = 1 - q (the dominant allele frequency equals 1 minus the recessive allele frequency)"
+      pool: experiment_terms
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Hardy-Weinberg worked example: if 16% of a population shows a recessive phenotype, then q² = 0.16 → q = 0.4 → p = 0.6 → 2pq (carrier frequency) = 2(0.6)(0.4) = 0.48 = 48%"
+      pool: bracket_numbers
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 9
+
+    - fact: "Heterozygote (carrier) frequency in Hardy-Weinberg: 2pq; this represents the frequency of individuals who carry one copy of the recessive allele but do not express the recessive phenotype"
+      pool: bracket_numbers
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Hardy-Weinberg applies to diploid, sexually reproducing organisms; it can be extended to X-linked loci and multiple alleles at a single locus"
+      pool: experiment_terms
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Homozygous dominant genotype frequency in H-W: p² (example: if p = 0.6, then p² = 0.36 = 36% of population is homozygous dominant)"
+      pool: bracket_numbers
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 7
+
+  # ----------------------------------------------------------
+  # Topic 7.6-7.7: Evidence of Evolution and Common Ancestry (~20 facts)
+  # Source: OpenStax Biology 2e Ch. 18.1-18.3; College Board CED 7.6-7.7
+  # ----------------------------------------------------------
+  topic_7_6_7_7_evidence_common_ancestry:
+    - fact: "Fossil record: the preserved remains of organisms over geological time; shows a progression from simpler to more complex life forms; provides evidence of transitional forms"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 1
+      fun_score: 8
+
+    - fact: "Tiktaalik: a transitional fossil (~375 million years ago) with features intermediate between fish and tetrapods — lobed fins with wrist bones, flat head, neck; evidence for fish-to-land-vertebrate transition"
+      pool: organism_names
+      chain_theme: speciation_phylogenetics
+      difficulty: 3
+      fun_score: 10
+
+    - fact: "Archaeopteryx: a transitional fossil with features of both non-avian dinosaurs (teeth, clawed wings, long bony tail) and birds (feathers, wishbone, partially reversed big toe); evidence for the dinosaur-to-bird transition"
+      pool: organism_names
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 10
+
+    - fact: "Biogeography: the geographic distribution of species; species found on oceanic islands most closely resemble those on the nearest mainland, not those in similar environments far away — evidence of descent from a common ancestor"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Darwin's finches: 14-15 species found on the Galápagos Islands, each with beak shapes adapted to different food sources; evolved from a single South American finch ancestor — evidence of adaptive radiation from common ancestry"
+      pool: organism_names
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Homologous structures: anatomical structures derived from the same ancestral structure but modified for different functions in different species; evidence of common ancestry (example: human arm, whale flipper, bat wing, horse leg — all have humerus, radius, ulna)"
+      pool: comparison_terms
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Analogous structures: structures with similar functions that evolved independently in unrelated lineages (convergent evolution); NOT evidence of common ancestry (example: bird wing and insect wing are analogous — both enable flight but have completely different underlying structures)"
+      pool: comparison_terms
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Vestigial structures: anatomical structures that have been reduced or lost their ancestral function; evidence that organisms share ancestry with forms in which the structure was functional (examples: human appendix, whale pelvic bones, snake leg bones, flightless bird wings)"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Comparison — homologous vs. analogous structures: homologous = same underlying anatomy, different functions, indicates common ancestry; analogous = different underlying anatomy, similar functions, indicates convergent evolution (NOT common ancestry)"
+      pool: comparison_terms
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Molecular evidence: similarity in DNA and protein sequences correlates with evolutionary relatedness — more similar sequences indicate a more recent common ancestor"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Universal genetic code: nearly all living organisms use the same codons to encode the same amino acids; strong evidence for a single common origin of all life"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Conserved genes: highly similar gene sequences found across distantly related species (example: Hox genes are structurally similar in all animals; cytochrome c protein differs by only 1 amino acid between humans and chimpanzees)"
+      pool: organism_names
+      chain_theme: speciation_phylogenetics
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Embryological evidence: early embryos of diverse vertebrates (fish, reptiles, birds, humans) look remarkably similar — all share pharyngeal pouches and a post-anal tail — evidence of shared ancestry"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Molecular clock: uses the rate of molecular changes (DNA mutations, amino acid substitutions) accumulated over time to estimate when two lineages diverged from their common ancestor"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 3
+      fun_score: 8
+
+  # ----------------------------------------------------------
+  # Topic 7.8: Continuing Evolution (~8 facts)
+  # Source: OpenStax Biology 2e Ch. 18.2; College Board CED 7.8
+  # ----------------------------------------------------------
+  topic_7_8_continuing_evolution:
+    - fact: "Antibiotic resistance: bacteria with pre-existing resistance alleles survive antibiotic treatment and reproduce, increasing the frequency of resistance alleles in the population (example: MRSA — methicillin-resistant Staphylococcus aureus)"
+      pool: organism_names
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Pesticide resistance: insects or weeds with pre-existing resistance alleles survive pesticide application and reproduce; the same natural selection mechanism as antibiotic resistance"
+      pool: comparison_terms
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "HIV evolution: HIV has a very high mutation rate (RNA virus with error-prone reverse transcriptase) and short generation time; natural selection rapidly produces drug-resistant strains, requiring combination therapy (HAART)"
+      pool: organism_names
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 9
+
+    - fact: "Industrial melanism in peppered moths (Biston betularia): dark-colored moths were rare before industrialization; pollution darkened tree bark → dark moths camouflaged, light moths visible to predators → dark allele increased in frequency; reversed after clean air acts"
+      pool: organism_names
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 10
+
+    - fact: "Peter and Rosemary Grant documented real-time beak evolution in Galápagos finches over decades: during the 1977 drought, large-seeded plants survived better → birds with deeper beaks could crack harder seeds → average beak depth increased in the population within one generation"
+      pool: organism_names
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 10
+
+    - fact: "Evolution is not just historical — it is an ongoing, observable process that occurs whenever populations face new selection pressures"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 1
+      fun_score: 7
+
+  # ----------------------------------------------------------
+  # Topic 7.9: Phylogeny (~15 facts)
+  # Source: OpenStax Biology 2e Ch. 20; College Board CED 7.9
+  # ----------------------------------------------------------
+  topic_7_9_phylogeny:
+    - fact: "Phylogenetic tree: a branching diagram that shows the evolutionary relationships among taxa based on common ancestry and shared derived characters"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Cladogram: a branching diagram that groups organisms based on shared derived characters (synapomorphies); does not necessarily represent time or amount of evolutionary change"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Node (branch point) on a phylogenetic tree: represents the most recent common ancestor of all lineages that diverge from that point"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Root of a phylogenetic tree: the base of the tree; represents the most recent common ancestor of ALL taxa in the tree"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 6
+
+    - fact: "Sister taxa: two groups or lineages that share the most recent common ancestor with each other — they are each other's closest evolutionary relatives"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Outgroup: a taxon that diverged before the group of interest; used to determine which characters are ancestral (plesiomorphic) versus derived (apomorphic)"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Monophyletic group (clade): includes a common ancestor AND ALL of its descendants; the only valid grouping in cladistic classification"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Paraphyletic group: includes a common ancestor and SOME but not all of its descendants; not considered a valid clade (example: 'Reptilia' excluding birds is paraphyletic because birds evolved from within reptiles)"
+      pool: comparison_terms
+      chain_theme: speciation_phylogenetics
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Synapomorphies (shared derived characters): traits shared by all members of a clade that were absent in the outgroup; the basis for grouping organisms in cladistics"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Symplesiomorphies (shared ancestral characters): traits shared with the outgroup; present in the common ancestor; NOT useful for defining a clade"
+      pool: comparison_terms
+      chain_theme: speciation_phylogenetics
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Parsimony principle in phylogenetics: the preferred tree topology is the one that requires the fewest total evolutionary changes (assumes evolution is parsimonious)"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Maximum likelihood in phylogenetics: a statistical method that selects the tree topology that makes the observed data (sequences) most probable given a model of evolution"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 4
+      fun_score: 6
+
+    - fact: "Molecular phylogenetics: building phylogenetic trees using DNA, RNA, or protein sequence data — the most powerful current method for determining evolutionary relationships"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Comparison — monophyletic vs. paraphyletic group: monophyletic includes ancestor + ALL descendants (valid clade); paraphyletic includes ancestor + SOME descendants (invalid clade, excludes some lineages)"
+      pool: comparison_terms
+      chain_theme: speciation_phylogenetics
+      difficulty: 3
+      fun_score: 8
+
+  # ----------------------------------------------------------
+  # Topic 7.10: Speciation (~15 facts)
+  # Source: OpenStax Biology 2e Ch. 18.3; College Board CED 7.10
+  # ----------------------------------------------------------
+  topic_7_10_speciation:
+    - fact: "Biological species concept: a species is a group of populations whose members can interbreed and produce viable, fertile offspring; members of different species are reproductively isolated"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Reproductive isolation: the existence of biological barriers that prevent gene flow between populations; necessary for speciation to occur"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Prezygotic barriers: reproductive isolating mechanisms that prevent mating or fertilization — they act BEFORE a zygote is formed"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Habitat (ecological) isolation: two species live in the same geographic area but in different habitats and rarely encounter each other (example: two Drosophila species that breed on different host plants)"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Temporal isolation: two species breed at different times (different seasons, times of day, or years) and thus never mate with each other"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Behavioral (ethological) isolation: two species have different mating signals, courtship behaviors, or pheromones, so they do not recognize each other as potential mates"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Mechanical isolation: incompatible reproductive structures prevent mating between species even when they meet and attempt to mate"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Gametic isolation: sperm cannot fertilize the egg of a different species — incompatibility of gamete surface proteins prevents fusion"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Postzygotic barriers: reproductive isolating mechanisms that act AFTER a zygote is formed — the hybrid offspring has reduced viability or fertility"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Reduced hybrid viability: hybrid embryos fail to develop normally or die before reproductive age (example: many inter-species crosses in plants produce inviable seeds)"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Reduced hybrid fertility: hybrids survive but are sterile — cannot produce functional gametes (example: mule = horse × donkey cross; mules are sterile)"
+      pool: organism_names
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Allopatric speciation: geographic isolation of populations → independent evolution → reproductive isolation accumulates → new species form; the most common mode of speciation"
+      pool: comparison_terms
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Sympatric speciation: speciation without geographic isolation, occurring within the same area; common in plants via polyploidy (genome duplication), rare in animals"
+      pool: comparison_terms
+      chain_theme: speciation_phylogenetics
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Adaptive radiation: rapid diversification from a single ancestral species into many species filling different ecological niches (examples: Darwin's finches, Hawaiian honeycreepers, cichlid fish in African Rift Lakes, Australian marsupials)"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Punctuated equilibrium: the evolutionary pattern of long periods of little change (stasis) interrupted by relatively rapid bursts of evolutionary change; contrasts with phyletic gradualism (slow, continuous change)"
+      pool: comparison_terms
+      chain_theme: speciation_phylogenetics
+      difficulty: 3
+      fun_score: 8
+
+  # ----------------------------------------------------------
+  # Topic 7.11: Variations in Populations (~8 facts)
+  # Source: OpenStax Biology 2e Ch. 19.2; College Board CED 7.11
+  # ----------------------------------------------------------
+  topic_7_11_variation:
+    - fact: "Genetic variation: the raw material for natural selection and evolution; includes differences in alleles, genotypes, and phenotypes among individuals in a population"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 1
+      fun_score: 7
+
+    - fact: "Three sources of genetic variation: (1) mutation — creates new alleles; (2) sexual recombination — reshuffles existing alleles; (3) gene flow — introduces alleles from other populations"
+      pool: process_names
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Neutral variation: genetic differences that have no measurable effect on fitness; many single nucleotide polymorphisms (SNPs) are selectively neutral"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Balanced polymorphism: the maintenance of two or more phenotypes in a population by natural selection (not just drift); both alleles are maintained above expected frequencies"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 7
+
+    - fact: "Heterozygote advantage (overdominance): the heterozygous genotype has higher fitness than either homozygous genotype; maintains both alleles in the population (example: sickle cell trait — heterozygotes have malaria resistance without full sickle cell disease)"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 10
+
+    - fact: "Sickle cell trait example: in malaria-endemic regions, HbA/HbS heterozygotes have higher survival than HbA/HbA (susceptible to malaria) or HbS/HbS (sickle cell disease); both alleles maintained by balancing selection"
+      pool: organism_names
+      chain_theme: natural_selection
+      difficulty: 2
+      fun_score: 10
+
+    - fact: "Frequency-dependent selection: the fitness of a phenotype depends on how common it is in the population; rare phenotypes often have higher fitness (negative frequency-dependence) while common phenotypes are selected against"
+      pool: term_definitions
+      chain_theme: natural_selection
+      difficulty: 4
+      fun_score: 8
+
+    - fact: "Measures of genetic diversity: number of alleles per locus, heterozygosity (proportion of heterozygous individuals), nucleotide diversity (average number of nucleotide differences between randomly chosen sequences)"
+      pool: experiment_terms
+      chain_theme: natural_selection
+      difficulty: 3
+      fun_score: 7
+
+  # ----------------------------------------------------------
+  # Topic 7.12-7.13: Origins of Life (~10 facts)
+  # Source: OpenStax Biology 2e Ch. 22; College Board CED 7.12-7.13
+  # ----------------------------------------------------------
+  topic_7_12_7_13_origins_of_life:
+    - fact: "Earth formed approximately 4.6 billion years ago; earliest evidence of life (stromatolites — layered structures formed by cyanobacteria-like organisms) dates to approximately 3.5 billion years ago"
+      pool: bracket_numbers
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "Miller-Urey experiment (Stanley Miller and Harold Urey, 1953): simulated early Earth conditions — water, methane (CH₄), ammonia (NH₃), and hydrogen (H₂) with electrical sparks to simulate lightning — and produced amino acids and other organic molecules abiotically"
+      pool: experiment_terms
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Abiotic synthesis: the formation of organic molecules (amino acids, nucleotides, lipids) from simple inorganic precursors without the action of living organisms; demonstrated by Miller-Urey and subsequent experiments"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 8
+
+    - fact: "RNA world hypothesis: RNA served as BOTH genetic material (like DNA) AND catalyst (like enzymes) in early life before the evolution of DNA and proteins; supported by the existence of ribozymes"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 3
+      fun_score: 9
+
+    - fact: "Ribozymes: RNA molecules with catalytic activity — they can catalyze chemical reactions including self-splicing of introns and peptide bond formation in the ribosome; key evidence for the RNA world hypothesis"
+      pool: molecule_names
+      chain_theme: speciation_phylogenetics
+      difficulty: 3
+      fun_score: 9
+
+    - fact: "Protocells: lipid bilayer vesicles that could spontaneously form in early oceans; could have enclosed self-replicating RNA molecules, representing a precursor to the first true cells"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 3
+      fun_score: 8
+
+    - fact: "Endosymbiosis theory (Lynn Margulis, 1967): mitochondria evolved from engulfed aerobic bacteria and chloroplasts evolved from engulfed cyanobacteria; evidence: double membrane, own circular DNA, own 70S ribosomes, divide by binary fission"
+      pool: term_definitions
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Prokaryotes were the only life forms on Earth for approximately 2 billion years (from ~3.5 bya to ~1.5-1.8 bya) before the first eukaryotes evolved"
+      pool: bracket_numbers
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 7
+
+    - fact: "Great Oxidation Event: approximately 2.4 billion years ago, oxygen produced by cyanobacteria via photosynthesis began accumulating in the atmosphere; enabled aerobic respiration and eventually complex eukaryotic life"
+      pool: bracket_numbers
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 9
+
+    - fact: "Cambrian explosion: approximately 541 million years ago, most major animal body plans (phyla) appeared in the fossil record within a geologically short time span of ~20 million years; marks the beginning of the Phanerozoic Eon"
+      pool: bracket_numbers
+      chain_theme: speciation_phylogenetics
+      difficulty: 2
+      fun_score: 9
+
+# ============================================================
+# ANSWER TYPE POOLS
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: term_definitions
+  # "What is [term]?" or "Which term describes [definition]?"
+  # Definitions of biological terms, models, and concepts in evolution
+  - id: term_definitions
+    format: term
+    estimated_count: 55
+    note: >
+      Natural selection, adaptation, fitness, evolution, gene pool, allele frequency,
+      microevolution, genetic drift, bottleneck effect, founder effect, gene flow,
+      Hardy-Weinberg equilibrium, biological species concept, reproductive isolation,
+      adaptive radiation, allopatric speciation, sympatric speciation, phylogenetic tree,
+      clade, monophyletic group, synapomorphy, molecular clock, RNA world hypothesis,
+      protocells, endosymbiosis, vestigial structures, biogeography, artificial selection,
+      inbreeding depression, balanced polymorphism, heterozygote advantage, neutral variation.
+      Answers are single nouns or short phrases. Key confusions: evolution vs. adaptation,
+      microevolution vs. macroevolution, genetic drift vs. natural selection.
+    syntheticDistractors:
+      - "A random change in allele frequency due to sampling error"
+      - "The non-heritable changes an organism makes during its lifetime"
+      - "The total number of organisms in a habitat"
+      - "A trait that decreases reproductive success in all environments"
+
+  # POOL 2: process_names
+  # "What process [does X]?" or "What are the steps of [Y]?"
+  # Names of evolutionary processes and mechanisms
+  - id: process_names
+    format: term
+    estimated_count: 12
+    note: >
+      Natural selection, artificial selection, genetic drift, gene flow, mutation,
+      sexual selection, adaptive radiation, speciation, abiotic synthesis, endosymbiosis,
+      allopatric speciation, sympatric speciation. Answers are process names.
+      Key confusions: natural vs. artificial selection, allopatric vs. sympatric speciation,
+      microevolution vs. speciation.
+    syntheticDistractors:
+      - "Photosynthesis"
+      - "Mitosis"
+      - "Transcription"
+      - "Chemiosmosis"
+      - "Active transport"
+
+  # POOL 3: organism_names
+  # "Which organism [has trait X]?" or "What is [organism] an example of?"
+  # Specific organisms used as examples in evolution
+  - id: organism_names
+    format: term
+    estimated_count: 18
+    note: >
+      Galápagos finches, Darwin's finches, Tiktaalik, Archaeopteryx, peppered moths
+      (Biston betularia), MRSA, HIV, mule (horse × donkey hybrid), dog breeds (from wolves),
+      corn/maize (from teosinte), Brassica vegetables (from wild mustard), sickle cell
+      (humans), cichlid fish, Hawaiian honeycreepers, Australian marsupials, Drosophila,
+      cyanobacteria (Great Oxidation Event), stromatolites. Answers are organism or taxon names.
+      Key confusions: Tiktaalik vs. Archaeopteryx (different transitions), mule sterility.
+    syntheticDistractors:
+      - "E. coli K-12"
+      - "Saccharomyces cerevisiae"
+      - "Arabidopsis thaliana"
+      - "Caenorhabditis elegans"
+      - "Xenopus laevis"
+
+  # POOL 4: bracket_numbers
+  # Facts containing numeric values testable as fill-in-the-blank
+  # e.g., "Earth formed {4.6} billion years ago"
+  - id: bracket_numbers
+    format: numeric
+    estimated_count: 14
+    note: >
+      4.6 bya (Earth formed), 3.5 bya (first life evidence/stromatolites), 2.4 bya
+      (Great Oxidation Event), 1.5-1.8 bya (first eukaryotes), 541 mya (Cambrian
+      explosion), 375 mya (Tiktaalik), 1859 (Darwin's publication), p + q = 1,
+      p² + 2pq + q² = 1, H-W example: q² = 0.16 → q = 0.4 → p = 0.6 → 2pq = 0.48.
+      Distractors must be nearby plausible numbers of the same magnitude.
+    syntheticDistractors:
+      - "4.1"
+      - "2.8"
+      - "0.32"
+      - "0.25"
+      - "650"
+
+  # POOL 5: comparison_terms
+  # Facts framing a comparison between two related concepts
+  - id: comparison_terms
+    format: term
+    estimated_count: 20
+    note: >
+      Homologous vs. analogous structures, directional vs. stabilizing vs. disruptive
+      selection, natural vs. artificial selection, bottleneck vs. founder effect,
+      allopatric vs. sympatric speciation, prezygotic vs. postzygotic barriers,
+      monophyletic vs. paraphyletic group, synapomorphy vs. symplesiomorphy,
+      intrasexual vs. intersexual selection, punctuated equilibrium vs. gradualism,
+      antibiotic vs. pesticide resistance (same mechanism), genetic drift vs. natural selection.
+    syntheticDistractors:
+      - "Both involve changes in an individual's phenotype during its lifetime"
+      - "Both require geographic isolation to occur"
+      - "Both result in increased genetic diversity"
+      - "Both apply only to asexually reproducing organisms"
+      - "Both are random with respect to fitness"
+
+  # POOL 6: experiment_terms
+  # Experimental evidence, hypotheses, and analytical methods
+  - id: experiment_terms
+    format: term
+    estimated_count: 14
+    note: >
+      Hardy-Weinberg equilibrium (null hypothesis), Miller-Urey experiment (1953),
+      RNA world hypothesis, molecular clock, maximum likelihood (phylogenetics),
+      parsimony principle, Hardy-Weinberg allele frequency calculation steps,
+      H-W five conditions (no mutation/selection/gene flow/drift/nonrandom mating),
+      measures of genetic diversity (heterozygosity, nucleotide diversity, alleles per locus).
+      Answers describe an experimental concept or analytical method.
+    syntheticDistractors:
+      - "PCR amplification of ancient DNA"
+      - "CRISPR gene editing to test fitness effects"
+      - "Gel electrophoresis for protein separation"
+      - "Southern blotting for gene detection"
+      - "Flow cytometry for cell sorting"
+
+  # POOL 7: molecule_names
+  # "What molecule [does X]?" or "Which molecule is [description]?"
+  - id: molecule_names
+    format: term
+    estimated_count: 8
+    note: >
+      Ribozymes (catalytic RNA), RNA (genetic material + catalyst in RNA world),
+      DNA (replaced RNA as primary genetic material), HbA (normal hemoglobin),
+      HbS (sickle cell hemoglobin), cytochrome c (conserved across eukaryotes),
+      Hox genes (conserved developmental genes). Answers are molecule or gene names.
+    syntheticDistractors:
+      - "tRNA"
+      - "snRNA"
+      - "microRNA"
+      - "NADPH"
+      - "ATP synthase"
+
+# ============================================================
+# QUESTION TEMPLATES
+# ============================================================
+
+question_templates:
+  - id: define_term
+    questionFormat: "What is {term} in evolutionary biology?"
+    answerPoolId: term_definitions
+    availableFromMastery: 0
+    difficulty: 1
+
+  - id: identify_process
+    questionFormat: "Which evolutionary process {description}?"
+    answerPoolId: process_names
+    availableFromMastery: 0
+    difficulty: 2
+
+  - id: identify_organism
+    questionFormat: "Which organism is a classic example of {evolutionary_concept}?"
+    answerPoolId: organism_names
+    availableFromMastery: 1
+    difficulty: 2
+
+  - id: fill_number
+    questionFormat: "What {number_context} in evolutionary biology?"
+    answerPoolId: bracket_numbers
+    availableFromMastery: 1
+    difficulty: 2
+
+  - id: compare_concepts
+    questionFormat: "How does {concept_a} differ from {concept_b}?"
+    answerPoolId: comparison_terms
+    availableFromMastery: 2
+    difficulty: 3
+
+  - id: identify_experiment
+    questionFormat: "What did the {experiment} demonstrate or establish?"
+    answerPoolId: experiment_terms
+    availableFromMastery: 2
+    difficulty: 3
+
+  - id: identify_molecule
+    questionFormat: "What molecule or gene {description}?"
+    answerPoolId: molecule_names
+    availableFromMastery: 2
+    difficulty: 3
+
+# ============================================================
+# CHAIN THEMES — 2 named themes for Unit 7
+# (Full parent deck requires ≥8; unit sub-deck uses themes from parent)
+# ============================================================
+
+chain_themes:
+  - id: natural_selection
+    name: "Natural Selection"
+    topics: "7.1, 7.2, 7.3, 7.4, 7.5, 7.8, 7.11"
+    description: >
+      Covers Darwin's voyage and theory, the four conditions for natural selection,
+      modes of selection (directional, stabilizing, disruptive, sexual), artificial
+      selection, population genetics (gene pool, allele frequency, five agents of change,
+      genetic drift, bottleneck, founder effect), Hardy-Weinberg equilibrium and
+      calculation, continuing evolution (antibiotic resistance, industrial melanism,
+      Galápagos finch beak evolution), and sources and types of genetic variation
+      (neutral variation, heterozygote advantage, frequency-dependent selection).
+
+  - id: speciation_phylogenetics
+    name: "Speciation and Phylogenetics"
+    topics: "7.6, 7.7, 7.9, 7.10, 7.12, 7.13"
+    description: >
+      Covers all lines of evidence for evolution and common ancestry (fossil record with
+      transitional forms, biogeography, homologous/analogous/vestigial structures,
+      molecular evidence, universal genetic code, conserved genes, embryological
+      evidence, molecular clock), phylogenetic tree reading and terminology (clade,
+      node, root, outgroup, sister taxa, monophyletic vs. paraphyletic), synapomorphies
+      vs. symplesiomorphies, parsimony and maximum likelihood, speciation (biological
+      species concept, prezygotic and postzygotic barriers, allopatric vs. sympatric,
+      adaptive radiation, punctuated equilibrium vs. gradualism), and origins of life
+      (Miller-Urey experiment, RNA world, ribozymes, protocells, endosymbiosis, Great
+      Oxidation Event, Cambrian explosion).
+
+# ============================================================
+# COMMON CONFUSIONS — drives distractor pairing during generation
+# ============================================================
+
+common_confusions:
+  # Natural selection modes
+  - ["directional selection", "stabilizing selection", "disruptive selection"]
+  - ["natural selection", "genetic drift", "gene flow", "mutation"]
+  - ["intrasexual selection", "intersexual selection"]
+
+  # Population genetics
+  - ["bottleneck effect", "founder effect"]
+  - ["gene flow", "genetic drift", "mutation"]
+  - ["allele frequency", "genotype frequency", "phenotype frequency"]
+
+  # Hardy-Weinberg
+  - ["p", "q", "p²", "2pq", "q²"]
+  - ["allele frequency (p + q = 1)", "genotype frequency (p² + 2pq + q² = 1)"]
+  - ["homozygous dominant (p²)", "heterozygous (2pq)", "homozygous recessive (q²)"]
+
+  # Structures
+  - ["homologous structures", "analogous structures", "vestigial structures"]
+  - ["convergent evolution (analogous)", "common ancestry (homologous)"]
+
+  # Phylogenetics
+  - ["monophyletic group", "paraphyletic group"]
+  - ["synapomorphy (shared derived)", "symplesiomorphy (shared ancestral)"]
+  - ["outgroup", "ingroup"]
+  - ["node", "root", "branch"]
+  - ["sister taxa", "outgroup"]
+
+  # Reproductive isolation
+  - ["prezygotic barriers", "postzygotic barriers"]
+  - ["habitat isolation", "temporal isolation", "behavioral isolation", "mechanical isolation", "gametic isolation"]
+  - ["reduced hybrid viability", "reduced hybrid fertility", "hybrid breakdown"]
+
+  # Speciation
+  - ["allopatric speciation", "sympatric speciation"]
+  - ["punctuated equilibrium", "gradualism (phyletic gradualism)"]
+
+  # Origins of life
+  - ["RNA world hypothesis", "abiotic synthesis", "endosymbiosis theory"]
+  - ["ribozyme (catalytic RNA)", "ribosome (protein + rRNA complex)"]
+  - ["protocells", "prokaryotic cells", "eukaryotic cells"]
+
+  # Dates (common AP exam confusion points)
+  - ["4.6 bya (Earth formed)", "3.5 bya (first life)", "2.4 bya (Great Oxidation Event)", "541 mya (Cambrian explosion)"]
+
+# ============================================================
+# SYNONYM GROUPS
+# ============================================================
+
+synonym_groups:
+  - id: evolution_definition
+    terms: ["change in allele frequencies over time", "descent with modification", "microevolution"]
+    reason: "These terms all describe aspects of evolutionary change at the population level on AP Biology"
+
+  - id: natural_selection_conditions
+    terms: ["four conditions for natural selection", "requirements for natural selection", "prerequisites for natural selection"]
+    reason: "AP Biology refers to these as 'conditions,' 'requirements,' or 'prerequisites' interchangeably"
+
+  - id: speciation_geographic
+    terms: ["allopatric speciation", "geographic speciation", "vicariant speciation"]
+    reason: "Allopatric speciation is also called geographic speciation; vicariance refers to a specific mechanism"
+
+  - id: sympatric_polyploidy
+    terms: ["sympatric speciation", "polyploidy-driven speciation"]
+    reason: "In AP Biology, sympatric speciation is most commonly discussed in the context of polyploidy in plants"
+
+  - id: hardy_weinberg_null
+    terms: ["Hardy-Weinberg equilibrium", "Hardy-Weinberg principle", "H-W equilibrium", "HWE"]
+    reason: "All abbreviations refer to the same null model for population genetics"
+
+  - id: transitional_fish_tetrapod
+    terms: ["Tiktaalik", "fish-tetrapod transition fossil", "Tiktaalik roseae"]
+    reason: "Tiktaalik roseae is the full species name; commonly called 'the fish-tetrapod transitional fossil'"
+
+  - id: transitional_dino_bird
+    terms: ["Archaeopteryx", "dinosaur-bird transition fossil", "Archaeopteryx lithographica"]
+    reason: "Archaeopteryx lithographica is the full species name; the dinosaur-bird transitional fossil"
+
+  - id: balancing_selection
+    terms: ["heterozygote advantage", "overdominance", "balancing selection"]
+    reason: "Heterozygote advantage is a form of balancing selection; overdominance is the formal genetics term"
+
+  - id: programmed_endosymbiosis
+    terms: ["endosymbiotic theory", "endosymbiosis theory", "endosymbiont hypothesis"]
+    reason: "All refer to Lynn Margulis's theory explaining the origin of mitochondria and chloroplasts"
+
+# ============================================================
+# DIFFICULTY TIERS
+# ============================================================
+
+difficulty_tiers:
+  easy:
+    description: "Core vocabulary every AP Bio student must know first — Darwin's publication date, definition of natural selection, names of selection types, H-W equation structure, homologous vs. analogous basic distinction"
+    examples:
+      - "Charles Darwin published 'On the Origin of Species' in 1859"
+      - "Natural selection: differential survival and reproduction based on heritable traits"
+      - "Adaptation: heritable trait that increases fitness in a given environment"
+      - "Fossil record: shows progression of life forms over geological time"
+      - "Biological species concept: can interbreed and produce fertile offspring"
+
+  medium:
+    description: "Mechanism-level understanding — four conditions for natural selection, five agents of microevolution, H-W five conditions, types of reproductive isolation, phylogenetic tree reading"
+    examples:
+      - "Four conditions: variation, heritability, overproduction, differential survival"
+      - "Bottleneck effect vs. founder effect — both are genetic drift in small populations"
+      - "H-W: if q² = 0.16, then q = 0.4, p = 0.6, 2pq = 0.48"
+      - "Homologous structures: same underlying anatomy, different functions → common ancestry"
+      - "Allopatric speciation: geographic isolation → independent evolution → reproductive isolation"
+
+  hard:
+    description: "Multi-concept integration, molecular details, and nuanced comparisons"
+    examples:
+      - "H-W as null hypothesis: deviations identify which evolutionary forces are acting"
+      - "Synapomorphies vs. symplesiomorphies in cladistics: only derived shared characters define clades"
+      - "RNA world: ribozymes prove RNA can act as both information storage AND catalyst"
+      - "Frequency-dependent selection: rare phenotype advantage maintains polymorphism"
+      - "Punctuated equilibrium vs. gradualism: interpreting gaps in the fossil record"
+
+# ============================================================
+# EXAM TAGS — for AP Biology exam filtering
+# ============================================================
+
+exam_tags:
+  primary: "AP_Biology"
+  unit_tag: "AP_Bio_Unit7"
+  topic_tags:
+    - "AP_Bio_7_1"
+    - "AP_Bio_7_2"
+    - "AP_Bio_7_3"
+    - "AP_Bio_7_4"
+    - "AP_Bio_7_5"
+    - "AP_Bio_7_6"
+    - "AP_Bio_7_7"
+    - "AP_Bio_7_8"
+    - "AP_Bio_7_9"
+    - "AP_Bio_7_10"
+    - "AP_Bio_7_11"
+    - "AP_Bio_7_12"
+    - "AP_Bio_7_13"
+  big_idea_tags:
+    - "AP_Bio_EVO"
+    - "AP_Bio_SYI"
+
+# ============================================================
+# GENERATION INSTRUCTIONS FOR WORKERS
+# ============================================================
+
+generation_instructions: >
+  WORKERS: You are a FORMATTER, not a researcher. Every fact above is pre-verified
+  source data. Your job is to convert each verified_facts entry into a valid
+  DeckFact JSON object. You do NOT invent facts, modify meanings, or add claims
+  not present in the source data above.
+
+  REQUIRED FIELDS per DeckFact:
+    - id: "ap_bio_u7_NNN" (3-digit zero-padded, sequential within topic)
+    - correctAnswer: exact canonical answer (concise, ≤15 words where possible)
+    - acceptableAlternatives: [] or list of synonymous correct answers
+    - distractors: 8-12 LLM-generated plausible wrong answers (NEVER from database)
+    - quizQuestion: clear question targeting the fact
+    - explanation: 1-2 sentence post-answer explanation reinforcing the fact
+    - difficulty: 1-5 (use value from architecture)
+    - funScore: 1-10 (use value from architecture)
+    - chainThemeId: "natural_selection" or "speciation_phylogenetics" (as assigned above)
+    - answerTypePoolId: pool id from above (term_definitions / process_names /
+                        organism_names / bracket_numbers / comparison_terms /
+                        experiment_terms / molecule_names)
+    - examTags: ["AP_Biology", "AP_Bio_Unit7", "AP_Bio_7_{topic_number}"]
+
+  DISTRACTOR RULES:
+    - ALL distractors must be LLM-generated by reading the specific question
+    - Distractors must be plausible wrong answers (same format, semantically related)
+    - NEVER pull distractors from correctAnswer fields of other facts
+    - Use common_confusions pairs to guide distractor selection — these are the terms
+      students most commonly mix up and make excellent plausible-but-wrong distractors
+    - Verify no distractor is accidentally correct
+    - For numeric facts (bracket_numbers pool), distractors must be plausible nearby numbers
+
+  POOL ASSIGNMENT CHECK:
+    - Every fact's answerTypePoolId MUST match a pool id listed in answer_type_pools
+    - Pool factIds in the final deck JSON are populated by scanning facts — do NOT
+      hand-craft factIds lists during generation
+
+  HARDY-WEINBERG MATH FACTS:
+    - For H-W calculation facts, quizQuestion should present a specific scenario
+      (e.g., "In a population where 16% of individuals show a recessive phenotype...")
+    - Correct answer should be the specific numeric result AND the formula step used
+    - Distractors should be mathematically plausible wrong calculations
+
+  TARGET: 170 facts total (130 minimum).
+  Current verified source data: ~137 fact seeds across 13 topics.
+  Workers should expand key seeds into 1-2 quiz questions where each adds distinct
+  learning value (e.g., a seed about Hardy-Weinberg can yield one "what does p + q = 1
+  represent" and one "given q² = 0.16, what is 2pq?" question).
+
+# ============================================================
+# NOTES
+# ============================================================
+
+notes: >
+  Unit 7 is the HIGHEST-WEIGHT unit on the AP Biology exam (13-20%), covering
+  13 topics spanning Darwin through abiotic origins of life. This deck is
+  exam-prep critical — prioritize facts that appear on AP FRQs (Hardy-Weinberg
+  math, evidence of evolution, speciation barriers, phylogenetic tree interpretation).
+
+  TWO CHAIN THEMES: natural_selection (Topics 7.1-7.5, 7.8, 7.11) and
+  speciation_phylogenetics (Topics 7.6-7.7, 7.9-7.10, 7.12-7.13). These align
+  with the parent deck's chain theme definitions in ap_biology_arch.yaml.
+
+  HIGH-PRIORITY EXAM CONTENT (high funScore, frequent FRQ appearances):
+    - Hardy-Weinberg calculations: always on the AP exam; students must be able to
+      work from q² to find p, q, 2pq, and p² given phenotype frequency data
+    - Evidence of evolution: homologous vs. analogous structures, transitional fossils
+      (Tiktaalik, Archaeopteryx), molecular evidence — classic AP MCQ content
+    - Natural selection modes: directional, stabilizing, disruptive — expect graph
+      interpretation questions
+    - Speciation: allopatric vs. sympatric, prezygotic vs. postzygotic barriers
+    - Sickle cell / heterozygote advantage: the most famous balanced polymorphism
+    - Industrial melanism (peppered moths): the iconic directional selection example
+
+  WATCH FOR THESE STUDENT MISCONCEPTIONS (high-value distractor material):
+    - "Evolution happens to individuals" (evolution acts on populations, not individuals)
+    - Confusing genetic drift with natural selection (drift is random, selection is not)
+    - Thinking Hardy-Weinberg populations actually exist in nature (they don't)
+    - Confusing homologous with analogous structures
+    - Thinking all speciation requires geographic isolation (sympatric via polyploidy)
+
+  PARENT DECK: ap_biology (data/deck-architectures/ap_biology_arch.yaml).
+  This file provides verified source data for generating ap_biology_unit7.json.

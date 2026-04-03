@@ -1,0 +1,1531 @@
+deck_id: ap_biology_unit3
+name: "AP Biology Unit 3: Cellular Energetics"
+domain: science
+sub_domain: biology
+description: >
+  Master every concept in AP Biology Unit 3: Cellular Energetics — enzymes, enzyme
+  regulation, bioenergetics, photosynthesis (light reactions and Calvin cycle), cellular
+  respiration (glycolysis, pyruvate oxidation, citric acid cycle, oxidative phosphorylation),
+  and fermentation. Aligned to the College Board AP Biology CED Topics 3.1–3.7.
+  Exam weight: 12–16%.
+target_facts: 160
+minimum_facts: 130
+
+# COMPLETENESS PHILOSOPHY:
+# This unit-level deck covers EVERY topic, learning objective, and essential knowledge
+# statement in CED Unit 3 (Topics 3.1–3.7). A student who masters this deck should
+# be prepared for every Cellular Energetics question on the AP Biology exam.
+
+parent_deck_id: ap_biology
+
+exam_alignment:
+  exam: "AP Biology"
+  authority: "College Board"
+  document: "AP Biology Course and Exam Description (CED), Unit 3: Cellular Energetics"
+  url: "https://apcentral.collegeboard.org/courses/ap-biology/course"
+  unit: 3
+  exam_weight: "12-16%"
+  topics:
+    - "3.1: Enzyme Structure"
+    - "3.2: Environmental Impacts on Enzyme Function"
+    - "3.3: Cellular Energy"
+    - "3.4: Photosynthesis"
+    - "3.5: Cellular Respiration"
+    - "3.6: Fermentation"
+    - "3.7: Fitness"
+  big_ideas:
+    - "ENE: Energetics"
+
+# ============================================================
+# DATA SOURCES — verified source material used for EVERY fact
+# ============================================================
+
+data_sources:
+  - name: "College Board AP Biology CED — Unit 3"
+    url: "https://apcentral.collegeboard.org/courses/ap-biology/course"
+    license: "educational reference"
+    usage: "Official topic structure, learning objectives (LO 3.1–3.7), essential knowledge (EK) statements"
+  - name: "OpenStax Biology 2e — Chapters 6–8"
+    url: "https://openstax.org/details/books/biology-2e"
+    license: "CC-BY-4.0"
+    usage: >
+      Chapter 6 (Metabolism), Chapter 7 (Cellular Respiration), Chapter 8 (Photosynthesis).
+      Primary source for definitions, numerical values, reaction equations, and process descriptions.
+  - name: "OpenStax Biology 2e — Chapter 5 (Enzymes)"
+    url: "https://openstax.org/books/biology-2e/pages/6-5-enzymes"
+    license: "CC-BY-4.0"
+    usage: "Enzyme kinetics, Michaelis-Menten, inhibition types, cofactors, coenzymes"
+  - name: "Wikipedia — Enzyme"
+    url: "https://en.wikipedia.org/wiki/Enzyme"
+    license: "CC-BY-SA-4.0"
+    usage: "Cross-reference for enzyme definitions, cofactors, coenzyme examples"
+  - name: "Wikipedia — Photosynthesis"
+    url: "https://en.wikipedia.org/wiki/Photosynthesis"
+    license: "CC-BY-SA-4.0"
+    usage: "Overall equation, pigment wavelengths, photosystem details, C3/C4/CAM comparisons"
+  - name: "Wikipedia — Cellular Respiration"
+    url: "https://en.wikipedia.org/wiki/Cellular_respiration"
+    license: "CC-BY-SA-4.0"
+    usage: "ATP yield values, stage-by-stage electron carrier counts, ETC complex names"
+  - name: "Wikipedia — Calvin Cycle"
+    url: "https://en.wikipedia.org/wiki/Calvin_cycle"
+    license: "CC-BY-SA-4.0"
+    usage: "Turn-by-turn stoichiometry, RuBisCO role, G3P uses"
+  - name: "Wikipedia — Fermentation"
+    url: "https://en.wikipedia.org/wiki/Fermentation"
+    license: "CC-BY-SA-4.0"
+    usage: "Lactic acid vs alcoholic fermentation, NAD+ regeneration, ATP yield"
+  - name: "Khan Academy AP Biology — Unit 3"
+    url: "https://www.khanacademy.org/science/ap-biology/cellular-energetics"
+    license: "educational reference"
+    usage: "Secondary cross-reference for topic coverage, common confusions, and phrasing"
+
+asset_sources: []
+
+# ============================================================
+# VERIFIED SOURCE DATA — fact-by-fact verified content
+# Every fact MUST cite one of the above sources. Workers format this data into JSON.
+# ============================================================
+
+verified_facts:
+
+  # ---- Topic 3.1: Enzyme Structure (~18 facts) ----
+
+  - id: enz_001
+    topic: "3.1"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Enzyme"
+    definition: "A biological catalyst — a protein (or RNA) that speeds up a chemical reaction without being consumed or permanently altered"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: easy
+
+  - id: enz_002
+    topic: "3.1"
+    chain_theme: enzymes
+    answer_pool: function_terms
+    term: "Activation energy (Ea)"
+    definition: "The minimum energy required to start a chemical reaction; enzymes lower activation energy without changing the overall free-energy change (ΔG)"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: easy
+
+  - id: enz_003
+    topic: "3.1"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Active site"
+    definition: "The specific region of an enzyme where the substrate binds; its three-dimensional shape is complementary to the substrate"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: easy
+
+  - id: enz_004
+    topic: "3.1"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Lock-and-key model"
+    definition: "An older model of enzyme-substrate interaction in which the active site has a rigid, pre-formed shape exactly matching the substrate"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: enz_005
+    topic: "3.1"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Induced-fit model"
+    definition: "The currently accepted model in which the active site flexes and adjusts its shape when the substrate binds, creating a tighter fit"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: enz_006
+    topic: "3.1"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Enzyme-substrate complex"
+    definition: "The temporary intermediate formed when a substrate binds to the active site of an enzyme before products are released and the free enzyme is regenerated"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: easy
+
+  - id: enz_007
+    topic: "3.1"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Enzyme specificity"
+    definition: "The property by which each enzyme catalyzes only one type of chemical reaction, determined by the unique shape of its active site"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: easy
+
+  - id: enz_008
+    topic: "3.1"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Cofactor"
+    definition: "An inorganic ion (e.g., Zn²⁺, Mg²⁺, Fe²⁺) required by some enzymes for proper catalytic activity"
+    source: "Wikipedia — Enzyme; OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: enz_009
+    topic: "3.1"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Coenzyme"
+    definition: "An organic cofactor — a non-protein molecule (e.g., NAD⁺, FAD, coenzyme A, vitamins) required by some enzymes for catalytic function"
+    source: "Wikipedia — Enzyme; OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: enz_010
+    topic: "3.1"
+    chain_theme: enzymes
+    answer_pool: function_terms
+    term: "Enzyme naming convention"
+    definition: "Most enzyme names end in the suffix '-ase', often combined with the substrate name (e.g., lipase breaks down lipids, protease breaks down proteins, helicase unwinds DNA)"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: easy
+
+  - id: enz_011
+    topic: "3.1"
+    chain_theme: enzymes
+    answer_pool: comparison_terms
+    term: "Enzyme vs. reaction ΔG"
+    definition: "Enzymes lower activation energy (Ea) but do NOT change the free-energy change (ΔG) of the reaction; the thermodynamic favorability is unaffected"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: enz_012
+    topic: "3.1"
+    chain_theme: enzymes
+    answer_pool: process_names
+    term: "Catalysis"
+    definition: "The process by which an enzyme speeds up a chemical reaction by providing an alternative reaction pathway with lower activation energy"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: easy
+
+  - id: enz_013
+    topic: "3.1"
+    chain_theme: enzymes
+    answer_pool: molecule_names
+    term: "Ribozyme"
+    definition: "An RNA molecule with catalytic activity; demonstrates that not all biological catalysts are proteins"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: hard
+
+  - id: enz_014
+    topic: "3.1"
+    chain_theme: enzymes
+    answer_pool: function_terms
+    term: "Substrate"
+    definition: "The specific reactant molecule on which an enzyme acts, binding to the active site to form the enzyme-substrate complex"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: easy
+
+  # ---- Topic 3.2: Environmental Impacts on Enzyme Function (~12 facts) ----
+
+  - id: enz_015
+    topic: "3.2"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Enzyme temperature optimum"
+    definition: "The temperature at which enzyme activity is highest; for most human enzymes ~37°C; beyond optimum, heat denatures the enzyme by disrupting its 3D shape"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: easy
+
+  - id: enz_016
+    topic: "3.2"
+    chain_theme: enzymes
+    answer_pool: bracket_numbers
+    term: "Human enzyme optimum temperature"
+    quizQuestion: "What is the approximate optimal temperature (in °C) for most human enzymes?"
+    answer: "37"
+    explanation: "Most human enzymes work best at ~37°C (body temperature); thermophilic bacteria have enzymes optimized for 70–80°C+"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: easy
+
+  - id: enz_017
+    topic: "3.2"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Enzyme denaturation"
+    definition: "Loss of an enzyme's normal 3D shape (and therefore activity) caused by extreme temperature or pH disrupting hydrogen bonds and ionic bonds"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: easy
+
+  - id: enz_018
+    topic: "3.2"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Enzyme pH optimum"
+    definition: "The pH at which enzyme activity is highest; each enzyme has a characteristic optimum (e.g., pepsin ~pH 2 in stomach; trypsin ~pH 8 in small intestine)"
+    source: "OpenStax Biology 2e Ch6; Wikipedia — Enzyme"
+    difficulty: medium
+
+  - id: enz_019
+    topic: "3.2"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Vmax"
+    definition: "The maximum rate of an enzyme-catalyzed reaction when all active sites are saturated with substrate; adding more substrate beyond this point does not increase reaction rate"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: enz_020
+    topic: "3.2"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Michaelis constant (Km)"
+    definition: "The substrate concentration at which an enzyme operates at half its maximum velocity (Vmax); a measure of enzyme-substrate affinity (lower Km = higher affinity)"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: hard
+
+  - id: enz_021
+    topic: "3.2"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Competitive inhibition"
+    definition: "A type of enzyme inhibition in which the inhibitor molecule resembles the substrate and competes for the active site; can be overcome by increasing substrate concentration"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: enz_022
+    topic: "3.2"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Noncompetitive (allosteric) inhibition"
+    definition: "A type of enzyme inhibition in which the inhibitor binds to a regulatory site (not the active site), changing the enzyme's shape so the active site no longer functions; cannot be overcome by increasing substrate concentration"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: enz_023
+    topic: "3.2"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Allosteric activation"
+    definition: "When a regulatory molecule binds to a site other than the active site and stabilizes the enzyme in its active conformation, increasing catalytic activity"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: enz_024
+    topic: "3.2"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Feedback inhibition"
+    definition: "A regulatory mechanism in which the end product of a metabolic pathway inhibits an earlier enzyme in the same pathway, preventing overproduction (e.g., isoleucine inhibits threonine deaminase)"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: enz_025
+    topic: "3.2"
+    chain_theme: enzymes
+    answer_pool: comparison_terms
+    term: "Competitive vs. noncompetitive inhibition"
+    definition: "Competitive inhibition: inhibitor blocks active site, overcome by more substrate. Noncompetitive inhibition: inhibitor binds allosteric site, cannot be overcome by more substrate"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: enz_026
+    topic: "3.2"
+    chain_theme: enzymes
+    answer_pool: term_definitions
+    term: "Substrate concentration and reaction rate"
+    definition: "Increasing substrate concentration increases reaction rate proportionally until all enzyme active sites are occupied (Vmax); the curve levels off (plateau) at saturation"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  # ---- Topic 3.3: Cellular Energy (~12 facts) ----
+
+  - id: nrg_001
+    topic: "3.3"
+    chain_theme: cellular_respiration
+    answer_pool: molecule_names
+    term: "ATP (adenosine triphosphate)"
+    definition: "The primary energy currency of cells; hydrolysis of one ATP to ADP + Pi releases ~30.5 kJ/mol under standard conditions and powers cellular work"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: easy
+
+  - id: nrg_002
+    topic: "3.3"
+    chain_theme: cellular_respiration
+    answer_pool: bracket_numbers
+    term: "ATP hydrolysis energy"
+    quizQuestion: "How much free energy (kJ/mol) is released when one ATP is hydrolyzed to ADP + Pi under standard conditions?"
+    answer: "30.5"
+    explanation: "ATP hydrolysis releases ~30.5 kJ/mol (7.3 kcal/mol) under standard conditions; this energy powers cellular work"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: hard
+
+  - id: nrg_003
+    topic: "3.3"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Exergonic reaction"
+    definition: "A chemical reaction that releases free energy (ΔG < 0); thermodynamically spontaneous — can proceed without additional energy input"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: nrg_004
+    topic: "3.3"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Endergonic reaction"
+    definition: "A chemical reaction that requires free energy input (ΔG > 0); non-spontaneous — requires energy coupling to proceed"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: nrg_005
+    topic: "3.3"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Energy coupling"
+    definition: "The linking of an exergonic reaction (e.g., ATP hydrolysis, ΔG < 0) to an endergonic reaction to drive cellular work that would not otherwise occur"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: nrg_006
+    topic: "3.3"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Gibbs free energy (ΔG)"
+    definition: "The measure of usable energy in a system at constant temperature and pressure; ΔG = ΔH − TΔS; negative ΔG indicates a spontaneous (exergonic) reaction"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: hard
+
+  - id: nrg_007
+    topic: "3.3"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "First law of thermodynamics"
+    definition: "Energy cannot be created or destroyed, only converted from one form to another; the total energy of a closed system remains constant"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: easy
+
+  - id: nrg_008
+    topic: "3.3"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Second law of thermodynamics"
+    definition: "Every energy transformation increases the entropy (disorder) of the universe; no energy conversion is 100% efficient — some energy is always lost as heat"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: nrg_009
+    topic: "3.3"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Anabolism"
+    definition: "The metabolic processes that build complex molecules from simpler ones, requiring an input of energy (endergonic); e.g., protein synthesis, DNA replication"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: nrg_010
+    topic: "3.3"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Catabolism"
+    definition: "The metabolic processes that break complex molecules into simpler ones, releasing energy (exergonic); e.g., glycolysis, cellular respiration"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: nrg_011
+    topic: "3.3"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Phosphorylation"
+    definition: "The addition of a phosphate group to a molecule; when ADP is phosphorylated to ATP, chemical potential energy is stored for later cellular use"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: medium
+
+  - id: nrg_012
+    topic: "3.3"
+    chain_theme: cellular_respiration
+    answer_pool: comparison_terms
+    term: "Potential energy vs. kinetic energy"
+    definition: "Potential energy is stored energy (e.g., chemical bonds, ATP). Kinetic energy is energy of motion (e.g., heat, movement of molecules). Cells interconvert these forms"
+    source: "OpenStax Biology 2e Ch6"
+    difficulty: easy
+
+  # ---- Topic 3.4: Photosynthesis — Light Reactions (~20 facts) ----
+
+  - id: ps_001
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: term_definitions
+    term: "Photosynthesis overall equation"
+    definition: "6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂; carbon dioxide and water are converted to glucose and oxygen using light energy"
+    source: "OpenStax Biology 2e Ch8; Wikipedia — Photosynthesis"
+    difficulty: easy
+
+  - id: ps_002
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: location_terms
+    term: "Light reactions location"
+    definition: "Thylakoid membrane (within the chloroplast); light energy is converted to chemical energy (ATP and NADPH) in the thylakoid membrane"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: easy
+
+  - id: ps_003
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: location_terms
+    term: "Calvin cycle location"
+    definition: "Stroma of the chloroplast; the light-independent reactions use ATP and NADPH from the thylakoid to fix CO₂ into organic molecules"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: easy
+
+  - id: ps_004
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: term_definitions
+    term: "Photosystem II (P680)"
+    definition: "The first photosystem in the light reactions; absorbs light at 680nm; catalyzes photolysis (splitting water to release O₂, H⁺, and electrons)"
+    source: "OpenStax Biology 2e Ch8; Wikipedia — Photosynthesis"
+    difficulty: medium
+
+  - id: ps_005
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: term_definitions
+    term: "Photosystem I (P700)"
+    definition: "The second photosystem in the light reactions; absorbs light at 700nm; reduces NADP⁺ to NADPH using energized electrons from the ETC"
+    source: "OpenStax Biology 2e Ch8; Wikipedia — Photosynthesis"
+    difficulty: medium
+
+  - id: ps_006
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: term_definitions
+    term: "Photolysis"
+    definition: "The splitting of water molecules by light energy at Photosystem II; releases O₂ (byproduct), H⁺ (contributes to proton gradient), and electrons (replace those lost by P680)"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: medium
+
+  - id: ps_007
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: process_names
+    term: "Photophosphorylation"
+    definition: "Light-driven synthesis of ATP from ADP + Pi in the thylakoid membrane; powered by the proton gradient generated by the electron transport chain"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: medium
+
+  - id: ps_008
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: term_definitions
+    term: "Chemiosmosis (in chloroplasts)"
+    definition: "The movement of H⁺ ions down their concentration gradient from the thylakoid lumen into the stroma through ATP synthase, driving ATP production"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: medium
+
+  - id: ps_009
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: term_definitions
+    term: "Electron transport chain (photosynthesis)"
+    definition: "A series of protein complexes in the thylakoid membrane between PSII and PSI; electrons pass through, releasing energy used to pump H⁺ into the thylakoid lumen"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: medium
+
+  - id: ps_010
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: molecule_names
+    term: "Chlorophyll a"
+    definition: "The primary photosynthetic pigment; absorbs red light (~680nm) and blue-violet light (~430nm); found in both photosystems; directly drives the light reactions"
+    source: "OpenStax Biology 2e Ch8; Wikipedia — Photosynthesis"
+    difficulty: easy
+
+  - id: ps_011
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: molecule_names
+    term: "Chlorophyll b"
+    definition: "An accessory photosynthetic pigment; absorbs blue light (~450nm) and orange-red light (~640nm); transfers energy to chlorophyll a"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: medium
+
+  - id: ps_012
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: molecule_names
+    term: "Carotenoids"
+    definition: "Accessory photosynthetic pigments (e.g., beta-carotene, xanthophylls) that absorb blue-green light and transfer energy to chlorophyll a; also protect against photo-oxidative damage"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: medium
+
+  - id: ps_013
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: function_terms
+    term: "Products of light reactions"
+    definition: "The light reactions produce ATP, NADPH, and O₂; ATP and NADPH are used by the Calvin cycle to fix CO₂; O₂ is released as a byproduct"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: easy
+
+  - id: ps_014
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: term_definitions
+    term: "Granum (plural: grana)"
+    definition: "A stack of thylakoid disks within a chloroplast; the thylakoid membranes of grana contain the photosystems and ETC components"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: medium
+
+  - id: ps_015
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: comparison_terms
+    term: "Absorption spectrum vs. action spectrum"
+    definition: "Absorption spectrum: shows wavelengths of light absorbed by a pigment. Action spectrum: shows wavelengths that drive the highest rate of photosynthesis. The two curves closely match, confirming chlorophyll drives photosynthesis"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: hard
+
+  - id: ps_016
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: bracket_numbers
+    term: "PSII wavelength absorption"
+    quizQuestion: "At what wavelength (nm) does Photosystem II most efficiently absorb light?"
+    answer: "680"
+    explanation: "PSII is called P680 because its reaction center chlorophyll absorbs light most efficiently at 680nm (red light)"
+    source: "OpenStax Biology 2e Ch8; Wikipedia — Photosynthesis"
+    difficulty: medium
+
+  - id: ps_017
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: bracket_numbers
+    term: "PSI wavelength absorption"
+    quizQuestion: "At what wavelength (nm) does Photosystem I most efficiently absorb light?"
+    answer: "700"
+    explanation: "PSI is called P700 because its reaction center chlorophyll absorbs light most efficiently at 700nm (far-red light)"
+    source: "OpenStax Biology 2e Ch8; Wikipedia — Photosynthesis"
+    difficulty: medium
+
+  - id: ps_018
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: molecule_names
+    term: "NADPH"
+    definition: "Nicotinamide adenine dinucleotide phosphate (reduced form); produced by PSI during the light reactions; carries high-energy electrons to the Calvin cycle to power carbon fixation"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: medium
+
+  - id: ps_019
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: term_definitions
+    term: "ATP synthase (chloroplast)"
+    definition: "A rotary enzyme embedded in the thylakoid membrane; H⁺ ions flowing from the lumen into the stroma through the enzyme drive rotation of the Fo subunit, powering ATP synthesis"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: hard
+
+  - id: ps_020
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: comparison_terms
+    term: "PSII before PSI (naming paradox)"
+    definition: "Despite the name, Photosystem II acts BEFORE Photosystem I in the linear electron flow of the light reactions; PSII was named second because it was discovered second"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: medium
+
+  # ---- Topic 3.4b: Calvin Cycle (~15 facts) ----
+
+  - id: cc_001
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: process_names
+    term: "Calvin cycle"
+    definition: "The light-independent reactions of photosynthesis occurring in the chloroplast stroma; uses ATP and NADPH from the light reactions to fix CO₂ into G3P (glyceraldehyde-3-phosphate)"
+    source: "OpenStax Biology 2e Ch8; Wikipedia — Calvin Cycle"
+    difficulty: easy
+
+  - id: cc_002
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: process_names
+    term: "Carbon fixation"
+    definition: "The first stage of the Calvin cycle: RuBisCO catalyzes the attachment of CO₂ to RuBP (5C) to produce two molecules of 3-PGA (3C); CO₂ is converted from inorganic to organic form"
+    source: "OpenStax Biology 2e Ch8; Wikipedia — Calvin Cycle"
+    difficulty: medium
+
+  - id: cc_003
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: molecule_names
+    term: "RuBisCO"
+    definition: "Ribulose-1,5-bisphosphate carboxylase/oxygenase; the enzyme that catalyzes carbon fixation in the Calvin cycle by combining CO₂ with RuBP; the most abundant enzyme on Earth"
+    source: "OpenStax Biology 2e Ch8; Wikipedia — Calvin Cycle"
+    difficulty: medium
+
+  - id: cc_004
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: molecule_names
+    term: "RuBP (ribulose-1,5-bisphosphate)"
+    definition: "The 5-carbon CO₂ acceptor molecule in the Calvin cycle; RuBisCO combines RuBP with CO₂; the regeneration phase of the Calvin cycle rebuilds RuBP from G3P using ATP"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: hard
+
+  - id: cc_005
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: molecule_names
+    term: "3-PGA (3-phosphoglycerate)"
+    definition: "The first stable product of carbon fixation in C3 plants; a 3-carbon compound produced when RuBisCO combines CO₂ with RuBP; used as the basis for C3 plant naming"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: hard
+
+  - id: cc_006
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: molecule_names
+    term: "G3P (glyceraldehyde-3-phosphate)"
+    definition: "The 3-carbon sugar produced in the reduction phase of the Calvin cycle using ATP and NADPH; the direct carbohydrate output of the Calvin cycle; used to synthesize glucose, sucrose, starch, and other organic molecules"
+    source: "OpenStax Biology 2e Ch8; Wikipedia — Calvin Cycle"
+    difficulty: medium
+
+  - id: cc_007
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: bracket_numbers
+    term: "Calvin cycle ATP input per 3 turns"
+    quizQuestion: "How many ATP molecules are consumed in 3 turns of the Calvin cycle (fixing 3 CO₂)?"
+    answer: "9"
+    explanation: "Per 3 turns: 9 ATP and 6 NADPH are consumed to fix 3 CO₂ into 1 net G3P; 3 ATP for reduction, 6 ATP for regeneration"
+    source: "OpenStax Biology 2e Ch8; Wikipedia — Calvin Cycle"
+    difficulty: hard
+
+  - id: cc_008
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: bracket_numbers
+    term: "Calvin cycle NADPH input per 3 turns"
+    quizQuestion: "How many NADPH molecules are consumed in 3 turns of the Calvin cycle (fixing 3 CO₂)?"
+    answer: "6"
+    explanation: "Per 3 turns: 6 NADPH (along with 9 ATP) convert 3 molecules of 3-PGA to G3P in the reduction phase"
+    source: "OpenStax Biology 2e Ch8; Wikipedia — Calvin Cycle"
+    difficulty: hard
+
+  - id: cc_009
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: term_definitions
+    term: "C3 plants"
+    definition: "Plants whose first stable product of carbon fixation is the 3-carbon compound 3-PGA; use only the Calvin cycle directly; most plants (wheat, rice, soybeans, trees); less efficient at high temperatures"
+    source: "OpenStax Biology 2e Ch8; Wikipedia — Calvin Cycle"
+    difficulty: medium
+
+  - id: cc_010
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: term_definitions
+    term: "C4 plants"
+    definition: "Plants that first fix CO₂ as oxaloacetate (4C) in mesophyll cells, then release CO₂ to bundle-sheath cells for the Calvin cycle; more efficient in hot, sunny, dry conditions due to reduced photorespiration; examples: corn, sugarcane, sorghum"
+    source: "OpenStax Biology 2e Ch8; Wikipedia — Calvin Cycle"
+    difficulty: medium
+
+  - id: cc_011
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: term_definitions
+    term: "CAM plants"
+    definition: "Crassulacean acid metabolism plants; open stomata at NIGHT to fix CO₂ into organic acids, close stomata during the day, and run the Calvin cycle during daylight; minimizes water loss; examples: cacti, pineapple, agave"
+    source: "OpenStax Biology 2e Ch8; Wikipedia — Calvin Cycle"
+    difficulty: medium
+
+  - id: cc_012
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: term_definitions
+    term: "Photorespiration"
+    definition: "An energetically wasteful process where RuBisCO fixes O₂ instead of CO₂ when O₂ concentration is high (e.g., hot, dry conditions when stomata close); C4 and CAM plants have adaptations to minimize photorespiration"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: hard
+
+  - id: cc_013
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: comparison_terms
+    term: "C3 vs. C4 vs. CAM plants"
+    definition: "C3: standard Calvin cycle, first product 3-PGA, most plants. C4: pre-fixation as 4C in mesophyll → Calvin cycle in bundle sheath, hot/sunny climates. CAM: nighttime CO₂ fixation, stomata open at night, desert plants"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: medium
+
+  - id: cc_014
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: function_terms
+    term: "Regeneration phase (Calvin cycle)"
+    definition: "The third stage of the Calvin cycle in which G3P molecules are converted back into RuBP using ATP, allowing the cycle to continue fixing CO₂"
+    source: "OpenStax Biology 2e Ch8"
+    difficulty: hard
+
+  - id: cc_015
+    topic: "3.4"
+    chain_theme: photosynthesis
+    answer_pool: bracket_numbers
+    term: "Calvin cycle turns for one glucose"
+    quizQuestion: "How many turns of the Calvin cycle are required to produce enough G3P to synthesize one molecule of glucose?"
+    answer: "6"
+    explanation: "6 turns fix 6 CO₂ → 12 G3P; 10 G3P regenerate 6 RuBP, leaving 2 net G3P (6C total) to form one glucose"
+    source: "OpenStax Biology 2e Ch8; Wikipedia — Calvin Cycle"
+    difficulty: hard
+
+  # ---- Topic 3.5: Cellular Respiration — Overview (~5 facts) ----
+
+  - id: cr_001
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Cellular respiration overall equation"
+    definition: "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + ~30–32 ATP; glucose is oxidized using oxygen to produce carbon dioxide, water, and ATP energy"
+    source: "OpenStax Biology 2e Ch7; Wikipedia — Cellular Respiration"
+    difficulty: easy
+
+  - id: cr_002
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: bracket_numbers
+    term: "Total ATP yield from glucose"
+    quizQuestion: "What is the total ATP yield from complete aerobic oxidation of one glucose molecule?"
+    answer: "30-32"
+    explanation: "Modern estimates: ~30–32 ATP per glucose; older textbooks stated 36–38, but accounting for membrane transport costs gives the lower value"
+    source: "OpenStax Biology 2e Ch7; Wikipedia — Cellular Respiration"
+    difficulty: medium
+
+  - id: cr_003
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: process_names
+    term: "Three stages of cellular respiration"
+    definition: "1) Glycolysis (cytoplasm), 2) Pyruvate oxidation and citric acid cycle (mitochondrial matrix), 3) Oxidative phosphorylation / electron transport chain (inner mitochondrial membrane)"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: easy
+
+  - id: cr_004
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Aerobic respiration"
+    definition: "Cellular respiration that requires oxygen as the final electron acceptor; produces ~30–32 ATP per glucose; far more efficient than anaerobic pathways"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: easy
+
+  - id: cr_005
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Oxidative phosphorylation"
+    definition: "The third stage of cellular respiration; ATP is synthesized by ATP synthase using the proton gradient generated by the electron transport chain in the inner mitochondrial membrane"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  # ---- Topic 3.5: Glycolysis (~8 facts) ----
+
+  - id: glyc_001
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: process_names
+    term: "Glycolysis"
+    definition: "The first stage of cellular respiration; occurs in the cytoplasm; splits glucose (6C) into 2 pyruvate (3C) with a net yield of 2 ATP and 2 NADH; does not require oxygen"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: easy
+
+  - id: glyc_002
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: location_terms
+    term: "Glycolysis location"
+    definition: "Cytoplasm (cytosol); glycolysis occurs outside the mitochondria and does not require oxygen; this makes it the only energy-producing step available to all cells"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: easy
+
+  - id: glyc_003
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: bracket_numbers
+    term: "Net ATP from glycolysis"
+    quizQuestion: "What is the net ATP yield from glycolysis per glucose molecule?"
+    answer: "2"
+    explanation: "Glycolysis investment phase consumes 2 ATP; payoff phase produces 4 ATP and 2 NADH → net 2 ATP per glucose"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: easy
+
+  - id: glyc_004
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: bracket_numbers
+    term: "NADH from glycolysis"
+    quizQuestion: "How many NADH molecules are produced per glucose during glycolysis?"
+    answer: "2"
+    explanation: "The payoff phase of glycolysis oxidizes 2 PGAL (3C) to 2 pyruvate, reducing 2 NAD⁺ to 2 NADH"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  - id: glyc_005
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Substrate-level phosphorylation"
+    definition: "Direct synthesis of ATP by transfer of a phosphate group from a substrate molecule to ADP; occurs in glycolysis and the citric acid cycle; does NOT require the ETC or membrane gradient"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  - id: glyc_006
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Investment phase (glycolysis)"
+    definition: "The first half of glycolysis; 2 ATP are consumed to phosphorylate glucose and prepare it for cleavage into two 3-carbon molecules"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: hard
+
+  - id: glyc_007
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Payoff phase (glycolysis)"
+    definition: "The second half of glycolysis; each 3-carbon molecule is oxidized to pyruvate, generating 4 ATP (substrate-level phosphorylation) and 2 NADH per glucose"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: hard
+
+  - id: glyc_008
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: molecule_names
+    term: "Pyruvate"
+    definition: "The 3-carbon end product of glycolysis; under aerobic conditions, pyruvate enters the mitochondrial matrix for oxidation; under anaerobic conditions, it is converted to lactate or ethanol"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: easy
+
+  # ---- Topic 3.5: Pyruvate Oxidation (~5 facts) ----
+
+  - id: pyox_001
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: process_names
+    term: "Pyruvate oxidation"
+    definition: "The conversion of each pyruvate (3C) to acetyl-CoA (2C) + CO₂ in the mitochondrial matrix; also produces 1 NADH per pyruvate; catalyzed by the pyruvate dehydrogenase complex"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  - id: pyox_002
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: location_terms
+    term: "Pyruvate oxidation location"
+    definition: "Mitochondrial matrix; pyruvate is transported from the cytoplasm into the mitochondrial matrix before being converted to acetyl-CoA"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  - id: pyox_003
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: molecule_names
+    term: "Acetyl-CoA"
+    definition: "A 2-carbon acetyl group attached to coenzyme A; the entry molecule for the citric acid cycle; produced from pyruvate oxidation, fatty acid oxidation, and some amino acid catabolism"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  - id: pyox_004
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: bracket_numbers
+    term: "NADH from pyruvate oxidation per glucose"
+    quizQuestion: "How many NADH molecules are produced by pyruvate oxidation per glucose molecule (both pyruvates)?"
+    answer: "2"
+    explanation: "Each pyruvate oxidation produces 1 NADH; with 2 pyruvates per glucose, total = 2 NADH from this stage"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  - id: pyox_005
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: molecule_names
+    term: "Pyruvate dehydrogenase complex"
+    definition: "A large multi-enzyme complex in the mitochondrial matrix that catalyzes pyruvate oxidation; converts pyruvate to acetyl-CoA, releases CO₂, and reduces NAD⁺ to NADH"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: hard
+
+  # ---- Topic 3.5: Citric Acid Cycle (~10 facts) ----
+
+  - id: tca_001
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: process_names
+    term: "Citric acid cycle (Krebs/TCA cycle)"
+    definition: "The second stage of aerobic cellular respiration; occurs in the mitochondrial matrix; oxidizes acetyl-CoA to CO₂, producing NADH, FADH₂, and ATP (or GTP) per turn"
+    source: "OpenStax Biology 2e Ch7; Wikipedia — Cellular Respiration"
+    difficulty: easy
+
+  - id: tca_002
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: location_terms
+    term: "Citric acid cycle location"
+    definition: "Mitochondrial matrix (the innermost compartment of the mitochondrion); where acetyl-CoA enters the cycle and CO₂ is released"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: easy
+
+  - id: tca_003
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: molecule_names
+    term: "Oxaloacetate"
+    definition: "The 4-carbon molecule that begins and ends each turn of the citric acid cycle; combines with acetyl-CoA (2C) to form citrate (6C); is regenerated at the end of each turn"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: hard
+
+  - id: tca_004
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: molecule_names
+    term: "Citrate"
+    definition: "The 6-carbon molecule formed when acetyl-CoA (2C) combines with oxaloacetate (4C) at the start of each turn of the citric acid cycle; gives the cycle its name"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: hard
+
+  - id: tca_005
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: bracket_numbers
+    term: "NADH per citric acid cycle turn"
+    quizQuestion: "How many NADH molecules are produced per single turn of the citric acid cycle?"
+    answer: "3"
+    explanation: "Per turn: 3 NADH, 1 FADH₂, 1 ATP (or GTP), and 2 CO₂; two turns per glucose = 6 NADH, 2 FADH₂, 2 ATP from TCA"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  - id: tca_006
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: bracket_numbers
+    term: "FADH2 per citric acid cycle turn"
+    quizQuestion: "How many FADH₂ molecules are produced per single turn of the citric acid cycle?"
+    answer: "1"
+    explanation: "Each turn of the citric acid cycle produces 1 FADH₂ (from succinate dehydrogenase), 3 NADH, 1 ATP, and 2 CO₂"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  - id: tca_007
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: bracket_numbers
+    term: "CO2 per citric acid cycle turn"
+    quizQuestion: "How many CO₂ molecules are released per single turn of the citric acid cycle?"
+    answer: "2"
+    explanation: "Two CO₂ are released per turn (one at isocitrate dehydrogenase, one at alpha-ketoglutarate dehydrogenase); accounts for the 2C from acetyl-CoA"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  - id: tca_008
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: molecule_names
+    term: "FAD / FADH₂"
+    definition: "Flavin adenine dinucleotide; an electron carrier reduced to FADH₂ at Complex II of the ETC (succinate dehydrogenase) during the citric acid cycle; carries electrons to the ETC, yielding less ATP than NADH"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  - id: tca_009
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: comparison_terms
+    term: "TCA cycle turns per glucose"
+    definition: "The citric acid cycle turns TWICE per glucose molecule (once per pyruvate/acetyl-CoA); total per glucose: 6 NADH, 2 FADH₂, 2 ATP, 4 CO₂"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  - id: tca_010
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "NAD⁺ / NADH"
+    definition: "Nicotinamide adenine dinucleotide; NAD⁺ is the oxidized form that accepts electrons (is reduced to NADH); NADH donates electrons to Complex I of the ETC, ultimately driving ATP synthesis"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  # ---- Topic 3.5: Electron Transport Chain & Oxidative Phosphorylation (~12 facts) ----
+
+  - id: etc_001
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: location_terms
+    term: "ETC location"
+    definition: "Inner mitochondrial membrane (cristae); the protein complexes of the electron transport chain are embedded in the inner mitochondrial membrane"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: easy
+
+  - id: etc_002
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Complex I (NADH dehydrogenase)"
+    definition: "The first large protein complex of the ETC; accepts electrons from NADH, transferring them to ubiquinone (CoQ) while pumping H⁺ from the matrix into the intermembrane space"
+    source: "OpenStax Biology 2e Ch7; Wikipedia — Cellular Respiration"
+    difficulty: hard
+
+  - id: etc_003
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Complex II (succinate dehydrogenase)"
+    definition: "An ETC protein complex that accepts electrons from FADH₂ and transfers them to ubiquinone (CoQ); does NOT pump protons; this is why FADH₂ yields fewer ATP than NADH"
+    source: "OpenStax Biology 2e Ch7; Wikipedia — Cellular Respiration"
+    difficulty: hard
+
+  - id: etc_004
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: molecule_names
+    term: "Ubiquinone (Coenzyme Q / CoQ)"
+    definition: "A mobile electron carrier in the inner mitochondrial membrane; shuttles electrons from Complexes I and II to Complex III"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: hard
+
+  - id: etc_005
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: molecule_names
+    term: "Cytochrome c"
+    definition: "A small mobile electron carrier protein in the intermembrane space; shuttles electrons from Complex III to Complex IV (cytochrome c oxidase)"
+    source: "OpenStax Biology 2e Ch7; Wikipedia — Cellular Respiration"
+    difficulty: hard
+
+  - id: etc_006
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Complex IV (cytochrome c oxidase)"
+    definition: "The last protein complex of the ETC; accepts electrons from cytochrome c and passes them to O₂ (the final electron acceptor), reducing it to H₂O; also pumps protons"
+    source: "OpenStax Biology 2e Ch7; Wikipedia — Cellular Respiration"
+    difficulty: hard
+
+  - id: etc_007
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: function_terms
+    term: "Final electron acceptor (aerobic respiration)"
+    definition: "Oxygen (O₂) is the final electron acceptor in the electron transport chain; it is reduced to water (H₂O) by Complex IV; without O₂, the ETC stalls"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: easy
+
+  - id: etc_008
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Chemiosmosis (in mitochondria)"
+    definition: "The movement of H⁺ ions from the intermembrane space into the matrix through ATP synthase, driven by the electrochemical gradient; powers the synthesis of ~26–28 ATP per glucose"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  - id: etc_009
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Proton gradient (mitochondria)"
+    definition: "The difference in H⁺ concentration between the intermembrane space (high H⁺) and the matrix (low H⁺), generated by the ETC pumping protons; the potential energy of this gradient drives ATP synthase"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  - id: etc_010
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: bracket_numbers
+    term: "ATP from ETC per glucose"
+    quizQuestion: "Approximately how many ATP molecules are produced from the electron transport chain per glucose molecule?"
+    answer: "26-28"
+    explanation: "~26–28 ATP come from oxidative phosphorylation (NADH contributes ~2.5 ATP each, FADH₂ ~1.5 ATP each); combined with glycolysis and TCA substrate-level phosphorylation totals ~30–32 ATP"
+    source: "OpenStax Biology 2e Ch7; Wikipedia — Cellular Respiration"
+    difficulty: hard
+
+  - id: etc_011
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: comparison_terms
+    term: "NADH vs. FADH₂ ATP yield"
+    definition: "Each NADH fed to Complex I yields ~2.5 ATP; each FADH₂ fed to Complex II yields only ~1.5 ATP because Complex II does not pump protons, contributing less to the proton gradient"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: hard
+
+  - id: etc_012
+    topic: "3.5"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Cristae"
+    definition: "The inner folds of the inner mitochondrial membrane; greatly increase surface area for ETC complexes and ATP synthase molecules, maximizing ATP production"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  # ---- Topic 3.6–3.7: Fermentation (~8 facts) ----
+
+  - id: ferm_001
+    topic: "3.6"
+    chain_theme: cellular_respiration
+    answer_pool: process_names
+    term: "Fermentation"
+    definition: "An anaerobic process that regenerates NAD⁺ from NADH, allowing glycolysis to continue producing ATP without oxygen; produces only 2 ATP per glucose (from glycolysis alone)"
+    source: "OpenStax Biology 2e Ch7; Wikipedia — Fermentation"
+    difficulty: easy
+
+  - id: ferm_002
+    topic: "3.6"
+    chain_theme: cellular_respiration
+    answer_pool: process_names
+    term: "Lactic acid fermentation"
+    definition: "A type of fermentation in which pyruvate is reduced to lactate (lactic acid), regenerating NAD⁺; occurs in muscle cells during intense exercise and in some bacteria (e.g., Lactobacillus in yogurt production)"
+    source: "OpenStax Biology 2e Ch7; Wikipedia — Fermentation"
+    difficulty: easy
+
+  - id: ferm_003
+    topic: "3.6"
+    chain_theme: cellular_respiration
+    answer_pool: process_names
+    term: "Alcoholic fermentation"
+    definition: "A type of fermentation in which pyruvate is converted to ethanol + CO₂, regenerating NAD⁺; carried out by yeast and some plants; basis of bread baking, beer, and wine production"
+    source: "OpenStax Biology 2e Ch7; Wikipedia — Fermentation"
+    difficulty: easy
+
+  - id: ferm_004
+    topic: "3.6"
+    chain_theme: cellular_respiration
+    answer_pool: function_terms
+    term: "NAD⁺ regeneration in fermentation"
+    definition: "The essential purpose of fermentation; NADH produced in glycolysis is re-oxidized to NAD⁺ (by reducing pyruvate to lactate or ethanol), so glycolysis can continue and produce 2 ATP per glucose"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  - id: ferm_005
+    topic: "3.6"
+    chain_theme: cellular_respiration
+    answer_pool: bracket_numbers
+    term: "ATP from fermentation per glucose"
+    quizQuestion: "How many ATP molecules does fermentation produce per glucose molecule?"
+    answer: "2"
+    explanation: "Fermentation produces no ATP itself — the 2 ATP come entirely from glycolysis; fermentation only regenerates NAD⁺ to keep glycolysis running"
+    source: "OpenStax Biology 2e Ch7; Wikipedia — Fermentation"
+    difficulty: easy
+
+  - id: ferm_006
+    topic: "3.6"
+    chain_theme: cellular_respiration
+    answer_pool: comparison_terms
+    term: "Aerobic respiration vs. fermentation ATP yield"
+    definition: "Aerobic respiration: ~30–32 ATP per glucose (highly efficient). Fermentation: only 2 ATP per glucose (from glycolysis alone); ~15–16× less efficient but does not require oxygen"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  - id: ferm_007
+    topic: "3.7"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Obligate aerobe"
+    definition: "An organism that requires oxygen for survival; cannot carry out anaerobic metabolism; will die in the absence of O₂ (e.g., most fungi, many bacteria)"
+    source: "OpenStax Biology 2e Ch7"
+    difficulty: medium
+
+  - id: ferm_008
+    topic: "3.7"
+    chain_theme: cellular_respiration
+    answer_pool: term_definitions
+    term: "Facultative anaerobe"
+    definition: "An organism that can use either aerobic respiration (when O₂ is available) or anaerobic fermentation (when O₂ is absent); most versatile strategy; examples: yeast, E. coli, many human gut bacteria"
+    source: "OpenStax Biology 2e Ch7; Wikipedia — Fermentation"
+    difficulty: medium
+
+# ============================================================
+# ANSWER TYPE POOLS — 6 pools, matching parent deck pool IDs
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: Term Definitions — definitions, mechanisms, and descriptions
+  - id: term_definitions
+    format: term
+    estimated_count: 65
+    note: >
+      The largest pool for Unit 3. Covers enzyme definitions, thermodynamic terms,
+      photosynthesis components, respiration stages, and fermentation descriptions.
+      "What is [term]?" format. Students frequently confuse paired concepts:
+      lock-and-key vs induced-fit, exergonic vs endergonic, PSII vs PSI,
+      competitive vs noncompetitive inhibition, C3 vs C4 vs CAM.
+
+  # POOL 2: Process Names — named processes students must identify
+  - id: process_names
+    format: name
+    estimated_count: 18
+    note: >
+      Named biological processes: glycolysis, citric acid cycle, Calvin cycle,
+      carbon fixation, photophosphorylation, pyruvate oxidation, chemiosmosis,
+      lactic acid fermentation, alcoholic fermentation, catalysis.
+      Students confuse: glycolysis/TCA, light reactions/Calvin cycle, aerobic/fermentation.
+
+  # POOL 3: Molecule Names — specific molecules students must identify
+  - id: molecule_names
+    format: name
+    estimated_count: 22
+    note: >
+      ATP, NADH, NADPH, FADH₂, RuBisCO, RuBP, 3-PGA, G3P, acetyl-CoA, oxaloacetate,
+      citrate, pyruvate, chlorophyll a/b, carotenoids, CoQ, cytochrome c, pyruvate
+      dehydrogenase complex, ribozyme. Students confuse NADH/NADPH/FADH₂.
+
+  # POOL 4: Location Terms — where processes occur
+  - id: location_terms
+    format: term
+    estimated_count: 12
+    syntheticDistractors:
+      - "Outer mitochondrial membrane"
+      - "Intermembrane space"
+      - "Endoplasmic reticulum"
+      - "Golgi apparatus"
+      - "Plasma membrane"
+      - "Nucleus"
+    note: >
+      Cytoplasm, thylakoid membrane, stroma, mitochondrial matrix, inner mitochondrial
+      membrane, cristae. Students frequently confuse stroma vs matrix, thylakoid vs cristae.
+
+  # POOL 5: Function Terms — what something does
+  - id: function_terms
+    format: term
+    estimated_count: 12
+    note: >
+      Answers describe the role or function of a structure/molecule/process.
+      "Final electron acceptor", "products of light reactions", "NAD⁺ regeneration",
+      "activation energy lowering", "carbon fixation role of RuBisCO".
+
+  # POOL 6: Bracket Numbers — quantitative facts
+  - id: bracket_numbers
+    format: bracket_number
+    estimated_count: 18
+    note: >
+      Numerical answers in {brackets}. Examples: {2} net ATP from glycolysis,
+      {30-32} total ATP per glucose, {680}nm for PSII, {700}nm for PSI,
+      {9} ATP per 3 Calvin cycle turns, {6} NADPH per 3 Calvin turns,
+      {3} NADH per TCA turn, {1} FADH₂ per TCA turn, {37}°C optimum for human enzymes,
+      {2} NADH from glycolysis, {26-28} ATP from ETC, {6} turns for one glucose.
+
+  # POOL 7: Comparison Terms — contrasting concepts
+  - id: comparison_terms
+    format: term
+    estimated_count: 12
+    syntheticDistractors:
+      - "Eukaryote vs. prokaryote"
+      - "Anabolism vs. catabolism"
+      - "Mitosis vs. meiosis"
+      - "DNA vs. RNA"
+      - "Homologous vs. analogous structures"
+    note: >
+      Comparative/contrast questions. C3 vs. C4 vs. CAM, competitive vs. noncompetitive
+      inhibition, PSII before PSI, NADH vs. FADH₂ ATP yield, aerobic vs. fermentation,
+      absorption spectrum vs. action spectrum, lock-and-key vs. induced-fit.
+
+# ============================================================
+# QUESTION TEMPLATES
+# ============================================================
+
+question_templates:
+  - id: define_term
+    questionFormat: "What is {term} in cellular biology?"
+    answerPoolId: term_definitions
+    availableFromMastery: 0
+    difficulty: 1
+
+  - id: identify_process
+    questionFormat: "Which process {description}?"
+    answerPoolId: process_names
+    availableFromMastery: 0
+    difficulty: 2
+
+  - id: identify_molecule
+    questionFormat: "What molecule {description}?"
+    answerPoolId: molecule_names
+    availableFromMastery: 1
+    difficulty: 2
+
+  - id: identify_location
+    questionFormat: "Where does {process} occur?"
+    answerPoolId: location_terms
+    availableFromMastery: 1
+    difficulty: 2
+
+  - id: identify_function
+    questionFormat: "What is the function of {structure}?"
+    answerPoolId: function_terms
+    availableFromMastery: 2
+    difficulty: 3
+
+  - id: numerical_fact
+    questionFormat: "How many {item}?"
+    answerPoolId: bracket_numbers
+    availableFromMastery: 0
+    difficulty: 2
+
+  - id: compare_concepts
+    questionFormat: "How does {concept_a} differ from {concept_b}?"
+    answerPoolId: comparison_terms
+    availableFromMastery: 3
+    difficulty: 4
+
+# ============================================================
+# CHAIN THEMES — 3 named themes for Unit 3
+# (minimum ≥3 themes per run; these match parent deck chain_themes)
+# ============================================================
+
+chain_themes:
+  - id: enzymes
+    name: "Enzymes"
+    topics: ["3.1", "3.2"]
+    description: "Enzyme structure, active sites, cofactors, inhibition types, kinetics, and temperature/pH effects"
+
+  - id: photosynthesis
+    name: "Photosynthesis"
+    topics: ["3.4"]
+    description: "Light reactions (PSII, PSI, ETC, chemiosmosis, photophosphorylation) and Calvin cycle (carbon fixation, G3P, C3/C4/CAM, photorespiration)"
+
+  - id: cellular_respiration
+    name: "Cellular Respiration"
+    topics: ["3.3", "3.5", "3.6", "3.7"]
+    description: "Bioenergetics (ATP, ΔG, thermodynamics, anabolism/catabolism), glycolysis, pyruvate oxidation, citric acid cycle, ETC, oxidative phosphorylation, and fermentation"
+
+# ============================================================
+# COMMON CONFUSIONS — drives distractor pairing
+# ============================================================
+
+common_confusions:
+  # Enzyme confusions
+  - ["lock-and-key model", "induced-fit model"]
+  - ["cofactor", "coenzyme"]
+  - ["competitive inhibition", "noncompetitive inhibition", "allosteric activation"]
+  - ["Vmax", "Km"]
+  - ["activation energy (Ea)", "free energy change (ΔG)"]
+  - ["substrate", "active site", "enzyme-substrate complex"]
+
+  # Energetics confusions
+  - ["exergonic", "endergonic"]
+  - ["anabolism", "catabolism"]
+  - ["first law of thermodynamics", "second law of thermodynamics"]
+  - ["ATP", "ADP", "AMP"]
+  - ["NADH", "NADPH", "FADH2"]
+
+  # Photosynthesis confusions
+  - ["Photosystem I (P700)", "Photosystem II (P680)"]
+  - ["thylakoid membrane", "stroma"]
+  - ["light reactions", "Calvin cycle"]
+  - ["chlorophyll a", "chlorophyll b", "carotenoids"]
+  - ["absorption spectrum", "action spectrum"]
+  - ["C3 plants", "C4 plants", "CAM plants"]
+  - ["carbon fixation", "reduction phase", "regeneration phase"]
+  - ["RuBP", "G3P", "3-PGA"]
+  - ["RuBisCO", "ATP synthase", "pyruvate dehydrogenase"]
+
+  # Cellular respiration confusions
+  - ["glycolysis", "citric acid cycle", "electron transport chain"]
+  - ["matrix (mitochondria)", "stroma (chloroplast)"]
+  - ["inner mitochondrial membrane", "outer mitochondrial membrane"]
+  - ["Complex I", "Complex II", "Complex III", "Complex IV"]
+  - ["substrate-level phosphorylation", "oxidative phosphorylation"]
+  - ["pyruvate", "acetyl-CoA", "oxaloacetate", "citrate"]
+
+  # Fermentation confusions
+  - ["lactic acid fermentation", "alcoholic fermentation"]
+  - ["obligate aerobe", "obligate anaerobe", "facultative anaerobe"]
+  - ["aerobic respiration ATP yield", "fermentation ATP yield"]
+
+# ============================================================
+# SYNONYM GROUPS
+# ============================================================
+
+synonym_groups:
+  - id: krebs_tca_citric
+    members: ["citric acid cycle", "Krebs cycle", "TCA cycle", "tricarboxylic acid cycle"]
+    reason: "All names for the same metabolic cycle"
+  - id: light_independent
+    members: ["Calvin cycle", "light-independent reactions", "dark reactions"]
+    reason: "All names for the carbon fixation cycle in the stroma"
+  - id: chemiosmosis_mitchell
+    members: ["chemiosmosis", "Mitchell hypothesis"]
+    reason: "The same process of proton-gradient-driven ATP synthesis"
+  - id: lactic_acid
+    members: ["lactic acid fermentation", "lactate fermentation"]
+    reason: "Same fermentation pathway; lactic acid and lactate are the same compound at physiological pH"
+  - id: noncompetitive_allosteric
+    members: ["noncompetitive inhibition", "allosteric inhibition"]
+    reason: "Often used interchangeably; inhibitor binds site other than active site"
+  - id: g3p_pgal
+    members: ["G3P", "PGAL", "glyceraldehyde-3-phosphate"]
+    reason: "All names for the 3-carbon sugar product of the Calvin cycle"
+  - id: etc_chain
+    members: ["electron transport chain", "ETC", "respiratory chain"]
+    reason: "All names for the series of protein complexes in the inner mitochondrial membrane"
+
+# ============================================================
+# DIFFICULTY TIERS
+# ============================================================
+
+difficulty_tiers:
+  easy:
+    description: "Core vocabulary every AP Bio student sees in the first week of Unit 3"
+    examples:
+      - "ATP as energy currency"
+      - "Overall photosynthesis equation"
+      - "Glycolysis location (cytoplasm)"
+      - "Net 2 ATP from glycolysis"
+      - "O₂ as final electron acceptor"
+      - "Lactic acid fermentation in muscles"
+  medium:
+    description: "Standard AP content requiring understanding of mechanisms and pathways"
+    examples:
+      - "Induced-fit model vs lock-and-key"
+      - "PSII vs PSI roles and wavelengths"
+      - "Carbon fixation by RuBisCO"
+      - "C3 vs C4 vs CAM adaptations"
+      - "Substrate-level vs oxidative phosphorylation"
+      - "Feedback inhibition mechanism"
+  hard:
+    description: "Complex topics requiring multi-step reasoning or precise numerical recall"
+    examples:
+      - "Michaelis-Menten kinetics (Km definition)"
+      - "Calvin cycle stoichiometry (9 ATP, 6 NADPH per 3 turns)"
+      - "Why FADH₂ yields fewer ATP than NADH (Complex II doesn't pump H⁺)"
+      - "Photorespiration mechanism and conditions"
+      - "Proton gradient direction and ATP synthase rotation"
+      - "ETC complex I, II, III, IV substrates and products"
+
+# ============================================================
+# EXAM TAGS
+# ============================================================
+
+exam_tags:
+  - "AP_Biology"
+  - "AP_Bio_Unit3"
+  - "AP_Bio_ENE"
+  - "Cellular_Energetics"
+
+# ============================================================
+# NOTES
+# ============================================================
+
+notes: >
+  UNIT 3 SCOPE: Topics 3.1–3.7 as defined in the College Board AP Biology CED.
+  Exam weight 12–16% makes this one of the highest-yield units on the exam.
+
+  FACT SOURCING: All numerical values (ATP yields, wavelengths, temperatures, pH optima,
+  stoichiometric inputs/outputs) are verified against OpenStax Biology 2e (CC-BY-4.0)
+  and cross-referenced with Wikipedia. No facts are generated from LLM training knowledge.
+
+  CHAIN THEMES: Three themes cover the full unit — enzymes (Topics 3.1–3.2),
+  photosynthesis (Topic 3.4), and cellular_respiration (Topics 3.3, 3.5–3.7).
+  The bioenergetics topic (3.3) is assigned to cellular_respiration as it provides
+  the thermodynamic foundation for respiration.
+
+  POOL DESIGN: Comparison terms pool is critical for this unit — students are tested
+  heavily on distinguishing paired/tripled concepts (PSII vs PSI, C3 vs C4 vs CAM,
+  competitive vs noncompetitive inhibition, etc.).
+
+  PARENT DECK: This architecture feeds into ap_biology_unit3 sub-deck of the parent
+  ap_biology deck. Pool IDs (term_definitions, process_names, molecule_names,
+  location_terms, function_terms, bracket_numbers) are consistent with the parent deck schema.
+
+  TOTAL VERIFIED FACTS IN THIS ARCH: ~110 fact entries documented in verified_facts section.
+  Generation workers should expand these into full DeckFact JSON, adding quizQuestion
+  (where not specified), correctAnswer, distractors (LLM-generated), explanation, and
+  funScore/difficulty fields. Target: 160 facts total in the generated deck.
