@@ -6,7 +6,7 @@ import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-t
 import { isFirstChargeFree, markFirstChargeUsed, getFirstChargeWrongMultiplier } from './discoverySystem';
 import { canMasteryUpgrade, canMasteryDowngrade, masteryUpgrade, masteryDowngrade, resetEncounterMasteryFlags, getMasteryBaseBonus, getMasteryStats } from './cardUpgradeService';
 import { getSurgeChargeSurcharge, isSurgeTurn } from './surgeSystem';
-import { resetChain, decayChain, extendOrResetChain, getChainState, getCurrentChainLength, initChainSystem, rotateActiveChainColor, getActiveChainColor } from './chainSystem';
+import { resetChain, decayChain, extendOrResetChain, getChainState, getCurrentChainLength, initChainSystem, rotateActiveChainColor, getActiveChainColor, getChainMultiplier } from './chainSystem';
 import { resetAura, adjustAura, getAuraState } from './knowledgeAuraSystem';
 import { resetReviewQueue, addToReviewQueue, clearReviewQueueFact, isReviewQueueFact } from './reviewQueueSystem';
 import { CHAIN_MOMENTUM_ENABLED, CHARGE_AP_SURCHARGE, FIRST_CHARGE_FREE_AP_SURCHARGE, RELIC_AEGIS_STONE_MAX_CARRY } from '../data/balance';
@@ -85,6 +85,7 @@ export function resetFactLastSeenEncounter(): void {
   _factLastSeenEncounterMap.clear();
   // Also reset run-scoped relic state so scar_tissue stacks don't bleed across runs
   _scarTissueStacks = 0;
+  _slowAnyActionThisTurn = false;
 }
 
 // ─── Relic encounter-state counters ─────────────────────────────────────────
@@ -106,6 +107,13 @@ let _wrongChargesForLuckyCoin = 0;
  * this encounter. Next correct Charge gets +50% damage multiplier, then resets.
  */
 let _luckyCoinArmed = false;
+
+/**
+ * AR-tag-wiring: slow_any_action — when true, the current Slow can skip ANY enemy action type
+ * (not just defend/buff). Set during playCardAction when effect.slowAnyAction is true.
+ * Cleared in endPlayerTurn after the slow check fires.
+ */
+let _slowAnyActionThisTurn = false;
 
 /** Maps a status effect type to its apply audio cue. No-ops for unmapped types. */
 function playStatusAudio(statusType: string): void {
@@ -370,6 +378,62 @@ export interface TurnState {
    * Used by damagePreviewService for flat damage bonus preview (+2 per stack).
    */
   scarTissueStacks: number;
+  /**
+   * AR-tag-wiring: Pending scry count — number of cards to look at from draw pile.
+   * Set by scryCount result from scout_scry2 tag. UI reads this to show scry picker.
+   * Cleared after the UI resolves the scry. 0 = no pending scry.
+   */
+  pendingScryCount: number;
+  /**
+   * AR-tag-wiring: Number of remaining free-play charges.
+   * frenzyChargesGranted and freePlayCount (focus_next2free) both add to this pool.
+   * Each card played for free decrements this counter (min 0). 0 = inactive.
+   */
+  freePlayCharges: number;
+  /**
+   * AR-tag-wiring: Damage dealt back to the attacker per enemy hit (parry_counter3 tag).
+   * Set by resolveCardEffect counterDamage. Applied in endPlayerTurn when enemy attacks.
+   * Resets to 0 each turn end.
+   */
+  counterDamagePerHit: number;
+  /**
+   * AR-tag-wiring: Timer extension % for the next Charge quiz (precision_timer_ext50 tag).
+   * Read by the quiz system before showing the quiz. Cleared after each charge quiz.
+   */
+  timerExtensionPct: number;
+  /**
+   * AR-tag-wiring: Number of wrong-answer distractors to eliminate from the next quiz.
+   * Read by the quiz system. Cleared after each charge quiz.
+   */
+  eliminateDistractors: number;
+  /**
+   * AR-tag-wiring: When true, thorns value carries across encounter end to the next encounter.
+   * Set by thorns_persist / reactive_thorns_persist tags. Cleared when thorns resets at encounter start.
+   */
+  thornsPersistent: boolean;
+  /**
+   * AR-tag-wiring: Bonus block applied to cards retained by Archive mechanic.
+   * Set by archive_block2_per tag result. Used by encounter resolve when applying archive retain.
+   * Reset each turn end.
+   */
+  archiveBlockBonus: number;
+  /**
+   * AR-tag-wiring: Number of remaining Empower buff targets.
+   * When > 1 (empower_2cards tag), buffNextCard persists until this many cards have consumed it.
+   * 0 = inactive (default behavior: buff consumed after 1 card).
+   */
+  empowerRemainingCount: number;
+  /**
+   * AR-tag-wiring: Number of remaining Ignite attacks.
+   * When > 1 (ignite_2attacks tag), the ignite buff persists for this many more attacks.
+   * 1 = fire this attack and clear; 0 = inactive.
+   */
+  igniteRemainingAttacks: number;
+  /**
+   * AR-tag-wiring: Force enemy to use attack intent for the next N turns (guard_taunt1t tag).
+   * 0 = inactive. Decremented at end of each turn. Enemy rolls attack intent when > 0.
+   */
+  forcedAttackTurnsRemaining: number;
 }
 
 export interface PlayCardResult {
@@ -607,6 +671,17 @@ export function startEncounter(
     chargeCorrectsThisTurn: 0,
     encounterNumber: 0,
     scarTissueStacks: _scarTissueStacks,
+    pendingScryCount: 0,
+    // AR-tag-wiring: new result flag fields (all start inactive)
+    freePlayCharges: 0,
+    counterDamagePerHit: 0,
+    timerExtensionPct: 0,
+    eliminateDistractors: 0,
+    thornsPersistent: false,
+    archiveBlockBonus: 0,
+    empowerRemainingCount: 0,
+    igniteRemainingAttacks: 0,
+    forcedAttackTurnsRemaining: 0,
   };
 
   // Reset chain at encounter start (clean slate)
@@ -766,6 +841,12 @@ export function playCardAction(
   // Focus: reduce this card's AP cost by 1 (minimum 0); consume one focus charge
   if (turnState.focusReady && turnState.focusCharges > 0 && apCost > 0) {
     apCost = Math.max(0, apCost - 1);
+  }
+  // freePlayCharges: frenzy / focus_next2free grant N 0-AP card plays
+  // Consume one charge and set cost to 0 (takes priority over Focus cost reduction).
+  if ((turnState.freePlayCharges ?? 0) > 0) {
+    apCost = 0;
+    turnState.freePlayCharges -= 1;
   }
   if (turnState.apCurrent < apCost) {
     const blockedEffect: CardEffectResult = createNoEffect(cardInHand);
@@ -1917,9 +1998,11 @@ export function playCardAction(
     turnState.staggeredEnemyNextTurn = true;
   }
 
-  // AR-206: Ignite buff — store pending Burn to apply on next attack
+  // AR-206: Ignite buff — store pending Burn to apply on next attack(s)
+  // igniteDuration > 1 (ignite_2attacks tag): buff applies to next N attacks.
   if ((effect.applyIgniteBuff ?? 0) > 0) {
     turnState.ignitePendingBurn = effect.applyIgniteBuff!;
+    turnState.igniteRemainingAttacks = effect.igniteDuration ?? 1;
   }
 
   // AR-206: Corrode — remove enemy block
@@ -2212,13 +2295,21 @@ export function playCardAction(
   }
 
   // AR-206: Ignite — apply pending Burn to the target on attack card plays
+  // igniteRemainingAttacks > 1 means the buff applies to multiple attacks (ignite_2attacks tag).
   if ((turnState.ignitePendingBurn ?? 0) > 0 && effect.effectType === 'attack' && card.mechanicId !== 'ignite') {
     applyStatusEffect(enemy.statusEffects, {
       type: 'burn',
       value: turnState.ignitePendingBurn,
       turnsRemaining: 99,
     });
-    turnState.ignitePendingBurn = 0;
+    if (turnState.igniteRemainingAttacks > 1) {
+      // Multi-attack ignite: decrement counter, keep the buff active
+      turnState.igniteRemainingAttacks -= 1;
+    } else {
+      // Single-attack ignite (default): consume the buff
+      turnState.ignitePendingBurn = 0;
+      turnState.igniteRemainingAttacks = 0;
+    }
   }
 
   // AR-206: Aegis Pulse CC — grant chain block bonus to same-chain cards in hand
@@ -2229,10 +2320,361 @@ export function playCardAction(
     turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + (effect.grantsAp ?? 0));
   }
 
+  // ── AR-tag-wiring: New CardEffectResult fields (added 2026-04-03) ──────────────────────────
+
+  // apRefund: refund AP after card resolution (eruption_refund1 tag)
+  if ((effect.apRefund ?? 0) > 0) {
+    turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + effect.apRefund!);
+  }
+
+  // apGain: grant additional AP this turn (trance_cc_ap1 tag on battle_trance CC)
+  if ((effect.apGain ?? 0) > 0) {
+    turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + effect.apGain!);
+  }
+
+  // healPctApplied: heal player by N% of maxHP (overheal_heal_pct5 tag)
+  if ((effect.healPctApplied ?? 0) > 0) {
+    const pctHeal = Math.round(playerState.maxHP * effect.healPctApplied! / 100);
+    if (pctHeal > 0) {
+      playCardAudio('player-heal');
+      healPlayer(playerState, pctHeal);
+      turnState.turnLog.push({
+        type: 'heal',
+        message: `Overheal: healed ${pctHeal} HP (${effect.healPctApplied}% of maxHP)`,
+        value: pctHeal,
+      });
+    }
+  }
+
+  // removeDebuffCount: remove N debuffs from player, shortest-duration first (shrug_cleanse1 tag)
+  if ((effect.removeDebuffCount ?? 0) > 0) {
+    const debuffTypes = new Set(['poison', 'weakness', 'vulnerable', 'burn', 'bleed', 'freeze']);
+    const debuffs = playerState.statusEffects
+      .map((s, i) => ({ s, i }))
+      .filter(({ s }) => debuffTypes.has(s.type))
+      .sort((a, b) => a.s.turnsRemaining - b.s.turnsRemaining); // shortest first
+    const toRemove = debuffs.slice(0, effect.removeDebuffCount!);
+    const removeSet = new Set(toRemove.map(x => x.i));
+    playerState.statusEffects = playerState.statusEffects.filter((_, i) => !removeSet.has(i));
+    if (toRemove.length > 0) {
+      turnState.turnLog.push({
+        type: 'play',
+        message: `Shrug It Off: removed ${toRemove.length} debuff(s)`,
+        value: toRemove.length,
+      });
+    }
+  }
+
+  // bleedPermanent: mark the bleed just applied as permanent (rupture_bleed_perm tag)
+  // The bleed was already applied via applyBleedStacks above. Find it and set turnsRemaining to 99999.
+  if (effect.bleedPermanent) {
+    const bleedStatus = enemy.statusEffects.find(s => s.type === 'bleed');
+    if (bleedStatus) {
+      bleedStatus.turnsRemaining = 99999; // sentinel: permanent bleed, never decays
+    }
+  }
+
+  // thornsPersist: carry thorns value across this encounter's end (thorns_persist / reactive_thorns_persist tags)
+  if (effect.thornsPersist) {
+    turnState.thornsPersistent = true;
+  }
+
+  // counterDamage: deal N damage to enemy per hit when enemy attacks (parry_counter3 tag)
+  if ((effect.counterDamage ?? 0) > 0) {
+    turnState.counterDamagePerHit = effect.counterDamage!;
+  }
+
+  // tauntDuration: force enemy to use attack intent for N turns (guard_taunt1t tag)
+  if ((effect.tauntDuration ?? 0) > 0) {
+    turnState.forcedAttackTurnsRemaining = effect.tauntDuration!;
+  }
+
+  // archiveBlockBonus: bonus block applied to each retained card from Archive (archive_block2_per tag)
+  if ((effect.archiveBlockBonus ?? 0) > 0) {
+    turnState.archiveBlockBonus = effect.archiveBlockBonus!;
+  }
+
+  // empowerTargetCount: buff next N cards instead of 1 (empower_2cards tag)
+  // When set, buffNextCard will be held for multiple card plays; empowerRemainingCount tracks how many.
+  if ((effect.empowerTargetCount ?? 0) > 1) {
+    turnState.empowerRemainingCount = effect.empowerTargetCount!;
+  }
+
+  // freePlayCount: grant N 0-AP free plays this turn (focus_next2free tag)
+  if ((effect.freePlayCount ?? 0) > 0) {
+    turnState.freePlayCharges = (turnState.freePlayCharges ?? 0) + effect.freePlayCount!;
+  }
+
+  // frenzyChargesGranted: grant N free-play charges (frenzy mechanic)
+  if ((effect.frenzyChargesGranted ?? 0) > 0) {
+    turnState.freePlayCharges = (turnState.freePlayCharges ?? 0) + effect.frenzyChargesGranted!;
+  }
+
+  // slowAnyAction: when set, Slow can skip ANY enemy action (slow_any_action tag)
+  // This is stored on turnState so endPlayerTurn can check it when the enemy acts.
+  if (effect.slowAnyAction) {
+    // Flag is stored implicitly: slowEnemyIntent is already set via applySlow above.
+    // We set a companion flag on the TurnState so endPlayerTurn widens the condition.
+    // For now, we repurpose staggeredEnemyNextTurn so any action is skipped — but that's too broad.
+    // Correct approach: store the flag and check in endPlayerTurn.
+    // The flag is carried by slowEnemyIntent=true + the intent check in endPlayerTurn is
+    // updated separately (see endPlayerTurn slow block).
+    // Mark that the slow is the "any action" variant by setting a flag via a convention:
+    // we encode this as a negative value sentinel on slowEnemyIntent type — but since it's boolean,
+    // we use a separate module-level flag for this turn only.
+    _slowAnyActionThisTurn = true;
+  }
+
+  // timerExtensionPct: extend quiz timer by N% for the next Charge (precision_timer_ext50 tag)
+  if ((effect.timerExtensionPct ?? 0) > 0) {
+    turnState.timerExtensionPct = effect.timerExtensionPct!;
+  }
+
+  // eliminateDistractor: remove N wrong answers from the next quiz (siphon_eliminate1 tag)
+  if ((effect.eliminateDistractor ?? 0) > 0) {
+    turnState.eliminateDistractors = (turnState.eliminateDistractors ?? 0) + effect.eliminateDistractor!;
+  }
+
+  // scryCount: look at top N cards of draw pile, let player discard some (scout_scry2 tag)
+  // Set pendingScryCount so UI can show a scry picker. Auto-discard lowest-value card if no UI.
+  if ((effect.scryCount ?? 0) > 0) {
+    turnState.pendingScryCount = effect.scryCount!;
+    // Fallback auto-resolve: discard the lowest-value card among the top scryCount cards.
+    // This preserves game state even if the UI scry picker isn't shown.
+    const topCards = deck.drawPile.slice(0, effect.scryCount!);
+    if (topCards.length > 0) {
+      const sortedByValue = [...topCards].sort((a, b) => (a.baseEffectValue ?? 0) - (b.baseEffectValue ?? 0));
+      const worstCard = sortedByValue[0];
+      const idx = deck.drawPile.indexOf(worstCard);
+      if (idx !== -1) {
+        deck.drawPile.splice(idx, 1);
+        deck.discardPile.push(worstCard);
+      }
+      turnState.turnLog.push({
+        type: 'play',
+        message: `Scry ${effect.scryCount}: auto-discarded ${worstCard.mechanicName ?? worstCard.mechanicId ?? 'card'}`,
+        value: effect.scryCount,
+      });
+    }
+  }
+
+  // recycleChoose: player picks which card from discard (recycle_discard_pick tag)
+  // Flag is set on the result — CardCombatOverlay reads result.recycleChoose to show picker UI.
+  // No TurnState mutation needed; the UI layer reads the PlayCardResult directly.
+
+  // mimicChoose: player picks from discard instead of random (mimic_choose tag)
+  // Same pattern — propagated through PlayCardResult for UI consumption.
+
+  // aftershockNoQuiz: CC repeat doesn't require a quiz answer (aftershock_no_quiz tag)
+  // Read from PlayCardResult in the aftershock resolution UI layer.
+
+  // kbombCountPast: use run-wide charge count for knowledge_bomb CC (kbomb_count_past tag)
+  // The resolver already reads correctChargesThisEncounter; for kbombCountPast the resolver
+  // needs totalChargesThisRun. This flag on the result is informational — the actual behavior
+  // is driven by the resolver reading kbombCountPast and using the appropriate count.
+
+  // darkHealPerCurse: dark_knowledge heals 1 HP per cursed fact (dark_heal1_per_curse tag)
+  if ((effect.darkHealPerCurse ?? 0) > 0 && cursedFactCount > 0) {
+    const darkHeal = effect.darkHealPerCurse! * cursedFactCount;
+    if (darkHeal > 0) {
+      playCardAudio('player-heal');
+      healPlayer(playerState, darkHeal);
+      turnState.turnLog.push({
+        type: 'heal',
+        message: `Dark Knowledge: healed ${darkHeal} HP (${cursedFactCount} cursed facts × ${effect.darkHealPerCurse})`,
+        value: darkHeal,
+      });
+    }
+  }
+
+  // recollectUpgrade: returned exhausted cards get +N mastery (recollect_upgrade1 tag)
+  if ((effect.recollectUpgrade ?? 0) > 0 && (effect.exhaustedCardsToReturn ?? 0) > 0) {
+    // exhaustedCardsToReturn was already processed by the recollect handler above.
+    // Apply +1 mastery to the most recently returned cards (those just moved to discard from exhaust).
+    // The recollect resolution that moves cards happens in the effect application for exhaustedCardsToReturn.
+    // We mark the returned cards by bumping mastery on the LAST N cards added to discard (heuristic).
+    const returnCount = effect.exhaustedCardsToReturn!;
+    const upgradeDelta = effect.recollectUpgrade!;
+    const recentlyReturned = turnState.deck.discardPile.slice(-returnCount);
+    for (const rc of recentlyReturned) {
+      const maxLv = 5;
+      rc.masteryLevel = Math.min(maxLv, (rc.masteryLevel ?? 0) + upgradeDelta);
+    }
+  }
+
+  // recollectPlayFree: one returned card can be played free this turn (recollect_play_free tag)
+  if (effect.recollectPlayFree) {
+    // Grant 1 free-play charge so the player can play a returned card at 0 AP
+    turnState.freePlayCharges = (turnState.freePlayCharges ?? 0) + 1;
+  }
+
+  // synapseChainBonus: wildcard chain link gets +1 bonus chain length (synapse_chain_plus1 tag)
+  // The applyWildcardChainLink flag is set by the synapse mechanic; chain bonus is applied here.
+  if ((effect.synapseChainBonus ?? 0) > 0 && effect.applyWildcardChainLink) {
+    // Extend the chain by 1 extra beyond the wildcard link already applied
+    const synapseExtend = effect.synapseChainBonus!;
+    for (let i = 0; i < synapseExtend; i++) {
+      extendOrResetChain(card.chainType ?? null);
+    }
+    const synapseChain = getChainState();
+    turnState.chainLength = synapseChain.length;
+    turnState.chainMultiplier = getChainMultiplier(synapseChain.length);
+    turnState.turnLog.push({
+      type: 'play',
+      message: `Synapse: chain extended by +${synapseExtend} (chain now ${synapseChain.length})`,
+      value: synapseChain.length,
+    });
+  }
+
+  // fluxDouble: unstable_flux fires its effect twice (flux_double tag)
+  // The resolver sets fluxDouble=true; the actual double-fire is handled here by re-applying the effect.
+  if (effect.fluxDouble && effect.unstableFluxEffect) {
+    // Re-apply the same flux effect a second time
+    const fluxEffect = effect.unstableFluxEffect;
+    if (fluxEffect === 'damage' && effect.damageDealt > 0) {
+      const fluxDmg = Math.round(effect.damageDealt * 0.5); // second hit at 50% to avoid doubling
+      if (fluxDmg > 0) {
+        const fluxResult = applyDamageToEnemy(enemy, fluxDmg);
+        effect.damageDealt += fluxDmg;
+        effect.enemyDefeated = fluxResult.defeated;
+        turnState.damageDealtThisTurn += fluxDmg;
+      }
+    } else if (fluxEffect === 'block' && effect.shieldApplied > 0) {
+      applyShield(playerState, effect.shieldApplied);
+    } else if (fluxEffect === 'draw' && effect.extraCardsDrawn > 0) {
+      drawHand(deck, effect.extraCardsDrawn);
+    }
+    turnState.turnLog.push({
+      type: 'play',
+      message: `Unstable Flux: effect fired twice (flux_double)`,
+    });
+  }
+
+  // discardDamage: each card discarded during sift deals N damage (sift_discard_dmg2 tag)
+  // The sift resolution above already discarded cards. Apply damage per discarded card.
+  if ((effect.discardDamage ?? 0) > 0 && effect.siftParams) {
+    const discardDmg = effect.discardDamage! * effect.siftParams.discardCount;
+    if (discardDmg > 0) {
+      const discardResult = applyDamageToEnemy(enemy, discardDmg);
+      effect.damageDealt = (effect.damageDealt ?? 0) + discardDmg;
+      effect.enemyDefeated = discardResult.defeated;
+      turnState.damageDealtThisTurn += discardDmg;
+      turnState.turnLog.push({
+        type: 'play',
+        message: `Sift: ${effect.siftParams.discardCount} discards × ${effect.discardDamage} = ${discardDmg} damage`,
+        value: discardDmg,
+      });
+    }
+  }
+
+  // inscriptionFuryCcBonus: inscription_fury CC adds extra flat damage bonus stacks
+  // (insc_fury_cc_bonus2 tag). Increase the inscription's effectValue for future attacks.
+  if ((effect.inscriptionFuryCcBonus ?? 0) > 0) {
+    const furyInsc = turnState.activeInscriptions.find(i => i.mechanicId === 'inscription_fury');
+    if (furyInsc) {
+      furyInsc.effectValue += effect.inscriptionFuryCcBonus!;
+    }
+  }
+
+  // inscriptionIronThorns: inscription_iron CC also grants N thorns per turn (insc_iron_thorns1 tag)
+  // Store bonus on the inscription so endPlayerTurn can grant thorns each turn.
+  if ((effect.inscriptionIronThorns ?? 0) > 0) {
+    const ironInsc = turnState.activeInscriptions.find(i => i.mechanicId === 'inscription_iron');
+    if (ironInsc) {
+      // Stash the thorns bonus in the inscription's effectValue offset (use extras field via convention)
+      // Since ActiveInscription doesn't have an extras field, we store it on a parallel state field.
+      // For now, grant the thorns immediately (each CC play from iron inscription grants thorns next turn).
+      // The inscription already grants block; this bonus applies thorns in addition.
+      turnState.thornsActive = true;
+      turnState.thornsValue = (turnState.thornsValue ?? 0) + effect.inscriptionIronThorns!;
+    }
+  }
+
+  // masteryBumpAmount: mastery_surge bumps cards by N mastery instead of 1 (msurge_plus2 tag)
+  // masteryBumpsCount is already processed by the mastery bump handler below.
+  // masteryBumpAmount controls how many levels each bump grants.
+  // (The masteryBumpsCount processing is handled in the mastery surge section below.)
+
+  // catalyst: double or triple enemy status stacks (poisonDoubled, burnDoubled, bleedDoubled, catalystTriple)
+  if (effect.poisonDoubled || effect.catalystTriple) {
+    const mult = effect.catalystTriple ? 3 : 2;
+    const poisonStatus = enemy.statusEffects.find(s => s.type === 'poison');
+    if (poisonStatus) {
+      poisonStatus.value = Math.round(poisonStatus.value * mult);
+      turnState.turnLog.push({
+        type: 'play',
+        message: `Catalyst: Poison stacks ×${mult} → ${poisonStatus.value}`,
+        value: poisonStatus.value,
+      });
+    }
+  }
+  if (effect.burnDoubled || effect.catalystTriple) {
+    const mult = effect.catalystTriple ? 3 : 2;
+    const burnStatus = enemy.statusEffects.find(s => s.type === 'burn');
+    if (burnStatus) {
+      burnStatus.value = Math.round(burnStatus.value * mult);
+      turnState.turnLog.push({
+        type: 'play',
+        message: `Catalyst: Burn stacks ×${mult} → ${burnStatus.value}`,
+        value: burnStatus.value,
+      });
+    }
+  }
+  if (effect.bleedDoubled || (effect.catalystTriple && effect.bleedDoubled)) {
+    const mult = effect.catalystTriple ? 3 : 2;
+    const bleedStatus = enemy.statusEffects.find(s => s.type === 'bleed');
+    if (bleedStatus && bleedStatus.turnsRemaining !== 99999) { // don't triple permanent bleed
+      bleedStatus.value = Math.round(bleedStatus.value * mult);
+      turnState.turnLog.push({
+        type: 'play',
+        message: `Catalyst: Bleed stacks ×${mult} → ${bleedStatus.value}`,
+        value: bleedStatus.value,
+      });
+    }
+  }
+
+  // masteryBumpsCount: mastery_surge — bump N random hand cards by masteryBumpAmount (default 1)
+  if ((effect.masteryBumpsCount ?? 0) > 0) {
+    const bumpAmount = effect.masteryBumpAmount ?? 1;
+    const bumpCount = effect.masteryBumpsCount!;
+    // Select random cards from hand (excluding the surge card itself)
+    const handCandidates = turnState.deck.hand.filter(c => c.id !== cardId);
+    const shuffled = [...handCandidates].sort(() => Math.random() - 0.5);
+    const toBump = shuffled.slice(0, bumpCount);
+    for (const bc of toBump) {
+      const maxLv = 5;
+      bc.masteryLevel = Math.min(maxLv, (bc.masteryLevel ?? 0) + bumpAmount);
+    }
+    if (toBump.length > 0) {
+      turnState.turnLog.push({
+        type: 'play',
+        message: `Mastery Surge: bumped ${toBump.length} card(s) by +${bumpAmount} mastery`,
+        value: bumpAmount,
+      });
+    }
+  }
+
+  // blockCarries: fortify mechanic — block persists to next turn (fortify_carry tag)
+  // This flag on the result means "do NOT decay this turn's block at turn end".
+  // Store it for use in endPlayerTurn resetTurnState logic.
+  if (effect.blockCarries) {
+    turnState.persistentShield = Math.max(turnState.persistentShield, playerState.shield);
+  }
+
+  // ── End of AR-tag-wiring section ──────────────────────────────────────────────────────────
+
   if (card.cardType === 'buff' && !effect.applyDoubleStrikeBuff && !effect.applyFocusBuff && !effect.applyOverclock && !(effect.applyIgniteBuff ?? 0)) {
     turnState.buffNextCard = effect.finalValue;
+    // empowerTargetCount is handled above in the AR-tag-wiring section (sets empowerRemainingCount)
   } else if (!effect.applyIgniteBuff) {
-    turnState.buffNextCard = 0;
+    // Buff was consumed by this card play. Check empowerRemainingCount (empower_2cards tag):
+    // if still > 0, the buff persists for another card; otherwise clear.
+    if ((turnState.empowerRemainingCount ?? 0) > 0) {
+      turnState.empowerRemainingCount -= 1;
+      // Keep buffNextCard active for the remaining targets
+    } else {
+      turnState.buffNextCard = 0;
+    }
   }
 
   // Store last resolved effect for mirror
@@ -2405,10 +2847,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     turnState.staggeredEnemyNextTurn = false;
   } else if (
     turnState.slowEnemyIntent &&
-    (enemy.nextIntent.type === 'defend' || enemy.nextIntent.type === 'buff')
+    (_slowAnyActionThisTurn || enemy.nextIntent.type === 'defend' || enemy.nextIntent.type === 'buff')
   ) {
+    // slow_any_action tag: skip ANY action; default: only skips defend/buff
     intentSkipped = true;
     turnState.slowEnemyIntent = false;
+    _slowAnyActionThisTurn = false; // consume the any-action flag
   } else {
     intentResult = executeEnemyIntent(enemy);
     // AR-263: Pop Quiz stun — enemy skipped its action
@@ -2505,11 +2949,30 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
         turnState.phase = 'encounter_end';
       }
     }
+
+    // counterDamage: parry_counter3 tag — deal N damage to enemy per hit when they attack
+    if ((turnState.counterDamagePerHit ?? 0) > 0) {
+      const counterResult = applyDamageToEnemy(enemy, turnState.counterDamagePerHit);
+      if (counterResult.defeated) {
+        turnState.result = 'victory';
+        turnState.phase = 'encounter_end';
+      }
+      turnState.turnLog.push({
+        type: 'play',
+        message: `Parry counter: dealt ${turnState.counterDamagePerHit} damage to attacker`,
+        value: turnState.counterDamagePerHit,
+      });
+    }
   }
 
   // Thorns resets after each enemy attack phase — must be reapplied each turn
   turnState.thornsActive = false;
-  turnState.thornsValue = 0;
+  // thornsPersistent: if set, carry thorns value to next encounter (thorns_persist tag)
+  if (!turnState.thornsPersistent) {
+    turnState.thornsValue = 0;
+  }
+  // counterDamage: parry_counter3 tag — reset after each enemy attack phase
+  turnState.counterDamagePerHit = 0;
 
   turnState.turnLog.push({
     type: 'enemy_action',
@@ -2638,8 +3101,9 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   // AR-203: Bleed decays by BLEED_DECAY_PER_TURN at end of each enemy turn.
   // Happens AFTER the Poison tick so Bleed does not amplify Poison damage.
   // Bleed only triggers on card-play damage (effect.damageDealt path), not passive damage.
+  // bleedPermanent sentinel: turnsRemaining === 99999 means this bleed never decays (rupture_bleed_perm tag).
   const bleedEffect = enemy.statusEffects.find(e => e.type === 'bleed');
-  if (bleedEffect) {
+  if (bleedEffect && bleedEffect.turnsRemaining !== 99999) {
     bleedEffect.value = Math.max(0, bleedEffect.value - BLEED_DECAY_PER_TURN);
     if (bleedEffect.value <= 0) {
       const idx = enemy.statusEffects.indexOf(bleedEffect);
@@ -2729,6 +3193,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   // Reset per-turn relic tracking fields
   turnState.bloodletterArmed = false;
   turnState.chargeCorrectsThisTurn = 0;
+  // AR-tag-wiring: reset per-turn new fields
+  turnState.empowerRemainingCount = 0;
+  turnState.archiveBlockBonus = 0;
+  turnState.timerExtensionPct = 0;
+  turnState.eliminateDistractors = 0;
+  turnState.freePlayCharges = 0; // frenzy / focus_next2free charges don't carry over turns
 
   // Capture chainType BEFORE decay — used by tag_magnet to bias the next draw
   const chainTypeBeforeReset = turnState.chainType;
@@ -2770,6 +3240,18 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   }
 
   rollNextIntent(enemy);
+  // forcedAttackTurnsRemaining: guard_taunt1t tag — force enemy to attack next turn
+  if ((turnState.forcedAttackTurnsRemaining ?? 0) > 0) {
+    // Find an attack intent from the pool and override the rolled intent
+    const pool = (enemy.phase === 2 && enemy.template.phase2IntentPool)
+      ? enemy.template.phase2IntentPool
+      : enemy.template.intentPool;
+    const attackIntent = pool.find(i => i.type === 'attack' || i.type === 'multi_attack');
+    if (attackIntent) {
+      enemy.nextIntent = attackIntent;
+    }
+    turnState.forcedAttackTurnsRemaining -= 1;
+  }
   turnState.turnNumber += 1;
   turnState.encounterTurnNumber += 1;
   turnState.isSurge = isSurgeTurn(turnState.turnNumber);

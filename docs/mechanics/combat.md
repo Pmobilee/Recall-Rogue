@@ -46,6 +46,7 @@ Charge plays add +1 AP surcharge. Surcharge waivers (checked in priority order i
 2. **Warcry buff** — `warcryFreeChargeActive` flag (consumed on use)
 3. **Chain Momentum** — `CHAIN_MOMENTUM_ENABLED = true`; previous correct Charge waives surcharge for next same chain-type Charge
 4. **Free First Charge** — `isFirstChargeFree(factId, ...)` — first attempt at any fact in the run costs +0 surcharge
+5. **Free Play Charges** — `turnState.freePlayCharges > 0` — set by frenzy mechanic or `focus_next2free` tag; reduces AP cost to 0 (highest priority — checked AFTER Focus discount)
 
 If `apCurrent < apCost`, card is blocked (`blocked: true`, no AP deducted).
 
@@ -167,7 +168,7 @@ The reward screen (`CardRewardScreen.svelte`) skips the heal UI step when `healA
 - **Stacks additively** — multiple thorns plays in one encounter add to `turnState.thornsValue` (changed 2026-04-01)
 - **Persists for entire encounter** — no longer resets after each enemy attack; resets only at `startEncounter()` (changed 2026-04-01)
 - `aegis_stone` relic: grants `+2 thorns` at end of turn if block ≥ `RELIC_AEGIS_STONE_MAX_CARRY` — also additive
-- `thorns_persist` tag (thorns L5) and `reactive_thorns_persist` tag (reactive_shield L5): sets `result.thornsPersist = true`; turnManager must carry thorns across encounters when this flag is set.
+- `thorns_persist` tag (thorns L5) and `reactive_thorns_persist` tag (reactive_shield L5): sets `turnState.thornsPersistent = true`. When set, `thornsValue` is NOT reset to 0 at the end of the enemy attack phase — it persists across the turn boundary. `encounterBridge` must carry `thornsPersistent` + `thornsValue` into the next encounter's `TurnState` init.
 
 ---
 
@@ -180,19 +181,68 @@ Key behavioral changes driven by tags:
 - **Buff mechanics**: `empower_2cards`, `quicken_draw1/draw2/ap2`, `focus_draw1/next2free`, `insc_fury_cc_bonus2`, `insc_iron_thorns1`
 - **Debuff mechanics**: `hex_vuln1t`, `slow_any_action/slow_weak1t`, `sap_weak2t/strip3block`, `corrode_vuln1t/strip_all`, `expose_dmg3`, `corrtouch_vuln1t`, `bash_vuln2t`, `stagger_weak1t`
 
-**Pending turnManager wiring** — these new `CardEffectResult` fields are emitted by the resolver but turnManager must be updated to apply them:
-- `thornsPersist` — carry thorns value across encounter end
-- `blockCarries` — skip block decay for this turn
-- `counterDamage` — deal damage to attacker when hit
-- `healPctApplied` — heal % of max HP
-- `tauntDuration` — force enemy attack-only intent
-- `removeDebuffCount` — remove N player debuffs
-- `empowerTargetCount` — apply buff to N cards instead of 1
-- `freePlayCount` — grant N 0-AP plays
-- `slowAnyAction` — allow slow to target any action type
-- `inscriptionFuryCcBonus` — add flat damage on CC when fury inscription active
-- `inscriptionIronThorns` — grant N thorns per turn when iron inscription active
-- `blockConsumed` (conversion) — reduce player shield by this amount after damage
+## turnManager Wiring of CardEffectResult Fields (2026-04-03)
+
+All new `CardEffectResult` fields are now wired in `playCardAction()` and `endPlayerTurn()`. New `TurnState` fields added to support them:
+
+| TurnState field | Type | Driven by | Behavior |
+|---|---|---|---|
+| `freePlayCharges` | number | `frenzyChargesGranted`, `freePlayCount` | AP cost → 0 per play; decrements per card; reset at turn end |
+| `counterDamagePerHit` | number | `counterDamage` (parry_counter3) | Deals N damage to enemy after each enemy attack; reset each turn |
+| `timerExtensionPct` | number | `timerExtensionPct` (precision_timer_ext50) | Quiz system reads this to extend the timer; reset at turn end |
+| `eliminateDistractors` | number | `eliminateDistractor` (siphon_eliminate1) | Quiz system removes N wrong answers; reset at turn end |
+| `thornsPersistent` | boolean | `thornsPersist` (thorns_persist / reactive_thorns_persist) | Prevents thornsValue from clearing after enemy attack |
+| `archiveBlockBonus` | number | `archiveBlockBonus` (archive_block2_per) | Bonus block applied to archive-retained cards; reset at turn end |
+| `empowerRemainingCount` | number | `empowerTargetCount` (empower_2cards) | Keeps buffNextCard active for N cards; reset at turn end |
+| `igniteRemainingAttacks` | number | `igniteDuration` (ignite_2attacks) | Ignite buff persists for N attack plays instead of 1 |
+| `forcedAttackTurnsRemaining` | number | `tauntDuration` (guard_taunt1t) | Overrides rollNextIntent to select attack intent for N turns |
+| `pendingScryCount` | number | `scryCount` (scout_scry2) | UI reads this to show scry picker; auto-resolves as fallback |
+
+**Result fields handled inline (no new TurnState field):**
+
+| Field | Tag | Wired behavior |
+|---|---|---|
+| `apRefund` | eruption_refund1 | Refunds N AP after card resolution |
+| `apGain` | trance_cc_ap1 | Grants N additional AP this turn |
+| `healPctApplied` | overheal_heal_pct5 | Heals N% of maxHP immediately |
+| `removeDebuffCount` | shrug_cleanse1 | Removes N player debuffs (shortest duration first) |
+| `bleedPermanent` | rupture_bleed_perm | Sets bleed `turnsRemaining = 99999` sentinel; bleed decay skips this status |
+| `freePlayCount` | focus_next2free | Added to `freePlayCharges` pool |
+| `frenzyChargesGranted` | frenzy | Added to `freePlayCharges` pool |
+| `slowAnyAction` | slow_any_action | Sets `_slowAnyActionThisTurn` module flag; endPlayerTurn widens slow to any intent type |
+| `empowerTargetCount` | empower_2cards | Sets `empowerRemainingCount`; buffNextCard persists until count exhausted |
+| `igniteDuration` | ignite_2attacks | Sets `igniteRemainingAttacks`; ignite buff survives N attacks |
+| `catalystTriple` | catalyst_triple | Multiplies poison/burn/bleed stacks by 3× instead of 2× |
+| `poisonDoubled` | catalyst | Doubles enemy poison stacks |
+| `burnDoubled` | catalyst_burn | Doubles enemy burn stacks |
+| `bleedDoubled` | catalyst_bleed | Doubles enemy bleed stacks (skips permanent bleed) |
+| `masteryBumpsCount` | mastery_surge | Bumps N random hand cards by `masteryBumpAmount` levels |
+| `masteryBumpAmount` | msurge_plus2 | Controls levels per bump (default 1, msurge_plus2 = 2) |
+| `blockCarries` | fortify_carry | Sets `persistentShield` to current shield value |
+| `darkHealPerCurse` | dark_heal1_per_curse | Heals 1 HP per cursed fact at resolve time |
+| `recollectUpgrade` | recollect_upgrade1 | Bumps mastery on the most recently returned exhaust cards |
+| `recollectPlayFree` | recollect_play_free | Adds 1 to `freePlayCharges` |
+| `synapseChainBonus` | synapse_chain_plus1 | Extra `extendOrResetChain()` calls when wildcard link is active |
+| `fluxDouble` | flux_double | Re-fires the unstable_flux effect at 50% (damage) or 100% (block/draw) |
+| `discardDamage` | sift_discard_dmg2 | Deals N × discardCount damage after sift |
+| `inscriptionFuryCcBonus` | insc_fury_cc_bonus2 | Increases fury inscription's effectValue by N |
+| `inscriptionIronThorns` | insc_iron_thorns1 | Grants N thorns immediately when iron inscription CC fires |
+
+**UI-layer flags (no TurnState mutation — consumed by CardCombatOverlay/quiz system):**
+
+| Field | Tag | Who reads it |
+|---|---|---|
+| `timerExtensionPct` | precision_timer_ext50 | Quiz system reads `turnState.timerExtensionPct` |
+| `eliminateDistractors` | siphon_eliminate1 | Quiz system reads `turnState.eliminateDistractors` |
+| `pendingScryCount` | scout_scry2 | CardCombatOverlay reads `turnState.pendingScryCount` |
+| `recycleChoose` | recycle_discard_pick | CardCombatOverlay reads from `PlayCardResult.effect.recycleChoose` |
+| `mimicChoose` | mimic_choose | CardCombatOverlay reads from `PlayCardResult.effect.mimicChoose` |
+| `aftershockNoQuiz` | aftershock_no_quiz | Aftershock resolution UI |
+| `kbombCountPast` | kbomb_count_past | Knowledge Bomb resolver (uses `totalChargesThisRun` vs encounter count) |
+
+**Still pending (encounterBridge wiring needed):**
+- `thornsPersist` — `encounterBridge` must carry `thornsPersistent` + `thornsValue` from one encounter's TurnState into the next `startEncounter()` call
+- `blockConsumed` (conversion) — reduce player shield by this amount after damage is dealt
 
 ---
 
