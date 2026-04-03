@@ -44,7 +44,7 @@ const LANDSCAPE = {
   ENEMY_PANEL_X_START: 0.70,  // Kept for reference; enemy now centers by default
   ENEMY_X_PCT: 0.50,          // Enemy CENTERED in arena by default (spec: center, slides right on quiz)
   ENEMY_Y_PCT: 0.45,          // Vertically centered in arena
-  ENEMY_HP_Y_PCT: 0.155,      // HP bar below enemy name (name at ~6.5vh, bar at ~15.5vh)
+  ENEMY_HP_Y_PCT: 0.14,       // HP bar below enemy name (name at ~6.5vh, bar at ~14vh — moved up slightly)
   PLAYER_HP_BAR_X_PCT: 0.68,  // Left edge (unused — player HP now in Svelte stats bar)
   PLAYER_HP_BAR_TOP: 0.20,
   PLAYER_HP_BAR_BOTTOM: 0.80,
@@ -58,7 +58,7 @@ const LANDSCAPE = {
 
 /** Enemy HP bar dimensions. */
 const ENEMY_HP_BAR_W = 160
-const ENEMY_HP_BAR_H = 12
+const ENEMY_HP_BAR_H = 14
 
 /** Player HP bar dimensions (vertical, right side). */
 const PLAYER_HP_BAR_WIDTH = 16
@@ -325,8 +325,8 @@ export class CombatScene extends Phaser.Scene {
     const defaultX = gameW * LANDSCAPE.ENEMY_X_PCT
     // Quiz panel occupies left ~58%; enemy fits in right 42% centered around 79%
     const targetX = active ? gameW * 0.79 : defaultX
-    // Scale enemy down to 0.55x so it fits within the right 40% without clipping
-    const targetScale = active ? 0.55 : 1.0
+    // Scale enemy down to 0.6875x (0.55 * 1.25) — 25% bigger than before for better visibility
+    const targetScale = active ? 0.6875 : 1.0
 
     // Initialize the override to the current X if not already set
     if (this.quizEnemyXOverride === null) {
@@ -369,7 +369,7 @@ export class CombatScene extends Phaser.Scene {
 
         // Name text: below the scaled sprite
         const scaledHalfHeight = (baseEnemySize * s) / 2
-        const nameOffsetY = gameH * LANDSCAPE.ENEMY_Y_PCT + scaledHalfHeight + Math.round(12 * this.scaleFactor)
+        const nameOffsetY = gameH * LANDSCAPE.ENEMY_Y_PCT + scaledHalfHeight + Math.round(24 * this.scaleFactor)
         this.enemyNameText.setPosition(x, nameOffsetY)
 
         // Move intent text
@@ -2552,6 +2552,10 @@ export class CombatScene extends Phaser.Scene {
 
     const blockPrefix = this.currentEnemyBlock > 0 ? `(${this.currentEnemyBlock}) ` : ''
     this.enemyHpText.setText(`${blockPrefix}${this.currentEnemyHP} / ${this.currentEnemyMaxHP}`)
+    // Scale HP text font to fit inside the bar during quiz mode
+    const hpFontSize = Math.round(10 * this.scaleFactor * barScale)
+    this.enemyHpText.setFontSize(hpFontSize)
+    this.enemyHpText.setStyle({ fixedWidth: scaledW })
   }
 
   /** Refresh enemy block bar overlay and indicators. */
