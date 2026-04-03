@@ -167,6 +167,32 @@ The reward screen (`CardRewardScreen.svelte`) skips the heal UI step when `healA
 - **Stacks additively** — multiple thorns plays in one encounter add to `turnState.thornsValue` (changed 2026-04-01)
 - **Persists for entire encounter** — no longer resets after each enemy attack; resets only at `startEncounter()` (changed 2026-04-01)
 - `aegis_stone` relic: grants `+2 thorns` at end of turn if block ≥ `RELIC_AEGIS_STONE_MAX_CARRY` — also additive
+- `thorns_persist` tag (thorns L5) and `reactive_thorns_persist` tag (reactive_shield L5): sets `result.thornsPersist = true`; turnManager must carry thorns across encounters when this flag is set.
+
+---
+
+## Tag-Based Mastery Features in cardEffectResolver (2026-04-03)
+
+`resolveCardEffect()` now checks cumulative mastery tags via `hasTag('tag_name')`. Tags are set in `MASTERY_STAT_TABLES` and read via `getMasteryStats().tags`.
+
+Key behavioral changes driven by tags:
+- **Shield mechanics**: `fortify_carry` (blockCarries), `brace_exceed2/brace_draw1`, `overheal_heal2/pct5`, `parry_counter3`, `reinforce_draw1`, `shrug_cleanse1`, `guard_taunt1t`, `absorb_draw2cc/absorb_heal1cc`, `reactive_thorns_persist`, `bulwark_no_exhaust`, `conversion_bonus_50pct/keep_block`
+- **Buff mechanics**: `empower_2cards`, `quicken_draw1/draw2/ap2`, `focus_draw1/next2free`, `insc_fury_cc_bonus2`, `insc_iron_thorns1`
+- **Debuff mechanics**: `hex_vuln1t`, `slow_any_action/slow_weak1t`, `sap_weak2t/strip3block`, `corrode_vuln1t/strip_all`, `expose_dmg3`, `corrtouch_vuln1t`, `bash_vuln2t`, `stagger_weak1t`
+
+**Pending turnManager wiring** — these new `CardEffectResult` fields are emitted by the resolver but turnManager must be updated to apply them:
+- `thornsPersist` — carry thorns value across encounter end
+- `blockCarries` — skip block decay for this turn
+- `counterDamage` — deal damage to attacker when hit
+- `healPctApplied` — heal % of max HP
+- `tauntDuration` — force enemy attack-only intent
+- `removeDebuffCount` — remove N player debuffs
+- `empowerTargetCount` — apply buff to N cards instead of 1
+- `freePlayCount` — grant N 0-AP plays
+- `slowAnyAction` — allow slow to target any action type
+- `inscriptionFuryCcBonus` — add flat damage on CC when fury inscription active
+- `inscriptionIronThorns` — grant N thorns per turn when iron inscription active
+- `blockConsumed` (conversion) — reduce player shield by this amount after damage
 
 ---
 

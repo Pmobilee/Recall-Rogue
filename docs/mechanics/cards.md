@@ -1,7 +1,7 @@
 # Card System Mechanics
 
 > **Purpose:** Card entity, card types, tier system, damage formula, mastery system, and card creation pipeline.
-> **Last verified:** 2026-04-03
+> **Last verified:** 2026-04-03 (tag system wired)
 > **Source files:** `src/data/card-types.ts`, `src/data/mechanics.ts`, `src/services/cardFactory.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/damagePreviewService.ts`, `src/services/catchUpMasteryService.ts`, `src/data/balance.ts`
 
 > **See also:** [`card-mechanics.md`](card-mechanics.md) — Complete table of all 50+ mechanics (attack, shield, buff, debuff, utility, wild).
@@ -266,6 +266,50 @@ Several mechanics have designed creative milestones at key mastery levels that c
 | `conjure` | L2 | Upgrades to **uncommon** cards |
 | `conjure` | L3 | Pick **2 cards** |
 | `conjure` | L5 | Pick 2 **rare** cards |
+| `multi_hit` | L3 | +1 **Bleed** per hit (`multi_bleed1` tag) |
+| `multi_hit` | L5 | +1 **Bleed** per hit (`multi_bleed1` tag) |
+| `piercing` | L3 | Strips **3 enemy block** before damage (`pierce_strip3` tag) |
+| `piercing` | L5 | Strips 3 block + **Vulnerable 1t** (`pierce_strip3`, `pierce_vuln1` tags) |
+| `lifetap` | L2 | Heal rises from **20% → 30%** of damage (`lifetap_heal30` tag) |
+| `bash` | L3 | Vuln extended by **+1 turn** (`bash_vuln2t` tag) |
+| `bash` | L5 | Vuln +1 turn AND **Weakness 1t** (`bash_vuln2t`, `bash_weak1t` tags) |
+| `rupture` | L5 | Applied Bleed **never decays** (`rupture_bleed_perm` tag) |
+| `lacerate` | L5 | Also applies **Vulnerable 1t** (`lacerate_vuln1t` tag) |
+| `kindle` | L5 | Burn triggers **TWICE** per play (`kindle_double_trigger` tag) |
+| `overcharge` | L3 | Encounter scaling **doubled** (`overcharge_bonus_x2` tag) |
+| `overcharge` | L5 | Scaling doubled + **draw 1** (`overcharge_bonus_x2`, `overcharge_draw1` tags) |
+| `twin_strike` | L5 | Each hit applies **2 Burn** (`twin_burn2` tag) |
+| `precision_strike` | L3 | +**50% quiz timer** extension (`precision_timer_ext50` tag) |
+| `precision_strike` | L5 | +50% timer + **difficulty bonus ×2** (`precision_timer_ext50`, `precision_bonus_x2` tags) |
+| `riposte` | L5 | Also draws **1 card** (`riposte_draw1` tag) |
+| `smite` | L3 | Aura scaling **doubled** (`smite_aura_x2` tag) |
+| `smite` | L5 | Aura scaling doubled (persists at L5) |
+| `feedback_loop` | L3 | CW Aura crash **halved** (`feedback_crash_half` tag) |
+| `feedback_loop` | L5 | CW crash halved + CW deals **50% QP damage** instead of 0 (`feedback_crash_half`, `feedback_cw_nonzero` tags) |
+| `recall` | L3 | On review CC, also **heals 3 HP** (`recall_heal3` tag) |
+| `recall` | L5 | Heal 3 HP + **draw 1** on review CC (`recall_heal3`, `recall_draw1` tags) |
+| `eruption` | L5 | **Refunds 1 AP** after play (`eruption_refund1` tag) |
+| `volatile_slash` | L5 | **No longer exhausts** on CC (`volatile_no_exhaust` tag) |
+| `chain_lightning` | L3 | Minimum chain count = **2** (`chain_lightning_min2` tag) |
+| `chain_lightning` | L5 | Min chain = 2 (persists at L5) |
+
+### Tag System — How Tags Work in the Resolver
+
+Tags in `MasteryLevelStats.tags` are cumulative — a mechanic at L5 inherits all tags from lower levels that define them.
+
+In `cardEffectResolver.ts`, the resolver reads tags via:
+```typescript
+const activeTags = _masteryStats?.tags ?? [];
+const hasTag = (tag: string) => activeTags.includes(tag);
+```
+
+Each case uses `hasTag('tag_name')` to gate behavior. New result fields added to `CardEffectResult` for tags:
+
+| Field | Type | Set by tag | Purpose |
+|-------|------|-----------|---------|
+| `bleedPermanent` | `boolean?` | `rupture_bleed_perm` | Signals turnManager to skip bleed decay for this apply |
+| `timerExtensionPct` | `number?` | `precision_timer_ext50` | Quiz system extends timer by this percent |
+| `apRefund` | `number?` | `eruption_refund1` | AP to refund after card resolves |
 
 ### Catch-Up Mastery (New Card Acquisition)
 
