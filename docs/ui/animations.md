@@ -1,7 +1,7 @@
 # Animation Systems
 
 > **Purpose:** Documents all three animation layers (CSS transitions, Web Animations API, Phaser tweens), their conventions, and when to use each. Reference when adding any animated element.
-> **Last verified:** 2026-04-02
+> **Last verified:** 2026-04-03
 > **Source files:** `src/ui/utils/mechanicAnimations.ts`, `src/ui/utils/roomPopIn.ts`, `src/ui/utils/cardFrameV2.ts`, `src/ui/components/CardHand.svelte`, `src/ui/components/ParallaxTransition.svelte`, `src/ui/components/DamageNumber.svelte`, `src/game/systems/ScreenShakeSystem.ts`, `src/data/petAnimations.ts`, `src/data/petWaypoints.ts`, `src/ui/effects/petBehavior.ts`
 
 ---
@@ -98,11 +98,13 @@ animation: upgradeFloat 1.5s ease-in-out infinite;
 
 When a card matches the active chain color and no card is selected, the chain color pill div gets the `pill-chain-active` class, triggering a CSS `chainPillPulse` idle loop:
 
-- Duration: 
-- 0%/100%: , no box-shadow
-- 50%: , 
+- Duration: 1.5s, `ease-in-out`, `infinite`
+- 0%/100%: `scale(1)`, no box-shadow
+- 50%: `scale(1.35)`, box-shadow `0 0 calc(8px * var(--layout-scale, 1)) var(--pill-color), 0 0 calc(16px * var(--layout-scale, 1)) var(--pill-color)`
 
-The chain color is passed as  CSS variable on the pill element (inline style) so the box-shadow uses the correct chain color.
+The chain color is passed as `--pill-color` CSS variable on the pill element (inline style) so the box-shadow uses the correct chain color.
+
+The `.card--active-chain` class has no visual styling of its own — chain indication is handled entirely by the pill pulse. This replaced an earlier card-level outline approach.
 
 Suppressed conditions: card is selected, any other card is selected, card is being dragged.
 
