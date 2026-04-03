@@ -54,6 +54,18 @@ export class CombatAtmosphereSystem {
   /** Base frequency stored at start() for front emitter so chain mods can restore it. */
   private baseFrontFrequency: number = 0
 
+  // ── Knowledge-reactive streak state (Spec 05) ────────────────────────────
+  /**
+   * Saturation modifier applied on top of the base atmosphere saturation.
+   * Range: −0.10 (cold) to +0.10 (warm). Set by setStreakWarm/setStreakCold,
+   * reset by resetStreak. Applied via the CombatScene color-matrix callback.
+   */
+  private _streakSaturationModifier: number = 0
+  /** Whether the warm streak is currently active. */
+  private _streakWarmActive: boolean = false
+  /** Whether the cold streak is currently active. */
+  private _streakColdActive: boolean = false
+
   constructor(scene: Phaser.Scene) {
     this.scene = scene
     this.reduceMotion = isReduceMotionEnabled()
@@ -64,6 +76,14 @@ export class CombatAtmosphereSystem {
    */
   public getConfig(): AtmosphereConfig | null {
     return this.config
+  }
+
+  /**
+   * Returns the current streak-driven saturation modifier (−0.10 to +0.10).
+   * Read by CombatScene to apply the offset on top of the base color-matrix saturation.
+   */
+  public getStreakSaturationModifier(): number {
+    return this._streakSaturationModifier
   }
 
   /**
@@ -131,6 +151,167 @@ export class CombatAtmosphereSystem {
       this.bgLightPool = null
       this.createBackgroundLightPool()
     }
+  }
+
+  // ── Knowledge-reactive methods (Spec 05) ─────────────────────────────────
+
+  /**
+   * Brief warm environmental pulse for a correct answer.
+   *
+   * - On mid/flagship: temporarily lowers gravityY on both emitters by 30 units for
+   *   durationMs, causing ambient particles to visibly accelerate upward.
+   * - On low-end or reduce-motion: skips particle velocity changes (no emitter manipulation).
+   *
+   * @param durationMs Duration of the upward particle boost in milliseconds (spec: 300ms)
+   */
+  public pulseWarm(durationMs: number): void {
+    if (!this.isActive) return
+    if (this.reduceMotion || getDeviceTier() === 'low-end') return
+
+    // Temporarily lower gravityY on both emitters to boost particles upward
+    const GRAVITY_BOOST = 30
+    if (this.backEmitter) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const origGravity: number = (this.backEmitter as any).gravityY ?? 0
+      this.backEmitter.setParticleGravity(0, origGravity - GRAVITY_BOOST)
+      this.scene.time.delayedCall(durationMs, () => {
+        if (this.backEmitter) this.backEmitter.setParticleGravity(0, origGravity)
+      })
+    }
+    if (this.frontEmitter) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const origGravity: number = (this.frontEmitter as any).gravityY ?? 0
+      this.frontEmitter.setParticleGravity(0, origGravity - GRAVITY_BOOST)
+      this.scene.time.delayedCall(durationMs, () => {
+        if (this.frontEmitter) this.frontEmitter.setParticleGravity(0, origGravity)
+      })
+    }
+  }
+
+  /**
+   * Brief cold environmental flicker for a wrong answer.
+   *
+   * - On mid/flagship: adds a random velocity impulse (+50 speed in random direction) to
+   *   both emitters for 200ms to scatter particles, and darkens the fog overlay for 300ms.
+   * - On low-end or reduce-motion: skips particle velocity changes.
+   *
+   * @param durationMs Duration of the cold effect in milliseconds (spec: 300ms)
+   */
+  public pulseCold(durationMs: number): void {
+    if (!this.isActive) return
+
+    // Fog alpha nudge — acceptable under reduce-motion (brightness change, not motion)
+    if (this.fogGfx) {
+      const origAlpha = this.fogGfx.alpha
+      const darkAlpha = Math.min(1, origAlpha + 0.05)
+      this.fogGfx.setAlpha(darkAlpha)
+      this.scene.time.delayedCall(durationMs, () => {
+        if (this.fogGfx) this.fogGfx.setAlpha(origAlpha)
+      })
+    }
+
+    if (this.reduceMotion || getDeviceTier() === 'low-end') return
+
+    // Particle scatter: add random velocity impulse to both emitters for 200ms
+    const SCATTER_DURATION = 200
+    const SCATTER_SPEED = 50
+    const angle = Math.random() * Math.PI * 2
+    const vx = Math.cos(angle) * SCATTER_SPEED
+    const vy = Math.sin(angle) * SCATTER_SPEED
+
+    if (this.backEmitter) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const origSpeedX = (this.backEmitter as any).speedX
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const origSpeedY = (this.backEmitter as any).speedY
+      this.backEmitter.setParticleSpeed(
+        (typeof origSpeedX === 'object' ? origSpeedX?.min ?? -10 : origSpeedX) + vx,
+        (typeof origSpeedY === 'object' ? origSpeedY?.min ?? -8 : origSpeedY) + vy,
+      )
+      this.scene.time.delayedCall(SCATTER_DURATION, () => {
+        if (this.backEmitter) {
+          const minX = typeof origSpeedX === 'object' ? origSpeedX?.min ?? -10 : origSpeedX
+          const minY = typeof origSpeedY === 'object' ? origSpeedY?.min ?? -8 : origSpeedY
+          this.backEmitter.setParticleSpeed(minX, minY)
+        }
+      })
+    }
+    if (this.frontEmitter) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const origSpeedX = (this.frontEmitter as any).speedX
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const origSpeedY = (this.frontEmitter as any).speedY
+      this.frontEmitter.setParticleSpeed(
+        (typeof origSpeedX === 'object' ? origSpeedX?.min ?? -12 : origSpeedX) + vx,
+        (typeof origSpeedY === 'object' ? origSpeedY?.min ?? -6 : origSpeedY) + vy,
+      )
+      this.scene.time.delayedCall(SCATTER_DURATION, () => {
+        if (this.frontEmitter) {
+          const minX = typeof origSpeedX === 'object' ? origSpeedX?.min ?? -12 : origSpeedX
+          const minY = typeof origSpeedY === 'object' ? origSpeedY?.min ?? -6 : origSpeedY
+          this.frontEmitter.setParticleSpeed(minX, minY)
+        }
+      })
+    }
+  }
+
+  /**
+   * Enable or disable the persistent warm ambient shift for 3+ consecutive correct answers.
+   *
+   * When active: shifts PostFX saturation +5% (clamped at +10% total modifier).
+   * When inactive: resets saturation modifier to 0 (or applies cold modifier if cold is active).
+   * Mutually exclusive with cold — activating warm cancels cold.
+   *
+   * @param active True to enable warm shift, false to clear it.
+   * @param onSaturationChange Callback invoked with the new saturation offset so CombatScene
+   *   can apply it to the camera color-matrix. Receives a value in the range −0.10 to +0.10.
+   */
+  public setStreakWarm(active: boolean, onSaturationChange?: (offset: number) => void): void {
+    this._streakWarmActive = active
+    if (active) {
+      this._streakColdActive = false
+      this._streakSaturationModifier = Math.min(0.10, this._streakSaturationModifier + 0.05)
+    } else {
+      this._streakSaturationModifier = 0
+    }
+    onSaturationChange?.(this._streakSaturationModifier)
+  }
+
+  /**
+   * Enable or disable the persistent cold ambient shift for 3+ consecutive wrong answers.
+   *
+   * When active: shifts PostFX saturation −5% (clamped at −10% total modifier).
+   * When inactive: resets saturation modifier to 0 (or applies warm modifier if warm is active).
+   * Mutually exclusive with warm — activating cold cancels warm.
+   *
+   * @param active True to enable cold shift, false to clear it.
+   * @param onSaturationChange Callback invoked with the new saturation offset so CombatScene
+   *   can apply it to the camera color-matrix.
+   */
+  public setStreakCold(active: boolean, onSaturationChange?: (offset: number) => void): void {
+    this._streakColdActive = active
+    if (active) {
+      this._streakWarmActive = false
+      this._streakSaturationModifier = Math.max(-0.10, this._streakSaturationModifier - 0.05)
+    } else {
+      this._streakSaturationModifier = 0
+    }
+    onSaturationChange?.(this._streakSaturationModifier)
+  }
+
+  /**
+   * Reset all knowledge-streak state.
+   * Call at encounter start (from CombatScene.setEnemy()) to ensure clean state across
+   * room transitions. Clears both warm and cold streaks and the saturation modifier.
+   *
+   * @param onSaturationChange Optional callback invoked with offset=0 so CombatScene
+   *   can revert the color-matrix to baseline.
+   */
+  public resetStreak(onSaturationChange?: (offset: number) => void): void {
+    this._streakWarmActive = false
+    this._streakColdActive = false
+    this._streakSaturationModifier = 0
+    onSaturationChange?.(0)
   }
 
   /**

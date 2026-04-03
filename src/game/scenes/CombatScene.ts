@@ -4,7 +4,7 @@ import { getDeviceTier } from '../../services/deviceTierService'
 import { EnemySpriteSystem } from '../systems/EnemySpriteSystem'
 import { CombatAtmosphereSystem } from '../systems/CombatAtmosphereSystem'
 import { DepthLightingSystem } from '../systems/DepthLightingSystem'
-import { getAtmosphereConfig, type AtmosphereConfig } from '../../data/roomAtmosphere'
+import { getAtmosphereConfig, getFloorTheme, FLOOR_THEME_COLORS, type AtmosphereConfig } from '../../data/roomAtmosphere'
 import { StatusEffectVisualSystem } from '../systems/StatusEffectVisualSystem'
 import { WeaponAnimationSystem } from '../systems/WeaponAnimationSystem'
 import { ScreenShakeSystem } from '../systems/ScreenShakeSystem'
@@ -15,6 +15,7 @@ import { BASE_WIDTH, LANDSCAPE_BASE_WIDTH } from '../../data/layout'
 import { get } from 'svelte/store'
 import { layoutMode, type LayoutMode } from '../../stores/layoutStore'
 import { getChainAtmosphereModifiers, getChainColor } from '../../services/chainVisuals'
+import { juiceManager } from '../../services/juiceManager'
 
 /** Shared font stack for all Phaser text objects in CombatScene. */
 const GAME_FONT = '"Lora", "Georgia", serif'
@@ -243,6 +244,14 @@ export class CombatScene extends Phaser.Scene {
   // ── Atmosphere color grading ──────────────────────
   private _colorMatrixFx: Phaser.FX.ColorMatrix | null = null
   private atmosphereConfig: AtmosphereConfig | null = null
+
+  // ── Knowledge-reactive streak state (Spec 05) ────────────
+  /** Consecutive correct answers this encounter. Resets on wrong. */
+  private knowledgeStreakCorrect: number = 0
+  /** Consecutive wrong answers this encounter. Resets on correct. */
+  private knowledgeStreakWrong: number = 0
+  /** Current saturation offset applied on top of atmosphere base (−0.10 to +0.10). */
+  private knowledgeSaturationOffset: number = 0
 
   // ── Stored layout values ─────────────────────────────────
   private displayH = 0
@@ -889,6 +898,12 @@ export class CombatScene extends Phaser.Scene {
     // ── Weapon animation system ──────────────────────────────
     this.weaponAnimations.createSprites(this.displayH)
 
+    // ── Knowledge-reactive atmosphere callbacks (Spec 05) ──
+    juiceManager.setCallbacks({
+      onAtmosphereWarm: (cardPlayX, cardPlayY) => this.onCorrectAnswer(cardPlayX, cardPlayY),
+      onAtmosphereCold: () => this.onWrongAnswer(),
+    })
+
     // ── Scene lifecycle events ────────────────────────────
     this.events.on('shutdown', this.onShutdown, this)
     this.events.on('sleep', this.onShutdown, this)
@@ -952,6 +967,8 @@ export class CombatScene extends Phaser.Scene {
     animArchetype?: AnimArchetype,
   ): void {
     if (!this.sceneReady) return
+    // Reset knowledge streak for new encounter (Spec 05)
+    this.resetKnowledgeStreak()
     this.currentEnemyHP = hp
     this.currentEnemyMaxHP = maxHP
     if (hp <= 0 || maxHP <= 0) {
@@ -1462,6 +1479,53 @@ export class CombatScene extends Phaser.Scene {
     const scaledCount = Math.max(1, Math.round(count * this.effectScale))
     this.particles.setParticleTint(tint)
     this.particles.explode(scaledCount, x, y)
+  }
+
+  /**
+   * Floor descent ceremony — Phaser-side effects fired when the player descends to a new floor.
+   * Spawns a debris particle cascade across the top of the viewport and schedules a landing
+   * rumble shake at T+2800ms (just before the transition settles). Also dispatches the
+   * 'rr:floor-descent' DOM event so Svelte components (ParallaxTransition, title card) can
+   * activate their descent-specific behavior.
+   *
+   * No-op when isTurboMode() is active. Debris and shake are skipped under reduceMotion.
+   *
+   * @param floor  The NEW floor number (already incremented by advanceFloor)
+   * @param isBoss Whether the destination is a boss floor (extends rumble delay to 3800ms)
+   */
+  playDescentEffects(floor: number, isBoss: boolean): void {
+    if (isTurboMode()) return
+
+    // Dispatch DOM event so Svelte (ParallaxTransition, title card) picks it up
+    const theme = getFloorTheme(floor)
+    const glowColor = FLOOR_THEME_COLORS[theme]
+    window.dispatchEvent(new CustomEvent('rr:floor-descent', {
+      detail: { floor, theme, isBoss, glowColor },
+    }))
+
+    if (this.reduceMotion) return
+
+    // Debris cascade — small gray/brown particles falling from the top of the viewport
+    const w = this.scale.width
+    const h = this.scale.height
+    const isLowEnd = getDeviceTier() === 'low-end'
+    const debrisCount = isLowEnd ? 10 : 25
+
+    for (let i = 0; i < debrisCount; i++) {
+      const px = Math.random() * w
+      const py = Math.random() * h * 0.3  // spawn in top 30%
+      // Pick a gray/brown tint for stone/earth debris
+      const tints = [0x888888, 0x776655, 0x999988, 0x665544]
+      const tint = tints[Math.floor(Math.random() * tints.length)]
+      this.burstParticles(1, px, py, tint)
+    }
+
+    // Landing rumble — heavy shake fires just before transition settles
+    const rumbleDelay = isBoss ? 3800 : 2800
+    this.time.delayedCall(rumbleDelay, () => {
+      if (!this.scene?.isActive('CombatScene')) return
+      this.screenShake?.trigger('heavy')
+    })
   }
 
   /** Play a gold-tinted screen flash for perfect turn celebration. */
@@ -2006,6 +2070,131 @@ export class CombatScene extends Phaser.Scene {
     this.onChainUpdated(0, undefined)
   }
 
+  // ── Knowledge-reactive feedback (Spec 05) ─────────────────────────────────
+
+  /**
+   * Called after a correct quiz answer. Fires a brief warm environmental pulse:
+   * warm light at card play area, upward particle acceleration, subtle vignette ease.
+   * After 3+ consecutive correct answers, updates the persistent saturation offset.
+   *
+   * Fires at T+0ms in parallel with juiceManager's existing correct-answer sequence.
+   * No-op if turbo mode is active.
+   *
+   * @param cardPlayX Screen x-coordinate of the card play area.
+   * @param cardPlayY Screen y-coordinate of the card play area.
+   */
+  public onCorrectAnswer(cardPlayX: number, cardPlayY: number): void {
+    if (isTurboMode()) return
+
+    this.knowledgeStreakCorrect++
+    this.knowledgeStreakWrong = 0
+
+    if (!this.reduceMotion) {
+      // Warm radial light pulse from card play area
+      this.depthLightingSystem.pulseLight(0xFFEECC, 0.6, 400, cardPlayX, cardPlayY)
+
+      // Upward particle boost in ambient system
+      this.atmosphereSystem.pulseWarm(300)
+
+      // Subtle warm edge glow
+      this.pulseEdgeGlow(0xFFEEAA, 0.06, 500)
+    }
+
+    // Update persistent saturation (runs even under reduce-motion — color shift not motion)
+    this.updateKnowledgeSaturation()
+  }
+
+  /**
+   * Called after a wrong quiz answer. Fires a brief cold environmental flicker:
+   * vignette darkens, particles scatter, existing point light flickers.
+   * After 3+ consecutive wrong answers, updates the persistent saturation offset.
+   *
+   * Fires at T+0ms in parallel with juiceManager's existing wrong-answer sequence.
+   * No-op if turbo mode is active.
+   */
+  public onWrongAnswer(): void {
+    if (isTurboMode()) return
+
+    this.knowledgeStreakWrong++
+    this.knowledgeStreakCorrect = 0
+
+    // Cold fog darken and particle scatter
+    this.atmosphereSystem.pulseCold(300)
+
+    if (!this.reduceMotion) {
+      // Cold vignette flash
+      this.pulseFlash(0x4488CC, 0.06, 300)
+
+      // Flicker one existing point light
+      this.depthLightingSystem.flickerOnePointLight(300)
+    }
+
+    // Update persistent saturation
+    this.updateKnowledgeSaturation()
+  }
+
+  /**
+   * Reset all knowledge-streak visual state.
+   * Called at the start of each new encounter (from setEnemy) and in onShutdown.
+   */
+  public resetKnowledgeStreak(): void {
+    this.knowledgeStreakCorrect = 0
+    this.knowledgeStreakWrong = 0
+    this.knowledgeSaturationOffset = 0
+    // Clear any warm/cold streak in the atmosphere system and reset color matrix
+    this.atmosphereSystem.resetStreak((offset) => this.applyStreakSaturation(offset))
+    juiceManager.resetStreak()
+  }
+
+  /**
+   * Update the persistent saturation offset based on current knowledge streaks.
+   * Warm streaks (3+ correct) shift saturation +5% per level beyond 2, capped at +10%.
+   * Cold streaks (3+ wrong) shift saturation −5% per level, capped at −10%.
+   */
+  private updateKnowledgeSaturation(): void {
+    const STREAK_THRESHOLD = 3
+    const SAT_PER_LEVEL = 0.05
+    const SAT_MAX = 0.10
+
+    let targetOffset = 0
+    if (this.knowledgeStreakCorrect >= STREAK_THRESHOLD) {
+      targetOffset = Math.min(SAT_MAX, (this.knowledgeStreakCorrect - 2) * SAT_PER_LEVEL)
+      // Activate warm streak in atmosphere system when threshold first crossed
+      if (this.knowledgeStreakCorrect === STREAK_THRESHOLD) {
+        this.atmosphereSystem.setStreakWarm(true, (offset) => this.applyStreakSaturation(offset))
+      }
+    } else if (this.knowledgeStreakWrong >= STREAK_THRESHOLD) {
+      targetOffset = Math.max(-SAT_MAX, -(this.knowledgeStreakWrong - 2) * SAT_PER_LEVEL)
+      // Activate cold streak in atmosphere system when threshold first crossed
+      if (this.knowledgeStreakWrong === STREAK_THRESHOLD) {
+        this.atmosphereSystem.setStreakCold(true, (offset) => this.applyStreakSaturation(offset))
+      }
+    } else if (this.knowledgeStreakCorrect < STREAK_THRESHOLD && this.knowledgeStreakWrong < STREAK_THRESHOLD) {
+      // Streak broken before threshold — clear any active streak
+      if (this.knowledgeSaturationOffset !== 0) {
+        this.atmosphereSystem.resetStreak((offset) => this.applyStreakSaturation(offset))
+        return
+      }
+    }
+
+    if (targetOffset !== this.knowledgeSaturationOffset) {
+      this.knowledgeSaturationOffset = targetOffset
+      this.applyStreakSaturation(targetOffset)
+    }
+  }
+
+  /**
+   * Apply a saturation offset on top of the base atmosphere color matrix.
+   * Called by atmosphere system streak callbacks.
+   * @param offset Saturation delta in the range −0.10 to +0.10.
+   */
+  private applyStreakSaturation(offset: number): void {
+    if (!this._colorMatrixFx) return
+    const baseSat = this.atmosphereConfig?.cameraColorMatrix?.saturation ?? 1.0
+    // Phaser ColorMatrix.saturate() parameter: 0 = grayscale, 1 = normal, >1 = oversaturated
+    this._colorMatrixFx.saturate(baseSat + offset)
+  }
+
   // ═════════════════════════════════════════════════════════
   // Private helpers
   // ═════════════════════════════════════════════════════════
@@ -2403,6 +2592,10 @@ export class CombatScene extends Phaser.Scene {
     if (this.chainVignetteOverlay) { this.chainVignetteOverlay.destroy(); this.chainVignetteOverlay = null }
     if (this.chainTintOverlay) { this.chainTintOverlay.destroy(); this.chainTintOverlay = null }
     this.currentChainCount = 0
+    // Reset knowledge streak state (Spec 05)
+    this.knowledgeStreakCorrect = 0
+    this.knowledgeStreakWrong = 0
+    this.knowledgeSaturationOffset = 0
     if (this._turnOverlay) {
       this._turnOverlay.destroy()
       this._turnOverlay = null
@@ -2438,6 +2631,13 @@ export class CombatScene extends Phaser.Scene {
 
     // Recreate weapon sprites destroyed by onShutdown — base PNG textures survive preload
     this.weaponAnimations.createSprites(this.displayH)
+
+    // Re-register knowledge-reactive atmosphere callbacks (Spec 05)
+    // CardCombatOverlay's clearCallbacks() may have wiped these on sleep.
+    juiceManager.setCallbacks({
+      onAtmosphereWarm: (cardPlayX, cardPlayY) => this.onCorrectAnswer(cardPlayX, cardPlayY),
+      onAtmosphereCold: () => this.onWrongAnswer(),
+    })
 
     this.previousPlayerHpRatio = this.currentPlayerMaxHP > 0
       ? this.currentPlayerHP / this.currentPlayerMaxHP

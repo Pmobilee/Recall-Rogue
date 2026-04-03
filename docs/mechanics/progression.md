@@ -189,3 +189,58 @@ One card per visit is on sale: `getSalePrice` = 50% off (applied after floor dis
 - **Card removal**: `removalPrice(count) = SHOP_REMOVAL_BASE_PRICE (50) + count × 25` — escalates each removal
 - **Card transform**: `transformPrice(count) = 35 + count × 25` — escalates each transform
 - **Ascension level 5 buff**: one free card removal per shop visit
+
+---
+
+## Floor Descent Ceremony (Spec 04)
+
+When advancing floors, a 2–3s descent ceremony distinguishes floor transitions from lateral room transitions.
+
+### Trigger Points
+
+Two call sites in `src/services/gameFlowController.ts` fire the ceremony immediately after `advanceFloor()`:
+1. **Encounter flow** — after the final encounter on a floor, before routing to the dungeon map.
+2. **Delve flow** — when the player confirms "Delve Deeper" from the retreat/delve screen.
+
+Both sites call `getCombatScene()?.playDescentEffects(floor, isBoss)`.
+
+### Game-Logic Side (`CombatScene.playDescentEffects`)
+
+**File:** `src/game/scenes/CombatScene.ts`
+
+| Effect | Timing | Reduce-motion | Turbo-mode |
+|--------|---------|---------------|------------|
+| DOM event `rr:floor-descent` | T+0ms | fired (no skip) | skipped entirely |
+| Debris particle cascade | T+0ms | skipped | skipped entirely |
+| Landing rumble (`'heavy'` shake) | T+2800ms (boss: T+3800ms) | skipped | skipped entirely |
+
+**Debris cascade:** 25 small gray/brown particles (10 on low-end devices) spawned via `burstParticles()` scattered across the top 30% of the viewport. Tints: `0x888888`, `0x776655`, `0x999988`, `0x665544`.
+
+**Landing rumble:** `screenShake.trigger('heavy')` — 8px amplitude, 400ms, 18Hz. Scheduled via `scene.time.delayedCall`. A scene-alive guard prevents firing after scene teardown.
+
+**DOM event `rr:floor-descent`:** Dispatched with `{ floor, theme, isBoss, glowColor }`. Svelte components listen to this event to activate ParallaxTransition vertical emphasis, color grading interpolation, and the floor title card overlay (implemented by ui-agent).
+
+### Data Exports (`src/data/roomAtmosphere.ts`)
+
+Two new exports support the ceremony:
+
+```typescript
+FLOOR_THEME_COLORS: Record<FloorTheme, number>
+// dust: 0xCC9944, embers: 0xFF6622, ice: 0x88CCFF, arcane: 0xAA44FF, void: 0x220033
+
+FLOOR_SUBTITLES: Record<FloorTheme, string>
+// dust: 'the shallow depths', embers: 'the ember reaches', ...
+```
+
+These are consumed by `ParallaxTransition.svelte` (ui-agent) for color interpolation and the title card glow/subtitle.
+
+### UI Side (pending ui-agent)
+
+The following Svelte/WebGL changes are flagged for ui-agent:
+- `ParallaxTransition.svelte` — `isFloorDescent` prop, vertical bob 2×, color temp interpolation
+- Floor title card — "Floor N" overlay with theme subtitle, fade-in at T+1200ms
+- Listen for `rr:floor-descent` event to activate descent mode
+
+### Boss Floor Variant
+
+Boss floors (floors 3, 6, 9, 12, 15, 18, 21, 24 — from `SEGMENT_BOSS_FLOORS`) use a 4000ms transition duration on the Svelte side and a T+3800ms rumble on the Phaser side. `run.floor.isBossFloor` is read after `advanceFloor()` to detect boss floors.

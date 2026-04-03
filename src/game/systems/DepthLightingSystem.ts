@@ -378,6 +378,120 @@ export class DepthLightingSystem {
     })
   }
 
+  // ── Knowledge-reactive light pulse (Spec 05) ──────────────────────────────
+
+  /**
+   * One-shot radial light pulse at a given screen position.
+   *
+   * Creates a temporary Graphics circle with ADD blend mode, tweens its alpha from
+   * 0 → peakAlpha → 0 over durationMs using quadratic easing, then destroys it.
+   * This is a fire-and-forget call — it does not affect the persistent point light
+   * catalog in {@link lightSourceManifest.ts}.
+   *
+   * No-op on low-end devices (follows the same tier gating as other dynamic effects).
+   *
+   * @param color     Packed hex color for the glow (e.g. `0xFFEECC` for warm white-gold)
+   * @param intensity Peak alpha at the pulse apex (0–1). Spec: 0.6 for correct answer.
+   * @param durationMs Total duration from 0 → peak → 0 in milliseconds. Spec: 400ms.
+   * @param x         Screen x-coordinate for the pulse origin.
+   * @param y         Screen y-coordinate for the pulse origin.
+   */
+  public pulseLight(
+    color: number,
+    intensity: number,
+    durationMs: number,
+    x: number,
+    y: number,
+  ): void {
+    if (!this.enabled) return
+
+    const GLOW_RADIUS = 120
+
+    // Extract RGB components from the packed color
+    const r = (color >> 16) & 0xff
+    const g = (color >> 8) & 0xff
+    const b = color & 0xff
+
+    // Create a soft radial glow circle using Graphics
+    const gfx = this.scene.add.graphics()
+    gfx.setDepth(997)  // Above most VFX but below damage numbers (998+)
+    gfx.setBlendMode(Phaser.BlendModes.ADD)
+    gfx.setAlpha(0)
+    gfx.setPosition(x, y)
+
+    // Draw three nested circles for a soft falloff (no hard edge)
+    gfx.fillStyle(Phaser.Display.Color.GetColor(r, g, b), 0.6)
+    gfx.fillCircle(0, 0, GLOW_RADIUS)
+    gfx.fillStyle(Phaser.Display.Color.GetColor(r, g, b), 0.8)
+    gfx.fillCircle(0, 0, Math.round(GLOW_RADIUS * 0.6))
+    gfx.fillStyle(Phaser.Display.Color.GetColor(r, g, b), 1.0)
+    gfx.fillCircle(0, 0, Math.round(GLOW_RADIUS * 0.3))
+
+    // Rise: 0 → peakAlpha over first 40% of duration (quadratic ease-out)
+    // Fall: peakAlpha → 0 over remaining 60% (quadratic ease-in)
+    const riseDuration = Math.round(durationMs * 0.4)
+    const fallDuration = durationMs - riseDuration
+
+    this.scene.tweens.add({
+      targets: gfx,
+      alpha: intensity,
+      duration: riseDuration,
+      ease: 'Quad.easeOut',
+      onComplete: () => {
+        this.scene.tweens.add({
+          targets: gfx,
+          alpha: 0,
+          duration: fallDuration,
+          ease: 'Quad.easeIn',
+          onComplete: () => { gfx.destroy() },
+        })
+      },
+    })
+  }
+
+  /**
+   * Briefly flicker one existing scene point light by tweening its baseIntensity to 0,
+   * holding, then returning it.
+   *
+   * Picks the first registered point light. If no point lights are active (low-end or
+   * no manifest lights), this is a silent no-op.
+   *
+   * @param durationMs Total flicker duration in ms. Spec: 300ms (100ms down, 100ms hold, 100ms up).
+   */
+  public flickerOnePointLight(durationMs: number): void {
+    if (!this.enabled) return
+    if (this.pointLights.length === 0) return
+
+    const pl = this.pointLights[0]
+    const originalIntensity = pl.baseIntensity
+    const phase = Math.round(durationMs / 3)
+
+    // Dim to zero
+    const startTime = this.scene.time.now
+    const timer = this.scene.time.addEvent({
+      delay: 16,
+      loop: true,
+      callback: () => {
+        const elapsed = this.scene.time.now - startTime
+        if (elapsed < phase) {
+          // Phase 1: dim down
+          pl.baseIntensity = originalIntensity * Math.max(0, 1 - elapsed / phase)
+        } else if (elapsed < phase * 2) {
+          // Phase 2: hold at zero
+          pl.baseIntensity = 0
+        } else if (elapsed < phase * 3) {
+          // Phase 3: return
+          const t = (elapsed - phase * 2) / phase
+          pl.baseIntensity = originalIntensity * Math.min(1, t)
+        } else {
+          // Done — restore exact value
+          pl.baseIntensity = originalIntensity
+          timer.destroy()
+        }
+      },
+    })
+  }
+
   // ── Point light helpers ───────────────────────────────────────────────
 
   /**

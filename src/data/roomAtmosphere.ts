@@ -364,3 +364,29 @@ export function getBossAtmosphereConfig(floor: number): AtmosphereConfig {
   base.rim = { ...base.rim, intensity: Math.min(base.rim.intensity * 1.3, 1.0) }
   return base
 }
+
+/**
+ * Representative hex color for each floor theme.
+ * Used by the floor descent ceremony (Spec 04) for title card glow
+ * and color temperature interpolation in ParallaxTransition.
+ * Warm amber → hot orange → ice blue → arcane purple → deep void.
+ */
+export const FLOOR_THEME_COLORS: Record<FloorTheme, number> = {
+  dust:   0xCC9944,
+  embers: 0xFF6622,
+  ice:    0x88CCFF,
+  arcane: 0xAA44FF,
+  void:   0x220033,
+}
+
+/**
+ * Thematic subtitle shown beneath "Floor N" on the descent title card.
+ * One line per theme — evocative, short, lowercase.
+ */
+export const FLOOR_SUBTITLES: Record<FloorTheme, string> = {
+  dust:   'the shallow depths',
+  embers: 'the ember reaches',
+  ice:    'the frozen vaults',
+  arcane: 'the arcane archive',
+  void:   'the abyss',
+}

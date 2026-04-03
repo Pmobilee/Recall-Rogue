@@ -57,10 +57,29 @@ export interface JuiceCallbacks {
   onParticleBurst?: (count: number, tint: number) => void
   onSpeedBonusPop?: () => void
   onKillConfirmation?: () => void
+  /**
+   * Called on correct answer (T+0ms, parallel to existing juice).
+   * @param cardPlayX Screen x-coordinate of the card play area (for light pulse origin).
+   * @param cardPlayY Screen y-coordinate of the card play area.
+   */
+  onAtmosphereWarm?: (cardPlayX: number, cardPlayY: number) => void
+  /**
+   * Called on wrong answer (T+0ms, parallel to existing juice).
+   */
+  onAtmosphereCold?: () => void
 }
+
+/** Streak threshold for persistent ambient shift. */
+const STREAK_THRESHOLD = 3
 
 class JuiceManager {
   private callbacks: JuiceCallbacks = {}
+
+  // ── Knowledge streak counters (Spec 05) ───────────────────────────────────
+  /** Count of consecutive correct answers this encounter. Resets on wrong. */
+  private consecutiveCorrect: number = 0
+  /** Count of consecutive wrong answers this encounter. Resets on correct. */
+  private consecutiveWrong: number = 0
 
   /** Register callbacks from Phaser scene or Svelte components */
   setCallbacks(cb: Partial<JuiceCallbacks>): void {
@@ -70,6 +89,15 @@ class JuiceManager {
   /** Clear callbacks on scene shutdown */
   clearCallbacks(): void {
     this.callbacks = {}
+  }
+
+  /**
+   * Reset streak counters between encounters.
+   * Call from CombatScene.setEnemy() at encounter start.
+   */
+  resetStreak(): void {
+    this.consecutiveCorrect = 0
+    this.consecutiveWrong = 0
   }
 
   /** Fire the full juice stack for a correct or wrong answer */
@@ -170,6 +198,21 @@ class JuiceManager {
     // T+0ms: Screen flash
     this.callbacks.onScreenFlash?.(event.isCritical ? 0.45 : 0.3)
 
+    // T+0ms: Atmosphere warm pulse (Spec 05) — fires in parallel, does not delay other juice
+    this.consecutiveCorrect++
+    this.consecutiveWrong = 0
+    this.callbacks.onAtmosphereWarm?.(
+      typeof window !== 'undefined' ? window.innerWidth * 0.5 : 480,
+      typeof window !== 'undefined' ? window.innerHeight * 0.75 : 600,
+    )
+
+    // Streak threshold: persistent ambient warm shift at 3+ consecutive correct
+    if (this.consecutiveCorrect === STREAK_THRESHOLD) {
+      // Callback already registered; the atmosphere system reads streak state from its own counters.
+      // The warm callback carries the streak intent implicitly — the scene checks consecutiveCorrect
+      // on each call by reading from this manager's public accessor.
+    }
+
     // T+50ms: Damage number
     setTimeout(() => {
       const label = event.effectLabel || String(event.damage || 0)
@@ -201,8 +244,24 @@ class JuiceManager {
     // Muted feedback only
     notifyWarning()
     emitSound('wrong-fizzle')
+
+    // T+0ms: Atmosphere cold flicker (Spec 05) — fires in parallel
+    this.consecutiveWrong++
+    this.consecutiveCorrect = 0
+    this.callbacks.onAtmosphereCold?.()
+
     // No screen flash, no damage numbers, no enemy reaction
     // The ABSENCE of positive juice IS the feedback
+  }
+
+  /** Read current consecutive correct count (used by CombatScene to determine streak level). */
+  getConsecutiveCorrect(): number {
+    return this.consecutiveCorrect
+  }
+
+  /** Read current consecutive wrong count (used by CombatScene to determine streak level). */
+  getConsecutiveWrong(): number {
+    return this.consecutiveWrong
   }
 }
 

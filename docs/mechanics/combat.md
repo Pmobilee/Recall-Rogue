@@ -312,3 +312,61 @@ Screen shake for the sword (micro shake) fires at the same T+250ms contact frame
 `getEnrageBonus(encounterTurnNumber, floor, enemyHpPercent)` returns flat bonus added to all enemy attacks.
 
 Uses `ENRAGE_SEGMENTS` (floor-based): Phase 1 ramps at `ENRAGE_PHASE1_BONUS` per turn for `ENRAGE_PHASE1_DURATION` turns; Phase 2 escalates faster. Enemies below `ENRAGE_LOW_HP_THRESHOLD` (30%) deal an extra `ENRAGE_LOW_HP_BONUS` regardless of segment.
+
+---
+
+## Knowledge-Reactive Dungeon Feedback (Spec 05, 2026-04-03)
+
+Correct and wrong quiz answers modulate the dungeon atmosphere in real time, binding the knowledge system and combat environment together spatially.
+
+### Per-Answer Pulses
+
+**Correct answer (fires at T+0ms in parallel with existing juice):**
+- `DepthLightingSystem.pulseLight(0xFFEECC, 0.6, 400, x, y)` — temporary warm white-gold radial glow at card play area (depth 997, ADD blend, rise 160ms/fall 240ms quadratic)
+- `CombatAtmosphereSystem.pulseWarm(300)` — lowers gravityY by 30 units on both emitters for 300ms; particles visibly accelerate upward
+- `pulseEdgeGlow(0xFFEEAA, 0.06, 500)` — subtle warm edge glow
+
+**Wrong answer (fires at T+0ms in parallel with existing juice):**
+- `CombatAtmosphereSystem.pulseCold(300)` — fog alpha +0.05 for 300ms; particle scatter velocity impulse (50 speed random direction, 200ms)
+- `pulseFlash(0x4488CC, 0.06, 300)` — cold blue vignette flash
+- `DepthLightingSystem.flickerOnePointLight(300)` — existing point light dims → 0 → restores over 300ms
+
+### Consecutive Streak Tracking
+
+`juiceManager` tracks `consecutiveCorrect` and `consecutiveWrong` counters. On each correct answer `consecutiveCorrect++`, `consecutiveWrong = 0`. On wrong: opposite.
+
+Streak state is exposed via `juiceManager.getConsecutiveCorrect()` and `getConsecutiveWrong()`. `juiceManager.resetStreak()` clears both (called from `CombatScene.resetKnowledgeStreak()`).
+
+### Persistent Ambient Shift (3+ streak)
+
+When `consecutiveCorrect >= 3`:
+- `CombatAtmosphereSystem.setStreakWarm(true, cb)` activates
+- Saturation modifier shifts +5% per level beyond 2 (e.g. 3 correct = +5%, 4 = +10%)
+- Clamped at +10% maximum
+
+When `consecutiveWrong >= 3`:
+- `CombatAtmosphereSystem.setStreakCold(true, cb)` activates
+- Saturation modifier shifts −5% per level beyond 2, clamped at −10%
+
+The saturation offset is applied on top of the base `atmosphereConfig.cameraColorMatrix.saturation` via `_colorMatrixFx.saturate(baseSat + offset)` in `CombatScene.applyStreakSaturation()`.
+
+Warm and cold streaks are mutually exclusive — activating one cancels the other.
+
+### State Management
+
+- **Reset per encounter:** `CombatScene.resetKnowledgeStreak()` is called at the start of `setEnemy()` and in `onShutdown()`. This calls `atmosphereSystem.resetStreak()` (clears modifier) and `juiceManager.resetStreak()` (clears counters).
+- **Callback re-registration:** `juiceManager.setCallbacks({ onAtmosphereWarm, onAtmosphereCold })` is called in both `CombatScene.create()` and `CombatScene.onWake()` so the callbacks survive `CardCombatOverlay.clearCallbacks()` across sleep/wake cycles.
+
+### Reduce-Motion Handling
+
+- Particle velocity changes (`pulseWarm`, `pulseCold` scatter) are skipped under reduce-motion
+- `pulseLight` and `flickerOnePointLight` are skipped (no-op on low-end devices per existing tier gating)
+- Vignette alpha nudge (pulseCold fog) and saturation color shift are kept — they are brightness changes, not positional motion
+- `pulseFlash` and `pulseEdgeGlow` already respect `this.reduceMotion` internally
+
+### Integration Files
+
+- `src/services/juiceManager.ts` — streak counters, `onAtmosphereWarm`/`onAtmosphereCold` callbacks
+- `src/game/systems/CombatAtmosphereSystem.ts` — `pulseWarm`, `pulseCold`, `setStreakWarm`, `setStreakCold`, `resetStreak`, `getStreakSaturationModifier`
+- `src/game/systems/DepthLightingSystem.ts` — `pulseLight`, `flickerOnePointLight`
+- `src/game/scenes/CombatScene.ts` — `onCorrectAnswer`, `onWrongAnswer`, `resetKnowledgeStreak`, `updateKnowledgeSaturation`, `applyStreakSaturation`

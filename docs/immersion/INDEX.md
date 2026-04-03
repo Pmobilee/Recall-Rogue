@@ -17,8 +17,8 @@ Do not duplicate existing work.
 | 06 | ~~Weapon-Enemy Impact Sync~~ | quick-win | S | HIGH | game-logic | none | **done** |
 | 02 | ~~Enemy Entrance Reveal~~ | mid-term | M | MED-HIGH | game-logic | none | **done** |
 | 03 | ~~Chain Combo Escalation~~ | mid-term | M-L | HIGH | game-logic | none | **done** |
-| 05 | Knowledge-Reactive Dungeon | mid-term | M | MED-HIGH | game-logic | none | pending |
-| 04 | Floor Descent Ceremony | mid-term | M | MED | game-logic + ui-agent | none | pending |
+| 05 | ~~Knowledge-Reactive Dungeon~~ | mid-term | M | MED-HIGH | game-logic | none | **done** |
+| 04 | Floor Descent Ceremony | mid-term | M | MED | game-logic + ui-agent | none | **partial** |
 | 07 | Foreground Parallax Layer | ambitious | M | MED | game-logic | none | pending |
 | 08 | Background Micro-Animation | ambitious | L | MED-HIGH | game-logic | none | pending |
 | 09 | Dynamic Dungeon Mood | ambitious | L | HIGH | game-logic | 01, 03, 05 | pending |

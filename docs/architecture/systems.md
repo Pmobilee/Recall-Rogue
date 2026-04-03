@@ -116,6 +116,8 @@ Attaches `DepthLightingFX` PostFX pipeline to the combat background image for de
 | `attachToBackground(bgImage, atm)` | Attach PostFX pipeline to the background image |
 | `applyAtmosphere(config)` | Configure pipeline with atmosphere color/intensity |
 | `animateLightsIn(durationMs)` | Fade all point light intensities from 0 to base over duration; called during enemy entrance reveal; no-op on low-end or when no pipeline active |
+| `pulseLight(color, intensity, durationMs, x, y)` | One-shot radial glow at screen position (ADD blend Graphics circle, depth 997); tweens alpha 0→peak→0 with quadratic ease; fire-and-forget; no-op on low-end |
+| `flickerOnePointLight(durationMs)` | Dims first registered point light to 0 and restores over durationMs (3 equal phases: dim/hold/restore); silent no-op if no point lights active |
 | `stop()` | Remove pipeline, destroy resources |
 
 Depth map key format: `depth-{bgKey}`. Depth map path resolved by `getCombatDepthMap(enemyId)`.
@@ -140,8 +142,16 @@ Manages ambient particles (dual-depth: back=3, front=12), fog overlay, and light
 | `spikeParticleRate(durationMs)` | Temporarily double front emitter rate for a visual spike (e.g. turn transitions). No-op if reduceMotion or no emitter active. |
 | `applyChainModifiers(frequencyMultiplier)` | Scale both emitter intervals by multiplier (e.g. 0.5 = double rate). No-op on low-end or reduceMotion. |
 | `clearChainModifiers()` | Restore emitter intervals to base frequencies. |
+| `pulseWarm(durationMs)` | Brief upward particle boost (gravityY −30) for 300ms; no-op on low-end or reduce-motion. Correct-answer atmosphere pulse. |
+| `pulseCold(durationMs)` | Fog alpha +0.05 and particle scatter velocity impulse (300ms); particle changes skipped on low-end/reduce-motion. Wrong-answer atmosphere pulse. |
+| `setStreakWarm(active, onSaturationChange?))` | Enable/disable persistent warm saturation shift (+5%, capped at +10%); mutually exclusive with cold. |
+| `setStreakCold(active, onSaturationChange?))` | Enable/disable persistent cold saturation shift (−5%, capped at −10%); mutually exclusive with warm. |
+| `resetStreak(onSaturationChange?)` | Clear all streak state and saturation modifier. Call at encounter start. |
+| `getStreakSaturationModifier()` | Returns current saturation offset (−0.10 to +0.10). |
 
 **Chain modifier state:** `baseBackFrequency` and `baseFrontFrequency` are stored at `start()` for restoration by `clearChainModifiers()`. Low-end devices are excluded via `getDeviceTier() === 'low-end'` guard.
+
+**Knowledge-reactive streak state (Spec 05):** `_streakSaturationModifier` (−0.10 to +0.10) persists for the encounter duration. `setStreakWarm`/`setStreakCold` are mutually exclusive. `resetStreak()` clears all state at encounter start.
 
 ### ScreenShakeSystem
 
@@ -176,3 +186,19 @@ Tracks weekly challenge progress stored in `PlayerSave.weeklyChallenge`. Auto-re
 **Stats tracked:** `blocksMinedThisWeek`, `factsLearnedThisWeek`, `fossilsFoundThisWeek`, `deepestLayerThisWeek`, `artifactsFoundThisWeek`, `studySessionsThisWeek`, `diveCompletionsThisWeek`, `quizCorrectThisWeek`, `mineralsCollectedThisWeek`, `dataDiscsFoundThisWeek`.
 
 Constructor takes `getSave: () => PlayerSave` and `persistSave: () => void` callbacks. Key methods: `increment(key, by?)`, `updateMax(key, value)`, `getProgress(key)`, plus convenience methods like `recordFactLearned()`, `recordRunComplete()`, etc.
+
+---
+
+## Floor Descent Ceremony Effects (Spec 04)
+
+**Orchestrating method:** `CombatScene.playDescentEffects(floor, isBoss)` in `src/game/scenes/CombatScene.ts`
+
+Not a standalone system — this method coordinates existing systems (ScreenShakeSystem, built-in particle emitter, DOM events) to produce the floor descent ceremony defined in `docs/immersion/04-floor-descent.md`.
+
+| Action | System used | Notes |
+|--------|-------------|-------|
+| Debris cascade | `burstParticles()` (built-in emitter) | 10–25 gray/brown particles, top 30% of viewport |
+| Landing rumble | `ScreenShakeSystem.trigger('heavy')` | Delayed by 2800ms (boss: 3800ms) |
+| DOM event `rr:floor-descent` | `window.dispatchEvent` | Triggers Svelte overlays (ParallaxTransition, title card) |
+
+Called from two sites in `gameFlowController.ts` via `getCombatScene()?.playDescentEffects(...)` immediately after `advanceFloor()`.

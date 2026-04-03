@@ -1,5 +1,5 @@
 ---
-status: pending
+status: partially-implemented
 delete-after-implementation: true
 priority: mid-term
 effort: M

@@ -37,6 +37,7 @@ import {
   startEncounterForRoom,
   getLastNarrativeEncounterSnapshot,
   clearNarrativeEncounterSnapshot,
+  getCombatScene,
 } from './encounterBridge';
 import { activeRunState } from './runStateStore';
 import {
@@ -998,6 +999,8 @@ async function proceedAfterReward(): Promise<void> {
     }
 
     advanceFloor(run.floor);
+    // Spec 04: floor descent ceremony — fire Phaser particle/shake effects and DOM event for Svelte
+    getCombatScene()?.playDescentEffects(run.floor.currentFloor, run.floor.isBossFloor);
     if (activeRunMode === 'endless_depths') {
       applyEndlessDepthsScaling(run)
     }
@@ -1989,6 +1992,8 @@ export function onDelve(): void {
     },
   });
   advanceFloor(run.floor);
+  // Spec 04: floor descent ceremony — fire Phaser particle/shake effects and DOM event for Svelte
+  getCombatScene()?.playDescentEffects(run.floor.currentFloor, run.floor.isBossFloor);
   playCardAudio('floor-transition');
   if (activeRunMode === 'endless_depths') {
     applyEndlessDepthsScaling(run)
