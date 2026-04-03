@@ -279,6 +279,66 @@ Colors are derived by mixing the domain's `colorTint` with the dark base `#0d111
 
 Key API: `getAllDecks()`, `getDecksForDomain(domain)`, `getDeckById(id)`, `getDeckDomains()`.
 
+The `procedural?: boolean` field on `DeckRegistryEntry` marks decks that generate problems algorithmically. Only `domain: 'mathematics'` decks use this flag. Procedural decks do not have a `facts` array in a `.json` file.
+
+---
+
+## Procedural Decks (`proceduralDeckTypes.ts`)
+
+Procedural decks generate quiz problems on-the-fly instead of drawing from static `DeckFact` records. Only the `mathematics` domain uses procedural decks.
+
+**Key types** (all in `src/data/proceduralDeckTypes.ts`):
+
+| Type | Purpose |
+|---|---|
+| `ProceduralDeck` | Top-level container — `id`, `name`, `domain: 'mathematics'`, `skills[]`, `subDecks[]` |
+| `ProceduralSubDeck` | Groups of skill IDs (e.g., "Addition" containing `add_1digit`, `add_2digit`) |
+| `SkillNode` | One math skill — maps to a generator function and has `tierParams` per FSRS tier |
+| `GeneratorParams` | Controls number ranges, operations, step count, decimal/negative flags, tolerance |
+| `PlayerSkillState` | FSRS scheduling state tracked per skill, parallel to `ReviewState` for facts |
+| `MathProblem` | Output of a generator — question, answer, distractors, explanation, input mode |
+
+**FSRS state for math skills** is stored in `PlayerSave.skillStates?: PlayerSkillState[]` — added to `src/data/types.ts`. Each `PlayerSkillState` is keyed by `skillId + deckId` and tracks the same FSRS fields as `ReviewState`.
+
+**DeckMode** — the `'procedural'` variant in `DeckMode` (in `studyPreset.ts`) selects a procedural math run:
+```typescript
+{ type: 'procedural'; deckId: string; subDeckId?: string }
+```
+The `encounterBridge.ts` if-else chain falls through to the general fallback for `type: 'procedural'` until Phase 2 wires the math pool builder. `masteryScalingService.getLeaderboardEligibility()` returns `null` for procedural mode (not leaderboard-eligible).
+
+**No fact DB entries:** `DOMAIN_TO_CATEGORY['mathematics']` is an empty array in `runPoolBuilder.ts` — querying `factsDB` for math facts always returns nothing. `getKnowledgeDomains()` excludes `'mathematics'` so it never appears in trivia domain loops.
+
+**Math Service Layer** — four services in `src/services/math/` implement the procedural math system:
+
+| Service | Purpose |
+|---|---|
+| `mathDistractorGenerator.ts` | Generates plausible-but-wrong distractors using operation-specific error models (carry errors, sign errors, digit swaps, wrong-op) |
+| `mathProblemGenerator.ts` | Dispatches to one of 6 generator functions keyed by `SkillNode.generatorId`; all generation is deterministic given `(skill, tier, seed)` |
+| `skillStateManager.ts` | FSRS state for math skills — `createSkillState`, `reviewSkill` (pure transform, no persistence), `getSkillTier` (delegates to `tierDerivation.getCardTier`) |
+| `proceduralSkillSelector.ts` | Picks next skill to practice using Anki 4-priority model: relearning → due → new (capped at MAX_LEARNING=8) → ahead-learning → fallback |
+| `proceduralDeckRegistry.ts` | Registers all procedural decks into the shared `DECK_REGISTRY`; provides `getProceduralDeck(id)` lookup; exports `PROCEDURAL_DECKS[]` array. Called once at app startup via `registerProceduralDecks()`. |
+| `proceduralQuizSession.ts` | Bridge between skill selection and the quiz overlay. `startProceduralSession(deckId, subDeckId?)` creates a session; `getNextQuestion(session)` selects a skill, generates a problem, and returns a `ProceduralQuizQuestion` with shuffled answers; `gradeProceduralAnswer(...)` runs FSRS and persists the updated state. |
+
+**Deck definitions** (added 2026-04-03) — two concrete ProceduralDeck objects in `src/data/mathDecks/`:
+
+| File | Deck ID | Skills | Sub-decks |
+|---|---|---|---|
+| `arithmetic.ts` | `arithmetic` | `arith_add`, `arith_sub`, `arith_mul`, `arith_div`, `arith_mixed` | addition, subtraction, multiplication, division, mixed |
+| `mentalMath.ts` | `mental_math` | `mental_pct`, `mental_frac`, `mental_est`, `mental_pemdas` | percentages, fractions_decimals, estimation, order_of_operations |
+
+Each skill's `tierParams` maps FSRS tiers `1 → 2a → 2b → 3` to progressively harder number ranges. Both decks have `artPlaceholder` with gradient `#3B82F6 → #1D4ED8` and icon `🔢`.
+
+**App startup wiring:** `CardApp.svelte` calls `registerProceduralDecks()` synchronously before `initializeCuratedDecks()` so math decks are visible in the registry immediately at mount.
+
+**Unit tests** (added 2026-04-03) — 117 tests in 4 files:
+- `src/services/math/mathDistractorGenerator.test.ts` — count, exclusion, uniqueness, validity, carry-error, sign-error, negatives, zero, small-answer fallback
+- `src/services/math/mathProblemGenerator.test.ts` — determinism, all 6 generators, question format, mathematical correctness, PEMDAS, unknown generatorId error
+- `src/services/math/skillStateManager.test.ts` — `createSkillState` defaults, `reviewSkill` correct/incorrect, `getSkillTier` all tier boundary conditions, stats accumulation
+- `src/services/math/proceduralSkillSelector.test.ts` — priority order, subDeckId filtering, anti-repeat, MAX_LEARNING cap, reason field accuracy
+
+**Strategy-test note:** `generateMathDistractors` slices to exactly `count` items. Strategy-verification tests (carry error, sign error) request count=15 to expose all generated candidates before the slice — this is intentional and correct.
+
+
 ---
 
 ## Fact Index (`deckFactIndex.ts`)

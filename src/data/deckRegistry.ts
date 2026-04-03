@@ -24,6 +24,12 @@ export interface DeckRegistryEntry {
   tier: 1 | 2 | 3;
   /** Availability status. */
   status: 'available' | 'coming_soon';
+  /**
+   * Whether this deck generates problems procedurally (vs drawing from static facts).
+   * When true, the deck uses a ProceduralDeck definition and the math problem generator
+   * pipeline instead of factsDB. Only applicable to domain: 'mathematics' decks.
+   */
+  procedural?: boolean;
   /** Placeholder art config for the deck tile. */
   artPlaceholder: {
     gradientFrom: string;

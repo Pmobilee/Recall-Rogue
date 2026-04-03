@@ -2,7 +2,7 @@
 
 > **Purpose:** Gameplay-critical Svelte components: Combat UI, Quiz & Study, Hub & Navigation, Dungeon & Map, Card Management, Rooms & Events, Rewards & Progression, Relics.
 > **Last verified:** 2026-04-03
-> **Source files:** `src/ui/components/**/*.svelte` (189 files), `src/CardApp.svelte`, `src/ui/effects/hubAnimationLoop.ts`, `src/ui/effects/hubLightingState.ts`, `src/ui/effects/HubGlowEffect.ts`, `src/ui/effects/CampfireEffect.ts`, `src/ui/effects/spritesheetPlayer.ts`, `src/ui/effects/petBehavior.ts`
+> **Source files:** `src/ui/components/**/*.svelte` (190 files), `src/CardApp.svelte`, `src/ui/effects/hubAnimationLoop.ts`, `src/ui/effects/hubLightingState.ts`, `src/ui/effects/HubGlowEffect.ts`, `src/ui/effects/CampfireEffect.ts`, `src/ui/effects/spritesheetPlayer.ts`, `src/ui/effects/petBehavior.ts`
 
 > **See also:** [`components-social.md`](components-social.md) — Social & Multiplayer, Profile & Account, Auth & Legal, Monetization & Seasons, Onboarding & Cutscenes, Utility & Effects.
 
@@ -86,6 +86,7 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 | `EventQuiz.svelte` | Quiz embedded inside mystery/special events for branching outcomes. Choice buttons have `data-testid="quiz-answer-{i}"` (0-indexed) for automated testing — matches pattern used in `QuizOverlay.svelte`. |
 | `GrammarTypingInput.svelte` | Free-text typing input for grammar deck tilde-fragment answers |
 | `WordHover.svelte` | Hoverable word revealing dictionary definition on hover/tap |
+| `ProceduralStudyScreen.svelte` | Full-screen procedural math practice session. Calls `startProceduralSession` on mount, generates questions via `getNextQuestion`, grades with `gradeProceduralAnswer`. Shows running accuracy stats (questions answered, accuracy %). Answer buttons go green/red on feedback with a 1.2s delay before next question. "Stop" button returns to `studyTemple`. Tier badge shows current skill difficulty (Learning/Familiar/Advanced/Mastered). Uses same CSS scaling conventions as other screens. Props: `deckId: string`, `subDeckId?: string`, `onBack: () => void`. |
 | `StudySession.svelte` | Standalone study session for the Study Temple screen. After player taps a rating button, shows a floating `SRS +` (green) or `SRS -` (red) label above the rating buttons for the 300ms pause before advancing. State: `srsIndicator: '+' | '-' | null`. |
 | `StudyStation.svelte` | Quick-review widget inside the Hub |
 | `StudyModeSelector.svelte` | Toggle between multiple-choice / typing / flashcard modes |
@@ -298,8 +299,8 @@ Node blur and opacity applied via CSS `filter: blur(...)` and `opacity: ...` on 
 | `CardBrowser.svelte` | Card collection browser with filtering and sorting in the Library |
 | `CardExpanded.svelte` | Full-screen expanded card view with all details and fact text |
 | `CardPickerOverlay.svelte` | Pick a specific card from the deck (e.g., transmute target) |
-| `DeckTileV2.svelte` | Tile component for a curated deck in the selection grid. 3D tilt on hover, shine overlay, deal animation. Single-image CSS parallax when `/assets/sprites/deckfronts/{id}.webp` is found (single image shifts against pointer, 0.08% multiplier, scale 1.08). When `hasImage` is true, adds `.has-image` class: title uses `position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%) translateZ(40px)` (bottom-center of art area, floating in 3D space), and badges float at `translateZ(30px)`. |
-| `DeckDetailModal.svelte` | Modal showing deck contents, stats, and subcategory breakdown |
+| `DeckTileV2.svelte` | Tile component for a curated deck in the selection grid. 3D tilt on hover, shine overlay, deal animation. Single-image CSS parallax when `/assets/sprites/deckfronts/{id}.webp` is found (single image shifts against pointer, 0.08% multiplier, scale 1.08). When `hasImage` is true, adds `.has-image` class: title uses `position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%) translateZ(40px)` (bottom-center of art area, floating in 3D space), and badges float at `translateZ(30px)`. **Procedural deck support:** when `deck.procedural` is true, shows a single skill count bar ("X skills") instead of Seen/Review/Mastered progress bars, with a "Practice to track progress" hint. Description auto-falls back to "X skills" instead of "X facts" for procedural decks. |
+| `DeckDetailModal.svelte` | Modal showing deck contents, stats, and subcategory breakdown. **Procedural deck support:** when `deck.procedural` is true, the progress line reads "X skills" instead of "X facts mastered", and the start button reads ">> START PRACTICE" instead of ">> START STUDY RUN". |
 | `DeckFilterChips.svelte` | Filter chips for filtering decks by domain/language/tag |
 | `DeckSearchBar.svelte` | Search bar for the deck browser |
 | `DeckSortDropdown.svelte` | Sort order dropdown for deck listing views |

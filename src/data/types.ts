@@ -1,6 +1,7 @@
 import type { InterestConfig } from './interestConfig'
 import { CATEGORIES, type FactDomain, isFactDomain } from './categories'
 import type { StudyPreset, DeckMode, LastDungeonSelection } from './studyPreset'
+import type { PlayerSkillState } from './proceduralDeckTypes'
 
 /** Visual upgrade tier for a hub floor. 0 = bare scaffolding, 3 = premium. */
 export type FloorUpgradeTier = 0 | 1 | 2 | 3
@@ -408,6 +409,8 @@ export interface PlayerSave {
   reviewStates: ReviewState[] // SM-2 state per fact
   soldFacts: string[]         // Fact IDs sold (never show again)
   discoveredFacts: string[]    // Fact IDs discovered but not yet activated for study
+  /** FSRS state for procedural math skills. */
+  skillStates?: PlayerSkillState[]
 
   // Stats
   stats: PlayerStats

@@ -1,14 +1,14 @@
 # Domains & Content Themes
 
 > **Purpose:** Documents all knowledge domains, their metadata, subcategory taxonomy, domain resolution logic, and the distinction between language and knowledge domains.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-03
 > **Source files:** `src/data/domainMetadata.ts`, `src/data/subcategoryTaxonomy.ts`, `src/data/categories.ts`, `src/services/domainResolver.ts`, `src/services/domainSubcategoryService.ts`
 
 ---
 
 ## What Is a Domain?
 
-A domain is the top-level content classification for a fact. Every fact belongs to exactly one `CanonicalFactDomain`. Domains control:
+A domain is the top-level content classification for a fact or skill. Every fact belongs to exactly one `CanonicalFactDomain`. Domains control:
 - Card visual theming (color tint, icon)
 - Which facts appear in which deck selection pool
 - Subcategory filtering in Study Temple
@@ -20,22 +20,25 @@ A domain is the top-level content classification for a fact. Every fact belongs 
 
 Defined in `src/data/domainMetadata.ts` as `Record<CanonicalFactDomain, DomainMetadata>`.
 
-| ID | Display Name | Short Name | Color Tint | Icon | Age Default | Status |
-|---|---|---|---|---|---|---|
-| `general_knowledge` | General Knowledge | General | `#6B7280` | 🧠 | kid | active |
-| `natural_sciences` | Natural Sciences | Science | `#10B981` | 🧪 | teen | active |
-| `space_astronomy` | Space & Astronomy | Space | `#6366F1` | 🌌 | kid | coming soon |
-| `geography` | General Geography | General Geography | `#F59E0B` | 🗺️ | kid | active |
-| `geography_drill` | Capitals & Flags | Capitals & Flags | `#D97706` | 🏳️ | kid | active |
-| `history` | History | History | `#0EA5E9` | 🏺 | teen | active |
-| `mythology_folklore` | Mythology & Folklore | Myth | `#8B5CF6` | 🐉 | teen | coming soon |
-| `animals_wildlife` | Animals & Wildlife | Animals | `#22C55E` | 🦉 | kid | coming soon |
-| `human_body_health` | Human Body & Health | Health | `#14B8A6` | 🫀 | teen | coming soon |
-| `food_cuisine` | Food & World Cuisine | Cuisine | `#F97316` | 🍜 | kid | coming soon |
-| `art_architecture` | Art & Architecture | Art | `#EC4899` | 🎨 | kid | coming soon |
-| `language` | Language | Language | `#34D399` | 🗣️ | kid | active |
+| ID | Display Name | Short Name | Color Tint | Icon | Age Default | Status | Notes |
+|---|---|---|---|---|---|---|---|
+| `general_knowledge` | General Knowledge | General | `#6B7280` | 🧠 | kid | active | |
+| `natural_sciences` | Natural Sciences | Science | `#10B981` | 🧪 | teen | active | |
+| `space_astronomy` | Space & Astronomy | Space | `#6366F1` | 🌌 | kid | coming soon | |
+| `geography` | General Geography | General Geography | `#F59E0B` | 🗺️ | kid | active | |
+| `geography_drill` | Capitals & Flags | Capitals & Flags | `#D97706` | 🏳️ | kid | active | |
+| `history` | History | History | `#0EA5E9` | 🏺 | teen | active | |
+| `mythology_folklore` | Mythology & Folklore | Myth | `#8B5CF6` | 🐉 | teen | coming soon | |
+| `animals_wildlife` | Animals & Wildlife | Animals | `#22C55E` | 🦉 | kid | coming soon | |
+| `human_body_health` | Human Body & Health | Health | `#14B8A6` | 🫀 | teen | coming soon | |
+| `food_cuisine` | Food & World Cuisine | Cuisine | `#F97316` | 🍜 | kid | coming soon | |
+| `art_architecture` | Art & Architecture | Art | `#EC4899` | 🎨 | kid | coming soon | |
+| `language` | Language | Language | `#34D399` | 🗣️ | kid | active | Study Temple only |
+| `mathematics` | Mathematics | Math | `#3B82F6` | 🔢 | kid | active | Procedural — no static facts |
 
 `comingSoon: true` domains are defined but not yet populated with substantial fact content.
+
+`mathematics` is a **procedural domain** — it generates problems algorithmically via `ProceduralDeck` skill nodes rather than drawing from `factsDB`. See `src/data/proceduralDeckTypes.ts`.
 
 ### DomainMetadata Interface
 
@@ -54,13 +57,16 @@ interface DomainMetadata {
 
 ---
 
-## Knowledge Domains vs Language Domains
+## Knowledge Domains vs Special Domains
 
-`getKnowledgeDomains()` returns all canonical domains except `'language'` and `'geography_drill'`. These two are excluded because:
+`getKnowledgeDomains()` returns all canonical domains except `'language'`, `'geography_drill'`, and `'mathematics'`. These three are excluded because:
 - `language` facts belong to Study Temple curated decks only — they must not appear in trivia runs (enforced by `factsDB.getTriviaFacts()`)
 - `geography_drill` (Capitals & Flags) is a specialized drill domain, not general trivia
+- `mathematics` is procedural — no static facts exist in `factsDB`; it has its own Study Temple tab
 
 `geography_drill` facts are geography facts with subcategories in the capitals/flags set (`capitals_countries`, `world_capitals`, `flags`, `national_flags`, etc.) — routed to the dedicated drill domain by `domainResolver.ts`.
+
+`GENERAL_MODE_DOMAINS` in `presetPoolBuilder.ts` also excludes `mathematics` (along with `language`, `geography`, `geography_drill`) so trivia runs never attempt to query math facts.
 
 ---
 
@@ -86,10 +92,12 @@ Results are memoized in `FACT_DOMAIN_CACHE: Map<string, FactDomain>` per fact ID
 | `'Life Sciences'` | `human_body_health` |
 | `'Technology'` | `general_knowledge` |
 | `'Culture'` | `art_architecture` |
-| `'Mathematics'` / `'Math'` | `general_knowledge` |
+| `'Mathematics'` / `'Math'` | `mathematics` (was `general_knowledge` before 2026-04-03) |
 | `'Science'` | `natural_sciences` |
 | `'Arts'` | `art_architecture` |
 | `'Medicine'` / `'Health'` | `human_body_health` |
+
+The legacy `'math'` domain (in `LEGACY_DOMAIN_NORMALIZATION`) now normalizes to `'mathematics'` instead of `'general_knowledge'`. Any saved player data with `domain: 'math'` cards will resolve correctly.
 
 ---
 
@@ -123,6 +131,8 @@ Results are memoized in `FACT_DOMAIN_CACHE: Map<string, FactDomain>` per fact ID
 
 **language** (40+): Chinese HSK 1–7, Japanese N5–N1/Hiragana/Katakana, Spanish A1–C1, French A1–C2, German A1–C2, Dutch A1–C1, Czech A1–C1, Korean Beginner/Intermediate/Advanced
 
+**mathematics**: No subcategory taxonomy — uses `ProceduralSubDeck` groupings (Addition, Subtraction, Multiplication, etc.) defined in `ProceduralDeck.subDecks`.
+
 ---
 
 ## Runtime Subcategory Service (`domainSubcategoryService.ts`)
@@ -141,8 +151,10 @@ Results are memoized at module level per domain — the full scan only runs once
 
 Subcategory is extracted from `fact.category[1]` trimmed, then `fact.categoryL2` trimmed, falling back to `'General'`.
 
+Note: calling `getDomainSubcategories('mathematics')` will always return an empty array — procedural math has no facts in `factsDB`.
+
 ---
 
 ## CSS Domain Classes
 
-`getDomainCSSClass(domain)` returns a CSS class string in the form `domain-<canonicalId>` (e.g. `domain-history`, `domain-language`). Used for domain-tinted styling in card frames and UI elements.
+`getDomainCSSClass(domain)` returns a CSS class string in the form `domain-<canonicalId>` (e.g. `domain-history`, `domain-language`, `domain-mathematics`). Used for domain-tinted styling in card frames and UI elements.

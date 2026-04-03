@@ -43,7 +43,7 @@ const DOMAIN_TO_CATEGORY: Record<string, string[]> = {
  * Extra packs like language/vocab and geography packs are excluded.
  */
 const GENERAL_MODE_DOMAINS: CanonicalFactDomain[] = CANONICAL_FACT_DOMAINS.filter(
-  (d) => d !== 'language' && d !== 'geography' && d !== 'geography_drill',
+  (d) => d !== 'language' && d !== 'geography' && d !== 'geography_drill' && d !== 'mathematics',
 );
 
 // ── Recent-fact deduplication ─────────────────────────────────────

@@ -474,6 +474,10 @@ export function load(): PlayerSave | null {
     if (!('lastDailyBonusDate' in parsedAny) || (parsedAny['lastDailyBonusDate'] !== null && typeof parsedAny['lastDailyBonusDate'] !== 'string')) {
       parsedAny['lastDailyBonusDate'] = null
     }
+    // Procedural math skill states migration
+    if (!Array.isArray(parsedAny['skillStates'])) {
+      parsedAny['skillStates'] = []
+    }
     return parsed as PlayerSave
   } catch {
     return null
@@ -576,6 +580,8 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     totalXP: 0,
     characterLevel: 25, // DEV: max level — all cards/relics unlocked
     lastDailyBonusDate: null,
+    // Procedural math skill states
+    skillStates: [],
   }
 }
 

@@ -151,7 +151,7 @@
         <span class="progress-pct">{Math.round(progress.progressPercent)}%</span>
       </div>
       <div class="mastered-count">
-        {progress.factsMastered} / {progress.totalFacts} facts mastered
+        {deck.procedural ? progress.totalFacts : progress.factsMastered} / {progress.totalFacts} {deck.procedural ? "skills" : "facts mastered"}
       </div>
     </div>
 
@@ -243,7 +243,7 @@
         disabled={!isAvailable}
         type="button"
       >
-        {isAvailable ? '>> START STUDY RUN' : 'COMING SOON'}
+        {isAvailable ? (deck.procedural ? '>> START PRACTICE' : '>> START STUDY RUN') : 'COMING SOON'}
       </button>
     </div>
   </div>

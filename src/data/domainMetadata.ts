@@ -128,6 +128,15 @@ export const DOMAIN_METADATA: Record<CanonicalFactDomain, DomainMetadata> = {
     description: 'Vocabulary, reading, listening, and language acquisition.',
     ageDefault: 'kid',
   },
+  mathematics: {
+    id: 'mathematics',
+    displayName: 'Mathematics',
+    shortName: 'Math',
+    colorTint: '#3B82F6',    // Blue
+    icon: '🔢',
+    description: 'Arithmetic, mental math, algebra, and mathematical reasoning.',
+    ageDefault: 'kid',
+  },
 }
 
 export function getDomainMetadata(domain: FactDomain): DomainMetadata {
@@ -138,9 +147,14 @@ export function getAllDomainMetadata(): DomainMetadata[] {
   return Object.values(DOMAIN_METADATA)
 }
 
+/**
+ * Returns knowledge domains for trivia dungeon and general aggregation.
+ * Excludes 'language' (Study Temple only), 'geography_drill' (specialized drill),
+ * and 'mathematics' (procedural — has its own tab, not a fact-database domain).
+ */
 export function getKnowledgeDomains(): CanonicalFactDomain[] {
   return getAllDomainMetadata()
-    .filter((domain) => domain.id !== 'language' && domain.id !== 'geography_drill')
+    .filter((domain) => domain.id !== 'language' && domain.id !== 'geography_drill' && domain.id !== 'mathematics')
     .map((domain) => domain.id)
 }
 

@@ -1,8 +1,8 @@
 # Services Index
 
 > **Purpose:** Lookup table mapping every service name to its domain sub-doc.
-> **Last verified:** 2026-04-01
-> **Source files:** All `src/services/*.ts` (142 files, excluding test files)
+> **Last verified:** 2026-04-03
+> **Source files:** All `src/services/*.ts` (142 files, excluding test files) + `src/services/math/*.ts` (7 files)
 
 | Service | File | Sub-doc |
 |---------|------|---------|
@@ -148,3 +148,17 @@
 | vocabVariantService | src/services/vocabVariantService.ts | [quiz.md](quiz.md) |
 | wowScore | src/services/wowScore.ts | [learning.md](learning.md) |
 | wsClient | src/services/wsClient.ts | [social.md](social.md) |
+
+## Math Subdirectory (`src/services/math/`)
+
+Services under `src/services/math/` implement the procedural math system for Study Temple. Full documentation in [docs/mechanics/procedural-math.md](../../mechanics/procedural-math.md).
+
+| Service | File | Role |
+|---------|------|------|
+| mathProblemGenerator | src/services/math/mathProblemGenerator.ts | 6 generator functions dispatched by `generatorId`; mulberry32 seeded PRNG for deterministic output |
+| mathDistractorGenerator | src/services/math/mathDistractorGenerator.ts | Algorithmic wrong-answer strategies (off-by-one, wrong-op, digit-swap, carry error, sign error) |
+| skillStateManager | src/services/math/skillStateManager.ts | FSRS wrapper for `PlayerSkillState` — delegates to `fsrsScheduler` and `tierDerivation` without duplication |
+| proceduralSkillSelector | src/services/math/proceduralSkillSelector.ts | Anki-model skill selection: relearning → due review → new → ahead learning → fallback |
+| proceduralDeckRegistry | src/services/math/proceduralDeckRegistry.ts | Registers math decks into shared `DeckRegistry` at startup; provides `getProceduralDeck(id)` |
+| proceduralQuizSession | src/services/math/proceduralQuizSession.ts | Session bridge: skill selection → problem generation → shuffled `ProceduralQuizQuestion` for the quiz overlay |
+| proceduralStatsService | src/services/math/proceduralStatsService.ts | Read-only aggregation: `getMathStats(deckId?)` returns accuracy, tier distribution, problem counts |

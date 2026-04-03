@@ -24,7 +24,8 @@ export type DeckMode =
   | { type: 'preset'; presetId: string }
   | { type: 'language'; languageCode: string }
   | { type: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> }
-  | { type: 'study'; deckId: string; subDeckId?: string; examTags?: string[] };
+  | { type: 'study'; deckId: string; subDeckId?: string; examTags?: string[] }
+  | { type: 'procedural'; deckId: string; subDeckId?: string };
 
 /** A single item in a custom playlist — either a trivia domain or a curated study deck. */
 export type CustomPlaylistItem =

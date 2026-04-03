@@ -3584,6 +3584,46 @@ For full spec, see `docs/RESEARCH/DECKBUILDER.md`.
 
 ---
 
+## 23.54. Procedural Math Practice (Study Temple)
+
+Math is the only domain where content is generated at runtime rather than drawn from a curated fact database. Problems are infinite in variety and always unique — there is no "pool" to exhaust.
+
+### Concept
+
+Study Temple adds a **Math tab** alongside the existing domain tabs. Players select a math deck (Arithmetic, Mental Math) and optionally a sub-deck (e.g., Addition only). Practice sessions are open-ended — the player controls when to stop. Session flow matches the curated study session UX without modification.
+
+### Skill-Based FSRS Tracking
+
+Each **skill** (e.g., Two-Digit Addition) functions as the tracked unit instead of a fact. `PlayerSkillState` has the same FSRS fields as `PlayerFactState`, so the existing FSRS scheduler and tier derivation are reused without modification.
+
+Skills advance through the same four tiers as facts (1 → 2a → 2b → 3), with tier determining the difficulty envelope for generated problems rather than distractor difficulty. A player who has mastered Tier 1 addition (single-digit) automatically receives two-digit problems at Tier 2a.
+
+Skill states persist in `PlayerSave.skillStates[]` across all sessions, separate from in-run progression.
+
+### Adaptive Difficulty
+
+Difficulty is controlled by the player's FSRS tier for each skill:
+
+| Tier | Threshold | Example: Addition |
+|------|-----------|------------------|
+| 1 | New / early learning | 1–20 + 1–20 |
+| 2a | stability ≥ 2, consecutiveCorrect ≥ 2 | 10–99 + 10–99 |
+| 2b | stability ≥ 5, consecutiveCorrect ≥ 3 | 100–999 + 100–999 |
+| 3 | stability ≥ 10, consecutiveCorrect ≥ 4, mastery trial passed | 1000–9999 + 1000–9999 |
+
+### Phase 1 Scope
+
+Phase 1 ships two decks, all multiple-choice (5 options):
+
+- **Arithmetic** — Addition, Subtraction, Multiplication, Division, Mixed Operations (5 skills)
+- **Mental Math** — Percentages, Fractions & Decimals, Estimation (square roots), Order of Operations / PEMDAS (4 skills)
+
+Phase 1.5 adds free-text typed input. Later phases add Algebra, CS/Logic, Geometry, and Statistics.
+
+For full implementation details, see `docs/mechanics/procedural-math.md`.
+
+---
+
 ## 23.5. Trivia Mode
 
 A separate mode where instead of a focused curated deck, facts are drawn from a broad domain pool with no repetition within a run. Every fact appears at most ONCE.

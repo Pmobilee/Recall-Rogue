@@ -1,7 +1,7 @@
 # Screen Flow & State Machine
 
 > **Purpose:** Complete list of all Screen values, routing logic, transition rules, and component mappings.
-> **Last verified:** 2026-04-02
+> **Last verified:** 2026-04-03
 > **Source files:** `src/ui/stores/gameState.ts`, `src/CardApp.svelte`, `src/services/screenController.ts`
 
 ---
@@ -46,6 +46,7 @@ Defined as a TypeScript union type in `src/ui/stores/gameState.ts`:
 | `settings` | In-game settings panel |
 | `studyTemple` | Study Temple screen for dedicated flashcard study |
 | `runPreview` | Pre-run chain distribution preview — shows topic assignments across 3 chains before expedition begins |
+| `proceduralStudy` | Procedural math practice session — one question at a time with FSRS grading; bypasses combat run entirely |
 
 ---
 
@@ -104,6 +105,7 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 | `social` | `SocialScreen` | |
 | `settings` | `SettingsPanel` | |
 | `studyTemple` | `StudyTempleScreen` | |
+| `proceduralStudy` | `ProceduralStudyScreen` | Props: `deckId`, `subDeckId?`, `onBack`; `onBack` returns to `studyTemple` |
 | `runPreview` | `RunPreviewScreen` | Shows chain distribution; `onShuffle` calls `reshuffleChainDistribution()`; `onBeginExpedition` calls `confirmChainDistribution()` |
 | `relicSanctum` | `RelicCollectionScreen` | |
 

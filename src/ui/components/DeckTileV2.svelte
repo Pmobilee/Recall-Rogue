@@ -116,7 +116,7 @@
   const isNew = $derived(progress.progressPercent === 0 && progress.factsEncountered === 0);
   const isInProgress = $derived(progress.progressPercent > 0 && progress.progressPercent < 100);
   const isComplete = $derived(progress.progressPercent >= 100);
-  const descriptionText = $derived(deck.description || `${deck.factCount} facts`);
+  const descriptionText = $derived(deck.description || (deck.procedural ? `${deck.factCount} skills` : `${deck.factCount} facts`));
 
   const inReviewCount = $derived(Math.max(0, progress.factsEncountered - progress.factsMastered));
   const total = $derived(progress.totalFacts || 1);
@@ -184,27 +184,39 @@
       <div class="deck-description">{descriptionText}</div>
 
       <div class="progress-bars">
-        <div class="progress-bar-row">
-          <span class="bar-label seen-label">Seen</span>
-          <div class="bar-track">
-            <div class="bar-fill bar-seen" style="width: {seenPct}%;"></div>
+        {#if deck.procedural}
+          <!-- Procedural deck: single "Practice" bar showing fraction of skills encountered -->
+          <div class="progress-bar-row">
+            <span class="bar-label mastered-label">Skills</span>
+            <div class="bar-track">
+              <div class="bar-fill bar-mastered" style="width: 0%;"></div>
+            </div>
+            <span class="bar-count">{deck.factCount}</span>
           </div>
-          <span class="bar-count">{progress.factsEncountered}</span>
-        </div>
-        <div class="progress-bar-row">
-          <span class="bar-label review-label">Review</span>
-          <div class="bar-track">
-            <div class="bar-fill bar-review" style="width: {reviewPct}%;"></div>
+          <div class="procedural-hint">Practice to track progress</div>
+        {:else}
+          <div class="progress-bar-row">
+            <span class="bar-label seen-label">Seen</span>
+            <div class="bar-track">
+              <div class="bar-fill bar-seen" style="width: {seenPct}%;"></div>
+            </div>
+            <span class="bar-count">{progress.factsEncountered}</span>
           </div>
-          <span class="bar-count">{inReviewCount}</span>
-        </div>
-        <div class="progress-bar-row">
-          <span class="bar-label mastered-label">Mastered</span>
-          <div class="bar-track">
-            <div class="bar-fill bar-mastered" style="width: {masteredPct}%;"></div>
+          <div class="progress-bar-row">
+            <span class="bar-label review-label">Review</span>
+            <div class="bar-track">
+              <div class="bar-fill bar-review" style="width: {reviewPct}%;"></div>
+            </div>
+            <span class="bar-count">{inReviewCount}</span>
           </div>
-          <span class="bar-count">{progress.factsMastered}</span>
-        </div>
+          <div class="progress-bar-row">
+            <span class="bar-label mastered-label">Mastered</span>
+            <div class="bar-track">
+              <div class="bar-fill bar-mastered" style="width: {masteredPct}%;"></div>
+            </div>
+            <span class="bar-count">{progress.factsMastered}</span>
+          </div>
+        {/if}
       </div>
     </div>
 
@@ -472,6 +484,13 @@
     min-width: calc(28px * var(--layout-scale, 1));
     text-align: right;
     flex-shrink: 0;
+  }
+
+  .procedural-hint {
+    font-size: calc(10px * var(--text-scale, 1));
+    color: #374151;
+    font-style: italic;
+    margin-top: calc(2px * var(--layout-scale, 1));
   }
 
   @media (prefers-reduced-motion: reduce) {

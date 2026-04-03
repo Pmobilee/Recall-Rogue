@@ -19,6 +19,7 @@ export const CANONICAL_FACT_DOMAINS = [
   'food_cuisine',
   'art_architecture',
   'language',
+  'mathematics',   // Procedural math domain — generates problems algorithmically, no static facts
 ] as const;
 
 export type CanonicalFactDomain = typeof CANONICAL_FACT_DOMAINS[number];
@@ -41,7 +42,7 @@ export const FACT_DOMAINS = [
 
 const LEGACY_DOMAIN_NORMALIZATION: Record<LegacyFactDomain, CanonicalFactDomain> = {
   science: 'natural_sciences',
-  math: 'general_knowledge',
+  math: 'mathematics',
   arts: 'art_architecture',
   medicine: 'human_body_health',
   technology: 'general_knowledge',

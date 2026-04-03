@@ -40,6 +40,7 @@ export type Screen =
   | 'triviaDungeon'
   | 'studyTemple'
   | 'runPreview'
+  | 'proceduralStudy' // Procedural math practice session — bypasses combat run
   // 'starterRelicSelection' removed in AR-59.12 — runs start directly at dungeonMap
 
 const SCREEN_STORAGE_KEY = 'card:currentScreen'
@@ -79,6 +80,7 @@ const VALID_SCREENS: Screen[] = [
   'triviaDungeon',
   'studyTemple',
   'runPreview',
+  'proceduralStudy',
   // 'starterRelicSelection' removed AR-59.12
 ]
 

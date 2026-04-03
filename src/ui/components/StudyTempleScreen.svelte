@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount, untrack } from 'svelte';
   import { playCardAudio } from '../../services/cardAudioManager';
-  import { getAllDecks, getDecksForDomain } from '../../data/deckRegistry';
+  import { getAllDecks, getDecksForDomain, getDeckById } from '../../data/deckRegistry';
   import type { DeckRegistryEntry } from '../../data/deckRegistry';
   import { getDeckProgress } from '../../services/deckProgressService';
   import { playerSave, persistPlayer } from '../stores/playerData';
@@ -17,7 +17,10 @@ import DeckSearchBar from './DeckSearchBar.svelte';
 
   interface Props {
     onback: () => void;
-    onStartRun: (config: { mode: 'study'; deckId: string; subDeckId?: string; examTags?: string[] }) => void;
+    onStartRun: (config:
+      | { mode: 'study'; deckId: string; subDeckId?: string; examTags?: string[] }
+      | { mode: 'procedural'; deckId: string; subDeckId?: string }
+    ) => void;
   }
 
   let { onback, onStartRun }: Props = $props();
@@ -263,6 +266,13 @@ import DeckSearchBar from './DeckSearchBar.svelte';
         actualDeckId = deckId; // keep 'all:chinese', 'all:dutch', etc.
         actualSubDeckId = undefined;
       }
+    }
+
+    // Procedural decks bypass the combat run — navigate directly to practice screen
+    const entry = getDeckById(actualDeckId);
+    if (entry?.procedural) {
+      onStartRun({ mode: 'procedural', deckId: actualDeckId, subDeckId: actualSubDeckId });
+      return;
     }
 
     playerSave.update(s => s ? {

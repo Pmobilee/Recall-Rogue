@@ -13,9 +13,10 @@ export const DOMAIN_ICON_PATHS: Record<FactDomain, string> = {
   human_body_health: '/assets/sprites/icons/icon_domain_human_body_health.png',
   food_cuisine: '/assets/sprites/icons/icon_domain_food_cuisine.png',
   art_architecture: '/assets/sprites/icons/icon_domain_art_architecture.png',
+  mathematics: '/assets/sprites/icons/icon_domain_mathematics.png',
   // Legacy aliases — mapped to closest domain-specific icon.
   science: '/assets/sprites/icons/icon_domain_natural_sciences.png',
-  math: '/assets/sprites/icons/icon_domain_general_knowledge.png',
+  math: '/assets/sprites/icons/icon_domain_mathematics.png',
   arts: '/assets/sprites/icons/icon_domain_art_architecture.png',
   medicine: '/assets/sprites/icons/icon_domain_human_body_health.png',
   technology: '/assets/sprites/icons/icon_domain_general_knowledge.png',

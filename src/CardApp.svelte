@@ -118,6 +118,7 @@
   import { lastRunSummary } from './services/hubState'
   import { factsDB } from './services/factsDB'
   import { initializeCuratedDecks } from './data/curatedDeckStore'
+  import { registerProceduralDecks } from './services/math/proceduralDeckRegistry'
   import { initConfusionMatrix } from './services/confusionMatrixStore'
   import { getPresetById } from './services/studyPresetService'
   import { collectMatchingFactIds } from './services/presetSelectionService'
@@ -157,6 +158,7 @@
   import DeckSelectionHub from './ui/components/DeckSelectionHub.svelte'
   import TriviaDungeonScreen from './ui/components/TriviaDungeonScreen.svelte'
   import StudyTempleScreen from './ui/components/StudyTempleScreen.svelte'
+import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   import RunPreviewScreen from './ui/components/RunPreviewScreen.svelte'
   import RewardCardDetail from './ui/components/RewardCardDetail.svelte'
   import { rewardCardDetail, getCardDetailCallbacks } from './services/rewardRoomBridge'
@@ -193,6 +195,9 @@
   }
 
   let shuffleSeedOffset = 0
+
+  let proceduralDeckId = $state('')
+  let proceduralSubDeckId = $state<string | undefined>(undefined)
 
   let showOutsideDuePrompt = $state(false)
   let outsideDueCount = $state(0)
@@ -256,7 +261,15 @@
     transitionScreen('deckSelectionHub')
   }
 
-  function handleDungeonRunStart(config: { mode: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> } | { mode: 'study'; deckId: string; subDeckId?: string; examTags?: string[] }): void {
+  function handleDungeonRunStart(config: { mode: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> } | { mode: 'study'; deckId: string; subDeckId?: string; examTags?: string[] } | { mode: 'procedural'; deckId: string; subDeckId?: string }): void {
+    // Procedural math decks bypass the combat run — navigate directly to practice screen
+    if (config.mode === 'procedural') {
+      proceduralDeckId = config.deckId
+      proceduralSubDeckId = config.subDeckId
+      transitionScreen('proceduralStudy')
+      return
+    }
+
     // Set the deck mode in playerSave so the run uses it
     if (config.mode === 'trivia') {
       playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'trivia' as const, domains: config.domains, subdomains: config.subdomains } } : s)
@@ -1044,6 +1057,8 @@
     window.addEventListener('resize', updateLayoutScale)
 
     // Load curated decks in parallel — non-blocking, store handles empty state gracefully
+    // Register procedural math decks into the shared deck registry
+    registerProceduralDecks()
     void initializeCuratedDecks()
 
     // Initialize confusion matrix from player save
@@ -1519,6 +1534,16 @@
       <StudyTempleScreen
         onback={handleBackToDeckHub}
         onStartRun={handleDungeonRunStart}
+      />
+    </div>
+  {/if}
+
+  {#if $currentScreen === 'proceduralStudy'}
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <ProceduralStudyScreen
+        deckId={proceduralDeckId}
+        subDeckId={proceduralSubDeckId}
+        onBack={() => transitionScreen('studyTemple')}
       />
     </div>
   {/if}
