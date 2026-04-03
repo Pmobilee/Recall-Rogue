@@ -339,19 +339,19 @@ describe('Enemy Templates', () => {
     expect(miniBoss).toHaveLength(24);
   });
 
-  it('page_flutter has 12 baseHP (2026-04-03 rebalance)', () => {
+  it('page_flutter has 8 baseHP (2026-04-03 balance pass #5)', () => {
     const bat = ENEMY_TEMPLATES.find(t => t.id === 'page_flutter');
-    expect(bat?.baseHP).toBe(12);
+    expect(bat?.baseHP).toBe(8);
   });
 
-  it('thesis_construct has 13 baseHP (2026-04-03 rebalance)', () => {
+  it('thesis_construct has 9 baseHP (2026-04-03 balance pass #5)', () => {
     const golem = ENEMY_TEMPLATES.find(t => t.id === 'thesis_construct');
-    expect(golem?.baseHP).toBe(13);
+    expect(golem?.baseHP).toBe(9);
   });
 
-  it('algorithm has 14 baseHP (2026-04-03 balance pass #4)', () => {
+  it('algorithm has 12 baseHP (2026-04-03 balance pass #5)', () => {
     const archivist = ENEMY_TEMPLATES.find(t => t.id === 'algorithm');
-    expect(archivist?.baseHP).toBe(14);
+    expect(archivist?.baseHP).toBe(12);
   });
 
   it('peer_reviewer has no immuneDomain (removed in consolidation)', () => {
@@ -522,8 +522,8 @@ describe('Enemy Manager', () => {
         statusEffects: [{ type: 'strength', value: 2, turnsRemaining: 3 }],
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1: round(10 * 1.5 * 1.0) = 15, capped at segment 1 cap of 8.
-      expect(result.damage).toBe(8);
+      // Floor 1: round(10 * 1.5 * 1.0) = 15, capped at segment 1 cap of 7.
+      expect(result.damage).toBe(7);
     });
 
     it('calculates multi_attack damage correctly', () => {
@@ -531,8 +531,8 @@ describe('Enemy Manager', () => {
         nextIntent: { type: 'multi_attack', value: 5, weight: 1, telegraph: 'Flurry', hitCount: 4 },
       });
       const result = executeEnemyIntent(enemy);
-      // round(5 * 1.0 * 1.0) * 4 = 20, capped at segment 1 cap of 8.
-      expect(result.damage).toBe(8);
+      // round(5 * 1.0 * 1.0) * 4 = 20, capped at segment 1 cap of 7.
+      expect(result.damage).toBe(7);
     });
 
     it('returns player debuffs for debuff intent', () => {

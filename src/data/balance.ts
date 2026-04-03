@@ -478,7 +478,7 @@ export const FLOOR_DAMAGE_SCALE_MID = 1.0;
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent(). */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 8,    // kept from pass #2 (2026-04-03): raised from original 6, feels better
+  1: 7,    // reduced from 8 (pass #5, 2026-04-03): weaker L0 player needs lower incoming cap in Act 1
   2: 12,   // reverted to original — balance pass #3 (2026-04-03): common HP reduction makes this sufficient
   3: 18,   // reverted to original — balance pass #3 (2026-04-03)
   4: 28,   // reverted to original — balance pass #3 (2026-04-03)
