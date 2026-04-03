@@ -1,0 +1,1714 @@
+[
+  {
+    "id": "cinema_citizenkane_director",
+    "correctAnswer": "Orson Welles",
+    "acceptableAlternatives": [
+      "Welles"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "director_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "John Ford",
+      "Howard Hawks",
+      "Billy Wilder",
+      "William Wyler",
+      "Frank Capra",
+      "David Lean",
+      "Alfred Hitchcock",
+      "Elia Kazan"
+    ],
+    "quizQuestion": "Who directed Citizen Kane in 1941?",
+    "explanation": "Orson Welles directed, produced, co-wrote, and starred in Citizen Kane at age 25 — an extraordinary debut that introduced groundbreaking cinematography techniques. Source: Wikipedia.",
+    "statement": "Citizen Kane (1941) was directed by Orson Welles, who also starred in and co-wrote the film.",
+    "wowFactor": "Orson Welles made one of cinema's greatest films as his very first feature, at age 25.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Citizen_Kane",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Orson Welles directed which landmark 1941 film?",
+        "correctAnswer": "Citizen Kane",
+        "distractors": [
+          "Casablanca",
+          "Sunset Boulevard",
+          "12 Angry Men"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Citizen Kane was Orson Welles's first feature film?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Citizen Kane (1941) was directed by {___}.",
+        "correctAnswer": "Orson Welles",
+        "distractors": [
+          "John Ford",
+          "Billy Wilder",
+          "Howard Hawks"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "director",
+      "1940s"
+    ],
+    "visualDescription": "A young man in a director's chair on a vast film set in the 1940s, surrounded by oversized camera equipment, dramatic shadows, pixel art style."
+  },
+  {
+    "id": "cinema_citizenkane_quote",
+    "correctAnswer": "Citizen Kane",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Casablanca",
+      "Sunset Boulevard",
+      "The Magnificent Ambersons",
+      "Rebecca",
+      "All About Eve",
+      "Double Indemnity",
+      "The Third Man",
+      "Laura"
+    ],
+    "quizQuestion": "Which 1941 film opens with the dying word 'Rosebud'?",
+    "explanation": "'Rosebud' is the enigmatic last word of Charles Foster Kane in Citizen Kane (1941). The word refers to his childhood sled, symbolizing lost innocence. Source: Wikipedia.",
+    "statement": "Citizen Kane (1941) famously opens with the dying word 'Rosebud', one of cinema's greatest mysteries.",
+    "wowFactor": "'Rosebud' — the most famous last word in cinema history — turns out to be the name of a sled.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Citizen_Kane",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the mysterious dying word in Citizen Kane?",
+        "correctAnswer": "Rosebud",
+        "distractors": [
+          "Amberson",
+          "Kane",
+          "Xanadu"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: 'Rosebud' in Citizen Kane refers to a childhood toy?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "quotes",
+      "1940s",
+      "mystery"
+    ],
+    "visualDescription": "An ornate wooden sled half-buried in snow outside a grand mansion gate, glowing embers reflecting off its painted surface, pixel art style."
+  },
+  {
+    "id": "cinema_casablanca_quote",
+    "correctAnswer": "Casablanca",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Citizen Kane",
+      "The Maltese Falcon",
+      "Gone with the Wind",
+      "Rebecca",
+      "Notorious",
+      "To Have and Have Not",
+      "Key Largo",
+      "The Big Sleep"
+    ],
+    "quizQuestion": "Which 1942 film features the line 'Here's looking at you, kid'?",
+    "explanation": "'Here's looking at you, kid' is spoken by Rick (Humphrey Bogart) to Ilsa (Ingrid Bergman) in Casablanca (1942). The American Film Institute ranks it #5 among the 100 greatest film quotes. Source: Wikipedia.",
+    "statement": "Casablanca (1942) gave us 'Here's looking at you, kid' — one of the most quoted lines in film history.",
+    "wowFactor": "'Here's looking at you, kid' was reportedly improvised by Bogart during production.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Casablanca_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Humphrey Bogart says 'Here's looking at you, kid' in which film?",
+        "correctAnswer": "Casablanca",
+        "distractors": [
+          "The Maltese Falcon",
+          "Key Largo",
+          "To Have and Have Not"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ingrid Bergman starred in Casablanca (1942)?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "quotes",
+      "1940s",
+      "romance"
+    ],
+    "visualDescription": "A smoky North African café at night, a man in a white dinner jacket raising a glass to a beautiful woman, wartime posters on the wall, pixel art style."
+  },
+  {
+    "id": "cinema_casablanca_director",
+    "correctAnswer": "Michael Curtiz",
+    "acceptableAlternatives": [
+      "Curtiz"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "director_names",
+    "difficulty": 5,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Howard Hawks",
+      "John Huston",
+      "Billy Wilder",
+      "William Wyler",
+      "Frank Capra",
+      "Orson Welles",
+      "Alfred Hitchcock",
+      "George Cukor"
+    ],
+    "quizQuestion": "Who directed the 1942 classic film Casablanca?",
+    "explanation": "Michael Curtiz, a Hungarian-American director, helmed Casablanca (1942), which won him the Academy Award for Best Director. He is known for his prolific Hollywood career spanning the studio era. Source: Wikipedia.",
+    "statement": "Casablanca (1942) was directed by Michael Curtiz, who won the Academy Award for Best Director.",
+    "wowFactor": "Michael Curtiz spoke with such a thick Hungarian accent that actors often couldn't understand his direction on set.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Casablanca_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Michael Curtiz directed which beloved 1942 wartime romance?",
+        "correctAnswer": "Casablanca",
+        "distractors": [
+          "The Maltese Falcon",
+          "Double Indemnity",
+          "Rebecca"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Casablanca won the Academy Award for Best Picture?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "director",
+      "1940s"
+    ],
+    "visualDescription": "A director gesturing forcefully beside a large film camera on a studio back lot built to resemble wartime Morocco, pixel art style."
+  },
+  {
+    "id": "cinema_gwtw_oscars",
+    "correctAnswer": "Gone with the Wind",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Ben-Hur",
+      "Casablanca",
+      "The Sound of Music",
+      "Lawrence of Arabia",
+      "West Side Story",
+      "Citizen Kane",
+      "All About Eve",
+      "Rebecca"
+    ],
+    "quizQuestion": "Which 1939 film won a record-setting eight Academy Awards at the time?",
+    "explanation": "Gone with the Wind (1939) won eight Academy Awards at the 12th Academy Awards ceremony, a record at the time, including Best Picture, Best Director (Victor Fleming), and Best Actress (Vivien Leigh). Source: Wikipedia.",
+    "statement": "Gone with the Wind (1939) won a then-record eight Academy Awards, including Best Picture.",
+    "wowFactor": "Gone with the Wind held the record for most Oscar wins for over two decades until Ben-Hur tied it in 1959.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gone_with_the_Wind_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Victor Fleming directed which 1939 Civil War epic?",
+        "correctAnswer": "Gone with the Wind",
+        "distractors": [
+          "The Wizard of Oz",
+          "Stagecoach",
+          "Mr. Smith Goes to Washington"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Vivien Leigh won Best Actress for Gone with the Wind?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "awards",
+      "1930s"
+    ],
+    "visualDescription": "A sweeping Southern plantation burning at sunset, a woman in a green dress standing defiantly on a hill, silhouetted against orange flames, pixel art style."
+  },
+  {
+    "id": "cinema_wizardofoz_transition",
+    "correctAnswer": "The Wizard of Oz",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Gone with the Wind",
+      "Snow White and the Seven Dwarfs",
+      "Fantasia",
+      "Pinocchio",
+      "Bambi",
+      "Cinderella",
+      "Alice in Wonderland",
+      "Dumbo"
+    ],
+    "quizQuestion": "Which 1939 film famously switches from black-and-white to Technicolor?",
+    "explanation": "The Wizard of Oz (1939) opens in sepia-toned black-and-white in Kansas, then transitions to vibrant Technicolor when Dorothy arrives in Oz — one of cinema's most celebrated visual storytelling techniques. Source: Wikipedia.",
+    "statement": "The Wizard of Oz (1939) used a shift from black-and-white to Technicolor to transport Dorothy to a magical world.",
+    "wowFactor": "The Wizard of Oz's shift from sepia to Technicolor was a deliberate storytelling choice — but it nearly didn't happen due to the budget.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Wizard_of_Oz_(1939_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which actress played Dorothy in the 1939 Wizard of Oz?",
+        "correctAnswer": "Judy Garland",
+        "distractors": [
+          "Deanna Durbin",
+          "Shirley Temple",
+          "Ann Rutherford"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Wizard of Oz (1939) was produced by MGM?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "technicolor",
+      "1930s",
+      "musical"
+    ],
+    "visualDescription": "A girl in ruby slippers standing at the threshold between a grey farmhouse and a dazzlingly colorful magical land of yellow-brick roads, pixel art style."
+  },
+  {
+    "id": "cinema_itswonderfullife_director",
+    "correctAnswer": "Frank Capra",
+    "acceptableAlternatives": [
+      "Capra"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "director_names",
+    "difficulty": 4,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "John Ford",
+      "Billy Wilder",
+      "Howard Hawks",
+      "William Wyler",
+      "George Stevens",
+      "Preston Sturges",
+      "Leo McCarey",
+      "Ernst Lubitsch"
+    ],
+    "quizQuestion": "Who directed It's a Wonderful Life in 1946?",
+    "explanation": "Frank Capra directed It's a Wonderful Life (1946), starring James Stewart as George Bailey. The film initially underperformed at the box office but became one of the most beloved films in American history through television reruns. Source: Wikipedia.",
+    "statement": "It's a Wonderful Life (1946) was directed by Frank Capra, starring James Stewart as George Bailey.",
+    "wowFactor": "It's a Wonderful Life was a box-office flop in 1946 — it only became iconic after its copyright lapsed and TV stations played it constantly.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/It%27s_a_Wonderful_Life",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Frank Capra directed which beloved 1946 Christmas fantasy film?",
+        "correctAnswer": "It's a Wonderful Life",
+        "distractors": [
+          "Miracle on 34th Street",
+          "The Bishop's Wife",
+          "Holiday Inn"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: It's a Wonderful Life (1946) starred James Stewart?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "director",
+      "1940s",
+      "christmas"
+    ],
+    "visualDescription": "A man in a snowy small-town street at Christmas, looking up at a sky full of stars, arms wide open in wonder, warm light from shops behind him, pixel art style."
+  },
+  {
+    "id": "cinema_psycho_shower",
+    "correctAnswer": "Psycho",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Vertigo",
+      "Rear Window",
+      "The Birds",
+      "North by Northwest",
+      "Rebecca",
+      "Rope",
+      "Dial M for Murder",
+      "Strangers on a Train"
+    ],
+    "quizQuestion": "Which 1960 Hitchcock film features the famous shower scene?",
+    "explanation": "The shower scene in Psycho (1960) is one of the most analyzed scenes in cinema history. Janet Leigh's character Marion Crane is killed by Norman Bates in what took 7 days to film with 77 different camera angles. Source: Wikipedia.",
+    "statement": "Psycho (1960) contains the infamous shower scene — 77 camera angles edited together in 3 terrifying minutes.",
+    "wowFactor": "The shower scene in Psycho took 7 days to film and used 77 different camera angles — yet no nudity is actually shown.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Psycho_(1960_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Alfred Hitchcock directed which 1960 horror landmark?",
+        "correctAnswer": "Psycho",
+        "distractors": [
+          "The Birds",
+          "Vertigo",
+          "Rear Window"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Anthony Perkins played Norman Bates in Psycho?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "hitchcock",
+      "horror",
+      "1960s"
+    ],
+    "visualDescription": "A bird-themed motel office at night, a taxidermied owl on the wall, a key hanging on a hook numbered 1, shadows of a figure behind frosted glass, pixel art style."
+  },
+  {
+    "id": "cinema_psycho_star",
+    "correctAnswer": "Janet Leigh",
+    "acceptableAlternatives": [
+      "Leigh"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 5,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Kim Novak",
+      "Grace Kelly",
+      "Vera Miles",
+      "Eva Marie Saint",
+      "Doris Day",
+      "Audrey Hepburn",
+      "Lana Turner",
+      "Tippi Hedren"
+    ],
+    "quizQuestion": "Which actress played Marion Crane in Psycho (1960)?",
+    "explanation": "Janet Leigh played Marion Crane in Alfred Hitchcock's Psycho (1960). Her performance earned her a Golden Globe Award and an Academy Award nomination for Best Supporting Actress. Source: Wikipedia.",
+    "statement": "Janet Leigh earned an Oscar nomination for playing the doomed Marion Crane in Psycho (1960).",
+    "wowFactor": "Janet Leigh was so traumatized by Psycho that she refused to take showers for the rest of her life.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Psycho_(1960_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Janet Leigh received an Oscar nomination for which 1960 Hitchcock film?",
+        "correctAnswer": "Psycho",
+        "distractors": [
+          "Vertigo",
+          "The Birds",
+          "North by Northwest"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Janet Leigh's character survives to the end of Psycho?",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "hitchcock",
+      "actor",
+      "1960s"
+    ],
+    "visualDescription": "A 1960s actress in a car looking nervously at a motel sign in the rain, headlights illuminating a looming Victorian house on a hill behind it, pixel art style."
+  },
+  {
+    "id": "cinema_singinrain_codirector",
+    "correctAnswer": "Stanley Donen",
+    "acceptableAlternatives": [
+      "Donen"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "director_names",
+    "difficulty": 6,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Vincente Minnelli",
+      "Charles Walters",
+      "George Sidney",
+      "Busby Berkeley",
+      "Clarence Brown",
+      "Richard Thorpe",
+      "Norman Taurog",
+      "Rouben Mamoulian"
+    ],
+    "quizQuestion": "Who co-directed Singin' in the Rain alongside Gene Kelly?",
+    "explanation": "Singin' in the Rain (1952) was co-directed by Gene Kelly and Stanley Donen. Donen would go on to direct other classics including Funny Face and Charade. Source: Wikipedia.",
+    "statement": "Singin' in the Rain (1952) was co-directed by Gene Kelly and Stanley Donen.",
+    "wowFactor": "Stanley Donen was only 27 years old when he co-directed Singin' in the Rain, often considered the greatest movie musical ever made.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Singin%27_in_the_Rain",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Gene Kelly co-directed Singin' in the Rain with which other director?",
+        "correctAnswer": "Stanley Donen",
+        "distractors": [
+          "Vincente Minnelli",
+          "Charles Walters",
+          "Busby Berkeley"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Debbie Reynolds starred in Singin' in the Rain?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "musical",
+      "director",
+      "1950s"
+    ],
+    "visualDescription": "A man in a yellow raincoat dancing exuberantly on a rain-soaked Hollywood street at night, lamppost as a dance partner, splashing puddles, pixel art style."
+  },
+  {
+    "id": "cinema_somelikeithot_ending",
+    "correctAnswer": "Some Like It Hot",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 4,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "The Apartment",
+      "Sabrina",
+      "Love in the Afternoon",
+      "Witness for the Prosecution",
+      "Gentlemen Prefer Blondes",
+      "How to Marry a Millionaire",
+      "Bus Stop",
+      "The Seven Year Itch"
+    ],
+    "quizQuestion": "Which Billy Wilder film ends with 'Nobody's perfect'?",
+    "explanation": "Some Like It Hot (1959) ends when Osgood Fielding III (Joe E. Brown) reveals his indifference to Jerry/Daphne being a man with the immortal line 'Nobody's perfect!' — ranked #48 by the AFI among the greatest movie quotes. Source: Wikipedia.",
+    "statement": "Some Like It Hot (1959) ends with the punch line 'Nobody's perfect!' — one of comedy's greatest final lines.",
+    "wowFactor": "'Nobody's perfect!' reportedly came from a throwaway improvisation that Billy Wilder kept because he couldn't think of a better ending.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Some_Like_It_Hot",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Billy Wilder directed which 1959 Marilyn Monroe comedy classic?",
+        "correctAnswer": "Some Like It Hot",
+        "distractors": [
+          "The Seven Year Itch",
+          "Bus Stop",
+          "Gentlemen Prefer Blondes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Marilyn Monroe starred in Some Like It Hot?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "comedy",
+      "quotes",
+      "1950s"
+    ],
+    "visualDescription": "Two men in drag as 1920s jazz musicians on a Florida beach, one holding a ukulele, a speedboat in the background, comedic pixel art style.",
+    "quizMode": "standard"
+  },
+  {
+    "id": "cinema_lawrenceofarabia_star",
+    "correctAnswer": "Peter O'Toole",
+    "acceptableAlternatives": [
+      "O'Toole"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Alec Guinness",
+      "Richard Burton",
+      "Omar Sharif",
+      "Anthony Quinn",
+      "Jack Hawkins",
+      "Laurence Olivier",
+      "Albert Finney",
+      "Paul Scofield"
+    ],
+    "quizQuestion": "Which actor played T.E. Lawrence in the 1962 epic film?",
+    "explanation": "Peter O'Toole starred as T.E. Lawrence in Lawrence of Arabia (1962), directed by David Lean. The performance launched O'Toole to international stardom and earned him the first of eight Academy Award nominations. Source: Wikipedia.",
+    "statement": "Peter O'Toole's portrayal of T.E. Lawrence in Lawrence of Arabia (1962) launched his career and earned him his first Oscar nomination.",
+    "wowFactor": "Peter O'Toole was nominated for eight Academy Awards without ever winning — a record for nominations without a win.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lawrence_of_Arabia_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Peter O'Toole made his breakout role in which 1962 epic?",
+        "correctAnswer": "Lawrence of Arabia",
+        "distractors": [
+          "El Cid",
+          "Exodus",
+          "Spartacus"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lawrence of Arabia won the Academy Award for Best Picture?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "epic",
+      "actor",
+      "1960s"
+    ],
+    "visualDescription": "A golden-haired man in white Arab robes standing atop a desert dune at sunrise, a vast sea of sand and camel riders behind him, pixel art style."
+  },
+  {
+    "id": "cinema_lawrenceofarabia_runtime",
+    "correctAnswer": "David Lean",
+    "acceptableAlternatives": [
+      "Lean"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "director_names",
+    "difficulty": 4,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "William Wyler",
+      "Carol Reed",
+      "Richard Attenborough",
+      "John Schlesinger",
+      "Ken Russell",
+      "John Huston",
+      "Otto Preminger",
+      "Joseph L. Mankiewicz"
+    ],
+    "quizQuestion": "Which British director helmed Lawrence of Arabia in 1962?",
+    "explanation": "David Lean directed Lawrence of Arabia (1962), which won seven Academy Awards including Best Picture and Best Director. Lean also directed The Bridge on the River Kwai (1957) and Doctor Zhivago (1965). Source: Wikipedia.",
+    "statement": "David Lean directed both Lawrence of Arabia (1962) and The Bridge on the River Kwai (1957), winning Best Director Oscars for both.",
+    "wowFactor": "David Lean won Best Director twice in five years — for The Bridge on the River Kwai (1957) and Lawrence of Arabia (1962).",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lawrence_of_Arabia_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "David Lean won back-to-back Best Director Oscars for which two films?",
+        "correctAnswer": "Kwai & Lawrence",
+        "distractors": [
+          "Zhivago & Kwai",
+          "Lawrence & Zhivago",
+          "Brief Encounter & Kwai"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lawrence of Arabia was filmed entirely on location in the Arabian desert?",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "director",
+      "british",
+      "1960s"
+    ],
+    "visualDescription": "A lone director standing at the edge of a massive desert film set, megaphone in hand, a hundred riders on camels waiting in the dunes behind him, pixel art style."
+  },
+  {
+    "id": "cinema_soundofmusic_star",
+    "correctAnswer": "Julie Andrews",
+    "acceptableAlternatives": [
+      "Andrews"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Audrey Hepburn",
+      "Doris Day",
+      "Debbie Reynolds",
+      "Shirley Jones",
+      "Natalie Wood",
+      "Leslie Caron",
+      "Sophia Loren",
+      "Annette Funicello"
+    ],
+    "quizQuestion": "Which actress played Maria von Trapp in The Sound of Music (1965)?",
+    "explanation": "Julie Andrews starred as Maria von Trapp in The Sound of Music (1965), directed by Robert Wise. The film became the highest-grossing film of 1965 and won five Academy Awards including Best Picture. Source: Wikipedia.",
+    "statement": "Julie Andrews played Maria von Trapp in The Sound of Music (1965), which became the highest-grossing film of that year.",
+    "wowFactor": "Julie Andrews won back-to-back Best Actress Oscars in 1965 (Mary Poppins) and was nominated again for The Sound of Music the following year.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Sound_of_Music_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Julie Andrews starred in which 1965 musical set in Austria?",
+        "correctAnswer": "The Sound of Music",
+        "distractors": [
+          "Mary Poppins",
+          "My Fair Lady",
+          "Thoroughly Modern Millie"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Sound of Music was set in Salzburg, Austria?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "musical",
+      "actor",
+      "1960s"
+    ],
+    "visualDescription": "A woman in a blue dress spinning on a vast alpine meadow with arms wide open, mountain peaks and a picturesque castle in the distance, pixel art style."
+  },
+  {
+    "id": "cinema_westsidestory_inspiration",
+    "correctAnswer": "Romeo and Juliet",
+    "acceptableAlternatives": [
+      "Romeo & Juliet"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Hamlet",
+      "A Midsummer Night's Dream",
+      "Othello",
+      "Much Ado About Nothing",
+      "The Tempest",
+      "Macbeth",
+      "King Lear",
+      "Twelfth Night"
+    ],
+    "quizQuestion": "West Side Story (1961) was inspired by which Shakespeare play?",
+    "explanation": "West Side Story (1961), directed by Robert Wise and Jerome Robbins, is a modern retelling of Shakespeare's Romeo and Juliet, set among rival gangs in 1950s New York. The music was composed by Leonard Bernstein. Source: Wikipedia.",
+    "statement": "West Side Story (1961) transposed Shakespeare's Romeo and Juliet to rival street gangs in 1950s New York.",
+    "wowFactor": "West Side Story won 10 Academy Awards in 1962 — a record that stood until Titanic (1997) tied it.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/West_Side_Story_(1961_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "West Side Story set which Shakespeare tragedy in 1950s New York?",
+        "correctAnswer": "Romeo and Juliet",
+        "distractors": [
+          "Othello",
+          "Hamlet",
+          "A Midsummer Night's Dream"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Leonard Bernstein composed the music for West Side Story?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "musical",
+      "shakespeare",
+      "1960s"
+    ],
+    "visualDescription": "Two rival youth gangs in 1950s New York, one in Jets jackets and one in Sharks colors, facing off on a colorful urban street at night, pixel art style."
+  },
+  {
+    "id": "cinema_benhur_oscars",
+    "correctAnswer": "{11}",
+    "acceptableAlternatives": [
+      "eleven"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 5,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "How many Academy Awards did Ben-Hur (1959) win?",
+    "explanation": "Ben-Hur (1959), directed by William Wyler, won 11 Academy Awards — a record that stood for 37 years until Titanic (1997) matched it. The film starred Charlton Heston. Source: Wikipedia.",
+    "statement": "Ben-Hur (1959) won 11 Academy Awards, a record that stood for nearly four decades.",
+    "wowFactor": "Ben-Hur's 11 Oscar wins stood as the all-time record for 37 years until Titanic and The Lord of the Rings: The Return of the King matched it.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ben-Hur_(1959_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which 1959 epic film won 11 Academy Awards, a then-record?",
+        "correctAnswer": "Ben-Hur",
+        "distractors": [
+          "Gone with the Wind",
+          "Lawrence of Arabia",
+          "The Ten Commandments"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Charlton Heston starred in Ben-Hur (1959)?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "awards",
+      "epic",
+      "1950s"
+    ],
+    "visualDescription": "A muscular charioteer in Roman-era white robes racing four white horses around a massive dusty arena, thousands of spectators roaring in the stands, pixel art style."
+  },
+  {
+    "id": "cinema_vertigo_actor",
+    "correctAnswer": "James Stewart",
+    "acceptableAlternatives": [
+      "Jimmy Stewart",
+      "Stewart"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Cary Grant",
+      "Henry Fonda",
+      "Gregory Peck",
+      "William Holden",
+      "Robert Mitchum",
+      "Kirk Douglas",
+      "Burt Lancaster",
+      "Rock Hudson"
+    ],
+    "quizQuestion": "Which actor starred in Hitchcock's Vertigo (1958)?",
+    "explanation": "James Stewart starred in Vertigo (1958), playing retired detective John 'Scottie' Ferguson who develops an obsession with a woman he is hired to follow. Stewart appeared in four Hitchcock films in total. Source: Wikipedia.",
+    "statement": "James Stewart played acrophobic detective Scottie Ferguson in Hitchcock's Vertigo (1958).",
+    "wowFactor": "Vertigo was considered a minor Hitchcock film at release — critics now regularly rank it the greatest film ever made.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vertigo_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "James Stewart starred in which 1958 Hitchcock psychological thriller?",
+        "correctAnswer": "Vertigo",
+        "distractors": [
+          "Rear Window",
+          "The Man Who Knew Too Much",
+          "Rope"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Vertigo (1958) is set in San Francisco?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "hitchcock",
+      "actor",
+      "1950s"
+    ],
+    "visualDescription": "A man clutching a bell tower railing, looking straight down a dizzying spiral staircase, sweat on his brow, San Francisco rooftops below, pixel art style."
+  },
+  {
+    "id": "cinema_rearwindow_concept",
+    "correctAnswer": "Rear Window",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Vertigo",
+      "Rope",
+      "Dial M for Murder",
+      "The Wrong Man",
+      "Strangers on a Train",
+      "Shadow of a Doubt",
+      "North by Northwest",
+      "Spellbound"
+    ],
+    "quizQuestion": "Which Hitchcock film is set almost entirely inside one apartment?",
+    "explanation": "Rear Window (1954) confines its viewpoint almost entirely to photographer L.B. Jefferies' apartment, as he spies on neighbors through his rear window and becomes convinced he witnessed a murder. The entire film reflects his limited perspective. Source: Wikipedia.",
+    "statement": "Rear Window (1954) unfolds almost entirely from one apartment window, as James Stewart watches neighbors and suspects a murder.",
+    "wowFactor": "Rear Window's entire story unfolds from one room — Hitchcock made voyeurism itself the subject of the film.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rear_Window",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Grace Kelly co-starred with James Stewart in which 1954 Hitchcock thriller?",
+        "correctAnswer": "Rear Window",
+        "distractors": [
+          "Dial M for Murder",
+          "To Catch a Thief",
+          "Vertigo"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Grace Kelly appeared in Rear Window (1954)?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "hitchcock",
+      "thriller",
+      "1950s"
+    ],
+    "visualDescription": "A man in a wheelchair looking through binoculars at an apartment courtyard full of lit windows, each showing a different slice of neighbor's lives, pixel art style."
+  },
+  {
+    "id": "cinema_sunsetboulevard_opening",
+    "correctAnswer": "Sunset Boulevard",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 4,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Double Indemnity",
+      "The Lost Weekend",
+      "Ace in the Hole",
+      "Stalag 17",
+      "Witness for the Prosecution",
+      "All About Eve",
+      "Laura",
+      "The Third Man"
+    ],
+    "quizQuestion": "Which 1950 film noir opens with a dead man narrating from a swimming pool?",
+    "explanation": "Sunset Boulevard (1950), directed by Billy Wilder, opens with its protagonist Joe Gillis (William Holden) narrating while floating dead in a Hollywood swimming pool — a shocking and iconic storytelling device. Source: Wikipedia.",
+    "statement": "Sunset Boulevard (1950) opens with the narrator already dead, floating in a Hollywood swimming pool.",
+    "wowFactor": "Sunset Boulevard's twist is revealed in the opening shot — the narrator is a corpse — making every line a dead man's confession.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sunset_Boulevard_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Billy Wilder directed which 1950 Hollywood noir about a faded silent film star?",
+        "correctAnswer": "Sunset Boulevard",
+        "distractors": [
+          "Double Indemnity",
+          "The Lost Weekend",
+          "Ace in the Hole"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Gloria Swanson played Norma Desmond in Sunset Boulevard?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "film-noir",
+      "quotes",
+      "1950s"
+    ],
+    "visualDescription": "A body floating face-down in a luxurious Hollywood swimming pool at dawn, palm trees reflected in the still water, a grand mansion visible through iron gates, pixel art style."
+  },
+  {
+    "id": "cinema_sunsetboulevard_quote",
+    "correctAnswer": "Sunset Boulevard",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 4,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "All About Eve",
+      "Double Indemnity",
+      "Mildred Pierce",
+      "The Letter",
+      "Laura",
+      "Gaslight",
+      "Rebecca",
+      "Notorious"
+    ],
+    "quizQuestion": "Which film contains 'I'm ready for my close-up, Mr. DeMille'?",
+    "explanation": "The line 'All right, Mr. DeMille, I'm ready for my close-up' is spoken by Norma Desmond (Gloria Swanson) in Sunset Boulevard (1950). It is ranked #7 on the AFI's 100 greatest movie quotes list. Source: Wikipedia.",
+    "statement": "'I'm ready for my close-up, Mr. DeMille' — Norma Desmond's delusional last words in Sunset Boulevard (1950).",
+    "wowFactor": "The real Cecil B. DeMille appears in Sunset Boulevard playing himself — making Norma's final delusion even more haunting.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sunset_Boulevard_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "In Sunset Boulevard, who speaks the famous close-up line?",
+        "correctAnswer": "Norma Desmond",
+        "distractors": [
+          "Betty Schaefer",
+          "Max von Mayerling",
+          "Joe Gillis"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The real Cecil B. DeMille appeared in Sunset Boulevard?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "quotes",
+      "film-noir",
+      "1950s"
+    ],
+    "visualDescription": "A glamorous but unhinged silent film actress descending a grand staircase toward flashing cameras, her butler watching impassively from the shadows, pixel art style."
+  },
+  {
+    "id": "cinema_onthewaterfront_line",
+    "correctAnswer": "On the Waterfront",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "A Streetcar Named Desire",
+      "The Wild One",
+      "East of Eden",
+      "Guys and Dolls",
+      "The Men",
+      "Sayonara",
+      "The Fugitive Kind",
+      "Viva Zapata!"
+    ],
+    "quizQuestion": "Which 1954 film features Brando's 'I coulda been a contender' speech?",
+    "explanation": "'I could've been a contender' is spoken by Terry Malloy (Marlon Brando) to his brother Charley in a taxi scene in On the Waterfront (1954), directed by Elia Kazan. The AFI ranks it as the #3 greatest movie quote of all time. Source: Wikipedia.",
+    "statement": "On the Waterfront (1954) contains Brando's legendary 'I coulda been a contender' speech — ranked #3 in movie quote history.",
+    "wowFactor": "The 'contender' speech was filmed in a fake taxi cab interior on a studio lot — the streets of New York seen through the window were a rear projection.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/On_the_Waterfront",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Elia Kazan directed which 1954 Marlon Brando classic about dock workers?",
+        "correctAnswer": "On the Waterfront",
+        "distractors": [
+          "A Streetcar Named Desire",
+          "East of Eden",
+          "The Wild One"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: On the Waterfront won the Academy Award for Best Picture?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "quotes",
+      "brando",
+      "1950s"
+    ],
+    "visualDescription": "Two men in heavy wool coats talking in the back of a taxi at night, New York docks visible through rain-streaked windows, tension visible in their faces, pixel art style."
+  },
+  {
+    "id": "cinema_12angrymen_debut",
+    "correctAnswer": "Sidney Lumet",
+    "acceptableAlternatives": [
+      "Lumet"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "director_names",
+    "difficulty": 5,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "John Frankenheimer",
+      "Robert Wise",
+      "Blake Edwards",
+      "Richard Brooks",
+      "Stanley Kramer",
+      "Mark Robson",
+      "Arthur Penn",
+      "Franklin J. Schaffner"
+    ],
+    "quizQuestion": "Which director made his debut with 12 Angry Men (1957)?",
+    "explanation": "12 Angry Men (1957) was Sidney Lumet's feature directorial debut. Adapted from Reginald Rose's 1954 teleplay, it was shot in 19 days entirely in one jury room and earned Academy Award nominations for Best Picture, Best Director, and Best Screenplay. Source: Wikipedia.",
+    "statement": "Sidney Lumet made his feature film directing debut with 12 Angry Men (1957), shot in just 19 days.",
+    "wowFactor": "12 Angry Men was shot in only 19 days on a single set — and received Oscar nominations for Best Picture, Director, and Screenplay.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/12_Angry_Men_(1957_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Sidney Lumet's directorial debut was which classic 1957 courtroom drama?",
+        "correctAnswer": "12 Angry Men",
+        "distractors": [
+          "Anatomy of a Murder",
+          "Witness for the Prosecution",
+          "The Defendant"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Henry Fonda starred in 12 Angry Men (1957)?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "drama",
+      "director",
+      "1950s"
+    ],
+    "visualDescription": "Twelve men in 1950s suits crowded around a long table in a sweltering jury room, one man standing with his arms folded calmly against the others' anger, pixel art style."
+  },
+  {
+    "id": "cinema_bridgekwai_whistling",
+    "correctAnswer": "The Bridge on the River Kwai",
+    "acceptableAlternatives": [
+      "Bridge on the River Kwai"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Lawrence of Arabia",
+      "The Great Escape",
+      "Stalag 17",
+      "The Longest Day",
+      "Patton",
+      "Tora! Tora! Tora!",
+      "The Guns of Navarone",
+      "Where Eagles Dare"
+    ],
+    "quizQuestion": "Which David Lean film features soldiers whistling 'Colonel Bogey March'?",
+    "explanation": "The Bridge on the River Kwai (1957) famously opens with British POWs whistling 'Colonel Bogey March' as they march into a Japanese prison camp. Alec Guinness won the Best Actor Oscar for his role as Colonel Nicholson. Source: Wikipedia.",
+    "statement": "The Bridge on the River Kwai (1957) opens with British POWs whistling 'Colonel Bogey March' — now inseparable from the film.",
+    "wowFactor": "Alec Guinness won the Oscar for Best Actor in Bridge on the River Kwai — and reportedly hated the film until critics praised it.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Bridge_on_the_River_Kwai",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Alec Guinness won Best Actor for which 1957 David Lean war film?",
+        "correctAnswer": "The Bridge on the River Kwai",
+        "distractors": [
+          "Lawrence of Arabia",
+          "The Great Escape",
+          "Stalag 17"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Bridge on the River Kwai won the Academy Award for Best Picture?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "war",
+      "epic",
+      "1950s"
+    ],
+    "visualDescription": "A column of British soldiers in ragged POW uniforms marching through a jungle camp in Burma, whistling in unison, a Japanese commandant watching from a guard tower, pixel art style."
+  },
+  {
+    "id": "cinema_breakfasttiffanys_star",
+    "correctAnswer": "Audrey Hepburn",
+    "acceptableAlternatives": [
+      "Hepburn"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Grace Kelly",
+      "Natalie Wood",
+      "Kim Novak",
+      "Janet Leigh",
+      "Shirley MacLaine",
+      "Leslie Caron",
+      "Julie Andrews",
+      "Eva Marie Saint"
+    ],
+    "quizQuestion": "Which actress played Holly Golightly in Breakfast at Tiffany's (1961)?",
+    "explanation": "Audrey Hepburn played Holly Golightly in Breakfast at Tiffany's (1961), directed by Blake Edwards. Her performance, paired with Henry Mancini's Oscar-winning song 'Moon River', became iconic. Several major stars including Marilyn Monroe were considered for the role. Source: Wikipedia.",
+    "statement": "Audrey Hepburn played the enchanting Holly Golightly in Breakfast at Tiffany's (1961), making the little black dress and tiara iconic.",
+    "wowFactor": "Marilyn Monroe was Truman Capote's first choice for Holly Golightly — but Audrey Hepburn's performance became one of cinema's most iconic.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Breakfast_at_Tiffany%27s_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Audrey Hepburn starred as Holly Golightly in which 1961 romantic film?",
+        "correctAnswer": "Breakfast at Tiffany's",
+        "distractors": [
+          "Sabrina",
+          "Roman Holiday",
+          "Funny Face"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: 'Moon River' won the Academy Award for Best Original Song in 1962?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "romance",
+      "actor",
+      "1960s"
+    ],
+    "visualDescription": "An elegant woman in a long black dress and pearls holding a croissant, peering into a jewellery store window at sunrise in an empty Manhattan street, pixel art style."
+  },
+  {
+    "id": "cinema_breakfasttiffanys_song",
+    "correctAnswer": "Moon River",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Days of Wine and Roses",
+      "The Look of Love",
+      "Raindrops Keep Fallin'",
+      "Call Me Irresponsible",
+      "The Shadow of Your Smile",
+      "Born Free",
+      "Strangers in the Night",
+      "What's New Pussycat"
+    ],
+    "quizQuestion": "What Oscar-winning song was featured in Breakfast at Tiffany's (1961)?",
+    "explanation": "Henry Mancini composed 'Moon River' for Breakfast at Tiffany's (1961), with lyrics by Johnny Mercer. Audrey Hepburn performed it in the film. The song won the Academy Award for Best Original Song at the 34th Academy Awards. Source: Wikipedia.",
+    "statement": "'Moon River' by Henry Mancini won the Oscar for Best Original Song for Breakfast at Tiffany's (1961).",
+    "wowFactor": "Studio executives wanted to cut 'Moon River' from Breakfast at Tiffany's — Audrey Hepburn reportedly responded with fury and the song stayed.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Breakfast_at_Tiffany%27s_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Henry Mancini composed which song for Breakfast at Tiffany's?",
+        "correctAnswer": "Moon River",
+        "distractors": [
+          "Days of Wine and Roses",
+          "The Pink Panther Theme",
+          "Peter Gunn"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: 'Moon River' has lyrics written by Johnny Mercer?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "music",
+      "awards",
+      "1960s"
+    ],
+    "visualDescription": "A woman sitting on a fire escape in a New York brownstone, strumming a guitar under the morning sun, the city slowly waking below her, pixel art style."
+  },
+  {
+    "id": "cinema_tokillmockingbird_star",
+    "correctAnswer": "Gregory Peck",
+    "acceptableAlternatives": [
+      "Peck"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Henry Fonda",
+      "Spencer Tracy",
+      "James Stewart",
+      "Cary Grant",
+      "William Holden",
+      "Burt Lancaster",
+      "Kirk Douglas",
+      "Robert Mitchum"
+    ],
+    "quizQuestion": "Which actor played Atticus Finch in To Kill a Mockingbird (1962)?",
+    "explanation": "Gregory Peck won the Academy Award for Best Actor for his portrayal of Atticus Finch in To Kill a Mockingbird (1962), directed by Robert Mulligan. Atticus Finch was later named the greatest hero in American film history by the AFI. Source: Wikipedia.",
+    "statement": "Gregory Peck won Best Actor for playing Atticus Finch in To Kill a Mockingbird (1962) — the AFI's greatest film hero.",
+    "wowFactor": "Gregory Peck said Atticus Finch was his favorite role of his career — and Harper Lee gave him her father's pocket watch as a token of gratitude.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/To_Kill_a_Mockingbird_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Gregory Peck won Best Actor for playing which beloved fictional lawyer?",
+        "correctAnswer": "Atticus Finch",
+        "distractors": [
+          "Henry Drummond",
+          "Paul Biegler",
+          "Sam Bowden"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Atticus Finch was named the AFI's greatest hero in American film history?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "drama",
+      "actor",
+      "1960s"
+    ],
+    "visualDescription": "A tall man in a rumpled suit standing in a segregated Southern courtroom, speaking calmly to an all-white jury on behalf of a wrongly accused Black man, pixel art style."
+  },
+  {
+    "id": "cinema_tokillmockingbird_novel",
+    "correctAnswer": "Harper Lee",
+    "acceptableAlternatives": [
+      "Lee"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Truman Capote",
+      "William Faulkner",
+      "John Steinbeck",
+      "Flannery O'Connor",
+      "Carson McCullers",
+      "Eudora Welty",
+      "Lillian Hellman",
+      "Tennessee Williams"
+    ],
+    "quizQuestion": "Who wrote the novel that To Kill a Mockingbird (1962) was adapted from?",
+    "explanation": "To Kill a Mockingbird (1962) was adapted from Harper Lee's 1960 Pulitzer Prize-winning novel of the same name. The novel was Lee's only published work for 55 years until Go Set a Watchman appeared in 2015. Source: Wikipedia.",
+    "statement": "To Kill a Mockingbird (1962) was based on Harper Lee's Pulitzer Prize-winning 1960 novel — her only published book for 55 years.",
+    "wowFactor": "Harper Lee and Truman Capote were childhood friends — and Capote is thought to be the basis for the character Dill in the novel.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/To_Kill_a_Mockingbird_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Harper Lee's Pulitzer Prize novel was adapted into which 1962 film?",
+        "correctAnswer": "To Kill a Mockingbird",
+        "distractors": [
+          "Breakfast at Tiffany's",
+          "The Long Hot Summer",
+          "In Cold Blood"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: To Kill a Mockingbird (1962) was Harper Lee's only novel adapted for film?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "literature",
+      "adaptation",
+      "1960s"
+    ],
+    "visualDescription": "A small-town Alabama library at dusk, a hand-written manuscript on a wooden desk beside a typewriter, a Pulitzer Prize medal gleaming beside it, pixel art style."
+  },
+  {
+    "id": "cinema_gwtw_runtime",
+    "correctAnswer": "{1939}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was Gone with the Wind released?",
+    "explanation": "Gone with the Wind had its world premiere in Atlanta, Georgia on December 15, 1939, and was widely released that year. Directed by Victor Fleming, it is based on Margaret Mitchell's 1936 novel. Source: Wikipedia.",
+    "statement": "Gone with the Wind premiered in Atlanta, Georgia in December 1939.",
+    "wowFactor": "Gone with the Wind's Atlanta premiere was treated like a state event — the governor declared a three-day holiday.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gone_with_the_Wind_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Gone with the Wind premiered in 1939?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Victor Fleming's Gone with the Wind is set during which American war?",
+        "correctAnswer": "Civil War",
+        "distractors": [
+          "World War I",
+          "World War II",
+          "Mexican-American War"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "epic",
+      "1930s"
+    ],
+    "visualDescription": "A glamorous red-carpet premiere at a grand Atlanta theatre in 1939, searchlights sweeping the sky, crowds of thousands pressing against velvet ropes, pixel art style."
+  },
+  {
+    "id": "cinema_westsidestory_oscars",
+    "correctAnswer": "{10}",
+    "acceptableAlternatives": [
+      "ten"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 5,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "How many Academy Awards did West Side Story (1961) win?",
+    "explanation": "West Side Story (1961) won 10 Academy Awards out of 11 nominations, including Best Picture, Best Director (Robert Wise and Jerome Robbins), and Best Supporting Actress (Rita Moreno). This record stood until Titanic (1997) matched it. Source: Wikipedia.",
+    "statement": "West Side Story (1961) won 10 Academy Awards, a record matched only decades later.",
+    "wowFactor": "West Side Story won 10 Oscars out of 11 nominations in 1962 — an extraordinary 91% hit rate.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/West_Side_Story_(1961_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "West Side Story (1961) won how many of its 11 Oscar nominations?",
+        "correctAnswer": "{10}",
+        "distractors": []
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Rita Moreno won Best Supporting Actress for West Side Story?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "musical",
+      "awards",
+      "1960s"
+    ],
+    "visualDescription": "A young Puerto Rican woman in a bright yellow dress accepting a gleaming Oscar statuette on stage, a beaming audience applauding below the curtained theatre, pixel art style."
+  },
+  {
+    "id": "cinema_vertigo_year",
+    "correctAnswer": "{1958}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 4,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was Hitchcock's Vertigo released?",
+    "explanation": "Vertigo was released in 1958, based on the 1954 French novel D'entre les morts (From Among the Dead). It was reissued in 1983 after years of being suppressed by Hitchcock's estate, and has since risen to the top of many greatest films lists. Source: Wikipedia.",
+    "statement": "Vertigo (1958) was withheld from circulation for decades and only became recognized as a masterpiece after its 1983 re-release.",
+    "wowFactor": "Hitchcock personally withdrew Vertigo from distribution in 1973 — it wasn't widely seen again until 1983, after he died.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vertigo_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Vertigo was suppressed by Hitchcock and unavailable for years?",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Hitchcock's Vertigo is set in which American city?",
+        "correctAnswer": "San Francisco",
+        "distractors": [
+          "Los Angeles",
+          "New York",
+          "Chicago"
+        ]
+      }
+    ],
+    "tags": [
+      "cinema",
+      "classic",
+      "hitchcock",
+      "thriller",
+      "1950s"
+    ],
+    "visualDescription": "A San Francisco bay bridge at twilight, a woman in a grey suit walking toward the water's edge, a worried man watching from a distance, pixel art style."
+  }
+]

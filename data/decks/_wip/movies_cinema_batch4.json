@@ -1,0 +1,1379 @@
+[
+  {
+    "id": "cinema_dir_hitchcock_nickname",
+    "correctAnswer": "Alfred Hitchcock",
+    "acceptableAlternatives": ["Hitchcock"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "director_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Billy Wilder",
+      "David Lean",
+      "Orson Welles",
+      "Stanley Kubrick",
+      "Martin Scorsese",
+      "Federico Fellini",
+      "Akira Kurosawa",
+      "Francis Ford Coppola"
+    ],
+    "quizQuestion": "Which director is nicknamed the 'Master of Suspense' and made cameo appearances in most of his own films?",
+    "explanation": "Alfred Hitchcock became so famous that he was recognized as widely as his own actors. His cameo appearances in nearly every film he directed became a beloved signature, and his hosting of the anthology series Alfred Hitchcock Presents (1955–1965) cemented his public persona as the 'Master of Suspense'.",
+    "statement": "Alfred Hitchcock, the 'Master of Suspense', appeared in cameo roles in most of his own films.",
+    "wowFactor": "Hitchcock received five Best Director Oscar nominations across his career and won zero — one of the most glaring omissions in Academy Award history.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Alfred_Hitchcock",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "hitchcock"],
+    "visualDescription": "A stout silhouette of a director stepping into frame on a fog-covered film set, crew watching silently in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Alfred Hitchcock is nicknamed what — a title that reflects his mastery of building dread and unease?",
+        "correctAnswer": "Master of Suspense",
+        "distractors": ["Prince of Darkness", "Sultan of Fear", "King of Horror"]
+      },
+      {
+        "type": "true_false",
+        "question": "Alfred Hitchcock won the Academy Award for Best Director at least once during his career.",
+        "correctAnswer": "False",
+        "distractors": []
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_hitchcock_oscar_nominations",
+    "correctAnswer": "{5}",
+    "acceptableAlternatives": ["five"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "How many times was Alfred Hitchcock nominated for the Academy Award for Best Director — winning none of them?",
+    "explanation": "Hitchcock received five Best Director nominations: Rebecca (1940), Lifeboat (1944), Spellbound (1945), Rear Window (1954), and Psycho (1960). He won zero of them. His films collectively earned 46 Academy Award nominations with six wins, but the directing prize always eluded him.",
+    "statement": "Alfred Hitchcock was nominated five times for Best Director and never won.",
+    "wowFactor": "The Academy gave Hitchcock an honorary Irving G. Thalberg Memorial Award in 1968 — widely seen as a consolation prize for the five directing wins that never came.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Alfred_Hitchcock",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "hitchcock", "oscars"],
+    "visualDescription": "Five golden statuettes lined up on a shelf with a conspicuous empty space at the end, pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which director was nominated five times for Best Director Oscar and won none of them?",
+        "correctAnswer": "Alfred Hitchcock",
+        "distractors": ["Orson Welles", "Stanley Kubrick", "Richard Attenborough"]
+      },
+      {
+        "type": "context",
+        "question": "Alfred Hitchcock's film Rebecca (1940) won Best Picture — but Hitchcock was denied which specific award for it?",
+        "correctAnswer": "Best Director",
+        "distractors": ["Best Screenplay", "Best Cinematography", "Best Film Editing"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_spielberg_highest_grossing",
+    "correctAnswer": "Steven Spielberg",
+    "acceptableAlternatives": ["Spielberg"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "director_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "James Cameron",
+      "George Lucas",
+      "Christopher Nolan",
+      "Ridley Scott",
+      "Michael Bay",
+      "Martin Scorsese",
+      "Francis Ford Coppola",
+      "David Lean"
+    ],
+    "quizQuestion": "Who is described as the highest-grossing film director of all time and a pioneer of the modern blockbuster?",
+    "explanation": "Steven Spielberg is widely regarded as one of the greatest filmmakers in cinema history and holds the title of highest-grossing film director of all time. He pioneered the modern blockbuster era with Jaws (1975) and Close Encounters of the Third Kind (1977), and has won three Academy Awards.",
+    "statement": "Steven Spielberg is the highest-grossing film director of all time and a pioneer of the modern blockbuster.",
+    "wowFactor": "Spielberg is one of only 22 people to achieve EGOT status — winning an Emmy, Grammy, Oscar, and Tony Award.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Steven_Spielberg",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "spielberg"],
+    "visualDescription": "A director perched on a crane above a vast ocean horizon, megaphone in hand, crew swarming below in pixel art",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Steven Spielberg is recognized as the highest-grossing director of all time — what film is credited with launching the modern blockbuster era?",
+        "correctAnswer": "Jaws",
+        "distractors": ["Star Wars", "Close Encounters of the Third Kind", "Raiders of the Lost Ark"]
+      },
+      {
+        "type": "context",
+        "question": "Steven Spielberg is one of just 22 people in history to win an Emmy, Grammy, Oscar, AND Tony Award. What is this achievement called?",
+        "correctAnswer": "EGOT",
+        "distractors": ["Grand Slam", "Triple Crown", "Quadruple Crown"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_kubrick_2001",
+    "correctAnswer": "Stanley Kubrick",
+    "acceptableAlternatives": ["Kubrick"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "director_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Alfred Hitchcock",
+      "Orson Welles",
+      "Steven Spielberg",
+      "Ridley Scott",
+      "James Cameron",
+      "Christopher Nolan",
+      "David Lean",
+      "Billy Wilder"
+    ],
+    "quizQuestion": "Who directed 2001: A Space Odyssey (1968) and is known for his perfectionist approach requiring dozens of takes per shot?",
+    "explanation": "Stanley Kubrick co-wrote and directed 2001: A Space Odyssey (1968) with Arthur C. Clarke, based partly on Clarke's short story 'The Sentinel'. Kubrick was legendary for his obsessive attention to detail, innovative cinematography, and demanding shoots — reportedly filming some scenes over a hundred takes.",
+    "statement": "Stanley Kubrick directed 2001: A Space Odyssey (1968), a landmark of science fiction cinema known for its technical precision.",
+    "wowFactor": "Kubrick had such severe aviophobia that he never boarded an airplane after 1968 — yet created some of the most visually adventurous films ever made.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stanley_Kubrick",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "kubrick"],
+    "visualDescription": "A lone astronaut floating past a glowing monolith in deep space, a red camera eye watching from the ship, pixel art style",
+    "variants": [
+      {
+        "type": "film_title",
+        "question": "Stanley Kubrick's 1968 science fiction masterpiece co-written with Arthur C. Clarke features the iconic sentient computer HAL 9000 — what is the film?",
+        "correctAnswer": "2001: A Space Odyssey",
+        "distractors": ["Blade Runner", "Solaris", "Close Encounters of the Third Kind"]
+      },
+      {
+        "type": "context",
+        "question": "Stanley Kubrick's films are characterized by extensive set design, innovative cinematography, and what other widely noted quality?",
+        "correctAnswer": "Perfectionism",
+        "distractors": ["Improvised dialogue", "Non-professional actors", "Documentary realism"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_scorsese_deniro",
+    "correctAnswer": "Martin Scorsese",
+    "acceptableAlternatives": ["Scorsese"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Francis Ford Coppola",
+      "Brian De Palma",
+      "Steven Spielberg",
+      "Alfred Hitchcock",
+      "Quentin Tarantino",
+      "Christopher Nolan",
+      "David Lean",
+      "Billy Wilder"
+    ],
+    "quizQuestion": "Which director's legendary collaboration with Robert De Niro spans films including Mean Streets, Taxi Driver, Raging Bull, and Goodfellas?",
+    "explanation": "Martin Scorsese and Robert De Niro have collaborated on nine films together, one of the most celebrated director-actor partnerships in cinema history. Beginning with Mean Streets (1973), their films include Taxi Driver, New York New York, Raging Bull, The King of Comedy, Goodfellas, Cape Fear, Casino, and The Irishman.",
+    "statement": "Martin Scorsese and Robert De Niro have collaborated on nine films, forming one of cinema's most celebrated partnerships.",
+    "wowFactor": "Scorsese later began a similarly prolific partnership with Leonardo DiCaprio, directing him in five films after De Niro — including The Aviator, The Departed, and The Wolf of Wall Street.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Martin_Scorsese",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "scorsese"],
+    "visualDescription": "A streetwise director consulting with an intense actor on a gritty New York street set, neon lights reflecting off wet pavement, pixel art",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Martin Scorsese's collaboration with which actor produced Taxi Driver, Raging Bull, and Goodfellas?",
+        "correctAnswer": "Robert De Niro",
+        "distractors": ["Al Pacino", "Harvey Keitel", "Leonardo DiCaprio"]
+      },
+      {
+        "type": "context",
+        "question": "Martin Scorsese is considered one of the major figures of which influential 1970s movement in American filmmaking?",
+        "correctAnswer": "New Hollywood",
+        "distractors": ["French New Wave", "Cinema Verité", "Italian Neorealism"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_coppola_godfather",
+    "correctAnswer": "Francis Ford Coppola",
+    "acceptableAlternatives": ["Coppola"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "director_names",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Martin Scorsese",
+      "Sidney Lumet",
+      "Brian De Palma",
+      "William Friedkin",
+      "Steven Spielberg",
+      "Stanley Kubrick",
+      "Orson Welles",
+      "David Lean"
+    ],
+    "quizQuestion": "Who directed The Godfather (1972), starring Marlon Brando and Al Pacino, which became one of the greatest films ever made?",
+    "explanation": "Francis Ford Coppola directed The Godfather (1972), co-writing the screenplay with novelist Mario Puzo. The film stars Marlon Brando as patriarch Vito Corleone and Al Pacino as his son Michael, and chronicles the transformation of an outsider into a ruthless Mafia boss. It is the first of Coppola's Godfather trilogy.",
+    "statement": "Francis Ford Coppola directed The Godfather (1972), widely regarded as one of the greatest films ever made.",
+    "wowFactor": "Coppola has won two Palmes d'Or at Cannes — one of only a handful of directors to achieve this — as well as five Academy Awards.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Francis_Ford_Coppola",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "coppola", "godfather"],
+    "visualDescription": "A puppet-master director seated at a grand mahogany desk, strings of light connecting to puppet figures, golden light, pixel art",
+    "variants": [
+      {
+        "type": "film_title",
+        "question": "Which 1972 gangster epic directed by Francis Ford Coppola features Marlon Brando as patriarch Vito Corleone?",
+        "correctAnswer": "The Godfather",
+        "distractors": ["Goodfellas", "Scarface", "Once Upon a Time in America"]
+      },
+      {
+        "type": "context",
+        "question": "Francis Ford Coppola has won two Palmes d'Or at Cannes Film Festival — one of the rarest achievements in cinema. How many Academy Awards has he won?",
+        "correctAnswer": "{5}",
+        "distractors": []
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_tarantino_retirement",
+    "correctAnswer": "Quentin Tarantino",
+    "acceptableAlternatives": ["Tarantino"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Joel Coen",
+      "Christopher Nolan",
+      "Martin Scorsese",
+      "Steven Spielberg",
+      "David Fincher",
+      "Wes Anderson",
+      "Ridley Scott",
+      "Stanley Kubrick"
+    ],
+    "quizQuestion": "Which director, known for Pulp Fiction and Kill Bill, has publicly announced a plan to retire after making exactly 10 films?",
+    "explanation": "Quentin Tarantino has repeatedly stated in interviews that he plans to retire from directing after making 10 films, believing a director's later work tends to decline in quality. His films are characterized by graphic violence, extended dialogue, and extensive pop culture references. He has won two Academy Awards.",
+    "statement": "Quentin Tarantino plans to retire from directing after exactly 10 films, which he has said publicly multiple times.",
+    "wowFactor": "Tarantino worked as a video store clerk before his career took off, and cites the exhaustive movie-watching that job enabled as the foundation of his entire cinematic vocabulary.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Quentin_Tarantino",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "tarantino"],
+    "visualDescription": "A director counting on his fingers beside a clapperboard with the number 10 chalked on it, film reels stacked behind him, pixel art",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Quentin Tarantino's non-linear storytelling debut that won the Palme d'Or at Cannes in 1994 — what is the film?",
+        "correctAnswer": "Pulp Fiction",
+        "distractors": ["Reservoir Dogs", "Jackie Brown", "Kill Bill"]
+      },
+      {
+        "type": "context",
+        "question": "Quentin Tarantino's films have grossed more than how much worldwide?",
+        "correctAnswer": "{1900000000}",
+        "distractors": []
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_nolan_oppenheimer",
+    "correctAnswer": "Christopher Nolan",
+    "acceptableAlternatives": ["Nolan"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "director_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Steven Spielberg",
+      "Ridley Scott",
+      "James Cameron",
+      "Denis Villeneuve",
+      "Quentin Tarantino",
+      "Martin Scorsese",
+      "David Fincher",
+      "Bong Joon-ho"
+    ],
+    "quizQuestion": "Which British-American director known for Inception and The Dark Knight trilogy won his first Oscar for directing Oppenheimer (2023)?",
+    "explanation": "Christopher Nolan directed Oppenheimer (2023), a biographical thriller about physicist J. Robert Oppenheimer and the development of the atomic bomb during World War II. The film won him his first Academy Award for Best Director. Nolan is renowned for his use of practical effects, complex non-linear narratives, and preference for filming on IMAX.",
+    "statement": "Christopher Nolan won his first Academy Award for Best Director for Oppenheimer (2023).",
+    "wowFactor": "Nolan famously avoids computer-generated imagery whenever possible — for Oppenheimer, his team created the Trinity nuclear test explosion using practical effects without any CGI.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Christopher_Nolan",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "nolan"],
+    "visualDescription": "A director standing before a massive practical explosion on a desert set, camera rolling, silhouette against an orange fireball, pixel art",
+    "variants": [
+      {
+        "type": "film_title",
+        "question": "Christopher Nolan's 2023 biographical film about the father of the atomic bomb stars Cillian Murphy — what is the film?",
+        "correctAnswer": "Oppenheimer",
+        "distractors": ["The Manhattan Project", "Fat Man", "Trinity"]
+      },
+      {
+        "type": "context",
+        "question": "Christopher Nolan's films have grossed how much worldwide, making him the seventh-highest-grossing director?",
+        "correctAnswer": "{6000000000}",
+        "distractors": []
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_wilder_oscars",
+    "correctAnswer": "Billy Wilder",
+    "acceptableAlternatives": ["Wilder"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Alfred Hitchcock",
+      "John Huston",
+      "Frank Capra",
+      "David Lean",
+      "Orson Welles",
+      "Howard Hawks",
+      "William Wyler",
+      "Fred Zinnemann"
+    ],
+    "quizQuestion": "Which Polish-American Hollywood director of Some Like It Hot and Sunset Boulevard won seven Academy Awards across his career?",
+    "explanation": "Billy Wilder is one of the most decorated filmmakers of Hollywood's golden era. Born in what is now Poland, he fled Nazi Germany and built a legendary career in Hollywood spanning five decades. He received seven Academy Awards, a BAFTA Award, and the Palme d'Or at Cannes, directing classics including Double Indemnity, Sunset Boulevard, Stalag 17, and Some Like It Hot.",
+    "statement": "Billy Wilder, director of Some Like It Hot and Sunset Boulevard, won seven Academy Awards during his five-decade Hollywood career.",
+    "wowFactor": "When Some Like It Hot (1959) ended with Jack Lemmon's character revealing he was a man and his suitor saying 'Nobody's perfect', it was an improvised last-minute line by director Wilder — now one of the most famous film endings ever.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Billy_Wilder",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "wilder"],
+    "visualDescription": "A glamorous black-and-white Hollywood set with a director in a beret consulting with two actors in zoot suits, pixel art style",
+    "variants": [
+      {
+        "type": "film_title",
+        "question": "Billy Wilder's 1959 comedy featuring Marilyn Monroe and two men hiding from the mob by dressing as women — what is the film?",
+        "correctAnswer": "Some Like It Hot",
+        "distractors": ["The Apartment", "Sabrina", "Witness for the Prosecution"]
+      },
+      {
+        "type": "context",
+        "question": "Billy Wilder's Sunset Boulevard (1950) is a dark satire about Hollywood's golden era — who plays the delusional former star Norma Desmond?",
+        "correctAnswer": "Gloria Swanson",
+        "distractors": ["Bette Davis", "Joan Crawford", "Greta Garbo"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_kurosawa_seven_samurai",
+    "correctAnswer": "Akira Kurosawa",
+    "acceptableAlternatives": ["Kurosawa"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "director_names",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Yasujiro Ozu",
+      "Kenji Mizoguchi",
+      "Federico Fellini",
+      "Ingmar Bergman",
+      "Jean-Luc Godard",
+      "François Truffaut",
+      "Bong Joon-ho",
+      "Zhang Yimou"
+    ],
+    "quizQuestion": "Which Japanese director made Seven Samurai (1954), a film so influential it was directly remade as The Magnificent Seven?",
+    "explanation": "Akira Kurosawa directed Seven Samurai (1954), the story of farmers who hire seven samurai to protect their village from bandits. The film is considered one of the greatest ever made and was directly adapted as the American Western The Magnificent Seven (1960). Kurosawa directed 30 feature films across a career spanning six decades.",
+    "statement": "Akira Kurosawa's Seven Samurai (1954) was directly remade as The Magnificent Seven (1960), illustrating his worldwide influence.",
+    "wowFactor": "George Lucas cited Kurosawa as a primary influence on Star Wars — the Jedi Knights are modeled partly on samurai, and the droids C-3PO and R2-D2 were inspired by peasant characters from Kurosawa's The Hidden Fortress.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Akira_Kurosawa",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "kurosawa"],
+    "visualDescription": "Seven warriors in feudal Japanese armor standing in the rain on a muddy battlefield, pixel art with bold ink-painting style",
+    "variants": [
+      {
+        "type": "film_title",
+        "question": "Akira Kurosawa's 1950 film told the same event from four contradictory perspectives — pioneering the narrative device now called the 'Rashomon effect' — what is the film?",
+        "correctAnswer": "Rashomon",
+        "distractors": ["Ikiru", "Yojimbo", "Ran"]
+      },
+      {
+        "type": "context",
+        "question": "George Lucas cited Akira Kurosawa's The Hidden Fortress as a primary inspiration for which blockbuster franchise?",
+        "correctAnswer": "Star Wars",
+        "distractors": ["Indiana Jones", "The Matrix", "Dune"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_welles_citizen_kane",
+    "correctAnswer": "Orson Welles",
+    "acceptableAlternatives": ["Welles"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "director_names",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Alfred Hitchcock",
+      "John Huston",
+      "William Wyler",
+      "Billy Wilder",
+      "Howard Hawks",
+      "Frank Capra",
+      "David Lean",
+      "George Stevens"
+    ],
+    "quizQuestion": "Who directed Citizen Kane (1941) — widely called the greatest film ever made — as his very first feature film?",
+    "explanation": "Orson Welles directed, produced, co-wrote, and starred in Citizen Kane (1941) at just 25 years old. It was his first feature film. The quasi-biographical story of media baron Charles Foster Kane revolutionized film grammar with its deep-focus photography, non-linear narrative, and innovative use of sound. It is consistently ranked among the greatest films ever made.",
+    "statement": "Orson Welles directed Citizen Kane (1941) — widely considered the greatest film ever made — as his very first feature film, at age 25.",
+    "wowFactor": "Welles had no prior film experience before Citizen Kane — his contract with RKO gave him unprecedented creative control, which was almost unheard of for a Hollywood newcomer.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Orson_Welles",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "welles", "citizen_kane"],
+    "visualDescription": "A young director in a cavernous art deco newsroom, dramatic low-angle lighting, crew staring upward, pixel art style",
+    "variants": [
+      {
+        "type": "context",
+        "question": "Citizen Kane was Orson Welles's first feature film — how old was he when he directed it?",
+        "correctAnswer": "{25}",
+        "distractors": []
+      },
+      {
+        "type": "reverse",
+        "question": "Orson Welles's Citizen Kane (1941) follows the life of media baron Charles Foster Kane, based partly on which real-life figure?",
+        "correctAnswer": "William Randolph Hearst",
+        "distractors": ["Joseph Pulitzer", "Andrew Carnegie", "John D. Rockefeller"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_lean_lawrence",
+    "correctAnswer": "David Lean",
+    "acceptableAlternatives": ["Lean"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Alfred Hitchcock",
+      "Carol Reed",
+      "Richard Attenborough",
+      "Ridley Scott",
+      "Orson Welles",
+      "Billy Wilder",
+      "John Huston",
+      "Fred Zinnemann"
+    ],
+    "quizQuestion": "Which English director made Lawrence of Arabia (1962) and The Bridge on the River Kwai (1957) — both considered landmarks of epic cinema?",
+    "explanation": "David Lean directed the definitive epics of British cinema, including Brief Encounter (1945), Oliver Twist (1948), The Bridge on the River Kwai (1957), Lawrence of Arabia (1962), Doctor Zhivago (1965), and A Passage to India (1984). He is widely considered one of the most important figures in British film history.",
+    "statement": "David Lean directed both Lawrence of Arabia (1962) and The Bridge on the River Kwai (1957), defining what epic cinema could be.",
+    "wowFactor": "Lawrence of Arabia was shot on location in Jordan, Morocco, and Spain and required nearly three years of production — yet Lean famously refused to use a second unit director for any principal photography.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/David_Lean",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "lean"],
+    "visualDescription": "A lone figure on a camel silhouetted against a vast golden desert, a film crew watching through a giant 70mm camera, pixel art style",
+    "variants": [
+      {
+        "type": "film_title",
+        "question": "David Lean's 1965 adaptation of Boris Pasternak's novel follows a Russian doctor during the Revolution — what is the film?",
+        "correctAnswer": "Doctor Zhivago",
+        "distractors": ["Reds", "War and Peace", "The English Patient"]
+      },
+      {
+        "type": "reverse",
+        "question": "David Lean's The Bridge on the River Kwai (1957) tells the story of Allied POWs forced to build a bridge for which occupying army?",
+        "correctAnswer": "Imperial Japan",
+        "distractors": ["Nazi Germany", "Fascist Italy", "Imperial Russia"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_scott_alien_blade",
+    "correctAnswer": "Ridley Scott",
+    "acceptableAlternatives": ["Scott"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "director_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "James Cameron",
+      "Tony Scott",
+      "David Fincher",
+      "Denis Villeneuve",
+      "Christopher Nolan",
+      "Steven Spielberg",
+      "George Lucas",
+      "Kathryn Bigelow"
+    ],
+    "quizQuestion": "Which English director created both the Alien franchise (1979) and Blade Runner (1982), defining the aesthetic of science fiction horror and neo-noir?",
+    "explanation": "Ridley Scott directed Alien (1979) and Blade Runner (1982) in consecutive years, establishing himself as a master of atmospheric science fiction. His films are characterized by a highly concentrated visual style and meticulous production design. He was knighted in 2003 and later appointed Knight Grand Cross in 2024.",
+    "statement": "Ridley Scott directed both Alien (1979) and Blade Runner (1982), defining two landmark visions of science fiction cinema.",
+    "wowFactor": "Blade Runner was a commercial disappointment on release in 1982 but became one of the most influential films ever made — its neo-noir dystopia shaped a generation of science fiction films, video games, and architecture.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ridley_Scott",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "scott"],
+    "visualDescription": "A rain-soaked neon-lit skyline seen through a director's viewfinder, chrome and shadow, pixel art cyberpunk style",
+    "variants": [
+      {
+        "type": "context",
+        "question": "Ridley Scott's Gladiator (2000) won Best Picture and revived the epic historical genre — who stars as Maximus?",
+        "correctAnswer": "Russell Crowe",
+        "distractors": ["Mel Gibson", "Gerard Butler", "Liam Neeson"]
+      },
+      {
+        "type": "reverse",
+        "question": "Ridley Scott's Alien (1979) introduced a terrifying creature designed by which Swiss surrealist artist?",
+        "correctAnswer": "H.R. Giger",
+        "distractors": ["Salvador Dalí", "Francis Bacon", "Zdzisław Beksiński"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_cameron_titanic",
+    "correctAnswer": "James Cameron",
+    "acceptableAlternatives": ["Cameron"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "director_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Steven Spielberg",
+      "George Lucas",
+      "Ridley Scott",
+      "Peter Jackson",
+      "Roland Emmerich",
+      "Michael Bay",
+      "Christopher Nolan",
+      "Kathryn Bigelow"
+    ],
+    "quizQuestion": "Which Canadian director — also a deep-sea explorer — made Titanic (1997) and Avatar (2009), the two highest-grossing films in history at their respective releases?",
+    "explanation": "James Cameron is a Canadian filmmaker and deep-sea explorer whose films have grossed over $10 billion worldwide, making him the second-highest-grossing director of all time. Titanic (1997) held the record for highest-grossing film for 12 years until his own Avatar (2009) surpassed it. Cameron has personally dived to the Titanic wreck and descended solo to the deepest point in the ocean.",
+    "statement": "James Cameron directed Titanic (1997) and Avatar (2009), and is also a deep-sea explorer who has personally dived to the Titanic wreck.",
+    "wowFactor": "Cameron's Titanic (1997) cost roughly $200 million to produce — more than the cost of actually building the original ship adjusted for inflation — and he reportedly told the studio 'fire me if you have to' when it went over budget.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/James_Cameron",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "cameron"],
+    "visualDescription": "A director in a submersible pod descending through black ocean waters toward a ghostly ship wreck, pixel art with bioluminescent glow",
+    "variants": [
+      {
+        "type": "context",
+        "question": "James Cameron's films have grossed over $10 billion worldwide — making him which ranked highest-grossing director?",
+        "correctAnswer": "Second",
+        "distractors": ["First", "Third", "Fourth"]
+      },
+      {
+        "type": "film_title",
+        "question": "James Cameron's 1984 science fiction film launched a franchise about a time-traveling cyborg assassin — what is the film?",
+        "correctAnswer": "The Terminator",
+        "distractors": ["RoboCop", "Total Recall", "Judge Dredd"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_coen_fargo",
+    "correctAnswer": "Joel Coen",
+    "acceptableAlternatives": ["The Coen Brothers", "Coen Brothers", "Ethan Coen", "Joel and Ethan Coen"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "David Fincher",
+      "Wes Anderson",
+      "Paul Thomas Anderson",
+      "Richard Linklater",
+      "Alexander Payne",
+      "Todd Solondz",
+      "Sam Raimi",
+      "Terry Gilliam"
+    ],
+    "quizQuestion": "Which brother filmmaking duo directed Fargo (1996) and No Country for Old Men (2007), blending dark humor with crime and moral dread?",
+    "explanation": "Joel and Ethan Coen are an American filmmaking duo whose films span many genres which they frequently subvert or parody. Fargo (1996) won them their first Oscar for Best Original Screenplay, and No Country for Old Men (2007) earned them Best Director and Best Picture at the Academy Awards. Their work is known for its quirky characters, dark comedy, and moral ambiguity.",
+    "statement": "The Coen Brothers — Joel and Ethan Coen — directed Fargo (1996) and No Country for Old Men (2007), both celebrated for blending dark comedy with moral dread.",
+    "wowFactor": "No Country for Old Men's villain Anton Chigurh — played by Javier Bardem — is ranked as one of the greatest movie villains of all time, and his cattle gun prop actually functioned exactly as shown in the film.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Coen_brothers",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "coen"],
+    "visualDescription": "Two identical directors in matching coats reviewing storyboards in a snow-covered Midwestern town, pixel art with a darkly comic tone",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The Coen Brothers' No Country for Old Men (2007) features which iconic villain armed with a captive bolt pistol?",
+        "correctAnswer": "Anton Chigurh",
+        "distractors": ["Hannibal Lecter", "Patrick Bateman", "John Doe"]
+      },
+      {
+        "type": "film_title",
+        "question": "The Coen Brothers' 1998 cult comedy follows a bowling-obsessed slacker known only as 'The Dude' — what is the film?",
+        "correctAnswer": "The Big Lebowski",
+        "distractors": ["Barton Fink", "Raising Arizona", "Burn After Reading"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_bong_parasite",
+    "correctAnswer": "Bong Joon-ho",
+    "acceptableAlternatives": ["Bong"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Park Chan-wook",
+      "Kim Ki-duk",
+      "Lee Chang-dong",
+      "Hirokazu Koreeda",
+      "Wong Kar-wai",
+      "Apichatpong Weerasethakul",
+      "Abbas Kiarostami",
+      "Zhang Yimou"
+    ],
+    "quizQuestion": "Which South Korean director made Parasite (2019), the first non-English language film to win the Academy Award for Best Picture?",
+    "explanation": "Bong Joon-ho's Parasite (2019) became the first non-English language film to win the Academy Award for Best Picture. The film — a dark comedy thriller about class inequality in South Korea — also won Best Director, Best Original Screenplay, and Best International Feature Film, making Bong the first Korean filmmaker to win an Academy Award.",
+    "statement": "Bong Joon-ho's Parasite (2019) was the first non-English language film to win the Academy Award for Best Picture.",
+    "wowFactor": "Parasite won four Oscars in one night — including Best Picture and Best Director — which had never been achieved by a non-English language film in the 92-year history of the Academy Awards.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bong_Joon-ho",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "bong", "parasite"],
+    "visualDescription": "A luxurious modernist house with a hidden underground chamber beneath it, split-level pixel art showing contrasting wealth and poverty",
+    "variants": [
+      {
+        "type": "context",
+        "question": "Parasite (2019) by Bong Joon-ho won four Academy Awards — which historic first did it achieve?",
+        "correctAnswer": "First non-English language film to win Best Picture",
+        "distractors": ["First Asian film ever nominated", "First film to win Best Picture without a US release", "First thriller to win Best Picture"]
+      },
+      {
+        "type": "film_title",
+        "question": "Bong Joon-ho's 2013 dystopian film follows survivors of an ice age living on a perpetually moving train — what is the film?",
+        "correctAnswer": "Snowpiercer",
+        "distractors": ["The Platform", "High-Rise", "Elysium"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_fellini_8half",
+    "correctAnswer": "Federico Fellini",
+    "acceptableAlternatives": ["Fellini"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Ingmar Bergman",
+      "Michelangelo Antonioni",
+      "Luchino Visconti",
+      "Vittorio De Sica",
+      "Roberto Rossellini",
+      "Bernardo Bertolucci",
+      "Pier Paolo Pasolini",
+      "Akira Kurosawa"
+    ],
+    "quizQuestion": "Which Italian director made 8½ (1963), ranked by Sight & Sound as the 10th greatest film ever made, and La Dolce Vita (1960)?",
+    "explanation": "Federico Fellini is one of the most celebrated Italian filmmakers, known for blending fantasy and baroque imagery with earthiness. His film 8½ (1963) is ranked 10th in the Sight & Sound magazine poll of the greatest films ever made. La Dolce Vita (1960) gave the world the phrase 'paparazzi' and won the Palme d'Or at Cannes.",
+    "statement": "Federico Fellini directed 8½ (1963), ranked among the ten greatest films ever made, and La Dolce Vita — which coined the word 'paparazzi'.",
+    "wowFactor": "The word 'paparazzi' comes from a character in Fellini's La Dolce Vita (1960) — a celebrity photographer named Paparazzo — and has since entered every major language in the world.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Federico_Fellini",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "fellini"],
+    "visualDescription": "A dreamy Italian piazza at night, a director in a white linen suit surrounded by fantastical floating figures, pixel art with watercolor softness",
+    "variants": [
+      {
+        "type": "context",
+        "question": "The word 'paparazzi' originated from a character in which Federico Fellini film?",
+        "correctAnswer": "La Dolce Vita",
+        "distractors": ["8½", "Amarcord", "Satyricon"]
+      },
+      {
+        "type": "reverse",
+        "question": "Fellini's 8½ (1963) is a semi-autobiographical film about a director suffering from creative block — the title refers to what?",
+        "correctAnswer": "The number of films Fellini had made at that point",
+        "distractors": ["The number of characters in the film", "The aspect ratio of the film", "The number of days it took to write"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_lucas_star_wars",
+    "correctAnswer": "George Lucas",
+    "acceptableAlternatives": ["Lucas"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "director_names",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Steven Spielberg",
+      "Francis Ford Coppola",
+      "John Carpenter",
+      "Ridley Scott",
+      "James Cameron",
+      "Ron Howard",
+      "Richard Marquand",
+      "Irvin Kershner"
+    ],
+    "quizQuestion": "Which filmmaker created the Star Wars franchise, founded Industrial Light & Magic (ILM), and revolutionized film sound with the THX standard?",
+    "explanation": "George Lucas created both the Star Wars and Indiana Jones franchises and founded Lucasfilm. He also founded Industrial Light & Magic (ILM), which became the world's leading visual effects company, and developed the THX sound quality certification system. In 2012, he sold Lucasfilm to the Walt Disney Company.",
+    "statement": "George Lucas created Star Wars and Indiana Jones, founded ILM, and developed the THX sound standard, transforming Hollywood technology.",
+    "wowFactor": "Lucas gave up his directing fee for the original Star Wars (1977) in exchange for keeping the merchandising rights — a decision that made him a billionaire as toy sales alone exceeded $1 billion by the early 1980s.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/George_Lucas",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "lucas", "star_wars"],
+    "visualDescription": "A visionary director surrounded by miniature spaceship models and film equipment in a cavernous workshop, pixel art with sci-fi glow",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "George Lucas founded Industrial Light & Magic (ILM) to handle effects for which film?",
+        "correctAnswer": "Star Wars",
+        "distractors": ["Close Encounters of the Third Kind", "Raiders of the Lost Ark", "E.T. the Extra-Terrestrial"]
+      },
+      {
+        "type": "context",
+        "question": "George Lucas sold Lucasfilm to which company in 2012?",
+        "correctAnswer": "The Walt Disney Company",
+        "distractors": ["Sony Pictures", "Universal Studios", "Warner Bros."]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_bigelow_first_woman",
+    "correctAnswer": "Kathryn Bigelow",
+    "acceptableAlternatives": ["Bigelow"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "director_names",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Sofia Coppola",
+      "Jane Campion",
+      "Ava DuVernay",
+      "Greta Gerwig",
+      "Agnès Varda",
+      "Penny Marshall",
+      "Nora Ephron",
+      "Nancy Meyers"
+    ],
+    "quizQuestion": "Who became the first woman in Academy Award history to win the Best Director Oscar, winning for The Hurt Locker (2008)?",
+    "explanation": "Kathryn Bigelow won the Academy Award for Best Director for The Hurt Locker at the 82nd Academy Awards (2010), becoming the first woman ever to win in that category in the award's 82-year history. The film is a war thriller following a US Army bomb disposal team in Iraq. She also won Best Picture that night.",
+    "statement": "Kathryn Bigelow became the first woman to win the Academy Award for Best Director, winning for The Hurt Locker (2008) at the 82nd Academy Awards.",
+    "wowFactor": "At the same ceremony, Bigelow beat her ex-husband James Cameron — whose Avatar was competing against her Hurt Locker — to claim Best Director and Best Picture.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kathryn_Bigelow",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "bigelow", "oscars"],
+    "visualDescription": "A female director in combat gear crouched beside a robot bomb disposal unit in a dusty Iraqi street, pixel art with tense amber tones",
+    "variants": [
+      {
+        "type": "film_title",
+        "question": "Kathryn Bigelow's Oscar-winning 2008 film follows an Army bomb disposal team in Iraq — what is the film?",
+        "correctAnswer": "The Hurt Locker",
+        "distractors": ["Zero Dark Thirty", "American Sniper", "Jarhead"]
+      },
+      {
+        "type": "context",
+        "question": "When Kathryn Bigelow won Best Director for The Hurt Locker, whose film did she beat — notably her former spouse?",
+        "correctAnswer": "James Cameron",
+        "distractors": ["Steven Spielberg", "Christopher Nolan", "Quentin Tarantino"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_spielberg_schindler",
+    "correctAnswer": "Schindler's List",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Sophie's Choice",
+      "The Pianist",
+      "Life is Beautiful",
+      "Judgment at Nuremberg",
+      "Night and Fog",
+      "Shoah",
+      "The Zone of Interest",
+      "Son of Saul"
+    ],
+    "quizQuestion": "Which Steven Spielberg film about the Holocaust, shot almost entirely in black and white, won seven Academy Awards including Best Picture in 1993?",
+    "explanation": "Schindler's List (1993) is a historical drama directed by Steven Spielberg about Oskar Schindler, a German industrialist who saved the lives of more than a thousand Jewish refugees during the Holocaust. Shot almost entirely in black and white, it won seven Academy Awards including Best Picture and Best Director — Spielberg's first directing win.",
+    "statement": "Spielberg's Schindler's List (1993), shot almost entirely in black and white, won seven Academy Awards and is considered one of cinema's most important works.",
+    "wowFactor": "Spielberg donated all of his personal profits from Schindler's List to Holocaust education, and spent six months documenting Holocaust survivor testimonies through his USC Shoah Foundation after the film's release.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Steven_Spielberg",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "spielberg", "film_title"],
+    "visualDescription": "A black-and-white scene of a crowded railway platform, one small girl in a red coat standing out against the monochrome crowd, pixel art",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Schindler's List is directed by whom, and marked that director's first Academy Award win for Best Director?",
+        "correctAnswer": "Steven Spielberg",
+        "distractors": ["Martin Scorsese", "Francis Ford Coppola", "Stanley Kubrick"]
+      },
+      {
+        "type": "context",
+        "question": "Schindler's List (1993) was shot almost entirely in black and white — but one famous visual element appears in color. What is it?",
+        "correctAnswer": "A little girl's red coat",
+        "distractors": ["A yellow Star of David armband", "A red German flag", "A blue uniform"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_scorsese_oscar_year",
+    "correctAnswer": "{2006}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year did Martin Scorsese finally win his first Academy Award for Best Director, winning for The Departed?",
+    "explanation": "Martin Scorsese won his first Academy Award for Best Director at the 79th Academy Awards ceremony in 2007, for The Departed (released 2006). He had previously been nominated five times without winning. The audience gave him a standing ovation, and the win was widely seen as long-overdue recognition for one of cinema's most celebrated directors.",
+    "statement": "Martin Scorsese won his first Best Director Oscar for The Departed (2006) after five previous nominations without a win.",
+    "wowFactor": "When presenting Scorsese's Oscar, the presenters were three directors he had influenced — Steven Spielberg, George Lucas, and Francis Ford Coppola — a deliberate and emotional choice by the Academy.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Martin_Scorsese",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "scorsese", "oscars"],
+    "visualDescription": "A veteran director receiving a golden statuette from three legendary peers on a glittering awards-show stage, pixel art with dramatic spotlight",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Martin Scorsese's The Departed (2006) is a crime thriller set in Boston based on which Hong Kong film?",
+        "correctAnswer": "Infernal Affairs",
+        "distractors": ["A Better Tomorrow", "Hard Boiled", "The Killer"]
+      },
+      {
+        "type": "context",
+        "question": "Martin Scorsese's The Departed (2006) stars Jack Nicholson, Leonardo DiCaprio, and Matt Damon — and won how many Academy Awards?",
+        "correctAnswer": "{4}",
+        "distractors": []
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_kubrick_shining",
+    "correctAnswer": "The Shining",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Psycho",
+      "Rosemary's Baby",
+      "The Exorcist",
+      "Halloween",
+      "Carrie",
+      "A Nightmare on Elm Street",
+      "The Omen",
+      "Poltergeist"
+    ],
+    "quizQuestion": "Which Stanley Kubrick film, adapted from a Stephen King novel and starring Jack Nicholson, features the famous 'Here's Johnny!' door-axe scene?",
+    "explanation": "The Shining (1980), directed by Stanley Kubrick and based on Stephen King's novel, stars Jack Nicholson as Jack Torrance, a writer who descends into madness while serving as winter caretaker of an isolated hotel. The film is celebrated for its tracking shots, psychological dread, and iconic imagery including the blood-filled elevator and the twin girls in the hallway.",
+    "statement": "Stanley Kubrick's The Shining (1980) stars Jack Nicholson and contains some of horror cinema's most iconic imagery.",
+    "wowFactor": "Stephen King hated Kubrick's adaptation of his novel, particularly disliking the casting of Jack Nicholson — King felt viewers would expect him to go crazy from the first frame, removing any suspense.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stanley_Kubrick",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "kubrick", "film_title", "horror"],
+    "visualDescription": "A vast empty hotel hallway with two ghostly girls at the far end, a man with an axe in shadow, pixel art in icy blues and reds",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The Shining (1980) was directed by which perfectionist filmmaker who reportedly required hundreds of takes for key scenes?",
+        "correctAnswer": "Stanley Kubrick",
+        "distractors": ["Brian De Palma", "Roman Polanski", "John Carpenter"]
+      },
+      {
+        "type": "context",
+        "question": "What did author Stephen King famously think of Stanley Kubrick's film adaptation of The Shining?",
+        "correctAnswer": "He hated it",
+        "distractors": ["He loved it immediately", "He had no opinion", "He refused to watch it"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_coppola_apocalypse",
+    "correctAnswer": "Apocalypse Now",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Platoon",
+      "Full Metal Jacket",
+      "Born on the Fourth of July",
+      "The Deer Hunter",
+      "Coming Home",
+      "Hamburger Hill",
+      "Casualties of War",
+      "Gardens of Stone"
+    ],
+    "quizQuestion": "Which Francis Ford Coppola film about the Vietnam War — infamously troubled during production — ends with Marlon Brando's Colonel Kurtz reciting 'The horror... the horror'?",
+    "explanation": "Apocalypse Now (1979), directed by Francis Ford Coppola and loosely based on Joseph Conrad's Heart of Darkness, is a Vietnam War epic following Captain Willard's mission to assassinate the rogue Colonel Kurtz deep in the jungle. The production in the Philippines became legendary for its disasters: a typhoon destroyed sets, Martin Sheen suffered a heart attack, and Brando arrived without reading the source novel.",
+    "statement": "Francis Ford Coppola's Apocalypse Now (1979), loosely based on Heart of Darkness, was one of cinema's most catastrophic — and celebrated — productions.",
+    "wowFactor": "Coppola famously said during production, 'We were in the jungle, there were too many of us, we had access to too much money, too much equipment, and little by little we went insane' — mirroring the film's own themes.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Francis_Ford_Coppola",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "coppola", "film_title"],
+    "visualDescription": "A helicopter silhouette against a burning orange jungle horizon, a lone soldier watching from a river boat, pixel art with a hallucinatory palette",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Apocalypse Now (1979) is a Vietnam War film loosely based on Joseph Conrad's novella — what is that novella?",
+        "correctAnswer": "Heart of Darkness",
+        "distractors": ["Lord Jim", "The Secret Agent", "Nostromo"]
+      },
+      {
+        "type": "context",
+        "question": "Apocalypse Now was shot on location in the Philippines — which country is it set in?",
+        "correctAnswer": "Vietnam",
+        "distractors": ["Cambodia", "Laos", "Thailand"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_wilder_sunset_blvd",
+    "correctAnswer": "Sunset Boulevard",
+    "acceptableAlternatives": ["Sunset Blvd"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Mulholland Drive",
+      "The Artist",
+      "Singin' in the Rain",
+      "All About Eve",
+      "A Star Is Born",
+      "What Ever Happened to Baby Jane?",
+      "Mommie Dearest",
+      "Ed Wood"
+    ],
+    "quizQuestion": "Which Billy Wilder film about a delusional silent-era film star and a down-on-his-luck screenwriter opens with a dead man narrating from a swimming pool?",
+    "explanation": "Sunset Boulevard (1950), directed by Billy Wilder, begins with the corpse of screenwriter Joe Gillis narrating in flashback from a swimming pool. The film is a dark satire of Hollywood starring Gloria Swanson as the faded silent-film star Norma Desmond, who utters the famous line: 'I am big. It's the pictures that got small.' It won three Academy Awards.",
+    "statement": "Billy Wilder's Sunset Boulevard (1950) is narrated by a dead man floating in a swimming pool — one of cinema's most audacious opening devices.",
+    "wowFactor": "Gloria Swanson who plays Norma Desmond in Sunset Boulevard was herself a genuine faded star of the silent era — giving the film an uncanny layer of meta-reality that Wilder exploited deliberately.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Billy_Wilder",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "wilder", "film_title"],
+    "visualDescription": "A glamorous Hollywood mansion pool with a floating figure, an aging star watching from a window above, pixel art in faded golden noir tones",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Sunset Boulevard (1950) was directed by which Polish-American filmmaker known for his sardonic wit and mastery of Hollywood genres?",
+        "correctAnswer": "Billy Wilder",
+        "distractors": ["John Huston", "Howard Hawks", "William Wyler"]
+      },
+      {
+        "type": "context",
+        "question": "In Sunset Boulevard, Norma Desmond delivers the famous line 'I am big, it's the pictures that got small.' Who plays Norma Desmond?",
+        "correctAnswer": "Gloria Swanson",
+        "distractors": ["Bette Davis", "Joan Crawford", "Marlene Dietrich"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_cameron_grossing_rank",
+    "correctAnswer": "{10000000000}",
+    "acceptableAlternatives": ["$10 billion", "10 billion"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "James Cameron's films have collectively grossed how much worldwide — making him the second-highest-grossing director in history?",
+    "explanation": "James Cameron's films have grossed over $10 billion worldwide, making him the second-highest-grossing director of all time behind Steven Spielberg. This tally is dominated by Titanic (1997) and Avatar (2009), which were each the highest-grossing films of all time at their respective releases.",
+    "statement": "James Cameron's films have grossed over $10 billion worldwide, making him the second-highest-grossing director of all time.",
+    "wowFactor": "James Cameron and Steven Spielberg — the top two highest-grossing directors — have also both won Best Director Oscars, proving that blockbuster success and critical acclaim can coexist.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/James_Cameron",
+    "volatile": true,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "cameron", "box_office"],
+    "visualDescription": "A bar chart carved from gold bars showing towering box office records, a Canadian flag pin on a director's jacket, pixel art style",
+    "variants": [
+      {
+        "type": "context",
+        "question": "James Cameron is a filmmaker and also a deep-sea explorer — which specific deep-sea location has he personally dived to in a submersible?",
+        "correctAnswer": "The Mariana Trench",
+        "distractors": ["The Titanic wreck", "The Mid-Atlantic Ridge", "The Pacific Ring of Fire"]
+      },
+      {
+        "type": "reverse",
+        "question": "Who is the second-highest-grossing film director of all time, behind Steven Spielberg, with films totaling over $10 billion?",
+        "correctAnswer": "James Cameron",
+        "distractors": ["Christopher Nolan", "Peter Jackson", "Ridley Scott"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_kurosawa_films_count",
+    "correctAnswer": "{30}",
+    "acceptableAlternatives": ["thirty"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "Akira Kurosawa directed exactly how many feature films across a six-decade career — a number that belies the scope of his global influence?",
+    "explanation": "Akira Kurosawa directed 30 feature films between 1943 and 1993, spanning a career of exactly six decades. Despite this relatively modest output compared to prolific directors, his films — from Rashomon to Seven Samurai to Ran — have influenced filmmakers worldwide including George Lucas, Steven Spielberg, Francis Ford Coppola, and Martin Scorsese.",
+    "statement": "Akira Kurosawa directed 30 feature films in a six-decade career, influencing generations of filmmakers worldwide.",
+    "wowFactor": "Francis Ford Coppola, George Lucas, and Steven Spielberg all co-produced Kurosawa's film Kagemusha (1980) after no Japanese studio would fund it — repaying a debt they felt they owed to the master.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Akira_Kurosawa",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "kurosawa"],
+    "visualDescription": "A Japanese filmmaker examining a film reel in an editing room surrounded by 30 film canisters stacked on shelves, pixel art in warm amber tones",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Akira Kurosawa's Kagemusha (1980) was co-produced by three Hollywood directors who wanted to repay their debt to him — name one of them.",
+        "correctAnswer": "George Lucas",
+        "distractors": ["David Lean", "Federico Fellini", "Ingmar Bergman"]
+      },
+      {
+        "type": "context",
+        "question": "Kurosawa's Rashomon (1950) pioneered what now-common narrative technique, showing the same event from multiple contradictory viewpoints?",
+        "correctAnswer": "The Rashomon effect",
+        "distractors": ["Non-linear storytelling", "The unreliable narrator", "Dramatic irony"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_bigelow_hurt_locker_year",
+    "correctAnswer": "{2010}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year did Kathryn Bigelow become the first woman to win the Academy Award for Best Director, at the 82nd Academy Awards ceremony?",
+    "explanation": "Kathryn Bigelow became the first woman to win the Academy Award for Best Director at the 82nd Academy Awards ceremony, held in March 2010, for The Hurt Locker (released 2008). The film also won Best Picture at the same ceremony. The win ended 82 years of Academy Award history without a female Best Director winner.",
+    "statement": "In 2010, Kathryn Bigelow became the first woman in history to win the Academy Award for Best Director.",
+    "wowFactor": "The Hurt Locker had a limited theatrical release and earned only $17 million at the box office — making it the lowest-grossing film ever to win Best Picture at the Academy Awards.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kathryn_Bigelow",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "bigelow", "oscars"],
+    "visualDescription": "A female director ascending a glittering Oscar stage in a spotlight, a historic moment frozen in pixel art, crowd standing in silhouette",
+    "variants": [
+      {
+        "type": "context",
+        "question": "The Hurt Locker won Best Picture despite earning only about $17 million at the box office — what is historically notable about this?",
+        "correctAnswer": "It is the lowest-grossing film to win Best Picture",
+        "distractors": ["It was the first war film to win Best Picture", "It had no wide theatrical release", "It was the shortest film to win Best Picture"]
+      },
+      {
+        "type": "reverse",
+        "question": "What historic barrier did Kathryn Bigelow break by winning Best Director for The Hurt Locker in 2010?",
+        "correctAnswer": "First woman to win Best Director in Academy Award history",
+        "distractors": ["First independent filmmaker to win", "First non-American to win", "First director under 40 to win"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_nolan_practical_effects",
+    "correctAnswer": "Christopher Nolan",
+    "acceptableAlternatives": ["Nolan"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "George Miller",
+      "James Cameron",
+      "Roland Emmerich",
+      "Zack Snyder",
+      "David Fincher",
+      "Michael Bay",
+      "Denis Villeneuve",
+      "Ridley Scott"
+    ],
+    "quizQuestion": "Which director is known for insisting on practical effects — including building a full-scale rotating hallway for Inception and a real Trinity explosion for Oppenheimer?",
+    "explanation": "Christopher Nolan is celebrated for preferring practical effects over computer-generated imagery. For Inception (2010), his team built a real rotating hotel corridor so actors could perform in genuine zero-gravity-style disorientation. For Oppenheimer (2023), he created the Trinity nuclear test explosion practically — without any CGI — using miniatures, fire, and chemical reactions.",
+    "statement": "Christopher Nolan builds practical sets rather than using CGI — including a full rotating hallway for Inception and a real explosion for Oppenheimer.",
+    "wowFactor": "Nolan shot Oppenheimer's Trinity test explosion using a combination of burning magnesium, aluminum powder, and gasoline on miniature sets — achieving a result that visual effects artists said would have been impossible to equal digitally.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Christopher_Nolan",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "nolan", "practical_effects"],
+    "visualDescription": "A film set with a rotating corridor mounted on massive hydraulic rigs, stunt performers braced at impossible angles, pixel art with motion blur",
+    "variants": [
+      {
+        "type": "film_title",
+        "question": "Christopher Nolan's 2010 film features a dream within a dream within a dream — and required building a real rotating hotel corridor as a set. What is the film?",
+        "correctAnswer": "Inception",
+        "distractors": ["Interstellar", "Tenet", "The Prestige"]
+      },
+      {
+        "type": "context",
+        "question": "Christopher Nolan was appointed what honor in 2024 by King Charles III for his contributions to film?",
+        "correctAnswer": "Knight",
+        "distractors": ["Commander of the British Empire", "OBE", "Baron"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_welles_war_of_worlds",
+    "correctAnswer": "Orson Welles",
+    "acceptableAlternatives": ["Welles"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Alfred Hitchcock",
+      "Preston Sturges",
+      "Howard Hawks",
+      "Frank Capra",
+      "John Ford",
+      "Cecil B. DeMille",
+      "William Wyler",
+      "Billy Wilder"
+    ],
+    "quizQuestion": "Which filmmaker's 1938 radio broadcast of The War of the Worlds — performed as simulated news bulletins — reportedly caused widespread panic across the United States?",
+    "explanation": "On October 30, 1938, Orson Welles directed and starred in a radio adaptation of H.G. Wells's The War of the Worlds for CBS, performed as a series of fake news bulletins interrupting a musical program. Some listeners who tuned in late, missing the introduction, reportedly believed the Martian invasion was real. The broadcast made Welles nationally famous and led directly to his Hollywood contract.",
+    "statement": "Orson Welles's 1938 radio broadcast of The War of the Worlds, performed as simulated news bulletins, reportedly caused widespread panic — and launched his career.",
+    "wowFactor": "Welles was only 23 years old when he directed the War of the Worlds broadcast — and the notoriety it created led directly to his Hollywood contract, which gave him the creative freedom to make Citizen Kane two years later.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Orson_Welles",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "welles", "radio"],
+    "visualDescription": "A young man in a broadcast studio leaning intensely toward a microphone, dramatic shadow behind him, listeners huddled around radios in the background, pixel art",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The 1938 War of the Worlds radio broadcast that reportedly caused nationwide panic was produced and directed by which filmmaker?",
+        "correctAnswer": "Orson Welles",
+        "distractors": ["Alfred Hitchcock", "John Huston", "Frank Capra"]
+      },
+      {
+        "type": "context",
+        "question": "What was the direct career consequence for Orson Welles of the famous War of the Worlds broadcast?",
+        "correctAnswer": "It led to his Hollywood film contract",
+        "distractors": ["He was banned from radio", "He was sued by listeners", "He was hired as a war correspondent"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_lean_oscar_epics",
+    "correctAnswer": "{7}",
+    "acceptableAlternatives": ["seven"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "Lawrence of Arabia (1962), directed by David Lean, won how many Academy Awards — matching it with Gone with the Wind as the record-holder at the time?",
+    "explanation": "Lawrence of Arabia (1962) won seven Academy Awards including Best Picture and Best Director for David Lean. At the time it equaled the record set by Gone with the Wind (1939). The film stars Peter O'Toole as T.E. Lawrence, the British officer who united Arab tribes during World War I, and is celebrated for its stunning desert photography and epic scale.",
+    "statement": "David Lean's Lawrence of Arabia (1962) won seven Academy Awards, including Best Picture and Best Director.",
+    "wowFactor": "Peter O'Toole received eight Academy Award nominations over his career — for Lawrence of Arabia, Becket, The Lion in Winter, and others — and won zero, making him the most-nominated actor never to win a competitive Oscar.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/David_Lean",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "lean", "oscars"],
+    "visualDescription": "A vast desert panorama with a film crew arranged around a single camel rider on a ridge, a giant 70mm camera on a crane, pixel art golden light",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Lawrence of Arabia (1962) stars which Irish actor as T.E. Lawrence — an actor who despite eight Oscar nominations never won a competitive award?",
+        "correctAnswer": "Peter O'Toole",
+        "distractors": ["Alec Guinness", "Anthony Quinn", "Omar Sharif"]
+      },
+      {
+        "type": "context",
+        "question": "David Lean's Lawrence of Arabia was shot on location in which country — standing in for the Arabian desert of World War I?",
+        "correctAnswer": "Jordan",
+        "distractors": ["Saudi Arabia", "Morocco", "Egypt"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_lucas_ilm_founded",
+    "correctAnswer": "{1975}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year did George Lucas found Industrial Light & Magic (ILM) — originally created specifically to handle the effects for Star Wars?",
+    "explanation": "George Lucas founded Industrial Light & Magic (ILM) in 1975, originally to create visual effects for Star Wars (1977). No existing effects house had the capability he needed, so he built his own. ILM went on to become the world's leading visual effects company, working on films including Indiana Jones, Jurassic Park, Forrest Gump, and the Marvel Cinematic Universe.",
+    "statement": "George Lucas founded Industrial Light & Magic (ILM) in 1975 specifically to create the effects for Star Wars — and it became the world's leading visual effects company.",
+    "wowFactor": "ILM invented digital compositing and pioneered computer-generated imagery for film — techniques that now underpin virtually every major Hollywood blockbuster.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/George_Lucas",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "lucas", "ILM"],
+    "visualDescription": "A warehouse workshop filled with spaceship miniatures, painters, and model makers, the Death Star under construction in the background, pixel art",
+    "variants": [
+      {
+        "type": "context",
+        "question": "Industrial Light & Magic (ILM), founded by George Lucas, pioneered which digital technique that transformed filmmaking?",
+        "correctAnswer": "Digital compositing",
+        "distractors": ["Motion capture", "Stereoscopic 3D", "High frame rate photography"]
+      },
+      {
+        "type": "reverse",
+        "question": "George Lucas gave up his directing fee for the original Star Wars — in exchange for keeping which rights that made him a billionaire?",
+        "correctAnswer": "Merchandising rights",
+        "distractors": ["Distribution rights", "Sequel rights", "International rights"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dir_fellini_la_dolce_vita",
+    "correctAnswer": "Federico Fellini",
+    "acceptableAlternatives": ["Fellini"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Luchino Visconti",
+      "Michelangelo Antonioni",
+      "Roberto Rossellini",
+      "Vittorio De Sica",
+      "Pier Paolo Pasolini",
+      "Bernardo Bertolucci",
+      "Dino Risi",
+      "Mario Monicelli"
+    ],
+    "quizQuestion": "Which Italian director's La Dolce Vita (1960) gave the world the word 'paparazzi' — named after a celebrity photographer character in the film?",
+    "explanation": "Federico Fellini's La Dolce Vita (1960) features a celebrity photographer named Paparazzo whose name — derived from an Italian dialect word meaning an annoying noise — became the universal term for intrusive celebrity photographers. The film won the Palme d'Or at Cannes and starred Marcello Mastroianni as a gossip journalist navigating Rome's hedonistic high society.",
+    "statement": "The word 'paparazzi' comes from a character named Paparazzo in Federico Fellini's La Dolce Vita (1960).",
+    "wowFactor": "La Dolce Vita's famous Trevi Fountain scene — where Anita Ekberg wades into the fountain and beckons Mastroianni — had to be filmed in January to keep tourists away, and Ekberg said the water was freezing but she felt nothing because she was so excited.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Federico_Fellini",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "director", "fellini", "language"],
+    "visualDescription": "A glamorous Italian actress wading in an ornate fountain at night, photographers swarming around the marble edge, pixel art with Roman moonlight",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "La Dolce Vita's Trevi Fountain scene, featuring Anita Ekberg wading at night, is one of cinema's most iconic moments — which city is it set in?",
+        "correctAnswer": "Rome",
+        "distractors": ["Venice", "Florence", "Naples"]
+      },
+      {
+        "type": "context",
+        "question": "La Dolce Vita (1960) won which award at the Cannes Film Festival — the festival's highest honor?",
+        "correctAnswer": "Palme d'Or",
+        "distractors": ["Grand Prix", "Jury Prize", "Silver Bear"]
+      }
+    ]
+  }
+]

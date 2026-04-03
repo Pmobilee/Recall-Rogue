@@ -611,3 +611,9 @@ Similarly, `general_knowledge-hindi-fourth-language-world` had "Bengali" (single
 **What went wrong:** Cat got stuck walking forever between two adjacent exclusion zones. Push-out from zone A landed inside zone B, push-out from zone B landed back in zone A.
 **Why:** `pushOutOfExclusion()` only handled one zone and used nearest-edge escape. When zones are adjacent, the nearest edge of one zone is inside the other.
 **Fix:** Changed push-out to always prefer escaping downward (toward ground), loop up to 10 times for overlapping zones, and added a `stuckCounter` to PetState — after 30 consecutive blocked ticks, the cat abandons the walk and transitions to idle.
+
+### 2026-04-03 — `image-rendering: pixelated` causes aliasing on downscaled icons
+**What went wrong:** Combat icons (status effects, relics, badges) used `image-rendering: pixelated` (nearest-neighbor) even though the 256px source art was being displayed at 22-60px. Nearest-neighbor is for *upscaling* pixel art; on downscaling it produces harsh, aliased edges.
+**Why:** `image-rendering: pixelated` was added as a blanket "pixel art" rule without considering that downscaling 256px → 32px with nearest-neighbor is extremely lossy and looks worse than bilinear.
+**Fix:** Removed `image-rendering: pixelated` (and `crisp-edges`) from all combat icon `<img>` elements. Browser default `auto` (bilinear filtering) produces smooth, clean results when downscaling. Simultaneously increased icon display sizes by 25%: `effect-sprite-icon` 32→40px, `.popup-sprite-icon` 24→30px, `.badge-icon` 48→60px, `.relic-icon` 26→32px, `.passive-icon-img` 14→18px, `.topbar-status-popup-sprite` 22→28px.
+**Rule:** Only use `image-rendering: pixelated` when *upscaling* low-res pixel art. Never use it on art that is being downscaled — bilinear always produces better results there.

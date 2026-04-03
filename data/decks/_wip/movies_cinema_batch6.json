@@ -1,0 +1,1010 @@
+[
+  {
+    "id": "cinema_hist_lumiere_screening_year",
+    "correctAnswer": "{1895}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year did the Lumière Brothers hold the first public film screening in Paris?",
+    "explanation": "On December 28, 1895, Auguste and Louis Lumière projected a program of short films to paying audiences at the Grand Café in Paris, marking the birth of cinema as a public entertainment. Their Cinématographe device served as camera, printer, and projector in one.",
+    "statement": "The Lumière Brothers held the first public film screening in Paris in 1895.",
+    "wowFactor": "That first Paris screening included a 50-second film of workers leaving a factory — and it terrified the audience, who had never seen moving images before.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lumi%C3%A8re_Brothers",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "history", "lumiere"],
+    "visualDescription": "Two French brothers in 19th-century formal dress operating a wooden box camera before a projected image of workers leaving a factory on a Paris café wall",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who held the first public film screening in Paris in 1895?",
+        "correctAnswer": "The Lumière Brothers",
+        "distractors": ["Thomas Edison", "Georges Méliès", "D.W. Griffith", "Robert Paul", "Birt Acres", "Max Skladanowsky", "Eadweard Muybridge"]
+      },
+      {
+        "type": "context",
+        "question": "Where did the Lumière Brothers hold the world's first public film screening?",
+        "correctAnswer": "Paris",
+        "distractors": ["London", "New York", "Berlin", "Vienna", "Lyon", "Rome", "Brussels"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_lumiere_device_name",
+    "correctAnswer": "Cinématographe",
+    "acceptableAlternatives": ["Cinematographe", "Cinématographe"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Kinetoscope", "Vitascope", "Bioscope", "Zoopraxiscope", "Mutoscope", "Vitagraph", "Praxinoscope", "Phantoscope"],
+    "quizQuestion": "What was the name of the Lumière Brothers' invention that served as camera, printer, and projector in one device?",
+    "explanation": "The Cinématographe, patented in 1895, was the Lumière Brothers' groundbreaking device that could film, develop, and project motion pictures. Unlike Thomas Edison's Kinetoscope, which required individual viewing, the Cinématographe projected images for mass audiences — making it the true ancestor of cinema.",
+    "statement": "The Lumière Brothers' Cinématographe (1895) combined camera, film processor, and projector in a single portable device.",
+    "wowFactor": "The entire Cinématographe weighed only 5 kg — Edison's competing Kinetoscope weighed nearly 500 kg and could only be viewed by one person at a time.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cin%C3%A9matographe",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "history", "technology", "lumiere"],
+    "visualDescription": "A compact wooden box camera on a tripod with a hand crank projecting a beam of light onto a white screen in a dimly lit 19th-century Paris salon",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which early film device allowed a single operator to film, process, and project movies?",
+        "correctAnswer": "Cinématographe",
+        "distractors": ["Kinetoscope", "Vitascope", "Bioscope", "Zoopraxiscope", "Mutoscope", "Vitagraph", "Praxinoscope"]
+      },
+      {
+        "type": "context",
+        "question": "Who invented the Cinématographe, the device that launched cinema as a public art form?",
+        "correctAnswer": "The Lumière Brothers",
+        "distractors": ["Thomas Edison", "Georges Méliès", "William Dickson", "Étienne-Jules Marey", "Eadweard Muybridge", "Max Skladanowsky", "Robert Paul"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_great_train_robbery_year",
+    "correctAnswer": "{1903}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year did Edwin S. Porter direct The Great Train Robbery, considered a landmark in narrative filmmaking?",
+    "explanation": "The Great Train Robbery (1903), made by Edwin S. Porter for Edison Manufacturing Company, is considered one of the first narrative films. It used cross-cutting, location shooting, and a 12-minute running time that far exceeded earlier short films. Its final close-up of a gunman firing at the audience was a cinematic sensation.",
+    "statement": "The Great Train Robbery (1903), directed by Edwin S. Porter, was a pioneering narrative film that ran 12 minutes.",
+    "wowFactor": "The film's final shot — a gunman firing directly at the camera — caused audiences to duck and scream, as many had never seen a close-up before.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Great_Train_Robbery_(1903_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "history", "silent film"],
+    "visualDescription": "Sepia-tinted frame showing masked outlaws on a moving steam train in 1903 with a dramatic close-up gunman in the foreground",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which early film is recognized for pioneering narrative cross-cutting and was 12 minutes long?",
+        "correctAnswer": "The Great Train Robbery",
+        "distractors": ["A Trip to the Moon", "The Birth of a Nation", "Intolerance", "The Sprinkler Sprinkled", "Workers Leaving the Lumière Factory", "The Kiss", "Rescued by Rover"]
+      },
+      {
+        "type": "context",
+        "question": "Who directed The Great Train Robbery (1903)?",
+        "correctAnswer": "Edwin S. Porter",
+        "distractors": ["D.W. Griffith", "Thomas Edison", "Georges Méliès", "Alice Guy-Blaché", "Cecil B. DeMille", "G.A. Smith", "James Williamson"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_jazz_singer_talkie",
+    "correctAnswer": "The Jazz Singer",
+    "acceptableAlternatives": ["Jazz Singer"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Singin' in the Rain", "The Broadway Melody", "Lights of New York", "Don Juan", "Wings", "The Jolson Story", "Show Boat", "The Cocoanuts"],
+    "quizQuestion": "Which 1927 Warner Bros. film was the first feature-length motion picture with synchronized dialogue?",
+    "explanation": "The Jazz Singer (1927), starring Al Jolson, was the first feature-length film with synchronized recorded music and lip-synchronous singing and speech. Using Warner Bros.' Vitaphone sound-on-disc system, its release effectively ended the silent film era and launched the age of talking pictures.",
+    "statement": "The Jazz Singer (1927) was the first feature-length film with synchronized dialogue, ending the silent film era.",
+    "wowFactor": "Al Jolson's improvised line 'You ain't heard nothin' yet!' became the most famous ad-lib in film history, spoken to test if the audience could actually hear him.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Jazz_Singer_(1927_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "history", "talkies", "sound"],
+    "visualDescription": "A 1920s theater marquee reading 'The Jazz Singer' with excited crowds in period dress lining up outside a Broadway-style cinema at night",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What major technological innovation did The Jazz Singer (1927) introduce to mainstream cinema?",
+        "correctAnswer": "Synchronized dialogue",
+        "distractors": ["Technicolor", "Widescreen", "Stereo sound", "CGI", "Dolby sound", "IMAX", "3D projection"]
+      },
+      {
+        "type": "context",
+        "question": "In what year was The Jazz Singer, the first talkie, released?",
+        "correctAnswer": "{1927}",
+        "distractors": []
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_jazz_singer_star",
+    "correctAnswer": "Al Jolson",
+    "acceptableAlternatives": ["Jolson"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "director_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": ["Bing Crosby", "Gene Kelly", "Fred Astaire", "Eddie Cantor", "Jimmy Durante", "George Jessel", "George Burns", "Rudy Vallee"],
+    "quizQuestion": "Which entertainer starred in The Jazz Singer (1927), performing the film's famous synchronized songs?",
+    "explanation": "Al Jolson starred in The Jazz Singer (1927), performing six songs synchronized with the Vitaphone disc system. Jolson's charisma and the film's groundbreaking sound technology made it a sensation. He was already the most famous entertainer in America, known as 'The World's Greatest Entertainer.'",
+    "statement": "Al Jolson starred in The Jazz Singer (1927), delivering the first synchronized spoken dialogue in a feature film.",
+    "wowFactor": "George Jessel was originally cast and turned down the role — Al Jolson's last-minute replacement made him immortal in film history.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Jazz_Singer_(1927_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "history", "talkies"],
+    "visualDescription": "A 1920s vaudeville performer in blackface makeup and white gloves on a spotlit stage, arms outstretched toward an audience in a packed art deco theater",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who was 'The World's Greatest Entertainer' who starred in cinema's first talkie?",
+        "correctAnswer": "Al Jolson",
+        "distractors": ["Bing Crosby", "Gene Kelly", "Fred Astaire", "Eddie Cantor", "Jimmy Durante", "George Burns", "Rudy Vallee"]
+      },
+      {
+        "type": "context",
+        "question": "What sound system did The Jazz Singer use to synchronize Jolson's voice to the film?",
+        "correctAnswer": "Vitaphone",
+        "distractors": ["Movietone", "Phonofilm", "DeForest Phonofilm", "RCA Photophone", "Westrex", "Cinerama", "Dolby"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_technicolor_wizard_oz",
+    "correctAnswer": "The Wizard of Oz",
+    "acceptableAlternatives": ["Wizard of Oz"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": ["Gone with the Wind", "Snow White and the Seven Dwarfs", "Fantasia", "Bambi", "Rebecca", "Citizen Kane", "Casablanca", "The Adventures of Robin Hood"],
+    "quizQuestion": "Which beloved 1939 film famously switched from sepia to Technicolor when Dorothy arrived in the Land of Oz?",
+    "explanation": "The Wizard of Oz (1939) used Technicolor's three-strip process to create its iconic color transition — from sepia-toned Kansas to the vivid world of Oz. This deliberate shift was a narrative device emphasizing Dorothy's journey to a fantastical world, and it remains one of the most memorable moments in film history.",
+    "statement": "The Wizard of Oz (1939) used Technicolor's three-strip process for the iconic sepia-to-color transition when Dorothy enters Oz.",
+    "wowFactor": "The Technicolor process required such intense lighting that crew members worked in 100°F heat on set, and the original ruby slippers were silver until producers realized red shoes would pop more vividly on the new color film.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Wizard_of_Oz_(1939_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "history", "technicolor", "color film"],
+    "visualDescription": "A pixelated yellow brick road winding through a vivid green landscape with a young girl in blue gingham dress and her companions approaching an emerald city on the horizon",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What color process was famously used in The Wizard of Oz (1939) for its sepia-to-color transition?",
+        "correctAnswer": "Technicolor",
+        "distractors": ["Eastmancolor", "Kinemacolor", "Cinecolor", "Trucolor", "Anscocolor", "Ektachrome", "Kodachrome"]
+      },
+      {
+        "type": "context",
+        "question": "In what year was The Wizard of Oz released?",
+        "correctAnswer": "{1939}",
+        "distractors": []
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_first_oscars_year",
+    "correctAnswer": "{1929}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was the first Academy Awards ceremony held, lasting only 15 minutes at a private Hollywood dinner?",
+    "explanation": "The 1st Academy Awards ceremony took place on May 16, 1929, at a private dinner at the Hollywood Roosevelt Hotel. Only 270 people attended, tickets cost $5, and the ceremony lasted just 15 minutes. Winners had been announced three months earlier, making it the only Oscars ceremony without any suspense.",
+    "statement": "The first Academy Awards ceremony was held on May 16, 1929, lasting only 15 minutes at a Hollywood hotel dinner.",
+    "wowFactor": "The first Oscars ceremony lasted just 15 minutes because the winners had already been announced to the press three months earlier — there was no suspense whatsoever.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/1st_Academy_Awards",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "oscars", "history"],
+    "visualDescription": "A 1920s Hollywood hotel ballroom with 270 guests in formal attire seated at round tables as a presenter holds up a small golden statuette on a small stage",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Where was the first Academy Awards ceremony held in 1929?",
+        "correctAnswer": "Hollywood Roosevelt Hotel",
+        "distractors": ["Beverly Hilton", "Grauman's Chinese Theatre", "Biltmore Hotel", "Ambassador Hotel", "Cocoanut Grove", "Pantages Theatre", "Shrine Auditorium"]
+      },
+      {
+        "type": "context",
+        "question": "How long did the first Academy Awards ceremony last?",
+        "correctAnswer": "15 minutes",
+        "distractors": ["2 hours", "1 hour", "3 hours", "30 minutes", "45 minutes", "4 hours", "90 minutes"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_hattie_mcdaniel_oscar",
+    "correctAnswer": "Hattie McDaniel",
+    "acceptableAlternatives": ["McDaniel"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": ["Dorothy Dandridge", "Lena Horne", "Pearl Bailey", "Ethel Waters", "Butterfly McQueen", "Ruby Dee", "Fredi Washington", "Nina Mae McKinney"],
+    "quizQuestion": "Who became the first Black actor to win an Academy Award, winning Best Supporting Actress for Gone with the Wind (1939)?",
+    "explanation": "Hattie McDaniel won the Academy Award for Best Supporting Actress for her role as Mammy in Gone with the Wind at the 12th Academy Awards ceremony in February 1940. She was the first African American person to win an Oscar. McDaniel was not allowed to sit with her white co-stars at the segregated ceremony venue.",
+    "statement": "Hattie McDaniel won the 1940 Academy Award for Best Supporting Actress (Gone with the Wind), becoming the first Black Oscar winner.",
+    "wowFactor": "McDaniel was seated at a segregated table far from her white co-stars at the ceremony where she became the first Black person to win an Oscar.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hattie_McDaniel",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "oscars", "history", "civil rights"],
+    "visualDescription": "A dignified Black woman in 1940s formal attire holding a golden Oscar statuette at a microphone in a grand Hollywood ballroom, surrounded by applauding guests",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "For which 1939 film did Hattie McDaniel win her historic Oscar?",
+        "correctAnswer": "Gone with the Wind",
+        "distractors": ["The Wizard of Oz", "Imitation of Life", "Pinky", "Cabin in the Sky", "Carmen Jones", "Stormy Weather", "Hallelujah"]
+      },
+      {
+        "type": "context",
+        "question": "In what year did Hattie McDaniel win her historic Oscar as the first Black winner?",
+        "correctAnswer": "{1940}",
+        "distractors": []
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_jaws_blockbuster",
+    "correctAnswer": "Jaws",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": ["Star Wars", "The Godfather", "Easy Rider", "American Graffiti", "Rocky", "The Exorcist", "Bonnie and Clyde", "Airport"],
+    "quizQuestion": "Which 1975 Steven Spielberg film is credited with inventing the summer blockbuster and wide-release distribution strategy?",
+    "explanation": "Jaws (1975), directed by Steven Spielberg and starring Roy Scheider, became the first film to earn over $100 million at the US box office. Universal's decision to open it on over 400 screens simultaneously — unprecedented at the time — established the wide-release strategy that defines modern blockbuster filmmaking.",
+    "statement": "Jaws (1975) invented the summer blockbuster model by simultaneously releasing on 400+ screens and earning the first $100 million at the US box office.",
+    "wowFactor": "The shark mechanical puppet was so unreliable that Spielberg was forced to mostly hide it — the technique accidentally made the film far scarier by letting audiences imagine the shark.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jaws_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "history", "blockbuster", "spielberg"],
+    "visualDescription": "A massive great white shark fin cutting through ocean water toward a beach silhouette at sunset while beachgoers scatter in a pixel art panic",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed Jaws (1975), the film that created the summer blockbuster model?",
+        "correctAnswer": "Steven Spielberg",
+        "distractors": ["George Lucas", "Francis Ford Coppola", "Martin Scorsese", "Brian De Palma", "Peter Bogdanovich", "William Friedkin", "Robert Altman"]
+      },
+      {
+        "type": "context",
+        "question": "In what year was Jaws released, launching the blockbuster era?",
+        "correctAnswer": "{1975}",
+        "distractors": []
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_toy_story_cgi",
+    "correctAnswer": "Toy Story",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["A Bug's Life", "Shrek", "Antz", "The Lion King", "Aladdin", "Beauty and the Beast", "Monsters, Inc.", "Finding Nemo"],
+    "quizQuestion": "Which 1995 Pixar film was the world's first entirely computer-animated feature film?",
+    "explanation": "Toy Story (1995), directed by John Lasseter and produced by Pixar Animation Studios for Walt Disney Pictures, was the first entirely computer-animated feature film. It grossed $373 million worldwide and received three Academy Award nominations, launching Pixar's era of dominance in animated filmmaking.",
+    "statement": "Toy Story (1995) was the world's first fully computer-animated feature film, directed by John Lasseter at Pixar.",
+    "wowFactor": "Pixar's animators could only render one frame every three to four hours on their workstations — each of the film's 114 minutes represents thousands of hours of computing time.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Toy_Story",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "history", "CGI", "animation", "pixar"],
+    "visualDescription": "A plastic cowboy doll and a plastic space ranger action figure standing back to back in a child's bedroom with toys scattered around them in pixelated 1995 style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which studio produced Toy Story (1995), the first all-CGI feature film?",
+        "correctAnswer": "Pixar",
+        "distractors": ["DreamWorks", "Warner Bros.", "Universal", "Sony Pictures Animation", "Blue Sky Studios", "Disney Animation", "Illumination"]
+      },
+      {
+        "type": "context",
+        "question": "In what year was Toy Story, the first all-CGI animated feature, released?",
+        "correctAnswer": "{1995}",
+        "distractors": []
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_jurassic_park_cgi",
+    "correctAnswer": "Jurassic Park",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": ["Terminator 2", "The Abyss", "Tron", "RoboCop", "The Matrix", "Avatar", "Titanic", "Star Wars: The Phantom Menace"],
+    "quizQuestion": "Which 1993 Steven Spielberg film pioneered photorealistic CGI creatures, creating the first lifelike digital animals in cinema?",
+    "explanation": "Jurassic Park (1993), directed by Steven Spielberg, combined CGI dinosaurs with Stan Winston's practical animatronics to create photorealistic digital creatures for the first time in film history. Industrial Light & Magic developed the groundbreaking CGI, with the T. rex and raptor sequences marking a revolution in visual effects that changed Hollywood production permanently.",
+    "statement": "Jurassic Park (1993) pioneered photorealistic CGI creatures, combining digital effects with practical animatronics to create lifelike dinosaurs.",
+    "wowFactor": "The film's CGI dinosaurs total only six and a half minutes of screen time — the rest of the creature effects are practical animatronics built by Stan Winston's team.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jurassic_Park",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "history", "CGI", "spielberg", "visual effects"],
+    "visualDescription": "A massive Tyrannosaurus rex bursting through jungle foliage toward a jeep full of terrified scientists, rendered in pixel art with dramatic lighting in the rain",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which company developed the groundbreaking CGI for Jurassic Park (1993)?",
+        "correctAnswer": "Industrial Light & Magic",
+        "distractors": ["Pixar", "Digital Domain", "Weta Digital", "Sony Pictures Imageworks", "Rhythm & Hues", "Blue Sky Studios", "Animal Logic"]
+      },
+      {
+        "type": "context",
+        "question": "Who directed Jurassic Park (1993)?",
+        "correctAnswer": "Steven Spielberg",
+        "distractors": ["James Cameron", "George Lucas", "Robert Zemeckis", "Roland Emmerich", "Michael Bay", "Ron Howard", "Tim Burton"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_avatar_3d",
+    "correctAnswer": "Avatar",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Titanic", "The Dark Knight", "Inception", "Iron Man", "Transformers", "Spider-Man", "Harry Potter and the Deathly Hallows", "Pirates of the Caribbean"],
+    "quizQuestion": "Which 2009 James Cameron film pushed 3D cinema into the mainstream and became the highest-grossing film ever at the time?",
+    "explanation": "Avatar (2009), written and directed by James Cameron, was a technological breakthrough in 3D filmmaking that pushed stereoscopic projection into the mainstream. It became the first film to gross over $2 billion worldwide, held the all-time box office record for over a decade, and is set in the mid-22nd century on the moon Pandora.",
+    "statement": "Avatar (2009) by James Cameron was the first film to gross $2 billion worldwide and pushed 3D cinema into the mainstream.",
+    "wowFactor": "Cameron originally conceived Avatar in 1994 but waited 15 years to make it because the necessary CGI technology didn't yet exist — the film required creating an entirely new motion-capture system.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Avatar_(2009_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "history", "3D", "CGI", "blockbuster"],
+    "visualDescription": "Tall blue humanoid creatures with glowing features moving through a bioluminescent alien jungle at night in pixel art style, a floating mountain visible in the distance",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed Avatar (2009), the film that mainstreamed 3D cinema?",
+        "correctAnswer": "James Cameron",
+        "distractors": ["Steven Spielberg", "George Lucas", "Peter Jackson", "Christopher Nolan", "Ridley Scott", "Michael Bay", "J.J. Abrams"]
+      },
+      {
+        "type": "context",
+        "question": "In what year was Avatar released?",
+        "correctAnswer": "{2009}",
+        "distractors": []
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_film_noir_era",
+    "correctAnswer": "Film noir",
+    "acceptableAlternatives": ["Noir", "Film Noir"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["French New Wave", "Italian Neorealism", "German Expressionism", "Spaghetti Western", "New Hollywood", "Cinema vérité", "Dogme 95", "Mumblecore"],
+    "quizQuestion": "Which 1940s-50s Hollywood movement featured low-key lighting, cynical detectives, femme fatales, and morally ambiguous plots?",
+    "explanation": "Film noir (French for 'black film') emerged in Hollywood during the 1940s and 1950s, characterized by low-key black-and-white cinematography with roots in German Expressionism, cynical protagonists, and morally complex storylines drawn from hardboiled crime fiction. Classic examples include Double Indemnity (1944), The Maltese Falcon (1941), and Out of the Past (1947).",
+    "statement": "Film noir was a 1940s–50s Hollywood movement defined by low-key lighting, femme fatales, cynical antiheroes, and morally ambiguous plots.",
+    "wowFactor": "The term 'film noir' was coined by French critics in 1946 — American filmmakers of the time never used the label themselves and didn't even know they were creating a distinct genre.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Film_noir",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "film noir", "genre", "history"],
+    "visualDescription": "A rain-slicked alley at night in 1940s Los Angeles with a fedora-wearing detective silhouetted by a single lamp post and a femme fatale in shadow in a doorway",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What does 'film noir' mean in French, the term used to describe 1940s dark Hollywood crime films?",
+        "correctAnswer": "Black film",
+        "distractors": ["Dark cinema", "Night picture", "Shadow film", "Crime story", "Sad picture", "Mystery film", "Bleak cinema"]
+      },
+      {
+        "type": "context",
+        "question": "Which 1944 film is considered a defining example of film noir?",
+        "correctAnswer": "Double Indemnity",
+        "distractors": ["Casablanca", "Citizen Kane", "Rebecca", "Laura", "The Big Sleep", "Sunset Boulevard", "The Third Man"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_double_indemnity_director",
+    "correctAnswer": "Billy Wilder",
+    "acceptableAlternatives": ["Wilder"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "director_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["John Huston", "Howard Hawks", "Otto Preminger", "Fritz Lang", "Carol Reed", "Alfred Hitchcock", "William Wyler", "Michael Curtiz"],
+    "quizQuestion": "Who directed Double Indemnity (1944), one of the defining films of the film noir genre?",
+    "explanation": "Double Indemnity (1944) was directed by Billy Wilder from a screenplay he co-wrote with Raymond Chandler, adapted from James M. Cain's novel. The film stars Fred MacMurray as an insurance salesman who schemes with Barbara Stanwyck to murder her husband. It was nominated for seven Academy Awards and is widely regarded as the template for classic film noir.",
+    "statement": "Billy Wilder directed Double Indemnity (1944), co-written with Raymond Chandler, which set the template for film noir.",
+    "wowFactor": "Raymond Chandler and Billy Wilder hated each other throughout the writing process — Chandler complained to the studio that Wilder was 'intolerable' — yet they produced one of Hollywood's greatest screenplays.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Double_Indemnity",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "film noir", "director"],
+    "visualDescription": "A black-and-white pixel art scene of an insurance office at night with shadows of venetian blinds striped across a desk where two figures conspire under a single lamp",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which novelist's work was adapted into Double Indemnity (1944)?",
+        "correctAnswer": "James M. Cain",
+        "distractors": ["Raymond Chandler", "Dashiell Hammett", "Mickey Spillane", "Ross Macdonald", "Cornell Woolrich", "Jim Thompson", "Charles Willeford"]
+      },
+      {
+        "type": "context",
+        "question": "Who co-wrote the screenplay for Double Indemnity (1944) alongside Billy Wilder?",
+        "correctAnswer": "Raymond Chandler",
+        "distractors": ["Dashiell Hammett", "James M. Cain", "Ben Hecht", "Nunnally Johnson", "John Huston", "Philip Yordan", "Leigh Brackett"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_italian_neorealism_movement",
+    "correctAnswer": "Italian Neorealism",
+    "acceptableAlternatives": ["Neorealism", "Italian neorealism"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Film noir", "French New Wave", "German Expressionism", "Soviet Montage", "Dogme 95", "Cinema vérité", "Poetic Realism", "British New Wave"],
+    "quizQuestion": "Which post-WWII film movement used location shooting and non-professional actors to depict poverty in Italy?",
+    "explanation": "Italian Neorealism emerged in post-war Italy in the 1940s and 1950s, characterized by stories set among the poor and working class, filmed on location rather than studio sets, often with non-professional actors. Directors like Vittorio De Sica and Roberto Rossellini used the movement to document Italy's difficult post-war conditions. Key works include Bicycle Thieves (1948) and Rome, Open City (1945).",
+    "statement": "Italian Neorealism was a post-WWII movement using location filming and non-professional actors to depict working-class Italian life.",
+    "wowFactor": "Vittorio De Sica cast the father in Bicycle Thieves (1948) after searching 500,000 factory workers — Lamberto Maggiorani had never acted before and returned to factory work after filming.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Italian_neorealism",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "history", "neorealism", "italy"],
+    "visualDescription": "A lean man in worn clothes holding his young son's hand on a bombed-out Rome street at dusk in a black-and-white pixel art scene with laundry on balconies above",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which country originated the post-WWII Neorealism film movement?",
+        "correctAnswer": "Italy",
+        "distractors": ["France", "Germany", "Spain", "Poland", "Czechoslovakia", "Sweden", "Britain"]
+      },
+      {
+        "type": "context",
+        "question": "Which director is most associated with Italian Neorealism, directing Bicycle Thieves (1948)?",
+        "correctAnswer": "Vittorio De Sica",
+        "distractors": ["Roberto Rossellini", "Luchino Visconti", "Federico Fellini", "Pier Paolo Pasolini", "Michelangelo Antonioni", "Bernardo Bertolucci", "Francesco Rosi"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_bicycle_thieves",
+    "correctAnswer": "Bicycle Thieves",
+    "acceptableAlternatives": ["Ladri di biciclette", "The Bicycle Thief"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Rome, Open City", "Umberto D.", "Shoeshine", "Germany Year Zero", "Paisan", "La Terra Trema", "The Children Are Watching Us", "Stromboli"],
+    "quizQuestion": "Which 1948 Italian Neorealist film by Vittorio De Sica follows a poor father searching Rome for his stolen bicycle?",
+    "explanation": "Bicycle Thieves (1948), directed by Vittorio De Sica, follows a poor father and his young son searching Rome for the stolen bicycle he needs to keep his job. Shot entirely on location with non-professional actors, it won an Academy Honorary Award in 1950 and was named the greatest film ever made by Sight & Sound magazine in 1952.",
+    "statement": "Bicycle Thieves (1948) by Vittorio De Sica was named the greatest film ever made by Sight & Sound magazine in 1952.",
+    "wowFactor": "Sight & Sound magazine ranked Bicycle Thieves the greatest film ever made in their 1952 poll — the first non-English-language film ever to top the list.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bicycle_Thieves",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "neorealism", "italy", "classics"],
+    "visualDescription": "A thin working-class man and his small son walking through busy post-war Roman streets, scanning the ground and faces desperately for a stolen bicycle",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed Bicycle Thieves (1948)?",
+        "correctAnswer": "Vittorio De Sica",
+        "distractors": ["Roberto Rossellini", "Luchino Visconti", "Federico Fellini", "Pier Paolo Pasolini", "Cesare Zavattini", "Michelangelo Antonioni", "Francesco Rosi"]
+      },
+      {
+        "type": "context",
+        "question": "What award did Bicycle Thieves (1948) receive at the Academy Awards in 1950?",
+        "correctAnswer": "Academy Honorary Award",
+        "distractors": ["Best Foreign Film", "Best Picture", "Best Director", "Best Screenplay", "Best Cinematography", "Palme d'Or", "Golden Lion"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_french_new_wave_movement",
+    "correctAnswer": "French New Wave",
+    "acceptableAlternatives": ["Nouvelle Vague", "New Wave"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Italian Neorealism", "German Expressionism", "Film noir", "New Hollywood", "Spaghetti Western", "Cinema vérité", "Dogme 95", "British New Wave"],
+    "quizQuestion": "Which late 1950s French movement used jump cuts, handheld cameras, and improvisation to reject traditional filmmaking conventions?",
+    "explanation": "The French New Wave (Nouvelle Vague) emerged in the late 1950s from critics writing for Cahiers du cinéma who became filmmakers. Directors like Jean-Luc Godard and François Truffaut rejected polished studio filmmaking in favor of location shooting, handheld cameras, jump cuts, and improvisational style. Godard's Breathless (1960) and Truffaut's The 400 Blows (1959) are its defining works.",
+    "statement": "The French New Wave (Nouvelle Vague) was a late 1950s movement by critics-turned-directors who used jump cuts and handheld cameras to break with film conventions.",
+    "wowFactor": "Jean-Luc Godard invented the jump cut in Breathless (1960) partly out of necessity — he had to shorten the film and simply cut out sections from existing shots rather than reshoot them.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/French_New_Wave",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "french new wave", "histoire", "godard"],
+    "visualDescription": "A young man and woman running through the streets of Paris with a hand-held camera following them in a 1960s black-and-white cinematic style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which film magazine's critics became the founding directors of the French New Wave?",
+        "correctAnswer": "Cahiers du cinéma",
+        "distractors": ["Positif", "Sight & Sound", "Film Comment", "Variety", "Les Cahiers", "Cinemonde", "L'Avant-Scène"]
+      },
+      {
+        "type": "context",
+        "question": "Which 1960 film by Jean-Luc Godard became the defining work of the French New Wave?",
+        "correctAnswer": "Breathless",
+        "distractors": ["The 400 Blows", "Hiroshima mon amour", "Jules and Jim", "Shoot the Piano Player", "Band of Outsiders", "My Life to Live", "Vivre sa vie"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_breathless_godard",
+    "correctAnswer": "Jean-Luc Godard",
+    "acceptableAlternatives": ["Godard"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "director_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["François Truffaut", "Alain Resnais", "Claude Chabrol", "Eric Rohmer", "Jacques Rivette", "Louis Malle", "Jacques Demy", "Agnès Varda"],
+    "quizQuestion": "Which French New Wave director pioneered the jump cut with his debut feature Breathless (1960)?",
+    "explanation": "Jean-Luc Godard's Breathless (À bout de souffle, 1960) was his directorial debut and became the landmark film of the French New Wave. Its bold use of jump cuts — abrupt edits within a continuous scene — was revolutionary, intentionally breaking the 'continuity' rules of classical filmmaking and influencing generations of directors worldwide.",
+    "statement": "Jean-Luc Godard's Breathless (1960) pioneered the jump cut, becoming the defining film of the French New Wave.",
+    "wowFactor": "Godard filmed Breathless with a wheelchair fitted with a camera instead of a dolly — an improvisation born from having no money that accidentally created the film's trademark jittery, energetic aesthetic.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Breathless_(1960_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "french new wave", "director"],
+    "visualDescription": "A young French director with glasses holding a handheld camera on a Paris sidewalk in 1960s black-and-white street scene with the Eiffel Tower visible in the distance",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What cinematic technique did Godard pioneer in Breathless (1960)?",
+        "correctAnswer": "Jump cut",
+        "distractors": ["Tracking shot", "Dolly zoom", "Handheld camera", "Deep focus", "Slow motion", "Freeze frame", "Split screen"]
+      },
+      {
+        "type": "context",
+        "question": "In what year was Breathless (À bout de souffle) by Jean-Luc Godard released?",
+        "correctAnswer": "{1960}",
+        "distractors": []
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_new_hollywood_movement",
+    "correctAnswer": "New Hollywood",
+    "acceptableAlternatives": ["American New Wave", "Hollywood Renaissance"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Film noir", "French New Wave", "Italian Neorealism", "German Expressionism", "Spaghetti Western", "Cinema vérité", "Dogme 95", "Blaxploitation"],
+    "quizQuestion": "Which 1960s-70s movement saw young directors like Coppola, Scorsese, and Spielberg take creative control from the old studio system?",
+    "explanation": "New Hollywood (also called the Hollywood Renaissance or American New Wave) emerged in the mid-1960s as the old studio system collapsed. Young filmmakers — including Francis Ford Coppola, Martin Scorsese, Steven Spielberg, George Lucas, and Brian De Palma — were given unprecedented creative control. Key films include Bonnie and Clyde (1967), Easy Rider (1969), The Godfather (1972), and Taxi Driver (1976).",
+    "statement": "New Hollywood (1960s–70s) gave young directors like Coppola, Scorsese, and Spielberg creative control that dismantled the old studio system.",
+    "wowFactor": "Easy Rider (1969) cost just $400,000 to make and earned $60 million — proving that young, low-budget films aimed at youth audiences could outperform studio epics and launching the New Hollywood era.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/New_Hollywood",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "new hollywood", "history"],
+    "visualDescription": "Young bearded filmmakers on a 1970s movie set arguing over a script beside a camera crane, with a vintage Hollywood sound stage backdrop",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which 1969 road film demonstrated the commercial power of New Hollywood and cost only $400,000?",
+        "correctAnswer": "Easy Rider",
+        "distractors": ["Bonnie and Clyde", "The Graduate", "Midnight Cowboy", "Five Easy Pieces", "MASH", "Chinatown", "Nashville"]
+      },
+      {
+        "type": "context",
+        "question": "Which director's The Godfather (1972) is considered a landmark of the New Hollywood era?",
+        "correctAnswer": "Francis Ford Coppola",
+        "distractors": ["Martin Scorsese", "Steven Spielberg", "George Lucas", "Brian De Palma", "Robert Altman", "Hal Ashby", "Peter Bogdanovich"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_spaghetti_western_leone",
+    "correctAnswer": "Sergio Leone",
+    "acceptableAlternatives": ["Leone"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Sergio Corbucci", "Dario Argento", "Bernardo Bertolucci", "Luchino Visconti", "Michelangelo Antonioni", "Federico Fellini", "Mario Bava", "Lucio Fulci"],
+    "quizQuestion": "Which Italian director defined the Spaghetti Western genre with The Good, the Bad and the Ugly (1966) and a trilogy starring Clint Eastwood?",
+    "explanation": "Sergio Leone pioneered the Spaghetti Western genre, beginning with A Fistful of Dollars (1964), which launched Clint Eastwood to stardom. His Dollars Trilogy — featuring Eastwood as the 'Man with No Name' — culminated in The Good, the Bad and the Ugly (1966), which became the most commercially successful Italian Western ever made. Leone's collaboration with composer Ennio Morricone produced some of cinema's most iconic scores.",
+    "statement": "Sergio Leone created the Spaghetti Western genre with his Dollars Trilogy (1964–1966), starring Clint Eastwood and scored by Ennio Morricone.",
+    "wowFactor": "Clint Eastwood was paid just $15,000 for A Fistful of Dollars (1964) — Leone chose him because he was unknown and cheap, not because he was a star.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sergio_Leone",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "spaghetti western", "director"],
+    "visualDescription": "A squinting gunfighter in a poncho and cigar faces two rivals in a desert standoff at high noon, extreme close-up eyes against a wide empty frontier landscape in pixel art",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which composer created the iconic scores for Sergio Leone's Spaghetti Westerns?",
+        "correctAnswer": "Ennio Morricone",
+        "distractors": ["Bernard Herrmann", "Nino Rota", "John Williams", "Jerry Goldsmith", "Elmer Bernstein", "Henry Mancini", "Lalo Schifrin"]
+      },
+      {
+        "type": "context",
+        "question": "Which American actor became a star through Sergio Leone's Spaghetti Western trilogy?",
+        "correctAnswer": "Clint Eastwood",
+        "distractors": ["Lee Van Cleef", "Charles Bronson", "Steve McQueen", "James Coburn", "Franco Nero", "Giuliano Gemma", "Lee Marvin"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_german_expressionism_caligari",
+    "correctAnswer": "The Cabinet of Dr. Caligari",
+    "acceptableAlternatives": ["Cabinet of Dr. Caligari", "Dr. Caligari"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Nosferatu", "The Golem", "Metropolis", "M", "The Blue Angel", "Faust", "The Nibelungs", "Phantom"],
+    "quizQuestion": "Which 1920 German silent film — with its angular painted sets and distorted shadows — is the quintessential work of German Expressionist cinema?",
+    "explanation": "The Cabinet of Dr. Caligari (1920), directed by Robert Wiene, is considered the defining work of German Expressionist cinema. Its angular, distorted sets painted with exaggerated shadows created an artificial, nightmarish visual style that rejected natural appearance in favor of psychological distortion. The film's visual vocabulary directly influenced horror and film noir cinematography worldwide.",
+    "statement": "The Cabinet of Dr. Caligari (1920) is the quintessential German Expressionist film, with distorted painted sets that influenced horror cinema worldwide.",
+    "wowFactor": "The twisted, angular sets in Caligari weren't meant to be stylistic — they were a budget solution when the production couldn't afford real location shooting, and it accidentally became one of cinema's most influential visual styles.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Cabinet_of_Dr._Caligari",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "german expressionism", "history", "horror"],
+    "visualDescription": "A sleepwalking figure in black with outstretched arms moving through impossibly angled alleyways with sharp painted shadows on tilted buildings in black-and-white pixel art",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed The Cabinet of Dr. Caligari (1920)?",
+        "correctAnswer": "Robert Wiene",
+        "distractors": ["F.W. Murnau", "Fritz Lang", "G.W. Pabst", "Paul Leni", "Ernst Lubitsch", "E.A. Dupont", "Henrik Galeen"]
+      },
+      {
+        "type": "context",
+        "question": "In what year was The Cabinet of Dr. Caligari released?",
+        "correctAnswer": "{1920}",
+        "distractors": []
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_bollywood_output",
+    "correctAnswer": "India",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "country_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["United States", "China", "Nigeria", "France", "South Korea", "Japan", "Mexico", "United Kingdom"],
+    "quizQuestion": "Which country's film industry — called Bollywood — produces more films per year than any other nation?",
+    "explanation": "India's Hindi-language film industry, based in Mumbai and popularly called Bollywood, is the world's largest film industry by output, producing over 1,000 films annually across multiple regional industries. Bollywood films are known for their distinctive blend of drama, music, and elaborate dance sequences. The name 'Bollywood' is a portmanteau of Bombay (the former name of Mumbai) and Hollywood.",
+    "statement": "India's Bollywood is the world's largest film industry by output, producing over 1,000 films annually from Mumbai.",
+    "wowFactor": "India produces more films per year than Hollywood, Nollywood, and China's film industry combined — and cinema tickets in India cost as little as 15 cents, making it the most mass-market film culture on Earth.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bollywood",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "bollywood", "world cinema", "india"],
+    "visualDescription": "A glamorous Bollywood production scene with elaborately costumed dancers in bright saris performing a choreographed number in front of a grand palace backdrop",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What city is Bollywood — India's Hindi film industry — based in?",
+        "correctAnswer": "Mumbai",
+        "distractors": ["New Delhi", "Kolkata", "Chennai", "Hyderabad", "Bangalore", "Pune", "Ahmedabad"]
+      },
+      {
+        "type": "context",
+        "question": "What does the name 'Bollywood' combine?",
+        "correctAnswer": "Bombay and Hollywood",
+        "distractors": ["Bombay and Lollywood", "Bengal and Hollywood", "Bombay and Nollywood", "Bollama and Hollywood", "Bombay and Tollywood", "Bengal and Lollywood", "Bollystan and Hollywood"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_seven_samurai_kurosawa",
+    "correctAnswer": "Seven Samurai",
+    "acceptableAlternatives": ["Shichinin no Samurai"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": ["Rashomon", "Ikiru", "Yojimbo", "Sanjuro", "Ran", "Kagemusha", "Hidden Fortress", "Stray Dog"],
+    "quizQuestion": "Which 1954 Akira Kurosawa epic directly inspired The Magnificent Seven (1960) and influenced Star Wars (1977)?",
+    "explanation": "Seven Samurai (1954), directed by Akira Kurosawa and starring Toshirō Mifune, is one of the most influential films ever made. Its plot — villagers hiring warriors to defend them from bandits — was directly remade as The Magnificent Seven (1960). George Lucas has cited it as a major influence on Star Wars, and it is consistently ranked among the greatest films ever made.",
+    "statement": "Seven Samurai (1954) by Akira Kurosawa directly inspired The Magnificent Seven and influenced George Lucas's Star Wars.",
+    "wowFactor": "Seven Samurai's production was so over budget and delayed that Toho Studios nearly shut it down twice — the total shoot lasted 148 days, three times the original schedule.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Seven_Samurai",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "kurosawa", "world cinema", "japan"],
+    "visualDescription": "Seven weathered samurai in traditional Japanese armor and worn robes standing in the rain on a muddy village road, weapons drawn, facing an unseen threat",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed Seven Samurai (1954)?",
+        "correctAnswer": "Akira Kurosawa",
+        "distractors": ["Yasujiro Ozu", "Kenji Mizoguchi", "Masaki Kobayashi", "Kon Ichikawa", "Hiroshi Inagaki", "Mikio Naruse", "Tadashi Imai"]
+      },
+      {
+        "type": "context",
+        "question": "Which 1960 American Western was a direct remake of Seven Samurai?",
+        "correctAnswer": "The Magnificent Seven",
+        "distractors": ["The Wild Bunch", "Butch Cassidy and the Sundance Kid", "A Fistful of Dollars", "The Professionals", "El Dorado", "Rio Bravo", "High Noon"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_rashomon_narrative",
+    "correctAnswer": "Rashomon",
+    "acceptableAlternatives": ["Rashōmon"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Seven Samurai", "Ikiru", "Yojimbo", "The Hidden Fortress", "Sanjuro", "Ran", "Kagemusha", "High and Low"],
+    "quizQuestion": "Which 1950 Kurosawa film introduced Western audiences to the concept of multiple conflicting accounts of the same event?",
+    "explanation": "Rashomon (1950), directed by Akira Kurosawa, tells the story of a samurai's murder from four contradictory perspectives. The film introduced international audiences to the 'unreliable narrator' concept and what became known as the 'Rashomon effect' — the phenomenon of the same event being perceived and described in contradictory ways. It won the Golden Lion at Venice and an Honorary Oscar.",
+    "statement": "Rashomon (1950) by Akira Kurosawa introduced the 'Rashomon effect' — the concept of multiple irreconcilable accounts of the same event.",
+    "wowFactor": "Rashomon won the Golden Lion at Venice in 1951, which was how Hollywood first discovered Kurosawa — Japanese studio Daiei had entered the film without telling him, and it won the top prize.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rashomon",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "kurosawa", "world cinema", "japan", "narrative"],
+    "visualDescription": "Four figures from 1950s Japan — a samurai, a bandit, a woman, and a woodcutter — each gesturing from their own corner of a decomposing gate in the rain",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What term from Kurosawa's 1950 film describes the phenomenon of contradictory accounts of the same event?",
+        "correctAnswer": "Rashomon effect",
+        "distractors": ["Kurosawa paradox", "The Akira principle", "Samurai dilemma", "Narrative split", "The Tokyo effect", "The unreliable frame", "The gate paradox"]
+      },
+      {
+        "type": "context",
+        "question": "At which European film festival did Rashomon (1950) win the Golden Lion?",
+        "correctAnswer": "Venice",
+        "distractors": ["Cannes", "Berlin", "Locarno", "San Sebastián", "Edinburgh", "Toronto", "Sundance"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_cinema_paradiso",
+    "correctAnswer": "Cinema Paradiso",
+    "acceptableAlternatives": ["Nuovo Cinema Paradiso"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": ["Life is Beautiful", "Il Postino", "Amarcord", "The Conformist", "Divorce Italian Style", "8½", "La Strada", "Nights of Cabiria"],
+    "quizQuestion": "Which 1988 Italian film by Giuseppe Tornatore, scored by Ennio Morricone, is a nostalgic tribute to cinema itself set in a Sicilian village?",
+    "explanation": "Cinema Paradiso (1988), written and directed by Giuseppe Tornatore, tells the story of a filmmaker's memories of growing up in a post-war Sicilian village and his friendship with the town's movie projectionist. Scored by Ennio Morricone, it won the Academy Award for Best Foreign Language Film and is considered one of the most moving tributes to the love of cinema ever filmed.",
+    "statement": "Cinema Paradiso (1988) by Giuseppe Tornatore is a nostalgic tribute to the love of cinema, winning the Academy Award for Best Foreign Language Film.",
+    "wowFactor": "Cinema Paradiso initially flopped in Italy and was cut by 50 minutes on its original release — it only became a world classic after Miramax released the director's cut internationally.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cinema_Paradiso",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "italy", "classics", "world cinema"],
+    "visualDescription": "An old film projectionist operating a vintage projector beam of light in a small Sicilian cinema, while a young boy watches the light dance across the screen with wonder",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed Cinema Paradiso (1988)?",
+        "correctAnswer": "Giuseppe Tornatore",
+        "distractors": ["Federico Fellini", "Bernardo Bertolucci", "Luchino Visconti", "Marco Bellocchio", "Nanni Moretti", "Roberto Benigni", "Dario Argento"]
+      },
+      {
+        "type": "context",
+        "question": "Which composer scored Cinema Paradiso (1988), creating one of cinema's most beloved film scores?",
+        "correctAnswer": "Ennio Morricone",
+        "distractors": ["Nino Rota", "John Williams", "Bernard Herrmann", "Pino Donaggio", "Giorgio Moroder", "Nicola Piovani", "Luis Bacalov"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_german_expressionism_movement",
+    "correctAnswer": "German Expressionism",
+    "acceptableAlternatives": ["German Expressionist cinema"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Film noir", "Italian Neorealism", "French New Wave", "Soviet Montage", "Spaghetti Western", "New Hollywood", "Cinema vérité", "Dogme 95"],
+    "quizQuestion": "Which 1920s German film movement used distorted sets, harsh shadows, and angular design to express psychological states?",
+    "explanation": "German Expressionism in cinema emerged in the 1920s during the Weimar Republic, using extreme stylization — distorted architecture, dramatic chiaroscuro lighting, and angular visual design — to portray psychological states and dark themes. Beginning with The Cabinet of Dr. Caligari (1920) and including Nosferatu (1922) and Metropolis (1927), the movement directly influenced the visual language of Hollywood horror and film noir.",
+    "statement": "German Expressionism (1920s) used distorted sets and harsh shadows to portray psychological states, directly influencing horror films and film noir.",
+    "wowFactor": "Many German Expressionist directors — including Fritz Lang, Billy Wilder, and Fred Zinnemann — fled Nazi Germany in the 1930s and brought Expressionist visual techniques directly into Hollywood filmmaking.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/German_Expressionist_cinema",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "german expressionism", "history"],
+    "visualDescription": "A 1920s German film set with impossibly angled buildings, zigzag rooftops, and painted shadows under dramatic artificial lighting in stark black and white pixel art",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which 1922 German Expressionist film featured the first vampire in cinema history?",
+        "correctAnswer": "Nosferatu",
+        "distractors": ["The Cabinet of Dr. Caligari", "The Golem", "Metropolis", "M", "Faust", "The Student of Prague", "Phantom"]
+      },
+      {
+        "type": "context",
+        "question": "Which 1927 Fritz Lang film is a peak achievement of German Expressionist cinema depicting a dystopian future city?",
+        "correctAnswer": "Metropolis",
+        "distractors": ["M", "The Blue Angel", "Nosferatu", "The Cabinet of Dr. Caligari", "The Nibelungs", "Pandora's Box", "Spies"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_spaghetti_western_movement",
+    "correctAnswer": "Spaghetti Western",
+    "acceptableAlternatives": ["Spaghetti Westerns", "Italian Western"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Film noir", "French New Wave", "Italian Neorealism", "German Expressionism", "New Hollywood", "Cinema vérité", "Revisionist Western", "Acid Western"],
+    "quizQuestion": "What genre name describes the Italian-produced Western films of the 1960s-70s led by Sergio Leone?",
+    "explanation": "Spaghetti Western is the genre name for European-produced Western films, predominantly Italian, that emerged in the mid-1960s following Sergio Leone's international success with A Fistful of Dollars (1964). The term was coined by foreign critics because the films were made by Italian directors. Over 600 European Westerns were produced between 1960 and 1978, characterized by their stylized violence, operatic music by Ennio Morricone, and morally ambiguous heroes.",
+    "statement": "Spaghetti Western describes the Italian-produced Westerns of the 1960s-70s, with over 600 films made following Sergio Leone's international success.",
+    "wowFactor": "Almost all Spaghetti Westerns were shot in southern Spain's Tabernas Desert — it doubled convincingly for the American Southwest, and the Spanish town of Almería still has a theme park built from old Leone sets.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Spaghetti_western",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "spaghetti western", "genre"],
+    "visualDescription": "A dusty Italian desert landscape standing in for the American Southwest, with a lone poncho-wearing gunman squinting in harsh sunlight against a wide widescreen horizon",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "In what country were most 'Spaghetti Westerns' actually filmed?",
+        "correctAnswer": "Spain",
+        "distractors": ["Italy", "United States", "Mexico", "Yugoslavia", "Portugal", "Greece", "Morocco"]
+      },
+      {
+        "type": "context",
+        "question": "Which 1964 Sergio Leone film launched the international Spaghetti Western boom?",
+        "correctAnswer": "A Fistful of Dollars",
+        "distractors": ["The Good, the Bad and the Ugly", "For a Few Dollars More", "Once Upon a Time in the West", "Django", "The Great Silence", "Duck, You Sucker", "A Bullet for the General"]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hist_rashomon_director",
+    "correctAnswer": "Akira Kurosawa",
+    "acceptableAlternatives": ["Kurosawa"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Yasujiro Ozu", "Kenji Mizoguchi", "Masaki Kobayashi", "Hiroshi Teshigahara", "Nagisa Oshima", "Shohei Imamura", "Seijun Suzuki", "Kon Ichikawa"],
+    "quizQuestion": "Which Japanese director made both Rashomon (1950) and Seven Samurai (1954), becoming the most internationally celebrated filmmaker in Japanese cinema history?",
+    "explanation": "Akira Kurosawa directed both Rashomon (1950) and Seven Samurai (1954), which together established him as Japan's greatest internationally known filmmaker. Rashomon won the Venice Golden Lion, while Seven Samurai became one of the most imitated and remade films in history. Kurosawa's work directly influenced George Lucas, Francis Ford Coppola, Steven Spielberg, and Martin Scorsese.",
+    "statement": "Akira Kurosawa directed both Rashomon (1950) and Seven Samurai (1954), becoming the most internationally influential Japanese filmmaker in cinema history.",
+    "wowFactor": "George Lucas, Steven Spielberg, and Francis Ford Coppola jointly financed Kurosawa's Kagemusha (1980) because he couldn't find Japanese studio backing — they considered repaying a debt to the director who had inspired them all.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Akira_Kurosawa",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": ["cinema", "kurosawa", "director", "japan"],
+    "visualDescription": "A stern Japanese director in a wide-brimmed sun hat with a megaphone standing before a film camera on a muddy period-drama location shoot with mountains in the background",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which of Akira Kurosawa's films was remade as The Magnificent Seven (1960)?",
+        "correctAnswer": "Seven Samurai",
+        "distractors": ["Rashomon", "Yojimbo", "The Hidden Fortress", "Ikiru", "High and Low", "Sanjuro", "Ran"]
+      },
+      {
+        "type": "context",
+        "question": "Which Kurosawa film won the Golden Lion at Venice in 1951?",
+        "correctAnswer": "Rashomon",
+        "distractors": ["Seven Samurai", "Ikiru", "Yojimbo", "Ran", "Kagemusha", "The Hidden Fortress", "Throne of Blood"]
+      }
+    ]
+  }
+]

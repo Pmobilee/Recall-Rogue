@@ -51,10 +51,10 @@
 <style>
   .passive-bar {
     position: absolute;
-    top: 8px;
-    left: 16px;
+    top: calc(8px * var(--layout-scale, 1));
+    left: calc(16px * var(--layout-scale, 1));
     display: flex;
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
     z-index: 5;
   }
 
@@ -64,26 +64,24 @@
     align-items: center;
     background: rgba(30, 45, 61, 0.9);
     border: 1px solid;
-    border-radius: 6px;
-    padding: 2px 6px;
-    min-width: 32px;
+    border-radius: calc(6px * var(--layout-scale, 1));
+    padding: calc(2px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
+    min-width: calc(32px * var(--layout-scale, 1));
   }
 
   .passive-icon-img {
-    width: 14px;
-    height: 14px;
+    width: calc(18px * var(--layout-scale, 1));
+    height: calc(18px * var(--layout-scale, 1));
     object-fit: contain;
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
   }
 
   .passive-emoji {
-    font-size: 14px;
+    font-size: calc(14px * var(--text-scale, 1));
     line-height: 1;
   }
 
   .passive-value {
-    font-size: 9px;
+    font-size: calc(9px * var(--text-scale, 1));
     font-weight: 700;
     color: #FFD700;
     line-height: 1;

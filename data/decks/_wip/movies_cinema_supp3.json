@@ -1,0 +1,899 @@
+[
+  {
+    "id": "cinema_supp_mise_en_scene",
+    "correctAnswer": "Mise-en-scène",
+    "acceptableAlternatives": ["Mise en scene"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Montage",
+      "MacGuffin",
+      "Dolly zoom",
+      "Foley",
+      "Jump cut",
+      "Diegetic sound",
+      "Film noir",
+      "Cinema vérité"
+    ],
+    "quizQuestion": "What French term describes the arrangement of everything visible within a film frame?",
+    "explanation": "Mise-en-scène (French for 'placing on stage') refers to everything the director controls within the frame: set design, lighting, costume, actor positioning, and camera placement. It is one of the foundational concepts of film analysis.",
+    "statement": "Mise-en-scène is the French term for the arrangement of scenery, actors, props, and lighting within a film's frame.",
+    "wowFactor": "Film critics use this single French phrase to capture everything a director composes inside the camera's view — the total visual environment of a shot.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mise-en-sc%C3%A8ne",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which cinema term means 'placing on stage' and refers to everything within the frame?",
+        "correctAnswer": "Mise-en-scène",
+        "distractors": ["Montage", "MacGuffin", "Dolly zoom"]
+      }
+    ],
+    "tags": ["cinema", "film_theory", "terminology"],
+    "visualDescription": "A film director stands beside a camera on a movie set, gesturing toward actors and elaborate set dressing under dramatic studio lighting, pixel art style."
+  },
+  {
+    "id": "cinema_supp_diegetic_sound",
+    "correctAnswer": "Diegetic sound",
+    "acceptableAlternatives": ["Diegetic"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 4,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Non-diegetic sound",
+      "Foley",
+      "Mise-en-scène",
+      "Montage",
+      "Jump cut",
+      "Cinema vérité",
+      "Aspect ratio",
+      "Storyboard"
+    ],
+    "quizQuestion": "What is the term for sound that characters within a film's world can actually hear?",
+    "explanation": "Diegetic sound originates from within the story world (diegesis) — a character playing a piano, a phone ringing, or dialogue. Non-diegetic sound, like the musical score, exists outside the story world and is heard only by the audience.",
+    "statement": "Diegetic sound is sound that exists within the world of the film, audible to the characters on screen.",
+    "wowFactor": "When a film character turns on a radio and the scene's background music seamlessly switches to that station, the director is playing with the line between diegetic and non-diegetic sound.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Diegesis#Film",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Sound audible to characters within the story world is called what?",
+        "correctAnswer": "Diegetic sound",
+        "distractors": ["Non-diegetic sound", "Foley", "Ambient score"]
+      }
+    ],
+    "tags": ["cinema", "film_theory", "sound"],
+    "visualDescription": "Two film characters reacting to a blaring car horn on a busy city street while a film crew watches through a monitor, pixel art style."
+  },
+  {
+    "id": "cinema_supp_jump_cut",
+    "correctAnswer": "Jump cut",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Dissolve",
+      "Montage",
+      "Dolly zoom",
+      "Wipe",
+      "Cross-cut",
+      "Smash cut",
+      "Match cut",
+      "L-cut"
+    ],
+    "quizQuestion": "What abrupt editing technique, pioneered in Breathless (1960), cuts mid-scene without continuity?",
+    "explanation": "A jump cut is an abrupt, jarring edit within a single scene that breaks the continuity of time or space. Jean-Luc Godard's Breathless (1960) famously popularized the technique, giving it an anxious, disorienting energy that became a hallmark of the French New Wave.",
+    "statement": "A jump cut is a discontinuous edit within a scene, famously used by Jean-Luc Godard in Breathless (1960).",
+    "wowFactor": "Godard used jump cuts in Breathless partly because he needed to trim the film's running time — and accidentally invented one of cinema's most influential techniques.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jump_cut",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Jean-Luc Godard pioneered which jarring editing technique in Breathless?",
+        "correctAnswer": "Jump cut",
+        "distractors": ["Dissolve", "Montage", "Dolly zoom"]
+      }
+    ],
+    "tags": ["cinema", "editing", "french_new_wave"],
+    "visualDescription": "A film editing table with strips of celluloid film being spliced together by a focused editor, with frames showing abrupt jumps in scene, pixel art style."
+  },
+  {
+    "id": "cinema_supp_cinema_verite",
+    "correctAnswer": "Cinema vérité",
+    "acceptableAlternatives": ["Cinema verite", "Cinéma vérité"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Film noir",
+      "Mise-en-scène",
+      "Italian Neorealism",
+      "French New Wave",
+      "Dogme 95",
+      "German Expressionism",
+      "Mumblecore",
+      "New Hollywood"
+    ],
+    "quizQuestion": "What documentary filmmaking style uses handheld cameras and natural lighting to capture reality?",
+    "explanation": "Cinema vérité (French: 'cinema truth') is a documentary style developed in France in the 1960s, influenced by Soviet filmmaker Dziga Vertov. It uses handheld cameras, natural lighting, and minimal crew to capture spontaneous, unscripted reality.",
+    "statement": "Cinema vérité is a documentary filmmaking style using handheld cameras and natural lighting to convey unscripted authenticity.",
+    "wowFactor": "Cinema vérité filmmakers sometimes deliberately appear on camera or provoke subjects to react — the filmmaker's presence is acknowledged as part of the truth they're capturing.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cin%C3%A9ma_v%C3%A9rit%C3%A9",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which French term names the handheld, natural-light documentary filmmaking style?",
+        "correctAnswer": "Cinema vérité",
+        "distractors": ["Film noir", "Italian Neorealism", "Dogme 95"]
+      }
+    ],
+    "tags": ["cinema", "documentary", "film_movement"],
+    "visualDescription": "A documentary filmmaker with a handheld camera following a subject through a crowded street market, capturing candid moments, pixel art style."
+  },
+  {
+    "id": "cinema_supp_foley",
+    "correctAnswer": "Foley",
+    "acceptableAlternatives": ["Foley art", "Foley sound"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Diegetic sound",
+      "ADR",
+      "Dubbing",
+      "Leitmotif",
+      "Boom microphone",
+      "Mixing",
+      "Sound design",
+      "Looping"
+    ],
+    "quizQuestion": "What is the name for reproducing everyday sound effects in post-production for film?",
+    "explanation": "Foley is the art of creating everyday sound effects — footsteps, clothing rustles, door creaks — in a studio during post-production. Named after Jack Foley, a Universal Studios sound pioneer, Foley artists perform sounds in sync with a projected image.",
+    "statement": "Foley is the post-production art of creating and recording everyday sound effects in sync with the film image.",
+    "wowFactor": "Foley artists famously recreate battle sounds using ordinary objects: clinking keys for armor, celery snapping for breaking bones, and coconuts for horse hooves.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Foley_(filmmaking)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Jack Foley pioneered which post-production sound technique now named after him?",
+        "correctAnswer": "Foley",
+        "distractors": ["ADR", "Dubbing", "Sound mixing"]
+      }
+    ],
+    "tags": ["cinema", "sound", "post_production"],
+    "visualDescription": "A sound effects artist stepping on gravel inside a recording studio while watching a film projected on a screen, recreating footstep sounds, pixel art style."
+  },
+  {
+    "id": "cinema_supp_aspect_ratio",
+    "correctAnswer": "Aspect ratio",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Frame rate",
+      "Depth of field",
+      "Focal length",
+      "Shutter speed",
+      "Color grading",
+      "Film grain",
+      "Lens flare",
+      "Vignette"
+    ],
+    "quizQuestion": "What term describes the proportional relationship between a film frame's width and height?",
+    "explanation": "Aspect ratio is the ratio of a film frame's width to its height. Standard television used 4:3 (1.33:1), while CinemaScope widescreen is 2.39:1. The Academy standard ratio is 1.85:1. Directors choose aspect ratio to shape how viewers experience the story.",
+    "statement": "Aspect ratio is the width-to-height proportion of a film frame; CinemaScope uses 2.39:1 for its iconic widescreen look.",
+    "wowFactor": "When Christopher Nolan shot Dunkirk, he chose the tall 1.43:1 IMAX format specifically so viewers would feel surrounded — trapped like the soldiers on the beach.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Aspect_ratio_(image)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The ratio 2.39:1 describes the CinemaScope version of which camera measurement?",
+        "correctAnswer": "Aspect ratio",
+        "distractors": ["Frame rate", "Depth of field", "Focal length"]
+      }
+    ],
+    "tags": ["cinema", "cinematography", "terminology"],
+    "visualDescription": "Side-by-side comparison of a square television frame and a wide cinema letterbox frame showing the same landscape scene, pixel art style."
+  },
+  {
+    "id": "cinema_supp_storyboard",
+    "correctAnswer": "Storyboard",
+    "acceptableAlternatives": ["Storyboarding"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Shot list",
+      "Animatic",
+      "Call sheet",
+      "Production design",
+      "Script breakdown",
+      "Treatment",
+      "Mood board",
+      "Pre-visualization"
+    ],
+    "quizQuestion": "What are the sequential illustrated panels used to plan a film's shots before shooting?",
+    "explanation": "A storyboard is a sequence of illustrated panels depicting planned shots, camera angles, and action. Alfred Hitchcock was renowned for his meticulous storyboards — he claimed he had already 'made' the film in his head before a single frame was shot.",
+    "statement": "A storyboard is a sequence of illustrated panels planning a film's shots, camera angles, and action before production begins.",
+    "wowFactor": "Alfred Hitchcock storyboarded every shot so precisely that he reportedly found the actual filming anticlimactic — the creative work was already done on paper.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Storyboard",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Hitchcock meticulously planned every shot using which sequential illustration technique?",
+        "correctAnswer": "Storyboard",
+        "distractors": ["Shot list", "Animatic", "Mood board"]
+      }
+    ],
+    "tags": ["cinema", "pre_production", "directing"],
+    "visualDescription": "A director's desk covered with hand-drawn sequential panels showing camera angles and character positions, with a movie camera visible in the background, pixel art style."
+  },
+  {
+    "id": "cinema_supp_film_pianist",
+    "correctAnswer": "The Pianist",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "The Reader",
+      "Life is Beautiful",
+      "The Boy in the Striped Pyjamas",
+      "Sophie's Choice",
+      "Schindler's List",
+      "Son of Saul",
+      "Downfall",
+      "Jakob the Liar"
+    ],
+    "quizQuestion": "Which 2002 Roman Polanski film won Adrien Brody the Best Actor Oscar for his role as a Holocaust survivor?",
+    "explanation": "The Pianist (2002), directed by Roman Polanski, stars Adrien Brody as Władysław Szpilman, a Polish-Jewish pianist who survived the Holocaust in Warsaw. Brody won the Academy Award for Best Actor and Polanski won Best Director, his only Oscar win.",
+    "statement": "The Pianist (2002) earned Adrien Brody the Best Actor Oscar for his portrayal of pianist Władysław Szpilman surviving the Warsaw Ghetto.",
+    "wowFactor": "Adrien Brody prepared for the role by losing 30 pounds, learning to play Chopin on piano, and giving up his apartment and car — total immersion that won him an Oscar at age 29.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Pianist_(2002_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Adrien Brody won Best Actor for his role in which 2002 Polanski film?",
+        "correctAnswer": "The Pianist",
+        "distractors": ["The Reader", "Life is Beautiful", "Son of Saul"]
+      }
+    ],
+    "tags": ["cinema", "oscar_winner", "holocaust_film"],
+    "visualDescription": "A gaunt man in tattered clothes playing a grand piano in a bombed-out apartment while snow falls through a broken window, pixel art style."
+  },
+  {
+    "id": "cinema_supp_film_braveheart",
+    "correctAnswer": "Braveheart",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Rob Roy",
+      "The Last of the Mohicans",
+      "Gladiator",
+      "Kingdom of Heaven",
+      "Braveheart",
+      "The Patriot",
+      "Troy",
+      "300"
+    ],
+    "quizQuestion": "Which 1995 Mel Gibson film about William Wallace won Best Picture and Best Director at the Oscars?",
+    "explanation": "Braveheart (1995), directed by and starring Mel Gibson, tells the story of Scottish hero William Wallace's 13th-century rebellion against English rule. It won five Academy Awards including Best Picture and Best Director at the 68th Academy Awards.",
+    "statement": "Braveheart (1995), directed by and starring Mel Gibson, won Best Picture and Best Director at the 68th Academy Awards.",
+    "wowFactor": "Despite being a historical epic, Braveheart was filmed largely in Ireland, where thousands of Irish army reservists were hired as extras for the massive battle sequences.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Braveheart",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Mel Gibson directed and starred in which Oscar-winning 1995 Scottish epic?",
+        "correctAnswer": "Braveheart",
+        "distractors": ["Rob Roy", "Gladiator", "The Patriot"]
+      }
+    ],
+    "tags": ["cinema", "oscar_winner", "historical_epic"],
+    "visualDescription": "A warrior in blue face paint holding a broadsword on a misty Scottish highland battlefield at dawn, pixel art style."
+  },
+  {
+    "id": "cinema_supp_film_chinatown",
+    "correctAnswer": "Chinatown",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "The Long Goodbye",
+      "Klute",
+      "Serpico",
+      "The French Connection",
+      "Dog Day Afternoon",
+      "Night Moves",
+      "Farewell, My Lovely",
+      "Body Heat"
+    ],
+    "quizQuestion": "Which 1974 Roman Polanski noir, starring Jack Nicholson as Jake Gittes, is considered a genre masterpiece?",
+    "explanation": "Chinatown (1974), directed by Roman Polanski and written by Robert Towne, stars Jack Nicholson as private detective Jake Gittes investigating a water conspiracy in 1930s Los Angeles. It is widely regarded as one of the greatest screenplays ever written and a high point of neo-noir cinema.",
+    "statement": "Chinatown (1974) directed by Roman Polanski stars Jack Nicholson as detective Jake Gittes in a celebrated neo-noir mystery set in 1930s Los Angeles.",
+    "wowFactor": "Chinatown's bleak, uncompromising ending was forced on the film by Roman Polanski, who refused screenwriter Robert Towne's happier version — and history proved Polanski right.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chinatown_(1974_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Jack Nicholson plays private eye Jake Gittes in which 1974 Roman Polanski neo-noir?",
+        "correctAnswer": "Chinatown",
+        "distractors": ["The Long Goodbye", "Serpico", "The French Connection"]
+      }
+    ],
+    "tags": ["cinema", "neo_noir", "polanski"],
+    "visualDescription": "A private detective in a 1930s suit and fedora stands on a dusty Los Angeles street corner under a flickering neon sign at night, pixel art style."
+  },
+  {
+    "id": "cinema_supp_film_annie_hall",
+    "correctAnswer": "Annie Hall",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Manhattan",
+      "Hannah and Her Sisters",
+      "Stardust Memories",
+      "Radio Days",
+      "Crimes and Misdemeanors",
+      "Bananas",
+      "Sleeper",
+      "Zelig"
+    ],
+    "quizQuestion": "Which 1977 Woody Allen film beat Star Wars for the Academy Award for Best Picture?",
+    "explanation": "Annie Hall (1977), directed by and starring Woody Allen opposite Diane Keaton, won four Academy Awards including Best Picture, Best Director, Best Actress, and Best Original Screenplay. Defeating Star Wars at the Oscars surprised many, though Annie Hall is now recognized as one of the greatest romantic comedies ever made.",
+    "statement": "Annie Hall (1977) by Woody Allen won Best Picture over Star Wars at the 50th Academy Awards, one of the most surprising upsets in Oscar history.",
+    "wowFactor": "Star Wars was the biggest box office hit of 1977 and a cultural phenomenon — yet Annie Hall, a small-scale New York romantic comedy, beat it for Best Picture.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Annie_Hall",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Woody Allen's 1977 romantic comedy that beat Star Wars for Best Picture was called what?",
+        "correctAnswer": "Annie Hall",
+        "distractors": ["Manhattan", "Hannah and Her Sisters", "Crimes and Misdemeanors"]
+      }
+    ],
+    "tags": ["cinema", "oscar_winner", "woody_allen"],
+    "visualDescription": "A neurotic man and confident woman share an awkward first date at an outdoor Manhattan café while subtitles reveal their inner thoughts, pixel art style."
+  },
+  {
+    "id": "cinema_supp_film_the_graduate",
+    "correctAnswer": "The Graduate",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Midnight Cowboy",
+      "Easy Rider",
+      "The Heartbreak Kid",
+      "American Graffiti",
+      "Ordinary People",
+      "Harold and Maude",
+      "Risky Business",
+      "The Paper Chase"
+    ],
+    "quizQuestion": "Which 1967 Mike Nichols film launched Dustin Hoffman's career and featured Simon and Garfunkel's 'Mrs. Robinson'?",
+    "explanation": "The Graduate (1967), directed by Mike Nichols, stars Dustin Hoffman as aimless college graduate Benjamin Braddock seduced by the older Mrs. Robinson (Anne Bancroft). Simon and Garfunkel's soundtrack, including 'Mrs. Robinson', was a landmark in using contemporary pop music for a film score.",
+    "statement": "The Graduate (1967) launched Dustin Hoffman's career and featured Simon and Garfunkel's 'Mrs. Robinson' on its iconic soundtrack.",
+    "wowFactor": "The Graduate's closing scene — Hoffman banging on a church window to stop a wedding — was so unrehearsed that Dustin Hoffman and Katharine Ross both improvised their uncertain expressions on the final bus ride.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Graduate",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Dustin Hoffman's breakthrough role was as Benjamin Braddock in which 1967 film?",
+        "correctAnswer": "The Graduate",
+        "distractors": ["Midnight Cowboy", "Easy Rider", "American Graffiti"]
+      }
+    ],
+    "tags": ["cinema", "new_hollywood", "classic"],
+    "visualDescription": "A young man in a scuba diving suit sits at the bottom of a backyard swimming pool, staring blankly upward, as parents hover above on the pool deck, pixel art style."
+  },
+  {
+    "id": "cinema_supp_film_singin_in_rain",
+    "correctAnswer": "Singin' in the Rain",
+    "acceptableAlternatives": ["Singin in the Rain"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "An American in Paris",
+      "The Band Wagon",
+      "Funny Face",
+      "Seven Brides for Seven Brothers",
+      "Guys and Dolls",
+      "Cabaret",
+      "Gigi",
+      "Easter Parade"
+    ],
+    "quizQuestion": "Which 1952 MGM musical starring Gene Kelly is widely considered the greatest movie musical ever made?",
+    "explanation": "Singin' in the Rain (1952), directed by Stanley Donen and Gene Kelly, stars Kelly, Donald O'Connor, and Debbie Reynolds in a comedy about Hollywood's transition from silent films to sound. Its title number — Kelly dancing through rain — is among the most iconic scenes in cinema history.",
+    "statement": "Singin' in the Rain (1952), starring Gene Kelly, is widely regarded as the greatest movie musical ever made.",
+    "wowFactor": "Gene Kelly filmed the iconic rain-dance number while running a 103-degree fever — yet his energy and joy look entirely genuine on screen.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Singin%27_in_the_Rain",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Gene Kelly starred in and co-directed which 1952 MGM classic considered the greatest musical?",
+        "correctAnswer": "Singin' in the Rain",
+        "distractors": ["An American in Paris", "The Band Wagon", "Cabaret"]
+      }
+    ],
+    "tags": ["cinema", "musical", "classic_hollywood"],
+    "visualDescription": "A joyful man in a trench coat swinging on a lamppost in the rain on a neon-lit city street at night, umbrella abandoned, pixel art style."
+  },
+  {
+    "id": "cinema_supp_film_fargo",
+    "correctAnswer": "Fargo",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "No Country for Old Men",
+      "Blood Simple",
+      "Miller's Crossing",
+      "Raising Arizona",
+      "Burn After Reading",
+      "A Simple Plan",
+      "True Grit",
+      "Barton Fink"
+    ],
+    "quizQuestion": "Which 1996 Coen Brothers film earned Frances McDormand her first Best Actress Oscar?",
+    "explanation": "Fargo (1996), written and directed by Joel and Ethan Coen, stars Frances McDormand as Marge Gunderson, a pregnant Minnesota police chief investigating a series of murders. McDormand won the Academy Award for Best Actress and the Coens won Best Original Screenplay.",
+    "statement": "Fargo (1996) by the Coen Brothers stars Frances McDormand as a pregnant Minnesota police chief and earned her the Best Actress Oscar.",
+    "wowFactor": "Fargo opens with the claim 'This is a true story' — but the Coen Brothers invented most of the plot; the disclaimer was a deliberate artistic choice to unsettle the audience.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fargo_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Frances McDormand plays pregnant police chief Marge Gunderson in which Coen Brothers film?",
+        "correctAnswer": "Fargo",
+        "distractors": ["No Country for Old Men", "Blood Simple", "Burn After Reading"]
+      }
+    ],
+    "tags": ["cinema", "coen_brothers", "oscar_winner"],
+    "visualDescription": "A pregnant police officer in a parka and trooper hat examines crime scene tracks in deep snow on a bleak Minnesota highway, pixel art style."
+  },
+  {
+    "id": "cinema_supp_film_blade_runner_2049",
+    "correctAnswer": "Blade Runner 2049",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Arrival",
+      "Dune",
+      "Ex Machina",
+      "Ghost in the Shell",
+      "Alita: Battle Angel",
+      "Annihilation",
+      "Oblivion",
+      "The Martian"
+    ],
+    "quizQuestion": "Denis Villeneuve directed which 2017 sequel starring Ryan Gosling set 30 years after Ridley Scott's original?",
+    "explanation": "Blade Runner 2049 (2017), directed by Denis Villeneuve, stars Ryan Gosling as K, a replicant blade runner who uncovers a secret that threatens civilization. Harrison Ford reprises his role as Rick Deckard from the original 1982 Ridley Scott film. Cinematographer Roger Deakins won the Academy Award for Best Cinematography.",
+    "statement": "Blade Runner 2049 (2017), directed by Denis Villeneuve, is the sequel to Ridley Scott's 1982 original, starring Ryan Gosling and Harrison Ford.",
+    "wowFactor": "Blade Runner 2049 won the Oscar for Best Cinematography, with Roger Deakins finally winning after 14 previous nominations — a 30-year wait for Hollywood's most respected cinematographer.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blade_Runner_2049",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Denis Villeneuve directed Ryan Gosling in which 2017 sci-fi sequel set in a dystopian 2049?",
+        "correctAnswer": "Blade Runner 2049",
+        "distractors": ["Arrival", "Dune", "Ex Machina"]
+      }
+    ],
+    "tags": ["cinema", "sci_fi", "villeneuve"],
+    "visualDescription": "A lone figure in a long coat walks through orange desert ruins of a decayed futuristic city under a smog-choked sky, pixel art style."
+  },
+  {
+    "id": "cinema_supp_film_godfather_iii",
+    "correctAnswer": "The Godfather Part III",
+    "acceptableAlternatives": ["Godfather Part III", "Godfather 3"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "The Godfather",
+      "The Godfather Part II",
+      "Scarface",
+      "Goodfellas",
+      "Casino",
+      "Once Upon a Time in America",
+      "The Untouchables",
+      "A Bronx Tale"
+    ],
+    "quizQuestion": "Which controversial 1990 Coppola film completed the Corleone trilogy despite mixed critical reception?",
+    "explanation": "The Godfather Part III (1990), directed by Francis Ford Coppola, stars Al Pacino as an aging Michael Corleone attempting to legitimize his family's interests. Critics noted its weaker screenplay and the casting of Coppola's daughter Sofia in a prominent role, yet the film earned seven Academy Award nominations including Best Picture.",
+    "statement": "The Godfather Part III (1990), directed by Francis Ford Coppola, completed the trilogy despite mixed reviews and seven Oscar nominations.",
+    "wowFactor": "Sofia Coppola's heavily criticized acting debut in Part III came because the original lead Winona Ryder fell ill days before filming began — her father Francis cast her in desperation.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Godfather_Part_III",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Francis Ford Coppola completed the Corleone saga with which controversial 1990 sequel?",
+        "correctAnswer": "The Godfather Part III",
+        "distractors": ["Casino", "Scarface", "Goodfellas"]
+      }
+    ],
+    "tags": ["cinema", "coppola", "crime_drama"],
+    "visualDescription": "An elderly don in a dark suit and white shirt sits in an ornate Italian palazzo chair, looking weary and reflective, pixel art style."
+  },
+  {
+    "id": "cinema_supp_film_no_country",
+    "correctAnswer": "No Country for Old Men",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "There Will Be Blood",
+      "Fargo",
+      "Blood Simple",
+      "Hell or High Water",
+      "Winter's Bone",
+      "Prisoners",
+      "Sicario",
+      "Wind River"
+    ],
+    "quizQuestion": "Which 2007 Coen Brothers film about an unstoppable hitman won four Academy Awards including Best Picture?",
+    "explanation": "No Country for Old Men (2007), directed by Joel and Ethan Coen and adapted from Cormac McCarthy's novel, stars Javier Bardem as the terrifying hitman Anton Chigurh. The film won four Academy Awards: Best Picture, Best Director, Best Supporting Actor (Bardem), and Best Adapted Screenplay.",
+    "statement": "No Country for Old Men (2007) by the Coen Brothers won four Oscars including Best Picture, with Javier Bardem's Anton Chigurh becoming one of cinema's most iconic villains.",
+    "wowFactor": "Javier Bardem's haircut as Anton Chigurh — which he reportedly hated — became so iconic that hairstylists around the world received photos of it for years after the film's release.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/No_Country_for_Old_Men_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Javier Bardem plays hitman Anton Chigurh in which 2007 Oscar Best Picture winner?",
+        "correctAnswer": "No Country for Old Men",
+        "distractors": ["There Will Be Blood", "Fargo", "Sicario"]
+      }
+    ],
+    "tags": ["cinema", "coen_brothers", "oscar_winner"],
+    "visualDescription": "A pale-faced hitman with a bowl-cut holding a pressurized cattle gun walks alone down a desolate Texas highway under a brooding sunset, pixel art style."
+  },
+  {
+    "id": "cinema_supp_film_the_departed",
+    "correctAnswer": "The Departed",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Goodfellas",
+      "Heat",
+      "Mystic River",
+      "Gone Baby Gone",
+      "Black Mass",
+      "The Town",
+      "Spotlight",
+      "American History X"
+    ],
+    "quizQuestion": "Which 2006 Martin Scorsese film about moles in the Boston mob finally won Scorsese his first Best Director Oscar?",
+    "explanation": "The Departed (2006), directed by Martin Scorsese, stars Leonardo DiCaprio, Matt Damon, and Jack Nicholson in a crime thriller about a cop infiltrating the Irish mob and a mobster infiltrating the police simultaneously. Scorsese finally won the Academy Award for Best Director, his first Oscar win after four previous nominations.",
+    "statement": "The Departed (2006) won Martin Scorsese his long-awaited first Best Director Oscar, with Leonardo DiCaprio and Matt Damon both playing moles in a Boston mob drama.",
+    "wowFactor": "Martin Scorsese had directed Goodfellas, Taxi Driver, Raging Bull, and Gangs of New York without winning Best Director — audiences at the Oscars gave him a standing ovation when The Departed finally won.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Departed",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Martin Scorsese won his first Best Director Oscar for which 2006 Boston crime thriller?",
+        "correctAnswer": "The Departed",
+        "distractors": ["Goodfellas", "Heat", "Mystic River"]
+      }
+    ],
+    "tags": ["cinema", "scorsese", "oscar_winner"],
+    "visualDescription": "Two suited men watch each other with suspicion across a crowded Boston police precinct bullpen, tension visible in their expressions, pixel art style."
+  },
+  {
+    "id": "cinema_supp_actor_dicaprio",
+    "correctAnswer": "Leonardo DiCaprio",
+    "acceptableAlternatives": ["DiCaprio", "Leo DiCaprio"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Brad Pitt",
+      "Matt Damon",
+      "Joaquin Phoenix",
+      "Christian Bale",
+      "Ryan Gosling",
+      "Tobey Maguire",
+      "Tom Hardy",
+      "Jake Gyllenhaal"
+    ],
+    "quizQuestion": "Which actor finally won his first Best Actor Oscar for The Revenant (2015) after years of losses?",
+    "explanation": "Leonardo DiCaprio won the Academy Award for Best Actor for The Revenant (2015), directed by Alejandro González Iñárritu. Having been nominated four times previously (What's Eating Gilbert Grape, The Aviator, Blood Diamond, The Wolf of Wall Street), his win after years of headline-making losses became a pop culture event.",
+    "statement": "Leonardo DiCaprio won his first Academy Award for Best Actor for The Revenant (2015) after four previous Oscar nominations over two decades.",
+    "wowFactor": "DiCaprio's losing streak became such a cultural joke that internet memes about him not winning preceded his eventual Oscar win — making the actual moment a global celebration.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Leonardo_DiCaprio",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Leonardo DiCaprio survived a bear attack on screen in which 2015 survival film that won him the Oscar?",
+        "correctAnswer": "The Revenant",
+        "distractors": ["The Aviator", "Blood Diamond", "The Wolf of Wall Street"]
+      }
+    ],
+    "tags": ["cinema", "actor", "oscar_winner"],
+    "visualDescription": "A rugged frontiersman crawling through a snowy wilderness forest, survival gear and determination on his face, pixel art style."
+  },
+  {
+    "id": "cinema_supp_actor_morgan_freeman",
+    "correctAnswer": "Morgan Freeman",
+    "acceptableAlternatives": ["Freeman"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "James Earl Jones",
+      "Denzel Washington",
+      "Samuel L. Jackson",
+      "Forest Whitaker",
+      "Laurence Fishburne",
+      "Don Cheadle",
+      "Idris Elba",
+      "Chiwetel Ejiofor"
+    ],
+    "quizQuestion": "Which actor's deep, authoritative voice narrates The Shawshank Redemption and became one of cinema's most recognized?",
+    "explanation": "Morgan Freeman's narration as Ellis 'Red' Redding in The Shawshank Redemption (1994) is one of the most celebrated performances in cinema history. Freeman's distinctive baritone has made him one of Hollywood's most sought-after narrators, with his voice lending gravitas to everything from documentaries to film trailers.",
+    "statement": "Morgan Freeman narrates The Shawshank Redemption (1994) as Red, with his distinctive voice becoming one of cinema's most recognized.",
+    "wowFactor": "Morgan Freeman's voice is so trusted that he has narrated everything from March of the Penguins to national tragedy news coverage — his baritone is psychologically associated with authority and wisdom.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Morgan_Freeman",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which actor won Best Supporting Actor for Million Dollar Baby and narrates Shawshank Redemption?",
+        "correctAnswer": "Morgan Freeman",
+        "distractors": ["James Earl Jones", "Denzel Washington", "Laurence Fishburne"]
+      }
+    ],
+    "tags": ["cinema", "actor", "shawshank"],
+    "visualDescription": "An elder man in prison blues standing in a sun-lit prison yard gazing at the sky through a chain-link fence with hope in his expression, pixel art style."
+  },
+  {
+    "id": "cinema_supp_actor_samuel_jackson",
+    "correctAnswer": "Samuel L. Jackson",
+    "acceptableAlternatives": ["Samuel Jackson", "Sam Jackson"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Morgan Freeman",
+      "Denzel Washington",
+      "Eddie Murphy",
+      "Will Smith",
+      "Jamie Foxx",
+      "Laurence Fishburne",
+      "Forest Whitaker",
+      "Cuba Gooding Jr."
+    ],
+    "quizQuestion": "Which actor's films have collectively grossed more than any other actor in Hollywood history?",
+    "explanation": "Samuel L. Jackson has appeared in the highest-grossing film collection of any actor in history, including multiple Marvel Cinematic Universe films as Nick Fury. His breakout role was Jules Winnfield in Pulp Fiction (1994), directed by Quentin Tarantino.",
+    "statement": "Samuel L. Jackson holds the record for highest combined box office gross of any actor, with roles ranging from Jules in Pulp Fiction to Nick Fury in the MCU.",
+    "wowFactor": "Samuel L. Jackson negotiated to play Nick Fury in Marvel films after seeing a version of the character drawn to look like him in the comics — the comics had done it first without telling him.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Samuel_L._Jackson",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which actor plays Jules Winnfield in Pulp Fiction and Nick Fury in the Marvel Cinematic Universe?",
+        "correctAnswer": "Samuel L. Jackson",
+        "distractors": ["Morgan Freeman", "Denzel Washington", "Laurence Fishburne"]
+      }
+    ],
+    "tags": ["cinema", "actor", "marvel"],
+    "visualDescription": "A cool, suited man in dark sunglasses and a long leather jacket standing at the center of a busy city street, commanding presence, pixel art style."
+  },
+  {
+    "id": "cinema_supp_actor_viola_davis",
+    "correctAnswer": "Viola Davis",
+    "acceptableAlternatives": ["Davis"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Halle Berry",
+      "Taraji P. Henson",
+      "Angela Bassett",
+      "Lupita Nyong'o",
+      "Kerry Washington",
+      "Octavia Spencer",
+      "Whoopi Goldberg",
+      "Jenifer Lewis"
+    ],
+    "quizQuestion": "Which actress became the first Black woman to win the Triple Crown of Acting, completing it with a 2017 Best Actress Oscar?",
+    "explanation": "Viola Davis won the Academy Award for Best Actress for Fences (2016), completing the Triple Crown of Acting (Oscar, Emmy, Tony). She is the first Black woman to achieve this feat. Davis later added the Grammy Award, making her an EGOT winner.",
+    "statement": "Viola Davis won the 2017 Best Actress Oscar for Fences, becoming the first Black woman to win the Triple Crown of Acting and later an EGOT winner.",
+    "wowFactor": "Viola Davis's EGOT — Emmy, Grammy, Oscar, Tony — took decades of acclaimed stage and screen work. She is one of only 20 people in history to hold all four awards.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Viola_Davis",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which actress won the Best Actress Oscar for Fences (2016) and became an EGOT winner?",
+        "correctAnswer": "Viola Davis",
+        "distractors": ["Halle Berry", "Lupita Nyong'o", "Angela Bassett"]
+      }
+    ],
+    "tags": ["cinema", "actress", "oscar_winner", "egot"],
+    "visualDescription": "A powerful woman in period dress standing in a backyard, arms crossed with fierce dignity, confronting someone off-frame, pixel art style."
+  },
+  {
+    "id": "cinema_supp_actor_frances_mcdormand",
+    "correctAnswer": "Frances McDormand",
+    "acceptableAlternatives": ["McDormand"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Meryl Streep",
+      "Cate Blanchett",
+      "Jessica Lange",
+      "Jodie Foster",
+      "Hilary Swank",
+      "Holly Hunter",
+      "Kathy Bates",
+      "Helen Mirren"
+    ],
+    "quizQuestion": "Which actress holds the record of three Best Actress Oscars, for Fargo, Three Billboards, and Nomadland?",
+    "explanation": "Frances McDormand has won three Academy Awards for Best Actress: Fargo (1996), Three Billboards Outside Ebbing, Missouri (2017), and Nomadland (2020). She also won a Best Supporting Actress Oscar for Almost Famous, making her one of the most decorated actresses in Academy history.",
+    "statement": "Frances McDormand has won three Best Actress Academy Awards — for Fargo (1996), Three Billboards (2017), and Nomadland (2020).",
+    "wowFactor": "McDormand is one of only three performers in history to win three acting Oscars in the same category, placing her alongside Meryl Streep and Katharine Hepburn.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Frances_McDormand",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which actress won Best Actress Oscars for Fargo, Three Billboards, and Nomadland?",
+        "correctAnswer": "Frances McDormand",
+        "distractors": ["Meryl Streep", "Cate Blanchett", "Jodie Foster"]
+      }
+    ],
+    "tags": ["cinema", "actress", "oscar_winner"],
+    "visualDescription": "A practical, no-nonsense woman in a parka standing in a snowy parking lot holding an Oscar statuette with quiet satisfaction, pixel art style."
+  }
+]

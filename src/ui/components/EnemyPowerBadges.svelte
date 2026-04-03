@@ -75,9 +75,8 @@
   }
 
   .badge-icon {
-    width: calc(48px * var(--layout-scale, 1));
-    height: calc(48px * var(--layout-scale, 1));
-    image-rendering: pixelated;
+    width: calc(60px * var(--layout-scale, 1));
+    height: calc(60px * var(--layout-scale, 1));
     flex-shrink: 0;
   }
 

@@ -559,7 +559,6 @@
   .topbar-status-sprite {
     width: 80%;
     height: 80%;
-    image-rendering: pixelated;
     object-fit: contain;
   }
 
@@ -622,14 +621,13 @@
   .topbar-status-popup-icon {
     font-size: calc(16px * var(--layout-scale, 1));
     flex-shrink: 0;
-    width: calc(22px * var(--layout-scale, 1));
+    width: calc(28px * var(--layout-scale, 1));
     text-align: center;
   }
 
   .topbar-status-popup-sprite {
-    width: calc(22px * var(--layout-scale, 1));
-    height: calc(22px * var(--layout-scale, 1));
-    image-rendering: pixelated;
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
     object-fit: contain;
     flex-shrink: 0;
   }

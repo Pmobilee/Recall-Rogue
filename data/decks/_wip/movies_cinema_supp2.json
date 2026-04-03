@@ -1,0 +1,794 @@
+[
+  {
+    "id": "cinema_year_rear_window",
+    "correctAnswer": "{1954}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was Alfred Hitchcock's Rear Window released?",
+    "explanation": "Rear Window was released on August 1, 1954. Directed by Alfred Hitchcock and starring James Stewart and Grace Kelly, it is a psychological thriller set almost entirely in a single apartment courtyard. Source: Wikipedia.",
+    "statement": "Alfred Hitchcock's Rear Window was released in 1954, starring James Stewart as a photographer spying on his neighbours.",
+    "wowFactor": "Hitchcock filmed Rear Window on a single enormous Paramount soundstage — the largest indoor set ever built at the studio at that time.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rear_Window",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Rear Window (1954) was directed by Alfred Hitchcock?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "James Stewart plays a wheelchair-bound photographer in which 1954 Hitchcock thriller?",
+        "correctAnswer": "Rear Window",
+        "distractors": ["Vertigo", "North by Northwest", "The Wrong Man"]
+      }
+    ],
+    "tags": ["cinema", "hitchcock", "thriller", "1950s"],
+    "visualDescription": "A man in a wheelchair peering through binoculars at a courtyard of lit apartment windows at night, tense shadows, pixel art style."
+  },
+  {
+    "id": "cinema_year_the_graduate",
+    "correctAnswer": "{1967}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was The Graduate, starring Dustin Hoffman, released?",
+    "explanation": "The Graduate was released on December 21, 1967. Directed by Mike Nichols, it starred Dustin Hoffman in his breakthrough role as Benjamin Braddock. The film's soundtrack by Simon & Garfunkel became iconic. Source: Wikipedia.",
+    "statement": "The Graduate (1967), directed by Mike Nichols, launched Dustin Hoffman's career and featured an iconic Simon & Garfunkel soundtrack.",
+    "wowFactor": "The Graduate's soundtrack — featuring 'Mrs. Robinson' and 'The Sound of Silence' — was one of the first times a pop soundtrack was used to define a film's entire emotional tone.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Graduate",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: The Graduate (1967) starred Dustin Hoffman?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Mike Nichols directed which 1967 coming-of-age classic featuring Simon & Garfunkel music?",
+        "correctAnswer": "The Graduate",
+        "distractors": ["Midnight Cowboy", "Easy Rider", "Bonnie and Clyde"]
+      }
+    ],
+    "tags": ["cinema", "new-hollywood", "1960s"],
+    "visualDescription": "A young man in a darkened room looking uncertain, with a woman's leg in a nylon stocking framing the foreground, 1960s decor, pixel art style."
+  },
+  {
+    "id": "cinema_year_bonnie_and_clyde",
+    "correctAnswer": "{1967}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was Arthur Penn's Bonnie and Clyde released?",
+    "explanation": "Bonnie and Clyde was released on August 13, 1967. Directed by Arthur Penn and starring Warren Beatty and Faye Dunaway, it was a landmark of New Hollywood cinema that depicted graphic violence and romanticised outlaw protagonists. Source: Wikipedia.",
+    "statement": "Bonnie and Clyde (1967), directed by Arthur Penn, was a defining film of the New Hollywood era that shocked audiences with its graphic violence.",
+    "wowFactor": "Bonnie and Clyde's climactic slow-motion ambush scene used four cameras and was so viscerally brutal that it shocked American audiences and critics — and rewrote the rules for screen violence.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bonnie_and_Clyde_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Warren Beatty starred in Bonnie and Clyde (1967)?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Faye Dunaway and Warren Beatty starred as which two notorious criminals in a 1967 New Hollywood film?",
+        "correctAnswer": "Bonnie and Clyde",
+        "distractors": ["Butch Cassidy and the Sundance Kid", "The Wild Bunch", "The Graduate"]
+      }
+    ],
+    "tags": ["cinema", "new-hollywood", "crime", "1960s"],
+    "visualDescription": "Two outlaw figures in 1930s dress posing beside a getaway car on a dusty road, guns raised, pixel art style."
+  },
+  {
+    "id": "cinema_year_easy_rider",
+    "correctAnswer": "{1969}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was the counterculture road movie Easy Rider released?",
+    "explanation": "Easy Rider was released on July 14, 1969. Directed by Dennis Hopper and starring Hopper, Peter Fonda, and Jack Nicholson in a breakout role, it became a defining film of the counterculture movement and the New Hollywood era. Source: Wikipedia.",
+    "statement": "Easy Rider (1969), directed by Dennis Hopper, became a symbol of the 1960s counterculture and launched Jack Nicholson's career.",
+    "wowFactor": "Easy Rider was made for around $360,000 and grossed over $60 million — one of the most profitable independent films of its era and a catalyst for the New Hollywood revolution.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Easy_Rider",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Easy Rider (1969) was directed by Dennis Hopper?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Jack Nicholson had a breakout role as a lawyer in which 1969 counterculture road film?",
+        "correctAnswer": "Easy Rider",
+        "distractors": ["Five Easy Pieces", "The Graduate", "Midnight Cowboy"]
+      }
+    ],
+    "tags": ["cinema", "new-hollywood", "counterculture", "1960s"],
+    "visualDescription": "Two motorcyclists riding across an open American highway at sunset, long hair and American flags, vast desert behind them, pixel art style."
+  },
+  {
+    "id": "cinema_year_chinatown",
+    "correctAnswer": "{1974}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was Roman Polański's neo-noir film Chinatown released?",
+    "explanation": "Chinatown was released on June 20, 1974. Directed by Roman Polański and written by Robert Towne, it starred Jack Nicholson as private detective Jake Gittes. The film is widely considered one of the greatest screenplays ever written. Source: Wikipedia.",
+    "statement": "Chinatown (1974), directed by Roman Polański, is a neo-noir thriller starring Jack Nicholson as private detective Jake Gittes investigating Los Angeles water corruption.",
+    "wowFactor": "Robert Towne's Chinatown screenplay is so admired that it has been used as a teaching text in nearly every major film school as a model of perfect screenplay structure.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chinatown_(1974_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Chinatown (1974) was directed by Roman Polański?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Jack Nicholson plays private detective Jake Gittes in which 1974 neo-noir thriller?",
+        "correctAnswer": "Chinatown",
+        "distractors": ["The Conversation", "Klute", "The Long Goodbye"]
+      }
+    ],
+    "tags": ["cinema", "neo-noir", "1970s"],
+    "visualDescription": "A private detective in a tan suit with a bandaged nose examining documents in a smoky 1930s Los Angeles office, pixel art style."
+  },
+  {
+    "id": "cinema_year_taxi_driver",
+    "correctAnswer": "{1976}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was Martin Scorsese's Taxi Driver released?",
+    "explanation": "Taxi Driver was released on February 8, 1976. Directed by Martin Scorsese and starring Robert De Niro as Travis Bickle, it won the Palme d'Or at the 1976 Cannes Film Festival. Source: Wikipedia.",
+    "statement": "Martin Scorsese's Taxi Driver (1976) starred Robert De Niro as Travis Bickle, a lonely New York cab driver, and won the Palme d'Or at Cannes.",
+    "wowFactor": "Robert De Niro famously worked as a real New York taxi driver for a month to prepare for the role — and was such a good driver that passengers had no idea they were in a cab with a movie star.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Taxi_Driver",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Taxi Driver (1976) won the Palme d'Or at the Cannes Film Festival?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Robert De Niro plays Travis Bickle, an insomniac cab driver, in which 1976 Martin Scorsese film?",
+        "correctAnswer": "Taxi Driver",
+        "distractors": ["Raging Bull", "Mean Streets", "The Deer Hunter"]
+      }
+    ],
+    "tags": ["cinema", "scorsese", "1970s", "palme-dor"],
+    "visualDescription": "A lone cab driver in a yellow taxi on a rainy New York street at night, neon reflections on wet asphalt, pixel art style."
+  },
+  {
+    "id": "cinema_year_close_encounters",
+    "correctAnswer": "{1977}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was Spielberg's Close Encounters of the Third Kind released?",
+    "explanation": "Close Encounters of the Third Kind was released on November 16, 1977. Directed by Steven Spielberg, it starred Richard Dreyfuss as Roy Neary, an ordinary man obsessed by a vision of a strange mountain after a UFO encounter. Source: Wikipedia.",
+    "statement": "Steven Spielberg's Close Encounters of the Third Kind (1977) was a landmark science fiction film about first contact with extraterrestrial life.",
+    "wowFactor": "The five-note musical motif used to communicate with the aliens in Close Encounters was chosen after John Williams tried over 300 different musical phrases — and the chosen sequence works in 12 different musical keys.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Close_Encounters_of_the_Third_Kind",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Close Encounters of the Third Kind (1977) was directed by Steven Spielberg?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "A five-note alien musical greeting is the centrepiece of which 1977 Spielberg science fiction film?",
+        "correctAnswer": "Close Encounters of the Third Kind",
+        "distractors": ["E.T. the Extra-Terrestrial", "2001: A Space Odyssey", "Star Wars"]
+      }
+    ],
+    "tags": ["cinema", "spielberg", "sci-fi", "1970s"],
+    "visualDescription": "A massive glowing mothership descending over a mountain in Wyoming at night, tiny human figures below raising their arms in awe, pixel art style."
+  },
+  {
+    "id": "cinema_year_die_hard",
+    "correctAnswer": "{1988}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was the action thriller Die Hard, starring Bruce Willis, released?",
+    "explanation": "Die Hard was released on July 15, 1988. Directed by John McTiernan and starring Bruce Willis as NYPD officer John McClane, it became one of the most influential action films ever made and redefined the lone-hero action genre. Source: Wikipedia.",
+    "statement": "Die Hard (1988), directed by John McTiernan, starred Bruce Willis as John McClane and became the defining template for the lone-hero action thriller genre.",
+    "wowFactor": "Die Hard so thoroughly defined action movie conventions that Hollywood still uses 'Die Hard on a...' as a standard pitch format — Die Hard on a bus (Speed), Die Hard on a plane (Air Force One), Die Hard on a ship (Under Siege).",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Die_Hard",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Die Hard (1988) starred Bruce Willis as NYPD officer John McClane?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Bruce Willis's breakout action role came in which 1988 thriller set in the Nakatomi Plaza skyscraper?",
+        "correctAnswer": "Die Hard",
+        "distractors": ["Lethal Weapon", "RoboCop", "The Running Man"]
+      }
+    ],
+    "tags": ["cinema", "action", "1980s"],
+    "visualDescription": "A barefoot cop in a white vest running through a skyscraper corridor, explosions behind him, broken glass on the floor, pixel art style."
+  },
+  {
+    "id": "cinema_year_the_matrix",
+    "correctAnswer": "{1999}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was The Matrix, directed by the Wachowskis, released?",
+    "explanation": "The Matrix was released on March 31, 1999. Directed by the Wachowski Sisters and starring Keanu Reeves as Neo, it won four Academy Awards and introduced the bullet-time visual effect that transformed action filmmaking. Source: Wikipedia.",
+    "statement": "The Matrix (1999), directed by the Wachowski Sisters, starred Keanu Reeves as Neo and pioneered the bullet-time visual effect technique.",
+    "wowFactor": "The Matrix's bullet-time effect required setting up 122 cameras around Keanu Reeves and firing them in sequence — a technique so novel that the production filed patents to protect it.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Matrix",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: The Matrix (1999) was directed by the Wachowski Sisters?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Keanu Reeves plays a hacker named Neo who discovers reality is a simulation in which 1999 sci-fi film?",
+        "correctAnswer": "The Matrix",
+        "distractors": ["Dark City", "eXistenZ", "The Thirteenth Floor"]
+      }
+    ],
+    "tags": ["cinema", "sci-fi", "action", "1990s"],
+    "visualDescription": "A man in a black trench coat frozen mid-air in a slow-motion bullet dodge, green digital code raining down behind him, pixel art style."
+  },
+  {
+    "id": "cinema_year_spirited_away",
+    "correctAnswer": "{2001}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was Hayao Miyazaki's Spirited Away released in Japan?",
+    "explanation": "Spirited Away was released in Japan on July 20, 2001. Directed by Hayao Miyazaki and produced by Studio Ghibli, it became the highest-grossing film in Japanese history and won the Academy Award for Best Animated Feature in 2003. Source: Wikipedia.",
+    "statement": "Spirited Away (2001), directed by Hayao Miyazaki, became the highest-grossing film in Japanese history and won the Academy Award for Best Animated Feature.",
+    "wowFactor": "Spirited Away is the only hand-drawn animated film ever to win the Academy Award for Best Animated Feature — and is one of only two animated films in history to gross over $300 million in Japan alone.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Spirited_Away",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Spirited Away won the Academy Award for Best Animated Feature?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Hayao Miyazaki's 2001 Studio Ghibli film about a girl trapped in a spirit world became the highest-grossing film in Japanese history. What is it called?",
+        "correctAnswer": "Spirited Away",
+        "distractors": ["Princess Mononoke", "My Neighbor Totoro", "Howl's Moving Castle"]
+      }
+    ],
+    "tags": ["cinema", "animation", "ghibli", "miyazaki", "2000s"],
+    "visualDescription": "A young girl in a blue-and-white outfit working in a fantastical bathhouse full of spirits, steam rising around ornate lanterns, pixel art style."
+  },
+  {
+    "id": "cinema_year_the_dark_knight",
+    "correctAnswer": "{2008}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was Christopher Nolan's The Dark Knight released?",
+    "explanation": "The Dark Knight was released on July 18, 2008. Directed by Christopher Nolan and starring Christian Bale as Batman and Heath Ledger as the Joker, it became one of the highest-grossing films of all time. Heath Ledger's performance won a posthumous Academy Award. Source: Wikipedia.",
+    "statement": "The Dark Knight (2008), directed by Christopher Nolan, featured Heath Ledger's iconic portrayal of the Joker, for which he received a posthumous Academy Award.",
+    "wowFactor": "Heath Ledger's Joker makeup was largely designed by Ledger himself — he kept a 'Joker diary' for months before filming, filling it with dark jokes and images to inhabit the character's psychology.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Dark_Knight_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Heath Ledger received a posthumous Academy Award for The Dark Knight (2008)?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Christopher Nolan directed which 2008 Batman film featuring Heath Ledger's acclaimed performance as the Joker?",
+        "correctAnswer": "The Dark Knight",
+        "distractors": ["Batman Begins", "The Dark Knight Rises", "Batman Returns"]
+      }
+    ],
+    "tags": ["cinema", "superhero", "nolan", "2000s"],
+    "visualDescription": "A dark-costumed vigilante on a Gotham rooftop facing a grinning villain in a purple coat against a blazing city skyline, pixel art style."
+  },
+  {
+    "id": "cinema_year_get_out",
+    "correctAnswer": "{2017}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was Jordan Peele's directorial debut Get Out released?",
+    "explanation": "Get Out was released on February 24, 2017. Written and directed by Jordan Peele, it starred Daniel Kaluuya as a young Black man who visits his white girlfriend's family estate. The film earned Peele the Academy Award for Best Original Screenplay. Source: Wikipedia.",
+    "statement": "Get Out (2017), written and directed by Jordan Peele, earned him the Academy Award for Best Original Screenplay and is credited with revitalising the social horror genre.",
+    "wowFactor": "Get Out was made for $4.5 million and grossed over $255 million worldwide — and became the highest-grossing debut film by a Black director in history at the time of its release.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Get_Out",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Jordan Peele won the Academy Award for Best Original Screenplay for Get Out (2017)?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Daniel Kaluuya stars in which 2017 Jordan Peele social horror film about a Black man visiting his girlfriend's family?",
+        "correctAnswer": "Get Out",
+        "distractors": ["Us", "Nope", "Candyman"]
+      }
+    ],
+    "tags": ["cinema", "horror", "2010s"],
+    "visualDescription": "A young Black man with a terrified expression sitting in a hypnotist's chair in a bright suburban living room, pixel art style."
+  },
+  {
+    "id": "cinema_world_france_lumiere",
+    "correctAnswer": "France",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "country_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Italy", "Germany", "United Kingdom", "Sweden", "United States", "Japan", "South Korea", "Iran"],
+    "quizQuestion": "The Lumière Brothers, who held the first public film screening in 1895, were from which country?",
+    "explanation": "Auguste and Louis Lumière were French inventors who held the first paid public film screening on December 28, 1895, at the Grand Café in Paris, France. They are considered pioneers of cinema. Source: Wikipedia.",
+    "statement": "The Lumière Brothers held the world's first public film screening in Paris, France in December 1895.",
+    "wowFactor": "The Lumière Brothers thought cinema was 'an invention without a future' — they sold their camera patents within years of inventing them, never imagining film would become a global industry.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lumi%C3%A8re_Brothers",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: The Lumière Brothers held the first public film screening in Paris in 1895?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Lumière Brothers held the world's first public film screening at the Grand Café in which city?",
+        "correctAnswer": "Paris",
+        "distractors": ["London", "Berlin", "Vienna"]
+      }
+    ],
+    "tags": ["cinema", "film-history", "france", "pioneers"],
+    "visualDescription": "Two mustachioed men in Victorian frock coats presenting a glowing film projector to a crowd in a Parisian cafe in 1895, pixel art style."
+  },
+  {
+    "id": "cinema_world_italy_neorealism",
+    "correctAnswer": "Italy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "country_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["France", "Germany", "Sweden", "Japan", "Spain", "United Kingdom", "United States", "Iran"],
+    "quizQuestion": "Italian Neorealism — a post-WWII movement featuring films like Bicycle Thieves — originated in which country?",
+    "explanation": "Italian Neorealism emerged in Italy after World War II, with directors like Vittorio De Sica and Roberto Rossellini shooting on location with non-professional actors. Bicycle Thieves (1948) is its most celebrated example. Source: Wikipedia.",
+    "statement": "Italian Neorealism was a post-World War II filmmaking movement in Italy that used non-professional actors and real locations to depict working-class life.",
+    "wowFactor": "Vittorio De Sica cast a real unemployed bicycle factory worker — not an actor — in the lead role of Bicycle Thieves, amplifying the film's emotional rawness to devastating effect.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Italian_neorealism",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Italian Neorealism emerged after World War II?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Vittorio De Sica's Bicycle Thieves (1948) is the most celebrated example of which national cinema movement?",
+        "correctAnswer": "Italian Neorealism",
+        "distractors": ["French New Wave", "German Expressionism", "Soviet Montage"]
+      }
+    ],
+    "tags": ["cinema", "italian-neorealism", "italy", "world-cinema"],
+    "visualDescription": "A father and young son walking through rain-soaked postwar Rome streets, expressions of worry, cobblestones and laundry lines above, pixel art style."
+  },
+  {
+    "id": "cinema_world_japan_kurosawa",
+    "correctAnswer": "Japan",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "country_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["China", "South Korea", "India", "Iran", "France", "Italy", "Sweden", "Germany"],
+    "quizQuestion": "Director Akira Kurosawa, whose films include Seven Samurai and Rashomon, was from which country?",
+    "explanation": "Akira Kurosawa was a Japanese film director widely regarded as one of the most influential filmmakers in cinema history. Seven Samurai (1954) and Rashomon (1950) are among his most celebrated works and deeply influenced Western cinema. Source: Wikipedia.",
+    "statement": "Akira Kurosawa was a Japanese director whose films Seven Samurai (1954) and Rashomon (1950) profoundly influenced global cinema.",
+    "wowFactor": "Kurosawa's Seven Samurai was so influential that it was directly remade as The Magnificent Seven — and its structure of assembling a team for a mission has been copied in hundreds of films ever since.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Akira_Kurosawa",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Akira Kurosawa directed Seven Samurai (1954)?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Rashomon (1950) and Seven Samurai (1954) are masterworks by which Japanese director?",
+        "correctAnswer": "Akira Kurosawa",
+        "distractors": ["Yasujiro Ozu", "Kenji Mizoguchi", "Hayao Miyazaki"]
+      }
+    ],
+    "tags": ["cinema", "japan", "world-cinema", "kurosawa"],
+    "visualDescription": "A samurai in full armour standing in pouring rain on a muddy Japanese village path, a sword raised, pixel art style."
+  },
+  {
+    "id": "cinema_world_south_korea_parasite",
+    "correctAnswer": "South Korea",
+    "acceptableAlternatives": ["Korea"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "country_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": ["Japan", "China", "India", "Iran", "France", "Italy", "Sweden", "Germany"],
+    "quizQuestion": "Director Bong Joon-ho and his Oscar-winning film Parasite (2019) are from which country?",
+    "explanation": "Bong Joon-ho is a South Korean director. His film Parasite (2019) became the first non-English-language film to win the Academy Award for Best Picture, also taking home Best Director, Best Original Screenplay, and Best International Feature Film. Source: Wikipedia.",
+    "statement": "Parasite (2019) by South Korean director Bong Joon-ho became the first non-English-language film to win the Academy Award for Best Picture.",
+    "wowFactor": "Parasite's win made Bong Joon-ho the first South Korean filmmaker to win the Palme d'Or AND the Oscar for Best Picture — a double crown no director had achieved with the same film in decades.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Parasite (2019) was the first non-English-language film to win Best Picture at the Academy Awards?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Bong Joon-ho directed Parasite (2019), which won Best Picture at the Oscars. Where is he from?",
+        "correctAnswer": "South Korea",
+        "distractors": ["Japan", "China", "Thailand"]
+      }
+    ],
+    "tags": ["cinema", "south-korea", "world-cinema", "oscars"],
+    "visualDescription": "A Korean family in a sleek underground bunker looking up with expressions of tension, minimal concrete architecture around them, pixel art style."
+  },
+  {
+    "id": "cinema_world_india_bollywood",
+    "correctAnswer": "India",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "country_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["China", "Nigeria", "Brazil", "South Korea", "Japan", "France", "Mexico", "United States"],
+    "quizQuestion": "Which country produces the most films annually in the world, home to Bollywood?",
+    "explanation": "India's film industry is the largest in the world by number of films produced annually. Bollywood, based in Mumbai, is the most prominent sector. India produces films in dozens of languages across multiple regional industries. Source: Wikipedia.",
+    "statement": "India produces more films annually than any other country in the world, with Bollywood — based in Mumbai — being its most internationally recognised film industry.",
+    "wowFactor": "India's film industry produces over 1,500 feature films per year across more than 20 languages — making Hollywood look like a regional boutique by comparison.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cinema_of_India",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: India produces more films annually than any other country?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Bollywood — the world's most prolific film industry — is based in which Indian city?",
+        "correctAnswer": "Mumbai",
+        "distractors": ["Delhi", "Chennai", "Kolkata"]
+      }
+    ],
+    "tags": ["cinema", "india", "bollywood", "world-cinema"],
+    "visualDescription": "A colourful Bollywood film set in Mumbai with dancers in vibrant costumes, a film camera crew surrounding them, palm trees and ornate temple backdrop, pixel art style."
+  },
+  {
+    "id": "cinema_world_germany_expressionism",
+    "correctAnswer": "Germany",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "country_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["France", "Italy", "Sweden", "Japan", "Austria", "Poland", "Russia", "United Kingdom"],
+    "quizQuestion": "German Expressionism, exemplified by Metropolis (1927), originated in which country?",
+    "explanation": "German Expressionism was a film movement of the 1920s originating in Germany, characterised by distorted sets, high contrast lighting, and themes of tyranny and madness. Fritz Lang's Metropolis (1927) is its most celebrated example. Source: Wikipedia.",
+    "statement": "German Expressionism was a 1920s film movement originating in Germany, characterised by distorted architecture and high-contrast visuals — exemplified by Fritz Lang's Metropolis (1927).",
+    "wowFactor": "Metropolis (1927) cost the equivalent of over $200 million in today's money — nearly bankrupting its studio UFA and remaining one of the most expensive silent films ever made.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/German_Expressionism_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Fritz Lang's Metropolis (1927) is an example of German Expressionism?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Fritz Lang directed Metropolis (1927), a landmark of which national cinema movement?",
+        "correctAnswer": "German Expressionism",
+        "distractors": ["French New Wave", "Italian Neorealism", "Soviet Montage"]
+      }
+    ],
+    "tags": ["cinema", "germany", "expressionism", "silent-film", "world-cinema"],
+    "visualDescription": "A towering dystopian cityscape of soaring dark skyscrapers and smoke stacks at night, workers marching below, art deco silhouettes, pixel art style."
+  },
+  {
+    "id": "cinema_world_mexico_three_amigos",
+    "correctAnswer": "Mexico",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "country_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["Brazil", "Argentina", "Spain", "Colombia", "France", "Italy", "United States", "Canada"],
+    "quizQuestion": "Del Toro, Cuarón, and Iñárritu — the 'Three Amigos' of cinema — are directors from which country?",
+    "explanation": "Guillermo del Toro, Alfonso Cuarón, and Alejandro González Iñárritu are three acclaimed Mexican film directors collectively nicknamed 'The Three Amigos' by the press. Between them they have won eight Academy Awards for directing. Source: Wikipedia.",
+    "statement": "Guillermo del Toro, Alfonso Cuarón, and Alejandro González Iñárritu are Mexican directors collectively nicknamed 'The Three Amigos of Cinema' who have won multiple Academy Awards.",
+    "wowFactor": "The Three Amigos — del Toro, Cuarón, and Iñárritu — have won the Best Director Oscar a combined eight times between them, making Mexico one of the most Oscar-decorated directing nations in history.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Three_Amigos_(directors)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Guillermo del Toro, Alfonso Cuarón, and Alejandro González Iñárritu are all Mexican directors?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Mexican director made Pan's Labyrinth (2006) and The Shape of Water (2017)?",
+        "correctAnswer": "Guillermo del Toro",
+        "distractors": ["Alfonso Cuarón", "Alejandro González Iñárritu", "Carlos Reygadas"]
+      }
+    ],
+    "tags": ["cinema", "mexico", "world-cinema", "directors"],
+    "visualDescription": "Three film directors posing on a red carpet in Mexico City, cameras flashing around them, film reel decorations in the background, pixel art style."
+  },
+  {
+    "id": "cinema_world_sweden_bergman",
+    "correctAnswer": "Sweden",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "country_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Denmark", "Norway", "Finland", "Germany", "France", "Italy", "Poland", "Russia"],
+    "quizQuestion": "Director Ingmar Bergman, who made The Seventh Seal and Wild Strawberries, was from which country?",
+    "explanation": "Ingmar Bergman was a Swedish film and theatre director widely regarded as one of the greatest filmmakers in cinema history. The Seventh Seal (1957) and Wild Strawberries (1957) are among his most celebrated works. Source: Wikipedia.",
+    "statement": "Swedish director Ingmar Bergman is widely considered one of cinema's greatest artists, known for The Seventh Seal (1957) and his explorations of existential and spiritual themes.",
+    "wowFactor": "Ingmar Bergman directed The Seventh Seal and Wild Strawberries in the same year — 1957 — producing two of cinema's most enduring masterpieces back to back.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ingmar_Bergman",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Ingmar Bergman directed The Seventh Seal (1957)?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "A knight playing chess with Death is the central image of which 1957 Ingmar Bergman film?",
+        "correctAnswer": "The Seventh Seal",
+        "distractors": ["Wild Strawberries", "Persona", "Fanny and Alexander"]
+      }
+    ],
+    "tags": ["cinema", "sweden", "world-cinema", "bergman"],
+    "visualDescription": "A medieval knight in armour playing a chess game with a cloaked figure on a rocky Scandinavian beach at dusk, pixel art style."
+  },
+  {
+    "id": "cinema_world_iran_kiarostami",
+    "correctAnswer": "Iran",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "country_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": ["Turkey", "Egypt", "India", "Japan", "France", "Italy", "Poland", "Denmark"],
+    "quizQuestion": "Abbas Kiarostami and the Oscar-winning film A Separation (2011) both come from which country?",
+    "explanation": "Abbas Kiarostami was an Iranian film director regarded as one of the greatest filmmakers of the 20th century. A Separation (2011), directed by Asghar Farhadi, was an Iranian drama that won the Academy Award for Best Foreign Language Film. Source: Wikipedia.",
+    "statement": "Iran produced Abbas Kiarostami, one of the world's most celebrated directors, and A Separation (2011), which won the Academy Award for Best Foreign Language Film.",
+    "wowFactor": "Iran's cinema thrived even under strict censorship — directors like Kiarostami used poetic indirection and symbolic storytelling to navigate restrictions, producing some of the world's most acclaimed films.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cinema_of_Iran",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: A Separation (2011) won the Academy Award for Best Foreign Language Film?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "A Separation (2011), directed by Asghar Farhadi, is from which Middle Eastern country's cinema tradition?",
+        "correctAnswer": "Iran",
+        "distractors": ["Turkey", "Egypt", "Israel"]
+      }
+    ],
+    "tags": ["cinema", "iran", "world-cinema", "arthouse"],
+    "visualDescription": "A couple arguing in a sparse Tehran apartment, sunlight through dusty curtains, legal documents on a table between them, pixel art style."
+  },
+  {
+    "id": "cinema_world_uk_hitchcock",
+    "correctAnswer": "United Kingdom",
+    "acceptableAlternatives": ["UK", "Britain", "England"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "country_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": ["France", "Germany", "Italy", "Sweden", "Japan", "South Korea", "Ireland", "Australia"],
+    "quizQuestion": "Alfred Hitchcock, before becoming a Hollywood director, began his career making films in which country?",
+    "explanation": "Alfred Hitchcock was born in Leytonstone, England and made his early films in the United Kingdom in the 1920s and 1930s, including The 39 Steps (1935) and The Lady Vanishes (1938). He moved to Hollywood in 1939 under contract to David O. Selznick. Source: Wikipedia.",
+    "statement": "Alfred Hitchcock began his directorial career in the United Kingdom before moving to Hollywood in 1939, where he became known as the 'Master of Suspense'.",
+    "wowFactor": "Hitchcock's British films like The 39 Steps (1935) were so successful that Hollywood studios competed fiercely for his services — David O. Selznick ultimately won, luring him to America for $40,000 per picture.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Alfred_Hitchcock",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "true_false",
+        "question": "True or false: Alfred Hitchcock was born in England?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which British-born director made The 39 Steps (1935) before moving to Hollywood to make Psycho and Vertigo?",
+        "correctAnswer": "Alfred Hitchcock",
+        "distractors": ["Carol Reed", "David Lean", "Michael Powell"]
+      }
+    ],
+    "tags": ["cinema", "uk", "hitchcock", "world-cinema"],
+    "visualDescription": "A portly silhouetted director profile against a film set backdrop in 1930s London, Edwardian buildings visible through a studio window, pixel art style."
+  }
+]

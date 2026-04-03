@@ -898,7 +898,7 @@
             <!-- Mechanic name overlay -->
             <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName} use:stretchText>{card.mechanicName ?? ''}</div>
             <!-- Chain color pill — on top, sized to match frame's card-type cutout -->
-            <div class="frame-text v2-card-type" style="{GUIDE_STYLES.cardTypePill} background-color: {getChainColor(card.chainType)};"></div>
+            <div class="frame-text v2-card-type" class:pill-chain-active={isActiveChainMatch && !isSelected && selectedIndex === null} style="{GUIDE_STYLES.cardTypePill} background-color: {getChainColor(card.chainType)}; --pill-color: {getChainColor(card.chainType)};"></div>
             <!-- Effect description text -->
             <div class="frame-text v2-effect-text {effectTextSizeClass(card)}" style={GUIDE_STYLES.effectText}>
               <span class="parchment-inner">
@@ -1607,6 +1607,8 @@
     /* bottom is set via inline style using resolved JS values (riseAmount + resolvedCardH + 12*layoutScale)
        to avoid the CSS var(--card-h) mismatch where root --card-h is empty and resolves to 200px
        while the hand container's --card-h is ~332px. */
+    /* z-index 30: must sit above selected cards (z-index 25) so the button is always tappable */
+    z-index: 30;
     white-space: nowrap;
     /* §7 spec: charge button appear = 100ms fade-in */
     animation: chargeBtnAppear 100ms ease-out both, chargeBtnPulse 1.2s ease-in-out 100ms infinite;
@@ -2943,10 +2945,18 @@
     background: rgba(255, 255, 255, 0.16);
     color: #fff;
   }
-  /* AR-310: Active chain color highlight — subtle glow on cards matching this turn's active chain */
+  /* AR-310: Active chain color highlight — pill pulse animation handles chain indication */
   .card--active-chain {
-    outline: calc(2px * var(--layout-scale, 1)) solid rgba(255, 255, 255, 0.25);
-    outline-offset: calc(2px * var(--layout-scale, 1));
+    /* outline removed: chainPillPulse animation on .v2-card-type.pill-chain-active replaces the rectangle outline */
+  }
+
+  @keyframes chainPillPulse {
+    0%, 100% { transform: scale(1); box-shadow: none; }
+    50% { transform: scale(1.35); box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) var(--pill-color), 0 0 calc(16px * var(--layout-scale, 1)) var(--pill-color); }
+  }
+
+  .v2-card-type.pill-chain-active {
+    animation: chainPillPulse 1.5s ease-in-out infinite;
   }
 
 </style>

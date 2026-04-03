@@ -94,6 +94,20 @@ animation: upgradeFloat 1.5s ease-in-out infinite;
 
 ---
 
+## Chain-Match Pill Pulse (`CardHand.svelte`)
+
+When a card matches the active chain color and no card is selected, the chain color pill div gets the `pill-chain-active` class, triggering a CSS `chainPillPulse` idle loop:
+
+- Duration: 
+- 0%/100%: , no box-shadow
+- 50%: , 
+
+The chain color is passed as  CSS variable on the pill element (inline style) so the box-shadow uses the correct chain color.
+
+Suppressed conditions: card is selected, any other card is selected, card is being dragged.
+
+---
+
 ## Room Pop-In (`src/ui/utils/roomPopIn.ts`)
 
 `staggerPopIn(options: PopInOptions)` — staggers WAAPI pop-in across room UI elements after a transition settles.

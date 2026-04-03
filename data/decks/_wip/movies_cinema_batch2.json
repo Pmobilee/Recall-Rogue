@@ -1,0 +1,1316 @@
+[
+  {
+    "id": "cinema_godfather_director",
+    "correctAnswer": "Francis Ford Coppola",
+    "acceptableAlternatives": ["Coppola", "F.F. Coppola"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Martin Scorsese",
+      "Brian De Palma",
+      "Sidney Lumet",
+      "Michael Cimino",
+      "William Friedkin",
+      "Robert Altman",
+      "Arthur Penn",
+      "Mike Nichols"
+    ],
+    "quizQuestion": "Who directed The Godfather (1972)?",
+    "explanation": "Francis Ford Coppola directed The Godfather (1972), co-writing the screenplay with novelist Mario Puzo. The film launched one of cinema's most celebrated trilogies.",
+    "statement": "The Godfather was directed by Francis Ford Coppola.",
+    "wowFactor": "Coppola nearly got fired during production — the studio wanted him replaced before he delivered one of cinema's greatest films.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Godfather",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which Coppola film features Marlon Brando as Vito Corleone?",
+        "correctAnswer": "The Godfather",
+        "distractors": ["Apocalypse Now", "The Conversation", "Tucker: The Man and His Dream"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Godfather (1972) was directed by Francis Ford Coppola. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "the_godfather", "coppola", "gangster", "new_hollywood"],
+    "visualDescription": "A dimly lit Italian-American office, a powerful man seated in shadow behind a mahogany desk, a rose in the lapel, while a supplicant leans forward in the golden lamplight"
+  },
+  {
+    "id": "cinema_godfather_marlon_brando",
+    "correctAnswer": "Marlon Brando",
+    "acceptableAlternatives": ["Brando"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Al Pacino",
+      "Robert De Niro",
+      "James Caan",
+      "Robert Duvall",
+      "Jack Nicholson",
+      "Gene Hackman",
+      "Dustin Hoffman",
+      "Warren Beatty"
+    ],
+    "quizQuestion": "Who played Vito Corleone in The Godfather?",
+    "explanation": "Marlon Brando portrayed Vito Corleone in The Godfather (1972), stuffing his cheeks with cotton to create the character's distinctive gravelly voice and jowled appearance.",
+    "statement": "Marlon Brando played patriarch Vito Corleone in The Godfather.",
+    "wowFactor": "Brando stuffed his cheeks with cotton for the audition — and won an Oscar for the role he almost didn't get.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Godfather",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which actor is famous for playing Vito Corleone?",
+        "correctAnswer": "Marlon Brando",
+        "distractors": ["Al Pacino", "James Caan", "Robert Duvall"]
+      },
+      {
+        "type": "true_false",
+        "question": "Al Pacino played Vito Corleone in The Godfather. True or False?",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
+    ],
+    "tags": ["cinema", "the_godfather", "acting", "marlon_brando", "oscars"],
+    "visualDescription": "A heavyset man in a tuxedo seated in a velvet chair, speaking in hushed tones to a petitioner, surrounded by roses and dark wood paneling in a 1945 New York study"
+  },
+  {
+    "id": "cinema_godfather2_sequel_prequel",
+    "correctAnswer": "The Godfather Part II",
+    "acceptableAlternatives": ["Godfather Part II", "Godfather 2"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "The Godfather",
+      "Goodfellas",
+      "Scarface",
+      "Once Upon a Time in America",
+      "Casino",
+      "A Bronx Tale",
+      "Miller's Crossing",
+      "The Untouchables"
+    ],
+    "quizQuestion": "Which film is both a sequel AND prequel to The Godfather?",
+    "explanation": "The Godfather Part II (1974) runs two parallel narratives: Michael Corleone's story in 1958 continuing from the first film, and young Vito Corleone's rise from Sicily to New York in the 1910s-20s.",
+    "statement": "The Godfather Part II uniquely functions as both sequel and prequel to the original.",
+    "wowFactor": "The Godfather Part II is the first sequel to win Best Picture — beating out the original film's own Oscar record.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Godfather_Part_II",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed The Godfather Part II (1974)?",
+        "correctAnswer": "Francis Ford Coppola",
+        "distractors": ["Martin Scorsese", "Brian De Palma", "Sidney Lumet"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Godfather Part II won Best Picture at the Academy Awards. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "the_godfather", "coppola", "sequel", "academy_awards"],
+    "visualDescription": "Two timelines in a single frame: young Vito on an Ellis Island dock in 1917, and Michael Corleone at a Senate hearing in 1958, in pixel art diptych"
+  },
+  {
+    "id": "cinema_jaws_summer_blockbuster",
+    "correctAnswer": "Jaws",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "The Poseidon Adventure",
+      "Piranha",
+      "Open Water",
+      "The Shallows",
+      "Deep Blue Sea",
+      "Orca",
+      "The Abyss",
+      "Moby Dick"
+    ],
+    "quizQuestion": "Which 1975 Spielberg film invented the summer blockbuster?",
+    "explanation": "Jaws (1975), directed by Steven Spielberg, is widely credited with creating the modern summer blockbuster model, becoming the highest-grossing film of its time with a wide national release strategy.",
+    "statement": "Jaws (1975) invented the summer blockbuster release model.",
+    "wowFactor": "Jaws was the first film to earn over $100 million at the US box office — Hollywood has never been the same.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jaws_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed Jaws (1975)?",
+        "correctAnswer": "Steven Spielberg",
+        "distractors": ["George Lucas", "Brian De Palma", "John Carpenter"]
+      },
+      {
+        "type": "true_false",
+        "question": "Jaws (1975) was based on a novel by Peter Benchley. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "jaws", "spielberg", "blockbuster", "thriller"],
+    "visualDescription": "A lone swimmer above dark blue water, a massive dorsal fin cutting through the surface behind them, an idyllic New England beach resort town visible in the distance"
+  },
+  {
+    "id": "cinema_jaws_director",
+    "correctAnswer": "Steven Spielberg",
+    "acceptableAlternatives": ["Spielberg"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "director_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "George Lucas",
+      "Brian De Palma",
+      "John Carpenter",
+      "Ridley Scott",
+      "Sydney Pollack",
+      "William Friedkin",
+      "Martin Scorsese",
+      "Francis Ford Coppola"
+    ],
+    "quizQuestion": "Who directed Jaws (1975)?",
+    "explanation": "Steven Spielberg directed Jaws (1975) at age 27, battling a malfunctioning mechanical shark throughout the shoot. The shark's frequent failures forced Spielberg to imply its presence rather than show it — accidentally making the film scarier.",
+    "statement": "Jaws was directed by Steven Spielberg.",
+    "wowFactor": "The mechanical shark barely worked, so Spielberg hid it for most of the film — and accidentally made it far more terrifying.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jaws_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which Spielberg film features police chief Brody hunting a great white shark?",
+        "correctAnswer": "Jaws",
+        "distractors": ["The Abyss", "Orca", "Deep Blue Sea"]
+      },
+      {
+        "type": "true_false",
+        "question": "Jaws was directed by Steven Spielberg. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "jaws", "spielberg", "directing", "production_trivia"],
+    "visualDescription": "A young director on a boat deck surrounded by crew members pointing at the ocean, a mechanical shark prop visible in the background with technicians working on it"
+  },
+  {
+    "id": "cinema_starwars_director",
+    "correctAnswer": "George Lucas",
+    "acceptableAlternatives": ["Lucas"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "director_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Steven Spielberg",
+      "Irvin Kershner",
+      "Richard Marquand",
+      "Ridley Scott",
+      "James Cameron",
+      "Ron Howard",
+      "Francis Ford Coppola",
+      "Brian De Palma"
+    ],
+    "quizQuestion": "Who wrote and directed the original Star Wars (1977)?",
+    "explanation": "George Lucas wrote and directed Star Wars (1977), creating the mythology of the Force, the Jedi, the Sith, and the Skywalker saga. He produced but did not direct any of the five sequel films.",
+    "statement": "George Lucas wrote and directed the original Star Wars in 1977.",
+    "wowFactor": "George Lucas was so convinced Star Wars would flop that he took a Hawaii vacation on opening day — only to return to a cultural phenomenon.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Star_Wars_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which director created the original Star Wars (1977)?",
+        "correctAnswer": "George Lucas",
+        "distractors": ["Steven Spielberg", "Irvin Kershner", "Richard Marquand"]
+      },
+      {
+        "type": "true_false",
+        "question": "Star Wars (1977) was directed by George Lucas. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "star_wars", "george_lucas", "sci_fi", "franchise"],
+    "visualDescription": "A desert planet with twin suns setting on the horizon, a young farm boy in white robes looking out into the vast orange sky, twin moons faintly visible"
+  },
+  {
+    "id": "cinema_rocky_writer_star",
+    "correctAnswer": "Sylvester Stallone",
+    "acceptableAlternatives": ["Stallone", "Sly Stallone"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "John G. Avildsen",
+      "Carl Weathers",
+      "Burt Young",
+      "Burgess Meredith",
+      "Talia Shire",
+      "Robert De Niro",
+      "Dustin Hoffman",
+      "Warren Beatty"
+    ],
+    "quizQuestion": "Who wrote the screenplay for and starred in Rocky (1976)?",
+    "explanation": "Sylvester Stallone wrote the Rocky screenplay and insisted on starring in the title role, despite studios wanting a bigger star. He wrote the script in three and a half days after being inspired by a Muhammad Ali fight.",
+    "statement": "Sylvester Stallone wrote the Rocky screenplay and starred as the lead.",
+    "wowFactor": "Stallone refused to sell his Rocky script unless he could star in it — studios offered him $300,000 to walk away, and he said no.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rocky_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who played Rocky Balboa in the 1976 film Rocky?",
+        "correctAnswer": "Sylvester Stallone",
+        "distractors": ["Carl Weathers", "Burt Reynolds", "Robert De Niro"]
+      },
+      {
+        "type": "true_false",
+        "question": "Sylvester Stallone wrote the screenplay for Rocky. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "rocky", "stallone", "sports_drama", "screenwriting"],
+    "visualDescription": "A boxer in red shorts running up stone steps at dawn, fist pumping in the air, the city skyline of Philadelphia glowing gold in the morning light behind him"
+  },
+  {
+    "id": "cinema_apocalypse_now_source",
+    "correctAnswer": "Heart of Darkness",
+    "acceptableAlternatives": ["Heart of Darkness by Conrad", "Conrad's Heart of Darkness"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "The Naked and the Dead",
+      "Catch-22",
+      "The Things They Carried",
+      "The Quiet American",
+      "A Farewell to Arms",
+      "For Whom the Bell Tolls",
+      "All Quiet on the Western Front",
+      "Matterhorn"
+    ],
+    "quizQuestion": "Which novella inspired Apocalypse Now (1979)?",
+    "explanation": "Apocalypse Now (1979) is loosely based on Joseph Conrad's 1899 novella Heart of Darkness, transposing its story of a journey upriver to find a rogue figure from colonial Congo to the Vietnam War.",
+    "statement": "Apocalypse Now was inspired by Joseph Conrad's novella Heart of Darkness.",
+    "wowFactor": "Coppola moved Conrad's jungle nightmare from colonial Africa to Vietnam — and it worked just as devastatingly.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apocalypse_Now",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Apocalypse Now is set during which war?",
+        "correctAnswer": "Vietnam War",
+        "distractors": ["Korean War", "World War II", "Gulf War"]
+      },
+      {
+        "type": "true_false",
+        "question": "Apocalypse Now is based on Joseph Conrad's Heart of Darkness. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "apocalypse_now", "coppola", "vietnam_war", "literary_adaptation"],
+    "visualDescription": "A military patrol boat moving through dense jungle river at twilight, helicopter silhouettes against an orange sky, napalm fires glowing on distant hillsides"
+  },
+  {
+    "id": "cinema_alien_hr_giger",
+    "correctAnswer": "H. R. Giger",
+    "acceptableAlternatives": ["HR Giger", "Hans Ruedi Giger", "Giger"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 5,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Ron Cobb",
+      "Chris Foss",
+      "Syd Mead",
+      "Ralph McQuarrie",
+      "Doug Trumbull",
+      "Carlo Rambaldi",
+      "Rick Baker",
+      "Stan Winston"
+    ],
+    "quizQuestion": "Which Swiss artist designed the alien creature in Alien (1979)?",
+    "explanation": "Swiss surrealist artist H. R. Giger designed the Xenomorph creature and sets for Alien (1979), drawing on his distinctive biomechanical art style. He won the Academy Award for Best Visual Effects for his work.",
+    "statement": "Swiss artist H. R. Giger designed the alien creature in Ridley Scott's Alien.",
+    "wowFactor": "H. R. Giger designed the Xenomorph to be 'perfectly terrifying' using biomechanical imagery — and it won him an Oscar.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Alien_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed Alien (1979)?",
+        "correctAnswer": "Ridley Scott",
+        "distractors": ["James Cameron", "John Carpenter", "David Cronenberg"]
+      },
+      {
+        "type": "true_false",
+        "question": "The alien creature in Alien (1979) was designed by H. R. Giger. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "alien", "ridley_scott", "visual_effects", "creature_design"],
+    "visualDescription": "A biomechanical corridor on a derelict spaceship, acid-green phosphorescent light catching the ribbed walls, a terrifying elongated creature silhouette lurking in shadow"
+  },
+  {
+    "id": "cinema_shining_heres_johnny",
+    "correctAnswer": "Jack Nicholson",
+    "acceptableAlternatives": ["Nicholson", "Jack"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Dustin Hoffman",
+      "Warren Beatty",
+      "Robert De Niro",
+      "Gene Hackman",
+      "Al Pacino",
+      "Jon Voight",
+      "Peter Fonda",
+      "Dennis Hopper"
+    ],
+    "quizQuestion": "Who played Jack Torrance in The Shining (1980)?",
+    "explanation": "Jack Nicholson played Jack Torrance in Stanley Kubrick's The Shining (1980), delivering the iconic 'Here's Johnny!' line while breaking through a door with an axe — a line improvised from The Tonight Show.",
+    "statement": "Jack Nicholson played Jack Torrance in The Shining, improvising the iconic 'Here's Johnny!' line.",
+    "wowFactor": "'Here's Johnny!' was Nicholson's own ad-lib — Kubrick kept it, and it became one of cinema's most quoted lines.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Shining_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which Kubrick film stars Jack Nicholson as a caretaker driven to madness?",
+        "correctAnswer": "The Shining",
+        "distractors": ["One Flew Over the Cuckoo's Nest", "A Clockwork Orange", "Full Metal Jacket"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Shining (1980) was directed by Stanley Kubrick. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "the_shining", "kubrick", "horror", "jack_nicholson"],
+    "visualDescription": "A crazed man smashing through a wooden door with an axe in a snow-bound hotel corridor, his wild eyes and maniac grin visible through the splintered hole"
+  },
+  {
+    "id": "cinema_raiders_harrison_ford",
+    "correctAnswer": "Harrison Ford",
+    "acceptableAlternatives": ["Ford", "Han Solo actor"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Tom Selleck",
+      "Tom Hanks",
+      "Mel Gibson",
+      "Bruce Willis",
+      "Jeff Bridges",
+      "Clint Eastwood",
+      "Sylvester Stallone",
+      "Arnold Schwarzenegger"
+    ],
+    "quizQuestion": "Who played Indiana Jones in Raiders of the Lost Ark (1981)?",
+    "explanation": "Harrison Ford played archaeologist Indiana Jones in Raiders of the Lost Ark (1981), directed by Steven Spielberg. Tom Selleck was originally cast but couldn't take the role due to his Magnum P.I. commitments.",
+    "statement": "Harrison Ford played Indiana Jones in Raiders of the Lost Ark.",
+    "wowFactor": "Tom Selleck was supposed to be Indiana Jones — but his TV contract for Magnum P.I. prevented it, and Harrison Ford got the call.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Raiders_of_the_Lost_Ark",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which actor played Indiana Jones in Raiders of the Lost Ark?",
+        "correctAnswer": "Harrison Ford",
+        "distractors": ["Tom Selleck", "Mel Gibson", "Jeff Bridges"]
+      },
+      {
+        "type": "true_false",
+        "question": "Harrison Ford originally auditioned for the role of Indiana Jones. True or False?",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
+    ],
+    "tags": ["cinema", "raiders", "indiana_jones", "harrison_ford", "spielberg"],
+    "visualDescription": "A fedora-wearing adventurer with a leather jacket and bullwhip escaping from a giant rolling boulder in a jungle temple, torchlight flickering on ancient stone walls"
+  },
+  {
+    "id": "cinema_et_year",
+    "correctAnswer": "{1982}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was E.T. the Extra-Terrestrial released?",
+    "explanation": "E.T. the Extra-Terrestrial was released in 1982, directed by Steven Spielberg and written by Melissa Mathison. It became the highest-grossing film of all time at that point, surpassing Raiders of the Lost Ark.",
+    "statement": "E.T. the Extra-Terrestrial was released in 1982.",
+    "wowFactor": "E.T. dethroned Star Wars as the highest-grossing film ever in 1982 — a record it held for over a decade.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/E.T._the_Extra-Terrestrial",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed E.T. the Extra-Terrestrial?",
+        "correctAnswer": "Steven Spielberg",
+        "distractors": ["George Lucas", "Robert Zemeckis", "Richard Donner"]
+      },
+      {
+        "type": "true_false",
+        "question": "E.T. the Extra-Terrestrial was released in 1982. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "et", "spielberg", "sci_fi", "box_office"],
+    "visualDescription": "Children on bicycles silhouetted against a full moon, a small alien with a glowing chest sitting in a basket, soaring over a suburban neighborhood at dusk"
+  },
+  {
+    "id": "cinema_blade_runner_philip_dick",
+    "correctAnswer": "Philip K. Dick",
+    "acceptableAlternatives": ["Philip Dick", "PKD"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Isaac Asimov",
+      "Arthur C. Clarke",
+      "Ursula K. Le Guin",
+      "William Gibson",
+      "Frank Herbert",
+      "Ray Bradbury",
+      "Robert Heinlein",
+      "Harlan Ellison"
+    ],
+    "quizQuestion": "Which sci-fi author wrote the novel that Blade Runner is based on?",
+    "explanation": "Blade Runner (1982) is based on Philip K. Dick's 1968 novel Do Androids Dream of Electric Sheep? Dick died just four months before the film's release, having seen early footage and praised it highly.",
+    "statement": "Blade Runner is based on Philip K. Dick's novel Do Androids Dream of Electric Sheep?",
+    "wowFactor": "Philip K. Dick saw early Blade Runner footage, called it exactly what he imagined — and died four months before it opened.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blade_Runner",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed Blade Runner (1982)?",
+        "correctAnswer": "Ridley Scott",
+        "distractors": ["James Cameron", "Terry Gilliam", "Paul Verhoeven"]
+      },
+      {
+        "type": "true_false",
+        "question": "Blade Runner is based on a novel by Philip K. Dick. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "blade_runner", "ridley_scott", "philip_k_dick", "neo_noir"],
+    "visualDescription": "A rain-soaked neon-lit dystopian city street in 2019 Los Angeles, massive holographic advertisements towering over flying cars and street vendors below"
+  },
+  {
+    "id": "cinema_amadeus_director",
+    "correctAnswer": "Miloš Forman",
+    "acceptableAlternatives": ["Milos Forman", "Forman"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "director_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Roman Polanski",
+      "Bernardo Bertolucci",
+      "Bo Widerberg",
+      "Krzysztof Kieślowski",
+      "Ingmar Bergman",
+      "François Truffaut",
+      "Jean-Luc Godard",
+      "Federico Fellini"
+    ],
+    "quizQuestion": "Who directed the film Amadeus (1984)?",
+    "explanation": "Czech director Miloš Forman directed Amadeus (1984), the dramatized account of the rivalry between composers Mozart and Salieri. The film won eight Academy Awards including Best Picture and Best Director.",
+    "statement": "Amadeus (1984) was directed by Czech filmmaker Miloš Forman.",
+    "wowFactor": "Amadeus swept eight Oscars in 1985 — and Forman had already won Best Director for One Flew Over the Cuckoo's Nest a decade earlier.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Amadeus_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which film depicts the rivalry between Mozart and Salieri?",
+        "correctAnswer": "Amadeus",
+        "distractors": ["Immortal Beloved", "Copying Beethoven", "The Music Lovers"]
+      },
+      {
+        "type": "true_false",
+        "question": "Amadeus (1984) was directed by Miloš Forman. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "amadeus", "milos_forman", "mozart", "academy_awards"],
+    "visualDescription": "A powdered-wig court composer at a harpsichord in 18th-century Vienna, candlelight illuminating manuscript pages, a grand opera stage visible through ornate doors behind him"
+  },
+  {
+    "id": "cinema_back_to_future_delorean",
+    "correctAnswer": "DeLorean",
+    "acceptableAlternatives": ["DeLorean DMC-12", "DeLorean time machine"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Pontiac GTO",
+      "Ford Mustang",
+      "Chevrolet Corvette",
+      "Porsche 911",
+      "Ferrari 308",
+      "Aston Martin DB5",
+      "Volkswagen Beetle",
+      "Lamborghini Countach"
+    ],
+    "quizQuestion": "What car serves as the time machine in Back to the Future (1985)?",
+    "explanation": "The DeLorean DMC-12 serves as the time machine in Back to the Future (1985). Robert Zemeckis chose it because the gull-wing doors looked futuristic, and the aluminum body made the time-travel light effects look better.",
+    "statement": "A DeLorean automobile serves as the time machine in Back to the Future.",
+    "wowFactor": "The DeLorean was chosen because its gull-wing doors looked alien and futuristic — ironically, the company went bankrupt the same year it became a pop culture icon.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Back_to_the_Future",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed Back to the Future (1985)?",
+        "correctAnswer": "Robert Zemeckis",
+        "distractors": ["Steven Spielberg", "John Hughes", "Joe Dante"]
+      },
+      {
+        "type": "true_false",
+        "question": "The time machine in Back to the Future is a DeLorean car. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "back_to_the_future", "zemeckis", "time_travel", "pop_culture"],
+    "visualDescription": "A stainless-steel gull-wing sports car leaving flaming tire trails on an empty Twin Pines Mall parking lot at night, reaching 88 miles per hour, lightning crackling around it"
+  },
+  {
+    "id": "cinema_platoon_oscar_best_picture",
+    "correctAnswer": "{1986}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 4,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [],
+    "quizQuestion": "In what year was Oliver Stone's Vietnam film Platoon released?",
+    "explanation": "Platoon was released in 1986, directed by Oliver Stone and based on his own experiences as a Vietnam War infantryman. It won Best Picture and Best Director at the 59th Academy Awards.",
+    "statement": "Oliver Stone's Platoon was released in 1986 and won Best Picture.",
+    "wowFactor": "Oliver Stone wrote Platoon from his own Vietnam combat experience — winning Best Picture with a film that's essentially his personal war diary.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Platoon_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed Platoon (1986)?",
+        "correctAnswer": "Oliver Stone",
+        "distractors": ["Francis Ford Coppola", "Stanley Kubrick", "Michael Cimino"]
+      },
+      {
+        "type": "true_false",
+        "question": "Oliver Stone served in the Vietnam War before making Platoon. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "platoon", "oliver_stone", "vietnam_war", "academy_awards"],
+    "visualDescription": "An exhausted American soldier in jungle fatigues kneeling in dense Southeast Asian forest, sunbeams breaking through the canopy above, smoke rising in the distance"
+  },
+  {
+    "id": "cinema_goodfellas_joe_pesci",
+    "correctAnswer": "Joe Pesci",
+    "acceptableAlternatives": ["Pesci"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Robert De Niro",
+      "Ray Liotta",
+      "Paul Sorvino",
+      "Frank Vincent",
+      "James Woods",
+      "Harvey Keitel",
+      "Christopher Walken",
+      "Al Pacino"
+    ],
+    "quizQuestion": "Which actor won Best Supporting Actor for Goodfellas (1990)?",
+    "explanation": "Joe Pesci won the Academy Award for Best Supporting Actor for his role as the volatile Tommy DeVito in Goodfellas (1990). His famous 'How am I funny?' scene was improvised from a real story Pesci told director Martin Scorsese.",
+    "statement": "Joe Pesci won Best Supporting Actor for his volatile role in Goodfellas.",
+    "wowFactor": "The 'How am I funny?' scene in Goodfellas was improvised — based on a real tense moment Pesci experienced with an actual mobster.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Goodfellas",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed Goodfellas (1990)?",
+        "correctAnswer": "Martin Scorsese",
+        "distractors": ["Francis Ford Coppola", "Brian De Palma", "Sidney Lumet"]
+      },
+      {
+        "type": "true_false",
+        "question": "Goodfellas is based on a true story about mobster Henry Hill. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "goodfellas", "scorsese", "joe_pesci", "oscars"],
+    "visualDescription": "Three suited men walking confidently through a crowded nightclub kitchen, waiters parting as they pass, the maitre d' rushing ahead to set a table at the front of the house"
+  },
+  {
+    "id": "cinema_silence_lambs_big_five",
+    "correctAnswer": "The Silence of the Lambs",
+    "acceptableAlternatives": ["Silence of the Lambs"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 4,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Goodfellas",
+      "JFK",
+      "The Crying Game",
+      "Unforgiven",
+      "Basic Instinct",
+      "Cape Fear",
+      "Misery",
+      "Thelma & Louise"
+    ],
+    "quizQuestion": "Which 1991 horror film won all five major Academy Awards?",
+    "explanation": "The Silence of the Lambs (1991) became only the third film to win the 'Big Five' Oscars: Best Picture, Director, Actor, Actress, and Adapted Screenplay. It remains the only horror film to win Best Picture.",
+    "statement": "The Silence of the Lambs is the only horror film to win Best Picture at the Academy Awards.",
+    "wowFactor": "The Silence of the Lambs swept all five major Oscars — the only horror film ever to do so — released on Valentine's Day 1991.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Silence_of_the_Lambs_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who played Hannibal Lecter in The Silence of the Lambs?",
+        "correctAnswer": "Anthony Hopkins",
+        "distractors": ["Brian Cox", "Gary Oldman", "Kevin Spacey"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Silence of the Lambs is the only horror film to win Best Picture. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "silence_of_the_lambs", "demme", "horror", "academy_awards"],
+    "visualDescription": "A young FBI agent standing in a dimly lit basement cell corridor, a glass-walled prison unit ahead, an unnervingly calm man in a white jumpsuit staring directly at her"
+  },
+  {
+    "id": "cinema_schindlers_list_black_white",
+    "correctAnswer": "Black and white",
+    "acceptableAlternatives": ["monochrome", "black & white"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Sepia toned",
+      "Desaturated color",
+      "Color with color-blind filter",
+      "Hand-tinted",
+      "Infrared photography",
+      "Two-strip Technicolor",
+      "Full Technicolor",
+      "Split-toned"
+    ],
+    "quizQuestion": "What visual style did Spielberg use for most of Schindler's List?",
+    "explanation": "Steven Spielberg shot Schindler's List (1993) almost entirely in black and white, with one iconic exception: a little girl in a red coat is shown in color, symbolizing the individual lives lost in the Holocaust.",
+    "statement": "Schindler's List was filmed in black and white, with a famous red coat as the sole color element.",
+    "wowFactor": "Spielberg used black-and-white film in 1993 — and the one splash of red on a child's coat became one of cinema's most powerful moments.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed Schindler's List (1993)?",
+        "correctAnswer": "Steven Spielberg",
+        "distractors": ["Martin Scorsese", "Roman Polanski", "Richard Attenborough"]
+      },
+      {
+        "type": "true_false",
+        "question": "Schindler's List (1993) was filmed primarily in black and white. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "schindlers_list", "spielberg", "holocaust", "cinematography"],
+    "visualDescription": "A grey-toned wartime Polish city street filled with figures in monochrome, a single small girl in a vivid red coat walking alone through the crowd, painfully visible"
+  },
+  {
+    "id": "cinema_jurassic_park_cgi",
+    "correctAnswer": "Jurassic Park",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Terminator 2",
+      "The Abyss",
+      "Tron",
+      "The Last Starfighter",
+      "RoboCop",
+      "Total Recall",
+      "Lawnmower Man",
+      "Cliffhanger"
+    ],
+    "quizQuestion": "Which 1993 Spielberg film pioneered photo-realistic CGI dinosaurs?",
+    "explanation": "Jurassic Park (1993) revolutionized visual effects by using computer-generated imagery (CGI) to create photo-realistic dinosaurs, combined with Stan Winston's animatronic creatures. It permanently shifted Hollywood toward CGI over practical effects.",
+    "statement": "Jurassic Park (1993) pioneered photo-realistic CGI and changed Hollywood visual effects forever.",
+    "wowFactor": "Jurassic Park's CGI team had only about six minutes of actual dinosaur footage — but it looked so real that Hollywood never went back.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jurassic_Park_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed Jurassic Park (1993)?",
+        "correctAnswer": "Steven Spielberg",
+        "distractors": ["George Lucas", "James Cameron", "Joe Johnston"]
+      },
+      {
+        "type": "true_false",
+        "question": "Jurassic Park (1993) was a landmark film for CGI visual effects. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "jurassic_park", "spielberg", "cgi", "visual_effects"],
+    "visualDescription": "A massive Tyrannosaurus Rex bursting through electrified fencing in a tropical rainstorm at night, spotlights illuminating its scales as visitors in jeeps scramble to escape"
+  },
+  {
+    "id": "cinema_shawshank_stephen_king",
+    "correctAnswer": "Stephen King",
+    "acceptableAlternatives": ["King", "S. King"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Frank Darabont",
+      "Peter Straub",
+      "Dean Koontz",
+      "John Grisham",
+      "Michael Crichton",
+      "Thomas Harris",
+      "Elmore Leonard",
+      "James Ellroy"
+    ],
+    "quizQuestion": "Which author wrote the novella The Shawshank Redemption is based on?",
+    "explanation": "The Shawshank Redemption (1994) is based on Rita Hayworth and Shawshank Redemption, a 1982 novella by Stephen King from his collection Different Seasons. Frank Darabont wrote and directed the film adaptation.",
+    "statement": "The Shawshank Redemption is based on a novella by Stephen King.",
+    "wowFactor": "Stephen King sold the rights to his Shawshank novella for just $5,000 — and never cashed the check, framing it as a gift to director Frank Darabont.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed The Shawshank Redemption (1994)?",
+        "correctAnswer": "Frank Darabont",
+        "distractors": ["Rob Reiner", "Taylor Hackford", "Sidney Lumet"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Shawshank Redemption is based on a Stephen King story. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "shawshank_redemption", "stephen_king", "frank_darabont", "drama"],
+    "visualDescription": "Two men walking down a sun-drenched prison yard, one in a neat banker's button-up and the other in a faded denim jacket, sharing a quiet conversation amid grey prison walls"
+  },
+  {
+    "id": "cinema_pulp_fiction_cannes",
+    "correctAnswer": "Palme d'Or",
+    "acceptableAlternatives": ["Palme d'Or at Cannes", "Cannes Palme d'Or"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Grand Prix",
+      "Golden Lion",
+      "Silver Bear",
+      "BAFTA Best Film",
+      "Golden Globe Best Film",
+      "Critics Circle Award",
+      "Jury Prize",
+      "César Award"
+    ],
+    "quizQuestion": "Which top prize did Pulp Fiction win at the 1994 Cannes Film Festival?",
+    "explanation": "Pulp Fiction won the Palme d'Or at the 1994 Cannes Film Festival, the festival's highest honor. Director Quentin Tarantino was 31 years old when he accepted the award, making him one of the youngest Palme d'Or winners.",
+    "statement": "Pulp Fiction won the Palme d'Or at the 1994 Cannes Film Festival.",
+    "wowFactor": "Tarantino's nonlinear crime masterpiece beat out heavy competition at Cannes — winning the Palme d'Or at just 31 years old.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pulp_Fiction",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed Pulp Fiction (1994)?",
+        "correctAnswer": "Quentin Tarantino",
+        "distractors": ["Martin Scorsese", "Joel Coen", "David Fincher"]
+      },
+      {
+        "type": "true_false",
+        "question": "Pulp Fiction won the Palme d'Or at Cannes in 1994. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "pulp_fiction", "tarantino", "cannes", "awards"],
+    "visualDescription": "A 1990s diner booth with two hit men in black suits discussing trivial matters over coffee, checkered floor tiles and vintage milkshake glasses on the counter"
+  },
+  {
+    "id": "cinema_forrest_gump_box_of_chocolates",
+    "correctAnswer": "Tom Hanks",
+    "acceptableAlternatives": ["Hanks"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Robin Wright",
+      "Gary Sinise",
+      "Mykelti Williamson",
+      "John Cusack",
+      "Kevin Costner",
+      "Bill Murray",
+      "Jeff Bridges",
+      "Mel Gibson"
+    ],
+    "quizQuestion": "Who starred as Forrest Gump in the 1994 Robert Zemeckis film?",
+    "explanation": "Tom Hanks starred as Forrest Gump in the 1994 film, winning his second consecutive Academy Award for Best Actor. His character's observation 'Life is like a box of chocolates' became one of cinema's most quoted lines.",
+    "statement": "Tom Hanks starred as Forrest Gump and won his second straight Best Actor Oscar.",
+    "wowFactor": "Tom Hanks won Best Actor two years in a row — Philadelphia in 1993, then Forrest Gump in 1994 — a feat only Spencer Tracy had managed before.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Forrest_Gump",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed Forrest Gump (1994)?",
+        "correctAnswer": "Robert Zemeckis",
+        "distractors": ["Steven Spielberg", "Ron Howard", "Barry Levinson"]
+      },
+      {
+        "type": "true_false",
+        "question": "Tom Hanks won the Best Actor Oscar for Forrest Gump. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "forrest_gump", "tom_hanks", "zemeckis", "oscars"],
+    "visualDescription": "A man in a white suit sitting on a park bench with a box of chocolates, a weathered suitcase beside him, watching a white feather drift down through a sunny southern city square"
+  },
+  {
+    "id": "cinema_cuckoos_nest_grand_slam",
+    "correctAnswer": "One Flew Over the Cuckoo's Nest",
+    "acceptableAlternatives": ["Cuckoo's Nest"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "The Silence of the Lambs",
+      "It Happened One Night",
+      "All About Eve",
+      "American Beauty",
+      "Annie Hall",
+      "The Godfather",
+      "Goodfellas",
+      "Chinatown"
+    ],
+    "quizQuestion": "Which 1975 Miloš Forman film swept the Big Five Oscars before Silence of the Lambs?",
+    "explanation": "One Flew Over the Cuckoo's Nest (1975) was the second film to win all five major Academy Awards (Picture, Director, Actor, Actress, Screenplay), after It Happened One Night (1934). The film stars Jack Nicholson as R.P. McMurphy.",
+    "statement": "One Flew Over the Cuckoo's Nest was the second film ever to win all five major Academy Awards.",
+    "wowFactor": "One Flew Over the Cuckoo's Nest repeated the 'Big Five' Oscar sweep for only the second time in 41 years — then Silence of the Lambs did it again 16 years later.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/One_Flew_Over_the_Cuckoo%27s_Nest_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed One Flew Over the Cuckoo's Nest (1975)?",
+        "correctAnswer": "Miloš Forman",
+        "distractors": ["Stanley Kubrick", "John Schlesinger", "Mike Nichols"]
+      },
+      {
+        "type": "true_false",
+        "question": "One Flew Over the Cuckoo's Nest stars Jack Nicholson as R.P. McMurphy. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "cuckoos_nest", "milos_forman", "jack_nicholson", "academy_awards"],
+    "visualDescription": "A charismatic patient in a mental ward jumpsuit gambling with fellow patients in a day room, a stern nurse visible through the glass station window watching disapprovingly"
+  },
+  {
+    "id": "cinema_raging_bull_black_white",
+    "correctAnswer": "Robert De Niro",
+    "acceptableAlternatives": ["De Niro", "DeNiro"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Joe Pesci",
+      "Harvey Keitel",
+      "Al Pacino",
+      "Dustin Hoffman",
+      "Jon Voight",
+      "Jack Nicholson",
+      "Gene Hackman",
+      "Sylvester Stallone"
+    ],
+    "quizQuestion": "Who played boxer Jake LaMotta in Raging Bull (1980)?",
+    "explanation": "Robert De Niro played Jake LaMotta in Raging Bull (1980), gaining 60 pounds for the role to portray the boxer's later years. He won the Academy Award for Best Actor, widely considered one of the greatest physical transformations in film history.",
+    "statement": "Robert De Niro gained 60 pounds to play boxer Jake LaMotta in Raging Bull.",
+    "wowFactor": "De Niro gained 60 lbs for Raging Bull's later scenes — learning to box so convincingly that LaMotta himself said De Niro could have gone pro.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Raging_Bull",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which Scorsese film features Robert De Niro as a real boxing champion?",
+        "correctAnswer": "Raging Bull",
+        "distractors": ["Rocky", "The Fighter", "Ali"]
+      },
+      {
+        "type": "true_false",
+        "question": "Raging Bull (1980) was filmed in black and white. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "raging_bull", "scorsese", "robert_de_niro", "boxing"],
+    "visualDescription": "A heavyset boxer in a smoke-filled 1950s ring, sweat and blood flying from a punch in extreme slow-motion black and white, the crowd a blurred roar in the background"
+  },
+  {
+    "id": "cinema_2001_hal_9000",
+    "correctAnswer": "HAL 9000",
+    "acceptableAlternatives": ["HAL", "Hal 9000"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "character_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Colossus",
+      "WOPR",
+      "Skynet",
+      "JARVIS",
+      "GLaDOS",
+      "AM",
+      "Mother",
+      "SHODAN"
+    ],
+    "quizQuestion": "What is the name of the murderous AI in 2001: A Space Odyssey?",
+    "explanation": "HAL 9000 (Heuristically programmed ALgorithmic computer) is the artificial intelligence in Stanley Kubrick's 2001: A Space Odyssey (1968), voiced by Douglas Rain. HAL's calm refusal — 'I'm sorry Dave, I'm afraid I can't do that' — became one of cinema's most chilling lines.",
+    "statement": "HAL 9000 is the murderous artificial intelligence in 2001: A Space Odyssey.",
+    "wowFactor": "HAL's letters are each one step ahead of IBM in the alphabet — Kubrick denied it was intentional, but the coincidence haunts the film to this day.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2001:_A_Space_Odyssey_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed 2001: A Space Odyssey?",
+        "correctAnswer": "Stanley Kubrick",
+        "distractors": ["Arthur C. Clarke", "George Lucas", "Ridley Scott"]
+      },
+      {
+        "type": "true_false",
+        "question": "2001: A Space Odyssey features an AI called HAL 9000. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "2001_space_odyssey", "kubrick", "hal_9000", "sci_fi"],
+    "visualDescription": "A glowing red camera eye mounted on a white sterile spacecraft corridor wall, an astronaut in a spacesuit standing before it in eerie silence, starfield visible through a porthole"
+  },
+  {
+    "id": "cinema_clockwork_orange_kubrick",
+    "correctAnswer": "A Clockwork Orange",
+    "acceptableAlternatives": ["Clockwork Orange"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "2001: A Space Odyssey",
+      "Full Metal Jacket",
+      "The Shining",
+      "Barry Lyndon",
+      "Lolita",
+      "Dr. Strangelove",
+      "Paths of Glory",
+      "Eyes Wide Shut"
+    ],
+    "quizQuestion": "Which 1971 Kubrick film is based on Anthony Burgess's dystopian novel?",
+    "explanation": "A Clockwork Orange (1971) was written, produced, and directed by Stanley Kubrick, based on Anthony Burgess's 1962 novel. Kubrick withdrew the film from UK distribution himself in 1974 after moral controversy, and it was not shown in Britain until after his death.",
+    "statement": "Kubrick withdrew A Clockwork Orange from UK cinemas himself due to moral controversy.",
+    "wowFactor": "Stanley Kubrick personally banned his own film A Clockwork Orange in the UK after receiving death threats — and it stayed banned for 27 years.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/A_Clockwork_Orange_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who directed A Clockwork Orange (1971)?",
+        "correctAnswer": "Stanley Kubrick",
+        "distractors": ["Ken Russell", "Lindsay Anderson", "John Schlesinger"]
+      },
+      {
+        "type": "true_false",
+        "question": "A Clockwork Orange is based on a novel by Anthony Burgess. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "clockwork_orange", "kubrick", "dystopian", "controversy"],
+    "visualDescription": "A young man in a white jumpsuit and bowler hat with long eyelashes, standing in a stark modernist milk bar, ultraviolent imagery on the walls behind him in garish colors"
+  },
+  {
+    "id": "cinema_alien_sigourney_weaver",
+    "correctAnswer": "Sigourney Weaver",
+    "acceptableAlternatives": ["Weaver"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Carrie Fisher",
+      "Linda Hamilton",
+      "Jodie Foster",
+      "Jamie Lee Curtis",
+      "Meryl Streep",
+      "Faye Dunaway",
+      "Jane Fonda",
+      "Diane Keaton"
+    ],
+    "quizQuestion": "Which actress played Ellen Ripley in Alien (1979)?",
+    "explanation": "Sigourney Weaver played Ellen Ripley in Alien (1979), directed by Ridley Scott. Ripley became one of cinema's most celebrated female action heroes, with Weaver reprising the role in three sequels.",
+    "statement": "Sigourney Weaver played Ellen Ripley in Alien (1979), one of cinema's iconic female heroes.",
+    "wowFactor": "Ellen Ripley was a groundbreaking female action hero in 1979 — the script was originally written with no gender assigned, and casting Weaver changed cinema.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Alien_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Who plays Ellen Ripley in the Alien film series?",
+        "correctAnswer": "Sigourney Weaver",
+        "distractors": ["Linda Hamilton", "Carrie Fisher", "Jamie Lee Curtis"]
+      },
+      {
+        "type": "true_false",
+        "question": "Sigourney Weaver plays the lead character in Alien (1979). True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "alien", "ridley_scott", "sigourney_weaver", "ripley"],
+    "visualDescription": "A female astronaut in a white tank top clutching a flamethrower in a darkened spacecraft corridor, motion tracker in hand, cat tucked under her arm, emergency lights flashing red"
+  },
+  {
+    "id": "cinema_raiders_year",
+    "correctAnswer": "{1981}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 3,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was Raiders of the Lost Ark released?",
+    "explanation": "Raiders of the Lost Ark was released in 1981, directed by Steven Spielberg from a story by George Lucas and Philip Kaufman. It became the highest-grossing film of 1981 and launched the Indiana Jones franchise.",
+    "statement": "Raiders of the Lost Ark was released in 1981.",
+    "wowFactor": "Raiders of the Lost Ark was made partly as Spielberg and Lucas bonding over a shared love of old Saturday matinee serials — and became one of the most profitable franchises ever.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Raiders_of_the_Lost_Ark",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What organization seeks the Ark in Raiders of the Lost Ark?",
+        "correctAnswer": "Nazi Germany",
+        "distractors": ["Soviet Union", "Imperial Japan", "Fascist Italy"]
+      },
+      {
+        "type": "true_false",
+        "question": "Raiders of the Lost Ark was directed by Steven Spielberg. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "raiders", "indiana_jones", "spielberg", "adventure"],
+    "visualDescription": "A rugged archaeologist in a felt fedora lowering himself by torchlight into an Egyptian tomb chamber filled with golden idols, ancient hieroglyphs carved into every surface"
+  },
+  {
+    "id": "cinema_goodfellas_year",
+    "correctAnswer": "{1990}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 3,
+    "funScore": 5,
+    "ageGroup": "teen+",
+    "distractors": [],
+    "quizQuestion": "In what year was Martin Scorsese's Goodfellas released?",
+    "explanation": "Goodfellas was released in 1990, directed by Martin Scorsese. Based on Nicholas Pileggi's nonfiction book Wiseguy, it follows the true story of Henry Hill's rise and fall within the Lucchese crime family.",
+    "statement": "Goodfellas was released in 1990 and is based on a true crime story.",
+    "wowFactor": "Goodfellas was initially considered too violent for mainstream audiences — it now regularly ranks as one of the greatest films ever made.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Goodfellas",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which real mobster is Goodfellas based on?",
+        "correctAnswer": "Henry Hill",
+        "distractors": ["John Gotti", "Joe Valachi", "Jimmy Burke"]
+      },
+      {
+        "type": "true_false",
+        "question": "Goodfellas was released in 1990. True or False?",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
+    "tags": ["cinema", "goodfellas", "scorsese", "crime", "biographical"],
+    "visualDescription": "A low-angle shot of three well-dressed men walking out of a Brooklyn social club at dusk, pinstripe suits and slick hair, a Cadillac idling at the curb"
+  }
+]

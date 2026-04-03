@@ -183,6 +183,9 @@ export class DepthLightingSystem {
     } else {
       ambientLevel = 0.40
     }
+    // Clamp ambient floor so no background ever goes below 30% brightness.
+    // Without this, some enemies (e.g. ink_slug at ambientOverride 0.06) produce a near-black overlay.
+    ambientLevel = Math.max(ambientLevel, 0.30)
     const ambient: [number, number, number] = [ambientLevel, ambientLevel, ambientLevel]
 
     // Rooms WITH point lights: pass through at original brightness (ambient ≈ 1.0,

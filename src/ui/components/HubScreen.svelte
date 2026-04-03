@@ -331,10 +331,10 @@
     await scenario.loadCustom({ screen: 'combat', enemy: 'bright_idea' })
   }
 
-  async function testBurningDeadline(): Promise<void> {
+  async function testInkSlug(): Promise<void> {
     const scenario = (globalThis as any).__rrScenario
     if (!scenario) return
-    await scenario.loadCustom({ screen: 'combat', enemy: 'burning_deadline' })
+    await scenario.loadCustom({ screen: 'combat', enemy: 'ink_slug' })
   }
 
   async function testLighting(): Promise<void> {
@@ -549,7 +549,7 @@
         <button class="dev-btn" onclick={fakeRunEnd}>RunEnd</button>
         <button class="dev-btn" onclick={testLighting}>Lighting</button>
         <button class="dev-btn" onclick={testBrightIdea}>BrightIdea</button>
-        <button class="dev-btn" onclick={testBurningDeadline}>Deadline</button>
+        <button class="dev-btn" onclick={testInkSlug}>InkSlug</button>
       </div>
 
       {#if transitionActive}

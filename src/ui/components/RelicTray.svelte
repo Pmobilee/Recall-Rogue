@@ -166,8 +166,8 @@
   }
 
   .relic-slot {
-    width: calc(32px * var(--layout-scale, 1));
-    height: calc(32px * var(--layout-scale, 1));
+    width: calc(40px * var(--layout-scale, 1));
+    height: calc(40px * var(--layout-scale, 1));
     border-radius: 50%;
     background: transparent;
     border: none;
@@ -190,8 +190,8 @@
   }
 
   .relic-icon {
-    width: calc(26px * var(--layout-scale, 1));
-    height: calc(26px * var(--layout-scale, 1));
+    width: calc(32px * var(--layout-scale, 1));
+    height: calc(32px * var(--layout-scale, 1));
     object-fit: contain;
     image-rendering: auto;
   }
@@ -199,7 +199,7 @@
   .relic-emoji-fallback {
     display: none;
     place-items: center;
-    font-size: calc(14px * var(--layout-scale, 1));
+    font-size: calc(18px * var(--layout-scale, 1));
     line-height: 1;
   }
 

@@ -1,0 +1,1642 @@
+[
+  {
+    "id": "cinema_craft_macguffin_term",
+    "correctAnswer": "MacGuffin",
+    "acceptableAlternatives": [
+      "McGuffin"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Dolly zoom",
+      "Jump cut",
+      "Dutch angle",
+      "Tracking shot",
+      "Deep focus",
+      "Match cut",
+      "Montage",
+      "Mise-en-scène"
+    ],
+    "quizQuestion": "What term describes a plot device everyone chases but is ultimately insignificant to the story?",
+    "explanation": "A MacGuffin is an object, device, or event necessary to the plot and character motivation, but insignificant in itself. The term was coined by writer Angus MacPhail and popularized by Alfred Hitchcock, who used it masterfully in films like Psycho (the stolen money) and North by Northwest (government secrets).",
+    "statement": "A MacGuffin is a plot device that motivates characters but is ultimately unimportant to the story.",
+    "wowFactor": "Hitchcock said it best: 'In a thriller, the MacGuffin is the object that the spies want — it doesn't matter what it is, only that it creates urgency.'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/MacGuffin",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "technique",
+      "storytelling"
+    ],
+    "visualDescription": "A mysterious glowing briefcase on a table in a dimly lit film noir office, silhouetted figures reaching for it",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Hitchcock's term for the object everyone chases but that doesn't really matter is called a what?",
+        "correctAnswer": "MacGuffin",
+        "distractors": [
+          "Plot twist",
+          "Red herring",
+          "Chekhov's gun",
+          "Deus ex machina"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "The stolen money in Hitchcock's 'Psycho' is a classic example of which storytelling device?",
+        "correctAnswer": "MacGuffin",
+        "distractors": [
+          "Red herring",
+          "Plot twist",
+          "Foreshadowing",
+          "Dramatic irony"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_dollyzoom_origin",
+    "correctAnswer": "Dolly zoom",
+    "acceptableAlternatives": [
+      "Vertigo effect",
+      "Hitchcock zoom",
+      "Jaws effect"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 4,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Rack focus",
+      "Whip pan",
+      "Smash cut",
+      "Push in",
+      "Dutch angle",
+      "Steadicam shot",
+      "Long take",
+      "Match cut"
+    ],
+    "quizQuestion": "What camera technique simultaneously zooms in and moves the camera backward, creating a disorienting perspective shift?",
+    "explanation": "The dolly zoom (also called the Vertigo effect or Hitchcock zoom) is achieved by zooming the lens in while physically moving the camera back, or vice versa. The subject stays the same size while the background dramatically changes scale. Hitchcock invented it for the 1958 film Vertigo; Spielberg used it famously in Jaws (1975).",
+    "statement": "The dolly zoom zooms the lens in opposite directions to the camera's physical movement, creating an uncanny perspective distortion.",
+    "wowFactor": "Spielberg's dolly zoom in Jaws — Chief Brody's face when he sees the first shark attack on the beach — became so iconic it's now called 'the Jaws effect.'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dolly_zoom",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "technique",
+      "cinematography"
+    ],
+    "visualDescription": "Camera on dolly tracks pulling back from a figure while lens zooms in, background stretching surreally in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The 'Vertigo effect' used in Hitchcock's film and later in Jaws is also called a what?",
+        "correctAnswer": "Dolly zoom",
+        "distractors": [
+          "Whip pan",
+          "Rack focus",
+          "Dutch angle",
+          "Push in"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Which 1975 Spielberg film famously popularized the dolly zoom technique Hitchcock invented?",
+        "correctAnswer": "Jaws",
+        "distractors": [
+          "Close Encounters of the Third Kind",
+          "Raiders of the Lost Ark",
+          "E.T.",
+          "Schindler's List"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_montage_pioneer",
+    "correctAnswer": "Sergei Eisenstein",
+    "acceptableAlternatives": [
+      "Eisenstein"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "director_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Dziga Vertov",
+      "Vsevolod Pudovkin",
+      "Fritz Lang",
+      "F.W. Murnau",
+      "Jean-Luc Godard",
+      "D.W. Griffith",
+      "Lev Kuleshov",
+      "Andrei Tarkovsky"
+    ],
+    "quizQuestion": "Which Soviet director developed montage theory and directed 'Battleship Potemkin' (1925)?",
+    "explanation": "Sergei Eisenstein developed intellectual montage theory — the idea that juxtaposing two unrelated images creates a new third meaning in the viewer's mind. His 1925 film Battleship Potemkin, particularly the Odessa Steps sequence, remains one of cinema's most studied examples of montage editing.",
+    "statement": "Sergei Eisenstein developed montage theory through his 1925 masterpiece Battleship Potemkin.",
+    "wowFactor": "The Odessa Steps massacre in Battleship Potemkin lasts only 6 minutes on screen but used 1,346 separate shots — an unheard-of editing density for 1925.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Battleship_Potemkin",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "montage",
+      "soviet",
+      "silent film"
+    ],
+    "visualDescription": "Black-and-white pixel art of a stone staircase with dramatic diagonal shadow lines, film reel border",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Eisenstein's famous Odessa Steps sequence appears in which 1925 Soviet film?",
+        "correctAnswer": "Battleship Potemkin",
+        "distractors": [
+          "October",
+          "Strike",
+          "Man with a Movie Camera",
+          "The General Line"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Montage theory — editing two unrelated images to create a third meaning — was pioneered by which filmmaker?",
+        "correctAnswer": "Sergei Eisenstein",
+        "distractors": [
+          "Dziga Vertov",
+          "D.W. Griffith",
+          "Jean-Luc Godard",
+          "Lev Kuleshov"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_auteur_origin",
+    "correctAnswer": "Cahiers du Cinéma",
+    "acceptableAlternatives": [
+      "Cahiers du Cinema"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 5,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Sight & Sound",
+      "Film Comment",
+      "Positif",
+      "Screen International",
+      "Variety",
+      "The Village Voice",
+      "Movie",
+      "Sequence"
+    ],
+    "quizQuestion": "In which French film magazine did auteur theory — viewing the director as the film's true author — originate in the late 1940s?",
+    "explanation": "Auteur theory emerged from Cahiers du Cinéma in the late 1940s, building on the critical ideas of André Bazin and Alexandre Astruc. American critic Andrew Sarris formalized it as 'auteur theory' in 1962. The theory holds that a director's personal vision and style is the primary creative force behind a film.",
+    "statement": "Auteur theory originated in Cahiers du Cinéma, the French film magazine founded in 1951.",
+    "wowFactor": "Cahiers du Cinéma's writers — including François Truffaut and Jean-Luc Godard — didn't just theorize; they became the directors of the French New Wave.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Auteur_theory",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "auteur",
+      "film theory",
+      "french"
+    ],
+    "visualDescription": "French film magazine cover with a close-up director's eye through a camera viewfinder in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Auteur theory treats the film director as what?",
+        "correctAnswer": "The author of the film",
+        "distractors": [
+          "The producer of the film",
+          "The star of the film",
+          "The distributor of the film",
+          "The composer of the film"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Which American critic popularized and named 'auteur theory' in 1962?",
+        "correctAnswer": "Andrew Sarris",
+        "distractors": [
+          "Pauline Kael",
+          "Roger Ebert",
+          "James Agee",
+          "Manny Farber"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_method_acting_studio",
+    "correctAnswer": "Actors Studio",
+    "acceptableAlternatives": [
+      "The Actors Studio",
+      "Actor's Studio"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "cinema_terms",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Group Theatre",
+      "Moscow Art Theatre",
+      "Royal Academy of Dramatic Art",
+      "Juilliard",
+      "Yale School of Drama",
+      "American Conservatory Theater",
+      "Neighborhood Playhouse",
+      "Circle in the Square"
+    ],
+    "quizQuestion": "Lee Strasberg directed which New York institution that trained method actors including Brando and De Niro?",
+    "explanation": "Lee Strasberg became director of the Actors Studio in New York City in 1951, where he taught his interpretation of Konstantin Stanislavski's system — known as Method acting or simply 'the Method.' Alumni include Marlon Brando, Robert De Niro, Al Pacino, Dustin Hoffman, and Marilyn Monroe.",
+    "statement": "Lee Strasberg directed the Actors Studio from 1951, shaping method acting through stars like Brando and De Niro.",
+    "wowFactor": "Dustin Hoffman famously stayed awake for three days to play an exhausted character in Marathon Man — prompting co-star Laurence Olivier to ask, 'Have you tried acting, dear boy?'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lee_Strasberg",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "acting",
+      "method acting"
+    ],
+    "visualDescription": "Spotlight on a single actor on a bare stage, intense concentration, theater seats in shadow behind them",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Method acting derives from which Russian theatre practitioner's system?",
+        "correctAnswer": "Konstantin Stanislavski",
+        "distractors": [
+          "Bertolt Brecht",
+          "Vsevolod Meyerhold",
+          "Jacques Copeau",
+          "Michael Chekhov"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Which acting approach, taught at the Actors Studio, asks performers to draw on their own emotional memories?",
+        "correctAnswer": "Method acting",
+        "distractors": [
+          "Physical theatre",
+          "Brechtian acting",
+          "Commedia dell'arte",
+          "Meisner technique"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_fourthwall_ferris",
+    "correctAnswer": "Ferris Bueller's Day Off",
+    "acceptableAlternatives": [
+      "Ferris Bueller"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Deadpool",
+      "Fleabag",
+      "Annie Hall",
+      "Goodfellas",
+      "The Big Short",
+      "House of Cards",
+      "Malcolm & Marie",
+      "High Fidelity"
+    ],
+    "quizQuestion": "Which 1986 John Hughes film features its protagonist repeatedly breaking the fourth wall to speak directly to the audience?",
+    "explanation": "In Ferris Bueller's Day Off (1986), Matthew Broderick's character frequently addresses the camera and explains his schemes directly to the viewer — a classic fourth-wall break. Director John Hughes used this device to create intimacy with the audience. The technique was later popularized in TV's Fleabag and the Deadpool films.",
+    "statement": "Ferris Bueller's Day Off (1986) popularized fourth-wall breaking in mainstream Hollywood cinema.",
+    "wowFactor": "Ferris Bueller ends with Ferris — post-credits — turning to the camera and saying 'You're still here? It's over. Go home.' — cementing the fourth wall break as audience interaction.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ferris_Bueller%27s_Day_Off",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "technique",
+      "fourth wall",
+      "comedy"
+    ],
+    "visualDescription": "A young man in a colorful 1980s outfit winking directly at the viewer through a 'screen frame' in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Breaking the fourth wall means a character does what?",
+        "correctAnswer": "Speaks directly to the audience",
+        "distractors": [
+          "Breaks a mirror on set",
+          "Exits the film's narrative",
+          "Improvises their lines",
+          "Addresses the director"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "When a film character looks into the camera and talks to the viewer, this technique is called what?",
+        "correctAnswer": "Breaking the fourth wall",
+        "distractors": [
+          "Method acting",
+          "Deep focus",
+          "Jump cut",
+          "Direct address"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_deepfocus_kane",
+    "correctAnswer": "Citizen Kane",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Casablanca",
+      "The Maltese Falcon",
+      "Double Indemnity",
+      "Rebecca",
+      "Sunset Boulevard",
+      "The Third Man",
+      "Notorious",
+      "Laura"
+    ],
+    "quizQuestion": "Which 1941 Orson Welles film is celebrated for cinematographer Gregg Toland's revolutionary use of deep focus?",
+    "explanation": "Citizen Kane (1941) is famous for cinematographer Gregg Toland's use of deep focus photography, keeping both foreground and background in sharp focus simultaneously. Combined with low-angle shots and extreme wide-angle lenses, this technique gave Kane its distinctive visual depth and influenced every director who followed.",
+    "statement": "Citizen Kane (1941) revolutionized cinematography through Gregg Toland's mastery of deep focus photography.",
+    "wowFactor": "Gregg Toland asked to work on Citizen Kane because he wanted to experiment — and he got Orson Welles, a complete novice director who had no preconceived ideas about what was 'impossible.'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gregg_Toland",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "cinematography",
+      "deep focus"
+    ],
+    "visualDescription": "A grand mansion hallway with a small figure at the far end and a large object in sharp focus in the foreground, pixelated film noir palette",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Deep focus photography — keeping foreground and background equally sharp — was pioneered in which Orson Welles film?",
+        "correctAnswer": "Citizen Kane",
+        "distractors": [
+          "The Magnificent Ambersons",
+          "Touch of Evil",
+          "Casablanca",
+          "Rebecca"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Which cinematographer shot Citizen Kane and is celebrated for inventing deep focus cinematography?",
+        "correctAnswer": "Gregg Toland",
+        "distractors": [
+          "Gordon Willis",
+          "Vilmos Zsigmond",
+          "Haskell Wexler",
+          "Conrad Hall"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_steadicam_goodfellas",
+    "correctAnswer": "Goodfellas",
+    "acceptableAlternatives": [
+      "GoodFellas"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "The Godfather",
+      "Casino",
+      "Mean Streets",
+      "Taxi Driver",
+      "Raging Bull",
+      "Scarface",
+      "Heat",
+      "The Departed"
+    ],
+    "quizQuestion": "Which 1990 Scorsese film features a famous unbroken Steadicam tracking shot through a nightclub's back entrance, kitchen, and into the Copacabana?",
+    "explanation": "The Copacabana tracking shot in Goodfellas (1990) follows Henry Hill and Karen through the back entrance, kitchen, hallways, and into the nightclub in a continuous 3-minute take. Filmed by cinematographer Michael Ballhaus, it was shot using a Steadicam and became one of the most celebrated tracking shots in film history.",
+    "statement": "Goodfellas (1990) features one of cinema's most famous Steadicam tracking shots — a 3-minute continuous take through the Copacabana nightclub.",
+    "wowFactor": "Scorsese chose a continuous tracking shot rather than cuts to subliminally show how Henry Hill's criminal world opened doors for him — the camera never stops, just like the money never stopped.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Goodfellas",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "technique",
+      "steadicam",
+      "tracking shot"
+    ],
+    "visualDescription": "Camera operator with Steadicam rig following two figures through a bustling restaurant kitchen in 1970s pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "A Steadicam is a camera stabilization device that allows what?",
+        "correctAnswer": "Smooth handheld tracking shots",
+        "distractors": [
+          "Extreme slow motion",
+          "Split-screen effects",
+          "Underwater filming",
+          "360-degree panning"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Stanley Kubrick's The Shining used the Steadicam for which type of memorable shots?",
+        "correctAnswer": "Hallway tracking shots following Danny",
+        "distractors": [
+          "Aerial shots of the mountains",
+          "Extreme close-ups of Jack's face",
+          "Wide establishing shots of the hotel exterior",
+          "Hand-held combat sequences"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_oscar_11wins",
+    "correctAnswer": "11",
+    "acceptableAlternatives": [
+      "eleven"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "How many Academy Awards did Ben-Hur (1959), Titanic (1997), and The Return of the King (2003) each win — a shared record?",
+    "explanation": "Ben-Hur (1959), Titanic (1997), and The Lord of the Rings: The Return of the King (2003) each won 11 Academy Awards, the most for any single film — a record shared by three films. Notably, The Return of the King swept all 11 categories it was nominated in, a perfect score.",
+    "statement": "Ben-Hur, Titanic, and The Return of the King each hold the record of 11 Oscar wins.",
+    "wowFactor": "The Return of the King went 11 for 11 at the Oscars — every single nomination won. No film has ever swept all its nominations with that many categories.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings:_The_Return_of_the_King",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "oscars",
+      "records"
+    ],
+    "visualDescription": "Three golden Oscar statuettes side by side on a red carpet stage under bright spotlights in pixel art style",
+    "variants": [
+      {
+        "type": "identification",
+        "question": "Which Peter Jackson film won all 11 of its Oscar nominations in 2004, a perfect sweep?",
+        "correctAnswer": "The Lord of the Rings: The Return of the King",
+        "distractors": [
+          "The Lord of the Rings: The Fellowship of the Ring",
+          "Avatar",
+          "Titanic",
+          "Gladiator"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which 1959 epic holds the Oscar wins record alongside Titanic and The Return of the King?",
+        "correctAnswer": "Ben-Hur",
+        "distractors": [
+          "Lawrence of Arabia",
+          "Spartacus",
+          "Cleopatra",
+          "The Ten Commandments"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_disney_oscars",
+    "correctAnswer": "Walt Disney",
+    "acceptableAlternatives": [
+      "Disney"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "director_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Steven Spielberg",
+      "John Ford",
+      "Billy Wilder",
+      "Frank Capra",
+      "William Wyler",
+      "Katharine Hepburn",
+      "Meryl Streep",
+      "Edith Head"
+    ],
+    "quizQuestion": "Who holds the record for the most Academy Awards won by an individual, with 22 competitive wins and 4 honorary awards?",
+    "explanation": "Walt Disney holds the record for the most Academy Awards won by an individual — 22 competitive Oscars and 4 honorary awards, for a total of 26. He was also nominated 59 times, also a record. Disney dominated the animated short film category throughout the 1930s and 1940s.",
+    "statement": "Walt Disney holds the all-time record with 22 competitive Academy Awards won by a single individual.",
+    "wowFactor": "In 1953, Walt Disney won four Oscars in a single night — for Best Documentary Short, Best Documentary Feature, Best Animated Short, and Best Short Subject (Two-Reel) — still unprecedented.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Walt_Disney",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "oscars",
+      "records",
+      "animation"
+    ],
+    "visualDescription": "A golden Oscar statuette surrounded by small cartoon film canisters on a classic Hollywood premiere red carpet in pixel art",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Walt Disney won a record 22 competitive Academy Awards, mostly in which category?",
+        "correctAnswer": "Animated short films",
+        "distractors": [
+          "Best Picture",
+          "Best Director",
+          "Best Original Score",
+          "Best Documentary"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Which filmmaker's total of 26 Academy Awards (22 competitive + 4 honorary) is the all-time individual record?",
+        "correctAnswer": "Walt Disney",
+        "distractors": [
+          "Steven Spielberg",
+          "John Ford",
+          "William Wyler",
+          "Billy Wilder"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_silencelambs_bigfive",
+    "correctAnswer": "The Silence of the Lambs",
+    "acceptableAlternatives": [
+      "Silence of the Lambs"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 4,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Psycho",
+      "The Exorcist",
+      "Cape Fear",
+      "Se7en",
+      "Hannibal",
+      "Red Dragon",
+      "Manhunter",
+      "Basic Instinct"
+    ],
+    "quizQuestion": "Which 1991 Jonathan Demme film became one of only three to sweep the 'Big Five' Oscars — Picture, Director, Actor, Actress, and Screenplay?",
+    "explanation": "The Silence of the Lambs (1991) swept all five major Oscar categories — Best Picture, Best Director (Jonathan Demme), Best Actor (Anthony Hopkins), Best Actress (Jodie Foster), and Best Adapted Screenplay. Only two other films have achieved this: It Happened One Night (1934) and One Flew Over the Cuckoo's Nest (1975).",
+    "statement": "The Silence of the Lambs (1991) is one of only three films to sweep the 'Big Five' Academy Awards.",
+    "wowFactor": "Anthony Hopkins won Best Actor for playing Hannibal Lecter despite appearing on screen for only 16 minutes total — one of the shortest performances ever to win the Oscar.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Silence_of_the_Lambs_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "oscars",
+      "records",
+      "thriller",
+      "horror"
+    ],
+    "visualDescription": "Five golden Oscar statuettes in a row against a dark curtain, with a moth silhouette — iconic Silence of the Lambs imagery in pixel art",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The 'Big Five' Oscar sweep requires winning Picture, Director, Actor, Actress, and which fifth category?",
+        "correctAnswer": "Screenplay",
+        "distractors": [
+          "Cinematography",
+          "Score",
+          "Editing",
+          "Costume Design"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Anthony Hopkins won Best Actor for The Silence of the Lambs despite playing Hannibal Lecter for how many minutes on screen?",
+        "correctAnswer": "16 minutes",
+        "distractors": [
+          "45 minutes",
+          "30 minutes",
+          "22 minutes",
+          "8 minutes"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_parasite_bestpicture",
+    "correctAnswer": "Parasite",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Roma",
+      "Crouching Tiger Hidden Dragon",
+      "Amélie",
+      "Life is Beautiful",
+      "The Artist",
+      "Pan's Labyrinth",
+      "Y Tu Mamá También",
+      "The Great Beauty"
+    ],
+    "quizQuestion": "Which 2019 Bong Joon-ho film became the first non-English language film to win the Academy Award for Best Picture?",
+    "explanation": "Parasite (2019), directed by South Korean filmmaker Bong Joon-ho, made history at the 2020 Academy Awards by becoming the first non-English language film to win Best Picture. It also won Best Director, Best Original Screenplay, and Best International Feature Film — four Oscars total.",
+    "statement": "Parasite (2019) was the first non-English language film to win the Academy Award for Best Picture.",
+    "wowFactor": "Bong Joon-ho quipped in his acceptance speech that 'once you overcome the one-inch-tall barrier of subtitles, you will be introduced to so many more amazing films' — and overnight, Korean cinema viewership worldwide skyrocketed.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "oscars",
+      "records",
+      "korean",
+      "international"
+    ],
+    "visualDescription": "A golden Oscar statuette with Korean characters and a film reel framing in pixel art, Seoul city lights in background",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Parasite (2019) was directed by which South Korean filmmaker?",
+        "correctAnswer": "Bong Joon-ho",
+        "distractors": [
+          "Park Chan-wook",
+          "Kim Ki-duk",
+          "Hong Sang-soo",
+          "Lee Chang-dong"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Before Parasite in 2020, how many non-English language films had won the Academy Award for Best Picture?",
+        "correctAnswer": "Zero",
+        "distractors": [
+          "One",
+          "Two",
+          "Three",
+          "Five"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_bigelow_director",
+    "correctAnswer": "Kathryn Bigelow",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "director_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Sofia Coppola",
+      "Jane Campion",
+      "Agnès Varda",
+      "Chloé Zhao",
+      "Patty Jenkins",
+      "Greta Gerwig",
+      "Ava DuVernay",
+      "Nora Ephron"
+    ],
+    "quizQuestion": "Who became the first woman to win the Academy Award for Best Director, for The Hurt Locker at the 2010 ceremony?",
+    "explanation": "Kathryn Bigelow won Best Director at the 82nd Academy Awards (2010 ceremony) for The Hurt Locker (2008), making her the first woman ever to win the award. She also won Best Picture that night. Notably, she beat former husband James Cameron, whose Avatar was also nominated.",
+    "statement": "Kathryn Bigelow became the first woman to win the Academy Award for Best Director in 2010 for The Hurt Locker.",
+    "wowFactor": "Kathryn Bigelow beat her ex-husband James Cameron (Avatar) to win Best Director — one of Hollywood's most dramatic Oscar moments.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kathryn_Bigelow",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "oscars",
+      "records",
+      "women in film"
+    ],
+    "visualDescription": "A director behind a camera on an arid desert location shoot, holding an Oscar statuette aloft in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Kathryn Bigelow became the first woman to win Best Director Oscar for which Iraq War film?",
+        "correctAnswer": "The Hurt Locker",
+        "distractors": [
+          "Zero Dark Thirty",
+          "Strange Days",
+          "Point Break",
+          "Near Dark"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "At the 2010 Oscars, which of Kathryn Bigelow's former husbands did she defeat to win Best Director?",
+        "correctAnswer": "James Cameron",
+        "distractors": [
+          "Steven Spielberg",
+          "Ron Howard",
+          "Martin Scorsese",
+          "Ridley Scott"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_midnight_cowboy_rated",
+    "correctAnswer": "Midnight Cowboy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Easy Rider",
+      "Bonnie and Clyde",
+      "The Graduate",
+      "M*A*S*H",
+      "Rosemary's Baby",
+      "Straw Dogs",
+      "Last Tango in Paris",
+      "A Clockwork Orange"
+    ],
+    "quizQuestion": "Which 1969 John Schlesinger film is the only X-rated movie to win the Academy Award for Best Picture?",
+    "explanation": "Midnight Cowboy (1969) is the only X-rated film to win Best Picture at the Academy Awards. It starred Dustin Hoffman and Jon Voight. Its X rating was later changed to R in 1971 after the MPAA revised its rating criteria — the film's content had not changed at all.",
+    "statement": "Midnight Cowboy (1969) remains the only X-rated film to win the Academy Award for Best Picture.",
+    "wowFactor": "Midnight Cowboy's X rating was given not for pornography but for its frank depictions of poverty, sex work, and homosexuality — and the MPAA later quietly changed it to R, admitting the original rating was wrong.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Midnight_Cowboy",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "oscars",
+      "records",
+      "ratings"
+    ],
+    "visualDescription": "Two down-and-out drifters walking a grimy 1960s New York street in pixel art style, neon signs reflecting on wet pavement",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Midnight Cowboy won Best Picture in 1970 despite what unusual MPAA designation?",
+        "correctAnswer": "X rating",
+        "distractors": [
+          "NC-17 rating",
+          "Banned in several states",
+          "No theatrical release",
+          "Adults-only certification"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Which two actors starred in the X-rated Best Picture winner Midnight Cowboy (1969)?",
+        "correctAnswer": "Dustin Hoffman and Jon Voight",
+        "distractors": [
+          "Jack Nicholson and Warren Beatty",
+          "Al Pacino and Robert De Niro",
+          "Gene Hackman and Dustin Hoffman",
+          "Paul Newman and Robert Redford"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_terminator_director",
+    "correctAnswer": "James Cameron",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Ridley Scott",
+      "John McTiernan",
+      "Paul Verhoeven",
+      "Tony Scott",
+      "Walter Hill",
+      "Ivan Reitman",
+      "John Milius",
+      "Richard Donner"
+    ],
+    "quizQuestion": "Who directed The Terminator (1984), launching a franchise and his own Hollywood career with a budget of just $6 million?",
+    "explanation": "James Cameron directed The Terminator in 1984, his feature directorial debut (he had been fired from Piranha II). The film starred Arnold Schwarzenegger as a cybernetic assassin from the future and was made for only $6.4 million, grossing over $78 million worldwide and launching Cameron's career.",
+    "statement": "James Cameron directed The Terminator (1984), his debut feature that launched one of cinema's biggest sci-fi franchises.",
+    "wowFactor": "Cameron sold the rights to The Terminator to producer Gale Anne Hurd for $1 — on the condition that she hire him to direct it. Hurd later became his wife.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Terminator",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "sci-fi",
+      "action",
+      "franchise"
+    ],
+    "visualDescription": "A chrome robot skeleton in a dark future city, red eyes glowing, pixel art action scene with explosions",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which actor delivered The Terminator's iconic line 'I'll be back'?",
+        "correctAnswer": "Arnold Schwarzenegger",
+        "distractors": [
+          "Sylvester Stallone",
+          "Bruce Willis",
+          "Dolph Lundgren",
+          "Chuck Norris"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "The Terminator (1984) is set in which two time periods?",
+        "correctAnswer": "1984 and 2029",
+        "distractors": [
+          "1984 and 2050",
+          "1984 and 2001",
+          "1984 and 2020",
+          "1984 and 2040"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_diehard_director",
+    "correctAnswer": "John McTiernan",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "director_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Richard Donner",
+      "Tony Scott",
+      "Walter Hill",
+      "Joel Silver",
+      "John Badham",
+      "Brian De Palma",
+      "John Frankenheimer",
+      "Renny Harlin"
+    ],
+    "quizQuestion": "Which director helmed Die Hard (1988), the film that redefined the Hollywood action genre?",
+    "explanation": "Die Hard (1988) was directed by John McTiernan and starred Bruce Willis as NYPD detective John McClane, battling terrorists in a Los Angeles skyscraper. The film established the template for 'one man against many' action cinema and spawned numerous imitators and sequels.",
+    "statement": "Die Hard (1988), directed by John McTiernan, set the template for modern Hollywood action films.",
+    "wowFactor": "Die Hard's script was originally a sequel to Arnold Schwarzenegger's Commando — and Schwarzenegger turned it down before it was reimagined as a vehicle for the then-unknown Bruce Willis.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Die_Hard",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "action",
+      "franchise"
+    ],
+    "visualDescription": "Barefoot hero crouching behind a wall in a glass skyscraper at night, explosions in the background, pixel art action style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Bruce Willis plays which NYPD detective in Die Hard (1988)?",
+        "correctAnswer": "John McClane",
+        "distractors": [
+          "Jack Walsh",
+          "Martin Riggs",
+          "Harry Callahan",
+          "Nick Conklin"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Die Hard (1988) is set in which Los Angeles skyscraper?",
+        "correctAnswer": "Nakatomi Plaza",
+        "distractors": [
+          "Corwin Tower",
+          "Sears Tower",
+          "Empire State Building",
+          "Bradbury Building"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_princess_bride_director",
+    "correctAnswer": "Rob Reiner",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "director_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Richard Donner",
+      "Ron Howard",
+      "John Hughes",
+      "Ivan Reitman",
+      "Penny Marshall",
+      "Joel Schumacher",
+      "Chris Columbus",
+      "Barry Levinson"
+    ],
+    "quizQuestion": "Which director made The Princess Bride (1987), the beloved fantasy adventure adapted from William Goldman's novel?",
+    "explanation": "The Princess Bride (1987) was directed by Rob Reiner and adapted by William Goldman from his own 1973 novel. The film starred Cary Elwes and Robin Wright, and became a cult classic for its witty self-aware humor and quotable dialogue, including 'You keep using that word. I do not think it means what you think it means.'",
+    "statement": "The Princess Bride (1987) was directed by Rob Reiner from William Goldman's screenplay of his own novel.",
+    "wowFactor": "The Princess Bride spent 13 years in development hell — every major studio passed on it, calling it 'unfilmable.' Goldman eventually got it made on his third attempt with three different directors.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Princess_Bride_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "fantasy",
+      "comedy",
+      "cult classic"
+    ],
+    "visualDescription": "A swashbuckling hero in a white shirt sword-fighting on a stone castle parapet, princess watching, pixel art fairy-tale colors",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The Princess Bride's screenplay was written by the same person who wrote the original novel — who?",
+        "correctAnswer": "William Goldman",
+        "distractors": [
+          "Rob Reiner",
+          "Cary Elwes",
+          "Norman Lear",
+          "John Landis"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Which character in The Princess Bride says 'My name is Inigo Montoya. You killed my father. Prepare to die.'?",
+        "correctAnswer": "Inigo Montoya",
+        "distractors": [
+          "Westley",
+          "Vizzini",
+          "The Dread Pirate Roberts",
+          "Prince Humperdinck"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_spiritedaway_oscar",
+    "correctAnswer": "Spirited Away",
+    "acceptableAlternatives": [
+      "Sen to Chihiro no Kamikakushi"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Princess Mononoke",
+      "My Neighbor Totoro",
+      "Howl's Moving Castle",
+      "Nausicaä of the Valley of the Wind",
+      "Grave of the Fireflies",
+      "Castle in the Sky",
+      "Kiki's Delivery Service",
+      "The Wind Rises"
+    ],
+    "quizQuestion": "Which 2001 Hayao Miyazaki film became the first — and so far only — anime feature to win the Academy Award for Best Animated Feature?",
+    "explanation": "Spirited Away (2001), directed by Hayao Miyazaki and produced by Studio Ghibli, won the Academy Award for Best Animated Feature at the 2003 ceremony — the first anime film to win the award. The film follows a young girl navigating a spirit world. It remains Japan's highest-grossing film of all time.",
+    "statement": "Spirited Away (2001) is the first and only anime film to win the Academy Award for Best Animated Feature.",
+    "wowFactor": "Spirited Away grossed more at the Japanese box office than Titanic, making it the highest-grossing film in Japanese history — and Miyazaki famously said he made it as a gift to the daughters of his friends.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Spirited_Away",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "animation",
+      "anime",
+      "ghibli",
+      "oscars"
+    ],
+    "visualDescription": "A young girl in a blue work uniform on a spirit world train crossing water, fantastical creatures aboard, Studio Ghibli pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Spirited Away was produced by which Japanese animation studio?",
+        "correctAnswer": "Studio Ghibli",
+        "distractors": [
+          "Toei Animation",
+          "Sunrise",
+          "Gainax",
+          "Madhouse"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Who directed Spirited Away (2001)?",
+        "correctAnswer": "Hayao Miyazaki",
+        "distractors": [
+          "Isao Takahata",
+          "Mamoru Hosoda",
+          "Satoshi Kon",
+          "Makoto Shinkai"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_exorcist_horror",
+    "correctAnswer": "The Exorcist",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Rosemary's Baby",
+      "The Omen",
+      "Carrie",
+      "Halloween",
+      "Psycho",
+      "The Shining",
+      "Jaws",
+      "Alien"
+    ],
+    "quizQuestion": "Which 1973 William Friedkin film became the first horror movie nominated for the Academy Award for Best Picture?",
+    "explanation": "The Exorcist (1973), directed by William Friedkin from William Peter Blatty's screenplay, became the first horror film to receive a Best Picture Oscar nomination. It was also nominated for Best Director, Best Actress, Best Adapted Screenplay, and eight other categories, winning two: Best Adapted Screenplay and Best Sound.",
+    "statement": "The Exorcist (1973) was the first horror film ever nominated for the Academy Award for Best Picture.",
+    "wowFactor": "The Exorcist was so terrifying that cinemas in some cities hired nurses and kept ambulances on standby outside — and reports of audience members fainting were widespread enough to make national news.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Exorcist_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "horror",
+      "oscars",
+      "records"
+    ],
+    "visualDescription": "A lit window in a foggy night with a lone figure in a coat standing below — the iconic Exorcist poster reimagined in pixel art",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The Exorcist (1973) was directed by whom?",
+        "correctAnswer": "William Friedkin",
+        "distractors": [
+          "Brian De Palma",
+          "Roman Polanski",
+          "Stanley Kubrick",
+          "Wes Craven"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "The Exorcist won two Oscars in 1974 — Best Sound and which other category?",
+        "correctAnswer": "Best Adapted Screenplay",
+        "distractors": [
+          "Best Director",
+          "Best Picture",
+          "Best Actress",
+          "Best Cinematography"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_taxidriver_quote",
+    "correctAnswer": "Taxi Driver",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Raging Bull",
+      "Mean Streets",
+      "Goodfellas",
+      "The King of Comedy",
+      "Cape Fear",
+      "Casino",
+      "Bringing Out the Dead",
+      "The Wolf of Wall Street"
+    ],
+    "quizQuestion": "Which 1976 Martin Scorsese film features Robert De Niro's iconic improvised 'You talkin' to me?' mirror monologue?",
+    "explanation": "Taxi Driver (1976), directed by Martin Scorsese and written by Paul Schrader, stars Robert De Niro as Travis Bickle, a disturbed Vietnam veteran working nights as a NYC cab driver. The 'You talkin' to me?' mirror scene was entirely improvised by De Niro — the script simply said 'Travis talks to himself in the mirror.'",
+    "statement": "Taxi Driver (1976) features one of cinema's most famous improvised lines — De Niro's 'You talkin' to me?' — which was not in the script.",
+    "wowFactor": "'You talkin' to me?' was ranked #10 on the AFI's 100 Greatest Movie Quotes list, and De Niro made it up on the spot because the script just said 'Travis talks to himself in the mirror.'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Taxi_Driver",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "drama",
+      "scorsese",
+      "de niro"
+    ],
+    "visualDescription": "A cab driver in a mohawk studying his reflection in a dingy motel mirror under harsh fluorescent light, 1970s New York pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Robert De Niro plays which character in Taxi Driver (1976)?",
+        "correctAnswer": "Travis Bickle",
+        "distractors": [
+          "Jake LaMotta",
+          "Jimmy Conway",
+          "Henry Hill",
+          "Rupert Pupkin"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Taxi Driver (1976) was written by which screenwriter, based partly on his own experience with depression?",
+        "correctAnswer": "Paul Schrader",
+        "distractors": [
+          "Nicholas Pileggi",
+          "Robert Towne",
+          "Paddy Chayefsky",
+          "Waldo Salt"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_trumanshow_director",
+    "correctAnswer": "Peter Weir",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "director_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Andrew Niccol",
+      "Sidney Pollack",
+      "Barry Levinson",
+      "Ron Howard",
+      "Michael Gondry",
+      "Spike Jonze",
+      "Charlie Kaufman",
+      "Gary Ross"
+    ],
+    "quizQuestion": "Which Australian director made The Truman Show (1998), Jim Carrey's film about a man living unknowingly on a reality TV set?",
+    "explanation": "The Truman Show (1998) was directed by Australian filmmaker Peter Weir and written by Andrew Niccol. Jim Carrey plays Truman Burbank, a man who has lived his entire life on a massive TV set without knowing it. The film was remarkably prescient about the rise of reality television and surveillance culture.",
+    "statement": "The Truman Show (1998), directed by Peter Weir, was uncannily prophetic about reality television years before it dominated culture.",
+    "wowFactor": "The Truman Show was released in 1998 — one year before the launch of Big Brother — and psychiatrists have since identified 'Truman Syndrome,' a delusion in which patients believe their lives are secretly being filmed.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Truman_Show",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "drama",
+      "sci-fi",
+      "reality tv"
+    ],
+    "visualDescription": "A smiling man in a perfect 1950s suburb, unaware of cameras hidden in every streetlamp and flowerpot, pixel art surveillance aesthetic",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Jim Carrey plays which character in The Truman Show (1998)?",
+        "correctAnswer": "Truman Burbank",
+        "distractors": [
+          "Joel Barish",
+          "Andy Kaufman",
+          "Fletcher Reede",
+          "Stanley Ipkiss"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Who wrote the screenplay for The Truman Show (1998)?",
+        "correctAnswer": "Andrew Niccol",
+        "distractors": [
+          "Peter Weir",
+          "Charlie Kaufman",
+          "Spike Jonze",
+          "Michel Gondry"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_panslabyrinth_setting",
+    "correctAnswer": "Pan's Labyrinth",
+    "acceptableAlternatives": [
+      "El laberinto del fauno"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Hellboy",
+      "The Shape of Water",
+      "Crimson Peak",
+      "Splice",
+      "Cronos",
+      "The Devil's Backbone",
+      "Mimic",
+      "Blade II"
+    ],
+    "quizQuestion": "Which 2006 Guillermo del Toro film interweaves a dark fairy tale with the aftermath of the Spanish Civil War?",
+    "explanation": "Pan's Labyrinth (2006), written and directed by Guillermo del Toro, follows a young girl in post-Civil War Spain (1944) who escapes the brutal reality of life under fascism into a dark fantasy world. The film won three Academy Awards for cinematography, art direction, and makeup.",
+    "statement": "Pan's Labyrinth (2006) blends the Spanish Civil War's aftermath with a dark fantasy world accessible only to its young protagonist.",
+    "wowFactor": "Guillermo del Toro wrote Pan's Labyrinth in a single night — the entire script poured out of him because the story had lived in his mind for 30 years since childhood.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pan%27s_Labyrinth",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "fantasy",
+      "horror",
+      "spanish",
+      "del toro"
+    ],
+    "visualDescription": "A young girl in a 1940s dress stepping through a stone labyrinth gate into a luminous underground fairy world, dark forest above",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Pan's Labyrinth (2006) is set in which country in the year 1944?",
+        "correctAnswer": "Spain",
+        "distractors": [
+          "Portugal",
+          "Mexico",
+          "Argentina",
+          "Italy"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Pan's Labyrinth won three Academy Awards — for art direction, makeup, and which third category?",
+        "correctAnswer": "Cinematography",
+        "distractors": [
+          "Best Director",
+          "Best Foreign Film",
+          "Best Original Score",
+          "Best Costume Design"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_toystory_firstcgi",
+    "correctAnswer": "Toy Story",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "A Bug's Life",
+      "Shrek",
+      "Antz",
+      "The Lion King",
+      "Aladdin",
+      "Beauty and the Beast",
+      "Dinosaur",
+      "Ice Age"
+    ],
+    "quizQuestion": "Which 1995 Pixar film was the first entirely computer-animated feature film ever made?",
+    "explanation": "Toy Story (1995), directed by John Lasseter and produced by Pixar Animation Studios for Walt Disney Pictures, was the first feature film to be entirely computer-animated. Made for $30 million, it grossed over $360 million worldwide and launched Pixar's era of dominance in animated film.",
+    "statement": "Toy Story (1995) was the world's first feature-length film made entirely with computer-generated imagery.",
+    "wowFactor": "Steve Jobs bought Pixar from George Lucas for $5 million in 1986 — a personal investment that returned over $7 billion when Disney bought Pixar in 2006, making it the most profitable art investment in history.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Toy_Story",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "animation",
+      "pixar",
+      "technology"
+    ],
+    "visualDescription": "A cowboy doll and a space ranger action figure standing back to back in a child's colorful bedroom, pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Toy Story (1995) was directed by which Pixar co-founder?",
+        "correctAnswer": "John Lasseter",
+        "distractors": [
+          "Ed Catmull",
+          "Pete Docter",
+          "Andrew Stanton",
+          "Lee Unkrich"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Tom Hanks and which other actor provided the main voices in Toy Story (1995)?",
+        "correctAnswer": "Tim Allen",
+        "distractors": [
+          "Bill Murray",
+          "Steve Martin",
+          "Robin Williams",
+          "Billy Crystal"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_savingprivateryan_dday",
+    "correctAnswer": "Saving Private Ryan",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "The Longest Day",
+      "Hacksaw Ridge",
+      "Band of Brothers",
+      "Patton",
+      "Midway",
+      "Dunkirk",
+      "1917",
+      "Fury"
+    ],
+    "quizQuestion": "Which 1998 Spielberg film opens with a visceral, 27-minute recreation of the D-Day landings at Omaha Beach?",
+    "explanation": "Saving Private Ryan (1998), directed by Steven Spielberg and starring Tom Hanks, opens with a 27-minute depiction of the June 6, 1944 D-Day assault on Omaha Beach — widely considered one of the most realistic and intense battle sequences in film history. The film won five Oscars, including Best Director for Spielberg.",
+    "statement": "Saving Private Ryan (1998) opens with 27 minutes of D-Day at Omaha Beach, widely considered cinema's most realistic combat sequence.",
+    "wowFactor": "The D-Day sequence was so realistic that the US Department of Veterans Affairs set up PTSD counseling hotlines after the film's release, as Vietnam and WWII veterans reported being severely triggered by it.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Saving_Private_Ryan",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "war film",
+      "spielberg",
+      "wwii"
+    ],
+    "visualDescription": "Soldiers wading from landing craft onto a chaos-filled beach at dawn in pixel art desaturated colors, explosions and fog all around",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Tom Hanks plays which rank and character in Saving Private Ryan (1998)?",
+        "correctAnswer": "Captain John Miller",
+        "distractors": [
+          "Sergeant Barry Pepper",
+          "Private James Ryan",
+          "General Dwight Eisenhower",
+          "Colonel Robert Sink"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Saving Private Ryan's D-Day beach sequence depicts the assault on which specific Normandy beach?",
+        "correctAnswer": "Omaha Beach",
+        "distractors": [
+          "Utah Beach",
+          "Gold Beach",
+          "Sword Beach",
+          "Juno Beach"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_montage_odesasteps",
+    "correctAnswer": "Battleship Potemkin",
+    "acceptableAlternatives": [
+      "Bronenosets Potemkin"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "October",
+      "Strike",
+      "The General Line",
+      "Man with a Movie Camera",
+      "Metropolis",
+      "Nosferatu",
+      "The Cabinet of Dr. Caligari",
+      "Sunrise"
+    ],
+    "quizQuestion": "Which 1925 Eisenstein film contains the Odessa Steps sequence — a masterwork of montage editing still studied in every film school?",
+    "explanation": "Battleship Potemkin (1925), directed by Sergei Eisenstein for Mosfilm, presents a dramatized account of the 1905 mutiny aboard the Russian battleship Potemkin. The Odessa Steps sequence, in which civilians are massacred by Tsarist soldiers, is a defining example of montage editing and remains one of cinema's most studied sequences.",
+    "statement": "The Odessa Steps sequence in Eisenstein's Battleship Potemkin (1925) is the foundational example of montage theory in cinema.",
+    "wowFactor": "The Odessa Steps scene was so compelling that Brian De Palma recreated it in The Untouchables (1987) with a baby carriage on a train station staircase — 62 years later, still the go-to homage.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Battleship_Potemkin",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "montage",
+      "silent film",
+      "soviet"
+    ],
+    "visualDescription": "Black-and-white stone steps with panicked fleeing figures and a baby carriage — Odessa Steps reimagined in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The Odessa Steps massacre sequence is from which 1925 Soviet film?",
+        "correctAnswer": "Battleship Potemkin",
+        "distractors": [
+          "October",
+          "Strike",
+          "The Battleship Potemkin Revisited",
+          "Man with a Movie Camera"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Brian De Palma's The Untouchables (1987) contains a famous homage to the Odessa Steps sequence — what object does it substitute for the baby carriage?",
+        "correctAnswer": "A baby carriage on train station steps",
+        "distractors": [
+          "A wheelchair down an escalator",
+          "A briefcase down a fire escape",
+          "A violin case on courthouse steps",
+          "A pram in a subway"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_steadicam_shining",
+    "correctAnswer": "The Shining",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Rosemary's Baby",
+      "Halloween",
+      "The Omen",
+      "Poltergeist",
+      "Suspiria",
+      "Carrie",
+      "A Nightmare on Elm Street",
+      "The Thing"
+    ],
+    "quizQuestion": "Which 1980 Stanley Kubrick horror film pioneered the use of Steadicam for low tracking shots following a child on a tricycle through hotel hallways?",
+    "explanation": "The Shining (1980), directed by Stanley Kubrick, was one of the first films to extensively use the Steadicam — invented by Garrett Brown in 1975. Kubrick used it for hypnotic low tracking shots following Danny riding his Big Wheel through the Overlook Hotel's corridors, creating a uniquely menacing sense of inevitability.",
+    "statement": "The Shining (1980) pioneered the use of Steadicam for sustained tracking shots, particularly Danny's tricycle scenes in the Overlook Hotel.",
+    "wowFactor": "The Steadicam was invented in 1975 and first used in Rocky (1976). Kubrick was so obsessed with it that his director of photography on The Shining logged more Steadicam hours on a single film than anyone previously in cinema history.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Shining_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "horror",
+      "technique",
+      "steadicam",
+      "kubrick"
+    ],
+    "visualDescription": "Low camera angle following a small child on a tricycle through a patterned carpet corridor of a grand empty hotel, pixel art horror palette",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Jack Nicholson plays which character in The Shining (1980)?",
+        "correctAnswer": "Jack Torrance",
+        "distractors": [
+          "Howard Payne",
+          "Frank Booth",
+          "Norman Bates",
+          "Hannibal Lecter"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "The Steadicam device was invented in 1975 by which camera operator, first used prominently in Rocky?",
+        "correctAnswer": "Garrett Brown",
+        "distractors": [
+          "Gordon Willis",
+          "Roger Deakins",
+          "Conrad Hall",
+          "Vilmos Zsigmond"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_craft_method_brando",
+    "correctAnswer": "Marlon Brando",
+    "acceptableAlternatives": [
+      "Brando"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "actor_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "James Dean",
+      "Paul Newman",
+      "Montgomery Clift",
+      "Rod Steiger",
+      "Karl Malden",
+      "Ben Gazzara",
+      "Eli Wallach",
+      "Lee J. Cobb"
+    ],
+    "quizQuestion": "Which actor is credited with bringing method acting to mainstream audiences, winning Oscars for The Godfather (1972) and On the Waterfront (1954)?",
+    "explanation": "Marlon Brando is widely credited with bringing the Stanislavski system and method acting to mainstream cinema. He won Academy Awards for Best Actor for On the Waterfront (1954) and The Godfather (1972). For The Godfather, he famously declined the award, sending Native American activist Sacheen Littlefeather to reject it in protest of Hollywood's treatment of Indigenous peoples.",
+    "statement": "Marlon Brando is credited with bringing method acting to mainstream audiences, transforming screen performance forever.",
+    "wowFactor": "Brando refused his Best Actor Oscar for The Godfather and sent Native American activist Sacheen Littlefeather to decline it on his behalf — making it one of the most political moments in Oscar history.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marlon_Brando",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "acting",
+      "method acting"
+    ],
+    "visualDescription": "A brooding 1950s actor in a torn t-shirt under a single spotlight, intense gaze, pixel art black-and-white film still style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Marlon Brando won Best Actor for The Godfather (1972) but famously did what at the ceremony?",
+        "correctAnswer": "Declined the Oscar in protest",
+        "distractors": [
+          "Gave a tearful speech",
+          "Did not attend",
+          "Thanked the Academy at length",
+          "Accepted on behalf of Francis Ford Coppola"
+        ]
+      },
+      {
+        "type": "identification",
+        "question": "Brando won his first Best Actor Oscar for which 1954 Elia Kazan film?",
+        "correctAnswer": "On the Waterfront",
+        "distractors": [
+          "A Streetcar Named Desire",
+          "The Wild One",
+          "Julius Caesar",
+          "Viva Zapata!"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,1195 @@
+[
+  {
+    "id": "cinema_char_darth_vader",
+    "correctAnswer": "Darth Vader",
+    "acceptableAlternatives": ["Vader", "Anakin Skywalker", "Anakin"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "character_names",
+    "difficulty": 1,
+    "funScore": 10,
+    "ageGroup": "all",
+    "distractors": [
+      "Luke Skywalker",
+      "Han Solo",
+      "Obi-Wan Kenobi",
+      "Emperor Palpatine",
+      "Yoda",
+      "Boba Fett",
+      "Kylo Ren",
+      "Leia Organa"
+    ],
+    "quizQuestion": "Which Sith Lord, revealed to be Luke Skywalker's father in The Empire Strikes Back (1980), is one of cinema's most iconic villains?",
+    "explanation": "Darth Vader is the primary antagonist of the original Star Wars trilogy. In The Empire Strikes Back (1980), he delivers the twist 'No, I am your father' — often misquoted as 'Luke, I am your father.' His body was played by David Prowse and his voice by James Earl Jones. The AFI ranked him the number three villain in cinema history. Source: Wikipedia.",
+    "statement": "Darth Vader's revelation 'No, I am your father' in The Empire Strikes Back is one of cinema's greatest plot twists.",
+    "wowFactor": "The line is almost always misquoted — Vader never says 'Luke, I am your father.' The actual line is 'No, I am your father.'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Darth_Vader",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Darth Vader's voice in the Star Wars films was provided by which actor?",
+        "correctAnswer": "James Earl Jones",
+        "distractors": [
+          "David Prowse",
+          "Mark Hamill",
+          "Anthony Daniels",
+          "Frank Oz",
+          "Peter Cushing",
+          "Alec Guinness",
+          "Ian McDiarmid",
+          "Sebastian Shaw"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In The Empire Strikes Back, Darth Vader reveals to Luke: 'No, {___} your father.'",
+        "correctAnswer": "I am",
+        "distractors": [
+          "Luke, I am",
+          "he is",
+          "you are",
+          "we are"
+        ]
+      }
+    ],
+    "tags": ["cinema", "character", "star_wars", "villain"],
+    "visualDescription": "A tall black-armored figure stands on a futuristic bridge against a star field, cape billowing, the glow of a red lightsaber cutting through darkness, pixel art style."
+  },
+  {
+    "id": "cinema_char_james_bond",
+    "correctAnswer": "James Bond",
+    "acceptableAlternatives": ["Bond", "007"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "character_names",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Jason Bourne",
+      "Ethan Hunt",
+      "Jack Ryan",
+      "George Smiley",
+      "Harry Palmer",
+      "Napoleon Solo",
+      "Derek Flint",
+      "Nick Fury"
+    ],
+    "quizQuestion": "Which fictional British spy, first portrayed by Sean Connery in Dr. No (1962), introduces himself with the iconic line 'Bond. James Bond.'?",
+    "explanation": "James Bond is the fictional MI6 spy created by author Ian Fleming. The film series began with Dr. No in 1962, starring Sean Connery. The self-introduction 'Bond. James Bond.' first appeared in that film and became one of cinema's most recognisable phrases, ranked #22 on the AFI's 100 greatest movie quotes list. The character has been portrayed by seven actors in the official EON Productions series. Source: Wikipedia.",
+    "statement": "James Bond first introduced himself with 'Bond. James Bond.' in Dr. No (1962), played by Sean Connery.",
+    "wowFactor": "The James Bond film franchise has grossed over $7 billion worldwide, making it one of the highest-grossing media franchises in history.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/James_Bond",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Sean Connery first played James Bond in which 1962 film?",
+        "correctAnswer": "Dr. No",
+        "distractors": [
+          "Goldfinger",
+          "From Russia with Love",
+          "Thunderball",
+          "You Only Live Twice",
+          "The Spy Who Loved Me",
+          "Live and Let Die",
+          "Moonraker",
+          "The Living Daylights"
+        ]
+      }
+    ],
+    "tags": ["cinema", "character", "spy", "franchise"],
+    "visualDescription": "A sharply suited man in black tie holds a martini glass at a casino table, one eyebrow raised, a sleek pistol holstered at his side, pixel art style."
+  },
+  {
+    "id": "cinema_char_dorothy_gale",
+    "correctAnswer": "Dorothy Gale",
+    "acceptableAlternatives": ["Dorothy"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "character_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Alice",
+      "Wendy Darling",
+      "Mary Poppins",
+      "Elsa",
+      "Cinderella",
+      "Snow White",
+      "Scarlett O'Hara",
+      "Anne of Green Gables"
+    ],
+    "quizQuestion": "Which Kansas girl, played by Judy Garland in The Wizard of Oz (1939), clicks her ruby slippers and repeats 'There's no place like home'?",
+    "explanation": "Dorothy Gale is the protagonist of The Wizard of Oz (1939), played by 16-year-old Judy Garland. She is swept to the magical land of Oz by a tornado and must find the Wizard to return home. Her ruby slippers and the phrase 'There's no place like home' are among the most recognisable symbols in cinema history. The AFI ranked 'There's no place like home' as the sixth greatest movie quote. Source: Wikipedia.",
+    "statement": "Dorothy Gale in The Wizard of Oz (1939) clicks ruby slippers and repeats 'There's no place like home', played by Judy Garland.",
+    "wowFactor": "Judy Garland was only 16 when she played Dorothy, yet the studio bound her chest and put her in a corset to make her appear younger and more child-like.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dorothy_Gale",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Dorothy Gale is the main character of The Wizard of Oz (1939). What state does she live in, and desperately wish to return to?",
+        "correctAnswer": "Kansas",
+        "distractors": [
+          "Nebraska",
+          "Oklahoma",
+          "Iowa",
+          "Missouri",
+          "Indiana",
+          "Illinois",
+          "Minnesota",
+          "South Dakota"
+        ]
+      }
+    ],
+    "tags": ["cinema", "character", "classic", "musical"],
+    "visualDescription": "A young girl in a blue gingham dress and red sparkling shoes stands at a yellow brick road junction, a tornado swirling on the horizon, pixel art style."
+  },
+  {
+    "id": "cinema_char_atticus_finch",
+    "correctAnswer": "Atticus Finch",
+    "acceptableAlternatives": ["Atticus"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "character_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Perry Mason",
+      "Clarence Darrow",
+      "Harvey Dent",
+      "Michael Clayton",
+      "Henry Drummond",
+      "Rudy Baylor",
+      "Jake Brigance",
+      "Sam Bowden"
+    ],
+    "quizQuestion": "Which Southern lawyer, played by Gregory Peck in To Kill a Mockingbird (1962), defends a Black man wrongly accused of rape and was ranked the number one hero in cinema by the AFI?",
+    "explanation": "Atticus Finch is the moral centre of To Kill a Mockingbird (1962), played by Gregory Peck, who won the Best Actor Oscar for the role. The AFI named Atticus Finch the greatest hero in American film history. In the story, Atticus defends Tom Robinson, a Black man falsely accused of raping a white woman in 1930s Alabama. The character is based on novelist Harper Lee's own father, Amasa Coleman Lee. Source: Wikipedia.",
+    "statement": "Atticus Finch, played by Gregory Peck, was ranked the number one cinema hero by the AFI — the greatest hero in American film history.",
+    "wowFactor": "The AFI ranked Atticus Finch the greatest screen hero ever — above Indiana Jones, James Bond, and Luke Skywalker.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Atticus_Finch",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Gregory Peck won Best Actor for playing Atticus Finch. Which novel, written by Harper Lee, is the source material?",
+        "correctAnswer": "To Kill a Mockingbird",
+        "distractors": [
+          "The Color Purple",
+          "In Cold Blood",
+          "Go Set a Watchman",
+          "A Time to Kill",
+          "Native Son",
+          "The Help",
+          "Invisible Man",
+          "The Firm"
+        ]
+      }
+    ],
+    "tags": ["cinema", "character", "hero", "drama"],
+    "visualDescription": "A quietly dignified man in a suit and glasses stands outside a courthouse in a small Southern town, his hand resting on his briefcase, pixel art style."
+  },
+  {
+    "id": "cinema_char_rick_blaine",
+    "correctAnswer": "Rick Blaine",
+    "acceptableAlternatives": ["Rick"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "character_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Philip Marlowe",
+      "Sam Spade",
+      "Harry Lime",
+      "Jay Gatsby",
+      "Charles Foster Kane",
+      "Walter Neff",
+      "Joe Gillis",
+      "Fred MacMurray"
+    ],
+    "quizQuestion": "Which cynical American expatriate, played by Humphrey Bogart in Casablanca (1942), runs a nightclub in Morocco and says 'Here's looking at you, kid'?",
+    "explanation": "Rick Blaine is the protagonist of Casablanca (1942), played by Humphrey Bogart. A bitter, world-weary American who runs a café in wartime Morocco, Rick is forced to confront his past when his former lover Ilsa arrives with her husband, a Resistance leader. The phrase 'Here's looking at you, kid' was partly improvised. The AFI ranked Casablanca the second greatest American film ever made. Source: Wikipedia.",
+    "statement": "Rick Blaine, played by Humphrey Bogart, is the world-weary café owner at the heart of Casablanca (1942).",
+    "wowFactor": "Humphrey Bogart's iconic line 'Here's looking at you, kid' was partly improvised — Bogart used it when teaching Ingrid Bergman to play poker between takes.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rick_Blaine",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Rick Blaine's café in Casablanca is named what?",
+        "correctAnswer": "Rick's Café Américain",
+        "distractors": [
+          "The Blue Parrot",
+          "Rick's Bar",
+          "Club Casablanca",
+          "The American Bar",
+          "Café Morocco",
+          "The Transit Lounge",
+          "Rick's Place",
+          "Café Bogart"
+        ]
+      }
+    ],
+    "tags": ["cinema", "character", "classic", "1940s"],
+    "visualDescription": "A trench-coated man leans on a nightclub bar, cigarette in hand, illuminated by a single warm lamp against a shadowy North African interior, pixel art style."
+  },
+  {
+    "id": "cinema_char_ellen_ripley",
+    "correctAnswer": "Ellen Ripley",
+    "acceptableAlternatives": ["Ripley"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "character_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Sarah Connor",
+      "Princess Leia",
+      "Trinity",
+      "Furiosa",
+      "Katniss Everdeen",
+      "Clarice Starling",
+      "Marge Gunderson",
+      "Lara Croft"
+    ],
+    "quizQuestion": "Which warrant officer on the spacecraft Nostromo, played by Sigourney Weaver in Alien (1979), became one of cinema's definitive female action heroes?",
+    "explanation": "Ellen Ripley is the protagonist of the Alien franchise, first played by Sigourney Weaver in Alien (1979). She is the sole survivor of the Nostromo crew's encounter with the Xenomorph. Weaver's portrayal set a new standard for female protagonists in action and horror films. The AFI ranked Ripley as the eighth greatest hero in cinema history — and Weaver received an Oscar nomination for the role in the 1986 sequel, Aliens. Source: Wikipedia.",
+    "statement": "Ellen Ripley in Alien (1979), played by Sigourney Weaver, was ranked the eighth greatest cinema hero by the AFI.",
+    "wowFactor": "Sigourney Weaver received an Oscar nomination for Aliens (1986) — a rare achievement for a performance in an action/science-fiction film.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ellen_Ripley",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Ellen Ripley first appears in Alien (1979) as a crew member of which spacecraft?",
+        "correctAnswer": "Nostromo",
+        "distractors": [
+          "Discovery One",
+          "Sulaco",
+          "Prometheus",
+          "Covenant",
+          "Narcissus",
+          "Betty",
+          "Serenity",
+          "Millennium Falcon"
+        ]
+      }
+    ],
+    "tags": ["cinema", "character", "sci-fi", "horror", "female_protagonist"],
+    "visualDescription": "A determined woman in a space-suit survival vest clutches a flamethrower in a dark, claustrophobic spaceship corridor, emergency lights casting red shadows, pixel art style."
+  },
+  {
+    "id": "cinema_char_tony_montana",
+    "correctAnswer": "Tony Montana",
+    "acceptableAlternatives": ["Tony", "Scarface"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "character_names",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Vito Corleone",
+      "Michael Corleone",
+      "Henry Hill",
+      "Jimmy Conway",
+      "Frank White",
+      "Carlito Brigante",
+      "Al Capone",
+      "Frank Lucas"
+    ],
+    "quizQuestion": "Which Cuban immigrant turned Miami drug lord, played by Al Pacino in Scarface (1983), delivers the line 'Say hello to my little friend!'?",
+    "explanation": "Tony Montana is the protagonist of Scarface (1983), directed by Brian De Palma. Al Pacino plays the Cuban refugee who rises to become a powerful cocaine kingpin in Miami. The film was controversial on release for its graphic violence and language but became a cult classic. 'Say hello to my little friend!' is ranked by the AFI among the most memorable movie quotes. Source: Wikipedia.",
+    "statement": "Tony Montana in Scarface (1983), played by Al Pacino, is the Cuban immigrant who becomes a Miami cocaine kingpin.",
+    "wowFactor": "Scarface (1983) used the F-word 226 times — a record at the time of release — and initially received an X rating before cuts were made to achieve an R.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tony_Montana",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Scarface (1983) starred Al Pacino as Tony Montana. Who directed the film?",
+        "correctAnswer": "Brian De Palma",
+        "distractors": [
+          "Martin Scorsese",
+          "Francis Ford Coppola",
+          "Sidney Lumet",
+          "Michael Mann",
+          "Oliver Stone",
+          "William Friedkin",
+          "Alan Parker",
+          "Ridley Scott"
+        ]
+      }
+    ],
+    "tags": ["cinema", "character", "crime", "al_pacino"],
+    "visualDescription": "A grinning man in a white suit stands at the top of a marble staircase in a garish mansion, cigar in hand, a mountain of white powder on the desk below him, pixel art style."
+  },
+  {
+    "id": "cinema_char_jack_torrance",
+    "correctAnswer": "Jack Torrance",
+    "acceptableAlternatives": ["Jack"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "character_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Hannibal Lecter",
+      "Norman Bates",
+      "Patrick Bateman",
+      "Michael Myers",
+      "Freddy Krueger",
+      "Pennywise",
+      "Anton Chigurh",
+      "John Doe"
+    ],
+    "quizQuestion": "Which writer-turned-caretaker, played by Jack Nicholson in The Shining (1980), smashes through a door and shouts 'Here's Johnny!'?",
+    "explanation": "Jack Torrance is the antagonist of The Shining (1980), Stanley Kubrick's adaptation of Stephen King's novel. Jack Nicholson plays a writer who takes his family to the remote Overlook Hotel for the winter, where supernatural forces drive him to violent madness. The line 'Here's Johnny!' was improvised by Nicholson, referencing Ed McMahon's introduction of Johnny Carson on The Tonight Show. Source: Wikipedia.",
+    "statement": "Jack Torrance's 'Here's Johnny!' in The Shining (1980) was improvised by Jack Nicholson, referencing The Tonight Show.",
+    "wowFactor": "Jack Nicholson improvised the iconic 'Here's Johnny!' line — Kubrick had no idea what it referred to until someone explained the Tonight Show reference.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jack_Torrance",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Jack Torrance in The Shining is a writer staying at which isolated hotel?",
+        "correctAnswer": "The Overlook Hotel",
+        "distractors": [
+          "The Bates Motel",
+          "The Bellagio",
+          "Hotel Colorado",
+          "The Timberline Lodge",
+          "The Stanley Hotel",
+          "The Fairmont",
+          "The Torrance Inn",
+          "The Grand Hotel"
+        ]
+      }
+    ],
+    "tags": ["cinema", "character", "horror", "stanley_kubrick"],
+    "visualDescription": "A wild-eyed man in a plaid shirt thrusts his face through a splintered wooden door, grinning maniacally, snow visible through a frosted window behind him, pixel art style."
+  },
+  {
+    "id": "cinema_char_travis_bickle",
+    "correctAnswer": "Travis Bickle",
+    "acceptableAlternatives": ["Travis"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "character_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Jake LaMotta",
+      "Frank Bullitt",
+      "John Shaft",
+      "Dirty Harry",
+      "Paul Kersey",
+      "Max Rockatansky",
+      "Snake Plissken",
+      "Harry Callahan"
+    ],
+    "quizQuestion": "Which insomniac Vietnam veteran cab driver, played by Robert De Niro in Taxi Driver (1976), stares at his reflection and asks 'You talkin' to me?'?",
+    "explanation": "Travis Bickle is the protagonist of Taxi Driver (1976), directed by Martin Scorsese and written by Paul Schrader. Robert De Niro plays a disturbed, alienated Vietnam veteran who drives a taxi in New York City and becomes increasingly obsessed with cleaning up what he sees as the city's moral decay. The 'You talkin' to me?' scene was largely improvised by De Niro. The film won the Palme d'Or at Cannes. Source: Wikipedia.",
+    "statement": "Travis Bickle's 'You talkin' to me?' monologue in Taxi Driver (1976) was largely improvised by Robert De Niro.",
+    "wowFactor": "The script gave De Niro only the stage direction 'Travis looks in the mirror' — the entire 'You talkin' to me?' speech was improvised on the spot.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Travis_Bickle",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Taxi Driver (1976) was directed by which filmmaker, who frequently collaborated with Robert De Niro?",
+        "correctAnswer": "Martin Scorsese",
+        "distractors": [
+          "Francis Ford Coppola",
+          "Brian De Palma",
+          "Sidney Lumet",
+          "William Friedkin",
+          "Peter Bogdanovich",
+          "Roman Polanski",
+          "Alan Pakula",
+          "Bob Rafelson"
+        ]
+      }
+    ],
+    "tags": ["cinema", "character", "scorsese", "drama"],
+    "visualDescription": "A lone man in an army jacket stands on a rain-slicked New York street at night, yellow cab behind him, neon signs reflecting in the puddles, pixel art style."
+  },
+  {
+    "id": "cinema_char_michael_corleone",
+    "correctAnswer": "Michael Corleone",
+    "acceptableAlternatives": ["Michael"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "character_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Vito Corleone",
+      "Sonny Corleone",
+      "Tom Hagen",
+      "Fredo Corleone",
+      "Frank Pentangeli",
+      "Virgil Sollozzo",
+      "Don Barzini",
+      "Jack Woltz"
+    ],
+    "quizQuestion": "Which war hero who becomes a ruthless Mafia don, played by Al Pacino in The Godfather (1972), is the film's true central character despite not being named in the title?",
+    "explanation": "Michael Corleone is the youngest son of patriarch Vito Corleone in The Godfather (1972), played by Al Pacino. Though initially reluctant to join the family's criminal empire, he ultimately becomes the most cold-blooded and powerful Corleone of all. Al Pacino was largely unknown when cast; studio executives initially opposed his casting. The character arc across Parts I and II is considered one of cinema's greatest. Source: Wikipedia.",
+    "statement": "Michael Corleone's transformation from idealistic war hero to ruthless Mafia don in The Godfather (1972), played by Al Pacino, is considered one of cinema's greatest character arcs.",
+    "wowFactor": "Studio executives fought hard against casting Al Pacino as Michael Corleone, calling him too short and uncharismatic — Coppola had to battle to keep him.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Michael_Corleone",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "In The Godfather Part II, Michael Corleone orchestrates the death of which family member?",
+        "correctAnswer": "Fredo Corleone",
+        "distractors": [
+          "Sonny Corleone",
+          "Tom Hagen",
+          "Connie Corleone",
+          "Carlo Rizzi",
+          "Frank Pentangeli",
+          "Hyman Roth",
+          "Johnny Ola",
+          "Senator Geary"
+        ]
+      }
+    ],
+    "tags": ["cinema", "character", "the_godfather", "al_pacino"],
+    "visualDescription": "A young man in a dark Italian suit sits at the head of a long dining table in shadow, a single lamp illuminating his coldly calculating expression, pixel art style."
+  },
+  {
+    "id": "cinema_char_luke_skywalker",
+    "correctAnswer": "Luke Skywalker",
+    "acceptableAlternatives": ["Luke"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "character_names",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Darth Vader",
+      "Han Solo",
+      "Obi-Wan Kenobi",
+      "Emperor Palpatine",
+      "Yoda",
+      "Anakin Skywalker",
+      "Kylo Ren",
+      "Rey"
+    ],
+    "quizQuestion": "Which young Tatooine farm boy, played by Mark Hamill in Star Wars (1977), becomes a Jedi and destroys the Death Star?",
+    "explanation": "Luke Skywalker is the hero of the original Star Wars trilogy, played by Mark Hamill. In Star Wars: Episode IV — A New Hope (1977), he goes from a frustrated moisture farmer on Tatooine to the Rebel pilot who fires the shot that destroys the Empire's Death Star. He was later revealed to be the son of Darth Vader. Mark Hamill was a relative unknown when cast; George Lucas saw over 300 actors before choosing him. Source: Wikipedia.",
+    "statement": "Luke Skywalker, played by Mark Hamill in Star Wars (1977), is the Rebel hero who destroys the Death Star and later learns Darth Vader is his father.",
+    "wowFactor": "George Lucas screened over 300 actors before casting Mark Hamill as Luke — among those considered were Robby Benson, William Katt, and a young Kurt Russell.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Luke_Skywalker",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Luke Skywalker grew up as a moisture farmer on which desert planet?",
+        "correctAnswer": "Tatooine",
+        "distractors": [
+          "Hoth",
+          "Dagobah",
+          "Endor",
+          "Jakku",
+          "Bespin",
+          "Naboo",
+          "Coruscant",
+          "Mustafar"
+        ]
+      }
+    ],
+    "tags": ["cinema", "character", "star_wars", "hero"],
+    "visualDescription": "A young man in white robes raises a glowing blue lightsaber toward twin suns setting over a sweeping desert landscape, pixel art style."
+  },
+  {
+    "id": "cinema_char_et",
+    "correctAnswer": "E.T.",
+    "acceptableAlternatives": ["ET", "E.T. the Extra-Terrestrial"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "character_names",
+    "difficulty": 1,
+    "funScore": 10,
+    "ageGroup": "all",
+    "distractors": [
+      "R2-D2",
+      "WALL-E",
+      "Gollum",
+      "Yoda",
+      "Groot",
+      "ALF",
+      "Chewbacca",
+      "Dobby"
+    ],
+    "quizQuestion": "Which gentle alien, stranded on Earth in Steven Spielberg's 1982 film, learns to communicate by saying 'E.T. phone home'?",
+    "explanation": "E.T. the Extra-Terrestrial (1982) is Steven Spielberg's story of an alien accidentally left behind on Earth who is befriended by a boy named Elliott. E.T. famously says 'E.T. phone home' as he tries to contact his home planet. The film was the highest-grossing film of all time upon release, surpassing Star Wars, and held that record for eleven years until Jurassic Park (1993). Source: Wikipedia.",
+    "statement": "E.T. from E.T. the Extra-Terrestrial (1982) was the highest-grossing film of all time upon its release, surpassing Star Wars.",
+    "wowFactor": "E.T. the Extra-Terrestrial (1982) was so successful that for eleven years it held the record as the highest-grossing film ever made — until Spielberg himself broke it with Jurassic Park.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/E.T._the_Extra-Terrestrial",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "In E.T. the Extra-Terrestrial (1982), what is the name of the boy who befriends and hides E.T.?",
+        "correctAnswer": "Elliott",
+        "distractors": [
+          "Michael",
+          "Gertie",
+          "Kevin",
+          "Max",
+          "Jake",
+          "Sam",
+          "Tyler",
+          "Luke"
+        ]
+      }
+    ],
+    "tags": ["cinema", "character", "spielberg", "sci-fi", "family"],
+    "visualDescription": "A small brown wrinkled alien with a glowing chest and fingertip points toward a full moon, silhouetted against the night sky on a hilltop, pixel art style."
+  },
+  {
+    "id": "cinema_char_rocky_balboa",
+    "correctAnswer": "Rocky Balboa",
+    "acceptableAlternatives": ["Rocky"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "character_names",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Jake LaMotta",
+      "Raging Bull",
+      "Apollo Creed",
+      "Ivan Drago",
+      "Clubber Lang",
+      "Duke",
+      "Tommy Gunn",
+      "Adonis Creed"
+    ],
+    "quizQuestion": "Which Philadelphia club boxer, played by Sylvester Stallone in Rocky (1976), trains by running up museum steps and gets a shot at the world heavyweight title?",
+    "explanation": "Rocky Balboa is the title character of Rocky (1976), written by and starring Sylvester Stallone. A small-time club boxer from Philadelphia, Rocky is given a once-in-a-lifetime shot at the world heavyweight championship. The film won three Academy Awards including Best Picture. Stallone wrote the script in three and a half days after watching a Muhammad Ali fight, and refused to sell it unless he could star. Source: Wikipedia.",
+    "statement": "Rocky Balboa in Rocky (1976) was written by Sylvester Stallone in three and a half days — and he refused to sell the script unless he could star in it.",
+    "wowFactor": "Stallone was offered $360,000 for the Rocky script but refused to sell unless he could star — at the time he had only $106 in his bank account.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rocky_Balboa_(character)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Rocky (1976) won Best Picture at the Oscars. Which future film icon directed it?",
+        "correctAnswer": "John G. Avildsen",
+        "distractors": [
+          "Sylvester Stallone",
+          "Martin Scorsese",
+          "Sidney Lumet",
+          "Arthur Hiller",
+          "Robert Aldrich",
+          "Norman Jewison",
+          "John Schlesinger",
+          "Hal Ashby"
+        ]
+      }
+    ],
+    "tags": ["cinema", "character", "sports", "stallone"],
+    "visualDescription": "A lean boxer in a grey tracksuit pumps his fists at the top of a long flight of stone steps, the city skyline stretching out below him in early morning light, pixel art style."
+  },
+  {
+    "id": "cinema_char_maximus",
+    "correctAnswer": "Maximus",
+    "acceptableAlternatives": ["Maximus Decimus Meridius"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "character_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Spartacus",
+      "Leonidas",
+      "Julius Caesar",
+      "Achilles",
+      "Odysseus",
+      "Commodus",
+      "Proximo",
+      "Marcus Aurelius"
+    ],
+    "quizQuestion": "Which Roman general-turned-gladiator, played by Russell Crowe in Gladiator (2000), shouts 'Are you not entertained?!' to the Colosseum crowd?",
+    "explanation": "Maximus Decimus Meridius is the protagonist of Gladiator (2000), directed by Ridley Scott and played by Russell Crowe. A Roman general betrayed after Emperor Marcus Aurelius's death, he is enslaved and forced to become a gladiator, seeking revenge against the corrupt Emperor Commodus. Russell Crowe won the Academy Award for Best Actor, and the film won Best Picture. Source: Wikipedia.",
+    "statement": "Maximus in Gladiator (2000), played by Russell Crowe, is a Roman general who becomes a slave gladiator to avenge his family's murder.",
+    "wowFactor": "Russell Crowe had a genuine shoulder injury during filming Gladiator — the tense, one-armed sword fight choreography was designed around his inability to fully use his arm.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Maximus_Decimus_Meridius",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "In Gladiator (2000), who is the villainous emperor that Maximus seeks revenge against?",
+        "correctAnswer": "Commodus",
+        "distractors": [
+          "Nero",
+          "Caligula",
+          "Vespasian",
+          "Domitian",
+          "Tiberius",
+          "Marcus Aurelius",
+          "Hadrian",
+          "Caracalla"
+        ]
+      }
+    ],
+    "tags": ["cinema", "character", "action", "ridley_scott"],
+    "visualDescription": "An armoured gladiator stands in the centre of a sunlit Colosseum, sword raised, looking up defiantly at a roaring crowd filling the stone tiers above him, pixel art style."
+  },
+  {
+    "id": "cinema_char_neo",
+    "correctAnswer": "Neo",
+    "acceptableAlternatives": ["Thomas Anderson", "The One"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "character_names",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Morpheus",
+      "Trinity",
+      "Agent Smith",
+      "The Oracle",
+      "Cypher",
+      "Tank",
+      "Niobe",
+      "Ghost"
+    ],
+    "quizQuestion": "Which computer hacker turned messianic hero, played by Keanu Reeves in The Matrix (1999), chooses the red pill to learn the truth about reality?",
+    "explanation": "Neo is the protagonist of The Matrix (1999), directed by the Wachowskis and played by Keanu Reeves. He is a computer programmer named Thomas Anderson by day and hacker 'Neo' by night, who is contacted by Morpheus and offered a choice: take the blue pill and remain in the simulated reality of the Matrix, or take the red pill and learn the truth. The film pioneered the 'bullet time' visual effect and became a major cultural touchstone. Source: Wikipedia.",
+    "statement": "Neo in The Matrix (1999), played by Keanu Reeves, chooses the red pill to escape a simulated reality, in a film that pioneered 'bullet time' visual effects.",
+    "wowFactor": "Will Smith turned down the role of Neo to make Wild Wild West — and has since listed it as one of his greatest career regrets.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Neo_(The_Matrix)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "In The Matrix (1999), what is Neo's real (non-hacker) name?",
+        "correctAnswer": "Thomas Anderson",
+        "distractors": [
+          "Thomas Morpheus",
+          "Neo Smith",
+          "Thomas Webb",
+          "David Anderson",
+          "John Matrix",
+          "Michael Anderson",
+          "Tom Reeves",
+          "Kevin Flynn"
+        ]
+      }
+    ],
+    "tags": ["cinema", "character", "sci-fi", "keanu_reeves"],
+    "visualDescription": "A man in a long black trench coat and dark sunglasses freezes mid-air in a graceful backwards arch, bullets curving around him in slow motion, pixel art style."
+  },
+  {
+    "id": "cinema_quote_ill_be_back",
+    "correctAnswer": "I'll be back",
+    "acceptableAlternatives": ["I will be back"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "film_quotes",
+    "difficulty": 1,
+    "funScore": 10,
+    "ageGroup": "all",
+    "distractors": [
+      "Say hello to my little friend!",
+      "You talkin' to me?",
+      "Here's Johnny!",
+      "I am your father",
+      "Bond. James Bond.",
+      "To infinity and beyond!",
+      "E.T. phone home",
+      "You can't handle the truth!"
+    ],
+    "quizQuestion": "Which famous three-word movie quote is spoken by a Terminator cyborg to a police sergeant before crashing a car through the station?",
+    "explanation": "Arnold Schwarzenegger delivers 'I'll be back' as the T-800 Terminator in The Terminator (1984), directed by James Cameron. The line is spoken to a police desk sergeant before the Terminator drives a car through the station to reach Sarah Connor. Schwarzenegger initially argued for 'I will be back' but Cameron insisted on the contraction. It was ranked by the AFI as the 37th greatest movie quote. Source: Wikipedia.",
+    "statement": "'I'll be back' from The Terminator (1984) was ranked by the AFI as the 37th greatest movie quote.",
+    "wowFactor": "Schwarzenegger wanted to say 'I will be back' because he felt the contraction sounded unnatural with his accent — James Cameron overruled him, and the awkwardness became iconic.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/I%27ll_be_back",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "'I'll be back' is from The Terminator (1984). Who directed the film?",
+        "correctAnswer": "James Cameron",
+        "distractors": [
+          "Ridley Scott",
+          "Paul Verhoeven",
+          "John McTiernan",
+          "Walter Hill",
+          "Tony Scott",
+          "Jonathan Mostow",
+          "McG",
+          "Alan Taylor"
+        ]
+      }
+    ],
+    "tags": ["cinema", "quote", "action", "terminator"],
+    "visualDescription": "A chrome-skulled robot in a black leather jacket stands in a police station doorway lit from behind, smoke rising around its feet, pixel art style."
+  },
+  {
+    "id": "cinema_quote_you_cant_handle_truth",
+    "correctAnswer": "You can't handle the truth!",
+    "acceptableAlternatives": ["You can't handle the truth"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "film_quotes",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "I'll be back",
+      "Say hello to my little friend!",
+      "You talkin' to me?",
+      "Here's Johnny!",
+      "I am your father",
+      "Bond. James Bond.",
+      "To infinity and beyond!",
+      "E.T. phone home"
+    ],
+    "quizQuestion": "Which explosive courtroom declaration, shouted by Jack Nicholson as a Marine colonel in a 1992 legal drama, became an instantly recognisable movie quote?",
+    "explanation": "Jack Nicholson shouts 'You can't handle the truth!' as Colonel Nathan R. Jessup in A Few Good Men (1992), directed by Rob Reiner. The line comes during a climactic courtroom confrontation when Tom Cruise's lawyer forces him to admit to ordering a 'Code Red.' The quote is actually part of a longer speech; the preceding line is 'You want answers?' / 'I want the truth!' Rob Reiner has said the script used 'You want the truth? You can't handle the truth!' but Nicholson dropped 'You want the truth?' Source: Wikipedia.",
+    "statement": "'You can't handle the truth!' was shouted by Jack Nicholson as Colonel Jessup in A Few Good Men (1992), directed by Rob Reiner.",
+    "wowFactor": "The full exchange is 'I want the truth!' / 'You can't handle the truth!' — Nicholson dropped the preceding line 'You want the truth?' making the quote even more explosive.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/A_Few_Good_Men",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Jack Nicholson shouts 'You can't handle the truth!' in A Few Good Men (1992). Which actor plays the lawyer who forces the confession?",
+        "correctAnswer": "Tom Cruise",
+        "distractors": [
+          "Kevin Bacon",
+          "Demi Moore",
+          "Jack Nicholson",
+          "Kevin Pollak",
+          "J.T. Walsh",
+          "Cuba Gooding Jr.",
+          "Wolfgang Bodison",
+          "Noah Wyle"
+        ]
+      }
+    ],
+    "tags": ["cinema", "quote", "drama", "courtroom"],
+    "visualDescription": "A stern military officer in dress uniform leans forward in a witness box, jaw clenched, shouting at a packed courtroom under harsh fluorescent light, pixel art style."
+  },
+  {
+    "id": "cinema_quote_heres_johnny",
+    "correctAnswer": "Here's Johnny!",
+    "acceptableAlternatives": ["Heres Johnny", "Here's Johnny"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_quotes",
+    "difficulty": 1,
+    "funScore": 10,
+    "ageGroup": "teen+",
+    "distractors": [
+      "I'll be back",
+      "Say hello to my little friend!",
+      "You talkin' to me?",
+      "You can't handle the truth!",
+      "I am your father",
+      "Bond. James Bond.",
+      "To infinity and beyond!",
+      "E.T. phone home"
+    ],
+    "quizQuestion": "Which gleefully terrifying line does Jack Nicholson improvise as he smashes through a bathroom door with an axe in The Shining (1980)?",
+    "explanation": "'Here's Johnny!' is spoken by Jack Nicholson as Jack Torrance in The Shining (1980), directed by Stanley Kubrick. The line was improvised by Nicholson, mimicking Ed McMahon's introduction of Johnny Carson on The Tonight Show. Kubrick initially did not understand the reference (being British) until it was explained to him. It has since become one of the most replicated lines in cinema history. Source: Wikipedia.",
+    "statement": "'Here's Johnny!' from The Shining (1980) was improvised by Jack Nicholson, referencing Ed McMahon's catchphrase from The Tonight Show.",
+    "wowFactor": "Stanley Kubrick didn't understand the reference to The Tonight Show — he'd been living in England for years and thought the line was just Nicholson being manic.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Shining_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "'Here's Johnny!' was improvised by Jack Nicholson referencing which TV show host's introduction?",
+        "correctAnswer": "Johnny Carson",
+        "distractors": [
+          "Jay Leno",
+          "David Letterman",
+          "Ed Sullivan",
+          "Dick Cavett",
+          "Merv Griffin",
+          "Steve Allen",
+          "Jack Paar",
+          "Craig Ferguson"
+        ]
+      }
+    ],
+    "tags": ["cinema", "quote", "horror", "improvised"],
+    "visualDescription": "A grinning face peers through a splintered hole in a wooden door, one eye wide and crazed, shadows and splinters framing the moment, pixel art style."
+  },
+  {
+    "id": "cinema_quote_infinity_beyond",
+    "correctAnswer": "To infinity and beyond!",
+    "acceptableAlternatives": ["To infinity and beyond"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "film_quotes",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "I'll be back",
+      "Say hello to my little friend!",
+      "You talkin' to me?",
+      "Here's Johnny!",
+      "I am your father",
+      "Bond. James Bond.",
+      "You can't handle the truth!",
+      "E.T. phone home"
+    ],
+    "quizQuestion": "Which optimistic battle cry does Buzz Lightyear shout as he launches himself into the air in Toy Story (1995)?",
+    "explanation": "'To infinity and beyond!' is the catchphrase of Buzz Lightyear, voiced by Tim Allen in Toy Story (1995), Pixar's first feature film. Buzz is a deluded space ranger action figure who believes he is real. The phrase was written by the Toy Story screenwriting team. The film was the first fully computer-animated feature film and grossed $373 million worldwide. Source: Wikipedia.",
+    "statement": "'To infinity and beyond!' is Buzz Lightyear's catchphrase from Toy Story (1995), the first fully computer-animated feature film.",
+    "wowFactor": "Toy Story (1995) was the first fully computer-animated feature film — before its release, conventional wisdom in Hollywood said audiences would never accept it.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Toy_Story",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Tim Allen voiced Buzz Lightyear in Toy Story (1995). Which actor voiced Buzz's rival-turned-friend, Woody?",
+        "correctAnswer": "Tom Hanks",
+        "distractors": [
+          "Bill Murray",
+          "Steve Martin",
+          "Robin Williams",
+          "John Goodman",
+          "Dan Aykroyd",
+          "Chevy Chase",
+          "Rick Moranis",
+          "Martin Short"
+        ]
+      }
+    ],
+    "tags": ["cinema", "quote", "animation", "pixar", "family"],
+    "visualDescription": "A white space suit toy strikes a heroic pose on a wooden dresser, one arm outstretched toward a bedroom window with light streaming in, pixel art style."
+  },
+  {
+    "id": "cinema_quote_i_am_your_father",
+    "correctAnswer": "I am your father",
+    "acceptableAlternatives": ["No, I am your father", "Luke, I am your father"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "film_quotes",
+    "difficulty": 1,
+    "funScore": 10,
+    "ageGroup": "all",
+    "distractors": [
+      "I'll be back",
+      "Say hello to my little friend!",
+      "You talkin' to me?",
+      "Here's Johnny!",
+      "Bond. James Bond.",
+      "To infinity and beyond!",
+      "E.T. phone home",
+      "You can't handle the truth!"
+    ],
+    "quizQuestion": "Which Star Wars: The Empire Strikes Back (1980) revelation — one of cinema's greatest plot twists — is commonly misquoted with 'Luke' at the start?",
+    "explanation": "Darth Vader says 'No, I am your father' in The Empire Strikes Back (1980) — almost universally misquoted as 'Luke, I am your father.' The line was recorded separately by James Earl Jones (who voiced Vader) after filming; on set, David Prowse delivered a fake line so the twist would not leak. The screenwriter Lawrence Kasdan had written it as a genuine surprise even for most of the cast. Source: Wikipedia.",
+    "statement": "'No, I am your father' from The Empire Strikes Back (1980) is one of cinema's most famous misquoted lines — the word 'Luke' does not appear.",
+    "wowFactor": "The 'I am your father' twist was kept so secret that even David Prowse (who physically played Vader) was given a fake line to deliver on set — only James Earl Jones knew the real one.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Empire_Strikes_Back",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The Empire Strikes Back's 'I am your father' twist was kept secret partly by giving the actor playing Vader's body a fake line. Who played Vader's physical body?",
+        "correctAnswer": "David Prowse",
+        "distractors": [
+          "James Earl Jones",
+          "Sebastian Shaw",
+          "Bob Anderson",
+          "Richard Marquand",
+          "Peter Mayhew",
+          "Anthony Daniels",
+          "Kenny Baker",
+          "Jeremy Bulloch"
+        ]
+      }
+    ],
+    "tags": ["cinema", "quote", "star_wars", "plot_twist"],
+    "visualDescription": "A black-armored figure extends a gloved hand toward a young man hanging from a gantry above a swirling void, a storm of electricity and smoke below them, pixel art style."
+  },
+  {
+    "id": "cinema_quote_tomorrow_is_another_day",
+    "correctAnswer": "After all, tomorrow is another day",
+    "acceptableAlternatives": ["Tomorrow is another day", "after all tomorrow is another day"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "film_quotes",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "I'll be back",
+      "Say hello to my little friend!",
+      "You talkin' to me?",
+      "Here's Johnny!",
+      "Bond. James Bond.",
+      "To infinity and beyond!",
+      "E.T. phone home",
+      "You can't handle the truth!"
+    ],
+    "quizQuestion": "Which defiant closing line, delivered by Scarlett O'Hara as she vows to fight on in Gone with the Wind (1939), ends one of Hollywood's most celebrated films?",
+    "explanation": "'After all, tomorrow is another day!' are the final words of Gone with the Wind (1939), spoken by Scarlett O'Hara (Vivien Leigh) as she vows to regain Tara and win back Rhett Butler. The line — also the final line of Margaret Mitchell's 1936 novel — was ranked by the AFI as the 31st greatest movie quote. The film won eight Academy Awards and remained the highest-grossing film of all time (adjusted for inflation) for decades. Source: Wikipedia.",
+    "statement": "'After all, tomorrow is another day!' ends Gone with the Wind (1939), ranked 31st on the AFI's list of greatest movie quotes.",
+    "wowFactor": "Gone with the Wind remains the highest-grossing film of all time when adjusted for inflation — a record it has held for over 85 years.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gone_with_the_Wind_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Vivien Leigh played Scarlett O'Hara in Gone with the Wind (1939). Which actor played Rhett Butler?",
+        "correctAnswer": "Clark Gable",
+        "distractors": [
+          "Cary Grant",
+          "Gary Cooper",
+          "James Stewart",
+          "Henry Fonda",
+          "Errol Flynn",
+          "Tyrone Power",
+          "William Powell",
+          "Gregory Peck"
+        ]
+      }
+    ],
+    "tags": ["cinema", "quote", "classic", "1930s", "drama"],
+    "visualDescription": "A determined woman in a tattered ballgown stands alone in a mist-covered field at dawn, her chin raised defiantly toward the rising sun, pixel art style."
+  },
+  {
+    "id": "cinema_quote_elementary_watson",
+    "correctAnswer": "Elementary, my dear Watson",
+    "acceptableAlternatives": ["Elementary my dear Watson"],
+    "chainThemeId": 3,
+    "answerTypePoolId": "film_quotes",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "I'll be back",
+      "Say hello to my little friend!",
+      "You talkin' to me?",
+      "Here's Johnny!",
+      "Bond. James Bond.",
+      "To infinity and beyond!",
+      "E.T. phone home",
+      "You can't handle the truth!"
+    ],
+    "quizQuestion": "Which famous Sherlock Holmes film quote — 'Elementary, my dear Watson' — is actually NEVER spoken in Sir Arthur Conan Doyle's original stories or the earliest Holmes films, making it cinema's most famous misattribution?",
+    "explanation": "'Elementary, my dear Watson' does not appear in any of Sir Arthur Conan Doyle's original Sherlock Holmes stories. The phrase first appeared in the 1929 film The Return of Sherlock Holmes, starring Clive Brook. It was then popularised through subsequent Holmes films and parody. In the original stories, Holmes occasionally says 'Elementary' and 'My dear Watson' separately, but never combined. The phrase is considered one of cinema's greatest misattributed quotes. Source: Wikipedia.",
+    "statement": "'Elementary, my dear Watson' never appears in Arthur Conan Doyle's original Sherlock Holmes stories — it was first used in the 1929 film The Return of Sherlock Holmes.",
+    "wowFactor": "One of the most famous movie quotes in history was never actually said — 'Elementary, my dear Watson' was invented for a 1929 film and falsely attributed to the original stories ever since.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Elementary,_my_dear_Watson",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "'Elementary, my dear Watson' first appeared in which year's Sherlock Holmes film?",
+        "correctAnswer": "1929",
+        "distractors": [
+          "1939",
+          "1946",
+          "1959",
+          "1984",
+          "1922",
+          "1900",
+          "1965",
+          "1970"
+        ]
+      }
+    ],
+    "tags": ["cinema", "quote", "misquote", "sherlock_holmes", "trivia"],
+    "visualDescription": "A man in a deerstalker cap and Inverness cape examines a clue with a magnifying glass in a candlelit Victorian sitting room, his companion watching from an armchair, pixel art style."
+  },
+  {
+    "id": "cinema_quote_say_hello_little_friend",
+    "correctAnswer": "Say hello to my little friend!",
+    "acceptableAlternatives": ["Say hello to my little friend"],
+    "chainThemeId": 4,
+    "answerTypePoolId": "film_quotes",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "I'll be back",
+      "You can't handle the truth!",
+      "You talkin' to me?",
+      "Here's Johnny!",
+      "I am your father",
+      "Bond. James Bond.",
+      "To infinity and beyond!",
+      "E.T. phone home"
+    ],
+    "quizQuestion": "Which defiant battle cry does Tony Montana shout as he opens fire with a grenade launcher during the climax of Scarface (1983)?",
+    "explanation": "Al Pacino shouts 'Say hello to my little friend!' as Tony Montana in the climactic final shoot-out of Scarface (1983), directed by Brian De Palma. He fires a grenade launcher at the attacking hitmen from the top of his staircase. The line was ranked by the AFI as one of the most memorable movie quotes. The film's climax took four weeks to shoot and was partially inspired by the 1932 original Scarface. Source: Wikipedia.",
+    "statement": "'Say hello to my little friend!' from Scarface (1983) was shouted by Al Pacino as Tony Montana during the film's climactic final shoot-out.",
+    "wowFactor": "Scarface's climactic shoot-out — including the 'Say hello to my little friend!' moment — took four full weeks to film and required thousands of rounds of blanks.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Scarface_(1983_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Tony Montana shouts 'Say hello to my little friend!' while firing which weapon in Scarface?",
+        "correctAnswer": "A grenade launcher",
+        "distractors": [
+          "A machine gun",
+          "A shotgun",
+          "A rocket launcher",
+          "A semi-automatic pistol",
+          "An M16 rifle",
+          "A flamethrower",
+          "A bazooka",
+          "Twin handguns"
+        ]
+      }
+    ],
+    "tags": ["cinema", "quote", "action", "scarface", "al_pacino"],
+    "visualDescription": "A man in a white suit at the top of a marble staircase aims a heavy military weapon at attackers below, the opulent room erupting in chaos and gunfire, pixel art style."
+  },
+  {
+    "id": "cinema_quote_et_phone_home",
+    "correctAnswer": "E.T. phone home",
+    "acceptableAlternatives": ["ET phone home"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_quotes",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "I'll be back",
+      "Say hello to my little friend!",
+      "You talkin' to me?",
+      "Here's Johnny!",
+      "I am your father",
+      "Bond. James Bond.",
+      "To infinity and beyond!",
+      "You can't handle the truth!"
+    ],
+    "quizQuestion": "Which simple, heartfelt plea — spoken by a stranded alien learning English in Steven Spielberg's 1982 film — became one of cinema's most beloved quotes?",
+    "explanation": "'E.T. phone home' is spoken by the alien E.T. in E.T. the Extra-Terrestrial (1982), directed by Steven Spielberg. E.T. uses broken English to express his longing to communicate with his home planet. The voice of E.T. was provided by Pat Welsh, a retired teacher, combined with other voice recordings. The AFI ranked 'E.T. phone home' as the 15th greatest movie quote. Source: Wikipedia.",
+    "statement": "'E.T. phone home' from E.T. the Extra-Terrestrial (1982) was ranked the 15th greatest movie quote by the AFI.",
+    "wowFactor": "The voice of E.T. was created by combining recordings from over 16 different people, including a retired teacher named Pat Welsh, who smoked two packs of cigarettes a day — giving E.T. his distinctive raspy quality.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/E.T._the_Extra-Terrestrial",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The AFI ranked 'E.T. phone home' as the 15th greatest movie quote. What position did it rank among the AFI's top movie quotes?",
+        "correctAnswer": "{15}",
+        "distractors": []
+      }
+    ],
+    "tags": ["cinema", "quote", "sci-fi", "family", "spielberg"],
+    "visualDescription": "A small brown alien with a glowing chest sits at a makeshift radio device in a suburban shed, moonlight streaming through the window, eyes upturned hopefully, pixel art style."
+  },
+  {
+    "id": "cinema_quote_bond_james_bond",
+    "correctAnswer": "Bond. James Bond.",
+    "acceptableAlternatives": ["Bond James Bond", "James Bond"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "film_quotes",
+    "difficulty": 1,
+    "funScore": 10,
+    "ageGroup": "all",
+    "distractors": [
+      "I'll be back",
+      "Say hello to my little friend!",
+      "You talkin' to me?",
+      "Here's Johnny!",
+      "I am your father",
+      "To infinity and beyond!",
+      "E.T. phone home",
+      "You can't handle the truth!"
+    ],
+    "quizQuestion": "Which crisp self-introduction — delivered by Sean Connery at a casino baccarat table in the very first official James Bond film — became one of cinema's most imitated lines?",
+    "explanation": "'Bond. James Bond.' is first spoken by Sean Connery in Dr. No (1962), the first official EON Productions James Bond film. The line is delivered at a baccarat table and was ranked by the AFI as the 22nd greatest movie quote. Every actor who has officially played Bond in the EON series has delivered the line. The AFI selected it for inclusion in their top 100 Movie Quotes list in 2005. Source: Wikipedia.",
+    "statement": "'Bond. James Bond.' was first delivered by Sean Connery in Dr. No (1962) and ranked 22nd on the AFI's greatest movie quotes list.",
+    "wowFactor": "Every actor to officially play James Bond in the EON film series has delivered 'Bond. James Bond.' — from Connery in 1962 to Daniel Craig in 2006.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bond..._James_Bond.",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The AFI ranked 'Bond. James Bond.' as which number greatest movie quote?",
+        "correctAnswer": "{22}",
+        "distractors": []
+      }
+    ],
+    "tags": ["cinema", "quote", "spy", "james_bond", "franchise"],
+    "visualDescription": "A suave man in black tie looks up from a casino card table, a slight smile playing on his lips, elegant surroundings of a 1960s casino behind him, pixel art style."
+  }
+]

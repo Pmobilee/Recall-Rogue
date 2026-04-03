@@ -82,7 +82,8 @@
     position: absolute;
     left: calc(12px * var(--layout-scale, 1));
     bottom: calc(148px * var(--layout-scale, 1));
-    z-index: 18;
+    /* z-index 50: renders above the card hand strip (which sits below z-index ~25) */
+    z-index: 50;
     pointer-events: none;
     display: flex;
     align-items: center;

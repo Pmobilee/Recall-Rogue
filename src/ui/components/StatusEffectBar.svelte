@@ -138,8 +138,8 @@
 
   .effect-icon {
     position: relative;
-    width: calc(40px * var(--layout-scale, 1));
-    height: calc(40px * var(--layout-scale, 1));
+    width: calc(50px * var(--layout-scale, 1));
+    height: calc(50px * var(--layout-scale, 1));
     border-radius: 50%;
     border: none;
     background: transparent;
@@ -259,16 +259,14 @@
   }
 
   .effect-sprite-icon {
-    width: calc(32px * var(--layout-scale, 1));
-    height: calc(32px * var(--layout-scale, 1));
-    image-rendering: pixelated;
+    width: calc(40px * var(--layout-scale, 1));
+    height: calc(40px * var(--layout-scale, 1));
     object-fit: contain;
   }
 
   .popup-sprite-icon {
-    width: calc(24px * var(--layout-scale, 1));
-    height: calc(24px * var(--layout-scale, 1));
-    image-rendering: pixelated;
+    width: calc(30px * var(--layout-scale, 1));
+    height: calc(30px * var(--layout-scale, 1));
     object-fit: contain;
     flex-shrink: 0;
   }

@@ -1,7 +1,7 @@
 # Game Systems
 
 > **Purpose:** Phaser game systems — visual effects, enemy rendering, atmosphere, and game tick management
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-03
 > **Source files:** `src/game/systems/TickSystem.ts`, `src/game/systems/ImpactSystem.ts`, `src/game/systems/StatusEffectVisualSystem.ts`, `src/game/systems/CombatParticleSystem.ts`, `src/game/systems/EnemySpriteSystem.ts`, `src/game/systems/WeaponAnimationSystem.ts`, `src/game/systems/DepthLightingSystem.ts`, `src/game/systems/CombatAtmosphereSystem.ts`, `src/game/systems/ScreenShakeSystem.ts`, `src/game/systems/ChallengeTracker.ts`
 
 > See also: [scenes.md](scenes.md) for CardGameManager, BootScene, CombatScene, RewardRoomScene, and scene transitions
@@ -109,6 +109,8 @@ Attaches `DepthLightingFX` PostFX pipeline to the combat background image for de
 | `stop()` | Remove pipeline, destroy resources |
 
 Depth map key format: `depth-{bgKey}`. Depth map path resolved by `getCombatDepthMap(enemyId)`.
+
+**Ambient level resolution** (inside `applyAtmosphere`): uses `lightSourceManifest` `ambientOverride` when present, otherwise `0.15` for rooms with point lights or `0.40` for rooms without. A hard floor clamp of `Math.max(ambientLevel, 0.30)` is applied after all logic so no enemy background ever goes below 30% brightness — prevents the near-black overlay that low `ambientOverride` values (e.g. `0.06` on `ink_slug`) caused.
 
 ### CombatAtmosphereSystem
 

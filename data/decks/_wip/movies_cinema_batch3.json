@@ -1,0 +1,1825 @@
+[
+  {
+    "id": "cinema_titanic_director",
+    "correctAnswer": "James Cameron",
+    "acceptableAlternatives": [
+      "Cameron"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Steven Spielberg",
+      "Ridley Scott",
+      "Ron Howard",
+      "Peter Jackson",
+      "Robert Zemeckis",
+      "Michael Bay",
+      "Roland Emmerich",
+      "Wolfgang Petersen"
+    ],
+    "quizQuestion": "Who directed the 1997 blockbuster Titanic?",
+    "explanation": "James Cameron directed, co-wrote, and co-produced Titanic (1997). The film cost approximately $200 million to make, was the most expensive film ever at the time, and became the first film to gross $1 billion worldwide.",
+    "statement": "James Cameron directed the 1997 epic romance-disaster film Titanic.",
+    "wowFactor": "Cameron spent so much time on the Titanic set that he memorably declared 'I'm the king of the world!' when production finally wrapped.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Titanic_(1997_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "1990s",
+      "blockbuster"
+    ],
+    "visualDescription": "Ornate ship bow silhouetted against a moonlit ocean, two figures standing at the prow with arms outstretched in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which 1997 epic disaster film did James Cameron direct?",
+        "correctAnswer": "Titanic",
+        "distractors": [
+          "The Abyss",
+          "True Lies",
+          "Aliens",
+          "Avatar"
+        ]
+      },
+      {
+        "type": "alternate",
+        "question": "Titanic (1997) was directed by which filmmaker?",
+        "correctAnswer": "James Cameron",
+        "distractors": [
+          "Ridley Scott",
+          "Ron Howard",
+          "Steven Spielberg",
+          "Peter Jackson"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_titanic_year",
+    "correctAnswer": "{1997}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was James Cameron's Titanic released?",
+    "explanation": "Titanic was released on December 19, 1997 in the United States. It won 11 Academy Awards including Best Picture and Best Director, tying the record set by Ben-Hur.",
+    "statement": "James Cameron's Titanic was released in 1997 and won 11 Academy Awards.",
+    "wowFactor": "Titanic held the worldwide box office record for 12 years until Cameron's own Avatar surpassed it in 2010.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Titanic_(1997_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "1990s",
+      "release-year"
+    ],
+    "visualDescription": "A golden Oscar statuette alongside a vintage film reel marked '1997' in pixel art style",
+    "variants": [
+      {
+        "type": "alternate",
+        "question": "Titanic by James Cameron won 11 Oscars — in which year was it released?",
+        "correctAnswer": "{1997}",
+        "distractors": []
+      }
+    ]
+  },
+  {
+    "id": "cinema_matrix_directors",
+    "correctAnswer": "The Wachowskis",
+    "acceptableAlternatives": [
+      "Lana and Lilly Wachowski",
+      "Wachowski Sisters"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "director_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "James Cameron",
+      "Christopher Nolan",
+      "David Fincher",
+      "Ridley Scott",
+      "Steven Spielberg",
+      "Paul Verhoeven",
+      "Terry Gilliam",
+      "Roland Emmerich"
+    ],
+    "quizQuestion": "Who directed The Matrix (1999)?",
+    "explanation": "The Matrix (1999) was written and directed by the Wachowskis (then credited as the Wachowski Brothers). The film blended cyberpunk philosophy with Hong Kong-style action and introduced 'bullet-time' visual effects that became iconic in cinema.",
+    "statement": "The Matrix (1999) was directed by the Wachowskis, who pioneered the 'bullet-time' visual effect.",
+    "wowFactor": "The Wachowskis had to train Keanu Reeves for four months before filming any of the kung fu sequences — and he still had to do it with a herniated disk.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Matrix",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "sci-fi",
+      "1990s"
+    ],
+    "visualDescription": "Green cascading digital rain code against a black background, a figure in a long black coat silhouetted at center in pixel art",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which visionary sci-fi film did the Wachowskis direct in 1999?",
+        "correctAnswer": "The Matrix",
+        "distractors": [
+          "Dark City",
+          "eXistenZ",
+          "Strange Days",
+          "Johnny Mnemonic"
+        ]
+      },
+      {
+        "type": "alternate",
+        "question": "Who directed the 1999 cyberpunk classic featuring 'bullet-time'?",
+        "correctAnswer": "The Wachowskis",
+        "distractors": [
+          "James Cameron",
+          "David Fincher",
+          "Terry Gilliam",
+          "Paul Verhoeven"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_gladiator_director",
+    "correctAnswer": "Ridley Scott",
+    "acceptableAlternatives": [
+      "Scott"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Oliver Stone",
+      "Mel Gibson",
+      "Wolfgang Petersen",
+      "Tony Scott",
+      "Braveheart director",
+      "Zack Snyder",
+      "Peter Jackson",
+      "Roland Emmerich"
+    ],
+    "quizQuestion": "Who directed the 2000 Oscar-winning epic Gladiator?",
+    "explanation": "Ridley Scott directed Gladiator (2000), which won the Academy Award for Best Picture. Russell Crowe starred as Roman general Maximus Decimus Meridius, delivering one of cinema's most famous speeches in the Colosseum.",
+    "statement": "Ridley Scott directed Gladiator (2000), which won the Best Picture Oscar.",
+    "wowFactor": "The script for Gladiator was still being written during production — Russell Crowe refused to deliver lines he felt were inauthentic and sometimes rewrote his own dialogue on set.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gladiator_(2000_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "2000s",
+      "historical"
+    ],
+    "visualDescription": "Roman gladiator in leather armor facing a roaring Colosseum crowd, sand and dust swirling around boots in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which director helmed the 2000 Roman epic Gladiator?",
+        "correctAnswer": "Ridley Scott",
+        "distractors": [
+          "Oliver Stone",
+          "Wolfgang Petersen",
+          "Zack Snyder",
+          "Tony Scott"
+        ]
+      },
+      {
+        "type": "alternate",
+        "question": "Gladiator (2000) starred Russell Crowe and was directed by whom?",
+        "correctAnswer": "Ridley Scott",
+        "distractors": [
+          "Mel Gibson",
+          "Oliver Stone",
+          "Peter Jackson",
+          "Tony Scott"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_lotr_rotk_director",
+    "correctAnswer": "Peter Jackson",
+    "acceptableAlternatives": [
+      "Jackson"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "director_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Ridley Scott",
+      "Steven Spielberg",
+      "James Cameron",
+      "Guillermo del Toro",
+      "Christopher Nolan",
+      "Bryan Singer",
+      "Sam Raimi",
+      "Robert Zemeckis"
+    ],
+    "quizQuestion": "Who directed The Lord of the Rings: Return of the King (2003)?",
+    "explanation": "Peter Jackson directed all three Lord of the Rings films. The Return of the King (2003) swept the Academy Awards, winning all 11 of the categories for which it was nominated — a record tied only by Ben-Hur (1959) and Titanic (1997).",
+    "statement": "Peter Jackson directed The Return of the King (2003), which won all 11 of its Oscar nominations.",
+    "wowFactor": "Return of the King's 11-for-11 Oscar sweep is a record it shares with only Ben-Hur and Titanic — no film has ever won more.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings:_The_Return_of_the_King",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "2000s",
+      "fantasy",
+      "oscars"
+    ],
+    "visualDescription": "Hobbit standing before a crumbling volcanic peak, ring glowing in an outstretched hand against an orange sky in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which director completed the Lord of the Rings trilogy in 2003?",
+        "correctAnswer": "Peter Jackson",
+        "distractors": [
+          "Ridley Scott",
+          "Guillermo del Toro",
+          "Steven Spielberg",
+          "Sam Raimi"
+        ]
+      },
+      {
+        "type": "alternate",
+        "question": "Return of the King won 11 Oscars in 2004 — who directed it?",
+        "correctAnswer": "Peter Jackson",
+        "distractors": [
+          "James Cameron",
+          "Christopher Nolan",
+          "Ridley Scott",
+          "Bryan Singer"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_dark_knight_director",
+    "correctAnswer": "Christopher Nolan",
+    "acceptableAlternatives": [
+      "Nolan"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "director_names",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Tim Burton",
+      "Joel Schumacher",
+      "Zack Snyder",
+      "Sam Raimi",
+      "Bryan Singer",
+      "J.J. Abrams",
+      "David Fincher",
+      "Ridley Scott"
+    ],
+    "quizQuestion": "Who directed The Dark Knight (2008)?",
+    "explanation": "Christopher Nolan directed The Dark Knight (2008), the second film in his Batman trilogy. Heath Ledger's portrayal of the Joker is widely considered one of cinema's greatest villain performances; Ledger won a posthumous Academy Award for Best Supporting Actor.",
+    "statement": "Christopher Nolan directed The Dark Knight (2008), featuring Heath Ledger's Oscar-winning Joker.",
+    "wowFactor": "Heath Ledger prepared for the Joker role by locking himself in a hotel room for six weeks, keeping a diary in character to develop the psychological profile.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Dark_Knight",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "2000s",
+      "superhero",
+      "oscars"
+    ],
+    "visualDescription": "Dark rooftop skyline, caped figure silhouetted against a burning signal flare, purple suit villain grinning below in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The Dark Knight featuring Heath Ledger's Joker was directed by whom?",
+        "correctAnswer": "Christopher Nolan",
+        "distractors": [
+          "Tim Burton",
+          "Zack Snyder",
+          "Joel Schumacher",
+          "Bryan Singer"
+        ]
+      },
+      {
+        "type": "alternate",
+        "question": "Which director's Batman film earned Heath Ledger a posthumous Oscar?",
+        "correctAnswer": "Christopher Nolan",
+        "distractors": [
+          "Tim Burton",
+          "Sam Raimi",
+          "J.J. Abrams",
+          "Zack Snyder"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_no_country_directors",
+    "correctAnswer": "Coen Brothers",
+    "acceptableAlternatives": [
+      "Joel and Ethan Coen",
+      "Joel Coen and Ethan Coen",
+      "The Coens"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "director_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "David Fincher",
+      "Martin Scorsese",
+      "Ridley Scott",
+      "Paul Thomas Anderson",
+      "Denis Villeneuve",
+      "Sam Mendes",
+      "Steven Soderbergh",
+      "Robert Altman"
+    ],
+    "quizQuestion": "Who directed No Country for Old Men (2007)?",
+    "explanation": "No Country for Old Men (2007) was directed by Joel and Ethan Coen (the Coen Brothers), based on Cormac McCarthy's novel. It won four Academy Awards including Best Picture, Best Director, and Best Supporting Actor for Javier Bardem's portrayal of the chilling hitman Anton Chigurh.",
+    "statement": "The Coen Brothers directed No Country for Old Men (2007), which won four Academy Awards including Best Picture.",
+    "wowFactor": "Javier Bardem's haircut as Anton Chigurh was so bizarre that he refused to be seen in public during filming — he feared it would terrify people.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/No_Country_for_Old_Men_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "2000s",
+      "thriller",
+      "oscars"
+    ],
+    "visualDescription": "Desolate Texas desert highway at dusk, lone figure with unusual bowl-cut hair carrying a captive bolt pistol in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which filmmaking duo adapted Cormac McCarthy's No Country for Old Men?",
+        "correctAnswer": "Coen Brothers",
+        "distractors": [
+          "Wachowski Sisters",
+          "Dardenne Brothers",
+          "Hughes Brothers",
+          "Duplass Brothers"
+        ]
+      },
+      {
+        "type": "alternate",
+        "question": "No Country for Old Men won Best Picture — who directed it?",
+        "correctAnswer": "Coen Brothers",
+        "distractors": [
+          "David Fincher",
+          "Paul Thomas Anderson",
+          "Martin Scorsese",
+          "Denis Villeneuve"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_inception_director",
+    "correctAnswer": "Christopher Nolan",
+    "acceptableAlternatives": [
+      "Nolan"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "David Fincher",
+      "Darren Aronofsky",
+      "Denis Villeneuve",
+      "Ridley Scott",
+      "Steven Soderbergh",
+      "James Cameron",
+      "M. Night Shyamalan",
+      "Guillermo del Toro"
+    ],
+    "quizQuestion": "Who wrote and directed the dream-heist film Inception (2010)?",
+    "explanation": "Christopher Nolan wrote, directed, and produced Inception (2010). The film follows thieves who infiltrate people's dreams to steal secrets. Nolan developed the script over ten years, drawing on his own experiences with lucid dreaming.",
+    "statement": "Christopher Nolan wrote and directed Inception (2010), developing the script for over a decade.",
+    "wowFactor": "The spinning top ending of Inception was deliberately ambiguous — Nolan has never confirmed whether Cobb is dreaming, and says even he doesn't know the definitive answer.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Inception",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "2010s",
+      "sci-fi",
+      "nolan"
+    ],
+    "visualDescription": "City buildings folding upward into themselves like a book closing, tiny figures running on a curved street in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Christopher Nolan directed which 2010 dream-infiltration thriller?",
+        "correctAnswer": "Inception",
+        "distractors": [
+          "The Prestige",
+          "Memento",
+          "Interstellar",
+          "Tenet"
+        ]
+      },
+      {
+        "type": "alternate",
+        "question": "Which director's dream-heist film features the 'spinning top' ending?",
+        "correctAnswer": "Christopher Nolan",
+        "distractors": [
+          "David Fincher",
+          "Darren Aronofsky",
+          "Denis Villeneuve",
+          "M. Night Shyamalan"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_12_years_director",
+    "correctAnswer": "Steve McQueen",
+    "acceptableAlternatives": [
+      "McQueen"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "director_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Barry Jenkins",
+      "Spike Lee",
+      "Jordan Peele",
+      "Ava DuVernay",
+      "Ryan Coogler",
+      "Lee Daniels",
+      "John Singleton",
+      "Nate Parker"
+    ],
+    "quizQuestion": "Who directed the 2013 Best Picture winner 12 Years a Slave?",
+    "explanation": "12 Years a Slave (2013) was directed by British-Trinidadian filmmaker Steve McQueen. The film depicts the true story of Solomon Northup, a free Black man from New York who was kidnapped and sold into slavery in 1841. It won the Academy Award for Best Picture.",
+    "statement": "British director Steve McQueen directed 12 Years a Slave (2013), based on Solomon Northup's true story.",
+    "wowFactor": "Steve McQueen became the first Black director to win the Academy Award for Best Picture — a historic milestone that took until 2014 to achieve.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/12_Years_a_Slave_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "2010s",
+      "historical",
+      "oscars"
+    ],
+    "visualDescription": "Lone figure in period cotton field clothing standing under a Spanish moss-draped oak tree at golden hour in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Steve McQueen directed which 2013 Best Picture winner about slavery?",
+        "correctAnswer": "12 Years a Slave",
+        "distractors": [
+          "Django Unchained",
+          "Lincoln",
+          "Selma",
+          "The Butler"
+        ]
+      },
+      {
+        "type": "alternate",
+        "question": "Which director became the first Black filmmaker to win Best Picture at the Oscars?",
+        "correctAnswer": "Steve McQueen",
+        "distractors": [
+          "Barry Jenkins",
+          "Spike Lee",
+          "Jordan Peele",
+          "Ava DuVernay"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_parasite_director",
+    "correctAnswer": "Bong Joon-ho",
+    "acceptableAlternatives": [
+      "Bong Joonho",
+      "Bong"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "director_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Park Chan-wook",
+      "Lee Chang-dong",
+      "Kim Jee-woon",
+      "Na Hong-jin",
+      "Hirokazu Kore-eda",
+      "Yorgos Lanthimos",
+      "Ruben Ostlund",
+      "Asghar Farhadi"
+    ],
+    "quizQuestion": "Who directed the 2019 Oscar-winning film Parasite?",
+    "explanation": "Parasite (2019) was directed by South Korean filmmaker Bong Joon-ho. It made history by becoming the first non-English-language film to win the Academy Award for Best Picture, also winning Best Director, Best Original Screenplay, and Best International Feature Film.",
+    "statement": "Bong Joon-ho directed Parasite (2019), the first non-English film to win the Best Picture Oscar.",
+    "wowFactor": "Parasite won four Oscars in 2020 — the first time a non-English-language film won Best Picture in the Academy Awards' 92-year history.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "2010s",
+      "korean",
+      "oscars",
+      "international"
+    ],
+    "visualDescription": "Split-level home design showing wealthy upstairs and cramped underground space below, two families in shadow in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Bong Joon-ho directed which 2019 film about class inequality?",
+        "correctAnswer": "Parasite",
+        "distractors": [
+          "Snowpiercer",
+          "Okja",
+          "The Host",
+          "Memories of Murder"
+        ]
+      },
+      {
+        "type": "alternate",
+        "question": "Which film became the first non-English winner of the Best Picture Oscar?",
+        "correctAnswer": "Parasite",
+        "distractors": [
+          "Roma",
+          "Amour",
+          "The Artist",
+          "Life is Beautiful"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_eeaao_directors",
+    "correctAnswer": "The Daniels",
+    "acceptableAlternatives": [
+      "Daniel Kwan and Daniel Scheinert",
+      "Daniel Kwan & Daniel Scheinert"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "director_names",
+    "difficulty": 4,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Michel Gondry",
+      "Charlie Kaufman",
+      "Spike Jonze",
+      "Wes Anderson",
+      "Shane Carruth",
+      "Alex Garland",
+      "Jordan Peele",
+      "Darren Aronofsky"
+    ],
+    "quizQuestion": "Who directed Everything Everywhere All at Once (2022)?",
+    "explanation": "Everything Everywhere All at Once (2022) was directed by Daniel Kwan and Daniel Scheinert, collectively known as 'the Daniels'. The multiverse action-comedy won seven Academy Awards including Best Picture, Best Director, Best Actress (Michelle Yeoh), and Best Supporting Actress and Actor.",
+    "statement": "The Daniels (Daniel Kwan and Daniel Scheinert) directed Everything Everywhere All at Once, which won 7 Oscars.",
+    "wowFactor": "Everything Everywhere All at Once was shot for only $14.3 million yet won 7 Oscars — making it one of the most award-efficient productions in Hollywood history.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Everything_Everywhere_All_at_Once",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "2020s",
+      "oscars",
+      "multiverse"
+    ],
+    "visualDescription": "Laundromat interior with cosmic swirling portal above a washing machine, small figure with googly eyes in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The Daniels directed which 2022 multiverse comedy that swept the Oscars?",
+        "correctAnswer": "Everything Everywhere All at Once",
+        "distractors": [
+          "The Whale",
+          "Tár",
+          "Aftersun",
+          "Women Talking"
+        ]
+      },
+      {
+        "type": "alternate",
+        "question": "Which director duo won Best Director at the 2023 Oscars?",
+        "correctAnswer": "The Daniels",
+        "distractors": [
+          "Wachowski Sisters",
+          "Coen Brothers",
+          "Dardenne Brothers",
+          "Safdie Brothers"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_oppenheimer_director",
+    "correctAnswer": "Christopher Nolan",
+    "acceptableAlternatives": [
+      "Nolan"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Steven Spielberg",
+      "Ridley Scott",
+      "David Fincher",
+      "Denis Villeneuve",
+      "Sam Mendes",
+      "Oliver Stone",
+      "Martin Scorsese",
+      "Kathryn Bigelow"
+    ],
+    "quizQuestion": "Who directed the 2023 biographical film Oppenheimer?",
+    "explanation": "Christopher Nolan directed Oppenheimer (2023), a biographical thriller about J. Robert Oppenheimer and the Manhattan Project. The film won seven Academy Awards including Best Picture, Best Director, and Best Actor for Cillian Murphy.",
+    "statement": "Christopher Nolan directed Oppenheimer (2023), winning Best Picture and Best Director at the Oscars.",
+    "wowFactor": "Nolan recreated the Trinity nuclear test for real using practical effects — he built a miniature model and set it on fire rather than using CGI for the explosion.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oppenheimer_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "2020s",
+      "historical",
+      "oscars"
+    ],
+    "visualDescription": "Desert test site tower silhouetted against a sky on the verge of blinding flash, scientists in period hats watching from a bunker in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Christopher Nolan's 2023 Oppenheimer won Best Picture — what year did Nolan direct it?",
+        "correctAnswer": "{2023}",
+        "distractors": []
+      },
+      {
+        "type": "alternate",
+        "question": "Which director brought the Manhattan Project story to life in Oppenheimer (2023)?",
+        "correctAnswer": "Christopher Nolan",
+        "distractors": [
+          "Steven Spielberg",
+          "Denis Villeneuve",
+          "Martin Scorsese",
+          "Sam Mendes"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_fight_club_director",
+    "correctAnswer": "David Fincher",
+    "acceptableAlternatives": [
+      "Fincher"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "director_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Darren Aronofsky",
+      "Paul Thomas Anderson",
+      "Spike Jonze",
+      "Bryan Singer",
+      "Christopher Nolan",
+      "Todd Phillips",
+      "Richard Kelly",
+      "Alex Proyas"
+    ],
+    "quizQuestion": "Who directed Fight Club (1999) starring Brad Pitt and Edward Norton?",
+    "explanation": "David Fincher directed Fight Club (1999), based on Chuck Palahniuk's 1996 novel. Despite being a box office disappointment on release, the film became a cult classic and is frequently cited as one of the greatest films ever made.",
+    "statement": "David Fincher directed Fight Club (1999), which became a cult classic despite initially underperforming at the box office.",
+    "wowFactor": "Fight Club flopped on release — earning only $37 million against a $63 million budget — yet it's now considered a defining film of the 1990s.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fight_Club",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "1990s",
+      "cult-classic"
+    ],
+    "visualDescription": "Gritty underground parking garage ring of spectators surrounding two fighters, neon bar sign flickering above in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "David Fincher directed which 1999 cult classic about an underground fighting ring?",
+        "correctAnswer": "Fight Club",
+        "distractors": [
+          "Se7en",
+          "The Game",
+          "Zodiac",
+          "The Social Network"
+        ]
+      },
+      {
+        "type": "alternate",
+        "question": "Which director adapted Chuck Palahniuk's novel Fight Club for cinema?",
+        "correctAnswer": "David Fincher",
+        "distractors": [
+          "Darren Aronofsky",
+          "Paul Thomas Anderson",
+          "Spike Jonze",
+          "Christopher Nolan"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_departed_director",
+    "correctAnswer": "Martin Scorsese",
+    "acceptableAlternatives": [
+      "Scorsese"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Francis Ford Coppola",
+      "Brian De Palma",
+      "Sidney Lumet",
+      "Michael Mann",
+      "David Fincher",
+      "Spike Lee",
+      "Barry Levinson",
+      "Oliver Stone"
+    ],
+    "quizQuestion": "Who directed The Departed (2006), winning his first Best Director Oscar?",
+    "explanation": "Martin Scorsese directed The Departed (2006), an adaptation of the 2002 Hong Kong film Infernal Affairs. It won four Academy Awards including Best Picture and Best Director — Scorsese's first directing Oscar despite previous nominations for Raging Bull, Goodfellas, and Gangs of New York.",
+    "statement": "Martin Scorsese won his first Best Director Oscar for The Departed (2006), despite earlier masterworks like Goodfellas.",
+    "wowFactor": "Scorsese had been nominated for Best Director four times before The Departed — for Raging Bull, Goodfellas, Gangs of New York, and The Aviator — making him one of the longest-snubbed directors in Oscar history.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Departed",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "2000s",
+      "crime",
+      "oscars"
+    ],
+    "visualDescription": "Boston rooftop at night, undercover cop and mob informant face-off under flickering streetlight, skyline in background in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Martin Scorsese finally won Best Director for which 2006 crime thriller?",
+        "correctAnswer": "The Departed",
+        "distractors": [
+          "Goodfellas",
+          "Gangs of New York",
+          "The Aviator",
+          "Casino"
+        ]
+      },
+      {
+        "type": "alternate",
+        "question": "Which director's crime film The Departed won Best Picture in 2007?",
+        "correctAnswer": "Martin Scorsese",
+        "distractors": [
+          "Francis Ford Coppola",
+          "Brian De Palma",
+          "Michael Mann",
+          "Oliver Stone"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_slumdog_director",
+    "correctAnswer": "Danny Boyle",
+    "acceptableAlternatives": [
+      "Boyle"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "director_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Mira Nair",
+      "Deepa Mehta",
+      "Gurinder Chadha",
+      "Shekhar Kapur",
+      "Richard Curtis",
+      "Kevin Macdonald",
+      "Michael Winterbottom",
+      "Stephen Frears"
+    ],
+    "quizQuestion": "Who directed the 2008 Best Picture winner Slumdog Millionaire?",
+    "explanation": "Danny Boyle directed Slumdog Millionaire (2008), set in the slums of Mumbai. The film won eight Academy Awards including Best Picture and Best Director. The story follows a young man from the Dharavi slum appearing on the Indian version of Who Wants to Be a Millionaire.",
+    "statement": "Danny Boyle directed Slumdog Millionaire (2008), which won 8 Academy Awards including Best Picture.",
+    "wowFactor": "Slumdog Millionaire was nearly released straight to DVD — Warner Bros. considered it too bleak for wide release before selling US rights to Fox Searchlight.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Slumdog_Millionaire",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "2000s",
+      "oscars",
+      "british"
+    ],
+    "visualDescription": "Crowded Mumbai street market at dusk, young boy running through colorful stalls with a game show stage glowing in the background in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Danny Boyle directed which 2008 film set among Mumbai's Dharavi slum?",
+        "correctAnswer": "Slumdog Millionaire",
+        "distractors": [
+          "Trainspotting",
+          "28 Days Later",
+          "127 Hours",
+          "Yesterday"
+        ]
+      },
+      {
+        "type": "alternate",
+        "question": "Which British director won Best Director for Slumdog Millionaire?",
+        "correctAnswer": "Danny Boyle",
+        "distractors": [
+          "Richard Curtis",
+          "Stephen Frears",
+          "Kevin Macdonald",
+          "Michael Winterbottom"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_moonlight_director",
+    "correctAnswer": "Barry Jenkins",
+    "acceptableAlternatives": [
+      "Jenkins"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "director_names",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Steve McQueen",
+      "Ryan Coogler",
+      "Jordan Peele",
+      "Ava DuVernay",
+      "Spike Lee",
+      "John Singleton",
+      "Lee Daniels",
+      "Dee Rees"
+    ],
+    "quizQuestion": "Who directed the 2016 Best Picture winner Moonlight?",
+    "explanation": "Barry Jenkins directed Moonlight (2016), based on Tarell Alvin McCraney's play 'In Moonlight Black Boys Look Blue'. The film traces the life of a young Black man growing up in Miami across three chapters. It was announced as Best Picture winner after a famous envelope mix-up at the Oscars where La La Land was incorrectly named first.",
+    "statement": "Barry Jenkins directed Moonlight (2016), which won Best Picture after a famous Oscar envelope mix-up.",
+    "wowFactor": "Moonlight's Best Picture win was announced during one of cinema's most chaotic moments — presenters Warren Beatty and Faye Dunaway were given the wrong envelope and declared La La Land the winner first.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Moonlight_(2016_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "2010s",
+      "oscars",
+      "drama"
+    ],
+    "visualDescription": "Miami beach at night under a full moon, young figure sitting alone on dark sand, city lights reflected in calm water in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Barry Jenkins directed which 2016 film that won Best Picture amid an Oscar mix-up?",
+        "correctAnswer": "Moonlight",
+        "distractors": [
+          "La La Land",
+          "Beasts of No Nation",
+          "Fruitvale Station",
+          "Medicine for Melancholy"
+        ]
+      },
+      {
+        "type": "alternate",
+        "question": "Who directed Moonlight, the film incorrectly announced as Best Picture runner-up at the 2017 Oscars?",
+        "correctAnswer": "Barry Jenkins",
+        "distractors": [
+          "Steve McQueen",
+          "Ryan Coogler",
+          "Jordan Peele",
+          "Ava DuVernay"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_get_out_director",
+    "correctAnswer": "Jordan Peele",
+    "acceptableAlternatives": [
+      "Peele"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "director_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "James Wan",
+      "Wes Craven",
+      "M. Night Shyamalan",
+      "John Krasinski",
+      "Mike Flanagan",
+      "Scott Derrickson",
+      "David Robert Mitchell",
+      "Jennifer Kent"
+    ],
+    "quizQuestion": "Who wrote and directed the 2017 horror film Get Out?",
+    "explanation": "Jordan Peele wrote and directed Get Out (2017), his feature directorial debut. A satirical horror film about race in America, it won the Academy Award for Best Original Screenplay and grossed over $255 million worldwide against a $4.5 million budget.",
+    "statement": "Jordan Peele wrote and directed Get Out (2017), winning Best Original Screenplay on his feature debut.",
+    "wowFactor": "Get Out was made on a $4.5 million budget and grossed $255 million worldwide — a return on investment of nearly 5,600%, making it one of the most profitable debuts in horror history.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Get_Out",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "2010s",
+      "horror",
+      "oscars"
+    ],
+    "visualDescription": "Suburban mansion at night, sunken place visual with lone figure falling through dark void, white teacup shattering in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Jordan Peele's directorial debut was which 2017 social horror film?",
+        "correctAnswer": "Get Out",
+        "distractors": [
+          "Us",
+          "Nope",
+          "Candyman",
+          "Antebellum"
+        ]
+      },
+      {
+        "type": "alternate",
+        "question": "Which comedian-turned-director won Best Original Screenplay for Get Out (2017)?",
+        "correctAnswer": "Jordan Peele",
+        "distractors": [
+          "John Krasinski",
+          "James Wan",
+          "M. Night Shyamalan",
+          "Mike Flanagan"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_hurt_locker_director",
+    "correctAnswer": "Kathryn Bigelow",
+    "acceptableAlternatives": [
+      "Bigelow"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "director_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Sofia Coppola",
+      "Patty Jenkins",
+      "Greta Gerwig",
+      "Ava DuVernay",
+      "Lynne Ramsay",
+      "Penny Marshall",
+      "Nora Ephron",
+      "Dee Rees"
+    ],
+    "quizQuestion": "Who directed The Hurt Locker, becoming the first woman to win Best Director?",
+    "explanation": "Kathryn Bigelow directed The Hurt Locker (2008), a war drama set during the Iraq War. At the 2010 Academy Awards, she became the first woman in history to win the Academy Award for Best Director. The film also won Best Picture.",
+    "statement": "Kathryn Bigelow directed The Hurt Locker (2008) and became the first woman to win the Best Director Oscar.",
+    "wowFactor": "Bigelow beat her ex-husband James Cameron at the 2010 Oscars — her Hurt Locker won Best Picture over his Avatar, one of the most personal showdowns in Oscar history.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Hurt_Locker",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "directors",
+      "2000s",
+      "war",
+      "oscars",
+      "historic"
+    ],
+    "visualDescription": "Bomb disposal technician in heavy protective suit kneeling on dusty Iraq street, sweat and tension visible in pixel art style",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Kathryn Bigelow directed which 2008 Iraq War film that swept the Oscars?",
+        "correctAnswer": "The Hurt Locker",
+        "distractors": [
+          "Zero Dark Thirty",
+          "Jarhead",
+          "The Kingdom",
+          "Lone Survivor"
+        ]
+      },
+      {
+        "type": "alternate",
+        "question": "Who was the first woman to win the Academy Award for Best Director?",
+        "correctAnswer": "Kathryn Bigelow",
+        "distractors": [
+          "Sofia Coppola",
+          "Greta Gerwig",
+          "Patty Jenkins",
+          "Ava DuVernay"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_quote_casablanca",
+    "correctAnswer": "Casablanca",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "The African Queen",
+      "To Have and Have Not",
+      "Notorious",
+      "The Maltese Falcon",
+      "Key Largo",
+      "Now, Voyager",
+      "Mildred Pierce",
+      "Rebecca"
+    ],
+    "quizQuestion": "Which film features the line 'Here's looking at you, kid'?",
+    "explanation": "Humphrey Bogart delivered 'Here's looking at you, kid' to Ingrid Bergman in Casablanca (1942), directed by Michael Curtiz. The line was improvised — Bogart reportedly said it to Bergman while teaching her poker between takes, and it was so charming it was written into the script.",
+    "statement": "The line 'Here's looking at you, kid' is spoken by Humphrey Bogart to Ingrid Bergman in Casablanca (1942).",
+    "wowFactor": "Bogart improvised 'Here's looking at you, kid' while teaching Bergman poker between takes — it was so perfect the writers immediately put it in the script.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Casablanca_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "quotes",
+      "classic",
+      "1940s"
+    ],
+    "visualDescription": "Foggy North African airstrip at night, man in trench coat and fedora watching a plane depart with a woman inside in pixel art style",
+    "variants": [
+      {
+        "type": "alternate",
+        "question": "Humphrey Bogart's famous 'Here's looking at you, kid' comes from which film?",
+        "correctAnswer": "Casablanca",
+        "distractors": [
+          "The Maltese Falcon",
+          "To Have and Have Not",
+          "Key Largo",
+          "The African Queen"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In Casablanca, to whom does Bogart say 'Here's looking at you, kid'?",
+        "correctAnswer": "Ingrid Bergman",
+        "distractors": [
+          "Lauren Bacall",
+          "Katharine Hepburn",
+          "Bette Davis",
+          "Vivien Leigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_quote_godfather",
+    "correctAnswer": "The Godfather",
+    "acceptableAlternatives": [
+      "Godfather"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Goodfellas",
+      "Scarface",
+      "The Sopranos",
+      "Casino",
+      "A Bronx Tale",
+      "Once Upon a Time in America",
+      "Miller's Crossing",
+      "The Untouchables"
+    ],
+    "quizQuestion": "Which film contains the line 'I'm gonna make him an offer he can't refuse'?",
+    "explanation": "Marlon Brando, as Don Vito Corleone, delivers this line in The Godfather (1972), directed by Francis Ford Coppola. The line has become one of the most quoted and parodied phrases in cinema history, ranking #2 on the American Film Institute's list of greatest movie quotes.",
+    "statement": "Marlon Brando as Don Vito Corleone says 'I'm gonna make him an offer he can't refuse' in The Godfather (1972).",
+    "wowFactor": "Marlon Brando stuffed his cheeks with cotton for his Godfather audition to embody the aged Don — the final film used a dental device made by the same dentist who created the Godfather prosthetics.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Godfather",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "quotes",
+      "classic",
+      "1970s",
+      "crime"
+    ],
+    "visualDescription": "Elderly don in tuxedo seated in a shadowy leather chair stroking a white cat, wedding celebration blurring outside office windows in pixel art style",
+    "variants": [
+      {
+        "type": "alternate",
+        "question": "Marlon Brando's 'offer he can't refuse' line comes from which 1972 classic?",
+        "correctAnswer": "The Godfather",
+        "distractors": [
+          "Goodfellas",
+          "Scarface",
+          "Casino",
+          "Once Upon a Time in America"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In The Godfather, who delivers the 'offer he can't refuse' line?",
+        "correctAnswer": "Marlon Brando",
+        "distractors": [
+          "Al Pacino",
+          "Robert De Niro",
+          "James Caan",
+          "Robert Duvall"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_quote_star_wars",
+    "correctAnswer": "Star Wars",
+    "acceptableAlternatives": [
+      "Star Wars: A New Hope",
+      "A New Hope"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Star Trek",
+      "Flash Gordon",
+      "Dune",
+      "Battlestar Galactica",
+      "The Last Starfighter",
+      "2001: A Space Odyssey",
+      "Forbidden Planet",
+      "Logan's Run"
+    ],
+    "quizQuestion": "Which film franchise is famous for the line 'May the Force be with you'?",
+    "explanation": "'May the Force be with you' is the signature blessing of the Jedi in Star Wars (1977), directed by George Lucas. The phrase echoes the Catholic 'May God be with you' and has become one of the most universally recognized phrases in popular culture.",
+    "statement": "'May the Force be with you' is the iconic blessing spoken throughout the Star Wars franchise (1977–present).",
+    "wowFactor": "George Lucas never said 'May the Force be with you' himself in the original film — it was first said by General Dodonna to the rebel pilots before the Death Star attack.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Star_Wars_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "quotes",
+      "sci-fi",
+      "1970s",
+      "franchise"
+    ],
+    "visualDescription": "Desert planet twin sunset, robed figure silhouetted on a sand dune with two glowing suns dipping below the horizon in pixel art style",
+    "variants": [
+      {
+        "type": "alternate",
+        "question": "In which 1977 sci-fi epic is 'May the Force be with you' first spoken?",
+        "correctAnswer": "Star Wars",
+        "distractors": [
+          "Star Trek: The Motion Picture",
+          "Flash Gordon",
+          "2001: A Space Odyssey",
+          "Dune"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who directed the original Star Wars (1977) containing the phrase 'May the Force be with you'?",
+        "correctAnswer": "George Lucas",
+        "distractors": [
+          "Steven Spielberg",
+          "Irvin Kershner",
+          "Richard Marquand",
+          "J.J. Abrams"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_quote_gone_with_wind",
+    "correctAnswer": "Gone with the Wind",
+    "acceptableAlternatives": [
+      "Gone With the Wind"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Rebecca",
+      "Jezebel",
+      "Now, Voyager",
+      "Wuthering Heights",
+      "The Philadelphia Story",
+      "All About Eve",
+      "Sunset Boulevard",
+      "A Streetcar Named Desire"
+    ],
+    "quizQuestion": "Which film features Rhett Butler's parting line 'Frankly, my dear, I don't give a damn'?",
+    "explanation": "Clark Gable as Rhett Butler delivers this line to Vivien Leigh's Scarlett O'Hara at the end of Gone with the Wind (1939), directed by Victor Fleming. It was voted the #1 movie quote of all time by the American Film Institute in 2005.",
+    "statement": "Clark Gable's 'Frankly, my dear, I don't give a damn' in Gone with the Wind (1939) was voted the greatest movie quote ever by the AFI.",
+    "wowFactor": "The line nearly wasn't used — the Hays Code banned the word 'damn' on screen. Producer David O. Selznick paid a $5,000 fine to keep it in and appealed all the way to the Motion Picture Association.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gone_with_the_Wind_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "quotes",
+      "classic",
+      "1930s",
+      "golden-age"
+    ],
+    "visualDescription": "Plantation manor at dusk silhouetted against an orange sky, man in top hat and cravat turning his back as woman in hoop skirt watches from steps in pixel art style",
+    "variants": [
+      {
+        "type": "alternate",
+        "question": "Clark Gable's 'Frankly, my dear, I don't give a damn' is from which 1939 epic?",
+        "correctAnswer": "Gone with the Wind",
+        "distractors": [
+          "Rebecca",
+          "Jezebel",
+          "The Philadelphia Story",
+          "Wuthering Heights"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In Gone with the Wind, who says 'Frankly, my dear, I don't give a damn'?",
+        "correctAnswer": "Clark Gable",
+        "distractors": [
+          "Humphrey Bogart",
+          "James Stewart",
+          "Gary Cooper",
+          "Cary Grant"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_quote_terminator",
+    "correctAnswer": "The Terminator",
+    "acceptableAlternatives": [
+      "Terminator"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "RoboCop",
+      "Predator",
+      "Total Recall",
+      "Robocop 2",
+      "Universal Soldier",
+      "Demolition Man",
+      "Judge Dredd",
+      "Commando"
+    ],
+    "quizQuestion": "Which Arnold Schwarzenegger film features the iconic line 'I'll be back'?",
+    "explanation": "'I'll be back' was spoken by Arnold Schwarzenegger as the T-800 Terminator in The Terminator (1984), directed by James Cameron. Schwarzenegger initially wanted to say 'I will be back', insisting it sounded more machine-like, but Cameron insisted on the contraction.",
+    "statement": "Arnold Schwarzenegger first said 'I'll be back' as the T-800 in The Terminator (1984), directed by James Cameron.",
+    "wowFactor": "Schwarzenegger argued with director James Cameron about the line — he wanted to say 'I will be back' — and Cameron won. The contraction became the most quoted line of the 1980s.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Terminator",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "quotes",
+      "sci-fi",
+      "1980s",
+      "action"
+    ],
+    "visualDescription": "Gleaming chrome robot endoskeleton walking through a police station corridor at night, red eye glowing in pixel art style",
+    "variants": [
+      {
+        "type": "alternate",
+        "question": "James Cameron's 1984 sci-fi film features which famous two-word Schwarzenegger line?",
+        "correctAnswer": "I'll be back",
+        "distractors": [
+          "Hasta la vista",
+          "Come with me if you want to live",
+          "Get to the chopper",
+          "I lied"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who directed The Terminator (1984) in which 'I'll be back' was first spoken?",
+        "correctAnswer": "James Cameron",
+        "distractors": [
+          "John McTiernan",
+          "Ridley Scott",
+          "Walter Hill",
+          "Paul Verhoeven"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_quote_wizard_of_oz",
+    "correctAnswer": "The Wizard of Oz",
+    "acceptableAlternatives": [
+      "Wizard of Oz"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Alice in Wonderland",
+      "Snow White",
+      "Pinocchio",
+      "Cinderella",
+      "Peter Pan",
+      "Sleeping Beauty",
+      "Bambi",
+      "Fantasia"
+    ],
+    "quizQuestion": "Which 1939 film features Dorothy's longing cry 'There's no place like home'?",
+    "explanation": "Judy Garland as Dorothy Gale says 'There's no place like home' at the climax of The Wizard of Oz (1939), directed by Victor Fleming. She clicks the ruby slippers together three times while repeating it, wishing herself back to Kansas from the magical land of Oz.",
+    "statement": "Judy Garland's Dorothy clicks ruby slippers saying 'There's no place like home' in The Wizard of Oz (1939).",
+    "wowFactor": "The ruby slippers in The Wizard of Oz were originally silver in L. Frank Baum's book — they were changed to ruby red specifically to show off the new Technicolor technology.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Wizard_of_Oz_(1939_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "quotes",
+      "classic",
+      "1930s",
+      "musical"
+    ],
+    "visualDescription": "Yellow brick road spiraling toward an emerald tower in an oversaturated color palette, small girl in blue gingham dress and red shoes in pixel art style",
+    "variants": [
+      {
+        "type": "alternate",
+        "question": "Judy Garland clicks ruby slippers saying 'There's no place like home' in which 1939 classic?",
+        "correctAnswer": "The Wizard of Oz",
+        "distractors": [
+          "Snow White and the Seven Dwarfs",
+          "Alice in Wonderland",
+          "Pinocchio",
+          "Fantasia"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In The Wizard of Oz, who plays Dorothy, the girl who says 'There's no place like home'?",
+        "correctAnswer": "Judy Garland",
+        "distractors": [
+          "Shirley Temple",
+          "Deanna Durbin",
+          "Jane Powell",
+          "Margaret O'Brien"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_quote_taxi_driver",
+    "correctAnswer": "Taxi Driver",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Raging Bull",
+      "Goodfellas",
+      "Mean Streets",
+      "Dog Day Afternoon",
+      "Serpico",
+      "Midnight Cowboy",
+      "The French Connection",
+      "Dirty Harry"
+    ],
+    "quizQuestion": "Which 1976 Martin Scorsese film features De Niro's 'You talking to me?' monologue?",
+    "explanation": "Robert De Niro improvised the 'You talking to me?' mirror monologue in Taxi Driver (1976), directed by Martin Scorsese. The screenplay had only the note 'Travis speaks to himself in the mirror' — De Niro invented the entire speech on set.",
+    "statement": "Robert De Niro improvised 'You talking to me?' in Taxi Driver (1976) — Scorsese's script only said 'Travis speaks to himself in the mirror'.",
+    "wowFactor": "De Niro's entire 'You talking to me?' speech was improvised — the screenplay contained only the stage direction 'Travis speaks to himself in the mirror', making it one of cinema's most famous ad-libs.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Taxi_Driver",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "quotes",
+      "1970s",
+      "scorsese",
+      "de-niro"
+    ],
+    "visualDescription": "Grimy 1970s New York City night street, taxi cab parked under rain-soaked neon signs, lone figure staring into a mirror in pixel art style",
+    "variants": [
+      {
+        "type": "alternate",
+        "question": "Robert De Niro's improvised 'You talking to me?' mirror scene is from which film?",
+        "correctAnswer": "Taxi Driver",
+        "distractors": [
+          "Raging Bull",
+          "Mean Streets",
+          "Goodfellas",
+          "Dog Day Afternoon"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who directed Taxi Driver (1976) featuring De Niro's 'You talking to me?' monologue?",
+        "correctAnswer": "Martin Scorsese",
+        "distractors": [
+          "Francis Ford Coppola",
+          "Sidney Lumet",
+          "Alan Pakula",
+          "William Friedkin"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_quote_apollo_13",
+    "correctAnswer": "Apollo 13",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "The Right Stuff",
+      "Hidden Figures",
+      "First Man",
+      "Interstellar",
+      "Gravity",
+      "The Martian",
+      "Armageddon",
+      "Deep Impact"
+    ],
+    "quizQuestion": "Which 1995 space survival film features the line 'Houston, we have a problem'?",
+    "explanation": "Tom Hanks as astronaut Jim Lovell says 'Houston, we have a problem' in Apollo 13 (1995), directed by Ron Howard. The actual historical transmission was 'Houston, we've had a problem' — the past tense was changed by screenwriters for dramatic effect.",
+    "statement": "Tom Hanks says 'Houston, we have a problem' in Apollo 13 (1995) — the real transmission used past tense: 'we've had a problem'.",
+    "wowFactor": "The real astronauts said 'Houston, we've had a problem' — the present tense 'have a problem' used in the film was a deliberate change for dramatic immediacy and has now become how most people misremember history.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apollo_13_(film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "quotes",
+      "1990s",
+      "space",
+      "true-story"
+    ],
+    "visualDescription": "Cramped lunar module capsule interior with three astronauts in white suits hunched over flickering instrument panels, Earth visible through a small porthole in pixel art style",
+    "variants": [
+      {
+        "type": "alternate",
+        "question": "Ron Howard's 1995 space rescue film Apollo 13 features which famous distress quote?",
+        "correctAnswer": "Houston, we have a problem",
+        "distractors": [
+          "Failure is not an option",
+          "We choose to go to the Moon",
+          "One small step for man",
+          "The Eagle has landed"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who plays astronaut Jim Lovell who says 'Houston, we have a problem' in Apollo 13 (1995)?",
+        "correctAnswer": "Tom Hanks",
+        "distractors": [
+          "Kevin Bacon",
+          "Bill Paxton",
+          "Gary Sinise",
+          "Ed Harris"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_quote_forrest_gump",
+    "correctAnswer": "Forrest Gump",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Big",
+      "Cast Away",
+      "Philadelphia",
+      "The Green Mile",
+      "You've Got Mail",
+      "Sleepless in Seattle",
+      "Rain Man",
+      "As Good as It Gets"
+    ],
+    "quizQuestion": "Which Tom Hanks film includes the line 'Life is like a box of chocolates'?",
+    "explanation": "Tom Hanks as Forrest Gump says 'Mama always said life was like a box of chocolates — you never know what you're gonna get' in Forrest Gump (1994), directed by Robert Zemeckis. The film won six Academy Awards including Best Picture and Best Actor.",
+    "statement": "Tom Hanks' Forrest Gump (1994) features the memorable line: 'Life is like a box of chocolates — you never know what you're gonna get.'",
+    "wowFactor": "The chocolate box wisdom in Forrest Gump was slightly misquoted by Hanks in the actual film — he says 'life was like a box of chocolates' (past tense), not the present-tense version most people quote.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Forrest_Gump",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "quotes",
+      "1990s",
+      "drama",
+      "oscars"
+    ],
+    "visualDescription": "Man in white suit and sneakers sitting on a park bench with a box of chocolates, feather drifting through blue sky above in pixel art style",
+    "variants": [
+      {
+        "type": "alternate",
+        "question": "Robert Zemeckis's 1994 Best Picture winner features which chocolate philosophy quote?",
+        "correctAnswer": "Forrest Gump",
+        "distractors": [
+          "Big",
+          "Cast Away",
+          "Philadelphia",
+          "Rain Man"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who directed Forrest Gump (1994), the film featuring the 'box of chocolates' line?",
+        "correctAnswer": "Robert Zemeckis",
+        "distractors": [
+          "Ron Howard",
+          "Steven Spielberg",
+          "Barry Levinson",
+          "Rob Reiner"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_quote_sixth_sense",
+    "correctAnswer": "The Sixth Sense",
+    "acceptableAlternatives": [
+      "Sixth Sense"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "film_titles",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "The Others",
+      "Stir of Echoes",
+      "Ghost",
+      "What Lies Beneath",
+      "Poltergeist",
+      "Insidious",
+      "The Haunting",
+      "1408"
+    ],
+    "quizQuestion": "Which 1999 supernatural thriller features the child's line 'I see dead people'?",
+    "explanation": "Haley Joel Osment as Cole Sear whispers 'I see dead people' in The Sixth Sense (1999), directed by M. Night Shyamalan. The film earned six Academy Award nominations and is remembered for its shocking twist ending. It was Shyamalan's breakthrough film.",
+    "statement": "Child actor Haley Joel Osment whispers 'I see dead people' in M. Night Shyamalan's The Sixth Sense (1999).",
+    "wowFactor": "Haley Joel Osment was only 10 years old when he delivered 'I see dead people' and received an Academy Award nomination for Best Supporting Actor — one of the youngest nominees in Oscar history.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Sixth_Sense",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "quotes",
+      "1990s",
+      "horror",
+      "twist-ending"
+    ],
+    "visualDescription": "Young boy in winter clothes huddled under a tent-like blanket of string lights, scared expression illuminated by small bulbs in a dark room in pixel art style",
+    "variants": [
+      {
+        "type": "alternate",
+        "question": "M. Night Shyamalan's 1999 supernatural film features which haunting child confession?",
+        "correctAnswer": "The Sixth Sense",
+        "distractors": [
+          "The Others",
+          "Ghost",
+          "Poltergeist",
+          "Stir of Echoes"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who directed The Sixth Sense (1999) in which a child says 'I see dead people'?",
+        "correctAnswer": "M. Night Shyamalan",
+        "distractors": [
+          "James Wan",
+          "Wes Craven",
+          "John Carpenter",
+          "Sam Raimi"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cinema_parasite_year",
+    "correctAnswer": "{2019}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "bracket_years",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was Bong Joon-ho's Parasite released?",
+    "explanation": "Parasite was released in South Korea on May 30, 2019, and won the Palme d'Or at Cannes that same year. It was released in the United States on October 11, 2019, before its historic four-Oscar sweep at the 92nd Academy Awards in 2020.",
+    "statement": "Parasite (2019) won the Palme d'Or at Cannes and four Oscars including Best Picture.",
+    "wowFactor": "Parasite is the only film in history to win both the Palme d'Or at Cannes and the Academy Award for Best Picture in the same year.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "release-year",
+      "2010s",
+      "korean"
+    ],
+    "visualDescription": "Film festival red carpet steps with Palme d'Or golden palm trophy gleaming under spotlights, East Asian director bowing in pixel art style",
+    "variants": [
+      {
+        "type": "alternate",
+        "question": "Parasite by Bong Joon-ho won the Palme d'Or — in which year was it released?",
+        "correctAnswer": "{2019}",
+        "distractors": []
+      }
+    ]
+  },
+  {
+    "id": "cinema_dark_knight_villain",
+    "correctAnswer": "The Joker",
+    "acceptableAlternatives": [
+      "Joker"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "character_names",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Two-Face",
+      "Bane",
+      "The Penguin",
+      "Ra's al Ghul",
+      "Catwoman",
+      "Mr. Freeze",
+      "Scarecrow",
+      "The Riddler"
+    ],
+    "quizQuestion": "Which villain did Heath Ledger portray in The Dark Knight (2008)?",
+    "explanation": "Heath Ledger portrayed The Joker in The Dark Knight (2008). His performance was universally acclaimed and earned him a posthumous Academy Award for Best Supporting Actor — he died on January 22, 2008, months before the film's release.",
+    "statement": "Heath Ledger's portrayal of The Joker in The Dark Knight (2008) earned him a posthumous Oscar for Best Supporting Actor.",
+    "wowFactor": "Ledger prepared for the Joker role by locking himself in a hotel room for six weeks, keeping a diary written entirely in character to understand the psyche of chaos.",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Dark_Knight",
+    "volatile": false,
+    "categoryL1": "art_architecture",
+    "categoryL2": "performing_arts",
+    "tags": [
+      "cinema",
+      "characters",
+      "2000s",
+      "superhero",
+      "oscars"
+    ],
+    "visualDescription": "Face-painted villain in purple coat smirking under yellow streetlight, playing cards scattered across a Gotham City sidewalk in pixel art style",
+    "variants": [
+      {
+        "type": "alternate",
+        "question": "Heath Ledger won a posthumous Oscar for which character in The Dark Knight?",
+        "correctAnswer": "The Joker",
+        "distractors": [
+          "Two-Face",
+          "Bane",
+          "Scarecrow",
+          "Ra's al Ghul"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who played The Joker in Christopher Nolan's The Dark Knight (2008)?",
+        "correctAnswer": "Heath Ledger",
+        "distractors": [
+          "Joaquin Phoenix",
+          "Jack Nicholson",
+          "Jared Leto",
+          "Mark Hamill"
+        ]
+      }
+    ]
+  }
+]
