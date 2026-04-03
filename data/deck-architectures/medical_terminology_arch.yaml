@@ -1,0 +1,688 @@
+deck_id: medical_terminology
+name: "Medical Terminology"
+domain: human_body_health
+sub_domain: medical_terminology
+description: "Master the language of medicine — every prefix, suffix, root word, and combining form used in healthcare. Decode any medical term on sight."
+target_facts: 500
+minimum_facts: 400
+
+# COMPLETENESS PHILOSOPHY:
+# This deck aims to be a COMPLETE medical terminology course in game form.
+# A nursing/pre-med student who masters this deck should be able to decode
+# ANY medical term they encounter. No shortcuts, no sampling — full coverage.
+
+# Sourcing & licensing
+data_sources:
+  - name: Wikipedia — List of medical roots, suffixes and prefixes
+    url: https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes
+    license: CC-BY-SA-4.0
+    usage: Complete inventory of medical word parts with etymologies
+  - name: Wikidoc — Medical roots, suffixes and prefixes
+    url: https://www.wikidoc.org/index.php/List_of_medical_roots,_suffixes_and_prefixes
+    license: CC-BY-SA-3.0
+    usage: 800+ entries, cross-reference with Wikipedia
+  - name: NCBI Bookshelf — Medical Terminology
+    url: https://www.ncbi.nlm.nih.gov/books/NBK607453/
+    license: public domain (US government)
+    usage: Foundational concepts, body system organization
+  - name: UWF Medical Terminology for Healthcare Professions
+    url: https://pressbooks.uwf.edu/medicalterminology/
+    license: CC-BY-4.0
+    usage: 125 prefixes/suffixes with meanings, organized by category
+  - name: GlobalRPH Medical Terms
+    url: https://globalrph.com/medical-terms-introduction/
+    license: public reference
+    usage: 140+ core elements organized by body system
+  - name: Kent State Appendix A
+    url: https://www-s3-live.kent.edu/s3fs-root/s3fs-public/file/Appendix-A-Medical-Terms.pdf
+    license: educational reference
+    usage: Comprehensive word roots, prefixes, suffixes list
+
+asset_sources: []
+
+# ============================================================
+# ANSWER TYPE POOLS — The educational backbone
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: Prefix Meanings — "What does hyper- mean?"
+  # Answer is the English meaning of a prefix
+  - id: prefix_meanings
+    format: term
+    estimated_count: 80
+    note: >
+      "Excessive/above normal", "Slow", "Around", "Within", etc.
+      Players confuse hyper-/hypo-, brady-/tachy-, endo-/exo-,
+      epi-/peri-, ante-/post-, macro-/micro- constantly.
+
+  # POOL 2: Suffix Meanings — "What does -itis mean?"
+  - id: suffix_meanings
+    format: term
+    estimated_count: 55
+    note: >
+      "Inflammation", "Surgical removal", "Abnormal condition", etc.
+      Key confusions: -itis/-osis, -ectomy/-otomy/-ostomy,
+      -scopy/-graphy, -penia/-philia, -megaly/-malacia.
+
+  # POOL 3: Root/Combining Form Meanings — "What does hepat/o mean?"
+  - id: root_meanings
+    format: term
+    estimated_count: 200
+    note: >
+      "Liver", "Heart", "Bone", "Nerve", etc.
+      Organized by body system. Confusions: cardi/o vs crani/o vs cervic/o,
+      nephr/o vs neur/o, my/o vs myel/o, oste/o vs ot/o.
+
+  # POOL 4: Body Systems — "Which body system does cardi/o belong to?"
+  - id: body_systems
+    format: term
+    estimated_count: 12
+    syntheticDistractors:
+      - "Lymphatic"
+      - "Immune"
+    note: >
+      Cardiovascular, Respiratory, Nervous, Digestive, Urinary,
+      Musculoskeletal, Integumentary, Endocrine, Reproductive,
+      Sensory, Hematologic/Lymphatic. Small pool — needs synthetics.
+
+  # POOL 5: Condition Names — "Inflammation of the liver is called?"
+  - id: condition_names
+    format: term
+    estimated_count: 120
+    note: >
+      Hepatitis, tachycardia, osteoporosis, anemia, etc.
+      Built from combining prefixes + roots + suffixes.
+      Great pool — all conditions are genuinely confusable.
+      The CORE learning: can the player decode AND build terms?
+
+  # POOL 6: Procedure Names — "Surgical removal of the appendix is?"
+  - id: procedure_names
+    format: term
+    estimated_count: 60
+    note: >
+      Appendectomy, colonoscopy, rhinoplasty, tracheostomy, etc.
+      Confusions: -ectomy/-otomy/-ostomy procedures for same organ.
+
+  # POOL 7: Organ Names — "Hepat/o refers to which organ?"
+  # Reverse of root_meanings — answer is the organ, not the root
+  - id: organ_names
+    format: term
+    estimated_count: 50
+    note: >
+      Liver, Heart, Kidney, Brain, etc.
+      Cross-pool with root_meanings: "What does hepat/o mean?" → "Liver"
+      vs "Which organ does hepat/o refer to?" → "Liver".
+      Same answer, different question angle — builds bidirectional knowledge.
+
+  # POOL 8: Combining Forms — "The combining form for heart is?"
+  # Reverse of root_meanings — answer is the combining form
+  - id: combining_forms
+    format: term
+    estimated_count: 50
+    note: >
+      Cardi/o, Hepat/o, Nephr/o, Neur/o, etc.
+      "What is the combining form for kidney?" → "Nephr/o"
+      Players must produce the Latin/Greek term, not just recognize it.
+
+# ============================================================
+# QUESTION TEMPLATES
+# ============================================================
+
+question_templates:
+  # Mastery 0: Basic recognition
+  - id: prefix_meaning
+    questionFormat: "What does the prefix {prefix} mean?"
+    answerPoolId: prefix_meanings
+    availableFromMastery: 0
+    difficulty: 1
+
+  - id: suffix_meaning
+    questionFormat: "What does the suffix {suffix} mean?"
+    answerPoolId: suffix_meanings
+    availableFromMastery: 0
+    difficulty: 1
+
+  - id: root_meaning
+    questionFormat: "What does {root} mean in medical terminology?"
+    answerPoolId: root_meanings
+    availableFromMastery: 0
+    difficulty: 1
+
+  # Mastery 1-2: Reverse + application
+  - id: organ_to_root
+    questionFormat: "What is the combining form for {organ}?"
+    answerPoolId: combining_forms
+    availableFromMastery: 1
+    difficulty: 2
+
+  - id: decode_condition
+    questionFormat: "What does {condition} mean?"
+    answerPoolId: condition_names
+    availableFromMastery: 1
+    difficulty: 2
+
+  - id: build_condition
+    questionFormat: "Inflammation of the {organ} is called?"
+    answerPoolId: condition_names
+    availableFromMastery: 2
+    difficulty: 3
+
+  # Mastery 3+: Decode complex terms
+  - id: decode_procedure
+    questionFormat: "What procedure does {procedure} describe?"
+    answerPoolId: procedure_names
+    availableFromMastery: 2
+    difficulty: 3
+
+  - id: body_system_classification
+    questionFormat: "Which body system does {root} belong to?"
+    answerPoolId: body_systems
+    availableFromMastery: 3
+    difficulty: 4
+
+  # Mastery 4-5: Multi-step decoding
+  - id: build_from_parts
+    questionFormat: "Combine {prefix} + {root} + {suffix} — what condition?"
+    answerPoolId: condition_names
+    availableFromMastery: 4
+    difficulty: 5
+
+# ============================================================
+# COMMON CONFUSIONS — Seeded into confusion matrix
+# ============================================================
+
+common_confusions:
+  # Prefix pairs (the #1 student struggle)
+  - ["hyper", "hypo"]               # Excessive vs deficient — THE classic confusion
+  - ["brady", "tachy"]              # Slow vs fast
+  - ["endo", "exo"]                 # Within vs outside
+  - ["epi", "peri"]                 # Upon vs around
+  - ["ante", "post"]                # Before vs after
+  - ["macro", "micro"]              # Large vs small
+  - ["inter", "intra"]              # Between vs within
+  - ["supra", "infra"]              # Above vs below
+  - ["ab", "ad"]                    # Away from vs toward
+  - ["dys", "eu"]                   # Abnormal vs normal/good
+
+  # Suffix triplet (the #2 student struggle)
+  - ["ectomy", "otomy", "ostomy"]   # Remove vs cut vs opening
+
+  # Suffix pairs
+  - ["itis", "osis"]                # Inflammation vs condition
+  - ["scopy", "graphy"]             # Visual exam vs recording
+  - ["megaly", "malacia"]           # Enlargement vs softening
+  - ["penia", "philia"]             # Deficiency vs attraction
+  - ["algia", "dynia"]              # Both mean pain — synonym pair
+  - ["phagia", "phasia"]            # Eating/swallowing vs speech
+  - ["rrhea", "rrhage"]             # Flow/discharge vs bursting forth
+
+  # Root confusions (similar-sounding)
+  - ["cardi_o", "crani_o"]          # Heart vs skull (both start cardi/crani)
+  - ["nephr_o", "neur_o"]           # Kidney vs nerve
+  - ["my_o", "myel_o"]              # Muscle vs spinal cord/bone marrow
+  - ["oste_o", "ot_o"]              # Bone vs ear
+  - ["hepat_o", "hemat_o"]          # Liver vs blood
+  - ["arthr_o", "arteri_o"]         # Joint vs artery
+  - ["phleb_o", "phren_o"]          # Vein vs diaphragm/mind
+  - ["cyst_o", "cyt_o"]             # Bladder vs cell
+
+# ============================================================
+# SYNONYM GROUPS
+# ============================================================
+
+synonym_groups:
+  - id: pain_suffixes
+    reason: "-algia and -dynia both mean pain — never distract each other"
+  - id: kidney_roots
+    reason: "nephr/o and ren/o both mean kidney — never distract each other"
+  - id: skin_roots
+    reason: "derm/o, dermat/o, and cutane/o all mean skin"
+  - id: eye_roots
+    reason: "ophthalm/o and ocul/o both mean eye"
+
+# ============================================================
+# DIFFICULTY TIERS
+# ============================================================
+
+difficulty_tiers:
+  easy:
+    description: "Common prefixes/suffixes everyone encounters"
+    examples: ["hyper-/hypo-", "-itis", "cardi/o", "hepatitis", "tachycardia"]
+  medium:
+    description: "Less common but standard medical terminology"
+    examples: ["-ectasis", "salpingo-", "cholecystectomy", "myel/o"]
+  hard:
+    description: "Requires deep knowledge of word parts"
+    examples: ["pneumonoultramicroscopicsilicovolcanoconiosis decoding", "rhabdomyolysis", "spondylolisthesis"]
+
+# ============================================================
+# SUB-DECKS — 5 complete learning units
+# ============================================================
+
+sub_decks:
+  - id: prefixes
+    name: "Prefixes"
+    description: "Master every medical prefix — direction, quantity, color, negation, and more"
+    estimated_facts: 80
+    focus: >
+      All medical prefixes grouped by category:
+      Direction/Position (ab-, ad-, endo-, exo-, epi-, peri-, etc.)
+      Quantity (mono-, bi-, poly-, hemi-, etc.)
+      Size (macro-, micro-, mega-)
+      Speed (brady-, tachy-)
+      Color (erythr/o-, leuk/o-, cyan/o-, melan/o-, chlor/o-)
+      Negation (a-, an-, dys-, mal-)
+      Comparison (hyper-, hypo-, iso-, hetero-, homo-)
+      Time (ante-, post-, neo-, pre-)
+      Pool coverage: prefix_meanings.
+
+  - id: suffixes
+    name: "Suffixes"
+    description: "Every medical suffix — conditions, procedures, diagnostics, and descriptions"
+    estimated_facts: 55
+    focus: >
+      Condition suffixes (-itis, -osis, -emia, -pathy, -algia, etc.)
+      Procedure suffixes (-ectomy, -otomy, -ostomy, -plasty, -pexy, etc.)
+      Diagnostic suffixes (-scopy, -gram, -graphy, -metry)
+      Descriptive suffixes (-megaly, -penia, -philia, -phobia)
+      Cellular suffixes (-cyte, -blast, -clast, -genesis, -lysis)
+      Pool coverage: suffix_meanings.
+
+  - id: body_roots
+    name: "Body Roots & Combining Forms"
+    description: "200 root words organized by body system — the building blocks of every medical term"
+    estimated_facts: 200
+    focus: >
+      Cardiovascular: cardi/o, angi/o, arteri/o, phleb/o, hem/o
+      Respiratory: pulmon/o, bronch/o, pneum/o, laryng/o, trache/o
+      Digestive: gastr/o, enter/o, hepat/o, cholecyst/o, pancreat/o
+      Urinary: nephr/o, ren/o, cyst/o, urethr/o
+      Nervous: neur/o, encephal/o, mening/o, myel/o
+      Musculoskeletal: oste/o, arthr/o, my/o, chondr/o, tend/o
+      Integumentary: derm/o, cutane/o, onych/o
+      Endocrine: aden/o, thyr/o, adren/o
+      Reproductive: gynec/o, oophor/o, orchi/o, hyster/o
+      Sensory: ophthalm/o, ot/o, rhin/o, gloss/o
+      Hematologic: hemat/o, leuk/o, erythr/o, thromb/o
+      Pool coverage: root_meanings, organ_names, combining_forms, body_systems.
+
+  - id: conditions
+    name: "Medical Conditions"
+    description: "Decode and build condition names — from hepatitis to tachycardia to osteoporosis"
+    estimated_facts: 110
+    focus: >
+      Common conditions built from combining word parts.
+      Each fact teaches the student to DECODE the term:
+      "hepat- (liver) + -itis (inflammation) = hepatitis (liver inflammation)"
+      Organized by body system for natural grouping.
+      Includes both common (arthritis, anemia) and clinical (rhabdomyolysis, spondylosis).
+      Pool coverage: condition_names.
+
+  - id: procedures
+    name: "Procedures & Diagnostics"
+    description: "Surgical and diagnostic terminology — appendectomy to colonoscopy"
+    estimated_facts: 55
+    focus: >
+      Surgical procedures: -ectomy (removal), -otomy (incision), -ostomy (opening),
+      -plasty (repair), -pexy (fixation), -desis (binding)
+      Diagnostic procedures: -scopy (visual exam), -graphy (recording),
+      -gram (record), -metry (measurement), -centesis (puncture)
+      Each fact connects the procedure to the body part and what it does.
+      Pool coverage: procedure_names.
+
+# ============================================================
+# ENTITY COVERAGE — Complete inventory
+# ============================================================
+
+entity_coverage:
+
+  prefixes_complete:
+    direction_position:
+      - "ab-/abs- (away from)"
+      - "ad- (toward)"
+      - "ante- (before, in front)"
+      - "circum- (around)"
+      - "de- (down, from)"
+      - "dia- (through, across)"
+      - "ecto-/exo- (outside)"
+      - "endo-/ento- (within)"
+      - "epi- (upon, above)"
+      - "extra- (outside)"
+      - "infra- (below, beneath)"
+      - "inter- (between)"
+      - "intra- (within)"
+      - "meso- (middle)"
+      - "meta- (beyond, change)"
+      - "para- (beside, near)"
+      - "peri- (around)"
+      - "post- (after, behind)"
+      - "pre-/pro- (before, in front)"
+      - "retro- (behind, backward)"
+      - "sub- (below, under)"
+      - "super-/supra- (above, over)"
+      - "syn-/sym- (together, with)"
+      - "trans- (across, through)"
+    quantity_size:
+      - "mono-/uni- (one)"
+      - "bi-/di- (two)"
+      - "tri- (three)"
+      - "quadri-/tetra- (four)"
+      - "poly-/multi- (many)"
+      - "hemi-/semi- (half)"
+      - "oligo- (few, scanty)"
+      - "macro-/mega-/megalo- (large)"
+      - "micro- (small)"
+    comparison_degree:
+      - "hyper- (excessive, above normal)"
+      - "hypo- (deficient, below normal)"
+      - "iso- (equal, same)"
+      - "hetero- (different)"
+      - "homo-/homeo- (same, alike)"
+      - "pseudo- (false)"
+      - "eu- (good, normal)"
+      - "dys- (abnormal, difficult, painful)"
+      - "mal- (bad)"
+    speed_function:
+      - "brady- (slow)"
+      - "tachy- (fast)"
+      - "auto- (self)"
+      - "contra-/anti- (against)"
+      - "neo- (new)"
+      - "pan- (all)"
+      - "re- (again, back)"
+    negation:
+      - "a-/an- (without, lack of)"
+      - "in-/im- (not)"
+    color:
+      - "erythr/o- (red)"
+      - "leuk/o- (white)"
+      - "cyan/o- (blue)"
+      - "melan/o- (black)"
+      - "chlor/o- (green)"
+      - "xanth/o- (yellow)"
+      - "chrom/o- (color)"
+
+  suffixes_complete:
+    conditions:
+      - "-itis (inflammation)"
+      - "-osis (abnormal condition)"
+      - "-emia (blood condition)"
+      - "-pathy (disease)"
+      - "-algia/-dynia (pain)"
+      - "-ism (condition, state)"
+      - "-iasis (pathological condition)"
+      - "-ia (condition)"
+      - "-plegia (paralysis)"
+      - "-paresis (partial paralysis)"
+      - "-spasm (involuntary contraction)"
+      - "-trophy/-trophia (nourishment/development)"
+      - "-malacia (softening)"
+      - "-sclerosis (hardening)"
+      - "-ectasis (dilation, expansion)"
+      - "-stenosis (narrowing)"
+      - "-ptosis (drooping, prolapse)"
+      - "-rrhea (flow, discharge)"
+      - "-rrhage/-rrhagia (bursting forth, hemorrhage)"
+      - "-penia (deficiency)"
+      - "-cytosis (increase in cells)"
+      - "-philia (attraction, increase)"
+      - "-phobia (fear, aversion)"
+      - "-mania (obsession, madness)"
+      - "-pnea (breathing)"
+      - "-uria (urine condition)"
+      - "-phagia (eating, swallowing)"
+      - "-phasia (speech)"
+      - "-kinesia/-kinesis (movement)"
+      - "-stasis (standing still, control)"
+    procedures:
+      - "-ectomy (surgical removal)"
+      - "-otomy/-tomy (cutting into, incision)"
+      - "-ostomy/-stomy (creating an opening)"
+      - "-plasty (surgical repair)"
+      - "-pexy (surgical fixation)"
+      - "-desis (binding, fusion)"
+      - "-rrhaphy (suturing)"
+      - "-tripsy (crushing)"
+      - "-centesis (surgical puncture)"
+      - "-clasis (breaking)"
+    diagnostics:
+      - "-scopy (visual examination)"
+      - "-graphy (process of recording)"
+      - "-gram (record, image)"
+      - "-metry (measurement)"
+      - "-meter (instrument for measuring)"
+      - "-scope (instrument for viewing)"
+    cellular_tissue:
+      - "-cyte (cell)"
+      - "-blast (immature/forming cell)"
+      - "-clast (breaking cell)"
+      - "-genesis/-genic (formation, origin)"
+      - "-lysis/-lytic (breakdown, destruction)"
+      - "-poiesis (formation, production)"
+    descriptive:
+      - "-megaly (enlargement)"
+      - "-oid (resembling)"
+      - "-ous/-al/-ic/-ar (pertaining to)"
+      - "-ology (study of)"
+      - "-ologist (specialist)"
+      - "-iatry/-iatric (medical specialty/treatment)"
+
+  # Root words organized by body system (~200 total)
+  roots_by_system:
+    cardiovascular:
+      - "cardi/o (heart)"
+      - "angi/o (blood vessel)"
+      - "arteri/o (artery)"
+      - "phleb/o, ven/o (vein)"
+      - "hem/o, hemat/o (blood)"
+      - "thromb/o (clot)"
+      - "ather/o (fatty plaque)"
+      - "aort/o (aorta)"
+      - "valvul/o (valve)"
+      - "sphygm/o (pulse)"
+      - "vas/o, vascul/o (vessel)"
+      - "coron/o (heart/crown)"
+      - "sept/o (septum)"
+    respiratory:
+      - "pulmon/o, pneumon/o (lung)"
+      - "bronch/o, bronchi/o (bronchus)"
+      - "pneum/o, pneumat/o (air, lung)"
+      - "laryng/o (larynx)"
+      - "trache/o (trachea)"
+      - "pharyng/o (pharynx)"
+      - "nas/o, rhin/o (nose)"
+      - "pleur/o (pleura)"
+      - "thorac/o (chest)"
+      - "sinus/o (sinus)"
+      - "ox/i, ox/o (oxygen)"
+      - "capn/o (carbon dioxide)"
+      - "spir/o (breathing)"
+    digestive:
+      - "gastr/o (stomach)"
+      - "enter/o (intestine)"
+      - "hepat/o (liver)"
+      - "cholecyst/o (gallbladder)"
+      - "chol/e (bile)"
+      - "pancreat/o (pancreas)"
+      - "esophag/o (esophagus)"
+      - "col/o, colon/o (colon)"
+      - "rect/o, proct/o (rectum)"
+      - "sigmoid/o (sigmoid colon)"
+      - "duoden/o (duodenum)"
+      - "jejun/o (jejunum)"
+      - "ile/o (ileum)"
+      - "appendic/o (appendix)"
+      - "or/o, stomat/o (mouth)"
+      - "gloss/o, lingu/o (tongue)"
+      - "dent/o, odont/o (tooth)"
+      - "gingiv/o (gums)"
+      - "palat/o (palate)"
+      - "peritone/o (peritoneum)"
+      - "abdomin/o, lapar/o (abdomen)"
+    urinary:
+      - "nephr/o, ren/o (kidney)"
+      - "cyst/o, vesic/o (bladder)"
+      - "urethr/o (urethra)"
+      - "ureter/o (ureter)"
+      - "pyel/o (renal pelvis)"
+      - "glomerul/o (glomerulus)"
+      - "ur/o, urin/o (urine)"
+    nervous:
+      - "neur/o (nerve)"
+      - "encephal/o (brain)"
+      - "cerebr/o (cerebrum)"
+      - "cerebell/o (cerebellum)"
+      - "mening/o, meninge/o (meninges)"
+      - "myel/o (spinal cord, bone marrow)"
+      - "gli/o (glial cells, glue)"
+      - "psych/o (mind)"
+      - "somn/o (sleep)"
+      - "narc/o (stupor, numbness)"
+      - "esthesi/o (sensation)"
+      - "phas/o (speech)"
+      - "tax/o (order, coordination)"
+    musculoskeletal:
+      - "oste/o (bone)"
+      - "arthr/o (joint)"
+      - "my/o, muscul/o (muscle)"
+      - "chondr/o (cartilage)"
+      - "tend/o, tendin/o (tendon)"
+      - "ligament/o (ligament)"
+      - "burs/o (bursa)"
+      - "synovi/o (synovial membrane)"
+      - "cost/o (rib)"
+      - "crani/o (skull)"
+      - "vertebr/o, spondyl/o (vertebra)"
+      - "pelv/o (pelvis)"
+      - "femor/o (femur)"
+      - "tibi/o (tibia)"
+      - "fibul/o (fibula)"
+      - "humer/o (humerus)"
+      - "radi/o (radius)"
+      - "uln/o (ulna)"
+      - "carp/o (wrist bones)"
+      - "metacarp/o (hand bones)"
+      - "phalang/o (finger/toe bones)"
+      - "tars/o (ankle bones)"
+      - "patell/o (kneecap)"
+      - "scapul/o (shoulder blade)"
+      - "stern/o (sternum)"
+      - "cervic/o (neck, cervix)"
+      - "lumb/o (lower back)"
+      - "sacr/o (sacrum)"
+      - "kinesi/o (movement)"
+    integumentary:
+      - "derm/o, dermat/o (skin)"
+      - "cutane/o (skin)"
+      - "kerat/o (hard tissue, cornea)"
+      - "onych/o, ungu/o (nail)"
+      - "trich/o, pil/o (hair)"
+      - "seb/o (sebum, oil)"
+      - "lip/o, adip/o (fat)"
+      - "hidr/o, sudor/i (sweat)"
+      - "xer/o (dry)"
+    endocrine:
+      - "aden/o (gland)"
+      - "thyr/o, thyroid/o (thyroid)"
+      - "adren/o, adrenal/o (adrenal gland)"
+      - "pancreat/o (pancreas — also digestive)"
+      - "gonad/o (sex glands)"
+      - "pituit/o (pituitary)"
+      - "pineal/o (pineal gland)"
+      - "thym/o (thymus)"
+      - "parathyroid/o (parathyroid)"
+      - "insulin/o (insulin)"
+      - "gluc/o, glyc/o (sugar, glucose)"
+      - "calc/i (calcium)"
+    reproductive:
+      - "gynec/o (female, woman)"
+      - "andr/o (male)"
+      - "oophor/o, ovari/o (ovary)"
+      - "salping/o (fallopian tube)"
+      - "hyster/o, uter/o, metr/o (uterus)"
+      - "cervic/o (cervix)"
+      - "vagin/o, colp/o (vagina)"
+      - "vulv/o (vulva)"
+      - "mast/o, mamm/o (breast)"
+      - "men/o (menstruation)"
+      - "orchi/o, orchid/o (testis)"
+      - "prostat/o (prostate)"
+      - "sperm/o, spermat/o (sperm)"
+      - "balan/o (glans penis)"
+    sensory:
+      - "ophthalm/o, ocul/o (eye)"
+      - "retin/o (retina)"
+      - "corne/o, kerat/o (cornea)"
+      - "conjunctiv/o (conjunctiva)"
+      - "lacrim/o, dacry/o (tear)"
+      - "blephar/o (eyelid)"
+      - "irid/o, ir/o (iris)"
+      - "scler/o (sclera, hard)"
+      - "opt/o, optic/o (vision)"
+      - "ot/o (ear)"
+      - "audi/o (hearing)"
+      - "tympan/o, myring/o (eardrum)"
+      - "cochle/o (cochlea)"
+      - "labyrinth/o (inner ear)"
+      - "mastoid/o (mastoid process)"
+    hematologic_immune:
+      - "hemat/o, hem/o (blood)"
+      - "erythr/o (red)"
+      - "leuk/o (white)"
+      - "thromb/o (clot)"
+      - "lymph/o (lymph)"
+      - "splen/o (spleen)"
+      - "immun/o (immune)"
+      - "phag/o (eat, engulf)"
+      - "coagul/o (clotting)"
+    general_medical:
+      - "path/o (disease)"
+      - "onc/o (tumor)"
+      - "cyt/o (cell)"
+      - "hist/o, histi/o (tissue)"
+      - "iatr/o (physician, treatment)"
+      - "carcin/o (cancer)"
+      - "sarc/o (flesh, connective tissue)"
+      - "necr/o (death)"
+      - "py/o (pus)"
+      - "scler/o (hard)"
+      - "fibr/o (fiber)"
+      - "lip/o (fat)"
+      - "eti/o (cause)"
+      - "gen/o (producing)"
+      - "morph/o (form, shape)"
+      - "tox/o, toxic/o (poison)"
+      - "pharmac/o (drug)"
+      - "therap/o (treatment)"
+      - "sept/o (infection)"
+      - "pyr/o, pyret/o (fever)"
+      - "alg/o, algesi/o (pain)"
+      - "sten/o (narrow)"
+      - "ech/o (sound)"
+
+# ============================================================
+# NOTES
+# ============================================================
+notes: >
+  COMPLETENESS TARGET: This deck covers EVERY major prefix (~80), suffix (~55),
+  and root/combining form (~200) used in standard medical terminology courses,
+  plus ~110 common conditions and ~55 procedures that demonstrate how the
+  parts combine. A student who masters this deck can decode any medical term.
+
+  The deck is organized so sub-decks can be studied independently:
+  - Start with Prefixes + Suffixes (the modifier toolkit)
+  - Then Body Roots (the vocabulary core)
+  - Then Conditions + Procedures (applied knowledge)
+
+  This mirrors how medical terminology courses are taught:
+  word parts first, then body systems, then applied terms.
+
+  Cross-references between sub-decks are critical:
+  - A prefix fact about "hyper-" should reference "hypertension" from conditions
+  - A root fact about "hepat/o" should reference "hepatitis" and "hepatectomy"
+  - A suffix fact about "-itis" should reference multiple conditions using it
+
+  Domain: human_body_health (pairs with existing Human Anatomy deck)
+  Age: "all" for basic terms, "teen+" for complex clinical conditions
+  Volatile: none — Latin/Greek roots don't change

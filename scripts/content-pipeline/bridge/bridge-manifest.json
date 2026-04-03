@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-04-03T03:56:22.585Z",
-  "totalBridgedFacts": 2514,
+  "lastRun": "2026-04-03T08:04:19.602Z",
+  "totalBridgedFacts": 2556,
   "decks": {
     "ancient_greece": {
       "totalFacts": 246,
@@ -60,6 +60,12 @@
       "totalFacts": 170,
       "entities": 27,
       "bridged": 27,
+      "skipped": 0
+    },
+    "medical_terminology": {
+      "totalFacts": 635,
+      "entities": 40,
+      "bridged": 40,
       "skipped": 0
     },
     "medieval_world": {
@@ -148,9 +154,9 @@
       "skipped": 0
     },
     "movies_cinema": {
-      "totalFacts": 207,
-      "entities": 65,
-      "bridged": 65,
+      "totalFacts": 277,
+      "entities": 67,
+      "bridged": 67,
       "skipped": 0
     },
     "computer_science": {

@@ -259,6 +259,32 @@ film_titles 55/55 OK, director_names 39/28 OK, actor_names 35/35 OK, character_n
 
 ---
 
+## medterm_roots_cardio_resp WIP File
+
+`data/decks/_wip/medterm_roots_cardio_resp.json` — generated 2026-04-03. 30 medical terminology root word facts covering cardiovascular and respiratory combining forms.
+
+| Field | Value |
+|---|---|
+| Status | WIP — not yet assembled into a live deck |
+| Facts | 30 |
+| Domain | `human_body_health` / `medical_science` |
+| answerTypePoolId | All 30 facts share a single pool: `root_meanings` |
+
+**Cardiovascular roots (15):** cardi/o, angi/o, arteri/o, phleb/o, ven/o, hem/o, hemat/o, thromb/o, ather/o, aort/o, valvul/o, sphygm/o, vas/o, coron/o, sept/o
+
+**Respiratory roots (15):** pulmon/o, pneumon/o, bronch/o, pneum/o, laryng/o, trache/o, pharyng/o, nas/o, rhin/o, pleur/o, thorac/o, ox/i, capn/o, spir/o, sinus/o
+
+**chainThemeId distribution:** 5 facts per ID (0–5, evenly distributed)
+
+**Synonym pairs noted in explanations:** phleb/o and ven/o (both = vein), hem/o and hemat/o (both = blood), pulmon/o and pneumon/o (both = lung), nas/o and rhin/o (both = nose)
+
+**Non-standard WIP fields present:** `statement`, `wowFactor`, `tags`, `ageGroup`, `visualDescription` — must be stripped by the assembly script before the deck goes live.
+
+**Source:** Wikipedia — [List of medical roots, suffixes and prefixes](https://en.wikipedia.org/wiki/List_of_medical_roots,_suffixes_and_prefixes)
+
+---
+
+
 ## Answer Type Pools — Synthetic Pool Members
 
 Some answer type pools have too few real facts to produce varied distractors at runtime. **Synthetic pool members** (`AnswerTypePool.syntheticDistractors`) are plausible wrong answers added directly to a pool object that pad the candidate list without having corresponding quiz facts.
