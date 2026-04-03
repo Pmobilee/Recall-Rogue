@@ -31,6 +31,31 @@ The encounter begins with `startEncounter()`: initializes `TurnState`, resets ch
 
 ---
 
+## Enemy Entrance Reveal
+
+When a new encounter begins, the enemy emerges from shadow rather than popping in abruptly. `EnemySpriteSystem.playEntranceReveal(isBoss)` is called 1800ms into `CombatScene.playEncounterEntry()` (after the scene fade-in and HUD pop-in complete). `DepthLightingSystem.animateLightsIn()` runs in parallel.
+
+**Common/elite (800ms total):**
+- Initial state: container alpha=0, scale=0.3, y=baseY-40, mainSprite tint=0x000000
+- Phase 1 (650ms, Sine.easeOut): alpha to 1, scale to 1.05, y to baseY; tint lerps from black to atmosphere tint in `onUpdate`
+- Phase 2 (150ms, Sine.easeInOut): scale to 1.0; micro screen shake fires on complete; `startIdle()` begins
+
+**Boss (1200ms total):**
+- Initial state: alpha=0, scale=0.2, y=baseY-60, tint=0x000000; 3% camera zoom (yoyo, 700ms)
+- Phase 1 (700ms, Sine.easeOut): alpha to 1, scale to 0.85, y to baseY-8; tint lerps to 80% of atmosphere tint
+- Phase 2 (200ms hold): constant values (suspense pause)
+- Phase 3 (300ms, Back.Out): scale to 1.0, y to baseY; tint lerps to 100%; heavy screen shake on complete; `startIdle()` begins
+
+**Reduce-motion path:** Sets final values immediately, calls `startIdle()`. No animation.
+
+**Lighting sync:** `DepthLightingSystem.animateLightsIn(durationMs)` zeroes all point light intensities then lerps them back to their base values over the same duration as the sprite reveal, using a 16ms timer. No-op on low-end devices or when no pipeline is active.
+
+**Scene-alive guard:** All `screenShake?.trigger()` calls inside `onComplete` are wrapped with `if (this.scene?.scene?.isActive())` to prevent errors when `tweens.killAll()` fires during shutdown.
+
+**Legacy fallback:** `playEntry(isBoss)` (the pop-in effect) is kept as a deprecated method but is no longer called by `CombatScene`.
+
+---
+
 ## Turn Transition Breathing Room
 
 A brief visual beat fires at each turn boundary to signal the phase change and give the player a moment to register what just happened. All effects run concurrently and add no wall-clock time — they fire during the existing 1 second delay already present in `encounterBridge.handleEndTurn()`.

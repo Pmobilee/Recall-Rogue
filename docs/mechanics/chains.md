@@ -169,6 +169,32 @@ The chain does NOT reset when:
 
 Cards with the same `chainType` in hand are visually grouped so players can identify chain opportunities before playing. The `activeChainColor` field on `TurnState` (set by `rotateActiveChainColor`) allows the UI to highlight which cards would extend the chain this turn.
 
+### Chain Combo Escalating Visual Feedback (Spec 03)
+
+As the player builds a chain, the environment visually escalates at four thresholds. All values come from `getChainAtmosphereModifiers(chainCount, chainType)` in `chainVisuals.ts`.
+
+| Chain Length | Particles | Point Lights | Vignette Pulse | Screen Shake | Tint Overlay | Depth Pulse |
+|---|---|---|---|---|---|---|
+| 0–1 | Baseline | Baseline (1.0×) | Off | None | None | Off |
+| 2 | 0.8× interval (~20% more) | 1.0× | Off | None | None | Off |
+| 3–4 | 0.7× interval (~40% more) | 1.25× + 30% color blend | Off | micro | None | Off |
+| 5–6 | 0.5× interval (2× rate) | 1.5× + 50% color blend | α=0.08 | micro | 0.05α | Off |
+| 7+ | 0.5× interval (2× rate) | 1.8× + 70% color blend, 2× flicker | α=0.10 | medium | 0.05α | Yes |
+
+**Integration wiring** (`encounterBridge.ts`):
+- `scene.onChainUpdated(chainLength, chainType)` — called after every card play resolution (uses `result.turnState.chainLength` / `.chainType`). Also called after turn-end so the UI reflects chain decay.
+- Chain decay happens inside `endPlayerTurn()` (`decayChain()` reduces length by 1), so the post-turn-end call correctly shows the decayed chain.
+
+**`CombatScene` API:**
+- `onChainUpdated(chainCount, chainType)` — coordinates particles, point lights, vignette, tint overlay, depth breathing. Handles `reduceMotion` path (lights only) and `isTurboMode()` (full skip).
+- `onChainBroken()` — calls `onChainUpdated(0, undefined)` for full 500ms reset.
+- `currentChainCount` — stored on scene for use by per-card shake triggers.
+
+**Device tier handling:**
+- Low-end: particle rate changes skipped (`applyChainModifiers` no-op); vignette/tint overlays still active (cheap alpha tween on a Rectangle).
+- DepthLightingSystem already gated by `this.enabled`; chain light override is automatically no-op on low-end.
+- Reduce-motion: only point light intensity/color changes apply; no tweens, no particles, no screen shake.
+
 ---
 
 ## Knowledge Surge System (AR-59.4)

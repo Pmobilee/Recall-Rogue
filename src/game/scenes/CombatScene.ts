@@ -14,6 +14,7 @@ import { ENEMY_TEMPLATES } from '../../data/enemies'
 import { BASE_WIDTH, LANDSCAPE_BASE_WIDTH } from '../../data/layout'
 import { get } from 'svelte/store'
 import { layoutMode, type LayoutMode } from '../../stores/layoutStore'
+import { getChainAtmosphereModifiers, getChainColor } from '../../services/chainVisuals'
 
 /** Shared font stack for all Phaser text objects in CombatScene. */
 const GAME_FONT = '"Lora", "Georgia", serif'
@@ -229,6 +230,16 @@ export class CombatScene extends Phaser.Scene {
   private weaponAnimations!: WeaponAnimationSystem
   public screenShake!: ScreenShakeSystem
 
+  // ── Chain combo visual state (Spec 03) ────────────
+  /** Active vignette pulse tween for chain 5+ escalation. */
+  private chainVignetteTween: Phaser.Tweens.Tween | null = null
+  /** Overlay rect for slow alpha oscillation during chain 5+. */
+  private chainVignetteOverlay: Phaser.GameObjects.Rectangle | null = null
+  /** Additive color tint overlay rect for chain 5+ color wash. */
+  private chainTintOverlay: Phaser.GameObjects.Rectangle | null = null
+  /** Tracks the last chain count so per-card shake tier is available mid-turn. */
+  private currentChainCount: number = 0
+
   // ── Atmosphere color grading ──────────────────────
   private _colorMatrixFx: Phaser.FX.ColorMatrix | null = null
   private atmosphereConfig: AtmosphereConfig | null = null
@@ -255,6 +266,11 @@ export class CombatScene extends Phaser.Scene {
       this.scaleFactor = this.scale.width / BASE_WIDTH
       this.displayH = this.scale.height * DISPLAY_ZONE_HEIGHT_PCT
       this.repositionAll()
+      // Resize chain overlays to fill the new viewport
+      const w = this.scale.width
+      const h = this.scale.height
+      this.chainVignetteOverlay?.setPosition(w / 2, h / 2).setSize(w, h)
+      this.chainTintOverlay?.setPosition(w / 2, h / 2).setSize(w, h)
     }
   }
 
@@ -1866,6 +1882,130 @@ export class CombatScene extends Phaser.Scene {
     }
   }
 
+
+  // ═════════════════════════════════════════════════════════
+  // Chain combo visual escalation (Spec 03)
+  // ═════════════════════════════════════════════════════════
+
+  /**
+   * Called whenever the active chain count changes (after each card play).
+   * Coordinates particles, point lights, vignette pulse, tint overlay, and
+   * depth breathing based on chain threshold modifiers.
+   *
+   * Pass chainCount=0 or call {@link onChainBroken} to clear all effects.
+   *
+   * @param chainCount Current chain length from TurnState.chainLength
+   * @param chainType  Current chain type index, or undefined if no chain active
+   */
+  public onChainUpdated(chainCount: number, chainType: number | undefined): void {
+    // Headless sim: skip all chain visuals to prevent side effects
+    if (isTurboMode()) return
+
+    this.currentChainCount = chainCount
+    const modifiers = getChainAtmosphereModifiers(chainCount, chainType)
+
+    // ── Reduce-motion fast path: light changes only, skip all tweens/particles ──
+    if (this.reduceMotion) {
+      if (modifiers && chainType !== undefined) {
+        const chainHex = parseInt(getChainColor(chainType).slice(1), 16)
+        this.depthLightingSystem.setChainLightOverride(
+          chainHex, modifiers.lightIntensityMultiplier, modifiers.lightColorBlend, 1.0,
+        )
+      } else {
+        this.depthLightingSystem.clearChainLightOverride(0)
+      }
+      return
+    }
+
+    // ── Particles ──────────────────────────────────────────────────────────────
+    if (modifiers) {
+      this.atmosphereSystem.applyChainModifiers(modifiers.particleFrequencyMultiplier)
+    } else {
+      this.atmosphereSystem.clearChainModifiers()
+    }
+
+    // ── Point lights ────────────────────────────────────────────────────────────
+    if (modifiers && chainType !== undefined) {
+      const chainHex = parseInt(getChainColor(chainType).slice(1), 16)
+      // Chain 7+: faster flicker emphasises urgency
+      const flickerMult = chainCount >= 7 ? 2.0 : 1.0
+      this.depthLightingSystem.setChainLightOverride(
+        chainHex,
+        modifiers.lightIntensityMultiplier,
+        modifiers.lightColorBlend,
+        flickerMult,
+      )
+      this.depthLightingSystem.setChainBreathing(modifiers.depthPulse)
+    } else {
+      this.depthLightingSystem.clearChainLightOverride(500)
+      this.depthLightingSystem.setChainBreathing(false)
+    }
+
+    // ── Vignette pulse ──────────────────────────────────────────────────────────
+    if (modifiers && modifiers.vignettePulseAmplitude > 0) {
+      if (!this.chainVignetteOverlay) {
+        const w = this.scale.width
+        const h = this.scale.height
+        this.chainVignetteOverlay = this.add.rectangle(w / 2, h / 2, w, h, 0x000000, 0).setDepth(2)
+      }
+      if (this.chainVignetteTween) { this.chainVignetteTween.destroy() }
+      this.chainVignetteTween = this.tweens.add({
+        targets: this.chainVignetteOverlay,
+        alpha: { from: 0, to: modifiers.vignettePulseAmplitude },
+        duration: 2000,
+        yoyo: true,
+        repeat: -1,
+        ease: 'Sine.easeInOut',
+      })
+    } else {
+      this.chainVignetteTween?.destroy()
+      this.chainVignetteTween = null
+      if (this.chainVignetteOverlay) {
+        this.tweens.add({
+          targets: this.chainVignetteOverlay,
+          alpha: 0,
+          duration: 300,
+          onComplete: () => { this.chainVignetteOverlay?.destroy(); this.chainVignetteOverlay = null },
+        })
+      }
+    }
+
+    // ── Tint overlay ─────────────────────────────────────────────────────────
+    if (modifiers && modifiers.tintOverlayAlpha > 0 && chainType !== undefined) {
+      const chainHex = parseInt(getChainColor(chainType).slice(1), 16)
+      if (!this.chainTintOverlay) {
+        const w = this.scale.width
+        const h = this.scale.height
+        this.chainTintOverlay = this.add
+          .rectangle(w / 2, h / 2, w, h, chainHex, 0)
+          .setDepth(2)
+          .setBlendMode(Phaser.BlendModes.ADD)
+      } else {
+        this.chainTintOverlay.setFillStyle(chainHex, 0)
+      }
+      this.tweens.add({
+        targets: this.chainTintOverlay,
+        alpha: modifiers.tintOverlayAlpha,
+        duration: 300,
+      })
+    } else if (this.chainTintOverlay) {
+      this.tweens.add({
+        targets: this.chainTintOverlay,
+        alpha: 0,
+        duration: 300,
+        onComplete: () => { this.chainTintOverlay?.destroy(); this.chainTintOverlay = null },
+      })
+    }
+  }
+
+  /**
+   * Called when the player's chain breaks or is resolved.
+   * Resets all chain visual effects over 500ms.
+   */
+  public onChainBroken(): void {
+    this.onChainUpdated(0, undefined)
+  }
+
   // ═════════════════════════════════════════════════════════
   // Private helpers
   // ═════════════════════════════════════════════════════════
@@ -1921,21 +2061,13 @@ export class CombatScene extends Phaser.Scene {
     // Signal Svelte overlay to start HUD pop-in sequence
     window.dispatchEvent(new Event('rr:combat-entry'))
 
-    // Delay enemy sprite entry so it appears AFTER HUD elements pop in
+    // Delay enemy sprite entry so it appears AFTER HUD elements pop in.
+    // playEntranceReveal replaces the legacy playEntry pop-in with a cinematic
+    // shadow-to-light reveal (800ms commons, 1200ms bosses). The boss camera
+    // zoom and heavy shake are handled inside playEntranceReveal itself.
     this.time.delayedCall(1800, () => {
-      this.enemySpriteSystem.playEntry(isBoss)
-      if (isBoss && !this.reduceMotion) {
-        this.screenShake.trigger('medium')
-        const cam = this.cameras.main
-        const baseZoom = cam.zoom
-        this.tweens.add({
-          targets: cam,
-          zoom: baseZoom * 1.045,
-          duration: 190,
-          yoyo: true,
-          ease: 'Sine.easeInOut',
-        })
-      }
+      this.enemySpriteSystem.playEntranceReveal(isBoss)
+      this.depthLightingSystem.animateLightsIn(isBoss ? 1200 : 800)
     })
 
     this.tweens.add({
@@ -2265,6 +2397,12 @@ export class CombatScene extends Phaser.Scene {
       this.chargeGlowCircle = null
     }
     this.isCharging = false
+    // Chain combo overlays
+    this.chainVignetteTween?.destroy()
+    this.chainVignetteTween = null
+    if (this.chainVignetteOverlay) { this.chainVignetteOverlay.destroy(); this.chainVignetteOverlay = null }
+    if (this.chainTintOverlay) { this.chainTintOverlay.destroy(); this.chainTintOverlay = null }
+    this.currentChainCount = 0
     if (this._turnOverlay) {
       this._turnOverlay.destroy()
       this._turnOverlay = null

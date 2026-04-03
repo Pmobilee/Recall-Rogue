@@ -971,6 +971,178 @@ export class EnemySpriteSystem {
   }
 
   /**
+   * Cinematic shadow-to-light reveal for new encounters (no Promise, fire-and-forget).
+   *
+   * Replaces the legacy {@link playEntry} pop-in with a deliberate reveal:
+   * the enemy starts as a small dark silhouette and grows into full visibility.
+   * Common/elite: 800ms total (650ms rise + 150ms settle).
+   * Boss: 1200ms total (700ms rise + 200ms hold + 300ms final reveal).
+   *
+   * On reduce-motion: sets final values immediately and calls {@link startIdle}.
+   *
+   * @param isBoss Whether this is a boss enemy (affects timings and camera zoom)
+   * @param onComplete Optional callback fired when the sequence completes
+   */
+  public playEntranceReveal(isBoss: boolean, onComplete?: () => void): void {
+    // Reduce-motion fast path: jump to final state immediately
+    if (this.reduceMotion) {
+      this.container.setAlpha(1).setScale(1)
+      this.container.setPosition(this.baseX, this.baseY)
+      if (this._currentAtmosphereTint != null) {
+        this.mainSprite?.setTint(this._currentAtmosphereTint)
+      } else {
+        this.mainSprite?.clearTint()
+      }
+      this.startIdle()
+      onComplete?.()
+      return
+    }
+
+    this.isAnimating = true
+
+    if (isBoss) {
+      // ── Boss reveal: 1200ms (700ms rise + 200ms hold + 300ms slam) ─────
+      this.container.setAlpha(0)
+      this.container.setScale(0.2)
+      this.container.y = this.baseY - 60
+      this.mainSprite?.setTint(0x000000)
+
+      // Optional: 3% camera zoom toward enemy during reveal
+      const cam = (this.scene as any).cameras?.main
+      if (cam) {
+        const baseZoom = cam.zoom
+        this.scene.tweens.add({
+          targets: cam,
+          zoom: baseZoom * 1.03,
+          duration: 700,
+          yoyo: true,
+          ease: 'Sine.easeInOut',
+        })
+      }
+
+      this.scene.tweens.chain({
+        tweens: [
+          // Phase 1 — Slow rise (700ms): alpha in, scale to 85%, tint to 80%
+          {
+            targets: this.container,
+            alpha: 1,
+            scaleX: 0.85,
+            scaleY: 0.85,
+            y: this.baseY - 8,
+            duration: 700,
+            ease: 'Sine.easeOut',
+            onUpdate: (tween: Phaser.Tweens.Tween) => {
+              const p = tween.progress
+              const targetTint = this._currentAtmosphereTint ?? 0xffffff
+              // Lerp from black to 80% of atmosphere tint
+              const r = Math.round(((targetTint >> 16) & 0xff) * p * 0.8)
+              const g = Math.round(((targetTint >> 8) & 0xff) * p * 0.8)
+              const b = Math.round((targetTint & 0xff) * p * 0.8)
+              this.mainSprite?.setTint((r << 16) | (g << 8) | b)
+            },
+          },
+          // Phase 2 — Hold (200ms): no movement, suspense pause
+          {
+            targets: this.container,
+            scaleX: 0.85,
+            scaleY: 0.85,
+            y: this.baseY - 8,
+            duration: 200,
+            ease: 'Linear',
+          },
+          // Phase 3 — Final reveal (300ms, Back.Out): slam into position
+          {
+            targets: this.container,
+            scaleX: 1.0,
+            scaleY: 1.0,
+            y: this.baseY,
+            duration: 300,
+            ease: 'Back.Out',
+            onUpdate: (tween: Phaser.Tweens.Tween) => {
+              // Tint from 80% to 100% of atmosphere tint
+              const p = tween.progress
+              const targetTint = this._currentAtmosphereTint ?? 0xffffff
+              const startPct = 0.8
+              const pct = startPct + (1 - startPct) * p
+              const r = Math.round(((targetTint >> 16) & 0xff) * pct)
+              const g = Math.round(((targetTint >> 8) & 0xff) * pct)
+              const b = Math.round((targetTint & 0xff) * pct)
+              this.mainSprite?.setTint((r << 16) | (g << 8) | b)
+            },
+            onComplete: () => {
+              // Restore exact tint (eliminate rounding artifacts)
+              if (this._currentAtmosphereTint != null) {
+                this.mainSprite?.setTint(this._currentAtmosphereTint)
+              } else {
+                this.mainSprite?.clearTint()
+              }
+              // Heavy screen shake for boss reveal
+              if (this.scene?.scene?.isActive()) {
+                ;(this.scene as any).screenShake?.trigger('heavy')
+              }
+              this.isAnimating = false
+              this.startIdle()
+              onComplete?.()
+            },
+          },
+        ],
+      })
+    } else {
+      // ── Standard reveal: 800ms (650ms rise + 150ms settle) ────────────
+      this.container.setAlpha(0)
+      this.container.setScale(0.3)
+      this.container.y = this.baseY - 40
+      this.mainSprite?.setTint(0x000000)
+
+      this.scene.tweens.chain({
+        tweens: [
+          // Phase 1 — Rise from shadow (650ms): alpha in, scale to 1.05, tint clears
+          {
+            targets: this.container,
+            alpha: 1,
+            scaleX: 1.05,
+            scaleY: 1.05,
+            y: this.baseY,
+            duration: 650,
+            ease: 'Sine.easeOut',
+            onUpdate: (tween: Phaser.Tweens.Tween) => {
+              const p = tween.progress
+              const targetTint = this._currentAtmosphereTint ?? 0xffffff
+              const r = Math.round(((targetTint >> 16) & 0xff) * p)
+              const g = Math.round(((targetTint >> 8) & 0xff) * p)
+              const b = Math.round((targetTint & 0xff) * p)
+              this.mainSprite?.setTint((r << 16) | (g << 8) | b)
+            },
+          },
+          // Phase 2 — Settle (150ms): micro shake on full reveal
+          {
+            targets: this.container,
+            scaleX: 1.0,
+            scaleY: 1.0,
+            duration: 150,
+            ease: 'Sine.easeInOut',
+            onComplete: () => {
+              // Restore exact atmosphere tint (eliminate rounding artifacts)
+              if (this._currentAtmosphereTint != null) {
+                this.mainSprite?.setTint(this._currentAtmosphereTint)
+              } else {
+                this.mainSprite?.clearTint()
+              }
+              // Micro shake on landing
+              if (this.scene?.scene?.isActive()) {
+                ;(this.scene as any).screenShake?.trigger('micro')
+              }
+              this.isAnimating = false
+              this.startIdle()
+              onComplete?.()
+            },
+          },
+        ],
+      })
+    }
+  }
+
+  /**
    * Flash the enemy sprite with an additive-blend colored overlay.
    *
    * Uses a Graphics rectangle in ADD blend mode rather than setTint() so the

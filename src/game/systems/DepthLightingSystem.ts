@@ -38,6 +38,20 @@ export class DepthLightingSystem {
     flickerSpeed: number
   }> = []
 
+  // ── Chain light override state (Spec 03) ───────────────────────────────────
+  /** Multiplier applied on top of each light's baseIntensity. 1.0 = no change. */
+  private chainIntensityMult: number = 1.0
+  /** 0–1 blend from original light color toward chainColor. 0 = no blend. */
+  private chainColorBlend: number = 0.0
+  /** Target color for blend in normalized [r, g, b] format. */
+  private chainColor: [number, number, number] = [1, 1, 1]
+  /** Multiplier on flicker speed. >1 = faster flicker during high chains. */
+  private chainFlickerSpeedMult: number = 1.0
+  /** Active timer for clearChainLightOverride fade animation. */
+  private chainFadeTimer: Phaser.Time.TimerEvent | null = null
+  /** Active timer for setChainBreathing oscillation. */
+  private chainBreathingTimer: Phaser.Time.TimerEvent | null = null
+
   constructor(scene: Phaser.Scene) {
     this.scene = scene
     // Skip entirely on low-end devices — all public methods become no-ops.
@@ -260,10 +274,115 @@ export class DepthLightingSystem {
     this.pushPointLightsToShader(0)
   }
 
+  // ── Chain light override methods (Spec 03) ──────────────────────────────
+
+  /**
+   * Override point light intensity and hue toward a chain color.
+   * Applied multiplicatively on top of base light values in the per-frame update loop.
+   * No-op if the system is disabled (low-end devices).
+   *
+   * @param chainColorHex  Packed hex color of the active chain type (e.g. 0x9B59B6)
+   * @param intensityMult  Multiplier on all point light base intensities
+   * @param colorBlend     0–1, how much to blend toward chainColorHex
+   * @param flickerSpeedMult  Multiplier on flicker speed (>1 = faster flicker)
+   */
+  public setChainLightOverride(
+    chainColorHex: number,
+    intensityMult: number,
+    colorBlend: number,
+    flickerSpeedMult: number = 1.0,
+  ): void {
+    if (!this.enabled) return
+    // Cancel any in-progress fade so the new values take effect immediately
+    if (this.chainFadeTimer) {
+      this.chainFadeTimer.destroy()
+      this.chainFadeTimer = null
+    }
+    this.chainIntensityMult = intensityMult
+    this.chainColorBlend = colorBlend
+    this.chainColor = hexToRgb(chainColorHex)
+    this.chainFlickerSpeedMult = flickerSpeedMult
+  }
+
+  /**
+   * Restore point lights to their base state over fadeMs.
+   * Uses a 16ms timer to lerp multipliers back to defaults.
+   * No-op if the system is disabled (low-end devices).
+   *
+   * @param fadeMs Duration in ms for the fade-out (default 500ms). 0 = instant.
+   */
+  public clearChainLightOverride(fadeMs: number = 500): void {
+    if (!this.enabled) return
+    if (this.chainFadeTimer) {
+      this.chainFadeTimer.destroy()
+      this.chainFadeTimer = null
+    }
+    if (fadeMs <= 0) {
+      this.chainIntensityMult = 1.0
+      this.chainColorBlend = 0.0
+      this.chainFlickerSpeedMult = 1.0
+      return
+    }
+    const startMult = this.chainIntensityMult
+    const startBlend = this.chainColorBlend
+    const startFlicker = this.chainFlickerSpeedMult
+    const startTime = this.scene.time.now
+    this.chainFadeTimer = this.scene.time.addEvent({
+      delay: 16,
+      loop: true,
+      callback: () => {
+        const t = Math.min((this.scene.time.now - startTime) / fadeMs, 1)
+        this.chainIntensityMult = startMult + (1.0 - startMult) * t
+        this.chainColorBlend = startBlend * (1 - t)
+        this.chainFlickerSpeedMult = startFlicker + (1.0 - startFlicker) * t
+        if (t >= 1) {
+          this.chainIntensityMult = 1.0
+          this.chainColorBlend = 0.0
+          this.chainFlickerSpeedMult = 1.0
+          this.chainFadeTimer?.destroy()
+          this.chainFadeTimer = null
+        }
+      },
+    })
+  }
+
+  /**
+   * Enable or disable depth-breathing oscillation for chain 7+ visual escalation.
+   * When enabled, oscillates the breathing amplitude on a 1.5s sine wave between
+   * 0.0015 (normal) and 0.004 (elevated), giving a subtle pulsing depth effect.
+   * No-op if the system is disabled or no active pipeline.
+   *
+   * @param enabled True to start oscillating, false to restore normal breathing.
+   */
+  public setChainBreathing(enabled: boolean): void {
+    if (!this.enabled || !this.activePipeline) return
+    // Always stop existing breathing timer first
+    if (this.chainBreathingTimer) {
+      this.chainBreathingTimer.destroy()
+      this.chainBreathingTimer = null
+      // Restore normal breathing params
+      this.activePipeline?.setBreathing(0.0015, 0.6)
+    }
+    if (!enabled) return
+    // Pulse uDolly amplitude on a 1.5s sine wave.
+    // Oscillates between near-normal (0.0015) and elevated (0.004).
+    const startTime = this.scene.time.now
+    this.chainBreathingTimer = this.scene.time.addEvent({
+      delay: 16,
+      loop: true,
+      callback: () => {
+        const t = (this.scene.time.now - startTime) / 1000
+        const amp = 0.0015 + Math.sin(t * Math.PI * 2 / 1.5) * 0.0025
+        this.activePipeline?.setBreathing(Math.max(0, amp), 0.6)
+      },
+    })
+  }
+
   // ── Point light helpers ───────────────────────────────────────────────
 
   /**
    * Push current point light state to the shader.
+   * Applies chain override multipliers (intensity, color blend, flicker speed).
    * @param time Elapsed time in seconds (for flicker calculation)
    */
   private pushPointLightsToShader(time: number): void {
@@ -275,19 +394,33 @@ export class DepthLightingSystem {
       let intensity = pl.baseIntensity
       let radius = pl.baseRadius
 
-      // Flicker: multi-frequency sin noise per light
+      // Flicker: multi-frequency sin noise per light, with chain speed multiplier
       if (pl.flickerStrength > 0 && time > 0) {
         const t = time
         const s = pl.seed
+        const effectiveFlickerSpeed = pl.flickerSpeed * this.chainFlickerSpeedMult
         const noise =
-          Math.sin(t * pl.flickerSpeed * 7.3 + s) * 0.5 +
-          Math.sin(t * pl.flickerSpeed * 13.1 + s * 2.7) * 0.3 +
-          Math.sin(t * pl.flickerSpeed * 23.7 + s * 0.3) * 0.2
+          Math.sin(t * effectiveFlickerSpeed * 7.3 + s) * 0.5 +
+          Math.sin(t * effectiveFlickerSpeed * 13.1 + s * 2.7) * 0.3 +
+          Math.sin(t * effectiveFlickerSpeed * 23.7 + s * 0.3) * 0.2
         intensity = pl.baseIntensity * (1.0 + noise * pl.flickerStrength)
         radius = pl.baseRadius * (1.0 + noise * pl.flickerStrength * 0.3)
       }
 
-      const rgb = hexToRgb(pl.source.color)
+      // Apply chain intensity multiplier on top of base + flicker
+      intensity = intensity * this.chainIntensityMult
+
+      // Compute base light RGB and blend toward chain color if active
+      let rgb = hexToRgb(pl.source.color)
+      if (this.chainColorBlend > 0) {
+        const [cr, cg, cb] = this.chainColor
+        rgb = [
+          rgb[0] + (cr - rgb[0]) * this.chainColorBlend,
+          rgb[1] + (cg - rgb[1]) * this.chainColorBlend,
+          rgb[2] + (cb - rgb[2]) * this.chainColorBlend,
+        ] as [number, number, number]
+      }
+
       return {
         x: pl.source.x,
         y: pl.source.y,
@@ -310,6 +443,44 @@ export class DepthLightingSystem {
   update(time: number): void {
     if (!this.enabled || !this.activePipeline || this.pointLights.length === 0) return
     this.pushPointLightsToShader(time / 1000)  // Convert ms to seconds
+  }
+
+  // ── Entrance animation ─────────────────────────────────────────────────
+
+  /**
+   * Animate all point light intensities from 0 to their configured base values
+   * over the specified duration. Used during enemy entrance to fade lighting in
+   * simultaneously with the enemy sprite reveal.
+   *
+   * No-op if the system is disabled (low-end devices) or no pipeline is active.
+   *
+   * @param durationMs Total fade-in duration in milliseconds (800 for commons, 1200 for bosses)
+   */
+  animateLightsIn(durationMs: number): void {
+    if (!this.enabled || !this.activePipeline) return
+
+    // Snapshot base intensities, then zero them so lights start dark
+    const bases = this.pointLights.map(pl => pl.baseIntensity)
+    this.pointLights.forEach(pl => { pl.baseIntensity = 0 })
+    const startTime = this.scene.time.now
+
+    const timer = this.scene.time.addEvent({
+      delay: 16,  // ~60fps tick rate
+      loop: true,
+      callback: () => {
+        const elapsed = this.scene.time.now - startTime
+        const t = Math.min(elapsed / durationMs, 1)
+        this.pointLights.forEach((pl, i) => {
+          pl.baseIntensity = bases[i] * t
+        })
+        this.pushPointLightsToShader(this.scene.time.now / 1000)
+        if (t >= 1) {
+          timer.destroy()
+          // Restore exact base values to eliminate floating-point accumulation
+          this.pointLights.forEach((pl, i) => { pl.baseIntensity = bases[i] })
+        }
+      },
+    })
   }
 
   // ── Lifecycle ──────────────────────────────────────────────────────────
@@ -336,6 +507,19 @@ export class DepthLightingSystem {
     this.currentDepthKey = ''
     this.pointLights = []
     this.currentEnemyId = ''
+    // Clean up chain timers
+    if (this.chainFadeTimer) {
+      this.chainFadeTimer.destroy()
+      this.chainFadeTimer = null
+    }
+    if (this.chainBreathingTimer) {
+      this.chainBreathingTimer.destroy()
+      this.chainBreathingTimer = null
+    }
+    // Reset chain override state
+    this.chainIntensityMult = 1.0
+    this.chainColorBlend = 0.0
+    this.chainFlickerSpeedMult = 1.0
   }
 }
 

@@ -78,7 +78,7 @@ Renders enemy sprite in a `Phaser.GameObjects.Container` (depth 5) with layered 
 
 Falls back to colored placeholder rectangle + emoji icon when no texture exists.
 
-Key public surface: `setTexture(key, size, x, y, category)`, `getContainer()`, `updateBasePosition(x, y)`, `playAttack(cb)`, `playHit()`, `playDeath(cb)`, `setEnraged(bool)`, `applyAtmosphere(config)`.
+Key public surface: `setTexture(key, size, x, y, category)`, `getContainer()`, `updateBasePosition(x, y)`, `playAttack(cb)`, `playHit()`, `playDeath(cb)`, `setEnraged(bool)`, `applyAtmosphere(config)`, `playEntranceReveal(isBoss, onComplete?)` (cinematic shadow-to-light reveal, replaces legacy `playEntry`).
 
 **Scene-alive guard:** All `screenShake?.trigger()` calls inside tween `onComplete` callbacks are wrapped with `if (this.scene?.scene?.isActive())` to prevent errors when `CombatScene.onShutdown()` calls `tweens.killAll()` (which fires `onComplete` on in-flight tweens after the scene is destroyed).
 
@@ -115,6 +115,7 @@ Attaches `DepthLightingFX` PostFX pipeline to the combat background image for de
 | `setEnemyContext(enemyId, floor)` | Store context for point light resolution |
 | `attachToBackground(bgImage, atm)` | Attach PostFX pipeline to the background image |
 | `applyAtmosphere(config)` | Configure pipeline with atmosphere color/intensity |
+| `animateLightsIn(durationMs)` | Fade all point light intensities from 0 to base over duration; called during enemy entrance reveal; no-op on low-end or when no pipeline active |
 | `stop()` | Remove pipeline, destroy resources |
 
 Depth map key format: `depth-{bgKey}`. Depth map path resolved by `getCombatDepthMap(enemyId)`.
@@ -137,6 +138,10 @@ Manages ambient particles (dual-depth: back=3, front=12), fog overlay, and light
 | `stop()` | Destroy emitters, fog, and shafts |
 | `getConfig()` | Return current `AtmosphereConfig` or null |
 | `spikeParticleRate(durationMs)` | Temporarily double front emitter rate for a visual spike (e.g. turn transitions). No-op if reduceMotion or no emitter active. |
+| `applyChainModifiers(frequencyMultiplier)` | Scale both emitter intervals by multiplier (e.g. 0.5 = double rate). No-op on low-end or reduceMotion. |
+| `clearChainModifiers()` | Restore emitter intervals to base frequencies. |
+
+**Chain modifier state:** `baseBackFrequency` and `baseFrontFrequency` are stored at `start()` for restoration by `clearChainModifiers()`. Low-end devices are excluded via `getDeviceTier() === 'low-end'` guard.
 
 ### ScreenShakeSystem
 

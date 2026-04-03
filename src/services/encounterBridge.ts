@@ -816,6 +816,18 @@ export function handlePlayCard(
 
   activeTurnState.set(freshTurnState(result.turnState));
 
+  // Chain combo visual escalation: fire after every card play so the environment
+  // tracks chain count in real time (Spec 03). chainType from TurnState is number|null.
+  {
+    const chainScene = getCombatScene();
+    if (chainScene) {
+      chainScene.onChainUpdated(
+        result.turnState.chainLength,
+        result.turnState.chainType ?? undefined,
+      );
+    }
+  }
+
   const scene = getCombatScene();
   if (scene) {
     // For attack and cast cards: enemy hit reaction is deferred to the weapon's
@@ -1102,6 +1114,18 @@ export async function handleEndTurn(): Promise<void> {
     activeRunState.set(runAfterDelay);
   }
   activeTurnState.set(freshTurnState(result.turnState));
+
+  // Update chain visuals to reflect chain decay at turn end (Spec 03).
+  // decayChain() already ran inside endPlayerTurn; chainLength reflects the decayed value.
+  {
+    const chainScene = getCombatScene();
+    if (chainScene) {
+      chainScene.onChainUpdated(
+        result.turnState.chainLength,
+        result.turnState.chainType ?? undefined,
+      );
+    }
+  }
 
   const scene = getCombatScene();
   if (scene) {

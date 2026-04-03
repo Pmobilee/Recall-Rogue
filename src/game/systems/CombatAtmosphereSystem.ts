@@ -48,6 +48,12 @@ export class CombatAtmosphereSystem {
   private bgLightPool: Phaser.GameObjects.Graphics | Phaser.GameObjects.Image | null = null
   private bgLightPoolTween: Phaser.Tweens.Tween | null = null
 
+  // ── Chain modifier state (Spec 03) ────────────────────────────────────────
+  /** Base frequency stored at start() for back emitter so chain mods can restore it. */
+  private baseBackFrequency: number = 0
+  /** Base frequency stored at start() for front emitter so chain mods can restore it. */
+  private baseFrontFrequency: number = 0
+
   constructor(scene: Phaser.Scene) {
     this.scene = scene
     this.reduceMotion = isReduceMotionEnabled()
@@ -75,6 +81,37 @@ export class CombatAtmosphereSystem {
     this.scene.time.delayedCall(durationMs, () => {
       if (this.frontEmitter) this.frontEmitter.setFrequency(origFreq)
     })
+  }
+
+  /**
+   * Apply chain combo atmosphere modifiers.
+   * Scales both emitter frequencies so particles emit more often during a chain.
+   * No-op on low-end devices or when reduceMotion is active.
+   * @param frequencyMultiplier Interval multiplier (0.5 = double rate, 1.0 = no change).
+   */
+  public applyChainModifiers(frequencyMultiplier: number): void {
+    if (!this.isActive || this.reduceMotion) return
+    if (getDeviceTier() === 'low-end') return
+    if (this.backEmitter && this.baseBackFrequency > 0) {
+      this.backEmitter.setFrequency(Math.max(1, Math.round(this.baseBackFrequency * frequencyMultiplier)))
+    }
+    if (this.frontEmitter && this.baseFrontFrequency > 0) {
+      this.frontEmitter.setFrequency(Math.max(1, Math.round(this.baseFrontFrequency * frequencyMultiplier)))
+    }
+  }
+
+  /**
+   * Reset particle emission rates to their base values after a chain ends.
+   * No-op if system is not active or emitters are absent.
+   */
+  public clearChainModifiers(): void {
+    if (!this.isActive) return
+    if (this.backEmitter && this.baseBackFrequency > 0) {
+      this.backEmitter.setFrequency(this.baseBackFrequency)
+    }
+    if (this.frontEmitter && this.baseFrontFrequency > 0) {
+      this.frontEmitter.setFrequency(this.baseFrontFrequency)
+    }
   }
 
   /**
@@ -154,6 +191,9 @@ export class CombatAtmosphereSystem {
         advance: 3000,
       }).setDepth(3)
 
+      // Store base frequencies for chain modifier restoration
+      this.baseBackFrequency = pConfig.frequency
+
       // Front emitter — smaller faster particles in front of characters (depth 12)
       this.frontEmitter = this.scene.add.particles(0, 0, textureKey, {
         x: { min: 0, max: w },
@@ -171,6 +211,8 @@ export class CombatAtmosphereSystem {
         tint: pConfig.tints,
         advance: 2000,
       }).setDepth(12)
+
+      this.baseFrontFrequency = Math.round(pConfig.frequency * 1.5)
 
       // Embers rise from the bottom third of the screen.
       // Cast to `any` to work around a Phaser typings mismatch: Rectangle.getRandomPoint
@@ -196,6 +238,8 @@ export class CombatAtmosphereSystem {
   /** Stop all atmosphere effects and clean up. */
   public stop(): void {
     this.isActive = false
+    this.baseBackFrequency = 0
+    this.baseFrontFrequency = 0
 
     if (this.fogTween) { this.fogTween.destroy(); this.fogTween = null }
     if (this.fogGfx) { this.fogGfx.destroy(); this.fogGfx = null }
