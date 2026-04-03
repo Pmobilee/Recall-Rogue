@@ -509,6 +509,10 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     screen: 'restStudy',
     deckId: 'human_anatomy',
   },
+  'study-deck-ap-chem': {
+    screen: 'restStudy',
+    deckId: 'ap_chemistry',
+  },
   'mastery-challenge': {
     screen: 'masteryChallenge',
   },

@@ -956,13 +956,100 @@ Sports & Entertainment requires new domain scaffolding. FIFA World Cup is a uniq
 | # | Exam Deck | Source Domains | Dependency | Priority |
 |---|-----------|---------------|------------|----------|
 | EP-01 | AP US History | history (US-specific facts) | H-06 US Civil War, H-08 Cold War | After Tier 1 history decks |
-| EP-02 | AP Biology | natural_sciences (cell/genetics/ecology) | NS-04 Bio Cell & Genetics, NS-05 Ecology | After NS Tier 1 |
+| EP-02 | AP Biology | natural_sciences | Standalone (not composite) — CED-aligned, ships as `ap_biology.json` | **SHIPPED** — `data/decks/ap_biology.json` |
 | EP-03 | SAT/ACT Vocabulary | language (English vocab) | Requires English vocab deck (not yet built) | Tier 2 |
 | EP-04 | MCAT — Biology & Chemistry | natural_sciences + human_body_health | HB-01 Anatomy, NS-05 Cell Bio, NS-06 Chemistry | After HB/NS Tier 1 |
 | EP-05 | GRE Vocabulary | language (English vocab) | Requires English vocab deck | Tier 2 |
 | EP-06 | AP World History | history (global) | WWII, Ancient Rome/Greece/China | After Tier 1 history |
+| EP-07 | AP Chemistry | natural_sciences | Standalone (not composite) — CED-aligned like AP Bio | **Tier 1 — HIGH PRIORITY** |
 
 **Note:** English vocabulary (SAT/GRE words) is not yet a domain. It would require a new `english_vocabulary` domain distinct from Language (which currently covers non-English languages only). This is a high-demand gap.
+
+---
+
+### 3.13.1 AP Chemistry (Standalone CED-Aligned Deck)
+
+**Status:** Discovery complete (2026-04-03). Architecture phase next.
+**Domain:** `natural_sciences`
+**Exam:** College Board AP Chemistry (CED effective fall 2024)
+**Enrollment:** ~160,000 students/year (6th largest AP exam)
+**Priority:** **Tier 1** — exam-aligned content is our highest-value offering
+
+**CED Scope (92 topics across 9 units):**
+
+| Unit | Name | Topics | Exam Weight |
+|------|------|--------|-------------|
+| 1 | Atomic Structure and Properties | 1.1–1.8 (8) | 7–9% |
+| 2 | Compound Structure and Properties | 2.1–2.7 (7) | 7–9% |
+| 3 | Properties of Substances and Mixtures | 3.1–3.13 (13) | 18–22% |
+| 4 | Chemical Reactions | 4.1–4.9 (9) | 7–9% |
+| 5 | Kinetics | 5.1–5.11 (11) | 7–9% |
+| 6 | Thermochemistry | 6.1–6.9 (9) | 7–9% |
+| 7 | Equilibrium | 7.1–7.14 (14) | 7–9% |
+| 8 | Acids and Bases | 8.1–8.10 (10) | 11–15% |
+| 9 | Thermodynamics and Electrochemistry | 9.1–9.11 (11) | 7–9% |
+
+**Estimated Facts:** 350–450 (91 topics × ~4 facts avg, weighted by exam %)
+
+**Answer Type Pools (pool-first design):**
+
+| Pool ID | Format | Example Members | Est. Size |
+|---------|--------|-----------------|-----------|
+| element_names | name | Hydrogen, Carbon, Nitrogen, Oxygen, Sodium, Chlorine, Iron, Copper | 30+ |
+| compound_names | name | Water, Sodium chloride, Ammonia, Methane, Glucose, Sulfuric acid | 25+ |
+| formula_names | term | H2O, NaCl, NH3, CO2, H2SO4, HCl, NaOH, CH4, C6H12O6 | 25+ |
+| reaction_types | term | Synthesis, Decomposition, Single replacement, Double replacement, Combustion, Acid-base, Redox | 8+ |
+| law_names | name | Ideal Gas Law, Hess's Law, Le Chatelier's Principle, Dalton's Law, Raoult's Law, Beer-Lambert Law, Faraday's Law, Arrhenius Equation | 12+ |
+| bond_types | term | Ionic, Covalent, Metallic, Hydrogen bond, London dispersion, Dipole-dipole, Ion-dipole | 8+ |
+| unit_names | term | Mole, Joule, Kelvin, Atmosphere, Molarity, Molality, Pascal, Volt | 10+ |
+| bracket_numbers | number | pH values, delta-H values, Ka/Kb values, Keq, electrode potentials, gas constants | 40+ |
+| scientist_names | name | Bohr, Lewis, Arrhenius, Bronsted, Lowry, Le Chatelier, Hess, Faraday, Dalton, Avogadro | 15+ |
+| molecular_geometry | term | Linear, Bent, Trigonal planar, Tetrahedral, Trigonal bipyramidal, Octahedral, T-shaped, Seesaw | 8+ |
+| periodic_trend_names | term | Ionization energy, Electronegativity, Atomic radius, Electron affinity, Metallic character | 6+ |
+| thermodynamic_terms | term | Entropy, Enthalpy, Gibbs free energy, Heat capacity, Standard conditions, Spontaneity | 8+ |
+| acid_base_terms | term | Conjugate acid, Conjugate base, Amphoteric, Buffer, Equivalence point, Half-equivalence point | 8+ |
+| equilibrium_terms | term | Reaction quotient, Equilibrium constant, Le Chatelier shift, Common ion effect, Ksp, Ka, Kb | 8+ |
+
+**Sub-Decks (5 natural groupings):**
+
+| Sub-Deck | Units | Est. Facts | Focus |
+|----------|-------|------------|-------|
+| Structure & Bonding | 1-2 | ~100 | Atoms, electron config, bonding, Lewis, VSEPR |
+| Properties & Reactions | 3-4 | ~120 | IMF, gas laws, solutions, stoichiometry, reaction types |
+| Kinetics & Energy | 5-6 | ~80 | Rate laws, mechanisms, catalysis, enthalpy, Hess's Law |
+| Equilibrium & Acids-Bases | 7-8 | ~100 | Keq, Le Chatelier, pH, buffers, titrations |
+| Thermo & Electrochemistry | 9 | ~50 | Entropy, Gibbs, galvanic cells, Nernst, Faraday |
+
+**Common Confusions (seed pairs):**
+- Exothermic vs Endothermic (sign of delta-H)
+- Ka vs Kb (acid vs base dissociation)
+- Kp vs Kc (pressure vs concentration equilibrium)
+- Oxidation vs Reduction (electron loss vs gain)
+- Galvanic vs Electrolytic (spontaneous vs non-spontaneous)
+- Molarity vs Molality (volume vs mass denominator)
+- Rate law vs Equilibrium expression (forward-only vs both directions)
+- SN2 Arrhenius vs Bronsted-Lowry acid/base definitions
+- Bond energy (breaking = endothermic, forming = exothermic)
+- London dispersion vs Dipole-dipole (all molecules vs polar only)
+
+**Cross-Deck Links:**
+- Periodic Table deck (element properties, atomic structure)
+- AP Biology (biochemistry overlap — water properties, enzymes, pH)
+- Medical Terminology (pharmacology — acid-base balance, drug interactions)
+
+**Demand Signals:**
+- ~160k AP Chem students/year (US alone)
+- "AP Chemistry flashcards" — 80k+ Anki downloads for top shared decks
+- r/APChemistry — active subreddit with 15k+ members, frequent "what to study" posts
+- Consistently rated one of the hardest AP exams — students desperate for study tools
+- Strong memorization component (formulas, constants, reaction types, molecular geometries)
+
+**Why This Deck Will Work:**
+- Clean pool structure — chemical formulas, element names, reaction types are highly confusable
+- Numeric bracket notation for pH, constants, temperatures — proven system from existing decks
+- Natural difficulty curve from easy recognition (element names) to hard reasoning (equilibrium calculations)
+- Units 3+8 = 33-37% of exam, creating natural "focus study" sub-decks for high-impact cramming
+- CED alignment means students trust the completeness — every testable concept covered
 
 ---
 

@@ -74,10 +74,10 @@ Two backfill scripts produced full coverage:
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-03 it contains **69 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-03 it contains **70 decks**:
 
 - **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
-- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**
+- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**
 
 ### Deck Architecture Files
 
@@ -1076,3 +1076,79 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 **Source data:** Directors and release years verified via Wikidata SPARQL (confirmed in prompt). Famous quotes and attributed films verified against Wikipedia articles linked in each fact's `sourceUrl`.
 
 **Next steps:** Assemble into full `movies_cinema.json` with `answerTypePools`, `synonymGroups`, `difficultyTiers`, and deck metadata; strip WIP fields (`statement`, `wowFactor`, `tags`, `ageGroup`); register in `data/decks/manifest.json`.
+
+
+## ap_chemistry Deck
+
+`data/decks/ap_chemistry.json` — assembled 2026-04-03 from 16 WIP batch files. Exam-aligned to the College Board AP Chemistry Course and Exam Description (CED) effective Fall 2024, covering all 9 units.
+
+Assembly script: `scripts/assemble-ap-chemistry.mjs`
+
+| Field | Value |
+|---|---|
+| `id` | `ap_chemistry` |
+| `domain` | `natural_sciences` |
+| `subDomain` | `chemistry` |
+| `minimumFacts` | 350 |
+| `targetFacts` | 400 |
+| `facts` | 400 |
+| `answerTypePools` | 14 |
+
+**Chain Themes / SubDecks (6):**
+
+| chainThemeId | SubDeck ID | Name | CED Units | Facts |
+|---|---|---|---|---|
+| 0 | `sd_structure_bonding` | Structure & Bonding | Units 1–2 | 85 |
+| 1 | `sd_intermolecular_forces` | Intermolecular Forces | Unit 3 | 60 |
+| 2 | `sd_reactions` | Chemical Reactions | Unit 4 | 50 |
+| 3 | `sd_kinetics_energy` | Kinetics & Energy | Units 5–6 | 75 |
+| 4 | `sd_equilibrium_acids` | Equilibrium & Acids-Bases | Units 7–8 | 90 |
+| 5 | `sd_thermo_electrochemistry` | Thermo & Electrochemistry | Unit 9 | 40 |
+
+**Answer Type Pools (14):**
+
+| Pool ID | Facts | Members | Notes |
+|---|---|---|---|
+| `law_and_equation_names` | 81 | 77 | Named laws, equations, principles |
+| `acid_base_equilibrium_terms` | 70 | 69 | Equilibrium and acid-base terminology |
+| `thermodynamic_quantities` | 69 | 62 | Thermodynamic state functions and quantities |
+| `bracket_numbers` | 33 | 32 | Numerical values in bracket notation |
+| `reaction_types` | 34 | 29 | Reaction type names |
+| `unit_and_constant_names` | 32 | 32 | SI units, constants, ion charges |
+| `bond_and_imf_types` | 25 | 24 | Bond types and intermolecular forces |
+| `periodic_trend_names` | 23 | 19 | Periodic table trend names |
+| `electrochemistry_terms` | 16 | 16 | Electrochemistry terminology |
+| `compound_names` | 6 | 6 | Chemical compound names |
+| `chemical_formulas` | 5 | 5 | Chemical formula strings |
+| `molecular_geometries` | 3 | 3 | VSEPR geometry names; syntheticDistractors added |
+| `element_names` | 2 | 2 | Element names; syntheticDistractors added |
+| `electrode_half_reactions` | 1 | 1 | Electrolysis products; minimumSize=1, fact has pre-generated distractors |
+
+**Difficulty distribution:** easy=332 (difficulty 1–2), medium=62 (difficulty 3), hard=6 (difficulty 4–5)
+
+**CED alignment:** College Board AP Chemistry CED (Fall 2024). All 9 units covered. Facts include `examTags` object with `unit`, `topic`, and `exam_weight` fields.
+
+**Source WIP batch files (16):**
+- `ap_chem_sd1_batch1.json` (25 facts, Unit 1 topics 1.1–1.4)
+- `ap_chem_sd1_batch2.json` (30 facts, Unit 1 topics 1.5–1.8)
+- `ap_chem_sd1_batch3.json` (30 facts, Unit 2 topics 2.1–2.7)
+- `ap_chem_sd2_batch1.json` (30 facts, Unit 3 topics 3.1–3.6)
+- `ap_chem_sd2_batch2.json` (30 facts, Unit 3 topics 3.7–3.13)
+- `ap_chem_sd2_batch3.json` (25 facts, Unit 4 topics 4.1–4.5)
+- `ap_chem_sd2_batch4.json` (25 facts, Unit 4 topics 4.6–4.9)
+- `ap_chem_sd3_batch1.json` (25 facts, Unit 5 topics 5.1–5.6)
+- `ap_chem_sd3_batch2.json` (25 facts, Units 5 topics 5.7–5.11 + Unit 6 topics 6.1–6.3)
+- `ap_chem_sd3_batch3.json` (25 facts, Unit 6 topics 6.4–6.9)
+- `ap_chem_sd4_batch1.json` (25 facts, Unit 7 topics 7.1–7.7)
+- `ap_chem_sd4_batch2.json` (20 facts, Unit 7 topics 7.8–7.14)
+- `ap_chem_sd4_batch3.json` (25 facts, Unit 8 topics 8.1–8.5)
+- `ap_chem_sd4_batch4.json` (20 facts, Unit 8 topics 8.6–8.10)
+- `ap_chem_sd5_batch1.json` (20 facts, Unit 9 topics 9.1–9.6)
+- `ap_chem_sd5_batch2.json` (20 facts, Unit 9 topics 9.7–9.11)
+
+**Post-assembly fixes applied:**
+- 4 small pools received `syntheticDistractors` or `minimumSize` adjustments: `molecular_geometries` (minimumSize=3), `element_names` (minimumSize=2), `electrode_half_reactions` (minimumSize=1), `ion_charges` (removed — fact moved to `unit_and_constant_names`).
+- `ap_chem_118_calcium_ion_charge`: correctAnswer changed from `{2+}` to `2+` (braces are for numeric values only), moved from `bracket_numbers` to `unit_and_constant_names`, distractors added.
+- `examTags` normalized from array format `["AP_Chemistry","Unit_1","Topic_1.1"]` to object format `{unit, topic, exam_weight}` during assembly.
+
+---

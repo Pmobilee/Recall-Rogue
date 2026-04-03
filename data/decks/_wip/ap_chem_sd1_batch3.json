@@ -1,0 +1,1192 @@
+[
+  {
+    "id": "ap_chem_u2_bond_type_electronegativity_ionic",
+    "correctAnswer": "Ionic bond",
+    "acceptableAlternatives": [
+      "Ionic bonding"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bond_and_imf_types",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Covalent bond",
+      "Metallic bond",
+      "Hydrogen bond",
+      "Polar covalent bond",
+      "Van der Waals bond",
+      "Dipole-dipole bond",
+      "Network covalent bond",
+      "London dispersion bond"
+    ],
+    "quizQuestion": "When the electronegativity difference between two bonding atoms exceeds 1.7, what type of chemical bond is formed?",
+    "explanation": "An electronegativity difference greater than 1.7 indicates that one atom attracts bonding electrons so strongly that electrons are effectively transferred rather than shared, producing an ionic bond. This threshold corresponds to roughly 50% ionic character in the bond.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Chemical bond",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chemical_bond",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.1"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_bond_type_nonpolar_range",
+    "correctAnswer": "Nonpolar covalent bond",
+    "acceptableAlternatives": [
+      "Nonpolar covalent",
+      "Nonpolar bond"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bond_and_imf_types",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Polar covalent bond",
+      "Ionic bond",
+      "Metallic bond",
+      "Coordinate covalent bond",
+      "Pi bond",
+      "Sigma bond",
+      "London dispersion bond",
+      "Hydrogen bond"
+    ],
+    "quizQuestion": "A bond between two atoms with an electronegativity difference between 0 and 0.4 is classified as what type of bond?",
+    "explanation": "When electronegativity differences are very small (0–0.4), electrons are shared nearly equally and no significant dipole forms, producing a nonpolar covalent bond. The H–H bond (difference = 0) and C–H bond (difference ≈ 0.4) are classic examples.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Chemical polarity",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chemical_polarity",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.1"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_bond_type_metallic_electron_sea",
+    "correctAnswer": "Electron sea model",
+    "acceptableAlternatives": [
+      "Sea of electrons",
+      "Electron sea"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Valence bond theory",
+      "Crystal field theory",
+      "Molecular orbital theory",
+      "VSEPR model",
+      "Hybridization model",
+      "Lattice energy model",
+      "Delocalized pi framework",
+      "Band gap theory"
+    ],
+    "quizQuestion": "What model describes metallic bonding as positively charged metal cations surrounded by a mobile 'sea' of delocalized valence electrons?",
+    "explanation": "In the electron sea model, metal atoms release their valence electrons into a shared pool. This delocalization explains metallic properties: the mobile electrons carry electrical current (conductivity), and the cations can slide past each other without breaking bonds (malleability and ductility).",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Metallic bonding",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Metallic_bonding",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.1"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_bond_type_polar_covalent_range",
+    "correctAnswer": "Polar covalent bond",
+    "acceptableAlternatives": [
+      "Polar covalent",
+      "Polar bond"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bond_and_imf_types",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Nonpolar covalent bond",
+      "Ionic bond",
+      "Metallic bond",
+      "Hydrogen bond",
+      "Coordinate covalent bond",
+      "Pure covalent bond",
+      "Dispersion bond",
+      "Dipole-dipole bond"
+    ],
+    "quizQuestion": "When the electronegativity difference between two bonded atoms falls between 0.4 and 1.7, the bond is classified as what type?",
+    "explanation": "A polar covalent bond forms when electrons are shared unequally but not fully transferred. The more electronegative atom carries a partial negative charge (δ–) and the less electronegative atom carries a partial positive charge (δ+). The O–H bond (difference ≈ 1.4) in water is a familiar example.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Chemical polarity",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chemical_polarity",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.1"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_bond_type_covalent_partners",
+    "correctAnswer": "Two nonmetals",
+    "acceptableAlternatives": [
+      "Nonmetal and nonmetal",
+      "Nonmetals"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bond_and_imf_types",
+    "difficulty": 1,
+    "funScore": 4,
+    "ageGroup": "all",
+    "distractors": [
+      "Metal and nonmetal",
+      "Two metals",
+      "Metal and metalloid",
+      "Metalloid and nonmetal",
+      "Noble gas and nonmetal",
+      "Transition metal and nonmetal",
+      "Metal and metal",
+      "Alkali metal and halogen"
+    ],
+    "quizQuestion": "Covalent bonds typically form between what combination of elements?",
+    "explanation": "Covalent bonds form when both atoms have similar electronegativity — typically when both are nonmetals. Because neither atom has a strong tendency to give up electrons entirely, they share them. Examples include O2, N2, H2O, and CO2, all composed of nonmetallic elements.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Covalent bond",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Covalent_bond",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.1"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_bond_energy_equilibrium_distance",
+    "correctAnswer": "Equilibrium bond length",
+    "acceptableAlternatives": [
+      "Bond length",
+      "Equilibrium distance",
+      "Equilibrium internuclear distance"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Activation energy threshold",
+      "Maximum orbital overlap",
+      "Critical repulsion distance",
+      "Van der Waals radius",
+      "Pauli exclusion distance",
+      "Ionization threshold",
+      "Vibrational node",
+      "Nuclear contact point"
+    ],
+    "quizQuestion": "On a potential energy diagram for two bonding atoms, the distance at which potential energy reaches its minimum value is called what?",
+    "explanation": "As two atoms approach, potential energy decreases due to attractive forces until it reaches a minimum — the equilibrium bond length. At this distance, attractive and repulsive forces between the nuclei and electrons are balanced. Moving the atoms closer increases nuclear repulsion; moving them apart increases energy by stretching the bond.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Bond length",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bond_length",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.2"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_bond_order_strength",
+    "correctAnswer": "Triple bond",
+    "acceptableAlternatives": [
+      "Triple bonds"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bond_and_imf_types",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Single bond",
+      "Double bond",
+      "Hydrogen bond",
+      "Pi bond alone",
+      "Coordinate bond",
+      "Sigma bond alone",
+      "Ionic bond",
+      "Metallic bond"
+    ],
+    "quizQuestion": "Of all bond types between the same two atoms, which has the highest bond energy and the shortest bond length?",
+    "explanation": "Higher bond order means more electron density shared between nuclei, pulling them closer together (shorter bond length) and requiring more energy to break (higher bond energy). The N≡N triple bond (945 kJ/mol) is dramatically stronger than the N=N double bond (418 kJ/mol) or N–N single bond (163 kJ/mol).",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Bond order",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bond_order",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.2"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_bond_energy_endothermic_breaking",
+    "correctAnswer": "Endothermic",
+    "acceptableAlternatives": [
+      "Energy is absorbed",
+      "Requires energy input"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bond_and_imf_types",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Exothermic",
+      "Thermoneutral",
+      "Spontaneous",
+      "Isothermal",
+      "Adiabatic",
+      "Entropy-driven",
+      "Enthalpy-neutral",
+      "Reversible"
+    ],
+    "quizQuestion": "Breaking a chemical bond is always what type of process with respect to energy?",
+    "explanation": "Bond breaking always requires an input of energy to overcome the electrostatic attraction holding the atoms together — it is always endothermic. Conversely, bond formation releases energy (exothermic). The net enthalpy change of a reaction reflects the balance between energy absorbed breaking reactant bonds and energy released forming product bonds.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Bond energy",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bond-dissociation_energy",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.2"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_bond_length_inverse_order",
+    "correctAnswer": "Bond length decreases",
+    "acceptableAlternatives": [
+      "Bond length gets shorter",
+      "Shorter bond length"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Bond length increases",
+      "Bond length stays the same",
+      "Bond angle changes",
+      "Electronegativity decreases",
+      "Bond energy decreases",
+      "Bond polarity disappears",
+      "Formal charge increases",
+      "Lone pairs increase"
+    ],
+    "quizQuestion": "As the bond order between two atoms increases from single to double to triple, what happens to the bond length?",
+    "explanation": "Greater bond order means more shared electron pairs pulling the nuclei closer together, reducing internuclear distance. For carbon-carbon bonds: C–C ≈ 154 pm, C=C ≈ 134 pm, C≡C ≈ 120 pm. This inverse relationship between bond order and bond length is a core concept in AP Chemistry Unit 2.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Bond length",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bond_length",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.2"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_ionic_solid_lattice",
+    "correctAnswer": "Crystal lattice",
+    "acceptableAlternatives": [
+      "Ionic crystal lattice",
+      "Lattice structure"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Electron sea",
+      "Molecular cluster",
+      "Covalent network",
+      "Polymer chain",
+      "Amorphous solid",
+      "Interstitial matrix",
+      "Resonance hybrid",
+      "Coordination sphere"
+    ],
+    "quizQuestion": "Ionic compounds form a three-dimensional, repeating arrangement of oppositely charged ions called what?",
+    "explanation": "In an ionic solid, cations and anions alternate in a regular three-dimensional pattern called a crystal lattice. The geometry of the lattice (cubic, face-centered cubic, etc.) depends on the relative sizes and charges of the ions. This ordered structure maximizes electrostatic attractions and minimizes repulsions.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Crystal structure",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Crystal_structure",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.3"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_lattice_energy_charge",
+    "correctAnswer": "Increases",
+    "acceptableAlternatives": [
+      "Lattice energy increases",
+      "Gets larger"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bond_and_imf_types",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Decreases",
+      "Stays the same",
+      "Becomes zero",
+      "Becomes negative",
+      "Fluctuates",
+      "Drops to a minimum",
+      "First decreases then increases",
+      "Becomes unpredictable"
+    ],
+    "quizQuestion": "As the charges on ions in an ionic compound increase (e.g., going from NaCl to MgO), what happens to the lattice energy?",
+    "explanation": "Lattice energy is proportional to the product of ion charges. MgO has Mg²⁺ and O²– ions (charges ×2 and ×2), giving it a much higher lattice energy (3795 kJ/mol) than NaCl with its +1 and –1 charges (787 kJ/mol). Higher lattice energy means stronger ionic solid, higher melting point, and lower solubility in most solvents.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Lattice energy",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lattice_energy",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.3"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_ionic_solid_properties_brittle",
+    "correctAnswer": "Brittle",
+    "acceptableAlternatives": [
+      "Brittleness",
+      "Hard and brittle"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bond_and_imf_types",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Malleable",
+      "Ductile",
+      "Flexible",
+      "Amorphous",
+      "Paramagnetic",
+      "Superconductive",
+      "Viscous",
+      "Thermoplastic"
+    ],
+    "quizQuestion": "Ionic solids like NaCl shatter when struck because shifting layers brings like charges into alignment, causing repulsion. This makes them what?",
+    "explanation": "When a mechanical force shifts one layer of an ionic crystal relative to an adjacent layer, ions of the same charge line up and strongly repel each other, causing the crystal to cleave or shatter. This is in stark contrast to metals, where layers of atoms can slide past each other without disrupting the electron sea.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Ionic compound",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ionic_compound",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.3"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_ionic_conductivity_dissolved",
+    "correctAnswer": "When dissolved in water or melted",
+    "acceptableAlternatives": [
+      "In aqueous solution or molten state",
+      "When molten or dissolved",
+      "In solution or when molten"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Only in solid form",
+      "Only when heated below melting point",
+      "Only under high pressure",
+      "Always, in any state",
+      "Only in organic solvents",
+      "Never — they are insulators",
+      "Only in gaseous form",
+      "Only when exposed to UV light"
+    ],
+    "quizQuestion": "Ionic solids do not conduct electricity in the solid state, but they do conduct electricity under what conditions?",
+    "explanation": "In the solid state, ions are locked in the lattice and cannot migrate. When the compound is dissolved in water or melted, the ions are freed to move through solution or liquid, allowing electrical current to flow. This is why ionic compounds are called electrolytes — they conduct electricity when dissolved.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Electrolyte",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Electrolyte",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.3"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_alloy_substitutional",
+    "correctAnswer": "Substitutional alloy",
+    "acceptableAlternatives": [
+      "Substitutional"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bond_and_imf_types",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Interstitial alloy",
+      "Intermetallic compound",
+      "Solid solution",
+      "Eutectic mixture",
+      "Peritectic alloy",
+      "Precipitate-hardened alloy",
+      "Ceramic composite",
+      "Amalgam"
+    ],
+    "quizQuestion": "In brass, zinc atoms replace some copper atoms in the crystal lattice because the atoms are similar in size. What type of alloy is brass?",
+    "explanation": "In a substitutional alloy, atoms of the added element are close in size to the host metal atoms (within ~15%) and replace them at lattice sites. Brass (copper-zinc) and bronze (copper-tin) are classic examples. The substituted atoms disrupt the regularity of the lattice, often increasing hardness compared to the pure metal.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Alloy",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Alloy",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.4"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_alloy_interstitial",
+    "correctAnswer": "Interstitial alloy",
+    "acceptableAlternatives": [
+      "Interstitial"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bond_and_imf_types",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Substitutional alloy",
+      "Intermetallic compound",
+      "Eutectic alloy",
+      "Solid solution",
+      "Peritectic compound",
+      "Ceramic composite",
+      "Amalgam",
+      "Network solid"
+    ],
+    "quizQuestion": "Steel is formed when small carbon atoms occupy the gaps between iron atoms in the metal lattice. What type of alloy is steel?",
+    "explanation": "In an interstitial alloy, small atoms (like carbon, nitrogen, or hydrogen) fit into the spaces between the larger host metal atoms rather than replacing them. Steel is the most important example: carbon atoms in the iron lattice impede dislocation movement, dramatically increasing hardness and tensile strength compared to pure iron.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Interstitial compound",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Interstitial_compound",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.4"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_metallic_malleability",
+    "correctAnswer": "Malleability and ductility",
+    "acceptableAlternatives": [
+      "Malleable and ductile",
+      "Malleability",
+      "Ductility"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bond_and_imf_types",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Brittleness",
+      "Low electrical conductivity",
+      "High ionization energy",
+      "Transparency",
+      "Poor thermal conductivity",
+      "Insulating behavior",
+      "High electronegativity",
+      "Crystalline fracture"
+    ],
+    "quizQuestion": "Because the electron sea allows metal cation layers to slide past each other without breaking the bonding interaction, metals exhibit what physical properties?",
+    "explanation": "In metallic bonding, the mobile electron sea surrounds cations uniformly. When a force shifts one layer of cations relative to another, the delocalized electrons simply reflow around the new arrangement, maintaining the bond. This allows metals to be hammered into sheets (malleability) or drawn into wires (ductility) without fracturing.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Metallic bonding",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Metallic_bonding",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.4"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_lewis_octet_rule",
+    "correctAnswer": "Eight electrons",
+    "acceptableAlternatives": [
+      "8 electrons",
+      "Octet",
+      "8 valence electrons"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 1,
+    "funScore": 4,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "The octet rule states that main-group atoms in Lewis structures tend to form bonds until they are surrounded by how many electrons?",
+    "explanation": "The octet rule reflects the stability of having a full valence shell — analogous to the electron configuration of the nearest noble gas. Most second-period nonmetals (C, N, O, F) strictly obey the octet rule. Hydrogen is a notable exception, needing only two electrons (a duet) to complete its 1s shell.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Octet rule",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Octet_rule",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.5"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_lewis_bf3_exception",
+    "correctAnswer": "BF3",
+    "acceptableAlternatives": [
+      "Boron trifluoride"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "compound_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "CH4",
+      "NH3",
+      "H2O",
+      "CO2",
+      "SF6",
+      "PCl5",
+      "CCl4",
+      "N2"
+    ],
+    "quizQuestion": "Which molecule is a classic example of an electron-deficient octet exception, where the central atom has only six electrons around it in the Lewis structure?",
+    "explanation": "Boron has only three valence electrons and forms three bonds with fluorine in BF3, giving boron just six electrons — an incomplete octet. Boron's small size and inability to accommodate more than four bonds makes it electron-deficient. This makes BF3 a potent Lewis acid, readily accepting an electron pair from Lewis bases.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Boron trifluoride",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Boron_trifluoride",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.5"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_lewis_sf6_expanded",
+    "correctAnswer": "SF6",
+    "acceptableAlternatives": [
+      "Sulfur hexafluoride"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "compound_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "BF3",
+      "CH4",
+      "NH3",
+      "H2O",
+      "CO2",
+      "N2",
+      "CCl4",
+      "HCl"
+    ],
+    "quizQuestion": "Which molecule has an expanded octet with 12 electrons around the central sulfur atom, requiring d-orbital participation to accommodate six bonding pairs?",
+    "explanation": "Sulfur in SF6 forms six bonds with fluorine atoms, placing 12 electrons around sulfur. This is possible because sulfur is in the third period and has accessible d orbitals that can expand its valence shell beyond eight electrons. SF6 is an extremely stable, dense, and electrically insulating gas used in high-voltage equipment.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Sulfur hexafluoride",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sulfur_hexafluoride",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.5"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_lewis_polyatomic_charge_electrons",
+    "correctAnswer": "Add one electron per negative charge",
+    "acceptableAlternatives": [
+      "Add electrons equal to the negative charge",
+      "Add extra electrons for negative charge"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Remove one electron per negative charge",
+      "Double all lone pairs",
+      "Ignore the charge when counting electrons",
+      "Add one bond per negative charge",
+      "Remove one bond per negative charge",
+      "Add a lone pair to the central atom only",
+      "Distribute charge equally across all atoms",
+      "Subtract one electron for each bond formed"
+    ],
+    "quizQuestion": "When drawing the Lewis structure of a negatively charged polyatomic ion like NO3–, how do you account for the negative charge in the total electron count?",
+    "explanation": "Each unit of negative charge on a polyatomic ion represents one extra electron beyond what the neutral atoms contribute. For NO3– (charge = –1), you add 1 electron to the sum of valence electrons from N (5) and the three O atoms (3 × 6 = 18), giving 5 + 18 + 1 = 24 total electrons to distribute in the Lewis structure.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Lewis structure",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lewis_structure",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.5"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_lewis_lone_pairs_vs_bonding",
+    "correctAnswer": "Lone pairs",
+    "acceptableAlternatives": [
+      "Lone pair electrons",
+      "Non-bonding pairs",
+      "Nonbonding electron pairs"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bond_and_imf_types",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Bonding pairs",
+      "Pi electrons",
+      "Sigma bonds",
+      "Free radicals",
+      "Formal charges",
+      "Resonance electrons",
+      "Delocalized electrons",
+      "Expanded octets"
+    ],
+    "quizQuestion": "In a Lewis structure, pairs of valence electrons that belong to a single atom and are not shared between atoms are called what?",
+    "explanation": "Lone pairs (also called non-bonding pairs) are electron pairs that remain on one atom and do not participate in covalent bonding. They are critical for determining molecular geometry in VSEPR theory because they occupy space and repel bonding pairs, compressing bond angles. Water has two lone pairs on oxygen.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Lone pair",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lone_pair",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.5"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_resonance_ozone",
+    "correctAnswer": "Ozone (O3)",
+    "acceptableAlternatives": [
+      "O3",
+      "Ozone"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "compound_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Carbon dioxide",
+      "Water",
+      "Methane",
+      "Ammonia",
+      "Hydrogen chloride",
+      "Nitrogen gas",
+      "Sulfur trioxide",
+      "Hydrogen fluoride"
+    ],
+    "quizQuestion": "Which triatomic molecule with a bent shape has two equivalent resonance structures because the double bond can be drawn on either oxygen–oxygen bond?",
+    "explanation": "Ozone (O3) cannot be represented accurately by a single Lewis structure because both O–O bonds are experimentally identical (bond length ≈ 128 pm), intermediate between a single bond (148 pm) and double bond (121 pm). Two resonance structures are drawn and the actual molecule is a resonance hybrid with delocalized electron density equally distributed over both bonds.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Ozone",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ozone",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.6"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_formal_charge_formula",
+    "correctAnswer": "Valence electrons minus lone pair electrons minus half the bonding electrons",
+    "acceptableAlternatives": [
+      "V - L - (B/2)",
+      "Valence - nonbonding - half bonding",
+      "V - lone pairs - (bonds/2)"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Protons minus electrons",
+      "Valence electrons minus total bonding electrons",
+      "Atomic number minus mass number",
+      "Total electrons minus lone pair electrons",
+      "Bonding electrons minus lone pair electrons",
+      "Valence electrons minus all surrounding electrons",
+      "Oxidation state minus ionic charge",
+      "Nuclear charge minus electron count"
+    ],
+    "quizQuestion": "The formal charge on an atom in a Lewis structure is calculated as what?",
+    "explanation": "Formal charge = (valence electrons of free atom) – (lone pair electrons on atom) – ½(bonding electrons shared with atom). It assigns bonding electrons equally between partners. The preferred Lewis structure minimizes formal charges and places negative formal charges on more electronegative atoms.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Formal charge",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Formal_charge",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.6"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_resonance_delocalized",
+    "correctAnswer": "Delocalized electrons",
+    "acceptableAlternatives": [
+      "Electron delocalization",
+      "Delocalized electron density"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bond_and_imf_types",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Localized bonding pairs",
+      "Lone pair donation",
+      "Pi bond fixation",
+      "Formal charge redistribution",
+      "Ionic character",
+      "Sigma framework shift",
+      "Hyperconjugation",
+      "Charge transfer complex"
+    ],
+    "quizQuestion": "When a molecule is best described by multiple Lewis structures of equal or similar energy, the actual bonding involves what — electrons that are spread over more than two atoms?",
+    "explanation": "Resonance structures indicate that electrons in pi bonds are not confined between any one pair of atoms but are delocalized over the entire resonance system. In benzene, for example, the six pi electrons are delocalized over all six carbons, making all C–C bonds equivalent at 140 pm (intermediate between single and double). Delocalization lowers the molecule's energy below any single Lewis structure.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Resonance (chemistry)",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Resonance_(chemistry)",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.6"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_formal_charge_minimize",
+    "correctAnswer": "Minimizes formal charges",
+    "acceptableAlternatives": [
+      "Formal charges closest to zero",
+      "Lowest formal charges",
+      "Minimized formal charges"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Maximizes the number of lone pairs",
+      "Places all electrons on the central atom",
+      "Maximizes formal charges",
+      "Gives the central atom an octet first",
+      "Distributes lone pairs evenly",
+      "Places positive charge on the most electronegative atom",
+      "Minimizes the number of bonds",
+      "Maximizes bond order on terminal atoms"
+    ],
+    "quizQuestion": "When choosing among multiple valid Lewis structures for the same molecule, the preferred (most accurate) structure is the one that does what with formal charges?",
+    "explanation": "The preferred Lewis structure minimizes formal charges, ideally giving every atom a formal charge of zero. When nonzero formal charges are unavoidable, negative formal charges should reside on more electronegative atoms. For CO2, the structure with C=O double bonds (all atoms at formal charge 0) is preferred over the structure with a C–O single bond and C≡O triple bond (which creates nonzero formal charges).",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Lewis structure",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lewis_structure",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.6"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_vsepr_tetrahedral_geometry",
+    "correctAnswer": "Tetrahedral",
+    "acceptableAlternatives": [
+      "Tetrahedral geometry"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "molecular_geometries",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Trigonal planar",
+      "Trigonal pyramidal",
+      "Bent",
+      "Linear",
+      "Octahedral",
+      "Trigonal bipyramidal",
+      "Square planar",
+      "T-shaped"
+    ],
+    "quizQuestion": "CH4 has four bonding pairs and no lone pairs around carbon. According to VSEPR theory, what is the molecular geometry of methane?",
+    "explanation": "Four electron domains arranged to minimize repulsion point toward the corners of a tetrahedron. With no lone pairs, the molecular geometry matches the electron geometry exactly — tetrahedral, with H–C–H bond angles of 109.5°. This geometry also describes NH4+ and CCl4.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — VSEPR theory",
+    "sourceUrl": "https://en.wikipedia.org/wiki/VSEPR_theory",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.7"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_vsepr_trigonal_pyramidal",
+    "correctAnswer": "Trigonal pyramidal",
+    "acceptableAlternatives": [
+      "Pyramidal",
+      "Trigonal pyramid"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "molecular_geometries",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Tetrahedral",
+      "Trigonal planar",
+      "Bent",
+      "Linear",
+      "T-shaped",
+      "Seesaw",
+      "Octahedral",
+      "Square pyramidal"
+    ],
+    "quizQuestion": "NH3 has three bonding pairs and one lone pair on nitrogen. What is the molecular geometry of ammonia?",
+    "explanation": "Although the four electron domains in NH3 adopt a tetrahedral arrangement, the molecular geometry describes only atom positions — three H atoms form the base of a pyramid with N at the apex. The lone pair compresses the H–N–H bond angles to 107°, slightly less than the tetrahedral ideal of 109.5°, because lone pairs exert stronger repulsion than bonding pairs.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Ammonia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ammonia",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.7"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_hybridization_sp2",
+    "correctAnswer": "sp2",
+    "acceptableAlternatives": [
+      "sp² hybridization",
+      "sp2 hybridization"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bond_and_imf_types",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "sp",
+      "sp3",
+      "sp3d",
+      "sp3d2",
+      "d2sp3",
+      "sp2d",
+      "dsp2",
+      "p3"
+    ],
+    "quizQuestion": "A carbon atom in ethylene (C2H4) has three electron domains — two C–H bonds and one C=C bond. What hybridization does this carbon adopt?",
+    "explanation": "Three electron domains require three hybrid orbitals, formed by mixing one s and two p orbitals — called sp2 hybridization. The three sp2 orbitals point toward the corners of a triangle at 120° (trigonal planar geometry). The unhybridized p orbital perpendicular to this plane overlaps with the adjacent carbon's p orbital to form the pi bond of the double bond.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Orbital hybridisation",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Orbital_hybridisation",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.7"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_sigma_pi_bonds",
+    "correctAnswer": "One sigma bond and one pi bond",
+    "acceptableAlternatives": [
+      "1 sigma and 1 pi bond",
+      "A sigma bond and a pi bond"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bond_and_imf_types",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Two sigma bonds",
+      "Two pi bonds",
+      "One sigma bond only",
+      "One pi bond only",
+      "Three sigma bonds",
+      "One sigma bond and two pi bonds",
+      "Two sigma bonds and one pi bond",
+      "Three pi bonds"
+    ],
+    "quizQuestion": "A double bond between two atoms consists of how many sigma bonds and how many pi bonds?",
+    "explanation": "Every covalent bond, regardless of order, contains exactly one sigma (σ) bond formed by direct, end-on orbital overlap along the bond axis. Double bonds add one pi (π) bond formed by side-on (lateral) overlap of parallel p orbitals. Triple bonds consist of one σ and two π bonds. Pi bonds are weaker than sigma bonds because lateral overlap is less effective than axial overlap.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Pi bond",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pi_bond",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.7"
+    ]
+  },
+  {
+    "id": "ap_chem_u2_vsepr_octahedral_sf6",
+    "correctAnswer": "Octahedral",
+    "acceptableAlternatives": [
+      "Octahedral geometry"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "molecular_geometries",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Trigonal bipyramidal",
+      "Square pyramidal",
+      "Square planar",
+      "Tetrahedral",
+      "Trigonal planar",
+      "Seesaw",
+      "T-shaped",
+      "Linear"
+    ],
+    "quizQuestion": "SF6 has six bonding pairs and no lone pairs around the central sulfur atom. What molecular geometry does SF6 adopt?",
+    "explanation": "Six electron domains minimize repulsion by pointing toward the faces of an octahedron — four in a square plane plus one above and one below. With no lone pairs, molecular geometry matches electron geometry: octahedral, with all F–S–F bond angles of 90°. SF6 requires sp3d2 hybridization of the sulfur atom.",
+    "statement": "",
+    "wowFactor": "",
+    "visualDescription": "",
+    "sourceName": "Wikipedia — Octahedral molecular geometry",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Octahedral_molecular_geometry",
+    "volatile": false,
+    "categoryL1": "science",
+    "categoryL2": "chemistry",
+    "variants": [],
+    "tags": [],
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_2",
+      "Topic_2.7"
+    ]
+  }
+]

@@ -1,0 +1,940 @@
+[
+  {
+    "id": "ap_chem_5_7_mechanism_definition",
+    "correctAnswer": "elementary steps",
+    "acceptableAlternatives": [
+      "elementary reactions",
+      "individual steps"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "overall reactions",
+      "rate laws",
+      "balanced equations",
+      "molecular collisions",
+      "equilibrium constants",
+      "transition states",
+      "activation energies",
+      "rate-determining steps"
+    ],
+    "quizQuestion": "A reaction mechanism is a sequence of ___ whose sum equals the overall balanced equation.",
+    "explanation": "A mechanism breaks a complex reaction into its actual molecular-level events. Each elementary step describes a single collision or bond-breaking/forming event. Summing all elementary steps — canceling intermediates — gives the experimentally observed overall equation.",
+    "statement": "A reaction mechanism is a series of elementary steps that sum to give the overall balanced equation.",
+    "wowFactor": "Even a seemingly simple reaction like H\u2082 + Cl\u2082 \u2192 2 HCl actually proceeds through a radical chain mechanism with three distinct elementary steps — initiation, propagation, and termination.",
+    "visualDescription": "A flow diagram showing three sequential reaction arrows labeled Step 1, Step 2, Step 3, with intermediates canceling out to leave only reactants and products",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_5",
+      "Topic_5.7"
+    ]
+  },
+  {
+    "id": "ap_chem_5_7_intermediate_definition",
+    "correctAnswer": "intermediate",
+    "acceptableAlternatives": [
+      "reaction intermediate",
+      "reactive intermediate"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "catalyst",
+      "transition state",
+      "activated complex",
+      "product",
+      "reactant",
+      "inhibitor",
+      "substrate",
+      "rate-determining species"
+    ],
+    "quizQuestion": "A species that is produced in one elementary step of a mechanism and consumed in a later step is called a(n) ___.",
+    "explanation": "An intermediate has real, if fleeting, existence — it sits at an energy minimum on the potential energy diagram (a local valley between two peaks). Unlike a transition state, it can in principle be isolated. It does not appear in the overall balanced equation because it is both formed and destroyed.",
+    "statement": "A reaction intermediate is produced in one elementary step and consumed in a subsequent step, so it does not appear in the overall equation.",
+    "wowFactor": "Carbocations, the notorious intermediates in many organic reactions, live for only about 10\u207b¹\u00b2 seconds — yet entire substitution and elimination pathways hinge on their brief existence.",
+    "visualDescription": "An energy profile diagram with two peaks and a shallow valley between them, the valley labeled 'intermediate' while the peaks are labeled 'transition states'",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_5",
+      "Topic_5.7"
+    ]
+  },
+  {
+    "id": "ap_chem_5_7_rate_determining_step",
+    "correctAnswer": "rate-determining step",
+    "acceptableAlternatives": [
+      "rate-limiting step",
+      "slowest step"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "activation step",
+      "elementary step",
+      "fast step",
+      "initiation step",
+      "pre-equilibrium step",
+      "propagation step",
+      "termination step",
+      "catalytic step"
+    ],
+    "quizQuestion": "The ___ in a reaction mechanism is the slowest elementary step and sets the overall rate of the reaction.",
+    "explanation": "The overall reaction can proceed no faster than its slowest step — like a bottleneck in a factory. All steps before the rate-determining step reach steady state quickly, but the slow step controls how fast products ultimately form. The rate law for the overall reaction mirrors the rate law for this step.",
+    "statement": "The rate-determining step is the slowest elementary step in a mechanism; it acts as the bottleneck that controls the overall reaction rate.",
+    "wowFactor": "The analogy chemists love: a rate-determining step is like the slowest car in a single-lane tunnel — every car behind it must match its pace, no matter how fast the others could go.",
+    "visualDescription": "A highway funnel graphic where many fast-moving cars queue up behind one slow car inside a narrow tunnel, symbolizing the rate-determining bottleneck",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_5",
+      "Topic_5.7"
+    ]
+  },
+  {
+    "id": "ap_chem_5_8_rate_law_from_mechanism",
+    "correctAnswer": "rate-determining step",
+    "acceptableAlternatives": [
+      "slowest step",
+      "rate-limiting step"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "overall reaction",
+      "fastest step",
+      "pre-equilibrium step",
+      "first step",
+      "last step",
+      "balanced equation",
+      "stoichiometry",
+      "activation step"
+    ],
+    "quizQuestion": "The experimentally determined rate law for an overall reaction must be consistent with the rate law derived from the ___.",
+    "explanation": "For a proposed mechanism to be valid, the rate law predicted from its rate-determining step must match the experimentally measured rate law. If the slow step involves only certain species, only those species appear in the rate law — regardless of what appears in the balanced equation. This is why reaction order cannot be inferred from stoichiometry alone.",
+    "statement": "A valid mechanism must have a rate-determining step whose rate law matches the experimentally determined rate law for the overall reaction.",
+    "wowFactor": "Chemists cannot watch molecules collide, so the rate law is the primary fingerprint used to accept or eliminate proposed mechanisms — it is indirect molecular-level evidence.",
+    "visualDescription": "A split diagram: left side shows experimental data and rate law k[A][B]; right side shows a proposed mechanism with the slow step highlighted, its rate law also matching k[A][B]",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_5",
+      "Topic_5.8"
+    ]
+  },
+  {
+    "id": "ap_chem_5_8_pre_equilibrium_intermediate",
+    "correctAnswer": "equilibrium constant expression",
+    "acceptableAlternatives": [
+      "equilibrium constant",
+      "Keq expression",
+      "K expression"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "rate constant",
+      "activation energy",
+      "steady-state approximation",
+      "stoichiometric coefficient",
+      "molecularity expression",
+      "Arrhenius equation",
+      "half-life expression",
+      "collision frequency"
+    ],
+    "quizQuestion": "In the pre-equilibrium approximation, the concentration of an intermediate formed in a fast reversible step is expressed using the ___ for that fast step.",
+    "explanation": "When a fast reversible step precedes the slow (rate-determining) step, the intermediate reaches quasi-equilibrium rapidly. Its concentration can be written as K = [intermediate]/([reactant1][reactant2]), so [intermediate] = K[reactant1][reactant2]. Substituting this into the rate law for the slow step eliminates the intermediate and yields a rate law expressed only in observable reactants.",
+    "statement": "In the pre-equilibrium approximation, an intermediate's concentration is substituted using the equilibrium constant expression for the fast reversible step that produces it.",
+    "wowFactor": "This substitution trick is what lets chemists write rate laws in terms of starting materials only — a necessity because intermediates are too reactive to measure directly in most experiments.",
+    "visualDescription": "An equation substitution diagram showing [I] replaced by K[A][B] in a rate expression, with an arrow pointing from the fast-step equilibrium constant to the intermediate in the slow-step rate law",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_5",
+      "Topic_5.8"
+    ]
+  },
+  {
+    "id": "ap_chem_5_8_mechanism_consistency",
+    "correctAnswer": "experimentally determined",
+    "acceptableAlternatives": [
+      "experimentally measured",
+      "observed experimentally",
+      "measured rate law"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "stoichiometrically derived",
+      "theoretically predicted",
+      "computationally modeled",
+      "thermodynamically calculated",
+      "balancing-equation-derived",
+      "molecularity-based",
+      "collision-theory predicted",
+      "activation-energy-based"
+    ],
+    "quizQuestion": "A proposed mechanism is only acceptable if the rate law it predicts is consistent with the ___ rate law for the overall reaction.",
+    "explanation": "Mechanisms are hypotheses, not direct observations. The key test is whether the mechanism's predicted rate law (derived from its slow step) matches what is actually measured in the lab. If the experimental rate law is rate = k[A][B] but the mechanism predicts rate = k[A]\u00b2, the mechanism must be rejected or revised.",
+    "statement": "A proposed mechanism is acceptable only if the rate law derived from its rate-determining step matches the experimentally determined rate law.",
+    "wowFactor": "Multiple different mechanisms can sometimes predict the same rate law, meaning experimental kinetics alone cannot always uniquely identify the true mechanism — isotope labeling and other techniques are needed.",
+    "visualDescription": "A checklist graphic showing 'Mechanism proposed' and 'Rate law predicted' checked off, with a final checkbox labeled 'Matches experimental rate law?' highlighted in green",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_5",
+      "Topic_5.8"
+    ]
+  },
+  {
+    "id": "ap_chem_5_9_steady_state_condition",
+    "correctAnswer": "steady-state approximation",
+    "acceptableAlternatives": [
+      "steady state approximation",
+      "Bodenstein approximation"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "pre-equilibrium approximation",
+      "rate-determining step approximation",
+      "equilibrium approximation",
+      "fast-step assumption",
+      "Arrhenius approximation",
+      "collision-theory model",
+      "transition state theory",
+      "Michaelis-Menten model"
+    ],
+    "quizQuestion": "The ___ assumes that the rate of formation of a reactive intermediate equals its rate of consumption, so its net concentration change is zero.",
+    "explanation": "When an intermediate is highly reactive, it is consumed almost as fast as it is formed — its concentration stays low and nearly constant. Setting d[intermediate]/dt = 0 gives an algebraic equation that allows its concentration to be expressed in terms of reactants only. This simplifies the rate law without requiring the intermediate to be in equilibrium with reactants.",
+    "statement": "The steady-state approximation sets the rate of formation of an intermediate equal to its rate of consumption, effectively holding its concentration constant.",
+    "wowFactor": "The steady-state approximation was independently developed by Max Bodenstein and later formalized by Lindemann for unimolecular reactions — it underpins essentially all modern enzyme kinetics via the Michaelis-Menten equation.",
+    "visualDescription": "A diagram showing a reactive intermediate species with arrows of equal size flowing in (formation) and out (consumption), labeled 'd[I]/dt = 0'",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_5",
+      "Topic_5.9"
+    ]
+  },
+  {
+    "id": "ap_chem_5_9_ssa_vs_pre_equilibrium",
+    "correctAnswer": "does not accumulate",
+    "acceptableAlternatives": [
+      "is present in low concentration",
+      "is highly reactive",
+      "is consumed as fast as formed"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "reaches equilibrium with reactants",
+      "is present in high concentration",
+      "is the same as a catalyst",
+      "reacts slowly",
+      "appears in the overall equation",
+      "is never consumed",
+      "is formed only in the last step",
+      "has a long lifetime"
+    ],
+    "quizQuestion": "The steady-state approximation is most appropriate when the reactive intermediate ___ to significant levels during the reaction.",
+    "explanation": "If an intermediate were to build up in concentration, the steady-state assumption d[I]/dt \u2248 0 would break down. The approximation is valid when the intermediate is so reactive that consumption nearly balances formation at all times, keeping [I] tiny. This contrasts with the pre-equilibrium case, where the intermediate can be more stable and reach a true equilibrium.",
+    "statement": "The steady-state approximation applies when a reactive intermediate does not accumulate — its formation rate and consumption rate are nearly equal at all times.",
+    "wowFactor": "In atmospheric chemistry, hydroxyl radicals (OH\u2022) are classic steady-state intermediates — they form and react so rapidly that their steady-state concentration in the troposphere is only about 10\u2076 molecules per cm\u00b3 out of 10¹\u2079 total molecules.",
+    "visualDescription": "A graph of concentration vs. time showing a reactant declining and a product rising, with a third flat dashed line near zero labeled '[intermediate] steady state'",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_5",
+      "Topic_5.9"
+    ]
+  },
+  {
+    "id": "ap_chem_5_10_energy_profile_intermediate",
+    "correctAnswer": "local minimum",
+    "acceptableAlternatives": [
+      "energy valley",
+      "local energy minimum",
+      "valley"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "local maximum",
+      "global minimum",
+      "transition state",
+      "activation peak",
+      "energy plateau",
+      "saddle point",
+      "inflection point",
+      "global maximum"
+    ],
+    "quizQuestion": "On a multistep reaction energy profile, an intermediate appears as a ___ on the potential energy curve.",
+    "explanation": "A transition state is an energy maximum (a peak) — it cannot be isolated. An intermediate is an energy minimum (a valley) between two peaks — it is a real species that exists momentarily with finite lifetime. The deeper the valley, the more stable and longer-lived the intermediate.",
+    "statement": "On a potential energy diagram, intermediates appear as local minima (valleys) between transition state peaks.",
+    "wowFactor": "Some intermediates are so stable they can be bottled — tert-butyl carbocation salts have been isolated in superacid solutions at low temperature, giving chemists direct evidence for species usually only inferred from kinetics.",
+    "visualDescription": "A smooth multistep energy diagram with two peaks (transition states) and a valley between them labeled 'intermediate', energy on the y-axis and reaction progress on the x-axis",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_5",
+      "Topic_5.10"
+    ]
+  },
+  {
+    "id": "ap_chem_5_10_overall_ea_multistep",
+    "correctAnswer": "highest energy transition state",
+    "acceptableAlternatives": [
+      "highest transition state",
+      "largest activation energy step",
+      "tallest energy barrier"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "lowest energy transition state",
+      "deepest intermediate",
+      "first transition state",
+      "last transition state",
+      "average of all transition states",
+      "sum of all activation energies",
+      "energy of the intermediate",
+      "difference between products and reactants"
+    ],
+    "quizQuestion": "In a multistep reaction, the overall activation energy is determined by the ___ relative to the energy of the starting reactants.",
+    "explanation": "The overall rate is limited by whichever step has the highest energy barrier. On the energy diagram, this is the tallest peak. The overall Ea is measured from the energy of the initial reactants to the height of this highest peak — even if that peak belongs to a later step in the mechanism.",
+    "statement": "The overall activation energy of a multistep reaction equals the energy difference between the initial reactants and the highest energy transition state on the diagram.",
+    "wowFactor": "In some multistep reactions the highest barrier belongs to the second or third step — meaning the first intermediate must form before the true bottleneck is reached, making the mechanism even harder to deduce from just one kinetic measurement.",
+    "visualDescription": "A three-step energy profile with peaks at different heights; the tallest peak is highlighted with a double-headed arrow from the reactant baseline labeled 'overall Ea'",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_5",
+      "Topic_5.10"
+    ]
+  },
+  {
+    "id": "ap_chem_5_10_delta_h_energy_profile",
+    "correctAnswer": "products minus reactants",
+    "acceptableAlternatives": [
+      "energy of products minus energy of reactants",
+      "difference in energy between products and reactants"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "reactants minus products",
+      "height of the highest peak",
+      "height of the lowest peak",
+      "energy of the intermediate",
+      "sum of all peak heights",
+      "average energy of the pathway",
+      "energy of the transition state",
+      "activation energy of the first step"
+    ],
+    "quizQuestion": "On a potential energy diagram, \u0394H for the reaction equals the ___ on the energy axis.",
+    "explanation": "\u0394H is an endpoint-to-endpoint quantity: it is the potential energy of the products minus the potential energy of the reactants. If products are lower in energy than reactants, \u0394H < 0 (exothermic). If higher, \u0394H > 0 (endothermic). The activation energy peaks along the pathway do not affect the value of \u0394H.",
+    "statement": "\u0394H on a potential energy diagram equals the energy of the products minus the energy of the reactants, regardless of the pathway taken.",
+    "wowFactor": "Because \u0394H is a state function, it is completely independent of the mechanism — a reaction can go through ten intermediates or zero, and \u0394H is the same. This is Hess's Law in action.",
+    "visualDescription": "An energy diagram with reactants on the left and products on the right at a lower level; a double-headed arrow between the two baseline levels is labeled '\u0394H (negative)'",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_5",
+      "Topic_5.10"
+    ]
+  },
+  {
+    "id": "ap_chem_5_11_catalyst_ea",
+    "correctAnswer": "lowers the activation energy",
+    "acceptableAlternatives": [
+      "decreases the activation energy",
+      "reduces Ea",
+      "lowers Ea"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "raises the activation energy",
+      "changes \u0394H of the reaction",
+      "is consumed in the reaction",
+      "changes the equilibrium constant",
+      "increases the rate constant at all temperatures equally",
+      "slows the reverse reaction",
+      "changes the stoichiometry",
+      "supplies activation energy to reactants"
+    ],
+    "quizQuestion": "A catalyst speeds up a reaction by providing an alternative pathway that ___.",
+    "explanation": "A catalyst is not consumed — it appears in an early elementary step and is regenerated in a later step. By providing a different mechanism with a lower-energy transition state, it reduces Ea and therefore dramatically increases the rate (via the Arrhenius equation). Crucially, it does not alter \u0394H, \u0394G, or the equilibrium constant — only the speed at which equilibrium is reached.",
+    "statement": "A catalyst provides an alternative reaction pathway with a lower activation energy, increasing reaction rate without being consumed or changing \u0394H.",
+    "wowFactor": "Catalytic converters in cars use platinum and palladium to reduce the activation energy for converting toxic CO and NOx into CO\u2082 and N\u2082 — a heterogeneous catalysis process that processes thousands of liters of exhaust per minute.",
+    "visualDescription": "Two overlapping energy diagrams on the same axes: the uncatalyzed pathway with a tall peak and the catalyzed pathway with a shorter peak, both starting and ending at the same reactant and product energy levels",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_5",
+      "Topic_5.11"
+    ]
+  },
+  {
+    "id": "ap_chem_5_11_homogeneous_heterogeneous_catalyst",
+    "correctAnswer": "homogeneous",
+    "acceptableAlternatives": [
+      "homogenous catalyst"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "heterogeneous",
+      "enzymatic",
+      "biological",
+      "surface",
+      "solid-phase",
+      "photocatalytic",
+      "acid-base",
+      "organometallic"
+    ],
+    "quizQuestion": "A catalyst that exists in the same phase as the reactants is classified as a ___ catalyst.",
+    "explanation": "Homogeneous means 'same phase.' For example, H\u207a (acid) catalyzing an ester hydrolysis in aqueous solution is homogeneous because all species are in the liquid phase. Heterogeneous catalysts (such as solid platinum catalyzing a gas-phase reaction) work at a phase interface, which introduces surface area as a critical variable.",
+    "statement": "A homogeneous catalyst is in the same phase as the reactants; a heterogeneous catalyst is in a different phase.",
+    "wowFactor": "Industrial ammonia synthesis (Haber process) uses a solid iron catalyst with a gaseous N\u2082/H\u2082 mixture — classic heterogeneous catalysis. Without it, roughly half the nitrogen in your body's amino acids would not exist.",
+    "visualDescription": "A two-panel comparison: left panel shows catalyst and reactants all as aqueous molecules (homogeneous); right panel shows a solid catalyst surface with gas molecules adsorbing onto it (heterogeneous)",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_5",
+      "Topic_5.11"
+    ]
+  },
+  {
+    "id": "ap_chem_5_11_enzyme_catalyst_type",
+    "correctAnswer": "enzymes",
+    "acceptableAlternatives": [
+      "biological catalysts",
+      "enzyme catalysts"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "cofactors",
+      "substrates",
+      "hormones",
+      "ribosomes",
+      "ATP",
+      "antibodies",
+      "vitamins",
+      "inhibitors"
+    ],
+    "quizQuestion": "___ are biological catalysts, typically proteins, that lower activation energy for biochemical reactions.",
+    "explanation": "Enzymes are proteins (or occasionally RNA — ribozymes) that bind a specific substrate at their active site, lower the activation energy, and release product unchanged themselves. They are the ultimate example of biological homogeneous catalysis, increasing reaction rates by factors of 10\u2076 to 10¹\u00b2 compared to uncatalyzed reactions.",
+    "statement": "Enzymes are biological catalysts — typically proteins — that provide a lower-Ea pathway for specific biochemical reactions without being consumed.",
+    "wowFactor": "The enzyme catalase decomposes hydrogen peroxide at up to 40 million molecules per second per enzyme molecule. Without it, the H\u2082O\u2082 produced by your metabolism would destroy your cells within seconds.",
+    "visualDescription": "A stylized enzyme with its active site (pocket shape) binding a substrate molecule, surrounded by product molecules floating away, in a soft cellular background",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_5",
+      "Topic_5.11"
+    ]
+  },
+  {
+    "id": "ap_chem_5_11_catalyst_in_mechanism",
+    "correctAnswer": "regenerated",
+    "acceptableAlternatives": [
+      "reproduced",
+      "reformed",
+      "released unchanged",
+      "not consumed"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "consumed",
+      "transformed into a product",
+      "destroyed",
+      "stored as an intermediate",
+      "appears only in the last step",
+      "added to the products",
+      "changed to a different compound",
+      "removed from the mechanism"
+    ],
+    "quizQuestion": "In a catalyzed mechanism, the catalyst is consumed in an early step and ___ in a later step, so it does not appear in the overall equation.",
+    "explanation": "A catalyst participates in elementary steps — it is used up in one step and remade in another. Because it cancels out when the steps are summed, it does not appear in the overall balanced equation. This is the mechanistic definition of a catalyst, consistent with its macroscopic definition of being neither a reactant nor a product in the net reaction.",
+    "statement": "In a mechanism, a catalyst is consumed in one elementary step and regenerated in a later step, so it cancels out of the overall equation.",
+    "wowFactor": "Ozone depletion is driven by Cl atoms acting as catalysts: Cl destroys O\u2083, becomes ClO, then reacts with another O to regenerate Cl — one chlorine atom can destroy over 100,000 ozone molecules before leaving the stratosphere.",
+    "visualDescription": "A two-step mechanism diagram where Cl enters Step 1, becomes ClO as an intermediate, then ClO enters Step 2 and Cl exits regenerated — the net equation shows only O\u2083 \u2192 O\u2082",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_5",
+      "Topic_5.11"
+    ]
+  },
+  {
+    "id": "ap_chem_6_1_endothermic_sign",
+    "correctAnswer": "positive",
+    "acceptableAlternatives": [
+      "\u0394H > 0",
+      "greater than zero",
+      "endothermic"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "negative",
+      "zero",
+      "undefined",
+      "variable",
+      "temperature-dependent",
+      "equal to Ea",
+      "equal to q surroundings",
+      "equal to the activation energy"
+    ],
+    "quizQuestion": "An endothermic process has a ___ value of \u0394H because the system absorbs heat from the surroundings.",
+    "explanation": "Sign convention: \u0394H = H_products \u2013 H_reactants. For an endothermic process the products have more enthalpy than the reactants, so \u0394H > 0. The system gains thermal energy from the surroundings, which is why a cold pack feels cold — the dissolving salt absorbs heat from your hand (the surroundings).",
+    "statement": "Endothermic processes have \u0394H > 0; the system absorbs heat from the surroundings.",
+    "wowFactor": "Instant cold packs exploit endothermic dissolution: ammonium nitrate dissolving in water absorbs 25.7 kJ/mol of heat, dropping temperatures to near 0\u00b0C in seconds — pure chemistry with no moving parts.",
+    "visualDescription": "An instant cold pack being activated, its surface visually frost-covered, with arrows pointing inward labeled 'heat absorbed from surroundings' and a thermometer showing temperature drop",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.1"
+    ]
+  },
+  {
+    "id": "ap_chem_6_1_exothermic_sign",
+    "correctAnswer": "negative",
+    "acceptableAlternatives": [
+      "\u0394H < 0",
+      "less than zero",
+      "exothermic"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "positive",
+      "zero",
+      "undefined",
+      "variable",
+      "equal to Ea",
+      "equal to q system",
+      "temperature-dependent",
+      "greater than zero"
+    ],
+    "quizQuestion": "An exothermic process has a ___ value of \u0394H because the system releases heat to the surroundings.",
+    "explanation": "For an exothermic process, the products have less enthalpy than the reactants, so \u0394H = H_products \u2013 H_reactants < 0. The released energy transfers to the surroundings as heat, raising the surroundings' temperature. Hand warmers and combustion reactions are familiar exothermic examples.",
+    "statement": "Exothermic processes have \u0394H < 0; the system releases heat to the surroundings.",
+    "wowFactor": "Thermite (iron oxide + aluminum) is so exothermic it reaches ~2500\u00b0C — hot enough to melt iron. Its \u0394H is about \u2013851 kJ/mol, releasing more energy per mole than most explosives.",
+    "visualDescription": "A hand warmer glowing warm orange, with arrows pointing outward labeled 'heat released to surroundings' and a thermometer showing temperature rise around it",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.1"
+    ]
+  },
+  {
+    "id": "ap_chem_6_1_system_surroundings_heat",
+    "correctAnswer": "q_system = \u2013q_surroundings",
+    "acceptableAlternatives": [
+      "q system equals negative q surroundings",
+      "q_sys = \u2013q_surr",
+      "heat gained by system equals heat lost by surroundings"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "q_system = q_surroundings",
+      "q_system = \u0394H",
+      "q_system = 0",
+      "q_surroundings = \u0394S",
+      "q_system = \u2013\u0394G",
+      "q_total = 0",
+      "q_system = Ea \u2013 \u0394H",
+      "q_surroundings = \u0394H/T"
+    ],
+    "quizQuestion": "Conservation of energy in a thermal process is expressed by the relationship ___.",
+    "explanation": "Energy is conserved: heat lost by the system must equal heat gained by the surroundings, and vice versa. The negative sign enforces this: if the system loses 500 J (q_sys = \u2013500 J), the surroundings gain 500 J (q_surr = +500 J). This relationship is the foundation of calorimetry calculations.",
+    "statement": "By conservation of energy, q_system = \u2013q_surroundings: any heat released by the system is absorbed by the surroundings and vice versa.",
+    "wowFactor": "This single equation is the workhorse of all calorimetry — every coffee-cup and bomb calorimeter calculation depends on it. It is essentially the First Law of Thermodynamics applied to heat flow at constant pressure.",
+    "visualDescription": "A diagram of a beaker (system) inside a calorimeter (surroundings) with a heat arrow labeled '+q' going from system to surroundings, and the equation q_sys = \u2013q_surr displayed prominently",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.1"
+    ]
+  },
+  {
+    "id": "ap_chem_6_1_feels_cold_endothermic",
+    "correctAnswer": "endothermic",
+    "acceptableAlternatives": [
+      "heat-absorbing",
+      "absorbs heat"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "exothermic",
+      "thermoneutral",
+      "catalytic",
+      "adiabatic",
+      "isothermal",
+      "reversible",
+      "spontaneous",
+      "entropy-driven"
+    ],
+    "quizQuestion": "A cold pack dissolving in water feels cold to the touch because the dissolving process is ___ and absorbs heat from the surroundings (your hand).",
+    "explanation": "The surroundings (your hand) lose heat to the system (the dissolving salt and water), so q_surroundings < 0 and the surroundings cool down. You perceive this as 'cold.' Any process where the system absorbs heat (\u0394H > 0) will cool its surroundings — the macroscopic observation directly reflects the sign of \u0394H.",
+    "statement": "An endothermic process feels cold to touch because it absorbs heat from the surroundings, lowering the surroundings' temperature.",
+    "wowFactor": "Sweating is endothermic: liquid water evaporating from your skin absorbs 2,430 J per gram — roughly 580 calories per gram. It's the most efficient cooling mechanism in the human body.",
+    "visualDescription": "A person pressing a white cold pack against their cheek, frost forming on the pack surface, a small thermometer nearby showing a drop, the equation \u0394H > 0 displayed in the corner",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.1"
+    ]
+  },
+  {
+    "id": "ap_chem_6_2_ea_energy_diagram",
+    "correctAnswer": "activation energy",
+    "acceptableAlternatives": [
+      "Ea",
+      "activation barrier",
+      "energy barrier"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "enthalpy change",
+      "free energy change",
+      "entropy change",
+      "bond dissociation energy",
+      "ionization energy",
+      "lattice energy",
+      "heat of formation",
+      "threshold energy"
+    ],
+    "quizQuestion": "On a potential energy diagram, the height of the energy barrier above the reactants is equal to the ___ of the reaction.",
+    "explanation": "The activation energy (Ea) is the minimum energy that colliding molecules must possess for a reaction to occur. On the energy diagram it is measured from the reactant energy level to the top of the transition state peak. A higher barrier means fewer molecules have sufficient energy at a given temperature, which is why Ea controls how sensitive rate is to temperature.",
+    "statement": "On a potential energy diagram, the activation energy equals the height of the transition state peak above the reactant energy level.",
+    "wowFactor": "Every 10\u00b0C rise in temperature roughly doubles reaction rate because it doubles the fraction of molecules with energy \u2265 Ea — a consequence of the exponential Boltzmann distribution, not a linear effect.",
+    "visualDescription": "A classic hill-shaped energy diagram with reactants on the left, products on the right, and a peak in the middle labeled 'transition state'; a vertical double-headed arrow from reactant baseline to peak is labeled 'Ea'",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.2"
+    ]
+  },
+  {
+    "id": "ap_chem_6_2_reaction_progress_axis",
+    "correctAnswer": "reaction coordinate",
+    "acceptableAlternatives": [
+      "reaction progress",
+      "extent of reaction",
+      "reaction progress axis"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "time axis",
+      "temperature axis",
+      "concentration axis",
+      "entropy axis",
+      "bond length axis",
+      "free energy axis",
+      "equilibrium axis",
+      "collision frequency axis"
+    ],
+    "quizQuestion": "On a potential energy diagram, the horizontal axis is called the ___ and represents the progress of the reaction from reactants to products.",
+    "explanation": "The reaction coordinate (or reaction progress) axis is not time — it represents a conceptual path from reactants through the transition state to products, tracking changes in bond lengths and angles as the reaction proceeds. This clarifies that the diagram shows energetics along the reaction pathway, not a time series.",
+    "statement": "The horizontal axis of a potential energy diagram is the reaction coordinate, representing the structural progress from reactants to products.",
+    "wowFactor": "The 'reaction coordinate' is not a single bond distance — it is a multidimensional path through a potential energy surface. For a three-atom reaction like H + H\u2082 \u2192 H\u2082 + H, the full surface is a 3D landscape that Nobel Laureate Dudley Herschbach mapped experimentally using crossed molecular beams.",
+    "visualDescription": "A labeled potential energy diagram with 'Potential Energy (kJ/mol)' on the y-axis and 'Reaction Coordinate' on the x-axis, the curve showing reactants, a peak, and products",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.2"
+    ]
+  },
+  {
+    "id": "ap_chem_6_2_transition_state_diagram",
+    "correctAnswer": "transition state",
+    "acceptableAlternatives": [
+      "activated complex",
+      "activation complex"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "intermediate",
+      "product",
+      "reactant",
+      "catalyst",
+      "equilibrium state",
+      "local minimum",
+      "excited state",
+      "ionized species"
+    ],
+    "quizQuestion": "The highest-energy point on a potential energy diagram represents the ___, which cannot be isolated.",
+    "explanation": "The transition state (or activated complex) sits at the top of the energy barrier and has the highest potential energy along the reaction pathway. It is not a stable species — it exists only instantaneously as bonds are simultaneously breaking and forming. It cannot be isolated or directly observed under normal conditions, unlike an intermediate.",
+    "statement": "The highest-energy point on a potential energy diagram is the transition state (activated complex); it is an unstable species that cannot be isolated.",
+    "wowFactor": "Femtochemistry, pioneered by Ahmed Zewail (Nobel 1999), uses laser pulses of 10\u207b¹\u00b5 seconds to photograph transition states as they exist — the first time humans could 'see' these fleeting molecular structures.",
+    "visualDescription": "A potential energy curve with the peak circled in red and labeled 'transition state (activated complex)'; a magnified inset shows a partial bond between two atoms, partially broken and partially formed",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.2"
+    ]
+  },
+  {
+    "id": "ap_chem_6_3_heat_flow_direction",
+    "correctAnswer": "high temperature to low temperature",
+    "acceptableAlternatives": [
+      "hot to cold",
+      "from hot to cold",
+      "higher temperature to lower temperature"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "low temperature to high temperature",
+      "cold to hot",
+      "high pressure to low pressure",
+      "high concentration to low concentration",
+      "randomly in all directions",
+      "only through conduction",
+      "only through convection",
+      "only in exothermic reactions"
+    ],
+    "quizQuestion": "When two objects at different temperatures are in contact, heat spontaneously flows from ___ until thermal equilibrium is reached.",
+    "explanation": "This is a statement of the Second Law of Thermodynamics: heat flows spontaneously in the direction that increases total entropy. Hot objects have more thermally energetic particles; contact allows energy transfer to the cooler object until both reach the same temperature. Reversing this (spontaneously moving heat from cold to hot) would require work — the basis for refrigerators.",
+    "statement": "Heat flows spontaneously from objects at higher temperature to objects at lower temperature, ceasing when thermal equilibrium is reached.",
+    "wowFactor": "Refrigerators and air conditioners do NOT make cold — they pump heat from a cooler interior to a warmer exterior using work, essentially running the natural heat-flow process in reverse at an energy cost.",
+    "visualDescription": "Two touching blocks, the left one red and labeled 'Hot (high T)' and the right one blue labeled 'Cold (low T)'; arrows between them show heat flowing left to right, labeled 'q'",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.3"
+    ]
+  },
+  {
+    "id": "ap_chem_6_3_thermal_equilibrium",
+    "correctAnswer": "thermal equilibrium",
+    "acceptableAlternatives": [
+      "thermodynamic equilibrium",
+      "temperature equilibrium"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "chemical equilibrium",
+      "dynamic equilibrium",
+      "mechanical equilibrium",
+      "phase equilibrium",
+      "steady state",
+      "saturation point",
+      "heat death",
+      "isothermal state"
+    ],
+    "quizQuestion": "When two objects in contact reach the same temperature and net heat flow between them ceases, they are said to be in ___.",
+    "explanation": "Thermal equilibrium is reached when both objects have the same temperature. Once temperatures are equal, there is no net driving force for heat transfer — the system is at equilibrium. This is the end state toward which all thermal processes tend. It underlies all calorimetry: when the calorimeter system reaches a final steady temperature, thermal equilibrium has been achieved.",
+    "statement": "Thermal equilibrium is the state in which two objects in contact reach the same temperature and net heat transfer between them stops.",
+    "wowFactor": "The Zeroth Law of Thermodynamics (named 'zeroth' because it was formulated after the First and Second Laws but is logically prior) states: if A is in thermal equilibrium with B, and B is in thermal equilibrium with C, then A is in equilibrium with C — the logical foundation of all thermometers.",
+    "visualDescription": "Two initially different-colored blocks (red and blue) transitioning over time to the same neutral warm color, with a thermometer between them showing matching temperatures, labeled 'thermal equilibrium'",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.3"
+    ]
+  },
+  {
+    "id": "ap_chem_6_3_zeroth_law",
+    "correctAnswer": "Zeroth Law of Thermodynamics",
+    "acceptableAlternatives": [
+      "zeroth law",
+      "0th law of thermodynamics"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "First Law of Thermodynamics",
+      "Second Law of Thermodynamics",
+      "Third Law of Thermodynamics",
+      "Hess's Law",
+      "Le Chatelier's Principle",
+      "Fourier's Law of Heat Conduction",
+      "Boyle's Law",
+      "Newton's Law of Cooling"
+    ],
+    "quizQuestion": "The ___ states that if two systems are each in thermal equilibrium with a third system, then they are in thermal equilibrium with each other.",
+    "explanation": "The Zeroth Law establishes that temperature is a transitive property: if T_A = T_C and T_B = T_C, then T_A = T_B. This seemingly obvious statement provides the logical foundation for using thermometers — a thermometer is the 'third body' that can be compared to any other system. Without this law, the concept of a universal temperature scale would not be rigorously defined.",
+    "statement": "The Zeroth Law of Thermodynamics states that two systems each in thermal equilibrium with a third system are in thermal equilibrium with each other — the basis for thermometry.",
+    "wowFactor": "The law was called 'zeroth' by Ralph Fowler in the 1930s because it was recognized as so fundamental — more basic than the First and Second Laws — that it had to logically come before them, despite being formalized much later.",
+    "visualDescription": "Three labeled boxes A, B, and C with double-headed equilibrium arrows: A\u21d4C and B\u21d4C, then a derived arrow A\u21d4B, all labeled with T = same value, demonstrating the transitive property of temperature",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.3"
+    ]
+  }
+]

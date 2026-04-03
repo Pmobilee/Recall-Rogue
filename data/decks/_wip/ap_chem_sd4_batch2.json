@@ -1,0 +1,773 @@
+[
+  {
+    "id": "ap_chem_7_8_q_vs_k_direction",
+    "correctAnswer": "Q < K",
+    "acceptableAlternatives": [
+      "reaction quotient less than equilibrium constant",
+      "Q is less than K"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Q > K",
+      "Q = K",
+      "Q ≥ K",
+      "Q ≤ K",
+      "K > 1",
+      "K < 1",
+      "ΔG < 0",
+      "Keq = 0"
+    ],
+    "quizQuestion": "A particulate diagram shows more reactant particles than product particles compared to what is expected at equilibrium. Which relationship between Q and K does this represent?",
+    "explanation": "When Q < K, the ratio of products to reactants is smaller than at equilibrium. The system must shift right (toward products) to reach equilibrium. A particulate diagram with excess reactants relative to equilibrium visually represents this Q < K condition.",
+    "statement": "When Q < K, a reaction has more reactants than equilibrium requires and will shift right toward products.",
+    "wowFactor": "The reaction quotient Q is just a snapshot K — you calculate it exactly like K but using any concentrations, not just equilibrium ones. It tells you which direction time will run.",
+    "visualDescription": "Two side-by-side diagrams: left shows many red spheres (reactants) and few blue spheres (products), right shows equal distribution; arrow pointing right between them labeled Q < K",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.8"
+    ]
+  },
+  {
+    "id": "ap_chem_7_8_bar_graph_equilibrium",
+    "correctAnswer": "constant concentrations",
+    "acceptableAlternatives": [
+      "flat bars",
+      "concentrations stop changing",
+      "unchanging concentrations",
+      "steady concentrations"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "zero concentrations",
+      "equal concentrations",
+      "maximum concentrations",
+      "minimum concentrations",
+      "increasing concentrations",
+      "decreasing concentrations",
+      "oscillating concentrations",
+      "complete conversion"
+    ],
+    "quizQuestion": "On a bar graph showing concentration versus time for an equilibrium reaction, what feature of the bars indicates that equilibrium has been reached?",
+    "explanation": "At equilibrium, the forward and reverse reaction rates are equal, so the concentrations of all species stop changing. On a bar graph, this appears as bars that remain the same height over time — they neither grow nor shrink. This is the macroscopic signature of dynamic equilibrium.",
+    "statement": "On a concentration-time bar graph, equilibrium is represented by bars that remain constant in height.",
+    "wowFactor": "Even though the bars look static at equilibrium, billions of individual molecules are still reacting every second — forward and reverse processes perfectly canceling each other out.",
+    "visualDescription": "A bar graph with time on the x-axis showing reactant bars shrinking and product bars growing, then both leveling off at constant heights with a dashed vertical line marking equilibrium",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.8"
+    ]
+  },
+  {
+    "id": "ap_chem_7_9_le_chatelier_definition",
+    "correctAnswer": "Le Chatelier's Principle",
+    "acceptableAlternatives": [
+      "Le Chatelier principle",
+      "Le Chatelier's rule"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Hess's Law",
+      "Dalton's Law",
+      "Henry's Law",
+      "Raoult's Law",
+      "Boyle's Law",
+      "equilibrium constant rule",
+      "common-ion effect",
+      "mass action law"
+    ],
+    "quizQuestion": "The principle stating that when a stress is applied to a system at equilibrium, the system shifts in the direction that partially counteracts that stress is called ___.",
+    "explanation": "Le Chatelier's Principle (1888) provides a qualitative prediction: any change in concentration, pressure, volume, or temperature will cause a shift that opposes the change. It works because the system is always trying to re-establish the ratio of products to reactants equal to K.",
+    "statement": "Le Chatelier's Principle predicts that an equilibrium system shifts to partially counteract any applied stress.",
+    "wowFactor": "Henri Louis Le Chatelier was a French chemist who formulated this principle in 1884 while trying to understand why industrial processes didn't behave as expected — it became one of the most practically useful rules in all of chemistry.",
+    "visualDescription": "Portrait of Le Chatelier on the left; on the right, a seesaw balanced in the middle with 'stress' pushing one side down and arrows showing the system responding",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.9"
+    ]
+  },
+  {
+    "id": "ap_chem_7_9_temperature_shift_endothermic",
+    "correctAnswer": "right (toward products)",
+    "acceptableAlternatives": [
+      "toward products",
+      "forward direction",
+      "right",
+      "toward the right"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "left (toward reactants)",
+      "toward reactants",
+      "reverse direction",
+      "no shift occurs",
+      "toward the side with more moles of gas",
+      "toward the side with fewer moles of gas",
+      "toward lower entropy",
+      "toward higher pressure"
+    ],
+    "quizQuestion": "For an endothermic reaction at equilibrium, increasing the temperature causes the equilibrium to shift ___.",
+    "explanation": "For an endothermic reaction, heat can be thought of as a reactant. Adding heat (increasing temperature) increases the amount of this 'reactant,' so the equilibrium shifts right toward products to consume the added heat. This also means K increases when temperature increases for endothermic reactions.",
+    "statement": "Increasing temperature shifts an endothermic equilibrium toward products (right), increasing the value of K.",
+    "wowFactor": "Unlike concentration and pressure changes which shift equilibrium without changing K, temperature is the ONLY common stress that actually changes the numerical value of K itself.",
+    "visualDescription": "A reaction energy diagram with reactants higher than products for endothermic reaction, a thermometer showing temperature increase, and arrows pointing right along the reaction coordinate",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.9"
+    ]
+  },
+  {
+    "id": "ap_chem_7_9_pressure_volume_shift",
+    "correctAnswer": "fewer moles of gas",
+    "acceptableAlternatives": [
+      "the side with fewer gas moles",
+      "lower moles of gas",
+      "side with less gas"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "more moles of gas",
+      "the side with more gas moles",
+      "the reactant side always",
+      "the product side always",
+      "the side with higher temperature",
+      "the side with more solute",
+      "the side with higher entropy",
+      "no shift, pressure has no effect"
+    ],
+    "quizQuestion": "When pressure is increased by decreasing the volume of a gaseous equilibrium system, the equilibrium shifts toward the side with ___.",
+    "explanation": "Increasing pressure by decreasing volume favors the side with fewer total moles of gas, because reducing the number of gas molecules reduces pressure (opposing the stress). If both sides have the same moles of gas, there is no shift. This is a direct application of Le Chatelier's Principle to pressure changes.",
+    "statement": "Increasing pressure in a gas-phase equilibrium shifts the reaction toward the side with fewer moles of gas.",
+    "wowFactor": "The Haber process for making ammonia (N₂ + 3H₂ → 2NH₄) uses pressures of 150–300 atm specifically to exploit this shift — 4 moles of gas reactants produce only 2 moles of ammonia product.",
+    "visualDescription": "A piston compressing a cylinder containing colored gas spheres, with arrows showing the equilibrium shifting toward the side with fewer spheres",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.9"
+    ]
+  },
+  {
+    "id": "ap_chem_7_10_adding_reactant_shift",
+    "correctAnswer": "Q < K",
+    "acceptableAlternatives": [
+      "reaction quotient less than K",
+      "Q is less than K"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Q > K",
+      "Q = K",
+      "K increases",
+      "K decreases",
+      "ΔG becomes positive",
+      "Q equals zero",
+      "K becomes undefined",
+      "Q > 1"
+    ],
+    "quizQuestion": "When a reactant is added to a system at equilibrium, the immediate effect on the reaction quotient Q relative to K is that ___.",
+    "explanation": "Adding a reactant immediately increases its concentration, which is in the denominator of Q (for the given form where products/reactants). This makes Q smaller than K. Since Q < K, the system must shift right (toward products) to re-establish equilibrium and return Q to the value of K.",
+    "statement": "Adding a reactant to an equilibrium system makes Q < K, causing the reaction to shift right toward products.",
+    "wowFactor": "This Q vs K framework is why industrial chemists continuously add reactants to manufacturing processes — by never letting equilibrium fully establish, they keep Q below K and maintain a constant shift toward products.",
+    "visualDescription": "A balance scale tipped to the reactant side after adding more reactants, with Q < K labels and an arrow showing the shift right toward products",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.10"
+    ]
+  },
+  {
+    "id": "ap_chem_7_10_removing_product_shift",
+    "correctAnswer": "right (toward products)",
+    "acceptableAlternatives": [
+      "toward products",
+      "forward direction",
+      "right",
+      "shift right"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "left (toward reactants)",
+      "no shift",
+      "toward reactants",
+      "reverse direction",
+      "no change because K is unchanged",
+      "toward higher entropy",
+      "toward fewer moles of gas",
+      "toward lower temperature"
+    ],
+    "quizQuestion": "Removing a product from a system at equilibrium causes the equilibrium to shift ___.",
+    "explanation": "Removing a product decreases its concentration, making Q < K (the numerator of Q decreases). The system responds by shifting right to produce more product, restoring the Q = K condition. This is exploited industrially to drive reactions to completion by removing products as they form.",
+    "statement": "Removing a product from an equilibrium system makes Q < K, shifting the equilibrium right to produce more product.",
+    "wowFactor": "Limestone cave formation runs in reverse: CO₂ gas constantly escaping from acidified water removes a 'product,' keeping CaCO₃ dissolving indefinitely despite its low Ksp.",
+    "visualDescription": "A reaction vessel diagram showing a product being siphoned out with a pump, and arrows showing the equilibrium shifting right to replace the removed product",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.10"
+    ]
+  },
+  {
+    "id": "ap_chem_7_10_catalyst_equilibrium",
+    "correctAnswer": "no shift in equilibrium position",
+    "acceptableAlternatives": [
+      "equilibrium position unchanged",
+      "no effect on equilibrium",
+      "equilibrium is unaffected",
+      "does not shift equilibrium"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "shift right toward products",
+      "shift left toward reactants",
+      "increases K",
+      "decreases K",
+      "increases product concentration only",
+      "decreases activation energy and shifts right",
+      "favors the endothermic direction",
+      "increases the rate of forward reaction only"
+    ],
+    "quizQuestion": "Adding a catalyst to a system at equilibrium has what effect on the equilibrium position?",
+    "explanation": "A catalyst lowers the activation energy equally for both the forward and reverse reactions, increasing both rates by the same factor. Since both rates increase equally, the ratio of rates (and thus the concentrations at equilibrium) remains the same. The catalyst speeds up how fast equilibrium is reached but does NOT change where equilibrium lies.",
+    "statement": "A catalyst speeds up both forward and reverse reactions equally, reaching equilibrium faster without shifting the equilibrium position or changing K.",
+    "wowFactor": "Catalytic converters in cars are a perfect example: they speed up the conversion of CO and NOₓ to CO₂ and N₂ enormously, but they cannot change the thermodynamically determined K — the concentrations at equilibrium stay the same.",
+    "visualDescription": "An energy diagram showing two activation energy hills — a tall one without catalyst and a shorter one with catalyst — with the same reactant and product energy levels, emphasizing identical ΔG",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.10"
+    ]
+  },
+  {
+    "id": "ap_chem_7_10_temperature_changes_K",
+    "correctAnswer": "K changes",
+    "acceptableAlternatives": [
+      "equilibrium constant changes",
+      "K increases or decreases",
+      "K is altered",
+      "the value of K changes"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "K remains constant",
+      "K stays the same",
+      "only Q changes",
+      "only concentrations change",
+      "activation energy changes",
+      "K becomes 1",
+      "equilibrium position does not change",
+      "rate constants are unchanged"
+    ],
+    "quizQuestion": "Unlike adding a reactant or changing pressure, what uniquely happens to the equilibrium constant K when temperature is changed?",
+    "explanation": "Temperature is the ONLY common stress that changes the value of K. Adding reactants, removing products, changing pressure, or adding a catalyst all shift the equilibrium position but leave K unchanged. Temperature change actually alters the thermodynamic favorability of the reaction, so the ratio of products to reactants at equilibrium genuinely changes.",
+    "statement": "Temperature is the only common stress that changes the numerical value of K; all other stresses shift equilibrium position but leave K constant.",
+    "wowFactor": "The van't Hoff equation (ln K₂/K₁ = -ΔH/R × (1/T₂ - 1/T₁)) quantifies this: you can calculate exactly how much K changes with temperature if you know the enthalpy of the reaction.",
+    "visualDescription": "A table showing different stresses (add reactant, change pressure, add catalyst, change temperature) with checkmarks next to 'shifts position' and only temperature having a checkmark under 'changes K'",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.10"
+    ]
+  },
+  {
+    "id": "ap_chem_7_11_ksp_definition",
+    "correctAnswer": "solubility product constant",
+    "acceptableAlternatives": [
+      "solubility product",
+      "Ksp",
+      "solubility equilibrium constant"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "solubility coefficient",
+      "dissolution constant",
+      "ion product constant",
+      "partition coefficient",
+      "Henry's constant",
+      "molar solubility",
+      "saturation constant",
+      "equilibrium quotient"
+    ],
+    "quizQuestion": "The equilibrium constant for the dissolution of a slightly soluble ionic compound in water is called the ___.",
+    "explanation": "Ksp (solubility product constant) is the equilibrium constant for the dissolution reaction of a slightly soluble salt. It equals the product of the ion concentrations, each raised to the power of its stoichiometric coefficient. Pure solids are excluded from the expression because their activity is defined as 1.",
+    "statement": "Ksp is the equilibrium constant for dissolving a slightly soluble salt, equal to the product of ion concentrations raised to their stoichiometric powers.",
+    "wowFactor": "Ksp values span an enormous range: AgCl has Ksp = 1.8×10⁻¹⁰ while BaSO₄ has Ksp = 1.1×10⁻¹⁰ — almost identical Ksp values, but they dissolve very differently in acid because of their anion chemistry.",
+    "visualDescription": "A diagram showing a slightly soluble salt crystal surrounded by water, with arrows showing ions dissolving into solution, and the Ksp expression written beneath",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.11"
+    ]
+  },
+  {
+    "id": "ap_chem_7_11_ksp_excludes_solid",
+    "correctAnswer": "pure solid",
+    "acceptableAlternatives": [
+      "solid reactant",
+      "the solid salt",
+      "undissolved solid",
+      "solid phase"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "water",
+      "dissolved ions",
+      "cations",
+      "anions",
+      "both ions",
+      "spectator ions",
+      "aqueous reactants",
+      "hydrated ions"
+    ],
+    "quizQuestion": "When writing the Ksp expression for a dissolution equilibrium, which species is excluded from the expression?",
+    "explanation": "Pure solids (and pure liquids like water) are excluded from equilibrium expressions because their concentration is constant — it doesn't change as the solid dissolves. Their activity is defined as exactly 1, so including them would just multiply the expression by 1. For CaF₂ → Ca²⁺ + 2F⁻, Ksp = [Ca²⁺][F⁻]², with no CaF₂ term.",
+    "statement": "Pure solids are excluded from Ksp expressions because their activity is constant and defined as 1.",
+    "wowFactor": "This 'activity = 1 for pure solids' rule is why you can calculate CaCO₃ dissolution in your stomach the same way regardless of whether you took one TUMS or ten — the solid concentration term simply doesn't appear.",
+    "visualDescription": "The dissolution equation for CaF₂ with an arrow showing the solid excluded from the Ksp box, while Ca²⁺ and F⁻ ions are circled and included in the expression",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.11"
+    ]
+  },
+  {
+    "id": "ap_chem_7_11_molar_solubility_from_ksp",
+    "correctAnswer": "molar solubility",
+    "acceptableAlternatives": [
+      "solubility in mol/L",
+      "s value",
+      "moles per liter that dissolve"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Ksp value",
+      "ion concentration",
+      "mass solubility",
+      "percent dissociation",
+      "saturation concentration",
+      "equilibrium constant",
+      "molality",
+      "normality"
+    ],
+    "quizQuestion": "The number of moles of a salt that dissolves per liter of solution to reach a saturated solution is called its ___.",
+    "explanation": "Molar solubility (often called 's') is determined by setting up an ICE table for the dissolution. For example, for CaF₂ with Ksp = 3.9×10⁻¹¹: letting s = molar solubility, Ksp = (s)(2s)² = 4s³, so s = ∛(Ksp/4). Molar solubility gives the maximum amount of salt that can dissolve before precipitation begins.",
+    "statement": "Molar solubility is the moles of salt that dissolve per liter at equilibrium, calculated from Ksp using an ICE table.",
+    "wowFactor": "Even 'insoluble' salts have finite molar solubility — BaSO₄ (used in barium swallows for X-rays) has a molar solubility of only 1×10⁻⁵ mol/L, but that's still 2.3 mg per liter of water.",
+    "visualDescription": "An ICE table for CaF₂ dissolution with 's' substituted in, arrows showing how to solve for s, and the relationship between molar solubility and Ksp highlighted",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.11"
+    ]
+  },
+  {
+    "id": "ap_chem_7_11_ksp_saturated_only",
+    "correctAnswer": "saturated solution",
+    "acceptableAlternatives": [
+      "saturated",
+      "a solution at saturation",
+      "solution at equilibrium with solid"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "unsaturated solution",
+      "supersaturated solution",
+      "dilute solution",
+      "concentrated solution",
+      "any aqueous solution",
+      "acidic solution",
+      "basic solution",
+      "buffered solution"
+    ],
+    "quizQuestion": "Ksp applies only when undissolved solid is in contact with solution, which means the solution must be a ___.",
+    "explanation": "Ksp is an equilibrium constant, so it only applies when the system is at equilibrium — meaning when undissolved solid is present and the solution is saturated. In an unsaturated solution (all solid has dissolved), there is no equilibrium with a solid phase, so Ksp does not apply as an equilibrium condition. The ion product Q can still be calculated for any solution and compared to Ksp.",
+    "statement": "Ksp applies only to saturated solutions where solid is in equilibrium with dissolved ions; unsaturated solutions use Q (the ion product) for comparison.",
+    "wowFactor": "Supersaturated solutions have Q > Ksp — they're 'waiting to crystallize.' A seed crystal or even a scratch on the glass can trigger dramatic spontaneous crystallization, like hand warmers that work by intentionally triggering crystallization.",
+    "visualDescription": "Three beakers labeled unsaturated (Q < Ksp), saturated (Q = Ksp, solid present), and supersaturated (Q > Ksp, crystallizing) with diagrams showing ion and solid amounts",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.11"
+    ]
+  },
+  {
+    "id": "ap_chem_7_12_common_ion_effect",
+    "correctAnswer": "decreases",
+    "acceptableAlternatives": [
+      "is reduced",
+      "goes down",
+      "is lowered",
+      "decreases significantly"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "increases",
+      "stays the same",
+      "doubles",
+      "triples",
+      "becomes zero",
+      "increases then decreases",
+      "is unaffected",
+      "equals Ksp"
+    ],
+    "quizQuestion": "When a common ion is added to a saturated solution of a slightly soluble salt, the molar solubility of the salt ___.",
+    "explanation": "Adding a common ion (one already present in solution) increases its concentration, making Q > Ksp. The system shifts left (Le Chatelier) to decrease the ion concentrations, causing more solid to precipitate. The new equilibrium has a lower molar solubility of the original salt. For example, adding NaCl to a saturated AgCl solution decreases AgCl solubility by increasing [Cl⁻].",
+    "statement": "The common-ion effect decreases the molar solubility of a salt because the added common ion shifts the dissolution equilibrium left, precipitating more solid.",
+    "wowFactor": "Kidney stones are partly caused by the common-ion effect in reverse: as urine becomes more concentrated (less water), the effective common-ion suppression decreases and calcium oxalate crystals precipitate out, forming painful stones.",
+    "visualDescription": "Two beakers side by side: one with saturated AgCl alone, one with NaCl added showing more white precipitate at the bottom, with the Ksp expression and arrows showing the left shift",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.12"
+    ]
+  },
+  {
+    "id": "ap_chem_7_12_common_ion_le_chatelier",
+    "correctAnswer": "left (toward solid)",
+    "acceptableAlternatives": [
+      "toward reactants",
+      "reverse direction",
+      "toward solid",
+      "left",
+      "shift left"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "right (toward ions)",
+      "no shift",
+      "toward dissolution",
+      "toward more solubility",
+      "toward higher temperature",
+      "forward direction",
+      "toward lower pressure",
+      "toward products"
+    ],
+    "quizQuestion": "By Le Chatelier's Principle, adding a common ion to a solubility equilibrium causes the dissolution equilibrium to shift ___.",
+    "explanation": "For a dissolution like AgCl(s) ⇌ Ag⁺(aq) + Cl⁻(aq), adding Cl⁻ (a common ion) increases Q above Ksp. Le Chatelier's Principle predicts the system shifts left (reverse, toward solid) to reduce the stress. This means more AgCl precipitates and [Ag⁺] decreases, reducing the overall solubility.",
+    "statement": "Adding a common ion makes Q > Ksp, so by Le Chatelier's Principle the dissolution equilibrium shifts left, precipitating more solid.",
+    "wowFactor": "This principle is used in gravimetric analysis: adding excess precipitating agent (a common ion) ensures virtually complete precipitation, making the measurement more accurate — quantitative analysis depends on Le Chatelier.",
+    "visualDescription": "The dissolution equilibrium equation with Cl⁻ being added from outside, a large arrow pointing left toward solid AgCl, and Q > Ksp labeled above the equation",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.12"
+    ]
+  },
+  {
+    "id": "ap_chem_7_12_common_ion_does_not_change_ksp",
+    "correctAnswer": "Ksp remains constant",
+    "acceptableAlternatives": [
+      "Ksp is unchanged",
+      "Ksp does not change",
+      "Ksp stays the same",
+      "K is unaffected"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Ksp decreases",
+      "Ksp increases",
+      "Ksp doubles",
+      "Ksp becomes zero",
+      "Ksp depends on concentration",
+      "Ksp changes with added ion",
+      "Ksp is no longer valid",
+      "Ksp is recalculated"
+    ],
+    "quizQuestion": "When a common ion is added to a solubility equilibrium, the molar solubility decreases, but what happens to Ksp?",
+    "explanation": "Ksp (like all equilibrium constants) depends only on temperature, not on concentrations. Adding a common ion changes the equilibrium position (shifts left, decreasing solubility) but does NOT change Ksp. The ion product Q returns to the same value of Ksp at the new equilibrium, just with different individual ion concentrations.",
+    "statement": "Adding a common ion decreases molar solubility but does NOT change Ksp, which remains constant at constant temperature.",
+    "wowFactor": "This is a common AP exam trap: students confuse the shift in equilibrium position (solubility decreases) with a change in Ksp (which doesn't change). The same Ksp must be satisfied — just with a different ion distribution.",
+    "visualDescription": "A split diagram: left side shows 'Ksp = constant' with a temperature thermometer, right side shows 'solubility decreases' with a down arrow, connected by 'common ion added' in the middle",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.12"
+    ]
+  },
+  {
+    "id": "ap_chem_7_13_acid_increases_solubility",
+    "correctAnswer": "basic anions",
+    "acceptableAlternatives": [
+      "anions that are bases",
+      "anions of weak acids",
+      "basic anion",
+      "OH⁻, CO₃²⁻, or S²⁻ anions"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "acidic anions",
+      "spectator anions",
+      "chloride ions",
+      "nitrate ions",
+      "sulfate ions",
+      "all anions equally",
+      "cations only",
+      "halide ions"
+    ],
+    "quizQuestion": "Acidic solutions increase the solubility of salts that contain which type of anion?",
+    "explanation": "Acids increase solubility by consuming basic anions. For example, in CaCO₃(s) ⇌ Ca²⁺ + CO₃²⁻, adding H⁺ reacts with CO₃²⁻ (CO₃²⁻ + H⁺ → HCO₃⁻), removing the anion from solution. By Le Chatelier, removing CO₃²⁻ shifts dissolution right, increasing CaCO₃ solubility. Salts with Cl⁻ or NO₃⁻ (conjugate bases of strong acids, non-basic) are unaffected by pH.",
+    "statement": "Acidic solutions increase the solubility of salts with basic anions (OH⁻, CO₃²⁻, S²⁻) by reacting with those anions, shifting the dissolution equilibrium right.",
+    "wowFactor": "This is exactly how acid rain damages limestone buildings and marble statues: H⁺ from sulfuric acid reacts with CO₃²⁻ in CaCO₃, making it dissolve — ancient monuments that survived centuries are dissolving faster now than ever before in history.",
+    "visualDescription": "CaCO₃ dissolving in acid with H⁺ ions attacking CO₃²⁻, arrows showing CO₃²⁻ being consumed, and the equilibrium shifting right releasing more Ca²⁺, set against a marble surface",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.13"
+    ]
+  },
+  {
+    "id": "ap_chem_7_13_ph_no_effect_strong_acid_salt",
+    "correctAnswer": "chloride salts",
+    "acceptableAlternatives": [
+      "salts with Cl⁻",
+      "salts of strong acids",
+      "salts containing non-basic anions",
+      "NaCl type salts"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "compound_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "carbonate salts",
+      "sulfide salts",
+      "hydroxide salts",
+      "phosphate salts",
+      "acetate salts",
+      "fluoride salts",
+      "oxalate salts",
+      "bicarbonate salts"
+    ],
+    "quizQuestion": "Unlike salts with basic anions, the solubility of which type of slightly soluble salt is NOT affected by changes in pH?",
+    "explanation": "Salts whose anions are conjugate bases of strong acids (Cl⁻, NO₃⁻, Br⁻, I⁻) are not basic — they do not react with H⁺. Since H⁺ cannot remove these anions from solution, decreasing pH does not increase solubility. For example, AgCl solubility is unaffected by pH because Cl⁻ does not react with H⁺.",
+    "statement": "Salts with non-basic anions (conjugate bases of strong acids, like Cl⁻) have solubility unaffected by pH because their anions do not react with H⁺.",
+    "wowFactor": "This distinction is critical for understanding selective precipitation in qualitative analysis: adding HCl precipitates Ag⁺, Pb²⁺, and Hg₂²⁺ as chlorides — but their solubilities won't change with further pH adjustments once precipitated.",
+    "visualDescription": "Two test tubes: left shows CaCO₃ dissolving more in acid (bubbles), right shows AgCl remaining as a white precipitate unchanged as acid is added, with pH scale beside each",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.13"
+    ]
+  },
+  {
+    "id": "ap_chem_7_14_delta_g_ksp_relationship",
+    "correctAnswer": "ΔG° = -RT ln Ksp",
+    "acceptableAlternatives": [
+      "ΔG° equals negative RT ln Ksp",
+      "negative RT ln Ksp",
+      "ΔG° = -RT ln K"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "ΔG° = RT ln Ksp",
+      "ΔG° = -RT ln Q",
+      "ΔG° = ΔH - TΔS",
+      "ΔG° = Ksp × RT",
+      "ΔG° = -ln Ksp",
+      "ΔG° = -kT ln Ksp",
+      "ΔG° = RT/Ksp",
+      "ΔG° = -ΔH ln Ksp"
+    ],
+    "quizQuestion": "What equation relates the standard free energy change of dissolution to the solubility product constant?",
+    "explanation": "The general relationship ΔG° = -RT ln K applies to all equilibrium processes, including dissolution. For dissolution, K = Ksp, so ΔG° = -RT ln Ksp. When Ksp > 1, ln Ksp > 0 and ΔG° < 0 (spontaneous dissolution). When Ksp < 1, ΔG° > 0, meaning the dissolution is non-spontaneous under standard conditions, though it still proceeds to a small extent.",
+    "statement": "The standard free energy of dissolution relates to the solubility product by ΔG° = -RT ln Ksp, where a negative ΔG° corresponds to Ksp > 1.",
+    "wowFactor": "For NaCl, Ksp ≈ 36 mol²/L², giving ΔG° ≈ -RT ln(36) ≈ -8.9 kJ/mol at 25°C. For AgCl with Ksp = 1.8×10⁻¹⁰, ΔG° ≈ +55.6 kJ/mol — almost 6× less favorable, explaining why one is 'soluble' and the other is not.",
+    "visualDescription": "A thermodynamic diagram with the equation ΔG° = -RT ln Ksp centered, with arrows showing Ksp > 1 → ΔG° < 0 (spontaneous) and Ksp < 1 → ΔG° > 0 (non-spontaneous)",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.14"
+    ]
+  },
+  {
+    "id": "ap_chem_7_14_entropy_drives_dissolution",
+    "correctAnswer": "entropy increase",
+    "acceptableAlternatives": [
+      "increase in entropy",
+      "positive ΔS",
+      "entropic driving force",
+      "entropy-driven",
+      "TΔS term"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "enthalpy decrease",
+      "lattice energy",
+      "exothermic process",
+      "hydration energy",
+      "solvation enthalpy",
+      "bond formation",
+      "decrease in entropy",
+      "exothermic dissolution"
+    ],
+    "quizQuestion": "For many ionic compounds whose dissolution is endothermic (ΔH > 0), what thermodynamic factor makes dissolution spontaneous (ΔG < 0) despite the unfavorable enthalpy?",
+    "explanation": "For ΔG = ΔH - TΔS to be negative when ΔH > 0, the TΔS term must be large enough to overcome the positive enthalpy. Dissolution of ionic solids greatly increases entropy because an ordered crystal lattice breaks down into freely moving hydrated ions in solution. This large positive ΔS makes TΔS > ΔH, resulting in ΔG < 0 and spontaneous dissolution.",
+    "statement": "Endothermic ionic dissolutions are entropy-driven: the large positive ΔS from converting an ordered crystal to freely moving ions makes TΔS > ΔH, giving ΔG < 0.",
+    "wowFactor": "Ammonium nitrate (NH₄NO₃) dissolving in water is endothermic — it absorbs so much heat the solution gets cold. This is exactly how instant cold packs work: the entropy gain drives the dissolution spontaneously despite cooling the surroundings.",
+    "visualDescription": "An ordered crystal lattice on the left shattering into scattered hydrated ions on the right, with a ΔH > 0 label and a larger ΔS arrow, showing ΔG = ΔH - TΔS < 0 at the bottom",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_7",
+      "Topic_7.14"
+    ]
+  }
+]

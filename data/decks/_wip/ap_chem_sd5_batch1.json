@@ -1,0 +1,752 @@
+[
+  {
+    "id": "ap_chem_9_1_entropy_definition",
+    "correctAnswer": "entropy",
+    "acceptableAlternatives": [
+      "S"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "enthalpy",
+      "free energy",
+      "internal energy",
+      "heat capacity",
+      "activation energy",
+      "chemical potential",
+      "work function",
+      "bond energy"
+    ],
+    "quizQuestion": "The thermodynamic quantity that measures the dispersal of energy and the number of microstates available to a system is called ___.",
+    "explanation": "Entropy (S) quantifies how spread out energy is among the possible microstates of a system. The more microstates available, the higher the entropy. Boltzmann's equation S = k ln W directly links entropy to the number of microstates W, where k is Boltzmann's constant.",
+    "statement": "Entropy (S) is the thermodynamic measure of energy dispersal and the number of accessible microstates in a system.",
+    "wowFactor": "Ludwig Boltzmann's grave in Vienna is inscribed with S = k log W — the equation he never actually wrote himself. He died not knowing his atomic theory would become the foundation of all modern thermodynamics.",
+    "visualDescription": "A particle diagram showing gas molecules spreading from a concentrated corner to fill an entire container, with arrows indicating increasing disorder",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.1"
+    ]
+  },
+  {
+    "id": "ap_chem_9_1_second_law_spontaneous",
+    "correctAnswer": "increases",
+    "acceptableAlternatives": [
+      "always increases",
+      "never decreases"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "decreases",
+      "remains constant",
+      "approaches zero",
+      "is conserved",
+      "becomes negative",
+      "is minimized",
+      "is maximized then decreases",
+      "fluctuates randomly"
+    ],
+    "quizQuestion": "According to the Second Law of Thermodynamics, the entropy of the universe ___ during any spontaneous process.",
+    "explanation": "The Second Law states that for any spontaneous (irreversible) process, the total entropy of the universe — system plus surroundings — must increase. This provides the thermodynamic arrow of time: processes naturally proceed toward greater disorder at the universal scale.",
+    "statement": "The Second Law of Thermodynamics states that the entropy of the universe increases for every spontaneous process.",
+    "wowFactor": "The Second Law is so fundamental that physicist Arthur Eddington called it the 'supreme position' of natural laws, stating that any theory contradicting it must be abandoned 'in deepest humiliation.'",
+    "visualDescription": "A split diagram: left side shows an ordered system (stacked books, sorted tiles) with an arrow pointing right to a chaotic jumble, representing entropy increase",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.1"
+    ]
+  },
+  {
+    "id": "ap_chem_9_1_entropy_phase_order",
+    "correctAnswer": "gas",
+    "acceptableAlternatives": [
+      "gaseous state",
+      "vapor"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "teen+",
+    "distractors": [
+      "solid",
+      "liquid",
+      "plasma",
+      "aqueous solution",
+      "supercritical fluid",
+      "crystalline solid",
+      "amorphous solid",
+      "ionic compound"
+    ],
+    "quizQuestion": "Among the three common phases of matter (solid, liquid, gas), which has the highest standard molar entropy?",
+    "explanation": "Gases have far more microstates than liquids or solids because gas molecules can occupy enormous volumes and move freely in all directions with many translational, rotational, and vibrational degrees of freedom. The order from lowest to highest entropy is: solid < liquid < gas.",
+    "statement": "Among solids, liquids, and gases, the gaseous phase has the highest entropy because gas molecules occupy more microstates.",
+    "wowFactor": "Water vapor (H\u2082O gas) has roughly 10\u00b3\u2070 more microstates per mole than ice — a staggeringly larger number than all atoms in the observable universe.",
+    "visualDescription": "Three side-by-side containers showing a rigid crystalline lattice, a flowing liquid, and widely dispersed gas molecules, with an entropy scale increasing left to right",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.1"
+    ]
+  },
+  {
+    "id": "ap_chem_9_1_entropy_more_moles_gas",
+    "correctAnswer": "increases",
+    "acceptableAlternatives": [
+      "entropy increases",
+      "positive delta S"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "decreases",
+      "remains constant",
+      "becomes zero",
+      "is unpredictable",
+      "depends only on temperature",
+      "depends only on pressure",
+      "is always negative",
+      "mirrors enthalpy change"
+    ],
+    "quizQuestion": "When the number of moles of gas increases during a chemical reaction, the entropy of the system generally ___.",
+    "explanation": "More moles of gas means more particles with translational freedom, vastly more microstates, and therefore higher entropy. For reactions where \u0394n(gas) > 0, \u0394S\u00b0 is typically positive. For example, 2SO\u2082(g) + O\u2082(g) \u2192 2SO\u2083(g) has \u0394n(gas) = -1, so \u0394S\u00b0 is negative.",
+    "statement": "Reactions that produce more moles of gas than they consume have positive \u0394S because more gas molecules create more microstates.",
+    "wowFactor": "The explosive decomposition of nitroglycerin produces 29 moles of gas from 4 moles of liquid — a 725% increase in moles — which is one reason the entropy surge helps drive the detonation.",
+    "visualDescription": "Reaction equation diagram showing fewer reactant gas molecules on the left and more product gas molecules on the right, with entropy values labeled",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.1"
+    ]
+  },
+  {
+    "id": "ap_chem_9_2_third_law_entropy",
+    "correctAnswer": "zero",
+    "acceptableAlternatives": [
+      "0",
+      "0 J/mol·K",
+      "exactly zero"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "negative",
+      "positive",
+      "undefined",
+      "infinite",
+      "minimum but not zero",
+      "dependent on the substance",
+      "equal to its enthalpy",
+      "equal to Boltzmann's constant"
+    ],
+    "quizQuestion": "According to the Third Law of Thermodynamics, the entropy of a perfect crystal at absolute zero (0 K) is ___.",
+    "explanation": "At 0 K, a perfect crystal has only one possible microstate — every atom is in its lowest energy configuration with no thermal motion — so W = 1 and S = k ln(1) = 0. This establishes an absolute reference point, unlike enthalpy which only has relative values (\u0394H\u00b0f).",
+    "statement": "The Third Law of Thermodynamics establishes that entropy equals zero for a perfect crystal at 0 K, providing an absolute reference for all entropy values.",
+    "wowFactor": "Absolute zero (0 K = -273.15 \u00b0C) has never been reached in any lab — only approached. The Third Law itself implies it can never be achieved in a finite number of steps, making 0 K permanently out of reach.",
+    "visualDescription": "A perfect crystalline lattice at near-zero temperature with all atoms in locked positions, labeled 0 K and S = 0, contrasted with a disordered warm crystal beside it",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.2"
+    ]
+  },
+  {
+    "id": "ap_chem_9_2_standard_molar_entropy_sign",
+    "correctAnswer": "always positive",
+    "acceptableAlternatives": [
+      "positive",
+      "greater than zero",
+      "always greater than zero"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "always negative",
+      "can be negative for elements",
+      "zero for elements in standard state",
+      "negative for solids",
+      "zero for perfect crystals at 25°C",
+      "undefined for compounds",
+      "equal to standard enthalpy of formation",
+      "negative for ionic compounds"
+    ],
+    "quizQuestion": "Unlike standard enthalpy of formation (\u0394H\u00b0f), standard molar entropy (S\u00b0) values for all substances are ___.",
+    "explanation": "Because S = 0 only at 0 K (Third Law), any substance at 298 K has accumulated entropy above zero. Therefore S\u00b0 values are always positive for every substance. By contrast, \u0394H\u00b0f = 0 is defined for elements in their standard state, and compounds can have negative \u0394H\u00b0f values.",
+    "statement": "Standard molar entropy (S\u00b0) values are always positive for all substances because entropy only equals zero at 0 K.",
+    "wowFactor": "Even diamond — the most ordered natural substance — has S\u00b0 = 2.4 J/mol\u00b7K at 298 K, proving that no room-temperature substance truly has zero entropy.",
+    "visualDescription": "A comparison table showing S\u00b0 values for common substances (all positive numbers) versus \u0394H\u00b0f values (mix of positive, negative, and zeros for elements)",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.2"
+    ]
+  },
+  {
+    "id": "ap_chem_9_2_delta_s_rxn_formula",
+    "correctAnswer": "\u03a3S\u00b0(products) \u2212 \u03a3S\u00b0(reactants)",
+    "acceptableAlternatives": [
+      "sum of S products minus sum of S reactants",
+      "S products - S reactants",
+      "\u03a3S(products) - \u03a3S(reactants)"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "teen+",
+    "distractors": [
+      "\u03a3S\u00b0(reactants) \u2212 \u03a3S\u00b0(products)",
+      "\u0394H \u2212 T\u0394S",
+      "\u2212RT ln K",
+      "S\u00b0(products) \u00f7 S\u00b0(reactants)",
+      "\u03a3\u0394H\u00b0f(products) \u2212 \u03a3\u0394H\u00b0f(reactants)",
+      "S\u00b0final \u00d7 S\u00b0initial",
+      "q/T",
+      "\u2212\u0394G/T"
+    ],
+    "quizQuestion": "The standard entropy change for a reaction (\u0394S\u00b0rxn) is calculated using the formula ___.",
+    "explanation": "\u0394S\u00b0rxn = \u03a3S\u00b0(products) \u2212 \u03a3S\u00b0(reactants), where each S\u00b0 is multiplied by its stoichiometric coefficient. This is analogous to Hess's Law for enthalpy. A positive \u0394S\u00b0rxn means products are more disordered than reactants.",
+    "statement": "\u0394S\u00b0rxn is calculated as the sum of standard molar entropies of products minus the sum of standard molar entropies of reactants.",
+    "wowFactor": "Because S\u00b0 values are absolute (not relative like \u0394H\u00b0f), the AP exam can give you tabulated S\u00b0 values and you can compute \u0394S\u00b0rxn directly — no reference state tricks needed.",
+    "visualDescription": "A balanced chemical equation with S\u00b0 values listed under each species, arrows pointing to a calculation box showing products minus reactants sum",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.2"
+    ]
+  },
+  {
+    "id": "ap_chem_9_3_gibbs_free_energy_equation",
+    "correctAnswer": "\u0394G = \u0394H \u2212 T\u0394S",
+    "acceptableAlternatives": [
+      "\u0394G = \u0394H - T\u0394S",
+      "delta G = delta H minus T times delta S"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "\u0394G = \u0394H + T\u0394S",
+      "\u0394G = \u0394S \u2212 T\u0394H",
+      "\u0394G = \u0394H/T\u0394S",
+      "\u0394G = \u2212RT ln K",
+      "\u0394G = \u0394H \u2212 \u0394S/T",
+      "\u0394G = T\u0394S \u2212 \u0394H",
+      "\u0394G = \u0394U + P\u0394V",
+      "\u0394G = q + w"
+    ],
+    "quizQuestion": "The Gibbs free energy equation that determines whether a reaction is thermodynamically favorable is ___.",
+    "explanation": "\u0394G = \u0394H \u2212 T\u0394S combines enthalpy and entropy into a single criterion for spontaneity. When \u0394G < 0, a reaction is thermodynamically favorable (spontaneous). T is temperature in Kelvin, which makes the entropy contribution T\u0394S temperature-dependent — this is why some reactions are spontaneous only at high or low temperatures.",
+    "statement": "Gibbs free energy is defined by \u0394G = \u0394H \u2212 T\u0394S, where a negative value indicates a thermodynamically favorable (spontaneous) process.",
+    "wowFactor": "Josiah Willard Gibbs derived this equation in the 1870s, but he published in an obscure Connecticut journal. His work went largely unnoticed until James Clerk Maxwell promoted it — Gibbs is now considered America's greatest theoretical physicist.",
+    "visualDescription": "The equation \u0394G = \u0394H \u2212 T\u0394S displayed prominently with \u0394G < 0 labeled 'spontaneous' and \u0394G > 0 labeled 'non-spontaneous' in a clean diagram",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.3"
+    ]
+  },
+  {
+    "id": "ap_chem_9_3_delta_g_negative_meaning",
+    "correctAnswer": "spontaneous",
+    "acceptableAlternatives": [
+      "thermodynamically favorable",
+      "product-favored",
+      "favorable"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "non-spontaneous",
+      "at equilibrium",
+      "endothermic",
+      "exothermic",
+      "fast",
+      "reversible",
+      "kinetically controlled",
+      "reactant-favored"
+    ],
+    "quizQuestion": "A reaction with \u0394G < 0 is described as ___ — it will proceed in the forward direction without requiring continuous energy input.",
+    "explanation": "When \u0394G < 0, the forward reaction releases free energy and is thermodynamically favorable. Note: spontaneous does NOT mean fast — a spontaneous reaction may be extremely slow (e.g., diamond converting to graphite). When \u0394G = 0, the system is at equilibrium.",
+    "statement": "A negative \u0394G indicates a spontaneous (thermodynamically favorable) reaction that proceeds in the forward direction.",
+    "wowFactor": "The rusting of iron is spontaneous (\u0394G < 0) but so slow at room temperature that a nail left in moist air takes years to fully corrode — spontaneity says nothing about speed.",
+    "visualDescription": "An energy diagram showing reactants at higher free energy than products with a downhill arrow labeled \u0394G < 0, with 'spontaneous' annotated",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.3"
+    ]
+  },
+  {
+    "id": "ap_chem_9_3_always_spontaneous_case",
+    "correctAnswer": "exothermic and entropy increasing",
+    "acceptableAlternatives": [
+      "\u0394H negative and \u0394S positive",
+      "negative \u0394H and positive \u0394S",
+      "-\u0394H and +\u0394S"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "endothermic and entropy increasing",
+      "exothermic and entropy decreasing",
+      "endothermic and entropy decreasing",
+      "\u0394H positive and \u0394S positive",
+      "\u0394H negative and \u0394S negative",
+      "\u0394H positive and \u0394S negative",
+      "any reaction above 500 K",
+      "any reaction below 0\u00b0C"
+    ],
+    "quizQuestion": "Which combination of \u0394H and \u0394S makes a reaction spontaneous at ALL temperatures?",
+    "explanation": "When \u0394H < 0 (exothermic) and \u0394S > 0 (entropy increases), \u0394G = \u0394H \u2212 T\u0394S is always negative regardless of T, because subtracting a positive T\u0394S from a negative \u0394H always gives a more negative result. Both thermodynamic driving forces point in the same direction.",
+    "statement": "When \u0394H is negative and \u0394S is positive, \u0394G is always negative — the reaction is spontaneous at all temperatures.",
+    "wowFactor": "Combustion reactions (negative \u0394H, positive \u0394S due to CO\u2082 and H\u2082O gas formation) fall in this always-spontaneous category — which is why fire was so reliably useful to our ancestors.",
+    "visualDescription": "A 2x2 grid of \u0394H/\u0394S combinations, with the (\u2212\u0394H, +\u0394S) cell highlighted green labeled 'always spontaneous' and the others marked conditional or never",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.3"
+    ]
+  },
+  {
+    "id": "ap_chem_9_3_spontaneous_high_temp",
+    "correctAnswer": "endothermic and entropy increasing",
+    "acceptableAlternatives": [
+      "\u0394H positive and \u0394S positive",
+      "positive \u0394H and positive \u0394S",
+      "+\u0394H and +\u0394S"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "exothermic and entropy decreasing",
+      "exothermic and entropy increasing",
+      "endothermic and entropy decreasing",
+      "\u0394H negative and \u0394S negative",
+      "\u0394H negative and \u0394S positive",
+      "\u0394H positive and \u0394S negative",
+      "any reaction with large activation energy",
+      "reactions involving only solids"
+    ],
+    "quizQuestion": "A reaction becomes spontaneous ONLY at high temperatures when \u0394H and \u0394S have which combination of signs?",
+    "explanation": "When \u0394H > 0 and \u0394S > 0, \u0394G = \u0394H \u2212 T\u0394S becomes negative only when T\u0394S > \u0394H, i.e., at sufficiently high temperature. The crossover temperature is T = \u0394H/\u0394S. Below this temperature, \u0394G > 0 and the reaction is non-spontaneous.",
+    "statement": "Reactions with positive \u0394H and positive \u0394S are spontaneous only above the crossover temperature T = \u0394H/\u0394S.",
+    "wowFactor": "Melting ice is the classic example: it's endothermic (+\u0394H) with increasing disorder (+\u0394S) and is only spontaneous above 0\u00b0C — below that temperature, freezing is spontaneous instead.",
+    "visualDescription": "A temperature axis with a crossover point labeled T = \u0394H/\u0394S, with 'non-spontaneous' on the left and 'spontaneous' on the right, \u0394G plotted as a line crossing zero",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.3"
+    ]
+  },
+  {
+    "id": "ap_chem_9_3_delta_g_equilibrium",
+    "correctAnswer": "zero",
+    "acceptableAlternatives": [
+      "0",
+      "\u0394G = 0"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "negative",
+      "positive",
+      "equal to \u0394G\u00b0",
+      "equal to \u2212RT ln K",
+      "at its minimum",
+      "at its maximum",
+      "equal to T\u0394S",
+      "undefined"
+    ],
+    "quizQuestion": "At chemical equilibrium, the value of \u0394G (not \u0394G\u00b0) is ___.",
+    "explanation": "\u0394G = 0 at equilibrium because the system has reached its minimum free energy state — there is no net driving force in either direction. This is distinct from \u0394G\u00b0, which is the standard free energy change (at 1 M / 1 atm) and is related to the equilibrium constant by \u0394G\u00b0 = \u2212RT ln K.",
+    "statement": "\u0394G = 0 at equilibrium, meaning there is no net free energy driving the reaction in either direction.",
+    "wowFactor": "The distinction between \u0394G and \u0394G\u00b0 trips up many students: \u0394G\u00b0 tells you where equilibrium lies; \u0394G tells you which way the reaction will shift from current conditions toward equilibrium.",
+    "visualDescription": "A free energy vs. reaction progress curve showing a valley at equilibrium, with \u0394G = 0 marked at the bottom and \u0394G\u00b0 shown as the height difference from standard state reactants",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.3"
+    ]
+  },
+  {
+    "id": "ap_chem_9_4_spontaneous_not_fast",
+    "correctAnswer": "kinetics",
+    "acceptableAlternatives": [
+      "reaction rate",
+      "kinetic factors",
+      "activation energy"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "thermodynamics",
+      "Gibbs free energy",
+      "entropy",
+      "enthalpy",
+      "equilibrium constant",
+      "standard cell potential",
+      "bond dissociation energy",
+      "lattice energy"
+    ],
+    "quizQuestion": "Spontaneity (\u0394G) tells us WHETHER a reaction will occur; ___ determines HOW FAST it will actually proceed.",
+    "explanation": "Thermodynamic spontaneity (\u0394G < 0) and reaction rate are independent concepts. A reaction can be highly spontaneous but extremely slow if the activation energy (Ea) is large. Kinetics is governed by Ea and the rate law; thermodynamics is governed by \u0394G. A catalyst lowers Ea but does not change \u0394G.",
+    "statement": "Spontaneity (\u0394G) and reaction rate are independent: thermodynamics determines favorability, kinetics determines speed.",
+    "wowFactor": "Hydrogen and oxygen gases can sit mixed in a balloon for years without reacting — the reaction is massively spontaneous (\u0394G\u00b0 = \u2212237 kJ/mol for water formation) yet kinetically inert without a spark or catalyst.",
+    "visualDescription": "Two separate diagrams side by side: one shows an energy profile with \u0394G labeled (thermodynamic), the other shows the same reaction with a tall Ea barrier labeled (kinetic)",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.4"
+    ]
+  },
+  {
+    "id": "ap_chem_9_4_diamond_graphite",
+    "correctAnswer": "graphite",
+    "acceptableAlternatives": [
+      "graphite (thermodynamic product)",
+      "graphite is the stable form"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "diamond",
+      "fullerene",
+      "carbon nanotubes",
+      "amorphous carbon",
+      "coal",
+      "charcoal",
+      "buckminsterfullerene",
+      "lonsdaleite"
+    ],
+    "quizQuestion": "The conversion of diamond to ___ is thermodynamically spontaneous but proceeds so slowly it is effectively unobservable at room temperature.",
+    "explanation": "Diamond \u2192 graphite has \u0394G < 0 (graphite is the thermodynamically stable form of carbon at standard conditions), but the activation energy is so enormous that the reaction essentially never occurs at room temperature. This is the textbook example of thermodynamic vs. kinetic control: diamonds are 'kinetically trapped.'",
+    "statement": "Diamond spontaneously converts to graphite thermodynamically, but the reaction is kinetically so slow it is imperceptible — diamonds are kinetically stable, not thermodynamically stable.",
+    "wowFactor": "Every diamond you've ever seen is, technically, slowly turning into graphite. The conversion rate is so low that a diamond will outlast the current age of the universe before any measurable change occurs.",
+    "visualDescription": "Two carbon allotrope structures side by side — diamond tetrahedral lattice and graphite layered sheets — with an arrow from diamond to graphite labeled '\u0394G < 0 but infinitely slow'",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.4"
+    ]
+  },
+  {
+    "id": "ap_chem_9_4_catalyst_thermodynamics",
+    "correctAnswer": "does not change",
+    "acceptableAlternatives": [
+      "unchanged",
+      "has no effect on",
+      "does not affect"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "decreases",
+      "increases",
+      "makes it more negative",
+      "makes it more positive",
+      "doubles",
+      "halves",
+      "brings it to zero",
+      "shifts the equilibrium"
+    ],
+    "quizQuestion": "A catalyst lowers the activation energy of a reaction but ___ the \u0394G of the reaction.",
+    "explanation": "Catalysts provide an alternative reaction pathway with lower Ea, increasing the rate, but they do not alter the thermodynamics: \u0394G, \u0394H, \u0394S, and the equilibrium constant K all remain unchanged. A catalyst speeds up both the forward and reverse reactions equally, so the equilibrium position is unaffected.",
+    "statement": "A catalyst changes reaction kinetics (lowers Ea) but does not change the thermodynamics (\u0394G, \u0394H, \u0394S, or K).",
+    "wowFactor": "Enzymes are biological catalysts that can accelerate reactions by 10\u00b9\u00b7 to 10\u00b2\u00b3-fold — yet the equilibrium constant of the reaction they catalyze is identical to the uncatalyzed version.",
+    "visualDescription": "An energy diagram showing a reaction coordinate with two pathways: one with a tall uncatalyzed Ea barrier and one with a lower catalyzed Ea, but both starting and ending at identical \u0394G levels",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.4"
+    ]
+  },
+  {
+    "id": "ap_chem_9_5_delta_g_standard_K_equation",
+    "correctAnswer": "\u0394G\u00b0 = \u2212RT ln K",
+    "acceptableAlternatives": [
+      "delta G standard = -RT ln K",
+      "\u0394G\u00b0 = -RT ln(K)"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "\u0394G\u00b0 = RT ln K",
+      "\u0394G\u00b0 = \u2212RT/ln K",
+      "\u0394G\u00b0 = \u0394H \u2212 T\u0394S",
+      "\u0394G\u00b0 = \u2212nF\u0116\u00b0",
+      "\u0394G\u00b0 = ln K / RT",
+      "\u0394G\u00b0 = RT ln Q",
+      "K = e^(\u0394G\u00b0/RT)",
+      "\u0394G\u00b0 = \u22122.303 RT log K"
+    ],
+    "quizQuestion": "The relationship between standard Gibbs free energy and the equilibrium constant is expressed by the equation ___.",
+    "explanation": "\u0394G\u00b0 = \u2212RT ln K links thermodynamics to equilibrium. When K > 1 (products favored), ln K > 0 and \u0394G\u00b0 < 0. When K < 1 (reactants favored), ln K < 0 and \u0394G\u00b0 > 0. When K = 1, \u0394G\u00b0 = 0. R = 8.314 J/mol\u00b7K and T is in Kelvin.",
+    "statement": "\u0394G\u00b0 = \u2212RT ln K connects the standard free energy change to the equilibrium constant — the more negative \u0394G\u00b0, the larger K.",
+    "wowFactor": "A \u0394G\u00b0 of just \u221228 kJ/mol corresponds to K \u2248 10\u2075 — a massive product-favored equilibrium. Every 5.7 kJ/mol of \u0394G\u00b0 shifts K by a factor of 10 at 298 K.",
+    "visualDescription": "The equation \u0394G\u00b0 = \u2212RT ln K displayed with arrows pointing to conditions: K > 1 / \u0394G\u00b0 < 0 (product-favored), K < 1 / \u0394G\u00b0 > 0 (reactant-favored), K = 1 / \u0394G\u00b0 = 0",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.5"
+    ]
+  },
+  {
+    "id": "ap_chem_9_5_K_greater_one_delta_g",
+    "correctAnswer": "negative",
+    "acceptableAlternatives": [
+      "\u0394G\u00b0 < 0",
+      "less than zero"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "positive",
+      "zero",
+      "equal to RT",
+      "equal to ln K",
+      "undefined",
+      "always greater than \u221228 kJ",
+      "dependent on temperature only",
+      "equal to \u0394H"
+    ],
+    "quizQuestion": "When the equilibrium constant K is greater than 1 (products favored), the standard free energy change \u0394G\u00b0 is ___.",
+    "explanation": "Using \u0394G\u00b0 = \u2212RT ln K: if K > 1, then ln K > 0, so \u0394G\u00b0 = \u2212RT(positive) < 0. A product-favored equilibrium corresponds to a negative standard free energy change, meaning the forward reaction is thermodynamically favorable under standard conditions.",
+    "statement": "When K > 1 (product-favored equilibrium), \u0394G\u00b0 is negative, confirming the forward reaction is thermodynamically favorable.",
+    "wowFactor": "ATP hydrolysis has K \u2248 10\u2078 and \u0394G\u00b0 = \u221230.5 kJ/mol — so strongly product-favored that cells use it to drive nearly every energetically unfavorable biosynthesis reaction.",
+    "visualDescription": "A number line showing K values with K > 1 on the right labeled '\u0394G\u00b0 < 0, product-favored' and K < 1 on the left labeled '\u0394G\u00b0 > 0, reactant-favored', with K = 1 at center",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.5"
+    ]
+  },
+  {
+    "id": "ap_chem_9_5_delta_g_not_standard_equilibrium",
+    "correctAnswer": "\u0394G (not \u0394G\u00b0)",
+    "acceptableAlternatives": [
+      "\u0394G",
+      "delta G not delta G standard",
+      "the non-standard free energy change"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "\u0394G\u00b0",
+      "standard free energy change",
+      "\u0394H",
+      "\u0394S",
+      "the reaction quotient Q",
+      "the equilibrium constant K",
+      "activation energy Ea",
+      "enthalpy of formation"
+    ],
+    "quizQuestion": "Which quantity equals zero at equilibrium — the standard free energy change (\u0394G\u00b0) or the actual free energy change under reaction conditions?",
+    "explanation": "\u0394G = 0 at equilibrium, not \u0394G\u00b0. \u0394G\u00b0 is a fixed property at a given temperature (measured under standard conditions: 1 M / 1 atm) and equals \u2212RT ln K. \u0394G accounts for actual concentrations/pressures via \u0394G = \u0394G\u00b0 + RT ln Q. At equilibrium Q = K, so \u0394G = \u0394G\u00b0 + RT ln K = \u2212RT ln K + RT ln K = 0.",
+    "statement": "\u0394G (not \u0394G\u00b0) equals zero at equilibrium; \u0394G\u00b0 is a constant property at a given temperature related to K.",
+    "wowFactor": "The confusion between \u0394G and \u0394G\u00b0 is one of the most common errors on AP Chemistry free response — examiners deliberately include scenarios where students must distinguish between the two.",
+    "visualDescription": "A split diagram: left panel shows standard conditions (1 M) with \u0394G\u00b0 labeled as a fixed arrow; right panel shows equilibrium mixture with \u0394G = 0 labeled at the energy minimum",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.5"
+    ]
+  },
+  {
+    "id": "ap_chem_9_6_ksp_free_energy",
+    "correctAnswer": "\u0394G\u00b0 = \u2212RT ln Ksp",
+    "acceptableAlternatives": [
+      "delta G standard = -RT ln Ksp",
+      "\u0394G\u00b0 = -RT ln(Ksp)"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "\u0394G\u00b0 = RT ln Ksp",
+      "\u0394G\u00b0 = \u2212RT/Ksp",
+      "\u0394G\u00b0 = \u0394H \u2212 T\u0394S",
+      "\u0394G\u00b0 = \u2212nFKsp",
+      "Ksp = e^(\u0394G\u00b0)",
+      "\u0394G\u00b0 = ln Ksp / RT",
+      "\u0394G\u00b0 = \u2212RT log Ksp",
+      "\u0394G\u00b0 = Ksp \u00d7 RT"
+    ],
+    "quizQuestion": "For a dissolution equilibrium, the standard free energy of dissolution is related to the solubility product by ___.",
+    "explanation": "\u0394G\u00b0 = \u2212RT ln Ksp applies the general relationship to dissolution reactions. Since Ksp values are typically very small (e.g., AgCl Ksp \u2248 1.8 \u00d7 10\u207b\u00b9\u2070), ln Ksp is a large negative number, making \u0394G\u00b0 positive — confirming that dissolving sparingly soluble salts is thermodynamically unfavorable under standard conditions.",
+    "statement": "\u0394G\u00b0 = \u2212RT ln Ksp links dissolution thermodynamics to solubility — small Ksp means large positive \u0394G\u00b0 (unfavorable dissolution).",
+    "wowFactor": "Silver chloride (AgCl) has Ksp = 1.8 \u00d7 10\u207b\u00b9\u2070 and \u0394G\u00b0 = +56 kJ/mol — yet some AgCl still dissolves because entropy partly offsets this, and it's the basis of how photographic film works.",
+    "visualDescription": "A solubility equilibrium diagram showing a solid ionic compound partially dissolving, with Ksp expression and \u0394G\u00b0 = \u2212RT ln Ksp equation overlaid",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.6"
+    ]
+  },
+  {
+    "id": "ap_chem_9_6_endothermic_dissolution_entropy",
+    "correctAnswer": "entropy",
+    "acceptableAlternatives": [
+      "entropy increase",
+      "\u0394S",
+      "positive \u0394S",
+      "increase in entropy"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "enthalpy",
+      "lattice energy",
+      "hydration energy",
+      "bond dissociation energy",
+      "temperature",
+      "pressure",
+      "activation energy",
+      "Coulombic attraction"
+    ],
+    "quizQuestion": "Some ionic compounds dissolve spontaneously even though dissolution is endothermic (\u0394H > 0). The thermodynamic driving force in these cases is a large increase in ___.",
+    "explanation": "When dissolution is endothermic, \u0394H > 0 opposes spontaneity. However, if \u0394S is large and positive (ions dispersing in solution create far more microstates than the ordered crystal), T\u0394S can exceed \u0394H, making \u0394G = \u0394H \u2212 T\u0394S < 0. Ammonium nitrate (NH\u2084NO\u2083) is the classic example — it dissolves endothermically, chilling the surroundings (used in instant cold packs).",
+    "statement": "Endothermic dissolutions are spontaneous when the entropy increase upon dissolution is large enough that T\u0394S > \u0394H, making \u0394G negative.",
+    "wowFactor": "Instant cold packs work by dissolving ammonium nitrate in water — a spontaneous, strongly endothermic reaction (\u0394H = +25 kJ/mol) that chills to 0\u00b0C in seconds, entirely driven by entropy gain.",
+    "visualDescription": "An instant cold pack labeled 'NH\u2084NO\u2083 dissolving,' with a thermometer showing dropping temperature and a free energy diagram showing \u0394H > 0 but T\u0394S larger, resulting in \u0394G < 0",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.6"
+    ]
+  }
+]

@@ -1,0 +1,927 @@
+[
+  {
+    "id": "ap_chem_4_1_evidence_precipitate",
+    "correctAnswer": "precipitate",
+    "acceptableAlternatives": [
+      "precipitate formation",
+      "solid forming"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "evaporation",
+      "dissolution",
+      "sublimation",
+      "ionization",
+      "neutralization",
+      "condensation",
+      "crystallization",
+      "dispersion"
+    ],
+    "quizQuestion": "When two clear solutions are mixed and a cloudy solid appears in the liquid, what macroscopic evidence of a chemical reaction has occurred?",
+    "explanation": "A precipitate is an insoluble solid that forms when two aqueous solutions are mixed and their ions combine to produce a product that exceeds its solubility limit. For example, mixing Pb(NO3)2(aq) with KI(aq) produces bright yellow PbI2(s). The solid forms because the lattice energy of PbI2 makes it essentially insoluble in water.",
+    "statement": "Formation of a precipitate (insoluble solid) is one of the key observable signs of a chemical reaction.",
+    "wowFactor": "The formation of bright-yellow lead(II) iodide precipitate is so vivid it's nicknamed the 'golden rain' demonstration — a spectacular visual proof of chemical change.",
+    "visualDescription": "Two clear beakers mixing to produce a bright yellow cloudy solid settling at the bottom, pixel art dungeon lab style",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.1",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-1-writing-and-balancing-chemical-equations",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.1"
+    ]
+  },
+  {
+    "id": "ap_chem_4_1_evidence_color_change",
+    "correctAnswer": "color change",
+    "acceptableAlternatives": [
+      "change in color",
+      "colour change"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "change in phase",
+      "change in density",
+      "change in volume",
+      "change in transparency",
+      "change in texture",
+      "change in mass",
+      "change in viscosity",
+      "change in solubility"
+    ],
+    "quizQuestion": "When iron slowly turns orange-brown upon exposure to oxygen and water, which macroscopic observation signals that a chemical reaction (oxidation) has occurred?",
+    "explanation": "A color change indicates that new substances with different electronic structures (and therefore different light absorption) have formed. Iron rusting produces iron(III) oxide (Fe2O3), which absorbs different wavelengths than metallic iron. Unlike physical color changes (e.g., dissolving food dye), a chemical color change reflects new bond arrangements in the products.",
+    "statement": "A color change is macroscopic evidence that a chemical reaction may be occurring, as new substances absorb different wavelengths of light.",
+    "wowFactor": "Mood rings use temperature-sensitive liquid crystals — a physical color change, not chemical. Real chemical color changes (like rusting) are permanent without another reaction to reverse them.",
+    "visualDescription": "Side-by-side pixel art panels: shiny silver iron nail on left, same nail coated in orange rust flakes on right",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.1",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-1-writing-and-balancing-chemical-equations",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.1"
+    ]
+  },
+  {
+    "id": "ap_chem_4_1_evidence_temperature_change",
+    "correctAnswer": "temperature change",
+    "acceptableAlternatives": [
+      "heat released",
+      "heat absorbed",
+      "energy change",
+      "thermal change"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "pressure change",
+      "volume change",
+      "mass change",
+      "density change",
+      "color change",
+      "conductivity change",
+      "viscosity change",
+      "surface tension change"
+    ],
+    "quizQuestion": "When a hand warmer activates and the pouch feels hot, which macroscopic observation provides evidence of a chemical reaction?",
+    "explanation": "Chemical reactions involve breaking and forming bonds. When bond formation releases more energy than bond breaking absorbs (exothermic), the surroundings feel warmer. Hand warmers use the oxidation of iron powder (Fe → Fe2O3). An endothermic reaction (like dissolving ammonium nitrate in water) would feel cold. Either direction, a temperature change signals energy transfer consistent with new bond formation.",
+    "statement": "A temperature change — either warming (exothermic) or cooling (endothermic) — is macroscopic evidence of a chemical reaction.",
+    "wowFactor": "Instant cold packs rely on an endothermic reaction (NH4NO3 dissolving) — a chemical process that pulls heat FROM the surroundings, making them feel icy cold without any refrigeration.",
+    "visualDescription": "A glowing orange hand-warmer pouch emitting heat waves in a pixel art dungeon setting",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 5.2 and 4.1",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/5-2-calorimetry",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.1"
+    ]
+  },
+  {
+    "id": "ap_chem_4_1_chemical_vs_physical_molecular",
+    "correctAnswer": "new bonds are formed and old bonds are broken",
+    "acceptableAlternatives": [
+      "chemical bonds are broken and formed",
+      "covalent bonds break and form",
+      "bond breaking and bond forming occur"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "atoms are created or destroyed",
+      "molecules change size without new substances",
+      "only intermolecular forces change",
+      "electrons are gained from outside the system",
+      "protons are transferred between nuclei",
+      "isotopes are converted to different elements",
+      "molecular formulas remain identical",
+      "only physical shape changes"
+    ],
+    "quizQuestion": "At the molecular level, what distinguishes a chemical change from a physical change?",
+    "explanation": "In a chemical change, intramolecular (covalent or ionic) bonds are broken and new bonds form, producing substances with different molecular formulas. In a physical change (melting ice, dissolving sugar), only intermolecular forces between molecules are disrupted — the molecular identity of H2O or C12H22O11 is preserved. This is the key molecular-level distinction tested on the AP exam.",
+    "statement": "A chemical change involves breaking and forming chemical bonds, producing new substances. A physical change only alters intermolecular forces, leaving molecular identity unchanged.",
+    "wowFactor": "Even 'dissolving' can be chemical — dissolving NaCl splits ionic bonds. The AP exam tests whether you can identify WHICH bonds change (intramolecular = chemical; intermolecular = physical).",
+    "visualDescription": "Pixel art particulate diagram: two diatomic molecules colliding and rearranging into two different molecules, with broken bond indicators",
+    "sourceName": "College Board AP Chemistry CED, Unit 4",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-chemistry-course-and-exam-description.pdf",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.1"
+    ]
+  },
+  {
+    "id": "ap_chem_4_2_spectator_ions_definition",
+    "correctAnswer": "spectator ions",
+    "acceptableAlternatives": [
+      "spectator ion",
+      "spectators"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "polyatomic ions",
+      "complex ions",
+      "transition metal ions",
+      "counterions",
+      "hydronium ions",
+      "hydroxide ions",
+      "buffer ions",
+      "precipitate ions"
+    ],
+    "quizQuestion": "In a net ionic equation, what are the ions called that appear on BOTH sides and are therefore omitted because they do not participate in the reaction?",
+    "explanation": "Spectator ions are dissolved ions that are present throughout the reaction but do not undergo any change — they are 'watching' from the sidelines. For the reaction between NaCl(aq) and AgNO3(aq), Na+ and NO3- do not change; only Ag+ and Cl- combine to form AgCl(s). Spectator ions are present in the complete ionic equation but removed when writing the net ionic equation.",
+    "statement": "Spectator ions appear on both sides of the complete ionic equation and are cancelled out to give the net ionic equation.",
+    "wowFactor": "Spectator ions do real electrochemical work in batteries — even though they don't react, Na+ and SO42- ions carry charge through the electrolyte to keep current flowing.",
+    "visualDescription": "Pixel art ionic equation with glowing reaction ions in the center and faded gray spectator ions bracketed on both sides",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.2",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-2-classifying-chemical-reactions",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.2"
+    ]
+  },
+  {
+    "id": "ap_chem_4_2_strong_electrolyte_dissociation",
+    "correctAnswer": "completely (100%)",
+    "acceptableAlternatives": [
+      "fully",
+      "completely dissociates",
+      "100% dissociation",
+      "fully ionizes"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "partially (less than 50%)",
+      "partially (more than 50%)",
+      "not at all",
+      "reversibly and partially",
+      "only when heated",
+      "only at low concentration",
+      "in proportion to pH",
+      "according to Le Chatelier's principle"
+    ],
+    "quizQuestion": "When writing a complete ionic equation, strong electrolytes such as NaCl or HCl are written as individual ions because they dissociate into ions how?",
+    "explanation": "Strong electrolytes (soluble ionic compounds, strong acids, and strong bases) dissociate essentially 100% in aqueous solution. NaCl → Na+(aq) + Cl-(aq) is a one-way arrow, not an equilibrium. This is why they must be written in dissociated form in complete and net ionic equations. Weak electrolytes like acetic acid (CH3COOH) only partially ionize and are written in molecular form.",
+    "statement": "Strong electrolytes dissociate completely (100%) in water and must be written as separate ions in ionic equations.",
+    "wowFactor": "Hydrochloric acid (HCl) is considered a strong acid because nearly every molecule donates its proton in water — the equilibrium constant for dissociation is roughly 10^7, making the reverse reaction essentially impossible.",
+    "visualDescription": "Pixel art diagram: NaCl formula on left with single arrow pointing to Na+ and Cl- ions dispersed in blue water",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.2",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-2-classifying-chemical-reactions",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.2"
+    ]
+  },
+  {
+    "id": "ap_chem_4_2_net_ionic_precipitation",
+    "correctAnswer": "Ag+(aq) + Cl-(aq) → AgCl(s)",
+    "acceptableAlternatives": [
+      "Ag+ + Cl- → AgCl",
+      "silver ion plus chloride ion yields silver chloride solid"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "chemical_formulas",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Na+(aq) + NO3-(aq) → NaNO3(s)",
+      "AgNO3(aq) + NaCl(aq) → AgCl(s) + NaNO3(aq)",
+      "Ag+(aq) + NO3-(aq) → AgNO3(s)",
+      "2 Ag+(aq) + Cl2(g) → 2 AgCl(s)",
+      "Ag(s) + Cl-(aq) → AgCl(s) + e-",
+      "Na+(aq) + Cl-(aq) → NaCl(s)",
+      "Ag+(aq) + OH-(aq) → AgOH(s)",
+      "2 Ag+(aq) + O2-(aq) → Ag2O(s)"
+    ],
+    "quizQuestion": "When AgNO3(aq) is mixed with NaCl(aq), Na+ and NO3- are spectator ions. What is the net ionic equation for this precipitation reaction?",
+    "explanation": "The molecular equation is: AgNO3(aq) + NaCl(aq) → AgCl(s) + NaNO3(aq). The complete ionic equation expands all strong electrolytes: Ag+(aq) + NO3-(aq) + Na+(aq) + Cl-(aq) → AgCl(s) + Na+(aq) + NO3-(aq). Cancelling spectator ions Na+ and NO3- on both sides leaves the net ionic equation: Ag+(aq) + Cl-(aq) → AgCl(s). The solid AgCl is NOT split into ions because it is insoluble.",
+    "statement": "The net ionic equation for silver chloride precipitation is: Ag+(aq) + Cl-(aq) → AgCl(s).",
+    "wowFactor": "This net ionic equation is the basis of the Mohr method for determining chloride concentration in drinking water — the same reaction used in water quality testing labs worldwide.",
+    "visualDescription": "Pixel art ionic equation on a dungeon chalkboard: Ag+ and Cl- ions converging into a glowing white AgCl precipitate crystal",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.2",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-2-classifying-chemical-reactions",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.2"
+    ]
+  },
+  {
+    "id": "ap_chem_4_2_net_ionic_acid_base",
+    "correctAnswer": "H+(aq) + OH-(aq) → H2O(l)",
+    "acceptableAlternatives": [
+      "H3O+(aq) + OH-(aq) → 2 H2O(l)",
+      "hydronium plus hydroxide yields water"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Na+(aq) + OH-(aq) → NaOH(aq)",
+      "HCl(aq) + NaOH(aq) → NaCl(aq) + H2O(l)",
+      "H+(aq) + Cl-(aq) → HCl(aq)",
+      "2 H+(aq) + O2-(aq) → H2O(l)",
+      "H2O(l) → H+(aq) + OH-(aq)",
+      "H+(aq) + Na+(aq) → Na-H compound",
+      "OH-(aq) + H2O(l) → H3O-(aq)",
+      "Na+(aq) + Cl-(aq) → NaCl(s)"
+    ],
+    "quizQuestion": "When HCl(aq) reacts with NaOH(aq), the Na+ and Cl- are spectator ions. What is the net ionic equation for this neutralization reaction?",
+    "explanation": "The molecular equation: HCl(aq) + NaOH(aq) → NaCl(aq) + H2O(l). Complete ionic: H+(aq) + Cl-(aq) + Na+(aq) + OH-(aq) → Na+(aq) + Cl-(aq) + H2O(l). Cancelling spectator ions Na+ and Cl- gives: H+(aq) + OH-(aq) → H2O(l). This single net ionic equation represents ALL strong acid + strong base neutralizations, regardless of what the spectator ions are.",
+    "statement": "The net ionic equation for any strong acid–strong base neutralization is H+(aq) + OH-(aq) → H2O(l).",
+    "wowFactor": "Every strong acid/strong base neutralization — HCl + NaOH, HNO3 + KOH, H2SO4 + Ba(OH)2 — reduces to exactly the same net ionic equation. The identity of the salt formed is irrelevant.",
+    "visualDescription": "Pixel art showing H+ ion and OH- ion combining with a flash of light into a water molecule droplet",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.2",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-2-classifying-chemical-reactions",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.2"
+    ]
+  },
+  {
+    "id": "ap_chem_4_2_molecular_to_net_ionic_steps",
+    "correctAnswer": "split strong electrolytes into ions, then cancel spectator ions",
+    "acceptableAlternatives": [
+      "write complete ionic equation first, then cancel spectators",
+      "expand ions then remove spectators"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "balance the molecular equation, then remove all ions",
+      "remove all soluble compounds, keep only precipitates",
+      "cancel common molecules, then split remaining ions",
+      "separate all compounds into atoms, then recombine",
+      "identify the precipitate, then write only its formation",
+      "write all reactants as gases, then balance",
+      "substitute oxidation states for formulas, then cancel",
+      "remove the solvent water from both sides first"
+    ],
+    "quizQuestion": "What are the two key steps to convert a balanced molecular equation into a net ionic equation?",
+    "explanation": "Step 1 — Write the complete ionic equation: expand all aqueous strong electrolytes (soluble salts, strong acids, strong bases) into their constituent ions. Solids, liquids, gases, and weak electrolytes stay in molecular form. Step 2 — Cancel spectator ions: any ion that appears identically on both sides is a spectator and is removed. What remains is the net ionic equation showing only the species that actually change.",
+    "statement": "To write a net ionic equation: (1) split all aqueous strong electrolytes into ions, (2) cancel ions that appear on both sides (spectators).",
+    "wowFactor": "The net ionic equation is the 'true story' of what chemically happens — stripping away all the ionic bystanders that just happened to be in solution.",
+    "visualDescription": "Pixel art three-step flowchart on dungeon wall: molecular equation → complete ionic → net ionic, with ions fading out in step 3",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.2",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-2-classifying-chemical-reactions",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.2"
+    ]
+  },
+  {
+    "id": "ap_chem_4_3_balanced_equation_conservation",
+    "correctAnswer": "conservation of mass",
+    "acceptableAlternatives": [
+      "law of conservation of mass",
+      "conservation of atoms",
+      "mass is conserved"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "unit_and_constant_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "conservation of energy",
+      "conservation of charge",
+      "conservation of momentum",
+      "Hess's law",
+      "Le Chatelier's principle",
+      "Avogadro's law",
+      "Gay-Lussac's law",
+      "Dalton's law of partial pressures"
+    ],
+    "quizQuestion": "Balancing a chemical equation ensures that the number of each type of atom is the same on both sides. This requirement reflects which fundamental law of chemistry?",
+    "explanation": "Lavoisier's law of conservation of mass states that matter is neither created nor destroyed in a chemical reaction. Balancing an equation — adjusting coefficients so atom counts match on both sides — is how we apply this law. You may only change COEFFICIENTS, never subscripts, because subscripts define the molecular formula of each substance.",
+    "statement": "Balanced chemical equations enforce the law of conservation of mass: atoms are neither created nor destroyed, only rearranged.",
+    "wowFactor": "Antoine Lavoisier proved conservation of mass using sealed flasks in the 1780s — and was guillotined during the French Revolution just a decade later. His judge reportedly said 'The Republic needs neither scientists nor chemists.'",
+    "visualDescription": "Pixel art scale with atom symbols on both sides perfectly balanced, glowing golden in a chemistry dungeon lab",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.1",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-1-writing-and-balancing-chemical-equations",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.3"
+    ]
+  },
+  {
+    "id": "ap_chem_4_3_coefficients_mole_ratios",
+    "correctAnswer": "mole ratios",
+    "acceptableAlternatives": [
+      "stoichiometric ratios",
+      "molar ratios"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "unit_and_constant_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "mass ratios",
+      "volume ratios",
+      "atom number ratios",
+      "molecular weight ratios",
+      "electron number ratios",
+      "pressure ratios",
+      "energy ratios",
+      "density ratios"
+    ],
+    "quizQuestion": "In the equation 2 H2(g) + O2(g) → 2 H2O(l), the coefficients 2, 1, and 2 represent what type of quantitative relationship?",
+    "explanation": "Coefficients in a balanced equation give the relative number of moles (or molecules) of each substance. The ratio 2:1:2 means 2 mol H2 reacts with 1 mol O2 to produce 2 mol H2O. These mole ratios are the conversion factors used in stoichiometry calculations to move from moles of one substance to moles of another.",
+    "statement": "Coefficients in a balanced equation represent mole ratios, the stoichiometric conversion factors between reactants and products.",
+    "wowFactor": "The same 2:1:2 ratio that works for individual molecules also holds for 2 trillion:1 trillion:2 trillion molecules — mole ratios scale perfectly from the molecular to the industrial level.",
+    "visualDescription": "Pixel art balanced equation with glowing number coefficients and mole symbol (mol) labels above each substance",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.3",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.3"
+    ]
+  },
+  {
+    "id": "ap_chem_4_3_particulate_diagram_products",
+    "correctAnswer": "products",
+    "acceptableAlternatives": [
+      "product particles",
+      "substances formed after reaction"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "teen+",
+    "distractors": [
+      "reactants",
+      "catalysts",
+      "intermediates",
+      "spectator molecules",
+      "activated complexes",
+      "transition states",
+      "solvation shells",
+      "isotopes"
+    ],
+    "quizQuestion": "In a particulate diagram showing a reaction, the circles and molecular models drawn on the RIGHT side of the arrow represent what?",
+    "explanation": "Particulate diagrams (also called particle-level or molecular-level diagrams) depict individual atoms or molecules. By convention, reactants appear on the left of the arrow and products appear on the right, mirroring a written chemical equation. Each particle model must accurately reflect atomic composition and must conserve the total count of each element shown on the left side.",
+    "statement": "In a particulate diagram, particle models on the right side of the arrow represent the products of the reaction.",
+    "wowFactor": "Particulate diagrams are a key AP Chemistry skill — the exam regularly shows you a before/after particle snapshot and asks you to identify the reaction type, write the equation, or spot a conservation error.",
+    "visualDescription": "Pixel art split panel: left shows two gray and two white ball models (H2 + O2), right shows two water molecule models (H2O), with a glowing arrow between",
+    "sourceName": "College Board AP Chemistry CED, Unit 4, Topic 4.3",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-chemistry-course-and-exam-description.pdf",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.3"
+    ]
+  },
+  {
+    "id": "ap_chem_4_3_balancing_subscripts_vs_coefficients",
+    "correctAnswer": "only change coefficients",
+    "acceptableAlternatives": [
+      "adjust coefficients only",
+      "coefficients not subscripts"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "only change subscripts",
+      "change both subscripts and coefficients",
+      "change the number of product molecules only",
+      "add atoms to either side as needed",
+      "split molecules into atoms to balance",
+      "add water molecules to balance hydrogen",
+      "use oxidation numbers to determine coefficients",
+      "only change the reactant side"
+    ],
+    "quizQuestion": "When balancing a chemical equation, which numbers are you ALLOWED to change to make atom counts equal on both sides?",
+    "explanation": "Coefficients are the numbers placed in front of a formula — they scale the entire molecule multiplicatively. Subscripts are part of the formula itself — changing them would change which substance you are describing (e.g., changing H2O to H3O creates a completely different substance: the hydronium ion). Balancing always uses coefficient adjustment only. This is a common source of errors for beginning chemistry students.",
+    "statement": "When balancing equations, only coefficients (numbers in front of formulas) may be changed — never subscripts, which define the chemical identity of each substance.",
+    "wowFactor": "The restriction against changing subscripts is why balancing some equations (like combustion reactions) requires systematic trial-and-error or algebraic methods — there's no shortcut that bypasses this rule.",
+    "visualDescription": "Pixel art equation with arrows pointing to a coefficient (green glow, allowed) and a subscript (red glow, forbidden) to illustrate the distinction",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.1",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-1-writing-and-balancing-chemical-equations",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.3"
+    ]
+  },
+  {
+    "id": "ap_chem_4_4_physical_change_melting",
+    "correctAnswer": "physical change",
+    "acceptableAlternatives": [
+      "physical",
+      "change of state",
+      "phase change"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "chemical change",
+      "nuclear change",
+      "oxidation reaction",
+      "decomposition reaction",
+      "endothermic chemical reaction",
+      "precipitation reaction",
+      "acid-base reaction",
+      "combustion reaction"
+    ],
+    "quizQuestion": "Ice melting into liquid water involves no change in molecular formula — both are H2O. This is classified as what type of change?",
+    "explanation": "Melting is a physical change because the substance (H2O) retains its molecular identity throughout the process. Only intermolecular hydrogen bonds are disrupted — no covalent O–H bonds are broken or formed. The water molecules rearrange from the rigid lattice of ice into the mobile arrangement of liquid water, but no new substance is created. Physical changes are generally reversible (liquid water can refreeze).",
+    "statement": "Melting is a physical change: the substance retains its molecular formula (H2O) and no new substances form — only intermolecular forces are disrupted.",
+    "wowFactor": "Even though melting requires energy input (breaking hydrogen bonds), it is NOT a chemical change — the same molecules exist before and after. Energy changes alone cannot classify a change as chemical.",
+    "visualDescription": "Pixel art dungeon scene: glowing ice cube on left, puddle of water on right, with intermolecular force lines fading (not covalent bonds breaking)",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 1.3",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/1-3-physical-and-chemical-properties",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.4"
+    ]
+  },
+  {
+    "id": "ap_chem_4_4_chemical_change_combustion",
+    "correctAnswer": "chemical change",
+    "acceptableAlternatives": [
+      "chemical reaction",
+      "combustion reaction"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "physical change",
+      "phase transition",
+      "intermolecular change",
+      "nuclear change",
+      "reversible change",
+      "isomeric change",
+      "allotropic change",
+      "conformational change"
+    ],
+    "quizQuestion": "When a candle burns, wax (C25H52) reacts with oxygen to produce carbon dioxide and water. This is classified as what type of change?",
+    "explanation": "Combustion is a chemical change because new substances with different molecular formulas (CO2 and H2O) are formed from C25H52 and O2. Covalent bonds in the wax molecules and the O=O double bonds are broken; new C=O and O–H bonds are formed. The original wax cannot be recovered from the CO2 and H2O products without additional reactions. New substance formation + irreversibility are hallmarks of chemical change.",
+    "statement": "Combustion is a chemical change: covalent bonds break and new ones form, producing entirely new substances (CO2, H2O) that differ from the reactants.",
+    "wowFactor": "A candle flame operates at about 1400°C at the tip — hot enough to emit visible light from thermally excited molecules. That glow is literally photons from newly formed, vibrationally excited CO2 molecules.",
+    "visualDescription": "Pixel art dungeon candle: wax molecules on the left with flames, arrow pointing right to CO2 and water droplet molecules",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 1.3",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/1-3-physical-and-chemical-properties",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.4"
+    ]
+  },
+  {
+    "id": "ap_chem_4_4_dissolving_salt_molecular_level",
+    "correctAnswer": "intermolecular forces change",
+    "acceptableAlternatives": [
+      "only intermolecular forces are disrupted",
+      "ionic bonds break but no new substances form"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "covalent bonds within NaCl break",
+      "new molecular formulas are created",
+      "sodium and chloride atoms fuse",
+      "electrons are transferred to water",
+      "NaCl molecules form new covalent bonds with H2O",
+      "a precipitation reaction occurs",
+      "the solution turns into a compound",
+      "NaCl undergoes combustion with water"
+    ],
+    "quizQuestion": "When NaCl dissolves in water, Na+ and Cl- ions separate and become surrounded by water molecules. At the molecular level, what type of force changes during this physical process?",
+    "explanation": "Dissolving NaCl is classified as a physical change because NaCl retains its ionic formula — the Na+ and Cl- ions still exist with the same chemical identity. What changes are the forces BETWEEN ions: the ionic lattice forces are replaced by ion-dipole interactions with water. No new atoms are bonded covalently; no new molecular formulas appear. The process is reversible (evaporating the water recovers NaCl). Note: AP Chemistry treats NaCl dissolution as physical, though it involves ionic bond disruption.",
+    "statement": "Dissolving NaCl is a physical change: the ionic formula is preserved, and only intermolecular (ion-dipole) forces change — no new chemical formulas are created.",
+    "wowFactor": "This is a deliberate AP Chemistry conceptual trap — dissolving ionic compounds DOES break ionic bonds, which sounds 'chemical.' The key distinction is whether a NEW substance forms. NaCl dissolving produces Na+(aq) and Cl-(aq), not a new compound.",
+    "visualDescription": "Pixel art: NaCl crystal lattice on left dissolving into separate Na+ and Cl- ions surrounded by water dipole shells on the right",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 11.3",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/11-3-solubility",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.4"
+    ]
+  },
+  {
+    "id": "ap_chem_4_4_oxidation_chemical_change",
+    "correctAnswer": "chemical change",
+    "acceptableAlternatives": [
+      "chemical reaction",
+      "oxidation reaction",
+      "redox reaction"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "physical change",
+      "phase change",
+      "intermolecular rearrangement",
+      "allotropic transformation",
+      "thermal expansion",
+      "dissolution",
+      "sublimation",
+      "condensation"
+    ],
+    "quizQuestion": "Iron reacting with oxygen to form iron(III) oxide (rust, Fe2O3) is classified as what type of change?",
+    "explanation": "Rusting is a chemical change: the original substance (Fe, metallic iron) is converted into a new substance (Fe2O3) with different properties, molecular formula, and appearance. Covalent/ionic bonds are formed between iron atoms and oxygen atoms. The process is not easily reversible without reduction reactions. All four classic signs may be present: color change (silver → orange-brown), heat release, and new substance formation.",
+    "statement": "Rusting (iron oxidation) is a chemical change: Fe reacts with O2 to form Fe2O3, a new substance with different properties and formula.",
+    "wowFactor": "The Eiffel Tower gains about 300 tonnes of iron oxide mass every year from oxidation — which is why it must be repainted every 7 years with 60 tonnes of paint to prevent corrosion from destroying the structure.",
+    "visualDescription": "Pixel art dungeon forge: shiny iron ingot on left, weathered rusty orange Fe2O3 chunk on right with chemical formula labels",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.4",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.4"
+    ]
+  },
+  {
+    "id": "ap_chem_4_5_limiting_reagent_definition",
+    "correctAnswer": "limiting reagent",
+    "acceptableAlternatives": [
+      "limiting reactant",
+      "limiting reagent (LR)"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "excess reagent",
+      "theoretical reactant",
+      "stoichiometric reagent",
+      "catalyst",
+      "spectator reagent",
+      "solvent",
+      "precipitate reagent",
+      "equilibrium reactant"
+    ],
+    "quizQuestion": "In a chemical reaction, the reactant that is completely consumed first and therefore determines the maximum amount of product that can form is called what?",
+    "explanation": "The limiting reagent (or limiting reactant) is the substance that runs out first, halting the reaction and setting an upper limit on product yield. The reaction cannot proceed past the point where the limiting reagent is exhausted. To find it, compare the molar amounts available to the molar amounts required by the balanced equation. The reagent with the smaller 'available/required' ratio is limiting.",
+    "statement": "The limiting reagent is completely consumed first in a reaction and determines the maximum (theoretical) yield of product.",
+    "wowFactor": "Industrial chemists deliberately choose which reagent is limiting based on cost and toxicity — expensive or hazardous materials are made limiting so none goes to waste, while cheap reagents are used in excess.",
+    "visualDescription": "Pixel art dungeon crafting table: two ingredient slots, one glowing red (empty/limiting) and one with leftover material (excess), with a product in the output slot",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.4",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.5"
+    ]
+  },
+  {
+    "id": "ap_chem_4_5_excess_reagent_definition",
+    "correctAnswer": "excess reagent",
+    "acceptableAlternatives": [
+      "excess reactant",
+      "reagent in excess"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "teen+",
+    "distractors": [
+      "limiting reagent",
+      "theoretical reagent",
+      "stoichiometric reagent",
+      "catalyst",
+      "spectator reagent",
+      "precipitate reagent",
+      "solvent",
+      "equilibrium reactant"
+    ],
+    "quizQuestion": "After a reaction reaches completion, some of a reactant remains unconsumed. This leftover reactant is referred to as what?",
+    "explanation": "The excess reagent is the reactant that is NOT completely consumed — it remains after the limiting reagent is exhausted and the reaction stops. The amount of excess reagent left over can be calculated by subtracting the amount consumed (determined from the limiting reagent via mole ratios) from the initial amount present. Identifying excess reagent is important for calculating leftover materials and for green chemistry waste minimization.",
+    "statement": "The excess reagent is the reactant that remains after the limiting reagent is fully consumed and the reaction stops.",
+    "wowFactor": "In biological systems, enzyme substrates are often supplied in excess — cells maintain excess glucose relative to available enzymes so that the reaction rate is controlled by enzyme concentration (the limiting 'reagent'), not substrate availability.",
+    "visualDescription": "Pixel art dungeon mixing bowl: one ingredient jar empty (limiting), another jar still half full (excess), with a small pile of product",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.4",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.5"
+    ]
+  },
+  {
+    "id": "ap_chem_4_5_percent_yield_formula",
+    "correctAnswer": "(actual yield / theoretical yield) × 100%",
+    "acceptableAlternatives": [
+      "actual/theoretical × 100",
+      "(actual ÷ theoretical) × 100%"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "unit_and_constant_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "(theoretical yield / actual yield) × 100%",
+      "(actual yield - theoretical yield) × 100%",
+      "(theoretical yield - actual yield) / actual yield × 100%",
+      "actual yield × theoretical yield × 100%",
+      "(actual yield / molar mass) × 100%",
+      "(moles actual / moles theoretical) without ×100",
+      "theoretical yield / (actual yield × molar mass)",
+      "(excess reagent / limiting reagent) × 100%"
+    ],
+    "quizQuestion": "What is the formula for percent yield in a chemical reaction?",
+    "explanation": "Percent yield = (actual yield / theoretical yield) × 100%. The theoretical yield is the maximum amount of product predicted from the limiting reagent using stoichiometry (assuming perfect reaction conditions). The actual yield is what is experimentally collected. Percent yield is always ≤ 100% because side reactions, product losses during collection, and incomplete reactions reduce the actual amount obtained.",
+    "statement": "Percent yield = (actual yield / theoretical yield) × 100%.",
+    "wowFactor": "In pharmaceutical synthesis, even a 70% yield per step is considered excellent — but a 10-step drug synthesis at 70% per step gives only 0.7^10 ≈ 2.8% overall yield! This is why chemists obsess over improving each step.",
+    "visualDescription": "Pixel art chemistry formula on dungeon chalkboard: '% yield = (actual/theoretical) × 100' with an arrow showing less product than expected",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.4",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.5"
+    ]
+  },
+  {
+    "id": "ap_chem_4_5_theoretical_yield_definition",
+    "correctAnswer": "theoretical yield",
+    "acceptableAlternatives": [
+      "maximum theoretical yield",
+      "calculated maximum yield"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "actual yield",
+      "percent yield",
+      "limiting yield",
+      "excess yield",
+      "stoichiometric yield",
+      "experimental yield",
+      "molar yield",
+      "equilibrium yield"
+    ],
+    "quizQuestion": "The maximum amount of product that could be formed from given reactant quantities, calculated using stoichiometry from the limiting reagent, is called what?",
+    "explanation": "The theoretical yield is computed from the balanced equation and the amount of the limiting reagent using mole-ratio stoichiometry. It represents a perfect scenario: 100% of the limiting reagent converts to product with no losses. In practice, the actual yield is always less due to side reactions, losses during product isolation, equilibrium limitations, and incomplete reactions. Theoretical yield is the denominator in the percent yield formula.",
+    "statement": "Theoretical yield is the maximum amount of product predicted by stoichiometry from the limiting reagent, assuming perfect conversion with no losses.",
+    "wowFactor": "Haber-Bosch ammonia synthesis (N2 + 3H2 → 2NH3) reaches only about 15% conversion per pass at operating conditions — far below theoretical yield — so unreacted gases are recycled continuously to reach practical efficiency.",
+    "visualDescription": "Pixel art balance scale showing a large theoretical yield pile and smaller actual yield pile, with the gap labeled 'losses'",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.4",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.5"
+    ]
+  },
+  {
+    "id": "ap_chem_4_5_mole_ratio_conversion",
+    "correctAnswer": "mole ratio from balanced equation",
+    "acceptableAlternatives": [
+      "stoichiometric coefficients",
+      "coefficients as mole ratios",
+      "balanced equation coefficients"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "unit_and_constant_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "molar mass ratio",
+      "density ratio",
+      "percent composition",
+      "Avogadro's number",
+      "empirical formula ratio",
+      "atomic mass ratio",
+      "oxidation state ratio",
+      "electron configuration ratio"
+    ],
+    "quizQuestion": "In a mass-to-mass stoichiometry problem, after converting grams of reactant to moles, what conversion factor is used to find moles of product?",
+    "explanation": "The pathway for mass-to-mass stoichiometry is: grams A → moles A (÷ molar mass A) → moles B (× mole ratio B/A from balanced equation) → grams B (× molar mass B). The central step — converting moles of A to moles of B — uses the coefficients from the balanced equation as the conversion factor. For N2 + 3H2 → 2NH3: 1 mol N2 produces 2 mol NH3, so the mole ratio is 2/1.",
+    "statement": "In mass-to-mass stoichiometry, the mole ratio from the balanced equation converts moles of one substance to moles of another.",
+    "wowFactor": "The entire pharmaceutical, chemical, and food industries depend on this four-step stoichiometry pathway to calculate raw material needs for large-scale production — scaling from lab grams to factory tonnes.",
+    "visualDescription": "Pixel art four-step roadmap on dungeon stone: grams A → moles A → moles B → grams B, with 'molar mass' and 'mole ratio' labels on the arrows",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.3",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.5"
+    ]
+  },
+  {
+    "id": "ap_chem_4_5_limiting_reagent_identification",
+    "correctAnswer": "the reactant with the smaller mole-to-coefficient ratio",
+    "acceptableAlternatives": [
+      "reactant whose moles available divided by coefficient is smallest",
+      "whichever reactant runs out first based on mole ratios"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "the reactant with fewer grams",
+      "the reactant with smaller molar mass",
+      "the reactant with the larger coefficient",
+      "the reactant present in fewer moles (without comparing to coefficient)",
+      "the reactant with higher density",
+      "the first reactant listed in the equation",
+      "the reactant with smaller atomic number",
+      "the reactant that appears in fewer products"
+    ],
+    "quizQuestion": "To identify the limiting reagent when given moles of each reactant, you divide each reactant's available moles by its stoichiometric coefficient. The limiting reagent is which?",
+    "explanation": "The method: for each reactant, calculate (moles available) ÷ (stoichiometric coefficient). The reactant with the SMALLEST result is the limiting reagent because it provides the least reaction 'capacity' relative to what the equation demands. Example: N2 + 3H2 → 2NH3. If you have 2 mol N2 and 5 mol H2: N2 ratio = 2/1 = 2.0; H2 ratio = 5/3 = 1.67. H2 is limiting (smaller ratio). This is the most reliable algorithm — not just 'fewest moles.'",
+    "statement": "The limiting reagent is identified by dividing each reactant's available moles by its stoichiometric coefficient; the one with the smallest quotient is limiting.",
+    "wowFactor": "A common mistake is to say 'fewer moles = limiting reagent' — this ignores coefficients. In N2 + 3H2 → 2NH3, you could have MORE moles of N2 and it could still be limiting if H2 is insufficient relative to the 3:1 ratio needed.",
+    "visualDescription": "Pixel art dungeon comparison table: two reagents, their moles, coefficients, and calculated ratios, with the smaller ratio highlighted in red",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.4",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.5"
+    ]
+  },
+  {
+    "id": "ap_chem_4_5_percent_yield_calculation",
+    "correctAnswer": "{80}%",
+    "acceptableAlternatives": [
+      "80%",
+      "80 percent"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [],
+    "quizQuestion": "A reaction has a theoretical yield of 25.0 g of product. The student collects 20.0 g in the lab. What is the percent yield?",
+    "explanation": "Percent yield = (actual yield / theoretical yield) × 100% = (20.0 g / 25.0 g) × 100% = 80.0%. The 5.0 g difference (20%) was lost to side reactions, product remaining in glassware, or incomplete reaction. Percent yield is always expressed as a percentage and should always be ≤ 100% — a value above 100% indicates a measurement or calculation error.",
+    "statement": "Percent yield = (20.0 g / 25.0 g) × 100% = 80%.",
+    "wowFactor": "An 80% yield is considered quite good for many multi-step organic syntheses. Industrial processes often run at 60–85% yield intentionally, optimizing the tradeoff between reaction completeness and economic cost of longer reaction times.",
+    "visualDescription": "Pixel art dungeon lab bench: 25g flask labeled 'theoretical' and 20g actual collected amount in a beaker, with 80% glowing in gold",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.4",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.5"
+    ]
+  },
+  {
+    "id": "ap_chem_4_5_theoretical_yield_from_limiting",
+    "correctAnswer": "moles of limiting reagent × mole ratio × molar mass of product",
+    "acceptableAlternatives": [
+      "from limiting reagent moles using stoichiometry then convert to grams",
+      "use limiting reagent to calculate max moles of product then convert"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "unit_and_constant_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "moles of excess reagent × molar mass of product",
+      "total moles of all reactants × molar mass of product",
+      "moles of limiting reagent ÷ molar mass of product",
+      "average moles of all reactants × mole ratio",
+      "moles of product at equilibrium × 100%",
+      "moles of limiting reagent × molar mass of reactant",
+      "sum of molar masses of all reactants",
+      "moles of limiting reagent × percent yield"
+    ],
+    "quizQuestion": "How is the theoretical yield (in grams) of a product calculated from the limiting reagent?",
+    "explanation": "To calculate theoretical yield: (1) Identify the limiting reagent. (2) Convert its mass to moles (if not already in moles). (3) Use the balanced equation's mole ratio to find moles of product. (4) Multiply moles of product by the product's molar mass to get grams. The excess reagent is irrelevant for this calculation. Example: 4 g H2 + excess O2 → H2O. H2 is limiting: 4g ÷ 2 g/mol = 2 mol H2 × (2 mol H2O / 2 mol H2) × 18 g/mol = 36 g H2O theoretical.",
+    "statement": "Theoretical yield (g) = moles of limiting reagent × (mole ratio: mol product/mol limiting reagent) × molar mass of product.",
+    "wowFactor": "From just 4 grams of hydrogen gas and excess oxygen, you can predict EXACTLY 36 grams of water will form — the mole ratio and molar masses lock in the answer with no ambiguity, even across any scale of the reaction.",
+    "visualDescription": "Pixel art calculation flowchart: limiting reagent box → moles → mole ratio arrow → product moles → molar mass → product grams, glowing gold",
+    "sourceName": "OpenStax Chemistry 2e, Chapter 4.4",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.5"
+    ]
+  }
+]

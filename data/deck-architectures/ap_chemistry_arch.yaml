@@ -1,0 +1,1032 @@
+deck_id: ap_chemistry
+name: "AP Chemistry"
+domain: natural_sciences
+sub_domain: chemistry
+description: "Master the full AP Chemistry curriculum — from atomic structure to electrochemistry. Covers all 9 CED units: Atomic Structure and Properties, Compound Structure and Properties, Properties of Substances and Mixtures, Chemical Reactions, Kinetics, Thermochemistry, Equilibrium, Acids and Bases, and Thermodynamics and Electrochemistry. Aligned to the College Board AP Chemistry Course and Exam Description effective Fall 2024. Includes ideal gas law calculations, Hess's Law, Henderson-Hasselbalch equation, Nernst equation, and all equilibrium constant expressions (Keq, Ka, Kb, Ksp)."
+minimum_facts: 350
+target_facts: 400
+
+# COMPLETENESS PHILOSOPHY:
+# This deck covers the COMPLETE College Board AP Chemistry Course and Exam
+# Description (CED), effective Fall 2024. A student who masters this deck
+# should be prepared for every question type on the AP Chemistry exam. Scope
+# is curriculum-driven, not topic-sampled — every CED topic (1.1 through 9.11)
+# across all 9 units is represented. Unit weights (percent of exam) directly
+# inform fact counts per chain theme. Units 3 (18-22%) and 8 (11-15%) are the
+# heaviest, and their chain themes receive proportionally more facts.
+
+# Sourcing & licensing
+data_sources:
+  - name: College Board AP Chemistry Course and Exam Description (CED) Effective Fall 2024
+    url: https://apcentral.collegeboard.org/media/pdf/ap-chemistry-course-and-exam-description.pdf
+    license: public educational resource
+    usage: Authoritative unit/topic structure, learning objectives, essential knowledge statements, exam weight distribution, required equations and constants
+  - name: Wikipedia — Chemistry
+    url: https://en.wikipedia.org/wiki/Chemistry
+    license: CC-BY-SA-4.0
+    usage: Element data, compound descriptions, process summaries, scientist biographies, verified definitions
+  - name: OpenStax Chemistry 2e
+    url: https://openstax.org/books/chemistry-2e/pages/1-introduction
+    license: CC-BY-4.0
+    usage: Chapter-by-chapter concept explanations, verified definitions, worked examples, figure references
+  - name: Wikidata
+    url: https://www.wikidata.org/
+    license: CC0
+    usage: Element properties (atomic number, electronegativity, molar mass), compound molar masses, standard electrode potentials
+
+asset_sources: []
+
+# ============================================================
+# CHAIN THEMES — 6 thematic zones mapping to CED unit groupings
+# Each theme is a distinct "dungeon zone" with its own facts pool
+# Fact counts weighted by exam percentage per CED
+# ============================================================
+
+chain_themes:
+
+  - id: 0
+    name: "The Atomic Forge"
+    ced_coverage: "Units 1-2 Topics 1.1-1.8 and 2.1-2.7: Atomic Structure and Properties; Compound Structure and Properties"
+    target_facts: 85
+    description: >
+      The quantum mechanical atom and how atoms bond into compounds. Players explore electron
+      configuration and periodic trends (ionization energy, electronegativity, atomic radius),
+      the photoelectron spectroscopy (PES) signature of electron shells, Lewis diagrams and
+      formal charge, resonance structures, VSEPR geometry, and the nature of ionic, covalent,
+      and metallic bonds. Structure determines function — this theme builds the conceptual
+      foundation for everything that follows.
+    key_concepts:
+      - Mole and Avogadro's number (6.022 × 10^23); molar mass as g/mol conversion
+      - Mass spectra of elements — isotopes, relative abundance, average atomic mass calculation
+      - Elemental composition of pure substances — percent composition, empirical and molecular formulas
+      - Composition of mixtures — mass fraction, mole fraction
+      - Atomic structure — protons, neutrons, electrons; atomic number vs. mass number; isotopes
+      - Electron configuration notation (1s, 2s, 2p, ...); aufbau principle, Pauli exclusion, Hund's rule
+      - Core electrons vs. valence electrons
+      - Photoelectron spectroscopy (PES) — peaks correspond to subshells; higher binding energy = closer to nucleus
+      - Periodic trends — ionization energy (increases left to right, decreases top to bottom)
+      - Periodic trends — electronegativity (increases left to right, decreases top to bottom; F highest at 3.98)
+      - Periodic trends — atomic radius (increases right to left and top to bottom)
+      - Periodic trends — electron affinity; metallic character
+      - Shielding effect and effective nuclear charge (Zeff)
+      - Valence electrons and ion formation; ionic compounds formed by electron transfer
+      - Types of chemical bonds — ionic (metal + nonmetal), covalent (nonmetal + nonmetal), metallic (metal + metal)
+      - Intramolecular force and potential energy — bond length, bond energy; energy minimum at equilibrium distance
+      - Structure of ionic solids — lattice energy; cations and anions in repeating 3D pattern
+      - Structure of metals and alloys — electron sea model; substitutional and interstitial alloys
+      - Lewis diagrams — octet rule, lone pairs, bonding pairs; drawing for molecules and polyatomic ions
+      - Resonance structures — delocalized electrons; actual bond order is average of resonance structures
+      - Formal charge calculation — (valence electrons) − (lone pair electrons) − (1/2 bonding electrons)
+      - Minimize formal charge to determine most stable Lewis structure
+      - VSEPR theory — electron domains (bonding + lone pairs) determine electron geometry
+      - Molecular geometry from electron geometry after removing lone pairs
+      - Bond hybridization — sp (linear), sp2 (trigonal planar), sp3 (tetrahedral), sp3d, sp3d2
+      - Molecular polarity — depends on both bond polarity (electronegativity difference) and geometry
+      - All molecular geometries: linear, bent, trigonal planar, trigonal pyramidal, tetrahedral, trigonal bipyramidal, octahedral, T-shaped, seesaw, square planar, square pyramidal
+
+  - id: 1
+    name: "States & Solutions"
+    ced_coverage: "Unit 3 Topics 3.1-3.13: Properties of Substances and Mixtures"
+    target_facts: 75
+    description: >
+      How molecular structure dictates bulk properties — from intermolecular forces to gas
+      behavior to solution chemistry. This is the highest-weighted unit (18-22% of exam) and
+      the most concept-dense chain theme. Players master all five IMFs, solid classifications,
+      the ideal gas law and KMT, deviations from ideal behavior, solubility rules, colligative
+      properties, Beer-Lambert Law, and the electromagnetic spectrum. Every fact in this theme
+      directly connects molecular structure to observable macroscopic behavior.
+    key_concepts:
+      - Intermolecular forces (IMFs) — London dispersion forces, dipole-dipole, hydrogen bonding, ion-dipole, ion-ion
+      - London dispersion forces — present in ALL molecules; magnitude increases with molar mass and surface area
+      - Hydrogen bonding — requires H directly bonded to F, O, or N; strongest of molecular IMFs
+      - IMF strength determines melting point, boiling point, viscosity, surface tension, vapor pressure
+      - Properties of solids — ionic, metallic, molecular, covalent network (atomic) solids
+      - Covalent network solids (e.g., diamond, SiO2) have very high melting points; covalent bonds throughout
+      - Solids, liquids, gases — arrangement and motion at molecular level; phase transitions
+      - Heating and cooling curves — plateaus at melting point and boiling point (constant T during phase change)
+      - Phase diagrams — triple point, critical point, solid/liquid/gas regions
+      - Ideal Gas Law — PV = nRT; P in atm, V in L, n in mol, R = 0.08206 L·atm/mol·K, T in Kelvin
+      - Gas stoichiometry using molar volume at STP (22.4 L/mol at 0°C, 1 atm)
+      - Dalton's Law of Partial Pressures — P_total = P_1 + P_2 + ...
+      - Kinetic Molecular Theory (KMT) — gas particles in constant random motion; elastic collisions; no intermolecular forces
+      - KMT: average kinetic energy proportional to absolute temperature (KE_avg = 3/2 kT)
+      - Graham's Law of Effusion — rate inversely proportional to square root of molar mass
+      - Deviation from ideal gas behavior — real gases at high pressure (volume too small) or low temperature (attractions matter)
+      - van der Waals equation corrections — a corrects for attractions; b corrects for molecular volume
+      - Solutions and mixtures — solute, solvent, solubility
+      - Like dissolves like — polar solvents dissolve polar/ionic solutes; nonpolar solvents dissolve nonpolar solutes
+      - Representations of solutions — particulate diagrams showing ion pairs, hydration shells
+      - Separation techniques — distillation, filtration, chromatography, extraction
+      - Solubility and temperature — most ionic solids more soluble at higher T; gases less soluble at higher T
+      - Henry's Law — gas solubility proportional to partial pressure: S = kH × P
+      - Colligative properties — depend on number of solute particles, not identity
+      - Molarity (M = mol solute/L solution) vs. molality (m = mol solute/kg solvent)
+      - Spectroscopy and electromagnetic spectrum — UV, visible, IR regions; energy inversely proportional to wavelength
+      - Properties of photons — E = hν = hc/λ; higher frequency = higher energy
+      - Beer-Lambert Law — A = εlc; absorbance proportional to concentration; used for colorimetric analysis
+      - Molar absorptivity (ε) as a property of the substance at a given wavelength
+
+  - id: 2
+    name: "The Reaction Engine"
+    ced_coverage: "Unit 4 Topics 4.1-4.9: Chemical Reactions"
+    target_facts: 55
+    description: >
+      The language and logic of chemical reactions — how to represent, classify, and balance
+      them. Players work through net ionic equations, the five major reaction types, stoichiometry
+      for solution and gas-phase reactions, titration fundamentals, acid-base chemistry at the
+      reaction level, and oxidation-reduction including assigning oxidation states and identifying
+      oxidizing/reducing agents. The reaction engine is the procedural core of AP Chemistry.
+    key_concepts:
+      - Physical changes (no new substances formed) vs. chemical changes (new substances formed)
+      - Conservation of mass — atoms rearranged, not created or destroyed
+      - Balancing chemical equations; coefficients represent mole ratios
+      - Net ionic equations — eliminate spectator ions; show only species that change
+      - Molecular, ionic, and net ionic equation representations
+      - Particulate diagrams — microscopic representation of reactions showing individual atoms/molecules
+      - Stoichiometry — mole ratios from balanced equation; limiting reagent; theoretical yield; percent yield
+      - Mole-to-mole, mass-to-mass, and mass-to-volume stoichiometry conversions
+      - Solution stoichiometry — M × V = moles; dilution equation M1V1 = M2V2
+      - Types of chemical reactions — synthesis, decomposition, single replacement, double replacement, combustion
+      - Precipitation reactions — double replacement producing an insoluble product
+      - Solubility rules for common ionic compounds (nitrates always soluble; halides generally soluble except Ag+, Pb2+, Hg2+)
+      - Acid-base reactions — neutralization; acid + base → salt + water
+      - Introduction to titration — equivalence point; indicator; standard solution
+      - Titration stoichiometry — moles acid = moles base at equivalence point (for monoprotic)
+      - Acids — donate H+ (Arrhenius: produce H+ in water; Brønsted-Lowry: proton donors)
+      - Bases — accept H+ (Arrhenius: produce OH- in water; Brønsted-Lowry: proton acceptors)
+      - Strong acids (HCl, HBr, HI, HNO3, HClO4, H2SO4) fully dissociate; weak acids partially dissociate
+      - Strong bases (Group 1 and 2 metal hydroxides) fully dissociate
+      - Oxidation-reduction (redox) reactions — electron transfer between species
+      - Oxidation states — assigning by rules; oxidation = increase in oxidation state (loss of electrons)
+      - Reduction = decrease in oxidation state (gain of electrons); LEO says GER
+      - Oxidizing agent — accepts electrons (is reduced); reducing agent — donates electrons (is oxidized)
+      - Balancing redox equations using half-reaction method (acidic and basic conditions)
+
+  - id: 3
+    name: "Speed & Energy"
+    ced_coverage: "Units 5-6 Topics 5.1-5.11 and 6.1-6.9: Kinetics; Thermochemistry"
+    target_facts: 75
+    description: >
+      How fast reactions go and how much energy they exchange. Kinetics covers reaction rates,
+      rate laws, integrated rate laws, the Arrhenius equation, reaction mechanisms, and catalysis.
+      Thermochemistry covers enthalpy, calorimetry, phase change energetics, Hess's Law, bond
+      enthalpies, standard enthalpies of formation, and energy diagrams. Together these units
+      answer: why does this reaction happen at this speed and with this energy change?
+    key_concepts:
+      - Reaction rate — change in concentration per unit time; expressed as -Δ[reactant]/Δt or +Δ[product]/Δt
+      - Rate law — rate = k[A]^m[B]^n; rate constant k; orders m, n determined experimentally
+      - Overall reaction order = sum of individual orders; units of k depend on overall order
+      - Zero-order reactions — rate independent of concentration; linear [A] vs. time
+      - First-order reactions — rate ∝ [A]; ln[A] vs. time is linear; half-life t½ = 0.693/k (constant)
+      - Second-order reactions — rate ∝ [A]^2; 1/[A] vs. time is linear; half-life t½ = 1/(k[A]0) (not constant)
+      - Integrated rate laws — used to find concentration at any time or determine rate order from data
+      - Elementary reactions — single-step reactions; rate law written directly from stoichiometry
+      - Collision model — particles must collide with sufficient energy (≥ Ea) and proper orientation
+      - Activation energy (Ea) — minimum energy needed for a successful collision
+      - Arrhenius equation — k = Ae^(−Ea/RT); higher T or lower Ea → larger k → faster rate
+      - ln(k2/k1) = (Ea/R)(1/T1 − 1/T2) form for comparing rates at two temperatures
+      - Reaction energy profile — potential energy diagram; reactants, transition state, products; Ea for forward and reverse
+      - Reaction mechanism — sequence of elementary steps; must sum to overall balanced equation
+      - Rate-determining step — slowest step; its rate law is the overall rate law
+      - Intermediates — produced in one step, consumed in another; not in overall equation
+      - Steady-state approximation — intermediate concentration assumed constant; used for complex mechanisms
+      - Multistep reaction energy profile — each elementary step has its own Ea; highest Ea = rate-determining step
+      - Catalysis — lowers activation energy; provides alternative pathway; not consumed
+      - Homogeneous catalysis — catalyst and reactants in same phase
+      - Heterogeneous catalysis — catalyst in different phase (usually solid catalyst, gas/liquid reactants)
+      - Endothermic processes — absorb energy from surroundings; products have higher enthalpy than reactants
+      - Exothermic processes — release energy to surroundings; products have lower enthalpy than reactants
+      - Energy diagrams — ΔH = H_products − H_reactants; negative ΔH = exothermic
+      - Heat transfer — q = mcΔT; c = specific heat capacity; m = mass; ΔT = temperature change
+      - Thermal equilibrium — heat flows from hot to cold until temperatures equalize
+      - Specific heat capacity — J/g·°C; water has unusually high specific heat (4.184 J/g·°C)
+      - Calorimetry — measuring heat flow; q_rxn = −q_calorimeter; coffee-cup and bomb calorimeter
+      - Energy of phase changes — ΔH_fus (melting), ΔH_vap (vaporization); q = mΔH
+      - Phase change energy always positive for melting/vaporizing (endothermic)
+      - Enthalpy of reaction (ΔHrxn) — heat absorbed or released at constant pressure
+      - Bond enthalpies — ΔHrxn ≈ Σ(bonds broken) − Σ(bonds formed); always endothermic to break, exothermic to form
+      - Enthalpy of formation (ΔHf°) — enthalpy change to form 1 mol compound from elements in standard states
+      - Standard enthalpy of formation of pure elements = 0 by definition
+      - ΔHrxn = Σ ΔHf°(products) − Σ ΔHf°(reactants); Hess's Law — ΔH is a state function (path-independent)
+      - Hess's Law — manipulate and sum known reactions to find unknown ΔH; reverse reaction changes sign of ΔH; scaling multiplies ΔH
+
+  - id: 4
+    name: "The Balance Point"
+    ced_coverage: "Units 7-8 Topics 7.1-7.14 and 8.1-8.10: Equilibrium; Acids and Bases"
+    target_facts: 70
+    description: >
+      Dynamic equilibrium and the acid-base universe. Equilibrium covers the reaction quotient Q,
+      equilibrium constant Keq (Kc and Kp), Le Chatelier's principle, solubility equilibria (Ksp),
+      the common-ion effect, and pH effects on solubility. Acids and Bases covers strong vs. weak
+      acids/bases, Ka and Kb, buffers, the Henderson-Hasselbalch equation, and titration curves.
+      The second-heaviest unit pair on the exam — quantitative reasoning is central.
+    key_concepts:
+      - Reversible reactions — reach dynamic equilibrium when forward rate = reverse rate
+      - At equilibrium — concentrations constant but not necessarily equal; macroscopic properties unchanged
+      - Reaction quotient Q — same expression as Keq but using current (non-equilibrium) concentrations
+      - If Q < Keq: reaction proceeds forward; if Q > Keq: reaction proceeds reverse; if Q = Keq: at equilibrium
+      - Equilibrium constant expression Kc — products over reactants, concentrations in mol/L, raised to stoichiometric powers
+      - Pure solids and pure liquids excluded from Keq expression
+      - Kp uses partial pressures (in atm); relationship Kp = Kc(RT)^Δn where Δn = moles gas products − moles gas reactants
+      - Large Keq (>>1) — products favored at equilibrium; small Keq (<<1) — reactants favored
+      - Calculating Keq from equilibrium concentrations; calculating equilibrium concentrations using ICE tables
+      - Properties of Keq — depends only on temperature; multiplying equation by n multiplies exponent; reversing equation inverts Keq
+      - Representations of equilibrium — particulate diagrams showing forward and reverse processes
+      - Le Chatelier's Principle — if a stress is applied to a system at equilibrium, the system shifts to relieve the stress
+      - Stress types: concentration change, pressure/volume change (gas phase only), temperature change
+      - Increasing concentration of reactant: shift right; increasing concentration of product: shift left
+      - Increasing pressure (decreasing volume): shift toward fewer moles of gas
+      - Increasing temperature: shift toward endothermic direction; changes value of Keq
+      - Adding inert gas at constant volume: no effect on equilibrium
+      - Introduction to solubility equilibria — Ksp = ion product at saturation
+      - Ksp expression for sparingly soluble salts: e.g., AgCl → Ag+ + Cl−; Ksp = [Ag+][Cl−]
+      - Calculating molar solubility from Ksp; calculating Ksp from molar solubility
+      - Common-ion effect — adding an ion already in solution reduces solubility (Le Chatelier shift)
+      - pH and solubility — acidic conditions increase solubility of metal hydroxides and carbonates
+      - Free energy of dissolution relates to Ksp; ΔG° = −RT ln K
+      - Arrhenius definition of acids (produce H+) and bases (produce OH-) — limited to aqueous
+      - Brønsted-Lowry definition — acids donate protons; bases accept protons; broader than Arrhenius
+      - Conjugate acid-base pairs — differ by one H+; conjugate acid has one more H+ than its conjugate base
+      - Amphoteric species — can act as both acid and base (water, HCO3−, HSO4−)
+      - pH = −log[H+]; pOH = −log[OH−]; pH + pOH = 14 at 25°C
+      - Strong acids/bases fully dissociate — [H+] directly from concentration; no Ka needed
+      - Kw = [H+][OH−] = 1.0 × 10−14 at 25°C; at pH 7, [H+] = [OH−] (neutral)
+      - Weak acid equilibrium — HA ⇌ H+ + A−; Ka = [H+][A−]/[HA]
+      - Weak base equilibrium — B + H2O ⇌ BH+ + OH−; Kb = [BH+][OH−]/[B]
+      - Ka × Kb = Kw for a conjugate acid-base pair
+      - Stronger acid = larger Ka; weaker acid = smaller Ka (more negative pKa)
+      - Percent ionization of weak acid = ([H+]eq/[HA]0) × 100%
+      - Buffers — contain weak acid and its conjugate base (or weak base and conjugate acid)
+      - Buffers resist pH change by consuming added H+ or OH−
+      - Henderson-Hasselbalch equation — pH = pKa + log([A−]/[HA])
+      - At half-equivalence point in weak acid titration: pH = pKa
+      - Buffer capacity — determined by amount of buffering components and by pH proximity to pKa
+      - Acid-base titration — equivalence point: all analyte has reacted with titrant
+      - Strong acid + strong base titration — equivalence point at pH 7; no buffer region
+      - Weak acid + strong base titration — equivalence point above pH 7 (conjugate base hydrolyzes)
+      - Molecular structure and acid strength — electronegativity of attached atoms; bond polarity; oxyacids
+      - More electronegative atoms stabilize conjugate base → stronger acid
+      - Oxyacids — more oxygens = stronger acid (HClO4 > HClO3 > HClO2 > HClO)
+      - pKa and pH relationship — at pKa: half of acid ionized; pH above pKa: mostly conjugate base
+
+  - id: 5
+    name: "Power & Entropy"
+    ced_coverage: "Unit 9 Topics 9.1-9.11: Thermodynamics and Electrochemistry"
+    target_facts: 40
+    description: >
+      The thermodynamic driving forces of reactions — entropy, Gibbs free energy, and their
+      link to electrochemistry. Players connect spontaneity (ΔG < 0) to entropy change and
+      enthalpy, use the Nernst equation to find cell potential under non-standard conditions,
+      work through galvanic vs. electrolytic cells, and apply Faraday's Law to electrolysis
+      calculations. The capstone unit: every prior concept connects here.
+    key_concepts:
+      - Entropy (S) — measure of dispersal of energy and matter; qualitative prediction of sign of ΔS
+      - Entropy increases with: dissolving, melting, vaporizing, increasing moles of gas, mixing, higher temperature
+      - Absolute (standard) entropy S° — all substances have S° > 0; calculated from third law (perfect crystal at 0 K = 0)
+      - ΔS°rxn = Σ S°(products) − Σ S°(reactants); calculated same way as ΔH°rxn
+      - Gibbs free energy — ΔG = ΔH − TΔS; spontaneous when ΔG < 0 (thermodynamically favorable)
+      - Four ΔH/ΔS combination cases for spontaneity and temperature dependence
+      - ΔG°rxn = Σ ΔGf°(products) − Σ ΔGf°(reactants); ΔGf° of pure elements = 0
+      - ΔG° = ΔH° − TΔS° at standard conditions; temperature affects spontaneity when ΔH and ΔS have same sign
+      - Thermodynamic vs. kinetic control — thermodynamically favorable ≠ fast; Ea determines rate
+      - Free energy and equilibrium — ΔG° = −RT ln Keq; large Keq corresponds to negative ΔG°
+      - ΔG = ΔG° + RT ln Q; at equilibrium Q = Keq and ΔG = 0
+      - Coupled reactions — unfavorable reaction driven by coupling with favorable one (ΔG1 + ΔG2 < 0)
+      - Free energy of dissolution — ΔG°dissolution = −RT ln Ksp
+      - Galvanic (voltaic) cells — spontaneous redox reaction produces electrical work; ΔG < 0
+      - Electrolytic cells — non-spontaneous redox driven by external electrical energy; ΔG > 0
+      - Cell notation — anode (oxidation) on left; cathode (reduction) on right; salt bridge/|| separates compartments
+      - Cathode: site of reduction; mnemonic RED CAT (Reduction at Cathode)
+      - Anode: site of oxidation; mnemonic AN OX (Oxidation at Anode)
+      - Standard cell potential E°cell = E°cathode − E°anode (using standard reduction potentials)
+      - Standard hydrogen electrode (SHE) — E° = 0.000 V; reference for all standard reduction potentials
+      - More positive E° = stronger oxidizing agent; more negative E° = stronger reducing agent
+      - ΔG° = −nFE°cell; n = moles electrons transferred; F = Faraday constant (96,485 C/mol)
+      - Nernst equation — E = E° − (RT/nF) ln Q; at 25°C simplifies to E = E° − (0.0592/n) log Q
+      - Concentration cell — two half-cells with same chemistry but different concentrations; E > 0 until equilibrium
+      - Electrolysis — passage of current forces non-spontaneous reaction; used for electroplating, purification
+      - Faraday's Law — charge Q = nF; moles of substance = Q/(nF); current × time = charge (q = It)
+      - Electrolysis calculations — convert current and time to charge, then to moles, then to grams
+
+# ============================================================
+# ANSWER TYPE POOLS — 16 pools for distractor selection
+# These define the "answer space" for multiple-choice generation
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: Element Names
+  # "What is the name of the element with atomic number 17?" → "Chlorine"
+  - id: element_names
+    label: "Element Names"
+    format: name
+    estimated_count: 30
+    note: >
+      Common elements tested on AP Chemistry: Hydrogen, Helium, Lithium, Beryllium, Boron,
+      Carbon, Nitrogen, Oxygen, Fluorine, Neon, Sodium, Magnesium, Aluminum, Silicon,
+      Phosphorus, Sulfur, Chlorine, Argon, Potassium, Calcium, Chromium, Manganese, Iron,
+      Cobalt, Nickel, Copper, Zinc, Bromine, Silver, Iodine, Barium, Lead, Gold, Platinum.
+      Key confusions: Sodium (Na) vs. Potassium (K) — symbols from Latin names;
+      Copper (Cu) vs. Carbon (C) — same first letter.
+
+  # POOL 2: Element Symbols
+  # "What is the chemical symbol for sodium?" → "Na"
+  - id: element_symbols
+    label: "Element Chemical Symbols"
+    format: term
+    estimated_count: 30
+    note: >
+      Symbols for common elements: H, He, Li, Be, B, C, N, O, F, Ne, Na, Mg, Al, Si,
+      P, S, Cl, Ar, K, Ca, Cr, Mn, Fe, Co, Ni, Cu, Zn, Br, Ag, I, Ba, Pb, Au, Pt.
+      Non-obvious symbols (Latin-derived) are most tested: Na, K, Fe, Cu, Pb, Au, Ag, Hg, Sn, W.
+      Key confusions: Na vs. N (sodium vs. nitrogen), K vs. Ca, Fe vs. F.
+
+  # POOL 3: Compound Names
+  # "What is the name of H2SO4?" → "Sulfuric acid"
+  - id: compound_names
+    label: "Compound and Substance Names"
+    format: name
+    estimated_count: 30
+    note: >
+      Common compounds: Water, Sodium chloride, Ammonia, Methane, Carbon dioxide,
+      Sulfuric acid, Hydrochloric acid, Sodium hydroxide, Glucose, Ethanol, Acetic acid,
+      Nitric acid, Phosphoric acid, Calcium carbonate, Hydrogen peroxide, Sodium bicarbonate,
+      Potassium permanganate, Copper sulfate, Sodium sulfate, Calcium sulfate, Formic acid,
+      Sulfur dioxide, Nitrogen dioxide, Ozone, Acetone, Benzoic acid.
+      Key confusions: Sodium carbonate vs. Sodium bicarbonate, Sulfuric vs. Sulfurous acid.
+
+  # POOL 4: Chemical Formulas
+  # "What is the chemical formula for sulfuric acid?" → "H2SO4"
+  - id: chemical_formulas
+    label: "Chemical Formulas"
+    format: term
+    estimated_count: 30
+    note: >
+      Common formulas: H2O, NaCl, NH3, CH4, CO2, H2SO4, HCl, NaOH, C6H12O6, C2H5OH,
+      CH3COOH, HNO3, H3PO4, CaCO3, H2O2, NaHCO3, KMnO4, CuSO4, Na2SO4, CaSO4,
+      HCOOH, SO2, NO2, O3, CH3COCH3, C6H5COOH, HF, HBr, HI, HClO4.
+      Key confusions: CO vs. CO2, NO vs. NO2, SO2 vs. SO3, H2SO3 vs. H2SO4.
+
+  # POOL 5: Molecular Geometries
+  # "What is the molecular geometry of water (H2O)?" → "Bent"
+  - id: molecular_geometries
+    label: "Molecular Geometry Names"
+    format: term
+    estimated_count: 11
+    syntheticDistractors:
+      - "Pentagonal bipyramidal"
+      - "Trigonal antiprismatic"
+      - "Wedge-shaped"
+    note: >
+      All VSEPR geometries: Linear (2 bonding, 0 lone pairs), Bent (2 bonding, 1-2 lone pairs),
+      Trigonal planar (3 bonding, 0 LP), Trigonal pyramidal (3 bonding, 1 LP),
+      Tetrahedral (4 bonding, 0 LP), Seesaw (4 bonding, 1 LP),
+      T-shaped (3 bonding, 2 LP), Square planar (4 bonding, 2 LP),
+      Trigonal bipyramidal (5 bonding, 0 LP), Square pyramidal (5 bonding, 1 LP),
+      Octahedral (6 bonding, 0 LP).
+      Key confusions: Trigonal planar vs. Trigonal pyramidal (lone pair changes geometry),
+      Bent with 1 LP vs. Bent with 2 LP (different electron geometries).
+
+  # POOL 6: Bond and Intermolecular Force Types
+  # "What type of intermolecular force acts between all molecules?" → "London dispersion forces"
+  - id: bond_and_imf_types
+    label: "Bond Types and Intermolecular Force Names"
+    format: term
+    estimated_count: 12
+    note: >
+      Intramolecular bonds: Ionic, Nonpolar covalent, Polar covalent, Metallic.
+      Intermolecular forces: London dispersion forces, Dipole-dipole, Hydrogen bond,
+      Ion-dipole, Ion-ion (for ionic compounds in solution).
+      Metallic bonding subtypes: substitutional alloy, interstitial alloy.
+      Key confusions: Hydrogen bond (IMF) vs. H-H covalent bond;
+      London dispersion vs. dipole-dipole (all molecules vs. polar molecules only).
+
+  # POOL 7: Reaction Types
+  # "What type of reaction involves the transfer of electrons between species?" → "Oxidation-reduction"
+  - id: reaction_types
+    label: "Chemical Reaction Type Names"
+    format: term
+    estimated_count: 10
+    note: >
+      Reaction types: Synthesis (combination), Decomposition, Single replacement (substitution),
+      Double replacement (metathesis), Combustion, Acid-base neutralization,
+      Oxidation-reduction (redox), Precipitation.
+      Key confusions: Single vs. Double replacement, Combustion vs. Oxidation-reduction
+      (combustion IS a redox reaction), Neutralization vs. Precipitation.
+
+  # POOL 8: Law and Equation Names
+  # "Which law states that the pressure of a gas is proportional to its temperature at constant volume?" → "Gay-Lussac's Law"
+  - id: law_and_equation_names
+    label: "Named Laws, Principles, and Equations"
+    format: name
+    estimated_count: 20
+    note: >
+      Laws and equations: Ideal Gas Law, Hess's Law, Le Chatelier's Principle, Dalton's Law,
+      Raoult's Law, Beer-Lambert Law, Faraday's Law, Arrhenius Equation,
+      Henderson-Hasselbalch Equation, Nernst Equation, Boyle's Law, Charles's Law,
+      Avogadro's Law, Graham's Law, Henry's Law, Gay-Lussac's Law, van der Waals Equation,
+      Ohm's Law (not tested but as distractor), Integrated Rate Laws.
+      Key confusions: Hess's Law vs. Henderson-Hasselbalch (both "H" laws in thermochem/acid-base);
+      Boyle vs. Charles vs. Gay-Lussac (P-V, V-T, P-T relationships respectively).
+
+  # POOL 9: Scientist Names
+  # "Which scientist developed the equation relating cell potential to free energy?" → "Nernst"
+  - id: scientist_names
+    label: "Chemist / Scientist Names"
+    format: name
+    estimated_count: 22
+    syntheticDistractors:
+      - "Pauling"
+      - "Lavoisier"
+      - "Mendeleev"
+      - "Curie"
+    note: >
+      Scientists associated with AP Chemistry concepts: Bohr (atomic model), Lewis (dot structures),
+      Arrhenius (acid-base, activation energy), Brønsted (acid-base), Lowry (acid-base),
+      Le Chatelier (equilibrium principle), Hess (thermochemistry), Faraday (electrochemistry),
+      Dalton (atomic theory, partial pressures), Avogadro (mole concept), Gay-Lussac (gas law),
+      Boyle (gas law), Charles (gas law), Graham (effusion), Nernst (electrochemistry),
+      Henderson (buffers), Hasselbalch (buffers), Raoult (vapor pressure), Henry (gas solubility),
+      Beer (spectroscopy), Lambert (spectroscopy), van der Waals (real gases).
+      Key confusions: Arrhenius (activation energy equation AND acid definition) — two concepts,
+      one name; Brønsted vs. Lowry (both names for same acid-base definition).
+
+  # POOL 10: Periodic Trend Names
+  # "Which periodic trend decreases as you move from left to right across a period?" → "Atomic radius"
+  - id: periodic_trend_names
+    label: "Periodic Trend Names"
+    format: term
+    estimated_count: 8
+    syntheticDistractors:
+      - "Nuclear charge"
+      - "Number of neutrons"
+      - "Atomic mass"
+    note: >
+      Periodic trends: Ionization energy (first and successive), Electronegativity,
+      Atomic radius, Electron affinity, Metallic character, Shielding effect (effective nuclear charge).
+      Key confusions: Ionization energy vs. Electronegativity (similar direction but different concept);
+      Atomic radius vs. Ionic radius (cations are smaller; anions are larger than neutral atoms).
+
+  # POOL 11: Thermodynamic Quantity Names
+  # "What symbol represents the measure of energy dispersal in a system?" → "Entropy"
+  - id: thermodynamic_quantities
+    label: "Thermodynamic Quantities and State Functions"
+    format: term
+    estimated_count: 12
+    note: >
+      Thermodynamic terms: Enthalpy (H), Entropy (S), Gibbs free energy (G),
+      Internal energy (U), Work (w), Heat (q), Heat capacity (Cp, Cv),
+      Activation energy (Ea), Standard enthalpy of formation (ΔHf°),
+      Bond enthalpy (bond dissociation energy), Standard entropy (S°), Lattice energy.
+      Key confusions: Enthalpy (H) vs. Entropy (S) — both start with "en-", both are state functions;
+      ΔG vs. ΔH — spontaneity criterion vs. heat content; Ea vs. ΔH — kinetic vs. thermodynamic quantity.
+
+  # POOL 12: Acid-Base and Equilibrium Terms
+  # "A solution that resists pH change when small amounts of acid or base are added is called a?" → "Buffer"
+  - id: acid_base_equilibrium_terms
+    label: "Acid-Base and Equilibrium Vocabulary"
+    format: term
+    estimated_count: 20
+    note: >
+      Acid-base terms: Conjugate acid, Conjugate base, Amphoteric, Buffer, Equivalence point,
+      Half-equivalence point, Indicator, Titrant, Analyte, End point, Neutralization,
+      Autoionization, Hydrolysis.
+      Equilibrium terms: Reaction quotient (Q), Equilibrium constant (Keq), Kp, Kc,
+      Ka (acid dissociation), Kb (base dissociation), Kw (water ionization), Ksp (solubility product),
+      Common-ion effect, ICE table, Le Chatelier shift.
+      Key confusions: Ka vs. Kb (acid vs. base dissociation; Ka × Kb = Kw for conjugate pair);
+      Equivalence point vs. end point (theoretical vs. observed in titration);
+      Q vs. K (current state vs. equilibrium state).
+
+  # POOL 13: Electrode and Electrochemistry Terms
+  # "At which electrode does reduction occur in a galvanic cell?" → "Cathode"
+  - id: electrochemistry_terms
+    label: "Electrochemistry Terms and Cell Components"
+    format: term
+    estimated_count: 15
+    note: >
+      Electrochemistry vocabulary: Cathode, Anode, Galvanic cell, Electrolytic cell,
+      Salt bridge, Standard hydrogen electrode (SHE), Cell potential (E°cell),
+      Faraday constant (F), Electrolysis, Electroplating, Standard reduction potential,
+      Half-reaction, Oxidizing agent, Reducing agent, Current (amperes), Charge (coulombs).
+      Key confusions: Cathode/Anode role reversal between galvanic and electrolytic cells
+      (reduction always at cathode, oxidation at anode — but polarity reverses);
+      Galvanic (spontaneous, ΔG < 0) vs. Electrolytic (non-spontaneous, ΔG > 0).
+
+  # POOL 14: Unit and Constant Names
+  # "What unit is used for the amount of substance in the SI system?" → "Mole"
+  - id: unit_and_constant_names
+    label: "Units, Constants, and Measurement Terms"
+    format: term
+    estimated_count: 15
+    note: >
+      Units and constants: Mole, Molarity (M), Molality (m), Atmosphere (atm), Pascal (Pa),
+      Joule (J), Kelvin (K), Calorie (cal), Avogadro's number (6.022 × 10^23 /mol),
+      Gas constant R (0.08206 L·atm/mol·K or 8.314 J/mol·K),
+      Faraday constant (96,485 C/mol e−), Boltzmann constant (k), Planck's constant (h),
+      Speed of light (c), Molar volume at STP (22.4 L/mol).
+      Key confusions: Molarity vs. Molality (moles/L solution vs. moles/kg solvent);
+      R in L·atm vs. R in J — must use appropriate units for each equation.
+
+  # POOL 15: Bracket Numbers (Numeric Answers)
+  # "What is the pH of a solution with [H+] = 1.0 × 10^-3 M?" → "3"
+  - id: bracket_numbers
+    label: "Numeric and Calculated Answers"
+    format: number
+    estimated_count: 50
+    note: >
+      Numeric answers spanning all chemistry topics: pH values (0-14), pKa values,
+      Ka values (scientific notation), standard electrode potentials (V, negative to positive),
+      ΔH values (kJ/mol), ΔG values (kJ/mol), ΔS values (J/mol·K), molar masses (g/mol),
+      bond energies (kJ/mol), percent yield values, reaction orders (0, 1, 2),
+      number of electrons transferred in half-reactions, Faraday constant (96485),
+      R constant values (0.08206; 8.314), Avogadro's number (6.022 × 10^23),
+      electronegativity values (0.79-3.98 range).
+      Distractors must be numerically plausible (e.g., pH 3 vs. 4 vs. 5, not pH 100).
+      Volatile: exact ΔH, ΔG, ΔS values change with reference tables — use College Board
+      Table of Standard Reduction Potentials values.
+
+  # POOL 16: Electrode Half-Reaction Species
+  # "Which species is reduced at the cathode in a zinc-copper galvanic cell?" → "Cu2+ (to Cu)"
+  - id: electrode_half_reactions
+    label: "Standard Electrode Half-Reaction Species"
+    format: term
+    estimated_count: 18
+    note: >
+      Standard electrode half-reactions (reduction form, approximate E° values for context):
+      Li+/Li (−3.04 V), Na+/Na (−2.71 V), Zn2+/Zn (−0.76 V), Fe2+/Fe (−0.44 V),
+      Ni2+/Ni (−0.25 V), Sn2+/Sn (−0.14 V), H+/H2 (0.00 V, SHE reference),
+      Cu2+/Cu (+0.34 V), I2/I− (+0.54 V), Fe3+/Fe2+ (+0.77 V), Ag+/Ag (+0.80 V),
+      Br2/Br− (+1.07 V), Cl2/Cl− (+1.36 V), MnO4−/Mn2+ (+1.51 V),
+      Cr2O72−/Cr3+ (+1.33 V), F2/F− (+2.87 V), Au3+/Au (+1.50 V).
+      Key confusions: More positive E° = stronger oxidizing agent (gets reduced more easily);
+      More negative E° = stronger reducing agent (gets oxidized more easily).
+
+# ============================================================
+# EXAM TAGS SCHEMA — CED-aligned metadata for each fact
+# ============================================================
+
+exam_tags_schema:
+  description: >
+    Every fact MUST include an examTags object. These drive difficulty calibration
+    and allow filtering by CED unit/topic for targeted study. AP Chemistry has 9 units
+    and 92 topics (1.1 through 9.11).
+
+  fields:
+    unit:
+      type: integer
+      range: [1, 9]
+      description: "CED unit number (1=Atomic Structure, 2=Compound Structure, 3=Properties/Mixtures, 4=Chemical Reactions, 5=Kinetics, 6=Thermochemistry, 7=Equilibrium, 8=Acids and Bases, 9=Thermodynamics and Electrochemistry)"
+    topic:
+      type: string
+      description: "CED topic code, e.g. '3.4' (Unit 3, Topic 4 — Ideal Gas Law)"
+    science_practice:
+      type: string
+      enum: ["models_and_representations", "question_and_method", "representing_data", "model_analysis", "mathematical_routines", "argumentation"]
+      description: "AP Chemistry Science Practice alignment (College Board 6 science practices)"
+      required: false
+    exam_weight:
+      type: string
+      enum: ["high", "medium", "low"]
+      description: >
+        Estimated AP exam frequency. High = core concept tested most years,
+        medium = appears regularly, low = depth/enrichment or lab-context content.
+    is_equation_fact:
+      type: boolean
+      description: "True if the fact requires using or interpreting a CED required equation (PV=nRT, E=hν, Henderson-Hasselbalch, Nernst, Arrhenius, etc.)"
+    is_lab_fact:
+      type: boolean
+      description: "True if the fact is primarily about one of the AP Chemistry lab investigations (procedure, technique, or data interpretation)"
+    is_calculation_fact:
+      type: boolean
+      description: "True if the fact involves a numerical calculation (stoichiometry, pH, ΔG, E°cell, etc.)"
+
+  example: >
+    examTags:
+      unit: 8
+      topic: "8.9"
+      science_practice: "mathematical_routines"
+      exam_weight: "high"
+      is_equation_fact: true
+      is_lab_fact: false
+      is_calculation_fact: true
+
+# ============================================================
+# QUESTION TEMPLATES — 22 templates spanning mastery 0-5
+# ============================================================
+
+question_templates:
+
+  # --- MASTERY 0: Foundational identification ---
+  - id: tmpl_formula_lookup
+    template: "What is the chemical formula for {compound_name}?"
+    answer_pool: chemical_formulas
+    mastery_range: [0, 1]
+    note: "Pure recall — compound name to formula. Most common AP Chem question type for Unit 1-2 vocab."
+
+  - id: tmpl_name_from_formula
+    template: "What is the name of the compound with formula {formula}?"
+    answer_pool: compound_names
+    mastery_range: [0, 1]
+    note: "Inverse formula lookup — formula to name. Tests IUPAC nomenclature knowledge."
+
+  - id: tmpl_element_symbol
+    template: "What is the chemical symbol for {element_name}?"
+    answer_pool: element_symbols
+    mastery_range: [0, 1]
+    note: "Element symbol recall — especially non-intuitive Latin-origin symbols (Na, K, Fe, Cu, Pb)."
+
+  - id: tmpl_bond_type_identify
+    template: "What type of bond forms between {element1} and {element2}?"
+    answer_pool: bond_and_imf_types
+    mastery_range: [0, 1]
+    note: "Bond type from element pair — requires knowing electronegativity difference thresholds."
+
+  # --- MASTERY 1: Structural and definitional understanding ---
+  - id: tmpl_geometry_of_molecule
+    template: "What is the molecular geometry of {molecule}?"
+    answer_pool: molecular_geometries
+    mastery_range: [1, 2]
+    note: "VSEPR geometry identification — requires counting bonding pairs and lone pairs first."
+
+  - id: tmpl_law_identifies_relationship
+    template: "Which law or principle describes {phenomenon}?"
+    answer_pool: law_and_equation_names
+    mastery_range: [1, 2]
+    note: "Law-to-phenomenon matching. Tests whether student can identify which law applies to a given scenario."
+
+  - id: tmpl_scientist_association
+    template: "Which scientist is credited with {discovery_or_law}?"
+    answer_pool: scientist_names
+    mastery_range: [1, 2]
+    note: "Scientist attribution. Covers Arrhenius, Le Chatelier, Hess, Faraday, Nernst, Henderson-Hasselbalch."
+
+  - id: tmpl_imf_type_identify
+    template: "What is the strongest intermolecular force present in {substance}?"
+    answer_pool: bond_and_imf_types
+    mastery_range: [1, 2]
+    note: "IMF identification for a given substance — requires structure determination first."
+
+  # --- MASTERY 2: Trends, patterns, and predictions ---
+  - id: tmpl_periodic_trend_direction
+    template: "In which direction does {trend} increase across a period from left to right?"
+    answer_pool: periodic_trend_names
+    mastery_range: [2, 3]
+    note: "Periodic trend direction — tests knowledge of all six major trends."
+
+  - id: tmpl_buffer_equation
+    template: "Which equation is used to calculate the pH of a buffer solution?"
+    answer_pool: law_and_equation_names
+    mastery_range: [2, 3]
+    note: "Henderson-Hasselbalch equation identification — high-frequency AP exam question."
+
+  - id: tmpl_reaction_type_classify
+    template: "What type of chemical reaction is represented by: {equation}?"
+    answer_pool: reaction_types
+    mastery_range: [2, 3]
+    note: "Reaction classification from a given equation — synthesis, decomposition, redox, precipitation, etc."
+
+  - id: tmpl_thermo_quantity_define
+    template: "What thermodynamic quantity measures the total energy available to do work at constant temperature and pressure?"
+    answer_pool: thermodynamic_quantities
+    mastery_range: [2, 3]
+    note: "Gibbs free energy identification — connects ΔG to work and spontaneity."
+
+  # --- MASTERY 3: Mechanistic and equilibrium reasoning ---
+  - id: tmpl_le_chatelier_stress
+    template: "In which direction does equilibrium shift when {stress} is applied to the reaction: {equation}?"
+    answer_pool: acid_base_equilibrium_terms
+    mastery_range: [3, 4]
+    note: "Le Chatelier's Principle application — requires knowing direction of effect for each stress type."
+
+  - id: tmpl_redox_identify_agent
+    template: "In the redox reaction {equation}, which species acts as the {oxidizing/reducing} agent?"
+    answer_pool: chemical_formulas
+    mastery_range: [3, 4]
+    note: "Oxidizing/reducing agent identification — requires assigning oxidation states and tracking changes."
+
+  - id: tmpl_rate_law_order
+    template: "If the rate doubles when [A] doubles at constant [B], what is the order with respect to A?"
+    answer_pool: bracket_numbers
+    mastery_range: [3, 4]
+    note: "Rate law order determination from experimental data — core kinetics question type."
+
+  - id: tmpl_acid_strength_from_structure
+    template: "Which acid is stronger: {acid1} or {acid2}? (based on molecular structure)"
+    answer_pool: compound_names
+    mastery_range: [3, 4]
+    note: "Acid strength comparison from structure — electronegativity, bond polarity, oxyacids."
+
+  # --- MASTERY 4-5: Integration and calculation ---
+  - id: tmpl_electrode_reduction_potential
+    template: "Which half-reaction has a more negative standard reduction potential: {species1} or {species2}?"
+    answer_pool: electrode_half_reactions
+    mastery_range: [4, 5]
+    note: "Standard reduction potential comparison — more negative = stronger reducing agent."
+
+  - id: tmpl_spontaneity_from_thermo
+    template: "Under what conditions is a reaction with negative ΔH and negative ΔS spontaneous?"
+    answer_pool: thermodynamic_quantities
+    mastery_range: [4, 5]
+    note: "ΔG = ΔH − TΔS analysis — four combination cases of ΔH/ΔS signs and spontaneity."
+
+  - id: tmpl_equilibrium_constant_prediction
+    template: "If Keq >> 1 at a given temperature, what does this indicate about the reaction at equilibrium?"
+    answer_pool: acid_base_equilibrium_terms
+    mastery_range: [4, 5]
+    note: "Keq magnitude interpretation — products favored, reactants favored, or neither."
+
+  - id: tmpl_cell_potential_nernst
+    template: "How does increasing the concentration of {reactant_ion} affect the cell potential of a galvanic cell?"
+    answer_pool: electrochemistry_terms
+    mastery_range: [4, 5]
+    note: "Nernst equation application — concentration changes shift Q, affecting E."
+
+  - id: tmpl_hess_law_application
+    template: "Using Hess's Law, if reaction A has ΔH = +40 kJ and reaction B has ΔH = −60 kJ, and the target reaction = A + B, what is ΔH for the target?"
+    answer_pool: bracket_numbers
+    mastery_range: [4, 5]
+    note: "Hess's Law calculation — add, reverse, or scale reactions to find target ΔH."
+
+  - id: tmpl_ph_calculation
+    template: "What is the pH of a {concentration} M solution of {strong_acid}?"
+    answer_pool: bracket_numbers
+    mastery_range: [4, 5]
+    note: "pH calculation for strong acid — direct from concentration; tests log fluency."
+
+# ============================================================
+# SYNONYM GROUPS — Terms that should never distract each other
+# ============================================================
+
+synonym_groups:
+
+  # Acid-base naming variants
+  - id: hydrochloric_acid_variants
+    members: ["hydrochloric acid", "HCl (aqueous)", "muriatic acid"]
+    reason: "All refer to HCl dissolved in water; muriatic acid is the industrial name — never use as distractors for each other"
+
+  - id: sulfuric_acid_variants
+    members: ["sulfuric acid", "H2SO4", "oil of vitriol"]
+    reason: "H2SO4 and its systematic name; oil of vitriol is archaic — never use as distractors for each other"
+
+  - id: acetic_acid_variants
+    members: ["acetic acid", "ethanoic acid", "CH3COOH", "CH3CO2H", "C2H4O2"]
+    reason: "All represent the same compound; IUPAC name (ethanoic) and common name (acetic) are synonymous"
+
+  - id: krebs_equivalent_note
+    members: ["Arrhenius acid definition", "Arrhenius definition of acid"]
+    reason: "Naming variants of the same definition — never use as distractors for each other"
+
+  # Equilibrium constant variants
+  - id: keq_variants
+    members: ["Keq", "K", "equilibrium constant"]
+    reason: "Generic equilibrium constant — context determines if it means Kc, Kp, Ka, etc."
+    flag_for_qa: true
+
+  - id: kc_kp_note
+    members: ["Kc", "equilibrium constant in terms of concentration"]
+    reason: "Kc is always concentration-based; do not use 'Kc' and 'Kp' as distractors for each other — they are distinct quantities"
+    flag_for_qa: true
+
+  # Naming variants for Krebs-equivalent reactions
+  - id: oxidation_reduction_variants
+    members: ["oxidation-reduction reaction", "redox reaction", "electron transfer reaction"]
+    reason: "All three names refer to the same class of reactions — never use as distractors for each other"
+
+  - id: galvanic_voltaic_variants
+    members: ["galvanic cell", "voltaic cell"]
+    reason: "Galvanic and voltaic are synonymous names for a spontaneous electrochemical cell"
+
+  - id: enthalpy_heat_content
+    members: ["enthalpy", "heat content (at constant pressure)"]
+    reason: "Enthalpy H is defined as heat flow at constant pressure — common paraphrase"
+
+  # Acid-base definition variants
+  - id: bronsted_lowry_variants
+    members: ["Brønsted-Lowry acid", "proton donor", "Brønsted acid"]
+    reason: "All describe the same Brønsted-Lowry definition; do not use as distractors for each other"
+
+  - id: bronsted_base_variants
+    members: ["Brønsted-Lowry base", "proton acceptor", "Brønsted base"]
+    reason: "All describe the same Brønsted-Lowry base definition"
+
+  # Titration endpoint
+  - id: equivalence_endpoint_distinction
+    members: []
+    reason: "NOTE: Equivalence point (theoretical) and end point (observed with indicator) are NOT synonyms. Always keep as separate, potentially confusable terms."
+    flag_for_qa: true
+
+  # IMF naming
+  - id: london_dispersion_variants
+    members: ["London dispersion forces", "London forces", "dispersion forces", "van der Waals forces (London type)", "instantaneous dipole-induced dipole forces"]
+    reason: "All names refer to the same intermolecular force arising from temporary dipoles"
+
+  # Electrode naming
+  - id: standard_hydrogen_electrode_variants
+    members: ["standard hydrogen electrode", "SHE", "normal hydrogen electrode", "NHE"]
+    reason: "SHE and NHE both refer to the reference electrode at E° = 0.000 V"
+
+# ============================================================
+# COMMON CONFUSIONS — Priority distractor pairs for seeding confusion matrix
+# ============================================================
+
+common_confusions:
+  # Thermochemistry — most common AP Chem exam traps
+  - ["Ka", "Kb"]                                   # Acid dissociation vs. base dissociation (Ka × Kb = Kw for conjugate pair)
+  - ["Kp", "Kc"]                                   # Partial pressures vs. concentrations (related by Kp = Kc(RT)^Δn)
+  - ["Oxidation", "Reduction"]                     # Loss of electrons vs. gain of electrons; LEO GER mnemonic
+  - ["Exothermic", "Endothermic"]                  # Releases heat (ΔH < 0) vs. absorbs heat (ΔH > 0)
+  - ["Galvanic cell", "Electrolytic cell"]         # Spontaneous (ΔG < 0) vs. non-spontaneous (requires input energy)
+  - ["Molarity", "Molality"]                       # mol/L solution vs. mol/kg solvent
+  - ["Ionic bond", "Covalent bond"]                # Electron transfer vs. electron sharing
+  - ["London dispersion forces", "Dipole-dipole"]  # All molecules vs. polar molecules only
+  - ["Rate law", "Equilibrium expression"]         # Determined experimentally vs. from stoichiometry (at equilibrium)
+  - ["Conjugate acid", "Conjugate base"]           # Gains H+ from base vs. loses H+ from acid
+  - ["sp2 hybridization", "sp3 hybridization"]     # Trigonal planar/120° vs. tetrahedral/109.5°
+  - ["Trigonal planar", "Trigonal pyramidal"]      # 0 lone pairs (flat) vs. 1 lone pair (pyramidal)
+
+  # Bonding and structure
+  - ["Bond energy breaking", "Bond energy forming"]  # Breaking bonds is endothermic; forming bonds is exothermic
+  - ["Cathode", "Anode"]                           # Reduction (RED CAT) vs. Oxidation (AN OX); polarity differs in galvanic vs. electrolytic
+  - ["Strong acid", "Weak acid"]                   # Fully dissociates (Ka large) vs. partially dissociates (Ka small)
+  - ["Enthalpy (ΔH)", "Entropy (ΔS)"]             # Heat content at constant P vs. measure of dispersal/disorder
+  - ["Le Chatelier shift left", "Le Chatelier shift right"]  # Stress produces reverse reaction vs. forward reaction
+  - ["First ionization energy across period", "First ionization energy down group"]  # Increases across period vs. decreases down group
+  - ["Arrhenius acid definition", "Brønsted-Lowry acid definition"]  # H+ in water (limited) vs. proton donor (broader)
+  - ["Boyle's Law", "Charles's Law"]               # P-V relationship (constant T) vs. V-T relationship (constant P)
+
+  # Kinetics
+  - ["Reaction rate", "Rate constant k"]           # Changes with concentration vs. changes only with temperature
+  - ["Elementary reaction", "Overall reaction"]    # Rate law from stoichiometry vs. rate law from experiment
+  - ["Activation energy (Ea)", "ΔH of reaction"]  # Kinetic barrier vs. thermodynamic driving force
+  - ["Catalyst", "Intermediate"]                   # Not consumed (appears in mechanism) vs. consumed (appears in mechanism)
+  - ["First-order half-life", "Second-order half-life"]  # Constant vs. depends on initial concentration
+  - ["Homogeneous catalyst", "Heterogeneous catalyst"]  # Same phase vs. different phase from reactants
+
+  # Equilibrium and acids-bases
+  - ["Q < K", "Q > K"]                            # Shift right (toward products) vs. shift left (toward reactants)
+  - ["pKa", "Ka"]                                  # Negative log of Ka vs. acid dissociation constant
+  - ["Equivalence point", "End point"]             # Theoretical stoichiometric point vs. observed indicator color change
+  - ["Buffer", "Unbuffered solution"]              # Resists pH change vs. pH changes freely
+  - ["Common-ion effect", "Buffer effect"]         # Reduces solubility by adding common ion vs. resists pH change
+  - ["Ksp", "Kc"]                                  # Solubility product (excludes solids) vs. generic equilibrium constant
+
+  # Electrochemistry and thermodynamics
+  - ["ΔG < 0", "ΔG > 0"]                          # Spontaneous (favorable) vs. non-spontaneous
+  - ["E°cell positive", "E°cell negative"]         # Spontaneous galvanic cell vs. non-spontaneous electrolytic
+  - ["Oxidizing agent", "Reducing agent"]          # Accepts electrons (gets reduced) vs. donates electrons (gets oxidized)
+  - ["Standard reduction potential", "Standard oxidation potential"]  # Listed in tables as reduction; reverse sign to get oxidation
+  - ["Nernst equation", "Henderson-Hasselbalch equation"]  # Cell potential correction vs. buffer pH calculation
+
+# ============================================================
+# DIFFICULTY TIERS
+# ============================================================
+
+difficulty_tiers:
+  easy:
+    description: "Core AP Chemistry vocabulary and single-concept identification — foundational knowledge every student learns in first pass"
+    examples:
+      - "The Ideal Gas Law is PV = nRT"
+      - "Electronegativity increases from left to right across a period"
+      - "A buffer contains a weak acid and its conjugate base"
+      - "Oxidation is the loss of electrons"
+      - "London dispersion forces are present in all molecules"
+      - "The molecular geometry of water is bent"
+      - "pH = −log[H+]"
+  medium:
+    description: "Precise distinctions, multi-step reasoning, and applying named laws — requires understanding of how and why, not just what"
+    examples:
+      - "Hess's Law application: add two thermochemical equations and sum their ΔH values"
+      - "Le Chatelier's Principle: increasing pressure shifts equilibrium toward fewer moles of gas"
+      - "Rate law order from experimental data: determine order from concentration-rate data table"
+      - "Henderson-Hasselbalch: calculate buffer pH given weak acid concentration ratio"
+      - "VSEPR: water has bent geometry because two lone pairs repel the bonding pairs"
+      - "Trigonal pyramidal vs. trigonal planar: one lone pair changes geometry from flat to pyramidal"
+      - "Ka × Kb = Kw for a conjugate acid-base pair at 25°C"
+  hard:
+    description: "Multi-concept integration, quantitative calculation, and nuanced distinctions requiring synthesis across units"
+    examples:
+      - "Nernst equation calculation: find cell potential at non-standard ion concentrations"
+      - "Faraday's Law: calculate mass of metal deposited from current, time, and molar mass"
+      - "ΔG = ΔH − TΔS: identify the temperature range for spontaneity when signs are mixed"
+      - "ICE table equilibrium calculation: find equilibrium concentrations from Keq and initial conditions"
+      - "Distinguish kinetic from thermodynamic control: a reaction can be spontaneous (ΔG < 0) yet not occur at room temperature"
+      - "Multi-step Hess's Law with reversal and scaling: manipulate 3 given reactions to find target ΔH"
+      - "Arrhenius equation: use ln(k2/k1) = (Ea/R)(1/T1 − 1/T2) to find activation energy from two-temperature data"
+
+# ============================================================
+# SUB-DECKS — 5 content groupings for deck selection screen
+# ============================================================
+
+sub_decks:
+
+  - id: sd_structure_bonding
+    name: "Structure & Bonding"
+    chain_theme_ids: [0]
+    ced_units: [1, 2]
+    description: "Atomic structure, electron configuration, periodic trends, Lewis diagrams, VSEPR, and hybridization."
+    target_facts: 85
+
+  - id: sd_properties_reactions
+    name: "Properties & Reactions"
+    chain_theme_ids: [1, 2]
+    ced_units: [3, 4]
+    description: "Intermolecular forces, gases, solutions, solubility, spectroscopy, and chemical reactions including stoichiometry, redox, and titrations."
+    target_facts: 130
+
+  - id: sd_kinetics_energy
+    name: "Kinetics & Energy"
+    chain_theme_ids: [3]
+    ced_units: [5, 6]
+    description: "Reaction rates, rate laws, activation energy, Arrhenius equation, reaction mechanisms, enthalpy, calorimetry, and Hess's Law."
+    target_facts: 75
+
+  - id: sd_equilibrium_acids
+    name: "Equilibrium & Acids-Bases"
+    chain_theme_ids: [4]
+    ced_units: [7, 8]
+    description: "Equilibrium constants, Le Chatelier's Principle, Ksp, buffers, Henderson-Hasselbalch, and acid-base titrations."
+    target_facts: 70
+
+  - id: sd_thermo_electrochemistry
+    name: "Thermo & Electrochemistry"
+    chain_theme_ids: [5]
+    ced_units: [9]
+    description: "Entropy, Gibbs free energy, spontaneity, galvanic and electrolytic cells, standard reduction potentials, Nernst equation, and Faraday's Law."
+    target_facts: 40
+
+# ============================================================
+# NOTES
+# ============================================================
+notes: >
+  AP CHEMISTRY CED UNIT WEIGHTS (approximate exam distribution, effective Fall 2024):
+  Unit 1 (Atomic Structure and Properties): 7-9%
+  Unit 2 (Compound Structure and Properties): 7-9%
+  Unit 3 (Properties of Substances and Mixtures): 18-22%
+  Unit 4 (Chemical Reactions): 7-9%
+  Unit 5 (Kinetics): 7-9%
+  Unit 6 (Thermochemistry): 7-9%
+  Unit 7 (Equilibrium): 7-9%
+  Unit 8 (Acids and Bases): 11-15%
+  Unit 9 (Thermodynamics and Electrochemistry): 7-9%
+
+  Chain theme to exam weight mapping:
+  - The Atomic Forge (Theme 0) covers Units 1-2 ~16% combined — foundation for all subsequent units
+  - States & Solutions (Theme 1) covers Unit 3 ~20% — HIGHEST single-unit weight; IMFs are core concept
+  - The Reaction Engine (Theme 2) covers Unit 4 ~8% — procedural mastery; stoichiometry + redox
+  - Speed & Energy (Theme 3) covers Units 5-6 ~16% combined — kinetics + thermochem (both ~8%)
+  - The Balance Point (Theme 4) covers Units 7-8 ~21% combined — second-highest weight; Units 7 (~8%) + 8 (~13%)
+  - Power & Entropy (Theme 5) covers Unit 9 ~8% — capstone unit connecting thermo to electrochemistry
+
+  GENERATION PRIORITY ORDER:
+  1. acid_base_equilibrium_terms pool facts (Themes 4-5 — highest combined exam weight)
+  2. bond_and_imf_types and molecular_geometries (Theme 0-1 — structure determines all)
+  3. thermodynamic_quantities and law_and_equation_names (Theme 3-5 — most equations on exam)
+  4. chemical_formulas and compound_names (Themes 2-4 — used in reactions and equilibrium expressions)
+  5. reaction_types and redox-related facts (Theme 2 — systematic but lower weight)
+  6. electrode_half_reactions (Theme 5 — specific but critical for electrochemistry)
+  7. element_names and element_symbols (Theme 0 — foundational but straightforward)
+  8. scientist_names (All themes — fewer than in history decks, but Hess, Le Chatelier, Nernst essential)
+
+  VOLATILE DATA — DO NOT HARD-CODE:
+  - Exact ΔHf° values — use CED table or OpenStax Appendix G values only; do not use LLM-recalled values
+  - Standard reduction potentials — use CED-provided table values; minor source discrepancies exist
+  - Ka and Kb values — use College Board reference or OpenStax Appendix H; textbooks vary slightly
+  - Exact molar masses — use periodic table values; note that CED uses slightly rounded values
+  - Kw = 1.0 × 10^-14 at 25°C (exact value temperature-dependent — specify 25°C in all Kw facts)
+
+  LAB INVESTIGATION FACTS (is_lab_fact: true):
+  AP Chemistry has 16 guided inquiry labs. Key labs generating facts:
+  - Lab 1: What is the Relationship between the Structures of Molecules and the Properties of Substances?
+  - Lab 4: How Much Heat Is Produced? — calorimetry, ΔH measurement
+  - Lab 5: Beer-Lambert Law — spectrophotometry, concentration measurement
+  - Lab 8: How Can the Kinetics of a Reaction Be Studied? — rate law determination
+  - Lab 12: Acid-Base Titrations — equivalence point, indicators, stoichiometry
+  - Lab 16: Electrochemical Cells and Cell Potentials — galvanic cell construction
+  Lab facts are enrichment content; core CED topics must be fully covered first.
+
+  CED EQUATIONS REQUIRED FOR AP EXAM (students provided reference sheet):
+  All of the following require is_equation_fact: true on relevant facts:
+  - PV = nRT (Ideal Gas Law)
+  - E = hν, E = hc/λ (photon energy)
+  - Beer-Lambert: A = εlc
+  - Rate law: rate = k[A]^m[B]^n
+  - Arrhenius: k = Ae^(−Ea/RT); ln(k2/k1) = (Ea/R)(1/T1 − 1/T2)
+  - Integrated rate laws (0th, 1st, 2nd order)
+  - q = mcΔT, q = mΔH
+  - ΔHrxn = Σ ΔHf°(products) − Σ ΔHf°(reactants) (Hess's Law)
+  - ΔG = ΔH − TΔS; ΔG° = −RT ln K
+  - E°cell = E°cathode − E°anode
+  - ΔG° = −nFE°cell
+  - Nernst: E = E° − (0.0592/n) log Q at 25°C
+  - Henderson-Hasselbalch: pH = pKa + log([A−]/[HA])
+  - pH = −log[H+]; pOH = −log[OH−]; pH + pOH = 14
+
+  VERIFIED ELEMENT ELECTRONEGATIVITY DATA (Pauling scale, from Wikidata):
+  H: 2.20, Li: 1.0, Be: 2.0, B: 2.0, C: 2.55, N: 3.0, O: 3.44, F: 3.98 (highest),
+  Na: 1.0, Mg: 1.0, Al: 1.61, Si: 1.9, P: 2.19, S: 2.58, Cl: 3.0, K: 0.82, Ca: 1.0,
+  Fe: 1.83, Cu: 1.9, Zn: 1.65, Br: 3.0, I: 3.0, Cs: 0.79 (lowest among stable elements), Ba: 0.89
+
+  VERIFIED MOLAR MASSES (g/mol, from Wikidata):
+  H2O: 18.02, NaCl: 57.96, NH3: 17.03, SO2: 63.96, CH3COOH (acetic acid): 60.02,
+  HCOOH (formic acid): 46.01, CaCO3: 99.95, Na2SO4: 141.93, CaSO4: 135.91

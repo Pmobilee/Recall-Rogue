@@ -1,0 +1,757 @@
+[
+  {
+    "id": "ap_chem_9_7_coupled_reactions_delta_g",
+    "correctAnswer": "sum of individual ΔG values",
+    "acceptableAlternatives": [
+      "sum of the ΔG values",
+      "ΔG1 + ΔG2",
+      "additive ΔG"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "product of individual ΔG values",
+      "difference of individual ΔG values",
+      "average of individual ΔG values",
+      "larger of the two ΔG values",
+      "ΔH minus TΔS of the coupled system",
+      "net enthalpy change only",
+      "ratio of ΔG values",
+      "zero, since coupling cancels free energy"
+    ],
+    "quizQuestion": "When two reactions are coupled, the overall ΔG equals the ___.",
+    "explanation": "Hess's Law applies to free energy just as it does to enthalpy. When reactions are added together, their ΔG values are also added. This allows a spontaneous reaction (ΔG < 0) to drive a non-spontaneous one (ΔG > 0) as long as the overall sum is negative.",
+    "statement": "In coupled reactions, the overall ΔG equals the sum of the individual ΔG values.",
+    "wowFactor": "Every muscle contraction in your body relies on this principle — ATP hydrolysis (ΔG ≈ -30 kJ/mol) is coupled to reactions that would otherwise be thermodynamically impossible.",
+    "visualDescription": "Two reaction arrows connected in series, one labeled spontaneous (ΔG < 0) and one non-spontaneous (ΔG > 0), with a net ΔG arrow below showing the sum",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.7"
+    ]
+  },
+  {
+    "id": "ap_chem_9_7_atp_hydrolysis_coupling",
+    "correctAnswer": "ATP hydrolysis",
+    "acceptableAlternatives": [
+      "hydrolysis of ATP",
+      "ATP → ADP + Pi"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "electrochemistry_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "ADP synthesis",
+      "glucose oxidation",
+      "electron transport chain",
+      "photosynthesis",
+      "NAD+ reduction",
+      "protein folding",
+      "DNA replication",
+      "enzyme catalysis"
+    ],
+    "quizQuestion": "Which biological process is the classic example of a spontaneous reaction being used to drive non-spontaneous biochemical reactions through coupling?",
+    "explanation": "ATP hydrolysis (ATP → ADP + inorganic phosphate) releases approximately -30 kJ/mol of free energy under standard conditions. Cells couple this favorable process to non-spontaneous reactions like muscle contraction and active transport, allowing life to function thermodynamically 'uphill.'",
+    "statement": "ATP hydrolysis is the canonical biological example of a spontaneous reaction driving non-spontaneous ones through coupling.",
+    "wowFactor": "A resting adult generates and consumes roughly their own body weight in ATP every single day — all through coupled reaction chemistry.",
+    "visualDescription": "A stylized ATP molecule splitting into ADP and a phosphate group, with an arrow connecting to a muscle fiber contracting, set against a cell background",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.7"
+    ]
+  },
+  {
+    "id": "ap_chem_9_7_metal_smelting_coupling",
+    "correctAnswer": "carbon oxidation",
+    "acceptableAlternatives": [
+      "oxidation of carbon",
+      "combustion of carbon",
+      "C + O2 → CO2"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "electrochemistry_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "iron reduction",
+      "metal oxide reduction",
+      "hydrogen oxidation",
+      "sulfur combustion",
+      "nitrogen fixation",
+      "water electrolysis",
+      "methane combustion",
+      "aluminum smelting"
+    ],
+    "quizQuestion": "In metal smelting, the thermodynamically unfavorable reduction of a metal oxide is driven by coupling it with the favorable spontaneous reaction of ___.",
+    "explanation": "Metal oxides like Fe2O3 have a positive ΔG for direct reduction by heating alone. In a blast furnace, carbon (coke) is oxidized (C + O2 → CO2, highly favorable ΔG < 0), and this is coupled to the reduction of iron oxide. The sum of the two ΔG values is negative, making the overall process spontaneous.",
+    "statement": "Metal smelting couples the unfavorable reduction of metal oxides with the favorable oxidation of carbon (coke).",
+    "wowFactor": "Humans have been unknowingly exploiting coupled reaction thermodynamics since the Bronze Age — every iron sword ever forged relied on this chemistry.",
+    "visualDescription": "A cross-section of a blast furnace showing iron ore and coke layers, with arrows indicating CO2 rising and molten iron pooling at the bottom",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.7"
+    ]
+  },
+  {
+    "id": "ap_chem_9_8_galvanic_cell_spontaneity",
+    "correctAnswer": "spontaneous",
+    "acceptableAlternatives": [
+      "spontaneous reaction",
+      "thermodynamically favorable"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "electrochemistry_terms",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "non-spontaneous",
+      "reversible",
+      "endothermic",
+      "requires external voltage",
+      "at equilibrium",
+      "electrolytic",
+      "driven by current",
+      "endergonic"
+    ],
+    "quizQuestion": "A galvanic (voltaic) cell converts chemical energy to electrical energy using a ___ redox reaction.",
+    "explanation": "In a galvanic cell, the redox reaction is spontaneous (ΔG < 0, E°cell > 0). The chemical energy released by the spontaneous reaction is converted to electrical energy (current flow). This is the principle behind batteries.",
+    "statement": "Galvanic (voltaic) cells are driven by spontaneous redox reactions that convert chemical energy to electrical energy.",
+    "wowFactor": "Alessandro Volta built the first battery in 1800 using alternating zinc and silver discs separated by brine-soaked cloth — the same galvanic cell principle powers everything from flashlights to electric cars.",
+    "visualDescription": "A diagram of a galvanic cell with two beakers connected by a salt bridge, showing zinc anode dissolving on the left and copper depositing on the right, with an ammeter between them",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.8"
+    ]
+  },
+  {
+    "id": "ap_chem_9_8_anode_oxidation",
+    "correctAnswer": "oxidation",
+    "acceptableAlternatives": [
+      "loss of electrons",
+      "electron loss"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "electrochemistry_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "reduction",
+      "gain of electrons",
+      "gain of protons",
+      "electron gain",
+      "dissolution",
+      "plating",
+      "deposition",
+      "cathodic reaction"
+    ],
+    "quizQuestion": "In both galvanic and electrolytic cells, the anode is always the electrode where ___ occurs.",
+    "explanation": "The mnemonic 'An Ox Red Cat' helps: Anode = Oxidation, Cathode = Reduction. This holds in BOTH galvanic and electrolytic cells. In a galvanic cell, the anode is the negative terminal; in an electrolytic cell, the anode is connected to the positive terminal of the external power supply.",
+    "statement": "The anode is always the site of oxidation in both galvanic and electrolytic cells.",
+    "wowFactor": "The word 'anode' comes from Greek 'ana' (up) and 'hodos' (way) — Michael Faraday coined it in 1834 to describe where positive current enters from the external circuit (conventional current flows opposite to electron flow).",
+    "visualDescription": "A split diagram comparing a galvanic and electrolytic cell side by side, both showing an anode labeled with an oxidation half-reaction, electrons flowing away from it",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.8"
+    ]
+  },
+  {
+    "id": "ap_chem_9_8_salt_bridge_function",
+    "correctAnswer": "charge neutrality",
+    "acceptableAlternatives": [
+      "electrical neutrality",
+      "maintain charge balance",
+      "prevent charge buildup",
+      "ionic balance"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "electrochemistry_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "electron flow between cells",
+      "provide electrons to the cathode",
+      "increase cell voltage",
+      "supply metal ions for reduction",
+      "prevent the solutions from mixing",
+      "increase concentration of reactants",
+      "reduce resistance in the circuit",
+      "catalyze the redox reaction"
+    ],
+    "quizQuestion": "In an electrochemical cell, a salt bridge serves the primary function of maintaining ___ in each half-cell.",
+    "explanation": "As the galvanic cell operates, the anode half-cell loses positive cations (they dissolve) and gains negative charge; the cathode half-cell loses anions and gains positive charge. The salt bridge allows ions to migrate between half-cells, maintaining electrical neutrality and allowing current to continue to flow.",
+    "statement": "The salt bridge in an electrochemical cell maintains charge neutrality in each half-cell by allowing ion migration.",
+    "wowFactor": "Without a salt bridge, a galvanic cell stops working almost immediately — charge buildup creates an opposing voltage that halts current flow within seconds.",
+    "visualDescription": "A U-shaped tube filled with KNO3 solution connecting two beakers, with arrows showing anions moving toward the anode beaker and cations moving toward the cathode beaker",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.8"
+    ]
+  },
+  {
+    "id": "ap_chem_9_8_electrolytic_cell_requirement",
+    "correctAnswer": "external power source",
+    "acceptableAlternatives": [
+      "external voltage",
+      "external electrical energy",
+      "applied voltage",
+      "external current"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "electrochemistry_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "salt bridge",
+      "spontaneous reaction",
+      "porous membrane",
+      "positive cell potential",
+      "standard reduction potential difference",
+      "catalyst",
+      "concentrated electrolyte",
+      "galvanic coupling"
+    ],
+    "quizQuestion": "Unlike a galvanic cell, an electrolytic cell requires an ___ to drive its non-spontaneous redox reaction.",
+    "explanation": "Electrolytic cells have ΔG > 0 and E°cell < 0, meaning the reaction is non-spontaneous. An external power source (battery or power supply) must supply electrical energy to force the reaction to proceed. This is the principle behind electroplating and the production of aluminum metal.",
+    "statement": "Electrolytic cells require an external power source to drive their non-spontaneous redox reactions.",
+    "wowFactor": "The entire aluminum industry depends on electrolytic cells (the Hall-Héroult process). Before 1886, aluminum was more expensive than gold — electrolysis made it one of the cheapest metals on Earth.",
+    "visualDescription": "A diagram of an electrolytic cell with a battery connected externally, forcing current through a molten salt solution, with metal depositing at the cathode",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.8"
+    ]
+  },
+  {
+    "id": "ap_chem_9_8_electrolytic_anode_polarity",
+    "correctAnswer": "positive",
+    "acceptableAlternatives": [
+      "positive terminal",
+      "connected to positive terminal"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "electrochemistry_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "negative",
+      "neutral",
+      "grounded",
+      "alternating",
+      "same as the cathode",
+      "connected to the negative terminal",
+      "floating",
+      "reverse-biased"
+    ],
+    "quizQuestion": "In an electrolytic cell (but NOT a galvanic cell), the anode is connected to the ___ terminal of the external power supply.",
+    "explanation": "In an electrolytic cell, the external battery forces electrons away from the anode (making it positive) and toward the cathode (making it negative). This is the reverse of a galvanic cell, where the anode is the negative terminal. Oxidation still occurs at the anode, but the polarity assigned to it flips between cell types.",
+    "statement": "In an electrolytic cell, the anode is connected to the positive terminal of the external power supply.",
+    "wowFactor": "This polarity reversal trips up many students — the anode is always where oxidation occurs, but its charge sign is opposite in galvanic vs. electrolytic cells.",
+    "visualDescription": "Side-by-side diagrams of a galvanic and electrolytic cell, with the anode labeled negative in one and positive in the other, highlighting the polarity difference",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.8"
+    ]
+  },
+  {
+    "id": "ap_chem_9_9_ecell_formula",
+    "correctAnswer": "E°cathode − E°anode",
+    "acceptableAlternatives": [
+      "E°cell = E°cathode - E°anode",
+      "cathode minus anode",
+      "E°(reduction at cathode) - E°(reduction at anode)"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "E°anode − E°cathode",
+      "E°cathode + E°anode",
+      "E°anode × E°cathode",
+      "ΔH°/nF",
+      "ΔG°/nF",
+      "-ΔG°/nF",
+      "RT/nF × ln K",
+      "E°cathode × n"
+    ],
+    "quizQuestion": "The standard cell potential E°cell is calculated using the formula ___.",
+    "explanation": "E°cell = E°cathode − E°anode, where both values are standard reduction potentials. The cathode half-reaction proceeds as a reduction and the anode half-reaction proceeds as an oxidation (reverse of its tabulated reduction potential). A positive E°cell indicates a spontaneous reaction.",
+    "statement": "E°cell = E°cathode − E°anode (both values taken as standard reduction potentials).",
+    "wowFactor": "Using this formula with standard reduction potentials, you can predict whether any combination of two metals will produce a spontaneous battery without ever building the cell.",
+    "visualDescription": "A clean equation on a chalkboard: E°cell = E°cathode - E°anode, with a table of standard reduction potentials shown alongside",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.9"
+    ]
+  },
+  {
+    "id": "ap_chem_9_9_delta_g_ecell_relationship",
+    "correctAnswer": "ΔG° = −nFE°cell",
+    "acceptableAlternatives": [
+      "negative nFE",
+      "delta G equals negative n times F times E",
+      "-nFE°"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "ΔG° = nFE°cell",
+      "ΔG° = −nRTE°cell",
+      "ΔG° = −E°cell/nF",
+      "ΔG° = −RT ln E°cell",
+      "ΔG° = nF/E°cell",
+      "ΔG° = −nRT/E°cell",
+      "ΔG° = E°cell − nF",
+      "ΔG° = −nFE°cell²"
+    ],
+    "quizQuestion": "The relationship between standard free energy change and standard cell potential is expressed as ___.",
+    "explanation": "ΔG° = −nFE°cell connects thermodynamics and electrochemistry. Here n = moles of electrons transferred, F = Faraday constant (96,485 C/mol), and E°cell = standard cell potential. When E°cell > 0 (spontaneous), ΔG° is negative, consistent with spontaneous processes. This equation also links to K through ΔG° = −RT ln K.",
+    "statement": "The standard free energy change equals −nFE°cell, linking electrochemistry to thermodynamics.",
+    "wowFactor": "This single equation bridges three major areas of AP Chemistry: thermodynamics (ΔG°), electrochemistry (E°cell), and equilibrium (K) — all three are connected through the same relationship.",
+    "visualDescription": "A triangle diagram connecting ΔG°, E°cell, and K with arrows showing the conversion equations between each quantity",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.9"
+    ]
+  },
+  {
+    "id": "ap_chem_9_9_faraday_constant_value",
+    "correctAnswer": "96,485 C/mol",
+    "acceptableAlternatives": [
+      "96485 C/mol",
+      "96,485 coulombs per mole",
+      "approximately 96,500 C/mol"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "8.314 J/mol·K",
+      "6.022 × 10²³ C/mol",
+      "9,648.5 C/mol",
+      "964,850 C/mol",
+      "1.602 × 10⁻¹⁹ C/mol",
+      "96.485 kJ/mol",
+      "48,242 C/mol",
+      "192,970 C/mol"
+    ],
+    "quizQuestion": "The Faraday constant F, which appears in both ΔG° = −nFE°cell and the Nernst equation, has a value of ___.",
+    "explanation": "F = 96,485 C/mol e⁻ represents the charge carried by one mole of electrons (Avogadro's number × elementary charge: 6.022 × 10²³ × 1.602 × 10⁻¹⁹ C). It appears in Faraday's law of electrolysis and in the free energy–cell potential relationship. AP Chemistry provides this value on the exam reference sheet.",
+    "statement": "The Faraday constant F = 96,485 C/mol e⁻ represents the charge of one mole of electrons.",
+    "wowFactor": "Michael Faraday determined this constant experimentally in the 1830s using crude electroplating equipment — decades before the electron was even discovered or its charge measured.",
+    "visualDescription": "A portrait-style pixel art of Michael Faraday beside an electroplating setup, with the value 96,485 C/mol displayed prominently",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.9"
+    ]
+  },
+  {
+    "id": "ap_chem_9_9_positive_ecell_spontaneous",
+    "correctAnswer": "positive E°cell",
+    "acceptableAlternatives": [
+      "E°cell > 0",
+      "positive cell potential"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "negative E°cell",
+      "E°cell = 0",
+      "E°cell > 1",
+      "positive ΔG°",
+      "K < 1",
+      "negative ΔS°",
+      "E°cell < -1",
+      "ΔH° < 0 only"
+    ],
+    "quizQuestion": "A galvanic cell operates spontaneously because it has a ___, which corresponds to a negative ΔG°.",
+    "explanation": "A positive E°cell means the reaction releases electrical energy spontaneously. Since ΔG° = −nFE°cell, a positive E°cell gives a negative ΔG°, confirming spontaneity. Equivalently, a spontaneous reaction has K > 1, all three quantities (E°cell > 0, ΔG° < 0, K > 1) being consistent with one another.",
+    "statement": "A positive E°cell indicates a spontaneous reaction (ΔG° < 0, K > 1).",
+    "wowFactor": "The Cu/Zn galvanic cell (Daniell cell, 1836) was the first reliable battery for telegraphy — its E°cell ≈ +1.10 V, easily confirmed with the standard reduction potentials: Cu²⁺/Cu (+0.34 V) − Zn²⁺/Zn (−0.76 V).",
+    "visualDescription": "A voltmeter displaying a positive reading connected to a Daniell cell, with Cu cathode and Zn anode labeled, and the equation E°cell = +1.10 V shown",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.9"
+    ]
+  },
+  {
+    "id": "ap_chem_9_10_nernst_equation",
+    "correctAnswer": "E = E° − (0.0592/n) log Q",
+    "acceptableAlternatives": [
+      "Nernst equation",
+      "E = E° - (RT/nF) ln Q",
+      "E equals E-standard minus 0.0592 over n times log Q"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "E = E° + (0.0592/n) log Q",
+      "E = E° − (0.0592 × n) log Q",
+      "E = E° − (RT/nF) log Q",
+      "E = E° − (0.0592/n) ln Q",
+      "E = −nFE° log Q",
+      "E = E° / (0.0592 n log Q)",
+      "E = E° − (n/0.0592) log Q",
+      "E = E° − RT log Q"
+    ],
+    "quizQuestion": "The equation that relates cell potential to concentration at non-standard conditions at 25°C is ___.",
+    "explanation": "The Nernst equation E = E° − (0.0592/n) log Q (at 25°C) shows how cell potential changes as concentrations deviate from standard (1 M). As the reaction proceeds, Q increases, and E decreases. At equilibrium, E = 0 and Q = K. The full form is E = E° − (RT/nF) ln Q, with 0.0592 derived from (RT/F) × ln(10) at 298 K.",
+    "statement": "The Nernst equation E = E° − (0.0592/n) log Q gives cell potential under non-standard conditions at 25°C.",
+    "wowFactor": "Walther Nernst derived this equation in 1889 and won the Nobel Prize in Chemistry in 1920. The Nernst equation is also fundamental to neuroscience — it describes the membrane potential of neurons.",
+    "visualDescription": "The Nernst equation written prominently on a lab whiteboard, with arrows showing how increasing Q lowers E toward zero at equilibrium",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.10"
+    ]
+  },
+  {
+    "id": "ap_chem_9_10_nernst_at_equilibrium",
+    "correctAnswer": "zero",
+    "acceptableAlternatives": [
+      "E = 0",
+      "0 V",
+      "cell potential equals zero"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "E°cell",
+      "positive",
+      "negative",
+      "maximum",
+      "0.0592/n",
+      "RT/nF",
+      "undefined",
+      "equal to ΔG°"
+    ],
+    "quizQuestion": "At equilibrium, the cell potential E from the Nernst equation equals ___, because Q = K and the driving force is exhausted.",
+    "explanation": "At equilibrium, Q = K. Substituting into the Nernst equation: E = E° − (0.0592/n) log K. But at equilibrium, E° = (0.0592/n) log K, so E = 0. This means a dead battery is a battery at equilibrium — no driving force remains because the free energy difference between products and reactants has been fully converted.",
+    "statement": "At equilibrium, the Nernst equation gives E = 0 because Q = K and all driving force is exhausted.",
+    "wowFactor": "A 'dead' battery isn't a battery that ran out of material — it's a battery that reached equilibrium. Even a 'dead' battery still contains substantial amounts of reactants and products.",
+    "visualDescription": "A voltmeter reading 0.00 V connected to an electrochemical cell, with Q = K labeled inside the cell diagram and 'equilibrium' written below",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.10"
+    ]
+  },
+  {
+    "id": "ap_chem_9_10_concentration_cell",
+    "correctAnswer": "concentration cell",
+    "acceptableAlternatives": [
+      "concentration cells",
+      "galvanic concentration cell"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "electrochemistry_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "galvanic cell",
+      "electrolytic cell",
+      "fuel cell",
+      "Daniell cell",
+      "voltaic pile",
+      "standard cell",
+      "hybrid cell",
+      "redox cell"
+    ],
+    "quizQuestion": "An electrochemical cell in which both electrodes are made of the same material but are in contact with solutions of different ion concentrations is called a ___.",
+    "explanation": "A concentration cell has identical electrodes and the same ion in both half-cells, but at different concentrations. The cell generates voltage because of the concentration difference: the half-cell with higher concentration acts as the cathode (reduction) and drives ion flow toward equilibrium. Voltage is calculated using the Nernst equation with E° = 0.",
+    "statement": "A concentration cell uses identical electrodes with different ion concentrations to generate voltage, analyzed via the Nernst equation with E° = 0.",
+    "wowFactor": "Your cells use concentration gradients as concentration cells — the Na+/K+ ATPase pump maintains ion concentration differences across cell membranes to power nerve signals.",
+    "visualDescription": "Two beakers with the same copper electrodes but different Cu²⁺ concentrations labeled (0.1 M and 1.0 M), connected by a salt bridge, with a voltmeter showing a small positive reading",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.10"
+    ]
+  },
+  {
+    "id": "ap_chem_9_10_q_increases_e_decreases",
+    "correctAnswer": "decreases",
+    "acceptableAlternatives": [
+      "decreases toward zero",
+      "drops",
+      "E decreases"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "increases",
+      "stays constant",
+      "doubles",
+      "becomes negative",
+      "approaches E°cell",
+      "oscillates",
+      "becomes undefined",
+      "approaches infinity"
+    ],
+    "quizQuestion": "According to the Nernst equation, as a reaction proceeds and Q increases, the cell potential E ___.",
+    "explanation": "In the Nernst equation E = E° − (0.0592/n) log Q, as Q increases (products accumulate, reactants deplete), the log Q term grows, making the subtracted quantity larger. Therefore E decreases progressively toward zero, which is reached at equilibrium when Q = K. This models the gradual discharge of a battery.",
+    "statement": "As Q increases during a reaction, the Nernst equation predicts that cell potential E decreases toward zero.",
+    "wowFactor": "This is exactly why your phone battery slowly loses voltage as it discharges — the Nernst equation predicts the voltage curve, which starts near E° and falls as Q rises.",
+    "visualDescription": "A graph of cell potential E on the y-axis vs. reaction progress (Q) on the x-axis, showing a smooth downward curve from E° to zero at Q = K",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.10"
+    ]
+  },
+  {
+    "id": "ap_chem_9_11_faradays_law_formula",
+    "correctAnswer": "moles = It/nF",
+    "acceptableAlternatives": [
+      "It/nF",
+      "moles of substance = (current × time) / (n × F)",
+      "q = It, moles = q/nF"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "moles = nF/It",
+      "moles = ItF/n",
+      "moles = nIt/F",
+      "moles = It × nF",
+      "moles = F/nIt",
+      "moles = I/ntF",
+      "moles = nF × It",
+      "moles = It²/nF"
+    ],
+    "quizQuestion": "Faraday's law of electrolysis states that the moles of substance produced or consumed at an electrode equals ___.",
+    "explanation": "Moles = It/nF, where I = current (amperes), t = time (seconds), n = moles of electrons transferred per mole of substance, and F = 96,485 C/mol. The product It = charge in coulombs (C). Dividing by nF converts charge to moles of substance. This allows calculation of electroplating thickness, gas volume in electrolysis, and reaction time needed.",
+    "statement": "Faraday's law: moles of electrolytic product = It/nF, where I is current (A), t is time (s), n is electrons transferred, and F = 96,485 C/mol.",
+    "wowFactor": "Industrial zinc galvanizing of steel uses Faraday's law to control coating thickness to within micrometers — every galvanized guardrail was plated using this formula.",
+    "visualDescription": "A flowchart showing: current (A) × time (s) = charge (C), then charge ÷ (n × 96,485) = moles of product, with an electroplating diagram alongside",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.11"
+    ]
+  },
+  {
+    "id": "ap_chem_9_11_electrolysis_water_products",
+    "correctAnswer": "hydrogen and oxygen",
+    "acceptableAlternatives": [
+      "H2 and O2",
+      "hydrogen gas and oxygen gas",
+      "H2 at cathode and O2 at anode"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "electrode_half_reactions",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "hydrogen and chlorine",
+      "water and peroxide",
+      "oxygen only",
+      "hydrogen only",
+      "sodium and chlorine",
+      "hydroxide and hydronium",
+      "ozone and hydrogen",
+      "water and hydronium"
+    ],
+    "quizQuestion": "In the electrolysis of water (2H2O → 2H2 + O2), the two gas products collected are ___.",
+    "explanation": "Water electrolysis splits water into hydrogen gas (H2) at the cathode (reduction: 2H2O + 2e⁻ → H2 + 2OH⁻) and oxygen gas (O2) at the anode (oxidation: 2H2O → O2 + 4H⁺ + 4e⁻). The volume of hydrogen collected is always twice the volume of oxygen, consistent with the 2:1 mole ratio in the balanced equation.",
+    "statement": "Electrolysis of water produces hydrogen gas at the cathode and oxygen gas at the anode in a 2:1 volume ratio.",
+    "wowFactor": "Green hydrogen — produced by electrolyzing water using renewable electricity — is a leading candidate for carbon-free energy storage. The same reaction Faraday demonstrated in 1820 may power ships and aircraft by 2040.",
+    "visualDescription": "An electrolysis apparatus with two gas collection tubes — the cathode tube collecting twice the volume of hydrogen as the anode tube collects oxygen, with bubbles rising",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.11"
+    ]
+  },
+  {
+    "id": "ap_chem_9_11_molten_vs_aqueous_electrolysis",
+    "correctAnswer": "water may be reduced or oxidized instead of the dissolved ions",
+    "acceptableAlternatives": [
+      "water competes with dissolved ions",
+      "water can be preferentially oxidized or reduced",
+      "water interferes with electrolysis of ions"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "electrochemistry_terms",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "ions cannot migrate in aqueous solution",
+      "the solvent evaporates at the electrode",
+      "aqueous solutions require less voltage than molten salts",
+      "dissolved salts decompose before electrolysis begins",
+      "the electrode corrodes faster in aqueous solutions",
+      "aqueous cells require molten lithium as a catalyst",
+      "only cations are electrolyzed in aqueous solutions",
+      "the Faraday constant doubles for aqueous systems"
+    ],
+    "quizQuestion": "A key complication when electrolyzing an aqueous salt solution (compared to a molten salt) is that ___.",
+    "explanation": "In molten salts, only the salt's ions are present, so the electrolysis products are predictable (e.g., molten NaCl → Na metal + Cl2 gas). In aqueous solutions, water molecules are also present and have their own reduction and oxidation potentials. Often water is preferentially reduced at the cathode (giving H2) or oxidized at the anode (giving O2) instead of the salt ions, depending on relative reduction potentials and electrode overpotentials.",
+    "statement": "In aqueous electrolysis, water may compete with dissolved ions and be preferentially oxidized or reduced, unlike in molten salt electrolysis.",
+    "wowFactor": "This is why electrolyzing aqueous NaCl gives chlorine and hydrogen — not sodium metal and chlorine. Sodium's reduction potential (−2.71 V) is more negative than water's (−0.83 V), so water wins at the cathode.",
+    "visualDescription": "A split diagram comparing molten NaCl electrolysis (Na depositing at cathode) vs. aqueous NaCl electrolysis (H2 bubbling at cathode instead), with potential values labeled",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.11"
+    ]
+  },
+  {
+    "id": "ap_chem_9_11_electroplating_principle",
+    "correctAnswer": "electroplating",
+    "acceptableAlternatives": [
+      "electrolytic plating",
+      "electrodeposition"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 5,
+    "answerTypePoolId": "electrochemistry_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "galvanizing",
+      "anodizing",
+      "electroforming",
+      "electrolysis",
+      "smelting",
+      "galvanic protection",
+      "cathodic protection",
+      "chemical vapor deposition"
+    ],
+    "quizQuestion": "The industrial application of electrolysis in which metal ions from a solution are reduced and deposited onto a conductive object at the cathode is called ___.",
+    "explanation": "In electroplating, an object serves as the cathode and is placed in a solution containing ions of the metal to be deposited. When current flows, metal ions (e.g., Ag⁺, Cu²⁺, Au³⁺) are reduced at the object's surface, depositing a thin metallic coating. Faraday's law (moles = It/nF) precisely controls the thickness of the deposit.",
+    "statement": "Electroplating deposits metal onto a cathode by reducing metal ions from solution using electrolytic current, with thickness controlled by Faraday's law.",
+    "wowFactor": "The gold plating on your phone's USB connector is electroplated to a precise thickness of 0.5–1.2 micrometers — thin enough to be cost-effective but thick enough to resist corrosion for the life of the device.",
+    "visualDescription": "A jewelry ring on a wire serving as the cathode in a gold sulfite solution, with a pure gold anode dissolving slowly on the other side, current arrows flowing through the circuit",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_9",
+      "Topic_9.11"
+    ]
+  }
+]

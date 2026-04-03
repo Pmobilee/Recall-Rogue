@@ -1,0 +1,922 @@
+[
+  {
+    "id": "ap_chem_4_6_titration_definition",
+    "correctAnswer": "equivalence point",
+    "acceptableAlternatives": [
+      "stoichiometric point",
+      "equivalence"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "endpoint",
+      "half-equivalence point",
+      "neutralization point",
+      "saturation point",
+      "inflection point",
+      "buffer zone",
+      "pKa crossover",
+      "titration midpoint"
+    ],
+    "quizQuestion": "In a titration, the point at which the moles of titrant added are stoichiometrically equal to the moles of analyte is called the ___.",
+    "explanation": "The equivalence point is when exactly enough titrant has been added to react completely with all the analyte according to the balanced equation. It differs from the endpoint, which is when the indicator changes color \u2014 these two points are ideally very close but not identical.",
+    "statement": "The equivalence point in a titration is when stoichiometrically equal moles of titrant and analyte have reacted.",
+    "wowFactor": "A single drop (~0.05 mL) from a buret can shift a solution past the equivalence point, which is why chemists slow their addition rate near the endpoint.",
+    "visualDescription": "A buret dripping solution into an Erlenmeyer flask, the liquid inside just turning pink as a single drop falls, shown in a clean lab setting with white background",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.6"
+    ]
+  },
+  {
+    "id": "ap_chem_4_6_endpoint_vs_equivalence",
+    "correctAnswer": "endpoint",
+    "acceptableAlternatives": [
+      "indicator endpoint",
+      "colour change point"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "equivalence point",
+      "neutralization point",
+      "half-equivalence point",
+      "buffer point",
+      "saturation point",
+      "inflection point",
+      "stoichiometric point",
+      "pKa crossover"
+    ],
+    "quizQuestion": "In a titration, the point at which the indicator permanently changes color is called the ___.",
+    "explanation": "The endpoint is the experimentally observed point \u2014 the indicator color change tells the chemist to stop adding titrant. A well-chosen indicator changes color very close to the equivalence point, minimizing titration error. Phenolphthalein turns pink (colorless \u2192 pink) and is commonly used for strong acid\u2013strong base titrations.",
+    "statement": "The endpoint of a titration is when the indicator permanently changes color, signaling the titration should stop.",
+    "wowFactor": "Phenolphthalein, the classic pink indicator, was first synthesized in 1871 and remains the most widely used titration indicator in educational labs worldwide.",
+    "visualDescription": "Close-up of an Erlenmeyer flask with pink solution and a single drop of clear liquid falling from a buret above, capturing the dramatic color-change moment",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.6"
+    ]
+  },
+  {
+    "id": "ap_chem_4_6_buret_purpose",
+    "correctAnswer": "buret",
+    "acceptableAlternatives": [
+      "burette"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "teen+",
+    "distractors": [
+      "pipette",
+      "graduated cylinder",
+      "volumetric flask",
+      "Erlenmeyer flask",
+      "separatory funnel",
+      "syringe",
+      "measuring cup",
+      "beaker"
+    ],
+    "quizQuestion": "Which piece of laboratory glassware is used to deliver precise, measured volumes of titrant during a titration?",
+    "explanation": "A buret is a long, calibrated glass tube with a stopcock valve at the bottom. It allows the chemist to add titrant drop by drop and read the volume dispensed to \u00b10.01 mL precision. Burets are typically 50 mL capacity and read from top (0) to bottom (50).",
+    "statement": "A buret is the graduated glassware used to deliver precise volumes of titrant in a titration.",
+    "wowFactor": "A buret can deliver as little as a single drop (~0.05 mL) and its precision is critical \u2014 titration errors of even 0.1 mL can meaningfully change concentration calculations.",
+    "visualDescription": "A tall glass buret mounted on a ring stand, filled with blue solution, with markings clearly visible and a stopcock at the bottom above an Erlenmeyer flask",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.6"
+    ]
+  },
+  {
+    "id": "ap_chem_4_6_standardization",
+    "correctAnswer": "standardization",
+    "acceptableAlternatives": [
+      "primary standard titration",
+      "solution standardization"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "calibration",
+      "normalization",
+      "dilution",
+      "neutralization",
+      "quantification",
+      "back-titration",
+      "endpoint determination",
+      "molarity adjustment"
+    ],
+    "quizQuestion": "The process of precisely determining the concentration of a titrant solution by titrating it against a primary standard of known purity is called ___.",
+    "explanation": "Standardization uses a primary standard \u2014 a highly pure, stable solid (like potassium hydrogen phthalate, KHP) \u2014 to determine the exact molarity of a solution. Even solutions labeled with a concentration (like NaOH) must be standardized because NaOH absorbs CO2 from air and its concentration drifts over time.",
+    "statement": "Standardization is the process of accurately determining a titrant's concentration by reacting it against a primary standard of known purity.",
+    "wowFactor": "NaOH cannot be a primary standard because it is hygroscopic (absorbs water) and reacts with atmospheric CO2 \u2014 a freshly made NaOH solution is always slightly less concentrated than calculated.",
+    "visualDescription": "A laboratory balance with a white crystalline solid (KHP) on a weighing paper, next to a flask and buret set up for a standardization titration",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.6"
+    ]
+  },
+  {
+    "id": "ap_chem_4_6_titrant_analyte",
+    "correctAnswer": "analyte",
+    "acceptableAlternatives": [
+      "unknown solution",
+      "sample solution"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "titrant",
+      "indicator",
+      "primary standard",
+      "buffer",
+      "eluent",
+      "solvent",
+      "reagent blank",
+      "secondary standard"
+    ],
+    "quizQuestion": "In a titration, the solution of unknown concentration being analyzed is called the ___.",
+    "explanation": "The analyte is the species whose concentration is unknown and is being determined. The titrant (of known concentration) is added from the buret to the analyte in the flask. The analyte is sometimes called the 'unknown' or 'sample.' At the equivalence point, moles titrant \u00d7 stoichiometric ratio = moles analyte.",
+    "statement": "The analyte is the solution of unknown concentration that is being determined in a titration.",
+    "wowFactor": "The word 'analyte' comes from 'analysis' (Greek: ana = up, lysis = loosening) \u2014 literally, breaking something apart to understand it. Modern analytical chemistry is a multi-billion-dollar industry.",
+    "visualDescription": "An Erlenmeyer flask containing a pale yellow solution labeled 'Unknown Concentration' sitting on a white tile, awaiting titration from a buret above",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.6"
+    ]
+  },
+  {
+    "id": "ap_chem_4_7_synthesis_reaction",
+    "correctAnswer": "synthesis",
+    "acceptableAlternatives": [
+      "combination reaction",
+      "direct combination"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "decomposition",
+      "single replacement",
+      "double replacement",
+      "combustion",
+      "neutralization",
+      "precipitation",
+      "oxidation-reduction",
+      "acid-base"
+    ],
+    "quizQuestion": "A reaction in which two or more reactants combine to form a single product (A + B \u2192 AB) is called a ___ reaction.",
+    "explanation": "Synthesis (combination) reactions always produce one product from two or more reactants. Examples include: 2Na(s) + Cl2(g) \u2192 2NaCl(s), and N2(g) + 3H2(g) \u2192 2NH3(g) (Haber process). The product is always more complex than the reactants.",
+    "statement": "A synthesis reaction combines two or more reactants into a single, more complex product: A + B \u2192 AB.",
+    "wowFactor": "The Haber-Bosch synthesis of ammonia (N2 + 3H2 \u2192 2NH3) is often called the most important chemical reaction in history \u2014 it feeds roughly half the world's population by enabling nitrogen fertilizers.",
+    "visualDescription": "Two separate glowing orbs (labeled A and B) merging into one larger combined orb (AB) against a dark chemistry lab background with formulas floating around",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.7"
+    ]
+  },
+  {
+    "id": "ap_chem_4_7_decomposition_reaction",
+    "correctAnswer": "decomposition",
+    "acceptableAlternatives": [
+      "decomposition reaction"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "synthesis",
+      "single replacement",
+      "double replacement",
+      "combustion",
+      "neutralization",
+      "precipitation",
+      "combination",
+      "acid-base"
+    ],
+    "quizQuestion": "A reaction in which a single compound breaks down into two or more simpler substances (AB \u2192 A + B) is called a ___ reaction.",
+    "explanation": "Decomposition reactions are the reverse of synthesis reactions. They require an input of energy (heat, light, or electricity). Classic examples: 2H2O2 \u2192 2H2O + O2 (hydrogen peroxide decomposition), 2HgO \u2192 2Hg + O2 (heated mercuric oxide), CaCO3 \u2192 CaO + CO2 (limestone decomposition).",
+    "statement": "A decomposition reaction breaks one reactant into two or more simpler products: AB \u2192 A + B.",
+    "wowFactor": "Antoine Lavoisier proved oxygen existed by decomposing mercury(II) oxide \u2014 2HgO \u2192 2Hg + O2 \u2014 in 1774, overturning the phlogiston theory and launching modern chemistry.",
+    "visualDescription": "A single glowing molecule splitting apart into two smaller fragments, surrounded by energy waves, set against a dark lab background with colorful spectra",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.7"
+    ]
+  },
+  {
+    "id": "ap_chem_4_7_single_replacement",
+    "correctAnswer": "activity series",
+    "acceptableAlternatives": [
+      "reactivity series",
+      "electrochemical series"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "solubility rules",
+      "periodic table",
+      "electronegativity scale",
+      "ionization energy table",
+      "reduction potential table",
+      "oxidation state chart",
+      "Br\u00f8nsted-Lowry scale",
+      "acid strength table"
+    ],
+    "quizQuestion": "To predict whether a single replacement reaction (A + BC \u2192 AC + B) will occur, chemists refer to the ___ of metals.",
+    "explanation": "The activity series ranks metals from most reactive (Li, K, Ca, Na...) to least reactive (Pt, Au). A free metal will displace another metal from solution ONLY if it is higher on the activity series than the metal being displaced. For example, Zn + CuSO4 \u2192 ZnSO4 + Cu because Zn is more active than Cu.",
+    "statement": "The activity series of metals determines whether a single replacement reaction will occur \u2014 a more active metal displaces a less active one from solution.",
+    "wowFactor": "Gold and platinum sit at the bottom of the activity series, which is why ancient gold artifacts survive for thousands of years \u2014 gold simply won't react with most substances in the environment.",
+    "visualDescription": "A vertical ranked list of metals from most reactive (lithium glowing white-hot at top) to least reactive (gold coin gleaming at bottom), styled like an ancient tablet",
+    "sourceName": "Wikipedia: Activity Series",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Reactivity_series",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.7"
+    ]
+  },
+  {
+    "id": "ap_chem_4_7_double_replacement",
+    "correctAnswer": "double replacement",
+    "acceptableAlternatives": [
+      "double displacement",
+      "metathesis reaction",
+      "ion exchange"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "single replacement",
+      "synthesis",
+      "decomposition",
+      "combustion",
+      "neutralization only",
+      "combination",
+      "precipitation only",
+      "redox"
+    ],
+    "quizQuestion": "A reaction in which the cations of two ionic compounds exchange partners (AB + CD \u2192 AD + CB) is called a ___ reaction.",
+    "explanation": "Double replacement reactions occur when two ionic compounds in solution exchange partners, often producing a precipitate, gas, or molecular compound (like water). Example: AgNO3(aq) + NaCl(aq) \u2192 AgCl(s) + NaNO3(aq). The driving force is the removal of ions from solution. Neutralization reactions (acid + base \u2192 water + salt) are a special case.",
+    "statement": "A double replacement reaction exchanges the cations (or anions) of two ionic compounds: AB + CD \u2192 AD + CB.",
+    "wowFactor": "The formation of kidney stones is essentially a biological double replacement (precipitation) reaction \u2014 calcium oxalate precipitates inside the kidney when oxalate and calcium ion concentrations exceed the solubility product.",
+    "visualDescription": "Two pairs of colored spheres (AB and CD) swapping partners to form two new pairs (AD and CB), shown as animated molecular dance with arrows indicating the exchange",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.7"
+    ]
+  },
+  {
+    "id": "ap_chem_4_7_combustion_products",
+    "correctAnswer": "carbon dioxide and water",
+    "acceptableAlternatives": [
+      "CO2 and H2O",
+      "water and carbon dioxide",
+      "H2O and CO2"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "carbon monoxide and water",
+      "carbon and water",
+      "oxygen and water",
+      "carbon dioxide and hydrogen",
+      "carbon monoxide and hydrogen",
+      "water only",
+      "carbon dioxide and nitrogen",
+      "carbon and oxygen"
+    ],
+    "quizQuestion": "When a hydrocarbon undergoes complete combustion with excess oxygen, the products are always ___.",
+    "explanation": "Complete combustion of a hydrocarbon (CxHy) with excess O2 always produces CO2 and H2O. The general equation is: CxHy + O2 \u2192 CO2 + H2O (unbalanced). For example, CH4 + 2O2 \u2192 CO2 + 2H2O. Incomplete combustion (with insufficient O2) produces CO (carbon monoxide) or soot (C) instead.",
+    "statement": "Complete combustion of a hydrocarbon in excess oxygen always produces carbon dioxide (CO2) and water (H2O).",
+    "wowFactor": "Every breath you exhale contains CO2 from the combustion of glucose (C6H12O6 + 6O2 \u2192 6CO2 + 6H2O) \u2014 your cells literally burn fuel the same way a car engine does.",
+    "visualDescription": "A blue flame burning a hydrocarbon molecule, with CO2 and H2O molecules shown emerging from the flame against a dark background, labeled with chemical formulas",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.7"
+    ]
+  },
+  {
+    "id": "ap_chem_4_7_precipitation_reaction",
+    "correctAnswer": "precipitate",
+    "acceptableAlternatives": [
+      "insoluble solid",
+      "solid product"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "reaction_types",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "gas",
+      "aqueous solution",
+      "buffer",
+      "complex ion",
+      "colloid",
+      "electrolyte",
+      "emulsion",
+      "suspension"
+    ],
+    "quizQuestion": "When two aqueous ionic solutions are mixed and an insoluble solid forms and settles out of solution, that solid is called a ___.",
+    "explanation": "A precipitate forms when the product of a double replacement reaction is insoluble according to solubility rules. The driving force of the reaction is the removal of ions from solution as the solid product. Example: Pb(NO3)2(aq) + 2KI(aq) \u2192 PbI2(s) + 2KNO3(aq) \u2014 lead(II) iodide is a bright yellow precipitate.",
+    "statement": "A precipitate is an insoluble solid that forms and settles out when two aqueous ionic solutions are mixed.",
+    "wowFactor": "The brilliant yellow precipitate PbI2 (lead iodide) appears instantly when KI is added to Pb(NO3)2 solution \u2014 it's so dramatic that chemists call this a 'golden rain' demonstration.",
+    "visualDescription": "Two clear solutions being poured into a beaker, instantly producing bright yellow solid sinking to the bottom, demonstrating precipitation in a dramatic color-contrast shot",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.7"
+    ]
+  },
+  {
+    "id": "ap_chem_4_7_combustion_balancing",
+    "correctAnswer": "{2}",
+    "acceptableAlternatives": [
+      "2"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [],
+    "quizQuestion": "Balance the combustion of methane: CH4 + ___ O2 \u2192 CO2 + 2H2O. What is the coefficient for O2?",
+    "explanation": "Balancing CH4 + O2 \u2192 CO2 + H2O: Carbon: 1 C on each side (balanced). Hydrogen: 4H \u2192 2H2O (balanced). Oxygen: right side has 2 + 2 = 4 O atoms total, requiring 4/2 = 2 O2 molecules. The balanced equation is CH4 + 2O2 \u2192 CO2 + 2H2O. This is the cleanest combustion example \u2014 methane (natural gas) reacting with exactly 2 moles of O2.",
+    "statement": "The combustion of methane is balanced as: CH4 + 2O2 \u2192 CO2 + 2H2O \u2014 two moles of oxygen are required per mole of methane.",
+    "wowFactor": "Methane (CH4) is the simplest hydrocarbon and the primary component of natural gas. When burned in a gas stove, each molecule requires exactly 2 O2 molecules \u2014 making it one of the cleanest-burning fossil fuels.",
+    "visualDescription": "A balanced chemical equation for ethane combustion written on a blackboard with color-coded atoms showing carbon, hydrogen, and oxygen conservation",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.7"
+    ]
+  },
+  {
+    "id": "ap_chem_4_8_arrhenius_acid",
+    "correctAnswer": "hydrogen ions in water",
+    "acceptableAlternatives": [
+      "H+ ions in aqueous solution",
+      "H+ in water",
+      "hydronium ions",
+      "H3O+ in water",
+      "protons in water"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "hydroxide ions in water",
+      "electrons in solution",
+      "oxide ions",
+      "proton acceptors",
+      "neutral molecules",
+      "lone pair donors",
+      "Lewis sites",
+      "covalent bond donors"
+    ],
+    "quizQuestion": "According to the Arrhenius definition, an acid is a substance that produces ___ when dissolved in water.",
+    "explanation": "Svante Arrhenius defined acids as substances that ionize in water to produce H+ ions (protons). For example, HCl \u2192 H+ + Cl-. In reality, H+ associates with water to form H3O+ (hydronium), but the Arrhenius definition uses H+. Arrhenius bases produce OH- ions in water (e.g., NaOH \u2192 Na+ + OH-).",
+    "statement": "An Arrhenius acid produces H+ (hydrogen) ions when dissolved in water; an Arrhenius base produces OH- ions.",
+    "wowFactor": "Svante Arrhenius proposed his acid-base theory in his 1884 doctoral dissertation \u2014 his professors gave it such a low grade that he nearly wasn't awarded his degree. He won the Nobel Prize in Chemistry in 1903.",
+    "visualDescription": "An HCl molecule dissolving in water with H+ and Cl- ions shown separating and dispersing among water molecules, with the hydronium H3O+ highlighted in blue",
+    "sourceName": "Wikipedia: Arrhenius equation",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Acid%E2%80%93base_reaction",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.8"
+    ]
+  },
+  {
+    "id": "ap_chem_4_8_bronsted_lowry_acid",
+    "correctAnswer": "proton donor",
+    "acceptableAlternatives": [
+      "H+ donor",
+      "hydrogen ion donor"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "proton acceptor",
+      "electron pair donor",
+      "electron pair acceptor",
+      "hydroxide donor",
+      "neutron donor",
+      "lone pair donor",
+      "hydrogen bond acceptor",
+      "Lewis acid"
+    ],
+    "quizQuestion": "In the Br\u00f8nsted-Lowry model, an acid is defined as a ___.",
+    "explanation": "The Br\u00f8nsted-Lowry definition (1923) broadened Arrhenius's concept: an acid is any species that donates a proton (H+), and a base is any species that accepts a proton. This includes reactions in non-aqueous solvents and explains why NH3 is a base (accepts H+) even though it contains no OH-.",
+    "statement": "A Br\u00f8nsted-Lowry acid is a proton (H+) donor; a Br\u00f8nsted-Lowry base is a proton acceptor.",
+    "wowFactor": "Johannes Br\u00f8nsted and Thomas Lowry independently published the same proton-transfer theory on the same day in 1923, without knowing about each other's work \u2014 a rare simultaneous discovery in chemistry.",
+    "visualDescription": "Two scientists' portraits side by side with a molecular diagram showing H+ transfer from acid molecule to base molecule, connected by a dotted arrow labeled 'proton transfer'",
+    "sourceName": "Wikipedia: Bronsted-Lowry acid-base theory",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Br%C3%B8nsted%E2%80%93Lowry_acid%E2%80%93base_theory",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.8"
+    ]
+  },
+  {
+    "id": "ap_chem_4_8_conjugate_pairs",
+    "correctAnswer": "conjugate base",
+    "acceptableAlternatives": [
+      "conjugate base of the acid"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "conjugate acid",
+      "amphiprotic species",
+      "Lewis base",
+      "Arrhenius base",
+      "neutral molecule",
+      "zwitterion",
+      "buffer component",
+      "amphoteric species"
+    ],
+    "quizQuestion": "After a Br\u00f8nsted-Lowry acid donates a proton, the species that remains is called its ___.",
+    "explanation": "A conjugate base is formed when an acid loses a proton (H+). For example: HCl (acid) \u2192 H+ + Cl- (conjugate base). The conjugate acid-base pair differs by exactly one proton. Strong acids have very weak conjugate bases (e.g., Cl- barely accepts protons), while weak acids have relatively stronger conjugate bases.",
+    "statement": "The species formed after a Br\u00f8nsted-Lowry acid donates a proton is its conjugate base \u2014 the pair differs by exactly one H+.",
+    "wowFactor": "Water acts as its own conjugate: H2O can donate H+ to become OH- (conjugate base) or accept H+ to become H3O+ (conjugate acid) \u2014 this is why pure water contains both H3O+ and OH- ions.",
+    "visualDescription": "A balanced scale with 'HA' on one side and 'A- + H+' on the other, with arrows showing the conjugate acid-base relationship, labeled clearly with proton transfer",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.8"
+    ]
+  },
+  {
+    "id": "ap_chem_4_8_amphoteric_water",
+    "correctAnswer": "amphoteric",
+    "acceptableAlternatives": [
+      "amphiprotic",
+      "amphoteric substance"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "neutral",
+      "acidic",
+      "basic",
+      "protic",
+      "aprotic",
+      "Lewis acid",
+      "monoprotic",
+      "diprotic"
+    ],
+    "quizQuestion": "Water can act as either an acid (donating H+) or a base (accepting H+). This property makes water ___.",
+    "explanation": "An amphoteric (or amphiprotic) substance can act as either an acid or a base depending on what it reacts with. Water: acts as acid with NH3 (donates H+ \u2192 NH4+ + OH-), acts as base with HCl (accepts H+ \u2192 H3O+ + Cl-). The autoionization of water (H2O + H2O \u21cc H3O+ + OH-) demonstrates both roles simultaneously.",
+    "statement": "Water is amphoteric \u2014 it can donate a proton (acting as an acid) or accept a proton (acting as a base) depending on its reaction partner.",
+    "wowFactor": "Water's amphoteric nature is why the pH scale exists: the Kw = [H3O+][OH-] = 1.0 \u00d7 10-14 at 25\u00b0C arises from water's self-ionization, setting neutral pH at exactly 7.",
+    "visualDescription": "A water molecule shown in two reactions simultaneously: one where it gives H+ to a base (ammonia), and one where it receives H+ from an acid (HCl), arrows showing both directions",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.8"
+    ]
+  },
+  {
+    "id": "ap_chem_4_8_neutralization",
+    "correctAnswer": "water and a salt",
+    "acceptableAlternatives": [
+      "salt and water",
+      "ionic compound and water",
+      "H2O and salt"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "only water",
+      "only a salt",
+      "carbon dioxide and water",
+      "hydrogen gas and salt",
+      "an oxide and water",
+      "a base and a salt",
+      "hydrogen peroxide and salt",
+      "an acid and water"
+    ],
+    "quizQuestion": "When a strong acid reacts with a strong base in a neutralization reaction, the products are always ___.",
+    "explanation": "Neutralization: acid + base \u2192 water + salt. For example: HCl(aq) + NaOH(aq) \u2192 H2O(l) + NaCl(aq). The net ionic equation for any strong acid\u2013strong base neutralization is: H+(aq) + OH-(aq) \u2192 H2O(l). The salt formed (NaCl here) is the ionic compound remaining after the water forms.",
+    "statement": "A neutralization reaction between a strong acid and strong base always produces water and a salt.",
+    "wowFactor": "Table salt (NaCl) is literally the product of neutralizing stomach acid (HCl) with drain cleaner (NaOH) \u2014 both deadly alone, yet their neutralization product is completely safe to eat.",
+    "visualDescription": "An animated molecular diagram showing H+ and OH- ions colliding and forming H2O, with Na+ and Cl- spectator ions arranging into a salt crystal structure below",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.8"
+    ]
+  },
+  {
+    "id": "ap_chem_4_8_conjugate_acid",
+    "correctAnswer": "conjugate acid",
+    "acceptableAlternatives": [
+      "the conjugate acid"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "conjugate base",
+      "amphoteric species",
+      "zwitterion",
+      "Lewis acid",
+      "Arrhenius acid",
+      "neutral molecule",
+      "buffer acid",
+      "spectator ion"
+    ],
+    "quizQuestion": "After a Br\u00f8nsted-Lowry base accepts a proton (H+), the species formed is called its ___.",
+    "explanation": "When a base accepts a proton, it becomes a conjugate acid. Example: NH3 (base) + H+ \u2192 NH4+ (conjugate acid). The conjugate acid-base pair NH3/NH4+ differs by exactly one proton. A strong base has a very weak conjugate acid, while a weak base has a moderate conjugate acid.",
+    "statement": "The species formed after a Br\u00f8nsted-Lowry base accepts a proton is its conjugate acid \u2014 it is always one H+ heavier than the base.",
+    "wowFactor": "The concept of conjugate pairs explains why a solution of sodium acetate (the conjugate base of acetic acid) is basic \u2014 CH3COO- accepts H+ from water, producing OH- and raising pH above 7.",
+    "visualDescription": "A molecular diagram showing NH3 accepting an H+ ion to become NH4+, with a bracket labeled 'conjugate acid-base pair' connecting the two species",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.8"
+    ]
+  },
+  {
+    "id": "ap_chem_4_8_strong_vs_weak_acid",
+    "correctAnswer": "completely",
+    "acceptableAlternatives": [
+      "fully",
+      "100%",
+      "virtually completely",
+      "near completely"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "partially",
+      "slightly",
+      "reversibly",
+      "not at all",
+      "1% to 5%",
+      "50% at equilibrium",
+      "in a buffered solution only",
+      "depending on temperature"
+    ],
+    "quizQuestion": "A strong acid like HCl dissociates ___ in aqueous solution, meaning essentially no intact acid molecules remain.",
+    "explanation": "Strong acids (HCl, HBr, HI, HNO3, H2SO4, HClO4) dissociate essentially 100% in dilute aqueous solution. The equilibrium lies far to the right: HCl(aq) \u2192 H+(aq) + Cl-(aq). Weak acids like acetic acid (CH3COOH) dissociate only partially (typically <5%), establishing an equilibrium with intact acid molecules.",
+    "statement": "A strong acid dissociates completely in water; a weak acid dissociates only partially and establishes an equilibrium.",
+    "wowFactor": "Hydrofluoric acid (HF) is a weak acid despite containing a halogen \u2014 HF's unusually strong H-F bond means it dissociates only slightly, yet it is incredibly dangerous because it penetrates skin and attacks bones.",
+    "visualDescription": "Two beakers side by side: one with all HCl molecules shown split into ions (strong acid), another with mostly intact CH3COOH molecules and only a few ions (weak acid), labeled for comparison",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.8"
+    ]
+  },
+  {
+    "id": "ap_chem_4_9_oil_rig",
+    "correctAnswer": "OIL RIG",
+    "acceptableAlternatives": [
+      "Oxidation Is Loss, Reduction Is Gain",
+      "oil rig mnemonic"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "electrochemistry_terms",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "LEO GER",
+      "RED CAT",
+      "AN OX",
+      "HOMO LUMO",
+      "SALT BRIDGE",
+      "ACID BASE",
+      "IONIC COVALENT",
+      "SMORE"
+    ],
+    "quizQuestion": "What mnemonic helps students remember that Oxidation Is Loss (of electrons) and Reduction Is Gain (of electrons)?",
+    "explanation": "OIL RIG: Oxidation Is Loss of electrons, Reduction Is Gain of electrons. Oxidation and reduction always occur together (redox reactions). The species that is oxidized loses electrons, and those electrons are gained by the species being reduced. LEO GER (Loses Electrons = Oxidized, Gains Electrons = Reduced) is an alternative mnemonic.",
+    "statement": "OIL RIG: Oxidation Is Loss of electrons; Reduction Is Gain of electrons.",
+    "wowFactor": "The word 'oxidation' originally referred only to reactions with oxygen \u2014 iron rusting (4Fe + 3O2 \u2192 2Fe2O3) was called oxidation. The electron-transfer definition was only generalized in the 20th century.",
+    "visualDescription": "A bold OIL RIG diagram carved into stone tablet style, with electron arrows showing loss from the oxidized species and gain for the reduced species, backlit in orange and blue",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.9"
+    ]
+  },
+  {
+    "id": "ap_chem_4_9_oxidizing_agent",
+    "correctAnswer": "oxidizing agent",
+    "acceptableAlternatives": [
+      "oxidant",
+      "electron acceptor"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "electrochemistry_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "reducing agent",
+      "reductant",
+      "electron donor",
+      "Lewis base",
+      "Br\u00f8nsted acid",
+      "cathode species",
+      "anode species",
+      "spectator ion"
+    ],
+    "quizQuestion": "The species in a redox reaction that accepts electrons and is itself reduced is called the ___.",
+    "explanation": "An oxidizing agent (oxidant) causes another species to be oxidized by accepting its electrons. In doing so, the oxidizing agent itself gains electrons and is reduced. Example: in Zn + Cu2+ \u2192 Zn2+ + Cu, the Cu2+ is the oxidizing agent (it accepts electrons from Zn and is reduced to Cu).",
+    "statement": "An oxidizing agent accepts electrons from another species (causing oxidation) and is itself reduced in the process.",
+    "wowFactor": "Oxygen (O2) is the most common oxidizing agent in biology \u2014 your mitochondria use it as the final electron acceptor in the electron transport chain, which is why you need to breathe.",
+    "visualDescription": "A molecular diagram with Cu2+ labeled 'oxidizing agent' reaching for two electrons from a Zn atom, with color-coded arrows showing electron flow and oxidation state changes",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.9"
+    ]
+  },
+  {
+    "id": "ap_chem_4_9_reducing_agent",
+    "correctAnswer": "reducing agent",
+    "acceptableAlternatives": [
+      "reductant",
+      "electron donor"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "electrochemistry_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "oxidizing agent",
+      "oxidant",
+      "electron acceptor",
+      "Lewis acid",
+      "Br\u00f8nsted base",
+      "anode current",
+      "cathode current",
+      "spectator ion"
+    ],
+    "quizQuestion": "The species in a redox reaction that donates electrons and is itself oxidized is called the ___.",
+    "explanation": "A reducing agent (reductant) causes another species to be reduced by donating its own electrons. The reducing agent loses electrons and is oxidized. Example: in Zn + Cu2+ \u2192 Zn2+ + Cu, Zn is the reducing agent (it donates 2 electrons to Cu2+ and is oxidized from 0 to +2).",
+    "statement": "A reducing agent donates electrons to another species (causing reduction) and is itself oxidized in the process.",
+    "wowFactor": "Hydrogen gas (H2) is the most energy-dense reducing agent by mass \u2014 it's used in fuel cells where H2 donates electrons to O2, producing only water as a byproduct.",
+    "visualDescription": "A Zn atom labeled 'reducing agent' releasing two electrons toward Cu2+, shown as glowing blue sparks, with oxidation state labels +2 for Zn2+ and 0 for Cu product",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.9"
+    ]
+  },
+  {
+    "id": "ap_chem_4_9_oxidation_state_rules",
+    "correctAnswer": "+2",
+    "acceptableAlternatives": [
+      "2+",
+      "positive 2"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "electrochemistry_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "+1",
+      "-1",
+      "+3",
+      "-2",
+      "0",
+      "+4",
+      "-3",
+      "+6"
+    ],
+    "quizQuestion": "In the compound CuSO4, if sulfate (SO4) has a charge of 2-, what is the oxidation state of copper (Cu)?",
+    "explanation": "For neutral compounds, the sum of oxidation states = 0. SO4^2- has charge -2, so Cu must be +2 to make the sum 0: (+2) + (-2) = 0. Copper's +2 oxidation state is common (Cu2+), as seen in CuSO4\u00b75H2O (blue vitriol). Rules: elements = 0, monatomic ions = charge, O usually -2, H usually +1.",
+    "statement": "In CuSO4, copper has oxidation state +2 because the sulfate ion (SO4^2-) has a charge of -2, and the compound is neutral.",
+    "wowFactor": "Copper sulfate (CuSO4) is the vivid blue color of many swimming pools and copper plating baths \u2014 the intense blue comes from Cu2+ ions in octahedral coordination with water molecules.",
+    "visualDescription": "A bright blue CuSO4 solution in a beaker with the ionic formula showing Cu(+2) and SO4(-2) labeled with oxidation state markers, against a white background",
+    "sourceName": "Wikipedia: Oxidation state",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oxidation_state",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.9"
+    ]
+  },
+  {
+    "id": "ap_chem_4_9_half_reactions",
+    "correctAnswer": "half-reactions",
+    "acceptableAlternatives": [
+      "half reactions",
+      "oxidation and reduction half-equations"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "electrochemistry_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "net ionic equations",
+      "molecular equations",
+      "spectator ion equations",
+      "equilibrium expressions",
+      "Nernst equations",
+      "electrode reactions",
+      "galvanic cell equations",
+      "Faraday equations"
+    ],
+    "quizQuestion": "When balancing a redox reaction, chemists split the overall reaction into an oxidation step and a reduction step. These separate steps are called ___.",
+    "explanation": "Half-reactions show oxidation and reduction separately. The oxidation half-reaction shows electron loss, and the reduction half-reaction shows electron gain. To balance the full redox equation, multiply each half-reaction so the electrons lost = electrons gained, then add them together. In acidic solution, add H+ and H2O; in basic solution, add OH- and H2O.",
+    "statement": "Half-reactions separate a redox equation into oxidation (electron loss) and reduction (electron gain) steps, which are then combined after balancing electron count.",
+    "wowFactor": "Half-reactions aren't just a math trick \u2014 they literally represent what happens at the electrodes in a battery. The anode performs the oxidation half-reaction and the cathode performs the reduction half-reaction.",
+    "visualDescription": "A split-screen diagram showing the oxidation half-reaction on the left (Zn \u2192 Zn2+ + 2e-) and reduction half-reaction on the right (Cu2+ + 2e- \u2192 Cu), with an equals sign combining them below",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.9"
+    ]
+  },
+  {
+    "id": "ap_chem_4_9_oxygen_oxidation_state",
+    "correctAnswer": "-2",
+    "acceptableAlternatives": [
+      "-2 oxidation state",
+      "negative two",
+      "2-"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 2,
+    "answerTypePoolId": "electrochemistry_terms",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "-1",
+      "+2",
+      "0",
+      "+6",
+      "-3",
+      "+4",
+      "-4",
+      "+1"
+    ],
+    "quizQuestion": "What is the most common oxidation state of oxygen in compounds such as H2O and CO2?",
+    "explanation": "Oxygen's most common oxidation state in compounds is -2. Exceptions: O is 0 in O2 (elemental form), -1 in peroxides like H2O2, and +2 in OF2 (when bonded to fluorine, which is more electronegative). The -2 rule applies in the vast majority of compounds encountered in AP Chemistry.",
+    "statement": "Oxygen has an oxidation state of -2 in most compounds; exceptions include peroxides (-1), elemental O2 (0), and OF2 (+2).",
+    "wowFactor": "In hydrogen peroxide (H2O2), oxygen's oxidation state is -1 \u2014 halfway between water (-2) and elemental O2 (0). This makes H2O2 able to act as both an oxidizing AND reducing agent, explaining its use as a bleaching agent.",
+    "visualDescription": "A periodic table entry for oxygen with '-2' stamped in red as its typical oxidation state, with small insets showing H2O and CO2 structures, with a footnote showing H2O2 exception",
+    "sourceName": "Wikipedia: Oxidation state",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oxidation_state",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_4",
+      "Topic_4.9"
+    ]
+  }
+]

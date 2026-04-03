@@ -1,0 +1,751 @@
+[
+  {
+    "id": "ap_chem_8_6_binary_acid_hf_hcl_hbr_hi_strength",
+    "correctAnswer": "bond strength",
+    "acceptableAlternatives": [
+      "bond dissociation energy",
+      "H-X bond strength"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "electronegativity",
+      "polarity",
+      "atomic radius",
+      "oxidation state",
+      "formal charge",
+      "ion size",
+      "electron affinity",
+      "resonance"
+    ],
+    "quizQuestion": "Going down the halogen group (HF → HCl → HBr → HI), binary acid strength increases because ___ decreases.",
+    "explanation": "As you move down a group, the halogen atom gets larger, making the H–X bond longer and weaker. A weaker bond means H+ is released more easily, so acid strength increases: HF << HCl < HBr < HI. Note that across a period, electronegativity dominates instead.",
+    "statement": "Binary acid strength increases down a group (HF < HCl < HBr < HI) because H–X bond strength decreases with increasing atomic size.",
+    "wowFactor": "HF is actually one of the weakest hydrohalic acids despite fluorine being the most electronegative element — the F–H bond is so strong it barely ionizes at all.",
+    "visualDescription": "A vertical periodic table column showing the four hydrogen halides with bond length arrows increasing and acid strength arrows pointing upward, on a clean white background",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.6"
+    ]
+  },
+  {
+    "id": "ap_chem_8_6_oxyacid_strength_more_oxygen",
+    "correctAnswer": "more oxygen atoms",
+    "acceptableAlternatives": [
+      "more O atoms",
+      "increasing number of oxygen atoms",
+      "greater number of oxygens"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "higher oxidation state of hydrogen",
+      "fewer oxygen atoms",
+      "greater molecular mass",
+      "higher electronegativity of hydrogen",
+      "more lone pairs on oxygen",
+      "greater bond polarity of O–H",
+      "shorter O–H bond",
+      "more resonance structures"
+    ],
+    "quizQuestion": "For the chlorine oxyacids (HClO < HClO2 < HClO3 < HClO4), acid strength increases with ___.",
+    "explanation": "Each additional oxygen atom draws electron density away from the O–H bond through induction, weakening it and making H+ easier to release. HClO4 (perchloric acid) is one of the strongest known acids because four oxygens pull so effectively on the O–H bond.",
+    "statement": "Oxyacid strength increases with more oxygen atoms: HClO < HClO2 < HClO3 < HClO4, because each O withdraws electron density and weakens the O–H bond.",
+    "wowFactor": "Perchloric acid (HClO4) is so strong it essentially fully ionizes in water AND can even protonate other strong acids — a superacid precursor.",
+    "visualDescription": "Four molecular diagrams of HClO, HClO2, HClO3, and HClO4 in a row with an upward arrow labeled 'acid strength' showing the trend, on a light gray background",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.6"
+    ]
+  },
+  {
+    "id": "ap_chem_8_6_electronegativity_oxyacid_central_atom",
+    "correctAnswer": "more electronegative central atom",
+    "acceptableAlternatives": [
+      "higher electronegativity of the central atom",
+      "greater electronegativity of central element"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "less electronegative central atom",
+      "larger central atom",
+      "more hydrogen atoms",
+      "fewer lone pairs on central atom",
+      "higher formal charge on oxygen",
+      "more double bonds",
+      "lower oxidation state of central atom",
+      "shorter central atom–oxygen bond"
+    ],
+    "quizQuestion": "When comparing oxyacids with the same number of oxygen atoms, the stronger acid has a ___.",
+    "explanation": "A more electronegative central atom pulls electron density away from the O–H bond more effectively, making the proton easier to release. For example, HOCl is a stronger acid than HOBr because Cl is more electronegative than Br.",
+    "statement": "For oxyacids with equal oxygen counts, the stronger acid has a more electronegative central atom, which better withdraws electron density from the O–H bond.",
+    "wowFactor": "This inductive effect cascades through bonds — a central atom three bonds away from the O–H can still meaningfully affect acid strength.",
+    "visualDescription": "Side-by-side structural diagrams of HOCl and HOBr with electronegativity values labeled on the central atoms, and an arrow pointing to HOCl as the stronger acid",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.6"
+    ]
+  },
+  {
+    "id": "ap_chem_8_6_hf_weak_acid_despite_electronegativity",
+    "correctAnswer": "HF",
+    "acceptableAlternatives": [
+      "hydrofluoric acid"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "chemical_formulas",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "HCl",
+      "HBr",
+      "HI",
+      "HClO",
+      "H2SO4",
+      "HNO3",
+      "HClO4",
+      "H3PO4"
+    ],
+    "quizQuestion": "Which hydrogen halide is classified as a weak acid despite fluorine being the most electronegative halogen?",
+    "explanation": "Fluorine's extreme electronegativity makes the H–F bond very short and very strong (bond energy ~569 kJ/mol vs. ~431 kJ/mol for H–Cl). This strong bond is so hard to break that HF is only partially ionized in water, making it a weak acid with Ka ≈ 6.8 × 10⁻⁴.",
+    "statement": "HF is a weak acid (Ka ≈ 6.8 × 10⁻⁴) because the very strong H–F bond resists ionization, despite fluorine being the most electronegative element.",
+    "wowFactor": "HF is so unusual that it forms bifluoride ions (HF2⁻) in solution — a hydrogen bond so strong it's almost a real chemical bond.",
+    "visualDescription": "A simple molecular diagram of H–F with a bold bond line and 'weak acid' label, contrasted with H–Cl showing a longer, weaker bond labeled 'strong acid'",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.6"
+    ]
+  },
+  {
+    "id": "ap_chem_8_7_pka_definition",
+    "correctAnswer": "pKa = -log(Ka)",
+    "acceptableAlternatives": [
+      "negative log of Ka",
+      "-log Ka"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "pKa = log(Ka)",
+      "pKa = 1/Ka",
+      "pKa = Ka × 10",
+      "pKa = -ln(Ka)",
+      "pKa = Ka / [H+]",
+      "pKa = -log(Kb)",
+      "pKa = 14 - pKb",
+      "pKa = [H+] / Ka"
+    ],
+    "quizQuestion": "The mathematical definition of pKa is ___.",
+    "explanation": "Just as pH = -log[H+], the pKa converts the acid dissociation constant Ka into a more workable logarithmic scale. A lower pKa means a larger Ka, which means a stronger acid. Acetic acid has Ka = 1.8 × 10⁻⁵ and pKa = 4.74.",
+    "statement": "pKa = -log(Ka); a lower pKa value indicates a stronger acid with a larger dissociation constant.",
+    "wowFactor": "The 'p' in pKa, pH, and pOH all come from the German word 'Potenz' (power), introduced by Søren Sørensen in 1909 when he invented the pH scale.",
+    "visualDescription": "A clean equation graphic showing pKa = -log(Ka) with an arrow indicating 'stronger acid → lower pKa' on a white background with blue chemistry styling",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.7"
+    ]
+  },
+  {
+    "id": "ap_chem_8_7_half_equivalence_ph_equals_pka",
+    "correctAnswer": "pH = pKa",
+    "acceptableAlternatives": [
+      "pH equals pKa",
+      "the pH equals the pKa of the weak acid"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "pH = 7",
+      "pH = 14 - pKa",
+      "pH = 2 × pKa",
+      "pH = pKa + 1",
+      "pH = pKa - 1",
+      "pH = pKb",
+      "pH = -log[HA]",
+      "pH = pKa / 2"
+    ],
+    "quizQuestion": "At the half-equivalence point in a weak acid titration, ___ is true.",
+    "explanation": "At the half-equivalence point, exactly half the weak acid has been neutralized, so [A⁻] = [HA]. Plugging into Henderson-Hasselbalch: pH = pKa + log(1) = pKa + 0 = pKa. This is a direct experimental method to determine the pKa of any weak acid.",
+    "statement": "At the half-equivalence point of a weak acid titration, [A⁻] = [HA], so pH = pKa exactly.",
+    "wowFactor": "Chemists exploit this trick to experimentally measure pKa values — add half the stoichiometric amount of base, measure the pH, and you have the pKa.",
+    "visualDescription": "A titration curve with the half-equivalence point marked at the midpoint of the buffering region, with a horizontal dashed line at pH = pKa and a vertical dashed line at half-volume",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.7"
+    ]
+  },
+  {
+    "id": "ap_chem_8_7_dilution_increases_percent_ionization",
+    "correctAnswer": "percent ionization increases",
+    "acceptableAlternatives": [
+      "percent dissociation increases",
+      "degree of ionization increases",
+      "more ionization occurs"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "percent ionization decreases",
+      "Ka increases",
+      "pKa decreases",
+      "percent ionization stays constant",
+      "the acid becomes stronger",
+      "pH decreases",
+      "[H+] increases",
+      "Ka decreases"
+    ],
+    "quizQuestion": "When a weak acid solution is diluted with water, its ___ even though Ka stays constant.",
+    "explanation": "Dilution shifts equilibrium toward products (Le Chatelier's principle). Although the absolute [H+] decreases, the fraction of acid molecules that ionize increases. Ka = [H+][A⁻]/[HA] is constant, but with lower total acid concentration, a higher percentage must ionize to maintain Ka.",
+    "statement": "Diluting a weak acid increases its percent ionization because equilibrium shifts toward products, even though Ka remains constant.",
+    "wowFactor": "At infinite dilution, even the weakest acid would be 100% ionized — concentration is what keeps most of a weak acid in its molecular form.",
+    "visualDescription": "Two beakers side by side showing a concentrated weak acid solution with few ions, and a dilute solution with a higher fraction of ions, illustrating the dilution effect on ionization",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.7"
+    ]
+  },
+  {
+    "id": "ap_chem_8_7_lower_pka_stronger_acid",
+    "correctAnswer": "stronger acid",
+    "acceptableAlternatives": [
+      "a stronger acid",
+      "the stronger acid",
+      "more acidic"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "weaker acid",
+      "stronger base",
+      "less ionized acid",
+      "more stable conjugate base",
+      "higher pH solution",
+      "larger pKb",
+      "lower Ka acid",
+      "less soluble compound"
+    ],
+    "quizQuestion": "An acid with pKa = 3.5 compared to one with pKa = 6.0 is a ___.",
+    "explanation": "A lower pKa corresponds to a higher Ka, meaning greater ionization and a stronger acid. pKa = 3.5 means Ka ≈ 3.2 × 10⁻⁴, while pKa = 6.0 means Ka = 1 × 10⁻⁶. The acid with pKa 3.5 ionizes about 320 times more.",
+    "statement": "Lower pKa = higher Ka = stronger acid; an acid with pKa 3.5 is much stronger than one with pKa 6.0.",
+    "wowFactor": "Each unit decrease in pKa represents a 10-fold increase in Ka — so pKa 3 is 1,000 times stronger than pKa 6.",
+    "visualDescription": "A number line showing pKa values from 0 to 14, with 'stronger acid' labeled on the left (low pKa) and 'weaker acid' on the right (high pKa), with example acids marked",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.7"
+    ]
+  },
+  {
+    "id": "ap_chem_8_8_buffer_range_pka_plus_minus_1",
+    "correctAnswer": "pKa ± 1",
+    "acceptableAlternatives": [
+      "one unit above and below pKa",
+      "within one pH unit of pKa",
+      "pKa minus 1 to pKa plus 1"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "pKa ± 2",
+      "pKa ± 0.5",
+      "pKa ± 3",
+      "pH 6–8 always",
+      "pKb ± 1",
+      "pKa only",
+      "pH 4–10",
+      "pKa ± 1.5"
+    ],
+    "quizQuestion": "The effective buffering range of a weak acid/conjugate base buffer system is ___.",
+    "explanation": "From Henderson-Hasselbalch: pH = pKa + log([A⁻]/[HA]). The buffer is effective when [A⁻]/[HA] is between 0.1 and 10, which corresponds to log values of -1 and +1, giving a pH range of pKa ± 1. Outside this range, the buffer is overwhelmed.",
+    "statement": "A buffer is effective in the pH range of pKa ± 1, where the [A⁻]/[HA] ratio stays between 0.1 and 10.",
+    "wowFactor": "Human blood uses a carbonic acid/bicarbonate buffer with pKa = 6.1, yet blood pH must stay between 7.35–7.45 — this is outside the 'optimal' range, relying on the lungs and kidneys for additional regulation.",
+    "visualDescription": "A titration curve with the buffering plateau highlighted in green, spanning one pH unit above and below the pKa, with the pKa marked at the center",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.8"
+    ]
+  },
+  {
+    "id": "ap_chem_8_8_buffer_resists_ph_change",
+    "correctAnswer": "converts added H+ or OH- into the weak acid or conjugate base",
+    "acceptableAlternatives": [
+      "neutralizes added acid or base",
+      "absorbs H+ or OH- using the buffer components",
+      "reacts added H+ with A- or added OH- with HA"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "completely neutralizes all acid or base added",
+      "removes H+ by precipitation",
+      "increases the volume to dilute any acid or base",
+      "uses the solvent to absorb changes",
+      "shifts the Kw equilibrium",
+      "prevents any ionization from occurring",
+      "maintains a constant [H+] by suppressing ionization",
+      "stores acid or base for later release"
+    ],
+    "quizQuestion": "A buffer resists pH changes by ___.",
+    "explanation": "When H+ is added, it reacts with A⁻ (the conjugate base): H+ + A⁻ → HA. When OH⁻ is added, it reacts with HA (the weak acid): OH⁻ + HA → A⁻ + H₂O. Both reactions consume the added acid or base and replenish the other buffer component, keeping the ratio [A⁻]/[HA] — and therefore pH — nearly constant.",
+    "statement": "Buffers resist pH changes by reacting added H+ with the conjugate base (A⁻) or added OH⁻ with the weak acid (HA), converting them without significantly changing the pH.",
+    "wowFactor": "The buffer in your blood can neutralize a full can of cola's worth of acid before your blood pH would shift dangerously — the bicarbonate system is remarkably robust.",
+    "visualDescription": "A diagram showing two parallel reaction arrows: H+ + A⁻ → HA (top), and OH⁻ + HA → A⁻ + H₂O (bottom), with a double-headed arrow between them labeled 'buffer equilibrium'",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.8"
+    ]
+  },
+  {
+    "id": "ap_chem_8_8_optimal_buffer_equal_concentrations",
+    "correctAnswer": "pH = pKa",
+    "acceptableAlternatives": [
+      "the pH equals the pKa",
+      "pH equals pKa of the weak acid"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "pH = 7",
+      "pH = pKb",
+      "pH = 14 - pKa",
+      "pH = pKa + 7",
+      "pH = 2(pKa)",
+      "pH = pKa - 1",
+      "pH = pKa + 1",
+      "pH = pKa / 2"
+    ],
+    "quizQuestion": "When a buffer is prepared with equal concentrations of weak acid and conjugate base ([A⁻] = [HA]), the resulting pH is ___.",
+    "explanation": "Henderson-Hasselbalch: pH = pKa + log([A⁻]/[HA]) = pKa + log(1) = pKa + 0 = pKa. Equal concentrations maximize buffering capacity symmetrically — the buffer can absorb equal amounts of added acid or base.",
+    "statement": "When [A⁻] = [HA] in a buffer, pH = pKa. This is the optimal buffering condition with maximum symmetrical capacity.",
+    "wowFactor": "Biochemists preparing enzyme assays meticulously choose buffer components so that [A⁻] = [HA] at physiological pH, giving the widest possible pH stability window.",
+    "visualDescription": "A balance scale with [HA] on one side and [A⁻] on the other, perfectly level, with 'pH = pKa' labeled at the fulcrum",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.8"
+    ]
+  },
+  {
+    "id": "ap_chem_8_8_effective_buffer_ratio_range",
+    "correctAnswer": "between 0.1 and 10",
+    "acceptableAlternatives": [
+      "0.1 to 10",
+      "from 1:10 to 10:1",
+      "0.1 ≤ [A-]/[HA] ≤ 10"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "between 0.01 and 100",
+      "between 1 and 10 only",
+      "between 0.5 and 2",
+      "exactly equal to 1",
+      "between 0 and 1",
+      "between 1 and 100",
+      "between 0.1 and 1",
+      "between 1 and 14"
+    ],
+    "quizQuestion": "A buffer is considered effective when the [A⁻]/[HA] ratio is ___.",
+    "explanation": "From Henderson-Hasselbalch, log([A⁻]/[HA]) must be between -1 and +1 for the buffer to function within 1 pH unit of pKa. This corresponds to [A⁻]/[HA] between 0.1 and 10. Outside this range, one component is nearly exhausted and the buffer fails.",
+    "statement": "A buffer is effective when 0.1 ≤ [A⁻]/[HA] ≤ 10, keeping pH within the range pKa ± 1.",
+    "wowFactor": "The 0.1–10 rule means you can use a 10-to-1 excess of either component and still have a working buffer — it's a surprisingly forgiving system.",
+    "visualDescription": "A number line showing [A-]/[HA] ratios from 0.01 to 100, with the green 'effective' zone highlighted between 0.1 and 10, and red zones outside this range",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.8"
+    ]
+  },
+  {
+    "id": "ap_chem_8_9_henderson_hasselbalch_equation",
+    "correctAnswer": "pH = pKa + log([A-]/[HA])",
+    "acceptableAlternatives": [
+      "pH = pKa + log([conjugate base]/[weak acid])",
+      "Henderson-Hasselbalch equation"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "pH = pKb + log([HA]/[A-])",
+      "pH = pKa - log([A-]/[HA])",
+      "pH = Ka + log([A-]/[HA])",
+      "pH = pKa × log([A-]/[HA])",
+      "pH = pKa + ln([A-]/[HA])",
+      "pH = pKa + [A-]/[HA]",
+      "pH = -log(Ka) + [A-]",
+      "pH = pKa + log([HA]/[A-])"
+    ],
+    "quizQuestion": "The Henderson-Hasselbalch equation for calculating buffer pH is ___.",
+    "explanation": "This equation is derived from Ka = [H+][A⁻]/[HA] by taking -log of both sides. It allows direct calculation of buffer pH from known pKa and the ratio of conjugate base to weak acid concentrations, without solving a quadratic equation.",
+    "statement": "The Henderson-Hasselbalch equation is pH = pKa + log([A⁻]/[HA]), used to calculate the pH of buffer solutions.",
+    "wowFactor": "Lawrence Henderson derived this equation in 1908 to describe blood's bicarbonate buffer, and Karl Hasselbalch rewrote it in logarithmic form in 1916 — it's now used billions of times in labs worldwide.",
+    "visualDescription": "A clean chalkboard-style graphic showing pH = pKa + log([A⁻]/[HA]) in large white chalk lettering, with labels identifying each component",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.9"
+    ]
+  },
+  {
+    "id": "ap_chem_8_9_adding_acid_to_buffer_effect",
+    "correctAnswer": "decreases [A-] and increases [HA]",
+    "acceptableAlternatives": [
+      "[A-] decreases and [HA] increases",
+      "conjugate base concentration decreases and weak acid concentration increases"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "increases [A-] and decreases [HA]",
+      "decreases both [A-] and [HA]",
+      "increases both [A-] and [HA]",
+      "does not change [A-] or [HA]",
+      "increases [HA] and Ka",
+      "decreases Ka",
+      "increases pH significantly",
+      "eliminates all buffering capacity"
+    ],
+    "quizQuestion": "When a small amount of strong acid is added to a buffer, it ___.",
+    "explanation": "The added H+ reacts with the conjugate base: H+ + A⁻ → HA. This consumes A⁻ (decreasing [A⁻]) and produces HA (increasing [HA]). The ratio [A⁻]/[HA] decreases slightly, so pH drops slightly but not drastically.",
+    "statement": "Adding acid to a buffer converts A⁻ to HA: [A⁻] decreases and [HA] increases, causing a slight pH decrease according to Henderson-Hasselbalch.",
+    "wowFactor": "A well-designed buffer barely flinches when acid is added — the pH might drop by 0.1 units when the same acid would drop an unbuffered solution by 5 or more units.",
+    "visualDescription": "A reaction diagram showing H+ ions attacking A⁻ molecules to form HA, with a downward pH arrow showing a slight decrease on the pH scale",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.9"
+    ]
+  },
+  {
+    "id": "ap_chem_8_9_adding_base_to_buffer_effect",
+    "correctAnswer": "increases [A-] and decreases [HA]",
+    "acceptableAlternatives": [
+      "[A-] increases and [HA] decreases",
+      "conjugate base concentration increases and weak acid concentration decreases"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "decreases [A-] and increases [HA]",
+      "increases both [A-] and [HA]",
+      "decreases both [A-] and [HA]",
+      "does not change [A-] or [HA]",
+      "decreases Ka",
+      "increases pKa",
+      "lowers pH significantly",
+      "eliminates the conjugate base"
+    ],
+    "quizQuestion": "When a small amount of strong base is added to a buffer, it ___.",
+    "explanation": "The added OH⁻ reacts with the weak acid: OH⁻ + HA → A⁻ + H₂O. This consumes HA (decreasing [HA]) and produces A⁻ (increasing [A⁻]). The ratio [A⁻]/[HA] increases slightly, so pH rises slightly but not drastically.",
+    "statement": "Adding base to a buffer converts HA to A⁻: [A⁻] increases and [HA] decreases, causing a slight pH increase according to Henderson-Hasselbalch.",
+    "wowFactor": "This is why biochemists can add NaOH dropwise to enzymatic reactions without destroying the experiment — the buffer soaks it up silently.",
+    "visualDescription": "A reaction diagram showing OH⁻ reacting with HA to form A⁻ and water, with an upward pH arrow showing a slight increase on the pH scale",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.9"
+    ]
+  },
+  {
+    "id": "ap_chem_8_9_hh_equal_concentrations_simplification",
+    "correctAnswer": "pH = pKa",
+    "acceptableAlternatives": [
+      "pH equals pKa",
+      "the pH simplifies to pKa"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "pH = 7",
+      "pH = pKb",
+      "pH = Ka",
+      "pH = pKa × 2",
+      "pH = pKa + 7",
+      "log([A-]/[HA]) = 1",
+      "pH = pKa - 1",
+      "pH = 0"
+    ],
+    "quizQuestion": "In the Henderson-Hasselbalch equation, when [A⁻] = [HA], the equation simplifies to ___.",
+    "explanation": "When [A⁻] = [HA], log([A⁻]/[HA]) = log(1) = 0. Therefore pH = pKa + 0 = pKa. This elegant simplification is the foundation for using the half-equivalence point to experimentally determine pKa values.",
+    "statement": "In Henderson-Hasselbalch, when [A⁻] = [HA], log(1) = 0, so pH = pKa + 0 = pKa.",
+    "wowFactor": "This simplification is so useful that AP exam problems frequently test it — if you see equal concentrations of acid and conjugate base, the pH answer is always pKa.",
+    "visualDescription": "The Henderson-Hasselbalch equation with [A-]/[HA] = 1 substituted in, showing the log(1) = 0 step and the final result pH = pKa, all in clean equation form",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.9"
+    ]
+  },
+  {
+    "id": "ap_chem_8_10_buffer_capacity_definition",
+    "correctAnswer": "amount of acid or base a buffer can absorb before pH changes significantly",
+    "acceptableAlternatives": [
+      "amount of strong acid or base the buffer can neutralize",
+      "moles of H+ or OH- a buffer can absorb",
+      "how much acid or base a buffer can handle"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "the pH range over which a buffer is effective",
+      "the concentration of the weak acid alone",
+      "the Ka of the weak acid",
+      "the total volume of the buffer solution",
+      "the number of buffer components present",
+      "the pKa of the buffer system",
+      "the ratio of [A-] to [HA]",
+      "the maximum pH the buffer can reach"
+    ],
+    "quizQuestion": "Buffer capacity is defined as the ___.",
+    "explanation": "Buffer capacity is a quantitative measure of how much strong acid or base a buffer can absorb before the pH changes by more than 1 unit. It depends on the total concentration of buffer components (not just the ratio). A 1 M acetate buffer has much greater capacity than a 0.01 M one, even if both have pH = pKa.",
+    "statement": "Buffer capacity is the amount of strong acid or base a buffer can absorb before its pH changes significantly, determined primarily by total buffer concentration.",
+    "wowFactor": "Olympic-grade blood doping with bicarbonate ('soda loading') exploits buffer capacity — athletes ingest sodium bicarbonate to increase blood buffer capacity and delay lactic acid buildup.",
+    "visualDescription": "Two containers of buffer solution — one concentrated (tall, dark) and one dilute (short, light) — with different amounts of acid dropping in, illustrating that the concentrated one absorbs more before the pH arrow shifts",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.10"
+    ]
+  },
+  {
+    "id": "ap_chem_8_10_higher_concentration_more_capacity",
+    "correctAnswer": "higher total buffer concentration",
+    "acceptableAlternatives": [
+      "greater total concentration of buffer components",
+      "more concentrated buffer",
+      "increased total molarity of weak acid and conjugate base"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "lower total buffer concentration",
+      "a ratio of [A-]/[HA] close to 10",
+      "higher pKa value",
+      "lower pKa value",
+      "equal volumes of acid and conjugate base",
+      "higher temperature",
+      "a ratio of [A-]/[HA] close to 0.1",
+      "larger volume of solvent"
+    ],
+    "quizQuestion": "Two buffers have the same pKa and the same [A⁻]/[HA] ratio, but different total concentrations. Greater buffer capacity belongs to the buffer with ___.",
+    "explanation": "Buffer capacity depends on how many moles of buffer components are present. If total concentration doubles (both [HA] and [A⁻] double), the buffer can absorb twice as many moles of added acid or base. The pH and ratio stay the same, but the capacity doubles.",
+    "statement": "Buffer capacity increases with total buffer concentration — twice as much weak acid and conjugate base can neutralize twice as much added strong acid or base.",
+    "wowFactor": "This is why IV saline solutions used in hospitals contain carefully optimized concentrations — too dilute and the buffer fails, too concentrated and osmotic pressure problems arise.",
+    "visualDescription": "A side-by-side comparison of two buffer beakers with identical ratios but different concentrations, each with a capacity gauge (like a fuel gauge) showing the more concentrated one at full capacity",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.10"
+    ]
+  },
+  {
+    "id": "ap_chem_8_10_maximum_capacity_equal_concentrations",
+    "correctAnswer": "when [A-] = [HA]",
+    "acceptableAlternatives": [
+      "when the concentrations of conjugate base and weak acid are equal",
+      "when [A-]/[HA] = 1",
+      "at pH = pKa"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "when [A-] >> [HA]",
+      "when [HA] >> [A-]",
+      "when pH = 7",
+      "when [A-]/[HA] = 10",
+      "when the buffer is most dilute",
+      "when pH = pKb",
+      "when [A-]/[HA] = 0.1",
+      "when all weak acid has been consumed"
+    ],
+    "quizQuestion": "Buffer capacity is at its maximum ___.",
+    "explanation": "When [A⁻] = [HA], the buffer has equal reserves of both components. It can absorb equal amounts of added acid (using A⁻) or added base (using HA) before one component is depleted. If [A⁻] >> [HA], the buffer handles base poorly; if [HA] >> [A⁻], it handles acid poorly.",
+    "statement": "Maximum buffer capacity occurs when [A⁻] = [HA] (pH = pKa), giving the buffer symmetric and maximum resistance to both added acid and base.",
+    "wowFactor": "Biological buffers are often tuned to operate slightly away from pKa because the ratio of products to reactants is rarely 1:1 in living systems — nature prioritizes function over theoretical maximum.",
+    "visualDescription": "A symmetrical diagram showing a buffer at [A-] = [HA] at center, with equal arrows pointing left (handles acid) and right (handles base), compared to an asymmetrical buffer that handles one direction much better",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.10"
+    ]
+  },
+  {
+    "id": "ap_chem_8_10_buffer_capacity_exceeded",
+    "correctAnswer": "all of the weak acid or all of the conjugate base is consumed",
+    "acceptableAlternatives": [
+      "one buffer component is completely depleted",
+      "HA or A- runs out",
+      "the buffer components are exhausted"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 4,
+    "answerTypePoolId": "acid_base_equilibrium_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "the solution reaches pH 7",
+      "the Ka of the buffer changes",
+      "the pKa shifts by more than 1 unit",
+      "more than 50% of HA has ionized",
+      "the temperature rises above 25°C",
+      "the volume of solution doubles",
+      "the ratio [A-]/[HA] exceeds 100",
+      "the buffer is diluted beyond 0.001 M"
+    ],
+    "quizQuestion": "Buffer capacity is exceeded and pH begins to change dramatically when ___.",
+    "explanation": "If enough acid is added, all the A⁻ is converted to HA and there is no conjugate base left to react with further H+. Similarly, if enough base is added, all HA is converted to A⁻ and no weak acid remains. At that point, added acid or base acts on the solution like a simple unbuffered system.",
+    "statement": "Buffer capacity is exceeded when all of one component (HA or A⁻) is consumed — after that, added acid or base causes large, rapid pH changes.",
+    "wowFactor": "This failure point appears graphically as the sudden steep rise or fall at the ends of a titration curve's buffering plateau — the visual 'cliff' marks where the buffer gave up.",
+    "visualDescription": "A titration curve showing the flat buffering plateau collapsing into a steep pH rise at the equivalence point, with an arrow marking 'buffer capacity exceeded' at the inflection where the slope suddenly increases",
+    "sourceName": "College Board AP Chemistry CED Unit 8",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_8",
+      "Topic_8.10"
+    ]
+  }
+]

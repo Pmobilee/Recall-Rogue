@@ -1,0 +1,943 @@
+[
+  {
+    "id": "ap_chem_6_4_specific_heat_water",
+    "correctAnswer": "4.184",
+    "acceptableAlternatives": [
+      "4.184 J/g·°C",
+      "4.18",
+      "4.18 J/g·°C"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "1.000",
+      "2.093",
+      "0.385",
+      "0.449",
+      "4.812",
+      "3.270",
+      "8.314",
+      "1.996"
+    ],
+    "quizQuestion": "The specific heat capacity of liquid water is ___ J/g·°C.",
+    "explanation": "Water's specific heat of 4.184 J/g·°C is exceptionally high for a liquid — it takes 4.184 joules to raise 1 gram of water by 1°C. This high value (from hydrogen bonding) is why water moderates Earth's climate and why coffee-cup calorimetry uses water as the calorimeter fluid.",
+    "statement": "The specific heat capacity of liquid water is 4.184 J/g·°C.",
+    "wowFactor": "Water's specific heat is about 10× higher than most metals, which is why oceans act as thermal buffers keeping coastal cities mild while inland deserts swing wildly in temperature.",
+    "visualDescription": "A beaker of water on a hot plate with a thermometer, digital readout showing temperature, surrounded by molecular diagrams of hydrogen bonds between water molecules",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.4"
+    ]
+  },
+  {
+    "id": "ap_chem_6_4_q_equals_mcdeltaT",
+    "correctAnswer": "q = mcΔT",
+    "acceptableAlternatives": [
+      "q=mcΔT",
+      "heat = mass × specific heat × temperature change"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "q = CΔT",
+      "q = mΔHfus",
+      "q = nCvΔT",
+      "q = mΔHvap",
+      "ΔH = ΔU + PΔV",
+      "q = mcΔP",
+      "E = mc²",
+      "q = CvΔT"
+    ],
+    "quizQuestion": "The equation used to calculate heat transfer using mass, specific heat capacity, and temperature change is ___.",
+    "explanation": "q = mcΔT relates heat (q, in joules) to mass (m, in grams), specific heat capacity (c, in J/g·°C), and temperature change (ΔT = T_final − T_initial). A positive q means heat absorbed; negative q means heat released. This is the primary equation for calorimetry problems.",
+    "statement": "q = mcΔT relates heat to mass, specific heat, and temperature change.",
+    "wowFactor": "This equation was central to the 19th-century caloric theory debates — scientists like Joule used it to prove heat is energy transfer, not a fluid called 'caloric.'",
+    "visualDescription": "A chalkboard equation q = mcΔT with each variable labeled and color-coded, a thermometer and beaker sketch illustrating the concept",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.4"
+    ]
+  },
+  {
+    "id": "ap_chem_6_4_coffee_cup_calorimeter",
+    "correctAnswer": "constant pressure",
+    "acceptableAlternatives": [
+      "constant P",
+      "isobaric"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "constant volume",
+      "constant temperature",
+      "adiabatic",
+      "constant entropy",
+      "constant density",
+      "isochoric",
+      "constant enthalpy",
+      "isothermal"
+    ],
+    "quizQuestion": "A coffee-cup calorimeter operates at ___, so the heat measured equals ΔH.",
+    "explanation": "A coffee-cup calorimeter is open to the atmosphere, so pressure stays constant (atmospheric pressure). At constant pressure, the heat flow q_p equals ΔH. This makes coffee-cup calorimetry ideal for measuring enthalpy changes of reactions in solution. Bomb calorimeters, by contrast, operate at constant volume.",
+    "statement": "A coffee-cup calorimeter operates at constant pressure, so q measured = ΔH.",
+    "wowFactor": "The 'coffee cup' calorimeter really is two nested foam cups — the cheap Styrofoam setup used in every gen-chem lab is functionally equivalent to much pricier insulated vessels for simple aqueous reactions.",
+    "visualDescription": "Two nested white foam cups with a thermometer and stirring rod inserted through a cardboard lid, with a chemical reaction occurring inside shown by color change",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.4"
+    ]
+  },
+  {
+    "id": "ap_chem_6_4_bomb_calorimeter_constant_volume",
+    "correctAnswer": "constant volume",
+    "acceptableAlternatives": [
+      "constant V",
+      "isochoric"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "constant pressure",
+      "constant temperature",
+      "constant entropy",
+      "adiabatic",
+      "isobaric",
+      "constant mass",
+      "isothermal",
+      "constant density"
+    ],
+    "quizQuestion": "A bomb calorimeter measures heat at ___, so it measures ΔU (internal energy), not ΔH directly.",
+    "explanation": "A bomb calorimeter is a sealed rigid steel vessel — volume cannot change, so pressure rises as reactions occur. The heat measured is q_v = ΔU (internal energy change). To get ΔH, the correction ΔH = ΔU + ΔnRT must be applied. Bomb calorimeters are used for combustion reactions where gases are produced or consumed.",
+    "statement": "A bomb calorimeter operates at constant volume and directly measures ΔU (internal energy).",
+    "wowFactor": "Bomb calorimeters can withstand internal pressures exceeding 1,000 atm during combustion — the 'bomb' name is quite literal. They're used to certify the caloric content on food labels.",
+    "visualDescription": "Cross-section diagram of a stainless steel bomb calorimeter showing the sealed inner vessel surrounded by water, with ignition wires and thermometer, all inside an insulated jacket",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.4"
+    ]
+  },
+  {
+    "id": "ap_chem_6_4_heat_capacity_equation",
+    "correctAnswer": "q = CΔT",
+    "acceptableAlternatives": [
+      "q=CΔT",
+      "heat = heat capacity × temperature change"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "q = mcΔT",
+      "q = mΔHfus",
+      "q = nRΔT",
+      "q = mΔHvap",
+      "q = CΔP",
+      "ΔH = qp",
+      "C = q/m",
+      "q = nCpΔT"
+    ],
+    "quizQuestion": "For a calorimeter with known heat capacity C (in J/°C), the heat absorbed is calculated by ___.",
+    "explanation": "q = CΔT uses the heat capacity C of the entire calorimeter (not per gram). C has units of J/°C or J/K. This form is used when the calorimeter's total heat capacity is given as a single value, common in bomb calorimeter problems. It contrasts with q = mcΔT where c is the specific heat per unit mass.",
+    "statement": "q = CΔT calculates heat using the calorimeter's total heat capacity C (J/°C).",
+    "wowFactor": "The distinction between heat capacity (C, extensive) and specific heat capacity (c, intensive) trips up many students — C depends on HOW MUCH material you have, while c is a fixed material property.",
+    "visualDescription": "Side-by-side comparison labels: left shows 'C (J/°C) whole calorimeter' with a full calorimeter diagram, right shows 'c (J/g·°C) per gram' with a small water droplet",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.4"
+    ]
+  },
+  {
+    "id": "ap_chem_6_5_enthalpy_fusion_water",
+    "correctAnswer": "6.01",
+    "acceptableAlternatives": [
+      "6.01 kJ/mol",
+      "6.0 kJ/mol",
+      "6.0"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "40.67",
+      "2.26",
+      "0.334",
+      "18.0",
+      "4.184",
+      "334",
+      "8.314",
+      "12.0"
+    ],
+    "quizQuestion": "The standard enthalpy of fusion (melting) of water is ___ kJ/mol.",
+    "explanation": "ΔH_fus of water = 6.01 kJ/mol at 0°C. This energy breaks hydrogen bonds enough to allow liquid-like motion without fully separating molecules. The enthalpy of vaporization (40.67 kJ/mol) is nearly 7× larger because vaporization requires complete separation of molecules against intermolecular forces.",
+    "statement": "The enthalpy of fusion of water is 6.01 kJ/mol.",
+    "wowFactor": "Ice absorbs 6.01 kJ per mole as it melts at 0°C, yet its temperature stays flat during the entire phase change — all that energy goes into breaking intermolecular bonds, not raising temperature.",
+    "visualDescription": "Ice cubes melting in a beaker at 0°C, thermometer steady, with an energy diagram showing the flat plateau at the melting phase transition on a heating curve",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.5"
+    ]
+  },
+  {
+    "id": "ap_chem_6_5_enthalpy_vaporization_water",
+    "correctAnswer": "40.67",
+    "acceptableAlternatives": [
+      "40.67 kJ/mol",
+      "40.7 kJ/mol",
+      "40.7"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "6.01",
+      "2.26",
+      "18.0",
+      "334",
+      "4.184",
+      "22.4",
+      "8.314",
+      "100"
+    ],
+    "quizQuestion": "The standard enthalpy of vaporization of water is ___ kJ/mol.",
+    "explanation": "ΔH_vap of water = 40.67 kJ/mol at 100°C. This is much larger than ΔH_fus (6.01 kJ/mol) because vaporization requires completely overcoming all intermolecular forces to separate liquid molecules into gas, while fusion only partially disrupts the ordered crystal structure of ice.",
+    "statement": "The enthalpy of vaporization of water is 40.67 kJ/mol.",
+    "wowFactor": "Sweating exploits this large ΔH_vap — evaporating just 1 gram of sweat removes 2,260 J from your skin, which is why sweating is far more efficient at cooling than dry convection.",
+    "visualDescription": "Boiling water in a pot at 100°C, steam rising, thermometer steady, with an energy diagram showing the flat plateau at the boiling phase transition on a heating curve",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.5"
+    ]
+  },
+  {
+    "id": "ap_chem_6_5_no_temp_change_phase",
+    "correctAnswer": "no temperature change",
+    "acceptableAlternatives": [
+      "temperature stays constant",
+      "temperature does not change",
+      "ΔT = 0"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "temperature increases",
+      "temperature decreases",
+      "temperature fluctuates",
+      "kinetic energy increases",
+      "heat is not absorbed",
+      "entropy decreases",
+      "heat capacity changes",
+      "temperature drops slightly"
+    ],
+    "quizQuestion": "During a phase change (melting or boiling), there is ___ even though heat is being added.",
+    "explanation": "During a phase change, added heat goes entirely into breaking intermolecular forces (potential energy increases) rather than increasing molecular speed (kinetic energy). Since temperature measures average kinetic energy, it stays constant throughout the phase transition. This is visible as a flat plateau on a heating curve.",
+    "statement": "Temperature stays constant during a phase change — all heat goes into breaking intermolecular forces.",
+    "wowFactor": "An ice-water mixture at exactly 0°C will stay at 0°C no matter how much heat you add — until every last bit of ice melts. This 'temperature buffering' is why packed ice reliably keeps coolers at 0°C.",
+    "visualDescription": "A heating curve graph showing flat plateaus at 0°C (melting) and 100°C (boiling), with a thermometer illustration and labels for each phase region",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.5"
+    ]
+  },
+  {
+    "id": "ap_chem_6_5_vap_greater_than_fus",
+    "correctAnswer": "ΔHvap > ΔHfus",
+    "acceptableAlternatives": [
+      "enthalpy of vaporization is greater than enthalpy of fusion",
+      "ΔH vap > ΔH fus"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "ΔHfus > ΔHvap",
+      "ΔHvap = ΔHfus",
+      "ΔHsub < ΔHfus",
+      "ΔHvap < ΔHfus",
+      "ΔHfus = 2 × ΔHvap",
+      "ΔHsub = ΔHfus",
+      "ΔHvap ≈ ΔHfus",
+      "ΔHcond > ΔHvap"
+    ],
+    "quizQuestion": "For any pure substance, which relationship between phase-change enthalpies is always true?",
+    "explanation": "ΔH_vap is always greater than ΔH_fus because vaporization requires completely overcoming all intermolecular attractions to separate molecules into the gas phase, while fusion only partially disrupts the crystal lattice structure. For water: ΔH_fus = 6.01 kJ/mol vs ΔH_vap = 40.67 kJ/mol, a ratio of nearly 7:1.",
+    "statement": "The enthalpy of vaporization always exceeds the enthalpy of fusion for any substance.",
+    "wowFactor": "The ratio ΔH_vap/ΔH_fus for most substances falls between 5 and 15 — a pattern known as Trouton's rule extensions, reflecting the universal difficulty of fully escaping intermolecular forces vs. just loosening them.",
+    "visualDescription": "Energy bar chart comparing ΔHfus (short bar, 6.01 kJ/mol) vs ΔHvap (tall bar, 40.67 kJ/mol) for water, with molecular diagrams showing partial vs. complete bond breaking",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.5"
+    ]
+  },
+  {
+    "id": "ap_chem_6_6_deltah_rxn_definition",
+    "correctAnswer": "Hproducts − Hreactants",
+    "acceptableAlternatives": [
+      "H products minus H reactants",
+      "ΔHrxn = Hproducts - Hreactants",
+      "products minus reactants"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Hreactants − Hproducts",
+      "Hproducts + Hreactants",
+      "Hreactants / Hproducts",
+      "Σ(bonds broken) − Σ(bonds formed)",
+      "ΣΔHf°(reactants) − ΣΔHf°(products)",
+      "ΔU + PΔV",
+      "T × ΔS",
+      "Hfinal − Hinitial (reversed)"
+    ],
+    "quizQuestion": "The enthalpy of reaction ΔHrxn equals ___.",
+    "explanation": "ΔH_rxn = H_products − H_reactants. A negative value means products are at lower enthalpy than reactants — the reaction releases heat (exothermic). A positive value means the reaction absorbs heat (endothermic). Enthalpy is a state function, so only the initial and final states matter.",
+    "statement": "ΔHrxn = Hproducts − Hreactants; negative means exothermic, positive means endothermic.",
+    "wowFactor": "The sign convention (products minus reactants) is the same for virtually all state-function differences in thermodynamics — ΔG, ΔS, ΔV all follow the same 'final minus initial' logic.",
+    "visualDescription": "Energy level diagram showing reactants at one height and products at a lower height for exothermic, with a downward arrow labeled ΔHrxn < 0, and the reverse for endothermic",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.6"
+    ]
+  },
+  {
+    "id": "ap_chem_6_6_state_function",
+    "correctAnswer": "state function",
+    "acceptableAlternatives": [
+      "path-independent function",
+      "state property"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "path function",
+      "process function",
+      "extensive property",
+      "intensive property",
+      "kinetic variable",
+      "flow function",
+      "rate function",
+      "dependent variable"
+    ],
+    "quizQuestion": "Enthalpy is a ___, meaning its value depends only on the current state of the system, not on how that state was reached.",
+    "explanation": "A state function depends only on the initial and final states, not on the path taken between them. Enthalpy (H), internal energy (U), entropy (S), and Gibbs free energy (G) are all state functions. Heat (q) and work (w) are NOT state functions — they depend on the path. This property of enthalpy is what makes Hess's Law valid.",
+    "statement": "Enthalpy is a state function — its change depends only on initial and final states, not the path taken.",
+    "wowFactor": "Because enthalpy is a state function, chemists can calculate the enthalpy of reactions that are too dangerous or slow to run directly by combining other measurable reactions — the cornerstone of thermochemical cycles.",
+    "visualDescription": "A mountain diagram showing two different hiking paths (direct vs. winding) from base to summit, with the same altitude gain labeled regardless of path, illustrating state vs. path functions",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.6"
+    ]
+  },
+  {
+    "id": "ap_chem_6_6_exothermic_sign",
+    "correctAnswer": "negative",
+    "acceptableAlternatives": [
+      "ΔH < 0",
+      "less than zero",
+      "negative ΔH"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "positive",
+      "zero",
+      "undefined",
+      "greater than zero",
+      "depends on temperature",
+      "always greater than +100",
+      "equal to activation energy",
+      "indeterminate"
+    ],
+    "quizQuestion": "For an exothermic reaction, the sign of ΔHrxn is ___.",
+    "explanation": "Exothermic reactions release heat to the surroundings, meaning the system loses enthalpy — ΔH < 0. The products sit at a lower enthalpy level than the reactants. Examples: combustion of methane (ΔH = −890 kJ/mol), neutralization of strong acid with strong base (ΔH ≈ −57 kJ/mol).",
+    "statement": "Exothermic reactions have ΔH < 0; the system releases energy to the surroundings.",
+    "wowFactor": "Hand warmers use the exothermic oxidation of iron — tiny iron filings exposed to oxygen release enough heat (ΔH < 0) to keep hands warm for hours. The reaction is essentially slow rusting.",
+    "visualDescription": "Energy diagram with reactants at a high level, products at a low level, large downward arrow labeled 'heat released to surroundings', ΔH < 0 written in red",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.6"
+    ]
+  },
+  {
+    "id": "ap_chem_6_6_endothermic_sign",
+    "correctAnswer": "positive",
+    "acceptableAlternatives": [
+      "ΔH > 0",
+      "greater than zero",
+      "positive ΔH"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "negative",
+      "zero",
+      "less than zero",
+      "undefined",
+      "depends on pressure",
+      "equal to activation energy",
+      "always less than −100",
+      "indeterminate"
+    ],
+    "quizQuestion": "For an endothermic reaction, the sign of ΔHrxn is ___.",
+    "explanation": "Endothermic reactions absorb heat from the surroundings, so the system gains enthalpy — ΔH > 0. The products sit at a higher enthalpy level than the reactants. Examples: dissolving ammonium nitrate in water (used in cold packs), decomposition of calcium carbonate (limestone kiln), and photosynthesis.",
+    "statement": "Endothermic reactions have ΔH > 0; the system absorbs energy from the surroundings.",
+    "wowFactor": "Cold packs use the endothermic dissolution of ammonium nitrate — the reaction absorbs so much heat from surroundings (ΔH > 0) that the bag feels ice-cold instantly, requiring no refrigeration.",
+    "visualDescription": "Energy diagram with reactants at a low level, products at a higher level, upward arrow labeled 'heat absorbed from surroundings', ΔH > 0 written in blue",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.6"
+    ]
+  },
+  {
+    "id": "ap_chem_6_7_bond_enthalpy_equation",
+    "correctAnswer": "Σ(bonds broken) − Σ(bonds formed)",
+    "acceptableAlternatives": [
+      "sum of bonds broken minus sum of bonds formed",
+      "bonds broken minus bonds formed"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Σ(bonds formed) − Σ(bonds broken)",
+      "ΣΔHf°(products) − ΣΔHf°(reactants)",
+      "Hproducts − Hreactants",
+      "Σ(bonds formed) + Σ(bonds broken)",
+      "bonds formed / bonds broken",
+      "ΔU + PΔV",
+      "Σ(bond orders) − Σ(bond lengths)",
+      "Σ(reactant bonds) + Σ(product bonds)"
+    ],
+    "quizQuestion": "Using bond enthalpies, ΔHrxn is approximated as ___.",
+    "explanation": "ΔH_rxn ≈ Σ(bonds broken) − Σ(bonds formed). Breaking bonds requires energy input (+), forming bonds releases energy (−). The net is: if more energy is released forming bonds than is consumed breaking them, ΔH < 0 (exothermic). This method uses average bond enthalpies and applies only to gas-phase reactions.",
+    "statement": "ΔHrxn ≈ Σ(bonds broken) − Σ(bonds formed), using average bond enthalpies.",
+    "wowFactor": "Bond enthalpy calculations give only an approximation because they use AVERAGE values — the actual C–H bond energy in methane differs slightly from that in ethane, but we use one number for all C–H bonds.",
+    "visualDescription": "Structural formula of a reaction showing bonds breaking on the left (reactants) in red and bonds forming on the right (products) in green, with a balance scale comparing their energy totals",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.7"
+    ]
+  },
+  {
+    "id": "ap_chem_6_7_bond_breaking_endothermic",
+    "correctAnswer": "endothermic",
+    "acceptableAlternatives": [
+      "requires energy",
+      "absorbs energy",
+      "energy input required"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "exothermic",
+      "spontaneous",
+      "releases energy",
+      "thermoneutral",
+      "adiabatic",
+      "entropically driven",
+      "always negative",
+      "exergonic"
+    ],
+    "quizQuestion": "The process of breaking a chemical bond is always ___.",
+    "explanation": "Breaking a bond always requires an input of energy — it is endothermic. The bond dissociation enthalpy is always positive. Conversely, forming a bond always releases energy (exothermic). The net enthalpy of a reaction depends on whether more energy is released in bond formation or consumed in bond breaking.",
+    "statement": "Breaking chemical bonds is always endothermic (requires energy input).",
+    "wowFactor": "Even the 'weakest' measurable covalent bond (I–I, ~151 kJ/mol) requires the energy equivalent of lifting a car 1.5 meters to break a single mole of bonds — chemical bonds store enormous energy at the molecular scale.",
+    "visualDescription": "Diagram showing two atoms pulled apart by opposing arrows, bond line stretching and snapping, red upward arrow labeled 'endothermic — energy in' appearing above the broken bond",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.7"
+    ]
+  },
+  {
+    "id": "ap_chem_6_7_bond_enthalpy_gas_phase_only",
+    "correctAnswer": "gas phase",
+    "acceptableAlternatives": [
+      "gaseous reactants and products",
+      "gas-phase reactions",
+      "all species in gas state"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "aqueous solution",
+      "liquid phase",
+      "solid state",
+      "any phase",
+      "standard conditions",
+      "acidic solution",
+      "high pressure",
+      "condensed phase"
+    ],
+    "quizQuestion": "Bond enthalpy calculations for ΔHrxn are estimates that are strictly valid only for reactions in the ___.",
+    "explanation": "Bond enthalpies assume all species are in the gas phase because bond enthalpy values are measured for isolated gaseous molecules. In liquids or solids, intermolecular forces between molecules also contribute to enthalpy changes, which bond enthalpies do not account for. Using bond enthalpies for reactions involving liquids or solids introduces additional error.",
+    "statement": "Bond enthalpy estimates for ΔHrxn are only strictly valid when all reactants and products are gases.",
+    "wowFactor": "This is why bond enthalpy gives a notably poor estimate for the combustion of liquid ethanol vs. gaseous ethanol — the ~43 kJ/mol enthalpy of vaporization of ethanol is completely ignored in the bond-enthalpy approach.",
+    "visualDescription": "Diagram comparing a gas-phase reaction (accurate bond enthalpy estimate) with a liquid-phase reaction (inaccurate), arrows pointing to the intermolecular forces in the liquid that bond enthalpies miss",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.7"
+    ]
+  },
+  {
+    "id": "ap_chem_6_7_stronger_bond_larger_enthalpy",
+    "correctAnswer": "larger bond enthalpy",
+    "acceptableAlternatives": [
+      "higher bond dissociation energy",
+      "greater bond energy",
+      "higher bond enthalpy"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "smaller bond enthalpy",
+      "longer bond length",
+      "lower bond order",
+      "weaker bond",
+      "lower dissociation energy",
+      "smaller activation energy",
+      "greater electronegativity difference",
+      "shorter bond length only"
+    ],
+    "quizQuestion": "A stronger chemical bond has a ___ compared to a weaker bond.",
+    "explanation": "Bond enthalpy (bond dissociation energy) is a direct measure of bond strength — the energy required to homolytically break 1 mole of a bond in the gas phase. Triple bonds > double bonds > single bonds in both strength and bond enthalpy. For example: C≡C ≈ 839 kJ/mol vs. C=C ≈ 614 kJ/mol vs. C–C ≈ 347 kJ/mol.",
+    "statement": "Stronger bonds have larger bond enthalpies; triple bonds are stronger than double bonds, which are stronger than single bonds.",
+    "wowFactor": "The N≡N bond in N₂ has a bond enthalpy of ~945 kJ/mol — one of the strongest bonds known. This is why nitrogen gas is so unreactive and why breaking it to make fertilizer (Haber process) requires extreme conditions.",
+    "visualDescription": "Bar chart comparing bond enthalpies: C–C (347), C=C (614), C≡C (839) kJ/mol, with bond structure diagrams above each bar showing increasing bond order",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.7"
+    ]
+  },
+  {
+    "id": "ap_chem_6_8_standard_enthalpy_formation_definition",
+    "correctAnswer": "1 mol of compound from elements in standard states",
+    "acceptableAlternatives": [
+      "formation of one mole of substance from its elements in standard state",
+      "one mole from standard state elements"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "decomposition of 1 mol into elements",
+      "formation of 1 mol from any reactants",
+      "combustion of 1 mol of compound",
+      "neutralization of 1 mol of acid",
+      "vaporization of 1 mol of liquid",
+      "dissolution of 1 mol in water",
+      "oxidation of 1 mol of metal",
+      "formation of 1 mol at any temperature"
+    ],
+    "quizQuestion": "The standard enthalpy of formation (ΔHf°) is defined as the enthalpy change for forming ___ at 25°C and 1 atm.",
+    "explanation": "ΔH°f is the enthalpy change when exactly 1 mole of a compound is formed from its constituent elements, each in their standard state (most stable form at 25°C and 1 bar). Standard states: O₂(g), C(graphite), H₂(g), N₂(g), etc. The value can be positive or negative depending on whether formation is endothermic or exothermic.",
+    "statement": "ΔHf° is the enthalpy to form 1 mol of a compound from its elements in standard states at 25°C, 1 atm.",
+    "wowFactor": "Graphite (not diamond) is the standard state of carbon. If you form diamond from graphite, ΔHf°(diamond) = +1.9 kJ/mol — diamond is actually slightly less stable than graphite!",
+    "visualDescription": "Formation reaction equations: C(graphite) + O₂(g) → CO₂(g), ΔHf° = −393.5 kJ/mol, with each element labeled as 'standard state' and the product labeled as '1 mole formed'",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.8"
+    ]
+  },
+  {
+    "id": "ap_chem_6_8_element_standard_state_zero",
+    "correctAnswer": "zero",
+    "acceptableAlternatives": [
+      "0",
+      "0 kJ/mol",
+      "ΔHf° = 0"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "undefined",
+      "negative",
+      "positive",
+      "equal to bond enthalpy",
+      "1 kJ/mol",
+      "−1 kJ/mol",
+      "depends on temperature",
+      "equal to ionization energy"
+    ],
+    "quizQuestion": "The standard enthalpy of formation of an element in its standard state is defined as ___.",
+    "explanation": "By definition, ΔH°f = 0 for all elements in their standard states. Examples: O₂(g), H₂(g), C(graphite), Fe(s), Hg(l). This is a reference baseline from which all formation enthalpies are measured. Note: O(g) atoms and O₃(g) ozone do NOT have ΔH°f = 0 because they are not the most stable standard state of oxygen.",
+    "statement": "ΔHf° = 0 for all elements in their standard states by definition.",
+    "wowFactor": "Ozone (O₃) has ΔHf° = +143 kJ/mol, not zero — it costs energy to convert diatomic O₂ into triatomic ozone, explaining why ozone in the upper atmosphere readily releases oxygen atoms to absorb UV radiation.",
+    "visualDescription": "Reference table listing O₂(g), H₂(g), C(graphite), Fe(s) all with ΔHf° = 0 highlighted in green, contrasted with CO₂(g) ΔHf° = −393.5 kJ/mol in blue, illustrating the zero-baseline concept",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.8"
+    ]
+  },
+  {
+    "id": "ap_chem_6_8_hess_from_formation",
+    "correctAnswer": "ΣΔHf°(products) − ΣΔHf°(reactants)",
+    "acceptableAlternatives": [
+      "sum of formation enthalpies of products minus sum of formation enthalpies of reactants",
+      "ΔHrxn = ΣΔHf°(products) − ΣΔHf°(reactants)"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "ΣΔHf°(reactants) − ΣΔHf°(products)",
+      "Σ(bonds broken) − Σ(bonds formed)",
+      "Hproducts + Hreactants",
+      "ΣΔHf°(products) + ΣΔHf°(reactants)",
+      "ΔHf°(product) only",
+      "ΣΔHf°(reactants) / ΣΔHf°(products)",
+      "ΔHcombustion − ΔHformation",
+      "Σ(molar masses × ΔHf°)"
+    ],
+    "quizQuestion": "Using standard enthalpies of formation, ΔHrxn is calculated as ___.",
+    "explanation": "ΔH°rxn = ΣΔH°f(products) − ΣΔH°f(reactants), where coefficients from the balanced equation are used as multipliers. This is an application of Hess's Law: all reactions are conceptually broken into elements (reactants → elements → products). Because ΔH°f of elements = 0, they cancel out in the calculation.",
+    "statement": "ΔHrxn = ΣΔHf°(products) − ΣΔHf°(reactants), using stoichiometric coefficients as multipliers.",
+    "wowFactor": "This formula lets chemists calculate ΔH for reactions that have never been run — like the formation of unstable intermediates — as long as formation enthalpies are tabulated. It's one of thermochemistry's greatest computational tools.",
+    "visualDescription": "Balanced equation with ΔHf° values listed under each compound, arrows pointing up for products (×coefficient) and down for reactants (×coefficient), summing to ΔHrxn",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.8"
+    ]
+  },
+  {
+    "id": "ap_chem_6_8_coefficients_multiply_deltahf",
+    "correctAnswer": "multiply by the stoichiometric coefficient",
+    "acceptableAlternatives": [
+      "multiplied by the mole coefficient",
+      "scaled by the coefficient",
+      "coefficient × ΔHf°"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "divided by the stoichiometric coefficient",
+      "squared by the coefficient",
+      "added without modification",
+      "used only for the limiting reagent",
+      "ignored if coefficient is 1",
+      "averaged across all species",
+      "subtracted if product",
+      "kept as written in the table"
+    ],
+    "quizQuestion": "When using ΔHf° values to calculate ΔHrxn, each formation enthalpy must be ___.",
+    "explanation": "ΔH°f is defined per mole of compound formed. In a balanced equation with coefficients, you must multiply each ΔH°f by its stoichiometric coefficient (in moles) before summing. For example, 2 mol H₂O contributes 2 × ΔH°f(H₂O), not just 1 × ΔH°f(H₂O). Forgetting this is one of the most common calculation errors.",
+    "statement": "Each ΔHf° value must be multiplied by its stoichiometric coefficient when calculating ΔHrxn.",
+    "wowFactor": "This coefficient-multiplication rule is why doubling a reaction doubles ΔH — enthalpy is an extensive property. A reaction producing 2 mol CO₂ releases exactly twice the heat as one producing 1 mol CO₂.",
+    "visualDescription": "Balanced equation 2H₂(g) + O₂(g) → 2H₂O(l), each species showing coefficient × ΔHf° in a calculation box, final sum giving ΔHrxn",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.8"
+    ]
+  },
+  {
+    "id": "ap_chem_6_9_hess_law_definition",
+    "correctAnswer": "Hess's Law",
+    "acceptableAlternatives": [
+      "Hess's law",
+      "Hess law",
+      "law of heat summation"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "law_and_equation_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Hund's Rule",
+      "Le Chatelier's Principle",
+      "Boyle's Law",
+      "Dalton's Law",
+      "Raoult's Law",
+      "Henry's Law",
+      "Kirchhoff's Law",
+      "Beer-Lambert Law"
+    ],
+    "quizQuestion": "The principle that states ΔH for an overall reaction equals the sum of ΔH values for each step is called ___.",
+    "explanation": "Hess's Law states that if a reaction can be written as the sum of two or more reactions, the ΔH of the overall reaction equals the sum of the ΔH values of those steps. This is a direct consequence of enthalpy being a state function — the path doesn't matter. Proposed by Germain Hess in 1840.",
+    "statement": "Hess's Law: ΔH for an overall reaction = sum of ΔH values of all steps, because enthalpy is a state function.",
+    "wowFactor": "Germain Hess discovered his law in 1840 — decades before scientists even understood what energy was at the molecular level. His experimental result was so reliable it helped PROVE that heat is a form of energy.",
+    "visualDescription": "Three-step reaction cycle diagram showing two different paths from reactants to products: direct (one arrow) vs. indirect (two-step path), both labeled with equal ΔH total values",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.9"
+    ]
+  },
+  {
+    "id": "ap_chem_6_9_reverse_reaction_sign",
+    "correctAnswer": "sign of ΔH reverses",
+    "acceptableAlternatives": [
+      "ΔH changes sign",
+      "ΔH becomes negative if originally positive",
+      "multiply ΔH by −1"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "ΔH stays the same",
+      "ΔH doubles",
+      "ΔH becomes zero",
+      "magnitude of ΔH changes",
+      "ΔH is halved",
+      "ΔH becomes undefined",
+      "ΔH sign is always positive",
+      "ΔH is squared"
+    ],
+    "quizQuestion": "In a Hess's Law calculation, when a reaction step is written in reverse, the ___ compared to the forward reaction.",
+    "explanation": "Reversing a reaction flips the sign of ΔH — exothermic forward means endothermic reverse, and vice versa. The magnitude stays the same. This follows directly from the state function nature of enthalpy: if going from A to B releases X kJ, going from B to A must absorb X kJ. This manipulation is key to Hess's Law problem-solving.",
+    "statement": "Reversing a reaction in a Hess's Law calculation changes the sign of ΔH; the magnitude stays the same.",
+    "wowFactor": "Freezing water releases 6.01 kJ/mol — the exact negative of melting (which absorbs 6.01 kJ/mol). Nature must balance the energy books perfectly in both directions, which is what 'state function' means in practice.",
+    "visualDescription": "Two parallel reaction arrows: forward (A → B, ΔH = −50 kJ) and reverse (B → A, ΔH = +50 kJ) with a mirrored sign highlighted, illustrating sign reversal in Hess's Law",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.9"
+    ]
+  },
+  {
+    "id": "ap_chem_6_9_multiply_reaction_multiplies_deltah",
+    "correctAnswer": "ΔH is multiplied by the same factor",
+    "acceptableAlternatives": [
+      "ΔH scales by the same multiplier",
+      "multiply ΔH by the same coefficient",
+      "ΔH doubles if reaction is doubled"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "ΔH stays constant",
+      "ΔH is divided by the factor",
+      "ΔH changes sign",
+      "ΔH is squared",
+      "ΔH becomes zero",
+      "ΔH is raised to a power",
+      "only stoichiometric coefficients change",
+      "ΔH is averaged"
+    ],
+    "quizQuestion": "In a Hess's Law calculation, when all coefficients of a reaction are multiplied by 2, ___.",
+    "explanation": "If you multiply all coefficients in a reaction by n, the ΔH also multiplies by n. This is because enthalpy is extensive — doubling the amount of reaction doubles the heat released or absorbed. For example, if A → B has ΔH = −100 kJ, then 2A → 2B has ΔH = −200 kJ.",
+    "statement": "Multiplying reaction coefficients by n multiplies ΔH by n — enthalpy is an extensive property.",
+    "wowFactor": "This scaling rule is why 1 g of TNT releases only ~4.6 kJ, but 1 kg releases ~4,600 kJ — same reaction, different scale, perfectly proportional energy. Explosive engineers depend on this linear relationship for yield calculations.",
+    "visualDescription": "Side-by-side equations: A → B (ΔH = −100 kJ) and 2A → 2B (ΔH = −200 kJ), with a '×2' arrow connecting them and the doubled ΔH highlighted in bold",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.9"
+    ]
+  },
+  {
+    "id": "ap_chem_6_9_hess_law_state_function",
+    "correctAnswer": "enthalpy is a state function",
+    "acceptableAlternatives": [
+      "enthalpy depends only on initial and final states",
+      "path independence of enthalpy",
+      "state function property"
+    ],
+    "synonymGroupId": null,
+    "chainThemeId": 3,
+    "answerTypePoolId": "thermodynamic_quantities",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "energy is conserved",
+      "heat flows from hot to cold",
+      "entropy always increases",
+      "pressure and volume are constant",
+      "reactions are reversible",
+      "enthalpy is a path function",
+      "Gibbs free energy is minimized",
+      "bond energies are additive"
+    ],
+    "quizQuestion": "Hess's Law is valid because ___.",
+    "explanation": "Hess's Law works because enthalpy is a state function — its value depends only on the initial and final states of the system, not on the path taken between them. This means any series of intermediate steps that connect the same reactants to the same products must give the same total ΔH, no matter how those steps are arranged.",
+    "statement": "Hess's Law is valid because enthalpy is a state function — total ΔH is path-independent.",
+    "wowFactor": "Hess's Law lets us calculate the enthalpy of carbon combustion to CO — a reaction that cannot be run cleanly in a lab — by cleverly combining combustion to CO₂ and decomposition of CO₂. State functions make the 'impossible' measurable.",
+    "visualDescription": "Thermochemical cycle diagram: top row shows direct path (A → C, ΔH_total), bottom shows two-step path (A → B → C, ΔH₁ + ΔH₂ = ΔH_total), both routes labeled equal, justification 'state function' in center",
+    "sourceName": "College Board AP Chemistry CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": [
+      "AP_Chemistry",
+      "Unit_6",
+      "Topic_6.9"
+    ]
+  }
+]

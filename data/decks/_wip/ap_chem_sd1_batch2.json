@@ -1,0 +1,971 @@
+[
+  {
+    "id": "ap_chem_115_atomic_number_protons",
+    "correctAnswer": "Atomic number",
+    "acceptableAlternatives": [
+      "Z"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "What quantity defines an element's identity and equals the number of protons in the nucleus?",
+    "explanation": "The atomic number (symbol Z) is the count of protons in an atom's nucleus. Every atom of a given element has the same atomic number — changing it would create a different element. For example, carbon always has Z = 6. Electrons can be gained or lost to form ions, but protons remain constant.",
+    "distractors": [
+      "Mass number",
+      "Atomic mass",
+      "Neutron number",
+      "Electron count",
+      "Valence number",
+      "Period number",
+      "Oxidation state",
+      "Nuclear charge"
+    ],
+    "sourceName": "Khan Academy AP Chemistry — Atomic Structure",
+    "sourceUrl": "https://www.khanacademy.org/science/ap-chemistry-beta/x2eef969c74e0d802:atomic-structure-and-properties",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.5",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_115_mass_number_definition",
+    "correctAnswer": "Protons and neutrons",
+    "acceptableAlternatives": [
+      "Protons plus neutrons",
+      "Nucleons"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "The mass number of an atom is the total count of which two types of subatomic particles in the nucleus?",
+    "explanation": "The mass number (A) = number of protons + number of neutrons. Electrons contribute negligible mass (~1/1836 of a proton). For carbon-14, A = 14 means 6 protons + 8 neutrons. The mass number is always a whole number, unlike atomic mass which is a weighted average across isotopes.",
+    "distractors": [
+      "Protons and electrons",
+      "Neutrons and electrons",
+      "Electrons and positrons",
+      "Quarks and leptons",
+      "Protons only",
+      "Neutrons only",
+      "Core electrons and valence electrons",
+      "Cations and anions"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 2.3",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/2-3-atomic-structure-and-symbolism",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.5",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_115_isotopes_definition",
+    "correctAnswer": "Number of neutrons",
+    "acceptableAlternatives": [
+      "Neutron count",
+      "Neutrons"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Isotopes of the same element are atoms that have the same number of protons but differ in what quantity?",
+    "explanation": "Isotopes share the same atomic number (same element identity) but have different numbers of neutrons, giving them different mass numbers. For example, carbon-12 has 6 neutrons and carbon-14 has 8 neutrons, but both have 6 protons. Isotopes of an element have nearly identical chemical properties because chemistry is governed by electrons, not neutrons.",
+    "distractors": [
+      "Number of protons",
+      "Number of electrons",
+      "Atomic number",
+      "Number of valence electrons",
+      "Nuclear charge",
+      "Period number",
+      "Electron configuration",
+      "Oxidation number"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 2.3",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/2-3-atomic-structure-and-symbolism",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.5",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_115_aufbau_principle",
+    "correctAnswer": "Aufbau principle",
+    "acceptableAlternatives": [
+      "Building-up principle",
+      "Aufbau"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which electron configuration rule states that electrons fill orbitals starting with the lowest available energy level before moving to higher ones?",
+    "explanation": "The aufbau principle (from German 'aufbauen,' to build up) guides electron configuration writing. Electrons occupy the lowest-energy orbital available: 1s fills before 2s, which fills before 2p, and so on. The order follows the (n + l) rule: 4s fills before 3d because 4s has a lower energy in most neutral atoms.",
+    "distractors": [
+      "Pauli exclusion principle",
+      "Hund's rule",
+      "Heisenberg uncertainty principle",
+      "Octet rule",
+      "Bohr model",
+      "Shielding rule",
+      "Madelung rule",
+      "Wave-particle duality"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 6.4",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/6-4-electronic-structure-of-atoms-electron-configurations",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.5",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_115_pauli_exclusion",
+    "correctAnswer": "Pauli exclusion principle",
+    "acceptableAlternatives": [
+      "Pauli exclusion"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which quantum mechanical rule states that no two electrons in an atom can have the same set of four quantum numbers, meaning each orbital holds at most two electrons with opposite spins?",
+    "explanation": "The Pauli exclusion principle, formulated by Wolfgang Pauli in 1925, means every orbital can hold a maximum of two electrons, and those two must have opposite spins (spin-up and spin-down, or +½ and -½). This is why each s subshell holds 2 electrons, each p subshell 6, each d subshell 10, and each f subshell 14.",
+    "distractors": [
+      "Aufbau principle",
+      "Hund's rule",
+      "Heisenberg uncertainty principle",
+      "Octet rule",
+      "Conservation of energy",
+      "Madelung rule",
+      "Orbital overlap principle",
+      "Bohr correspondence principle"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 6.4",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/6-4-electronic-structure-of-atoms-electron-configurations",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.5",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_115_hunds_rule",
+    "correctAnswer": "Hund's rule",
+    "acceptableAlternatives": [
+      "Hund's rule of maximum multiplicity",
+      "Rule of maximum multiplicity"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which rule states that electrons occupy degenerate orbitals (equal-energy orbitals within the same subshell) singly before any pairing occurs, and all singly-occupied orbitals have the same spin?",
+    "explanation": "Hund's rule minimizes electron-electron repulsion by spreading electrons across degenerate orbitals. For nitrogen (1s²2s²2p³), all three 2p electrons occupy separate 2p orbitals with parallel spins before any orbital receives a second electron. This is why nitrogen is paramagnetic and why carbon's ground-state electron configuration has two unpaired electrons.",
+    "distractors": [
+      "Pauli exclusion principle",
+      "Aufbau principle",
+      "Heisenberg uncertainty principle",
+      "Octet rule",
+      "Madelung energy rule",
+      "Orbital degeneracy principle",
+      "Electron pairing rule",
+      "Shielding rule"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 6.4",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/6-4-electronic-structure-of-atoms-electron-configurations",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.5",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_115_valence_electrons_nitrogen",
+    "correctAnswer": "{5}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Nitrogen (atomic number 7) has the electron configuration 1s²2s²2p³. How many valence electrons does a neutral nitrogen atom have?",
+    "explanation": "Valence electrons are in the outermost principal energy level. For nitrogen, the valence shell is n = 2, containing 2 electrons in 2s and 3 electrons in 2p, giving 5 total valence electrons. This matches nitrogen's group number (Group 15 / Group VA) on the periodic table. These 5 valence electrons explain why nitrogen commonly forms 3 bonds (sharing 3) and can also act as a Lewis base.",
+    "distractors": [],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 6.4",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/6-4-electronic-structure-of-atoms-electron-configurations",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.5",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_115_core_vs_valence",
+    "correctAnswer": "Core electrons",
+    "acceptableAlternatives": [
+      "Inner electrons",
+      "Inner shell electrons"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Electrons in filled inner shells that do not participate in chemical bonding, shield valence electrons from nuclear charge, and appear in a noble gas shorthand bracket notation are called what?",
+    "explanation": "Core electrons are all electrons except those in the outermost (valence) shell. For sodium (1s²2s²2p⁶3s¹), the core is [Ne] = 1s²2s²2p⁶ (10 electrons); the single 3s electron is the valence electron. Core electrons shield valence electrons from the full nuclear charge, reducing effective nuclear charge (Zeff) experienced by valence electrons.",
+    "distractors": [
+      "Valence electrons",
+      "Bonding electrons",
+      "Non-bonding electrons",
+      "Lone pair electrons",
+      "Pi electrons",
+      "Sigma electrons",
+      "Shielding electrons only",
+      "Resonance electrons"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 6.4",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/6-4-electronic-structure-of-atoms-electron-configurations",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.5",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_115_electron_config_chlorine",
+    "correctAnswer": "[Ne]3s²3p⁵",
+    "acceptableAlternatives": [
+      "[Ne] 3s2 3p5",
+      "1s2 2s2 2p6 3s2 3p5",
+      "1s²2s²2p⁶3s²3p⁵"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Chlorine has atomic number 17 and is in Period 3, Group 17. Which abbreviated (noble-gas core) electron configuration correctly represents a neutral chlorine atom?",
+    "explanation": "Chlorine (Z = 17) has 17 electrons. The noble gas core is [Ne] = 1s²2s²2p⁶ (10 electrons). The remaining 7 electrons fill 3s² (2) and then 3p⁵ (5). The abbreviated notation [Ne]3s²3p⁵ shows that chlorine has 7 valence electrons, matching Group 17, and needs just 1 more electron to achieve an octet — explaining its high reactivity.",
+    "distractors": [
+      "[Ar]3p⁵",
+      "[Ne]3s²3p⁶",
+      "[Ne]3s¹3p⁶",
+      "[Ne]3d⁵",
+      "[He]2s²2p⁵",
+      "[Ar]4s²3d⁵",
+      "[Ne]3s²3p³",
+      "[Ne]4s²3p⁵"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 6.4",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/6-4-electronic-structure-of-atoms-electron-configurations",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.5",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_115_orbital_capacity_d_subshell",
+    "correctAnswer": "{10}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "A d subshell contains 5 orbitals. According to the Pauli exclusion principle, what is the maximum number of electrons a d subshell can hold?",
+    "explanation": "Each orbital holds at most 2 electrons (with opposite spins, per the Pauli exclusion principle). A d subshell has 5 orbitals (m_l = -2, -1, 0, +1, +2), so it can hold 5 × 2 = 10 electrons. This is why transition metals (which fill 3d, 4d, or 5d) can have up to 10 d electrons, and why elements like Zn ([Ar]4s²3d¹⁰) have a full d subshell.",
+    "distractors": [],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 6.3",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/6-3-development-of-quantum-theory",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.5",
+      "big_idea": "SAP",
+      "exam_weight": "medium"
+    }
+  },
+  {
+    "id": "ap_chem_116_pes_peak_subshells",
+    "correctAnswer": "Subshells",
+    "acceptableAlternatives": [
+      "Electron subshells",
+      "Orbital subshells"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "In a photoelectron spectroscopy (PES) spectrum of an atom, each distinct peak corresponds to electrons ejected from a different what?",
+    "explanation": "PES fires high-energy photons (often X-rays or UV) at atoms. Electrons in different subshells (1s, 2s, 2p, 3s, 3p, etc.) require different amounts of energy to eject. Each peak in the resulting spectrum represents one subshell. The binding energy axis shows how tightly bound those electrons are, and the peak height reflects how many electrons occupy that subshell.",
+    "distractors": [
+      "Individual orbitals",
+      "Principal energy levels (shells)",
+      "Ion states",
+      "Electron pairs",
+      "Resonance structures",
+      "Spin states",
+      "Excited state configurations",
+      "Nuclear energy levels"
+    ],
+    "sourceName": "College Board AP Chemistry CED, Unit 1 Topic 1.6",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.6",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_116_pes_binding_energy_distance",
+    "correctAnswer": "Higher binding energy",
+    "acceptableAlternatives": [
+      "Greater binding energy",
+      "Larger binding energy"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "In a PES spectrum, electrons in subshells closer to the nucleus appear at what position relative to electrons in outer subshells?",
+    "explanation": "Electrons closer to the nucleus experience a stronger electrostatic attraction from the positive nuclear charge. More energy (higher binding energy) is required to remove them. In a PES spectrum, the horizontal axis is binding energy increasing to the left (or high to low). The 1s peak always appears at higher binding energy than 2s, which is higher than 2p, reflecting the energy cost to free inner electrons.",
+    "distractors": [
+      "Lower binding energy",
+      "The same binding energy",
+      "Higher kinetic energy of ejected electrons",
+      "Lower peak height",
+      "Wider peak width",
+      "Negative binding energy",
+      "Shorter wavelength of emitted light",
+      "Zero ionization energy"
+    ],
+    "sourceName": "College Board AP Chemistry CED, Unit 1 Topic 1.6",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.6",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_116_pes_peak_height_electrons",
+    "correctAnswer": "Number of electrons in that subshell",
+    "acceptableAlternatives": [
+      "Electron count in the subshell",
+      "Number of electrons"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "In a PES spectrum, the relative height (intensity) of each peak is proportional to what property of the corresponding subshell?",
+    "explanation": "More electrons in a subshell means more ejected electrons at that binding energy, producing a taller peak. For example, sodium (1s²2s²2p⁶3s¹) would show: 1s peak height of 2, 2s peak height of 2, 2p peak height of 6 (the tallest), and 3s peak height of 1 (the shortest). Comparing peak heights lets chemists determine how many electrons occupy each subshell without knowing the element in advance.",
+    "distractors": [
+      "Distance of the subshell from the nucleus",
+      "Binding energy of the subshell",
+      "Principal quantum number of the subshell",
+      "Number of orbitals in the subshell",
+      "Electronegativity of the atom",
+      "Ionization energy of the subshell",
+      "Atomic radius of the element",
+      "Nuclear charge of the atom"
+    ],
+    "sourceName": "College Board AP Chemistry CED, Unit 1 Topic 1.6",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.6",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_116_pes_number_of_peaks",
+    "correctAnswer": "{4}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Magnesium has the electron configuration 1s²2s²2p⁶3s². How many distinct peaks would appear in the PES spectrum of a magnesium atom?",
+    "explanation": "Each distinct subshell in the electron configuration produces one PES peak. Magnesium (1s²2s²2p⁶3s²) has four occupied subshells: 1s, 2s, 2p, and 3s. Each subshell appears as a separate peak at its characteristic binding energy. The resulting spectrum has 4 peaks: the 2p peak is tallest (6 electrons), the 3s peak is shortest (2 electrons), and the 1s and 2s peaks are both height 2 but at higher binding energies.",
+    "distractors": [],
+    "sourceName": "College Board AP Chemistry CED, Unit 1 Topic 1.6",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.6",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_116_pes_identify_element",
+    "correctAnswer": "Electron configuration",
+    "acceptableAlternatives": [
+      "Electron configurations",
+      "Electronic structure"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "quizQuestion": "A PES spectrum showing three peaks with relative heights of 2 : 2 : 5 from high to low binding energy can be used to identify which fundamental atomic property?",
+    "explanation": "The peak heights (2, 2, 5) correspond to the number of electrons in each subshell: 1s = 2, 2s = 2, 2p = 5. This gives total electrons = 9, identifying the element as fluorine (Z = 9) with configuration 1s²2s²2p⁵. PES is a direct experimental probe of electron configuration — the spectral pattern is a fingerprint of each element's unique electron arrangement.",
+    "distractors": [
+      "Nuclear binding energy",
+      "Atomic mass",
+      "Electronegativity",
+      "Ionization energy only",
+      "Orbital shape",
+      "Magnetic moment",
+      "Boiling point",
+      "Metallic character"
+    ],
+    "sourceName": "College Board AP Chemistry CED, Unit 1 Topic 1.6",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-chemistry/course",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.6",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_117_ie_across_period",
+    "correctAnswer": "Increases",
+    "acceptableAlternatives": [
+      "Generally increases",
+      "Increases across a period"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Moving left to right across a period on the periodic table, what happens to the first ionization energy of the elements?",
+    "explanation": "Across a period, the number of protons increases while electrons are added to the same shell, so shielding changes little but nuclear charge increases. This raises the effective nuclear charge (Zeff), pulling valence electrons closer and requiring more energy to remove them. Ionization energy generally increases left to right across a period, with slight dips at Group 2→3 and Group 5→6 due to subshell effects.",
+    "distractors": [
+      "Decreases",
+      "Remains constant",
+      "First increases then decreases",
+      "First decreases then increases",
+      "Is unpredictable across periods",
+      "Only changes for metals",
+      "Decreases then plateaus",
+      "Doubles with each element"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 6.5",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/6-5-periodic-variations-in-element-properties",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.7",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_117_ie_down_group",
+    "correctAnswer": "Decreases",
+    "acceptableAlternatives": [
+      "Generally decreases",
+      "Decreases down a group"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Moving down a group on the periodic table, what happens to the first ionization energy of the elements?",
+    "explanation": "Going down a group, valence electrons occupy higher principal energy levels (n = 1, 2, 3...) and are increasingly shielded from the nucleus by inner electron shells. The greater distance and increased shielding lower the effective nuclear charge experienced by valence electrons, making them easier to remove. This is why cesium (Cs) has a much lower ionization energy than lithium (Li), even though both are in Group 1.",
+    "distractors": [
+      "Increases",
+      "Remains constant",
+      "First increases then decreases",
+      "First decreases then increases",
+      "Is unpredictable",
+      "Doubles every period",
+      "Depends only on nuclear charge",
+      "Increases for metals only"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 6.5",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/6-5-periodic-variations-in-element-properties",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.7",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_117_highest_electronegativity",
+    "correctAnswer": "Fluorine",
+    "acceptableAlternatives": [
+      "F"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "element_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "Which element has the highest electronegativity on the Pauling scale, with a value of 3.98?",
+    "explanation": "Fluorine (F, atomic number 9) is the most electronegative element at 3.98 on the Pauling scale. Its small atomic radius and high nuclear charge create an intense pull on bonding electrons. This is why F-F bonds are relatively weak (the lone pairs on adjacent fluorines repel each other) and why HF is a weaker acid than HCl despite F being more electronegative.",
+    "distractors": [
+      "Oxygen",
+      "Chlorine",
+      "Nitrogen",
+      "Neon",
+      "Bromine",
+      "Cesium",
+      "Iodine",
+      "Helium"
+    ],
+    "sourceName": "Wikidata Q193796 — Pauling electronegativity values",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Electronegativity#Pauling_electronegativity",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.7",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_117_electronegativity_trend_period",
+    "correctAnswer": "Increases",
+    "acceptableAlternatives": [
+      "Generally increases"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Across a period from left to right (excluding noble gases), what is the general trend in electronegativity?",
+    "explanation": "Electronegativity measures an atom's ability to attract bonding electrons. Across a period, increasing nuclear charge (with little change in shielding) raises Zeff, so atoms pull bonding electrons more strongly. In Period 2: Li = 1.0, Be = 1.5, B = 2.0, C = 2.55, N = 3.0, O = 3.44, F = 3.98. Noble gases are typically excluded because they form few bonds.",
+    "distractors": [
+      "Decreases",
+      "Remains constant",
+      "Decreases for metals, increases for nonmetals",
+      "Shows no clear pattern",
+      "Increases then sharply decreases at Group 17",
+      "Peaks at Group 14 then falls",
+      "Is only meaningful for metals",
+      "First increases then plateaus"
+    ],
+    "sourceName": "Wikidata Q193796 — Pauling electronegativity values",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Electronegativity#Pauling_electronegativity",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.7",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_117_atomic_radius_across_period",
+    "correctAnswer": "Decreases",
+    "acceptableAlternatives": [
+      "Gets smaller",
+      "Generally decreases"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Moving left to right across a period on the periodic table, what happens to atomic radius?",
+    "explanation": "Across a period, electrons are added to the same valence shell while nuclear charge increases. The greater nuclear pull contracts the electron cloud, shrinking atomic radius. For example, in Period 2: Li (152 pm) > Be (112 pm) > B (87 pm) > C (77 pm) > N (75 pm) > O (73 pm) > F (64 pm). More protons pulling the same-shell electrons inward is the driving force.",
+    "distractors": [
+      "Increases",
+      "Remains constant",
+      "First increases then decreases",
+      "First decreases then increases",
+      "Increases for metals, decreases for nonmetals",
+      "Doubles with each element",
+      "Is unpredictable",
+      "Only decreases for transition metals"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 6.5",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/6-5-periodic-variations-in-element-properties",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.7",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_117_atomic_radius_down_group",
+    "correctAnswer": "Increases",
+    "acceptableAlternatives": [
+      "Gets larger",
+      "Generally increases"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "Moving down a group on the periodic table, what happens to atomic radius?",
+    "explanation": "Each period adds a new principal energy level. Valence electrons in higher n shells are, on average, farther from the nucleus and are more shielded by inner electrons. Despite increasing nuclear charge, the additional shielding and greater n value dominate, causing atomic radius to increase down a group. Li (152 pm) < Na (186 pm) < K (227 pm) < Rb (248 pm) < Cs (265 pm).",
+    "distractors": [
+      "Decreases",
+      "Remains constant",
+      "First increases then decreases",
+      "Decreases for metals, increases for nonmetals",
+      "Is unpredictable",
+      "Stays the same within a group",
+      "Increases only for alkali metals",
+      "Decreases after Period 3"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 6.5",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/6-5-periodic-variations-in-element-properties",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.7",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_117_effective_nuclear_charge",
+    "correctAnswer": "Effective nuclear charge",
+    "acceptableAlternatives": [
+      "Zeff",
+      "Z_eff",
+      "Effective Zeff"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "The net positive charge experienced by an electron after accounting for the shielding effect of inner electrons is called what?",
+    "explanation": "Effective nuclear charge (Zeff) = Z − shielding constant (S). Core electrons between a valence electron and the nucleus reduce the full nuclear charge felt by the valence electron. For sodium (Z = 11, [Ne]3s¹): the 10 core electrons roughly shield the 3s electron from 10 protons, so Zeff ≈ +1. Higher Zeff means stronger pull on valence electrons — this drives ionization energy, electronegativity, and atomic radius trends.",
+    "distractors": [
+      "Shielding constant",
+      "Nuclear binding energy",
+      "Atomic number",
+      "Ionic charge",
+      "Electron affinity",
+      "Ionization energy",
+      "Core repulsion",
+      "Formal charge"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 6.5",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/6-5-periodic-variations-in-element-properties",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.7",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_117_shielding_effect",
+    "correctAnswer": "Shielding effect",
+    "acceptableAlternatives": [
+      "Electron shielding",
+      "Nuclear shielding",
+      "Screening effect"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "The reduction in the attractive force that a valence electron feels from the nucleus, caused by core electrons partially blocking the nuclear charge, is known as what?",
+    "explanation": "Core electrons (those in inner shells) repel outer valence electrons and partially cancel the attractive force of the nucleus. This is the shielding (or screening) effect. The more core electrons, the greater the shielding and the lower the Zeff experienced by valence electrons. s electrons shield more effectively than p electrons, which shield more than d, which shield more than f electrons.",
+    "distractors": [
+      "Effective nuclear charge",
+      "Electron affinity",
+      "Ionization energy",
+      "Electronegativity",
+      "Hund's rule effect",
+      "Nuclear binding force",
+      "Orbital penetration energy",
+      "Lattice energy"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 6.5",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/6-5-periodic-variations-in-element-properties",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.7",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_117_metallic_character_trend",
+    "correctAnswer": "Increases",
+    "acceptableAlternatives": [
+      "Generally increases"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Moving down a group on the periodic table, what happens to metallic character?",
+    "explanation": "Metallic character measures how readily an atom loses electrons. Going down a group, increasing atomic radius and greater electron shielding lower Zeff on valence electrons, making them easier to remove. For example, in Group 14: carbon is a nonmetal, silicon and germanium are metalloids, and tin and lead are metals. The lowest ionization energies are in the lower-left of the periodic table (cesium, francium).",
+    "distractors": [
+      "Decreases",
+      "Remains constant",
+      "First increases then decreases",
+      "Increases only for alkali metals",
+      "Decreases in all groups",
+      "Is unpredictable",
+      "Increases for nonmetals only",
+      "Peaks at the center of each group"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 6.5",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/6-5-periodic-variations-in-element-properties",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.7",
+      "big_idea": "SAP",
+      "exam_weight": "medium"
+    }
+  },
+  {
+    "id": "ap_chem_117_electron_affinity_fluorine_vs_chlorine",
+    "correctAnswer": "Chlorine",
+    "acceptableAlternatives": [
+      "Cl",
+      "The Period 3 halogen"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "element_names",
+    "difficulty": 4,
+    "funScore": 9,
+    "quizQuestion": "Although fluorine is the most electronegative element, which of the two Period 2 and Period 3 halogens has a more negative (more favorable) first electron affinity, and why?",
+    "explanation": "Surprisingly, chlorine has a more negative electron affinity (−349 kJ/mol) than fluorine (−328 kJ/mol). Fluorine's very small 2p orbitals are crowded, so adding the 9th electron creates significant electron-electron repulsion that partially offsets the attractive nuclear force. Chlorine's larger 3p orbitals accommodate the extra electron with less repulsion. This is a classic exception to the simple electronegativity-drives-electron-affinity rule.",
+    "distractors": [
+      "Fluorine",
+      "Bromine",
+      "Iodine",
+      "Oxygen",
+      "Nitrogen",
+      "Astatine",
+      "Neon",
+      "Sulfur"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 6.5",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/6-5-periodic-variations-in-element-properties",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.7",
+      "big_idea": "SAP",
+      "exam_weight": "medium"
+    }
+  },
+  {
+    "id": "ap_chem_118_valence_electrons_from_group",
+    "correctAnswer": "Group number",
+    "acceptableAlternatives": [
+      "The group number",
+      "Group number (for main group elements)"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "For main-group (representative) elements, what feature of the periodic table directly tells you the number of valence electrons in a neutral atom?",
+    "explanation": "For Groups 1–2 (s-block) and Groups 13–18 (p-block), the number of valence electrons equals the group number (using the 1–18 numbering: Group 1 = 1 valence electron, Group 14 = 4 valence electrons, Group 17 = 7 valence electrons, Group 18 = 8 valence electrons). This works because valence electrons are the electrons added beyond the previous noble gas core.",
+    "distractors": [
+      "Period number",
+      "Atomic mass",
+      "Atomic number",
+      "Number of electron shells",
+      "Mass number",
+      "Principal quantum number of outermost subshell",
+      "Number of protons in the nucleus",
+      "Oxidation state"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 7.1",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/7-1-ionic-bonding",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.8",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_118_cation_formation",
+    "correctAnswer": "Loses electrons",
+    "acceptableAlternatives": [
+      "Loses one or more electrons",
+      "Donates electrons"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "When a neutral metal atom forms a cation (positively charged ion), what does it do to achieve a more stable electron configuration?",
+    "explanation": "Metal atoms have relatively low ionization energies and few valence electrons. They achieve noble-gas electron configurations by losing their valence electrons, forming cations. For example, sodium (Na, [Ne]3s¹) loses 1 electron to form Na⁺ ([Ne]), and magnesium (Mg, [Ne]3s²) loses 2 electrons to form Mg²⁺ ([Ne]). The resulting cation has fewer electrons than the original atom, giving it a net positive charge.",
+    "distractors": [
+      "Gains electrons",
+      "Shares electrons",
+      "Gains protons",
+      "Loses protons",
+      "Gains neutrons",
+      "Shares protons",
+      "Absorbs photons",
+      "Emits neutrons"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 7.1",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/7-1-ionic-bonding",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.8",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_118_anion_formation",
+    "correctAnswer": "Gains electrons",
+    "acceptableAlternatives": [
+      "Gains one or more electrons",
+      "Accepts electrons"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "periodic_trend_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "When a neutral nonmetal atom forms an anion (negatively charged ion), what does it do to achieve a noble-gas electron configuration?",
+    "explanation": "Nonmetal atoms have high electron affinities — gaining electrons releases energy because it fills their nearly-complete valence shell. Chlorine (Cl, [Ne]3s²3p⁵) gains 1 electron to form Cl⁻ ([Ar]), and oxygen (O, [He]2s²2p⁴) gains 2 electrons to form O²⁻ ([Ne]). The anion has more electrons than the original atom, giving it a net negative charge.",
+    "distractors": [
+      "Loses electrons",
+      "Shares electrons",
+      "Gains protons",
+      "Loses protons",
+      "Absorbs neutrons",
+      "Loses neutrons",
+      "Emits photons",
+      "Transfers protons"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 7.1",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/7-1-ionic-bonding",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.8",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_118_calcium_ion_charge",
+    "correctAnswer": "{2+}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Calcium (atomic number 20, Group 2) forms the most stable ion by losing its 2 valence electrons. What is the charge on the calcium ion formed?",
+    "explanation": "Calcium's electron configuration is [Ar]4s². By losing both 4s electrons, Ca forms Ca²⁺ with the electron configuration of argon ([Ar]), a noble gas configuration. Group 2 alkaline earth metals characteristically form 2+ cations. Ca²⁺ is essential in human biology — it is the most abundant mineral in the body and is critical for bone structure, muscle contraction, and nerve signaling.",
+    "distractors": [],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 7.1",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/7-1-ionic-bonding",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.8",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  },
+  {
+    "id": "ap_chem_118_ionic_compound_formula_nacl",
+    "correctAnswer": "NaCl",
+    "acceptableAlternatives": [
+      "Sodium chloride"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "unit_and_constant_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "Sodium (Na⁺) and chloride (Cl⁻) ions combine in a 1:1 ratio to form an electrically neutral ionic compound. What is the chemical formula of this compound?",
+    "explanation": "Ionic compounds are electrically neutral overall. Na⁺ has a charge of +1 and Cl⁻ has a charge of −1. The charges cancel in a 1:1 ratio: one Na⁺ per one Cl⁻ gives a net charge of zero. The formula NaCl is written with the cation (Na) first. In the solid crystal, each Na⁺ is surrounded by 6 Cl⁻ neighbors and vice versa in a face-centered cubic lattice. NaCl melts at 801°C — evidence of strong ionic electrostatic attractions.",
+    "distractors": [
+      "Na₂Cl",
+      "NaCl₂",
+      "Na₂Cl₂",
+      "NaCl₃",
+      "Na₃Cl",
+      "NaOH",
+      "NaF",
+      "NaBr"
+    ],
+    "sourceName": "OpenStax Chemistry 2e, Chapter 7.1",
+    "sourceUrl": "https://openstax.org/books/chemistry-2e/pages/7-1-ionic-bonding",
+    "volatile": false,
+    "examTags": {
+      "exam": "AP_Chemistry",
+      "unit": 1,
+      "topic": "1.8",
+      "big_idea": "SAP",
+      "exam_weight": "high"
+    }
+  }
+]
