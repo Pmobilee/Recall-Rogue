@@ -1,14 +1,14 @@
 # Enemy System
 
 > **Purpose:** Complete reference for the enemy roster, categories, scaling formulas, special behaviors, and encounter selection.
-> **Last verified:** 2026-04-03
+> **Last verified:** 2026-04-03 (balance pass #3)
 > **Source files:** `src/data/enemies.ts`, `src/services/enemyManager.ts`, `src/data/balance.ts`, `src/services/ascension.ts`
 
 ## Enemy Categories
 
 | Category | Description | HP Range (base) |
 |---|---|---|
-| `common` | Standard combat nodes. Weighted random from act pool. | 8–16 (Act 1); 8–24 overall |
+| `common` | Standard combat nodes. Weighted random from act pool. | 5–16 (Act 1); 5–24 overall |
 | `elite` | Elite nodes. More HP, phase transitions. | 12–22 |
 | `mini_boss` | Gate encounters mid-act. | 13–22 |
 | `boss` | Act-ending encounters. Two phases, high HP. | 18–25 |
@@ -27,7 +27,7 @@ Damage formula (in `executeEnemyIntent`):
 ```
 damage = round((intent.value + enrageBonusDamage) × strengthModifier × getFloorDamageScaling(floor))
 ```
-- Floors 1–6: `FLOOR_DAMAGE_SCALE_MID = 1.2`
+- Floors 1–6: `FLOOR_DAMAGE_SCALE_MID = 1.0` (reduced from 1.2 in balance pass #2, 2026-04-03)
 - Floors 7+: `1.0 + (floor - 6) × FLOOR_DAMAGE_SCALING_PER_FLOOR` (0.06 per floor above 6)
 
 ### Per-Turn Damage Caps (`ENEMY_TURN_DAMAGE_CAP`)
@@ -35,10 +35,10 @@ Charged attacks with `bypassDamageCap: true` skip these caps.
 
 | Segment | Floors | Cap | Rationale |
 |---|---|---|---|
-| 1 | 1–6 | 10 | 10% of 100 HP/turn — creates real tension (raised from 6, 2026-04-03) |
-| 2 | 7–12 | 16 | 16% of 100 HP/turn (raised from 12, 2026-04-03) |
-| 3 | 13–18 | 22 | Raised from 18 (2026-04-03) |
-| 4 | 19–24 | 32 | Raised from 28 (2026-04-03) |
+| 1 | 1–6 | 8 | 8% of 100 HP/turn — raised from 6 (pass #1), scaled back from 10 (pass #2), kept at 8 (pass #3) |
+| 2 | 7–12 | 12 | Original value — reverted from 14 (pass #2) in pass #3; Act 2/3 common HP reduction makes lower cap sufficient |
+| 3 | 13–18 | 18 | Original value — reverted from 20 (pass #2) in pass #3 |
+| 4 | 19–24 | 28 | Original value — reverted from 30 (pass #2) in pass #3 |
 | endless | 25+ | none | — |
 
 ### Ascension and Aura Scaling
@@ -49,7 +49,7 @@ Charged attacks with `bypassDamageCap: true` skip these caps.
 
 ---
 
-## 2026-04-03 Comprehensive Rebalance
+## 2026-04-03 Balance Pass #1
 
 Full rationale and model in `docs/RESEARCH/enemy-balance-analysis-2026-04-03.md`.
 
@@ -72,6 +72,28 @@ Full rationale and model in `docs/RESEARCH/enemy-balance-analysis-2026-04-03.md`
 | Act 3 common | 3–5 turns | 358–538 |
 | Act 3 mini-boss | 5–8 turns | 843–1037 |
 | Act 3 boss | 10–14 turns | ~1786 |
+
+---
+
+## 2026-04-03 Balance Pass #2
+
+Sim results after pass #1: dedicated 78→13% win rate, regular 23→0% (targets: dedicated 55–70%, regular 10–25%). Root cause: Act 2/3 attack values (4–6) combined with raised caps and FLOOR_DAMAGE_SCALE_MID=1.2 tripled incoming DPS.
+
+**Changes:** `FLOOR_DAMAGE_SCALE_MID` 1.2→1.0. Caps: 10→8 / 16→14 / 22→20 / 32→30. Act 2/3 common attacks 4–5→3–4. Act 2/3 mini-boss attacks 6→5, defend 7→5–6, charge 7→6. Act 2 elite attacks 6→5. Act 2 boss attacks 5–6→4–5 (ph1), 6→5 (ph2). Act 3 boss attacks 5–6→4–5 (ph1), 6–7→5–6 (ph2). HP values unchanged.
+
+---
+
+## 2026-04-03 Balance Pass #3
+
+Root cause identified: pass #2 doubled Act 2/3 common baseHP (e.g., 4→8, 7→12), which doubled fight duration and damage taken through attrition. Mid-tier players die to accumulated damage across the run because there is no post-encounter healing between commons.
+
+**Changes:**
+- Act 2 and Act 3 **commons only** — baseHP reverted to near-original (+1 base vs original)
+- Act 2/3 **commons only** — attack values reverted to 3 (from 3–4 in pass #2), multi per-hit to 2 (from 3), defend to 2–3 (from 4–5)
+- Damage caps seg 2/3/4 reverted to original (12/18/28 from 14/20/30)
+- **Mini-bosses, elites, and bosses unchanged** — their higher HP is correct for the hierarchy
+
+Mini-boss/elite/boss HP and attack values from pass #2 are intentional and remain in place.
 
 ---
 
@@ -118,119 +140,119 @@ Status effect values (poison, weakness, vulnerable) kept at 1–2 per applicatio
 
 ---
 
-## Act 2 Base Stats (2026-04-03 rebalance)
+## Act 2 Base Stats (2026-04-03 rebalance — pass #3 values)
 
-Act 2 commons: baseHP 8–13. Attack values raised from 2–3 to 4–6. Defend raised from 1–2 to 5–6.
+Act 2 commons: baseHP 5–8 (Deep Caverns), 5–8 (The Abyss). Attack values 3 (reduced from 3–4 in pass #2). Multi per-hit 2. Defend 2–3.
 
 ### Deep Caverns Commons
 | Enemy | Base HP | Atk | Notes |
 |---|---|---|---|
-| `crib_sheet` | 8 | 4 / multi 4×3 | Mirrors wrong Charge |
-| `citation_needed` | 12 | 5 | Block-stealer on wrong Charge |
-| `crambot` | 10 | 5 / defend 5 | chargeResistant |
-| `all_nighter` | 9 | 5 / 4 | Weakness debuffer |
-| `spark_note` | 9 | 5 / 4 | Poison |
-| `watchdog` | 8 | multi 4×3 / 4 | chargeResistant |
-| `red_herring` | 12 | 5 | Multi-debuffer |
-| `anxiety_tick` | 12 | 5 | Self-healer |
-| `trick_question` | 10 | 5 / 4 | Wrong Charge heals it |
-| `dropout` | 12 | 5 / defend 6 | chargeResistant |
-| `brain_fog` | 12 | 5 | Mastery eroder |
-| `thesis_dragon` | 8 | multi 4×3 / 5 | chainVulnerable |
-| `burnout` | 10 | 5 / 4 | Poison |
-| `grade_curve` | 11 | 5 / defend 5 | Grows with correct Charges |
+| `crib_sheet` | 5 | 3 / multi 2×3 | Mirrors wrong Charge |
+| `citation_needed` | 8 | 3 / defend 2 | Block-stealer on wrong Charge |
+| `crambot` | 6 | 3 / defend 2 | chargeResistant |
+| `all_nighter` | 6 | 3 / 3 | Weakness debuffer |
+| `spark_note` | 6 | 3 / 3 | Poison |
+| `watchdog` | 5 | multi 2×3 / 3 | chargeResistant |
+| `red_herring` | 8 | 3 | Multi-debuffer |
+| `anxiety_tick` | 8 | 3 | Self-healer |
+| `trick_question` | 6 | 3 / 3 | Wrong Charge heals it |
+| `dropout` | 8 | 3 / defend 2 | chargeResistant |
+| `brain_fog` | 8 | 3 | Mastery eroder |
+| `thesis_dragon` | 5 | multi 2×3 / 3 | chainVulnerable |
+| `burnout` | 6 | 3 / 3 | Poison |
+| `grade_curve` | 8 | 3 / defend 2 | Grows with correct Charges |
 
 ### The Abyss Commons
 | Enemy | Base HP | Atk | Notes |
 |---|---|---|---|
-| `writers_block` | 9 | multi 4×4 / 5 | chainVulnerable |
-| `information_overload` | 10 | 5 / 4 | Poison |
-| `rote_memory` | 13 | 5 / defend 6 | chargeResistant |
-| `outdated_fact` | 8 | multi 4×3 / 5 | chainVulnerable |
-| `hidden_gem` | 12 | 5 / defend 6 | chargeResistant |
-| `rushing_student` | 10 | multi 4×3 / 5 | chainVulnerable |
-| `echo_chamber` | 8 | 5 / multi 4×3 | — |
-| `blank_spot` | 11 | 5 / defend 6 | Gains 8 block on wrong Charge |
-| `burnout_phantom` | 10 | 5 / 4 | Vulnerable debuffer |
-| `prismatic_jelly` | 13 | 5 | Weakness + Vulnerable |
-| `ember_skeleton` | 11 | 5 / multi 4×3 | chainVulnerable |
+| `writers_block` | 5 | multi 2×4 / 3 | chainVulnerable |
+| `information_overload` | 6 | 3 / 3 | Poison |
+| `rote_memory` | 8 | 3 / defend 3 | chargeResistant |
+| `outdated_fact` | 5 | multi 2×3 / 3 | chainVulnerable |
+| `hidden_gem` | 8 | 3 / defend 3 | chargeResistant |
+| `rushing_student` | 6 | multi 2×3 / 3 | chainVulnerable |
+| `echo_chamber` | 5 | 3 / multi 2×3 | — |
+| `blank_spot` | 7 | 3 / defend 3 | Gains 8 block on wrong Charge |
+| `burnout_phantom` | 6 | 3 / 3 | Vulnerable debuffer |
+| `prismatic_jelly` | 8 | 3 | Weakness + Vulnerable |
+| `ember_skeleton` | 7 | 3 / multi 2×3 | chainVulnerable |
 
 ### Act 2 Elites
 | Enemy | Base HP | Phase | Notes |
 |---|---|---|---|
-| `deadline_serpent` | 18 | 50% HP | Ph1: atk 6, multi 4×2. Ph2: atk 6, multi 4×3, charge 7 |
-| `standardized_test` | 22 | — | defend 7, charge 7, atk 6 |
-| `emeritus` | 22 | 50% HP | Ph1: defend 7, atk 6. Ph2: multi 4×3, charge 7 |
-| `student_debt` | 16 | 40% HP | Ph1: atk 6, multi 4×3. Ph2: atk 6, multi 4×4 |
-| `publish_or_perish` | 22 | — | Immune to natural_sciences; atk 6 |
+| `deadline_serpent` | 18 | 50% HP | Ph1: atk 5, multi 3×2. Ph2: atk 5, multi 3×3, charge 6 |
+| `standardized_test` | 22 | — | defend 6, charge 6, atk 5 |
+| `emeritus` | 22 | 50% HP | Ph1: defend 6, atk 5. Ph2: multi 3×3, charge 6 |
+| `student_debt` | 16 | 40% HP | Ph1: atk 5, multi 3×3. Ph2: atk 5, multi 3×4 |
+| `publish_or_perish` | 22 | — | Immune to natural_sciences; atk 5 |
 
 ### Act 2 Mini-Bosses
 | Enemy | Base HP | Notes |
 |---|---|---|
-| `tenure_guardian` | 16 | Gains Str on no Charge; atk 6, defend 7 |
-| `proctor` | 18 | Seismic Slam charge 7; defend 7, atk 6 |
-| `harsh_grader` | 16 | Poison stacker; multi 4×3, atk 6 |
-| `textbook` | 18 | Hardcover armor; charge 7, defend 7, atk 6 |
-| `imposter_syndrome` | 16 | multi 4×3, atk 6 |
-| `pressure_cooker` | 16 | atk 6, defend 7 |
-| `grade_dragon` | 18 | Fire + Poison; atk 6/5 |
-| `comparison_trap` | 14 | 3-hit phantom copies; multi 4×3, atk 5 |
-| `perfectionist` | 20 | defend 7, charge 7, atk 6 |
-| `hydra_problem` | 18 | multi 4×3, defend 7, atk 6 |
-| `ivory_tower` | 16 | multi 4×3, atk 6 |
-| `helicopter_parent` | 20 | multi 4×3, defend 7, atk 6 |
+| `tenure_guardian` | 16 | Gains Str on no Charge; atk 5, defend 5 |
+| `proctor` | 18 | Seismic Slam charge 6; defend 5, atk 5 |
+| `harsh_grader` | 16 | Poison stacker; multi 3×3, atk 5 |
+| `textbook` | 18 | Hardcover armor; charge 6, defend 5, atk 5 |
+| `imposter_syndrome` | 16 | multi 3×3, atk 5 |
+| `pressure_cooker` | 16 | atk 5, defend 5 |
+| `grade_dragon` | 18 | Fire + Poison; atk 5/4 |
+| `comparison_trap` | 14 | 3-hit phantom copies; multi 3×3, atk 4 |
+| `perfectionist` | 20 | defend 5, charge 6, atk 5 |
+| `hydra_problem` | 18 | multi 3×3, defend 5, atk 5 |
+| `ivory_tower` | 16 | multi 3×3, atk 5 |
+| `helicopter_parent` | 20 | multi 3×3, defend 5, atk 5 |
 
 ### Act 2 Bosses
 | Enemy | Base HP | Phase | Notes |
 |---|---|---|---|
-| `algorithm` | 18 | 50% HP | Ph1: atk 5, defend 6, heal 5. Ph2: atk 6, multi 4×4, heal 6 |
-| `curriculum` | 22 | 50% HP | Ph1: atk 5, defend 6, multi 4×3, heal 5. Ph2: QP=0; atk 6, defend 7, multi 4×4, heal 4 |
-| `group_project` | 22 | 50% HP | Ph1: atk 5, multi 4×3. Ph2: multi 4×2, multi 4×4, atk 6 |
-| `rabbit_hole` | 24 | — | atk 6, multi 4×3, defend 6 |
+| `algorithm` | 18 | 50% HP | Ph1: atk 4, defend 5, heal 5. Ph2: atk 5, multi 3×4, heal 6 |
+| `curriculum` | 22 | 50% HP | Ph1: atk 4, defend 5, multi 3×3, heal 5. Ph2: QP=0; atk 5, defend 5, multi 3×4, heal 4 |
+| `group_project` | 22 | 50% HP | Ph1: atk 4, multi 3×3. Ph2: multi 3×2, multi 3×4, atk 5 |
+| `rabbit_hole` | 24 | — | atk 4, multi 3×3, defend 5 |
 
 ---
 
-## Act 3 Base Stats (2026-04-03 rebalance)
+## Act 3 Base Stats (2026-04-03 rebalance — pass #3 values)
 
-Act 3 commons: baseHP 8–12. Attack values raised from 2–3 to 5–6. Defend raised from 1–2 to 6–8.
+Act 3 commons: baseHP 6–9. Attack values 3 (reduced from 3–4 in pass #2). Multi per-hit 2. Defend 3.
 
 ### The Archive Commons
 | Enemy | Base HP | Atk | Notes |
 |---|---|---|---|
-| `thesis_djinn` | 9 | 5 / 5 | chargeResistant |
-| `gut_feeling` | 9 | 5 / multi 4×3 / 5 | — |
-| `bright_idea` | 8 | 5 / 5 | Weakness debuffer |
-| `sacred_text` | 11 | 5 / defend 6 | chargeResistant |
-| `devils_advocate` | 9 | 5 | Poison + self-buff |
-| `institution` | 12 | 5 / defend 6 / charge 6 | chargeResistant |
-| `rosetta_slab` | 9 | 5 / defend 6 | Weakness |
-| `moth_of_enlightenment` | 8 | 5 / 5 | Vulnerable |
-| `hyperlink` | 8 | multi 4×3 / 5 | Poison |
-| `unknown_unknown` | 9 | 5 | Weakness + Vulnerable |
-| `fake_news` | 9 | 5 / multi 4×3 / defend 6 | chargeResistant |
+| `thesis_djinn` | 7 | 3 / 3 | chargeResistant |
+| `gut_feeling` | 7 | 3 / multi 2×3 / 3 | — |
+| `bright_idea` | 7 | 3 / 3 | Weakness debuffer |
+| `sacred_text` | 8 | 3 / defend 3 | chargeResistant |
+| `devils_advocate` | 7 | 3 | Poison + self-buff |
+| `institution` | 9 | 3 / defend 3 / charge 5 | chargeResistant |
+| `rosetta_slab` | 7 | 3 / defend 3 | Weakness |
+| `moth_of_enlightenment` | 6 | 3 / 3 | Vulnerable |
+| `hyperlink` | 6 | multi 2×3 / 3 | Poison |
+| `unknown_unknown` | 7 | 3 | Weakness + Vulnerable |
+| `fake_news` | 7 | 3 / multi 2×3 / defend 3 | chargeResistant |
 
 ### Act 3 Elites
 | Enemy | Base HP | Notes |
 |---|---|---|
-| `dunning_kruger` | 12 | Flatlines chain multipliers at 1.0×; atk 6, defend 7 |
-| `singularity` | 12 | QP deals 30% damage; atk 6, defend 7 |
+| `dunning_kruger` | 12 | Flatlines chain multipliers at 1.0×; atk 5/4, defend 6 |
+| `singularity` | 12 | QP deals 30% damage; atk 5/4, defend 6 |
 
 ### Act 3 Mini-Bosses
 | Enemy | Base HP | Notes |
 |---|---|---|
-| `first_question` | 14 | Phase 2 at 50%; atk 6, multi 4×3, charge 8 |
-| `dean` | 14 | Gains Str on no Charge; atk 6, defend 7 |
-| `dissertation` | 16 | defend 8, charge 8, atk 6 |
-| `eureka` | 13 | Self-healer + debuffer; atk 6 |
-| `paradigm_shift` | 16 | atk 6, charge 8, multi 4×3 |
-| `ancient_tongue` | 14 | Gains Str on no Charge; defend 8, atk 6 |
-| `lost_thesis` | 13 | atk 6, defend 7 |
+| `first_question` | 14 | Phase 2 at 50%; atk 5, multi 3×3, charge 7. Ph2: atk 5, multi 3×4 |
+| `dean` | 14 | Gains Str on no Charge; atk 5, defend 6 |
+| `dissertation` | 16 | defend 7, charge 7, atk 5 |
+| `eureka` | 13 | Self-healer + debuffer; atk 5 |
+| `paradigm_shift` | 16 | atk 5, charge 7, multi 3×3 |
+| `ancient_tongue` | 14 | Gains Str on no Charge; defend 7, atk 5 |
+| `lost_thesis` | 13 | atk 5, defend 6 |
 
 ### Act 3 Bosses
 | Enemy | Base HP | Phase | Notes |
 |---|---|---|---|
-| `omnibus` | 24 | 50% HP | Ph1: atk 5/6, defend 6, charge 8. Ph2: atk 6, multi 5×3, charge 8 |
-| `final_lesson` | 24 | 33% HP | Ph1: atk 6, multi 5×4. Ph2: atk 7, multi 5×4. Quiz phases at 66%+33% |
+| `omnibus` | 24 | 50% HP | Ph1: atk 4/5, defend 5, charge 7. Ph2: atk 5, multi 4×3, charge 7 |
+| `final_lesson` | 24 | 33% HP | Ph1: atk 5, multi 4×4. Ph2: atk 6, multi 4×4. Quiz phases at 66%+33% |
 
 ---
 
@@ -267,8 +289,8 @@ Enemy selection uses `getEnemiesForNode(act, nodeType)` which maps to `ACT_ENEMY
 | `page_flutter` | 12 | standard | Can self-buff Strength 1 for 2 turns |
 | `thesis_construct` | 13 | standard | `chargeResistant` — Quick Play deals 50% damage |
 | `mold_puff` | 10 | standard | Stacks Poison 2 for 3 turns each attack |
-| `crib_sheet` | 8 | standard | `onPlayerChargeWrong`: reflects card's base damage to player |
-| `citation_needed` | 12 | standard | `onPlayerChargeWrong`: steals up to 5 block, heals enemy that amount. **Heal overshoot WAI**: heal intent (+5) and block-steal (+up to 5) are independent — both can fire in the same turn window for up to +10 HP total. **UX gap**: no floating text on block-steal; planned fix via ui-agent. |
+| `crib_sheet` | 5 | standard | `onPlayerChargeWrong`: reflects card's base damage to player |
+| `citation_needed` | 8 | standard | `onPlayerChargeWrong`: steals up to 5 block, heals enemy that amount. **Heal overshoot WAI**: heal intent (+5) and block-steal (+up to 5) are independent — both can fire in the same turn window for up to +10 HP total. **UX gap**: no floating text on block-steal; planned fix via ui-agent. |
 | `pop_quiz` | 11 | uncommon | `onPlayerChargeCorrect`: stuns enemy next turn; `onPlayerNoCharge`: +1 permanent `enrageBonusDamage` |
 | `eraser_worm` | 10 | rare | `chainVulnerable` — chain attacks deal +50% damage |
 | `bookmark_vine` | 11 | uncommon | `chainVulnerable`; multi-hit 3×vine lash |

@@ -313,10 +313,10 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Crib Sheet',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 8, // rebalanced — HP raised 4→8 (2026-04-03)
+    baseHP: 5, // balance pass #3 — reverted from 8, was originally 4, now +1 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 4, weight: 2, telegraph: 'Shadow strike' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Flurry of shadows', hitCount: 3 },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Shadow strike' },
+      { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Flurry of shadows', hitCount: 3 },
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Expose weakness', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
     ],
     description: 'Mirrors your failures. Miss a Charge and it hits you back for the same damage.',
@@ -433,16 +433,16 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'deep_caverns',
     baseHP: 18, // rebalanced — HP raised 12→18, heals reduced (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Data beam' },
-      { type: 'defend', value: 6, weight: 1, telegraph: 'Firewall' },
+      { type: 'attack', value: 4, weight: 2, telegraph: 'Data beam' },
+      { type: 'defend', value: 5, weight: 1, telegraph: 'Firewall' },
       { type: 'debuff', value: 2, weight: 1, telegraph: 'System scan', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
       { type: 'heal', value: 5, weight: 1, telegraph: 'Self-repair' },
     ],
     description: 'Old archive AI. Still running, still territorial. Triggers a quiz phase at half health.',
     phaseTransitionAt: 0.5,
     phase2IntentPool: [
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Archive purge' },
-      { type: 'multi_attack', value: 4, weight: 1, telegraph: 'Rapid queries', hitCount: 4 },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Archive purge' },
+      { type: 'multi_attack', value: 3, weight: 1, telegraph: 'Rapid queries', hitCount: 4 },
       { type: 'debuff', value: 3, weight: 1, telegraph: 'Memory wipe', statusEffect: { type: 'weakness', value: 2, turns: 2 } },
       { type: 'heal', value: 6, weight: 1, telegraph: 'Backup restore' },
     ],
@@ -459,17 +459,17 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'deep_caverns',
     baseHP: 22, // rebalanced — HP raised 14→22, heals reduced (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 4, telegraph: 'Prismatic slash' },
-      { type: 'defend', value: 6, weight: 3, telegraph: 'Crystal barrier' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Shard storm', hitCount: 3 },
+      { type: 'attack', value: 4, weight: 4, telegraph: 'Prismatic slash' },
+      { type: 'defend', value: 5, weight: 3, telegraph: 'Crystal barrier' },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Shard storm', hitCount: 3 },
       { type: 'heal', value: 5, weight: 1, telegraph: 'Crystalline mend' },
     ],
     // AR-263: Phase 2 at 50% HP. Quick Play attacks deal 0 damage in phase 2 — only Charge works.
     phaseTransitionAt: 0.5,
     phase2IntentPool: [
-      { type: 'attack', value: 6, weight: 4, telegraph: 'Final Exam: Prismatic barrage' },
-      { type: 'defend', value: 7, weight: 3, telegraph: 'Crystal fortress' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Final Exam: Shard storm', hitCount: 4 },
+      { type: 'attack', value: 5, weight: 4, telegraph: 'Final Exam: Prismatic barrage' },
+      { type: 'defend', value: 5, weight: 3, telegraph: 'Crystal fortress' },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Final Exam: Shard storm', hitCount: 4 },
       { type: 'heal', value: 4, weight: 1, telegraph: 'Crystalline mend' },
     ],
     description: 'Phase 2: Quick Play deals 0 damage. Only Charged knowledge can penetrate Final Exam mode.',
@@ -488,18 +488,18 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_abyss',
     baseHP: 22, // rebalanced — HP raised 16→22 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 35, telegraph: 'Hydra strike' },
-      { type: 'multi_attack', value: 4, weight: 30, telegraph: 'Twin fangs', hitCount: 3 },
+      { type: 'attack', value: 4, weight: 35, telegraph: 'Hydra strike' },
+      { type: 'multi_attack', value: 3, weight: 30, telegraph: 'Twin fangs', hitCount: 3 },
       { type: 'debuff', value: 3, weight: 20, telegraph: 'Venom spray', statusEffect: { type: 'poison', value: 3, turns: 3 } },
-      { type: 'attack', value: 5, weight: 15, telegraph: 'Tail lash' },
+      { type: 'attack', value: 4, weight: 15, telegraph: 'Tail lash' },
     ],
     description: 'Shadow serpent with multiple heads. At half HP, a second head wakes up.',
     phaseTransitionAt: 0.5,
     phase2IntentPool: [
-      { type: 'multi_attack', value: 4, weight: 3, telegraph: 'Dual hydra strike', hitCount: 2 },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Fang barrage', hitCount: 4 },
+      { type: 'multi_attack', value: 3, weight: 3, telegraph: 'Dual hydra strike', hitCount: 2 },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Fang barrage', hitCount: 4 },
       { type: 'debuff', value: 4, weight: 2, telegraph: 'Toxic deluge', statusEffect: { type: 'poison', value: 4, turns: 3 } },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Decapitation bite' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Decapitation bite' },
     ],
     animArchetype: 'lurcher',
   },
@@ -511,11 +511,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_abyss',
     baseHP: 24, // rebalanced — HP raised 19→24 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 6, weight: 4, telegraph: 'Void bolt' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Void storm', hitCount: 3 },
+      { type: 'attack', value: 4, weight: 4, telegraph: 'Void bolt' },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Void storm', hitCount: 3 },
       { type: 'debuff', value: 3, weight: 15, telegraph: 'Reality tear', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
       { type: 'debuff', value: 2, weight: 15, telegraph: 'Hand disruption', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-      { type: 'defend', value: 6, weight: 1, telegraph: 'Phase shift' },
+      { type: 'defend', value: 5, weight: 1, telegraph: 'Phase shift' },
     ],
     description: 'Something from between spaces. Its attacks hit your hand as much as your health.',
     animArchetype: 'caster',
@@ -528,20 +528,20 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_archive',
     baseHP: 24, // rebalanced — HP raised 17→24 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 35, telegraph: 'Tome slam' },
-      { type: 'attack', value: 6, weight: 25, telegraph: 'Crushing knowledge' },
-      { type: 'defend', value: 6, weight: 20, telegraph: 'Page shield' },
+      { type: 'attack', value: 4, weight: 35, telegraph: 'Tome slam' },
+      { type: 'attack', value: 5, weight: 25, telegraph: 'Crushing knowledge' },
+      { type: 'defend', value: 5, weight: 20, telegraph: 'Page shield' },
       { type: 'buff', value: 2, weight: 20, telegraph: 'Absorb text', statusEffect: { type: 'strength', value: 2, turns: 3 } },
-      { type: 'charge', value: 8, weight: 1, telegraph: 'Charging: Tome Avalanche!' },
+      { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Tome Avalanche!' },
     ],
     description: 'Built from compressed books. At half health, unleashes stored knowledge as devastating attacks.',
     animArchetype: 'slammer',
     phaseTransitionAt: 0.5,
     phase2IntentPool: [
-      { type: 'attack', value: 6, weight: 3, telegraph: 'Tome crush' },
-      { type: 'multi_attack', value: 5, weight: 2, telegraph: 'Page storm', hitCount: 3 },
+      { type: 'attack', value: 5, weight: 3, telegraph: 'Tome crush' },
+      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Page storm', hitCount: 3 },
       { type: 'buff', value: 3, weight: 1, telegraph: 'Knowledge consumed', statusEffect: { type: 'strength', value: 3, turns: 3 } },
-      { type: 'charge', value: 8, weight: 1, telegraph: 'Charging: Tome Avalanche!' },
+      { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Tome Avalanche!' },
     ],
   },
 
@@ -553,8 +553,8 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_archive',
     baseHP: 24, // rebalanced — HP raised 17→24 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 6, weight: 3, telegraph: 'Cataloguing strike' },
-      { type: 'multi_attack', value: 5, weight: 2, telegraph: 'Archive barrage', hitCount: 4 },
+      { type: 'attack', value: 5, weight: 3, telegraph: 'Cataloguing strike' },
+      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Archive barrage', hitCount: 4 },
       { type: 'debuff', value: 3, weight: 2, telegraph: 'Forgotten lore', statusEffect: { type: 'weakness', value: 2, turns: 2 } },
       { type: 'buff', value: 3, weight: 2, telegraph: 'Ancient wisdom', statusEffect: { type: 'strength', value: 2, turns: 3 } },
       { type: 'heal', value: 12, weight: 1, telegraph: 'Restoration protocol' },
@@ -562,8 +562,8 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     description: 'Final guardian. Quiz phases at 66% and 33% HP. Wrong Charge answers make it stronger. The second quiz phase is Rapid Fire.',
     phaseTransitionAt: 0.33,
     phase2IntentPool: [
-      { type: 'attack', value: 7, weight: 3, telegraph: 'Judgement' },
-      { type: 'multi_attack', value: 5, weight: 2, telegraph: 'Knowledge storm', hitCount: 4 },
+      { type: 'attack', value: 6, weight: 3, telegraph: 'Judgement' },
+      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Knowledge storm', hitCount: 4 },
       { type: 'debuff', value: 4, weight: 2, telegraph: 'Mind shatter', statusEffect: { type: 'vulnerable', value: 2, turns: 3 } },
       { type: 'heal', value: 10, weight: 1, telegraph: 'Archive restoration' },
       { type: 'buff', value: 3, weight: 1, telegraph: 'Final form', statusEffect: { type: 'strength', value: 3, turns: 5 } },
@@ -592,9 +592,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'deep_caverns',
     baseHP: 16, // rebalanced — HP raised 8→16 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 6, weight: 3, telegraph: 'Crystal strike' },
-      { type: 'defend', value: 7, weight: 3, telegraph: 'Stone shell' },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Shard eruption' },
+      { type: 'attack', value: 5, weight: 3, telegraph: 'Crystal strike' },
+      { type: 'defend', value: 5, weight: 3, telegraph: 'Stone shell' },
+      { type: 'attack', value: 4, weight: 1, telegraph: 'Shard eruption' },
     ],
     description: 'Crystal-armored golem. Blocks accumulate each turn.',
     animArchetype: 'trembler',
@@ -635,10 +635,10 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'deep_caverns',
     baseHP: 18, // rebalanced — HP raised 9→18 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Heavy swing' },
-      { type: 'defend', value: 7, weight: 3, telegraph: 'Fortify' },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Heavy swing' },
+      { type: 'defend', value: 5, weight: 3, telegraph: 'Fortify' },
       { type: 'buff', value: 2, weight: 1, telegraph: 'Harden', statusEffect: { type: 'strength', value: 1, turns: 3 } },
-      { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Seismic Slam!' },
+      { type: 'charge', value: 6, weight: 1, telegraph: 'Charging: Seismic Slam!' },
     ],
     description: 'Old stone warrior. Very slow, very durable. A war of attrition.',
     animArchetype: 'slammer',
@@ -659,8 +659,8 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_abyss',
     baseHP: 18, // rebalanced — HP raised 8→18 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 6, weight: 3, telegraph: 'Fire breath' },
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Inferno blast' },
+      { type: 'attack', value: 5, weight: 3, telegraph: 'Fire breath' },
+      { type: 'attack', value: 4, weight: 2, telegraph: 'Inferno blast' },
       { type: 'debuff', value: 2, weight: 1, telegraph: 'Scorching heat', statusEffect: { type: 'poison', value: 2, turns: 2 } },
     ],
     description: 'Small and vicious. Hits hard, breaks easy.',
@@ -674,8 +674,8 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_abyss',
     baseHP: 14, // rebalanced — HP raised 6→14 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 3, telegraph: 'Shadow lunge' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Phantom copies', hitCount: 3 },
+      { type: 'attack', value: 4, weight: 3, telegraph: 'Shadow lunge' },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Phantom copies', hitCount: 3 },
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Expose weakness', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
     ],
     description: 'Copies your last card type. Nastier than the Shadow Mimic.',
@@ -689,11 +689,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Citation Needed',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 12, // rebalanced — HP raised 7→12 (2026-04-03)
+    baseHP: 8, // balance pass #3 — reverted from 12, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 3, telegraph: 'Bone slash' },
+      { type: 'attack', value: 3, weight: 3, telegraph: 'Bone slash' },
       { type: 'heal', value: 5, weight: 2, telegraph: 'Consume remains' },
-      { type: 'defend', value: 5, weight: 1, telegraph: 'Bone armor' },
+      { type: 'defend', value: 2, weight: 1, telegraph: 'Bone armor' },
       { type: 'debuff', value: 2, weight: 1, telegraph: 'Marrow drain', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
     ],
     description: 'Steals your block when you miss a Charge. Build defenses before risking a quiz.',
@@ -975,11 +975,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Crambot',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 10, // rebalanced — HP raised 5→10 (2026-04-03)
+    baseHP: 6, // balance pass #3 — reverted from 10, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'defend', value: 5, weight: 2, telegraph: 'Stone shell' },
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Basalt bite' },
-      { type: 'attack', value: 4, weight: 1, telegraph: 'Crawling strike' },
+      { type: 'defend', value: 2, weight: 2, telegraph: 'Stone shell' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Basalt bite' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Crawling strike' },
     ],
     description: 'Basalt-skinned reptile. Attacks and blocks in equal measure.',
     rarity: 'standard',
@@ -993,11 +993,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The All-Nighter',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 9, // rebalanced — HP raised 5→9 (2026-04-03)
+    baseHP: 6, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 1, weight: 3, telegraph: 'Salt sting', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Crystalline strike' },
-      { type: 'attack', value: 4, weight: 1, telegraph: 'Spectral touch' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Crystalline strike' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Spectral touch' },
     ],
     description: 'Salt crystals, loosely haunting. Saps strength on contact.',
     rarity: 'standard',
@@ -1010,11 +1010,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Spark Note',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 9, // rebalanced — HP raised 5→9 (2026-04-03)
+    baseHP: 6, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Fire jab' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Fire jab' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Burning touch', statusEffect: { type: 'poison', value: 2, turns: 2 } },
-      { type: 'attack', value: 4, weight: 1, telegraph: 'Ember strike' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Ember strike' },
     ],
     description: 'Carved from burning coal, still burning. Leaves poison behind.',
     rarity: 'standard',
@@ -1027,11 +1027,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Watchdog',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 8, // rebalanced — HP raised 4→8 (2026-04-03)
+    baseHP: 5, // balance pass #3 — reverted from 8, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'multi_attack', value: 4, weight: 3, telegraph: 'Bite combo', hitCount: 3 },
-      { type: 'attack', value: 4, weight: 1, telegraph: 'Pounce' },
-      { type: 'attack', value: 4, weight: 1, telegraph: 'Snap' },
+      { type: 'multi_attack', value: 2, weight: 3, telegraph: 'Bite combo', hitCount: 3 },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Pounce' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Snap' },
     ],
     description: 'Stone wolf. Hunts in the dark, bites multiple times.',
     rarity: 'uncommon',
@@ -1045,11 +1045,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Red Herring',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 12, // rebalanced — HP raised 7→12 (2026-04-03)
+    baseHP: 8, // balance pass #3 — reverted from 12, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Toxic cloud', statusEffect: { type: 'poison', value: 2, turns: 3 } },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Brittle aura', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Sulfur burst' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Sulfur burst' },
     ],
     description: 'Born from a vent. Toxic by nature, multiple debuffs.',
     rarity: 'standard',
@@ -1062,9 +1062,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Anxiety Tick',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 12, // rebalanced — HP raised 7→12 (2026-04-03)
+    baseHP: 8, // balance pass #3 — reverted from 12, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Lava bite' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Lava bite' },
       { type: 'buff', value: 1, weight: 2, telegraph: 'Molten pulse', statusEffect: { type: 'strength', value: 1, turns: 2 } },
       { type: 'heal', value: 4, weight: 1, telegraph: 'Lava soak' },
     ],
@@ -1079,11 +1079,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Trick Question',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 10, // rebalanced — HP raised 5→10 (2026-04-03)
+    baseHP: 6, // balance pass #3 — reverted from 10, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Lure bite', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Fin slash' },
-      { type: 'attack', value: 4, weight: 1, telegraph: 'Snap' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Fin slash' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Snap' },
     ],
     description: 'Wrong Charge heals it 8 HP. Getting tricked has consequences.',
     rarity: 'uncommon',
@@ -1108,11 +1108,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Dropout',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 12, // rebalanced — HP raised 7→12 (2026-04-03)
+    baseHP: 8, // balance pass #3 — reverted from 12, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'defend', value: 6, weight: 3, telegraph: 'Shell retreat' },
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Claw strike' },
-      { type: 'attack', value: 4, weight: 1, telegraph: 'Pinch' },
+      { type: 'defend', value: 2, weight: 3, telegraph: 'Shell retreat' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Claw strike' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Pinch' },
     ],
     description: 'Crustacean in a geode shell. Stubborn and difficult to crack.',
     rarity: 'standard',
@@ -1126,11 +1126,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Brain Fog',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 12, // rebalanced — HP raised 7→12 (2026-04-03)
+    baseHP: 8, // balance pass #3 — reverted from 12, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Toxic vapor', statusEffect: { type: 'poison', value: 2, turns: 3 } },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Weakening mist', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Ethereal touch' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Ethereal touch' },
     ],
     description: 'Skip Charging and it erodes your card mastery. Keep studying or lose ground.',
     rarity: 'uncommon',
@@ -1154,11 +1154,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Thesis Dragon',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 8, // rebalanced — HP raised 4→8 (2026-04-03)
+    baseHP: 5, // balance pass #3 — reverted from 8, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'multi_attack', value: 4, weight: 3, telegraph: 'Fang barrage', hitCount: 3 },
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Stone bite' },
-      { type: 'attack', value: 4, weight: 1, telegraph: 'Tail swipe' },
+      { type: 'multi_attack', value: 2, weight: 3, telegraph: 'Fang barrage', hitCount: 3 },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Stone bite' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Tail swipe' },
     ],
     description: 'Hangs from the ceiling and drops on you. Fast attacker.',
     rarity: 'rare',
@@ -1172,11 +1172,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Burnout',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 10, // rebalanced — HP raised 5→10 (2026-04-03)
+    baseHP: 6, // balance pass #3 — reverted from 10, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Ember touch' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Ember touch' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Burning embers', statusEffect: { type: 'poison', value: 2, turns: 2 } },
-      { type: 'attack', value: 4, weight: 1, telegraph: 'Wing strike' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Wing strike' },
     ],
     description: 'Moth on fire. Leaves scorch-poison on contact.',
     rarity: 'standard',
@@ -1195,8 +1195,8 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Sulfur crown', statusEffect: { type: 'poison', value: 3, turns: 3 } },
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Decay aura', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-      { type: 'multi_attack', value: 4, weight: 1, telegraph: 'Toxic barrage', hitCount: 3 },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Queen\'s sting' },
+      { type: 'multi_attack', value: 3, weight: 1, telegraph: 'Toxic barrage', hitCount: 3 },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Queen\'s sting' },
     ],
     description: 'Crystallized sulfur, given authority. Stacks poison fast.',
     animArchetype: 'caster',
@@ -1209,9 +1209,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'deep_caverns',
     baseHP: 18, // rebalanced — HP raised 8→18 (2026-04-03)
     intentPool: [
-      { type: 'defend', value: 7, weight: 2, telegraph: 'Stone fortification' },
-      { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Granite slam!' },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Heavy strike' },
+      { type: 'defend', value: 5, weight: 2, telegraph: 'Stone fortification' },
+      { type: 'charge', value: 6, weight: 1, telegraph: 'Charging: Granite slam!' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Heavy strike' },
     ],
     // AR-263: Hardcover armor mechanic. Starts at 16. Correct Charge: -4. Wrong Charge: +2.
     // At 0: Vulnerable 2 turns. QP damage reduced by hardcover amount (min 1). Charge unaffected.
@@ -1240,10 +1240,10 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'deep_caverns',
     baseHP: 16, // rebalanced — HP raised 8→16 (2026-04-03)
     intentPool: [
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Lurking assault', hitCount: 3 },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Lurking assault', hitCount: 3 },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Vulnerable strike', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Deep bite' },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Predatory strike' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Deep bite' },
+      { type: 'attack', value: 4, weight: 1, telegraph: 'Predatory strike' },
     ],
     description: 'Deep cave predator. Patient, then very fast.',
     animArchetype: 'striker',
@@ -1256,10 +1256,10 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'deep_caverns',
     baseHP: 16, // rebalanced — HP raised 8→16 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Magma bite' },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Magma bite' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Scalding heat', statusEffect: { type: 'poison', value: 3, turns: 2 } },
-      { type: 'defend', value: 7, weight: 1, telegraph: 'Magma shield' },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Tail lash' },
+      { type: 'defend', value: 5, weight: 1, telegraph: 'Magma shield' },
+      { type: 'attack', value: 4, weight: 1, telegraph: 'Tail lash' },
     ],
     description: 'Lava-formed lizard. Bites and burns.',
     animArchetype: 'crawler',
@@ -1274,17 +1274,17 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'deep_caverns',
     baseHP: 18, // rebalanced — HP raised 7→18 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Lava fangs' },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Lava fangs' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Burning venom', statusEffect: { type: 'poison', value: 3, turns: 3 } },
-      { type: 'multi_attack', value: 4, weight: 1, telegraph: 'Serpent strike', hitCount: 2 },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Constriction' },
+      { type: 'multi_attack', value: 3, weight: 1, telegraph: 'Serpent strike', hitCount: 2 },
+      { type: 'attack', value: 4, weight: 1, telegraph: 'Constriction' },
     ],
     description: 'Lava-formed cobra. Deadly at range and up close.',
     phaseTransitionAt: 0.5,
     phase2IntentPool: [
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Enraged strike' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Fang storm', hitCount: 3 },
-      { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Molten eruption!' },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Enraged strike' },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Fang storm', hitCount: 3 },
+      { type: 'charge', value: 6, weight: 1, telegraph: 'Charging: Molten eruption!' },
     ],
     animArchetype: 'lurcher',
   },
@@ -1296,10 +1296,10 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'deep_caverns',
     baseHP: 22, // rebalanced — HP raised 12→22 (2026-04-03)
     intentPool: [
-      { type: 'defend', value: 7, weight: 2, telegraph: 'Stone wall' },
-      { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Titanic crush!' },
+      { type: 'defend', value: 6, weight: 2, telegraph: 'Stone wall' },
+      { type: 'charge', value: 6, weight: 1, telegraph: 'Charging: Titanic crush!' },
       { type: 'buff', value: 2, weight: 1, telegraph: 'Basalt surge', statusEffect: { type: 'strength', value: 2, turns: 2 } },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Titan strike' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Titan strike' },
     ],
     description: 'Basalt column, upright and hostile. Hits slowly, hits hard.',
     animArchetype: 'slammer',
@@ -1312,11 +1312,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: "The Writer's Block",
     category: 'common',
     region: 'the_abyss',
-    baseHP: 9, // rebalanced — HP raised 4→9 (2026-04-03)
+    baseHP: 5, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'multi_attack', value: 4, weight: 3, telegraph: 'Shard volley', hitCount: 4 },
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Obsidian slash' },
-      { type: 'attack', value: 4, weight: 1, telegraph: 'Sharp strike' },
+      { type: 'multi_attack', value: 2, weight: 3, telegraph: 'Shard volley', hitCount: 4 },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Obsidian slash' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Sharp strike' },
     ],
     description: 'Obsidian shard, floating and sharp. Attacks in volleys.',
     rarity: 'standard',
@@ -1330,11 +1330,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Information Overload',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 10, // rebalanced — HP raised 5→10 (2026-04-03)
+    baseHP: 6, // balance pass #3 — reverted from 10, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Lava blob' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Lava blob' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Molten splash', statusEffect: { type: 'poison', value: 2, turns: 2 } },
-      { type: 'attack', value: 4, weight: 1, telegraph: 'Ooze strike' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Ooze strike' },
     ],
     description: 'Lava that moves with purpose. Leaves burn-poison.',
     rarity: 'standard',
@@ -1347,10 +1347,10 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Rote Memory',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 13, // rebalanced — HP raised 7→13 (2026-04-03)
+    baseHP: 8, // balance pass #3 — reverted from 13, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'defend', value: 6, weight: 2, telegraph: 'Crystal shell' },
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Quartz spike' },
+      { type: 'defend', value: 3, weight: 2, telegraph: 'Crystal shell' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Quartz spike' },
       { type: 'buff', value: 1, weight: 1, telegraph: 'Crystalline surge', statusEffect: { type: 'strength', value: 1, turns: 2 } },
     ],
     description: 'Pure crystal, animated. Blocks and attacks with equal comfort.',
@@ -1365,11 +1365,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Outdated Fact',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 8, // rebalanced — HP raised 4→8 (2026-04-03)
+    baseHP: 5, // balance pass #3 — reverted from 8, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'multi_attack', value: 4, weight: 3, telegraph: 'Claw barrage', hitCount: 3 },
+      { type: 'multi_attack', value: 2, weight: 3, telegraph: 'Claw barrage', hitCount: 3 },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Expose wound', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Raptor strike' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Raptor strike' },
     ],
     description: 'Dinosaur skeleton, still furious. Fast and relentless.',
     rarity: 'uncommon',
@@ -1383,11 +1383,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Hidden Gem',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 12, // rebalanced — HP raised 7→12 (2026-04-03)
+    baseHP: 8, // balance pass #3 — reverted from 12, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'defend', value: 6, weight: 3, telegraph: 'Geode armor' },
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Crystal bite' },
-      { type: 'attack', value: 4, weight: 1, telegraph: 'Shell strike' },
+      { type: 'defend', value: 3, weight: 3, telegraph: 'Geode armor' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Crystal bite' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Shell strike' },
     ],
     description: 'Crystalline shell. Nearly impossible to reach through all that block.',
     rarity: 'standard',
@@ -1401,11 +1401,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Rushing Student',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 10, // rebalanced — HP raised 5→10 (2026-04-03)
+    baseHP: 6, // balance pass #3 — reverted from 10, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Molten trail', statusEffect: { type: 'poison', value: 2, turns: 3 } },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Segment strike', hitCount: 3 },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Burn strike' },
+      { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Segment strike', hitCount: 3 },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Burn strike' },
     ],
     description: 'Magma centipede. The trail it leaves burns.',
     rarity: 'standard',
@@ -1419,11 +1419,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Echo Chamber',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 8, // rebalanced — HP raised 4→8 (2026-04-03)
+    baseHP: 5, // balance pass #3 — reverted from 8, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 3, telegraph: 'Crystal dive' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Swoop attack', hitCount: 3 },
-      { type: 'attack', value: 4, weight: 1, telegraph: 'Wing strike' },
+      { type: 'attack', value: 3, weight: 3, telegraph: 'Crystal dive' },
+      { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Swoop attack', hitCount: 3 },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Wing strike' },
     ],
     description: 'Crystal wings. Each swoop is a blade.',
     rarity: 'uncommon',
@@ -1436,10 +1436,10 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Blank Spot',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 11, // rebalanced — HP raised 6→11 (2026-04-03)
+    baseHP: 7, // balance pass #3 — reverted from 11, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 3, telegraph: 'Academic strike' },
-      { type: 'defend', value: 6, weight: 2, telegraph: 'Study shield' },
+      { type: 'attack', value: 3, weight: 3, telegraph: 'Academic strike' },
+      { type: 'defend', value: 3, weight: 2, telegraph: 'Study shield' },
       { type: 'heal', value: 5, weight: 1, telegraph: 'Knowledge recovery' },
     ],
     description: 'Gains 8 block when you answer wrong on a Charge. Only Charge facts you know.',
@@ -1458,11 +1458,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Grade Curve',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 11, // rebalanced — HP raised 7→11 (2026-04-03)
+    baseHP: 8, // balance pass #3 — reverted from 11, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 3, telegraph: 'Knowledge drain' },
-      { type: 'defend', value: 5, weight: 2, telegraph: 'Absorb shield' },
-      { type: 'attack', value: 4, weight: 1, telegraph: 'Power strike' },
+      { type: 'attack', value: 3, weight: 3, telegraph: 'Knowledge drain' },
+      { type: 'defend', value: 2, weight: 2, telegraph: 'Absorb shield' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Power strike' },
     ],
     description: 'Gains +2 Strength every time you Charge correctly. Kill fast or play safe.',
     rarity: 'standard',
@@ -1479,11 +1479,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Burnout Phantom',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 10, // rebalanced — HP raised 5→10 (2026-04-03)
+    baseHP: 6, // balance pass #3 — reverted from 10, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Ash veil', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Ember strike' },
-      { type: 'attack', value: 4, weight: 1, telegraph: 'Ghostly touch' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Ember strike' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Ghostly touch' },
     ],
     description: 'Ash from old eruptions. Leaves you open to damage.',
     rarity: 'standard',
@@ -1496,11 +1496,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Prismatic Jelly',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 13, // rebalanced — HP raised 7→13 (2026-04-03)
+    baseHP: 8, // balance pass #3 — reverted from 13, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Prismatic sting', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Rainbow burn', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Jelly strike' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Jelly strike' },
     ],
     description: 'Iridescent and toxic. Stacks weakness and vulnerability.',
     rarity: 'uncommon',
@@ -1513,10 +1513,10 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Ember Skeleton',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 11, // rebalanced — HP raised 6→11 (2026-04-03)
+    baseHP: 7, // balance pass #3 — reverted from 11, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Bone strike' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Burning strike', hitCount: 3 },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Bone strike' },
+      { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Burning strike', hitCount: 3 },
       { type: 'buff', value: 1, weight: 1, telegraph: 'Ember surge', statusEffect: { type: 'strength', value: 1, turns: 2 } },
     ],
     description: 'Burning skeleton. Gets stronger while it burns.',
@@ -1535,9 +1535,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_abyss',
     baseHP: 20, // rebalanced — HP raised 9→20 (2026-04-03)
     intentPool: [
-      { type: 'defend', value: 7, weight: 2, telegraph: 'Glass shield' },
-      { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Obsidian slash!' },
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Obsidian blade' },
+      { type: 'defend', value: 5, weight: 2, telegraph: 'Glass shield' },
+      { type: 'charge', value: 6, weight: 1, telegraph: 'Charging: Obsidian slash!' },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Obsidian blade' },
     ],
     description: 'Obsidian glass forged into armor. Blocks well, then cuts.',
     animArchetype: 'slammer',
@@ -1558,10 +1558,10 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_abyss',
     baseHP: 18, // rebalanced — HP raised 8→18 (2026-04-03)
     intentPool: [
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Triple strike', hitCount: 3 },
-      { type: 'defend', value: 7, weight: 1, telegraph: 'Crystal wall' },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Triple strike', hitCount: 3 },
+      { type: 'defend', value: 5, weight: 1, telegraph: 'Crystal wall' },
       { type: 'heal', value: 6, weight: 1, telegraph: 'Crystalline mend' },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Hydra snap' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Hydra snap' },
     ],
     description: 'Three crystal heads. At least one is always healing.',
     animArchetype: 'lurcher',
@@ -1574,9 +1574,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_abyss',
     baseHP: 16, // rebalanced — HP raised 8→16 (2026-04-03)
     intentPool: [
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Wing barrage', hitCount: 3 },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Wing barrage', hitCount: 3 },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Fossilize', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Wyvern bite' },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Wyvern bite' },
     ],
     description: 'Ancient bones, reanimated and airborne. Drops fast.',
     animArchetype: 'swooper',
@@ -1589,10 +1589,10 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_abyss',
     baseHP: 20, // rebalanced — HP raised 9→20 (2026-04-03)
     intentPool: [
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Spawn swarm', hitCount: 3 },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Spawn swarm', hitCount: 3 },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Magma spawn', statusEffect: { type: 'poison', value: 3, turns: 3 } },
-      { type: 'defend', value: 7, weight: 1, telegraph: 'Magma protection' },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Brood strike' },
+      { type: 'defend', value: 5, weight: 1, telegraph: 'Magma protection' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Brood strike' },
     ],
     description: 'Lava spider, large. Floods the field with spawn and poison.',
     animArchetype: 'crawler',
@@ -1607,17 +1607,17 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_abyss',
     baseHP: 22, // rebalanced — HP raised 12→22 (2026-04-03)
     intentPool: [
-      { type: 'defend', value: 7, weight: 2, telegraph: 'Royal shield' },
+      { type: 'defend', value: 6, weight: 2, telegraph: 'Royal shield' },
       { type: 'heal', value: 7, weight: 1, telegraph: 'Crystal mending' },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Royal strike' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Royal strike' },
       { type: 'buff', value: 2, weight: 1, telegraph: 'Regal surge', statusEffect: { type: 'strength', value: 2, turns: 2 } },
     ],
     description: 'Crystal-built, hard to kill. Becomes far more dangerous at half HP.',
     phaseTransitionAt: 0.5,
     phase2IntentPool: [
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Crystal barrage', hitCount: 3 },
-      { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Geode avalanche!' },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Enraged strike' },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Crystal barrage', hitCount: 3 },
+      { type: 'charge', value: 6, weight: 1, telegraph: 'Charging: Geode avalanche!' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Enraged strike' },
     ],
     animArchetype: 'trembler',
   },
@@ -1629,17 +1629,17 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_abyss',
     baseHP: 16, // rebalanced — HP raised 7→16 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Leviathan bite' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Tentacle strike', hitCount: 3 },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Leviathan bite' },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Tentacle strike', hitCount: 3 },
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Vulnerability aura', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Deep strike' },
+      { type: 'attack', value: 4, weight: 1, telegraph: 'Deep strike' },
     ],
     description: 'Deep-abyss serpent. Wound it and it stops caring about defense.',
     phaseTransitionAt: 0.4,
     phase2IntentPool: [
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Enraged strike' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Frenzy', hitCount: 4 },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Devastating bite' },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Enraged strike' },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Frenzy', hitCount: 4 },
+      { type: 'attack', value: 4, weight: 1, telegraph: 'Devastating bite' },
     ],
     animArchetype: 'lurcher',
   },
@@ -1654,7 +1654,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Curse', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Brittle hex', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
       { type: 'heal', value: 8, weight: 1, telegraph: 'Lich drain' },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Crystal strike' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Crystal strike' },
     ],
     description: 'Crystal lich. Natural science cards do nothing to it. Debuffs everything.',
     immuneDomain: 'natural_sciences',
@@ -1668,11 +1668,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Thesis Djinn',
     category: 'common',
     region: 'the_archive',
-    baseHP: 9, // rebalanced — HP raised 6→9 (2026-04-03)
+    baseHP: 7, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Air burst' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Air burst' },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Pressure strike', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Wind strike' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Wind strike' },
     ],
     description: 'Compressed air elemental. The pressure alone opens wounds.',
     rarity: 'standard',
@@ -1686,11 +1686,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Gut Feeling',
     category: 'common',
     region: 'the_archive',
-    baseHP: 9, // rebalanced — HP raised 6→9 (2026-04-03)
+    baseHP: 7, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Iron strike' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Bite frenzy', hitCount: 3 },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Segmented strike' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Iron strike' },
+      { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Bite frenzy', hitCount: 3 },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Segmented strike' },
     ],
     description: 'Iron-bodied worm from the core. Bites repeatedly.',
     rarity: 'standard',
@@ -1703,11 +1703,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Bright Idea',
     category: 'common',
     region: 'the_archive',
-    baseHP: 8, // rebalanced — HP raised 6→8 (2026-04-03)
+    baseHP: 7, // balance pass #3 — reverted from 8, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 1, weight: 3, telegraph: 'Glowing sting', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Luminous strike' },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Tentacle strike' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Luminous strike' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Tentacle strike' },
     ],
     description: 'Bioluminescent jellyfish. Its sting saps strength.',
     rarity: 'standard',
@@ -1720,11 +1720,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Sacred Text',
     category: 'common',
     region: 'the_archive',
-    baseHP: 11, // rebalanced — HP raised 7→11 (2026-04-03)
+    baseHP: 8, // balance pass #3 — reverted from 11, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'defend', value: 6, weight: 2, telegraph: 'Plate armor' },
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Carapace strike' },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Mandible crunch' },
+      { type: 'defend', value: 3, weight: 2, telegraph: 'Plate armor' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Carapace strike' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Mandible crunch' },
     ],
     description: 'Plated beetle, massive. Difficult to damage through that shell.',
     rarity: 'standard',
@@ -1738,9 +1738,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: "The Devil's Advocate",
     category: 'common',
     region: 'the_archive',
-    baseHP: 9, // rebalanced — HP raised 6→9 (2026-04-03)
+    baseHP: 7, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Molten jab' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Molten jab' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Magma burn', statusEffect: { type: 'poison', value: 2, turns: 2 } },
       { type: 'buff', value: 1, weight: 1, telegraph: 'Heat surge', statusEffect: { type: 'strength', value: 1, turns: 2 } },
     ],
@@ -1755,11 +1755,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Institution',
     category: 'common',
     region: 'the_archive',
-    baseHP: 12, // rebalanced — HP raised 8→12 (2026-04-03)
+    baseHP: 9, // balance pass #3 — reverted from 12, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'defend', value: 6, weight: 3, telegraph: 'Iron plating' },
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Core slam' },
-      { type: 'charge', value: 6, weight: 1, telegraph: 'Charging: Iron crush!' },
+      { type: 'defend', value: 3, weight: 3, telegraph: 'Iron plating' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Core slam' },
+      { type: 'charge', value: 5, weight: 1, telegraph: 'Charging: Iron crush!' },
     ],
     description: 'Pure iron golem. Dense enough that most damage just doesn\'t register.',
     rarity: 'standard',
@@ -1773,11 +1773,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Rosetta Slab',
     category: 'common',
     region: 'the_archive',
-    baseHP: 9, // rebalanced — HP raised 6→9 (2026-04-03)
+    baseHP: 7, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'defend', value: 6, weight: 2, telegraph: 'Rune shield' },
+      { type: 'defend', value: 3, weight: 2, telegraph: 'Rune shield' },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Curse glyph', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Rune strike' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Rune strike' },
     ],
     description: 'Inscribed stone tablet, floating. Curses weaken on contact.',
     rarity: 'uncommon',
@@ -1790,11 +1790,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Moth of Enlightenment',
     category: 'common',
     region: 'the_archive',
-    baseHP: 8, // rebalanced — HP raised 5→8 (2026-04-03)
+    baseHP: 6, // balance pass #3 — reverted from 8, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Paper flurry' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Paper flurry' },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Papyrus curse', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Wing strike' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Wing strike' },
     ],
     description: 'Eats books and scrolls. Leaves you vulnerable.',
     rarity: 'standard',
@@ -1807,11 +1807,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Hyperlink',
     category: 'common',
     region: 'the_archive',
-    baseHP: 8, // rebalanced — HP raised 5→8 (2026-04-03)
+    baseHP: 6, // balance pass #3 — reverted from 8, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Rune web', hitCount: 3 },
+      { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Rune web', hitCount: 3 },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Cursed bite', statusEffect: { type: 'poison', value: 2, turns: 3 } },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Fang strike' },
+      { type: 'attack', value: 3, weight: 1, telegraph: 'Fang strike' },
     ],
     description: 'Weaves runic webs. The threads poison.',
     rarity: 'uncommon',
@@ -1824,9 +1824,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Unknown Unknown',
     category: 'common',
     region: 'the_archive',
-    baseHP: 9, // rebalanced — HP raised 6→9 (2026-04-03)
+    baseHP: 7, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Void strike' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Void strike' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Void weakness', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Void fracture', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
     ],
@@ -1841,11 +1841,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Fake News',
     category: 'common',
     region: 'the_archive',
-    baseHP: 9, // rebalanced — HP raised 6→9 (2026-04-03)
+    baseHP: 7, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Page slash' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Paper storm', hitCount: 3 },
-      { type: 'defend', value: 6, weight: 1, telegraph: 'Bookmark shield' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Page slash' },
+      { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Paper storm', hitCount: 3 },
+      { type: 'defend', value: 3, weight: 1, telegraph: 'Bookmark shield' },
     ],
     description: 'Shaped like a tome, moves like a predator.',
     rarity: 'standard',
@@ -1863,16 +1863,16 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_archive',
     baseHP: 14, // rebalanced — HP raised 9→14 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Ancient bite' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Coil strike', hitCount: 3 },
-      { type: 'charge', value: 8, weight: 1, telegraph: 'Charging: Primordial rage!' },
-      { type: 'attack', value: 5, weight: 1, telegraph: 'Tail sweep' },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Ancient bite' },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Coil strike', hitCount: 3 },
+      { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Primordial rage!' },
+      { type: 'attack', value: 4, weight: 1, telegraph: 'Tail sweep' },
     ],
     description: 'Old enough to remember the world\'s formation. Wound it and you\'ll know.',
     phaseTransitionAt: 0.5,
     phase2IntentPool: [
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Enraged bite' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Fury coil', hitCount: 4 },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Enraged bite' },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Fury coil', hitCount: 4 },
     ],
     animArchetype: 'lurcher',
   },
@@ -1884,8 +1884,8 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_archive',
     baseHP: 14, // rebalanced — HP raised 9→14 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Angelic strike' },
-      { type: 'defend', value: 7, weight: 2, telegraph: 'Magnetic shield' },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Angelic strike' },
+      { type: 'defend', value: 6, weight: 2, telegraph: 'Magnetic shield' },
       { type: 'buff', value: 2, weight: 1, telegraph: 'Metallic surge', statusEffect: { type: 'strength', value: 2, turns: 2 } },
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Expose weakness', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
     ],
@@ -1908,9 +1908,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_archive',
     baseHP: 16, // rebalanced — HP raised 11→16 (2026-04-03)
     intentPool: [
-      { type: 'defend', value: 8, weight: 2, telegraph: 'Pressure wall' },
-      { type: 'charge', value: 8, weight: 1, telegraph: 'Charging: Pressure burst!' },
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Crushing slam' },
+      { type: 'defend', value: 7, weight: 2, telegraph: 'Pressure wall' },
+      { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Pressure burst!' },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Crushing slam' },
     ],
     description: 'Ultra-dense golem under extreme pressure. Barely flinches.',
     animArchetype: 'slammer',
@@ -1926,7 +1926,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Luminous curse', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Brittle glow', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
       { type: 'heal', value: 7, weight: 1, telegraph: 'Radiant mend' },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Glow strike' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Glow strike' },
     ],
     description: 'Bioluminescent butterfly, vast and old. Curses you while healing itself.',
     animArchetype: 'floater',
@@ -1939,9 +1939,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_archive',
     baseHP: 16, // rebalanced — HP raised 11→16 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Earthquake slam' },
-      { type: 'charge', value: 8, weight: 1, telegraph: 'Charging: Tectonic shift!' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Plate break', hitCount: 3 },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Earthquake slam' },
+      { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Tectonic shift!' },
+      { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Plate break', hitCount: 3 },
     ],
     description: 'A living earthquake. Stone given will and direction.',
     animArchetype: 'slammer',
@@ -1954,9 +1954,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_archive',
     baseHP: 14, // rebalanced — HP raised 9→14 (2026-04-03)
     intentPool: [
-      { type: 'defend', value: 8, weight: 2, telegraph: 'Rune fortification' },
+      { type: 'defend', value: 7, weight: 2, telegraph: 'Rune fortification' },
       { type: 'heal', value: 7, weight: 1, telegraph: 'Glyph mending' },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Rune strike' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Rune strike' },
       { type: 'buff', value: 2, weight: 1, telegraph: 'Protective runes', statusEffect: { type: 'strength', value: 1, turns: 3 } },
     ],
     description: 'Built from protective runes. Hard to chip down, keeps healing.',
@@ -1979,8 +1979,8 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     baseHP: 13, // rebalanced — HP raised 8→13 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Forgotten curse', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Spectral strike' },
-      { type: 'defend', value: 7, weight: 1, telegraph: 'Ghostly form' },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Spectral strike' },
+      { type: 'defend', value: 6, weight: 1, telegraph: 'Ghostly form' },
       { type: 'heal', value: 6, weight: 1, telegraph: 'Memory drain' },
     ],
     description: 'The ghost of a librarian. Still cataloguing. Still territorial.',
@@ -1996,10 +1996,10 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_archive',
     baseHP: 12, // rebalanced — HP raised 9→12 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 6, weight: 3, telegraph: 'Nullification strike' },
+      { type: 'attack', value: 5, weight: 3, telegraph: 'Nullification strike' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Chain disruption', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Void impact' },
-      { type: 'defend', value: 7, weight: 1, telegraph: 'Null barrier' },
+      { type: 'attack', value: 4, weight: 2, telegraph: 'Void impact' },
+      { type: 'defend', value: 6, weight: 1, telegraph: 'Null barrier' },
     ],
     description: 'Chain multipliers don\'t work while this is alive. Knowledge Chains flatline at 1.0x.',
     animArchetype: 'swooper',
@@ -2013,10 +2013,10 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'the_archive',
     baseHP: 12, // rebalanced — HP raised 9→12 (2026-04-03)
     intentPool: [
-      { type: 'attack', value: 6, weight: 3, telegraph: 'Tome strike' },
+      { type: 'attack', value: 5, weight: 3, telegraph: 'Tome strike' },
       { type: 'buff', value: 2, weight: 2, telegraph: 'Study buff', statusEffect: { type: 'strength', value: 2, turns: 3 } },
-      { type: 'attack', value: 5, weight: 2, telegraph: 'Shelf sweep' },
-      { type: 'defend', value: 7, weight: 1, telegraph: 'Book barrier' },
+      { type: 'attack', value: 4, weight: 2, telegraph: 'Shelf sweep' },
+      { type: 'defend', value: 6, weight: 1, telegraph: 'Book barrier' },
     ],
     description: 'Resistant to Quick Play — only deals 30% damage. Charge for full effect.',
     animArchetype: 'caster',

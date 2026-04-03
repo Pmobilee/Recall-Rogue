@@ -473,15 +473,15 @@ export const CANARY_CHALLENGE_STREAK_THRESHOLD = 5;
 /** Per-floor enemy damage scaling increment above floor 6. (AR-97b: 0.05→0.02, sweep r=+0.668; 2026-04-01: 0.02→0.06 to steepen late-game curve — floor 12 = +36%, floor 18 = +72%; reverted 2026-04-01: 0.06→0.03 — enemy HP scaling is the better lever; 2026-04-01: 0.03→0.06 — paired with FLOOR_DAMAGE_SCALE_MID 0.8→0.5 to keep early floors easy while steepening late-game pressure for experts) */
 export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.06;
 
-/** Enemy damage multiplier (base). Reverted to 1.0 on 2026-04-01 — Canary adaptive difficulty system now handles beginner protection (reduces enemy dmg after wrong answers), so a blanket damage reduction is no longer needed. Prior values: 0.5 (2026-04-01 with FLOOR_DAMAGE_SCALING_PER_FLOOR pairing), 0.8 (earlier on 2026-04-01), 1.0 (original). */
-export const FLOOR_DAMAGE_SCALE_MID = 1.2;
+/** Enemy damage multiplier for floors 1–6 (base). Reverted to 1.0 on 2026-04-01, raised to 1.2 on 2026-04-03 (balance pass #1), reduced to 1.0 on 2026-04-03 (balance pass #2 — Act 2/3 over-tuned; reducing flat multiplier gives more room under caps). Prior values: 0.5 (2026-04-01), 0.8, 1.0 (original), 1.2. */
+export const FLOOR_DAMAGE_SCALE_MID = 1.0;
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent(). */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 10,   // raised from 6 — allows meaningful early damage (10% of 100 HP/turn), creates real tension (2026-04-03)
-  2: 16,   // raised from 12 — matches increased player power (2026-04-03)
-  3: 22,   // raised from 18 — late-game pressure increase (2026-04-03)
-  4: 32,   // raised from 28 — late-game pressure increase (2026-04-03)
+  1: 8,    // kept from pass #2 (2026-04-03): raised from original 6, feels better
+  2: 12,   // reverted to original — balance pass #3 (2026-04-03): common HP reduction makes this sufficient
+  3: 18,   // reverted to original — balance pass #3 (2026-04-03)
+  4: 28,   // reverted to original — balance pass #3 (2026-04-03)
   endless: null,
 };
 
