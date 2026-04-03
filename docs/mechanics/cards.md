@@ -68,27 +68,29 @@ Tier 3 cards leave the active hand and become `PassiveEffect` entries. The `0×`
 The resolver (`cardEffectResolver.ts`) computes CC damage as:
 
 ```
-CC damage = (quickPlayValue + masteryBonus)
-            × CHARGE_CORRECT_MULTIPLIER (2.0)
+CC damage = getMasteryStats(mechanicId, level).qpValue
+            × CHARGE_CORRECT_MULTIPLIER (1.75)
             × chainMultiplier
             × relicModifiers
             + inscriptionFuryBonus
 ```
 
-`masteryBonus` is obtained via `getMasteryStats(mechanicId, masteryLevel).qpValue - mechanic.quickPlayValue`.
-`chargeCorrectValue` on `MechanicDefinition` is **dead data** — resolver computes CC as `(quickPlayValue + masteryBonus) × 2.0`. Do not read it.
+`getMasteryStats(mechanicId, masteryLevel).qpValue` returns the explicit qpValue at that mastery level from `MASTERY_STAT_TABLES`. This value already encodes the full mastery progression — there is no separate "masteryBonus" added on top.
 
-**Play mode multipliers (as of 2026-04-01 balance pass):**
+`chargeCorrectValue` on `MechanicDefinition` is **dead data** — resolver computes CC as `qpValue × 1.75`. Do not read it.
+
+**Play mode multipliers (as of 2026-04-03 stat table system):**
 
 | Mode | Effect |
 |------|--------|
-| Quick Play (`quick`) | Uses `quickPlayValue` directly |
-| Charge Correct (`charge_correct`) | `(quickPlayValue + masteryBonus) × 2.0` (buffed from 1.5×) |
-| Charge Wrong (`charge_wrong`) | `FIZZLE_EFFECT_RATIO = 0.5×` of base effect (buffed from 0.25×) |
+| Quick Play (`quick`) | Uses `getMasteryStats().qpValue` directly |
+| Charge Correct (`charge_correct`) | `getMasteryStats().qpValue × CHARGE_CORRECT_MULTIPLIER (1.75×)` |
+| Charge Wrong (`charge_wrong`) | `FIZZLE_EFFECT_RATIO = 0.25×` of base effect — always resolves, never zero |
 | Cursed QP | `CURSED_QP_MULTIPLIER = 0.7×` |
 | Cursed CC | `CURSED_CHARGE_CORRECT_MULTIPLIER = 1.0×` (reward is the cure) |
 | Cursed CW | `CURSED_CHARGE_WRONG_MULTIPLIER = 0.5×` |
-| First Charge free (new fact) | Wrong = `FIRST_CHARGE_FREE_WRONG_MULTIPLIER = 0.0×` (fizzles) |
+
+**Note:** `FIZZLE_EFFECT_RATIO = 0.25×`. At 0.5× fizzle damage equaled or exceeded quick play, undermining the knowledge-as-power mechanic. The 0.25× floor ensures wrong answers always feel like a setback. CW has a `Math.max(0, ...)` floor to prevent negative values.
 
 ---
 
@@ -150,26 +152,33 @@ Cards gain mastery during a run by answering Charge correctly; lose mastery on w
 - `MASTERY_BASE_DISTRACTORS = 2` (L0), `MASTERY_UPGRADED_DISTRACTORS = 3` (L1+)
 - Colors: L0=none, L1=green `#22c55e`, L2=blue `#3b82f6`, L3=purple `#a855f7`, L4=orange `#f97316`, L5=gold `#eab308`
 
-### Mastery Scaling — Stat Table System (Phase 2 Complete, 2026-04-03)
+### Mastery Stat Table System (Phase 2 Complete, 2026-04-03)
 
-The mastery system uses two systems in parallel:
+**Every mechanic now has a full L0–L5 stat table** defining explicit values at each mastery level. This replaces the old flat `perLevelDelta` system.
 
-**Old system (bridge, still active for mechanics not in stat tables):**
 ```typescript
-// MASTERY_UPGRADE_DEFS in cardUpgradeService.ts
-getMasteryBaseBonus(mechanicId, level) = perLevelDelta × level
-getMasterySecondaryBonus(mechanicId, level) = secondaryPerLevelDelta × level
-```
-
-**New system (Phase 2 complete — 96 mechanics now have explicit per-level tables):**
-```typescript
-// MASTERY_STAT_TABLES in cardUpgradeService.ts (96 entries across all card types)
+// MASTERY_STAT_TABLES in cardUpgradeService.ts — 96 mechanics with full tables
 getMasteryStats(mechanicId, level): MasteryLevelStats | null
 ```
 
-`getMasteryStats()` is the unified lookup. It checks `MASTERY_STAT_TABLES` first; if the mechanic has no entry there, it synthesizes an identical `MasteryLevelStats` from `MASTERY_UPGRADE_DEFS` so all callers work without behavior change.
+`getMasteryStats()` is the single unified lookup. It checks `MASTERY_STAT_TABLES` first; if the mechanic has no entry, it synthesizes from `MASTERY_UPGRADE_DEFS` (the legacy `perLevelDelta` bridge) so all callers work without behavior change.
 
-**Stat table coverage (96 entries in 4 groups):**
+The old helpers (`getMasteryBaseBonus`, `getMasterySecondaryBonus`, `getMasteryAddedTag`, `getMasteryApReduction`) are marked `@deprecated`. All consumers (`cardEffectResolver.ts`, `damagePreviewService.ts`, `cardDescriptionService.ts`, `turnManager.ts`) now call `getMasteryStats()`.
+
+**`MasteryLevelStats` interface:**
+
+| Field | Type | Notes |
+|-------|------|-------|
+| `qpValue` | number | Quick Play base value at this level. CC = qpValue × 1.75 |
+| `apCost` | number? | Override AP cost; omit to inherit from MechanicDefinition |
+| `secondaryValue` | number? | Secondary stat (block, bleed stacks, reflect, etc.) |
+| `drawCount` | number? | Draw count override for draw/scry cards |
+| `hitCount` | number? | Hit count override for multi-hit cards |
+| `cwValue` | number? | Charge Wrong override; omit for mechanic default |
+| `tags` | string[]? | Cumulative tags active at this level |
+| `extras` | Record<string, number>? | Mechanic-specific fields (selfDmg, execBonus, execThreshold, etc.) |
+
+**Stat table coverage (96 entries across 6 groups):**
 - Attacks (20): core attacks, expansion attacks, flagship attacks, chase attacks
 - Shields (20): core shields, expansion shields, phase 3 chase shields
 - Buffs (10): empower, quicken, focus, double_strike, inscription_fury, inscription_iron, warcry, battle_trance, frenzy, mastery_surge
@@ -177,48 +186,86 @@ getMasteryStats(mechanicId, level): MasteryLevelStats | null
 - Utility (16): cleanse, scout, recycle, foresight, conjure, forge, transmute, immunity, sift, scavenge, swap, archive, reflex, recollect, synapse, siphon_knowledge, tutor
 - Wild (20): mirror, adapt, overclock, phase_shift, chameleon, dark_knowledge, chain_anchor, unstable_flux, sacrifice, catalyst, mimic, aftershock, knowledge_bomb, ignite, war_drum, inscription_wisdom, aegis_pulse, siphon_strike, stagger, and more
 
-All consumers (`cardEffectResolver.ts`, `damagePreviewService.ts`, `cardDescriptionService.ts`, `turnManager.ts`) now call `getMasteryStats()`. The old helpers (`getMasteryBaseBonus`, `getMasterySecondaryBonus`, `getMasteryAddedTag`, `getMasteryApReduction`) are marked `@deprecated` but remain for the bridge.
+### Design Philosophy — Cards Start Weak, Transform Through Mastery
 
-**`MasteryLevelStats` interface:**
+**Cards start weaker than before.** L0 qpValues are deliberately modest — the power fantasy comes from mastery progression, not the opening hand.
 
-| Field | Type | Notes |
-|-------|------|-------|
-| `qpValue` | number | Quick Play base value at this level |
-| `apCost` | number? | Override AP cost; omit to inherit from mechanic |
-| `secondaryValue` | number? | Secondary stat (block, bleed stacks, reflect, etc.) |
-| `drawCount` | number? | Draw count override for draw/scry cards |
-| `hitCount` | number? | Hit count override for multi-hit cards |
-| `cwValue` | number? | Charge Wrong override; omit for mechanic default |
-| `tags` | string[]? | Cumulative tags active at this level |
-| `extras` | Record<string, number>? | Mechanic-specific fields (selfDmg, execBonus, etc.) |
+| Design tier | L0 → L5 scaling | When to use |
+|---|---|---|
+| Modest (1.5–2×) | Side effect IS the value (tags, draws, AP reductions) | Cards where extra effects dominate |
+| Solid (2–2.5×) | Standard bread-and-butter scaling | Reliable combat cards |
+| Great (2.5–3×) | High-risk, high-cost, or thematic cards | Cards that earn elevated scaling |
 
-**Power tier targets (design intent):**
-- **Modest** — 1.5–2× QP at L5 (mechanics where side effect IS the value: tags, draws, AP reductions)
-- **Solid** — 2–2.5× QP at L5 (standard scaling for reliable combat cards)
-- **Great** — 2.5–3× QP at L5 (high-risk, high-cost, or thematic mechanics that earn elevated scaling)
+### Example Stat Tables
 
-Selected caps and deltas (from `MASTERY_UPGRADE_DEFS` in `cardUpgradeService.ts`):
+**`strike`** — Standard reliable attack (Solid tier):
 
-| Mechanic | perLevelDelta | maxLevel | QP at L0 | QP at L5 | Tier |
-|----------|-------------|---------|---------|---------|------|
-| `strike` | 1.2 | 5 | 4 | 10 | Solid 2.5× |
-| `block` | 1.2 | 5 | 3 | 9 | Solid 3× (buffed 2026-04-01) |
-| `brace` | 1.2 | 5 | 3 | 9 | Solid 3× (buffed 2026-04-01) |
-| `fortify` (Entrench) | 1.5 | 5 | 4 | 11 | Solid 2.75× (reworked 2026-04-01: QP doubles current block, CC doubles+adds card value, CW +50%) |
-| `reinforce` | 1.5 | 5 | 4 | 11 | Solid 2.75× (buffed 2026-04-01) |
-| `guard` | 1.6 | 5 | 7 | 15 | Solid 2.15× (buffed 2026-04-01) |
-| `emergency` | 1.0 | 5 | 2 | 7 | Solid 3.5× (buffed 2026-04-01) |
-| `shrug_it_off` | 1.2 | 5 | 3 | 9 | Solid 3× (buffed 2026-04-01) |
-| `thorns` | 1.2 | 5 | 3 | 9 | Solid 3× for block (buffed 2026-04-01; reflect stays hardcoded) |
-| `heavy_strike` | 2.0 | 5 | 10 | 20 | Solid 2× |
-| `reckless` | 2.4 | 5 | 6 | 18 | Great 3× |
-| `empower` | 2.0 | 5 | 35% | 45% | Modest |
-| `parry` | 0.3 | 5 | 2 | 3 | Modest 1.75× |
-| `quicken` | 0 | 3 | — | tag at L3 | Modest |
-| `cleanse` | 0 | 2 | — | binary only | Modest |
-| `overclock` | 0 | 3 | — | AP-1 at L3 | Modest |
+| Level | QP | CC (×1.75) | Notes |
+|-------|-----|-----------|-------|
+| L0 | 3 | 5.25 | Weak but reliable |
+| L1 | 4 | 7 | |
+| L2 | 5 | 8.75 | |
+| L3 | 6 | 10.5 | Big jump |
+| L4 | 7 | 12.25 | |
+| L5 | 8 | 14 | Bread and butter, fully grown |
 
-Some mechanics gain tags at L3 via `addTagAtLevel: [3, 'tagName']` unlocking additional behavior in the resolver.
+**`heavy_strike`** — High-base slow attack (Solid tier, WOW milestone at L5):
+
+| Level | QP | AP | CC (×1.75) | Notes |
+|-------|----|----|-----------|-------|
+| L0 | 7 | 3 | 12.25 | Big but expensive |
+| L1 | 8 | 3 | 14 | |
+| L2 | 9 | 3 | 15.75 | |
+| L3 | 10 | 3 | 17.5 | |
+| L4 | 11 | 3 | 19.25 | |
+| L5 | 12 | **1** | 21 | WOW: costs 1 AP now! |
+
+**`scout`** — Utility draw card (Modest tier, WOW milestone at L5):
+
+| Level | QP | AP | Draw | Tags | Notes |
+|-------|----|----|------|------|-------|
+| L0 | 0 | 1 | 1 | — | Draw 1 |
+| L1 | 0 | 0 | 2 | — | Draw 2! |
+| L2 | 0 | 0 | 2 | — | |
+| L3 | 0 | 0 | 2 | scout_scry2 | Also scry 2 |
+| L4 | 0 | 0 | 3 | — | Draw 3! |
+| L5 | 0 | **0** | 3 | scout_scry2 | FREE! Draw 3 + scry 2 |
+
+**`reckless`** — Self-damage decreases as you master it (Great tier):
+
+| Level | QP | CC (×1.75) | Self-Dmg | Notes |
+|-------|-----|-----------|---------|-------|
+| L0 | 4 | 7 | 4 | Hurts you a lot |
+| L1 | 5 | 8.75 | 4 | |
+| L2 | 6 | 10.5 | 3 | Self-damage drops! |
+| L3 | 8 | 14 | 3 | |
+| L4 | 10 | 17.5 | 2 | Mastering the recklessness |
+| L5 | 12 | 21 | **1** | Near-zero risk, full power |
+
+### "Wow Moment" Milestones
+
+Several mechanics have designed creative milestones at key mastery levels that change card behavior (not just number scaling):
+
+| Mechanic | Milestone | Effect |
+|---|---|---|
+| `heavy_strike` | L5 | Drops from 3 AP to **1 AP** |
+| `scout` | L5 | Becomes **FREE** (0 AP). Draw 3 + scry 2 |
+| `reckless` | L5 | Self-damage shrinks from 4 → **1** |
+| `lifetap` | L5 | Drops from 2 AP to **1 AP** |
+| `execute` | L3 | Execute threshold widens from 25% → **40% HP** |
+| `execute` | L5 | Execute threshold widens to **50% HP** |
+| `multi_hit` | L1 | Gains a **3rd hit** |
+| `multi_hit` | L4 | Gains a **4th hit** |
+| `twin_strike` | L3 | Gains a **3rd hit** |
+| `double_strike` | L5 | Pierces block |
+| `pierce_strip3` | L3 | Strips **3 enemy block** |
+| `piercing` | L5 | Applies **Vulnerable 1t** |
+| `power_strike` | L5 | Applies **Vulnerable 1t** |
+| `scout` | L3 | Gains **scry 2** |
+| `foresight` | L3 | Reveals enemy's **next intent** |
+| `conjure` | L2 | Upgrades to **uncommon** cards |
+| `conjure` | L3 | Pick **2 cards** |
+| `conjure` | L5 | Pick 2 **rare** cards |
 
 ### Catch-Up Mastery (New Card Acquisition)
 

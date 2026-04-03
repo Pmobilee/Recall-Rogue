@@ -320,6 +320,8 @@ Root cause: first-kill window too long. Player QP output (3 strikes × 3 QP = 9 
 
 No attack/block/intent values changed. Act 2/3 enemies unchanged.
 
+**Sim results after pass #7 (with mastery stat table system, 2026-04-03):** Scholar 59%, Dedicated 20%, Regular 2%. Scholar target met (50–70%). Dedicated below target (30–50%). Regular below target (5–15%). Further passes needed for dedicated/regular profiles — stat table rebalancing compressed max-mastery ceiling significantly.
+
 ---
 
 ## Act 2 Base Stats (2026-04-03 rebalance — pass #6 values)

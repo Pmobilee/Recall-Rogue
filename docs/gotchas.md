@@ -1,7 +1,7 @@
 # Gotchas & Lessons Learned
 
 > **Purpose:** Append-only mistake log and lessons learned
-> **Last verified:** 2026-04-01
+> **Last verified:** 2026-04-03
 > **Source files:** CLAUDE.md, memory/feedback-*, git log
 
 > **Rules:** NEVER edit or remove existing entries. Always append new entries at the bottom. Include date, what happened, why, and how to fix/avoid.
@@ -628,3 +628,27 @@ Similarly, `general_knowledge-hindi-fourth-language-world` had "Bengali" (single
 **What went wrong:** Movies & Cinema deck architecture specified 8 pools but the assembler eliminated 2 (film_quotes, country_names) and shipped character_names at 7/22 target (32%). Medical Terminology had 3 pools (organ_names, combining_forms, body_systems) with no generation tasks created — they were simply forgotten.
 **Why:** The orchestrator tracked progress mentally instead of with tasks. Mental tracking fails at scale. Tasks don't.
 **Fix:** (1) Create a TaskCreate for EVERY pool before generating. (2) After assembly, run target-vs-actual comparison against architecture YAML. (3) Before committing, TaskList must show ZERO pending tasks. Added to CLAUDE.md, deck-master skill, and work-tracking skill.
+
+### 2026-04-03 — triggerReact infinite loop when clicking cat repeatedly
+**What went wrong:** Clicking the hub cat pet multiple times while it was already in `react` state caused an infinite loop. The cat would react, finish, then immediately react again and again forever.
+**Why:** `triggerReact()` unconditionally set `previousBehavior: state.behavior`. When triggered during `react`, this overwrote the real saved behavior with `'react'`. When the react animation finished, `selectNextBehavior('react', ...)` returned `previousBehavior` — which was now `'react'` — causing the state machine to immediately re-enter react.
+**Fix:** In `triggerReact()`, guard the previousBehavior assignment: `previousBehavior: state.behavior === 'react' ? state.previousBehavior : state.behavior`. This preserves the original pre-react behavior across chained react triggers.
+**Rule:** Any "save and restore" pattern must guard against overwriting the save when already in the saved-from state.
+
+### 2026-04-03 — Stuck cat looping forever at same exclusion zone after stuck recovery
+**What went wrong:** After the pet's stuckCounter exceeded 30 ticks, the stuck recovery transitioned to idle at the STUCK position (which was surrounded by exclusion zones). The next walk attempt started from that same bad position and hit the same exclusion zone cluster immediately, triggering stuck recovery again.
+**Why:** The original stuck recovery passed `{ x: newX, y: newY }` (the stuck position after the failed push-out) as the recovery position. This is guaranteed to be near an exclusion zone by definition — the cat was just stuck there.
+**Fix:** On stuck recovery, snap `position` back to `HUB_WAYPOINTS[currentWaypoint]` (the last known-good waypoint the cat successfully reached). Fall back to the stuck position only if the waypoint lookup fails. This ensures the next walk attempt starts from a verified-safe location.
+**Rule:** Stuck recovery must snap to a known-safe position, not stay at the stuck position where the problem occurred.
+
+### 2026-04-03 — Mastery stat table system made docs stale with different CC multiplier
+**What went wrong:** The mastery stat table system shipped with `CHARGE_CORRECT_MULTIPLIER = 1.75` but `cards.md` and `combat.md` both said `2.0×`, and `GAME_DESIGN.md` said `1.5×`. Strike QP=3 at L0 but all three docs said QP=4. Heavy Strike L5 drops to 1 AP but docs showed no AP change.
+**Why:** The game-logic agent updated source code but doc updates were batched for the docs-agent as a follow-up task. Multiple passes of balance changes (1.5→2.0→1.75 for CC multiplier) accumulated without docs tracking each revision.
+**Fix:** Updated `cards.md`, `combat.md`, and `GAME_DESIGN.md` with correct values (CC=1.75×, Strike L0=3/L5=8, Heavy Strike L5→1AP, Reckless selfDmg 4→1, etc.).
+**Rule:** Every balance constant change — no matter how small — must be reflected in docs in the SAME commit as the code change. Never leave "doc update as follow-up" — sessions end abruptly and follow-ups get lost.
+
+### 2026-04-03 — Old getMasteryBaseBonus() still documented as primary lookup
+**What went wrong:** `combat.md` step 2 of the damage pipeline referenced `getMasteryBaseBonus(mechanicId, masteryLevel)` as the mastery lookup. This function is `@deprecated` — `getMasteryStats()` replaced it as the unified lookup.
+**Why:** The damage pipeline doc was written before stat tables existed and was not updated when the stat table system landed.
+**Fix:** Updated `combat.md` step 1 to reference `getMasteryStats(mechanicId, masteryLevel).qpValue` as the authoritative source. Note added that the L0 qpValue from stat tables may be LOWER than the mechanic's legacy `quickPlayValue`.
+**Rule:** When a function is deprecated in code, immediately search docs for all references and update them. `grep -r "getMasteryBaseBonus" docs/` before merging.

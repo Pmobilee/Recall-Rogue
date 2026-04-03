@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-02
+> **Last verified:** 2026-04-03
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`
 
 ---
@@ -55,17 +55,19 @@ If `apCurrent < apCost`, card is blocked (`blocked: true`, no AP deducted).
 
 Computed in `resolveCardEffect()` (`cardEffectResolver.ts`):
 
-1. **Mechanic base** — `mechanic.quickPlayValue` (QP) or `(quickPlayValue + masteryBonus) × CHARGE_CORRECT_MULTIPLIER` (CC = 2.0×) or `mechanic.chargeWrongValue` (CW)
-2. **Mastery bonus** — `getMasteryBaseBonus(mechanicId, masteryLevel)` — included inside the 1.5× CC multiplier (not added flat after)
-3. **Player strength/weakness modifier** — `getStrengthModifier(playerState.statusEffects)` — multiplied against base attack damage. Strength: +25% per stack; Weakness: −25% per stack; floor: 0.25×. Applied inside `applyAttackDamage()` in `cardEffectResolver.ts`. Does NOT affect shield cards.
-4. **Cursed multipliers** (if `card.isCursed`) — QP: 0.7×, CC: 1.0×, CW: 0.5×
-5. **Inscription of Fury bonus** — flat add for attack cards from `activeInscriptions`
-6. **Speed/trick bonus** — speed bonus (1.5× if answered fast) × trick question unlock (2.0×)
-7. **Combo multipliers** — `chainMultiplier × overclockMultiplier × buffMultiplier`
-8. **Relic modifiers** — `resolveAttackModifiers()` / `resolveShieldModifiers()`
-9. **Enemy modifiers** — QP damage multiplier, hardcover armor, `chargeResistant` (−50% QP), `chainVulnerable` (+50% chain damage)
-10. **Burn trigger** — `triggerBurn()`: bonus = current stacks, then stacks halve (multi-hit fires per hit)
-11. **Bleed bonus** — `getBleedBonus()`: flat `BLEED_BONUS_PER_STACK` per stack
+1. **Mechanic base** — `getMasteryStats(mechanicId, masteryLevel).qpValue` (QP) or `qpValue × CHARGE_CORRECT_MULTIPLIER` (CC = 1.75×) or `FIZZLE_EFFECT_RATIO × baseEffectValue` (CW = 0.25×)
+   - Note: stat table `qpValue` at L0 may be LOWER than `mechanic.quickPlayValue` — stat tables override the mechanic definition
+   - `chargeCorrectValue` field on `MechanicDefinition` is dead data — never read by the resolver
+   - CW has `Math.max(0, ...)` floor to prevent negative values
+2. **Player strength/weakness modifier** — `getStrengthModifier(playerState.statusEffects)` — multiplied against base attack damage. Strength: +25% per stack; Weakness: −25% per stack; floor: 0.25×. Applied inside `applyAttackDamage()` in `cardEffectResolver.ts`. Does NOT affect shield cards.
+3. **Cursed multipliers** (if `card.isCursed`) — QP: 0.7×, CC: 1.0×, CW: 0.5×
+4. **Inscription of Fury bonus** — flat add for attack cards from `activeInscriptions`
+5. **Speed/trick bonus** — speed bonus (1.5× if answered fast) × trick question unlock (2.0×)
+6. **Combo multipliers** — `chainMultiplier × overclockMultiplier × buffMultiplier`
+7. **Relic modifiers** — `resolveAttackModifiers()` / `resolveShieldModifiers()`
+8. **Enemy modifiers** — QP damage multiplier, hardcover armor, `chargeResistant` (−50% QP), `chainVulnerable` (+50% chain damage)
+9. **Burn trigger** — `triggerBurn()`: bonus = current stacks, then stacks halve (multi-hit fires per hit)
+10. **Bleed bonus** — `getBleedBonus()`: flat `BLEED_BONUS_PER_STACK` per stack
 
 Final damage: `applyDamageToEnemy(enemy, damageDealt)`. Enemy HP ≤ 0 → `result = 'victory'`.
 
@@ -79,14 +81,15 @@ Chains now **decay by 1** per turn end (`CHAIN_DECAY_PER_TURN=1`) instead of ful
 ## Play Modes
 
 **Quick Play (`playMode = 'quick'`)**
-- No quiz; fires at `mechanic.quickPlayValue`
+- No quiz; fires at `getMasteryStats(mechanicId, level).qpValue`
 - No +1 AP surcharge
 - Breaks the Knowledge Chain
 - Locked cards (Trick Question) cannot be played Quick
 - If no Charge play was made the entire turn (Quick Play only, or no cards played), fog drifts up by 1 (`adjustAura(1)`) at `endPlayerTurn()` — AR-261
 
 **Charge Correct (`playMode = 'charge'`, `answeredCorrectly = true`)**
-- Damage = `(quickPlayValue + masteryBonus) × 2.0` — mastery is included before multiplication (CC multiplier buffed 1.5→2.0, 2026-04-01)
+- Damage = `getMasteryStats().qpValue × CHARGE_CORRECT_MULTIPLIER (1.75×)`
+- The qpValue already encodes full mastery progression — no separate masteryBonus added
 - Extends Knowledge Chain
 - Mastery upgrade eligible
 - Costs `apCost + 1` (with waivers)
@@ -94,8 +97,8 @@ Chains now **decay by 1** per turn end (`CHAIN_DECAY_PER_TURN=1`) instead of ful
 - Clears fact from review queue
 
 **Charge Wrong (`playMode = 'charge'`, `answeredCorrectly = false`)**
-- Partial effect at `FIZZLE_EFFECT_RATIO = 0.25×` of base effect (reverted from 0.5× — at 0.5× fizzle damage equaled or exceeded quick play, undermining knowledge-as-power mechanic; BATCH-2026-04-02-004 H-2)
-- Free First Charge wrong = 0.0× (total fizzle, `FIRST_CHARGE_FREE_WRONG_MULTIPLIER`)
+- Partial effect at `FIZZLE_EFFECT_RATIO = 0.25×` of base effect — always resolves, never zero
+- At 0.5× the fizzle damage equaled or exceeded quick play, undermining knowledge-as-power; current 0.25× keeps wrong answers clearly inferior
 - Breaks Knowledge Chain, loses Chain Momentum
 - Mastery downgrade (skipped on first attempt at a fact, `isFirstAttempt` flag)
 - Adds fact to `cursedFactIds` if `masteryLevel === 0` and not first attempt

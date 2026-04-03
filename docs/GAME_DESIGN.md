@@ -53,7 +53,7 @@ PLAYER TURN:
      CHARGE PLAY (drag card into upper screen zone above ~40% from top, or click CHARGE button):
        - Costs card's base AP + 1 additional AP (the "Charge surcharge")
        - Quiz panel appears. Timer starts. No backing out.
-       - CORRECT ANSWER → card plays at (QP + masteryBonus) × 1.5. 500ms celebration.
+       - CORRECT ANSWER → card plays at getMasteryStats().qpValue × 1.75. 500ms celebration.
        - WRONG ANSWER → card plays at FIZZLE_EFFECT_RATIO (0.25×). 300ms muted resolve.
        - Card is never wasted — wrong answers still resolve at reduced effect.
        - Contributes to Knowledge Chain if same chainType (0-5) as previous Charge.
@@ -73,11 +73,11 @@ ENEMY TURN:
 
 | Scenario | AP Spent | Damage Dealt | Efficiency |
 |----------|----------|--------------|------------|
-| 3 Quick Strike plays | 3 AP | 4 + 4 + 4 = 12 | 4 dmg/AP |
-| 1 Charged Strike (correct, mastery 0) | 2 AP | 6 | 3 dmg/AP |
-| 1 Charged Strike (correct, mastery 3) | 2 AP | 14 | 7 dmg/AP |
-| 1 Charged Strike (wrong, mastery 1+) | 2 AP | 2.8 | 1.4 dmg/AP |
-| 1 Charged Strike (correct) + 1 Quick Strike | 3 AP | 6 + 4 = 10 | 3.3 dmg/AP |
+| 3 Quick Strike plays | 3 AP | 3 + 3 + 3 = 9 | 3 dmg/AP |
+| 1 Charged Strike (correct, mastery 0) | 2 AP | 5.25 | 2.6 dmg/AP |
+| 1 Charged Strike (correct, mastery 3) | 2 AP | 10.5 | 5.25 dmg/AP |
+| 1 Charged Strike (wrong, mastery 1+) | 2 AP | 1 | 0.5 dmg/AP |
+| 1 Charged Strike (correct) + 1 Quick Strike | 3 AP | 5.25 + 3 = 8.25 | 2.75 dmg/AP |
 
 **Quick Play is AP-efficient. Charge is power-efficient but expensive.** The +1 AP surcharge prevents "always Charge everything" — with 3 AP, you can Quick Play 3 cards OR Charge 1 + Quick 1. Meaningful tradeoff every turn.
 
@@ -85,42 +85,40 @@ ENEMY TURN:
 
 The runtime computes card effect values through this pipeline:
 
-1. **Base value** = mechanic's `quickPlayValue` (e.g., Strike = 4, Block = 3)
+1. **Base value** = `getMasteryStats(mechanicId, masteryLevel).qpValue` — explicit per-level value from stat table (e.g., Strike L0=3, L5=8)
+   - Note: L0 qpValue may be LOWER than the mechanic's legacy `quickPlayValue`. Stat tables override.
 2. **Play mode scaling:**
-   - Quick Play: `quickPlayValue × 1.0` (no multiplier)
-   - Charge Correct: `(quickPlayValue + masteryBonus) × 1.5` (CHARGE_CORRECT_MULTIPLIER) — mastery is multiplied in
-   - Charge Wrong: mechanic's `chargeWrongValue` (e.g., Strike = 3, Block = 2)
-3. **Mastery bonus** = `getMasteryBaseBonus()` — added to `quickPlayValue` BEFORE the 1.5× multiplier (so mastery benefits from Charging)
-4. **Tier multiplier** = T1: 1.0×, T2a: 1.3×, T2b: 1.6× (from `card.effectMultiplier`)
-5. **Chain multiplier** = [1.0, 1.0, 1.3, 1.7, 2.2, 3.0] based on consecutive same-domain Charges
-6. **Buff/relic/overclock** multipliers stacked on top
-7. **Vulnerable** (+50% if enemy is vulnerable)
+   - Quick Play: `qpValue × 1.0` (no multiplier)
+   - Charge Correct: `qpValue × CHARGE_CORRECT_MULTIPLIER (1.75×)` — mastery already encoded in qpValue
+   - Charge Wrong: `FIZZLE_EFFECT_RATIO (0.25×)` of base effect — always resolves, never zero
+3. **Tier multiplier** = T1: 1.0×, T2a: 1.0×, T2b: 1.0× — tier multipliers REMOVED (all active tiers = 1.0×)
+4. **Chain multiplier** = [1.0, 1.2, 1.5, 2.0, 2.5, 3.5] at chain lengths 0–5
+5. **Buff/relic/overclock** multipliers stacked on top
+6. **Vulnerable** (+50% if enemy is vulnerable)
 
-**The 1.5× CC multiplier is intentionally modest.** The real power progression comes from:
-- Mastery upgrades: Each correct Charge upgrades the card one mastery level, increasing the mastery bonus
-- Tier upgrades: T2a (1.3×) and T2b (1.6×) make all play modes stronger
-- Chain stacking: A 5-chain gives 3.0× on top of everything
+**The 1.75× CC multiplier is the base.** The real power progression comes from:
+- Mastery upgrades: Each correct Charge upgrades the card one mastery level, increasing qpValue in the stat table
+- Chain stacking: A 5-chain gives 3.5× on top of everything
 - Relic synergies: Many relics amplify Charge Correct specifically
 
 **Example — Strike at different mastery levels (Charge Correct, no chain/relic):**
 
-Strike's `perLevelDelta` = 1.2, so mastery bonus = `level × 1.2`.
+Strike uses explicit stat table: L0=3, L1=4, L2=5, L3=6, L4=7, L5=8.
 
-| Mastery | Base | + Mastery Bonus | × 1.5 CC | Total |
-|---------|------|-----------------|----------|-------|
-| 0 | 4 | +0 = 4 | 6 | **6** |
-| 2 | 4 | +2.4 ≈ 6 | 9 | **9** |
-| 5 | 4 | +6 = 10 | 15 | **15** |
+| Mastery | qpValue | × 1.75 CC | Total |
+|---------|---------|-----------|-------|
+| 0 | 3 | × 1.75 | **5.25** |
+| 2 | 5 | × 1.75 | **8.75** |
+| 5 | 8 | × 1.75 | **14** |
 
-With a 3-chain (1.7×) on top of mastery 5: 15 × 1.7 = **~26 damage** from a single Strike.
+With a 3-chain (2.0×) on top of mastery 5: 14 × 2.0 = **28 damage** from a single Strike.
 
-> **Design intent (2026-03-31):** Mastery scaling rebalanced to 2–3× base at max level (was 1–5×).
-> Tier-based damage multipliers removed (all active tiers = 1.0×). Big damage comes from chain
-> multipliers (1.0–3.0×) and CC multiplier (1.5×), not from raw base scaling. Cards have deliberate
-> power tiers: Modest (1.5–2×), Solid (2–2.5×), Great (2.5–3×) — some cards are mediocre scalers,
-> others are great investments depending on risk/secondary effects.
+> **Design intent (2026-04-03):** Mastery stat table system replaces perLevelDelta. Every mechanic
+> has an explicit L0–L5 table. Cards start WEAKER (Strike L0 QP=3, was 4). Max-mastery ceiling
+> compressed (Strike L5=8, was 10). CC multiplier = 1.75× (was 1.5×). All tier multipliers = 1.0×.
+> Power tiers: Modest (1.5–2×), Solid (2–2.5×), Great (2.5–3×).
 
-> **Implementation note:** The `chargeCorrectValue` field in `mechanics.ts` is **dead data** — the resolver does NOT read it. CC is always computed as `quickPlayValue × CHARGE_CORRECT_MULTIPLIER`. The field exists for documentation/reference only.
+> **Implementation note:** The `chargeCorrectValue` field in `mechanics.ts` is **dead data** — the resolver does NOT read it. CC is always computed as `getMasteryStats().qpValue × CHARGE_CORRECT_MULTIPLIER (1.75)`. The field exists for historical reference only.
 
 ### Mastery Upgrade System (AR-113)
 
@@ -843,19 +841,19 @@ function getCardTier(state: PlayerFactState): '1' | '2a' | '2b' | '3' {
 
 Combat power is driven by **card slot mastery** (0–5, per run), not FSRS tier:
 
-- **Quick Play:** `quickPlayValue + masteryBonus` (1.0× of effective value)
-- **Charge Correct:** `(quickPlayValue + masteryBonus) × 1.5`
-- **Charge Wrong:** `FIZZLE_EFFECT_RATIO (0.25×)` of effective value
+- **Quick Play:** `getMasteryStats(mechanicId, level).qpValue` (1.0× of level's qpValue)
+- **Charge Correct:** `getMasteryStats().qpValue × CHARGE_CORRECT_MULTIPLIER (1.75×)`
+- **Charge Wrong:** `FIZZLE_EFFECT_RATIO (0.25×)` of base effect — always resolves
 - **Charge AP Cost:** +1 AP surcharge (waived during Surge, Chain Momentum, first charge)
 
-Mastery bonus = `perLevelDelta × masteryLevel` (varies per mechanic, targets 2–3× base at L5).
+Power comes from explicit per-level stat tables — not a delta formula. Cards start weaker at L0 and transform through mastery. Some mechanics gain new tags, AP reductions, or hit count increases at milestone levels (see `docs/mechanics/cards.md` — Wow Moment Milestones).
 
-| Card Slot Mastery | Example: Strike (QP=4, delta=1.2) | CC Value |
-|-------------------|-----------------------------------|----------|
-| 0 | 4 + 0 = 4 | 6 |
-| 1 | 4 + 1.2 ≈ 5 | 8 |
-| 3 | 4 + 3.6 ≈ 8 | 11 |
-| 5 | 4 + 6.0 = 10 | 15 |
+| Card Slot Mastery | Strike stat table qpValue | CC Value (×1.75) |
+|-------------------|--------------------------|-----------------|
+| 0 | 3 | 5.25 |
+| 1 | 4 | 7 |
+| 3 | 6 | 10.5 |
+| 5 | 8 | 14 |
 
 ### Mastery-Driven Question Difficulty
 
@@ -2512,11 +2510,11 @@ Wrong Charge resolves at **0.7× multiplier** (mastery 1+) or **0.6×** (mastery
 
 The exact order of damage calculation for all attack cards. **The combo multiplier is NOT in this pipeline** — the combo system has been fully removed.
 
-1. `mechanicBaseValue` (from QP/CC/CW lookup — for CC: `(quickPlayValue + masteryBonus) × 1.5`)
-2. + mastery bonus is already folded into step 1 for CC; for QP/CW it is added flat here
+1. `mechanicBaseValue` — for QP: `getMasteryStats().qpValue`; for CC: `getMasteryStats().qpValue × 1.75`; for CW: `FIZZLE_EFFECT_RATIO (0.25×) × baseEffectValue`
+2. Note: stat table qpValue already encodes the full mastery level — there is no separate masteryBonus step
 3. + Inscription of Fury flat bonus (if active — applied here as flat addition, attack cards only)
 4. + relic flat bonuses (`barbed_edge`, etc.)
-5. × `card.effectMultiplier` (mastery-derived: 1.0× QP, 2.5–4.0× CC, 0.6–0.7× CW)
+5. × `card.effectMultiplier` — always 1.0× for active tiers (T1/T2a/T2b); 0× for T3 (passive)
 6. × `chainMultiplier` (1.0–3.0, based on chain length)
 7. × `speedBonus` (from quiz timer — only applies on CC)
 8. × `buffMultiplier` (from Empower/buff cards active this turn)
