@@ -425,6 +425,16 @@ For EVERY discovered element, you must ask and answer:
 - Does this screen make a new player feel welcome or confused?
 - Rate visual polish 1-10 and explain the score.
 
+### Immersion Systems Checklist (added 2026-04-03)
+When inspecting combat visuals, also verify:
+- **Enemy entrance:** Enemy emerges from shadow (800ms common, 1200ms boss) — not instant pop-in
+- **Weapon impact sync:** Enemy recoils at sword apex (T+250ms) / tome peak (T+330ms), not before
+- **Turn transitions:** Brief vignette darken between turns, enemy pulse, particle spike
+- **Foreground parallax:** 1-3 semi-transparent elements at screen edges (depth 13), gentle breathing drift
+- **Mood vignette:** `moodVignetteOverlay` alpha scales with HP (0.15 full → 0.27+ near-death)
+- **Chain escalation:** At chain 3+ lights brighten/shift hue, chain 5+ vignette pulses, chain 7+ depth pulses
+- **Background micro-anim:** Subtle torch flicker in bright depth regions (mid+ quality only)
+
 ### Report Format
 
 After evaluation, your report must include:

@@ -41,6 +41,9 @@ Before ANY code change, read the relevant doc under `docs/mechanics/` or `docs/a
 - Chain multipliers stack multiplicatively
 - Wrong charge = 0.7× (mastery 1+) or 0.6× (mastery 0) — NEVER zero
 - Facts assigned at charge-commit time, NOT draw time
+- Weapon animations fire `onImpact` callback at contact frame — enemy hit reaction is deferred to that callback for attack/cast cards
+- DungeonMoodSystem modulates atmosphere per-frame based on HP/chain/streak/threat/depth — don't bypass or reset it manually
+- Chain escalation visuals (particles, lights, vignette) are driven by `CombatScene.onChainUpdated()` — wired automatically via encounterBridge after card plays
 
 ## After Making Changes
 1. `npm run typecheck` — must pass

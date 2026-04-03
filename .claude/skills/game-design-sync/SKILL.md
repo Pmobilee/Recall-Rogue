@@ -29,11 +29,14 @@ This skill doesn't just check after changes — it ACTIVELY URGES completeness:
 | `src/data/balance.ts` | Inline throughout | Balance constants referenced where used |
 | `src/services/ascension.ts` | §27 Ascension Mode | All 20 levels with challenge + buff |
 | `src/data/domainMetadata.ts` | §28 Fact Database (Domain List) | All knowledge domains |
-| `src/game/scenes/CombatScene.ts` | §2 Card Combat | Turn flow, UI interactions |
+| `src/game/scenes/CombatScene.ts` | §2 Card Combat | Turn flow, UI interactions, combat animation orchestration, mood/chain/knowledge visual wiring |
 | `src/services/turnManager.ts` | §2 Card Combat | Turn resolution, damage pipeline |
 | `src/services/enemyManager.ts` | §8 Enemy Design | Enemy AI, intent selection |
 | `src/services/relicEffectResolver.ts` | §16 Relic System | Relic trigger mechanics |
 | `src/services/cardUpgradeService.ts` | §5 Card Tiers / §6 Mechanics | Mastery upgrade paths |
+| `src/game/systems/DungeonMoodSystem.ts` | §5.6 VFX Systems | Continuous mood state modulating atmosphere |
+| `src/game/systems/ForegroundParallaxSystem.ts` | §5.6 VFX Systems | Per-biome foreground depth layer |
+| `src/data/foregroundElements.ts` | §5.6 VFX Systems | Foreground element pool configs per biome |
 
 ## Per-Element Checklists
 

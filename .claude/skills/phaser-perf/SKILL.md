@@ -71,6 +71,12 @@ const renderer = Capacitor.isNativePlatform() ? Phaser.CANVAS : Phaser.AUTO;
 - [ ] Use `Phaser.Math.Interpolation` for simple movements instead of full tweens
 - [ ] Pause off-screen animations
 
+### Immersion System Performance Notes
+- ForegroundParallaxSystem: max 3 sprites, idle breathing via position update (no tweens in update loop)
+- DungeonMoodSystem: per-frame lerp + modifier push — lightweight (no GPU cost, just tween params)
+- Background micro-animation: 3 extra sin() calls per fragment in DepthLightingFX shader — negligible on any GPU running existing PostFX
+- Chain escalation overlays: max 2 additional Rectangle objects (vignette pulse + tint overlay)
+
 ## Extending __rrDebug
 
 Add these to the existing `window.__rrDebug()` output:

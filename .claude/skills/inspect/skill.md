@@ -72,6 +72,10 @@ No single testing method is sufficient. Unit tests miss visual bugs. Screenshots
 
 ### 5. Visual Inspection (/visual-inspect)
 **What it catches:** Missing sprites, broken art, rendering glitches, z-order issues, animation failures, layout overflow, text truncation
+- Weapon-enemy impact timing (enemy should recoil at weapon contact frame, not independently)
+- Turn transition breathing (300ms vignette darken between turns, released on player turn start)
+- Foreground parallax elements (should be present in combat, absent in shop/rest/reward rooms)
+- Mood vignette alpha (should increase as player HP decreases)
 **How:** Playwright + `__rrScenario` — loads specific game states, takes screenshots, checks DOM + canvas
 **Speed:** ~10 seconds per screen
 **Blind spots:** Cannot assess design quality or UX best practices. Only catches errors, not improvements.
