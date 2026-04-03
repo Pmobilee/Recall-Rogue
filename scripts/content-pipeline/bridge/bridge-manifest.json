@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-04-03T08:04:19.602Z",
-  "totalBridgedFacts": 2556,
+  "lastRun": "2026-04-03T11:05:10.990Z",
+  "totalBridgedFacts": 3040,
   "decks": {
     "ancient_greece": {
       "totalFacts": 246,
@@ -12,6 +12,12 @@
       "totalFacts": 275,
       "entities": 169,
       "bridged": 169,
+      "skipped": 0
+    },
+    "ap_us_history": {
+      "totalFacts": 504,
+      "entities": 481,
+      "bridged": 481,
       "skipped": 0
     },
     "constellations": {
@@ -63,9 +69,9 @@
       "skipped": 0
     },
     "medical_terminology": {
-      "totalFacts": 635,
-      "entities": 40,
-      "bridged": 40,
+      "totalFacts": 700,
+      "entities": 43,
+      "bridged": 43,
       "skipped": 0
     },
     "medieval_world": {
