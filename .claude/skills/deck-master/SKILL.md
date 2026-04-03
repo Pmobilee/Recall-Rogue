@@ -19,9 +19,41 @@ Single skill for creating high-quality curated decks. Every deck is a self-conta
 
 This section exists because every mistake listed below was actually made during the Solar System deck build (2026-03-24). Future agents MUST follow this process to avoid repeating them.
 
-### 🚨🚨🚨 ABSOLUTE RULE: SOURCE DATA BEFORE GENERATION 🚨🚨🚨
+### 🚨🚨🚨 ABSOLUTE RULE #1: SOURCE DATA BEFORE GENERATION 🚨🚨🚨
 
 **NEVER EVER generate facts from LLM training knowledge. This is the #1 content pipeline failure mode.**
+
+### 🚨🚨🚨 ABSOLUTE RULE #2: CURRICULUM-SOURCED SCOPE FOR EDUCATIONAL DECKS 🚨🚨🚨
+
+**For ANY deck where real students depend on completeness, the SCOPE must come from an authoritative curriculum — NEVER from LLM compilation.**
+
+This applies to: medical terminology, language vocabulary/grammar (JLPT, HSK, CEFR, TOPIK), anatomy, exam prep, professional certifications, any deck where a student would say "does this cover everything I need?"
+
+**What went wrong (Medical Terminology, 2026-04-03):** The orchestrator compiled prefix/suffix/root lists from web search results and LLM knowledge. The deck shipped with 635 facts but completely missed medical abbreviations (STAT, PRN, BID, NPO, IV, IM, PO) — terms that every nursing student needs daily. No textbook or course curriculum was consulted to verify completeness. The deck LOOKS comprehensive but has invisible gaps because the scope was LLM-generated, not curriculum-sourced.
+
+**The correct workflow:**
+
+1. **Find the authoritative curriculum source FIRST:**
+   - Medical terminology → Real textbook ToC (Chabner "Language of Medicine", Ehrlich, or equivalent open-access course)
+   - Language vocabulary → Official word lists (JLPT, HSK, CEFR — we already do this correctly)
+   - Certifications → Official exam blueprint or study guide
+   - Use WebSearch/WebFetch to find: open-access syllabi, textbook appendices, official study guides, course outlines
+
+2. **Extract the COMPLETE scope from that source:**
+   - Every chapter, every term list, every learning objective
+   - Cross-reference 2+ sources to catch gaps
+   - The curriculum document becomes the architecture — not the other way around
+
+3. **Map facts to curriculum sections:**
+   - "Chapter 1: Word Parts" → all prefixes, suffixes, combining vowel rules
+   - "Chapter 4: Cardiovascular" → all CV roots, conditions, procedures, abbreviations
+   - This ensures no chapter is accidentally skipped
+
+4. **Verify coverage after generation:**
+   - Check every item in the curriculum source is represented
+   - Check no curriculum section has zero facts
+
+**This rule does NOT apply to:** Casual knowledge decks (movies, mythology, dinosaurs, world history) where "completeness" means "comprehensive coverage" not "aligns with a specific study program." Those decks follow the pool-first design process as before.
 
 On 2026-03-25, an entire batch of ~270 WWII facts had to be thrown away because workers were generating facts from their training knowledge and attributing fake Wikipedia URLs they never consulted. The facts LOOKED correct but had no verified provenance.
 

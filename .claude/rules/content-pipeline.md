@@ -1,5 +1,27 @@
 # Content Pipeline Rules
 
+## Curriculum-Sourced Scope — For Educational Decks
+
+**For ANY deck where students depend on completeness (medical, language, certifications, exam prep), the SCOPE must come from an authoritative curriculum source — NEVER from LLM compilation.**
+
+Before generating a single fact, you MUST:
+1. **Find the canonical curriculum** — a real textbook ToC, official word list, or exam blueprint
+2. **Extract the COMPLETE scope from that source** — every chapter, term, learning objective
+3. **Cross-reference 2+ sources** to catch gaps
+4. **Map deck architecture to the curriculum** — not the other way around
+
+**Why:** On 2026-04-03, Medical Terminology shipped 635 facts scoped from LLM-compiled web search results. It completely missed medical abbreviations (STAT, PRN, BID, NPO) — terms every nursing student uses daily — because no actual curriculum was consulted.
+
+**Examples of correct curriculum sources:**
+- Medical terminology → Chabner "Language of Medicine" ToC, NCBI open textbook chapters
+- Language vocabulary → Official JLPT/HSK/CEFR/TOPIK word lists (already done correctly)
+- Language grammar → Official grammar point lists by level
+- Anatomy → Gray's Anatomy chapter structure, A&P course syllabi
+
+**This applies to:** Medical, language, anatomy, certifications, exam prep — any deck where a student would ask "does this cover everything I need to know?"
+
+**This does NOT apply to:** Casual knowledge decks (movies, mythology, history) where completeness means "comprehensive" not "curriculum-aligned."
+
 ## Distractor Generation — NEVER From Database
 
 **ALL distractors MUST be LLM-generated**, reading the specific question to produce plausible wrong answers.
