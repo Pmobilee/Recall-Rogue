@@ -1155,3 +1155,26 @@ Each pool contains only answers that a student could plausibly confuse with each
 - **2026-04-03 pool redesign**: All 14 original junk-drawer pools abolished and replaced with 14 semantically tight pools. Old pools (`law_and_equation_names` had 81 members including "Electron sea model", "Crystal lattice") caused trivially eliminatable distractors. New pools ensure every member of a pool could plausibly be confused with every other member. Rebuild script: `scripts/rebuild-apchem-pools.mjs`. 46 long-answer facts assigned to `unique_answers` pool.
 
 ---
+
+## Cross-Deck Quality Fixes (2026-04-03)
+
+`scripts/fix-deck-quality.mjs` — one-shot script fixing all outstanding data quality failures across 10 decks:
+
+**human_anatomy (134 missing funScore, 54 missing difficulty):**
+- All `ha_visual_*` and other facts missing `difficulty` set to 3 (standard visual identification).
+- All facts missing `funScore` set to 7 (consistent with other visual facts in the deck).
+
+**movies_cinema (1 fact with difficulty=6):**
+- `cinema_singinrain_codirector`: difficulty 6 → 5 (max allowed value).
+
+**Long correctAnswers >100 chars shortened (across 8 decks):**
+- `ancient_greece`, `ancient_rome`, `ap_chemistry`, `egyptian_mythology`, `famous_inventions`: curated manual replacements.
+- `human_anatomy`: 92 facts auto-shortened via smart boundary-aware truncation (semicolon → period → em-dash → comma → space).
+- `medieval_world`, `world_war_ii`: 13 facts shortened with curated replacements preserving key facts.
+
+**Distractor collisions removed (9 facts across 7 decks):**
+- `world_flags/flag_germany`, `us_presidents/pres_truman_atomic_bomb`, `nasa_missions/nasa_voyager_golden_record`, `greek_mythology/myth_harpies_phineus`, `world_war_ii/wwii_ax_donitz_fuhrer`, `medieval_world/med_4_cru_acre_fall_1291`, `medieval_world/med_5_goryeo_founded`, `medieval_world/med_6_afr_songhai_fall`, `movies_cinema/cinema_supp_film_braveheart`.
+
+**Result:** 0 failures across all 70 decks. 9/9 unit tests pass (`tests/unit/deck-content-quality.test.ts`).
+
+---

@@ -6385,7 +6385,7 @@
     {
       "id": "ha_clinical_050",
       "subDeckId": "clinical_anatomy",
-      "correctAnswer": "Prevents posterior translation of the tibia on the femur; classic mechanism is a direct blow to the anterior proximal tibia (dashboard injury)",
+      "correctAnswer": "Prevents posterior translation of the tibia on the femur",
       "acceptableAlternatives": [
         "resists posterior tibial translation",
         "prevents tibia sliding backward"
@@ -6617,7 +6617,7 @@
     {
       "id": "ha_clinical_054",
       "subDeckId": "clinical_anatomy",
-      "correctAnswer": "Restricted active AND passive ROM (especially external rotation), distinguishing it from rotator cuff pathology",
+      "correctAnswer": "Restricted active AND passive ROM (especially external rotation)",
       "acceptableAlternatives": [
         "loss of both active and passive ROM",
         "restricted passive and active range of motion"
@@ -6675,7 +6675,7 @@
     {
       "id": "ha_clinical_055",
       "subDeckId": "clinical_anatomy",
-      "correctAnswer": "Brachial plexus and subclavian vessels compressed between the anterior and middle scalene muscles, first rib, and clavicle",
+      "correctAnswer": "Brachial plexus and subclavian vessels compressed between the anterior and middle scalene muscles",
       "acceptableAlternatives": [
         "scalene triangle compression of brachial plexus",
         "TOS — scalenes, first rib, clavicle"
@@ -6731,7 +6731,7 @@
     {
       "id": "ha_clinical_056",
       "subDeckId": "clinical_anatomy",
-      "correctAnswer": "Sciatic nerve compressed as it passes anterior to (or through) the piriformis muscle in the greater sciatic notch",
+      "correctAnswer": "Sciatic nerve compressed as it passes anterior to (or through) the piriformis muscle in the greater",
       "acceptableAlternatives": [
         "piriformis compresses sciatic nerve",
         "sciatic nerve impingement by piriformis"
@@ -6900,7 +6900,7 @@
     {
       "id": "ha_clinical_059",
       "subDeckId": "clinical_anatomy",
-      "correctAnswer": "Neurogenic claudication — bilateral leg pain/heaviness relieved by lumbar flexion (leaning forward or sitting)",
+      "correctAnswer": "Neurogenic claudication — bilateral leg pain/heaviness relieved by lumbar flexion (leaning forward",
       "acceptableAlternatives": [
         "neurogenic claudication relieved by flexion",
         "leg pain with walking, relieved by bending forward"
@@ -6955,7 +6955,7 @@
     {
       "id": "ha_clinical_060",
       "subDeckId": "clinical_anatomy",
-      "correctAnswer": "Golfer's elbow (medial epicondylitis) — pain at medial epicondyle, worsened by resisted wrist flexion",
+      "correctAnswer": "Golfer's elbow (medial epicondylitis)",
       "acceptableAlternatives": [
         "medial epicondylitis",
         "golfer's elbow"
@@ -8210,7 +8210,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_032",
@@ -8235,7 +8236,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_033",
@@ -8260,7 +8262,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_034",
@@ -8285,7 +8288,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_035",
@@ -8310,7 +8314,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_036",
@@ -8335,7 +8340,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_037",
@@ -8360,7 +8366,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_038",
@@ -8385,7 +8392,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_039",
@@ -8410,7 +8418,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_040",
@@ -8435,7 +8444,8 @@
         "USMLE_Step2",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_041",
@@ -8460,7 +8470,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_042",
@@ -8485,7 +8496,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_043",
@@ -8510,7 +8522,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_044",
@@ -8535,7 +8548,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_045",
@@ -8560,7 +8574,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_046",
@@ -8585,7 +8600,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_047",
@@ -8610,7 +8626,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_048",
@@ -8635,7 +8652,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_049",
@@ -8660,7 +8678,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_050",
@@ -8685,7 +8704,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_051",
@@ -8710,7 +8730,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_052",
@@ -8735,7 +8756,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_053",
@@ -8760,7 +8782,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_054",
@@ -8785,7 +8808,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_055",
@@ -8810,7 +8834,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_056",
@@ -8835,7 +8860,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_057",
@@ -8860,7 +8886,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_058",
@@ -8873,7 +8900,7 @@
       "explanation": "McBurney's point lies approximately 1/3 of the distance from the anterior superior iliac spine (ASIS) to the umbilicus. Tenderness here is a classic sign of acute appendicitis.",
       "sourceUrl": "https://en.wikipedia.org/wiki/McBurney%27s_point",
       "quizQuestion": "What is McBurney's point, and what condition is it associated with?",
-      "correctAnswer": "One-third of the way from the right ASIS to the umbilicus — point of maximal tenderness in appendicitis",
+      "correctAnswer": "One-third of the way from the right ASIS to the umbilicus",
       "chainThemeId": "clinical_gi",
       "difficulty": 2,
       "acceptableAlternatives": [],
@@ -8887,7 +8914,8 @@
         "USMLE_Step2",
         "clinical_correlation"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_059",
@@ -8912,7 +8940,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_digest_060",
@@ -8925,7 +8954,7 @@
       "explanation": "The ENS is a semi-autonomous neural network lining the GI tract that can regulate digestion — including peristalsis, secretion, and blood flow — independently of the central nervous system, earning its nickname 'the second brain.'",
       "sourceUrl": "https://en.wikipedia.org/wiki/Enteric_nervous_system",
       "quizQuestion": "Why is the enteric nervous system called the 'second brain'?",
-      "correctAnswer": "It contains ~100 million neurons in the gut wall and can function semi-autonomously without input from the brain or spinal cord",
+      "correctAnswer": "It contains ~100 million neurons in the gut wall and can function semi-autonomously without input",
       "chainThemeId": "absorption",
       "difficulty": 2,
       "acceptableAlternatives": [],
@@ -8937,7 +8966,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_embryo_001",
@@ -11264,7 +11294,7 @@
     {
       "id": "ha_embryo_055",
       "subDeckId": "embryology",
-      "correctAnswer": "ventral interventricular septum grows up from the floor of the ventricle toward the endocardial cushions",
+      "correctAnswer": "ventral interventricular septum grows up from the floor of the ventricle toward the endocardial",
       "acceptableAlternatives": [
         "muscular interventricular septum grows from ventricular floor",
         "muscular portion grows upward"
@@ -11567,7 +11597,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_002",
@@ -11591,7 +11622,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_003",
@@ -11615,7 +11647,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_004",
@@ -11639,7 +11672,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_005",
@@ -11662,7 +11696,8 @@
         "PLAB",
         "USMLE_Step1"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_006",
@@ -11685,7 +11720,8 @@
         "PLAB",
         "USMLE_Step1"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_007",
@@ -11709,7 +11745,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_008",
@@ -11733,7 +11770,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_009",
@@ -11757,7 +11795,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_010",
@@ -11781,7 +11820,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_011",
@@ -11805,7 +11845,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_012",
@@ -11829,7 +11870,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_013",
@@ -11853,7 +11895,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_014",
@@ -11877,7 +11920,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_015",
@@ -11901,7 +11945,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_016",
@@ -11925,7 +11970,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_017",
@@ -11949,7 +11995,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_018",
@@ -11973,7 +12020,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_019",
@@ -11997,7 +12045,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_020",
@@ -12020,7 +12069,8 @@
         "PLAB",
         "USMLE_Step1"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_021",
@@ -12044,7 +12094,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_022",
@@ -12067,7 +12118,8 @@
         "PLAB",
         "USMLE_Step1"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_023",
@@ -12091,7 +12143,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_024",
@@ -12114,7 +12167,8 @@
         "PLAB",
         "USMLE_Step1"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_025",
@@ -12137,7 +12191,8 @@
         "PLAB",
         "USMLE_Step1"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_026",
@@ -12161,7 +12216,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_027",
@@ -12185,7 +12241,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_028",
@@ -12198,7 +12255,7 @@
       "explanation": "PTH raises blood Ca²⁺ via: (1) osteoclast activation to resorb bone calcium, (2) increasing Ca²⁺ reabsorption in kidney tubules, and (3) activating vitamin D which increases Ca²⁺ absorption in the intestines.",
       "difficulty": 3,
       "quizQuestion": "PTH (parathyroid hormone) raises blood calcium through three mechanisms — what are they?",
-      "correctAnswer": "Stimulates osteoclasts (bone resorption), increases renal Ca²⁺ reabsorption, and activates vitamin D to increase intestinal Ca²⁺ absorption",
+      "correctAnswer": "Stimulates osteoclasts (bone resorption), increases renal Ca²⁺ reabsorption",
       "chainThemeId": "parathyroid",
       "acceptableAlternatives": [],
       "examTags": [
@@ -12208,7 +12265,8 @@
         "PLAB",
         "USMLE_Step1"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_029",
@@ -12233,7 +12291,8 @@
         "USMLE_Step2",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_030",
@@ -12257,7 +12316,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_031",
@@ -12270,7 +12330,7 @@
       "explanation": "GFR = Glomerulosa (outermost, Salt/mineralocorticoids like aldosterone), Fasciculata (middle, Sugar/glucocorticoids like cortisol), Reticularis (innermost, Sex/androgens like DHEA). Mnemonic: 'Salt, Sugar, Sex.'",
       "difficulty": 3,
       "quizQuestion": "The mnemonic 'GFR' describes the three zones of the adrenal cortex. What does each letter stand for, and what product does each zone make?",
-      "correctAnswer": "Glomerulosa (mineralocorticoids/aldosterone), Fasciculata (glucocorticoids/cortisol), Reticularis (androgens/DHEA)",
+      "correctAnswer": "Glomerulosa (mineralocorticoids/aldosterone), Fasciculata (glucocorticoids/cortisol)",
       "chainThemeId": "adrenal_cortex",
       "acceptableAlternatives": [],
       "examTags": [
@@ -12280,7 +12340,8 @@
         "PLAB",
         "USMLE_Step1"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_032",
@@ -12304,7 +12365,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_033",
@@ -12317,7 +12379,7 @@
       "explanation": "Cortisol is the primary glucocorticoid — it raises blood glucose (via gluconeogenesis), is powerfully anti-inflammatory and immunosuppressive, and mediates the body's stress response.",
       "difficulty": 2,
       "quizQuestion": "Cortisol from the zona fasciculata has which major physiological effects?",
-      "correctAnswer": "Raises blood glucose, suppresses inflammation, mediates stress response, and causes immunosuppression",
+      "correctAnswer": "Raises blood glucose, suppresses inflammation, mediates stress response",
       "chainThemeId": "adrenal_cortex",
       "acceptableAlternatives": [],
       "examTags": [
@@ -12328,7 +12390,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_034",
@@ -12351,7 +12414,8 @@
         "PLAB",
         "USMLE_Step1"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_035",
@@ -12374,7 +12438,8 @@
         "PLAB",
         "USMLE_Step1"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_036",
@@ -12398,7 +12463,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_037",
@@ -12421,7 +12487,8 @@
         "PLAB",
         "USMLE_Step1"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_038",
@@ -12445,7 +12512,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_039",
@@ -12469,7 +12537,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_040",
@@ -12493,7 +12562,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_041",
@@ -12506,7 +12576,7 @@
       "explanation": "Glucagon acts on the liver to trigger glycogenolysis (breaking glycogen into glucose) and gluconeogenesis (synthesizing new glucose from amino acids and fatty acids), raising blood glucose levels.",
       "difficulty": 2,
       "quizQuestion": "Glucagon is produced by alpha cells (~15-20% of islet cells). How does it raise blood glucose?",
-      "correctAnswer": "By stimulating glycogenolysis (glycogen breakdown) and gluconeogenesis (new glucose synthesis) in the liver",
+      "correctAnswer": "By stimulating glycogenolysis (glycogen breakdown) and gluconeogenesis (new glucose synthesis) in",
       "chainThemeId": "pancreas_endocrine",
       "acceptableAlternatives": [],
       "examTags": [
@@ -12517,7 +12587,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_042",
@@ -12540,7 +12611,8 @@
         "PLAB",
         "USMLE_Step1"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_043",
@@ -12564,7 +12636,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_044",
@@ -12588,7 +12661,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_045",
@@ -12612,7 +12686,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_046",
@@ -12636,7 +12711,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_047",
@@ -12660,7 +12736,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_048",
@@ -12673,7 +12750,7 @@
       "explanation": "In negative feedback, the end hormone (T3/T4) feeds back to suppress both the hypothalamus (less TRH) and the anterior pituitary (less TSH), reducing its own further production. This maintains hormone homeostasis.",
       "difficulty": 2,
       "quizQuestion": "Negative feedback is the most common regulatory mechanism in the endocrine system. How does it work, using the thyroid axis as an example?",
-      "correctAnswer": "High T3/T4 levels inhibit further TRH release from the hypothalamus and TSH release from the pituitary, reducing thyroid stimulation",
+      "correctAnswer": "High T3/T4 levels inhibit further TRH release from the hypothalamus and TSH release from the",
       "chainThemeId": "feedback_loops",
       "acceptableAlternatives": [],
       "examTags": [
@@ -12685,7 +12762,8 @@
         "USMLE_Step2",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_049",
@@ -12698,7 +12776,7 @@
       "explanation": "Positive feedback amplifies the response: cervical stretch → oxytocin release → stronger contractions → more cervical stretch → more oxytocin. This escalating cycle drives labor to completion at delivery.",
       "difficulty": 2,
       "quizQuestion": "Oxytocin during childbirth is a classic example of positive feedback. How does this work?",
-      "correctAnswer": "Uterine contractions stimulate more oxytocin release, which intensifies contractions, which triggers even more oxytocin — a self-amplifying cycle that ends at delivery",
+      "correctAnswer": "Uterine contractions stimulate more oxytocin release, which intensifies contractions",
       "chainThemeId": "feedback_loops",
       "acceptableAlternatives": [],
       "examTags": [
@@ -12709,7 +12787,8 @@
         "USMLE_Step1",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_endo_050",
@@ -12722,7 +12801,7 @@
       "explanation": "Positive feedback escalates rather than stabilizes, making it unsuitable for homeostasis. It is only adaptive in processes with a clear endpoint — like the oxytocin-labor loop (ends at delivery) or the LH surge triggering ovulation.",
       "difficulty": 3,
       "quizQuestion": "Positive feedback loops are rare in the endocrine system. Why is positive feedback only useful in limited situations?",
-      "correctAnswer": "Positive feedback is self-amplifying and cannot maintain stable homeostasis — it is only useful for processes that need to reach a definitive endpoint (like childbirth or ovulation)",
+      "correctAnswer": "Positive feedback is self-amplifying and cannot maintain stable homeostasis",
       "chainThemeId": "feedback_loops",
       "acceptableAlternatives": [],
       "examTags": [
@@ -12734,7 +12813,8 @@
         "USMLE_Step2",
         "high_yield"
       ],
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "funScore": 7
     },
     {
       "id": "ha_histo_001",
@@ -20176,7 +20256,7 @@
     {
       "id": "ha_multi_020",
       "subDeckId": "endocrine_system",
-      "correctAnswer": "Type 1: autoimmune beta-cell destruction, insulin-dependent. Type 2: insulin resistance, non-insulin-dependent initially.",
+      "correctAnswer": "Type 1: autoimmune beta-cell destruction, insulin-dependent",
       "acceptableAlternatives": [
         "Type 1 autoimmune, Type 2 insulin resistance"
       ],
@@ -20297,7 +20377,7 @@
     {
       "id": "ha_multi_023",
       "subDeckId": "lymphatic_immune",
-      "correctAnswer": "Type II hypersensitivity — IgG/IgM binds cell-surface antigens → complement activation or ADCC → cell destruction",
+      "correctAnswer": "Type II hypersensitivity — IgG/IgM binds cell-surface antigens → complement activation or ADCC →",
       "acceptableAlternatives": [
         "Type II",
         "cytotoxic hypersensitivity",
@@ -20376,7 +20456,7 @@
     {
       "id": "ha_multi_025",
       "subDeckId": "special_senses",
-      "correctAnswer": "Open-angle glaucoma: chronic, painless, progressive peripheral vision loss. Closed-angle: acute, painful, emergency — halos, eye redness, nausea.",
+      "correctAnswer": "Open-angle glaucoma: chronic, painless, progressive peripheral vision loss",
       "acceptableAlternatives": [
         "open-angle is painless chronic, closed-angle is acute painful"
       ],
@@ -20415,7 +20495,7 @@
     {
       "id": "ha_multi_026",
       "subDeckId": "special_senses",
-      "correctAnswer": "Cataracts — lens opacity causing painless progressive vision loss; most common cause of reversible blindness worldwide",
+      "correctAnswer": "Cataracts — lens opacity causing painless progressive vision loss",
       "acceptableAlternatives": [
         "cataracts",
         "cataract",
@@ -20456,7 +20536,7 @@
     {
       "id": "ha_multi_027",
       "subDeckId": "special_senses",
-      "correctAnswer": "Meniere's disease — endolymphatic hydrops causing episodic vertigo, sensorineural hearing loss, tinnitus, and aural fullness",
+      "correctAnswer": "Meniere's disease — endolymphatic hydrops causing episodic vertigo, sensorineural hearing loss",
       "acceptableAlternatives": [
         "Meniere's disease",
         "Meniere disease",
@@ -29649,7 +29729,7 @@
     {
       "id": "ha_nerv_090",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Choroid plexus → foramen of Monro → 3rd ventricle → cerebral aqueduct → 4th ventricle → foramina of Luschka and Magendie → subarachnoid space → arachnoid granulations → dural venous sinuses",
+      "correctAnswer": "Choroid plexus → foramen of Monro → 3rd ventricle → cerebral aqueduct → 4th ventricle → foramina of",
       "acceptableAlternatives": [
         "CSF: lateral ventricles → 3rd → aqueduct → 4th → subarachnoid → arachnoid granulations",
         "choroid plexus to dural venous sinuses via ventricles"
@@ -29854,7 +29934,7 @@
     {
       "id": "ha_nerv_095",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Central (1st order): hypothalamus → ciliospinal centre (C8–T2); Preganglionic (2nd order): T1 → over lung apex → superior cervical ganglion; Postganglionic (3rd order): along carotid artery → orbit",
+      "correctAnswer": "Central (1st order): hypothalamus → ciliospinal centre (C8–T2)",
       "acceptableAlternatives": [
         "three-neuron arc: hypothalamus, superior cervical ganglion, carotid plexus to orbit",
         "hypothalamus → C8-T2 → superior cervical ganglion → eye"
@@ -30400,7 +30480,7 @@
     },
     {
       "id": "ha_regional_011",
-      "correctAnswer": "Pectoralis major (anterior), latissimus dorsi and teres major (posterior), rib cage (medial), humerus (lateral)",
+      "correctAnswer": "Pectoralis major (anterior), latissimus dorsi and teres major (posterior), rib cage (medial)",
       "acceptableAlternatives": [
         "Pectoralis major anteriorly, latissimus dorsi and teres major posteriorly, serratus anterior medially, humerus laterally"
       ],
@@ -52502,7 +52582,7 @@
     {
       "id": "ha_embryo_073",
       "subDeckId": "embryology",
-      "correctAnswer": "Omphalocele is midline, covered by peritoneum/amnion; gastroschisis is to the right of the umbilicus, uncovered",
+      "correctAnswer": "Omphalocele is midline, covered by peritoneum/amnion",
       "acceptableAlternatives": [
         "omphalocele has a peritoneal sac; gastroschisis has no covering",
         "omphalocele central with sac, gastroschisis lateral without sac"
@@ -52770,7 +52850,7 @@
     {
       "id": "ha_embryo_078",
       "subDeckId": "embryology",
-      "correctAnswer": "Turner syndrome has lymphedema, short stature, and ovarian dysgenesis; Noonan syndrome has similar facies but normal karyotype, right-sided heart defects, and affects both sexes",
+      "correctAnswer": "Turner syndrome has lymphedema, short stature, and ovarian dysgenesis",
       "acceptableAlternatives": [
         "Turner is 45,X females only; Noonan is autosomal dominant both sexes",
         "Turner karyotypic, Noonan phenocopy with normal karyotype"
@@ -53013,7 +53093,7 @@
     {
       "id": "ha_embryo_083",
       "subDeckId": "embryology",
-      "correctAnswer": "Smooth philtrum and thin upper lip are the most specific; short palpebral fissures complete the triad",
+      "correctAnswer": "Smooth philtrum and thin upper lip are the most specific",
       "acceptableAlternatives": [
         "smooth philtrum, thin upper lip, short palpebral fissures"
       ],
@@ -53249,7 +53329,7 @@
     {
       "id": "ha_embryo_088",
       "subDeckId": "embryology",
-      "correctAnswer": "3rd pharyngeal arch → stylohyoid, posterior belly of digastric, and stapedius muscles; styloid process and part of hyoid",
+      "correctAnswer": "3rd pharyngeal arch → stylohyoid, posterior belly of digastric, and stapedius muscles",
       "acceptableAlternatives": [
         "pharyngeal arch 3 gives styloid, hyoid, stylohyoid, posterior digastric",
         "arch 3 derivatives"
@@ -53301,7 +53381,7 @@
     {
       "id": "ha_embryo_089",
       "subDeckId": "embryology",
-      "correctAnswer": "Oligohydramnios (Potter sequence) → pulmonary hypoplasia, limb contractures, flattened facies; Polyhydramnios → GI obstruction (e.g., esophageal/duodenal atresia, anencephaly)",
+      "correctAnswer": "Oligohydramnios (Potter sequence) → pulmonary hypoplasia, limb contractures, flattened facies",
       "acceptableAlternatives": [
         "oligohydramnios causes pulmonary hypoplasia; polyhydramnios suggests GI obstruction or CNS defect preventing swallowing"
       ],
@@ -53448,7 +53528,7 @@
     {
       "id": "ha_histo_062",
       "subDeckId": "histology",
-      "correctAnswer": "Glomerular filtration barrier: fenestrated endothelium → glomerular basement membrane (GBM) → podocyte slit diaphragm",
+      "correctAnswer": "Glomerular filtration barrier: fenestrated endothelium → glomerular basement membrane (GBM) →",
       "acceptableAlternatives": [
         "endothelium, GBM, podocytes",
         "fenestrated capillary endothelium, GBM, podocyte foot processes"
@@ -53500,7 +53580,7 @@
     {
       "id": "ha_histo_063",
       "subDeckId": "histology",
-      "correctAnswer": "A band contains thick filaments (myosin); I band contains thin filaments only (actin); H zone contains thick filaments only (no actin overlap); Z disc is the sarcomere boundary; M line is the central myosin anchor",
+      "correctAnswer": "A band contains thick filaments (myosin); I band contains thin filaments only (actin)",
       "acceptableAlternatives": [
         "A band myosin, I band actin only, H zone myosin only, Z disc boundary, M line center"
       ],
@@ -53550,7 +53630,7 @@
     {
       "id": "ha_histo_064",
       "subDeckId": "histology",
-      "correctAnswer": "Thymic cortex (positive selection — MHC recognition); thymic medulla (negative selection — self-antigen tolerance, Hassall's corpuscles)",
+      "correctAnswer": "Thymic cortex (positive selection — MHC recognition)",
       "acceptableAlternatives": [
         "cortex = positive selection; medulla = negative selection",
         "cortex positive, medulla negative"
@@ -53601,7 +53681,7 @@
     {
       "id": "ha_histo_065",
       "subDeckId": "histology",
-      "correctAnswer": "Germinal center: somatic hypermutation (dark zone) and antigen-driven selection / class switch recombination (light zone)",
+      "correctAnswer": "Germinal center: somatic hypermutation (dark zone) and antigen-driven selection / class switch",
       "acceptableAlternatives": [
         "somatic hypermutation in dark zone, selection and class switching in light zone",
         "germinal centers = somatic hypermutation and class switching"
@@ -53652,7 +53732,7 @@
     {
       "id": "ha_histo_066",
       "subDeckId": "histology",
-      "correctAnswer": "Multinucleated (6–50 nuclei), ruffled border adjacent to bone, derived from monocyte/macrophage lineage, activated by RANKL",
+      "correctAnswer": "Multinucleated (6–50 nuclei), ruffled border adjacent to bone",
       "acceptableAlternatives": [
         "multinucleated, ruffled border, RANKL activation, monocyte lineage"
       ],
@@ -53752,7 +53832,7 @@
     {
       "id": "ha_histo_068",
       "subDeckId": "histology",
-      "correctAnswer": "Respiratory membrane: alveolar surfactant → type I pneumocyte → fused basement membranes → capillary endothelium (0.1–1.5 μm total)",
+      "correctAnswer": "Respiratory membrane: alveolar surfactant → type I pneumocyte → fused basement membranes → capillary",
       "acceptableAlternatives": [
         "type I pneumocyte, basement membrane, endothelium",
         "alveolar epithelium, shared BM, capillary endothelium"
@@ -53803,7 +53883,7 @@
     {
       "id": "ha_histo_069",
       "subDeckId": "histology",
-      "correctAnswer": "Cirrhosis — bridging fibrosis connecting portal tracts and central veins with regenerative nodules surrounded by fibrous bands",
+      "correctAnswer": "Cirrhosis — bridging fibrosis connecting portal tracts and central veins with regenerative nodules",
       "acceptableAlternatives": [
         "bridging fibrosis and regenerative nodules = cirrhosis",
         "cirrhosis defined by regenerative nodules and fibrous bands"
@@ -53855,7 +53935,7 @@
     {
       "id": "ha_histo_070",
       "subDeckId": "histology",
-      "correctAnswer": "Emphysema — permanent abnormal enlargement of airspaces distal to the terminal bronchiole with destruction of alveolar walls, without fibrosis",
+      "correctAnswer": "Emphysema — permanent abnormal enlargement of airspaces distal to the terminal bronchiole with",
       "acceptableAlternatives": [
         "emphysema definition: permanent airspace enlargement, alveolar wall destruction, no fibrosis"
       ],
@@ -53957,7 +54037,7 @@
     {
       "id": "ha_histo_072",
       "subDeckId": "histology",
-      "correctAnswer": "PAS stain: periodic acid-Schiff — stains glycogen, glycoproteins, and basement membranes magenta/pink; used to detect thickened GBM in diabetes and fungal cell walls",
+      "correctAnswer": "PAS stain: periodic acid-Schiff",
       "acceptableAlternatives": [
         "PAS stains glycogen and basement membranes pink/magenta",
         "PAS periodic acid-Schiff glycogen fungi BM"
@@ -54059,7 +54139,7 @@
     {
       "id": "ha_histo_074",
       "subDeckId": "histology",
-      "correctAnswer": "Silver stain (reticulin stain): highlights reticulin (type III collagen) fibers in black; used for liver architecture assessment and bone marrow biopsy",
+      "correctAnswer": "Silver stain (reticulin stain): highlights reticulin (type III collagen) fibers in black",
       "acceptableAlternatives": [
         "silver stain reticulin type III collagen black liver bone marrow",
         "reticulin stain silver type III collagen"
@@ -54110,7 +54190,7 @@
     {
       "id": "ha_histo_075",
       "subDeckId": "histology",
-      "correctAnswer": "Granulation tissue: fibroblasts + new thin-walled capillaries (angiogenesis) + macrophages in loose ECM — replaces the provisional fibrin clot during wound healing",
+      "correctAnswer": "Granulation tissue: fibroblasts + new thin-walled capillaries (angiogenesis) + macrophages in loose",
       "acceptableAlternatives": [
         "granulation tissue = fibroblasts, new capillaries, macrophages",
         "fibroblasts and angiogenesis in granulation tissue"
@@ -54161,7 +54241,7 @@
     {
       "id": "ha_histo_076",
       "subDeckId": "histology",
-      "correctAnswer": "Keloid: extends beyond wound margins, type I collagen excess (20-fold), does not regress; hypertrophic scar: stays within wound margins, type I/III collagen excess (3-fold), may regress",
+      "correctAnswer": "Keloid: extends beyond wound margins, type I collagen excess (20-fold), does not regress",
       "acceptableAlternatives": [
         "keloid beyond wound margins 20x collagen; hypertrophic within margins 3x collagen may regress"
       ],
@@ -54212,7 +54292,7 @@
     {
       "id": "ha_histo_077",
       "subDeckId": "histology",
-      "correctAnswer": "Membranous nephropathy: subepithelial granular IgG deposits, spike-and-dome pattern on EM, GBM thickening",
+      "correctAnswer": "Membranous nephropathy: subepithelial granular IgG deposits, spike-and-dome pattern on EM",
       "acceptableAlternatives": [
         "membranous nephropathy subepithelial deposits spike and dome",
         "membranous GN GBM thickening granular IgG"
@@ -54264,7 +54344,7 @@
     {
       "id": "ha_histo_078",
       "subDeckId": "histology",
-      "correctAnswer": "IgA nephropathy (Berger disease): mesangial IgA deposits → hematuria within 24–48 hours of mucosal infection",
+      "correctAnswer": "IgA nephropathy (Berger disease): mesangial IgA deposits → hematuria within 24–48 hours of mucosal",
       "acceptableAlternatives": [
         "IgA nephropathy",
         "Berger's disease",
@@ -54317,7 +54397,7 @@
     {
       "id": "ha_histo_079",
       "subDeckId": "histology",
-      "correctAnswer": "Crescentic glomerulonephritis (rapidly progressive GN): fibrocellular crescents of parietal cells + macrophages filling Bowman's space, obliterating capillary tuft",
+      "correctAnswer": "Crescentic glomerulonephritis (rapidly progressive GN): fibrocellular crescents of parietal cells +",
       "acceptableAlternatives": [
         "crescents in Bowman's space",
         "RPGN crescentic GN",
@@ -54420,7 +54500,7 @@
     {
       "id": "ha_histo_081",
       "subDeckId": "histology",
-      "correctAnswer": "Type II pneumocytes: cuboidal cells with lamellar bodies, secrete surfactant, proliferate to repair alveolar epithelium after injury",
+      "correctAnswer": "Type II pneumocytes: cuboidal cells with lamellar bodies, secrete surfactant",
       "acceptableAlternatives": [
         "type II pneumocytes secreting surfactant via lamellar bodies, alveolar repair"
       ],
@@ -54470,7 +54550,7 @@
     {
       "id": "ha_histo_082",
       "subDeckId": "histology",
-      "correctAnswer": "Hassall's corpuscles: concentric whorls of eosinophilic type VI epithelial cells in the thymic medulla",
+      "correctAnswer": "Hassall's corpuscles: concentric whorls of eosinophilic type VI epithelial cells in the thymic",
       "acceptableAlternatives": [
         "Hassall corpuscles in thymic medulla, concentric whorls of epithelial cells",
         "eosinophilic concentric whorls in medulla"
@@ -54521,7 +54601,7 @@
     {
       "id": "ha_histo_083",
       "subDeckId": "histology",
-      "correctAnswer": "Membranoproliferative (mesangiocapillary) GN Type I: tram-track GBM splitting due to subendothelial deposits + mesangial interposition",
+      "correctAnswer": "Membranoproliferative (mesangiocapillary) GN Type I: tram-track GBM splitting due to subendothelial",
       "acceptableAlternatives": [
         "MPGN tram-track pattern",
         "tram-track appearance in MPGN from GBM duplication"
@@ -54573,7 +54653,7 @@
     {
       "id": "ha_histo_084",
       "subDeckId": "histology",
-      "correctAnswer": "Centrilobular emphysema: proximal acinus affected (respiratory bronchiole and proximal alveolar ducts); panacinar emphysema: entire acinus from respiratory bronchiole to alveolar sacs",
+      "correctAnswer": "Centrilobular emphysema: proximal acinus affected (respiratory bronchiole and proximal alveolar",
       "acceptableAlternatives": [
         "centrilobular = proximal acinus; panacinar = whole acinus"
       ],
@@ -54614,7 +54694,7 @@
     {
       "id": "ha_histo_085",
       "subDeckId": "histology",
-      "correctAnswer": "Diffuse alveolar damage (DAD): exudative phase — hyaline membranes (fibrin-rich protein lining alveoli) + type I cell necrosis; organizing phase — type II cell hyperplasia + fibroblast proliferation",
+      "correctAnswer": "Diffuse alveolar damage (DAD): exudative phase",
       "acceptableAlternatives": [
         "DAD hyaline membranes exudative phase, type II hyperplasia organizing phase"
       ],
@@ -54665,7 +54745,7 @@
     {
       "id": "ha_histo_086",
       "subDeckId": "histology",
-      "correctAnswer": "Hepatic sinusoids lined by fenestrated endothelium (no diaphragm or basement membrane); Kupffer cells are resident macrophages on the sinusoidal wall; space of Disse between endothelium and hepatocytes",
+      "correctAnswer": "Hepatic sinusoids lined by fenestrated endothelium (no diaphragm or basement membrane)",
       "acceptableAlternatives": [
         "sinusoids: fenestrated endothelium, Kupffer cells, space of Disse",
         "hepatic sinusoid structure"
@@ -54716,7 +54796,7 @@
     {
       "id": "ha_histo_087",
       "subDeckId": "histology",
-      "correctAnswer": "Osteoid (unmineralized bone matrix) accumulates — seen in osteomalacia/rickets as wide pink seams of osteoid on Goldner's trichrome stain or H&E",
+      "correctAnswer": "Osteoid (unmineralized bone matrix) accumulates",
       "acceptableAlternatives": [
         "osteoid accumulation in osteomalacia",
         "unmineralized matrix wide osteoid seams"
@@ -54768,7 +54848,7 @@
     {
       "id": "ha_histo_088",
       "subDeckId": "histology",
-      "correctAnswer": "Paget disease of bone: woven bone replacing lamellar; mosaic cement lines (jigsaw pattern) from cycles of resorption and formation; enlarged osteoclasts (up to 100 nuclei)",
+      "correctAnswer": "Paget disease of bone: woven bone replacing lamellar",
       "acceptableAlternatives": [
         "Paget disease: mosaic cement lines, woven bone, giant osteoclasts"
       ],
@@ -54819,7 +54899,7 @@
     {
       "id": "ha_histo_089",
       "subDeckId": "histology",
-      "correctAnswer": "Non-caseating granulomas: compact collections of epithelioid macrophages + multinucleated Langhans giant cells + lymphocytes, WITHOUT central necrosis",
+      "correctAnswer": "Non-caseating granulomas: compact collections of epithelioid macrophages + multinucleated Langhans",
       "acceptableAlternatives": [
         "non-caseating granuloma epithelioid macrophages Langhans giant cells no necrosis"
       ],
@@ -54870,7 +54950,7 @@
     {
       "id": "ha_histo_090",
       "subDeckId": "histology",
-      "correctAnswer": "Congo red stain: amyloid appears red/orange under regular light and shows apple-green birefringence under polarized light",
+      "correctAnswer": "Congo red stain: amyloid appears red/orange under regular light and shows apple-green birefringence",
       "acceptableAlternatives": [
         "Congo red apple-green birefringence under polarized light",
         "amyloid Congo red green birefringence"
@@ -55841,7 +55921,7 @@
     {
       "id": "ha_musc_137",
       "subDeckId": "muscular_system",
-      "correctAnswer": "Tibialis posterior dysfunction → hindfoot valgus, medial arch collapse, forefoot abduction ('too many toes' sign)",
+      "correctAnswer": "Tibialis posterior dysfunction → hindfoot valgus, medial arch collapse",
       "acceptableAlternatives": [
         "hindfoot valgus and flatfoot",
         "acquired adult flatfoot",
@@ -56012,7 +56092,7 @@
     {
       "id": "ha_nerv_097",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Brodmann areas 44 and 45 (Broca's area) — inferior frontal gyrus, dominant hemisphere — expressive aphasia",
+      "correctAnswer": "Brodmann areas 44 and 45 (Broca's area) — inferior frontal gyrus, dominant hemisphere",
       "acceptableAlternatives": [
         "Broca's area",
         "areas 44 and 45",
@@ -56436,7 +56516,7 @@
     {
       "id": "ha_nerv_109",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Lateral cerebellar hemisphere — planning and timing of skilled voluntary movement (dentate nucleus output)",
+      "correctAnswer": "Lateral cerebellar hemisphere — planning and timing of skilled voluntary movement (dentate nucleus",
       "acceptableAlternatives": [
         "lateral hemisphere",
         "cerebrocerebellum",
@@ -56539,7 +56619,7 @@
     {
       "id": "ha_nerv_112",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Anterior cord syndrome — bilateral motor loss + pain/temperature loss; vibration/proprioception preserved",
+      "correctAnswer": "Anterior cord syndrome — bilateral motor loss + pain/temperature loss",
       "acceptableAlternatives": [
         "anterior cord syndrome",
         "anterior spinal artery syndrome"
@@ -56578,7 +56658,7 @@
     {
       "id": "ha_nerv_113",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Central cord syndrome — upper extremity weakness greater than lower extremity weakness; bladder dysfunction",
+      "correctAnswer": "Central cord syndrome — upper extremity weakness greater than lower extremity weakness",
       "acceptableAlternatives": [
         "central cord syndrome",
         "central spinal cord syndrome"
@@ -56611,7 +56691,7 @@
     {
       "id": "ha_nerv_114",
       "subDeckId": "nervous_system",
-      "correctAnswer": "UMN CN VII lesion — contralateral lower face paralysis; forehead movement spared (bilateral UMN innervation of the forehead)",
+      "correctAnswer": "UMN CN VII lesion — contralateral lower face paralysis",
       "acceptableAlternatives": [
         "upper motor neuron facial palsy",
         "UMN VII",
@@ -56678,7 +56758,7 @@
     {
       "id": "ha_nerv_116",
       "subDeckId": "nervous_system",
-      "correctAnswer": "LMN CN XII lesion — tongue deviates toward the lesion side on protrusion (weak ipsilateral genioglossus)",
+      "correctAnswer": "LMN CN XII lesion — tongue deviates toward the lesion side on protrusion (weak ipsilateral",
       "acceptableAlternatives": [
         "CN XII LMN lesion",
         "hypoglossal nerve palsy",
@@ -56712,7 +56792,7 @@
     {
       "id": "ha_nerv_117",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Brown-Séquard syndrome — ipsilateral motor loss + proprioception loss; contralateral pain + temperature loss (1–2 levels below lesion)",
+      "correctAnswer": "Brown-Séquard syndrome — ipsilateral motor loss + proprioception loss",
       "acceptableAlternatives": [
         "Brown-Sequard syndrome",
         "spinal cord hemisection"
@@ -56751,7 +56831,7 @@
     {
       "id": "ha_nerv_118",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Brodmann area 17 — primary visual cortex (V1, striate cortex) in the calcarine sulcus of the occipital lobe",
+      "correctAnswer": "Brodmann area 17 — primary visual cortex (V1",
       "acceptableAlternatives": [
         "area 17",
         "V1",
@@ -56823,7 +56903,7 @@
     {
       "id": "ha_nerv_120",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Arcuate nucleus — releases dopamine (inhibits prolactin) and GnRH (controls LH/FSH pulsatile release)",
+      "correctAnswer": "Arcuate nucleus — releases dopamine (inhibits prolactin) and GnRH (controls LH/FSH pulsatile",
       "acceptableAlternatives": [
         "arcuate nucleus dopamine GnRH",
         "arcuate nucleus hypothalamus"
@@ -56856,7 +56936,7 @@
     {
       "id": "ha_nerv_121",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Superior cerebellar peduncle — primary efferent pathway from deep cerebellar nuclei to contralateral red nucleus and thalamus",
+      "correctAnswer": "Superior cerebellar peduncle — primary efferent pathway from deep cerebellar nuclei to contralateral",
       "acceptableAlternatives": [
         "superior cerebellar peduncle efferent",
         "brachium conjunctivum"
@@ -56887,7 +56967,7 @@
     {
       "id": "ha_nerv_122",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Indirect basal ganglia pathway — cortex → striatum → GPe → STN → GPi/SNr → thalamus (inhibited); net effect: suppresses movement",
+      "correctAnswer": "Indirect basal ganglia pathway — cortex → striatum → GPe → STN → GPi/SNr → thalamus (inhibited)",
       "acceptableAlternatives": [
         "indirect pathway basal ganglia",
         "basal ganglia indirect"
@@ -56919,7 +56999,7 @@
     {
       "id": "ha_nerv_123",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Anterior hypothalamus — heat dissipation (promotes cooling: sweating, vasodilation); posterior hypothalamus — heat conservation (shivering, vasoconstriction)",
+      "correctAnswer": "Anterior hypothalamus — heat dissipation (promotes cooling: sweating, vasodilation)",
       "acceptableAlternatives": [
         "anterior hypothalamus cooling posterior heating",
         "anterior hypothalamus temperature regulation"
@@ -56950,7 +57030,7 @@
     {
       "id": "ha_nerv_124",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Hemiballismus — contralateral wild flinging movements of the proximal limb; caused by subthalamic nucleus (STN) lesion",
+      "correctAnswer": "Hemiballismus — contralateral wild flinging movements of the proximal limb",
       "acceptableAlternatives": [
         "hemiballismus subthalamic nucleus",
         "ballism STN"
@@ -56983,7 +57063,7 @@
     {
       "id": "ha_nerv_125",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Wernicke's encephalopathy — thiamine (B1) deficiency; classic triad: encephalopathy, ophthalmoplegia, ataxia; lesions in mammillary bodies and periventricular grey",
+      "correctAnswer": "Wernicke's encephalopathy — thiamine (B1) deficiency",
       "acceptableAlternatives": [
         "Wernicke encephalopathy",
         "thiamine deficiency triad",
@@ -57060,7 +57140,7 @@
     {
       "id": "ha_cardio_087",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Ostium secundum ASD — most common type (~70%), defect in the fossa ovalis region of the atrial septum",
+      "correctAnswer": "Ostium secundum ASD — most common type (~70%)",
       "acceptableAlternatives": [
         "ostium secundum",
         "secundum ASD",
@@ -57138,7 +57218,7 @@
     {
       "id": "ha_cardio_089",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Aortic stenosis — crescendo-decrescendo (diamond-shaped) systolic murmur, loudest at the right upper sternal border, radiating to the carotids",
+      "correctAnswer": "Aortic stenosis — crescendo-decrescendo (diamond-shaped) systolic murmur",
       "acceptableAlternatives": [
         "crescendo-decrescendo murmur of AS",
         "ejection systolic murmur aortic stenosis"
@@ -57171,7 +57251,7 @@
     {
       "id": "ha_cardio_090",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Mitral regurgitation — holosystolic (pansystolic) blowing murmur, loudest at the apex, radiating to the axilla",
+      "correctAnswer": "Mitral regurgitation — holosystolic (pansystolic) blowing murmur, loudest at the apex",
       "acceptableAlternatives": [
         "MR murmur",
         "mitral regurgitation murmur",
@@ -57205,7 +57285,7 @@
     {
       "id": "ha_cardio_091",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Mitral valve prolapse — mid-systolic click followed by a late systolic murmur; most common valvular abnormality",
+      "correctAnswer": "Mitral valve prolapse — mid-systolic click followed by a late systolic murmur",
       "acceptableAlternatives": [
         "MVP",
         "mitral valve prolapse",
@@ -57245,7 +57325,7 @@
     {
       "id": "ha_cardio_092",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "LAD (left anterior descending artery) — anterior LV wall and anterior two-thirds of the interventricular septum",
+      "correctAnswer": "LAD (left anterior descending artery)",
       "acceptableAlternatives": [
         "left anterior descending",
         "LAD artery"
@@ -57317,7 +57397,7 @@
     {
       "id": "ha_cardio_094",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "SA node action potential — Phase 0 (Ca²⁺ current), Phase 3 (K⁺ efflux), Phase 4 (funny current If via slow Na⁺ influx)",
+      "correctAnswer": "SA node action potential — Phase 0 (Ca²⁺ current), Phase 3 (K⁺ efflux)",
       "acceptableAlternatives": [
         "SA node pacemaker potential",
         "funny current If",
@@ -57356,7 +57436,7 @@
     {
       "id": "ha_cardio_095",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Ventricular action potential — Phase 0 (rapid Na⁺ influx), Phase 1 (K⁺ efflux), Phase 2 (plateau, Ca²⁺ in), Phase 3 (K⁺ repolarisation), Phase 4 (stable resting ~-90 mV)",
+      "correctAnswer": "Ventricular action potential — Phase 0 (rapid Na⁺ influx), Phase 1 (K⁺ efflux), Phase 2 (plateau",
       "acceptableAlternatives": [
         "ventricular AP phases",
         "cardiac ventricular action potential 5 phases"
@@ -57387,7 +57467,7 @@
     {
       "id": "ha_cardio_096",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Systolic heart failure (HFrEF) — EF ≤ 40%, impaired contractility; treated with ACE inhibitors, beta-blockers, diuretics",
+      "correctAnswer": "Systolic heart failure (HFrEF) — EF ≤ 40%, impaired contractility",
       "acceptableAlternatives": [
         "HFrEF",
         "systolic dysfunction",
@@ -57459,7 +57539,7 @@
     {
       "id": "ha_cardio_098",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Cardiogenic shock — pump failure; elevated PCWP, low CO, high SVR; treat with inotropes ± mechanical support",
+      "correctAnswer": "Cardiogenic shock — pump failure; elevated PCWP, low CO, high SVR",
       "acceptableAlternatives": [
         "cardiogenic shock",
         "pump failure shock"
@@ -57499,7 +57579,7 @@
     {
       "id": "ha_cardio_099",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Hypovolemic shock — decreased preload (PCWP↓), compensatory high SVR and tachycardia; treat with IV fluids",
+      "correctAnswer": "Hypovolemic shock — decreased preload (PCWP↓), compensatory high SVR and tachycardia",
       "acceptableAlternatives": [
         "hypovolemic shock",
         "haemorrhagic shock",
@@ -57533,7 +57613,7 @@
     {
       "id": "ha_cardio_100",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Thoracic aortic aneurysm — associated with Marfan syndrome (FBN1 mutation) and tertiary syphilis (obliterative endarteritis of vasa vasorum)",
+      "correctAnswer": "Thoracic aortic aneurysm — associated with Marfan syndrome (FBN1 mutation) and tertiary syphilis",
       "acceptableAlternatives": [
         "thoracic aortic aneurysm",
         "ascending aortic aneurysm"
@@ -57564,7 +57644,7 @@
     {
       "id": "ha_cardio_101",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Abdominal aortic aneurysm (AAA) — atherosclerosis, most commonly infrarenal; risk: male, smoker, >65 years",
+      "correctAnswer": "Abdominal aortic aneurysm (AAA) — atherosclerosis, most commonly infrarenal",
       "acceptableAlternatives": [
         "AAA",
         "abdominal aortic aneurysm",
@@ -57672,7 +57752,7 @@
     {
       "id": "ha_cardio_104",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Peripheral arterial disease (PAD) — atherosclerosis → intermittent claudication → rest pain → critical limb ischaemia",
+      "correctAnswer": "Peripheral arterial disease (PAD)",
       "acceptableAlternatives": [
         "peripheral artery disease",
         "PAD",
@@ -57712,7 +57792,7 @@
     {
       "id": "ha_cardio_105",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Sinus venosus ASD — located near the SVC-RA junction; associated with partial anomalous pulmonary venous return",
+      "correctAnswer": "Sinus venosus ASD — located near the SVC-RA junction",
       "acceptableAlternatives": [
         "sinus venosus ASD",
         "sinus venosus atrial septal defect"
@@ -57743,7 +57823,7 @@
     {
       "id": "ha_cardio_106",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Neurogenic shock — vasodilation + bradycardia (loss of sympathetic tone); treat with vasopressors (norepinephrine) and IV fluids",
+      "correctAnswer": "Neurogenic shock — vasodilation + bradycardia (loss of sympathetic tone)",
       "acceptableAlternatives": [
         "neurogenic shock",
         "spinal shock"
@@ -57776,7 +57856,7 @@
     {
       "id": "ha_cardio_107",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Anaphylactic shock — IgE-mediated mast cell degranulation → massive histamine release → vasodilation + bronchospasm; treat with epinephrine IM",
+      "correctAnswer": "Anaphylactic shock — IgE-mediated mast cell degranulation → massive histamine release → vasodilation",
       "acceptableAlternatives": [
         "anaphylactic shock",
         "anaphylaxis shock"
@@ -57845,7 +57925,7 @@
     {
       "id": "ha_cardio_109",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Marfan syndrome — FBN1 mutation (fibrillin-1) on chromosome 15; ascending aortic aneurysm and aortic root dilation are the primary life-threatening manifestations",
+      "correctAnswer": "Marfan syndrome — FBN1 mutation (fibrillin-1) on chromosome 15",
       "acceptableAlternatives": [
         "Marfan syndrome FBN1",
         "fibrillin-1 aortic aneurysm"
@@ -57876,7 +57956,7 @@
     {
       "id": "ha_cardio_110",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Syphilitic (luetic) aortic aneurysm — tertiary syphilis, obliterative endarteritis of vasa vasorum → medial necrosis → ascending 'tree-bark' aneurysm",
+      "correctAnswer": "Syphilitic (luetic) aortic aneurysm",
       "acceptableAlternatives": [
         "syphilitic aortitis",
         "luetic aortic aneurysm",
@@ -57908,7 +57988,7 @@
     {
       "id": "ha_cardio_111",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Factor V Leiden — most common inherited thrombophilia; activated protein C resistance; autosomal dominant",
+      "correctAnswer": "Factor V Leiden — most common inherited thrombophilia; activated protein C resistance",
       "acceptableAlternatives": [
         "Factor V Leiden mutation",
         "FV Leiden"
@@ -57939,7 +58019,7 @@
     {
       "id": "ha_cardio_112",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Purkinje fibre AP — resembles ventricular AP but has automaticity (Phase 4 depolarisation) with intrinsic rate of ~40–60 bpm",
+      "correctAnswer": "Purkinje fibre AP — resembles ventricular AP but has automaticity (Phase 4 depolarisation) with",
       "acceptableAlternatives": [
         "Purkinje cell action potential",
         "Purkinje fibre automaticity"
@@ -57970,7 +58050,7 @@
     {
       "id": "ha_cardio_113",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "PDA murmur — continuous 'machinery' murmur at the left upper sternal border (subclavicular), loudest at S2",
+      "correctAnswer": "PDA murmur — continuous 'machinery' murmur at the left upper sternal border (subclavicular)",
       "acceptableAlternatives": [
         "patent ductus arteriosus murmur",
         "continuous machinery murmur PDA"
@@ -58002,7 +58082,7 @@
     {
       "id": "ha_cardio_114",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "ASD auscultation — fixed wide splitting of S2; soft systolic ejection murmur at left upper sternal border (increased pulmonary flow)",
+      "correctAnswer": "ASD auscultation — fixed wide splitting of S2",
       "acceptableAlternatives": [
         "fixed split S2 ASD",
         "ASD fixed S2 splitting"
@@ -58034,7 +58114,7 @@
     {
       "id": "ha_cardio_115",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Septic shock — gram-negative endotoxin (LPS) → cytokine storm (TNF-α, IL-1, IL-6) → vasodilation + myocardial depression; first-line: IV fluids + norepinephrine",
+      "correctAnswer": "Septic shock — gram-negative endotoxin (LPS) → cytokine storm (TNF-α, IL-1",
       "acceptableAlternatives": [
         "septic shock",
         "gram-negative septic shock"
@@ -68111,7 +68191,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/respiratory_system/openstax/lungs_gross.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_304",
@@ -68131,7 +68213,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/respiratory_system/openstax/pleura.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_305",
@@ -68151,7 +68235,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/endocrine_system/openstax/adrenal_glands.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_306",
@@ -68171,7 +68257,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/endocrine_system/openstax/thyroid.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_307",
@@ -68191,7 +68279,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/special_senses/servier/optic_pathways.png",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_308",
@@ -68211,7 +68301,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/special_senses/servier/retina.png",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_309",
@@ -68231,7 +68323,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/anterior_neck.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_310",
@@ -68251,7 +68345,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/extraocular_muscles.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_311",
@@ -68271,7 +68367,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/facial_muscles.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_312",
@@ -68291,7 +68389,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/foot_intrinsic.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_313",
@@ -68311,7 +68411,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/forearm_muscles.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_314",
@@ -68331,7 +68433,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/gluteal_muscles.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_315",
@@ -68351,7 +68455,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/hand_intrinsic.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_316",
@@ -68371,7 +68477,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/jaw_muscles.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_317",
@@ -68391,7 +68499,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/leg_muscles.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_318",
@@ -68411,7 +68521,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/motor_end_plate.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_319",
@@ -68431,7 +68543,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/muscle_fiber_structure.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_320",
@@ -68451,7 +68565,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/neck_back_muscles.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_321",
@@ -68471,7 +68587,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/pectoral_girdle_muscles.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_322",
@@ -68491,7 +68609,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/posterior_neck.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_323",
@@ -68511,7 +68631,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/sarcomere.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_324",
@@ -68531,7 +68653,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/appendicular_skeleton.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_325",
@@ -68551,7 +68675,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/bone_blood_supply.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_326",
@@ -68571,7 +68697,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/bone_cells.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_327",
@@ -68591,7 +68719,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/bone_markings.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_328",
@@ -68611,7 +68741,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/carpal_tunnel.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_329",
@@ -68631,7 +68763,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/cervical_vertebrae.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_330",
@@ -68651,7 +68785,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/compact_bone_osteon.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_331",
@@ -68671,7 +68807,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/femur_patella.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_332",
@@ -68691,7 +68829,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/flat_bone.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_333",
@@ -68711,7 +68851,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/foot_bones.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_334",
@@ -68731,7 +68873,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/hand_wrist.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_335",
@@ -68751,7 +68895,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/hip_bone.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_336",
@@ -68771,7 +68917,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/humerus_elbow.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_337",
@@ -68791,7 +68939,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/intervertebral_disc.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_338",
@@ -68811,7 +68961,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/long_bone_anatomy.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_339",
@@ -68831,7 +68983,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/lumbar_vertebra.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_340",
@@ -68851,7 +69005,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/male_female_pelvis.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_341",
@@ -68871,7 +69027,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/pectoral_girdle.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_342",
@@ -68891,7 +69049,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/pelvis.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_343",
@@ -68911,7 +69071,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/periosteum_endosteum.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_344",
@@ -68931,7 +69093,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/rib_cage.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_345",
@@ -68951,7 +69115,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/sacrum_coccyx.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_346",
@@ -68971,7 +69137,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/scapula.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_347",
@@ -68991,7 +69159,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/spongy_bone.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_348",
@@ -69011,7 +69181,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/synovial_joint.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_349",
@@ -69031,7 +69203,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/synovial_joint_types.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_350",
@@ -69051,7 +69225,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/thoracic_vertebra.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_351",
@@ -69071,7 +69247,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/tibia_fibula.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_352",
@@ -69091,7 +69269,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/ulna_radius.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_353",
@@ -69111,7 +69291,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/vertebra_typical.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_354",
@@ -69131,7 +69313,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/vertebral_column.jpg",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_355",
@@ -69151,7 +69335,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/servier/osteoclast.png",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_356",
@@ -69171,7 +69357,9 @@
       ],
       "imageAssetPath": "/assets/anatomy/skeletal_system/servier/osteocyte.png",
       "quizQuestion": "Identify this anatomical image.",
-      "answerTypePoolId": "function_terms"
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7
     },
     {
       "id": "ha_visual_357",

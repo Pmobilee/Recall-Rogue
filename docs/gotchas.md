@@ -672,3 +672,16 @@ Initial generation covered all 4 phases of meiosis I plus Anaphase II but missed
 **Root cause:** Pools were designed by broad topic area rather than by answer-type homogeneity. The test is: can you pick any two members and have member A be a plausible wrong answer for a question whose correct answer is member B? If not, they don't belong together.
 **Fix:** Completely redesigned 14 pools. Old pools abolished; new pools are semantically tight: `equation_formulas` (only math expressions), `named_laws_principles` (only named laws), `bond_and_imf_types` (only bond/IMF types), etc. 46 long-answer facts (>40 chars) moved to `unique_answers` pool with pre-generated distractors. Rebuild script: `scripts/rebuild-apchem-pools.mjs`. Verified 0 failures with `node scripts/verify-all-decks.mjs`.
 **Rule:** For every pool design: "pick any 2 members — could A plausibly be the wrong answer to a question whose correct answer is B?" If not, split the pool.
+
+### 2026-04-03 — Deck content quality: 4 categories of pre-existing data issues found by new test suite
+**What was found:** Running `tests/unit/deck-content-quality.test.ts` against all 73 manifest decks surfaced 4 real data issues:
+1. **233 facts with answers > 80 chars** — Mainly `world_war_ii.json` and `human_anatomy.json`. Answers like "It caused Japan to abandon 'Strike North' against the USSR and pivot to oil-rich Southeast Asia" (121 chars) are too long to display cleanly in the quiz UI and will overflow on mobile.
+2. **55 facts with `difficulty=undefined`** — All in `human_anatomy.json` (`ha_visual_303` through `ha_visual_357`). These are image-based visual facts added without setting the required field. Runtime will receive `undefined` where it expects 1–5.
+3. **134 facts with `funScore=undefined`** — Again mainly `human_anatomy.json`. Same root cause: image fact batch was added without populating `funScore`.
+4. **9 facts where `correctAnswer` appears in the `distractors` array** — Across 6 decks (`world_flags.json`, `us_presidents.json`, `nasa_missions.json`, `greek_mythology.json`, `world_war_ii.json`, `medieval_world.json`, `movies_cinema.json`). At runtime the player can see the right answer listed twice as a choice.
+
+**What to do:** Route all four to content-agent for fixes. The difficulty/funScore gaps in `human_anatomy.json` image facts need a metadata backfill pass. The long answers in `world_war_ii.json` and `human_anatomy.json` need shortening to ≤80 chars. The 9 distractor collisions need distractor replacement.
+
+### 2026-04-03 — smartTruncate string validator: JS .length counts Unicode special chars as 1, not bytes
+
+When writing a validation script to check that replacement strings are ≤100 chars, a pre-flight check in the fix script used string literals with multi-byte Unicode characters (`→`, `—`, `±`, `≤`). The `String.prototype.length` property in JS counts these as 1 code unit each (they are in the BMP), but the developer had expected them to count as more. The `verify-all-decks.mjs` script also uses `.length`, so they are consistent. The original strings were simply longer than 100 real characters — the special chars were not causing the discrepancy. Always run the validator *on the exact string in memory* (not a re-typed literal in a separate check script) to avoid off-by-one errors from copy-paste differences.
