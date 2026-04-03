@@ -349,9 +349,9 @@ describe('Enemy Templates', () => {
     expect(golem?.baseHP).toBe(13);
   });
 
-  it('algorithm has 18 baseHP (2026-04-03 rebalance)', () => {
+  it('algorithm has 14 baseHP (2026-04-03 balance pass #4)', () => {
     const archivist = ENEMY_TEMPLATES.find(t => t.id === 'algorithm');
-    expect(archivist?.baseHP).toBe(18);
+    expect(archivist?.baseHP).toBe(14);
   });
 
   it('peer_reviewer has no immuneDomain (removed in consolidation)', () => {
@@ -512,8 +512,8 @@ describe('Enemy Manager', () => {
         nextIntent: { type: 'attack', value: 5, weight: 1, telegraph: 'Strike' },
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1: FLOOR_DAMAGE_SCALE_MID=1.2, so round(5 * 1.2) = 6, segment 1 cap is now 6, so result = 6.
-      expect(result.damage).toBe(6);
+      // Floor 1: FLOOR_DAMAGE_SCALE_MID=1.0, so round(5 * 1.0) = 5, segment 1 cap is 8, so result = 5.
+      expect(result.damage).toBe(5);
     });
 
     it('applies strength modifier to attacks', () => {
@@ -522,8 +522,8 @@ describe('Enemy Manager', () => {
         statusEffects: [{ type: 'strength', value: 2, turnsRemaining: 3 }],
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1: round(10 * 1.5 * 1.2) = 18, capped at segment 1 cap of 10.
-      expect(result.damage).toBe(10);
+      // Floor 1: round(10 * 1.5 * 1.0) = 15, capped at segment 1 cap of 8.
+      expect(result.damage).toBe(8);
     });
 
     it('calculates multi_attack damage correctly', () => {
@@ -531,8 +531,8 @@ describe('Enemy Manager', () => {
         nextIntent: { type: 'multi_attack', value: 5, weight: 1, telegraph: 'Flurry', hitCount: 4 },
       });
       const result = executeEnemyIntent(enemy);
-      // round(5 * 1.0 * 1.2) * 4 = 24, capped at segment 1 cap of 10.
-      expect(result.damage).toBe(10);
+      // round(5 * 1.0 * 1.0) * 4 = 20, capped at segment 1 cap of 8.
+      expect(result.damage).toBe(8);
     });
 
     it('returns player debuffs for debuff intent', () => {
