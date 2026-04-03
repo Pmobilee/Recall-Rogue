@@ -1,0 +1,45 @@
+{
+  "type": "wrong_answer",
+  "templates": [
+    {
+      "id": "wrong_dungeon_remembers_hesitation",
+      "text": "The dungeon remembers your hesitation. It will ask again.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "wrong_corridor_darkens",
+      "text": "A wrong turn. The corridor darkens. Knowledge resists those who guess.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "wrong_echo_distorts",
+      "text": "The echo distorts. The dungeon corrects you with silence.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "wrong_the_walls_noted",
+      "text": "The walls noted that. They note everything — the correct answers brightest, the wrong ones in a different ink. You have fed the second archive.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "wrong_the_dungeon_adjusts",
+      "text": "The dungeon adjusts its assessment. Not harshly — it expected this. The calibration continues.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "wrong_gap_remains",
+      "text": "A gap in the knowledge. The dungeon places a marker there — not punitive, just precise. The gap will be filled or it will not. It watches to see which.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "wrong_the_stone_cools",
+      "text": "The stone cools fractionally. Wrong answers have a temperature. The dungeon has been tracking yours.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "wrong_it_has_been_here",
+      "text": "That answer has been wrong before. Someone else gave it — same confidence, same corridor. The dungeon keeps the record. It does not share it.",
+      "minGravity": "medium"
+    }
+  ]
+}

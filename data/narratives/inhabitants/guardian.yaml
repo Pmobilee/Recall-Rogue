@@ -1,0 +1,26 @@
+npc: guardian
+personality: "silent, massive, constructed from knowledge — not evil, a test — speaks through presence not words"
+
+pre_battle:
+  default: "It does not speak. It does not need to. The question it poses is written in its stance."
+  hp_high: "It studies you — unhurried. You are strong. It wants to know why."
+  hp_low: "It smells the blood on your knowledge. Weakened seekers draw harder tests."
+  high_mastery: "It recognizes mastery. The recognition does not make it merciful — it makes it more precise."
+  first_encounter: "The first guardian. Constructed from the accumulated ignorance of every seeker who failed before you. It is not small."
+
+mid_battle:
+  default: "The guardian falters. Your answers cut deeper than steel ever could."
+  player_struggling: "It recovers. Your hesitation feeds it. Certainty is the only weapon here."
+  player_dominating: "It recalibrates. A guardian that cannot be beaten by the method it planned revises the method. This one is revising rapidly."
+  halfway: "Halfway. The guardian has learned you. The second half of this fight is a different test than the first."
+
+post_battle:
+  default: "The guardian dissolves. Not dead — returned to the knowledge it was made from."
+  flawless: "It never touched you. In its final moment, something like respect crosses its face."
+  barely_survived: "You stand. Barely. The guardian's remains whisper: the next one knows what you don't."
+  boss_final: "The final guardian falls. Its dissolution takes longer than the others — it was holding more. The knowledge it was made from settles into the floor, into the walls. Into you."
+
+ambient:
+  - "The chamber still vibrates with the guardian's last question. Boss encounters leave scars on the architecture."
+  - "Guardians do not die. They return to the knowledge pool. Something of this guardian will appear in the next one — reshaped, but not erased."
+  - "The floor where the guardian stood is warmer than the surrounding stone. It will remain warm for as long as the dungeon remembers this encounter."

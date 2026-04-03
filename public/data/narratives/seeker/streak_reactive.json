@@ -1,0 +1,80 @@
+{
+  "category": "streak_reactive",
+  "lines": [
+    {
+      "id": "streak_3_connections_form",
+      "condition": "streak_3_plus",
+      "text": "The connections are forming. Three correct answers and the dungeon begins to take you seriously."
+    },
+    {
+      "id": "streak_3_momentum",
+      "condition": "streak_3_plus",
+      "text": "A rhythm builds. The dungeon has a rhythm too — it is waiting to see if yours outlasts it."
+    },
+    {
+      "id": "streak_3_something_stirs",
+      "condition": "streak_3_plus",
+      "text": "Something stirs in the lower levels. Three correct answers have a resonance that reaches deep."
+    },
+    {
+      "id": "streak_5_not_studying",
+      "condition": "streak_5_plus",
+      "text": "The connections flow through you now. You are not studying. You are remembering."
+    },
+    {
+      "id": "streak_5_chains_sing",
+      "condition": "streak_5_plus",
+      "text": "Five in a row. The chains sing. Something ancient stirs — it recognizes mastery."
+    },
+    {
+      "id": "streak_5_mastery_awe",
+      "condition": "streak_5_plus",
+      "text": "Five consecutive truths. The dungeon adjusts its calibration. You are no longer being tested by the version it prepared."
+    },
+    {
+      "id": "streak_5_the_creature_below",
+      "condition": "streak_5_plus",
+      "text": "The Creature Below has not seen a streak this long in some time. It is paying closer attention than usual."
+    },
+    {
+      "id": "streak_5_flow",
+      "condition": "streak_5_plus",
+      "text": "This is what the dungeon was built for — to find someone who reaches this state. It finds one, perhaps, in a generation."
+    },
+    {
+      "id": "streak_broken_rhythm_shatters",
+      "condition": "streak_broken",
+      "text": "The rhythm shatters. Down here, hesitation is a wound."
+    },
+    {
+      "id": "streak_broken_walls_lean",
+      "condition": "streak_broken",
+      "text": "You falter. The walls lean closer."
+    },
+    {
+      "id": "streak_broken_calibration",
+      "condition": "streak_broken",
+      "text": "The chain breaks. The dungeon recalibrates — it had been adjusting upward, now it remembers you are mortal."
+    },
+    {
+      "id": "first_correct_the_descent",
+      "condition": "first_correct",
+      "text": "The first correct answer. The descent has begun in earnest."
+    },
+    {
+      "id": "first_correct_archive_opens",
+      "condition": "first_correct",
+      "text": "The archive opens one page. A beginning — no more, no less."
+    },
+    {
+      "id": "all_wrong_dungeon_collects",
+      "condition": "all_wrong",
+      "text": "Wrong. And wrong again. The dungeon collects your errors with the same care it gives to your correct answers. The archive of failures is no smaller than the archive of truths."
+    },
+    {
+      "id": "all_wrong_recalibrate",
+      "condition": "all_wrong",
+      "text": "The pattern of mistakes is itself information. The dungeon reads it. Considers what it says about what comes next."
+    }
+  ]
+}

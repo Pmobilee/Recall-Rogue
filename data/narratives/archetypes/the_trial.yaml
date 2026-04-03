@@ -1,0 +1,40 @@
+id: the_trial
+name: The Trial
+scope: universal
+beats:
+  - trigger: run_start
+    text: "You were not led to the {setting_noun}. You were summoned. The {atmosphere} of this place carries intention — the specific, purposeful weight of a test designed for someone exactly like you. The first challenge waits."
+
+  - trigger: first_boss_kill
+    text: "The dungeon registers your answer. The {guardian_noun} was not an obstacle — it was a question. You answered correctly. The trial advances. The next challenge is already being calibrated."
+
+  - trigger: floor_2_start
+    text: "Second phase. The trial has catalogued your methods, your hesitations, your {knowledge_plural}. It will not repeat itself. The {danger_noun} ahead was designed for the version of you that defeated the first level. Adapt."
+
+  - trigger: mid_run
+    text: "Midpoint. The trial pauses — not for rest, but to take stock. Your {knowledge_noun} has been measured. Found neither wanting nor sufficient. The {atmosphere} holds a verdict in suspension. The second half will be designed around what you've shown."
+
+  - trigger: pre_final
+    text: "The final question. Whatever body was needed to survive this far, whatever {knowledge_plural} were required — you are the answer the dungeon has been building toward. The last {guardian_noun} is not testing whether you know enough. It is testing whether knowing is enough."
+
+  - trigger: run_victory
+    text: "The trial concludes. Verdict: sufficient. The {knowledge_plural} you carried through — {discovery_verb} from {material}, earned from {atmosphere} — pass judgment as worthy. The dungeon does not applaud. It simply opens. That is the only verdict that matters."
+
+  - trigger: run_defeat
+    text: "Verdict: insufficient. The {setting_noun} has rendered judgment — not cruelty, not malice, but the cold assessment of a test that has no mercy clause. Your {knowledge_noun} was not enough for this particular question. The trial records the failure. Begins again."
+
+branches:
+  - condition: hp_below_30
+    trigger: any_room_enter
+    text: "The trial observes that you have been damaged. It does not adjust for this. That was part of the design."
+    once: true
+
+  - condition: high_mastery
+    trigger: any_room_enter
+    text: "The trial recalibrates upward. Mastery has been detected. What comes next was prepared for someone more capable than you were when you entered."
+    once: true
+
+  - condition: many_relics
+    trigger: any_room_enter
+    text: "The trial notes your accumulated tools. It is not impressed by tools. Tools are how the unprepared compensate. What it watches is the {knowledge_noun} behind the hand that holds them."
+    once: true

@@ -1,0 +1,31 @@
+npc: keeper
+personality: "weary, compassionate, ancient — has watched countless seekers rest here"
+
+greeting:
+  1: "Rest. The knowledge will wait. It always waits."
+  2: "Again you find your way here. The dungeon permits rest — but charges interest."
+  3: "You know the way to me by heart now. That is either comforting or concerning."
+  default: "You are still alive. Each time that surprises me less — and means more."
+
+on_rest:
+  hp_low: "You barely made it. Sleep. The facts will rearrange themselves while you dream."
+  hp_high: "You rest from caution, not necessity. Wise. The last one who didn't... well."
+  hp_mid: "Rest the body. The mind keeps working whether you permit it or not — down here, especially."
+
+on_upgrade:
+  default: "The card sharpens. Knowledge refined is knowledge weaponized."
+  high_mastery: "You already understand this deeply. The upgrade is a formality — the mastery was earned."
+  low_mastery: "The upgrade will help. Mastery still requires the questions to come."
+
+reflection:
+  - "Every seeker asks the same question eventually: is the knowledge worth what it takes from you?"
+  - "The ones who make it to the bottom are never the same when they return. If they return."
+  - "I was a seeker once. Then I became the rest. There are worse fates."
+  - "The dungeon does not distinguish between those who rest here and those who die here. Both feed the same archive."
+  - "Sleep, if you can. The dreams in the deep carry information. Not always useful information — but information."
+  - "I have tended this rest site for longer than the upper levels have been inhabited. I have seen what knowledge does to a person at depth. You are holding together better than most."
+
+farewell:
+  default: "The dungeon is waiting. It is always waiting."
+  hp_low: "Carefully. You cannot rest here twice in the same breath."
+  after_upgrade: "The card knows what it needs to do. Trust it."

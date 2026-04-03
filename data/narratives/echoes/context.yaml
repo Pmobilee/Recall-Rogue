@@ -1,0 +1,36 @@
+type: context
+# Uses both {quizQuestion} and {echoText}
+# Fires when echoText.length < 12 AND gravity >= medium
+# Provides framing context for thin/short answers
+templates:
+  - id: context_dungeon_pauses
+    text: "'{quizQuestion}' — you answered '{echoText}'. Even the dungeon pauses at that."
+    min_gravity: medium
+
+  - id: context_carved_before_speaking
+    text: "The question lingers: {quizQuestion} The answer — {echoText} — carved itself into the wall before you could speak."
+    min_gravity: medium
+
+  - id: context_asked_long_ago
+    text: "They asked that same question here, long ago. '{quizQuestion}' The answer was always {echoText}."
+    min_gravity: medium
+
+  - id: context_the_walls_asked
+    text: "The walls have been asking '{quizQuestion}' for years. You are the first to answer correctly. They were beginning to doubt the question was answerable."
+    min_gravity: medium
+
+  - id: context_knew_the_question
+    text: "The dungeon knew the question. It did not know if you knew the answer. '{quizQuestion}' — and then: {echoText}. The uncertainty resolves."
+    min_gravity: medium
+
+  - id: context_inscribed_both
+    text: "Both are inscribed somewhere in the lower levels: '{quizQuestion}' and, beneath it, '{echoText}'. You have caught up to an inscription that was waiting for you."
+    min_gravity: medium
+
+  - id: context_the_question_and_answer_together
+    text: "'{quizQuestion}' A question with a history in this place. '{echoText}' — an answer with a future. The dungeon files them together."
+    min_gravity: medium
+
+  - id: context_resonance
+    text: "'{echoText}.' The answer to '{quizQuestion}' — carried through three floors of stone to reach the question. The resonance between them is audible, if you know what to listen for."
+    min_gravity: medium

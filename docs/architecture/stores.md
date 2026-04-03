@@ -1,8 +1,8 @@
 # Svelte Stores & State
 
 > **Purpose:** All Svelte stores, state ownership, reactivity patterns, and initialization order
-> **Last verified:** 2026-03-31
-> **Source files:** `src/ui/stores/authStore.ts`, `src/ui/stores/gameState.ts`, `src/ui/stores/playerData.ts`, `src/ui/stores/profileStore.ts`, `src/ui/stores/settings.ts`, `src/ui/stores/syncStore.ts`, `src/ui/stores/factSprites.ts`, `src/ui/stores/omniscient.ts`, `src/ui/stores/singletonStore.ts`, `src/ui/stores/reviewForecast.ts`, `src/ui/stores/welcomeBack.ts`
+> **Last verified:** 2026-04-03
+> **Source files:** `src/ui/stores/authStore.ts`, `src/ui/stores/gameState.ts`, `src/ui/stores/playerData.ts`, `src/ui/stores/profileStore.ts`, `src/ui/stores/settings.ts`, `src/ui/stores/syncStore.ts`, `src/ui/stores/factSprites.ts`, `src/ui/stores/omniscient.ts`, `src/ui/stores/singletonStore.ts`, `src/ui/stores/reviewForecast.ts`, `src/ui/stores/welcomeBack.ts`, `src/ui/stores/narrativeStore.ts`
 
 > See also: [stores-gameplay.md](stores-gameplay.md) for combatState, coopState, campState, classroomStore, and parentalStore
 
@@ -152,6 +152,31 @@ Consumed by `FactArtwork.svelte` and any card display showing art mastery colori
 
 ---
 
+
+### narrativeStore — Narrative Overlay State
+
+**File:** `src/ui/stores/narrativeStore.ts`
+
+Plain `writable<NarrativeDisplayState>` (no singleton needed — single consumer).
+
+```ts
+interface NarrativeDisplayState {
+  lines: NarrativeLine[];
+  mode: 'auto-fade' | 'click-through';
+  active: boolean;
+}
+```
+
+| Export | Purpose |
+|---|---|
+| `narrativeDisplay` | Writable store consumed by `NarrativeOverlay.svelte` |
+| `showNarrative(lines, mode)` | Set `active: true` with provided lines and mode |
+| `dismissNarrative()` | Reset to empty/inactive state |
+
+The narrative engine (`narrativeEngine.ts` — PLANNED) calls `showNarrative()` at room transitions. The overlay calls `onDismiss` which calls `dismissNarrative()`.
+
+---
+
 ## State Ownership
 
 | Store | Written by | Consumed by |
@@ -167,6 +192,7 @@ Consumed by `FactArtwork.svelte` and any card display showing art mastery colori
 | `profileStore` | Profile service mutations | Profile selection screen |
 | `classroomStore` | `classroomService` (30min poll) | Homework badge, assignment overlay |
 | `reviewForecast` | `refreshReviewForecast()` | Hub review count badge |
+| `narrativeDisplay` | `showNarrative()` / `dismissNarrative()` in `narrativeStore.ts` | `NarrativeOverlay.svelte` |
 | `omniscientStatus` | `checkOmniscientStatus()` | Hub visual overlays |
 
 ---

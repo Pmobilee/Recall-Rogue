@@ -1,0 +1,51 @@
+type: concept
+templates:
+  # High gravity
+  - id: concept_bell_rings
+    text: "{echoText}. The idea hits the air like a bell. Ideas are louder than swords down here."
+    min_gravity: high
+
+  - id: concept_three_locks
+    text: "The ancients sealed the concept of {echoText} behind three locks. You just turned one."
+    min_gravity: high
+
+  - id: concept_reorganizes
+    text: "{echoText}. You feel it reorganize something behind your eyes. The dungeon noticed."
+    min_gravity: high
+
+  - id: concept_walls_covered
+    text: "Every wall in this corridor is covered in attempts to describe {echoText}. None of them got it right. Until now."
+    min_gravity: high
+
+  - id: concept_older_than_walls
+    text: "{echoText} is older than these walls. The walls were built to contain it. They have been failing slowly for centuries."
+    min_gravity: high
+
+  - id: concept_the_deep_knew
+    text: "Something in the deep has known about {echoText} since before the concept had a name. It is unsurprised by your answer. It has been waiting for you to catch up."
+    min_gravity: high
+
+  # Medium gravity
+  - id: concept_dungeon_considers
+    text: "The dungeon considers {echoText}. It has its own interpretation. The two versions do not entirely agree."
+    min_gravity: medium
+
+  - id: concept_dust_settles
+    text: "The dust settles differently after {echoText}. Subtle — only noticeable if you know what to look for."
+    min_gravity: medium
+
+  - id: concept_stone_absorbs
+    text: "{echoText}. The stone absorbs it. Everything spoken in the dungeon is absorbed. That is why the walls know things."
+    min_gravity: medium
+
+  - id: concept_carved_and_recorded
+    text: "Carved somewhere in the lower levels: {echoText}. Carved before anyone could speak it. The dungeon anticipated this."
+    min_gravity: medium
+
+  - id: concept_archive_updates
+    text: "The archive updates. {echoText} — filed, cross-referenced, stored alongside the other things you know. The collection grows."
+    min_gravity: medium
+
+  - id: concept_seeker_carried_it
+    text: "Every seeker who descended carrying {echoText} changed the dungeon slightly. You are the latest change."
+    min_gravity: medium

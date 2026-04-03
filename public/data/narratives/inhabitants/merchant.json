@@ -1,0 +1,49 @@
+{
+  "npc": "merchant",
+  "personality": "ancient, mercantile, slightly predatory",
+  "greeting": [
+    {
+      "visitNumber": 1,
+      "text": "Ah. A new seeker. Everything here has a price. Some prices are visible."
+    },
+    {
+      "visitNumber": 2,
+      "text": "You return. The desperate always do."
+    },
+    {
+      "visitNumber": 3,
+      "text": "Three visits. You are either wealthy in knowledge or bankrupt in options."
+    },
+    {
+      "visitNumber": "default",
+      "text": "I have nothing left to sell you that you can afford. But let us pretend."
+    }
+  ],
+  "on_purchase": {
+    "card": "That one wanted to be found. Cards choose their wielders, down here.",
+    "relic": "It will serve you. For now. Relics have their own loyalties.",
+    "heal": "The wound closes. The memory of it does not.",
+    "expensive_item": "A significant investment. The dungeon respects commitment. So, reluctantly, do I.",
+    "browsing_only": "Browse freely. The price of looking is only what you carry away in your memory."
+  },
+  "farewell": {
+    "default": "The dungeon always has more to sell. Whether you can afford it is another matter.",
+    "hp_low": "Survive. I prefer return customers to corpses. Corpses pay poorly.",
+    "no_purchase": "Next time. Or not — the dungeon has ways of encouraging return visits.",
+    "all_purchased": "You have bought everything. I admire the thoroughness. Come back when you have found more gold — or more time."
+  },
+  "lore_aside": [
+    "Every item here came from someone who did not survive to reclaim it. I prefer to think of myself as a custodian.",
+    "The dungeon and I have an arrangement. I do not ask what happens in its deeper levels. It does not interfere with commerce.",
+    "I have been selling in this place since the fourth age of the archive. My inventory has improved. My clientele has not.",
+    "The last seeker who asked where my goods came from did not leave this shop. I have answered the question more carefully since."
+  ],
+  "stateReactive": {
+    "hp_low": "You look like the last one. They did not make it past the next floor.",
+    "hp_full": "Untouched? Impressive. Or perhaps the dungeon simply hasn't tried yet.",
+    "many_relics": "Quite the collection. Careful — relics remember their previous owners. Not all memories are kind.",
+    "no_gold": "Empty pockets. The dungeon provides, but it always collects.",
+    "high_mastery": "You know things. I can see the weight of it. Knowledge that heavy tends to attract interest — not all of it friendly.",
+    "streak_active": "You have been answering correctly. The dungeon notices. So do I."
+  }
+}

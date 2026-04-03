@@ -4,10 +4,10 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/gen-sprite-keys.mjs && node scripts/build-facts-db.mjs && vite",
+    "dev": "node scripts/gen-sprite-keys.mjs && node scripts/build-narratives.mjs && node scripts/build-facts-db.mjs && vite",
     "webp": "node scripts/convert-to-webp.mjs",
     "prebuild": "node scripts/audit-fact-sprites.mjs --emit-manifest && node scripts/convert-to-webp.mjs",
-    "build": "node scripts/gen-sprite-keys.mjs && node scripts/audit-assets.mjs && node scripts/build-facts-db.mjs && vite build",
+    "build": "node scripts/gen-sprite-keys.mjs && node scripts/audit-assets.mjs && node scripts/build-narratives.mjs && node scripts/build-facts-db.mjs && vite build",
     "build:web": "vite build",
     "build:desktop": "cd src-tauri && cargo tauri build",
     "build:mobile": "npx cap sync && npx cap build",
@@ -98,7 +98,8 @@
     "security:audit": "node scripts/security-audit.mjs",
     "verify:ship": "node scripts/verify-ship.mjs",
     "registry:sync": "tsx scripts/registry/sync.ts",
-    "registry:stale": "tsx scripts/registry/stale.ts"
+    "registry:stale": "tsx scripts/registry/stale.ts",
+    "narratives:build": "node scripts/build-narratives.mjs"
   },
   "devDependencies": {
     "@napi-rs/canvas": "^0.1.97",
@@ -107,6 +108,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@tsconfig/svelte": "^5.0.6",
     "@types/d3-geo": "^3.1.0",
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^24.10.1",
     "@types/sql.js": "^1.4.9",
     "@vitest/coverage-v8": "^2.1.9",
@@ -115,6 +117,7 @@
     "dotenv": "^17.3.1",
     "happy-dom": "^14.12.3",
     "html2canvas": "^1.4.1",
+    "js-yaml": "^4.1.1",
     "playwright-core": "^1.58.2",
     "sharp": "^0.34.5",
     "svelte": "^5.45.2",

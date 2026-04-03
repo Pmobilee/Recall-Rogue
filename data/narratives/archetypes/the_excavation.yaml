@@ -1,0 +1,40 @@
+id: the_excavation
+name: The Excavation
+scope: universal
+beats:
+  - trigger: run_start
+    text: "The surface layer first. Dust and recent forgetting — {knowledge_plural} that fell out of common use a generation ago, {discovery_verb} now from the topmost {material}. Go deeper. What is recent is not what you came for."
+
+  - trigger: first_boss_kill
+    text: "Through the first strata. The {guardian_noun} was sediment made intentional — compacted loss, accumulated ignorance given form. You have broken through. The layer below is older. The {knowledge_plural} there have been undisturbed for longer."
+
+  - trigger: floor_2_start
+    text: "Deeper sediment. The {knowledge_plural} here are older than the {setting_noun} above them — they predate the architecture, laid down before anyone thought to build walls around them. The {material} is different here. Denser. The {atmosphere} has not moved in centuries."
+
+  - trigger: mid_run
+    text: "You have reached the stratum they were looking for — the layer that contains the oldest {knowledge_plural} of this domain. Every {knowledge_noun} here is a fossil. You are reading the record of what was known before what is known now. The sediment tells its own story."
+
+  - trigger: pre_final
+    text: "Bedrock. The {material} here will not yield to normal tools — only to {knowledge_noun}. The final {guardian_noun} is the oldest deposit: compressed, dense, {discovery_verb} from nothing for so long it has forgotten it was once fluid. Break through the last layer. The core holds what no surface excavation ever found."
+
+  - trigger: run_victory
+    text: "Core sample. The {knowledge_plural} at this depth are unlike anything above — unweathered, unchanged by the {atmosphere} that softens everything closer to the surface. You carry a cross-section of time in the {container_noun} of your memory. The complete record. {material|capitalize} and {atmosphere} and everything between."
+
+  - trigger: run_defeat
+    text: "The excavation collapses. The sediment fills the shaft behind you — old {knowledge_plural}, new {knowledge_plural}, all mixed and sealed together. The record will require another excavation. The {atmosphere} preserves the failure layer alongside everything else. An honest record."
+
+branches:
+  - condition: hp_below_30
+    trigger: any_room_enter
+    text: "The weight of the excavation above presses down. This is what happens when you go deep without sufficient support."
+    once: true
+
+  - condition: floor_2_start
+    trigger: any_room_enter
+    text: "The smell of the second stratum — different from the first. Older {material}. Older {atmosphere}. Older silence."
+    once: true
+
+  - condition: streak_5_plus
+    trigger: any_room_enter
+    text: "The excavation accelerates. Five layers peeled back in sequence — the sediment yields to confident {knowledge_noun}."
+    once: true

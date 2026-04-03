@@ -1,0 +1,51 @@
+type: place
+templates:
+  # High gravity
+  - id: place_walls_dissolve
+    text: "For a heartbeat, the walls dissolve. You see {echoText} — impossibly distant, impossibly clear. Then stone again."
+    min_gravity: high
+
+  - id: place_corridor_shifts
+    text: "The dungeon shifts. This corridor was not here before. It remembers {echoText}."
+    min_gravity: high
+
+  - id: place_never_been
+    text: "{echoText}. You have never been there. But something in your marrow says otherwise."
+    min_gravity: high
+
+  - id: place_carvings_map
+    text: "Carvings on the wall. A map. {echoText} is marked. So is where you stand now. The distance between them is shrinking."
+    min_gravity: high
+
+  - id: place_dungeon_swallowed
+    text: "{echoText} exists somewhere above. Down here, a copy exists — older, heavier, built from what the place looked like before history cleaned it up."
+    min_gravity: high
+
+  - id: place_exists_differently
+    text: "{echoText} exists above. Down here, it exists differently. You will see what that means before you leave."
+    min_gravity: high
+
+  # Medium gravity
+  - id: place_the_walls_know
+    text: "The walls know {echoText}. Not from memory — from age. Places this old absorb the names of other places like water absorbs salt."
+    min_gravity: medium
+
+  - id: place_recorded
+    text: "{echoText} is recorded now — added to the dungeon's internal geography. It does not ask permission."
+    min_gravity: medium
+
+  - id: place_stone_recognizes
+    text: "The stone recognizes {echoText}. It has heard the name before. It does not say from whom."
+    min_gravity: medium
+
+  - id: place_dust_from
+    text: "Some of this dust came from {echoText}. Carried here by means that require more explanation than the dungeon will provide."
+    min_gravity: medium
+
+  - id: place_corridor_was_longer
+    text: "The corridor was longer than it should be. {echoText} has that effect on distances — places that know it stretch themselves, as if trying to reach."
+    min_gravity: medium
+
+  - id: place_added_to_record
+    text: "{echoText}. Added to the record. The dungeon is a better map than it was before you said that."
+    min_gravity: medium

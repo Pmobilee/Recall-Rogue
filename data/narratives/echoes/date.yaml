@@ -1,0 +1,34 @@
+type: date
+templates:
+  # Medium gravity only — years are medium gravity
+  - id: date_year_inscribed
+    text: "{echoText}. That year is inscribed somewhere in the lower levels. The dungeon keeps a calendar none of its visitors were invited to read."
+    min_gravity: medium
+
+  - id: date_the_walls_remember
+    text: "The dungeon was here in {echoText}. It does not discuss what it witnessed."
+    min_gravity: medium
+
+  - id: date_something_happened
+    text: "{echoText}. Something happened in that year that made the stone change temperature. You can feel it if you press your hand to the wall."
+    min_gravity: medium
+
+  - id: date_before_after
+    text: "{echoText}. The dungeon divides its history into before and after that year. It does not explain which category you belong to."
+    min_gravity: medium
+
+  - id: date_the_layer
+    text: "In the sediment of this dungeon, {echoText} has its own layer — a thin seam of events compressed into stone. You just passed through it."
+    min_gravity: medium
+
+  - id: date_that_year_endured
+    text: "{echoText}. Whatever happened that year, it endured. The dungeon absorbed it and kept descending, as it always does."
+    min_gravity: medium
+
+  - id: date_the_dust_is_from
+    text: "Some of this dust is from {echoText}. You are breathing history that has no other form left."
+    min_gravity: medium
+
+  - id: date_fixed_point
+    text: "{echoText}. A fixed point. The dungeon has been falling away from it ever since."
+    min_gravity: medium

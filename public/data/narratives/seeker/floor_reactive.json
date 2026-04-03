@@ -1,0 +1,70 @@
+{
+  "category": "floor_reactive",
+  "lines": [
+    {
+      "id": "floor_1_descent_begins",
+      "condition": "floor_1",
+      "text": "The descent begins. What was buried here was buried for a reason."
+    },
+    {
+      "id": "floor_1_wonder_dread",
+      "condition": "floor_1",
+      "text": "The first floor — where curiosity and dread are still balanced. That balance will not last."
+    },
+    {
+      "id": "floor_1_still_possible",
+      "condition": "floor_1",
+      "text": "From here, it is still possible to return. The dungeon does not say this to encourage retreat — only to mark the moment when it ceases to be true."
+    },
+    {
+      "id": "floor_2_deeper",
+      "condition": "floor_2",
+      "text": "Deeper. The air tastes of old ink and older regret."
+    },
+    {
+      "id": "floor_2_no_turning_back",
+      "condition": "floor_2",
+      "text": "The second level. The descent is committed now — whatever that means for what remains of you."
+    },
+    {
+      "id": "floor_2_the_real_dungeon",
+      "condition": "floor_2",
+      "text": "The first floor was the vestibule. This is the dungeon proper — where the knowledge the surface world forgot was placed, deliberately, out of reach."
+    },
+    {
+      "id": "floor_3_the_bottom",
+      "condition": "floor_3",
+      "text": "The bottom. Where knowledge goes to become something else entirely."
+    },
+    {
+      "id": "floor_3_finality",
+      "condition": "floor_3",
+      "text": "Very few reach the third floor. Of those, fewer still with enough left to matter. The dungeon has been filtering."
+    },
+    {
+      "id": "post_boss_guardian_returns",
+      "condition": "post_boss",
+      "text": "It did not die. Guardians do not die. It returned to the knowledge it was made from."
+    },
+    {
+      "id": "post_boss_chamber_vibrates",
+      "condition": "post_boss",
+      "text": "The chamber still vibrates. Boss encounters leave scars on the architecture."
+    },
+    {
+      "id": "pre_final_what_comes_next",
+      "condition": "pre_final",
+      "text": "The final level. What you have carried this far — every correct answer, every mistake, every relic — will be weighed against what waits below."
+    },
+    {
+      "id": "run_victory_emerged",
+      "condition": "run_victory",
+      "text": "You emerged. The dungeon will not forget this. Neither will you."
+    },
+    {
+      "id": "run_defeat_joins_the_archive",
+      "condition": "run_defeat",
+      "text": "Your knowledge joins the archive. It will be used — recycled into questions for the next seeker. Nothing is lost down here. Only reclassified."
+    }
+  ]
+}

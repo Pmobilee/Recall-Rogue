@@ -1,0 +1,55 @@
+{
+  "id": "sealed_vault",
+  "name": "The Sealed Vault",
+  "scope": "universal",
+  "beats": [
+    {
+      "trigger": "run_start",
+      "text": "The first seal was broken the moment you entered. They are not physical seals — they are {knowledge_noun} seals. Every {discovery_verb} {knowledge_noun} peels back another layer. The vault is opening around you, not ahead of you."
+    },
+    {
+      "trigger": "first_boss_kill",
+      "text": "Second seal. The {guardian_noun} was the mechanism. You were the key. The {material} around you shifts — the architecture of the vault adjusting to your unauthorized presence."
+    },
+    {
+      "trigger": "floor_2_start",
+      "text": "Three seals remain. The {atmosphere} thickens. Whatever is stored in the deepest chamber has been waiting a very long time. It senses the outer seals have broken. It is no longer entirely still."
+    },
+    {
+      "trigger": "mid_run",
+      "text": "The vault was not sealed to keep people out. It was sealed to keep something in. You are now deep enough to understand the difference. The {danger_noun} here is not the defenses — it is what you are letting loose."
+    },
+    {
+      "trigger": "pre_final",
+      "text": "The last seal. On the other side: {knowledge_plural} that were judged too consequential for the surface world. The {guardian_noun} who holds the final lock has never failed. You will be the first to test that record."
+    },
+    {
+      "trigger": "run_victory",
+      "text": "The vault is open. The final {knowledge_plural}, {discovery_verb} from their {container_noun} of {material}. The seal-makers are dust. Their judgment has been overruled. Consider carefully what you do with that authority."
+    },
+    {
+      "trigger": "run_defeat",
+      "text": "The vault reseals. Your attempt is recorded in {material} somewhere in the lower chambers — another failed entry in a long list of failures. The {danger_noun} endures. The knowledge remains locked."
+    }
+  ],
+  "branches": [
+    {
+      "condition": "hp_below_30",
+      "trigger": "any_room_enter",
+      "text": "The vault feeds on weakness. Every seal that held was held by something that bled.",
+      "once": true
+    },
+    {
+      "condition": "many_relics",
+      "trigger": "any_room_enter",
+      "text": "Your relics resonate with the vault's {material}. They were made here, or made from things that were. The vault knows its own.",
+      "once": true
+    },
+    {
+      "condition": "streak_broken",
+      "trigger": "any_room_enter",
+      "text": "A seal tightens. The vault is not passive. It watches for hesitation.",
+      "once": false
+    }
+  ]
+}

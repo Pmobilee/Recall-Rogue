@@ -1,0 +1,76 @@
+category: hp_reactive
+lines:
+  # hp_above_80
+  - id: hp_high_confidence
+    condition: hp_above_80
+    text: "Untouched. The dungeon has not yet decided what you are worth."
+
+  - id: hp_high_footsteps
+    condition: hp_above_80
+    text: "Your footsteps are too loud. Confidence echoes."
+
+  - id: hp_high_ominous
+    condition: hp_above_80
+    text: "Unbloodied this deep. The dungeon finds this interesting. So does something below."
+
+  - id: hp_high_hubris
+    condition: hp_above_80
+    text: "The ones who reach the lower floors without wounds either know something others don't — or haven't been properly tested yet."
+
+  - id: hp_high_the_dungeon_notes
+    condition: hp_above_80
+    text: "The dungeon has noted your intact condition. It is revising its approach accordingly."
+
+  - id: hp_high_grace
+    condition: hp_above_80
+    text: "Full of life and descending into what took it from so many others. That particular courage, or foolishness, has always been interesting to watch."
+
+  # hp_30_to_80
+  - id: hp_mid_battle_worn
+    condition: hp_30_to_80
+    text: "Marked, but standing. The dungeon respects wounds that didn't stop the descent."
+
+  - id: hp_mid_grit
+    condition: hp_30_to_80
+    text: "You have been tested. You have not been broken. The distinction matters here."
+
+  - id: hp_mid_carrying_cost
+    condition: hp_30_to_80
+    text: "Every scar is a question answered in flesh. The dungeon charges interest in blood — you have been paying."
+
+  - id: hp_mid_committed
+    condition: hp_30_to_80
+    text: "Damaged enough to be dangerous. Not damaged enough to be desperate. The most useful state for what lies ahead."
+
+  - id: hp_mid_keeps_moving
+    condition: hp_30_to_80
+    text: "The ones who keep moving at this condition are the ones the dungeon takes seriously. You have earned its full attention."
+
+  # hp_below_30
+  - id: hp_low_blood_on_pages
+    condition: hp_below_30
+    text: "Blood on the pages. Every answer costs more than the last."
+
+  - id: hp_low_hands_shake
+    condition: hp_below_30
+    text: "Your hands shake. The next question will be harder to read."
+
+  - id: hp_low_dungeon_feeds
+    condition: hp_below_30
+    text: "The dungeon feeds on what you lose. It is well-fed."
+
+  - id: hp_low_survival_horror
+    condition: hp_below_30
+    text: "This is the stage where most seekers make their final mistake. The descent narrows. The errors compound."
+
+  - id: hp_low_barely
+    condition: hp_below_30
+    text: "Barely. That is the word for what you are, right now, in this place. Barely enough. The dungeon is watching to see if barely holds."
+
+  - id: hp_low_not_yet
+    condition: hp_below_30
+    text: "Not yet finished. The dungeon seems almost disappointed by that."
+
+  - id: hp_low_the_margin
+    condition: hp_below_30
+    text: "The margin between you and the archive below has never been thinner. Answer carefully."

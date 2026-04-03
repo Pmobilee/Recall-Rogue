@@ -1,0 +1,55 @@
+{
+  "id": "the_heresy",
+  "name": "The Heresy",
+  "scope": "universal",
+  "beats": [
+    {
+      "trigger": "run_start",
+      "text": "The {setting_noun} was sealed not because the {knowledge_plural} inside were false. They were sealed because they were true. The accepted {knowledge_noun} above requires this {container_noun} to remain shut. You are descending to open it. That word for what you are doing is older than the dungeon."
+    },
+    {
+      "trigger": "first_boss_kill",
+      "text": "The first {guardian_noun} was doctrine. It fell to evidence. The {knowledge_plural} you carry now contradict something the surface world believes without question — {discovery_verb} from {material} that the authorities of the first level would prefer stay buried. It does not stay buried."
+    },
+    {
+      "trigger": "floor_2_start",
+      "text": "Deeper heresy. The second level holds {knowledge_plural} that do not merely contradict surface dogma — they explain why the dogma was constructed. The {atmosphere} down here is the smell of suppressed correction. Someone went to great effort to ensure these {knowledge_plural} were forgotten. That effort is failing."
+    },
+    {
+      "trigger": "mid_run",
+      "text": "You understand the shape of the old {knowledge_noun} now — what it required believing, what it required ignoring. The {knowledge_plural} you have {discovery_verb} from the {setting_noun}'s {material} do not destroy the old understanding. They reveal it as partial. Incomplete. A draft, published too early."
+    },
+    {
+      "trigger": "pre_final",
+      "text": "The final {knowledge_noun} waits in the last chamber. The {guardian_noun} protecting it is not malicious — it was placed by those who genuinely believed the old truth sufficient. They were not wrong to protect it. They were wrong about what was worth protecting. The distinction matters when you face what guards it."
+    },
+    {
+      "trigger": "run_victory",
+      "text": "The heresy is complete. The {knowledge_plural} {discovery_verb} from the {setting_noun}'s deepest {material} — sealed against {danger_noun}, protected by {guardian_noun}, surrounded by {atmosphere} — are now in the world. The old truth is not destroyed. It is contextualized. The surface will decide whether that is better."
+    },
+    {
+      "trigger": "run_defeat",
+      "text": "The heresy is suppressed. The {guardian_noun} of the old truth proves sufficient — the correcting {knowledge_plural} remain sealed, the accepted version undisturbed. History is written by whoever controls the {container_noun}. Today, they still do. The {atmosphere} of the {setting_noun} closes over another failed revision."
+    }
+  ],
+  "branches": [
+    {
+      "condition": "high_mastery",
+      "trigger": "any_room_enter",
+      "text": "The {knowledge_plural} of the heresy require mastery to hold correctly. Imprecise understanding becomes new dogma. You must know these exactly.",
+      "once": true
+    },
+    {
+      "condition": "hp_below_30",
+      "trigger": "any_room_enter",
+      "text": "Heretics bleed. It has always been this way. The {danger_noun} is not philosophical — it is the physical weight of the old truth defending itself.",
+      "once": true
+    },
+    {
+      "condition": "first_boss_kill",
+      "trigger": "any_room_enter",
+      "text": "The first doctrine fell. It did not fall easily. It never does.",
+      "once": true
+    }
+  ]
+}

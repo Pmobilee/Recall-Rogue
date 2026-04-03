@@ -1,0 +1,175 @@
+category: relic_callbacks
+# ~40 of the most narratively interesting relics
+# Skip pure stat sticks (whetstone, iron_shield, steel_skin, gold_magnet, vitality_ring, herbal_pouch)
+lines:
+  # --- UNCOMMON STARTERS ---
+
+  - relic_id: last_breath
+    condition: hp_below_30
+    text: "Last Breath pulses once. A promise — or a warning."
+
+  - relic_id: last_breath
+    condition: any_room_enter
+    text: "The death-mask grows warmer as the dungeon grows deeper. It has been here before."
+
+  - relic_id: tag_magnet
+    condition: chain_complete
+    text: "The Tag Magnet vibrates at the frequency of the completed chain. It was built for exactly this."
+
+  - relic_id: adrenaline_shard
+    condition: streak_5_plus
+    text: "The Adrenaline Shard blazes — every answer arriving before it finished asking. This is what it was made for."
+
+  - relic_id: volatile_core
+    condition: hp_below_30
+    text: "Volatile Core fractures slightly. The destructive energy within has been waiting for a moment this desperate."
+
+  - relic_id: volatile_core
+    condition: streak_5_plus
+    text: "The Volatile Core burns brightest when the bearer is at full capacity. The amplification is mutual."
+
+  - relic_id: aegis_stone
+    condition: hp_below_30
+    text: "The Aegis Stone remembers the Eternal Barricade — a wall that never fell. It does not consider your situation a precedent."
+
+  - relic_id: plague_flask
+    condition: any_room_enter
+    text: "The Plague Flask sweats. The dungeon's moisture reacts with whatever is sealed inside. The seal is holding. Barely."
+
+  - relic_id: memory_nexus
+    condition: post_boss
+    text: "The Memory Nexus absorbs the guardian's residue. It grows heavier."
+
+  - relic_id: memory_nexus
+    condition: streak_5_plus
+    text: "The Memory Nexus lights up — synaptic connections firing in response to the streak. It has been feeding."
+
+  - relic_id: insight_prism
+    condition: high_mastery
+    text: "The Insight Prism refracts — seven colors, seven truths you didn't know you held."
+
+  - relic_id: blood_price
+    condition: hp_below_30
+    text: "Blood Price throbs. It's been counting what you've spent."
+
+  - relic_id: blood_price
+    condition: any_room_enter
+    text: "The parchment is always wet. The dungeon provides blood for the ink, one way or another."
+
+  - relic_id: reckless_resolve
+    condition: hp_below_30
+    text: "Reckless Resolve ignites. The berserker's blood soaked into the leather recognized this moment — nothing left to lose."
+
+  - relic_id: resonance_crystal
+    condition: chain_complete
+    text: "The Resonance Crystal hums. Chain completed. The frequency it was grown at is present in the room."
+
+  # --- COMMON STARTERS (narratively interesting) ---
+
+  - relic_id: lucky_coin
+    condition: shop_visit
+    text: "The Lucky Coin vibrates in your pocket. It knows this merchant."
+
+  - relic_id: lucky_coin
+    condition: streak_broken
+    text: "The Lucky Coin goes still. It felt the streak break. It is reconsidering its position."
+
+  - relic_id: swift_boots
+    condition: hp_below_30
+    text: "The Swift Boots could take you to the exit. They will not do it on their own. That has to be your choice."
+
+  - relic_id: tattered_notebook
+    condition: rest_visit
+    text: "The Tattered Notebook fills itself while you rest. New entries. Not in your handwriting."
+
+  - relic_id: tattered_notebook
+    condition: streak_5_plus
+    text: "The Tattered Notebook's pages turn rapidly. It is writing faster than the streak warrants — anticipating what comes next."
+
+  # --- EXPANSION STARTERS (uncommon) ---
+
+  - relic_id: pocket_watch
+    condition: floor_2_start
+    text: "The Pocket Watch ticks differently on the second floor. The clockmaker who wound it never reached this level. The hands remember where they were."
+
+  - relic_id: chain_link_charm
+    condition: chain_complete
+    text: "The Chain Link Charm burns bright. It feeds on connections."
+
+  - relic_id: bleedstone
+    condition: hp_below_30
+    text: "The Bleedstone pulses with your heartbeat. It is not amplifying the bleeding. It is simply enjoying it."
+
+  - relic_id: ember_core
+    condition: post_boss
+    text: "The Ember Core erupts briefly as the guardian dissolves. Fire recognizes the heat of endings."
+
+  # --- UNLOCKABLE RARES ---
+
+  - relic_id: chain_reactor
+    condition: chain_complete
+    text: "The Chain Reactor discharges. The experimental archivist who built this never considered what it would feel like from inside the blast."
+
+  - relic_id: scholars_crown
+    condition: streak_5_plus
+    text: "The Scholar's Crown glows. It was made for moments like this."
+
+  - relic_id: scholars_crown
+    condition: high_mastery
+    text: "The Scholar's Crown settles more firmly. It was built to fit a master — not a student."
+
+  - relic_id: domain_mastery_sigil
+    condition: streak_5_plus
+    text: "The Domain Mastery Sigil blazes. Deep expertise recognized. The seals on the dungeon respond."
+
+  - relic_id: phoenix_feather
+    condition: hp_below_30
+    text: "The Phoenix Feather warms against your chest. Not yet, it whispers. Not yet."
+
+  - relic_id: phoenix_feather
+    condition: hp_above_80
+    text: "The Phoenix Feather is cool — patient. It has one purpose and you have not reached it yet. It is fine with waiting."
+
+  - relic_id: scholars_gambit
+    condition: streak_broken
+    text: "The Scholar's Gambit exacts its toll. Knowledge gambled and lost costs more than knowledge never sought."
+
+  - relic_id: scholars_gambit
+    condition: many_relics
+    text: "The Scholar's Gambit and the knowledge it traded for — your collection grows while the relic drinks the cost of each wrong answer."
+
+  - relic_id: prismatic_shard
+    condition: chain_complete
+    text: "The Prismatic Shard refracts the completed chain into seven colors. It remembers the perfect chain it was shattered from. It is reconstructing that memory, link by link."
+
+  - relic_id: mirror_of_knowledge
+    condition: post_boss
+    text: "The Mirror of Knowledge reflects the guardian's final form — distorted, slightly enlarged. What it shows is not the guardian as it was. It shows the guardian as it could have been."
+
+  - relic_id: soul_jar
+    condition: streak_5_plus
+    text: "The Soul Jar is filling. Five correct answers leaves almost no room. The crystallized certainty presses against the glass."
+
+  - relic_id: deja_vu
+    condition: floor_2_start
+    text: "The Deja Vu relic shudders. You have been here before — or it has been in rooms like this, with seekers like you. The feeling is not yours alone."
+
+  - relic_id: mind_palace
+    condition: streak_5_plus
+    text: "The Mind Palace adds a room. You can almost see it — another illuminated chamber in the architecture of what you know."
+
+  - relic_id: mind_palace
+    condition: streak_broken
+    text: "A window dims in the Mind Palace. The structure holds — but the light in that room will not return easily."
+
+  - relic_id: crit_lens
+    condition: post_boss
+    text: "The Crit Lens found the angle of maximum force. The guardian felt it in its final calculation."
+
+  - relic_id: quick_study
+    condition: streak_5_plus
+    text: "The Quick Study's magnifying glass hovers over the next answer before the question is asked. It has been anticipating."
+
+  - relic_id: double_down
+    condition: pre_final
+    text: "The Double Down relic grows heavy. The gambler's ultimate bet has not been used. The final floor may be the appropriate moment — or it may not be. It does not advise."

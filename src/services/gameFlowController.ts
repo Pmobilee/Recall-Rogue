@@ -885,6 +885,23 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
     currentScreen.set('runPreview');
   } else {
     // AR-59.12: No starter relic. Runs start with 0 relics. First relic earned at Act 1 mini-boss.
+    // Show run_start narrative before entering dungeon map
+    const startLines = getNarrativeLines({
+      roomType: 'combat',  // dummy — run_start beat triggers on room count = 0
+      isPostBoss: false,
+      isPostEncounter: false,
+      floor: run.floor.currentFloor,
+      segment: run.floor.segment as 1 | 2 | 3 | 4,
+      playerHp: run.playerHp,
+      playerMaxHp: run.playerMaxHp,
+      relicIds: run.runRelics.map(r => r.definitionId),
+      currentStreak: 0,
+      chainColors: [],  // Trivia path — no chain distribution at run start
+      topicLabels: undefined,
+    });
+    if (startLines.length > 0) {
+      showNarrative(startLines, 'click-through');
+    }
     gameFlowState.set('dungeonMap');
     currentScreen.set('dungeonMap');
   }
@@ -2862,6 +2879,23 @@ export function confirmChainDistribution(): void {
   const run = get(activeRunState);
   if (!run) return;
 
+  // Show run_start narrative before entering dungeon map (Study Temple path)
+  const startLines = getNarrativeLines({
+    roomType: 'combat',  // dummy — run_start beat triggers on room count = 0
+    isPostBoss: false,
+    isPostEncounter: false,
+    floor: run.floor.currentFloor,
+    segment: run.floor.segment as 1 | 2 | 3 | 4,
+    playerHp: run.playerHp,
+    playerMaxHp: run.playerMaxHp,
+    relicIds: run.runRelics.map(r => r.definitionId),
+    currentStreak: 0,
+    chainColors: run.chainDistribution?.runChainTypes.map(i => CHAIN_TYPES[i]?.name ?? 'Unknown') ?? [],
+    topicLabels: run.chainDistribution?.assignments?.flat().map(g => g.label),
+  });
+  if (startLines.length > 0) {
+    showNarrative(startLines, 'click-through');
+  }
   gameFlowState.set('dungeonMap');
   currentScreen.set('dungeonMap');
 }

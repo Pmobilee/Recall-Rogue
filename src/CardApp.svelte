@@ -100,6 +100,7 @@
     handleSkipCard,
     handleUseHint,
     startEncounterForRoom,
+    devForceEncounterVictory,
   } from './services/encounterBridge'
   import type { FactDomain } from './data/card-types'
   import type { QuizQuestion } from './services/bossQuizPhase'
@@ -164,10 +165,12 @@
   import ParallaxTransition from './ui/components/ParallaxTransition.svelte'
   import InRunTopBar from './ui/components/InRunTopBar.svelte'
   import MusicWidget from './ui/components/MusicWidget.svelte'
+  import NarrativeOverlay from './ui/components/NarrativeOverlay.svelte'
   import { musicService } from './services/musicService'
   import { ambientAudio } from './services/ambientAudioService'
   import { getReviewQueueLength } from './services/reviewQueueSystem'
   import { getAuraLevel, getAuraState } from './services/knowledgeAuraSystem'
+  import { narrativeDisplay, dismissNarrative } from './ui/stores/narrativeStore'
 
   // Update Steam Rich Presence whenever the active screen changes.
   $effect(() => {
@@ -1235,6 +1238,13 @@
       onclick={handlePause}
       aria-label="Pause"
     ><span class="pause-icon" aria-hidden="true"></span></button>
+    {#if import.meta.env.DEV}
+      <button
+        type="button"
+        class="dev-skip-btn"
+        onclick={() => devForceEncounterVictory()}
+      >&#x23ED; Skip</button>
+    {/if}
     {#if combatTransitionActive}
       {@const enemyId = combatTransitionType === 'exit-forward' ? exitEnemyId : $activeTurnState?.enemy?.template?.id}
       {#if enemyId}
@@ -1619,6 +1629,14 @@
         onreject={callbacks.onReject}
       />
     {/if}
+  {/if}
+
+  {#if $narrativeDisplay.active}
+    <NarrativeOverlay
+      lines={$narrativeDisplay.lines}
+      mode={$narrativeDisplay.mode}
+      onDismiss={dismissNarrative}
+    />
   {/if}
 
   <!-- Screen transition overlay -->
@@ -2181,5 +2199,30 @@
   /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
 
   /* F-16: hover states moved to desktop.css (unscoped) */
+
+  /* Dev-only: skip encounter button (only shown in import.meta.env.DEV builds) */
+  .dev-skip-btn {
+    position: fixed;
+    top: calc(var(--topbar-height, 4.5vh) + 0.5vh + clamp(36px, 4vw, 52px) + calc(8px * var(--layout-scale, 1)));
+    right: 1vw;
+    z-index: 201;
+    background: rgba(255, 50, 50, 0.8);
+    color: white;
+    border: none;
+    border-radius: calc(4px * var(--layout-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
+    cursor: pointer;
+    font-family: inherit;
+    min-width: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dev-skip-btn:hover {
+    background: rgba(255, 50, 50, 1);
+  }
 
 </style>

@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "templates": [
+    {
+      "id": "object_depicted_stonework",
+      "text": "You see {echoText} depicted in the stonework. Older than it should be. Much older.",
+      "minGravity": "high"
+    },
+    {
+      "id": "object_dungeon_hoards",
+      "text": "{echoText}. The dungeon hoards knowledge of it. You just took a piece.",
+      "minGravity": "high"
+    },
+    {
+      "id": "object_shadow_resembles",
+      "text": "The shadow in the corner is the wrong shape. It resembles {echoText}. The dungeon collects the forms of things it finds interesting.",
+      "minGravity": "high"
+    },
+    {
+      "id": "object_made_here",
+      "text": "{echoText} was made here, or something like it was. The techniques are in the walls — diagrams scratched by hands that no longer exist.",
+      "minGravity": "high"
+    },
+    {
+      "id": "object_walls_know_it",
+      "text": "The walls know {echoText}. They have absorbed the knowledge of it the way old stone absorbs everything — without discrimination, without comment.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "object_registered",
+      "text": "{echoText}. The dungeon's catalogue updates. Cross-referenced, filed, added to the index of things whose function and history are now held in your memory.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "object_has_been_here",
+      "text": "Something like {echoText} has been in this dungeon before. The stone around you carries the faint impression of its presence — a shape the walls learned and kept.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "object_dust_holds_form",
+      "text": "Dust on the floor holds the outline of {echoText}. Not placed there — accumulated there. The dungeon notes what you spend time near.",
+      "minGravity": "medium"
+    }
+  ]
+}

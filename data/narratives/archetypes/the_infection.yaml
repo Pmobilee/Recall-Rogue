@@ -1,0 +1,40 @@
+id: the_infection
+name: The Infection
+scope: universal
+beats:
+  - trigger: run_start
+    text: "It began with a single {knowledge_noun} — one {discovery_verb} fragment that should have satisfied curiosity and did not. The question it answered spawned three more. You are in the {setting_noun} now. This is what curiosity costs."
+
+  - trigger: first_boss_kill
+    text: "The first {guardian_noun} fell because you wanted to know what was behind it. Not to survive — to know. You are past the stage where survival and knowledge are separate motivations. That is how the infection progresses."
+
+  - trigger: floor_2_start
+    text: "Symptoms of the deep: you no longer flinch at the {danger_noun}. The {knowledge_plural} accumulating inside you have changed something fundamental. You think in patterns you did not have before. The {atmosphere} feels familiar in ways it should not."
+
+  - trigger: mid_run
+    text: "The infected scholar is indistinguishable from the dungeon at a certain depth. The {knowledge_plural} of this place — {discovery_verb} from {material} and {atmosphere} — are rewriting you. Not replacing you. Supplementing. Whether that word still applies is uncertain."
+
+  - trigger: pre_final
+    text: "Fever clarity. Every {knowledge_noun} you absorbed burns together now — the {container_noun} of your mind filled past capacity, {discovery_verb} facts pressing against each other, finding connections that shouldn't exist. The final {guardian_noun} cannot surprise you. You have already become something it was designed to stop."
+
+  - trigger: run_victory
+    text: "You emerge carrying the deep {knowledge_plural}. The surface will not understand what you have become — how the infection of knowing this place rewrote the architecture of thought. You are cured of ignorance. There is no cure for what replaced it."
+
+  - trigger: run_defeat
+    text: "The infection consumes the host. The {knowledge_plural} you gathered — {discovery_verb} with such cost — scatter back into the {atmosphere} of the {setting_noun}. Another source for the next infected scholar to find. The dungeon is patient. It has seen this before."
+
+branches:
+  - condition: hp_below_30
+    trigger: any_room_enter
+    text: "The fever spikes when the body weakens. The {knowledge_plural} burn brighter in the blood. This is how the infection feels at its worst — and most productive."
+    once: true
+
+  - condition: streak_5_plus
+    trigger: any_room_enter
+    text: "The clarity that comes with fever. The {knowledge_plural} connect without effort. This is what the infection was always building toward."
+    once: true
+
+  - condition: streak_broken
+    trigger: any_room_enter
+    text: "The fever breaks — briefly. Confusion. The {atmosphere} feels wrong again. The infection is not done with you."
+    once: false

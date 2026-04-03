@@ -1,0 +1,40 @@
+id: the_bargain
+name: The Bargain
+scope: universal
+beats:
+  - trigger: run_start
+    text: "The terms were set before you descended. You carry something the {setting_noun} wants. The {knowledge_plural} it holds in exchange are worth what you bring — or are claimed to be. The {atmosphere} of the deep does not offer refunds. Choose what you are willing to spend."
+
+  - trigger: first_boss_kill
+    text: "First payment. The {guardian_noun} demanded your certainty — that you would answer, that your {knowledge_noun} would hold. You paid. The dungeon delivered what it promised: another level, another {container_noun} unsealed. The balance sheet continues."
+
+  - trigger: floor_2_start
+    text: "Deeper terms. The {knowledge_plural} on this level cost more than the first — the price is not denominated in gold or blood but in the easier version of yourself. Every {knowledge_noun} {discovery_verb} here requires you to give up a simpler understanding of something you thought you knew. This is what the bargain always meant."
+
+  - trigger: mid_run
+    text: "Midpoint accounting. What you have spent: a cleaner worldview, comfortable ignorance, the assumption that {knowledge_plural} were harmless. What you have received: {knowledge_plural} {discovery_verb} from {material}, {knowledge_noun} that cannot be unfound. The {atmosphere} does not consider this an unfair trade."
+
+  - trigger: pre_final
+    text: "Final terms. The deepest {knowledge_noun} demands the highest price — not suffering, but transformation. Whatever walks out of the {setting_noun} will carry the {knowledge_plural} you came for, but will not be identical to what walked in. The last {guardian_noun} is the final clause. Sign with your performance."
+
+  - trigger: run_victory
+    text: "The bargain completes. You carry the {knowledge_plural} promised — {discovery_verb} from {material}, sealed in {container_noun}, paid for with pieces of who you were. The {atmosphere} settles behind you. The dungeon is satisfied. It has received fair value. So, perhaps, have you."
+
+  - trigger: run_defeat
+    text: "The bargain defaults. The {setting_noun} keeps your payment — the {knowledge_noun} you spent, the attempts, the cost of descent — and returns nothing. There is no recourse. There was no clause for this outcome, which means the dungeon expected it. Anticipated it. The {danger_noun} was always the most likely resolution."
+
+branches:
+  - condition: hp_below_30
+    trigger: any_room_enter
+    text: "The bargain extracts its price in flesh when {knowledge_noun} proves insufficient. This was in the terms. Read more carefully next time."
+    once: true
+
+  - condition: many_relics
+    trigger: any_room_enter
+    text: "You have accumulated rather than spent. The {atmosphere} notes the imbalance. Bargains require both sides to give."
+    once: true
+
+  - condition: streak_broken
+    trigger: any_room_enter
+    text: "A payment missed. The dungeon notes the arrears. The {danger_noun} ahead is the interest."
+    once: false

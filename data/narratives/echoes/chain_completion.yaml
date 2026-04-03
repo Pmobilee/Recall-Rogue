@@ -1,0 +1,54 @@
+type: chain_completion
+# Chain of 3 templates
+templates:
+  - id: chain_3_tightens
+    text: "'{a1}' → '{a2}' → '{a3}'. The connections tighten. The dungeon groans."
+    chain_length: 3
+    min_gravity: medium
+
+  - id: chain_3_three_locks
+    text: "Three links — {a1}, {a2}, {a3}. Three locks, opened in sequence. What was behind them is now yours."
+    chain_length: 3
+    min_gravity: medium
+
+  - id: chain_3_sang
+    text: "{a1}. Then {a2}. Then {a3}. The chain sang. The dungeon heard it."
+    chain_length: 3
+    min_gravity: medium
+
+# Chain of 4 templates
+  - id: chain_4_burns
+    text: "Four links: {a1}, {a2}, {a3}, {a4}. The chain burns brighter than any torch."
+    chain_length: 4
+    min_gravity: medium
+
+  - id: chain_4_four_walls
+    text: "Four answers — {a1}, {a2}, {a3}, {a4} — and the four walls of this room shimmer. Four is the number at which the dungeon begins to pay serious attention."
+    chain_length: 4
+    min_gravity: medium
+
+  - id: chain_4_forged
+    text: "{a1}, {a2}, {a3}, {a4}. Four links forged in sequence. The chain is now longer than most seekers manage. The dungeon takes notice."
+    chain_length: 4
+    min_gravity: medium
+
+# Chain of 5+ templates
+  - id: chain_5_walls_crack
+    text: "Five truths, forged into a single chain. The walls crack. Something beneath you shifts."
+    chain_length: 5
+    min_gravity: high
+
+  - id: chain_5_unbroken
+    text: "{a1} → {a2} → {a3} → {a4} → {a5}. Five. Unbroken. The deep stirs — it recognizes a chain this long. It does not often see one."
+    chain_length: 5
+    min_gravity: high
+
+  - id: chain_5_sound
+    text: "The sound a five-chain makes: not words, not music. Something older. The dungeon uses it to calibrate. You have just recalibrated something in the deep."
+    chain_length: 5
+    min_gravity: high
+
+  - id: chain_5_something_below_felt
+    text: "Something below felt that. Five consecutive truths resonate at a frequency the lower levels were not prepared to absorb. Prepare for a different kind of encounter."
+    chain_length: 5
+    min_gravity: high

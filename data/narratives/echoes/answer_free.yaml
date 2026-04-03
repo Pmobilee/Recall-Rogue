@@ -1,0 +1,62 @@
+type: answer_free
+# No specific fact referenced — fallback when all recent facts are low gravity
+templates:
+  - id: free_another_truth
+    text: "Another truth recovered. The walls note your progress."
+    min_gravity: low
+
+  - id: free_dungeon_concedes
+    text: "Correct. The dungeon concedes a step."
+    min_gravity: low
+
+  - id: free_chain_grows
+    text: "The chain grows. Each link forged from what you know."
+    min_gravity: low
+
+  - id: free_something_stirs
+    text: "Something stirs below. It felt that."
+    min_gravity: low
+
+  - id: free_the_archive_expands
+    text: "The archive expands. That is the only sound this place makes when it is satisfied."
+    min_gravity: low
+
+  - id: free_knowledge_held
+    text: "Knowledge held against the dark. The most basic act in the dungeon — and the most essential."
+    min_gravity: low
+
+  - id: free_the_stones_settle
+    text: "The stones settle. A correct answer has weight. The dungeon redistributes it."
+    min_gravity: low
+
+  - id: free_the_record
+    text: "The record grows. Not every entry requires ceremony — some are simply accurate. That is enough."
+    min_gravity: low
+
+  - id: free_progress_marked
+    text: "Progress. Marked in the dungeon's private notation. It does not share the running total."
+    min_gravity: low
+
+  - id: free_the_descent_continues
+    text: "The descent continues. Knowledge is the light you carry. It does not get heavier — only brighter."
+    min_gravity: low
+
+  - id: free_something_in_the_deep
+    text: "Something in the deep registers another correct answer. It is counting. You do not know what happens when it reaches the threshold."
+    min_gravity: low
+
+  - id: free_floor_absorbs
+    text: "The floor absorbs your footstep. The dungeon absorbs your answer. Neither gives anything back immediately."
+    min_gravity: low
+
+  - id: free_dust_moves
+    text: "Dust moves. Barely. Correct answers displace the air slightly — not enough to notice, not enough to matter, not enough for the dungeon to pretend it didn't see."
+    min_gravity: low
+
+  - id: free_silence_after
+    text: "Silence after the answer. Not emptiness — the specific silence of a question resolved. The dungeon collects these moments."
+    min_gravity: low
+
+  - id: free_the_deeper_you_go
+    text: "The deeper you go, the more the dungeon expects from you. Each correct answer is permission to descend further. You have earned another step."
+    min_gravity: low

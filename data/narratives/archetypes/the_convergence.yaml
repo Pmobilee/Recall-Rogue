@@ -1,0 +1,40 @@
+id: the_convergence
+name: The Convergence
+scope: universal
+beats:
+  - trigger: run_start
+    text: "A {knowledge_noun}, {discovery_verb} from the {setting_noun}. One fragment among many — isolated, seemingly unconnected to what came before. The {atmosphere} does not yet reveal the pattern. Gather. The shape will declare itself in time."
+
+  - trigger: first_boss_kill
+    text: "A second fragment. The {guardian_noun} held it — perhaps without knowing. Two {knowledge_plural} now. Still insufficient for the pattern, but the resonance between them is audible. In the {atmosphere} of this place, proximity reveals connection."
+
+  - trigger: floor_2_start
+    text: "The fragments multiply in the second level. What were isolated {knowledge_plural} begin to pull toward each other — {discovery_verb} from separate {material}, drawn together by something the dungeon refuses to name. The convergence is accelerating."
+
+  - trigger: mid_run
+    text: "You see it now — the shape beneath the separate {knowledge_plural}. Every {knowledge_noun} you {discovery_verb} has been a piece of a single, larger truth. The {container_noun} that holds it is only visible from here, at this depth. The surface version of this {knowledge_noun} was an approximation. This is the actual thing."
+
+  - trigger: pre_final
+    text: "The final fragment is in the last chamber. Without it, the pattern has a gap — a void where the convergence falters. The final {guardian_noun} is the final piece, in a sense. It holds what remains. When it falls, the {knowledge_plural} you carry will complete themselves."
+
+  - trigger: run_victory
+    text: "Convergence. The {knowledge_plural} {discovery_verb} across every level of the {setting_noun} — each one isolated, insufficient — resolve into a single truth. The {container_noun} of the dungeon could not hold it separate once you understood the connections. It is one {knowledge_noun} now. It was always one {knowledge_noun}."
+
+  - trigger: run_defeat
+    text: "The fragments scatter. The pattern — almost visible, almost whole — dissolves back into separated {knowledge_plural}. The {atmosphere} holds no coherent shape. Another seeker will collect these pieces again. Perhaps they will reach the final chamber. Perhaps the convergence requires a different mind."
+
+branches:
+  - condition: streak_5_plus
+    trigger: any_room_enter
+    text: "Five connections in sequence. The fragments vibrate — closer to resolution. The convergence can feel it."
+    once: true
+
+  - condition: hp_below_30
+    trigger: any_room_enter
+    text: "The pattern is harder to see when you are bleeding. The {knowledge_plural} drift apart. Hold them."
+    once: true
+
+  - condition: many_relics
+    trigger: any_room_enter
+    text: "Each relic is a fragment too. The convergence sees this. You carry more of the pattern than you know."
+    once: true

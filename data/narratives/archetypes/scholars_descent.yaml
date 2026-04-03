@@ -1,0 +1,40 @@
+id: scholars_descent
+name: The Scholar's Descent
+scope: universal
+beats:
+  - trigger: run_start
+    text: "The footprints are still fresh — or what passes for fresh in the {atmosphere} of the {setting_noun}. Someone walked this path before you. A scholar. They carried {knowledge_plural} you need. Follow the marks they left in {material}."
+
+  - trigger: first_boss_kill
+    text: "A notation on the wall. The scholar's hand — cramped, hurried. They fought here too. Their {knowledge_noun} saw them through. Theirs was different from yours. You wonder if that mattered."
+
+  - trigger: floor_2_start
+    text: "Their journal entries stop being systematic here. The writing changes — loops tighter, margins filled with second thoughts. The deeper they went, the less certain they became. This is where the scholar stopped being a scholar."
+
+  - trigger: mid_run
+    text: "You have found what they were looking for. A {container_noun} of {knowledge_plural}, {discovery_verb} from the {material} of this place. They never reached it. Their {knowledge_noun} ran out one floor above where you stand now."
+
+  - trigger: pre_final
+    text: "The last entry: 'The final {guardian_noun} knows every answer I know. I must find something it doesn't know yet.' They did not. The entry ends there. The ink is still wet — in the way that ink stays wet forever in the {atmosphere} of the deep."
+
+  - trigger: run_victory
+    text: "What the scholar came for — you carry it out. Their work completed by a stranger who followed their footprints through the {atmosphere}. Somewhere above, a desk sits empty. Papers in the scholar's hand. A question that now has an answer."
+
+  - trigger: run_defeat
+    text: "Your footprints join theirs in the {material}. Two sets of marks, ending in the same place. The {setting_noun} has swallowed another who came looking for {knowledge_plural}. Someone else will follow. Someone always follows."
+
+branches:
+  - condition: hp_below_30
+    trigger: any_room_enter
+    text: "The scholar's blood is still on this floor. Old — old enough to be the color of {material}. You understand now how they felt."
+    once: true
+
+  - condition: high_mastery
+    trigger: any_room_enter
+    text: "You have surpassed the scholar's recorded {knowledge_noun}. Their notes would not help you now. You are beyond their map."
+    once: true
+
+  - condition: first_boss_kill
+    trigger: any_room_enter
+    text: "The {guardian_noun} the scholar described. They fought it differently. Their way worked too — just barely."
+    once: true

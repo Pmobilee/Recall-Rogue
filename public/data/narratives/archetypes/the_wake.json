@@ -1,0 +1,55 @@
+{
+  "id": "the_wake",
+  "name": "The Wake",
+  "scope": "universal",
+  "beats": [
+    {
+      "trigger": "run_start",
+      "text": "Something died here. The {atmosphere} of the {setting_noun} carries the specific quality of aftermath — not danger ahead, but consequence already arrived. The {knowledge_plural} left behind belong to the dead. You are not a seeker here. You are a witness, attending the wake."
+    },
+    {
+      "trigger": "first_boss_kill",
+      "text": "The {guardian_noun} was not guarding what was here. It was guarding what it remembered of what was here. The distinction matters: you have not overcome a protector. You have overcome grief given form. The {material} around it still holds the impression of what it lost."
+    },
+    {
+      "trigger": "floor_2_start",
+      "text": "Deeper into the remains. The {knowledge_plural} on this level are more personal — {discovery_verb} from the inner chambers of whatever died here, from its {container_noun} and its private {atmosphere}. You are reading a corpse. The {material} down here is intimate in a way the upper floors were not."
+    },
+    {
+      "trigger": "mid_run",
+      "text": "The cause of death becomes clear — not from explanation, but from the {knowledge_plural} arranged in its wake. Every {knowledge_noun} {discovery_verb} here is a clue in a case no one officially opened. The {setting_noun} is a crime scene. What died here was not accidental. The {atmosphere} says: this was done deliberately."
+    },
+    {
+      "trigger": "pre_final",
+      "text": "It's still here. The thing that died did not entirely leave. What remains of it — fragment, residue, the specific {danger_noun} that is neither life nor death — occupies the final chamber. The last {guardian_noun} is what it left behind when it departed. The wake is not finished. You must attend the last rite."
+    },
+    {
+      "trigger": "run_victory",
+      "text": "The wake concludes. The {knowledge_plural} of the dead — {discovery_verb} from {material}, read from the {atmosphere} of the {setting_noun} — have been witnessed and recorded. The thing that died here is known now, at least partly. That is what the living owe the dead. You have paid the debt. The dungeon stirs — the dead thing shifts, slightly, in acknowledgment."
+    },
+    {
+      "trigger": "run_defeat",
+      "text": "The wake claims another attendant. You join what died here — your {knowledge_plural} added to the {atmosphere} of loss that defines this place. Perhaps the next seeker will read you too, will {discovery_verb} your remains alongside the original dead. Perhaps they will understand what you were trying to know. Perhaps it will matter."
+    }
+  ],
+  "branches": [
+    {
+      "condition": "hp_below_30",
+      "trigger": "any_room_enter",
+      "text": "You are beginning to resemble what died here. The {atmosphere} of loss is contagious. It recognizes its own.",
+      "once": true
+    },
+    {
+      "condition": "first_boss_kill",
+      "trigger": "any_room_enter",
+      "text": "The grief-guardian falls. Whatever it was mourning, it has mourned long enough. The {knowledge_plural} it protected are yours to witness now.",
+      "once": true
+    },
+    {
+      "condition": "high_mastery",
+      "trigger": "any_room_enter",
+      "text": "The dead recognize mastery. The {atmosphere} shifts — what was unreadable becomes legible. The remains offer more to a capable reader.",
+      "once": true
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "type": "person",
+  "templates": [
+    {
+      "id": "person_reverberates",
+      "text": "{echoText}. The name reverberates. Someone — or something — down here remembers them.",
+      "minGravity": "high"
+    },
+    {
+      "id": "person_shadow_watches",
+      "text": "A shadow in the shape of {echoText}. It watches. It has been watching for a long time.",
+      "minGravity": "high"
+    },
+    {
+      "id": "person_archway_scratched",
+      "text": "'{echoText}' is scratched into the archway. The handwriting is your own.",
+      "minGravity": "high"
+    },
+    {
+      "id": "person_shade_threshold",
+      "text": "The shade of {echoText} stands at the threshold. It does not move. It does not need to.",
+      "minGravity": "high"
+    },
+    {
+      "id": "person_knowledge_has_weight",
+      "text": "You know {echoText} now. That knowledge has weight. The floor sinks slightly beneath you.",
+      "minGravity": "high"
+    },
+    {
+      "id": "person_dungeon_tried_too",
+      "text": "{echoText} tried this dungeon too. Their name is carved somewhere in the lower levels — but not on a victory stone.",
+      "minGravity": "high"
+    },
+    {
+      "id": "person_dust_and_reputation",
+      "text": "Even dust remembers {echoText}. The particles arrange themselves differently when their name is spoken here.",
+      "minGravity": "high"
+    },
+    {
+      "id": "person_died_knowing",
+      "text": "{echoText} died knowing this. You live knowing it. The dungeon wonders which is the better outcome.",
+      "minGravity": "high"
+    },
+    {
+      "id": "person_carved_into_walls",
+      "text": "The name {echoText} joins the others carved into the walls.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "person_carry_legacy",
+      "text": "You carry {echoText}'s legacy now. The dungeon takes note.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "person_catalogue_notes",
+      "text": "The dungeon's catalogue updates. {echoText}. One more entry among thousands — but this one is yours.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "person_corridor_echo",
+      "text": "The corridor repeats {echoText} to itself. It has been waiting for someone to say it.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "person_the_dead_know",
+      "text": "The dead know {echoText}. So do you now. The walls acknowledge the shared knowledge without ceremony.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "person_passage_marked",
+      "text": "Your passage through this room is marked now — {echoText} spoken, registered, filed.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "person_stone_older",
+      "text": "The stone around you is older than {echoText}. It has absorbed stranger names. It absorbs this one too.",
+      "minGravity": "medium"
+    }
+  ]
+}

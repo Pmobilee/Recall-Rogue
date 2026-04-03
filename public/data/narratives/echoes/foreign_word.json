@@ -1,0 +1,65 @@
+{
+  "type": "foreign_word",
+  "templates": [
+    {
+      "id": "foreign_echo_returns",
+      "text": "'{echoText}.' You speak it aloud. The echo returns in a voice that is not yours.",
+      "minGravity": "high"
+    },
+    {
+      "id": "foreign_walls_absorb",
+      "text": "The walls absorb '{echoText}'. When you press your palm to the stone, you feel it — the word, trapped inside, still vibrating.",
+      "minGravity": "high"
+    },
+    {
+      "id": "foreign_dungeon_pronounces",
+      "text": "'{echoText}' — the dungeon tries to pronounce it. Fails. Tries again. The second attempt is closer.",
+      "minGravity": "high"
+    },
+    {
+      "id": "foreign_three_rooms_respond",
+      "text": "You whisper '{echoText}'. Three rooms away, something responds.",
+      "minGravity": "high"
+    },
+    {
+      "id": "foreign_carried_it_here",
+      "text": "Someone carried '{echoText}' into the dungeon long before you. It stayed behind when they left — or when they didn't leave.",
+      "minGravity": "high"
+    },
+    {
+      "id": "foreign_language_lives_here",
+      "text": "This language lives in the stone now. '{echoText}' — one more word added to the dungeon's vocabulary. It learns from every seeker.",
+      "minGravity": "high"
+    },
+    {
+      "id": "foreign_older_than_translation",
+      "text": "'{echoText}.' The word is older than its translation. Down here, the older version is what survives.",
+      "minGravity": "high"
+    },
+    {
+      "id": "foreign_ink_on_stone",
+      "text": "The word '{echoText}' appears on the wall — not carved, not painted. Simply present. As if the stone learned it from you.",
+      "minGravity": "high"
+    },
+    {
+      "id": "foreign_knows_you_said_it",
+      "text": "The dungeon knows you said '{echoText}'. It has been writing it down somewhere in the lower levels since the moment you spoke.",
+      "minGravity": "high"
+    },
+    {
+      "id": "foreign_corridor_remembers",
+      "text": "This corridor has heard '{echoText}' before. The acoustics know the word — they shape it differently, more carefully, than any other sound you've made.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "foreign_weight_of_word",
+      "text": "'{echoText}' — the word carries weight in different mouths. In yours, right now, it is heavier than expected.",
+      "minGravity": "medium"
+    },
+    {
+      "id": "foreign_filed_away",
+      "text": "'{echoText}.' Filed. The dungeon does not discriminate between languages — it absorbs all of them equally, which is to say: completely.",
+      "minGravity": "medium"
+    }
+  ]
+}

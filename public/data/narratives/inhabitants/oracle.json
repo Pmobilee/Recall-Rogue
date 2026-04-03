@@ -1,0 +1,50 @@
+{
+  "npc": "oracle",
+  "personality": "unsettling, omniscient, speaks in riddles that turn out to be literal — a fragment of the Creature Below",
+  "greeting": [
+    {
+      "visitNumber": 1,
+      "text": "You were expected. Not by me — by the question you haven't answered yet."
+    },
+    {
+      "visitNumber": 2,
+      "text": "We meet again. Or perhaps for the first time. Sequence is unreliable here."
+    },
+    {
+      "visitNumber": 3,
+      "text": "Three visits to the oracle. The first two were preparation. This one matters."
+    },
+    {
+      "visitNumber": "default",
+      "text": "You keep finding me. That is either skill or destiny. The distinction matters less at depth."
+    }
+  ],
+  "chain_reference": {
+    "three_chains": "Three colors bind your knowledge: {chain_0_color}, {chain_1_color}, {chain_2_color}. One of them is lying.",
+    "dominant_chain": "The {dominant_chain_color} chain grows fat with your correct answers. Beware what you feed.",
+    "chain_growing": "Your chains lengthen. The dungeon observes chain-length the way it observes everything — without blinking, without forgetting.",
+    "no_chains": "You have not yet built a chain. The dungeon is patient. Patterns require time to declare themselves."
+  },
+  "fact_callback": {
+    "person": "You learned of {echoText}. They tried this dungeon too. Floor {roomNumber}. That's where they stopped.",
+    "place": "{echoText} exists above. Down here, it exists differently. You will see.",
+    "concept": "You think you understand {echoText}. The final floor will correct that assumption.",
+    "foreign_word": "'{echoText}.' You said it on floor {roomNumber}. The walls have been repeating it since.",
+    "date": "You know what happened in {echoText}. So does the dungeon. Its interpretation is different. You will discover how different.",
+    "object": "{echoText} — I have seen it depicted in the stonework below. Older than the form you know. The dungeon remembers the original."
+  },
+  "foreshadowing": {
+    "boss_next": "The guardian ahead was built from everything you got wrong. Prepare accordingly.",
+    "floor_end": "This level ends soon. What comes next remembers what you brought.",
+    "final_floor": "The last floor is not a test of knowledge. It is a test of what knowledge made you.",
+    "hp_low": "You have been spending yourself freely. The final accounting is not far.",
+    "streak_active": "The chain you are building has been noticed. Not by me — by something that does not communicate in words."
+  },
+  "riddle": [
+    "What you carry out will weigh more than what you carried in. That is not metaphor.",
+    "The correct answer is always correct. Whether it is true is a different question.",
+    "You have been asking the dungeon questions. It has been asking you questions too. One of you is winning.",
+    "The Creature Below knows your name. It knew it before you descended. It is waiting to see if the name was accurate.",
+    "Every seeker who reached this room left something behind. I will not tell you what. I will tell you that it is still here."
+  ]
+}

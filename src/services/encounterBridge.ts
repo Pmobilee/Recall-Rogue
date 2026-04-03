@@ -1279,3 +1279,11 @@ export function getLastNarrativeEncounterSnapshot(): NarrativeEncounterSnapshot 
 export function clearNarrativeEncounterSnapshot(): void {
   _lastNarrativeSnapshot = null;
 }
+
+/**
+ * DEV ONLY — Force an immediate encounter victory, bypassing combat.
+ * Used by the dev skip button to test post-combat narrative flow.
+ */
+export function devForceEncounterVictory(): void {
+  notifyEncounterComplete('victory');
+}

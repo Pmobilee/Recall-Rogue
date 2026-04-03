@@ -1,0 +1,55 @@
+{
+  "id": "the_cartographer",
+  "name": "The Cartographer",
+  "scope": "universal",
+  "beats": [
+    {
+      "trigger": "run_start",
+      "text": "The edge of the known. Beyond the {setting_noun}, the {knowledge_plural} have never been recorded — {discovery_verb} by no one, mapped by no one. You carry a blank {container_noun}. The {atmosphere} ahead will fill it, if you survive long enough to make marks."
+    },
+    {
+      "trigger": "first_boss_kill",
+      "text": "The first interior. The {guardian_noun} marked the boundary between charted and uncharted territory. You have crossed it. The map of the first level is yours — {knowledge_plural} fixed to {material} by the act of surviving them. What lies ahead is still blank."
+    },
+    {
+      "trigger": "floor_2_start",
+      "text": "The interior deepens. The {knowledge_plural} here do not resemble the surface maps — the {setting_noun}'s second level does not conform to expected geometry. Rooms that should not connect do. {knowledge_plural|capitalize} that should not coexist do. Your {container_noun} must account for this. Cartography requires abandoning expectation."
+    },
+    {
+      "trigger": "mid_run",
+      "text": "An anomaly. The map you have drawn does not match any archetype — the {setting_noun} has its own logic, its own {material} and {atmosphere}, its own way of connecting {knowledge_plural} that was here before any mapping system was invented. You are not recording this place. You are learning its language."
+    },
+    {
+      "trigger": "pre_final",
+      "text": "The center. Every cartographer who reached this depth said the same thing: the center moves. The final {guardian_noun} is not in a fixed location — it is wherever the dungeon's {knowledge_plural} converge at this moment. Your map is accurate. The territory has changed since you drew it."
+    },
+    {
+      "trigger": "run_victory",
+      "text": "The map complete. What was unmappable has been mapped — the {knowledge_plural} of the {setting_noun} fixed to {material} for the first time. The {atmosphere} does not acknowledge the achievement. The dungeon does not require to be known. But it has been. You have the only {container_noun} that proves it."
+    },
+    {
+      "trigger": "run_defeat",
+      "text": "The map ends here — an incomplete record of the {setting_noun}'s {knowledge_plural}. Every cartographer's nightmare: a map that stops. Future cartographers will find it and understand, from the last mark, exactly where you ran out of {knowledge_noun}. They will try to continue from that point. Some will."
+    }
+  ],
+  "branches": [
+    {
+      "condition": "floor_2_start",
+      "trigger": "any_room_enter",
+      "text": "The second level does not appear on any existing map. You are the first instrument through here. Record carefully.",
+      "once": true
+    },
+    {
+      "condition": "hp_below_30",
+      "trigger": "any_room_enter",
+      "text": "An injured cartographer makes imprecise marks. The map will be less accurate. The {knowledge_plural} will be less reliable. Push on anyway — an imprecise map is better than none.",
+      "once": true
+    },
+    {
+      "condition": "streak_5_plus",
+      "trigger": "any_room_enter",
+      "text": "The territory becomes familiar. The map anticipates itself — the {knowledge_plural} ahead already half-drawn from the patterns of the ones behind. This is what mastery does to cartography.",
+      "once": true
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+id: the_resonance
+name: The Resonance
+scope: universal
+beats:
+  - trigger: run_start
+    text: "A low hum — below hearing, above feeling. The {setting_noun} vibrates at a frequency that corresponds to the {knowledge_plural} it holds. Every {knowledge_noun} {discovery_verb} here adds to the chord. You entered at silence. The first note has been struck."
+
+  - trigger: first_boss_kill
+    text: "The {guardian_noun} fell to frequency. The specific {knowledge_plural} you carried resonated against its {material} at exactly the wrong — or right — pitch. The hum deepens. The second floor adds harmonics. The sound you are building is becoming recognizable as something."
+
+  - trigger: floor_2_start
+    text: "The resonance changes in the second level. The {atmosphere} down here carries overtones — {knowledge_plural} that were {discovery_verb} here long before you arrived, still vibrating in the {material}. Your {knowledge_noun} joins theirs. The chord grows complex. Harmony and dissonance depend on what you add next."
+
+  - trigger: mid_run
+    text: "The frequency is building toward something. Every correct answer adds a harmonic — the {knowledge_plural} accumulating in your memory resonate against each other, against the {material} of the {setting_noun}, against the {atmosphere}. You can feel it in the stones. The dungeon is starting to vibrate at your frequency."
+
+  - trigger: pre_final
+    text: "Critical pitch. The resonance you have built over every level of the {setting_noun} is reaching the threshold — the frequency at which the final {container_noun} will shatter. The last {guardian_noun} generates counter-resonance. One frequency will cancel the other. Your {knowledge_plural} must be louder."
+
+  - trigger: run_victory
+    text: "Resolution. The accumulated {knowledge_plural} — {discovery_verb} across every level, harmonized through {atmosphere} and {material}, built note by note — resolve into a single frequency that the {setting_noun} cannot contain. The {container_noun} shatters. The resonance carries what was sealed inside into silence that is not empty."
+
+  - trigger: run_defeat
+    text: "Dissonance. The counter-resonance of the final {guardian_noun} fractures your accumulated frequency — the {knowledge_plural} you built into a chord fall apart, cancel each other, dissolve into the {atmosphere}. The {setting_noun}'s frequency reasserts itself. Silence. Not the clean silence of resolution — the silence of collapse."
+
+branches:
+  - condition: streak_5_plus
+    trigger: any_room_enter
+    text: "Five harmonics in sequence. The resonance is becoming visible — the {material} around you vibrates in sympathy. This is the frequency the dungeon was waiting for."
+    once: true
+
+  - condition: streak_broken
+    trigger: any_room_enter
+    text: "A wrong note. The resonance distorts. The {atmosphere} rings with dissonance where harmony was building. Recover quickly — a fractured chord invites what was held at bay."
+    once: false
+
+  - condition: hp_below_30
+    trigger: any_room_enter
+    text: "The resonance is harder to hold when the body is failing. The frequency wavers. The {material} around you reflects the instability."
+    once: true

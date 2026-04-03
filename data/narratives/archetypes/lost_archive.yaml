@@ -1,0 +1,40 @@
+id: lost_archive
+name: The Lost Archive
+scope: universal
+beats:
+  - trigger: run_start
+    text: "Somewhere beneath this {setting_noun}, a {container_noun} was sealed against those who would use its {knowledge_plural} irresponsibly. That judgment was made by someone who no longer breathes. Descend."
+
+  - trigger: first_boss_kill
+    text: "The guardian was the first lock. You did not pick it — you broke it. The {knowledge_plural} {discovery_verb} beyond do not know yet that their keeper has fallen."
+
+  - trigger: floor_2_start
+    text: "The deeper archive. {knowledge_plural|capitalize} the surface world never found, never missed. The {atmosphere} down here is different — older. Something has been reading these {knowledge_plural} for centuries."
+
+  - trigger: mid_run
+    text: "You have recovered enough to be dangerous. The {container_noun} did not hold every {knowledge_noun} — it held the ones that mattered. You are close to those now."
+
+  - trigger: pre_final
+    text: "The last chamber. What was buried here was buried with intention. The {guardian_noun} that remains was not left by accident. It was left because whoever sealed this place knew someone like you would come."
+
+  - trigger: run_victory
+    text: "The archive is open. The {knowledge_plural} you carried out — {discovery_verb} from {material} — will change what the surface world believes it knows. Whether that is a gift or a catastrophe depends on what you do next."
+
+  - trigger: run_defeat
+    text: "The archive closes over you. Another reader, lost in the stacks. The {knowledge_plural} you reached are already forgetting you were here — sealed back into {material} and {atmosphere}, as if you never came."
+
+branches:
+  - condition: hp_below_30
+    trigger: any_room_enter
+    text: "The {danger_noun} is working. Even the archive tries to protect itself."
+    once: true
+
+  - condition: streak_5_plus
+    trigger: any_room_enter
+    text: "The {knowledge_plural} respond to mastery. The {atmosphere} brightens fractionally. Something in the archive approves."
+    once: true
+
+  - condition: floor_2_start
+    trigger: any_room_enter
+    text: "The second level of any archive contains what was deemed too dangerous for the first. The {guardian_noun} here were chosen accordingly."
+    once: false

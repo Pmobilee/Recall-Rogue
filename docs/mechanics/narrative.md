@@ -2,7 +2,7 @@
 
 > **Purpose:** Design spec for the procedural narrative system that delivers dark RPG storytelling woven from four concurrent threads, reactive to actual knowledge the player studies.
 > **Last verified:** 2026-04-03
-> **Status:** PHASE 3 COMPLETE — full gameFlowController integration implemented (2026-04-03). All hooks wired: preload, initNarrative, recordEncounterResults, getNarrativeLines, recordShopPurchase, recordRestAction, resetNarrative.
+> **Status:** IMPLEMENTED — Full pipeline operational. Engine, overlay, and game flow integration complete.
 > **Source files:** `src/services/narrativeTypes.ts` (data interfaces), `src/services/narrativeGravity.ts` (classification + gravity scoring), `src/services/narrativeLoader.ts` (runtime loader), `src/services/narrativeEngine.ts` (IMPLEMENTED — 2026-04-03), `src/services/encounterBridge.ts` (NarrativeEncounterSnapshot snapshot mechanism), `src/services/gameFlowController.ts` (integration hooks), `data/narratives/` (COMPLETE — 61 YAML files), `scripts/build-narratives.mjs` (YAML-to-JSON converter), `public/data/narratives/` (generated JSON output)
 
 
@@ -1057,6 +1057,8 @@ Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RP
 3. **Narrative affecting gameplay** — Currently purely cosmetic. Future possibility: rare narrative moments grant small bonuses (free charge, chain bonus). Design the trigger system to support this without implementing it yet.
 
 4. **Save/resume** — Narrative state is NOT persisted. If player quits and resumes, narrative restarts from current room. Acceptable tradeoff vs. serialization complexity.
+
+5. **Dev testing** — RESOLVED. `devForceEncounterVictory()` in encounterBridge.ts skips encounters. Dev-only button in CardApp.svelte (gated by `import.meta.env.DEV`).
 
 
 ---
