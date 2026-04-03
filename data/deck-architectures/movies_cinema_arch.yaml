@@ -1,0 +1,412 @@
+deck_id: movies_cinema
+name: "Movies & Cinema"
+domain: art_architecture
+sub_domain: film
+description: "From silent films to modern blockbusters — master the directors, stars, and stories that shaped cinema history."
+target_facts: 220
+minimum_facts: 150
+
+# Sourcing & licensing (MANDATORY)
+data_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Academy_Award_for_Best_Picture
+    license: CC-BY-SA-4.0
+    usage: Film facts, director bios, award history, production details
+  - name: Wikidata
+    url: https://www.wikidata.org/
+    license: CC0
+    usage: Structured data — release years, directors, genres, awards
+  - name: AFI (American Film Institute)
+    url: https://www.afi.com/afis-100-years-100-movies/
+    license: public domain (list facts)
+    usage: AFI Top 100 rankings, quotes list — factual references only
+
+asset_sources: []
+  # No visual assets needed for initial deck build
+
+# ============================================================
+# ANSWER TYPE POOLS — The educational backbone
+# ============================================================
+# Pool-first design: these pools define what the deck teaches.
+# Each pool contains genuinely confusable members.
+
+answer_type_pools:
+
+  # POOL 1: Film Titles — the core pool
+  # 50+ iconic films that people genuinely confuse with each other
+  # "Was it The Godfather or Goodfellas?" "Schindler's List or The Pianist?"
+  - id: film_titles
+    format: name
+    estimated_count: 110
+    min_distractors: 4
+    note: >
+      Best Picture winners + AFI Top 100 + universally recognized films.
+      ~110 iconic titles. Doubled from initial 55 to provide rich distractor variety.
+      Only include films a casual fan would recognize.
+      Excludes obscure early Oscar winners nobody remembers.
+
+  # POOL 2: Director Names
+  # 25+ directors whose filmographies overlap enough to cause genuine confusion
+  - id: director_names
+    format: name
+    estimated_count: 28
+    min_distractors: 4
+    note: >
+      Spielberg, Scorsese, Hitchcock, Kubrick, Coppola, Nolan, Tarantino,
+      Wilder, Kurosawa, etc. Players confuse who directed what constantly.
+
+  # POOL 3: Actor/Actress Names
+  # 30+ legendary performers
+  - id: actor_names
+    format: name
+    estimated_count: 35
+    min_distractors: 4
+    note: >
+      Brando, Streep, Hanks, Hepburn (both!), De Niro, Pacino, etc.
+      Great confusion pairs: De Niro/Pacino, Audrey/Katharine Hepburn.
+
+  # POOL 4: Character Names
+  # Iconic fictional characters tied to their films
+  - id: character_names
+    format: name
+    estimated_count: 22
+    min_distractors: 4
+    note: >
+      Vito Corleone, Hannibal Lecter, Indiana Jones, Forrest Gump,
+      Norman Bates, HAL 9000, etc. "Which film features X?"
+
+  # POOL 5: Film Quotes
+  # Famous lines — "Which movie contains this quote?"
+  - id: film_quotes
+    format: text
+    estimated_count: 18
+    min_distractors: 4
+    note: >
+      AFI's 100 Years...100 Movie Quotes list as reference.
+      "Here's looking at you, kid" → Casablanca.
+      Quotes pool: correct answer is the FILM TITLE, distractors from film_titles.
+
+  # POOL 6: Genre/Technique Terms
+  # Cinema vocabulary — genuinely confusable technical terms
+  - id: cinema_terms
+    format: term
+    estimated_count: 18
+    min_distractors: 4
+    syntheticDistractors:
+      - "jump cut"
+      - "match cut"
+      - "dissolve"
+      - "wipe"
+      - "pan"
+      - "tilt"
+      - "rack focus"
+      - "chiaroscuro"
+      - "diegetic sound"
+      - "mise-en-scène"
+    note: >
+      Film noir, MacGuffin, montage, dolly zoom, auteur theory, etc.
+      Padding with synthetics since some terms are niche.
+
+  # POOL 7: Release Years (bracket notation)
+  # Runtime generates numeric distractors automatically
+  - id: bracket_years
+    format: bracket_number
+    estimated_count: 30
+    note: >
+      "When was Jaws released?" → {1975}.
+      Runtime generates nearby plausible years as distractors.
+
+  # POOL 8: Country of Origin
+  # For world cinema facts — which country produced this film?
+  - id: country_names
+    format: place
+    estimated_count: 12
+    syntheticDistractors:
+      - "Germany"
+      - "Spain"
+      - "Brazil"
+      - "Australia"
+      - "Poland"
+      - "Denmark"
+      - "Mexico"
+      - "Argentina"
+      - "Sweden"
+      - "India"
+    note: >
+      France, Italy, Japan, South Korea, UK, USA, etc.
+      For international cinema facts.
+
+# ============================================================
+# QUESTION TEMPLATES — Drive the difficulty curve
+# ============================================================
+
+question_templates:
+  # Mastery 0: Simple recognition
+  - id: director_of_film
+    questionFormat: "Who directed {filmTitle}?"
+    answerPoolId: director_names
+    availableFromMastery: 0
+    difficulty: 1
+    reverseCapable: true
+
+  - id: film_from_quote
+    questionFormat: "Which film features the quote: \"{quote}\"?"
+    answerPoolId: film_titles
+    availableFromMastery: 0
+    difficulty: 2
+    reverseCapable: false
+
+  # Mastery 1-2: Standard + reverse
+  - id: actor_in_role
+    questionFormat: "Who played {characterName} in {filmTitle}?"
+    answerPoolId: actor_names
+    availableFromMastery: 1
+    difficulty: 2
+    reverseCapable: true
+
+  - id: film_with_character
+    questionFormat: "Which film features the character {characterName}?"
+    answerPoolId: film_titles
+    availableFromMastery: 1
+    difficulty: 2
+    reverseCapable: false
+
+  - id: year_of_film
+    questionFormat: "In what year was {filmTitle} released?"
+    answerPoolId: bracket_years
+    availableFromMastery: 1
+    difficulty: 2
+    reverseCapable: false
+
+  # Mastery 3+: Relational reasoning
+  - id: film_best_picture
+    questionFormat: "Which of these films won the Academy Award for Best Picture?"
+    answerPoolId: film_titles
+    availableFromMastery: 2
+    difficulty: 3
+    reverseCapable: false
+
+  - id: director_multiple_films
+    questionFormat: "Who directed both {film1} and {film2}?"
+    answerPoolId: director_names
+    availableFromMastery: 3
+    difficulty: 4
+    reverseCapable: false
+
+  - id: cinema_term_definition
+    questionFormat: "{definition}"
+    answerPoolId: cinema_terms
+    availableFromMastery: 2
+    difficulty: 3
+    reverseCapable: true
+
+  # Mastery 4-5: Counterintuitive / comparative
+  - id: film_country_origin
+    questionFormat: "Which country produced {filmTitle}?"
+    answerPoolId: country_names
+    availableFromMastery: 3
+    difficulty: 4
+    reverseCapable: false
+
+# ============================================================
+# COMMON CONFUSIONS — Seeded into confusion matrix
+# ============================================================
+
+common_confusions:
+  # Directors confused with each other
+  - ["spielberg", "scorsese"]          # Both S-named legendary directors
+  - ["kubrick", "ridley_scott"]        # Both visual perfectionists, sci-fi overlap
+  - ["coppola", "scorsese"]            # Both Italian-American, crime epics
+  - ["hitchcock", "kubrick"]           # Both meticulous auteurs
+  - ["nolan", "villeneuve"]            # Both modern sci-fi/epic directors
+  - ["tarantino", "coen_brothers"]     # Both quirky dialogue-heavy crime films
+  - ["wilder", "huston"]               # Both classic Hollywood multi-talent
+
+  # Films confused with each other
+  - ["godfather", "goodfellas"]        # Mob films, De Niro connection
+  - ["schindlers_list", "the_pianist"] # Both WWII Holocaust films
+  - ["alien", "aliens"]                # Same franchise, different directors
+  - ["psycho", "silence_lambs"]        # Both psychological thrillers with iconic villains
+  - ["casablanca", "gone_wind"]        # Both classic Hollywood romances
+  - ["jaws", "alien"]                  # Both Spielberg/Scott creature features from 70s
+  - ["apocalypse_now", "platoon"]      # Both Vietnam War films
+  - ["citizen_kane", "casablanca"]     # Both 1940s classics
+
+  # Actors confused with each other
+  - ["de_niro", "pacino"]              # Both in Godfather franchise, Scorsese films
+  - ["audrey_hepburn", "katharine_hepburn"]  # Same last name!
+  - ["hanks", "denzel"]               # Both beloved, multiple Oscar winners
+
+# ============================================================
+# SYNONYM GROUPS
+# ============================================================
+
+synonym_groups:
+  - id: godfather_titles
+    factIds: []
+    reason: "Facts about The Godfather Part I vs Part II — keep distinct but don't use as distractors for each other"
+
+# ============================================================
+# DIFFICULTY TIERS
+# ============================================================
+
+difficulty_tiers:
+  easy:
+    description: "Films/people that absolutely everyone knows"
+    examples: ["The Godfather", "Spielberg", "Tom Hanks", "Star Wars", "Titanic", "Jaws"]
+  medium:
+    description: "Well-known to movie fans, may not be universal"
+    examples: ["Citizen Kane", "Kubrick", "Casablanca", "Film noir", "Kurosawa"]
+  hard:
+    description: "Requires genuine cinema knowledge"
+    examples: ["Battleship Potemkin", "Italian Neorealism", "MacGuffin", "French New Wave"]
+
+# ============================================================
+# SUB-DECKS
+# ============================================================
+# Deck will be ~180 facts, split into 3 playable sub-decks
+
+sub_decks:
+  - id: iconic_films
+    name: "Iconic Films"
+    description: "The greatest movies ever made — their stories, quotes, and cultural impact"
+    estimated_facts: 90
+    focus: >
+      Best Picture winners, AFI Top 100, universally beloved films.
+      Facts about plot, cultural impact, famous scenes, quotes, records.
+      Pool coverage: film_titles, film_quotes, bracket_years, character_names.
+
+  - id: directors_and_stars
+    name: "Directors & Stars"
+    description: "The legendary filmmakers and performers who shaped cinema"
+    estimated_facts: 75
+    focus: >
+      Major directors (Spielberg, Scorsese, Hitchcock, Kubrick, Kurosawa, etc.)
+      and legendary actors (Brando, Streep, Hanks, Hepburn, etc.).
+      Facts about careers, signature styles, breakthroughs, collaborations.
+      Pool coverage: director_names, actor_names.
+
+  - id: cinema_craft
+    name: "Cinema History & Craft"
+    description: "How movies are made — from silent films to CGI, genres to techniques"
+    estimated_facts: 50
+    focus: >
+      Film history (silent era, golden age, new Hollywood, world cinema),
+      genres (film noir, spaghetti western, French New Wave),
+      techniques (montage, dolly zoom, MacGuffin),
+      firsts and records, world cinema landmarks.
+      Pool coverage: cinema_terms, country_names, bracket_years.
+
+# ============================================================
+# ENTITY COVERAGE — Films to include (non-exhaustive)
+# ============================================================
+# This is the research outline. ALL dates/facts must be verified
+# against Wikipedia/Wikidata before generation.
+
+entity_research_outline:
+
+  # --- ICONIC FILMS (recognizable to almost anyone) ---
+  iconic_films:
+    - The Godfather (1972) — Coppola, Brando, "offer he can't refuse"
+    - Schindler's List (1993) — Spielberg, Holocaust, Neeson
+    - The Shawshank Redemption (1994) — Darabont, Freeman/Robbins, not Best Picture
+    - Casablanca (1943) — Curtiz, Bogart/Bergman, "Here's looking at you, kid"
+    - Citizen Kane (1941) — Welles, "Rosebud", often called greatest film
+    - The Wizard of Oz (1939) — Fleming, "There's no place like home", Technicolor
+    - Psycho (1960) — Hitchcock, shower scene, Norman Bates
+    - Jaws (1975) — Spielberg, first summer blockbuster
+    - Star Wars (1977) — Lucas, revolutionized VFX, Joseph Campbell
+    - 2001: A Space Odyssey (1968) — Kubrick, HAL 9000, monolith
+    - The Silence of the Lambs (1991) — Demme, Hopkins, swept Big Five
+    - Titanic (1997) — Cameron, 11 Oscars, highest-grossing (at time)
+    - Gone with the Wind (1939) — Fleming, Hattie McDaniel first Black Oscar winner
+    - Pulp Fiction (1994) — Tarantino, nonlinear narrative, Palme d'Or
+    - The Godfather Part II (1974) — first sequel to win Best Picture
+    - Goodfellas (1990) — Scorsese, De Niro/Pesci/Liotta, mob classic
+    - Forrest Gump (1994) — Zemeckis, Hanks, "Life is like a box of chocolates"
+    - The Lord of the Rings: Return of the King (2003) — Jackson, 11 Oscars sweep
+    - Jurassic Park (1993) — Spielberg, CGI revolution
+    - E.T. the Extra-Terrestrial (1982) — Spielberg, highest-grossing 80s film
+    - Rocky (1976) — Stallone wrote and starred, underdog story
+    - Apocalypse Now (1979) — Coppola, Vietnam, "I love the smell of napalm"
+    - The Dark Knight (2008) — Nolan, Ledger's posthumous Oscar
+    - Inception (2010) — Nolan, dream-within-a-dream
+    - Parasite (2019) — Bong Joon-ho, first non-English Best Picture
+
+  # --- DIRECTORS (key facts per director) ---
+  directors:
+    - Alfred Hitchcock — "Master of Suspense", Psycho, Vertigo, never won Best Director
+    - Steven Spielberg — Jaws, Schindler's List, most commercially successful
+    - Stanley Kubrick — 2001, A Clockwork Orange, The Shining, perfectionist
+    - Martin Scorsese — Taxi Driver, Goodfellas, Raging Bull, long De Niro collaboration
+    - Francis Ford Coppola — Godfather trilogy, Apocalypse Now
+    - Quentin Tarantino — Pulp Fiction, nonlinear style, homage master
+    - Christopher Nolan — Inception, Dark Knight, practical effects champion
+    - Billy Wilder — Some Like It Hot, Sunset Boulevard, Double Indemnity
+    - Akira Kurosawa — Seven Samurai, Rashomon, influenced Lucas/Spielberg
+    - Orson Welles — Citizen Kane at age 25, deep focus, radio War of the Worlds
+    - David Lean — Lawrence of Arabia, Bridge on the River Kwai
+    - Ridley Scott — Alien, Blade Runner, Gladiator
+    - James Cameron — Titanic, Avatar, Terminator, deep-sea explorer
+    - The Coen Brothers — Fargo, No Country for Old Men, dark humor
+    - Bong Joon-ho — Parasite, first non-English Best Picture
+    - Federico Fellini — La Dolce Vita, 8½, Italian master
+    - Ingmar Bergman — The Seventh Seal, Swedish master, existential themes
+
+  # --- ACTORS/ACTRESSES ---
+  actors:
+    - Marlon Brando — The Godfather, A Streetcar Named Desire, Method acting
+    - Meryl Streep — most Oscar nominations ever (21), Sophie's Choice
+    - Tom Hanks — Forrest Gump, Cast Away, back-to-back Oscars
+    - Audrey Hepburn — Breakfast at Tiffany's, Roman Holiday, UNICEF
+    - Katharine Hepburn — 4 Best Actress Oscars (record), The African Queen
+    - Humphrey Bogart — Casablanca, The Maltese Falcon, film noir icon
+    - Robert De Niro — Taxi Driver, Raging Bull, gained 60 lbs
+    - Al Pacino — The Godfather, Scarface, Scent of a Woman
+    - Jack Nicholson — The Shining, One Flew Over the Cuckoo's Nest, 12 nominations
+    - Denzel Washington — Training Day, Glory, most nominated Black actor
+    - Anthony Hopkins — Silence of the Lambs, 16 minutes of screen time
+    - Cate Blanchett — played both Katharine Hepburn AND Elizabeth I
+    - Daniel Day-Lewis — 3 Best Actor Oscars, extreme Method actor
+
+  # --- CINEMA HISTORY & CRAFT ---
+  craft:
+    - Silent era — The Great Train Robbery (1903), Charlie Chaplin, Buster Keaton
+    - First "talkie" — The Jazz Singer (1927)
+    - Technicolor — Wizard of Oz, Gone with the Wind (both 1939)
+    - Film noir — Double Indemnity, low-key lighting, morally ambiguous protagonists
+    - Italian Neorealism — Bicycle Thieves, De Sica, post-war
+    - French New Wave — Godard, Truffaut, Breathless, jump cuts
+    - New Hollywood — 1960s-70s, Easy Rider, young auteurs
+    - Blockbuster era — Jaws (1975) invented the summer blockbuster
+    - CGI revolution — Jurassic Park (1993), Toy Story (1995) first fully CGI
+    - MacGuffin — Hitchcock term, the object everyone chases
+    - Dolly zoom — Vertigo effect, Spielberg used in Jaws
+    - Montage theory — Eisenstein, Battleship Potemkin, Odessa Steps
+    - Auteur theory — director as "author" of the film, Cahiers du Cinéma
+    - Method acting — Stanislavski, Strasberg, Brando/De Niro as practitioners
+    - Rashomon effect — multiple contradictory perspectives, from Kurosawa's film
+    - Best Picture sweep — Silence of the Lambs (1991) won all Big Five Oscars
+    - Spaghetti Western — Leone, Eastwood, The Good the Bad and the Ugly
+
+# ============================================================
+# VOLATILE FACTS
+# ============================================================
+volatile_facts: []
+# No volatile facts — all content is established cinema history.
+# Box office records deliberately excluded as they change frequently.
+
+# ============================================================
+# NOTES
+# ============================================================
+notes: >
+  This deck focuses on TIMELESS cinema knowledge — not current releases,
+  not box office records, not streaming wars. A player who masters this
+  deck should be able to hold their own in any movie trivia night.
+
+  Key design decisions:
+  - No films released after 2020 (too recent, opinions not settled)
+  - Focus on English-language films but include ~15% world cinema
+  - film_quotes pool uses film_titles as answer — "Which movie has this quote?"
+  - bracket_years for all "When was X released?" questions
+  - Age tagging: most facts "all" (kids love movies), "teen+" for violence/mature themes

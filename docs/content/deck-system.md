@@ -67,10 +67,10 @@ Two backfill scripts produced full coverage:
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-02 it contains **65 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-03 it contains **65 decks**:
 
 - **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
-- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**
+- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**
 
 ### Deck Architecture Files
 
@@ -95,7 +95,7 @@ The 4 `world_wonders` architecture files total 195 facts in the live deck. They 
 
 All 65 curated decks have pixel art RPG dungeon cover art as of 2026-04-02. Images are served from `public/assets/sprites/deckfronts/` and rendered by `DeckTileV2.svelte` with a CSS parallax hover effect.
 
-**33 unique images** cover all 65 decks. Language sub-decks (e.g. `japanese_n5_vocab`, `japanese_n4`) share their parent image (e.g. `japanese.webp`).
+**33 unique images** cover all 65 prior decks.  falls back to the CSS gradient (no deckfront image yet). Language sub-decks (e.g. `japanese_n5_vocab`, `japanese_n4`) share their parent image (e.g. `japanese.webp`).
 
 ### Naming Convention
 
@@ -205,6 +205,49 @@ See `.claude/skills/deck-art/SKILL.md` for full generation workflow, prompt temp
 **Assembly script:** `data/decks/_wip/assemble-world-wonders.mjs` — reads the 4 WIP partial fact files, merges them, strips WIP-only fields (subDeckId, statement, wowFactor, categoryL1/2, tags), builds all metadata, and writes the final JSON.
 
 **QA fix script (2026-04-01):** `data/decks/_wip/fix-world-wonders.mjs` — fixed 97 unsafe distractors (pool collision), merged `location_city` pool (2 facts) into `location_country`, and added 1 distractor to each of `ww_anc_parthenon_architect` and `ww_sac_hagia_sophia_architects`. All 12 QA checks now pass.
+
+---
+
+
+## movies_cinema Deck
+
+`data/decks/movies_cinema.json` — assembled 2026-04-03 from 7 WIP batch files via inline Node.js assembly script.
+
+| Field | Value |
+|---|---|
+| `id` | `movies_cinema` |
+| `domain` | `art_architecture` |
+| `subDomain` | `film` |
+| `facts` | 207 |
+| `minimumFacts` | 150 |
+| `targetFacts` | 220 |
+
+**SubDecks (3):**
+
+| SubDeck ID | Name | Batches | Facts |
+|---|---|---|---|
+| `iconic_films` | Iconic Films | 1–3 | 90 |
+| `directors_and_stars` | Directors & Stars | 4–5 | 62 |
+| `cinema_craft` | Cinema History & Craft | 6–7 | 55 |
+
+**Answer Type Pools (8):**
+
+| Pool ID | Format | Facts | Members |
+|---|---|---|---|
+| `director_names` | name | 59 | 39 |
+| `film_titles` | name | 58 | 44 |
+| `actor_names` | name | 39 | 30 |
+| `bracket_years` | bracket_year | 20 | 20 |
+| `cinema_terms` | term | 13 | 13 |
+| `character_names` | name | 8 | 7 |
+| `film_trivia` | mixed | 6 | 6 |
+| `bracket_counts` | bracket_number | 4 | 4 |
+
+Notes: `country_names` pool was eliminated — its single fact (Bollywood/India) was moved to `film_trivia`. `bracket_numbers` pool split into `bracket_years` (year answers) and `bracket_counts` (numeric counts). Al Jolson and Hattie McDaniel moved from `director_names` to `actor_names`.
+
+**Difficulty:** easy=112 (difficulty 1–2), medium=60 (difficulty 3), hard=35 (difficulty 4–5)
+
+**Source WIP files:** `data/decks/_wip/movies_cinema_batch1.json` (30 facts, classic pre-1970), `batch2.json` (30, 1970–1995), `batch3.json` (30, modern + quotes), `batch4.json` (32, directors), `batch5.json` (30, actors/characters), `batch6.json` (28, cinema history), `batch7.json` (27, techniques/craft/records)
 
 ---
 
@@ -789,3 +832,38 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 **Validator note:** The `verify-curated-deck.mjs` script flags every fact with "Question contains literal braces" — this is a known false-positive for fill-blank grammar decks. The `{___}` marker is the intended question blank format, not a template literal.
 
 **chainThemeId:** Rotates 0–5 sequentially across all facts (grammar decks use generic chain slots, not named themes).
+
+---
+
+## movies_cinema_batch3 (WIP)
+
+`data/decks/_wip/movies_cinema_batch3.json` — generated 2026-04-03 from Wikidata-verified source data. Sub-deck: "Iconic Films" — Batch 3: Modern era (1995–2020) + Famous Quotes.
+
+| Field | Value |
+|---|---|
+| `id` | `movies_cinema` (batch 3 of a multi-batch deck) |
+| `facts` | 30 |
+| `status` | WIP — awaiting assembly into full deck + registration |
+
+**Films covered:** Titanic (1997), The Matrix (1999), Gladiator (2000), The Lord of the Rings: Return of the King (2003), The Dark Knight (2008), No Country for Old Men (2007), Inception (2010), 12 Years a Slave (2013), Parasite (2019), Everything Everywhere All at Once (2022), Oppenheimer (2023), Fight Club (1999), The Departed (2006), Slumdog Millionaire (2008), Moonlight (2016), Get Out (2017), The Hurt Locker (2008)
+
+**Famous Quotes covered (answer = film title):** "Here's looking at you, kid" (Casablanca), "I'm gonna make him an offer he can't refuse" (The Godfather), "May the Force be with you" (Star Wars), "Frankly, my dear, I don't give a damn" (Gone with the Wind), "I'll be back" (The Terminator), "There's no place like home" (The Wizard of Oz), "You talking to me?" (Taxi Driver), "Houston, we have a problem" (Apollo 13), "Life is like a box of chocolates" (Forrest Gump), "I see dead people" (The Sixth Sense)
+
+**Answer Type Pools (4):**
+
+| Pool ID | Facts |
+|---|---|
+| `director_names` | 17 |
+| `film_titles` | 10 |
+| `bracket_years` | 2 |
+| `character_names` | 1 |
+
+**Chain Theme Distribution:** 0→6, 1→5, 2→5, 3→5, 4→5, 5→4
+
+**Structural validation:** 0 errors — all 30 facts passed ID uniqueness, required fields, 8-distractor rule, bracket_year format, quizQuestion terminal `?`, and ≥2 variants checks.
+
+**Distractor rule compliance:** All distractors are LLM-generated from question context — no database pool mining.
+
+**Source data:** Directors and release years verified via Wikidata SPARQL (confirmed in prompt). Famous quotes and attributed films verified against Wikipedia articles linked in each fact's `sourceUrl`.
+
+**Next steps:** Assemble into full `movies_cinema.json` with `answerTypePools`, `synonymGroups`, `difficultyTiers`, and deck metadata; strip WIP fields (`statement`, `wowFactor`, `tags`, `ageGroup`); register in `data/decks/manifest.json`.

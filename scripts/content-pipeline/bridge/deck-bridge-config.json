@@ -2,7 +2,7 @@
   "_comment": "Per-deck configuration for the Curated Deck → Trivia Bridge extraction script.",
   "_comment2": "prefixSegments: how many leading underscore-separated ID segments to skip (deck prefix + chain abbreviation).",
   "_comment3": "entitySegments: how many segments after the prefix form the entity key (default 1).",
-  "_comment4": "Last updated: 2026-04-01",
+  "_comment4": "Last updated: 2026-04-03",
 
   "ancient_greece": {
     "domain": "history",
@@ -197,6 +197,14 @@
     "entitySegments": 1,
     "ageRating": "kid",
     "categoryL2": "music_history"
+  },
+
+  "movies_cinema": {
+    "domain": "art_architecture",
+    "prefixSegments": 1,
+    "entitySegments": 1,
+    "ageRating": "teen",
+    "categoryL2": "performing_arts"
   },
 
   "computer_science": {

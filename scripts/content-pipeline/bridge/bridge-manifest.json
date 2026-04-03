@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-04-02T10:11:29.048Z",
-  "totalBridgedFacts": 2449,
+  "lastRun": "2026-04-03T03:56:22.585Z",
+  "totalBridgedFacts": 2514,
   "decks": {
     "ancient_greece": {
       "totalFacts": 246,
@@ -145,6 +145,12 @@
       "totalFacts": 230,
       "entities": 138,
       "bridged": 138,
+      "skipped": 0
+    },
+    "movies_cinema": {
+      "totalFacts": 207,
+      "entities": 65,
+      "bridged": 65,
       "skipped": 0
     },
     "computer_science": {
