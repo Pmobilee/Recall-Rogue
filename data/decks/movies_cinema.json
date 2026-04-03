@@ -5,7 +5,7 @@
   "subDomain": "film",
   "description": "From silent films to modern blockbusters — master the directors, stars, and stories that shaped cinema history.",
   "minimumFacts": 150,
-  "targetFacts": 220,
+  "targetFacts": 277,
   "facts": [
     {
       "id": "cinema_citizenkane_director",
@@ -12390,51 +12390,3676 @@
         "method acting"
       ],
       "visualDescription": "A brooding 1950s actor in a torn t-shirt under a single spotlight, intense gaze, pixel art black-and-white film still style"
+    },
+    {
+      "id": "cinema_char_darth_vader",
+      "correctAnswer": "Darth Vader",
+      "acceptableAlternatives": [
+        "Vader",
+        "Anakin Skywalker",
+        "Anakin"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "character_names",
+      "difficulty": 1,
+      "funScore": 10,
+      "ageGroup": "all",
+      "distractors": [
+        "Luke Skywalker",
+        "Han Solo",
+        "Obi-Wan Kenobi",
+        "Emperor Palpatine",
+        "Yoda",
+        "Boba Fett",
+        "Kylo Ren",
+        "Leia Organa"
+      ],
+      "quizQuestion": "Which Sith Lord, revealed to be Luke Skywalker's father in The Empire Strikes Back (1980), is one of cinema's most iconic villains?",
+      "explanation": "Darth Vader is the primary antagonist of the original Star Wars trilogy. In The Empire Strikes Back (1980), he delivers the twist 'No, I am your father' — often misquoted as 'Luke, I am your father.' His body was played by David Prowse and his voice by James Earl Jones. The AFI ranked him the number three villain in cinema history. Source: Wikipedia.",
+      "statement": "Darth Vader's revelation 'No, I am your father' in The Empire Strikes Back is one of cinema's greatest plot twists.",
+      "wowFactor": "The line is almost always misquoted — Vader never says 'Luke, I am your father.' The actual line is 'No, I am your father.'",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Darth_Vader",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Darth Vader's voice in the Star Wars films was provided by which actor?",
+          "correctAnswer": "James Earl Jones",
+          "distractors": [
+            "David Prowse",
+            "Mark Hamill",
+            "Anthony Daniels",
+            "Frank Oz",
+            "Peter Cushing",
+            "Alec Guinness",
+            "Ian McDiarmid",
+            "Sebastian Shaw"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In The Empire Strikes Back, Darth Vader reveals to Luke: 'No, {___} your father.'",
+          "correctAnswer": "I am",
+          "distractors": [
+            "Luke, I am",
+            "he is",
+            "you are",
+            "we are"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "character",
+        "star_wars",
+        "villain"
+      ],
+      "visualDescription": "A tall black-armored figure stands on a futuristic bridge against a star field, cape billowing, the glow of a red lightsaber cutting through darkness, pixel art style."
+    },
+    {
+      "id": "cinema_char_james_bond",
+      "correctAnswer": "James Bond",
+      "acceptableAlternatives": [
+        "Bond",
+        "007"
+      ],
+      "chainThemeId": 1,
+      "answerTypePoolId": "character_names",
+      "difficulty": 1,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "Jason Bourne",
+        "Ethan Hunt",
+        "Jack Ryan",
+        "George Smiley",
+        "Harry Palmer",
+        "Napoleon Solo",
+        "Derek Flint",
+        "Nick Fury"
+      ],
+      "quizQuestion": "Which fictional British spy, first portrayed by Sean Connery in Dr. No (1962), introduces himself with the iconic line 'Bond. James Bond.'?",
+      "explanation": "James Bond is the fictional MI6 spy created by author Ian Fleming. The film series began with Dr. No in 1962, starring Sean Connery. The self-introduction 'Bond. James Bond.' first appeared in that film and became one of cinema's most recognisable phrases, ranked #22 on the AFI's 100 greatest movie quotes list. The character has been portrayed by seven actors in the official EON Productions series. Source: Wikipedia.",
+      "statement": "James Bond first introduced himself with 'Bond. James Bond.' in Dr. No (1962), played by Sean Connery.",
+      "wowFactor": "The James Bond film franchise has grossed over $7 billion worldwide, making it one of the highest-grossing media franchises in history.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/James_Bond",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Sean Connery first played James Bond in which 1962 film?",
+          "correctAnswer": "Dr. No",
+          "distractors": [
+            "Goldfinger",
+            "From Russia with Love",
+            "Thunderball",
+            "You Only Live Twice",
+            "The Spy Who Loved Me",
+            "Live and Let Die",
+            "Moonraker",
+            "The Living Daylights"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "character",
+        "spy",
+        "franchise"
+      ],
+      "visualDescription": "A sharply suited man in black tie holds a martini glass at a casino table, one eyebrow raised, a sleek pistol holstered at his side, pixel art style."
+    },
+    {
+      "id": "cinema_char_dorothy_gale",
+      "correctAnswer": "Dorothy Gale",
+      "acceptableAlternatives": [
+        "Dorothy"
+      ],
+      "chainThemeId": 2,
+      "answerTypePoolId": "character_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Alice",
+        "Wendy Darling",
+        "Mary Poppins",
+        "Elsa",
+        "Cinderella",
+        "Snow White",
+        "Scarlett O'Hara",
+        "Anne of Green Gables"
+      ],
+      "quizQuestion": "Which Kansas girl, played by Judy Garland in The Wizard of Oz (1939), clicks her ruby slippers and repeats 'There's no place like home'?",
+      "explanation": "Dorothy Gale is the protagonist of The Wizard of Oz (1939), played by 16-year-old Judy Garland. She is swept to the magical land of Oz by a tornado and must find the Wizard to return home. Her ruby slippers and the phrase 'There's no place like home' are among the most recognisable symbols in cinema history. The AFI ranked 'There's no place like home' as the sixth greatest movie quote. Source: Wikipedia.",
+      "statement": "Dorothy Gale in The Wizard of Oz (1939) clicks ruby slippers and repeats 'There's no place like home', played by Judy Garland.",
+      "wowFactor": "Judy Garland was only 16 when she played Dorothy, yet the studio bound her chest and put her in a corset to make her appear younger and more child-like.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Dorothy_Gale",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Dorothy Gale is the main character of The Wizard of Oz (1939). What state does she live in, and desperately wish to return to?",
+          "correctAnswer": "Kansas",
+          "distractors": [
+            "Nebraska",
+            "Oklahoma",
+            "Iowa",
+            "Missouri",
+            "Indiana",
+            "Illinois",
+            "Minnesota",
+            "South Dakota"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "character",
+        "classic",
+        "musical"
+      ],
+      "visualDescription": "A young girl in a blue gingham dress and red sparkling shoes stands at a yellow brick road junction, a tornado swirling on the horizon, pixel art style."
+    },
+    {
+      "id": "cinema_char_atticus_finch",
+      "correctAnswer": "Atticus Finch",
+      "acceptableAlternatives": [
+        "Atticus"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "character_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Perry Mason",
+        "Clarence Darrow",
+        "Harvey Dent",
+        "Michael Clayton",
+        "Henry Drummond",
+        "Rudy Baylor",
+        "Jake Brigance",
+        "Sam Bowden"
+      ],
+      "quizQuestion": "Which Southern lawyer, played by Gregory Peck in To Kill a Mockingbird (1962), defends a Black man wrongly accused of rape and was ranked the number one hero in cinema by the AFI?",
+      "explanation": "Atticus Finch is the moral centre of To Kill a Mockingbird (1962), played by Gregory Peck, who won the Best Actor Oscar for the role. The AFI named Atticus Finch the greatest hero in American film history. In the story, Atticus defends Tom Robinson, a Black man falsely accused of raping a white woman in 1930s Alabama. The character is based on novelist Harper Lee's own father, Amasa Coleman Lee. Source: Wikipedia.",
+      "statement": "Atticus Finch, played by Gregory Peck, was ranked the number one cinema hero by the AFI — the greatest hero in American film history.",
+      "wowFactor": "The AFI ranked Atticus Finch the greatest screen hero ever — above Indiana Jones, James Bond, and Luke Skywalker.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Atticus_Finch",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Gregory Peck won Best Actor for playing Atticus Finch. Which novel, written by Harper Lee, is the source material?",
+          "correctAnswer": "To Kill a Mockingbird",
+          "distractors": [
+            "The Color Purple",
+            "In Cold Blood",
+            "Go Set a Watchman",
+            "A Time to Kill",
+            "Native Son",
+            "The Help",
+            "Invisible Man",
+            "The Firm"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "character",
+        "hero",
+        "drama"
+      ],
+      "visualDescription": "A quietly dignified man in a suit and glasses stands outside a courthouse in a small Southern town, his hand resting on his briefcase, pixel art style."
+    },
+    {
+      "id": "cinema_char_rick_blaine",
+      "correctAnswer": "Rick Blaine",
+      "acceptableAlternatives": [
+        "Rick"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "character_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Philip Marlowe",
+        "Sam Spade",
+        "Harry Lime",
+        "Jay Gatsby",
+        "Charles Foster Kane",
+        "Walter Neff",
+        "Joe Gillis",
+        "Fred MacMurray"
+      ],
+      "quizQuestion": "Which cynical American expatriate, played by Humphrey Bogart in Casablanca (1942), runs a nightclub in Morocco and says 'Here's looking at you, kid'?",
+      "explanation": "Rick Blaine is the protagonist of Casablanca (1942), played by Humphrey Bogart. A bitter, world-weary American who runs a café in wartime Morocco, Rick is forced to confront his past when his former lover Ilsa arrives with her husband, a Resistance leader. The phrase 'Here's looking at you, kid' was partly improvised. The AFI ranked Casablanca the second greatest American film ever made. Source: Wikipedia.",
+      "statement": "Rick Blaine, played by Humphrey Bogart, is the world-weary café owner at the heart of Casablanca (1942).",
+      "wowFactor": "Humphrey Bogart's iconic line 'Here's looking at you, kid' was partly improvised — Bogart used it when teaching Ingrid Bergman to play poker between takes.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rick_Blaine",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Rick Blaine's café in Casablanca is named what?",
+          "correctAnswer": "Rick's Café Américain",
+          "distractors": [
+            "The Blue Parrot",
+            "Rick's Bar",
+            "Club Casablanca",
+            "The American Bar",
+            "Café Morocco",
+            "The Transit Lounge",
+            "Rick's Place",
+            "Café Bogart"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "character",
+        "classic",
+        "1940s"
+      ],
+      "visualDescription": "A trench-coated man leans on a nightclub bar, cigarette in hand, illuminated by a single warm lamp against a shadowy North African interior, pixel art style."
+    },
+    {
+      "id": "cinema_char_ellen_ripley",
+      "correctAnswer": "Ellen Ripley",
+      "acceptableAlternatives": [
+        "Ripley"
+      ],
+      "chainThemeId": 5,
+      "answerTypePoolId": "character_names",
+      "difficulty": 2,
+      "funScore": 9,
+      "ageGroup": "teen+",
+      "distractors": [
+        "Sarah Connor",
+        "Princess Leia",
+        "Trinity",
+        "Furiosa",
+        "Katniss Everdeen",
+        "Clarice Starling",
+        "Marge Gunderson",
+        "Lara Croft"
+      ],
+      "quizQuestion": "Which warrant officer on the spacecraft Nostromo, played by Sigourney Weaver in Alien (1979), became one of cinema's definitive female action heroes?",
+      "explanation": "Ellen Ripley is the protagonist of the Alien franchise, first played by Sigourney Weaver in Alien (1979). She is the sole survivor of the Nostromo crew's encounter with the Xenomorph. Weaver's portrayal set a new standard for female protagonists in action and horror films. The AFI ranked Ripley as the eighth greatest hero in cinema history — and Weaver received an Oscar nomination for the role in the 1986 sequel, Aliens. Source: Wikipedia.",
+      "statement": "Ellen Ripley in Alien (1979), played by Sigourney Weaver, was ranked the eighth greatest cinema hero by the AFI.",
+      "wowFactor": "Sigourney Weaver received an Oscar nomination for Aliens (1986) — a rare achievement for a performance in an action/science-fiction film.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ellen_Ripley",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Ellen Ripley first appears in Alien (1979) as a crew member of which spacecraft?",
+          "correctAnswer": "Nostromo",
+          "distractors": [
+            "Discovery One",
+            "Sulaco",
+            "Prometheus",
+            "Covenant",
+            "Narcissus",
+            "Betty",
+            "Serenity",
+            "Millennium Falcon"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "character",
+        "sci-fi",
+        "horror",
+        "female_protagonist"
+      ],
+      "visualDescription": "A determined woman in a space-suit survival vest clutches a flamethrower in a dark, claustrophobic spaceship corridor, emergency lights casting red shadows, pixel art style."
+    },
+    {
+      "id": "cinema_char_tony_montana",
+      "correctAnswer": "Tony Montana",
+      "acceptableAlternatives": [
+        "Tony",
+        "Scarface"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "character_names",
+      "difficulty": 1,
+      "funScore": 9,
+      "ageGroup": "teen+",
+      "distractors": [
+        "Vito Corleone",
+        "Michael Corleone",
+        "Henry Hill",
+        "Jimmy Conway",
+        "Frank White",
+        "Carlito Brigante",
+        "Al Capone",
+        "Frank Lucas"
+      ],
+      "quizQuestion": "Which Cuban immigrant turned Miami drug lord, played by Al Pacino in Scarface (1983), delivers the line 'Say hello to my little friend!'?",
+      "explanation": "Tony Montana is the protagonist of Scarface (1983), directed by Brian De Palma. Al Pacino plays the Cuban refugee who rises to become a powerful cocaine kingpin in Miami. The film was controversial on release for its graphic violence and language but became a cult classic. 'Say hello to my little friend!' is ranked by the AFI among the most memorable movie quotes. Source: Wikipedia.",
+      "statement": "Tony Montana in Scarface (1983), played by Al Pacino, is the Cuban immigrant who becomes a Miami cocaine kingpin.",
+      "wowFactor": "Scarface (1983) used the F-word 226 times — a record at the time of release — and initially received an X rating before cuts were made to achieve an R.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tony_Montana",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Scarface (1983) starred Al Pacino as Tony Montana. Who directed the film?",
+          "correctAnswer": "Brian De Palma",
+          "distractors": [
+            "Martin Scorsese",
+            "Francis Ford Coppola",
+            "Sidney Lumet",
+            "Michael Mann",
+            "Oliver Stone",
+            "William Friedkin",
+            "Alan Parker",
+            "Ridley Scott"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "character",
+        "crime",
+        "al_pacino"
+      ],
+      "visualDescription": "A grinning man in a white suit stands at the top of a marble staircase in a garish mansion, cigar in hand, a mountain of white powder on the desk below him, pixel art style."
+    },
+    {
+      "id": "cinema_char_jack_torrance",
+      "correctAnswer": "Jack Torrance",
+      "acceptableAlternatives": [
+        "Jack"
+      ],
+      "chainThemeId": 1,
+      "answerTypePoolId": "character_names",
+      "difficulty": 2,
+      "funScore": 9,
+      "ageGroup": "teen+",
+      "distractors": [
+        "Hannibal Lecter",
+        "Norman Bates",
+        "Patrick Bateman",
+        "Michael Myers",
+        "Freddy Krueger",
+        "Pennywise",
+        "Anton Chigurh",
+        "John Doe"
+      ],
+      "quizQuestion": "Which writer-turned-caretaker, played by Jack Nicholson in The Shining (1980), smashes through a door and shouts 'Here's Johnny!'?",
+      "explanation": "Jack Torrance is the antagonist of The Shining (1980), Stanley Kubrick's adaptation of Stephen King's novel. Jack Nicholson plays a writer who takes his family to the remote Overlook Hotel for the winter, where supernatural forces drive him to violent madness. The line 'Here's Johnny!' was improvised by Nicholson, referencing Ed McMahon's introduction of Johnny Carson on The Tonight Show. Source: Wikipedia.",
+      "statement": "Jack Torrance's 'Here's Johnny!' in The Shining (1980) was improvised by Jack Nicholson, referencing The Tonight Show.",
+      "wowFactor": "Jack Nicholson improvised the iconic 'Here's Johnny!' line — Kubrick had no idea what it referred to until someone explained the Tonight Show reference.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Jack_Torrance",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Jack Torrance in The Shining is a writer staying at which isolated hotel?",
+          "correctAnswer": "The Overlook Hotel",
+          "distractors": [
+            "The Bates Motel",
+            "The Bellagio",
+            "Hotel Colorado",
+            "The Timberline Lodge",
+            "The Stanley Hotel",
+            "The Fairmont",
+            "The Torrance Inn",
+            "The Grand Hotel"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "character",
+        "horror",
+        "stanley_kubrick"
+      ],
+      "visualDescription": "A wild-eyed man in a plaid shirt thrusts his face through a splintered wooden door, grinning maniacally, snow visible through a frosted window behind him, pixel art style."
+    },
+    {
+      "id": "cinema_char_travis_bickle",
+      "correctAnswer": "Travis Bickle",
+      "acceptableAlternatives": [
+        "Travis"
+      ],
+      "chainThemeId": 2,
+      "answerTypePoolId": "character_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "teen+",
+      "distractors": [
+        "Jake LaMotta",
+        "Frank Bullitt",
+        "John Shaft",
+        "Dirty Harry",
+        "Paul Kersey",
+        "Max Rockatansky",
+        "Snake Plissken",
+        "Harry Callahan"
+      ],
+      "quizQuestion": "Which insomniac Vietnam veteran cab driver, played by Robert De Niro in Taxi Driver (1976), stares at his reflection and asks 'You talkin' to me?'?",
+      "explanation": "Travis Bickle is the protagonist of Taxi Driver (1976), directed by Martin Scorsese and written by Paul Schrader. Robert De Niro plays a disturbed, alienated Vietnam veteran who drives a taxi in New York City and becomes increasingly obsessed with cleaning up what he sees as the city's moral decay. The 'You talkin' to me?' scene was largely improvised by De Niro. The film won the Palme d'Or at Cannes. Source: Wikipedia.",
+      "statement": "Travis Bickle's 'You talkin' to me?' monologue in Taxi Driver (1976) was largely improvised by Robert De Niro.",
+      "wowFactor": "The script gave De Niro only the stage direction 'Travis looks in the mirror' — the entire 'You talkin' to me?' speech was improvised on the spot.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Travis_Bickle",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Taxi Driver (1976) was directed by which filmmaker, who frequently collaborated with Robert De Niro?",
+          "correctAnswer": "Martin Scorsese",
+          "distractors": [
+            "Francis Ford Coppola",
+            "Brian De Palma",
+            "Sidney Lumet",
+            "William Friedkin",
+            "Peter Bogdanovich",
+            "Roman Polanski",
+            "Alan Pakula",
+            "Bob Rafelson"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "character",
+        "scorsese",
+        "drama"
+      ],
+      "visualDescription": "A lone man in an army jacket stands on a rain-slicked New York street at night, yellow cab behind him, neon signs reflecting in the puddles, pixel art style."
+    },
+    {
+      "id": "cinema_char_michael_corleone",
+      "correctAnswer": "Michael Corleone",
+      "acceptableAlternatives": [
+        "Michael"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "character_names",
+      "difficulty": 2,
+      "funScore": 9,
+      "ageGroup": "teen+",
+      "distractors": [
+        "Vito Corleone",
+        "Sonny Corleone",
+        "Tom Hagen",
+        "Fredo Corleone",
+        "Frank Pentangeli",
+        "Virgil Sollozzo",
+        "Don Barzini",
+        "Jack Woltz"
+      ],
+      "quizQuestion": "Which war hero who becomes a ruthless Mafia don, played by Al Pacino in The Godfather (1972), is the film's true central character despite not being named in the title?",
+      "explanation": "Michael Corleone is the youngest son of patriarch Vito Corleone in The Godfather (1972), played by Al Pacino. Though initially reluctant to join the family's criminal empire, he ultimately becomes the most cold-blooded and powerful Corleone of all. Al Pacino was largely unknown when cast; studio executives initially opposed his casting. The character arc across Parts I and II is considered one of cinema's greatest. Source: Wikipedia.",
+      "statement": "Michael Corleone's transformation from idealistic war hero to ruthless Mafia don in The Godfather (1972), played by Al Pacino, is considered one of cinema's greatest character arcs.",
+      "wowFactor": "Studio executives fought hard against casting Al Pacino as Michael Corleone, calling him too short and uncharismatic — Coppola had to battle to keep him.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Michael_Corleone",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In The Godfather Part II, Michael Corleone orchestrates the death of which family member?",
+          "correctAnswer": "Fredo Corleone",
+          "distractors": [
+            "Sonny Corleone",
+            "Tom Hagen",
+            "Connie Corleone",
+            "Carlo Rizzi",
+            "Frank Pentangeli",
+            "Hyman Roth",
+            "Johnny Ola",
+            "Senator Geary"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "character",
+        "the_godfather",
+        "al_pacino"
+      ],
+      "visualDescription": "A young man in a dark Italian suit sits at the head of a long dining table in shadow, a single lamp illuminating his coldly calculating expression, pixel art style."
+    },
+    {
+      "id": "cinema_char_luke_skywalker",
+      "correctAnswer": "Luke Skywalker",
+      "acceptableAlternatives": [
+        "Luke"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "character_names",
+      "difficulty": 1,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "Darth Vader",
+        "Han Solo",
+        "Obi-Wan Kenobi",
+        "Emperor Palpatine",
+        "Yoda",
+        "Anakin Skywalker",
+        "Kylo Ren",
+        "Rey"
+      ],
+      "quizQuestion": "Which young Tatooine farm boy, played by Mark Hamill in Star Wars (1977), becomes a Jedi and destroys the Death Star?",
+      "explanation": "Luke Skywalker is the hero of the original Star Wars trilogy, played by Mark Hamill. In Star Wars: Episode IV — A New Hope (1977), he goes from a frustrated moisture farmer on Tatooine to the Rebel pilot who fires the shot that destroys the Empire's Death Star. He was later revealed to be the son of Darth Vader. Mark Hamill was a relative unknown when cast; George Lucas saw over 300 actors before choosing him. Source: Wikipedia.",
+      "statement": "Luke Skywalker, played by Mark Hamill in Star Wars (1977), is the Rebel hero who destroys the Death Star and later learns Darth Vader is his father.",
+      "wowFactor": "George Lucas screened over 300 actors before casting Mark Hamill as Luke — among those considered were Robby Benson, William Katt, and a young Kurt Russell.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Luke_Skywalker",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Luke Skywalker grew up as a moisture farmer on which desert planet?",
+          "correctAnswer": "Tatooine",
+          "distractors": [
+            "Hoth",
+            "Dagobah",
+            "Endor",
+            "Jakku",
+            "Bespin",
+            "Naboo",
+            "Coruscant",
+            "Mustafar"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "character",
+        "star_wars",
+        "hero"
+      ],
+      "visualDescription": "A young man in white robes raises a glowing blue lightsaber toward twin suns setting over a sweeping desert landscape, pixel art style."
+    },
+    {
+      "id": "cinema_char_et",
+      "correctAnswer": "E.T.",
+      "acceptableAlternatives": [
+        "ET",
+        "E.T. the Extra-Terrestrial"
+      ],
+      "chainThemeId": 5,
+      "answerTypePoolId": "character_names",
+      "difficulty": 1,
+      "funScore": 10,
+      "ageGroup": "all",
+      "distractors": [
+        "R2-D2",
+        "WALL-E",
+        "Gollum",
+        "Yoda",
+        "Groot",
+        "ALF",
+        "Chewbacca",
+        "Dobby"
+      ],
+      "quizQuestion": "Which gentle alien, stranded on Earth in Steven Spielberg's 1982 film, learns to communicate by saying 'E.T. phone home'?",
+      "explanation": "E.T. the Extra-Terrestrial (1982) is Steven Spielberg's story of an alien accidentally left behind on Earth who is befriended by a boy named Elliott. E.T. famously says 'E.T. phone home' as he tries to contact his home planet. The film was the highest-grossing film of all time upon release, surpassing Star Wars, and held that record for eleven years until Jurassic Park (1993). Source: Wikipedia.",
+      "statement": "E.T. from E.T. the Extra-Terrestrial (1982) was the highest-grossing film of all time upon its release, surpassing Star Wars.",
+      "wowFactor": "E.T. the Extra-Terrestrial (1982) was so successful that for eleven years it held the record as the highest-grossing film ever made — until Spielberg himself broke it with Jurassic Park.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/E.T._the_Extra-Terrestrial",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In E.T. the Extra-Terrestrial (1982), what is the name of the boy who befriends and hides E.T.?",
+          "correctAnswer": "Elliott",
+          "distractors": [
+            "Michael",
+            "Gertie",
+            "Kevin",
+            "Max",
+            "Jake",
+            "Sam",
+            "Tyler",
+            "Luke"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "character",
+        "spielberg",
+        "sci-fi",
+        "family"
+      ],
+      "visualDescription": "A small brown wrinkled alien with a glowing chest and fingertip points toward a full moon, silhouetted against the night sky on a hilltop, pixel art style."
+    },
+    {
+      "id": "cinema_char_rocky_balboa",
+      "correctAnswer": "Rocky Balboa",
+      "acceptableAlternatives": [
+        "Rocky"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "character_names",
+      "difficulty": 1,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "Jake LaMotta",
+        "Raging Bull",
+        "Apollo Creed",
+        "Ivan Drago",
+        "Clubber Lang",
+        "Duke",
+        "Tommy Gunn",
+        "Adonis Creed"
+      ],
+      "quizQuestion": "Which Philadelphia club boxer, played by Sylvester Stallone in Rocky (1976), trains by running up museum steps and gets a shot at the world heavyweight title?",
+      "explanation": "Rocky Balboa is the title character of Rocky (1976), written by and starring Sylvester Stallone. A small-time club boxer from Philadelphia, Rocky is given a once-in-a-lifetime shot at the world heavyweight championship. The film won three Academy Awards including Best Picture. Stallone wrote the script in three and a half days after watching a Muhammad Ali fight, and refused to sell it unless he could star. Source: Wikipedia.",
+      "statement": "Rocky Balboa in Rocky (1976) was written by Sylvester Stallone in three and a half days — and he refused to sell the script unless he could star in it.",
+      "wowFactor": "Stallone was offered $360,000 for the Rocky script but refused to sell unless he could star — at the time he had only $106 in his bank account.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rocky_Balboa_(character)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Rocky (1976) won Best Picture at the Oscars. Which future film icon directed it?",
+          "correctAnswer": "John G. Avildsen",
+          "distractors": [
+            "Sylvester Stallone",
+            "Martin Scorsese",
+            "Sidney Lumet",
+            "Arthur Hiller",
+            "Robert Aldrich",
+            "Norman Jewison",
+            "John Schlesinger",
+            "Hal Ashby"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "character",
+        "sports",
+        "stallone"
+      ],
+      "visualDescription": "A lean boxer in a grey tracksuit pumps his fists at the top of a long flight of stone steps, the city skyline stretching out below him in early morning light, pixel art style."
+    },
+    {
+      "id": "cinema_char_maximus",
+      "correctAnswer": "Maximus",
+      "acceptableAlternatives": [
+        "Maximus Decimus Meridius"
+      ],
+      "chainThemeId": 1,
+      "answerTypePoolId": "character_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "teen+",
+      "distractors": [
+        "Spartacus",
+        "Leonidas",
+        "Julius Caesar",
+        "Achilles",
+        "Odysseus",
+        "Commodus",
+        "Proximo",
+        "Marcus Aurelius"
+      ],
+      "quizQuestion": "Which Roman general-turned-gladiator, played by Russell Crowe in Gladiator (2000), shouts 'Are you not entertained?!' to the Colosseum crowd?",
+      "explanation": "Maximus Decimus Meridius is the protagonist of Gladiator (2000), directed by Ridley Scott and played by Russell Crowe. A Roman general betrayed after Emperor Marcus Aurelius's death, he is enslaved and forced to become a gladiator, seeking revenge against the corrupt Emperor Commodus. Russell Crowe won the Academy Award for Best Actor, and the film won Best Picture. Source: Wikipedia.",
+      "statement": "Maximus in Gladiator (2000), played by Russell Crowe, is a Roman general who becomes a slave gladiator to avenge his family's murder.",
+      "wowFactor": "Russell Crowe had a genuine shoulder injury during filming Gladiator — the tense, one-armed sword fight choreography was designed around his inability to fully use his arm.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Maximus_Decimus_Meridius",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In Gladiator (2000), who is the villainous emperor that Maximus seeks revenge against?",
+          "correctAnswer": "Commodus",
+          "distractors": [
+            "Nero",
+            "Caligula",
+            "Vespasian",
+            "Domitian",
+            "Tiberius",
+            "Marcus Aurelius",
+            "Hadrian",
+            "Caracalla"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "character",
+        "action",
+        "ridley_scott"
+      ],
+      "visualDescription": "An armoured gladiator stands in the centre of a sunlit Colosseum, sword raised, looking up defiantly at a roaring crowd filling the stone tiers above him, pixel art style."
+    },
+    {
+      "id": "cinema_char_neo",
+      "correctAnswer": "Neo",
+      "acceptableAlternatives": [
+        "Thomas Anderson",
+        "The One"
+      ],
+      "chainThemeId": 2,
+      "answerTypePoolId": "character_names",
+      "difficulty": 1,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "Morpheus",
+        "Trinity",
+        "Agent Smith",
+        "The Oracle",
+        "Cypher",
+        "Tank",
+        "Niobe",
+        "Ghost"
+      ],
+      "quizQuestion": "Which computer hacker turned messianic hero, played by Keanu Reeves in The Matrix (1999), chooses the red pill to learn the truth about reality?",
+      "explanation": "Neo is the protagonist of The Matrix (1999), directed by the Wachowskis and played by Keanu Reeves. He is a computer programmer named Thomas Anderson by day and hacker 'Neo' by night, who is contacted by Morpheus and offered a choice: take the blue pill and remain in the simulated reality of the Matrix, or take the red pill and learn the truth. The film pioneered the 'bullet time' visual effect and became a major cultural touchstone. Source: Wikipedia.",
+      "statement": "Neo in The Matrix (1999), played by Keanu Reeves, chooses the red pill to escape a simulated reality, in a film that pioneered 'bullet time' visual effects.",
+      "wowFactor": "Will Smith turned down the role of Neo to make Wild Wild West — and has since listed it as one of his greatest career regrets.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neo_(The_Matrix)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In The Matrix (1999), what is Neo's real (non-hacker) name?",
+          "correctAnswer": "Thomas Anderson",
+          "distractors": [
+            "Thomas Morpheus",
+            "Neo Smith",
+            "Thomas Webb",
+            "David Anderson",
+            "John Matrix",
+            "Michael Anderson",
+            "Tom Reeves",
+            "Kevin Flynn"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "character",
+        "sci-fi",
+        "keanu_reeves"
+      ],
+      "visualDescription": "A man in a long black trench coat and dark sunglasses freezes mid-air in a graceful backwards arch, bullets curving around him in slow motion, pixel art style."
+    },
+    {
+      "id": "cinema_quote_ill_be_back",
+      "correctAnswer": "I'll be back",
+      "acceptableAlternatives": [
+        "I will be back"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "film_quotes",
+      "difficulty": 1,
+      "funScore": 10,
+      "ageGroup": "all",
+      "distractors": [
+        "Say hello to my little friend!",
+        "You talkin' to me?",
+        "Here's Johnny!",
+        "I am your father",
+        "Bond. James Bond.",
+        "To infinity and beyond!",
+        "E.T. phone home",
+        "You can't handle the truth!"
+      ],
+      "quizQuestion": "Which famous three-word movie quote is spoken by a Terminator cyborg to a police sergeant before crashing a car through the station?",
+      "explanation": "Arnold Schwarzenegger delivers 'I'll be back' as the T-800 Terminator in The Terminator (1984), directed by James Cameron. The line is spoken to a police desk sergeant before the Terminator drives a car through the station to reach Sarah Connor. Schwarzenegger initially argued for 'I will be back' but Cameron insisted on the contraction. It was ranked by the AFI as the 37th greatest movie quote. Source: Wikipedia.",
+      "statement": "'I'll be back' from The Terminator (1984) was ranked by the AFI as the 37th greatest movie quote.",
+      "wowFactor": "Schwarzenegger wanted to say 'I will be back' because he felt the contraction sounded unnatural with his accent — James Cameron overruled him, and the awkwardness became iconic.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/I%27ll_be_back",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "'I'll be back' is from The Terminator (1984). Who directed the film?",
+          "correctAnswer": "James Cameron",
+          "distractors": [
+            "Ridley Scott",
+            "Paul Verhoeven",
+            "John McTiernan",
+            "Walter Hill",
+            "Tony Scott",
+            "Jonathan Mostow",
+            "McG",
+            "Alan Taylor"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "quote",
+        "action",
+        "terminator"
+      ],
+      "visualDescription": "A chrome-skulled robot in a black leather jacket stands in a police station doorway lit from behind, smoke rising around its feet, pixel art style."
+    },
+    {
+      "id": "cinema_quote_you_cant_handle_truth",
+      "correctAnswer": "You can't handle the truth!",
+      "acceptableAlternatives": [
+        "You can't handle the truth"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "film_quotes",
+      "difficulty": 1,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "I'll be back",
+        "Say hello to my little friend!",
+        "You talkin' to me?",
+        "Here's Johnny!",
+        "I am your father",
+        "Bond. James Bond.",
+        "To infinity and beyond!",
+        "E.T. phone home"
+      ],
+      "quizQuestion": "Which explosive courtroom declaration, shouted by Jack Nicholson as a Marine colonel in a 1992 legal drama, became an instantly recognisable movie quote?",
+      "explanation": "Jack Nicholson shouts 'You can't handle the truth!' as Colonel Nathan R. Jessup in A Few Good Men (1992), directed by Rob Reiner. The line comes during a climactic courtroom confrontation when Tom Cruise's lawyer forces him to admit to ordering a 'Code Red.' The quote is actually part of a longer speech; the preceding line is 'You want answers?' / 'I want the truth!' Rob Reiner has said the script used 'You want the truth? You can't handle the truth!' but Nicholson dropped 'You want the truth?' Source: Wikipedia.",
+      "statement": "'You can't handle the truth!' was shouted by Jack Nicholson as Colonel Jessup in A Few Good Men (1992), directed by Rob Reiner.",
+      "wowFactor": "The full exchange is 'I want the truth!' / 'You can't handle the truth!' — Nicholson dropped the preceding line 'You want the truth?' making the quote even more explosive.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/A_Few_Good_Men",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Jack Nicholson shouts 'You can't handle the truth!' in A Few Good Men (1992). Which actor plays the lawyer who forces the confession?",
+          "correctAnswer": "Tom Cruise",
+          "distractors": [
+            "Kevin Bacon",
+            "Demi Moore",
+            "Jack Nicholson",
+            "Kevin Pollak",
+            "J.T. Walsh",
+            "Cuba Gooding Jr.",
+            "Wolfgang Bodison",
+            "Noah Wyle"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "quote",
+        "drama",
+        "courtroom"
+      ],
+      "visualDescription": "A stern military officer in dress uniform leans forward in a witness box, jaw clenched, shouting at a packed courtroom under harsh fluorescent light, pixel art style."
+    },
+    {
+      "id": "cinema_quote_heres_johnny",
+      "correctAnswer": "Here's Johnny!",
+      "acceptableAlternatives": [
+        "Heres Johnny",
+        "Here's Johnny"
+      ],
+      "chainThemeId": 5,
+      "answerTypePoolId": "film_quotes",
+      "difficulty": 1,
+      "funScore": 10,
+      "ageGroup": "teen+",
+      "distractors": [
+        "I'll be back",
+        "Say hello to my little friend!",
+        "You talkin' to me?",
+        "You can't handle the truth!",
+        "I am your father",
+        "Bond. James Bond.",
+        "To infinity and beyond!",
+        "E.T. phone home"
+      ],
+      "quizQuestion": "Which gleefully terrifying line does Jack Nicholson improvise as he smashes through a bathroom door with an axe in The Shining (1980)?",
+      "explanation": "'Here's Johnny!' is spoken by Jack Nicholson as Jack Torrance in The Shining (1980), directed by Stanley Kubrick. The line was improvised by Nicholson, mimicking Ed McMahon's introduction of Johnny Carson on The Tonight Show. Kubrick initially did not understand the reference (being British) until it was explained to him. It has since become one of the most replicated lines in cinema history. Source: Wikipedia.",
+      "statement": "'Here's Johnny!' from The Shining (1980) was improvised by Jack Nicholson, referencing Ed McMahon's catchphrase from The Tonight Show.",
+      "wowFactor": "Stanley Kubrick didn't understand the reference to The Tonight Show — he'd been living in England for years and thought the line was just Nicholson being manic.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Shining_(film)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "'Here's Johnny!' was improvised by Jack Nicholson referencing which TV show host's introduction?",
+          "correctAnswer": "Johnny Carson",
+          "distractors": [
+            "Jay Leno",
+            "David Letterman",
+            "Ed Sullivan",
+            "Dick Cavett",
+            "Merv Griffin",
+            "Steve Allen",
+            "Jack Paar",
+            "Craig Ferguson"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "quote",
+        "horror",
+        "improvised"
+      ],
+      "visualDescription": "A grinning face peers through a splintered hole in a wooden door, one eye wide and crazed, shadows and splinters framing the moment, pixel art style."
+    },
+    {
+      "id": "cinema_quote_infinity_beyond",
+      "correctAnswer": "To infinity and beyond!",
+      "acceptableAlternatives": [
+        "To infinity and beyond"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "film_quotes",
+      "difficulty": 1,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "I'll be back",
+        "Say hello to my little friend!",
+        "You talkin' to me?",
+        "Here's Johnny!",
+        "I am your father",
+        "Bond. James Bond.",
+        "You can't handle the truth!",
+        "E.T. phone home"
+      ],
+      "quizQuestion": "Which optimistic battle cry does Buzz Lightyear shout as he launches himself into the air in Toy Story (1995)?",
+      "explanation": "'To infinity and beyond!' is the catchphrase of Buzz Lightyear, voiced by Tim Allen in Toy Story (1995), Pixar's first feature film. Buzz is a deluded space ranger action figure who believes he is real. The phrase was written by the Toy Story screenwriting team. The film was the first fully computer-animated feature film and grossed $373 million worldwide. Source: Wikipedia.",
+      "statement": "'To infinity and beyond!' is Buzz Lightyear's catchphrase from Toy Story (1995), the first fully computer-animated feature film.",
+      "wowFactor": "Toy Story (1995) was the first fully computer-animated feature film — before its release, conventional wisdom in Hollywood said audiences would never accept it.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Toy_Story",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Tim Allen voiced Buzz Lightyear in Toy Story (1995). Which actor voiced Buzz's rival-turned-friend, Woody?",
+          "correctAnswer": "Tom Hanks",
+          "distractors": [
+            "Bill Murray",
+            "Steve Martin",
+            "Robin Williams",
+            "John Goodman",
+            "Dan Aykroyd",
+            "Chevy Chase",
+            "Rick Moranis",
+            "Martin Short"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "quote",
+        "animation",
+        "pixar",
+        "family"
+      ],
+      "visualDescription": "A white space suit toy strikes a heroic pose on a wooden dresser, one arm outstretched toward a bedroom window with light streaming in, pixel art style."
+    },
+    {
+      "id": "cinema_quote_i_am_your_father",
+      "correctAnswer": "I am your father",
+      "acceptableAlternatives": [
+        "No, I am your father",
+        "Luke, I am your father"
+      ],
+      "chainThemeId": 1,
+      "answerTypePoolId": "film_quotes",
+      "difficulty": 1,
+      "funScore": 10,
+      "ageGroup": "all",
+      "distractors": [
+        "I'll be back",
+        "Say hello to my little friend!",
+        "You talkin' to me?",
+        "Here's Johnny!",
+        "Bond. James Bond.",
+        "To infinity and beyond!",
+        "E.T. phone home",
+        "You can't handle the truth!"
+      ],
+      "quizQuestion": "Which Star Wars: The Empire Strikes Back (1980) revelation — one of cinema's greatest plot twists — is commonly misquoted with 'Luke' at the start?",
+      "explanation": "Darth Vader says 'No, I am your father' in The Empire Strikes Back (1980) — almost universally misquoted as 'Luke, I am your father.' The line was recorded separately by James Earl Jones (who voiced Vader) after filming; on set, David Prowse delivered a fake line so the twist would not leak. The screenwriter Lawrence Kasdan had written it as a genuine surprise even for most of the cast. Source: Wikipedia.",
+      "statement": "'No, I am your father' from The Empire Strikes Back (1980) is one of cinema's most famous misquoted lines — the word 'Luke' does not appear.",
+      "wowFactor": "The 'I am your father' twist was kept so secret that even David Prowse (who physically played Vader) was given a fake line to deliver on set — only James Earl Jones knew the real one.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Empire_Strikes_Back",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Empire Strikes Back's 'I am your father' twist was kept secret partly by giving the actor playing Vader's body a fake line. Who played Vader's physical body?",
+          "correctAnswer": "David Prowse",
+          "distractors": [
+            "James Earl Jones",
+            "Sebastian Shaw",
+            "Bob Anderson",
+            "Richard Marquand",
+            "Peter Mayhew",
+            "Anthony Daniels",
+            "Kenny Baker",
+            "Jeremy Bulloch"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "quote",
+        "star_wars",
+        "plot_twist"
+      ],
+      "visualDescription": "A black-armored figure extends a gloved hand toward a young man hanging from a gantry above a swirling void, a storm of electricity and smoke below them, pixel art style."
+    },
+    {
+      "id": "cinema_quote_tomorrow_is_another_day",
+      "correctAnswer": "After all, tomorrow is another day",
+      "acceptableAlternatives": [
+        "Tomorrow is another day",
+        "after all tomorrow is another day"
+      ],
+      "chainThemeId": 2,
+      "answerTypePoolId": "film_quotes",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "I'll be back",
+        "Say hello to my little friend!",
+        "You talkin' to me?",
+        "Here's Johnny!",
+        "Bond. James Bond.",
+        "To infinity and beyond!",
+        "E.T. phone home",
+        "You can't handle the truth!"
+      ],
+      "quizQuestion": "Which defiant closing line, delivered by Scarlett O'Hara as she vows to fight on in Gone with the Wind (1939), ends one of Hollywood's most celebrated films?",
+      "explanation": "'After all, tomorrow is another day!' are the final words of Gone with the Wind (1939), spoken by Scarlett O'Hara (Vivien Leigh) as she vows to regain Tara and win back Rhett Butler. The line — also the final line of Margaret Mitchell's 1936 novel — was ranked by the AFI as the 31st greatest movie quote. The film won eight Academy Awards and remained the highest-grossing film of all time (adjusted for inflation) for decades. Source: Wikipedia.",
+      "statement": "'After all, tomorrow is another day!' ends Gone with the Wind (1939), ranked 31st on the AFI's list of greatest movie quotes.",
+      "wowFactor": "Gone with the Wind remains the highest-grossing film of all time when adjusted for inflation — a record it has held for over 85 years.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Gone_with_the_Wind_(film)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Vivien Leigh played Scarlett O'Hara in Gone with the Wind (1939). Which actor played Rhett Butler?",
+          "correctAnswer": "Clark Gable",
+          "distractors": [
+            "Cary Grant",
+            "Gary Cooper",
+            "James Stewart",
+            "Henry Fonda",
+            "Errol Flynn",
+            "Tyrone Power",
+            "William Powell",
+            "Gregory Peck"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "quote",
+        "classic",
+        "1930s",
+        "drama"
+      ],
+      "visualDescription": "A determined woman in a tattered ballgown stands alone in a mist-covered field at dawn, her chin raised defiantly toward the rising sun, pixel art style."
+    },
+    {
+      "id": "cinema_quote_elementary_watson",
+      "correctAnswer": "Elementary, my dear Watson",
+      "acceptableAlternatives": [
+        "Elementary my dear Watson"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "film_quotes",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "I'll be back",
+        "Say hello to my little friend!",
+        "You talkin' to me?",
+        "Here's Johnny!",
+        "Bond. James Bond.",
+        "To infinity and beyond!",
+        "E.T. phone home",
+        "You can't handle the truth!"
+      ],
+      "quizQuestion": "Which famous Sherlock Holmes film quote — 'Elementary, my dear Watson' — is actually NEVER spoken in Sir Arthur Conan Doyle's original stories or the earliest Holmes films, making it cinema's most famous misattribution?",
+      "explanation": "'Elementary, my dear Watson' does not appear in any of Sir Arthur Conan Doyle's original Sherlock Holmes stories. The phrase first appeared in the 1929 film The Return of Sherlock Holmes, starring Clive Brook. It was then popularised through subsequent Holmes films and parody. In the original stories, Holmes occasionally says 'Elementary' and 'My dear Watson' separately, but never combined. The phrase is considered one of cinema's greatest misattributed quotes. Source: Wikipedia.",
+      "statement": "'Elementary, my dear Watson' never appears in Arthur Conan Doyle's original Sherlock Holmes stories — it was first used in the 1929 film The Return of Sherlock Holmes.",
+      "wowFactor": "One of the most famous movie quotes in history was never actually said — 'Elementary, my dear Watson' was invented for a 1929 film and falsely attributed to the original stories ever since.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Elementary,_my_dear_Watson",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "'Elementary, my dear Watson' first appeared in which year's Sherlock Holmes film?",
+          "correctAnswer": "1929",
+          "distractors": [
+            "1939",
+            "1946",
+            "1959",
+            "1984",
+            "1922",
+            "1900",
+            "1965",
+            "1970"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "quote",
+        "misquote",
+        "sherlock_holmes",
+        "trivia"
+      ],
+      "visualDescription": "A man in a deerstalker cap and Inverness cape examines a clue with a magnifying glass in a candlelit Victorian sitting room, his companion watching from an armchair, pixel art style."
+    },
+    {
+      "id": "cinema_quote_say_hello_little_friend",
+      "correctAnswer": "Say hello to my little friend!",
+      "acceptableAlternatives": [
+        "Say hello to my little friend"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "film_quotes",
+      "difficulty": 1,
+      "funScore": 9,
+      "ageGroup": "teen+",
+      "distractors": [
+        "I'll be back",
+        "You can't handle the truth!",
+        "You talkin' to me?",
+        "Here's Johnny!",
+        "I am your father",
+        "Bond. James Bond.",
+        "To infinity and beyond!",
+        "E.T. phone home"
+      ],
+      "quizQuestion": "Which defiant battle cry does Tony Montana shout as he opens fire with a grenade launcher during the climax of Scarface (1983)?",
+      "explanation": "Al Pacino shouts 'Say hello to my little friend!' as Tony Montana in the climactic final shoot-out of Scarface (1983), directed by Brian De Palma. He fires a grenade launcher at the attacking hitmen from the top of his staircase. The line was ranked by the AFI as one of the most memorable movie quotes. The film's climax took four weeks to shoot and was partially inspired by the 1932 original Scarface. Source: Wikipedia.",
+      "statement": "'Say hello to my little friend!' from Scarface (1983) was shouted by Al Pacino as Tony Montana during the film's climactic final shoot-out.",
+      "wowFactor": "Scarface's climactic shoot-out — including the 'Say hello to my little friend!' moment — took four full weeks to film and required thousands of rounds of blanks.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Scarface_(1983_film)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Tony Montana shouts 'Say hello to my little friend!' while firing which weapon in Scarface?",
+          "correctAnswer": "A grenade launcher",
+          "distractors": [
+            "A machine gun",
+            "A shotgun",
+            "A rocket launcher",
+            "A semi-automatic pistol",
+            "An M16 rifle",
+            "A flamethrower",
+            "A bazooka",
+            "Twin handguns"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "quote",
+        "action",
+        "scarface",
+        "al_pacino"
+      ],
+      "visualDescription": "A man in a white suit at the top of a marble staircase aims a heavy military weapon at attackers below, the opulent room erupting in chaos and gunfire, pixel art style."
+    },
+    {
+      "id": "cinema_quote_et_phone_home",
+      "correctAnswer": "E.T. phone home",
+      "acceptableAlternatives": [
+        "ET phone home"
+      ],
+      "chainThemeId": 5,
+      "answerTypePoolId": "film_quotes",
+      "difficulty": 1,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "I'll be back",
+        "Say hello to my little friend!",
+        "You talkin' to me?",
+        "Here's Johnny!",
+        "I am your father",
+        "Bond. James Bond.",
+        "To infinity and beyond!",
+        "You can't handle the truth!"
+      ],
+      "quizQuestion": "Which simple, heartfelt plea — spoken by a stranded alien learning English in Steven Spielberg's 1982 film — became one of cinema's most beloved quotes?",
+      "explanation": "'E.T. phone home' is spoken by the alien E.T. in E.T. the Extra-Terrestrial (1982), directed by Steven Spielberg. E.T. uses broken English to express his longing to communicate with his home planet. The voice of E.T. was provided by Pat Welsh, a retired teacher, combined with other voice recordings. The AFI ranked 'E.T. phone home' as the 15th greatest movie quote. Source: Wikipedia.",
+      "statement": "'E.T. phone home' from E.T. the Extra-Terrestrial (1982) was ranked the 15th greatest movie quote by the AFI.",
+      "wowFactor": "The voice of E.T. was created by combining recordings from over 16 different people, including a retired teacher named Pat Welsh, who smoked two packs of cigarettes a day — giving E.T. his distinctive raspy quality.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/E.T._the_Extra-Terrestrial",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The AFI ranked 'E.T. phone home' as the 15th greatest movie quote. What position did it rank among the AFI's top movie quotes?",
+          "correctAnswer": "{15}",
+          "distractors": []
+        }
+      ],
+      "tags": [
+        "cinema",
+        "quote",
+        "sci-fi",
+        "family",
+        "spielberg"
+      ],
+      "visualDescription": "A small brown alien with a glowing chest sits at a makeshift radio device in a suburban shed, moonlight streaming through the window, eyes upturned hopefully, pixel art style."
+    },
+    {
+      "id": "cinema_quote_bond_james_bond",
+      "correctAnswer": "Bond. James Bond.",
+      "acceptableAlternatives": [
+        "Bond James Bond",
+        "James Bond"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "film_quotes",
+      "difficulty": 1,
+      "funScore": 10,
+      "ageGroup": "all",
+      "distractors": [
+        "I'll be back",
+        "Say hello to my little friend!",
+        "You talkin' to me?",
+        "Here's Johnny!",
+        "I am your father",
+        "To infinity and beyond!",
+        "E.T. phone home",
+        "You can't handle the truth!"
+      ],
+      "quizQuestion": "Which crisp self-introduction — delivered by Sean Connery at a casino baccarat table in the very first official James Bond film — became one of cinema's most imitated lines?",
+      "explanation": "'Bond. James Bond.' is first spoken by Sean Connery in Dr. No (1962), the first official EON Productions James Bond film. The line is delivered at a baccarat table and was ranked by the AFI as the 22nd greatest movie quote. Every actor who has officially played Bond in the EON series has delivered the line. The AFI selected it for inclusion in their top 100 Movie Quotes list in 2005. Source: Wikipedia.",
+      "statement": "'Bond. James Bond.' was first delivered by Sean Connery in Dr. No (1962) and ranked 22nd on the AFI's greatest movie quotes list.",
+      "wowFactor": "Every actor to officially play James Bond in the EON film series has delivered 'Bond. James Bond.' — from Connery in 1962 to Daniel Craig in 2006.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bond..._James_Bond.",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The AFI ranked 'Bond. James Bond.' as which number greatest movie quote?",
+          "correctAnswer": "{22}",
+          "distractors": []
+        }
+      ],
+      "tags": [
+        "cinema",
+        "quote",
+        "spy",
+        "james_bond",
+        "franchise"
+      ],
+      "visualDescription": "A suave man in black tie looks up from a casino card table, a slight smile playing on his lips, elegant surroundings of a 1960s casino behind him, pixel art style."
+    },
+    {
+      "id": "cinema_year_rear_window",
+      "correctAnswer": "{1954}",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "bracket_years",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year was Alfred Hitchcock's Rear Window released?",
+      "explanation": "Rear Window was released on August 1, 1954. Directed by Alfred Hitchcock and starring James Stewart and Grace Kelly, it is a psychological thriller set almost entirely in a single apartment courtyard. Source: Wikipedia.",
+      "statement": "Alfred Hitchcock's Rear Window was released in 1954, starring James Stewart as a photographer spying on his neighbours.",
+      "wowFactor": "Hitchcock filmed Rear Window on a single enormous Paramount soundstage — the largest indoor set ever built at the studio at that time.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rear_Window",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Rear Window (1954) was directed by Alfred Hitchcock?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "James Stewart plays a wheelchair-bound photographer in which 1954 Hitchcock thriller?",
+          "correctAnswer": "Rear Window",
+          "distractors": [
+            "Vertigo",
+            "North by Northwest",
+            "The Wrong Man"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "hitchcock",
+        "thriller",
+        "1950s"
+      ],
+      "visualDescription": "A man in a wheelchair peering through binoculars at a courtyard of lit apartment windows at night, tense shadows, pixel art style."
+    },
+    {
+      "id": "cinema_year_the_graduate",
+      "correctAnswer": "{1967}",
+      "acceptableAlternatives": [],
+      "chainThemeId": 1,
+      "answerTypePoolId": "bracket_years",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year was The Graduate, starring Dustin Hoffman, released?",
+      "explanation": "The Graduate was released on December 21, 1967. Directed by Mike Nichols, it starred Dustin Hoffman in his breakthrough role as Benjamin Braddock. The film's soundtrack by Simon & Garfunkel became iconic. Source: Wikipedia.",
+      "statement": "The Graduate (1967), directed by Mike Nichols, launched Dustin Hoffman's career and featured an iconic Simon & Garfunkel soundtrack.",
+      "wowFactor": "The Graduate's soundtrack — featuring 'Mrs. Robinson' and 'The Sound of Silence' — was one of the first times a pop soundtrack was used to define a film's entire emotional tone.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Graduate",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The Graduate (1967) starred Dustin Hoffman?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Mike Nichols directed which 1967 coming-of-age classic featuring Simon & Garfunkel music?",
+          "correctAnswer": "The Graduate",
+          "distractors": [
+            "Midnight Cowboy",
+            "Easy Rider",
+            "Bonnie and Clyde"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "new-hollywood",
+        "1960s"
+      ],
+      "visualDescription": "A young man in a darkened room looking uncertain, with a woman's leg in a nylon stocking framing the foreground, 1960s decor, pixel art style."
+    },
+    {
+      "id": "cinema_year_bonnie_and_clyde",
+      "correctAnswer": "{1967}",
+      "acceptableAlternatives": [],
+      "chainThemeId": 2,
+      "answerTypePoolId": "bracket_years",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year was Arthur Penn's Bonnie and Clyde released?",
+      "explanation": "Bonnie and Clyde was released on August 13, 1967. Directed by Arthur Penn and starring Warren Beatty and Faye Dunaway, it was a landmark of New Hollywood cinema that depicted graphic violence and romanticised outlaw protagonists. Source: Wikipedia.",
+      "statement": "Bonnie and Clyde (1967), directed by Arthur Penn, was a defining film of the New Hollywood era that shocked audiences with its graphic violence.",
+      "wowFactor": "Bonnie and Clyde's climactic slow-motion ambush scene used four cameras and was so viscerally brutal that it shocked American audiences and critics — and rewrote the rules for screen violence.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bonnie_and_Clyde_(film)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Warren Beatty starred in Bonnie and Clyde (1967)?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Faye Dunaway and Warren Beatty starred as which two notorious criminals in a 1967 New Hollywood film?",
+          "correctAnswer": "Bonnie and Clyde",
+          "distractors": [
+            "Butch Cassidy and the Sundance Kid",
+            "The Wild Bunch",
+            "The Graduate"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "new-hollywood",
+        "crime",
+        "1960s"
+      ],
+      "visualDescription": "Two outlaw figures in 1930s dress posing beside a getaway car on a dusty road, guns raised, pixel art style."
+    },
+    {
+      "id": "cinema_year_easy_rider",
+      "correctAnswer": "{1969}",
+      "acceptableAlternatives": [],
+      "chainThemeId": 3,
+      "answerTypePoolId": "bracket_years",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year was the counterculture road movie Easy Rider released?",
+      "explanation": "Easy Rider was released on July 14, 1969. Directed by Dennis Hopper and starring Hopper, Peter Fonda, and Jack Nicholson in a breakout role, it became a defining film of the counterculture movement and the New Hollywood era. Source: Wikipedia.",
+      "statement": "Easy Rider (1969), directed by Dennis Hopper, became a symbol of the 1960s counterculture and launched Jack Nicholson's career.",
+      "wowFactor": "Easy Rider was made for around $360,000 and grossed over $60 million — one of the most profitable independent films of its era and a catalyst for the New Hollywood revolution.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Easy_Rider",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Easy Rider (1969) was directed by Dennis Hopper?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Jack Nicholson had a breakout role as a lawyer in which 1969 counterculture road film?",
+          "correctAnswer": "Easy Rider",
+          "distractors": [
+            "Five Easy Pieces",
+            "The Graduate",
+            "Midnight Cowboy"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "new-hollywood",
+        "counterculture",
+        "1960s"
+      ],
+      "visualDescription": "Two motorcyclists riding across an open American highway at sunset, long hair and American flags, vast desert behind them, pixel art style."
+    },
+    {
+      "id": "cinema_year_chinatown",
+      "correctAnswer": "{1974}",
+      "acceptableAlternatives": [],
+      "chainThemeId": 4,
+      "answerTypePoolId": "bracket_years",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year was Roman Polański's neo-noir film Chinatown released?",
+      "explanation": "Chinatown was released on June 20, 1974. Directed by Roman Polański and written by Robert Towne, it starred Jack Nicholson as private detective Jake Gittes. The film is widely considered one of the greatest screenplays ever written. Source: Wikipedia.",
+      "statement": "Chinatown (1974), directed by Roman Polański, is a neo-noir thriller starring Jack Nicholson as private detective Jake Gittes investigating Los Angeles water corruption.",
+      "wowFactor": "Robert Towne's Chinatown screenplay is so admired that it has been used as a teaching text in nearly every major film school as a model of perfect screenplay structure.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Chinatown_(1974_film)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Chinatown (1974) was directed by Roman Polański?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Jack Nicholson plays private detective Jake Gittes in which 1974 neo-noir thriller?",
+          "correctAnswer": "Chinatown",
+          "distractors": [
+            "The Conversation",
+            "Klute",
+            "The Long Goodbye"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "neo-noir",
+        "1970s"
+      ],
+      "visualDescription": "A private detective in a tan suit with a bandaged nose examining documents in a smoky 1930s Los Angeles office, pixel art style."
+    },
+    {
+      "id": "cinema_year_taxi_driver",
+      "correctAnswer": "{1976}",
+      "acceptableAlternatives": [],
+      "chainThemeId": 5,
+      "answerTypePoolId": "bracket_years",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year was Martin Scorsese's Taxi Driver released?",
+      "explanation": "Taxi Driver was released on February 8, 1976. Directed by Martin Scorsese and starring Robert De Niro as Travis Bickle, it won the Palme d'Or at the 1976 Cannes Film Festival. Source: Wikipedia.",
+      "statement": "Martin Scorsese's Taxi Driver (1976) starred Robert De Niro as Travis Bickle, a lonely New York cab driver, and won the Palme d'Or at Cannes.",
+      "wowFactor": "Robert De Niro famously worked as a real New York taxi driver for a month to prepare for the role — and was such a good driver that passengers had no idea they were in a cab with a movie star.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Taxi_Driver",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Taxi Driver (1976) won the Palme d'Or at the Cannes Film Festival?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Robert De Niro plays Travis Bickle, an insomniac cab driver, in which 1976 Martin Scorsese film?",
+          "correctAnswer": "Taxi Driver",
+          "distractors": [
+            "Raging Bull",
+            "Mean Streets",
+            "The Deer Hunter"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "scorsese",
+        "1970s",
+        "palme-dor"
+      ],
+      "visualDescription": "A lone cab driver in a yellow taxi on a rainy New York street at night, neon reflections on wet asphalt, pixel art style."
+    },
+    {
+      "id": "cinema_year_close_encounters",
+      "correctAnswer": "{1977}",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "bracket_years",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year was Spielberg's Close Encounters of the Third Kind released?",
+      "explanation": "Close Encounters of the Third Kind was released on November 16, 1977. Directed by Steven Spielberg, it starred Richard Dreyfuss as Roy Neary, an ordinary man obsessed by a vision of a strange mountain after a UFO encounter. Source: Wikipedia.",
+      "statement": "Steven Spielberg's Close Encounters of the Third Kind (1977) was a landmark science fiction film about first contact with extraterrestrial life.",
+      "wowFactor": "The five-note musical motif used to communicate with the aliens in Close Encounters was chosen after John Williams tried over 300 different musical phrases — and the chosen sequence works in 12 different musical keys.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Close_Encounters_of_the_Third_Kind",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Close Encounters of the Third Kind (1977) was directed by Steven Spielberg?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "A five-note alien musical greeting is the centrepiece of which 1977 Spielberg science fiction film?",
+          "correctAnswer": "Close Encounters of the Third Kind",
+          "distractors": [
+            "E.T. the Extra-Terrestrial",
+            "2001: A Space Odyssey",
+            "Star Wars"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "spielberg",
+        "sci-fi",
+        "1970s"
+      ],
+      "visualDescription": "A massive glowing mothership descending over a mountain in Wyoming at night, tiny human figures below raising their arms in awe, pixel art style."
+    },
+    {
+      "id": "cinema_year_die_hard",
+      "correctAnswer": "{1988}",
+      "acceptableAlternatives": [],
+      "chainThemeId": 1,
+      "answerTypePoolId": "bracket_years",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year was the action thriller Die Hard, starring Bruce Willis, released?",
+      "explanation": "Die Hard was released on July 15, 1988. Directed by John McTiernan and starring Bruce Willis as NYPD officer John McClane, it became one of the most influential action films ever made and redefined the lone-hero action genre. Source: Wikipedia.",
+      "statement": "Die Hard (1988), directed by John McTiernan, starred Bruce Willis as John McClane and became the defining template for the lone-hero action thriller genre.",
+      "wowFactor": "Die Hard so thoroughly defined action movie conventions that Hollywood still uses 'Die Hard on a...' as a standard pitch format — Die Hard on a bus (Speed), Die Hard on a plane (Air Force One), Die Hard on a ship (Under Siege).",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Die_Hard",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Die Hard (1988) starred Bruce Willis as NYPD officer John McClane?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Bruce Willis's breakout action role came in which 1988 thriller set in the Nakatomi Plaza skyscraper?",
+          "correctAnswer": "Die Hard",
+          "distractors": [
+            "Lethal Weapon",
+            "RoboCop",
+            "The Running Man"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "action",
+        "1980s"
+      ],
+      "visualDescription": "A barefoot cop in a white vest running through a skyscraper corridor, explosions behind him, broken glass on the floor, pixel art style."
+    },
+    {
+      "id": "cinema_year_the_matrix",
+      "correctAnswer": "{1999}",
+      "acceptableAlternatives": [],
+      "chainThemeId": 2,
+      "answerTypePoolId": "bracket_years",
+      "difficulty": 2,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year was The Matrix, directed by the Wachowskis, released?",
+      "explanation": "The Matrix was released on March 31, 1999. Directed by the Wachowski Sisters and starring Keanu Reeves as Neo, it won four Academy Awards and introduced the bullet-time visual effect that transformed action filmmaking. Source: Wikipedia.",
+      "statement": "The Matrix (1999), directed by the Wachowski Sisters, starred Keanu Reeves as Neo and pioneered the bullet-time visual effect technique.",
+      "wowFactor": "The Matrix's bullet-time effect required setting up 122 cameras around Keanu Reeves and firing them in sequence — a technique so novel that the production filed patents to protect it.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Matrix",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The Matrix (1999) was directed by the Wachowski Sisters?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Keanu Reeves plays a hacker named Neo who discovers reality is a simulation in which 1999 sci-fi film?",
+          "correctAnswer": "The Matrix",
+          "distractors": [
+            "Dark City",
+            "eXistenZ",
+            "The Thirteenth Floor"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "sci-fi",
+        "action",
+        "1990s"
+      ],
+      "visualDescription": "A man in a black trench coat frozen mid-air in a slow-motion bullet dodge, green digital code raining down behind him, pixel art style."
+    },
+    {
+      "id": "cinema_year_spirited_away",
+      "correctAnswer": "{2001}",
+      "acceptableAlternatives": [],
+      "chainThemeId": 3,
+      "answerTypePoolId": "bracket_years",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year was Hayao Miyazaki's Spirited Away released in Japan?",
+      "explanation": "Spirited Away was released in Japan on July 20, 2001. Directed by Hayao Miyazaki and produced by Studio Ghibli, it became the highest-grossing film in Japanese history and won the Academy Award for Best Animated Feature in 2003. Source: Wikipedia.",
+      "statement": "Spirited Away (2001), directed by Hayao Miyazaki, became the highest-grossing film in Japanese history and won the Academy Award for Best Animated Feature.",
+      "wowFactor": "Spirited Away is the only hand-drawn animated film ever to win the Academy Award for Best Animated Feature — and is one of only two animated films in history to gross over $300 million in Japan alone.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Spirited_Away",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Spirited Away won the Academy Award for Best Animated Feature?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Hayao Miyazaki's 2001 Studio Ghibli film about a girl trapped in a spirit world became the highest-grossing film in Japanese history. What is it called?",
+          "correctAnswer": "Spirited Away",
+          "distractors": [
+            "Princess Mononoke",
+            "My Neighbor Totoro",
+            "Howl's Moving Castle"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "animation",
+        "ghibli",
+        "miyazaki",
+        "2000s"
+      ],
+      "visualDescription": "A young girl in a blue-and-white outfit working in a fantastical bathhouse full of spirits, steam rising around ornate lanterns, pixel art style."
+    },
+    {
+      "id": "cinema_year_the_dark_knight",
+      "correctAnswer": "{2008}",
+      "acceptableAlternatives": [],
+      "chainThemeId": 4,
+      "answerTypePoolId": "bracket_years",
+      "difficulty": 1,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year was Christopher Nolan's The Dark Knight released?",
+      "explanation": "The Dark Knight was released on July 18, 2008. Directed by Christopher Nolan and starring Christian Bale as Batman and Heath Ledger as the Joker, it became one of the highest-grossing films of all time. Heath Ledger's performance won a posthumous Academy Award. Source: Wikipedia.",
+      "statement": "The Dark Knight (2008), directed by Christopher Nolan, featured Heath Ledger's iconic portrayal of the Joker, for which he received a posthumous Academy Award.",
+      "wowFactor": "Heath Ledger's Joker makeup was largely designed by Ledger himself — he kept a 'Joker diary' for months before filming, filling it with dark jokes and images to inhabit the character's psychology.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Dark_Knight_(film)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Heath Ledger received a posthumous Academy Award for The Dark Knight (2008)?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Christopher Nolan directed which 2008 Batman film featuring Heath Ledger's acclaimed performance as the Joker?",
+          "correctAnswer": "The Dark Knight",
+          "distractors": [
+            "Batman Begins",
+            "The Dark Knight Rises",
+            "Batman Returns"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "superhero",
+        "nolan",
+        "2000s"
+      ],
+      "visualDescription": "A dark-costumed vigilante on a Gotham rooftop facing a grinning villain in a purple coat against a blazing city skyline, pixel art style."
+    },
+    {
+      "id": "cinema_year_get_out",
+      "correctAnswer": "{2017}",
+      "acceptableAlternatives": [],
+      "chainThemeId": 5,
+      "answerTypePoolId": "bracket_years",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year was Jordan Peele's directorial debut Get Out released?",
+      "explanation": "Get Out was released on February 24, 2017. Written and directed by Jordan Peele, it starred Daniel Kaluuya as a young Black man who visits his white girlfriend's family estate. The film earned Peele the Academy Award for Best Original Screenplay. Source: Wikipedia.",
+      "statement": "Get Out (2017), written and directed by Jordan Peele, earned him the Academy Award for Best Original Screenplay and is credited with revitalising the social horror genre.",
+      "wowFactor": "Get Out was made for $4.5 million and grossed over $255 million worldwide — and became the highest-grossing debut film by a Black director in history at the time of its release.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Get_Out",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Jordan Peele won the Academy Award for Best Original Screenplay for Get Out (2017)?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Daniel Kaluuya stars in which 2017 Jordan Peele social horror film about a Black man visiting his girlfriend's family?",
+          "correctAnswer": "Get Out",
+          "distractors": [
+            "Us",
+            "Nope",
+            "Candyman"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "horror",
+        "2010s"
+      ],
+      "visualDescription": "A young Black man with a terrified expression sitting in a hypnotist's chair in a bright suburban living room, pixel art style."
+    },
+    {
+      "id": "cinema_world_france_lumiere",
+      "correctAnswer": "France",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "country_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Italy",
+        "Germany",
+        "United Kingdom",
+        "Sweden",
+        "United States",
+        "Japan",
+        "South Korea",
+        "Iran"
+      ],
+      "quizQuestion": "The Lumière Brothers, who held the first public film screening in 1895, were from which country?",
+      "explanation": "Auguste and Louis Lumière were French inventors who held the first paid public film screening on December 28, 1895, at the Grand Café in Paris, France. They are considered pioneers of cinema. Source: Wikipedia.",
+      "statement": "The Lumière Brothers held the world's first public film screening in Paris, France in December 1895.",
+      "wowFactor": "The Lumière Brothers thought cinema was 'an invention without a future' — they sold their camera patents within years of inventing them, never imagining film would become a global industry.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Lumi%C3%A8re_Brothers",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The Lumière Brothers held the first public film screening in Paris in 1895?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "The Lumière Brothers held the world's first public film screening at the Grand Café in which city?",
+          "correctAnswer": "Paris",
+          "distractors": [
+            "London",
+            "Berlin",
+            "Vienna"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "film-history",
+        "france",
+        "pioneers"
+      ],
+      "visualDescription": "Two mustachioed men in Victorian frock coats presenting a glowing film projector to a crowd in a Parisian cafe in 1895, pixel art style."
+    },
+    {
+      "id": "cinema_world_italy_neorealism",
+      "correctAnswer": "Italy",
+      "acceptableAlternatives": [],
+      "chainThemeId": 1,
+      "answerTypePoolId": "country_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "France",
+        "Germany",
+        "Sweden",
+        "Japan",
+        "Spain",
+        "United Kingdom",
+        "United States",
+        "Iran"
+      ],
+      "quizQuestion": "Italian Neorealism — a post-WWII movement featuring films like Bicycle Thieves — originated in which country?",
+      "explanation": "Italian Neorealism emerged in Italy after World War II, with directors like Vittorio De Sica and Roberto Rossellini shooting on location with non-professional actors. Bicycle Thieves (1948) is its most celebrated example. Source: Wikipedia.",
+      "statement": "Italian Neorealism was a post-World War II filmmaking movement in Italy that used non-professional actors and real locations to depict working-class life.",
+      "wowFactor": "Vittorio De Sica cast a real unemployed bicycle factory worker — not an actor — in the lead role of Bicycle Thieves, amplifying the film's emotional rawness to devastating effect.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Italian_neorealism",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Italian Neorealism emerged after World War II?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Vittorio De Sica's Bicycle Thieves (1948) is the most celebrated example of which national cinema movement?",
+          "correctAnswer": "Italian Neorealism",
+          "distractors": [
+            "French New Wave",
+            "German Expressionism",
+            "Soviet Montage"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "italian-neorealism",
+        "italy",
+        "world-cinema"
+      ],
+      "visualDescription": "A father and young son walking through rain-soaked postwar Rome streets, expressions of worry, cobblestones and laundry lines above, pixel art style."
+    },
+    {
+      "id": "cinema_world_japan_kurosawa",
+      "correctAnswer": "Japan",
+      "acceptableAlternatives": [],
+      "chainThemeId": 2,
+      "answerTypePoolId": "country_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "China",
+        "South Korea",
+        "India",
+        "Iran",
+        "France",
+        "Italy",
+        "Sweden",
+        "Germany"
+      ],
+      "quizQuestion": "Director Akira Kurosawa, whose films include Seven Samurai and Rashomon, was from which country?",
+      "explanation": "Akira Kurosawa was a Japanese film director widely regarded as one of the most influential filmmakers in cinema history. Seven Samurai (1954) and Rashomon (1950) are among his most celebrated works and deeply influenced Western cinema. Source: Wikipedia.",
+      "statement": "Akira Kurosawa was a Japanese director whose films Seven Samurai (1954) and Rashomon (1950) profoundly influenced global cinema.",
+      "wowFactor": "Kurosawa's Seven Samurai was so influential that it was directly remade as The Magnificent Seven — and its structure of assembling a team for a mission has been copied in hundreds of films ever since.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Akira_Kurosawa",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Akira Kurosawa directed Seven Samurai (1954)?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Rashomon (1950) and Seven Samurai (1954) are masterworks by which Japanese director?",
+          "correctAnswer": "Akira Kurosawa",
+          "distractors": [
+            "Yasujiro Ozu",
+            "Kenji Mizoguchi",
+            "Hayao Miyazaki"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "japan",
+        "world-cinema",
+        "kurosawa"
+      ],
+      "visualDescription": "A samurai in full armour standing in pouring rain on a muddy Japanese village path, a sword raised, pixel art style."
+    },
+    {
+      "id": "cinema_world_south_korea_parasite",
+      "correctAnswer": "South Korea",
+      "acceptableAlternatives": [
+        "Korea"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "country_names",
+      "difficulty": 2,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "Japan",
+        "China",
+        "India",
+        "Iran",
+        "France",
+        "Italy",
+        "Sweden",
+        "Germany"
+      ],
+      "quizQuestion": "Director Bong Joon-ho and his Oscar-winning film Parasite (2019) are from which country?",
+      "explanation": "Bong Joon-ho is a South Korean director. His film Parasite (2019) became the first non-English-language film to win the Academy Award for Best Picture, also taking home Best Director, Best Original Screenplay, and Best International Feature Film. Source: Wikipedia.",
+      "statement": "Parasite (2019) by South Korean director Bong Joon-ho became the first non-English-language film to win the Academy Award for Best Picture.",
+      "wowFactor": "Parasite's win made Bong Joon-ho the first South Korean filmmaker to win the Palme d'Or AND the Oscar for Best Picture — a double crown no director had achieved with the same film in decades.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Parasite (2019) was the first non-English-language film to win Best Picture at the Academy Awards?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Bong Joon-ho directed Parasite (2019), which won Best Picture at the Oscars. Where is he from?",
+          "correctAnswer": "South Korea",
+          "distractors": [
+            "Japan",
+            "China",
+            "Thailand"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "south-korea",
+        "world-cinema",
+        "oscars"
+      ],
+      "visualDescription": "A Korean family in a sleek underground bunker looking up with expressions of tension, minimal concrete architecture around them, pixel art style."
+    },
+    {
+      "id": "cinema_world_india_bollywood",
+      "correctAnswer": "India",
+      "acceptableAlternatives": [],
+      "chainThemeId": 4,
+      "answerTypePoolId": "country_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "China",
+        "Nigeria",
+        "Brazil",
+        "South Korea",
+        "Japan",
+        "France",
+        "Mexico",
+        "United States"
+      ],
+      "quizQuestion": "Which country produces the most films annually in the world, home to Bollywood?",
+      "explanation": "India's film industry is the largest in the world by number of films produced annually. Bollywood, based in Mumbai, is the most prominent sector. India produces films in dozens of languages across multiple regional industries. Source: Wikipedia.",
+      "statement": "India produces more films annually than any other country in the world, with Bollywood — based in Mumbai — being its most internationally recognised film industry.",
+      "wowFactor": "India's film industry produces over 1,500 feature films per year across more than 20 languages — making Hollywood look like a regional boutique by comparison.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cinema_of_India",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: India produces more films annually than any other country?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Bollywood — the world's most prolific film industry — is based in which Indian city?",
+          "correctAnswer": "Mumbai",
+          "distractors": [
+            "Delhi",
+            "Chennai",
+            "Kolkata"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "india",
+        "bollywood",
+        "world-cinema"
+      ],
+      "visualDescription": "A colourful Bollywood film set in Mumbai with dancers in vibrant costumes, a film camera crew surrounding them, palm trees and ornate temple backdrop, pixel art style."
+    },
+    {
+      "id": "cinema_world_germany_expressionism",
+      "correctAnswer": "Germany",
+      "acceptableAlternatives": [],
+      "chainThemeId": 5,
+      "answerTypePoolId": "country_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "France",
+        "Italy",
+        "Sweden",
+        "Japan",
+        "Austria",
+        "Poland",
+        "Russia",
+        "United Kingdom"
+      ],
+      "quizQuestion": "German Expressionism, exemplified by Metropolis (1927), originated in which country?",
+      "explanation": "German Expressionism was a film movement of the 1920s originating in Germany, characterised by distorted sets, high contrast lighting, and themes of tyranny and madness. Fritz Lang's Metropolis (1927) is its most celebrated example. Source: Wikipedia.",
+      "statement": "German Expressionism was a 1920s film movement originating in Germany, characterised by distorted architecture and high-contrast visuals — exemplified by Fritz Lang's Metropolis (1927).",
+      "wowFactor": "Metropolis (1927) cost the equivalent of over $200 million in today's money — nearly bankrupting its studio UFA and remaining one of the most expensive silent films ever made.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/German_Expressionism_(film)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Fritz Lang's Metropolis (1927) is an example of German Expressionism?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Fritz Lang directed Metropolis (1927), a landmark of which national cinema movement?",
+          "correctAnswer": "German Expressionism",
+          "distractors": [
+            "French New Wave",
+            "Italian Neorealism",
+            "Soviet Montage"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "germany",
+        "expressionism",
+        "silent-film",
+        "world-cinema"
+      ],
+      "visualDescription": "A towering dystopian cityscape of soaring dark skyscrapers and smoke stacks at night, workers marching below, art deco silhouettes, pixel art style."
+    },
+    {
+      "id": "cinema_world_mexico_three_amigos",
+      "correctAnswer": "Mexico",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "country_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Brazil",
+        "Argentina",
+        "Spain",
+        "Colombia",
+        "France",
+        "Italy",
+        "United States",
+        "Canada"
+      ],
+      "quizQuestion": "Del Toro, Cuarón, and Iñárritu — the 'Three Amigos' of cinema — are directors from which country?",
+      "explanation": "Guillermo del Toro, Alfonso Cuarón, and Alejandro González Iñárritu are three acclaimed Mexican film directors collectively nicknamed 'The Three Amigos' by the press. Between them they have won eight Academy Awards for directing. Source: Wikipedia.",
+      "statement": "Guillermo del Toro, Alfonso Cuarón, and Alejandro González Iñárritu are Mexican directors collectively nicknamed 'The Three Amigos of Cinema' who have won multiple Academy Awards.",
+      "wowFactor": "The Three Amigos — del Toro, Cuarón, and Iñárritu — have won the Best Director Oscar a combined eight times between them, making Mexico one of the most Oscar-decorated directing nations in history.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Three_Amigos_(directors)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Guillermo del Toro, Alfonso Cuarón, and Alejandro González Iñárritu are all Mexican directors?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Which Mexican director made Pan's Labyrinth (2006) and The Shape of Water (2017)?",
+          "correctAnswer": "Guillermo del Toro",
+          "distractors": [
+            "Alfonso Cuarón",
+            "Alejandro González Iñárritu",
+            "Carlos Reygadas"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "mexico",
+        "world-cinema",
+        "directors"
+      ],
+      "visualDescription": "Three film directors posing on a red carpet in Mexico City, cameras flashing around them, film reel decorations in the background, pixel art style."
+    },
+    {
+      "id": "cinema_world_sweden_bergman",
+      "correctAnswer": "Sweden",
+      "acceptableAlternatives": [],
+      "chainThemeId": 1,
+      "answerTypePoolId": "country_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Denmark",
+        "Norway",
+        "Finland",
+        "Germany",
+        "France",
+        "Italy",
+        "Poland",
+        "Russia"
+      ],
+      "quizQuestion": "Director Ingmar Bergman, who made The Seventh Seal and Wild Strawberries, was from which country?",
+      "explanation": "Ingmar Bergman was a Swedish film and theatre director widely regarded as one of the greatest filmmakers in cinema history. The Seventh Seal (1957) and Wild Strawberries (1957) are among his most celebrated works. Source: Wikipedia.",
+      "statement": "Swedish director Ingmar Bergman is widely considered one of cinema's greatest artists, known for The Seventh Seal (1957) and his explorations of existential and spiritual themes.",
+      "wowFactor": "Ingmar Bergman directed The Seventh Seal and Wild Strawberries in the same year — 1957 — producing two of cinema's most enduring masterpieces back to back.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ingmar_Bergman",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Ingmar Bergman directed The Seventh Seal (1957)?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "A knight playing chess with Death is the central image of which 1957 Ingmar Bergman film?",
+          "correctAnswer": "The Seventh Seal",
+          "distractors": [
+            "Wild Strawberries",
+            "Persona",
+            "Fanny and Alexander"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "sweden",
+        "world-cinema",
+        "bergman"
+      ],
+      "visualDescription": "A medieval knight in armour playing a chess game with a cloaked figure on a rocky Scandinavian beach at dusk, pixel art style."
+    },
+    {
+      "id": "cinema_world_iran_kiarostami",
+      "correctAnswer": "Iran",
+      "acceptableAlternatives": [],
+      "chainThemeId": 2,
+      "answerTypePoolId": "country_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Turkey",
+        "Egypt",
+        "India",
+        "Japan",
+        "France",
+        "Italy",
+        "Poland",
+        "Denmark"
+      ],
+      "quizQuestion": "Abbas Kiarostami and the Oscar-winning film A Separation (2011) both come from which country?",
+      "explanation": "Abbas Kiarostami was an Iranian film director regarded as one of the greatest filmmakers of the 20th century. A Separation (2011), directed by Asghar Farhadi, was an Iranian drama that won the Academy Award for Best Foreign Language Film. Source: Wikipedia.",
+      "statement": "Iran produced Abbas Kiarostami, one of the world's most celebrated directors, and A Separation (2011), which won the Academy Award for Best Foreign Language Film.",
+      "wowFactor": "Iran's cinema thrived even under strict censorship — directors like Kiarostami used poetic indirection and symbolic storytelling to navigate restrictions, producing some of the world's most acclaimed films.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cinema_of_Iran",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: A Separation (2011) won the Academy Award for Best Foreign Language Film?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "A Separation (2011), directed by Asghar Farhadi, is from which Middle Eastern country's cinema tradition?",
+          "correctAnswer": "Iran",
+          "distractors": [
+            "Turkey",
+            "Egypt",
+            "Israel"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "iran",
+        "world-cinema",
+        "arthouse"
+      ],
+      "visualDescription": "A couple arguing in a sparse Tehran apartment, sunlight through dusty curtains, legal documents on a table between them, pixel art style."
+    },
+    {
+      "id": "cinema_world_uk_hitchcock",
+      "correctAnswer": "United Kingdom",
+      "acceptableAlternatives": [
+        "UK",
+        "Britain",
+        "England"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "country_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "France",
+        "Germany",
+        "Italy",
+        "Sweden",
+        "Japan",
+        "South Korea",
+        "Ireland",
+        "Australia"
+      ],
+      "quizQuestion": "Alfred Hitchcock, before becoming a Hollywood director, began his career making films in which country?",
+      "explanation": "Alfred Hitchcock was born in Leytonstone, England and made his early films in the United Kingdom in the 1920s and 1930s, including The 39 Steps (1935) and The Lady Vanishes (1938). He moved to Hollywood in 1939 under contract to David O. Selznick. Source: Wikipedia.",
+      "statement": "Alfred Hitchcock began his directorial career in the United Kingdom before moving to Hollywood in 1939, where he became known as the 'Master of Suspense'.",
+      "wowFactor": "Hitchcock's British films like The 39 Steps (1935) were so successful that Hollywood studios competed fiercely for his services — David O. Selznick ultimately won, luring him to America for $40,000 per picture.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Alfred_Hitchcock",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Alfred Hitchcock was born in England?",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "reverse",
+          "question": "Which British-born director made The 39 Steps (1935) before moving to Hollywood to make Psycho and Vertigo?",
+          "correctAnswer": "Alfred Hitchcock",
+          "distractors": [
+            "Carol Reed",
+            "David Lean",
+            "Michael Powell"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "uk",
+        "hitchcock",
+        "world-cinema"
+      ],
+      "visualDescription": "A portly silhouetted director profile against a film set backdrop in 1930s London, Edwardian buildings visible through a studio window, pixel art style."
+    },
+    {
+      "id": "cinema_supp_mise_en_scene",
+      "correctAnswer": "Mise-en-scène",
+      "acceptableAlternatives": [
+        "Mise en scene"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "cinema_terms",
+      "difficulty": 4,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Montage",
+        "MacGuffin",
+        "Dolly zoom",
+        "Foley",
+        "Jump cut",
+        "Diegetic sound",
+        "Film noir",
+        "Cinema vérité"
+      ],
+      "quizQuestion": "What French term describes the arrangement of everything visible within a film frame?",
+      "explanation": "Mise-en-scène (French for 'placing on stage') refers to everything the director controls within the frame: set design, lighting, costume, actor positioning, and camera placement. It is one of the foundational concepts of film analysis.",
+      "statement": "Mise-en-scène is the French term for the arrangement of scenery, actors, props, and lighting within a film's frame.",
+      "wowFactor": "Film critics use this single French phrase to capture everything a director composes inside the camera's view — the total visual environment of a shot.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mise-en-sc%C3%A8ne",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which cinema term means 'placing on stage' and refers to everything within the frame?",
+          "correctAnswer": "Mise-en-scène",
+          "distractors": [
+            "Montage",
+            "MacGuffin",
+            "Dolly zoom"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "film_theory",
+        "terminology"
+      ],
+      "visualDescription": "A film director stands beside a camera on a movie set, gesturing toward actors and elaborate set dressing under dramatic studio lighting, pixel art style."
+    },
+    {
+      "id": "cinema_supp_diegetic_sound",
+      "correctAnswer": "Diegetic sound",
+      "acceptableAlternatives": [
+        "Diegetic"
+      ],
+      "chainThemeId": 1,
+      "answerTypePoolId": "cinema_terms",
+      "difficulty": 4,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "Non-diegetic sound",
+        "Foley",
+        "Mise-en-scène",
+        "Montage",
+        "Jump cut",
+        "Cinema vérité",
+        "Aspect ratio",
+        "Storyboard"
+      ],
+      "quizQuestion": "What is the term for sound that characters within a film's world can actually hear?",
+      "explanation": "Diegetic sound originates from within the story world (diegesis) — a character playing a piano, a phone ringing, or dialogue. Non-diegetic sound, like the musical score, exists outside the story world and is heard only by the audience.",
+      "statement": "Diegetic sound is sound that exists within the world of the film, audible to the characters on screen.",
+      "wowFactor": "When a film character turns on a radio and the scene's background music seamlessly switches to that station, the director is playing with the line between diegetic and non-diegetic sound.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Diegesis#Film",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Sound audible to characters within the story world is called what?",
+          "correctAnswer": "Diegetic sound",
+          "distractors": [
+            "Non-diegetic sound",
+            "Foley",
+            "Ambient score"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "film_theory",
+        "sound"
+      ],
+      "visualDescription": "Two film characters reacting to a blaring car horn on a busy city street while a film crew watches through a monitor, pixel art style."
+    },
+    {
+      "id": "cinema_supp_jump_cut",
+      "correctAnswer": "Jump cut",
+      "acceptableAlternatives": [],
+      "chainThemeId": 2,
+      "answerTypePoolId": "cinema_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Dissolve",
+        "Montage",
+        "Dolly zoom",
+        "Wipe",
+        "Cross-cut",
+        "Smash cut",
+        "Match cut",
+        "L-cut"
+      ],
+      "quizQuestion": "What abrupt editing technique, pioneered in Breathless (1960), cuts mid-scene without continuity?",
+      "explanation": "A jump cut is an abrupt, jarring edit within a single scene that breaks the continuity of time or space. Jean-Luc Godard's Breathless (1960) famously popularized the technique, giving it an anxious, disorienting energy that became a hallmark of the French New Wave.",
+      "statement": "A jump cut is a discontinuous edit within a scene, famously used by Jean-Luc Godard in Breathless (1960).",
+      "wowFactor": "Godard used jump cuts in Breathless partly because he needed to trim the film's running time — and accidentally invented one of cinema's most influential techniques.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Jump_cut",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Jean-Luc Godard pioneered which jarring editing technique in Breathless?",
+          "correctAnswer": "Jump cut",
+          "distractors": [
+            "Dissolve",
+            "Montage",
+            "Dolly zoom"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "editing",
+        "french_new_wave"
+      ],
+      "visualDescription": "A film editing table with strips of celluloid film being spliced together by a focused editor, with frames showing abrupt jumps in scene, pixel art style."
+    },
+    {
+      "id": "cinema_supp_cinema_verite",
+      "correctAnswer": "Cinema vérité",
+      "acceptableAlternatives": [
+        "Cinema verite",
+        "Cinéma vérité"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "cinema_terms",
+      "difficulty": 4,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Film noir",
+        "Mise-en-scène",
+        "Italian Neorealism",
+        "French New Wave",
+        "Dogme 95",
+        "German Expressionism",
+        "Mumblecore",
+        "New Hollywood"
+      ],
+      "quizQuestion": "What documentary filmmaking style uses handheld cameras and natural lighting to capture reality?",
+      "explanation": "Cinema vérité (French: 'cinema truth') is a documentary style developed in France in the 1960s, influenced by Soviet filmmaker Dziga Vertov. It uses handheld cameras, natural lighting, and minimal crew to capture spontaneous, unscripted reality.",
+      "statement": "Cinema vérité is a documentary filmmaking style using handheld cameras and natural lighting to convey unscripted authenticity.",
+      "wowFactor": "Cinema vérité filmmakers sometimes deliberately appear on camera or provoke subjects to react — the filmmaker's presence is acknowledged as part of the truth they're capturing.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cin%C3%A9ma_v%C3%A9rit%C3%A9",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which French term names the handheld, natural-light documentary filmmaking style?",
+          "correctAnswer": "Cinema vérité",
+          "distractors": [
+            "Film noir",
+            "Italian Neorealism",
+            "Dogme 95"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "documentary",
+        "film_movement"
+      ],
+      "visualDescription": "A documentary filmmaker with a handheld camera following a subject through a crowded street market, capturing candid moments, pixel art style."
+    },
+    {
+      "id": "cinema_supp_foley",
+      "correctAnswer": "Foley",
+      "acceptableAlternatives": [
+        "Foley art",
+        "Foley sound"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "cinema_terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Diegetic sound",
+        "ADR",
+        "Dubbing",
+        "Leitmotif",
+        "Boom microphone",
+        "Mixing",
+        "Sound design",
+        "Looping"
+      ],
+      "quizQuestion": "What is the name for reproducing everyday sound effects in post-production for film?",
+      "explanation": "Foley is the art of creating everyday sound effects — footsteps, clothing rustles, door creaks — in a studio during post-production. Named after Jack Foley, a Universal Studios sound pioneer, Foley artists perform sounds in sync with a projected image.",
+      "statement": "Foley is the post-production art of creating and recording everyday sound effects in sync with the film image.",
+      "wowFactor": "Foley artists famously recreate battle sounds using ordinary objects: clinking keys for armor, celery snapping for breaking bones, and coconuts for horse hooves.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Foley_(filmmaking)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Jack Foley pioneered which post-production sound technique now named after him?",
+          "correctAnswer": "Foley",
+          "distractors": [
+            "ADR",
+            "Dubbing",
+            "Sound mixing"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "sound",
+        "post_production"
+      ],
+      "visualDescription": "A sound effects artist stepping on gravel inside a recording studio while watching a film projected on a screen, recreating footstep sounds, pixel art style."
+    },
+    {
+      "id": "cinema_supp_aspect_ratio",
+      "correctAnswer": "Aspect ratio",
+      "acceptableAlternatives": [],
+      "chainThemeId": 5,
+      "answerTypePoolId": "cinema_terms",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "Frame rate",
+        "Depth of field",
+        "Focal length",
+        "Shutter speed",
+        "Color grading",
+        "Film grain",
+        "Lens flare",
+        "Vignette"
+      ],
+      "quizQuestion": "What term describes the proportional relationship between a film frame's width and height?",
+      "explanation": "Aspect ratio is the ratio of a film frame's width to its height. Standard television used 4:3 (1.33:1), while CinemaScope widescreen is 2.39:1. The Academy standard ratio is 1.85:1. Directors choose aspect ratio to shape how viewers experience the story.",
+      "statement": "Aspect ratio is the width-to-height proportion of a film frame; CinemaScope uses 2.39:1 for its iconic widescreen look.",
+      "wowFactor": "When Christopher Nolan shot Dunkirk, he chose the tall 1.43:1 IMAX format specifically so viewers would feel surrounded — trapped like the soldiers on the beach.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Aspect_ratio_(image)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The ratio 2.39:1 describes the CinemaScope version of which camera measurement?",
+          "correctAnswer": "Aspect ratio",
+          "distractors": [
+            "Frame rate",
+            "Depth of field",
+            "Focal length"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "cinematography",
+        "terminology"
+      ],
+      "visualDescription": "Side-by-side comparison of a square television frame and a wide cinema letterbox frame showing the same landscape scene, pixel art style."
+    },
+    {
+      "id": "cinema_supp_storyboard",
+      "correctAnswer": "Storyboard",
+      "acceptableAlternatives": [
+        "Storyboarding"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "cinema_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Shot list",
+        "Animatic",
+        "Call sheet",
+        "Production design",
+        "Script breakdown",
+        "Treatment",
+        "Mood board",
+        "Pre-visualization"
+      ],
+      "quizQuestion": "What are the sequential illustrated panels used to plan a film's shots before shooting?",
+      "explanation": "A storyboard is a sequence of illustrated panels depicting planned shots, camera angles, and action. Alfred Hitchcock was renowned for his meticulous storyboards — he claimed he had already 'made' the film in his head before a single frame was shot.",
+      "statement": "A storyboard is a sequence of illustrated panels planning a film's shots, camera angles, and action before production begins.",
+      "wowFactor": "Alfred Hitchcock storyboarded every shot so precisely that he reportedly found the actual filming anticlimactic — the creative work was already done on paper.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Storyboard",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Hitchcock meticulously planned every shot using which sequential illustration technique?",
+          "correctAnswer": "Storyboard",
+          "distractors": [
+            "Shot list",
+            "Animatic",
+            "Mood board"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "pre_production",
+        "directing"
+      ],
+      "visualDescription": "A director's desk covered with hand-drawn sequential panels showing camera angles and character positions, with a movie camera visible in the background, pixel art style."
+    },
+    {
+      "id": "cinema_supp_film_pianist",
+      "correctAnswer": "The Pianist",
+      "acceptableAlternatives": [],
+      "chainThemeId": 1,
+      "answerTypePoolId": "film_titles",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "The Reader",
+        "Life is Beautiful",
+        "The Boy in the Striped Pyjamas",
+        "Sophie's Choice",
+        "Schindler's List",
+        "Son of Saul",
+        "Downfall",
+        "Jakob the Liar"
+      ],
+      "quizQuestion": "Which 2002 Roman Polanski film won Adrien Brody the Best Actor Oscar for his role as a Holocaust survivor?",
+      "explanation": "The Pianist (2002), directed by Roman Polanski, stars Adrien Brody as Władysław Szpilman, a Polish-Jewish pianist who survived the Holocaust in Warsaw. Brody won the Academy Award for Best Actor and Polanski won Best Director, his only Oscar win.",
+      "statement": "The Pianist (2002) earned Adrien Brody the Best Actor Oscar for his portrayal of pianist Władysław Szpilman surviving the Warsaw Ghetto.",
+      "wowFactor": "Adrien Brody prepared for the role by losing 30 pounds, learning to play Chopin on piano, and giving up his apartment and car — total immersion that won him an Oscar at age 29.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Pianist_(2002_film)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Adrien Brody won Best Actor for his role in which 2002 Polanski film?",
+          "correctAnswer": "The Pianist",
+          "distractors": [
+            "The Reader",
+            "Life is Beautiful",
+            "Son of Saul"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "oscar_winner",
+        "holocaust_film"
+      ],
+      "visualDescription": "A gaunt man in tattered clothes playing a grand piano in a bombed-out apartment while snow falls through a broken window, pixel art style."
+    },
+    {
+      "id": "cinema_supp_film_braveheart",
+      "correctAnswer": "Braveheart",
+      "acceptableAlternatives": [],
+      "chainThemeId": 2,
+      "answerTypePoolId": "film_titles",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Rob Roy",
+        "The Last of the Mohicans",
+        "Gladiator",
+        "Kingdom of Heaven",
+        "Braveheart",
+        "The Patriot",
+        "Troy",
+        "300"
+      ],
+      "quizQuestion": "Which 1995 Mel Gibson film about William Wallace won Best Picture and Best Director at the Oscars?",
+      "explanation": "Braveheart (1995), directed by and starring Mel Gibson, tells the story of Scottish hero William Wallace's 13th-century rebellion against English rule. It won five Academy Awards including Best Picture and Best Director at the 68th Academy Awards.",
+      "statement": "Braveheart (1995), directed by and starring Mel Gibson, won Best Picture and Best Director at the 68th Academy Awards.",
+      "wowFactor": "Despite being a historical epic, Braveheart was filmed largely in Ireland, where thousands of Irish army reservists were hired as extras for the massive battle sequences.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Braveheart",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Mel Gibson directed and starred in which Oscar-winning 1995 Scottish epic?",
+          "correctAnswer": "Braveheart",
+          "distractors": [
+            "Rob Roy",
+            "Gladiator",
+            "The Patriot"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "oscar_winner",
+        "historical_epic"
+      ],
+      "visualDescription": "A warrior in blue face paint holding a broadsword on a misty Scottish highland battlefield at dawn, pixel art style."
+    },
+    {
+      "id": "cinema_supp_film_chinatown",
+      "correctAnswer": "Chinatown",
+      "acceptableAlternatives": [],
+      "chainThemeId": 3,
+      "answerTypePoolId": "film_titles",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "The Long Goodbye",
+        "Klute",
+        "Serpico",
+        "The French Connection",
+        "Dog Day Afternoon",
+        "Night Moves",
+        "Farewell, My Lovely",
+        "Body Heat"
+      ],
+      "quizQuestion": "Which 1974 Roman Polanski noir, starring Jack Nicholson as Jake Gittes, is considered a genre masterpiece?",
+      "explanation": "Chinatown (1974), directed by Roman Polanski and written by Robert Towne, stars Jack Nicholson as private detective Jake Gittes investigating a water conspiracy in 1930s Los Angeles. It is widely regarded as one of the greatest screenplays ever written and a high point of neo-noir cinema.",
+      "statement": "Chinatown (1974) directed by Roman Polanski stars Jack Nicholson as detective Jake Gittes in a celebrated neo-noir mystery set in 1930s Los Angeles.",
+      "wowFactor": "Chinatown's bleak, uncompromising ending was forced on the film by Roman Polanski, who refused screenwriter Robert Towne's happier version — and history proved Polanski right.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Chinatown_(1974_film)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Jack Nicholson plays private eye Jake Gittes in which 1974 Roman Polanski neo-noir?",
+          "correctAnswer": "Chinatown",
+          "distractors": [
+            "The Long Goodbye",
+            "Serpico",
+            "The French Connection"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "neo_noir",
+        "polanski"
+      ],
+      "visualDescription": "A private detective in a 1930s suit and fedora stands on a dusty Los Angeles street corner under a flickering neon sign at night, pixel art style."
+    },
+    {
+      "id": "cinema_supp_film_annie_hall",
+      "correctAnswer": "Annie Hall",
+      "acceptableAlternatives": [],
+      "chainThemeId": 4,
+      "answerTypePoolId": "film_titles",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "Manhattan",
+        "Hannah and Her Sisters",
+        "Stardust Memories",
+        "Radio Days",
+        "Crimes and Misdemeanors",
+        "Bananas",
+        "Sleeper",
+        "Zelig"
+      ],
+      "quizQuestion": "Which 1977 Woody Allen film beat Star Wars for the Academy Award for Best Picture?",
+      "explanation": "Annie Hall (1977), directed by and starring Woody Allen opposite Diane Keaton, won four Academy Awards including Best Picture, Best Director, Best Actress, and Best Original Screenplay. Defeating Star Wars at the Oscars surprised many, though Annie Hall is now recognized as one of the greatest romantic comedies ever made.",
+      "statement": "Annie Hall (1977) by Woody Allen won Best Picture over Star Wars at the 50th Academy Awards, one of the most surprising upsets in Oscar history.",
+      "wowFactor": "Star Wars was the biggest box office hit of 1977 and a cultural phenomenon — yet Annie Hall, a small-scale New York romantic comedy, beat it for Best Picture.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Annie_Hall",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Woody Allen's 1977 romantic comedy that beat Star Wars for Best Picture was called what?",
+          "correctAnswer": "Annie Hall",
+          "distractors": [
+            "Manhattan",
+            "Hannah and Her Sisters",
+            "Crimes and Misdemeanors"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "oscar_winner",
+        "woody_allen"
+      ],
+      "visualDescription": "A neurotic man and confident woman share an awkward first date at an outdoor Manhattan café while subtitles reveal their inner thoughts, pixel art style."
+    },
+    {
+      "id": "cinema_supp_film_the_graduate",
+      "correctAnswer": "The Graduate",
+      "acceptableAlternatives": [],
+      "chainThemeId": 5,
+      "answerTypePoolId": "film_titles",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Midnight Cowboy",
+        "Easy Rider",
+        "The Heartbreak Kid",
+        "American Graffiti",
+        "Ordinary People",
+        "Harold and Maude",
+        "Risky Business",
+        "The Paper Chase"
+      ],
+      "quizQuestion": "Which 1967 Mike Nichols film launched Dustin Hoffman's career and featured Simon and Garfunkel's 'Mrs. Robinson'?",
+      "explanation": "The Graduate (1967), directed by Mike Nichols, stars Dustin Hoffman as aimless college graduate Benjamin Braddock seduced by the older Mrs. Robinson (Anne Bancroft). Simon and Garfunkel's soundtrack, including 'Mrs. Robinson', was a landmark in using contemporary pop music for a film score.",
+      "statement": "The Graduate (1967) launched Dustin Hoffman's career and featured Simon and Garfunkel's 'Mrs. Robinson' on its iconic soundtrack.",
+      "wowFactor": "The Graduate's closing scene — Hoffman banging on a church window to stop a wedding — was so unrehearsed that Dustin Hoffman and Katharine Ross both improvised their uncertain expressions on the final bus ride.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Graduate",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Dustin Hoffman's breakthrough role was as Benjamin Braddock in which 1967 film?",
+          "correctAnswer": "The Graduate",
+          "distractors": [
+            "Midnight Cowboy",
+            "Easy Rider",
+            "American Graffiti"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "new_hollywood",
+        "classic"
+      ],
+      "visualDescription": "A young man in a scuba diving suit sits at the bottom of a backyard swimming pool, staring blankly upward, as parents hover above on the pool deck, pixel art style."
+    },
+    {
+      "id": "cinema_supp_film_singin_in_rain",
+      "correctAnswer": "Singin' in the Rain",
+      "acceptableAlternatives": [
+        "Singin in the Rain"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "film_titles",
+      "difficulty": 2,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "An American in Paris",
+        "The Band Wagon",
+        "Funny Face",
+        "Seven Brides for Seven Brothers",
+        "Guys and Dolls",
+        "Cabaret",
+        "Gigi",
+        "Easter Parade"
+      ],
+      "quizQuestion": "Which 1952 MGM musical starring Gene Kelly is widely considered the greatest movie musical ever made?",
+      "explanation": "Singin' in the Rain (1952), directed by Stanley Donen and Gene Kelly, stars Kelly, Donald O'Connor, and Debbie Reynolds in a comedy about Hollywood's transition from silent films to sound. Its title number — Kelly dancing through rain — is among the most iconic scenes in cinema history.",
+      "statement": "Singin' in the Rain (1952), starring Gene Kelly, is widely regarded as the greatest movie musical ever made.",
+      "wowFactor": "Gene Kelly filmed the iconic rain-dance number while running a 103-degree fever — yet his energy and joy look entirely genuine on screen.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Singin%27_in_the_Rain",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Gene Kelly starred in and co-directed which 1952 MGM classic considered the greatest musical?",
+          "correctAnswer": "Singin' in the Rain",
+          "distractors": [
+            "An American in Paris",
+            "The Band Wagon",
+            "Cabaret"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "musical",
+        "classic_hollywood"
+      ],
+      "visualDescription": "A joyful man in a trench coat swinging on a lamppost in the rain on a neon-lit city street at night, umbrella abandoned, pixel art style."
+    },
+    {
+      "id": "cinema_supp_film_fargo",
+      "correctAnswer": "Fargo",
+      "acceptableAlternatives": [],
+      "chainThemeId": 1,
+      "answerTypePoolId": "film_titles",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "No Country for Old Men",
+        "Blood Simple",
+        "Miller's Crossing",
+        "Raising Arizona",
+        "Burn After Reading",
+        "A Simple Plan",
+        "True Grit",
+        "Barton Fink"
+      ],
+      "quizQuestion": "Which 1996 Coen Brothers film earned Frances McDormand her first Best Actress Oscar?",
+      "explanation": "Fargo (1996), written and directed by Joel and Ethan Coen, stars Frances McDormand as Marge Gunderson, a pregnant Minnesota police chief investigating a series of murders. McDormand won the Academy Award for Best Actress and the Coens won Best Original Screenplay.",
+      "statement": "Fargo (1996) by the Coen Brothers stars Frances McDormand as a pregnant Minnesota police chief and earned her the Best Actress Oscar.",
+      "wowFactor": "Fargo opens with the claim 'This is a true story' — but the Coen Brothers invented most of the plot; the disclaimer was a deliberate artistic choice to unsettle the audience.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fargo_(film)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Frances McDormand plays pregnant police chief Marge Gunderson in which Coen Brothers film?",
+          "correctAnswer": "Fargo",
+          "distractors": [
+            "No Country for Old Men",
+            "Blood Simple",
+            "Burn After Reading"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "coen_brothers",
+        "oscar_winner"
+      ],
+      "visualDescription": "A pregnant police officer in a parka and trooper hat examines crime scene tracks in deep snow on a bleak Minnesota highway, pixel art style."
+    },
+    {
+      "id": "cinema_supp_film_blade_runner_2049",
+      "correctAnswer": "Blade Runner 2049",
+      "acceptableAlternatives": [],
+      "chainThemeId": 2,
+      "answerTypePoolId": "film_titles",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Arrival",
+        "Dune",
+        "Ex Machina",
+        "Ghost in the Shell",
+        "Alita: Battle Angel",
+        "Annihilation",
+        "Oblivion",
+        "The Martian"
+      ],
+      "quizQuestion": "Denis Villeneuve directed which 2017 sequel starring Ryan Gosling set 30 years after Ridley Scott's original?",
+      "explanation": "Blade Runner 2049 (2017), directed by Denis Villeneuve, stars Ryan Gosling as K, a replicant blade runner who uncovers a secret that threatens civilization. Harrison Ford reprises his role as Rick Deckard from the original 1982 Ridley Scott film. Cinematographer Roger Deakins won the Academy Award for Best Cinematography.",
+      "statement": "Blade Runner 2049 (2017), directed by Denis Villeneuve, is the sequel to Ridley Scott's 1982 original, starring Ryan Gosling and Harrison Ford.",
+      "wowFactor": "Blade Runner 2049 won the Oscar for Best Cinematography, with Roger Deakins finally winning after 14 previous nominations — a 30-year wait for Hollywood's most respected cinematographer.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Blade_Runner_2049",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Denis Villeneuve directed Ryan Gosling in which 2017 sci-fi sequel set in a dystopian 2049?",
+          "correctAnswer": "Blade Runner 2049",
+          "distractors": [
+            "Arrival",
+            "Dune",
+            "Ex Machina"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "sci_fi",
+        "villeneuve"
+      ],
+      "visualDescription": "A lone figure in a long coat walks through orange desert ruins of a decayed futuristic city under a smog-choked sky, pixel art style."
+    },
+    {
+      "id": "cinema_supp_film_godfather_iii",
+      "correctAnswer": "The Godfather Part III",
+      "acceptableAlternatives": [
+        "Godfather Part III",
+        "Godfather 3"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "film_titles",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "The Godfather",
+        "The Godfather Part II",
+        "Scarface",
+        "Goodfellas",
+        "Casino",
+        "Once Upon a Time in America",
+        "The Untouchables",
+        "A Bronx Tale"
+      ],
+      "quizQuestion": "Which controversial 1990 Coppola film completed the Corleone trilogy despite mixed critical reception?",
+      "explanation": "The Godfather Part III (1990), directed by Francis Ford Coppola, stars Al Pacino as an aging Michael Corleone attempting to legitimize his family's interests. Critics noted its weaker screenplay and the casting of Coppola's daughter Sofia in a prominent role, yet the film earned seven Academy Award nominations including Best Picture.",
+      "statement": "The Godfather Part III (1990), directed by Francis Ford Coppola, completed the trilogy despite mixed reviews and seven Oscar nominations.",
+      "wowFactor": "Sofia Coppola's heavily criticized acting debut in Part III came because the original lead Winona Ryder fell ill days before filming began — her father Francis cast her in desperation.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Godfather_Part_III",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Francis Ford Coppola completed the Corleone saga with which controversial 1990 sequel?",
+          "correctAnswer": "The Godfather Part III",
+          "distractors": [
+            "Casino",
+            "Scarface",
+            "Goodfellas"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "coppola",
+        "crime_drama"
+      ],
+      "visualDescription": "An elderly don in a dark suit and white shirt sits in an ornate Italian palazzo chair, looking weary and reflective, pixel art style."
+    },
+    {
+      "id": "cinema_supp_film_no_country",
+      "correctAnswer": "No Country for Old Men",
+      "acceptableAlternatives": [],
+      "chainThemeId": 4,
+      "answerTypePoolId": "film_titles",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "There Will Be Blood",
+        "Fargo",
+        "Blood Simple",
+        "Hell or High Water",
+        "Winter's Bone",
+        "Prisoners",
+        "Sicario",
+        "Wind River"
+      ],
+      "quizQuestion": "Which 2007 Coen Brothers film about an unstoppable hitman won four Academy Awards including Best Picture?",
+      "explanation": "No Country for Old Men (2007), directed by Joel and Ethan Coen and adapted from Cormac McCarthy's novel, stars Javier Bardem as the terrifying hitman Anton Chigurh. The film won four Academy Awards: Best Picture, Best Director, Best Supporting Actor (Bardem), and Best Adapted Screenplay.",
+      "statement": "No Country for Old Men (2007) by the Coen Brothers won four Oscars including Best Picture, with Javier Bardem's Anton Chigurh becoming one of cinema's most iconic villains.",
+      "wowFactor": "Javier Bardem's haircut as Anton Chigurh — which he reportedly hated — became so iconic that hairstylists around the world received photos of it for years after the film's release.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/No_Country_for_Old_Men_(film)",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Javier Bardem plays hitman Anton Chigurh in which 2007 Oscar Best Picture winner?",
+          "correctAnswer": "No Country for Old Men",
+          "distractors": [
+            "There Will Be Blood",
+            "Fargo",
+            "Sicario"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "coen_brothers",
+        "oscar_winner"
+      ],
+      "visualDescription": "A pale-faced hitman with a bowl-cut holding a pressurized cattle gun walks alone down a desolate Texas highway under a brooding sunset, pixel art style."
+    },
+    {
+      "id": "cinema_supp_film_the_departed",
+      "correctAnswer": "The Departed",
+      "acceptableAlternatives": [],
+      "chainThemeId": 5,
+      "answerTypePoolId": "film_titles",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Goodfellas",
+        "Heat",
+        "Mystic River",
+        "Gone Baby Gone",
+        "Black Mass",
+        "The Town",
+        "Spotlight",
+        "American History X"
+      ],
+      "quizQuestion": "Which 2006 Martin Scorsese film about moles in the Boston mob finally won Scorsese his first Best Director Oscar?",
+      "explanation": "The Departed (2006), directed by Martin Scorsese, stars Leonardo DiCaprio, Matt Damon, and Jack Nicholson in a crime thriller about a cop infiltrating the Irish mob and a mobster infiltrating the police simultaneously. Scorsese finally won the Academy Award for Best Director, his first Oscar win after four previous nominations.",
+      "statement": "The Departed (2006) won Martin Scorsese his long-awaited first Best Director Oscar, with Leonardo DiCaprio and Matt Damon both playing moles in a Boston mob drama.",
+      "wowFactor": "Martin Scorsese had directed Goodfellas, Taxi Driver, Raging Bull, and Gangs of New York without winning Best Director — audiences at the Oscars gave him a standing ovation when The Departed finally won.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Departed",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Martin Scorsese won his first Best Director Oscar for which 2006 Boston crime thriller?",
+          "correctAnswer": "The Departed",
+          "distractors": [
+            "Goodfellas",
+            "Heat",
+            "Mystic River"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "scorsese",
+        "oscar_winner"
+      ],
+      "visualDescription": "Two suited men watch each other with suspicion across a crowded Boston police precinct bullpen, tension visible in their expressions, pixel art style."
+    },
+    {
+      "id": "cinema_supp_actor_dicaprio",
+      "correctAnswer": "Leonardo DiCaprio",
+      "acceptableAlternatives": [
+        "DiCaprio",
+        "Leo DiCaprio"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "actor_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Brad Pitt",
+        "Matt Damon",
+        "Joaquin Phoenix",
+        "Christian Bale",
+        "Ryan Gosling",
+        "Tobey Maguire",
+        "Tom Hardy",
+        "Jake Gyllenhaal"
+      ],
+      "quizQuestion": "Which actor finally won his first Best Actor Oscar for The Revenant (2015) after years of losses?",
+      "explanation": "Leonardo DiCaprio won the Academy Award for Best Actor for The Revenant (2015), directed by Alejandro González Iñárritu. Having been nominated four times previously (What's Eating Gilbert Grape, The Aviator, Blood Diamond, The Wolf of Wall Street), his win after years of headline-making losses became a pop culture event.",
+      "statement": "Leonardo DiCaprio won his first Academy Award for Best Actor for The Revenant (2015) after four previous Oscar nominations over two decades.",
+      "wowFactor": "DiCaprio's losing streak became such a cultural joke that internet memes about him not winning preceded his eventual Oscar win — making the actual moment a global celebration.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Leonardo_DiCaprio",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Leonardo DiCaprio survived a bear attack on screen in which 2015 survival film that won him the Oscar?",
+          "correctAnswer": "The Revenant",
+          "distractors": [
+            "The Aviator",
+            "Blood Diamond",
+            "The Wolf of Wall Street"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "actor",
+        "oscar_winner"
+      ],
+      "visualDescription": "A rugged frontiersman crawling through a snowy wilderness forest, survival gear and determination on his face, pixel art style."
+    },
+    {
+      "id": "cinema_supp_actor_morgan_freeman",
+      "correctAnswer": "Morgan Freeman",
+      "acceptableAlternatives": [
+        "Freeman"
+      ],
+      "chainThemeId": 1,
+      "answerTypePoolId": "actor_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "James Earl Jones",
+        "Denzel Washington",
+        "Samuel L. Jackson",
+        "Forest Whitaker",
+        "Laurence Fishburne",
+        "Don Cheadle",
+        "Idris Elba",
+        "Chiwetel Ejiofor"
+      ],
+      "quizQuestion": "Which actor's deep, authoritative voice narrates The Shawshank Redemption and became one of cinema's most recognized?",
+      "explanation": "Morgan Freeman's narration as Ellis 'Red' Redding in The Shawshank Redemption (1994) is one of the most celebrated performances in cinema history. Freeman's distinctive baritone has made him one of Hollywood's most sought-after narrators, with his voice lending gravitas to everything from documentaries to film trailers.",
+      "statement": "Morgan Freeman narrates The Shawshank Redemption (1994) as Red, with his distinctive voice becoming one of cinema's most recognized.",
+      "wowFactor": "Morgan Freeman's voice is so trusted that he has narrated everything from March of the Penguins to national tragedy news coverage — his baritone is psychologically associated with authority and wisdom.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Morgan_Freeman",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which actor won Best Supporting Actor for Million Dollar Baby and narrates Shawshank Redemption?",
+          "correctAnswer": "Morgan Freeman",
+          "distractors": [
+            "James Earl Jones",
+            "Denzel Washington",
+            "Laurence Fishburne"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "actor",
+        "shawshank"
+      ],
+      "visualDescription": "An elder man in prison blues standing in a sun-lit prison yard gazing at the sky through a chain-link fence with hope in his expression, pixel art style."
+    },
+    {
+      "id": "cinema_supp_actor_samuel_jackson",
+      "correctAnswer": "Samuel L. Jackson",
+      "acceptableAlternatives": [
+        "Samuel Jackson",
+        "Sam Jackson"
+      ],
+      "chainThemeId": 2,
+      "answerTypePoolId": "actor_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Morgan Freeman",
+        "Denzel Washington",
+        "Eddie Murphy",
+        "Will Smith",
+        "Jamie Foxx",
+        "Laurence Fishburne",
+        "Forest Whitaker",
+        "Cuba Gooding Jr."
+      ],
+      "quizQuestion": "Which actor's films have collectively grossed more than any other actor in Hollywood history?",
+      "explanation": "Samuel L. Jackson has appeared in the highest-grossing film collection of any actor in history, including multiple Marvel Cinematic Universe films as Nick Fury. His breakout role was Jules Winnfield in Pulp Fiction (1994), directed by Quentin Tarantino.",
+      "statement": "Samuel L. Jackson holds the record for highest combined box office gross of any actor, with roles ranging from Jules in Pulp Fiction to Nick Fury in the MCU.",
+      "wowFactor": "Samuel L. Jackson negotiated to play Nick Fury in Marvel films after seeing a version of the character drawn to look like him in the comics — the comics had done it first without telling him.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Samuel_L._Jackson",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which actor plays Jules Winnfield in Pulp Fiction and Nick Fury in the Marvel Cinematic Universe?",
+          "correctAnswer": "Samuel L. Jackson",
+          "distractors": [
+            "Morgan Freeman",
+            "Denzel Washington",
+            "Laurence Fishburne"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "actor",
+        "marvel"
+      ],
+      "visualDescription": "A cool, suited man in dark sunglasses and a long leather jacket standing at the center of a busy city street, commanding presence, pixel art style."
+    },
+    {
+      "id": "cinema_supp_actor_viola_davis",
+      "correctAnswer": "Viola Davis",
+      "acceptableAlternatives": [
+        "Davis"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "actor_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Halle Berry",
+        "Taraji P. Henson",
+        "Angela Bassett",
+        "Lupita Nyong'o",
+        "Kerry Washington",
+        "Octavia Spencer",
+        "Whoopi Goldberg",
+        "Jenifer Lewis"
+      ],
+      "quizQuestion": "Which actress became the first Black woman to win the Triple Crown of Acting, completing it with a 2017 Best Actress Oscar?",
+      "explanation": "Viola Davis won the Academy Award for Best Actress for Fences (2016), completing the Triple Crown of Acting (Oscar, Emmy, Tony). She is the first Black woman to achieve this feat. Davis later added the Grammy Award, making her an EGOT winner.",
+      "statement": "Viola Davis won the 2017 Best Actress Oscar for Fences, becoming the first Black woman to win the Triple Crown of Acting and later an EGOT winner.",
+      "wowFactor": "Viola Davis's EGOT — Emmy, Grammy, Oscar, Tony — took decades of acclaimed stage and screen work. She is one of only 20 people in history to hold all four awards.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Viola_Davis",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which actress won the Best Actress Oscar for Fences (2016) and became an EGOT winner?",
+          "correctAnswer": "Viola Davis",
+          "distractors": [
+            "Halle Berry",
+            "Lupita Nyong'o",
+            "Angela Bassett"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "actress",
+        "oscar_winner",
+        "egot"
+      ],
+      "visualDescription": "A powerful woman in period dress standing in a backyard, arms crossed with fierce dignity, confronting someone off-frame, pixel art style."
+    },
+    {
+      "id": "cinema_supp_actor_frances_mcdormand",
+      "correctAnswer": "Frances McDormand",
+      "acceptableAlternatives": [
+        "McDormand"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "actor_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Meryl Streep",
+        "Cate Blanchett",
+        "Jessica Lange",
+        "Jodie Foster",
+        "Hilary Swank",
+        "Holly Hunter",
+        "Kathy Bates",
+        "Helen Mirren"
+      ],
+      "quizQuestion": "Which actress holds the record of three Best Actress Oscars, for Fargo, Three Billboards, and Nomadland?",
+      "explanation": "Frances McDormand has won three Academy Awards for Best Actress: Fargo (1996), Three Billboards Outside Ebbing, Missouri (2017), and Nomadland (2020). She also won a Best Supporting Actress Oscar for Almost Famous, making her one of the most decorated actresses in Academy history.",
+      "statement": "Frances McDormand has won three Best Actress Academy Awards — for Fargo (1996), Three Billboards (2017), and Nomadland (2020).",
+      "wowFactor": "McDormand is one of only three performers in history to win three acting Oscars in the same category, placing her alongside Meryl Streep and Katharine Hepburn.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Frances_McDormand",
+      "volatile": false,
+      "categoryL1": "art_architecture",
+      "categoryL2": "performing_arts",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which actress won Best Actress Oscars for Fargo, Three Billboards, and Nomadland?",
+          "correctAnswer": "Frances McDormand",
+          "distractors": [
+            "Meryl Streep",
+            "Cate Blanchett",
+            "Jodie Foster"
+          ]
+        }
+      ],
+      "tags": [
+        "cinema",
+        "actress",
+        "oscar_winner"
+      ],
+      "visualDescription": "A practical, no-nonsense woman in a parka standing in a snowy parking lot holding an Oscar statuette with quiet satisfaction, pixel art style."
     }
   ],
   "answerTypePools": [
     {
       "id": "director_names",
       "members": [
-        "Orson Welles",
-        "Michael Curtiz",
-        "Frank Capra",
-        "Stanley Donen",
-        "David Lean",
-        "Sidney Lumet",
-        "Francis Ford Coppola",
-        "Steven Spielberg",
-        "George Lucas",
-        "Miloš Forman",
-        "James Cameron",
-        "The Wachowskis",
-        "Ridley Scott",
-        "Peter Jackson",
+        "Akira Kurosawa",
+        "Alfred Hitchcock",
+        "Barry Jenkins",
+        "Billy Wilder",
+        "Bong Joon-ho",
         "Christopher Nolan",
         "Coen Brothers",
-        "Steve McQueen",
-        "Bong Joon-ho",
-        "The Daniels",
-        "David Fincher",
-        "Martin Scorsese",
         "Danny Boyle",
-        "Barry Jenkins",
+        "David Fincher",
+        "David Lean",
+        "Federico Fellini",
+        "Francis Ford Coppola",
+        "Frank Capra",
+        "George Lucas",
+        "James Cameron",
+        "Jean-Luc Godard",
+        "Joel Coen",
+        "John McTiernan",
         "Jordan Peele",
         "Kathryn Bigelow",
-        "Alfred Hitchcock",
-        "Stanley Kubrick",
+        "Martin Scorsese",
+        "Michael Curtiz",
+        "Miloš Forman",
+        "Orson Welles",
+        "Peter Jackson",
+        "Peter Weir",
         "Quentin Tarantino",
-        "Billy Wilder",
-        "Akira Kurosawa",
-        "Joel Coen",
-        "Federico Fellini",
-        "Jean-Luc Godard",
-        "Sergio Leone",
-        "Sergei Eisenstein",
-        "Walt Disney",
-        "John McTiernan",
+        "Ridley Scott",
         "Rob Reiner",
-        "Peter Weir"
+        "Sergei Eisenstein",
+        "Sergio Leone",
+        "Sidney Lumet",
+        "Stanley Donen",
+        "Stanley Kubrick",
+        "Steve McQueen",
+        "Steven Spielberg",
+        "The Daniels",
+        "The Wachowskis",
+        "Walt Disney"
       ],
       "factIds": [
         "cinema_citizenkane_director",
@@ -12502,50 +16127,61 @@
     {
       "id": "film_titles",
       "members": [
-        "Citizen Kane",
-        "Casablanca",
-        "Gone with the Wind",
-        "The Wizard of Oz",
-        "Psycho",
-        "Some Like It Hot",
-        "Rear Window",
-        "Sunset Boulevard",
-        "On the Waterfront",
-        "The Bridge on the River Kwai",
-        "The Godfather Part II",
-        "Jaws",
-        "The Silence of the Lambs",
-        "Jurassic Park",
-        "One Flew Over the Cuckoo's Nest",
         "A Clockwork Orange",
-        "The Godfather",
-        "Star Wars",
-        "The Terminator",
-        "Taxi Driver",
-        "Apollo 13",
-        "Forrest Gump",
-        "The Sixth Sense",
-        "Schindler's List",
-        "The Shining",
+        "Annie Hall",
         "Apocalypse Now",
-        "Roman Holiday",
-        "The Jazz Singer",
-        "Toy Story",
+        "Apollo 13",
         "Avatar",
+        "Battleship Potemkin",
         "Bicycle Thieves",
-        "The Cabinet of Dr. Caligari",
-        "Seven Samurai",
-        "Rashomon",
+        "Blade Runner 2049",
+        "Braveheart",
+        "Casablanca",
+        "Chinatown",
         "Cinema Paradiso",
+        "Citizen Kane",
+        "Fargo",
         "Ferris Bueller's Day Off",
+        "Forrest Gump",
+        "Gone with the Wind",
         "Goodfellas",
-        "Parasite",
+        "Jaws",
+        "Jurassic Park",
         "Midnight Cowboy",
-        "Spirited Away",
-        "The Exorcist",
+        "No Country for Old Men",
+        "On the Waterfront",
+        "One Flew Over the Cuckoo's Nest",
         "Pan's Labyrinth",
+        "Parasite",
+        "Psycho",
+        "Rashomon",
+        "Rear Window",
+        "Roman Holiday",
         "Saving Private Ryan",
-        "Battleship Potemkin"
+        "Schindler's List",
+        "Seven Samurai",
+        "Singin' in the Rain",
+        "Some Like It Hot",
+        "Spirited Away",
+        "Star Wars",
+        "Sunset Boulevard",
+        "Taxi Driver",
+        "The Bridge on the River Kwai",
+        "The Cabinet of Dr. Caligari",
+        "The Departed",
+        "The Exorcist",
+        "The Godfather",
+        "The Godfather Part II",
+        "The Godfather Part III",
+        "The Graduate",
+        "The Jazz Singer",
+        "The Pianist",
+        "The Shining",
+        "The Silence of the Lambs",
+        "The Sixth Sense",
+        "The Terminator",
+        "The Wizard of Oz",
+        "Toy Story"
       ],
       "factIds": [
         "cinema_citizenkane_quote",
@@ -12605,43 +16241,59 @@
         "cinema_craft_toystory_firstcgi",
         "cinema_craft_savingprivateryan_dday",
         "cinema_craft_montage_odesasteps",
-        "cinema_craft_steadicam_shining"
+        "cinema_craft_steadicam_shining",
+        "cinema_supp_film_pianist",
+        "cinema_supp_film_braveheart",
+        "cinema_supp_film_chinatown",
+        "cinema_supp_film_annie_hall",
+        "cinema_supp_film_the_graduate",
+        "cinema_supp_film_singin_in_rain",
+        "cinema_supp_film_fargo",
+        "cinema_supp_film_blade_runner_2049",
+        "cinema_supp_film_godfather_iii",
+        "cinema_supp_film_no_country",
+        "cinema_supp_film_the_departed"
       ],
       "minimumSize": 5
     },
     {
       "id": "actor_names",
       "members": [
-        "Janet Leigh",
-        "Peter O'Toole",
-        "Julie Andrews",
-        "James Stewart",
-        "Audrey Hepburn",
-        "Gregory Peck",
-        "Marlon Brando",
-        "Sylvester Stallone",
-        "H. R. Giger",
-        "Jack Nicholson",
-        "Harrison Ford",
-        "Philip K. Dick",
-        "Joe Pesci",
-        "Stephen King",
-        "Tom Hanks",
-        "Robert De Niro",
-        "Sigourney Weaver",
-        "Meryl Streep",
-        "Katharine Hepburn",
-        "Humphrey Bogart",
+        "Al Jolson",
         "Al Pacino",
-        "Denzel Washington",
         "Anthony Hopkins",
-        "Daniel Day-Lewis",
-        "Charlie Chaplin",
-        "Marilyn Monroe",
-        "Sidney Poitier",
-        "Hattie McDaniel",
+        "Audrey Hepburn",
         "Cate Blanchett",
-        "Al Jolson"
+        "Charlie Chaplin",
+        "Daniel Day-Lewis",
+        "Denzel Washington",
+        "Frances McDormand",
+        "Gregory Peck",
+        "H. R. Giger",
+        "Harrison Ford",
+        "Hattie McDaniel",
+        "Humphrey Bogart",
+        "Jack Nicholson",
+        "James Stewart",
+        "Janet Leigh",
+        "Joe Pesci",
+        "Julie Andrews",
+        "Katharine Hepburn",
+        "Leonardo DiCaprio",
+        "Marilyn Monroe",
+        "Marlon Brando",
+        "Meryl Streep",
+        "Morgan Freeman",
+        "Peter O'Toole",
+        "Philip K. Dick",
+        "Robert De Niro",
+        "Samuel L. Jackson",
+        "Sidney Poitier",
+        "Sigourney Weaver",
+        "Stephen King",
+        "Sylvester Stallone",
+        "Tom Hanks",
+        "Viola Davis"
       ],
       "factIds": [
         "cinema_psycho_star",
@@ -12682,19 +16334,24 @@
         "cinema_act_daylewis_retired",
         "cinema_hist_jazz_singer_star",
         "cinema_hist_hattie_mcdaniel_oscar",
-        "cinema_craft_method_brando"
+        "cinema_craft_method_brando",
+        "cinema_supp_actor_dicaprio",
+        "cinema_supp_actor_morgan_freeman",
+        "cinema_supp_actor_samuel_jackson",
+        "cinema_supp_actor_viola_davis",
+        "cinema_supp_actor_frances_mcdormand"
       ],
       "minimumSize": 5
     },
     {
       "id": "film_trivia",
       "members": [
-        "Romeo and Juliet",
-        "Moon River",
+        "DeLorean",
         "Harper Lee",
         "Heart of Darkness",
-        "DeLorean",
-        "India"
+        "India",
+        "Moon River",
+        "Romeo and Juliet"
       ],
       "factIds": [
         "cinema_westsidestory_inspiration",
@@ -12709,26 +16366,37 @@
     {
       "id": "bracket_years",
       "members": [
-        "{11}",
-        "{1939}",
+        "11",
         "{10}",
-        "{1958}",
-        "{1982}",
-        "{1986}",
-        "{1981}",
-        "{1990}",
-        "{1997}",
-        "{2019}",
-        "{2006}",
-        "{2010}",
-        "{1975}",
-        "{1983}",
-        "{1964}",
-        "{1940}",
+        "{11}",
         "{1895}",
         "{1903}",
         "{1929}",
-        "11"
+        "{1939}",
+        "{1940}",
+        "{1954}",
+        "{1958}",
+        "{1964}",
+        "{1967}",
+        "{1969}",
+        "{1974}",
+        "{1975}",
+        "{1976}",
+        "{1977}",
+        "{1981}",
+        "{1982}",
+        "{1983}",
+        "{1986}",
+        "{1988}",
+        "{1990}",
+        "{1997}",
+        "{1999}",
+        "{2001}",
+        "{2006}",
+        "{2008}",
+        "{2010}",
+        "{2017}",
+        "{2019}"
       ],
       "factIds": [
         "cinema_benhur_oscars",
@@ -12750,26 +16418,45 @@
         "cinema_hist_lumiere_screening_year",
         "cinema_hist_great_train_robbery_year",
         "cinema_hist_first_oscars_year",
-        "cinema_craft_oscar_11wins"
+        "cinema_craft_oscar_11wins",
+        "cinema_year_rear_window",
+        "cinema_year_the_graduate",
+        "cinema_year_bonnie_and_clyde",
+        "cinema_year_easy_rider",
+        "cinema_year_chinatown",
+        "cinema_year_taxi_driver",
+        "cinema_year_close_encounters",
+        "cinema_year_die_hard",
+        "cinema_year_the_matrix",
+        "cinema_year_spirited_away",
+        "cinema_year_the_dark_knight",
+        "cinema_year_get_out"
       ],
       "minimumSize": 5
     },
     {
       "id": "cinema_terms",
       "members": [
+        "Actors Studio",
+        "Aspect ratio",
         "Black and white",
-        "Palme d'Or",
-        "Cinématographe",
-        "Film noir",
-        "Italian Neorealism",
-        "French New Wave",
-        "New Hollywood",
-        "German Expressionism",
-        "Spaghetti Western",
-        "MacGuffin",
-        "Dolly zoom",
         "Cahiers du Cinéma",
-        "Actors Studio"
+        "Cinema vérité",
+        "Cinématographe",
+        "Diegetic sound",
+        "Dolly zoom",
+        "Film noir",
+        "Foley",
+        "French New Wave",
+        "German Expressionism",
+        "Italian Neorealism",
+        "Jump cut",
+        "MacGuffin",
+        "Mise-en-scène",
+        "New Hollywood",
+        "Palme d'Or",
+        "Spaghetti Western",
+        "Storyboard"
       ],
       "factIds": [
         "cinema_schindlers_list_black_white",
@@ -12784,20 +16471,42 @@
         "cinema_craft_macguffin_term",
         "cinema_craft_dollyzoom_origin",
         "cinema_craft_auteur_origin",
-        "cinema_craft_method_acting_studio"
+        "cinema_craft_method_acting_studio",
+        "cinema_supp_mise_en_scene",
+        "cinema_supp_diegetic_sound",
+        "cinema_supp_jump_cut",
+        "cinema_supp_cinema_verite",
+        "cinema_supp_foley",
+        "cinema_supp_aspect_ratio",
+        "cinema_supp_storyboard"
       ],
       "minimumSize": 5
     },
     {
       "id": "character_names",
       "members": [
-        "HAL 9000",
-        "The Joker",
-        "Vito Corleone",
-        "Hannibal Lecter",
+        "Atticus Finch",
+        "Darth Vader",
+        "Dorothy Gale",
+        "E.T.",
+        "Ellen Ripley",
         "Forrest Gump",
+        "HAL 9000",
+        "Hannibal Lecter",
         "Indiana Jones",
-        "Norman Bates"
+        "Jack Torrance",
+        "James Bond",
+        "Luke Skywalker",
+        "Maximus",
+        "Michael Corleone",
+        "Neo",
+        "Norman Bates",
+        "Rick Blaine",
+        "Rocky Balboa",
+        "The Joker",
+        "Tony Montana",
+        "Travis Bickle",
+        "Vito Corleone"
       ],
       "factIds": [
         "cinema_2001_hal_9000",
@@ -12807,16 +16516,31 @@
         "cinema_char_forrest_gump",
         "cinema_char_joker_heath_ledger",
         "cinema_char_indiana_jones",
-        "cinema_char_norman_bates"
+        "cinema_char_norman_bates",
+        "cinema_char_darth_vader",
+        "cinema_char_james_bond",
+        "cinema_char_dorothy_gale",
+        "cinema_char_atticus_finch",
+        "cinema_char_rick_blaine",
+        "cinema_char_ellen_ripley",
+        "cinema_char_tony_montana",
+        "cinema_char_jack_torrance",
+        "cinema_char_travis_bickle",
+        "cinema_char_michael_corleone",
+        "cinema_char_luke_skywalker",
+        "cinema_char_et",
+        "cinema_char_rocky_balboa",
+        "cinema_char_maximus",
+        "cinema_char_neo"
       ],
       "minimumSize": 5
     },
     {
       "id": "bracket_counts",
       "members": [
-        "{5}",
         "{10000000000}",
         "{30}",
+        "{5}",
         "{7}"
       ],
       "factIds": [
@@ -12824,6 +16548,74 @@
         "cinema_dir_cameron_grossing_rank",
         "cinema_dir_kurosawa_films_count",
         "cinema_dir_lean_oscar_epics"
+      ],
+      "minimumSize": 5
+    },
+    {
+      "id": "country_names",
+      "members": [
+        "France",
+        "Germany",
+        "India",
+        "Iran",
+        "Italy",
+        "Japan",
+        "Mexico",
+        "South Korea",
+        "Sweden",
+        "United Kingdom"
+      ],
+      "factIds": [
+        "cinema_world_france_lumiere",
+        "cinema_world_italy_neorealism",
+        "cinema_world_japan_kurosawa",
+        "cinema_world_south_korea_parasite",
+        "cinema_world_india_bollywood",
+        "cinema_world_germany_expressionism",
+        "cinema_world_mexico_three_amigos",
+        "cinema_world_sweden_bergman",
+        "cinema_world_iran_kiarostami",
+        "cinema_world_uk_hitchcock"
+      ],
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Brazil",
+        "Australia",
+        "Poland",
+        "Denmark",
+        "Argentina",
+        "Spain",
+        "Russia",
+        "China",
+        "Canada",
+        "Nigeria"
+      ]
+    },
+    {
+      "id": "film_quotes",
+      "members": [
+        "After all, tomorrow is another day",
+        "Bond. James Bond.",
+        "E.T. phone home",
+        "Elementary, my dear Watson",
+        "Here's Johnny!",
+        "I am your father",
+        "I'll be back",
+        "Say hello to my little friend!",
+        "To infinity and beyond!",
+        "You can't handle the truth!"
+      ],
+      "factIds": [
+        "cinema_quote_ill_be_back",
+        "cinema_quote_you_cant_handle_truth",
+        "cinema_quote_heres_johnny",
+        "cinema_quote_infinity_beyond",
+        "cinema_quote_i_am_your_father",
+        "cinema_quote_tomorrow_is_another_day",
+        "cinema_quote_elementary_watson",
+        "cinema_quote_say_hello_little_friend",
+        "cinema_quote_et_phone_home",
+        "cinema_quote_bond_james_bond"
       ],
       "minimumSize": 5
     }
@@ -12945,7 +16737,42 @@
         "cinema_craft_taxidriver_quote",
         "cinema_craft_toystory_firstcgi",
         "cinema_craft_savingprivateryan_dday",
-        "cinema_craft_steadicam_shining"
+        "cinema_craft_steadicam_shining",
+        "cinema_char_darth_vader",
+        "cinema_char_james_bond",
+        "cinema_char_dorothy_gale",
+        "cinema_char_atticus_finch",
+        "cinema_char_ellen_ripley",
+        "cinema_char_tony_montana",
+        "cinema_char_jack_torrance",
+        "cinema_char_michael_corleone",
+        "cinema_char_luke_skywalker",
+        "cinema_char_et",
+        "cinema_char_rocky_balboa",
+        "cinema_char_maximus",
+        "cinema_char_neo",
+        "cinema_quote_ill_be_back",
+        "cinema_quote_you_cant_handle_truth",
+        "cinema_quote_heres_johnny",
+        "cinema_quote_infinity_beyond",
+        "cinema_quote_i_am_your_father",
+        "cinema_quote_tomorrow_is_another_day",
+        "cinema_quote_say_hello_little_friend",
+        "cinema_quote_et_phone_home",
+        "cinema_quote_bond_james_bond",
+        "cinema_year_die_hard",
+        "cinema_year_the_matrix",
+        "cinema_year_the_dark_knight",
+        "cinema_world_france_lumiere",
+        "cinema_world_japan_kurosawa",
+        "cinema_world_south_korea_parasite",
+        "cinema_world_india_bollywood",
+        "cinema_supp_storyboard",
+        "cinema_supp_film_braveheart",
+        "cinema_supp_film_singin_in_rain",
+        "cinema_supp_actor_dicaprio",
+        "cinema_supp_actor_morgan_freeman",
+        "cinema_supp_actor_samuel_jackson"
       ]
     },
     {
@@ -13010,7 +16837,38 @@
         "cinema_craft_bigelow_director",
         "cinema_craft_exorcist_horror",
         "cinema_craft_panslabyrinth_setting",
-        "cinema_craft_method_brando"
+        "cinema_craft_method_brando",
+        "cinema_char_rick_blaine",
+        "cinema_char_travis_bickle",
+        "cinema_quote_elementary_watson",
+        "cinema_year_rear_window",
+        "cinema_year_the_graduate",
+        "cinema_year_bonnie_and_clyde",
+        "cinema_year_easy_rider",
+        "cinema_year_chinatown",
+        "cinema_year_taxi_driver",
+        "cinema_year_close_encounters",
+        "cinema_year_spirited_away",
+        "cinema_year_get_out",
+        "cinema_world_italy_neorealism",
+        "cinema_world_germany_expressionism",
+        "cinema_world_mexico_three_amigos",
+        "cinema_world_sweden_bergman",
+        "cinema_world_uk_hitchcock",
+        "cinema_supp_jump_cut",
+        "cinema_supp_foley",
+        "cinema_supp_aspect_ratio",
+        "cinema_supp_film_pianist",
+        "cinema_supp_film_chinatown",
+        "cinema_supp_film_annie_hall",
+        "cinema_supp_film_the_graduate",
+        "cinema_supp_film_fargo",
+        "cinema_supp_film_blade_runner_2049",
+        "cinema_supp_film_godfather_iii",
+        "cinema_supp_film_no_country",
+        "cinema_supp_film_the_departed",
+        "cinema_supp_actor_viola_davis",
+        "cinema_supp_actor_frances_mcdormand"
       ]
     },
     {
@@ -13050,7 +16908,11 @@
         "cinema_craft_diehard_director",
         "cinema_craft_princess_bride_director",
         "cinema_craft_trumanshow_director",
-        "cinema_craft_montage_odesasteps"
+        "cinema_craft_montage_odesasteps",
+        "cinema_world_iran_kiarostami",
+        "cinema_supp_mise_en_scene",
+        "cinema_supp_diegetic_sound",
+        "cinema_supp_cinema_verite"
       ]
     }
   ],
@@ -13148,7 +17010,55 @@
         "cinema_quote_forrest_gump",
         "cinema_quote_sixth_sense",
         "cinema_parasite_year",
-        "cinema_dark_knight_villain"
+        "cinema_dark_knight_villain",
+        "cinema_char_darth_vader",
+        "cinema_char_james_bond",
+        "cinema_char_dorothy_gale",
+        "cinema_char_atticus_finch",
+        "cinema_char_rick_blaine",
+        "cinema_char_ellen_ripley",
+        "cinema_char_tony_montana",
+        "cinema_char_jack_torrance",
+        "cinema_char_travis_bickle",
+        "cinema_char_michael_corleone",
+        "cinema_char_luke_skywalker",
+        "cinema_char_et",
+        "cinema_char_rocky_balboa",
+        "cinema_char_maximus",
+        "cinema_char_neo",
+        "cinema_quote_ill_be_back",
+        "cinema_quote_you_cant_handle_truth",
+        "cinema_quote_heres_johnny",
+        "cinema_quote_infinity_beyond",
+        "cinema_quote_i_am_your_father",
+        "cinema_quote_tomorrow_is_another_day",
+        "cinema_quote_elementary_watson",
+        "cinema_quote_say_hello_little_friend",
+        "cinema_quote_et_phone_home",
+        "cinema_quote_bond_james_bond",
+        "cinema_year_rear_window",
+        "cinema_year_the_graduate",
+        "cinema_year_bonnie_and_clyde",
+        "cinema_year_easy_rider",
+        "cinema_year_chinatown",
+        "cinema_year_taxi_driver",
+        "cinema_year_close_encounters",
+        "cinema_year_die_hard",
+        "cinema_year_the_matrix",
+        "cinema_year_spirited_away",
+        "cinema_year_the_dark_knight",
+        "cinema_year_get_out",
+        "cinema_supp_film_pianist",
+        "cinema_supp_film_braveheart",
+        "cinema_supp_film_chinatown",
+        "cinema_supp_film_annie_hall",
+        "cinema_supp_film_the_graduate",
+        "cinema_supp_film_singin_in_rain",
+        "cinema_supp_film_fargo",
+        "cinema_supp_film_blade_runner_2049",
+        "cinema_supp_film_godfather_iii",
+        "cinema_supp_film_no_country",
+        "cinema_supp_film_the_departed"
       ]
     },
     {
@@ -13216,7 +17126,12 @@
         "cinema_act_poitier_oscar_year",
         "cinema_act_mcdaniel_oscar_year",
         "cinema_act_brando_godfather_film",
-        "cinema_act_hepburn_a_roman_holiday_film"
+        "cinema_act_hepburn_a_roman_holiday_film",
+        "cinema_supp_actor_dicaprio",
+        "cinema_supp_actor_morgan_freeman",
+        "cinema_supp_actor_samuel_jackson",
+        "cinema_supp_actor_viola_davis",
+        "cinema_supp_actor_frances_mcdormand"
       ]
     },
     {
@@ -13277,7 +17192,24 @@
         "cinema_craft_savingprivateryan_dday",
         "cinema_craft_montage_odesasteps",
         "cinema_craft_steadicam_shining",
-        "cinema_craft_method_brando"
+        "cinema_craft_method_brando",
+        "cinema_world_france_lumiere",
+        "cinema_world_italy_neorealism",
+        "cinema_world_japan_kurosawa",
+        "cinema_world_south_korea_parasite",
+        "cinema_world_india_bollywood",
+        "cinema_world_germany_expressionism",
+        "cinema_world_mexico_three_amigos",
+        "cinema_world_sweden_bergman",
+        "cinema_world_iran_kiarostami",
+        "cinema_world_uk_hitchcock",
+        "cinema_supp_mise_en_scene",
+        "cinema_supp_diegetic_sound",
+        "cinema_supp_jump_cut",
+        "cinema_supp_cinema_verite",
+        "cinema_supp_foley",
+        "cinema_supp_aspect_ratio",
+        "cinema_supp_storyboard"
       ]
     }
   ]

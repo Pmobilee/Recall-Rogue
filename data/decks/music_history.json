@@ -7200,7 +7200,41 @@
         "mh_0_handel_water_music",
         "mh_0_gershwin_porgy_bess"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "members": [
+        "1812 Overture",
+        "A Midsummer Night's Dream",
+        "Aida",
+        "Boléro",
+        "Brahms' Lullaby",
+        "Carmen",
+        "Clair de Lune",
+        "Firebird",
+        "Four Seasons",
+        "Hungarian Rhapsodies",
+        "La Bohème",
+        "Magic Flute",
+        "Messiah",
+        "Moonlight Sonata",
+        "New World Symphony",
+        "Nutcracker",
+        "Peer Gynt",
+        "Peter and the Wolf",
+        "Piano Concerto No. 2",
+        "Porgy and Bess",
+        "Rhapsody in Blue",
+        "Ring of the Nibelung",
+        "Rite of Spring",
+        "Scheherazade",
+        "Sleeping Beauty",
+        "Swan Lake",
+        "Symphony No. 5",
+        "Symphony No. 9",
+        "Turandot",
+        "Unfinished Symphony",
+        "Water Music",
+        "Well-Tempered Clavier"
+      ]
     },
     {
       "id": "artist_names",
@@ -7280,7 +7314,63 @@
         "mh_4_notorious_big",
         "mh_4_madonna_like_a_virgin"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "members": [
+        "Aretha Franklin",
+        "B.B. King",
+        "Bessie Smith",
+        "Billie Holiday",
+        "Bob Dylan",
+        "Bob Marley",
+        "Bruce Springsteen",
+        "Buddy Holly",
+        "Charles Mingus",
+        "Charlie Parker",
+        "Chuck Berry",
+        "DJ Kool Herc",
+        "Dave Brubeck",
+        "David Bowie",
+        "Dizzy Gillespie",
+        "Duke Ellington",
+        "Ella Fitzgerald",
+        "Elton John",
+        "Elvis Presley",
+        "Franz Liszt",
+        "Freddie Mercury",
+        "Giuseppe Verdi",
+        "Grandmaster Flash",
+        "Howlin' Wolf",
+        "James Brown",
+        "Jimi Hendrix",
+        "John Coltrane",
+        "Kraftwerk",
+        "Led Zeppelin",
+        "Little Richard",
+        "Louis Armstrong",
+        "Ma Rainey",
+        "Madonna",
+        "Michael Jackson",
+        "Miles Davis",
+        "Muddy Waters",
+        "Nirvana",
+        "Pete Townshend",
+        "Pink Floyd",
+        "Prince",
+        "Public Enemy",
+        "Queen",
+        "Robert Johnson",
+        "Run-DMC",
+        "Scott Joplin",
+        "Stevie Wonder",
+        "The Beatles",
+        "The Grateful Dead",
+        "The Notorious B.I.G.",
+        "The Rolling Stones",
+        "The Who",
+        "Thelonious Monk",
+        "Tupac Shakur",
+        "Wolfgang Amadeus Mozart"
+      ]
     },
     {
       "id": "instrument_names",
@@ -7305,6 +7395,19 @@
         "harpsichord",
         "lute",
         "theorbo"
+      ],
+      "members": [
+        "Alto saxophone",
+        "Cello",
+        "Double bass",
+        "Drums",
+        "Flute",
+        "Guitar",
+        "Oboe",
+        "Organ",
+        "Trumpet",
+        "Tuba",
+        "piano"
       ]
     },
     {
@@ -7334,7 +7437,30 @@
         "mh_1_opera_definition",
         "mh_2_improvisation"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "members": [
+        "3/4",
+        "4/4",
+        "Adagio",
+        "Allegro",
+        "Aria",
+        "Cadence",
+        "Concerto",
+        "Crescendo",
+        "Fermata",
+        "Fortissimo",
+        "Improvisation",
+        "Legato",
+        "Libretto",
+        "Octave",
+        "Opera",
+        "Opus",
+        "Pianissimo",
+        "Sonata",
+        "Tempo",
+        "leitmotif",
+        "lieder"
+      ]
     },
     {
       "id": "album_names",
@@ -7368,7 +7494,34 @@
         "mh_4_marvin_gaye_whats_going_on",
         "mh_4_miseducation_lauryn_hill"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "members": [
+        "A Love Supreme",
+        "Abbey Road",
+        "Billie Jean",
+        "Bitches Brew",
+        "Born to Run",
+        "Dark Side of the Moon",
+        "Exile on Main St.",
+        "Giant Steps",
+        "Kind of Blue",
+        "Led Zeppelin IV",
+        "Mingus Ah Um",
+        "Miseducation of Lauryn Hill",
+        "Nevermind",
+        "OK Computer",
+        "Pet Sounds",
+        "Purple Rain",
+        "Respect",
+        "Revolver",
+        "Rumours",
+        "Sgt. Pepper's",
+        "Straight Outta Compton",
+        "Thriller",
+        "Time Out",
+        "What's Going On",
+        "Ziggy Stardust"
+      ]
     },
     {
       "id": "genre_names",
@@ -7398,7 +7551,28 @@
         "mh_4_gospel_origins",
         "mh_4_james_brown_funk_groove"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "members": [
+        "Bebop",
+        "Blue notes",
+        "Cool jazz",
+        "Free jazz",
+        "Impressionism",
+        "Jazz fusion",
+        "Modal jazz",
+        "R&B",
+        "Rastafari",
+        "blues",
+        "electronic",
+        "funk",
+        "gospel",
+        "grunge",
+        "hip-hop",
+        "punk",
+        "reggae",
+        "rock and roll",
+        "soul"
+      ]
     },
     {
       "id": "bracket_numbers",
@@ -7423,7 +7597,24 @@
         "mh_4_walkman_1979",
         "mh_4_compact_disc_1982"
       ],
-      "minimumSize": 3
+      "minimumSize": 3,
+      "members": [
+        "{104}",
+        "{1685}",
+        "{1959}",
+        "{1969}",
+        "{1970}",
+        "{1979}",
+        "{1981}",
+        "{1982}",
+        "{25}",
+        "{28}",
+        "{35}",
+        "{41}",
+        "{47}",
+        "{4}",
+        "{88}"
+      ]
     },
     {
       "id": "place_names",
@@ -7452,6 +7643,16 @@
         "London",
         "St. Louis",
         "St. Thomas Church"
+      ],
+      "members": [
+        "Bayreuth",
+        "Bonn",
+        "Cotton Club",
+        "England",
+        "Mississippi Delta",
+        "New Orleans",
+        "Salzburg",
+        "St. Thomas Church"
       ]
     },
     {
@@ -7477,6 +7678,13 @@
         "The Man in Black",
         "The Fab Four",
         "The King of Swing"
+      ],
+      "members": [
+        "King of Pop",
+        "Lady Day",
+        "Papa Haydn",
+        "Satchmo",
+        "The Red Priest"
       ]
     },
     {
@@ -7502,6 +7710,11 @@
         "Island Records",
         "Elektra Records",
         "Interscope Records"
+      ],
+      "members": [
+        "Napster",
+        "Spotify",
+        "Sun Records"
       ]
     },
     {
@@ -7527,6 +7740,16 @@
         "Buzzes lips into mouthpiece",
         "Strikes a membrane",
         "Blows across an edge"
+      ],
+      "members": [
+        "Double reed",
+        "Not a standard orchestra instrument",
+        "Plucks the strings",
+        "Short and detached",
+        "Single reed",
+        "Slide",
+        "deaf",
+        "over 200"
       ]
     },
     {
@@ -7551,7 +7774,12 @@
         "Charles Wheatstone",
         "Johann Sebastian Bach"
       ],
-      "minimumSize": 3
+      "minimumSize": 3,
+      "members": [
+        "Adolphe Sax",
+        "Antonio Stradivari",
+        "Bartolomeo Cristofori"
+      ]
     },
     {
       "id": "nationality_names",
@@ -7575,7 +7803,10 @@
         "Belgian",
         "Swedish"
       ],
-      "minimumSize": 1
+      "minimumSize": 1,
+      "members": [
+        "Polish"
+      ]
     }
   ],
   "synonymGroups": [],

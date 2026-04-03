@@ -211,43 +211,51 @@ See `.claude/skills/deck-art/SKILL.md` for full generation workflow, prompt temp
 
 ## movies_cinema Deck
 
-`data/decks/movies_cinema.json` — assembled 2026-04-03 from 7 WIP batch files via inline Node.js assembly script.
+`data/decks/movies_cinema.json` — assembled 2026-04-03 from 7 WIP batch files, then expanded 2026-04-03 by merging 3 supplement batches (supp1/2/3) totalling 70 additional facts.
 
 | Field | Value |
 |---|---|
 | `id` | `movies_cinema` |
 | `domain` | `art_architecture` |
 | `subDomain` | `film` |
-| `facts` | 207 |
+| `facts` | 277 |
 | `minimumFacts` | 150 |
-| `targetFacts` | 220 |
+| `targetFacts` | 277 |
 
 **SubDecks (3):**
 
-| SubDeck ID | Name | Batches | Facts |
-|---|---|---|---|
-| `iconic_films` | Iconic Films | 1–3 | 90 |
-| `directors_and_stars` | Directors & Stars | 4–5 | 62 |
-| `cinema_craft` | Cinema History & Craft | 6–7 | 55 |
+| SubDeck ID | Name | Facts |
+|---|---|---|
+| `iconic_films` | Iconic Films | 138 |
+| `directors_and_stars` | Directors & Stars | 67 |
+| `cinema_craft` | Cinema History & Craft | 72 |
 
-**Answer Type Pools (8):**
+**Answer Type Pools (10):**
 
-| Pool ID | Format | Facts | Members |
-|---|---|---|---|
-| `director_names` | name | 59 | 39 |
-| `film_titles` | name | 58 | 44 |
-| `actor_names` | name | 39 | 30 |
-| `bracket_years` | bracket_year | 20 | 20 |
-| `cinema_terms` | term | 13 | 13 |
-| `character_names` | name | 8 | 7 |
-| `film_trivia` | mixed | 6 | 6 |
-| `bracket_counts` | bracket_number | 4 | 4 |
+| Pool ID | Format | Facts | Members | Notes |
+|---|---|---|---|---|
+| `director_names` | name | 59 | 39 | |
+| `film_titles` | name | 69 | 55 | +11 from supp3 |
+| `actor_names` | name | 44 | 35 | +5 from supp3 |
+| `bracket_years` | bracket_year | 32 | 31 | +12 from supp2 |
+| `cinema_terms` | term | 20 | 20 | +7 from supp3 |
+| `character_names` | name | 23 | 22 | +15 from supp1 |
+| `film_quotes` | quote | 10 | 10 | new pool — supp1 |
+| `country_names` | name | 10 | 10 | new pool — supp2; +10 syntheticDistractors |
+| `film_trivia` | mixed | 6 | 6 | |
+| `bracket_counts` | bracket_number | 4 | 4 | |
 
-Notes: `country_names` pool was eliminated — its single fact (Bollywood/India) was moved to `film_trivia`. `bracket_numbers` pool split into `bracket_years` (year answers) and `bracket_counts` (numeric counts). Al Jolson and Hattie McDaniel moved from `director_names` to `actor_names`.
+**Architecture targets vs actual (post-merge):**
+film_titles 55/55 OK, director_names 39/28 OK, actor_names 35/35 OK, character_names 22/22 OK, cinema_terms 20/18 OK, bracket_years 31/30 OK. film_quotes 10/18 SHORT (only 10 facts exist), country_names 10/12 SHORT (10 facts + 10 syntheticDistractors = 20 runtime pool members). Both short pools pass structural validation (minimumSize 5).
 
-**Difficulty:** easy=112 (difficulty 1–2), medium=60 (difficulty 3), hard=35 (difficulty 4–5)
+**Difficulty:** easy=147 (difficulty 1–2), medium=91 (difficulty 3), hard=39 (difficulty 4–5)
 
-**Source WIP files:** `data/decks/_wip/movies_cinema_batch1.json` (30 facts, classic pre-1970), `batch2.json` (30, 1970–1995), `batch3.json` (30, modern + quotes), `batch4.json` (32, directors), `batch5.json` (30, actors/characters), `batch6.json` (28, cinema history), `batch7.json` (27, techniques/craft/records)
+**Supplement sources:**
+- `_wip/movies_cinema_supp1.json` — 25 facts: 15 character_names + 10 film_quotes → iconic_films sub-deck
+- `_wip/movies_cinema_supp2.json` — 22 facts: 12 bracket_years → iconic_films, 10 country_names → cinema_craft
+- `_wip/movies_cinema_supp3.json` — 23 facts: 7 cinema_terms → cinema_craft, 11 film_titles → iconic_films, 5 actor_names → directors_and_stars
+
+**Original source WIP files:** `data/decks/_wip/movies_cinema_batch1.json` (30 facts, classic pre-1970), `batch2.json` (30, 1970–1995), `batch3.json` (30, modern + quotes), `batch4.json` (32, directors), `batch5.json` (30, actors/characters), `batch6.json` (28, cinema history), `batch7.json` (27, techniques/craft/records)
 
 ---
 
