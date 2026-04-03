@@ -53,6 +53,17 @@
 
 ---
 
+## Immersion Overhaul (Temporary)
+
+> **DELETE THIS SECTION** after all specs are implemented and main docs updated.
+
+| Doc | Summary |
+|-----|---------|
+| [immersion/INDEX](immersion/INDEX.md) | Navigation hub for 9 dungeon immersion specs — turn breathing, enemy entrance, chain escalation, floor descent, knowledge-reactive feedback, weapon sync, foreground parallax, background micro-animation, dynamic mood |
+| [immersion/00-current-state](immersion/00-current-state.md) | Audit of all 15 existing visual/audio systems with file paths and implementation details |
+
+---
+
 ## Content
 
 | Doc | Summary |
