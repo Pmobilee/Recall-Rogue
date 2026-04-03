@@ -2102,12 +2102,12 @@ See §3 for full detail. Summary for quick reference:
 
 - Charge AP cost is flat +1 regardless of floor depth
 - Charge multipliers do NOT scale with floor depth — only with fact tier (FSRS-driven)
-- **Enemy HP scales with floor depth:** `1.0 + (floor - 1) × 0.10` (10% per floor above floor 1). Multiplied by global `ENEMY_BASE_HP_MULTIPLIER = 4.0`, making floor 1 commons ~20 HP each
+- **Enemy HP scales with floor depth:** `1.0 + (floor - 1) × 0.10` (10% per floor above floor 1). Multiplied by global `ENEMY_BASE_HP_MULTIPLIER = 4.0`, making floor 1 commons ~40–64 HP each (Act 1 commons baseHP 10–16 post-2026-04-03 rebalance)
 - **Enemy HP Variance by Tier:** Commons are classified into 3 HP tiers based on their intent pools:
-  - **Glass** (baseHP 4): Aggressive enemies with mostly attack intents — kill fast or take big hits. Floor 1 effective HP: 16
-  - **Standard** (baseHP 5): Balanced intent mix — average encounters. Floor 1 effective HP: 20
-  - **Tanky** (baseHP 7): Defensive enemies with defend/buff/heal intents — war of attrition. Floor 1 effective HP: 28
-  - Elites also have variance: Glass (7) → 28, Standard (9) → 36, Tanky (12) → 48
+  - **Glass** (baseHP 10–11): Aggressive enemies with mostly attack intents — kill fast or take big hits. Floor 1 effective HP: 40–44
+  - **Standard** (baseHP 11–13): Balanced intent mix — average encounters. Floor 1 effective HP: 44–52
+  - **Tanky** (baseHP 14–16): Defensive enemies with defend/buff/heal intents — war of attrition. Floor 1 effective HP: 56–64
+  - Elites: baseHP 12–16 (Act 1 librarian 16, Act 2 elites 12–16, Act 3 elites 10). Source of truth is `src/data/enemies.ts`.
   - `difficultyVariance` (0.85–1.15× random) applies to both commons AND elites. Mini-bosses and bosses have natural variance from varied `baseHP` values.
 - **Enemy damage scales with floor depth** (+5% per floor above floor 6). Further modulated by Canary system (see below)
 - Timer shortens with floor depth (12s → 9s → 7s → 5s → 4s)
