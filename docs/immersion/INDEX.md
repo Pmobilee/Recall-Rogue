@@ -21,7 +21,7 @@ Do not duplicate existing work.
 | 04 | Floor Descent Ceremony | mid-term | M | MED | game-logic + ui-agent | none | **partial** |
 | 07 | ~~Foreground Parallax Layer~~ | ambitious | M | MED | game-logic | none | **done** |
 | 08 | ~~Background Micro-Animation~~ | ambitious | L | MED-HIGH | game-logic | none | **done** |
-| 09 | Dynamic Dungeon Mood | ambitious | L | HIGH | game-logic | 01, 03, 05 | pending |
+| 09 | ~~Dynamic Dungeon Mood~~ | ambitious | L | HIGH | game-logic | 01, 03, 05 | **done** |
 
 ## Implementation Order
 
