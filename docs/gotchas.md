@@ -596,3 +596,18 @@ Similarly, `general_knowledge-hindi-fourth-language-world` had "Bengali" (single
 - `extractTopicGroupsMultiDeck()`: fixed a secondary bug where passing cross-deck factIds to each `extractTopicGroups()` call caused the ungrouped-facts safety net to absorb IDs from other decks, inflating group sizes 3×. Now scopes each call to per-deck fact IDs.
 
 **Rule:** Never resolve `all:` prefixes in the UI layer. The downstream systems (`encounterBridge`, `chainDistribution`) are the correct place to expand multi-deck aggregates. The UI's only job is to pass the intent through.
+
+### 2026-04-03 — Gemini checkerboard "transparency" is baked pixel data
+**What went wrong:** Gemini image generation outputs a grey/white checkerboard pattern instead of real alpha transparency. The green-screen removal pipeline only catches green pixels, leaving the checker pattern as visible pixel data against dark backgrounds.
+**Why:** Gemini doesn't support true transparency. When asked for "transparent background", it renders a checkerboard PNG pattern as actual RGB pixels. This looks invisible on white but is glaringly obvious against game backgrounds.
+**Fix:** Always request "solid bright green (#00FF00) background" in prompts, then use green-screen removal. Added a secondary `removeCheckerboard()` pass that detects high-brightness/low-saturation pixels with ≥2 transparent/grey neighbors and clears them. Script: `sprite-gen/scripts/generate-pet-spritesheet.mjs`.
+
+### 2026-04-03 — Gemini spritesheet layouts are unpredictable
+**What went wrong:** Requested 8-frame horizontal strip; got 4×2 grids, scattered layouts, 6-7 frames, or merged overlapping sprites across multiple generations.
+**Why:** Gemini doesn't reliably follow layout instructions. Each generation produces a different arrangement.
+**Fix:** Replaced rigid grid/blob splitting with a hybrid approach: row detection via horizontal projection → grid heuristic for square images → vertical projection valley detection within each row. Handles any layout Gemini produces.
+
+### 2026-04-03 — Pet exclusion zone push-out can ping-pong between zones
+**What went wrong:** Cat got stuck walking forever between two adjacent exclusion zones. Push-out from zone A landed inside zone B, push-out from zone B landed back in zone A.
+**Why:** `pushOutOfExclusion()` only handled one zone and used nearest-edge escape. When zones are adjacent, the nearest edge of one zone is inside the other.
+**Fix:** Changed push-out to always prefer escaping downward (toward ground), loop up to 10 times for overlapping zones, and added a `stuckCounter` to PetState — after 30 consecutive blocked ticks, the cat abandons the walk and transitions to idle.

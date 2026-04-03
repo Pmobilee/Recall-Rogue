@@ -188,17 +188,17 @@ Call `update(deltaMs)` each frame from the scene's `update()`. Call `stop()` to 
 
 **Source files:**
 - `src/data/petAnimations.ts` — Spritesheet configs per species and behavior
-- `src/data/petWaypoints.ts` — Hub waypoint definitions and weighted selection
-- `src/ui/effects/petBehavior.ts` — Pure-function state machine
+- `src/data/petWaypoints.ts` — Hub waypoint definitions, exclusion zones, and weighted selection
+- `src/ui/effects/petBehavior.ts` — Pure-function state machine with collision avoidance
 - `src/ui/components/AnimatedPet.svelte` — Canvas renderer and hub integration
-- Tests: `src/ui/effects/petBehavior.test.ts` (27 tests)
+- Tests: `src/ui/effects/petBehavior.test.ts` (39 tests)
 
 ### Architecture
 
 The pet system separates concerns into three layers:
 
 1. **Animation data** (`petAnimations.ts`) — Spritesheet frame counts, frame durations, and loop flags per species/behavior. No runtime logic.
-2. **Spatial data** (`petWaypoints.ts`) — Named positions on the hub screen expressed as percentage of the hub-center container (scales automatically with `--layout-scale`). Includes attraction weights for biased destination selection.
+2. **Spatial data** (`petWaypoints.ts`) — Named positions on the hub screen expressed as percentage of the hub-center container (scales automatically with `--layout-scale`). Includes attraction weights for biased destination selection, exclusion zones for all interactive hub elements, and helper functions for collision detection.
 3. **State machine** (`petBehavior.ts`) — Tick-driven pure functions. Consumed by `AnimatedPet.svelte`.
 
 ### Types
@@ -242,18 +242,40 @@ The cat renders at **96×96px** (CSS display size, before `--layout-scale`). The
 
 Walk speed constant: `WALK_SPEED_PER_MS = 0.0018` (relaxed stroll, was 0.0025).
 
+### Exclusion Zones
+
+`EXCLUSION_ZONES` in `petWaypoints.ts` defines 9 rectangular no-go areas matching the interactive hub screen element hitboxes plus 3% padding. Coordinates are hub-center container percentages.
+
+| Element | x1 | y1 | x2 | y2 | Notes |
+|---|---|---|---|---|---|
+| `campfire` | 35 | 52 | 59 | 82 | Central fire + 3% padding |
+| `character` | 51 | 55 | 78 | 72 | Player character |
+| `journal` | 2 | 73 | 31 | 88 | Bottom-left journal |
+| `quest_board` | 69 | 72 | 100 | 98 | Bottom-right quest board |
+| `shop` | 0 | 49 | 21 | 68 | Left-side shop tent |
+| `doorway` | 8 | 25 | 58 | 58 | Center doorway / entrance |
+| `library` | 0 | 28 | 37 | 57 | Left library structure |
+| `tent` | 87 | 37 | 100 | 63 | Right-side tent |
+| `settings` | 73 | 26 | 95 | 50 | Top-right settings area |
+
+**Collision avoidance API** (`petWaypoints.ts`):
+- `isInsideExclusion(x, y)` — returns `true` if the point is inside any exclusion zone
+- `pushOutOfExclusion(x, y)` — moves a point to the nearest edge of the zone it occupies; returns input unchanged if outside all zones
+
+During walk interpolation in `tickPet()`, every new position is passed through `isInsideExclusion` / `pushOutOfExclusion` to deflect the cat away from hub elements. A dev-time `console.error` fires if any waypoint is defined inside an exclusion zone.
+
 ### Waypoints
 
-6 named ground-level waypoints forming a walkable path along the bottom of the hub campfire scene (Y 74–78%, X 18–80%). All waypoints are clear of camp UI elements (doors, library, shop, tent).
+6 named ground-level waypoints forming a walkable path along the bottom and sides of the hub campfire scene. All positions are verified clear of all exclusion zones.
 
 | Waypoint | X% | Y% | Weight | Notes |
 |---|---|---|---|---|
-| `campfire` | 45 | 75 | 2.0 | `nearCampfire: true` — boosts sleep/sit |
-| `near_character` | 58 | 74 | 1.2 | Near the player character |
-| `ground_left` | 18 | 78 | 0.8 | Left edge of floor |
-| `ground_right` | 80 | 78 | 0.8 | Right edge of floor |
-| `ground_center_left` | 32 | 76 | 0.6 | Left-center floor |
-| `ground_center_right` | 62 | 76 | 0.6 | Right-center floor |
+| `below_campfire` | 47 | 84 | 2.0 | `nearCampfire: true` — boosts sleep/sit; default start |
+| `ground_left` | 22 | 70 | 0.8 | Left floor, below shop/library dead zone |
+| `ground_center_left` | 33 | 85 | 0.6 | Bottom strip, between journal and campfire |
+| `ground_center_right` | 62 | 85 | 0.6 | Bottom strip, right of campfire |
+| `ground_right` | 80 | 70 | 0.8 | Right floor, between character and quest board |
+| `patrol_far_right` | 68 | 73 | 0.4 | Far right patrol — just below character zone, left of quest board |
 
 `pickNextWaypoint(currentId, recentlyVisited)` excludes current, penalizes last 3 visited (0.3× weight), uses weighted random.
 
@@ -263,8 +285,8 @@ All functions are pure (no side effects):
 
 | Function | Purpose |
 |---|---|
-| `createInitialPetState(startWaypoint?)` | Fresh state at given waypoint (default: campfire) |
-| `tickPet(state, deltaMs, animConfig)` | Main update — advance frames, walk, transition |
+| `createInitialPetState(startWaypoint?)` | Fresh state at given waypoint (default: `'below_campfire'`) |
+| `tickPet(state, deltaMs, animConfig)` | Main update — advance frames, walk with collision avoidance, transition |
 | `selectNextBehavior(current, nearCampfire, previous?)` | Weighted next behavior; react returns previous |
 | `triggerReact(state)` | Interrupt with react animation, saves previous behavior |
 | `startWalk(state, waypointId, targetPos)` | Begin walking to a specific waypoint |
@@ -276,7 +298,7 @@ All functions are pure (no side effects):
 import { createInitialPetState, tickPet, triggerReact } from '../effects/petBehavior'
 import { getPetConfig } from '../../data/petAnimations'
 
-let petState = $state(createInitialPetState())
+let petState = $state(createInitialPetState())  // starts at 'below_campfire'
 const config = getPetConfig('cat')
 
 // Called from requestAnimationFrame or hubAnimationLoop
@@ -293,4 +315,4 @@ function onClick() {
 
 ### Campfire Bias
 
-When `nearCampfire` is true (only the `campfire` waypoint), the transition table boosts `sleep` and `sit` weights by 1.5×. Combined sleep+sit selection rate from `idle` rises from ~40% to ~50% near campfire.
+When `nearCampfire` is true (only the `below_campfire` waypoint), the transition table boosts `sleep` and `sit` weights by 1.5×. Combined sleep+sit selection rate from `idle` rises from ~40% to ~50% near campfire.
