@@ -73,7 +73,28 @@ This applies to: dates, casualty figures, names, quotes, locations, statistics, 
 3. Write the implementation plan referencing specific functions/logic from the source
 4. Only then implement
 
-### Phase 0.5: Plan Review (MANDATORY for non-trivial decks)
+### Phase 0.5: Task Breakdown (MANDATORY — before ANY generation)
+
+**Before spawning ANY workers, create a TaskCreate for EVERY pool in the architecture.**
+
+For each pool in `answerTypePools`, create a task:
+```
+TaskCreate: "Generate [pool_id] pool — [target] facts"
+```
+
+Also create tasks for:
+- Assembly (merge all batches)
+- Pool target verification (compare actual vs architecture)
+- Structural validation
+- Automated playtest
+- LLM playtest
+- Trivia bridge
+- Provenance doc
+- Commit & push
+
+**Before committing the deck: run TaskList. If ANY task is still pending, that work hasn't been done and the deck is incomplete.** On 2026-04-03, three entire pools (organ_names, combining_forms, body_systems) were skipped in the Medical Terminology deck because they had no tasks tracking them. If it's not a task, it WILL be forgotten.
+
+### Phase 0.6: Plan Review (MANDATORY for non-trivial decks)
 
 **Before generating any facts, the orchestrator MUST write an AR doc and review it for errors.** The AR should be reviewed in at least 2 passes:
 

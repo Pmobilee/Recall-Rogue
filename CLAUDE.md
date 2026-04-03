@@ -2,11 +2,18 @@
 
 A 2D card roguelite knowledge game built with Vite + Svelte + TypeScript + Phaser 3, targeting Steam PC (1920×1080 landscape) first, mobile via Capacitor later.
 
-## Task Management — MANDATORY
+## Task Management — MANDATORY — NO EXCEPTIONS
 
 **USE CLAUDE CLI TASKS (TaskCreate, TaskUpdate, TaskList) FOR EVERYTHING.**
 
-Unless it's a simple couple-line fix, you MUST break work into tasks BEFORE starting, mark `in_progress` when beginning, `completed` when done.
+Unless it's a simple couple-line fix, you MUST break work into **granular** tasks BEFORE starting. Not just high-level phases — every discrete sub-step gets its own task.
+
+**Rules:**
+- Create tasks for EVERY pool, EVERY batch, EVERY assembly step, EVERY validation check
+- Mark `in_progress` when beginning, `completed` when done
+- Failed tasks stay `in_progress` as visible reminders — never delete failed work
+- **Before committing:** run TaskList and verify ZERO pending tasks. If anything is pending, that work hasn't been done
+- **If it's not a task, it WILL be forgotten.** Three entire pools were skipped in the Medical Terminology deck because they weren't tracked as tasks (2026-04-03). This is the #1 cause of incomplete deliverables.
 
 ## Project Summary
 - **Concept**: Card roguelite where every card is a fact. Players answer questions to activate cards in turn-based combat. Learning IS the core mechanic — powered by FSRS spaced repetition.

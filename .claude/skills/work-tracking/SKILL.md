@@ -29,14 +29,20 @@ Use `/plan` before starting any of these:
 - Typo or comment correction
 - Simple config value change (one number, one flag)
 
-## Implementation Tracking
+## Implementation Tracking — GRANULAR TASKS ARE MANDATORY
 
-1. **Before starting**: `TaskCreate` for each discrete chunk of work
+**If it's not a task, it WILL be forgotten.** This is not hypothetical — on 2026-04-03, three entire answer pools were skipped in a 500-fact deck because they had no tasks tracking them. Mental tracking fails at scale. Tasks don't.
+
+1. **Before starting**: `TaskCreate` for EVERY discrete chunk of work — not just phases, every sub-step
+   - For deck generation: one task per pool, one per batch, one per validation step
+   - For features: one task per file change, one per test, one per doc update
+   - For refactors: one task per component touched
 2. **When beginning a task**: `TaskUpdate` → `in_progress`
 3. **When done with a task**: `TaskUpdate` → `completed`
-4. **ONE task at a time** — finish and mark complete before starting the next
+4. **Failed/blocked tasks stay `in_progress`** — they're visible reminders, never delete them
 5. **If a task reveals new work**: create new tasks immediately, don't let them float in your head
-6. **Use `TaskList` periodically** to confirm you're tracking everything and nothing is orphaned
+6. **Before committing/shipping**: run `TaskList` — if ANY task is still pending, that work hasn't been done. ZERO pending tasks = ready to ship.
+7. **Use `TaskList` after every wave of parallel work** to confirm nothing was dropped
 
 ## Visual Inspection — NON-NEGOTIABLE
 
