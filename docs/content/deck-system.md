@@ -74,10 +74,10 @@ Two backfill scripts produced full coverage:
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-03 it contains **68 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-03 it contains **69 decks**:
 
 - **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
-- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**
+- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**
 
 ### Deck Architecture Files
 
@@ -417,6 +417,46 @@ Assembly script: `scripts/assemble-ap-biology-deck.mjs`
 **CED alignment:** College Board AP Biology CED (2025-26, effective Fall 2025). All 8 units covered, Topics 1.1–8.7. Facts include `examTags` with `unit`, `topic`, `exam_weight`, `big_idea`, `is_equation_fact`, and `is_lab_fact` fields for filtering by exam section.
 
 **Difficulty distribution:** easy 238, medium 105, hard 14.
+
+---
+
+
+## ap_us_history Deck
+
+`data/decks/ap_us_history.json` — assembled 2026-04-03. Exam-aligned to the College Board AP U.S. History (APUSH) Course and Exam Description (CED), covering all 9 periods from 1491 through the early 21st century.
+
+Architecture: `data/deck-architectures/ap_us_history_arch_meta.yaml`
+
+| Field | Value |
+|---|---|
+| `id` | `ap_us_history` |
+| `name` | AP U.S. History |
+| `domain` | history |
+| `subDomain` | us_history |
+| `minimumFacts` | 400 |
+| `targetFacts` | 475 |
+| `facts` | 504 |
+| `chainThemes` | 9 (one per CED period) |
+| `answerTypePools` | 10 active pools |
+
+**Chain themes (9 CED periods):**
+- 0: The New World Rift (Period 1: 1491–1607)
+- 1: The Colonial Crucible (Period 2: 1607–1754)
+- 2: The Liberty Forge (Period 3: 1754–1800)
+- 3: The Young Republic (Period 4: 1800–1848)
+- 4: The Divided Nation (Period 5: 1844–1877)
+- 5: The Iron Colossus (Period 6: 1865–1898)
+- 6: The Arsenal of Democracy (Period 7: 1890–1945)
+- 7: The Atomic Age (Period 8: 1945–1980)
+- 8: The Digital Frontier (Period 9: 1980–Present)
+
+**Answer type pools (10 active):** `person_names` (91), `year_dates` (71), `concept_terms` (142), `legislation_names` (57), `event_names` (59), `movement_names` (36), `bracket_numbers` (7), `document_names` (18), `place_names` (18), `supreme_court_cases` (5).
+
+**Pool normalization:** WIP files used 64 different pool IDs. All were normalized to the 12 canonical pool IDs during assembly. `treaty_names` and `economic_terms` pools were empty after normalization — the single Treaty of Tordesillas fact and TARP fact moved to `legislation_names`. Additional court case facts scattered in `concept_terms` and `event_names` were moved to `supreme_court_cases` to meet the 5-fact minimum, bringing that pool to 5 (Worcester v. Georgia, Wabash v. Illinois, Schenck v. US, Korematsu v. US, Brown v. Board).
+
+**CED alignment:** College Board AP U.S. History CED. All 9 periods covered (25–78 facts per period, weighted by exam percentage). Facts include `examTags` with period and topic identifiers.
+
+**Distractor repair:** All 9 WIP period files had exactly 8 distractors per fact for P1, P2, P4–P6, P8–P9. P3 (78 facts) and P7 (65 facts) had 7 distractors each — all 143 were patched to 8 during assembly.
 
 ---
 
