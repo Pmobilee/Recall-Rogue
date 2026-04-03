@@ -657,3 +657,12 @@ Similarly, `general_knowledge-hindi-fourth-language-world` had "Bengali" (single
 **What went wrong:** When wiring `overcharge_bonus_x2`, the instruction said to "double the encounter charge scaling bonus". The overcharge case in the resolver doesn't compute encounter-charge CC scaling itself — that computation lives in `turnManager.resolveChargeCorrectEffects()` which reads `encounterChargeCount`. The resolver just sets `mechanicId = 'overcharge'` as a sentinel. So the tag implementation in the resolver cannot double the scaling directly; it needs to be checked in turnManager where the CC bonus math runs.
 **What was done:** The resolver case for `overcharge` now applies the `overcharge_draw1` tag (draw 1 extra), and adds a comment that `overcharge_bonus_x2` must be read by turnManager. The tag is correctly set by `getMasteryStats()` so `turnManager` can read `result.mechanicId === 'overcharge'` and check `hasTag('overcharge_bonus_x2')` there to double its encounter-charge bonus multiplier.
 **Rule:** When a resolver case delegates CC bonus logic to turnManager (overcharge, chain_lightning, recall), the tag for that logic must be wired in turnManager, not just in the resolver. Check the turnManager's resolveChargeCorrectEffects() and related functions after resolver tag work.
+
+### 2026-04-03 — AP Biology: SA/V Geometric Formulas Nearly Missing
+CED appendix lists SA/V formulas (sphere, cube, cylinder) as required equations. Initial deck generation covered the SA/V concept (4 facts) but missed the actual geometric formulas. Always check the CED equations appendix separately from topic list — appendix equations may not be obvious from topic names alone.
+
+### 2026-04-03 — AP Biology: Water Potential Equations Tagged to Wrong Topic
+Water potential and solute potential equation facts were initially tagged topic 2.8 (Mechanisms of Transport) but CED places them under Topic 2.7 (Tonicity and Osmoregulation). When tagging equation facts, cross-reference which CED topic section lists the equation.
+
+### 2026-04-03 — AP Biology: Meiosis II Sub-Phases Incompletely Covered
+Initial generation covered all 4 phases of meiosis I plus Anaphase II but missed Metaphase II and Telophase II. When auditing phase-based content (meiosis, mitosis, cell cycle), enumerate all named phases explicitly rather than checking the process name appears.

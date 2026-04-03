@@ -74,7 +74,7 @@ Two backfill scripts produced full coverage:
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-03 it contains **67 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-03 it contains **68 decks**:
 
 - **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
 - **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**
@@ -363,7 +363,7 @@ film_titles 55/55 OK, director_names 39/28 OK, actor_names 35/35 OK, character_n
 
 ## ap_biology Deck
 
-`data/decks/ap_biology.json` — assembled 2026-04-03. Exam-aligned to the College Board AP Biology CED effective Fall 2025, covering all 8 units and Topics 1.1 through 8.7.
+`data/decks/ap_biology.json` — assembled 2026-04-03. Exam-aligned to the College Board AP Biology CED (2025-26, effective Fall 2025), covering all 8 units and Topics 1.1 through 8.7.
 
 Architecture: `data/deck-architectures/ap_biology_arch_meta.yaml`
 Research: `data/deck-architectures/_research/ap_biology_ced_extraction.md`
@@ -376,9 +376,9 @@ Assembly script: `scripts/assemble-ap-biology-deck.mjs`
 | `subDomain` | `biology` |
 | `minimumFacts` | 320 |
 | `targetFacts` | 390 |
-| **Actual facts** | **357** |
+| **Actual facts** | **363** |
 | Pools | 13 |
-| Synonym groups | 20 |
+| Synonym groups | 22 |
 | Duplicate IDs resolved | 2 (`ap_bio_cholesterol_membrane`, `ap_bio_dna_antiparallel`) |
 
 **Chain Themes (8):**
@@ -386,10 +386,10 @@ Assembly script: `scripts/assemble-ap-biology-deck.mjs`
 | chainThemeId | Name | CED Unit | Facts |
 |---|---|---|---|
 | 0 | The Molecular Forge | Unit 1: Chemistry of Life | 34 |
-| 1 | Cellular Architecture | Unit 2: Cell Structure and Function | 44 |
+| 1 | Cellular Architecture | Unit 2: Cell Structure and Function | 47 |
 | 2 | The Powerhouse | Unit 3: Cellular Energetics | 50 |
 | 3 | Signal & Cycle | Unit 4: Cell Communication and Cell Cycle | 46 |
-| 4 | The Inheritance Chamber | Unit 5: Heredity | 34 |
+| 4 | The Inheritance Chamber | Unit 5: Heredity | 37 |
 | 5 | The Code Vault | Unit 6: Gene Expression and Regulation | 50 |
 | 6 | Evolution Engine | Unit 7: Natural Selection | 54 |
 | 7 | The Living Web | Unit 8: Ecology | 45 |
@@ -403,18 +403,20 @@ Assembly script: `scripts/assemble-ap-biology-deck.mjs`
 | `molecule_names` | 26 | Molecule / Macromolecule |
 | `ecology_terms` | 20 | Ecology Term |
 | `evolution_terms` | 19 | Evolution Term |
-| `genetics_terms` | 14 | Genetics Term |
-| `equation_terms` | 13 | Equation / Formula |
+| `genetics_terms` | 15 | Genetics Term |
+| `equation_terms` | 15 | Equation / Formula |
 | `signal_molecule_names` | 12 | Signal Molecule |
-| `cycle_phase_names` | 10 | Cell Cycle Phase |
-| `bracket_numbers` | 10 | Number / Value |
+| `cycle_phase_names` | 12 | Cell Cycle Phase |
+| `bracket_numbers` | 11 | Number / Value |
 | `structure_function_terms` | 8 | Structure-Function Term |
 | `organelle_structures` | 7 | Organelle / Cell Structure |
 | `enzyme_names` | 7 | Enzyme |
 
-**Difficulty distribution:** easy 238, medium 105, hard 14.
+**Equations covered (17 equation-tagged facts across 15 pool entries):** Hardy-Weinberg equilibrium (allele + genotype frequency), water potential (Ψ = Ψs + Ψp), solute potential (Ψs = –iCRT), free energy (ΔG = ΔH – TΔS), surface area to volume formulas (sphere, cube, cylinder), Q10 temperature coefficient, allometric scaling, dilution formula (M1V1 = M2V2), chi-square statistic, primary productivity estimates. CED appendix equations are fully covered.
 
-**Exam alignment:** College Board AP Biology CED effective Fall 2025, covering all 8 units and Topics 1.1 through 8.7.
+**CED alignment:** College Board AP Biology CED (2025-26, effective Fall 2025). All 8 units covered, Topics 1.1–8.7. Facts include `examTags` with `unit`, `topic`, `exam_weight`, `big_idea`, `is_equation_fact`, and `is_lab_fact` fields for filtering by exam section.
+
+**Difficulty distribution:** easy 238, medium 105, hard 14.
 
 ---
 

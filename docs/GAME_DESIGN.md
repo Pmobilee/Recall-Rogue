@@ -3966,7 +3966,7 @@ Priority curated decks to build, organized by domain.
 | History | Ancient Rome | 50+ | Emperors, events, dates, locations. |
 | History | Ancient Greece | 50+ | Philosophers, events, city-states, mythology. |
 | History | AP US History | 80+ | Targeted at AP exam prep. Events, amendments, court cases. |
-| Biology | AP Biology | 80+ | Cell biology, genetics, ecology, evolution. |
+| Biology | AP Biology | 363 | **LIVE** — CED 2025-26 aligned, all 8 units. Exam tags, 8 chain themes, 13 answer pools. See `docs/content/deck-system.md`. |
 | Geography | Topography | 60+ | Mountains, rivers, deserts, lakes. Measurements use bracket numbers. |
 | Geography | World Flags | 196 | **Image-based questions.** Flag recognition → country name. |
 
