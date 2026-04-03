@@ -1505,7 +1505,7 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
         topicLabels,
       });
       if (narrativeLines.length > 0) {
-        showNarrative(narrativeLines, 'auto-fade');
+        showNarrative(narrativeLines, 'click-through');
       }
     }
   }
@@ -2118,7 +2118,7 @@ export async function onRoomSelected(room: RoomOption): Promise<void> {
       topicLabels,
     });
     if (roomNarrativeLines.length > 0) {
-      showNarrative(roomNarrativeLines, 'auto-fade');
+      showNarrative(roomNarrativeLines, 'click-through');
     }
   }
 

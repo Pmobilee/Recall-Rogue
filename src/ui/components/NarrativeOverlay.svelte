@@ -1,9 +1,16 @@
 <!-- src/ui/components/NarrativeOverlay.svelte
   Full-screen atmospheric narrative overlay for room transitions and NPC dialogue.
 
-  Two modes:
-    auto-fade      — shows all lines at once, auto-dismisses after 3-4s, click skips
-    click-through  — one line at a time, each click/Enter/Space advances
+  Always click-through: line 1 appears on mount, each click reveals the next line.
+  When all lines are visible, next click triggers ash dissolve exit.
+
+  State machine: REVEALING → DISSOLVING → DONE
+  - REVEALING: lines appear one at a time on click. Clicking during a line's
+    animation (< 0.8s) skips to fully visible. Clicking when fully visible
+    advances to next line or, when on the last line, begins DISSOLVING.
+  - DISSOLVING: ash animation plays out, clicks ignored, onDismiss fires after
+    all lines finish (0.8s + 0.15s * (numLines - 1) + 0.3s grace).
+  - DONE: onDismiss called.
 
   Design spec: docs/mechanics/narrative.md §Display System
   Scaling rules: docs/ui/layout.md — calc(Npx * var(--layout-scale|--text-scale, 1))
@@ -15,101 +22,159 @@
   // ── Props ──────────────────────────────────────────────────
   interface Props {
     lines: NarrativeLine[];
-    mode: 'auto-fade' | 'click-through';
+    /** Kept for API compatibility — ignored. Always behaves as click-through. */
+    mode?: 'auto-fade' | 'click-through';
     onDismiss: () => void;
   }
-  let { lines, mode, onDismiss }: Props = $props()
+  let { lines, onDismiss }: Props = $props()
 
-  // ── Internal state ─────────────────────────────────────────
-  /** Index of the last visible line (0-based). In auto-fade all lines visible immediately. */
+  // ── State machine ──────────────────────────────────────────
+  type Phase = 'REVEALING' | 'DISSOLVING' | 'DONE'
+  let phase = $state<Phase>('REVEALING')
+
+  /** Index of the last visible line (0-based). */
   let visibleUpTo = $state(0)
 
-  /** Whether the overlay is in the fade-out phase. */
-  let isExiting = $state(false)
+  /**
+   * Timestamp (ms from performance.now()) when the current line started
+   * its reveal animation. Used to detect mid-animation clicks.
+   */
+  let lineRevealStart = $state(0)
 
-  /** Whether the "click to continue / click to dismiss" hint is visible. */
+  /**
+   * Whether the current line's reveal animation has finished
+   * (>= LINE_REVEAL_DURATION ms have passed).
+   */
+  let currentLineSettled = $state(false)
+
+  /** Whether the hint prompt is visible. */
   let showHint = $state(false)
 
-  let autoFadeTimer: ReturnType<typeof setTimeout> | null = null
-  let hintTimer:     ReturnType<typeof setTimeout> | null = null
+  /** Inline style per line index for ash dissolve stagger. */
+  let dissolveStyles = $state<string[]>([])
+
+  let hintTimer: ReturnType<typeof setTimeout> | null = null
+  let dissolveTimer: ReturnType<typeof setTimeout> | null = null
+  let settleTimer: ReturnType<typeof setTimeout> | null = null
+
+  const LINE_REVEAL_DURATION = 800  // ms — matches CSS animation duration
+  const HINT_DELAY = 800            // ms after line settles before hint appears
+  const DISSOLVE_STAGGER = 150      // ms between each line's ash animation
+  const DISSOLVE_DURATION = 800     // ms per line dissolve
+  const DISSOLVE_GRACE = 300        // ms after last line finishes before onDismiss
 
   // ── Derived ────────────────────────────────────────────────
-  /** Lines to render. In click-through only up to visibleUpTo is shown. */
-  let visibleLines = $derived(
-    mode === 'auto-fade' ? lines : lines.slice(0, visibleUpTo + 1)
-  )
+  /** Lines to render — only up to visibleUpTo. */
+  let visibleLines = $derived(lines.slice(0, visibleUpTo + 1))
 
-  /** Auto-fade dismiss delay: 3s for 1 line, +1s per extra line. */
-  let autoFadeDuration = $derived(Math.max(3000, 3000 + (lines.length - 1) * 1000))
+  /** Whether we are on the last line. */
+  let isLastLine = $derived(visibleUpTo >= lines.length - 1)
+
+  /** Hint label changes based on whether more lines exist. */
+  let hintLabel = $derived(isLastLine ? 'click to dismiss' : 'click to continue')
+
+  // ── Helpers ────────────────────────────────────────────────
+
+  function clearTimers(): void {
+    if (hintTimer)    { clearTimeout(hintTimer);    hintTimer = null }
+    if (dissolveTimer){ clearTimeout(dissolveTimer); dissolveTimer = null }
+    if (settleTimer)  { clearTimeout(settleTimer);   settleTimer = null }
+  }
+
+  /**
+   * Mark line `idx` as fully revealed (no more animation), show hint.
+   * Called either by the settle timer or by a click that skips the animation.
+   */
+  function settleCurrentLine(): void {
+    if (hintTimer) { clearTimeout(hintTimer); hintTimer = null }
+    if (settleTimer) { clearTimeout(settleTimer); settleTimer = null }
+    currentLineSettled = true
+    showHint = true
+  }
+
+  /**
+   * Reveal line at index `idx`. Starts the animation clock, schedules
+   * the settle timer, and hides the hint until animation completes.
+   */
+  function revealLine(idx: number): void {
+    visibleUpTo = idx
+    lineRevealStart = performance.now()
+    currentLineSettled = false
+    showHint = false
+
+    // Schedule line settle + hint appearance
+    settleTimer = setTimeout(() => {
+      hintTimer = setTimeout(() => settleCurrentLine(), HINT_DELAY)
+    }, LINE_REVEAL_DURATION)
+  }
+
+  /**
+   * Begin the ash dissolve exit sequence.
+   * All visible lines get a staggered dissolve animation then onDismiss fires.
+   */
+  function beginDissolve(): void {
+    if (phase !== 'REVEALING') return
+    phase = 'DISSOLVING'
+    showHint = false
+    clearTimers()
+
+    // Build inline style for each visible line with staggered delay
+    const count = visibleLines.length
+    dissolveStyles = visibleLines.map((_, i) =>
+      `animation: ashDissolve ${DISSOLVE_DURATION}ms ease forwards; animation-delay: ${i * DISSOLVE_STAGGER}ms;`
+    )
+
+    // After the last line finishes, wait grace period then call onDismiss
+    const totalMs = DISSOLVE_DURATION + (count - 1) * DISSOLVE_STAGGER + DISSOLVE_GRACE
+    dissolveTimer = setTimeout(() => {
+      phase = 'DONE'
+      onDismiss()
+    }, totalMs)
+  }
 
   // ── Lifecycle ──────────────────────────────────────────────
   onMount(() => {
-    // Start with the first line visible in click-through mode.
-    visibleUpTo = 0
-
-    if (mode === 'auto-fade') {
-      // Show hint after 2s in auto-fade mode.
-      hintTimer = setTimeout(() => { showHint = true }, 2000)
-      // Auto-dismiss after calculated duration.
-      autoFadeTimer = setTimeout(() => beginExit(), autoFadeDuration)
-    } else {
-      // Click-through: hint immediately.
-      showHint = true
-    }
+    revealLine(0)
   })
 
   onDestroy(() => {
-    if (autoFadeTimer) clearTimeout(autoFadeTimer)
-    if (hintTimer)     clearTimeout(hintTimer)
+    clearTimers()
   })
 
-  // ── Actions ────────────────────────────────────────────────
+  // ── Click / keyboard handlers ──────────────────────────────
 
-  /** Start fade-out then call onDismiss. */
-  function beginExit(): void {
-    if (isExiting) return
-    isExiting = true
-    // Match the CSS transition duration (0.4s).
-    setTimeout(() => onDismiss(), 400)
-  }
-
-  /** Advance click-through or skip auto-fade. */
   function handleAdvance(): void {
-    if (isExiting) return
+    if (phase === 'DISSOLVING' || phase === 'DONE') return
 
-    if (mode === 'auto-fade') {
-      // Click anywhere skips the timer.
-      if (autoFadeTimer) clearTimeout(autoFadeTimer)
-      if (hintTimer)     clearTimeout(hintTimer)
-      beginExit()
+    const elapsed = performance.now() - lineRevealStart
+
+    if (!currentLineSettled && elapsed < LINE_REVEAL_DURATION) {
+      // Mid-animation click: skip to fully visible
+      settleCurrentLine()
       return
     }
 
-    // Click-through: advance to next line or dismiss on last.
-    if (visibleUpTo < lines.length - 1) {
-      visibleUpTo += 1
+    // Line is settled — advance or dismiss
+    if (!isLastLine) {
+      revealLine(visibleUpTo + 1)
     } else {
-      beginExit()
+      beginDissolve()
     }
   }
 
-  /** Keyboard: Enter or Space advances/dismisses. */
   function handleKeydown(e: KeyboardEvent): void {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
       handleAdvance()
     }
   }
-
-  /** Whether this is the last line in click-through (show "dismiss" hint). */
-  let isLastLine = $derived(mode === 'click-through' && visibleUpTo >= lines.length - 1)
 </script>
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <div
   class="narrative-overlay"
-  class:exiting={isExiting}
+  class:exiting={phase === 'DISSOLVING' || phase === 'DONE'}
   role="dialog"
   aria-label="Narrative text"
   aria-modal="true"
@@ -127,18 +192,18 @@
   <!-- Narrative text block -->
   <div class="narrative-content">
     {#each visibleLines as line, i (line.templateId + '-' + i)}
-      <p class="narrative-line" class:line-entering={true}>{line.text}</p>
+      <p
+        class="narrative-line"
+        class:dissolving={phase === 'DISSOLVING'}
+        style={phase === 'DISSOLVING' ? (dissolveStyles[i] ?? '') : ''}
+      >{line.text}</p>
     {/each}
   </div>
 
-  <!-- Hint prompt -->
-  {#if showHint}
+  <!-- Hint prompt — visible once current line's animation finishes -->
+  {#if showHint && phase === 'REVEALING'}
     <div class="hint" aria-hidden="true">
-      {#if mode === 'click-through'}
-        {isLastLine ? 'click to dismiss' : 'click to continue'}
-      {:else}
-        click to skip
-      {/if}
+      {hintLabel}
       <span class="hint-chevron">▾</span>
     </div>
   {/if}
@@ -163,6 +228,7 @@
 
   .narrative-overlay.exiting {
     animation: overlayFadeOut 0.4s ease forwards;
+    animation-delay: calc((var(--dissolve-count, 1) - 1) * 150ms + 400ms);
   }
 
   @keyframes overlayFadeIn {
@@ -243,36 +309,69 @@
   .narrative-content {
     position: relative;
     z-index: 1;
-    max-width: calc(800px * var(--layout-scale, 1));
+    max-width: calc(1100px * var(--layout-scale, 1));
     width: 90%;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: calc(20px * var(--layout-scale, 1));
+    gap: calc(28px * var(--layout-scale, 1));
   }
 
   .narrative-line {
     margin: 0;
     font-family: var(--font-rpg, 'Lora', 'Georgia', serif);
-    font-size: calc(18px * var(--text-scale, 1));
+    font-size: calc(22px * var(--text-scale, 1));
     color: #c8c8d0;
     line-height: 1.6;
     letter-spacing: calc(0.5px * var(--layout-scale, 1));
     font-style: italic;
-    /* Fade in with upward drift */
-    animation: lineReveal 0.6s ease forwards;
-    animation-delay: 0.3s;
+    /* Dramatic fade-in on reveal */
+    animation: lineReveal 0.8s ease forwards;
     opacity: 0;
   }
 
   @keyframes lineReveal {
-    from {
+    0% {
       opacity: 0;
-      transform: translateY(calc(8px * var(--layout-scale, 1)));
+      transform: translateY(calc(12px * var(--layout-scale, 1))) scale(0.95);
+      text-shadow: none;
     }
-    to {
+    60% {
+      opacity: 0.9;
+      transform: translateY(calc(2px * var(--layout-scale, 1))) scale(1.0);
+      text-shadow: 0 0 calc(15px * var(--layout-scale, 1)) rgba(200, 200, 210, 0.3);
+    }
+    100% {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
+      text-shadow: none;
+    }
+  }
+
+  /* Ash dissolve — applied inline with per-line stagger delays */
+  @keyframes ashDissolve {
+    0% {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0) scale(1);
+      letter-spacing: calc(0.5px * var(--layout-scale, 1));
+    }
+    30% {
+      opacity: 0.7;
+      filter: blur(calc(1px * var(--layout-scale, 1)));
+      transform: translateY(calc(-5px * var(--layout-scale, 1))) scale(0.99);
+    }
+    60% {
+      opacity: 0.3;
+      filter: blur(calc(3px * var(--layout-scale, 1)));
+      transform: translateY(calc(-15px * var(--layout-scale, 1))) scale(0.97);
+      letter-spacing: calc(4px * var(--layout-scale, 1));
+    }
+    100% {
+      opacity: 0;
+      filter: blur(calc(6px * var(--layout-scale, 1)));
+      transform: translateY(calc(-30px * var(--layout-scale, 1))) scale(0.95);
+      letter-spacing: calc(8px * var(--layout-scale, 1));
     }
   }
 
