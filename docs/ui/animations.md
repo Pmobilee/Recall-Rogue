@@ -94,6 +94,20 @@ animation: upgradeFloat 1.5s ease-in-out infinite;
 
 ---
 
+## Turn-Ready Pulse (`CardHand.svelte`)
+
+When the DOM event `rr:player-turn-start` fires (dispatched by `CombatScene` after the enemy turn resolves), a brief WAAPI scale pulse plays on every `.card-slot`:
+
+- **Keyframes:** `scale(0.97) → scale(1.0)`
+- **Duration:** 200ms, `ease-out`, `fill: 'none'`
+- **Stagger:** `i * 40ms` per card index (left to right)
+- **Guard:** skipped entirely when `reduceMotionMode` store is `true`
+- **Fire-and-forget:** no state tracking; animation does not interfere with draw, discard, or fizzle animations
+
+The listener is registered in `onMount` and removed in the cleanup return and `onDestroy`. Uses `get(reduceMotionMode)` from `svelte/store` to read the store value synchronously at event time.
+
+---
+
 ## Chain-Match Pill Pulse (`CardHand.svelte`)
 
 When a card matches the active chain color and no card is selected, the chain color pill div gets the `pill-chain-active` class, triggering a CSS `chainPillPulse` idle loop:

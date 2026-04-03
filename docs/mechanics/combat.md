@@ -31,6 +31,28 @@ The encounter begins with `startEncounter()`: initializes `TurnState`, resets ch
 
 ---
 
+## Turn Transition Breathing Room
+
+A brief visual beat fires at each turn boundary to signal the phase change and give the player a moment to register what just happened. All effects run concurrently and add no wall-clock time — they fire during the existing 1 second delay already present in `encounterBridge.handleEndTurn()`.
+
+**Player → Enemy transition (`CombatScene.playTurnTransitionToEnemy()`):**
+- Transient `Rectangle` overlay (depth 2, black, alpha 0 → 0.12 over 250ms) darkens the arena without touching `vignetteGfx`
+- Enemy container scales to 1.02× and back over 200ms (awakening pulse)
+- `atmosphereSystem.spikeParticleRate(400)` doubles front emitter rate for 400ms
+- Call site: `encounterBridge.handleEndTurn()` immediately after `endPlayerTurn()` + `enemy-turn-start` audio
+
+**Enemy → Player transition (`CombatScene.playTurnTransitionToPlayer()`):**
+- Fades and destroys the overlay from the previous beat (always runs, even in reduce-motion mode)
+- `pulseFlash(0xFFEEAA, 0.06, 200)` — subtle warm flash signals player agency returning
+- Dispatches `rr:player-turn-start` CustomEvent on `window` for `CardHand.svelte` to animate card hand in
+- Call site: `encounterBridge.handleEndTurn()` where `turn-chime` audio fires
+
+**Reduce-motion / turbo-mode:** All tweens and the DOM event are suppressed. The overlay is still destroyed if it exists.
+
+**State:** The transient overlay is held in `CombatScene._turnOverlay` (private field, cleaned up in `onShutdown()`).
+
+---
+
 ## AP (Action Points) System
 
 | Constant | Value |

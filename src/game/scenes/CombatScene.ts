@@ -212,6 +212,10 @@ export class CombatScene extends Phaser.Scene {
   private nearDeathPulseTween: Phaser.Tweens.Tween | null = null
   private isNearDeathActive = false
 
+  // ── Turn transition overlay ──────────────────────────
+  /** Transient darkening rectangle created by playTurnTransitionToEnemy(); released by playTurnTransitionToPlayer(). */
+  private _turnOverlay: Phaser.GameObjects.Rectangle | null = null
+
   // ── Charge telegraph ──────────────────────────────────
   private chargeParticleTimer: Phaser.Time.TimerEvent | null = null
   private chargeGlowCircle: Phaser.GameObjects.Arc | null = null
@@ -1450,6 +1454,73 @@ export class CombatScene extends Phaser.Scene {
     this.pulseEdgeGlow(0xFFD700, 0.3, 300)
   }
 
+  /**
+   * Visual beat at end of player turn — transient vignette darken + enemy sprite pulse + particle spike.
+   * Fires during the existing 1s delay in encounterBridge.handleEndTurn(); adds no wall-clock time.
+   * No-op when reduceMotion or isTurboMode() are active.
+   */
+  playTurnTransitionToEnemy(): void {
+    if (this.reduceMotion || isTurboMode()) return
+
+    // Transient darkening overlay at depth 2 (above vignetteGfx at depth 1, below enemy at depth 5).
+    // Do NOT mutate vignetteGfx — it is redrawn on resize and must stay at alpha 1.
+    const w = this.scale.width
+    const h = this.scale.height
+    this._turnOverlay = this.add.rectangle(w / 2, h / 2, w, h, 0x000000, 0).setDepth(2)
+    this.tweens.add({
+      targets: this._turnOverlay,
+      alpha: 0.12,
+      duration: 250,
+      ease: 'Sine.easeIn',
+    })
+
+    // Enemy awakening pulse — subtle scale bump signals impending attack
+    const container = this.enemySpriteSystem.getContainer()
+    this.tweens.add({
+      targets: container,
+      scaleX: 1.02,
+      scaleY: 1.02,
+      duration: 200,
+      yoyo: true,
+      ease: 'Sine.easeInOut',
+    })
+
+    // Particle spike — briefly double front emitter rate for atmosphere tension
+    this.atmosphereSystem.spikeParticleRate(400)
+  }
+
+  /**
+   * Visual beat at start of player turn — release the vignette overlay and emit a warm flash.
+   * Also dispatches the rr:player-turn-start DOM event so CardHand.svelte can animate cards in.
+   * Always releases the overlay even when reduceMotion/turboMode are active.
+   */
+  playTurnTransitionToPlayer(): void {
+    // Always clean up the overlay regardless of reduceMotion — it may have been created before
+    // the player toggled reduce-motion, and leaving it on screen would be a visual bug.
+    if (this._turnOverlay) {
+      this.tweens.add({
+        targets: this._turnOverlay,
+        alpha: 0,
+        duration: 200,
+        ease: 'Sine.easeOut',
+        onComplete: () => {
+          this._turnOverlay?.destroy()
+          this._turnOverlay = null
+        },
+      })
+    }
+
+    // DOM event for card hand CSS animation (listened to by CardHand.svelte)
+    if (!this.reduceMotion && !isTurboMode()) {
+      window.dispatchEvent(new CustomEvent('rr:player-turn-start'))
+    }
+
+    if (this.reduceMotion || isTurboMode()) return
+
+    // Warm flash — signals return of player agency
+    this.pulseFlash(0xFFEEAA, 0.06, 200)
+  }
+
   playPlayerAttackAnimation(): void {
     if (this.reduceMotion) return
     const container = this.enemySpriteSystem.getContainer()
@@ -2175,6 +2246,10 @@ export class CombatScene extends Phaser.Scene {
       this.chargeGlowCircle = null
     }
     this.isCharging = false
+    if (this._turnOverlay) {
+      this._turnOverlay.destroy()
+      this._turnOverlay = null
+    }
     this.enemySpriteSystem?.destroy()
     this.atmosphereSystem?.stop()
     this.depthLightingSystem?.stop()

@@ -61,6 +61,23 @@ export class CombatAtmosphereSystem {
   }
 
   /**
+   * Temporarily double the front emitter's particle emission rate for a brief
+   * visual spike (e.g. at turn transitions). No-op if reduceMotion is active
+   * or if no front emitter exists.
+   * @param durationMs How long to hold the spiked rate before restoring.
+   */
+  public spikeParticleRate(durationMs: number): void {
+    if (!this.frontEmitter || this.reduceMotion) return
+    // frequency is ms-between-emissions; halving it doubles the emission rate.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const origFreq: number = (this.frontEmitter as any).frequency
+    this.frontEmitter.setFrequency(Math.max(1, Math.round(origFreq / 2)))
+    this.scene.time.delayedCall(durationMs, () => {
+      if (this.frontEmitter) this.frontEmitter.setFrequency(origFreq)
+    })
+  }
+
+  /**
    * Set the enemy's X position so the spotlight can center on it.
    * @param x The enemy's X coordinate
    */

@@ -13,7 +13,7 @@ Do not duplicate existing work.
 
 | # | Spec | Priority | Effort | Impact | Agent | Depends On | Status |
 |---|---|---|---|---|---|---|---|
-| 01 | Turn Transition Breathing | quick-win | S | MED-HIGH | game-logic | none | pending |
+| 01 | ~~Turn Transition Breathing~~ | quick-win | S | MED-HIGH | game-logic | none | **done** |
 | 06 | Weapon-Enemy Impact Sync | quick-win | S | HIGH | game-logic | none | pending |
 | 02 | Enemy Entrance Reveal | mid-term | M | MED-HIGH | game-logic | none | pending |
 | 03 | Chain Combo Escalation | mid-term | M-L | HIGH | game-logic | none | pending |

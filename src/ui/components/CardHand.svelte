@@ -26,6 +26,8 @@
   // AR-74: Importing keyboardInput activates the landscape-mode keyboard listener subscription.
   import '../../services/keyboardInput'
   import { playCardAudio } from '../../services/cardAudioManager'
+  import { get } from 'svelte/store'
+  import { reduceMotionMode } from '../../services/cardPreferences'
 
   interface Props {
     cards: Card[]
@@ -417,13 +419,40 @@
     return unsub
   })
 
+  /**
+   * Handles rr:player-turn-start DOM event. Plays a brief scale pulse (0.97→1.0)
+   * on each .card-slot using WAAPI, staggered by 40ms per card index.
+   * Skipped when reduceMotionMode is active.
+   */
+  function handlePlayerTurnStart(): void {
+    if (get(reduceMotionMode)) return
+    const slots = document.querySelectorAll('.card-slot')
+    slots.forEach((slot, i) => {
+      setTimeout(() => {
+        ;(slot as HTMLElement).animate(
+          [
+            { transform: 'scale(0.97)', offset: 0 },
+            { transform: 'scale(1.0)', offset: 1 },
+          ],
+          {
+            duration: 200,
+            easing: 'ease-out',
+            fill: 'none',
+          }
+        )
+      }, i * 40)
+    })
+  }
+
   onMount(() => {
     const onResize = (): void => {
       viewportWidth = Math.min(window.innerWidth, window.innerHeight * GAME_ASPECT_RATIO)
     }
     window.addEventListener('resize', onResize, { passive: true })
+    window.addEventListener('rr:player-turn-start', handlePlayerTurnStart)
     return () => {
       window.removeEventListener('resize', onResize)
+      window.removeEventListener('rr:player-turn-start', handlePlayerTurnStart)
     }
   })
 

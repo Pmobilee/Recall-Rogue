@@ -1060,6 +1060,10 @@ export async function handleEndTurn(): Promise<void> {
   const result = endPlayerTurn(turnState);
   playCardAudio('enemy-turn-start');
 
+  // Visual beat: transient vignette darken + enemy sprite pulse + particle spike.
+  // Fires immediately during the existing 1s delay — adds no wall-clock time.
+  getCombatScene()?.playTurnTransitionToEnemy();
+
   // Sync only the turn counter now; defer HP update until after the animation.
   const run = get(activeRunState);
   if (run) {
@@ -1156,6 +1160,8 @@ export async function handleEndTurn(): Promise<void> {
 
   if (!result.playerDefeated) {
     playCardAudio('turn-chime');
+    // Visual beat: release vignette overlay + warm flash + dispatch rr:player-turn-start event.
+    getCombatScene()?.playTurnTransitionToPlayer();
     if (result.turnState.isSurge) {
       setTimeout(() => playCardAudio('surge-announce'), 200);
     }

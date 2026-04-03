@@ -127,6 +127,7 @@ Manages ambient particles (dual-depth: back=3, front=12), fog overlay, and light
 | `setEnemyPosition(x)` | Reposition light shaft spotlight |
 | `stop()` | Destroy emitters, fog, and shafts |
 | `getConfig()` | Return current `AtmosphereConfig` or null |
+| `spikeParticleRate(durationMs)` | Temporarily double front emitter rate for a visual spike (e.g. turn transitions). No-op if reduceMotion or no emitter active. |
 
 ### ScreenShakeSystem
 
