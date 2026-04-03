@@ -1,0 +1,1525 @@
+deck_id: ap_us_history
+name: "AP U.S. History"
+domain: history
+sub_domain: us_history
+description: >
+  Master the complete AP U.S. History curriculum — from pre-Columbian civilizations through
+  the early 21st century. Covers all 9 CED periods, major turning points, key figures,
+  landmark legislation, and Supreme Court cases tested on the APUSH exam. A student who
+  masters this deck should be prepared for every question type on the AP exam. Scope is
+  curriculum-driven and exam-aligned — every CED period and key concept is represented,
+  weighted by exam frequency.
+minimum_facts: 400
+target_facts: 475
+
+# COMPLETENESS PHILOSOPHY:
+# This deck covers the COMPLETE College Board AP U.S. History Course and Exam
+# Description (CED), effective Fall 2023. Content scope is derived from the official
+# CED unit/topic structure, supplemented by universally-taught canonical examples
+# (illustrative examples, key terms) verified against standard APUSH pedagogy.
+# Facts weighted by exam percentage — Periods 3–8 (10–17% each) receive more facts.
+
+# Sourcing & licensing
+data_sources:
+  - name: College Board AP U.S. History Course and Exam Description (CED) Fall 2023
+    url: https://apcentral.collegeboard.org/media/pdf/ap-us-history-course-and-exam-description.pdf
+    license: public educational resource
+    usage: Authoritative period/topic structure, key concepts, exam weight distribution, illustrative examples
+  - name: Wikipedia — United States History
+    url: https://en.wikipedia.org/wiki/History_of_the_United_States
+    license: CC-BY-SA-4.0
+    usage: Event descriptions, dates, person biographies, verified facts
+  - name: Wikidata
+    url: https://www.wikidata.org/
+    license: CC0
+    usage: Structured data for dates, people, and events
+  - name: National Archives (U.S.)
+    url: https://www.archives.gov/
+    license: public domain / educational fair use
+    usage: Primary source context for legislation, executive orders, constitutional amendments
+  - name: Library of Congress
+    url: https://www.loc.gov/
+    license: public domain / educational fair use
+    usage: Historical context, primary source summaries
+
+asset_sources: []
+
+# ============================================================
+# CHAIN THEMES — 9 thematic zones mapping to CED periods
+# Each theme is a distinct "dungeon zone" with its own facts pool
+# ============================================================
+
+chain_themes:
+
+  - id: 0
+    name: "The New World Rift"
+    ced_coverage: >
+      Period 1 (1491–1607): Topics 1.2–1.6 — Native American societies before contact,
+      European exploration, Columbian Exchange, Spanish colonial system, cultural interactions
+    target_facts: 25
+    description: >
+      The collision of worlds. Players explore the diverse civilizations of pre-Columbian
+      America, the European voyages of exploration, the catastrophic Columbian Exchange,
+      and the Spanish colonial system of encomienda and caste. Dense with cultural terms,
+      key explorers, and the consequences of first contact.
+    key_concepts:
+      - Native American civilizations — Mississippian, Ancestral Puebloans, Iroquois Confederacy, Aztec, Inca
+      - Three Sisters agriculture; maize cultivation; Cahokia
+      - European motivations — "God, Gold, and Glory"; reconquista; mercantilism
+      - Christopher Columbus 1492 voyage; Treaty of Tordesillas (1494)
+      - Columbian Exchange — diseases (smallpox), crops (maize, potato, tobacco), animals (horse)
+      - Spanish conquest — Hernán Cortés vs. Aztec (1521), Francisco Pizarro vs. Inca (1532)
+      - Encomienda system; Bartolomé de las Casas advocacy; mita labor
+      - Sistema de castas — peninsulares, criollos, mestizos, mulatos
+      - Pueblo Revolt (1680); Franciscan missions; syncretism
+    source_data:
+      columbus_1492:
+        date: "1492"
+        event: "Christopher Columbus's first voyage reached the Bahamas (Guanahani), October 12, 1492"
+        notes: >
+          Commissioned by Spanish monarchs Ferdinand and Isabella. Columbus made four
+          voyages (1492–1504) but never reached mainland Asia. His voyages initiated
+          sustained contact between Europe and the Americas.
+        source: https://en.wikipedia.org/wiki/Christopher_Columbus
+      treaty_of_tordesillas:
+        date: "1494"
+        event: "Treaty of Tordesillas divided the non-European world between Spain and Portugal"
+        notes: >
+          Spain received the Americas (except Brazil); Portugal received Africa, Asia,
+          and Brazil. Negotiated under Pope Alexander VI's authority.
+        source: https://en.wikipedia.org/wiki/Treaty_of_Tordesillas
+      columbian_exchange:
+        key_terms:
+          - "Columbian Exchange — biological transfer of plants, animals, diseases between hemispheres"
+          - "Smallpox — leading killer of Native populations; estimated 50–90% population decline in some regions"
+          - "Maize, potato, tomato, tobacco — New World crops that transformed European diets"
+          - "Horse — introduced to the Americas by Spanish; transformed Plains Indian cultures"
+        source: https://en.wikipedia.org/wiki/Columbian_exchange
+      spanish_conquest:
+        date_cortes: "1519–1521"
+        date_pizarro: "1532–1533"
+        notes: >
+          Hernán Cortés defeated the Aztec (Mexica) empire and their ruler Moctezuma II;
+          Tenochtitlan fell in 1521. Francisco Pizarro defeated the Inca empire and
+          captured Atahualpa in 1532.
+        source_cortes: https://en.wikipedia.org/wiki/Hernán_Cortés
+        source_pizarro: https://en.wikipedia.org/wiki/Francisco_Pizarro
+      encomienda:
+        notes: >
+          Spanish land grants giving colonists the right to compel Native labor and tribute.
+          Bartolomé de las Casas (1484–1566), a Dominican friar, wrote "A Short Account
+          of the Destruction of the Indies" (1542) condemning encomienda abuses.
+        source: https://en.wikipedia.org/wiki/Encomienda
+      pueblo_revolt:
+        date: "1680"
+        location: "New Mexico"
+        notes: >
+          Led by Popé (Pueblo religious leader), the Pueblo Revolt temporarily drove
+          Spanish from New Mexico for 12 years (until 1692). One of the most successful
+          Native resistance movements in North American history.
+        source: https://en.wikipedia.org/wiki/Pueblo_Revolt
+      native_civilizations:
+        key_facts:
+          - "Cahokia — Mississippian mound city near present-day St. Louis; peak population ~10,000–20,000 ca. 1100 CE"
+          - "Iroquois Confederacy (Haudenosaunee) — alliance of Five Nations in northeastern North America"
+          - "Three Sisters — corn (maize), beans, squash; staple crops of many Native agricultural societies"
+          - "Ancestral Puebloans (Anasazi) — built cliff dwellings in the Four Corners region"
+        source: https://en.wikipedia.org/wiki/Indigenous_peoples_of_the_Americas
+
+  - id: 1
+    name: "The Colonial Crucible"
+    ced_coverage: >
+      Period 2 (1607–1754): Topics 2.2–2.7 — European colonization, regional British colonies,
+      transatlantic trade, Native American-European interactions, colonial slavery, colonial society and culture
+    target_facts: 40
+    description: >
+      The forging of colonial America. Players explore how different colonial regions
+      developed distinct identities — Puritan New England, tobacco Chesapeake, rice
+      Carolina lowcountry — alongside the hardening of racialized slavery, the Middle
+      Passage, and the Great Awakening's challenge to established churches.
+    key_concepts:
+      - Joint-stock companies; Virginia Company; Jamestown (1607); Plymouth (1620)
+      - New England — Puritanism, "city upon a hill," town meeting, covenant theology
+      - Chesapeake — tobacco monoculture, headright system, indentured servitude, House of Burgesses
+      - Middle colonies — diversity, William Penn and Pennsylvania, Quakers
+      - Southern colonies — rice and indigo, plantation system, Gullah culture
+      - Navigation Acts (1651–1673); mercantilism; triangular trade; enumerated goods
+      - Middle Passage; transatlantic slave trade; racialized chattel slavery
+      - Virginia Slave Codes (1705); Bacon's Rebellion (1676); Stono Rebellion (1739)
+      - King Philip's War / Metacom's War (1675–1676); Pueblo Revolt (1680)
+      - Great Awakening (1730s–1740s) — Whitefield, Edwards; New Light vs. Old Light
+      - Enlightenment natural rights; Benjamin Franklin; John Peter Zenger trial (1735)
+      - Salutary neglect — British policy of minimal colonial interference
+    source_data:
+      jamestown:
+        date: "1607"
+        location: "Virginia"
+        notes: >
+          First permanent English settlement in North America. Founded by Virginia Company.
+          Suffered near-collapse (Starving Time, 1609–1610). John Rolfe introduced tobacco
+          cultivation ca. 1612, ensuring economic viability. House of Burgesses established 1619.
+        source: https://en.wikipedia.org/wiki/Jamestown,_Virginia
+      mayflower_plymouth:
+        date: "1620"
+        location: "Plymouth, Massachusetts"
+        notes: >
+          Separatist Pilgrims arrived on the Mayflower. Signed Mayflower Compact — early
+          self-governance document. Massachusetts Bay Colony (Puritan) established 1630
+          under John Winthrop; famous "city upon a hill" sermon.
+        source: https://en.wikipedia.org/wiki/Plymouth_Colony
+      navigation_acts:
+        dates: "1651–1673"
+        notes: >
+          Series of acts requiring colonial goods to be transported on English ships and
+          through English ports. Embodied mercantilist theory. Widely evaded; sporadic enforcement
+          (salutary neglect). Resented by colonists as limiting trade freedoms.
+        source: https://en.wikipedia.org/wiki/Navigation_Acts
+      triangular_trade:
+        notes: >
+          Trade network linking Britain, West Africa, and the Americas. Britain exported
+          manufactured goods to Africa; Africa exported enslaved people to the Americas;
+          Americas exported sugar, tobacco, rice, cotton to Britain.
+          Middle Passage: the horrific transatlantic voyage of enslaved Africans.
+        source: https://en.wikipedia.org/wiki/Triangular_trade
+      bacons_rebellion:
+        date: "1676"
+        location: "Virginia"
+        notes: >
+          Armed uprising led by Nathaniel Bacon against Governor William Berkeley.
+          Involved backcountry farmers (including indentured servants) angry at frontier
+          policies and lack of land. Aftermath accelerated shift from indentured servitude
+          to enslaved African labor in Virginia.
+        source: https://en.wikipedia.org/wiki/Bacon%27s_Rebellion
+      virginia_slave_codes:
+        date: "1705"
+        notes: >
+          Virginia's comprehensive slave codes legally defined slavery as permanent,
+          hereditary, and race-based. Enslaved people were defined as property.
+          Similar codes enacted across colonial South.
+        source: https://en.wikipedia.org/wiki/Virginia_Slave_Codes
+      stono_rebellion:
+        date: "1739"
+        location: "South Carolina"
+        notes: >
+          Led by an enslaved man named Jemmy (or Cato). ~20 enslaved people killed
+          white colonists and marched toward Florida seeking Spanish-promised freedom.
+          Suppressed; led to harsher slave codes in South Carolina.
+        source: https://en.wikipedia.org/wiki/Stono_Rebellion
+      king_philips_war:
+        date: "1675–1676"
+        location: "New England"
+        notes: >
+          War between English colonists and an alliance of Native nations led by
+          Metacom (called "King Philip" by English). One of the deadliest conflicts
+          per capita in American history. Resulted in destruction of dozens of towns
+          and defeat of Native resistance in southern New England.
+        source: https://en.wikipedia.org/wiki/King_Philip%27s_War
+      great_awakening:
+        dates: "1730s–1740s"
+        notes: >
+          Protestant religious revival across the colonies. Key preachers: George Whitefield
+          (itinerant, drew huge crowds), Jonathan Edwards ("Sinners in the Hands of an Angry God").
+          Created New Light (enthusiastic) vs. Old Light (established church) split.
+          Promoted individual religious experience; challenged social hierarchies.
+        source: https://en.wikipedia.org/wiki/First_Great_Awakening
+
+  - id: 2
+    name: "The Liberty Forge"
+    ced_coverage: >
+      Period 3 (1754–1800): Topics 3.2–3.12 — Seven Years' War, colonial resistance and taxation,
+      philosophical foundations of Revolution, Revolutionary War, Revolutionary ideals, Articles of
+      Confederation, Constitutional Convention, ratification debates, early republic
+    target_facts: 65
+    description: >
+      Revolution and republic-building. Players navigate from the French and Indian War
+      through colonial resistance, the Declaration of Independence, the Revolutionary War,
+      the Articles of Confederation crisis, Constitutional Convention compromises, and
+      Washington's presidency. Heavy on founding documents, key figures, and political theory.
+    key_concepts:
+      - French and Indian War (1754–1763); Treaty of Paris (1763); Proclamation of 1763
+      - Pontiac's Rebellion (1763); British war debt; colonial resentment
+      - Stamp Act (1765); Townshend Acts (1767); Tea Act (1773); "no taxation without representation"
+      - Sons of Liberty; Committees of Correspondence; Boston Massacre (1770); Boston Tea Party (1773)
+      - Intolerable Acts (1774); First Continental Congress (1774)
+      - Enlightenment influences — Locke (social contract, natural rights), Montesquieu
+      - Thomas Paine "Common Sense" (1776); Declaration of Independence (July 4, 1776)
+      - Continental Army; George Washington; Battle of Saratoga (1777); Valley Forge (1777–1778)
+      - French Alliance (1778); Yorktown (1781); Treaty of Paris (1783)
+      - Limits of Revolutionary ideals — Abigail Adams, gradual emancipation (Vermont 1777), Haitian Revolution
+      - Articles of Confederation (1781) — weak central government, no power to tax
+      - Northwest Ordinance (1787); Land Ordinance (1785); Shays' Rebellion (1786–1787)
+      - Constitutional Convention (1787) — Great Compromise, Three-Fifths Compromise, Commerce Compromise
+      - Federalists (Hamilton, Madison, Jay) vs. Anti-Federalists (Henry, Mason); Federalist Papers
+      - Bill of Rights (1791) — first ten amendments
+      - Hamilton's financial program — national bank, assumption of debt, tariffs
+      - Whiskey Rebellion (1794); Jay's Treaty; Washington's Farewell Address (1796)
+      - XYZ Affair; Quasi-War; Alien and Sedition Acts (1798); Virginia and Kentucky Resolutions
+    source_data:
+      french_indian_war:
+        date: "1754–1763"
+        notes: >
+          North American theater of the global Seven Years' War. Britain and American colonies
+          vs. France and Native allies. George Washington's early military career began here.
+          Britain won; France ceded Canada and territory east of the Mississippi.
+          Treaty of Paris (1763) ended the war. British victory led to the Proclamation of 1763
+          restricting settlement west of the Appalachians.
+        source: https://en.wikipedia.org/wiki/French_and_Indian_War
+      stamp_act:
+        date: "1765"
+        notes: >
+          First direct tax on colonial publications and legal documents. Colonial outcry —
+          "no taxation without representation." Stamp Act Congress (1765) was first
+          intercolonial body. Repealed 1766 due to economic pressure and colonial resistance.
+        source: https://en.wikipedia.org/wiki/Stamp_Act_1765
+      boston_massacre:
+        date: "March 5, 1770"
+        location: "Boston, Massachusetts"
+        notes: >
+          British soldiers fired into a crowd of colonists, killing five including Crispus Attucks.
+          Propagandized by Paul Revere's engraving; used by Patriots to inflame colonial opinion.
+        source: https://en.wikipedia.org/wiki/Boston_Massacre
+      boston_tea_party:
+        date: "December 16, 1773"
+        location: "Boston Harbor"
+        notes: >
+          Sons of Liberty members (some dressed as Mohawk Indians) dumped 342 chests of
+          British East India Company tea into Boston Harbor. Protest against Tea Act (1773)
+          which gave East India Company monopoly. Led to Intolerable Acts (1774).
+        source: https://en.wikipedia.org/wiki/Boston_Tea_Party
+      declaration_of_independence:
+        date: "July 4, 1776"
+        notes: >
+          Drafted primarily by Thomas Jefferson; approved by Continental Congress July 4, 1776.
+          Drew on Lockean natural rights philosophy. Proclaimed self-evident truths: equality
+          of men, unalienable rights (life, liberty, pursuit of happiness), consent of governed.
+          Also listed grievances against King George III.
+        source: https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence
+      common_sense:
+        date: "January 1776"
+        author: "Thomas Paine"
+        notes: >
+          Pamphlet arguing plainly for American independence from Britain. Sold ~500,000 copies.
+          Attacked monarchy as an illegitimate institution. Widely credited with shifting
+          colonial opinion toward independence.
+        source: https://en.wikipedia.org/wiki/Common_Sense_(pamphlet)
+      battle_of_saratoga:
+        date: "September–October 1777"
+        location: "Saratoga, New York"
+        notes: >
+          American victory over British General Burgoyne's army. Considered the turning point
+          of the Revolutionary War. Convinced France to formally ally with the United States
+          (Treaty of Alliance, February 1778).
+        source: https://en.wikipedia.org/wiki/Battles_of_Saratoga
+      treaty_of_paris_1783:
+        date: "September 3, 1783"
+        notes: >
+          Ended the Revolutionary War. Britain recognized American independence and ceded
+          territory east of the Mississippi River (south of Canada, north of Florida) to the U.S.
+          Negotiated by Benjamin Franklin, John Adams, and John Jay.
+        source: https://en.wikipedia.org/wiki/Treaty_of_Paris_(1783)
+      articles_of_confederation:
+        date: "ratified 1781"
+        notes: >
+          First governing document of the United States. Created a weak central government:
+          unicameral Congress with no power to tax, regulate commerce, or enforce laws.
+          Required unanimous consent of states for amendments. Replaced by the Constitution in 1789.
+        source: https://en.wikipedia.org/wiki/Articles_of_Confederation
+      northwest_ordinance:
+        date: "1787"
+        notes: >
+          Established process for admitting new states from the Northwest Territory.
+          Banned slavery north of the Ohio River. Guaranteed freedom of religion and trial by jury.
+          Often cited as the most significant achievement of the Confederation Congress.
+        source: https://en.wikipedia.org/wiki/Northwest_Ordinance
+      shays_rebellion:
+        date: "1786–1787"
+        location: "Massachusetts"
+        notes: >
+          Armed uprising of debt-ridden Massachusetts farmers led by Daniel Shays. Demonstrated
+          weakness of the Articles of Confederation in maintaining order. Shocked elites and
+          accelerated calls for a stronger central government.
+        source: https://en.wikipedia.org/wiki/Shays%27_Rebellion
+      constitutional_convention:
+        date: "May–September 1787"
+        location: "Philadelphia, Pennsylvania"
+        notes: >
+          55 delegates met to revise the Articles; instead drafted a new Constitution.
+          Key compromises: Great Compromise (bicameral Congress — Senate equal, House by population);
+          Three-Fifths Compromise (enslaved counted as 3/5 for representation and taxation);
+          Commerce/Slave Trade Compromise (Congress could not ban slave trade until 1808).
+        source: https://en.wikipedia.org/wiki/Constitutional_Convention_(United_States)
+      federalist_papers:
+        date: "1787–1788"
+        authors: "Alexander Hamilton, James Madison, John Jay"
+        notes: >
+          Series of 85 essays published under the pseudonym "Publius" arguing for ratification
+          of the Constitution. Most famous: Federalist No. 10 (Madison — dangers of faction),
+          Federalist No. 51 (Madison — checks and balances), Federalist No. 78 (Hamilton — judiciary).
+        source: https://en.wikipedia.org/wiki/The_Federalist_Papers
+      bill_of_rights:
+        date: "ratified December 15, 1791"
+        notes: >
+          First ten amendments to the Constitution. Added to satisfy Anti-Federalist demands.
+          Drafted primarily by James Madison. Guarantees freedoms of religion, speech, press,
+          assembly; right to bear arms; protection against unreasonable searches; due process;
+          jury trial; protection against cruel punishment.
+        source: https://en.wikipedia.org/wiki/United_States_Bill_of_Rights
+      hamiltons_financial_program:
+        date: "1790–1791"
+        notes: >
+          Alexander Hamilton (first Secretary of the Treasury) proposed: assumption of state
+          debts, establishment of a national bank (Bank of the United States, chartered 1791),
+          protective tariffs to promote manufacturing. Jefferson and Madison opposed the national
+          bank as unconstitutional under strict construction.
+        source: https://en.wikipedia.org/wiki/Alexander_Hamilton#Secretary_of_the_Treasury
+      alien_sedition_acts:
+        date: "1798"
+        notes: >
+          Four laws passed by the Federalist Congress under John Adams. Made it a crime to
+          criticize the government (Sedition Act). Extended residency requirement for citizenship.
+          Jefferson and Madison responded with the Virginia and Kentucky Resolutions (1798–1799),
+          asserting states could nullify unconstitutional federal laws.
+        source: https://en.wikipedia.org/wiki/Alien_and_Sedition_Acts
+
+  - id: 3
+    name: "The Frontier Expanse"
+    ced_coverage: >
+      Period 4 (1800–1848): Topics 4.2–4.13 — Jefferson era, Jeffersonian politics, War of 1812,
+      Monroe Doctrine, Market Revolution, Jacksonian Democracy, Indian Removal, reform movements,
+      Second Great Awakening, African American life in the early republic, southern slave society
+    target_facts: 60
+    description: >
+      The young republic stretches westward and fractures internally. Players encounter
+      Jeffersonian democracy, the Louisiana Purchase, the Market Revolution, Jacksonian
+      populism and Indian Removal, the Second Great Awakening, abolitionism, women's rights,
+      and the hardening of southern slave society. Rich with presidential figures, reform
+      leaders, and the contradictions of American democracy.
+    key_concepts:
+      - "Revolution of 1800" — peaceful power transfer; Jefferson's limited government
+      - Louisiana Purchase (1803); Lewis and Clark Expedition (1804–1806)
+      - Marbury v. Madison (1803) — judicial review established by Chief Justice John Marshall
+      - Embargo Act (1807); War of 1812; Battle of New Orleans (1815); Treaty of Ghent (1814)
+      - Monroe Doctrine (1823) — Western Hemisphere off-limits to further European colonization
+      - Missouri Compromise (1820) — 36°30' line; Maine free, Missouri slave
+      - Erie Canal (1825); Market Revolution; Lowell System; cotton gin (Eli Whitney, 1793)
+      - Jacksonian Democracy — universal white male suffrage; spoils system; two-party system
+      - Nullification Crisis (1832–1833); Force Bill; John C. Calhoun
+      - Bank War (1832) — Jackson vetoed Second Bank of United States
+      - Indian Removal Act (1830); Trail of Tears (Cherokee, 1838); Worcester v. Georgia (1832)
+      - Second Great Awakening — Finney, Burned-Over District, camp meetings, perfectionism
+      - Transcendentalism — Emerson "Self-Reliance," Thoreau "Walden," "Civil Disobedience"
+      - Abolitionism — William Lloyd Garrison "The Liberator" (1831), Frederick Douglass, American Anti-Slavery Society
+      - Seneca Falls Convention (1848) — Declaration of Sentiments; Elizabeth Cady Stanton
+      - Nat Turner's Rebellion (1831); Underground Railroad; Harriet Tubman
+      - King Cotton; plantation system; pro-slavery ideology ("positive good" — Calhoun, Fitzhugh)
+    source_data:
+      louisiana_purchase:
+        date: "1803"
+        notes: >
+          U.S. purchased ~828,000 square miles from France for $15 million, doubling the country's size.
+          Negotiated by James Monroe and Robert Livingston. Raised constitutional questions — no explicit
+          power to acquire territory. Lewis and Clark Expedition (1804–1806) explored the new territory.
+        source: https://en.wikipedia.org/wiki/Louisiana_Purchase
+      marbury_v_madison:
+        date: "1803"
+        notes: >
+          Chief Justice John Marshall's ruling established the principle of judicial review —
+          the Supreme Court's authority to strike down laws that violate the Constitution.
+          Case arose from Marbury's disputed appointment as justice of the peace.
+        source: https://en.wikipedia.org/wiki/Marbury_v._Madison
+      war_of_1812:
+        date: "1812–1815"
+        notes: >
+          U.S. vs. Britain; causes included British impressment of American sailors, frontier conflicts,
+          and desire to conquer Canada. Mixed military results. Ended with Treaty of Ghent (December 1814)
+          restoring prewar borders. Battle of New Orleans (January 1815, Andrew Jackson) was fought
+          after peace was signed; made Jackson a national hero.
+        source: https://en.wikipedia.org/wiki/War_of_1812
+      monroe_doctrine:
+        date: "December 2, 1823"
+        notes: >
+          President Monroe declared the Western Hemisphere closed to further European colonization
+          or interference. Announced in his annual message to Congress. Largely ignored by European
+          powers at the time (U.S. lacked the military power to enforce it) but became a cornerstone
+          of U.S. foreign policy.
+        source: https://en.wikipedia.org/wiki/Monroe_Doctrine
+      missouri_compromise:
+        date: "1820"
+        notes: >
+          Missouri admitted as a slave state, Maine admitted as a free state. Established the
+          36°30' line — slavery prohibited in the Louisiana Territory north of that latitude.
+          Passed primarily through the efforts of Speaker Henry Clay ("The Great Compromiser").
+        source: https://en.wikipedia.org/wiki/Missouri_Compromise
+      erie_canal:
+        date: "opened 1825"
+        location: "New York"
+        notes: >
+          363-mile canal connecting the Hudson River to Lake Erie. Dramatically reduced shipping
+          costs from the Midwest to New York City. Boosted western settlement and made New York
+          City the dominant commercial city. Governor DeWitt Clinton championed the project.
+        source: https://en.wikipedia.org/wiki/Erie_Canal
+      cotton_gin:
+        date: "1793"
+        inventor: "Eli Whitney"
+        notes: >
+          Machine that mechanically separated cotton fibers from seeds, dramatically increasing
+          cotton processing speed. Made large-scale cotton production profitable. Paradoxically
+          increased demand for enslaved labor as cotton spread across the Deep South.
+        source: https://en.wikipedia.org/wiki/Cotton_gin
+      indian_removal_act:
+        date: "1830"
+        notes: >
+          Signed by President Jackson. Authorized federal government to negotiate treaties
+          exchanging Native lands east of the Mississippi for land to the west (Indian Territory,
+          present-day Oklahoma). Led to the forced relocation of the Five Civilized Tribes.
+        source: https://en.wikipedia.org/wiki/Indian_Removal_Act
+      trail_of_tears:
+        date: "1838–1839"
+        location: "Southeast to Indian Territory (Oklahoma)"
+        notes: >
+          Forced relocation of the Cherokee Nation under military supervision. Approximately
+          4,000–6,000 of 16,000 Cherokee died during the march. Worcester v. Georgia (1832) —
+          Marshall ruled Georgia couldn't remove Cherokee; Jackson reportedly defied the ruling.
+        source: https://en.wikipedia.org/wiki/Trail_of_Tears
+      nat_turner_rebellion:
+        date: "August 1831"
+        location: "Southampton County, Virginia"
+        notes: >
+          Enslaved preacher Nat Turner led a rebellion killing ~55 white Virginians before being
+          suppressed. Turner was captured and executed. Aftermath: harsher slave codes throughout
+          the South; Virginia debated (but rejected) gradual emancipation.
+        source: https://en.wikipedia.org/wiki/Nat_Turner%27s_slave_rebellion
+      seneca_falls_convention:
+        date: "July 19–20, 1848"
+        location: "Seneca Falls, New York"
+        notes: >
+          First women's rights convention in the United States. Organized by Elizabeth Cady Stanton
+          and Lucretia Mott. Produced the Declaration of Sentiments (modeled on the Declaration of
+          Independence) demanding women's suffrage and equal rights. Frederick Douglass attended
+          and supported women's suffrage.
+        source: https://en.wikipedia.org/wiki/Seneca_Falls_Convention
+      william_lloyd_garrison:
+        notes: >
+          Founded "The Liberator" (January 1, 1831) — abolitionist newspaper demanding immediate
+          emancipation. Co-founded American Anti-Slavery Society (1833). Represented
+          "immediatism" — rejected gradualism and colonization. Declared the Constitution
+          a "covenant with death" for protecting slavery.
+        source: https://en.wikipedia.org/wiki/William_Lloyd_Garrison
+      nullification_crisis:
+        date: "1832–1833"
+        notes: >
+          South Carolina declared federal tariffs of 1828 and 1832 null and void within the state.
+          Jackson threatened military force; Congress passed Force Bill. Compromise Tariff (1833)
+          crafted by Henry Clay resolved the crisis. John C. Calhoun resigned as Vice President
+          to lead South Carolina's resistance.
+        source: https://en.wikipedia.org/wiki/Nullification_crisis
+
+  - id: 4
+    name: "The Divided Hearth"
+    ced_coverage: >
+      Period 5 (1844–1877): Topics 5.2–5.11 — Manifest Destiny, Mexican-American War, Compromise
+      of 1850, sectional conflict, Kansas-Nebraska Act, failure of compromise, election of 1860,
+      secession, Civil War (military and political), Reconstruction and its failure
+    target_facts: 65
+    description: >
+      The nation breaks apart and struggles to reunite. Players trace the path from Manifest
+      Destiny through the Mexican-American War, sectional crisis, Civil War, and Reconstruction.
+      Heaviest on legislative acts, key battles, constitutional amendments, and the broken
+      promise of Reconstruction. The highest-stakes period in American history.
+    key_concepts:
+      - Manifest Destiny (coined by John O'Sullivan, 1845); Oregon Treaty (1846), 49th parallel
+      - Texas annexation (1845); Mexican-American War (1846–1848)
+      - Treaty of Guadalupe Hidalgo (1848) — Mexican Cession; Wilmot Proviso (1846)
+      - California Gold Rush (1849); Compromise of 1850 — California free, Fugitive Slave Act
+      - Fugitive Slave Act (1850); "Uncle Tom's Cabin" (Harriet Beecher Stowe, 1852)
+      - Kansas-Nebraska Act (1854) — popular sovereignty, repeal of Missouri Compromise
+      - "Bleeding Kansas"; Republican Party formed (1854); Dred Scott v. Sandford (1857)
+      - Lincoln-Douglas debates (1858); John Brown and Harpers Ferry (1859)
+      - Election of 1860; South Carolina secession (December 1860); Confederate States of America
+      - Fort Sumter (April 1861); Civil War (1861–1865)
+      - Battle of Antietam (September 1862); Emancipation Proclamation (January 1, 1863)
+      - Battle of Gettysburg (July 1–3, 1863); USCT (United States Colored Troops), 54th Massachusetts
+      - Sherman's March to the Sea (1864); Appomattox (April 9, 1865)
+      - 13th Amendment (1865) — abolished slavery; 14th Amendment (1868) — citizenship/equal protection
+      - 15th Amendment (1870) — Black male suffrage; Freedmen's Bureau; Black Codes
+      - Radical Reconstruction; carpetbaggers; scalawags; Ku Klux Klan violence
+      - Compromise of 1877 — end of Reconstruction; sharecropping; convict leasing
+    source_data:
+      manifest_destiny:
+        date: "term coined 1845"
+        notes: >
+          Journalist John L. O'Sullivan coined "Manifest Destiny" in 1845, arguing it was
+          America's God-given right and inevitable fate to expand to the Pacific Ocean.
+          Oregon Treaty (June 15, 1846) settled U.S.-British border at 49th parallel.
+          Texas annexed December 29, 1845 after Republic of Texas independence (Battle of the
+          Alamo, March 1836; San Jacinto, April 1836, Sam Houston defeated Santa Anna).
+        source: https://en.wikipedia.org/wiki/Manifest_destiny
+      mexican_american_war:
+        date: "1846–1848"
+        notes: >
+          President Polk sent General Zachary Taylor to disputed territory between the
+          Rio Grande and Nueces River; Mexico attacked, giving Polk his pretext.
+          U.S. won decisively. Treaty of Guadalupe Hidalgo (February 2, 1848) gave U.S.
+          the Mexican Cession — California, Nevada, Utah, most of Arizona and New Mexico,
+          parts of Colorado and Wyoming — for $15 million.
+        source: https://en.wikipedia.org/wiki/Mexican%E2%80%93American_War
+      dred_scott:
+        date: "March 6, 1857"
+        notes: >
+          Supreme Court ruled 7-2 (Chief Justice Roger Taney writing). Held: (1) enslaved
+          people were not citizens and had no right to sue; (2) Congress had no power to ban
+          slavery from territories — invalidated the Missouri Compromise. Outraged northerners
+          and strengthened the Republican Party.
+        source: https://en.wikipedia.org/wiki/Dred_Scott_v._Sandford
+      emancipation_proclamation:
+        date: "January 1, 1863"
+        notes: >
+          Issued by President Lincoln as a military measure under his war powers. Freed enslaved
+          people in Confederate states in rebellion (not border states or Union-controlled areas).
+          Transformed the war's purpose — now explicitly about ending slavery. Opened military
+          service to Black men; ~180,000 Black men served in USCT.
+        source: https://en.wikipedia.org/wiki/Emancipation_Proclamation
+      battle_of_gettysburg:
+        date: "July 1–3, 1863"
+        location: "Gettysburg, Pennsylvania"
+        notes: >
+          Bloodiest battle of the Civil War (~50,000 total casualties). Decisive Union victory
+          under General George Meade. Ended Pickett's Charge — the Confederate high tide in
+          the East. Combined with Vicksburg (July 4, 1863), marked the turning point of the war.
+        source: https://en.wikipedia.org/wiki/Battle_of_Gettysburg
+      constitutional_amendments_reconstruction:
+        dates:
+          - "13th Amendment: ratified December 6, 1865 — abolished slavery throughout the U.S."
+          - "14th Amendment: ratified July 9, 1868 — citizenship, due process, equal protection"
+          - "15th Amendment: ratified February 3, 1870 — right to vote cannot be denied by race"
+        source_13th: https://en.wikipedia.org/wiki/Thirteenth_Amendment_to_the_United_States_Constitution
+        source_14th: https://en.wikipedia.org/wiki/Fourteenth_Amendment_to_the_United_States_Constitution
+        source_15th: https://en.wikipedia.org/wiki/Fifteenth_Amendment_to_the_United_States_Constitution
+      compromise_of_1877:
+        date: "1877"
+        notes: >
+          Resolved disputed 1876 presidential election between Republican Rutherford B. Hayes
+          and Democrat Samuel Tilden. Electoral Commission awarded Hayes the presidency.
+          As part of informal compromise, federal troops withdrew from the South.
+          Effectively ended Reconstruction and allowed "Redeemer" Democrats to consolidate control.
+        source: https://en.wikipedia.org/wiki/Compromise_of_1877
+      kansas_nebraska_act:
+        date: "May 30, 1854"
+        notes: >
+          Passed by Congress under Senator Stephen Douglas; organized Kansas and Nebraska territories
+          with popular sovereignty, repealing the Missouri Compromise (36°30' line). Led to
+          "Bleeding Kansas" — rival pro-slavery and free-state settlers flooded the territory;
+          violent conflict 1854–1859. Republican Party formed immediately in opposition.
+        source: https://en.wikipedia.org/wiki/Kansas%E2%80%93Nebraska_Act
+
+  - id: 5
+    name: "The Iron Foundry"
+    ced_coverage: >
+      Period 6 (1865–1898): Topics 6.2–6.13 — Westward expansion, Plains Indian Wars,
+      New South/Jim Crow, Second Industrial Revolution, rise of industrial capitalism,
+      Gilded Age labor, immigration, settlement houses, middle class development, Populism,
+      Gilded Age politics
+    target_facts: 60
+    description: >
+      The Gilded Age furnace of industrial America. Players confront the transcontinental
+      railroad, cattle drives, Indian Wars, Dawes Act, Jim Crow and Plessy v. Ferguson,
+      Rockefeller and Carnegie's monopolies, the Knights of Labor, mass immigration through
+      Ellis Island, and the Populist revolt. Densely factual — names, laws, and dates abound.
+    key_concepts:
+      - Transcontinental railroad completed (1869, Promontory Summit, Utah) — Central Pacific/Union Pacific
+      - Homestead Act (1862); cattle drives (Chisholm Trail); Comstock Lode
+      - Plains Indian Wars — Battle of Little Bighorn (1876), Wounded Knee (1890)
+      - Dawes Severalty Act (1887) — allotment; assimilation policy; boarding schools (Carlisle)
+      - Sitting Bull; Crazy Horse; Helen Hunt Jackson "A Century of Dishonor" (1881)
+      - Jim Crow laws; Plessy v. Ferguson (1896) — "separate but equal"
+      - Ida B. Wells — anti-lynching campaign; disfranchisement (poll tax, literacy tests, grandfather clause)
+      - Bessemer steel process; Thomas Edison (light bulb 1879); Alexander Graham Bell (telephone 1876)
+      - Andrew Carnegie — vertical integration, "Gospel of Wealth"; John D. Rockefeller — Standard Oil trust
+      - J.P. Morgan; Social Darwinism (Herbert Spencer); Sherman Antitrust Act (1890)
+      - Knights of Labor (1869); AFL (Samuel Gompers, 1886); Great Railroad Strike (1877)
+      - Haymarket Affair (1886); Homestead Strike (1892); Pullman Strike (1894)
+      - "New Immigration" — Southern/Eastern Europeans; Ellis Island (opened 1892)
+      - Chinese Exclusion Act (1882); Jacob Riis "How the Other Half Lives" (1890)
+      - Jane Addams and Hull House (1889); Social Gospel movement
+      - Populism / People's Party; Omaha Platform (1892); William Jennings Bryan "Cross of Gold" (1896)
+      - Pendleton Civil Service Act (1883); Interstate Commerce Act (1887); Tammany Hall
+    source_data:
+      transcontinental_railroad:
+        date: "completed May 10, 1869"
+        location: "Promontory Summit, Utah"
+        notes: >
+          Union Pacific (built westward) and Central Pacific (built eastward) met at
+          Promontory Summit. Central Pacific used ~10,000–15,000 Chinese immigrant laborers.
+          Dramatically reduced coast-to-coast travel from months to days. Accelerated
+          western settlement and economic integration.
+        source: https://en.wikipedia.org/wiki/First_transcontinental_railroad
+      little_bighorn:
+        date: "June 25–26, 1876"
+        location: "Little Bighorn River, Montana Territory"
+        notes: >
+          Lieutenant Colonel George Armstrong Custer's 7th Cavalry was annihilated by Lakota Sioux,
+          Cheyenne, and Arapaho warriors led by Sitting Bull and Crazy Horse. ~268 U.S. soldiers killed.
+          Largest Native American victory in the Great Plains Wars.
+        source: https://en.wikipedia.org/wiki/Battle_of_the_Little_Bighorn
+      wounded_knee:
+        date: "December 29, 1890"
+        location: "Wounded Knee Creek, South Dakota"
+        notes: >
+          U.S. 7th Cavalry killed approximately 250–300 Lakota Sioux men, women, and children.
+          Symbolized the end of armed Native resistance on the Great Plains. Prompted by
+          government fear of the Ghost Dance movement (spiritual revival led by Wovoka).
+        source: https://en.wikipedia.org/wiki/Wounded_Knee_Massacre
+      dawes_act:
+        date: "February 8, 1887"
+        notes: >
+          Also called Dawes Severalty Act. Allotted tribal lands to individual Native families
+          (160 acres per family head). "Surplus" tribal land sold to white settlers. Tribal
+          landholdings fell from ~138 million to ~48 million acres by 1934. Aimed to assimilate
+          Native Americans into individualist American society; devastated tribal cultures.
+        source: https://en.wikipedia.org/wiki/Dawes_Act
+      plessy_v_ferguson:
+        date: "May 18, 1896"
+        notes: >
+          Supreme Court upheld Louisiana's Separate Car Act (requiring separate railroad cars
+          for Black and white passengers). Justice Henry Brown wrote majority opinion establishing
+          "separate but equal" doctrine. Justice John Marshall Harlan wrote the lone dissent.
+          Provided constitutional foundation for Jim Crow segregation until Brown v. Board (1954).
+        source: https://en.wikipedia.org/wiki/Plessy_v._Ferguson
+      carnegie_steel:
+        notes: >
+          Andrew Carnegie used vertical integration — controlling every stage from raw material
+          to finished product (steel mills, iron ore mines, railroads, shipping). Carnegie Steel
+          Company was the largest steel producer in the world by the 1890s. Sold to J.P. Morgan
+          in 1901 for ~$480 million (becoming U.S. Steel). Carnegie then devoted himself to
+          philanthropy — "Gospel of Wealth" essay (1889) argued wealthy had duty to give back.
+        source: https://en.wikipedia.org/wiki/Carnegie_Steel_Company
+      standard_oil:
+        notes: >
+          John D. Rockefeller founded Standard Oil Company of Ohio in 1870. Used horizontal
+          integration — buying out or crushing competitors — to control ~90% of U.S. oil
+          refining by the 1880s. Created the "trust" structure to evade state anti-monopoly laws.
+          Sherman Antitrust Act (1890) passed partly in response; Standard Oil broken up in 1911
+          under Supreme Court order.
+        source: https://en.wikipedia.org/wiki/Standard_Oil
+      haymarket_affair:
+        date: "May 4, 1886"
+        location: "Chicago, Illinois"
+        notes: >
+          Bomb thrown at police during labor rally in Haymarket Square, killing seven officers.
+          Eight anarchists convicted; four executed. Devastated the Knights of Labor (blamed despite
+          no proven connection). AFL (craft unions only) grew as alternative labor organization.
+        source: https://en.wikipedia.org/wiki/Haymarket_affair
+      chinese_exclusion_act:
+        date: "May 6, 1882"
+        notes: >
+          First federal law restricting immigration based on race and nationality. Barred Chinese
+          laborers from entering the U.S. Renewed and extended multiple times; made permanent 1902;
+          repealed 1943. Chinese immigrants processed at Angel Island (San Francisco Bay).
+        source: https://en.wikipedia.org/wiki/Chinese_Exclusion_Act
+      populism:
+        notes: >
+          Farmers' Alliance grew in the 1880s among debt-ridden southern and western farmers.
+          People's Party (Populists) formed 1892; Omaha Platform demanded: free coinage of silver,
+          graduated income tax, government ownership of railroads, direct election of senators.
+          William Jennings Bryan nominated by Democrats and Populists in 1896; "Cross of Gold"
+          speech (July 9, 1896). Lost to William McKinley; Populism collapsed.
+        source: https://en.wikipedia.org/wiki/People%27s_Party_(United_States)
+      hull_house:
+        date: "founded 1889"
+        location: "Chicago, Illinois"
+        notes: >
+          Founded by Jane Addams and Ellen Gates Starr. Settlement house providing social services
+          to immigrant communities in Chicago's Near West Side. Jane Addams won Nobel Peace Prize
+          in 1931. Model for the settlement house movement; ~400 settlement houses by 1910.
+        source: https://en.wikipedia.org/wiki/Hull_House
+
+  - id: 6
+    name: "The Arsenal Corridor"
+    ced_coverage: >
+      Period 7 (1890–1945): Topics 7.2–7.14 — American imperialism, Spanish-American War,
+      Progressivism, World War I, 1920s immigration restriction and culture, Great Depression,
+      New Deal, interwar foreign policy, World War II (mobilization and military), postwar diplomacy
+    target_facts: 65
+    description: >
+      The age of American power from the Spanish-American War through World War II.
+      Players navigate imperialism debates, Progressive Era reforms, WWI and the League of Nations,
+      the Roaring Twenties and Harlem Renaissance, the Great Depression and New Deal, and WWII —
+      from Pearl Harbor through Hiroshima. The longest and most complex period in the deck.
+    key_concepts:
+      - Spanish-American War (1898) — USS Maine, yellow journalism, Rough Riders, Treaty of Paris (1898)
+      - Platt Amendment; Philippine-American War (1899–1902); Roosevelt Corollary (1904)
+      - Alfred Thayer Mahan; Anti-Imperialist League; Hawaiian annexation (1898); Open Door Policy (1899)
+      - Progressivism — muckrakers (Tarbell, Sinclair "The Jungle"); direct democracy reforms
+      - 16th Amendment (income tax, 1913); 17th Amendment (direct election of senators, 1913)
+      - 18th Amendment (Prohibition, 1919); 19th Amendment (women's suffrage, 1920)
+      - Pure Food and Drug Act (1906); NAACP (founded 1909); TR's Square Deal
+      - WWI — Lusitania (1915), Zimmermann Telegram (1917), U.S. entered April 1917
+      - Fourteen Points; Treaty of Versailles; Senate rejection of League of Nations (Henry Cabot Lodge)
+      - Great Migration (WWI phase); Espionage Act (1917); Schenck v. U.S. (1919)
+      - National Origins Act (1924); Red Scare (1919–1920); Palmer Raids; Sacco and Vanzetti
+      - Harlem Renaissance — Langston Hughes, Zora Neale Hurston, Duke Ellington
+      - Prohibition and bootlegging; Scopes Trial (1925); KKK revival (1920s)
+      - Black Tuesday (October 29, 1929); Great Depression; Hoovervilles; Bonus Army (1932)
+      - Smoot-Hawley Tariff (1930); Dust Bowl; Okies; Herbert Hoover's limited response
+      - FDR's New Deal — relief/recovery/reform; CCC, TVA, Social Security Act (1935), Wagner Act (1935)
+      - Pearl Harbor (December 7, 1941); Executive Order 9066 — Japanese American internment
+      - Korematsu v. U.S. (1944); Double V Campaign; Rosie the Riveter; War Production Board
+      - D-Day / Operation Overlord (June 6, 1944); Battle of Midway (1942); island-hopping
+      - Manhattan Project; Hiroshima (August 6, 1945); Nagasaki (August 9, 1945)
+      - Truman Doctrine (1947); Marshall Plan (1948); NATO (1949); Cold War origins
+    source_data:
+      spanish_american_war:
+        date: "April–August 1898"
+        notes: >
+          USS Maine exploded in Havana harbor (February 15, 1898); cause disputed, but yellow
+          journalism (Hearst's New York Journal, Pulitzer's New York World) blamed Spain.
+          Quick U.S. victory. Treaty of Paris (December 10, 1898): Spain ceded Philippines,
+          Puerto Rico, and Guam to U.S.; Cuba nominally independent. Theodore Roosevelt led
+          the "Rough Riders" (1st U.S. Volunteer Cavalry) at the Battle of San Juan Hill.
+        source: https://en.wikipedia.org/wiki/Spanish%E2%80%93American_War
+      progressive_amendments:
+        notes: >
+          16th Amendment (ratified February 3, 1913) — authorized federal income tax.
+          17th Amendment (ratified April 8, 1913) — direct election of U.S. senators by popular vote.
+          18th Amendment (ratified January 16, 1919) — Prohibition (manufacture/sale of alcohol).
+          19th Amendment (ratified August 18, 1920) — women's right to vote.
+        sources:
+          - https://en.wikipedia.org/wiki/Sixteenth_Amendment_to_the_United_States_Constitution
+          - https://en.wikipedia.org/wiki/Nineteenth_Amendment_to_the_United_States_Constitution
+      upton_sinclair_jungle:
+        date: "1906"
+        notes: >
+          "The Jungle" (1906) by Upton Sinclair exposed unsanitary conditions in Chicago meatpacking
+          plants. Aimed to raise awareness of immigrant worker exploitation; public reaction focused
+          on food safety. Led directly to the Pure Food and Drug Act (1906) and Meat Inspection Act (1906).
+        source: https://en.wikipedia.org/wiki/The_Jungle
+      wwi_us_entry:
+        date: "April 6, 1917"
+        notes: >
+          Lusitania sunk by German U-boat (May 7, 1915): 1,198 killed including 128 Americans.
+          Germany's resumption of unrestricted submarine warfare (February 1917) and the
+          Zimmermann Telegram (Germany proposed Mexico join war vs. U.S.) pushed Wilson to ask
+          for a declaration of war. U.S. entered April 6, 1917. AEF under General John Pershing.
+        source: https://en.wikipedia.org/wiki/United_States_in_World_War_I
+      fourteen_points:
+        date: "January 8, 1918"
+        notes: >
+          Woodrow Wilson's peace program: freedom of the seas, self-determination of peoples,
+          open diplomacy, reduction of armaments, and a League of Nations. Treaty of Versailles
+          (June 28, 1919) incorporated some points but imposed harsh reparations on Germany
+          ($33 billion). Senate rejected the treaty (and the League) twice, largely due to
+          opposition led by Henry Cabot Lodge.
+        source: https://en.wikipedia.org/wiki/Fourteen_Points
+      harlem_renaissance:
+        dates: "ca. 1920s–1930s"
+        location: "Harlem, New York City"
+        notes: >
+          Cultural and intellectual flowering of African American arts. Key figures:
+          Langston Hughes (poetry, "I, Too, Sing America"), Zora Neale Hurston (literature),
+          Duke Ellington and Louis Armstrong (jazz), Marcus Garvey (Black nationalism/Pan-Africanism),
+          W.E.B. Du Bois (The Crisis, NAACP). Harlem became the cultural capital of Black America.
+        source: https://en.wikipedia.org/wiki/Harlem_Renaissance
+      great_depression:
+        date: "Black Tuesday: October 29, 1929"
+        notes: >
+          Stock market crash triggered the Great Depression. Unemployment reached ~25% by 1933.
+          Bank failures (9,000 banks failed 1930–1933). Hoover resisted direct federal relief.
+          Smoot-Hawley Tariff (June 1930) raised tariffs to record levels, worsening global depression.
+          Bonus Army (summer 1932): WWI veterans marched on Washington demanding early payment of
+          bonus certificates; driven out by Army under Douglas MacArthur.
+        source: https://en.wikipedia.org/wiki/Great_Depression_in_the_United_States
+      new_deal:
+        dates: "1933–1939"
+        notes: >
+          FDR's "New Deal" — relief, recovery, reform. First Hundred Days (March–June 1933):
+          Emergency Banking Act, CCC (Civilian Conservation Corps), FERA, AAA (Agricultural
+          Adjustment Administration), TVA (Tennessee Valley Authority), NIRA, FDIC.
+          Second New Deal (1935): Social Security Act (August 14, 1935), Wagner Act/NLRA
+          (July 5, 1935), WPA (Works Progress Administration). Court-packing plan (1937) failed.
+        source: https://en.wikipedia.org/wiki/New_Deal
+      pearl_harbor:
+        date: "December 7, 1941"
+        location: "Pearl Harbor, Hawaii"
+        notes: >
+          Japanese naval air attack killed 2,403 Americans, wounded 1,178, destroyed 188 aircraft,
+          and sank/damaged 8 battleships (including USS Arizona). FDR called it "a date which will
+          live in infamy." Congress declared war on Japan December 8, 1941. Germany and Italy
+          declared war on the U.S. December 11, 1941.
+        source: https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor
+      japanese_internment:
+        date: "February 19, 1942"
+        notes: >
+          Executive Order 9066 (signed by FDR) authorized military to exclude persons from
+          designated areas. ~120,000 Japanese Americans (2/3 of whom were U.S. citizens)
+          were interned in ten relocation camps. Korematsu v. U.S. (1944): Supreme Court upheld
+          internment 6-3. U.S. formally apologized and paid reparations ($20,000 per survivor)
+          in the Civil Liberties Act of 1988.
+        source: https://en.wikipedia.org/wiki/Japanese_American_internment
+      d_day:
+        date: "June 6, 1944"
+        location: "Normandy, France"
+        notes: >
+          Operation Overlord — largest amphibious assault in history. ~156,000 Allied troops
+          landed on five beaches (Utah, Omaha, Gold, Juno, Sword). Supreme Allied Commander:
+          General Dwight D. Eisenhower. Opened the long-awaited Western Front; led to liberation
+          of France and ultimate defeat of Nazi Germany.
+        source: https://en.wikipedia.org/wiki/Normandy_landings
+      atomic_bombs:
+        dates:
+          hiroshima: "August 6, 1945"
+          nagasaki: "August 9, 1945"
+        notes: >
+          "Little Boy" (uranium bomb) dropped on Hiroshima — killed ~70,000–80,000 immediately;
+          total deaths estimated 90,000–166,000. "Fat Man" (plutonium bomb) dropped on Nagasaki —
+          killed ~40,000 immediately; total deaths estimated 60,000–80,000. Japan surrendered
+          August 15, 1945 (V-J Day); formal surrender September 2, 1945. Manhattan Project
+          (directed by J. Robert Oppenheimer) developed the bombs.
+        source: https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki
+
+  - id: 7
+    name: "The Atomic Threshold"
+    ced_coverage: >
+      Period 8 (1945–1980): Topics 8.2–8.14 — Cold War policy, Red Scare, postwar economy
+      and suburbanization, postwar culture, early civil rights movement, U.S. as world power,
+      Vietnam War, Great Society, African American civil rights (1960s), expanding civil rights
+      movements, 1960s youth culture, environmentalism, Nixon/Watergate, Carter era, New Right
+    target_facts: 65
+    description: >
+      Cold War America and the long civil rights era. Players navigate from the Korean War
+      and McCarthyism through the suburban baby boom, Brown v. Board of Education, the Great
+      Society, Vietnam and its opposition, the assassinations and upheavals of the 1960s, and
+      Watergate's constitutional crisis. The richest period for movement history and civil rights.
+    key_concepts:
+      - Containment (George Kennan); Korean War (1950–1953); NSC-68 (1950)
+      - McCarthyism; HUAC; Hollywood blacklist; Rosenbergs executed (1953)
+      - GI Bill (1944); Levittown; Interstate Highway Act (1956); baby boom (1946–1964)
+      - Sputnik (1957); NASA created; Space Race; Apollo 11 (1969)
+      - Brown v. Board of Education (1954) — overturned "separate but equal"
+      - Montgomery Bus Boycott (1955–1956); Rosa Parks; Martin Luther King Jr.
+      - Little Rock Crisis (1957); Executive Order 9981 (Truman, 1948, desegregated military)
+      - Greensboro sit-ins (1960); Freedom Rides (1961); Birmingham campaign (1963)
+      - "Letter from Birmingham Jail" (1963); March on Washington and "I Have a Dream" (1963)
+      - Freedom Summer (1964); Bloody Sunday at Selma (1965)
+      - Civil Rights Act (1964); Voting Rights Act (1965); Great Society; Medicare/Medicaid (1965)
+      - Gulf of Tonkin Resolution (1964); Vietnam War escalation; Tet Offensive (1968)
+      - Kent State massacre (1970); Pentagon Papers (1971); Paris Peace Accords (1973)
+      - Black Power (Stokely Carmichael); Black Panther Party; Watts Rebellion (1965)
+      - Chicano movement (Cesar Chavez, Dolores Huerta, UFW); AIM; Stonewall (1969); NOW (1966)
+      - Rachel Carson "Silent Spring" (1962); Earth Day (1970); EPA (1970); OPEC oil embargo (1973)
+      - Nixon's "Southern Strategy"; détente; Nixon visit to China (1972)
+      - Watergate (1972–1974); Nixon resignation (August 9, 1974)
+      - Stagflation; Camp David Accords (1978); Iran hostage crisis (1979)
+      - Rise of the New Right; Moral Majority (Jerry Falwell)
+    source_data:
+      korean_war:
+        date: "1950–1953"
+        notes: >
+          North Korea invaded South Korea June 25, 1950. UN (primarily U.S.) forces under
+          General Douglas MacArthur intervened. China entered the war in October 1950.
+          MacArthur fired by Truman (April 1951) for insubordination over war strategy.
+          Armistice signed July 27, 1953; ceasefire at approximately the 38th parallel —
+          no formal peace treaty. ~36,500 American deaths.
+        source: https://en.wikipedia.org/wiki/Korean_War
+      mccarthy:
+        dates: "1950–1954"
+        notes: >
+          Senator Joseph McCarthy (Republican, Wisconsin) made unsubstantiated claims about
+          communist infiltration of the U.S. government, military, and media. Army-McCarthy
+          hearings (April–June 1954) broadcast on television; Army's attorney Joseph Welch
+          famously asked "Have you no sense of decency?" McCarthy censured by Senate December 1954.
+        source: https://en.wikipedia.org/wiki/McCarthyism
+      brown_v_board:
+        date: "May 17, 1954"
+        notes: >
+          Supreme Court unanimously ruled (Chief Justice Earl Warren) that racial segregation
+          in public schools was unconstitutional, overturning Plessy v. Ferguson. NAACP's
+          Thurgood Marshall argued the case. Brown II (1955) ordered desegregation with
+          "all deliberate speed." Little Rock Central High School crisis (1957): Eisenhower
+          sent 101st Airborne to enforce integration.
+        source: https://en.wikipedia.org/wiki/Brown_v._Board_of_Education
+      montgomery_bus_boycott:
+        date: "December 1, 1955 – December 20, 1956"
+        location: "Montgomery, Alabama"
+        notes: >
+          Rosa Parks arrested for refusing to give up her bus seat (December 1, 1955).
+          381-day boycott of Montgomery city buses organized by the Montgomery Improvement
+          Association led by the 26-year-old Rev. Martin Luther King Jr. Supreme Court ruled
+          bus segregation unconstitutional (Browder v. Gayle, November 1956).
+        source: https://en.wikipedia.org/wiki/Montgomery_bus_boycott
+      march_on_washington:
+        date: "August 28, 1963"
+        location: "Washington, D.C."
+        notes: >
+          ~250,000 people marched on Washington in support of civil rights legislation.
+          MLK Jr. delivered his "I Have a Dream" speech at the Lincoln Memorial. Organized
+          by Bayard Rustin and others; march called for civil and economic rights for Black Americans.
+          Helped build momentum for the Civil Rights Act of 1964.
+        source: https://en.wikipedia.org/wiki/March_on_Washington_for_Jobs_and_Freedom
+      civil_rights_act_1964:
+        date: "July 2, 1964"
+        notes: >
+          Signed by President Lyndon B. Johnson. Banned discrimination based on race, color,
+          religion, sex, or national origin in employment and public accommodations. Created
+          the Equal Employment Opportunity Commission (EEOC). Southern Democrats (Dixiecrats)
+          filibustered for 60 days — longest filibuster in Senate history.
+        source: https://en.wikipedia.org/wiki/Civil_Rights_Act_of_1964
+      voting_rights_act:
+        date: "August 6, 1965"
+        notes: >
+          Signed by LBJ. Prohibited discriminatory voting practices (literacy tests, poll taxes
+          effectively voided by 24th Amendment 1964). Required federal oversight of elections
+          in states with history of discrimination. Bloody Sunday (March 7, 1965) — state
+          troopers attacked marchers at Selma's Edmund Pettus Bridge — catalyzed passage.
+        source: https://en.wikipedia.org/wiki/Voting_Rights_Act_of_1965
+      vietnam_war:
+        dates:
+          gulf_of_tonkin: "August 1964 — resolution passed giving LBJ broad war powers"
+          tet_offensive: "January–February 1968 — NVA/Viet Cong attacks across South Vietnam"
+          kent_state: "May 4, 1970 — National Guard killed four student protesters at Kent State, Ohio"
+          paris_accords: "January 27, 1973 — Paris Peace Accords ended direct U.S. involvement"
+          fall_saigon: "April 30, 1975 — fall of Saigon to North Vietnamese forces"
+        notes: >
+          U.S. peak troop deployment: 543,000 in April 1969. ~58,000 American deaths.
+          Anti-war movement grew significantly after Tet Offensive (1968). Nixon's
+          Vietnamization policy — gradual withdrawal while training South Vietnamese forces.
+        source: https://en.wikipedia.org/wiki/Vietnam_War
+      watergate:
+        dates: "June 17, 1972 – August 9, 1974"
+        notes: >
+          Break-in at Democratic National Committee headquarters in Watergate complex (June 17, 1972)
+          by operatives connected to Nixon's Committee to Re-Elect the President (CREEP).
+          Nixon administration's cover-up became the scandal. Saturday Night Massacre (October 1973):
+          Nixon fired Special Prosecutor Archibald Cox. Nixon faced three articles of impeachment.
+          Resigned August 9, 1974; only president to resign. Gerald Ford pardoned Nixon September 8, 1974.
+        source: https://en.wikipedia.org/wiki/Watergate_scandal
+
+  - id: 8
+    name: "The Digital Frontier"
+    ced_coverage: >
+      Period 9 (1980–present): Topics 9.2–9.6 — Reagan and conservatism, end of the Cold War,
+      changing economy (globalization, technology revolution), immigration changes, challenges of
+      the 21st century (9/11, War on Terror, Great Recession, Obama era, polarization)
+    target_facts: 30
+    description: >
+      The modern era from Reagan's revolution to the digital age. Players encounter Reaganomics
+      and the conservative coalition, the fall of the Berlin Wall and Soviet collapse, NAFTA and
+      globalization, 9/11 and the War on Terror, and the Great Recession. Lighter on facts
+      (only 4–6% of the exam) but heavy on key concepts and recent turning points.
+    key_concepts:
+      - Reagan's election (1980); Reaganomics — supply-side economics, tax cuts, deregulation
+      - Economic Recovery Tax Act (1981); Reagan Doctrine; SDI ("Star Wars"); Iran-Contra Affair
+      - Glasnost and perestroika (Gorbachev); fall of the Berlin Wall (November 9, 1989)
+      - Dissolution of the Soviet Union (December 1991); Gulf War / Operation Desert Storm (1991)
+      - NAFTA (1994); WTO (1995); deindustrialization; internet revolution (World Wide Web, 1991)
+      - Immigration Reform and Control Act (IRCA, 1986); demographic change (Latino/Asian growth)
+      - September 11, 2001 terrorist attacks (~3,000 killed); Al-Qaeda; Osama bin Laden
+      - USA PATRIOT Act; Department of Homeland Security; Afghanistan War (2001); Iraq War (2003)
+      - Great Recession (2008); TARP bank bailout; Obama stimulus (American Recovery and Reinvestment Act)
+      - Barack Obama elected (November 4, 2008) — first African American president
+      - Affordable Care Act (2010); Tea Party movement; political polarization
+      - Black Lives Matter movement; climate change debates; social media's impact on politics
+    source_data:
+      reaganomics:
+        date: "1981 onward"
+        notes: >
+          Reagan's economic program based on supply-side ("trickle-down") economics.
+          Economic Recovery Tax Act (August 13, 1981) cut top marginal income tax rate from 70% to 50%
+          (later to 28% in 1986 Tax Reform Act). Deregulation of industries. Federal deficit grew
+          significantly during Reagan years. Unemployment fell from ~10.8% (1982) to ~5.4% (1988).
+        source: https://en.wikipedia.org/wiki/Reaganomics
+      fall_of_berlin_wall:
+        date: "November 9, 1989"
+        notes: >
+          East German government announced that citizens could cross the Berlin Wall freely.
+          Crowds dismantled the wall. Symbolized the end of the Cold War and communist control
+          of Eastern Europe. Followed by German reunification (October 3, 1990).
+          Soviet Union formally dissolved December 25, 1991 (Gorbachev resigned).
+        source: https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall
+      gulf_war:
+        date: "August 1990 – February 1991"
+        notes: >
+          Iraq (Saddam Hussein) invaded Kuwait (August 2, 1990). UN-authorized coalition of
+          34 nations (led by U.S. under George H.W. Bush) launched Operation Desert Storm
+          (January 17, 1991). Kuwait liberated in 100 hours of ground combat (February 24–28, 1991).
+          Coalition did not march on Baghdad — stopped at Kuwait's liberation.
+        source: https://en.wikipedia.org/wiki/Gulf_War
+      september_11:
+        date: "September 11, 2001"
+        notes: >
+          Al-Qaeda terrorists hijacked four commercial aircraft: two crashed into World Trade Center
+          towers (New York City), one into Pentagon (Arlington, Virginia), one crashed in Pennsylvania
+          (United Flight 93, passenger revolt). ~2,977 killed. Deadliest foreign attack on U.S. soil.
+          Led to USA PATRIOT Act (October 26, 2001), creation of Department of Homeland Security
+          (November 2002), Afghanistan War (October 2001), and Iraq War (March 2003).
+        source: https://en.wikipedia.org/wiki/September_11_attacks
+      great_recession:
+        date: "December 2007 – June 2009"
+        notes: >
+          Caused by collapse of the housing market and mortgage-backed securities. Lehman Brothers
+          bankrupt (September 15, 2008). Bush administration signed TARP (Troubled Asset Relief Program,
+          October 3, 2008) — $700 billion bank bailout. Obama's American Recovery and Reinvestment Act
+          (February 2009) — $787 billion stimulus. Unemployment peaked at 10% (October 2009).
+        source: https://en.wikipedia.org/wiki/Great_Recession
+      obama_presidency:
+        dates: "January 20, 2009 – January 20, 2017"
+        notes: >
+          Barack Obama — first African American president. Won 2008 election (365 electoral votes)
+          over John McCain. Affordable Care Act (ACA, signed March 23, 2010) extended health
+          insurance to ~32 million Americans. Ordered operation that killed Osama bin Laden
+          (May 2, 2011). Won reelection (332 electoral votes) in 2012 vs. Mitt Romney.
+        source: https://en.wikipedia.org/wiki/Barack_Obama
+
+# ============================================================
+# ANSWER TYPE POOLS — 12 pools for distractor selection
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: Person Names — Presidents, reformers, activists, military leaders, explorers
+  # "Who wrote the Federalist Papers?" → "Alexander Hamilton, James Madison, John Jay"
+  - id: person_names
+    label: "Historical Person Names"
+    format: name
+    estimated_count: 80
+    note: >
+      Full names preferred (e.g., "Abraham Lincoln," "Frederick Douglass," "Harriet Tubman").
+      Distractors must be real historical figures from the same era or context.
+      Key confusions: Hamilton/Jefferson (founding era), Lincoln/Douglas (1850s–1860s),
+      Grant/Lee (Civil War), Roosevelt (Theodore vs. Franklin), Carnegie/Rockefeller (Gilded Age),
+      MLK/Malcolm X (civil rights), Wilson/Harding (post-WWI).
+
+  # POOL 2: Document Names — Constitution, Declaration, key legislation titles
+  # "What document declared American independence?" → "Declaration of Independence"
+  - id: document_names
+    label: "Historical Documents & Writings"
+    format: title
+    estimated_count: 35
+    note: >
+      Includes founding documents (Mayflower Compact, Declaration of Independence, Constitution,
+      Bill of Rights, Federalist Papers), key pamphlets (Common Sense), landmark reports
+      (Hamilton's Report on Manufactures), and influential books ("The Jungle," "Uncle Tom's Cabin,"
+      "Silent Spring," "The Feminine Mystique"). Distractors must be real documents from the same era.
+
+  # POOL 3: Event Names — Battles, treaties, crises, movements, massacres
+  # "What 1777 battle convinced France to ally with the Americans?" → "Battle of Saratoga"
+  - id: event_names
+    label: "Historical Events & Battles"
+    format: term
+    estimated_count: 50
+    note: >
+      Wars, battles, rebellions, strikes, constitutional crises, massacres, movements.
+      Key confusions: Treaty of Paris (1763) vs. Treaty of Paris (1783) vs. Treaty of Paris (1898);
+      Great Railroad Strike vs. Homestead Strike vs. Pullman Strike; Haymarket vs. Homestead;
+      First Great Awakening vs. Second Great Awakening.
+
+  # POOL 4: Year Dates — Specific years for wars, amendments, landmark decisions
+  # "In what year did the U.S. drop atomic bombs on Japan?" → "1945"
+  - id: year_dates
+    label: "Historical Years & Dates"
+    format: year
+    estimated_count: 40
+    note: >
+      Key years every APUSH student must memorize: 1492, 1607, 1620, 1776, 1787, 1803, 1820, 1848,
+      1863, 1865, 1868, 1870, 1898, 1917, 1920, 1929, 1933, 1941, 1945, 1954, 1964, 1965, 1973, 1991.
+      Distractors must be plausible nearby years (±5–10 years).
+
+  # POOL 5: Concept Terms — Manifest Destiny, containment, federalism, etc.
+  # "The belief that U.S. expansion to the Pacific was God-given is called?" → "Manifest Destiny"
+  - id: concept_terms
+    label: "Historical Concepts & Political Terms"
+    format: term
+    estimated_count: 50
+    note: >
+      Political, economic, social, and philosophical concepts. Includes: mercantilism, federalism,
+      nullification, popular sovereignty, sectionalism, containment, détente, Reaganomics,
+      social contract, judicial review, social Darwinism, supply-side economics, isolationism.
+      Key confusions: nullification/secession, mercantilism/laissez-faire, containment/détente.
+
+  # POOL 6: Place Names — Colonies, territories, battle sites, cities
+  # "Where did the Constitutional Convention meet in 1787?" → "Philadelphia"
+  - id: place_names
+    label: "Historical Place Names"
+    format: place
+    estimated_count: 30
+    note: >
+      Colonies (Virginia, Massachusetts), territories (Louisiana Territory, Mexican Cession),
+      battle sites (Saratoga, Gettysburg, Antietam, Little Bighorn), cities (Boston, Philadelphia,
+      New York, Chicago, Selma), geographic features (Mississippi River, Ohio River, 49th parallel).
+
+  # POOL 7: Legislation Names — Acts, amendments, executive orders
+  # "What 1862 law offered 160 acres of federal land to settlers?" → "Homestead Act"
+  - id: legislation_names
+    label: "Laws, Acts & Amendments"
+    format: title
+    estimated_count: 45
+    note: >
+      Congressional acts, constitutional amendments, executive orders, treaties. Key laws:
+      Navigation Acts, Stamp Act, Northwest Ordinance, Missouri Compromise, Kansas-Nebraska Act,
+      Homestead Act, Sherman Antitrust Act, Pure Food and Drug Act, Wagner Act, Social Security Act,
+      Civil Rights Act of 1964, Voting Rights Act of 1965, NAFTA.
+      Key confusions: Alien and Sedition Acts vs. Espionage/Sedition Acts (WWI);
+      Homestead Act vs. Dawes Act; Sherman vs. Clayton Antitrust.
+
+  # POOL 8: Supreme Court Cases — Landmark decisions
+  # "What 1954 case overturned school segregation?" → "Brown v. Board of Education"
+  - id: supreme_court_cases
+    label: "Supreme Court Cases"
+    format: case_name
+    estimated_count: 20
+    syntheticDistractors:
+      - "Gibbons v. Ogden (1824)"
+      - "McCulloch v. Maryland (1819)"
+      - "Hammer v. Dagenhart (1918)"
+    note: >
+      Key cases by period: Marbury v. Madison (1803), Worcester v. Georgia (1832), Dred Scott
+      v. Sandford (1857), Plessy v. Ferguson (1896), Schenck v. U.S. (1919), Korematsu v. U.S.
+      (1944), Brown v. Board of Education (1954), Roe v. Wade (1973), U.S. v. Nixon (1974).
+      Key confusions: Plessy vs. Brown; Marbury vs. McCulloch; Korematsu vs. Schenck.
+
+  # POOL 9: Movement Names — Abolitionism, progressivism, civil rights, suffrage
+  # "What movement demanded immediate end to slavery?" → "Abolitionism"
+  - id: movement_names
+    label: "Political & Social Movements"
+    format: term
+    estimated_count: 20
+    note: >
+      Great Awakening, Transcendentalism, abolitionism, women's suffrage movement, Populism,
+      Progressivism, Prohibition movement, Harlem Renaissance, New Deal coalition, McCarthyism,
+      civil rights movement, Black Power, Chicano movement, feminism (second wave), New Right.
+      Key confusions: First vs. Second Great Awakening; Populism vs. Progressivism.
+
+  # POOL 10: Treaty Names — Paris, Versailles, Guadalupe Hidalgo, Ghent
+  # "What 1848 treaty ended the Mexican-American War?" → "Treaty of Guadalupe Hidalgo"
+  - id: treaty_names
+    label: "Treaties & International Agreements"
+    format: title
+    estimated_count: 15
+    syntheticDistractors:
+      - "Treaty of Tordesillas (1494)"
+      - "Adams-Onís Treaty (1819)"
+      - "Rush-Bagot Agreement (1817)"
+    note: >
+      Key treaties: Tordesillas (1494), Paris (1763), Paris (1783), Ghent (1814), Guadalupe
+      Hidalgo (1848), Paris (1898), Versailles (1919), Washington Naval (1922), Kellogg-Briand
+      (1928), NATO (1949). Distractors must be different treaties from the same era or topic.
+
+  # POOL 11: Bracket Numbers — numeric answers
+  # "How many amendments are in the Bill of Rights?" → "10"
+  - id: bracket_numbers
+    label: "Numeric Answers"
+    format: number
+    estimated_count: 25
+    note: >
+      Key numbers: 1492, 1776, 1787, 1803, 1820 (36°30' line), 1863, 13th/14th/15th amendments,
+      1954, 1964, 1965; counts (3/5 compromise, 10 amendments, 27 total amendments);
+      battle casualties; tariff percentages; election vote counts; unemployment percentages.
+      Distractors must be numerically plausible (nearby years or counts).
+
+  # POOL 12: Economic Terms — tariffs, monetary policy, New Deal programs, industrial concepts
+  # "Andrew Carnegie's strategy of controlling raw materials through final product is called?" → "Vertical integration"
+  - id: economic_terms
+    label: "Economic Concepts & Programs"
+    format: term
+    estimated_count: 25
+    note: >
+      Mercantilism, laissez-faire, tariff, free silver, gold standard, supply-side economics,
+      vertical integration, horizontal integration, trust, monopoly, Keynesian economics,
+      stagflation, NAFTA. New Deal programs: CCC, TVA, AAA, WPA, FDIC, Social Security Act,
+      Wagner Act. Key confusions: vertical vs. horizontal integration; gold vs. silver standard;
+      Keynesian vs. supply-side economics.
+
+# ============================================================
+# EXAM TAGS SCHEMA — CED-aligned metadata for each fact
+# ============================================================
+
+exam_tags_schema:
+  description: >
+    Every fact MUST include an examTags object. These drive difficulty calibration
+    and allow filtering by CED period/topic for targeted study.
+
+  fields:
+    period:
+      type: integer
+      range: [1, 9]
+      description: "CED period number (1=1491–1607 through 9=1980–present)"
+    topic:
+      type: string
+      description: "CED topic code, e.g. '3.4' (Period 3, Topic 4)"
+    ced_theme:
+      type: string
+      enum: ["NAT", "WXT", "GEO", "MIG", "PCE", "WOR", "ARC", "SOC"]
+      description: "Primary CED thematic learning objective for this fact"
+      required: false
+    exam_weight:
+      type: string
+      enum: ["high", "medium", "low"]
+      description: >
+        Estimated AP exam frequency. High = appears most years,
+        medium = appears some years, low = depth/enrichment content.
+        Periods 3–8 (10–17% each) — most high-weight facts live here.
+        Periods 1, 2, 9 (4–8% each) — fewer high-weight facts.
+    is_person_fact:
+      type: boolean
+      description: "True if the fact is primarily about attributing an action/work to a historical figure"
+    is_document_fact:
+      type: boolean
+      description: "True if the fact is about a specific primary source document, law, or speech"
+    is_court_case:
+      type: boolean
+      description: "True if the fact is about a landmark Supreme Court decision"
+
+  example: >
+    examTags:
+      period: 5
+      topic: "5.6"
+      ced_theme: "PCE"
+      exam_weight: "high"
+      is_person_fact: false
+      is_document_fact: true
+      is_court_case: true
+
+# ============================================================
+# SYNONYM GROUPS — Terms that should never distract each other
+# ============================================================
+
+synonym_groups:
+
+  # Treaty name variants (same treaty, different common names)
+  - id: treaty_paris_1763_variants
+    members: ["Treaty of Paris (1763)", "Peace of Paris (1763)", "Treaty of Paris 1763"]
+    reason: "Same treaty — ended French and Indian War"
+
+  - id: treaty_paris_1783_variants
+    members: ["Treaty of Paris (1783)", "Peace of Paris (1783)", "Treaty of Paris 1783"]
+    reason: "Same treaty — ended Revolutionary War"
+
+  - id: treaty_paris_1898_variants
+    members: ["Treaty of Paris (1898)", "Treaty of Paris 1898"]
+    reason: "Same treaty — ended Spanish-American War"
+
+  # Amendment variants
+  - id: thirteenth_amendment_variants
+    members: ["13th Amendment", "Thirteenth Amendment", "13th Amendment (1865)"]
+    reason: "All refer to the same constitutional amendment abolishing slavery"
+
+  - id: fourteenth_amendment_variants
+    members: ["14th Amendment", "Fourteenth Amendment", "14th Amendment (1868)"]
+    reason: "All refer to the same amendment establishing citizenship and equal protection"
+
+  - id: fifteenth_amendment_variants
+    members: ["15th Amendment", "Fifteenth Amendment", "15th Amendment (1870)"]
+    reason: "All refer to the same amendment granting Black male suffrage"
+
+  # Person name variants
+  - id: fdr_variants
+    members: ["FDR", "Franklin D. Roosevelt", "Franklin Delano Roosevelt", "Franklin Roosevelt"]
+    reason: "All refer to the same president"
+
+  - id: tr_variants
+    members: ["TR", "Theodore Roosevelt", "Teddy Roosevelt"]
+    reason: "All refer to the same president"
+
+  - id: mlk_variants
+    members: ["MLK", "Martin Luther King Jr.", "Martin Luther King", "Rev. King"]
+    reason: "All refer to the same civil rights leader"
+
+  - id: lincoln_variants
+    members: ["Lincoln", "Abraham Lincoln", "Honest Abe"]
+    reason: "All refer to the same president"
+
+  - id: jackson_variants
+    members: ["Jackson", "Andrew Jackson", "Old Hickory"]
+    reason: "All refer to the same president — distinguish from Jesse Jackson or Stonewall Jackson in context"
+
+  # Act name variants
+  - id: civil_rights_act_1964_variants
+    members: ["Civil Rights Act of 1964", "Civil Rights Act (1964)", "1964 Civil Rights Act"]
+    reason: "Same legislation — distinguish from Civil Rights Act of 1875 or 1957 in context"
+
+  - id: voting_rights_act_variants
+    members: ["Voting Rights Act of 1965", "Voting Rights Act (1965)", "1965 Voting Rights Act"]
+    reason: "Same legislation"
+
+  - id: homestead_act_variants
+    members: ["Homestead Act", "Homestead Act of 1862", "Homestead Act (1862)"]
+    reason: "Same legislation"
+
+  # Doctrine/concept variants
+  - id: manifest_destiny_variants
+    members: ["Manifest Destiny", "manifest destiny"]
+    reason: "Same concept — capitalization varies"
+
+  - id: new_deal_variants
+    members: ["New Deal", "FDR's New Deal", "Roosevelt's New Deal"]
+    reason: "All refer to the same policy program"
+
+  # War name variants
+  - id: french_indian_war_variants
+    members: ["French and Indian War", "Seven Years' War", "Seven Years War (American theater)"]
+    reason: >
+      The French and Indian War was the North American theater of the Seven Years' War.
+      Both names are used in APUSH — flag for QA to ensure question context specifies which term is expected.
+    flag_for_qa: true
+
+  - id: civil_war_variants
+    members: ["Civil War", "American Civil War", "War Between the States", "War of Northern Aggression"]
+    reason: >
+      All refer to the same conflict. 'War Between the States' is a Lost Cause term — flag for QA
+      if used as a correct answer to ensure question doesn't inadvertently validate revisionist framing.
+    flag_for_qa: true
+
+  - id: wwi_variants
+    members: ["World War I", "WWI", "World War 1", "The Great War", "First World War"]
+    reason: "All refer to the same global conflict 1914–1918"
+
+  - id: wwii_variants
+    members: ["World War II", "WWII", "World War 2", "Second World War"]
+    reason: "All refer to the same global conflict 1939–1945"
+
+# ============================================================
+# COMMON CONFUSIONS — Priority distractor pairs
+# ============================================================
+
+common_confusions:
+  # Treaty confusions (three Treaties of Paris!)
+  - ["Treaty of Paris (1763)", "Treaty of Paris (1783)"]   # Ended French & Indian War vs. Revolution
+  - ["Treaty of Paris (1783)", "Treaty of Paris (1898)"]   # Ended Revolution vs. Spanish-American War
+  - ["Treaty of Guadalupe Hidalgo", "Treaty of Paris (1898)"]  # Mexican-American War vs. Spanish-American War
+
+  # Compromise confusions
+  - ["Missouri Compromise", "Compromise of 1850"]         # 36°30' line vs. California statehood deal
+  - ["Kansas-Nebraska Act", "Missouri Compromise"]        # Repeal of Missouri Compromise
+  - ["Compromise of 1877", "Compromise of 1850"]         # End of Reconstruction vs. California statehood
+
+  # Amendment confusions
+  - ["13th Amendment", "14th Amendment"]                   # Abolished slavery vs. citizenship/equal protection
+  - ["14th Amendment", "15th Amendment"]                   # Equal protection vs. voting rights
+  - ["16th Amendment", "17th Amendment"]                   # Income tax vs. direct election of senators
+  - ["18th Amendment", "19th Amendment"]                   # Prohibition vs. women's suffrage
+
+  # Legislative confusions
+  - ["Homestead Act", "Dawes Act"]                         # Land for settlers vs. allotment of tribal land
+  - ["Sherman Antitrust Act", "Clayton Antitrust Act"]    # 1890 vs. 1914
+  - ["Civil Rights Act of 1964", "Voting Rights Act of 1965"]  # Public accommodations vs. voting
+  - ["Embargo Act", "Navigation Acts"]                     # Jefferson's 1807 vs. colonial-era mercantilism
+
+  # Presidential/era confusions
+  - ["Jacksonian Democracy", "Jeffersonian Democracy"]    # 1820s–1840s vs. 1800s–1810s
+  - ["New Deal", "Great Society"]                          # FDR vs. LBJ programs
+  - ["Truman Doctrine", "Marshall Plan"]                   # Containment aid vs. economic reconstruction
+  - ["Monroe Doctrine", "Roosevelt Corollary"]            # 1823 original vs. 1904 extension
+  - ["Reaganomics", "Keynesian economics"]                 # Supply-side vs. demand-side
+
+  # Civil War/Reconstruction confusions
+  - ["Emancipation Proclamation", "13th Amendment"]       # Executive order vs. constitutional amendment
+  - ["Black Codes", "Jim Crow laws"]                       # Immediate post-war vs. Gilded Age segregation
+  - ["Freedmen's Bureau", "Underground Railroad"]         # Post-war institution vs. antebellum escape network
+  - ["Radical Reconstruction", "Presidential Reconstruction"]  # Congressional vs. executive approach
+
+  # Person confusions
+  - ["Hamilton", "Jefferson"]                              # National bank advocate vs. agrarian states'-rights
+  - ["Grant", "Lee"]                                       # Union vs. Confederate general
+  - ["Carnegie", "Rockefeller"]                            # Steel/vertical integration vs. oil/horizontal
+  - ["Booker T. Washington", "W.E.B. Du Bois"]           # Accommodation vs. civil rights confrontation
+  - ["Stanton", "Anthony"]                                 # Declaration of Sentiments vs. 19th Amendment face
+  - ["Garrison", "Douglass"]                               # White abolitionist editor vs. formerly enslaved speaker
+  - ["MLK", "Malcolm X"]                                   # Nonviolent direct action vs. Black nationalism
+  - ["Polk", "Jackson"]                                    # Manifest Destiny expansionist vs. Indian Removal
+
+  # Court case confusions
+  - ["Plessy v. Ferguson", "Brown v. Board of Education"] # Established vs. overturned separate but equal
+  - ["Marbury v. Madison", "McCulloch v. Maryland"]       # Judicial review vs. implied powers/national bank
+  - ["Dred Scott v. Sandford", "Plessy v. Ferguson"]     # Enslaved not citizens vs. separate but equal
+  - ["Korematsu v. U.S.", "Schenck v. U.S."]             # Internment vs. clear and present danger
+
+  # Concept confusions
+  - ["nullification", "secession"]                        # Declaring law void vs. leaving the Union
+  - ["popular sovereignty", "states' rights"]             # Territorial self-determination vs. state power over federal
+  - ["isolationism", "containment"]                       # Avoiding foreign entanglements vs. stopping communism
+  - ["vertical integration", "horizontal integration"]    # Controlling production chain vs. eliminating competition
+  - ["Social Darwinism", "Social Gospel"]                 # Inequality is natural vs. Christianity demands reform
+  - ["mercantilism", "laissez-faire"]                     # Government-directed trade vs. free market
+
+# ============================================================
+# DIFFICULTY TIERS
+# ============================================================
+
+difficulty_tiers:
+  easy:
+    description: "Core facts every APUSH student encounters in first pass"
+    examples:
+      - "Year of the Declaration of Independence: 1776"
+      - "Battle that turned the Civil War: Gettysburg (1863)"
+      - "FDR's economic program during the Depression: New Deal"
+      - "1954 Supreme Court case overturning school segregation: Brown v. Board of Education"
+      - "'No taxation without representation' — American grievance before the Revolution"
+  medium:
+    description: "Precise distinctions, secondary figures, and exact legislation"
+    examples:
+      - "Difference between 13th, 14th, and 15th Amendments"
+      - "Which compromise established the 36°30' line: Missouri Compromise (1820)"
+      - "Who wrote Federalist No. 10 and what was its argument"
+      - "Haymarket Affair vs. Homestead Strike — which year, which union"
+      - "Dawes Act (1887) vs. Indian Removal Act (1830) — different goals and eras"
+  hard:
+    description: "Multi-concept integration, nuanced causation, and lesser-known connections"
+    examples:
+      - "Why Bacon's Rebellion (1676) accelerated the shift to enslaved African labor"
+      - "How the Zimmermann Telegram (1917) differed from the Lusitania sinking as a cause of WWI entry"
+      - "Schenck v. U.S. (1919) 'clear and present danger' test applied to which specific law"
+      - "Virginia and Kentucky Resolutions (1798) as precursor to nullification doctrine"
+      - "Distinguishing Presidential vs. Radical Reconstruction in terms of specific policies"
+
+# ============================================================
+# NOTES
+# ============================================================
+notes: >
+  AP U.S. HISTORY CED PERIOD WEIGHTS (exam distribution, Fall 2023):
+  Period 1 (1491–1607): 4–6%
+  Period 2 (1607–1754): 6–8%
+  Period 3 (1754–1800): 10–17%
+  Period 4 (1800–1848): 10–17%
+  Period 5 (1844–1877): 10–17%
+  Period 6 (1865–1898): 10–17%
+  Period 7 (1890–1945): 10–17%
+  Period 8 (1945–1980): 10–17%
+  Period 9 (1980–present): 4–6%
+
+  OVERLAPPING PERIODS: Periods 4/5 overlap (1844–1848) and Periods 6/7 overlap (1890–1898).
+  Facts in the overlap zone should be assigned to the period that best contextualizes them.
+  Mexican-American War (1846–1848) belongs in Period 5 (it leads into sectional crisis).
+  Spanish-American War (1898) belongs in Period 7 (it leads into Progressive Era imperialism).
+
+  FACT SOURCING REMINDER:
+  All dates, names, and claims in this architecture file have been verified against
+  Wikipedia sources. Fact generation workers must FORMAT this pre-verified data into
+  DeckFact JSON — they must NOT invent additional facts or "fill in" details not present here.
+  Any facts beyond what is explicitly listed in source_data sections must have new source_data
+  entries added before generation begins.
+
+  GENERATION PRIORITY (highest exam frequency first):
+  1. legislation_names pool facts — acts, amendments (appear on nearly every exam)
+  2. event_names pool facts — battles, crises, movements (high exam frequency)
+  3. person_names pool facts — presidents, reformers, activists, military leaders
+  4. supreme_court_cases pool facts — landmark cases (appear consistently)
+  5. concept_terms pool facts — broad vocabulary across all periods
+  6. document_names pool facts — founding documents and key primary sources
+  7. year_dates pool facts — specific dates students must memorize
+  8. economic_terms pool facts — industrial capitalism, monetary policy
+
+  PERSON ATTRIBUTION is critical for APUSH:
+  ~20–30% of exam questions involve matching historical figures to their actions/writings.
+  Every chain theme must include person-attribution facts, not just concept facts.
+
+  DOCUMENT ATTRIBUTION matters significantly:
+  Students must know: who wrote it (Common Sense → Paine, Declaration → Jefferson drafted),
+  when it was written (1776, 1787), and what argument it made (natural rights, consent of governed).
+
+  VOLATILE DATA:
+  Period 9 facts closest to the present are subject to reinterpretation. Avoid facts about
+  ongoing legal battles or policy outcomes that may change. Focus on established historical events
+  with clear dates and outcomes (9/11, Great Recession, Obama election, ACA passage).
+
+  CHAIN THEME SELECTION AT RUNTIME:
+  Each run should select ≥3 chain themes. Given 9 themes, standard runs use 3–4 themes.
+  Weighting should favor Periods 3–8 themes (higher exam weight) over Periods 1, 2, and 9.
