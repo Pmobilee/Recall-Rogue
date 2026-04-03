@@ -1220,10 +1220,13 @@ export function getMasteryStats(mechanicId: string, level: number): MasteryLevel
   // Compute AP reduction from old apCostReductionAtLevels system.
   const apReductions = def?.apCostReductionAtLevels?.filter(l => clampedLevel >= l).length ?? 0;
 
-  // Compute tags from addTagAtLevel.
+  // Compute tags from addTagAtLevel and addTagsAtLevel.
   const tags: string[] = [];
   if (def?.addTagAtLevel && clampedLevel >= def.addTagAtLevel[0]) {
     tags.push(def.addTagAtLevel[1]);
+  }
+  if (def?.addTagsAtLevel && clampedLevel >= def.addTagsAtLevel[0]) {
+    tags.push(...def.addTagsAtLevel[1]);
   }
 
   return {
@@ -1247,6 +1250,8 @@ export interface MasteryUpgradeDef {
   apCostReductionAtLevels?: number[];
   /** Tag added at a specific level. [level, tagName] */
   addTagAtLevel?: [number, string];
+  /** Multiple tags added at a specific level. [level, tagNames[]] */
+  addTagsAtLevel?: [number, string[]];
   /** Maximum mastery level this mechanic can reach (default: MASTERY_MAX_LEVEL). */
   maxLevel?: number;
 }
@@ -1272,19 +1277,19 @@ export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
   thorns:        { perLevelDelta: 1.2, secondaryPerLevelDelta: 0.6 }, // primary 0 -> 6 (L5); retaliate 3 -> 6 (L5)
   // Buffs
   empower:       { perLevelDelta: 2.0 },                         // 35 -> 45% (L5) — Modest, already strong multiplicatively
-  mirror:        { perLevelDelta: 0.03 },                        // 1.0 -> 1.15× (L5) — Modest, multiplier on multiplier
-  adapt:         { perLevelDelta: 0.03 },                        // 1.0 -> 1.15× (L5) — Modest
+  mirror:        { perLevelDelta: 0.03, addTagAtLevel: [3, 'mirror_chain_inherit'] },  // 1.0 -> 1.15× (L5) — Modest; L3: copy inherits chain type
+  adapt:         { perLevelDelta: 0.03, addTagsAtLevel: [3, ['adapt_draw1', 'adapt_dual']] }, // 1.0 -> 1.15× (L5); L3: draw 1 + does both forms
   // Debuffs
   weaken:        { perLevelDelta: 0.3 },                         // 1 -> 2.5t (L5) — Solid
   expose:        { perLevelDelta: 0.3 },                         // 1 -> 2.5t (L5) — Solid
   slow:          { perLevelDelta: 0.3 },                         // 1 -> 2.5t (L5) — Solid
   hex:           { perLevelDelta: 0.4 },                         // 2 -> 4/t (L5) — Solid
   // Utility
-  scout:         { perLevelDelta: 0, addTagAtLevel: [3, 'draw'] }, // +1 draw at L3 (via tag)
-  recycle:       { perLevelDelta: 0.12 },                        // slight nerf
+  scout:         { perLevelDelta: 0, addTagsAtLevel: [3, ['draw', 'scout_scry2']] }, // +1 draw at L3; scry 2 at L3
+  recycle:       { perLevelDelta: 0.12, addTagAtLevel: [3, 'recycle_discard_pick'] }, // slight nerf; L3: player chooses from discard
   foresight:     { perLevelDelta: 0, secondaryPerLevelDelta: 0.12 }, // slight nerf
   quicken:       { perLevelDelta: 0, addTagAtLevel: [3, 'draw'], maxLevel: 3 },
-  cleanse:       { perLevelDelta: 0, maxLevel: 2 },              // binary — no scaling
+  cleanse:       { perLevelDelta: 0, addTagsAtLevel: [2, ['cleanse_heal3', 'cleanse_block3']], maxLevel: 2 }, // L2: also heal 3 and block 3
   focus:         { perLevelDelta: 0, secondaryPerLevelDelta: 0.12 }, // slight nerf
   immunity:      { perLevelDelta: 0, maxLevel: 2 },              // binary
   overclock:     { perLevelDelta: 0, apCostReductionAtLevels: [3], maxLevel: 3 }, // AP-1 at L3
@@ -1310,19 +1315,19 @@ export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
 
   // Burn cards
   kindle:            { perLevelDelta: 0.4, secondaryPerLevelDelta: 0.8 }, // 2+4 -> 4+8 (L5) — Solid 2×, burn does ongoing dmg
-  ignite:            { perLevelDelta: 0.4 },                         // 2 -> 4 (L5) — Modest 2×, burn payoff is elsewhere
+  ignite:            { perLevelDelta: 0.4, addTagAtLevel: [3, 'ignite_2attacks'] },   // 2 -> 4 (L5); L3: applies to next 2 attacks
 
   // Basic new cards
   overcharge:        { perLevelDelta: 0.9 },                         // 3 -> 7 (L5) — Solid 2.5×
   riposte:           { perLevelDelta: 0.9, secondaryPerLevelDelta: 1.2 }, // 3+4 -> 7+10 (L5) — Solid
   absorb:            { perLevelDelta: 0.6, addTagAtLevel: [3, 'draw2'] }, // 3 -> 6 (L5) — Modest 2×
   reactive_shield:   { perLevelDelta: 0.4, addTagAtLevel: [3, 'thorns_ext'] }, // 2 -> 4 (L5) — Modest 2×
-  sift:              { perLevelDelta: 0.4 },                         // look 3 -> look 5 (L5) — nerf
-  scavenge:          { perLevelDelta: 0, addTagAtLevel: [3, 'scavenge2'], maxLevel: 3 }, // L3: QP puts 2 on top
+  sift:              { perLevelDelta: 0.4, addTagsAtLevel: [3, ['sift_draw1', 'sift_discard_dmg2']] }, // look 3->look 5; L3: draw 1, discards deal 2 dmg
+  scavenge:          { perLevelDelta: 0, addTagsAtLevel: [3, ['scavenge2', 'scavenge_draw1']], maxLevel: 3 }, // L3: puts 2 on top + draw 1
   precision_strike:  { perLevelDelta: 1.2, addTagAtLevel: [3, 'timer_ext75'] }, // 8 -> 14 (L5) — Modest 1.75×, L3 +75% timer is very powerful
   stagger:           { perLevelDelta: 0, addTagAtLevel: [3, 'weak_apply'], maxLevel: 3 }, // L3: QP applies 1t Weakness
   corrode:           { perLevelDelta: 0.6, addTagAtLevel: [3, 'weak_ext'] }, // 3 -> 6 (L5) — Modest 2×
-  swap:              { perLevelDelta: 0, addTagAtLevel: [3, 'draw3cc'], maxLevel: 3 }, // L3: CC draws 3
+  swap:              { perLevelDelta: 0, addTagAtLevel: [3, 'swap_cc_draw3'], maxLevel: 3 }, // L3: CC draws 3
   siphon_strike:     { perLevelDelta: 0.6, addTagAtLevel: [3, 'min_heal3'] }, // 3 -> 6 (L5) — Modest 2×, L3 heal is strong
   aegis_pulse:       { perLevelDelta: 0.6, addTagAtLevel: [3, 'chain_buff3'] }, // 3 -> 6 (L5) — Modest 2×
 
@@ -1343,7 +1348,7 @@ export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
 
   // Buffs
   warcry:            { perLevelDelta: 0, addTagAtLevel: [3, 'warcry_perm_str'], maxLevel: 3 }, // L3 QP: +1 permanent Str
-  battle_trance:     { perLevelDelta: 0, addTagAtLevel: [3, 'battle_trance_draw4'], maxLevel: 3 }, // L3 QP: draw 4
+  battle_trance:     { perLevelDelta: 0, addTagsAtLevel: [3, ['battle_trance_draw4', 'trance_cc_ap1']], maxLevel: 3 }, // L3 QP: draw 4; CC grants +1 AP
 
   // Debuffs
   curse_of_doubt:    { perLevelDelta: 3.0 },                         // 20 -> 35% (L5) — Solid
@@ -1354,8 +1359,8 @@ export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
   phase_shift:       { perLevelDelta: 1.2 },                         // 4 -> 10 (L5) — Solid 2.5×
   chameleon:         { perLevelDelta: 0, addTagAtLevel: [3, 'chameleon_qp_chain'], maxLevel: 3 }, // L3 QP: also inherits chain type
   dark_knowledge:    { perLevelDelta: 0.6 },                         // 3 -> 6 (L5) — Solid 2×
-  chain_anchor:      { perLevelDelta: 0, addTagAtLevel: [3, 'chain_anchor_3'], maxLevel: 3 }, // L3 CC: sets chain to 3
-  unstable_flux:     { perLevelDelta: 0, addTagAtLevel: [3, 'unstable_flux_qp_choice'], maxLevel: 3 }, // L3 QP: choose 1 of 2 options
+  chain_anchor:      { perLevelDelta: 0, addTagsAtLevel: [3, ['chain_anchor_set3', 'chain_anchor_ap0']], maxLevel: 3 }, // L3: CC sets chain to 3; costs 0 AP
+  unstable_flux:     { perLevelDelta: 0, addTagsAtLevel: [3, ['flux_choose_qp', 'flux_double']], maxLevel: 3 }, // L3: QP lets player choose; effect fires twice
 
   // ── AR-208: Phase 3 Advanced / Chase Cards ────────────────────────────────
 
@@ -1372,27 +1377,27 @@ export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
   ironhide:          { perLevelDelta: 1.0, addTagAtLevel: [3, 'ironhide_perm_qp'], maxLevel: 3 }, // 3 -> 6 (L3) — Modest 2×
 
   // Buffs
-  frenzy:            { perLevelDelta: 0, addTagAtLevel: [3, 'frenzy_qp3'], maxLevel: 3 },       // L3 QP: frees 3 cards
-  mastery_surge:     { perLevelDelta: 0, addTagAtLevel: [3, 'mastery_surge_qp2'], maxLevel: 3 },// L3 QP: upgrades 2 cards
+  frenzy:            { perLevelDelta: 0, addTagsAtLevel: [3, ['frenzy_qp3', 'frenzy_draw1']], maxLevel: 3 }, // L3: QP frees 3 cards; also draw 1
+  mastery_surge:     { perLevelDelta: 0, addTagsAtLevel: [3, ['mastery_surge_qp2', 'msurge_plus2']], maxLevel: 3 }, // L3: QP upgrades 2; CC gives +2 mastery per card
   war_drum:          { perLevelDelta: 0.1, maxLevel: 5 },                            // 1 -> 1.5 buff (L5) — very conservative, buffs ALL hand cards
 
   // Debuffs
   entropy:           { perLevelDelta: 0.7, addTagAtLevel: [3, 'entropy_poison_qp'], maxLevel: 3 }, // 2 -> 4 (L3) — Solid
 
   // Utility
-  archive:           { perLevelDelta: 0, addTagAtLevel: [3, 'archive_retain2_qp'], maxLevel: 3 }, // L3 QP: retains 2 cards
-  reflex:            { perLevelDelta: 0, addTagAtLevel: [3, 'reflex_enhanced'], maxLevel: 3 },    // L3: QP draws 3; passive = 4 block
-  recollect:         { perLevelDelta: 0, addTagAtLevel: [3, 'recollect_qp2'], maxLevel: 3 },      // L3 QP: returns 2 exhausted
-  synapse:           { perLevelDelta: 0, addTagAtLevel: [3, 'synapse_draw3_qp'], maxLevel: 3 },   // L3 QP: draws 3
-  siphon_knowledge:  { perLevelDelta: 0, addTagAtLevel: [3, 'siphon_qp3_time4s'], maxLevel: 3 },  // L3 QP: draws 3 + 4s preview
-  tutor:             { perLevelDelta: 0, addTagAtLevel: [3, 'tutor_free_qp'], maxLevel: 3 },      // L3 QP: tutored card costs 0
+  archive:           { perLevelDelta: 0, addTagsAtLevel: [3, ['archive_retain2_qp', 'archive_block2_per', 'archive_draw1']], maxLevel: 3 }, // L3: retain 2 QP; retained cards +2 block; draw 1
+  reflex:            { perLevelDelta: 0, addTagsAtLevel: [3, ['reflex_enhanced', 'reflex_draw3cc']], maxLevel: 3 }, // L3: QP draws 3; CC draws 3; passive = 4 block
+  recollect:         { perLevelDelta: 0, addTagsAtLevel: [3, ['recollect_qp2', 'recollect_upgrade1', 'recollect_play_free']], maxLevel: 3 }, // L3: return 2; returned get +1 mastery; play 1 free
+  synapse:           { perLevelDelta: 0, addTagsAtLevel: [3, ['synapse_draw3_qp', 'synapse_chain_link', 'synapse_chain_plus1']], maxLevel: 3 }, // L3: QP draws 3; CC = wildcard chain link; chain +1 bonus
+  siphon_knowledge:  { perLevelDelta: 0, addTagsAtLevel: [3, ['siphon_qp3_time4s', 'siphon_eliminate1']], maxLevel: 3 }, // L3: QP draws 3 + 4s preview; CC eliminates 1 wrong answer
+  tutor:             { perLevelDelta: 0, addTagAtLevel: [3, 'tutor_free_play'], maxLevel: 3 },     // L3: tutored card costs 0 AP (QP+CC)
 
   // Wild
   sacrifice:         { perLevelDelta: 0, addTagAtLevel: [3, 'sacrifice_draw3_qp'], maxLevel: 3 }, // L3 QP: draws 3
-  catalyst:          { perLevelDelta: 0, addTagAtLevel: [3, 'catalyst_bleed_qp'], maxLevel: 3 },  // L3 QP: also doubles Bleed
-  mimic:             { perLevelDelta: 0, addTagAtLevel: [3, 'mimic_choose_qp'], maxLevel: 3 },    // L3 QP: player chooses from discard
-  aftershock:        { perLevelDelta: 0.1, maxLevel: 3 },                            // QP mult 0.5→0.8; CC mult 0.7→1.0 at L3
-  knowledge_bomb:    { perLevelDelta: 0.8, maxLevel: 5 },                            // per-correct, slight nerf
+  catalyst:          { perLevelDelta: 0, addTagsAtLevel: [3, ['catalyst_bleed', 'catalyst_triple']], maxLevel: 3 }, // L3: also triples Poison/Burn/Bleed
+  mimic:             { perLevelDelta: 0, addTagAtLevel: [3, 'mimic_choose'], maxLevel: 3 },        // L3: player chooses from discard
+  aftershock:        { perLevelDelta: 0.1, addTagAtLevel: [3, 'aftershock_no_quiz'], maxLevel: 3 }, // QP mult 0.5->0.8; CC mult 0.7->1.0; L3: CC repeat needs no quiz
+  knowledge_bomb:    { perLevelDelta: 0.8, addTagAtLevel: [3, 'kbomb_count_past'], maxLevel: 5 }, // per-correct; L3: counts charges for entire run
 
   // Inscription
   inscription_wisdom: { perLevelDelta: 0, addTagAtLevel: [3, 'inscription_wisdom_heal2'], maxLevel: 3 }, // L3 CC: heals 2 HP per correct

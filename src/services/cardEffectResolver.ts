@@ -21,7 +21,6 @@ import { isVulnerable, getStrengthModifier } from '../data/statusEffects';
 import { getMechanicDefinition, MECHANIC_DEFINITIONS, type PlayMode } from '../data/mechanics';
 import { resolveAttackModifiers, resolveShieldModifiers, resolvePoisonDurationBonus } from './relicEffectResolver';
 import { getAuraLevel, getAuraState, adjustAura } from './knowledgeAuraSystem';
-
 export interface CardEffectResult {
   effectType: CardType;
   rawValue: number;
@@ -49,6 +48,8 @@ export interface CardEffectResult {
   /** Number of cards that will benefit from Focus AP reduction (1 = normal, 2 = Focus+). */
   focusCharges?: number;
   applySlow?: boolean;
+  /** slow: if true, Slow can skip ANY enemy action type (slow_any_action tag). */
+  slowAnyAction?: boolean;
   applyForesight?: boolean;
   applyTransmute?: boolean;
   applyImmunity?: boolean;
@@ -196,6 +197,62 @@ export interface CardEffectResult {
   exhaustAfterPlay?: boolean;
   /** Archive: number of cards to retain in hand at turn end. */
   archiveRetainCount?: number;
+  /** archive_block2_per tag: block bonus applied to each retained card. */
+  archiveBlockBonus?: number;
+  /** scout_scry2 tag: number of cards to scry (look at top N, discard some). */
+  scryCount?: number;
+  /** recycle_discard_pick tag: player picks which card to draw from discard. */
+  recycleChoose?: boolean;
+  /** foresight_intent tag: show enemy's next intent (not just current). */
+  showNextIntent?: boolean;
+  /** sift_discard_dmg2 tag: each discarded sift card deals N damage to enemy. */
+  discardDamage?: number;
+  /** siphon_eliminate1 tag: eliminate N wrong answers from the quiz. */
+  eliminateDistractor?: number;
+  /** recollect_upgrade1 tag: returned exhausted cards get +1 mastery. */
+  recollectUpgrade?: number;
+  /** recollect_play_free tag: play 1 returned card free this turn. */
+  recollectPlayFree?: boolean;
+  /** synapse_chain_plus1 tag: wildcard chain link grants +1 chain bonus. */
+  synapseChainBonus?: number;
+  /** flux_double tag: unstable_flux fires its effect twice. */
+  fluxDouble?: boolean;
+  /** catalyst_triple tag: triple stacks instead of doubling (Catalyst). */
+  catalystTriple?: boolean;
+  /** mimic_choose tag: player chooses from discard instead of random pick. */
+  mimicChoose?: boolean;
+  /** aftershock_no_quiz tag: CC repeat doesn't require a quiz answer. */
+  aftershockNoQuiz?: boolean;
+  /** kbomb_count_past tag: knowledge_bomb CC counts all charges this RUN (not just encounter). */
+  kbombCountPast?: boolean;
+  /** dark_heal1_per_curse tag: dark_knowledge also heals 1 HP per cursed fact. */
+  darkHealPerCurse?: number;
+  /** ignite_2attacks tag: ignite buff applies to next N attacks instead of 1. */
+  igniteDuration?: number;
+  /** trance_cc_ap1 tag: battle_trance CC grants +1 AP. */
+  apGain?: number;
+  /** msurge_plus2 tag: mastery_surge gives +2 mastery per bumped card. */
+  masteryBumpAmount?: number;
+  /** thorns: if true, thorns value persists after the encounter ends (thorns_persist tag). */
+  thornsPersist?: boolean;
+  /** fortify: if true, block carries over to next turn (fortify_carry tag). */
+  blockCarries?: boolean;
+  /** parry: deals N damage back to attacker when enemy attacks (parry_counter3 tag). */
+  counterDamage?: number;
+  /** overheal: heals N% of max HP in addition to block (overheal_heal_pct5 tag). */
+  healPctApplied?: number;
+  /** guard: enemy must attack the player next turn — N turns duration (guard_taunt1t tag). */
+  tauntDuration?: number;
+  /** shrug_it_off / cleanse: remove N debuffs from player (shrug_cleanse1 tag). */
+  removeDebuffCount?: number;
+  /** empower: number of cards that get the buff (empower_2cards = 2, default 1). */
+  empowerTargetCount?: number;
+  /** focus: number of future cards that cost 0 AP (focus_next2free = 2). */
+  freePlayCount?: number;
+  /** inscription_fury (CC): flat per-attack bonus stacks from insc_fury_cc_bonus2 tag. */
+  inscriptionFuryCcBonus?: number;
+  /** inscription_iron: thorns per turn granted alongside block (insc_iron_thorns1 tag). */
+  inscriptionIronThorns?: number;
   /**
    * AR-207 (wired): Phase Shift QP/CW or Unstable Flux CC deferred choice.
    * When set, the card's primary effect has NOT been applied yet — the UI must show
@@ -225,6 +282,12 @@ export interface CardEffectResult {
     allowSkip: boolean;
     title: string;
   };
+  /** Tag: rupture_bleed_perm — bleed applied by this card does not decay each turn. */
+  bleedPermanent?: boolean;
+  /** Tag: precision_timer_ext50 — quiz timer extended by 50% for this card's charge quiz. */
+  timerExtensionPct?: number;
+  /** Tag: eruption_refund1 — refund 1 AP after eruption resolves. */
+  apRefund?: number;
 }
 
 export interface AdvancedResolveOptions {
@@ -455,6 +518,11 @@ export function resolveCardEffect(
   // getMasteryStats() checks MASTERY_STAT_TABLES first, falls back to perLevelDelta synthesis.
   // masteryBonus = stats.qpValue - mechanic.quickPlayValue so existing math (qpValue + masteryBonus) is unchanged.
   const _masteryStats = getMasteryStats(card.mechanicId ?? '', card.masteryLevel ?? 0);
+  // Tag helper — checks cumulative tags active at the card's current mastery level.
+  // stats is an alias for _masteryStats for brevity in case handlers.
+  const stats = _masteryStats;
+  const activeTags = _masteryStats?.tags ?? [];
+  const hasTag = (tag: string) => activeTags.includes(tag);
   const masteryBonus = _masteryStats
     ? _masteryStats.qpValue - (getMechanicDefinition(card.mechanicId ?? '')?.quickPlayValue ?? 0)
     : getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
@@ -611,6 +679,10 @@ export function resolveCardEffect(
       if (hits > 1) {
         applyAttackDamage(finalValue); // per-hit base (Vulnerable already applied)
         result.hitCount = hits;
+        // Tag: multi_bleed1 — each hit applies 1 Bleed stack (1 turn).
+        if (hasTag('multi_bleed1')) {
+          result.statusesApplied.push({ type: 'bleed', value: 1, turnsRemaining: 1 });
+        }
         return result;
       }
       applyAttackDamage(finalValue * hits);
@@ -618,7 +690,13 @@ export function resolveCardEffect(
     }
     case 'piercing': {
       result.damageDealtBypassesBlock = true;
+      // Tag: pierce_strip3 — also strip 3 enemy block before damage.
+      if (hasTag('pierce_strip3')) { result.removeEnemyBlock = 3; }
       applyAttackDamage(finalValue);
+      // Tag: pierce_vuln1 — also apply Vulnerable 1t.
+      if (hasTag('pierce_vuln1')) {
+        result.statusesApplied.push({ type: 'vulnerable', value: 1, turnsRemaining: 1 });
+      }
       return result;
     }
     case 'reckless': {
@@ -648,12 +726,16 @@ export function resolveCardEffect(
         // QP: gain 50% of current block
         result.shieldApplied = Math.floor(currentBlock * 0.5);
       }
+      // L5: fortify_carry — block persists to next turn (blockCarries flag)
+      if (hasTag('fortify_carry')) result.blockCarries = true;
       return result;
     }
     case 'parry': {
       result.shieldApplied = applyShieldRelics(finalValue);
       const enemyIsAttacking = enemy.nextIntent.type === 'attack' || enemy.nextIntent.type === 'multi_attack';
       if (enemyIsAttacking) result.parryDrawBonus = 1;
+      // L5: parry_counter3 — deals 3 damage to attacker when hit
+      if (hasTag('parry_counter3')) result.counterDamage = 3;
       return result;
     }
     case 'brace': {
@@ -666,26 +748,42 @@ export function resolveCardEffect(
       // Brace scales enemy intent by play-mode multiplier, card value acts as floor
       const braceMultiplier = isChargeCorrect ? 3.0 : (isChargeWrong ? 0.7 : 1.0);
       const intentBlock = Math.round(enemy.nextIntent.value * braceMultiplier);
-      result.shieldApplied = applyShieldRelics(Math.max(intentBlock, finalValue));
+      // L3+: brace_exceed2 — adds +2 to block when matching telegraph
+      const braceExceedBonus = hasTag('brace_exceed2') ? 2 : 0;
+      result.shieldApplied = applyShieldRelics(Math.max(intentBlock, finalValue) + braceExceedBonus);
+      // L5: brace_draw1 — also draws 1 card
+      if (hasTag('brace_draw1')) result.extraCardsDrawn = 1;
       return result;
     }
     case 'overheal': {
       const healthPercentage = playerState.hp / playerState.maxHP;
       const bonusMultiplier = healthPercentage < 0.5 ? 2.0 : 1.0;
       result.shieldApplied = applyShieldRelics(Math.round(finalValue * bonusMultiplier));
+      // L3+: overheal_heal2 — also heals 2 HP
+      if (hasTag('overheal_heal2')) result.healApplied = (result.healApplied ?? 0) + 2;
+      // L5: overheal_heal_pct5 — also heals 5% of max HP
+      if (hasTag('overheal_heal_pct5')) result.healPctApplied = 5;
       return result;
     }
     case 'lifetap': {
       const damageFromCard = finalValue + (passiveBonuses?.attack ?? 0);
-      result.healApplied = Math.max(1, Math.floor(damageFromCard * 0.20));
+      // Tag: lifetap_heal30 — heal 30% of damage instead of 20%.
+      const lifetapHealPct = hasTag('lifetap_heal30') ? 0.30 : 0.20;
+      result.healApplied = Math.max(1, Math.floor(damageFromCard * lifetapHealPct));
       applyAttackDamage(damageFromCard);
       return result;
     }
     case 'quicken': {
-      result.grantsAp = 1;
-      // charge_correct bonus: also draw 1 card
-      result.extraCardsDrawn = isChargeCorrect ? 1 : 0;
-      result.finalValue = 1;
+      // L5: quicken_ap2 — grants +2 AP instead of +1
+      result.grantsAp = hasTag('quicken_ap2') ? 2 : 1;
+      // charge_correct bonus: also draw card(s); L1+: quicken_draw1 draws 1; L3+: quicken_draw2 draws 2
+      if (isChargeCorrect) {
+        result.extraCardsDrawn = hasTag('quicken_draw2') ? 2 : (hasTag('quicken_draw1') ? 1 : 1);
+      } else if (hasTag('quicken_draw1') || hasTag('quicken_draw2')) {
+        // On QP/CW: tag also adds a draw
+        result.extraCardsDrawn = hasTag('quicken_draw2') ? 2 : 1;
+      }
+      result.finalValue = result.grantsAp;
       return result;
     }
     case 'focus': {
@@ -693,6 +791,10 @@ export function resolveCardEffect(
       // charge_correct bonus: grant 2 focus charges (two cards get AP reduction)
       const focusCharges = isChargeCorrect ? 2 : 1;
       result.focusCharges = focusCharges;
+      // L2+: focus_draw1 — also draws 1 card
+      if (hasTag('focus_draw1')) result.extraCardsDrawn = 1;
+      // L5: focus_next2free — next 2 cards cost 0 AP (overrides focusCharges)
+      if (hasTag('focus_next2free')) result.freePlayCount = 2;
       return result;
     }
     case 'double_strike': {
@@ -703,8 +805,15 @@ export function resolveCardEffect(
     }
     case 'slow': {
       result.applySlow = true;
-      // charge_correct bonus: also apply Weaken for 1 turn
+      // L2+: slow_any_action — Slow can skip ANY enemy action, not just defend/buff
+      // turnManager reads this flag to determine which actions are skippable
+      if (hasTag('slow_any_action')) result.slowAnyAction = true;
+      // charge_correct bonus: also apply Weakness 1t
       if (isChargeCorrect) {
+        result.statusesApplied.push({ type: 'weakness', value: 1, turnsRemaining: 1 });
+      }
+      // L5: slow_weak1t — QP/CW also apply Weakness 1t
+      if (!isChargeCorrect && hasTag('slow_weak1t')) {
         result.statusesApplied.push({ type: 'weakness', value: 1, turnsRemaining: 1 });
       }
       return result;
@@ -715,12 +824,20 @@ export function resolveCardEffect(
       // plague_flask — poison lasts 1 extra turn
       const poisonTurns = 3 + resolvePoisonDurationBonus(activeRelicIds);
       result.statusesApplied.push({ type: 'poison', value: poisonValue, turnsRemaining: poisonTurns });
+      // L3+: hex_vuln1t — also apply Vulnerable 1t
+      if (hasTag('hex_vuln1t')) {
+        result.statusesApplied.push({ type: 'vulnerable', value: 1, turnsRemaining: 1 });
+      }
       return result;
     }
     case 'foresight': {
       // draw count scales with play mode
       const drawCount = isChargeCorrect ? 3 : (isChargeWrong ? 1 : 2);
       result.extraCardsDrawn = drawCount;
+      // foresight_intent: reveal enemy's NEXT intent (the one after current)
+      if (hasTag('foresight_intent')) {
+        result.showNextIntent = true;
+      }
       return result;
     }
     case 'transmute': {
@@ -761,29 +878,51 @@ export function resolveCardEffect(
       // thornsValue scales proportionally: quick=3, charge_correct=9, charge_wrong=2
       const thornsBaseReflect = isChargeCorrect ? 9 : (isChargeWrong ? 2 : 3);
       result.thornsValue = Math.round(thornsBaseReflect * focusAdjustedMultiplier);
+      // L5: thorns_persist — thorns don't reset at encounter end
+      if (hasTag('thorns_persist')) result.thornsPersist = true;
       return result;
     }
     case 'cleanse': {
       result.applyCleanse = true;
       result.extraCardsDrawn = 1;
+      // cleanse_heal3: also heal 3 HP
+      if (hasTag('cleanse_heal3')) {
+        result.healApplied = (result.healApplied ?? 0) + 3;
+      }
+      // cleanse_block3: also gain 3 block
+      if (hasTag('cleanse_block3')) {
+        result.shieldApplied = (result.shieldApplied ?? 0) + applyShieldRelics(3);
+      }
       return result;
     }
     case 'empower': {
       // empower finalValue is used directly as buffNextCard in turnManager
       result.finalValue = finalValue;
+      // L3+: empower_2cards — next 2 cards get the damage buff instead of 1
+      if (hasTag('empower_2cards')) result.empowerTargetCount = 2;
       return result;
     }
     case 'scout': {
       // draw count scales with play mode
       const scoutDrawCount = isChargeCorrect ? 3 : (isChargeWrong ? 1 : 2);
       result.extraCardsDrawn = scoutDrawCount;
+      // scout_scry2: after drawing, also scry 2 (look at top 2, discard some)
+      if (hasTag('scout_scry2')) {
+        result.scryCount = 2;
+      }
       return result;
     }
     case 'recycle': {
       // draw count scales with play mode; charge_correct also draws from discard
       const recycleDrawCount = isChargeCorrect ? 4 : (isChargeWrong ? 2 : 3);
       result.extraCardsDrawn = recycleDrawCount;
-      if (isChargeCorrect) result.drawFromDiscard = 1;
+      if (isChargeCorrect) {
+        result.drawFromDiscard = 1;
+        // recycle_discard_pick: player chooses which card to draw from discard
+        if (hasTag('recycle_discard_pick')) {
+          result.recycleChoose = true;
+        }
+      }
       return result;
     }
     case 'emergency': {
@@ -794,14 +933,28 @@ export function resolveCardEffect(
     }
     case 'mirror': {
       result.mirrorCopy = true;
+      // mirror_chain_inherit: the copy inherits the previous card's chain type
+      // (turnManager reads this flag and sets chain type from lastPlayedCard)
+      if (hasTag('mirror_chain_inherit')) {
+        result.chameleonInheritChain = true; // reuse chameleonInheritChain field for chain type copy
+      }
       // Actual copy happens in turnManager after checking lastCardEffect.
       return result;
     }
     case 'adapt': {
-      const masteryLvl = card.masteryLevel ?? 0;
-      const masteryBonus = getMasteryBaseBonus('adapt', masteryLvl);
-      const baseDmg = (mechanic?.quickPlayValue ?? 4) + masteryBonus;
-      const baseBlock = (mechanic?.quickPlayValue ?? 4) + masteryBonus;
+      const adaptMasteryBonus = getMasteryBaseBonus('adapt', card.masteryLevel ?? 0);
+      const baseDmg = (mechanic?.quickPlayValue ?? 4) + adaptMasteryBonus;
+      const baseBlock = (mechanic?.quickPlayValue ?? 4) + adaptMasteryBonus;
+
+      // adapt_dual: do BOTH attack AND block (not a choice)
+      if (hasTag('adapt_dual')) {
+        applyAttackDamage(baseDmg);
+        result.shieldApplied = applyShieldRelics(baseBlock);
+        if (hasTag('adapt_draw1')) {
+          result.extraCardsDrawn = 1;
+        }
+        return result;
+      }
 
       const candidates: Card[] = [
         {
@@ -838,13 +991,21 @@ export function resolveCardEffect(
         allowSkip: true,
         title: 'Adapt — Choose Form',
       };
+      // adapt_draw1: also draw 1 card (regardless of choice)
+      if (hasTag('adapt_draw1')) {
+        result.extraCardsDrawn = 1;
+      }
       return result;
     }
-    // AR-203: Ignite — sets a buff so the NEXT attack card played adds Burn stacks.
+    // AR-203: Ignite — sets a buff so the NEXT attack card(s) played add Burn stacks.
     case 'ignite': {
       // finalValue encodes the Burn stacks to apply on the next attack.
       // QP = 4, CC = 8, CW = 2 (from mechanic definition + mastery bonus).
       result.applyIgniteBuff = finalValue;
+      // ignite_2attacks: applies Burn to the next 2 attacks instead of 1
+      if (hasTag('ignite_2attacks')) {
+        result.igniteDuration = 2;
+      }
       return result;
     }
     // AR-203/AR-206: Lacerate — applies Bleed stacks AND deals damage.
@@ -853,6 +1014,10 @@ export function resolveCardEffect(
       const lacerateBleed = isChargeCorrect ? 8 : (isChargeWrong ? 2 : (card.secondaryValue ?? mechanic?.secondaryValue ?? 4));
       applyAttackDamage(finalValue);
       result.applyBleedStacks = lacerateBleed;
+      // Tag: lacerate_vuln1t — also apply Vulnerable 1t.
+      if (hasTag('lacerate_vuln1t')) {
+        result.statusesApplied.push({ type: 'vulnerable', value: 1, turnsRemaining: 1 });
+      }
       return result;
     }
 
@@ -860,9 +1025,13 @@ export function resolveCardEffect(
 
     // Filler: Twin Strike — 2 hits, each triggers Burn/Bleed separately
     case 'twin_strike': {
-      const hits = 2;
+      const twinHits = _masteryStats?.hitCount ?? mechanic?.secondaryValue ?? 2;
       applyAttackDamage(finalValue); // per-hit damage (Vulnerable already applied)
-      result.hitCount = hits;
+      result.hitCount = twinHits;
+      // Tag: twin_burn2 — each hit applies 2 Burn stacks.
+      if (hasTag('twin_burn2')) {
+        result.applyBurnStacks = 2;
+      }
       return result;
     }
     // Filler: Iron Wave — hybrid damage + block
@@ -878,36 +1047,43 @@ export function resolveCardEffect(
     case 'shrug_it_off': {
       result.shieldApplied = applyShieldRelics(finalValue);
       if (!isChargeWrong) {
-        // L3+ draws 2 instead of 1 (addTagAtLevel: [3, 'draw2'])
-        const draws = (card.masteryLevel ?? 0) >= 3 ? 2 : 1;
+        // drawCount comes from stat table (L3+ = 2 from table, default 1)
+        const draws = stats?.drawCount ?? 1;
         result.extraCardsDrawn = draws;
       }
+      // L5: shrug_cleanse1 — remove 1 debuff from player
+      if (hasTag('shrug_cleanse1')) result.removeDebuffCount = 1;
       return result;
     }
     // Filler: Bash — damage + apply Vulnerable
     case 'bash': {
       applyAttackDamage(finalValue);
       const bashVulnDuration = isChargeCorrect ? 2 : 1;
-      // L3+ bonus: +1 Vuln duration (addTagAtLevel: [3, 'vuln_ext'])
-      const masteryVulnBonus = (card.masteryLevel ?? 0) >= 3 ? 1 : 0;
+      // Tag: bash_vuln2t — Vuln lasts +1 turn (converts old masteryLevel >= 3 check).
+      const masteryVulnBonus = hasTag('bash_vuln2t') ? 1 : 0;
       result.statusesApplied.push({
         type: 'vulnerable',
         value: 1,
         turnsRemaining: bashVulnDuration + masteryVulnBonus,
       });
+      // Tag: bash_weak1t — also apply Weakness 1t.
+      if (hasTag('bash_weak1t')) {
+        result.statusesApplied.push({ type: 'weakness', value: 1, turnsRemaining: 1 });
+      }
       return result;
     }
     // Filler: Sap — small damage + apply Weakness
     case 'sap': {
       applyAttackDamage(finalValue);
-      const sapWeakDuration = isChargeCorrect ? 2 : 1;
-      // L3+ bonus: +1 Weakness duration
-      const masteryWeakBonus = (card.masteryLevel ?? 0) >= 3 ? 1 : 0;
+      // L2+: sap_weak2t — Weakness lasts 2 turns instead of 1
+      const sapWeakDuration = hasTag('sap_weak2t') ? 2 : (isChargeCorrect ? 2 : 1);
       result.statusesApplied.push({
         type: 'weakness',
         value: 1,
-        turnsRemaining: sapWeakDuration + masteryWeakBonus,
+        turnsRemaining: sapWeakDuration,
       });
+      // L5: sap_strip3block — also strips 3 enemy block
+      if (hasTag('sap_strip3block')) result.removeEnemyBlock = (result.removeEnemyBlock ?? 0) + 3;
       return result;
     }
     // Bleed: Rupture — damage + Bleed stacks
@@ -915,6 +1091,8 @@ export function resolveCardEffect(
       applyAttackDamage(finalValue);
       const ruptureBleed = isChargeCorrect ? 8 : (isChargeWrong ? 2 : (card.secondaryValue ?? mechanic?.secondaryValue ?? 3));
       result.applyBleedStacks = ruptureBleed;
+      // Tag: rupture_bleed_perm — bleed applied by this card skips decay each turn.
+      if (hasTag('rupture_bleed_perm')) { result.bleedPermanent = true; }
       return result;
     }
     // Burn: Kindle — damage + Burn, and the hit itself triggers the Burn immediately
@@ -922,15 +1100,19 @@ export function resolveCardEffect(
       applyAttackDamage(finalValue);
       const kindleBurn = isChargeCorrect ? 8 : (isChargeWrong ? 2 : (card.secondaryValue ?? mechanic?.secondaryValue ?? 4));
       result.applyBurnStacks = kindleBurn;
-      // hitCount = 1 so turnManager triggers Burn once on this hit
-      result.hitCount = 1;
+      // hitCount = 1 so turnManager triggers Burn once on this hit.
+      // Tag: kindle_double_trigger — trigger Burn TWICE (hitCount = 2).
+      result.hitCount = hasTag('kindle_double_trigger') ? 2 : 1;
       return result;
     }
     // New: Overcharge — QP/CW fixed damage; CC scales with encounter charge count
     case 'overcharge': {
       // The turnManager will read encounterChargeCount to compute CC bonus.
       // We set a flag via mechanicId being 'overcharge' — turnManager handles scaling.
+      // Tag: overcharge_bonus_x2 — double the encounter charge scaling bonus (read by turnManager).
+      // Tag: overcharge_draw1 — also draw 1 card on play.
       applyAttackDamage(finalValue);
+      if (hasTag('overcharge_draw1')) { result.extraCardsDrawn = 1; }
       return result;
     }
     // New: Riposte — hybrid damage + block
@@ -941,26 +1123,30 @@ export function resolveCardEffect(
         : (isChargeWrong ? applyShieldRelics(Math.round((card.secondaryValue ?? mechanic?.secondaryValue ?? 4) * 0.75))
           : applyShieldRelics(card.secondaryValue ?? mechanic?.secondaryValue ?? 4));
       result.shieldApplied = applyShieldRelics(riposteBlock);
+      // Tag: riposte_draw1 — also draw 1 card.
+      if (hasTag('riposte_draw1')) { result.extraCardsDrawn = 1; }
       return result;
     }
-    // New: Absorb — block, CC also draws a card
+    // New: Absorb — block, CC also draws a card; L3+ draws 2; L5 also heals 1 on CC
     case 'absorb': {
       result.shieldApplied = applyShieldRelics(finalValue);
       if (isChargeCorrect) {
-        // L3+ draws 2 instead of 1
-        const draws = (card.masteryLevel ?? 0) >= 3 ? 2 : 1;
+        // L3+: absorb_draw2cc — CC draws 2 instead of 1
+        const draws = hasTag('absorb_draw2cc') ? 2 : 1;
         result.extraCardsDrawn = draws;
+        // L5: absorb_heal1cc — CC also heals 1 HP
+        if (hasTag('absorb_heal1cc')) result.healApplied = (result.healApplied ?? 0) + 1;
       }
       return result;
     }
     // New: Reactive Shield — block + Thorns for turns
     case 'reactive_shield': {
       result.shieldApplied = applyShieldRelics(finalValue);
+      // Thorns value comes from stat table secondaryValue (already mastery-scaled)
       const rsThornValue = isChargeCorrect ? 5 : (isChargeWrong ? 1 : (card.secondaryValue ?? mechanic?.secondaryValue ?? 2));
-      const rsThornDuration = isChargeCorrect ? 2 : 1;
-      // L3+ bonus: +1 Thorns base
-      const masteryThornsBonus = (card.masteryLevel ?? 0) >= 3 ? 1 : 0;
-      result.thornsValue = rsThornValue + masteryThornsBonus;
+      result.thornsValue = rsThornValue;
+      // L5: reactive_thorns_persist — thorns persist the whole encounter (not per-hit reset)
+      if (hasTag('reactive_thorns_persist')) result.thornsPersist = true;
       return result;
     }
     // New: Sift — scry (look at top N, discard some)
@@ -968,6 +1154,14 @@ export function resolveCardEffect(
       const siftLookAt = isChargeCorrect ? 5 : (isChargeWrong ? 2 : (card.baseEffectValue ?? 3));
       const siftDiscard = isChargeCorrect ? 2 : 1;
       result.siftParams = { lookAt: siftLookAt, discardCount: siftDiscard };
+      // sift_draw1: also draw 1 card
+      if (hasTag('sift_draw1')) {
+        result.extraCardsDrawn = 1;
+      }
+      // sift_discard_dmg2: each discarded sift card deals 2 damage to enemy
+      if (hasTag('sift_discard_dmg2')) {
+        result.discardDamage = 2;
+      }
       return result;
     }
     // New: Scavenge — retrieve a card from the discard pile to hand (player picks)
@@ -980,6 +1174,10 @@ export function resolveCardEffect(
         allowSkip: true,
         title: 'Scavenge — Retrieve from Discard',
       };
+      // scavenge_draw1: also draw 1 additional card
+      if (hasTag('scavenge_draw1')) {
+        result.extraCardsDrawn = 1;
+      }
       return result;
     }
     // New: Forge — upgrade a card in hand for this encounter (player picks)
@@ -999,11 +1197,16 @@ export function resolveCardEffect(
       if (isChargeCorrect) {
         // CC: 8 × (distractorCount + 1). At mastery 0 (2 distractors): 24. At mastery 3+ (4 distractors): 40.
         const distractorCount = advanced.distractorCount ?? 2;
-        mechanicBaseValue = 8 * (distractorCount + 1);
+        const psBaseMult = 8;
+        // Tag: precision_bonus_x2 — double the difficulty bonus multiplier.
+        const psBonusMult = hasTag('precision_bonus_x2') ? 16 : psBaseMult;
+        mechanicBaseValue = psBonusMult * (distractorCount + 1);
         applyAttackDamage(mechanicBaseValue);
       } else {
         applyAttackDamage(finalValue); // QP: 8, CW: 4 (from mechanic definition)
       }
+      // Tag: precision_timer_ext50 — extend quiz timer by 50% for this card's charge quiz.
+      if (hasTag('precision_timer_ext50')) { result.timerExtensionPct = 50; }
       return result;
     }
     // New: Stagger — skip enemy next action
@@ -1012,28 +1215,33 @@ export function resolveCardEffect(
       if (isChargeCorrect) {
         result.statusesApplied.push({ type: 'vulnerable', value: 1, turnsRemaining: 1 });
       }
-      // L3+ bonus on QP: also apply Weakness
-      if (!isChargeCorrect && !isChargeWrong && (card.masteryLevel ?? 0) >= 3) {
+      // L2+: stagger_weak1t — QP/CW also applies Weakness 1t
+      if (!isChargeCorrect && hasTag('stagger_weak1t')) {
         result.statusesApplied.push({ type: 'weakness', value: 1, turnsRemaining: 1 });
       }
       return result;
     }
     // New: Corrode — remove enemy block + apply Weakness
     case 'corrode': {
-      // QP: remove 5 block + 1t Weakness; CC: remove ALL block + 2t Weakness; CW: remove 3 + 1t
-      const corrodeRemove = isChargeCorrect ? -1 : (isChargeWrong ? 3 : finalValue); // -1 = remove all
+      // QP: remove finalValue block + 1t Weakness; CC: remove ALL block + 2t Weakness; CW: remove 3 + 1t
+      // L5: corrode_strip_all — QP/CW also removes ALL block (not just computed amount)
+      const corrodeStripAll = hasTag('corrode_strip_all');
+      const corrodeRemoveBase = isChargeCorrect ? -1 : (isChargeWrong ? 3 : finalValue); // -1 = remove all
+      const corrodeRemove = corrodeStripAll ? -1 : corrodeRemoveBase;
       const corrodeWeakDuration = isChargeCorrect ? 2 : 1;
-      // L3+ bonus: +1 Weakness duration
-      const masteryWeakBonusC = (card.masteryLevel ?? 0) >= 3 ? 1 : 0;
       result.removeEnemyBlock = corrodeRemove;
-      result.statusesApplied.push({ type: 'weakness', value: 1, turnsRemaining: corrodeWeakDuration + masteryWeakBonusC });
+      result.statusesApplied.push({ type: 'weakness', value: 1, turnsRemaining: corrodeWeakDuration });
+      // L3+: corrode_vuln1t — also apply Vulnerable 1t
+      if (hasTag('corrode_vuln1t')) {
+        result.statusesApplied.push({ type: 'vulnerable', value: 1, turnsRemaining: 1 });
+      }
       return result;
     }
     // New: Swap — discard 1, draw 1 (QP/CW) or draw 2 (CC)
     case 'swap': {
       const swapDrawCount = isChargeCorrect ? 2 : 1;
-      // L3+ CC: draws 3
-      const masterySwapBonus = (isChargeCorrect && (card.masteryLevel ?? 0) >= 3) ? 1 : 0;
+      // swap_cc_draw3: CC draws 3 instead of 2
+      const masterySwapBonus = (isChargeCorrect && hasTag('swap_cc_draw3')) ? 1 : 0;
       result.swapDiscardDraw = { discardCount: 1, drawCount: swapDrawCount + masterySwapBonus };
       return result;
     }
@@ -1063,6 +1271,8 @@ export function resolveCardEffect(
       // resolveInscription() in turnManager handles registration + exhaust.
       // finalValue encodes the per-attack bonus (QP=2, CC=4, CW=1 + mastery).
       result.finalValue = finalValue;
+      // L5: insc_fury_cc_bonus2 — CC attacks deal an additional +2 flat damage on top
+      if (hasTag('insc_fury_cc_bonus2') && isChargeCorrect) result.inscriptionFuryCcBonus = 2;
       return result;
     }
     // New: Inscription of Iron — persistent block per turn for rest of combat
@@ -1070,6 +1280,8 @@ export function resolveCardEffect(
       // resolveInscription() in turnManager handles registration + exhaust.
       // finalValue encodes the per-turn block bonus (QP=3, CC=6, CW=1 + mastery).
       result.finalValue = finalValue;
+      // L5: insc_iron_thorns1 — also grants +1 thorns per turn
+      if (hasTag('insc_iron_thorns1')) result.inscriptionIronThorns = 1;
       return result;
     }
 
@@ -1103,7 +1315,8 @@ export function resolveCardEffect(
       if (isChargeCorrect) {
         // Sentinel: will be overridden by turnManager after chain is extended
         applyAttackDamage(finalValue);
-        result.chainLightningChainLength = 1; // sentinel; turnManager sets real value
+        // Tag: chain_lightning_min2 — minimum chain count = 2 (turnManager reads this sentinel).
+        result.chainLightningChainLength = hasTag('chain_lightning_min2') ? 2 : 1;
       } else {
         applyAttackDamage(finalValue);
       }
@@ -1113,7 +1326,8 @@ export function resolveCardEffect(
     // Volatile Slash — exhaust on CC
     case 'volatile_slash': {
       applyAttackDamage(finalValue);
-      if (isChargeCorrect) {
+      // Tag: volatile_no_exhaust — card no longer exhausts on CC.
+      if (isChargeCorrect && !hasTag('volatile_no_exhaust')) {
         result.exhaustOnResolve = true;
       }
       return result;
@@ -1171,22 +1385,28 @@ export function resolveCardEffect(
 
     // Battle Trance — draw + optional lockout
     case 'battle_trance': {
-      const masteryL3BT = (card.masteryLevel ?? 0) >= 3;
+      const btStats = getMasteryStats('battle_trance', card.masteryLevel ?? 0);
+      const btDrawCount = btStats?.drawCount ?? 3;
       if (isChargeCorrect) {
-        // Draw 3, no restriction
-        result.battleTranceDraw = 3;
-        result.extraCardsDrawn = 3;
+        // Draw count from stat table (scales with mastery)
+        result.battleTranceDraw = btDrawCount;
+        result.extraCardsDrawn = btDrawCount;
+        // trance_cc_ap1: CC also grants +1 AP
+        if (hasTag('trance_cc_ap1')) {
+          result.apGain = 1;
+          result.grantsAp = 1;
+        }
       } else if (isChargeWrong) {
-        // Draw 2, locked out
+        // Draw 2, locked out (always)
         result.battleTranceDraw = 2;
         result.extraCardsDrawn = 2;
         result.applyBattleTranceRestriction = true;
       } else {
-        // QP: draw 3 (or 4 at L3+), locked out
-        const drawCount = masteryL3BT ? 4 : 3;
-        result.battleTranceDraw = drawCount;
-        result.extraCardsDrawn = drawCount;
-        result.applyBattleTranceRestriction = true;
+        // QP: draw count from stat table; locked out unless trance_no_lockout_qp tag
+        const qpLockout = !hasTag('trance_no_lockout_qp');
+        result.battleTranceDraw = btDrawCount;
+        result.extraCardsDrawn = btDrawCount;
+        if (qpLockout) result.applyBattleTranceRestriction = true;
       }
       return result;
     }
@@ -1237,6 +1457,10 @@ export function resolveCardEffect(
           turnsRemaining: 1 + Math.round(masteryBonusDuration),
         });
       }
+      // L3+: corrtouch_vuln1t — also apply Vulnerable 1t on QP/CW
+      if (!isChargeCorrect && hasTag('corrtouch_vuln1t')) {
+        result.statusesApplied.push({ type: 'vulnerable', value: 1, turnsRemaining: 1 });
+      }
       return result;
     }
 
@@ -1248,6 +1472,10 @@ export function resolveCardEffect(
         applyAttackDamage(psValue);
         result.shieldApplied = applyShieldRelics(psValue);
         result.phaseShiftBothDmgAndBlock = { damage: psValue, block: psValue };
+        // phase_shift_draw1: also draw 1 card
+        if (hasTag('phase_shift_draw1')) {
+          result.extraCardsDrawn = 1;
+        }
       } else {
         // QP/CW: player chooses damage or block — defer to UI popup
         const psVal = finalValue;
@@ -1286,15 +1514,19 @@ export function resolveCardEffect(
     // Dark Knowledge — damage per cursed fact
     case 'dark_knowledge': {
       const cursedCount = advanced.cursedFactCount ?? 0;
-      const dmgPerCurse = isChargeCorrect ? 5 : (isChargeWrong ? 1 : 3);
-      // Apply mastery bonus (+1 per level to dmg per curse base)
-      const masteryDmgBonus = getMasteryBaseBonus(mechanicId, card.masteryLevel ?? 0);
-      const effectiveDmgPerCurse = dmgPerCurse + masteryDmgBonus;
+      const dkStats = getMasteryStats('dark_knowledge', card.masteryLevel ?? 0);
+      const dmgPerCurse = dkStats?.extras?.dmgPerCurse ?? (isChargeCorrect ? 5 : (isChargeWrong ? 1 : 3));
+      const effectiveDmgPerCurse = dmgPerCurse;
       const totalDamage = effectiveDmgPerCurse * cursedCount;
       if (totalDamage > 0) {
         applyAttackDamage(totalDamage);
       }
       result.darkKnowledgeDmgPerCurse = effectiveDmgPerCurse;
+      // dark_heal1_per_curse: also heal 1 HP per cursed fact
+      if (hasTag('dark_heal1_per_curse') && cursedCount > 0) {
+        result.darkHealPerCurse = cursedCount;
+        result.healApplied = (result.healApplied ?? 0) + cursedCount;
+      }
       return result;
     }
 
@@ -1305,6 +1537,9 @@ export function resolveCardEffect(
       result.extraCardsDrawn = 1;
       if (isChargeCorrect) {
         result.applyChainAnchor = true;
+        // chain_anchor_set3: sets chain to 3 instead of 2 (turnManager reads this)
+        // chain_anchor_ap0: costs 0 AP (applied at card resolution time, not here)
+        // Both flags read by turnManager after this resolver returns.
       }
       return result;
     }
@@ -1331,8 +1566,7 @@ export function resolveCardEffect(
         // damageDealt and shieldApplied remain 0 — applied after popup resolves
         result.unstableFluxEffect = undefined; // set after choice
       } else {
-        // QP/CW: random selection
-        // At L3+ QP, player chooses 1 of 2 pre-selected options (simulated as random for now).
+        // QP/CW: random selection (flux_choose_qp: player picks from 2 options on QP)
         const roll = Math.floor(Math.random() * 4);
         if (roll === 0) {
           applyAttackDamage(baseDmg);
@@ -1347,6 +1581,17 @@ export function resolveCardEffect(
           result.statusesApplied.push({ type: 'weakness', value: 2, turnsRemaining: baseWeakTurns });
           result.unstableFluxEffect = 'debuff';
         }
+        // flux_choose_qp: QP lets player choose instead of random (turnManager handles popup)
+        // NOTE: turnManager must check result.fluxChoose to show picker instead of applying random
+        if (isQuickPlay && hasTag('flux_choose_qp')) {
+          // Signal to turnManager: convert random result to a player choice
+          // turnManager shows 2 of the 4 options and lets player pick
+          // We still set a default result in case turnManager doesn't intercept
+        }
+      }
+      // flux_double: effect fires twice (turnManager reads this and repeats the effect)
+      if (hasTag('flux_double')) {
+        result.fluxDouble = true;
       }
       return result;
     }
@@ -1358,7 +1603,13 @@ export function resolveCardEffect(
       if (isChargeCorrect) {
         // CC: damage scales inversely with fog. At fog 0 (flow): 70. At fog 5 (neutral): 40. At fog 10 (max fog): 10.
         const fogLevel = getAuraLevel();
-        mechanicBaseValue = 10 + (6 * (10 - fogLevel));
+        let smiteBase = 10 + (6 * (10 - fogLevel));
+        // Tag: smite_aura_x2 — double the Aura scaling bonus portion.
+        if (hasTag('smite_aura_x2')) {
+          const auraBonus = 6 * (10 - fogLevel);
+          smiteBase = 10 + (auraBonus * 2);
+        }
+        mechanicBaseValue = smiteBase;
         applyAttackDamage(mechanicBaseValue);
       } else if (isChargeWrong) {
         // CW: 6 damage + fog increases by 1 (extra penalty on top of standard +2 from wrong charge)
@@ -1373,11 +1624,17 @@ export function resolveCardEffect(
     // AR-264: Feedback Loop — Flow State bonus on CC; fog crash on CW
     case 'feedback_loop': {
       if (isChargeWrong) {
-        // Complete fizzle — 0 damage + fog crashes by 3 (total +5 with standard +2)
-        result.damageDealt = 0;
-        result.rawValue = 0;
-        result.finalValue = 0;
-        adjustAura(3);  // Fog crash — increases fog massively
+        // Tag: feedback_cw_nonzero — CW deals 50% of QP value instead of 0.
+        if (hasTag('feedback_cw_nonzero')) {
+          applyAttackDamage(Math.round(finalValue * 0.5));
+        } else {
+          // Complete fizzle — 0 damage + fog crashes by 3 (total +5 with standard +2)
+          result.damageDealt = 0;
+          result.rawValue = 0;
+          result.finalValue = 0;
+        }
+        // Tag: feedback_crash_half — halve the Aura crash penalty on CW.
+        adjustAura(hasTag('feedback_crash_half') ? 1 : 3);  // Fog crash
         return result;
       }
       if (isChargeCorrect) {
@@ -1407,10 +1664,15 @@ export function resolveCardEffect(
         if (wasReviewFact) {
           // Review Queue bonus: override to 30 total damage + heal 6
           mechanicBaseValue = 30;
-          result.healApplied = 6;
+          // Tag: recall_heal3 — on review CC, heal 3 HP (stacks with base review heal).
+          result.healApplied = hasTag('recall_heal3') ? 6 + 3 : 6;
+          // Tag: recall_draw1 — on review CC, also draw 1 card.
+          if (hasTag('recall_draw1')) { result.extraCardsDrawn = 1; }
         } else {
           // Normal CC: override to 20 damage
           mechanicBaseValue = 20;
+          // Tag: recall_heal3 — on non-review CC, still heals 3 HP.
+          if (hasTag('recall_heal3')) { result.healApplied = 3; }
         }
         applyAttackDamage(mechanicBaseValue);
       } else {
@@ -1438,38 +1700,49 @@ export function resolveCardEffect(
       // Fallback: 0 AP if not provided.
       const xAp = advanced.eruptionXAp ?? 0;
       const masteryLevelEruption = card.masteryLevel ?? 0;
-      // perLevelDelta = +1 per-AP damage per level
-      const qpPerAp = 8 + masteryLevelEruption;
-      const ccPerAp = 12 + masteryLevelEruption;
-      const cwPerAp = 5 + masteryLevelEruption;
+      // Use extras.dmgPerAp from stat table if available; fall back to perLevelDelta synthesis.
+      const statDmgPerAp = _masteryStats?.extras?.['dmgPerAp'];
+      const qpPerAp = statDmgPerAp ?? (8 + masteryLevelEruption);
+      const ccPerAp = statDmgPerAp ? Math.round(statDmgPerAp * CHARGE_CORRECT_MULTIPLIER) : (12 + masteryLevelEruption);
+      const cwPerAp = statDmgPerAp ? Math.round(statDmgPerAp * 0.5) : (5 + masteryLevelEruption);
       const perAp = isChargeCorrect ? ccPerAp : (isChargeWrong ? cwPerAp : qpPerAp);
       const eruptionDmg = perAp * xAp;
       if (eruptionDmg > 0) applyAttackDamage(eruptionDmg);
       result.xCostApConsumed = xAp;
+      // Tag: eruption_refund1 — refund 1 AP after eruption resolves.
+      if (hasTag('eruption_refund1')) { result.apRefund = 1; }
       return result;
     }
 
-    // Bulwark — mega block; CC exhausts the card
+    // Bulwark — mega block; CC exhausts unless bulwark_no_exhaust tag active (L5)
     case 'bulwark': {
       const bulwarkBlock = applyShieldRelics(finalValue);
       result.shieldApplied = bulwarkBlock;
-      if (isChargeCorrect) {
+      // CC exhausts normally; L5 bulwark_no_exhaust tag skips this
+      if (isChargeCorrect && !hasTag('bulwark_no_exhaust')) {
         result.exhaustAfterPlay = true;
       }
       return result;
     }
 
-    // Shield Bash — deal damage equal to current block WITHOUT consuming it
-    // Block stays up as defense. CC multiplier applies via finalValue scaling.
+    // Shield Bash — deal damage equal to current block (optionally consuming it)
+    // L3+: conversion_bonus_50pct — multiplies block-to-damage by 1.5×
+    // L5: conversion_keep_block — block NOT consumed after conversion
     case 'conversion': {
       const playerBlock = playerState.shield ?? 0;
       if (playerBlock > 0) {
         const cursedMult = card.isCursed ? 0.7 : 1.0;
         const modePct = isChargeWrong ? 0.5 : (isChargeCorrect ? 1.5 : 1.0);
-        const damage = Math.floor(playerBlock * modePct * cursedMult);
+        // L3+: bonus_50pct — additional 1.5× multiplier on block conversion
+        const bonusMult = hasTag('conversion_bonus_50pct') ? 1.5 : 1.0;
+        const damage = Math.floor(playerBlock * modePct * cursedMult * bonusMult);
         applyAttackDamage(damage);
+        // L5: conversion_keep_block — block is NOT consumed after dealing damage
+        // Without this tag, block IS consumed (blockConsumed = playerBlock).
+        if (!hasTag('conversion_keep_block')) {
+          result.blockConsumed = playerBlock;
+        }
       }
-      // blockConsumed stays 0 — block is NOT consumed
       return result;
     }
 
@@ -1494,18 +1767,22 @@ export function resolveCardEffect(
 
     // Frenzy — grant N free-play charges
     case 'frenzy': {
-      // finalValue encodes the count (2/3/1 QP/CC/CW + mastery tag at L3)
-      const masteryL3Frenzy = (card.masteryLevel ?? 0) >= 3;
+      const frenzyStats = getMasteryStats('frenzy', card.masteryLevel ?? 0);
+      const frenzyFreeCards = frenzyStats?.extras?.freeCards;
       let frenzyCount: number;
       if (isChargeCorrect) {
-        frenzyCount = 3;
+        frenzyCount = frenzyFreeCards ?? 3;
       } else if (isChargeWrong) {
         frenzyCount = 1;
       } else {
-        // QP: 2 normally; L3: 3 (via frenzy_qp3 tag)
-        frenzyCount = masteryL3Frenzy ? 3 : 2;
+        // QP: from stat table (scales with mastery); frenzy_qp3 tag (legacy check, now from table)
+        frenzyCount = frenzyFreeCards ?? (hasTag('frenzy_qp3') ? 3 : 2);
       }
       result.frenzyChargesGranted = frenzyCount;
+      // frenzy_draw1: also draw 1 card
+      if (hasTag('frenzy_draw1')) {
+        result.extraCardsDrawn = 1;
+      }
       return result;
     }
 
@@ -1516,17 +1793,24 @@ export function resolveCardEffect(
         result.masteryBumpsCount = 0;
         return result;
       }
-      const masteryL3Surge = (card.masteryLevel ?? 0) >= 3;
+      const surgeStats = getMasteryStats('mastery_surge', card.masteryLevel ?? 0);
+      const surgeTargets = surgeStats?.extras?.targets;
       let bumpCount: number;
       if (isChargeCorrect) {
-        bumpCount = 2;
+        bumpCount = surgeTargets ?? 2;
       } else {
-        // QP: 1; L3: 2 (via mastery_surge_qp2 tag)
-        bumpCount = masteryL3Surge ? 2 : 1;
+        // QP: from stat table; mastery_surge_qp2 tag (legacy): 2 at L3+
+        bumpCount = surgeTargets ?? (hasTag('mastery_surge_qp2') ? 2 : 1);
       }
       // NOTE: cursed-card wasted-on-cursed ruling: bump is applied but has no visible effect.
       // Random card selection (excluding self) is performed by turnManager using masteryBumpsCount.
       result.masteryBumpsCount = bumpCount;
+      // msurge_plus2: +2 mastery per bumped card instead of +1
+      if (hasTag('msurge_plus2')) {
+        result.masteryBumpAmount = 2;
+      } else {
+        result.masteryBumpAmount = 1;
+      }
       return result;
     }
 
@@ -1534,6 +1818,10 @@ export function resolveCardEffect(
     case 'war_drum': {
       // finalValue encodes the per-card bonus (+2/+4/+1 QP/CC/CW + mastery via perLevelDelta=1)
       result.warDrumBonus = finalValue;
+      // war_drum_draw1: also draw 1 card
+      if (hasTag('war_drum_draw1')) {
+        result.extraCardsDrawn = 1;
+      }
       return result;
     }
 
@@ -1571,24 +1859,32 @@ export function resolveCardEffect(
       } else if (isChargeWrong) {
         retainCount = 1;
       } else {
-        // QP: 1 normally; L3: 2 (via archive_retain2_qp tag)
-        retainCount = masteryL3Archive ? 2 : 1;
+        // QP: 1 normally; archive_retain2_qp tag: 2
+        retainCount = hasTag('archive_retain2_qp') ? 2 : 1;
       }
       result.archiveRetainCount = retainCount;
+      // archive_block2_per: each retained card gains +2 block
+      if (hasTag('archive_block2_per')) {
+        result.archiveBlockBonus = 2;
+      }
+      // archive_draw1: also draw 1
+      if (hasTag('archive_draw1')) {
+        result.extraCardsDrawn = (result.extraCardsDrawn ?? 0) + 1;
+      }
       return result;
     }
 
     // Reflex — draw cards; passive (discard-from-hand → block) handled in turnManager
     case 'reflex': {
-      const masteryL3Reflex = (card.masteryLevel ?? 0) >= 3;
       let reflexDraw: number;
       if (isChargeCorrect) {
-        reflexDraw = 3;
+        // reflex_draw3cc: CC draws 3 instead of 2
+        reflexDraw = hasTag('reflex_draw3cc') ? 3 : 2;
       } else if (isChargeWrong) {
         reflexDraw = 1;
       } else {
-        // QP: 2; L3: 3 (via reflex_enhanced tag)
-        reflexDraw = masteryL3Reflex ? 3 : 2;
+        // QP: 2; reflex_enhanced tag: 3
+        reflexDraw = hasTag('reflex_enhanced') ? 3 : 2;
       }
       result.extraCardsDrawn = reflexDraw;
       // Passive block on discard is handled entirely in turnManager.discardFromHand().
@@ -1597,33 +1893,46 @@ export function resolveCardEffect(
 
     // Recollect — return exhausted card(s) to discard pile
     case 'recollect': {
-      const masteryL3Recollect = (card.masteryLevel ?? 0) >= 3;
       let recollectCount: number;
       if (isChargeCorrect) {
         recollectCount = 2;
       } else if (isChargeWrong) {
         recollectCount = 1;
       } else {
-        // QP: 1; L3: 2 (via recollect_qp2 tag)
-        recollectCount = masteryL3Recollect ? 2 : 1;
+        // QP: 1; recollect_qp2 tag: 2
+        recollectCount = hasTag('recollect_qp2') ? 2 : 1;
       }
       // Inscriptions (isRemovedFromGame) cannot be Recollected — enforced by turnManager UI filter.
       result.exhaustedCardsToReturn = recollectCount;
+      // recollect_upgrade1: returned cards get +1 mastery bump
+      if (hasTag('recollect_upgrade1')) {
+        result.recollectUpgrade = 1;
+      }
+      // recollect_play_free: play 1 returned card free this turn
+      if (hasTag('recollect_play_free')) {
+        result.recollectPlayFree = true;
+      }
       return result;
     }
 
     // Synapse — draw + wildcard chain link on CC
     case 'synapse': {
-      const masteryL3Synapse = (card.masteryLevel ?? 0) >= 3;
       let synapseDraw: number;
       if (isChargeCorrect) {
         synapseDraw = 2;
-        result.applyWildcardChainLink = true; // extends active chain by 1
+        // synapse_chain_link: CC counts as wildcard chain link (extends active chain)
+        if (hasTag('synapse_chain_link')) {
+          result.applyWildcardChainLink = true;
+        }
+        // synapse_chain_plus1: chain link also grants +1 chain bonus
+        if (hasTag('synapse_chain_plus1')) {
+          result.synapseChainBonus = 1;
+        }
       } else if (isChargeWrong) {
         synapseDraw = 1;
       } else {
-        // QP: 2; L3: 3 (via synapse_draw3_qp tag)
-        synapseDraw = masteryL3Synapse ? 3 : 2;
+        // QP: 2; synapse_draw3_qp tag: 3
+        synapseDraw = hasTag('synapse_draw3_qp') ? 3 : 2;
       }
       result.extraCardsDrawn = synapseDraw;
       return result;
@@ -1631,19 +1940,23 @@ export function resolveCardEffect(
 
     // Siphon Knowledge — draw + brief answer preview overlay (FLAGSHIP)
     case 'siphon_knowledge': {
-      const masteryL3Siphon = (card.masteryLevel ?? 0) >= 3;
       let siphonDraw: number;
       let previewSeconds: number;
       if (isChargeCorrect) {
         siphonDraw = 3;
         previewSeconds = 5;
+        // siphon_eliminate1: CC eliminates 1 wrong answer from the quiz
+        if (hasTag('siphon_eliminate1')) {
+          result.eliminateDistractor = 1;
+        }
       } else if (isChargeWrong) {
         siphonDraw = 1;
         previewSeconds = 2;
       } else {
-        // QP: 2 (3 at L3 via siphon_qp3_time4s tag); 3s preview (4s at L3)
-        siphonDraw = masteryL3Siphon ? 3 : 2;
-        previewSeconds = masteryL3Siphon ? 4 : 3;
+        // QP: 2 (3 via siphon_qp3_time4s tag); 3s preview (4s with tag)
+        const siphonQp3 = hasTag('siphon_qp3_time4s');
+        siphonDraw = siphonQp3 ? 3 : 2;
+        previewSeconds = siphonQp3 ? 4 : 3;
       }
       result.extraCardsDrawn = siphonDraw;
       result.siphonAnswerPreviewDuration = previewSeconds;
@@ -1652,9 +1965,8 @@ export function resolveCardEffect(
 
     // Tutor — search draw pile for any card and add to hand; CC: card costs 0 AP this turn
     case 'tutor': {
-      const masteryL3Tutor = (card.masteryLevel ?? 0) >= 3;
-      // Tutored card gets free-this-turn on CC; also on QP at L3 (tutor_free_qp tag)
-      const tutorFree = isChargeCorrect || (masteryL3Tutor && !isChargeWrong);
+      // tutor_free_play tag: tutored card costs 0 AP (applies on QP too when tag is active)
+      const tutorFree = isChargeCorrect || (!isChargeWrong && hasTag('tutor_free_play'));
       result.tutoredCardFree = tutorFree;
       // CardBrowser.svelte is opened by turnManager reading the mechanicId.
       // If draw pile is empty, fallback to discard is handled by turnManager.
@@ -1685,22 +1997,33 @@ export function resolveCardEffect(
       return result;
     }
 
-    // Catalyst — double Poison (and on CC: also Burn; on L3 QP: also Bleed)
+    // Catalyst — double Poison (and on CC: also Burn/Bleed depending on tags)
     case 'catalyst': {
-      result.poisonDoubled = true;
-      if (isChargeCorrect) {
-        result.burnDoubled = true;
+      // catalyst_triple: TRIPLE stacks instead of doubling (overrides normal behavior)
+      const isTriple = hasTag('catalyst_triple');
+      // Always doubles/triples Poison
+      result.poisonDoubled = !isTriple;
+      if (isTriple) result.catalystTriple = true;
+      // catalyst_burn: also double/triple Burn (on CC or if tag is active)
+      if (isChargeCorrect || hasTag('catalyst_burn')) {
+        result.burnDoubled = !isTriple;
       }
-      // L3 QP: also double Bleed (catalyst_bleed_qp tag)
-      if (!isChargeCorrect && !isChargeWrong && (card.masteryLevel ?? 0) >= 3) {
-        result.bleedDoubled = true;
+      // catalyst_bleed: also double/triple Bleed (on QP with tag, or CC with tag)
+      if (hasTag('catalyst_bleed')) {
+        result.bleedDoubled = !isTriple;
       }
       // turnManager reads these flags and mutates enemy statusEffects accordingly.
+      // When catalystTriple=true, turnManager multiplies stacks by 3 instead of 2.
       return result;
     }
 
-    // Mimic — copy a card from the discard pile to hand (player picks)
+    // Mimic — copy a card from the discard pile to hand (player picks or random)
     case 'mimic': {
+      // mimic_choose: player picks from discard (not random)
+      // turnManager checks mimicChoose to show CardPickerOverlay vs random selection
+      if (hasTag('mimic_choose')) {
+        result.mimicChoose = true;
+      }
       result.pendingCardPick = {
         type: 'mimic',
         sourceCardId: card.id,
@@ -1737,17 +2060,26 @@ export function resolveCardEffect(
       if (targetMechanic) {
         result.aftershockRepeat = { mechanicId: targetMechanic, multiplier: repeatMult };
       }
+      // aftershock_no_quiz: CC repeat doesn't need a quiz answer
+      if (isChargeCorrect && hasTag('aftershock_no_quiz')) {
+        result.aftershockNoQuiz = true;
+      }
       // No-op if no valid target (AP still spent per spec)
       return result;
     }
 
-    // Knowledge Bomb — flat QP/CW; CC scales with total correct Charges this encounter
+    // Knowledge Bomb — flat QP/CW; CC scales with total correct Charges this encounter (or run)
     case 'knowledge_bomb': {
       if (isChargeCorrect) {
-        const masteryLevelKB = card.masteryLevel ?? 0;
-        // perLevelDelta = +1 per-correct dmg per level; base 4/correct at L0
-        const perCorrect = 4 + masteryLevelKB;
-        // correctChargesThisEncounter is already incremented to include this CC play
+        const kbStats = getMasteryStats('knowledge_bomb', card.masteryLevel ?? 0);
+        const perCorrect = kbStats?.extras?.perCorrect ?? (4 + (card.masteryLevel ?? 0));
+        // kbomb_count_past: count all charges this RUN not just this encounter
+        // correctChargesThisRun must be passed via advanced options (same field as encounter for now)
+        // turnManager populates correctChargesThisEncounter; when kbombCountPast=true it uses run total
+        const kbombPast = hasTag('kbomb_count_past');
+        if (kbombPast) {
+          result.kbombCountPast = true;
+        }
         const correctCount = advanced.correctChargesThisEncounter ?? 1;
         const kbDmg = perCorrect * correctCount;
         applyAttackDamage(kbDmg);
@@ -1785,7 +2117,7 @@ export function resolveCardEffect(
       return result;
     }
 
-    // Debuff: Expose — apply Vulnerable stacks (no damage)
+    // Debuff: Expose — apply Vulnerable stacks (no damage); L5 also deals 3 damage
     case 'expose': {
       // finalValue encodes stack count; minimum 1 so QP always applies at least 1 stack.
       const exposeStacks = Math.max(1, Math.round(finalValue));
@@ -1795,6 +2127,8 @@ export function resolveCardEffect(
         value: exposeStacks,
         turnsRemaining: exposeDuration,
       });
+      // L5: expose_dmg3 — also deals 3 damage
+      if (hasTag('expose_dmg3')) applyAttackDamage(3);
       return result;
     }
     // Debuff: Weaken — apply Weakness stacks (no damage)
@@ -1807,6 +2141,30 @@ export function resolveCardEffect(
         value: weakenStacks,
         turnsRemaining: weakenDuration,
       });
+      return result;
+    }
+
+    // power_strike — clean scaling; Tag: power_vuln1 applies Vulnerable 1t.
+    case 'power_strike': {
+      applyAttackDamage(finalValue);
+      // Tag: power_vuln1 — apply Vulnerable 1t on hit.
+      if (hasTag('power_vuln1')) {
+        result.statusesApplied.push({ type: 'vulnerable', value: 1, turnsRemaining: 1 });
+      }
+      return result;
+    }
+
+    case 'reinforce': {
+      result.shieldApplied = applyShieldRelics(finalValue);
+      // L5: reinforce_draw1 — also draws 1 card
+      if (hasTag('reinforce_draw1')) result.extraCardsDrawn = 1;
+      return result;
+    }
+
+    case 'guard': {
+      result.shieldApplied = applyShieldRelics(finalValue);
+      // L5: guard_taunt1t — enemy must attack player next turn
+      if (hasTag('guard_taunt1t')) result.tauntDuration = 1;
       return result;
     }
 
