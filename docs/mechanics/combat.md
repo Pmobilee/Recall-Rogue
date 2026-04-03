@@ -29,6 +29,8 @@ The encounter begins with `startEncounter()`: initializes `TurnState`, resets ch
 
 **Turn counters:** `turnNumber` is global (run-level, drives Surge system); `encounterTurnNumber` resets to 1 per encounter (drives enrage system).
 
+> **See also:** For floor transition effects between encounters, see Floor Descent Ceremony in `docs/mechanics/progression.md`.
+
 ---
 
 ## Enemy Entrance Reveal

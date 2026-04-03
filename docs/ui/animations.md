@@ -106,6 +106,8 @@ When the DOM event `rr:player-turn-start` fires (dispatched by `CombatScene` aft
 
 The listener is registered in `onMount` and removed in the cleanup return and `onDestroy`. Uses `get(reduceMotionMode)` from `svelte/store` to read the store value synchronously at event time.
 
+> **See also:** The Phaser-side turn transition animations (vignette overlay, enemy sprite pulse, particle spike) are documented in `docs/architecture/systems.md` under CombatAtmosphereSystem and CombatScene.
+
 ---
 
 ## Chain-Match Pill Pulse (`CardHand.svelte`)
