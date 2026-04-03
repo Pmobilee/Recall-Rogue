@@ -1,0 +1,845 @@
+[
+  {
+    "id": "ap_bio_innate_behavior",
+    "correctAnswer": "Innate behavior",
+    "acceptableAlternatives": [
+      "Instinct",
+      "Innate",
+      "Fixed action pattern"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 1,
+    "funScore": 6,
+    "distractors": [
+      "Learned behavior",
+      "Conditioned response",
+      "Imprinted behavior",
+      "Operant behavior",
+      "Habituation",
+      "Observational behavior",
+      "Cognitive behavior",
+      "Cultural behavior"
+    ],
+    "quizQuestion": "What type of behavior is genetically programmed and performed correctly the first time, without prior experience?",
+    "explanation": "Innate behaviors are genetically encoded and expressed without prior learning. Examples include a spider spinning a web, a bird building a species-specific nest, and a salmon returning to its birth stream. These behaviors increase fitness by allowing organisms to respond adaptively even without experience.",
+    "sourceName": "OpenStax Biology 2e, Chapter 45.1 (Innate Animal Behavior)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/45-1-innate-animal-behavior",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.1",
+      "exam_weight": "medium",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_kin_selection",
+    "correctAnswer": "Kin selection",
+    "acceptableAlternatives": [
+      "Inclusive fitness"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "distractors": [
+      "Reciprocal altruism",
+      "Group selection",
+      "Sexual selection",
+      "Natural selection",
+      "Mutualism",
+      "Cooperative hunting",
+      "Pack behavior",
+      "Altruism"
+    ],
+    "quizQuestion": "A worker bee sacrifices her own reproduction to help the queen raise offspring. This behavior, which increases the fitness of genetic relatives, is explained by what evolutionary mechanism?",
+    "explanation": "Kin selection explains cooperative and altruistic behaviors when they increase the reproductive success of an organism's genetic relatives. Because relatives share genes, helping them reproduce passes shared alleles to the next generation. Inclusive fitness accounts for both direct reproduction and the reproductive success of relatives.",
+    "sourceName": "OpenStax Biology 2e, Chapter 45.7 (Behavioral Biology)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/45-7-behavioral-biology-proximate-and-ultimate-causes-of-behavior",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.1",
+      "exam_weight": "medium",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_communication_types",
+    "correctAnswer": "Chemical signals",
+    "acceptableAlternatives": [
+      "Pheromones",
+      "Chemical communication"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "Visual signals",
+      "Auditory signals",
+      "Tactile signals",
+      "Electrical signals",
+      "Bioluminescence",
+      "Seismic signals",
+      "Ultrasonic signals",
+      "Color signals"
+    ],
+    "quizQuestion": "Ants leave trails and bees communicate hive location using scent. What type of animal communication involves the release of molecules that alter the behavior of other individuals?",
+    "explanation": "Chemical communication uses pheromones and other molecules to convey information about food sources, territory, alarm, and reproductive status. AP Biology identifies five communication types: visual, audible (sound), tactile (touch), electrical, and chemical. Chemical signals can persist in the environment and transmit information over distance or time.",
+    "sourceName": "OpenStax Biology 2e, Chapter 45.6 (Communication)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/45-6-communication",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.1",
+      "exam_weight": "medium",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_cooperative_behavior_fitness",
+    "correctAnswer": "Fitness",
+    "acceptableAlternatives": [
+      "Individual fitness",
+      "Reproductive success"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "distractors": [
+      "Survival rate",
+      "Group size",
+      "Dominance rank",
+      "Territory size",
+      "Metabolic rate",
+      "Immune response",
+      "Lifespan",
+      "Body mass"
+    ],
+    "quizQuestion": "Pack hunting in wolves and alarm calling in ground squirrels are examples of cooperative behavior. According to the AP Biology CED, cooperative behavior tends to increase individual _______ and population survival.",
+    "explanation": "The CED states that cooperative behavior tends to increase individual fitness (survival and reproductive success) and population survival. Cooperative behaviors like pack hunting improve prey capture efficiency, while alarm calls warn relatives even at cost to the caller, increasing relative gene representation in the next generation.",
+    "sourceName": "OpenStax Biology 2e, Chapter 45.7 (Behavioral Biology)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/45-7-behavioral-biology-proximate-and-ultimate-causes-of-behavior",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.1",
+      "exam_weight": "medium",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_photoperiodism",
+    "correctAnswer": "Photoperiodism",
+    "acceptableAlternatives": [
+      "Photoperiod response"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "Phototropism",
+      "Taxis",
+      "Kinesis",
+      "Circadian rhythm",
+      "Thermotropism",
+      "Gravitropism",
+      "Hydrotropism",
+      "Chemotropism"
+    ],
+    "quizQuestion": "Many flowering plants bloom in spring when days lengthen, and deer grow antlers in response to changing day length. What term describes an organism's biological response to the duration of light in a 24-hour period?",
+    "explanation": "Photoperiodism is an organism's physiological or behavioral response to the length of day or night. It allows organisms to time seasonal events such as flowering, migration, reproduction, and hibernation. This is distinct from phototropism (directional growth toward light) and taxis (directed movement).",
+    "sourceName": "OpenStax Biology 2e, Chapter 32.3 (Plant Responses to Light)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/32-3-plant-sensory-systems-and-responses",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.1",
+      "exam_weight": "low",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_autotroph_heterotroph",
+    "correctAnswer": "Autotrophs",
+    "acceptableAlternatives": [
+      "Producers",
+      "Primary producers",
+      "Photosynthesizers"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 1,
+    "funScore": 5,
+    "distractors": [
+      "Heterotrophs",
+      "Decomposers",
+      "Consumers",
+      "Saprotrophs",
+      "Carnivores",
+      "Scavengers",
+      "Detritivores",
+      "Omnivores"
+    ],
+    "quizQuestion": "Plants, algae, and cyanobacteria capture solar energy and fix carbon dioxide into organic compounds. What category of organisms are these, which form the base of almost every food web?",
+    "explanation": "Autotrophs (producers) capture energy from abiotic sources — primarily sunlight via photosynthesis, or chemical energy via chemosynthesis — and convert it into organic matter. All other organisms (heterotrophs) must consume organic matter made by autotrophs. Autotrophs define the first trophic level and drive primary productivity.",
+    "sourceName": "OpenStax Biology 2e, Chapter 46.1 (Ecology of Ecosystems)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/46-1-ecology-of-ecosystems",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.2",
+      "exam_weight": "medium",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_ten_percent_rule",
+    "correctAnswer": "10%",
+    "acceptableAlternatives": [
+      "Ten percent",
+      "~10 percent"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 7,
+    "distractors": [
+      "1%",
+      "25%",
+      "50%",
+      "5%",
+      "20%",
+      "33%",
+      "75%",
+      "15%"
+    ],
+    "quizQuestion": "Of the energy stored in producers (plants), approximately what percentage is transferred to primary consumers, with the rest lost as heat during cellular respiration?",
+    "explanation": "The 10% energy transfer rule states that only about 10% of the energy stored at one trophic level is transferred to the next. The remaining ~90% is lost as metabolic heat, used for maintenance and movement, or remains in parts not consumed. This explains why food chains rarely exceed 4-5 levels — not enough energy remains to support higher trophic levels.",
+    "sourceName": "OpenStax Biology 2e, Chapter 46.2 (Energy Flow Through Ecosystems)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/46-2-energy-flow-through-ecosystems",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.2",
+      "exam_weight": "high",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_primary_productivity",
+    "correctAnswer": "Primary productivity",
+    "acceptableAlternatives": [
+      "Net primary productivity",
+      "NPP",
+      "Primary production"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "Secondary productivity",
+      "Gross productivity",
+      "Biomass accumulation",
+      "Trophic efficiency",
+      "Energy transfer rate",
+      "Carbon fixation rate",
+      "Photosynthetic yield",
+      "Ecosystem output"
+    ],
+    "quizQuestion": "The rate at which photosynthetic organisms convert solar energy into organic compounds in a given area over time is called what?",
+    "explanation": "Primary productivity is the rate at which producers fix solar energy into organic matter. It sets the energy budget for the entire ecosystem — all consumer trophic levels depend on this energy input. Tropical rainforests and coral reefs have the highest primary productivity; deserts and the open ocean have low productivity.",
+    "sourceName": "OpenStax Biology 2e, Chapter 46.2 (Energy Flow Through Ecosystems)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/46-2-energy-flow-through-ecosystems",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.2",
+      "exam_weight": "medium",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_carbon_cycle_four_processes",
+    "correctAnswer": "Photosynthesis, cellular respiration, decomposition, and combustion",
+    "acceptableAlternatives": [
+      "Photosynthesis, respiration, decomposition, combustion",
+      "Four processes of the carbon cycle"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "process_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "distractors": [
+      "Photosynthesis, transpiration, decomposition, and evaporation",
+      "Nitrogen fixation, nitrification, denitrification, and assimilation",
+      "Weathering, erosion, sedimentation, and volcanic activity",
+      "Photosynthesis, fermentation, decomposition, and oxidation",
+      "Chemosynthesis, respiration, fossilization, and erosion",
+      "Photosynthesis, cellular respiration, fossilization, and combustion",
+      "Assimilation, decomposition, combustion, and evaporation",
+      "Fixation, assimilation, mineralization, and volatilization"
+    ],
+    "quizQuestion": "The carbon cycle recycles carbon atoms through the biosphere as carbohydrates and back as CO2. According to the AP Biology CED, what are the four processes that drive this cycle?",
+    "explanation": "The AP Biology CED identifies four processes of the carbon cycle: (1) Photosynthesis — removes CO2 from atmosphere and fixes it into organic compounds; (2) Cellular respiration — releases CO2 back to atmosphere as organisms metabolize glucose; (3) Decomposition — decomposers break down dead organic matter, releasing CO2; (4) Combustion — burning fossil fuels and biomass releases ancient stored carbon as CO2.",
+    "sourceName": "OpenStax Biology 2e, Chapter 46.3 (Biogeochemical Cycles)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/46-3-biogeochemical-cycles",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.2",
+      "exam_weight": "high",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_nitrogen_fixation",
+    "correctAnswer": "Nitrogen fixation",
+    "acceptableAlternatives": [
+      "N2 fixation",
+      "Biological nitrogen fixation"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "distractors": [
+      "Nitrification",
+      "Denitrification",
+      "Ammonification",
+      "Assimilation",
+      "Mineralization",
+      "Volatilization",
+      "Denaturalization",
+      "Nitrogen cycling"
+    ],
+    "quizQuestion": "Certain bacteria (including Rhizobium in root nodules) convert atmospheric N2 into ammonia (NH3), which ionizes to ammonium (NH4+). What is this process called?",
+    "explanation": "Nitrogen fixation is the conversion of atmospheric nitrogen gas (N2) into ammonia (NH3), which then ionizes to ammonium (NH4+). This is essential because most organisms cannot use N2 directly. Only certain bacteria and archaea (diazotrophs) possess the enzyme nitrogenase required for this reaction. The atmosphere is the largest nitrogen reservoir.",
+    "sourceName": "OpenStax Biology 2e, Chapter 46.3 (Biogeochemical Cycles)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/46-3-biogeochemical-cycles",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.2",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_nitrogen_cycle_steps",
+    "correctAnswer": "Denitrification",
+    "acceptableAlternatives": [
+      "Denitrification process"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "process_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "distractors": [
+      "Nitrification",
+      "Nitrogen fixation",
+      "Ammonification",
+      "Assimilation",
+      "Volatilization",
+      "Oxidation",
+      "Mineralization",
+      "Decomposition"
+    ],
+    "quizQuestion": "Certain anaerobic bacteria convert nitrate (NO3-) back into nitrogen gas (N2), returning it to the atmosphere and completing the nitrogen cycle. What is this process called?",
+    "explanation": "Denitrification is the conversion of nitrate (NO3-) back into nitrogen gas (N2) by anaerobic bacteria in waterlogged soils. This completes the nitrogen cycle by returning fixed nitrogen to the atmosphere. The full nitrogen cycle sequence is: fixation (N2 → NH3) → nitrification (NH3 → NO2- → NO3-) → assimilation (plants take up NO3-) → ammonification (decomposers return NH4+) → denitrification (NO3- → N2).",
+    "sourceName": "OpenStax Biology 2e, Chapter 46.3 (Biogeochemical Cycles)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/46-3-biogeochemical-cycles",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.2",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_nitrogen_largest_reservoir",
+    "correctAnswer": "Atmosphere",
+    "acceptableAlternatives": [
+      "The atmosphere",
+      "Atmospheric N2"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "Soil",
+      "Ocean sediment",
+      "Living organisms",
+      "Groundwater",
+      "Rock formations",
+      "Fossil fuels",
+      "Wetlands",
+      "Plant biomass"
+    ],
+    "quizQuestion": "About 78% of Earth's atmosphere is N2 gas. According to the nitrogen cycle, what is the largest reservoir of nitrogen on Earth?",
+    "explanation": "The atmosphere is the largest reservoir of nitrogen, consisting of approximately 78% nitrogen gas (N2). However, N2 is chemically inert and unavailable to most organisms. Nitrogen enters ecosystems primarily through nitrogen fixation by specialized bacteria, making atmospheric nitrogen biologically accessible as ammonia and then nitrate.",
+    "sourceName": "OpenStax Biology 2e, Chapter 46.3 (Biogeochemical Cycles)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/46-3-biogeochemical-cycles",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.2",
+      "exam_weight": "medium",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_phosphorus_cycle_weathering",
+    "correctAnswer": "Weathering",
+    "acceptableAlternatives": [
+      "Rock weathering",
+      "Geological weathering"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "Nitrogen fixation",
+      "Decomposition",
+      "Precipitation",
+      "Combustion",
+      "Evaporation",
+      "Sedimentation",
+      "Photosynthesis",
+      "Mineralization"
+    ],
+    "quizQuestion": "Unlike carbon and nitrogen, phosphorus has no atmospheric reservoir. How does phosphorus primarily enter terrestrial ecosystems from its main abiotic reservoir in rocks?",
+    "explanation": "Phosphorus enters ecosystems through weathering of phosphate-containing rocks, which releases phosphate ions (PO4^3-) into soil and groundwater. Producers (plants, algae) take up dissolved phosphate and incorporate it into ATP, DNA, and phospholipids. Consumers acquire phosphorus by eating producers, and it returns to soil through decomposition or excretion. Unlike carbon and nitrogen, phosphorus has no gas phase and does not cycle through the atmosphere.",
+    "sourceName": "OpenStax Biology 2e, Chapter 46.3 (Biogeochemical Cycles)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/46-3-biogeochemical-cycles",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.2",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_water_cycle_processes",
+    "correctAnswer": "Evaporation, condensation, precipitation, and transpiration",
+    "acceptableAlternatives": [
+      "Evaporation, condensation, precipitation, transpiration",
+      "Hydrologic cycle processes"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "distractors": [
+      "Evaporation, condensation, precipitation, and runoff",
+      "Photosynthesis, transpiration, decomposition, and precipitation",
+      "Fixation, assimilation, mineralization, and evaporation",
+      "Infiltration, percolation, runoff, and evapotranspiration",
+      "Evaporation, sublimation, condensation, and absorption",
+      "Transpiration, photosynthesis, respiration, and precipitation",
+      "Evaporation, condensation, infiltration, and decomposition",
+      "Precipitation, sublimation, evaporation, and sedimentation"
+    ],
+    "quizQuestion": "The AP Biology CED identifies four key processes in the water (hydrologic) cycle. Which set correctly lists those processes?",
+    "explanation": "The hydrologic (water) cycle involves four main processes according to the AP Biology CED: (1) Evaporation — liquid water becomes water vapor from oceans, lakes, and land surfaces; (2) Condensation — water vapor forms clouds; (3) Precipitation — water falls as rain or snow; (4) Transpiration — plants release water vapor through stomata. Water reservoirs include oceans, surface water, atmosphere, and organisms.",
+    "sourceName": "OpenStax Biology 2e, Chapter 46.3 (Biogeochemical Cycles)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/46-3-biogeochemical-cycles",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.2",
+      "exam_weight": "medium",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_chemosynthesis",
+    "correctAnswer": "Chemosynthesis",
+    "acceptableAlternatives": [
+      "Chemolithoautotrophy",
+      "Chemolithotrophic metabolism"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "process_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "distractors": [
+      "Photosynthesis",
+      "Fermentation",
+      "Anaerobic respiration",
+      "Bioluminescence",
+      "Nitrification",
+      "Oxidative phosphorylation",
+      "Calvin cycle",
+      "Nitrogen fixation"
+    ],
+    "quizQuestion": "Bacteria at deep-sea hydrothermal vents capture energy from inorganic molecules like hydrogen sulfide (H2S) to produce organic compounds — no sunlight required. What is this energy-capturing process called?",
+    "explanation": "Chemosynthesis is the process by which certain autotrophs (chemosynthetic organisms) capture chemical energy from inorganic molecules — such as H2S, NH3, or Fe2+ — to produce organic compounds. This process can occur without oxygen and sunlight, supporting entire ecosystems at hydrothermal vents and in deep-ocean environments. These chemosynthetic bacteria serve as the base of food webs in sunless ecosystems.",
+    "sourceName": "OpenStax Biology 2e, Chapter 46.1 (Ecology of Ecosystems)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/46-1-ecology-of-ecosystems",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.2",
+      "exam_weight": "medium",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_population_growth_equation_dNdt",
+    "correctAnswer": "dN/dt = B - D",
+    "acceptableAlternatives": [
+      "dN/dt = B minus D",
+      "population growth = birth rate minus death rate"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "equation_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "dN/dt = r_max × N",
+      "dN/dt = r_max × N × ((K - N) / K)",
+      "N = N0 × e^(rt)",
+      "dN/dt = K - N",
+      "dN/dt = B + D",
+      "dN/dt = r × (K - N)",
+      "dN/dt = (B - D) / N",
+      "dN/dt = B × D"
+    ],
+    "quizQuestion": "In the AP Biology equation sheet, population growth rate equals the birth rate minus the death rate. What is the correct equation expressing change in population size over time?",
+    "explanation": "The population growth equation dN/dt = B - D states that the rate of change in population size (N) over time equals the birth rate (B) minus the death rate (D). When B > D, the population grows; when D > B, the population declines; when B = D, the population is stable. This is the foundational equation before introducing per capita rates.",
+    "sourceName": "AP Biology CED Equation Sheet (College Board)",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-biology/exam",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.3",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": true,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_exponential_growth_equation",
+    "correctAnswer": "dN/dt = r_max × N",
+    "acceptableAlternatives": [
+      "dN/dt = rmax * N",
+      "dN/dt = r_max N"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "equation_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "distractors": [
+      "dN/dt = B - D",
+      "dN/dt = r_max × N × ((K - N) / K)",
+      "dN/dt = K × N",
+      "dN/dt = r_max / N",
+      "N = r_max × N × K",
+      "dN/dt = (r_max × N) / K",
+      "dN/dt = r × K",
+      "dN/dt = N × ((K - N) / K)"
+    ],
+    "quizQuestion": "When resources are unlimited and a population grows at its maximum per capita rate, which equation models the resulting J-shaped growth curve?",
+    "explanation": "Exponential growth is modeled by dN/dt = r_max × N, where r_max is the maximum per capita growth rate and N is the current population size. With unlimited resources, each individual contributes r_max offspring per time unit, producing a J-shaped curve. In nature, exponential growth occurs when populations colonize new habitats with abundant resources and no predators or competitors.",
+    "sourceName": "AP Biology CED Equation Sheet (College Board)",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-biology/exam",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.3",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": true,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_exponential_vs_logistic_shape",
+    "correctAnswer": "J-shaped curve",
+    "acceptableAlternatives": [
+      "J curve",
+      "Exponential curve"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 1,
+    "funScore": 5,
+    "distractors": [
+      "S-shaped curve",
+      "Bell curve",
+      "Sigmoid curve",
+      "Linear curve",
+      "Plateau curve",
+      "Logistic curve",
+      "Parabolic curve",
+      "Inverted U-curve"
+    ],
+    "quizQuestion": "A bacterial culture placed in fresh nutrient broth with unlimited food doubles every 20 minutes. What shape does the graph of population size over time take during this phase?",
+    "explanation": "Exponential growth produces a J-shaped curve because the growth rate accelerates as population size increases — more individuals means more offspring. This contrasts with logistic growth, which produces an S-shaped (sigmoid) curve as the population approaches carrying capacity. The J-shape appears in populations newly introduced to resource-rich environments.",
+    "sourceName": "OpenStax Biology 2e, Chapter 45.2 (Life Histories and Natural Selection)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/45-2-life-histories-and-natural-selection",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.3",
+      "exam_weight": "medium",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_per_capita_growth_rate",
+    "correctAnswer": "Maximum per capita growth rate",
+    "acceptableAlternatives": [
+      "r max",
+      "maximum per capita growth rate",
+      "rmax",
+      "r_max",
+      "r-max"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "equation_terms",
+    "difficulty": 3,
+    "funScore": 5,
+    "distractors": [
+      "K",
+      "N",
+      "dN/dt",
+      "B",
+      "D",
+      "lambda",
+      "r_0",
+      "mu"
+    ],
+    "quizQuestion": "In the exponential growth equation dN/dt = r_max × N, what does r_max represent?",
+    "explanation": "r_max is the maximum per capita growth rate of a population — the intrinsic rate of natural increase under ideal, unlimited-resource conditions. It equals (birth rate - death rate) per individual. Each species has a characteristic r_max determined by its life history: small, rapidly reproducing species (bacteria, insects) have high r_max; large, slow-reproducing species (elephants, whales) have low r_max.",
+    "sourceName": "AP Biology CED Equation Sheet (College Board)",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-biology/exam",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.3",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": true,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_carrying_capacity",
+    "correctAnswer": "Carrying capacity",
+    "acceptableAlternatives": [
+      "K",
+      "Environmental carrying capacity"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "distractors": [
+      "Biotic potential",
+      "Growth ceiling",
+      "Resource threshold",
+      "Population maximum",
+      "Density limit",
+      "Ecological saturation",
+      "Sustainability index",
+      "Habitat quota"
+    ],
+    "quizQuestion": "What term describes the maximum population size an environment can sustain indefinitely, given available resources such as food, water, and space?",
+    "explanation": "Carrying capacity (K) is the maximum number of individuals of a species that an environment can support long-term. As a population approaches K, growth slows due to increased competition for limited resources. In the logistic growth model, K is the population size at which dN/dt = 0 (growth stops). K can change if environmental conditions change.",
+    "sourceName": "OpenStax Biology 2e, Chapter 45.3 (Environmental Limits to Population Growth)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/45-3-environmental-limits-to-population-growth",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.4",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_logistic_growth_equation",
+    "correctAnswer": "dN/dt = r_max × N × ((K - N) / K)",
+    "acceptableAlternatives": [
+      "dN/dt = rmax * N * ((K - N) / K)",
+      "logistic growth equation"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "equation_terms",
+    "difficulty": 4,
+    "funScore": 6,
+    "distractors": [
+      "dN/dt = r_max × N",
+      "dN/dt = B - D",
+      "dN/dt = r_max × N × (N / K)",
+      "dN/dt = r_max × (K - N)",
+      "dN/dt = r_max × N × K",
+      "dN/dt = (K - N) / K",
+      "dN/dt = r_max + N × ((K - N) / K)",
+      "dN/dt = N × K / r_max"
+    ],
+    "quizQuestion": "Which AP Biology equation models logistic population growth, where growth slows as population size (N) approaches carrying capacity (K)?",
+    "explanation": "The logistic growth equation dN/dt = r_max × N × ((K - N) / K) incorporates the braking factor ((K - N) / K). When N is small relative to K, this fraction approaches 1 and growth resembles exponential. As N approaches K, the fraction approaches 0, slowing growth to near zero. At N = K, growth stops. This produces the characteristic S-shaped (sigmoid) curve.",
+    "sourceName": "AP Biology CED Equation Sheet (College Board)",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-biology/exam",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.4",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": true,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_density_dependent_factors",
+    "correctAnswer": "Density-dependent factors",
+    "acceptableAlternatives": [
+      "Density-dependent limiting factors"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "Density-independent factors",
+      "Abiotic factors",
+      "Climatic factors",
+      "Stochastic factors",
+      "Environmental disturbances",
+      "Random events",
+      "Catastrophic factors",
+      "Physical limiting factors"
+    ],
+    "quizQuestion": "Competition for food, predation rates, and disease spread all intensify as a population becomes more crowded. What are these population-regulating forces that become stronger at higher densities called?",
+    "explanation": "Density-dependent factors are population-regulating mechanisms whose strength increases with population density. Examples include: competition for food, water, and space; predation (more prey = more efficient predators); disease (denser populations spread pathogens faster); and waste accumulation. These factors drive the S-shaped logistic growth curve by reducing birth rates and increasing death rates as N approaches K.",
+    "sourceName": "OpenStax Biology 2e, Chapter 45.3 (Environmental Limits to Population Growth)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/45-3-environmental-limits-to-population-growth",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.4",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_density_independent_factors",
+    "correctAnswer": "Density-independent factors",
+    "acceptableAlternatives": [
+      "Density-independent limiting factors",
+      "Abiotic limiting factors"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "distractors": [
+      "Density-dependent factors",
+      "Biotic factors",
+      "Competitive factors",
+      "Predation pressure",
+      "Disease vectors",
+      "Resource competition",
+      "Intraspecific competition",
+      "Interspecific competition"
+    ],
+    "quizQuestion": "A sudden hurricane kills 80% of a deer population regardless of how dense the herd was beforehand. Weather events, wildfires, and floods that affect populations equally at any density are called what?",
+    "explanation": "Density-independent factors affect populations regardless of their size or density. Classic examples include: natural disasters (hurricanes, floods, wildfires, volcanic eruptions), temperature extremes, drought, and pollution. Unlike density-dependent factors, these do not regulate populations toward carrying capacity — they can crash even thriving populations. They are typically abiotic.",
+    "sourceName": "OpenStax Biology 2e, Chapter 45.3 (Environmental Limits to Population Growth)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/45-3-environmental-limits-to-population-growth",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.4",
+      "exam_weight": "medium",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_logistic_growth_s_curve",
+    "correctAnswer": "S-shaped curve",
+    "acceptableAlternatives": [
+      "Sigmoid curve",
+      "S curve",
+      "Sigmoidal curve"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 1,
+    "funScore": 5,
+    "distractors": [
+      "J-shaped curve",
+      "Bell curve",
+      "Linear curve",
+      "Exponential curve",
+      "Hyperbolic curve",
+      "Logarithmic curve",
+      "Parabolic curve",
+      "Flat plateau curve"
+    ],
+    "quizQuestion": "A population initially grows rapidly, then slows as it approaches the environmental carrying capacity, eventually leveling off. What shape does this logistic growth curve produce?",
+    "explanation": "Logistic growth produces an S-shaped (sigmoid) curve. The three phases are: (1) lag/exponential phase — slow then rapid growth when N << K and resources are abundant; (2) deceleration phase — growth slows as N approaches K and competition intensifies; (3) plateau — growth stops at N = K. This contrasts with the J-shaped curve of exponential growth.",
+    "sourceName": "OpenStax Biology 2e, Chapter 45.3 (Environmental Limits to Population Growth)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/45-3-environmental-limits-to-population-growth",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.4",
+      "exam_weight": "medium",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  }
+]

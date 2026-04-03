@@ -1,0 +1,724 @@
+[
+  {
+    "id": "ap_bio_passive_transport_def",
+    "correctAnswer": "Passive transport",
+    "acceptableAlternatives": [
+      "diffusion",
+      "passive diffusion"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "process_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What term describes the net movement of molecules from a region of high concentration to low concentration across a membrane, requiring no direct input of metabolic energy?",
+    "explanation": "Passive transport moves molecules down their concentration gradient — from where they are more concentrated to where they are less concentrated. Because this movement is thermodynamically favorable, no ATP is consumed. Simple diffusion of small nonpolar molecules (e.g., O2) is the most direct form.",
+    "distractors": [
+      "Active transport",
+      "Endocytosis",
+      "Exocytosis",
+      "Facilitated diffusion",
+      "Chemiosmosis",
+      "Cotransport",
+      "Pinocytosis",
+      "Na+/K+ pumping"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.5",
+      "exam_weight": "high",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_active_transport_def",
+    "correctAnswer": "Active transport",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "process_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What type of membrane transport requires direct input of metabolic energy (ATP) and can move molecules against their concentration gradient, from low to high concentration?",
+    "explanation": "Active transport uses energy (typically from ATP hydrolysis) to move molecules against their concentration gradient. This allows cells to maintain concentrations of solutes that differ substantially from the surrounding environment. The Na+/K+ pump is a classic example, moving Na+ out and K+ in against their respective gradients.",
+    "distractors": [
+      "Passive transport",
+      "Simple diffusion",
+      "Facilitated diffusion",
+      "Osmosis",
+      "Endocytosis",
+      "Exocytosis",
+      "Cotransport down gradient only",
+      "Channel-mediated diffusion"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-3-active-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.5",
+      "exam_weight": "high",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_endocytosis_mechanism",
+    "correctAnswer": "Endocytosis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "In which energy-requiring bulk transport process does a cell take in large molecules or particles by folding its plasma membrane inward to form a membrane-enclosed vesicle?",
+    "explanation": "During endocytosis, the plasma membrane engulfs extracellular material by invaginating and pinching off to form an intracellular vesicle. Phagocytosis (cell eating) engulfs solid particles; pinocytosis (cell drinking) takes in fluid and dissolved solutes. Both require energy and involve membrane remodeling.",
+    "distractors": [
+      "Exocytosis",
+      "Passive diffusion",
+      "Facilitated diffusion",
+      "Active transport via pumps",
+      "Osmosis",
+      "Gap junction transfer",
+      "Receptor-mediated secretion",
+      "Cytosis"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.4",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-4-bulk-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.5",
+      "exam_weight": "high",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_exocytosis_mechanism",
+    "correctAnswer": "Exocytosis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "In which bulk transport process do vesicles inside the cell fuse with the plasma membrane to release their contents to the extracellular environment, requiring energy?",
+    "explanation": "Exocytosis is the reverse of endocytosis. Secretory vesicles (often from the Golgi complex) move to the plasma membrane, fuse with it, and expel their contents outside the cell. This is how cells secrete hormones, neurotransmitters, digestive enzymes, and other large molecules.",
+    "distractors": [
+      "Endocytosis",
+      "Pinocytosis",
+      "Phagocytosis",
+      "Passive secretion",
+      "Osmotic release",
+      "Lysosomal digestion",
+      "Cotransport export",
+      "Facilitated diffusion outward"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.4",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-4-bulk-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.5",
+      "exam_weight": "high",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_facilitated_diffusion",
+    "correctAnswer": "Facilitated diffusion",
+    "acceptableAlternatives": [
+      "facilitated transport"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "What type of passive transport uses channel or carrier proteins to move large polar molecules or charged ions down their concentration gradient without requiring ATP?",
+    "explanation": "Facilitated diffusion moves molecules down their concentration gradient (requiring no energy) but uses transport proteins to overcome the hydrophobic barrier of the membrane. Channel proteins form pores for specific ions; carrier proteins change shape to shuttle larger polar molecules like glucose across.",
+    "distractors": [
+      "Active transport",
+      "Simple diffusion",
+      "Osmosis",
+      "Endocytosis",
+      "Primary active transport",
+      "Cotransport",
+      "Exocytosis",
+      "Chemiosmosis"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.6",
+      "exam_weight": "high",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_aquaporins",
+    "correctAnswer": "Aquaporins",
+    "acceptableAlternatives": [
+      "Aquaporin",
+      "water channel proteins"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "structure_function_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which specialized channel proteins span the membrane to transport large quantities of water rapidly across membranes, enabling fast osmotic responses?",
+    "explanation": "Aquaporins are integral membrane proteins that form water-selective channels. A single aquaporin can transport ~3 billion water molecules per second while blocking ions. They are critical in kidney tubules for water reabsorption, in plant root cells for water uptake, and wherever rapid osmotic adjustment is needed.",
+    "distractors": [
+      "Sodium channels",
+      "Potassium channels",
+      "Chloride channels",
+      "Calcium pumps",
+      "Na+/K+ ATPase",
+      "Uniporters",
+      "Symporters",
+      "Gap junction proteins"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.6",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_na_k_require_channels",
+    "correctAnswer": "Channel proteins",
+    "acceptableAlternatives": [
+      "ion channel proteins",
+      "Na+ and K+ channels"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "structure_function_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Because Na+ and K+ are charged ions, they cannot directly cross the hydrophobic bilayer and require _____ for facilitated diffusion across the plasma membrane.",
+    "explanation": "Sodium (Na+) and potassium (K+) ions carry electric charge and are repelled by the nonpolar interior of the lipid bilayer. Specific ion channel proteins provide a hydrophilic pore sized and shaped to allow only the correct ion to pass. Their movement creates electrochemical gradients essential for nerve impulses and muscle contractions.",
+    "distractors": [
+      "Direct diffusion through lipids",
+      "Osmosis",
+      "Endocytosis",
+      "Exocytosis",
+      "Pinocytosis",
+      "Phagocytosis",
+      "Simple diffusion",
+      "Cholesterol-mediated pores"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.6",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_osmosis_definition",
+    "correctAnswer": "Osmosis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "process_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "What is the term for the movement of water molecules across a selectively permeable membrane from a region of higher water potential to a region of lower water potential?",
+    "explanation": "Osmosis is a special case of diffusion involving only water. Water moves from where its potential (free energy per unit volume) is higher — typically the side with fewer dissolved solutes — to where it is lower (more solutes). No energy input is required; osmosis is driven by the water potential gradient.",
+    "distractors": [
+      "Diffusion",
+      "Active transport",
+      "Facilitated diffusion",
+      "Endocytosis",
+      "Pinocytosis",
+      "Cotransport",
+      "Chemiosmosis",
+      "Exocytosis"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.7",
+      "exam_weight": "high",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_hypertonic_cell_shrinks",
+    "correctAnswer": "Hypertonic",
+    "acceptableAlternatives": [
+      "hypertonic solution",
+      "hypertonic environment"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "When an animal cell is placed in a solution with a higher solute concentration than the cell's interior, the cell loses water by osmosis and shrinks. What term describes this external solution?",
+    "explanation": "A hypertonic solution has a higher solute (lower water) concentration than the cell's cytoplasm. Water exits the cell by osmosis, causing it to shrink (crenation in animal cells; plasmolysis in plant cells). The term 'hyper' means above — the solution's solute concentration is above that of the cell.",
+    "distractors": [
+      "Hypotonic",
+      "Isotonic",
+      "Isosmotic",
+      "Hypo-osmotic",
+      "Iso-osmotic",
+      "Dilute",
+      "Concentrated but isotonic",
+      "Equilibrated"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.7",
+      "exam_weight": "high",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_hypotonic_cell_swells",
+    "correctAnswer": "Hypotonic",
+    "acceptableAlternatives": [
+      "hypotonic solution",
+      "hypotonic environment"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "When a cell is placed in a solution with a lower solute concentration than the cell's interior, water enters the cell by osmosis and the cell swells. What term describes this external solution?",
+    "explanation": "A hypotonic solution has a lower solute (higher water) concentration than the cell. Water flows into the cell by osmosis. In animal cells this can cause lysis (bursting); in plant cells the cell wall provides resistance, generating turgor pressure as water enters the central vacuole. Cell walls prevent osmotic lysis.",
+    "distractors": [
+      "Hypertonic",
+      "Isotonic",
+      "Isosmotic",
+      "Concentrated",
+      "Saturated",
+      "High-osmolarity",
+      "Equilibrated",
+      "Isoosmotic"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.7",
+      "exam_weight": "high",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_isotonic_no_net_movement",
+    "correctAnswer": "Isotonic",
+    "acceptableAlternatives": [
+      "isotonic solution"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "When the solute concentration of the external solution equals the solute concentration inside the cell, there is no net movement of water by osmosis. What term describes this condition?",
+    "explanation": "In an isotonic solution, water potential is equal on both sides of the membrane. Water molecules still cross in both directions, but the net flux is zero so cell volume remains stable. This is the normal physiological state for most animal cells — 0.9% saline (normal saline) is isotonic to human red blood cells.",
+    "distractors": [
+      "Hypotonic",
+      "Hypertonic",
+      "Osmotic equilibrium only at high pressure",
+      "Hypo-osmotic",
+      "Saturated",
+      "Concentrated",
+      "Dilute",
+      "Hyperhydrated"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.7",
+      "exam_weight": "high",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_water_potential_equation",
+    "correctAnswer": "Psi = Psi_p + Psi_s",
+    "acceptableAlternatives": [
+      "ψ = ψp + ψs",
+      "water potential equals pressure potential plus solute potential"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "equation_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "What is the equation for water potential (Psi), expressing it as the sum of pressure potential and solute potential?",
+    "explanation": "Water potential (Psi) measures the free energy of water per unit volume and predicts which direction water will flow by osmosis. Pressure potential (Psi_p) represents physical pressure (e.g., turgor pressure in plants). Solute potential (Psi_s) is always negative because dissolved solutes reduce water's free energy. Water flows from higher to lower Psi.",
+    "distractors": [
+      "Psi = Psi_p × Psi_s",
+      "Psi = Psi_s − Psi_p",
+      "Psi = Psi_p / Psi_s",
+      "Psi = -iCRT only",
+      "Psi = Psi_s + Psi_p + Psi_m",
+      "Psi = Psi_p − Psi_s",
+      "Psi = Psi_osmotic + Psi_turgor²",
+      "Psi = Psi_p + iCRT"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.7",
+      "exam_weight": "high",
+      "big_idea": "ENE",
+      "is_equation_fact": true,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_solute_potential_equation",
+    "correctAnswer": "Psi_s = -iCRT",
+    "acceptableAlternatives": [
+      "ψs = -iCRT",
+      "solute potential equals negative iCRT"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "equation_terms",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "What is the equation for solute potential (Psi_s), where i is the ionization constant, C is molar concentration, R is 0.0831 L·bar/mol·K, and T is temperature in Kelvin?",
+    "explanation": "Solute potential (Psi_s = -iCRT) is always negative because adding solutes reduces the free energy (and thus the potential) of water. A higher solute concentration makes Psi_s more negative. The ionization constant (i) accounts for dissociation — NaCl (i = 2) lowers Psi_s twice as much as glucose (i = 1) at the same molarity.",
+    "distractors": [
+      "Psi_s = iCRT",
+      "Psi_s = -CRT/i",
+      "Psi_s = C/RT",
+      "Psi_s = -RT/iC",
+      "Psi_s = iC/RT",
+      "Psi_s = -C/RT",
+      "Psi_s = iRT - C",
+      "Psi_s = -C × R × T²"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.7",
+      "exam_weight": "high",
+      "big_idea": "ENE",
+      "is_equation_fact": true,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_na_k_pump",
+    "correctAnswer": "Na+/K+ pump",
+    "acceptableAlternatives": [
+      "sodium-potassium pump",
+      "Na+/K+-ATPase",
+      "sodium potassium ATPase"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "structure_function_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Which active transport protein uses ATP to move 3 Na+ ions out of the cell and 2 K+ ions into the cell per cycle, maintaining the electrochemical gradient essential for nerve and muscle function?",
+    "explanation": "The Na+/K+ pump (Na+/K+-ATPase) is a P-type ATPase that hydrolyzes ATP to pump Na+ out and K+ in against their concentration gradients. This creates the resting membrane potential (~−70 mV in neurons) and establishes the electrochemical gradients that drive secondary active transport and nerve impulses.",
+    "distractors": [
+      "Aquaporin",
+      "Glucose transporter (GLUT)",
+      "Calcium ATPase pump",
+      "Proton pump (H+/ATPase)",
+      "Chloride channel",
+      "Potassium-only pump",
+      "Cotransporter protein",
+      "Voltage-gated channel"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-3-active-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.8",
+      "exam_weight": "high",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_compartmentalization_benefit",
+    "correctAnswer": "Minimizing competing reactions and increasing surface area",
+    "acceptableAlternatives": [
+      "separating metabolic processes and increasing reaction surface area",
+      "minimizing competing interactions and increasing surface area for reactions"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Internal membranes and membrane-bound organelles in eukaryotic cells contribute to compartmentalization in two main ways: _____ for specialized enzymatic reactions.",
+    "explanation": "Compartmentalization allows cells to run incompatible biochemical reactions simultaneously (e.g., fatty acid synthesis in cytosol vs. beta-oxidation in mitochondria). Each compartment maintains distinct pH, ion concentrations, and enzyme sets. Internal membranes also increase total surface area, enabling more reactions per unit cell volume.",
+    "distractors": [
+      "Speeding up diffusion and reducing membrane thickness",
+      "Increasing cell volume and reducing energy use",
+      "Eliminating the need for enzymes and reducing waste",
+      "Concentrating ribosomes and simplifying protein sorting",
+      "Reducing organelle number and increasing cell wall rigidity",
+      "Preventing endocytosis and controlling exocytosis",
+      "Centralizing DNA replication and reducing mutation rate",
+      "Maintaining identical conditions throughout the cell"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.9",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_prokaryote_no_organelles",
+    "correctAnswer": "Prokaryotes",
+    "acceptableAlternatives": [
+      "prokaryotic cells",
+      "Bacteria and Archaea"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "Which domain(s) of life typically lack membrane-bound organelles but do contain internal regions with specialized structures and functions, such as nucleoid regions and ribosomes?",
+    "explanation": "Prokaryotes (Bacteria and Archaea) lack a nucleus and membrane-bound organelles like mitochondria or ER. Their DNA resides in the nucleoid region. However, they are not structureless — they have ribosomes, cytoskeletal elements, carboxysomes, and other functional microcompartments. They also have internal membranes in some species (e.g., photosynthetic membranes in cyanobacteria).",
+    "distractors": [
+      "Eukaryotes",
+      "Animals only",
+      "Plants only",
+      "Fungi only",
+      "Protists only",
+      "Archaea only",
+      "Algae only",
+      "Viruses"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-2-prokaryotic-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.9",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_eukaryote_internal_membranes",
+    "correctAnswer": "Eukaryotic cells",
+    "acceptableAlternatives": [
+      "eukaryotes",
+      "eukaryotic organisms"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "Which cell type maintains extensive internal membrane systems that partition the cell into specialized regions, enabling compartmentalization of incompatible metabolic processes?",
+    "explanation": "Eukaryotic cells (animals, plants, fungi, protists) contain membrane-bound organelles — nucleus, mitochondria, ER, Golgi, lysosomes, vacuoles — that divide the cell into chemically distinct compartments. This allows, for example, the acidic lysosomal environment to coexist with neutral cytoplasm, or oxidative phosphorylation to occur while fatty acid synthesis runs separately.",
+    "distractors": [
+      "Prokaryotic cells",
+      "Bacterial cells only",
+      "Archaeal cells only",
+      "Viral particles",
+      "Prion-infected cells",
+      "Mycoplasma cells (wall-less bacteria)",
+      "Obligate intracellular parasites",
+      "Red blood cells (no nucleus)"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.9",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_endosymbiotic_theory",
+    "correctAnswer": "Endosymbiotic theory",
+    "acceptableAlternatives": [
+      "endosymbiosis",
+      "endosymbiont theory"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "What theory proposes that mitochondria and chloroplasts evolved from once free-living prokaryotes that were engulfed by a larger host cell and eventually became permanent internal symbionts?",
+    "explanation": "The endosymbiotic theory (championed by Lynn Margulis) explains the double membranes of mitochondria and chloroplasts, their own circular DNA, and their ribosomes (similar in size to bacterial ribosomes) as evidence that ancestral alpha-proteobacteria became mitochondria and ancestral cyanobacteria became chloroplasts.",
+    "distractors": [
+      "Cell theory",
+      "Serial transfer hypothesis",
+      "Invagination hypothesis",
+      "Chemosynthetic origin theory",
+      "Abiogenesis model",
+      "Horizontal gene transfer theory",
+      "Membrane budding theory",
+      "Lateral gene transfer hypothesis"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.6",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-6-connections-between-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.10",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_endosymbiosis_evidence_double_membrane",
+    "correctAnswer": "Double membrane",
+    "acceptableAlternatives": [
+      "two membranes",
+      "inner and outer membrane"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "structure_function_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "One piece of evidence for the endosymbiotic origin of mitochondria and chloroplasts is that both organelles have a _____, consistent with the outer membrane being derived from the host cell's engulfment vesicle.",
+    "explanation": "When a host cell engulfed a prokaryote, the resulting organelle would have two membranes: the inner membrane derived from the original prokaryote's plasma membrane, and the outer membrane from the host's engulfment vesicle. Both mitochondria and chloroplasts retain this double membrane structure, supporting endosymbiotic origin.",
+    "distractors": [
+      "Single membrane only",
+      "No membrane at all",
+      "Three concentric membranes",
+      "Membrane made of chitin",
+      "Outer membrane identical to cell wall",
+      "Membrane derived from nucleus only",
+      "Shared membrane with the ER",
+      "Membrane fused with plasma membrane"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.6",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-6-connections-between-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.10",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_endosymbiosis_evidence_dna",
+    "correctAnswer": "Own circular DNA and ribosomes similar to bacteria",
+    "acceptableAlternatives": [
+      "circular DNA and prokaryotic-type ribosomes",
+      "their own DNA and bacterial-like ribosomes"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Beyond their double membranes, what molecular features of mitochondria and chloroplasts provide the strongest evidence for their prokaryotic ancestry under the endosymbiotic theory?",
+    "explanation": "Mitochondria and chloroplasts have their own circular DNA (like bacteria, not the linear chromosomes of the eukaryotic nucleus), and their ribosomes (70S) closely resemble bacterial ribosomes rather than the larger 80S ribosomes in the cytoplasm. These organelles also reproduce by binary fission, not by de novo synthesis — all hallmarks of bacterial ancestry.",
+    "distractors": [
+      "Linear DNA and 80S ribosomes identical to cytoplasm",
+      "No DNA but RNA-only genome",
+      "Shared DNA with the nucleus",
+      "Square-shaped DNA molecules",
+      "Ribosomes identical in size to cytoplasmic ribosomes",
+      "DNA stored inside the nucleus like eukaryotes",
+      "Only proteins shared with prokaryotes, no DNA",
+      "Membrane composition identical to ER"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.6",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-6-connections-between-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.10",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_turgor_pressure_plant",
+    "correctAnswer": "Turgor pressure",
+    "acceptableAlternatives": [
+      "pressure potential",
+      "positive turgor pressure"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "When a plant cell is in a hypotonic solution, water enters by osmosis and presses the cytoplasm against the cell wall, creating _____ that keeps the plant upright and turgid.",
+    "explanation": "Turgor pressure (pressure potential, Psi_p) is the hydrostatic pressure of water pushing outward against the cell wall. In a hypotonic environment, water flows into the vacuole by osmosis, expanding the cell until the cell wall's resistance equals the osmotic pressure driving water in. This pressure keeps non-woody plants (herbs, leaves) structurally rigid.",
+    "distractors": [
+      "Osmotic pressure only (no wall pressure)",
+      "Solute potential",
+      "Plasmolysis force",
+      "Wall pressure opposing inflow only",
+      "Crenation force",
+      "Tension potential",
+      "Chemical potential only",
+      "Transpiration pull"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.7",
+      "exam_weight": "high",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  }
+]

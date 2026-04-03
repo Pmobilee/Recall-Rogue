@@ -1,0 +1,902 @@
+[
+  {
+    "id": "ap_bio_ribosome_composition",
+    "correctAnswer": "rRNA and protein",
+    "acceptableAlternatives": [
+      "ribosomal RNA and protein"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Ribosomes are non-membrane-bound subcellular structures composed of what two components?",
+    "explanation": "Ribosomes are made of ribosomal RNA (rRNA) and protein. They are found in all domains of life — bacteria, archaea, and eukaryotes — reflecting common ancestry. Their function is to synthesize proteins by translating mRNA sequences.",
+    "distractors": [
+      "DNA and protein",
+      "mRNA and lipid",
+      "tRNA and enzyme",
+      "ATP and rRNA",
+      "phospholipid and protein",
+      "DNA and rRNA",
+      "polysaccharide and protein",
+      "enzyme and mRNA"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.1",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_ribosome_universal",
+    "correctAnswer": "All domains of life",
+    "acceptableAlternatives": [
+      "Bacteria, Archaea, and Eukaryota",
+      "all living organisms",
+      "all forms of life"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Ribosomes are found in which groups of organisms, making them evidence for common ancestry?",
+    "explanation": "Ribosomes are present in bacteria, archaea, and eukaryotes — every domain of life. This universal distribution is strong evidence that all life shares a common ancestor. Their core ribosomal RNA sequences are highly conserved across species.",
+    "distractors": [
+      "Eukaryotes only",
+      "Prokaryotes only",
+      "Plants and animals only",
+      "Bacteria and fungi only",
+      "Multicellular organisms only",
+      "Animals and protists only",
+      "Archaea and eukaryotes only",
+      "Organisms with nuclei only"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.1",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_endomembrane_system",
+    "correctAnswer": "Endomembrane system",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What name is given to the network of membrane-bound organelles — including ER, Golgi, lysosomes, vacuoles, transport vesicles, and the nuclear envelope — that work together to modify, package, and transport molecules?",
+    "explanation": "The endomembrane system is an integrated network of membranes within eukaryotic cells. It includes the rough ER (protein synthesis), smooth ER (lipid synthesis, detoxification), Golgi complex (modification and packaging), lysosomes (digestion), vacuoles (storage), and the vesicles that connect them.",
+    "distractors": [
+      "Cytoskeletal network",
+      "Signal transduction pathway",
+      "Oxidative phosphorylation chain",
+      "Nucleosome complex",
+      "Spliceosome assembly",
+      "Plastid network",
+      "Vesicular transport system",
+      "Golgi secretory pathway"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.4",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-4-the-endomembrane-system-and-proteins",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.1",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_rough_er_function",
+    "correctAnswer": "Rough endoplasmic reticulum",
+    "acceptableAlternatives": [
+      "Rough ER",
+      "RER"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "organelle_structures",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which organelle is studded with membrane-bound ribosomes, allowing compartmentalization and protein synthesis, and is part of the endomembrane system?",
+    "explanation": "The rough ER is named for the ribosomes dotting its cytoplasmic surface. Proteins synthesized here are threaded into the ER lumen for processing and compartmentalization. It also provides mechanical support and plays a key role in intracellular transport.",
+    "distractors": [
+      "Smooth endoplasmic reticulum",
+      "Golgi complex",
+      "Nuclear envelope",
+      "Lysosome",
+      "Mitochondria",
+      "Peroxisome",
+      "Cytosol",
+      "Vacuole"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.4",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-4-the-endomembrane-system-and-proteins",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.1",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_smooth_er_function",
+    "correctAnswer": "Smooth endoplasmic reticulum",
+    "acceptableAlternatives": [
+      "Smooth ER",
+      "SER"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "organelle_structures",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which organelle lacks surface ribosomes and is the primary site for lipid synthesis and detoxification of drugs and poisons in liver cells?",
+    "explanation": "The smooth ER has no ribosomes on its surface, giving it a smooth appearance. Its key functions include lipid and steroid synthesis, detoxification of harmful substances (especially in liver cells), and storage of calcium ions in muscle cells.",
+    "distractors": [
+      "Rough endoplasmic reticulum",
+      "Golgi complex",
+      "Peroxisome",
+      "Lysosome",
+      "Mitochondria",
+      "Cytosol",
+      "Nucleus",
+      "Vacuole"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.4",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-4-the-endomembrane-system-and-proteins",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.1",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_golgi_function",
+    "correctAnswer": "Golgi complex",
+    "acceptableAlternatives": [
+      "Golgi apparatus",
+      "Golgi body"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "organelle_structures",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which membrane-bound structure of flattened sacs receives proteins from the ER, chemically modifies and correctly folds them, then packages them into vesicles for transport to their destination?",
+    "explanation": "The Golgi complex acts as the cell's post office. Proteins arrive from the rough ER in vesicles, are modified (e.g., glycosylated) in the Golgi's stacked cisternae, then packaged into secretory or transport vesicles. It has distinct cis (receiving) and trans (shipping) faces.",
+    "distractors": [
+      "Rough endoplasmic reticulum",
+      "Lysosome",
+      "Mitochondria",
+      "Smooth endoplasmic reticulum",
+      "Peroxisome",
+      "Vacuole",
+      "Nuclear envelope",
+      "Ribosome"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.4",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-4-the-endomembrane-system-and-proteins",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.1",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_mitochondria_double_membrane",
+    "correctAnswer": "Mitochondria",
+    "acceptableAlternatives": [
+      "Mitochondrion"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "organelle_structures",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which organelle has a double membrane with an inner membrane folded into cristae, dramatically increasing surface area for efficient ATP synthesis?",
+    "explanation": "Mitochondria have a smooth outer membrane and a highly convoluted inner membrane. The folds of the inner membrane are called cristae and house the enzymes and complexes of the electron transport chain and ATP synthase, maximizing ATP production through oxidative phosphorylation.",
+    "distractors": [
+      "Chloroplast",
+      "Nucleus",
+      "Endoplasmic reticulum",
+      "Golgi complex",
+      "Lysosome",
+      "Vacuole",
+      "Peroxisome",
+      "Ribosome"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.1",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_lysosome_function",
+    "correctAnswer": "Lysosomes",
+    "acceptableAlternatives": [
+      "Lysosome"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "organelle_structures",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which membrane-enclosed organelles contain hydrolytic enzymes that digest macromolecules and also play a role in programmed cell death (apoptosis)?",
+    "explanation": "Lysosomes are vesicles filled with acid hydrolases — enzymes that break down proteins, nucleic acids, carbohydrates, and lipids. Their acidic interior (pH ~5) activates these enzymes. When lysosomes release their contents into the cell, they trigger apoptosis.",
+    "distractors": [
+      "Peroxisomes",
+      "Vacuoles",
+      "Mitochondria",
+      "Golgi complex",
+      "Smooth ER",
+      "Ribosomes",
+      "Proteasomes",
+      "Endosomes"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.4",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-4-the-endomembrane-system-and-proteins",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.1",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_plant_vacuole_turgor",
+    "correctAnswer": "Central vacuole",
+    "acceptableAlternatives": [
+      "large central vacuole",
+      "plant vacuole"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "organelle_structures",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which large membrane-bound organelle in plant cells stores water and nutrients to maintain turgor pressure and support the cell's structural rigidity?",
+    "explanation": "Plant cells have a large central vacuole that can occupy up to 90% of the cell's volume. When filled with water, it presses the cytoplasm against the cell wall, creating turgor pressure — the force responsible for keeping plants upright. It also stores pigments, waste products, and nutrients.",
+    "distractors": [
+      "Chloroplast",
+      "Mitochondria",
+      "Rough ER",
+      "Golgi complex",
+      "Lysosome",
+      "Nucleus",
+      "Cytoskeleton",
+      "Peroxisome"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.1",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_chloroplast_location",
+    "correctAnswer": "Chloroplasts",
+    "acceptableAlternatives": [
+      "Chloroplast"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "organelle_structures",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "Which double-membrane organelles, found in plants and photosynthetic algae, are the sites of photosynthesis?",
+    "explanation": "Chloroplasts are found in plant cells and photosynthetic algae. They contain a double outer membrane plus an internal system of thylakoid membranes (where light reactions occur) surrounded by the stroma (where the Calvin cycle occurs). Their double membrane is evidence for endosymbiotic origin.",
+    "distractors": [
+      "Mitochondria",
+      "Peroxisomes",
+      "Vacuoles",
+      "Ribosomes",
+      "Golgi complex",
+      "Smooth ER",
+      "Lysosomes",
+      "Nucleus"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.1",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_sav_small_cells",
+    "correctAnswer": "Higher surface area-to-volume ratio",
+    "acceptableAlternatives": [
+      "greater SA/V ratio",
+      "higher SA:V ratio"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Compared to large cells, small cells have a _____, which allows more efficient exchange of nutrients and waste with the environment.",
+    "explanation": "As a cell shrinks, its volume decreases faster than its surface area, so the SA/V ratio increases. This means small cells can exchange materials more efficiently across their plasma membrane relative to their metabolic demands. Large cells may need structural adaptations (folds, extensions) to compensate for their lower SA/V.",
+    "distractors": [
+      "Lower surface area-to-volume ratio",
+      "Larger absolute surface area",
+      "Thicker plasma membrane",
+      "Fewer transport proteins",
+      "Greater internal volume",
+      "Higher membrane cholesterol content",
+      "More membrane-bound organelles",
+      "Thicker cell wall"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-2-prokaryotic-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.2",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_sav_increasing_volume",
+    "correctAnswer": "Decreases",
+    "acceptableAlternatives": [
+      "goes down",
+      "gets smaller"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "As a cell increases in volume, its surface area-to-volume ratio _____, increasing the demand for internal resources relative to available membrane surface.",
+    "explanation": "Volume increases as the cube of linear dimension, while surface area increases only as the square. So as cells grow larger, SA/V decreases, and the plasma membrane becomes increasingly inadequate to supply the cell's interior. This constraint limits how large a cell can grow without adaptive structures.",
+    "distractors": [
+      "Increases",
+      "Stays the same",
+      "Doubles",
+      "Triples",
+      "Fluctuates randomly",
+      "Increases then plateaus",
+      "Decreases then increases",
+      "Is unaffected"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-2-prokaryotic-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.2",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_sav_metabolic_rate",
+    "correctAnswer": "Higher metabolic rate per unit body mass",
+    "acceptableAlternatives": [
+      "greater metabolic rate per unit mass",
+      "higher mass-specific metabolic rate"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Because smaller organisms have a higher SA/V ratio and lose heat more rapidly, they typically have a _____ compared to larger organisms.",
+    "explanation": "Smaller organisms (like mice) have a higher SA/V ratio, meaning they lose body heat proportionally faster than large organisms (like elephants). To maintain body temperature, small endotherms must burn calories at a higher rate per gram of body mass, resulting in a higher mass-specific metabolic rate.",
+    "distractors": [
+      "Lower metabolic rate per unit body mass",
+      "The same metabolic rate per unit body mass",
+      "Higher absolute metabolic rate",
+      "Lower core body temperature",
+      "Larger cell size",
+      "Fewer mitochondria per cell",
+      "Slower heart rate",
+      "Lower oxygen consumption per gram"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-2-prokaryotic-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.2",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_sav_membrane_folds",
+    "correctAnswer": "Membrane folds",
+    "acceptableAlternatives": [
+      "infoldings",
+      "membrane infoldings",
+      "membrane convolutions"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "structure_function_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Larger cells compensate for a decreased SA/V ratio by developing complex internal structures such as _____ that increase surface area available for reactions and exchange.",
+    "explanation": "As cells become larger, their SA/V ratio decreases and the plasma membrane alone is insufficient. To increase internal surface area, cells develop membrane folds (cristae in mitochondria, thylakoids in chloroplasts) and specialized structures like microvilli in intestinal cells. These adaptations restore functional surface area.",
+    "distractors": [
+      "Larger nucleus",
+      "More ribosomes",
+      "Thicker cell wall",
+      "Increased cytoplasm volume",
+      "Longer flagella",
+      "Larger vacuoles",
+      "More cholesterol in membrane",
+      "Denser cytoskeleton"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-2-prokaryotic-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.2",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_phospholipid_bilayer_orientation",
+    "correctAnswer": "Hydrophilic heads outward, hydrophobic tails inward",
+    "acceptableAlternatives": [
+      "polar heads face water, nonpolar tails face each other"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "structure_function_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "In a phospholipid bilayer, the polar heads face the aqueous environments on both sides while the nonpolar tails face each other in the interior — what property of phospholipids drives this arrangement?",
+    "explanation": "Phospholipids are amphipathic: each molecule has a hydrophilic (water-loving) phosphate head and two hydrophobic (water-fearing) fatty acid tails. In water, they spontaneously arrange into a bilayer — heads facing outward toward aqueous cytoplasm and extracellular fluid, tails sequestered inside away from water.",
+    "distractors": [
+      "Hydrophobic heads outward, hydrophilic tails inward",
+      "All heads face the same direction",
+      "Tails face aqueous environments",
+      "Randomly oriented phospholipids",
+      "Heads and tails alternate in rows",
+      "Glycolipids determine orientation",
+      "Cholesterol forces all heads inward",
+      "Peripheral proteins orient the bilayer"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.3",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_fluid_mosaic_model",
+    "correctAnswer": "Fluid mosaic model",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "What model describes the plasma membrane as a phospholipid bilayer in which proteins, cholesterol, glycoproteins, and glycolipids can all move laterally within the membrane?",
+    "explanation": "The fluid mosaic model (Singer and Nicolson, 1972) describes the membrane as a two-dimensional fluid in which lipid and protein components move laterally. 'Fluid' refers to the lipid movement; 'mosaic' reflects the diverse proteins and carbohydrate-conjugated molecules embedded or attached to it.",
+    "distractors": [
+      "Lipid bilayer model",
+      "Sandwich model",
+      "Unit membrane hypothesis",
+      "Davson-Danielli model",
+      "Channel-gate model",
+      "Tight junction model",
+      "Lipid raft model",
+      "Mosaic diffusion model"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.3",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_cholesterol_membrane",
+    "correctAnswer": "Cholesterol",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which steroid molecule is embedded in the animal cell plasma membrane, stabilizing membrane fluidity by preventing fatty acid chains from packing too tightly at low temperatures?",
+    "explanation": "Cholesterol is a sterol intercalated among the phospholipid tails. At low temperatures it prevents the membrane from solidifying by disrupting regular packing. At high temperatures it restrains excessive fluidity. Animal cell membranes contain significant cholesterol; plant membranes use phytosterols instead.",
+    "distractors": [
+      "Glycolipid",
+      "Sphingomyelin",
+      "Phosphatidylcholine",
+      "Triglyceride",
+      "Wax ester",
+      "Ceramide",
+      "Phosphatidylserine",
+      "Cardiolipin"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.3",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_selective_permeability_nonpolar",
+    "correctAnswer": "Small nonpolar molecules",
+    "acceptableAlternatives": [
+      "small uncharged nonpolar molecules",
+      "nonpolar small molecules"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which type of molecule can freely cross the plasma membrane without transport proteins because they can dissolve in the hydrophobic lipid bilayer interior? Examples include N2, O2, and CO2.",
+    "explanation": "The hydrophobic interior of the phospholipid bilayer acts as a barrier to charged and polar molecules. Small nonpolar molecules like N2, O2, and CO2 are soluble in lipids and can diffuse directly through the bilayer. Ions and large polar molecules require protein channels or carriers to cross.",
+    "distractors": [
+      "Large polar molecules",
+      "Ions such as Na+ and Cl−",
+      "Charged amino acids",
+      "Glucose",
+      "ATP",
+      "Large proteins",
+      "Polysaccharides",
+      "DNA segments"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.4",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_permeability_water_ammonia",
+    "correctAnswer": "In small amounts",
+    "acceptableAlternatives": [
+      "slowly",
+      "to a limited extent",
+      "at a slow rate"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Small polar uncharged molecules like water (H2O) and ammonia (NH3) can cross the plasma membrane _____, despite the hydrophobic interior creating a partial barrier to them.",
+    "explanation": "H2O and NH3 are polar but small and uncharged. They can slip through transient gaps between phospholipid tails, but only slowly and in small amounts. Most water transport across membranes occurs through aquaporin channel proteins. In contrast, charged ions cannot cross the bilayer at all without protein assistance.",
+    "distractors": [
+      "Not at all — they require channel proteins",
+      "Freely and rapidly without any resistance",
+      "Only by active transport",
+      "Only through gap junctions",
+      "Through pinocytosis exclusively",
+      "Only when assisted by cholesterol",
+      "By endocytosis only",
+      "Freely, just like nonpolar molecules"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.4",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_cell_wall_function",
+    "correctAnswer": "Cell wall",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "structure_function_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which structure, found in bacteria, archaea, fungi, and plants (but not animal cells), provides a structural boundary, permeability barrier, and protection from osmotic lysis?",
+    "explanation": "Cell walls are rigid or semi-rigid layers outside the plasma membrane. In bacteria they are made of peptidoglycan; in plants, cellulose; in fungi, chitin; in archaea, pseudopeptidoglycan or other polymers. They prevent cells from bursting (osmotic lysis) when placed in a hypotonic environment and provide structural support.",
+    "distractors": [
+      "Plasma membrane",
+      "Nuclear envelope",
+      "Cytoskeleton",
+      "Glycocalyx",
+      "Extracellular matrix",
+      "Tight junction",
+      "Capsule only",
+      "Outer membrane"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.4",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_ions_require_channels",
+    "correctAnswer": "Channel proteins",
+    "acceptableAlternatives": [
+      "ion channels",
+      "transport proteins",
+      "membrane channels"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "structure_function_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Because the hydrophobic core of the phospholipid bilayer blocks charged particles, ions such as Na+ and K+ require _____ to cross the plasma membrane.",
+    "explanation": "The nonpolar hydrocarbon tails in the bilayer's interior create an insurmountable barrier to charged ions. Protein channels span the membrane and provide a hydrophilic pore that ions can pass through. Specific channel proteins (e.g., Na+ channels, K+ channels) are selective for particular ions based on their size and charge.",
+    "distractors": [
+      "Direct diffusion through lipid tails",
+      "Osmosis",
+      "Endocytosis",
+      "Pinocytosis",
+      "Gap junctions only",
+      "Phospholipid head groups",
+      "Cholesterol pores",
+      "Glycoprotein tunnels"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.4",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_membrane_glycoproteins",
+    "correctAnswer": "Glycoproteins",
+    "acceptableAlternatives": [
+      "glycoprotein",
+      "glycolipids and glycoproteins"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which membrane components consist of proteins with carbohydrate chains attached to them and function in cell recognition, signaling, and immune response at the cell surface?",
+    "explanation": "Glycoproteins are integral membrane proteins with oligosaccharide chains attached on the extracellular face. They form part of the glycocalyx — a carbohydrate-rich coat on the cell surface. Glycoproteins act as cell-identity markers (the basis of blood type antigens), receptors, and adhesion molecules.",
+    "distractors": [
+      "Integral proteins without carbohydrates",
+      "Peripheral proteins",
+      "Phospholipids",
+      "Cholesterol",
+      "Carrier proteins",
+      "Channel proteins",
+      "Glycolipids only",
+      "Proteoglycans"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 5.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.3",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_ribosome_protein_synthesis",
+    "correctAnswer": "mRNA",
+    "acceptableAlternatives": [
+      "messenger RNA",
+      "messenger RNA sequences"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "Ribosomes synthesize proteins by reading the sequence of which type of RNA molecule as a template?",
+    "explanation": "During translation, ribosomes bind to a messenger RNA (mRNA) strand and read its codons (three-nucleotide sequences) to specify the order in which amino acids are assembled into a polypeptide chain. Transfer RNA (tRNA) molecules carry the appropriate amino acids to the ribosome.",
+    "distractors": [
+      "tRNA",
+      "rRNA",
+      "snRNA",
+      "microRNA",
+      "siRNA",
+      "hnRNA",
+      "lncRNA",
+      "gRNA"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.1",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_sphere_volume_formula",
+    "correctAnswer": "V = (4/3)πr³",
+    "acceptableAlternatives": [
+      "(4/3)pi*r^3",
+      "four-thirds pi r cubed",
+      "V = 4/3 π r³"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "equation_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "What is the formula for the volume of a sphere, used in AP Biology to calculate cell volume when modeling surface area-to-volume ratios?",
+    "explanation": "The volume of a sphere is V = (4/3)πr³, where r is the radius. Because volume scales as the cube of radius, doubling a spherical cell's radius increases its volume by 8-fold (2³ = 8). This rapid volume growth compared to surface area growth is the geometric basis of the SA/V constraint on cell size.",
+    "distractors": [
+      "V = s³",
+      "V = πr²h",
+      "V = (1/3)πr²h",
+      "V = (4/3)πr²",
+      "V = 2πr³",
+      "V = πr³",
+      "V = (2/3)πr³",
+      "V = 4πr³"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-2-prokaryotic-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.2",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": true,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_sphere_surface_area_formula",
+    "correctAnswer": "SA = 4πr²",
+    "acceptableAlternatives": [
+      "4pi*r^2",
+      "four pi r squared",
+      "SA = 4πr²"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "equation_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "What is the formula for the surface area of a sphere, used in AP Biology to calculate a spherical cell's membrane surface available for exchange?",
+    "explanation": "The surface area of a sphere is SA = 4πr², where r is the radius. Because surface area scales as the square of radius, doubling a cell's radius only quadruples its surface area (2² = 4), while volume increases 8-fold. This mismatch is why larger spherical cells have a lower SA/V ratio and face greater exchange challenges.",
+    "distractors": [
+      "SA = 2πr²",
+      "SA = πr²",
+      "SA = 6s²",
+      "SA = 2πr(r+h)",
+      "SA = πrl",
+      "SA = 4πr³",
+      "SA = (4/3)πr²",
+      "SA = 2πrh"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-2-prokaryotic-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.2",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": true,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_sav_radius_doubles_factor",
+    "correctAnswer": "2",
+    "acceptableAlternatives": [
+      "by a factor of 2",
+      "halves",
+      "decreases by half"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 4,
+    "funScore": 6,
+    "quizQuestion": "For a spherical cell with SA/V ratio = 3/r, if the radius doubles from r to 2r, by what factor does the surface area-to-volume ratio decrease?",
+    "explanation": "A sphere's SA/V ratio equals (4πr²) / (4/3 πr³) = 3/r. When radius doubles from r to 2r, the new SA/V = 3/(2r) — exactly half the original. So the SA/V ratio decreases by a factor of 2. This illustrates why larger cells face greater exchange challenges: each doubling of radius halves the membrane surface available per unit of cell volume.",
+    "distractors": [
+      "4",
+      "8",
+      "3",
+      "6",
+      "1.5",
+      "0.5",
+      "16",
+      "2.5"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 4.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/4-2-prokaryotic-cells",
+    "volatile": false,
+    "examTags": {
+      "unit": 2,
+      "topic": "2.2",
+      "exam_weight": "medium",
+      "big_idea": "SYI",
+      "is_equation_fact": true,
+      "is_lab_fact": false
+    }
+  }
+]

@@ -1,0 +1,917 @@
+deck_id: ap_biology
+name: "AP Biology"
+domain: natural_sciences
+sub_domain: biology
+description: "Master the full AP Biology curriculum — from macromolecules to ecosystems. Covers all 8 CED units: Chemistry of Life, Cell Structure and Function, Cellular Energetics, Cell Communication and Cell Cycle, Heredity, Gene Expression and Regulation, Natural Selection, and Ecology. Aligned to the College Board AP Biology Course and Exam Description effective Fall 2025 and the May 2026 exam. Includes Hardy-Weinberg equations, water potential calculations, population growth models, and all 4 Big Ideas (EVO, ENE, IST, SYI)."
+minimum_facts: 320
+target_facts: 390
+
+# COMPLETENESS PHILOSOPHY:
+# This deck covers the COMPLETE College Board AP Biology Course and Exam
+# Description (CED), effective Fall 2025. A student who masters this deck
+# should be prepared for every question type on the AP Biology exam. Scope
+# is curriculum-driven, not topic-sampled — every CED topic (1.1 through 8.7)
+# across all 8 units is represented. Unit weights (percent of exam) directly
+# inform fact counts per chain theme.
+
+# Sourcing & licensing
+data_sources:
+  - name: College Board AP Biology Course and Exam Description (CED) Effective Fall 2025
+    url: https://apcentral.collegeboard.org/media/pdf/ap-biology-course-and-exam-description-effective-fall-2025.pdf
+    license: public educational resource
+    usage: Authoritative unit/topic structure, learning objectives (LOs), essential knowledge (EK) statements, exam weight distribution, required equations, illustrative examples
+  - name: Wikipedia — Biology
+    url: https://en.wikipedia.org/wiki/Biology
+    license: CC-BY-SA-4.0
+    usage: Organism descriptions, process summaries, structure verification, researcher biographies
+  - name: OpenStax Biology 2e
+    url: https://openstax.org/books/biology-2e/pages/1-introduction
+    license: CC-BY-4.0
+    usage: Chapter-by-chapter concept explanations, verified definitions, process descriptions, figure references
+  - name: Khan Academy AP Biology
+    url: https://www.khanacademy.org/science/ap-biology
+    license: free educational resource (CC-BY-NC-SA)
+    usage: Concept cross-referencing, worked examples for equations, common student misconception identification
+
+asset_sources: []
+
+# ============================================================
+# CHAIN THEMES — 8 thematic zones mapping directly to CED units
+# Each theme is a distinct "dungeon zone" with its own facts pool
+# ============================================================
+
+chain_themes:
+
+  - id: 0
+    name: "The Molecular Forge"
+    ced_coverage: "Unit 1 Topics 1.1-1.7: Chemistry of Life"
+    target_facts: 33
+    description: >
+      The chemical foundations of life — water, elements, and the four classes of biological
+      macromolecules. Players explore how hydrogen bonding gives water its life-sustaining
+      properties, how dehydration synthesis and hydrolysis build and break polymers, and
+      how the structure of carbohydrates, lipids, nucleic acids, and proteins determines
+      their function. Dense with precise molecular vocabulary and structure-function reasoning.
+    key_concepts:
+      - Water polarity and hydrogen bonding
+      - Properties of water (specific heat, heat of vaporization, cohesion, adhesion, surface tension)
+      - CHONPS elements and their roles (carbon, hydrogen, oxygen, nitrogen, phosphorus, sulfur)
+      - Macromolecule classes (carbohydrates, lipids, proteins, nucleic acids)
+      - Monomers and polymers; dehydration synthesis and hydrolysis
+      - Monosaccharides and polysaccharides (cellulose, starch, glycogen)
+      - Saturated vs. unsaturated fatty acids; structural consequences of double bonds
+      - Lipid types and functions (fats, steroids, cholesterol, phospholipids)
+      - Phospholipid bilayer structure
+      - Nucleotide structure (five-carbon sugar, phosphate, nitrogenous base)
+      - DNA double helix, antiparallel orientation, 5' to 3' direction
+      - Base pairing rules (A-T, G-C in DNA; A-U in RNA)
+      - Structural differences between DNA and RNA (deoxyribose vs. ribose, thymine vs. uracil, double vs. single stranded)
+      - Amino acid structure (central carbon, R group, carboxyl group, amine group)
+      - Four levels of protein structure (primary through quaternary)
+      - Secondary structure formation (alpha-helix, beta-pleated sheet) via hydrogen bonding
+      - Tertiary and quaternary structure forces (hydrophobic, ionic, disulfide bridges)
+      - Purines (adenine, guanine — double ring) vs. pyrimidines (cytosine, thymine, uracil — single ring)
+
+  - id: 1
+    name: "Cellular Architecture"
+    ced_coverage: "Unit 2 Topics 2.1-2.10: Cell Structure and Function"
+    target_facts: 43
+    description: >
+      The cell as a functional unit — its organelles, membranes, transport mechanisms,
+      and evolutionary origins. Players master the endomembrane system, fluid mosaic
+      model, mechanisms of passive and active transport, osmosis and water potential,
+      and the endosymbiotic theory explaining the origin of mitochondria and chloroplasts.
+      Heavy emphasis on structure-function relationships at the cellular level.
+    key_concepts:
+      - Prokaryotic vs. eukaryotic cell organization
+      - Endomembrane system components (rough ER, smooth ER, Golgi complex, lysosomes, vacuoles, vesicles, nuclear envelope)
+      - Rough ER function (protein synthesis, compartmentalization); smooth ER function (lipid synthesis, detoxification)
+      - Golgi complex function (protein modification, packaging, trafficking)
+      - Mitochondria structure (double membrane, cristae on inner membrane) and function
+      - Chloroplast structure and location of photosynthesis
+      - Lysosome function (hydrolytic enzymes, apoptosis role)
+      - Vacuole function (central vacuole in plants for turgor pressure; smaller vacuoles in animals)
+      - Ribosomes (rRNA + protein; found in all domains; site of protein synthesis)
+      - Surface area-to-volume ratio and its effect on cell size, metabolic rate, and heat exchange
+      - Plasma membrane components (phospholipid bilayer, cholesterol, integral and peripheral proteins, glycoproteins, glycolipids)
+      - Fluid mosaic model
+      - Selective permeability — which molecules cross freely (small nonpolar) vs. require transport (ions, large polar)
+      - Cell wall function in bacteria, archaea, fungi, and plants
+      - Passive transport (diffusion down concentration gradient, no energy)
+      - Active transport (requires ATP, can move against gradient)
+      - Endocytosis and exocytosis (bulk transport, energy-requiring)
+      - Facilitated diffusion (channel and carrier proteins)
+      - Aquaporins and water transport
+      - Na+/K+ pump and ATPase; electrochemical gradients
+      - Osmosis; water potential equation (Psi = Psi_p + Psi_s)
+      - Solute potential equation (Psi_s = -iCRT)
+      - Hypotonic, hypertonic, and isotonic environments; effects on cells
+      - Tonicity and turgor pressure in plant cells
+      - Cell compartmentalization — minimizing competing reactions, increasing surface area
+      - Endosymbiotic theory (mitochondria and chloroplasts evolved from free-living prokaryotes)
+      - Evidence for endosymbiosis (double membrane, own DNA, ribosomes similar to bacteria)
+
+  - id: 2
+    name: "The Powerhouse"
+    ced_coverage: "Unit 3 Topics 3.1-3.5: Cellular Energetics"
+    target_facts: 50
+    description: >
+      Energy transformation in cells — enzymes, photosynthesis, and cellular respiration.
+      Players learn how enzymes lower activation energy, how inhibitors disrupt enzyme
+      function, how light reactions and the Calvin cycle produce sugars from sunlight,
+      and how glycolysis, the Krebs cycle, and oxidative phosphorylation extract ATP
+      from glucose. The two pathways of chemiosmosis are the conceptual centerpiece.
+    key_concepts:
+      - Enzymes as biological catalysts; lowering activation energy
+      - Active site and enzyme-substrate complex; shape and charge complementarity
+      - Denaturation from temperature, pH, or chemical changes; reversibility
+      - Competitive inhibitors (bind active site reversibly)
+      - Noncompetitive inhibitors (bind allosteric site, change shape)
+      - Substrate and product concentrations affect reaction rate
+      - First and second laws of thermodynamics applied to living systems
+      - Energy coupling — exergonic reactions drive endergonic reactions
+      - Conservation of metabolic pathways across domains (glycolysis, oxidative phosphorylation) as evidence for common ancestry
+      - Photosynthesis overall equation (CO2 + H2O + light energy → carbohydrates + O2)
+      - Chloroplast structure: stroma (Calvin cycle), thylakoid membranes (light reactions), grana (stacks of thylakoids)
+      - Photosystems I and II; chlorophyll absorbs light, boosts electrons to higher energy
+      - Water splitting in photosystem II — electrons replenished, O2 released
+      - Electron transport chain in thylakoid membrane; electrons passed from PS II to PS I via ETC
+      - Proton gradient across thylakoid membrane; high [H+] inside thylakoid
+      - ATP synthase and chemiosmosis (photophosphorylation) in chloroplast
+      - ATP and NADPH produced in light reactions power Calvin cycle
+      - Calvin cycle occurs in stroma; CO2 fixed into carbohydrates
+      - Glycolysis — glucose → 2 pyruvate; produces ATP and NADH; occurs in cytoplasm
+      - Pyruvate oxidized and transported to mitochondrial matrix; CO2 released
+      - Krebs cycle (citric acid cycle) in mitochondrial matrix; produces NADH, FADH2, ATP, CO2
+      - Electron transport chain in inner mitochondrial membrane; NADH and FADH2 donate electrons
+      - Oxygen as terminal electron acceptor in aerobic respiration
+      - Proton gradient across inner mitochondrial membrane (high [H+] in intermembrane space)
+      - ATP synthase and chemiosmosis (oxidative phosphorylation) in mitochondria
+      - Cristae increase surface area for ETC and ATP synthase
+      - Fermentation (anaerobic) — glycolysis continues without O2; produces lactate or ethanol + CO2
+      - Decoupling oxidative phosphorylation from ETC generates heat (endotherms)
+
+  - id: 3
+    name: "Signal & Cycle"
+    ced_coverage: "Unit 4 Topics 4.1-4.6: Cell Communication and Cell Cycle"
+    target_facts: 45
+    description: >
+      How cells receive, transmit, and respond to signals — and how they divide. Covers
+      the three stages of signal transduction (reception, transduction, response), paracrine
+      vs. endocrine signaling, feedback mechanisms for homeostasis, and the precise sequence
+      of the cell cycle including mitotic phases, checkpoints, and consequences of disruption.
+    key_concepts:
+      - Cell communication via direct contact and chemical signaling (paracrine, endocrine, autocrine)
+      - Ligands and receptor proteins; ligand-binding domain specificity
+      - G protein-coupled receptors as example eukaryotic receptors
+      - Signal transduction pathway stages (reception → transduction → response)
+      - Phosphorylation cascades; relay and amplification of signals
+      - Second messengers (e.g., cAMP) amplifying signals inside cells
+      - Signal transduction outcomes (gene expression changes, phenotype changes, apoptosis)
+      - Quorum sensing in bacteria; plant immune response; morphogens as illustrative examples
+      - Epinephrine stimulation of glycogen breakdown as signal transduction example
+      - Mutations in signaling components can activate or inhibit pathways
+      - Negative feedback — reduces initial stimulus; returns system to set point; maintains homeostasis
+      - Positive feedback — amplifies response; moves variable further from set point
+      - Examples of feedback (insulin/glucagon for blood sugar; labor/oxytocin; lactation)
+      - Cell cycle stages: interphase (G1, S, G2) → mitosis → cytokinesis
+      - G1 phase: organelle duplication, metabolic activity
+      - S phase: DNA replication; sister chromatids joined at centromere
+      - G2 phase: protein synthesis, ATP production, centrosome replication
+      - G0: cells exit cell cycle; can re-enter
+      - Mitosis phases: prophase, metaphase, anaphase, telophase
+      - Prophase: chromatin condensation, spindle formation, nuclear envelope breakdown
+      - Metaphase: chromosomes aligned at equatorial plate by spindle fibers
+      - Anaphase: sister chromatids pulled to opposite poles
+      - Telophase: nuclear envelope reforms, chromosomes decondense
+      - Cytokinesis: cleavage furrow in animal cells; cell plate in plant cells
+      - Cell cycle checkpoints (G1, G2, spindle checkpoint)
+      - Cyclins and cyclin-dependent kinases (CdKs) regulate checkpoints
+      - Cell cycle disruptions lead to cancer or apoptosis
+      - Tumor suppressors; cancer as result of unregulated cell division
+
+  - id: 4
+    name: "The Inheritance Chamber"
+    ced_coverage: "Unit 5 Topics 5.1-5.5: Heredity"
+    target_facts: 35
+    description: >
+      Mechanisms of heredity from meiosis through Mendelian and non-Mendelian genetics.
+      Players work through meiosis I and II phases, sources of genetic diversity (crossing
+      over, independent assortment, fertilization), Mendel's laws, Punnett square reasoning,
+      non-Mendelian patterns (codominance, incomplete dominance, sex linkage, pleiotropy),
+      and environmental effects on phenotype including phenotypic plasticity.
+    key_concepts:
+      - Meiosis produces four haploid daughter cells from one diploid cell
+      - Meiosis I: prophase I (synapsis, crossing over at chiasmata), metaphase I, anaphase I (homologs separate), telophase I
+      - Meiosis II: prophase II, metaphase II, anaphase II (sister chromatids separate), telophase II
+      - Nondisjunction — failure of chromosomes to separate; produces non-haploid gametes
+      - Crossing over (recombination) during prophase I — increases genetic diversity
+      - Random (independent) assortment of homologous chromosomes at metaphase I
+      - Fertilization as third source of genetic variation
+      - Mitosis vs. meiosis comparison (cell number, ploidy, purpose)
+      - Mendel's law of segregation — two alleles separate during gamete formation
+      - Mendel's law of independent assortment — genes on different chromosomes assort independently
+      - Dominant vs. recessive alleles; genotype vs. phenotype; homozygous vs. heterozygous
+      - Monohybrid, dihybrid, and test crosses; Punnett squares
+      - Probability rules applied to genetics (product rule; sum rule for mutually exclusive events)
+      - Chi-square test to evaluate observed vs. expected ratios (chi^2 = sum of (O-E)^2 / E)
+      - Genetic linkage — genes on same chromosome; map distance from recombination frequency
+      - Codominance (both alleles expressed; e.g., blood type AB)
+      - Incomplete dominance (heterozygote phenotype is blend; e.g., pink flowers)
+      - Sex-linked traits (X-linked expressed more often in XY individuals)
+      - Pleiotropy — single gene affects multiple traits
+      - Non-nuclear (maternal) inheritance of mitochondria and chloroplasts
+      - Environmental effects on gene expression and phenotypic plasticity
+      - Pedigree analysis to determine inheritance patterns
+
+  - id: 5
+    name: "The Code Vault"
+    ced_coverage: "Unit 6 Topics 6.1-6.8: Gene Expression and Regulation"
+    target_facts: 50
+    description: >
+      From DNA structure to protein production to gene regulation and biotechnology. Players
+      master DNA replication (semiconservative, leading vs. lagging strand), transcription
+      (RNA polymerase, mRNA processing), translation (codons, tRNA anticodons, ribosome),
+      gene regulation mechanisms in prokaryotes and eukaryotes, mutation types, and
+      biotechnology tools including PCR, gel electrophoresis, and transformation.
+    key_concepts:
+      - Prokaryotes (circular chromosomes) vs. eukaryotes (linear chromosomes, histones/chromatin)
+      - Plasmids — extra-chromosomal circular DNA in both prokaryotes and eukaryotes
+      - Purines (adenine, guanine — double ring) vs. pyrimidines (cytosine, thymine, uracil — single ring)
+      - DNA replication is semiconservative — one template strand, one new strand
+      - DNA synthesized 5' to 3' direction
+      - Helicase unwinds double helix at replication fork
+      - Topoisomerase relieves supercoiling ahead of replication fork
+      - DNA polymerase requires RNA primer to initiate synthesis
+      - Leading strand synthesized continuously; lagging strand discontinuously (Okazaki fragments)
+      - Ligase joins Okazaki fragments on lagging strand
+      - Transcription — RNA polymerase reads template strand 3' to 5', synthesizes mRNA 5' to 3'
+      - mRNA processing in eukaryotes: 5' GTP cap, poly-A tail, intron excision and exon splicing
+      - Alternative splicing — one pre-mRNA can produce multiple proteins
+      - mRNA, tRNA, and rRNA roles in translation
+      - tRNA carries specific amino acid; anticodon pairs with mRNA codon
+      - Translation initiation at start codon AUG (codes for methionine)
+      - Codons read as triplets; genetic code is (nearly) universal — evidence for common ancestry
+      - Translation termination at stop codon; polypeptide released
+      - In prokaryotes, transcription and translation occur simultaneously
+      - Retroviruses use reverse transcriptase to copy RNA → DNA → integrates into host genome
+      - Gene regulation — regulatory sequences and transcription factors control transcription
+      - Constitutive vs. inducible gene expression
+      - Epigenetic modifications (histone modification, DNA methylation) affect gene expression reversibly
+      - Operons in prokaryotes (inducible or repressible coordinately regulated gene groups)
+      - Transcription factors bind promoters and enhancers; negative regulators/repressors block transcription
+      - Cell differentiation results from differential gene expression
+      - Small RNA molecules (siRNA, miRNA) have regulatory roles
+      - Point mutations (substitution); frameshift mutations (insertion/deletion)
+      - Nonsense mutations cause premature stop codon; silent mutations have no amino acid change
+      - Mutations can be beneficial, detrimental, or neutral depending on environment
+      - Horizontal gene transfer in prokaryotes (transformation, transduction, conjugation, transposition)
+      - Biotechnology tools: PCR (denature, anneal primers, extend), gel electrophoresis (separates by size and charge)
+      - Bacterial transformation introduces foreign DNA; restriction enzymes cut DNA at specific sequences
+      - DNA sequencing and fingerprinting; transgenic organisms
+
+  - id: 6
+    name: "Evolution Engine"
+    ced_coverage: "Unit 7 Topics 7.1-7.12: Natural Selection"
+    target_facts: 55
+    description: >
+      The broadest unit — mechanisms and evidence for evolution. Players cover natural
+      selection (fitness, differential survival), population genetics (Hardy-Weinberg
+      equilibrium, genetic drift, gene flow), evidence from fossils and molecular biology,
+      speciation mechanisms (allopatric vs. sympatric, reproductive isolation), phylogenetics,
+      and the origins of life. The highest-weighted unit on the exam.
+    key_concepts:
+      - Natural selection — differential survival and reproduction based on heritable phenotypic variation
+      - Fitness measured by reproductive success
+      - Biotic and abiotic environmental pressures drive selection
+      - Artificial selection — humans affect variation through selective breeding
+      - Phenotypic variation in populations as substrate for selection
+      - Genetic drift — random change in allele frequencies, especially in small populations
+      - Bottleneck effect — population reduced dramatically; allele frequencies shift randomly
+      - Founder effect — small subset colonizes new area; limited allele diversity
+      - Gene flow (migration) — movement of alleles between populations; prevents divergence
+      - Mutation as source of new alleles
+      - Hardy-Weinberg equilibrium: p^2 + 2pq + q^2 = 1; p + q = 1
+      - Five conditions for H-W equilibrium (large population, no migration, no mutation, random mating, no natural selection)
+      - H-W as null hypothesis — violation indicates evolution is occurring
+      - Evidence for evolution: fossil record, radiometric dating (carbon-14), homologous structures, vestigial structures
+      - Molecular evidence: DNA and protein sequence comparisons across species
+      - Biogeography as evolutionary evidence
+      - Common ancestry evidenced by shared molecular mechanisms (glycolysis, genetic code, ribosomes)
+      - Shared eukaryotic features (membrane-bound organelles, linear chromosomes, introns) as evidence for common ancestry
+      - Phylogenetic trees show amount of change; cladograms show branching relationships
+      - Nodes represent most recent common ancestor; molecular data more reliable than morphological
+      - Shared derived characters (synapomorphies) indicate common ancestry
+      - Biological species concept — species interbreed and produce viable, fertile offspring
+      - Allopatric speciation — geographic isolation leads to reproductive isolation
+      - Sympatric speciation — speciation with geographic overlap
+      - Pre-zygotic and post-zygotic reproductive barriers
+      - Divergent evolution — adaptive radiation into new habitats
+      - Convergent evolution — similar adaptations from similar selective pressures, different lineages
+      - Punctuated equilibrium vs. gradualism as rates of evolution
+      - Genetic diversity affects population resilience; low diversity increases extinction risk
+      - Antibiotic resistance, pesticide resistance as examples of ongoing evolution
+      - RNA world hypothesis for origin of life; Earth formed ~4.6 bya; earliest fossils ~3.5 bya
+      - Darwin as originator of natural selection theory
+
+  - id: 7
+    name: "The Living Web"
+    ced_coverage: "Unit 8 Topics 8.1-8.7: Ecology"
+    target_facts: 45
+    description: >
+      Organisms in their environments — from individual behavioral responses to global
+      biogeochemical cycles. Players master trophic levels and energy flow, population
+      growth models (exponential and logistic), community ecology (competition, symbioses,
+      keystone species), biodiversity and ecosystem resilience, and human impacts including
+      biomagnification and eutrophication. Includes all four biogeochemical cycles.
+    key_concepts:
+      - Behavioral responses (innate vs. learned behaviors); fitness consequences
+      - Photoperiodism, phototropism, taxis, kinesis as behavioral examples
+      - Kin selection and cooperative behavior increase individual and population fitness
+      - Endotherms (use metabolic heat) vs. ectotherms (behavioral thermoregulation)
+      - Autotrophs vs. heterotrophs; producers, consumers, decomposers
+      - Trophic levels; food chains and food webs; trophic pyramids
+      - Primary productivity; chemosynthesis in deep-sea/anaerobic environments
+      - Energy flows through ecosystems (not recycled); matter and nutrients cycle
+      - Water (hydrologic) cycle: evaporation, condensation, precipitation, transpiration
+      - Carbon cycle: photosynthesis (fix CO2), cellular respiration, decomposition, combustion
+      - Nitrogen cycle: nitrogen fixation (N2 → NH3), nitrification (NH3 → nitrite → nitrate), assimilation, ammonification, denitrification
+      - Phosphorus cycle: weathering releases phosphate; taken up by producers; returned via decomposition
+      - Biogeochemical cycles now in Unit 8 (moved from Unit 3 in 2025 CED revision — CHONPS)
+      - Population growth: dN/dt = B - D
+      - Exponential growth: dN/dt = r_max × N (unlimited resources)
+      - Logistic growth: dN/dt = r_max × N × ((K - N) / K)
+      - Carrying capacity (K) — maximum sustainable population given resource availability
+      - Density-dependent limiting factors (food, space, disease) vs. density-independent (weather, disasters)
+      - Community structure measured by species composition and diversity
+      - Simpson's Diversity Index: D = 1 − Σ(n/N)^2
+      - Species interactions: competition, predation, parasitism, mutualism, commensalism
+      - Trophic cascade effects; niche partitioning
+      - Keystone species — disproportionate ecological effect relative to abundance
+      - Keystone species removal often triggers ecosystem collapse
+      - Biodiversity and ecosystem resilience; low diversity = less resilient
+      - Invasive species exploit new niches without natural predators/competitors
+      - Biomagnification — toxins concentrate up trophic levels
+      - Eutrophication — excess nutrients cause algal blooms, oxygen depletion
+      - Heterozygote advantage as example of natural selection in ecology context
+      - Human impacts: habitat loss, climate change, monocropping, logging, urbanization
+      - Geological and meteorological events (El Nino, continental drift, meteor impacts) affect ecosystems
+
+# ============================================================
+# ANSWER TYPE POOLS — 15 pools for distractor selection
+# These define the "answer space" for multiple-choice generation
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: Biological Molecule Names
+  # "What polysaccharide do plants use for energy storage?" → "Starch"
+  - id: molecule_names
+    label: "Biological Molecule / Macromolecule Names"
+    format: term
+    estimated_count: 35
+    note: >
+      Macromolecules and their monomers/polymers: cellulose, starch, glycogen,
+      glucose, monosaccharide, polysaccharide, phospholipid, cholesterol, triglyceride,
+      ATP, NADH, FADH2, NADPH, DNA, RNA, mRNA, tRNA, rRNA, polypeptide, amino acid,
+      nucleotide, codon, anticodon, cAMP. Also includes specific molecules from
+      signaling and energetics (pyruvate, acetyl-CoA mentioned by name in CED context).
+      Key confusions: starch vs. glycogen (both glucose polymers but different organisms/functions),
+      DNA vs. RNA, NADH vs. NADPH vs. FADH2, ATP vs. ADP.
+
+  # POOL 2: Cell Organelle / Subcellular Structure Names
+  # "Which organelle is responsible for packaging and shipping proteins?" → "Golgi complex"
+  - id: organelle_structures
+    label: "Cell Organelles and Subcellular Structures"
+    format: term
+    estimated_count: 22
+    note: >
+      Organelles: ribosome, rough ER, smooth ER, Golgi complex (Golgi apparatus),
+      lysosome, mitochondria, chloroplast, central vacuole, nuclear envelope,
+      plasma membrane, cell wall, vesicle, thylakoid, grana, stroma, cristae,
+      matrix (mitochondrial), centrosome, cytoskeleton.
+      Key confusions: rough ER vs. smooth ER (protein vs. lipid), mitochondria vs. chloroplast,
+      stroma vs. matrix (both are organelle interiors but different organelles),
+      thylakoid vs. grana (membrane vs. stack).
+
+  # POOL 3: Biological Process Names
+  # "What process converts glucose to pyruvate in the cytoplasm?" → "Glycolysis"
+  - id: process_names
+    label: "Biological Process Names"
+    format: term
+    estimated_count: 40
+    note: >
+      Core processes: photosynthesis, cellular respiration, glycolysis, Krebs cycle,
+      oxidative phosphorylation, fermentation, transcription, translation, DNA replication,
+      mitosis, meiosis, cytokinesis, endocytosis, exocytosis, diffusion, osmosis,
+      active transport, facilitated diffusion, dehydration synthesis, hydrolysis,
+      chemiosmosis, photophosphorylation, nitrogen fixation, nitrification, denitrification,
+      transpiration, crossing over, nondisjunction, transformation, transduction, conjugation.
+      The largest process pool — facts across all 8 chain themes draw from this.
+      Key confusions: transcription vs. translation, mitosis vs. meiosis,
+      active transport vs. facilitated diffusion, photosynthesis vs. cellular respiration.
+
+  # POOL 4: Enzyme and Protein Names
+  # "Which enzyme unwinds DNA at the replication fork?" → "Helicase"
+  - id: enzyme_names
+    label: "Enzyme and Key Protein Names"
+    format: term
+    estimated_count: 18
+    note: >
+      Enzymes and proteins explicitly named in CED: DNA polymerase, RNA polymerase,
+      helicase, topoisomerase, ligase, ATP synthase (also called ATP synthetase),
+      reverse transcriptase, restriction enzyme, aquaporin, Na+/K+ pump (ATPase).
+      Note: CED explicitly names these; other enzyme names (e.g., specific Krebs cycle
+      enzymes) are excluded from AP exam scope.
+      Key confusions: DNA polymerase vs. RNA polymerase (DNA replication vs. transcription),
+      helicase vs. topoisomerase (unwinding vs. relieving supercoiling),
+      ATP synthase vs. ATP synthetase (synonyms — never use as distractors for each other).
+
+  # POOL 5: General Biology Concept Terms
+  # "The tendency of a cell to maintain a stable internal environment is called?" → "Homeostasis"
+  - id: bio_concept_terms
+    label: "General Biology Vocabulary and Concept Terms"
+    format: term
+    estimated_count: 55
+    note: >
+      Broad conceptual vocabulary spanning all units: homeostasis, selective permeability,
+      fluid mosaic model, concentration gradient, electrochemical gradient, activation energy,
+      denaturation, endosymbiosis, chemiosmosis, semiconservative replication, central dogma,
+      phenotypic plasticity, antibiotic resistance, fitness, adaptation, natural selection,
+      common ancestry, biogeochemical cycle, trophic cascade, carrying capacity, biodiversity,
+      epigenetics, differential gene expression, cell differentiation, apoptosis.
+      This is the catch-all pool for facts that don't fit a domain-specific pool.
+      Key confusions: homeostasis vs. equilibrium, adaptation vs. acclimation,
+      passive vs. active transport, phenotype vs. genotype.
+
+  # POOL 6: Organism Names (illustrative examples from CED)
+  # "Which invasive plant vine is cited as an example of invasive species in the AP Biology CED?" → "Kudzu"
+  - id: organism_names
+    label: "Example Organism Names"
+    format: name
+    estimated_count: 20
+    syntheticDistractors:
+      - "Paramecium"
+      - "Hydra"
+      - "Neurospora crassa"
+      - "Arabidopsis thaliana"
+    note: >
+      Organisms explicitly cited in CED illustrative examples: E. coli, Drosophila
+      (Hawaiian Drosophila and apple maggot Rhagoletis for speciation), Anolis lizards
+      (Caribbean), kudzu, zebra mussels, California condor, black-footed ferret,
+      prairie chicken, cyanobacteria, yeast (Saccharomyces). Also includes organisms
+      central to famous experiments or foundational discoveries (pea plants for Mendel).
+      Pool is small — syntheticDistractors fill gaps for distractor variety.
+      Key confusions: cyanobacteria vs. other bacteria (cyanobacteria are photosynthetic prokaryotes).
+
+  # POOL 7: Evolution and Population Genetics Terms
+  # "A change in allele frequency due to chance in a small population is called?" → "Genetic drift"
+  - id: evolution_terms
+    label: "Evolution and Population Genetics Terms"
+    format: term
+    estimated_count: 28
+    note: >
+      Evolution-specific vocabulary: genetic drift, bottleneck effect, founder effect,
+      gene flow, natural selection, artificial selection, sexual selection, fitness,
+      adaptation, speciation, allopatric speciation, sympatric speciation, reproductive
+      isolation, pre-zygotic barrier, post-zygotic barrier, divergent evolution,
+      convergent evolution, adaptive radiation, punctuated equilibrium, gradualism,
+      phylogenetic tree, cladogram, clade, node, synapomorphy, molecular clock,
+      biological species concept, Hardy-Weinberg equilibrium, allele frequency.
+      Key confusions: genetic drift vs. gene flow, allopatric vs. sympatric speciation,
+      divergent vs. convergent evolution, bottleneck vs. founder effect.
+
+  # POOL 8: Ecology Terms
+  # "The maximum population size an environment can sustainably support is called?" → "Carrying capacity"
+  - id: ecology_terms
+    label: "Ecology Vocabulary Terms"
+    format: term
+    estimated_count: 30
+    note: >
+      Ecology vocabulary: carrying capacity (K), density-dependent factors,
+      density-independent factors, exponential growth, logistic growth, trophic level,
+      food chain, food web, trophic pyramid, primary productivity, keystone species,
+      trophic cascade, niche partitioning, competitive exclusion, predator-prey,
+      symbiosis, mutualism, commensalism, parasitism, biomagnification, eutrophication,
+      biodiversity, species diversity, Simpson's Diversity Index, ecosystem resilience,
+      invasive species, biogeochemical cycle, nitrogen fixation, nitrification,
+      denitrification, ammonification, endotherm, ectotherm, autotroph, heterotroph.
+      Key confusions: carrying capacity vs. population size, exponential vs. logistic
+      growth, mutualism vs. commensalism, density-dependent vs. density-independent.
+
+  # POOL 9: Genetics and Heredity Terms
+  # "The observable characteristics of an organism are called its?" → "Phenotype"
+  - id: genetics_terms
+    label: "Genetics and Heredity Terms"
+    format: term
+    estimated_count: 30
+    note: >
+      Heredity vocabulary: allele, genotype, phenotype, dominant, recessive, homozygous,
+      heterozygous, Punnett square, dihybrid cross, test cross, pedigree, codominance,
+      incomplete dominance, sex-linked, X-linked, pleiotropy, genetic linkage, map distance,
+      non-nuclear inheritance, maternal inheritance, phenotypic plasticity, epigenetics,
+      nondisjunction, aneuploidy, gene expression, cell differentiation, operon,
+      transcription factor, promoter, enhancer, silencer, constitutive expression.
+      Key confusions: dominant vs. codominant, incomplete dominance vs. codominance,
+      genotype vs. phenotype, homozygous vs. heterozygous.
+
+  # POOL 10: Cell Cycle and Meiosis Phase Names
+  # "During which phase of mitosis do chromosomes line up at the cell equator?" → "Metaphase"
+  - id: cycle_phase_names
+    label: "Cell Cycle and Meiosis Phase Names"
+    format: term
+    estimated_count: 20
+    note: >
+      Cell cycle phases: G1, S phase, G2, G0, interphase, mitosis, cytokinesis.
+      Mitosis phases: prophase, metaphase, anaphase, telophase.
+      Meiosis phases: prophase I, metaphase I, anaphase I, telophase I,
+      prophase II, metaphase II, anaphase II, telophase II.
+      Cytokinesis structures: cleavage furrow (animal), cell plate (plant).
+      Key confusions: prophase I vs. prophase II (crossing over only in I),
+      anaphase I vs. anaphase II (homologs separate in I; sister chromatids in II),
+      interphase is NOT a phase of mitosis.
+
+  # POOL 11: Equation-Related Answer Terms
+  # "In Hardy-Weinberg, the frequency of heterozygotes is represented by?" → "2pq"
+  - id: equation_terms
+    label: "Equation-Related Terms and Variables"
+    format: term
+    estimated_count: 18
+    syntheticDistractors:
+      - "p^2"
+      - "q^2"
+      - "r_max"
+      - "Psi_s"
+      - "Psi_p"
+    note: >
+      Terms used in CED equations: p, q, p^2, 2pq, q^2 (Hardy-Weinberg);
+      Psi, Psi_p, Psi_s, i, C, R, T (water potential);
+      dN/dt, B, D, N, r_max, K (population growth equations);
+      D (Simpson's diversity index), n/N;
+      chi-square, observed, expected (chi-square test).
+      Distractors must be other equation variables or formula components from the same equation.
+      Pool is small — syntheticDistractors fill gaps.
+
+  # POOL 12: Numeric Answers
+  # "How many haploid daughter cells does one round of meiosis produce?" → "4"
+  - id: bracket_numbers
+    label: "Numeric Answers"
+    format: number
+    estimated_count: 20
+    note: >
+      Integer and numeric answers: chromosome counts (human diploid = 46, haploid = 23),
+      cells produced by meiosis (4) vs. mitosis (2), stages of mitosis (4 named stages),
+      Earth age (4.6 billion years), earliest fossil evidence (3.5 billion years ago),
+      number of Hardy-Weinberg conditions (5), number of AP Biology Big Ideas (4),
+      number of AP Biology lab investigations (13), number of CED units (8).
+      ATP yield values are volatile (textbooks differ: commonly cited 30-32 ATP per glucose,
+      CED does NOT specify exact yield — avoid facts with exact ATP counts).
+      Distractors must be numerically plausible (e.g., 2 / 3 / 4 / 5 for cell counts).
+
+  # POOL 13: Researcher / Scientist Names
+  # "Which scientist proposed the theory of evolution by natural selection?" → "Darwin"
+  - id: researcher_names
+    label: "Biologist / Researcher Names"
+    format: name
+    estimated_count: 20
+    syntheticDistractors:
+      - "Lamarck"
+      - "Hershey"
+      - "Chase"
+      - "Griffith"
+    note: >
+      Scientists named or strongly implied in CED: Darwin (natural selection), Mendel
+      (genetics laws), Watson and Crick (DNA double helix structure), Franklin
+      (X-ray crystallography of DNA), Avery/MacLeod/McCarty and Hershey-Chase (DNA as
+      genetic material — context, not explicitly named in 2025 CED but foundational).
+      Pool is small — syntheticDistractors fill gaps for distractor variety.
+      Key confusions: Darwin vs. Lamarck (natural selection vs. inheritance of acquired traits),
+      Watson & Crick vs. Franklin (credit for DNA structure).
+
+  # POOL 14: Cell Signaling Molecule Names
+  # "Which hormone lowers blood glucose by stimulating cellular uptake?" → "Insulin"
+  - id: signal_molecule_names
+    label: "Signaling Molecules and Hormones"
+    format: term
+    estimated_count: 18
+    syntheticDistractors:
+      - "Serotonin"
+      - "Aldosterone"
+      - "Prolactin"
+    note: >
+      Signaling molecules explicitly named in CED Topic 4.1 illustrative examples:
+      insulin, glucagon, human growth hormone, thyroid hormones, testosterone, estrogen,
+      epinephrine (adrenaline), neurotransmitters (general), cytokines, morphogens,
+      cAMP (second messenger), ethylene (plant hormone), quorum sensing pheromones.
+      Key confusions: insulin vs. glucagon (lower vs. raise blood glucose),
+      epinephrine vs. norepinephrine, cAMP vs. other second messengers.
+
+  # POOL 15: Structural Biology Terms
+  # "The hydrophobic interior of the plasma membrane is composed of?" → "Phospholipid tails"
+  - id: structure_function_terms
+    label: "Structural Biology and Molecular Architecture Terms"
+    format: term
+    estimated_count: 22
+    note: >
+      Molecular and cellular structural terms: alpha-helix, beta-pleated sheet,
+      primary/secondary/tertiary/quaternary structure, disulfide bridge, active site,
+      allosteric site, antiparallel, double helix, phospholipid bilayer, fluid mosaic,
+      integral protein, peripheral protein, glycoprotein, glycolipid, cristae, stroma,
+      thylakoid, grana, replication fork, leading strand, lagging strand, Okazaki fragments,
+      5' cap, poly-A tail, codon, anticodon, promoter, enhancer.
+      Key confusions: primary vs. secondary vs. tertiary structure (sequence vs. local folding
+      vs. overall 3D shape), leading vs. lagging strand (continuous vs. discontinuous synthesis).
+
+# ============================================================
+# EXAM TAGS SCHEMA — CED-aligned metadata for each fact
+# ============================================================
+
+exam_tags_schema:
+  description: >
+    Every fact MUST include an examTags object. These drive difficulty calibration
+    and allow filtering by CED unit/topic for targeted study. AP Biology has 8 units
+    and 55 topics (1.1 through 8.7).
+
+  fields:
+    unit:
+      type: integer
+      range: [1, 8]
+      description: "CED unit number (1=Chemistry of Life, 2=Cells, 3=Energetics, 4=Cell Communication & Cell Cycle, 5=Heredity, 6=Gene Expression, 7=Natural Selection, 8=Ecology)"
+    topic:
+      type: string
+      description: "CED topic code, e.g. '3.5' (Unit 3, Topic 5 — Cellular Respiration)"
+    ced_lo:
+      type: string
+      description: "CED learning objective code if applicable, e.g. 'ENE-1.B' or '3.5.A'"
+      required: false
+    big_idea:
+      type: string
+      enum: ["EVO", "ENE", "IST", "SYI"]
+      description: "AP Biology Big Idea alignment: EVO=Evolution, ENE=Energetics, IST=Information Storage/Transmission, SYI=Systems Interactions"
+      required: false
+    exam_weight:
+      type: string
+      enum: ["high", "medium", "low"]
+      description: >
+        Estimated AP exam frequency. High = core concept tested most years,
+        medium = appears regularly, low = depth/enrichment or lab-context content.
+    is_equation_fact:
+      type: boolean
+      description: "True if the fact requires using or interpreting one of the 10 CED equations (Hardy-Weinberg, water potential, population growth, chi-square, etc.)"
+    is_lab_fact:
+      type: boolean
+      description: "True if the fact is primarily about one of the 13 AP Biology lab investigations (lab context, procedure, or interpretation)"
+
+  example: >
+    examTags:
+      unit: 3
+      topic: "3.5"
+      big_idea: "ENE"
+      exam_weight: "high"
+      is_equation_fact: false
+      is_lab_fact: false
+
+# ============================================================
+# SYNONYM GROUPS — Terms that should never distract each other
+# ============================================================
+
+synonym_groups:
+
+  # Enzyme and process name variants
+  - id: atp_synthase_variants
+    members: ["ATP synthase", "ATP synthetase"]
+    reason: "Both names refer to the same enzyme — never use as distractors for each other"
+
+  - id: cellular_respiration_variants
+    members: ["cellular respiration", "aerobic respiration", "aerobic cellular respiration"]
+    reason: "All refer to the same process in AP Biology context (aerobic is default)"
+
+  - id: krebs_cycle_variants
+    members: ["Krebs cycle", "citric acid cycle", "TCA cycle", "tricarboxylic acid cycle"]
+    reason: "All four names refer to the same metabolic cycle occurring in the mitochondrial matrix"
+
+  - id: rough_er_variants
+    members: ["rough ER", "rough endoplasmic reticulum", "rough endoplasmic reticulum (rough ER)"]
+    reason: "Abbreviation and full name refer to the same organelle"
+
+  - id: smooth_er_variants
+    members: ["smooth ER", "smooth endoplasmic reticulum"]
+    reason: "Abbreviation and full name refer to the same organelle"
+
+  - id: golgi_variants
+    members: ["Golgi complex", "Golgi apparatus", "Golgi body"]
+    reason: "All names refer to the same organelle; 'Golgi complex' is preferred in 2025 CED"
+
+  - id: light_reactions_variants
+    members: ["light reactions", "light-dependent reactions", "photochemical reactions"]
+    reason: "All refer to the same stage of photosynthesis occurring in thylakoid membranes"
+
+  - id: calvin_cycle_variants
+    members: ["Calvin cycle", "light-independent reactions", "dark reactions", "carbon fixation reactions", "Calvin-Benson cycle"]
+    reason: "All names refer to the same stage of photosynthesis occurring in the stroma"
+    note: "'Dark reactions' is outdated but still seen in older textbooks"
+
+  - id: dna_replication_semiconservative
+    members: ["semiconservative replication", "semiconservative DNA replication"]
+    reason: "Same concept — one new strand, one template strand"
+
+  - id: gene_flow_variants
+    members: ["gene flow", "migration (in population genetics context)"]
+    reason: "In population genetics, migration specifically means movement of alleles between populations (gene flow). Note: not synonymous outside pop gen context."
+    flag_for_qa: true
+
+  - id: carrying_capacity_variants
+    members: ["carrying capacity", "K (carrying capacity)"]
+    reason: "K is the standard variable for carrying capacity in logistic growth equation"
+
+  - id: homologous_chromosomes_variants
+    members: ["homologous chromosomes", "homologs", "homologous pairs"]
+    reason: "All refer to the matching chromosome pairs in diploid organisms"
+
+  - id: crossing_over_variants
+    members: ["crossing over", "recombination", "chromosomal recombination", "genetic recombination"]
+    reason: "All describe the same process occurring during prophase I of meiosis"
+
+  - id: prokaryote_bacteria_note
+    members: ["prokaryote", "bacteria", "bacterium"]
+    reason: >
+      Not exact synonyms — prokaryotes include both Bacteria AND Archaea. However,
+      students commonly treat these as synonymous. Flag for QA: ensure question
+      context makes clear whether 'prokaryote' includes archaea or only bacteria.
+    flag_for_qa: true
+
+  - id: nondisjunction_variants
+    members: ["nondisjunction", "chromosomal nondisjunction", "meiotic nondisjunction"]
+    reason: "All refer to the failure of chromosomes to separate properly during cell division"
+
+  - id: wild_type_variants
+    members: ["wild type", "normal phenotype", "wild-type allele"]
+    reason: "Wild type refers to the most common (normal) phenotype in a natural population"
+
+  - id: endosymbiosis_variants
+    members: ["endosymbiosis", "endosymbiotic theory", "endosymbiont theory"]
+    reason: "All refer to the theory that mitochondria and chloroplasts evolved from engulfed prokaryotes"
+
+# ============================================================
+# COMMON CONFUSIONS — Priority distractor pairs for seeding confusion matrix
+# ============================================================
+
+common_confusions:
+  # Cellular processes — most common AP Bio exam traps
+  - ["mitosis", "meiosis"]                           # 2 identical diploid cells vs. 4 haploid cells
+  - ["transcription", "translation"]                 # DNA → RNA vs. RNA → protein
+  - ["DNA replication", "transcription"]             # Copying all DNA vs. copying one gene
+  - ["photosynthesis", "cellular respiration"]       # Building glucose vs. breaking down glucose
+  - ["active transport", "passive transport"]        # Requires ATP vs. no ATP needed
+  - ["facilitated diffusion", "active transport"]    # Down gradient (no ATP) vs. against gradient (ATP)
+  - ["endocytosis", "exocytosis"]                    # Into cell vs. out of cell
+  - ["competitive inhibitor", "noncompetitive inhibitor"]  # Active site vs. allosteric site
+
+  # DNA and molecular biology
+  - ["DNA", "RNA"]                                   # Double-stranded, deoxyribose, thymine vs. single-stranded, ribose, uracil
+  - ["leading strand", "lagging strand"]             # Continuous synthesis vs. Okazaki fragments
+  - ["intron", "exon"]                               # Removed during processing vs. expressed (protein-coding)
+  - ["purine", "pyrimidine"]                         # Double ring (A, G) vs. single ring (C, T, U)
+  - ["helicase", "topoisomerase"]                    # Unwinds helix vs. relieves supercoiling
+  - ["DNA polymerase", "RNA polymerase"]             # Replication vs. transcription
+  - ["mRNA", "tRNA"]                                 # Carries code to ribosome vs. carries amino acid to ribosome
+
+  # Cell structure
+  - ["mitochondria", "chloroplast"]                  # Cellular respiration vs. photosynthesis
+  - ["rough ER", "smooth ER"]                        # Protein synthesis vs. lipid synthesis/detox
+  - ["Golgi complex", "rough ER"]                    # Modification/shipping vs. initial synthesis
+  - ["prokaryote", "eukaryote"]                      # No membrane-bound organelles vs. has them
+
+  # Photosynthesis and respiration detail
+  - ["stroma", "thylakoid"]                          # Location of Calvin cycle vs. light reactions
+  - ["light reactions", "Calvin cycle"]              # ATP/NADPH production vs. carbon fixation
+  - ["photosystem I", "photosystem II"]              # Reduces NADP+ vs. splits water (order confuses students — II comes first in electron flow)
+  - ["NADH", "NADPH"]                                # Cellular respiration electron carrier vs. photosynthesis electron carrier
+  - ["glycolysis", "Krebs cycle"]                    # Cytoplasm vs. mitochondrial matrix
+
+  # Genetics and heredity
+  - ["dominant", "recessive"]                        # Expressed in heterozygote vs. masked
+  - ["genotype", "phenotype"]                        # Allele combination vs. observable trait
+  - ["mitosis", "meiosis"]                           # (repeated — most critical confusion in genetics context too)
+  - ["codominance", "incomplete dominance"]          # Both alleles expressed vs. blended phenotype
+  - ["independent assortment", "crossing over"]      # Chromosome sorting vs. genetic exchange between chromatids
+  - ["nondisjunction in meiosis I", "nondisjunction in meiosis II"]  # Affects all gametes vs. half of gametes
+
+  # Population genetics and evolution
+  - ["genetic drift", "gene flow"]                   # Random change in allele frequency vs. movement of alleles between populations
+  - ["allopatric speciation", "sympatric speciation"] # Geographic isolation vs. speciation with overlap
+  - ["divergent evolution", "convergent evolution"]   # Common ancestor → different forms vs. different ancestors → similar forms
+  - ["bottleneck effect", "founder effect"]           # Population crash reduces diversity vs. small group colonizes new area
+  - ["natural selection", "genetic drift"]            # Non-random (based on fitness) vs. random
+
+  # Ecology
+  - ["density-dependent factors", "density-independent factors"]  # Food/disease vs. weather/natural disasters
+  - ["exponential growth", "logistic growth"]         # Unlimited resources vs. resource-limited with K
+  - ["mutualism", "commensalism"]                     # Both benefit vs. one benefits, one unaffected
+  - ["parasitism", "predation"]                       # One harms host without killing immediately vs. kills prey
+  - ["producers", "consumers"]                        # Autotrophs (make own food) vs. heterotrophs (eat others)
+  - ["endotherm", "ectotherm"]                        # Internal heat generation vs. external/behavioral thermoregulation
+
+  # Membrane transport
+  - ["hypotonic", "hypertonic"]                       # Less solute (water moves in) vs. more solute (water moves out)
+  - ["cohesion", "adhesion"]                          # Water-water vs. water-other molecule attraction
+  - ["saturated fatty acid", "unsaturated fatty acid"]  # Single bonds only (solid at room temp) vs. double bonds (liquid)
+
+# ============================================================
+# DIFFICULTY TIERS
+# ============================================================
+
+difficulty_tiers:
+  easy:
+    description: "Core concepts every AP Biology student learns first pass — foundational vocabulary and single-concept facts"
+    examples:
+      - "Mitochondria produce ATP via cellular respiration"
+      - "DNA is double-stranded; RNA is single-stranded"
+      - "Ribosomes are the site of protein synthesis"
+      - "Natural selection is based on heritable variation and differential reproductive success"
+      - "Meiosis produces 4 haploid daughter cells"
+      - "Glucose + oxygen → carbon dioxide + water + ATP (cellular respiration)"
+  medium:
+    description: "Precise distinctions, process details, and secondary vocabulary — requires understanding of how/why, not just what"
+    examples:
+      - "Leading strand synthesized continuously; lagging strand uses Okazaki fragments"
+      - "Hardy-Weinberg equilibrium requires 5 conditions including no natural selection"
+      - "Competitive inhibitors bind the active site; noncompetitive bind the allosteric site"
+      - "Crossing over occurs during prophase I (not prophase II) of meiosis"
+      - "Proton gradient drives ATP synthase via chemiosmosis in both chloroplasts and mitochondria"
+      - "The Calvin cycle occurs in the stroma; light reactions in the thylakoid"
+  hard:
+    description: "Multi-concept integration, equation application, and nuanced distinctions requiring synthesis across topics"
+    examples:
+      - "Calculating water potential using both pressure potential and solute potential (Psi = Psi_p + Psi_s)"
+      - "How nondisjunction during meiosis I vs. meiosis II produces different patterns of abnormal gametes"
+      - "Distinguishing how a bottleneck effect differs from a founder effect in its source and genetic consequences"
+      - "Using Hardy-Weinberg equations to calculate allele frequencies from phenotype frequency data"
+      - "Explaining why photosystem II comes before photosystem I in the electron transport chain despite the numbering"
+      - "Connecting endosymbiotic theory evidence (double membranes, bacterial ribosomes, circular DNA) to common ancestry"
+
+# ============================================================
+# NOTES
+# ============================================================
+notes: >
+  AP BIOLOGY CED UNIT WEIGHTS (approximate exam distribution, effective Fall 2025):
+  Unit 1 (Chemistry of Life): 8-11%
+  Unit 2 (Cell Structure and Function): 10-13%
+  Unit 3 (Cellular Energetics): 12-16%
+  Unit 4 (Cell Communication and Cell Cycle): 10-15%
+  Unit 5 (Heredity): 8-11%
+  Unit 6 (Gene Expression and Regulation): 12-16%
+  Unit 7 (Natural Selection): 13-20%
+  Unit 8 (Ecology): 10-15%
+
+  Chain theme to exam weight mapping:
+  - The Molecular Forge (Theme 0) covers Unit 1 ~9% — lower weight, foundation for everything else
+  - Cellular Architecture (Theme 1) covers Unit 2 ~11% — structure-function facts
+  - The Powerhouse (Theme 2) covers Unit 3 ~14% — high weight; chemiosmosis is central
+  - Signal & Cycle (Theme 3) covers Unit 4 ~12% — checkpoints and signaling pathways
+  - The Inheritance Chamber (Theme 4) covers Unit 5 ~9% — Mendel + meiosis + non-Mendelian
+  - The Code Vault (Theme 5) covers Unit 6 ~14% — high weight; replication/transcription/translation
+  - Evolution Engine (Theme 6) covers Unit 7 ~16% — HIGHEST weight; Hardy-Weinberg is critical
+  - The Living Web (Theme 7) covers Unit 8 ~12% — equations + ecosystem concepts
+
+  2025 CED CHANGES (effective Fall 2025):
+  - Biogeochemical cycles (carbon, nitrogen, phosphorus, water) MOVED from Unit 3 to Unit 8
+  - CHONPS mnemonic (Carbon, Hydrogen, Oxygen, Nitrogen, Phosphorus, Sulfur) now introduced in Unit 1
+  - Biotechnology (Topic 6.8) added as explicit topic with PCR, gel electrophoresis, transformation
+  - Some topic numbering changed — use 2025 CED as authoritative source for topic codes
+
+  GENERATION PRIORITY:
+  1. process_names pool facts (highest AP exam frequency — every unit has process questions)
+  2. bio_concept_terms facts (broad vocabulary, all themes)
+  3. organelle_structures and molecule_names (Themes 0-2 — molecular/cellular foundation)
+  4. evolution_terms and genetics_terms (Themes 4-6 — heredity and evolution)
+  5. equation_terms and bracket_numbers (Hardy-Weinberg, water potential, population growth)
+  6. ecology_terms (Theme 7 — ecosystem and population ecology)
+  7. researcher_names (fewer in AP Bio than AP Psych, but Darwin and Mendel are essential)
+  8. organism_names (illustrative examples from CED — kudzu, Drosophila, E. coli)
+
+  VOLATILE DATA — DO NOT HARD-CODE:
+  - Exact ATP yield per glucose molecule: textbooks cite 30-32 ATP (net); CED does NOT specify exact yield.
+    Any fact about ATP yield must use approximate language ("approximately 30-32 ATP") or avoid exact number.
+    The AP exam does NOT test specific ATP yield numbers.
+  - Specific enzyme names beyond CED scope (only DNA polymerase, RNA polymerase, helicase, topoisomerase,
+    ligase, ATP synthase, and reverse transcriptase are explicitly in scope).
+  - Specific Krebs cycle intermediate names (acetyl-CoA, oxaloacetate, etc.) are beyond AP exam scope.
+  - Specific steps of glycolysis are beyond AP exam scope.
+
+  LAB INVESTIGATION FACTS (is_lab_fact: true):
+  The 13 AP Biology lab investigations can generate enrichment facts about scientific method
+  and experimental design. Label all such facts is_lab_fact: true. Key labs:
+  - Investigation 2: Mathematical Modeling (Hardy-Weinberg) — links to equation_terms
+  - Investigation 4: Diffusion and Osmosis — links to membrane transport, water potential
+  - Investigation 5: Enzyme Activity — links to denaturation, competitive inhibition
+  - Investigation 6: Photosynthesis — links to light reactions, Calvin cycle
+  - Investigation 7: Cell Respiration — links to glycolysis, fermentation, ATP synthesis
+  Lab facts are enrichment content; ensure core CED topics are fully covered first.
+
+  BIG IDEAS DISTRIBUTION (for balance checking):
+  - ENE (Energetics): Units 1, 3 primarily; also Units 2, 4, 8
+  - IST (Information Storage/Transmission): Units 1, 4, 5, 6 primarily
+  - EVO (Evolution): Units 2, 5, 7, 8 primarily
+  - SYI (Systems Interactions): Units 2, 4, 5, 7, 8 primarily
+  Unit 8 (Ecology) is the only unit with all four Big Ideas represented.

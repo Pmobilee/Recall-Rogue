@@ -1,0 +1,638 @@
+[
+  {
+    "id": "ap_bio_meiosis_produces_haploid",
+    "correctAnswer": "Four",
+    "acceptableAlternatives": [
+      "4"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "How many haploid daughter cells does one complete round of meiosis produce from a single diploid parent cell?",
+    "explanation": "Meiosis undergoes two sequential divisions (meiosis I and meiosis II) without an intervening S phase, producing four genetically unique haploid daughter cells. Compare this to mitosis, which produces two genetically identical diploid daughter cells.",
+    "distractors": [
+      "Two",
+      "One",
+      "Eight",
+      "Three",
+      "Six",
+      "16",
+      "32",
+      "12"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.1",
+      "exam_weight": "high",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_meiosis_purpose_gametes",
+    "correctAnswer": "Meiosis",
+    "acceptableAlternatives": [
+      "Meiotic division"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "process_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "What type of cell division produces haploid gametes in sexually reproducing diploid organisms?",
+    "explanation": "Meiosis ensures that sexually reproducing organisms can form haploid gametes (sperm and egg). When two haploid gametes fuse at fertilization, the resulting zygote is diploid, maintaining the species chromosome number across generations.",
+    "distractors": [
+      "Mitosis",
+      "Binary fission",
+      "Cytokinesis",
+      "Budding",
+      "Fragmentation",
+      "Endoreduplication",
+      "Amitosis",
+      "Cleavage"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.1",
+      "exam_weight": "high",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_prophase_I_synapsis",
+    "correctAnswer": "Prophase I",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "cycle_phase_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "During which phase of meiosis do homologous chromosomes pair up through synapsis, and chiasmata form at sites of crossing over?",
+    "explanation": "Prophase I is the most distinctive phase of meiosis. Homologous chromosomes undergo synapsis, forming a structure called the synaptonemal complex. Non-sister chromatids exchange segments at chiasmata (singular: chiasma), which is the physical manifestation of crossing over (recombination).",
+    "distractors": [
+      "Metaphase I",
+      "Anaphase I",
+      "Telophase I",
+      "Prophase II",
+      "Metaphase II",
+      "Anaphase II",
+      "Interphase",
+      "S phase"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.1",
+      "exam_weight": "high",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_metaphase_I_alignment",
+    "correctAnswer": "Metaphase I",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "cycle_phase_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "During which phase of meiosis I do homologous chromosome pairs (bivalents) align along the cell equator, positioned for independent assortment?",
+    "explanation": "In metaphase I, homologous pairs align at the metaphase plate as complete bivalents. The random orientation of maternal vs. paternal homologs toward each pole is the basis of independent assortment — a key source of genetic diversity.",
+    "distractors": [
+      "Prophase I",
+      "Anaphase I",
+      "Telophase I",
+      "Metaphase II",
+      "Prophase II",
+      "Anaphase II",
+      "Metaphase (mitosis)",
+      "G2 phase"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.1",
+      "exam_weight": "medium",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_anaphase_I_homologs_separate",
+    "correctAnswer": "Anaphase I",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "cycle_phase_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "During which phase of meiosis do homologous chromosomes separate and move to opposite poles, while sister chromatids remain attached?",
+    "explanation": "Anaphase I is defined by homologous chromosome separation. Unlike anaphase of mitosis (where centromeres split and sister chromatids separate), in anaphase I the centromere proteins remain intact — sister chromatids travel together to the same pole. This halves the chromosome number.",
+    "distractors": [
+      "Anaphase II",
+      "Anaphase (mitosis)",
+      "Prophase I",
+      "Metaphase I",
+      "Telophase I",
+      "Prophase II",
+      "Metaphase II",
+      "Telophase II"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.1",
+      "exam_weight": "high",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_anaphase_II_sister_chromatids",
+    "correctAnswer": "Anaphase II",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "cycle_phase_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "During which phase of meiosis do centromere proteins break down, causing sister chromatids to finally separate and move to opposite poles?",
+    "explanation": "Anaphase II mirrors anaphase of mitosis: centromeres split and sister chromatids are pulled to opposite poles by spindle fibers. This is the step that was skipped in meiosis I, where homologs separated but sister chromatids remained joined.",
+    "distractors": [
+      "Anaphase I",
+      "Anaphase (mitosis)",
+      "Metaphase II",
+      "Telophase II",
+      "Prophase II",
+      "Metaphase I",
+      "Telophase I",
+      "Cytokinesis"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.1",
+      "exam_weight": "high",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_telophase_I_two_haploid",
+    "correctAnswer": "Two haploid cells",
+    "acceptableAlternatives": [
+      "Two haploid daughter cells",
+      "2 haploid cells"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "What is the result at the end of meiosis I (after telophase I and cytokinesis)?",
+    "explanation": "After telophase I and cytokinesis, the single diploid parent cell has divided into two haploid daughter cells. However, each chromosome in these cells still consists of two sister chromatids joined at the centromere. Meiosis II will separate these sister chromatids.",
+    "distractors": [
+      "Four haploid cells",
+      "Two diploid cells",
+      "Four diploid cells",
+      "One haploid cell",
+      "One diploid cell",
+      "Two haploid cells with no chromatids",
+      "Eight haploid cells",
+      "Three haploid cells"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.1",
+      "exam_weight": "medium",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_mitosis_vs_meiosis_cell_number",
+    "correctAnswer": "Meiosis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "process_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "Mitosis produces two genetically identical diploid cells. Which process, by contrast, produces four genetically unique haploid cells?",
+    "explanation": "Mitosis is used for growth, repair, and asexual reproduction — it produces two identical diploid daughter cells. Meiosis is used only for sexual reproduction and produces four genetically unique haploid daughter cells through two rounds of division plus crossing over and independent assortment.",
+    "distractors": [
+      "Mitosis",
+      "Binary fission",
+      "Budding",
+      "Fragmentation",
+      "Parthenogenesis",
+      "Clonal division",
+      "Cytokinesis",
+      "G2/M checkpoint"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-2-sexual-reproduction",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.1",
+      "exam_weight": "high",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_homologous_chromosomes_def",
+    "correctAnswer": "Homologous chromosomes",
+    "acceptableAlternatives": [
+      "Homologs",
+      "Homologous pairs"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "genetics_terms",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "What term describes the pair of chromosomes in a diploid organism that carry the same genes in the same order but may carry different alleles, one inherited from each parent?",
+    "explanation": "Homologous chromosomes (homologs) are the two members of a chromosome pair in a diploid cell. They are the same length, have the same gene loci, and carry the same centromere position, but alleles at any given locus may differ. Homologs pair up during prophase I of meiosis.",
+    "distractors": [
+      "Sister chromatids",
+      "Autosomes",
+      "Sex chromosomes",
+      "Non-sister chromatids",
+      "Chromatids",
+      "Bivalents",
+      "Tetrads",
+      "Chromomeres"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.1",
+      "exam_weight": "medium",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_human_haploid_chromosome_number",
+    "correctAnswer": "23",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "How many chromosomes are present in a haploid human gamete (sperm or egg)?",
+    "explanation": "Human somatic (body) cells are diploid and contain 46 chromosomes (23 pairs of homologs). Meiosis halves this number, so each gamete is haploid with 23 chromosomes — one from each homologous pair. Fertilization restores the diploid count of 46.",
+    "distractors": [
+      "46",
+      "22",
+      "24",
+      "48",
+      "92",
+      "44",
+      "21",
+      "47"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.1",
+      "exam_weight": "medium",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_crossing_over_prophase_I",
+    "correctAnswer": "Crossing over",
+    "acceptableAlternatives": [
+      "Recombination",
+      "Chromosomal recombination",
+      "Genetic recombination"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What process, occurring during prophase I of meiosis, involves the exchange of genetic material between non-sister chromatids of homologous chromosomes?",
+    "explanation": "Crossing over (recombination) occurs when non-sister chromatids of homologous chromosome pairs break at matching positions and rejoin with each other. This shuffles alleles onto new chromosomes, producing genetic combinations not present in either parent — a major source of genetic diversity in sexually reproducing species.",
+    "distractors": [
+      "Synapsis",
+      "Independent assortment",
+      "Nondisjunction",
+      "Translocation",
+      "Deletion",
+      "Gene flow",
+      "Mutation",
+      "Inversion"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.2",
+      "exam_weight": "high",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_independent_assortment_mechanism",
+    "correctAnswer": "Independent assortment",
+    "acceptableAlternatives": [
+      "Random assortment",
+      "Independent segregation"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What process occurs during metaphase I of meiosis when homologous chromosome pairs orient randomly toward either pole, producing gametes with different combinations of maternal and paternal chromosomes?",
+    "explanation": "Independent assortment occurs because each homologous pair orients independently of all other pairs at metaphase I. For humans with 23 chromosome pairs, this alone can produce 2^23 (over 8 million) different chromosome combinations in gametes, before adding the variation from crossing over.",
+    "distractors": [
+      "Crossing over",
+      "Nondisjunction",
+      "Synapsis",
+      "Segregation",
+      "Gene flow",
+      "Genetic drift",
+      "Complementation",
+      "Translocation"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-3-sexual-reproduction",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.2",
+      "exam_weight": "high",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_three_sources_genetic_variation",
+    "correctAnswer": "Crossing over, independent assortment, and fertilization",
+    "acceptableAlternatives": [
+      "Recombination, random assortment, and fertilization"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "According to AP Biology CED, what are the three mechanisms by which sexual reproduction generates genetic variation among offspring?",
+    "explanation": "Sexual reproduction produces genetic variation through three mechanisms: (1) crossing over during prophase I shuffles alleles between homologs; (2) independent assortment at metaphase I randomly distributes maternal vs. paternal chromosomes; (3) random fertilization — any sperm can fertilize any egg — compounds the variation from the first two mechanisms.",
+    "distractors": [
+      "Mutation, nondisjunction, and replication",
+      "Transcription, translation, and post-translational modification",
+      "Mitosis, meiosis, and fertilization",
+      "Deletion, duplication, and inversion",
+      "Gene flow, genetic drift, and natural selection",
+      "Synapsis, segregation, and cytokinesis",
+      "DNA repair, recombination, and apoptosis",
+      "Transduction, transformation, and conjugation"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-3-sexual-reproduction",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.2",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_nondisjunction_def",
+    "correctAnswer": "Nondisjunction",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What is the term for the failure of chromosomes or sister chromatids to separate properly during meiosis, producing non-haploid gametes?",
+    "explanation": "Nondisjunction occurs when chromosomes fail to separate during meiosis I (homologs stick together) or meiosis II (sister chromatids fail to split). The result is gametes with extra or missing chromosomes. If such a gamete is fertilized, the zygote will be aneuploid — having an abnormal chromosome number (e.g., trisomy 21 causes Down syndrome).",
+    "distractors": [
+      "Crossing over",
+      "Synapsis",
+      "Translocation",
+      "Inversion",
+      "Deletion",
+      "Duplication",
+      "Frame shift",
+      "Independent assortment"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.2",
+      "exam_weight": "high",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_nondisjunction_meiosis_I_vs_II",
+    "correctAnswer": "All four gametes are abnormal",
+    "acceptableAlternatives": [
+      "All gametes are abnormal",
+      "All 4 gametes are non-haploid"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "If nondisjunction occurs during meiosis I (homologs fail to separate), how many of the four resulting gametes will have an abnormal chromosome number?",
+    "explanation": "Nondisjunction in meiosis I affects all downstream products. Because the two homologs end up in the same secondary oocyte/spermatocyte after meiosis I, meiosis II then distributes the extra chromosome to both daughter cells of that lineage — meaning all four resulting gametes are aneuploid. Contrast this with meiosis II nondisjunction, which affects only two of the four gametes.",
+    "distractors": [
+      "Two of four gametes",
+      "Half of gametes",
+      "One of four gametes",
+      "None — nondisjunction only affects polar bodies",
+      "Three of four gametes",
+      "Only the gametes from the affected secondary cell",
+      "None — it is corrected by DNA repair",
+      "It depends on the chromosome involved"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.2",
+      "exam_weight": "high",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_chiasmata_visible_crossover",
+    "correctAnswer": "Chiasmata",
+    "acceptableAlternatives": [
+      "Chiasma",
+      "Chiasmata (singular: chiasma)"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "genetics_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "What are the X-shaped structures visible under a microscope during prophase I that mark the physical locations where crossing over has occurred between non-sister chromatids?",
+    "explanation": "Chiasmata (singular: chiasma) are the physical points of contact between non-sister chromatids of homologous chromosomes where crossing over has occurred. They are visible as X-shaped connections during prophase I and early metaphase I, holding homologs together until anaphase I. Each chiasma represents at least one crossover event.",
+    "distractors": [
+      "Synaptonemal complex",
+      "Centromere",
+      "Kinetochore",
+      "Telomere",
+      "Chromatin fiber",
+      "Cohesin",
+      "Spindle fiber",
+      "Nuclear envelope"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.2",
+      "exam_weight": "medium",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_random_fertilization_variation",
+    "correctAnswer": "Random fertilization",
+    "acceptableAlternatives": [
+      "Random fusion of gametes",
+      "Fertilization"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which source of genetic variation in sexual reproduction involves any one of millions of genetically unique sperm combining with any one of millions of genetically unique eggs?",
+    "explanation": "Random fertilization multiplies the genetic variation already produced by crossing over and independent assortment. In humans, independent assortment alone produces over 8 million chromosome combinations in gametes. When a unique sperm meets a unique egg, the number of possible zygote genotypes exceeds 64 trillion — explaining why siblings (other than identical twins) are genetically distinct.",
+    "distractors": [
+      "Crossing over",
+      "Independent assortment",
+      "Synapsis",
+      "Nondisjunction",
+      "Gene flow",
+      "Mutation",
+      "Genetic drift",
+      "Translocation"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-3-sexual-reproduction",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.2",
+      "exam_weight": "medium",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_metaphase_II_alignment",
+    "correctAnswer": "Metaphase II",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "cycle_phase_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "During which phase of meiosis II do individual chromosomes (each consisting of two sister chromatids) align at the metaphase plate before sister chromatids are separated?",
+    "explanation": "In metaphase II, individual chromosomes line up at the cell equator (metaphase plate), attached to spindle fibers from opposite poles via kinetochores. Unlike metaphase I (where bivalents of homologous pairs aligned), metaphase II aligns single chromosomes — each still composed of two sister chromatids joined at the centromere — poised for separation in anaphase II.",
+    "distractors": [
+      "Anaphase II",
+      "Prophase II",
+      "Telophase II",
+      "Metaphase I",
+      "Anaphase I",
+      "Prophase I",
+      "Metaphase (mitosis)",
+      "Telophase I"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.1",
+      "exam_weight": "medium",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_telophase_II_four_haploid",
+    "correctAnswer": "Telophase II",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "cycle_phase_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "What is the final phase of meiosis II, during which the spindle breaks down, nuclear envelopes reform around each set of chromosomes, and cytokinesis produces four haploid daughter cells?",
+    "explanation": "Telophase II completes meiosis. The spindle apparatus disassembles, nuclear envelopes re-form around the chromosomes at each pole, and chromosomes begin to decondense. Following cytokinesis, four haploid daughter cells are produced — each with a unique genetic composition due to crossing over and independent assortment that occurred earlier in meiosis I.",
+    "distractors": [
+      "Metaphase II",
+      "Anaphase II",
+      "Prophase II",
+      "Telophase I",
+      "Anaphase I",
+      "Metaphase I",
+      "Prophase I",
+      "Cytokinesis I"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 11.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis",
+    "volatile": false,
+    "examTags": {
+      "unit": 5,
+      "topic": "5.1",
+      "exam_weight": "medium",
+      "big_idea": "IST",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  }
+]

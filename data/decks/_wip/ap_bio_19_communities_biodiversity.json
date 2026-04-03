@@ -1,0 +1,691 @@
+[
+  {
+    "id": "ap_bio_species_diversity_def",
+    "correctAnswer": "Species diversity",
+    "acceptableAlternatives": ["Biodiversity", "Community diversity"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 1,
+    "funScore": 5,
+    "distractors": [
+      "Species richness",
+      "Species evenness",
+      "Genetic diversity",
+      "Ecosystem diversity",
+      "Trophic diversity",
+      "Functional diversity",
+      "Phylogenetic diversity",
+      "Habitat diversity"
+    ],
+    "quizQuestion": "Community structure is described by two components: the number of species present and how evenly individuals are distributed among those species. Together these components make up what measure?",
+    "explanation": "Species diversity encompasses both species richness (the number of different species in a community) and species evenness (how evenly individuals are distributed among those species). A community with many species all at equal abundance has high diversity; one dominated by a single species has low diversity even with many species present. The Simpson's Diversity Index quantifies this.",
+    "sourceName": "OpenStax Biology 2e, Chapter 45.4 (Community Ecology)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/45-4-community-ecology",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.5",
+      "exam_weight": "medium",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_simpsons_diversity_index",
+    "correctAnswer": "D = 1 - Σ(n/N)²",
+    "acceptableAlternatives": [
+      "D = 1 - sum((n/N)^2)",
+      "Simpson's Diversity Index formula",
+      "1 minus sum of (n over N) squared"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "equation_terms",
+    "difficulty": 4,
+    "funScore": 7,
+    "distractors": [
+      "D = Σ(n/N)²",
+      "D = 1 + Σ(n/N)²",
+      "D = -Σ(n/N × log(n/N))",
+      "D = N / Σn²",
+      "D = (n/N)²",
+      "D = 1 - (N/n)²",
+      "D = Σn² / N²",
+      "D = N × Σ(n/N)"
+    ],
+    "quizQuestion": "The AP Biology equation sheet includes Simpson's Diversity Index, where n = total organisms of one species and N = total organisms of all species. What is the correct formula?",
+    "explanation": "Simpson's Diversity Index (D) = 1 - Σ(n/N)², where n is the count of individuals of each species and N is the total count of all individuals. The index ranges from 0 (no diversity — one species dominates completely) to values approaching 1 (high diversity — many species at equal abundance). Subtracting from 1 converts the dominance index into a diversity index.",
+    "sourceName": "AP Biology CED Equation Sheet (College Board)",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-biology/exam",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.5",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": true,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_mutualism_def",
+    "correctAnswer": "Mutualism",
+    "acceptableAlternatives": ["Mutualistic symbiosis"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 1,
+    "funScore": 7,
+    "distractors": [
+      "Commensalism",
+      "Parasitism",
+      "Predation",
+      "Competition",
+      "Amensalism",
+      "Neutralism",
+      "Protocooperation",
+      "Herbivory"
+    ],
+    "quizQuestion": "Clownfish live among sea anemone tentacles, gaining protection while helping the anemone by chasing away butterflyfish. Both organisms benefit. What type of symbiotic relationship is this?",
+    "explanation": "Mutualism is a symbiotic relationship where both organisms benefit (+/+). Examples include: clownfish and anemones, mycorrhizal fungi and plant roots (fungi get carbohydrates, plants get phosphorus and water), and nitrogen-fixing Rhizobium bacteria in legume root nodules. Mutualism is distinguished from commensalism (one benefits, one neutral) and parasitism (one benefits, one harmed).",
+    "sourceName": "OpenStax Biology 2e, Chapter 45.6 (Community Ecology)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/45-6-community-ecology",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.5",
+      "exam_weight": "medium",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_commensalism_def",
+    "correctAnswer": "Commensalism",
+    "acceptableAlternatives": ["Commensal relationship"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "Mutualism",
+      "Parasitism",
+      "Predation",
+      "Competition",
+      "Amensalism",
+      "Symbiosis",
+      "Herbivory",
+      "Detritivory"
+    ],
+    "quizQuestion": "Barnacles attach to whale skin, gaining transportation to food-rich waters, while the whale is neither helped nor harmed. What type of ecological relationship is this (+/0)?",
+    "explanation": "Commensalism is a symbiotic relationship where one organism benefits and the other is neither helped nor harmed (+/0). Other examples: orchids growing on tree branches (gain light without harming the tree), cattle egrets following grazing cattle to catch disturbed insects, and remora fish attached to sharks. In practice, true commensalism is rare — most relationships have some effect on the host.",
+    "sourceName": "OpenStax Biology 2e, Chapter 45.6 (Community Ecology)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/45-6-community-ecology",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.5",
+      "exam_weight": "medium",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_niche_partitioning",
+    "correctAnswer": "Niche partitioning",
+    "acceptableAlternatives": ["Resource partitioning", "Niche differentiation"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "distractors": [
+      "Competitive exclusion",
+      "Character displacement",
+      "Ecological succession",
+      "Coevolution",
+      "Habitat partitioning",
+      "Trophic cascade",
+      "Mutualism",
+      "Interspecific competition"
+    ],
+    "quizQuestion": "Warblers of several species live in the same spruce trees but each feeds at a different height within the canopy, reducing direct competition. What process allows coexisting species to divide up resources and occupy different ecological roles?",
+    "explanation": "Niche partitioning (resource partitioning) is the process by which competing species coexist by specializing on different resources or using the same resources differently (e.g., feeding at different times or locations). This reduces interspecific competition and allows more species to coexist than would be possible if all competed for identical resources. MacArthur's warbler study is a classic example.",
+    "sourceName": "OpenStax Biology 2e, Chapter 45.5 (Community Ecology: Species Interactions)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/45-5-community-ecology",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.5",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_trophic_cascade",
+    "correctAnswer": "Trophic cascade",
+    "acceptableAlternatives": ["Trophic cascades"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "distractors": [
+      "Niche partitioning",
+      "Competitive exclusion",
+      "Ecological succession",
+      "Keystone predation",
+      "Top-down regulation",
+      "Bottom-up control",
+      "Predator-prey cycling",
+      "Food web disruption"
+    ],
+    "quizQuestion": "When sea otters were hunted to near-extinction off the Pacific coast, sea urchin populations exploded and consumed kelp forests, which collapsed — destroying habitat for hundreds of species. This chain reaction of effects across trophic levels is called what?",
+    "explanation": "A trophic cascade is an indirect effect that ripples through multiple trophic levels when the population of one species changes dramatically. The sea otter example (otters eat urchins; urchins eat kelp) is a textbook case. Trophic cascades demonstrate how removing a single predator or adding a consumer can restructure entire communities. The AP Biology CED lists trophic cascades as a key interaction determining community structure.",
+    "sourceName": "OpenStax Biology 2e, Chapter 45.5 (Community Ecology)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/45-5-community-ecology",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.5",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_parasitism_relationship",
+    "correctAnswer": "Parasitism",
+    "acceptableAlternatives": ["Parasitic relationship", "Parasite-host relationship"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 1,
+    "funScore": 6,
+    "distractors": [
+      "Predation",
+      "Mutualism",
+      "Commensalism",
+      "Competition",
+      "Amensalism",
+      "Herbivory",
+      "Detritivory",
+      "Scavenging"
+    ],
+    "quizQuestion": "A tapeworm lives inside a human intestine, absorbing digested nutrients. The worm benefits while the human is harmed. What type of symbiotic relationship is this (-/+)?",
+    "explanation": "Parasitism is a symbiotic relationship where one organism (the parasite) benefits while the other (the host) is harmed (-/+). Unlike predators, parasites rarely kill their hosts immediately. Examples include tapeworms, ticks, lice, and mistletoe plants. Parasites have coevolved with hosts, and parasitism drives immune system evolution and can regulate host population sizes.",
+    "sourceName": "OpenStax Biology 2e, Chapter 45.6 (Community Ecology)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/45-6-community-ecology",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.5",
+      "exam_weight": "medium",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_predator_prey_dynamics",
+    "correctAnswer": "Predator-prey cycling",
+    "acceptableAlternatives": ["Predator-prey cycles", "Predator-prey population cycles"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "distractors": [
+      "Competitive exclusion",
+      "Trophic cascade",
+      "Coevolution",
+      "Niche partitioning",
+      "Density-dependent regulation",
+      "Arms race dynamics",
+      "Population boom-bust",
+      "Ecological succession"
+    ],
+    "quizQuestion": "Lynx populations in the Canadian boreal forest rise and fall in nearly synchronized waves with snowshoe hare populations — when hares are abundant, lynx increase; when lynx peak, hare populations crash. What phenomenon describes this oscillating relationship?",
+    "explanation": "Predator-prey cycling occurs when predator and prey populations oscillate out of phase with each other. As prey increase, predators have more food and also increase. Higher predator numbers reduce prey, which then causes predators to decline for lack of food — allowing prey to recover. The classic example is the Canada lynx and snowshoe hare data from Hudson's Bay Company records spanning over 100 years.",
+    "sourceName": "OpenStax Biology 2e, Chapter 45.5 (Community Ecology)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/45-5-community-ecology",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.5",
+      "exam_weight": "medium",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_ecosystem_resilience",
+    "correctAnswer": "Ecosystem resilience",
+    "acceptableAlternatives": ["Resilience", "Ecological resilience"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "Ecosystem stability",
+      "Ecosystem resistance",
+      "Biodiversity index",
+      "Ecosystem redundancy",
+      "Community homeostasis",
+      "Ecological inertia",
+      "Species buffer capacity",
+      "Functional redundancy"
+    ],
+    "quizQuestion": "After a forest fire, a diverse ecosystem with many species recovers within years, while a monoculture corn field requires human intervention to restore. What property allows diverse ecosystems to bounce back from disturbances?",
+    "explanation": "Ecosystem resilience is the ability of an ecosystem to recover from a disturbance and return to its original state. Ecosystems with high biodiversity are generally more resilient because different species can perform similar ecological functions (functional redundancy) — if one species is lost, others can fill its role. The AP Biology CED states that ecosystems with fewer parts and little diversity are often less resilient.",
+    "sourceName": "OpenStax Biology 2e, Chapter 47.2 (The Importance of Biodiversity)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/47-2-the-importance-of-biodiversity-to-human-life",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.6",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_keystone_species",
+    "correctAnswer": "Keystone species",
+    "acceptableAlternatives": ["Keystone predator"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "distractors": [
+      "Apex predator",
+      "Foundation species",
+      "Dominant species",
+      "Indicator species",
+      "Umbrella species",
+      "Flagship species",
+      "Pioneer species",
+      "Climax species"
+    ],
+    "quizQuestion": "Sea stars (Pisaster ochraceus) eat mussels in Pacific tide pools. When researchers removed all sea stars, mussels outcompeted every other species — dramatically reducing biodiversity. What term describes a species whose effects on ecosystem structure are disproportionately large relative to its abundance?",
+    "explanation": "A keystone species has a disproportionately large effect on its ecosystem relative to its numerical abundance. The CED states: 'The effects of keystone species are disproportionate to their abundance. Removal often collapses the ecosystem.' Robert Paine coined the term after his sea star removal experiment in the 1960s. Keystone species maintain diversity by preventing competitive exclusion — often by preying on the dominant competitor.",
+    "sourceName": "OpenStax Biology 2e, Chapter 47.2 (The Importance of Biodiversity)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/47-2-the-importance-of-biodiversity-to-human-life",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.6",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_keystone_removal_effect",
+    "correctAnswer": "Collapse",
+    "acceptableAlternatives": ["Ecosystem collapse", "Community collapse", "Dramatic decline"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "distractors": [
+      "Minor fluctuation",
+      "Gradual recovery",
+      "Species turnover",
+      "Community succession",
+      "Trophic adjustment",
+      "Competitive equilibrium",
+      "Stable alternative state",
+      "Niche redistribution"
+    ],
+    "quizQuestion": "According to the AP Biology CED, when a keystone species is removed from an ecosystem, what typically happens to the ecosystem?",
+    "explanation": "The AP Biology CED (EK 8.6.B.1) explicitly states: 'The effects of keystone species are disproportionate to their abundance. Removal often collapses the ecosystem.' This is because keystone species prevent competitive exclusion and maintain the ecological roles and niches that allow many other species to persist. Without the keystone, dominant competitors take over and diversity plummets.",
+    "sourceName": "AP Biology CED, EK 8.6.B.1 (College Board)",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-biology",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.6",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_biodiversity_resilience_link",
+    "correctAnswer": "Less resilient",
+    "acceptableAlternatives": ["Less resilient to change", "Lower resilience"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "More resilient",
+      "Equally resilient",
+      "More stable",
+      "Less diverse",
+      "More productive",
+      "More efficient",
+      "More specialized",
+      "Better buffered"
+    ],
+    "quizQuestion": "According to the AP Biology CED (EK 8.6.A.1), ecosystems with fewer species and little diversity are often _______ to environmental changes.",
+    "explanation": "The CED states: 'Ecosystems with fewer parts and little diversity are often less resilient.' With fewer species performing each ecological function, there is less redundancy — if one species is lost, no other can fill its role. Agricultural monocultures are the prime example: a single fungal blight (like the Irish Potato Famine) can collapse the entire system because all organisms are genetically identical.",
+    "sourceName": "AP Biology CED, EK 8.6.A.1 (College Board)",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-biology",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.6",
+      "exam_weight": "medium",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_invasive_species_mechanism",
+    "correctAnswer": "No natural predators or competitors",
+    "acceptableAlternatives": [
+      "Lack of natural predators",
+      "Absence of predators and competitors",
+      "Free from natural predators/competitors"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "distractors": [
+      "Higher reproductive rate than native species",
+      "Superior camouflage in new habitat",
+      "Resistance to local diseases",
+      "Ability to photosynthesize",
+      "Broader diet than native species",
+      "Higher genetic diversity",
+      "Greater body size",
+      "Tolerance for pollution"
+    ],
+    "quizQuestion": "Kudzu vine from Japan was introduced to the American South and now smothers forests. Zebra mussels from the Black Sea invaded the Great Lakes. Why do invasive species often spread so successfully in their new environments?",
+    "explanation": "According to the AP Biology CED, invasive species can exploit new niches free of predators and competitors, or outcompete native species. In their native range, populations are held in check by co-evolved predators, parasites, and competitors. In a new environment, these controls are absent, allowing exponential population growth. The CED lists kudzu and zebra mussels as illustrative examples of invasive species.",
+    "sourceName": "AP Biology CED, EK 8.7.B.1 (College Board)",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-biology",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.7",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_biomagnification",
+    "correctAnswer": "Biomagnification",
+    "acceptableAlternatives": ["Bioamplification", "Biological magnification"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "distractors": [
+      "Bioaccumulation",
+      "Eutrophication",
+      "Bioremediation",
+      "Bioconcentration",
+      "Trophic enrichment",
+      "Chemical cycling",
+      "Nutrient loading",
+      "Toxic amplification"
+    ],
+    "quizQuestion": "DDT concentrations in lake water are 0.000003 ppm; in plankton 0.04 ppm; in small fish 0.5 ppm; in large fish 2 ppm; and in osprey 25 ppm. What process causes toxic chemicals to become increasingly concentrated at higher trophic levels?",
+    "explanation": "Biomagnification is the process by which fat-soluble toxins (like DDT, PCBs, and mercury) become more concentrated at each successive trophic level. Because organisms cannot metabolize these compounds, they accumulate in fatty tissues. Each organism at a higher level must eat many organisms from the level below, concentrating all their toxins. Top predators (eagles, orca, humans eating large fish) are most severely affected. DDT's thinning of raptor eggshells is a classic example.",
+    "sourceName": "OpenStax Biology 2e, Chapter 47.3 (Threats to Biodiversity)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/47-3-threats-to-biodiversity",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.7",
+      "exam_weight": "high",
+      "big_idea": "ENE",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_eutrophication",
+    "correctAnswer": "Eutrophication",
+    "acceptableAlternatives": ["Cultural eutrophication"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "distractors": [
+      "Biomagnification",
+      "Acidification",
+      "Sedimentation",
+      "Algal succession",
+      "Oxygen depletion",
+      "Nutrient loading",
+      "Hypoxia",
+      "Bioremediation"
+    ],
+    "quizQuestion": "Fertilizer runoff from farms enters a lake, causing explosive algal blooms. When the algae die and decompose, bacteria consume all the dissolved oxygen, creating a dead zone where fish cannot survive. What is this process called?",
+    "explanation": "Eutrophication is the process by which excess nutrients (primarily nitrogen and phosphorus from agricultural runoff and sewage) enter aquatic ecosystems, triggering algal blooms. When the algae die, bacterial decomposers consume the organic matter aerobically, depleting dissolved oxygen and creating hypoxic 'dead zones.' The Gulf of Mexico dead zone, fed by Mississippi River agricultural runoff, is a major example. The CED lists eutrophication as a key human impact on ecosystems.",
+    "sourceName": "OpenStax Biology 2e, Chapter 46.3 (Biogeochemical Cycles)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/46-3-biogeochemical-cycles",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.7",
+      "exam_weight": "high",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_heterozygote_advantage",
+    "correctAnswer": "Heterozygote advantage",
+    "acceptableAlternatives": ["Heterozygous advantage", "Overdominance", "Balancing selection"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "distractors": [
+      "Homozygote advantage",
+      "Codominance",
+      "Incomplete dominance",
+      "Disruptive selection",
+      "Directional selection",
+      "Stabilizing selection",
+      "Epistasis",
+      "Pleiotropy"
+    ],
+    "quizQuestion": "In malaria-endemic regions of Africa, individuals with one sickle-cell allele (HbA/HbS) have higher survival than both normal homozygotes (HbA/HbA, susceptible to malaria) AND sickle-cell homozygotes (HbS/HbS, anemic). What evolutionary phenomenon does this illustrate?",
+    "explanation": "Heterozygote advantage (overdominance) occurs when the heterozygous genotype has higher relative fitness than either homozygous genotype. The sickle-cell/malaria case is the textbook example: HbA/HbS individuals get mild anemia but are protected from severe malaria, giving them a fitness advantage over both homozygotes in malaria-endemic environments. This maintains both alleles in the population (balancing selection). The AP Biology CED (EK 8.7.A.2) includes this as a key concept in ecosystem disruptions.",
+    "sourceName": "OpenStax Biology 2e, Chapter 19.2 (Population Genetics)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-2-population-genetics",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.7",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_mutations_not_directed",
+    "correctAnswer": "Random (not directed by environmental pressures)",
+    "acceptableAlternatives": [
+      "Random",
+      "Not directed by the environment",
+      "Undirected",
+      "Stochastic"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "Directed toward beneficial outcomes",
+      "Caused by environmental stress",
+      "Adaptive responses to selection pressure",
+      "Triggered by organism's need",
+      "Guided by natural selection",
+      "Purposeful genetic changes",
+      "Environmentally induced",
+      "Targeted by survival needs"
+    ],
+    "quizQuestion": "Bacteria exposed to antibiotics develop resistance. Does this mean the antibiotic caused the resistance mutations to occur?",
+    "explanation": "No — the AP Biology CED (EK 8.7.A.3) explicitly states: 'Mutations are not directed by specific environmental pressures.' Resistance mutations occur randomly before antibiotic exposure. The antibiotic acts as a selective pressure that kills non-resistant bacteria, allowing pre-existing resistant individuals to survive and reproduce. This is natural selection acting on random variation — not Lamarckian inheritance of acquired characteristics.",
+    "sourceName": "AP Biology CED, EK 8.7.A.3 (College Board)",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-biology",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.7",
+      "exam_weight": "medium",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_geological_events_ecosystem",
+    "correctAnswer": "Continental drift",
+    "acceptableAlternatives": ["Plate tectonics", "Tectonic movement"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "distractors": [
+      "El Nino",
+      "Volcanic eruption",
+      "Glaciation",
+      "Sea level change",
+      "Meteor impact",
+      "Tsunami",
+      "Earthquake",
+      "Ozone depletion"
+    ],
+    "quizQuestion": "The separation of South America from Africa millions of years ago isolated populations and led to dramatic divergence in species — marsupials in Australia, different primate lineages across continents. Which geological process is the AP Biology CED's primary example of how geological activity affects ecosystem distribution?",
+    "explanation": "The AP Biology CED cites continental drift as the geological process affecting habitat change and ecosystem distribution. The movement of tectonic plates over millions of years separated populations, driving allopatric speciation (geographic isolation → genetic divergence → new species). It also altered ocean currents, climates, and habitat types. The CED also lists meteor impact (dinosaur extinction) and El Nino (meteorological) as additional examples of major ecosystem disruptions.",
+    "sourceName": "OpenStax Biology 2e, Chapter 20.2 (Biogeography)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/20-2-biogeography",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.7",
+      "exam_weight": "medium",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_human_impact_habitat_loss",
+    "correctAnswer": "Habitat loss",
+    "acceptableAlternatives": ["Habitat destruction", "Habitat fragmentation and loss"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "ecology_terms",
+    "difficulty": 1,
+    "funScore": 6,
+    "distractors": [
+      "Climate change",
+      "Invasive species",
+      "Overexploitation",
+      "Pollution",
+      "Eutrophication",
+      "Biomagnification",
+      "Acid rain",
+      "Ozone depletion"
+    ],
+    "quizQuestion": "The AP Biology CED lists several human activities that accelerate ecosystem change and cause extinctions: logging, urbanization, monocropping, and climate change. What is generally considered the leading cause of biodiversity loss globally?",
+    "explanation": "Habitat loss is the primary driver of global biodiversity loss. The AP Biology CED (EK 8.7.C.1) states that human impact accelerates changes at local and global levels, causing extinctions. Activities listed include logging (forest destruction), urbanization (converting wildlands to cities), and monocropping (replacing diverse native ecosystems with single-species agriculture). These activities directly reduce the area and quality of habitat available for wild species.",
+    "sourceName": "OpenStax Biology 2e, Chapter 47.3 (Threats to Biodiversity)",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/47-3-threats-to-biodiversity",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.7",
+      "exam_weight": "medium",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_el_nino_ecosystem",
+    "correctAnswer": "El Nino",
+    "acceptableAlternatives": ["El Niño", "ENSO", "El Nino-Southern Oscillation"],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "La Nina",
+      "Polar vortex",
+      "Atlantic hurricane season",
+      "Monsoon pattern",
+      "Trade wind disruption",
+      "Thermohaline circulation",
+      "Pacific Decadal Oscillation",
+      "Arctic oscillation"
+    ],
+    "quizQuestion": "Every few years, warming of Pacific Ocean surface waters disrupts global weather patterns — causing drought in Australia, flooding in Peru, and collapse of anchoveta fisheries off South America. What meteorological phenomenon does the AP Biology CED cite as an example of how climate events affect ecosystems?",
+    "explanation": "El Nino (ENSO — El Nino-Southern Oscillation) is the AP Biology CED's cited example of how meteorological activity leads to changes in ecosystem structure. When Pacific trade winds weaken, warm water spreads eastward, suppressing the upwelling of cold, nutrient-rich water off South America. This collapses phytoplankton and fish populations. The CED lists El Nino alongside continental drift and meteor impacts as examples of geological/meteorological events affecting ecosystems.",
+    "sourceName": "AP Biology CED, LO 8.7.D (College Board)",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-biology",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.7",
+      "exam_weight": "low",
+      "big_idea": "SYI",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_four_big_ideas_ecology",
+    "correctAnswer": "EVO, ENE, IST, and SYI",
+    "acceptableAlternatives": [
+      "All four Big Ideas",
+      "EVO ENE IST SYI",
+      "Evolution, Energy, Information, Systems"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "distractors": [
+      "ENE and SYI only",
+      "EVO and IST only",
+      "EVO, ENE, and SYI only",
+      "ENE, IST, and SYI only",
+      "EVO, IST, and SYI only",
+      "EVO and ENE only",
+      "IST and SYI only",
+      "EVO, ENE, IST only"
+    ],
+    "quizQuestion": "AP Biology is organized around four Big Ideas: EVO (Evolution), ENE (Energy), IST (Information Storage/Transmission), and SYI (Systems). Which is the only AP Biology unit that incorporates all four Big Ideas?",
+    "explanation": "Unit 8 (Ecology) is the only AP Biology unit that spans all four Big Ideas: EVO (evolutionary adaptations, natural selection in ecosystems), ENE (energy flow through trophic levels, biogeochemical cycles), IST (behavioral communication, information transfer in organisms), and SYI (ecosystem interactions, population dynamics, community structure). This reflects ecology's integrative nature — it connects all biological levels of organization.",
+    "sourceName": "AP Biology CED (College Board), Unit 8 Overview",
+    "sourceUrl": "https://apcentral.collegeboard.org/courses/ap-biology",
+    "volatile": false,
+    "examTags": {
+      "unit": 8,
+      "topic": "8.1",
+      "exam_weight": "medium",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  }
+]

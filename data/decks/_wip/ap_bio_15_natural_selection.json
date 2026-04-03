@@ -1,0 +1,627 @@
+[
+  {
+    "id": "ap_bio_natural_selection_mechanism",
+    "correctAnswer": "Natural selection",
+    "acceptableAlternatives": [
+      "Darwinian natural selection"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "evolution_terms",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "What evolutionary mechanism causes individuals with more favorable heritable phenotypes to survive and reproduce more, passing those traits to subsequent generations?",
+    "explanation": "Natural selection is the primary mechanism of evolution. Differential survival and reproduction among individuals with heritable variation drives allele frequency change over generations. Darwin identified this mechanism in 'On the Origin of Species' (1859).",
+    "distractors": [
+      "Genetic drift",
+      "Gene flow",
+      "Artificial selection",
+      "Sexual selection",
+      "Mutation pressure",
+      "Founder effect",
+      "Kin selection",
+      "Group selection"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-1-population-evolution",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.1",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_fitness_definition",
+    "correctAnswer": "Reproductive success",
+    "acceptableAlternatives": [
+      "relative reproductive success",
+      "number of viable offspring"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "In evolutionary biology, what is the correct measure of an organism's fitness?",
+    "explanation": "Evolutionary fitness is not physical strength or health — it is measured strictly by reproductive success, meaning the number of viable, fertile offspring that survive to reproduce. An organism is 'fit' if it passes its genes to the next generation.",
+    "distractors": [
+      "Physical strength",
+      "Longevity",
+      "Body size",
+      "Metabolic efficiency",
+      "Disease resistance",
+      "Intelligence",
+      "Speed of development",
+      "Camouflage effectiveness"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-1-population-evolution",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.1",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_darwin_natural_selection",
+    "correctAnswer": "Charles Darwin",
+    "acceptableAlternatives": [
+      "Darwin"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "Which 19th-century naturalist is credited with developing the theory of evolution by natural selection, publishing his findings in 'On the Origin of Species' in 1859?",
+    "explanation": "Charles Darwin formulated the theory of natural selection after his voyage on the HMS Beagle. Alfred Russel Wallace independently arrived at similar conclusions, prompting Darwin to publish in 1859.",
+    "distractors": [
+      "Alfred Russel Wallace",
+      "Jean-Baptiste Lamarck",
+      "Gregor Mendel",
+      "Thomas Malthus",
+      "Ernst Mayr",
+      "Stephen Jay Gould",
+      "Carl Linnaeus",
+      "Louis Pasteur"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-1-population-evolution",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.1",
+      "exam_weight": "medium",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_differential_survival",
+    "correctAnswer": "Differential survival and reproduction",
+    "acceptableAlternatives": [
+      "differential reproduction",
+      "differential survival"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Natural selection requires heritable phenotypic variation among individuals and competition for limited resources. What outcome of this competition drives evolution?",
+    "explanation": "When individuals vary in heritable traits and compete for limited resources, those with traits that improve survival and reproduction leave more offspring. This differential survival and reproduction shifts allele frequencies across generations, driving evolutionary change.",
+    "distractors": [
+      "Random mutation accumulation",
+      "Equal reproductive output",
+      "Uniform phenotypic expression",
+      "Constant allele frequencies",
+      "Population size increase",
+      "Ecological niche expansion",
+      "Symbiotic cooperation",
+      "Epigenetic inheritance"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-1-population-evolution",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.1",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_phenotypic_variation_substrate",
+    "correctAnswer": "Phenotypic variation",
+    "acceptableAlternatives": [
+      "heritable phenotypic variation",
+      "variation in phenotype"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "evolution_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Natural selection acts on which type of variation in a population — the observable differences among individuals that may be heritable?",
+    "explanation": "Natural selection acts on phenotypes, not directly on genotypes. Phenotypic variation — differences in observable traits such as color, size, or behavior — provides the raw material on which selection operates. Only heritable variation leads to evolutionary change.",
+    "distractors": [
+      "Genetic drift",
+      "Genotypic variation only",
+      "Environmental plasticity",
+      "Epigenetic variation",
+      "Somatic mutation variation",
+      "Behavioral flexibility",
+      "Allelic redundancy",
+      "Quantitative trait variation"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-3-adaptive-evolution",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.2",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_selective_pressure_environment",
+    "correctAnswer": "Selective pressure",
+    "acceptableAlternatives": [
+      "selection pressure",
+      "environmental selective pressure"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "evolution_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What term describes the environmental force — biotic or abiotic — that favors certain phenotypes over others, driving the direction of natural selection?",
+    "explanation": "Selective pressures are the environmental factors that affect which phenotypes survive and reproduce. They can be biotic (predators, pathogens, competition) or abiotic (temperature, drought, UV radiation). As environments change, selective pressures shift, altering the direction of evolution.",
+    "distractors": [
+      "Genetic bottleneck",
+      "Mutation rate",
+      "Stabilizing force",
+      "Adaptive radiation",
+      "Reproductive barrier",
+      "Environmental filter",
+      "Ecological gradient",
+      "Carrying capacity"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-3-adaptive-evolution",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.2",
+      "exam_weight": "medium",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_sickle_cell_heterozygote_advantage",
+    "correctAnswer": "Sickle cell anemia",
+    "acceptableAlternatives": [
+      "sickle cell disease",
+      "sickle cell trait"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Which condition illustrates how molecular variation in hemoglobin provides a fitness advantage in malaria-endemic environments, with heterozygotes gaining partial protection against malaria while avoiding severe anemia?",
+    "explanation": "A single point mutation in the beta-globin gene causes sickle cell anemia. Heterozygotes (one normal, one sickle allele) have red blood cells that resist Plasmodium infection while avoiding severe anemia — a classic case of balancing selection. In malaria-free environments, the sickle allele is purely disadvantageous.",
+    "distractors": [
+      "Cystic fibrosis",
+      "Phenylketonuria",
+      "Tay-Sachs disease",
+      "Huntington's disease",
+      "Hemophilia A",
+      "Albinism",
+      "Marfan syndrome",
+      "Down syndrome"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-3-adaptive-evolution",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.2",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_ddt_resistance_insects",
+    "correctAnswer": "DDT resistance",
+    "acceptableAlternatives": [
+      "insecticide resistance",
+      "pesticide resistance in insects"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "The widespread use of an organochlorine pesticide in the 20th century led to rapid evolution of resistance in mosquitoes and other insect populations. What is this a classic example of?",
+    "explanation": "DDT (dichlorodiphenyltrichloroethane) application selected strongly for insects carrying resistance alleles. Susceptible individuals were killed; resistant ones survived and reproduced. This is a textbook CED example of molecular variation increasing fitness under a new selective pressure.",
+    "distractors": [
+      "Antibiotic resistance",
+      "Herbicide tolerance",
+      "Viral mutation",
+      "Chemical adaptation",
+      "Induced resistance",
+      "Phenotypic plasticity",
+      "Lamarckian inheritance",
+      "Horizontal gene transfer"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.3",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-3-adaptive-evolution",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.2",
+      "exam_weight": "medium",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_artificial_selection_definition",
+    "correctAnswer": "Artificial selection",
+    "acceptableAlternatives": [
+      "selective breeding",
+      "human-directed selection"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "evolution_terms",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "What process describes how humans deliberately breed animals or plants for desired traits, choosing which individuals reproduce based on characteristics valued by people rather than natural survival pressures?",
+    "explanation": "Artificial selection mirrors natural selection except that humans, not the environment, determine which individuals reproduce. Dog breeds, crop varieties, and livestock breeds are all products of artificial selection. Darwin used artificial selection in domesticated animals as evidence that selection can dramatically alter populations.",
+    "distractors": [
+      "Natural selection",
+      "Sexual selection",
+      "Genetic engineering",
+      "Clonal selection",
+      "Mutagenesis",
+      "Hybridization",
+      "Inbreeding",
+      "Epigenetic modification"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-1-population-evolution",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.3",
+      "exam_weight": "medium",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_artificial_selection_diversity",
+    "correctAnswer": "Selective breeding",
+    "acceptableAlternatives": [
+      "domestication",
+      "artificial selection"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "process_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "Domestic dogs (Canis lupus familiaris), all descended from wolves, now display extraordinary diversity in body size, coat type, and behavior. Which human practice produced this variation over thousands of years?",
+    "explanation": "All domestic dog breeds result from selective breeding of wolves over ~15,000 years. By choosing which dogs mate based on desired traits, humans altered allele frequencies far more rapidly than natural selection would. This demonstrates that selection — natural or artificial — can produce dramatic phenotypic change.",
+    "distractors": [
+      "Genetic drift",
+      "Spontaneous mutation",
+      "Hybridization with other canids",
+      "Natural selection",
+      "Founder effect",
+      "Horizontal gene transfer",
+      "Epigenetic inheritance",
+      "Polyploidy"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-1-population-evolution",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.3",
+      "exam_weight": "low",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_genetic_drift_definition",
+    "correctAnswer": "Genetic drift",
+    "acceptableAlternatives": [
+      "allelic drift",
+      "random genetic drift"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "evolution_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What evolutionary mechanism describes the random change in allele frequencies in a population due to chance events, having its greatest effect in small populations?",
+    "explanation": "Genetic drift is a nonselective, random process. Unlike natural selection, it does not systematically favor adaptive alleles. In small populations, chance events can cause alleles to become fixed or lost entirely, reducing genetic diversity regardless of fitness value.",
+    "distractors": [
+      "Natural selection",
+      "Gene flow",
+      "Mutation pressure",
+      "Directional selection",
+      "Founder effect",
+      "Bottleneck effect",
+      "Stabilizing selection",
+      "Sexual selection"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-2-population-genetics",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.4",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_bottleneck_effect",
+    "correctAnswer": "Bottleneck effect",
+    "acceptableAlternatives": [
+      "population bottleneck"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "evolution_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "A disease, natural disaster, or hunting pressure reduces a large population to a tiny remnant for at least one generation, randomly eliminating many alleles from the gene pool. What is this type of genetic drift called?",
+    "explanation": "The bottleneck effect is a form of genetic drift that occurs when a population crashes to a small size. The surviving individuals' allele frequencies may differ dramatically from the original population simply by chance, reducing genetic diversity. Cheetahs show signs of an ancient bottleneck — they are genetically nearly identical.",
+    "distractors": [
+      "Founder effect",
+      "Allopatric speciation",
+      "Population crash",
+      "Selective sweep",
+      "Gene flow disruption",
+      "Inbreeding depression",
+      "Adaptive radiation",
+      "Extinction vortex"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-2-population-genetics",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.4",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_founder_effect",
+    "correctAnswer": "Founder effect",
+    "acceptableAlternatives": [
+      "founder event"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "evolution_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "A small group of individuals colonizes a new, isolated habitat (such as an island). Allele frequencies in the new population reflect the founders' gene pool, not the source population. What is this called?",
+    "explanation": "The founder effect occurs when a small subset of a population establishes a new colony. The founders carry only a fraction of the original population's alleles, so the new population begins with reduced genetic diversity and allele frequencies that may differ substantially from the source population.",
+    "distractors": [
+      "Bottleneck effect",
+      "Allopatric speciation",
+      "Genetic drift",
+      "Gene flow",
+      "Colonization bias",
+      "Adaptive founder bias",
+      "Dispersal drift",
+      "Island biogeography effect"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-2-population-genetics",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.4",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_gene_flow_migration",
+    "correctAnswer": "Gene flow",
+    "acceptableAlternatives": [
+      "migration",
+      "allele flow"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "evolution_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What process describes the movement of alleles between populations through migration, which adds or removes alleles from a gene pool and can prevent two populations from diverging into separate species?",
+    "explanation": "Gene flow occurs when individuals (or gametes) move between populations, bringing alleles with them. It homogenizes allele frequencies between connected populations, reducing divergence. Isolation from gene flow is a prerequisite for speciation.",
+    "distractors": [
+      "Genetic drift",
+      "Natural selection",
+      "Mutation",
+      "Founder effect",
+      "Bottleneck effect",
+      "Adaptive radiation",
+      "Reproductive isolation",
+      "Allele fixation"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-2-population-genetics",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.4",
+      "exam_weight": "high",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_mutation_new_variation",
+    "correctAnswer": "Mutation",
+    "acceptableAlternatives": [
+      "random mutation",
+      "genetic mutation"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "evolution_terms",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "What is the ultimate source of ALL new genetic variation in populations, introducing new alleles that natural selection, genetic drift, and gene flow can then act upon?",
+    "explanation": "Mutations — changes in DNA sequence — are the only source of genuinely new alleles. Without mutation, evolution would eventually exhaust the existing variation in a population. Although most mutations are neutral or harmful, some provide new phenotypic variation on which natural selection can act.",
+    "distractors": [
+      "Genetic recombination",
+      "Gene flow",
+      "Independent assortment",
+      "Crossing over",
+      "Genetic drift",
+      "Natural selection",
+      "Horizontal gene transfer",
+      "Epigenetic change"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-2-population-genetics",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.4",
+      "exam_weight": "medium",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_genetic_drift_small_population",
+    "correctAnswer": "Small populations",
+    "acceptableAlternatives": [
+      "small population size"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Genetic drift has its greatest impact on what type of population, where chance events can fix or eliminate alleles rapidly regardless of their adaptive value?",
+    "explanation": "In large populations, random sampling errors average out and allele frequencies remain relatively stable. In small populations, a single chance event — one individual failing to reproduce, one allele randomly lost — can dramatically shift frequencies or eliminate alleles permanently.",
+    "distractors": [
+      "Large populations",
+      "Geographically isolated populations",
+      "Reproductively isolated populations",
+      "Populations under strong selection",
+      "Populations with high mutation rates",
+      "Diploid populations",
+      "Migratory populations",
+      "Sexually reproducing populations"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-2-population-genetics",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.4",
+      "exam_weight": "medium",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_abiotic_biotic_selection",
+    "correctAnswer": "Biotic and abiotic environments",
+    "acceptableAlternatives": [
+      "biotic and abiotic factors",
+      "environmental factors"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "bio_concept_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "According to the AP Biology CED, what types of environmental conditions fluctuate and affect the rate and direction of natural selection, potentially favoring different genetic variations in different generations?",
+    "explanation": "Both biotic environments (predators, pathogens, competitors, prey) and abiotic environments (temperature, rainfall, UV radiation, salinity) exert selective pressures. As these fluctuate — seasonally, geographically, or over evolutionary time — different phenotypes may be favored, allowing diverse alleles to persist.",
+    "distractors": [
+      "Only abiotic factors",
+      "Only biotic factors",
+      "Genetic factors alone",
+      "Reproductive factors",
+      "Population density",
+      "Geographic barriers",
+      "Climatic oscillation",
+      "Soil chemistry only"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.1",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-1-population-evolution",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.1",
+      "exam_weight": "medium",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  },
+  {
+    "id": "ap_bio_gene_flow_prevents_divergence",
+    "correctAnswer": "Gene flow",
+    "acceptableAlternatives": [
+      "migration",
+      "gene flow between populations"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "evolution_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which evolutionary force, when maintained between two populations, PREVENTS them from diverging into separate species by continually homogenizing allele frequencies?",
+    "explanation": "Gene flow counteracts the divergence that natural selection and genetic drift can create. When individuals move freely between populations and interbreed, allele frequencies in both populations are kept similar. Reproductive isolation — which requires stopping gene flow — is the first step toward speciation.",
+    "distractors": [
+      "Natural selection",
+      "Genetic drift",
+      "Mutation",
+      "Stabilizing selection",
+      "Reproductive isolation",
+      "Allopatric separation",
+      "Genetic recombination",
+      "Phenotypic convergence"
+    ],
+    "sourceName": "OpenStax Biology 2e, Chapter 19.2",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/19-2-population-genetics",
+    "volatile": false,
+    "examTags": {
+      "unit": 7,
+      "topic": "7.4",
+      "exam_weight": "medium",
+      "big_idea": "EVO",
+      "is_equation_fact": false,
+      "is_lab_fact": false
+    }
+  }
+]
