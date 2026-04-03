@@ -250,7 +250,7 @@ function getPoolDistractors(fact, deck, count = 3) {
 }
 
 // ---------------------------------------------------------------------------
-// Issue checking — 13 checks total (8 original + 4 new + 1 template-pool compatibility)
+// Issue checking — 19 checks total (8 original + 4 new + 1 template-pool compatibility + 6 new quality checks)
 // ---------------------------------------------------------------------------
 
 /**
@@ -352,6 +352,38 @@ function checkFact(fact, displayedAnswer, distractors, isBracket, pool, usedFall
     const poolIds = new Set((deck.answerTypePools || []).map(p => p.id));
     if (!poolIds.has(fact.answerTypePoolId)) {
       issues.push(`answerTypePoolId "${fact.answerTypePoolId}" not found in deck pools`);
+    }
+  }
+
+  // 14. Answer too long (fail threshold: >100 chars; skip vocab)
+  if (!isVocab) {
+    const len = displayedAnswer.length;
+    if (len > 100) {
+      issues.push(`Answer too long (${len} chars, max 100)`);
+    }
+  }
+
+  // 15. Question too long (fail threshold: >400 chars; skip vocab)
+  if (!isVocab) {
+    const qlen = (fact.quizQuestion || '').length;
+    if (qlen > 400) {
+      issues.push(`Question too long (${qlen} chars, max 400)`);
+    }
+  }
+
+  // 16. Difficulty out of range or missing
+  {
+    const d = fact.difficulty;
+    if (d === undefined || d === null || d < 1 || d > 5) {
+      issues.push(`difficulty out of range (${d}, must be 1-5)`);
+    }
+  }
+
+  // 17. funScore out of range or missing
+  {
+    const s = fact.funScore;
+    if (s === undefined || s === null || s < 1 || s > 10) {
+      issues.push(`funScore out of range (${s}, must be 1-10)`);
     }
   }
 
@@ -523,6 +555,38 @@ function verifyDeck(deckId, deck) {
       if (!isVocab && distractors.length < 3) {
         const msg = `Only ${distractors.length} distractor(s) — ideal is 3`;
         factWarnings.push({ index: i + 1, factId: fact.id, msg });
+      }
+    }
+
+    // Warnings fire regardless of failure status
+    // Check #14 WARNING: answer between 61-80 chars (skip vocab)
+    if (!isVocab) {
+      const alen = displayedAnswer.length;
+      if (alen > 60 && alen <= 80) {
+        factWarnings.push({ index: i + 1, factId: fact.id, msg: `Answer is long (${alen} chars, consider shortening below 60)` });
+      }
+    }
+
+    // Check #15 WARNING: question between 301-400 chars (skip vocab)
+    if (!isVocab) {
+      const qlen = (fact.quizQuestion || '').length;
+      if (qlen > 300 && qlen <= 400) {
+        factWarnings.push({ index: i + 1, factId: fact.id, msg: `Question is long (${qlen} chars, consider shortening below 300)` });
+      }
+    }
+
+    // Check #18 WARNING: explanation exists but is very short (< 20 chars; skip vocab)
+    if (!isVocab) {
+      const expl = fact.explanation || '';
+      if (expl.trim() !== '' && expl.length < 20) {
+        factWarnings.push({ index: i + 1, factId: fact.id, msg: `Explanation too short (${expl.length} chars, minimum 20)` });
+      }
+    }
+
+    // Check #19 WARNING: explanation duplicates the question (skip vocab)
+    if (!isVocab && fact.explanation && fact.quizQuestion) {
+      if (normaliseQuestion(fact.explanation) === normaliseQuestion(fact.quizQuestion)) {
+        factWarnings.push({ index: i + 1, factId: fact.id, msg: 'Explanation duplicates quizQuestion' });
       }
     }
   }

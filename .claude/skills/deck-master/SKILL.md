@@ -166,6 +166,9 @@ Also create tasks for:
 | Pool field naming / ID mismatches | WWII used `members` instead of `factIds` in pools; hiragana/katakana/hangul facts referenced `english_meanings` but pools were named `romanizations`/`characters`; norse_mythology had 8 facts referencing non-existent pools (2026-04-02) | ALWAYS use `factIds` (never `members`, `facts`, `items`). ALWAYS verify pool IDs match between facts and pool definitions. Run `node scripts/verify-all-decks.mjs` after every deck build — it catches ALL structural mismatches across all decks at once. |
 | Assembly dropped pools and shipped under target | Movies & Cinema (2026-04-03): assembler eliminated 2 entire pools (film_quotes, country_names) and shipped character_names at 7/22 (32% of target). Orchestrator didn't verify pool counts against architecture. | After EVERY assembly, run a target-vs-actual comparison against the architecture YAML. If any pool is missing or under target, spawn supplement workers BEFORE committing. The architecture is a contract — if targets need changing, update the arch first, don't silently ship under spec. |
 | Pool members arrays empty | Computer Science and Music History (2026-04-03): all pools had factIds populated but `members` arrays empty (never built from correctAnswer values). Runtime fell back to per-fact distractors, degrading quiz quality silently. | ALWAYS build pool `members` programmatically: `pool.members = [...new Set(facts.filter(f => f.answerTypePoolId === pool.id).map(f => f.correctAnswer))].sort()`. Verify `members.length > 0` for every pool after assembly. |
+| Pool semantic pollution — distractors from wrong category | AP Chemistry (2026-04-03): `law_and_equation_names` pool (77 members) contained "Electron sea model", "Bond length decreases", "Crystal lattice" — none of which are laws or equations. Player asking "What equation calculates buffer pH?" saw distractors "Electron sea model", "Bond length decreases" — trivially eliminatable by category. Workers dumped answers into the closest-sounding pool name without checking if each answer makes sense as a distractor for every other answer in the pool. Also 52 facts had answers >50 chars that won't fit on quiz buttons. | **MANDATORY: After assembly, run the Distractor Display Audit (see below).** For EVERY pool, print 3 sample questions with their pool-based distractor choices. Visually verify: would a student find these 4 choices plausible? If ANY choice is from an obviously wrong category, the pool is polluted. Also enforce max 40 chars on correctAnswer — longer answers must be shortened or use pre-generated distractors only. |
+| Missing difficulty/funScore on visual batch | human_anatomy (2026-04-03): 134 visual anatomy facts shipped without funScore and 54 without difficulty. Image fact batch generation worker did not populate metadata fields. Checks #16/#17 in verify-all-decks.mjs now catch undefined values as FAIL. | Every fact generation worker must set ALL required metadata fields (difficulty, funScore, categoryL1, categoryL2). Run verify-all-decks.mjs before committing. |
+| correctAnswer appears in own distractors array | 9 facts across 7 decks had their own correct answer listed as a distractor (2026-04-03). Same text appeared twice as answer buttons at runtime. Caught by unit test deck-content-quality.test.ts. | After any distractor generation, verify no fact's distractors[] contains its correctAnswer (case-insensitive). The batch verifier catches this as check #2 (answer-in-distractors). |
 
 ### Lessons Learned: Grammar / Fill-Blank Deck Builds (2026-03-28)
 
@@ -274,7 +277,7 @@ node scripts/verify-all-decks.mjs           # Summary: all 63 decks
 node scripts/verify-all-decks.mjs --verbose  # Per-fact failure details
 ```
 
-12 checks per fact: braces in answer/question, answer-in-distractors, duplicate distractors, distractor count, pool size, missing fields, non-numeric bracket distractors, missing explanation, duplicate questions, orphaned pool refs, empty pools.
+19 checks per fact — 13 structural + 6 content quality. Structural (FAIL): braces in answer/question, answer-in-distractors, duplicate distractors, distractor count, pool size, missing fields, non-numeric bracket distractors, missing explanation, duplicate questions, orphaned pool refs, empty pools, template-pool placeholder compatibility. Content quality: answer too long (FAIL >100 chars, WARN >60), question too long (FAIL >400 chars, WARN >300), difficulty out of range (FAIL), funScore out of range (FAIL), explanation too short (WARN <20 chars), explanation duplicates question (WARN).
 
 Target: **0 failures, 0 warnings** across all decks. Any failure = fix before committing.
 
@@ -1540,6 +1543,66 @@ console.log(issues ? issues + ' ISSUES FOUND — fix before shipping' : 'All ' +
 
 ---
 
+### Distractor Display Audit — MANDATORY AFTER EVERY ASSEMBLY
+
+**This is the #1 quality gate that catches issues invisible to structural validation.** Run this AFTER the structural validation script passes. It simulates what the player actually sees — the correct answer plus 3 pool-based distractors — and flags:
+
+1. **Pool semantic pollution**: Pool members from obviously wrong categories appearing as distractors
+2. **Long answers**: correctAnswer > 40 chars won't fit on quiz answer buttons
+3. **Cross-category pools**: A pool containing both "Ionic bond" and "Hess's Law" is a junk drawer, not a distractor pool
+
+**Run this script after every assembly:**
+
+```bash
+node -e "
+const deck = JSON.parse(require('fs').readFileSync('data/decks/DECK_ID.json'));
+const pools = new Map(deck.answerTypePools.map(p => [p.id, p]));
+let issues = 0;
+
+// CHECK 1: Long answers (>40 chars)
+deck.facts.forEach(f => {
+  if (f.correctAnswer.length > 40 && !f.correctAnswer.startsWith('{')) {
+    console.log('LONG ANSWER (' + f.correctAnswer.length + ' chars): ' + f.id + ' -> "' + f.correctAnswer.substring(0, 50) + '..."');
+    issues++;
+  }
+});
+
+// CHECK 2: Pool display audit — show 3 sample questions per pool with their pool distractors
+console.log('\n=== POOL DISPLAY AUDIT ===');
+const byPool = {};
+deck.facts.forEach(f => { if (!byPool[f.answerTypePoolId]) byPool[f.answerTypePoolId] = []; byPool[f.answerTypePoolId].push(f); });
+
+Object.entries(byPool).forEach(([poolId, facts]) => {
+  const pool = pools.get(poolId);
+  const members = pool?.members || [];
+  const synth = pool?.syntheticDistractors || [];
+  console.log('\nPOOL: ' + poolId + ' (' + members.length + ' members)');
+  
+  // Sample 3 facts and show what distractors the player would see
+  facts.slice(0, 3).forEach(f => {
+    const candidates = [...members, ...synth].filter(m => m !== f.correctAnswer).slice(0, 3);
+    console.log('  Q: ' + f.quizQuestion.substring(0, 70));
+    console.log('  Choices: [' + f.correctAnswer.substring(0, 30) + '] vs [' + candidates.map(c => c.substring(0, 25)).join('] [') + ']');
+  });
+});
+
+console.log('\n' + issues + ' long-answer issues found');
+console.log('REVIEW EACH POOL ABOVE: Do the 4 choices look plausible together?');
+console.log('If ANY pool shows obviously wrong-category distractors, the pool is POLLUTED — fix before shipping.');
+"
+```
+
+**What to do when a pool is polluted:**
+1. **Split the pool** into semantically coherent sub-pools (e.g., `law_and_equation_names` → split into `law_names`, `equation_formulas`, `model_names`, `chemistry_definitions`)
+2. **Move facts** to the correct pool — each fact's `answerTypePoolId` must point to a pool where its `correctAnswer` makes sense as a distractor for every other member
+3. **For facts with long/unique answers** that don't fit any pool: set a pool that will fall back to per-fact distractors (small pool or unique pool), ensuring 8+ pre-generated distractors are present
+
+**The "dinner party test" for pool quality:** If you showed a friend all 4 answer choices for a question, would they all look like they COULD be the right answer? If one choice is from an obviously different category (e.g., "Bond length decreases" as a distractor for "What equation calculates pH?"), the pool is polluted.
+
+**This check is NON-NEGOTIABLE. No deck ships without a distractor display audit.** The AP Chemistry deck (2026-04-03) passed all structural validation, automated playtest, and LLM playtest — but the pool distractors were nonsensical because workers assigned facts to the closest-sounding pool name rather than the semantically correct one. Only this audit caught it.
+
+---
+
 ### Data Validation Commands
 
 **Required fields check:**
@@ -1825,7 +1888,7 @@ Before a deck can ship, check off every item:
 - [ ] **LLM playtest: variety/pacing** — Haiku agent rates 7+ / 10, Anki queue feels natural
 - [ ] **LLM playtest: educational value** — Haiku agent rates 7+ / 10, questions teach not just test
 - [ ] **Learning queue verified** — Wrong answers return after 2 charges, correct advance through steps
-- [ ] **No pool pollution** — Distractors are semantically appropriate (no "Medium-sized (G-type)" as planet distractor)
+- [ ] **Distractor Display Audit passed** — Ran the pool display audit script, reviewed every pool's sample questions, confirmed all 4 answer choices look plausible together. No wrong-category distractors. No answers >40 chars.
 - [ ] **Bracket numbers clean** — Numeric answers display without braces, distractors are plausible nearby numbers
 - [ ] **Wow factors present** — Every fact has a deck-specific wowFactor string
 

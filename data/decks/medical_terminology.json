@@ -22427,7 +22427,9 @@
         "derma",
         "derm/o",
         "Dermat/o",
-        "dermat/o"
+        "dermat/o",
+        "Cutane/o",
+        "cutane/o"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "combining_forms",
@@ -22435,14 +22437,14 @@
       "funScore": 6,
       "ageGroup": "all",
       "distractors": [
-        "Cutane/o",
         "Integument/o",
         "Kerat/o",
         "Seb/o",
         "Hidr/o",
         "Melan/o",
         "Squam/o",
-        "Erythr/o"
+        "Erythr/o",
+        "Sarc/o"
       ],
       "quizQuestion": "What is the combining form for 'skin'?",
       "explanation": "Derm/o (also dermat/o) derives from Greek 'derma' (skin). Found in dermatology, dermis, dermatitis, hypodermic, and epidermis.",
@@ -39193,10 +39195,11 @@
     },
     {
       "id": "medterm_abbr_rbc",
-      "correctAnswer": "Red blood cell count",
+      "correctAnswer": "Red blood cell",
       "acceptableAlternatives": [
         "Red Blood Cell Count",
-        "Red blood cell",
+        "Red blood cell count",
+        "Red Blood Cell",
         "RBC"
       ],
       "chainThemeId": 2,
@@ -39215,8 +39218,8 @@
         "Mean corpuscular volume"
       ],
       "quizQuestion": "What does the medical abbreviation RBC stand for?",
-      "explanation": "RBC (Red Blood Cell Count) measures the number of erythrocytes per microliter of blood. Normal: men 4.7-6.1 million/μL; women 4.2-5.4 million/μL. RBCs carry oxygen via hemoglobin from the lungs to tissues. Low RBC = anemia; high RBC = polycythemia. RBC count, along with Hgb and Hct, are the primary measures of red cell mass in a CBC.",
-      "statement": "RBC stands for Red Blood Cell count.",
+      "explanation": "RBC stands for Red Blood Cell. In the context of a CBC (complete blood count), the RBC count measures the number of erythrocytes per microliter of blood. Normal: men 4.7-6.1 million/μL; women 4.2-5.4 million/μL. RBCs carry oxygen via hemoglobin from the lungs to tissues. Low RBC count = anemia; high RBC count = polycythemia.",
+      "statement": "RBC stands for Red Blood Cell.",
       "wowFactor": "Each red blood cell is a biconcave disc with no nucleus — it sacrifices its DNA-containing nucleus to maximize space for hemoglobin. A single RBC carries about 270 million hemoglobin molecules, each capable of binding 4 oxygen molecules!",
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Red_blood_cell",

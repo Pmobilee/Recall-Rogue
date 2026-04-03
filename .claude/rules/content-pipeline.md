@@ -22,6 +22,32 @@ Before generating a single fact, you MUST:
 
 **This does NOT apply to:** Casual knowledge decks (movies, mythology, history) where completeness means "comprehensive" not "curriculum-aligned."
 
+## Exam-Aligned Deck Standard
+
+**Any deck covering material tested by an official standardized exam MUST align to that exam's official scope document.**
+
+This means:
+1. **Find the exam's official Course Description / Syllabus / Scope Document** — the published document that defines what is tested
+2. **Use its structure as the deck's architecture** — units, topics, learning objectives map directly to sub-decks and chain themes
+3. **Cover every testable concept** — if it's in the exam scope, it must be in the deck
+4. **Tag facts with exam metadata** — `examTags` field with exam name and unit/section identifiers
+5. **Weight content by exam weighting** — units worth more on the exam get proportionally more facts
+
+**Applicable exam frameworks:**
+- **AP exams** (College Board) — use the Course and Exam Description (CED) for each subject
+- **JLPT** (Japanese) — already aligned to official N5-N1 word/grammar lists
+- **CEFR** (European languages) — already aligned to A1-B2 level descriptors
+- **TOPIK** (Korean) — already aligned to official level lists
+- **HSK** (Chinese) — already aligned to official HSK 1-6 word lists
+- **IB** (International Baccalaureate) — use subject guide and syllabus
+- **SAT Subject Tests / SAT** — use College Board published content specifications
+- **GCSE / A-Level** (UK) — use exam board specification documents
+- **USMLE / NCLEX** (medical) — use published content outlines
+
+**Why:** Official exam scope documents are the ONLY reliable way to ensure completeness. Students using our decks for exam prep need to trust that every testable concept is covered. If we miss topics that appear on the exam, that's a critical failure of our educational product.
+
+**This does NOT apply to:** Casual knowledge decks (movies, mythology, dinosaurs) where no standardized exam exists.
+
 ## Distractor Generation — NEVER From Database
 
 **ALL distractors MUST be LLM-generated**, reading the specific question to produce plausible wrong answers.
@@ -94,4 +120,23 @@ node scripts/verify-all-decks.mjs           # Summary table (all decks)
 node scripts/verify-all-decks.mjs --verbose  # Per-fact details on failures
 ```
 
-13 checks per fact/deck: braces in answer/question, answer-in-distractors, duplicate distractors, distractor count, pool size, missing fields, non-numeric bracket distractors, missing explanation, duplicate questions, orphaned pool refs, empty pools, template-pool placeholder compatibility. Target: **0 failures** across all decks.
+19 checks per fact/deck — 13 structural + 6 content quality:
+
+**Structural checks (FAIL):** braces in answer/question, answer-in-distractors, duplicate distractors, distractor count, pool size, missing fields, non-numeric bracket distractors, missing explanation, duplicate questions, orphaned pool refs, empty pools, template-pool placeholder compatibility.
+
+**Content quality checks:** answer too long (FAIL >100 chars, WARN >60), question too long (FAIL >400 chars, WARN >300), difficulty out of range (FAIL, must be 1-5), funScore out of range (FAIL, must be 1-10), explanation too short (WARN <20 chars), explanation duplicates question (WARN).
+
+Target: **0 failures** across all decks. Warnings are informational — aim to minimize.
+
+## Content Quality Limits
+
+| Field | Warn | Fail | Notes |
+|-------|------|------|-------|
+| `correctAnswer` length | >60 chars | >100 chars | Strip `{N}` markers first. Skip vocab decks |
+| `quizQuestion` length | >300 chars | >400 chars | Skip vocab decks |
+| `difficulty` | — | <1 or >5, or missing | Required for all facts |
+| `funScore` | — | <1 or >10, or missing | Required for all facts |
+| `explanation` length | <20 chars | empty/missing | Skip vocab for short warning |
+| `explanation` content | duplicates question | — | Normalized comparison |
+
+These limits are enforced by both `verify-all-decks.mjs` (batch check) and `tests/unit/deck-content-quality.test.ts` (CI test suite).

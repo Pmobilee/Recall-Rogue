@@ -2533,7 +2533,9 @@
       "correctAnswer": "Passive transport",
       "acceptableAlternatives": [
         "diffusion",
-        "passive diffusion"
+        "passive diffusion",
+        "facilitated diffusion",
+        "Facilitated diffusion"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "process_names",
@@ -2550,7 +2552,7 @@
         "Pinocytosis",
         "Na+/K+ pumping"
       ],
-      "quizQuestion": "What term describes the net movement of molecules from a region of high concentration to low concentration across a membrane, requiring no direct input of metabolic energy?",
+      "quizQuestion": "What umbrella term describes the net movement of molecules from a region of high concentration to low concentration across a membrane, requiring no direct input of metabolic energy?",
       "explanation": "Passive transport moves molecules down their concentration gradient — from where they are more concentrated to where they are less concentrated. Because this movement is thermodynamically favorable, no ATP is consumed. Simple diffusion of small nonpolar molecules (e.g., O2) is the most direct form.",
       "statement": "",
       "wowFactor": "",
@@ -6819,8 +6821,8 @@
         "G1 phase",
         "Prometaphase"
       ],
-      "quizQuestion": "During which phase of mitosis do chromosomes condense and become visible, the mitotic spindle begins to form, centrosomes move to opposite poles, and the nuclear envelope breaks down?",
-      "explanation": "Prophase is the first and longest phase of mitosis. During prophase: (1) chromatin condenses into visible chromosomes (each consisting of two sister chromatids joined at the centromere); (2) the mitotic spindle begins to form from centrosomes; (3) centrosomes migrate to opposite poles of the cell; and (4) the nuclear envelope breaks down (prometaphase). Spindle fibers (microtubules) extend from centrosomes and will attach to kinetochores on chromosomes to move them during later phases.",
+      "quizQuestion": "During which phase of mitosis do chromosomes condense and become visible, the mitotic spindle begins to form, and centrosomes move to opposite poles?",
+      "explanation": "Prophase is the first and longest phase of mitosis. During prophase: (1) chromatin condenses into visible chromosomes (each consisting of two sister chromatids joined at the centromere); (2) the mitotic spindle begins to form from centrosomes; and (3) centrosomes migrate to opposite poles of the cell. Note: nuclear envelope breakdown occurs in Prometaphase, not Prophase proper. Spindle fibers (microtubules) extend from centrosomes and will attach to kinetochores on chromosomes to move them during later phases.",
       "statement": "",
       "wowFactor": "",
       "sourceName": "OpenStax Biology 2e, Chapter 10.2",

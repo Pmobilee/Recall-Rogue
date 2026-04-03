@@ -685,3 +685,28 @@ Initial generation covered all 4 phases of meiosis I plus Anaphase II but missed
 ### 2026-04-03 — smartTruncate string validator: JS .length counts Unicode special chars as 1, not bytes
 
 When writing a validation script to check that replacement strings are ≤100 chars, a pre-flight check in the fix script used string literals with multi-byte Unicode characters (`→`, `—`, `±`, `≤`). The `String.prototype.length` property in JS counts these as 1 code unit each (they are in the BMP), but the developer had expected them to count as more. The `verify-all-decks.mjs` script also uses `.length`, so they are consistent. The original strings were simply longer than 100 real characters — the special chars were not causing the discrepancy. Always run the validator *on the exact string in memory* (not a re-typed literal in a separate check script) to avoid off-by-one errors from copy-paste differences.
+
+### 2026-04-03 — Deck quality gate: 19-check batch verifier + CI unit tests
+
+**What:** Added 6 new content quality checks (#14-#19) to `verify-all-decks.mjs` and created `tests/unit/deck-content-quality.test.ts` with 9 hard-fail tests. Found and fixed: 134 human_anatomy facts missing funScore, 54 missing difficulty, 1 movies_cinema fact with difficulty=6, 92+ answers >100 chars truncated, 9 distractor collisions across 7 decks.
+
+**Why it matters:** Previous checks only caught structural issues (orphaned pools, missing fields, brace errors). Content quality issues — answers too long for buttons, missing metadata, self-referential distractors — were invisible until players encountered them.
+
+**Fix:** New checks now catch answer/question length limits, difficulty/funScore range AND existence, explanation quality, and distractor self-collision. Both the batch verifier and CI test suite enforce these. Vocab decks are exempt from length warnings (short answers by design).
+
+**Rule going forward:** Run `node scripts/verify-all-decks.mjs` AND `npx vitest run tests/unit/deck-content-quality.test.ts` before committing any deck changes. Both must show 0 failures.
+
+### 2026-04-03 — Spot-check fixes: 9 factual accuracy corrections across 5 decks
+
+**What was fixed:**
+1. **ap_biology `ap_bio_prophase_events`** — Question incorrectly included nuclear envelope breakdown (a Prometaphase event) as a Prophase event. Fixed: removed from quizQuestion, updated explanation to note NEB happens at Prometaphase.
+2. **ap_biology `ap_bio_passive_transport_def`** — "Facilitated diffusion" was a distractor but IS a valid form of passive transport. Fixed: added to `acceptableAlternatives` and rephrased question to "What umbrella term..." to clarify we want the broad category.
+3. **medical_terminology `medterm_cf_skin`** — "Cutane/o" was a distractor but IS a valid combining form for skin. Fixed: moved to `acceptableAlternatives`, replaced with "Sarc/o" (flesh, not skin) as distractor.
+4. **medical_terminology `medterm_abbr_rbc`** — RBC = "Red Blood Cell", not "Red Blood Cell Count". Fixed: correctAnswer changed to "Red blood cell", old value moved to `acceptableAlternatives`, explanation updated.
+5. **computer_science `cs_4_ios_original_name`** — Distractor "iPhoneOS" (no space) was nearly identical to correct answer "iPhone OS". Fixed: removed, "Darwin Mobile" already present as a distinct alternative.
+6. **movies_cinema `cinema_westsidestory_oscars`** — Explanation falsely claimed the 10-Oscar record "stood until Titanic" — Ben-Hur had already won 11 in 1960. Fixed: explanation now accurately states WSS was the record for a musical, but Ben-Hur held the all-time record.
+7. **movies_cinema `cinema_gwtw_oscars`** — wowFactor said Ben-Hur "tied" GWTW (8 wins) when Ben-Hur actually surpassed it with 11. Fixed: wowFactor now says "surpassed".
+8. **japanese_n4_grammar `ja-gram-n4-n4-caus-saseru-fill-2`** — Explanation misidentified てしまいました as causative. Fixed: explanation now correctly identifies it as completion/regret marker; causative element is 泣かせ.
+9. **japanese_n4_grammar `ja-gram-n4-n4-hon-nasaru-fill-0`** — Explanation misattributed the honorific role to ています instead of なさる. Fixed: explanation now identifies なさる as the honorific (polite equivalent of する) and ています as the progressive completion.
+
+**Lesson:** Distractor factual accuracy requires domain knowledge, not just structural checks. Academy Award counts, biological phase boundaries, and Japanese grammar labels are failure-prone. When distractors are semantically close to correct answers (iPhoneOS/iPhone OS), they defeat the purpose and should be replaced with more distinct alternatives.

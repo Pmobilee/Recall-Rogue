@@ -98,6 +98,44 @@ The 4 `world_wonders` architecture files total 195 facts in the live deck. They 
 
 ---
 
+## Verification & Quality Gates
+
+### Batch Verifier — `scripts/verify-all-decks.mjs`
+
+Runs 19 checks across all decks. Must produce 0 failures before committing deck changes.
+
+```bash
+node scripts/verify-all-decks.mjs           # Summary table
+node scripts/verify-all-decks.mjs --verbose  # Per-fact failure details
+```
+
+**19 checks — 13 structural + 6 content quality:**
+
+Structural (FAIL): braces in answer/question, answer-in-distractors, duplicate distractors, distractor count, pool size, missing fields, non-numeric bracket distractors, missing explanation, duplicate questions, orphaned pool refs, empty pools, template-pool placeholder compatibility.
+
+Content quality: answer too long (FAIL >100 chars, WARN >60), question too long (FAIL >400 chars, WARN >300), difficulty out of range (FAIL), funScore out of range (FAIL), explanation too short (WARN <20 chars), explanation duplicates question (WARN).
+
+### Unit Tests — `tests/unit/deck-content-quality.test.ts`
+
+9 Vitest tests run as part of `npx vitest run`. Hard-fail thresholds only:
+- Answer length ≤100 chars (knowledge decks)
+- Question length ≤400 chars
+- Difficulty 1-5 (all facts)
+- funScore 1-10 (all facts)
+- Non-empty explanation (all facts)
+- No correctAnswer in own distractors
+- All pool/fact cross-references valid
+- No empty pools in knowledge decks
+
+### Pre-Commit Checklist
+
+After ANY deck modification:
+1. `node scripts/verify-all-decks.mjs` → 0 failures
+2. `npx vitest run tests/unit/deck-content-quality.test.ts` → 9/9 pass
+3. `npm run typecheck && npm run build` → clean
+
+---
+
 ## Deck Front Images
 
 All 65 curated decks have pixel art RPG dungeon cover art as of 2026-04-02. Images are served from `public/assets/sprites/deckfronts/` and rendered by `DeckTileV2.svelte` with a CSS parallax hover effect.
