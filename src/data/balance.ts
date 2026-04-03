@@ -478,10 +478,10 @@ export const FLOOR_DAMAGE_SCALE_MID = 1.2;
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent(). */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 6,    // raised from 3 to 6: allows floor 1 enemies to deal 2-6 damage, creating actual tension without being deadly (LLM playtest BATCH-2026-04-01-001 found 2 dmg/turn was trivial)
-  2: 12,   // doubled from 6
-  3: 18,   // raised from 14 to increase late-game pressure
-  4: 28,   // raised from 20 to increase late-game pressure
+  1: 10,   // raised from 6 — allows meaningful early damage (10% of 100 HP/turn), creates real tension (2026-04-03)
+  2: 16,   // raised from 12 — matches increased player power (2026-04-03)
+  3: 22,   // raised from 18 — late-game pressure increase (2026-04-03)
+  4: 32,   // raised from 28 — late-game pressure increase (2026-04-03)
   endless: null,
 };
 

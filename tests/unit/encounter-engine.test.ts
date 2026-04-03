@@ -339,19 +339,19 @@ describe('Enemy Templates', () => {
     expect(miniBoss).toHaveLength(24);
   });
 
-  it('page_flutter has 30 baseHP (Act 1 rebalance 2026-04-02)', () => {
+  it('page_flutter has 12 baseHP (2026-04-03 rebalance)', () => {
     const bat = ENEMY_TEMPLATES.find(t => t.id === 'page_flutter');
-    expect(bat?.baseHP).toBe(30);
+    expect(bat?.baseHP).toBe(12);
   });
 
-  it('thesis_construct has 28 baseHP (Act 1 rebalance 2026-04-02)', () => {
+  it('thesis_construct has 13 baseHP (2026-04-03 rebalance)', () => {
     const golem = ENEMY_TEMPLATES.find(t => t.id === 'thesis_construct');
-    expect(golem?.baseHP).toBe(28);
+    expect(golem?.baseHP).toBe(13);
   });
 
-  it('algorithm has 12 baseHP (AR-59.13 v2 stats)', () => {
+  it('algorithm has 18 baseHP (2026-04-03 rebalance)', () => {
     const archivist = ENEMY_TEMPLATES.find(t => t.id === 'algorithm');
-    expect(archivist?.baseHP).toBe(12);
+    expect(archivist?.baseHP).toBe(18);
   });
 
   it('peer_reviewer has no immuneDomain (removed in consolidation)', () => {
@@ -522,8 +522,8 @@ describe('Enemy Manager', () => {
         statusEffects: [{ type: 'strength', value: 2, turnsRemaining: 3 }],
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1: round(10 * 1.5 * 1.2) = 18, capped at segment 1 cap of 6.
-      expect(result.damage).toBe(6);
+      // Floor 1: round(10 * 1.5 * 1.2) = 18, capped at segment 1 cap of 10.
+      expect(result.damage).toBe(10);
     });
 
     it('calculates multi_attack damage correctly', () => {
@@ -531,8 +531,8 @@ describe('Enemy Manager', () => {
         nextIntent: { type: 'multi_attack', value: 5, weight: 1, telegraph: 'Flurry', hitCount: 4 },
       });
       const result = executeEnemyIntent(enemy);
-      // round(5 * 1.0 * 1.2) * 4 = 24, capped at segment 1 cap of 6.
-      expect(result.damage).toBe(6);
+      // round(5 * 1.0 * 1.2) * 4 = 24, capped at segment 1 cap of 10.
+      expect(result.damage).toBe(10);
     });
 
     it('returns player debuffs for debuff intent', () => {
