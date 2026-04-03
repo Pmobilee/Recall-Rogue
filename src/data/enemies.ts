@@ -256,10 +256,10 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Page Flutter',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 12, // rebalanced — HP reduced 30→12, attacks raised (2026-04-03)
+    baseHP: 8, // rebalanced — HP reduced 30→12 (pass #4), further reduced 12→8 (pass #5, 2026-04-03)
     intentPool: [
-      { type: 'attack', value: 7, weight: 3, telegraph: 'Swooping strike' },
-      { type: 'attack', value: 7, weight: 2, telegraph: 'Frenzied bite' },
+      { type: 'attack', value: 6, weight: 3, telegraph: 'Swooping strike' },
+      { type: 'attack', value: 6, weight: 2, telegraph: 'Frenzied bite' },
       { type: 'buff', value: 2, weight: 1, telegraph: 'Screeching', statusEffect: { type: 'strength', value: 1, turns: 2 } },
       { type: 'defend', value: 7, weight: 1, telegraph: 'Wing cover' },
     ],
@@ -274,9 +274,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Thesis Construct',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 13, // rebalanced — HP reduced 28→13, attacks raised (2026-04-03)
+    baseHP: 9, // rebalanced — HP reduced 28→13 (pass #4), further reduced 13→9 (pass #5, 2026-04-03)
     intentPool: [
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Crystal slam' },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Crystal slam' },
       { type: 'defend', value: 8, weight: 2, telegraph: 'Hardening crystals' },
       { type: 'charge', value: 8, weight: 1, telegraph: 'Charging: Crystal Crush!', bypassDamageCap: true },
       { type: 'multi_attack', value: 3, weight: 1, telegraph: 'Crystal barrage', hitCount: 2 },
@@ -293,9 +293,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Mold Puff',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 10, // rebalanced — HP reduced 27→10, attack raised (2026-04-03)
+    baseHP: 7, // rebalanced — HP reduced 27→10 (pass #4), further reduced 10→7 (pass #5, 2026-04-03)
     intentPool: [
-      { type: 'attack', value: 6, weight: 2, telegraph: 'Spore burst' },
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Spore burst' },
       { type: 'debuff', value: 2, weight: 3, telegraph: 'Toxic cloud', statusEffect: { type: 'poison', value: 2, turns: 3 } },
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Weakening mist', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
     ],
@@ -313,7 +313,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Crib Sheet',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 5, // balance pass #3 — reverted from 8, was originally 4, now +1 (2026-04-03)
+    baseHP: 4, // balance pass #6 — reverted from 8, was originally 4, now +1 (2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 2, telegraph: 'Shadow strike' },
       { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Flurry of shadows', hitCount: 3 },
@@ -385,7 +385,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Final Exam',
     category: 'boss',
     region: 'shallow_depths',
-    baseHP: 18, // rebalanced — HP raised 11→25 (pass #1), 25→18 (pass #4, 2026-04-03)
+    baseHP: 14, // rebalanced — HP raised 11→25 (pass #1), 25→18 (pass #4), 18→14 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 2, telegraph: 'Drill charge' },
       { type: 'multi_attack', value: 4, weight: 1, telegraph: 'Grinding gears', hitCount: 4 },
@@ -408,7 +408,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Burning Deadline',
     category: 'boss',
     region: 'shallow_depths',
-    baseHP: 18, // rebalanced — HP raised 11→25 (pass #1), 25→18 (pass #4, 2026-04-03)
+    baseHP: 14, // rebalanced — HP raised 11→25 (pass #1), 25→18 (pass #4), 18→14 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 1, telegraph: 'Lava splash' },
       { type: 'attack', value: 4, weight: 1, telegraph: 'Eruption' },
@@ -431,7 +431,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Algorithm',
     category: 'boss',
     region: 'deep_caverns',
-    baseHP: 14, // rebalanced — HP raised 12→18 (pass #1), 18→14 (pass #4, 2026-04-03)
+    baseHP: 12, // rebalanced — HP raised 12→18 (pass #1), 18→14 (pass #4), 14→12 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 4, weight: 2, telegraph: 'Data beam' },
       { type: 'defend', value: 5, weight: 1, telegraph: 'Firewall' },
@@ -457,7 +457,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Curriculum',
     category: 'boss',
     region: 'deep_caverns',
-    baseHP: 16, // rebalanced — HP raised 14→22 (pass #1), 22→16 (pass #4, 2026-04-03)
+    baseHP: 14, // rebalanced — HP raised 14→22 (pass #1), 22→16 (pass #4), 16→14 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 4, weight: 4, telegraph: 'Prismatic slash' },
       { type: 'defend', value: 5, weight: 3, telegraph: 'Crystal barrier' },
@@ -486,7 +486,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Group Project',
     category: 'boss',
     region: 'the_abyss',
-    baseHP: 17, // rebalanced — HP raised 16→22 (pass #1), 22→17 (pass #4, 2026-04-03)
+    baseHP: 15, // rebalanced — HP raised 16→22 (pass #1), 22→17 (pass #4), 17→15 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 4, weight: 35, telegraph: 'Hydra strike' },
       { type: 'multi_attack', value: 3, weight: 30, telegraph: 'Twin fangs', hitCount: 3 },
@@ -509,7 +509,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Rabbit Hole',
     category: 'boss',
     region: 'the_abyss',
-    baseHP: 19, // rebalanced — HP raised 19→24 (pass #1), 24→19 (pass #4, 2026-04-03)
+    baseHP: 17, // rebalanced — HP raised 19→24 (pass #1), 24→19 (pass #4), 19→17 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 4, weight: 4, telegraph: 'Void bolt' },
       { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Void storm', hitCount: 3 },
@@ -526,7 +526,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Omnibus',
     category: 'boss',
     region: 'the_archive',
-    baseHP: 20, // rebalanced — HP raised 17→24 (pass #1), 24→20 (pass #4, 2026-04-03)
+    baseHP: 18, // rebalanced — HP raised 17→24 (pass #1), 24→20 (pass #4), 20→18 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 4, weight: 35, telegraph: 'Tome slam' },
       { type: 'attack', value: 5, weight: 25, telegraph: 'Crushing knowledge' },
@@ -551,7 +551,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Final Lesson',
     category: 'boss',
     region: 'the_archive',
-    baseHP: 20, // rebalanced — HP raised 17→24 (pass #1), 24→20 (pass #4, 2026-04-03)
+    baseHP: 18, // rebalanced — HP raised 17→24 (pass #1), 24→20 (pass #4), 20→18 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 5, weight: 3, telegraph: 'Cataloguing strike' },
       { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Archive barrage', hitCount: 4 },
@@ -590,7 +590,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Tenure Guardian',
     category: 'mini_boss',
     region: 'deep_caverns',
-    baseHP: 11, // rebalanced — HP raised 8→16 (pass #1), 16→11 (pass #4, 2026-04-03)
+    baseHP: 9, // rebalanced — HP raised 8→16 (pass #1), 16→11 (pass #4), 11→9 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 5, weight: 3, telegraph: 'Crystal strike' },
       { type: 'defend', value: 5, weight: 3, telegraph: 'Stone shell' },
@@ -613,7 +613,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Plagiarist',
     category: 'mini_boss',
     region: 'shallow_depths',
-    baseHP: 12, // rebalanced — HP raised 7→18 (pass #1), 18→12 (pass #4, 2026-04-03)
+    baseHP: 9, // rebalanced — HP raised 7→18 (pass #1), 18→12 (pass #4), 12→9 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 5, weight: 3, telegraph: 'Serpent lunge' },
       { type: 'attack', value: 4, weight: 2, telegraph: 'Tail whip' },
@@ -633,7 +633,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Proctor',
     category: 'mini_boss',
     region: 'deep_caverns',
-    baseHP: 13, // rebalanced — HP raised 9→18 (pass #1), 18→13 (pass #4, 2026-04-03)
+    baseHP: 11, // rebalanced — HP raised 9→18 (pass #1), 18→13 (pass #4), 13→11 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 5, weight: 2, telegraph: 'Heavy swing' },
       { type: 'defend', value: 5, weight: 3, telegraph: 'Fortify' },
@@ -657,7 +657,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Grade Dragon',
     category: 'mini_boss',
     region: 'the_abyss',
-    baseHP: 13, // rebalanced — HP raised 8→18 (pass #1), 18→13 (pass #4, 2026-04-03)
+    baseHP: 11, // rebalanced — HP raised 8→18 (pass #1), 18→13 (pass #4), 13→11 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 5, weight: 3, telegraph: 'Fire breath' },
       { type: 'attack', value: 4, weight: 2, telegraph: 'Inferno blast' },
@@ -672,7 +672,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Comparison Trap',
     category: 'mini_boss',
     region: 'the_abyss',
-    baseHP: 10, // rebalanced — HP raised 6→14 (pass #1), 14→10 (pass #4, 2026-04-03)
+    baseHP: 8, // rebalanced — HP raised 6→14 (pass #1), 14→10 (pass #4), 10→8 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 4, weight: 3, telegraph: 'Shadow lunge' },
       { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Phantom copies', hitCount: 3 },
@@ -689,7 +689,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Citation Needed',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 8, // balance pass #3 — reverted from 12, near-original +1 (2026-04-03)
+    baseHP: 7, // balance pass #6 — reverted from 12, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 3, telegraph: 'Bone slash' },
       { type: 'heal', value: 5, weight: 2, telegraph: 'Consume remains' },
@@ -734,9 +734,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Ink Slug',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 14, // rebalanced — HP reduced 32→14, attacks raised (2026-04-03)
+    baseHP: 10, // rebalanced — HP reduced 32→14 (pass #4), further reduced 14→10 (pass #5, 2026-04-03)
     intentPool: [
-      { type: 'attack', value: 7, weight: 2, telegraph: 'Mud slash' },
+      { type: 'attack', value: 6, weight: 2, telegraph: 'Mud slash' },
       { type: 'debuff', value: 2, weight: 3, telegraph: 'Bog grasp', statusEffect: { type: 'poison', value: 2, turns: 2 } },
       { type: 'defend', value: 6, weight: 1, telegraph: 'Sliming' },
     ],
@@ -751,11 +751,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Bookmark Vine',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 11, // rebalanced — HP reduced 28→11, attacks raised (2026-04-03)
+    baseHP: 8, // rebalanced — HP reduced 28→11 (pass #4), further reduced 11→8 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'multi_attack', value: 3, weight: 3, telegraph: 'Vine lash', hitCount: 3 },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Poisoned thorns', statusEffect: { type: 'poison', value: 2, turns: 2 } },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Root strike' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Root strike' },
     ],
     description: 'Roots that move on their own. Vines, poison, persistence.',
     rarity: 'uncommon',
@@ -769,10 +769,10 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Staple Bug',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 16, // rebalanced — HP reduced 35→16, attacks raised (2026-04-03)
+    baseHP: 11, // rebalanced — HP reduced 35→16 (pass #4), further reduced 16→11 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'defend', value: 8, weight: 3, telegraph: 'Harden shell' },
-      { type: 'attack', value: 8, weight: 2, telegraph: 'Mandible snap' },
+      { type: 'attack', value: 7, weight: 2, telegraph: 'Mandible snap' },
       { type: 'multi_attack', value: 4, weight: 1, telegraph: 'Chittering strike', hitCount: 2 },
     ],
     description: 'Heavy carapace. Prefers to block and wait.',
@@ -787,11 +787,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Margin Gremlin',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 12, // rebalanced — HP reduced 30→12, attacks raised (2026-04-03)
+    baseHP: 8, // rebalanced — HP reduced 30→12 (pass #4), further reduced 12→8 (pass #5, 2026-04-03)
     intentPool: [
-      { type: 'attack', value: 7, weight: 3, telegraph: 'Nimble jab' },
+      { type: 'attack', value: 6, weight: 3, telegraph: 'Nimble jab' },
       { type: 'buff', value: 1, weight: 2, telegraph: 'Rocky surge', statusEffect: { type: 'strength', value: 1, turns: 2 } },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Stone kick' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Stone kick' },
     ],
     description: 'Pale limestone imp. Quick, aggressive, annoying.',
     rarity: 'uncommon',
@@ -804,11 +804,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Index Weaver',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 11, // rebalanced — HP reduced 28→11, attacks raised (2026-04-03)
+    baseHP: 8, // rebalanced — HP reduced 28→11 (pass #4), further reduced 11→8 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'multi_attack', value: 4, weight: 3, telegraph: 'Fang barrage', hitCount: 3 },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Web poison', statusEffect: { type: 'poison', value: 2, turns: 3 } },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Puncture' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Puncture' },
     ],
     description: 'Venomous and fast. Multiple attacks per encounter.',
     rarity: 'standard',
@@ -822,11 +822,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Overdue Golem',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 15, // rebalanced — HP reduced 40→15, heal 9→5, attack raised (2026-04-03)
+    baseHP: 10, // rebalanced — HP reduced 40→15 (pass #4), further reduced 15→10 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'heal', value: 5, weight: 2, telegraph: 'Bog absorption' },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Peat decay', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Sludge swing' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Sludge swing' },
     ],
     description: 'Bog water and peat, barely held together. Heals from the muck.',
     rarity: 'standard',
@@ -839,11 +839,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Pop Quiz',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 11, // rebalanced — HP reduced 27→11, attack raised (2026-04-03)
+    baseHP: 8, // rebalanced — HP reduced 27→11 (pass #4), further reduced 11→8 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Spore shower', statusEffect: { type: 'poison', value: 2, turns: 3 } },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Fungal decay', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Cap strike' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Cap strike' },
     ],
     description: 'Correct Charge stuns it next turn. No Charge makes it stronger permanently.',
     rarity: 'uncommon',
@@ -865,11 +865,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Eraser Worm',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 10, // rebalanced — HP reduced 25→10, attacks raised (2026-04-03)
+    baseHP: 7, // rebalanced — HP reduced 25→10 (pass #4), further reduced 10→7 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'multi_attack', value: 3, weight: 3, telegraph: 'Bite frenzy', hitCount: 4 },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Larval grasp', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Mandible crush' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Mandible crush' },
     ],
     description: 'No eyes, hunts by vibration. Never stops biting.',
     rarity: 'rare',
@@ -885,7 +885,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Card Catalogue',
     category: 'mini_boss',
     region: 'shallow_depths',
-    baseHP: 14, // rebalanced — HP raised 8→20 (pass #1), 20→14 (pass #4, 2026-04-03)
+    baseHP: 10, // rebalanced — HP raised 8→20 (pass #1), 20→14 (pass #4), 14→10 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'heal', value: 8, weight: 2, telegraph: 'Root mending' },
       { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Root whip', hitCount: 3 },
@@ -901,7 +901,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Headmistress',
     category: 'mini_boss',
     region: 'shallow_depths',
-    baseHP: 14, // rebalanced — HP raised 8→20 (pass #1), 20→14 (pass #4, 2026-04-03)
+    baseHP: 10, // rebalanced — HP raised 8→20 (pass #1), 20→14 (pass #4), 14→10 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'defend', value: 7, weight: 3, telegraph: 'Fortify shell' },
       { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Metallic crush!' },
@@ -917,7 +917,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Tutor',
     category: 'mini_boss',
     region: 'shallow_depths',
-    baseHP: 11, // rebalanced — HP raised 6→16 (pass #1), 16→11 (pass #4, 2026-04-03)
+    baseHP: 8, // rebalanced — HP raised 6→16 (pass #1), 16→11 (pass #4), 11→8 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Weakening curse', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Brittle hex', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
@@ -933,7 +933,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Study Group',
     category: 'mini_boss',
     region: 'shallow_depths',
-    baseHP: 15, // rebalanced — HP raised 8→22 (pass #1), 22→15 (pass #4, 2026-04-03)
+    baseHP: 11, // rebalanced — HP raised 8→22 (pass #1), 22→15 (pass #4), 15→11 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Toxic bloom', statusEffect: { type: 'poison', value: 3, turns: 3 } },
       { type: 'buff', value: 2, weight: 1, telegraph: 'Spore ascension', statusEffect: { type: 'strength', value: 2, turns: 2 } },
@@ -951,7 +951,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Librarian',
     category: 'elite',
     region: 'shallow_depths',
-    baseHP: 16, // rebalanced — HP raised 12→22 (pass #1), 22→16 (pass #4, 2026-04-03)
+    baseHP: 12, // rebalanced — HP raised 12→22 (pass #1), 22→16 (pass #4), 16→12 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 4, weight: 2, telegraph: 'Club smash' },
       { type: 'defend', value: 5, weight: 1, telegraph: 'Hunkering down' },
@@ -975,7 +975,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Crambot',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 6, // balance pass #3 — reverted from 10, near-original +1 (2026-04-03)
+    baseHP: 5, // balance pass #6 — reverted from 10, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'defend', value: 2, weight: 2, telegraph: 'Stone shell' },
       { type: 'attack', value: 3, weight: 2, telegraph: 'Basalt bite' },
@@ -993,7 +993,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The All-Nighter',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 6, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
+    baseHP: 5, // balance pass #6 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 1, weight: 3, telegraph: 'Salt sting', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'attack', value: 3, weight: 2, telegraph: 'Crystalline strike' },
@@ -1010,7 +1010,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Spark Note',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 6, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
+    baseHP: 5, // balance pass #6 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 2, telegraph: 'Fire jab' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Burning touch', statusEffect: { type: 'poison', value: 2, turns: 2 } },
@@ -1027,7 +1027,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Watchdog',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 5, // balance pass #3 — reverted from 8, near-original +1 (2026-04-03)
+    baseHP: 4, // balance pass #6 — reverted from 8, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'multi_attack', value: 2, weight: 3, telegraph: 'Bite combo', hitCount: 3 },
       { type: 'attack', value: 3, weight: 1, telegraph: 'Pounce' },
@@ -1045,7 +1045,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Red Herring',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 8, // balance pass #3 — reverted from 12, near-original +1 (2026-04-03)
+    baseHP: 7, // balance pass #6 — reverted from 12, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Toxic cloud', statusEffect: { type: 'poison', value: 2, turns: 3 } },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Brittle aura', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
@@ -1062,7 +1062,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Anxiety Tick',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 8, // balance pass #3 — reverted from 12, near-original +1 (2026-04-03)
+    baseHP: 7, // balance pass #6 — reverted from 12, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 2, telegraph: 'Lava bite' },
       { type: 'buff', value: 1, weight: 2, telegraph: 'Molten pulse', statusEffect: { type: 'strength', value: 1, turns: 2 } },
@@ -1079,7 +1079,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Trick Question',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 6, // balance pass #3 — reverted from 10, near-original +1 (2026-04-03)
+    baseHP: 5, // balance pass #6 — reverted from 10, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Lure bite', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
       { type: 'attack', value: 3, weight: 2, telegraph: 'Fin slash' },
@@ -1108,7 +1108,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Dropout',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 8, // balance pass #3 — reverted from 12, near-original +1 (2026-04-03)
+    baseHP: 7, // balance pass #6 — reverted from 12, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'defend', value: 2, weight: 3, telegraph: 'Shell retreat' },
       { type: 'attack', value: 3, weight: 2, telegraph: 'Claw strike' },
@@ -1126,7 +1126,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Brain Fog',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 8, // balance pass #3 — reverted from 12, near-original +1 (2026-04-03)
+    baseHP: 7, // balance pass #6 — reverted from 12, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Toxic vapor', statusEffect: { type: 'poison', value: 2, turns: 3 } },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Weakening mist', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
@@ -1154,7 +1154,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Thesis Dragon',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 5, // balance pass #3 — reverted from 8, near-original +1 (2026-04-03)
+    baseHP: 4, // balance pass #6 — reverted from 8, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'multi_attack', value: 2, weight: 3, telegraph: 'Fang barrage', hitCount: 3 },
       { type: 'attack', value: 3, weight: 2, telegraph: 'Stone bite' },
@@ -1172,7 +1172,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Burnout',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 6, // balance pass #3 — reverted from 10, near-original +1 (2026-04-03)
+    baseHP: 5, // balance pass #6 — reverted from 10, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 2, telegraph: 'Ember touch' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Burning embers', statusEffect: { type: 'poison', value: 2, turns: 2 } },
@@ -1191,7 +1191,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Harsh Grader',
     category: 'mini_boss',
     region: 'deep_caverns',
-    baseHP: 11, // rebalanced — HP raised 8→16 (pass #1), 16→11 (pass #4, 2026-04-03)
+    baseHP: 9, // rebalanced — HP raised 8→16 (pass #1), 16→11 (pass #4), 11→9 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Sulfur crown', statusEffect: { type: 'poison', value: 3, turns: 3 } },
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Decay aura', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
@@ -1207,7 +1207,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Textbook',
     category: 'mini_boss',
     region: 'deep_caverns',
-    baseHP: 13, // rebalanced — HP raised 8→18 (pass #1), 18→13 (pass #4, 2026-04-03)
+    baseHP: 11, // rebalanced — HP raised 8→18 (pass #1), 18→13 (pass #4), 13→11 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'defend', value: 5, weight: 2, telegraph: 'Stone fortification' },
       { type: 'charge', value: 6, weight: 1, telegraph: 'Charging: Granite slam!' },
@@ -1238,7 +1238,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Imposter Syndrome',
     category: 'mini_boss',
     region: 'deep_caverns',
-    baseHP: 11, // rebalanced — HP raised 8→16 (pass #1), 16→11 (pass #4, 2026-04-03)
+    baseHP: 9, // rebalanced — HP raised 8→16 (pass #1), 16→11 (pass #4), 11→9 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Lurking assault', hitCount: 3 },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Vulnerable strike', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
@@ -1254,7 +1254,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Pressure Cooker',
     category: 'mini_boss',
     region: 'deep_caverns',
-    baseHP: 11, // rebalanced — HP raised 8→16 (pass #1), 16→11 (pass #4, 2026-04-03)
+    baseHP: 9, // rebalanced — HP raised 8→16 (pass #1), 16→11 (pass #4), 11→9 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 5, weight: 2, telegraph: 'Magma bite' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Scalding heat', statusEffect: { type: 'poison', value: 3, turns: 2 } },
@@ -1272,7 +1272,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Deadline Serpent',
     category: 'elite',
     region: 'deep_caverns',
-    baseHP: 14, // rebalanced — HP raised 7→18 (pass #1), 18→14 (pass #4, 2026-04-03)
+    baseHP: 12, // rebalanced — HP raised 7→18 (pass #1), 18→14 (pass #4), 14→12 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 5, weight: 2, telegraph: 'Lava fangs' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Burning venom', statusEffect: { type: 'poison', value: 3, turns: 3 } },
@@ -1294,7 +1294,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Standardized Test',
     category: 'elite',
     region: 'deep_caverns',
-    baseHP: 16, // rebalanced — HP raised 12→22 (pass #1), 22→16 (pass #4, 2026-04-03)
+    baseHP: 14, // rebalanced — HP raised 12→22 (pass #1), 22→16 (pass #4), 16→14 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'defend', value: 6, weight: 2, telegraph: 'Stone wall' },
       { type: 'charge', value: 6, weight: 1, telegraph: 'Charging: Titanic crush!' },
@@ -1312,7 +1312,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: "The Writer's Block",
     category: 'common',
     region: 'the_abyss',
-    baseHP: 5, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
+    baseHP: 4, // balance pass #6 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'multi_attack', value: 2, weight: 3, telegraph: 'Shard volley', hitCount: 4 },
       { type: 'attack', value: 3, weight: 2, telegraph: 'Obsidian slash' },
@@ -1330,7 +1330,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Information Overload',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 6, // balance pass #3 — reverted from 10, near-original +1 (2026-04-03)
+    baseHP: 5, // balance pass #6 — reverted from 10, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 2, telegraph: 'Lava blob' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Molten splash', statusEffect: { type: 'poison', value: 2, turns: 2 } },
@@ -1347,7 +1347,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Rote Memory',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 8, // balance pass #3 — reverted from 13, near-original +1 (2026-04-03)
+    baseHP: 7, // balance pass #6 — reverted from 13, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'defend', value: 3, weight: 2, telegraph: 'Crystal shell' },
       { type: 'attack', value: 3, weight: 2, telegraph: 'Quartz spike' },
@@ -1365,7 +1365,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Outdated Fact',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 5, // balance pass #3 — reverted from 8, near-original +1 (2026-04-03)
+    baseHP: 4, // balance pass #6 — reverted from 8, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'multi_attack', value: 2, weight: 3, telegraph: 'Claw barrage', hitCount: 3 },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Expose wound', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
@@ -1383,7 +1383,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Hidden Gem',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 8, // balance pass #3 — reverted from 12, near-original +1 (2026-04-03)
+    baseHP: 7, // balance pass #6 — reverted from 12, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'defend', value: 3, weight: 3, telegraph: 'Geode armor' },
       { type: 'attack', value: 3, weight: 2, telegraph: 'Crystal bite' },
@@ -1401,7 +1401,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Rushing Student',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 6, // balance pass #3 — reverted from 10, near-original +1 (2026-04-03)
+    baseHP: 5, // balance pass #6 — reverted from 10, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Molten trail', statusEffect: { type: 'poison', value: 2, turns: 3 } },
       { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Segment strike', hitCount: 3 },
@@ -1419,7 +1419,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Echo Chamber',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 5, // balance pass #3 — reverted from 8, near-original +1 (2026-04-03)
+    baseHP: 4, // balance pass #6 — reverted from 8, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 3, telegraph: 'Crystal dive' },
       { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Swoop attack', hitCount: 3 },
@@ -1436,7 +1436,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Blank Spot',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 7, // balance pass #3 — reverted from 11, near-original +1 (2026-04-03)
+    baseHP: 6, // balance pass #6 — reverted from 11, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 3, telegraph: 'Academic strike' },
       { type: 'defend', value: 3, weight: 2, telegraph: 'Study shield' },
@@ -1458,7 +1458,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Grade Curve',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 8, // balance pass #3 — reverted from 11, near-original +1 (2026-04-03)
+    baseHP: 7, // balance pass #6 — reverted from 11, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 3, telegraph: 'Knowledge drain' },
       { type: 'defend', value: 2, weight: 2, telegraph: 'Absorb shield' },
@@ -1479,7 +1479,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Burnout Phantom',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 6, // balance pass #3 — reverted from 10, near-original +1 (2026-04-03)
+    baseHP: 5, // balance pass #6 — reverted from 10, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Ash veil', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
       { type: 'attack', value: 3, weight: 2, telegraph: 'Ember strike' },
@@ -1496,7 +1496,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Prismatic Jelly',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 8, // balance pass #3 — reverted from 13, near-original +1 (2026-04-03)
+    baseHP: 7, // balance pass #6 — reverted from 13, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Prismatic sting', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Rainbow burn', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
@@ -1513,7 +1513,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Ember Skeleton',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 7, // balance pass #3 — reverted from 11, near-original +1 (2026-04-03)
+    baseHP: 6, // balance pass #6 — reverted from 11, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 2, telegraph: 'Bone strike' },
       { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Burning strike', hitCount: 3 },
@@ -1533,7 +1533,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Perfectionist',
     category: 'mini_boss',
     region: 'the_abyss',
-    baseHP: 14, // rebalanced — HP raised 9→20 (pass #1), 20→14 (pass #4, 2026-04-03)
+    baseHP: 12, // rebalanced — HP raised 9→20 (pass #1), 20→14 (pass #4), 14→12 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'defend', value: 5, weight: 2, telegraph: 'Glass shield' },
       { type: 'charge', value: 6, weight: 1, telegraph: 'Charging: Obsidian slash!' },
@@ -1556,7 +1556,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Hydra Problem',
     category: 'mini_boss',
     region: 'the_abyss',
-    baseHP: 13, // rebalanced — HP raised 8→18 (pass #1), 18→13 (pass #4, 2026-04-03)
+    baseHP: 11, // rebalanced — HP raised 8→18 (pass #1), 18→13 (pass #4), 13→11 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Triple strike', hitCount: 3 },
       { type: 'defend', value: 5, weight: 1, telegraph: 'Crystal wall' },
@@ -1572,7 +1572,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Ivory Tower',
     category: 'mini_boss',
     region: 'the_abyss',
-    baseHP: 11, // rebalanced — HP raised 8→16 (pass #1), 16→11 (pass #4, 2026-04-03)
+    baseHP: 9, // rebalanced — HP raised 8→16 (pass #1), 16→11 (pass #4), 11→9 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Wing barrage', hitCount: 3 },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Fossilize', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
@@ -1587,7 +1587,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Helicopter Parent',
     category: 'mini_boss',
     region: 'the_abyss',
-    baseHP: 14, // rebalanced — HP raised 9→20 (pass #1), 20→14 (pass #4, 2026-04-03)
+    baseHP: 12, // rebalanced — HP raised 9→20 (pass #1), 20→14 (pass #4), 14→12 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Spawn swarm', hitCount: 3 },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Magma spawn', statusEffect: { type: 'poison', value: 3, turns: 3 } },
@@ -1605,7 +1605,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Emeritus',
     category: 'elite',
     region: 'the_abyss',
-    baseHP: 16, // rebalanced — HP raised 12→22 (pass #1), 22→16 (pass #4, 2026-04-03)
+    baseHP: 14, // rebalanced — HP raised 12→22 (pass #1), 22→16 (pass #4), 16→14 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'defend', value: 6, weight: 2, telegraph: 'Royal shield' },
       { type: 'heal', value: 7, weight: 1, telegraph: 'Crystal mending' },
@@ -1627,7 +1627,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Student Debt',
     category: 'elite',
     region: 'the_abyss',
-    baseHP: 12, // rebalanced — HP raised 7→16 (pass #1), 16→12 (pass #4, 2026-04-03)
+    baseHP: 10, // rebalanced — HP raised 7→16 (pass #1), 16→12 (pass #4), 12→10 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 5, weight: 2, telegraph: 'Leviathan bite' },
       { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Tentacle strike', hitCount: 3 },
@@ -1649,7 +1649,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Publish-or-Perish',
     category: 'elite',
     region: 'the_abyss',
-    baseHP: 16, // rebalanced — HP raised 12→22 (pass #1), 22→16 (pass #4, 2026-04-03)
+    baseHP: 14, // rebalanced — HP raised 12→22 (pass #1), 22→16 (pass #4), 16→14 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Curse', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Brittle hex', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
@@ -1668,7 +1668,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Thesis Djinn',
     category: 'common',
     region: 'the_archive',
-    baseHP: 7, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
+    baseHP: 6, // balance pass #6 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 2, telegraph: 'Air burst' },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Pressure strike', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
@@ -1686,7 +1686,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Gut Feeling',
     category: 'common',
     region: 'the_archive',
-    baseHP: 7, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
+    baseHP: 6, // balance pass #6 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 2, telegraph: 'Iron strike' },
       { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Bite frenzy', hitCount: 3 },
@@ -1703,7 +1703,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Bright Idea',
     category: 'common',
     region: 'the_archive',
-    baseHP: 7, // balance pass #3 — reverted from 8, near-original +1 (2026-04-03)
+    baseHP: 6, // balance pass #6 — reverted from 8, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'debuff', value: 1, weight: 3, telegraph: 'Glowing sting', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'attack', value: 3, weight: 2, telegraph: 'Luminous strike' },
@@ -1720,7 +1720,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Sacred Text',
     category: 'common',
     region: 'the_archive',
-    baseHP: 8, // balance pass #3 — reverted from 11, near-original +1 (2026-04-03)
+    baseHP: 7, // balance pass #6 — reverted from 11, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'defend', value: 3, weight: 2, telegraph: 'Plate armor' },
       { type: 'attack', value: 3, weight: 2, telegraph: 'Carapace strike' },
@@ -1738,7 +1738,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: "The Devil's Advocate",
     category: 'common',
     region: 'the_archive',
-    baseHP: 7, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
+    baseHP: 6, // balance pass #6 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 2, telegraph: 'Molten jab' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Magma burn', statusEffect: { type: 'poison', value: 2, turns: 2 } },
@@ -1755,7 +1755,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Institution',
     category: 'common',
     region: 'the_archive',
-    baseHP: 9, // balance pass #3 — reverted from 12, near-original +1 (2026-04-03)
+    baseHP: 8, // balance pass #6 — reverted from 12, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'defend', value: 3, weight: 3, telegraph: 'Iron plating' },
       { type: 'attack', value: 3, weight: 2, telegraph: 'Core slam' },
@@ -1773,7 +1773,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Rosetta Slab',
     category: 'common',
     region: 'the_archive',
-    baseHP: 7, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
+    baseHP: 6, // balance pass #6 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'defend', value: 3, weight: 2, telegraph: 'Rune shield' },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Curse glyph', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
@@ -1790,7 +1790,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Moth of Enlightenment',
     category: 'common',
     region: 'the_archive',
-    baseHP: 6, // balance pass #3 — reverted from 8, near-original +1 (2026-04-03)
+    baseHP: 5, // balance pass #6 — reverted from 8, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 2, telegraph: 'Paper flurry' },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Papyrus curse', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
@@ -1807,7 +1807,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Hyperlink',
     category: 'common',
     region: 'the_archive',
-    baseHP: 6, // balance pass #3 — reverted from 8, near-original +1 (2026-04-03)
+    baseHP: 5, // balance pass #6 — reverted from 8, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Rune web', hitCount: 3 },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Cursed bite', statusEffect: { type: 'poison', value: 2, turns: 3 } },
@@ -1824,7 +1824,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Unknown Unknown',
     category: 'common',
     region: 'the_archive',
-    baseHP: 7, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
+    baseHP: 6, // balance pass #6 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 2, telegraph: 'Void strike' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Void weakness', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
@@ -1841,7 +1841,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Fake News',
     category: 'common',
     region: 'the_archive',
-    baseHP: 7, // balance pass #3 — reverted from 9, near-original +1 (2026-04-03)
+    baseHP: 6, // balance pass #6 — reverted from 9, near-original +1 (2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 2, telegraph: 'Page slash' },
       { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Paper storm', hitCount: 3 },
@@ -1861,7 +1861,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The First Question',
     category: 'mini_boss',
     region: 'the_archive',
-    baseHP: 11, // rebalanced — HP raised 9→14 (pass #1), 14→11 (pass #4, 2026-04-03)
+    baseHP: 10, // rebalanced — HP raised 9→14 (pass #1), 14→11 (pass #4), 11→10 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 5, weight: 2, telegraph: 'Ancient bite' },
       { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Coil strike', hitCount: 3 },
@@ -1882,7 +1882,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Dean',
     category: 'mini_boss',
     region: 'the_archive',
-    baseHP: 11, // rebalanced — HP raised 9→14 (pass #1), 14→11 (pass #4, 2026-04-03)
+    baseHP: 10, // rebalanced — HP raised 9→14 (pass #1), 14→11 (pass #4), 11→10 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 5, weight: 2, telegraph: 'Angelic strike' },
       { type: 'defend', value: 6, weight: 2, telegraph: 'Magnetic shield' },
@@ -1906,7 +1906,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Dissertation',
     category: 'mini_boss',
     region: 'the_archive',
-    baseHP: 13, // rebalanced — HP raised 11→16 (pass #1), 16→13 (pass #4, 2026-04-03)
+    baseHP: 12, // rebalanced — HP raised 11→16 (pass #1), 16→13 (pass #4), 13→12 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'defend', value: 7, weight: 2, telegraph: 'Pressure wall' },
       { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Pressure burst!' },
@@ -1921,7 +1921,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Eureka',
     category: 'mini_boss',
     region: 'the_archive',
-    baseHP: 11, // rebalanced — HP raised 9→13 (pass #1), 13→11 (pass #4, 2026-04-03)
+    baseHP: 10, // rebalanced — HP raised 9→13 (pass #1), 13→11 (pass #4), 11→10 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Luminous curse', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Brittle glow', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
@@ -1937,7 +1937,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Paradigm Shift',
     category: 'mini_boss',
     region: 'the_archive',
-    baseHP: 13, // rebalanced — HP raised 11→16 (pass #1), 16→13 (pass #4, 2026-04-03)
+    baseHP: 12, // rebalanced — HP raised 11→16 (pass #1), 16→13 (pass #4), 13→12 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 5, weight: 2, telegraph: 'Earthquake slam' },
       { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Tectonic shift!' },
@@ -1952,7 +1952,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Ancient Tongue',
     category: 'mini_boss',
     region: 'the_archive',
-    baseHP: 11, // rebalanced — HP raised 9→14 (pass #1), 14→11 (pass #4, 2026-04-03)
+    baseHP: 10, // rebalanced — HP raised 9→14 (pass #1), 14→11 (pass #4), 11→10 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'defend', value: 7, weight: 2, telegraph: 'Rune fortification' },
       { type: 'heal', value: 7, weight: 1, telegraph: 'Glyph mending' },
@@ -1976,7 +1976,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Lost Thesis',
     category: 'mini_boss',
     region: 'the_archive',
-    baseHP: 10, // rebalanced — HP raised 8→13 (pass #1), 13→10 (pass #4, 2026-04-03)
+    baseHP: 9, // rebalanced — HP raised 8→13 (pass #1), 13→10 (pass #4), 10→9 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Forgotten curse', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'attack', value: 5, weight: 2, telegraph: 'Spectral strike' },
@@ -1994,7 +1994,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Dunning-Kruger',
     category: 'elite',
     region: 'the_archive',
-    baseHP: 10, // rebalanced — HP raised 9→12 (pass #1), 12→10 (pass #4, 2026-04-03)
+    baseHP: 9, // rebalanced — HP raised 9→12 (pass #1), 12→10 (pass #4), 10→9 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 5, weight: 3, telegraph: 'Nullification strike' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Chain disruption', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
@@ -2011,7 +2011,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Singularity',
     category: 'elite',
     region: 'the_archive',
-    baseHP: 10, // rebalanced — HP raised 9→12 (pass #1), 12→10 (pass #4, 2026-04-03)
+    baseHP: 9, // rebalanced — HP raised 9→12 (pass #1), 12→10 (pass #4), 10→9 (pass #5, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 5, weight: 3, telegraph: 'Tome strike' },
       { type: 'buff', value: 2, weight: 2, telegraph: 'Study buff', statusEffect: { type: 'strength', value: 2, turns: 3 } },
