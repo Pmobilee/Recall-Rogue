@@ -4,7 +4,7 @@
 import { get } from 'svelte/store';
 import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-types';
 import { isFirstChargeFree, markFirstChargeUsed, getFirstChargeWrongMultiplier } from './discoverySystem';
-import { canMasteryUpgrade, canMasteryDowngrade, masteryUpgrade, masteryDowngrade, resetEncounterMasteryFlags, getMasteryBaseBonus } from './cardUpgradeService';
+import { canMasteryUpgrade, canMasteryDowngrade, masteryUpgrade, masteryDowngrade, resetEncounterMasteryFlags, getMasteryBaseBonus, getMasteryStats } from './cardUpgradeService';
 import { getSurgeChargeSurcharge, isSurgeTurn } from './surgeSystem';
 import { resetChain, decayChain, extendOrResetChain, getChainState, getCurrentChainLength, initChainSystem, rotateActiveChainColor, getActiveChainColor } from './chainSystem';
 import { resetAura, adjustAura, getAuraState } from './knowledgeAuraSystem';
@@ -2025,7 +2025,10 @@ export function playCardAction(
     const clBaseDmgPerLen = (effect.mechanicName !== undefined ? 1 : 1); // always 1 factor
     // base value from mechanic quick play + mastery bonus — recompute raw per-chain base
     const mechCL = getMechanicDefinition('chain_lightning');
-    const clBasePerLen = (mechCL?.quickPlayValue ?? 8) + getMasteryBaseBonus('chain_lightning', card.masteryLevel ?? 0);
+    const _clStats = getMasteryStats('chain_lightning', card.masteryLevel ?? 0);
+    const clBasePerLen = _clStats
+      ? _clStats.qpValue
+      : (mechCL?.quickPlayValue ?? 8) + getMasteryBaseBonus('chain_lightning', card.masteryLevel ?? 0);
     const clTotalDmg = Math.round(clBasePerLen * clChainLen * currentChainMultiplier * speedBonus * (1 + turnState.buffNextCard / 100));
     // Null Shard: if chain is disabled (chainLength floors at 1 and multiplier = 1.0)
     // The above calculation already handles it since clChainLen >= 1 and multiplier = 1.0

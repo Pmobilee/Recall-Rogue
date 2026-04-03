@@ -16,7 +16,7 @@ import {
   CURSED_CHARGE_CORRECT_MULTIPLIER,
   CURSED_CHARGE_WRONG_MULTIPLIER,
 } from '../data/balance';
-import { getMasteryBaseBonus, getMasterySecondaryBonus } from './cardUpgradeService';
+import { getMasteryBaseBonus, getMasterySecondaryBonus, getMasteryStats } from './cardUpgradeService';
 import { isVulnerable, getStrengthModifier } from '../data/statusEffects';
 import { getMechanicDefinition, MECHANIC_DEFINITIONS, type PlayMode } from '../data/mechanics';
 import { resolveAttackModifiers, resolveShieldModifiers, resolvePoisonDurationBonus } from './relicEffectResolver';
@@ -452,7 +452,12 @@ export function resolveCardEffect(
   const isChargeWrong = playMode === 'charge_wrong';
 
   // Apply mastery bonus (AR-113) before charge multiplier so CC also scales the mastery bonus.
-  const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
+  // getMasteryStats() checks MASTERY_STAT_TABLES first, falls back to perLevelDelta synthesis.
+  // masteryBonus = stats.qpValue - mechanic.quickPlayValue so existing math (qpValue + masteryBonus) is unchanged.
+  const _masteryStats = getMasteryStats(card.mechanicId ?? '', card.masteryLevel ?? 0);
+  const masteryBonus = _masteryStats
+    ? _masteryStats.qpValue - (getMechanicDefinition(card.mechanicId ?? '')?.quickPlayValue ?? 0)
+    : getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
 
   let mechanicBaseValue: number;
   if (mechanic) {
@@ -471,7 +476,10 @@ export function resolveCardEffect(
     mechanicBaseValue = baseEffectValue * tierMultiplier + masteryBonus;
   }
 
-  const masterySecondaryBonus = getMasterySecondaryBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
+  // Use stat table secondary value if available; fall back to old perLevelDelta helper.
+  const masterySecondaryBonus = (_masteryStats?.secondaryValue != null && mechanic?.secondaryValue != null)
+    ? _masteryStats.secondaryValue - mechanic.secondaryValue
+    : getMasterySecondaryBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
   // Apply mastery secondary bonus to a copy of the card so switch cases can read it uniformly
   if (masterySecondaryBonus > 0 && mechanic) {
     const currentSecondary = card.secondaryValue ?? mechanic.secondaryValue ?? 0;

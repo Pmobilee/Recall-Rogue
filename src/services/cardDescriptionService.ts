@@ -5,7 +5,7 @@
 
 import type { Card, CardType } from '../data/card-types';
 import { getMechanicDefinition } from '../data/mechanics';
-import { getMasteryBaseBonus, getMasterySecondaryBonus } from './cardUpgradeService';
+import { getMasteryBaseBonus, getMasterySecondaryBonus, getMasteryStats } from './cardUpgradeService';
 
 const GENERIC_TYPE_DESCRIPTIONS: Record<CardType, string> = {
   attack: 'Deal direct damage to enemies.',
@@ -248,9 +248,12 @@ function masteryNum(v: number | string): CardDescPart {
  * subtract it back out to recover the true base for display ("4 +3", not "7 +3").
  */
 function numWithMastery(total: number, mechanicId: string, masteryLevel: number): CardDescPart[] {
-  const bonus = getMasteryBaseBonus(mechanicId, masteryLevel);
+  // Derive bonus via stat table when available; fall back to old perLevelDelta helper.
+  const stats = getMasteryStats(mechanicId, masteryLevel);
+  const l0Stats = getMasteryStats(mechanicId, 0);
+  const bonus = (stats && l0Stats) ? Math.round(stats.qpValue - l0Stats.qpValue) : Math.round(getMasteryBaseBonus(mechanicId, masteryLevel));
   if (bonus <= 0 || masteryLevel <= 0) return [num(total)];
-  return [num(total - Math.round(bonus)), masteryNum('+' + Math.round(bonus))];
+  return [num(total - bonus), masteryNum('+' + bonus)];
 }
 /**
  * Returns [num(base)] or [num(base), masteryNum('+bonus')] using secondary mastery bonus.
@@ -258,9 +261,14 @@ function numWithMastery(total: number, mechanicId: string, masteryLevel: number)
  * the true base for display.
  */
 function numWithSecondaryMastery(total: number, mechanicId: string, masteryLevel: number): CardDescPart[] {
-  const bonus = getMasterySecondaryBonus(mechanicId, masteryLevel);
-  if (bonus <= 0 || masteryLevel <= 0) return [num(total)];
-  return [num(total - Math.round(bonus)), masteryNum('+' + Math.round(bonus))];
+  // Derive secondary bonus via stat table when available; fall back to old perLevelDelta helper.
+  const stats = getMasteryStats(mechanicId, masteryLevel);
+  const l0Stats = getMasteryStats(mechanicId, 0);
+  const secBonus = (stats?.secondaryValue != null && l0Stats?.secondaryValue != null)
+    ? Math.round(stats.secondaryValue - l0Stats.secondaryValue)
+    : Math.round(getMasterySecondaryBonus(mechanicId, masteryLevel));
+  if (secBonus <= 0 || masteryLevel <= 0) return [num(total)];
+  return [num(total - secBonus), masteryNum('+' + secBonus)];
 }
 function txt(v: string): CardDescPart {
   return { type: 'text', value: v };

@@ -10,7 +10,7 @@
 
 import type { Card } from '../data/card-types';
 import { getMechanicDefinition } from '../data/mechanics';
-import { getMasteryBaseBonus } from './cardUpgradeService';
+import { getMasteryBaseBonus, getMasteryStats } from './cardUpgradeService';
 import {
   CHARGE_CORRECT_MULTIPLIER,
   CURSED_QP_MULTIPLIER,
@@ -165,7 +165,12 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
   let nakedCcBase: number;
 
   if (mechanic) {
-    const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
+    // getMasteryStats() checks MASTERY_STAT_TABLES first, falls back to perLevelDelta synthesis.
+    // masteryBonus derived as stats.qpValue - mechanic.quickPlayValue to keep existing math identical.
+    const _previewStats = getMasteryStats(card.mechanicId ?? '', card.masteryLevel ?? 0);
+    const masteryBonus = _previewStats
+      ? _previewStats.qpValue - mechanic.quickPlayValue
+      : getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
     // Round nakedQpBase so fractional deltas (e.g. 0.9 × 3 = 2.7) produce clean integers for display
     nakedQpBase = Math.round(mechanic.quickPlayValue + masteryBonus);
     nakedCcBase = Math.round((mechanic.quickPlayValue + masteryBonus) * CHARGE_CORRECT_MULTIPLIER);

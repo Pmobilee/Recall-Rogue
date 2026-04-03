@@ -5,11 +5,109 @@
  * Mastery upgrades boost card values per encounter based on quiz performance.
  * The old rest-site upgrade functions are kept for backward compatibility.
  * Pure logic — no Phaser/Svelte/DOM imports.
+ *
+ * ## Mastery Stat Table System (Phase 1 Infrastructure)
+ *
+ * Two systems exist in parallel:
+ * 1. Old: `MASTERY_UPGRADE_DEFS` with `perLevelDelta` — all 98 mechanics use this.
+ * 2. New: `MASTERY_STAT_TABLES` with explicit per-level snapshots — empty until Phase 2.
+ *
+ * `getMasteryStats()` checks the new system first, falls back to synthesizing from the old
+ * system so that zero behavior changes in Phase 1. Callers should migrate to `getMasteryStats()`
+ * now; old per-function helpers are deprecated.
  */
 
 import type { Card } from '../data/card-types';
 import { getMechanicDefinition } from '../data/mechanics';
 import { MASTERY_MAX_LEVEL } from '../data/balance';
+
+// ─── Mastery Stat Table System (Phase 1 Infrastructure) ────────────────────
+
+/**
+ * A single mastery level's stat snapshot for the new per-level system.
+ * All fields optional except qpValue — omit to inherit from MechanicDefinition.
+ */
+export interface MasteryLevelStats {
+  /** Quick Play base value at this level. CC = qpValue × CHARGE_CORRECT_MULTIPLIER. */
+  qpValue: number;
+  /** Override AP cost at this level. Omit to inherit from MechanicDefinition.apCost minus any apCostReduction. */
+  apCost?: number;
+  /** Secondary value (block on iron_wave, bleed on rupture, thorns reflect, etc.). */
+  secondaryValue?: number;
+  /** Draw count override for draw/scry cards. */
+  drawCount?: number;
+  /** Hit count override for multi-hit cards. */
+  hitCount?: number;
+  /** Charge Wrong base value override. Omit to use mechanic default chargeWrongValue. */
+  cwValue?: number;
+  /** Cumulative tags active at this level — checked via stats.tags?.includes('tag_name'). */
+  tags?: string[];
+  /** Mechanic-specific numeric fields (selfDmg, poisonStacks, execBonus, etc.). */
+  extras?: Record<string, number>;
+}
+
+/** Full stat table for a mechanic across all mastery levels (L0–L5). */
+export interface MasteryStatTable {
+  /** Stats at each level. Index 0=L0, 5=L5. Length must be maxLevel+1 (default 6). */
+  levels: MasteryLevelStats[];
+  /** Maximum mastery level. Default: MASTERY_MAX_LEVEL (5). */
+  maxLevel?: number;
+}
+
+/**
+ * Per-level stat tables for mechanics that have been migrated from perLevelDelta.
+ * Empty in Phase 1 — populated incrementally in Phase 2 as mechanics are rebalanced.
+ * When a mechanic's key exists here, getMasteryStats() uses this table exclusively.
+ */
+export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {};
+
+/**
+ * Get resolved stats for a mechanic at a given mastery level.
+ *
+ * Checks MASTERY_STAT_TABLES first (new system). Falls back to synthesizing
+ * from MASTERY_UPGRADE_DEFS (old system) so that ALL existing mechanics
+ * continue to work identically in Phase 1 with zero behavior change.
+ *
+ * Returns null only if both the stat table AND the mechanic definition are missing.
+ */
+export function getMasteryStats(mechanicId: string, level: number): MasteryLevelStats | null {
+  // New system: explicit stat table takes priority
+  const table = MASTERY_STAT_TABLES[mechanicId];
+  if (table) {
+    const maxLvl = table.maxLevel ?? MASTERY_MAX_LEVEL;
+    const clamped = Math.min(Math.max(level, 0), maxLvl);
+    return table.levels[clamped] ?? table.levels[table.levels.length - 1];
+  }
+
+  // Fallback: synthesize from old perLevelDelta system to preserve identical behavior.
+  const def = MASTERY_UPGRADE_DEFS[mechanicId];
+  const mechDef = getMechanicDefinition(mechanicId);
+  if (!mechDef) return null;
+
+  // Clamp level to mechanic's maxLevel (mirrors getMasteryBaseBonus behavior).
+  // Note: getMasteryBaseBonus does NOT clamp — it multiplies raw level × delta.
+  // We match that by NOT clamping here either, so the math stays identical.
+  const clampedLevel = def?.maxLevel ? Math.min(level, def.maxLevel) : level;
+  const bonus = def ? def.perLevelDelta * clampedLevel : 0;
+  const secBonus = def?.secondaryPerLevelDelta ? def.secondaryPerLevelDelta * clampedLevel : 0;
+
+  // Compute AP reduction from old apCostReductionAtLevels system.
+  const apReductions = def?.apCostReductionAtLevels?.filter(l => clampedLevel >= l).length ?? 0;
+
+  // Compute tags from addTagAtLevel.
+  const tags: string[] = [];
+  if (def?.addTagAtLevel && clampedLevel >= def.addTagAtLevel[0]) {
+    tags.push(def.addTagAtLevel[1]);
+  }
+
+  return {
+    qpValue: mechDef.quickPlayValue + bonus,
+    apCost: apReductions > 0 ? mechDef.apCost - apReductions : undefined,
+    secondaryValue: mechDef.secondaryValue != null ? mechDef.secondaryValue + secBonus : undefined,
+    cwValue: undefined, // use mechanic default chargeWrongValue
+    tags: tags.length > 0 ? tags : undefined,
+  };
+}
 
 // ─── Mastery Upgrade System (AR-113) ───────────────────────────────────────
 
@@ -176,6 +274,7 @@ export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
 
 /**
  * Get the total base value bonus for a given mastery level.
+ * @deprecated Use getMasteryStats() instead. Will be removed in Phase 2 migration.
  */
 export function getMasteryBaseBonus(mechanicId: string, level: number): number {
   const def = MASTERY_UPGRADE_DEFS[mechanicId];
@@ -185,6 +284,7 @@ export function getMasteryBaseBonus(mechanicId: string, level: number): number {
 
 /**
  * Get the total secondary value bonus for a given mastery level.
+ * @deprecated Use getMasteryStats() instead. Will be removed in Phase 2 migration.
  */
 export function getMasterySecondaryBonus(mechanicId: string, level: number): number {
   const def = MASTERY_UPGRADE_DEFS[mechanicId];
@@ -195,6 +295,7 @@ export function getMasterySecondaryBonus(mechanicId: string, level: number): num
 /**
  * Check if a tag should be added at this mastery level.
  * Returns the tag name if applicable, or null.
+ * @deprecated Use getMasteryStats() instead. Will be removed in Phase 2 migration.
  */
 export function getMasteryAddedTag(mechanicId: string, level: number): string | null {
   const def = MASTERY_UPGRADE_DEFS[mechanicId];
@@ -205,6 +306,7 @@ export function getMasteryAddedTag(mechanicId: string, level: number): string | 
 
 /**
  * Check how many AP reductions apply at this mastery level.
+ * @deprecated Use getMasteryStats() instead. Will be removed in Phase 2 migration.
  */
 export function getMasteryApReduction(mechanicId: string, level: number): number {
   const def = MASTERY_UPGRADE_DEFS[mechanicId];

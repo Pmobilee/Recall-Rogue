@@ -1,7 +1,7 @@
 # Card System Mechanics
 
 > **Purpose:** Card entity, card types, tier system, damage formula, mastery system, and card creation pipeline.
-> **Last verified:** 2026-04-01
+> **Last verified:** 2026-04-03
 > **Source files:** `src/data/card-types.ts`, `src/data/mechanics.ts`, `src/services/cardFactory.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/damagePreviewService.ts`, `src/services/catchUpMasteryService.ts`, `src/data/balance.ts`
 
 > **See also:** [`card-mechanics.md`](card-mechanics.md) — Complete table of all 50+ mechanics (attack, shield, buff, debuff, utility, wild).
@@ -68,13 +68,14 @@ Tier 3 cards leave the active hand and become `PassiveEffect` entries. The `0×`
 The resolver (`cardEffectResolver.ts`) computes CC damage as:
 
 ```
-CC damage = (quickPlayValue + getMasteryBaseBonus(mechanicId, masteryLevel))
+CC damage = (quickPlayValue + masteryBonus)
             × CHARGE_CORRECT_MULTIPLIER (2.0)
             × chainMultiplier
             × relicModifiers
             + inscriptionFuryBonus
 ```
 
+`masteryBonus` is obtained via `getMasteryStats(mechanicId, masteryLevel).qpValue - mechanic.quickPlayValue`.
 `chargeCorrectValue` on `MechanicDefinition` is **dead data** — resolver computes CC as `(quickPlayValue + masteryBonus) × 2.0`. Do not read it.
 
 **Play mode multipliers (as of 2026-04-01 balance pass):**
@@ -149,12 +150,39 @@ Cards gain mastery during a run by answering Charge correctly; lose mastery on w
 - `MASTERY_BASE_DISTRACTORS = 2` (L0), `MASTERY_UPGRADED_DISTRACTORS = 3` (L1+)
 - Colors: L0=none, L1=green `#22c55e`, L2=blue `#3b82f6`, L3=purple `#a855f7`, L4=orange `#f97316`, L5=gold `#eab308`
 
-### Mastery Scaling
+### Mastery Scaling — Stat Table System (Phase 1 Infrastructure, 2026-04-03)
 
+The mastery system is being migrated from a linear `perLevelDelta` model to per-level explicit stat snapshots. Two systems run in parallel:
+
+**Old system (still active for all 98 mechanics):**
 ```typescript
-getMasteryBaseBonus(mechanicId, level) = MASTERY_UPGRADE_DEFS[mechanicId].perLevelDelta × level
+// MASTERY_UPGRADE_DEFS in cardUpgradeService.ts
+getMasteryBaseBonus(mechanicId, level) = perLevelDelta × level
 getMasterySecondaryBonus(mechanicId, level) = secondaryPerLevelDelta × level
 ```
+
+**New system (infrastructure only in Phase 1 — no mechanics migrated yet):**
+```typescript
+// MASTERY_STAT_TABLES in cardUpgradeService.ts (empty until Phase 2)
+getMasteryStats(mechanicId, level): MasteryLevelStats | null
+```
+
+`getMasteryStats()` is the unified lookup. It checks `MASTERY_STAT_TABLES` first; if the mechanic has no entry there, it synthesizes an identical `MasteryLevelStats` from `MASTERY_UPGRADE_DEFS` so all callers work without behavior change.
+
+All consumers (`cardEffectResolver.ts`, `damagePreviewService.ts`, `cardDescriptionService.ts`, `turnManager.ts`) now call `getMasteryStats()`. The old helpers (`getMasteryBaseBonus`, `getMasterySecondaryBonus`, `getMasteryAddedTag`, `getMasteryApReduction`) are marked `@deprecated` but remain for the bridge.
+
+**`MasteryLevelStats` interface:**
+
+| Field | Type | Notes |
+|-------|------|-------|
+| `qpValue` | number | Quick Play base value at this level |
+| `apCost` | number? | Override AP cost; omit to inherit from mechanic |
+| `secondaryValue` | number? | Secondary stat (block, bleed stacks, reflect, etc.) |
+| `drawCount` | number? | Draw count override for draw/scry cards |
+| `hitCount` | number? | Hit count override for multi-hit cards |
+| `cwValue` | number? | Charge Wrong override; omit for mechanic default |
+| `tags` | string[]? | Cumulative tags active at this level |
+| `extras` | Record<string, number>? | Mechanic-specific fields (selfDmg, execBonus, etc.) |
 
 **Power tier targets (design intent):**
 - **Modest** — 1.5–2× QP at L5 (mechanics where side effect IS the value: tags, draws, AP reductions)
