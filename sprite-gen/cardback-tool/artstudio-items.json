@@ -16575,6 +16575,38 @@
           "accepted": false
         }
       ]
+    },
+    {
+      "id": "arithmetic",
+      "name": "Arithmetic",
+      "concept": "Ancient stone counting chamber, abacus-like gem pillars, runic tally marks on walls, geometric tiles, brass gears",
+      "prompt": "16-bit pixel art RPG scene, ancient stone counting chamber deep in a dungeon, rows of carved stone pillars fitted with slots holding glowing gems of different colors representing quantities, walls covered in runic tally marks and illegible carved symbols etched by long-dead hands, geometric mosaic floor tiles in repeating mathematical patterns, large brass clockwork gears mounted on the stone walls slowly turning, iron sconces with burning candles casting warm light across the chamber, an overturned stone pedestal with scattered counting tokens in the foreground, JRPG dungeon tileset aesthetic, rich pixel detail, warm brass gold deep slate blue and amber glow palette, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1845284824,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "mental_math",
+      "name": "Mental Math",
+      "concept": "Mystical puzzle room, floating crystalline polyhedra orbiting energy nexus, obsidian geometric floor patterns, prismatic stained glass ceiling",
+      "prompt": "16-bit pixel art RPG scene, mystical puzzle chamber deep underground, multiple crystalline polyhedra floating and slowly rotating in midair around a central glowing energy nexus — cubes tetrahedra and octahedra each humming with inner light, geometric lattice patterns carved into the smooth obsidian floor radiating outward from the nexus, a domed ceiling of cracked stained glass casting prismatic rainbow light in shafts down through the chamber, arcane runic symbols etched on the walls in concentric rings, magical sparks drifting upward from the nexus, JRPG dungeon tileset aesthetic, rich pixel detail, prismatic violet crystal cyan and warm amber palette, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2865079348,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     }
   ],
   "enemy_power_icons": [
