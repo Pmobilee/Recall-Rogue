@@ -67,10 +67,10 @@ Two backfill scripts produced full coverage:
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-03 it contains **65 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-03 it contains **66 decks**:
 
 - **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
-- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**
+- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**
 
 ### Deck Architecture Files
 
@@ -284,6 +284,40 @@ film_titles 55/55 OK, director_names 39/28 OK, actor_names 35/35 OK, character_n
 
 ---
 
+
+## medical_terminology Deck
+
+`data/decks/medical_terminology.json` — assembled 2026-04-03 from 17 Sonnet worker batches (2 waves + 2 supplement batches for rate-limit recovery). Gap-fill pass 2026-04-03 added 65 facts covering obstetrics, anatomical positions, and lab abbreviations (NCBI 17-chapter curriculum comparison).
+
+| Field | Value |
+|---|---|
+| `id` | `medical_terminology` |
+| `domain` | `human_body_health` |
+| `facts` | 700 |
+| `minimumFacts` | 400 |
+| `targetFacts` | 700 |
+
+**SubDecks (5):**
+
+| SubDeck ID | Name | Facts |
+|---|---|---|
+| `prefixes` | Prefixes | 83 |
+| `suffixes` | Suffixes | 62 |
+| `body_roots` | Body Roots | 335 |
+| `conditions` | Conditions | 159 |
+| `procedures` | Procedures | 61 |
+
+**Coverage note (2026-04-03):** Gap-fill added obstetrics terms (25 facts), anatomical position/directional terms (15 facts), lab abbreviation meanings (15 facts), and 10 missing word parts identified via NCBI 17-chapter curriculum comparison. Deck is now aligned with NCBI Bookshelf Medical Terminology curriculum scope.
+
+**Answer Type Pools (8):** prefix_meanings (83), suffix_meanings (62), root_meanings (335), organ_names, combining_forms, body_systems, condition_names (159), procedure_names (61)
+
+**Synonym groups:** phleb/o–ven/o (vein), hem/o–hemat/o (blood), pulmon/o–pneumon/o (lung), nas/o–rhin/o (nose) — plus additional pairs across Body Roots sub-deck
+
+**Sources:** Wikipedia (CC-BY-SA-4.0), Wikidoc (CC-BY-SA-3.0), NCBI Bookshelf (public domain), UWF Medical Terminology (CC-BY-4.0), GlobalRPH (reference)
+
+**Provenance doc:** `docs/deck-provenance/medical_terminology.md`
+
+---
 
 ## Answer Type Pools — Synthetic Pool Members
 

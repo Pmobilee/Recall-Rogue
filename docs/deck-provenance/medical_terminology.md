@@ -1,10 +1,11 @@
 # Medical Terminology Deck — Provenance Documentation
 
 **Deck ID**: `medical_terminology`
-**Facts**: 635
+**Facts**: 700
 **Sub-decks**: 5
 **Sources**: Wikipedia (CC-BY-SA-4.0), Wikidoc (CC-BY-SA-3.0), NCBI Bookshelf (public domain), UWF Medical Terminology (CC-BY-4.0), GlobalRPH (reference)
 **Created**: 2026-04-03
+**Expanded**: 2026-04-03 — gap-fill pass (635→700, +65 facts) adding obstetrics, anatomical positions, lab abbreviations, and missing word parts to align with NCBI 17-chapter curriculum
 
 ---
 
@@ -12,11 +13,11 @@
 
 | Sub-deck | Facts | Scope |
 |---|---|---|
-| Prefixes | 80 | Common medical prefixes and their meanings |
-| Suffixes | 60 | Common medical suffixes and their meanings |
-| Body Roots | 320 | Combining forms derived from anatomical structures and organs |
-| Conditions | 120 | Disease names, pathological terms, and condition descriptors |
-| Procedures | 55 | Diagnostic and surgical procedure terminology |
+| Prefixes | 83 | Common medical prefixes and their meanings |
+| Suffixes | 62 | Common medical suffixes and their meanings |
+| Body Roots | 335 | Combining forms derived from anatomical structures and organs (incl. obstetric, positional) |
+| Conditions | 159 | Disease names, pathological terms, condition descriptors, obstetric conditions |
+| Procedures | 61 | Diagnostic and surgical procedure terminology |
 
 **Answer Type Pools (8):**
 
@@ -180,7 +181,34 @@ Output: `data/decks/medical_terminology.json`
 
 ---
 
-## 8. Reproduction Steps
+## 8. Gap Fill (2026-04-03)
+
+NCBI Bookshelf Medical Terminology curriculum comparison (17-chapter scope) identified 3 topic areas missing from the initial 635-fact build:
+
+| Topic Area | Facts Added | Source |
+|---|---|---|
+| Obstetrics & reproductive terminology | 25 | Wikipedia obstetrics article, NCBI Bookshelf Ch. 12 |
+| Anatomical positions & directional terms | 15 | Wikipedia anatomical terms of location |
+| Lab abbreviation meanings | 15 | Wikipedia medical abbreviations list |
+| Missing word parts (prefixes/suffixes/roots) | 10 | UWF Medical Terminology courseware cross-check |
+| **Total** | **65** | |
+
+**Post-gap-fill fact counts:**
+
+| Sub-deck | Before | After |
+|---|---|---|
+| Prefixes | 80 | 83 |
+| Suffixes | 60 | 62 |
+| Body Roots | 320 | 335 |
+| Conditions | 120 | 159 |
+| Procedures | 55 | 61 |
+| **Total** | **635** | **700** |
+
+All 65 new facts verified against Wikipedia before generation. Batch verifier (verify-all-decks.mjs) passed at 0 failures after merge. Deck is now aligned with NCBI Bookshelf 17-chapter Medical Terminology curriculum scope.
+
+---
+
+## 9. Reproduction Steps
 
 ```bash
 # 1. Architecture file:

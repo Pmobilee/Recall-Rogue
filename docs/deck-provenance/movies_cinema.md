@@ -1,10 +1,11 @@
 # Movies & Cinema Deck — Provenance Documentation
 
 **Deck ID**: `movies_cinema`
-**Facts**: 207
+**Facts**: 277
 **Sub-decks**: 3
 **Sources**: Wikipedia (CC BY-SA 4.0), Wikidata (CC0), AFI lists (public domain)
 **Created**: 2026-04-03
+**Expanded**: 2026-04-03 — supplement pass (207→277, +70 facts across 3 supplement batches to fill pool gaps)
 
 ---
 
@@ -12,22 +13,24 @@
 
 | Sub-deck | Facts | Scope |
 |---|---|---|
-| Iconic Films | 90 | Films, release years, directors, quotes, records |
-| Directors & Stars | 62 | Director careers, actor roles, award histories |
-| Cinema History & Craft | 55 | Film movements, techniques, industry firsts |
+| Iconic Films | 138 | Films, release years, directors, quotes, records, characters |
+| Directors & Stars | 67 | Director careers, actor roles, award histories |
+| Cinema History & Craft | 72 | Film movements, techniques, industry firsts, country contexts |
 
-**Answer Type Pools (8):**
+**Answer Type Pools (10, post-supplement):**
 
 | Pool ID | Format | Notes |
 |---|---|---|
-| `film_titles` | name | Canonical film names |
-| `director_names` | name | Directors; non-director people excluded |
-| `actor_names` | name | Actors, characters, and non-director industry figures |
-| `bracket_years` | bracket_number | Years using `{YEAR}` — runtime fills nearby plausible years |
-| `studio_names` | term | Production companies and studios |
-| `genre_terms` | term | Film genres and movements |
-| `award_names` | term | Oscar categories, festival names |
-| `bracket_numbers` | bracket_number | Counts (Oscars won, episode counts, etc.) |
+| `film_titles` | name | Canonical film names (55 members) |
+| `director_names` | name | Directors; non-director people excluded (39 members) |
+| `actor_names` | name | Actors, characters, and non-director industry figures (35 members) |
+| `bracket_years` | bracket_year | Years using `{YEAR}` — runtime fills nearby plausible years (31 members) |
+| `character_names` | name | Named film characters (22 members; added supp1) |
+| `film_quotes` | quote | Famous quoted lines with attributed films (10 members; added supp1) |
+| `country_names` | name | Countries of origin for international cinema (10 members + 10 synthetic; added supp2) |
+| `cinema_terms` | term | Film genres, movements, techniques (20 members; added supp3) |
+| `film_trivia` | mixed | Miscellaneous cinema facts (6 members) |
+| `bracket_counts` | bracket_number | Counts (Oscars won, etc.) (4 members) |
 
 ---
 
@@ -98,7 +101,19 @@ Sonnet content-agent merged all 7 batches into a single CuratedDeck envelope:
 - Fixed pool assignments: `bracket_numbers` → `bracket_years` for year facts; non-director people moved to `actor_names` pool
 - Built pool/tier/subdeck metadata programmatically
 
-Output: `data/decks/movies_cinema.json`
+Output: `data/decks/movies_cinema.json` (207 facts)
+
+### Phase 5 — Supplement Pass (2026-04-03)
+
+Pool size analysis identified under-populated pools needing ≥15 members for distractor variety. 3 supplement batches added 70 facts:
+
+| Batch | File | Facts | Scope |
+|---|---|---|---|
+| supp1 | `data/decks/_wip/movies_cinema_supp1.json` | 25 | 15 character_names + 10 film_quotes → iconic_films |
+| supp2 | `data/decks/_wip/movies_cinema_supp2.json` | 22 | 12 bracket_years → iconic_films, 10 country_names → cinema_craft |
+| supp3 | `data/decks/_wip/movies_cinema_supp3.json` | 23 | 7 cinema_terms → cinema_craft, 11 film_titles → iconic_films, 5 actor_names → directors_and_stars |
+
+Final deck: 277 facts across 10 answer type pools. All supplement facts verified against Wikipedia.
 
 ---
 
