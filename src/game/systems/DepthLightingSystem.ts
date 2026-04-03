@@ -52,6 +52,23 @@ export class DepthLightingSystem {
   /** Active timer for setChainBreathing oscillation. */
   private chainBreathingTimer: Phaser.Time.TimerEvent | null = null
 
+  // ── Mood modifier state (Spec 09) ─────────────────────────────────────────
+  /**
+   * Mood-driven flicker speed multiplier. Stacks multiplicatively with
+   * chainFlickerSpeedMult in pushPointLightsToShader.
+   * 1.0 = no change (calm), 1.8 = maximum desperate flicker.
+   */
+  private moodFlickerSpeedMult: number = 1.0
+  /**
+   * Mood-driven fog density multiplier. Applied to the fog alpha uniform.
+   * 0.9 = slightly thinned (calm), 1.3 = thickened (desperate).
+   */
+  private moodFogMultiplier: number = 1.0
+  /** Base fog density stored at applyAtmosphere() for mood scaling. */
+  private baseFogDensity: number = 0
+  /** Base fog RGB color stored at applyAtmosphere() for mood scaling. */
+  private baseFogRgb: [number, number, number] = [0, 0, 0]
+
   constructor(scene: Phaser.Scene) {
     this.scene = scene
     // Skip entirely on low-end devices — all public methods become no-ops.
@@ -216,9 +233,13 @@ export class DepthLightingSystem {
     // ── Fog ───────────────────────────────────────────────────────────────
     // Disabled for rooms with point lights (image passes through unmodified).
     const fogRgb = hexToRgb(config.fogTint)
+    const baseFogAlpha = hasPointLights ? 0 : config.fogAlpha * 5.0
+    // Store base for mood multiplier (Spec 09)
+    this.baseFogDensity = baseFogAlpha
+    this.baseFogRgb = fogRgb
     this.activePipeline.setFog(
       fogRgb,
-      hasPointLights ? 0 : config.fogAlpha * 5.0,
+      baseFogAlpha,
       0.2,
       0.9,
     )
@@ -422,6 +443,36 @@ export class DepthLightingSystem {
     })
   }
 
+  // ── Mood modifier methods (Spec 09) ────────────────────────────────────────
+
+  /**
+   * Set the mood-driven flicker speed multiplier for point lights.
+   * Stacks multiplicatively with the chain flicker speed multiplier in pushPointLightsToShader.
+   * No-op if the system is disabled (low-end devices).
+   *
+   * @param mult Flicker speed multiplier from MoodModifiers (1.0 = calm, 1.8 = desperate).
+   */
+  public setMoodFlickerSpeed(mult: number): void {
+    if (!this.enabled) return
+    this.moodFlickerSpeedMult = mult
+  }
+
+  /**
+   * Set the mood-driven fog density multiplier.
+   * Applied to the base fog density stored at applyAtmosphere() time.
+   * No-op if the system is disabled or no active pipeline.
+   *
+   * @param mult Fog density multiplier from MoodModifiers (0.9 = calm, 1.3 = desperate).
+   */
+  public setMoodFogMultiplier(mult: number): void {
+    if (!this.enabled || !this.activePipeline) return
+    this.moodFogMultiplier = mult
+    if (this.baseFogDensity > 0) {
+      const adjustedFog = Math.min(this.baseFogDensity * mult, 2.0)
+      this.activePipeline.setFog(this.baseFogRgb, adjustedFog, 0.2, 0.9)
+    }
+  }
+
   // ── Knowledge-reactive light pulse (Spec 05) ──────────────────────────────
 
   /**
@@ -556,7 +607,7 @@ export class DepthLightingSystem {
       if (pl.flickerStrength > 0 && time > 0) {
         const t = time
         const s = pl.seed
-        const effectiveFlickerSpeed = pl.flickerSpeed * this.chainFlickerSpeedMult
+        const effectiveFlickerSpeed = pl.flickerSpeed * this.chainFlickerSpeedMult * this.moodFlickerSpeedMult
         const noise =
           Math.sin(t * effectiveFlickerSpeed * 7.3 + s) * 0.5 +
           Math.sin(t * effectiveFlickerSpeed * 13.1 + s * 2.7) * 0.3 +
@@ -678,6 +729,11 @@ export class DepthLightingSystem {
     this.chainIntensityMult = 1.0
     this.chainColorBlend = 0.0
     this.chainFlickerSpeedMult = 1.0
+    // Reset mood state
+    this.moodFlickerSpeedMult = 1.0
+    this.moodFogMultiplier = 1.0
+    this.baseFogDensity = 0
+    this.baseFogRgb = [0, 0, 0]
   }
 }
 

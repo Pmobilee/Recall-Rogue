@@ -2,7 +2,7 @@
 
 > **Purpose:** Phaser game systems — visual effects, enemy rendering, atmosphere, and game tick management
 > **Last verified:** 2026-04-03
-> **Source files:** `src/game/systems/TickSystem.ts`, `src/game/systems/ImpactSystem.ts`, `src/game/systems/StatusEffectVisualSystem.ts`, `src/game/systems/CombatParticleSystem.ts`, `src/game/systems/EnemySpriteSystem.ts`, `src/game/systems/WeaponAnimationSystem.ts`, `src/game/systems/DepthLightingSystem.ts`, `src/game/systems/CombatAtmosphereSystem.ts`, `src/game/systems/ScreenShakeSystem.ts`, `src/game/systems/ChallengeTracker.ts`, `src/game/systems/ForegroundParallaxSystem.ts`
+> **Source files:** `src/game/systems/TickSystem.ts`, `src/game/systems/ImpactSystem.ts`, `src/game/systems/StatusEffectVisualSystem.ts`, `src/game/systems/CombatParticleSystem.ts`, `src/game/systems/EnemySpriteSystem.ts`, `src/game/systems/WeaponAnimationSystem.ts`, `src/game/systems/DepthLightingSystem.ts`, `src/game/systems/CombatAtmosphereSystem.ts`, `src/game/systems/ScreenShakeSystem.ts`, `src/game/systems/ChallengeTracker.ts`, `src/game/systems/ForegroundParallaxSystem.ts`, `src/game/systems/DungeonMoodSystem.ts`
 
 > See also: [scenes.md](scenes.md) for CardGameManager, BootScene, CombatScene, RewardRoomScene, and scene transitions
 
@@ -241,6 +241,105 @@ Renders sparse semi-transparent foreground overlay sprites at Phaser **depth 13*
 - `resize(w, h)` called in `onScaleResize()`
 - `destroy()` called in `onShutdown()`
 
+
+
+---
+
+## DungeonMoodSystem (Spec 09)
+
+**File:** `src/game/systems/DungeonMoodSystem.ts`
+**Spec:** `docs/immersion/09-dungeon-mood.md`
+
+A continuous mood state (0.0 calm → 1.0 desperate) driven by real-time game signals that modulates all visual atmosphere parameters. The value smooth-interpolates toward its target over ~2.5 seconds via exponential lerp so transitions are never jarring.
+
+The mood system is the **baseline layer** — chain escalation (Spec 03) and knowledge-reactive (Spec 05) layer their transient spikes on top via `applyTransientModifier()`.
+
+### Interfaces
+
+```typescript
+interface MoodInputs {
+  playerHpRatio: number      // 0.0 dead → 1.0 full HP
+  chainLength: number        // 0+, chains lower mood
+  consecutiveCorrect: number // streaks lower mood
+  enemyThreatLevel: number   // 0–1 from HP ratio + intent damage
+  floorDepth: number         // 1–15+, deeper slightly raises mood
+}
+
+interface MoodModifiers {
+  vignetteMultiplier: number       // 0.8 calm → 1.4 desperate
+  colorTempShift: number           // -1.0 warm → +1.0 cold
+  particleRateMultiplier: number   // 0.8 calm → 1.5 desperate
+  particleChaosMultiplier: number  // 1.0 → 1.5 (flagship only)
+  lightFlickerMultiplier: number   // 1.0 → 1.8
+  fogDensityMultiplier: number     // 0.9 → 1.3
+  desaturationAmount: number       // 0.0 → 0.15
+}
+```
+
+### Mood computation weights
+
+| Signal | Weight | Direction |
+|---|---|---|
+| Low HP (`1 - hpRatio`) | ×0.40 | ↑ mood |
+| Chain length (`/ 8`) | ×0.20 | ↓ mood |
+| Correct streak (`/ 5`) | ×0.15 | ↓ mood |
+| Enemy threat level | ×0.15 | ↑ mood |
+| Floor depth (`/ 14`) | ×0.10 | ↑ mood |
+
+Base offset 0.5: full HP + no chain/threat → neutral. Must have chain + streak to reach calm (<0.4); must have low HP + high threat to reach desperate (>0.8).
+
+| Method | Description |
+|---|---|
+| `start()` | Begin encounter; reset mood to 0.5 |
+| `stop()` | End encounter; reset all state |
+| `update(deltaMs, inputs)` | Per-frame lerp + modifier computation. Call from CombatScene.update() |
+| `getModifiers()` | Return cached MoodModifiers (new object each frame) |
+| `applyTransientModifier(mod, durationMs)` | Push a time-limited modifier spike (for specs 01/03/05) |
+| `getMood()` | Current mood value (0.0–1.0) |
+| `isActive()` | Whether system is running |
+
+### Device-tier gating
+
+| Modifier | Low-end | Mid | Flagship |
+|---|---|---|---|
+| vignetteMultiplier | On | On | On |
+| colorTempShift | On | On | On |
+| desaturationAmount | On | On | On |
+| particleRateMultiplier | Off | On | On |
+| fogDensityMultiplier | Off | On | On |
+| lightFlickerMultiplier | Off | On | On |
+| particleChaosMultiplier | Off | Off | On |
+
+### Reduce-motion gating
+Motion modifiers suppressed: `particleRateMultiplier`, `particleChaosMultiplier`, `lightFlickerMultiplier`. Non-motion kept: `vignetteMultiplier`, `colorTempShift`, `fogDensityMultiplier`, `desaturationAmount`.
+
+### CombatScene wiring
+- Instantiated in `create()`; `moodVignetteOverlay` (depth 2, black rect) also created
+- `start()` called in `setEnemy()` (resets mood per encounter)
+- `feedMoodInputs()` called from `update()` — reads `activeTurnState` store
+- `calculateEnemyThreat(ts)` normalizes `(1 - enemyHpRatio) × 0.5 + (intentDamage/20) × 0.5`
+- `applyMoodModifiers()` called per-frame: drives vignette overlay, atmosphere particle rate, lighting flicker, fog, and combined saturation
+- Saturation: `applyMoodSaturation()` combines `knowledgeSaturationOffset` (streak) + `desaturationAmount` (mood) additively
+- `stop()` called in `onShutdown()`
+
+### New subsystem methods added for mood routing
+- `CombatAtmosphereSystem.setMoodParticleRate(mult)` — scales raw base frequencies; chain modifiers apply on top
+- `DepthLightingSystem.setMoodFlickerSpeed(mult)` — stacks with `chainFlickerSpeedMult` in `pushPointLightsToShader`
+- `DepthLightingSystem.setMoodFogMultiplier(mult)` — scales stored `baseFogDensity` and re-applies to shader
+
+### Transient modifier integration (for specs 01, 03, 05)
+```typescript
+// Spec 01 — turn transition vignette spike (300ms)
+dungeonMood.applyTransientModifier({ vignetteMultiplier: 1.3 }, 300)
+
+// Spec 03 — chain warm color pulse on each link
+dungeonMood.applyTransientModifier({ colorTempShift: -0.5 }, 500)
+
+// Spec 05 — correct answer particle burst
+dungeonMood.applyTransientModifier({ particleRateMultiplier: 1.3 }, 600)
+```
+Multiplier transients (particleRateMultiplier, vignetteMultiplier, etc.) stack multiplicatively.
+Additive transients (colorTempShift, desaturationAmount) stack additively.
 
 ---
 

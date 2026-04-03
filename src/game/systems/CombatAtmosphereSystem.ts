@@ -54,6 +54,24 @@ export class CombatAtmosphereSystem {
   /** Base frequency stored at start() for front emitter so chain mods can restore it. */
   private baseFrontFrequency: number = 0
 
+  // ── Mood modifier state (Spec 09) ─────────────────────────────────────────
+  /**
+   * Raw original back emitter frequency at start(). Never mutated after init.
+   * Mood modifier scales from this raw value so chain modifiers always apply
+   * relative to the correct mood-adjusted base.
+   */
+  private rawBaseBackFrequency: number = 0
+  /**
+   * Raw original front emitter frequency at start(). Never mutated after init.
+   */
+  private rawBaseFrontFrequency: number = 0
+  /**
+   * Current mood particle rate multiplier (1.0 = no change).
+   * Lower frequency = more particles, so >1 = fewer, <1 = more.
+   * Applied to raw base frequencies to compute baseBack/FrontFrequency.
+   */
+  private moodParticleMultiplier: number = 1.0
+
   // ── Knowledge-reactive streak state (Spec 05) ────────────────────────────
   /**
    * Saturation modifier applied on top of the base atmosphere saturation.
@@ -132,6 +150,44 @@ export class CombatAtmosphereSystem {
     if (this.frontEmitter && this.baseFrontFrequency > 0) {
       this.frontEmitter.setFrequency(this.baseFrontFrequency)
     }
+  }
+
+  /**
+   * Set mood-driven particle rate modifier.
+   *
+   * Adjusts the effective base emitter frequencies by the given multiplier.
+   * The chain modifier system then stacks on top of this mood-adjusted base.
+   *
+   * Since Phaser frequency is ms-between-emissions, a higher multiplier means
+   * LESS frequent emission (calmer), a lower one means MORE frequent (desperate).
+   * The MoodModifiers.particleRateMultiplier is already in this convention:
+   * 0.8 at calm = faster emission, 1.5 at desperate = slower per-interval,
+   * but MORE particles per second overall (lower interval → more).
+   *
+   * No-op on low-end devices or when reduceMotion is active.
+   *
+   * @param particleRateMultiplier From MoodModifiers (0.8 calm → 1.5 desperate).
+   *   1.0 = no change. Applied as an INVERSE to frequency: higher multiplier
+   *   means we want MORE particles, so frequency interval is DIVIDED by it.
+   */
+  public setMoodParticleRate(particleRateMultiplier: number): void {
+    if (!this.isActive || this.reduceMotion) return
+    if (getDeviceTier() === 'low-end') return
+    if (this.rawBaseBackFrequency === 0 && this.rawBaseFrontFrequency === 0) return
+
+    this.moodParticleMultiplier = particleRateMultiplier
+
+    // mood multiplier > 1.0 means "more particles" → lower frequency interval → divide
+    const moodBack  = Math.max(1, Math.round(this.rawBaseBackFrequency / particleRateMultiplier))
+    const moodFront = Math.max(1, Math.round(this.rawBaseFrontFrequency / particleRateMultiplier))
+
+    // Update the bases that chain modifiers scale from
+    this.baseBackFrequency  = moodBack
+    this.baseFrontFrequency = moodFront
+
+    // Apply directly to emitters (chain will re-apply on top at next chain event)
+    if (this.backEmitter)  this.backEmitter.setFrequency(moodBack)
+    if (this.frontEmitter) this.frontEmitter.setFrequency(moodFront)
   }
 
   /**
@@ -374,6 +430,7 @@ export class CombatAtmosphereSystem {
 
       // Store base frequencies for chain modifier restoration
       this.baseBackFrequency = pConfig.frequency
+      this.rawBaseBackFrequency = pConfig.frequency
 
       // Front emitter — smaller faster particles in front of characters (depth 12)
       this.frontEmitter = this.scene.add.particles(0, 0, textureKey, {
@@ -394,6 +451,7 @@ export class CombatAtmosphereSystem {
       }).setDepth(12)
 
       this.baseFrontFrequency = Math.round(pConfig.frequency * 1.5)
+      this.rawBaseFrontFrequency = Math.round(pConfig.frequency * 1.5)
 
       // Embers rise from the bottom third of the screen.
       // Cast to `any` to work around a Phaser typings mismatch: Rectangle.getRandomPoint
@@ -421,6 +479,9 @@ export class CombatAtmosphereSystem {
     this.isActive = false
     this.baseBackFrequency = 0
     this.baseFrontFrequency = 0
+    this.rawBaseBackFrequency = 0
+    this.rawBaseFrontFrequency = 0
+    this.moodParticleMultiplier = 1.0
 
     if (this.fogTween) { this.fogTween.destroy(); this.fogTween = null }
     if (this.fogGfx) { this.fogGfx.destroy(); this.fogGfx = null }

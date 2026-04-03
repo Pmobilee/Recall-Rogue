@@ -348,7 +348,7 @@ When `consecutiveWrong >= 3`:
 - `CombatAtmosphereSystem.setStreakCold(true, cb)` activates
 - Saturation modifier shifts −5% per level beyond 2, clamped at −10%
 
-The saturation offset is applied on top of the base `atmosphereConfig.cameraColorMatrix.saturation` via `_colorMatrixFx.saturate(baseSat + offset)` in `CombatScene.applyStreakSaturation()`.
+The saturation offset is applied on top of the base `atmosphereConfig.cameraColorMatrix.saturation`. Since Spec 09 (DungeonMoodSystem) also modulates saturation (desaturation at high mood), the two signals are combined: `finalSat = baseSat + streakOffset - moodDesaturation`. `CombatScene.applyMoodSaturation()` applies the combined value each frame. `applyStreakSaturation()` includes the current mood desaturation so event-driven updates are also correct.
 
 Warm and cold streaks are mutually exclusive — activating one cancels the other.
 
@@ -370,3 +370,57 @@ Warm and cold streaks are mutually exclusive — activating one cancels the othe
 - `src/game/systems/CombatAtmosphereSystem.ts` — `pulseWarm`, `pulseCold`, `setStreakWarm`, `setStreakCold`, `resetStreak`, `getStreakSaturationModifier`
 - `src/game/systems/DepthLightingSystem.ts` — `pulseLight`, `flickerOnePointLight`
 - `src/game/scenes/CombatScene.ts` — `onCorrectAnswer`, `onWrongAnswer`, `resetKnowledgeStreak`, `updateKnowledgeSaturation`, `applyStreakSaturation`
+
+---
+
+## Dynamic Dungeon Mood (Spec 09, 2026-04-03)
+
+A continuous mood state (0.0 calm → 1.0 desperate) driven by real-time combat signals that modulates all visual atmosphere parameters. The mood value smooth-interpolates toward its target over ~2.5 seconds, never jumping instantly. This is the orchestration baseline layer that all other immersion specs stack their transient spikes on top of.
+
+### Mood Signals and Weights
+
+| Signal | Max weight | Direction |
+|---|---|---|
+| Low HP `(1 - hpRatio) × 0.40` | 0.40 | High HP loss → desperate |
+| Chain length `(/ 8) × 0.20` | 0.20 | Active chain → calm |
+| Correct streak `(/ 5) × 0.15` | 0.15 | Winning → calm |
+| Enemy threat `× 0.15` | 0.15 | Dangerous enemy → desperate |
+| Floor depth `(/ 14) × 0.10` | 0.10 | Deeper = slightly more desperate |
+
+Base offset 0.5: full HP player with no chain or threat settles at 0.5. Must have chain + streak to go below 0.4 (calm); must be low HP + high threat to go above 0.8 (desperate).
+
+### Modifier Output Ranges
+
+| Modifier | Calm (0.0) | Neutral (0.5) | Desperate (1.0) |
+|---|---|---|---|
+| vignetteMultiplier | 0.8 | 1.1 | 1.4 |
+| colorTempShift | −1.0 (warm) | 0.0 | +1.0 (cold) |
+| particleRateMultiplier | 0.8 (fewer) | 1.15 | 1.5 (more) |
+| particleChaosMultiplier | 1.0 | 1.25 | 1.5 |
+| lightFlickerMultiplier | 1.0 | 1.4 | 1.8 |
+| fogDensityMultiplier | 0.9 | 1.1 | 1.3 |
+| desaturationAmount | 0.0 | 0.075 | 0.15 |
+
+### Integration
+
+- **CombatScene.update()**: reads `activeTurnState` via `feedMoodInputs()`, calls `moodSystem.update(delta, inputs)`, then `applyMoodModifiers()` per frame
+- **Vignette**: `moodVignetteOverlay` (depth 2 black rect) alpha driven by vignetteMultiplier; kept separate from turn/chain overlays
+- **Particles**: `CombatAtmosphereSystem.setMoodParticleRate(mult)` adjusts raw base frequencies; chain modifiers apply on top
+- **Flicker**: `DepthLightingSystem.setMoodFlickerSpeed(mult)` stacks with `chainFlickerSpeedMult`
+- **Fog**: `DepthLightingSystem.setMoodFogMultiplier(mult)` scales stored `baseFogDensity`
+- **Saturation**: `applyMoodSaturation()` combines `knowledgeSaturationOffset` (streak) and `desaturationAmount` (mood) additively
+
+### Transient Modifier API
+
+Specs 01, 03, 05 can push time-limited spikes on top of the mood baseline:
+```typescript
+// Example: turn transition darkens vignette for 300ms
+combatScene.dungeonMood.applyTransientModifier({ vignetteMultiplier: 1.3 }, 300)
+```
+Multiplier fields stack multiplicatively; `colorTempShift` and `desaturationAmount` stack additively.
+
+### Source Files
+- `src/game/systems/DungeonMoodSystem.ts` — core mood system
+- `src/game/scenes/CombatScene.ts` — `feedMoodInputs`, `calculateEnemyThreat`, `applyMoodModifiers`, `applyMoodSaturation`, `moodVignetteOverlay`
+- `src/game/systems/CombatAtmosphereSystem.ts` — `setMoodParticleRate`
+- `src/game/systems/DepthLightingSystem.ts` — `setMoodFlickerSpeed`, `setMoodFogMultiplier`

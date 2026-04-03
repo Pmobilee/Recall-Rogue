@@ -17,6 +17,9 @@ import { get } from 'svelte/store'
 import { layoutMode, type LayoutMode } from '../../stores/layoutStore'
 import { getChainAtmosphereModifiers, getChainColor } from '../../services/chainVisuals'
 import { juiceManager } from '../../services/juiceManager'
+import { DungeonMoodSystem } from '../systems/DungeonMoodSystem'
+import { activeTurnState } from '../../services/encounterBridge'
+import { activeRunState } from '../../services/runStateStore'
 
 /** Shared font stack for all Phaser text objects in CombatScene. */
 const GAME_FONT = '"Lora", "Georgia", serif'
@@ -254,6 +257,18 @@ export class CombatScene extends Phaser.Scene {
   private knowledgeStreakWrong: number = 0
   /** Current saturation offset applied on top of atmosphere base (−0.10 to +0.10). */
   private knowledgeSaturationOffset: number = 0
+
+  // ── Dungeon Mood System (Spec 09) ────────────────────────
+  /** Continuous mood state 0.0 (calm) → 1.0 (desperate) driving all atmosphere modifiers. */
+  private moodSystem!: DungeonMoodSystem
+  /**
+   * Persistent mood vignette overlay (depth 2, black rect).
+   * Alpha driven by mood vignetteMultiplier on top of the base vignette.
+   * Separate from turn transition overlay and chain vignette.
+   */
+  private moodVignetteOverlay: Phaser.GameObjects.Rectangle | null = null
+  /** Current player HP ratio cached for mood input feeding. */
+  private moodPlayerHpRatio: number = 1.0
 
   // ── Stored layout values ─────────────────────────────────
   private displayH = 0
@@ -899,6 +914,15 @@ export class CombatScene extends Phaser.Scene {
     // ── Depth-based background lighting ───────────
     this.depthLightingSystem = new DepthLightingSystem(this)
 
+    // ── Dungeon Mood System (Spec 09) ──────────────
+    this.moodSystem = new DungeonMoodSystem(this)
+    // Persistent mood vignette overlay (depth 2, behind chain/turn overlays)
+    const _moodW = this.scale.width
+    const _moodH = this.scale.height
+    this.moodVignetteOverlay = this.add
+      .rectangle(_moodW / 2, _moodH / 2, _moodW, _moodH, 0x000000, 0)
+      .setDepth(2)
+
     // ── Status effect visual system ─────────────────
     this.statusEffectVisuals = new StatusEffectVisualSystem(this)
 
@@ -942,6 +966,120 @@ export class CombatScene extends Phaser.Scene {
     this.screenShake?.update(delta)
     this.depthLightingSystem?.update(time)
     this.foregroundParallax?.update(delta)
+
+    // Mood system: update lerp and apply modifiers each frame (Spec 09)
+    if (this.moodSystem?.isActive()) {
+      this.feedMoodInputs()
+      this.moodSystem.update(delta, this._lastMoodInputs ?? {
+        playerHpRatio: this.moodPlayerHpRatio,
+        chainLength: this.currentChainCount,
+        consecutiveCorrect: this.knowledgeStreakCorrect,
+        enemyThreatLevel: 0,
+        floorDepth: this.currentFloor,
+      })
+      this.applyMoodModifiers()
+    }
+  }
+
+  // ── Mood inputs helper ────────────────────────────────────────────────────
+
+  /** Last computed mood inputs, cached so update() can use them without redundant computation. */
+  private _lastMoodInputs: import('../systems/DungeonMoodSystem').MoodInputs | null = null
+
+  /**
+   * Gather current game state into MoodInputs and cache for the next update() frame.
+   * Called from update() so mood is always derived from live state.
+   */
+  private feedMoodInputs(): void {
+    const ts = get(activeTurnState)
+    if (!ts) return
+
+    const hpRatio = ts.playerState.maxHP > 0
+      ? ts.playerState.hp / ts.playerState.maxHP
+      : this.moodPlayerHpRatio
+
+    this._lastMoodInputs = {
+      playerHpRatio: hpRatio,
+      chainLength: ts.chainLength ?? 0,
+      consecutiveCorrect: this.knowledgeStreakCorrect,
+      enemyThreatLevel: this.calculateEnemyThreat(ts),
+      floorDepth: this.currentFloor,
+    }
+  }
+
+  /**
+   * Compute a normalized 0–1 enemy threat level from current TurnState.
+   * Combines enemy HP ratio (high HP + alive = threatening) with intent damage.
+   *
+   * @param ts Current TurnState from activeTurnState store.
+   */
+  private calculateEnemyThreat(ts: import('../../services/turnManager').TurnState): number {
+    const enemyHpRatio = ts.enemy.maxHP > 0 ? ts.enemy.currentHP / ts.enemy.maxHP : 0
+    const intentDamage = ts.enemy.nextIntent?.value ?? 0
+    // Normalize intent damage against 20 (20 damage = max threat contribution)
+    const intentDamageRatio = Math.min(intentDamage / 20, 1.0)
+    // High HP enemy about to deal 20+ damage = 0.5 threat; low HP enemy with no intent = 0.25
+    return (1.0 - enemyHpRatio) * 0.5 + intentDamageRatio * 0.5
+  }
+
+  /**
+   * Apply current mood modifiers to all atmosphere subsystems.
+   * Called per-frame from update(). Gated on turboMode (headless sim safety).
+   *
+   * Modifier application strategy (avoids conflicts with chain/knowledge systems):
+   * - Vignette: drives moodVignetteOverlay alpha directly (separate object from chain overlay)
+   * - Fog + flicker: routed through DepthLightingSystem helper methods
+   * - Particle rate: routed through CombatAtmosphereSystem.setMoodParticleRate()
+   * - Desaturation: additive with knowledgeSaturationOffset in applyMoodSaturation()
+   * - Color temp: applied to camera color matrix (separate uniform from saturation)
+   */
+  private applyMoodModifiers(): void {
+    if (isTurboMode()) return
+    const mods = this.moodSystem.getModifiers()
+
+    // ── Vignette ─────────────────────────────────────────────────────────────
+    // moodVignetteOverlay alpha: 0 at neutral (0.5 mood), scales with vignetteMultiplier.
+    // Base intensity 0.05 so even calm states have a faint vignette contribution.
+    if (this.moodVignetteOverlay) {
+      const BASE_MOOD_VIGNETTE = 0.05
+      const moodAlpha = Math.max(0, (mods.vignetteMultiplier - 0.8) / 0.6 * BASE_MOOD_VIGNETTE * 6)
+      this.moodVignetteOverlay.setAlpha(Phaser.Math.Clamp(moodAlpha, 0, 0.3))
+    }
+
+    // ── Desaturation (additive with knowledge streak offset) ─────────────────
+    this.applyMoodSaturation(mods.desaturationAmount)
+
+    if (this.reduceMotion) {
+      // Under reduce-motion: only vignette and desaturation; skip motion-based
+      return
+    }
+
+    // ── Particle rate ─────────────────────────────────────────────────────────
+    this.atmosphereSystem?.setMoodParticleRate(mods.particleRateMultiplier)
+
+    // ── Light flicker speed ───────────────────────────────────────────────────
+    this.depthLightingSystem?.setMoodFlickerSpeed(mods.lightFlickerMultiplier)
+
+    // ── Fog density ───────────────────────────────────────────────────────────
+    this.depthLightingSystem?.setMoodFogMultiplier(mods.fogDensityMultiplier)
+  }
+
+  /**
+   * Apply the combined saturation offset: streak offset (knowledge-reactive) +
+   * mood desaturation (DungeonMoodSystem). Both layers are additive.
+   *
+   * Unlike applyStreakSaturation (which only applies the streak delta), this
+   * method always combines both signals so neither is lost.
+   *
+   * @param moodDesaturation Amount from MoodModifiers.desaturationAmount (0–0.15).
+   */
+  private applyMoodSaturation(moodDesaturation: number): void {
+    if (!this._colorMatrixFx) return
+    const baseSat = this.atmosphereConfig?.cameraColorMatrix?.saturation ?? 1.0
+    // streakOffset is positive (warm=more sat) or negative (cold=less sat)
+    // moodDesaturation reduces saturation: subtract it from base
+    const finalSat = baseSat + this.knowledgeSaturationOffset - moodDesaturation
+    this._colorMatrixFx.saturate(Math.max(0, finalSat))
   }
 
   // ═════════════════════════════════════════════════════════
@@ -977,6 +1115,9 @@ export class CombatScene extends Phaser.Scene {
     if (!this.sceneReady) return
     // Reset knowledge streak for new encounter (Spec 05)
     this.resetKnowledgeStreak()
+    // Reset mood for new encounter (Spec 09)
+    this.moodSystem.start()
+    this.moodPlayerHpRatio = 1.0
     this.currentEnemyHP = hp
     this.currentEnemyMaxHP = maxHP
     if (hp <= 0 || maxHP <= 0) {
@@ -1057,6 +1198,8 @@ export class CombatScene extends Phaser.Scene {
     if (!this.sceneReady) return
     this.currentPlayerHP = Phaser.Math.Clamp(hp, 0, maxHP)
     this.currentPlayerMaxHP = maxHP
+    // Cache HP ratio for mood system fallback (when activeTurnState is not yet updated)
+    this.moodPlayerHpRatio = maxHP > 0 ? this.currentPlayerHP / maxHP : 1.0
     this.refreshPlayerHpBar(animate && !this.reduceMotion)
   }
 
@@ -2205,9 +2348,15 @@ export class CombatScene extends Phaser.Scene {
    */
   private applyStreakSaturation(offset: number): void {
     if (!this._colorMatrixFx) return
+    // Store the current streak offset so applyMoodSaturation can combine it with mood desaturation
+    this.knowledgeSaturationOffset = offset
     const baseSat = this.atmosphereConfig?.cameraColorMatrix?.saturation ?? 1.0
+    // Include current mood desaturation (if mood system is active) so the two signals stay in sync
+    const moodDesat = this.moodSystem?.isActive()
+      ? (this.moodSystem.getModifiers().desaturationAmount)
+      : 0
     // Phaser ColorMatrix.saturate() parameter: 0 = grayscale, 1 = normal, >1 = oversaturated
-    this._colorMatrixFx.saturate(baseSat + offset)
+    this._colorMatrixFx.saturate(Math.max(0, baseSat + offset - moodDesat))
   }
 
   // ═════════════════════════════════════════════════════════
@@ -2615,6 +2764,14 @@ export class CombatScene extends Phaser.Scene {
       this._turnOverlay.destroy()
       this._turnOverlay = null
     }
+    // Mood system cleanup (Spec 09)
+    this.moodSystem?.stop()
+    if (this.moodVignetteOverlay) {
+      this.moodVignetteOverlay.destroy()
+      this.moodVignetteOverlay = null
+    }
+    this._lastMoodInputs = null
+    this.moodPlayerHpRatio = 1.0
     this.enemySpriteSystem?.destroy()
     this.atmosphereSystem?.stop()
     this.foregroundParallax?.destroy()
