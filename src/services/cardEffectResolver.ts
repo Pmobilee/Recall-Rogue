@@ -465,7 +465,7 @@ export function resolveCardEffect(
       // Mastery added inside multiplier so CC scales both base and mastery equally.
       mechanicBaseValue = Math.round((mechanic.quickPlayValue + masteryBonus) * CHARGE_CORRECT_MULTIPLIER);
     } else if (isChargeWrong) {
-      mechanicBaseValue = mechanic.chargeWrongValue + masteryBonus;
+      mechanicBaseValue = Math.max(0, mechanic.chargeWrongValue + masteryBonus);
     } else {
       // quick / quick_play
       mechanicBaseValue = mechanic.quickPlayValue + masteryBonus;
