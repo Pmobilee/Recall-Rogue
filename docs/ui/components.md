@@ -92,6 +92,62 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 | `StudyModeSelector.svelte` | Toggle between multiple-choice / typing / flashcard modes |
 | `FactReveal.svelte` | Animates the reveal of a new fact after answering correctly |
 | `FactArtwork.svelte` | Displays the artwork image associated with a knowledge fact card |
+### QuizOverlay Landscape Two-Zone Layout
+
+**Refactored 2026-04-03.** The landscape quiz overlay uses a space-filling two-zone flex column anchored dynamically between the fog meter and card hand.
+
+**Stage anchoring via ResizeObserver:**
+- A `ResizeObserver` on `.card-app` fires on every resize and sets `--quiz-stage-top` / `--quiz-stage-bottom` CSS custom properties on the stage element.
+- `--quiz-stage-top` = bottom of `.fog-wing-wrapper` (falls back to `.topbar` bottom).
+- `--quiz-stage-bottom` = `window.innerHeight - .card-hand-landscape.top`.
+- `.quiz-landscape-stage` uses `top: var(--quiz-stage-top, 0)` / `bottom: var(--quiz-stage-bottom, 0)` to fill exactly the space between HUD and card hand.
+
+**Panel layout (`container-type: inline-size; container-name: quiz-panel`):**
+- `.quiz-landscape-stage` uses `align-items: stretch` so the panel fills stage height (not centers to content size).
+- `.quiz-landscape-panel` is a flex column with `height: calc(100% - calc(16px * var(--layout-scale, 1)))` and `margin: calc(8px * var(--layout-scale, 1)) 0` — fills the stage minus 8px breathing room top/bottom.
+- `max-height: 95%` removed (was only a cap; replaced with explicit height fill).
+- `max-width` redundant property removed; `width: min(50vw, calc(640px * var(--layout-scale, 1)))` is the single size constraint.
+- Close button and cogwheel are `position: absolute` outside both zones.
+- `gap` reduced to `6px` (was `8px`) and `padding` to `8px 12px` (was `10px 14px`).
+
+**Zone A — `.quiz-zone-question`** (`flex: 1 1 auto; overflow-y: auto; min-height: 0; align-items: flex-start`):
+- `align-items` changed from `center` to `flex-start` so question content aligns left for readability.
+- Contains: category label, mode headers (gate/artifact/layer/random), fact artwork, question image, question text, attempts counter.
+- Scrollable when content overflows. `.has-overflow::after` adds a sticky gradient fade at the bottom.
+- `.quiz-category-label`: flush left, 11px, uppercase, `rgba(255,255,255,0.45)` — shows `fact.categoryL2` or `fact.category[0]`. **Emoji characters stripped** via `/[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu` regex before display.
+- **Image expand toggle:** Question images are wrapped in `button.quiz-image-toggle`. Clicking toggles `imageExpanded` state. Expanded uses `max-height: var(--image-max-expanded)` computed by the ResizeObserver as `max(100, zoneH - questionH - 40)px`. Resets to `false` on every fact/mode change.
+- **Container queries** override question font sizes inside `.quiz-landscape-panel`:
+  - `.quiz-text-short` (len < 60): `clamp(18px, 4cqi, 24px)`
+  - `.quiz-text-medium` (len < 120): `clamp(15px, 3.2cqi, 20px)`
+  - `.quiz-text-long` (len >= 120): `clamp(12px, 2.5cqi, 16px)`
+- `questionLengthClass` thresholds updated: short < 60 (was < 30), medium < 120 (was < 80).
+- `zoneAOverflows` boolean drives `has-overflow` class for the scroll indicator.
+
+**Zone B — `.quiz-zone-answers`** (`flex: 0 0 auto; max-height: 55%; overflow-y: auto`):
+- Contains: answer buttons, dev-skip, result text, GAIA reaction, memory tip, continue button, report button.
+- A 1px `::before` pseudo-element separator divides zones visually.
+- **`answerSizeClass`** CSS class derived from `choices.length`:
+  - `answer-spacious` (2 or fewer): `padding: 12px 16px`
+  - `''` (3–4 choices): default `padding: 8px 14px`
+  - `answer-compact` (5 or more): `padding: 6px 12px`, smaller font
+- Button `font-size`: `clamp(12px, 1.5vw, 16px)` (compact: `clamp(11px, 1.3vw, 14px)`).
+- `min-height: unset` overrides the base `52px` min-height for landscape buttons.
+- `align-self: start` prevents grid items from stretching to fill implicit row height.
+- `border-radius: calc(12px * var(--layout-scale, 1))` overrides base `999px` pill — compact rounded rect for landscape.
+- Focus ring: `outline: 2px solid #60a5fa` + box-shadow spread.
+
+**New JS state (landscape-specific):**
+
+| State | Type | Description |
+|-------|------|-------------|
+| `imageExpanded` | `$state(false)` | Whether question image is expanded inline |
+| `zoneAOverflows` | `$state(false)` | Whether Zone A has scrollable overflow |
+| `zoneAEl` | `$state(null)` | DOM ref for Zone A (bind:this) |
+| `stageEl` | `$state(null)` | DOM ref for the stage container (bind:this) |
+| `answerSizeClass` | `$derived` | CSS class string based on `choices.length` |
+
+**Portrait mode unchanged** — lines 575+ in the template are not modified.
+
 
 ---
 
@@ -295,13 +351,14 @@ Node blur and opacity applied via CSS `filter: blur(...)` and `opacity: ...` on 
 | Component | Purpose |
 |-----------|---------|
 | `DeckSelectionHub.svelte` | Run-start hub: choose trivia mode vs. curated study deck |
+| `StudyTempleScreen.svelte` | Full-screen deck library (THE LIBRARY). Filter state uses single `activeFilter: "all" | "in-progress" | "not-started" | "mastered"` (changed from multi-select `activeFilters` array). Uses `DeckFilterSegmented` component (replaced `DeckFilterChips`). Defines spacing tokens `--gap-sm`, `--gap-md`, `--gap-lg` on `.study-temple-screen` using `calc(Npx * var(--layout-scale, 1))`. Header no longer has `border-bottom`. `.deck-summary` uses `--gap-sm` padding and 12px font. `.deck-grid` uses `--gap-md` for gap and padding. |
 | `DeckBuilder.svelte` | Full deck-builder: browse, filter, and manage curated deck cards |
 | `CardBrowser.svelte` | Card collection browser with filtering and sorting in the Library |
 | `CardExpanded.svelte` | Full-screen expanded card view with all details and fact text |
 | `CardPickerOverlay.svelte` | Pick a specific card from the deck (e.g., transmute target) |
 | `DeckTileV2.svelte` | Tile component for a curated deck in the selection grid. 3D tilt on hover, shine overlay, deal animation. Single-image CSS parallax when `/assets/sprites/deckfronts/{id}.webp` is found (single image shifts against pointer, 0.08% multiplier, scale 1.08). When `hasImage` is true, adds `.has-image` class: title uses `position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%) translateZ(40px)` (bottom-center of art area, floating in 3D space), and badges float at `translateZ(30px)`. **Procedural deck support:** when `deck.procedural` is true, shows a single skill count bar ("X skills") instead of Seen/Review/Mastered progress bars, with a "Practice to track progress" hint. Description auto-falls back to "X skills" instead of "X facts" for procedural decks. |
-| `DeckDetailModal.svelte` | Modal showing deck contents, stats, and subcategory breakdown. **Procedural deck support:** when `deck.procedural` is true, the progress line reads "X skills" instead of "X facts mastered", and the start button reads ">> START PRACTICE" instead of ">> START STUDY RUN". |
-| `DeckFilterChips.svelte` | Filter chips for filtering decks by domain/language/tag |
+| `DeckDetailModal.svelte` | Two-column modal (900px wide) for deck details. **Left column** (scrollable): deck name, description, overall progress bar, Study Focus sub-deck radio list, exam tag filter chips. **Right column** (fixed, vertically centered): total facts / mastered stat block, Start Study Run button, Add to Playlist button. Banner icon and gradient removed. Close button is yellow (`#eab308`), no background circle. All sizing uses `calc(Npx * var(--layout-scale, 1))`. **Procedural deck support:** progress shows "X skills", start button reads ">> START PRACTICE". |
+| `DeckFilterChips.svelte` | **REMOVED** — replaced by `DeckFilterSegmented.svelte` |
 | `DeckFilterSegmented.svelte` | Connected segmented control for filtering decks by progress state (`all` / `in-progress` / `not-started` / `mastered`). Props: `activeFilter: FilterOption`, `onFilterChange: (filter: FilterOption) => void`. Active segment styled with indigo tint (`rgba(99,102,241,0.2)` background, `#c7d2fe` text). All sizing uses `calc(Npx * var(--layout-scale, 1))` / `calc(Npx * var(--text-scale, 1))`. |
 | `DeckSearchBar.svelte` | Search bar for the deck browser. Props: `placeholder?`, `value`, `onsearchchange`. Height `32px`, border-radius `6px` (unified header-control size). Border `1px solid rgba(255,255,255,0.12)`; indigo focus ring. Debounces input at 150ms. All sizing uses `calc(Npx * var(--layout-scale, 1))`. |
 | `DeckSortDropdown.svelte` | Sort order dropdown for deck listing views. Props: `value: SortOption`, `onsortchange`. Options: `alpha`, `progress-high`, `progress-low`, `facts`, `newest`. Height `32px`, border-radius `6px`, border `1px solid rgba(255,255,255,0.08)` (subdued vs search bar). Custom arrow via `::after` pseudo-element. All sizing uses `calc(Npx * var(--layout-scale, 1))`. |
