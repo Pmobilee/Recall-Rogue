@@ -6546,10 +6546,11 @@
     },
     {
       "id": "ap_bio_transduction_intracellular_domain",
-      "correctAnswer": "The intracellular domain changes shape, initiating transduction",
+      "correctAnswer": "intracellular domain changes shape, initiating transduction",
       "acceptableAlternatives": [
         "The intracellular domain undergoes a conformational change",
-        "The receptor's intracellular region changes conformation"
+        "The receptor's intracellular region changes conformation",
+        "The intracellular domain changes shape, initiating transduction"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "bio_concept_terms",
@@ -6718,9 +6719,10 @@
     },
     {
       "id": "ap_bio_g2_phase_activities",
-      "correctAnswer": "Protein synthesis, ATP production, and centrosome replication",
+      "correctAnswer": "protein synthesis, ATP production, centrosome replication",
       "acceptableAlternatives": [
-        "Protein synthesis, centrosome duplication, and ATP production"
+        "Protein synthesis, centrosome duplication, and ATP production",
+        "Protein synthesis, ATP production, and centrosome replication"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "bio_concept_terms",
@@ -7347,10 +7349,11 @@
     },
     {
       "id": "ap_bio_spindle_checkpoint_purpose",
-      "correctAnswer": "All chromosomes are properly attached to spindle fibers before anaphase",
+      "correctAnswer": "all chromosomes are properly attached to spindle fibers",
       "acceptableAlternatives": [
         "All kinetochores are attached to spindle microtubules",
-        "Proper spindle-kinetochore attachment is verified"
+        "Proper spindle-kinetochore attachment is verified",
+        "All chromosomes are properly attached to spindle fibers before anaphase"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "bio_concept_terms",
@@ -9657,9 +9660,10 @@
     },
     {
       "id": "ap_bio_leading_vs_lagging_strand",
-      "correctAnswer": "Leading strand (continuous) and lagging strand (discontinuous)",
+      "correctAnswer": "leading strand (continuous); lagging strand (discontinuous)",
       "acceptableAlternatives": [
-        "Leading strand is continuous, lagging strand is discontinuous"
+        "Leading strand is continuous, lagging strand is discontinuous",
+        "Leading strand (continuous) and lagging strand (discontinuous)"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "bio_concept_terms",
@@ -9699,9 +9703,10 @@
     },
     {
       "id": "ap_bio_dna_rna_structural_difference",
-      "correctAnswer": "RNA contains ribose and uracil; DNA contains deoxyribose and thymine",
+      "correctAnswer": "RNA has ribose and uracil; DNA has deoxyribose and thymine",
       "acceptableAlternatives": [
-        "RNA has ribose sugar and uracil; DNA has deoxyribose and thymine"
+        "RNA has ribose sugar and uracil; DNA has deoxyribose and thymine",
+        "RNA contains ribose and uracil; DNA contains deoxyribose and thymine"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "bio_concept_terms",
@@ -11137,9 +11142,10 @@
     },
     {
       "id": "ap_bio_mutation_source_random",
-      "correctAnswer": "Mutations are random and can be beneficial, neutral, or detrimental depending on environment",
+      "correctAnswer": "mutations are random; effect depends on environment",
       "acceptableAlternatives": [
-        "Mutations are random; their effect depends on environmental context"
+        "Mutations are random; their effect depends on environmental context",
+        "Mutations are random and can be beneficial, neutral, or detrimental depending on environment"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "bio_concept_terms",
@@ -13319,10 +13325,11 @@
     },
     {
       "id": "ap_bio_adaptive_allele_environment",
-      "correctAnswer": "Alleles adaptive in one environment may be deleterious in another",
+      "correctAnswer": "alleles beneficial in one environment may harm in another",
       "acceptableAlternatives": [
         "environment-dependent fitness",
-        "context-dependent allele advantage"
+        "context-dependent allele advantage",
+        "Alleles adaptive in one environment may be deleterious in another"
       ],
       "chainThemeId": 6,
       "answerTypePoolId": "bio_concept_terms",
@@ -13835,10 +13842,11 @@
     },
     {
       "id": "ap_bio_carbon_cycle_four_processes",
-      "correctAnswer": "Photosynthesis, cellular respiration, decomposition, and combustion",
+      "correctAnswer": "photosynthesis, respiration, decomposition, combustion",
       "acceptableAlternatives": [
         "Photosynthesis, respiration, decomposition, combustion",
-        "Four processes of the carbon cycle"
+        "Four processes of the carbon cycle",
+        "Photosynthesis, cellular respiration, decomposition, and combustion"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "process_names",

@@ -7034,10 +7034,11 @@
     },
     {
       "id": "greece_oc_olympics_women",
-      "correctAnswer": "Barred from competing AND attending (except priestess of Demeter)",
+      "correctAnswer": "Barred from attending or competing (Demeter's priest only)",
       "acceptableAlternatives": [
         "women were excluded",
-        "women could not attend or compete"
+        "women could not attend or compete",
+        "Barred from competing AND attending (except priestess of Demeter)"
       ],
       "chainThemeId": 6,
       "answerTypePoolId": "concept_terms",
@@ -10796,10 +10797,11 @@
     },
     {
       "id": "greece_rel_pythia_role",
-      "correctAnswer": "High priestess of the Temple of Apollo at Delphi who delivered prophecies",
+      "correctAnswer": "High priestess of Apollo at Delphi who delivered prophecies",
       "acceptableAlternatives": [
         "the oracle at Delphi",
-        "prophetess of Apollo at Delphi"
+        "prophetess of Apollo at Delphi",
+        "High priestess of the Temple of Apollo at Delphi who delivered prophecies"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_terms",
@@ -12078,11 +12080,12 @@
     },
     {
       "id": "greece_rel_greek_religion_structure",
-      "correctAnswer": "No unified priestly authority — religious practice organized at the civic level, varying by locality",
+      "correctAnswer": "No central priestly authority; practice varied by city",
       "acceptableAlternatives": [
         "decentralized",
         "no central religious authority",
-        "organized locally with no central priestly class"
+        "organized locally with no central priestly class",
+        "No unified priestly authority — religious practice organized at the civic level, varying by locality"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_terms",

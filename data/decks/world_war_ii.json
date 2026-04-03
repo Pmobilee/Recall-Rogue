@@ -21589,10 +21589,11 @@
     },
     {
       "id": "wwii_hc_liberation_conditions",
-      "correctAnswer": "Horrific conditions — thousands of unburied dead, mass starvation, disease",
+      "correctAnswer": "Unburied dead, mass starvation, and widespread disease",
       "acceptableAlternatives": [
         "Survivors in horrific condition with unburied dead",
-        "Starvation, disease, unburied corpses"
+        "Starvation, disease, unburied corpses",
+        "Horrific conditions — thousands of unburied dead, mass starvation, disease"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "historical_events",
@@ -26885,11 +26886,12 @@
     },
     {
       "id": "wwii_nw_dambuster_bouncing_bomb",
-      "correctAnswer": "Bouncing bomb (skipped along water surface to evade torpedo nets)",
+      "correctAnswer": "Bouncing bomb (skipped along water to evade torpedo nets)",
       "acceptableAlternatives": [
         "bouncing bomb",
         "Upkeep bomb",
-        "skip bomb"
+        "skip bomb",
+        "Bouncing bomb (skipped along water surface to evade torpedo nets)"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "historical_events",
@@ -27540,11 +27542,12 @@
     },
     {
       "id": "wwii_nw_arctic_convoys_pq17",
-      "correctAnswer": "Convoy PQ-17 suffered catastrophic losses after being ordered to scatter",
+      "correctAnswer": "Convoy PQ-17 lost 24 of 35 ships after ordered to scatter",
       "acceptableAlternatives": [
         "PQ-17",
         "convoy PQ 17",
-        "ordered to scatter"
+        "ordered to scatter",
+        "Convoy PQ-17 suffered catastrophic losses after being ordered to scatter"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "historical_events",
@@ -28632,11 +28635,12 @@
     },
     {
       "id": "wwii_pt_midway_pilots",
-      "correctAnswer": "Approximately 3,000 Japanese personnel killed (including ~110 aircrew)",
+      "correctAnswer": "~3,000 Japanese killed, including ~110 experienced aircrew",
       "acceptableAlternatives": [
         "3,000 killed",
         "approximately 3,000",
-        "irreplaceable naval aviators and crew"
+        "irreplaceable naval aviators and crew",
+        "Approximately 3,000 Japanese personnel killed (including ~110 aircrew)"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "number_stats",
@@ -29872,11 +29876,12 @@
     },
     {
       "id": "wwii_pt_guadalcanal_naval",
-      "correctAnswer": "Seven major naval battles were fought in the waters around Guadalcanal",
+      "correctAnswer": "Seven major naval battles in the waters around Guadalcanal",
       "acceptableAlternatives": [
         "multiple naval battles",
         "naval battles in Iron Bottom Sound",
-        "7 naval engagements"
+        "7 naval engagements",
+        "Seven major naval battles were fought in the waters around Guadalcanal"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "number_stats",
@@ -37717,7 +37722,7 @@
     {
       "id": "wwii_rtw_015",
       "quizQuestion": "On 7 March 1936, Hitler sent troops into the demilitarized Rhineland. What secret orders did the German generals carry in case France mobilized to resist?",
-      "correctAnswer": "Orders to retreat immediately if French forces moved against them",
+      "correctAnswer": "Retreat immediately if French forces moved against them",
       "distractors": [
         "Orders to hold the Rhine crossings at all costs and await reinforcements",
         "Orders to advance on Paris if France mobilized, to force a negotiated settlement",
@@ -37751,7 +37756,9 @@
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "historical_events",
-      "acceptableAlternatives": [],
+      "acceptableAlternatives": [
+        "Orders to retreat immediately if French forces moved against them"
+      ],
       "volatile": false
     },
     {
@@ -38660,10 +38667,11 @@
     },
     {
       "id": "wwii_rtw_kristallnacht_synagogues",
-      "correctAnswer": "1,668 synagogues and prayer rooms ransacked (95 destroyed by fire)",
+      "correctAnswer": "1,668 synagogues ransacked (95 destroyed by fire)",
       "acceptableAlternatives": [
         "1,668 synagogues",
-        "over 1,400 synagogues damaged or destroyed"
+        "over 1,400 synagogues damaged or destroyed",
+        "1,668 synagogues and prayer rooms ransacked (95 destroyed by fire)"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "historical_events",

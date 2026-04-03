@@ -2953,11 +2953,12 @@
     },
     {
       "id": "ap_chem_u2_formal_charge_formula",
-      "correctAnswer": "Valence electrons minus lone pair electrons minus half the bonding electrons",
+      "correctAnswer": "valence e⁻ − lone pair e⁻ − ½ bonding electrons",
       "acceptableAlternatives": [
         "V - L - (B/2)",
         "Valence - nonbonding - half bonding",
-        "V - lone pairs - (bonds/2)"
+        "V - lone pairs - (bonds/2)",
+        "Valence electrons minus lone pair electrons minus half the bonding electrons"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "unique_answers",
@@ -4722,10 +4723,11 @@
     },
     {
       "id": "ap_chem_3_8_vant_hoff_factor",
-      "correctAnswer": "the number of particles a solute produces per formula unit when dissolved",
+      "correctAnswer": "particles a solute produces per formula unit when dissolved",
       "acceptableAlternatives": [
         "number of ions or particles per formula unit",
-        "i = particles in solution / formula units dissolved"
+        "i = particles in solution / formula units dissolved",
+        "the number of particles a solute produces per formula unit when dissolved"
       ],
       "synonymGroupId": null,
       "chainThemeId": 1,
@@ -5297,10 +5299,11 @@
     },
     {
       "id": "ap_chem_3_11_em_spectrum_order",
-      "correctAnswer": "radio, microwave, infrared, visible, ultraviolet, X-ray, gamma",
+      "correctAnswer": "radio, microwave, infrared, visible, UV, X-ray, gamma",
       "acceptableAlternatives": [
         "radio → microwave → IR → visible → UV → X-ray → gamma",
-        "radio to gamma in order of increasing frequency"
+        "radio to gamma in order of increasing frequency",
+        "radio, microwave, infrared, visible, ultraviolet, X-ray, gamma"
       ],
       "synonymGroupId": null,
       "chainThemeId": 1,
@@ -5714,10 +5717,11 @@
     },
     {
       "id": "ap_chem_3_13_spectrophotometer_use",
-      "correctAnswer": "to determine the concentration of a colored solution by measuring how much light it absorbs",
+      "correctAnswer": "determine solution concentration by measuring absorbance",
       "acceptableAlternatives": [
         "measure absorbance to find concentration",
-        "determine concentration via light absorption measurement"
+        "determine concentration via light absorption measurement",
+        "to determine the concentration of a colored solution by measuring how much light it absorbs"
       ],
       "synonymGroupId": null,
       "chainThemeId": 1,
@@ -6056,10 +6060,11 @@
     },
     {
       "id": "ap_chem_4_2_molecular_to_net_ionic_steps",
-      "correctAnswer": "split strong electrolytes into ions, then cancel spectator ions",
+      "correctAnswer": "split strong electrolytes into ions; cancel spectator ions",
       "acceptableAlternatives": [
         "write complete ionic equation first, then cancel spectators",
-        "expand ions then remove spectators"
+        "expand ions then remove spectators",
+        "split strong electrolytes into ions, then cancel spectator ions"
       ],
       "synonymGroupId": null,
       "chainThemeId": 2,
@@ -6643,10 +6648,11 @@
     },
     {
       "id": "ap_chem_4_5_theoretical_yield_from_limiting",
-      "correctAnswer": "moles of limiting reagent × mole ratio × molar mass of product",
+      "correctAnswer": "moles limiting reagent × mole ratio × molar mass of product",
       "acceptableAlternatives": [
         "from limiting reagent moles using stoichiometry then convert to grams",
-        "use limiting reagent to calculate max moles of product then convert"
+        "use limiting reagent to calculate max moles of product then convert",
+        "moles of limiting reagent × mole ratio × molar mass of product"
       ],
       "synonymGroupId": null,
       "chainThemeId": 2,
@@ -8183,10 +8189,11 @@
     },
     {
       "id": "ap_chem_5_3_graphical_test",
-      "correctAnswer": "plot [A], ln[A], and 1/[A] vs. time and identify which gives a straight line",
+      "correctAnswer": "plot [A], ln[A], 1/[A] vs. time; identify which is linear",
       "acceptableAlternatives": [
         "graph [A] vs t, ln[A] vs t, and 1/[A] vs t to find which is linear",
-        "linear plot of [A] = zero order; ln[A] = first order; 1/[A] = second order"
+        "linear plot of [A] = zero order; ln[A] = first order; 1/[A] = second order",
+        "plot [A], ln[A], and 1/[A] vs. time and identify which gives a straight line"
       ],
       "synonymGroupId": null,
       "chainThemeId": 3,
@@ -8224,10 +8231,11 @@
     },
     {
       "id": "ap_chem_5_4_molecularity_def",
-      "correctAnswer": "number of reactant particles that collide in an elementary step",
+      "correctAnswer": "reactant particles colliding in a single elementary step",
       "acceptableAlternatives": [
         "number of molecules that come together in a single elementary step",
-        "number of species that react in one elementary step"
+        "number of species that react in one elementary step",
+        "number of reactant particles that collide in an elementary step"
       ],
       "synonymGroupId": null,
       "chainThemeId": 3,
@@ -8265,10 +8273,11 @@
     },
     {
       "id": "ap_chem_5_4_elementary_rate_law",
-      "correctAnswer": "the rate law can be written directly from the stoichiometric coefficients of that step",
+      "correctAnswer": "rate law from stoichiometric coefficients of that step",
       "acceptableAlternatives": [
         "for elementary steps only, coefficients equal orders",
-        "molecularity equals the orders in the rate law for elementary steps"
+        "molecularity equals the orders in the rate law for elementary steps",
+        "the rate law can be written directly from the stoichiometric coefficients of that step"
       ],
       "synonymGroupId": null,
       "chainThemeId": 3,
@@ -8557,9 +8566,10 @@
     },
     {
       "id": "ap_chem_5_6_exo_endo_profile",
-      "correctAnswer": "exothermic: products are lower in energy than reactants; endothermic: products are higher",
+      "correctAnswer": "exothermic: products lower; endothermic: products higher",
       "acceptableAlternatives": [
-        "exothermic has products below reactants on energy diagram; endothermic has products above"
+        "exothermic has products below reactants on energy diagram; endothermic has products above",
+        "exothermic: products are lower in energy than reactants; endothermic: products are higher"
       ],
       "synonymGroupId": null,
       "chainThemeId": 3,
@@ -10898,11 +10908,12 @@
     },
     {
       "id": "ap_chem_7_3_Q_expression_form",
-      "correctAnswer": "Products over reactants (each raised to stoichiometric coefficient)",
+      "correctAnswer": "products over reactants, each raised to stoichiometric power",
       "acceptableAlternatives": [
         "[products] / [reactants]",
         "Concentrations of products divided by concentrations of reactants",
-        "Product concentrations over reactant concentrations"
+        "Product concentrations over reactant concentrations",
+        "Products over reactants (each raised to stoichiometric coefficient)"
       ],
       "synonymGroupId": null,
       "chainThemeId": 4,
@@ -11052,10 +11063,11 @@
     },
     {
       "id": "ap_chem_7_4_Kc_from_concentration_data",
-      "correctAnswer": "Substitute equilibrium concentrations into the mass action expression",
+      "correctAnswer": "substitute equilibrium concentrations into Q expression",
       "acceptableAlternatives": [
         "Plug equilibrium concentrations into the K expression",
-        "Use equilibrium concentrations in the K formula"
+        "Use equilibrium concentrations in the K formula",
+        "Substitute equilibrium concentrations into the mass action expression"
       ],
       "synonymGroupId": null,
       "chainThemeId": 4,
@@ -11205,10 +11217,11 @@
     },
     {
       "id": "ap_chem_7_5_K_near_1_interpretation",
-      "correctAnswer": "Significant amounts of both reactants and products are present",
+      "correctAnswer": "significant amounts of both reactants and products present",
       "acceptableAlternatives": [
         "Both reactants and products present in significant amounts",
-        "Neither reactants nor products are strongly favored"
+        "Neither reactants nor products are strongly favored",
+        "Significant amounts of both reactants and products are present"
       ],
       "synonymGroupId": null,
       "chainThemeId": 4,
@@ -11358,10 +11371,11 @@
     },
     {
       "id": "ap_chem_7_7_ICE_table_setup",
-      "correctAnswer": "Initial concentrations, stoichiometric changes (±x terms), and equilibrium expressions",
+      "correctAnswer": "Initial concentrations, Changes (±x), Equilibrium values",
       "acceptableAlternatives": [
         "I = initial, C = change in terms of x, E = equilibrium expression",
-        "Initial conditions, change row with x, equilibrium row"
+        "Initial conditions, change row with x, equilibrium row",
+        "Initial concentrations, stoichiometric changes (±x terms), and equilibrium expressions"
       ],
       "synonymGroupId": null,
       "chainThemeId": 4,
@@ -11434,10 +11448,11 @@
     },
     {
       "id": "ap_chem_7_7_equilibrium_concentrations_from_K",
-      "correctAnswer": "Substitute ICE table expressions into K, solve for x, then back-calculate each concentration",
+      "correctAnswer": "set up ICE table, solve for x, calculate each concentration",
       "acceptableAlternatives": [
         "Use ICE table to write equilibrium concentrations in terms of x, set equal to K, solve for x",
-        "Set up ICE, substitute E row into K expression, solve for x, calculate final concentrations"
+        "Set up ICE, substitute E row into K expression, solve for x, calculate final concentrations",
+        "Substitute ICE table expressions into K, solve for x, then back-calculate each concentration"
       ],
       "synonymGroupId": null,
       "chainThemeId": 4,
@@ -12955,10 +12970,11 @@
     },
     {
       "id": "ap_chem_8_4_buffer_action_mechanism",
-      "correctAnswer": "the conjugate base neutralizes added H+; the weak acid neutralizes added OH-",
+      "correctAnswer": "conjugate base neutralizes H+; weak acid neutralizes OH-",
       "acceptableAlternatives": [
         "conjugate base consumes H+, weak acid consumes OH-",
-        "A- absorbs H+ and HA absorbs OH-"
+        "A- absorbs H+ and HA absorbs OH-",
+        "the conjugate base neutralizes added H+; the weak acid neutralizes added OH-"
       ],
       "synonymGroupId": null,
       "chainThemeId": 4,
@@ -13143,10 +13159,11 @@
     },
     {
       "id": "ap_chem_8_5_indicator_selection_principle",
-      "correctAnswer": "the indicator's pKa (color-change range) should overlap the equivalence point pH",
+      "correctAnswer": "indicator pKa range should overlap the equivalence point pH",
       "acceptableAlternatives": [
         "choose an indicator whose transition range includes the equivalence point pH",
-        "indicator pKa should equal the equivalence point pH"
+        "indicator pKa should equal the equivalence point pH",
+        "the indicator's pKa (color-change range) should overlap the equivalence point pH"
       ],
       "synonymGroupId": null,
       "chainThemeId": 4,
@@ -13516,11 +13533,12 @@
     },
     {
       "id": "ap_chem_8_8_buffer_resists_ph_change",
-      "correctAnswer": "converts added H+ or OH- into the weak acid or conjugate base",
+      "correctAnswer": "converts added H+ or OH- into weak acid or conjugate base",
       "acceptableAlternatives": [
         "neutralizes added acid or base",
         "absorbs H+ or OH- using the buffer components",
-        "reacts added H+ with A- or added OH- with HA"
+        "reacts added H+ with A- or added OH- with HA",
+        "converts added H+ or OH- into the weak acid or conjugate base"
       ],
       "synonymGroupId": null,
       "chainThemeId": 4,
@@ -13777,11 +13795,12 @@
     },
     {
       "id": "ap_chem_8_10_buffer_capacity_definition",
-      "correctAnswer": "amount of acid or base a buffer can absorb before pH changes significantly",
+      "correctAnswer": "acid or base a buffer absorbs before pH changes notably",
       "acceptableAlternatives": [
         "amount of strong acid or base the buffer can neutralize",
         "moles of H+ or OH- a buffer can absorb",
-        "how much acid or base a buffer can handle"
+        "how much acid or base a buffer can handle",
+        "amount of acid or base a buffer can absorb before pH changes significantly"
       ],
       "synonymGroupId": null,
       "chainThemeId": 4,
@@ -13891,11 +13910,12 @@
     },
     {
       "id": "ap_chem_8_10_buffer_capacity_exceeded",
-      "correctAnswer": "all of the weak acid or all of the conjugate base is consumed",
+      "correctAnswer": "all weak acid or all conjugate base is consumed",
       "acceptableAlternatives": [
         "one buffer component is completely depleted",
         "HA or A- runs out",
-        "the buffer components are exhausted"
+        "the buffer components are exhausted",
+        "all of the weak acid or all of the conjugate base is consumed"
       ],
       "synonymGroupId": null,
       "chainThemeId": 4,
@@ -15359,11 +15379,12 @@
     },
     {
       "id": "ap_chem_9_11_molten_vs_aqueous_electrolysis",
-      "correctAnswer": "water may be reduced or oxidized instead of the dissolved ions",
+      "correctAnswer": "water may be reduced or oxidized instead of dissolved ions",
       "acceptableAlternatives": [
         "water competes with dissolved ions",
         "water can be preferentially oxidized or reduced",
-        "water interferes with electrolysis of ions"
+        "water interferes with electrolysis of ions",
+        "water may be reduced or oxidized instead of the dissolved ions"
       ],
       "synonymGroupId": null,
       "chainThemeId": 5,

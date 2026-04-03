@@ -197,7 +197,7 @@
       "chainThemeId": 0,
       "categoryL2": "medieval",
       "quizQuestion": "What were the Nika Riots of 532 CE, and approximately how many died in the suppression?",
-      "correctAnswer": "A violent Constantinople uprising suppressed by Belisarius, killing ~30,000",
+      "correctAnswer": "Constantinople revolt; Belisarius crushed it, ~30,000 killed",
       "explanation": "On January 13–19, 532, the Blue and Green chariot-racing factions united against Justinian I. General Belisarius trapped and massacred approximately 30,000 rebels in the Hippodrome. 'Nika' means 'victory' in Greek.",
       "wowFactor": "Justinian nearly fled Constantinople during the riots — it was Empress Theodora's defiant speech that convinced him to stay and fight.",
       "distractors": [
@@ -227,14 +227,17 @@
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "A violent Constantinople uprising suppressed by Belisarius, killing ~30,000"
+      ]
     },
     {
       "id": "med_byz_theodora_origins",
       "chainThemeId": 0,
       "categoryL2": "medieval",
       "quizQuestion": "What was the unusual background of Empress Theodora (c. 490–548 CE), wife of Justinian I?",
-      "correctAnswer": "Her father was a Hippodrome bear keeper; she was a former actress",
+      "correctAnswer": "Hippodrome bear keeper's daughter; former actress",
       "explanation": "Theodora was born into poverty — her father kept bears at the Hippodrome, and her mother was an actress and dancer. Laws originally barred senators from marrying actresses, so Emperor Justin I changed the law in 524 to allow Justinian to marry her.",
       "wowFactor": "Theodora went from a Hippodrome bear keeper's daughter to co-ruler of the world's most powerful empire — one of history's most astonishing rises.",
       "distractors": [
@@ -264,7 +267,10 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "Her father was a Hippodrome bear keeper; she was a former actress"
+      ]
     },
     {
       "id": "med_byz_belisarius",
@@ -308,7 +314,7 @@
       "chainThemeId": 0,
       "categoryL2": "medieval",
       "quizQuestion": "Who developed Greek fire around 672 CE, and what made its formula remarkable?",
-      "correctAnswer": "Kallinikos of Heliopolis — the formula was never recovered and remains unknown",
+      "correctAnswer": "Kallinikos of Heliopolis — formula was never recovered",
       "explanation": "Kallinikos (Callinicus), a Syrian architect from Heliopolis, developed Greek fire around 672 CE. The incendiary weapon burned on water and was deployed through pressurized tubes. Its exact formula was a closely guarded state secret — modern scholars believe it was petroleum-based, similar to napalm.",
       "wowFactor": "The Byzantines kept Greek fire's formula so secret for centuries that even today no one knows exactly what it was made of.",
       "distractors": [
@@ -338,14 +344,17 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "Kallinikos of Heliopolis — the formula was never recovered and remains unknown"
+      ]
     },
     {
       "id": "med_byz_iconoclasm",
       "chainThemeId": 0,
       "categoryL2": "medieval",
       "quizQuestion": "What event triggered Byzantine Iconoclasm around 726 CE, according to Emperor Leo III?",
-      "correctAnswer": "A volcanic eruption in the Aegean he interpreted as divine punishment for icon worship",
+      "correctAnswer": "Aegean volcanic eruption Leo III saw as punishment for icons",
       "explanation": "Emperor Leo III began Byzantine Iconoclasm around 726 CE, ordering removal of Christ's image from Constantinople's Chalke Gate. He interpreted a volcanic eruption in the Aegean in summer 726 as God's anger over icon veneration, issuing a formal edict against icons in 730 CE.",
       "wowFactor": "A volcanic eruption caused a century-long religious civil war — Leo III used it as divine proof that venerating icons was sinful.",
       "distractors": [
@@ -375,7 +384,10 @@
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "A volcanic eruption in the Aegean he interpreted as divine punishment for icon worship"
+      ]
     },
     {
       "id": "med_byz_great_schism",
@@ -493,7 +505,7 @@
       "chainThemeId": 0,
       "categoryL2": "medieval",
       "quizQuestion": "The Plague of Justinian (541–549 CE) was caused by which bacterium, confirmed by DNA analysis in 2013?",
-      "correctAnswer": "Yersinia pestis — the same bacterium that caused the Black Death",
+      "correctAnswer": "Yersinia pestis — same bacterium that caused the Black Death",
       "explanation": "The Plague of Justinian was the first major bubonic plague pandemic. It arrived in Roman Egypt in 541 CE and Constantinople lost up to 40% of its population. Emperor Justinian himself contracted the plague but survived. The same Yersinia pestis bacterium caused the Black Death 800 years later.",
       "wowFactor": "Justinian contracted his own plague but survived — while his empire was so weakened that he never fully secured the territories Belisarius had reconquered.",
       "distractors": [
@@ -523,7 +535,10 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "Yersinia pestis — the same bacterium that caused the Black Death"
+      ]
     },
     {
       "id": "med_byz_justinian_territory",
@@ -715,7 +730,7 @@
       "chainThemeId": 1,
       "categoryL2": "medieval",
       "quizQuestion": "What was the House of Wisdom (Bayt al-Hikmah) in Baghdad, and under which caliph did it become a public academy?",
-      "correctAnswer": "A translation and research center that became a public academy under Caliph al-Ma'mun (813–833 CE)",
+      "correctAnswer": "translation/research center; public academy under al-Ma'mun",
       "explanation": "The House of Wisdom in Baghdad was first established as a library (possibly under Harun al-Rashid or al-Mansur) and transformed into a public academy under Caliph al-Ma'mun (813–833 CE). Scholars there translated Greek, Persian, and Indian texts into Arabic and conducted original research in mathematics, astronomy, medicine, and philosophy.",
       "wowFactor": "For centuries, the House of Wisdom was the intellectual center of the world — more advanced scholarship happened there than anywhere else on Earth.",
       "distractors": [
@@ -745,7 +760,10 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "A translation and research center that became a public academy under Caliph al-Ma'mun (813–833 CE)"
+      ]
     },
     {
       "id": "med_isl_algebra_origin",
@@ -1159,7 +1177,7 @@
       "chainThemeId": 2,
       "categoryL2": "medieval",
       "quizQuestion": "What did Norse raiders do when they attacked Lindisfarne monastery on June 8, 793 CE?",
-      "correctAnswer": "Killed monks, threw others into the sea, took slaves, and plundered sacred treasures",
+      "correctAnswer": "killed monks, threw others in the sea, took slaves and loot",
       "explanation": "The Norse raid on Lindisfarne (Holy Island) off northeastern England killed monks, drowned others in the sea, enslaved survivors, and looted sacred relics. The monastery held the relics of Saint Cuthbert. After 80 years of repeated raids, the surviving monks finally fled in 875 CE carrying Cuthbert's remains.",
       "wowFactor": "The monks who survived the 793 raid spent 80 more years being raided — they finally fled in 875 CE, carrying their most sacred relic across England for years before finding safety.",
       "distractors": [
@@ -1189,7 +1207,10 @@
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "Killed monks, threw others into the sea, took slaves, and plundered sacred treasures"
+      ]
     },
     {
       "id": "med_vik_longship_design",
@@ -1270,7 +1291,7 @@
       "chainThemeId": 2,
       "categoryL2": "medieval",
       "quizQuestion": "Why did Erik the Red deliberately name his discovered land 'Greenland' around 982–985 CE?",
-      "correctAnswer": "To attract settlers — 'people would be attracted to go there if it had a favorable name'",
+      "correctAnswer": "to attract settlers with a favorable name",
       "explanation": "Around 982 CE, Erik the Red was exiled from Iceland for three years after a killing. He explored Greenland and named it 'Greenland' for marketing reasons, according to the sagas. In 985 CE, he led a colonization fleet of 25 ships — but only 14 arrived.",
       "wowFactor": "Erik the Red invented real estate marketing around 982 CE — naming a frozen island 'Greenland' to attract colonists is still considered one of history's greatest rebranding schemes.",
       "distractors": [
@@ -1300,7 +1321,10 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "To attract settlers — 'people would be attracted to go there if it had a favorable name'"
+      ]
     },
     {
       "id": "med_vik_leif_erikson_vinland",
@@ -1344,7 +1368,7 @@
       "chainThemeId": 2,
       "categoryL2": "medieval",
       "quizQuestion": "What archaeological evidence found at L'Anse aux Meadows proves Norse presence in North America?",
-      "correctAnswer": "8 sod-and-wood buildings, 800+ Norse objects, and evidence of iron smelting",
+      "correctAnswer": "8 sod-and-wood buildings, 800+ Norse objects, iron smelting",
       "explanation": "Archaeological excavations by Helge and Anne Stine Ingstad (1961–1968) at L'Anse aux Meadows found remains of 8 sod-and-wood buildings, over 800 Norse objects, and evidence of iron production — proving Norse presence about 500 years before Columbus. The 2021 Nature tree-ring study pinpoints 1021 CE specifically.",
       "wowFactor": "The iron at L'Anse aux Meadows was smelted on-site — the Vikings were making iron tools in North America a full 500 years before Columbus landed.",
       "distractors": [
@@ -1374,7 +1398,10 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "8 sod-and-wood buildings, 800+ Norse objects, and evidence of iron smelting"
+      ]
     },
     {
       "id": "med_vik_bluetooth",
@@ -1455,7 +1482,7 @@
       "chainThemeId": 2,
       "categoryL2": "medieval",
       "quizQuestion": "At the Battle of Stamford Bridge (September 25, 1066), who killed Harald Hardrada, and how many Viking ships were needed to carry survivors home?",
-      "correctAnswer": "Harald Hardrada was killed by an arrow; only 24 of 300+ ships were needed",
+      "correctAnswer": "Hardrada killed by arrow; only 24 of 300+ ships needed home",
       "explanation": "King Harold Godwinson defeated Norwegian invaders at Stamford Bridge on September 25, 1066. Harald Hardrada was killed by an arrow to his windpipe. Of the 300+ Norse ships that had arrived, only 24 were needed to carry survivors home. Just three days later, William the Conqueror landed at Pevensey.",
       "wowFactor": "Harold Godwinson won the most crushing Viking victory in history at Stamford Bridge — then had to march his exhausted army 300 miles south immediately to fight William at Hastings.",
       "distractors": [
@@ -1485,14 +1512,17 @@
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "Harald Hardrada was killed by an arrow; only 24 of 300+ ships were needed"
+      ]
     },
     {
       "id": "med_vik_normandy",
       "chainThemeId": 2,
       "categoryL2": "medieval",
       "quizQuestion": "How did the Viking Age connect to the Norman Conquest of England in 1066?",
-      "correctAnswer": "William was a descendant of Norse (Viking) settlers granted Normandy by the French king in 911 CE",
+      "correctAnswer": "William descended from Norse settlers given Normandy in 911",
       "explanation": "In 911 CE, the Frankish king granted Normandy to Norse leader Rollo in exchange for his conversion to Christianity and a pledge to defend France from further Viking raids. William the Conqueror was a descendant of these settlers — making the Norman Conquest of 1066 directly connected to the Viking Age.",
       "wowFactor": "The 'Normans' who conquered England in 1066 were Vikings who had adopted French culture within two generations — they conquered England in the name of France using Viking tactical knowledge.",
       "distractors": [
@@ -1522,14 +1552,17 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "William was a descendant of Norse (Viking) settlers granted Normandy by the French king in 911 CE"
+      ]
     },
     {
       "id": "med_vik_great_heathen_army",
       "chainThemeId": 2,
       "categoryL2": "medieval",
       "quizQuestion": "What was the 'Great Heathen Army' that landed in East Anglia in 865 CE, and what did it capture by 867 CE?",
-      "correctAnswer": "A massive Norse coalition under Ivar the Boneless that captured York (Jorvik) in 867 CE",
+      "correctAnswer": "Norse coalition under Ivar the Boneless; took York in 867 CE",
       "explanation": "In 865 CE, a large coalition of Norse warriors known as the Great Heathen Army landed in East Anglia under Ivar the Boneless, conquering large parts of England. By 867 CE they had captured York, which became the major Viking settlement of Jorvik, ruled by Norse kings for nearly a century.",
       "wowFactor": "York (Jorvik) under Norse rule became one of medieval Europe's great trading cities — a cosmopolitan hub where Arabic coins, Frankish wine, and Byzantine silk have been found.",
       "distractors": [
@@ -1559,7 +1592,10 @@
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "A massive Norse coalition under Ivar the Boneless that captured York (Jorvik) in 867 CE"
+      ]
     },
     {
       "id": "med_vik_varangian_guard",
@@ -1603,7 +1639,7 @@
       "chainThemeId": 2,
       "categoryL2": "medieval",
       "quizQuestion": "What claim did Harald Bluetooth inscribe on the Jelling stones around 965 CE?",
-      "correctAnswer": "'Harald who won the whole of Denmark and Norway and turned the Danes to Christianity'",
+      "correctAnswer": "won all Denmark and Norway and Christianized the Danes",
       "explanation": "The Jelling stones in Denmark were commissioned by Harald Bluetooth (ruled c. 958–986 CE) around 965 CE. The larger stone claims he 'won the whole of Denmark and Norway and turned the Danes to Christianity.' The runic letters H and B from these stones became the Bluetooth wireless technology logo in 1997.",
       "wowFactor": "The Jelling stones are often called 'Denmark's birth certificate' — they are the earliest physical proof of Denmark as a unified Christian kingdom.",
       "distractors": [
@@ -1633,14 +1669,17 @@
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "'Harald who won the whole of Denmark and Norway and turned the Danes to Christianity'"
+      ]
     },
     {
       "id": "med_vik_longship_tactics",
       "chainThemeId": 2,
       "categoryL2": "medieval",
       "quizQuestion": "What combination of design features gave Viking longships a decisive tactical advantage for raiding?",
-      "correctAnswer": "Shallow draft (1m), beach landings, overland portage, and combined oar-and-sail propulsion",
+      "correctAnswer": "shallow draft, beach landings, portage, oar-and-sail power",
       "explanation": "Viking longships' shallow draft (navigable in 1 metre of water), beach-landing capability, lightweight construction (portaged overland), and combined oar-and-sail propulsion meant they could strike anywhere on a coast or river and escape before defenders could respond. This facilitated permanent Scandinavian settlements from Scotland to Normandy.",
       "wowFactor": "A Viking longship could arrive silently at dawn from the sea, raid a monastery, row up a river to raid inland villages, be carried over a hill to another river, and be gone before any army could mobilize.",
       "distractors": [
@@ -1670,14 +1709,17 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "Shallow draft (1m), beach landings, overland portage, and combined oar-and-sail propulsion"
+      ]
     },
     {
       "id": "med_feu_charlemagne_coronation",
       "chainThemeId": 3,
       "categoryL2": "medieval",
       "quizQuestion": "On what occasion and date was Charlemagne crowned Holy Roman Emperor by Pope Leo III?",
-      "correctAnswer": "Christmas Day, December 25, 800 CE, in Old St. Peter's Basilica, Rome",
+      "correctAnswer": "Christmas Day, 800 CE, at Old St. Peter's Basilica, Rome",
       "explanation": "Pope Leo III crowned Charlemagne Holy Roman Emperor on Christmas Day, December 25, 800 CE, in Old St. Peter's Basilica in Rome — making him the first recognized emperor to rule from the west since the fall of the Western Roman Empire approximately three centuries earlier. Byzantine emperors strongly objected to a western emperor claiming the Roman title.",
       "wowFactor": "The Christmas Day coronation of 800 CE was controversial even then — Charlemagne later claimed he didn't know it was going to happen, possibly to appease the Byzantine emperor who was furious.",
       "distractors": [
@@ -1707,14 +1749,17 @@
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "Christmas Day, December 25, 800 CE, in Old St. Peter's Basilica, Rome"
+      ]
     },
     {
       "id": "med_feu_charlemagne_saxons",
       "chainThemeId": 3,
       "categoryL2": "medieval",
       "quizQuestion": "How many years did Charlemagne's Saxon Wars last, and what notorious act did he commit in 782 CE?",
-      "correctAnswer": "Over 30 years (772–804 CE); he executed ~4,500 Saxons at the Massacre of Verden",
+      "correctAnswer": "30+ years; ~4,500 Saxons executed at the Massacre of Verden",
       "explanation": "Charlemagne's Saxon Wars lasted over 30 years (772–804 CE) and involved forced conversion of the Saxons to Christianity. The Massacre of Verden in 782 CE — execution of approximately 4,500 Saxon prisoners who refused baptism — was one of his most controversial acts. In 774 he also conquered the Lombard Kingdom in northern Italy.",
       "wowFactor": "Charlemagne — celebrated as 'Father of Europe' — also ordered the execution of 4,500 people in one day for refusing to convert to Christianity.",
       "distractors": [
@@ -1744,14 +1789,17 @@
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "Over 30 years (772–804 CE); he executed ~4,500 Saxons at the Massacre of Verden"
+      ]
     },
     {
       "id": "med_feu_carolingian_renaissance",
       "chainThemeId": 3,
       "categoryL2": "medieval",
       "quizQuestion": "What was the Carolingian Renaissance, and approximately how many Latin manuscripts survive from this era versus before?",
-      "correctAnswer": "Charlemagne's educational reform; manuscripts jumped from under 2,000 to 7,000+ in the 9th century",
+      "correctAnswer": "Charlemagne's education reform; manuscripts grew to 7,000+",
       "explanation": "Charlemagne launched the Carolingian Renaissance — the first of three medieval renaissances — issuing edicts in 787 and 789 CE establishing schools to improve clergy literacy. His court scholar Alcuin of York directed these reforms. Workshops produced an estimated 100,000+ manuscripts during the 9th century.",
       "wowFactor": "Before Charlemagne's reforms, fewer than 2,000 Latin manuscripts existed in Western Europe; his era produced over 100,000 — he likely saved classical civilization from being lost entirely.",
       "distractors": [
@@ -1781,14 +1829,17 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "Charlemagne's educational reform; manuscripts jumped from under 2,000 to 7,000+ in the 9th century"
+      ]
     },
     {
       "id": "med_feu_carolingian_minuscule",
       "chainThemeId": 3,
       "categoryL2": "medieval",
       "quizQuestion": "What modern typeface evolved from Carolingian minuscule — the medieval script developed at Charlemagne's court?",
-      "correctAnswer": "Times New Roman (via Renaissance humanist writing inspired by Carolingian minuscule)",
+      "correctAnswer": "Times New Roman, via Renaissance humanist scripts",
       "explanation": "Carolingian minuscule, developed at Charlemagne's court in the late 8th century, introduced clear lowercase letters, word spacing, and standardized punctuation. Alcuin of York reformed the scriptorium at Tours from 796 CE. This script evolved into blackletter by the 10th–11th centuries, then inspired Renaissance humanist writing — the ancestor of modern typefaces like Times New Roman.",
       "wowFactor": "The lowercase letters you're reading right now descend directly from a handwriting style invented at Charlemagne's court in the 780s CE.",
       "distractors": [
@@ -1818,14 +1869,17 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "Times New Roman (via Renaissance humanist writing inspired by Carolingian minuscule)"
+      ]
     },
     {
       "id": "med_feu_feudalism_basics",
       "chainThemeId": 3,
       "categoryL2": "medieval",
       "quizQuestion": "What were the three key elements of the feudal system that flourished in Europe from the 9th to 15th centuries?",
-      "correctAnswer": "Lords (nobles holding land), vassals (granted land), fiefs (land for military service)",
+      "correctAnswer": "lords (land), vassals (grantees), fiefs (land for service)",
       "explanation": "Feudalism structured society around lords who held land, vassals who received land grants (fiefs) from lords in exchange for military service and loyalty, and the fiefs themselves. It emerged after the decentralization of the Carolingian Empire in the 9th century. France abolished feudal remnants on August 4, 1789; Russia not until 1861.",
       "wowFactor": "Feudalism persisted so deeply in Russia that serfs were only freed in 1861 — the same year Abraham Lincoln was inaugurated as US president.",
       "distractors": [
@@ -1855,14 +1909,17 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "Lords (nobles holding land), vassals (granted land), fiefs (land for military service)"
+      ]
     },
     {
       "id": "med_feu_feudal_hierarchy",
       "chainThemeId": 3,
       "categoryL2": "medieval",
       "quizQuestion": "In the classic feudal hierarchy, what were serfs bound to do, and what distinguished them from free peasants?",
-      "correctAnswer": "Serfs were bound to the land and owed labor to their lord — they could not leave without permission",
+      "correctAnswer": "bound to land, owed labor; could not leave freely",
       "explanation": "The classic feudal hierarchy ran king → lords/barons → knights → peasants/serfs. Serfs were the lowest class — bound to the land and owing labor obligations to their lord. Free peasants could theoretically leave their land; serfs could not. France abolished feudal remnants in 1789; Russia not until 1861.",
       "wowFactor": "In medieval England, a serf who escaped to a town and lived there for a year and a day without being caught became legally free — towns were literal freedom machines.",
       "distractors": [
@@ -1892,14 +1949,17 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "Serfs were bound to the land and owed labor to their lord — they could not leave without permission"
+      ]
     },
     {
       "id": "med_feu_benedictine_monasteries",
       "chainThemeId": 3,
       "categoryL2": "medieval",
       "quizQuestion": "Around 529 CE, who founded the Benedictine monastic order, and what role did monasteries play in preserving medieval knowledge?",
-      "correctAnswer": "Benedict of Nursia — monasteries became literacy centers; monks copied manuscripts ~6 hours per day",
+      "correctAnswer": "Benedict of Nursia; monks copied manuscripts ~6 hrs/day",
       "explanation": "Benedict of Nursia founded the Benedictine order around 529 CE at Subiaco Abbey, establishing the Rule of Saint Benedict as the standard for Western monastic life. Monasteries preserved literacy and learning through the early medieval period — monks typically spent 6 hours per day copying texts. By the 9th century the Benedictine Rule was the standard for Western monasticism.",
       "wowFactor": "Medieval monks effectively saved classical literature — without monastic scriptoria copying texts by hand, works of Virgil, Cicero, and countless ancient authors would have been lost forever.",
       "distractors": [
@@ -1929,14 +1989,17 @@
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "Benedict of Nursia — monasteries became literacy centers; monks copied manuscripts ~6 hours per day"
+      ]
     },
     {
       "id": "med_feu_motte_bailey",
       "chainThemeId": 3,
       "categoryL2": "medieval",
       "quizQuestion": "What were the two key components of a motte-and-bailey castle, the dominant early medieval castle design?",
-      "correctAnswer": "A motte (raised earthen mound with a wooden keep) and a bailey (enclosed courtyard connected to it)",
+      "correctAnswer": "motte (earthen mound with keep) and bailey (courtyard)",
       "explanation": "Motte-and-bailey castles featured a wooden keep on a raised earthen mound (motte) connected to an enclosed courtyard (bailey). The earliest examples date to 979 CE at Vincy. William the Conqueror introduced them to England after 1066. Mottes ranged 3–30 metres high. By the 13th–14th centuries, most had been replaced with stone structures.",
       "wowFactor": "A motte-and-bailey castle could be built by unskilled laborers in a matter of weeks — William the Conqueror built one at Pevensey within days of landing in England.",
       "distractors": [
@@ -1966,14 +2029,17 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "A motte (raised earthen mound with a wooden keep) and a bailey (enclosed courtyard connected to it)"
+      ]
     },
     {
       "id": "med_feu_chivalry",
       "chainThemeId": 3,
       "categoryL2": "medieval",
       "quizQuestion": "What was the code of chivalry, and approximately when did it develop in France?",
-      "correctAnswer": "Informal code for knights: loyalty, defense of the weak, martial prowess (c. 1170–1220 CE)",
+      "correctAnswer": "knights' code: loyalty, defend the weak, martial prowess",
       "explanation": "Chivalry derived from the Old French 'chevalerie' (horse soldiery) and encompassed loyalty to the Church, defense of the weak, truthfulness, generosity, and martial prowess. It developed in France approximately 1170–1220 CE and was popularized through Arthurian romances and tales of Charlemagne's companions.",
       "wowFactor": "The ideal of chivalry was largely invented by troubadours and poets writing romances — real medieval knights were often brutal mercenaries who used the chivalric ideal as propaganda.",
       "distractors": [
@@ -2003,14 +2069,17 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "Informal code for knights: loyalty, defense of the weak, martial prowess (c. 1170–1220 CE)"
+      ]
     },
     {
       "id": "med_feu_magna_carta_date",
       "chainThemeId": 3,
       "categoryL2": "medieval",
       "quizQuestion": "On what date and where did King John of England seal the Magna Carta?",
-      "correctAnswer": "June 15, 1215, at Runnymede — a water-meadow on the Thames near Windsor",
+      "correctAnswer": "June 15, 1215, at Runnymede on the Thames near Windsor",
       "explanation": "King John sealed the Magna Carta on June 15, 1215, at Runnymede, a water-meadow on the south bank of the River Thames near Windsor. The document emerged from conflict between the unpopular king and rebel barons, mediated by Archbishop Stephen Langton, establishing the principle that even monarchs are bound by law.",
       "wowFactor": "Runnymede — a soggy Thames meadow — became one of the most important places in legal history because no one wanted a Frenchman (John) to choose the location.",
       "distractors": [
@@ -2040,7 +2109,10 @@
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "June 15, 1215, at Runnymede — a water-meadow on the Thames near Windsor"
+      ]
     },
     {
       "id": "med_feu_magna_carta_provisions",
@@ -2121,7 +2193,7 @@
       "chainThemeId": 3,
       "categoryL2": "medieval",
       "quizQuestion": "What Norse governing institution met in open-air assemblies to handle laws, disputes, and leadership — and what modern institutions preserve its name?",
-      "correctAnswer": "The Thing — Iceland's Alþingi, Norway's Storting, and Denmark's Folketing all preserve the name",
+      "correctAnswer": "The Thing — Alþingi, Storting, and Folketing all preserve it",
       "explanation": "The Thing was a Norse assembly of free men that handled laws, disputes, and leadership selection. Iceland's Althing (930 CE) is considered the world's oldest surviving parliament. Modern Nordic parliaments — Iceland's Alþingi, Norway's Storting, Denmark's Folketing — all preserve the 'Thing' name. The earliest written reference comes from Tacitus (98 CE).",
       "wowFactor": "The word 'Thing' from Norse democratic assemblies survived 1,000 years — it's still in the names of three modern national parliaments and hidden in the English word 'hustings' (from 'húsþing,' house assembly).",
       "distractors": [
@@ -2151,14 +2223,17 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "The Thing — Iceland's Alþingi, Norway's Storting, and Denmark's Folketing all preserve the name"
+      ]
     },
     {
       "id": "med_feu_castle_evolution",
       "chainThemeId": 3,
       "categoryL2": "medieval",
       "quizQuestion": "How did castle design evolve from the 10th to the 13th century in medieval Europe?",
-      "correctAnswer": "Wooden motte-and-bailey (10th–11th c.) → stone shell keeps → curtain-wall castles (12th–13th c.)",
+      "correctAnswer": "motte-and-bailey → shell keeps → curtain-wall castles",
       "explanation": "Castle design progressed from rapid-construction wooden motte-and-bailey structures through stone shell keeps (circular stone walls built atop earthen mottes) to curtain-wall and concentric castles with multiple towers, influenced by crusading experience in the Middle East. By the 13th century, wooden designs were largely replaced by stone.",
       "wowFactor": "Crusaders returning from the Holy Land brought back Islamic castle-building innovations — the concentric castle with multiple rings of walls was directly inspired by castles they had besieged (and sometimes lost to) in Syria.",
       "distractors": [
@@ -2188,14 +2263,17 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "Wooden motte-and-bailey (10th–11th c.) → stone shell keeps → curtain-wall castles (12th–13th c.)"
+      ]
     },
     {
       "id": "med_feu_charlemagne_legacy",
       "chainThemeId": 3,
       "categoryL2": "medieval",
       "quizQuestion": "Why is Charlemagne (748–814 CE) called the 'Father of Europe'?",
-      "correctAnswer": "United most of Western/Central Europe, launched educational reforms, shaped European civilization",
+      "correctAnswer": "united Western/Central Europe, launched education reforms",
       "explanation": "Charlemagne was King of the Franks from 768, King of the Lombards from 774, and Holy Roman Emperor from 800 CE. His court at Aachen unified most of Western and Central Europe, his educational edicts preserved literacy, and his political structures — including the feudal system that developed from his empire's breakup — shaped European civilization for centuries. He died January 28, 814 CE.",
       "wowFactor": "Nearly every European royal dynasty traces ancestry to Charlemagne — statistically, if you are of European descent, you are almost certainly descended from him.",
       "distractors": [
@@ -2225,7 +2303,10 @@
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
-      "categoryL1": "history"
+      "categoryL1": "history",
+      "acceptableAlternatives": [
+        "United most of Western/Central Europe, launched educational reforms, shaped European civilization"
+      ]
     },
     {
       "id": "med_4_cru_clermont_date",
@@ -3671,10 +3752,11 @@
     },
     {
       "id": "med_4_cru_fourth_crusade_impact",
-      "correctAnswer": "Weakened Byzantium, hastening its fall to the Ottomans in 1453",
+      "correctAnswer": "weakened Byzantium, hastening its Ottoman conquest in 1453",
       "acceptableAlternatives": [
         "fragmented Byzantine Empire",
-        "hastened Ottoman conquest"
+        "hastened Ottoman conquest",
+        "Weakened Byzantium, hastening its fall to the Ottomans in 1453"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "concept_terms",
@@ -5832,9 +5914,10 @@
     },
     {
       "id": "med_6_afr_trans_saharan_goods",
-      "correctAnswer": "Gold, slaves, and kola nuts from the south; beads and cowry shells from the north",
+      "correctAnswer": "gold, slaves, kola nuts south; beads and cowry shells north",
       "acceptableAlternatives": [
-        "gold and slaves southward; glass beads and cowries northward"
+        "gold and slaves southward; glass beads and cowries northward",
+        "Gold, slaves, and kola nuts from the south; beads and cowry shells from the north"
       ],
       "chainThemeId": 6,
       "answerTypePoolId": "concept_terms",

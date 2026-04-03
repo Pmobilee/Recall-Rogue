@@ -29517,11 +29517,12 @@
     },
     {
       "id": "medterm_cond_hypothyroidism",
-      "correctAnswer": "Underactive thyroid gland producing insufficient thyroid hormone",
+      "correctAnswer": "underactive thyroid producing insufficient thyroid hormone",
       "acceptableAlternatives": [
         "Underactive thyroid",
         "Insufficient thyroid hormone",
-        "Thyroid underactivity"
+        "Thyroid underactivity",
+        "Underactive thyroid gland producing insufficient thyroid hormone"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "condition_names",
@@ -29889,11 +29890,12 @@
     },
     {
       "id": "medterm_cond_melanoma",
-      "correctAnswer": "Malignant skin cancer arising from pigment-producing melanocytes",
+      "correctAnswer": "malignant skin cancer from pigment-producing melanocytes",
       "acceptableAlternatives": [
         "Skin cancer from melanocytes",
         "Malignant melanocyte tumor",
-        "Pigment cell skin cancer"
+        "Pigment cell skin cancer",
+        "Malignant skin cancer arising from pigment-producing melanocytes"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "condition_names",
@@ -30015,11 +30017,12 @@
     },
     {
       "id": "medterm_cond_alopecia",
-      "correctAnswer": "Partial or complete hair loss from areas where hair normally grows",
+      "correctAnswer": "partial or complete hair loss from hair-bearing areas",
       "acceptableAlternatives": [
         "Hair loss",
         "Baldness",
-        "Loss of hair"
+        "Loss of hair",
+        "Partial or complete hair loss from areas where hair normally grows"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "condition_names",
@@ -30139,11 +30142,12 @@
     },
     {
       "id": "medterm_cond_leukemia",
-      "correctAnswer": "Cancer of the blood characterized by abnormal proliferation of white blood cells",
+      "correctAnswer": "blood cancer with abnormal white blood cell proliferation",
       "acceptableAlternatives": [
         "White blood cell cancer",
         "Blood cancer from abnormal leukocytes",
-        "Malignant white blood cell proliferation"
+        "Malignant white blood cell proliferation",
+        "Cancer of the blood characterized by abnormal proliferation of white blood cells"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "condition_names",
@@ -30264,11 +30268,12 @@
     },
     {
       "id": "medterm_cond_hemophilia",
-      "correctAnswer": "Hereditary bleeding disorder caused by deficiency of clotting factors",
+      "correctAnswer": "hereditary bleeding disorder; deficiency of clotting factors",
       "acceptableAlternatives": [
         "Clotting factor deficiency disorder",
         "Inherited bleeding disorder",
-        "Blood coagulation disorder"
+        "Blood coagulation disorder",
+        "Hereditary bleeding disorder caused by deficiency of clotting factors"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "condition_names",
@@ -30514,11 +30519,12 @@
     },
     {
       "id": "medterm_cond_endometriosis",
-      "correctAnswer": "Condition where endometrial-like tissue grows outside the uterus",
+      "correctAnswer": "endometrial-like tissue grows outside the uterus",
       "acceptableAlternatives": [
         "Uterine tissue growing outside the uterus",
         "Ectopic endometrial tissue growth",
-        "Endometrial tissue outside uterus"
+        "Endometrial tissue outside uterus",
+        "Condition where endometrial-like tissue grows outside the uterus"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "condition_names",
@@ -30762,11 +30768,12 @@
     },
     {
       "id": "medterm_cond_conjunctivitis",
-      "correctAnswer": "Inflammation of the conjunctiva (transparent membrane lining the eyelid and eyeball)",
+      "correctAnswer": "inflammation of the conjunctiva lining eyelid and eyeball",
       "acceptableAlternatives": [
         "Pink eye",
         "Conjunctival inflammation",
-        "Inflammation of the eye lining"
+        "Inflammation of the eye lining",
+        "Inflammation of the conjunctiva (transparent membrane lining the eyelid and eyeball)"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "condition_names",
@@ -30950,11 +30957,12 @@
     },
     {
       "id": "medterm_cond_tinnitus",
-      "correctAnswer": "Perception of ringing, buzzing, or other sounds in the ears without an external source",
+      "correctAnswer": "ringing or buzzing in the ears without an external source",
       "acceptableAlternatives": [
         "Ringing in the ears",
         "Phantom ear sounds",
-        "Ear ringing condition"
+        "Ear ringing condition",
+        "Perception of ringing, buzzing, or other sounds in the ears without an external source"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "condition_names",
@@ -31076,11 +31084,12 @@
     },
     {
       "id": "medterm_cond_sarcoma",
-      "correctAnswer": "Malignant cancer arising from connective tissue such as bone, muscle, or fat",
+      "correctAnswer": "malignant cancer from connective tissue (bone, muscle, fat)",
       "acceptableAlternatives": [
         "Connective tissue cancer",
         "Malignant connective tissue tumor",
-        "Cancer from mesenchymal tissue"
+        "Cancer from mesenchymal tissue",
+        "Malignant cancer arising from connective tissue such as bone, muscle, or fat"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "condition_names",
@@ -31140,11 +31149,12 @@
     },
     {
       "id": "medterm_cond_necrosis",
-      "correctAnswer": "Death of living tissue due to injury, disease, or inadequate blood supply",
+      "correctAnswer": "death of tissue due to injury, disease, or poor blood supply",
       "acceptableAlternatives": [
         "Tissue death",
         "Cell death from pathological cause",
-        "Localized tissue death"
+        "Localized tissue death",
+        "Death of living tissue due to injury, disease, or inadequate blood supply"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "condition_names",
@@ -31203,11 +31213,12 @@
     },
     {
       "id": "medterm_cond_septicemia",
-      "correctAnswer": "Presence of bacteria or their toxins in the bloodstream causing systemic infection",
+      "correctAnswer": "bacteria or toxins in bloodstream causing systemic illness",
       "acceptableAlternatives": [
         "Blood poisoning",
         "Bacterial infection in the blood",
-        "Systemic bloodstream infection"
+        "Systemic bloodstream infection",
+        "Presence of bacteria or their toxins in the bloodstream causing systemic infection"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "condition_names",
@@ -31266,11 +31277,12 @@
     },
     {
       "id": "medterm_cond_fibrosis",
-      "correctAnswer": "Excessive formation of fibrous connective tissue in an organ or tissue",
+      "correctAnswer": "excess fibrous connective tissue in an organ or tissue",
       "acceptableAlternatives": [
         "Excessive scar tissue formation",
         "Abnormal fibrous tissue buildup",
-        "Pathological fibrotic change"
+        "Pathological fibrotic change",
+        "Excessive formation of fibrous connective tissue in an organ or tissue"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "condition_names",

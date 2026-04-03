@@ -791,8 +791,10 @@
     },
     {
       "id": "egypt_god_anubis_color",
-      "correctAnswer": "corpse discoloration after mummification and fertile Nile silt (rebirth)",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Mummified corpse discoloration and fertile black Nile silt",
+      "acceptableAlternatives": [
+        "corpse discoloration after mummification and fertile Nile silt (rebirth)"
+      ],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -859,8 +861,10 @@
     },
     {
       "id": "egypt_god_bastet_transform",
-      "correctAnswer": "transformed from a fierce lioness into a domestic cat or cat-headed woman",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Transformed from fierce lioness to domestic cat or cat-woman",
+      "acceptableAlternatives": [
+        "transformed from a fierce lioness into a domestic cat or cat-headed woman"
+      ],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -1097,8 +1101,10 @@
     },
     {
       "id": "egypt_god_sobek_crocodiles",
-      "correctAnswer": "kept them as divine incarnations and mummified them after death",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Kept as divine incarnations and mummified after death",
+      "acceptableAlternatives": [
+        "kept them as divine incarnations and mummified them after death"
+      ],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -1335,8 +1341,10 @@
     },
     {
       "id": "egypt_god_nut_role",
-      "correctAnswer": "swallowed them at dusk, passed them through her belly overnight, and rebirted them at dawn",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Swallowed sun at dusk, carried it overnight, reborn at dawn",
+      "acceptableAlternatives": [
+        "swallowed them at dusk, passed them through her belly overnight, and rebirted them at dawn"
+      ],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -1437,8 +1445,10 @@
     },
     {
       "id": "egypt_god_khnum_creation",
-      "correctAnswer": "shaped them from clay on a potter's wheel and placed them in their mothers' wombs",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Shaped from clay on a potter's wheel and placed in the womb",
+      "acceptableAlternatives": [
+        "shaped them from clay on a potter's wheel and placed them in their mothers' wombs"
+      ],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -1573,8 +1583,10 @@
     },
     {
       "id": "egypt_cosm_ennead_balance",
-      "correctAnswer": "Osiris and Isis represent fertility and order; Set and Nephthys represent chaos",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Osiris/Isis = fertility and order; Set/Nephthys = chaos",
+      "acceptableAlternatives": [
+        "Osiris and Isis represent fertility and order; Set and Nephthys represent chaos"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -1743,8 +1755,10 @@
     },
     {
       "id": "egypt_cosm_nun_nature",
-      "correctAnswer": "the personification of the primordial watery abyss before creation",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Personification of primordial watery chaos before creation",
+      "acceptableAlternatives": [
+        "the personification of the primordial watery abyss before creation"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "descriptions_roles",
       "difficulty": 3,
@@ -1777,8 +1791,10 @@
     },
     {
       "id": "egypt_cosm_nun_bubble",
-      "correctAnswer": "the sphere of life was encapsulated in a bubble surrounded by Nun",
-      "acceptableAlternatives": [],
+      "correctAnswer": "The world was a bubble of life surrounded by Nun",
+      "acceptableAlternatives": [
+        "the sphere of life was encapsulated in a bubble surrounded by Nun"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -1913,8 +1929,10 @@
     },
     {
       "id": "egypt_cosm_khepri_scarab",
-      "correctAnswer": "young beetles appeared to emerge from dung balls, suggesting creation from nothingness",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Beetles emerged from dung balls, like creation from nothing",
+      "acceptableAlternatives": [
+        "young beetles appeared to emerge from dung balls, suggesting creation from nothingness"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -2151,8 +2169,10 @@
     },
     {
       "id": "egypt_cosm_osiris_myth_isis",
-      "correctAnswer": "in bird form, she fanned breath into Osiris's body and briefly revived him",
-      "acceptableAlternatives": [],
+      "correctAnswer": "In bird form, fanned breath into Osiris and revived him",
+      "acceptableAlternatives": [
+        "in bird form, she fanned breath into Osiris's body and briefly revived him"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -2219,8 +2239,10 @@
     },
     {
       "id": "egypt_cosm_bennu_creation",
-      "correctAnswer": "flew over the waters of Nun and issued a call that determined the nature of creation",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Flew over Nun and called out, setting the nature of creation",
+      "acceptableAlternatives": [
+        "flew over the waters of Nun and issued a call that determined the nature of creation"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "descriptions_roles",
       "difficulty": 3,
@@ -2321,8 +2343,10 @@
     },
     {
       "id": "egypt_cosm_ogdoad_earliest",
-      "correctAnswer": "Eighteenth Dynasty (in a dedicatory inscription by Hatshepsut)",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Eighteenth Dynasty, in Hatshepsut's dedicatory inscription",
+      "acceptableAlternatives": [
+        "Eighteenth Dynasty (in a dedicatory inscription by Hatshepsut)"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -2661,8 +2685,10 @@
     },
     {
       "id": "egypt_death_coffin_texts_demo",
-      "correctAnswer": "made afterlife access available to commoners, not just royalty",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Extended afterlife access to commoners, not just royalty",
+      "acceptableAlternatives": [
+        "made afterlife access available to commoners, not just royalty"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -2763,8 +2789,10 @@
     },
     {
       "id": "egypt_death_ammit_body",
-      "correctAnswer": "head of a crocodile, forelegs of a lion, hindquarters of a hippopotamus",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Crocodile head, lion forelegs, hippo hindquarters",
+      "acceptableAlternatives": [
+        "head of a crocodile, forelegs of a lion, hindquarters of a hippopotamus"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -2865,8 +2893,10 @@
     },
     {
       "id": "egypt_death_mummy_brain",
-      "correctAnswer": "A hook inserted through the nostril broke into the brain cavity; contents were liquefied and drained",
-      "acceptableAlternatives": [],
+      "correctAnswer": "A hook through the nostril liquefied and drained the brain",
+      "acceptableAlternatives": [
+        "A hook inserted through the nostril broke into the brain cavity; contents were liquefied and drained"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -2967,8 +2997,10 @@
     },
     {
       "id": "egypt_death_canopic_storage",
-      "correctAnswer": "in a canopic chest buried alongside the sarcophagus in the tomb",
-      "acceptableAlternatives": [],
+      "correctAnswer": "In a canopic chest buried alongside the sarcophagus",
+      "acceptableAlternatives": [
+        "in a canopic chest buried alongside the sarcophagus in the tomb"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "descriptions_roles",
       "difficulty": 3,
@@ -3001,8 +3033,10 @@
     },
     {
       "id": "egypt_death_opening_mouth",
-      "correctAnswer": "grant the deceased access to their senses in the afterlife — breathing, speaking, seeing, eating",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Restore the deceased's senses: breathing, speaking, seeing",
+      "acceptableAlternatives": [
+        "grant the deceased access to their senses in the afterlife — breathing, speaking, seeing, eating"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -3171,8 +3205,10 @@
     },
     {
       "id": "egypt_death_ushabti_purpose",
-      "correctAnswer": "acted as servants to perform manual labor in the afterlife on behalf of the deceased",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Servants to perform labor in the afterlife for the deceased",
+      "acceptableAlternatives": [
+        "acted as servants to perform manual labor in the afterlife on behalf of the deceased"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "descriptions_roles",
       "difficulty": 3,
@@ -3273,8 +3309,10 @@
     },
     {
       "id": "egypt_death_ka_ba",
-      "correctAnswer": "the life force or vital essence created alongside a person by Khnum",
-      "acceptableAlternatives": [],
+      "correctAnswer": "The life force or vital essence created alongside a person",
+      "acceptableAlternatives": [
+        "the life force or vital essence created alongside a person by Khnum"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -3375,8 +3413,10 @@
     },
     {
       "id": "egypt_death_osiris_abydos",
-      "correctAnswer": "the body of Osiris drifted ashore there after being drowned in the Nile",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Osiris's body drifted ashore after drowning in the Nile",
+      "acceptableAlternatives": [
+        "the body of Osiris drifted ashore there after being drowned in the Nile"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -3511,8 +3551,10 @@
     },
     {
       "id": "egypt_death_thoth_weighing",
-      "correctAnswer": "reported when the scales were exactly even, then recorded the results",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Reported when scales balanced, then recorded the result",
+      "acceptableAlternatives": [
+        "reported when the scales were exactly even, then recorded the results"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -3545,8 +3587,10 @@
     },
     {
       "id": "egypt_death_anubis_embalming",
-      "correctAnswer": "embalmer, tomb guardian, psychopomp (soul guide), and Guardian of the Scales",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Embalmer, tomb guardian, psychopomp, Guardian of the Scales",
+      "acceptableAlternatives": [
+        "embalmer, tomb guardian, psychopomp (soul guide), and Guardian of the Scales"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -3579,8 +3623,10 @@
     },
     {
       "id": "egypt_sym_scarab_sun",
-      "correctAnswer": "the east-to-west rolling of dung balls symbolized the sun's daily journey across the sky",
-      "acceptableAlternatives": [],
+      "correctAnswer": "East-to-west dung-ball rolling mirrored the sun's daily path",
+      "acceptableAlternatives": [
+        "the east-to-west rolling of dung balls symbolized the sun's daily journey across the sky"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -3613,8 +3659,10 @@
     },
     {
       "id": "egypt_sym_scarab_heart",
-      "correctAnswer": "a heart scarab inscribed to prevent the heart from testifying against the deceased at judgment",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Heart scarab to prevent the heart testifying at judgment",
+      "acceptableAlternatives": [
+        "a heart scarab inscribed to prevent the heart from testifying against the deceased at judgment"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -3715,8 +3763,10 @@
     },
     {
       "id": "egypt_sym_eye_ra_nature",
-      "correctAnswer": "a violent feminine counterpart to Ra that functioned as an extension of his power",
-      "acceptableAlternatives": [],
+      "correctAnswer": "A violent feminine extension of Ra's power",
+      "acceptableAlternatives": [
+        "a violent feminine counterpart to Ra that functioned as an extension of his power"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -3817,8 +3867,10 @@
     },
     {
       "id": "egypt_sym_ankh_christian",
-      "correctAnswer": "adopted by Coptic Christians as the crux ansata during the 4th–5th centuries CE",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Adopted by Coptic Christians as the crux ansata, 4th–5th c.",
+      "acceptableAlternatives": [
+        "adopted by Coptic Christians as the crux ansata during the 4th–5th centuries CE"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -3885,8 +3937,10 @@
     },
     {
       "id": "egypt_sym_djed_byblos",
-      "correctAnswer": "Isis found Osiris's body hidden in a tree there and consecrated the pillar by anointing it in linen",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Isis found Osiris's body there and consecrated the pillar",
+      "acceptableAlternatives": [
+        "Isis found Osiris's body hidden in a tree there and consecrated the pillar by anointing it in linen"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -3919,8 +3973,10 @@
     },
     {
       "id": "egypt_sym_was_meaning",
-      "correctAnswer": "power or dominion; a stylized animal head at top of a long staff with a forked end",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Power; a stylized animal head atop a staff with a forked end",
+      "acceptableAlternatives": [
+        "power or dominion; a stylized animal head at top of a long staff with a forked end"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "descriptions_roles",
       "difficulty": 3,
@@ -3987,8 +4043,10 @@
     },
     {
       "id": "egypt_sym_apis_bull_marks",
-      "correctAnswer": "White forehead triangle, vulture on back, scarab under tongue, crescent on right flank, double tail",
-      "acceptableAlternatives": [],
+      "correctAnswer": "White triangle, vulture on back, scarab under tongue",
+      "acceptableAlternatives": [
+        "White forehead triangle, vulture on back, scarab under tongue, crescent on right flank, double tail"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -4021,8 +4079,10 @@
     },
     {
       "id": "egypt_sym_apis_conception",
-      "correctAnswer": "a flash of lightning or moonbeams from the heavens impregnated its mother",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Lightning or moonbeams from heaven impregnated its mother",
+      "acceptableAlternatives": [
+        "a flash of lightning or moonbeams from the heavens impregnated its mother"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -4225,8 +4285,10 @@
     },
     {
       "id": "egypt_sym_tyet_material",
-      "correctAnswer": "red jasper or carnelian, representing Isis's blood and protective power",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Red jasper or carnelian, representing Isis's blood and power",
+      "acceptableAlternatives": [
+        "red jasper or carnelian, representing Isis's blood and protective power"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "descriptions_roles",
       "difficulty": 3,
@@ -4293,8 +4355,10 @@
     },
     {
       "id": "egypt_sym_cat_bastet",
-      "correctAnswer": "protection, fertility, music, and protection against disease and evil spirits",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Protection, fertility, music, and defense against evil",
+      "acceptableAlternatives": [
+        "protection, fertility, music, and protection against disease and evil spirits"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "descriptions_roles",
       "difficulty": 3,
@@ -4361,8 +4425,10 @@
     },
     {
       "id": "egypt_sym_falcon_horus",
-      "correctAnswer": "the living pharaoh was identified as Horus, the falcon-headed sky god",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Pharaoh was identified as Horus, the falcon-headed sky god",
+      "acceptableAlternatives": [
+        "the living pharaoh was identified as Horus, the falcon-headed sky god"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -4395,8 +4461,10 @@
     },
     {
       "id": "egypt_sym_jackal_anubis",
-      "correctAnswer": "jackals were scavengers seen near cemeteries and desert burial sites",
-      "acceptableAlternatives": [],
+      "correctAnswer": "jackals were scavengers seen near cemeteries and burials",
+      "acceptableAlternatives": [
+        "jackals were scavengers seen near cemeteries and desert burial sites"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -4429,8 +4497,10 @@
     },
     {
       "id": "egypt_sym_crocodile_sobek",
-      "correctAnswer": "pharaonic power, fertility, military prowess, and Nile protection",
-      "acceptableAlternatives": [],
+      "correctAnswer": "pharaonic power, fertility, military prowess, Nile safety",
+      "acceptableAlternatives": [
+        "pharaonic power, fertility, military prowess, and Nile protection"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -4701,8 +4771,10 @@
     },
     {
       "id": "egypt_temp_abu_simbel_statues",
-      "correctAnswer": "Ramesses II seated wearing the double crown, each 20 meters tall",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Ramesses II seated in double crown, each statue 20m tall",
+      "acceptableAlternatives": [
+        "Ramesses II seated wearing the double crown, each 20 meters tall"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -4735,8 +4807,10 @@
     },
     {
       "id": "egypt_temp_abu_simbel_purpose",
-      "correctAnswer": "to impress Egypt's might upon Nubians and Egyptianize the local people",
-      "acceptableAlternatives": [],
+      "correctAnswer": "impress Egypt's might on Nubians and Egyptianize them",
+      "acceptableAlternatives": [
+        "to impress Egypt's might upon Nubians and Egyptianize the local people"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -4769,8 +4843,10 @@
     },
     {
       "id": "egypt_temp_abu_simbel_relocation",
-      "correctAnswer": "moved due to the Aswan High Dam creating Lake Nasser; cost $41.7 million",
-      "acceptableAlternatives": [],
+      "correctAnswer": "moved due to Lake Nasser flooding; cost $41.7 million",
+      "acceptableAlternatives": [
+        "moved due to the Aswan High Dam creating Lake Nasser; cost $41.7 million"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "numbers_dates",
       "difficulty": 3,
@@ -4837,8 +4913,10 @@
     },
     {
       "id": "egypt_temp_philae_last_hieroglyphs",
-      "correctAnswer": "it contains the last known inscription in Egyptian hieroglyphs, written in AD 394",
-      "acceptableAlternatives": [],
+      "correctAnswer": "last known hieroglyphic inscription, carved in AD 394",
+      "acceptableAlternatives": [
+        "it contains the last known inscription in Egyptian hieroglyphs, written in AD 394"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -4939,8 +5017,10 @@
     },
     {
       "id": "egypt_temp_opet_duration",
-      "correctAnswer": "11 days under Thutmose III; expanded to 27 days by Ramesses III's death",
-      "acceptableAlternatives": [],
+      "correctAnswer": "11 days under Thutmose III; grew to 27 days by Ramesses III",
+      "acceptableAlternatives": [
+        "11 days under Thutmose III; expanded to 27 days by Ramesses III's death"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "numbers_dates",
       "difficulty": 3,
@@ -4973,8 +5053,10 @@
     },
     {
       "id": "egypt_temp_opet_purpose",
-      "correctAnswer": "renew the pharaoh's divine authority through a ritual marriage ceremony linking him with Amun-Re",
-      "acceptableAlternatives": [],
+      "correctAnswer": "renew pharaoh's divine authority via union with Amun-Re",
+      "acceptableAlternatives": [
+        "renew the pharaoh's divine authority through a ritual marriage ceremony linking him with Amun-Re"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -5007,8 +5089,10 @@
     },
     {
       "id": "egypt_temp_luxor_builders",
-      "correctAnswer": "Amenhotep III (rear chapels), Tutankhamun, Ramesses II, and later Alexander the Great",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Amenhotep III, Tutankhamun, Ramesses II, Alexander the Great",
+      "acceptableAlternatives": [
+        "Amenhotep III (rear chapels), Tutankhamun, Ramesses II, and later Alexander the Great"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -5211,8 +5295,10 @@
     },
     {
       "id": "egypt_temp_ptah_memphis",
-      "correctAnswer": "'Hut-ka-Ptah' (Enclosure of the ka of Ptah); the country name 'Egypt' may derive from it",
-      "acceptableAlternatives": [],
+      "correctAnswer": "'Hut-ka-Ptah'; the name 'Egypt' may derive from it",
+      "acceptableAlternatives": [
+        "'Hut-ka-Ptah' (Enclosure of the ka of Ptah); the country name 'Egypt' may derive from it"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -5483,8 +5569,10 @@
     },
     {
       "id": "egypt_god_ra_apophis_nightly",
-      "correctAnswer": "if Apophis won, the sun would not rise and eternal chaos would consume creation",
-      "acceptableAlternatives": [],
+      "correctAnswer": "if Apophis won, the sun would not rise and chaos would reign",
+      "acceptableAlternatives": [
+        "if Apophis won, the sun would not rise and eternal chaos would consume creation"
+      ],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
@@ -5653,8 +5741,10 @@
     },
     {
       "id": "egypt_god_hathor_eye_ra",
-      "correctAnswer": "a feminine personification of Ra's solar disk, embodying both his violent and joyful aspects",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Ra's solar disk personified, his violent and joyful aspects",
+      "acceptableAlternatives": [
+        "a feminine personification of Ra's solar disk, embodying both his violent and joyful aspects"
+      ],
       "chainThemeId": 0,
       "answerTypePoolId": "descriptions_roles",
       "difficulty": 3,

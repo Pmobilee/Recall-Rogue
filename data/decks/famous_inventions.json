@@ -1125,8 +1125,10 @@
     },
     {
       "id": "inv_1_cotton_gin_slavery",
-      "correctAnswer": "It intensified slavery — slave population grew from ~700,000 in 1790 to ~3.2 million by 1850",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Intensified it — slave population grew from ~700K to ~3.2M",
+      "acceptableAlternatives": [
+        "It intensified slavery — slave population grew from ~700,000 in 1790 to ~3.2 million by 1850"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "term",
       "difficulty": 2,
@@ -2148,8 +2150,10 @@
     },
     {
       "id": "inv_2_airplane_control",
-      "correctAnswer": "Wing-warping (roll), front elevator (pitch), movable rudder (yaw)",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Wing-warping (roll), front elevator (pitch), rudder (yaw)",
+      "acceptableAlternatives": [
+        "Wing-warping (roll), front elevator (pitch), movable rudder (yaw)"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "term",
       "difficulty": 3,
@@ -2489,8 +2493,10 @@
     },
     {
       "id": "inv_2_fission_meitner",
-      "correctAnswer": "She provided the theoretical explanation but was controversially excluded from the Nobel Prize",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Gave the theory but was excluded from the Nobel Prize",
+      "acceptableAlternatives": [
+        "She provided the theoretical explanation but was controversially excluded from the Nobel Prize"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "term",
       "difficulty": 3,
@@ -2706,8 +2712,10 @@
     },
     {
       "id": "inv_2_velcro_mestral",
-      "correctAnswer": "Burrs clinging to his clothes and dog's fur after a hunting trip",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Burrs clinging to his clothes and dog's fur after hunting",
+      "acceptableAlternatives": [
+        "Burrs clinging to his clothes and dog's fur after a hunting trip"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "term",
       "difficulty": 2,
@@ -2861,8 +2869,10 @@
     },
     {
       "id": "inv_2_jet_ohain",
-      "correctAnswer": "August 27, 1939, powered by Hans von Ohain's engine (Heinkel He 178)",
-      "acceptableAlternatives": [],
+      "correctAnswer": "August 27, 1939, powered by Hans von Ohain's engine",
+      "acceptableAlternatives": [
+        "August 27, 1939, powered by Hans von Ohain's engine (Heinkel He 178)"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "term",
       "difficulty": 3,
@@ -3419,8 +3429,10 @@
     },
     {
       "id": "inv_3_crispr_doudna",
-      "correctAnswer": "Fused crRNA and tracrRNA into a single-guide RNA, simplifying Cas9 targeting",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Fused crRNA and tracrRNA into a single-guide RNA for Cas9",
+      "acceptableAlternatives": [
+        "Fused crRNA and tracrRNA into a single-guide RNA, simplifying Cas9 targeting"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "term",
       "difficulty": 4,
@@ -3605,8 +3617,10 @@
     },
     {
       "id": "inv_3_mri_radiation",
-      "correctAnswer": "Strong magnetic fields and radio waves (no ionizing radiation)",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Magnetic fields and radio waves — no ionizing radiation",
+      "acceptableAlternatives": [
+        "Strong magnetic fields and radio waves (no ionizing radiation)"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "term",
       "difficulty": 4,
@@ -3698,8 +3712,10 @@
     },
     {
       "id": "inv_3_fiberoptic_kao",
-      "correctAnswer": "Impurities, not physics, caused signal loss — silica glass would reduce attenuation below 20 dB/km",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Impurities caused loss; silica glass could reach 20 dB/km",
+      "acceptableAlternatives": [
+        "Impurities, not physics, caused signal loss — silica glass would reduce attenuation below 20 dB/km"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "term",
       "difficulty": 4,
@@ -3822,8 +3838,10 @@
     },
     {
       "id": "inv_3_wifi_csiro",
-      "correctAnswer": "CSIRO (Commonwealth Scientific and Industrial Research Organisation)",
-      "acceptableAlternatives": [],
+      "correctAnswer": "CSIRO (Commonwealth Scientific and Industrial Research Org)",
+      "acceptableAlternatives": [
+        "CSIRO (Commonwealth Scientific and Industrial Research Organisation)"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "term",
       "difficulty": 5,
@@ -3977,8 +3995,10 @@
     },
     {
       "id": "inv_4_pat_nobel_obituary",
-      "correctAnswer": "French newspapers published Alfred Nobel's obituary by mistake when his brother Ludvig died",
-      "acceptableAlternatives": [],
+      "correctAnswer": "French papers printed Nobel's obituary when his brother died",
+      "acceptableAlternatives": [
+        "French newspapers published Alfred Nobel's obituary by mistake when his brother Ludvig died"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "term",
       "difficulty": 4,
@@ -4008,8 +4028,10 @@
     },
     {
       "id": "inv_4_pat_bell_gray",
-      "correctAnswer": "Bell's lawyer requested immediate processing; Gray's caveat sat in the in-basket until afternoon",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Bell's lawyer sought fast processing; Gray's caveat waited",
+      "acceptableAlternatives": [
+        "Bell's lawyer requested immediate processing; Gray's caveat sat in the in-basket until afternoon"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "term",
       "difficulty": 4,
@@ -4039,8 +4061,10 @@
     },
     {
       "id": "inv_4_pat_bell_controversy",
-      "correctAnswer": "Whether Bell's patent unfairly included variable resistance technology shown in Gray's caveat",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Whether Bell's patent unfairly used Gray's variable resist.",
+      "acceptableAlternatives": [
+        "Whether Bell's patent unfairly included variable resistance technology shown in Gray's caveat"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "term",
       "difficulty": 4,
@@ -4101,8 +4125,10 @@
     },
     {
       "id": "inv_4_pat_tesla_ac",
-      "correctAnswer": "It eliminated the need for a commutator, avoiding mechanical wear",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Eliminated the commutator, avoiding mechanical wear",
+      "acceptableAlternatives": [
+        "It eliminated the need for a commutator, avoiding mechanical wear"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "term",
       "difficulty": 4,
@@ -4132,8 +4158,10 @@
     },
     {
       "id": "inv_4_pat_penicillin_accident",
-      "correctAnswer": "A mold contaminated a Petri dish and Fleming recognized it was killing surrounding bacteria",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Mold contaminated a Petri dish and killed nearby bacteria",
+      "acceptableAlternatives": [
+        "A mold contaminated a Petri dish and Fleming recognized it was killing surrounding bacteria"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "term",
       "difficulty": 3,
@@ -4163,8 +4191,10 @@
     },
     {
       "id": "inv_4_pat_xray_accident",
-      "correctAnswer": "A fluorescent screen ~1 meter away glowed despite the tube being wrapped in black cardboard",
-      "acceptableAlternatives": [],
+      "correctAnswer": "A fluorescent screen glowed through black-wrapped tubing",
+      "acceptableAlternatives": [
+        "A fluorescent screen ~1 meter away glowed despite the tube being wrapped in black cardboard"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "term",
       "difficulty": 3,
@@ -4194,8 +4224,10 @@
     },
     {
       "id": "inv_4_pat_velcro_accident",
-      "correctAnswer": "He examined the burrs under a microscope rather than simply removing them",
-      "acceptableAlternatives": [],
+      "correctAnswer": "He examined burrs under a microscope, not just removed them",
+      "acceptableAlternatives": [
+        "He examined the burrs under a microscope rather than simply removing them"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "term",
       "difficulty": 4,
@@ -4287,8 +4319,10 @@
     },
     {
       "id": "inv_4_pat_postit_launch",
-      "correctAnswer": "Free samples given to Boise, Idaho offices in 1978; over 90% of recipients said they would purchase",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Free Boise office samples in 1978; 90%+ said they'd purchase",
+      "acceptableAlternatives": [
+        "Free samples given to Boise, Idaho offices in 1978; over 90% of recipients said they would purchase"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "term",
       "difficulty": 4,
@@ -4349,8 +4383,10 @@
     },
     {
       "id": "inv_4_pat_kevlar_discovery",
-      "correctAnswer": "It appeared cloudy, opalescent, and of low viscosity — normally indicating a failed polymer",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Appeared cloudy and low-viscosity — signs of failed polymer",
+      "acceptableAlternatives": [
+        "It appeared cloudy, opalescent, and of low viscosity — normally indicating a failed polymer"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "term",
       "difficulty": 4,
@@ -4411,8 +4447,10 @@
     },
     {
       "id": "inv_4_pat_hopper_cobol",
-      "correctAnswer": "She served as technical consultant to the CODASYL committee that defined COBOL in spring 1959",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Technical consultant to the CODASYL committee, spring 1959",
+      "acceptableAlternatives": [
+        "She served as technical consultant to the CODASYL committee that defined COBOL in spring 1959"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "term",
       "difficulty": 3,
@@ -4535,8 +4573,10 @@
     },
     {
       "id": "inv_4_pat_radio_supremecourt",
-      "correctAnswer": "Tesla's radio patents had priority over Marconi's in some areas",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Tesla's radio patents had priority over Marconi's",
+      "acceptableAlternatives": [
+        "Tesla's radio patents had priority over Marconi's in some areas"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "term",
       "difficulty": 4,
@@ -4566,8 +4606,10 @@
     },
     {
       "id": "inv_4_pat_cotton_gin_delay",
-      "correctAnswer": "Legal challenges and patent infringement battles delayed validation",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Patent infringement battles delayed validation until 1807",
+      "acceptableAlternatives": [
+        "Legal challenges and patent infringement battles delayed validation"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "term",
       "difficulty": 4,
@@ -4659,8 +4701,10 @@
     },
     {
       "id": "inv_4_pat_eniac_designers",
-      "correctAnswer": "Moore School of Electrical Engineering, University of Pennsylvania",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Moore School of Electrical Engineering, Univ. of Penn.",
+      "acceptableAlternatives": [
+        "Moore School of Electrical Engineering, University of Pennsylvania"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "term",
       "difficulty": 3,
@@ -4783,8 +4827,10 @@
     },
     {
       "id": "inv_4_pat_ic_kilby_nobel",
-      "correctAnswer": "Noyce died in 1990; Nobel Prizes are not awarded posthumously",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Noyce died in 1990; Nobels are not awarded posthumously",
+      "acceptableAlternatives": [
+        "Noyce died in 1990; Nobel Prizes are not awarded posthumously"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "term",
       "difficulty": 4,
@@ -4876,8 +4922,10 @@
     },
     {
       "id": "inv_4_pat_nylon_carothers_fate",
-      "correctAnswer": "He died before nylon was publicly announced and never witnessed its success",
-      "acceptableAlternatives": [],
+      "correctAnswer": "He died before nylon launched, never seeing its success",
+      "acceptableAlternatives": [
+        "He died before nylon was publicly announced and never witnessed its success"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "term",
       "difficulty": 4,
@@ -5372,8 +5420,10 @@
     },
     {
       "id": "inv_3_laser_operation",
-      "correctAnswer": "Stimulated emission — photons trigger atoms to emit identical photons in phase, amplified by mirrors",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Stimulated emission: each photon triggers identical photons",
+      "acceptableAlternatives": [
+        "Stimulated emission — photons trigger atoms to emit identical photons in phase, amplified by mirrors"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "term",
       "difficulty": 3,
@@ -5651,8 +5701,10 @@
     },
     {
       "id": "inv_4_pat_kevlar_use",
-      "correctAnswer": "To create lightweight, strong fibers in anticipation of a gasoline shortage",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Lightweight strong fibers in anticipation of a gas shortage",
+      "acceptableAlternatives": [
+        "To create lightweight, strong fibers in anticipation of a gasoline shortage"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "term",
       "difficulty": 4,
@@ -6023,8 +6075,10 @@
     },
     {
       "id": "inv_2_fission_barium",
-      "correctAnswer": "Barium has 40% less atomic mass than uranium, proving the atom had split",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Barium is 40% lighter than uranium, proving the atom split",
+      "acceptableAlternatives": [
+        "Barium has 40% less atomic mass than uranium, proving the atom had split"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "term",
       "difficulty": 3,
@@ -6178,8 +6232,10 @@
     },
     {
       "id": "inv_3_www_hypertext",
-      "correctAnswer": "Hypertext with unconstrained linking between documents on independent computers",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Unconstrained hypertext linking across independent computers",
+      "acceptableAlternatives": [
+        "Hypertext with unconstrained linking between documents on independent computers"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "term",
       "difficulty": 4,

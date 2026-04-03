@@ -5686,10 +5686,11 @@
     {
       "id": "ha_clinical_038",
       "subDeckId": "clinical_anatomy",
-      "correctAnswer": "Common flexor tendon (flexor carpi radialis, pronator teres origin)",
+      "correctAnswer": "Common flexor tendon (flexor carpi radialis, pronator teres)",
       "acceptableAlternatives": [
         "common flexor origin",
-        "common flexor tendon at medial epicondyle"
+        "common flexor tendon at medial epicondyle",
+        "Common flexor tendon (flexor carpi radialis, pronator teres origin)"
       ],
       "chainThemeId": "clinical_injuries",
       "answerTypePoolId": "structure_names",
@@ -6040,10 +6041,11 @@
     {
       "id": "ha_clinical_044",
       "subDeckId": "clinical_anatomy",
-      "correctAnswer": "Head tilts to the affected (contracted) side; chin rotates to the opposite side",
+      "correctAnswer": "Head tilts to affected side; chin rotates to opposite side",
       "acceptableAlternatives": [
         "tilt to same side, rotation to opposite",
-        "ipsilateral tilt, contralateral rotation"
+        "ipsilateral tilt, contralateral rotation",
+        "Head tilts to the affected (contracted) side; chin rotates to the opposite side"
       ],
       "chainThemeId": "clinical_injuries",
       "answerTypePoolId": "clinical_terms",
@@ -6272,10 +6274,11 @@
     {
       "id": "ha_clinical_048",
       "subDeckId": "clinical_anatomy",
-      "correctAnswer": "Progressive fibrosis and contracture of the palmar fascia — typically ring then little finger",
+      "correctAnswer": "Palmar fascia fibrosis — typically ring then little finger",
       "acceptableAlternatives": [
         "palmar fascia fibrosis",
-        "Dupuytren's disease of palmar aponeurosis"
+        "Dupuytren's disease of palmar aponeurosis",
+        "Progressive fibrosis and contracture of the palmar fascia — typically ring then little finger"
       ],
       "chainThemeId": "clinical_injuries",
       "answerTypePoolId": "clinical_terms",
@@ -6731,10 +6734,11 @@
     {
       "id": "ha_clinical_056",
       "subDeckId": "clinical_anatomy",
-      "correctAnswer": "Sciatic nerve compressed as it passes anterior to (or through) the piriformis muscle in the greater",
+      "correctAnswer": "Sciatic nerve compressed by or through the piriformis muscle",
       "acceptableAlternatives": [
         "piriformis compresses sciatic nerve",
-        "sciatic nerve impingement by piriformis"
+        "sciatic nerve impingement by piriformis",
+        "Sciatic nerve compressed as it passes anterior to (or through) the piriformis muscle in the greater"
       ],
       "chainThemeId": "clinical_injuries",
       "answerTypePoolId": "clinical_terms",
@@ -6844,10 +6848,11 @@
     {
       "id": "ha_clinical_058",
       "subDeckId": "clinical_anatomy",
-      "correctAnswer": "L4–L5 disc level; the exiting L5 nerve root is typically compressed",
+      "correctAnswer": "L4–L5 disc level; L5 nerve root typically compressed",
       "acceptableAlternatives": [
         "L4-L5 is most common; L5 root affected",
-        "L4/L5 level with L5 radiculopathy"
+        "L4/L5 level with L5 radiculopathy",
+        "L4–L5 disc level; the exiting L5 nerve root is typically compressed"
       ],
       "chainThemeId": "clinical_injuries",
       "answerTypePoolId": "nerve_names",
@@ -8458,10 +8463,12 @@
       "explanation": "The hepatic portal system ensures all blood from the GI tract passes through the liver before entering systemic circulation, enabling first-pass metabolism of absorbed nutrients and toxins.",
       "sourceUrl": "https://en.wikipedia.org/wiki/Hepatic_portal_system",
       "quizQuestion": "What is the hepatic portal system?",
-      "correctAnswer": "Venous system carrying blood from the GI tract → portal vein → liver → hepatic veins → IVC",
+      "correctAnswer": "GI blood → portal vein → liver → hepatic veins → IVC",
       "chainThemeId": "liver_gallbladder",
       "difficulty": 2,
-      "acceptableAlternatives": [],
+      "acceptableAlternatives": [
+        "Venous system carrying blood from the GI tract → portal vein → liver → hepatic veins → IVC"
+      ],
       "examTags": [
         "AMC",
         "COMLEX",
@@ -8588,10 +8595,12 @@
       "explanation": "Some urobilinogen produced in the gut is reabsorbed into the blood, converted to urobilin, and excreted by the kidneys — giving urine its characteristic yellow color.",
       "sourceUrl": "https://en.wikipedia.org/wiki/Urobilin",
       "quizQuestion": "What gives urine its yellow color?",
-      "correctAnswer": "Urobilin — derived from urobilinogen reabsorbed from the gut and excreted by the kidneys",
+      "correctAnswer": "Urobilin — derived from urobilinogen reabsorbed from the gut",
       "chainThemeId": "liver_gallbladder",
       "difficulty": 2,
-      "acceptableAlternatives": [],
+      "acceptableAlternatives": [
+        "Urobilin — derived from urobilinogen reabsorbed from the gut and excreted by the kidneys"
+      ],
       "examTags": [
         "AMC",
         "COMLEX",
@@ -8744,10 +8753,12 @@
       "explanation": "Unlike carbohydrates and amino acids that enter portal blood, chylomicrons are too large for blood capillaries and instead enter lacteals — lymphatic vessels in each villus — traveling via the thoracic duct into venous blood.",
       "sourceUrl": "https://en.wikipedia.org/wiki/Lacteal",
       "quizQuestion": "After absorption, where do dietary fats (as chylomicrons) enter the circulation?",
-      "correctAnswer": "Lacteals (lymphatic capillaries in intestinal villi) → lymph → bloodstream",
+      "correctAnswer": "Lacteals → lymph → bloodstream",
       "chainThemeId": "absorption",
       "difficulty": 2,
-      "acceptableAlternatives": [],
+      "acceptableAlternatives": [
+        "Lacteals (lymphatic capillaries in intestinal villi) → lymph → bloodstream"
+      ],
       "examTags": [
         "AMC",
         "COMLEX",
@@ -8954,10 +8965,12 @@
       "explanation": "The ENS is a semi-autonomous neural network lining the GI tract that can regulate digestion — including peristalsis, secretion, and blood flow — independently of the central nervous system, earning its nickname 'the second brain.'",
       "sourceUrl": "https://en.wikipedia.org/wiki/Enteric_nervous_system",
       "quizQuestion": "Why is the enteric nervous system called the 'second brain'?",
-      "correctAnswer": "It contains ~100 million neurons in the gut wall and can function semi-autonomously without input",
+      "correctAnswer": "~100 million gut-wall neurons; functions semi-autonomously",
       "chainThemeId": "absorption",
       "difficulty": 2,
-      "acceptableAlternatives": [],
+      "acceptableAlternatives": [
+        "It contains ~100 million neurons in the gut wall and can function semi-autonomously without input"
+      ],
       "examTags": [
         "AMC",
         "COMLEX",
@@ -12059,9 +12072,11 @@
       "explanation": "The thyroid is a butterfly-shaped gland in the anterior neck, spanning vertebral levels C5 to T1, positioned just below the thyroid cartilage (Adam's apple) and anterolateral to the trachea.",
       "difficulty": 3,
       "quizQuestion": "Where is the thyroid gland located?",
-      "correctAnswer": "Anterior neck, at vertebral levels C5-T1, below the thyroid cartilage",
+      "correctAnswer": "Anterior neck, C5–T1, below the thyroid cartilage",
       "chainThemeId": "thyroid",
-      "acceptableAlternatives": [],
+      "acceptableAlternatives": [
+        "Anterior neck, at vertebral levels C5-T1, below the thyroid cartilage"
+      ],
       "examTags": [
         "AMC",
         "COMLEX",
@@ -12181,9 +12196,11 @@
       "explanation": "Graves' disease is an autoimmune condition where antibodies mimic TSH and continuously stimulate TSH receptors on the thyroid, causing unregulated overproduction of T3 and T4.",
       "difficulty": 3,
       "quizQuestion": "Graves' disease causes hyperthyroidism through what mechanism?",
-      "correctAnswer": "Autoimmune production of TSH receptor antibodies that continuously stimulate the thyroid",
+      "correctAnswer": "TSH receptor antibodies continuously stimulate the thyroid",
       "chainThemeId": "thyroid",
-      "acceptableAlternatives": [],
+      "acceptableAlternatives": [
+        "Autoimmune production of TSH receptor antibodies that continuously stimulate the thyroid"
+      ],
       "examTags": [
         "AMC",
         "COMLEX",
@@ -12230,9 +12247,11 @@
       "explanation": "There are four parathyroid glands — small, pea-sized structures embedded in the posterior (back) surface of the thyroid gland, two on each lobe.",
       "difficulty": 2,
       "quizQuestion": "How many parathyroid glands are there, and where are they located?",
-      "correctAnswer": "Four small glands embedded in the posterior surface of the thyroid gland",
+      "correctAnswer": "Four small glands on the posterior surface of the thyroid",
       "chainThemeId": "parathyroid",
-      "acceptableAlternatives": [],
+      "acceptableAlternatives": [
+        "Four small glands embedded in the posterior surface of the thyroid gland"
+      ],
       "examTags": [
         "AMC",
         "COMLEX",
@@ -12354,9 +12373,11 @@
       "explanation": "Aldosterone acts on the distal tubule and collecting duct of the kidney to increase Na⁺ reabsorption (raising blood pressure and volume) and K⁺ secretion (lowering serum potassium).",
       "difficulty": 2,
       "quizQuestion": "Aldosterone from the zona glomerulosa acts on the kidneys to produce what ion exchange?",
-      "correctAnswer": "Increases sodium (Na⁺) reabsorption and potassium (K⁺) secretion",
+      "correctAnswer": "Increases Na⁺ reabsorption and K⁺ secretion",
       "chainThemeId": "adrenal_cortex",
-      "acceptableAlternatives": [],
+      "acceptableAlternatives": [
+        "Increases sodium (Na⁺) reabsorption and potassium (K⁺) secretion"
+      ],
       "examTags": [
         "AMC",
         "COMLEX",
@@ -12501,9 +12522,11 @@
       "explanation": "The islets of Langerhans are clusters of endocrine cells scattered throughout the pancreas, comprising only about 1-2% of its total mass. The remaining 98-99% is exocrine (digestive enzyme-producing) tissue.",
       "difficulty": 2,
       "quizQuestion": "The endocrine function of the pancreas is carried out by what structures?",
-      "correctAnswer": "The islets of Langerhans, which make up about 1-2% of the pancreas",
+      "correctAnswer": "Islets of Langerhans (~1–2% of the pancreas)",
       "chainThemeId": "pancreas_endocrine",
-      "acceptableAlternatives": [],
+      "acceptableAlternatives": [
+        "The islets of Langerhans, which make up about 1-2% of the pancreas"
+      ],
       "examTags": [
         "AMC",
         "COMLEX",
@@ -12551,9 +12574,11 @@
       "explanation": "Insulin lowers blood glucose by promoting cellular glucose uptake (via GLUT transporters), stimulating glycogen synthesis in liver and muscle, and promoting lipogenesis (fat storage).",
       "difficulty": 2,
       "quizQuestion": "Insulin lowers blood glucose through which mechanisms?",
-      "correctAnswer": "Promotes glucose uptake into cells, glycogen synthesis (glycogenesis), and lipogenesis (fat storage)",
+      "correctAnswer": "Promotes glucose uptake, glycogenesis, and lipogenesis",
       "chainThemeId": "pancreas_endocrine",
-      "acceptableAlternatives": [],
+      "acceptableAlternatives": [
+        "Promotes glucose uptake into cells, glycogen synthesis (glycogenesis), and lipogenesis (fat storage)"
+      ],
       "examTags": [
         "AMC",
         "COMLEX",
@@ -12576,9 +12601,11 @@
       "explanation": "Glucagon acts on the liver to trigger glycogenolysis (breaking glycogen into glucose) and gluconeogenesis (synthesizing new glucose from amino acids and fatty acids), raising blood glucose levels.",
       "difficulty": 2,
       "quizQuestion": "Glucagon is produced by alpha cells (~15-20% of islet cells). How does it raise blood glucose?",
-      "correctAnswer": "By stimulating glycogenolysis (glycogen breakdown) and gluconeogenesis (new glucose synthesis) in",
+      "correctAnswer": "Stimulates glycogenolysis and gluconeogenesis in the liver",
       "chainThemeId": "pancreas_endocrine",
-      "acceptableAlternatives": [],
+      "acceptableAlternatives": [
+        "By stimulating glycogenolysis (glycogen breakdown) and gluconeogenesis (new glucose synthesis) in"
+      ],
       "examTags": [
         "AMC",
         "COMLEX",
@@ -12700,9 +12727,11 @@
       "explanation": "Thymosin (and related thymic hormones) promotes the maturation and differentiation of T lymphocytes in the thymus. This is essential for establishing adaptive cellular immunity.",
       "difficulty": 2,
       "quizQuestion": "The thymus produces thymosin. What is thymosin's function?",
-      "correctAnswer": "Promotes the maturation of T lymphocytes, which is essential for adaptive immunity",
+      "correctAnswer": "Promotes maturation of T lymphocytes for adaptive immunity",
       "chainThemeId": "pineal_thymus",
-      "acceptableAlternatives": [],
+      "acceptableAlternatives": [
+        "Promotes the maturation of T lymphocytes, which is essential for adaptive immunity"
+      ],
       "examTags": [
         "AMC",
         "COMLEX",
@@ -12725,9 +12754,11 @@
       "explanation": "The thymus is largest in childhood (critical for establishing T cell diversity) and involutes after puberty, being progressively replaced by adipose (fat) tissue. Adult immunity relies on the T cell repertoire established earlier.",
       "difficulty": 2,
       "quizQuestion": "What happens to the thymus after puberty?",
-      "correctAnswer": "It involutes (shrinks) and is progressively replaced by fat tissue",
+      "correctAnswer": "Involutes and is progressively replaced by fat tissue",
       "chainThemeId": "pineal_thymus",
-      "acceptableAlternatives": [],
+      "acceptableAlternatives": [
+        "It involutes (shrinks) and is progressively replaced by fat tissue"
+      ],
       "examTags": [
         "AMC",
         "COMLEX",
@@ -12801,9 +12832,11 @@
       "explanation": "Positive feedback escalates rather than stabilizes, making it unsuitable for homeostasis. It is only adaptive in processes with a clear endpoint — like the oxytocin-labor loop (ends at delivery) or the LH surge triggering ovulation.",
       "difficulty": 3,
       "quizQuestion": "Positive feedback loops are rare in the endocrine system. Why is positive feedback only useful in limited situations?",
-      "correctAnswer": "Positive feedback is self-amplifying and cannot maintain stable homeostasis",
+      "correctAnswer": "Self-amplifying — cannot maintain stable homeostasis",
       "chainThemeId": "feedback_loops",
-      "acceptableAlternatives": [],
+      "acceptableAlternatives": [
+        "Positive feedback is self-amplifying and cannot maintain stable homeostasis"
+      ],
       "examTags": [
         "AMC",
         "COMLEX",
@@ -20495,11 +20528,12 @@
     {
       "id": "ha_multi_026",
       "subDeckId": "special_senses",
-      "correctAnswer": "Cataracts — lens opacity causing painless progressive vision loss",
+      "correctAnswer": "Cataracts — lens opacity, painless progressive vision loss",
       "acceptableAlternatives": [
         "cataracts",
         "cataract",
-        "lens opacity"
+        "lens opacity",
+        "Cataracts — lens opacity causing painless progressive vision loss"
       ],
       "chainThemeId": "eye_disease",
       "answerTypePoolId": "clinical_terms",
@@ -20536,11 +20570,12 @@
     {
       "id": "ha_multi_027",
       "subDeckId": "special_senses",
-      "correctAnswer": "Meniere's disease — endolymphatic hydrops causing episodic vertigo, sensorineural hearing loss",
+      "correctAnswer": "Meniere's disease — endolymphatic hydrops, episodic vertigo",
       "acceptableAlternatives": [
         "Meniere's disease",
         "Meniere disease",
-        "endolymphatic hydrops"
+        "endolymphatic hydrops",
+        "Meniere's disease — endolymphatic hydrops causing episodic vertigo, sensorineural hearing loss"
       ],
       "chainThemeId": "vestibular",
       "answerTypePoolId": "clinical_terms",
@@ -20652,10 +20687,11 @@
     {
       "id": "ha_multi_030",
       "subDeckId": "integumentary",
-      "correctAnswer": "ABCDE: Asymmetry, Border irregularity, Colour variation, Diameter >6 mm, Evolution",
+      "correctAnswer": "ABCDE: Asymmetry, Border, Colour, Diameter >6mm, Evolution",
       "acceptableAlternatives": [
         "ABCDE criteria",
-        "asymmetry, border, colour, diameter, evolution"
+        "asymmetry, border, colour, diameter, evolution",
+        "ABCDE: Asymmetry, Border irregularity, Colour variation, Diameter >6 mm, Evolution"
       ],
       "chainThemeId": "skin_cancer",
       "answerTypePoolId": "clinical_terms",
@@ -24223,11 +24259,12 @@
     {
       "id": "ha_musc_083",
       "subDeckId": "muscular_system",
-      "correctAnswer": "Adduct fingers toward the middle finger (PAD — Palmar interossei ADduct)",
+      "correctAnswer": "Adduct fingers toward the middle finger (PAD)",
       "acceptableAlternatives": [
         "adduction",
         "adduct",
-        "PAD"
+        "PAD",
+        "Adduct fingers toward the middle finger (PAD — Palmar interossei ADduct)"
       ],
       "chainThemeId": "hand_intrinsic_muscles",
       "answerTypePoolId": "function_terms",
@@ -24468,10 +24505,11 @@
     {
       "id": "ha_musc_089",
       "subDeckId": "muscular_system",
-      "correctAnswer": "Digastric muscle (anterior belly CN V3, posterior belly CN VII)",
+      "correctAnswer": "Digastric muscle (anterior CN V3, posterior CN VII)",
       "acceptableAlternatives": [
         "digastric",
-        "anterior belly mylohyoid nerve CN V3 posterior belly facial nerve CN VII"
+        "anterior belly mylohyoid nerve CN V3 posterior belly facial nerve CN VII",
+        "Digastric muscle (anterior belly CN V3, posterior belly CN VII)"
       ],
       "chainThemeId": "neck_hyoid_muscles",
       "answerTypePoolId": "muscle_names",
@@ -25230,10 +25268,11 @@
     {
       "id": "ha_musc_107",
       "subDeckId": "muscular_system",
-      "correctAnswer": "First and second lumbricals (unipennate) — median nerve; third and fourth (bipennate) — ulnar nerve",
+      "correctAnswer": "1st+2nd (unipennate): median; 3rd+4th (bipennate): ulnar",
       "acceptableAlternatives": [
         "lateral two median nerve medial two ulnar nerve",
-        "1st 2nd median 3rd 4th ulnar"
+        "1st 2nd median 3rd 4th ulnar",
+        "First and second lumbricals (unipennate) — median nerve; third and fourth (bipennate) — ulnar nerve"
       ],
       "chainThemeId": "hand_intrinsic_muscles",
       "answerTypePoolId": "nerve_names",
@@ -26713,9 +26752,10 @@
     },
     {
       "id": "ha_nerv_026",
-      "correctAnswer": "\"Some Say Marry Money, But My Brother Says Big Brains Matter More\"",
+      "correctAnswer": "\"Some Say Marry Money But My Brother Says Big Brains Matter\"",
       "acceptableAlternatives": [
-        "sensory, sensory, motor, motor, both, motor, both, sensory, both, both, motor, motor"
+        "sensory, sensory, motor, motor, both, motor, both, sensory, both, both, motor, motor",
+        "\"Some Say Marry Money, But My Brother Says Big Brains Matter More\""
       ],
       "chainThemeId": "cranial_nerves",
       "answerTypePoolId": "function_terms",
@@ -26760,9 +26800,10 @@
     },
     {
       "id": "ha_nerv_027",
-      "correctAnswer": "\"On Old Olympus's Towering Top, A Finn And German Viewed Some Hops\"",
+      "correctAnswer": "\"On Old Olympus Towering Top A Finn And German Viewed Hops\"",
       "acceptableAlternatives": [
-        "On Old Olympus Towering Top A Finn And German Viewed Some Hops"
+        "On Old Olympus Towering Top A Finn And German Viewed Some Hops",
+        "\"On Old Olympus's Towering Top, A Finn And German Viewed Some Hops\""
       ],
       "chainThemeId": "cranial_nerves",
       "answerTypePoolId": "function_terms",
@@ -26939,10 +26980,11 @@
     {
       "id": "ha_nerv_031",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Receptor → afferent neuron → integration center → efferent neuron → effector",
+      "correctAnswer": "Receptor → sensory neuron → CNS → motor neuron → effector",
       "acceptableAlternatives": [
         "sensory → spinal cord → motor",
-        "5-component reflex arc"
+        "5-component reflex arc",
+        "Receptor → afferent neuron → integration center → efferent neuron → effector"
       ],
       "chainThemeId": "spinal_cord",
       "answerTypePoolId": "nerve_names",
@@ -27094,9 +27136,10 @@
     {
       "id": "ha_nerv_035",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Dorsal horn (sensory), ventral horn (motor), lateral horn (autonomic)",
+      "correctAnswer": "Dorsal (sensory), ventral (motor), lateral (autonomic) horns",
       "acceptableAlternatives": [
-        "dorsal = sensory, ventral = motor, lateral = autonomic"
+        "dorsal = sensory, ventral = motor, lateral = autonomic",
+        "Dorsal horn (sensory), ventral horn (motor), lateral horn (autonomic)"
       ],
       "chainThemeId": "spinal_cord",
       "answerTypePoolId": "nerve_names",
@@ -27132,10 +27175,11 @@
     {
       "id": "ha_nerv_036",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Dorsal columns carry touch/proprioception; spinothalamic tract carries pain/temperature",
+      "correctAnswer": "Dorsal cols: touch/proprioception; spinothalamic: pain/temp",
       "acceptableAlternatives": [
         "dorsal columns = touch and proprioception",
-        "spinothalamic = pain and temperature"
+        "spinothalamic = pain and temperature",
+        "Dorsal columns carry touch/proprioception; spinothalamic tract carries pain/temperature"
       ],
       "chainThemeId": "spinal_cord",
       "answerTypePoolId": "nerve_names",
@@ -27169,9 +27213,10 @@
     {
       "id": "ha_nerv_037",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Dura mater (outermost), arachnoid mater (middle), pia mater (innermost)",
+      "correctAnswer": "Dura mater, arachnoid mater, pia mater (outer to inner)",
       "acceptableAlternatives": [
-        "dura, arachnoid, pia"
+        "dura, arachnoid, pia",
+        "Dura mater (outermost), arachnoid mater (middle), pia mater (innermost)"
       ],
       "chainThemeId": "meninges",
       "answerTypePoolId": "organ_names",
@@ -27286,10 +27331,11 @@
     {
       "id": "ha_nerv_040",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Sympathetic = fight-or-flight; parasympathetic = rest-and-digest",
+      "correctAnswer": "Sympathetic = fight-or-flight; PNS = rest-and-digest",
       "acceptableAlternatives": [
         "sympathetic fight or flight",
-        "parasympathetic rest and digest"
+        "parasympathetic rest and digest",
+        "Sympathetic = fight-or-flight; parasympathetic = rest-and-digest"
       ],
       "chainThemeId": "autonomic_ns",
       "answerTypePoolId": "function_terms",
@@ -27325,9 +27371,10 @@
     {
       "id": "ha_nerv_041",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Both use acetylcholine (ACh) as the preganglionic neurotransmitter",
+      "correctAnswer": "Both use acetylcholine (ACh) as preganglionic transmitter",
       "acceptableAlternatives": [
-        "ACh for both preganglionic"
+        "ACh for both preganglionic",
+        "Both use acetylcholine (ACh) as the preganglionic neurotransmitter"
       ],
       "chainThemeId": "autonomic_ns",
       "answerTypePoolId": "function_terms",
@@ -27362,10 +27409,11 @@
     {
       "id": "ha_nerv_042",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Sympathetic dilates pupils (mydriasis); parasympathetic constricts pupils (miosis)",
+      "correctAnswer": "Sympathetic: mydriasis (dilation); parasympathetic: miosis",
       "acceptableAlternatives": [
         "sympathetic mydriasis",
-        "parasympathetic miosis"
+        "parasympathetic miosis",
+        "Sympathetic dilates pupils (mydriasis); parasympathetic constricts pupils (miosis)"
       ],
       "chainThemeId": "autonomic_ns",
       "answerTypePoolId": "function_terms",
@@ -27402,10 +27450,11 @@
     {
       "id": "ha_nerv_043",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Sympathetic increases heart rate; parasympathetic decreases heart rate",
+      "correctAnswer": "Sympathetic increases HR; parasympathetic decreases HR",
       "acceptableAlternatives": [
         "sympathetic speeds heart",
-        "parasympathetic slows heart"
+        "parasympathetic slows heart",
+        "Sympathetic increases heart rate; parasympathetic decreases heart rate"
       ],
       "chainThemeId": "autonomic_ns",
       "answerTypePoolId": "function_terms",
@@ -27563,10 +27612,11 @@
     {
       "id": "ha_nerv_047",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Ulnar nerve (C8–T1): most intrinsic hand muscles and medial 1.5 digits",
+      "correctAnswer": "Ulnar nerve (C8–T1): hand intrinsics, medial 1.5 digits",
       "acceptableAlternatives": [
         "ulnar nerve intrinsic hand",
-        "C8-T1 ulnar"
+        "C8-T1 ulnar",
+        "Ulnar nerve (C8–T1): most intrinsic hand muscles and medial 1.5 digits"
       ],
       "chainThemeId": "brachial_plexus",
       "answerTypePoolId": "nerve_names",
@@ -27681,10 +27731,11 @@
     {
       "id": "ha_nerv_050",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Vagus nerve (CN X): longest cranial nerve, parasympathetic to heart/lungs/GI to splenic flexure",
+      "correctAnswer": "Vagus nerve (CN X): longest CN, supplies heart/lungs/GI",
       "acceptableAlternatives": [
         "CN X",
-        "vagus nerve"
+        "vagus nerve",
+        "Vagus nerve (CN X): longest cranial nerve, parasympathetic to heart/lungs/GI to splenic flexure"
       ],
       "chainThemeId": "key_nerves",
       "answerTypePoolId": "nerve_names",
@@ -27759,10 +27810,11 @@
     {
       "id": "ha_nerv_052",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Femoral nerve (L2–L4): quadriceps motor + anterior thigh and medial leg sensation",
+      "correctAnswer": "Femoral nerve (L2–L4): quadriceps, anterior thigh/medial leg",
       "acceptableAlternatives": [
         "femoral nerve L2-L4",
-        "L2-L4 femoral"
+        "L2-L4 femoral",
+        "Femoral nerve (L2–L4): quadriceps motor + anterior thigh and medial leg sensation"
       ],
       "chainThemeId": "key_nerves",
       "answerTypePoolId": "nerve_names",
@@ -27798,10 +27850,11 @@
     {
       "id": "ha_nerv_053",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Sympathetic dilates bronchi; parasympathetic constricts bronchi",
+      "correctAnswer": "Sympathetic dilates bronchi; parasympathetic constricts them",
       "acceptableAlternatives": [
         "sympathetic bronchodilation",
-        "parasympathetic bronchoconstriction"
+        "parasympathetic bronchoconstriction",
+        "Sympathetic dilates bronchi; parasympathetic constricts bronchi"
       ],
       "chainThemeId": "autonomic_ns",
       "answerTypePoolId": "function_terms",
@@ -27839,10 +27892,11 @@
     {
       "id": "ha_nerv_054",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Sympathetic relaxes bladder detrusor; parasympathetic contracts detrusor (enables urination)",
+      "correctAnswer": "Sympathetic relaxes detrusor; parasympathetic contracts it",
       "acceptableAlternatives": [
         "sympathetic relaxes detrusor",
-        "parasympathetic contracts detrusor"
+        "parasympathetic contracts detrusor",
+        "Sympathetic relaxes bladder detrusor; parasympathetic contracts detrusor (enables urination)"
       ],
       "chainThemeId": "autonomic_ns",
       "answerTypePoolId": "function_terms",
@@ -29647,10 +29701,11 @@
     {
       "id": "ha_nerv_088",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Ipsilateral motor and proprioception loss + contralateral pain and temperature loss",
+      "correctAnswer": "Ipsilateral motor/proprioception + contralateral pain/temp",
       "acceptableAlternatives": [
         "Brown-Séquard: ipsilateral UMN + DC loss, contralateral spinothalamic loss",
-        "hemisection: same-side paralysis, opposite-side pain/temp loss"
+        "hemisection: same-side paralysis, opposite-side pain/temp loss",
+        "Ipsilateral motor and proprioception loss + contralateral pain and temperature loss"
       ],
       "chainThemeId": "spinal_cord_syndromes",
       "answerTypePoolId": "function_terms",
@@ -29729,10 +29784,11 @@
     {
       "id": "ha_nerv_090",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Choroid plexus → foramen of Monro → 3rd ventricle → cerebral aqueduct → 4th ventricle → foramina of",
+      "correctAnswer": "Choroid plexus → Monro → 3rd ventricle → aqueduct → 4th",
       "acceptableAlternatives": [
         "CSF: lateral ventricles → 3rd → aqueduct → 4th → subarachnoid → arachnoid granulations",
-        "choroid plexus to dural venous sinuses via ventricles"
+        "choroid plexus to dural venous sinuses via ventricles",
+        "Choroid plexus → foramen of Monro → 3rd ventricle → cerebral aqueduct → 4th ventricle → foramina of"
       ],
       "chainThemeId": "csf_and_meninges",
       "answerTypePoolId": "function_terms",
@@ -29851,10 +29907,11 @@
     {
       "id": "ha_nerv_093",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Foramen of Magendie (median) + foramina of Luschka (paired lateral)",
+      "correctAnswer": "Foramen of Magendie (median) + foramina of Luschka (lateral)",
       "acceptableAlternatives": [
         "Magendie and Luschka foramina",
-        "median aperture and lateral apertures of 4th ventricle"
+        "median aperture and lateral apertures of 4th ventricle",
+        "Foramen of Magendie (median) + foramina of Luschka (paired lateral)"
       ],
       "chainThemeId": "csf_and_meninges",
       "answerTypePoolId": "structure_names",
@@ -29891,10 +29948,11 @@
     {
       "id": "ha_nerv_094",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Arachnoid granulations → dural venous sinuses → internal jugular veins",
+      "correctAnswer": "Arachnoid granulations → dural sinuses → jugular veins",
       "acceptableAlternatives": [
         "arachnoid villi into superior sagittal sinus",
-        "arachnoid granulations reabsorb CSF into venous sinuses"
+        "arachnoid granulations reabsorb CSF into venous sinuses",
+        "Arachnoid granulations → dural venous sinuses → internal jugular veins"
       ],
       "chainThemeId": "csf_and_meninges",
       "answerTypePoolId": "function_terms",
@@ -29934,10 +29992,11 @@
     {
       "id": "ha_nerv_095",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Central (1st order): hypothalamus → ciliospinal centre (C8–T2)",
+      "correctAnswer": "1st order: hypothalamus → ciliospinal centre (C8–T2)",
       "acceptableAlternatives": [
         "three-neuron arc: hypothalamus, superior cervical ganglion, carotid plexus to orbit",
-        "hypothalamus → C8-T2 → superior cervical ganglion → eye"
+        "hypothalamus → C8-T2 → superior cervical ganglion → eye",
+        "Central (1st order): hypothalamus → ciliospinal centre (C8–T2)"
       ],
       "chainThemeId": "autonomic_nervous_system",
       "answerTypePoolId": "function_terms",
@@ -30480,9 +30539,10 @@
     },
     {
       "id": "ha_regional_011",
-      "correctAnswer": "Pectoralis major (anterior), latissimus dorsi and teres major (posterior), rib cage (medial)",
+      "correctAnswer": "Anterior: pec major; posterior: lat dorsi + teres major",
       "acceptableAlternatives": [
-        "Pectoralis major anteriorly, latissimus dorsi and teres major posteriorly, serratus anterior medially, humerus laterally"
+        "Pectoralis major anteriorly, latissimus dorsi and teres major posteriorly, serratus anterior medially, humerus laterally",
+        "Pectoralis major (anterior), latissimus dorsi and teres major (posterior), rib cage (medial)"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "location_terms",
@@ -30673,9 +30733,10 @@
     },
     {
       "id": "ha_regional_015",
-      "correctAnswer": "Extensor pollicis longus (medial) and extensor pollicis brevis + abductor pollicis longus (lateral)",
+      "correctAnswer": "EPL (medial border); EPB + APL (lateral border)",
       "acceptableAlternatives": [
-        "EPL medially, EPB and APL laterally"
+        "EPL medially, EPB and APL laterally",
+        "Extensor pollicis longus (medial) and extensor pollicis brevis + abductor pollicis longus (lateral)"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "location_terms",
@@ -30718,9 +30779,10 @@
     },
     {
       "id": "ha_regional_016",
-      "correctAnswer": "NAVEL (Nerve, Artery, Vein, Empty space, Lymphatics) — lateral to medial",
+      "correctAnswer": "NAVEL: Nerve, Artery, Vein, Empty space, Lymphatics",
       "acceptableAlternatives": [
-        "Femoral nerve laterally, femoral artery middle, femoral vein medially"
+        "Femoral nerve laterally, femoral artery middle, femoral vein medially",
+        "NAVEL (Nerve, Artery, Vein, Empty space, Lymphatics) — lateral to medial"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "function_terms",
@@ -30768,9 +30830,10 @@
     },
     {
       "id": "ha_regional_017",
-      "correctAnswer": "Inguinal ligament (superior), sartorius (lateral), adductor longus (medial)",
+      "correctAnswer": "Inguinal ligament (superior), sartorius, adductor longus",
       "acceptableAlternatives": [
-        "Inguinal ligament superiorly, sartorius laterally, adductor longus medially"
+        "Inguinal ligament superiorly, sartorius laterally, adductor longus medially",
+        "Inguinal ligament (superior), sartorius (lateral), adductor longus (medial)"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "location_terms",
@@ -30919,9 +30982,10 @@
     },
     {
       "id": "ha_regional_020",
-      "correctAnswer": "Biceps femoris (superolateral) and semimembranosus + semitendinosus (superomedial)",
+      "correctAnswer": "Biceps femoris (superolat.); semimembranosus/semitendinosus",
       "acceptableAlternatives": [
-        "Biceps femoris superolaterally, semimembranosus and semitendinosus superomedially"
+        "Biceps femoris superolaterally, semimembranosus and semitendinosus superomedially",
+        "Biceps femoris (superolateral) and semimembranosus + semitendinosus (superomedial)"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "location_terms",
@@ -37597,9 +37661,10 @@
     {
       "id": "ha_resp_044",
       "subDeckId": "respiratory_system",
-      "correctAnswer": "Surfactant reduces surface tension, preventing alveolar collapse",
+      "correctAnswer": "Surfactant cuts surface tension, prevents alveolar collapse",
       "acceptableAlternatives": [
-        "Reduces surface tension to prevent collapse"
+        "Reduces surface tension to prevent collapse",
+        "Surfactant reduces surface tension, preventing alveolar collapse"
       ],
       "chainThemeId": "alveoli",
       "answerTypePoolId": "function_terms",
@@ -37636,9 +37701,10 @@
     {
       "id": "ha_resp_045",
       "subDeckId": "respiratory_system",
-      "correctAnswer": "Terminal bronchioles → respiratory bronchioles → alveolar ducts → alveoli",
+      "correctAnswer": "Terminal bronchioles → resp. bronchioles → alveolar ducts",
       "acceptableAlternatives": [
-        "Terminal bronchioles, respiratory bronchioles, alveolar ducts, alveoli"
+        "Terminal bronchioles, respiratory bronchioles, alveolar ducts, alveoli",
+        "Terminal bronchioles → respiratory bronchioles → alveolar ducts → alveoli"
       ],
       "chainThemeId": "airways",
       "answerTypePoolId": "function_terms",
@@ -43197,10 +43263,11 @@
     {
       "id": "ha_skel_069",
       "subDeckId": "skeletal_system",
-      "correctAnswer": "Lateral malleolus extends more distally than the medial malleolus",
+      "correctAnswer": "Lateral malleolus is more distal than medial malleolus",
       "acceptableAlternatives": [
         "lateral malleolus is lower",
-        "fibula extends lower than tibia at the ankle"
+        "fibula extends lower than tibia at the ankle",
+        "Lateral malleolus extends more distally than the medial malleolus"
       ],
       "chainThemeId": "leg_bones",
       "answerTypePoolId": "bone_names",
@@ -43615,9 +43682,10 @@
     {
       "id": "ha_skel_080",
       "subDeckId": "skeletal_system",
-      "correctAnswer": "Hip joint (ball-and-socket), knee joint (modified hinge), ankle joint (hinge/mortise)",
+      "correctAnswer": "Hip (ball-and-socket), knee (modified hinge), ankle (hinge)",
       "acceptableAlternatives": [
-        "ball and socket at hip, hinge at knee, hinge at ankle"
+        "ball and socket at hip, hinge at knee, hinge at ankle",
+        "Hip joint (ball-and-socket), knee joint (modified hinge), ankle joint (hinge/mortise)"
       ],
       "chainThemeId": "lower_limb_joints",
       "answerTypePoolId": "bone_names",
@@ -51131,10 +51199,11 @@
     {
       "id": "ha_clinical_076",
       "subDeckId": "clinical_anatomy",
-      "correctAnswer": "Between the 2nd and 3rd tracheal rings, below the cricoid, avoiding the thyroid isthmus",
+      "correctAnswer": "2nd–3rd tracheal rings, below cricoid, avoid thyroid isthmus",
       "acceptableAlternatives": [
         "2nd–3rd tracheal rings below cricoid",
-        "below cricoid cartilage between rings 2 and 3"
+        "below cricoid cartilage between rings 2 and 3",
+        "Between the 2nd and 3rd tracheal rings, below the cricoid, avoiding the thyroid isthmus"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "location_terms",
@@ -51240,10 +51309,11 @@
     {
       "id": "ha_clinical_078",
       "subDeckId": "clinical_anatomy",
-      "correctAnswer": "Portal triad (portal vein branch, hepatic artery branch, bile duct)",
+      "correctAnswer": "Portal triad: portal vein, hepatic artery, bile duct",
       "acceptableAlternatives": [
         "portal triad",
-        "portal vein, hepatic artery, and bile duct"
+        "portal vein, hepatic artery, and bile duct",
+        "Portal triad (portal vein branch, hepatic artery branch, bile duct)"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "structure_names",
@@ -51453,10 +51523,11 @@
     {
       "id": "ha_clinical_082",
       "subDeckId": "clinical_anatomy",
-      "correctAnswer": "Superior to the lower rib (along the superior margin of the rib below)",
+      "correctAnswer": "Superior to the lower rib (along the rib's superior margin)",
       "acceptableAlternatives": [
         "above the rib below",
-        "superior to the inferior rib of the intercostal space"
+        "superior to the inferior rib of the intercostal space",
+        "Superior to the lower rib (along the superior margin of the rib below)"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "clinical_terms",
@@ -51721,10 +51792,11 @@
     {
       "id": "ha_clinical_087",
       "subDeckId": "clinical_anatomy",
-      "correctAnswer": "Fenestrated endothelium → glomerular basement membrane → podocyte slit diaphragm",
+      "correctAnswer": "Fenestrated endothelium → basement membrane → podocytes",
       "acceptableAlternatives": [
         "endothelium, GBM, podocytes",
-        "endothelial cells, basement membrane, podocyte foot processes"
+        "endothelial cells, basement membrane, podocyte foot processes",
+        "Fenestrated endothelium → glomerular basement membrane → podocyte slit diaphragm"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "structure_names",
@@ -51773,10 +51845,11 @@
     {
       "id": "ha_clinical_088",
       "subDeckId": "clinical_anatomy",
-      "correctAnswer": "Apical (upward) for pneumothorax; dependent/posterior for effusion or hemothorax",
+      "correctAnswer": "Apical for pneumothorax; dependent/posterior for effusion",
       "acceptableAlternatives": [
         "upward for pneumo, posterior for effusion",
-        "toward apex for air, toward base for fluid"
+        "toward apex for air, toward base for fluid",
+        "Apical (upward) for pneumothorax; dependent/posterior for effusion or hemothorax"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "clinical_terms",
@@ -52035,12 +52108,13 @@
     {
       "id": "ha_embryo_063",
       "subDeckId": "embryology",
-      "correctAnswer": "Conotruncal cardiac defects (tetralogy of Fallot, truncus arteriosus, interrupted aortic arch)",
+      "correctAnswer": "Conotruncal defects: tetralogy of Fallot, truncus arteriosus",
       "acceptableAlternatives": [
         "tetralogy of Fallot",
         "truncus arteriosus",
         "interrupted aortic arch",
-        "conotruncal malformations"
+        "conotruncal malformations",
+        "Conotruncal cardiac defects (tetralogy of Fallot, truncus arteriosus, interrupted aortic arch)"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "clinical_terms",
@@ -52254,12 +52328,13 @@
     {
       "id": "ha_embryo_067",
       "subDeckId": "embryology",
-      "correctAnswer": "Atrioventricular (AV) canal defect (endocardial cushion defect)",
+      "correctAnswer": "Atrioventricular canal defect (endocardial cushion defect)",
       "acceptableAlternatives": [
         "AV canal defect",
         "AVSD",
         "atrioventricular septal defect",
-        "endocardial cushion defect"
+        "endocardial cushion defect",
+        "Atrioventricular (AV) canal defect (endocardial cushion defect)"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "clinical_terms",
@@ -52475,10 +52550,11 @@
     {
       "id": "ha_embryo_071",
       "subDeckId": "embryology",
-      "correctAnswer": "Bilateral renal agenesis → oligohydramnios → pulmonary hypoplasia and limb deformities",
+      "correctAnswer": "Oligohydramnios → pulmonary hypoplasia + limb deformities",
       "acceptableAlternatives": [
         "renal agenesis causes oligohydramnios causing pulmonary hypoplasia",
-        "Potter sequence pathophysiology"
+        "Potter sequence pathophysiology",
+        "Bilateral renal agenesis → oligohydramnios → pulmonary hypoplasia and limb deformities"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "clinical_terms",
@@ -52635,11 +52711,12 @@
     {
       "id": "ha_embryo_074",
       "subDeckId": "embryology",
-      "correctAnswer": "Failure of neural crest cell migration into the distal hindgut",
+      "correctAnswer": "Failure of neural crest migration into the distal hindgut",
       "acceptableAlternatives": [
         "arrested neural crest migration",
         "neural crest cells fail to colonize the hindgut",
-        "absent ganglia due to failed neural crest migration"
+        "absent ganglia due to failed neural crest migration",
+        "Failure of neural crest cell migration into the distal hindgut"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "function_terms",
@@ -52690,10 +52767,11 @@
     {
       "id": "ha_embryo_075",
       "subDeckId": "embryology",
-      "correctAnswer": "Failure of fusion of the maxillary prominence with the medial nasal process",
+      "correctAnswer": "Maxillary prominence fails to fuse with medial nasal process",
       "acceptableAlternatives": [
         "maxillary and medial nasal prominence fail to fuse",
-        "non-fusion of maxillary and medial nasal processes"
+        "non-fusion of maxillary and medial nasal processes",
+        "Failure of fusion of the maxillary prominence with the medial nasal process"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "function_terms",
@@ -52850,10 +52928,11 @@
     {
       "id": "ha_embryo_078",
       "subDeckId": "embryology",
-      "correctAnswer": "Turner syndrome has lymphedema, short stature, and ovarian dysgenesis",
+      "correctAnswer": "Turner (45X): lymphedema, short stature, ovarian dysgenesis",
       "acceptableAlternatives": [
         "Turner is 45,X females only; Noonan is autosomal dominant both sexes",
-        "Turner karyotypic, Noonan phenocopy with normal karyotype"
+        "Turner karyotypic, Noonan phenocopy with normal karyotype",
+        "Turner syndrome has lymphedema, short stature, and ovarian dysgenesis"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "clinical_terms",
@@ -52956,11 +53035,12 @@
     {
       "id": "ha_embryo_080",
       "subDeckId": "embryology",
-      "correctAnswer": "Week 4 (from the neural tube); hindgut colonization completed by week 7",
+      "correctAnswer": "Week 4 (from neural tube); hindgut colonized by week 7",
       "acceptableAlternatives": [
         "week 4 to week 7",
         "week 4 start, week 7 completion",
-        "4th week of gestation"
+        "4th week of gestation",
+        "Week 4 (from the neural tube); hindgut colonization completed by week 7"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "function_terms",
@@ -52999,10 +53079,11 @@
     {
       "id": "ha_embryo_081",
       "subDeckId": "embryology",
-      "correctAnswer": "Lateral palatal shelves fail to fuse with each other and with the primary palate",
+      "correctAnswer": "Lateral palatal shelves fail to fuse with primary palate",
       "acceptableAlternatives": [
         "palatal shelf fusion failure",
-        "secondary palate formation failure"
+        "secondary palate formation failure",
+        "Lateral palatal shelves fail to fuse with each other and with the primary palate"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "function_terms",
@@ -53041,10 +53122,11 @@
     {
       "id": "ha_embryo_082",
       "subDeckId": "embryology",
-      "correctAnswer": "Week 6 (physiological herniation), fully reduced by week 10–12",
+      "correctAnswer": "Week 6 herniation; fully reduced by week 10–12",
       "acceptableAlternatives": [
         "week 6 herniation, returns by week 10",
-        "6 weeks, reduced by 10–12 weeks"
+        "6 weeks, reduced by 10–12 weeks",
+        "Week 6 (physiological herniation), fully reduced by week 10–12"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "function_terms",
@@ -53178,10 +53260,11 @@
     {
       "id": "ha_embryo_085",
       "subDeckId": "embryology",
-      "correctAnswer": "COMT haploinsufficiency leads to increased dopamine in the prefrontal cortex",
+      "correctAnswer": "COMT haploinsufficiency → excess dopamine in prefrontal ctx",
       "acceptableAlternatives": [
         "COMT haploinsufficiency, elevated prefrontal dopamine",
-        "reduced COMT activity, excess dopamine"
+        "reduced COMT activity, excess dopamine",
+        "COMT haploinsufficiency leads to increased dopamine in the prefrontal cortex"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "function_terms",
@@ -53329,10 +53412,11 @@
     {
       "id": "ha_embryo_088",
       "subDeckId": "embryology",
-      "correctAnswer": "3rd pharyngeal arch → stylohyoid, posterior belly of digastric, and stapedius muscles",
+      "correctAnswer": "3rd arch → stylohyoid, posterior digastric, stapedius",
       "acceptableAlternatives": [
         "pharyngeal arch 3 gives styloid, hyoid, stylohyoid, posterior digastric",
-        "arch 3 derivatives"
+        "arch 3 derivatives",
+        "3rd pharyngeal arch → stylohyoid, posterior belly of digastric, and stapedius muscles"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "structure_names",
@@ -53381,9 +53465,10 @@
     {
       "id": "ha_embryo_089",
       "subDeckId": "embryology",
-      "correctAnswer": "Oligohydramnios (Potter sequence) → pulmonary hypoplasia, limb contractures, flattened facies",
+      "correctAnswer": "Oligohydramnios → pulmonary hypoplasia, limb contractures",
       "acceptableAlternatives": [
-        "oligohydramnios causes pulmonary hypoplasia; polyhydramnios suggests GI obstruction or CNS defect preventing swallowing"
+        "oligohydramnios causes pulmonary hypoplasia; polyhydramnios suggests GI obstruction or CNS defect preventing swallowing",
+        "Oligohydramnios (Potter sequence) → pulmonary hypoplasia, limb contractures, flattened facies"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "function_terms",
@@ -53422,10 +53507,11 @@
     {
       "id": "ha_embryo_090",
       "subDeckId": "embryology",
-      "correctAnswer": "Lymphedema (fetal) — causing webbing, cardiovascular deformity, and renal malposition",
+      "correctAnswer": "Fetal lymphedema → webbing, cardiovascular, renal defects",
       "acceptableAlternatives": [
         "fetal lymphedema",
-        "fetal edema from hypoalbuminemia causing structural deformities"
+        "fetal edema from hypoalbuminemia causing structural deformities",
+        "Lymphedema (fetal) — causing webbing, cardiovascular deformity, and renal malposition"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "function_terms",
@@ -53475,11 +53561,12 @@
     {
       "id": "ha_histo_061",
       "subDeckId": "histology",
-      "correctAnswer": "Zone 3 (centrilobular) — most susceptible; zone 1 (periportal) — most resistant",
+      "correctAnswer": "Zone 3 most susceptible; zone 1 most resistant to ischemia",
       "acceptableAlternatives": [
         "zone 3 most susceptible",
         "centrilobular most affected",
-        "zone 3 vulnerable"
+        "zone 3 vulnerable",
+        "Zone 3 (centrilobular) — most susceptible; zone 1 (periportal) — most resistant"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "location_terms",
@@ -53528,10 +53615,11 @@
     {
       "id": "ha_histo_062",
       "subDeckId": "histology",
-      "correctAnswer": "Glomerular filtration barrier: fenestrated endothelium → glomerular basement membrane (GBM) →",
+      "correctAnswer": "Fenestrated endothelium → basement membrane → podocytes",
       "acceptableAlternatives": [
         "endothelium, GBM, podocytes",
-        "fenestrated capillary endothelium, GBM, podocyte foot processes"
+        "fenestrated capillary endothelium, GBM, podocyte foot processes",
+        "Glomerular filtration barrier: fenestrated endothelium → glomerular basement membrane (GBM) →"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "structure_names",
@@ -53580,9 +53668,10 @@
     {
       "id": "ha_histo_063",
       "subDeckId": "histology",
-      "correctAnswer": "A band contains thick filaments (myosin); I band contains thin filaments only (actin)",
+      "correctAnswer": "A band: thick filaments (myosin); I band: thin filaments",
       "acceptableAlternatives": [
-        "A band myosin, I band actin only, H zone myosin only, Z disc boundary, M line center"
+        "A band myosin, I band actin only, H zone myosin only, Z disc boundary, M line center",
+        "A band contains thick filaments (myosin); I band contains thin filaments only (actin)"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "structure_names",
@@ -53681,10 +53770,11 @@
     {
       "id": "ha_histo_065",
       "subDeckId": "histology",
-      "correctAnswer": "Germinal center: somatic hypermutation (dark zone) and antigen-driven selection / class switch",
+      "correctAnswer": "Dark zone: somatic hypermutation; light zone: selection",
       "acceptableAlternatives": [
         "somatic hypermutation in dark zone, selection and class switching in light zone",
-        "germinal centers = somatic hypermutation and class switching"
+        "germinal centers = somatic hypermutation and class switching",
+        "Germinal center: somatic hypermutation (dark zone) and antigen-driven selection / class switch"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "structure_names",
@@ -53732,9 +53822,10 @@
     {
       "id": "ha_histo_066",
       "subDeckId": "histology",
-      "correctAnswer": "Multinucleated (6–50 nuclei), ruffled border adjacent to bone",
+      "correctAnswer": "Multinucleated (6–50 nuclei), ruffled border near bone",
       "acceptableAlternatives": [
-        "multinucleated, ruffled border, RANKL activation, monocyte lineage"
+        "multinucleated, ruffled border, RANKL activation, monocyte lineage",
+        "Multinucleated (6–50 nuclei), ruffled border adjacent to bone"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "tissue_types",
@@ -53782,9 +53873,10 @@
     {
       "id": "ha_histo_067",
       "subDeckId": "histology",
-      "correctAnswer": "Osteocyte in lacunae communicating via canaliculi — mechanosensory function",
+      "correctAnswer": "Osteocyte in lacunae via canaliculi — mechanosensory",
       "acceptableAlternatives": [
-        "osteocytes in lacunae, connected by canaliculi, mechanosensors"
+        "osteocytes in lacunae, connected by canaliculi, mechanosensors",
+        "Osteocyte in lacunae communicating via canaliculi — mechanosensory function"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "tissue_types",
@@ -53832,10 +53924,11 @@
     {
       "id": "ha_histo_068",
       "subDeckId": "histology",
-      "correctAnswer": "Respiratory membrane: alveolar surfactant → type I pneumocyte → fused basement membranes → capillary",
+      "correctAnswer": "Surfactant → type I pneumocyte → fused BM → capillary",
       "acceptableAlternatives": [
         "type I pneumocyte, basement membrane, endothelium",
-        "alveolar epithelium, shared BM, capillary endothelium"
+        "alveolar epithelium, shared BM, capillary endothelium",
+        "Respiratory membrane: alveolar surfactant → type I pneumocyte → fused basement membranes → capillary"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "structure_names",
@@ -53883,10 +53976,11 @@
     {
       "id": "ha_histo_069",
       "subDeckId": "histology",
-      "correctAnswer": "Cirrhosis — bridging fibrosis connecting portal tracts and central veins with regenerative nodules",
+      "correctAnswer": "Bridging fibrosis + regenerative nodules",
       "acceptableAlternatives": [
         "bridging fibrosis and regenerative nodules = cirrhosis",
-        "cirrhosis defined by regenerative nodules and fibrous bands"
+        "cirrhosis defined by regenerative nodules and fibrous bands",
+        "Cirrhosis — bridging fibrosis connecting portal tracts and central veins with regenerative nodules"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "clinical_terms",
@@ -53935,9 +54029,10 @@
     {
       "id": "ha_histo_070",
       "subDeckId": "histology",
-      "correctAnswer": "Emphysema — permanent abnormal enlargement of airspaces distal to the terminal bronchiole with",
+      "correctAnswer": "Permanent airspace enlargement beyond terminal bronchiole",
       "acceptableAlternatives": [
-        "emphysema definition: permanent airspace enlargement, alveolar wall destruction, no fibrosis"
+        "emphysema definition: permanent airspace enlargement, alveolar wall destruction, no fibrosis",
+        "Emphysema — permanent abnormal enlargement of airspaces distal to the terminal bronchiole with"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "clinical_terms",
@@ -53986,10 +54081,11 @@
     {
       "id": "ha_histo_071",
       "subDeckId": "histology",
-      "correctAnswer": "H&E: hematoxylin stains nuclei blue/violet, eosin stains cytoplasm and extracellular matrix pink/red",
+      "correctAnswer": "Hematoxylin: nuclei blue/violet; eosin: cytoplasm pink/red",
       "acceptableAlternatives": [
         "hematoxylin blue nuclei, eosin pink cytoplasm",
-        "H&E routine stain"
+        "H&E routine stain",
+        "H&E: hematoxylin stains nuclei blue/violet, eosin stains cytoplasm and extracellular matrix pink/red"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "clinical_terms",
@@ -54088,10 +54184,11 @@
     {
       "id": "ha_histo_073",
       "subDeckId": "histology",
-      "correctAnswer": "Masson's trichrome: collagen and fibrosis = blue/green; muscle = red; nuclei = dark brown/black",
+      "correctAnswer": "Collagen/fibrosis = blue/green; muscle = red; nuclei = dark",
       "acceptableAlternatives": [
         "Masson trichrome collagen blue, muscle red",
-        "trichrome: blue collagen, red muscle"
+        "trichrome: blue collagen, red muscle",
+        "Masson's trichrome: collagen and fibrosis = blue/green; muscle = red; nuclei = dark brown/black"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "clinical_terms",
@@ -54139,10 +54236,11 @@
     {
       "id": "ha_histo_074",
       "subDeckId": "histology",
-      "correctAnswer": "Silver stain (reticulin stain): highlights reticulin (type III collagen) fibers in black",
+      "correctAnswer": "Silver stain: highlights type III collagen (reticulin) black",
       "acceptableAlternatives": [
         "silver stain reticulin type III collagen black liver bone marrow",
-        "reticulin stain silver type III collagen"
+        "reticulin stain silver type III collagen",
+        "Silver stain (reticulin stain): highlights reticulin (type III collagen) fibers in black"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "clinical_terms",
@@ -54190,10 +54288,11 @@
     {
       "id": "ha_histo_075",
       "subDeckId": "histology",
-      "correctAnswer": "Granulation tissue: fibroblasts + new thin-walled capillaries (angiogenesis) + macrophages in loose",
+      "correctAnswer": "Fibroblasts + new capillaries (angiogenesis) + macrophages",
       "acceptableAlternatives": [
         "granulation tissue = fibroblasts, new capillaries, macrophages",
-        "fibroblasts and angiogenesis in granulation tissue"
+        "fibroblasts and angiogenesis in granulation tissue",
+        "Granulation tissue: fibroblasts + new thin-walled capillaries (angiogenesis) + macrophages in loose"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "structure_names",
@@ -54241,9 +54340,10 @@
     {
       "id": "ha_histo_076",
       "subDeckId": "histology",
-      "correctAnswer": "Keloid: extends beyond wound margins, type I collagen excess (20-fold), does not regress",
+      "correctAnswer": "Keloid: beyond wound margins, excess collagen, no regression",
       "acceptableAlternatives": [
-        "keloid beyond wound margins 20x collagen; hypertrophic within margins 3x collagen may regress"
+        "keloid beyond wound margins 20x collagen; hypertrophic within margins 3x collagen may regress",
+        "Keloid: extends beyond wound margins, type I collagen excess (20-fold), does not regress"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "clinical_terms",
@@ -54292,10 +54392,11 @@
     {
       "id": "ha_histo_077",
       "subDeckId": "histology",
-      "correctAnswer": "Membranous nephropathy: subepithelial granular IgG deposits, spike-and-dome pattern on EM",
+      "correctAnswer": "Membranous nephropathy: subepithelial IgG, spike-and-dome",
       "acceptableAlternatives": [
         "membranous nephropathy subepithelial deposits spike and dome",
-        "membranous GN GBM thickening granular IgG"
+        "membranous GN GBM thickening granular IgG",
+        "Membranous nephropathy: subepithelial granular IgG deposits, spike-and-dome pattern on EM"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "clinical_terms",
@@ -54344,11 +54445,12 @@
     {
       "id": "ha_histo_078",
       "subDeckId": "histology",
-      "correctAnswer": "IgA nephropathy (Berger disease): mesangial IgA deposits → hematuria within 24–48 hours of mucosal",
+      "correctAnswer": "IgA nephropathy (Berger disease): mesangial IgA, hematuria",
       "acceptableAlternatives": [
         "IgA nephropathy",
         "Berger's disease",
-        "mesangial IgA deposition"
+        "mesangial IgA deposition",
+        "IgA nephropathy (Berger disease): mesangial IgA deposits → hematuria within 24–48 hours of mucosal"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "clinical_terms",
@@ -54397,11 +54499,12 @@
     {
       "id": "ha_histo_079",
       "subDeckId": "histology",
-      "correctAnswer": "Crescentic glomerulonephritis (rapidly progressive GN): fibrocellular crescents of parietal cells +",
+      "correctAnswer": "Crescentic (rapidly progressive) GN: crescents in Bowman's",
       "acceptableAlternatives": [
         "crescents in Bowman's space",
         "RPGN crescentic GN",
-        "fibrocellular crescents"
+        "fibrocellular crescents",
+        "Crescentic glomerulonephritis (rapidly progressive GN): fibrocellular crescents of parietal cells +"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "clinical_terms",
@@ -54450,9 +54553,10 @@
     {
       "id": "ha_histo_080",
       "subDeckId": "histology",
-      "correctAnswer": "Myomesin anchors thick filaments at the M line; alpha-actinin anchors thin filaments at the Z disc",
+      "correctAnswer": "Myomesin anchors myosin at M line; alpha-actinin at Z disc",
       "acceptableAlternatives": [
-        "M line: myomesin anchors myosin; Z disc: alpha-actinin anchors actin"
+        "M line: myomesin anchors myosin; Z disc: alpha-actinin anchors actin",
+        "Myomesin anchors thick filaments at the M line; alpha-actinin anchors thin filaments at the Z disc"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "structure_names",
@@ -54500,9 +54604,10 @@
     {
       "id": "ha_histo_081",
       "subDeckId": "histology",
-      "correctAnswer": "Type II pneumocytes: cuboidal cells with lamellar bodies, secrete surfactant",
+      "correctAnswer": "Type II pneumocytes: cuboidal, lamellar bodies, surfactant",
       "acceptableAlternatives": [
-        "type II pneumocytes secreting surfactant via lamellar bodies, alveolar repair"
+        "type II pneumocytes secreting surfactant via lamellar bodies, alveolar repair",
+        "Type II pneumocytes: cuboidal cells with lamellar bodies, secrete surfactant"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "tissue_types",
@@ -54550,10 +54655,11 @@
     {
       "id": "ha_histo_082",
       "subDeckId": "histology",
-      "correctAnswer": "Hassall's corpuscles: concentric whorls of eosinophilic type VI epithelial cells in the thymic",
+      "correctAnswer": "Hassall's corpuscles: eosinophilic whorls in thymic medulla",
       "acceptableAlternatives": [
         "Hassall corpuscles in thymic medulla, concentric whorls of epithelial cells",
-        "eosinophilic concentric whorls in medulla"
+        "eosinophilic concentric whorls in medulla",
+        "Hassall's corpuscles: concentric whorls of eosinophilic type VI epithelial cells in the thymic"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "structure_names",
@@ -54601,10 +54707,11 @@
     {
       "id": "ha_histo_083",
       "subDeckId": "histology",
-      "correctAnswer": "Membranoproliferative (mesangiocapillary) GN Type I: tram-track GBM splitting due to subendothelial",
+      "correctAnswer": "Membranoproliferative GN Type I: tram-track GBM splitting",
       "acceptableAlternatives": [
         "MPGN tram-track pattern",
-        "tram-track appearance in MPGN from GBM duplication"
+        "tram-track appearance in MPGN from GBM duplication",
+        "Membranoproliferative (mesangiocapillary) GN Type I: tram-track GBM splitting due to subendothelial"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "clinical_terms",
@@ -54653,9 +54760,10 @@
     {
       "id": "ha_histo_084",
       "subDeckId": "histology",
-      "correctAnswer": "Centrilobular emphysema: proximal acinus affected (respiratory bronchiole and proximal alveolar",
+      "correctAnswer": "Centrilobular: proximal acinus; panacinar: entire acinus",
       "acceptableAlternatives": [
-        "centrilobular = proximal acinus; panacinar = whole acinus"
+        "centrilobular = proximal acinus; panacinar = whole acinus",
+        "Centrilobular emphysema: proximal acinus affected (respiratory bronchiole and proximal alveolar"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "location_terms",
@@ -54745,10 +54853,11 @@
     {
       "id": "ha_histo_086",
       "subDeckId": "histology",
-      "correctAnswer": "Hepatic sinusoids lined by fenestrated endothelium (no diaphragm or basement membrane)",
+      "correctAnswer": "Fenestrated endothelium, no diaphragm or basement membrane",
       "acceptableAlternatives": [
         "sinusoids: fenestrated endothelium, Kupffer cells, space of Disse",
-        "hepatic sinusoid structure"
+        "hepatic sinusoid structure",
+        "Hepatic sinusoids lined by fenestrated endothelium (no diaphragm or basement membrane)"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "structure_names",
@@ -54950,10 +55059,11 @@
     {
       "id": "ha_histo_090",
       "subDeckId": "histology",
-      "correctAnswer": "Congo red stain: amyloid appears red/orange under regular light and shows apple-green birefringence",
+      "correctAnswer": "Congo red: apple-green birefringence under polarized light",
       "acceptableAlternatives": [
         "Congo red apple-green birefringence under polarized light",
-        "amyloid Congo red green birefringence"
+        "amyloid Congo red green birefringence",
+        "Congo red stain: amyloid appears red/orange under regular light and shows apple-green birefringence"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "clinical_terms",
@@ -55152,10 +55262,11 @@
     {
       "id": "ha_musc_115",
       "subDeckId": "muscular_system",
-      "correctAnswer": "Abductor pollicis longus and extensor pollicis brevis (lateral/radial border)",
+      "correctAnswer": "APL + EPB (lateral border of snuffbox); EPL (medial)",
       "acceptableAlternatives": [
         "APL and EPB",
-        "abductor pollicis longus and extensor pollicis brevis"
+        "abductor pollicis longus and extensor pollicis brevis",
+        "Abductor pollicis longus and extensor pollicis brevis (lateral/radial border)"
       ],
       "chainThemeId": "wrist_thumb_muscles",
       "answerTypePoolId": "structure_names",
@@ -55376,10 +55487,11 @@
     {
       "id": "ha_musc_121",
       "subDeckId": "muscular_system",
-      "correctAnswer": "External intercostals — elevate ribs during forced inspiration",
+      "correctAnswer": "External intercostals — elevate ribs, forced inspiration",
       "acceptableAlternatives": [
         "external intercostal muscles",
-        "external intercostals"
+        "external intercostals",
+        "External intercostals — elevate ribs during forced inspiration"
       ],
       "chainThemeId": "thoracic_muscles",
       "answerTypePoolId": "function_terms",
@@ -55486,11 +55598,12 @@
     {
       "id": "ha_musc_124",
       "subDeckId": "muscular_system",
-      "correctAnswer": "CN XII (hypoglossal nerve) — tongue deviates toward the side of the lesion",
+      "correctAnswer": "CN XII (hypoglossal) — tongue deviates toward lesion side",
       "acceptableAlternatives": [
         "hypoglossal nerve",
         "cranial nerve 12",
-        "CN 12"
+        "CN 12",
+        "CN XII (hypoglossal nerve) — tongue deviates toward the side of the lesion"
       ],
       "chainThemeId": "tongue_muscles",
       "answerTypePoolId": "structure_names",
@@ -55518,11 +55631,12 @@
     {
       "id": "ha_musc_125",
       "subDeckId": "muscular_system",
-      "correctAnswer": "CN X (vagus nerve) via the pharyngeal plexus — all pharyngeal constrictors",
+      "correctAnswer": "CN X (vagus) via pharyngeal plexus — pharyngeal constrictors",
       "acceptableAlternatives": [
         "vagus nerve",
         "CN X",
-        "cranial nerve 10 via pharyngeal plexus"
+        "cranial nerve 10 via pharyngeal plexus",
+        "CN X (vagus nerve) via the pharyngeal plexus — all pharyngeal constrictors"
       ],
       "chainThemeId": "pharyngeal_muscles",
       "answerTypePoolId": "structure_names",
@@ -55588,11 +55702,12 @@
     {
       "id": "ha_musc_127",
       "subDeckId": "muscular_system",
-      "correctAnswer": "Cricothyroid muscle — external branch of the superior laryngeal nerve (CN X branch)",
+      "correctAnswer": "Cricothyroid — external branch of superior laryngeal nerve",
       "acceptableAlternatives": [
         "cricothyroid",
         "superior laryngeal nerve external branch",
-        "external superior laryngeal nerve"
+        "external superior laryngeal nerve",
+        "Cricothyroid muscle — external branch of the superior laryngeal nerve (CN X branch)"
       ],
       "chainThemeId": "laryngeal_muscles",
       "answerTypePoolId": "structure_names",
@@ -55735,10 +55850,11 @@
     {
       "id": "ha_musc_131",
       "subDeckId": "muscular_system",
-      "correctAnswer": "Rotator cuff: SITS — Supraspinatus, Infraspinatus, Teres minor, Subscapularis",
+      "correctAnswer": "SITS (Supra-, Infra-spinatus, Teres minor, Subscapularis)",
       "acceptableAlternatives": [
         "SITS",
-        "supraspinatus infraspinatus teres minor subscapularis"
+        "supraspinatus infraspinatus teres minor subscapularis",
+        "Rotator cuff: SITS — Supraspinatus, Infraspinatus, Teres minor, Subscapularis"
       ],
       "chainThemeId": "rotator_cuff",
       "answerTypePoolId": "structure_names",
@@ -55765,10 +55881,11 @@
     {
       "id": "ha_musc_132",
       "subDeckId": "muscular_system",
-      "correctAnswer": "Subscapularis — internal rotation; tested by lift-off or belly-press test",
+      "correctAnswer": "Subscapularis — internal rotation; lift-off/belly-press test",
       "acceptableAlternatives": [
         "subscapularis",
-        "subscapularis muscle"
+        "subscapularis muscle",
+        "Subscapularis — internal rotation; tested by lift-off or belly-press test"
       ],
       "chainThemeId": "rotator_cuff",
       "answerTypePoolId": "function_terms",
@@ -55889,10 +56006,11 @@
     {
       "id": "ha_musc_136",
       "subDeckId": "muscular_system",
-      "correctAnswer": "Posterior cricoarytenoid — the sole abductor of the vocal cords",
+      "correctAnswer": "Posterior cricoarytenoid — sole abductor of the vocal cords",
       "acceptableAlternatives": [
         "posterior cricoarytenoid",
-        "PCA muscle"
+        "PCA muscle",
+        "Posterior cricoarytenoid — the sole abductor of the vocal cords"
       ],
       "chainThemeId": "laryngeal_muscles",
       "answerTypePoolId": "function_terms",
@@ -55921,11 +56039,12 @@
     {
       "id": "ha_musc_137",
       "subDeckId": "muscular_system",
-      "correctAnswer": "Tibialis posterior dysfunction → hindfoot valgus, medial arch collapse",
+      "correctAnswer": "Tibialis posterior failure → hindfoot valgus, arch collapse",
       "acceptableAlternatives": [
         "hindfoot valgus and flatfoot",
         "acquired adult flatfoot",
-        "progressive collapse flatfoot"
+        "progressive collapse flatfoot",
+        "Tibialis posterior dysfunction → hindfoot valgus, medial arch collapse"
       ],
       "chainThemeId": "foot_muscles",
       "answerTypePoolId": "clinical_terms",
@@ -55984,10 +56103,11 @@
     {
       "id": "ha_musc_139",
       "subDeckId": "muscular_system",
-      "correctAnswer": "Superior oblique — intorsion (primary), depression (in adduction), abduction (in abduction)",
+      "correctAnswer": "Superior oblique: intorsion (primary), depression, abduction",
       "acceptableAlternatives": [
         "intortion and depression",
-        "intorts and depresses the adducted eye"
+        "intorts and depresses the adducted eye",
+        "Superior oblique — intorsion (primary), depression (in adduction), abduction (in abduction)"
       ],
       "chainThemeId": "eye_muscles",
       "answerTypePoolId": "function_terms",
@@ -56092,11 +56212,12 @@
     {
       "id": "ha_nerv_097",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Brodmann areas 44 and 45 (Broca's area) — inferior frontal gyrus, dominant hemisphere",
+      "correctAnswer": "Broca's area (44+45) — inferior frontal gyrus, dominant hem.",
       "acceptableAlternatives": [
         "Broca's area",
         "areas 44 and 45",
-        "Brodmann 44/45"
+        "Brodmann 44/45",
+        "Brodmann areas 44 and 45 (Broca's area) — inferior frontal gyrus, dominant hemisphere"
       ],
       "chainThemeId": "cerebral_cortex",
       "answerTypePoolId": "structure_names",
@@ -56131,11 +56252,12 @@
     {
       "id": "ha_nerv_098",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Brodmann areas 41 and 42 — primary auditory cortex — superior temporal gyrus (Heschl's gyri)",
+      "correctAnswer": "Brodmann areas 41 and 42 — superior temporal gyrus",
       "acceptableAlternatives": [
         "areas 41 and 42",
         "primary auditory cortex",
-        "Heschl's gyri"
+        "Heschl's gyri",
+        "Brodmann areas 41 and 42 — primary auditory cortex — superior temporal gyrus (Heschl's gyri)"
       ],
       "chainThemeId": "cerebral_cortex",
       "answerTypePoolId": "structure_names",
@@ -56164,10 +56286,11 @@
     {
       "id": "ha_nerv_099",
       "subDeckId": "nervous_system",
-      "correctAnswer": "VPL (ventral posterolateral nucleus) — body sensation via DCML and spinothalamic tracts",
+      "correctAnswer": "VPL (ventral posterolateral nucleus) — body sensation relay",
       "acceptableAlternatives": [
         "ventral posterolateral",
-        "VPL nucleus"
+        "VPL nucleus",
+        "VPL (ventral posterolateral nucleus) — body sensation via DCML and spinothalamic tracts"
       ],
       "chainThemeId": "thalamic_nuclei",
       "answerTypePoolId": "structure_names",
@@ -56202,10 +56325,11 @@
     {
       "id": "ha_nerv_100",
       "subDeckId": "nervous_system",
-      "correctAnswer": "LGN (lateral geniculate nucleus) — vision relay from optic tract",
+      "correctAnswer": "LGN (lateral geniculate nucleus) — vision relay",
       "acceptableAlternatives": [
         "lateral geniculate nucleus",
-        "LGN"
+        "LGN",
+        "LGN (lateral geniculate nucleus) — vision relay from optic tract"
       ],
       "chainThemeId": "thalamic_nuclei",
       "answerTypePoolId": "structure_names",
@@ -56240,11 +56364,12 @@
     {
       "id": "ha_nerv_101",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Ventral lateral (VL) nucleus — motor relay from cerebellum and basal ganglia to motor cortex",
+      "correctAnswer": "VL nucleus — motor relay from cerebellum and basal ganglia",
       "acceptableAlternatives": [
         "ventral lateral nucleus",
         "VL nucleus",
-        "VL thalamus"
+        "VL thalamus",
+        "Ventral lateral (VL) nucleus — motor relay from cerebellum and basal ganglia to motor cortex"
       ],
       "chainThemeId": "thalamic_nuclei",
       "answerTypePoolId": "structure_names",
@@ -56273,10 +56398,11 @@
     {
       "id": "ha_nerv_102",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Suprachiasmatic nucleus (SCN) — circadian rhythm master clock",
+      "correctAnswer": "Suprachiasmatic nucleus (SCN) — circadian master clock",
       "acceptableAlternatives": [
         "suprachiasmatic nucleus",
-        "SCN"
+        "SCN",
+        "Suprachiasmatic nucleus (SCN) — circadian rhythm master clock"
       ],
       "chainThemeId": "hypothalamic_nuclei",
       "answerTypePoolId": "structure_names",
@@ -56375,11 +56501,12 @@
     {
       "id": "ha_nerv_105",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Ventromedial nucleus — satiety centre; destruction causes hyperphagia and obesity",
+      "correctAnswer": "Ventromedial nucleus — satiety centre; destruction → obesity",
       "acceptableAlternatives": [
         "ventromedial hypothalamus",
         "VMH",
-        "ventromedial nucleus"
+        "ventromedial nucleus",
+        "Ventromedial nucleus — satiety centre; destruction causes hyperphagia and obesity"
       ],
       "chainThemeId": "hypothalamic_nuclei",
       "answerTypePoolId": "structure_names",
@@ -56414,10 +56541,11 @@
     {
       "id": "ha_nerv_106",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Cortex → striatum (caudate + putamen) → globus pallidus → thalamus → cortex",
+      "correctAnswer": "Cortex → striatum → globus pallidus → thalamus → cortex",
       "acceptableAlternatives": [
         "cortico-striato-pallido-thalamo-cortical loop",
-        "basal ganglia circuit"
+        "basal ganglia circuit",
+        "Cortex → striatum (caudate + putamen) → globus pallidus → thalamus → cortex"
       ],
       "chainThemeId": "basal_ganglia",
       "answerTypePoolId": "structure_names",
@@ -56451,11 +56579,12 @@
     {
       "id": "ha_nerv_107",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Huntington's disease — caudate nucleus (indirect pathway striatal neurons) atrophy",
+      "correctAnswer": "Huntington's disease — caudate nucleus atrophy",
       "acceptableAlternatives": [
         "Huntington's disease",
         "Huntington disease",
-        "caudate atrophy in Huntington's"
+        "caudate atrophy in Huntington's",
+        "Huntington's disease — caudate nucleus (indirect pathway striatal neurons) atrophy"
       ],
       "chainThemeId": "basal_ganglia",
       "answerTypePoolId": "clinical_terms",
@@ -56484,10 +56613,11 @@
     {
       "id": "ha_nerv_108",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Loss of dopaminergic neurons in the substantia nigra pars compacta (SNc)",
+      "correctAnswer": "Loss of dopaminergic neurons in substantia nigra (SNc)",
       "acceptableAlternatives": [
         "substantia nigra pars compacta degeneration",
-        "SNc dopamine neuron loss"
+        "SNc dopamine neuron loss",
+        "Loss of dopaminergic neurons in the substantia nigra pars compacta (SNc)"
       ],
       "chainThemeId": "basal_ganglia",
       "answerTypePoolId": "clinical_terms",
@@ -56516,11 +56646,12 @@
     {
       "id": "ha_nerv_109",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Lateral cerebellar hemisphere — planning and timing of skilled voluntary movement (dentate nucleus",
+      "correctAnswer": "Lateral cerebellar hemisphere — motor planning (dentate)",
       "acceptableAlternatives": [
         "lateral hemisphere",
         "cerebrocerebellum",
-        "lateral cerebellum"
+        "lateral cerebellum",
+        "Lateral cerebellar hemisphere — planning and timing of skilled voluntary movement (dentate nucleus"
       ],
       "chainThemeId": "cerebellum",
       "answerTypePoolId": "structure_names",
@@ -56555,11 +56686,12 @@
     {
       "id": "ha_nerv_110",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Vermis (and intermediate zone) — truncal and limb coordination via fastigial and interposed nuclei",
+      "correctAnswer": "Vermis and intermediate zone — truncal/limb coordination",
       "acceptableAlternatives": [
         "vermis",
         "spinocerebellum",
-        "cerebellar vermis"
+        "cerebellar vermis",
+        "Vermis (and intermediate zone) — truncal and limb coordination via fastigial and interposed nuclei"
       ],
       "chainThemeId": "cerebellum",
       "answerTypePoolId": "structure_names",
@@ -56588,10 +56720,11 @@
     {
       "id": "ha_nerv_111",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Middle cerebellar peduncle — afferent input from contralateral pons (pontocerebellar fibres)",
+      "correctAnswer": "Middle cerebellar peduncle — afferent input from pons",
       "acceptableAlternatives": [
         "middle cerebellar peduncle",
-        "brachium pontis"
+        "brachium pontis",
+        "Middle cerebellar peduncle — afferent input from contralateral pons (pontocerebellar fibres)"
       ],
       "chainThemeId": "cerebellum",
       "answerTypePoolId": "structure_names",
@@ -56619,10 +56752,11 @@
     {
       "id": "ha_nerv_112",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Anterior cord syndrome — bilateral motor loss + pain/temperature loss",
+      "correctAnswer": "Anterior cord syndrome — bilateral motor + pain/temp loss",
       "acceptableAlternatives": [
         "anterior cord syndrome",
-        "anterior spinal artery syndrome"
+        "anterior spinal artery syndrome",
+        "Anterior cord syndrome — bilateral motor loss + pain/temperature loss"
       ],
       "chainThemeId": "spinal_cord_syndromes",
       "answerTypePoolId": "clinical_terms",
@@ -56658,10 +56792,11 @@
     {
       "id": "ha_nerv_113",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Central cord syndrome — upper extremity weakness greater than lower extremity weakness",
+      "correctAnswer": "Central cord syndrome — upper > lower extremity weakness",
       "acceptableAlternatives": [
         "central cord syndrome",
-        "central spinal cord syndrome"
+        "central spinal cord syndrome",
+        "Central cord syndrome — upper extremity weakness greater than lower extremity weakness"
       ],
       "chainThemeId": "spinal_cord_syndromes",
       "answerTypePoolId": "clinical_terms",
@@ -56725,10 +56860,11 @@
     {
       "id": "ha_nerv_115",
       "subDeckId": "nervous_system",
-      "correctAnswer": "CN V — jaw deviates toward the side of the weak pterygoid muscle (side of the lesion)",
+      "correctAnswer": "CN V — jaw deviates toward the weak (lesioned) side",
       "acceptableAlternatives": [
         "trigeminal nerve motor",
-        "CN V3 jaw deviation toward lesion side"
+        "CN V3 jaw deviation toward lesion side",
+        "CN V — jaw deviates toward the side of the weak pterygoid muscle (side of the lesion)"
       ],
       "chainThemeId": "cranial_nerve_examination",
       "answerTypePoolId": "clinical_terms",
@@ -56758,11 +56894,12 @@
     {
       "id": "ha_nerv_116",
       "subDeckId": "nervous_system",
-      "correctAnswer": "LMN CN XII lesion — tongue deviates toward the lesion side on protrusion (weak ipsilateral",
+      "correctAnswer": "LMN CN XII lesion — tongue deviates toward lesion side",
       "acceptableAlternatives": [
         "CN XII LMN lesion",
         "hypoglossal nerve palsy",
-        "tongue deviation toward lesion"
+        "tongue deviation toward lesion",
+        "LMN CN XII lesion — tongue deviates toward the lesion side on protrusion (weak ipsilateral"
       ],
       "chainThemeId": "cranial_nerve_examination",
       "answerTypePoolId": "clinical_terms",
@@ -56792,10 +56929,11 @@
     {
       "id": "ha_nerv_117",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Brown-Séquard syndrome — ipsilateral motor loss + proprioception loss",
+      "correctAnswer": "Brown-Séquard — ipsilateral motor + proprioception loss",
       "acceptableAlternatives": [
         "Brown-Sequard syndrome",
-        "spinal cord hemisection"
+        "spinal cord hemisection",
+        "Brown-Séquard syndrome — ipsilateral motor loss + proprioception loss"
       ],
       "chainThemeId": "spinal_cord_syndromes",
       "answerTypePoolId": "clinical_terms",
@@ -56871,10 +57009,11 @@
     {
       "id": "ha_nerv_119",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Lateral hypothalamus — 'hunger centre'; destruction causes anorexia and weight loss",
+      "correctAnswer": "Lateral hypothalamus — hunger centre; destruction → anorexia",
       "acceptableAlternatives": [
         "lateral hypothalamic area",
-        "lateral hypothalamus hunger"
+        "lateral hypothalamus hunger",
+        "Lateral hypothalamus — 'hunger centre'; destruction causes anorexia and weight loss"
       ],
       "chainThemeId": "hypothalamic_nuclei",
       "answerTypePoolId": "structure_names",
@@ -56903,10 +57042,11 @@
     {
       "id": "ha_nerv_120",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Arcuate nucleus — releases dopamine (inhibits prolactin) and GnRH (controls LH/FSH pulsatile",
+      "correctAnswer": "Arcuate nucleus — dopamine (inhibits prolactin) and GnRH",
       "acceptableAlternatives": [
         "arcuate nucleus dopamine GnRH",
-        "arcuate nucleus hypothalamus"
+        "arcuate nucleus hypothalamus",
+        "Arcuate nucleus — releases dopamine (inhibits prolactin) and GnRH (controls LH/FSH pulsatile"
       ],
       "chainThemeId": "hypothalamic_nuclei",
       "answerTypePoolId": "structure_names",
@@ -56936,10 +57076,11 @@
     {
       "id": "ha_nerv_121",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Superior cerebellar peduncle — primary efferent pathway from deep cerebellar nuclei to contralateral",
+      "correctAnswer": "Superior cerebellar peduncle — primary efferent pathway",
       "acceptableAlternatives": [
         "superior cerebellar peduncle efferent",
-        "brachium conjunctivum"
+        "brachium conjunctivum",
+        "Superior cerebellar peduncle — primary efferent pathway from deep cerebellar nuclei to contralateral"
       ],
       "chainThemeId": "cerebellum",
       "answerTypePoolId": "structure_names",
@@ -56967,10 +57108,11 @@
     {
       "id": "ha_nerv_122",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Indirect basal ganglia pathway — cortex → striatum → GPe → STN → GPi/SNr → thalamus (inhibited)",
+      "correctAnswer": "Cortex → striatum → GPe → STN → GPi/SNr → thalamus",
       "acceptableAlternatives": [
         "indirect pathway basal ganglia",
-        "basal ganglia indirect"
+        "basal ganglia indirect",
+        "Indirect basal ganglia pathway — cortex → striatum → GPe → STN → GPi/SNr → thalamus (inhibited)"
       ],
       "chainThemeId": "basal_ganglia",
       "answerTypePoolId": "function_terms",
@@ -56999,10 +57141,11 @@
     {
       "id": "ha_nerv_123",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Anterior hypothalamus — heat dissipation (promotes cooling: sweating, vasodilation)",
+      "correctAnswer": "Anterior hypothalamus — heat dissipation (cooling)",
       "acceptableAlternatives": [
         "anterior hypothalamus cooling posterior heating",
-        "anterior hypothalamus temperature regulation"
+        "anterior hypothalamus temperature regulation",
+        "Anterior hypothalamus — heat dissipation (promotes cooling: sweating, vasodilation)"
       ],
       "chainThemeId": "hypothalamic_nuclei",
       "answerTypePoolId": "structure_names",
@@ -57030,10 +57173,11 @@
     {
       "id": "ha_nerv_124",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Hemiballismus — contralateral wild flinging movements of the proximal limb",
+      "correctAnswer": "Hemiballismus — contralateral proximal limb flinging",
       "acceptableAlternatives": [
         "hemiballismus subthalamic nucleus",
-        "ballism STN"
+        "ballism STN",
+        "Hemiballismus — contralateral wild flinging movements of the proximal limb"
       ],
       "chainThemeId": "basal_ganglia",
       "answerTypePoolId": "clinical_terms",
@@ -57103,10 +57247,11 @@
     {
       "id": "ha_cardio_086",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "VSD (ventricular septal defect) — most common congenital heart defect overall",
+      "correctAnswer": "VSD (ventricular septal defect) — most common CHD overall",
       "acceptableAlternatives": [
         "ventricular septal defect",
-        "VSD"
+        "VSD",
+        "VSD (ventricular septal defect) — most common congenital heart defect overall"
       ],
       "chainThemeId": "congenital_heart_defects",
       "answerTypePoolId": "clinical_terms",
@@ -57178,11 +57323,12 @@
     {
       "id": "ha_cardio_088",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Indomethacin (NSAID/COX inhibitor) — closes PDA by blocking prostaglandin synthesis",
+      "correctAnswer": "Indomethacin — closes PDA by blocking prostaglandins",
       "acceptableAlternatives": [
         "indomethacin",
         "NSAID closes PDA",
-        "COX inhibitor"
+        "COX inhibitor",
+        "Indomethacin (NSAID/COX inhibitor) — closes PDA by blocking prostaglandin synthesis"
       ],
       "chainThemeId": "congenital_heart_defects",
       "answerTypePoolId": "clinical_terms",
@@ -57218,10 +57364,11 @@
     {
       "id": "ha_cardio_089",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Aortic stenosis — crescendo-decrescendo (diamond-shaped) systolic murmur",
+      "correctAnswer": "Aortic stenosis — crescendo-decrescendo systolic murmur",
       "acceptableAlternatives": [
         "crescendo-decrescendo murmur of AS",
-        "ejection systolic murmur aortic stenosis"
+        "ejection systolic murmur aortic stenosis",
+        "Aortic stenosis — crescendo-decrescendo (diamond-shaped) systolic murmur"
       ],
       "chainThemeId": "valvular_heart_disease",
       "answerTypePoolId": "clinical_terms",
@@ -57251,11 +57398,12 @@
     {
       "id": "ha_cardio_090",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Mitral regurgitation — holosystolic (pansystolic) blowing murmur, loudest at the apex",
+      "correctAnswer": "Mitral regurgitation — holosystolic blowing murmur at apex",
       "acceptableAlternatives": [
         "MR murmur",
         "mitral regurgitation murmur",
-        "pansystolic murmur at apex"
+        "pansystolic murmur at apex",
+        "Mitral regurgitation — holosystolic (pansystolic) blowing murmur, loudest at the apex"
       ],
       "chainThemeId": "valvular_heart_disease",
       "answerTypePoolId": "clinical_terms",
@@ -57285,11 +57433,12 @@
     {
       "id": "ha_cardio_091",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Mitral valve prolapse — mid-systolic click followed by a late systolic murmur",
+      "correctAnswer": "Mitral valve prolapse — mid-systolic click, late murmur",
       "acceptableAlternatives": [
         "MVP",
         "mitral valve prolapse",
-        "mid-systolic click"
+        "mid-systolic click",
+        "Mitral valve prolapse — mid-systolic click followed by a late systolic murmur"
       ],
       "chainThemeId": "valvular_heart_disease",
       "answerTypePoolId": "clinical_terms",
@@ -57364,10 +57513,11 @@
     {
       "id": "ha_cardio_093",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "RCA (right coronary artery) — inferior LV wall, RV, SA node, and AV node",
+      "correctAnswer": "RCA — inferior LV wall, RV, SA node, and AV node",
       "acceptableAlternatives": [
         "right coronary artery",
-        "RCA"
+        "RCA",
+        "RCA (right coronary artery) — inferior LV wall, RV, SA node, and AV node"
       ],
       "chainThemeId": "coronary_artery_territories",
       "answerTypePoolId": "structure_names",
@@ -57397,11 +57547,12 @@
     {
       "id": "ha_cardio_094",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "SA node action potential — Phase 0 (Ca²⁺ current), Phase 3 (K⁺ efflux)",
+      "correctAnswer": "SA node — Phase 0 (Ca²⁺), Phase 3 (K⁺ efflux)",
       "acceptableAlternatives": [
         "SA node pacemaker potential",
         "funny current If",
-        "pacemaker action potential"
+        "pacemaker action potential",
+        "SA node action potential — Phase 0 (Ca²⁺ current), Phase 3 (K⁺ efflux)"
       ],
       "chainThemeId": "cardiac_electrophysiology",
       "answerTypePoolId": "function_terms",
@@ -57436,10 +57587,11 @@
     {
       "id": "ha_cardio_095",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Ventricular action potential — Phase 0 (rapid Na⁺ influx), Phase 1 (K⁺ efflux), Phase 2 (plateau",
+      "correctAnswer": "Phase 0 (rapid Na⁺ influx), Phase 2 plateau (Ca²⁺ influx)",
       "acceptableAlternatives": [
         "ventricular AP phases",
-        "cardiac ventricular action potential 5 phases"
+        "cardiac ventricular action potential 5 phases",
+        "Ventricular action potential — Phase 0 (rapid Na⁺ influx), Phase 1 (K⁺ efflux), Phase 2 (plateau"
       ],
       "chainThemeId": "cardiac_electrophysiology",
       "answerTypePoolId": "function_terms",
@@ -57467,11 +57619,12 @@
     {
       "id": "ha_cardio_096",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Systolic heart failure (HFrEF) — EF ≤ 40%, impaired contractility",
+      "correctAnswer": "HFrEF (systolic heart failure) — EF ≤ 40%",
       "acceptableAlternatives": [
         "HFrEF",
         "systolic dysfunction",
-        "reduced ejection fraction heart failure"
+        "reduced ejection fraction heart failure",
+        "Systolic heart failure (HFrEF) — EF ≤ 40%, impaired contractility"
       ],
       "chainThemeId": "heart_failure",
       "answerTypePoolId": "clinical_terms",
@@ -57508,10 +57661,11 @@
     {
       "id": "ha_cardio_097",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Preload — ventricular end-diastolic volume/pressure (LVEDP); increased by venous return",
+      "correctAnswer": "Preload — ventricular end-diastolic volume/pressure (LVEDP)",
       "acceptableAlternatives": [
         "preload is LVEDP",
-        "preload ventricular filling"
+        "preload ventricular filling",
+        "Preload — ventricular end-diastolic volume/pressure (LVEDP); increased by venous return"
       ],
       "chainThemeId": "heart_failure",
       "answerTypePoolId": "function_terms",
@@ -57539,10 +57693,11 @@
     {
       "id": "ha_cardio_098",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Cardiogenic shock — pump failure; elevated PCWP, low CO, high SVR",
+      "correctAnswer": "Cardiogenic shock — high PCWP, low CO, high SVR",
       "acceptableAlternatives": [
         "cardiogenic shock",
-        "pump failure shock"
+        "pump failure shock",
+        "Cardiogenic shock — pump failure; elevated PCWP, low CO, high SVR"
       ],
       "chainThemeId": "shock",
       "answerTypePoolId": "clinical_terms",
@@ -57579,11 +57734,12 @@
     {
       "id": "ha_cardio_099",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Hypovolemic shock — decreased preload (PCWP↓), compensatory high SVR and tachycardia",
+      "correctAnswer": "Hypovolemic shock — low PCWP, high SVR, tachycardia",
       "acceptableAlternatives": [
         "hypovolemic shock",
         "haemorrhagic shock",
-        "volume depletion shock"
+        "volume depletion shock",
+        "Hypovolemic shock — decreased preload (PCWP↓), compensatory high SVR and tachycardia"
       ],
       "chainThemeId": "shock",
       "answerTypePoolId": "clinical_terms",
@@ -57613,10 +57769,11 @@
     {
       "id": "ha_cardio_100",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Thoracic aortic aneurysm — associated with Marfan syndrome (FBN1 mutation) and tertiary syphilis",
+      "correctAnswer": "Thoracic aortic aneurysm — Marfan syndrome or syphilis",
       "acceptableAlternatives": [
         "thoracic aortic aneurysm",
-        "ascending aortic aneurysm"
+        "ascending aortic aneurysm",
+        "Thoracic aortic aneurysm — associated with Marfan syndrome (FBN1 mutation) and tertiary syphilis"
       ],
       "chainThemeId": "aortic_disease",
       "answerTypePoolId": "clinical_terms",
@@ -57644,11 +57801,12 @@
     {
       "id": "ha_cardio_101",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Abdominal aortic aneurysm (AAA) — atherosclerosis, most commonly infrarenal",
+      "correctAnswer": "AAA — atherosclerosis, infrarenal aorta most common site",
       "acceptableAlternatives": [
         "AAA",
         "abdominal aortic aneurysm",
-        "infrarenal aortic aneurysm"
+        "infrarenal aortic aneurysm",
+        "Abdominal aortic aneurysm (AAA) — atherosclerosis, most commonly infrarenal"
       ],
       "chainThemeId": "aortic_disease",
       "answerTypePoolId": "clinical_terms",
@@ -57685,10 +57843,11 @@
     {
       "id": "ha_cardio_102",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Virchow's triad — (1) venous stasis, (2) hypercoagulability, (3) endothelial injury",
+      "correctAnswer": "Virchow's triad — stasis, hypercoagulability, vessel injury",
       "acceptableAlternatives": [
         "Virchow triad",
-        "stasis hypercoagulability endothelial injury"
+        "stasis hypercoagulability endothelial injury",
+        "Virchow's triad — (1) venous stasis, (2) hypercoagulability, (3) endothelial injury"
       ],
       "chainThemeId": "venous_thromboembolism",
       "answerTypePoolId": "clinical_terms",
@@ -57718,11 +57877,12 @@
     {
       "id": "ha_cardio_103",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Femoral and popliteal veins — most common DVT locations; high PE risk from proximal lower limb DVT",
+      "correctAnswer": "Femoral and popliteal veins — most common DVT locations",
       "acceptableAlternatives": [
         "femoral vein DVT",
         "popliteal vein DVT",
-        "proximal lower limb DVT"
+        "proximal lower limb DVT",
+        "Femoral and popliteal veins — most common DVT locations; high PE risk from proximal lower limb DVT"
       ],
       "chainThemeId": "venous_thromboembolism",
       "answerTypePoolId": "structure_names",
@@ -57823,10 +57983,11 @@
     {
       "id": "ha_cardio_106",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Neurogenic shock — vasodilation + bradycardia (loss of sympathetic tone)",
+      "correctAnswer": "Neurogenic shock — vasodilation and bradycardia",
       "acceptableAlternatives": [
         "neurogenic shock",
-        "spinal shock"
+        "spinal shock",
+        "Neurogenic shock — vasodilation + bradycardia (loss of sympathetic tone)"
       ],
       "chainThemeId": "shock",
       "answerTypePoolId": "clinical_terms",
@@ -57856,10 +58017,11 @@
     {
       "id": "ha_cardio_107",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Anaphylactic shock — IgE-mediated mast cell degranulation → massive histamine release → vasodilation",
+      "correctAnswer": "Anaphylactic shock — IgE-mediated mast cell degranulation",
       "acceptableAlternatives": [
         "anaphylactic shock",
-        "anaphylaxis shock"
+        "anaphylaxis shock",
+        "Anaphylactic shock — IgE-mediated mast cell degranulation → massive histamine release → vasodilation"
       ],
       "chainThemeId": "shock",
       "answerTypePoolId": "clinical_terms",
@@ -57890,10 +58052,11 @@
     {
       "id": "ha_cardio_108",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "LAD → anterior MI; RCA → inferior MI (ST elevation II, III, aVF); LCx → lateral MI (I, aVL, V5, V6)",
+      "correctAnswer": "LAD → anterior MI; RCA → inferior MI; LCx → lateral MI",
       "acceptableAlternatives": [
         "coronary territories ECG leads",
-        "STEMI localisation by leads"
+        "STEMI localisation by leads",
+        "LAD → anterior MI; RCA → inferior MI (ST elevation II, III, aVF); LCx → lateral MI (I, aVL, V5, V6)"
       ],
       "chainThemeId": "coronary_artery_territories",
       "answerTypePoolId": "clinical_terms",
@@ -57925,10 +58088,11 @@
     {
       "id": "ha_cardio_109",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Marfan syndrome — FBN1 mutation (fibrillin-1) on chromosome 15",
+      "correctAnswer": "Marfan syndrome — FBN1 mutation (fibrillin-1), chromosome 15",
       "acceptableAlternatives": [
         "Marfan syndrome FBN1",
-        "fibrillin-1 aortic aneurysm"
+        "fibrillin-1 aortic aneurysm",
+        "Marfan syndrome — FBN1 mutation (fibrillin-1) on chromosome 15"
       ],
       "chainThemeId": "aortic_disease",
       "answerTypePoolId": "clinical_terms",
@@ -57988,10 +58152,11 @@
     {
       "id": "ha_cardio_111",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Factor V Leiden — most common inherited thrombophilia; activated protein C resistance",
+      "correctAnswer": "Factor V Leiden — most common thrombophilia; APC resistance",
       "acceptableAlternatives": [
         "Factor V Leiden mutation",
-        "FV Leiden"
+        "FV Leiden",
+        "Factor V Leiden — most common inherited thrombophilia; activated protein C resistance"
       ],
       "chainThemeId": "venous_thromboembolism",
       "answerTypePoolId": "clinical_terms",
@@ -58019,10 +58184,11 @@
     {
       "id": "ha_cardio_112",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Purkinje fibre AP — resembles ventricular AP but has automaticity (Phase 4 depolarisation) with",
+      "correctAnswer": "Purkinje fibres — automaticity via Phase 4 depolarisation",
       "acceptableAlternatives": [
         "Purkinje cell action potential",
-        "Purkinje fibre automaticity"
+        "Purkinje fibre automaticity",
+        "Purkinje fibre AP — resembles ventricular AP but has automaticity (Phase 4 depolarisation) with"
       ],
       "chainThemeId": "cardiac_electrophysiology",
       "answerTypePoolId": "function_terms",
@@ -58050,10 +58216,11 @@
     {
       "id": "ha_cardio_113",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "PDA murmur — continuous 'machinery' murmur at the left upper sternal border (subclavicular)",
+      "correctAnswer": "PDA — continuous 'machinery' murmur, left upper sternum",
       "acceptableAlternatives": [
         "patent ductus arteriosus murmur",
-        "continuous machinery murmur PDA"
+        "continuous machinery murmur PDA",
+        "PDA murmur — continuous 'machinery' murmur at the left upper sternal border (subclavicular)"
       ],
       "chainThemeId": "congenital_heart_defects",
       "answerTypePoolId": "clinical_terms",
@@ -58114,10 +58281,11 @@
     {
       "id": "ha_cardio_115",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Septic shock — gram-negative endotoxin (LPS) → cytokine storm (TNF-α, IL-1",
+      "correctAnswer": "Septic shock — LPS → cytokine storm (TNF-α, IL-1)",
       "acceptableAlternatives": [
         "septic shock",
-        "gram-negative septic shock"
+        "gram-negative septic shock",
+        "Septic shock — gram-negative endotoxin (LPS) → cytokine storm (TNF-α, IL-1"
       ],
       "chainThemeId": "shock",
       "answerTypePoolId": "clinical_terms",
@@ -68440,7 +68608,7 @@
     {
       "id": "ha_visual_315",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Intrinsic muscles of the hand (thenar, hypothenar, lumbricals, interossei)",
+      "correctAnswer": "Intrinsic hand muscles (thenar, hypothenar, lumbricals)",
       "distractors": [
         "Intrinsic muscles of the foot (plantar layers)",
         "Extrinsic flexors of the digits (flexor digitorum superficialis)",
@@ -68457,7 +68625,10 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Intrinsic muscles of the hand (thenar, hypothenar, lumbricals, interossei)"
+      ]
     },
     {
       "id": "ha_visual_316",
@@ -68528,7 +68699,7 @@
     {
       "id": "ha_visual_319",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Muscle fiber structure (myofibrils, T-tubules, sarcoplasmic reticulum)",
+      "correctAnswer": "Muscle fiber structure (myofibrils, T-tubules, SR)",
       "distractors": [
         "Sarcomere organization (Z-lines, A-band, I-band)",
         "Neuromuscular junction (motor end plate)",
@@ -68545,12 +68716,15 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Muscle fiber structure (myofibrils, T-tubules, sarcoplasmic reticulum)"
+      ]
     },
     {
       "id": "ha_visual_320",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Neck and back muscles (erector spinae and deep posterior group)",
+      "correctAnswer": "Neck and back muscles (erector spinae, deep posterior group)",
       "distractors": [
         "Anterior neck muscles (infrahyoid strap muscles)",
         "Posterior abdominal muscles (quadratus lumborum)",
@@ -68567,12 +68741,15 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Neck and back muscles (erector spinae and deep posterior group)"
+      ]
     },
     {
       "id": "ha_visual_321",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Pectoral girdle muscles (pectoralis major/minor, serratus anterior, trapezius)",
+      "correctAnswer": "Pectoral girdle muscles (pec major/minor, serratus, trap.)",
       "distractors": [
         "Rotator cuff muscles (supraspinatus, infraspinatus, teres minor, subscapularis)",
         "Muscles of the arm (biceps brachii, coracobrachialis, brachialis)",
@@ -68589,12 +68766,15 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Pectoral girdle muscles (pectoralis major/minor, serratus anterior, trapezius)"
+      ]
     },
     {
       "id": "ha_visual_322",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Posterior neck muscles (suboccipital triangle and semispinalis group)",
+      "correctAnswer": "Posterior neck muscles (suboccipital triangle, semispinalis)",
       "distractors": [
         "Anterior neck muscles (sternocleidomastoid, scalenes)",
         "Erector spinae group (thoracic and lumbar regions)",
@@ -68611,7 +68791,10 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Posterior neck muscles (suboccipital triangle and semispinalis group)"
+      ]
     },
     {
       "id": "ha_visual_323",
@@ -68638,7 +68821,7 @@
     {
       "id": "ha_visual_324",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Appendicular skeleton (bones of upper and lower limbs plus girdles)",
+      "correctAnswer": "Appendicular skeleton (limb bones plus limb girdles)",
       "distractors": [
         "Axial skeleton (skull, vertebral column, thoracic cage)",
         "Pectoral girdle alone (clavicle and scapula)",
@@ -68655,12 +68838,15 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Appendicular skeleton (bones of upper and lower limbs plus girdles)"
+      ]
     },
     {
       "id": "ha_visual_325",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Bone blood supply (nutrient artery, periosteal vessels, metaphyseal vessels)",
+      "correctAnswer": "Bone blood supply (nutrient artery, periosteal, metaphyseal)",
       "distractors": [
         "Bone marrow (red versus yellow marrow distribution)",
         "Bone remodeling (osteoclast resorption pit)",
@@ -68677,12 +68863,15 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Bone blood supply (nutrient artery, periosteal vessels, metaphyseal vessels)"
+      ]
     },
     {
       "id": "ha_visual_326",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Bone cells (osteoblast, osteocyte, osteoclast, osteogenic cell)",
+      "correctAnswer": "Bone cells (osteoblast, osteocyte, osteoclast, osteogenic)",
       "distractors": [
         "Cartilage cells (chondroblast, chondrocyte, perichondrium)",
         "Blood cells (erythrocyte, leukocyte, thrombocyte)",
@@ -68699,7 +68888,10 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Bone cells (osteoblast, osteocyte, osteoclast, osteogenic cell)"
+      ]
     },
     {
       "id": "ha_visual_327",
@@ -68902,7 +69094,7 @@
     {
       "id": "ha_visual_336",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Humerus and elbow joint (epicondyles, condyles, olecranon fossa)",
+      "correctAnswer": "Humerus and elbow joint (epicondyles, condyles, olecranon)",
       "distractors": [
         "Femur and knee joint (condyles, intercondylar notch)",
         "Radius and ulna (proximal ends, radial head, coronoid process)",
@@ -68919,7 +69111,10 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Humerus and elbow joint (epicondyles, condyles, olecranon fossa)"
+      ]
     },
     {
       "id": "ha_visual_337",
@@ -68946,7 +69141,7 @@
     {
       "id": "ha_visual_338",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Long bone anatomy (diaphysis, epiphysis, metaphysis, medullary cavity)",
+      "correctAnswer": "Long bone anatomy (diaphysis, epiphysis, metaphysis, cavity)",
       "distractors": [
         "Flat bone structure (inner/outer compact tables with diplöe)",
         "Short bone anatomy (e.g., carpal bone cross-section)",
@@ -68963,12 +69158,15 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Long bone anatomy (diaphysis, epiphysis, metaphysis, medullary cavity)"
+      ]
     },
     {
       "id": "ha_visual_339",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Lumbar vertebra (large body, transverse and spinous processes, no costal facets)",
+      "correctAnswer": "Lumbar vertebra (wide body/processes, no costal facets)",
       "distractors": [
         "Thoracic vertebra (costal facets on body and transverse process)",
         "Cervical vertebra (bifid spinous process, transverse foramen)",
@@ -68985,7 +69183,10 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Lumbar vertebra (large body, transverse and spinous processes, no costal facets)"
+      ]
     },
     {
       "id": "ha_visual_340",
@@ -69056,7 +69257,7 @@
     {
       "id": "ha_visual_343",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Periosteum and endosteum (outer and inner bone membrane layers)",
+      "correctAnswer": "Periosteum and endosteum (outer/inner bone membrane layers)",
       "distractors": [
         "Compact bone osteon (Haversian system with lamellae)",
         "Bone blood supply (nutrient artery, periosteal arterioles)",
@@ -69073,12 +69274,15 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Periosteum and endosteum (outer and inner bone membrane layers)"
+      ]
     },
     {
       "id": "ha_visual_344",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Rib cage (thoracic cage with sternum, ribs, and costal cartilages)",
+      "correctAnswer": "Rib cage (sternum, ribs, and costal cartilages)",
       "distractors": [
         "Thoracic vertebrae column (T1–T12 articulations)",
         "Pectoral girdle (clavicle and scapula)",
@@ -69095,7 +69299,10 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Rib cage (thoracic cage with sternum, ribs, and costal cartilages)"
+      ]
     },
     {
       "id": "ha_visual_345",
@@ -69166,7 +69373,7 @@
     {
       "id": "ha_visual_348",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Synovial joint structure (articular cartilage, synovial membrane, joint capsule)",
+      "correctAnswer": "Synovial joint structure (cartilage, membrane, capsule)",
       "distractors": [
         "Fibrous joint (suture or gomphosis — no cavity)",
         "Primary cartilaginous joint (synchondrosis — e.g., epiphyseal plate)",
@@ -69183,12 +69390,15 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Synovial joint structure (articular cartilage, synovial membrane, joint capsule)"
+      ]
     },
     {
       "id": "ha_visual_349",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Synovial joint types (ball-and-socket, hinge, pivot, condyloid, saddle, plane)",
+      "correctAnswer": "Synovial joint types (hinge, ball-socket, pivot, condyloid)",
       "distractors": [
         "Fibrous joint types (suture, gomphosis, syndesmosis)",
         "Cartilaginous joint types (synchondrosis, symphysis)",
@@ -69205,12 +69415,15 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Synovial joint types (ball-and-socket, hinge, pivot, condyloid, saddle, plane)"
+      ]
     },
     {
       "id": "ha_visual_350",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Thoracic vertebra (costal facets on body and transverse process)",
+      "correctAnswer": "Thoracic vertebra (costal facets on body/transverse)",
       "distractors": [
         "Lumbar vertebra (large body, no costal facets, no transverse foramen)",
         "Cervical vertebra (transverse foramen, bifid spinous process)",
@@ -69227,12 +69440,15 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Thoracic vertebra (costal facets on body and transverse process)"
+      ]
     },
     {
       "id": "ha_visual_351",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Tibia and fibula (medial and lateral leg bones with landmarks)",
+      "correctAnswer": "Tibia and fibula (medial and lateral leg bones)",
       "distractors": [
         "Radius and ulna (forearm bones with landmarks)",
         "Femur (thigh bone with condyles and trochanters)",
@@ -69249,7 +69465,10 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Tibia and fibula (medial and lateral leg bones with landmarks)"
+      ]
     },
     {
       "id": "ha_visual_352",
@@ -69298,7 +69517,7 @@
     {
       "id": "ha_visual_354",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Vertebral column (cervical, thoracic, lumbar, sacral, and coccygeal regions with curvatures)",
+      "correctAnswer": "Vertebral column (cervical, thoracic, lumbar, sacral)",
       "distractors": [
         "Spinal cord (with nerve roots and meninges)",
         "Axial skeleton overview (skull, vertebral column, thoracic cage combined)",
@@ -69315,12 +69534,15 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Vertebral column (cervical, thoracic, lumbar, sacral, and coccygeal regions with curvatures)"
+      ]
     },
     {
       "id": "ha_visual_355",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Osteoclast (multinucleated bone-resorbing cell with ruffled border)",
+      "correctAnswer": "Osteoclast (multinucleated bone-resorbing, ruffled border)",
       "distractors": [
         "Osteoblast (bone-forming cell secreting osteoid)",
         "Osteocyte (mature bone cell in lacuna with canaliculi)",
@@ -69337,12 +69559,15 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Osteoclast (multinucleated bone-resorbing cell with ruffled border)"
+      ]
     },
     {
       "id": "ha_visual_356",
       "subDeckId": "visual_anatomy",
-      "correctAnswer": "Osteocyte (mature bone cell within lacuna, connected via canaliculi)",
+      "correctAnswer": "Osteocyte (bone cell in lacuna, connected via canaliculi)",
       "distractors": [
         "Osteoclast (multinucleated bone-resorbing cell)",
         "Osteoblast (cuboidal bone-forming cell on osteoid surface)",
@@ -69359,7 +69584,10 @@
       "quizQuestion": "Identify this anatomical image.",
       "answerTypePoolId": "function_terms",
       "difficulty": 3,
-      "funScore": 7
+      "funScore": 7,
+      "acceptableAlternatives": [
+        "Osteocyte (mature bone cell within lacuna, connected via canaliculi)"
+      ]
     },
     {
       "id": "ha_visual_357",
@@ -71165,13 +71393,16 @@
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/hand_intrinsic.jpg",
-      "correctAnswer": "Intrinsic muscles of the hand (thenar, hypothenar, lumbricals, interossei)",
+      "correctAnswer": "Intrinsic hand muscles (thenar, hypothenar, lumbricals)",
       "quizQuestion": "Which image shows the Intrinsic muscles of the hand (thenar, hypothenar, lumbricals, interossei)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "The intrinsic hand muscles include the thenar group (abductor/flexor/opponens pollicis, adductor pollicis), hypothenar group (abductor/flexor/opponens digiti minimi), four lumbricals, and seven interossei (3 palmar, 4 dorsal)."
+      "explanation": "The intrinsic hand muscles include the thenar group (abductor/flexor/opponens pollicis, adductor pollicis), hypothenar group (abductor/flexor/opponens digiti minimi), four lumbricals, and seven interossei (3 palmar, 4 dorsal).",
+      "acceptableAlternatives": [
+        "Intrinsic muscles of the hand (thenar, hypothenar, lumbricals, interossei)"
+      ]
     },
     {
       "id": "ha_visual_316_img_ans",
@@ -71217,52 +71448,64 @@
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/muscle_fiber_structure.jpg",
-      "correctAnswer": "Muscle fiber structure (myofibrils, T-tubules, sarcoplasmic reticulum)",
+      "correctAnswer": "Muscle fiber structure (myofibrils, T-tubules, SR)",
       "quizQuestion": "Which image shows the Muscle fiber structure (myofibrils, T-tubules, sarcoplasmic reticulum)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "A skeletal muscle fiber contains parallel myofibrils surrounded by the sarcoplasmic reticulum (SR), a specialized ER that stores and releases Ca²⁺. T-tubules (transverse tubules) invaginate the sarcolemma and contact the SR at triads to transmit the action potential deep into the fiber."
+      "explanation": "A skeletal muscle fiber contains parallel myofibrils surrounded by the sarcoplasmic reticulum (SR), a specialized ER that stores and releases Ca²⁺. T-tubules (transverse tubules) invaginate the sarcolemma and contact the SR at triads to transmit the action potential deep into the fiber.",
+      "acceptableAlternatives": [
+        "Muscle fiber structure (myofibrils, T-tubules, sarcoplasmic reticulum)"
+      ]
     },
     {
       "id": "ha_visual_320_img_ans",
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/neck_back_muscles.jpg",
-      "correctAnswer": "Neck and back muscles (erector spinae and deep posterior group)",
+      "correctAnswer": "Neck and back muscles (erector spinae, deep posterior group)",
       "quizQuestion": "Which image shows the Neck and back muscles (erector spinae and deep posterior group)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "The posterior neck and back muscles include the superficial erector spinae column (iliocostalis, longissimus, spinalis), the transversospinalis group (semispinalis, multifidus, rotatores), and the suboccipital muscles. They extend and stabilize the vertebral column."
+      "explanation": "The posterior neck and back muscles include the superficial erector spinae column (iliocostalis, longissimus, spinalis), the transversospinalis group (semispinalis, multifidus, rotatores), and the suboccipital muscles. They extend and stabilize the vertebral column.",
+      "acceptableAlternatives": [
+        "Neck and back muscles (erector spinae and deep posterior group)"
+      ]
     },
     {
       "id": "ha_visual_321_img_ans",
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/pectoral_girdle_muscles.jpg",
-      "correctAnswer": "Pectoral girdle muscles (pectoralis major/minor, serratus anterior, trapezius)",
+      "correctAnswer": "Pectoral girdle muscles (pec major/minor, serratus, trap.)",
       "quizQuestion": "Which image shows the Pectoral girdle muscles (pectoralis major/minor, serratus anterior, trapezius)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "Muscles acting on the pectoral girdle stabilize and move the scapula and clavicle. Key muscles include pectoralis minor (protracts/depresses scapula), serratus anterior (protracts/rotates scapula upward), and trapezius (elevates, retracts, and rotates scapula)."
+      "explanation": "Muscles acting on the pectoral girdle stabilize and move the scapula and clavicle. Key muscles include pectoralis minor (protracts/depresses scapula), serratus anterior (protracts/rotates scapula upward), and trapezius (elevates, retracts, and rotates scapula).",
+      "acceptableAlternatives": [
+        "Pectoral girdle muscles (pectoralis major/minor, serratus anterior, trapezius)"
+      ]
     },
     {
       "id": "ha_visual_322_img_ans",
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/muscular_system/openstax/posterior_neck.jpg",
-      "correctAnswer": "Posterior neck muscles (suboccipital triangle and semispinalis group)",
+      "correctAnswer": "Posterior neck muscles (suboccipital triangle, semispinalis)",
       "quizQuestion": "Which image shows the Posterior neck muscles (suboccipital triangle and semispinalis group)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "The posterior neck muscles include the suboccipital muscles (rectus capitis posterior major/minor, obliquus capitis superior/inferior) forming the suboccipital triangle, and the semispinalis capitis/cervicis group. They extend, rotate, and tilt the head."
+      "explanation": "The posterior neck muscles include the suboccipital muscles (rectus capitis posterior major/minor, obliquus capitis superior/inferior) forming the suboccipital triangle, and the semispinalis capitis/cervicis group. They extend, rotate, and tilt the head.",
+      "acceptableAlternatives": [
+        "Posterior neck muscles (suboccipital triangle and semispinalis group)"
+      ]
     },
     {
       "id": "ha_visual_323_img_ans",
@@ -71282,39 +71525,48 @@
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/appendicular_skeleton.jpg",
-      "correctAnswer": "Appendicular skeleton (bones of upper and lower limbs plus girdles)",
+      "correctAnswer": "Appendicular skeleton (limb bones plus limb girdles)",
       "quizQuestion": "Which image shows the Appendicular skeleton (bones of upper and lower limbs plus girdles)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "The appendicular skeleton comprises 126 bones: the pectoral girdles (clavicles and scapulae), upper limbs (humeri, radii, ulnae, carpals, metacarpals, phalanges), pelvic girdle (hip bones), and lower limbs (femora, patellae, tibiae, fibulae, tarsals, metatarsals, phalanges)."
+      "explanation": "The appendicular skeleton comprises 126 bones: the pectoral girdles (clavicles and scapulae), upper limbs (humeri, radii, ulnae, carpals, metacarpals, phalanges), pelvic girdle (hip bones), and lower limbs (femora, patellae, tibiae, fibulae, tarsals, metatarsals, phalanges).",
+      "acceptableAlternatives": [
+        "Appendicular skeleton (bones of upper and lower limbs plus girdles)"
+      ]
     },
     {
       "id": "ha_visual_325_img_ans",
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/bone_blood_supply.jpg",
-      "correctAnswer": "Bone blood supply (nutrient artery, periosteal vessels, metaphyseal vessels)",
+      "correctAnswer": "Bone blood supply (nutrient artery, periosteal, metaphyseal)",
       "quizQuestion": "Which image shows the Bone blood supply (nutrient artery, periosteal vessels, metaphyseal vessels)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "Long bone blood supply arrives via a nutrient artery entering the diaphysis through the nutrient foramen, periosteal arteries supplying the cortex, and metaphyseal/epiphyseal vessels. Venous drainage parallels arterial supply. Disruption can cause avascular necrosis."
+      "explanation": "Long bone blood supply arrives via a nutrient artery entering the diaphysis through the nutrient foramen, periosteal arteries supplying the cortex, and metaphyseal/epiphyseal vessels. Venous drainage parallels arterial supply. Disruption can cause avascular necrosis.",
+      "acceptableAlternatives": [
+        "Bone blood supply (nutrient artery, periosteal vessels, metaphyseal vessels)"
+      ]
     },
     {
       "id": "ha_visual_326_img_ans",
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/bone_cells.jpg",
-      "correctAnswer": "Bone cells (osteoblast, osteocyte, osteoclast, osteogenic cell)",
+      "correctAnswer": "Bone cells (osteoblast, osteocyte, osteoclast, osteogenic)",
       "quizQuestion": "Which image shows the Bone cells (osteoblast, osteocyte, osteoclast, osteogenic cell)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "Four main bone cell types: osteogenic cells (stem cells in periosteum/endosteum), osteoblasts (secrete osteoid matrix, become trapped as osteocytes), osteocytes (mature cells in lacunae maintaining matrix), and osteoclasts (multinucleated macrophage derivatives that resorb bone via acidification)."
+      "explanation": "Four main bone cell types: osteogenic cells (stem cells in periosteum/endosteum), osteoblasts (secrete osteoid matrix, become trapped as osteocytes), osteocytes (mature cells in lacunae maintaining matrix), and osteoclasts (multinucleated macrophage derivatives that resorb bone via acidification).",
+      "acceptableAlternatives": [
+        "Bone cells (osteoblast, osteocyte, osteoclast, osteogenic cell)"
+      ]
     },
     {
       "id": "ha_visual_327_img_ans",
@@ -71438,13 +71690,16 @@
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/humerus_elbow.jpg",
-      "correctAnswer": "Humerus and elbow joint (epicondyles, condyles, olecranon fossa)",
+      "correctAnswer": "Humerus and elbow joint (epicondyles, condyles, olecranon)",
       "quizQuestion": "Which image shows the Humerus and elbow joint (epicondyles, condyles, olecranon fossa)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "The humerus articulates at the elbow with the radius (capitulum) and ulna (trochlea). Key landmarks include the medial and lateral epicondyles, olecranon fossa (posterior), coronoid fossa (anterior), radial groove (spiral groove for radial nerve), and deltoid tuberosity."
+      "explanation": "The humerus articulates at the elbow with the radius (capitulum) and ulna (trochlea). Key landmarks include the medial and lateral epicondyles, olecranon fossa (posterior), coronoid fossa (anterior), radial groove (spiral groove for radial nerve), and deltoid tuberosity.",
+      "acceptableAlternatives": [
+        "Humerus and elbow joint (epicondyles, condyles, olecranon fossa)"
+      ]
     },
     {
       "id": "ha_visual_337_img_ans",
@@ -71464,26 +71719,32 @@
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/long_bone_anatomy.jpg",
-      "correctAnswer": "Long bone anatomy (diaphysis, epiphysis, metaphysis, medullary cavity)",
+      "correctAnswer": "Long bone anatomy (diaphysis, epiphysis, metaphysis, cavity)",
       "quizQuestion": "Which image shows the Long bone anatomy (diaphysis, epiphysis, metaphysis, medullary cavity)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "A long bone consists of the diaphysis (shaft of compact bone enclosing the medullary cavity), two epiphyses (articular ends of spongy bone covered by hyaline cartilage), the metaphysis (flared zone between diaphysis and epiphysis containing the growth plate in children), periosteum (outer fibrous layer), and endosteum (inner lining of medullary cavity)."
+      "explanation": "A long bone consists of the diaphysis (shaft of compact bone enclosing the medullary cavity), two epiphyses (articular ends of spongy bone covered by hyaline cartilage), the metaphysis (flared zone between diaphysis and epiphysis containing the growth plate in children), periosteum (outer fibrous layer), and endosteum (inner lining of medullary cavity).",
+      "acceptableAlternatives": [
+        "Long bone anatomy (diaphysis, epiphysis, metaphysis, medullary cavity)"
+      ]
     },
     {
       "id": "ha_visual_339_img_ans",
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/lumbar_vertebra.jpg",
-      "correctAnswer": "Lumbar vertebra (large body, transverse and spinous processes, no costal facets)",
+      "correctAnswer": "Lumbar vertebra (wide body/processes, no costal facets)",
       "quizQuestion": "Which image shows the Lumbar vertebra (large body, transverse and spinous processes, no costal facets)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "Lumbar vertebrae (L1–L5) are the largest moveable vertebrae and bear the most body weight. They are distinguished by their kidney-shaped bodies, short stout spinous processes projecting horizontally, absence of costal facets, and lack of transverse foramina. Mammillary processes are unique to lumbar vertebrae."
+      "explanation": "Lumbar vertebrae (L1–L5) are the largest moveable vertebrae and bear the most body weight. They are distinguished by their kidney-shaped bodies, short stout spinous processes projecting horizontally, absence of costal facets, and lack of transverse foramina. Mammillary processes are unique to lumbar vertebrae.",
+      "acceptableAlternatives": [
+        "Lumbar vertebra (large body, transverse and spinous processes, no costal facets)"
+      ]
     },
     {
       "id": "ha_visual_340_img_ans",
@@ -71529,26 +71790,32 @@
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/periosteum_endosteum.jpg",
-      "correctAnswer": "Periosteum and endosteum (outer and inner bone membrane layers)",
+      "correctAnswer": "Periosteum and endosteum (outer/inner bone membrane layers)",
       "quizQuestion": "Which image shows the Periosteum and endosteum (outer and inner bone membrane layers)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "The periosteum is a fibrous connective tissue sheath covering the outer bone surface (except articular surfaces). It has an outer fibrous layer and an inner osteogenic layer with osteoprogenitor cells. The endosteum lines internal bony surfaces (medullary cavity, Haversian canals) and also contains osteoprogenitor cells."
+      "explanation": "The periosteum is a fibrous connective tissue sheath covering the outer bone surface (except articular surfaces). It has an outer fibrous layer and an inner osteogenic layer with osteoprogenitor cells. The endosteum lines internal bony surfaces (medullary cavity, Haversian canals) and also contains osteoprogenitor cells.",
+      "acceptableAlternatives": [
+        "Periosteum and endosteum (outer and inner bone membrane layers)"
+      ]
     },
     {
       "id": "ha_visual_344_img_ans",
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/rib_cage.jpg",
-      "correctAnswer": "Rib cage (thoracic cage with sternum, ribs, and costal cartilages)",
+      "correctAnswer": "Rib cage (sternum, ribs, and costal cartilages)",
       "quizQuestion": "Which image shows the Rib cage (thoracic cage with sternum, ribs, and costal cartilages)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "The thoracic cage consists of 12 pairs of ribs, 12 thoracic vertebrae, and the sternum (manubrium, body, xiphoid process). Ribs 1–7 are true ribs (attach directly to sternum via costal cartilage); ribs 8–10 are false ribs (join costal cartilage of rib 7); ribs 11–12 are floating ribs with no anterior attachment."
+      "explanation": "The thoracic cage consists of 12 pairs of ribs, 12 thoracic vertebrae, and the sternum (manubrium, body, xiphoid process). Ribs 1–7 are true ribs (attach directly to sternum via costal cartilage); ribs 8–10 are false ribs (join costal cartilage of rib 7); ribs 11–12 are floating ribs with no anterior attachment.",
+      "acceptableAlternatives": [
+        "Rib cage (thoracic cage with sternum, ribs, and costal cartilages)"
+      ]
     },
     {
       "id": "ha_visual_345_img_ans",
@@ -71594,52 +71861,64 @@
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/synovial_joint.jpg",
-      "correctAnswer": "Synovial joint structure (articular cartilage, synovial membrane, joint capsule)",
+      "correctAnswer": "Synovial joint structure (cartilage, membrane, capsule)",
       "quizQuestion": "Which image shows the Synovial joint structure (articular cartilage, synovial membrane, joint capsule)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "A synovial (diarthrosis) joint is characterized by a joint cavity filled with synovial fluid, articular cartilage (hyaline) covering the bone ends, a fibrous joint capsule lined by synovial membrane, and accessory structures (ligaments, menisci, bursae). It allows the greatest range of motion."
+      "explanation": "A synovial (diarthrosis) joint is characterized by a joint cavity filled with synovial fluid, articular cartilage (hyaline) covering the bone ends, a fibrous joint capsule lined by synovial membrane, and accessory structures (ligaments, menisci, bursae). It allows the greatest range of motion.",
+      "acceptableAlternatives": [
+        "Synovial joint structure (articular cartilage, synovial membrane, joint capsule)"
+      ]
     },
     {
       "id": "ha_visual_349_img_ans",
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/synovial_joint_types.jpg",
-      "correctAnswer": "Synovial joint types (ball-and-socket, hinge, pivot, condyloid, saddle, plane)",
+      "correctAnswer": "Synovial joint types (hinge, ball-socket, pivot, condyloid)",
       "quizQuestion": "Which image shows the Synovial joint types (ball-and-socket, hinge, pivot, condyloid, saddle, plane)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "The six types of synovial joints are classified by the shape of their articular surfaces and the movements they permit: plane (gliding), hinge (uniaxial flexion/extension), pivot (uniaxial rotation), condyloid (biaxial: flexion/extension + abduction/adduction), saddle (biaxial + opposition), and ball-and-socket (multiaxial)."
+      "explanation": "The six types of synovial joints are classified by the shape of their articular surfaces and the movements they permit: plane (gliding), hinge (uniaxial flexion/extension), pivot (uniaxial rotation), condyloid (biaxial: flexion/extension + abduction/adduction), saddle (biaxial + opposition), and ball-and-socket (multiaxial).",
+      "acceptableAlternatives": [
+        "Synovial joint types (ball-and-socket, hinge, pivot, condyloid, saddle, plane)"
+      ]
     },
     {
       "id": "ha_visual_350_img_ans",
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/thoracic_vertebra.jpg",
-      "correctAnswer": "Thoracic vertebra (costal facets on body and transverse process)",
+      "correctAnswer": "Thoracic vertebra (costal facets on body/transverse)",
       "quizQuestion": "Which image shows the Thoracic vertebra (costal facets on body and transverse process)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "Thoracic vertebrae (T1–T12) are distinguished by costal facets (demifacets on the body for articulation with rib heads) and costal facets on the transverse processes (for rib tubercle articulation, T1–T10). Their spinous processes are long and angled sharply inferiorly. The vertebral foramen is roughly circular and smaller than cervical vertebrae."
+      "explanation": "Thoracic vertebrae (T1–T12) are distinguished by costal facets (demifacets on the body for articulation with rib heads) and costal facets on the transverse processes (for rib tubercle articulation, T1–T10). Their spinous processes are long and angled sharply inferiorly. The vertebral foramen is roughly circular and smaller than cervical vertebrae.",
+      "acceptableAlternatives": [
+        "Thoracic vertebra (costal facets on body and transverse process)"
+      ]
     },
     {
       "id": "ha_visual_351_img_ans",
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/tibia_fibula.jpg",
-      "correctAnswer": "Tibia and fibula (medial and lateral leg bones with landmarks)",
+      "correctAnswer": "Tibia and fibula (medial and lateral leg bones)",
       "quizQuestion": "Which image shows the Tibia and fibula (medial and lateral leg bones with landmarks)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "The tibia (medial leg bone) is the weight-bearing bone with the tibial plateau (medial/lateral condyles), tibial tuberosity (patellar tendon attachment), medial malleolus (ankle mortise), and anterior border (shin). The fibula (lateral leg bone) is slender and non-weight-bearing, with the fibular head (peroneal nerve at risk) and lateral malleolus."
+      "explanation": "The tibia (medial leg bone) is the weight-bearing bone with the tibial plateau (medial/lateral condyles), tibial tuberosity (patellar tendon attachment), medial malleolus (ankle mortise), and anterior border (shin). The fibula (lateral leg bone) is slender and non-weight-bearing, with the fibular head (peroneal nerve at risk) and lateral malleolus.",
+      "acceptableAlternatives": [
+        "Tibia and fibula (medial and lateral leg bones with landmarks)"
+      ]
     },
     {
       "id": "ha_visual_352_img_ans",
@@ -71672,39 +71951,48 @@
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/vertebral_column.jpg",
-      "correctAnswer": "Vertebral column (cervical, thoracic, lumbar, sacral, and coccygeal regions with curvatures)",
+      "correctAnswer": "Vertebral column (cervical, thoracic, lumbar, sacral)",
       "quizQuestion": "Which image shows the Vertebral column (cervical, thoracic, lumbar, sacral, and coccygeal regions with curvatures)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "The adult vertebral column has 33 vertebrae (7 cervical, 12 thoracic, 5 lumbar, 5 fused sacral, 4 fused coccygeal) and four curvatures: cervical lordosis, thoracic kyphosis, lumbar lordosis (secondary curvatures that develop postnatally), and sacral kyphosis (primary curvature present at birth)."
+      "explanation": "The adult vertebral column has 33 vertebrae (7 cervical, 12 thoracic, 5 lumbar, 5 fused sacral, 4 fused coccygeal) and four curvatures: cervical lordosis, thoracic kyphosis, lumbar lordosis (secondary curvatures that develop postnatally), and sacral kyphosis (primary curvature present at birth).",
+      "acceptableAlternatives": [
+        "Vertebral column (cervical, thoracic, lumbar, sacral, and coccygeal regions with curvatures)"
+      ]
     },
     {
       "id": "ha_visual_355_img_ans",
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/skeletal_system/servier/osteoclast.png",
-      "correctAnswer": "Osteoclast (multinucleated bone-resorbing cell with ruffled border)",
+      "correctAnswer": "Osteoclast (multinucleated bone-resorbing, ruffled border)",
       "quizQuestion": "Which image shows the Osteoclast (multinucleated bone-resorbing cell with ruffled border)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "Osteoclasts are large multinucleated cells (up to 50 nuclei) derived from monocyte/macrophage precursors. They resorb bone by creating a sealed acidic microenvironment via the ruffled border (extensive membrane infolding), secreting H⁺ (via V-ATPase) and cathepsin K to dissolve mineral and matrix. Bisphosphonates inhibit osteoclast function."
+      "explanation": "Osteoclasts are large multinucleated cells (up to 50 nuclei) derived from monocyte/macrophage precursors. They resorb bone by creating a sealed acidic microenvironment via the ruffled border (extensive membrane infolding), secreting H⁺ (via V-ATPase) and cathepsin K to dissolve mineral and matrix. Bisphosphonates inhibit osteoclast function.",
+      "acceptableAlternatives": [
+        "Osteoclast (multinucleated bone-resorbing cell with ruffled border)"
+      ]
     },
     {
       "id": "ha_visual_356_img_ans",
       "subDeckId": "visual_anatomy",
       "quizMode": "image_answers",
       "imageAssetPath": "/assets/anatomy/skeletal_system/servier/osteocyte.png",
-      "correctAnswer": "Osteocyte (mature bone cell within lacuna, connected via canaliculi)",
+      "correctAnswer": "Osteocyte (bone cell in lacuna, connected via canaliculi)",
       "quizQuestion": "Which image shows the Osteocyte (mature bone cell within lacuna, connected via canaliculi)?",
       "chainThemeId": null,
       "answerTypePoolId": "structure_names",
       "difficulty": 1,
       "funScore": 3,
-      "explanation": "Osteocytes are former osteoblasts that have become embedded in the mineralized bone matrix within lacunae. They extend long cytoplasmic processes through canaliculi that form gap junctions with neighboring osteocytes, creating a syncytial network for mechanosensing, Ca²⁺ signaling, and communication with surface osteoblasts and osteoclasts."
+      "explanation": "Osteocytes are former osteoblasts that have become embedded in the mineralized bone matrix within lacunae. They extend long cytoplasmic processes through canaliculi that form gap junctions with neighboring osteocytes, creating a syncytial network for mechanosensing, Ca²⁺ signaling, and communication with surface osteoblasts and osteoclasts.",
+      "acceptableAlternatives": [
+        "Osteocyte (mature bone cell within lacuna, connected via canaliculi)"
+      ]
     },
     {
       "id": "ha_visual_357_img_ans",

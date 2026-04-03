@@ -2465,10 +2465,11 @@
     },
     {
       "id": "const_sci_asterism_definition",
-      "correctAnswer": "A recognizable star pattern that is not an official constellation",
+      "correctAnswer": "A star pattern that is not an official constellation",
       "acceptableAlternatives": [
         "an informal star pattern",
-        "a star pattern that may span multiple constellations"
+        "a star pattern that may span multiple constellations",
+        "A recognizable star pattern that is not an official constellation"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_terms",
@@ -4326,10 +4327,11 @@
     },
     {
       "id": "const_myth_cassiopeia_punishment",
-      "correctAnswer": "Circling the north celestial pole for eternity, spending half the year upside down",
+      "correctAnswer": "Circles the north pole forever, half the year upside down",
       "acceptableAlternatives": [
         "circumpolar forever, sometimes upside down",
-        "spinning around the pole, half the time inverted"
+        "spinning around the pole, half the time inverted",
+        "Circling the north celestial pole for eternity, spending half the year upside down"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "concept_terms",

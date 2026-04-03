@@ -2733,10 +2733,11 @@
     },
     {
       "id": "rome_cae_gallic_casualties_sources",
-      "correctAnswer": "1 million killed and 1 million enslaved (ancient sources, likely exaggerated)",
+      "correctAnswer": "1 million killed, 1 million enslaved (ancient, inflated)",
       "acceptableAlternatives": [
         "1 million killed",
-        "one million killed and one million enslaved"
+        "one million killed and one million enslaved",
+        "1 million killed and 1 million enslaved (ancient sources, likely exaggerated)"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "date_events",
@@ -3334,11 +3335,12 @@
     },
     {
       "id": "rome_aug_urine_tax",
-      "correctAnswer": "Urine collection (used in tanning leather and processing cloth)",
+      "correctAnswer": "Urine (used in tanning leather and processing cloth)",
       "acceptableAlternatives": [
         "urine",
         "public urinals",
-        "urine used in tanning"
+        "urine used in tanning",
+        "Urine collection (used in tanning leather and processing cloth)"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "political_terms",
@@ -3947,10 +3949,11 @@
     },
     {
       "id": "rome_rep_twelve_tables_purpose",
-      "correctAnswer": "Plebeians demanded written laws so patricians could not arbitrarily interpret unwritten customs",
+      "correctAnswer": "To stop patricians arbitrarily interpreting unwritten custom",
       "acceptableAlternatives": [
         "to prevent arbitrary interpretation by patricians",
-        "written law so all could know the rules"
+        "written law so all could know the rules",
+        "Plebeians demanded written laws so patricians could not arbitrarily interpret unwritten customs"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "political_terms",
@@ -4047,10 +4050,11 @@
     },
     {
       "id": "rome_cae_pharsalus_pompey_cavalry",
-      "correctAnswer": "Caesar deployed a concealed fourth battle line to neutralize the cavalry charge",
+      "correctAnswer": "Deployed a hidden fourth line to stop the cavalry charge",
       "acceptableAlternatives": [
         "secret fourth line against cavalry",
-        "hidden fourth line of veterans"
+        "hidden fourth line of veterans",
+        "Caesar deployed a concealed fourth battle line to neutralize the cavalry charge"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "battle_names",
@@ -4097,11 +4101,12 @@
     },
     {
       "id": "rome_cae_julian_calendar_error",
-      "correctAnswer": "About 11 minutes per year (accumulating to ~10 days over 1,627 years)",
+      "correctAnswer": "About 11 minutes per year",
       "acceptableAlternatives": [
         "11 minutes too long per year",
         "slightly too long",
-        "about 11 minutes"
+        "about 11 minutes",
+        "About 11 minutes per year (accumulating to ~10 days over 1,627 years)"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "date_events",
@@ -4148,11 +4153,12 @@
     },
     {
       "id": "rome_cae_wills_heir",
-      "correctAnswer": "Octavian (his great-nephew, posthumously adopted in his will)",
+      "correctAnswer": "Octavian, his great-nephew, posthumously adopted",
       "acceptableAlternatives": [
         "Octavian",
         "Gaius Octavius",
-        "his great-nephew"
+        "his great-nephew",
+        "Octavian (his great-nephew, posthumously adopted in his will)"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "general_politician_names",
@@ -13455,10 +13461,11 @@
     },
     {
       "id": "rome_fall_western_collapse_factors",
-      "correctAnswer": "military pressure, economic decline, political instability, climate, and disease",
+      "correctAnswer": "Military, economic, political, climate, and disease factors",
       "acceptableAlternatives": [
         "multiple causes",
-        "many factors"
+        "many factors",
+        "military pressure, economic decline, political instability, climate, and disease"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "political_terms",
