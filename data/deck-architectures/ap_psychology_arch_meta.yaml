@@ -1,0 +1,680 @@
+deck_id: ap_psychology
+name: "AP Psychology"
+domain: social_sciences
+sub_domain: psychology
+description: "Master the full AP Psychology curriculum — from neurons to social influence. Covers all 5 CED units, major researchers, disorders, therapies, and theoretical frameworks tested on the AP exam."
+minimum_facts: 280
+target_facts: 350
+
+# COMPLETENESS PHILOSOPHY:
+# This deck covers the COMPLETE College Board AP Psychology Course and Exam
+# Description (CED). A student who masters this deck should be prepared for
+# every question type on the AP Psychology exam. Scope is curriculum-driven,
+# not topic-sampled — every CED topic (T) across all 5 units is represented.
+
+# Sourcing & licensing
+data_sources:
+  - name: College Board AP Psychology Course and Exam Description (CED) 2020+
+    url: https://apcentral.collegeboard.org/media/pdf/ap-psychology-course-and-exam-description.pdf
+    license: public educational resource
+    usage: Authoritative unit/topic structure, learning objectives, exam weight distribution
+  - name: Wikipedia — Psychology
+    url: https://en.wikipedia.org/wiki/Psychology
+    license: CC-BY-SA-4.0
+    usage: Researcher biographies, theory summaries, disorder definitions
+  - name: Wikipedia — List of psychological disorders
+    url: https://en.wikipedia.org/wiki/List_of_mental_disorders
+    license: CC-BY-SA-4.0
+    usage: DSM-5 disorder names and criteria cross-reference
+  - name: APA Dictionary of Psychology (online)
+    url: https://dictionary.apa.org/
+    license: public reference
+    usage: Authoritative definitions for psychological terms
+  - name: OpenStax Psychology (2nd edition)
+    url: https://openstax.org/books/psychology-2e/pages/1-introduction
+    license: CC-BY-4.0
+    usage: Chapter organization, researcher attributions, concept explanations
+
+asset_sources: []
+
+# ============================================================
+# CHAIN THEMES — 9 thematic zones mapping to CED units
+# Each theme is a distinct "dungeon zone" with its own facts pool
+# ============================================================
+
+chain_themes:
+
+  - id: 0
+    name: "The Neural Forge"
+    ced_coverage: "Unit 1 Topics 1-3: Heredity & behavior genetics, nervous system structures, neurons & neurotransmitters"
+    target_facts: 40
+    description: >
+      The biological foundations of psychology. Players explore how genes,
+      neurons, and neurotransmitters shape thought and behavior. Dense with
+      researcher names and precise biological terminology.
+    key_concepts:
+      - Natural selection and behavior genetics
+      - Central vs. peripheral nervous system divisions
+      - Neuron anatomy (dendrites, axon, myelin, synapse)
+      - Action potential and refractory period
+      - Major neurotransmitters and their functions
+      - Hormones and the endocrine system (HPA axis)
+      - Psychoactive drugs and receptor agonists/antagonists
+
+  - id: 1
+    name: "The Mind Palace"
+    ced_coverage: "Unit 1 Topics 4-5 + Unit 2 Topics 3-7: Brain structures & lobes, sleep stages, memory encoding/storage/retrieval"
+    target_facts: 45
+    description: >
+      The brain itself — its structures, states of consciousness, and memory
+      architecture. Heaviest on brain anatomy (lobes, limbic system, cortex),
+      sleep stage characteristics, and memory models (Atkinson-Shiffrin, Baddeley).
+    key_concepts:
+      - Brain lobes and primary cortex areas (motor, somatosensory, visual, auditory)
+      - Subcortical structures (thalamus, hypothalamus, amygdala, hippocampus, cerebellum)
+      - Lateralization and split-brain research (Sperry)
+      - Neuroplasticity and brain damage effects
+      - Sleep stages (NREM 1-3 and REM) and circadian rhythms
+      - Sleep disorders (insomnia, narcolepsy, sleep apnea)
+      - Sensory, short-term/working, and long-term memory
+      - Encoding strategies (elaborative rehearsal, spacing effect, testing effect)
+      - Memory retrieval (recall vs. recognition, priming, context-dependent)
+      - Forgetting (Ebbinghaus curve, interference theory, motivated forgetting)
+
+  - id: 2
+    name: "The Sensory Labyrinth"
+    ced_coverage: "Unit 1 Topic 6 + Unit 2 Topic 1: Sensation processes, perceptual principles"
+    target_facts: 40
+    description: >
+      How we sense and interpret the world. Covers transduction, sensory thresholds,
+      perceptual organization (Gestalt), depth cues, and perceptual constancies.
+    key_concepts:
+      - Transduction and sensory receptor types
+      - Absolute and difference thresholds (Weber's Law, JND)
+      - Signal detection theory
+      - Vision (rods/cones, opponent-process, trichromatic theory)
+      - Audition (frequency/place theory, conduction vs. sensorineural hearing loss)
+      - Other senses (olfaction, gustation, skin senses, proprioception, vestibular)
+      - Gestalt principles (figure-ground, proximity, similarity, closure, continuity)
+      - Depth cues (binocular — retinal disparity, convergence; monocular — interposition, linear perspective)
+      - Perceptual constancies (size, shape, color, brightness)
+      - Top-down vs. bottom-up processing
+      - Perceptual set, inattentional blindness, change blindness
+
+  - id: 3
+    name: "The Reasoning Chamber"
+    ced_coverage: "Unit 2 Topics 2 and 8: Thinking/problem-solving/language, intelligence theories & testing"
+    target_facts: 35
+    description: >
+      Cognition, language, and intelligence. Covers heuristics, cognitive biases,
+      problem-solving barriers, language development (Chomsky vs. Skinner),
+      and intelligence models with their key researchers.
+    key_concepts:
+      - Concepts, prototypes, and cognitive schemas
+      - Problem-solving strategies and obstacles (mental set, functional fixedness)
+      - Heuristics vs. algorithms
+      - Cognitive biases (availability, representativeness, anchoring, confirmation bias)
+      - Language structure (phonemes, morphemes, syntax, semantics)
+      - Language acquisition theories (Chomsky's LAD, Skinner's operant conditioning)
+      - Linguistic relativity (Sapir-Whorf hypothesis)
+      - Intelligence theories (Spearman's g, Thurstone, Gardner's multiple, Sternberg's triarchic, Goleman EQ)
+      - IQ testing history (Binet, Terman, Wechsler)
+      - Test reliability, validity, standardization, and norm groups
+      - Nature vs. nurture in intelligence (heritability, Flynn effect, stereotype threat)
+
+  - id: 4
+    name: "The Growth Spiral"
+    ced_coverage: "Unit 3 Topics 1-6: Prenatal development through aging across the lifespan"
+    target_facts: 40
+    description: >
+      Human development from conception through death. Spans physical, cognitive,
+      and social-emotional milestones. Rich with researcher names (Piaget, Erikson,
+      Kohlberg, Vygotsky, Harlow, Ainsworth) and stage sequences.
+    key_concepts:
+      - Prenatal development (trimesters, teratogens, fetal alcohol syndrome)
+      - Infant reflexes and sensory capabilities at birth
+      - Attachment theory (Harlow's contact comfort, Ainsworth's strange situation)
+      - Secure vs. insecure attachment styles
+      - Piaget's 4 cognitive stages (sensorimotor, preoperational, concrete, formal)
+      - Piaget's schemas, assimilation, accommodation, equilibration
+      - Vygotsky's zone of proximal development and scaffolding
+      - Erikson's 8 psychosocial stages (trust vs. mistrust through ego integrity vs. despair)
+      - Kohlberg's 3 levels of moral development (preconventional, conventional, postconventional)
+      - Parenting styles (Baumrind: authoritative, authoritarian, permissive, uninvolved)
+      - Puberty, identity formation (Marcia's statuses), and adolescent development
+      - Adult development and aging (crystallized vs. fluid intelligence, dementia)
+
+  - id: 5
+    name: "The Conditioning Pit"
+    ced_coverage: "Unit 3 Topics 7-9: Classical conditioning, operant conditioning, social/observational learning"
+    target_facts: 35
+    description: >
+      The learning unit — the most AP-tested content area. Pavlov's classical
+      conditioning with all its components, Skinner's operant conditioning with
+      schedules of reinforcement, and Bandura's social learning theory.
+    key_concepts:
+      - Classical conditioning (Pavlov): UCS, UCR, CS, CR, acquisition, extinction, spontaneous recovery
+      - Stimulus generalization and discrimination
+      - Higher-order conditioning
+      - Watson's Little Albert (fear conditioning)
+      - Garcia's taste aversion and biological preparedness
+      - Operant conditioning (Skinner): law of effect (Thorndike), reinforcement vs. punishment
+      - Positive vs. negative reinforcement and punishment (4-quadrant matrix)
+      - Primary vs. secondary reinforcers
+      - Continuous vs. partial reinforcement schedules (FR, VR, FI, VI)
+      - Shaping, chaining, and behavior modification
+      - Latent learning (Tolman), insight learning (Köhler)
+      - Social/observational learning (Bandura): Bobo doll, modeling, vicarious reinforcement
+      - Cognitive maps and learned helplessness (Seligman)
+
+  - id: 6
+    name: "The Social Nexus"
+    ced_coverage: "Unit 4 Topics 1-3 and 6-7: Social psychology, motivation theories, emotion theories"
+    target_facts: 40
+    description: >
+      How we behave in social contexts and what drives us. The most famous
+      experiments in psychology live here (Milgram, Zimbardo, Asch, Festinger).
+      Also covers hierarchical motivation models and competing emotion theories.
+    key_concepts:
+      - Social influence (conformity — Asch, obedience — Milgram, compliance)
+      - Factors affecting conformity and obedience (group size, unanimity, authority)
+      - Group processes (groupthink, social facilitation, social loafing, deindividuation)
+      - Attribution theory (dispositional vs. situational, fundamental attribution error, actor-observer bias, self-serving bias)
+      - Attitudes and attitude change (cognitive dissonance — Festinger, persuasion routes)
+      - Stereotypes, prejudice, discrimination (in-group/out-group bias, just-world hypothesis)
+      - Aggression and prosocial behavior (bystander effect — Darley & Latané)
+      - Maslow's hierarchy of needs
+      - Self-determination theory (intrinsic vs. extrinsic motivation)
+      - Drive reduction theory, arousal theory, Yerkes-Dodson law
+      - Achievement motivation (McClelland, Atkinson)
+      - Hunger regulation (hypothalamus, set-point theory, eating disorders)
+      - Emotion theories (James-Lange, Cannon-Bard, Schachter-Singer two-factor, Lazarus)
+      - Facial feedback hypothesis, display rules, universality of basic emotions (Ekman)
+
+  - id: 7
+    name: "The Mask Gallery"
+    ced_coverage: "Unit 4 Topics 4-5: Psychoanalytic/psychodynamic, humanistic, trait, social-cognitive, and biological personality theories"
+    target_facts: 35
+    description: >
+      Personality theories from Freud's unconscious to the Big Five. Players
+      match theorists to their models, ego defense mechanisms to their functions,
+      and personality assessment types to their approaches.
+    key_concepts:
+      - Freud's psychoanalytic theory (id, ego, superego; oral through genital stages)
+      - Ego defense mechanisms (repression, projection, reaction formation, displacement, rationalization, sublimation, regression)
+      - Neo-Freudian theorists (Adler — inferiority complex, Jung — collective unconscious/archetypes, Horney — basic anxiety)
+      - Humanistic psychology (Maslow — self-actualization, Rogers — unconditional positive regard, self-concept)
+      - Trait theories (Allport, Cattell's 16PF, Eysenck's PEN model, McCrae & Costa's Big Five — OCEAN)
+      - Social-cognitive theory (Bandura — reciprocal determinism, self-efficacy; Rotter — locus of control, Mischel — situation vs. trait)
+      - Biological approaches (heritability of traits, temperament)
+      - Personality assessment (projective tests — Rorschach, TAT; objective tests — MMPI, NEO-PI; strengths and criticisms)
+
+  - id: 8
+    name: "The Shadow Ward"
+    ced_coverage: "Unit 5 Topics 1-5: Health psychology / stress, psychological disorders (DSM-5), and treatment approaches"
+    target_facts: 40
+    description: >
+      Psychological disorders and treatment — the clinical half of psychology.
+      Players master DSM-5 diagnostic categories, famous case studies, and the
+      full range of therapeutic approaches from psychoanalysis to CBT to drug therapy.
+    key_concepts:
+      - Biopsychosocial model of health and illness
+      - Stress and coping (GAS — Selye; problem-focused vs. emotion-focused coping)
+      - Psychoneuroimmunology, Type A/B behavior patterns
+      - DSM-5 classification system, medical model critique
+      - Anxiety disorders (GAD, panic disorder, phobias, OCD, PTSD)
+      - Depressive disorders (MDD, persistent depressive disorder)
+      - Bipolar and related disorders
+      - Schizophrenia spectrum (positive vs. negative symptoms, dopamine hypothesis)
+      - Dissociative disorders (DID, dissociative amnesia)
+      - Personality disorders (antisocial, borderline)
+      - Neurodevelopmental disorders (ADHD, autism spectrum)
+      - Eating disorders (anorexia, bulimia, binge-eating disorder)
+      - Psychotherapy approaches (psychoanalytic, humanistic/client-centered, behavioral, cognitive, CBT, REBT)
+      - Biomedical therapies (antidepressants, antipsychotics, lithium, anxiolytics, ECT, TMS)
+      - Evaluating therapy effectiveness (meta-analysis, placebo effect, therapeutic alliance)
+
+# ============================================================
+# ANSWER TYPE POOLS — 14 pools for distractor selection
+# These define the "answer space" for multiple-choice generation
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: Psychologist / Researcher Names
+  # "Which researcher conducted the obedience studies?" → "Stanley Milgram"
+  - id: researcher_names
+    label: "Psychologist / Researcher Names"
+    format: name
+    estimated_count: 60
+    note: >
+      Last names preferred for answers (e.g., "Milgram", "Bandura", "Skinner").
+      Distractors must be real psychologists from the same era or subfield.
+      Key confusions: Pavlov/Watson/Skinner (all behaviorists), Freud/Jung/Adler (all psychodynamic),
+      Piaget/Vygotsky/Erikson (all developmental), Asch/Milgram/Zimbardo (all social influence).
+
+  # POOL 2: Brain Structures & Regions
+  # "What brain region regulates hunger and body temperature?" → "Hypothalamus"
+  - id: brain_structures
+    label: "Brain Structures & Regions"
+    format: term
+    estimated_count: 25
+    note: >
+      Structures include both cortical (frontal lobe, parietal lobe, Broca's area, Wernicke's area)
+      and subcortical (thalamus, hypothalamus, amygdala, hippocampus, cerebellum, brainstem, corpus callosum).
+      Key confusions: hippocampus/amygdala (both limbic), thalamus/hypothalamus,
+      cerebellum/cerebrum, Broca's/Wernicke's area.
+
+  # POOL 3: Neurotransmitters & Hormones
+  # "Which neurotransmitter is associated with reward and is implicated in schizophrenia?" → "Dopamine"
+  - id: neurotransmitter_names
+    label: "Neurotransmitters & Hormones"
+    format: term
+    estimated_count: 15
+    syntheticDistractors:
+      - "Oxytocin"
+      - "Vasopressin"
+      - "Melatonin"
+    note: >
+      Core NTs: dopamine, serotonin, norepinephrine, GABA, glutamate, acetylcholine,
+      endorphins, substance P. Key hormones: cortisol, adrenaline (epinephrine),
+      testosterone, estrogen, insulin. Pool is small — syntheticDistractors fill gaps.
+      Key confusions: dopamine/serotonin (both monoamines), GABA/glutamate (inhibitory vs. excitatory).
+
+  # POOL 4: Psychology Concepts & Terms
+  # "A tendency to search for information that confirms one's preexisting beliefs is called?" → "Confirmation bias"
+  - id: psych_concept_terms
+    label: "Psychology Concepts & Terms"
+    format: term
+    estimated_count: 50
+    note: >
+      General psychological concepts spanning all units. Includes: cognitive dissonance,
+      schema, attribution, reinforcement, classical/operant conditioning components,
+      Gestalt principles, perceptual sets, locus of control, self-efficacy, etc.
+      The largest pool — facts across all 9 chain themes draw from this.
+
+  # POOL 5: Psychological Disorders
+  # "Recurrent, persistent thoughts paired with repetitive behaviors are hallmarks of?" → "Obsessive-compulsive disorder"
+  - id: disorder_names
+    label: "Psychological Disorders"
+    format: term
+    estimated_count: 25
+    note: >
+      Full DSM-5 names preferred (e.g., "major depressive disorder", "generalized anxiety disorder").
+      Abbreviations as synonyms (MDD, GAD, OCD, PTSD, ADHD).
+      Key confusions: bipolar I / bipolar II, OCD / OCPD, anorexia / bulimia,
+      schizophrenia / schizoaffective disorder, PTSD / acute stress disorder.
+
+  # POOL 6: Therapy & Treatment Types
+  # "Which therapy focuses on correcting distorted thoughts and maladaptive behaviors?" → "Cognitive-behavioral therapy"
+  - id: therapy_types
+    label: "Therapy & Treatment Types"
+    format: term
+    estimated_count: 18
+    note: >
+      Includes psychotherapies (psychoanalysis, CBT, REBT, behavioral therapy, client-centered/humanistic,
+      systematic desensitization, exposure therapy, EMDR, DBT) and biomedical approaches
+      (SSRIs, SNRIs, antipsychotics, mood stabilizers, ECT, TMS, lobotomy — historical).
+      Key confusions: CBT vs. REBT, systematic desensitization vs. flooding vs. exposure therapy.
+
+  # POOL 7: Developmental Stages & Periods
+  # "In which Piagetian stage does object permanence develop?" → "Sensorimotor stage"
+  - id: dev_stage_names
+    label: "Developmental Stages & Periods"
+    format: term
+    estimated_count: 20
+    note: >
+      Piaget's 4 stages, Erikson's 8 psychosocial stages (full names, e.g.,
+      "Trust vs. Mistrust"), Freud's 5 psychosexual stages, Kohlberg's 3 levels and
+      6 stages, Marcia's 4 identity statuses (achievement, foreclosure, moratorium, diffusion).
+      Key confusions: Piaget stage order; Erikson stage names at specific ages.
+
+  # POOL 8: Sleep Stages & Phenomena
+  # "During which sleep stage do most vivid dreams occur?" → "REM sleep"
+  - id: sleep_stage_terms
+    label: "Sleep Stages & Phenomena"
+    format: term
+    estimated_count: 15
+    syntheticDistractors:
+      - "Stage 2 NREM"
+      - "Hypnagogic state"
+      - "Microsleep"
+    note: >
+      NREM stages 1-3 characteristics, REM features (rapid eye movement, atonia, dreaming),
+      sleep cycle duration (~90 min), circadian rhythm and suprachiasmatic nucleus,
+      sleep phenomena (sleep spindles, K-complexes, delta waves, REM rebound).
+      Sleep disorders as separate facts referencing disorder_names or psych_concept_terms.
+
+  # POOL 9: Sensation & Perception Terms
+  # "The minimum detectable difference between two stimuli is called the?" → "Just noticeable difference (JND)"
+  - id: sensation_terms
+    label: "Sensation & Perception Terms"
+    format: term
+    estimated_count: 20
+    note: >
+      Transduction, absolute threshold, difference threshold (JND), signal detection theory,
+      Weber's law, sensory adaptation, top-down/bottom-up processing, perceptual set,
+      Gestalt principles (proximity, similarity, closure, continuity, figure-ground),
+      depth cues (retinal disparity, convergence, interposition, linear perspective, texture gradient).
+
+  # POOL 10: Memory Systems & Processes
+  # "The memory system with virtually unlimited capacity is called?" → "Long-term memory"
+  - id: memory_terms
+    label: "Memory Systems & Processes"
+    format: term
+    estimated_count: 20
+    note: >
+      Sensory memory / iconic / echoic, short-term/working memory, long-term memory subtypes
+      (explicit: episodic + semantic; implicit: procedural + classical conditioning).
+      Encoding strategies (elaborative rehearsal, mnemonics, spacing effect, testing effect).
+      Retrieval (recall, recognition, relearning, priming, context-dependent, mood-congruent).
+      Forgetting (encoding failure, storage decay, interference — proactive vs. retroactive, retrieval failure, motivated forgetting).
+      Key confusions: proactive vs. retroactive interference; episodic vs. semantic memory.
+
+  # POOL 11: Intelligence & Testing Concepts
+  # "The concept that IQ scores have risen significantly across generations is called?" → "Flynn effect"
+  - id: intelligence_terms
+    label: "Intelligence & Testing Concepts"
+    format: term
+    estimated_count: 15
+    syntheticDistractors:
+      - "Crystallized intelligence"
+      - "Fluid intelligence"
+      - "Emotional intelligence"
+    note: >
+      Intelligence theories (g factor, multiple intelligences, triarchic theory),
+      test properties (reliability, validity, standardization, normal distribution),
+      historical context (Binet-Simon, Stanford-Binet, Wechsler scales, IQ formula),
+      social factors (heritability estimates, Flynn effect, stereotype threat, cultural bias).
+
+  # POOL 12: Social Psychology Concepts
+  # "The tendency to attribute others' behavior to character rather than situation is called?" → "Fundamental attribution error"
+  - id: social_psych_terms
+    label: "Social Psychology Concepts"
+    format: term
+    estimated_count: 20
+    note: >
+      Attribution errors (FAE, actor-observer bias, self-serving bias),
+      social influence (conformity, compliance, obedience, social facilitation, social loafing),
+      group dynamics (groupthink, deindividuation, group polarization),
+      attitude change (cognitive dissonance, elaboration likelihood model),
+      aggression (frustration-aggression hypothesis, social learning),
+      helping behavior (bystander effect, diffusion of responsibility).
+
+  # POOL 13: Personality Concepts & Traits
+  # "The Big Five personality factor associated with emotional instability is?" → "Neuroticism"
+  - id: personality_terms
+    label: "Personality Concepts & Traits"
+    format: term
+    estimated_count: 18
+    note: >
+      Big Five traits (OCEAN: Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism),
+      Freudian structures (id, ego, superego), defense mechanisms (repression, projection, rationalization,
+      displacement, reaction formation, sublimation, regression, denial),
+      Jungian archetypes (persona, shadow, anima/animus, Self),
+      Humanistic concepts (self-concept, unconditional positive regard, self-actualization, peak experiences),
+      Social-cognitive concepts (self-efficacy, locus of control, reciprocal determinism).
+
+  # POOL 14: Numeric Answers
+  # "How many stages are in Kohlberg's theory of moral development?" → "6"
+  - id: bracket_numbers
+    label: "Numeric Answers"
+    format: number
+    estimated_count: 20
+    note: >
+      Integer answers for stage counts, year of publication, study participant numbers,
+      signal detection thresholds, Weber fractions, historical dates, IQ mean/SD values.
+      Examples: Piaget's 4 stages, Erikson's 8 stages, Kohlberg's 6 stages (3 levels),
+      Milgram's 65% obedience rate, Asch's ~37% conformity rate, Freud's 5 psychosexual stages.
+      Distractors must be numerically plausible (e.g., 3 / 4 / 5 / 6 for stage counts).
+
+# ============================================================
+# EXAM TAGS SCHEMA — CED-aligned metadata for each fact
+# ============================================================
+
+exam_tags_schema:
+  description: >
+    Every fact MUST include an examTags object. These drive difficulty calibration
+    and allow filtering by CED unit/topic for targeted study.
+
+  fields:
+    unit:
+      type: integer
+      range: [1, 5]
+      description: "CED unit number (1=Bio, 2=Cog, 3=Dev+Learn, 4=Social+Personality, 5=Clinical)"
+    topic:
+      type: string
+      description: "CED topic code, e.g. '1.3' (Unit 1, Topic 3)"
+    ced_lo:
+      type: string
+      description: "CED learning objective code if applicable, e.g. 'SYS-1.B'"
+      required: false
+    exam_weight:
+      type: string
+      enum: ["high", "medium", "low"]
+      description: >
+        Estimated AP exam frequency. High = appears most years,
+        medium = appears some years, low = depth/enrichment content.
+    is_researcher_fact:
+      type: boolean
+      description: "True if the fact is primarily about attributing a finding to a researcher"
+    is_experiment_fact:
+      type: boolean
+      description: "True if the fact describes a specific named experiment or study"
+
+  example: >
+    examTags:
+      unit: 3
+      topic: "3.8"
+      exam_weight: "high"
+      is_researcher_fact: true
+      is_experiment_fact: true
+
+# ============================================================
+# SYNONYM GROUPS — Terms that should never distract each other
+# ============================================================
+
+synonym_groups:
+
+  # Researcher name variants
+  - id: pavlov_variants
+    members: ["Pavlov", "Ivan Pavlov", "I.P. Pavlov"]
+    reason: "All refer to the same researcher — never distract each other"
+
+  - id: skinner_variants
+    members: ["Skinner", "B.F. Skinner", "Burrhus Frederic Skinner"]
+    reason: "All refer to the same researcher — never distract each other"
+
+  - id: bandura_variants
+    members: ["Bandura", "Albert Bandura"]
+    reason: "Same researcher"
+
+  - id: milgram_variants
+    members: ["Milgram", "Stanley Milgram"]
+    reason: "Same researcher"
+
+  - id: piaget_variants
+    members: ["Piaget", "Jean Piaget"]
+    reason: "Same researcher"
+
+  - id: freud_variants
+    members: ["Freud", "Sigmund Freud"]
+    reason: "Same researcher"
+
+  - id: erikson_variants
+    members: ["Erikson", "Erik Erikson", "Erik H. Erikson"]
+    reason: "Same researcher"
+
+  - id: vygotsky_variants
+    members: ["Vygotsky", "Lev Vygotsky"]
+    reason: "Same researcher"
+
+  # Disorder abbreviations — full name and abbreviation are the same answer
+  - id: ocd_variants
+    members: ["OCD", "Obsessive-compulsive disorder", "obsessive-compulsive disorder"]
+    reason: "Abbreviation and full name refer to the same disorder"
+
+  - id: ptsd_variants
+    members: ["PTSD", "Post-traumatic stress disorder", "posttraumatic stress disorder"]
+    reason: "Abbreviation and full name refer to the same disorder"
+
+  - id: adhd_variants
+    members: ["ADHD", "Attention-deficit/hyperactivity disorder"]
+    reason: "Abbreviation and full name refer to the same disorder"
+
+  - id: mdd_variants
+    members: ["MDD", "Major depressive disorder", "major depression"]
+    reason: "Abbreviation and full name refer to the same disorder"
+
+  - id: gad_variants
+    members: ["GAD", "Generalized anxiety disorder"]
+    reason: "Abbreviation and full name refer to the same disorder"
+
+  - id: did_variants
+    members: ["DID", "Dissociative identity disorder", "multiple personality disorder"]
+    reason: "All names refer to the same disorder (MPD is outdated DSM-III name)"
+
+  # Conditioning synonyms — correct answers under different question frames
+  - id: negative_reinforcement_vs_punishment
+    members: ["Negative reinforcement", "Punishment"]
+    reason: >
+      Students confuse these constantly. They are NOT synonyms — but both involve
+      aversive stimuli, so distractors must be worded carefully to avoid ambiguity.
+      Flag for human QA review on any fact using either term.
+    flag_for_qa: true
+
+  - id: classical_conditioning_synonyms
+    members: ["Pavlovian conditioning", "Classical conditioning", "respondent conditioning"]
+    reason: "All three terms describe the same learning process"
+
+  - id: operant_conditioning_synonyms
+    members: ["Operant conditioning", "Instrumental conditioning", "Skinnerian conditioning"]
+    reason: "All three terms describe the same learning process"
+
+  - id: working_memory_synonyms
+    members: ["Working memory", "Short-term memory"]
+    reason: "Often used interchangeably in AP Psych (Baddeley model is the distinction)"
+    flag_for_qa: true
+
+  - id: repression_suppression
+    members: ["Repression", "Suppression"]
+    reason: >
+      Repression is unconscious (Freudian defense mechanism);
+      suppression is conscious. Both involve pushing thoughts away.
+      Flag for QA to ensure question context clearly distinguishes them.
+    flag_for_qa: true
+
+# ============================================================
+# COMMON CONFUSIONS — Priority distractor pairs for seeding confusion matrix
+# ============================================================
+
+common_confusions:
+  # The #1 AP Psychology exam trap: conditioning components
+  - ["CS", "UCS"]                          # Conditioned vs. unconditioned stimulus
+  - ["CR", "UCR"]                          # Conditioned vs. unconditioned response
+  - ["extinction", "forgetting"]           # Extinction requires trials; forgetting is passive
+  - ["negative reinforcement", "punishment"]  # Both aversive — students mix these up constantly
+  - ["positive punishment", "negative punishment"]  # Adding vs. removing aversive/desired stimuli
+
+  # Memory confusion pairs
+  - ["proactive interference", "retroactive interference"]  # Old disrupts new vs. new disrupts old
+  - ["episodic memory", "semantic memory"]                  # Personal events vs. general knowledge
+  - ["encoding failure", "storage decay"]                   # Never stored vs. faded over time
+
+  # Brain structure pairs
+  - ["hippocampus", "amygdala"]            # Memory formation vs. fear/emotion
+  - ["thalamus", "hypothalamus"]           # Sensory relay vs. homeostasis/drives
+  - ["Broca's area", "Wernicke's area"]    # Speech production vs. language comprehension
+  - ["cerebellum", "cerebrum"]             # Motor coordination vs. higher cognition
+
+  # Researcher attribution confusions
+  - ["Milgram", "Zimbardo"]                # Obedience (electric shock) vs. role/situation (Stanford Prison)
+  - ["Asch", "Milgram"]                    # Conformity (line lengths) vs. obedience (authority)
+  - ["Pavlov", "Watson"]                   # Original classical conditioning vs. Little Albert application
+  - ["Piaget", "Vygotsky"]                 # Stage-based cognitive development vs. social/ZPD model
+  - ["Bandura", "Skinner"]                 # Observational learning vs. operant conditioning
+  - ["Freud", "Adler"]                     # Id/ego/superego model vs. inferiority complex
+  - ["James-Lange", "Cannon-Bard"]         # Physiological → emotion vs. simultaneous
+  - ["Maslow", "Rogers"]                   # Hierarchy of needs vs. client-centered/unconditional positive regard
+
+  # Perception pairs
+  - ["absolute threshold", "difference threshold"]     # Minimum detectable vs. minimum noticeable change
+  - ["trichromatic theory", "opponent-process theory"] # Young-Helmholtz vs. Hering (color vision)
+  - ["retinal disparity", "convergence"]               # Binocular depth cues — which is which
+  - ["top-down processing", "bottom-up processing"]    # Expectation-driven vs. data-driven
+
+  # Clinical pairs
+  - ["schizophrenia", "bipolar disorder"]           # Students confuse "split personality" misnomer
+  - ["OCD", "OCPD"]                                 # Disorder vs. personality disorder
+  - ["anorexia nervosa", "bulimia nervosa"]         # Restriction vs. binge-purge cycle
+  - ["CBT", "REBT"]                                 # Beck vs. Ellis; irrational beliefs focus
+
+# ============================================================
+# DIFFICULTY TIERS
+# ============================================================
+
+difficulty_tiers:
+  easy:
+    description: "Core concepts every AP student encounters in first pass"
+    examples:
+      - "Classical conditioning researcher: Pavlov"
+      - "Brain structure for memory: Hippocampus"
+      - "Reinforcement increases behavior; punishment decreases it"
+      - "Maslow's hierarchy — physiological needs at base"
+  medium:
+    description: "Precise distinctions and secondary researchers"
+    examples:
+      - "Proactive vs. retroactive interference"
+      - "Weber's law and JND calculation"
+      - "Erikson's stage for middle adulthood (generativity vs. stagnation)"
+      - "Variable ratio schedule produces highest, most resistant responding"
+  hard:
+    description: "Multi-concept integration and nuanced distinctions"
+    examples:
+      - "Distinguishing opponent-process afterimage from trichromatic cone response"
+      - "Seligman's learned helplessness as operant conditioning failure"
+      - "Yerkes-Dodson optimal arousal at low vs. high task complexity"
+      - "Schachter-Singer two-factor emotion requiring both arousal AND cognitive label"
+
+# ============================================================
+# NOTES
+# ============================================================
+notes: >
+  AP PSYCHOLOGY CED UNIT WEIGHTS (approximate exam distribution):
+  Unit 1 (Biological Bases of Behavior): 8-10%
+  Unit 2 (Sensation, Perception, States of Consciousness, Cognition, Memory, Language, Intelligence): 31-39%
+  Unit 3 (Development, Learning): 17-21%
+  Unit 4 (Social Psychology, Motivation, Emotion, Personality): 26-30%
+  Unit 5 (Psychological Disorders, Treatment, Research Methods): 12-16%
+
+  Chain themes map to exam weight:
+  - The Mind Palace (Theme 1) and The Sensory Labyrinth (Theme 2) together cover Unit 2 ~35% — highest weight
+  - The Social Nexus (Theme 6) and The Mask Gallery (Theme 7) cover Unit 4 ~28%
+  - Facts from high-weight areas should be classified exam_weight: "high"
+
+  RESEARCHER ATTRIBUTION is critical for AP Psych:
+  ~30-40% of AP exam questions involve matching researchers to their findings.
+  Every chain theme must include researcher_name facts, not just concept facts.
+
+  EXPERIMENT NAMES matter:
+  Students must know both what happened AND who did it:
+  - Little Albert (Watson & Rayner)
+  - Bobo Doll (Bandura)
+  - Milgram's shock experiments
+  - Zimbardo's Stanford Prison Experiment
+  - Asch's conformity studies (line lengths)
+  - Harlow's contact comfort (wire vs. cloth mothers)
+  - Seligman's learned helplessness (inescapable shock)
+
+  GENERATION PRIORITY:
+  1. researcher_names pool facts (highest AP exam frequency)
+  2. psych_concept_terms facts (broad vocabulary, all themes)
+  3. brain_structures and neurotransmitter_names (Theme 0 + 1)
+  4. disorder_names and therapy_types (Theme 8 — clinical unit)
+  5. dev_stage_names (Theme 4 — stage sequence mastery)
+  6. bracket_numbers (exact figures students must memorize)
+
+  VOLATILE DATA:
+  DSM edition may change. Current target: DSM-5-TR (2022).
+  IQ test versions: WAIS-IV (adult), WISC-V (children), SB5 (all ages).
+  Avoid facts tied to specific publication years that may update.

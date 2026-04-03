@@ -14,6 +14,13 @@ Curated decks are distinct from the trivia `facts.db` SQLite database. They live
 
 ---
 
+## Deck Types
+
+### Exam-Aligned Decks
+Decks covering material from standardized exams (AP, JLPT, CEFR, TOPIK, HSK, USMLE, NCLEX, SAT, IB, GCSE/A-Level) are structured to match the exam's official scope document. Every testable concept is covered, content is weighted by exam importance, and facts include the `examTags` field for filtering by exam name and unit/section. See `.claude/rules/content-pipeline.md` — "Exam-Aligned Deck Standard" section — for the full standard. AP Biology is the first deck built under this standard.
+
+---
+
 ## Deck JSON Structure
 
 Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
@@ -67,10 +74,10 @@ Two backfill scripts produced full coverage:
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-03 it contains **66 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-03 it contains **67 decks**:
 
 - **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
-- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**
+- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**
 
 ### Deck Architecture Files
 
@@ -316,6 +323,41 @@ film_titles 55/55 OK, director_names 39/28 OK, actor_names 35/35 OK, character_n
 **Sources:** Wikipedia (CC-BY-SA-4.0), Wikidoc (CC-BY-SA-3.0), NCBI Bookshelf (public domain), UWF Medical Terminology (CC-BY-4.0), GlobalRPH (reference)
 
 **Provenance doc:** `docs/deck-provenance/medical_terminology.md`
+
+---
+
+## ap_psychology Deck
+
+`data/decks/ap_psychology.json` — assembled 2026-04-03. Exam-aligned to the College Board AP Psychology Course and Exam Description (CED) 2024–25, covering 5 units and 35 topics.
+
+| Field | Value |
+|---|---|
+| `id` | `ap_psychology` |
+| `domain` | `social_sciences` |
+| `subDomain` | `psychology` |
+| `facts` | 393 |
+| `minimumFacts` | 300 |
+| `targetFacts` | 393 |
+
+**Chain Themes (9):**
+
+| chainThemeId | Name |
+|---|---|
+| 0 | The Neural Forge |
+| 1 | The Mind Palace |
+| 2 | The Sensory Labyrinth |
+| 3 | The Reasoning Chamber |
+| 4 | The Growth Spiral |
+| 5 | The Conditioning Pit |
+| 6 | The Social Nexus |
+| 7 | The Mask Gallery |
+| 8 | The Shadow Ward |
+
+**Answer Type Pools (14):** 14 pools covering terms, theorists, brain regions, research methods, disorders, treatments, and behavioral concepts.
+
+**Synonym Groups (20):** 20 synonym groups covering alternate names for theories, theorists, and psychological terminology.
+
+**Exam alignment:** College Board AP Psychology CED (2024–25). Covers 5 units across 35 topics — all major content areas testable on the AP exam are represented.
 
 ---
 
