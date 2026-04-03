@@ -94,6 +94,15 @@ Manages sword, arm+tome, and shield player-side animations. Sprites start alpha=
 
 **Scene-alive guard:** `screenShake?.trigger()` calls inside tween `onComplete` callbacks are wrapped with `if (scene?.scene?.isActive())` to prevent crashes when `tweens.killAll()` fires callbacks on in-flight tweens during shutdown.
 
+**Impact sync ( callback, 2026-04-03):**
+
+`playSwordSlash(enemyX, enemyY, onImpact?)` and `playTomeCast(glowColor, onImpact?)` accept an optional `onImpact?: () => void` callback that fires at the weapon's visual contact frame:
+
+- Sword: T+250ms (slash tween `onComplete` — blade at maximum foreshortening, furthest forward point)
+- Tome: T+330ms (glow burst tween `onComplete` — 250ms arm rise + 80ms glow peak)
+
+`CombatScene.playPlayerAttackAnimation(onImpact?)` and `playPlayerCastAnimation(cardType?, onImpact?)` wire these callbacks. `encounterBridge` passes `() => scene.playEnemyHitAnimation()` as the callback for attack/cast cards with damage, deferring the enemy recoil to the contact frame instead of T+0. Shield cards and wrong-answer paths fire enemy hit immediately (no weapon animation plays). Impact sparks (5 particles via `burstParticles()`) are also spawned at the enemy position inside the weapon's `onImpact` closure — warm yellow (`0xFFFF88`) for sword, chain-colored for tome.
+
 ### DepthLightingSystem
 
 **File:** `src/game/systems/DepthLightingSystem.ts`

@@ -286,8 +286,13 @@ export class WeaponAnimationSystem {
    * Pseudo-3D Minecraft-style sword slash with perspective taper.
    * The sword starts flat (facing the viewer), then rotates while the perspective
    * increases — the handle stays wide/close while the tip narrows/recedes.
+   * @param enemyX World x of the enemy center (impact target)
+   * @param enemyY World y of the enemy center (impact target)
+   * @param onImpact Optional callback fired at T+250ms when the sword reaches its apex
+   *   (the contact frame). Use this to trigger enemy hit reaction and impact sparks so
+   *   they are synchronized with the visual contact point rather than firing at T+0.
    */
-  public playSwordSlash(enemyX: number, enemyY: number): Promise<void> {
+  public playSwordSlash(enemyX: number, enemyY: number, onImpact?: () => void): Promise<void> {
     console.log('[WeaponAnim] Sword slash fired at', enemyX, enemyY)
     if (isReduceMotionEnabled() || isTurboMode()) return Promise.resolve()
     if (!this.swordImage || !this.swordCanvas) return Promise.resolve()
@@ -342,10 +347,14 @@ export class WeaponAnimationSystem {
           sword.setY(handleY + animState.yOffset * scale)
         },
         onComplete: () => {
-          // ── IMPACT ── guard against stale scene refs after shutdown
+          // ── IMPACT — contact frame at T+250ms ──
+          // Screen shake fires here (already at the correct contact frame).
+          // onImpact callback triggers enemy hit reaction and impact sparks,
+          // synchronized with the sword's visual apex rather than T+0.
           if (scene?.scene?.isActive()) {
             ;(scene as any).screenShake?.trigger('micro')
           }
+          onImpact?.()
 
           // ── FADE OUT (150ms) ──
           scene.tweens.add({
@@ -369,9 +378,12 @@ export class WeaponAnimationSystem {
    * The arm+tome rises from lower-right, glows, then drops back down.
    * Sprite starts and ends at alpha=0 — fades in at rise start, fades out during drop.
    * @param glowColor Phaser tint color number for the glow and particles
+   * @param onImpact Optional callback fired at T+330ms when the glow burst peaks
+   *   (T+250ms arm rise + T+80ms glow). Use this to trigger enemy hit reaction and
+   *   impact sparks synchronized with the visual impact frame rather than T+0.
    * @returns Promise that resolves when the animation completes
    */
-  public playTomeCast(glowColor: number): Promise<void> {
+  public playTomeCast(glowColor: number, onImpact?: () => void): Promise<void> {
     console.log('[WeaponAnim] Tome cast fired, color:', glowColor.toString(16))
     if (isReduceMotionEnabled() || isTurboMode()) return Promise.resolve()
     if (!this.armTomeContainer || !this.tomeSprite || !this.tomeGlow) return Promise.resolve()
@@ -420,6 +432,8 @@ export class WeaponAnimationSystem {
         onUpdate: () => { if (tomeMask) tomeMask.setPosition(container.x, container.y) },
         onComplete: () => {
           // ── Glow burst at peak ────────────────────────────
+          // onImpact fires at the glow burst peak (T+330ms total: 250ms rise + 80ms glow).
+          // This is the contact frame for tome cast — enemy hit reaction belongs here.
           scene.tweens.add({
             targets: tomeGlow,
             alpha: 0.7,
@@ -429,6 +443,8 @@ export class WeaponAnimationSystem {
             yoyo: true,
             onComplete: () => {
               tomeGlow.setAlpha(0)
+              // Fire impact callback at glow burst peak — the contact frame
+              onImpact?.()
             },
           })
 

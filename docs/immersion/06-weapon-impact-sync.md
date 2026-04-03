@@ -1,5 +1,5 @@
 ---
-status: pending
+status: implemented
 delete-after-implementation: true
 priority: quick-win
 effort: S

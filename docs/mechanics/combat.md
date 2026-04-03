@@ -268,6 +268,20 @@ All new `CardEffectResult` fields are now wired in `playCardAction()` and `endPl
 
 ---
 
+## Weapon-Enemy Impact Timing (2026-04-03)
+
+Sword slash and tome cast animations defer the enemy hit reaction to the weapon's visual contact frame rather than firing at T+0 (when the card resolves):
+
+- **Sword:** `playPlayerAttackAnimation(onImpact?)` passes a callback to `playSwordSlash()` that fires at T+250ms (slash apex). The old 110ms bob tween on the enemy container was removed — `EnemySpriteSystem.playHit()` provides richer knockback.
+- **Tome:** `playPlayerCastAnimation(cardType?, onImpact?)` passes a callback to `playTomeCast()` that fires at T+330ms (glow burst peak = 250ms rise + 80ms glow).
+- **Shield / wrong answers:** No weapon animation plays; enemy hit reaction fires immediately (no callback path).
+
+`encounterBridge` constructs `hitCallback = () => scene.playEnemyHitAnimation()` when `damageDealt > 0 && !enemyDefeated && hasWeaponAnimation`. The `onImpact` closure in `CombatScene` also spawns 5 impact spark particles at the enemy position (warm yellow `0xFFFF88` for sword; chain color for tome).
+
+Screen shake for the sword (micro shake) fires at the same T+250ms contact frame — it was already at the correct time and required no change.
+
+---
+
 ## Enrage System
 
 `getEnrageBonus(encounterTurnNumber, floor, enemyHpPercent)` returns flat bonus added to all enemy attacks.

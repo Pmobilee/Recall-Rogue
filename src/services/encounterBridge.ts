@@ -818,14 +818,25 @@ export function handlePlayCard(
 
   const scene = getCombatScene();
   if (scene) {
-    if (result.effect.damageDealt > 0 && !result.enemyDefeated) {
+    // For attack and cast cards: enemy hit reaction is deferred to the weapon's
+    // onImpact callback so it fires at the visual contact frame (T+250ms sword,
+    // T+330ms tome) rather than at T+0 when the card resolves.
+    // For shield cards and wrong answers with no weapon animation: fire immediately.
+    const hasWeaponAnimation = correct && playedCard?.cardType !== 'shield';
+    const shouldDeferHit = hasWeaponAnimation && result.effect.damageDealt > 0 && !result.enemyDefeated;
+
+    if (result.effect.damageDealt > 0 && !result.enemyDefeated && !shouldDeferHit) {
+      // Immediate hit reaction — shield block or non-weapon damage path
       scene.playEnemyHitAnimation();
     }
 
     if (correct) {
-      if (playedCard?.cardType === 'attack') scene.playPlayerAttackAnimation();
+      // Build the deferred hit callback for weapon animations (or undefined for shield)
+      const hitCallback = shouldDeferHit ? () => scene.playEnemyHitAnimation() : undefined;
+
+      if (playedCard?.cardType === 'attack') scene.playPlayerAttackAnimation(hitCallback);
       else if (playedCard?.cardType === 'shield') scene.playPlayerBlockAnimation();
-      else scene.playPlayerCastAnimation(playedCard?.cardType);
+      else scene.playPlayerCastAnimation(playedCard?.cardType, hitCallback);
     }
 
     scene.updateEnemyHP(result.turnState.enemy?.currentHP ?? 0, true);

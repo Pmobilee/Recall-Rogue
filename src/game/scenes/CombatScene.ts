@@ -1521,34 +1521,53 @@ export class CombatScene extends Phaser.Scene {
     this.pulseFlash(0xFFEEAA, 0.06, 200)
   }
 
-  playPlayerAttackAnimation(): void {
+  /**
+   * Play sword slash attack animation.
+   * @param onImpact Optional callback fired at the sword contact frame (T+250ms).
+   *   Used by encounterBridge to defer enemy hit reaction until the visual apex,
+   *   so the enemy recoils exactly when the blade reaches its furthest point.
+   */
+  playPlayerAttackAnimation(onImpact?: () => void): void {
     if (this.reduceMotion) return
-    const container = this.enemySpriteSystem.getContainer()
-    // Sword slash aimed at the enemy
-    this.weaponAnimations.playSwordSlash(this.getEnemyX(), this.currentEnemyY)
-    // Existing bob animation on the enemy
-    this.tweens.add({
-      targets: container,
-      y: container.y - 8,
-      duration: 110,
-      yoyo: true,
-      ease: 'Sine.easeOut',
+    const enemyX = this.getEnemyX()
+    const enemyY = this.currentEnemyY
+    // Sword slash aimed at the enemy — enemy hit reaction deferred to onImpact
+    // at T+250ms (contact frame) rather than firing at T+0.
+    // The old 110ms bob tween is removed — EnemySpriteSystem.playHit() handles
+    // knockback with richer elastic spring-back when onImpact fires.
+    this.weaponAnimations.playSwordSlash(enemyX, enemyY, () => {
+      onImpact?.()
+      // Impact sparks at enemy position on contact frame (warm yellow for sword)
+      this.burstParticles(5, enemyX, enemyY, 0xFFFF88)
     })
   }
 
-  playPlayerCastAnimation(cardType?: string): void {
+  /**
+   * Play tome cast animation.
+   * @param cardType Card type string used to determine glow color
+   * @param onImpact Optional callback fired at the glow burst peak (T+330ms).
+   *   Used by encounterBridge to defer enemy hit reaction until the visual impact
+   *   frame rather than firing at T+0.
+   */
+  playPlayerCastAnimation(cardType?: string, onImpact?: () => void): void {
     if (this.reduceMotion) return
     // Determine glow color from card type
     let glowColor = 0x3498db // default blue
     if (cardType === 'buff') glowColor = 0xf39c12
     else if (cardType === 'debuff') glowColor = 0x9b59b6
     else if (cardType === 'utility') glowColor = 0x2ecc71
+    const enemyX = this.getEnemyX()
+    const enemyY = this.currentEnemyY
     // Screen flash and particles
     this.playScreenFlash(0.12)
     this.pulseEdgeGlow(glowColor, 0.25, 270)
     this.burstParticles(14, this.scale.width / 2, this.displayH * 0.44, glowColor)
-    // Tome animation
-    this.weaponAnimations.playTomeCast(glowColor)
+    // Tome animation — enemy hit reaction deferred to onImpact at glow burst peak (T+330ms)
+    this.weaponAnimations.playTomeCast(glowColor, () => {
+      onImpact?.()
+      // Impact sparks at enemy position on contact frame (chain-colored for tome)
+      this.burstParticles(5, enemyX, enemyY, glowColor)
+    })
   }
 
   playPlayerBlockAnimation(): void {
