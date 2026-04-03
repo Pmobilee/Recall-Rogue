@@ -1105,24 +1105,26 @@ Assembly script: `scripts/assemble-ap-chemistry.mjs`
 | 4 | `sd_equilibrium_acids` | Equilibrium & Acids-Bases | Units 7–8 | 90 |
 | 5 | `sd_thermo_electrochemistry` | Thermo & Electrochemistry | Unit 9 | 40 |
 
-**Answer Type Pools (14):**
+**Answer Type Pools (14 — redesigned 2026-04-03 for semantic homogeneity):**
+
+Each pool contains only answers that a student could plausibly confuse with each other. The old junk-drawer pools (`law_and_equation_names`, `acid_base_equilibrium_terms`, etc.) were abolished and replaced with tighter semantic pools. Pool rebuild script: `scripts/rebuild-apchem-pools.mjs`.
 
 | Pool ID | Facts | Members | Notes |
 |---|---|---|---|
-| `law_and_equation_names` | 81 | 77 | Named laws, equations, principles |
-| `acid_base_equilibrium_terms` | 70 | 69 | Equilibrium and acid-base terminology |
-| `thermodynamic_quantities` | 69 | 62 | Thermodynamic state functions and quantities |
-| `bracket_numbers` | 33 | 32 | Numerical values in bracket notation |
-| `reaction_types` | 34 | 29 | Reaction type names |
-| `unit_and_constant_names` | 32 | 32 | SI units, constants, ion charges |
-| `bond_and_imf_types` | 25 | 24 | Bond types and intermolecular forces |
-| `periodic_trend_names` | 23 | 19 | Periodic table trend names |
-| `electrochemistry_terms` | 16 | 16 | Electrochemistry terminology |
-| `compound_names` | 6 | 6 | Chemical compound names |
-| `chemical_formulas` | 5 | 5 | Chemical formula strings |
-| `molecular_geometries` | 3 | 3 | VSEPR geometry names; syntheticDistractors added |
-| `element_names` | 2 | 2 | Element names; syntheticDistractors added |
-| `electrode_half_reactions` | 1 | 1 | Electrolysis products; minimumSize=1, fact has pre-generated distractors |
+| `bracket_numbers` | 32 | 31 | Numeric answers with {N} notation |
+| `equation_formulas` | 39 | 36 | Math expressions: PV=nRT, E=hν, ΔG=ΔH−TΔS |
+| `named_laws_principles` | 18 | 18 | Named laws/rules: Boyle's Law, Hess's Law, Aufbau principle |
+| `chemistry_concepts` | 168 | 159 | Short terms ≤5 words; the general catch-all for non-poolable short answers |
+| `bond_and_imf_types` | 15 | 14 | Bond types and IMF types |
+| `molecular_geometries` | 3 | 3+8 synth | VSEPR names; 8 syntheticDistractors added; minimumSize=3 |
+| `element_names` | 2 | 2+8 synth | Element names; 8 syntheticDistractors added; minimumSize=2 |
+| `compound_names` | 11 | 11 | Compound names/formulas |
+| `reaction_types` | 10 | 9 | Reaction types and evidence of reaction |
+| `equilibrium_concepts` | 12 | 10 | Shift directions, Q vs K, K interpretation |
+| `process_types` | 15 | 11 | Endothermic/exothermic, sublimation, physical/chemical change |
+| `electrochemistry_terms` | 9 | 9 | Anode, cathode, galvanic cell, etc. |
+| `periodic_trend_terms` | 20 | 16 | Atomic number, orbital names, trend directions |
+| `unique_answers` | 46 | 46 | Answers >40 chars or too unique to pool; all have ≥8 pre-generated distractors |
 
 **Difficulty distribution:** easy=332 (difficulty 1–2), medium=62 (difficulty 3), hard=6 (difficulty 4–5)
 
@@ -1150,5 +1152,6 @@ Assembly script: `scripts/assemble-ap-chemistry.mjs`
 - 4 small pools received `syntheticDistractors` or `minimumSize` adjustments: `molecular_geometries` (minimumSize=3), `element_names` (minimumSize=2), `electrode_half_reactions` (minimumSize=1), `ion_charges` (removed — fact moved to `unit_and_constant_names`).
 - `ap_chem_118_calcium_ion_charge`: correctAnswer changed from `{2+}` to `2+` (braces are for numeric values only), moved from `bracket_numbers` to `unit_and_constant_names`, distractors added.
 - `examTags` normalized from array format `["AP_Chemistry","Unit_1","Topic_1.1"]` to object format `{unit, topic, exam_weight}` during assembly.
+- **2026-04-03 pool redesign**: All 14 original junk-drawer pools abolished and replaced with 14 semantically tight pools. Old pools (`law_and_equation_names` had 81 members including "Electron sea model", "Crystal lattice") caused trivially eliminatable distractors. New pools ensure every member of a pool could plausibly be confused with every other member. Rebuild script: `scripts/rebuild-apchem-pools.mjs`. 46 long-answer facts assigned to `unique_answers` pool.
 
 ---

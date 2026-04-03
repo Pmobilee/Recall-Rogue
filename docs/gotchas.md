@@ -666,3 +666,9 @@ Water potential and solute potential equation facts were initially tagged topic 
 
 ### 2026-04-03 — AP Biology: Meiosis II Sub-Phases Incompletely Covered
 Initial generation covered all 4 phases of meiosis I plus Anaphase II but missed Metaphase II and Telophase II. When auditing phase-based content (meiosis, mitosis, cell cycle), enumerate all named phases explicitly rather than checking the process name appears.
+
+### 2026-04-03 — AP Chemistry: Junk-Drawer Answer Type Pools
+**What went wrong:** The AP Chemistry deck shipped with junk-drawer pools. `law_and_equation_names` had 81 members including "Electron sea model", "Bond length decreases", "Crystal lattice" — things that are not laws or equations. When a student saw "What equation calculates buffer pH?", wrong answer choices included "Electron sea model" and "Crystal lattice", which are trivially eliminatable.
+**Root cause:** Pools were designed by broad topic area rather than by answer-type homogeneity. The test is: can you pick any two members and have member A be a plausible wrong answer for a question whose correct answer is member B? If not, they don't belong together.
+**Fix:** Completely redesigned 14 pools. Old pools abolished; new pools are semantically tight: `equation_formulas` (only math expressions), `named_laws_principles` (only named laws), `bond_and_imf_types` (only bond/IMF types), etc. 46 long-answer facts (>40 chars) moved to `unique_answers` pool with pre-generated distractors. Rebuild script: `scripts/rebuild-apchem-pools.mjs`. Verified 0 failures with `node scripts/verify-all-decks.mjs`.
+**Rule:** For every pool design: "pick any 2 members — could A plausibly be the wrong answer to a question whose correct answer is B?" If not, split the pool.
