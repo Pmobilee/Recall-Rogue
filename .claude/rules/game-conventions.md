@@ -7,16 +7,20 @@
 - Chain multipliers stack multiplicatively with charge/buff/relic multipliers
 
 ## Card Play Values
-- Quick Play = quickPlayValue + masteryBonus (1.0× effective)
-- Charge Correct = (quickPlayValue + masteryBonus) × 1.5 — mastery included BEFORE multiplier
-- Charge Wrong = FIZZLE_EFFECT_RATIO (0.25×) — NEVER zero, always resolves. Applies to baseEffectValue, not quickPlayValue. Was 0.5× briefly (2026-04-01) but reverted — at 0.5× fizzle exceeded quick play damage.
-- +1 AP surcharge for Charging, waived during Surge turns and Chain Momentum
+- Quick Play = `getMasteryStats(mechanicId, level).qpValue` (explicit per-level value)
+- Charge Correct = `qpValue × CHARGE_CORRECT_MULTIPLIER (1.75)`
+- Charge Wrong = `Math.max(0, mechanic.chargeWrongValue + masteryBonus)` — floored at 0
+- CHARGE_AP_SURCHARGE = 0 (charging is free in AP)
+- Surge turns and Chain Momentum still waive surcharge (no-op while surcharge is 0)
 
-## Mastery Scaling (2-3× targets, rebalanced 2026-03-31)
-- perLevelDelta varies per mechanic, targeting 2-3× base at max level
-- Modest (1.5-2×): cards with strong tags/secondaries (bash, absorb, precision_strike)
-- Solid (2-2.5×): bread-and-butter cards (strike, block, piercing)
-- Great (2.5-3×): high-risk/conditional cards (reckless, volatile_slash, gambit)
+## Mastery Stat Tables (2026-04-03 overhaul, replaces perLevelDelta)
+- `MASTERY_STAT_TABLES` in `cardUpgradeService.ts` — 96 mechanics with full L0-L5 stat tables
+- `getMasteryStats(mechanicId, level)` is the unified API — returns `MasteryLevelStats`
+- Each level defines: qpValue, apCost?, secondaryValue?, drawCount?, hitCount?, tags?, extras?
+- Cards start WEAKER at L0 (strike QP=3, block QP=3) and grow through mastery
+- Creative milestones at L3/L5: new effects, AP cost reductions, hit count changes
+- Old `getMasteryBaseBonus()` / `perLevelDelta` is @deprecated — fallback bridge still works
+- CC is ALWAYS computed as `qpValue × 1.75`, never stored in stat tables
 - Tier-based damage multipliers REMOVED — all active tiers = 1.0×
 - Catch-up mastery: newly acquired cards start at 0.5-1.5× deck avg mastery (see catchUpMasteryService.ts)
 
