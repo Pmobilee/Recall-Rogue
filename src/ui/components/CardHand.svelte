@@ -15,7 +15,7 @@
   import { getMechanicDefinition } from '../../data/mechanics'
   import { stretchText } from '../utils/stretchText'
   import { CHARGE_CORRECT_MULTIPLIER } from '../../data/balance'
-  import { getMasteryBaseBonus } from '../../services/cardUpgradeService'
+  import { getMasteryStats } from '../../services/cardUpgradeService'
   import { activeRunState } from '../../services/runStateStore'
   import { getChainColor, getChainColorGroups } from '../../services/chainVisuals'
   import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
@@ -217,15 +217,17 @@
   function getEffectValue(card: Card, chargeMode: boolean = false): number {
     const mechanic = getMechanicDefinition(card.mechanicId)
     if (mechanic) {
-      // Mastery bonus is included BEFORE the charge multiplier so it scales with Charge
-      const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0)
+      // getMasteryStats() synthesises the old perLevelDelta system — identical results.
+      const stats = getMasteryStats(card.mechanicId ?? '', card.masteryLevel ?? 0)
+      const masteredQpValue = stats?.qpValue ?? mechanic.quickPlayValue
       return chargeMode
-        ? Math.round((mechanic.quickPlayValue + masteryBonus) * CHARGE_CORRECT_MULTIPLIER)
-        : mechanic.quickPlayValue + masteryBonus
+        ? Math.round(masteredQpValue * CHARGE_CORRECT_MULTIPLIER)
+        : masteredQpValue
     }
     // Fallback when mechanic definition is missing — use card's own stored values
     const base = Math.round(card.baseEffectValue * card.effectMultiplier);
-    const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
+    const fallbackStats = getMasteryStats(card.mechanicId ?? '', card.masteryLevel ?? 0);
+    const masteryBonus = fallbackStats ? (fallbackStats.qpValue - base) : 0;
     return chargeMode ? Math.round((base + masteryBonus) * CHARGE_CORRECT_MULTIPLIER) : base + masteryBonus;
   }
 

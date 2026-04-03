@@ -56,7 +56,7 @@
   import { getShortCardDescription } from '../../services/cardDescriptionService'
   import SurgeBorderOverlay from './SurgeBorderOverlay.svelte'
   import { ENEMY_DIALOGUE } from '../../data/enemyDialogue'
-  import { getMasteryBaseBonus } from '../../services/cardUpgradeService'
+  import { getMasteryStats } from '../../services/cardUpgradeService'
   import { getMechanicDefinition } from '../../data/mechanics'
   import ExhaustPileViewer from './ExhaustPileViewer.svelte'
   import MultiChoicePopup from './MultiChoicePopup.svelte'
@@ -1839,7 +1839,9 @@
           cureFlashes = { ...cureFlashes, [cardId]: false }
         }, 1200)
       }
-      const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0)
+      const _masteryStats = getMasteryStats(card.mechanicId ?? '', card.masteryLevel ?? 0)
+      const _mechDef = getMechanicDefinition(card.mechanicId)
+      const masteryBonus = _masteryStats && _mechDef ? _masteryStats.qpValue - _mechDef.quickPlayValue : 0
       const chargeEffectVal = Math.round(card.baseEffectValue * card.effectMultiplier) + masteryBonus
       juiceManager.fire({
         type: 'correct',
@@ -2113,8 +2115,9 @@
     const card = committedCard
     const cardId = card.id
     const responseTimeMs = committedAtMs > 0 ? Math.max(50, Date.now() - committedAtMs) : undefined
-    const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0)
+    const stats = getMasteryStats(card.mechanicId ?? '', card.masteryLevel ?? 0)
     const mechanic = getMechanicDefinition(card.mechanicId)
+    const masteryBonus = stats && mechanic ? stats.qpValue - mechanic.quickPlayValue : 0
     const baseForCharge = mechanic ? Math.round(mechanic.quickPlayValue * 1.5) : Math.round(card.baseEffectValue * card.effectMultiplier)
     const effectVal = baseForCharge + masteryBonus
     const effectLabel = (card.cardType === 'wild' || card.cardType === 'utility' || card.cardType === 'buff' || card.cardType === 'debuff')

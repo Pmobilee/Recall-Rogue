@@ -10,7 +10,7 @@
   import { getTierDisplayName } from '../../services/tierDerivation'
   import { getCardTypeEmoji, getCardTypeIconCandidates } from '../utils/iconAssets'
   import { getMechanicDefinition } from '../../data/mechanics'
-  import { getMasteryBaseBonus } from '../../services/cardUpgradeService'
+  import { getMasteryStats } from '../../services/cardUpgradeService'
   import {
     CHARGE_CORRECT_MULTIPLIER,
     CORRECT_ANSWER_RESUME_DELAY,
@@ -100,14 +100,17 @@
 
   let chargedEffectValue = $derived.by(() => {
     const mechanic = getMechanicDefinition(card.mechanicId)
-    const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0)
+    const stats = getMasteryStats(card.mechanicId ?? '', card.masteryLevel ?? 0)
     if (mechanic) {
+      // masteryBonus = stats.qpValue - mechanic.quickPlayValue (addend applied after CC multiplier, preserving original behaviour)
+      const masteryBonus = stats ? stats.qpValue - mechanic.quickPlayValue : 0
       return Math.round(mechanic.quickPlayValue * CHARGE_CORRECT_MULTIPLIER) + masteryBonus
     }
-    return Math.round(card.baseEffectValue * card.effectMultiplier) + masteryBonus
+    // Fallback: no mechanic def means getMasteryStats also returns null, so bonus is 0.
+    return Math.round(card.baseEffectValue * card.effectMultiplier)
   })
-  let domainColor = $derived(getDomainMetadata(card.domain).colorTint)
   let domainName = $derived(getDomainMetadata(card.domain).displayName)
+  let domainColor = $derived(getDomainMetadata(card.domain).colorTint)
   let typeIconCandidates = $derived(getCardTypeIconCandidates(card.cardType))
   let typeIconFallback = $derived(getCardTypeEmoji(card.cardType))
   let typeIconAttempt = $state(0)

@@ -24,7 +24,8 @@
   import { getActiveDeckCards } from '../../services/encounterBridge'
   import { playCardAudio } from '../../services/cardAudioManager'
   import { ambientAudio } from '../../services/ambientAudioService'
-  import { getMasteryBaseBonus } from '../../services/cardUpgradeService'
+  import { getMasteryStats } from '../../services/cardUpgradeService'
+  import { getMechanicDefinition } from '../../data/mechanics'
   import { getShopkeeperBark, type ShopBarkTrigger } from '../../data/shopkeeperBarks'
   import { fade } from 'svelte/transition'
   import { staggerPopIn } from '../utils/roomPopIn'
@@ -33,7 +34,9 @@
 
   function getEffectLabel(card: Card): string {
     const base = Math.round(card.baseEffectValue * card.effectMultiplier)
-    const masteryBonus = card.mechanicId ? getMasteryBaseBonus(card.mechanicId, card.masteryLevel ?? 0) : 0
+    const _stats = card.mechanicId ? getMasteryStats(card.mechanicId, card.masteryLevel ?? 0) : null
+    const _mechDef = card.mechanicId ? getMechanicDefinition(card.mechanicId) : null
+    const masteryBonus = _stats && _mechDef ? _stats.qpValue - _mechDef.quickPlayValue : 0
     const total = base + masteryBonus
 
     switch (card.cardType) {
@@ -59,7 +62,10 @@
   }
 
   function getMasteryBonusValue(card: Card): number {
-    return card.mechanicId ? getMasteryBaseBonus(card.mechanicId, card.masteryLevel ?? 0) : 0
+    if (!card.mechanicId) return 0
+    const _s = getMasteryStats(card.mechanicId, card.masteryLevel ?? 0)
+    const _m = getMechanicDefinition(card.mechanicId)
+    return _s && _m ? _s.qpValue - _m.quickPlayValue : 0
   }
 
   interface ShopRelicItem {
