@@ -779,7 +779,7 @@ export function onDomainsSelected(primary: FactDomain, secondary: FactDomain): v
   return;
 }
 
-export function onArchetypeSelected(archetype: RewardArchetype): void {
+export async function onArchetypeSelected(archetype: RewardArchetype): Promise<void> {
   const pending = pendingDomainSelection;
   if (!pending) return;
   const save = get(playerSave);
@@ -865,7 +865,8 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
   }
 
   activeRunState.set(run);
-  // Wire narrative engine for this run
+  // Ensure narrative data is loaded before initializing the narrative engine
+  await preloadNarrativeData();
   initNarrative(run);
   playCardAudio('domain-select');
   playCardAudio('run-start');
@@ -2875,9 +2876,12 @@ export function reshuffleChainDistribution(seedOffset: number): void {
  *
  * Does nothing if no active run.
  */
-export function confirmChainDistribution(): void {
+export async function confirmChainDistribution(): Promise<void> {
   const run = get(activeRunState);
   if (!run) return;
+
+  // Ensure narrative data is loaded (may already be from onArchetypeSelected)
+  await preloadNarrativeData();
 
   // Show run_start narrative before entering dungeon map (Study Temple path)
   const startLines = getNarrativeLines({

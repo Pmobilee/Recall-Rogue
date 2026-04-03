@@ -319,7 +319,12 @@ export function resetNarrative(): void {
  * Returns empty array if narrative data is not ready or state is not initialized.
  */
 export function getNarrativeLines(context: NarrativeContext): NarrativeLine[] {
-  if (!_state || !isNarrativeDataReady()) return [];
+  if (!_state || !isNarrativeDataReady()) {
+    if (_state && !isNarrativeDataReady()) {
+      console.warn('[NarrativeEngine] Data not ready, skipping narrative lines');
+    }
+    return [];
+  }
 
   _currentRoom += 1;
   const state = _state;
