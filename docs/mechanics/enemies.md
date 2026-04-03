@@ -1,17 +1,17 @@
 # Enemy System
 
 > **Purpose:** Complete reference for the enemy roster, categories, scaling formulas, special behaviors, and encounter selection.
-> **Last verified:** 2026-04-03 (balance pass #6)
+> **Last verified:** 2026-04-03 (balance pass #7)
 > **Source files:** `src/data/enemies.ts`, `src/services/enemyManager.ts`, `src/data/balance.ts`, `src/services/ascension.ts`
 
 ## Enemy Categories
 
 | Category | Description | HP Range (base) |
 |---|---|---|
-| `common` | Standard combat nodes. Weighted random from act pool. | 5–11 (Act 1); 5–24 overall |
-| `elite` | Elite nodes. More HP, phase transitions. | 9–12 |
-| `mini_boss` | Gate encounters mid-act. | 8–12 |
-| `boss` | Act-ending encounters. Two phases, high HP. | 12–18 |
+| `common` | Standard combat nodes. Weighted random from act pool. | 4–8 (Act 1); 4–24 overall |
+| `elite` | Elite nodes. More HP, phase transitions. | 9–10 (Act 1); 9–14 overall |
+| `mini_boss` | Gate encounters mid-act. | 6–9 (Act 1); 6–12 overall |
+| `boss` | Act-ending encounters. Two phases, high HP. | 12 (Act 1); 12–18 overall |
 
 ## HP and Damage Scaling
 
@@ -247,23 +247,23 @@ Mini-bosses, elites, and bosses unchanged.
 
 ---
 
-## Act 1 Base Stats (2026-04-03 rebalance — pass #5 values)
+## Act 1 Base Stats (2026-04-03 rebalance — pass #7 values)
 
-Act 1 commons: baseHP 7–11 (pass #5). Single attack values reduced by 1 vs pass #4; multi per-hit and defend unchanged. Damage cap: 7 (seg 1).
+Act 1 commons: baseHP 4–8 (pass #7, 2-turn first-kill target at 9 QP/turn × eff-HP 4.0). Attack values unchanged from pass #5. Damage cap: 7 (seg 1).
 
 | Enemy | Base HP | Attack intent value | Notes |
 |---|---|---|---|
-| `page_flutter` | 8 | 6 / 6 | Defend 7 |
-| `thesis_construct` | 9 | 5 (atk) / 8 (charge) | Defend 8; multi 3×2; chargeResistant |
-| `mold_puff` | 7 | 5 | Primarily a debuffer |
-| `ink_slug` | 10 | 6 | Defend 6; slow poisoner |
-| `bookmark_vine` | 8 | 5 (single) / 3×3 | chainVulnerable |
-| `staple_bug` | 11 | 7 (snap) / 4×2 | Defend 8; chargeResistant |
-| `margin_gremlin` | 8 | 6 / 5 | Self-buffs Strength |
-| `index_weaver` | 8 | 4 per hit × 3 | Multi 4×3; chainVulnerable |
-| `overdue_golem` | 10 | 5 | Heal 5/turn; tankiest common |
-| `pop_quiz` | 8 | 5 | Quiz-reactive |
-| `eraser_worm` | 7 | 5 (single) / 3×4 | chainVulnerable; rare |
+| `page_flutter` | 5 | 6 / 6 | Defend 7 |
+| `thesis_construct` | 6 | 5 (atk) / 8 (charge) | Defend 8; multi 3×2; chargeResistant |
+| `mold_puff` | 4 | 5 | Primarily a debuffer |
+| `ink_slug` | 7 | 6 | Defend 6; slow poisoner |
+| `bookmark_vine` | 5 | 5 (single) / 3×3 | chainVulnerable |
+| `staple_bug` | 8 | 7 (snap) / 4×2 | Defend 8; chargeResistant |
+| `margin_gremlin` | 6 | 6 / 5 | Self-buffs Strength |
+| `index_weaver` | 6 | 4 per hit × 3 | Multi 4×3; chainVulnerable |
+| `overdue_golem` | 7 | 5 | Heal 5/turn; tankiest common |
+| `pop_quiz` | 5 | 5 | Quiz-reactive |
+| `eraser_worm` | 4 | 5 (single) / 3×4 | chainVulnerable; rare |
 
 `thesis_construct`'s charge uses `bypassDamageCap: true` so the 8-base attack exceeds the floor 1 cap.
 Status effect values (poison, weakness, vulnerable) kept at 1–2 per application — already impactful.
@@ -271,22 +271,54 @@ Status effect values (poison, weakness, vulnerable) kept at 1–2 per applicatio
 ### Act 1 Elite
 | Enemy | Base HP | Phase | Notes |
 |---|---|---|---|
-| `librarian` | 12 | 40% HP | Phase 1: attack 4, defend 5, charge 7. Phase 2: attack 5, multi 3×3, charge 7 |
+| `librarian` | 10 | 40% HP | Phase 1: attack 4, defend 5, charge 7. Phase 2: attack 5, multi 3×3, charge 7 |
 
 ### Act 1 Mini-Bosses
 | Enemy | Base HP | Special |
 |---|---|---|
-| `plagiarist` | 9 | Enrages +5 dmg/turn from turn 4 |
-| `card_catalogue` | 10 | Healer + multi-hit |
-| `headmistress` | 10 | Heavy defender + charge 7 |
-| `tutor` | 8 | Debuffer + healer |
-| `study_group` | 11 | Poison + strength |
+| `plagiarist` | 7 | Enrages +5 dmg/turn from turn 4 |
+| `card_catalogue` | 8 | Healer + multi-hit |
+| `headmistress` | 8 | Heavy defender + charge 7 |
+| `tutor` | 6 | Debuffer + healer |
+| `study_group` | 9 | Poison + strength |
 
 ### Act 1 Bosses
 | Enemy | Base HP | Phase | Notes |
 |---|---|---|---|
-| `final_exam` | 14 | 40% HP | Ph1: atk 3, multi 4×4, defend 6. Ph2: atk 5, multi 4×3, defend 6, charge 8 |
-| `burning_deadline` | 14 | 40% HP | Ph1: atk 3/4. Ph2: atk 5, multi 4×4 |
+| `final_exam` | 12 | 40% HP | Ph1: atk 3, multi 4×4, defend 6. Ph2: atk 5, multi 4×3, defend 6, charge 8 |
+| `burning_deadline` | 12 | 40% HP | Ph1: atk 3/4. Ph2: atk 5, multi 4×4 |
+
+---
+
+## 2026-04-03 Balance Pass #7
+
+Root cause: first-kill window too long. Player QP output (3 strikes × 3 QP = 9 dmg/turn) against eff-HP of 28–44 (baseHP 7–11 × 4.0) required 3–5 turns to down the first enemy — no urgency and too much pressure from enemy attacks. Target: first common should die in ~2 turns QP (eff-HP ≤ 20), with steeper scaling to make QP alone insufficient by floor 3–4.
+
+**HP changes (Act 1 only — commons, elite, mini-bosses, bosses):**
+
+| Tier | Enemy | Pass #5/6 | Pass #7 | Eff HP (×4.0) | QP turns |
+|---|---|---|---|---|---|
+| Act 1 common | mold_puff | 7 | 4 | 16 | 1.8 |
+| Act 1 common | eraser_worm | 7 | 4 | 16 | 1.8 |
+| Act 1 common | page_flutter | 8 | 5 | 20 | 2.2 |
+| Act 1 common | bookmark_vine | 8 | 5 | 20 | 2.2 |
+| Act 1 common | pop_quiz | 8 | 5 | 20 | 2.2 |
+| Act 1 common | thesis_construct | 9 | 6 | 24 | 2.7 |
+| Act 1 common | margin_gremlin | 8 | 6 | 24 | 2.7 |
+| Act 1 common | index_weaver | 8 | 6 | 24 | 2.7 |
+| Act 1 common | ink_slug | 10 | 7 | 28 | 3.1 |
+| Act 1 common | overdue_golem | 10 | 7 | 28 | 3.1 |
+| Act 1 common | staple_bug | 11 | 8 | 32 | 3.6 |
+| Act 1 elite | librarian | 12 | 10 | 40 | ~5 turns |
+| Act 1 mini-boss | plagiarist | 9 | 7 | 28 | mid |
+| Act 1 mini-boss | card_catalogue | 10 | 8 | 32 | mid |
+| Act 1 mini-boss | headmistress | 10 | 8 | 32 | mid |
+| Act 1 mini-boss | tutor | 8 | 6 | 24 | lightest |
+| Act 1 mini-boss | study_group | 11 | 9 | 36 | toughest |
+| Act 1 boss | final_exam | 14 | 12 | 48 | ~5–6 turns |
+| Act 1 boss | burning_deadline | 14 | 12 | 48 | ~5–6 turns |
+
+No attack/block/intent values changed. Act 2/3 enemies unchanged.
 
 ---
 
@@ -436,19 +468,19 @@ Enemy selection uses `getEnemiesForNode(act, nodeType)` which maps to `ACT_ENEMY
 
 | ID | base HP | Rarity | Special mechanic |
 |---|---|---|---|
-| `page_flutter` | 8 | standard | Can self-buff Strength 1 for 2 turns |
-| `thesis_construct` | 9 | standard | `chargeResistant` — Quick Play deals 50% damage |
-| `mold_puff` | 7 | standard | Stacks Poison 2 for 3 turns each attack |
+| `page_flutter` | 5 | standard | Can self-buff Strength 1 for 2 turns |
+| `thesis_construct` | 6 | standard | `chargeResistant` — Quick Play deals 50% damage |
+| `mold_puff` | 4 | standard | Stacks Poison 2 for 3 turns each attack |
 | `crib_sheet` | 4 | standard | `onPlayerChargeWrong`: reflects card's base damage to player |
 | `citation_needed` | 7 | standard | `onPlayerChargeWrong`: steals up to 5 block, heals enemy that amount. **Heal overshoot WAI**: heal intent (+5) and block-steal (+up to 5) are independent — both can fire in the same turn window for up to +10 HP total. **UX gap**: no floating text on block-steal; planned fix via ui-agent. |
-| `pop_quiz` | 8 | uncommon | `onPlayerChargeCorrect`: stuns enemy next turn; `onPlayerNoCharge`: +1 permanent `enrageBonusDamage` |
-| `eraser_worm` | 7 | rare | `chainVulnerable` — chain attacks deal +50% damage |
-| `bookmark_vine` | 8 | uncommon | `chainVulnerable`; multi-hit 3×vine lash |
-| `margin_gremlin` | 8 | uncommon | Self-buffs Strength 1 for 2 turns; fast repeated jabs |
-| `index_weaver` | 8 | standard | `chainVulnerable`; multi-hit 4×3 fang barrage + Poison 2×3 turns |
-| `overdue_golem` | 10 | standard | Heals 5 HP per turn (reduced from 9, 2026-04-03) |
-| `ink_slug` | 10 | standard | Stacks Poison 2 per attack; slow attacker |
-| `staple_bug` | 11 | standard | `chargeResistant`; Mandible snap (7) + 2-hit Chittering strike (4 per hit) |
+| `pop_quiz` | 5 | uncommon | `onPlayerChargeCorrect`: stuns enemy next turn; `onPlayerNoCharge`: +1 permanent `enrageBonusDamage` |
+| `eraser_worm` | 4 | rare | `chainVulnerable` — chain attacks deal +50% damage |
+| `bookmark_vine` | 5 | uncommon | `chainVulnerable`; multi-hit 3×vine lash |
+| `margin_gremlin` | 6 | uncommon | Self-buffs Strength 1 for 2 turns; fast repeated jabs |
+| `index_weaver` | 6 | standard | `chainVulnerable`; multi-hit 4×3 fang barrage + Poison 2×3 turns |
+| `overdue_golem` | 7 | standard | Heals 5 HP per turn (reduced from 9, 2026-04-03) |
+| `ink_slug` | 7 | standard | Stacks Poison 2 per attack; slow attacker |
+| `staple_bug` | 8 | standard | `chargeResistant`; Mandible snap (7) + 2-hit Chittering strike (4 per hit) |
 
 ### Elite Enemies
 
@@ -462,7 +494,7 @@ Enemy selection uses `getEnemiesForNode(act, nodeType)` which maps to `ACT_ENEMY
 
 | ID | base HP | Special mechanic |
 |---|---|---|
-| `plagiarist` | 9 | `onEnemyTurnStart`: from turn 4 onward, gains +5 `enrageBonusDamage` every enemy turn |
+| `plagiarist` | 7 | `onEnemyTurnStart`: from turn 4 onward, gains +5 `enrageBonusDamage` every enemy turn |
 | `tenure_guardian` | 9 | `onPlayerNoCharge`: gains +1 permanent Strength |
 | `proctor` | 11 | `onPlayerNoCharge`: gains +1 Strength; telegraphs 7-damage Seismic Slam charge |
 | `grade_dragon` | 11 | Fire breath + Poison 2×2 turns |
@@ -473,8 +505,8 @@ Enemy selection uses `getEnemiesForNode(act, nodeType)` which maps to `ACT_ENEMY
 
 | ID | base HP | Phase trigger | Special mechanic |
 |---|---|---|---|
-| `final_exam` | 14 | 40% HP | Phase 2: 5-base Overdrive slam, 8-damage charged burst (`bypassDamageCap`) |
-| `burning_deadline` | 14 | 40% HP | Phase 2: Volcanic blast (5 base) + Poison 4×3 rain |
+| `final_exam` | 12 | 40% HP | Phase 2: 5-base Overdrive slam, 8-damage charged burst (`bypassDamageCap`) |
+| `burning_deadline` | 12 | 40% HP | Phase 2: Volcanic blast (5 base) + Poison 4×3 rain |
 | `algorithm` | 12 | 50% HP | Quiz phase at 50% HP (5 questions); heals 5–6 HP per turn |
 | `curriculum` | 14 | 50% HP | `onPhaseTransition`: `_quickPlayDamageMultiplierOverride = 0` + +2 `enrageBonusDamage`; only Charge deals damage |
 | `group_project` | 15 | 50% HP | Phase 2: 2-hit dual strike, 4-hit fang barrage, Poison 4×3 |

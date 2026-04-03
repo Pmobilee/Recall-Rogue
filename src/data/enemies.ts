@@ -256,7 +256,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Page Flutter',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 8, // rebalanced — HP reduced 30→12 (pass #4), further reduced 12→8 (pass #5, 2026-04-03)
+    baseHP: 5, // rebalanced — HP reduced 30→12 (pass #4), further reduced 12→8, further reduced 8→5 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 6, weight: 3, telegraph: 'Swooping strike' },
       { type: 'attack', value: 6, weight: 2, telegraph: 'Frenzied bite' },
@@ -274,7 +274,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Thesis Construct',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 9, // rebalanced — HP reduced 28→13 (pass #4), further reduced 13→9 (pass #5, 2026-04-03)
+    baseHP: 6, // rebalanced — HP reduced 28→13 (pass #4), further reduced 13→9, further reduced 9→6 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 5, weight: 2, telegraph: 'Crystal slam' },
       { type: 'defend', value: 8, weight: 2, telegraph: 'Hardening crystals' },
@@ -293,7 +293,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Mold Puff',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 7, // rebalanced — HP reduced 27→10 (pass #4), further reduced 10→7 (pass #5, 2026-04-03)
+    baseHP: 4, // rebalanced — HP reduced 27→10 (pass #4), further reduced 10→7, further reduced 7→4 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 5, weight: 2, telegraph: 'Spore burst' },
       { type: 'debuff', value: 2, weight: 3, telegraph: 'Toxic cloud', statusEffect: { type: 'poison', value: 2, turns: 3 } },
@@ -385,7 +385,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Final Exam',
     category: 'boss',
     region: 'shallow_depths',
-    baseHP: 14, // rebalanced — HP raised 11→25 (pass #1), 25→18 (pass #4), 18→14 (pass #5, 2026-04-03)
+    baseHP: 12, // rebalanced — HP raised 11→25 (pass #1), 25→18 (pass #4), 18→14, further reduced 14→12 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 2, telegraph: 'Drill charge' },
       { type: 'multi_attack', value: 4, weight: 1, telegraph: 'Grinding gears', hitCount: 4 },
@@ -408,7 +408,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Burning Deadline',
     category: 'boss',
     region: 'shallow_depths',
-    baseHP: 14, // rebalanced — HP raised 11→25 (pass #1), 25→18 (pass #4), 18→14 (pass #5, 2026-04-03)
+    baseHP: 12, // rebalanced — HP raised 11→25 (pass #1), 25→18 (pass #4), 18→14, further reduced 14→12 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 3, weight: 1, telegraph: 'Lava splash' },
       { type: 'attack', value: 4, weight: 1, telegraph: 'Eruption' },
@@ -613,7 +613,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Plagiarist',
     category: 'mini_boss',
     region: 'shallow_depths',
-    baseHP: 9, // rebalanced — HP raised 7→18 (pass #1), 18→12 (pass #4), 12→9 (pass #5, 2026-04-03)
+    baseHP: 7, // rebalanced — HP raised 7→18 (pass #1), 18→12 (pass #4), 12→9, further reduced 9→7 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 5, weight: 3, telegraph: 'Serpent lunge' },
       { type: 'attack', value: 4, weight: 2, telegraph: 'Tail whip' },
@@ -734,7 +734,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Ink Slug',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 10, // rebalanced — HP reduced 32→14 (pass #4), further reduced 14→10 (pass #5, 2026-04-03)
+    baseHP: 7, // rebalanced — HP reduced 32→14 (pass #4), further reduced 14→10, further reduced 10→7 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 6, weight: 2, telegraph: 'Mud slash' },
       { type: 'debuff', value: 2, weight: 3, telegraph: 'Bog grasp', statusEffect: { type: 'poison', value: 2, turns: 2 } },
@@ -751,7 +751,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Bookmark Vine',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 8, // rebalanced — HP reduced 28→11 (pass #4), further reduced 11→8 (pass #5, 2026-04-03)
+    baseHP: 5, // rebalanced — HP reduced 28→11 (pass #4), further reduced 11→8, further reduced 8→5 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'multi_attack', value: 3, weight: 3, telegraph: 'Vine lash', hitCount: 3 },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Poisoned thorns', statusEffect: { type: 'poison', value: 2, turns: 2 } },
@@ -769,7 +769,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Staple Bug',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 11, // rebalanced — HP reduced 35→16 (pass #4), further reduced 16→11 (pass #5, 2026-04-03)
+    baseHP: 8, // rebalanced — HP reduced 35→16 (pass #4), further reduced 16→11, further reduced 11→8 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'defend', value: 8, weight: 3, telegraph: 'Harden shell' },
       { type: 'attack', value: 7, weight: 2, telegraph: 'Mandible snap' },
@@ -787,7 +787,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Margin Gremlin',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 8, // rebalanced — HP reduced 30→12 (pass #4), further reduced 12→8 (pass #5, 2026-04-03)
+    baseHP: 6, // rebalanced — HP reduced 30→12 (pass #4), further reduced 12→8, further reduced 8→6 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 6, weight: 3, telegraph: 'Nimble jab' },
       { type: 'buff', value: 1, weight: 2, telegraph: 'Rocky surge', statusEffect: { type: 'strength', value: 1, turns: 2 } },
@@ -804,7 +804,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Index Weaver',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 8, // rebalanced — HP reduced 28→11 (pass #4), further reduced 11→8 (pass #5, 2026-04-03)
+    baseHP: 6, // rebalanced — HP reduced 28→11 (pass #4), further reduced 11→8, further reduced 8→6 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'multi_attack', value: 4, weight: 3, telegraph: 'Fang barrage', hitCount: 3 },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Web poison', statusEffect: { type: 'poison', value: 2, turns: 3 } },
@@ -822,7 +822,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Overdue Golem',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 10, // rebalanced — HP reduced 40→15 (pass #4), further reduced 15→10 (pass #5, 2026-04-03)
+    baseHP: 7, // rebalanced — HP reduced 40→15 (pass #4), further reduced 15→10, further reduced 10→7 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'heal', value: 5, weight: 2, telegraph: 'Bog absorption' },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Peat decay', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
@@ -839,7 +839,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Pop Quiz',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 8, // rebalanced — HP reduced 27→11 (pass #4), further reduced 11→8 (pass #5, 2026-04-03)
+    baseHP: 5, // rebalanced — HP reduced 27→11 (pass #4), further reduced 11→8, further reduced 8→5 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Spore shower', statusEffect: { type: 'poison', value: 2, turns: 3 } },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Fungal decay', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
@@ -865,7 +865,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Eraser Worm',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 7, // rebalanced — HP reduced 25→10 (pass #4), further reduced 10→7 (pass #5, 2026-04-03)
+    baseHP: 4, // rebalanced — HP reduced 25→10 (pass #4), further reduced 10→7, further reduced 7→4 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'multi_attack', value: 3, weight: 3, telegraph: 'Bite frenzy', hitCount: 4 },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Larval grasp', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
@@ -885,7 +885,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Card Catalogue',
     category: 'mini_boss',
     region: 'shallow_depths',
-    baseHP: 10, // rebalanced — HP raised 8→20 (pass #1), 20→14 (pass #4), 14→10 (pass #5, 2026-04-03)
+    baseHP: 8, // rebalanced — HP raised 8→20 (pass #1), 20→14 (pass #4), 14→10, further reduced 10→8 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'heal', value: 8, weight: 2, telegraph: 'Root mending' },
       { type: 'multi_attack', value: 3, weight: 2, telegraph: 'Root whip', hitCount: 3 },
@@ -901,7 +901,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Headmistress',
     category: 'mini_boss',
     region: 'shallow_depths',
-    baseHP: 10, // rebalanced — HP raised 8→20 (pass #1), 20→14 (pass #4), 14→10 (pass #5, 2026-04-03)
+    baseHP: 8, // rebalanced — HP raised 8→20 (pass #1), 20→14 (pass #4), 14→10, further reduced 10→8 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'defend', value: 7, weight: 3, telegraph: 'Fortify shell' },
       { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Metallic crush!' },
@@ -917,7 +917,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Tutor',
     category: 'mini_boss',
     region: 'shallow_depths',
-    baseHP: 8, // rebalanced — HP raised 6→16 (pass #1), 16→11 (pass #4), 11→8 (pass #5, 2026-04-03)
+    baseHP: 6, // rebalanced — HP raised 6→16 (pass #1), 16→11 (pass #4), 11→8, further reduced 8→6 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Weakening curse', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Brittle hex', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
@@ -933,7 +933,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Study Group',
     category: 'mini_boss',
     region: 'shallow_depths',
-    baseHP: 11, // rebalanced — HP raised 8→22 (pass #1), 22→15 (pass #4), 15→11 (pass #5, 2026-04-03)
+    baseHP: 9, // rebalanced — HP raised 8→22 (pass #1), 22→15 (pass #4), 15→11, further reduced 11→9 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Toxic bloom', statusEffect: { type: 'poison', value: 3, turns: 3 } },
       { type: 'buff', value: 2, weight: 1, telegraph: 'Spore ascension', statusEffect: { type: 'strength', value: 2, turns: 2 } },
@@ -951,7 +951,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Librarian',
     category: 'elite',
     region: 'shallow_depths',
-    baseHP: 12, // rebalanced — HP raised 12→22 (pass #1), 22→16 (pass #4), 16→12 (pass #5, 2026-04-03)
+    baseHP: 10, // rebalanced — HP raised 12→22 (pass #1), 22→16 (pass #4), 16→12, further reduced 12→10 (pass #7, 2026-04-03)
     intentPool: [
       { type: 'attack', value: 4, weight: 2, telegraph: 'Club smash' },
       { type: 'defend', value: 5, weight: 1, telegraph: 'Hunkering down' },
