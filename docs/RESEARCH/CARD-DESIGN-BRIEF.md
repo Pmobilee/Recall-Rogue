@@ -121,7 +121,7 @@ Additional multipliers stack multiplicatively:
 | **Knowledge Chain** | 1.0x, 1.0x, 1.3x, 1.7x, 2.2x, 3.0x |
 | **Speed Bonus** | 1.5x (answer in first 25% of timer) |
 | **Mastery Level** | Flat bonuses: +2/+4/+6/+8/+10 per level |
-| **Tier Multiplier** | T1=1.0x, T2a=1.3x, T2b=1.6x, T3=passive |
+| **Tier Multiplier** | ~~T1=1.0x, T2a=1.3x, T2b=1.6x~~ **REMOVED** — all active tiers = 1.0x (no-op). T3=passive. Tiers affect quiz difficulty only, not damage. |
 | **Vulnerable** | +50% damage taken by target |
 | **Strength/Weakness** | +/-25% per stack |
 

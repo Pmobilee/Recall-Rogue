@@ -5,13 +5,8 @@ import { BASE_EFFECT } from '../data/balance';
 import { getCardTier, qualifiesForMasteryTrial } from './tierDerivation';
 import { deriveCardTypeForFactId } from './cardTypeAllocator';
 
-/** Card power scales with mastery tier — learning makes cards stronger. */
-const TIER_MULTIPLIER: Record<CardTier, number> = {
-  '1': 1.0,    // Learning — base power
-  '2a': 1.3,   // Proven — 30% bonus
-  '2b': 1.6,   // Deep recall — 60% bonus
-  '3': 1.6,    // Mastered — permanent 60% bonus
-};
+/** effectMultiplier is always 1.0 for active tiers (tier-based damage scaling removed).
+ *  Tier 3 cards become passives (effectMultiplier = 0). */
 
 let _cardIdCounter = 0;
 
@@ -57,7 +52,7 @@ export function createCard(
   const cardType = cardTypeOverride ?? deriveCardTypeForFactId(fact.id);
   const tier = computeTier(reviewState);
   const baseEffectValue = BASE_EFFECT[cardType] ?? 0;
-  const effectMultiplier = TIER_MULTIPLIER[tier] ?? 1.0;
+  const effectMultiplier = tier === '3' ? 0 : 1.0;
   const isMasteryTrial = qualifiesForMasteryTrial({
     stability: reviewState?.stability ?? reviewState?.interval ?? 0,
     consecutiveCorrect: reviewState?.consecutiveCorrect ?? reviewState?.repetitions ?? 0,

@@ -710,3 +710,40 @@ When writing a validation script to check that replacement strings are ≤100 ch
 9. **japanese_n4_grammar `ja-gram-n4-n4-hon-nasaru-fill-0`** — Explanation misattributed the honorific role to ています instead of なさる. Fixed: explanation now identifies なさる as the honorific (polite equivalent of する) and ています as the progressive completion.
 
 **Lesson:** Distractor factual accuracy requires domain knowledge, not just structural checks. Academy Award counts, biological phase boundaries, and Japanese grammar labels are failure-prone. When distractors are semantically close to correct answers (iPhoneOS/iPhone OS), they defeat the purpose and should be replaced with more distinct alternatives.
+
+### 2026-04-03 — FSRS tier-based damage multipliers fully removed
+
+**What changed:** `TIER_MULTIPLIER` in `balance.ts` was previously `{1: 1.0, 2a: 1.3, 2b: 1.6, 3: 0}`. T2a/T2b cards had 30%/60% damage bonuses from FSRS knowledge tiers. This created an anti-pattern: players were rewarded with MORE damage for knowing facts longer, conflating the FSRS system (long-term retention) with the in-run mastery system (L0-L5 power scaling).
+
+**Why removed:** FSRS tiers now affect ONLY quiz difficulty (number of answer choices, reverse allowed, fill-in-blank). The in-run mastery system (L0-L5) is the SOLE power scaling axis. This separation is cleaner for design and makes mastery progression feel more deliberate.
+
+**What was changed:**
+- `balance.ts`: `TIER_MULTIPLIER` all active tiers set to `1.0`. `LEGACY_TIER_MULTIPLIER` updated to match. `CHARGE_CORRECT_MULTIPLIER` JSDoc updated.
+- `cardFactory.ts`: Local `TIER_MULTIPLIER` constant removed. `effectMultiplier` now hardcoded: `tier === '3' ? 0 : 1.0`.
+- `cardEffectResolver.ts`: `getTierMultiplier()` function removed. `TIER_MULTIPLIER`/`LEGACY_TIER_MULTIPLIER` imports removed. Legacy no-mechanic path uses `baseEffectValue + masteryBonus` directly.
+- `damagePreviewService.ts`: `effectMultiplier` no longer applied to attack or shield pipelines. Legacy fallback uses `baseEffectValue` directly.
+- `cardDescriptionService.ts`: `card.baseEffectValue * card.effectMultiplier` → `card.baseEffectValue` (3 occurrences).
+- `encounterBridge.ts`: `calculateCardSellPrice()` flattened to return 1 for all cards.
+- `cardUpgradeService.ts`: `effectMultiplier` sort tiebreaker replaced with `masteryLevel` (lower mastery = more room to grow, preferred).
+- `relicEffectResolver.ts`: Dead `curiosity_gem` tier-1 bonus code removed (relic no longer exists in catalog).
+- `card-types.ts`: `effectMultiplier` marked `@deprecated` on the Card interface.
+
+**Key invariant:** `effectMultiplier` field stays on the `Card` interface to avoid large refactor, but it is only used as a signal: `0` means tier-3 passive (excluded from active hand upstream), `1.0` means active card. The resolver ignores it.
+
+---
+
+### 2026-04-03 — FSRS Tier Visual Indicators Fully Removed from Cards
+
+**What:** All FSRS knowledge-tier visual feedback on cards was removed. This includes:
+- `class:tier-2a/2b/3` CSS class bindings and their `drop-shadow` filter rules
+- `class:card-tier-up` and variant classes (`tier-up-1-2a`, `tier-up-2a-2b`, `tier-up-2b-3`)
+- `.tier-up-overlay` div elements and their keyframe animations (`tierUpBluePulse`, `tierUpGreenSparkle`, `tierUpMasteryBurst`, `tierSignatureSpark`, `tierSignatureTrace`, `tierUpInnerRumble`)
+- `tierUpTransitions` prop/state in `CardHand` and `CardCombatOverlay`
+- `getTierUpTransition()` function and tier-up detection block in charge result handler
+- `TierUpVisualSignature` interface, `hashString()`, and `getTierUpVisualSignature()` helper functions
+- Tier label display (`getTierDisplayName`) removed from `CardExpanded`, `ShopRoomOverlay`, `KnowledgeLibrary`, `UpgradeSelectionOverlay`
+- Tier-colored border CSS in `UpgradeSelectionOverlay` (`.grid-card.gold/silver/bronze`)
+
+**Why:** FSRS tiers (1/2a/2b/3) represent long-term spaced-repetition knowledge state. They do NOT control in-run power scaling — that's the mastery level system (L0–L5). Tier glows created confusing mixed signals and violated the design principle that only earned in-run mastery should affect card appearance.
+
+**What to keep:** `card.tier` field stays on the Card interface (quiz difficulty uses it). `isMastered = card.tier === '3'` check stays (hides charge button on fully memorized cards). `card-tier-label--mastered` ("MASTERED" text label) stays as informational text. All mastery glow/color logic (`hasMasteryGlow()`, `getMasteryIconFilter()`) stays unchanged.

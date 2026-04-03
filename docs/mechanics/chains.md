@@ -1,7 +1,7 @@
 # Chain System
 
 > **Purpose:** How the Knowledge Chain system works — consecutive correct answers, multiplier scaling, chain types, break conditions, rotating chain color, and themed chain distribution.
-> **Last verified:** 2026-04-02
+> **Last verified:** 2026-04-03
 > **Source files:** `src/services/chainSystem.ts`, `src/data/chainTypes.ts`, `src/services/chainVisuals.ts`, `src/data/balance.ts`, `src/services/chainDistribution.ts`, `src/services/presetPoolBuilder.ts`, `src/services/gameFlowController.ts`, `src/services/encounterBridge.ts`, `src/ui/components/StudyTempleScreen.svelte`
 
 ---
@@ -136,10 +136,10 @@ When enabled: a correct Charge answer waives the +1 AP surcharge on the **next**
 The chain multiplier is passed into `cardEffectResolver.ts` as `options.chainMultiplier`. The full attack formula:
 
 ```
-CC damage = (quickPlayValue + masteryBonus) × 1.5 × tierMult × chainMult × relicMods + inscriptionBonus
+CC damage = getMasteryStats(mechanicId, level).qpValue × 1.75 × chainMult × relicMods + inscriptionBonus
 ```
 
-The chain multiplier applies to the **full resolved damage** after base + mastery + tier scaling, before relic flat bonuses. Chain Lightning (`chain_lightning` mechanic) is the only card that reads `chainLightningChainLength` directly — its CC damage is `baseValue × chain length` rather than using the standard multiplier.
+Tier multipliers are all 1.0 for active tiers and do not appear in the formula. The chain multiplier applies to the **full resolved damage** after base + mastery scaling, before relic flat bonuses. Chain Lightning (`chain_lightning` mechanic) is the only card that reads `chainLightningChainLength` directly — its CC damage is `baseValue × chain length` rather than using the standard multiplier.
 
 ---
 

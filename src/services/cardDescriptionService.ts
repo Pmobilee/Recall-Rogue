@@ -21,7 +21,7 @@ const GENERIC_TYPE_DESCRIPTIONS: Record<CardType, string> = {
  * Uses the card's mechanic definition to generate specific numbers and effects.
  */
 export function getDetailedCardDescription(card: Card, powerOverride?: number): string {
-  const power = powerOverride ?? Math.round(card.baseEffectValue * card.effectMultiplier);
+  const power = powerOverride ?? Math.round(card.baseEffectValue);
   const mechanic = getMechanicDefinition(card.mechanicId);
 
   const apCost = Math.max(0, card.apCost ?? mechanic?.apCost ?? 1);
@@ -163,7 +163,7 @@ export function getMechanicTag(card: Card): string {
  * Designed to fit in the card frame parchment area.
  */
 export function getShortCardDescription(card: Card, powerOverride?: number): string {
-  const power = powerOverride ?? Math.round(card.baseEffectValue * card.effectMultiplier);
+  const power = powerOverride ?? Math.round(card.baseEffectValue);
   const mechanic = getMechanicDefinition(card.mechanicId);
 
   if (!mechanic) {
@@ -286,7 +286,7 @@ function cond(v: number, active: boolean): CardDescPart {
  * bold keywords, and conditional values.
  */
 export function getCardDescriptionParts(card: Card, gameState?: CardGameState, powerOverride?: number): CardDescPart[] {
-  const power = powerOverride ?? Math.round(card.baseEffectValue * card.effectMultiplier);
+  const power = powerOverride ?? Math.round(card.baseEffectValue);
   const mechanic = getMechanicDefinition(card.mechanicId);
   const masteryLevel = card.masteryLevel ?? 0;
 

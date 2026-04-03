@@ -345,7 +345,7 @@ describe('computeDamagePreview — stacking: whetstone + vulnerable + 50% buff',
 });
 
 describe('computeDamagePreview — fallback (no mechanic definition)', () => {
-  it('uses baseEffectValue * effectMultiplier for cards with unknown mechanicId', () => {
+  it('uses baseEffectValue directly for cards with unknown mechanicId (effectMultiplier ignored)', () => {
     const card: Card = {
       id: 'wild_1',
       factId: 'fact_4',
@@ -353,17 +353,17 @@ describe('computeDamagePreview — fallback (no mechanic definition)', () => {
       domain: 'general_knowledge',
       tier: '2a',
       baseEffectValue: 10,
-      effectMultiplier: 1.3,
+      effectMultiplier: 1.3, // deprecated — not applied by resolver or preview
       mechanicId: 'unknown_future_mechanic',
       masteryLevel: 0,
     };
-    // nakedQpBase = round(10 * 1.3) = 13 (from legacy fallback path)
-    // nakedCcBase = round(13 * 1.75) = round(22.75) = 23 (CHARGE_CORRECT_MULTIPLIER=1.75)
-    // qpFinal = round(13 * 1.3) = round(16.9) = 17 (effectMultiplier applied again in pipeline)
-    // ccFinal = round(23 * 1.3) = round(29.9) = 30
+    // Tier-based effectMultiplier removed. Legacy fallback = baseEffectValue directly.
+    // nakedQpBase = 10
+    // nakedCcBase = round(10 * 1.75) = round(17.5) = 18 (CHARGE_CORRECT_MULTIPLIER=1.75)
+    // No other modifiers in baseCtx
     const result = computeDamagePreview(card, baseCtx());
-    expect(result.qpValue).toBe(17);
-    expect(result.ccValue).toBe(30);
+    expect(result.qpValue).toBe(10);
+    expect(result.ccValue).toBe(18);
   });
 });
 

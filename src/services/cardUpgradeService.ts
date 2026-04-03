@@ -1669,8 +1669,8 @@ export function getUpgradeCandidates(deck: Card[], count: number): Card[] {
     const tierA = TIER_PRIORITY[a.tier] ?? 0;
     const tierB = TIER_PRIORITY[b.tier] ?? 0;
     if (tierB !== tierA) return tierB - tierA;
-    // Within same tier, prefer higher effectMultiplier (higher tier = stronger cards)
-    return (b.effectMultiplier ?? 1) - (a.effectMultiplier ?? 1);
+    // Within same tier, prefer lower mastery level (more room to grow)
+    return (a.masteryLevel ?? 0) - (b.masteryLevel ?? 0);
   });
 
   return eligible.slice(0, count);

@@ -1,7 +1,7 @@
 # Data Flow
 
 > **Purpose:** End-to-end data flows for the 3 core gameplay loops: card play, quiz, and reward.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-03
 > **Source files:** `src/services/gameFlowController.ts`, `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/quizService.ts`, `src/services/rewardGenerator.ts`, `src/services/encounterBridge.ts`, `src/services/presetPoolBuilder.ts`
 
 ---
@@ -36,9 +36,9 @@ playCardAction(turnState, cardId, answeredCorrectly, speedBonus, playMode, distr
 ```
 
 `resolveCardEffect` in `cardEffectResolver.ts` computes the final effect value using:
-- `BASE_EFFECT` × `TIER_MULTIPLIER` (from `balance.ts`)
+- `BASE_EFFECT` from `balance.ts` (tier multipliers removed — all active tiers = 1.0; mastery via `getMasteryStats()`)
 - `CHARGE_CORRECT_MULTIPLIER` if `answeredCorrectly`
-- Mastery bonus from `getMasteryBaseBonus(card.masteryLevel)`
+- Mastery scaling via `getMasteryStats(mechanicId, masteryLevel).qpValue` from `MASTERY_STAT_TABLES`
 - Relic modifiers via `resolveAttackModifiers()` / `resolveShieldModifiers()` (from `relicEffectResolver.ts`)
 - Knowledge Aura level via `getAuraLevel()` / `adjustAura()`
 

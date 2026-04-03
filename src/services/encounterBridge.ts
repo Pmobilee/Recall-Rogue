@@ -1275,9 +1275,8 @@ export function addRewardCardToActiveDeck(card: Card): void {
   addCardToDeck(activeDeck, cloned, 'top');
 }
 
-export function calculateCardSellPrice(card: Card): number {
-  if (card.tier === '3') return 3;
-  if (card.tier === '2a' || card.tier === '2b') return 2;
+/** Sell price is flat 1 gold for all cards — FSRS tier no longer affects gold. */
+export function calculateCardSellPrice(_card: Card): number {
   return 1;
 }
 

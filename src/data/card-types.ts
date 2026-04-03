@@ -73,7 +73,8 @@ export interface Card {
   tier: CardTier;
   /** Base numeric effect (damage/block/heal amount before multipliers) */
   baseEffectValue: number;
-  /** Multiplier from difficulty-proportional power (easy cards hit softer) */
+  /** @deprecated Always 1.0 for active tiers. Tier-based damage scaling removed (2026-04-03).
+   *  Kept on interface to avoid refactoring all card creation sites. Tier 3 = 0 (passive). */
   effectMultiplier: number;
   /** True when this card is a Mastery Trial candidate. */
   isMasteryTrial?: boolean;

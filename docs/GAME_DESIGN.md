@@ -2514,22 +2514,22 @@ The exact order of damage calculation for all attack cards. **The combo multipli
 2. Note: stat table qpValue already encodes the full mastery level — there is no separate masteryBonus step
 3. + Inscription of Fury flat bonus (if active — applied here as flat addition, attack cards only)
 4. + relic flat bonuses (`barbed_edge`, etc.)
-5. × `card.effectMultiplier` — always 1.0× for active tiers (T1/T2a/T2b); 0× for T3 (passive)
-6. × `chainMultiplier` (1.0–3.0, based on chain length)
-7. × `speedBonus` (from quiz timer — only applies on CC)
-8. × `buffMultiplier` (from Empower/buff cards active this turn)
-9. × relic percent bonuses (Volatile Core, Reckless Resolve, Berserker's Oath, etc.)
-10. × `overclockMultiplier` (if Overclock active)
-11. + Burn bonus (= current Burn stacks, then halve stacks round down — triggered ONCE per hit)
-12. + Bleed bonus (= Bleed stacks per card-play hit; does NOT decay on hit — only at end of enemy turn)
-13. + relic flat attack bonus applied post-multiply (Bloodstone Pendant Fury stacks, etc.)
-14. If enemy has Vulnerable: × 1.5
-15. Block absorbs final total
-16. Remaining damage after block hits HP
+   *(Note: `card.effectMultiplier` is set by `TIER_MULTIPLIER[tier]` in `cardFactory.ts` but is always 1.0 for active tiers — a no-op multiplier that does not affect damage. Tier multipliers removed 2026-04-03; tiers now drive quiz difficulty only.)*
+5. × `chainMultiplier` (1.0–3.0, based on chain length)
+6. × `speedBonus` (from quiz timer — only applies on CC)
+7. × `buffMultiplier` (from Empower/buff cards active this turn)
+8. × relic percent bonuses (Volatile Core, Reckless Resolve, Berserker's Oath, etc.)
+9. × `overclockMultiplier` (if Overclock active)
+10. + Burn bonus (= current Burn stacks, then halve stacks round down — triggered ONCE per hit)
+11. + Bleed bonus (= Bleed stacks per card-play hit; does NOT decay on hit — only at end of enemy turn)
+12. + relic flat attack bonus applied post-multiply (Bloodstone Pendant Fury stacks, etc.)
+13. If enemy has Vulnerable: × 1.5
+14. Block absorbs final total
+15. Remaining damage after block hits HP
 
 **Notes:**
-- Burn and Bleed bonuses (steps 11–12) are added BEFORE block is applied. Block absorbs the combined total, not separately.
-- Chain Anchor sets next chain's starting length to 2; Chain Anchor itself is not a chain link and does not contribute to step 6.
+- Burn and Bleed bonuses (steps 10–11) are added BEFORE block is applied. Block absorbs the combined total, not separately.
+- Chain Anchor sets next chain's starting length to 2; Chain Anchor itself is not a chain link and does not contribute to step 5.
 - AP gain from Sacrifice/Blood Price can push past `MAX_AP_PER_TURN` — there is no hard AP cap.
 - Multi-hit cards trigger Burn once per hit. Bleed triggers once per card-play hit.
 

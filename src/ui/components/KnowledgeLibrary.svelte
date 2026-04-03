@@ -4,7 +4,6 @@
   import { getDomainMetadata } from '../../data/domainMetadata'
   import type { Fact } from '../../data/types'
   import { factsDB } from '../../services/factsDB'
-  import { getTierDisplayName } from '../../services/tierDerivation'
   import {
     buildDomainEntries,
     buildDomainSummaries,
@@ -200,7 +199,6 @@
       <p class="detail-domain">{labelDomain(selectedDomain ?? 'natural_sciences')}</p>
 
       <div class="detail-grid">
-        <div><strong>Tier:</strong> {getTierDisplayName(selectedEntry.tier)}</div>
         <div><strong>Attempts:</strong> {selectedEntry.state?.totalAttempts ?? 0}</div>
         <div><strong>Correct:</strong> {selectedEntry.state?.totalCorrect ?? 0}</div>
         <div><strong>Avg RT:</strong> {Math.round((selectedEntry.state?.averageResponseTimeMs ?? 0) / 100) / 10}s</div>
@@ -272,7 +270,7 @@
         {#each domainEntries as entry (entry.fact.id)}
           <button class="fact-row" onclick={() => (selectedEntry = entry)}>
             <div class="fact-title">{entry.fact.statement}</div>
-            <div class="fact-meta">{getTierDisplayName(entry.tier)} • {accuracyText(entry)}</div>
+            <div class="fact-meta">{accuracyText(entry)}</div>
           </button>
         {/each}
       </div>

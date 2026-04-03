@@ -7,7 +7,6 @@
   import { getChainColor, getChainGlowColor } from '../../services/chainVisuals'
   import { getDomainIconPath } from '../utils/domainAssets'
   import { getBorderUrl, getBannerUrl, getBaseFrameUrl, getUpgradeIconUrl } from '../utils/cardFrameV2'
-  import { getTierDisplayName } from '../../services/tierDerivation'
   import { getCardTypeEmoji, getCardTypeIconCandidates } from '../utils/iconAssets'
   import { getMechanicDefinition } from '../../data/mechanics'
   import { getMasteryStats } from '../../services/cardUpgradeService'
@@ -115,7 +114,6 @@
   let typeIconFallback = $derived(getCardTypeEmoji(card.cardType))
   let typeIconAttempt = $state(0)
   let typeIconPath = $derived(typeIconCandidates[typeIconAttempt] ?? null)
-  let tierLabel = $derived(card.tier === '1' ? '' : getTierDisplayName(card.tier))
   // V2: frame is now rendered as layered images, not a CSS background variable
   let domainIconPath = $derived(getDomainIconPath(card.domain))
 
@@ -480,9 +478,6 @@
     <span class="header-domain">
       <img class="header-domain-icon" src={domainIconPath} alt={`${domainName} icon`} />
       {deckDisplayName ?? domainName}
-      {#if tierLabel}
-        <span class="tier-stars">{tierLabel}</span>
-      {/if}
     </span>
     <span class="header-icon">
       {#if hasLanguageOptions && quizLanguageCode}
@@ -981,11 +976,6 @@
     image-rendering: crisp-edges;
   }
 
-  .tier-stars {
-    font-size: calc(9px * var(--layout-scale, 1));
-    margin-left: calc(4px * var(--layout-scale, 1));
-    color: #d4af37;
-  }
 
   /* ── Question text: pixel font, auto-scales by length ── */
   .card-question {

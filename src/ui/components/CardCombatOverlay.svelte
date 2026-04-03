@@ -38,7 +38,7 @@
   import { ambientAudio } from '../../services/ambientAudioService'
   import { reshuffleEvent } from '../../services/deckManager'
   import { audioManager } from '../../services/audioService'
-  import { REVEAL_DURATION, SWOOSH_DURATION, IMPACT_DURATION, DISCARD_DURATION, TIER_UP_DURATION, FIZZLE_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
+  import { REVEAL_DURATION, SWOOSH_DURATION, IMPACT_DURATION, DISCARD_DURATION, FIZZLE_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
   import { turboDelay } from '../../utils/turboMode'
   import { shuffled } from '../../services/randomUtils'
   import { getRunRng, isRunRngActive, seededShuffled } from '../../services/seededRng'
@@ -211,8 +211,6 @@
   /** AR-222: timer handle for pending auto-end-turn (cleared if player acts first) */
   let autoEndTurnTimer: ReturnType<typeof setTimeout> | null = null
   let cardAnimations = $state<Record<string, CardAnimPhase>>({})
-  type TierUpTransition = 'tier1_to_2a' | 'tier2a_to_2b' | 'tier2b_to_3'
-  let tierUpTransitions = $state<Record<string, TierUpTransition>>({})
   let animatingCards = $state<Card[]>([])
   /** AR-113: Active mastery change popups: cardId -> 'upgrade' | 'downgrade' */
   let masteryPopups = $state<Record<string, 'upgrade' | 'downgrade'>>({})
@@ -1574,17 +1572,6 @@
     }
   }
 
-  function getTierUpTransition(
-    previousTier: ReturnType<typeof getCardTier> | null,
-    nextTier: ReturnType<typeof getCardTier> | null,
-  ): TierUpTransition | null {
-    if (!previousTier || !nextTier || previousTier === nextTier) return null
-    if (previousTier === '1' && nextTier === '2a') return 'tier1_to_2a'
-    if (previousTier === '2a' && nextTier === '2b') return 'tier2a_to_2b'
-    if (previousTier === '2b' && nextTier === '3') return 'tier2b_to_3'
-    return null
-  }
-
   function resetCardFlow(): void {
     cardPlayStage = 'hand'
     selectedIndex = null
@@ -2129,7 +2116,6 @@
     // Capture quiz data snapshot before resetCardFlow() nulls it — needed for confusion tracking
     const quizDataSnapshot = committedQuizData
     const previousReviewState = getReviewStateByFactId(card.factId)
-    const previousTier = previousReviewState ? getCardTier(previousReviewState) : null
 
     resetCardFlow()
 
@@ -2274,24 +2260,10 @@
         triggerMasteryFeedback(cardId, 'upgrade')
       }
 
-      // Determine tier-up
-      const nextReviewState = getReviewStateByFactId(card.factId)
-      const nextTier = nextReviewState ? getCardTier(nextReviewState) : null
-      const tierUpTransition = getTierUpTransition(previousTier, nextTier)
-      if (tierUpTransition) {
-        tierUpTransitions = { ...tierUpTransitions, [cardId]: tierUpTransition }
-      }
-      const tierDelay = tierUpTransition ? TIER_UP_DURATION : 0
+      const tierDelay = 0
 
       // Phase 1: Reveal (flip to cardback)
       cardAnimations = { ...cardAnimations, [cardId]: 'reveal' }
-
-      // Phase 1.5 (optional): Tier-up celebration
-      if (tierUpTransition) {
-        setTimeout(() => {
-          cardAnimations = { ...cardAnimations, [cardId]: 'tier-up' }
-        }, REVEAL_DURATION)
-      }
 
       // Phase 2: Swoosh (type-specific effect + juice + sound)
       setTimeout(() => {
@@ -2345,9 +2317,6 @@
       // Cleanup
       setTimeout(() => {
         cardAnimations = { ...cardAnimations, [cardId]: null }
-        tierUpTransitions = Object.fromEntries(
-          Object.entries(tierUpTransitions).filter(([id]) => id !== cardId),
-        ) as Record<string, TierUpTransition>
         animatingCards = animatingCards.filter(c => c.id !== cardId)
         // AR-222: auto-end turn when no cards remain playable
         checkAutoEndTurn()
@@ -2810,7 +2779,6 @@
       {animatingCards}
       {selectedIndex}
       {cardAnimations}
-      {tierUpTransitions}
       apCurrent={apCurrent}
       disabled={turnState.phase !== 'player_action' || cardPlayStage === 'committed'}
       onselectcard={handleSelect}

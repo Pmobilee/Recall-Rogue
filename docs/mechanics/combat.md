@@ -121,7 +121,7 @@ Computed in `resolveCardEffect()` (`cardEffectResolver.ts`):
 
 Final damage: `applyDamageToEnemy(enemy, damageDealt)`. Enemy HP ≤ 0 → `result = 'victory'`.
 
-**Tier multipliers:** All active tiers (T1, T2a, T2b) use `effectMultiplier = 1.0`. Tier no longer drives card power; mastery does. T3 = 0× (card becomes a passive).
+**Tier multipliers (@deprecated):** `card.effectMultiplier` is set by `TIER_MULTIPLIER[tier]` in `cardFactory.ts` but has no gameplay effect for active tiers — T1/T2a/T2b all = 1.0, making it a no-op multiplier. Tiers drive quiz difficulty ONLY. T3 = 0× (card becomes a passive and leaves the active hand). Power scaling is governed exclusively by mastery stat tables.
 
 **Knowledge Chain multipliers** (`CHAIN_MULTIPLIERS`): [1.0, 1.2, 1.5, 2.0, 2.5, 3.5] at chain lengths 0–5.
 Chains now **decay by 1** per turn end (`CHAIN_DECAY_PER_TURN=1`) instead of fully resetting, preserving momentum into the next turn.

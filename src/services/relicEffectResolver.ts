@@ -295,7 +295,7 @@ export interface AttackModifiers {
   flatDamageBonus: number;
   /**
    * Percentage damage bonus as a multiplier offset (e.g. 0.5 = +50%).
-   * Sources: flame_brand, berserker_band, glass_cannon, crescendo_blade, curiosity_gem, domain_mastery.
+   * Sources: flame_brand, berserker_band, glass_cannon, crescendo_blade, domain_mastery.
    */
   percentDamageBonus: number;
   /** Poison application from venom_fang; null if relic not held. */
@@ -422,11 +422,6 @@ export function resolveAttackModifiers(
   // Crescendo Executioner synergy: crescendo rate +10% → +15% per stack
   if (hasSynergy(relicIds, 'crescendo_executioner') && context.consecutiveCorrectAttacks > 0) {
     percentDamageBonus += 0.05 * context.consecutiveCorrectAttacks;
-  }
-
-  // curiosity_gem — Tier 1 (Learning) cards +15% effect
-  if (relicIds.has('curiosity_gem') && context.cardTier === 'learning') {
-    percentDamageBonus += 0.15;
   }
 
   // venom_fang — All attacks apply 2 poison for 3 turns

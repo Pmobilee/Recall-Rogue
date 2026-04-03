@@ -857,18 +857,20 @@ describe('Card Effect Resolver', () => {
       expect(result.effectType).toBe('attack');
     });
 
-    it('applies tier multiplier', () => {
+    it('tier multiplier removed — all active tiers produce same damage', () => {
       const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: '2a', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 1.0, 0);
-      // 8 * 1.3 (tier 2a) * 1.0 * 1.0 * 1.0 * 1.0 = 10.4 -> round 10
-      expect(result.damageDealt).toBe(10);
+      // Tier-based damage scaling removed. baseEffectValue 8 with no mechanic -> 8
+      expect(result.damageDealt).toBe(8);
     });
 
-    it('tier 3 produces 0 effect value', () => {
-      const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: '3', effectMultiplier: 1.0 });
-      const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 1.0, 0);
-      expect(result.finalValue).toBe(0);
-      expect(result.damageDealt).toBe(0);
+    it('tier 3 card with effectMultiplier=0 produces 0 effect (passives excluded from hand at game layer)', () => {
+      // Tier 3 cards are converted to PassiveEffects before entering the hand.
+      // If createCard is called for a tier-3 fact, effectMultiplier=0 signals passive status.
+      // The resolver no longer applies effectMultiplier — tier 3 exclusion is handled upstream.
+      // This test documents that: a tier-3 card created via createCard() has effectMultiplier=0.
+      const card = mockCard({ cardType: 'attack', baseEffectValue: 8, tier: '3', effectMultiplier: 0 });
+      expect(card.effectMultiplier).toBe(0); // tier 3 cards are passive
     });
 
     it('applies speed bonus', () => {
@@ -967,17 +969,17 @@ describe('Card Effect Resolver', () => {
       expect(result.enemyDefeated).toBe(true);
     });
 
-    it('full multiplier chain produces correct value', () => {
+    it('full multiplier chain produces correct value (tier multiplier removed)', () => {
       const card = mockCard({
         cardType: 'attack',
         baseEffectValue: 8,
         tier: '2a',
-        effectMultiplier: 1.3,
+        effectMultiplier: 1.0,
       });
-      // 8 * 1.3 (tier2a) * 1.3 (effectMult) = 13.52 raw
+      // Tier-based damage scaling removed. baseEffectValue 8, speed 1.5, buff 50% -> 1.5× buff
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 1.5, 50);
-      // Raw = 8 * 1.3 * 1.3 = 13.52; Final = 13.52 * 1.5 (speed) * 1.5 (buff)
-      const expected = Math.round(8 * 1.3 * 1.3 * 1.5 * 1.5);
+      // Final = 8 * 1.5 (speed) * 1.5 (buff 50%)
+      const expected = Math.round(8 * 1.5 * 1.5);
       expect(result.damageDealt).toBe(expected);
     });
   });

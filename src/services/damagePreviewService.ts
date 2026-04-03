@@ -120,9 +120,6 @@ function computeAttackRelicBonuses(
   // festering_wound — 3+ poison on enemy: +40%
   if (relicIds.has('festering_wound') && ctx.enemyPoisonStacks >= 3) percent += 0.4;
 
-  // curiosity_gem — tier 1 (learning) cards +15%
-  if (relicIds.has('curiosity_gem') && cardTier === '1') percent += 0.15;
-
   // null_shard — always +25%
   if (relicIds.has('null_shard')) percent += 0.25;
 
@@ -175,8 +172,8 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
     nakedQpBase = Math.round(mechanic.quickPlayValue + masteryBonus);
     nakedCcBase = Math.round((mechanic.quickPlayValue + masteryBonus) * CHARGE_CORRECT_MULTIPLIER);
   } else {
-    // Legacy fallback: tier-scaled base effect value
-    nakedQpBase = Math.round(card.baseEffectValue * card.effectMultiplier);
+    // Legacy fallback: no mechanic definition
+    nakedQpBase = Math.round(card.baseEffectValue);
     nakedCcBase = Math.round(nakedQpBase * CHARGE_CORRECT_MULTIPLIER);
   }
 
@@ -224,9 +221,9 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
     const qpEffective = qpBase + sharpenedEdgeBonus + furyBonus;
     const ccEffective = ccBase + sharpenedEdgeBonus + furyBonus;
 
-    // Step 5: card effectMultiplier (tier-derived)
-    const qpScaled = qpEffective * card.effectMultiplier;
-    const ccScaled = ccEffective * card.effectMultiplier;
+    // Step 5: (tier-derived effectMultiplier removed — all active tiers are 1.0)
+    const qpScaled = qpEffective;
+    const ccScaled = ccEffective;
 
     // Step 6: buff multiplier
     const buffMult = 1 + ctx.buffNextCard / 100;
@@ -281,8 +278,8 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
   // ── Shield cards ──────────────────────────────────────────────────────────
   const relicIds = ctx.activeRelicIds;
 
-  let qpShield = nakedQpBase * card.effectMultiplier;
-  let ccShield = nakedCcBase * card.effectMultiplier;
+  let qpShield = nakedQpBase;
+  let ccShield = nakedCcBase;
 
   // stone_wall: +3 flat
   const stoneWallFlat = relicIds.has('stone_wall') ? 3 : 0;

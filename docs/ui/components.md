@@ -2,7 +2,7 @@
 
 > **Purpose:** Gameplay-critical Svelte components: Combat UI, Quiz & Study, Hub & Navigation, Dungeon & Map, Card Management, Rooms & Events, Rewards & Progression, Relics.
 > **Last verified:** 2026-04-03
-> **Source files:** `src/ui/components/**/*.svelte` (190 files), `src/CardApp.svelte`, `src/ui/effects/hubAnimationLoop.ts`, `src/ui/effects/hubLightingState.ts`, `src/ui/effects/HubGlowEffect.ts`, `src/ui/effects/CampfireEffect.ts`, `src/ui/effects/spritesheetPlayer.ts`, `src/ui/effects/petBehavior.ts`
+> **Source files:** `src/ui/components/**/*.svelte` (191 files), `src/CardApp.svelte`, `src/ui/effects/hubAnimationLoop.ts`, `src/ui/effects/hubLightingState.ts`, `src/ui/effects/HubGlowEffect.ts`, `src/ui/effects/CampfireEffect.ts`, `src/ui/effects/spritesheetPlayer.ts`, `src/ui/effects/petBehavior.ts`
 
 > **See also:** [`components-social.md`](components-social.md) — Social & Multiplayer, Profile & Account, Auth & Legal, Monetization & Seasons, Onboarding & Cutscenes, Utility & Effects.
 
@@ -47,7 +47,7 @@
 
 ### CardHand tier classes
 
-Cards have `class:tier-2a`, `class:tier-2b`, and `class:tier-3` bindings in the template (both landscape and portrait paths). The corresponding CSS rules carry no visual effects — tier drop-shadow glow styles (silver for 2a/2b, gold for tier-3) were removed 2026-03-31. The class bindings remain in the template for potential future use.
+FSRS tier classes (`tier-2a`, `tier-2b`, `tier-3`) and all tier-up animations/overlays were removed 2026-04-03. FSRS knowledge tiers have zero visual impact on cards. The in-run mastery level system (L0–L5, controlled by `hasMasteryGlow()` and `getMasteryIconFilter()`) is the only visual power indicator on cards. The `card.tier` field still exists and affects quiz difficulty — it is just not used for any visual styling.
 
 ### CardHand charge button AP display
 
@@ -70,7 +70,7 @@ Cards animate in place (no centering/floating to screen center). All three phase
 | `.card-impact` | Impact | `cardImpactFade` — 200ms scale 0.9→0.7 + opacity 0.3→0 |
 | `.card-discard` | Discard | `discardShrink` — 200ms scale 0.7→0.3 + opacity fade |
 
-The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@keyframes` were removed 2026-03-31 — the base `.card-impact` handles all variants. Reduced-motion disables all four animations via `animation: none !important`.
+The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@keyframes` were removed 2026-03-31 — the base `.card-impact` handles all variants. Reduced-motion disables all four animations via `animation: none !important`. **Tier-up animation phase** (`.card-tier-up`, `.tier-up-overlay`, `@keyframes tierUpBluePulse/tierUpGreenSparkle/tierUpMasteryBurst`) and related props (`tierUpTransitions`) were removed 2026-04-03.
 
 ---
 
@@ -78,7 +78,7 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 
 | Component | Purpose |
 |-----------|---------|
-| `QuizOverlay.svelte` | Multiple-choice quiz modal for card activation; Gaia avatar, 3 distractors, timer |
+| `QuizOverlay.svelte` | Multiple-choice quiz modal for card activation; Gaia avatar, 3 distractors, timer. **Landscape two-zone layout (2026-04-03):** see section below. |
 | `ChallengeQuizOverlay.svelte` | Challenge-mode quiz (speed round, mastery) with configurable ChallengeMode |
 | `StudyQuizOverlay.svelte` | Rest-room study quiz: boss-quiz–style questions to upgrade card charges. Shows inline `SRS +` / `SRS -` indicator (green/red, 0.65 opacity, scaled `10px`) alongside correct/wrong feedback text. |
 | `MasteryChallengeOverlay.svelte` | Mastery challenge room: timed quiz sequence for card mastery rewards. Calls `ambientAudio.setContext('mastery_challenge')` on `$effect` when challenge is set |
@@ -302,10 +302,11 @@ Node blur and opacity applied via CSS `filter: blur(...)` and `opacity: ...` on 
 | `DeckTileV2.svelte` | Tile component for a curated deck in the selection grid. 3D tilt on hover, shine overlay, deal animation. Single-image CSS parallax when `/assets/sprites/deckfronts/{id}.webp` is found (single image shifts against pointer, 0.08% multiplier, scale 1.08). When `hasImage` is true, adds `.has-image` class: title uses `position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%) translateZ(40px)` (bottom-center of art area, floating in 3D space), and badges float at `translateZ(30px)`. **Procedural deck support:** when `deck.procedural` is true, shows a single skill count bar ("X skills") instead of Seen/Review/Mastered progress bars, with a "Practice to track progress" hint. Description auto-falls back to "X skills" instead of "X facts" for procedural decks. |
 | `DeckDetailModal.svelte` | Modal showing deck contents, stats, and subcategory breakdown. **Procedural deck support:** when `deck.procedural` is true, the progress line reads "X skills" instead of "X facts mastered", and the start button reads ">> START PRACTICE" instead of ">> START STUDY RUN". |
 | `DeckFilterChips.svelte` | Filter chips for filtering decks by domain/language/tag |
-| `DeckSearchBar.svelte` | Search bar for the deck browser |
-| `DeckSortDropdown.svelte` | Sort order dropdown for deck listing views |
+| `DeckFilterSegmented.svelte` | Connected segmented control for filtering decks by progress state (`all` / `in-progress` / `not-started` / `mastered`). Props: `activeFilter: FilterOption`, `onFilterChange: (filter: FilterOption) => void`. Active segment styled with indigo tint (`rgba(99,102,241,0.2)` background, `#c7d2fe` text). All sizing uses `calc(Npx * var(--layout-scale, 1))` / `calc(Npx * var(--text-scale, 1))`. |
+| `DeckSearchBar.svelte` | Search bar for the deck browser. Props: `placeholder?`, `value`, `onsearchchange`. Height `32px`, border-radius `6px` (unified header-control size). Border `1px solid rgba(255,255,255,0.12)`; indigo focus ring. Debounces input at 150ms. All sizing uses `calc(Npx * var(--layout-scale, 1))`. |
+| `DeckSortDropdown.svelte` | Sort order dropdown for deck listing views. Props: `value: SortOption`, `onsortchange`. Options: `alpha`, `progress-high`, `progress-low`, `facts`, `newest`. Height `32px`, border-radius `6px`, border `1px solid rgba(255,255,255,0.08)` (subdued vs search bar). Custom arrow via `::after` pseudo-element. All sizing uses `calc(Npx * var(--layout-scale, 1))`. |
 | `CategoryLockSelector.svelte` | UI for locking/unlocking fact categories within a deck |
-| `CategoryTabs.svelte` | Tab bar for switching between fact categories in a deck |
+| `CategoryTabs.svelte` | Tab bar for switching between deck domains/categories. Renders label + count per tab — no icons. `.category-tabs` uses `flex-wrap: nowrap` with a right-fade mask (`mask-image: linear-gradient(to right, black 85%, transparent)`) and no background or bottom border. Active tab indicated solely by a `::after` bottom border in the tab's `--tab-color`. Hover and active states have `background: transparent` — no fill on interaction. `.tab-count` uses `opacity: 0.5` (inactive) and `opacity: 0.7` (active) instead of color values. |
 | `SubcategoryChip.svelte` | Individual subcategory filter chip |
 | `DuplicateMixingModal.svelte` | Warning/options modal when mixing duplicate facts across decks |
 | `LoadoutCard.svelte` | Compact card tile used in loadout/preset displays |

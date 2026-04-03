@@ -7,8 +7,6 @@ import type { PlayerCombatState } from './playerCombatState';
 import type { EnemyInstance } from '../data/enemies';
 import {
   BASE_EFFECT,
-  LEGACY_TIER_MULTIPLIER,
-  TIER_MULTIPLIER,
   CHARGE_CORRECT_MULTIPLIER,
   SURGE_CC_BONUS_MULTIPLIER,
   getBalanceOverrides,
@@ -406,11 +404,6 @@ export function isCardBlocked(card: Card, enemy: EnemyInstance): boolean {
   return enemy.template.immuneDomain != null && card.domain === enemy.template.immuneDomain;
 }
 
-function getTierMultiplier(tier: Card['tier']): number {
-  if (typeof tier === 'string') return TIER_MULTIPLIER[tier] ?? 1.0;
-  return LEGACY_TIER_MULTIPLIER[tier as 1 | 2 | 3] ?? 1.0;
-}
-
 /** Get base effect value for a card type, checking overrides first. */
 function getBaseEffect(cardType: string): number {
   const overrides = getBalanceOverrides();
@@ -504,10 +497,8 @@ export function resolveCardEffect(
   const playMode: PlayMode = advanced.playMode ?? 'quick';
   const baseEffectValue = card.baseEffectValue;
 
-  // Tier multiplier — used for no-mechanic (legacy) cards and execute bonus.
-  const tierMultiplier = getTierMultiplier(card.tier);
-  // Card's effectMultiplier (tier-derived, set at card creation time).
-  const focusAdjustedMultiplier = card.effectMultiplier;
+  // focusAdjustedMultiplier is always 1.0 — tier-based damage scaling removed.
+  const focusAdjustedMultiplier = 1.0;
 
   // Per-mechanic play-mode values: use mechanic's quickPlayValue / chargeCorrectValue / chargeWrongValue
   // if available; otherwise fall back to card.baseEffectValue with tier scaling (legacy path).
@@ -540,8 +531,7 @@ export function resolveCardEffect(
     }
   } else {
     // No mechanic definition (wild fallback, unknown mechanic).
-    // Apply tier multiplier to preserve pre-v2 behavior for these cards.
-    mechanicBaseValue = baseEffectValue * tierMultiplier + masteryBonus;
+    mechanicBaseValue = baseEffectValue + masteryBonus;
   }
 
   // Use stat table secondary value if available; fall back to old perLevelDelta helper.

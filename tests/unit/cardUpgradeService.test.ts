@@ -264,11 +264,11 @@ describe('cardUpgradeService', () => {
       expect(candidates.map(c => c.id)).toEqual(['4', '3', '2', '1'])
     })
 
-    it('sorts by effectMultiplier within same tier', () => {
+    it('sorts by masteryLevel within same tier (lower mastery first — more room to grow)', () => {
       const deck: Card[] = [
-        makeCard({ id: '1', tier: '2a', mechanicId: 'strike', effectMultiplier: 1.0 }),
-        makeCard({ id: '2', tier: '2a', mechanicId: 'strike', effectMultiplier: 2.0 }),
-        makeCard({ id: '3', tier: '2a', mechanicId: 'strike', effectMultiplier: 1.5 }),
+        makeCard({ id: '1', tier: '2a', mechanicId: 'strike', effectMultiplier: 1.0, masteryLevel: 3 }),
+        makeCard({ id: '2', tier: '2a', mechanicId: 'strike', effectMultiplier: 1.0, masteryLevel: 0 }),
+        makeCard({ id: '3', tier: '2a', mechanicId: 'strike', effectMultiplier: 1.0, masteryLevel: 1 }),
       ]
       const candidates = getUpgradeCandidates(deck, 10)
 

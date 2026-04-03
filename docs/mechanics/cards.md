@@ -50,16 +50,16 @@ Base effect values from `BASE_EFFECT` in `balance.ts`:
 
 Tier is derived from SM-2 review state via `getCardTier()` in `tierDerivation.ts`.
 
-Tiers still exist for FSRS tracking and quiz difficulty, but **tier-based damage multipliers were removed**. All active tiers have `effectMultiplier = 1.0`.
+**Tiers exist for FSRS tracking and quiz difficulty ONLY. They have NO effect on damage, visuals, or sell price.** All active tiers have `effectMultiplier = 1.0` — a no-op multiplier set in `cardFactory.ts` but not read by the damage resolver. Power scaling is driven exclusively by the mastery stat table system.
 
-| Tier | Name | `effectMultiplier` | Quiz Format |
-|------|------|-------------------|------------|
-| `'1'` | Learning | 1.0× | 3 choices |
-| `'2a'` | Proven | 1.0× | 4 choices, reverse allowed |
-| `'2b'` | Deep Recall | 1.0× | 5 choices, fill-blank allowed |
-| `'3'` | Mastered | 0× (→ Passive) | Becomes `PassiveEffect` |
+| Tier | Name | Quiz Format | Notes |
+|------|------|------------|-------|
+| `'1'` | Learning | 3 choices | `effectMultiplier` = 1.0 (deprecated, no gameplay effect) |
+| `'2a'` | Proven | 4 choices, reverse allowed | `effectMultiplier` = 1.0 (deprecated, no gameplay effect) |
+| `'2b'` | Deep Recall | 5 choices, fill-blank allowed | `effectMultiplier` = 1.0 (deprecated, no gameplay effect) |
+| `'3'` | Mastered | Becomes `PassiveEffect` | `effectMultiplier` = 0 — card leaves active hand |
 
-Tier 3 cards leave the active hand and become `PassiveEffect` entries. The `0×` multiplier reflects that they no longer deal direct damage as active cards. Values in `TIER3_PASSIVE_VALUE` (attack=+1 flat dmg all attacks, shield=+1 flat block, utility=+1 draw at turn start).
+Tier 3 cards leave the active hand and become `PassiveEffect` entries. The `0×` multiplier at T3 reflects that they no longer deal direct damage as active cards. Values in `TIER3_PASSIVE_VALUE` (attack=+1 flat dmg all attacks, shield=+1 flat block, utility=+1 draw at turn start).
 
 ---
 
@@ -335,7 +335,7 @@ catchUpLevel = clamp(floor(rand(0.5–1.5) × avgMastery), 0, mechanic.maxLevel)
 2. `cardType` — `cardTypeOverride` or `deriveCardTypeForFactId(fact.id)`
 3. `tier` — `getCardTier()` from `reviewState.stability + consecutiveCorrect + passedMasteryTrial`
 4. `baseEffectValue` — `BASE_EFFECT[cardType]` (attack=4, shield=3, others=0)
-5. `effectMultiplier` — `TIER_MULTIPLIER[tier]` — always 1.0 for active tiers (T1/T2a/T2b=1.0, T3=0)
+5. `effectMultiplier` — `TIER_MULTIPLIER[tier]` — always 1.0 for active tiers (T1/T2a/T2b=1.0, T3=0) — **deprecated**: set on card struct but not read by the damage resolver; has no gameplay effect for active tiers
 6. `isMasteryTrial` — `qualifiesForMasteryTrial()` checks `MASTERY_TRIAL.REQUIRED_STABILITY=30` + `REQUIRED_CONSECUTIVE_CORRECT=7`
 
 Mechanics (`mechanicId`) and chain type (`chainType`) are assigned by the run pool builder, not `createCard`.

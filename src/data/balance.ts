@@ -226,28 +226,30 @@ export const BASE_EFFECT: Record<string, number> = {
   wild: 0,
 };
 
-// Tier multipliers — Tier 3 is passive (no active effect value)
+// Tier multipliers — all active tiers are 1.0×. Tier 3 is passive (no active effect value).
+// FSRS tiers affect quiz difficulty only (options count, reverse allowed, fill-blank).
+// The in-run mastery system (L0–L5) is the ONLY power scaling axis.
 export const TIER_MULTIPLIER: Record<'1' | '2a' | '2b' | '3', number> = {
   '1': 1.0,
-  '2a': 1.3,
-  '2b': 1.6,
+  '2a': 1.0,
+  '2b': 1.0,
   '3': 0,
 };
 
 // Legacy compatibility for numeric-tier callers.
 export const LEGACY_TIER_MULTIPLIER: Record<1 | 2 | 3, number> = {
-  1: TIER_MULTIPLIER['1'],
-  2: TIER_MULTIPLIER['2a'],
-  3: TIER_MULTIPLIER['3'],
+  1: 1.0,
+  2: 1.0,
+  3: 0,
 };
 
 /**
  * Flat Charge Correct multiplier applied to quickPlayValue. The real power scaling
- * comes from mastery level bonuses (getMasteryBaseBonus) and tier multipliers (T1=1.0×,
- * T2a=1.3×, T2b=1.6×), NOT from increasing this multiplier. Nerfed to 1.75× (from 2.0×)
- * in 2026-04-01 balance pass to reduce expert player damage output (dedicated 100% → ~85-95% target).
+ * comes from mastery level bonuses (getMasteryStats) only — tier has NO effect on damage.
+ * Nerfed to 1.75× (from 2.0×) in 2026-04-01 balance pass to reduce expert player damage
+ * output (dedicated 100% → ~85-95% target).
  *
- * Runtime formula: CC damage = (quickPlayValue + masteryBonus) × 1.75 × tierMult × chainMult × ...
+ * Runtime formula: CC damage = getMasteryStats(mechanicId, level).qpValue × 1.75 × chainMult × ...
  *
  * Note: The `chargeCorrectValue` field in mechanics.ts is DEAD DATA — the resolver
  * always computes CC as quickPlayValue × this constant. Do not read chargeCorrectValue.

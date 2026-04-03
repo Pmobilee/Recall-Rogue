@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { Card } from '../../data/card-types'
-  import { getTierDisplayName, getDisplayTier } from '../../services/tierDerivation'
   import { playCardAudio } from '../../services/cardAudioManager'
 
   interface UpgradePreview {
@@ -51,7 +50,6 @@
           <div class="card-preview upgraded-preview">
             <div class="preview-header">
               <span class="type-icon">{TYPE_ICONS[selectedCandidate.card.cardType] ?? '\uD83C\uDCCF'}</span>
-              <span class="tier-badge {getDisplayTier(selectedCandidate.card.tier)}">{getTierDisplayName(selectedCandidate.card.tier)}</span>
             </div>
 
             <h3 class="preview-mechanic">{selectedCandidate.preview.upgradedName}</h3>
@@ -87,7 +85,6 @@
           <div class="card-preview original-preview">
             <div class="preview-header">
               <span class="type-icon">{TYPE_ICONS[selectedCandidate.card.cardType] ?? '\uD83C\uDCCF'}</span>
-              <span class="tier-badge {getDisplayTier(selectedCandidate.card.tier)}">{getTierDisplayName(selectedCandidate.card.tier)}</span>
             </div>
 
             <h3 class="preview-mechanic">{selectedCandidate.card.mechanicName ?? selectedCandidate.card.cardType}</h3>
@@ -127,15 +124,13 @@
         <div class="grid-container">
           <div class="candidates-grid">
             {#each candidates as { card, preview } (card.id)}
-              {@const tierClass = getDisplayTier(card.tier)}
               <button
-                class="grid-card {tierClass}"
+                class="grid-card"
                 data-testid="upgrade-candidate-{card.id}"
                 onclick={() => { selectedCandidate = { card, preview }; playCardAudio('card-select') }}
               >
                 <div class="grid-header">
                   <span class="type-icon">{TYPE_ICONS[card.cardType] ?? '\uD83C\uDCCF'}</span>
-                  <span class="tier-badge {tierClass}">{getTierDisplayName(card.tier)}</span>
                 </div>
                 <div class="grid-mechanic">{card.mechanicName ?? card.cardType}</div>
                 <div class="grid-values">
@@ -240,29 +235,6 @@
     border-color: #3498db;
   }
 
-  .grid-card.gold {
-    border-color: #f1c40f44;
-  }
-
-  .grid-card.gold:hover {
-    border-color: #f1c40f;
-  }
-
-  .grid-card.silver {
-    border-color: #95a5a644;
-  }
-
-  .grid-card.silver:hover {
-    border-color: #95a5a6;
-  }
-
-  .grid-card.bronze {
-    border-color: #cd7f3244;
-  }
-
-  .grid-card.bronze:hover {
-    border-color: #cd7f32;
-  }
 
   .grid-header {
     display: flex;
@@ -274,28 +246,6 @@
     font-size: 18px;
   }
 
-  .tier-badge {
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 4px;
-    text-transform: uppercase;
-  }
-
-  .tier-badge.gold {
-    background: #f1c40f33;
-    color: #f1c40f;
-  }
-
-  .tier-badge.silver {
-    background: #95a5a633;
-    color: #95a5a6;
-  }
-
-  .tier-badge.bronze {
-    background: #cd7f3233;
-    color: #cd7f32;
-  }
 
   .grid-mechanic {
     font-weight: 700;

@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { Card } from '../../data/card-types'
   import type { Fact } from '../../data/types'
-  import { getTierDisplayName } from '../../services/tierDerivation'
   import { getRandomRoomBg, getRoomDepthMap } from '../../data/backgroundManifest'
   import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
@@ -285,10 +284,6 @@
     return 10
   }
 
-  function tierLabel(card: Card): string {
-    return getTierDisplayName(card.tier)
-  }
-
   function openPurchaseModal(purchase: PendingPurchase) {
     pendingPurchase = purchase
     hagglingState = 'idle'
@@ -548,7 +543,7 @@
               </span>
               <div class="text">
                 <div class="name">
-                  {item.card.mechanicName ?? item.card.cardType.toUpperCase()} • {tierLabel(item.card)}
+                  {item.card.mechanicName ?? item.card.cardType.toUpperCase()}
                   {#if (item.card.masteryLevel ?? 0) > 0}
                     <span class="mastery-indicator">
                       <span class="mastery-icon" style="filter: {getMasteryIconFilter(item.card.masteryLevel ?? 0)}">✦</span>
@@ -571,7 +566,7 @@
               disabled={!canAfford}
               data-testid="shop-buy-card-{idx}"
               aria-label="Buy {item.card.mechanicName ?? item.card.cardType} for {item.price}g"
-              onclick={() => canAfford && openPurchaseModal({ type: 'card', cardIndex: idx, price: item.price, name: `${item.card.mechanicName ?? item.card.cardType.toUpperCase()} (${tierLabel(item.card)})` })}
+              onclick={() => canAfford && openPurchaseModal({ type: 'card', cardIndex: idx, price: item.price, name: `${item.card.mechanicName ?? item.card.cardType.toUpperCase()}` })}
             >
               {#if shopInventory?.saleCardIndex === idx}
                 <span class="original-price">{item.price * 2}g</span> {item.price}g
@@ -646,7 +641,7 @@
               <span style="display:none">{TYPE_EMOJI[card.cardType] ?? '🃏'}</span>
             </span>
             <div class="text">
-              <div class="name">{card.mechanicName ?? card.cardType.toUpperCase()} • {tierLabel(card)}</div>
+              <div class="name">{card.mechanicName ?? card.cardType.toUpperCase()}</div>
               <div class="sub">{getEffectLabel(card)}</div>
             </div>
           </div>
@@ -779,7 +774,7 @@
             onclick={() => pickCardForRemoval(card.id)}
           >
             <span class="removal-card-info">
-              <span class="removal-card-name">{card.mechanicName ?? card.cardType.toUpperCase()} • {tierLabel(card)}</span>
+              <span class="removal-card-name">{card.mechanicName ?? card.cardType.toUpperCase()}</span>
               {#if card.chainType !== undefined}
                 <span class="removal-chain-badge" style="color: {getChainTypeColor(card.chainType)};">
                   <ChainIcon chainType={card.chainType} size={10} />

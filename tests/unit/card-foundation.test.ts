@@ -167,37 +167,37 @@ describe('cardFactory', () => {
     });
   });
 
-  describe('effectMultiplier (tier-based)', () => {
+  describe('effectMultiplier (all active tiers = 1.0, tier-based damage scaling removed)', () => {
     it('tier 1 card has effectMultiplier 1.0', () => {
       const card = createCard(makeFact({ category: ['Natural Sciences'] }), undefined, 'attack');
       expect(card.effectMultiplier).toBe(1.0);
     });
 
-    it('tier 2a card has effectMultiplier 1.3', () => {
+    it('tier 2a card has effectMultiplier 1.0 (tier-based damage scaling removed)', () => {
       const card = createCard(
         makeFact({ category: ['Natural Sciences'] }),
         makeReviewState({ stability: 2, consecutiveCorrect: 2 }),
         'attack',
       );
-      expect(card.effectMultiplier).toBe(1.3);
+      expect(card.effectMultiplier).toBe(1.0);
     });
 
-    it('tier 2b card has effectMultiplier 1.6', () => {
+    it('tier 2b card has effectMultiplier 1.0 (tier-based damage scaling removed)', () => {
       const card = createCard(
         makeFact({ category: ['Natural Sciences'] }),
         makeReviewState({ stability: 5, consecutiveCorrect: 3 }),
         'attack',
       );
-      expect(card.effectMultiplier).toBe(1.6);
+      expect(card.effectMultiplier).toBe(1.0);
     });
 
-    it('tier 3 card has effectMultiplier 1.6', () => {
+    it('tier 3 card has effectMultiplier 0 (passive — no active effect)', () => {
       const card = createCard(
         makeFact({ category: ['Natural Sciences'] }),
         makeReviewState({ stability: 10, consecutiveCorrect: 4, passedMasteryTrial: true }),
         'attack',
       );
-      expect(card.effectMultiplier).toBe(1.6);
+      expect(card.effectMultiplier).toBe(0);
     });
   });
 

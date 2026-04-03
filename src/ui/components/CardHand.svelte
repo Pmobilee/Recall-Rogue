@@ -4,7 +4,6 @@
   import { getDomainMetadata } from '../../data/domainMetadata'
   import { getCardbackUrl, onCardbackReady } from '../utils/cardbackManifest'
   import { type CardAnimPhase } from '../utils/mechanicAnimations'
-  import { getTierDisplayName } from '../../services/tierDerivation'
   import { getBorderUrl, getBaseFrameUrl, getBannerUrl, getUpgradeIconUrl, getMasteryIconFilter, hasMasteryGlow, GUIDE_STYLES } from '../utils/cardFrameV2'
   import { getCardArtUrl } from '../utils/cardArtManifest'
   import { getShortCardDescription } from '../../services/cardDescriptionService'
@@ -36,7 +35,6 @@
     disabled: boolean
     apCurrent: number
     cardAnimations?: Record<string, CardAnimPhase>
-    tierUpTransitions?: Record<string, TierUpTransition>
     discarding?: boolean
     onselectcard: (index: number) => void
     ondeselectcard: () => void
@@ -66,8 +64,6 @@
   // Session-level preload guard: avoid creating duplicate Image objects for the same URL.
   const preloadedCardbackUrls = new Set<string>()
 
-  type TierUpTransition = 'tier1_to_2a' | 'tier2a_to_2b' | 'tier2b_to_3'
-
   let {
     cards,
     animatingCards = [],
@@ -75,7 +71,6 @@
     disabled,
     apCurrent,
     cardAnimations,
-    tierUpTransitions = {},
     discarding = false,
     onselectcard,
     ondeselectcard,
@@ -92,33 +87,6 @@
     activeChainColor = null,
   }: Props = $props()
 
-  interface TierUpVisualSignature {
-    hue: number
-    sparkX: number
-    sparkY: number
-    spinDeg: number
-    intensity: number
-  }
-
-  function hashString(input: string): number {
-    let hash = 2166136261
-    for (let i = 0; i < input.length; i += 1) {
-      hash ^= input.charCodeAt(i)
-      hash = Math.imul(hash, 16777619)
-    }
-    return hash >>> 0
-  }
-
-  function getTierUpVisualSignature(factId: string): TierUpVisualSignature {
-    const hash = hashString(factId || 'unknown-fact')
-    return {
-      hue: hash % 360,
-      sparkX: 16 + (hash % 62),
-      sparkY: 16 + ((hash >>> 6) % 62),
-      spinDeg: -9 + ((hash >>> 12) % 19),
-      intensity: 0.86 + (((hash >>> 17) % 36) / 100),
-    }
-  }
 
   function getRotation(index: number, total: number): number {
     if (total <= 1) return 0
@@ -241,11 +209,6 @@
       || mechanicId.includes('regen')
       || mechanicName.includes('heal')
       || mechanicName.includes('regen')
-  }
-
-  function getTierBadge(card: Card): string {
-    if (card.tier === '1') return ''
-    return getTierDisplayName(card.tier)
   }
 
   function hasEnoughAp(card: Card): boolean {
@@ -804,7 +767,6 @@
     {@const domainColor = getDomainColor(card.domain)}
     {@const showFrontValue = shouldShowFrontValue(card)}
     {@const cardAnim = cardAnimations?.[card.id] ?? null}
-    {@const tierBadge = getTierBadge(card)}
     {@const apCost = card.apCost ?? 1}
     {@const displayedApCost = getDisplayedApCost(card)}
     {@const apGemColor = getApGemColor(card)}
@@ -815,13 +777,11 @@
     {@const isSwoosh = cardAnim === 'swoosh'}
     {@const isImpact = cardAnim === 'impact'}
     {@const isAnimating = isRevealing || isTierUp || isSwoosh || isImpact}
-    {@const tierUpTransition = tierUpTransitions[card.id] ?? null}
     {@const isHovered = hoveredIndex === i && !isSelected && !isOther && selectedIndex === null}
     {@const isDraggingThis = dragState?.cardIndex === i}
     {@const cardDragX = isDraggingThis ? dragDeltaX : 0}
     {@const cardDragRawY = isDraggingThis ? dragRawDeltaY : 0}
     {@const cardDragScale = isDraggingThis ? dragScale : 1}
-    {@const tierVisual = getTierUpVisualSignature(card.factId)}
     {@const runState = $activeRunState}
     {@const isMastered = card.tier === '3'}
     {@const isFreeCharge = (runState !== null && card.factId) ? isFirstChargeFree(card.factId, runState.firstChargeFreeFactIds) : false}
@@ -858,9 +818,6 @@
       class="card-in-hand card-landscape"
       class:card-selected={isSelected}
       class:card-dimmed={isOther}
-      class:tier-2a={card.tier === '2a'}
-      class:tier-2b={card.tier === '2b'}
-      class:tier-3={card.tier === '3'}
       class:echo-card={false}
       class:trial-card={card.isMasteryTrial}
       class:insufficient-ap={insufficientAp}
@@ -868,7 +825,6 @@
       class:card-fizzle={cardAnim === 'fizzle'}
       class:card-discard={cardAnim === 'discard'}
       class:card-reveal={isAnimating}
-      class:card-tier-up={isTierUp}
       class:card-swoosh={isSwoosh}
       class:card-impact={isImpact}
       class:drag-ready={isDragPastThreshold && isDraggingThis && !isDragInChargeZone}
@@ -979,18 +935,6 @@
         </div>
       {/if}
 
-      {#if isTierUp}
-        <div
-          class="tier-up-overlay"
-          style="
-            --tier-hue: {tierVisual.hue};
-            --spark-x: {tierVisual.sparkX}%;
-            --spark-y: {tierVisual.sparkY}%;
-            --spark-spin: {tierVisual.spinDeg}deg;
-            --spark-intensity: {tierVisual.intensity};
-          "
-        ></div>
-      {/if}
 
       {#if showChargeZoneIndicator}
         <div
@@ -1066,8 +1010,6 @@
     {@const isSwoosh = cardAnim === 'swoosh'}
     {@const isImpact = cardAnim === 'impact'}
     {@const isAnimating = isRevealing || isTierUp || isSwoosh || isImpact}
-    {@const tierUpTransition = tierUpTransitions[card.id] ?? null}
-    {@const tierVisual = getTierUpVisualSignature(card.factId)}
 
     <div
       class="card-in-hand card-has-frame card-landscape card-animating"
@@ -1075,7 +1017,6 @@
       class:card-fizzle={cardAnim === 'fizzle'}
       class:card-discard={cardAnim === 'discard'}
       use:ghostCardAnim
-      class:card-tier-up={isTierUp}
       class:card-swoosh={isSwoosh}
       class:card-impact={isImpact}
     >
@@ -1115,18 +1056,6 @@
         {/if}
       </div>
 
-      {#if isTierUp}
-        <div
-          class="tier-up-overlay"
-          style="
-            --tier-hue: {tierVisual.hue};
-            --spark-x: {tierVisual.sparkX}%;
-            --spark-y: {tierVisual.sparkY}%;
-            --spark-spin: {tierVisual.spinDeg}deg;
-            --spark-intensity: {tierVisual.intensity};
-          "
-        ></div>
-      {/if}
     </div>
   {/each}
 
@@ -1136,7 +1065,6 @@
     {@const chainName = detailCard.chainType !== undefined ? getChainTypeName(detailCard.chainType) : null}
     {@const chainTypeVal = detailCard.chainType ?? 0}
     {@const mechanic = getMechanicDefinition(detailCard.mechanicId ?? '')}
-    {@const tierLabel = detailCard.tier === '1' ? 'Learning' : detailCard.tier === '2a' || detailCard.tier === '2b' ? 'Proven' : 'Mastered'}
     {@const fact = factsDB.isReady() ? factsDB.getById(detailCard.factId) : null}
     <button
       class="card-detail-backdrop"
@@ -1155,7 +1083,6 @@
         {/if}
       </div>
       <div class="card-detail-tier">
-        <span class="card-detail-tier-label">{tierLabel}</span>
         <span class="card-detail-ap">{detailCard.apCost ?? 1} AP</span>
       </div>
       {#if mechanic?.description}
@@ -1184,7 +1111,6 @@
     {@const domainColor = getDomainColor(card.domain)}
     {@const showFrontValue = shouldShowFrontValue(card)}
     {@const cardAnim = cardAnimations?.[card.id] ?? null}
-    {@const tierBadge = getTierBadge(card)}
     {@const apCost = card.apCost ?? 1}
     {@const displayedApCost = getDisplayedApCost(card)}
     {@const apGemColor = getApGemColor(card)}
@@ -1195,7 +1121,6 @@
     {@const isSwoosh = cardAnim === 'swoosh'}
     {@const isImpact = cardAnim === 'impact'}
     {@const isAnimating = isRevealing || isTierUp || isSwoosh || isImpact}
-    {@const tierUpTransition = tierUpTransitions[card.id] ?? null}
     {@const isHovered = hoveredIndex === i && !isSelected && !isOther && selectedIndex === null}
     {@const hoverLift = isHovered ? 18 : 0}
     {@const hoverScale = isHovered ? 1.15 : 1}
@@ -1203,7 +1128,6 @@
     {@const cardDragX = isDraggingThis ? dragDeltaX : 0}
     {@const cardDragRawY = isDraggingThis ? dragRawDeltaY : 0}
     {@const cardDragScale = isDraggingThis ? dragScale : 1}
-    {@const tierVisual = getTierUpVisualSignature(card.factId)}
     {@const runState = $activeRunState}
     {@const isFreeCharge = (runState !== null && card.factId) ? isFirstChargeFree(card.factId, runState.firstChargeFreeFactIds) : false}
     {@const isMastered = card.tier === '3'}
@@ -1234,9 +1158,6 @@
       class="card-in-hand card-has-frame"
       class:card-selected={isSelected}
       class:card-dimmed={isOther}
-      class:tier-2a={card.tier === '2a'}
-      class:tier-2b={card.tier === '2b'}
-      class:tier-3={card.tier === '3'}
       class:echo-card={false}
       class:trial-card={card.isMasteryTrial}
       class:insufficient-ap={insufficientAp}
@@ -1244,10 +1165,6 @@
       class:card-fizzle={cardAnim === 'fizzle'}
       class:card-discard={cardAnim === 'discard'}
       class:card-reveal={isAnimating}
-      class:card-tier-up={isTierUp}
-      class:card-tier-up-1-2a={isTierUp && tierUpTransition === 'tier1_to_2a'}
-      class:card-tier-up-2a-2b={isTierUp && tierUpTransition === 'tier2a_to_2b'}
-      class:card-tier-up-2b-3={isTierUp && tierUpTransition === 'tier2b_to_3'}
       class:card-swoosh={isSwoosh}
       class:card-swoosh-attack={isSwoosh && card.cardType === 'attack'}
       class:card-swoosh-shield={isSwoosh && card.cardType === 'shield'}
@@ -1365,21 +1282,6 @@
         </div>
       {/if}
 
-      {#if isTierUp}
-        <div
-          class="tier-up-overlay"
-          class:tier-up-1-2a={tierUpTransition === 'tier1_to_2a'}
-          class:tier-up-2a-2b={tierUpTransition === 'tier2a_to_2b'}
-          class:tier-up-2b-3={tierUpTransition === 'tier2b_to_3'}
-          style="
-            --tier-hue: {tierVisual.hue};
-            --spark-x: {tierVisual.sparkX}%;
-            --spark-y: {tierVisual.sparkY}%;
-            --spark-spin: {tierVisual.spinDeg}deg;
-            --spark-intensity: {tierVisual.intensity};
-          "
-        ></div>
-      {/if}
 
       {#if showChargeZoneIndicator}
         <div
@@ -1469,8 +1371,6 @@
     {@const isSwoosh = cardAnim === 'swoosh'}
     {@const isImpact = cardAnim === 'impact'}
     {@const isAnimating = isRevealing || isTierUp || isSwoosh || isImpact}
-    {@const tierUpTransition = tierUpTransitions[card.id] ?? null}
-    {@const tierVisual = getTierUpVisualSignature(card.factId)}
 
     <div
       class="card-in-hand card-has-frame card-animating"
@@ -1478,10 +1378,6 @@
       class:card-fizzle={cardAnim === 'fizzle'}
       class:card-discard={cardAnim === 'discard'}
       use:ghostCardAnim
-      class:card-tier-up={isTierUp}
-      class:card-tier-up-1-2a={isTierUp && tierUpTransition === 'tier1_to_2a'}
-      class:card-tier-up-2a-2b={isTierUp && tierUpTransition === 'tier2a_to_2b'}
-      class:card-tier-up-2b-3={isTierUp && tierUpTransition === 'tier2b_to_3'}
       class:card-swoosh={isSwoosh}
       class:card-swoosh-attack={isSwoosh && card.cardType === 'attack'}
       class:card-swoosh-shield={isSwoosh && card.cardType === 'shield'}
@@ -1531,21 +1427,6 @@
         {/if}
       </div>
 
-      {#if isTierUp}
-        <div
-          class="tier-up-overlay"
-          class:tier-up-1-2a={tierUpTransition === 'tier1_to_2a'}
-          class:tier-up-2a-2b={tierUpTransition === 'tier2a_to_2b'}
-          class:tier-up-2b-3={tierUpTransition === 'tier2b_to_3'}
-          style="
-            --tier-hue: {tierVisual.hue};
-            --spark-x: {tierVisual.sparkX}%;
-            --spark-y: {tierVisual.sparkY}%;
-            --spark-spin: {tierVisual.spinDeg}deg;
-            --spark-intensity: {tierVisual.intensity};
-          "
-        ></div>
-      {/if}
     </div>
   {/each}
 </div>
@@ -2106,19 +1987,6 @@
     50% { opacity: 1; }
   }
 
-  .tier-2a {
-    filter: drop-shadow(0 0 6px rgba(192, 192, 192, 0.45));
-  }
-
-  .tier-2b {
-    filter: drop-shadow(0 0 10px rgba(192, 192, 192, 0.8));
-  }
-
-  .tier-3 {
-    border-color: #ffd700 !important;
-    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.8));
-  }
-
   .trial-card {
     border-color: #f1c40f !important;
     box-shadow: 0 0 10px rgba(241, 196, 15, 0.65);
@@ -2427,115 +2295,6 @@
     }
   }
 
-  .card-tier-up .card-inner {
-    animation: tierUpInnerRumble 600ms ease-in-out both;
-  }
-
-  @keyframes tierUpInnerRumble {
-    0% { transform: rotateY(180deg) translateX(0); }
-    16% { transform: rotateY(180deg) translateX(-2px); }
-    32% { transform: rotateY(180deg) translateX(2px); }
-    48% { transform: rotateY(180deg) translateX(-1px); }
-    64% { transform: rotateY(180deg) translateX(1px); }
-    100% { transform: rotateY(180deg) translateX(0); }
-  }
-
-  .tier-up-overlay {
-    position: absolute;
-    inset: -4px;
-    border-radius: 10px;
-    pointer-events: none;
-    z-index: 12;
-    animation-duration: 600ms;
-    animation-fill-mode: both;
-    animation-timing-function: ease-out;
-  }
-
-  .tier-up-overlay::before,
-  .tier-up-overlay::after {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: inherit;
-    pointer-events: none;
-  }
-
-  .tier-up-overlay::before {
-    background:
-      radial-gradient(
-        circle at var(--spark-x, 25%) var(--spark-y, 22%),
-        hsl(var(--tier-hue, 210) 98% 78% / 0.58) 0,
-        transparent 36%
-      ),
-      radial-gradient(
-        circle at calc(100% - var(--spark-x, 25%)) calc(100% - var(--spark-y, 22%)),
-        hsl(calc(var(--tier-hue, 210) + 36) 96% 74% / 0.48) 0,
-        transparent 34%
-      );
-    mix-blend-mode: screen;
-    opacity: 0;
-    animation: tierSignatureSpark 600ms ease-out both;
-  }
-
-  .tier-up-overlay::after {
-    border: 1px solid hsl(calc(var(--tier-hue, 210) + 18) 95% 74% / 0.5);
-    transform: rotate(var(--spark-spin, 0deg)) scale(0.9);
-    opacity: 0;
-    animation: tierSignatureTrace 600ms ease-out both;
-  }
-
-  .tier-up-overlay.tier-up-1-2a {
-    border: 2px solid rgba(96, 165, 250, 0.95);
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.95), 0 0 40px rgba(37, 99, 235, 0.5);
-    animation-name: tierUpBluePulse;
-  }
-
-  .tier-up-overlay.tier-up-2a-2b {
-    border: 2px solid rgba(74, 222, 128, 0.95);
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.9), 0 0 42px rgba(21, 128, 61, 0.5);
-    background:
-      radial-gradient(circle at 15% 20%, rgba(187, 247, 208, 0.85) 0, transparent 35%),
-      radial-gradient(circle at 70% 30%, rgba(167, 243, 208, 0.7) 0, transparent 32%),
-      radial-gradient(circle at 45% 75%, rgba(220, 252, 231, 0.65) 0, transparent 36%);
-    animation-name: tierUpGreenSparkle;
-  }
-
-  .tier-up-overlay.tier-up-2b-3 {
-    border: 2px solid rgba(250, 204, 21, 0.95);
-    box-shadow: 0 0 24px rgba(250, 204, 21, 0.95), 0 0 46px rgba(168, 85, 247, 0.55);
-    background: linear-gradient(135deg, rgba(147, 51, 234, 0.45), rgba(250, 204, 21, 0.42));
-    animation-name: tierUpMasteryBurst;
-  }
-
-  @keyframes tierUpBluePulse {
-    0% { opacity: 0; transform: scale(0.88); }
-    35% { opacity: 1; transform: scale(1.05); }
-    100% { opacity: 0; transform: scale(1.18); }
-  }
-
-  @keyframes tierUpGreenSparkle {
-    0% { opacity: 0; transform: scale(0.86); }
-    45% { opacity: 1; transform: scale(1.03); }
-    100% { opacity: 0; transform: scale(1.2); }
-  }
-
-  @keyframes tierUpMasteryBurst {
-    0% { opacity: 0; transform: scale(0.84) rotate(-2deg); }
-    45% { opacity: 1; transform: scale(1.04) rotate(1deg); }
-    100% { opacity: 0; transform: scale(1.24) rotate(3deg); }
-  }
-
-  @keyframes tierSignatureSpark {
-    0% { opacity: 0; transform: scale(0.82); }
-    44% { opacity: 1; transform: scale(var(--spark-intensity, 1)); }
-    100% { opacity: 0; transform: scale(1.22); }
-  }
-
-  @keyframes tierSignatureTrace {
-    0% { opacity: 0; transform: rotate(var(--spark-spin, 0deg)) scale(0.82); }
-    35% { opacity: 0.72; transform: rotate(var(--spark-spin, 0deg)) scale(1.02); }
-    100% { opacity: 0; transform: rotate(var(--spark-spin, 0deg)) scale(1.2); }
-  }
 
   /* ═══ NEW ANIMATION PHASES ═══ */
 
@@ -2729,11 +2488,7 @@
     .card-swoosh::after,
     .card-impact,
     .card-discard,
-    .card-fizzle,
-    .card-tier-up .card-inner,
-    .tier-up-overlay,
-    .tier-up-overlay::before,
-    .tier-up-overlay::after {
+    .card-fizzle {
       animation: none !important;
     }
 
@@ -2918,12 +2673,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-
-  .card-detail-tier-label {
-    font-size: calc(12px * var(--text-scale, 1));
-    color: #94a3b8;
-    font-weight: 600;
   }
 
   .card-detail-ap {

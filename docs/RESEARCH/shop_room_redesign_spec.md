@@ -266,8 +266,10 @@ Cards in the shop render with the full V2 layered card frame system — exactly 
 
 Cards display their actual computed mechanic values. "Power X" does not appear anywhere on the card or in the shop UI.
 
-**Damage formula:**
+**Damage formula (historical — superseded 2026-04-03):**
 ```
+// DEPRECATED: effectMultiplier is always 1.0 for active tiers (no-op). getMasteryBaseBonus/perLevelDelta
+// replaced by MASTERY_STAT_TABLES. Current formula uses getMasteryStats(mechanicId, masteryLevel).qpValue.
 computedValue = Math.round(baseEffectValue * effectMultiplier) + getMasteryBaseBonus(mechanicId, masteryLevel)
 
 Where: getMasteryBaseBonus = perLevelDelta * masteryLevel
