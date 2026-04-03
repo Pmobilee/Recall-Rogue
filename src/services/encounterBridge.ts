@@ -1282,8 +1282,33 @@ export function clearNarrativeEncounterSnapshot(): void {
 
 /**
  * DEV ONLY — Force an immediate encounter victory, bypassing combat.
- * Used by the dev skip button to test post-combat narrative flow.
+ * Properly cleans up encounter state before notifying completion.
  */
 export function devForceEncounterVictory(): void {
+  const ts = get(activeTurnState);
+  if (!ts) {
+    if (import.meta.env.DEV) console.warn('[encounterBridge] devForceEncounterVictory: no active encounter');
+    return;
+  }
+  // Capture enemy ID for exit transition
+  if (ts.enemy?.template?.id) {
+    combatExitEnemyId.set(ts.enemy.template.id);
+  }
+  // Build minimal narrative snapshot
+  const run = get(activeRunState);
+  const currentNode = run?.floor?.actMap?.nodes[run?.floor?.actMap?.currentNodeId ?? ''];
+  _lastNarrativeSnapshot = {
+    answeredFactIds: [...ts.encounterAnsweredFacts],
+    fizzledFactIds: [],
+    cardIdToFactId: new Map(),
+    isBoss:
+      (run ? (isBossFloor(run.floor.currentFloor) && run.floor.currentEncounter >= run.floor.encountersPerFloor) : false)
+      || currentNode?.type === 'boss',
+    isElite: currentNode?.type === 'elite',
+    enemyId: ts.enemy?.template?.id,
+    streakAtEnd: ts.consecutiveCorrectThisEncounter,
+  };
+  // Clear turn state BEFORE notifying (matches normal victory flow)
+  activeTurnState.set(null);
   notifyEncounterComplete('victory');
 }
