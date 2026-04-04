@@ -1324,8 +1324,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
           currentFloor={run.floor.currentFloor}
           playerHp={run.playerHp}
           playerMaxHp={run.playerMaxHp}
-          deckSize={0}
-          relicCount={0}
+          deckSize={run.starterDeckSize + run.cardsEarned}
+          relicCount={run.runRelics.length}
           accuracy={run.factsAnswered > 0 ? Math.round((run.factsCorrect / run.factsAnswered) * 100) : 0}
           canReturnHub={!(run.ascensionModifiers?.preventFlee ?? false)}
           onresume={handleCampfireResume}

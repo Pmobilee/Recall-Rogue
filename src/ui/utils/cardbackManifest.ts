@@ -45,7 +45,7 @@ const SSE_MAX_ERRORS = 3
 
 function connectSSE(): void {
   // In dev mode, connect to cardback tool SSE for live updates
-  const CARDBACK_TOOL_URL = 'http://100.74.153.81:5175'
+  const CARDBACK_TOOL_URL = 'http://localhost:5175'
   try {
     const es = new EventSource(`${CARDBACK_TOOL_URL}/api/game/cardback-updates`)
     let errorCount = 0

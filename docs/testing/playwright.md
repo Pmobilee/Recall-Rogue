@@ -1,7 +1,7 @@
 # Visual Testing with Playwright
 
 > **Purpose:** How to visually test Recall Rogue using Playwright MCP and E2E scripts — screenshots, scenario loading, debug tools, and known gotchas.
-> **Last verified:** 2026-04-02
+> **Last verified:** 2026-04-04
 > **Source files:** `src/dev/screenshotHelper.ts`, `src/dev/scenarioSimulator.ts`, `src/dev/debugBridge.ts`, `src/dev/layoutDump.ts`, `tests/e2e/01-app-loads.cjs`, `tests/e2e/03-save-resume.cjs`
 
 ## Two Modes
@@ -57,7 +57,7 @@ const path = await page.evaluate(() => window.__rrScreenshotFile());
 
 **How `__rrScreenshotFile()` works** (`src/dev/screenshotHelper.ts`):
 1. Grabs the Phaser WebGL canvas pixels via `ctx.drawImage()` (requires `preserveDrawingBuffer: true` in Phaser config)
-2. Runs `html2canvas(document.body, { ignoreElements: canvas })` to capture the Svelte DOM overlay
+2. Runs `html2canvas(document.body, { ignoreElements: canvas, onclone })` to capture the Svelte DOM overlay. The `onclone` callback strips CSS rules containing `color()` from the cloned document before html2canvas parses them — this prevents a crash with html2canvas 1.4.1 which cannot parse the modern CSS `color()` function used by browser user-agent stylesheets or third-party deps. The original DOM is untouched.
 3. Temporarily clears opaque backgrounds on large viewport-covering elements so html2canvas doesn't paint over the Phaser layer
 4. Composites: Phaser canvas first (background), then html2canvas result on top
 5. Downscales to 50%, encodes as JPEG (quality 0.7)
@@ -107,6 +107,29 @@ window.__rrScenario.setFloor(5)
 ```
 
 `ScenarioConfig` fields (from `src/dev/scenarioSimulator.ts`) allow deep state control: `enemy`, `enemyHp`, `playerHp`, `hand`, `relics`, `gold`, `floor`, `domain`, `chainTypes`, `rewards`, `shopRelics`, `shopCards`, `mysteryEventId`, `ascension`, and more.
+
+### Non-combat scenario correctness (2026-04-04)
+
+`loadNonCombatScenario()` sets `gameFlowState` to the matching state **before** writing `currentScreen`. This is required because when a combat run is active `gameFlowState` stays `'combat'`, and reactive guards in `CardApp` use `gameFlowState` (not just `currentScreen`) to decide which screen to show. Without the state update, `currentScreen` is overridden back to combat immediately.
+
+State mapping used by the loader:
+
+| screen | `gameFlowState` set to |
+|---|---|
+| `shopRoom` | `'shopRoom'` |
+| `mysteryEvent` | `'mysteryEvent'` |
+| `specialEvent` | `'specialEvent'` |
+| `restRoom` | `'restRoom'` |
+| `postMiniBossRest` | `'postMiniBossRest'` |
+| `cardReward` | `'cardReward'` |
+| `upgradeSelection` | `'cardReward'` (upgrade is a reward variant) |
+| `retreatOrDelve` | `'retreatOrDelve'` |
+| `dungeonMap` | `'dungeonMap'` |
+| `runEnd` | `'idle'` (run is over) |
+
+`bootstrapRun()` now also sets `gameFlowState` to `'idle'` **before** `activeRunState.set(null)`. This prevents the `'combat'` state from briefly persisting while `activeRunState` is null, which was causing CardApp to redirect to campfire (`combat-boss` scenario bug).
+
+The `runEnd` scenario additionally stops the Phaser `CombatScene` if it is running, so its `entryFadeRect` overlay (α:0.86) does not cover the `RunEndScreen`.
 
 ## Debug Tools
 

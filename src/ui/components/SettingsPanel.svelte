@@ -144,7 +144,6 @@
     <aside class="settings-sidebar">
       <div class="settings-sidebar-header">
         <h2>Settings</h2>
-        <button class="back-btn" onclick={onback}>Back</button>
       </div>
     </aside>
 

@@ -1,3 +1,43 @@
+### 2026-04-04 — Automated Playtest Bug Sweep (19 bugs found)
+
+**Method:** 4 parallel Sonnet workers using Playwright MCP + __rrScenario at 1920×1080. Each worker tested a different area: full-run smoke test, combat deep dive, special rooms, HUD/menus/settings.
+
+#### CRITICAL / HIGH
+
+| # | Bug | File/Location | Details |
+|---|-----|---------------|---------|
+| 1 | Scenario loader fails from active run | `src/dev/scenarioSimulator.ts` | `__rrScenario.load('shop')`, `'mystery'`, `'card-reward'`, `'run-end-defeat'`, `'settings'`, `'dungeon-map'` return `ok: true` but screen stays on combat. Teardown code exists (L626-633) but doesn't override active run routing. |
+| 2 | `combat-boss` loads campfire instead of combat | `src/dev/scenarioSimulator.ts` | `load('combat-boss')` → screen is "campfire" showing "RESTING BY THE FIRE..." instead of boss fight. |
+| 3 | `run-end-victory` renders black screen | Phaser CombatScene | Screen state transitions to `runEnd` but `entryFadeRect` at α:0.86 covers everything. No RunEnd scene renders. |
+| 4 | Pause button + relic buttons clipped above viewport | `src/ui/components/InRunTopBar.svelte` | Topbar `4.5vh` computes to ~39px but button sizing `0.85 * 4.5vh` ≈ 48px at y=-5. Top 5px clipped/unclickable. Relic row only 25px tall. |
+| 5 | Settings inputs have no accessibility labels | `src/ui/components/SettingsPanel.svelte` | All 4 audio inputs (checkboxes, sliders) have empty `id=""`, `name=""`, `ariaLabel: null`. No `<label>` association. |
+| 6 | Card auto-advance race condition | Combat flow | Combat → reward → shop auto-advancing within 2 seconds with zero player input. Possibly scenario state setup issue. |
+
+#### MEDIUM
+
+| # | Bug | File/Location | Details |
+|---|-----|---------------|---------|
+| 7 | `__rrScreenshotFile()` DOM overlay broken | `src/dev/screenshotHelper.ts` | html2canvas fails: `"Attempting to parse an unsupported color function 'color'"`. All DOM-only screens capture as black. |
+| 8 | Campfire shows "0 cards" / "0 relics" | `src/CardApp.svelte:1328` | `deckSize={0}` and `relicCount={0}` are HARDCODED zeros passed to CampfirePause component. |
+| 9 | Two "Back" buttons on Settings | `src/ui/components/SettingsPanel.svelte` L147, L152, L356 | "Back" (L147), "← Back" (L152), and another "Back" (L356) all rendered simultaneously. |
+| 10 | Dev "⏭ Skip" button visible in gameplay | Combat screen | Button at (1541, 105) is visible, focusable, and in the accessibility tree during all combat. Should be hidden or dev-only. |
+| 11 | No `data-testid` on Settings buttons | `src/ui/components/SettingsPanel.svelte` | All 5 settings buttons lack testids — untestable via automation. |
+| 12 | CSP violation from hardcoded LAN IP | `src/ui/utils/cardbackManifest.ts:48` | `CARDBACK_TOOL_URL = 'http://100.74.153.81:5175'` — violates CSP `connect-src`. Should use localhost or env var. |
+| 13 | `setPointerCapture` error on card interaction | `src/ui/components/CardHand.svelte:561` | `NotFoundError` — pointer released before capture call (race condition on `handlePointerDown`). |
+| 14 | Backend API errors on every load | Network | `localhost:3001/api/facts/packs/all` and `/api/analytics/events` → `ERR_CONNECTION_REFUSED`. Not gracefully handled in dev mode. |
+
+#### LOW
+
+| # | Bug | File/Location | Details |
+|---|-----|---------------|---------|
+| 15 | PWA icon-192.png is 0 bytes | `public/icons/icon-192.png` | Empty file causes manifest icon warning on every load. |
+| 16 | sql-wasm.wasm preloaded but unused | HTML `<link rel="preload">` | Preload fires but wasm not consumed within browser's time window. |
+| 17 | Library shows empty domains | Library screen | "Capitals & Flags" and "Math" show "0/0" facts — should be hidden or "Coming Soon". |
+| 18 | Player status strip always `display: none` | `.player-status-strip` | Hidden in all combat states — may be intentional but unverified. |
+| 19 | Interactive elements missing `role="button"` | Combat HUD | "Gold: 0" and "Flow State level 5" have `cursor: pointer` but no button role — a11y gap. |
+
+**Fix priority:** #8 (one-line fix), #4 (CSS adjustment), #9 (remove duplicate buttons), #12 (use localhost), #13 (wrap in try/catch), then tackle scenario loader issues (#1-3) as a group.
+
 ### 2026-04-03 — Vite Cache Corruption After Dev Server Restart
 
 **What happened:** After restarting the dev server (`npm run dev`) to pick up new static assets in `public/`, the hub camp sprites rendered at full viewport size instead of their normal portrait-constrained layout. The `.hub-landscape` CSS rule (`position: fixed; inset: 0; display: flex; overflow: hidden`) was completely missing from the compiled CSS — Svelte's scoped class hash changed but the old compiled output was served from cache.
@@ -194,7 +234,34 @@ rm -rf node_modules/.vite && npm run dev
 
 **Common patterns:**
 - Bare abbreviation expanded (PTH → PTH (parathyroid hormone)): expand all distractors to "(Name) (description)" format
-- Multi-clause trimmed to bare term (Brodmann area 4: primary motor cortex → Brodmann area 4): trim distractor parentheticals too  
+- Multi-clause trimmed to bare term (Brodmann area 4: primary motor cortex → Brodmann area 4): trim distractor parentheticals too
 - Acronym list expanded (SITS → SITS (rotator cuff)): add the same parenthetical to all distractor acronyms
 
 **In-game quiz audit is the catch**: the structural verifier won't detect this. Always run the quiz audit after bulk answer changes.
+
+### 2026-04-04 — `__rrScreenshotFile()` Crashed on CSS `color()` Function (Bug #7 Fix)
+
+**What:** `__rrScreenshotFile()` was throwing `Error: Attempting to parse an unsupported color function "color"` inside html2canvas 1.4.1. All DOM-only screens (menus, settings, hub) captured as black — the Svelte overlay was completely absent from screenshots.
+
+**Root cause:** html2canvas 1.4.1 does not support the modern CSS `color()` function (e.g. `color(display-p3 ...)`). These appear in browser user-agent stylesheets or third-party dependency styles — not in our own source CSS. There is no upgrade path for html2canvas that fixes this without breaking other things.
+
+**Fix:** Added an `onclone` callback to the html2canvas options in `src/dev/screenshotHelper.ts`. The callback iterates every stylesheet in the **cloned** document (not the real one) and deletes any CSS rule whose `cssText` contains `"color("`. Cross-origin stylesheets are silently skipped. The real DOM is completely untouched.
+
+**Key principle:** html2canvas's `onclone` is the correct place to sanitize incompatible CSS. Never mutate the live DOM for screenshot purposes — always operate on the cloned document html2canvas provides.
+
+### 2026-04-04 — Scenario Loader Non-Combat Screens Overridden by Active Combat State (Bugs #1-3 Fix)
+
+**What:** `__rrScenario.load('shop')`, `'mystery'`, `'card-reward'`, `'run-end-defeat'`, `'dungeon-map'` etc. returned `ok: true` but the screen stayed on combat when an active run was in progress. Also: `combat-boss` loaded campfire, and `run-end-victory` rendered a black screen.
+
+**Root cause (Bug #1):** `loadNonCombatScenario()` wrote `currentScreen` via `writeStore` but never updated `gameFlowState`. With an active run, `gameFlowState` remained `'combat'`, and reactive guards in `CardApp` use `gameFlowState` (not just `currentScreen`) to control routing — so `currentScreen` was immediately overridden back to combat.
+
+**Root cause (Bug #2):** `bootstrapRun()` teardown called `activeRunState.set(null)` while `gameFlowState` was still `'combat'`. A reactive effect in `CardApp` briefly saw `gameFlowState === 'combat'` with no active run and redirected to `'campfire'`.
+
+**Root cause (Bug #3):** The `runEnd` scenario set `currentScreen` to `'runEnd'` but never stopped the Phaser `CombatScene`. The scene's `entryFadeRect` (α:0.86 black overlay) remained active and covered the entire RunEndScreen.
+
+**Fix:** 
+- Every branch in `loadNonCombatScenario()` now calls `gameFlowState.set(matchingState)` BEFORE `writeStore('rr:currentScreen', ...)`.
+- `bootstrapRun()` now calls `gameFlowState.set('idle')` BEFORE `activeRunState.set(null)`.
+- The `runEnd` branch now stops `CombatScene` via `window.__phaserGame` if it is active.
+
+**Rule:** `gameFlowState` and `currentScreen` must always be updated together. Never write `currentScreen` alone from scenario code when an active run might be in progress.

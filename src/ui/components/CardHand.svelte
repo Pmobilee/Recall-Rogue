@@ -558,7 +558,7 @@
       pointerId: e.pointerId,
     }
     hoveredIndex = null
-    ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
+    try { (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId) } catch { /* pointer already released */ }
   }
 
   function handlePointerMove(e: PointerEvent): void {

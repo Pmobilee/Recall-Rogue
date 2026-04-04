@@ -624,6 +624,11 @@ async function bootstrapRun(config: ScenarioConfig): Promise<boolean> {
   const { activateDeterministicRandom, deactivateDeterministicRandom } = await import('../services/deterministicRandom');
 
   // Tear down any existing run first
+  // Set gameFlowState to 'idle' BEFORE clearing activeRunState so that reactive
+  // effects (e.g. CardApp's screen guard) see a consistent non-combat state and
+  // don't immediately redirect to campfire when activeRunState becomes null.
+  const { gameFlowState: _gfsBootstrap } = await import('../services/gameFlowController');
+  _gfsBootstrap.set('idle');
   deactivateDeterministicRandom();
   destroyRunRng();
   resetEncounterBridge();
@@ -973,6 +978,8 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     }
 
     activeShopInventory.set(inventory);
+    const { gameFlowState: _gfsShop } = await import('../services/gameFlowController');
+    _gfsShop.set('shopRoom');
     writeStore('rr:currentScreen', 'shopRoom');
     await wait(300);
     return { ok: true, message: `Shop opened with ${inventory.relics.length} relics, ${inventory.cards.length} cards` };
@@ -998,6 +1005,8 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     }
 
     activeMysteryEvent.set(event);
+    const { gameFlowState: _gfsMystery } = await import('../services/gameFlowController');
+    _gfsMystery.set('mysteryEvent');
     writeStore('rr:currentScreen', 'mysteryEvent');
     await wait(300);
     return { ok: true, message: `Mystery event: ${event.name} (${event.id})` };
@@ -1012,6 +1021,8 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     const { rollSpecialEvent } = await import('../data/specialEvents');
     const event = rollSpecialEvent();
     activeSpecialEvent.set(event);
+    const { gameFlowState: _gfsSpecial } = await import('../services/gameFlowController');
+    _gfsSpecial.set('specialEvent');
     writeStore('rr:currentScreen', 'specialEvent');
     await wait(300);
     return { ok: true, message: `Special event: ${event.name} (${event.id})` };
@@ -1076,6 +1087,8 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     }
 
     activeUpgradeCandidates.set(candidates);
+    const { gameFlowState: _gfsUpgrade } = await import('../services/gameFlowController');
+    _gfsUpgrade.set('cardReward');
     writeStore('rr:currentScreen', 'upgradeSelection');
     await wait(300);
     return { ok: true, message: `Upgrade selection opened with ${candidates.length} candidate(s)` };
@@ -1108,6 +1121,8 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
       activeCardRewardOptions.set(cards as any);
     }
 
+    const { gameFlowState: _gfsCardReward } = await import('../services/gameFlowController');
+    _gfsCardReward.set('cardReward');
     writeStore('rr:currentScreen', 'cardReward');
     await wait(300);
     return { ok: true, message: 'Card reward screen opened' };
@@ -1147,7 +1162,22 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
 
     const endData = { ...defaults, ...(config.runEndStats ?? {}) };
     activeRunEndData.set(endData as any);
+    // runEnd means the run is over — gameFlowState should be 'idle' so combat-reactive
+    // guards don't redirect us back to the combat screen.
+    const { gameFlowState: _gfsRunEnd } = await import('../services/gameFlowController');
+    _gfsRunEnd.set('idle');
     writeStore('rr:currentScreen', 'runEnd');
+    // Bug #3 fix: Stop the CombatScene if running so its entryFadeRect overlay
+    // (α:0.86) doesn't cover the RunEndScreen.
+    try {
+      const phaserGame = (window as any).__phaserGame;
+      if (phaserGame) {
+        const combatScene = phaserGame.scene.getScene('CombatScene');
+        if (combatScene && combatScene.scene.isActive()) {
+          combatScene.scene.stop();
+        }
+      }
+    } catch { /* Phaser cleanup is best-effort */ }
     await wait(300);
     return { ok: true, message: `Run end screen: ${endData.result}` };
   }
@@ -1157,6 +1187,8 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
   // -----------------------------------------------------------------------
   if (screen === 'retreatOrDelve') {
     await bootstrapRun(config);
+    const { gameFlowState: _gfsRetreat } = await import('../services/gameFlowController');
+    _gfsRetreat.set('retreatOrDelve');
     writeStore('rr:currentScreen', 'retreatOrDelve');
     await wait(300);
     return { ok: true, message: `Retreat/Delve on floor ${config.floor ?? 1}` };
@@ -1198,6 +1230,9 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
       activeUpgradeCandidates.set(candidates);
     }
 
+    const restState = screen === 'postMiniBossRest' ? 'postMiniBossRest' : 'restRoom';
+    const { gameFlowState: _gfsRest } = await import('../services/gameFlowController');
+    _gfsRest.set(restState as any);
     writeStore('rr:currentScreen', screen);
     await wait(300);
     return { ok: true, message: `Rest room opened on floor ${config.floor ?? 1}` };
@@ -1208,6 +1243,8 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
   // -----------------------------------------------------------------------
   if (screen === 'dungeonMap') {
     await bootstrapRun(config);
+    const { gameFlowState: _gfsDungeon } = await import('../services/gameFlowController');
+    _gfsDungeon.set('dungeonMap');
     writeStore('rr:currentScreen', 'dungeonMap');
     await wait(300);
     return { ok: true, message: `Dungeon map on floor ${config.floor ?? 1}` };

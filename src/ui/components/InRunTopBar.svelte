@@ -744,6 +744,7 @@
     align-items: center;
     gap: calc(3px * var(--layout-scale, 1));
     flex-shrink: 1;
+    max-height: 100%;
   }
 
   .relic-slot-wrapper {
@@ -871,8 +872,7 @@
     align-items: center;
     justify-content: center;
     width: calc(var(--topbar-height, 4.5vh) * 0.65);
-    height: calc(var(--topbar-height, 4.5vh) * 0.85);
-    max-height: 100%;
+    height: calc(var(--topbar-height, 4.5vh) * 0.7);
     border-radius: calc(4px * var(--layout-scale, 1));
     background: transparent;
     border: none;

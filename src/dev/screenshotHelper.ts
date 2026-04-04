@@ -107,6 +107,24 @@ export async function captureScreenshot(options: ScreenshotOptions = {}): Promis
       scale: 1,
       width: vw,
       height: vh,
+      onclone: (clonedDoc: Document) => {
+        // Strip CSS color() functions that html2canvas 1.4.1 can't parse.
+        // These come from browser user-agent stylesheets or third-party deps — not our source.
+        // Walk all stylesheets in the CLONED document and delete offending rules.
+        // The original DOM is untouched.
+        try {
+          for (const sheet of clonedDoc.styleSheets) {
+            try {
+              const rules = sheet.cssRules;
+              for (let i = rules.length - 1; i >= 0; i--) {
+                if (rules[i].cssText.includes('color(')) {
+                  sheet.deleteRule(i);
+                }
+              }
+            } catch { /* cross-origin stylesheet — skip */ }
+          }
+        } catch { /* stylesheet access error — skip */ }
+      },
     });
     ctx.drawImage(domCanvas, 0, 0);
 
@@ -116,7 +134,7 @@ export async function captureScreenshot(options: ScreenshotOptions = {}): Promis
     }
   } catch (err) {
     // html2canvas failed — log and continue with Phaser-only capture
-    console.warn('[screenshotHelper] html2canvas failed (likely CSS color() function incompatibility). DOM overlay will be missing from screenshot:', err);
+    console.warn('[screenshotHelper] html2canvas failed. DOM overlay will be missing from screenshot:', err);
   }
 
   // 3. If scale != 1, draw the full canvas onto a smaller output canvas
