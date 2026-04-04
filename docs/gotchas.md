@@ -134,3 +134,13 @@ rm -rf node_modules/.vite && npm run dev
 **Fix scripts created:** `scripts/fix-pool-homogeneity-greece-rome.mjs` (round 1), `scripts/fix-pool-homogeneity-round2.mjs` (round 2), `scripts/fix-pool-homogeneity-round3.mjs` (round 3). All rebuild pool `factIds` arrays after changes.
 
 **Final result:** Both decks at 0 FAIL, 6-7 WARN (all within 3× threshold). 79 facts each in new `historical_phrases` pool.
+
+### 2026-04-04 — Sim AP Pre-Check Bypassed Chain Momentum
+
+**What:** The headless simulator pre-filtered card plays by AP cost using `CHARGE_AP_SURCHARGE` before calling `playCardAction()`. This didn't account for chain momentum, surge, or warcry free charges — blocking plays that the real game would allow for free.
+
+**Why:** The pre-check was added for efficiency but didn't mirror the real game's surcharge waiver logic in `turnManager.ts` (lines 815–826).
+
+**Fix:** Added momentum/surge/warcry checks to the sim's AP pre-check in both `simulator.ts` and `full-run-simulator.ts`. Also lowered bot-brain momentum threshold from `chargeSkill >= 0.3` to `chargeSkill >= 0.1` so lower-skill bots exploit free charges.
+
+**Impact:** All balance data collected before this fix overstated the cost of charging by ~30–50%. The developing→competent WR inversion was caused by this bug — low-skill bots were blocked from free charges they should have taken.

@@ -40,6 +40,8 @@ import {
   SHOP_REMOVAL_PRICE_INCREMENT,
   SHOP_FOOD_ITEMS,
   CHARGE_AP_SURCHARGE,
+  SURGE_FIRST_TURN,
+  SURGE_INTERVAL,
 } from '../../../src/data/balance.js';
 import { MECHANIC_DEFINITIONS, type MechanicDefinition } from '../../../src/data/mechanics.js';
 import { getAscensionModifiers } from '../../../src/services/ascension.js';
@@ -339,8 +341,24 @@ function simulateSingleEncounter(
           if (!card) continue;
 
           const apCost = card.apCost ?? 1;
-          // CHARGE_AP_SURCHARGE = 0: Charge costs same AP as Quick Play
-          const chargeSurcharge = CHARGE_AP_SURCHARGE;
+          // AP surcharge check — must mirror real playCardAction() logic for momentum/surge/warcry
+          let chargeSurcharge = CHARGE_AP_SURCHARGE;
+          if (play.mode === 'charge') {
+            // Chain momentum: correct Charge on chain X → next Charge on chain X is free
+            if (turnState.nextChargeFreeForChainType !== null
+                && card.chainType === turnState.nextChargeFreeForChainType) {
+              chargeSurcharge = 0;
+            }
+            // Surge turns: surcharge waived
+            else if (turnState.turnNumber >= SURGE_FIRST_TURN
+                && (turnState.turnNumber - SURGE_FIRST_TURN) % SURGE_INTERVAL === 0) {
+              chargeSurcharge = 0;
+            }
+            // Warcry free charge
+            else if (turnState.warcryFreeChargeActive) {
+              chargeSurcharge = 0;
+            }
+          }
           const totalCost = play.mode === 'charge' ? apCost + chargeSurcharge : apCost;
           if (turnState.apCurrent < totalCost) continue;
 

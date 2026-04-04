@@ -375,8 +375,8 @@ export class BotBrain {
       if (Math.random() < Math.min(1.0, acc * 1.5)) return 'charge';
     }
 
-    // Chain momentum: surcharge already 0, but charging still preferred for CC bonus
-    if (hasMomentum && skills.chargeSkill >= 0.3) return 'charge';
+    // Chain momentum: surcharge waived — even low-skill players should charge when free
+    if (hasMomentum && skills.chargeSkill >= 0.1) return 'charge';
 
     if (skills.chargeSkill < 0.3) {
       // 0.0–0.3: randomly charge at a low rate

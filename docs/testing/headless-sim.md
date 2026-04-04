@@ -292,6 +292,18 @@ In `--mode combat`, the batch runner also outputs `MechanicStats[]`:
 
 **`tsconfig.json`:** Extends `tsconfig.app.json`, maps `svelte/store` and `svelte` to `./svelte-shim` so Svelte store imports resolve in Node.js.
 
+## Sim Fidelity — AP Surcharge Pre-Check
+
+The simulator pre-checks AP cost before calling `playCardAction()` to skip unaffordable plays. This pre-check **must mirror the real game's surcharge waiver logic** in `turnManager.ts`:
+
+- **Chain momentum** (`nextChargeFreeForChainType`): If the previous Charge was correct on chain X, the next Charge on chain X costs 0 surcharge. Checked first.
+- **Surge turns** (`SURGE_FIRST_TURN`, `SURGE_INTERVAL`): Turns matching `turnNumber >= SURGE_FIRST_TURN && (turnNumber - SURGE_FIRST_TURN) % SURGE_INTERVAL === 0` have their surcharge waived.
+- **Warcry free charge** (`warcryFreeChargeActive`): Some relics/effects grant one free charge turn.
+
+All three conditions reduce `chargeSurcharge` to 0 before the `totalCost` calculation. If the pre-check doesn't match the real logic, the sim will block plays that the real game would allow for free — causing systematic underestimation of low-skill win rates (they never exploit free charges).
+
+**`wasMomentumFree` field** on `CardPlayRecord`: set to `true` when `play.mode === 'charge' && chargeSurcharge === 0 && CHARGE_AP_SURCHARGE > 0` — i.e., the charge was free due to a waiver that doesn't exist in the base game.
+
 ## Recent Bug Fixes (2026-03-31)
 
 The following correctness bugs were fixed in the bot decision logic:
@@ -302,7 +314,8 @@ The following correctness bugs were fixed in the bot decision logic:
 | Charge wrong EV | Flat 0.25× assumed for all wrong charges | Uses per-mechanic `chargeWrongValue` |
 | Block scoring ignored enemy intent | Enemy damage not factored into block decisions | Wired to `turnState.enemy.nextIntent` |
 | Mastery not tracked | Sim cards had no `masteryLevel` field | `masteryLevel: 0` initialized on `buildSimDeck()` |
-| Chain momentum AP cost | Free-charge turns not detected | `nextChargeFreeForChainType` now factored into AP cost calculation |
+| Chain momentum AP cost | Free-charge turns not detected | Full momentum/surge/warcry pre-check added (2026-04-04) |
+| Bot momentum threshold | `chargeSkill >= 0.3` required to exploit free charges | Lowered to `chargeSkill >= 0.1` — free is free |
 
 ## Ascension Support
 

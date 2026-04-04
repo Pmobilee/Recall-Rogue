@@ -26,7 +26,7 @@ import {
 } from '../../../src/services/turnManager.js';
 import type { Card, CardType, FactDomain, CardTier } from '../../../src/data/card-types.js';
 import type { EnemyTemplate } from '../../../src/data/enemies.js';
-import { PLAYER_START_HP, PLAYER_MAX_HP, POST_ENCOUNTER_HEAL_PCT, ENABLE_PHASE2_MECHANICS, STARTER_DECK_COMPOSITION, CHARGE_AP_SURCHARGE, CANARY_ASSIST_ENEMY_DMG_MULT, CANARY_ASSIST_WRONG_THRESHOLD, CANARY_DEEP_ASSIST_ENEMY_DMG_MULT, CANARY_DEEP_ASSIST_WRONG_THRESHOLD } from '../../../src/data/balance.js';
+import { PLAYER_START_HP, PLAYER_MAX_HP, POST_ENCOUNTER_HEAL_PCT, ENABLE_PHASE2_MECHANICS, STARTER_DECK_COMPOSITION, CHARGE_AP_SURCHARGE, SURGE_FIRST_TURN, SURGE_INTERVAL, CANARY_ASSIST_ENEMY_DMG_MULT, CANARY_ASSIST_WRONG_THRESHOLD, CANARY_DEEP_ASSIST_ENEMY_DMG_MULT, CANARY_DEEP_ASSIST_WRONG_THRESHOLD } from '../../../src/data/balance.js';
 import { MECHANIC_DEFINITIONS, type MechanicDefinition } from '../../../src/data/mechanics.js';
 import { getAscensionModifiers } from '../../../src/services/ascension.js';
 import { STARTER_RELIC_IDS } from '../../../src/data/relics/index.js';
@@ -305,8 +305,24 @@ function simulateSingleEncounter(
           if (!card) continue;
 
           const apCost = card.apCost ?? 1;
-          // CHARGE_AP_SURCHARGE = 0: Charge costs same AP as Quick Play
-          const chargeSurcharge = CHARGE_AP_SURCHARGE;
+          // AP surcharge check — must mirror real playCardAction() logic for momentum/surge/warcry
+          let chargeSurcharge = CHARGE_AP_SURCHARGE;
+          if (play.mode === 'charge') {
+            // Chain momentum: correct Charge on chain X → next Charge on chain X is free
+            if (turnState.nextChargeFreeForChainType !== null
+                && card.chainType === turnState.nextChargeFreeForChainType) {
+              chargeSurcharge = 0;
+            }
+            // Surge turns: surcharge waived
+            else if (turnState.turnNumber >= SURGE_FIRST_TURN
+                && (turnState.turnNumber - SURGE_FIRST_TURN) % SURGE_INTERVAL === 0) {
+              chargeSurcharge = 0;
+            }
+            // Warcry free charge
+            else if (turnState.warcryFreeChargeActive) {
+              chargeSurcharge = 0;
+            }
+          }
           const totalCost = play.mode === 'charge' ? apCost + chargeSurcharge : apCost;
           if (turnState.apCurrent < totalCost) continue;
 
@@ -326,7 +342,7 @@ function simulateSingleEncounter(
             wasCharged: play.mode === 'charge',
             answeredCorrectly,
             damageDealt: res.effect.damageDealt ?? 0,
-            wasMomentumFree: false,
+            wasMomentumFree: play.mode === 'charge' && chargeSurcharge === 0 && CHARGE_AP_SURCHARGE > 0,
           });
 
           if (answeredCorrectly) {
