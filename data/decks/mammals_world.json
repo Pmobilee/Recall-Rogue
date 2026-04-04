@@ -96,10 +96,12 @@
     },
     {
       "id": "mamm_0_elephant_ivory_ban",
-      "correctAnswer": "1990",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1990}",
+      "acceptableAlternatives": [
+        "1990"
+      ],
       "chainThemeId": 0,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 6,
       "quizQuestion": "In what year did CITES enact its international ivory trade ban to protect African elephants?",
@@ -620,10 +622,12 @@
     },
     {
       "id": "mamm_0_chimp_tooluse",
-      "correctAnswer": "1960",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1960}",
+      "acceptableAlternatives": [
+        "1960"
+      ],
       "chainThemeId": 0,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 6,
       "quizQuestion": "In what year did Jane Goodall first observe chimpanzees using tools at Gombe Stream, Tanzania?",
@@ -1028,10 +1032,12 @@
     },
     {
       "id": "mamm_0_panda_iucn",
-      "correctAnswer": "2016",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{2016}",
+      "acceptableAlternatives": [
+        "2016"
+      ],
       "chainThemeId": 0,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 6,
       "quizQuestion": "In what year was the giant panda downlisted from Endangered to Vulnerable on the IUCN Red List?",
@@ -1144,7 +1150,7 @@
     },
     {
       "id": "mamm_0_hippo_rank",
-      "correctAnswer": "Elephants and rhinoceroses",
+      "correctAnswer": "Elephants and rhinos",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "name",
@@ -1840,10 +1846,12 @@
     },
     {
       "id": "mamm_1_rec_tasdevil_bite",
-      "correctAnswer": "181",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{181}",
+      "acceptableAlternatives": [
+        "181"
+      ],
       "chainThemeId": 1,
-      "answerTypePoolId": "number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "The Tasmanian devil has the highest relative bite force of any living mammalian carnivore. What is its bite force quotient?",
@@ -1869,10 +1877,12 @@
     },
     {
       "id": "mamm_1_rec_opossum_teeth",
-      "correctAnswer": "50",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{50}",
+      "acceptableAlternatives": [
+        "50"
+      ],
       "chainThemeId": 1,
-      "answerTypePoolId": "number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "The Virginia opossum has more teeth than any other North American land mammal. How many does it have?",
@@ -2248,10 +2258,12 @@
     },
     {
       "id": "mamm_2_tax_monotreme_count",
-      "correctAnswer": "5",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{5}",
+      "acceptableAlternatives": [
+        "5"
+      ],
       "chainThemeId": 2,
-      "answerTypePoolId": "number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "How many living monotreme species exist today?",
@@ -2745,7 +2757,7 @@
     },
     {
       "id": "mamm_2_tax_primates_suborders",
-      "correctAnswer": "Strepsirrhini (lemurs/lorises) and Haplorhini (incl. humans)",
+      "correctAnswer": "Strepsirrhini and Haplorhini",
       "acceptableAlternatives": [
         "Strepsirrhini (lemurs/lorises) and Haplorhini (tarsiers, monkeys, apes including humans)"
       ],
@@ -4161,10 +4173,12 @@
     },
     {
       "id": "mamm_4_cons_wblackhino",
-      "correctAnswer": "2011",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{2011}",
+      "acceptableAlternatives": [
+        "2011"
+      ],
       "chainThemeId": 4,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "In what year was the western black rhinoceros declared extinct by the IUCN?",
@@ -4542,10 +4556,12 @@
     },
     {
       "id": "mamm_4_cons_snow_leopard",
-      "correctAnswer": "2017",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{2017}",
+      "acceptableAlternatives": [
+        "2017"
+      ],
       "chainThemeId": 4,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "In what year was the snow leopard downlisted from Endangered to Vulnerable on the IUCN Red List?",
@@ -4991,28 +5007,14 @@
         "mamm_0_blackrhino_decline",
         "mamm_1_rec_platypus_electro",
         "mamm_1_rec_capybara_size",
-        "mamm_1_rec_tasdevil_bite",
-        "mamm_1_rec_opossum_teeth",
         "mamm_1_rec_polarbear_weight",
         "mamm_1_rec_plainszebra_migration",
         "mamm_1_rec_eleph_tusk",
-        "mamm_2_tax_monotreme_count",
         "mamm_4_cons_thylacine_protection"
       ],
-      "minimumSize": 5
-    },
-    {
-      "id": "year",
-      "label": "Years & Dates",
-      "answerFormat": "year",
-      "factIds": [
-        "mamm_0_elephant_ivory_ban",
-        "mamm_0_chimp_tooluse",
-        "mamm_0_panda_iucn",
-        "mamm_4_cons_wblackhino",
-        "mamm_4_cons_snow_leopard"
-      ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Mammal measurements range from bare counts to formatted quantities — inherent domain variation"
     },
     {
       "id": "term",
@@ -5144,7 +5146,9 @@
         "mamm_2_tax_grevy_zebra",
         "mamm_3_beh_gorilla_diet"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Mammal terms range from percentages to full taxonomic definitions — inherent domain variation"
     },
     {
       "id": "name",
@@ -5179,7 +5183,33 @@
         "mamm_0_eleph_iucn",
         "mamm_2_tax_neocortex"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Animal names range from single species to compared groups — inherent domain variation"
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Years & Numbers",
+      "factIds": [
+        "mamm_0_elephant_ivory_ban",
+        "mamm_0_chimp_tooluse",
+        "mamm_0_panda_iucn",
+        "mamm_1_rec_tasdevil_bite",
+        "mamm_1_rec_opossum_teeth",
+        "mamm_2_tax_monotreme_count",
+        "mamm_4_cons_wblackhino",
+        "mamm_4_cons_snow_leopard"
+      ],
+      "members": [
+        "1990",
+        "1960",
+        "2016",
+        "2011",
+        "2017",
+        "181",
+        "50",
+        "5"
+      ]
     }
   ],
   "synonymGroups": [],

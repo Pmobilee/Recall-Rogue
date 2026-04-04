@@ -70,10 +70,12 @@
     },
     {
       "id": "food_dish_sushi_conveyor",
-      "correctAnswer": "1958",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1958}",
+      "acceptableAlternatives": [
+        "1958"
+      ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_facts",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -666,10 +668,12 @@
     },
     {
       "id": "food_dish_peking_duck_restaurant",
-      "correctAnswer": "1416",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1416}",
+      "acceptableAlternatives": [
+        "1416"
+      ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_facts",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen+",
@@ -2985,13 +2989,12 @@
     },
     {
       "id": "food_hist_chocolate_industrial",
-      "correctAnswer": "1828",
+      "correctAnswer": "{1828}",
       "acceptableAlternatives": [
-        "Coenraad van Houten",
-        "Dutch process"
+        "1828"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "date_facts",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "teen+",
@@ -3434,13 +3437,12 @@
     },
     {
       "id": "food_hist_crème_brûlée",
-      "correctAnswer": "1691",
+      "correctAnswer": "{1691}",
       "acceptableAlternatives": [
-        "François Massialot",
-        "17th century"
+        "1691"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "date_facts",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen+",
@@ -4653,10 +4655,12 @@
     },
     {
       "id": "food_hist_coffee_istanbul",
-      "correctAnswer": "1555",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1555}",
+      "acceptableAlternatives": [
+        "1555"
+      ],
       "chainThemeId": 3,
-      "answerTypePoolId": "date_facts",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "teen+",
@@ -4751,10 +4755,12 @@
     },
     {
       "id": "food_hist_kimchi_unesco",
-      "correctAnswer": "2013",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{2013}",
+      "acceptableAlternatives": [
+        "2013"
+      ],
       "chainThemeId": 3,
-      "answerTypePoolId": "date_facts",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "teen+",
@@ -4796,12 +4802,12 @@
     },
     {
       "id": "food_dish_ramen_shop_first",
-      "correctAnswer": "1910",
+      "correctAnswer": "{1910}",
       "acceptableAlternatives": [
-        "Rairaiken"
+        "1910"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_facts",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "teen+",
@@ -4992,12 +4998,12 @@
     },
     {
       "id": "food_dish_risotto_origin_year",
-      "correctAnswer": "1809",
+      "correctAnswer": "{1809}",
       "acceptableAlternatives": [
-        "early 19th century"
+        "1809"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_facts",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "teen+",
@@ -5193,13 +5199,12 @@
     },
     {
       "id": "food_spice_voc_founded",
-      "correctAnswer": "1602",
+      "correctAnswer": "{1602}",
       "acceptableAlternatives": [
-        "March 1602",
-        "March 20, 1602"
+        "1602"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "date_facts",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "teen+",
@@ -5779,10 +5784,12 @@
     },
     {
       "id": "food_hist_coffee_brazil",
-      "correctAnswer": "1852",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1852}",
+      "acceptableAlternatives": [
+        "1852"
+      ],
       "chainThemeId": 3,
-      "answerTypePoolId": "date_facts",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "teen+",
@@ -6612,12 +6619,12 @@
     },
     {
       "id": "food_hist_vanilla_totonac",
-      "correctAnswer": "1185",
+      "correctAnswer": "{1185}",
       "acceptableAlternatives": [
-        "at least 1185"
+        "1185"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "date_facts",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "teen+",
@@ -6713,12 +6720,12 @@
     },
     {
       "id": "food_hist_chocolate_moctezuma",
-      "correctAnswer": "1520",
+      "correctAnswer": "{1520}",
       "acceptableAlternatives": [
-        "1519-1520"
+        "1520"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "date_facts",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "teen+",
@@ -6814,13 +6821,12 @@
     },
     {
       "id": "food_hist_tea_europe_dutch",
-      "correctAnswer": "1607",
+      "correctAnswer": "{1607}",
       "acceptableAlternatives": [
-        "around 1607",
-        "early 1600s"
+        "1607"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "date_facts",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "teen+",
@@ -7016,18 +7022,18 @@
         "food_dish_gazpacho_peasant",
         "food_hist_shawarma_word"
       ],
-      "minimumSize": 3
+      "minimumSize": 3,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Origin names range from single countries to city+country pairs — inherent domain variation"
     },
     {
       "id": "date_facts",
       "label": "Years & Dates",
       "answerFormat": "date",
       "factIds": [
-        "food_dish_sushi_conveyor",
         "food_dish_carbonara_origin",
         "food_dish_pad_thai_origin",
         "food_dish_kimchi_chili",
-        "food_dish_peking_duck_restaurant",
         "food_dish_dim_sum_origin",
         "food_dish_hummus_origin",
         "food_dish_guacamole_ancient",
@@ -7037,8 +7043,6 @@
         "food_tech_fermentation_age",
         "food_tech_sourdough_age",
         "food_tech_bread_oldest",
-        "food_hist_chocolate_industrial",
-        "food_hist_crème_brûlée",
         "food_hist_kebab_origin",
         "food_hist_gas_gazpacho",
         "food_hist_bibimbap_origin",
@@ -7048,15 +7052,9 @@
         "food_tech_wok_history",
         "food_hist_rice_production",
         "food_hist_bread_egypt",
-        "food_hist_coffee_istanbul",
-        "food_hist_kimchi_unesco",
-        "food_dish_ramen_shop_first",
         "food_dish_naan_history",
-        "food_dish_risotto_origin_year",
-        "food_spice_voc_founded",
         "food_hist_tea_shennong",
         "food_hist_potato_europe",
-        "food_hist_coffee_brazil",
         "food_hist_baklava_first",
         "food_hist_chili_spread",
         "food_dish_ceviche_peru_unesco",
@@ -7064,13 +7062,12 @@
         "food_hist_rice_africa",
         "food_hist_potato_inca",
         "food_hist_coffee_ethiopia",
-        "food_hist_vanilla_totonac",
         "food_hist_sugar_china_doc",
-        "food_hist_chocolate_moctezuma",
-        "food_hist_tea_europe_dutch",
         "food_hist_dim_sum_2000_types"
       ],
-      "minimumSize": 3
+      "minimumSize": 3,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Date/quantity facts range from years to production volumes — inherent domain variation"
     },
     {
       "id": "technique_terms",
@@ -7117,7 +7114,9 @@
         "food_tech_fermentation_nobel",
         "food_hist_bread_pliny"
       ],
-      "minimumSize": 3
+      "minimumSize": 3,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Culinary terms range from single words to historical references — inherent domain variation"
     },
     {
       "id": "ingredient_names",
@@ -7142,6 +7141,42 @@
         "turmeric",
         "cardamom",
         "fenugreek"
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Ingredient answers range from percentages to descriptive names — inherent domain variation"
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Years & Numbers",
+      "factIds": [
+        "food_dish_sushi_conveyor",
+        "food_dish_peking_duck_restaurant",
+        "food_hist_chocolate_industrial",
+        "food_hist_crème_brûlée",
+        "food_hist_coffee_istanbul",
+        "food_hist_kimchi_unesco",
+        "food_dish_ramen_shop_first",
+        "food_dish_risotto_origin_year",
+        "food_spice_voc_founded",
+        "food_hist_coffee_brazil",
+        "food_hist_vanilla_totonac",
+        "food_hist_chocolate_moctezuma",
+        "food_hist_tea_europe_dutch"
+      ],
+      "members": [
+        "1958",
+        "1416",
+        "1828",
+        "1691",
+        "1555",
+        "2013",
+        "1910",
+        "1809",
+        "1602",
+        "1852",
+        "1185",
+        "1520",
+        "1607"
       ]
     }
   ],

@@ -425,13 +425,12 @@
     },
     {
       "id": "ww_anc_chichen_itza_steps",
-      "correctAnswer": "365",
+      "correctAnswer": "{365}",
       "acceptableAlternatives": [
-        "365 steps",
-        "365 total"
+        "365"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "measurement_number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 10,
       "distractors": [
@@ -508,12 +507,12 @@
     },
     {
       "id": "ww_anc_terracotta_army_discovery",
-      "correctAnswer": "1974",
+      "correctAnswer": "{1974}",
       "acceptableAlternatives": [
-        "in 1974"
+        "1974"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 8,
       "distractors": [
@@ -644,7 +643,7 @@
     },
     {
       "id": "ww_sac_hagia_sophia_architects",
-      "correctAnswer": "Isidore of Miletus and Anthemius of Tralles",
+      "correctAnswer": "Isidore of Miletus and Anthemius",
       "acceptableAlternatives": [
         "Isidore of Miletus",
         "Anthemius of Tralles",
@@ -840,12 +839,12 @@
     },
     {
       "id": "ww_sac_borobudur_statues",
-      "correctAnswer": "504",
+      "correctAnswer": "{504}",
       "acceptableAlternatives": [
-        "504 Buddha statues"
+        "504"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "measurement_number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 8,
       "distractors": [
@@ -973,13 +972,12 @@
     },
     {
       "id": "ww_sac_blue_mosque_minarets",
-      "correctAnswer": "6",
+      "correctAnswer": "{6}",
       "acceptableAlternatives": [
-        "six",
-        "six minarets"
+        "6"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "measurement_number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 9,
       "distractors": [
@@ -1193,12 +1191,12 @@
     },
     {
       "id": "ww_tower_burj_khalifa_floors",
-      "correctAnswer": "163",
+      "correctAnswer": "{163}",
       "acceptableAlternatives": [
-        "163 floors"
+        "163"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "measurement_number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -1245,13 +1243,12 @@
     },
     {
       "id": "ww_tower_empire_state_stories",
-      "correctAnswer": "102",
+      "correctAnswer": "{102}",
       "acceptableAlternatives": [
-        "102 stories",
-        "102 floors"
+        "102"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "measurement_number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -1300,13 +1297,12 @@
     },
     {
       "id": "ww_tower_pisa_construction_start",
-      "correctAnswer": "1173",
+      "correctAnswer": "{1173}",
       "acceptableAlternatives": [
-        "1173 CE",
-        "AD 1173"
+        "1173"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -1381,10 +1377,12 @@
     },
     {
       "id": "ww_tower_tokyo_completed",
-      "correctAnswer": "1958",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1958}",
+      "acceptableAlternatives": [
+        "1958"
+      ],
       "chainThemeId": 2,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -1540,12 +1538,12 @@
     },
     {
       "id": "ww_tower_space_needle_world_fair",
-      "correctAnswer": "1962",
+      "correctAnswer": "{1962}",
       "acceptableAlternatives": [
-        "1962 World's Fair"
+        "1962"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "distractors": [
@@ -1946,13 +1944,12 @@
     },
     {
       "id": "ww_canal_panama_opened",
-      "correctAnswer": "1914",
+      "correctAnswer": "{1914}",
       "acceptableAlternatives": [
-        "August 1914",
-        "August 15, 1914"
+        "1914"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "distractors": [
@@ -2301,12 +2298,12 @@
     },
     {
       "id": "ww_canal_suez_opened",
-      "correctAnswer": "1869",
+      "correctAnswer": "{1869}",
       "acceptableAlternatives": [
-        "November 1869"
+        "1869"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -2516,10 +2513,12 @@
     },
     {
       "id": "ww_pal_versailles_year",
-      "correctAnswer": "1682",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1682}",
+      "acceptableAlternatives": [
+        "1682"
+      ],
       "chainThemeId": 4,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "distractors": [
@@ -2540,10 +2539,12 @@
     },
     {
       "id": "ww_pal_versailles_treaty",
-      "correctAnswer": "1919",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1919}",
+      "acceptableAlternatives": [
+        "1919"
+      ],
       "chainThemeId": 4,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 8,
       "distractors": [
@@ -2564,12 +2565,12 @@
     },
     {
       "id": "ww_pal_forbidden_city_buildings",
-      "correctAnswer": "980",
+      "correctAnswer": "{980}",
       "acceptableAlternatives": [
-        "approximately 980"
+        "980"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "measurement_number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -2783,12 +2784,12 @@
     },
     {
       "id": "ww_pal_buckingham_rooms",
-      "correctAnswer": "775",
+      "correctAnswer": "{775}",
       "acceptableAlternatives": [
-        "775 rooms"
+        "775"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "measurement_number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -2917,12 +2918,12 @@
     },
     {
       "id": "ww_pal_himeji_year_keep",
-      "correctAnswer": "1601",
+      "correctAnswer": "{1601}",
       "acceptableAlternatives": [
-        "1601-1609"
+        "1601"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 6,
       "distractors": [
@@ -2969,12 +2970,12 @@
     },
     {
       "id": "ww_pal_forbidden_city_emperors",
-      "correctAnswer": "24",
+      "correctAnswer": "{24}",
       "acceptableAlternatives": [
-        "twenty-four"
+        "24"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "measurement_number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -3076,10 +3077,12 @@
     },
     {
       "id": "ww_pal_alhambra_washington_irving",
-      "correctAnswer": "1832",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1832}",
+      "acceptableAlternatives": [
+        "1832"
+      ],
       "chainThemeId": 4,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 7,
       "distractors": [
@@ -3179,10 +3182,12 @@
     },
     {
       "id": "ww_pal_topkapi_museum_year",
-      "correctAnswer": "1924",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1924}",
+      "acceptableAlternatives": [
+        "1924"
+      ],
       "chainThemeId": 4,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -3339,7 +3344,7 @@
     },
     {
       "id": "ww_mon_rushmore_presidents",
-      "correctAnswer": "Washington, Jefferson, Theodore Roosevelt, Lincoln",
+      "correctAnswer": "Washington, Jefferson, Roosevelt, Lincoln",
       "acceptableAlternatives": [
         "Washington, Jefferson, Roosevelt, Lincoln"
       ],
@@ -3365,12 +3370,12 @@
     },
     {
       "id": "ww_mon_lincoln_memorial_columns",
-      "correctAnswer": "36",
+      "correctAnswer": "{36}",
       "acceptableAlternatives": [
-        "thirty-six"
+        "36"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "measurement_number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 8,
       "distractors": [
@@ -3391,10 +3396,12 @@
     },
     {
       "id": "ww_mon_lincoln_memorial_mlk",
-      "correctAnswer": "1963",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1963}",
+      "acceptableAlternatives": [
+        "1963"
+      ],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 9,
       "distractors": [
@@ -3443,10 +3450,12 @@
     },
     {
       "id": "ww_mon_arc_triomphe_napoleon",
-      "correctAnswer": "1806",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1806}",
+      "acceptableAlternatives": [
+        "1806"
+      ],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 8,
       "distractors": [
@@ -3467,14 +3476,12 @@
     },
     {
       "id": "ww_mon_moai_count",
-      "correctAnswer": "900",
+      "correctAnswer": "{900}",
       "acceptableAlternatives": [
-        "over 900",
-        "more than 900",
-        "approximately 900"
+        "900"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "measurement_number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 8,
       "distractors": [
@@ -3550,10 +3557,12 @@
     },
     {
       "id": "ww_mon_gateway_india_british",
-      "correctAnswer": "1948",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1948}",
+      "acceptableAlternatives": [
+        "1948"
+      ],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 9,
       "distractors": [
@@ -3656,12 +3665,12 @@
     },
     {
       "id": "ww_mon_washington_monument_pause",
-      "correctAnswer": "1854",
+      "correctAnswer": "{1854}",
       "acceptableAlternatives": [
-        "1854-1879"
+        "1854"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 7,
       "distractors": [
@@ -3871,10 +3880,12 @@
     },
     {
       "id": "ww_nat_grand_canyon_park_year",
-      "correctAnswer": "1919",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1919}",
+      "acceptableAlternatives": [
+        "1919"
+      ],
       "chainThemeId": 6,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -4620,13 +4631,12 @@
     },
     {
       "id": "ww_mod_channel_tunnel_first_proposal",
-      "correctAnswer": "1802",
+      "correctAnswer": "{1802}",
       "acceptableAlternatives": [
-        "Napoleon era",
-        "early 1800s"
+        "1802"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 9,
       "distractors": [
@@ -4863,13 +4873,12 @@
     },
     {
       "id": "ww_mod_lhc_higgs_boson",
-      "correctAnswer": "2012",
+      "correctAnswer": "{2012}",
       "acceptableAlternatives": [
-        "July 2012",
-        "in 2012"
+        "2012"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "year_date",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 9,
       "distractors": [
@@ -5107,7 +5116,7 @@
     },
     {
       "id": "ww_mod_birds_nest_olympic_distinction",
-      "correctAnswer": "Summer and Winter Olympics opening ceremonies",
+      "correctAnswer": "Hosted both Olympic opening ceremonies",
       "acceptableAlternatives": [
         "both Summer and Winter Olympics",
         "2008 and 2022 Olympics"
@@ -5270,13 +5279,12 @@
     },
     {
       "id": "ww_mod_the_shard_storeys",
-      "correctAnswer": "95",
+      "correctAnswer": "{95}",
       "acceptableAlternatives": [
-        "95 floors",
-        "95 storeys"
+        "95"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "measurement_number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -5375,7 +5383,9 @@
         "ww_mod_one_wtc_designer",
         "ww_mod_birds_nest_architects"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Architect names range from single names to pairs — inherent domain variation"
     },
     {
       "id": "year_date",
@@ -5384,34 +5394,18 @@
       "factIds": [
         "ww_anc_colosseum_date",
         "ww_anc_parthenon_date",
-        "ww_anc_terracotta_army_discovery",
         "ww_anc_mohenjo_daro_date",
         "ww_sac_notre_dame_date",
         "ww_sac_notre_dame_fire",
-        "ww_tower_pisa_construction_start",
-        "ww_tower_tokyo_completed",
-        "ww_tower_space_needle_world_fair",
-        "ww_canal_panama_opened",
         "ww_bridge_akashi_earthquake",
-        "ww_canal_suez_opened",
-        "ww_pal_versailles_year",
-        "ww_pal_versailles_treaty",
-        "ww_pal_himeji_year_keep",
-        "ww_pal_alhambra_washington_irving",
-        "ww_pal_topkapi_museum_year",
-        "ww_mon_lincoln_memorial_mlk",
-        "ww_mon_arc_triomphe_napoleon",
-        "ww_mon_gateway_india_british",
-        "ww_mon_washington_monument_pause",
-        "ww_nat_grand_canyon_park_year",
         "ww_nat_everest_first_summit",
         "ww_nat_paricutin_eruption_date",
         "ww_nat_giants_causeway_age",
-        "ww_mod_channel_tunnel_first_proposal",
-        "ww_mod_iss_crewed_since",
-        "ww_mod_lhc_higgs_boson"
+        "ww_mod_iss_crewed_since"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Date answers range from short years to geological time descriptions — inherent domain variation"
     },
     {
       "id": "measurement_number",
@@ -5424,22 +5418,17 @@
         "ww_anc_machu_picchu_altitude",
         "ww_anc_petra_siq_length",
         "ww_anc_great_wall_length",
-        "ww_anc_chichen_itza_steps",
         "ww_anc_terracotta_army_count",
         "ww_sac_hagia_sophia_dome",
         "ww_sac_st_peters_duration",
         "ww_sac_st_peters_interior",
-        "ww_sac_borobudur_statues",
         "ww_sac_angkor_wat_size",
-        "ww_sac_blue_mosque_minarets",
         "ww_sac_cologne_cathedral_construction",
         "ww_sac_cologne_cathedral_height",
         "ww_tower_eiffel_height",
         "ww_tower_eiffel_tallest_years",
         "ww_tower_burj_khalifa_height",
-        "ww_tower_burj_khalifa_floors",
         "ww_tower_empire_state_days",
-        "ww_tower_empire_state_stories",
         "ww_tower_pisa_lean_degrees",
         "ww_tower_cn_height",
         "ww_tower_cn_record_years",
@@ -5465,20 +5454,15 @@
         "ww_bridge_sydney_harbour_thermal",
         "ww_dam_three_gorges_height",
         "ww_bridge_sydney_harbour_arch_span",
-        "ww_pal_forbidden_city_buildings",
         "ww_pal_neuschwanstein_height",
         "ww_pal_potala_altitude",
-        "ww_pal_buckingham_rooms",
         "ww_pal_topkapi_diamond",
         "ww_pal_versailles_windows",
-        "ww_pal_forbidden_city_emperors",
         "ww_pal_neuschwanstein_days",
         "ww_pal_windsor_area",
         "ww_mon_statue_liberty_height",
         "ww_mon_christ_redeemer_height",
-        "ww_mon_lincoln_memorial_columns",
         "ww_mon_arc_triomphe_height",
-        "ww_mon_moai_count",
         "ww_mon_gateway_india_height",
         "ww_mon_washington_monument_height",
         "ww_mon_taj_mahal_artisans",
@@ -5508,10 +5492,11 @@
         "ww_mod_sydney_opera_height",
         "ww_mod_channel_tunnel_tunnels",
         "ww_mod_lhc_scientists",
-        "ww_mod_burj_al_arab_height",
-        "ww_mod_the_shard_storeys"
+        "ww_mod_burj_al_arab_height"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Measurement answers range from bare numbers to full descriptions — inherent domain variation"
     },
     {
       "id": "material_feature",
@@ -5540,7 +5525,9 @@
         "ww_mod_guggenheim_bilbao_effect",
         "ww_mod_birds_nest_olympic_distinction"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Feature descriptions range from single words to full sentences — inherent domain variation"
     },
     {
       "id": "person_historical",
@@ -5565,7 +5552,74 @@
         "ww_nat_paricutin_farmer",
         "ww_nat_great_blue_hole_cousteau"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Historical figures range from single names to lists — inherent domain variation"
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Years & Numbers",
+      "factIds": [
+        "ww_anc_chichen_itza_steps",
+        "ww_anc_terracotta_army_discovery",
+        "ww_sac_borobudur_statues",
+        "ww_sac_blue_mosque_minarets",
+        "ww_tower_burj_khalifa_floors",
+        "ww_tower_empire_state_stories",
+        "ww_tower_pisa_construction_start",
+        "ww_tower_tokyo_completed",
+        "ww_tower_space_needle_world_fair",
+        "ww_canal_panama_opened",
+        "ww_canal_suez_opened",
+        "ww_pal_versailles_year",
+        "ww_pal_versailles_treaty",
+        "ww_pal_forbidden_city_buildings",
+        "ww_pal_buckingham_rooms",
+        "ww_pal_himeji_year_keep",
+        "ww_pal_forbidden_city_emperors",
+        "ww_pal_alhambra_washington_irving",
+        "ww_pal_topkapi_museum_year",
+        "ww_mon_lincoln_memorial_columns",
+        "ww_mon_lincoln_memorial_mlk",
+        "ww_mon_arc_triomphe_napoleon",
+        "ww_mon_moai_count",
+        "ww_mon_gateway_india_british",
+        "ww_mon_washington_monument_pause",
+        "ww_nat_grand_canyon_park_year",
+        "ww_mod_channel_tunnel_first_proposal",
+        "ww_mod_lhc_higgs_boson",
+        "ww_mod_the_shard_storeys"
+      ],
+      "members": [
+        "1974",
+        "1173",
+        "1958",
+        "1962",
+        "1914",
+        "1869",
+        "1682",
+        "1919",
+        "1601",
+        "1832",
+        "1924",
+        "1963",
+        "1806",
+        "1948",
+        "1854",
+        "1802",
+        "2012",
+        "365",
+        "504",
+        "6",
+        "163",
+        "102",
+        "980",
+        "775",
+        "24",
+        "36",
+        "900",
+        "95"
+      ]
     }
   ],
   "synonymGroups": [

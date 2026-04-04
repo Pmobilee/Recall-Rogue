@@ -1267,13 +1267,12 @@
     },
     {
       "id": "cs_1_floppy_disk_first_size",
-      "correctAnswer": "8",
+      "correctAnswer": "{8}",
       "acceptableAlternatives": [
-        "8 inches",
-        "8-inch"
+        "8"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "technology_terms",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "What was the diameter (in inches) of IBM's first floppy disk, invented in 1971?",
@@ -3569,13 +3568,12 @@
     },
     {
       "id": "cs_4_ipv4_address_bits",
-      "correctAnswer": "32",
+      "correctAnswer": "{32}",
       "acceptableAlternatives": [
-        "32 bits",
-        "32-bit"
+        "32"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "technology_terms",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "IPv4 addresses have a fixed bit length that limits the internet to roughly 4.3 billion unique addresses — how many bits is an IPv4 address?",
@@ -5872,7 +5870,7 @@
     },
     {
       "id": "cs_7_ibm_original_name",
-      "correctAnswer": "Computing-Tabulating-Recording Company",
+      "correctAnswer": "Computing-Tabulating-Recording Co.",
       "acceptableAlternatives": [
         "CTR",
         "Computing Tabulating Recording"
@@ -6724,7 +6722,7 @@
     },
     {
       "id": "cs_7_github_founders",
-      "correctAnswer": "Tom Preston-Werner, Chris Wanstrath, P.J. Hyett, and Scott Chacon",
+      "correctAnswer": "Preston-Werner, Wanstrath, Hyett, and Chacon",
       "acceptableAlternatives": [
         "Tom Preston-Werner",
         "Tom Preston-Werner and Chris Wanstrath"
@@ -7484,7 +7482,9 @@
         "Vint Cerf and Bob Kahn",
         "Yann LeCun",
         "Yukihiro Matsumoto"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Inventor names range from short (Vint Cerf) to full compound names — inherent domain variation"
     },
     {
       "id": "technology_terms",
@@ -7506,10 +7506,11 @@
         "cs_3_queue_access_pattern",
         "cs_3_p_vs_np_prize",
         "cs_3_np_complete_first_problem",
-        "cs_4_ipv4_address_bits",
+        "cs_4_wifi_standard",
         "cs_5_arpanet_first_message",
         "cs_5_first_dotcom",
         "cs_5_first_website_url",
+        "cs_5_google_algorithm",
         "cs_5_amazon_original_product",
         "cs_6_turing_test_paper",
         "cs_6_first_ai_winter_cause",
@@ -7519,6 +7520,7 @@
         "cs_6_transformer_paper",
         "cs_6_transformer_key_innovation",
         "cs_6_second_ai_winter_cause",
+        "cs_6_svm_purpose",
         "cs_6_alphago_game",
         "cs_7_hp_garage_location",
         "cs_7_microsoft_founded_city",
@@ -7528,10 +7530,7 @@
         "cs_7_cisco_name_origin",
         "cs_7_nvidia_original_focus",
         "cs_7_kubernetes_inspiration",
-        "cs_7_amazon_founded_location",
-        "cs_5_google_algorithm",
-        "cs_6_svm_purpose",
-        "cs_4_wifi_standard"
+        "cs_7_amazon_founded_location"
       ],
       "minimumSize": 5,
       "members": [
@@ -7577,7 +7576,9 @@
         "vacuum tube",
         "video games",
         "von Neumann architecture"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Technology terms range from abbreviations to full paper titles — inherent domain variation"
     },
     {
       "id": "acronym_expansions",
@@ -7627,7 +7628,9 @@
         "Transmission Control Protocol",
         "Universal Serial Bus",
         "User Datagram Protocol"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Acronym expansions range from short code names to multi-word phrases — inherent domain variation"
     },
     {
       "id": "language_names",
@@ -7664,7 +7667,9 @@
         "Oak",
         "Plankalkül",
         "Smalltalk"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Programming language names range from short to compound words — inherent domain variation"
     },
     {
       "id": "company_names",
@@ -7715,7 +7720,9 @@
         "University of Texas at Austin",
         "University of Toronto",
         "Xerox PARC"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Company names range from acronyms to full historical names — inherent domain variation"
     },
     {
       "id": "product_names",
@@ -7767,7 +7774,9 @@
         "YouTube",
         "audio oscillator",
         "iPhone OS"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Product names range from single words to full product titles — inherent domain variation"
     },
     {
       "id": "bracket_numbers",
@@ -7800,6 +7809,7 @@
         "cs_4_linux_year",
         "cs_4_msdos_year",
         "cs_4_macos_first_gui",
+        "cs_4_ipv4_address_bits",
         "cs_4_diffie_hellman_year",
         "cs_4_morris_worm_year",
         "cs_4_bitcoin_whitepaper_year",
@@ -7871,7 +7881,9 @@
         "{2020}",
         "{2021}",
         "{2022}",
-        "{2024}"
+        "{2024}",
+        "32",
+        "8"
       ]
     },
     {

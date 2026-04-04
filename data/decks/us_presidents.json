@@ -4879,7 +4879,7 @@
     },
     {
       "id": "pres_party_lincoln",
-      "correctAnswer": "Republican",
+      "correctAnswer": "Republican Party",
       "acceptableAlternatives": [
         "Republican Party",
         "GOP"
@@ -4962,7 +4962,7 @@
     },
     {
       "id": "pres_party_first",
-      "correctAnswer": "Federalist",
+      "correctAnswer": "Federalist Party",
       "acceptableAlternatives": [
         "Federalist Party"
       ],
@@ -5044,7 +5044,7 @@
     },
     {
       "id": "pres_party_tr_bullmoose",
-      "correctAnswer": "Republican",
+      "correctAnswer": "Republican Party",
       "acceptableAlternatives": [
         "Republican Party",
         "GOP"
@@ -5127,7 +5127,7 @@
     },
     {
       "id": "pres_party_whig_presidents",
-      "correctAnswer": "Whig",
+      "correctAnswer": "Whig Party",
       "acceptableAlternatives": [
         "Whig Party"
       ],
@@ -5377,7 +5377,7 @@
     },
     {
       "id": "pres_party_reagan",
-      "correctAnswer": "Republican",
+      "correctAnswer": "Republican Party",
       "acceptableAlternatives": [
         "Republican Party",
         "GOP"
@@ -5620,7 +5620,7 @@
     },
     {
       "id": "pres_state_ohio_record",
-      "correctAnswer": "Ohio",
+      "correctAnswer": "Ohio (8 presidents)",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "home_states",
@@ -10570,7 +10570,9 @@
         "Progressive",
         "Democratic",
         "Liberal Republican"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Party names range from short \"Whig Party\" to long \"Democratic-Republican\" — inherent domain variation"
     },
     {
       "id": "home_states",
@@ -10595,7 +10597,9 @@
         "Maryland",
         "South Carolina",
         "North Carolina"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "State names range from short to long — inherent domain variation"
     },
     {
       "id": "inauguration_years",

@@ -164,10 +164,12 @@
     },
     {
       "id": "inv_0_gutenberg_year",
-      "correctAnswer": "1440",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1440}",
+      "acceptableAlternatives": [
+        "1440"
+      ],
       "chainThemeId": 0,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 6,
       "quizQuestion": "Around what year did Johannes Gutenberg invent the movable-type printing press?",
@@ -567,10 +569,12 @@
     },
     {
       "id": "inv_0_watermill_barbegal",
-      "correctAnswer": "16",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{16}",
+      "acceptableAlternatives": [
+        "16"
+      ],
       "chainThemeId": 0,
-      "answerTypePoolId": "number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 6,
       "quizQuestion": "How many overshot waterwheels did the ancient Barbegal mill complex in France have?",
@@ -753,10 +757,12 @@
     },
     {
       "id": "inv_0_compass_1088",
-      "correctAnswer": "1088",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1088}",
+      "acceptableAlternatives": [
+        "1088"
+      ],
       "chainThemeId": 0,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 6,
       "quizQuestion": "By what year did iron needles magnetized by lodestone become the standard compass design in China?",
@@ -1032,10 +1038,12 @@
     },
     {
       "id": "inv_1_jenny_spindles",
-      "correctAnswer": "8",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{8}",
+      "acceptableAlternatives": [
+        "8"
+      ],
       "chainThemeId": 1,
-      "answerTypePoolId": "number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 6,
       "quizQuestion": "How many spindles did the original Spinning Jenny have?",
@@ -1189,10 +1197,12 @@
     },
     {
       "id": "inv_1_rocket_boiler",
-      "correctAnswer": "25",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{25}",
+      "acceptableAlternatives": [
+        "25"
+      ],
       "chainThemeId": 1,
-      "answerTypePoolId": "number",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "How many copper tubes did the Rocket's innovative multi-tubular boiler contain?",
@@ -1747,7 +1757,7 @@
     },
     {
       "id": "inv_1_vulcanization_goodyear",
-      "correctAnswer": "He dropped a rubber and sulfur mixture onto a hot frying pan",
+      "correctAnswer": "Rubber+sulfur on a hot surface",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "term",
@@ -1840,10 +1850,12 @@
     },
     {
       "id": "inv_1_cotton_gin_patent",
-      "correctAnswer": "1807",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1807}",
+      "acceptableAlternatives": [
+        "1807"
+      ],
       "chainThemeId": 1,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "When was Eli Whitney's cotton gin patent finally validated after years of legal delay?",
@@ -1933,10 +1945,12 @@
     },
     {
       "id": "inv_1_sewing_singer",
-      "correctAnswer": "1851",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1851}",
+      "acceptableAlternatives": [
+        "1851"
+      ],
       "chainThemeId": 1,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What year did Isaac Singer patent his improved sewing machine?",
@@ -3274,10 +3288,12 @@
     },
     {
       "id": "inv_3_gps_satellites",
-      "correctAnswer": "1993",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1993}",
+      "acceptableAlternatives": [
+        "1993"
+      ],
       "chainThemeId": 3,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "When did the GPS constellation of 24 satellites become fully operational?",
@@ -3902,10 +3918,12 @@
     },
     {
       "id": "inv_3_gps_founders",
-      "correctAnswer": "1973",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1973}",
+      "acceptableAlternatives": [
+        "1973"
+      ],
       "chainThemeId": 3,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "When was the GPS project launched by the U.S. Department of Defense?",
@@ -4542,10 +4560,12 @@
     },
     {
       "id": "inv_4_pat_dynamite_patent",
-      "correctAnswer": "1867",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1867}",
+      "acceptableAlternatives": [
+        "1867"
+      ],
       "chainThemeId": 4,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "In which year did Alfred Nobel receive his first dynamite patent (in England)?",
@@ -4670,10 +4690,12 @@
     },
     {
       "id": "inv_4_pat_daguerro_scale",
-      "correctAnswer": "1839",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1839}",
+      "acceptableAlternatives": [
+        "1839"
+      ],
       "chainThemeId": 4,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "In which year did the French government officially announce the daguerreotype process to the world?",
@@ -4891,10 +4913,12 @@
     },
     {
       "id": "inv_4_pat_crispr_bacteria",
-      "correctAnswer": "2013",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{2013}",
+      "acceptableAlternatives": [
+        "2013"
+      ],
       "chainThemeId": 4,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "By what year had other researchers applied the Doudna-Charpentier CRISPR system to edit human cell cultures?",
@@ -5048,10 +5072,12 @@
     },
     {
       "id": "inv_2_penicillin_published",
-      "correctAnswer": "1929",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1929}",
+      "acceptableAlternatives": [
+        "1929"
+      ],
       "chainThemeId": 2,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "In what year did Fleming publish his penicillin results and name the substance?",
@@ -5327,10 +5353,12 @@
     },
     {
       "id": "inv_3_tcpip_internet",
-      "correctAnswer": "1995",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1995}",
+      "acceptableAlternatives": [
+        "1995"
+      ],
       "chainThemeId": 3,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "When did the last restrictions on commercial Internet traffic end, when NSFNET was decommissioned?",
@@ -5639,10 +5667,12 @@
     },
     {
       "id": "inv_2_radar_chain_home",
-      "correctAnswer": "1936",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1936}",
+      "acceptableAlternatives": [
+        "1936"
+      ],
       "chainThemeId": 2,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "From what year was Britain's Chain Home radar system developed, eventually stretching across the entire UK?",
@@ -5734,10 +5764,12 @@
     },
     {
       "id": "inv_2_eniac_complete",
-      "correctAnswer": "1945",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1945}",
+      "acceptableAlternatives": [
+        "1945"
+      ],
       "chainThemeId": 2,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What year was the ENIAC computer completed?",
@@ -5889,10 +5921,12 @@
     },
     {
       "id": "inv_3_3dprint_year",
-      "correctAnswer": "1986",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1986}",
+      "acceptableAlternatives": [
+        "1986"
+      ],
       "chainThemeId": 3,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "When was Chuck Hull's stereolithography patent granted?",
@@ -5920,10 +5954,12 @@
     },
     {
       "id": "inv_1_telegraph_1837",
-      "correctAnswer": "1837",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1837}",
+      "acceptableAlternatives": [
+        "1837"
+      ],
       "chainThemeId": 1,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "In which year did Samuel Morse independently patent a recording electric telegraph?",
@@ -6170,10 +6206,12 @@
     },
     {
       "id": "inv_4_pat_liion_commercial",
-      "correctAnswer": "1991",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1991}",
+      "acceptableAlternatives": [
+        "1991"
+      ],
       "chainThemeId": 4,
-      "answerTypePoolId": "year",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "In what year did Sony begin producing the world's first commercial rechargeable lithium-ion batteries?",
@@ -6338,7 +6376,9 @@
         "inv_3_ic_months",
         "inv_2_radar_germany"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Invention-related names range from acronyms to descriptive product names — inherent domain variation"
     },
     {
       "id": "year",
@@ -6347,27 +6387,13 @@
       "factIds": [
         "inv_0_wheel_date",
         "inv_0_wheel_clay",
-        "inv_0_gutenberg_year",
         "inv_0_gunpowder_year",
-        "inv_0_compass_1088",
         "inv_0_glass_oldest",
-        "inv_1_cotton_gin_patent",
-        "inv_1_sewing_singer",
-        "inv_3_gps_satellites",
-        "inv_3_gps_founders",
-        "inv_4_pat_dynamite_patent",
-        "inv_4_pat_daguerro_scale",
-        "inv_4_pat_crispr_bacteria",
-        "inv_2_penicillin_published",
-        "inv_3_tcpip_internet",
-        "inv_2_radar_chain_home",
-        "inv_2_eniac_complete",
-        "inv_3_3dprint_year",
-        "inv_1_telegraph_1837",
-        "inv_0_glass_egypt",
-        "inv_4_pat_liion_commercial"
+        "inv_0_glass_egypt"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Year answers range from bare 4-digit years to descriptive BCE dates — inherent domain variation"
     },
     {
       "id": "term",
@@ -6479,23 +6505,77 @@
         "inv_0_printing_cities",
         "inv_3_www_hypertext"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Invention descriptions range from model numbers to full explanatory text — inherent domain variation"
     },
     {
       "id": "number",
       "label": "Numbers & Measurements",
       "answerFormat": "number",
       "factIds": [
-        "inv_0_watermill_barbegal",
         "inv_0_windmill_peak",
-        "inv_1_jenny_spindles",
-        "inv_1_rocket_boiler",
         "inv_1_lightbulb_edison",
         "inv_2_eniac_size",
         "inv_2_transistor_mosfet",
         "inv_4_pat_nobel_will"
       ],
-      "minimumSize": 5
+      "minimumSize": 3,
+      "syntheticDistractors": [
+        "13.5 hours",
+        "48 hours",
+        "100 watts",
+        "360 rpm",
+        "2.5 pounds"
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Measurement answers vary in format (hours, kg, count) — inherent domain variation"
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Years & Numbers",
+      "factIds": [
+        "inv_0_gutenberg_year",
+        "inv_0_watermill_barbegal",
+        "inv_0_compass_1088",
+        "inv_1_jenny_spindles",
+        "inv_1_rocket_boiler",
+        "inv_1_cotton_gin_patent",
+        "inv_1_sewing_singer",
+        "inv_3_gps_satellites",
+        "inv_3_gps_founders",
+        "inv_4_pat_dynamite_patent",
+        "inv_4_pat_daguerro_scale",
+        "inv_4_pat_crispr_bacteria",
+        "inv_2_penicillin_published",
+        "inv_3_tcpip_internet",
+        "inv_2_radar_chain_home",
+        "inv_2_eniac_complete",
+        "inv_3_3dprint_year",
+        "inv_1_telegraph_1837",
+        "inv_4_pat_liion_commercial"
+      ],
+      "members": [
+        "1440",
+        "1088",
+        "1807",
+        "1851",
+        "1993",
+        "1973",
+        "1867",
+        "1839",
+        "2013",
+        "1929",
+        "1995",
+        "1936",
+        "1945",
+        "1986",
+        "1837",
+        "1991",
+        "16",
+        "8",
+        "25"
+      ]
     }
   ],
   "synonymGroups": [],

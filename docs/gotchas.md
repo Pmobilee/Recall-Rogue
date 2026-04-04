@@ -144,3 +144,42 @@ rm -rf node_modules/.vite && npm run dev
 **Fix:** Added momentum/surge/warcry checks to the sim's AP pre-check in both `simulator.ts` and `full-run-simulator.ts`. Also lowered bot-brain momentum threshold from `chargeSkill >= 0.3` to `chargeSkill >= 0.1` so lower-skill bots exploit free charges.
 
 **Impact:** All balance data collected before this fix overstated the cost of charging by ~30–50%. The developing→competent WR inversion was caused by this bug — low-skill bots were blocked from free charges they should have taken.
+
+### 2026-04-04 — Pool Homogeneity Batch3: Use homogeneityExempt for Inherent Domain Variation
+
+**What:** Fixed pool homogeneity FAILs in 12 knowledge decks using pool-level `homogeneityExempt: true` flag to acknowledge inherent domain variation that cannot be normalized.
+
+**When to use `homogeneityExempt: true`:**
+- Medical terminology prefix/suffix/root meanings ("New" 3c vs "Both, double, on both sides" 27c) — domain invariant
+- NASA mission names ("Dawn" 4c vs "Nancy Grace Roman Space Telescope" 33c) — official names can't be changed
+- Historical document names ("David" 5c vs "Vindication of the Rights of Woman" 34c) — proper names are fixed
+- Greek deity names ("Pan" 3c vs "Hephaestus" 10c) — all are correct proper names
+- Constellation names, star names — astronomical names have fixed length
+
+**When NOT to use `homogeneityExempt: true`:**
+- When an outlier is MISCLASSIFIED (e.g., an astronomer fact in god_figure_names pool)
+- When a bare number answer should be converted to `{N}` bracket notation
+- When a multi-person answer can be trimmed (e.g., "Jean Monnet and Robert Schuman" → "Monnet and Schuman")
+- When a biographical sentence is in a name pool (e.g., "He killed a man in a brawl" in artist_names)
+
+**How `homogeneityExempt` works:**
+- Set `pool.homogeneityExempt = true` on any pool definition in the deck JSON
+- Optional: add `pool.homogeneityExemptNote = "reason"` for documentation
+- The `pool-homogeneity-analysis.mjs` script downgrades LENGTH_RATIO_HIGH from FAIL→INFO
+- The `verify-all-decks.mjs` does NOT read this flag — it still displays FAIL in output but these are non-blocking (homogeneityFailCount excluded from totalBlockingFailures)
+
+**`bracket_numbers` pool is automatically exempt from POOL_TOO_SMALL:**
+- bracket_numbers pools with < 5 facts are now skipped for POOL_TOO_SMALL check
+- These pools use `members[]` for algorithmic numeric distractor generation — no pool size minimum applies
+- The `pool-homogeneity-analysis.mjs` was patched to detect `pool.id === 'bracket_numbers'` and skip the check
+
+**Fix workflow:**
+1. Run `node scripts/pool-homogeneity-analysis.mjs --deck <id>` to see all FAILs
+2. For bare numbers → `moveToBracket()` with `{N}` notation
+3. For misclassified facts → `moveToPool()` to correct pool
+4. For outlier long answers → `fixAnswer()` to trim
+5. For inherent variation → `setPoolExempt()` with explanatory note
+6. Run analysis again to confirm 0 FAIL
+7. Run `verify-all-decks.mjs` to confirm exit code 0
+
+**Git stash trap:** Never use `git stash` to check baseline state if other working-tree changes exist in the same files. If the stash pop fails (due to conflicts), `git stash drop` destroys the stash — all WIP changes are lost. Instead, use `git show HEAD:path/to/file` to read the committed version directly.

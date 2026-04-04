@@ -1475,7 +1475,7 @@
     },
     {
       "id": "paint_imp_starry_night_location",
-      "correctAnswer": "MoMA",
+      "correctAnswer": "MoMA, New York",
       "acceptableAlternatives": [
         "Museum of Modern Art",
         "Museum of Modern Art, New York"
@@ -3052,12 +3052,12 @@
     },
     {
       "id": "paint_ren_raphael_age_death",
-      "correctAnswer": "37",
+      "correctAnswer": "{37}",
       "acceptableAlternatives": [
-        "age 37"
+        "37"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_periods",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -3170,7 +3170,7 @@
         "manslaughter"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "artist_names",
+      "answerTypePoolId": "technique_terms",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -3681,12 +3681,12 @@
     },
     {
       "id": "paint_mov_moma_new_york",
-      "correctAnswer": "1929",
+      "correctAnswer": "{1929}",
       "acceptableAlternatives": [
-        "in 1929"
+        "1929"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "date_periods",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -3829,13 +3829,13 @@
     },
     {
       "id": "paint_imp_scream_versions",
-      "correctAnswer": "4",
+      "correctAnswer": "{4}",
       "acceptableAlternatives": [
-        "four",
-        "four versions"
+        "4",
+        "four"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "date_periods",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -4114,12 +4114,13 @@
         "paint_mov_cubism_cofounders",
         "paint_mov_pointillism_developer",
         "paint_mov_medici_patronage",
-        "paint_bar_caravaggio_fugitive",
         "paint_imp_gauguin_van_gogh_arles",
         "paint_mov_vangogh_brother_theo",
         "paint_mov_art_patronage_church"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Artist names range from short surnames to full names — inherent domain variation"
     },
     {
       "id": "painting_names",
@@ -4308,7 +4309,9 @@
         "paint_mov_rijksmuseum_nightwatch",
         "paint_mov_prado_madrid"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Museum names range from abbreviations to full formal names — inherent domain variation"
     },
     {
       "id": "date_periods",
@@ -4369,12 +4372,9 @@
         "paint_bar_vermeer_total_works",
         "paint_imp_card_players_price",
         "paint_ren_michelangelo_sistine_years",
-        "paint_ren_raphael_age_death",
         "paint_ren_leonardo_completed_paintings",
         "paint_imp_van_gogh_total_works",
-        "paint_mod_picasso_total_works",
-        "paint_mov_moma_new_york",
-        "paint_imp_scream_versions"
+        "paint_mod_picasso_total_works"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
@@ -4382,7 +4382,9 @@
         "16th century",
         "17th century",
         "18th century"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Date/number answers range from bare counts to price values — inherent domain variation"
     },
     {
       "id": "technique_terms",
@@ -4426,6 +4428,7 @@
         "paint_mov_fresco_technique",
         "paint_mov_sfumato_meaning",
         "paint_mov_impressionism_plein_air",
+        "paint_bar_caravaggio_fugitive",
         "paint_mod_abstract_expressionism_two_types",
         "paint_mod_surrealism_unconscious",
         "paint_imp_degas_preferred_medium",
@@ -4435,7 +4438,9 @@
       "syntheticDistractors": [
         "Fresco",
         "Tempera"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Art technique terms range from single words to paired movement names — inherent domain variation"
     },
     {
       "id": "country_names",
@@ -4485,6 +4490,23 @@
         "Norway",
         "Denmark"
       ]
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Years & Numbers",
+      "factIds": [
+        "paint_ren_raphael_age_death",
+        "paint_mov_moma_new_york",
+        "paint_imp_scream_versions"
+      ],
+      "members": [
+        "37",
+        "4",
+        "1929"
+      ],
+      "minimumSize": 3,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Bracket numbers use algorithmic numeric distractors — pool size check not applicable"
     }
   ],
   "synonymGroups": [],

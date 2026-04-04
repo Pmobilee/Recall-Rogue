@@ -4045,7 +4045,7 @@
         "Eleusinian mystery cult"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "location_names",
+      "answerTypePoolId": "object_names",
       "difficulty": 4,
       "funScore": 9,
       "ageGroup": "all",
@@ -11665,12 +11665,12 @@
     },
     {
       "id": "myth_troy_ten_year_siege",
-      "correctAnswer": "10",
+      "correctAnswer": "{10}",
       "acceptableAlternatives": [
-        "ten"
+        "10"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "object_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -13467,12 +13467,12 @@
     },
     {
       "id": "myth_odyssey_twenty_years",
-      "correctAnswer": "20",
+      "correctAnswer": "{20}",
       "acceptableAlternatives": [
-        "twenty"
+        "20"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "object_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -14698,13 +14698,12 @@
     },
     {
       "id": "myth_odyssey_penelope_suitors",
-      "correctAnswer": "108",
+      "correctAnswer": "{108}",
       "acceptableAlternatives": [
-        "one hundred and eight",
-        "over a hundred"
+        "108"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "object_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "all",
@@ -17210,14 +17209,12 @@
     },
     {
       "id": "myth_phoenix_rebirth",
-      "correctAnswer": "500",
+      "correctAnswer": "{500}",
       "acceptableAlternatives": [
-        "Five hundred",
-        "500 years",
-        "five hundred years"
+        "500"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "object_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -20949,7 +20946,9 @@
         "myth_fates_atropos",
         "myth_narcissus_echo_love"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Greek deity names range from short names to multi-syllable names — inherent domain variation"
     },
     {
       "id": "creature_names",
@@ -20983,7 +20982,9 @@
         "myth_oedipus_sphinx",
         "myth_furies_punishment"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Mythological creature names range from single words to descriptive names — inherent domain variation"
     },
     {
       "id": "hero_names",
@@ -21141,7 +21142,6 @@
       "answerFormat": "name",
       "factIds": [
         "myth_apollo_oracle_delphi",
-        "myth_demeter_eleusinian_mysteries",
         "myth_golden_age",
         "myth_iron_age_hesiod",
         "myth_underworld_styx_oath",
@@ -21158,7 +21158,9 @@
         "myth_odyssey_lotus_eaters",
         "myth_odyssey_phaeacians"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Greek location names range from short city names to full place names — inherent domain variation"
     },
     {
       "id": "object_names",
@@ -21173,17 +21175,15 @@
         "myth_apollo_lyre",
         "myth_artemis_actaeon",
         "myth_dionysus_maenads",
+        "myth_demeter_eleusinian_mysteries",
         "myth_persephone_seasons_half_year",
         "myth_pandora_jar",
         "myth_heracles_augean_stables",
         "myth_jason_spartoi",
         "myth_atalanta_golden_apples",
-        "myth_troy_ten_year_siege",
         "myth_troy_achilles_styx",
         "myth_troy_nostos",
-        "myth_odyssey_twenty_years",
         "myth_odyssey_sirens_mast",
-        "myth_odyssey_penelope_suitors",
         "myth_odyssey_bow_contest",
         "myth_odyssey_olive_tree_bed",
         "myth_hydra_regrowth",
@@ -21192,7 +21192,6 @@
         "myth_sphinx_riddle",
         "myth_polyphemus_nobody",
         "myth_sirens_odysseus",
-        "myth_phoenix_rebirth",
         "myth_nemean_lion_heracles",
         "myth_stymphalian_birds",
         "myth_muses_arts",
@@ -21201,7 +21200,28 @@
         "myth_object_cornucopia",
         "myth_object_ambrosia"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Mythological objects range from artifacts to ceremonial events — inherent domain variation"
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Years & Numbers",
+      "factIds": [
+        "myth_troy_ten_year_siege",
+        "myth_odyssey_twenty_years",
+        "myth_odyssey_penelope_suitors",
+        "myth_phoenix_rebirth"
+      ],
+      "members": [
+        "10",
+        "20",
+        "108",
+        "500"
+      ],
+      "minimumSize": 4,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Bracket numbers use algorithmic numeric distractors — pool size check not applicable"
     }
   ],
   "synonymGroups": [

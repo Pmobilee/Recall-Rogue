@@ -505,13 +505,12 @@
     },
     {
       "id": "const_mc_castor_star_count",
-      "correctAnswer": "6",
+      "correctAnswer": "{6}",
       "acceptableAlternatives": [
-        "six",
-        "sextuple"
+        "6"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_numbers",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 9,
       "ageGroup": "teen_adult",
@@ -1002,13 +1001,12 @@
     },
     {
       "id": "const_mc_orion_ptolemy",
-      "correctAnswer": "48",
+      "correctAnswer": "{48}",
       "acceptableAlternatives": [
-        "forty-eight",
-        "Ptolemy's 48"
+        "48"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_numbers",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "teen_adult",
@@ -1218,13 +1216,12 @@
     },
     {
       "id": "const_mc_55cancri_planets",
-      "correctAnswer": "5",
+      "correctAnswer": "{5}",
       "acceptableAlternatives": [
-        "five",
-        "five planets"
+        "5"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_numbers",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 8,
       "ageGroup": "teen_adult",
@@ -1530,13 +1527,12 @@
     },
     {
       "id": "const_star_alpha_centauri_stars",
-      "correctAnswer": "3",
+      "correctAnswer": "{3}",
       "acceptableAlternatives": [
-        "three",
-        "triple system"
+        "3"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "date_numbers",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "teen_adult",
@@ -1749,13 +1745,12 @@
     },
     {
       "id": "const_star_betelgeuse_first_measurement",
-      "correctAnswer": "1920",
+      "correctAnswer": "{1920}",
       "acceptableAlternatives": [
-        "in 1920",
-        "nineteen twenty"
+        "1920"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "date_numbers",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "teen_adult",
@@ -2217,12 +2212,12 @@
     },
     {
       "id": "const_sci_iau_count",
-      "correctAnswer": "88",
+      "correctAnswer": "{88}",
       "acceptableAlternatives": [
-        "eighty-eight"
+        "88"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "date_numbers",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 5,
       "ageGroup": "all",
@@ -2247,13 +2242,12 @@
     },
     {
       "id": "const_sci_iau_boundaries",
-      "correctAnswer": "1930",
+      "correctAnswer": "{1930}",
       "acceptableAlternatives": [
-        "in 1930",
-        "nineteen thirty"
+        "1930"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "date_numbers",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "teen_adult",
@@ -2309,13 +2303,12 @@
     },
     {
       "id": "const_sci_zodiac_count",
-      "correctAnswer": "12",
+      "correctAnswer": "{12}",
       "acceptableAlternatives": [
-        "twelve",
-        "12 zodiac signs"
+        "12"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "date_numbers",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 5,
       "ageGroup": "all",
@@ -2652,13 +2645,12 @@
     },
     {
       "id": "const_sci_sagittarius_a_image_year",
-      "correctAnswer": "2022",
+      "correctAnswer": "{2022}",
       "acceptableAlternatives": [
-        "May 2022",
-        "year 2022"
+        "2022"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "date_numbers",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "teen_adult",
@@ -3768,13 +3760,12 @@
     },
     {
       "id": "const_myth_chinese_lunar_mansions",
-      "correctAnswer": "28",
+      "correctAnswer": "{28}",
       "acceptableAlternatives": [
-        "twenty-eight",
-        "28 lunar mansions"
+        "28"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "date_numbers",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "teen_adult",
@@ -3992,7 +3983,7 @@
         "Lord Rosse's sketch in 1842"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "god_figure_names",
+      "answerTypePoolId": "concept_terms",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "teen_adult",
@@ -4388,7 +4379,9 @@
         "const_myth_deneb_arabic",
         "const_myth_altair_arabic"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Star names and meanings range from single words to full Arabic phrases — inherent domain variation"
     },
     {
       "id": "constellation_names",
@@ -4413,7 +4406,9 @@
         "Cassiopeia",
         "Leo",
         "Scorpius"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Constellation name answers range from single names to lists — inherent domain variation"
     },
     {
       "id": "god_figure_names",
@@ -4436,10 +4431,11 @@
         "const_myth_pollux_immortal",
         "const_myth_sagittarius_nobel",
         "const_myth_orion_gaia_sent",
-        "const_myth_crab_nebula_name_origin",
         "const_myth_aquila_zeus"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Mythological figures range from short names to full names with titles — inherent domain variation"
     },
     {
       "id": "deep_sky_names",
@@ -4512,43 +4508,37 @@
         "const_myth_crux_southern_navigation",
         "const_myth_pleiades_homer",
         "const_myth_islamic_golden_age_stars",
+        "const_myth_crab_nebula_name_origin",
         "const_mc_scorpius_ancient",
         "const_star_rigel_supernova_future",
         "const_myth_cassiopeia_punishment"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Astronomical concepts range from single words to full definitions — inherent domain variation"
     },
     {
       "id": "date_numbers",
       "label": "Numbers & Dates",
       "answerFormat": "number",
       "factIds": [
-        "const_mc_castor_star_count",
         "const_mc_virgo_size_rank",
-        "const_mc_orion_ptolemy",
         "const_mc_betelgeuse_radius",
         "const_mc_orion_visibility",
-        "const_mc_55cancri_planets",
         "const_star_sirius_magnitude",
         "const_star_sirius_distance",
         "const_star_canopus_rank",
         "const_star_proxima_distance",
-        "const_star_alpha_centauri_stars",
         "const_star_vega_future_pole",
         "const_star_rigel_luminosity",
-        "const_star_betelgeuse_first_measurement",
         "const_dso_andromeda_distance",
         "const_dso_orion_nebula_distance",
         "const_dso_pleiades_distance",
         "const_dso_crab_nebula_year",
         "const_dso_crab_pulsar_spin",
         "const_star_procyon_distance",
-        "const_sci_iau_count",
-        "const_sci_iau_boundaries",
-        "const_sci_zodiac_count",
         "const_sci_precession_cycle",
         "const_sci_sagittarius_a_mass",
-        "const_sci_sagittarius_a_image_year",
         "const_sci_hydra_largest_area",
         "const_sci_milky_way_distance_center",
         "const_sci_orion_area_rank",
@@ -4557,7 +4547,6 @@
         "const_sci_sirius_future_pole",
         "const_sci_pleiades_future",
         "const_sci_andromeda_collision",
-        "const_myth_chinese_lunar_mansions",
         "const_mc_orion_betelgeuse_second",
         "const_star_capella_rank",
         "const_star_arcturus_distance",
@@ -4566,7 +4555,37 @@
         "const_star_vega_distance",
         "const_star_deneb_distance"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Numbers range from star counts to probability descriptions — inherent domain variation"
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Years & Numbers",
+      "factIds": [
+        "const_mc_castor_star_count",
+        "const_mc_orion_ptolemy",
+        "const_mc_55cancri_planets",
+        "const_star_alpha_centauri_stars",
+        "const_star_betelgeuse_first_measurement",
+        "const_sci_iau_count",
+        "const_sci_iau_boundaries",
+        "const_sci_zodiac_count",
+        "const_sci_sagittarius_a_image_year",
+        "const_myth_chinese_lunar_mansions"
+      ],
+      "members": [
+        "6",
+        "48",
+        "5",
+        "3",
+        "1920",
+        "88",
+        "1930",
+        "12",
+        "2022",
+        "28"
+      ]
     }
   ],
   "synonymGroups": [],

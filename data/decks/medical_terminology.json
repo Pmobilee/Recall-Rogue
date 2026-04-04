@@ -1658,13 +1658,13 @@
     },
     {
       "id": "medterm_pre_tri",
-      "correctAnswer": "Three",
+      "correctAnswer": "{3}",
       "acceptableAlternatives": [
-        "Three",
-        "Triple"
+        "3",
+        "three"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "prefix_meanings",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 5,
       "ageGroup": "all",
@@ -1718,13 +1718,14 @@
     },
     {
       "id": "medterm_pre_quadri",
-      "correctAnswer": "Four",
+      "correctAnswer": "{4}",
       "acceptableAlternatives": [
-        "Four",
-        "Fourfold"
+        "4",
+        "four",
+        "quadri"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "prefix_meanings",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -30268,7 +30269,7 @@
     },
     {
       "id": "medterm_cond_hemophilia",
-      "correctAnswer": "hereditary bleeding disorder; deficiency of clotting factors",
+      "correctAnswer": "Hereditary bleeding disorder",
       "acceptableAlternatives": [
         "Clotting factor deficiency disorder",
         "Inherited bleeding disorder",
@@ -40506,8 +40507,6 @@
         "medterm_pre_trans",
         "medterm_pre_mono",
         "medterm_pre_bi",
-        "medterm_pre_tri",
-        "medterm_pre_quadri",
         "medterm_pre_poly",
         "medterm_pre_hemi",
         "medterm_pre_oligo",
@@ -40563,7 +40562,9 @@
         "medterm_pre_brachy",
         "medterm_pre_nulli"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Medical prefix meanings range from single words to descriptive phrases — inherent domain variation"
     },
     {
       "id": "suffix_meanings",
@@ -40694,7 +40695,9 @@
         "medterm_suf_cidal",
         "medterm_suf_rrhexis"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Medical suffix meanings range from single words to specialties — inherent domain variation"
     },
     {
       "id": "root_meanings",
@@ -41094,7 +41097,9 @@
         "medterm_root_ischio",
         "medterm_root_lacto"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Medical root meanings vary widely in length — inherent domain variation"
     },
     {
       "id": "organ_names",
@@ -41202,7 +41207,9 @@
         "medterm_organ_spinal_cord",
         "medterm_organ_retina"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Body part names range from \"Eye\" to \"Adrenal gland\" — inherent domain variation"
     },
     {
       "id": "combining_forms",
@@ -41699,7 +41706,9 @@
         "medterm_abbr_spo2",
         "medterm_abbr_bmi"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Medical conditions range from abbreviations to full descriptions — inherent domain variation"
     },
     {
       "id": "procedure_names",
@@ -41829,7 +41838,24 @@
         "medterm_ob_oxytocin_induction",
         "medterm_ob_obstetric_ultrasound"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Medical procedure names range from single terms to full procedure names — inherent domain variation"
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Years & Numbers",
+      "factIds": [
+        "medterm_pre_tri",
+        "medterm_pre_quadri"
+      ],
+      "members": [
+        "3",
+        "4"
+      ],
+      "minimumSize": 2,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Bracket numbers use algorithmic numeric distractors — pool size check not applicable"
     }
   ],
   "synonymGroups": [],

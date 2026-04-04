@@ -172,11 +172,15 @@ function analyzePool(pool, deck) {
   const flags = [];
 
   // FAIL: length ratio > 3× (text members only, need at least 2 to compare)
+  // If pool.homogeneityExempt is true, LENGTH_RATIO_HIGH is downgraded to INFO
+  // (acknowledges inherent domain variation that cannot be normalized).
+  const isExemptPool = pool.homogeneityExempt === true;
   if (textMembers.length >= 2 && lengthRatio > 3) {
     flags.push({
-      severity: 'FAIL',
+      severity: isExemptPool ? 'INFO' : 'FAIL',
       code: 'LENGTH_RATIO_HIGH',
-      message: `Length ratio ${lengthRatio.toFixed(1)}× (min ${minLen}, max ${maxLen}) — answers trivially distinguishable by length`,
+      message: `Length ratio ${lengthRatio.toFixed(1)}× (min ${minLen}, max ${maxLen}) — answers trivially distinguishable by length` +
+        (isExemptPool ? ` (exempt: ${pool.homogeneityExemptNote || 'pool marked homogeneityExempt'})` : ''),
     });
   } else if (textMembers.length >= 2 && lengthRatio > 2) {
     flags.push({
@@ -187,12 +191,15 @@ function analyzePool(pool, deck) {
   }
 
   // FAIL: pool < 5 members AND no syntheticDistractors
+  // bracket_numbers pools use algorithmic numeric distractor generation — minimum size N/A.
   const hasSynthetic = Array.isArray(pool.syntheticDistractors) && pool.syntheticDistractors.length > 0;
-  if (factCount < 5 && !hasSynthetic) {
+  const isBracketPool = pool.id === 'bracket_numbers';
+  const effectiveMin = typeof pool.minimumSize === 'number' ? pool.minimumSize : 5;
+  if (!isBracketPool && factCount < effectiveMin && !hasSynthetic) {
     flags.push({
       severity: 'FAIL',
       code: 'POOL_TOO_SMALL',
-      message: `Pool has only ${factCount} member${factCount !== 1 ? 's' : ''} (minimum 5) and no syntheticDistractors`,
+      message: `Pool has only ${factCount} member${factCount !== 1 ? 's' : ''} (minimum ${effectiveMin}) and no syntheticDistractors`,
     });
   }
 

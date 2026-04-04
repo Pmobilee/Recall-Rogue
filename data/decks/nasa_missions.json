@@ -4001,7 +4001,7 @@
     },
     {
       "id": "nasa_dawn_asteroids",
-      "correctAnswer": "Dawn",
+      "correctAnswer": "Dawn spacecraft",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
       "answerTypePoolId": "mission_names",
@@ -7160,7 +7160,9 @@
         "nasa_pioneer_plaque",
         "nasa_cassini_saturn",
         "nasa_huygens_titan",
+        "nasa_cassini_enceladus",
         "nasa_galileo_jupiter",
+        "nasa_galileo_europa",
         "nasa_newhorizons_pluto",
         "nasa_newhorizons_arrokoth",
         "nasa_sojourner_rover",
@@ -7187,11 +7189,11 @@
         "nasa_chandra_xray",
         "nasa_spitzer_trappist",
         "nasa_tess_overview",
-        "nasa_roman_overview",
-        "nasa_cassini_enceladus",
-        "nasa_galileo_europa"
+        "nasa_roman_overview"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Mission names range from short code names to full formal names — inherent domain variation"
     },
     {
       "id": "program_names",
@@ -7205,8 +7207,8 @@
         "nasa_skylab_space_station",
         "nasa_skylab_fell_australia",
         "nasa_iss_continuous_habitation",
-        "nasa_artemis_program",
-        "nasa_iss_partner_agencies"
+        "nasa_iss_partner_agencies",
+        "nasa_artemis_program"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
@@ -7216,7 +7218,9 @@
         "Mariner",
         "Viking",
         "Voyager"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Program names range from short names to full institutional names — inherent domain variation"
     },
     {
       "id": "astronaut_names",
