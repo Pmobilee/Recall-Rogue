@@ -285,3 +285,7 @@ rm -rf node_modules/.vite && npm run dev
 ### 2026-04-04 — FloorManager "respects event chance by segment" is a flaky test
 
 `tests/unit/floor-manager.test.ts` — "shouldOfferEvent > respects event chance by segment" asserts `events < 170` for Binomial(200, 0.80) whose 3-sigma upper bound is ~177. The bound is too tight and the test fails ~10% of runs. Not related to any code change — pre-existing statistical tightness. If this failure appears in CI, re-run once before investigating.
+
+### 2026-04-04 — Steam local deploy shows old version
+
+Steam caches the running app binary in memory. Copying new files while the game runs does not update it. Fix: kill the process first, delete old .app, then copy fresh. The steam-build.sh script now handles this automatically with pkill before copy.

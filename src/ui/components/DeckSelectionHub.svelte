@@ -650,12 +650,14 @@
   .smoke-wisp-fg:nth-child(2) { left: 45%; --duration: 10s; --delay: 3s;   --sway: -120px; --peak-opacity: 0.4;  --gust-duration: 8s; --gust-delay: 3.5s; --gust-shift: -90px; }
   .smoke-wisp-fg:nth-child(3) { left: 65%; --duration: 9s;  --delay: 5.5s; --sway: 80px;   --peak-opacity: 0.45; --gust-duration: 7s; --gust-delay: 0s;   --gust-shift: 60px; }
   .smoke-wisp-fg:nth-child(4) { left: 85%; --duration: 11s; --delay: 1.5s; --sway: -90px;  --peak-opacity: 0.35; --gust-duration: 5s; --gust-delay: 2s;   --gust-shift: -80px; }
+  .smoke-wisp-fg:nth-child(5) { left: 35%; --duration: 7s;  --delay: 4s;   --sway: 70px;   --peak-opacity: 0.3;  --gust-duration: 6s; --gust-delay: 1s;   --gust-shift: 50px; }
 
   @media (prefers-reduced-motion: reduce) {
     .panel { transition: none !important; }
     .shine-overlay { display: none; }
     .plx-layer { transition: none !important; }
     .smoke-wisp { animation: none !important; display: none; }
-    .skylight::after { animation: none !important; }
+    .ground-fog { animation: none !important; }
+    .ground-fog::before, .ground-fog::after { animation: none !important; }
   }
 </style>
