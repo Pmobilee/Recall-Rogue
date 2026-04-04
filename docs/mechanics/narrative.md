@@ -1,7 +1,7 @@
 # Run Narrative System — Woven Narrative Architecture
 
 > **Purpose:** Design spec for the procedural narrative system that delivers dark RPG storytelling woven from four concurrent threads, reactive to actual knowledge the player studies.
-> **Last verified:** 2026-04-03
+> **Last verified:** 2026-04-04
 > **Status:** IMPLEMENTED — Full pipeline operational. Engine, overlay, and game flow integration complete.
 > **Source files:** `src/services/narrativeTypes.ts` (data interfaces), `src/services/narrativeGravity.ts` (classification + gravity scoring), `src/services/narrativeLoader.ts` (runtime loader), `src/services/narrativeEngine.ts` (IMPLEMENTED — 2026-04-03), `src/services/encounterBridge.ts` (NarrativeEncounterSnapshot snapshot mechanism), `src/services/gameFlowController.ts` (integration hooks), `data/narratives/` (COMPLETE — 61 YAML files), `scripts/build-narratives.mjs` (YAML-to-JSON converter), `public/data/narratives/` (generated JSON output)
 
@@ -70,7 +70,7 @@ Recall Rogue has an asset no other roguelite possesses: **the game knows exactly
 3. **Purely programmatic** — no runtime LLM generation; all content is pre-authored templates with contextual slot-filling
 4. **Dark, serious tone** — this is a deep, ancient knowledge dungeon RPG; never whimsical, never meta-humorous
 5. **Combinatorial depth from authored fragments** — ~580 authored lines produce thousands of unique experiences
-6. **Only echo what was seen** — the narrative NEVER references specific facts, answers, or knowledge the player hasn't encountered in this run. Echo templates, Oracle callbacks, and chain arrows draw EXCLUSIVELY from facts the player has already been quizzed on (correct or incorrect). Unseen facts have no meaning to the player.
+6. **Only echo what was quizzed** — the narrative NEVER references specific facts, answers, or knowledge the player wasn't shown a quiz question for in this run. Echo templates, Oracle callbacks, and chain arrows draw EXCLUSIVELY from facts in `TurnState.encounterQuizzedFacts` — facts that produced an actual quiz question (correct or incorrect). Cards played via Quick Play, GUARANTEED auto-charge, or Phoenix auto-charge do NOT feed the narrative since no question was shown. Unseen facts have no meaning to the player.
 
 ### The Voice: The Creature Below
 
@@ -378,6 +378,8 @@ LOW gravity (never named in prose):
 - `"They asked that same question here, long ago. '{quizQuestion}' The answer was always {echoText}."`
 
 Context echoes fire when `echoText.length < 12` AND `gravity >= medium`. They include question context so thin answers ("Literature", "Assembly") gain meaning through framing.
+
+**First-echo guarantee (2026-04-04):** When `state.echoesShown.size === 0` (the very first echo of a run), a low-gravity fact is NOT allowed to fall through to an answer-free line. Instead, the engine treats it as `context` category — using `quizQuestion` rather than the answer text. This ensures the first narrative line always establishes the "dungeon knows what you're learning" feel regardless of whether the early facts have short or generic answers. The answer-free fallback is still used on subsequent low-gravity echoes, and when no eligible templates exist even after the override.
 
 **Math:** 6 categories x ~15 templates = ~90 echo templates. With answer substitution = effectively unlimited unique outputs.
 

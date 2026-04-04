@@ -236,6 +236,8 @@ export interface TurnState {
   turnLog: TurnLogEntry[];
   /** Facts answered (correct or incorrect) during this encounter */
   encounterAnsweredFacts: string[];
+  /** Facts that were actually shown as quiz questions during this encounter (for narrative). */
+  encounterQuizzedFacts: string[];
   /** Consecutive correct answers this entire encounter (for Perfect Storm synergy). */
   consecutiveCorrectThisEncounter: number;
   /** Number of Tier 3 (mastered) cards in deck at encounter start (for Mastery Ascension). */
@@ -638,6 +640,7 @@ export function startEncounter(
     result: null,
     turnLog: [],
     encounterAnsweredFacts: [],
+    encounterQuizzedFacts: [],
     consecutiveCorrectThisEncounter: 0,
     tier3CardCount: 0,
     phoenixRageTurnsRemaining: 0,
@@ -721,6 +724,7 @@ export function playCardAction(
   speedBonusEarned: boolean,
   playMode: PlayMode = 'charge',
   distractorCount?: number,
+  wasQuizzed?: boolean,
 ): PlayCardResult {
   // AR-207: Battle Trance restriction — block all card plays and Charges after QP/CW
   if (turnState.battleTranceRestriction) {
@@ -894,6 +898,10 @@ export function playCardAction(
   // Track answered fact for encounter cooldown
   if (cardInHand.factId) {
     turnState.encounterAnsweredFacts.push(cardInHand.factId);
+  }
+  // Track facts actually shown as quiz questions (for narrative — excludes Quick Play, GUARANTEED, Phoenix auto-charge)
+  if (cardInHand.factId && wasQuizzed) {
+    turnState.encounterQuizzedFacts.push(cardInHand.factId);
   }
 
   if (isCardBlocked(card, enemy)) {

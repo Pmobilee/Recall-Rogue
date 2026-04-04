@@ -655,8 +655,16 @@ function buildEchoLineForFact(
   } else if (gravity === 'medium') {
     templateCategory = answerType; // neutral template
   } else {
-    // low gravity — answer-free fallback
-    return buildAnswerFreeLine(state, lensVars);
+    // low gravity — answer-free fallback UNLESS this is the first echo of the run
+    if (state.echoesShown.size === 0) {
+      // First echo: always fact-specific to establish narrative knowledge-weaving.
+      // 'context' category uses quizQuestion rather than the answer text, so even
+      // short answers produce meaningful echoes like:
+      //   "'What does 的確 mean?' — carried through three floors of stone."
+      templateCategory = 'context';
+    } else {
+      return buildAnswerFreeLine(state, lensVars);
+    }
   }
 
   const templates = loadEchoTemplates(templateCategory);

@@ -87,6 +87,7 @@
       variantIndex?: number,
       playMode?: 'charge' | 'quick',
       distractorCount?: number,
+      wasQuizzed?: boolean,
     ) => {
       curedCursedFact: boolean
       damageDealt?: number
@@ -1758,7 +1759,7 @@
     // Fire the play immediately with playMode: 'quick'
     const _qpPreEnemy = snapshotEffects(turnState?.enemy?.statusEffects ?? [])
     const _qpPrePlayer = snapshotEffects(turnState?.playerState?.statusEffects ?? [])
-    const quickResult = onplaycard(cardId, true, false, undefined, undefined, 'quick')
+    const quickResult = onplaycard(cardId, true, false, undefined, undefined, 'quick', undefined, false)
     spawnStatusFloaters(_qpPreEnemy, _qpPrePlayer)
 
     const actualDmg = quickResult?.damageDealt ?? 0
@@ -1818,7 +1819,7 @@
       cardAnimations = { ...cardAnimations, [cardId]: 'reveal' }
       const _soulPreEnemy = snapshotEffects(turnState?.enemy?.statusEffects ?? [])
       const _soulPrePlayer = snapshotEffects(turnState?.playerState?.statusEffects ?? [])
-      const chargeResult = onplaycard(cardId, true, false, undefined, undefined, 'charge')
+      const chargeResult = onplaycard(cardId, true, false, undefined, undefined, 'charge', undefined, false)
       spawnStatusFloaters(_soulPreEnemy, _soulPrePlayer)
       if (chargeResult?.curedCursedFact) {
         cureFlashes = { ...cureFlashes, [cardId]: true }
@@ -2153,7 +2154,7 @@
       // Wrong answer: fizzle (unchanged)
       animatingCards = [...animatingCards, card]
       cardAnimations = { ...cardAnimations, [cardId]: 'fizzle' }
-      onplaycard(cardId, false, false, responseTimeMs, quizVariantIndex, 'charge')
+      onplaycard(cardId, false, false, responseTimeMs, quizVariantIndex, 'charge', undefined, true)
 
       // AR-113: Check for mastery downgrade after wrong answer
       const discardedWrong = turnState?.deck.discardPile.find(c => c.id === cardId)
@@ -2188,7 +2189,7 @@
       const _chargePrePlayer = snapshotEffects(turnState?.playerState?.statusEffects ?? [])
       // Pass distractorCount so card mechanics (precision_strike, etc.) know the quiz difficulty.
       const quizDistractorCount = committedQuizData ? committedQuizData.answers.length - 1 : undefined
-      const chargeResult = onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex, 'charge', quizDistractorCount)
+      const chargeResult = onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex, 'charge', quizDistractorCount, true)
       // Only spawn status floaters when no pendingChoice/pendingCardPick — deferred choices apply effects later
       if (!chargeResult?.pendingChoice && !chargeResult?.pendingCardPick) {
         spawnStatusFloaters(_chargePreEnemy, _chargePrePlayer)

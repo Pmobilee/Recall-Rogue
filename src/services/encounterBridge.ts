@@ -659,6 +659,7 @@ export function handlePlayCard(
   variantIndex?: number,
   playMode: PlayMode = 'charge',
   distractorCount?: number,
+  wasQuizzed?: boolean,
 ): {
   curedCursedFact: boolean;
   damageDealt?: number;
@@ -691,7 +692,7 @@ export function handlePlayCard(
   const playedCard = turnState.deck.hand.find((card) => card.id === cardId);
   const previousReviewState = playedCard?.factId ? getReviewStateByFactId(playedCard.factId) : undefined;
   const previousTier = previousReviewState ? getCardTier(previousReviewState) : null;
-  const result = playCardAction(turnState, cardId, correct, speedBonus, playMode, distractorCount);
+  const result = playCardAction(turnState, cardId, correct, speedBonus, playMode, distractorCount, wasQuizzed);
   const run = get(activeRunState);
 
   // AR-204: Inscription detection — if the played card is an Inscription, register it,
@@ -972,7 +973,7 @@ export function handlePlayCard(
         const run = get(activeRunState);
         const currentNode = run?.floor?.actMap?.nodes[run?.floor?.actMap?.currentNodeId ?? ''];
         _lastNarrativeSnapshot = {
-          answeredFactIds: [...ts.encounterAnsweredFacts],
+          answeredFactIds: [...ts.encounterQuizzedFacts],
           fizzledFactIds,
           cardIdToFactId,
           isBoss:
@@ -1338,7 +1339,7 @@ export function devForceEncounterVictory(): void {
   const run = get(activeRunState);
   const currentNode = run?.floor?.actMap?.nodes[run?.floor?.actMap?.currentNodeId ?? ''];
   _lastNarrativeSnapshot = {
-    answeredFactIds: [...ts.encounterAnsweredFacts],
+    answeredFactIds: [...ts.encounterQuizzedFacts],
     fizzledFactIds: [],
     cardIdToFactId: new Map(),
     isBoss:
