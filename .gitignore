@@ -171,3 +171,8 @@ _archived_assets/
 
 # Playwright MCP configs (local dev uses .mcp.json)
 .playwright-mcp-config*.json
+
+# Steam
+steam/output/*
+!steam/output/.gitkeep
+.env.local

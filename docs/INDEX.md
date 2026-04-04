@@ -3,7 +3,7 @@
 > Navigation hub for all modular documentation. Each file is independently useful —
 > an agent reading just that file should understand that system.
 >
-> **Last rebuilt:** 2026-04-03
+> **Last rebuilt:** 2026-04-04
 
 ---
 
@@ -101,6 +101,14 @@
 
 ---
 
+## Deployment
+
+| Doc | Summary |
+|-----|---------|
+| [steam](deployment/steam.md) | Build pipeline, SteamPipe uploads, branch strategy, Steamworks SDK integration, and dashboard checklist |
+
+---
+
 ## Balance & Tuning
 
 | Doc | Summary |
@@ -129,6 +137,7 @@ Skill definitions live in `.claude/skills/`. Invoke with `/skill-name`. Key art 
 | `/artstudio` | `.claude/skills/artstudio/SKILL.md` | Generate all other game art (enemies, backgrounds, relics, icons) via OpenRouter / ComfyUI |
 | `/depth-transitions` | `.claude/skills/depth-transitions/SKILL.md` | Generate depth maps and manage parallax room transition shader |
 | `/narration` | `.claude/skills/narration/SKILL.md` | Author, implement, and iterate on the Woven Narrative Architecture |
+| `/steam-deploy` | `.claude/skills/steam-deploy/SKILL.md` | Build Tauri app and upload to Steam via SteamPipe — setup, build, upload, release promotion |
 
 ---
 

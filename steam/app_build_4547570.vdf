@@ -1,0 +1,13 @@
+"appbuild"
+{
+	"appid" "4547570"
+	"desc" "Recall Rogue build"
+	"buildoutput" "./output/"
+	"contentroot" ""
+	"setlive" ""
+	"depots"
+	{
+		"4547572" "depot_build_4547572.vdf"
+		"4547573" "depot_build_4547573.vdf"
+	}
+}

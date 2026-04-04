@@ -10,6 +10,8 @@
     "build": "node scripts/gen-sprite-keys.mjs && node scripts/audit-assets.mjs && node scripts/build-narratives.mjs && node scripts/build-facts-db.mjs && vite build",
     "build:web": "vite build",
     "build:desktop": "cd src-tauri && cargo tauri build",
+    "steam:build": "npm run build && cd src-tauri && cargo tauri build",
+    "steam:build:dev": "npm run build && cd src-tauri && cargo tauri build --debug",
     "build:mobile": "npx cap sync && npx cap build",
     "dev:desktop": "cd src-tauri && cargo tauri dev",
     "audit:sprites": "node scripts/audit-fact-sprites.mjs",

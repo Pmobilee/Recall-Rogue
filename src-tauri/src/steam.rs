@@ -7,8 +7,7 @@ use tauri::State;
 /// The `Mutex` allows sharing across Tauri command threads. Failure to initialize is non-fatal —
 /// all commands silently no-op when `client` is `None`.
 ///
-/// TODO (AR-80): Replace App ID 480 (Valve Spacewar test) with the real Recall Rogue App ID
-///               once the game is registered on Steam Partner.
+/// DONE (AR-80): App ID updated to 4547570 (Recall Rogue). Registered on Steam Partner.
 pub struct SteamState {
     pub client: Mutex<Option<Client>>,
 }
@@ -22,10 +21,10 @@ impl SteamState {
     /// TODO (AR-80 follow-up): Spawn a background thread that calls `client.run_callbacks()` on a
     ///       ~16ms timer so async Steam events (leaderboard fetch, cloud sync) are processed.
     pub fn new() -> Self {
-        // App ID 480 = Valve's Spacewar (public test app). Replace with real ID before ship.
-        match Client::init_app(480) {
+        // App ID 4547570 = Recall Rogue (production app ID).
+        match Client::init_app(4547570) {
             Ok(client) => {
-                println!("[Steam] Initialized successfully (App ID 480 — Spacewar test)");
+                println!("[Steam] Initialized successfully (App ID 4547570 — Recall Rogue)");
                 SteamState {
                     client: Mutex::new(Some(client)),
                 }
