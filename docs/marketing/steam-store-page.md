@@ -1,37 +1,99 @@
 # Steam Store Page — Recall Rogue
 
 > Reference document for all Steam storefront marketing assets, copy, and strategy.
-> Last updated: 2026-04-02
+> Last updated: 2026-04-04
 
 ---
 
-## 1. Required Steam Graphics (Exact Specs)
+## 1. Steam Graphical Assets — Complete Reference
 
-All images must be delivered as JPG or PNG. Transparent backgrounds only where noted. Steam
-auto-generates the Page Background from the last screenshot if a custom one is not uploaded.
+All assets uploaded via the Steamworks Partner dashboard at partner.steamgames.com. Organized by
+dashboard category. `*` = required. Format: PNG preferred; JPG accepted where noted.
 
-| Asset | Size (px) | Format | Purpose |
-|-------|-----------|--------|---------|
-| Header Capsule | 920×430 | JPG or PNG | Store page header, wishlists, recommendations, "More Like This" |
-| Small Capsule | 462×174 | JPG or PNG | Search results, tag pages, lists — must be **legible at 120×45** |
-| Main Capsule | 1232×706 | JPG or PNG | Steam homepage featured carousel |
-| Vertical Capsule | 748×896 | JPG or PNG | Seasonal sale promo pages |
-| Hero Graphic | 3840×1240 | JPG or PNG | Wide banner at top of store page (letterboxed to ~1232×353 on most monitors) |
-| Logo | 940×460 | PNG (transparent BG) | Overlaid on Hero Graphic; must not be embedded directly in Hero |
-| Page Background | 1438×810 | JPG or PNG | Repeating tile behind store page body; auto-generated from last screenshot if absent |
-| Screenshots | 1920×1080 | JPG or PNG | Min 5 required; recommend 8-10; first 4 show in hover previews |
-| Trailer Thumbnail | 1920×1080 | JPG or PNG | Custom poster frame shown before trailer plays |
+### Store Assets (4 required)
+
+| Asset | Size (px) | Required | Format | Usage |
+|-------|-----------|----------|--------|-------|
+| Header Capsule | 920×430 | * | JPG or PNG | Store page header, wishlists, recommendations, "More Like This", Big Picture, library grid view |
+| Small Capsule | 462×174 | * | PNG | Search results, top-sellers, new releases — auto-generates 120×45 and 184×69. **Logo must nearly fill the capsule and be legible at 120×45** |
+| Main Capsule | 1232×706 | * | JPG or PNG | Steam homepage featured carousel |
+| Vertical Capsule | 748×896 | * | JPG or PNG | Seasonal sale promo pages |
+| Page Background | 1438×810 | | JPG or PNG | Store page background tile (tinted blue, edges faded automatically). Auto-generated from last screenshot if absent |
+
+### Screenshot Assets (min 5 required)
+
+| Asset | Size (px) | Required | Format | Notes |
+|-------|-----------|----------|--------|-------|
+| Screenshots | 1920×1080 min | * (min 5) | JPG or PNG | 16:9 aspect ratio. First 4 appear in hover previews. Must show real gameplay only — no concept art, pre-rendered cinematics, awards, or marketing copy |
+| Trailer Thumbnail | 1920×1080 | | JPG or PNG | Custom poster frame shown before trailer auto-plays |
+
+### Library Assets (4 required + 1 suggested)
+
+| Asset | Size (px) | Required | Format | Notes |
+|-------|-----------|----------|--------|-------|
+| Library Capsule | 600×900 | * | PNG | Primary library display in overview and collections. Auto-generates 300×450 half-size. Logo must be legible; no text beyond game title |
+| Library Header | 920×430 | * | PNG | Steam Client library, Recent Games section. Falls back to Store Header Capsule if not provided |
+| Library Hero | 3840×1240 | * | PNG | Top of library detail page. Auto-generates 1920×620 half-size. **Artwork ONLY — no text at all.** Safe area: 860×380 |
+| Library Logo | 1280w and/or 720h | * | PNG (transparent BG) | Overlaid on Library Hero. Auto-generates half-size. Logo/logotype only, no other text. Position set via Steamworks preview tool |
+| Library Logo (alt position) | same | | | Steamworks lets you set position: left-bottom, centered top/middle/bottom |
+
+### Community & Client Icons
+
+| Asset | Size (px) | Required | Format | Notes |
+|-------|-----------|----------|--------|-------|
+| Client Icon | 256×256 or 512×512 | * | ICO or PNG | Desktop shortcut icon. macOS needs separate ICNS |
+| App Icon | 184×184 | * | JPG | Library list view, chat, notifications, Steam Deck. Small but shown on high-res screens |
+
+### Broadcast Assets (suggested)
+
+| Asset | Size (px) | Required | Format | Notes |
+|-------|-----------|----------|--------|-------|
+| Broadcast Side Panel | ~155×337 | | PNG or JPG | Appears on both sides of livestream. Uploaded via Steam Event editor. Reusable across streams |
+
+### Event Assets (for updates/announcements)
+
+| Asset | Size (px) | Required | Format | Notes |
+|-------|-----------|----------|--------|-------|
+| Event Cover | 800×450 | Per event | JPG or PNG | Announcement lists, library detail. Game name/icon added by Steam automatically |
+| Event Header | 1920×622 | | JPG or PNG | Top of event detail page. Rich branding for major updates |
+
+### Artwork Overrides (time-limited)
+
+Temporary replacement capsule images for major updates, tournaments, or events. Same dimensions as
+the capsule they replace (Header, Small, Main, or Vertical). Must include the game logo. Time-limited
+and reviewed by Valve.
+
+### Asset Checklist Summary
+
+**Before "Coming Soon" page goes live (minimum):**
+- [ ] Header Capsule (920×430)
+- [ ] Small Capsule (462×174)
+- [ ] Main Capsule (1232×706)
+- [ ] Vertical Capsule (748×896)
+- [ ] 5+ Screenshots (1920×1080)
+- [ ] Client Icon (256×256 or 512×512)
+- [ ] App Icon (184×184)
+
+**Before release (full set):**
+- [ ] All "Coming Soon" assets above
+- [ ] Library Capsule (600×900)
+- [ ] Library Hero (3840×1240)
+- [ ] Library Logo (1280w/720h, transparent PNG)
+- [ ] Library Header (920×430) — or reuse Store Header
+- [ ] Page Background (1438×810) — optional but polished
+- [ ] Trailer video (.mp4, H.264, 1920×1080, 30-60fps)
+- [ ] Trailer Thumbnail (1920×1080)
 
 ### Critical Constraints
 
-- **Logo is separate from Hero Graphic.** Steam composites them. Never bake the logo into the Hero image.
-- **Small Capsule legibility at 120×45 is non-negotiable.** The logo or title wordmark must read
-  at that scaled-down size. Test by rendering at 120×45 before shipping.
-- **No marketing text in capsule images.** Steam policy prohibits review scores, award logos,
-  "On Sale" callouts, or promotional copy anywhere in capsule images or the Hero.
-- **Screenshots cannot have text overlays or annotations.** Show real UI only.
-- Main Capsule and Vertical Capsule are only shown to users who have already seen the game before
-  (algorithm-surfaced), so they can be more artistic/abstract than the Header Capsule.
+- **Logo is separate from Library Hero.** Steam composites them via the Library Logo asset. Never bake text into the Hero image.
+- **Small Capsule legibility at 120×45 is non-negotiable.** Logo must nearly fill the capsule. Test by rendering at 120×45.
+- **No marketing text in ANY capsule image.** Steam policy: game artwork + game name + official subtitle only. No review scores, awards, "On Sale", or promotional copy.
+- **Screenshots must show real gameplay only.** No concept art, pre-rendered cinematics, text overlays, annotations, or capsule art repeats.
+- **Library Hero must contain ZERO text.** Artwork only — the Library Logo overlay handles branding.
+- **Main/Vertical Capsules** are algorithm-surfaced to users who've seen the game before, so they can be more artistic.
+- **Localization:** Append language code to filename for auto-assignment (e.g., `capsule_sm_schinese.png` for Simplified Chinese).
+- **Photoshop templates** available from Valve: Steam Templates on Dropbox (linked in Steamworks dashboard).
 
 ---
 
@@ -46,7 +108,7 @@ search pages — they must sell the game without a single click.
 | 2 | Full Combat Board State | Hand of 5+ cards across different chain colors (Obsidian, Crimson, Verdant, Auric, Violet); enemy with intent icon visible; HP/AP bars; damage numbers flying mid-animation | Shows it is a real card roguelite with depth, not a quiz app with card chrome |
 | 3 | Card Reward Screen | 3-card pick post-combat; cards show art, mechanic name, chain theme, stats | Decision-making moment; communicates card variety, deckbuilding strategy, visual quality of card art |
 | 4 | Boss Encounter | Visually impressive boss (Dean, Headmistress, or Final Boss) filling the screen; unique attack pattern visible; player at low HP for tension | Stakes + spectacle; signals this is not a casual game |
-| 5 | Deck / Domain Picker | Domain or deck selection screen showing knowledge categories (History, Science, Anatomy, Languages, Dinosaurs, World Wonders) | "I could learn ANYTHING here" — breadth signal, Study Temple mode appeal |
+| 5 | Study Temple Library | Grid of curated deck covers showing domain variety — history, science, anatomy, languages, dinosaurs, world wonders; deck cover art visible with parallax hover; multiple domains represented | "I could study ANYTHING here" — breadth signal, content depth, visual quality of deck art |
 | 6 | Mystery Event Room | One of 40 unique narrative rooms (e.g., Knowing Skull, Forbidden Section, Mirror Scholar); event text + choice buttons visible | Variety + world-building; shows the game has more than just combat |
 | 7 | Shop Room | Card upgrades + relics for purchase with gold; relic slots visible; interesting items available | Strategic depth; roguelite loop signaling |
 | 8 | Dungeon Map | Node-based procedural ring map showing branching paths, multiple room type icons, current floor depth | Replayability signal; shows map structure and run length |
@@ -330,7 +392,7 @@ Option B — Commission custom capsule art:
 - Brief: pixel art style, dark dungeon/library atmosphere, chain-color glow accents
 - Reference: existing enemy and card sprites for style continuity
 - Deliverables: Header Capsule (920×430), Small Capsule (462×174), Main Capsule (1232×706),
-  Vertical Capsule (748×896), Hero Graphic (3840×1240)
+  Vertical Capsule (748×896), Library Hero (3840×1240)
 
 Logo source: `/public/assets/boot/logo.png`
 
