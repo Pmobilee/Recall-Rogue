@@ -4,7 +4,7 @@
 	"desc" "Recall Rogue macOS build"
 	"buildoutput" "./output/"
 	"contentroot" ""
-	"setlive" ""
+	"setlive" "default"
 	"depots"
 	{
 		"4547574" "depot_build_4547574.vdf"

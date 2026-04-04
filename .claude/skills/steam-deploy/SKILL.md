@@ -15,13 +15,13 @@ Parse the user's message for a subcommand:
 | Subcommand | Description |
 |---|---|
 | `setup` | Verify toolchain (Rust, Tauri CLI, steamcmd), check auth, validate VDFs |
-| `build` | Build Tauri app for macOS (local). Runs frontend build + cargo tauri build |
+| `build` | Build Tauri app for macOS (local). Runs `./scripts/steam-build.sh` |
 | `build debug` | Build debug variant (faster, larger) |
-| `upload [branch]` | Upload current build to Steam. Default branch: `development` |
-| `upload staging` | Upload to staging branch |
-| `upload default` | Upload to default (public) branch — asks confirmation |
+| `test` | Full build + copy to local Steam install + launch. `npm run steam:test` |
+| `test quick` | Copy existing build to Steam install + launch (no rebuild, ~10s). `npm run steam:test:quick` |
+| `deploy` | Full build + upload to Steam via SteamPipe (auto-sets-live). `npm run steam:deploy` |
+| `deploy quick` | Upload existing build only (no rebuild). `npm run steam:deploy:quick` |
 | `status` | Show last build info, git version, depot status |
-| `release` | Promote staging to default (public release). Requires explicit confirmation |
 
 If no subcommand is given, default to `status`.
 
