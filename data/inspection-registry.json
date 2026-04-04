@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "lastSynced": "2026-04-02",
+  "lastSynced": "2026-04-04",
   "tables": {
     "cards": [
       {
@@ -5844,6 +5844,42 @@
         "notes": ""
       },
       {
+        "id": "runPreview",
+        "name": "runPreview",
+        "category": "screens",
+        "description": "",
+        "sourceFile": "src/ui/stores/gameState.ts",
+        "status": "active",
+        "mechanicDate": "not_checked",
+        "visualDate": "not_checked",
+        "uxDate": "not_checked",
+        "balanceDate": "not_checked",
+        "strategyDate": "not_checked",
+        "neuralDate": "not_checked",
+        "playtestDate": "not_checked",
+        "lastInspected": "not_checked",
+        "confidenceLevel": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "proceduralStudy",
+        "name": "proceduralStudy",
+        "category": "screens",
+        "description": "",
+        "sourceFile": "src/ui/stores/gameState.ts",
+        "status": "active",
+        "mechanicDate": "not_checked",
+        "visualDate": "not_checked",
+        "uxDate": "not_checked",
+        "balanceDate": "not_checked",
+        "strategyDate": "not_checked",
+        "neuralDate": "not_checked",
+        "playtestDate": "not_checked",
+        "lastInspected": "not_checked",
+        "confidenceLevel": "not_checked",
+        "notes": ""
+      },
+      {
         "id": "starterRelicSelection",
         "name": "starterRelicSelection",
         "category": "screens",
@@ -6096,6 +6132,24 @@
         "lastInspected": "2026-03-23",
         "confidenceLevel": "possible",
         "notes": "AR-230: Full language deck rebuild (2026-03-23). 8 languages from authoritative sources (JLPT/TOPIK/HSK/CEFRLex). Sonnet-verified 6,445 suspicious answers. 800-card audit: 93-97% pass rate. 40,561 language facts total."
+      },
+      {
+        "id": "mathematics",
+        "name": "Mathematics",
+        "category": "",
+        "description": "Arithmetic, mental math, algebra, and mathematical reasoning.",
+        "sourceFile": "src/data/domainMetadata.ts",
+        "status": "active",
+        "mechanicDate": "not_checked",
+        "visualDate": "not_checked",
+        "uxDate": "not_checked",
+        "balanceDate": "not_checked",
+        "strategyDate": "not_checked",
+        "neuralDate": "not_checked",
+        "playtestDate": "not_checked",
+        "lastInspected": "not_checked",
+        "confidenceLevel": "not_checked",
+        "notes": ""
       }
     ],
     "specialEvents": [
