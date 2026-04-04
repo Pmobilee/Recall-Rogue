@@ -224,12 +224,12 @@
             disabled={!isAvailable}
             type="button"
           >
-            {isAvailable ? (deck.procedural ? '>> START PRACTICE' : '>> START STUDY RUN') : 'COMING SOON'}
+            {isAvailable ? (deck.procedural ? '>> START PRACTICE' : '>> LAUNCH EXPEDITION') : 'COMING SOON'}
           </button>
 
           {#if onAddToCustom}
             <button class="btn-playlist" onclick={handleAddToCustom} type="button">
-              + Add to Playlist
+              + Add to Custom Deck
             </button>
           {/if}
         </div>
@@ -321,7 +321,7 @@
   /* RIGHT COLUMN — fixed, vertically centered */
   .col-right {
     flex: 1;
-    min-width: calc(180px * var(--layout-scale, 1));
+    min-width: calc(200px * var(--layout-scale, 1));
     max-width: calc(220px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
@@ -532,6 +532,7 @@
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: calc(10px * var(--layout-scale, 1));
+    overflow: hidden;
   }
 
   .stat-row {
@@ -552,6 +553,8 @@
     font-size: calc(14px * var(--text-scale, 1));
     font-weight: 700;
     color: #e2e8f0;
+    text-align: right;
+    white-space: nowrap;
   }
 
   .stat-mastered {
@@ -567,7 +570,7 @@
 
   .btn-start {
     width: 100%;
-    height: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
     background: linear-gradient(135deg, #16a34a, #15803d);
     border: none;
     border-radius: calc(10px * var(--layout-scale, 1));
@@ -576,8 +579,8 @@
     font-weight: 700;
     cursor: pointer;
     transition: transform 0.15s ease, opacity 0.15s ease;
-    white-space: nowrap;
     letter-spacing: 0.5px;
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
   }
 
   .btn-start:hover:not(:disabled) {

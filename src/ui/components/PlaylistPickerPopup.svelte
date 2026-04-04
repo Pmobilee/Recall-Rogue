@@ -81,17 +81,17 @@
           <input
             class="create-input"
             type="text"
-            placeholder="Playlist name..."
+            placeholder="Custom deck name..."
             maxlength="40"
             bind:value={newPlaylistName}
             onkeydown={handleKeydown}
-            aria-label="New playlist name"
+            aria-label="New custom deck name"
           />
           <button
             class="create-btn"
             onclick={handleCreate}
             disabled={!newPlaylistName.trim()}
-            aria-label="Create playlist and add item"
+            aria-label="Create custom deck and add item"
           >
             Create
           </button>

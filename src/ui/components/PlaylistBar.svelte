@@ -35,7 +35,7 @@
           {/each}
         </select>
       {:else}
-        <span class="playlist-name">{activePlaylist?.name ?? playlists[0]?.name ?? 'Playlist'}</span>
+        <span class="playlist-name">{activePlaylist?.name ?? playlists[0]?.name ?? 'Custom Deck'}</span>
       {/if}
       <span class="playlist-meta">{activeItems.length} item{activeItems.length !== 1 ? 's' : ''}</span>
     </div>
