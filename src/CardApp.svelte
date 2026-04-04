@@ -107,7 +107,7 @@
   import type { MysteryEffect } from './services/floorManager'
   import { generateCombatRoomOptions } from './services/floorManager'
   import { healPlayer } from './services/runManager'
-  import { POST_MINI_BOSS_HEAL_PCT, SHOP_RELIC_PRICE, RELIC_SELL_REFUND_PCT, RELIC_REROLL_COST } from './data/balance'
+  import { POST_MINI_BOSS_HEAL_PCT, REST_SITE_HEAL_PCT, SHOP_RELIC_PRICE, RELIC_SELL_REFUND_PCT, RELIC_REROLL_COST } from './data/balance'
   import { RELIC_BY_ID } from './data/relics/index'
   import { getMaxRelicSlots, isRelicSlotsFull } from './services/relicEffectResolver'
   import { isSlowReader, onboardingState, textSize, fontChoice, type FontChoice } from './services/cardPreferences'
@@ -635,7 +635,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   function handleRestHeal(): void {
     const run = get(activeRunState)
     if (!run) return
-    const amount = Math.round(run.playerMaxHp * 0.3)
+    const healMultiplier = run.ascensionModifiers?.restHealMultiplier ?? 1.0
+    const amount = Math.round(run.playerMaxHp * REST_SITE_HEAL_PCT * healMultiplier)
     healPlayer(run, amount)
     activeRunState.set(run)
     onRestResolved()

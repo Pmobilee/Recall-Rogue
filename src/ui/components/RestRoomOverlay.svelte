@@ -8,6 +8,7 @@
   import { ambientAudio } from '../../services/ambientAudioService'
   import { staggerPopIn } from '../utils/roomPopIn'
   import { tick } from 'svelte'
+  import { REST_SITE_HEAL_PCT } from '../../data/balance'
 
   interface Props {
     playerHp: number
@@ -39,7 +40,7 @@
   preloadImages([bgUrl]).then(releaseScreenTransition)
 
   let overlayEl = $state<HTMLElement>(null!)
-  let healAmount = $derived(Math.round(playerMaxHp * 0.3))
+  let healAmount = $derived(Math.round(playerMaxHp * REST_SITE_HEAL_PCT))
   let projectedHp = $derived(Math.min(playerMaxHp, playerHp + healAmount))
   let healDisabled = $derived(playerHp >= playerMaxHp)
 
@@ -69,7 +70,7 @@
       >
         <span class="option-icon">❤️</span>
         <span class="option-label">Rest</span>
-        <span class="option-detail">Heal 30% HP</span>
+        <span class="option-detail">Heal {Math.round(REST_SITE_HEAL_PCT * 100)}% HP</span>
         <span class="option-preview">+{healAmount} HP &rarr; {projectedHp}</span>
       </button>
 

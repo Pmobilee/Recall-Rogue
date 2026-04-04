@@ -414,6 +414,13 @@ export const HINTS_PER_ENCOUNTER = 1;
 export const START_AP_PER_TURN = 3;
 export const MAX_AP_PER_TURN = 5;
 
+/**
+ * Base rest site heal percentage. Applied when the player chooses "Rest" at a rest room.
+ * Reduced from 0.30 to 0.20 on 2026-04-04 (balance audit: less healing creates HP pressure across the run).
+ * Ascension level 3+ applies restHealMultiplier (0.83) on top of this (effective ~16.6% at Asc 3+).
+ */
+export const REST_SITE_HEAL_PCT = 0.20;
+
 // Post-encounter healing disabled — healing comes from potions only
 /** Fraction of max HP healed after each non-defeat encounter. Set to 0: no auto-heal. */
 export const POST_ENCOUNTER_HEAL_PCT = 0;

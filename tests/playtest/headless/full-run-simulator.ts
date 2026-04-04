@@ -42,6 +42,7 @@ import {
   CHARGE_AP_SURCHARGE,
   SURGE_FIRST_TURN,
   SURGE_INTERVAL,
+  REST_SITE_HEAL_PCT,
 } from '../../../src/data/balance.js';
 import { MECHANIC_DEFINITIONS, type MechanicDefinition } from '../../../src/data/mechanics.js';
 import { getAscensionModifiers } from '../../../src/services/ascension.js';
@@ -850,14 +851,12 @@ function handleRestNode(
   verbose: boolean,
   brain?: BotBrain,
 ): void {
-  const BASE_REST_HEAL_PCT = 0.20; // Reduced from 0.30 (2026-04-04): less healing creates HP pressure across the run
-
   if (brain) {
     // ── BotBrain-driven rest ──────────────────────────────────────────────
     const decision = brain.planRest({ hp: runState.hp, maxHp: runState.maxHp, deckSize: runState.deck.length });
 
     if (decision === 'heal') {
-      const healPct = BASE_REST_HEAL_PCT * ascMods.restHealMultiplier;
+      const healPct = REST_SITE_HEAL_PCT * ascMods.restHealMultiplier;
       const healAmt = Math.floor(runState.maxHp * healPct);
       runState.hp = Math.min(runState.maxHp, runState.hp + healAmt);
       if (verbose) console.log(`    [REST/bot] Healed ${healAmt}. HP: ${runState.hp}/${runState.maxHp}`);
@@ -871,7 +870,7 @@ function handleRestNode(
         if (verbose) console.log(`    [REST/bot] Meditated (removed card). Deck: ${runState.deck.length}`);
       } else {
         // Deck too small to remove, heal instead
-        const healPct = BASE_REST_HEAL_PCT * ascMods.restHealMultiplier;
+        const healPct = REST_SITE_HEAL_PCT * ascMods.restHealMultiplier;
         const healAmt = Math.floor(runState.maxHp * healPct);
         runState.hp = Math.min(runState.maxHp, runState.hp + healAmt);
         if (verbose) console.log(`    [REST/bot] Deck too small to meditate, healed ${healAmt}. HP: ${runState.hp}/${runState.maxHp}`);
@@ -889,8 +888,8 @@ function handleRestNode(
   const hpPct = runState.hp / runState.maxHp;
 
   if (hpPct < 0.5) {
-    // Heal 30% of max HP (ascension may reduce this)
-    const healPct = BASE_REST_HEAL_PCT * ascMods.restHealMultiplier;
+    // Heal REST_SITE_HEAL_PCT of max HP (ascension may reduce this)
+    const healPct = REST_SITE_HEAL_PCT * ascMods.restHealMultiplier;
     const healAmt = Math.floor(runState.maxHp * healPct);
     runState.hp = Math.min(runState.maxHp, runState.hp + healAmt);
     if (verbose) console.log(`    [REST] Healed ${healAmt}. HP: ${runState.hp}/${runState.maxHp}`);
