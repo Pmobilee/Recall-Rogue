@@ -30,9 +30,10 @@ If no subcommand is given, default to `status`.
 ```
 APP_ID=4547570
 PARTNER_ID=385085
-DEPOT_WINDOWS=4547571
-DEPOT_MACOS=4547572
+DEPOT_CONTENT=4547571
+DEPOT_WINDOWS=4547572
 DEPOT_LINUX=4547573
+DEPOT_MACOS=4547574
 PROJECT_ROOT=/Users/damion/CODE/Recall_Rogue
 TAURI_DIR=/Users/damion/CODE/Recall_Rogue/src-tauri
 STEAM_DIR=/Users/damion/CODE/Recall_Rogue/steam
@@ -184,7 +185,7 @@ Promote a build to the public default branch:
 ## Important Notes
 
 - **steamcmd authentication** is interactive (Steam Guard) — the first login must be done by the user in a terminal: `steamcmd +login <username> +quit`
-- **Depot IDs** (4547571/4547572/4547573) must match what's configured in the Steamworks dashboard. If the dashboard assigns different IDs, update the VDF files.
+- **Depot IDs** must match what's configured in the Steamworks dashboard: DEPOT_CONTENT=4547571, DEPOT_WINDOWS=4547572, DEPOT_LINUX=4547573, DEPOT_MACOS=4547574. Only Linux (4547573) and macOS (4547574) are active at launch.
 - **Cross-platform builds** (Windows/Linux) require GitHub Actions CI — see docs/deployment/steam.md
 - **Build size** is ~750MB for macOS (includes all game assets). This is normal for Steam.
 - **Version bumping**: Update `version` in both `package.json` and `src-tauri/tauri.conf.json` before release builds.
@@ -192,7 +193,7 @@ Promote a build to the public default branch:
 ## Steamworks Dashboard Checklist
 
 Before first upload, the user must configure in partner.steamgames.com:
-- [ ] Create depots (4547571 Windows, 4547572 macOS, 4547573 Linux)
+- [ ] Create depots (4547571 Content, 4547572 Windows, 4547573 Linux, 4547574 macOS)
 - [ ] Set launch options per OS (macOS: `Recall Rogue.app/Contents/MacOS/Recall Rogue`)
 - [ ] Create a `development` branch for testing
 - [ ] Set content descriptors and age ratings

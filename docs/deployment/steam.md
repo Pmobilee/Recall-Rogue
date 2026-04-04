@@ -11,9 +11,10 @@
 | Partner ID | 385085 |
 | Publisher | Bramblegate Games |
 | Developer | Damion Woods |
-| Windows Depot | 4547571 |
-| macOS Depot | 4547572 |
-| Linux Depot | 4547573 |
+| Content Depot | 4547571 (shared, not used in builds currently) |
+| Windows Depot | 4547572 (not shipping at launch) |
+| Linux + SteamOS Depot | 4547573 (active at launch) |
+| macOS Depot | 4547574 (active at launch) |
 
 ## Architecture
 
@@ -65,9 +66,9 @@ steamcmd +login <username> +run_app_build steam/app_build_4547570.vdf +quit
 
 ### VDF Configuration
 - `steam/app_build_4547570.vdf` — App-level config (references all depots)
-- `steam/depot_build_4547571.vdf` — Windows depot
-- `steam/depot_build_4547572.vdf` — macOS depot
+- `steam/depot_build_4547572.vdf` — Windows depot
 - `steam/depot_build_4547573.vdf` — Linux depot
+- `steam/depot_build_4547574.vdf` — macOS depot
 
 ### Branch Strategy
 | Branch | Purpose | Auto-set-live |
@@ -98,7 +99,7 @@ steamcmd +login <username> +run_app_build steam/app_build_4547570.vdf +quit
 ## Steamworks Dashboard Checklist
 
 Before first upload:
-- [ ] Create depots (4547571, 4547572, 4547573)
+- [ ] Create depots (4547571 Content, 4547572 Windows, 4547573 Linux, 4547574 macOS)
 - [ ] Set launch options per OS
 - [ ] Create `development` branch
 - [ ] Set content descriptors and age ratings
@@ -109,7 +110,7 @@ Before first upload:
 
 GitHub Actions workflow `.github/workflows/steam-build.yml` will:
 1. Build on macOS, Windows, Linux runners in parallel
-2. Upload all three depots via steamcmd
+2. Upload Linux (4547573) and macOS (4547574) depots via steamcmd
 3. Set live on staging branch
 4. Manual promotion to default via dashboard
 
