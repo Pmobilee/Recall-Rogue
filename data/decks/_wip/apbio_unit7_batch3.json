@@ -1,0 +1,1173 @@
+[
+  {
+    "id": "ap_bio_phylo_tree_def",
+    "quizQuestion": "What is a phylogenetic tree in evolutionary biology?",
+    "correctAnswer": "Branching diagram showing evolutionary relationships",
+    "distractors": [
+      "A chart ranking organisms by complexity from simple to advanced",
+      "A diagram showing the geographic distribution of species over time",
+      "A flowchart of biochemical reactions within an organism",
+      "A table comparing anatomical features of different species",
+      "A network showing predator-prey relationships in an ecosystem",
+      "A graph of population size changes over geological time",
+      "A map tracing migration routes of ancestral populations",
+      "A classification scheme based solely on physical appearance"
+    ],
+    "explanation": "A phylogenetic tree (or phylogram) is a branching diagram representing evolutionary relationships based on common ancestry and shared derived characters. Nodes represent common ancestors; branches represent lineages diverging over time.",
+    "difficulty": 1,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "phylogeny",
+      "tree-reading",
+      "Topic_7.9"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_cladogram_def",
+    "quizQuestion": "What is a cladogram?",
+    "correctAnswer": "Branching diagram grouping by shared derived characters",
+    "distractors": [
+      "A timeline showing when each species first appeared in the fossil record",
+      "A diagram that always represents evolutionary time on the x-axis",
+      "A tree scaled to show exact amounts of genetic change on each branch",
+      "A chart comparing homologous structures across vertebrate classes",
+      "A phylogenetic tree built exclusively from morphological data",
+      "A diagram showing hybridization events between related species",
+      "A map of species distributions across continents",
+      "A ranking of organisms by number of chromosomes"
+    ],
+    "explanation": "A cladogram groups organisms by synapomorphies (shared derived characters). Unlike chronograms or phylograms, branch lengths in a cladogram do not necessarily represent time or amount of change — only the pattern of common ancestry matters.",
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "phylogeny",
+      "cladistics",
+      "Topic_7.9"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_node_def",
+    "quizQuestion": "On a phylogenetic tree, what does a node (branch point) represent?",
+    "correctAnswer": "Most recent common ancestor of all lineages at that point",
+    "distractors": [
+      "An extinction event that eliminated an intermediate lineage",
+      "The point at which a species reached its peak population size",
+      "A mutation that created a new heritable trait in the lineage",
+      "The oldest known fossil specimen of a taxonomic group",
+      "A geographic barrier that separated two populations",
+      "The point where two species can no longer interbreed",
+      "A period of rapid evolution following a mass extinction",
+      "The midpoint between two living species in evolutionary time"
+    ],
+    "explanation": "Each node (branch point) on a phylogenetic tree represents the most recent common ancestor (MRCA) of all the taxa that diverge from it. Reading a tree involves identifying which taxa share the most recent common ancestor — those sharing the most recent node are most closely related.",
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "phylogeny",
+      "tree-reading",
+      "Topic_7.9"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_root_def",
+    "quizQuestion": "What does the root of a phylogenetic tree represent?",
+    "correctAnswer": "Most recent common ancestor of ALL taxa in the tree",
+    "distractors": [
+      "The most recently evolved organism in the tree",
+      "The taxon used as the outgroup for comparison",
+      "The organism with the most ancestral (primitive) features",
+      "The first organism to go extinct in the lineage",
+      "The taxon with the slowest rate of molecular evolution",
+      "The node with the highest number of descendant branches",
+      "The point where the two most distantly related taxa split",
+      "The taxon that serves as the reference for all other comparisons"
+    ],
+    "explanation": "The root of a phylogenetic tree is its base — it represents the single most recent common ancestor of every taxon included in the tree. It is typically determined by including an outgroup (a distantly related taxon that diverged before the group of interest).",
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "phylogeny",
+      "tree-reading",
+      "Topic_7.9"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_sister_taxa_def",
+    "quizQuestion": "What are sister taxa in phylogenetics?",
+    "correctAnswer": "Two groups sharing the most recent common ancestor",
+    "distractors": [
+      "Two taxa found living in the same geographic habitat today",
+      "Any two taxa connected to the same root node in a tree",
+      "Two species that can still interbreed to produce fertile offspring",
+      "Two distantly related taxa that evolved similar traits independently",
+      "Two species with identical DNA sequences at a given locus",
+      "Two populations of the same species separated by a barrier",
+      "Two taxa that appear adjacent on a cladogram regardless of ancestry",
+      "Two organisms that share the same number of chromosomes"
+    ],
+    "explanation": "Sister taxa are each other's closest evolutionary relatives — they are the two groups that diverged most recently from a shared common ancestor. On a phylogenetic tree, sister taxa are connected by the same node and separated by no other nodes.",
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "phylogeny",
+      "tree-reading",
+      "Topic_7.9"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_outgroup_def",
+    "quizQuestion": "What is an outgroup in phylogenetic analysis?",
+    "correctAnswer": "Taxon diverging before ingroup; identifies ancestral traits",
+    "distractors": [
+      "A taxon with more derived characters than any member of the ingroup",
+      "A species that went extinct before the ingroup taxa evolved",
+      "The taxon at the tip of the longest branch in a phylogenetic tree",
+      "Any organism that cannot interbreed with members of the study group",
+      "The taxon with the highest number of synapomorphies in the tree",
+      "A species chosen because it lives in a different geographic area",
+      "The most recently evolved member of the taxonomic group studied",
+      "A fossil taxon used to calibrate the molecular clock"
+    ],
+    "explanation": "The outgroup diverged from all ingroup taxa before the ingroup members diverged from each other. By comparing ingroup taxa to the outgroup, researchers can distinguish symplesiomorphies (ancestral traits, shared with outgroup) from synapomorphies (derived traits, absent in outgroup) — the basis of cladistic analysis.",
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "phylogeny",
+      "cladistics",
+      "Topic_7.9"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_monophyletic_def",
+    "quizQuestion": "What is a monophyletic group (clade) in cladistics?",
+    "correctAnswer": "A common ancestor and ALL of its descendants",
+    "distractors": [
+      "A common ancestor and some, but not all, of its descendants",
+      "A group of species with identical morphological features",
+      "All species sharing the same ecological niche or habitat",
+      "A set of species that cannot interbreed with species outside the group",
+      "A group defined by sharing a single derived character only",
+      "All descendants of two different ancestral species combined",
+      "A group of fossils from the same geological time period",
+      "Any taxon recognized by official taxonomic authorities"
+    ],
+    "explanation": "A monophyletic group (clade) includes one common ancestor and every single descendant of that ancestor — nothing excluded. It is the only evolutionarily meaningful grouping in cladistics. A paraphyletic group is invalid because it excludes some descendants.",
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "phylogeny",
+      "cladistics",
+      "Topic_7.9"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_paraphyletic_def",
+    "quizQuestion": "How does a paraphyletic group differ from a monophyletic group (clade)?",
+    "correctAnswer": "Paraphyletic = ancestor + SOME descendants; clade = ALL",
+    "distractors": [
+      "Paraphyletic includes only fossils; monophyletic includes only living species",
+      "Paraphyletic is based on behavior; monophyletic is based on genetics",
+      "Paraphyletic spans multiple time periods; monophyletic is from one era",
+      "Paraphyletic requires geographic isolation; monophyletic does not",
+      "Paraphyletic groups share no common ancestor; monophyletic groups do",
+      "Paraphyletic groups evolve faster; monophyletic groups are in stasis",
+      "Both require the same ancestors but differ in number of synapomorphies",
+      "Paraphyletic groups occur only in plants; monophyletic in animals"
+    ],
+    "explanation": "'Reptilia' excluding birds is the classic AP Bio example of a paraphyletic group — it includes the reptile common ancestor and most descendants but leaves out birds, which evolved from within the reptile lineage. Monophyletic groups include all descendants without exception.",
+    "difficulty": 3,
+    "funScore": 8,
+    "chainThemeId": 15,
+    "answerTypePoolId": "comparison_terms",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "phylogeny",
+      "cladistics",
+      "Topic_7.9"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_synapomorphy_def",
+    "quizQuestion": "What are synapomorphies and how are they used in phylogenetics?",
+    "correctAnswer": "Shared derived characters absent in outgroup; define clades",
+    "distractors": [
+      "Shared ancestral traits present in both the ingroup and outgroup",
+      "Identical DNA sequences shared between distantly related organisms",
+      "Convergent features that evolved independently in separate lineages",
+      "Vestigial structures that have lost their ancestral function",
+      "Characters shared by only two sister taxa but no other ingroup members",
+      "Traits that vary among individuals within a single population",
+      "Molecular markers used to calculate mutation rates in a lineage",
+      "Behavioral traits used to distinguish species in the field"
+    ],
+    "explanation": "Synapomorphies are shared derived characters — traits that evolved in a common ancestor of a clade and are found in all members of that clade but NOT in the outgroup. They are the diagnostic features that define monophyletic groups in cladistic analysis.",
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "phylogeny",
+      "cladistics",
+      "Topic_7.9"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_symplesiomorphy_def",
+    "quizQuestion": "How do symplesiomorphies differ from synapomorphies in cladistics?",
+    "correctAnswer": "Ancestral traits shared with outgroup; NOT clade-defining",
+    "distractors": [
+      "Symplesiomorphies are derived traits shared only within the ingroup",
+      "Symplesiomorphies are only found in extinct lineages, not living taxa",
+      "Symplesiomorphies are molecular data; synapomorphies are morphological",
+      "Symplesiomorphies define clades; synapomorphies define individual species",
+      "Symplesiomorphies occur by convergent evolution; synapomorphies by ancestry",
+      "Symplesiomorphies are always behavioral; synapomorphies are structural",
+      "Both are equally useful for determining evolutionary relationships",
+      "Symplesiomorphies appear late in development; synapomorphies appear early"
+    ],
+    "explanation": "Symplesiomorphies (shared ancestral characters) are traits inherited from a distant ancestor that are also present in the outgroup. Because they existed before the clade formed, they tell us nothing unique about the ingroup's common ancestry — only synapomorphies (shared derived characters absent in outgroup) are informative for building clades.",
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "comparison_terms",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "phylogeny",
+      "cladistics",
+      "Topic_7.9"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_parsimony_def",
+    "quizQuestion": "What is the parsimony principle in phylogenetics?",
+    "correctAnswer": "Tree topology requiring the fewest evolutionary changes",
+    "distractors": [
+      "The preferred tree topology is the one with the most branching points",
+      "Evolution always proceeds at the slowest possible rate",
+      "The oldest fossil taxon must be placed at the root of any tree",
+      "All branches on a phylogenetic tree must be equal in length",
+      "The preferred tree topology uses only molecular data, not morphology",
+      "Natural selection always favors the simplest phenotype in a population",
+      "Gene sequences evolve at a constant rate across all lineages",
+      "The most recent common ancestor is always most similar to living taxa"
+    ],
+    "explanation": "Parsimony (Occam's Razor applied to phylogenetics) selects the tree that minimizes the total number of evolutionary changes (mutations, character state changes) needed to explain the observed data. It assumes evolution is parsimonious — independent origins of the same trait (homoplasy) are assumed rare.",
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "phylogeny",
+      "methods",
+      "Topic_7.9"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_max_likelihood_def",
+    "quizQuestion": "What is the maximum likelihood method in phylogenetics?",
+    "correctAnswer": "Tree making observed sequences most probable under evo model",
+    "distractors": [
+      "A method that picks the tree with the fewest total character changes",
+      "A technique that uses only fossil evidence to build evolutionary trees",
+      "A method that ranks organisms by maximum number of shared traits",
+      "A statistical test comparing allele frequencies to H-W expectations",
+      "A method that selects the tree with the longest total branch length",
+      "A technique that measures molecular clock rates to date divergence",
+      "A method that uses geographic range overlap to infer relatedness",
+      "A Bayesian approach assuming all tree topologies are equally likely"
+    ],
+    "explanation": "Maximum likelihood uses a mathematical model of sequence evolution to calculate the probability of observing the actual DNA/protein data on each possible tree topology. The tree with the highest likelihood score is chosen. It is more computationally intensive than parsimony but statistically more rigorous.",
+    "difficulty": 4,
+    "funScore": 6,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "phylogeny",
+      "methods",
+      "Topic_7.9"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_molecular_phylo_def",
+    "quizQuestion": "What is molecular phylogenetics?",
+    "correctAnswer": "Building phylogenetic trees using DNA, RNA, or protein data",
+    "distractors": [
+      "Using microscopes to identify shared cellular features across species",
+      "Studying how molecules mutate within a single individual organism",
+      "Reconstructing ancestral proteins to test their biochemical function",
+      "Comparing genome size and chromosome number among related species",
+      "Analyzing chemical isotopes in fossils to date evolutionary events",
+      "Sequencing the genomes of extinct organisms from ancient DNA only",
+      "Using protein folding simulations to infer evolutionary relationships",
+      "Comparing metabolic pathway enzymes to classify bacteria"
+    ],
+    "explanation": "Molecular phylogenetics uses similarity in DNA, RNA, or protein sequences to infer evolutionary relationships. More similar sequences indicate more recent common ancestry. It is the dominant approach today because sequence data is abundant, objective, and amenable to quantitative analysis.",
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "phylogeny",
+      "methods",
+      "Topic_7.9"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_mono_vs_para_compare",
+    "quizQuestion": "How does a monophyletic clade differ from a paraphyletic group?",
+    "correctAnswer": "Monophyletic = ALL descendants; paraphyletic = SOME only",
+    "distractors": [
+      "Monophyletic groups are defined by morphology; paraphyletic by molecules",
+      "Monophyletic excludes fossils; paraphyletic includes extinct taxa",
+      "Monophyletic requires geographic isolation; paraphyletic does not",
+      "Monophyletic groups evolve faster; paraphyletic groups show stasis",
+      "Monophyletic groups have one synapomorphy; paraphyletic have many",
+      "Both are valid in cladistics but differ only in the number of members",
+      "Monophyletic applies to animals only; paraphyletic applies to plants",
+      "Monophyletic is determined by behavior; paraphyletic by genetics"
+    ],
+    "explanation": "The key distinction: a monophyletic group (clade) includes a common ancestor and every single one of its descendants — it is a complete evolutionary unit. A paraphyletic group excludes some descendants, making it evolutionarily incomplete and not recognized as valid in modern cladistics.",
+    "difficulty": 3,
+    "funScore": 8,
+    "chainThemeId": 15,
+    "answerTypePoolId": "comparison_terms",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "phylogeny",
+      "cladistics",
+      "Topic_7.9"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_bio_species_concept",
+    "quizQuestion": "What is the biological species concept?",
+    "correctAnswer": "Group that interbreeds to produce viable, fertile offspring",
+    "distractors": [
+      "A group of organisms sharing more than 95% DNA identity",
+      "A group defined solely by morphological similarity to a type specimen",
+      "Any population occupying a distinct geographic range",
+      "A lineage evolving separately from all other lineages over time",
+      "A group defined by reproductive output and generation time",
+      "A group sharing the same ecological niche and diet",
+      "Any group of organisms that can produce hybrids",
+      "A group defined by the number of chromosomes its members carry"
+    ],
+    "explanation": "The biological species concept (Ernst Mayr, 1942) defines a species by reproductive compatibility — members of the same species can interbreed and produce viable, fertile offspring. Members of different species are reproductively isolated. Its main limitation: it cannot apply to asexual organisms or fossils.",
+    "difficulty": 1,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "speciation",
+      "species-concepts",
+      "Topic_7.10"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_repro_isolation_def",
+    "quizQuestion": "What is reproductive isolation and why is it necessary for speciation?",
+    "correctAnswer": "Biological barriers preventing gene flow between populations",
+    "distractors": [
+      "Geographic separation that prevents populations from physically meeting",
+      "The inability to produce any offspring, including sterile hybrids",
+      "Behavioral differences that cause populations to occupy different niches",
+      "Differences in chromosome number that prevent cell division in hybrids",
+      "Ecological barriers that reduce but do not eliminate interbreeding",
+      "The process by which a population splits into two equal halves",
+      "A genetic incompatibility causing hybrid offspring to be born sick",
+      "Accumulation of mutations that make genomes incompatible over time"
+    ],
+    "explanation": "Reproductive isolation means biological barriers — not just distance — prevent gene flow between two populations. Without reproductive isolation, gene flow would homogenize the populations and prevent divergence. With it, each population evolves independently, eventually becoming separate species.",
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "speciation",
+      "isolation",
+      "Topic_7.10"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_prezygotic_def",
+    "quizQuestion": "What are prezygotic barriers in speciation?",
+    "correctAnswer": "Barriers preventing mating/fertilization before zygote forms",
+    "distractors": [
+      "Barriers that cause hybrid offspring to be infertile after birth",
+      "Geographic barriers that physically prevent two species from meeting",
+      "Genetic incompatibilities causing embryo failure after fertilization",
+      "Barriers that only operate during the larval or juvenile stage",
+      "Barriers that reduce hybrid fitness but allow zygote formation",
+      "Ecological pressures preventing two species from occupying same area",
+      "Chromosome incompatibilities that block mitosis in hybrid cells",
+      "Behavioral differences that arise after a zygote has formed"
+    ],
+    "explanation": "Prezygotic barriers act before a zygote is formed — they prevent mating or fertilization altogether. Types include: habitat isolation, temporal isolation, behavioral (ethological) isolation, mechanical isolation, and gametic isolation. They are generally more efficient than postzygotic barriers because no resources are wasted on inviable offspring.",
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "speciation",
+      "isolation",
+      "Topic_7.10"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_habitat_isolation",
+    "quizQuestion": "What is habitat (ecological) isolation as a prezygotic barrier?",
+    "correctAnswer": "Same-area species breed in different habitats; rarely meet",
+    "distractors": [
+      "Two species are geographically separated by a mountain range or ocean",
+      "Two species breed at different times of year or times of day",
+      "Two species have incompatible mating displays or pheromones",
+      "Two species produce gametes that cannot fuse due to protein mismatches",
+      "Two species produce hybrids that develop normally but are sterile",
+      "Two species have incompatible genital morphology preventing mating",
+      "Two species occupy the same habitat but produce inviable hybrid embryos",
+      "Two species are separated by a physical barrier that recently formed"
+    ],
+    "explanation": "Habitat isolation occurs when two species live in the same geographic area but use different microhabitats for breeding (e.g., different host plants, different forest layers, different water depths). They rarely encounter each other, so mating attempts rarely occur even though no physical barrier separates them.",
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "speciation",
+      "prezygotic-barriers",
+      "Topic_7.10"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_temporal_isolation",
+    "quizQuestion": "What is temporal isolation as a prezygotic reproductive barrier?",
+    "correctAnswer": "Species breed at different times; periods never overlap",
+    "distractors": [
+      "Two species live in different geographic regions separated by distance",
+      "Two species produce sterile hybrid offspring when they do mate",
+      "Two species have incompatible gametes that cannot fuse successfully",
+      "Two species have different courtship displays preventing mate recognition",
+      "Two species occupy different elevational zones within the same mountain",
+      "Two species diverged so recently that no reproductive barriers exist yet",
+      "Two species breed in the same season but in completely different habitats",
+      "Two species produce hybrid embryos that die before reaching adulthood"
+    ],
+    "explanation": "Temporal isolation is a prezygotic barrier based on timing: two species reproduce at different seasons, different times of day, or different years, so their reproductive periods never overlap. Examples: two oak species that release pollen two weeks apart; firefly species that flash at different times of night.",
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "speciation",
+      "prezygotic-barriers",
+      "Topic_7.10"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_behavioral_isolation",
+    "quizQuestion": "What is behavioral (ethological) isolation as a reproductive barrier?",
+    "correctAnswer": "Different mating signals prevent inter-species mate choice",
+    "distractors": [
+      "Differences in habitat use prevent the two species from ever meeting",
+      "Hybrid offspring have reduced survival due to behavioral abnormalities",
+      "Geographic distance causes populations to lose ability to interbreed",
+      "Incompatible reproductive structures physically prevent mating attempts",
+      "Sperm cannot penetrate the egg cell membrane of a different species",
+      "Different chromosomal arrangements prevent normal meiosis in hybrids",
+      "Populations breed at the same time but in slightly different locations",
+      "Selection against intermediate phenotypes reinforces species boundaries"
+    ],
+    "explanation": "Behavioral (ethological) isolation occurs when species differ in mating signals — visual displays, songs, pheromones, or courtship dances — so that individuals of different species do not recognize each other as potential mates and do not attempt to mate. This is one of the most common prezygotic barriers among animals.",
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "speciation",
+      "prezygotic-barriers",
+      "Topic_7.10"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_mechanical_isolation",
+    "quizQuestion": "What is mechanical isolation as a reproductive barrier?",
+    "correctAnswer": "Incompatible reproductive structures prevent mating",
+    "distractors": [
+      "Physical distance prevents populations from ever encountering each other",
+      "Hybrid embryos fail to develop due to chromosomal incompatibilities",
+      "Different mating seasons prevent the two species from encountering each other",
+      "Sperm and egg surface proteins are chemically incompatible",
+      "Hybrid offspring survive but cannot produce their own gametes",
+      "Different habitat preferences keep two species in separate microenvironments",
+      "Courtship behaviors are unrecognized by the other species",
+      "Seasonal migrations ensure the two species never occupy the same range"
+    ],
+    "explanation": "Mechanical isolation is a prezygotic barrier based on physical incompatibility of reproductive structures — flower shape incompatible with pollinator, or animal genitalia that do not fit together. Even if two species come into contact and attempt mating, copulation or pollination cannot physically occur.",
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "speciation",
+      "prezygotic-barriers",
+      "Topic_7.10"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_gametic_isolation",
+    "quizQuestion": "What is gametic isolation as a prezygotic barrier?",
+    "correctAnswer": "Sperm cannot fertilize other species egg; proteins mismatch",
+    "distractors": [
+      "Hybrid offspring are born but die immediately from genetic incompatibilities",
+      "Two species breed in separate seasons so gametes never overlap",
+      "Incompatible genital structures prevent sperm transfer between species",
+      "Two species produce gametes of incompatible size so fusion fails",
+      "Hybrid zygotes form but fail to implant or develop normally",
+      "Pheromone signals fail to attract individuals of the other species",
+      "Two species produce fertile hybrids but hybrids prefer to self-fertilize",
+      "Geographic barriers prevent sperm from reaching eggs of another species"
+    ],
+    "explanation": "Gametic isolation is a prezygotic barrier that acts at the level of fertilization: even if sperm of one species reaches the egg of another species, surface recognition proteins on the gametes are incompatible, preventing sperm-egg fusion and thus fertilization. Common in sea urchins and other broadcast spawners.",
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "speciation",
+      "prezygotic-barriers",
+      "Topic_7.10"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_postzygotic_def",
+    "quizQuestion": "What are postzygotic barriers in speciation?",
+    "correctAnswer": "Post-zygote barriers — hybrid has low viability or fertility",
+    "distractors": [
+      "Barriers that prevent sperm from reaching or penetrating an egg",
+      "Physical barriers that prevent individuals of two species from meeting",
+      "Barriers based on differences in mating season or time of day",
+      "Behaviors that cause individuals to avoid members of other species",
+      "Genetic barriers that prevent recombination during meiosis in hybrids",
+      "Chemical signals that block fertilization before a zygote forms",
+      "Ecological barriers that separate the breeding habitats of two species",
+      "Genetic incompatibilities that stop development before fertilization"
+    ],
+    "explanation": "Postzygotic barriers act after fertilization has occurred. The hybrid zygote forms but faces problems: reduced hybrid viability (embryo dies before maturity) or reduced hybrid fertility (adult hybrid is sterile). Both mechanisms prevent hybrids from passing genes to the next generation, maintaining species boundaries.",
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "speciation",
+      "postzygotic-barriers",
+      "Topic_7.10"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_hybrid_viability",
+    "quizQuestion": "What is reduced hybrid viability as a postzygotic barrier?",
+    "correctAnswer": "Hybrid embryos fail to develop or die pre-reproduction",
+    "distractors": [
+      "Hybrid adults survive but cannot produce functional gametes",
+      "Hybrid offspring are born healthy but rejected by both parent species",
+      "Hybrid zygotes form but fail to implant in the uterus",
+      "Hybrid offspring have reduced immune function and die from infection",
+      "Hybrid offspring reach adulthood but avoid mating with either parent species",
+      "Hybrid embryos develop fully but have malformed reproductive organs",
+      "Hybrid adults are fertile but produce fewer offspring than purebred ones",
+      "Hybrid zygotes fail because gametes cannot fuse in the first place"
+    ],
+    "explanation": "Reduced hybrid viability is a postzygotic barrier in which the hybrid organism — after fertilization — either fails to complete development or dies before reaching reproductive age. Genetic incompatibilities between the two parental genomes disrupt normal development. This prevents any gene flow between species even when crossing occurs.",
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "speciation",
+      "postzygotic-barriers",
+      "Topic_7.10"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_hybrid_fertility",
+    "quizQuestion": "Which organism is the classic example of reduced hybrid fertility as a postzygotic barrier?",
+    "correctAnswer": "Mule (horse × donkey) — survives to adulthood but is sterile",
+    "distractors": [
+      "Liger (lion × tiger hybrid) — dies before reaching adulthood",
+      "Wholphin (whale × dolphin hybrid) — fertile but rarely mates",
+      "Grolar bear (grizzly × polar bear hybrid) — offspring have lower survival",
+      "Coywolf (coyote × wolf hybrid) — viable and fertile in most regions",
+      "Zedonk (zebra × donkey hybrid) — dies in early embryonic development",
+      "Narwhal-beluga hybrid — sterile only in cold Arctic waters",
+      "Hybrid sunflower — fertile but grows in separate habitat zones",
+      "Pizzly bear (polar × grizzly hybrid) — fully fertile and reproductively normal"
+    ],
+    "explanation": "The mule (horse mare × donkey jack) is the textbook example of reduced hybrid fertility. Mules are healthy, strong, long-lived hybrids — but they are sterile. Horses have 64 chromosomes and donkeys have 62, so mules have 63. The odd chromosome number prevents normal meiosis and gamete production.",
+    "difficulty": 2,
+    "funScore": 9,
+    "chainThemeId": 15,
+    "answerTypePoolId": "organism_names",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "speciation",
+      "postzygotic-barriers",
+      "Topic_7.10"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_allopatric_speciation",
+    "quizQuestion": "How does allopatric speciation differ from sympatric speciation?",
+    "correctAnswer": "Allopatric = geographic isolation; sympatric = same area",
+    "distractors": [
+      "Allopatric is faster; sympatric always requires thousands of generations",
+      "Allopatric applies only to plants; sympatric applies only to animals",
+      "Allopatric produces prezygotic barriers only; sympatric postzygotic only",
+      "Allopatric requires polyploidy; sympatric requires geographic barriers",
+      "Allopatric involves genetic drift only; sympatric involves selection only",
+      "Allopatric species always reconverge; sympatric species never interbreed again",
+      "Allopatric needs a founding event; sympatric begins with a bottleneck",
+      "Both require reproductive isolation but differ only in time scale"
+    ],
+    "explanation": "Allopatric speciation (Greek: 'allos' = other, 'patria' = homeland) requires geographic isolation — a physical barrier (mountain, river, ocean) separates populations, which then evolve independently until reproductively isolated. Sympatric speciation occurs within the same geographic area without physical separation, most commonly in plants through polyploidy (genome duplication).",
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": 15,
+    "answerTypePoolId": "comparison_terms",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "speciation",
+      "modes-of-speciation",
+      "Topic_7.10"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_sympatric_speciation",
+    "quizQuestion": "What is sympatric speciation and what makes it common in plants?",
+    "correctAnswer": "Same-area speciation; plants speciate via polyploidy",
+    "distractors": [
+      "Speciation driven by geographic isolation on isolated islands or peaks",
+      "Speciation caused by a bottleneck reducing a population to a few individuals",
+      "Speciation through gradual accumulation of barriers over millions of years",
+      "Speciation caused by a single mutation creating a new species instantly in animals",
+      "Speciation occurring only in parasites that colonize a new host species",
+      "Speciation requiring populations separated for at least 10,000 generations",
+      "Speciation triggered when founders colonize a new, unoccupied habitat",
+      "Speciation requiring both allopatry and hybridization working together"
+    ],
+    "explanation": "Sympatric speciation happens in the same geographic area without physical barriers. It is rare in animals but common in plants because plants can undergo polyploidy — accidental chromosome doubling creates a tetraploid plant that is reproductively isolated from the diploid parent population immediately (postzygotic: triploid offspring are sterile).",
+    "difficulty": 3,
+    "funScore": 8,
+    "chainThemeId": 15,
+    "answerTypePoolId": "comparison_terms",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "speciation",
+      "modes-of-speciation",
+      "Topic_7.10"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_adaptive_radiation_def",
+    "quizQuestion": "What is adaptive radiation in evolution?",
+    "correctAnswer": "Rapid diversification from single ancestor into many species",
+    "distractors": [
+      "Slow, gradual accumulation of adaptations within a single lineage over time",
+      "The return of a lineage to a simpler ancestral body plan after change",
+      "Extinction of many related species leaving only one survivor lineage",
+      "A period of evolutionary stasis following colonization of a new habitat",
+      "Independent evolution of similar traits in distantly related lineages",
+      "Geographic spread of a single species across multiple continents",
+      "Rapid increase in mutation rate triggered by environmental stress",
+      "Hybridization of two species to produce a third, more fit species"
+    ],
+    "explanation": "Adaptive radiation occurs when one ancestral species rapidly diversifies into many descendant species, each adapted to a different ecological niche. Classic examples: Darwin's finches (14-15 species from one South American ancestor), Hawaiian honeycreepers, cichlid fish in African Rift Lakes, and Australian marsupials after continental isolation.",
+    "difficulty": 2,
+    "funScore": 9,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "speciation",
+      "macroevolution",
+      "Topic_7.10"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_punctuated_equilibrium",
+    "quizQuestion": "How does punctuated equilibrium differ from phyletic gradualism?",
+    "correctAnswer": "Long stasis + rapid bursts of change; vs. slow gradualism",
+    "distractors": [
+      "Punctuated equilibrium requires geographic isolation; gradualism does not",
+      "Punctuated equilibrium applies only to plants; gradualism applies to animals",
+      "Punctuated equilibrium predicts more transitional fossils than gradualism",
+      "Punctuated equilibrium requires large populations; gradualism occurs in small ones",
+      "Punctuated equilibrium is driven by mutation only; gradualism by selection only",
+      "Both predict the same fossil record patterns but differ in molecular mechanisms",
+      "Punctuated equilibrium requires sexual reproduction; gradualism can be asexual",
+      "Punctuated equilibrium applies to behavior only; gradualism to morphology only"
+    ],
+    "explanation": "Punctuated equilibrium (proposed by Gould and Eldredge, 1972) holds that most evolutionary change occurs in rapid bursts (geologically speaking) associated with speciation events, followed by long periods of little morphological change (stasis). Phyletic gradualism predicts slow, steady change throughout a lineage's history. The fossil record often shows gaps consistent with punctuated equilibrium.",
+    "difficulty": 3,
+    "funScore": 8,
+    "chainThemeId": 15,
+    "answerTypePoolId": "comparison_terms",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "speciation",
+      "macroevolution",
+      "Topic_7.10"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_earth_age_life",
+    "quizQuestion": "Earth formed approximately {4.6} billion years ago, and the earliest evidence of life (stromatolites) dates to approximately how many billion years ago?",
+    "correctAnswer": "{3.5} billion years ago",
+    "distractors": [
+      "{2.4} billion years ago",
+      "{1.8} billion years ago",
+      "{4.1} billion years ago",
+      "{2.8} billion years ago",
+      "{0.541} billion years ago",
+      "{4.4} billion years ago",
+      "{1.5} billion years ago",
+      "{3.0} billion years ago"
+    ],
+    "explanation": "Earth formed ~4.6 billion years ago (bya). The oldest direct evidence of life — stromatolites (layered structures built by cyanobacteria-like organisms) — dates to ~3.5 bya in Australia's Pilbara region. This means life appeared within ~1 billion years of Earth's formation, suggesting abiogenesis may not be vanishingly rare.",
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": 15,
+    "answerTypePoolId": "bracket_numbers",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "origins-of-life",
+      "geological-time",
+      "Topic_7.12"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_miller_urey_exp",
+    "quizQuestion": "What did the Miller-Urey experiment (1953) demonstrate about the origin of life?",
+    "correctAnswer": "Amino acids form abiotically from simple inorganic gases",
+    "distractors": [
+      "RNA can self-replicate without protein enzymes under early Earth conditions",
+      "The first cells formed by endosymbiosis of two different prokaryotes",
+      "Photosynthesis evolved before cellular respiration in early life forms",
+      "Lipid bilayers spontaneously enclose nucleic acids to form protocells",
+      "Oxygen was present in the early Earth atmosphere before life evolved",
+      "DNA replaced RNA as the primary genetic material within the first billion years",
+      "Life originated at deep-sea hydrothermal vents, not at the ocean surface",
+      "Viruses were the first self-replicating entities in the prebiotic world"
+    ],
+    "explanation": "Stanley Miller and Harold Urey (1953) simulated early Earth conditions — reduced gases (CH₄, NH₃, H₂, water vapor) with electrical sparks to simulate lightning. The result: amino acids and other organic molecules formed spontaneously without living organisms (abiotic synthesis). This showed that the chemical building blocks of life could arise under prebiotic conditions.",
+    "difficulty": 2,
+    "funScore": 9,
+    "chainThemeId": 15,
+    "answerTypePoolId": "experiment_terms",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "origins-of-life",
+      "experiments",
+      "Topic_7.12"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_abiotic_synthesis_def",
+    "quizQuestion": "What is abiotic synthesis in the context of the origin of life?",
+    "correctAnswer": "Organic molecules form from inorganic precursors abiotically",
+    "distractors": [
+      "The synthesis of ATP by primitive mitochondria in early eukaryotic cells",
+      "The formation of DNA from RNA templates without protein enzymes",
+      "The process by which protocells divide to produce daughter cells",
+      "Photosynthesis carried out by early cyanobacteria in shallow seas",
+      "The spontaneous assembly of lipid bilayer membranes from fatty acids",
+      "The production of proteins from amino acids by primitive ribosomes",
+      "Transfer of organic molecules between species via horizontal gene transfer",
+      "Chemical breakdown of organic matter by early heterotrophic bacteria"
+    ],
+    "explanation": "Abiotic synthesis is the non-biological formation of organic molecules — amino acids, nucleotides, sugars, lipids — from inorganic raw materials (CO₂, NH₃, H₂, H₂O) under prebiotic conditions. The Miller-Urey experiment is the classic demonstration. Subsequent research showed abiotic synthesis also occurs at hydrothermal vents and even in meteorites.",
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "origins-of-life",
+      "abiogenesis",
+      "Topic_7.12"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_rna_world_def",
+    "quizQuestion": "What does the RNA world hypothesis propose about the origin of life?",
+    "correctAnswer": "RNA as both genetic material and catalyst before DNA/protein",
+    "distractors": [
+      "DNA was the first self-replicating molecule in the prebiotic world",
+      "Proteins evolved before nucleic acids and catalyzed the first genetic reactions",
+      "Life originated from a lipid-enclosed packet of amino acids with no nucleic acid",
+      "RNA is a derived molecule that replaced early protein-based genetic systems",
+      "Ribosomes were the first self-replicating structures on the early Earth",
+      "RNA world proposes that viruses were the ancestors of the first cells",
+      "The first cells used both DNA and RNA simultaneously from the start",
+      "RNA was used for energy transfer only; DNA carried all early genetic information"
+    ],
+    "explanation": "The RNA world hypothesis proposes that early life used RNA for BOTH information storage (like DNA today) AND catalysis (like protein enzymes today). This solves the chicken-and-egg problem of which came first — protein enzymes (needed to make DNA) or DNA (needed to make proteins). Key evidence: ribozymes — RNA molecules with enzymatic activity — still exist today.",
+    "difficulty": 3,
+    "funScore": 9,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "origins-of-life",
+      "rna-world",
+      "Topic_7.13"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_ribozymes_def",
+    "quizQuestion": "What are ribozymes and why are they important evidence for the RNA world hypothesis?",
+    "correctAnswer": "Catalytic RNA molecules; show RNA can be gene and enzyme",
+    "distractors": [
+      "tRNA",
+      "snRNA",
+      "microRNA",
+      "Ribosomal proteins that catalyze peptide bond formation in all organisms",
+      "DNA sequences encoding catalytic protein enzymes in all genomes",
+      "Lipid-protein complexes that formed the first primitive cell membranes",
+      "Viral RNA molecules that replicate independently of the host cell",
+      "NADPH"
+    ],
+    "explanation": "Ribozymes are RNA molecules that catalyze specific chemical reactions — they are biological catalysts (like enzymes) made of RNA rather than protein. Examples: self-splicing introns, the peptidyl transferase activity of the ribosome (the rRNA is the catalyst, not the protein). Their existence in modern cells supports the RNA world hypothesis — they are molecular fossils of the RNA-first world.",
+    "difficulty": 3,
+    "funScore": 9,
+    "chainThemeId": 15,
+    "answerTypePoolId": "molecule_names",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "origins-of-life",
+      "rna-world",
+      "Topic_7.13"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_protocells_def",
+    "quizQuestion": "What are protocells in the context of the origin of life?",
+    "correctAnswer": "Lipid bilayer vesicles that self-assemble; can enclose RNA",
+    "distractors": [
+      "The first true prokaryotic cells formed approximately 3.5 billion years ago",
+      "Viral particles that preceded cellular life in the prebiotic ocean",
+      "Protein-based aggregates that catalyzed the first biochemical reactions",
+      "Clay mineral surfaces that acted as templates for nucleic acid assembly",
+      "Hydrothermal vent structures that housed early chemosynthetic reactions",
+      "Eukaryotic cells formed by endosymbiosis of two prokaryotic partners",
+      "The first cells to perform photosynthesis and release oxygen",
+      "Coacervates composed entirely of proteins with no lipid bilayer"
+    ],
+    "explanation": "Protocells are pre-cellular structures — lipid bilayer vesicles that spontaneously self-assemble when fatty acids are mixed in water. They can enclose RNA and other molecules, creating a chemical environment separate from the outside. They represent a plausible step between free-floating RNA molecules and the first true cells with bounded compartments.",
+    "difficulty": 3,
+    "funScore": 8,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "origins-of-life",
+      "first-cells",
+      "Topic_7.12"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_endosymbiosis_def",
+    "quizQuestion": "What does endosymbiosis theory (Lynn Margulis, 1967) propose about eukaryotic organelles?",
+    "correctAnswer": "Mitochondria from bacteria; chloroplasts from cyanobacteria",
+    "distractors": [
+      "Mitochondria evolved from the folding of the prokaryotic plasma membrane inward",
+      "Chloroplasts evolved from a modification of the endoplasmic reticulum membrane",
+      "Both organelles arose by gene duplication in an early eukaryote",
+      "Mitochondria and chloroplasts evolved simultaneously from a single bacterial ancestor",
+      "The nucleus evolved by engulfing a DNA-containing archaeal cell",
+      "Mitochondria evolved from viral infections of ancestral eukaryotic cells",
+      "Chloroplasts arose when algae were engulfed by an early animal-like cell",
+      "Both organelles evolved from self-replicating RNA molecules in early eukaryotes"
+    ],
+    "explanation": "Lynn Margulis proposed that mitochondria and chloroplasts were once free-living bacteria that were engulfed (but not digested) by a host cell. Evidence: (1) double membrane — inner from bacterium, outer from host; (2) own circular DNA like bacteria; (3) 70S ribosomes like bacteria (eukaryotic cytoplasm has 80S); (4) divide by binary fission, not mitosis.",
+    "difficulty": 2,
+    "funScore": 9,
+    "chainThemeId": 15,
+    "answerTypePoolId": "term_definitions",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "origins-of-life",
+      "endosymbiosis",
+      "Topic_7.13"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_prokaryote_2billion",
+    "quizQuestion": "Prokaryotes were the only life forms on Earth for approximately how long before the first eukaryotes evolved?",
+    "correctAnswer": "{2} billion years (from ~3.5 bya to ~1.5-1.8 bya)",
+    "distractors": [
+      "{0.541} billion years (the length of the Phanerozoic Eon)",
+      "{4.6} billion years (the entire age of Earth)",
+      "{1} billion years (from ~2.5 bya to ~1.5 bya)",
+      "{0.375} billion years (since Tiktaalik appeared)",
+      "{3.5} billion years (the total span of life on Earth)",
+      "{0.1} billion years (a geologically brief interval)",
+      "{4.1} billion years (nearly the entire history of Earth)",
+      "{2.4} billion years (the Great Oxidation Event to present)"
+    ],
+    "explanation": "The first prokaryotes appeared ~3.5 billion years ago. The first eukaryotic cells (with membrane-bound nucleus and organelles) appeared ~1.5-1.8 billion years ago. This means prokaryotes dominated Earth for roughly 2 billion years — more than half of Earth's history — before complex eukaryotic cells evolved, likely through endosymbiosis.",
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 15,
+    "answerTypePoolId": "bracket_numbers",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "origins-of-life",
+      "geological-time",
+      "Topic_7.13"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_great_oxidation_event",
+    "quizQuestion": "What was the Great Oxidation Event, and when did it occur approximately?",
+    "correctAnswer": "Cyanobacterial O₂ accumulated in atmosphere ~{2.4} bya",
+    "distractors": [
+      "Mass extinction by asteroid impact eliminated most marine life ~{0.066} bya",
+      "First multicellular organisms appeared in shallow marine environments ~{0.6} bya",
+      "Rapid CO₂ increase from volcanic eruptions altered early atmosphere ~{3.5} bya",
+      "Evolution of the ozone layer allowed life to colonize land ~{0.45} bya",
+      "Global glaciation (Snowball Earth) nearly eliminated all life ~{0.7} bya",
+      "Aerobic respiration spread from mitochondria-containing eukaryotes ~{1.5} bya",
+      "Atmospheric oxygen spike caused by evolution of land plants ~{0.4} bya",
+      "First photosynthetic reactions by green sulfur bacteria ~{3.2} bya"
+    ],
+    "explanation": "The Great Oxidation Event (~2.4 billion years ago) was the first major rise of free oxygen in Earth's atmosphere, produced by cyanobacteria via oxygenic photosynthesis. This transformed the atmosphere from reducing to oxidizing, making aerobic respiration possible and setting the stage for the evolution of mitochondria-bearing eukaryotes and eventually complex life.",
+    "difficulty": 2,
+    "funScore": 9,
+    "chainThemeId": 15,
+    "answerTypePoolId": "bracket_numbers",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "origins-of-life",
+      "geological-time",
+      "Topic_7.13"
+    ],
+    "quizMode": "multiple_choice"
+  },
+  {
+    "id": "ap_bio_cambrian_explosion",
+    "quizQuestion": "What was the Cambrian explosion, and when did it occur?",
+    "correctAnswer": "Most animal phyla appeared in fossil record ~{541} mya",
+    "distractors": [
+      "Mass extinction eliminating ~96% of marine species ~{252} mya",
+      "Rapid diversification of flowering plants and pollinators ~{100} mya",
+      "First appearance of vertebrates on land after fish evolved legs ~{375} mya",
+      "Period of rapid mountain building isolating many animal populations ~{300} mya",
+      "Mammal diversification after extinction of non-avian dinosaurs ~{66} mya",
+      "First multicellular organisms in the Ediacaran period ~{600} mya",
+      "Rapid marine biodiversity increase caused by rising sea levels ~{450} mya",
+      "Colonization of land by first arthropods and primitive plants ~{430} mya"
+    ],
+    "explanation": "The Cambrian explosion (~541 million years ago) was a geologically rapid diversification (~10-25 million years) during which most modern animal body plans (phyla) first appeared in the fossil record. It marks the start of the Phanerozoic Eon. Possible triggers include increased oxygen, evolution of predation, and changes in ocean chemistry. Famous for the Burgess Shale fauna.",
+    "difficulty": 2,
+    "funScore": 9,
+    "chainThemeId": 15,
+    "answerTypePoolId": "bracket_numbers",
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "origins-of-life",
+      "geological-time",
+      "macroevolution",
+      "Topic_7.13"
+    ],
+    "quizMode": "multiple_choice"
+  }
+]

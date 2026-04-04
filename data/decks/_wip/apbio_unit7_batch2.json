@@ -1,0 +1,1220 @@
+[
+  {
+    "id": "ap_bio_hw_principle",
+    "quizQuestion": "What does the Hardy-Weinberg principle state about allele frequencies in a population?",
+    "correctAnswer": "Allele frequencies stay constant without evolution",
+    "distractors": [
+      "Allele frequencies increase by 1% each generation",
+      "Only dominant alleles are maintained over time",
+      "Allele frequencies always shift toward Hardy equilibrium",
+      "Recessive alleles are eliminated over many generations",
+      "Frequencies change only when mutation occurs",
+      "Only fit alleles persist in a large population",
+      "Genotype frequencies drift randomly each generation",
+      "Allele frequencies equilibrate after one generation of selection"
+    ],
+    "explanation": "Hardy-Weinberg principle: in the absence of evolution, allele frequencies and genotype frequencies in a population remain constant from generation to generation. It describes a theoretical non-evolving population.",
+    "difficulty": 2,
+    "funScore": 8,
+    "answerTypePoolId": "term_definitions",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Hardy-Weinberg",
+      "Population Genetics",
+      "Topic 7.5"
+    ]
+  },
+  {
+    "id": "ap_bio_hw_allele_eq",
+    "quizQuestion": "What is the Hardy-Weinberg allele frequency equation?",
+    "correctAnswer": "p + q = 1",
+    "distractors": [
+      "p² + q² = 1",
+      "p + q = 2",
+      "2p + q = 1",
+      "p × q = 0.5",
+      "p² + 2pq = 1",
+      "p + 2q = 1",
+      "p - q = 0",
+      "p² + q = 1"
+    ],
+    "explanation": "Hardy-Weinberg allele frequency equation: p + q = 1, where p = frequency of the dominant allele and q = frequency of the recessive allele. All allele frequencies at a locus must sum to 1.",
+    "difficulty": 2,
+    "funScore": 8,
+    "answerTypePoolId": "bracket_numbers",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Hardy-Weinberg",
+      "Population Genetics",
+      "Topic 7.5"
+    ]
+  },
+  {
+    "id": "ap_bio_hw_genotype_eq",
+    "quizQuestion": "What is the Hardy-Weinberg genotype frequency equation?",
+    "correctAnswer": "p² + 2pq + q² = 1",
+    "distractors": [
+      "p + 2pq + q = 1",
+      "p² + pq + q² = 1",
+      "2p² + 2pq + 2q² = 1",
+      "p² + q² = 1",
+      "p² - 2pq + q² = 1",
+      "p + pq + q = 1",
+      "p³ + 2pq + q³ = 1",
+      "p² + 2q + q² = 1"
+    ],
+    "explanation": "Hardy-Weinberg genotype frequency equation: p² + 2pq + q² = 1, where p² = homozygous dominant frequency, 2pq = heterozygous frequency, and q² = homozygous recessive frequency.",
+    "difficulty": 2,
+    "funScore": 9,
+    "answerTypePoolId": "bracket_numbers",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Hardy-Weinberg",
+      "Population Genetics",
+      "Topic 7.5"
+    ]
+  },
+  {
+    "id": "ap_bio_hw_five_conditions",
+    "quizQuestion": "Which set correctly lists all five conditions required for Hardy-Weinberg equilibrium?",
+    "correctAnswer": "No mutation, selection, gene flow, drift; random mating",
+    "distractors": [
+      "No mutation, no selection, large population, no predators",
+      "Random mating, constant population size, no emigration",
+      "No genetic drift, stable environment, sexual reproduction",
+      "No selection, fixed allele frequencies, no recombination",
+      "No mutation, random mating, no immigration, stable climate",
+      "Large population, no selection, polyploidy allowed",
+      "Random mating, no extinction events, constant generation time",
+      "No mutation, no selection, sexual reproduction, Hardy's law"
+    ],
+    "explanation": "Five conditions for Hardy-Weinberg equilibrium: (1) no mutation, (2) no natural selection, (3) no gene flow, (4) no genetic drift (infinitely large population), and (5) random mating. Violation of any one means the population is evolving.",
+    "difficulty": 2,
+    "funScore": 9,
+    "answerTypePoolId": "experiment_terms",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Hardy-Weinberg",
+      "Population Genetics",
+      "Topic 7.5"
+    ]
+  },
+  {
+    "id": "ap_bio_hw_violation",
+    "quizQuestion": "What does it mean if a population's allele frequencies deviate from Hardy-Weinberg expectations?",
+    "correctAnswer": "At least one H-W condition is violated; evolving",
+    "distractors": [
+      "The population has reached genetic equilibrium",
+      "The population is too small to measure accurately",
+      "Dominant alleles are becoming fixed in the population",
+      "Recessive alleles are being eliminated by selection",
+      "The population will return to equilibrium within one generation",
+      "The founder effect has just occurred in the population",
+      "Mutation rates have exceeded the recombination rate",
+      "The population has too many heterozygotes for equilibrium"
+    ],
+    "explanation": "If any one of the five Hardy-Weinberg conditions is violated, allele frequencies will change — the population IS evolving. H-W serves as a null hypothesis; deviations indicate which evolutionary forces are acting.",
+    "difficulty": 2,
+    "funScore": 8,
+    "answerTypePoolId": "experiment_terms",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Hardy-Weinberg",
+      "Population Genetics",
+      "Topic 7.5"
+    ]
+  },
+  {
+    "id": "ap_bio_hw_null_hypothesis",
+    "quizQuestion": "How is Hardy-Weinberg equilibrium used as a scientific tool in population genetics?",
+    "correctAnswer": "Null hypothesis; deviations reveal evolutionary forces",
+    "distractors": [
+      "To calculate the exact mutation rate in a population",
+      "To predict which alleles will become fixed over time",
+      "To determine how many generations until a trait disappears",
+      "As a baseline to measure individual organism fitness",
+      "To calculate the optimal population size for gene flow",
+      "To model how selection coefficients change each generation",
+      "To predict speciation rates in allopatric populations",
+      "As a tool to identify polygenic traits from monogenic ones"
+    ],
+    "explanation": "Hardy-Weinberg equilibrium serves as a null hypothesis: real populations are compared to H-W expectations, and deviations indicate which evolutionary forces (mutation, selection, gene flow, drift, nonrandom mating) are acting.",
+    "difficulty": 3,
+    "funScore": 8,
+    "answerTypePoolId": "experiment_terms",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Hardy-Weinberg",
+      "Population Genetics",
+      "Topic 7.5"
+    ]
+  },
+  {
+    "id": "ap_bio_hw_calc_step1",
+    "quizQuestion": "In a Hardy-Weinberg calculation, if you know the frequency of the homozygous recessive phenotype (q²), what is your first step?",
+    "correctAnswer": "Take the square root of q² to find q",
+    "distractors": [
+      "Subtract q² from 1 to find p²",
+      "Divide q² by 2 to find the heterozygote frequency",
+      "Multiply q² by the population size to find allele count",
+      "Add q² to p² to confirm they equal 1",
+      "Square q² again to find the dominant allele frequency",
+      "Subtract q² from p to find gene flow rate",
+      "Multiply q² by p² to find the Hardy-Weinberg constant",
+      "Use q² directly as the recessive allele frequency"
+    ],
+    "explanation": "Hardy-Weinberg calculation step 1: if the homozygous recessive phenotype frequency is q², take the square root to find q (the recessive allele frequency). Then p = 1 - q, and 2pq gives the carrier (heterozygote) frequency.",
+    "difficulty": 3,
+    "funScore": 8,
+    "answerTypePoolId": "experiment_terms",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Hardy-Weinberg",
+      "Population Genetics",
+      "Topic 7.5"
+    ]
+  },
+  {
+    "id": "ap_bio_hw_calc_step2",
+    "quizQuestion": "In Hardy-Weinberg math, once you have found q, how do you find p?",
+    "correctAnswer": "p = 1 - q",
+    "distractors": [
+      "p = q²",
+      "p = 1 + q",
+      "p = 2q",
+      "p = q / 2",
+      "p = √q",
+      "p = 1 / q",
+      "p = q - 1",
+      "p = 2pq - q"
+    ],
+    "explanation": "Hardy-Weinberg calculation step 2: p = 1 - q. Since p + q = 1, the dominant allele frequency equals 1 minus the recessive allele frequency.",
+    "difficulty": 2,
+    "funScore": 8,
+    "answerTypePoolId": "experiment_terms",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Hardy-Weinberg",
+      "Population Genetics",
+      "Topic 7.5"
+    ]
+  },
+  {
+    "id": "ap_bio_hw_worked_example",
+    "quizQuestion": "If 16% of a population shows a recessive phenotype (q² = 0.16), what is the carrier (heterozygote) frequency?",
+    "correctAnswer": "48% (2pq = 0.48)",
+    "distractors": [
+      "16% (same as the recessive phenotype frequency)",
+      "36% (equal to p²)",
+      "40% (equal to q alone)",
+      "60% (equal to p alone)",
+      "32% (double the recessive frequency)",
+      "24% (half of p)",
+      "80% (p + q combined)",
+      "8% (half of q²)"
+    ],
+    "explanation": "Hardy-Weinberg worked example: q² = 0.16 → q = 0.4 → p = 0.6 → carrier frequency 2pq = 2(0.6)(0.4) = 0.48 = 48%. Note that carriers are far more common than homozygous recessives.",
+    "difficulty": 3,
+    "funScore": 9,
+    "answerTypePoolId": "bracket_numbers",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Hardy-Weinberg",
+      "Population Genetics",
+      "Topic 7.5"
+    ]
+  },
+  {
+    "id": "ap_bio_hw_heterozygote_freq",
+    "quizQuestion": "In Hardy-Weinberg terms, what does 2pq represent?",
+    "correctAnswer": "The frequency of heterozygous (carrier) individuals",
+    "distractors": [
+      "The frequency of homozygous dominant individuals",
+      "The frequency of homozygous recessive individuals",
+      "The combined frequency of both homozygous genotypes",
+      "The frequency of individuals who express the recessive phenotype",
+      "The probability that any two alleles are identical",
+      "The rate of new mutation per generation",
+      "The proportion of the population under selection",
+      "The frequency of individuals with two dominant alleles"
+    ],
+    "explanation": "In Hardy-Weinberg, 2pq = frequency of heterozygotes — individuals who carry one copy of the recessive allele but do not express the recessive phenotype. These carriers are often more numerous than homozygous recessives.",
+    "difficulty": 3,
+    "funScore": 8,
+    "answerTypePoolId": "bracket_numbers",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Hardy-Weinberg",
+      "Population Genetics",
+      "Topic 7.5"
+    ]
+  },
+  {
+    "id": "ap_bio_hw_diploid_sexual",
+    "quizQuestion": "What type of organisms does the standard Hardy-Weinberg model apply to?",
+    "correctAnswer": "Diploid, sexually reproducing organisms",
+    "distractors": [
+      "Any organism with heritable genetic variation",
+      "Haploid organisms only, such as bacteria",
+      "Asexually reproducing organisms with stable mutation rates",
+      "Organisms with overlapping generations only",
+      "Organisms with more than two alleles at every locus",
+      "Any population in a stable environment",
+      "Polyploid plants with multiple chromosome sets",
+      "Organisms that exclusively reproduce by budding"
+    ],
+    "explanation": "Hardy-Weinberg applies to diploid, sexually reproducing organisms. It can be extended to X-linked loci and multiple alleles at a single locus, but the basic model assumes diploidy and sexual reproduction.",
+    "difficulty": 3,
+    "funScore": 7,
+    "answerTypePoolId": "experiment_terms",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Hardy-Weinberg",
+      "Population Genetics",
+      "Topic 7.5"
+    ]
+  },
+  {
+    "id": "ap_bio_hw_p_squared",
+    "quizQuestion": "If the dominant allele frequency (p) is 0.6 in a Hardy-Weinberg population, what fraction of individuals are homozygous dominant?",
+    "correctAnswer": "0.36 (36%)",
+    "distractors": [
+      "0.60 (60%)",
+      "0.16 (16%)",
+      "0.48 (48%)",
+      "0.40 (40%)",
+      "0.72 (72%)",
+      "0.25 (25%)",
+      "0.12 (12%)",
+      "0.64 (64%)"
+    ],
+    "explanation": "Homozygous dominant genotype frequency in H-W = p². If p = 0.6, then p² = 0.36 = 36% of the population is homozygous dominant (AA).",
+    "difficulty": 3,
+    "funScore": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Hardy-Weinberg",
+      "Population Genetics",
+      "Topic 7.5"
+    ]
+  },
+  {
+    "id": "ap_bio_fossil_record",
+    "quizQuestion": "What does the fossil record provide as evidence for evolution?",
+    "correctAnswer": "Progression from simple to complex life; transitional forms",
+    "distractors": [
+      "Direct evidence that mutations are beneficial",
+      "A complete record of every species that ever lived",
+      "Proof that evolution occurs only during mass extinctions",
+      "Evidence that species appear suddenly without ancestors",
+      "Verification that all species originated at the same time",
+      "Demonstration that genetic drift dominates natural selection",
+      "Proof that evolution only occurs in marine environments",
+      "Evidence that reproductive isolation always precedes divergence"
+    ],
+    "explanation": "The fossil record shows preserved remains of organisms over geological time, revealing a progression from simpler to more complex life forms and providing evidence of transitional forms linking major groups.",
+    "difficulty": 1,
+    "funScore": 8,
+    "answerTypePoolId": "term_definitions",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Fossil Record",
+      "Topic 7.6"
+    ]
+  },
+  {
+    "id": "ap_bio_tiktaalik",
+    "quizQuestion": "Tiktaalik (~375 mya) is a transitional fossil that bridges which two major groups?",
+    "correctAnswer": "Fish and land vertebrates (tetrapods)",
+    "distractors": [
+      "Non-avian dinosaurs and birds",
+      "Marine reptiles and land-dwelling mammals",
+      "Invertebrates and jawless fish",
+      "Amphibians and early reptiles",
+      "Cartilaginous fish and bony fish",
+      "Lungfish and the first amphibians",
+      "Echinoderms and the first chordates",
+      "Jawless fish and ray-finned fish"
+    ],
+    "explanation": "Tiktaalik (~375 million years ago) had features intermediate between fish (scales, fins) and tetrapods (wrist bones in lobed fins, flat head, neck) — it is key fossil evidence for the fish-to-land-vertebrate transition.",
+    "difficulty": 3,
+    "funScore": 10,
+    "answerTypePoolId": "organism_names",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Transitional Fossils",
+      "Topic 7.6"
+    ]
+  },
+  {
+    "id": "ap_bio_archaeopteryx",
+    "quizQuestion": "Archaeopteryx is a transitional fossil linking which two groups?",
+    "correctAnswer": "Non-avian dinosaurs and birds",
+    "distractors": [
+      "Fish and land vertebrates",
+      "Reptiles and mammals",
+      "Amphibians and reptiles",
+      "Marine reptiles and flying pterosaurs",
+      "Early birds and modern songbirds",
+      "Feathered mammals and flightless birds",
+      "Jawless fish and early tetrapods",
+      "Invertebrates and early vertebrates"
+    ],
+    "explanation": "Archaeopteryx had features of both non-avian dinosaurs (teeth, clawed wings, long bony tail) and birds (feathers, wishbone, partially reversed big toe), making it key evidence for the dinosaur-to-bird transition.",
+    "difficulty": 2,
+    "funScore": 10,
+    "answerTypePoolId": "organism_names",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Transitional Fossils",
+      "Topic 7.6"
+    ]
+  },
+  {
+    "id": "ap_bio_biogeography",
+    "quizQuestion": "What is biogeography and why is it evidence for evolution?",
+    "correctAnswer": "Island species resemble nearest mainland ancestors",
+    "distractors": [
+      "The study of how species migrate between continents each season",
+      "Evidence that identical environments produce identical species",
+      "The mapping of gene flow between geographically isolated populations",
+      "Proof that all species originated near the equator and spread outward",
+      "The record of how tectonic plates shaped modern species distributions",
+      "Evidence that species can be transported by ocean currents alone",
+      "The study showing marine species are more diverse than terrestrial ones",
+      "Proof that species richness is highest near water bodies"
+    ],
+    "explanation": "Biogeography is the geographic distribution of species. Species found on oceanic islands most closely resemble those on the nearest mainland — evidence of descent from a common ancestor, not of similar environments producing similar species.",
+    "difficulty": 2,
+    "funScore": 8,
+    "answerTypePoolId": "term_definitions",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Biogeography",
+      "Topic 7.6"
+    ]
+  },
+  {
+    "id": "ap_bio_darwins_finches_evidence",
+    "quizQuestion": "Darwin's 14-15 finch species on the Galápagos Islands, each with differently adapted beaks, are evidence of which evolutionary process?",
+    "correctAnswer": "Adaptive radiation from a single common ancestor",
+    "distractors": [
+      "Convergent evolution from multiple independent origins",
+      "Stabilizing selection maintaining the same beak shape",
+      "Genetic drift causing random beak differences",
+      "Sympatric speciation via polyploidy",
+      "Artificial selection by human farmers on the islands",
+      "Allopatric speciation requiring geographic isolation from mainland",
+      "Balanced polymorphism maintaining beak size variation",
+      "Neutral evolution with no selection acting on beak morphology"
+    ],
+    "explanation": "Darwin's 14-15 finch species on the Galápagos evolved from a single South American finch ancestor via adaptive radiation — each species diverged to fill a different ecological niche, evidenced by their distinct beak shapes.",
+    "difficulty": 2,
+    "funScore": 9,
+    "answerTypePoolId": "organism_names",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Common Ancestry",
+      "Topic 7.7"
+    ]
+  },
+  {
+    "id": "ap_bio_homologous_structures",
+    "quizQuestion": "What are homologous structures, and what do they indicate?",
+    "correctAnswer": "Same anatomy, different functions — common ancestry",
+    "distractors": [
+      "Similar functions evolved independently — evidence of convergent evolution",
+      "Identical structures in two species that cannot interbreed",
+      "Structures that have lost their ancestral function over evolutionary time",
+      "Structures shared only by organisms in the same genus",
+      "Molecular similarities in protein sequence between distantly related species",
+      "Organs that develop from the same embryonic tissue in all animals",
+      "Structures that serve the exact same function across all vertebrates",
+      "Anatomical similarities caused by similar selective pressures, not ancestry"
+    ],
+    "explanation": "Homologous structures are derived from the same ancestral structure but modified for different functions. The human arm, whale flipper, bat wing, and horse leg all share the humerus-radius-ulna arrangement — evidence of descent from a common ancestor.",
+    "difficulty": 2,
+    "funScore": 9,
+    "answerTypePoolId": "comparison_terms",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Homologous Structures",
+      "Topic 7.7"
+    ]
+  },
+  {
+    "id": "ap_bio_analogous_structures",
+    "quizQuestion": "What are analogous structures, and what do they indicate?",
+    "correctAnswer": "Similar functions, different anatomy — convergent evolution",
+    "distractors": [
+      "Same underlying anatomy, different functions — evidence of common ancestry",
+      "Structures that develop from the same embryonic tissue",
+      "Structures reduced or lost from their ancestral function over time",
+      "Protein sequences that are similar across distantly related species",
+      "Structures shared by all members of the same clade",
+      "Organs that perform the same function in species of the same class",
+      "Anatomical structures inherited unchanged from a common ancestor",
+      "DNA sequences conserved across all domains of life"
+    ],
+    "explanation": "Analogous structures have similar functions but evolved independently in unrelated lineages (convergent evolution). Bird wings and insect wings both enable flight but have completely different underlying structures — they are NOT evidence of common ancestry.",
+    "difficulty": 2,
+    "funScore": 9,
+    "answerTypePoolId": "comparison_terms",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Convergent Evolution",
+      "Topic 7.7"
+    ]
+  },
+  {
+    "id": "ap_bio_vestigial_structures",
+    "quizQuestion": "What are vestigial structures, and what is their evolutionary significance?",
+    "correctAnswer": "Reduced structures retained from a functional ancestor",
+    "distractors": [
+      "Structures that evolved independently in two unrelated species",
+      "Organs shared by all members of a clade that define the group",
+      "Newly evolved structures with no ancestral equivalent",
+      "Structures that increase in complexity over successive generations",
+      "Genes carried by parasites that mimic host tissue",
+      "Organs shared by all sexually reproducing organisms",
+      "Structures that become larger and more functional under selection",
+      "Conserved sequences shared between prokaryotes and eukaryotes"
+    ],
+    "explanation": "Vestigial structures have been reduced or lost their ancestral function, but evidence remains that they were functional in ancestors. Examples: human appendix, whale pelvic bones, snake leg bones, flightless bird wings.",
+    "difficulty": 2,
+    "funScore": 8,
+    "answerTypePoolId": "term_definitions",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Vestigial Structures",
+      "Topic 7.7"
+    ]
+  },
+  {
+    "id": "ap_bio_homologous_vs_analogous",
+    "quizQuestion": "How do homologous and analogous structures differ in what they tell us about evolution?",
+    "correctAnswer": "Homologous = common ancestry; analogous = convergent",
+    "distractors": [
+      "Homologous = convergent evolution; analogous = common ancestry",
+      "Homologous structures are always more complex than analogous ones",
+      "Analogous structures share the same underlying bone arrangement",
+      "Both homologous and analogous structures indicate recent common ancestry",
+      "Homologous structures always perform the same function across species",
+      "Analogous structures develop from the same embryonic tissue type",
+      "Both provide equal evidence of descent from a common ancestor",
+      "Homologous structures only occur in vertebrate animals"
+    ],
+    "explanation": "Homologous structures: same underlying anatomy, different functions, indicates common ancestry. Analogous structures: different underlying anatomy, similar functions, indicates convergent evolution — NOT common ancestry.",
+    "difficulty": 2,
+    "funScore": 9,
+    "answerTypePoolId": "comparison_terms",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Common Ancestry",
+      "Topic 7.7"
+    ]
+  },
+  {
+    "id": "ap_bio_molecular_evidence",
+    "quizQuestion": "How does molecular evidence (DNA/protein sequences) support the theory of evolution?",
+    "correctAnswer": "More similar sequences indicate more recent common ancestor",
+    "distractors": [
+      "All species share exactly 50% of their DNA with every other species",
+      "Protein sequences are identical across all organisms — proof of one origin",
+      "More different sequences indicate that species are evolving faster",
+      "DNA similarity reflects shared environment, not shared ancestry",
+      "Molecular evidence contradicts the fossil record in most cases",
+      "Only mitochondrial DNA is useful for determining evolutionary relationships",
+      "More shared genes means more recent geographic overlap, not ancestry",
+      "Protein similarity is inversely proportional to relatedness"
+    ],
+    "explanation": "Molecular evidence: similarity in DNA and protein sequences correlates with evolutionary relatedness — more similar sequences indicate a more recent common ancestor. This supports and extends evidence from morphology and the fossil record.",
+    "difficulty": 2,
+    "funScore": 8,
+    "answerTypePoolId": "term_definitions",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Molecular Evidence",
+      "Topic 7.7"
+    ]
+  },
+  {
+    "id": "ap_bio_universal_genetic_code",
+    "quizQuestion": "Why does the universal genetic code serve as evidence for a single common origin of all life?",
+    "correctAnswer": "Nearly all organisms use same codons for same amino acids",
+    "distractors": [
+      "All organisms have identical DNA sequences at their core genes",
+      "The same 20 amino acids are present in equal amounts in all cells",
+      "All organisms replicate DNA using the exact same polymerase",
+      "All living things have the same number of chromosomes",
+      "RNA sequences are conserved 100% across all organisms",
+      "All organisms use the same promoter sequences for transcription",
+      "All organisms share the same cell membrane phospholipid composition",
+      "The same restriction enzymes cut DNA in all organisms"
+    ],
+    "explanation": "The universal genetic code — nearly all living organisms use the same codons to encode the same amino acids — is strong evidence for a single common origin of all life. This code is so fundamental that changes are almost always lethal.",
+    "difficulty": 2,
+    "funScore": 8,
+    "answerTypePoolId": "term_definitions",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Common Ancestry",
+      "Molecular Evidence",
+      "Topic 7.7"
+    ]
+  },
+  {
+    "id": "ap_bio_conserved_genes",
+    "quizQuestion": "Hox genes are structurally similar in all animals, and human and chimpanzee cytochrome c differ by only 1 amino acid. These are examples of what type of evidence?",
+    "correctAnswer": "Conserved genes — molecular evidence of common ancestry",
+    "distractors": [
+      "Analogous structures produced by convergent evolution",
+      "Neutral variation with no evolutionary significance",
+      "Vestigial structures maintained by balancing selection",
+      "Horizontal gene transfer between unrelated species",
+      "Genetic drift causing random similarity in small populations",
+      "Biogeographic evidence linking species to a common geographic origin",
+      "Hardy-Weinberg equilibrium maintained over millions of generations",
+      "Morphological homology between distantly related phyla"
+    ],
+    "explanation": "Conserved genes — highly similar gene sequences across distantly related species — are molecular evidence of common ancestry. Hox genes control body plan development in all animals; cytochrome c differs by only 1 amino acid between humans and chimpanzees.",
+    "difficulty": 3,
+    "funScore": 8,
+    "answerTypePoolId": "organism_names",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Common Ancestry",
+      "Molecular Evidence",
+      "Topic 7.7"
+    ]
+  },
+  {
+    "id": "ap_bio_embryological_evidence",
+    "quizQuestion": "How do early vertebrate embryos provide evidence of shared ancestry?",
+    "correctAnswer": "Embryos share pharyngeal pouches and post-anal tail",
+    "distractors": [
+      "All vertebrate embryos are genetically identical in the first trimester",
+      "Embryos of different species develop the same organs in the same order",
+      "Vertebrate embryos all start as identical blastulas with no differences",
+      "Embryos of unrelated species have identical limb bud gene sequences",
+      "All vertebrates share the same placental attachment structure",
+      "The rate of cell division is identical across all vertebrate embryos",
+      "All vertebrate embryos develop a notochord that persists into adulthood",
+      "Vertebrate embryos share the same number of somites at all stages"
+    ],
+    "explanation": "Embryological evidence: early embryos of diverse vertebrates (fish, reptiles, birds, humans) look remarkably similar — all share pharyngeal pouches and a post-anal tail — evidence of descent from a common vertebrate ancestor.",
+    "difficulty": 2,
+    "funScore": 8,
+    "answerTypePoolId": "term_definitions",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Common Ancestry",
+      "Topic 7.7"
+    ]
+  },
+  {
+    "id": "ap_bio_molecular_clock",
+    "quizQuestion": "What is a molecular clock and how is it used in evolutionary biology?",
+    "correctAnswer": "Uses mutation rates to estimate lineage divergence time",
+    "distractors": [
+      "A measure of how quickly genes are lost during population bottlenecks",
+      "A device that tracks circadian rhythm genes across species",
+      "A way to date fossils by measuring radioactive isotope decay",
+      "A tool that counts mutations introduced by genetic drift per year",
+      "A measure of how fast protein folding rates evolved over time",
+      "A clock gene that regulates biological rhythms in all animals",
+      "A phylogenetic model that eliminates the need for fossil evidence",
+      "A statistical method for estimating current population size"
+    ],
+    "explanation": "Molecular clock: uses the rate of molecular changes (DNA mutations, amino acid substitutions) accumulated over time to estimate when two lineages diverged from their common ancestor. Calibrated using fossils with known ages.",
+    "difficulty": 3,
+    "funScore": 8,
+    "answerTypePoolId": "term_definitions",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Molecular Evidence",
+      "Topic 7.7"
+    ]
+  },
+  {
+    "id": "ap_bio_antibiotic_resistance",
+    "quizQuestion": "How does antibiotic resistance in bacteria demonstrate natural selection?",
+    "correctAnswer": "Resistance alleles selected for; frequency rises",
+    "distractors": [
+      "Bacteria sense the antibiotic and deliberately mutate to resist it",
+      "All bacteria in the population mutate simultaneously when exposed",
+      "Resistance develops because bacteria can deactivate antibiotics chemically",
+      "Bacteria transfer resistance genes to the antibiotic molecules themselves",
+      "Antibiotics cause bacteria to evolve faster than normal mutation rates",
+      "Only bacteria that have been exposed to an antibiotic before can resist it",
+      "Resistance emerges because antibiotics are too weak to kill all bacteria",
+      "Bacteria evolve resistance by acquiring genes from their host organism"
+    ],
+    "explanation": "Antibiotic resistance: bacteria with pre-existing resistance alleles survive antibiotic treatment and reproduce, increasing the frequency of resistance alleles in the population. MRSA (methicillin-resistant Staphylococcus aureus) is a key example. Resistance is NOT created by the antibiotic — it pre-exists.",
+    "difficulty": 2,
+    "funScore": 9,
+    "answerTypePoolId": "organism_names",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Continuing Evolution",
+      "Natural Selection",
+      "Topic 7.8"
+    ]
+  },
+  {
+    "id": "ap_bio_pesticide_resistance",
+    "quizQuestion": "How does pesticide resistance in insects compare mechanistically to antibiotic resistance in bacteria?",
+    "correctAnswer": "Same as antibiotic resistance — pre-existing alleles",
+    "distractors": [
+      "Pesticide resistance requires sexual recombination; antibiotic resistance uses horizontal gene transfer",
+      "Pesticide resistance is driven by genetic drift; antibiotic resistance by natural selection",
+      "Insects evolve resistance faster because they have larger genomes than bacteria",
+      "Antibiotic resistance is heritable; pesticide resistance is environmentally induced",
+      "Pesticide resistance involves polyploidy; antibiotic resistance involves point mutations only",
+      "They differ because insects reproduce sexually while bacteria reproduce asexually",
+      "Antibiotic resistance is reversible; pesticide resistance is permanent",
+      "Pesticide resistance requires geographic isolation that antibiotic resistance does not"
+    ],
+    "explanation": "Pesticide resistance and antibiotic resistance operate by the same natural selection mechanism: individuals with pre-existing resistance alleles survive the chemical treatment, reproduce, and increase resistance allele frequency in the population.",
+    "difficulty": 2,
+    "funScore": 8,
+    "answerTypePoolId": "comparison_terms",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Continuing Evolution",
+      "Natural Selection",
+      "Topic 7.8"
+    ]
+  },
+  {
+    "id": "ap_bio_hiv_evolution",
+    "quizQuestion": "Why does HIV evolve drug resistance so rapidly compared to most pathogens?",
+    "correctAnswer": "Error-prone reverse transcriptase + short generation time",
+    "distractors": [
+      "HIV has the largest genome of any known virus, allowing more variation",
+      "HIV integrates into the human genome, gaining access to human mutation machinery",
+      "HIV replicates only in immune cells, which have elevated mutation rates",
+      "HIV uses DNA replication with no proofreading at any stage",
+      "HIV reproduces asexually, which accelerates fixation of resistance alleles",
+      "HIV resistance genes are transferred horizontally from the human host",
+      "HIV has a circular chromosome that recombines with itself at high rates",
+      "Drug resistance in HIV arises from epigenetic changes, not mutations"
+    ],
+    "explanation": "HIV has a very high mutation rate (RNA virus with error-prone reverse transcriptase) and short generation time. Natural selection rapidly produces drug-resistant strains, requiring combination therapy (HAART) to suppress viral evolution.",
+    "difficulty": 3,
+    "funScore": 9,
+    "answerTypePoolId": "organism_names",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Continuing Evolution",
+      "Natural Selection",
+      "Topic 7.8"
+    ]
+  },
+  {
+    "id": "ap_bio_peppered_moths",
+    "quizQuestion": "The peppered moth (Biston betularia) story demonstrates which type of selection, and what reversed the trend?",
+    "correctAnswer": "Directional selection; clean air acts reversed the trend",
+    "distractors": [
+      "Stabilizing selection; climate change then favored intermediate gray moths",
+      "Disruptive selection; habitat fragmentation separated light and dark populations",
+      "Sexual selection; female moths preferred lighter mates after industrialization",
+      "Genetic drift; small moth population sizes allowed dark alleles to fix",
+      "Founder effect; dark moths colonized industrial areas and excluded light moths",
+      "Frequency-dependent selection; predators switched prey types as moths got rarer",
+      "Balancing selection; both dark and light alleles were maintained equally",
+      "Directional selection; a new mutation created dark moths after pollution began"
+    ],
+    "explanation": "Industrial melanism in peppered moths: pollution darkened tree bark → dark moths camouflaged, light moths visible to predators → dark allele frequency increased (directional selection). After clean air acts reduced pollution, tree bark lightened → dark moths became conspicuous → light moth frequency rebounded.",
+    "difficulty": 2,
+    "funScore": 10,
+    "answerTypePoolId": "organism_names",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Continuing Evolution",
+      "Directional Selection",
+      "Topic 7.8"
+    ]
+  },
+  {
+    "id": "ap_bio_grants_finches",
+    "quizQuestion": "What did Peter and Rosemary Grant observe about Galápagos finch beaks during and after the 1977 drought?",
+    "correctAnswer": "Beak depth increased within one generation (1977 drought)",
+    "distractors": [
+      "Beak depth decreased as birds switched to softer food sources",
+      "No measurable change in beak depth occurred within a single generation",
+      "Birds with the smallest beaks survived best by eating tiny drought-resistant seeds",
+      "Beak variation disappeared completely as the population crashed",
+      "A new finch species formed within five years of the drought",
+      "Beak depth and length both decreased due to starvation effects on growth",
+      "The Grants found evidence of Lamarckian inheritance of acquired beak traits",
+      "Beak depth was unchanged but body size decreased dramatically"
+    ],
+    "explanation": "During the 1977 drought, large-seeded plants survived better → birds with deeper beaks could crack harder seeds → average beak depth increased in the population within one generation. This is direct observational evidence of natural selection in real time.",
+    "difficulty": 3,
+    "funScore": 10,
+    "answerTypePoolId": "organism_names",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Continuing Evolution",
+      "Natural Selection",
+      "Topic 7.8"
+    ]
+  },
+  {
+    "id": "ap_bio_evolution_ongoing",
+    "quizQuestion": "What does the concept of 'continuing evolution' emphasize about the nature of natural selection?",
+    "correctAnswer": "An ongoing process driven by new selection pressures",
+    "distractors": [
+      "Evolution only occurred in the distant past and has slowed to imperceptible rates",
+      "Evolution happens only when populations are geographically isolated",
+      "Modern organisms are too complex for further evolutionary change",
+      "Evolution requires millions of years to produce any observable change",
+      "Evolution in humans has stopped due to modern medicine",
+      "Natural selection no longer operates because humans control the environment",
+      "Evolution is only observable in fast-reproducing organisms like bacteria",
+      "Continuing evolution refers only to cultural, not biological, change in humans"
+    ],
+    "explanation": "Evolution is not just historical — it is an ongoing, observable process that occurs whenever populations face new selection pressures. Antibiotic resistance, HIV drug resistance, and the Grants' finch studies all demonstrate evolution happening in real time.",
+    "difficulty": 1,
+    "funScore": 7,
+    "answerTypePoolId": "term_definitions",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Continuing Evolution",
+      "Natural Selection",
+      "Topic 7.8"
+    ]
+  },
+  {
+    "id": "ap_bio_mrsa_example",
+    "quizQuestion": "MRSA (methicillin-resistant Staphylococcus aureus) is a classic AP Biology example of what process?",
+    "correctAnswer": "Natural selection driving antibiotic resistance in bacteria",
+    "distractors": [
+      "Genetic drift causing random allele loss in a hospital pathogen",
+      "The founder effect after a single resistant bacterium colonized a hospital",
+      "Mutation as the direct cause of resistance after each antibiotic exposure",
+      "Gene flow transferring resistance from harmless bacteria to pathogens",
+      "Disruptive selection maintaining two strains of S. aureus simultaneously",
+      "Balanced polymorphism maintaining both resistant and sensitive strains",
+      "The bottleneck effect after nearly all bacteria were killed by methicillin",
+      "Horizontal gene transfer that created resistance from a non-bacterial source"
+    ],
+    "explanation": "MRSA demonstrates natural selection: S. aureus bacteria with pre-existing resistance alleles survived methicillin treatment while sensitive bacteria died. Resistant bacteria reproduced and spread. This illustrates continuing evolution under human-imposed selection pressure.",
+    "difficulty": 2,
+    "funScore": 9,
+    "answerTypePoolId": "organism_names",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Continuing Evolution",
+      "Natural Selection",
+      "Topic 7.8"
+    ]
+  },
+  {
+    "id": "ap_bio_hw_conditions_count",
+    "quizQuestion": "How many conditions must ALL be met for a population to be in Hardy-Weinberg equilibrium?",
+    "correctAnswer": "Five",
+    "distractors": [
+      "Two",
+      "Three",
+      "Four",
+      "Six",
+      "Seven",
+      "One",
+      "Eight",
+      "Ten"
+    ],
+    "explanation": "Five conditions are required for Hardy-Weinberg equilibrium: no mutation, no natural selection, no gene flow, no genetic drift (infinitely large population), and random mating. All five must hold simultaneously — violating even one means evolution is occurring.",
+    "difficulty": 2,
+    "funScore": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Hardy-Weinberg",
+      "Population Genetics",
+      "Topic 7.5"
+    ]
+  },
+  {
+    "id": "ap_bio_hw_infinite_pop",
+    "quizQuestion": "Why does Hardy-Weinberg equilibrium require an infinitely large population?",
+    "correctAnswer": "To eliminate genetic drift — chance sampling errors",
+    "distractors": [
+      "To ensure that every possible genotype combination is expressed",
+      "To guarantee that mutation rates are negligible per generation",
+      "Large populations prevent gene flow from neighboring groups",
+      "Infinite size ensures that selection acts equally on all genotypes",
+      "To make sure that all individuals can find a random mate",
+      "Large populations prevent inbreeding and assortative mating",
+      "To ensure that recessive alleles are not lost to fixation",
+      "Infinite populations allow faster evolution than small ones"
+    ],
+    "explanation": "Hardy-Weinberg requires no genetic drift, which demands an infinitely large population. In real (finite) populations, random sampling error during reproduction can change allele frequencies by chance — this is genetic drift, and it violates H-W equilibrium.",
+    "difficulty": 3,
+    "funScore": 8,
+    "answerTypePoolId": "experiment_terms",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Hardy-Weinberg",
+      "Genetic Drift",
+      "Topic 7.5"
+    ]
+  },
+  {
+    "id": "ap_bio_hw_p_q_values",
+    "quizQuestion": "In a Hardy-Weinberg population where the recessive allele frequency (q) is 0.4, what is the dominant allele frequency (p)?",
+    "correctAnswer": "0.6",
+    "distractors": [
+      "0.4",
+      "0.16",
+      "0.36",
+      "0.48",
+      "0.8",
+      "0.2",
+      "1.4",
+      "0.25"
+    ],
+    "explanation": "Since p + q = 1, if q = 0.4 then p = 1 - 0.4 = 0.6. These are the allele frequencies used in the worked Hardy-Weinberg example where q² = 0.16 gives a carrier frequency of 2pq = 0.48.",
+    "difficulty": 2,
+    "funScore": 7,
+    "answerTypePoolId": "bracket_numbers",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Hardy-Weinberg",
+      "Population Genetics",
+      "Topic 7.5"
+    ]
+  },
+  {
+    "id": "ap_bio_fossil_transitional",
+    "quizQuestion": "What distinguishes a transitional fossil from other fossils?",
+    "correctAnswer": "Features intermediate between ancestral and derived groups",
+    "distractors": [
+      "It is the oldest fossil of any species ever discovered",
+      "It preserves soft tissue rather than only hard structures like bone",
+      "It is found in geographic locations far from where the species lived",
+      "It shows evidence of artificial modification by early humans",
+      "It belongs to a species that has no living descendants",
+      "It is identical in every way to living members of the same lineage",
+      "It is the most common fossil type found in any sedimentary layer",
+      "It shows no evidence of natural selection acting on its morphology"
+    ],
+    "explanation": "A transitional fossil shows intermediate features between an ancestral and a derived group. Tiktaalik (fish → tetrapods) and Archaeopteryx (non-avian dinosaurs → birds) are key AP Biology examples used as evidence of evolution.",
+    "difficulty": 2,
+    "funScore": 8,
+    "answerTypePoolId": "term_definitions",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Fossil Record",
+      "Topic 7.6"
+    ]
+  },
+  {
+    "id": "ap_bio_convergent_vs_homologous",
+    "quizQuestion": "Bird wings and insect wings enable flight but have completely different underlying structures. This is an example of what?",
+    "correctAnswer": "Convergent evolution producing analogous structures",
+    "distractors": [
+      "Divergent evolution producing homologous structures",
+      "Common ancestry between insects and birds",
+      "Adaptive radiation from a single winged ancestor",
+      "Vestigial structures retained from a common flying ancestor",
+      "Balanced polymorphism maintaining wing variation in both groups",
+      "Sexual selection favoring flight in both lineages simultaneously",
+      "Horizontal gene transfer of flight genes between insects and birds",
+      "Sympatric speciation driven by the same selection pressure"
+    ],
+    "explanation": "Bird wings and insect wings are analogous structures — they have the same function (flight) but completely different underlying anatomy, having evolved independently. This is convergent evolution, NOT evidence of common ancestry.",
+    "difficulty": 2,
+    "funScore": 8,
+    "answerTypePoolId": "comparison_terms",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Convergent Evolution",
+      "Topic 7.7"
+    ]
+  },
+  {
+    "id": "ap_bio_whale_pelvic_bones",
+    "quizQuestion": "Whales have small, non-functional pelvic bones buried deep in their body. These are an example of what type of structure?",
+    "correctAnswer": "Vestigial remnants of hind limbs from land ancestors",
+    "distractors": [
+      "Analogous structures convergently evolved for hydrodynamic stability",
+      "Homologous structures shared with all marine mammals",
+      "Sexually selected structures used in whale mating competition",
+      "Adaptive structures that assist in swimming by reducing drag",
+      "Conserved structures required for whale immune function",
+      "Synapomorphies defining the clade of all cetaceans",
+      "Structures produced by artificial selection during domestication",
+      "Protective structures that shield internal organs from pressure"
+    ],
+    "explanation": "Whale pelvic bones are vestigial structures — they are reduced remnants of hind limbs from land-dwelling ancestors (similar to leg bones in snakes and wing bones in flightless birds). They provide evidence that whales evolved from terrestrial mammals.",
+    "difficulty": 2,
+    "funScore": 9,
+    "answerTypePoolId": "term_definitions",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Vestigial Structures",
+      "Topic 7.7"
+    ]
+  },
+  {
+    "id": "ap_bio_human_arm_homology",
+    "quizQuestion": "The human arm, whale flipper, bat wing, and horse leg all share the humerus-radius-ulna bone arrangement. What type of structures are these?",
+    "correctAnswer": "Homologous — same ancestral anatomy, different functions",
+    "distractors": [
+      "Analogous structures — similar functions evolved independently in four lineages",
+      "Vestigial structures — reduced from a more functional ancestral form",
+      "Convergent structures — produced by the same selection pressure on four lineages",
+      "Neutral structures with no adaptive significance in any of the four species",
+      "Synapomorphies that define the clade of all mammals",
+      "Sexually selected structures that evolved for display in these four species",
+      "Symplesiomorphies shared from an invertebrate ancestor",
+      "Structures produced by parallel evolution without a common ancestor"
+    ],
+    "explanation": "The human arm, whale flipper, bat wing, and horse leg are homologous structures — all derived from the same ancestral forelimb structure (humerus, radius, ulna), modified for different functions. They are evidence of descent from a common tetrapod ancestor.",
+    "difficulty": 2,
+    "funScore": 9,
+    "answerTypePoolId": "comparison_terms",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Homologous Structures",
+      "Topic 7.7"
+    ]
+  },
+  {
+    "id": "ap_bio_haart_hiv",
+    "quizQuestion": "Why is combination therapy (HAART) used to treat HIV instead of a single antiviral drug?",
+    "correctAnswer": "Simultaneous resistance to multiple drugs far less likely",
+    "distractors": [
+      "Because HIV has a DNA genome that requires multiple enzymes to replicate",
+      "Because single drugs are toxic at the doses needed to eliminate HIV",
+      "Because HAART boosts the immune system directly, whereas single drugs do not",
+      "Because single drugs attack only the protein coat and leave RNA untouched",
+      "Because HIV lives only in white blood cells that single drugs cannot penetrate",
+      "Because antiviral drugs degrade in the body before reaching full effect",
+      "Because multiple drugs ensure at least one remains active if HIV mutates",
+      "Because HIV replicates in multiple compartments requiring different drug classes"
+    ],
+    "explanation": "HAART (combination antiretroviral therapy) targets HIV with multiple drugs simultaneously because HIV's high mutation rate can produce resistance to any single drug. The probability of a single virus acquiring resistance mutations to three different drugs at once is extremely low, suppressing viral evolution.",
+    "difficulty": 3,
+    "funScore": 8,
+    "answerTypePoolId": "organism_names",
+    "chainThemeId": 14,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Continuing Evolution",
+      "Natural Selection",
+      "Topic 7.8"
+    ]
+  },
+  {
+    "id": "ap_bio_biogeog_island_example",
+    "quizQuestion": "Species on remote oceanic islands most closely resemble species from the nearest mainland, not species in climatically similar but distant regions. Why?",
+    "correctAnswer": "Common ancestry, not environment — from mainland colonizers",
+    "distractors": [
+      "Ocean currents carry similar organisms to climatically similar islands",
+      "Similar environments always produce similar species through convergent evolution",
+      "Island species evolved from marine ancestors that came from all directions equally",
+      "Prevailing winds carry identical seeds and spores from similar climate zones",
+      "Island species are more distantly related to mainland species than assumed",
+      "Island isolation prevents gene flow and produces entirely new body plans",
+      "Climatic similarity determines which ancestral lineage can survive on an island",
+      "Islands accumulate species only from the direction of prevailing ocean currents"
+    ],
+    "explanation": "Biogeography: island species resemble the nearest mainland species because they DESCENDED from those mainland colonizers. Climatic similarity across distant regions does not explain resemblance — ancestry does. This is evidence of descent with modification from a common ancestral population.",
+    "difficulty": 2,
+    "funScore": 8,
+    "answerTypePoolId": "term_definitions",
+    "chainThemeId": 15,
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit7"
+    ],
+    "categories": [
+      "Evidence of Evolution",
+      "Biogeography",
+      "Topic 7.6"
+    ]
+  }
+]
