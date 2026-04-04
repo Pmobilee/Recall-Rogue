@@ -1,7 +1,7 @@
 # Curated Deck System
 
 > **Purpose:** Explains what curated decks are, how they are structured, loaded, registered, and how player progression is tracked against them.
-> **Last verified:** 2026-04-03
+> **Last verified:** 2026-04-04
 > **Source files:** `src/data/curatedDeckStore.ts`, `src/data/deckRegistry.ts`, `src/data/deckFactIndex.ts`, `src/data/curatedDeckTypes.ts`, `src/services/deckManager.ts`, `src/services/deckOptionsService.ts`, `src/services/deckProgressService.ts`, `data/decks/manifest.json`
 
 ---
@@ -74,10 +74,10 @@ Two backfill scripts produced full coverage:
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-04 it contains **71 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-04 it contains **75 decks**:
 
 - **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
-- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**, **AP World History: Modern**
+- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**, **AP World History: Modern**, **AP Physics 1: Algebra-Based**
 
 ### Deck Architecture Files
 
@@ -100,6 +100,7 @@ Architecture YAML files in `data/deck-architectures/` hold the verified source d
 | `ap_biology_unit2_arch.yaml` | `ap_biology_unit2` | architecture complete — pending fact generation | 130 target | Unit 2: Cell Structure and Function (Topics 2.1–2.11); 2 chain themes, 8 pools, ~130 verified facts in arch |
 | `ap_biology_unit3_arch.yaml` | `ap_biology_unit3` | architecture complete — pending fact generation | 160 target | Unit 3: Cellular Energetics (Topics 3.1–3.7); 3 chain themes, 7 pools, 7 templates, ~110 verified facts in arch |
 | `ap_biology_unit5_arch.yaml` | `ap_biology_unit5` | architecture complete — pending fact generation | 110 target | Unit 5: Heredity (Topics 5.1–5.6); 2 chain themes, 8 pools, 97 verified entities in arch |
+| *(inline generation)* | `ap_physics_1` | complete — live | 326 | CED-aligned Fall 2024; 8 units, 10 chain themes, 11 answer pools, 8 sub-decks; expanded 2026-04-04 from 180→326 facts; sourced from OpenStax/HyperPhysics |
 
 The 4 `world_wonders` architecture files total 195 facts in the live deck. They were merged by `data/decks/_wip/assemble-world-wonders.mjs`.
 

@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-04-04T00:30:53.846Z",
-  "totalBridgedFacts": 4014,
+  "lastRun": "2026-04-04T02:53:19.107Z",
+  "totalBridgedFacts": 4414,
   "decks": {
     "ancient_greece": {
       "totalFacts": 246,
@@ -178,9 +178,9 @@
       "skipped": 0
     },
     "ap_biology": {
-      "totalFacts": 363,
-      "entities": 252,
-      "bridged": 252,
+      "totalFacts": 1123,
+      "entities": 464,
+      "bridged": 464,
       "skipped": 0
     },
     "ap_chemistry": {
@@ -197,8 +197,14 @@
     },
     "ap_european_history": {
       "totalFacts": 572,
-      "entities": 442,
-      "bridged": 442,
+      "entities": 394,
+      "bridged": 394,
+      "skipped": 0
+    },
+    "ap_physics_1": {
+      "totalFacts": 326,
+      "entities": 236,
+      "bridged": 236,
       "skipped": 0
     }
   }
