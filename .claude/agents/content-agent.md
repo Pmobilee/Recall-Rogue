@@ -52,7 +52,8 @@ Before ANY content work, read `docs/content/`. After changes, update those docs.
 - Structural validation after EVERY build
 
 ## After Making Changes
-1. Run deck validation scripts
-2. Flag qa-agent if balance values changed
-3. Update `docs/content/` files
-4. `npm run registry:sync` if domains changed
+1. Run `node scripts/verify-all-decks.mjs` — 0 failures required (structural validation)
+2. Run in-game quiz audit: sample 20+ facts across ALL pools, display Q + 4 options, verify distractors are plausible in length, format, and category. See `.claude/rules/content-pipeline.md` "In-Game Quiz Audit" for full protocol. This is MANDATORY before committing any new or modified deck.
+3. Flag qa-agent if balance values changed
+4. Update `docs/content/` files
+5. `npm run registry:sync` if domains changed

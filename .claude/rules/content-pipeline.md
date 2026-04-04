@@ -140,3 +140,29 @@ Target: **0 failures** across all decks. Warnings are informational — aim to m
 | `explanation` content | duplicates question | — | Normalized comparison |
 
 These limits are enforced by both `verify-all-decks.mjs` (batch check) and `tests/unit/deck-content-quality.test.ts` (CI test suite).
+
+## In-Game Quiz Audit — MANDATORY
+
+After EVERY deck creation or major modification, a random sample of 20+ facts MUST be reviewed **as they would appear in-game** — showing the quiz question with 4 answer options (1 correct + 3 distractors).
+
+This catches issues that the 19-check structural verifier CANNOT:
+- **Trivially eliminatable distractors** — answer is 50 chars but distractors are 3-4 chars ("DNA", "RNA")
+- **Length mismatch** — correct answer dramatically longer/shorter than distractors (obvious tell)
+- **Em-dash explanations baked into answers** — "Term — plus a whole explanation" as the answer text
+- **Ambiguous questions** — where 2+ options could reasonably be correct
+- **Nonsensical distractors** — plausible-looking but grammatically/semantically incoherent
+- **Pool contamination** — distractors from wrong domain (organelle names mixed with process names)
+
+### How to audit:
+1. Sample 20+ facts across ALL units/sub-decks and ALL answer pools (not just term_definitions)
+2. For each fact, display: question, 4 shuffled options (mark correct), explanation preview
+3. Flag any fact where a student could eliminate 2+ distractors without knowing the subject
+4. Flag any answer >60 chars appearing alongside <20 char distractors
+5. Fix flagged facts before committing
+
+### When:
+- After initial deck assembly (before first commit of assembled deck)
+- After any bulk answer/distractor modification
+- After pool redesign or reassignment
+
+**This is NON-NEGOTIABLE. The structural verifier passing does NOT mean the deck plays well.**

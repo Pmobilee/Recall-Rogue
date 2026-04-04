@@ -32,3 +32,8 @@
 - `npm run registry:sync` — rebuild from source after adding/removing game elements
 - `npm run registry:stale` — see what needs testing
 - Testing skills auto-stamp dates after completing
+
+## Deck Content Testing
+- Structural: `node scripts/verify-all-decks.mjs` — 19 checks, 0 failures required
+- In-game audit: 20+ random facts displayed as quiz (Q + 4 options) — catches distractor quality issues the structural verifier misses
+- See `.claude/rules/content-pipeline.md` "In-Game Quiz Audit" for full protocol
