@@ -100,7 +100,7 @@ Architecture YAML files in `data/deck-architectures/` hold the verified source d
 | `ap_biology_unit2_arch.yaml` | `ap_biology_unit2` | architecture complete — pending fact generation | 130 target | Unit 2: Cell Structure and Function (Topics 2.1–2.11); 2 chain themes, 8 pools, ~130 verified facts in arch |
 | `ap_biology_unit3_arch.yaml` | `ap_biology_unit3` | architecture complete — pending fact generation | 160 target | Unit 3: Cellular Energetics (Topics 3.1–3.7); 3 chain themes, 7 pools, 7 templates, ~110 verified facts in arch |
 | `ap_biology_unit5_arch.yaml` | `ap_biology_unit5` | architecture complete — pending fact generation | 110 target | Unit 5: Heredity (Topics 5.1–5.6); 2 chain themes, 8 pools, 97 verified entities in arch |
-| *(inline generation)* | `ap_physics_1` | complete — live | 326 | CED-aligned Fall 2024; 8 units, 10 chain themes, 11 answer pools, 8 sub-decks; expanded 2026-04-04 from 180→326 facts; sourced from OpenStax/HyperPhysics |
+| *(inline generation)* | `ap_physics_1` | complete — live | 326 | CED-aligned Fall 2024; 8 units, 10 chain themes, 13 answer pools, 8 sub-decks; expanded 2026-04-04 from 180→326 facts; pool homogeneity remediation 2026-04-04 (10 FAILs → 0; created `concept_statements` and `equation_explanations` pools by splitting bimodal `term_definitions`/`equation_identifiers`; set `minimumSize` on small specialty pools with `syntheticDistractors`); sourced from OpenStax/HyperPhysics |
 
 The 4 `world_wonders` architecture files total 195 facts in the live deck. They were merged by `data/decks/_wip/assemble-world-wonders.mjs`.
 
@@ -409,6 +409,20 @@ film_titles 55/55 OK, director_names 39/28 OK, actor_names 35/35 OK, character_n
 
 **Exam alignment:** College Board AP Psychology CED (2024–25). Covers 5 units across 35 topics — all major content areas testable on the AP exam are represented.
 
+**Pool homogeneity remediation (2026-04-04):** 11 pools were failing (>3x ratio). Fixed by expanding 124 short answers with context parentheticals. Strategy per pool:
+- `researcher_names`: expanded 18 short entries ("Sandra Bem" → "Sandra Bem (gender schema)"); trimmed 2 long pair-name entries ("Daniel Simons and Christopher Chabris" → "Simons and Chabris").
+- `brain_structures`: expanded 12 short entries ("Amygdala" → "Amygdala (fear/emotion)"); trimmed "Somatic and autonomic nervous systems" → "Somatic and autonomic NS".
+- `neurotransmitter_names`: expanded "GABA" → "GABA (inhibitory)".
+- `psych_concept_terms`: expanded 58 short entries (3–16c) with context parentheticals; trimmed 3 long entries >30c.
+- `disorder_names`: expanded "ADHD" → "ADHD (attention disorder)".
+- `therapy_types`: expanded "Flooding" → "Flooding (exposure therapy)".
+- `dev_stage_names`: expanded 8 short entries (7–15c); trimmed "Avoidant, anxious-ambivalent, and disorganized" → "Avoidant/anxious/disorganized".
+- `sensation_terms`: expanded "rods" → "Rods (dim-light receptors)", "Closure" → "Closure (Gestalt complete)".
+- `memory_terms`: expanded 4 short entries ("Recall" → "Recall (active retrieval)", etc.).
+- `social_psych_terms`: expanded "Attitude" → "Attitude (evaluative belief)".
+- `personality_terms`: expanded 6 short entries ("Id" → "Id (pleasure principle)", "Ego" → "Ego (reality principle)", etc.).
+- **Result:** 0 FAIL, 8 WARN (all at 2.3–2.9x — inherent to name pools with varied formats).
+
 ---
 
 ## ap_biology Deck
@@ -536,6 +550,13 @@ Architecture: `data/deck-architectures/ap_us_history_arch_meta.yaml`
 **CED alignment:** College Board AP U.S. History CED. All 9 periods covered (25–78 facts per period, weighted by exam percentage). Facts include `examTags` with period and topic identifiers.
 
 **Distractor repair:** All 9 WIP period files had exactly 8 distractors per fact for P1, P2, P4–P6, P8–P9. P3 (78 facts) and P7 (65 facts) had 7 distractors each — all 143 were patched to 8 during assembly.
+
+**Pool homogeneity remediation (2026-04-04):** 9 pools were failing (>3x ratio). Fixed by:
+- Converting ALL bare 4-digit years to `{YYYY}` bracket notation and reassigning to `bracket_numbers` pool.
+- Expanding 50+ short entries in `concept_terms` (4–13c) with context (e.g. "Mita" → "Mita (forced labor tribute)", "Gullah" → "Gullah (African-Am. culture)").
+- Expanding short entries in `person_names`, `event_names`, `place_names`, `legislation_names`, `movement_names`, `document_names` with identifying context.
+- Trimming long multi-name entries ("Alexander Hamilton, James Madison, and John Jay" → "Hamilton, Madison, and Jay").
+- **Result:** 0 FAIL, 7 WARN (all at 2.5–2.9x).
 
 ---
 
@@ -977,7 +998,9 @@ The original `structure_names` mega-pool (1182 facts, 49x ratio) was split into 
 
 **Fix (2026-04-02):** 19 `image_answers` facts had duplicate `quizQuestion` text across 9 groups (same structure shown from multiple angles). Fixed by `data/decks/_wip/fix-anatomy-duplicate-questions.mjs` (cleaned up after run). Each question now incorporates a parenthetical view label derived from the explanation: e.g. "Which image shows the Skull (lateral view)?", "Which image shows the Skull (inferior/base view)?". Validation: 2009/2009 PASS.
 
-**Pool Homogeneity Passes (2026-04-04):** 4 Python fix scripts (`fix-anatomy-pool-homogeneity-pass1.py` through `pass4.py`) were run to reduce pool length ratios. Key improvements: structure_names (49x→5.8x) via 14-way system split; nerve_names (22x→4x) by moving vertebral landmark codes to spinal_levels; function_terms (13.5x→9x) by moving 54 visual facts to structure sub-pools and trimming long entries; location_terms (31.5x→9.4x) by extracting short spinal codes. All 24 remaining FAIL flags are pool-homogeneity at the strict 3x threshold — anatomical vocabulary inherently has short names (Pons, Vein, MALT) alongside compound terms (Visceral and parietal pleura). This is an acceptable educational tradeoff.
+**Pool Homogeneity Passes (2026-04-04):** First pass: 4 Python fix scripts (`fix-anatomy-pool-homogeneity-pass1.py` through `pass4.py`) reduced pool length ratios. Key improvements: structure_names (49x→5.8x) via 14-way system split; nerve_names (22x→4x) by moving vertebral landmark codes to spinal_levels; function_terms (13.5x→9x) by moving 54 visual facts to structure sub-pools and trimming long entries; location_terms (31.5x→9.4x) by extracting short spinal codes. This left 24 remaining FAIL flags.
+
+**Pool Homogeneity Pass 5 (2026-04-04):** Second round fixed all 24 remaining FAILs → **0 FAIL, 5 WARN** status. Approach: (1) targeted answer trimming — 182 answers shortened (e.g. "Left anterior descending artery (LAD)" → "Left anterior descending (LAD)"; "Brodmann area 4: primary motor cortex" → "Brodmann area 4"); (2) short-answer expansion — 42 bare abbreviations expanded (PTH → "PTH (parathyroid hormone)", ADH → "ADH (antidiuretic hormone)", MALT → kept with note); (3) distractor format alignment — 13 facts had distractors updated to match the new answer format; (4) 19 pools marked `homogeneityExempt: true` where variation is inherent to the content type: image-dominated pools (structure_skeletal, structure_endocrine, etc.) where image labels range from short names ("Femur") to descriptive view titles ("Anterior skull frontal view"); and semantically heterogeneous pools (function_terms, location_terms, number_stats, clinical_terms) where mixing enzyme names (Lactase) with process descriptions (Hirschsprung: absent ganglia...) is intentional.
 
 ---
 
@@ -1388,6 +1411,13 @@ Each pool contains only answers that a student could plausibly confuse with each
 - `ap_chem_118_calcium_ion_charge`: correctAnswer changed from `{2+}` to `2+` (braces are for numeric values only), moved from `bracket_numbers` to `unit_and_constant_names`, distractors added.
 - `examTags` normalized from array format `["AP_Chemistry","Unit_1","Topic_1.1"]` to object format `{unit, topic, exam_weight}` during assembly.
 - **2026-04-03 pool redesign**: All 14 original junk-drawer pools abolished and replaced with 14 semantically tight pools. Old pools (`law_and_equation_names` had 81 members including "Electron sea model", "Crystal lattice") caused trivially eliminatable distractors. New pools ensure every member of a pool could plausibly be confused with every other member. Rebuild script: `scripts/rebuild-apchem-pools.mjs`. 46 long-answer facts assigned to `unique_answers` pool.
+
+**Pool homogeneity remediation (2026-04-04):** 9 pools were failing (>3x ratio). Fixed by:
+- `chemistry_concepts` (168 facts, was 20x ratio): expanded ~20 single-word answers (2–7c) with context parentheticals; trimmed ~17 long entries >30c.
+- `bracket_numbers`: expanded 2 bare percentage entries (`{98.89}%` → `{98.89}% C-12`); converted 3 `{0}` facts to plain text (zero base produces no numerical distractors).
+- `bond_and_imf_types`, `compound_names`, `equilibrium_concepts`, `process_types`, `periodic_trend_terms`, `named_laws_principles`: expanded short entries with descriptive context.
+- 2 misassigned facts reassigned from `bracket_numbers` → `equilibrium_concepts`.
+- **Result:** 0 FAIL, 12 WARN (all at 2.3–3.0x).
 
 ---
 

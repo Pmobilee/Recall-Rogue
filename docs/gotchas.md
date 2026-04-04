@@ -183,3 +183,18 @@ rm -rf node_modules/.vite && npm run dev
 7. Run `verify-all-decks.mjs` to confirm exit code 0
 
 **Git stash trap:** Never use `git stash` to check baseline state if other working-tree changes exist in the same files. If the stash pop fails (due to conflicts), `git stash drop` destroys the stash — all WIP changes are lost. Instead, use `git show HEAD:path/to/file` to read the committed version directly.
+
+### 2026-04-04 — Anatomy Pool Homogeneity: Answer Trimming Requires Distractor Updates
+
+**What happened:** When trimming long correctAnswer values in pool homogeneity remediation (e.g. "Left anterior descending artery (LAD)" → "Left anterior descending (LAD)"), the associated distractors were NOT updated to match the new format. The structural verifier passes but the in-game quiz audit catches the mismatch: answer is 30c while distractors are 40-50c (or vice versa).
+
+**Root cause:** The pool homogeneity fix scripts only modified `correctAnswer` fields. Distractors are format-coupled to the answer — if you expand "PTH" to "PTH (parathyroid hormone)", the distractors "aldosterone", "ADH", "calcitonin" (bare names) are now visually mismatched.
+
+**Rule:** After ANY correctAnswer trimming or expansion, immediately re-audit the affected facts with a format check: compare correct answer length against distractor lengths. If the ratio exceeds 2.5x in either direction, update distractors to match the new format.
+
+**Common patterns:**
+- Bare abbreviation expanded (PTH → PTH (parathyroid hormone)): expand all distractors to "(Name) (description)" format
+- Multi-clause trimmed to bare term (Brodmann area 4: primary motor cortex → Brodmann area 4): trim distractor parentheticals too  
+- Acronym list expanded (SITS → SITS (rotator cuff)): add the same parenthetical to all distractor acronyms
+
+**In-game quiz audit is the catch**: the structural verifier won't detect this. Always run the quiz audit after bulk answer changes.
