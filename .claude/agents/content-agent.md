@@ -58,9 +58,10 @@ Before ANY content work, read `docs/content/`. After changes, update those docs.
 - Failed tasks stay `in_progress` as visible reminders — never delete failed work
 
 ## After Making Changes
-1. Run `node scripts/verify-all-decks.mjs` — 0 failures required (structural validation)
-2. Run in-game quiz audit: sample 20+ facts across ALL pools, display Q + 4 options, verify distractors are plausible in length, format, and category. See `.claude/rules/content-pipeline.md` "In-Game Quiz Audit" for full protocol. This is MANDATORY before committing any new or modified deck.
-3. Flag qa-agent if balance values changed
-4. Update `docs/content/` files
-5. `npm run registry:sync` if domains changed
-6. Run `/curated-trivia-bridge` if this is a knowledge deck (not vocab/language) — bridge output must be committed alongside the deck
+1. Run `node scripts/verify-all-decks.mjs` — 0 failures required (20 checks including pool homogeneity)
+2. Run `node scripts/pool-homogeneity-analysis.mjs --deck <id>` — 0 FAIL required. Pools must have max/min answer length ratio < 3x. Use `homogeneityExempt: true` only for inherent domain variation (geographic names, element symbols).
+3. Run `node scripts/quiz-audit.mjs --deck <id> --full` — 0 FAIL required. Checks every fact's quiz presentation (Q + distractors from pool).
+4. Flag qa-agent if balance values changed
+5. Update `docs/content/` files
+6. `npm run registry:sync` if domains changed
+7. Run `/curated-trivia-bridge` if this is a knowledge deck (not vocab/language) — bridge output must be committed alongside the deck

@@ -97,6 +97,8 @@ Every fact-generation worker MUST receive verified source data IN ITS PROMPT.
 - Image-based facts (`imageAssetPath`) must have `quizMode: "image_question"` or `"image_answers"`
 - Fill-in-blank `{___}` in quizQuestion is valid grammar syntax, not a braces error
 - Pool `factIds` populated by scanning facts, never hand-crafted
+- Pool answer length homogeneity: max/min ratio < 3× within each pool (check #20). Run `node scripts/pool-homogeneity-analysis.mjs --deck <id>` — 0 FAIL required
+- Run `node scripts/quiz-audit.mjs --deck <id> --full` after every deck build — 0 FAIL required
 
 ## Answer Pool Homogeneity — CRITICAL
 

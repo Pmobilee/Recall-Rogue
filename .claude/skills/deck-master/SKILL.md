@@ -278,9 +278,22 @@ node scripts/verify-all-decks.mjs           # Summary: all 63 decks
 node scripts/verify-all-decks.mjs --verbose  # Per-fact failure details
 ```
 
-19 checks per fact — 13 structural + 6 content quality. Structural (FAIL): braces in answer/question, answer-in-distractors, duplicate distractors, distractor count, pool size, missing fields, non-numeric bracket distractors, missing explanation, duplicate questions, orphaned pool refs, empty pools, template-pool placeholder compatibility. Content quality: answer too long (FAIL >100 chars, WARN >60), question too long (FAIL >400 chars, WARN >300), difficulty out of range (FAIL), funScore out of range (FAIL), explanation too short (WARN <20 chars), explanation duplicates question (WARN).
+20 checks per fact/deck — 13 structural + 6 content quality + 1 pool homogeneity. Check #20: per pool, max/min answer length ratio > 3× = FAIL, > 2× = WARN (skips bracket-number and homogeneityExempt pools).
 
-Target: **0 failures, 0 warnings** across all decks. Any failure = fix before committing.
+Target: **0 failures** across all decks. Any failure = fix before committing.
+
+### Pool Homogeneity & Quiz Audit — MANDATORY
+
+After assembly, run these two additional checks:
+
+```bash
+node scripts/pool-homogeneity-analysis.mjs --deck <id>   # Per-pool length stats — 0 FAIL required
+node scripts/quiz-audit.mjs --deck <id> --full            # Every fact's quiz presentation — 0 FAIL required
+```
+
+Pool homogeneity ensures answer lengths within each pool are comparable (ratio < 3×). If a pool inherently mixes formats (e.g., geographic names "Chad" vs "Democratic Republic of the Congo"), add `"homogeneityExempt": true` and `"homogeneityExemptNote": "reason"` to the pool.
+
+The quiz audit simulates actual quiz presentation (Q + correct + 3 pool distractors) and flags length mismatches, answer-in-distractor bugs, and trivially eliminatable options that the structural verifier cannot catch.
 
 ### Parallel Worker Deduplication Rules
 
