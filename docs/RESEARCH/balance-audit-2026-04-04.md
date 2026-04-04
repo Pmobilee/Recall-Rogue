@@ -132,6 +132,10 @@ Several issues in this audit exist in tension with the GDD's stated design philo
 **Analysis:** The Final Lesson (floor 24) has 1,396 scaled HP (baseHP 18 × 4.0 × 19.4 scaling factor). It has quiz phases at 66% and 33% HP, gains +2 permanent Strength on wrong Charges, and Phase 2 (at 33%) features attack value 6 and multi_attack 4×4 hits with Vulnerable 4 stacks for 3 turns. The Omnibus (floor 21) has 1,252 scaled HP. Compare to Act 1 boss Final Exam at just 72 scaled HP — that is a 19x HP ratio. The damage cap jumps from 18 (Segment 3) to 28 (Segment 4). Players simply cannot output enough damage to kill these bosses before being ground down.
 **Recommendation:** Reduce Act 3 boss baseHP by 20-25% (18→14 for Final Lesson, 18→14 for Omnibus). Alternatively, reduce the Segment 4 HP scaling from 0.80 to 0.60 per floor. Also consider softening the +2 Strength on wrong Charge to +1, as it creates a death spiral for players struggling with quiz content. Target: Act 3 boss should average -40 to -50 HP, not -77.7.
 
+**ROOT CAUSE FOUND (2026-04-04, enrage DPS analysis):** The Act 3 boss wall is NOT primarily a stats problem — it's the **global enrage system**. Enrage bonus is added AFTER the per-turn damage cap (line 2874-2876 of turnManager.ts), completely bypassing it. For Act 3 (The Archive, floors 19-24): enrage starts at turn 4, adds +1/turn for 3 turns (phase 1), then +3/turn thereafter (phase 2). At turn 40 (typical scholar boss fight length), enrage adds **+114 flat uncapped damage per enemy action** on top of the 28 damage cap. Effective per-action damage: 28 + 114 = **142**. This makes long boss fights mathematically unwinnable regardless of boss HP.
+
+**Revised recommendation:** The primary fix should target `ENRAGE_PHASE2_BONUS` in `src/data/balance.ts` (currently +3/turn, reduce to +1 or +1.5) and/or make enrage subject to the damage cap. Reducing boss HP alone won't fix this — even with 50% less HP, the fight still takes 25+ turns and enrage still reaches +70 uncapped damage. The enrage system is the real Act 3 boss wall.
+
 #### Issue 2: Act 3 Elite Spike
 **Priority:** High
 **Data:** Act 3 elites average -14.5 HP per encounter vs -5.0 in Act 2 (2.9x harder). Act 1 elites are actually +2.2 HP (player gains HP, possibly due to heal rewards).
@@ -601,7 +605,7 @@ Recommendations for new player experience:
 1. ~~Re-run archetypes at fixed 70% accuracy~~ — **DONE 2026-04-04**: chain_god (21.7%) ≈ speedrunner (21.8%). Turtle still broken (0.1%). Mastery_farmer = baseline.
 2. **Add shop/removal/deck-size tracking** to full-run sim output — Fill the missing analysis gaps
 3. ~~Resolve chain multiplier GDD/code discrepancy~~ — **DONE 2026-04-04**: GDD updated to match code [1.0, 1.2, 1.5, 2.0, 2.5, 3.5].
-4. **Calculate enrage DPS at turn 40** for Act 3 bosses — Quantify whether boss difficulty is stat-based or enrage-based
+4. ~~Calculate enrage DPS at turn 40~~ — **DONE 2026-04-04**: Global enrage adds +114 uncapped damage at turn 40. Enrage bypasses per-turn damage cap (added after cap in turnManager.ts). THIS is the Act 3 boss wall — not stats. Fix: reduce ENRAGE_PHASE2_BONUS from +3 to +1, or make enrage subject to damage cap.
 
 ### Sprint 1: Critical Fixes (Highest Impact)
 1. **Smooth the difficulty curve** — Reduce Act 3 boss HP by 20-25%, increase Act 2 difficulty by 15-20%

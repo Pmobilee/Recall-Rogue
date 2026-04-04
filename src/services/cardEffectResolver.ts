@@ -747,7 +747,7 @@ export function resolveCardEffect(
     }
     case 'overheal': {
       const healthPercentage = playerState.hp / playerState.maxHP;
-      const bonusMultiplier = healthPercentage < 0.5 ? 2.0 : 1.0;
+      const bonusMultiplier = healthPercentage < 0.6 ? 2.0 : 1.0;
       result.shieldApplied = applyShieldRelics(Math.round(finalValue * bonusMultiplier));
       // L3+: overheal_heal2 — also heals 2 HP
       if (hasTag('overheal_heal2')) result.healApplied = (result.healApplied ?? 0) + 2;
@@ -1739,18 +1739,17 @@ export function resolveCardEffect(
     // Ironhide — block + Strength (temp on QP, permanent on CC)
     case 'ironhide': {
       result.shieldApplied = applyShieldRelics(finalValue);
+      // Permanence is driven by stat table extras.strPerm (1=perm, 0=temp), not hardcoded mastery check.
+      const strPerm = _masteryStats?.extras?.strPerm ?? 0;
+      const strAmount = _masteryStats?.extras?.str ?? 1;
       if (isChargeCorrect) {
-        result.ironhideStrength = { amount: 1, permanent: true };
+        result.ironhideStrength = { amount: strAmount, permanent: true };
       } else if (isChargeWrong) {
-        // CW: block only (finalValue=4 at base + mastery), no Strength
+        // CW: block only, no Strength
         result.ironhideStrength = undefined;
       } else {
-        // QP: temp Strength this turn
-        result.ironhideStrength = { amount: 1, permanent: false };
-        // L3: QP also gives permanent Str
-        if ((card.masteryLevel ?? 0) >= 3) {
-          result.ironhideStrength = { amount: 1, permanent: true };
-        }
+        // QP: permanent if strPerm > 0 (all levels from L0 via stat table), else temporary
+        result.ironhideStrength = { amount: strAmount, permanent: strPerm > 0 };
       }
       return result;
     }

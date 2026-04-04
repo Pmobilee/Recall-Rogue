@@ -435,12 +435,12 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
     ],
   },
 
-  /** overheal: ap=2, doubles below 50% HP — hybrid offensive/defensive */
+  /** overheal: ap=2, doubles below 60% HP (was 50%) — hybrid offensive/defensive */
   overheal: {
     levels: [
-      { qpValue: 3, apCost: 2 },                               // L0
-      { qpValue: 4 },                                          // L1
-      { qpValue: 5 },                                          // L2
+      { qpValue: 5, apCost: 2 },                               // L0: 5 block, doubles below 60% HP
+      { qpValue: 6 },                                          // L1: 6 block
+      { qpValue: 7 },                                          // L2
       { qpValue: 6, apCost: 1, tags: ['overheal_heal2'] },      // L3: also heals 2 HP! AP cost reduced to 1
       { qpValue: 7 },                                          // L4
       { qpValue: 8, apCost: 1, tags: ['overheal_heal2', 'overheal_heal_pct5'] }, // L5: also heals 5% max HP. AP=1
@@ -523,16 +523,16 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
 
   // ── Phase 3 Chase Shields (3) ─────────────────────────────────────────────
 
-  /** bulwark: ap=3, exhausts on CC — massive block ceiling */
+  /** bulwark: ap=2 (was 3), exhaust removed at L3+; L5=1 AP — massive block ceiling */
   bulwark: {
     maxLevel: 5,
     levels: [
-      { qpValue: 7, apCost: 3 },                               // L0: CC=12 + exhaust
-      { qpValue: 8 },                                          // L1
-      { qpValue: 10 },                                         // L2
-      { qpValue: 12 },                                         // L3
-      { qpValue: 14 },                                         // L4
-      { qpValue: 16, apCost: 2, tags: ['bulwark_no_exhaust'] }, // L5: 2 AP + no exhaust!
+      { qpValue: 9, apCost: 2 },                                                        // L0: 2 AP for 9 block (CC: 16 block + EXHAUST)
+      { qpValue: 10 },                                                                   // L1
+      { qpValue: 12 },                                                                   // L2
+      { qpValue: 12, tags: ['bulwark_no_exhaust'] },                                    // L3: exhaust removed! Still 2 AP
+      { qpValue: 14, tags: ['bulwark_no_exhaust'] },                                    // L4
+      { qpValue: 16, apCost: 1, tags: ['bulwark_no_exhaust'] },                         // L5: 1 AP premium shield, no exhaust
     ],
   },
 
@@ -549,13 +549,13 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
     ],
   },
 
-  /** ironhide: ap=2, block + Strength — extras.str and extras.strPerm */
+  /** ironhide: ap=2, block + Strength — extras.str and extras.strPerm; perm from L0 on CC */
   ironhide: {
     maxLevel: 5,
     levels: [
-      { qpValue: 3, apCost: 2, extras: { str: 1, strPerm: 0 } },  // L0: +1 Str (temporary)
-      { qpValue: 4,            extras: { str: 1, strPerm: 0 } },  // L1
-      { qpValue: 5,            extras: { str: 1, strPerm: 0 } },  // L2
+      { qpValue: 5, apCost: 2, extras: { str: 1, strPerm: 1 } },  // L0: 5 block + 1 Str (perm on CC, temp on QP)
+      { qpValue: 6,            extras: { str: 1, strPerm: 1 } },  // L1
+      { qpValue: 6,            extras: { str: 1, strPerm: 1 } },  // L2
       { qpValue: 5,            extras: { str: 1, strPerm: 1 } },  // L3: Strength is PERMANENT on CC!
       { qpValue: 6,            extras: { str: 2, strPerm: 1 } },  // L4: +2 Str!
       { qpValue: 7, apCost: 1, extras: { str: 2, strPerm: 1 } },  // L5: 1 AP!

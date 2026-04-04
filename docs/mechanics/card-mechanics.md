@@ -1,7 +1,7 @@
 # Card Mechanics Reference
 
 > **Purpose:** Complete table of all card mechanics — attack, shield, buff, debuff, utility, and wild
-> **Last verified:** 2026-04-04
+> **Last verified:** 2026-04-04 (bulwark/overheal/ironhide buffs)
 > **Source files:** `src/data/mechanics.ts`, `src/services/cardEffectResolver.ts`, `src/services/cardUpgradeService.ts`
 
 > **See also:** [`cards.md`](cards.md) — Card entity, types, tiers, damage formula, mastery system, and card creation pipeline.
@@ -46,7 +46,7 @@ Mechanics are assigned by the run pool builder and stored on the `Card` as `mech
 | `emergency` | Emergency | 1 | 2 | 1 | Block; doubled if HP < 30% |
 | `fortify` | Entrench | 1 | 4 | 2 | QP: 50% of current block. CC: 75% block + card value. CW: 25%; L5 (`fortify_carry`): block persists next turn, AP cost reduced to 1 |
 | `brace` | Brace | 1 | 0 | 1 | Block = enemy telegraph value; L3+ (`brace_exceed2`): +2 block bonus; L5 (`brace_draw1`): also draws 1 |
-| `overheal` | Overheal | 1 | 5 | 2 | 10 block; doubled if HP < 50%; L3+ (`overheal_heal2`): also heals 2 HP, AP cost reduced to 1; L5 (`overheal_heal_pct5`): also heals 5% max HP (AP=1) |
+| `overheal` | Overheal | 1 | 5 | 2 | L0: 5 block (was 3); doubled if HP < 60% (was 50%); L3+ (`overheal_heal2`): also heals 2 HP, AP cost reduced to 1; L5 (`overheal_heal_pct5`): also heals 5% max HP (AP=1) |
 | `reinforce` | Reinforce | 1 | 4 | 1 | More block than basic shield; L5 (`reinforce_draw1`): also draws 1 |
 | `shrug_it_off` | Shrug It Off | 1 | 3 | 1 | Block + draw (1 or 2 from stat table); L5 (`shrug_cleanse1`): also removes 1 debuff |
 | `guard` | Guard | 1 | 7 | 2 | Large block; L5 (`guard_taunt1t`): enemy must attack player next turn, AP cost reduced to 1 |
@@ -56,8 +56,9 @@ Mechanics are assigned by the run pool builder and stored on the `Card` as `mech
 | `parry` | Parry | 2 | 2 | 1 | Block + draw if enemy attacks; L5 (`parry_counter3`): deals 3 damage back to attacker |
 | `burnout_shield` | Burnout Shield | 2 | 4 | 1 | CC: 24 block then EXHAUST |
 | `knowledge_ward` | Knowledge Ward | 2 | 6 | 1 | Block scales with correct Charges |
-| `bulwark` | Bulwark | 3 | 7 | 3 | Massive block; CC exhausts card; L5 (`bulwark_no_exhaust`): no exhaust, costs 2 AP |
+| `bulwark` | Bulwark | 3 | 9 | 2 | Massive block; CC exhausts card; L0: 2 AP (was 3); L3+ (`bulwark_no_exhaust`): no exhaust on CC (was L5 only); L5: 1 AP |
 | `conversion` | Shield Bash | 3 | 3 | 1 | Deals damage = current block; L3+ (`conversion_bonus_50pct`): 1.5× block multiplier; L5 (`conversion_keep_block`): block not consumed |
+| `ironhide` | Ironhide | 3 | 5 | 2 | L0: 5 block + 1 permanent Str on CC (was 3 block + temp Str); L1-L2: 6 block; permanence driven by `extras.strPerm` in stat table (all levels from L0); L4+: +2 Str; L5: 1 AP |
 
 ### Buff Mechanics
 
