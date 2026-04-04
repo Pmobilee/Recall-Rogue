@@ -239,10 +239,9 @@ describe('Curated deck content quality', () => {
     reportViolations('Knowledge deck pools with empty factIds', violations)
     expect(violations.length).toBe(0)
   })
-  it.skip('pool members should have similar answer lengths', () => {
-    // NOTE: This test is currently skipped until pool remediation is complete.
-    // Once all heterogeneous pools have been fixed, remove the .skip to enforce in CI.
+  it('pool members should have similar answer lengths', () => {
     // Threshold is 4x (more lenient than verifier's 3x FAIL / 2x WARN).
+    // Pools with homogeneityExempt: true are skipped (inherent domain variation).
     const BRACE_RE = /^\{\d[\d,]*\.?\d*\}$/
     const violations: string[] = []
 
@@ -251,6 +250,7 @@ describe('Curated deck content quality', () => {
       const factMap = new Map((deck.facts ?? []).map(f => [f.id, f]))
 
       for (const pool of deck.answerTypePools ?? []) {
+        if ((pool as Record<string, unknown>).homogeneityExempt) continue
         const lengths: number[] = []
         for (const fid of pool.factIds ?? []) {
           const f = factMap.get(fid)
@@ -269,7 +269,7 @@ describe('Curated deck content quality', () => {
     }
 
     reportViolations('Pools with heterogeneous answer lengths (ratio > 4x)', violations)
-    // expect(violations.length).toBe(0)
+    expect(violations.length).toBe(0)
   })
 
 })
