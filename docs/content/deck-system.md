@@ -110,22 +110,24 @@ The 4 `world_wonders` architecture files total 195 facts in the live deck. They 
 
 ### Batch Verifier — `scripts/verify-all-decks.mjs`
 
-Runs 19 checks across all decks. Must produce 0 failures before committing deck changes.
+Runs 20 checks across all decks. Must produce 0 failures before committing deck changes.
 
 ```bash
 node scripts/verify-all-decks.mjs           # Summary table
 node scripts/verify-all-decks.mjs --verbose  # Per-fact failure details
 ```
 
-**19 checks — 13 structural + 6 content quality:**
+**20 checks — 13 structural + 6 content quality + 1 pool homogeneity:**
 
 Structural (FAIL): braces in answer/question, answer-in-distractors, duplicate distractors, distractor count, pool size, missing fields, non-numeric bracket distractors, missing explanation, duplicate questions, orphaned pool refs, empty pools, template-pool placeholder compatibility.
 
 Content quality: answer too long (FAIL >100 chars, WARN >60), question too long (FAIL >400 chars, WARN >300), difficulty out of range (FAIL), funScore out of range (FAIL), explanation too short (WARN <20 chars), explanation duplicates question (WARN).
 
+Pool homogeneity (check #20, non-vocab only): Per pool, if the max/min display-length ratio of non-bracket answers exceeds 3x → FAIL; exceeds 2x → WARN. Catches pools that mix very short answers with long ones, making the correct answer visually obvious. Bracket-number answers are excluded (numerical distractors are algorithmic).
+
 ### Unit Tests — `tests/unit/deck-content-quality.test.ts`
 
-9 Vitest tests run as part of `npx vitest run`. Hard-fail thresholds only:
+10 Vitest tests run as part of `npx vitest run`. Hard-fail thresholds only (one test currently `.skip` pending pool remediation):
 - Answer length ≤100 chars (knowledge decks)
 - Question length ≤400 chars
 - Difficulty 1-5 (all facts)
@@ -134,12 +136,13 @@ Content quality: answer too long (FAIL >100 chars, WARN >60), question too long 
 - No correctAnswer in own distractors
 - All pool/fact cross-references valid
 - No empty pools in knowledge decks
+- Pool answer-length homogeneity: max/min ratio ≤4x per pool (currently `it.skip` — unskip after remediation)
 
 ### Pre-Commit Checklist
 
 After ANY deck modification:
 1. `node scripts/verify-all-decks.mjs` → 0 failures
-2. `npx vitest run tests/unit/deck-content-quality.test.ts` → 9/9 pass
+2. `npx vitest run tests/unit/deck-content-quality.test.ts` → 9/9 pass (10th test skipped pending pool remediation)
 3. `npm run typecheck && npm run build` → clean
 4. **Trivia Bridge (knowledge decks only):** Add deck to `deck-bridge-config.json`, run `node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs`, verify 0 collisions. Commit `bridge-curated.json` + `bridge-manifest.json` alongside the deck. Language/vocab decks are exempt. See `docs/content/trivia-bridge.md`.
 

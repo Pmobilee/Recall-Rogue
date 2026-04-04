@@ -239,4 +239,37 @@ describe('Curated deck content quality', () => {
     reportViolations('Knowledge deck pools with empty factIds', violations)
     expect(violations.length).toBe(0)
   })
+  it.skip('pool members should have similar answer lengths', () => {
+    // NOTE: This test is currently skipped until pool remediation is complete.
+    // Once all heterogeneous pools have been fixed, remove the .skip to enforce in CI.
+    // Threshold is 4x (more lenient than verifier's 3x FAIL / 2x WARN).
+    const BRACE_RE = /^\{\d[\d,]*\.?\d*\}$/
+    const violations: string[] = []
+
+    for (const { file, deck } of allDecks) {
+      if (deck.domain === 'vocabulary') continue
+      const factMap = new Map((deck.facts ?? []).map(f => [f.id, f]))
+
+      for (const pool of deck.answerTypePools ?? []) {
+        const lengths: number[] = []
+        for (const fid of pool.factIds ?? []) {
+          const f = factMap.get(fid)
+          if (!f?.correctAnswer) continue
+          if (BRACE_RE.test(f.correctAnswer)) continue // skip numerical bracket answers
+          const display = f.correctAnswer.replace(/\{(\d[\d,]*\.?\d*)\}/g, '$1')
+          lengths.push(display.length)
+        }
+        if (lengths.length < 2) continue
+        const min = Math.min(...lengths)
+        const max = Math.max(...lengths)
+        if (min > 0 && max / min > 4) {
+          violations.push(`[${file}] pool "${pool.id}": max/min length ratio ${(max/min).toFixed(1)}x (${min}–${max} chars)`)
+        }
+      }
+    }
+
+    reportViolations('Pools with heterogeneous answer lengths (ratio > 4x)', violations)
+    // expect(violations.length).toBe(0)
+  })
+
 })

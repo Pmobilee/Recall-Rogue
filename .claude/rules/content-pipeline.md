@@ -120,11 +120,13 @@ node scripts/verify-all-decks.mjs           # Summary table (all decks)
 node scripts/verify-all-decks.mjs --verbose  # Per-fact details on failures
 ```
 
-19 checks per fact/deck — 13 structural + 6 content quality:
+20 checks per fact/deck — 13 structural + 6 content quality + 1 pool homogeneity:
 
 **Structural checks (FAIL):** braces in answer/question, answer-in-distractors, duplicate distractors, distractor count, pool size, missing fields, non-numeric bracket distractors, missing explanation, duplicate questions, orphaned pool refs, empty pools, template-pool placeholder compatibility.
 
 **Content quality checks:** answer too long (FAIL >100 chars, WARN >60), question too long (FAIL >400 chars, WARN >300), difficulty out of range (FAIL, must be 1-5), funScore out of range (FAIL, must be 1-10), explanation too short (WARN <20 chars), explanation duplicates question (WARN).
+
+Check #20 (pool homogeneity): per pool, if the max/min display-length ratio of non-bracket answers > 3x → FAIL; > 2x → WARN. Skips vocab decks and pools with fewer than 2 non-bracket members.
 
 Target: **0 failures** across all decks. Warnings are informational — aim to minimize.
 

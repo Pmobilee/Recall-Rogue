@@ -138,6 +138,21 @@ Checks 12 quality dimensions across all 63 decks (45K+ facts): pool field naming
 
 Run after modifying any deck JSON or assembly script. Target: 0 failures.
 
+**Pool homogeneity analysis** (after answer pool design or reassignment):
+```bash
+node scripts/pool-homogeneity-analysis.mjs             # All knowledge decks
+node scripts/pool-homogeneity-analysis.mjs --deck <id> # Single deck
+node scripts/pool-homogeneity-analysis.mjs --json      # Machine-readable JSON
+```
+
+Detects pools where answer-length disparity lets players guess by length alone. Three flag levels:
+- **FAIL** length ratio >3× within a pool (text answers only, bracket-numbers excluded)
+- **WARN** length ratio >2×
+- **INFO** bare-number answers that could use `{N}` bracket notation for algorithmic distractors
+- **FAIL** pool <5 members with no `syntheticDistractors`
+
+Exempt: all vocabulary/language decks, `world_flags`, script decks (hiragana/katakana/hangul). Run after any pool redesign or fact reassignment.
+
 ## Standard Verification Sequence
 
 After any code change, run in order:
@@ -149,3 +164,4 @@ npx vitest run       # Unit tests (1900+)
 ```
 
 For balance changes, also run the headless sim. For UI changes, also do a Playwright visual inspection. Never report a fix done without confirming the result.
+

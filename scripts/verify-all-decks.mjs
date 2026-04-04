@@ -250,7 +250,7 @@ function getPoolDistractors(fact, deck, count = 3) {
 }
 
 // ---------------------------------------------------------------------------
-// Issue checking — 19 checks total (8 original + 4 new + 1 template-pool compatibility + 6 new quality checks)
+// Issue checking — 20 checks total (8 original + 4 new + 1 template-pool compatibility + 6 new quality checks + 1 pool-homogeneity)
 // ---------------------------------------------------------------------------
 
 /**
@@ -504,6 +504,34 @@ function verifyDeck(deckId, deck) {
             addDeckIssue(`template-pool mismatch: template "${template.id}" has {${ph}} but fact "${factId}" has no value for it`);
           }
         }
+      }
+    }
+  }
+
+  // Check #20: pool answer-length homogeneity (deck-level, non-vocab only)
+  // Collects display lengths of non-bracket answers per pool.
+  // max/min ratio > 3x → FAIL; > 2x → WARN. Skips pools with < 2 non-bracket members.
+  if (!isVocab) {
+    const factById20 = new Map((deck.facts || []).map(f => [f.id, f]));
+    const FULL_BRACKET_RE20 = /^\{(\d[\d,]*\.?\d*)\}$/;
+    for (const pool20 of (deck.answerTypePools || [])) {
+      const lengths = [];
+      for (const fid of poolFactIds(pool20)) {
+        const f = factById20.get(fid);
+        if (!f || !f.correctAnswer) continue;
+        if (FULL_BRACKET_RE20.test(f.correctAnswer)) continue; // skip bracket-numbers
+        const disp = displayAnswer(f.correctAnswer);
+        lengths.push(disp.length);
+      }
+      if (lengths.length < 2) continue;
+      const minLen = Math.min(...lengths);
+      const maxLen = Math.max(...lengths);
+      if (minLen === 0) continue; // avoid divide-by-zero
+      const ratio = maxLen / minLen;
+      if (ratio > 3) {
+        addDeckIssue('pool-homogeneity FAIL: pool "' + pool20.id + '" answer lengths ' + minLen + '–' + maxLen + ' chars (ratio ' + ratio.toFixed(1) + 'x, threshold 3x)');
+      } else if (ratio > 2) {
+        factWarnings.push({ index: 0, factId: pool20.id, msg: 'pool-homogeneity WARN: pool "' + pool20.id + '" answer lengths ' + minLen + '–' + maxLen + ' chars (ratio ' + ratio.toFixed(1) + 'x)' });
       }
     }
   }
