@@ -9,7 +9,7 @@
   "facts": [
     {
       "id": "apush_p1_cahokia_mound_city",
-      "correctAnswer": "Cahokia",
+      "correctAnswer": "Cahokia (Mississippian city)",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "place_names",
@@ -46,7 +46,7 @@
     },
     {
       "id": "apush_p1_three_sisters_crops",
-      "correctAnswer": "Three Sisters",
+      "correctAnswer": "Three Sisters (crops)",
       "acceptableAlternatives": [
         "the Three Sisters"
       ],
@@ -205,10 +205,10 @@
     },
     {
       "id": "apush_p1_columbus_1492_voyage",
-      "correctAnswer": "1492",
+      "correctAnswer": "{1492}",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 5,
       "ageGroup": "all",
@@ -321,7 +321,7 @@
     },
     {
       "id": "apush_p1_reconquista_spain",
-      "correctAnswer": "Reconquista",
+      "correctAnswer": "Reconquista (Spanish crusade)",
       "acceptableAlternatives": [
         "the Reconquista",
         "Reconquest"
@@ -361,7 +361,7 @@
     },
     {
       "id": "apush_p1_caravel_ship_technology",
-      "correctAnswer": "Caravel",
+      "correctAnswer": "Caravel (Portuguese ship)",
       "acceptableAlternatives": [
         "the caravel"
       ],
@@ -439,7 +439,7 @@
     },
     {
       "id": "apush_p1_smallpox_native_population",
-      "correctAnswer": "Smallpox",
+      "correctAnswer": "Smallpox (decimated Native peoples)",
       "acceptableAlternatives": [
         "variola",
         "smallpox epidemic"
@@ -479,7 +479,7 @@
     },
     {
       "id": "apush_p1_hernan_cortes_aztec",
-      "correctAnswer": "Hernán Cortés",
+      "correctAnswer": "Hernan Cortes (conquistador)",
       "acceptableAlternatives": [
         "Cortez",
         "Hernan Cortes"
@@ -558,7 +558,7 @@
     },
     {
       "id": "apush_p1_horse_plains_indians",
-      "correctAnswer": "Horse",
+      "correctAnswer": "Horse (transformed Plains culture)",
       "acceptableAlternatives": [
         "horses",
         "the horse"
@@ -598,7 +598,7 @@
     },
     {
       "id": "apush_p1_encomienda_system",
-      "correctAnswer": "Encomienda",
+      "correctAnswer": "Encomienda (forced labor system)",
       "acceptableAlternatives": [
         "encomienda system",
         "the encomienda"
@@ -719,7 +719,7 @@
     },
     {
       "id": "apush_p1_mita_labor_potosi",
-      "correctAnswer": "Mita",
+      "correctAnswer": "Mita (forced labor tribute)",
       "acceptableAlternatives": [
         "mita labor",
         "mita system"
@@ -759,7 +759,7 @@
     },
     {
       "id": "apush_p1_peninsulares_criollos_distinction",
-      "correctAnswer": "Peninsulares",
+      "correctAnswer": "Peninsulares (Spanish-born elite)",
       "acceptableAlternatives": [
         "peninsulars"
       ],
@@ -798,7 +798,7 @@
     },
     {
       "id": "apush_p1_pueblo_revolt_1680",
-      "correctAnswer": "Pueblo Revolt",
+      "correctAnswer": "Pueblo Revolt (1680 uprising)",
       "acceptableAlternatives": [
         "1680 Pueblo Revolt",
         "Popé's Revolt"
@@ -838,7 +838,7 @@
     },
     {
       "id": "apush_p1_syncretism_colonial_religion",
-      "correctAnswer": "Syncretism",
+      "correctAnswer": "Syncretism (cultural blending)",
       "acceptableAlternatives": [
         "religious syncretism",
         "cultural syncretism"
@@ -878,7 +878,7 @@
     },
     {
       "id": "apush_p1_malinche_cultural_intermediary",
-      "correctAnswer": "La Malinche",
+      "correctAnswer": "La Malinche (Nahua guide)",
       "acceptableAlternatives": [
         "Malinche",
         "Malintzin",
@@ -919,7 +919,7 @@
     },
     {
       "id": "apush_p1_franciscan_missions_southwest",
-      "correctAnswer": "Franciscan",
+      "correctAnswer": "Franciscan (mission system)",
       "acceptableAlternatives": [
         "Franciscans",
         "Franciscan missionaries",
@@ -960,7 +960,7 @@
     },
     {
       "id": "apush_p1_native_alliances_with_europeans",
-      "correctAnswer": "Tlaxcalans",
+      "correctAnswer": "Tlaxcalans (Spanish allies)",
       "acceptableAlternatives": [
         "Tlaxcala",
         "Tlaxcalan allies"
@@ -1000,10 +1000,10 @@
     },
     {
       "id": "apush_p2_jamestown_founded",
-      "correctAnswer": "1607",
+      "correctAnswer": "{1607}",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -1076,10 +1076,10 @@
     },
     {
       "id": "apush_p2_new_france_quebec",
-      "correctAnswer": "1608",
+      "correctAnswer": "{1608}",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 5,
       "ageGroup": "all",
@@ -1113,7 +1113,7 @@
     },
     {
       "id": "apush_p2_dutch_new_netherland",
-      "correctAnswer": "New York",
+      "correctAnswer": "New York (Dutch colony)",
       "acceptableAlternatives": [
         "English New York"
       ],
@@ -1152,10 +1152,10 @@
     },
     {
       "id": "apush_p2_st_augustine_spain",
-      "correctAnswer": "1565",
+      "correctAnswer": "{1565}",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -1226,7 +1226,7 @@
     },
     {
       "id": "apush_p2_city_upon_a_hill",
-      "correctAnswer": "John Winthrop",
+      "correctAnswer": "John Winthrop (Puritan leader)",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "person_names",
@@ -1263,10 +1263,10 @@
     },
     {
       "id": "apush_p2_house_of_burgesses",
-      "correctAnswer": "1619",
+      "correctAnswer": "{1619}",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -1339,7 +1339,7 @@
     },
     {
       "id": "apush_p2_william_penn_pennsylvania",
-      "correctAnswer": "William Penn",
+      "correctAnswer": "William Penn (Quaker founder)",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "person_names",
@@ -1376,7 +1376,7 @@
     },
     {
       "id": "apush_p2_john_rolfe_tobacco",
-      "correctAnswer": "John Rolfe",
+      "correctAnswer": "John Rolfe (tobacco crops)",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "person_names",
@@ -1413,7 +1413,7 @@
     },
     {
       "id": "apush_p2_roger_williams_rhode_island",
-      "correctAnswer": "Roger Williams",
+      "correctAnswer": "Roger Williams (RI founder)",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "person_names",
@@ -1489,7 +1489,7 @@
     },
     {
       "id": "apush_p2_mercantilism_def",
-      "correctAnswer": "Mercantilism",
+      "correctAnswer": "Mercantilism (trade surplus goal)",
       "acceptableAlternatives": [
         "mercantilist theory"
       ],
@@ -1567,7 +1567,7 @@
     },
     {
       "id": "apush_p2_middle_passage",
-      "correctAnswer": "Middle Passage",
+      "correctAnswer": "Middle Passage (slave ship route)",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "concept_terms",
@@ -1682,7 +1682,7 @@
     },
     {
       "id": "apush_p2_metacom_king_philip",
-      "correctAnswer": "Metacom",
+      "correctAnswer": "Metacom (Wampanoag king)",
       "acceptableAlternatives": [
         "Metacomet",
         "King Philip"
@@ -1762,7 +1762,7 @@
     },
     {
       "id": "apush_p2_pueblo_revolt_pope",
-      "correctAnswer": "Popé",
+      "correctAnswer": "Pope (Pueblo leader)",
       "acceptableAlternatives": [
         "Pope",
         "Po'pay"
@@ -1802,10 +1802,10 @@
     },
     {
       "id": "apush_p2_pueblo_revolt_date",
-      "correctAnswer": "1680",
+      "correctAnswer": "{1680}",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -1880,7 +1880,7 @@
     },
     {
       "id": "apush_p2_fur_trade_french_alliance",
-      "correctAnswer": "Fur trade",
+      "correctAnswer": "Fur trade (French alliance basis)",
       "acceptableAlternatives": [
         "beaver fur trade"
       ],
@@ -1956,7 +1956,7 @@
     },
     {
       "id": "apush_p2_bacons_rebellion_date",
-      "correctAnswer": "Nathaniel Bacon",
+      "correctAnswer": "Nathaniel Bacon (rebel leader)",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "person_names",
@@ -1993,10 +1993,10 @@
     },
     {
       "id": "apush_p2_virginia_slave_codes_1705",
-      "correctAnswer": "1705",
+      "correctAnswer": "{1705}",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 5,
       "ageGroup": "all",
@@ -2107,7 +2107,7 @@
     },
     {
       "id": "apush_p2_gullah_culture",
-      "correctAnswer": "Gullah",
+      "correctAnswer": "Gullah (African-Am. culture)",
       "acceptableAlternatives": [
         "Gullah-Geechee"
       ],
@@ -2261,7 +2261,7 @@
     },
     {
       "id": "apush_p2_new_light_old_light",
-      "correctAnswer": "New Light",
+      "correctAnswer": "New Light (revivalist clergy)",
       "acceptableAlternatives": [
         "New Lights"
       ],
@@ -2378,7 +2378,7 @@
     },
     {
       "id": "apush_p2_colonial_rice_carolina",
-      "correctAnswer": "Rice",
+      "correctAnswer": "Rice (Carolina cash crop)",
       "acceptableAlternatives": [
         "rice and indigo"
       ],
@@ -2456,10 +2456,10 @@
     },
     {
       "id": "apush_p2_massachusetts_bay_1630",
-      "correctAnswer": "1630",
+      "correctAnswer": "{1630}",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -2493,7 +2493,7 @@
     },
     {
       "id": "apush_p2_middle_ground_concept",
-      "correctAnswer": "Middle ground",
+      "correctAnswer": "Middle ground (power balance)",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "concept_terms",
@@ -2608,7 +2608,7 @@
     },
     {
       "id": "apush_p3_seven_years_war_outcome",
-      "correctAnswer": "France",
+      "correctAnswer": "France (lost North America)",
       "acceptableAlternatives": [
         "New France"
       ],
@@ -2758,10 +2758,10 @@
     },
     {
       "id": "apush_p3_stamp_act_date",
-      "correctAnswer": "1765",
+      "correctAnswer": "{1765}",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -2868,7 +2868,7 @@
     },
     {
       "id": "apush_p3_crispus_attucks",
-      "correctAnswer": "Crispus Attucks",
+      "correctAnswer": "Crispus Attucks (Boston Massacre)",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "person_names",
@@ -3016,7 +3016,7 @@
     },
     {
       "id": "apush_p3_common_sense_author",
-      "correctAnswer": "Thomas Paine",
+      "correctAnswer": "Thomas Paine (Common Sense)",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "person_names",
@@ -3088,7 +3088,7 @@
     },
     {
       "id": "apush_p3_locke_natural_rights",
-      "correctAnswer": "John Locke",
+      "correctAnswer": "John Locke (natural rights)",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "person_names",
@@ -3124,7 +3124,7 @@
     },
     {
       "id": "apush_p3_montesquieu_separation",
-      "correctAnswer": "Montesquieu",
+      "correctAnswer": "Montesquieu (checks model)",
       "acceptableAlternatives": [
         "Baron de Montesquieu"
       ],
@@ -3198,7 +3198,7 @@
     },
     {
       "id": "apush_p3_republican_ideology",
-      "correctAnswer": "Republicanism",
+      "correctAnswer": "Republicanism (civic virtue ideal)",
       "acceptableAlternatives": [
         "Republican ideology",
         "Classical republicanism"
@@ -3275,7 +3275,7 @@
     },
     {
       "id": "apush_p3_valley_forge",
-      "correctAnswer": "Valley Forge",
+      "correctAnswer": "Valley Forge (winter encampment)",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "place_names",
@@ -3311,7 +3311,7 @@
     },
     {
       "id": "apush_p3_loyalists",
-      "correctAnswer": "Loyalists",
+      "correctAnswer": "Loyalists (pro-British colonists)",
       "acceptableAlternatives": [
         "Tories"
       ],
@@ -3387,7 +3387,7 @@
     },
     {
       "id": "apush_p3_yorktown",
-      "correctAnswer": "Yorktown",
+      "correctAnswer": "Yorktown (final battle)",
       "acceptableAlternatives": [
         "Battle of Yorktown",
         "Siege of Yorktown"
@@ -3426,7 +3426,7 @@
     },
     {
       "id": "apush_p3_abigail_adams_ladies",
-      "correctAnswer": "Abigail Adams",
+      "correctAnswer": "Abigail Adams (womens advocate)",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "person_names",
@@ -3462,7 +3462,7 @@
     },
     {
       "id": "apush_p3_vermont_emancipation",
-      "correctAnswer": "Vermont",
+      "correctAnswer": "Vermont (banned slavery first)",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "place_names",
@@ -3718,7 +3718,7 @@
     },
     {
       "id": "apush_p3_constitutional_convention_location",
-      "correctAnswer": "Philadelphia",
+      "correctAnswer": "Philadelphia (Constitution site)",
       "acceptableAlternatives": [
         "Philadelphia, Pennsylvania"
       ],
@@ -3830,7 +3830,7 @@
     },
     {
       "id": "apush_p3_federalist_papers_authors",
-      "correctAnswer": "Alexander Hamilton, James Madison, and John Jay",
+      "correctAnswer": "Hamilton, Madison, and Jay",
       "acceptableAlternatives": [
         "Hamilton, Madison, and Jay"
       ],
@@ -3980,7 +3980,7 @@
     },
     {
       "id": "apush_p3_federalism",
-      "correctAnswer": "Federalism",
+      "correctAnswer": "Federalism (shared sovereignty)",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_terms",
@@ -4054,10 +4054,10 @@
     },
     {
       "id": "apush_p3_slave_trade_1808",
-      "correctAnswer": "1808",
+      "correctAnswer": "{1808}",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -4274,7 +4274,7 @@
     },
     {
       "id": "apush_p3_xyz_affair",
-      "correctAnswer": "XYZ Affair",
+      "correctAnswer": "XYZ Affair (French bribery)",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "event_names",
@@ -4346,7 +4346,7 @@
     },
     {
       "id": "apush_p3_virginia_kentucky_resolutions",
-      "correctAnswer": "Virginia and Kentucky Resolutions",
+      "correctAnswer": "Virginia-Kentucky Resolutions",
       "acceptableAlternatives": [
         "Kentucky and Virginia Resolutions"
       ],
@@ -4496,7 +4496,7 @@
     },
     {
       "id": "apush_p3_noah_webster",
-      "correctAnswer": "Noah Webster",
+      "correctAnswer": "Noah Webster (American English)",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "person_names",
@@ -4532,7 +4532,7 @@
     },
     {
       "id": "apush_p3_virginia_statute_religious_freedom",
-      "correctAnswer": "Virginia Statute for Religious Freedom",
+      "correctAnswer": "Virginia Statute (1786)",
       "acceptableAlternatives": [
         "Statute of Virginia for Religious Freedom"
       ],
@@ -4644,7 +4644,7 @@
     },
     {
       "id": "apush_p3_loyalist_migration",
-      "correctAnswer": "Canada",
+      "correctAnswer": "Canada (Loyalist destination)",
       "acceptableAlternatives": [
         "British Canada",
         "Upper Canada"
@@ -4683,7 +4683,7 @@
     },
     {
       "id": "apush_p3_ohio_company",
-      "correctAnswer": "Ohio Company",
+      "correctAnswer": "Ohio Company (land speculation)",
       "acceptableAlternatives": [
         "Ohio Company of Associates"
       ],
@@ -4721,7 +4721,7 @@
     },
     {
       "id": "apush_p3_jay_treaty",
-      "correctAnswer": "Jay's Treaty",
+      "correctAnswer": "Jays Treaty (1794 pact)",
       "acceptableAlternatives": [
         "Jay Treaty"
       ],
@@ -4759,7 +4759,7 @@
     },
     {
       "id": "apush_p3_cabinet_precedent",
-      "correctAnswer": "Cabinet",
+      "correctAnswer": "Cabinet (presidential advisors)",
       "acceptableAlternatives": [
         "Presidential Cabinet"
       ],
@@ -4979,7 +4979,7 @@
     },
     {
       "id": "apush_p3_townshend_acts",
-      "correctAnswer": "Townshend Acts",
+      "correctAnswer": "Townshend Acts (colonial taxes)",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "legislation_names",
@@ -5015,7 +5015,7 @@
     },
     {
       "id": "apush_p3_paul_revere_engraving",
-      "correctAnswer": "Paul Revere",
+      "correctAnswer": "Paul Revere (patriot printer)",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "person_names",
@@ -5164,7 +5164,7 @@
     },
     {
       "id": "apush_p3_declaration_unalienable_rights",
-      "correctAnswer": "Life, liberty, and the pursuit of happiness",
+      "correctAnswer": "Life, liberty, pursuit of happiness",
       "acceptableAlternatives": [
         "life, liberty, and pursuit of happiness"
       ],
@@ -5202,10 +5202,10 @@
     },
     {
       "id": "apush_p3_articles_ratification",
-      "correctAnswer": "1781",
+      "correctAnswer": "{1781}",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 4,
       "ageGroup": "all",
@@ -5276,7 +5276,7 @@
     },
     {
       "id": "apush_p3_common_sense_copies",
-      "correctAnswer": "500,000",
+      "correctAnswer": "{500,000}",
       "acceptableAlternatives": [
         "roughly 500,000",
         "approximately 500,000"
@@ -5315,7 +5315,7 @@
     },
     {
       "id": "apush_p3_boston_tea_chests",
-      "correctAnswer": "342",
+      "correctAnswer": "{342}",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "bracket_numbers",
@@ -5351,7 +5351,7 @@
     },
     {
       "id": "apush_p3_constitutional_delegates",
-      "correctAnswer": "55",
+      "correctAnswer": "{55}",
       "acceptableAlternatives": [
         "fifty-five"
       ],
@@ -5427,7 +5427,7 @@
     },
     {
       "id": "apush_p3_publius_pseudonym",
-      "correctAnswer": "Publius",
+      "correctAnswer": "Publius (Federalist pseudonym)",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_terms",
@@ -5619,7 +5619,7 @@
     },
     {
       "id": "apush_p4_embargo_act_1807",
-      "correctAnswer": "Embargo Act",
+      "correctAnswer": "Embargo Act (1807 trade ban)",
       "acceptableAlternatives": [
         "Embargo Act of 1807"
       ],
@@ -5695,7 +5695,7 @@
     },
     {
       "id": "apush_p4_missouri_compromise_line",
-      "correctAnswer": "36°30'",
+      "correctAnswer": "{36}°30",
       "acceptableAlternatives": [
         "36 30",
         "36 degrees 30 minutes",
@@ -5736,7 +5736,7 @@
     },
     {
       "id": "apush_p4_henry_clay_great_compromiser",
-      "correctAnswer": "Henry Clay",
+      "correctAnswer": "Henry Clay (Great Compromiser)",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
       "answerTypePoolId": "person_names",
@@ -5812,10 +5812,10 @@
     },
     {
       "id": "apush_p4_tariff_of_abominations",
-      "correctAnswer": "1828",
+      "correctAnswer": "{1828}",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -6004,10 +6004,10 @@
     },
     {
       "id": "apush_p4_monroe_doctrine_year",
-      "correctAnswer": "1823",
+      "correctAnswer": "{1823}",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -6081,10 +6081,10 @@
     },
     {
       "id": "apush_p4_erie_canal_opening",
-      "correctAnswer": "1825",
+      "correctAnswer": "{1825}",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -6118,7 +6118,7 @@
     },
     {
       "id": "apush_p4_cotton_gin_inventor",
-      "correctAnswer": "Eli Whitney",
+      "correctAnswer": "Eli Whitney (cotton gin)",
       "acceptableAlternatives": [
         "Whitney"
       ],
@@ -6157,7 +6157,7 @@
     },
     {
       "id": "apush_p4_lowell_system",
-      "correctAnswer": "Lowell System",
+      "correctAnswer": "Lowell System (factory towns)",
       "acceptableAlternatives": [
         "Lowell Mills",
         "Waltham-Lowell system"
@@ -6396,7 +6396,7 @@
     },
     {
       "id": "apush_p4_middle_class_market_revolution",
-      "correctAnswer": "Middle class",
+      "correctAnswer": "Middle class (market revolution)",
       "acceptableAlternatives": [
         "the middle class",
         "a new middle class"
@@ -6476,7 +6476,7 @@
     },
     {
       "id": "apush_p4_spoils_system_jackson",
-      "correctAnswer": "Spoils system",
+      "correctAnswer": "Spoils system (patronage jobs)",
       "acceptableAlternatives": [
         "patronage system",
         "patronage"
@@ -6516,7 +6516,7 @@
     },
     {
       "id": "apush_p4_democrats_whigs",
-      "correctAnswer": "Whig Party",
+      "correctAnswer": "Whig Party (anti-Jackson coalition)",
       "acceptableAlternatives": [
         "Whigs"
       ],
@@ -6555,7 +6555,7 @@
     },
     {
       "id": "apush_p4_nullification_crisis_resolution",
-      "correctAnswer": "Force Bill",
+      "correctAnswer": "Force Bill (tariff enforcement)",
       "acceptableAlternatives": [
         "the Force Act"
       ],
@@ -6635,10 +6635,10 @@
     },
     {
       "id": "apush_p4_indian_removal_act_year",
-      "correctAnswer": "1830",
+      "correctAnswer": "{1830}",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -7133,7 +7133,7 @@
     },
     {
       "id": "apush_p4_garrison_liberator",
-      "correctAnswer": "The Liberator",
+      "correctAnswer": "The Liberator (Garrison paper)",
       "acceptableAlternatives": [
         "The Liberator newspaper"
       ],
@@ -7172,10 +7172,10 @@
     },
     {
       "id": "apush_p4_american_anti_slavery_society",
-      "correctAnswer": "1833",
+      "correctAnswer": "{1833}",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -7287,7 +7287,7 @@
     },
     {
       "id": "apush_p4_horace_mann_education",
-      "correctAnswer": "Horace Mann",
+      "correctAnswer": "Horace Mann (public education)",
       "acceptableAlternatives": [
         "Mann"
       ],
@@ -7559,7 +7559,7 @@
     },
     {
       "id": "apush_p4_king_cotton",
-      "correctAnswer": "King Cotton",
+      "correctAnswer": "King Cotton (Southern economy)",
       "acceptableAlternatives": [
         "cotton as king"
       ],
@@ -7598,7 +7598,7 @@
     },
     {
       "id": "apush_p4_slavery_positive_good",
-      "correctAnswer": "Positive good",
+      "correctAnswer": "Positive good (pro-slavery arg)",
       "acceptableAlternatives": [
         "a positive good",
         "slavery as a positive good"
@@ -7678,7 +7678,7 @@
     },
     {
       "id": "apush_p4_planter_elite",
-      "correctAnswer": "Planter elite",
+      "correctAnswer": "Planter elite (Southern slaveholders)",
       "acceptableAlternatives": [
         "planter class",
         "large slaveholders"
@@ -7912,7 +7912,7 @@
     },
     {
       "id": "apush_p4_jacksonian_democracy_common_man",
-      "correctAnswer": "Common man",
+      "correctAnswer": "Common man (Jackson populism)",
       "acceptableAlternatives": [
         "the common man"
       ],
@@ -7990,7 +7990,7 @@
     },
     {
       "id": "apush_p5_oregon_treaty_parallel",
-      "correctAnswer": "49th parallel",
+      "correctAnswer": "49th parallel (US-Canada border)",
       "acceptableAlternatives": [
         "the 49th parallel"
       ],
@@ -8029,12 +8029,12 @@
     },
     {
       "id": "apush_p5_texas_annexation_year",
-      "correctAnswer": "1845",
+      "correctAnswer": "{1845}",
       "acceptableAlternatives": [
         "December 29, 1845"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 4,
       "ageGroup": "all",
@@ -8068,7 +8068,7 @@
     },
     {
       "id": "apush_p5_sam_houston_san_jacinto",
-      "correctAnswer": "Sam Houston",
+      "correctAnswer": "Sam Houston (Texas president)",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "person_names",
@@ -8105,7 +8105,7 @@
     },
     {
       "id": "apush_p5_oregon_trail_migration",
-      "correctAnswer": "Oregon Trail",
+      "correctAnswer": "Oregon Trail (westward migration)",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "concept_terms",
@@ -8142,7 +8142,7 @@
     },
     {
       "id": "apush_p5_manifest_destiny_native_conflict",
-      "correctAnswer": "Intensified conflict with Native nations",
+      "correctAnswer": "Conflict with Native nations",
       "acceptableAlternatives": [
         "increased conflict with Native Americans",
         "displaced Native nations"
@@ -8182,13 +8182,13 @@
     },
     {
       "id": "apush_p5_alamo_battle",
-      "correctAnswer": "1836",
+      "correctAnswer": "{1836}",
       "acceptableAlternatives": [
         "March 1836",
         "March 6, 1836"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -8298,7 +8298,7 @@
     },
     {
       "id": "apush_p5_wilmot_proviso",
-      "correctAnswer": "Wilmot Proviso",
+      "correctAnswer": "Wilmot Proviso (slavery ban bill)",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "legislation_names",
@@ -8453,13 +8453,13 @@
     },
     {
       "id": "apush_p5_california_gold_rush",
-      "correctAnswer": "1849",
+      "correctAnswer": "{1849}",
       "acceptableAlternatives": [
         "1848–1849",
         "1848"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
@@ -8572,7 +8572,7 @@
     },
     {
       "id": "apush_p5_compromise_1850_dc_slave_trade",
-      "correctAnswer": "Banned the slave trade (but not slavery) in Washington D.C.",
+      "correctAnswer": "Banned slave trade in D.C.",
       "acceptableAlternatives": [
         "banned slave trade in Washington D.C.",
         "ended slave trade in the District of Columbia"
@@ -8612,7 +8612,7 @@
     },
     {
       "id": "apush_p5_henry_clay_compromise",
-      "correctAnswer": "Henry Clay",
+      "correctAnswer": "Henry Clay (Missouri Compromise)",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "person_names",
@@ -8886,10 +8886,10 @@
     },
     {
       "id": "apush_p5_republican_party_formed",
-      "correctAnswer": "1854",
+      "correctAnswer": "{1854}",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -8923,7 +8923,7 @@
     },
     {
       "id": "apush_p5_dred_scott_ruling",
-      "correctAnswer": "Roger Taney",
+      "correctAnswer": "Roger Taney (Dred Scott ruling)",
       "acceptableAlternatives": [
         "Chief Justice Taney",
         "Chief Justice Roger Taney"
@@ -9003,7 +9003,7 @@
     },
     {
       "id": "apush_p5_john_brown_harpers_ferry",
-      "correctAnswer": "Harpers Ferry",
+      "correctAnswer": "Harpers Ferry (Browns raid)",
       "acceptableAlternatives": [
         "Harper's Ferry"
       ],
@@ -9042,7 +9042,7 @@
     },
     {
       "id": "apush_p5_election_1860_parties",
-      "correctAnswer": "Four",
+      "correctAnswer": "Four (1860 election parties)",
       "acceptableAlternatives": [
         "4",
         "four parties"
@@ -9394,7 +9394,7 @@
     },
     {
       "id": "apush_p5_anaconda_plan",
-      "correctAnswer": "Anaconda Plan",
+      "correctAnswer": "Anaconda Plan (Union blockade)",
       "acceptableAlternatives": [
         "Scott's Anaconda Plan"
       ],
@@ -9472,7 +9472,7 @@
     },
     {
       "id": "apush_p5_usct_soldiers",
-      "correctAnswer": "180,000",
+      "correctAnswer": "180,000 (USCT soldiers)",
       "acceptableAlternatives": [
         "over 180,000",
         "approximately 180,000"
@@ -9591,7 +9591,7 @@
     },
     {
       "id": "apush_p5_homestead_act_1862",
-      "correctAnswer": "Homestead Act",
+      "correctAnswer": "Homestead Act (free western land)",
       "acceptableAlternatives": [
         "Homestead Act of 1862"
       ],
@@ -9671,7 +9671,7 @@
     },
     {
       "id": "apush_p5_copperheads",
-      "correctAnswer": "Copperheads",
+      "correctAnswer": "Copperheads (anti-war Democrats)",
       "acceptableAlternatives": [
         "Peace Democrats",
         "Copperhead Democrats"
@@ -9791,7 +9791,7 @@
     },
     {
       "id": "apush_p5_black_codes",
-      "correctAnswer": "Black Codes",
+      "correctAnswer": "Black Codes (post-war oppression)",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "concept_terms",
@@ -9984,7 +9984,7 @@
     },
     {
       "id": "apush_p5_carpetbaggers_scalawags",
-      "correctAnswer": "Carpetbaggers",
+      "correctAnswer": "Carpetbaggers (Northern migrants)",
       "acceptableAlternatives": [
         "carpetbagger"
       ],
@@ -10023,7 +10023,7 @@
     },
     {
       "id": "apush_p5_reconstruction_public_schools",
-      "correctAnswer": "Publicly funded schools for all races",
+      "correctAnswer": "Public schools for all races",
       "acceptableAlternatives": [
         "public school systems",
         "free public schools"
@@ -10063,7 +10063,7 @@
     },
     {
       "id": "apush_p5_ku_klux_klan",
-      "correctAnswer": "Ku Klux Klan",
+      "correctAnswer": "Ku Klux Klan (white terror group)",
       "acceptableAlternatives": [
         "the KKK",
         "the Klan"
@@ -10183,7 +10183,7 @@
     },
     {
       "id": "apush_p5_sharecropping",
-      "correctAnswer": "Sharecropping",
+      "correctAnswer": "Sharecropping (crop debt cycle)",
       "acceptableAlternatives": [
         "sharecrop system",
         "the sharecrop system"
@@ -10262,7 +10262,7 @@
     },
     {
       "id": "apush_p5_redeemers",
-      "correctAnswer": "Redeemers",
+      "correctAnswer": "Redeemers (post-Reconstruction Dems)",
       "acceptableAlternatives": [
         "Redeemer Democrats"
       ],
@@ -10301,7 +10301,7 @@
     },
     {
       "id": "apush_p5_solid_south",
-      "correctAnswer": "\"Solid South\"",
+      "correctAnswer": "Solid South (Democratic region)",
       "acceptableAlternatives": [
         "Solid South"
       ],
@@ -10537,10 +10537,10 @@
     },
     {
       "id": "apush_p6_homestead_act_year",
-      "correctAnswer": "1862",
+      "correctAnswer": "{1862}",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -10573,7 +10573,7 @@
     },
     {
       "id": "apush_p6_chisholm_trail",
-      "correctAnswer": "Chisholm Trail",
+      "correctAnswer": "Chisholm Trail (cattle drive route)",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_terms",
@@ -10609,7 +10609,7 @@
     },
     {
       "id": "apush_p6_comstock_lode",
-      "correctAnswer": "Nevada",
+      "correctAnswer": "Nevada (Comstock silver lode)",
       "acceptableAlternatives": [
         "Nevada Territory"
       ],
@@ -10686,13 +10686,13 @@
     },
     {
       "id": "apush_p6_little_bighorn_date",
-      "correctAnswer": "1876",
+      "correctAnswer": "{1876}",
       "acceptableAlternatives": [
         "June 1876",
         "June 25, 1876"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -10763,12 +10763,12 @@
     },
     {
       "id": "apush_p6_dawes_act_year",
-      "correctAnswer": "1887",
+      "correctAnswer": "{1887}",
       "acceptableAlternatives": [
         "February 1887"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -10952,7 +10952,7 @@
     },
     {
       "id": "apush_p6_henry_grady_new_south",
-      "correctAnswer": "Henry Grady",
+      "correctAnswer": "Henry Grady (New South voice)",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
       "answerTypePoolId": "person_names",
@@ -10988,7 +10988,7 @@
     },
     {
       "id": "apush_p6_sharecropping_definition",
-      "correctAnswer": "Sharecropping",
+      "correctAnswer": "Sharecropping (crop debt cycle)",
       "acceptableAlternatives": [
         "Sharecropper system"
       ],
@@ -11062,10 +11062,10 @@
     },
     {
       "id": "apush_p6_edison_light_bulb_year",
-      "correctAnswer": "1879",
+      "correctAnswer": "{1879}",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -11098,10 +11098,10 @@
     },
     {
       "id": "apush_p6_bell_telephone_year",
-      "correctAnswer": "1876",
+      "correctAnswer": "{1876}",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -11172,10 +11172,10 @@
     },
     {
       "id": "apush_p6_railroads_time_zones",
-      "correctAnswer": "1883",
+      "correctAnswer": "{1883}",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 9,
       "ageGroup": "all",
@@ -11318,10 +11318,10 @@
     },
     {
       "id": "apush_p6_sherman_antitrust_year",
-      "correctAnswer": "1890",
+      "correctAnswer": "{1890}",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -11390,10 +11390,10 @@
     },
     {
       "id": "apush_p6_knights_of_labor_founding",
-      "correctAnswer": "1869",
+      "correctAnswer": "{1869}",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -11464,13 +11464,13 @@
     },
     {
       "id": "apush_p6_haymarket_affair",
-      "correctAnswer": "1886",
+      "correctAnswer": "{1886}",
       "acceptableAlternatives": [
         "May 1886",
         "May 4, 1886"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -11503,10 +11503,10 @@
     },
     {
       "id": "apush_p6_homestead_strike_carnegie",
-      "correctAnswer": "1892",
+      "correctAnswer": "{1892}",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -11539,7 +11539,7 @@
     },
     {
       "id": "apush_p6_pullman_strike_debs",
-      "correctAnswer": "Eugene Debs",
+      "correctAnswer": "Eugene Debs (labor leader)",
       "acceptableAlternatives": [
         "Debs"
       ],
@@ -11577,12 +11577,12 @@
     },
     {
       "id": "apush_p6_chinese_exclusion_act_year",
-      "correctAnswer": "1882",
+      "correctAnswer": "{1882}",
       "acceptableAlternatives": [
         "May 1882"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
@@ -11654,10 +11654,10 @@
     },
     {
       "id": "apush_p6_ellis_island_opening",
-      "correctAnswer": "1892",
+      "correctAnswer": "{1892}",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -11726,7 +11726,7 @@
     },
     {
       "id": "apush_p6_angel_island",
-      "correctAnswer": "Angel Island",
+      "correctAnswer": "Angel Island (immigration station)",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
       "answerTypePoolId": "place_names",
@@ -11800,7 +11800,7 @@
     },
     {
       "id": "apush_p6_hull_house_founders",
-      "correctAnswer": "Jane Addams",
+      "correctAnswer": "Jane Addams (Hull House)",
       "acceptableAlternatives": [
         "Addams"
       ],
@@ -11838,7 +11838,7 @@
     },
     {
       "id": "apush_p6_social_gospel",
-      "correctAnswer": "Social Gospel",
+      "correctAnswer": "Social Gospel (reform theology)",
       "acceptableAlternatives": [
         "Social Gospel movement"
       ],
@@ -11912,7 +11912,7 @@
     },
     {
       "id": "apush_p6_baseball_national_pastime",
-      "correctAnswer": "Baseball",
+      "correctAnswer": "Baseball (national pastime)",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_terms",
@@ -11986,7 +11986,7 @@
     },
     {
       "id": "apush_p6_populist_omaha_platform",
-      "correctAnswer": "Omaha Platform",
+      "correctAnswer": "Omaha Platform (Populist demands)",
       "acceptableAlternatives": [
         "Omaha Platform of 1892"
       ],
@@ -12062,7 +12062,7 @@
     },
     {
       "id": "apush_p6_free_silver_ratio",
-      "correctAnswer": "16 to 1",
+      "correctAnswer": "16 to 1 (silver ratio)",
       "acceptableAlternatives": [
         "16:1",
         "sixteen to one"
@@ -12101,10 +12101,10 @@
     },
     {
       "id": "apush_p6_pendleton_act_year",
-      "correctAnswer": "1883",
+      "correctAnswer": "{1883}",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -12137,7 +12137,7 @@
     },
     {
       "id": "apush_p6_mugwumps",
-      "correctAnswer": "Mugwumps",
+      "correctAnswer": "Mugwumps (GOP reformers)",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_terms",
@@ -12173,10 +12173,10 @@
     },
     {
       "id": "apush_p6_interstate_commerce_act",
-      "correctAnswer": "1887",
+      "correctAnswer": "{1887}",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -12247,7 +12247,7 @@
     },
     {
       "id": "apush_p6_tammany_hall",
-      "correctAnswer": "Tammany Hall",
+      "correctAnswer": "Tammany Hall (political machine)",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
       "answerTypePoolId": "place_names",
@@ -12283,10 +12283,10 @@
     },
     {
       "id": "apush_p6_garfield_assassination",
-      "correctAnswer": "1881",
+      "correctAnswer": "{1881}",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -12319,7 +12319,7 @@
     },
     {
       "id": "apush_p6_stalwarts_half_breeds",
-      "correctAnswer": "Stalwarts",
+      "correctAnswer": "Stalwarts (machine politicians)",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_terms",
@@ -12355,10 +12355,10 @@
     },
     {
       "id": "apush_p6_great_railroad_strike_1877",
-      "correctAnswer": "1877",
+      "correctAnswer": "{1877}",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -12468,10 +12468,10 @@
     },
     {
       "id": "apush_p6_standard_oil_founding",
-      "correctAnswer": "1870",
+      "correctAnswer": "{1870}",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -12655,7 +12655,7 @@
     },
     {
       "id": "apush_p6_jp_morgan_us_steel",
-      "correctAnswer": "J.P. Morgan",
+      "correctAnswer": "J.P. Morgan (U.S. Steel)",
       "acceptableAlternatives": [
         "John Pierpont Morgan",
         "Morgan"
@@ -12809,7 +12809,7 @@
     },
     {
       "id": "apush_p6_laissez_faire",
-      "correctAnswer": "Laissez-faire",
+      "correctAnswer": "Laissez-faire (no regulation)",
       "acceptableAlternatives": [
         "Laissez faire"
       ],
@@ -12924,7 +12924,7 @@
     },
     {
       "id": "apush_p6_tweed_corruption_exposure",
-      "correctAnswer": "Thomas Nast",
+      "correctAnswer": "Thomas Nast (cartoonist)",
       "acceptableAlternatives": [
         "Nast"
       ],
@@ -13001,7 +13001,7 @@
     },
     {
       "id": "apush_p6_child_labor_factories",
-      "correctAnswer": "Child labor",
+      "correctAnswer": "Child labor (industrial factory)",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_terms",
@@ -13191,7 +13191,7 @@
     },
     {
       "id": "apush_p7_uss_maine",
-      "correctAnswer": "USS Maine",
+      "correctAnswer": "USS Maine (Havana explosion)",
       "acceptableAlternatives": [
         "The Maine"
       ],
@@ -13425,7 +13425,7 @@
     },
     {
       "id": "apush_p7_ida_tarbell_standard_oil",
-      "correctAnswer": "Standard Oil",
+      "correctAnswer": "Standard Oil (Tarbells target)",
       "acceptableAlternatives": [
         "Standard Oil Company"
       ],
@@ -13464,7 +13464,7 @@
     },
     {
       "id": "apush_p7_16th_amendment_income_tax",
-      "correctAnswer": "16th Amendment",
+      "correctAnswer": "16th Amendment (income tax)",
       "acceptableAlternatives": [
         "Sixteenth Amendment"
       ],
@@ -13503,7 +13503,7 @@
     },
     {
       "id": "apush_p7_17th_amendment_senators",
-      "correctAnswer": "17th Amendment",
+      "correctAnswer": "17th Amendment (direct elections)",
       "acceptableAlternatives": [
         "Seventeenth Amendment"
       ],
@@ -13542,7 +13542,7 @@
     },
     {
       "id": "apush_p7_19th_amendment_suffrage",
-      "correctAnswer": "19th Amendment",
+      "correctAnswer": "19th Amendment (womens vote)",
       "acceptableAlternatives": [
         "Nineteenth Amendment"
       ],
@@ -13581,10 +13581,10 @@
     },
     {
       "id": "apush_p7_naacp_founded",
-      "correctAnswer": "1909",
+      "correctAnswer": "{1909}",
       "acceptableAlternatives": [],
       "chainThemeId": 6,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 5,
       "ageGroup": "all",
@@ -13618,12 +13618,12 @@
     },
     {
       "id": "apush_p7_lusitania_sunk",
-      "correctAnswer": "1915",
+      "correctAnswer": "{1915}",
       "acceptableAlternatives": [
         "May 7, 1915"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -13932,7 +13932,7 @@
     },
     {
       "id": "apush_p7_palmer_raids",
-      "correctAnswer": "Palmer Raids",
+      "correctAnswer": "Palmer Raids (Red Scare arrests)",
       "acceptableAlternatives": [
         "the Palmer Raids"
       ],
@@ -14049,7 +14049,7 @@
     },
     {
       "id": "apush_p7_scopes_trial",
-      "correctAnswer": "Scopes Trial",
+      "correctAnswer": "Scopes Trial (evolution ban)",
       "acceptableAlternatives": [
         "Scopes Monkey Trial"
       ],
@@ -14088,7 +14088,7 @@
     },
     {
       "id": "apush_p7_18th_amendment_prohibition",
-      "correctAnswer": "18th Amendment",
+      "correctAnswer": "18th Amendment (Prohibition)",
       "acceptableAlternatives": [
         "Eighteenth Amendment",
         "Prohibition Amendment"
@@ -14128,7 +14128,7 @@
     },
     {
       "id": "apush_p7_klan_revival_1920s",
-      "correctAnswer": "4 million",
+      "correctAnswer": "4 million (Klan membership)",
       "acceptableAlternatives": [
         "four million"
       ],
@@ -14247,7 +14247,7 @@
     },
     {
       "id": "apush_p7_bonus_army",
-      "correctAnswer": "Bonus Army",
+      "correctAnswer": "Bonus Army (WWI vet protest)",
       "acceptableAlternatives": [
         "Bonus Expeditionary Force",
         "BEF"
@@ -14287,7 +14287,7 @@
     },
     {
       "id": "apush_p7_dust_bowl_okies",
-      "correctAnswer": "Dust Bowl",
+      "correctAnswer": "Dust Bowl (Great Plains drought)",
       "acceptableAlternatives": [
         "the Dust Bowl"
       ],
@@ -14482,7 +14482,7 @@
     },
     {
       "id": "apush_p7_wagner_act",
-      "correctAnswer": "Wagner Act",
+      "correctAnswer": "Wagner Act (union rights, 1935)",
       "acceptableAlternatives": [
         "National Labor Relations Act",
         "NLRA"
@@ -15031,7 +15031,7 @@
     },
     {
       "id": "apush_p7_island_hopping",
-      "correctAnswer": "Island hopping",
+      "correctAnswer": "Island hopping (Pacific strategy)",
       "acceptableAlternatives": [
         "leapfrogging"
       ],
@@ -15070,7 +15070,7 @@
     },
     {
       "id": "apush_p7_united_nations_1945",
-      "correctAnswer": "United Nations",
+      "correctAnswer": "United Nations (1945 founding)",
       "acceptableAlternatives": [
         "UN"
       ],
@@ -15185,7 +15185,7 @@
     },
     {
       "id": "apush_p7_marshall_plan",
-      "correctAnswer": "Marshall Plan",
+      "correctAnswer": "Marshall Plan (European recovery)",
       "acceptableAlternatives": [
         "European Recovery Program"
       ],
@@ -15224,7 +15224,7 @@
     },
     {
       "id": "apush_p7_nato_founded",
-      "correctAnswer": "NATO",
+      "correctAnswer": "NATO (collective defense)",
       "acceptableAlternatives": [
         "North Atlantic Treaty Organization"
       ],
@@ -15302,7 +15302,7 @@
     },
     {
       "id": "apush_p7_espionage_act_1917",
-      "correctAnswer": "Espionage Act",
+      "correctAnswer": "Espionage Act (wartime speech)",
       "acceptableAlternatives": [
         "Espionage Act of 1917"
       ],
@@ -15341,7 +15341,7 @@
     },
     {
       "id": "apush_p7_red_scare_1919",
-      "correctAnswer": "Red Scare",
+      "correctAnswer": "Red Scare (1919 labor unrest)",
       "acceptableAlternatives": [
         "First Red Scare"
       ],
@@ -15419,7 +15419,7 @@
     },
     {
       "id": "apush_p7_hoovervilles",
-      "correctAnswer": "Hoovervilles",
+      "correctAnswer": "Hoovervilles (Depression shantytowns)",
       "acceptableAlternatives": [
         "Hooverville"
       ],
@@ -15575,7 +15575,7 @@
     },
     {
       "id": "apush_p8_containment_kennan",
-      "correctAnswer": "Containment",
+      "correctAnswer": "Containment (Kennans strategy)",
       "acceptableAlternatives": [
         "containment policy"
       ],
@@ -15653,7 +15653,7 @@
     },
     {
       "id": "apush_p8_nsc68",
-      "correctAnswer": "NSC-68",
+      "correctAnswer": "NSC-68 (Cold War strategy)",
       "acceptableAlternatives": [
         "National Security Council Paper 68"
       ],
@@ -15771,7 +15771,7 @@
     },
     {
       "id": "apush_p8_detente_salt",
-      "correctAnswer": "Détente",
+      "correctAnswer": "Detente (diplomatic relaxation)",
       "acceptableAlternatives": [
         "detente"
       ],
@@ -15850,7 +15850,7 @@
     },
     {
       "id": "apush_p8_huac_hollywood",
-      "correctAnswer": "Hollywood Ten",
+      "correctAnswer": "Hollywood Ten (HUAC blacklist)",
       "acceptableAlternatives": [
         "the Hollywood Ten"
       ],
@@ -15969,7 +15969,7 @@
     },
     {
       "id": "apush_p8_alger_hiss",
-      "correctAnswer": "Alger Hiss",
+      "correctAnswer": "Alger Hiss (spy case)",
       "acceptableAlternatives": [],
       "chainThemeId": 7,
       "answerTypePoolId": "person_names",
@@ -16006,7 +16006,7 @@
     },
     {
       "id": "apush_p8_gi_bill",
-      "correctAnswer": "GI Bill",
+      "correctAnswer": "GI Bill (veterans benefits, 1944)",
       "acceptableAlternatives": [
         "Servicemen's Readjustment Act",
         "GI Bill of Rights",
@@ -16047,7 +16047,7 @@
     },
     {
       "id": "apush_p8_levittown",
-      "correctAnswer": "Levittown",
+      "correctAnswer": "Levittown (postwar suburb)",
       "acceptableAlternatives": [],
       "chainThemeId": 7,
       "answerTypePoolId": "place_names",
@@ -16125,7 +16125,7 @@
     },
     {
       "id": "apush_p8_baby_boom",
-      "correctAnswer": "Baby boom",
+      "correctAnswer": "Baby boom (postwar birth surge)",
       "acceptableAlternatives": [
         "the baby boom",
         "postwar baby boom"
@@ -16202,7 +16202,7 @@
     },
     {
       "id": "apush_p8_sputnik",
-      "correctAnswer": "Sputnik",
+      "correctAnswer": "Sputnik (Soviet satellite)",
       "acceptableAlternatives": [
         "Sputnik 1"
       ],
@@ -16281,7 +16281,7 @@
     },
     {
       "id": "apush_p8_rock_and_roll_culture",
-      "correctAnswer": "Rock and roll",
+      "correctAnswer": "Rock and roll (youth culture)",
       "acceptableAlternatives": [
         "rock 'n' roll",
         "rock & roll"
@@ -16594,7 +16594,7 @@
     },
     {
       "id": "apush_p8_marshall_plan",
-      "correctAnswer": "Marshall Plan",
+      "correctAnswer": "Marshall Plan (European recovery)",
       "acceptableAlternatives": [
         "European Recovery Program",
         "the Marshall Plan"
@@ -16674,7 +16674,7 @@
     },
     {
       "id": "apush_p8_apollo_11",
-      "correctAnswer": "Apollo 11",
+      "correctAnswer": "Apollo 11 (Moon landing)",
       "acceptableAlternatives": [],
       "chainThemeId": 7,
       "answerTypePoolId": "event_names",
@@ -16791,7 +16791,7 @@
     },
     {
       "id": "apush_p8_tet_offensive",
-      "correctAnswer": "Tet Offensive",
+      "correctAnswer": "Tet Offensive (1968 Vietnam)",
       "acceptableAlternatives": [
         "the Tet Offensive"
       ],
@@ -16911,7 +16911,7 @@
     },
     {
       "id": "apush_p8_vietnamization",
-      "correctAnswer": "Vietnamization",
+      "correctAnswer": "Vietnamization (Nixon troop exit)",
       "acceptableAlternatives": [],
       "chainThemeId": 7,
       "answerTypePoolId": "concept_terms",
@@ -17027,7 +17027,7 @@
     },
     {
       "id": "apush_p8_great_society",
-      "correctAnswer": "Great Society",
+      "correctAnswer": "Great Society (LBJ programs)",
       "acceptableAlternatives": [
         "the Great Society"
       ],
@@ -17066,7 +17066,7 @@
     },
     {
       "id": "apush_p8_immigration_act_1965",
-      "correctAnswer": "Immigration and Nationality Act of 1965",
+      "correctAnswer": "Immigration and Nationality Act (1965)",
       "acceptableAlternatives": [
         "Hart-Celler Act",
         "Immigration Act of 1965"
@@ -17302,7 +17302,7 @@
     },
     {
       "id": "apush_p8_bloody_sunday_selma",
-      "correctAnswer": "Bloody Sunday",
+      "correctAnswer": "Bloody Sunday (Selma march)",
       "acceptableAlternatives": [
         "the Selma march",
         "Edmund Pettus Bridge march"
@@ -17342,7 +17342,7 @@
     },
     {
       "id": "apush_p8_freedom_rides",
-      "correctAnswer": "Freedom Rides",
+      "correctAnswer": "Freedom Rides (bus integration)",
       "acceptableAlternatives": [
         "Freedom Riders",
         "the Freedom Rides"
@@ -17421,7 +17421,7 @@
     },
     {
       "id": "apush_p8_black_power",
-      "correctAnswer": "Black Power",
+      "correctAnswer": "Black Power (militant civil rights)",
       "acceptableAlternatives": [
         "Black Power movement"
       ],
@@ -17697,7 +17697,7 @@
     },
     {
       "id": "apush_p8_woodstock",
-      "correctAnswer": "Woodstock",
+      "correctAnswer": "Woodstock (1969 music fest)",
       "acceptableAlternatives": [
         "Woodstock festival",
         "Woodstock Music Festival"
@@ -17777,7 +17777,7 @@
     },
     {
       "id": "apush_p8_counterculture",
-      "correctAnswer": "Counterculture",
+      "correctAnswer": "Counterculture (1960s rebellion)",
       "acceptableAlternatives": [
         "the counterculture",
         "hippie counterculture"
@@ -17817,7 +17817,7 @@
     },
     {
       "id": "apush_p8_silent_spring",
-      "correctAnswer": "Silent Spring",
+      "correctAnswer": "Silent Spring (Carson, 1962)",
       "acceptableAlternatives": [
         "Rachel Carson's Silent Spring"
       ],
@@ -18093,7 +18093,7 @@
     },
     {
       "id": "apush_p8_stagflation",
-      "correctAnswer": "Stagflation",
+      "correctAnswer": "Stagflation (inflation + unemployment)",
       "acceptableAlternatives": [],
       "chainThemeId": 7,
       "answerTypePoolId": "concept_terms",
@@ -18208,7 +18208,7 @@
     },
     {
       "id": "apush_p8_moral_majority",
-      "correctAnswer": "Moral Majority",
+      "correctAnswer": "Moral Majority (Falwells group)",
       "acceptableAlternatives": [
         "the Moral Majority"
       ],
@@ -18247,10 +18247,10 @@
     },
     {
       "id": "apush_p9_reagan_elected_1980",
-      "correctAnswer": "1980",
+      "correctAnswer": "{1980}",
       "acceptableAlternatives": [],
       "chainThemeId": 8,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -18483,7 +18483,7 @@
     },
     {
       "id": "apush_p9_moral_majority_falwell",
-      "correctAnswer": "Moral Majority",
+      "correctAnswer": "Moral Majority (Falwells group)",
       "acceptableAlternatives": [
         "The Moral Majority"
       ],
@@ -18522,7 +18522,7 @@
     },
     {
       "id": "apush_p9_reagan_unemployment_peak",
-      "correctAnswer": "10.8%",
+      "correctAnswer": "{10.8}%",
       "acceptableAlternatives": [
         "10.8 percent"
       ],
@@ -18761,7 +18761,7 @@
     },
     {
       "id": "apush_p9_nafta_1994",
-      "correctAnswer": "NAFTA",
+      "correctAnswer": "NAFTA (free trade, 1994)",
       "acceptableAlternatives": [
         "North American Free Trade Agreement",
         "North American Free Trade Act"
@@ -18801,10 +18801,10 @@
     },
     {
       "id": "apush_p9_world_wide_web_1991",
-      "correctAnswer": "1991",
+      "correctAnswer": "{1991}",
       "acceptableAlternatives": [],
       "chainThemeId": 8,
-      "answerTypePoolId": "year_dates",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -18914,7 +18914,7 @@
     },
     {
       "id": "apush_p9_dotcom_boom_bust",
-      "correctAnswer": "Dot-com bubble",
+      "correctAnswer": "Dot-com bubble (tech speculation)",
       "acceptableAlternatives": [
         "Dot-com boom",
         "Internet bubble",
@@ -19035,7 +19035,7 @@
     },
     {
       "id": "apush_p9_sunbelt_growth_migration",
-      "correctAnswer": "Sunbelt",
+      "correctAnswer": "Sunbelt (postwar boom region)",
       "acceptableAlternatives": [
         "Sun Belt"
       ],
@@ -19074,7 +19074,7 @@
     },
     {
       "id": "apush_p9_dream_act_undocumented_youth",
-      "correctAnswer": "DREAM Act",
+      "correctAnswer": "DREAM Act (undocumented youth)",
       "acceptableAlternatives": [
         "Development, Relief, and Education for Alien Minors Act"
       ],
@@ -19113,7 +19113,7 @@
     },
     {
       "id": "apush_p9_latino_asian_immigration_surge",
-      "correctAnswer": "Immigration and Nationality Act of 1965",
+      "correctAnswer": "Immigration and Nationality Act (1965)",
       "acceptableAlternatives": [
         "Hart-Celler Act",
         "Immigration Act of 1965"
@@ -19153,7 +19153,7 @@
     },
     {
       "id": "apush_p9_sept11_death_toll",
-      "correctAnswer": "2,977",
+      "correctAnswer": "{2,977}",
       "acceptableAlternatives": [
         "approximately 3,000",
         "~3,000",
@@ -19234,7 +19234,7 @@
     },
     {
       "id": "apush_p9_tarp_bank_bailout",
-      "correctAnswer": "TARP",
+      "correctAnswer": "TARP (bank bailout, 2008)",
       "acceptableAlternatives": [
         "Troubled Asset Relief Program"
       ],
@@ -19353,7 +19353,7 @@
     },
     {
       "id": "apush_p9_tea_party_movement",
-      "correctAnswer": "Tea Party",
+      "correctAnswer": "Tea Party movement (anti-tax)",
       "acceptableAlternatives": [
         "Tea Party movement",
         "Tea Party Patriots"
@@ -19619,36 +19619,16 @@
     {
       "id": "year_dates",
       "factIds": [
-        "apush_p1_columbus_1492_voyage",
-        "apush_p2_jamestown_founded",
-        "apush_p2_new_france_quebec",
-        "apush_p2_st_augustine_spain",
-        "apush_p2_house_of_burgesses",
         "apush_p2_king_philips_war_date",
-        "apush_p2_pueblo_revolt_date",
-        "apush_p2_virginia_slave_codes_1705",
-        "apush_p2_massachusetts_bay_1630",
         "apush_p3_seven_years_war_dates",
-        "apush_p3_stamp_act_date",
         "apush_p3_boston_massacre_date",
         "apush_p3_boston_tea_party_date",
         "apush_p3_treaty_of_paris_1783",
         "apush_p3_bill_of_rights_date",
-        "apush_p3_slave_trade_1808",
-        "apush_p3_articles_ratification",
         "apush_p4_lewis_clark_dates",
-        "apush_p4_tariff_of_abominations",
-        "apush_p4_monroe_doctrine_year",
-        "apush_p4_erie_canal_opening",
         "apush_p4_irish_german_immigration",
-        "apush_p4_indian_removal_act_year",
-        "apush_p4_american_anti_slavery_society",
         "apush_p4_nat_turner_rebellion",
-        "apush_p5_texas_annexation_year",
-        "apush_p5_alamo_battle",
         "apush_p5_mex_am_war_dates",
-        "apush_p5_california_gold_rush",
-        "apush_p5_republican_party_formed",
         "apush_p5_south_carolina_secession",
         "apush_p5_fort_sumter",
         "apush_p5_gettysburg_turning_point",
@@ -19657,25 +19637,6 @@
         "apush_p5_13th_amendment_date",
         "apush_p5_14th_amendment",
         "apush_p5_15th_amendment",
-        "apush_p6_homestead_act_year",
-        "apush_p6_little_bighorn_date",
-        "apush_p6_dawes_act_year",
-        "apush_p6_edison_light_bulb_year",
-        "apush_p6_bell_telephone_year",
-        "apush_p6_railroads_time_zones",
-        "apush_p6_sherman_antitrust_year",
-        "apush_p6_knights_of_labor_founding",
-        "apush_p6_haymarket_affair",
-        "apush_p6_homestead_strike_carnegie",
-        "apush_p6_chinese_exclusion_act_year",
-        "apush_p6_ellis_island_opening",
-        "apush_p6_pendleton_act_year",
-        "apush_p6_interstate_commerce_act",
-        "apush_p6_garfield_assassination",
-        "apush_p6_great_railroad_strike_1877",
-        "apush_p6_standard_oil_founding",
-        "apush_p7_naacp_founded",
-        "apush_p7_lusitania_sunk",
         "apush_p7_black_tuesday",
         "apush_p7_pearl_harbor_date",
         "apush_p7_d_day",
@@ -19684,11 +19645,9 @@
         "apush_p8_march_on_washington",
         "apush_p8_earth_day",
         "apush_p8_nixon_resignation_date",
-        "apush_p9_reagan_elected_1980",
         "apush_p9_berlin_wall_fall_date",
         "apush_p9_soviet_union_dissolved",
         "apush_p9_gulf_war_iraq_invaded_kuwait",
-        "apush_p9_world_wide_web_1991",
         "apush_p9_osama_bin_laden_killed"
       ]
     },
@@ -19978,12 +19937,53 @@
     {
       "id": "bracket_numbers",
       "factIds": [
+        "apush_p1_columbus_1492_voyage",
+        "apush_p2_jamestown_founded",
+        "apush_p2_new_france_quebec",
+        "apush_p2_st_augustine_spain",
+        "apush_p2_house_of_burgesses",
+        "apush_p2_pueblo_revolt_date",
+        "apush_p2_virginia_slave_codes_1705",
+        "apush_p2_massachusetts_bay_1630",
+        "apush_p3_stamp_act_date",
+        "apush_p3_slave_trade_1808",
+        "apush_p3_articles_ratification",
         "apush_p3_common_sense_copies",
         "apush_p3_boston_tea_chests",
         "apush_p3_constitutional_delegates",
         "apush_p4_louisiana_purchase_price",
         "apush_p4_missouri_compromise_line",
+        "apush_p4_tariff_of_abominations",
+        "apush_p4_monroe_doctrine_year",
+        "apush_p4_erie_canal_opening",
+        "apush_p4_indian_removal_act_year",
+        "apush_p4_american_anti_slavery_society",
+        "apush_p5_texas_annexation_year",
+        "apush_p5_alamo_battle",
+        "apush_p5_california_gold_rush",
+        "apush_p5_republican_party_formed",
+        "apush_p6_homestead_act_year",
+        "apush_p6_little_bighorn_date",
+        "apush_p6_dawes_act_year",
+        "apush_p6_edison_light_bulb_year",
+        "apush_p6_bell_telephone_year",
+        "apush_p6_railroads_time_zones",
+        "apush_p6_sherman_antitrust_year",
+        "apush_p6_knights_of_labor_founding",
+        "apush_p6_haymarket_affair",
+        "apush_p6_homestead_strike_carnegie",
+        "apush_p6_chinese_exclusion_act_year",
+        "apush_p6_ellis_island_opening",
+        "apush_p6_pendleton_act_year",
+        "apush_p6_interstate_commerce_act",
+        "apush_p6_garfield_assassination",
+        "apush_p6_great_railroad_strike_1877",
+        "apush_p6_standard_oil_founding",
+        "apush_p7_naacp_founded",
+        "apush_p7_lusitania_sunk",
+        "apush_p9_reagan_elected_1980",
         "apush_p9_reagan_unemployment_peak",
+        "apush_p9_world_wide_web_1991",
         "apush_p9_sept11_death_toll"
       ]
     }

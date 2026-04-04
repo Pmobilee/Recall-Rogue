@@ -17,150 +17,31 @@
         "ap_phys1_relative_velocity",
         "ap_phys1_freefall_def",
         "ap_phys1_instantaneous_v",
-        "ap_phys1_accel_direction",
-        "ap_phys1_horizontal_projectile_range",
         "ap_phys1_kinematic_constant_accel_condition",
-        "ap_phys1_projectile_independence",
-        "ap_phys1_at_rest_zero_accel",
-        "ap_phys1_negative_accel_not_decel",
-        "ap_phys1_ball_thrown_up_peak",
-        "ap_phys1_time_of_flight",
-        "ap_phys1_symmetry_projectile",
         "ap_phys1_system_def",
         "ap_phys1_center_of_mass_def",
         "ap_phys1_force_def",
         "ap_phys1_fbd_def",
-        "ap_phys1_newton3_pairs",
         "ap_phys1_inertia_def",
-        "ap_phys1_centripetal_force_not_separate",
-        "ap_phys1_mass_vs_weight",
-        "ap_phys1_gravity_inverse_square",
-        "ap_phys1_net_force_zero",
-        "ap_phys1_friction_direction",
-        "ap_phys1_spring_restoring",
-        "ap_phys1_gravity_surface_vs_universal",
-        "ap_phys1_tension_pulley",
         "ap_phys1_kinetic_energy_def",
         "ap_phys1_work_def",
         "ap_phys1_power_def",
         "ap_phys1_conservative_force",
         "ap_phys1_nonconservative_force",
         "ap_phys1_potential_energy_def",
-        "ap_phys1_work_net_positive",
-        "ap_phys1_energy_bar_chart",
         "ap_phys1_momentum_def",
         "ap_phys1_impulse_def",
-        "ap_phys1_explosion",
-        "ap_phys1_ke_loss_inelastic",
-        "ap_phys1_cm_momentum",
-        "ap_phys1_external_force_momentum",
-        "ap_phys1_rotational_kinematics",
         "ap_phys1_torque_def",
         "ap_phys1_rotational_equilibrium",
         "ap_phys1_moment_arm",
-        "ap_phys1_moi_mass_distribution",
         "ap_phys1_static_equilibrium",
-        "ap_phys1_right_hand_rule_torque",
-        "ap_phys1_rotational_analog_table",
-        "ap_phys1_torque_perpendicular",
         "ap_phys1_shm_def",
         "ap_phys1_amplitude",
         "ap_phys1_shm_max_speed",
         "ap_phys1_shm_max_accel",
-        "ap_phys1_period_independent_amplitude",
-        "ap_phys1_fluid_newton_third",
-        "ap_phys1_2d_momentum_conservation",
-        "ap_phys1_accel_at_peak_projectile",
-        "ap_phys1_angular_analog_table",
-        "ap_phys1_apparent_weight",
-        "ap_phys1_archimedes_float_sink",
-        "ap_phys1_atwood_machine_concept",
-        "ap_phys1_banked_curve",
-        "ap_phys1_bernoulli_applications",
-        "ap_phys1_buoyancy_partial_submerge",
-        "ap_phys1_centrifugal_force",
-        "ap_phys1_circular_centripetal_misconception",
-        "ap_phys1_circular_speed_radius",
-        "ap_phys1_cm_symmetry",
-        "ap_phys1_cm_velocity_collision",
-        "ap_phys1_collapsing_star_angular_momentum",
-        "ap_phys1_component_addition",
-        "ap_phys1_conservative_test",
-        "ap_phys1_continuity_narrowing",
-        "ap_phys1_damped_oscillations",
-        "ap_phys1_deceleration_misconception",
-        "ap_phys1_disk_vs_ring_faster",
-        "ap_phys1_drag_qualitative",
-        "ap_phys1_elevator_normal_force",
-        "ap_phys1_energy_bar_charts",
-        "ap_phys1_energy_forms",
-        "ap_phys1_energy_transfer_no_motion",
-        "ap_phys1_explosion_momentum",
-        "ap_phys1_fbd_contact_vs_field",
-        "ap_phys1_fbd_what_to_include",
-        "ap_phys1_figure_skater_angular_momentum",
-        "ap_phys1_flow_rate_units",
-        "ap_phys1_force_pairs_not_on_same_object",
-        "ap_phys1_friction_coefficient_meaning",
-        "ap_phys1_friction_direction_rule",
-        "ap_phys1_friction_independent_area",
-        "ap_phys1_geosynchronous_orbit",
-        "ap_phys1_gravitational_pe_reference",
-        "ap_phys1_gravity_inverse_square_behavior",
-        "ap_phys1_gravity_mass_independence",
-        "ap_phys1_hookes_law_restoring",
-        "ap_phys1_hydrostatic_shape_independence",
-        "ap_phys1_impulse_airbag",
-        "ap_phys1_impulse_approximation",
-        "ap_phys1_impulse_batting",
-        "ap_phys1_ke_speed_quadrupling",
-        "ap_phys1_kepler3_application",
-        "ap_phys1_manometer_barometer",
-        "ap_phys1_momentum_external_only",
-        "ap_phys1_momentum_vector",
-        "ap_phys1_negative_work",
-        "ap_phys1_net_force_direction_equals_accel",
-        "ap_phys1_neutral_buoyancy",
-        "ap_phys1_newton1_inertia_examples",
-        "ap_phys1_newton3_misconception",
-        "ap_phys1_normal_force_not_always_weight",
-        "ap_phys1_pe_diagram_equilibrium",
-        "ap_phys1_pe_gravity_path_indep",
-        "ap_phys1_pendulum_length_gravity",
-        "ap_phys1_pendulum_mass_independence",
-        "ap_phys1_period_indep_amplitude",
-        "ap_phys1_pivot_choice_strategy",
-        "ap_phys1_power_watts",
-        "ap_phys1_projectile_max_height",
-        "ap_phys1_projectile_symmetry",
-        "ap_phys1_recoil_gun",
-        "ap_phys1_resonance",
-        "ap_phys1_rolling_without_slip_condition",
-        "ap_phys1_shm_energy_exchange",
-        "ap_phys1_shm_phase_relationships",
-        "ap_phys1_shm_restoring_condition",
-        "ap_phys1_solid_vs_hollow_rolling",
-        "ap_phys1_speed_at_peak_projectile",
-        "ap_phys1_spring_equilibrium",
-        "ap_phys1_spring_force_direction",
-        "ap_phys1_spring_period_mass_k",
-        "ap_phys1_static_vs_kinetic_friction",
-        "ap_phys1_system_internal_external",
-        "ap_phys1_system_single_object",
-        "ap_phys1_tension_rope_mass",
-        "ap_phys1_torque_direction_right_hand",
-        "ap_phys1_torque_lever_arm",
-        "ap_phys1_torque_zero_cases",
-        "ap_phys1_total_mechanical_energy",
         "ap_phys1_vector_addition_tip_to_tail",
         "ap_phys1_vector_subtraction",
-        "ap_phys1_velocity_vs_acceleration_direction",
-        "ap_phys1_viscosity_laminar_turbulent",
-        "ap_phys1_weight_vs_mass_planet",
-        "ap_phys1_weightlessness_misconception",
-        "ap_phys1_work_by_normal_force",
-        "ap_phys1_work_friction_thermal",
-        "ap_phys1_zero_friction_cases"
+        "ap_phys1_accel_at_peak_projectile"
       ]
     },
     {
@@ -173,7 +54,6 @@
         "ap_phys1_kin_eq1",
         "ap_phys1_kin_eq2",
         "ap_phys1_kin_eq3",
-        "ap_phys1_vector_components",
         "ap_phys1_resultant_magnitude",
         "ap_phys1_avg_velocity_midpoint",
         "ap_phys1_cm_equation",
@@ -183,10 +63,7 @@
         "ap_phys1_static_friction",
         "ap_phys1_kinetic_friction",
         "ap_phys1_hookes_law",
-        "ap_phys1_centripetal_accel",
         "ap_phys1_centripetal_force_eq",
-        "ap_phys1_inclined_plane_components",
-        "ap_phys1_atwood_machine",
         "ap_phys1_circular_period",
         "ap_phys1_normal_incline",
         "ap_phys1_ke_equation",
@@ -195,11 +72,7 @@
         "ap_phys1_elastic_pe",
         "ap_phys1_cons_energy_eq",
         "ap_phys1_power_equation",
-        "ap_phys1_energy_with_friction",
         "ap_phys1_power_from_fv",
-        "ap_phys1_work_gravity",
-        "ap_phys1_spring_work",
-        "ap_phys1_efficiency",
         "ap_phys1_momentum_equation",
         "ap_phys1_cons_momentum_eq",
         "ap_phys1_perfectly_inelastic_eq",
@@ -209,57 +82,19 @@
         "ap_phys1_torque_equation",
         "ap_phys1_moi_equation",
         "ap_phys1_newton2_rotational",
-        "ap_phys1_seesaw_balance",
-        "ap_phys1_disk_vs_ring_I",
         "ap_phys1_rot_ke",
         "ap_phys1_rolling_ke",
-        "ap_phys1_rolling_condition",
         "ap_phys1_torque_work",
         "ap_phys1_angular_momentum",
         "ap_phys1_angular_impulse",
-        "ap_phys1_satellite_orbit",
         "ap_phys1_period_spring",
         "ap_phys1_period_pendulum",
-        "ap_phys1_frequency_period",
         "ap_phys1_shm_energy",
         "ap_phys1_hydrostatic_pressure",
-        "ap_phys1_buoyancy",
-        "ap_phys1_continuity",
         "ap_phys1_bernoulli",
-        "ap_phys1_angle_friction_starts_sliding",
-        "ap_phys1_angular_impulse_formula",
-        "ap_phys1_bernoulli_equation_full",
-        "ap_phys1_buoyant_force_formula",
-        "ap_phys1_circular_period_frequency",
-        "ap_phys1_circular_top_bottom",
-        "ap_phys1_cm_calculation",
-        "ap_phys1_cross_product_torque",
-        "ap_phys1_efficiency_formula",
-        "ap_phys1_g_surface_formula",
-        "ap_phys1_height_to_speed",
         "ap_phys1_horizontal_range_equation",
-        "ap_phys1_impulse_equals_area_check",
-        "ap_phys1_incline_component_forces",
-        "ap_phys1_ke_loss_formula_inelastic",
         "ap_phys1_kin_eq_no_time",
-        "ap_phys1_max_height_from_ke",
-        "ap_phys1_moi_common_values",
-        "ap_phys1_momentum_newton2_form",
-        "ap_phys1_newton2_rotation",
-        "ap_phys1_newton2_rotational_system",
-        "ap_phys1_pressure_depth_formula",
-        "ap_phys1_relative_velocity_concept",
-        "ap_phys1_rolling_ke_total",
-        "ap_phys1_rotational_kinematic_eqs",
-        "ap_phys1_satellite_orbit_speed",
-        "ap_phys1_seesaw_torque_balance",
-        "ap_phys1_shm_max_speed_formula",
-        "ap_phys1_spring_series_parallel",
-        "ap_phys1_torque_work_rotational",
-        "ap_phys1_v_equals_romega_tangential",
-        "ap_phys1_work_by_friction_formula",
-        "ap_phys1_work_by_gravity",
-        "ap_phys1_work_spring"
+        "ap_phys1_v_equals_romega_tangential"
       ]
     },
     {
@@ -279,10 +114,10 @@
         "ap_phys1_pascal_principle",
         "ap_phys1_archimedes",
         "ap_phys1_bernoulli_principle",
-        "ap_phys1_cons_ang_momentum_condition",
-        "ap_phys1_pascal_hydraulic",
+        "ap_phys1_wnet_equals_delta_ke",
         "ap_phys1_static_eq_both_conditions",
-        "ap_phys1_wnet_equals_delta_ke"
+        "ap_phys1_cons_ang_momentum_condition",
+        "ap_phys1_pascal_hydraulic"
       ]
     },
     {
@@ -310,8 +145,8 @@
         "ap_phys1_spring_constant",
         "ap_phys1_friction_coefficient",
         "ap_phys1_work_perpendicular",
-        "ap_phys1_distance_vs_displacement",
-        "ap_phys1_position_vs_displacement"
+        "ap_phys1_position_vs_displacement",
+        "ap_phys1_distance_vs_displacement"
       ]
     },
     {
@@ -326,7 +161,10 @@
         "ap_phys1_torque_unit",
         "ap_phys1_hertz_unit",
         "ap_phys1_pascal_unit",
-        "ap_phys1_mass_vs_weight_units"
+        "ap_phys1_mass_vs_weight_units",
+        "ap_phys1_power_real_world",
+        "ap_phys1_water_density_value",
+        "ap_phys1_atm_pressure_value"
       ]
     },
     {
@@ -340,9 +178,9 @@
         "ap_phys1_const_velocity_xt",
         "ap_phys1_parabolic_xt",
         "ap_phys1_ft_graph_area",
-        "ap_phys1_impulse_area_Ft",
         "ap_phys1_vt_area_displacement",
-        "ap_phys1_work_area_under_Fx"
+        "ap_phys1_work_area_under_Fx",
+        "ap_phys1_impulse_area_Ft"
       ]
     },
     {
@@ -352,12 +190,14 @@
         "ap_phys1_elastic_collision",
         "ap_phys1_inelastic_collision",
         "ap_phys1_perfectly_inelastic",
-        "ap_phys1_momentum_elastic_ke",
-        "ap_phys1_coefficient_restitution",
-        "ap_phys1_elastic_momentum_ke_both",
-        "ap_phys1_equal_mass_elastic",
-        "ap_phys1_perfectly_inelastic_max_ke_loss"
-      ]
+        "ap_phys1_momentum_elastic_ke"
+      ],
+      "syntheticDistractors": [
+        "Explosive collision",
+        "Superelastic collision",
+        "Oblique collision"
+      ],
+      "minimumSize": 4
     },
     {
       "id": "bracket_numbers",
@@ -368,10 +208,7 @@
         "ap_phys1_atm_pressure",
         "ap_phys1_water_density",
         "ap_phys1_spring_energy_number",
-        "ap_phys1_atm_pressure_value",
-        "ap_phys1_power_real_world",
-        "ap_phys1_range_45_degrees",
-        "ap_phys1_water_density_value"
+        "ap_phys1_range_45_degrees"
       ]
     },
     {
@@ -380,11 +217,14 @@
       "factIds": [
         "ap_phys1_density_def",
         "ap_phys1_pressure_def",
-        "ap_phys1_floating_condition",
-        "ap_phys1_gauge_pressure",
-        "ap_phys1_flow_rate_def",
-        "ap_phys1_gauge_absolute_pressure"
-      ]
+        "ap_phys1_flow_rate_def"
+      ],
+      "syntheticDistractors": [
+        "Viscosity (resistance to flow)",
+        "Surface tension (cohesion)",
+        "Capillarity (narrow tube flow)"
+      ],
+      "minimumSize": 3
     },
     {
       "id": "rotational_quantities",
@@ -397,6 +237,190 @@
         "ap_phys1_radian_def",
         "ap_phys1_angular_pos_units",
         "ap_phys1_moi_axis_dependence"
+      ]
+    },
+    {
+      "id": "concept_statements",
+      "label": "Physics Concept",
+      "factIds": [
+        "ap_phys1_accel_direction",
+        "ap_phys1_horizontal_projectile_range",
+        "ap_phys1_projectile_independence",
+        "ap_phys1_at_rest_zero_accel",
+        "ap_phys1_negative_accel_not_decel",
+        "ap_phys1_ball_thrown_up_peak",
+        "ap_phys1_time_of_flight",
+        "ap_phys1_symmetry_projectile",
+        "ap_phys1_newton3_pairs",
+        "ap_phys1_centripetal_force_not_separate",
+        "ap_phys1_mass_vs_weight",
+        "ap_phys1_gravity_inverse_square",
+        "ap_phys1_net_force_zero",
+        "ap_phys1_friction_direction",
+        "ap_phys1_spring_restoring",
+        "ap_phys1_gravity_surface_vs_universal",
+        "ap_phys1_tension_pulley",
+        "ap_phys1_work_net_positive",
+        "ap_phys1_energy_bar_chart",
+        "ap_phys1_explosion",
+        "ap_phys1_ke_loss_inelastic",
+        "ap_phys1_cm_momentum",
+        "ap_phys1_external_force_momentum",
+        "ap_phys1_rotational_kinematics",
+        "ap_phys1_moi_mass_distribution",
+        "ap_phys1_right_hand_rule_torque",
+        "ap_phys1_rotational_analog_table",
+        "ap_phys1_torque_perpendicular",
+        "ap_phys1_period_independent_amplitude",
+        "ap_phys1_floating_condition",
+        "ap_phys1_gauge_pressure",
+        "ap_phys1_fluid_newton_third",
+        "ap_phys1_coefficient_restitution",
+        "ap_phys1_component_addition",
+        "ap_phys1_projectile_max_height",
+        "ap_phys1_projectile_symmetry",
+        "ap_phys1_velocity_vs_acceleration_direction",
+        "ap_phys1_deceleration_misconception",
+        "ap_phys1_speed_at_peak_projectile",
+        "ap_phys1_system_internal_external",
+        "ap_phys1_cm_symmetry",
+        "ap_phys1_fbd_what_to_include",
+        "ap_phys1_normal_force_not_always_weight",
+        "ap_phys1_newton3_misconception",
+        "ap_phys1_net_force_direction_equals_accel",
+        "ap_phys1_gravity_inverse_square_behavior",
+        "ap_phys1_weightlessness_misconception",
+        "ap_phys1_static_vs_kinetic_friction",
+        "ap_phys1_friction_coefficient_meaning",
+        "ap_phys1_zero_friction_cases",
+        "ap_phys1_hookes_law_restoring",
+        "ap_phys1_circular_centripetal_misconception",
+        "ap_phys1_centrifugal_force",
+        "ap_phys1_banked_curve",
+        "ap_phys1_atwood_machine_concept",
+        "ap_phys1_elevator_normal_force",
+        "ap_phys1_spring_equilibrium",
+        "ap_phys1_system_single_object",
+        "ap_phys1_friction_independent_area",
+        "ap_phys1_tension_rope_mass",
+        "ap_phys1_gravity_mass_independence",
+        "ap_phys1_spring_force_direction",
+        "ap_phys1_newton1_inertia_examples",
+        "ap_phys1_force_pairs_not_on_same_object",
+        "ap_phys1_weight_vs_mass_planet",
+        "ap_phys1_friction_direction_rule",
+        "ap_phys1_drag_qualitative",
+        "ap_phys1_apparent_weight",
+        "ap_phys1_circular_speed_radius",
+        "ap_phys1_fbd_contact_vs_field",
+        "ap_phys1_work_by_normal_force",
+        "ap_phys1_negative_work",
+        "ap_phys1_work_friction_thermal",
+        "ap_phys1_conservative_test",
+        "ap_phys1_pe_diagram_equilibrium",
+        "ap_phys1_energy_bar_charts",
+        "ap_phys1_power_watts",
+        "ap_phys1_ke_speed_quadrupling",
+        "ap_phys1_energy_forms",
+        "ap_phys1_gravitational_pe_reference",
+        "ap_phys1_energy_transfer_no_motion",
+        "ap_phys1_pe_gravity_path_indep",
+        "ap_phys1_total_mechanical_energy",
+        "ap_phys1_momentum_vector",
+        "ap_phys1_impulse_airbag",
+        "ap_phys1_2d_momentum_conservation",
+        "ap_phys1_explosion_momentum",
+        "ap_phys1_recoil_gun",
+        "ap_phys1_cm_velocity_collision",
+        "ap_phys1_elastic_momentum_ke_both",
+        "ap_phys1_perfectly_inelastic_max_ke_loss",
+        "ap_phys1_impulse_batting",
+        "ap_phys1_momentum_external_only",
+        "ap_phys1_equal_mass_elastic",
+        "ap_phys1_impulse_approximation",
+        "ap_phys1_torque_lever_arm",
+        "ap_phys1_torque_direction_right_hand",
+        "ap_phys1_disk_vs_ring_faster",
+        "ap_phys1_torque_zero_cases",
+        "ap_phys1_angular_analog_table",
+        "ap_phys1_pivot_choice_strategy",
+        "ap_phys1_figure_skater_angular_momentum",
+        "ap_phys1_geosynchronous_orbit",
+        "ap_phys1_kepler3_application",
+        "ap_phys1_rolling_without_slip_condition",
+        "ap_phys1_collapsing_star_angular_momentum",
+        "ap_phys1_solid_vs_hollow_rolling",
+        "ap_phys1_shm_restoring_condition",
+        "ap_phys1_shm_phase_relationships",
+        "ap_phys1_period_indep_amplitude",
+        "ap_phys1_pendulum_mass_independence",
+        "ap_phys1_shm_energy_exchange",
+        "ap_phys1_damped_oscillations",
+        "ap_phys1_resonance",
+        "ap_phys1_spring_period_mass_k",
+        "ap_phys1_pendulum_length_gravity",
+        "ap_phys1_gauge_absolute_pressure",
+        "ap_phys1_hydrostatic_shape_independence",
+        "ap_phys1_archimedes_float_sink",
+        "ap_phys1_continuity_narrowing",
+        "ap_phys1_bernoulli_applications",
+        "ap_phys1_viscosity_laminar_turbulent",
+        "ap_phys1_manometer_barometer",
+        "ap_phys1_buoyancy_partial_submerge",
+        "ap_phys1_neutral_buoyancy",
+        "ap_phys1_flow_rate_units"
+      ]
+    },
+    {
+      "id": "equation_explanations",
+      "label": "Equation Explanation",
+      "factIds": [
+        "ap_phys1_vector_components",
+        "ap_phys1_centripetal_accel",
+        "ap_phys1_inclined_plane_components",
+        "ap_phys1_atwood_machine",
+        "ap_phys1_energy_with_friction",
+        "ap_phys1_work_gravity",
+        "ap_phys1_spring_work",
+        "ap_phys1_efficiency",
+        "ap_phys1_seesaw_balance",
+        "ap_phys1_disk_vs_ring_I",
+        "ap_phys1_rolling_condition",
+        "ap_phys1_satellite_orbit",
+        "ap_phys1_frequency_period",
+        "ap_phys1_buoyancy",
+        "ap_phys1_continuity",
+        "ap_phys1_relative_velocity_concept",
+        "ap_phys1_cm_calculation",
+        "ap_phys1_circular_period_frequency",
+        "ap_phys1_incline_component_forces",
+        "ap_phys1_newton2_rotational_system",
+        "ap_phys1_circular_top_bottom",
+        "ap_phys1_g_surface_formula",
+        "ap_phys1_spring_series_parallel",
+        "ap_phys1_angle_friction_starts_sliding",
+        "ap_phys1_work_by_gravity",
+        "ap_phys1_efficiency_formula",
+        "ap_phys1_work_spring",
+        "ap_phys1_height_to_speed",
+        "ap_phys1_work_by_friction_formula",
+        "ap_phys1_max_height_from_ke",
+        "ap_phys1_momentum_newton2_form",
+        "ap_phys1_impulse_equals_area_check",
+        "ap_phys1_ke_loss_formula_inelastic",
+        "ap_phys1_rotational_kinematic_eqs",
+        "ap_phys1_moi_common_values",
+        "ap_phys1_cross_product_torque",
+        "ap_phys1_seesaw_torque_balance",
+        "ap_phys1_newton2_rotation",
+        "ap_phys1_rolling_ke_total",
+        "ap_phys1_angular_impulse_formula",
+        "ap_phys1_satellite_orbit_speed",
+        "ap_phys1_torque_work_rotational",
+        "ap_phys1_shm_max_speed_formula",
+        "ap_phys1_buoyant_force_formula",
+        "ap_phys1_bernoulli_equation_full",
+        "ap_phys1_pressure_depth_formula"
       ]
     }
   ],
@@ -844,7 +868,7 @@
   "facts": [
     {
       "id": "ap_phys1_scalar_def",
-      "correctAnswer": "Scalar",
+      "correctAnswer": "Scalar (magnitude only)",
       "acceptableAlternatives": [
         "scalar quantity"
       ],
@@ -881,7 +905,7 @@
     },
     {
       "id": "ap_phys1_vector_def",
-      "correctAnswer": "Vector",
+      "correctAnswer": "Vector (magnitude + direction)",
       "acceptableAlternatives": [
         "vector quantity"
       ],
@@ -918,7 +942,7 @@
     },
     {
       "id": "ap_phys1_distance_scalar",
-      "correctAnswer": "Distance",
+      "correctAnswer": "Distance (total path length)",
       "acceptableAlternatives": [
         "total path length"
       ],
@@ -955,7 +979,7 @@
     },
     {
       "id": "ap_phys1_displacement_def",
-      "correctAnswer": "Displacement",
+      "correctAnswer": "Displacement (net change)",
       "acceptableAlternatives": [
         "change in position",
         "Δx"
@@ -1031,7 +1055,7 @@
     },
     {
       "id": "ap_phys1_avg_velocity_def",
-      "correctAnswer": "Average velocity",
+      "correctAnswer": "Average velocity (Dx/Dt)",
       "acceptableAlternatives": [
         "v_avg",
         "displacement divided by time"
@@ -1256,7 +1280,7 @@
     },
     {
       "id": "ap_phys1_freefall_g",
-      "correctAnswer": "{10} m/s²",
+      "correctAnswer": "{10} m/s^2 (g approx)",
       "acceptableAlternatives": [
         "approximately 10 m/s² downward",
         "9.8 m/s²",
@@ -1295,7 +1319,7 @@
     },
     {
       "id": "ap_phys1_xt_slope",
-      "correctAnswer": "Instantaneous velocity",
+      "correctAnswer": "Instantaneous velocity (v)",
       "acceptableAlternatives": [
         "velocity at that instant",
         "slope of x-t graph equals velocity"
@@ -1371,7 +1395,7 @@
     },
     {
       "id": "ap_phys1_vt_area",
-      "correctAnswer": "Displacement",
+      "correctAnswer": "Displacement (area = Dx)",
       "acceptableAlternatives": [
         "change in position",
         "Δx"
@@ -1409,7 +1433,7 @@
     },
     {
       "id": "ap_phys1_at_area",
-      "correctAnswer": "Change in velocity (Δv)",
+      "correctAnswer": "Change in velocity (Dv)",
       "acceptableAlternatives": [
         "velocity change",
         "Δv"
@@ -1521,7 +1545,7 @@
     },
     {
       "id": "ap_phys1_projectile_horiz",
-      "correctAnswer": "Zero (no horizontal acceleration)",
+      "correctAnswer": "Zero (no horiz acceleration)",
       "acceptableAlternatives": [
         "horizontal acceleration is zero",
         "0 m/s²"
@@ -1559,7 +1583,7 @@
     },
     {
       "id": "ap_phys1_projectile_vert",
-      "correctAnswer": "g ≈ 10 m/s² downward",
+      "correctAnswer": "g = 10 m/s^2 downward",
       "acceptableAlternatives": [
         "gravitational acceleration downward",
         "−9.8 m/s²"
@@ -1602,7 +1626,7 @@
         "x-component = A cosθ, y-component = A sinθ"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "For a vector A at angle θ above the horizontal, what are its x (horizontal) and y (vertical) components?",
@@ -1672,7 +1696,7 @@
     },
     {
       "id": "ap_phys1_speed_scalar",
-      "correctAnswer": "Speed",
+      "correctAnswer": "Speed (distance/time)",
       "acceptableAlternatives": [
         "scalar speed",
         "magnitude of velocity"
@@ -1710,7 +1734,7 @@
     },
     {
       "id": "ap_phys1_freefall_def",
-      "correctAnswer": "Free fall",
+      "correctAnswer": "Free fall (gravity only)",
       "acceptableAlternatives": [
         "free-fall motion"
       ],
@@ -1790,7 +1814,7 @@
         "deceleration means acceleration opposes velocity"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "If an object moves in the positive direction but its acceleration points in the negative direction, what is happening to its speed?",
@@ -1827,7 +1851,7 @@
         "maximum range at 45 degrees launch angle"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "For a projectile launched at the same initial speed, at what launch angle is horizontal range maximized (on level ground)?",
@@ -1859,7 +1883,7 @@
     },
     {
       "id": "ap_phys1_position_def",
-      "correctAnswer": "Position",
+      "correctAnswer": "Position (location in space)",
       "acceptableAlternatives": [
         "x",
         "location relative to a reference point"
@@ -1940,7 +1964,7 @@
         "independence of horizontal and vertical components"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "What key principle allows projectile motion to be analyzed as two separate 1D problems?",
@@ -2015,7 +2039,7 @@
         "acceleration is zero for uniform motion or rest"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What do 'at rest' and 'moving at constant velocity' have in common regarding acceleration?",
@@ -2053,7 +2077,7 @@
         "not always slowing down"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "Does negative acceleration always mean an object is slowing down?",
@@ -2085,7 +2109,7 @@
     },
     {
       "id": "ap_phys1_const_velocity_xt",
-      "correctAnswer": "Straight line with constant slope (slope = velocity)",
+      "correctAnswer": "Straight line (constant velocity)",
       "acceptableAlternatives": [
         "linear x-t graph means constant velocity"
       ],
@@ -2122,7 +2146,7 @@
     },
     {
       "id": "ap_phys1_parabolic_xt",
-      "correctAnswer": "Parabolic (curved) shape — indicates constant acceleration",
+      "correctAnswer": "Parabola (constant acceleration)",
       "acceptableAlternatives": [
         "curved x-t graph means changing velocity (acceleration present)"
       ],
@@ -2201,7 +2225,7 @@
         "zero velocity at maximum height, g downward always"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "At the peak of a vertically thrown ball's trajectory, what are its velocity and acceleration?",
@@ -2238,7 +2262,7 @@
         "horizontal velocity doesn't affect how long projectile stays in air"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "For a projectile launched horizontally from a cliff, what determines the time it takes to hit the ground?",
@@ -2275,7 +2299,7 @@
         "launch speed equals landing speed for symmetric trajectory"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "For a projectile launched and landing at the same height, how do the launch and landing speeds compare?",
@@ -2307,7 +2331,7 @@
     },
     {
       "id": "ap_phys1_system_def",
-      "correctAnswer": "System",
+      "correctAnswer": "System (defined objects)",
       "acceptableAlternatives": [
         "physical system",
         "defined set of objects"
@@ -2345,7 +2369,7 @@
     },
     {
       "id": "ap_phys1_center_of_mass_def",
-      "correctAnswer": "Center of mass",
+      "correctAnswer": "Center of mass (balance pt)",
       "acceptableAlternatives": [
         "CM",
         "average position weighted by mass"
@@ -2420,7 +2444,7 @@
     },
     {
       "id": "ap_phys1_force_def",
-      "correctAnswer": "Force",
+      "correctAnswer": "Force (push or pull)",
       "acceptableAlternatives": [
         "push or pull interaction between two objects"
       ],
@@ -2495,7 +2519,7 @@
     },
     {
       "id": "ap_phys1_newton3_law",
-      "correctAnswer": "Newton's Third Law",
+      "correctAnswer": "Newton's Third Law (equal/opp)",
       "acceptableAlternatives": [
         "action-reaction law",
         "law of action and reaction"
@@ -2538,7 +2562,7 @@
         "action and reaction act on different objects"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Why do Newton's Third Law action-reaction force pairs never cancel each other out?",
@@ -2608,7 +2632,7 @@
     },
     {
       "id": "ap_phys1_inertia_def",
-      "correctAnswer": "Inertia",
+      "correctAnswer": "Inertia (resistance to change)",
       "acceptableAlternatives": [
         "tendency to resist change in motion"
       ],
@@ -2645,7 +2669,7 @@
     },
     {
       "id": "ap_phys1_newton2_law",
-      "correctAnswer": "Newton's Second Law",
+      "correctAnswer": "Newton's Second Law (F=ma)",
       "acceptableAlternatives": [
         "F_net = ma",
         "net force equals mass times acceleration"
@@ -2721,7 +2745,7 @@
     },
     {
       "id": "ap_phys1_weight_eq",
-      "correctAnswer": "F_g = mg",
+      "correctAnswer": "F_g = mg (weight)",
       "acceptableAlternatives": [
         "weight equals mass times g",
         "W = mg"
@@ -2946,7 +2970,7 @@
     },
     {
       "id": "ap_phys1_tension_def",
-      "correctAnswer": "Tension",
+      "correctAnswer": "Tension (pulling force)",
       "acceptableAlternatives": [
         "T",
         "pulling force through a rope or string"
@@ -3066,7 +3090,7 @@
         "v²/r toward center"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "What equation gives the centripetal acceleration of an object in uniform circular motion?",
@@ -3104,7 +3128,7 @@
         "not a new type of force"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 9,
       "quizQuestion": "Why is 'centripetal force' never drawn as a separate arrow on a free-body diagram?",
@@ -3178,7 +3202,7 @@
         "mass is scalar in kg; weight is force in newtons"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "What is the key distinction between mass and weight?",
@@ -3215,7 +3239,7 @@
         "weight component along incline is mg sinθ, perpendicular is mg cosθ"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "For an object on an incline at angle θ, what are the components of gravity parallel and perpendicular to the incline surface?",
@@ -3252,7 +3276,7 @@
         "gravitational force decreases as 1/r²"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "How does the gravitational force between two objects change if the distance between them is doubled?",
@@ -3364,7 +3388,7 @@
         "unbalanced masses on a pulley accelerate with net force over total mass"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "For an Atwood machine (two unequal masses m₁ < m₂ connected over a frictionless pulley), what is the system's acceleration?",
@@ -3402,7 +3426,7 @@
         "equilibrium: no acceleration"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 1,
       "funScore": 5,
       "quizQuestion": "If an object moves at constant velocity (including being at rest), what must be true about the net force acting on it?",
@@ -3439,7 +3463,7 @@
         "friction acts opposite to motion or impending motion"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "In which direction does friction act relative to an object's motion?",
@@ -3476,7 +3500,7 @@
         "spring pulls/pushes back toward equilibrium"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 1,
       "funScore": 6,
       "quizQuestion": "Why is the minus sign in Hooke's Law (F = −kx) significant?",
@@ -3587,7 +3611,7 @@
         "mg is valid near Earth's surface only; universal law works anywhere"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "When is it appropriate to use F_g = mg vs. F_g = Gm₁m₂/r² for gravitational force?",
@@ -3624,7 +3648,7 @@
         "T₁ = T₂ for massless frictionless rope over ideal pulley"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 5,
       "quizQuestion": "For an ideal (massless, frictionless) pulley system with a single rope, how does tension vary along the rope?",
@@ -3656,7 +3680,7 @@
     },
     {
       "id": "ap_phys1_kinetic_energy_def",
-      "correctAnswer": "Kinetic energy",
+      "correctAnswer": "Kinetic energy (motion)",
       "acceptableAlternatives": [
         "KE",
         "translational kinetic energy"
@@ -3694,7 +3718,7 @@
     },
     {
       "id": "ap_phys1_ke_equation",
-      "correctAnswer": "K = ½mv²",
+      "correctAnswer": "K = 1/2 mv^2",
       "acceptableAlternatives": [
         "KE = one-half m v-squared",
         "½mv²"
@@ -3732,7 +3756,7 @@
     },
     {
       "id": "ap_phys1_work_def",
-      "correctAnswer": "Work",
+      "correctAnswer": "Work (energy transfer)",
       "acceptableAlternatives": [
         "mechanical work",
         "W"
@@ -3807,7 +3831,7 @@
     },
     {
       "id": "ap_phys1_work_energy_theorem",
-      "correctAnswer": "Work-energy theorem: W_net = ΔK",
+      "correctAnswer": "Work-energy theorem: W_net = DeltaK",
       "acceptableAlternatives": [
         "net work equals change in kinetic energy",
         "W_net = K_f − K_i"
@@ -3845,7 +3869,7 @@
     },
     {
       "id": "ap_phys1_grav_pe",
-      "correctAnswer": "U_g = mgh",
+      "correctAnswer": "U_g = mgh (grav PE)",
       "acceptableAlternatives": [
         "gravitational PE equals mgh",
         "gravitational potential energy = mgh"
@@ -3921,7 +3945,7 @@
     },
     {
       "id": "ap_phys1_cons_energy",
-      "correctAnswer": "Conservation of mechanical energy: E_total = K + U = constant",
+      "correctAnswer": "Mechanical energy conserved (E=K+U)",
       "acceptableAlternatives": [
         "total mechanical energy is conserved in isolated system",
         "K_i + U_i = K_f + U_f"
@@ -3996,7 +4020,7 @@
     },
     {
       "id": "ap_phys1_power_def",
-      "correctAnswer": "Power",
+      "correctAnswer": "Power (rate of work)",
       "acceptableAlternatives": [
         "P",
         "rate of doing work"
@@ -4228,7 +4252,7 @@
         "mechanical energy decreases by work done by friction"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "When friction does work on a system, how is the conservation of energy equation modified?",
@@ -4260,7 +4284,7 @@
     },
     {
       "id": "ap_phys1_work_perpendicular",
-      "correctAnswer": "Zero (W = Fd cos 90° = 0)",
+      "correctAnswer": "Zero work (F perp to d)",
       "acceptableAlternatives": [
         "no work done when force perpendicular to displacement",
         "0 joules"
@@ -4298,7 +4322,7 @@
     },
     {
       "id": "ap_phys1_potential_energy_def",
-      "correctAnswer": "Potential energy",
+      "correctAnswer": "Potential energy (stored)",
       "acceptableAlternatives": [
         "U",
         "stored energy due to position or configuration"
@@ -4336,7 +4360,7 @@
     },
     {
       "id": "ap_phys1_power_from_fv",
-      "correctAnswer": "P = Fv",
+      "correctAnswer": "P = Fv (power)",
       "acceptableAlternatives": [
         "power equals force times velocity"
       ],
@@ -4373,7 +4397,7 @@
     },
     {
       "id": "ap_phys1_energy_conservation_forms",
-      "correctAnswer": "Energy cannot be created or destroyed, only converted between forms",
+      "correctAnswer": "Energy converts, not created/destroyed",
       "acceptableAlternatives": [
         "total energy of an isolated system is constant"
       ],
@@ -4415,7 +4439,7 @@
         "work by gravity = mgh downward"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What is the work done by gravity on an object that descends a vertical height h?",
@@ -4453,7 +4477,7 @@
         "object accelerates"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "According to the work-energy theorem, what happens to an object's motion when positive net work is done on it?",
@@ -4490,7 +4514,7 @@
         "work done by spring equals decrease in spring PE"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What is the work done by a spring force as the spring goes from compression/extension x_i to x_f?",
@@ -4528,7 +4552,7 @@
         "useful output divided by total input"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 5,
       "quizQuestion": "How is the efficiency of an energy conversion process defined?",
@@ -4565,7 +4589,7 @@
         "bar charts showing kinetic, potential, and work-energy accounting"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What tool in AP Physics 1 represents the energy accounting of a system at different moments using bars for K, U_g, U_s, and W?",
@@ -4597,7 +4621,7 @@
     },
     {
       "id": "ap_phys1_momentum_def",
-      "correctAnswer": "Linear momentum",
+      "correctAnswer": "Linear momentum (p = mv)",
       "acceptableAlternatives": [
         "p = mv",
         "momentum"
@@ -4635,7 +4659,7 @@
     },
     {
       "id": "ap_phys1_momentum_equation",
-      "correctAnswer": "p = mv",
+      "correctAnswer": "p = mv (momentum)",
       "acceptableAlternatives": [
         "momentum equals mass times velocity"
       ],
@@ -4672,7 +4696,7 @@
     },
     {
       "id": "ap_phys1_impulse_def",
-      "correctAnswer": "Impulse",
+      "correctAnswer": "Impulse (force x time)",
       "acceptableAlternatives": [
         "J = FΔt",
         "change in momentum"
@@ -4823,7 +4847,7 @@
     },
     {
       "id": "ap_phys1_elastic_collision",
-      "correctAnswer": "Elastic collision",
+      "correctAnswer": "Elastic collision (KE conserved)",
       "acceptableAlternatives": [
         "elastic",
         "collision where kinetic energy is conserved"
@@ -4861,7 +4885,7 @@
     },
     {
       "id": "ap_phys1_inelastic_collision",
-      "correctAnswer": "Inelastic collision",
+      "correctAnswer": "Inelastic collision (KE lost)",
       "acceptableAlternatives": [
         "inelastic",
         "collision where kinetic energy is NOT conserved"
@@ -4899,7 +4923,7 @@
     },
     {
       "id": "ap_phys1_perfectly_inelastic",
-      "correctAnswer": "Perfectly inelastic collision",
+      "correctAnswer": "Perfectly inelastic (objects stick)",
       "acceptableAlternatives": [
         "completely inelastic",
         "objects stick together after collision"
@@ -4975,7 +4999,7 @@
     },
     {
       "id": "ap_phys1_ft_graph_area",
-      "correctAnswer": "Impulse (J = Δp)",
+      "correctAnswer": "Impulse (J = Dp)",
       "acceptableAlternatives": [
         "change in momentum",
         "area under F-t graph equals impulse"
@@ -5055,7 +5079,7 @@
         "conservation of momentum applies to explosions too"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "A firecracker at rest explodes into two fragments. What can be said about the total momentum of the system after the explosion?",
@@ -5167,7 +5191,7 @@
         "KE lost to heat, deformation, sound in inelastic collisions"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "In an inelastic collision, where does the 'lost' kinetic energy go?",
@@ -5205,7 +5229,7 @@
         "v_cm = p_total / m_total = constant"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "When two objects collide (with no external net force), how does the center of mass of the system move?",
@@ -5243,7 +5267,7 @@
         "momentum is NOT conserved when external forces act"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "Under what condition is conservation of momentum NOT valid for a system?",
@@ -5275,7 +5299,7 @@
     },
     {
       "id": "ap_phys1_angular_displacement",
-      "correctAnswer": "Angular displacement (Δθ)",
+      "correctAnswer": "Angular displacement (theta)",
       "acceptableAlternatives": [
         "Δθ",
         "angle swept in radians"
@@ -5313,7 +5337,7 @@
     },
     {
       "id": "ap_phys1_angular_velocity",
-      "correctAnswer": "Angular velocity (ω)",
+      "correctAnswer": "Angular velocity (omega rad/s)",
       "acceptableAlternatives": [
         "omega",
         "ω = Δθ/Δt"
@@ -5351,7 +5375,7 @@
     },
     {
       "id": "ap_phys1_angular_acceleration",
-      "correctAnswer": "Angular acceleration (α)",
+      "correctAnswer": "Angular accel (alpha rad/s^2)",
       "acceptableAlternatives": [
         "alpha",
         "α = Δω/Δt"
@@ -5394,7 +5418,7 @@
         "angular kinematic equations have same form as linear equations"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "How do the rotational kinematic equations for constant angular acceleration relate to the linear kinematic equations?",
@@ -5426,7 +5450,7 @@
     },
     {
       "id": "ap_phys1_v_equals_romega",
-      "correctAnswer": "v = rω",
+      "correctAnswer": "v = r*omega (tangential)",
       "acceptableAlternatives": [
         "tangential speed equals radius times angular velocity"
       ],
@@ -5463,7 +5487,7 @@
     },
     {
       "id": "ap_phys1_tangential_accel",
-      "correctAnswer": "a_t = rα",
+      "correctAnswer": "a_t = r*alpha",
       "acceptableAlternatives": [
         "tangential acceleration equals radius times angular acceleration"
       ],
@@ -5500,7 +5524,7 @@
     },
     {
       "id": "ap_phys1_torque_def",
-      "correctAnswer": "Torque (τ)",
+      "correctAnswer": "Torque (rotational force)",
       "acceptableAlternatives": [
         "tau",
         "twisting force",
@@ -5577,7 +5601,7 @@
     },
     {
       "id": "ap_phys1_moment_of_inertia",
-      "correctAnswer": "Rotational inertia (moment of inertia, I)",
+      "correctAnswer": "Rotational inertia (moment I)",
       "acceptableAlternatives": [
         "moment of inertia",
         "I = Σm_i r_i²"
@@ -5653,7 +5677,7 @@
     },
     {
       "id": "ap_phys1_newton2_rotational",
-      "correctAnswer": "Στ = Iα",
+      "correctAnswer": "Sum-tau = I*alpha",
       "acceptableAlternatives": [
         "net torque equals moment of inertia times angular acceleration"
       ],
@@ -5771,7 +5795,7 @@
         "mass farther from axis → larger I"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What factor, beyond total mass alone, determines an object's moment of inertia?",
@@ -5803,7 +5827,7 @@
     },
     {
       "id": "ap_phys1_torque_unit",
-      "correctAnswer": "Newton-meter (N⋅m)",
+      "correctAnswer": "Newton-meter (N-m) torque",
       "acceptableAlternatives": [
         "N·m",
         "newton meter"
@@ -5883,7 +5907,7 @@
         "CCW = positive, CW = negative torque convention"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 5,
       "quizQuestion": "In AP Physics 1 problems (2D), what sign convention is used for torque?",
@@ -5920,7 +5944,7 @@
         "force times distance from pivot must be equal on both sides"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What equation must hold for a seesaw to be balanced, where m₁ and m₂ are masses at distances d₁ and d₂ from the pivot?",
@@ -5957,7 +5981,7 @@
         "rotational analogs: mass→I, velocity→ω, force→torque, momentum→L"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What are the rotational analogs of mass, velocity, acceleration, force, and momentum?",
@@ -5994,7 +6018,7 @@
         "ring has larger moment of inertia than disk of same mass and radius"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "For equal mass M and radius R, which has a larger moment of inertia: a solid disk or a thin ring?",
@@ -6031,7 +6055,7 @@
         "sin 90° = 1 gives maximum torque"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "At what angle between the force and the moment arm is torque maximized?",
@@ -6143,7 +6167,7 @@
         "linear speed equals radius times angular speed for rolling"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What condition relates the center-of-mass velocity to the angular velocity for an object rolling without slipping?",
@@ -6175,7 +6199,7 @@
     },
     {
       "id": "ap_phys1_torque_work",
-      "correctAnswer": "W = τΔθ",
+      "correctAnswer": "W = tau*theta",
       "acceptableAlternatives": [
         "work done by torque equals torque times angular displacement"
       ],
@@ -6212,7 +6236,7 @@
     },
     {
       "id": "ap_phys1_angular_momentum",
-      "correctAnswer": "L = Iω",
+      "correctAnswer": "L = I*omega",
       "acceptableAlternatives": [
         "angular momentum equals moment of inertia times angular velocity"
       ],
@@ -6249,7 +6273,7 @@
     },
     {
       "id": "ap_phys1_angular_impulse",
-      "correctAnswer": "ΔL = τΔt",
+      "correctAnswer": "DeltaL = tau*Deltat",
       "acceptableAlternatives": [
         "angular impulse equals torque times time"
       ],
@@ -6286,7 +6310,7 @@
     },
     {
       "id": "ap_phys1_cons_angular_momentum",
-      "correctAnswer": "Conservation of angular momentum: L_i = L_f when Στ_ext = 0",
+      "correctAnswer": "Angular momentum conserved (L_i=L_f)",
       "acceptableAlternatives": [
         "angular momentum conserved when no external torque"
       ],
@@ -6328,7 +6352,7 @@
         "gravity = centripetal force for orbiting satellites"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "For an orbiting satellite, what equation expresses the balance between gravitational force and the centripetal force requirement?",
@@ -6515,7 +6539,7 @@
         "frequency equals one over period"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 1,
       "funScore": 5,
       "quizQuestion": "What is the relationship between frequency (f) and period (T) in oscillatory motion?",
@@ -6547,7 +6571,7 @@
     },
     {
       "id": "ap_phys1_amplitude",
-      "correctAnswer": "Amplitude (A)",
+      "correctAnswer": "Amplitude (max displacement)",
       "acceptableAlternatives": [
         "maximum displacement from equilibrium"
       ],
@@ -6704,7 +6728,7 @@
         "same period regardless of how far you pull the mass"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "How does the amplitude of oscillation affect the period of a simple harmonic oscillator?",
@@ -6774,7 +6798,7 @@
     },
     {
       "id": "ap_phys1_density_def",
-      "correctAnswer": "Density (ρ = m/V)",
+      "correctAnswer": "Density (rho = m/V)",
       "acceptableAlternatives": [
         "rho = mass/volume",
         "mass per unit volume"
@@ -6887,7 +6911,7 @@
     },
     {
       "id": "ap_phys1_pascal_principle",
-      "correctAnswer": "Pascal's Principle",
+      "correctAnswer": "Pascal's Principle (hydraulics)",
       "acceptableAlternatives": [
         "Pascal's law",
         "pressure in enclosed fluid transmits equally in all directions"
@@ -6925,13 +6949,13 @@
     },
     {
       "id": "ap_phys1_buoyancy",
-      "correctAnswer": "F_b = ρ_fluid × V_displaced × g",
+      "correctAnswer": "F_b = rho_fluid x V_displaced x g",
       "acceptableAlternatives": [
         "buoyant force equals rho times V times g",
         "Archimedes' buoyancy formula"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "What equation gives the buoyant force on an object submerged in or floating on a fluid?",
@@ -6963,7 +6987,7 @@
     },
     {
       "id": "ap_phys1_archimedes",
-      "correctAnswer": "Archimedes' Principle",
+      "correctAnswer": "Archimedes' Principle (buoyancy)",
       "acceptableAlternatives": [
         "the buoyant force equals the weight of displaced fluid"
       ],
@@ -7006,7 +7030,7 @@
         "area times velocity is constant"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What equation expresses conservation of mass for an incompressible fluid flowing through a pipe?",
@@ -7076,7 +7100,7 @@
     },
     {
       "id": "ap_phys1_bernoulli_principle",
-      "correctAnswer": "Bernoulli's Principle",
+      "correctAnswer": "Bernoulli's Principle (flow/pressure)",
       "acceptableAlternatives": [
         "faster fluid has lower pressure"
       ],
@@ -7156,7 +7180,7 @@
         "ρ_object ≤ ρ_fluid for floating"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "fluid_properties",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What determines whether an object floats or sinks in a fluid?",
@@ -7193,7 +7217,7 @@
         "P_gauge = P_abs − P_atm"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "fluid_properties",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What is gauge pressure, and how does it differ from absolute pressure?",
@@ -7230,7 +7254,7 @@
         "object pushes fluid down; fluid pushes object up"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "How does Newton's Third Law explain why a submerged object experiences a buoyant force?",
@@ -7262,7 +7286,7 @@
     },
     {
       "id": "ap_phys1_flow_rate_def",
-      "correctAnswer": "Volume flow rate Q = Av",
+      "correctAnswer": "Volume flow rate (Q = Av)",
       "acceptableAlternatives": [
         "Q = Av",
         "flow rate = cross-sectional area times fluid speed"
@@ -7305,7 +7329,7 @@
         "e = 1 for elastic, 0 for perfectly inelastic"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "collision_types",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What value of the coefficient of restitution (e = relative speed after/before collision) characterizes an elastic vs. perfectly inelastic collision?",
@@ -7337,7 +7361,7 @@
     },
     {
       "id": "ap_phys1_radian_def",
-      "correctAnswer": "Radian (rad)",
+      "correctAnswer": "Radian (rad, angle unit)",
       "acceptableAlternatives": [
         "SI unit for angular measurement",
         "rad = arc length / radius"
@@ -7567,7 +7591,7 @@
     },
     {
       "id": "ap_phys1_spring_energy_number",
-      "correctAnswer": "1 J (elastic PE = ½kx² = ½ × 200 × 0.01)",
+      "correctAnswer": "{1} J (spring energy)",
       "acceptableAlternatives": [
         "U = ½kx² in joules"
       ],
@@ -7681,7 +7705,7 @@
         "sum x-components and sum y-components separately"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "When adding two vectors using components, what is the correct procedure?",
@@ -7717,7 +7741,7 @@
         "when vy = 0"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "At what point does a projectile reach its maximum height?",
@@ -7747,7 +7771,7 @@
     },
     {
       "id": "ap_phys1_range_45_degrees",
-      "correctAnswer": "45°",
+      "correctAnswer": "{45} degrees (max range)",
       "acceptableAlternatives": [
         "45 degrees"
       ],
@@ -7788,7 +7812,7 @@
         "same angle at landing as at launch"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "For a projectile launched and landing at the same height, what symmetry exists in the trajectory?",
@@ -7824,7 +7848,7 @@
         "acceleration direction does not have to match velocity direction"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What common misconception about velocity and acceleration does AP Physics 1 specifically address?",
@@ -7860,7 +7884,7 @@
         "negative acceleration does not always mean slowing down"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Why is 'deceleration' not the same as 'negative acceleration' in physics?",
@@ -7890,7 +7914,7 @@
     },
     {
       "id": "ap_phys1_vt_area_displacement",
-      "correctAnswer": "The displacement during that time interval",
+      "correctAnswer": "Displacement in time interval",
       "acceptableAlternatives": [
         "displacement",
         "change in position"
@@ -7926,7 +7950,7 @@
     },
     {
       "id": "ap_phys1_position_vs_displacement",
-      "correctAnswer": "Position is location from origin; displacement is change in position",
+      "correctAnswer": "Position (from origin) vs displacement (change)",
       "acceptableAlternatives": [
         "position is x, displacement is Δx"
       ],
@@ -7961,7 +7985,7 @@
     },
     {
       "id": "ap_phys1_distance_vs_displacement",
-      "correctAnswer": "Distance is scalar (total path); displacement is vector (straight-line change)",
+      "correctAnswer": "Distance (scalar path) vs displacement (vector)",
       "acceptableAlternatives": [
         "distance is path length, displacement is net change in position"
       ],
@@ -8002,7 +8026,7 @@
         "relative velocity = vA − vB"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "If object A moves at velocity vA and object B moves at velocity vB (both relative to ground), what is the velocity of A as seen by B?",
@@ -8073,7 +8097,7 @@
         "vx only, since vy = 0 at peak"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What is the speed of a projectile at the peak of its trajectory?",
@@ -8179,7 +8203,7 @@
         "internal forces are within the system, external forces are from outside the system"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "In systems thinking, what is the difference between internal and external forces?",
@@ -8214,7 +8238,7 @@
         "center of mass is at the center of symmetry for uniform objects"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 5,
       "quizQuestion": "Where is the center of mass located in an object with uniform density and symmetric shape?",
@@ -8250,7 +8274,7 @@
         "sum of mass times position divided by total mass"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What formula gives the x-coordinate of the center of mass for a system of particles?",
@@ -8285,7 +8309,7 @@
         "forces on the object only, not forces it exerts on other objects"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What forces should appear on a free-body diagram of a single object?",
@@ -8320,7 +8344,7 @@
         "N = mg only when surface is horizontal and object is not accelerating vertically"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "Why is it incorrect to always assume the normal force equals the object's weight?",
@@ -8355,7 +8379,7 @@
         "action and reaction forces are always equal even between objects of different mass"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "A truck collides with a bicycle. Which statement about Newton's 3rd law force pair is correct?",
@@ -8390,7 +8414,7 @@
         "acceleration is always in the direction of net force"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What is the directional relationship between the net force on an object and its acceleration?",
@@ -8426,7 +8450,7 @@
         "F ∝ 1/r²"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "If the distance between two objects doubles, by what factor does the gravitational force between them change?",
@@ -8461,7 +8485,7 @@
         "apparent weightlessness in orbit is due to freefall, not absence of gravity"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 9,
       "quizQuestion": "Why do astronauts in the International Space Station appear weightless even though Earth's gravity still acts on them?",
@@ -8496,7 +8520,7 @@
         "μs > μk; static friction acts when not moving, kinetic when moving"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What is the key difference between static friction and kinetic friction?",
@@ -8531,7 +8555,7 @@
         "μ = f/N; dimensionless ratio of friction to normal force"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 5,
       "quizQuestion": "What does the coefficient of friction (μ) physically represent?",
@@ -8566,7 +8590,7 @@
         "frictionless surface, or force perpendicular to surface"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 5,
       "quizQuestion": "In what physical situations is the friction force equal to zero on an object?",
@@ -8601,7 +8625,7 @@
         "F = -kx; restoring force proportional to displacement"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What does it mean that the spring force is a 'restoring force' in Hooke's Law?",
@@ -8636,7 +8660,7 @@
         "centripetal force is the net inward force, not an additional force"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "A student draws a free-body diagram for a car on a circular track and adds a 'centripetal force' arrow. What is wrong?",
@@ -8671,7 +8695,7 @@
         "centrifugal force is not real; it is an inertial effect felt in rotating frames"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "Why is 'centrifugal force' (the outward force felt in circular motion) not a real force in AP Physics 1?",
@@ -8706,7 +8730,7 @@
         "T = 1/f and f = 1/T"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 1,
       "funScore": 5,
       "quizQuestion": "What is the relationship between the period T and frequency f of circular motion?",
@@ -8741,7 +8765,7 @@
         "normal force component (N sin θ) supplies centripetal force on banked curve"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 4,
       "funScore": 7,
       "quizQuestion": "On a banked curve with no friction, what force provides the centripetal acceleration for a car?",
@@ -8776,7 +8800,7 @@
         "ideal rope has uniform tension; massless rope over frictionless pulley has equal tension"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "In an Atwood machine with a massless rope and ideal frictionless pulley, what is true about the rope tension?",
@@ -8811,7 +8835,7 @@
         "N = m(g+a) going up, N = m(g-a) going down, N = mg at constant speed"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "How does the normal force on a person in an elevator compare to their weight in different situations?",
@@ -8846,7 +8870,7 @@
         "mg sin(theta) parallel, mg cos(theta) perpendicular to incline"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "For an object on a frictionless incline of angle θ, how do you decompose the weight into components?",
@@ -8881,7 +8905,7 @@
         "equilibrium position: spring is at natural length, no net force"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 5,
       "quizQuestion": "What is the equilibrium position of a spring-mass system?",
@@ -8916,7 +8940,7 @@
         "treat as single system when objects move together with same acceleration"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "When is it valid to treat a multi-object system as a single object in Newton's 2nd law?",
@@ -8951,7 +8975,7 @@
         "friction force is independent of area of contact"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Does the kinetic friction force change if you increase the contact area between two surfaces (same material, same normal force)?",
@@ -8986,7 +9010,7 @@
         "net external force equals total mass times acceleration of center of mass"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "Newton's 2nd law for a system of objects relates the net external force to what?",
@@ -9021,7 +9045,7 @@
         "real ropes with mass have varying tension; massless ropes have constant tension"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "Under what condition is the tension in a rope uniform (the same at every point)?",
@@ -9056,7 +9080,7 @@
         "top of loop: N = mv²/r − mg; bottom of loop: N = mv²/r + mg"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 4,
       "funScore": 8,
       "quizQuestion": "For an object moving in a vertical circle, how do the normal force equations differ at the top vs. bottom of the loop?",
@@ -9092,7 +9116,7 @@
         "heavier objects do not fall faster"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "In a vacuum, which falls faster: a 1 kg ball or a 10 kg ball dropped from the same height?",
@@ -9162,7 +9186,7 @@
         "opposite to displacement, always toward equilibrium"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What direction does the force from a compressed or stretched spring act on an attached mass?",
@@ -9197,7 +9221,7 @@
         "g = GM/R^2"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What formula gives the gravitational field strength (g) at the surface of a planet?",
@@ -9233,7 +9257,7 @@
         "body continuing forward in a crash"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "Which everyday observation best illustrates Newton's 1st Law (inertia)?",
@@ -9268,7 +9292,7 @@
         "action and reaction forces act on different objects, never the same object"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Why can Newton's 3rd law force pairs never cancel each other out on a free-body diagram?",
@@ -9303,7 +9327,7 @@
         "mass is constant; weight = mg changes with g"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "An astronaut travels from Earth to the Moon. What happens to their mass and weight?",
@@ -9338,7 +9362,7 @@
         "series springs softer, parallel springs stiffer"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "How does the effective spring constant differ for springs connected in series vs. in parallel?",
@@ -9373,7 +9397,7 @@
         "friction always opposes relative motion or attempted motion"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "In what direction does friction always act on a sliding object?",
@@ -9408,7 +9432,7 @@
         "tanθ = μs at the angle where sliding just begins"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 4,
       "funScore": 7,
       "quizQuestion": "What angle of an incline causes an object to just begin sliding, and how is it related to the coefficient of static friction?",
@@ -9443,7 +9467,7 @@
         "drag opposes motion and grows with speed; terminal velocity when F_drag = mg"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Qualitatively, how does air drag affect a falling object, and what is terminal velocity?",
@@ -9478,7 +9502,7 @@
         "scale reading = N = m(g ± a); equals mg only when not accelerating"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "What is 'apparent weight' and when does it equal true weight?",
@@ -9513,7 +9537,7 @@
         "larger radius requires more speed to maintain same centripetal force"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "For an object moving in a circular path with fixed centripetal force and mass, how does speed change if the radius doubles?",
@@ -9548,7 +9572,7 @@
         "contact forces require touching; field forces act at a distance"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 5,
       "quizQuestion": "What is the distinction between contact forces and field forces, and which appear on free-body diagrams?",
@@ -9583,7 +9607,7 @@
         "work done by gravity = mgh downward, -mgh upward"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What is the work done by gravity on an object that moves a vertical distance h?",
@@ -9619,7 +9643,7 @@
         "work done by normal force is zero"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "How much work does the normal force do on an object sliding horizontally on a surface?",
@@ -9654,7 +9678,7 @@
         "work is negative when angle between F and d is greater than 90°"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "Under what condition does a force do negative work on an object?",
@@ -9689,7 +9713,7 @@
         "friction work converts to thermal energy: ΔE_thermal = f_k × d"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "When friction does negative work on a sliding object, where does the energy go?",
@@ -9724,7 +9748,7 @@
         "conservative force: W depends only on start and end points, not path"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What test determines whether a force is conservative?",
@@ -9759,7 +9783,7 @@
         "PE minimum = stable equilibrium; PE maximum = unstable equilibrium"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 4,
       "funScore": 7,
       "quizQuestion": "On a potential energy diagram, what do PE minima and maxima tell you about equilibrium?",
@@ -9794,7 +9818,7 @@
         "LOL diagrams: bars for KE, PE, and heat must sum to same total before and after"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What does an energy bar chart (LOL diagram) show in AP Physics 1?",
@@ -9829,7 +9853,7 @@
         "P = ΔE/Δt; power in Watts"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What does power measure, and how is it related to force and velocity?",
@@ -9865,7 +9889,7 @@
         "efficiency = useful output / total input"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What is the formula for efficiency of an energy conversion process?",
@@ -9901,7 +9925,7 @@
         "work to stretch spring = ½kx²"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "How much work is done to compress or stretch a spring by displacement x from its natural length?",
@@ -9936,7 +9960,7 @@
         "KE is proportional to v squared; double v means 4× KE"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "If a car's speed doubles, by what factor does its kinetic energy change?",
@@ -9966,7 +9990,7 @@
     },
     {
       "id": "ap_phys1_wnet_equals_delta_ke",
-      "correctAnswer": "The net work done on an object equals its change in kinetic energy",
+      "correctAnswer": "W_net = DeltaKE (work-energy)",
       "acceptableAlternatives": [
         "W_net = ΔKE = KE_f − KE_i"
       ],
@@ -10006,7 +10030,7 @@
         "speed at bottom = sqrt(2gh); from mgh = ½mv²"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Using conservation of energy, what is the speed of an object that falls from height h starting from rest?",
@@ -10042,7 +10066,7 @@
         "human resting metabolic power ≈ 100 W"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "bracket_numbers",
+      "answerTypePoolId": "unit_conversions",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "In real-world terms, approximately how many Watts does 1 horsepower equal?",
@@ -10077,7 +10101,7 @@
         "KE, gravitational PE, elastic PE, thermal energy"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 1,
       "funScore": 5,
       "quizQuestion": "What are the four main forms of energy tracked in AP Physics 1 conservation problems?",
@@ -10113,7 +10137,7 @@
         "work by friction equals negative kinetic friction times distance"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 5,
       "quizQuestion": "What is the formula for work done by kinetic friction on an object sliding distance d?",
@@ -10148,7 +10172,7 @@
         "PE = mgh measured from a reference point you choose; only changes in PE matter"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 5,
       "quizQuestion": "Why can you choose any reference level for gravitational potential energy?",
@@ -10178,7 +10202,7 @@
     },
     {
       "id": "ap_phys1_work_area_under_Fx",
-      "correctAnswer": "The area under a Force-vs-displacement graph equals the work done",
+      "correctAnswer": "Area under F-x graph = work done",
       "acceptableAlternatives": [
         "W = area under F-x graph",
         "work = integral of F dx = area under F-x curve"
@@ -10219,7 +10243,7 @@
         "holding a weight stationary does zero work (no displacement)"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Does holding a heavy suitcase stationary require work (in the physics sense)?",
@@ -10255,7 +10279,7 @@
         "ΔPE = mgΔh regardless of route"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "Does the work done by gravity depend on whether a ball rolls down a ramp or falls straight down the same vertical distance?",
@@ -10290,7 +10314,7 @@
         "h = v²/(2g) from energy conservation"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Using energy conservation, what maximum height does an object reach if launched straight up at speed v?",
@@ -10325,7 +10349,7 @@
         "E_mech = KE + PE is constant with no non-conservative forces"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What is total mechanical energy and when is it conserved?",
@@ -10360,7 +10384,7 @@
         "p = mv is a vector with the same direction as velocity"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "Why must you track the direction of momentum in collision problems?",
@@ -10395,7 +10419,7 @@
         "airbags increase collision time, reducing peak force for same change in momentum"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 9,
       "quizQuestion": "Why do airbags, crumple zones, and padded surfaces reduce injury in a crash?",
@@ -10425,7 +10449,7 @@
     },
     {
       "id": "ap_phys1_impulse_area_Ft",
-      "correctAnswer": "The area under a Force-vs-time graph equals the impulse (change in momentum)",
+      "correctAnswer": "Impulse = area under F-t graph",
       "acceptableAlternatives": [
         "J = ∫F dt = area under F-t graph = Δp"
       ],
@@ -10465,7 +10489,7 @@
         "in 2D: x-components of momentum conserved and y-components conserved independently"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 4,
       "funScore": 7,
       "quizQuestion": "How does conservation of momentum apply in a 2D collision problem?",
@@ -10501,7 +10525,7 @@
         "p1 + p2 = 0 after explosion from rest"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "A stationary object explodes into two pieces. What does conservation of momentum tell you about the pieces?",
@@ -10536,7 +10560,7 @@
         "m_gun × v_gun = m_bullet × v_bullet (opposite directions) by momentum conservation"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "A bullet is fired from a stationary gun at rest. Why does the gun recoil backward?",
@@ -10571,7 +10595,7 @@
         "v_cm = constant during collision with no external forces"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "During a collision between two objects with no external horizontal forces, what happens to the velocity of the center of mass?",
@@ -10607,7 +10631,7 @@
         "force equals change in momentum per unit time"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What is the more general form of Newton's 2nd Law that uses momentum instead of acceleration?",
@@ -10642,7 +10666,7 @@
         "elastic: conserves KE and momentum; inelastic: conserves momentum only"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "collision_types",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What distinguishes an elastic collision from an inelastic collision?",
@@ -10677,7 +10701,7 @@
         "sticking together maximizes KE loss while conserving momentum"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "collision_types",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "Which type of collision results in the greatest loss of kinetic energy?",
@@ -10712,7 +10736,7 @@
         "follow-through increases Δt, allowing greater impulse J = FΔt"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "Why do baseball coaches instruct batters to 'follow through' when hitting a ball?",
@@ -10748,7 +10772,7 @@
         "F_ext = 0 → Δp_total = 0"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "Under what condition is the total momentum of a system conserved?",
@@ -10784,7 +10808,7 @@
         "impulse-momentum theorem: J = Δ(mv)"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 1,
       "funScore": 5,
       "quizQuestion": "What is the impulse-momentum theorem equation?",
@@ -10820,7 +10844,7 @@
         "compute KE before and after using momentum conservation to find after"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 5,
       "funScore": 5,
       "quizQuestion": "In a perfectly inelastic collision, what is the easiest method to find kinetic energy lost?",
@@ -10855,7 +10879,7 @@
         "equal mass elastic: velocities exchange; moving one stops, stationary one moves at v₀"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "collision_types",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "What happens in a perfectly elastic 1D collision between two equal-mass balls when one is stationary?",
@@ -10890,7 +10914,7 @@
         "impulse approximation: gravity/friction negligible during short collision time"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "Why can we usually ignore external forces like gravity or friction during a collision when applying momentum conservation?",
@@ -10920,7 +10944,7 @@
     },
     {
       "id": "ap_phys1_angular_pos_units",
-      "correctAnswer": "Radians (rad); one full revolution = 2π radians",
+      "correctAnswer": "Radians; one revolution = 2pi",
       "acceptableAlternatives": [
         "radians; 360° = 2π rad"
       ],
@@ -10960,7 +10984,7 @@
         "same form as linear kinematics with x→θ, v→ω, a→α"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "How are the rotational kinematic equations related to the linear kinematic equations?",
@@ -10990,7 +11014,7 @@
     },
     {
       "id": "ap_phys1_moi_axis_dependence",
-      "correctAnswer": "Moment of inertia depends on the axis of rotation — same object can have different I values",
+      "correctAnswer": "I depends on axis of rotation",
       "acceptableAlternatives": [
         "I changes with axis choice; more distant mass from axis increases I"
       ],
@@ -11030,7 +11054,7 @@
         "disk = (1/2)MR^2, ring = MR^2, sphere = (2/5)MR^2"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "What are the moments of inertia for a solid disk, a hollow ring, and a solid sphere (all about their symmetry axis)?",
@@ -11065,7 +11089,7 @@
         "lever arm = perpendicular distance from pivot to force's line of action"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What is the lever arm in a torque calculation, and why does it use perpendicular distance?",
@@ -11135,7 +11159,7 @@
         "CCW = +τ, CW = −τ by standard convention"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "By convention, which direction of torque is positive in AP Physics 1 rotational problems?",
@@ -11170,7 +11194,7 @@
         "torque = r cross F = rF sinθ"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "How does the cross product define the torque vector in terms of position and force vectors?",
@@ -11205,7 +11229,7 @@
         "F1*d1 = F2*d2 about pivot for balanced seesaw"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "A heavy person sits 1 m from the pivot of a seesaw; where must a lighter person sit to balance it?",
@@ -11235,7 +11259,7 @@
     },
     {
       "id": "ap_phys1_v_equals_romega_tangential",
-      "correctAnswer": "v = rω",
+      "correctAnswer": "v = r*omega (tan speed)",
       "acceptableAlternatives": [
         "v=r*omega",
         "tangential speed equals radius times angular velocity"
@@ -11276,7 +11300,7 @@
         "rotational Newton's 2nd law: net torque = I × alpha"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What is the rotational analog of Newton's 2nd Law (F_net = ma)?",
@@ -11311,7 +11335,7 @@
         "disk rolls faster than ring; less I means more linear acceleration for same torque"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "A solid disk and a hollow ring of equal mass and radius roll down an incline. Which reaches the bottom first?",
@@ -11346,7 +11370,7 @@
         "τ = rF sinθ = 0 when force is directed toward or away from pivot"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 5,
       "quizQuestion": "Under what conditions does a force produce zero torque about a given axis?",
@@ -11381,7 +11405,7 @@
         "linear to rotational: position/angle, velocity/angular velocity, mass/inertia, force/torque, momentum/angular momentum"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "What is the complete set of linear-to-rotational quantity analogies in AP Physics 1?",
@@ -11416,7 +11440,7 @@
         "put pivot at unknown force to eliminate it from torque equation"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "What is the strategic advantage of choosing a smart pivot point when writing the torque equation for static equilibrium?",
@@ -11451,7 +11475,7 @@
         "total KE for rolling = translational KE plus rotational KE"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What is the total kinetic energy of an object rolling without slipping?",
@@ -11486,7 +11510,7 @@
         "arms in → smaller I → faster spin; conservation of angular momentum"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 9,
       "quizQuestion": "Why does a figure skater spin faster when they pull their arms in?",
@@ -11516,7 +11540,7 @@
     },
     {
       "id": "ap_phys1_cons_ang_momentum_condition",
-      "correctAnswer": "Angular momentum is conserved when the net external torque on the system is zero",
+      "correctAnswer": "L conserved when net torque = 0",
       "acceptableAlternatives": [
         "L = constant when Σ τ_ext = 0"
       ],
@@ -11556,7 +11580,7 @@
         "torque × time = change in angular momentum"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What is the rotational analog of the impulse-momentum theorem?",
@@ -11591,7 +11615,7 @@
         "v_orbital = sqrt(GM/r); lower altitude means higher speed"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 4,
       "funScore": 7,
       "quizQuestion": "What is the orbital speed of a satellite at orbital radius r around a planet of mass M?",
@@ -11626,7 +11650,7 @@
         "geostationary orbit: T = 24 hr, satellite appears fixed over one location"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "What is a geosynchronous (geostationary) orbit, and why is it useful for communication satellites?",
@@ -11661,7 +11685,7 @@
         "T^2/r^3 = constant; doubling r multiplies T by 2^(3/2)"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "If a satellite's orbital radius doubles, by what factor does its orbital period increase?",
@@ -11696,7 +11720,7 @@
         "rolling without slipping: v = Rω; contact point momentarily at rest"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What condition defines 'rolling without slipping' and what is special about the contact point?",
@@ -11731,7 +11755,7 @@
         "neutron star spins rapidly because collapsed radius greatly reduces I, increasing ω"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 9,
       "quizQuestion": "A dying star collapses into a neutron star, reducing its radius by a factor of 100,000. What happens to its rotation rate?",
@@ -11766,7 +11790,7 @@
         "work done by torque = τ × θ"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 5,
       "quizQuestion": "What is the formula for work done by a constant torque rotating an object through angle Δθ?",
@@ -11801,7 +11825,7 @@
         "less moment of inertia (smaller I/mR²) means more goes to translation → faster"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Ranking from fastest to slowest rolling down a ramp: solid sphere, hollow sphere, solid cylinder, hollow cylinder. What is the order?",
@@ -11837,7 +11861,7 @@
         "F = -kx is SHM condition"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What mathematical condition must the restoring force satisfy for an object to undergo Simple Harmonic Motion?",
@@ -11872,7 +11896,7 @@
         "position, velocity, acceleration 90° out of phase; v max at center, a max at extremes"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "In simple harmonic motion, where are velocity and acceleration each at their maximum values?",
@@ -11907,7 +11931,7 @@
         "maximum speed = A × omega = A × sqrt(k/m)"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What is the formula for the maximum speed of a mass on a spring in simple harmonic motion?",
@@ -11942,7 +11966,7 @@
         "T does not change if amplitude changes (for springs and small-angle pendulums)"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "A pendulum clock is moved to a location with double the usual swing amplitude. Does it keep accurate time?",
@@ -11977,7 +12001,7 @@
         "T = 2π*sqrt(L/g); mass does not affect pendulum period"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "A 100 kg pendulum bob and a 1 kg bob on identical strings are released from the same small angle. Which has a longer period?",
@@ -12012,7 +12036,7 @@
         "total SHM energy = ½kA²; KE + PE = constant throughout cycle"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "How does energy transform throughout one complete cycle of simple harmonic motion?",
@@ -12047,7 +12071,7 @@
         "damping reduces amplitude each cycle; energy converts to thermal"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What happens to the amplitude of oscillation when a spring-mass system experiences friction?",
@@ -12082,7 +12106,7 @@
         "resonance: f_drive = f_natural → maximum amplitude buildup"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "What is resonance in oscillatory systems, and why can it be destructive?",
@@ -12117,7 +12141,7 @@
         "heavier mass → longer period; stiffer spring → shorter period"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "How does doubling the mass or doubling the spring constant each affect the period of a spring-mass oscillator?",
@@ -12152,7 +12176,7 @@
         "longer pendulum → longer T; stronger gravity → shorter T"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "A grandfather clock runs slow on the Moon (g_Moon = g_Earth/6). How should you adjust the pendulum to make it keep correct Moon time?",
@@ -12188,7 +12212,7 @@
         "1 g/mL"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "bracket_numbers",
+      "answerTypePoolId": "unit_conversions",
       "difficulty": 1,
       "funScore": 5,
       "quizQuestion": "What is the density of fresh water, a key reference value in AP Physics 1 fluid problems?",
@@ -12223,7 +12247,7 @@
         "1 atm = 101325 Pa ≈ 101.3 kPa"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "bracket_numbers",
+      "answerTypePoolId": "unit_conversions",
       "difficulty": 2,
       "funScore": 5,
       "quizQuestion": "What is the standard atmospheric pressure at sea level in SI units?",
@@ -12258,7 +12282,7 @@
         "P_abs = P_gauge + P_atm"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "fluid_properties",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "A tire gauge reads 30 PSI (gauge). What is the actual (absolute) pressure inside the tire?",
@@ -12293,7 +12317,7 @@
         "P = ρgh; independent of container shape or volume"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "A narrow cylinder and a wide tank are both filled with water to the same depth. Which has greater pressure at the bottom?",
@@ -12323,7 +12347,7 @@
     },
     {
       "id": "ap_phys1_pascal_hydraulic",
-      "correctAnswer": "Pressure on enclosed fluid transmits equally throughout; enables hydraulic force multiplication",
+      "correctAnswer": "Pascal's Law (equal pressure transmission)",
       "acceptableAlternatives": [
         "hydraulic press: F₁/A₁ = F₂/A₂; larger piston exerts larger force"
       ],
@@ -12363,7 +12387,7 @@
         "float when ρ_object < ρ_fluid; sink when ρ_object > ρ_fluid"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What comparison of densities determines whether an object floats or sinks?",
@@ -12398,7 +12422,7 @@
         "buoyant force = density of fluid × g × submerged volume"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What is the formula for the buoyant force on an object submerged in a fluid?",
@@ -12433,7 +12457,7 @@
         "smaller cross-section = higher speed; A₁v₁ = A₂v₂ = flow rate Q"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Water flows through a pipe that narrows to half its original diameter. By what factor does the flow speed change?",
@@ -12468,7 +12492,7 @@
         "faster fluid → lower pressure; explains lift, Venturi effect, curveballs"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "What are three real-world applications of the Bernoulli effect (faster flow = lower pressure)?",
@@ -12503,7 +12527,7 @@
         "P₁ + ½ρv₁² + ρgh₁ = P₂ + ½ρv₂² + ρgh₂"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What is the full Bernoulli equation, and what does each term represent?",
@@ -12538,7 +12562,7 @@
         "viscosity = fluid friction; laminar = orderly layers; turbulent = chaotic mixing"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What is viscosity, and what distinguishes laminar from turbulent flow?",
@@ -12573,7 +12597,7 @@
         "barometer = atmospheric pressure device; manometer = gas pressure measurement device"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 5,
       "quizQuestion": "What is the difference between a barometer and a manometer?",
@@ -12608,7 +12632,7 @@
         "floating: buoyant force = weight; ρ_fluid × g × V_sub = ρ_obj × g × V_total"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "What fraction of an ice cube floats above water given that ice density is 917 kg/m³ and water density is 1000 kg/m³?",
@@ -12643,7 +12667,7 @@
         "P = P_surface + rho*g*h"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "equation_identifiers",
+      "answerTypePoolId": "equation_explanations",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What is the pressure at depth h in a fluid of density ρ with surface pressure P₀?",
@@ -12678,7 +12702,7 @@
         "neutrally buoyant: ρ_object = ρ_fluid; F_b = mg; object suspended at any depth"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "What is neutral buoyancy and how do submarines achieve it?",
@@ -12713,7 +12737,7 @@
         "Q = A × v; volumetric flow rate in cubic meters per second"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "term_definitions",
+      "answerTypePoolId": "concept_statements",
       "difficulty": 2,
       "funScore": 5,
       "quizQuestion": "What does the continuity equation A₁v₁ = A₂v₂ = Q represent, and what are the units of Q?",

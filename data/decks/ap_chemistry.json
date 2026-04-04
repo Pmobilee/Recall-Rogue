@@ -301,7 +301,7 @@
     },
     {
       "id": "ap_chem_1_1_molar_mass_units",
-      "correctAnswer": "g/mol",
+      "correctAnswer": "g/mol (molar mass unit)",
       "acceptableAlternatives": [
         "grams per mole",
         "grams/mole"
@@ -342,7 +342,7 @@
     },
     {
       "id": "ap_chem_1_2_isotope_definition",
-      "correctAnswer": "same protons, different neutrons",
+      "correctAnswer": "same protons, diff neutrons",
       "acceptableAlternatives": [
         "same atomic number, different mass number",
         "differ in neutron count",
@@ -384,7 +384,7 @@
     },
     {
       "id": "ap_chem_1_2_mass_spectrum_x_axis",
-      "correctAnswer": "mass-to-charge ratio",
+      "correctAnswer": "mass-to-charge (m/z)",
       "acceptableAlternatives": [
         "m/z ratio",
         "m/z",
@@ -426,7 +426,7 @@
     },
     {
       "id": "ap_chem_1_2_average_atomic_mass_calculation",
-      "correctAnswer": "weighted average of isotope masses",
+      "correctAnswer": "weighted isotope average",
       "acceptableAlternatives": [
         "sum of (mass × abundance)",
         "isotope mass times abundance",
@@ -468,7 +468,7 @@
     },
     {
       "id": "ap_chem_1_2_carbon_12_isotope",
-      "correctAnswer": "{98.89}%",
+      "correctAnswer": "{98.89}% C-12",
       "acceptableAlternatives": [
         "98.89 percent",
         "~98.9%",
@@ -510,7 +510,7 @@
     },
     {
       "id": "ap_chem_1_2_chlorine_isotopes",
-      "correctAnswer": "chlorine-35 and chlorine-37",
+      "correctAnswer": "Cl-35 and Cl-37",
       "acceptableAlternatives": [
         "Cl-35 and Cl-37",
         "^35Cl and ^37Cl",
@@ -677,7 +677,7 @@
     },
     {
       "id": "ap_chem_1_3_molecular_vs_empirical",
-      "correctAnswer": "whole-number multiple of empirical",
+      "correctAnswer": "whole-number of empirical",
       "acceptableAlternatives": [
         "integer multiple of empirical formula",
         "n times the empirical formula"
@@ -759,7 +759,7 @@
     },
     {
       "id": "ap_chem_1_3_percent_composition_co2",
-      "correctAnswer": "{27.29}%",
+      "correctAnswer": "{27.29}% C in CO2",
       "acceptableAlternatives": [
         "27.29 percent",
         "~27.3%",
@@ -883,7 +883,7 @@
     },
     {
       "id": "ap_chem_1_4_mole_fraction_definition",
-      "correctAnswer": "moles of component / total moles",
+      "correctAnswer": "moles / total moles",
       "acceptableAlternatives": [
         "n_i / n_total",
         "moles component over total moles"
@@ -965,7 +965,7 @@
     },
     {
       "id": "ap_chem_1_4_mole_fraction_sum",
-      "correctAnswer": "{1}",
+      "correctAnswer": "{1} (mole fractions)",
       "acceptableAlternatives": [
         "one",
         "1.00",
@@ -1257,7 +1257,7 @@
     },
     {
       "id": "ap_chem_115_valence_electrons_nitrogen",
-      "correctAnswer": "{5}",
+      "correctAnswer": "{5} valence e-",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "bracket_numbers",
@@ -1351,7 +1351,7 @@
     },
     {
       "id": "ap_chem_115_orbital_capacity_d_subshell",
-      "correctAnswer": "{10}",
+      "correctAnswer": "{10} e- in d",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "bracket_numbers",
@@ -1374,7 +1374,7 @@
     },
     {
       "id": "ap_chem_116_pes_peak_subshells",
-      "correctAnswer": "Subshells",
+      "correctAnswer": "Subshells (PES peaks)",
       "acceptableAlternatives": [
         "Electron subshells",
         "Orbital subshells"
@@ -1444,7 +1444,7 @@
     },
     {
       "id": "ap_chem_116_pes_peak_height_electrons",
-      "correctAnswer": "Number of electrons in that subshell",
+      "correctAnswer": "Electrons in subshell",
       "acceptableAlternatives": [
         "Electron count in the subshell",
         "Number of electrons"
@@ -1479,7 +1479,7 @@
     },
     {
       "id": "ap_chem_116_pes_number_of_peaks",
-      "correctAnswer": "{4}",
+      "correctAnswer": "{4} peaks (C)",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "bracket_numbers",
@@ -1537,7 +1537,7 @@
     },
     {
       "id": "ap_chem_117_ie_across_period",
-      "correctAnswer": "Increases",
+      "correctAnswer": "IE increases (period)",
       "acceptableAlternatives": [
         "Generally increases",
         "Increases across a period"
@@ -1572,7 +1572,7 @@
     },
     {
       "id": "ap_chem_117_ie_down_group",
-      "correctAnswer": "Decreases",
+      "correctAnswer": "IE decreases (group)",
       "acceptableAlternatives": [
         "Generally decreases",
         "Decreases down a group"
@@ -1641,7 +1641,7 @@
     },
     {
       "id": "ap_chem_117_electronegativity_trend_period",
-      "correctAnswer": "Increases",
+      "correctAnswer": "EN increases (period)",
       "acceptableAlternatives": [
         "Generally increases"
       ],
@@ -1675,7 +1675,7 @@
     },
     {
       "id": "ap_chem_117_atomic_radius_across_period",
-      "correctAnswer": "Decreases",
+      "correctAnswer": "Radius decreases (period)",
       "acceptableAlternatives": [
         "Gets smaller",
         "Generally decreases"
@@ -1710,7 +1710,7 @@
     },
     {
       "id": "ap_chem_117_atomic_radius_down_group",
-      "correctAnswer": "Increases",
+      "correctAnswer": "Radius increases (group)",
       "acceptableAlternatives": [
         "Gets larger",
         "Generally increases"
@@ -1817,7 +1817,7 @@
     },
     {
       "id": "ap_chem_117_metallic_character_trend",
-      "correctAnswer": "Increases",
+      "correctAnswer": "Metallic increases (down)",
       "acceptableAlternatives": [
         "Generally increases"
       ],
@@ -1991,7 +1991,7 @@
     },
     {
       "id": "ap_chem_118_calcium_ion_charge",
-      "correctAnswer": "2+",
+      "correctAnswer": "2+ (Ca2+ charge)",
       "acceptableAlternatives": [
         "Ca2+",
         "Ca²⁺",
@@ -2027,7 +2027,7 @@
     },
     {
       "id": "ap_chem_118_ionic_compound_formula_nacl",
-      "correctAnswer": "NaCl",
+      "correctAnswer": "NaCl (ionic formula)",
       "acceptableAlternatives": [
         "Sodium chloride"
       ],
@@ -2470,7 +2470,7 @@
     },
     {
       "id": "ap_chem_u2_lattice_energy_charge",
-      "correctAnswer": "Increases",
+      "correctAnswer": "Increases (higher charge)",
       "acceptableAlternatives": [
         "Lattice energy increases",
         "Gets larger"
@@ -2511,7 +2511,7 @@
     },
     {
       "id": "ap_chem_u2_ionic_solid_properties_brittle",
-      "correctAnswer": "Brittle",
+      "correctAnswer": "brittle (ionic solid)",
       "acceptableAlternatives": [
         "Brittleness",
         "Hard and brittle"
@@ -2749,7 +2749,7 @@
     },
     {
       "id": "ap_chem_u2_lewis_bf3_exception",
-      "correctAnswer": "BF3",
+      "correctAnswer": "BF3 (incomplete octet)",
       "acceptableAlternatives": [
         "Boron trifluoride"
       ],
@@ -2789,7 +2789,7 @@
     },
     {
       "id": "ap_chem_u2_lewis_sf6_expanded",
-      "correctAnswer": "SF6",
+      "correctAnswer": "SF6 (expanded octet)",
       "acceptableAlternatives": [
         "Sulfur hexafluoride"
       ],
@@ -2829,7 +2829,7 @@
     },
     {
       "id": "ap_chem_u2_lewis_polyatomic_charge_electrons",
-      "correctAnswer": "Add one electron per negative charge",
+      "correctAnswer": "add 1 e- per neg charge",
       "acceptableAlternatives": [
         "Add electrons equal to the negative charge",
         "Add extra electrons for negative charge"
@@ -2870,7 +2870,7 @@
     },
     {
       "id": "ap_chem_u2_lewis_lone_pairs_vs_bonding",
-      "correctAnswer": "Lone pairs",
+      "correctAnswer": "Lone pairs (larger)",
       "acceptableAlternatives": [
         "Lone pair electrons",
         "Non-bonding pairs",
@@ -3160,7 +3160,7 @@
     },
     {
       "id": "ap_chem_u2_hybridization_sp2",
-      "correctAnswer": "sp2",
+      "correctAnswer": "sp2 hybridization",
       "acceptableAlternatives": [
         "sp² hybridization",
         "sp2 hybridization"
@@ -3325,7 +3325,7 @@
     },
     {
       "id": "ap_chem_3_1_ldf_molar_mass",
-      "correctAnswer": "molar mass",
+      "correctAnswer": "molar mass (LDF factor)",
       "acceptableAlternatives": [
         "molecular weight",
         "molecular mass",
@@ -3941,7 +3941,7 @@
     },
     {
       "id": "ap_chem_3_3_vapor_pressure_temperature",
-      "correctAnswer": "increases",
+      "correctAnswer": "increases (with temp)",
       "acceptableAlternatives": [
         "vapor pressure increases",
         "increases exponentially",
@@ -4023,7 +4023,7 @@
     },
     {
       "id": "ap_chem_3_4_ideal_gas_law",
-      "correctAnswer": "PV = nRT",
+      "correctAnswer": "PV = nRT (ideal gas)",
       "acceptableAlternatives": [
         "PV=nRT"
       ],
@@ -4312,7 +4312,7 @@
     },
     {
       "id": "ap_chem_3_5_maxwell_boltzmann",
-      "correctAnswer": "Maxwell-Boltzmann distribution",
+      "correctAnswer": "Maxwell-Boltzmann dist",
       "acceptableAlternatives": [
         "Maxwell-Boltzmann speed distribution",
         "MB distribution"
@@ -4641,7 +4641,7 @@
     },
     {
       "id": "ap_chem_3_7_polar_solvent_example",
-      "correctAnswer": "water",
+      "correctAnswer": "water (polar solvent)",
       "acceptableAlternatives": [
         "H₂O",
         "H2O"
@@ -4682,7 +4682,7 @@
     },
     {
       "id": "ap_chem_3_7_solute_solvent_roles",
-      "correctAnswer": "solvent",
+      "correctAnswer": "solvent (majority phase)",
       "acceptableAlternatives": [
         "the dissolving medium",
         "the substance present in greater amount"
@@ -4847,7 +4847,7 @@
     },
     {
       "id": "ap_chem_3_8_osmotic_pressure",
-      "correctAnswer": "π = iMRT",
+      "correctAnswer": "pi = iMRT (osmotic)",
       "acceptableAlternatives": [
         "osmotic pressure = iMRT",
         "pi = iMRT"
@@ -5094,7 +5094,7 @@
     },
     {
       "id": "ap_chem_3_10_solubility_rules_nitrate",
-      "correctAnswer": "soluble",
+      "correctAnswer": "soluble (all nitrates)",
       "acceptableAlternatives": [
         "all nitrates are soluble",
         "highly soluble"
@@ -5176,7 +5176,7 @@
     },
     {
       "id": "ap_chem_3_10_henry_law",
-      "correctAnswer": "C = kH·P",
+      "correctAnswer": "C = kH-P (Henry law)",
       "acceptableAlternatives": [
         "Henry's Law: C = kP",
         "gas solubility proportional to partial pressure",
@@ -5259,7 +5259,7 @@
     },
     {
       "id": "ap_chem_3_10_saturated_solution",
-      "correctAnswer": "saturated",
+      "correctAnswer": "saturated (at max conc)",
       "acceptableAlternatives": [
         "a saturated solution"
       ],
@@ -5341,7 +5341,7 @@
     },
     {
       "id": "ap_chem_3_11_wavelength_frequency_relationship",
-      "correctAnswer": "c = λν",
+      "correctAnswer": "c = lv (wave equation)",
       "acceptableAlternatives": [
         "c = lambda times nu",
         "speed of light = wavelength × frequency",
@@ -5383,7 +5383,7 @@
     },
     {
       "id": "ap_chem_3_11_higher_frequency_higher_energy",
-      "correctAnswer": "gamma rays",
+      "correctAnswer": "gamma rays (highest E)",
       "acceptableAlternatives": [
         "gamma radiation",
         "γ-rays"
@@ -5466,7 +5466,7 @@
     },
     {
       "id": "ap_chem_3_12_planck_equation",
-      "correctAnswer": "E = hν",
+      "correctAnswer": "E = hv (Planck equation)",
       "acceptableAlternatives": [
         "E = h times nu",
         "E = hc/λ",
@@ -5633,7 +5633,7 @@
     },
     {
       "id": "ap_chem_3_13_beer_lambert_law",
-      "correctAnswer": "A = εlc",
+      "correctAnswer": "A = elc (Beer-Lambert)",
       "acceptableAlternatives": [
         "Beer-Lambert Law: A = εlc",
         "absorbance = molar absorptivity times path length times concentration",
@@ -5675,7 +5675,7 @@
     },
     {
       "id": "ap_chem_3_13_absorbance_concentration_relationship",
-      "correctAnswer": "linear",
+      "correctAnswer": "linear (Beer-Lambert)",
       "acceptableAlternatives": [
         "directly proportional",
         "linear relationship",
@@ -6136,7 +6136,7 @@
     },
     {
       "id": "ap_chem_4_3_coefficients_mole_ratios",
-      "correctAnswer": "mole ratios",
+      "correctAnswer": "mole ratios (coeff)",
       "acceptableAlternatives": [
         "stoichiometric ratios",
         "molar ratios"
@@ -6173,7 +6173,7 @@
     },
     {
       "id": "ap_chem_4_3_particulate_diagram_products",
-      "correctAnswer": "products",
+      "correctAnswer": "products (after rxn)",
       "acceptableAlternatives": [
         "product particles",
         "substances formed after reaction"
@@ -6545,7 +6545,7 @@
     },
     {
       "id": "ap_chem_4_5_mole_ratio_conversion",
-      "correctAnswer": "mole ratio from balanced equation",
+      "correctAnswer": "mole ratio (balanced eqn)",
       "acceptableAlternatives": [
         "stoichiometric coefficients",
         "coefficients as mole ratios",
@@ -6620,7 +6620,7 @@
     },
     {
       "id": "ap_chem_4_5_percent_yield_calculation",
-      "correctAnswer": "{80}%",
+      "correctAnswer": "{80}% yield",
       "acceptableAlternatives": [
         "80%",
         "80 percent"
@@ -6723,7 +6723,7 @@
     },
     {
       "id": "ap_chem_4_6_endpoint_vs_equivalence",
-      "correctAnswer": "endpoint",
+      "correctAnswer": "endpoint (indicator)",
       "acceptableAlternatives": [
         "indicator endpoint",
         "colour change point"
@@ -6760,7 +6760,7 @@
     },
     {
       "id": "ap_chem_4_6_buret_purpose",
-      "correctAnswer": "buret",
+      "correctAnswer": "buret (volume delivery)",
       "acceptableAlternatives": [
         "burette"
       ],
@@ -6833,7 +6833,7 @@
     },
     {
       "id": "ap_chem_4_6_titrant_analyte",
-      "correctAnswer": "analyte",
+      "correctAnswer": "analyte (the unknown)",
       "acceptableAlternatives": [
         "unknown solution",
         "sample solution"
@@ -7093,7 +7093,7 @@
     },
     {
       "id": "ap_chem_4_7_combustion_balancing",
-      "correctAnswer": "{2}",
+      "correctAnswer": "{2} mol O2",
       "acceptableAlternatives": [
         "2"
       ],
@@ -7233,7 +7233,7 @@
     },
     {
       "id": "ap_chem_4_8_amphoteric_water",
-      "correctAnswer": "amphoteric",
+      "correctAnswer": "amphoteric (water)",
       "acceptableAlternatives": [
         "amphiprotic",
         "amphoteric substance"
@@ -7344,7 +7344,7 @@
     },
     {
       "id": "ap_chem_4_8_strong_vs_weak_acid",
-      "correctAnswer": "completely",
+      "correctAnswer": "completely ionizes",
       "acceptableAlternatives": [
         "fully",
         "100%",
@@ -7383,7 +7383,7 @@
     },
     {
       "id": "ap_chem_4_9_oil_rig",
-      "correctAnswer": "OIL RIG",
+      "correctAnswer": "OIL RIG (redox aid)",
       "acceptableAlternatives": [
         "Oxidation Is Loss, Reduction Is Gain",
         "oil rig mnemonic"
@@ -7494,7 +7494,7 @@
     },
     {
       "id": "ap_chem_4_9_oxidation_state_rules",
-      "correctAnswer": "+2",
+      "correctAnswer": "+2 (alkaline earth)",
       "acceptableAlternatives": [
         "2+",
         "positive 2"
@@ -7568,7 +7568,7 @@
     },
     {
       "id": "ap_chem_4_9_oxygen_oxidation_state",
-      "correctAnswer": "-2",
+      "correctAnswer": "-2 (oxygen state)",
       "acceptableAlternatives": [
         "-2 oxidation state",
         "negative two",
@@ -7606,7 +7606,7 @@
     },
     {
       "id": "ap_chem_5_1_rate_definition",
-      "correctAnswer": "change in concentration over time",
+      "correctAnswer": "change in [X] over time",
       "acceptableAlternatives": [
         "concentration change per unit time",
         "Δ[concentration]/Δt",
@@ -7648,7 +7648,7 @@
     },
     {
       "id": "ap_chem_5_1_rate_units",
-      "correctAnswer": "M/s",
+      "correctAnswer": "M/s (rate units)",
       "acceptableAlternatives": [
         "mol/L·s",
         "mol L⁻¹ s⁻¹",
@@ -7857,7 +7857,7 @@
     },
     {
       "id": "ap_chem_5_2_overall_order",
-      "correctAnswer": "sum of all individual reaction orders",
+      "correctAnswer": "sum of individual orders",
       "acceptableAlternatives": [
         "m + n",
         "sum of exponents in the rate law",
@@ -8797,7 +8797,7 @@
     },
     {
       "id": "ap_chem_5_8_pre_equilibrium_intermediate",
-      "correctAnswer": "equilibrium constant expression",
+      "correctAnswer": "K expression for step",
       "acceptableAlternatives": [
         "equilibrium constant",
         "Keq expression",
@@ -8986,7 +8986,7 @@
     },
     {
       "id": "ap_chem_5_10_overall_ea_multistep",
-      "correctAnswer": "highest energy transition state",
+      "correctAnswer": "highest transition state",
       "acceptableAlternatives": [
         "highest transition state",
         "largest activation energy step",
@@ -9099,7 +9099,7 @@
     },
     {
       "id": "ap_chem_5_11_homogeneous_heterogeneous_catalyst",
-      "correctAnswer": "homogeneous",
+      "correctAnswer": "homogeneous (catalyst)",
       "acceptableAlternatives": [
         "homogenous catalyst"
       ],
@@ -9135,7 +9135,7 @@
     },
     {
       "id": "ap_chem_5_11_enzyme_catalyst_type",
-      "correctAnswer": "enzymes",
+      "correctAnswer": "enzymes (bio catalysts)",
       "acceptableAlternatives": [
         "biological catalysts",
         "enzyme catalysts"
@@ -9172,7 +9172,7 @@
     },
     {
       "id": "ap_chem_5_11_catalyst_in_mechanism",
-      "correctAnswer": "regenerated",
+      "correctAnswer": "regenerated (catalyst)",
       "acceptableAlternatives": [
         "reproduced",
         "reformed",
@@ -9211,7 +9211,7 @@
     },
     {
       "id": "ap_chem_6_1_endothermic_sign",
-      "correctAnswer": "positive",
+      "correctAnswer": "Positive DH",
       "acceptableAlternatives": [
         "ΔH > 0",
         "greater than zero",
@@ -9249,7 +9249,7 @@
     },
     {
       "id": "ap_chem_6_1_exothermic_sign",
-      "correctAnswer": "negative",
+      "correctAnswer": "Negative DH",
       "acceptableAlternatives": [
         "ΔH < 0",
         "less than zero",
@@ -9475,7 +9475,7 @@
     },
     {
       "id": "ap_chem_6_3_heat_flow_direction",
-      "correctAnswer": "high temperature to low temperature",
+      "correctAnswer": "hot to cold transfer",
       "acceptableAlternatives": [
         "hot to cold",
         "from hot to cold",
@@ -9587,7 +9587,7 @@
     },
     {
       "id": "ap_chem_6_4_specific_heat_water",
-      "correctAnswer": "4.184",
+      "correctAnswer": "{4.184} J/g.C",
       "acceptableAlternatives": [
         "4.184 J/g·°C",
         "4.18",
@@ -9625,7 +9625,7 @@
     },
     {
       "id": "ap_chem_6_4_q_equals_mcdeltaT",
-      "correctAnswer": "q = mcΔT",
+      "correctAnswer": "q = mcDT (calorimetry)",
       "acceptableAlternatives": [
         "q=mcΔT",
         "heat = mass × specific heat × temperature change"
@@ -9736,7 +9736,7 @@
     },
     {
       "id": "ap_chem_6_4_heat_capacity_equation",
-      "correctAnswer": "q = CΔT",
+      "correctAnswer": "q = CDT (heat capacity)",
       "acceptableAlternatives": [
         "q=CΔT",
         "heat = heat capacity × temperature change"
@@ -9773,7 +9773,7 @@
     },
     {
       "id": "ap_chem_6_5_enthalpy_fusion_water",
-      "correctAnswer": "6.01",
+      "correctAnswer": "{6.01} kJ/mol",
       "acceptableAlternatives": [
         "6.01 kJ/mol",
         "6.0 kJ/mol",
@@ -9811,7 +9811,7 @@
     },
     {
       "id": "ap_chem_6_5_enthalpy_vaporization_water",
-      "correctAnswer": "40.67",
+      "correctAnswer": "{40.67} kJ/mol",
       "acceptableAlternatives": [
         "40.67 kJ/mol",
         "40.7 kJ/mol",
@@ -9999,7 +9999,7 @@
     },
     {
       "id": "ap_chem_6_6_exothermic_sign",
-      "correctAnswer": "negative",
+      "correctAnswer": "Negative DH",
       "acceptableAlternatives": [
         "ΔH < 0",
         "less than zero",
@@ -10037,7 +10037,7 @@
     },
     {
       "id": "ap_chem_6_6_endothermic_sign",
-      "correctAnswer": "positive",
+      "correctAnswer": "Positive DH",
       "acceptableAlternatives": [
         "ΔH > 0",
         "greater than zero",
@@ -10075,7 +10075,7 @@
     },
     {
       "id": "ap_chem_6_7_bond_enthalpy_equation",
-      "correctAnswer": "Σ(bonds broken) − Σ(bonds formed)",
+      "correctAnswer": "Sum(broken) - Sum(formed)",
       "acceptableAlternatives": [
         "sum of bonds broken minus sum of bonds formed",
         "bonds broken minus bonds formed"
@@ -10150,7 +10150,7 @@
     },
     {
       "id": "ap_chem_6_7_bond_enthalpy_gas_phase_only",
-      "correctAnswer": "gas phase",
+      "correctAnswer": "gas phase only",
       "acceptableAlternatives": [
         "gaseous reactants and products",
         "gas-phase reactions",
@@ -10263,7 +10263,7 @@
     },
     {
       "id": "ap_chem_6_8_element_standard_state_zero",
-      "correctAnswer": "zero",
+      "correctAnswer": "0 kJ/mol (std state)",
       "acceptableAlternatives": [
         "0",
         "0 kJ/mol",
@@ -10301,7 +10301,7 @@
     },
     {
       "id": "ap_chem_6_8_hess_from_formation",
-      "correctAnswer": "ΣΔHf°(products) − ΣΔHf°(reactants)",
+      "correctAnswer": "SumHf(prod) - SumHf(react)",
       "acceptableAlternatives": [
         "sum of formation enthalpies of products minus sum of formation enthalpies of reactants",
         "ΔHrxn = ΣΔHf°(products) − ΣΔHf°(reactants)"
@@ -10452,7 +10452,7 @@
     },
     {
       "id": "ap_chem_6_9_multiply_reaction_multiplies_deltah",
-      "correctAnswer": "ΔH is multiplied by the same factor",
+      "correctAnswer": "DH scales by factor",
       "acceptableAlternatives": [
         "ΔH scales by the same multiplier",
         "multiply ΔH by the same coefficient",
@@ -10757,7 +10757,7 @@
     },
     {
       "id": "ap_chem_7_2_conditions_shift_equilibrium",
-      "correctAnswer": "Temperature",
+      "correctAnswer": "Temperature (shifts K)",
       "acceptableAlternatives": [
         "Changes in temperature"
       ],
@@ -10832,7 +10832,7 @@
     },
     {
       "id": "ap_chem_7_3_Q_less_than_K_shift",
-      "correctAnswer": "Shifts right (toward products)",
+      "correctAnswer": "Shifts right (products)",
       "acceptableAlternatives": [
         "Shifts toward products",
         "Proceeds forward",
@@ -10870,7 +10870,7 @@
     },
     {
       "id": "ap_chem_7_3_Q_greater_than_K_shift",
-      "correctAnswer": "Shifts left (toward reactants)",
+      "correctAnswer": "Shifts left (reactants)",
       "acceptableAlternatives": [
         "Shifts toward reactants",
         "Proceeds in reverse",
@@ -10948,7 +10948,7 @@
     },
     {
       "id": "ap_chem_7_4_ICE_table_method",
-      "correctAnswer": "ICE table",
+      "correctAnswer": "ICE table method",
       "acceptableAlternatives": [
         "ICE method",
         "Initial-Change-Equilibrium table"
@@ -11110,7 +11110,7 @@
       ],
       "synonymGroupId": null,
       "chainThemeId": 4,
-      "answerTypePoolId": "bracket_numbers",
+      "answerTypePoolId": "equilibrium_concepts",
       "difficulty": 4,
       "funScore": 8,
       "ageGroup": "all",
@@ -11301,7 +11301,7 @@
       ],
       "synonymGroupId": null,
       "chainThemeId": 4,
-      "answerTypePoolId": "bracket_numbers",
+      "answerTypePoolId": "equilibrium_concepts",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -11487,7 +11487,7 @@
     },
     {
       "id": "ap_chem_7_8_q_vs_k_direction",
-      "correctAnswer": "Q < K",
+      "correctAnswer": "Q < K (shifts right)",
       "acceptableAlternatives": [
         "reaction quotient less than equilibrium constant",
         "Q is less than K"
@@ -11677,7 +11677,7 @@
     },
     {
       "id": "ap_chem_7_10_adding_reactant_shift",
-      "correctAnswer": "Q < K",
+      "correctAnswer": "Q < K (right shift)",
       "acceptableAlternatives": [
         "reaction quotient less than K",
         "Q is less than K"
@@ -11792,7 +11792,7 @@
     },
     {
       "id": "ap_chem_7_10_temperature_changes_K",
-      "correctAnswer": "K changes",
+      "correctAnswer": "K value changes",
       "acceptableAlternatives": [
         "equilibrium constant changes",
         "K increases or decreases",
@@ -11869,7 +11869,7 @@
     },
     {
       "id": "ap_chem_7_11_ksp_excludes_solid",
-      "correctAnswer": "pure solid",
+      "correctAnswer": "pure solid (excluded)",
       "acceptableAlternatives": [
         "solid reactant",
         "the solid salt",
@@ -11984,7 +11984,7 @@
     },
     {
       "id": "ap_chem_7_12_common_ion_effect",
-      "correctAnswer": "decreases",
+      "correctAnswer": "decreases (solubility)",
       "acceptableAlternatives": [
         "is reduced",
         "goes down",
@@ -12371,7 +12371,7 @@
     },
     {
       "id": "ap_chem_8_1_strong_acids_list",
-      "correctAnswer": "HCl, HBr, HI, HNO3, H2SO4, HClO4",
+      "correctAnswer": "HCl, HBr, HI, HNO3, H2SO4",
       "acceptableAlternatives": [
         "hydrochloric, hydrobromic, hydroiodic, nitric, sulfuric, perchloric acids",
         "the six strong acids"
@@ -12483,7 +12483,7 @@
     },
     {
       "id": "ap_chem_8_2_kw_value",
-      "correctAnswer": "1.0 × 10^-14",
+      "correctAnswer": "1.0 x 10^-14 (Kw)",
       "acceptableAlternatives": [
         "10^-14",
         "1 × 10^-14"
@@ -12520,7 +12520,7 @@
     },
     {
       "id": "ap_chem_8_2_ph_poh_sum",
-      "correctAnswer": "14",
+      "correctAnswer": "{14} (pH + pOH)",
       "acceptableAlternatives": [
         "14.00",
         "pH + pOH = 14"
@@ -12706,7 +12706,7 @@
     },
     {
       "id": "ap_chem_8_3_acetic_acid_ka",
-      "correctAnswer": "1.8 × 10^-5",
+      "correctAnswer": "1.8 x 10^-5 (Ka)",
       "acceptableAlternatives": [
         "Ka = 1.8 × 10^-5",
         "1.8e-5"
@@ -12743,7 +12743,7 @@
     },
     {
       "id": "ap_chem_8_3_percent_ionization",
-      "correctAnswer": "([H+]equilibrium / [HA]initial) × 100%",
+      "correctAnswer": "[H+]/[HA] x 100%",
       "acceptableAlternatives": [
         "equilibrium [H+] divided by initial acid concentration, times 100",
         "percent ionization = [H+] / [HA]0 × 100%"
@@ -12780,7 +12780,7 @@
     },
     {
       "id": "ap_chem_8_3_ice_table_weak_acid",
-      "correctAnswer": "ICE table (Initial, Change, Equilibrium)",
+      "correctAnswer": "ICE table (3-row method)",
       "acceptableAlternatives": [
         "ICE table",
         "I.C.E. method",
@@ -12818,7 +12818,7 @@
     },
     {
       "id": "ap_chem_8_4_strong_strong_neutralization",
-      "correctAnswer": "neutral salt and water (pH = 7)",
+      "correctAnswer": "neutral salt, pH = 7",
       "acceptableAlternatives": [
         "a neutral salt plus water",
         "neutral solution at pH 7",
@@ -12856,7 +12856,7 @@
     },
     {
       "id": "ap_chem_8_4_buffer_composition",
-      "correctAnswer": "weak acid and its conjugate base",
+      "correctAnswer": "weak acid + conjugate base",
       "acceptableAlternatives": [
         "weak acid plus conjugate base",
         "weak base and its conjugate acid",
@@ -13008,7 +13008,7 @@
     },
     {
       "id": "ap_chem_8_5_strong_strong_equivalence_ph",
-      "correctAnswer": "pH = 7",
+      "correctAnswer": "pH = {7} (neutral)",
       "acceptableAlternatives": [
         "neutral pH",
         "7.00",
@@ -13046,7 +13046,7 @@
     },
     {
       "id": "ap_chem_8_5_weak_acid_strong_base_equivalence_ph",
-      "correctAnswer": "pH > 7",
+      "correctAnswer": "pH > 7 (basic)",
       "acceptableAlternatives": [
         "basic pH",
         "greater than 7",
@@ -13084,7 +13084,7 @@
     },
     {
       "id": "ap_chem_8_5_half_equivalence_ph_equals_pka",
-      "correctAnswer": "pH = pKa",
+      "correctAnswer": "pH = pKa (half-equiv)",
       "acceptableAlternatives": [
         "pH equals pKa of the weak acid",
         "the pH equals the pKa"
@@ -13121,7 +13121,7 @@
     },
     {
       "id": "ap_chem_8_5_weak_base_strong_acid_equivalence_ph",
-      "correctAnswer": "pH < 7",
+      "correctAnswer": "pH < 7 (acidic)",
       "acceptableAlternatives": [
         "acidic pH",
         "less than 7",
@@ -13272,7 +13272,7 @@
     },
     {
       "id": "ap_chem_8_6_electronegativity_oxyacid_central_atom",
-      "correctAnswer": "more electronegative central atom",
+      "correctAnswer": "more EN central atom",
       "acceptableAlternatives": [
         "higher electronegativity of the central atom",
         "greater electronegativity of central element"
@@ -13309,7 +13309,7 @@
     },
     {
       "id": "ap_chem_8_6_hf_weak_acid_despite_electronegativity",
-      "correctAnswer": "HF",
+      "correctAnswer": "HF (weak despite high EN)",
       "acceptableAlternatives": [
         "hydrofluoric acid"
       ],
@@ -13382,7 +13382,7 @@
     },
     {
       "id": "ap_chem_8_7_half_equivalence_ph_equals_pka",
-      "correctAnswer": "pH = pKa",
+      "correctAnswer": "pH = pKa (buffer mid)",
       "acceptableAlternatives": [
         "pH equals pKa",
         "the pH equals the pKa of the weak acid"
@@ -13495,7 +13495,7 @@
     },
     {
       "id": "ap_chem_8_8_buffer_range_pka_plus_minus_1",
-      "correctAnswer": "pKa ± 1",
+      "correctAnswer": "pKa +/- 1 range",
       "acceptableAlternatives": [
         "one unit above and below pKa",
         "within one pH unit of pKa",
@@ -13572,7 +13572,7 @@
     },
     {
       "id": "ap_chem_8_8_optimal_buffer_equal_concentrations",
-      "correctAnswer": "pH = pKa",
+      "correctAnswer": "pH = pKa (opt buffer)",
       "acceptableAlternatives": [
         "the pH equals the pKa",
         "pH equals pKa of the weak acid"
@@ -13684,7 +13684,7 @@
     },
     {
       "id": "ap_chem_8_9_adding_acid_to_buffer_effect",
-      "correctAnswer": "decreases [A-] and increases [HA]",
+      "correctAnswer": "decreases [A-], raises [HA]",
       "acceptableAlternatives": [
         "[A-] decreases and [HA] increases",
         "conjugate base concentration decreases and weak acid concentration increases"
@@ -13721,7 +13721,7 @@
     },
     {
       "id": "ap_chem_8_9_adding_base_to_buffer_effect",
-      "correctAnswer": "increases [A-] and decreases [HA]",
+      "correctAnswer": "increases [A-], lowers [HA]",
       "acceptableAlternatives": [
         "[A-] increases and [HA] decreases",
         "conjugate base concentration increases and weak acid concentration decreases"
@@ -13758,7 +13758,7 @@
     },
     {
       "id": "ap_chem_8_9_hh_equal_concentrations_simplification",
-      "correctAnswer": "pH = pKa",
+      "correctAnswer": "pH = pKa (H-H simp)",
       "acceptableAlternatives": [
         "pH equals pKa",
         "the pH simplifies to pKa"
@@ -13834,7 +13834,7 @@
     },
     {
       "id": "ap_chem_8_10_higher_concentration_more_capacity",
-      "correctAnswer": "higher total buffer concentration",
+      "correctAnswer": "higher total [buffer]",
       "acceptableAlternatives": [
         "greater total concentration of buffer components",
         "more concentrated buffer",
@@ -13949,7 +13949,7 @@
     },
     {
       "id": "ap_chem_9_1_entropy_definition",
-      "correctAnswer": "entropy",
+      "correctAnswer": "entropy (disorder/dispersal)",
       "acceptableAlternatives": [
         "S"
       ],
@@ -13985,7 +13985,7 @@
     },
     {
       "id": "ap_chem_9_1_second_law_spontaneous",
-      "correctAnswer": "increases",
+      "correctAnswer": "increases (entropy)",
       "acceptableAlternatives": [
         "always increases",
         "never decreases"
@@ -14022,7 +14022,7 @@
     },
     {
       "id": "ap_chem_9_1_entropy_phase_order",
-      "correctAnswer": "gas",
+      "correctAnswer": "gas (highest entropy)",
       "acceptableAlternatives": [
         "gaseous state",
         "vapor"
@@ -14059,7 +14059,7 @@
     },
     {
       "id": "ap_chem_9_1_entropy_more_moles_gas",
-      "correctAnswer": "increases",
+      "correctAnswer": "increases (more gas)",
       "acceptableAlternatives": [
         "entropy increases",
         "positive delta S"
@@ -14096,7 +14096,7 @@
     },
     {
       "id": "ap_chem_9_2_third_law_entropy",
-      "correctAnswer": "zero",
+      "correctAnswer": "0 J/mol-K (abs zero)",
       "acceptableAlternatives": [
         "0",
         "0 J/mol·K",
@@ -14247,7 +14247,7 @@
     },
     {
       "id": "ap_chem_9_3_delta_g_negative_meaning",
-      "correctAnswer": "spontaneous",
+      "correctAnswer": "spontaneous (neg DG)",
       "acceptableAlternatives": [
         "thermodynamically favorable",
         "product-favored",
@@ -14285,7 +14285,7 @@
     },
     {
       "id": "ap_chem_9_3_always_spontaneous_case",
-      "correctAnswer": "exothermic and entropy increasing",
+      "correctAnswer": "Exotherm + DS increases",
       "acceptableAlternatives": [
         "ΔH negative and ΔS positive",
         "negative ΔH and positive ΔS",
@@ -14323,7 +14323,7 @@
     },
     {
       "id": "ap_chem_9_3_spontaneous_high_temp",
-      "correctAnswer": "endothermic and entropy increasing",
+      "correctAnswer": "Endotherm + DS increases",
       "acceptableAlternatives": [
         "ΔH positive and ΔS positive",
         "positive ΔH and positive ΔS",
@@ -14361,7 +14361,7 @@
     },
     {
       "id": "ap_chem_9_3_delta_g_equilibrium",
-      "correctAnswer": "zero",
+      "correctAnswer": "zero (equilibrium state)",
       "acceptableAlternatives": [
         "0",
         "ΔG = 0"
@@ -14398,7 +14398,7 @@
     },
     {
       "id": "ap_chem_9_4_spontaneous_not_fast",
-      "correctAnswer": "kinetics",
+      "correctAnswer": "kinetics (rate issue)",
       "acceptableAlternatives": [
         "reaction rate",
         "kinetic factors",
@@ -14436,7 +14436,7 @@
     },
     {
       "id": "ap_chem_9_4_diamond_graphite",
-      "correctAnswer": "graphite",
+      "correctAnswer": "graphite (more stable)",
       "acceptableAlternatives": [
         "graphite (thermodynamic product)",
         "graphite is the stable form"
@@ -14548,7 +14548,7 @@
     },
     {
       "id": "ap_chem_9_5_K_greater_one_delta_g",
-      "correctAnswer": "negative",
+      "correctAnswer": "negative DG (favored)",
       "acceptableAlternatives": [
         "ΔG° < 0",
         "less than zero"
@@ -14660,7 +14660,7 @@
     },
     {
       "id": "ap_chem_9_6_endothermic_dissolution_entropy",
-      "correctAnswer": "entropy",
+      "correctAnswer": "entropy increase drives it",
       "acceptableAlternatives": [
         "entropy increase",
         "ΔS",
@@ -15077,7 +15077,7 @@
     },
     {
       "id": "ap_chem_9_9_faraday_constant_value",
-      "correctAnswer": "96,485 C/mol",
+      "correctAnswer": "96,485 C/mol (F)",
       "acceptableAlternatives": [
         "96485 C/mol",
         "96,485 coulombs per mole",
@@ -15190,7 +15190,7 @@
     },
     {
       "id": "ap_chem_9_10_nernst_at_equilibrium",
-      "correctAnswer": "zero",
+      "correctAnswer": "0 V (at equilibrium)",
       "acceptableAlternatives": [
         "E = 0",
         "0 V",
@@ -15265,7 +15265,7 @@
     },
     {
       "id": "ap_chem_9_10_q_increases_e_decreases",
-      "correctAnswer": "decreases",
+      "correctAnswer": "decreases (E drops)",
       "acceptableAlternatives": [
         "decreases toward zero",
         "drops",
@@ -15479,8 +15479,6 @@
         "ap_chem_6_5_enthalpy_fusion_water",
         "ap_chem_6_5_enthalpy_vaporization_water",
         "ap_chem_6_8_element_standard_state_zero",
-        "ap_chem_7_4_five_percent_approximation",
-        "ap_chem_7_6_multiply_equation_by_n",
         "ap_chem_8_2_kw_value",
         "ap_chem_8_2_ph_poh_sum",
         "ap_chem_8_3_acetic_acid_ka",
@@ -16136,8 +16134,10 @@
       "factIds": [
         "ap_chem_7_3_Q_less_than_K_shift",
         "ap_chem_7_3_Q_greater_than_K_shift",
+        "ap_chem_7_4_five_percent_approximation",
         "ap_chem_7_5_K_much_greater_than_1",
         "ap_chem_7_5_K_much_less_than_1",
+        "ap_chem_7_6_multiply_equation_by_n",
         "ap_chem_7_8_q_vs_k_direction",
         "ap_chem_7_9_temperature_shift_endothermic",
         "ap_chem_7_9_pressure_volume_shift",
