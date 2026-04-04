@@ -29,7 +29,7 @@
 - **Output**: `data/deck-architectures/music_history_arch.yaml`
 
 ### Step 3: Fact Generation (3 parallel Sonnet workers)
-- **Worker 1**: Classical Masters (55) + Instruments & Theory (40) → `_wip/music_history_classical_theory.json`
+- **Worker 1**: Classical Composers & Eras (55) + Instruments & Theory (40) → `_wip/music_history_classical_theory.json`
 - **Worker 2**: Jazz & Blues (45) → `_wip/music_history_jazz.json`
 - **Worker 3**: Rock & Pop (50) + World & Modern (40) → `_wip/music_history_rock_world.json`
 - **Process**: Each worker WebSearched/WebFetched Wikipedia for entities in their batch

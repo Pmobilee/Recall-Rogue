@@ -15,7 +15,7 @@
 |---|---|---|
 | Prefixes | 83 | Common medical prefixes and their meanings |
 | Suffixes | 62 | Common medical suffixes and their meanings |
-| Body Roots | 335 | Combining forms derived from anatomical structures and organs (incl. obstetric, positional) |
+| Anatomical Roots & Body Systems | 335 | Combining forms derived from anatomical structures and organs (incl. obstetric, positional) |
 | Conditions | 159 | Disease names, pathological terms, condition descriptors, obstetric conditions |
 | Procedures | 61 | Diagnostic and surgical procedure terminology |
 
@@ -102,7 +102,7 @@ Each worker received verified source data and instructions to WebFetch Wikipedia
 
 | Batch | Facts | Scope |
 |---|---|---|
-| 1 | ~35 | Cardiovascular and respiratory combining forms (Body Roots) |
+| 1 | ~35 | Cardiovascular and respiratory combining forms (Anatomical Roots & Body Systems) |
 | 2 | ~35 | Neurological and musculoskeletal combining forms |
 | 3 | ~35 | Gastrointestinal and hepatic combining forms |
 | 4 | ~35 | Urological and reproductive combining forms |
@@ -121,13 +121,13 @@ Each worker received verified source data and instructions to WebFetch Wikipedia
 | 12 | ~30 | Gastrointestinal and endocrine conditions |
 | 13 | ~20 | Diagnostic procedure names |
 | 14 | ~20 | Surgical procedure names |
-| 15 | ~20 | Remaining Body Roots (integumentary, sensory organs) |
+| 15 | ~20 | Remaining Anatomical Roots & Body Systems (integumentary, sensory organs) |
 
 **Supplement batches (rate-limit recovery):**
 
 | Batch | Facts | Scope |
 |---|---|---|
-| supp1 | ~15 | Additional combining forms to reach Body Roots target |
+| supp1 | ~15 | Additional combining forms to reach Anatomical Roots & Body Systems target |
 | supp2 | ~10 | Additional conditions |
 
 ### Phase 4 — Assembly
@@ -156,7 +156,7 @@ Output: `data/decks/medical_terminology.json`
 
 - **Method**: Every Sonnet worker WebFetched the Wikipedia article for each combining form or condition before writing facts; NCBI Bookshelf and UWF Medical Terminology provided ground-truth structured lists for combining form meanings
 - **Known limitations**: Some combining forms have multiple accepted spellings (e.g. hem/o vs haem/o); British spelling variants are noted in acceptableAlternatives
-- **Synonym pairs in synonym groups**: phleb/o–ven/o (vein), hem/o–hemat/o (blood), pulmon/o–pneumon/o (lung), nas/o–rhin/o (nose), additional pairs across Body Roots sub-deck
+- **Synonym pairs in synonym groups**: phleb/o–ven/o (vein), hem/o–hemat/o (blood), pulmon/o–pneumon/o (lung), nas/o–rhin/o (nose), additional pairs across Anatomical Roots & Body Systems sub-deck
 
 ---
 
@@ -199,7 +199,7 @@ NCBI Bookshelf Medical Terminology curriculum comparison (17-chapter scope) iden
 |---|---|---|
 | Prefixes | 80 | 83 |
 | Suffixes | 60 | 62 |
-| Body Roots | 320 | 335 |
+| Anatomical Roots & Body Systems | 320 | 335 |
 | Conditions | 120 | 159 |
 | Procedures | 55 | 61 |
 | **Total** | **635** | **700** |

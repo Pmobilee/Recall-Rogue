@@ -13,9 +13,9 @@
 
 | Sub-deck | Facts | Scope |
 |---|---|---|
-| Iconic Films | 138 | Films, release years, directors, quotes, records, characters |
-| Directors & Stars | 67 | Director careers, actor roles, award histories |
-| Cinema History & Craft | 72 | Film movements, techniques, industry firsts, country contexts |
+| Classic & Legendary Films | 138 | Films, release years, directors, quotes, records, characters |
+| Directors, Actors & Legends | 67 | Director careers, actor roles, award histories |
+| Film History & Technique | 72 | Film movements, techniques, industry firsts, country contexts |
 
 **Answer Type Pools (10, post-supplement):**
 

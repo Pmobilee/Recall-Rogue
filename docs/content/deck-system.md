@@ -49,7 +49,7 @@ Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
 | `answerTypePools` | `AnswerTypePool[]` | Facts grouped by answer format (name/year/term/place) |
 | `synonymGroups` | `SynonymGroup[]` | Facts sharing acceptable-answer synonym groups |
 | `difficultyTiers` | `DifficultyTier[]` | Fact IDs bucketed into `easy`, `medium`, `hard` |
-| `subDecks` | `{id,name,factIds}[]?` | Optional sub-groupings (e.g. Vocabulary/Kanji/Grammar for Japanese) |
+| `subDecks` | `{id,name,factIds}[]?` | Optional sub-groupings (e.g. Vocabulary/Kanji/Grammar for Japanese). Names should be descriptive and player-facing — avoid generic prefixes like "Unit N:" or opaque abbreviations. |
 
 ### DeckFact Fields
 
@@ -257,7 +257,7 @@ See `.claude/skills/deck-art/SKILL.md` for full generation workflow, prompt temp
 | SubDeck ID | Name | chainThemeId | Facts |
 |---|---|---|---|
 | `ancient_wonders` | Ancient Wonders | 0 | 21 |
-| `sacred_monuments` | Sacred Monuments | 1 | 18 |
+| `sacred_monuments` | Temples & Sacred Sites | 1 | 18 |
 | `towers_skyscrapers` | Towers & Skyscrapers | 2 | 25 |
 | `bridges_dams` | Bridges & Dams | 3 | 28 |
 | `palaces_castles` | Palaces & Castles | 4 | 26 |
@@ -295,9 +295,9 @@ See `.claude/skills/deck-art/SKILL.md` for full generation workflow, prompt temp
 
 | SubDeck ID | Name | Facts |
 |---|---|---|
-| `iconic_films` | Iconic Films | 138 |
-| `directors_and_stars` | Directors & Stars | 67 |
-| `cinema_craft` | Cinema History & Craft | 72 |
+| `iconic_films` | Classic & Legendary Films | 138 |
+| `directors_and_stars` | Directors, Actors & Legends | 67 |
+| `cinema_craft` | Film History & Technique | 72 |
 
 **Answer Type Pools (10):**
 
@@ -372,7 +372,7 @@ film_titles 55/55 OK, director_names 39/28 OK, actor_names 35/35 OK, character_n
 |---|---|---|
 | `prefixes` | Prefixes | 83 |
 | `suffixes` | Suffixes | 62 |
-| `body_roots` | Body Roots | 335 |
+| `body_roots` | Anatomical Roots & Body Systems | 335 |
 | `conditions` | Conditions | 159 |
 | `procedures` | Procedures | 61 |
 
@@ -380,7 +380,7 @@ film_titles 55/55 OK, director_names 39/28 OK, actor_names 35/35 OK, character_n
 
 **Answer Type Pools (8):** prefix_meanings (83), suffix_meanings (62), root_meanings (335), organ_names, combining_forms, body_systems, condition_names (159), procedure_names (61)
 
-**Synonym groups:** phleb/o–ven/o (vein), hem/o–hemat/o (blood), pulmon/o–pneumon/o (lung), nas/o–rhin/o (nose) — plus additional pairs across Body Roots sub-deck
+**Synonym groups:** phleb/o–ven/o (vein), hem/o–hemat/o (blood), pulmon/o–pneumon/o (lung), nas/o–rhin/o (nose) — plus additional pairs across Anatomical Roots & Body Systems sub-deck
 
 **Sources:** Wikipedia (CC-BY-SA-4.0), Wikidoc (CC-BY-SA-3.0), NCBI Bookshelf (public domain), UWF Medical Terminology (CC-BY-4.0), GlobalRPH (reference)
 
@@ -861,7 +861,7 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 
 | SubDeck ID | Name | chainThemeId | Facts |
 |---|---|---|---|
-| `classical_masters` | Classical Masters | 0 | 55 |
+| `classical_masters` | Classical Composers & Eras | 0 | 55 |
 | `instruments_theory` | Instruments & Theory | 1 | 40 |
 | `jazz_blues` | Jazz & Blues | 2 | 45 |
 | `rock_pop` | Rock & Pop Revolution | 3 | 50 |
@@ -964,10 +964,10 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 | `reproductive_system` | Reproductive System | 54 |
 | `endocrine_system` | Endocrine System | 53 |
 | `lymphatic_immune` | Lymphatic & Immune System | 44 |
-| `special_senses` | Special Senses | 39 |
+| `special_senses` | Vision, Hearing & Senses | 39 |
 | `integumentary` | Integumentary System | 48 |
-| `visual_anatomy` | Visual Anatomy | 818 |
-| `clinical_anatomy` | Clinical Anatomy | 90 |
+| `visual_anatomy` | Anatomy Image Recognition | 818 |
+| `clinical_anatomy` | Surface Landmarks & Clinical Signs | 90 |
 | `embryology` | Embryology | 90 |
 | `regional_anatomy` | Regional Anatomy | 60 |
 | `histology` | Histology | 90 |
@@ -1041,8 +1041,8 @@ The original `structure_names` mega-pool (1182 facts, 49x ratio) was split into 
 | `languages` | Programming Languages | 2 | Language history, paradigms, syntax trivia |
 | `algorithms` | Algorithms & Theory | 3 | Sorting, search, graph algos, complexity, data structures |
 | `systems_networks` | Systems, Networks & Security | 4 | OS concepts, networking, cybersecurity |
-| `internet_web` | The Internet & World Wide Web | 5 | Protocols, web history, standards |
-| `ai_ml` | Artificial Intelligence & ML | 6 | AI history, machine learning concepts, milestones |
+| `internet_web` | Internet & World Wide Web | 5 | Protocols, web history, standards |
+| `ai_ml` | Artificial Intelligence & Machine Learning | 6 | AI history, machine learning concepts, milestones |
 | `software_companies` | Software & Tech Companies | 7 | Major companies, products, corporate history |
 
 **QA fix script (2026-04-02):** `data/decks/_wip/computer_science/fix-qa.mjs` — applied 23 patches to the deck:
@@ -1376,8 +1376,8 @@ Assembly script: `scripts/assemble-ap-chemistry.mjs`
 | 1 | `sd_intermolecular_forces` | Intermolecular Forces | Unit 3 | 60 |
 | 2 | `sd_reactions` | Chemical Reactions | Unit 4 | 50 |
 | 3 | `sd_kinetics_energy` | Kinetics & Energy | Units 5–6 | 75 |
-| 4 | `sd_equilibrium_acids` | Equilibrium & Acids-Bases | Units 7–8 | 90 |
-| 5 | `sd_thermo_electrochemistry` | Thermo & Electrochemistry | Unit 9 | 40 |
+| 4 | `sd_equilibrium_acids` | Equilibrium & Acid-Base Chemistry | Units 7–8 | 90 |
+| 5 | `sd_thermo_electrochemistry` | Thermodynamics & Electrochemistry | Unit 9 | 40 |
 
 **Answer Type Pools (14 — redesigned 2026-04-03 for semantic homogeneity):**
 
