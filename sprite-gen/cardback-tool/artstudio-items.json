@@ -16607,6 +16607,34 @@
           "accepted": false
         }
       ]
+    },
+    {
+      "id": "ap_european_history",
+      "name": "AP European History",
+      "concept": "Grand European cathedral interior with stained glass, Renaissance art, maps, and thrones spanning centuries",
+      "prompt": "16-bit pixel art RPG scene, interior of a vast gothic cathedral transformed into a hall of European history — towering stained glass windows casting colored light across stone floors, a massive Renaissance globe and antique maps on a carved wooden table in the foreground, a royal throne draped in ermine on the left, crossed swords and a quill pen on an ornate desk, fragments of classical marble columns and arched doorways receding into darkness, candelabras with flickering pixel flames, JRPG dungeon tileset aesthetic, rich pixel detail, deep royal blue burnished gold and crimson palette, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 23902092,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1838750092,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 4092838718,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     }
   ],
   "enemy_power_icons": [

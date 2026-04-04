@@ -211,6 +211,27 @@
     "ageRating": "teen",
     "categoryL2": "inventions_tech"
   },
+  "ap_biology": {
+    "domain": "natural_sciences",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "ageRating": "teen",
+    "categoryL2": "biology_life"
+  },
+  "ap_chemistry": {
+    "domain": "natural_sciences",
+    "prefixSegments": 2,
+    "entitySegments": 2,
+    "ageRating": "teen",
+    "categoryL2": "chemistry_elements"
+  },
+  "ap_psychology": {
+    "domain": "human_body_health",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "ageRating": "teen",
+    "categoryL2": "psychology_mind"
+  },
   "ap_european_history": {
     "domain": "history",
     "prefixSegments": 3,
