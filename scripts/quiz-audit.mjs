@@ -100,10 +100,19 @@ function checkFact(fact, poolFacts, allPools, deck) {
     issues.push({ severity: 'WARN', type: 'answer_long', detail: `Answer ${correctLen} chars: "${correct.slice(0, 60)}..."` });
   }
 
-  // Build distractor pool: other facts in same pool
-  const poolDistractors = poolFacts
-    .filter(f => f.id !== fact.id)
-    .map(f => displayAnswer(f.correctAnswer));
+  // Build distractor pool: other facts in same pool, deduplicated by answer text.
+  // This mirrors game runtime behavior (getPoolDistractors uses a usedAnswers Set to
+  // prevent duplicate distractors from pool members sharing the same answer).
+  const seenPoolAnswers = new Set([correct.toLowerCase().trim()]);
+  const poolDistractors = [];
+  for (const f of poolFacts) {
+    if (f.id === fact.id) continue;
+    const ans = displayAnswer(f.correctAnswer);
+    const ansNorm = ans.toLowerCase().trim();
+    if (seenPoolAnswers.has(ansNorm)) continue;
+    seenPoolAnswers.add(ansNorm);
+    poolDistractors.push(ans);
+  }
 
   // Also include synthetic distractors from the pool
   const pool = allPools.find(p => p.id === fact.answerTypePoolId);
@@ -124,7 +133,7 @@ function checkFact(fact, poolFacts, allPools, deck) {
   const rand = makePrng(fact.id.split('').reduce((a, c) => a + c.charCodeAt(0), 0));
   let picked = [];
 
-  // First from pool (other facts' answers)
+  // First from pool (other facts' answers, already deduplicated by answer text)
   const shuffledPool = shuffle([...poolDistractors], rand);
   picked.push(...shuffledPool.slice(0, 3));
 
