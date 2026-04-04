@@ -260,11 +260,11 @@
     <span class="floor-label">Floor {currentFloor}</span>
 
     <!-- Gold -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <div class="gold-counter" aria-label="Gold: {currency}"
+    <div class="gold-counter" role="button" tabindex="0" aria-label="Gold: {currency}"
       onmouseenter={() => { goldTooltipOpen = true }}
       onmouseleave={() => { goldTooltipOpen = false }}
       onclick={() => { goldTooltipOpen = !goldTooltipOpen }}
+      onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') goldTooltipOpen = !goldTooltipOpen }}
     >
       <img class="gold-icon-img" src={getGoldCoinIconPath()} alt="" aria-hidden="true" />
       <span class="gold-value">{currency}</span>
@@ -336,9 +336,9 @@
 {#if fogState !== undefined}
   {@const fl = fogLevel ?? 0}
   {@const displayFl = fl - 5}
-  <!-- svelte-ignore a11y_no_static_element_interactions -->
-  <div class="fog-wing-wrapper" class:fog-wing-danger={fogState === 'brain_fog'} class:fog-wing-flow={fogState === 'flow_state'}
+  <div class="fog-wing-wrapper" role="button" tabindex="0" aria-label="Focus meter" class:fog-wing-danger={fogState === 'brain_fog'} class:fog-wing-flow={fogState === 'flow_state'}
     onclick={() => { fogTooltipOpen = !fogTooltipOpen }}
+    onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') fogTooltipOpen = !fogTooltipOpen }}
     onmouseenter={() => { fogTooltipOpen = true }}
     onmouseleave={() => { fogTooltipOpen = false }}
   >

@@ -299,7 +299,7 @@
       {/if}
 
       <div class="domain-grid">
-        {#each domainSummaries as summary}
+        {#each domainSummaries.filter(s => s.totalFacts > 0) as summary}
           <button class="domain-card" data-domain={summary.domain} style="--domain-accent: {domainAccentColor(summary.domain)}" onclick={() => { selectedDomain = summary.domain; selectedSubcategory = null; }}>
             <div class="domain-row">
               <strong>{getDomainMetadata(summary.domain).shortName}</strong>

@@ -148,11 +148,12 @@
     </aside>
 
     <nav class="category-nav">
-      <button class="category-btn back-to-hub" onclick={() => { playCardAudio('modal-close'); onback() }}>← Back</button>
+      <button class="category-btn back-to-hub" data-testid="btn-settings-back" onclick={() => { playCardAudio('modal-close'); onback() }}>← Back</button>
       {#each categories as cat}
         <button
           class="category-btn"
           class:active={activeCategory === cat.id}
+          data-testid="btn-settings-{cat.id}"
           onclick={() => { activeCategory = cat.id }}
         >{cat.label}</button>
       {/each}
@@ -352,7 +353,7 @@
   <div class="settings-card">
     <div class="settings-header">
       <h2>Settings</h2>
-      <button class="back-btn" onclick={() => { playCardAudio('modal-close'); onback() }}>Back</button>
+      <button class="back-btn" data-testid="btn-settings-back" onclick={() => { playCardAudio('modal-close'); onback() }}>Back</button>
     </div>
 
     {#if false}
