@@ -155,7 +155,7 @@
     },
     {
       "id": "myth_norse_odin_ravens",
-      "correctAnswer": "Huginn and Muninn",
+      "correctAnswer": "Huginn",
       "acceptableAlternatives": [
         "Huginn & Muninn",
         "Hugin and Munin"
@@ -175,7 +175,7 @@
         "Huginn and Geri",
         "Muninn and Freki"
       ],
-      "quizQuestion": "What are the names of Odin's two ravens who fly across the world to gather information for him?",
+      "quizQuestion": "Which of Odin's two ravens is the one whose name means 'Thought'?",
       "explanation": "Each dawn Huginn and Muninn launch from Odin's shoulders and spend the day flying across all nine worlds — from the frost of Niflheim to the fires of Muspelheim — returning at dusk to perch and whisper everything they have witnessed into his ears. Huginn means 'thought' and Muninn means 'memory,' together embodying the Allfather's omniscient intellect. Odin once confessed his deepest anxiety: he worries less about Huginn not returning, and more about losing Muninn — for losing memory is worse than losing thought.",
       "statement": "Odin's ravens Huginn (Thought) and Muninn (Memory) fly the nine worlds each day and whisper all they see into his ears.",
       "wowFactor": "Odin admits in the Eddas that he fears losing Muninn — Memory — more than Huginn — Thought. The god of wisdom fears forgetting more than he fears losing the capacity to think. It is the most quietly human anxiety in all of Norse mythology.",
@@ -602,13 +602,13 @@
     },
     {
       "id": "myth_norse_thor_goats",
-      "correctAnswer": "Tanngrisnir and Tanngnjóstr",
+      "correctAnswer": "Tanngrisnir",
       "acceptableAlternatives": [
         "Tanngrisnir and Tanngnjóstr",
         "Tanngrisnir & Tanngnjóstr"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "creature_names",
+      "answerTypePoolId": "object_names",
       "difficulty": 4,
       "funScore": 10,
       "ageGroup": "all",
@@ -622,7 +622,7 @@
         "Audhumla and Ymir",
         "Hrungnir and Bergelmir"
       ],
-      "quizQuestion": "What are the names of the two magical goats that pull Thor's chariot and can be eaten and resurrected?",
+      "quizQuestion": "What is the name of the first of Thor's two magical resurrection goats?",
       "explanation": "Tanngrisnir ('Teeth-Grinder') and Tanngnjóstr ('Teeth-Barer') are divine goats that make Thor's chariot rumble across the sky — their hooves on the clouds create thunder. Thor can slaughter and eat them each evening for sustenance, then lay the bones on their skins and hallow them with Mjölnir, and they resurrect whole the following morning. The only rule: no broken bones. One farming family learned this rule the hard way, and their son paid for his marrow-cracking by serving Thor as a thrall — a story expanded in Thor's Adventures sub-deck.",
       "statement": "Thor's goats Tanngrisnir and Tanngnjóstr pull his storm-chariot and can be eaten nightly and resurrected each dawn — as long as no bones are cracked.",
       "wowFactor": "The thunder you hear during a Norse storm is Thor's two goats galloping across the sky in their chariot. The Vikings had a remarkably specific explanation for one of nature's most frightening sounds: it's two magical dinner-goats going for a trot.",
@@ -903,7 +903,7 @@
     },
     {
       "id": "myth_norse_loki_children",
-      "correctAnswer": "Hel, Fenrir, and Jörmungandr",
+      "correctAnswer": "Fenrir",
       "acceptableAlternatives": [
         "Hel, Fenrir, and Jormungandr",
         "Fenrir, Hel, and Jormungandr"
@@ -923,7 +923,7 @@
         "Jormungandr, Skoll, and Garm",
         "Hel, Surtr, and Fenrir"
       ],
-      "quizQuestion": "Which trio of monstrous beings are Loki's children by the giantess Angrboða?",
+      "quizQuestion": "By the giantess Angrboða, Loki fathered three monsters. Which was the great wolf?",
       "explanation": "Loki's union with the giantess Angrboða produced three children whose fates were so alarming that the Æsir forcibly separated them: Odin cast Hel into Niflheim to rule the dead, hurled Jörmungandr into the ocean encircling Midgard, and brought Fenrir to Asgard to be watched — a solution that proved catastrophically insufficient. Tyr lost his hand binding Fenrir in the Creatures sub-deck. At Ragnarök, Loki's three children collectively kill Odin, Thor, and Tyr — the trickster becomes, through his offspring, the destroyer of the three greatest gods.",
       "statement": "Loki's three children by the giantess Angrboða — Hel, Fenrir, and Jörmungandr — will collectively kill Odin, Thor, and Tyr at Ragnarök.",
       "wowFactor": "Loki has technically already won. His three children by Angrboða are prophesied to kill Odin (Fenrir), Thor (Jörmungandr), and Tyr (Garm, from Hel's realm). The trickster who was never quite trusted, never quite expelled, will end the age of gods through his bloodline alone — without even lifting a finger himself until he breaks free at Ragnarök.",
@@ -3206,7 +3206,7 @@
     },
     {
       "id": "myth_norse_hel_appearance",
-      "correctAnswer": "Half blue, half flesh-coloured",
+      "correctAnswer": "Half blue",
       "acceptableAlternatives": [
         "Half-dead, half-living",
         "Half blue and half normal skin"
@@ -3640,7 +3640,7 @@
     },
     {
       "id": "myth_norse_realm_yggdrasil_wells",
-      "correctAnswer": "Three",
+      "correctAnswer": "{3}",
       "acceptableAlternatives": [
         "3"
       ],
@@ -4535,7 +4535,7 @@
     },
     {
       "id": "myth_norse_creation_world_body",
-      "correctAnswer": "Flesh became earth",
+      "correctAnswer": "The earth",
       "acceptableAlternatives": [
         "His flesh became the earth",
         "Flesh to earth"
@@ -4602,7 +4602,7 @@
     },
     {
       "id": "myth_norse_creation_ask_embla",
-      "correctAnswer": "Ask and Embla",
+      "correctAnswer": "Ask, Embla",
       "acceptableAlternatives": [
         "Askr and Embla",
         "Ask and Embla (the first humans)"
@@ -4658,7 +4658,7 @@
     },
     {
       "id": "myth_norse_creation_aesir_vanir_war",
-      "correctAnswer": "Aesir-Vanir War",
+      "correctAnswer": "Aesir-Vanir",
       "acceptableAlternatives": [
         "The war between Aesir and Vanir"
       ],
@@ -4825,12 +4825,12 @@
     },
     {
       "id": "myth_norse_ragnarok_skoll_hati",
-      "correctAnswer": "Skoll and Hati",
+      "correctAnswer": "Skoll, Hati",
       "acceptableAlternatives": [
         "Hati and Skoll"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "creature_names",
+      "answerTypePoolId": "object_names",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -5332,7 +5332,7 @@
     },
     {
       "id": "myth_norse_ragnarok_heimdall_loki",
-      "correctAnswer": "Heimdall and Loki",
+      "correctAnswer": "Heimdall",
       "acceptableAlternatives": [
         "Loki and Heimdall"
       ],
@@ -5351,7 +5351,7 @@
         "Baldur and Hodr",
         "Freya and Loki"
       ],
-      "quizQuestion": "Which two gods kill each other simultaneously at Ragnarok — the watchman of the gods and the trickster?",
+      "quizQuestion": "Which god killed Loki in mutual combat at Ragnarök?",
       "explanation": "Heimdall and Loki are ancient enemies whose conflict represents the fundamental Norse tension between order and chaos. Before Ragnarok, they had already fought once — transformed as seals beneath the sea, wrestling over the Brisingamen necklace that Loki had stolen from Freyja, covered in the Aesir & Vanir sub-deck. Heimdall retrieved it; the enmity deepened. Loki spent subsequent ages bound beneath a mountain after orchestrating Baldur's death, the venom of a serpent dripping onto his face. When he breaks free at Ragnarok and takes command of Naglfar, Heimdall — who has watched from Bifrost's end since the beginning — meets him for the last time.",
       "statement": "Heimdall — the eternal watchman who guarded Bifrost — and Loki — the trickster who brought Ragnarok about — kill each other simultaneously at the final battle, ending an enmity that stretched back to a fight over Freyja's necklace.",
       "wowFactor": "Their pre-Ragnarok seal fight is one of the most bizarre combats in Norse mythology: the god of perfect senses and the master of shapeshifting, both transformed into marine mammals, wrestling at the bottom of the sea over a necklace. The Eddas treat it as entirely ordinary. In Norse mythology, gods transforming into animals to fight over jewelry is just something that happens.",
@@ -5506,12 +5506,12 @@
     },
     {
       "id": "myth_norse_ragnarok_lif_lifthrasir",
-      "correctAnswer": "Lif and Lifthrasir",
+      "correctAnswer": "Lif, Lifthrasir",
       "acceptableAlternatives": [
         "Líf and Lífthrasir"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "object_names",
+      "answerTypePoolId": "hero_names",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -6053,7 +6053,7 @@
     },
     {
       "id": "myth_norse_sleipnir_legs",
-      "correctAnswer": "Eight",
+      "correctAnswer": "{8}",
       "acceptableAlternatives": [
         "8"
       ],
@@ -6203,7 +6203,7 @@
     },
     {
       "id": "myth_norse_huginn_muninn_meaning",
-      "correctAnswer": "Thought and Memory",
+      "correctAnswer": "Thought",
       "acceptableAlternatives": [
         "Thought and Mind",
         "Huginn means Thought, Muninn means Memory"
@@ -6223,7 +6223,7 @@
         "Night and Day",
         "Wisdom and Power"
       ],
-      "quizQuestion": "What do the names Huginn and Muninn mean in Old Norse?",
+      "quizQuestion": "Odin's raven Huginn means what in Old Norse?",
       "explanation": "Even seated on Hliðskjálf — the high throne from which Odin can see all nine worlds — the Allfather still sends Huginn and Muninn out each morning to fly across every realm and return at dusk with whispered reports. Their names encode his nature: Huginn is active cognition, the thinking-forward mind; Muninn is retention, the accumulated weight of everything witnessed. In the Grímnismál, Odin admits he worries more about Muninn not returning than Huginn. He fears losing his memory more than his thoughts — a quietly devastating anxiety about identity and continuity found nowhere else in Norse myth.",
       "statement": "Huginn means 'Thought' and Muninn means 'Memory' — together they embody the two pillars of Odin's divine intelligence, sent out each dawn to gather what no throne can see.",
       "wowFactor": "The god of wisdom fears forgetting. Not death. Not Ragnarök. Not the wolf that will swallow him. Of everything in the cosmos, what Odin dreads most is losing his memory — as if all his wisdom, all his sacrifice, all his terrible foresight, is only as durable as the raven that carries it home each evening.",
@@ -6569,7 +6569,7 @@
     },
     {
       "id": "myth_norse_hati_skoll_chase",
-      "correctAnswer": "The sun and the moon",
+      "correctAnswer": "Sun and moon",
       "acceptableAlternatives": [
         "the sun and moon",
         "Sol and Mani"
@@ -6875,7 +6875,7 @@
     },
     {
       "id": "myth_norse_troll_sunlight",
-      "correctAnswer": "Turns to stone",
+      "correctAnswer": "Petrifies it",
       "acceptableAlternatives": [
         "petrified",
         "becomes stone",
@@ -6896,7 +6896,7 @@
         "Disintegrates",
         "Falls into deep sleep"
       ],
-      "quizQuestion": "In Norse folklore, what happens to a troll caught in direct sunlight?",
+      "quizQuestion": "In Norse folklore, direct sunlight does what to a troll?",
       "explanation": "Trolls in Norse tradition are creatures of darkness, cold, and chaos — associated with the wilder, less human-ordered aspects of the landscape. Their petrification in sunlight explains the granite giants and strange outcroppings that dot the Scandinavian landscape; every unusual rock formation was a potential troll who had overstayed the night. The belief persists powerfully into modern fantasy: Tolkien's three trolls Bert, Tom, and William in The Hobbit are turned to stone by sunrise, a direct inheritance from Norse and Scandinavian tradition. The landscape itself became a mythology text.",
       "statement": "In Norse folklore, trolls turn to stone in direct sunlight — which is why Scandinavia is full of unusual rock formations that the Norse recognized as trolls caught out after dawn.",
       "wowFactor": "Thousands of place names across Scandinavia reference trolls — Trollhättan ('Troll's Hood'), Trollfjord, Trollheimen ('Home of the Trolls'). The Norse didn't just tell stories about trolls; they named their geography after them, building a landscape where mythology was permanently visible in the stones around you. Walking through Norway was walking through a story.",
@@ -6919,7 +6919,7 @@
     },
     {
       "id": "myth_norse_gleipnir_ingredients",
-      "correctAnswer": "The sound of a cat's footfall",
+      "correctAnswer": "Cat's paw",
       "acceptableAlternatives": [
         "cat's footfall",
         "sound of a cat walking"
@@ -6964,13 +6964,13 @@
     },
     {
       "id": "myth_norse_jormungandr_siblings",
-      "correctAnswer": "Hel and Fenrir",
+      "correctAnswer": "Hel, Fenrir",
       "acceptableAlternatives": [
         "Fenrir and Hel",
         "Hel, Fenrir"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "god_names",
+      "answerTypePoolId": "object_names",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -7093,7 +7093,7 @@
     },
     {
       "id": "myth_norse_fenrir_siblings_exile",
-      "correctAnswer": "Cast into the ocean",
+      "correctAnswer": "Into the sea",
       "acceptableAlternatives": [
         "thrown into the ocean",
         "tossed into the sea"
@@ -7252,7 +7252,7 @@
     },
     {
       "id": "myth_norse_sigurd_blood",
-      "correctAnswer": "Understand birds",
+      "correctAnswer": "Bird speech",
       "acceptableAlternatives": [
         "Understand the language of birds",
         "Speak to birds"
@@ -7524,7 +7524,7 @@
     },
     {
       "id": "myth_norse_valkyrie_role",
-      "correctAnswer": "Choose which warriors die in battle",
+      "correctAnswer": "Valkyries",
       "acceptableAlternatives": [
         "Choose the slain",
         "Decide who dies in battle"
@@ -7542,7 +7542,7 @@
         "Train warriors in Valhalla",
         "Brew the mead of poetry"
       ],
-      "quizQuestion": "What was the primary duty of the Valkyries on a battlefield?",
+      "quizQuestion": "What are the beings who choose which warriors die on the battlefield and escort souls to Valhalla called?",
       "explanation": "The word Valkyrie means 'chooser of the slain' in Old Norse, and that word 'chooser' is doing real work: the Valkyries were not passive recorders but active participants in warfare, riding through battles and deciding which warriors would die and which would survive. The chosen dead were brought to Odin in Valhalla to join the Einherjar — the army of the honoured dead training eternally for Ragnarok. It was precisely this power that got Brynhild punished: she made the wrong choice, backing the warrior Odin had decided should lose, and he put her to sleep on a mountain surrounded by fire as her sentence.",
       "statement": "Valkyries were Odin's battlefield agents — they did not merely observe which warriors fell but chose which side would lose, turning the tide of battles to deliver specific souls to Valhalla.",
       "wowFactor": "The Valkyries' job was to ensure that the right warriors died. Not all warriors — specific ones. They picked winners and losers on purpose, building Odin's army of the dead one carefully selected corpse at a time. The concept of honorable death in battle was not a consolation — it was a recruitment strategy.",
@@ -7587,7 +7587,7 @@
     },
     {
       "id": "myth_norse_valkyrie_valhalla",
-      "correctAnswer": "Serve mead to the Einherjar",
+      "correctAnswer": "Serve mead",
       "acceptableAlternatives": [
         "Serve the einherjar",
         "Pour mead in Valhalla"
@@ -7638,7 +7638,7 @@
     },
     {
       "id": "myth_norse_volsunga_sigmund",
-      "correctAnswer": "Pulled a sword from a tree",
+      "correctAnswer": "Sigmund",
       "acceptableAlternatives": [
         "Drew a sword from a tree trunk",
         "Pulled Gram from a tree"
@@ -7655,7 +7655,7 @@
         "Lifted Thor's hammer",
         "Swam across the world sea"
       ],
-      "quizQuestion": "In the Volsunga Saga, what feat did Sigmund perform that proved him worthy above all other warriors?",
+      "quizQuestion": "Who alone drew Odin's sword from the Barnstokkr tree in the Volsunga Saga?",
       "explanation": "King Volsung had built his great hall around the living tree Barnstokkr, its branches growing through the roof. At a wedding feast, an old man in a wide-brimmed hat appeared that no one had invited, thrust a sword into the tree up to its hilt, announced his gift to whoever proved worthy, and vanished. Every king, earl, and warrior in the hall tried the sword. None could move it. Sigmund was last, and it slid free in his hand as if it had been waiting. The moment established the Volsung dynasty as destined for greatness — and for tragedy. The same sword would eventually be shattered by the same god who placed it there, on the day Odin decided Sigmund had run his course.",
       "statement": "Odin appeared uninvited at a feast, drove a sword into the king's living tree, and declared it a gift for whoever could draw it — only Sigmund, the king's son, could.",
       "wowFactor": "This scene is the oldest known version of the sword-in-the-stone motif in Western literature — predating the Arthurian cycle. The Norse version is more brutal: the old man who plants the sword is Odin, who gives it knowing he will take it back when the time comes. The gift is always also a future instrument of death.",
@@ -7738,7 +7738,7 @@
     },
     {
       "id": "myth_norse_berserker",
-      "correctAnswer": "Warriors who fought in a trance-like battle fury",
+      "correctAnswer": "Berserkers",
       "acceptableAlternatives": [
         "Frenzied warriors",
         "Viking warriors in battle fury"
@@ -7756,7 +7756,7 @@
         "Rune-carvers who served as scribes",
         "Elite archers stationed on longships"
       ],
-      "quizQuestion": "In Norse tradition, what were 'berserkers'?",
+      "quizQuestion": "What were Norse warriors who wore bear or wolf skins and fought in a trance-like fury called?",
       "explanation": "Snorri Sturluson describes berserkers in the Ynglinga saga as men who fought without armor, howled like wolves, bit their own shields, and were impervious to iron and fire in their frenzy. They were associated directly with Odin — the Allfather who hangs dead on a tree to gain power would naturally attract warriors who traded sanity for strength. The word berserkr most likely means 'bear-shirt,' from the bear skins they wore, though some scholars read it as 'bare-shirt,' meaning they fought without mail. Their frenzy state, berserkergang, was potentially induced through ritual, hyperventilation, or psychoactive substances. Iceland outlawed them in 1015 CE.",
       "statement": "Berserkers were Norse warriors who entered a trance of battle-fury so complete they felt no pain, feared nothing, and reportedly fought with the strength of bears — their name literally means 'bear-shirt.'",
       "wowFactor": "The word 'berserk' — meaning wildly out of control — has been in continuous use in English since the Norse berserkers were active a thousand years ago. It comes from warriors who literally bit their own shields to trigger a fighting trance, were outlawed by a medieval government, and whose legacy is now mostly invoked to describe toddlers in toy stores.",
@@ -8187,7 +8187,7 @@
     },
     {
       "id": "myth_norse_baldur_release",
-      "correctAnswer": "Thökk (Loki in disguise)",
+      "correctAnswer": "Thökk",
       "acceptableAlternatives": [
         "Thokk",
         "Loki disguised as Thökk"
@@ -8278,7 +8278,7 @@
     },
     {
       "id": "myth_norse_loki_punishment",
-      "correctAnswer": "His son's entrails",
+      "correctAnswer": "Entrails",
       "acceptableAlternatives": [
         "Entrails of his son Narfi",
         "His son Narfi's guts"
@@ -8390,7 +8390,7 @@
     },
     {
       "id": "myth_norse_odin_runes",
-      "correctAnswer": "Nine nights hanging on Yggdrasil",
+      "correctAnswer": "Nine nights",
       "acceptableAlternatives": [
         "Hanging on the world tree for nine days",
         "Nine days on Yggdrasil"
@@ -8514,7 +8514,7 @@
     },
     {
       "id": "myth_norse_norns",
-      "correctAnswer": "Urd, Verdandi, and Skuld",
+      "correctAnswer": "Urd",
       "acceptableAlternatives": [
         "Urð, Verðandi, Skuld",
         "The three Norns"
@@ -8531,7 +8531,7 @@
         "Sigyn, Sif, and Idunn",
         "The three daughters of Mimir"
       ],
-      "quizQuestion": "What were the names of the three Norns — the female beings who controlled the destiny of gods and humans?",
+      "quizQuestion": "The eldest of the three Norns, associated with the past, was named what?",
       "explanation": "Urðr ('What Has Been'), Verðandi ('What Is Becoming'), and Skuld ('What Shall Be') embody the three dimensions of time and the structure of fate itself. They live at the Well of Urðr beneath Yggdrasil's deepest root, drawing sacred water and white clay to tend the tree daily. They carve the fates of all beings into the tree's bark — each day's carving a record of what will happen, not what might. Odin rides across the Bifrost to hold council at their well. Thor does the same. The most powerful beings in the Norse cosmos begin each day by reporting to three women at a well who carve their futures in bark. The Norns answer to no authority above them.",
       "statement": "The three Norns — Urðr, Verðandi, and Skuld — weave the fates of gods and humans alike from their well beneath Yggdrasil, and their authority exceeds even Odin's.",
       "wowFactor": "The Greek Fates spin, measure, and cut a thread. The Norse Norns carve fate into the bark of the tree that holds the universe together — not a thread but a permanent record in living wood. In Norse cosmology, fate is not delicate and cuttable but structural and inescapable, written into the architecture of existence itself.",
@@ -8576,7 +8576,7 @@
     },
     {
       "id": "myth_norse_runes_magic",
-      "correctAnswer": "Magic, divination, and writing",
+      "correctAnswer": "Magic, runes",
       "acceptableAlternatives": [
         "Writing and magic",
         "Spells and writing"
@@ -8678,7 +8678,7 @@
     },
     {
       "id": "myth_norse_einherjar",
-      "correctAnswer": "Fight daily, feast nightly, train for Ragnarok",
+      "correctAnswer": "Einherjar",
       "acceptableAlternatives": [
         "Train for Ragnarok",
         "Battle and feast in Valhalla",
@@ -8696,7 +8696,7 @@
         "Serve as crew on Odin's ship Naglfar",
         "Carry the sun and moon across the sky"
       ],
-      "quizQuestion": "What was the daily existence of the Einherjar — the warriors chosen to live in Valhalla?",
+      "quizQuestion": "What were the chosen warriors in Valhalla called, who fought daily, feasted nightly, and trained for Ragnarök?",
       "explanation": "Valhöll is not paradise — it is a military training facility operating under the cover of paradise. The einherjar fight on the plain of Ídavöllr each day in battles as real as any in Midgard — wounds are genuine, death is genuine. Then they are fully healed each evening. They eat the magical boar Sæhrímnir, which is likewise slaughtered and resurrected daily by the cook Andhrímnir, and drink mead produced by the goat Heiðrún. Valkyries serve them. But Odin collects these dead warriors for one reason: the army he needs to matter at Ragnarök. The feasting is real. The preparation is more real. Valhöll has 540 doors, each wide enough for 800 men abreast, designed so the einherjar can pour out in maximum numbers when the wolf's chains snap.",
       "statement": "The einherjar — chosen dead in Valhöll — fight each other every day, die every day, heal every evening, and feast every night, training eternally for a battle Odin knows is coming.",
       "wowFactor": "Valhöll has 540 doors and each can emit 800 warriors simultaneously — Odin calculated how many men need to exit how fast to have any strategic value when Ragnarök begins. The entire architecture of paradise is military engineering. The mead and the roasted boar are real, but they are also logistics: keep the army fed, healed, and motivated for as long as it takes.",
@@ -8799,7 +8799,7 @@
     },
     {
       "id": "myth_norse_odin_name",
-      "correctAnswer": "Lord of frenzy",
+      "correctAnswer": "Frenzy",
       "acceptableAlternatives": [
         "Master of frenzy",
         "Frenzy lord"
@@ -8817,7 +8817,7 @@
         "Rune-master",
         "Sky-father"
       ],
-      "quizQuestion": "The name 'Odin' (Old Norse: Óðinn) derives from a root meaning what?",
+      "quizQuestion": "The name Odin (Óðinn) derives from a word meaning what?",
       "explanation": "Óðinn derives from the Proto-Germanic root *wōðaz — related to Old Norse óðr, meaning 'frenzy, fury, inspiration, poetry.' English Wednesday preserves his Germanic name: Wōden's day. Odin is therefore not primarily a god of wisdom in the serene sense but of wisdom achieved through a particular kind of intensity — the berserker's battle-fury, the skald's inspired composition, the shamanic trance of seidr. All three of these states were called óðr or related to it. His ravens, his wolves, his constant movement and disguise, his willingness to sacrifice everything for knowledge — these are not the behaviors of a calm wise man but of someone driven by a frenzy that only more knowledge can satisfy.",
       "statement": "The name Odin derives from Old Norse óðr, meaning 'frenzy' or 'fury' — making the king of the gods literally 'lord of frenzy,' a title that unites his three domains of battle-madness, poetic inspiration, and shamanic trance.",
       "wowFactor": "Every time anyone says 'Wednesday' in English, they invoke a one-eyed Norse god of battle-madness who sacrificed his eye for wisdom, hung from a tree for nine days to learn magic, and fills a hall of dead warriors with mead while waiting for the wolf that will swallow him. The calendar contains gods. Every week you speak their names.",
@@ -8850,7 +8850,7 @@
     },
     {
       "id": "myth_norse_loki_baldur_trick",
-      "correctAnswer": "He told Höðr how to aim the dart",
+      "correctAnswer": "Loki",
       "acceptableAlternatives": [
         "He guided Höðr's hand",
         "He gave Höðr the mistletoe and guided his throw"
@@ -8866,7 +8866,7 @@
         "He bribed the mistletoe to break its oath",
         "He created an illusion of Baldur to confuse the gods"
       ],
-      "quizQuestion": "Since Höðr was blind, how did Loki ensure Höðr's mistletoe dart actually hit and killed Baldur?",
+      "quizQuestion": "Who secretly guided the blind god Höðr to throw the mistletoe dart that killed Baldur?",
       "explanation": "Höðr was excluded from the game of hurling things at Baldur because his blindness made the sport awkward and potentially unsafe. Loki approached him specifically because of that exclusion — Höðr was isolated, ignored, and eager to participate. Loki placed the mistletoe dart in his hand, offered to guide his aim, described it as a chance to join the sport. Höðr threw in good faith and killed his brother without understanding what was in his hand or why it bypassed the protection that had stopped everything else. The gods did not punish Höðr — he was a victim of Loki's manipulation as thoroughly as Baldur. Víðarr's vengeance for Odin at Ragnarök and Baldur's return in the new world are the two moments when cosmic justice resumes, both covered in the Aesir and Creation & Ragnarök sub-decks.",
       "statement": "Loki fashioned the mistletoe dart, found the blind god Höðr excluded from the game, offered to help him participate, and guided his hand to aim at his own brother — knowing exactly what would happen.",
       "wowFactor": "Loki's manipulation of Höðr is designed to make blame impossible to assign clearly. Höðr threw the dart. Loki guided the throw. Frigg forgot the mistletoe. The Norse preserved the ambiguity: Baldur is dead, and there is no single clearly guilty party. Cosmic tragedy in Norse myth is rarely the product of one villain but of a chain of small failures and exploited vulnerabilities.",
@@ -9923,13 +9923,13 @@
     },
     {
       "id": "myth_norse_thor_goats_chariot",
-      "correctAnswer": "Tanngrisnir and Tanngnjóstr",
+      "correctAnswer": "Tanngrisnir",
       "acceptableAlternatives": [
         "Tanngrisnir and Tanngnjostr",
         "Thor's goats"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "creature_names",
+      "answerTypePoolId": "object_names",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -9943,7 +9943,7 @@
         "Geri and Freki",
         "Arvak and Alsvid"
       ],
-      "quizQuestion": "What are the names of the two goats that pull Thor's chariot?",
+      "quizQuestion": "Which goat (paired with Tanngnjóstr) pulls Thor's chariot?",
       "explanation": "Tanngrisnir ('teeth-barer') and Tanngnjóstr ('teeth-grinder') appear in both the Poetic Edda and the Prose Edda as Thor's goat companions and the power source of his chariot. Their names describe the particular sound of the storm: the gnashing, grinding percussion of thunder overhead. In Norse cosmology, natural phenomena were not abstract forces but entities — the thunder is not caused by atmospheric pressure but by hooves. The goats are attested in the tenth-century skaldic poem Þórsdrápa and are the reason Thjalfi and his sister Röskva became Thor's servants: they ate from the goats at Thor's invitation, but Thjalfi broke a thigh bone to reach the marrow, and one goat rose permanently lame when Thor resurrected them.",
       "statement": "Thor's chariot is pulled by two immortal goats named Teeth-Barer and Teeth-Grinder, and their hoofbeats across the sky are the sound of thunder.",
       "wowFactor": "The Norse heard thunder and understood it as specific: those are Thor's goats, named, running. The storm had a sound, and the sound had two names, and the names described gnashing teeth. Every thunderstorm in Viking-age Scandinavia was an identified event with known participants.",
@@ -13468,14 +13468,14 @@
     },
     {
       "id": "myth_norse_creation_sun_moon_wolves",
-      "correctAnswer": "Skoll and Hati",
+      "correctAnswer": "Skoll, Hati",
       "acceptableAlternatives": [
         "Skoll",
         "Hati",
         "Sköll and Hati"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "creature_names",
+      "answerTypePoolId": "object_names",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -13849,7 +13849,7 @@
     },
     {
       "id": "myth_norse_ragnarok_golden_pieces",
-      "correctAnswer": "Golden playing pieces",
+      "correctAnswer": "Gold pieces",
       "acceptableAlternatives": [
         "golden game pieces",
         "gold pieces",
@@ -14983,7 +14983,6 @@
         "myth_norse_huginn_muninn_role",
         "myth_norse_surtr_fire_sword",
         "myth_norse_dwarves_sif_hair",
-        "myth_norse_jormungandr_siblings",
         "myth_norse_baldur_release",
         "myth_norse_baldur_dreams",
         "myth_norse_norns",
@@ -15016,7 +15015,6 @@
       "factIds": [
         "myth_norse_odin_ravens",
         "myth_norse_odin_ragnarok_fenrir",
-        "myth_norse_thor_goats",
         "myth_norse_thor_ragnarok_jormungandr",
         "myth_norse_loki_children",
         "myth_norse_loki_sleipnir",
@@ -15025,7 +15023,6 @@
         "myth_norse_vidar_avenge_odin",
         "myth_norse_realm_yggdrasil_creatures",
         "myth_norse_creation_audhumla",
-        "myth_norse_ragnarok_skoll_hati",
         "myth_norse_ragnarok_fenrir",
         "myth_norse_ragnarok_jormungandr",
         "myth_norse_huginn_muninn_meaning",
@@ -15038,13 +15035,11 @@
         "myth_norse_thor_fishing",
         "myth_norse_thor_utgard_cat",
         "myth_norse_thor_fishing_hook",
-        "myth_norse_thor_goats_chariot",
         "myth_norse_fafnir_dwarf_origin",
         "myth_norse_fafnir_dragon_greed",
         "myth_norse_draugr_burial",
         "myth_norse_kraken_origin",
         "myth_norse_jormungandr_ouroboros",
-        "myth_norse_creation_sun_moon_wolves",
         "myth_norse_creation_dwarves_maggots",
         "myth_norse_ragnarok_fenrir_jaws",
         "myth_norse_loki_svadilfari",
@@ -15086,6 +15081,7 @@
       "label": "Hero Names",
       "answerFormat": "name",
       "factIds": [
+        "myth_norse_ragnarok_lif_lifthrasir",
         "myth_norse_sigurd_regin",
         "myth_norse_sigurd_brynhild",
         "myth_norse_sigurd_german",
@@ -15117,6 +15113,7 @@
       "answerFormat": "name",
       "factIds": [
         "myth_norse_thor_thunder_hammer",
+        "myth_norse_thor_goats",
         "myth_norse_thor_belt_gloves",
         "myth_norse_freyja_brisingamen",
         "myth_norse_tyr_tuesday",
@@ -15126,10 +15123,18 @@
         "myth_norse_idunn_gods_aged",
         "myth_norse_hel_appearance",
         "myth_norse_realm_yggdrasil_tree",
+        "myth_norse_realm_yggdrasil_wells",
         "myth_norse_realm_bifrost_bridge",
         "myth_norse_creation_ginnungagap",
+        "myth_norse_creation_world_body",
+        "myth_norse_creation_ask_embla",
+        "myth_norse_creation_aesir_vanir_war",
+        "myth_norse_ragnarok_overview",
+        "myth_norse_ragnarok_fimbulwinter",
+        "myth_norse_ragnarok_skoll_hati",
         "myth_norse_ragnarok_naglfar",
         "myth_norse_ragnarok_gjallarhorn",
+        "myth_norse_ragnarok_thor_death",
         "myth_norse_fenrir_binding",
         "myth_norse_jormungandr_size",
         "myth_norse_jormungandr_ragnarok",
@@ -15140,6 +15145,7 @@
         "myth_norse_thor_goats_resurrect",
         "myth_norse_troll_sunlight",
         "myth_norse_gleipnir_ingredients",
+        "myth_norse_jormungandr_siblings",
         "myth_norse_dwarves_artifacts",
         "myth_norse_fenrir_siblings_exile",
         "myth_norse_sigurd_blood",
@@ -15157,6 +15163,7 @@
         "myth_norse_seidr",
         "myth_norse_gleipnir",
         "myth_norse_thor_thrym_recovered",
+        "myth_norse_thor_goats_chariot",
         "myth_norse_thor_megingjord",
         "myth_norse_andvaranaut_curse",
         "myth_norse_rhinegold_connection",
@@ -15164,19 +15171,12 @@
         "myth_norse_realm_yggdrasil_stags",
         "myth_norse_realm_well_urd_council",
         "myth_norse_realm_bifrost_shatter",
+        "myth_norse_creation_sun_moon_wolves",
         "myth_norse_ragnarok_naglfar_nails",
         "myth_norse_ragnarok_stars_vanish",
         "myth_norse_ragnarok_golden_pieces",
         "myth_norse_rune_stones_scandinavia",
-        "myth_norse_ragnarok_cycle",
-        "myth_norse_creation_world_body",
-        "myth_norse_creation_ask_embla",
-        "myth_norse_creation_aesir_vanir_war",
-        "myth_norse_ragnarok_overview",
-        "myth_norse_ragnarok_fimbulwinter",
-        "myth_norse_ragnarok_lif_lifthrasir",
-        "myth_norse_realm_yggdrasil_wells",
-        "myth_norse_ragnarok_thor_death"
+        "myth_norse_ragnarok_cycle"
       ],
       "minimumSize": 5
     },

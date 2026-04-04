@@ -43,7 +43,7 @@
     },
     {
       "id": "egypt_god_ra_boats",
-      "correctAnswer": "Mandjet",
+      "correctAnswer": "Mandjet (daytime boat)",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
@@ -148,7 +148,7 @@
       "correctAnswer": "Amun-Ra",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "concepts_terms",
+      "answerTypePoolId": "god_names",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen_adult",
@@ -160,7 +160,7 @@
         "Thoth-Ra",
         "Ra-Set"
       ],
-      "quizQuestion": "What merged deity did Ra become during the New Kingdom?",
+      "quizQuestion": "What merged deity did Ra become during the New Kingdom as Amun worship rose to prominence?",
       "explanation": "Ra merged with Amun as Amun-Ra during the New Kingdom, becoming king of the gods.",
       "statement": "",
       "wowFactor": "",
@@ -247,7 +247,7 @@
     },
     {
       "id": "egypt_god_osiris_crown",
-      "correctAnswer": "atef crown",
+      "correctAnswer": "Atef crown",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
@@ -315,7 +315,7 @@
     },
     {
       "id": "egypt_god_osiris_worship",
-      "correctAnswer": "middle of the Fifth Dynasty, 25th century BCE",
+      "correctAnswer": "Fifth Dynasty (~2400 BCE)",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
@@ -383,7 +383,7 @@
     },
     {
       "id": "egypt_god_isis_symbol",
-      "correctAnswer": "red jasper",
+      "correctAnswer": "Red jasper stone",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
@@ -417,7 +417,7 @@
     },
     {
       "id": "egypt_god_isis_ra_name",
-      "correctAnswer": "forced him to reveal his secret name",
+      "correctAnswer": "Made Ra reveal his true name",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
@@ -553,7 +553,7 @@
     },
     {
       "id": "egypt_god_horus_centers",
-      "correctAnswer": "Nekhen (Hierakonpolis) and Edfu",
+      "correctAnswer": "Nekhen and Edfu",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "places_locations",
@@ -587,7 +587,7 @@
     },
     {
       "id": "egypt_god_set_land",
-      "correctAnswer": "the desert",
+      "correctAnswer": "Desert and wastelands",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "descriptions_roles",
@@ -621,7 +621,7 @@
     },
     {
       "id": "egypt_god_set_role",
-      "correctAnswer": "defended Ra's solar barque from the serpent Apophis",
+      "correctAnswer": "Defended Ra from Apophis daily",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
@@ -655,7 +655,7 @@
     },
     {
       "id": "egypt_god_set_animal",
-      "correctAnswer": "it cannot be identified as any known real animal",
+      "correctAnswer": "Not any real known animal",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
@@ -723,7 +723,7 @@
     },
     {
       "id": "egypt_god_thoth_invention",
-      "correctAnswer": "writing and Egyptian hieroglyphs",
+      "correctAnswer": "Writing and hieroglyphs",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
@@ -757,7 +757,7 @@
     },
     {
       "id": "egypt_god_thoth_hermopolis",
-      "correctAnswer": "Khemenu (City of Eight)",
+      "correctAnswer": "Khemenu (Eight City)",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "places_locations",
@@ -791,7 +791,7 @@
     },
     {
       "id": "egypt_god_anubis_color",
-      "correctAnswer": "Mummified corpse discoloration and fertile black Nile silt",
+      "correctAnswer": "Mummification and Nile silt",
       "acceptableAlternatives": [
         "corpse discoloration after mummification and fertile Nile silt (rebirth)"
       ],
@@ -861,7 +861,7 @@
     },
     {
       "id": "egypt_god_bastet_transform",
-      "correctAnswer": "Transformed from fierce lioness to domestic cat or cat-woman",
+      "correctAnswer": "Lioness to domestic cat",
       "acceptableAlternatives": [
         "transformed from a fierce lioness into a domestic cat or cat-headed woman"
       ],
@@ -897,7 +897,7 @@
     },
     {
       "id": "egypt_god_bastet_festival",
-      "correctAnswer": "700,000",
+      "correctAnswer": "{700,000}",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "numbers_dates",
@@ -965,7 +965,7 @@
     },
     {
       "id": "egypt_god_hathor_seven",
-      "correctAnswer": "foretell the fate of the newborn",
+      "correctAnswer": "Foretell fate of the newborn",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
@@ -1033,7 +1033,7 @@
     },
     {
       "id": "egypt_god_maat_confessions",
-      "correctAnswer": "42",
+      "correctAnswer": "{42}",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "numbers_dates",
@@ -1101,7 +1101,7 @@
     },
     {
       "id": "egypt_god_sobek_crocodiles",
-      "correctAnswer": "Kept as divine incarnations and mummified after death",
+      "correctAnswer": "Sacred; mummified after death",
       "acceptableAlternatives": [
         "kept them as divine incarnations and mummified them after death"
       ],
@@ -1137,7 +1137,7 @@
     },
     {
       "id": "egypt_god_sekhmet_beer",
-      "correctAnswer": "she drank beer dyed red, mistaking it for blood",
+      "correctAnswer": "Drank beer dyed red as blood",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
@@ -1205,7 +1205,7 @@
     },
     {
       "id": "egypt_god_ptah_creation",
-      "correctAnswer": "through divine thought (heart) and spoken word (tongue)",
+      "correctAnswer": "By thought and spoken word",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
@@ -1239,7 +1239,7 @@
     },
     {
       "id": "egypt_god_ptah_appearance",
-      "correctAnswer": "green",
+      "correctAnswer": "Green (fertility color)",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "descriptions_roles",
@@ -1307,7 +1307,7 @@
     },
     {
       "id": "egypt_god_amun_rise",
-      "correctAnswer": "Ahmose I's victory over the Hyksos in the 16th century BCE",
+      "correctAnswer": "Victory over Hyksos, ~1550 BCE",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
@@ -1341,7 +1341,7 @@
     },
     {
       "id": "egypt_god_nut_role",
-      "correctAnswer": "Swallowed sun at dusk, carried it overnight, reborn at dawn",
+      "correctAnswer": "Swallowed sun, reborn at dawn",
       "acceptableAlternatives": [
         "swallowed them at dusk, passed them through her belly overnight, and rebirted them at dawn"
       ],
@@ -1377,7 +1377,7 @@
     },
     {
       "id": "egypt_god_geb_earthquakes",
-      "correctAnswer": "earthquakes (caused by his laughter)",
+      "correctAnswer": "Earthquakes from his laughter",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
@@ -1445,7 +1445,7 @@
     },
     {
       "id": "egypt_god_khnum_creation",
-      "correctAnswer": "Shaped from clay on a potter's wheel and placed in the womb",
+      "correctAnswer": "Shaped on a potter wheel",
       "acceptableAlternatives": [
         "shaped them from clay on a potter's wheel and placed them in their mothers' wombs"
       ],
@@ -1481,7 +1481,7 @@
     },
     {
       "id": "egypt_god_nefertum_lotus",
-      "correctAnswer": "a lotus flower (Egyptian blue lotus)",
+      "correctAnswer": "A blue lotus flower",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
       "answerTypePoolId": "concepts_terms",
@@ -1515,7 +1515,7 @@
     },
     {
       "id": "egypt_cosm_ennead_nine",
-      "correctAnswer": "Atum, Shu, Tefnut, Geb, Nut, Osiris, Isis, Set, Nephthys",
+      "correctAnswer": "Nine gods, Atum to Nephthys",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "concepts_terms",
@@ -1583,7 +1583,7 @@
     },
     {
       "id": "egypt_cosm_ennead_balance",
-      "correctAnswer": "Osiris/Isis = fertility and order; Set/Nephthys = chaos",
+      "correctAnswer": "Osiris = order; Set = chaos",
       "acceptableAlternatives": [
         "Osiris and Isis represent fertility and order; Set and Nephthys represent chaos"
       ],
@@ -1755,7 +1755,7 @@
     },
     {
       "id": "egypt_cosm_nun_nature",
-      "correctAnswer": "Personification of primordial watery chaos before creation",
+      "correctAnswer": "Personification of primordial chaos",
       "acceptableAlternatives": [
         "the personification of the primordial watery abyss before creation"
       ],
@@ -1791,7 +1791,7 @@
     },
     {
       "id": "egypt_cosm_nun_bubble",
-      "correctAnswer": "The world was a bubble of life surrounded by Nun",
+      "correctAnswer": "World as a bubble within Nun",
       "acceptableAlternatives": [
         "the sphere of life was encapsulated in a bubble surrounded by Nun"
       ],
@@ -1929,7 +1929,7 @@
     },
     {
       "id": "egypt_cosm_khepri_scarab",
-      "correctAnswer": "Beetles emerged from dung balls, like creation from nothing",
+      "correctAnswer": "Beetles roll balls like sun",
       "acceptableAlternatives": [
         "young beetles appeared to emerge from dung balls, suggesting creation from nothingness"
       ],
@@ -1965,7 +1965,7 @@
     },
     {
       "id": "egypt_cosm_apophis_role",
-      "correctAnswer": "the sun would not rise and eternal chaos would reign",
+      "correctAnswer": "Sun would not rise; chaos wins",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "concepts_terms",
@@ -2033,7 +2033,7 @@
     },
     {
       "id": "egypt_cosm_duat_regions",
-      "correctAnswer": "twelve (representing twelve hours of the night)",
+      "correctAnswer": "{12}",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "numbers_dates",
@@ -2067,7 +2067,7 @@
     },
     {
       "id": "egypt_cosm_duat_punishment",
-      "correctAnswer": "the denial of an afterlife — ceasing to exist entirely",
+      "correctAnswer": "Denial of afterlife existence",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "concepts_terms",
@@ -2101,7 +2101,7 @@
     },
     {
       "id": "egypt_cosm_shu_role",
-      "correctAnswer": "separated Nut (sky) from Geb (earth)",
+      "correctAnswer": "Separated sky from earth",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "concepts_terms",
@@ -2135,7 +2135,7 @@
     },
     {
       "id": "egypt_cosm_osiris_myth_pieces",
-      "correctAnswer": "42",
+      "correctAnswer": "{42}",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "numbers_dates",
@@ -2169,7 +2169,7 @@
     },
     {
       "id": "egypt_cosm_osiris_myth_isis",
-      "correctAnswer": "In bird form, fanned breath into Osiris and revived him",
+      "correctAnswer": "Revived Osiris as a bird",
       "acceptableAlternatives": [
         "in bird form, she fanned breath into Osiris's body and briefly revived him"
       ],
@@ -2205,7 +2205,7 @@
     },
     {
       "id": "egypt_cosm_bennu_bird",
-      "correctAnswer": "a huge grey heron with a long beak and two-feathered crest",
+      "correctAnswer": "Huge grey heron with two-feathered crest",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "descriptions_roles",
@@ -2239,7 +2239,7 @@
     },
     {
       "id": "egypt_cosm_bennu_creation",
-      "correctAnswer": "Flew over Nun and called out, setting the nature of creation",
+      "correctAnswer": "Flew over Nun and called out",
       "acceptableAlternatives": [
         "flew over the waters of Nun and issued a call that determined the nature of creation"
       ],
@@ -2275,7 +2275,7 @@
     },
     {
       "id": "egypt_cosm_heliopolis_obelisk",
-      "correctAnswer": "the obelisk of Senusret I, 21 m tall, weighing 120 tons",
+      "correctAnswer": "Obelisk of Senusret I, 21m",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "concepts_terms",
@@ -2309,10 +2309,10 @@
     },
     {
       "id": "egypt_cosm_atum_selfcreated",
-      "correctAnswer": "self-created from the primordial waters of Nun",
+      "correctAnswer": "Self-created from primordial waters",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
-      "answerTypePoolId": "places_locations",
+      "answerTypePoolId": "descriptions_roles",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen_adult",
@@ -2343,7 +2343,7 @@
     },
     {
       "id": "egypt_cosm_ogdoad_earliest",
-      "correctAnswer": "Eighteenth Dynasty, in Hatshepsut's dedicatory inscription",
+      "correctAnswer": "Eighteenth Dynasty, Hatshepsut",
       "acceptableAlternatives": [
         "Eighteenth Dynasty (in a dedicatory inscription by Hatshepsut)"
       ],
@@ -2379,7 +2379,7 @@
     },
     {
       "id": "egypt_cosm_maat_regulation",
-      "correctAnswer": "the stars, seasons, and actions of both mortals and deities",
+      "correctAnswer": "The stars, seasons, and all actions",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "descriptions_roles",
@@ -2549,7 +2549,7 @@
     },
     {
       "id": "egypt_death_botd_spells",
-      "correctAnswer": "192",
+      "correctAnswer": "{192}",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "numbers_dates",
@@ -2583,7 +2583,7 @@
     },
     {
       "id": "egypt_death_botd_evolution",
-      "correctAnswer": "Pyramid Texts → Coffin Texts → Book of the Dead",
+      "correctAnswer": "Pyramid Texts to Book of Dead",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
@@ -2651,7 +2651,7 @@
     },
     {
       "id": "egypt_death_pyramid_texts_akh",
-      "correctAnswer": "becoming an akh (spiritually transformed being)",
+      "correctAnswer": "Becoming an akh spirit",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
@@ -2685,7 +2685,7 @@
     },
     {
       "id": "egypt_death_coffin_texts_demo",
-      "correctAnswer": "Extended afterlife access to commoners, not just royalty",
+      "correctAnswer": "Afterlife access for commoners",
       "acceptableAlternatives": [
         "made afterlife access available to commoners, not just royalty"
       ],
@@ -2721,7 +2721,7 @@
     },
     {
       "id": "egypt_death_weighing_hall",
-      "correctAnswer": "Osiris presided, Anubis weighed, Thoth recorded",
+      "correctAnswer": "Osiris, Anubis, Thoth presided",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
@@ -2789,7 +2789,7 @@
     },
     {
       "id": "egypt_death_ammit_body",
-      "correctAnswer": "Crocodile head, lion forelegs, hippo hindquarters",
+      "correctAnswer": "Croc head, lion, hippo hybrid",
       "acceptableAlternatives": [
         "head of a crocodile, forelegs of a lion, hindquarters of a hippopotamus"
       ],
@@ -2893,7 +2893,7 @@
     },
     {
       "id": "egypt_death_mummy_brain",
-      "correctAnswer": "A hook through the nostril liquefied and drained the brain",
+      "correctAnswer": "Hook through nostril to drain",
       "acceptableAlternatives": [
         "A hook inserted through the nostril broke into the brain cavity; contents were liquefied and drained"
       ],
@@ -2963,7 +2963,7 @@
     },
     {
       "id": "egypt_death_canopic_four",
-      "correctAnswer": "human, baboon, jackal, and falcon",
+      "correctAnswer": "Human, baboon, jackal, falcon",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
@@ -3033,7 +3033,7 @@
     },
     {
       "id": "egypt_death_opening_mouth",
-      "correctAnswer": "Restore the deceased's senses: breathing, speaking, seeing",
+      "correctAnswer": "Restore senses for afterlife",
       "acceptableAlternatives": [
         "grant the deceased access to their senses in the afterlife — breathing, speaking, seeing, eating"
       ],
@@ -3069,7 +3069,7 @@
     },
     {
       "id": "egypt_death_opening_tools",
-      "correctAnswer": "a forked blade made of obsidian, glass, or stone",
+      "correctAnswer": "Forked obsidian blade",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
@@ -3137,7 +3137,7 @@
     },
     {
       "id": "egypt_death_aaru_location",
-      "correctAnswer": "in the east, where the sun rises",
+      "correctAnswer": "East, where the sun rises",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
@@ -3171,7 +3171,7 @@
     },
     {
       "id": "egypt_death_aaru_gates",
-      "correctAnswer": "15 to 21 guarded gates",
+      "correctAnswer": "15 to 21 gates",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "numbers_dates",
@@ -3205,7 +3205,7 @@
     },
     {
       "id": "egypt_death_ushabti_purpose",
-      "correctAnswer": "Servants to perform labor in the afterlife for the deceased",
+      "correctAnswer": "Servants to perform labor in afterlife",
       "acceptableAlternatives": [
         "acted as servants to perform manual labor in the afterlife on behalf of the deceased"
       ],
@@ -3275,7 +3275,7 @@
     },
     {
       "id": "egypt_death_ushabti_material",
-      "correctAnswer": "glazed earthenware (Egyptian faience)",
+      "correctAnswer": "Egyptian faience (blue glaze)",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
@@ -3309,7 +3309,7 @@
     },
     {
       "id": "egypt_death_ka_ba",
-      "correctAnswer": "The life force or vital essence created alongside a person",
+      "correctAnswer": "Life force created with person",
       "acceptableAlternatives": [
         "the life force or vital essence created alongside a person by Khnum"
       ],
@@ -3413,7 +3413,7 @@
     },
     {
       "id": "egypt_death_osiris_abydos",
-      "correctAnswer": "Osiris's body drifted ashore after drowning in the Nile",
+      "correctAnswer": "Osiris body drifted to Abydos",
       "acceptableAlternatives": [
         "the body of Osiris drifted ashore there after being drowned in the Nile"
       ],
@@ -3483,7 +3483,7 @@
     },
     {
       "id": "egypt_death_osiris_myth_throne",
-      "correctAnswer": "Set officially gave Horus the throne after a boat race",
+      "correctAnswer": "Set gave Horus the throne",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
@@ -3551,7 +3551,7 @@
     },
     {
       "id": "egypt_death_thoth_weighing",
-      "correctAnswer": "Reported when scales balanced, then recorded the result",
+      "correctAnswer": "Recorded the scales result",
       "acceptableAlternatives": [
         "reported when the scales were exactly even, then recorded the results"
       ],
@@ -3587,7 +3587,7 @@
     },
     {
       "id": "egypt_death_anubis_embalming",
-      "correctAnswer": "Embalmer, tomb guardian, psychopomp, Guardian of the Scales",
+      "correctAnswer": "Embalmer, guardian, psychopomp",
       "acceptableAlternatives": [
         "embalmer, tomb guardian, psychopomp (soul guide), and Guardian of the Scales"
       ],
@@ -3623,7 +3623,7 @@
     },
     {
       "id": "egypt_sym_scarab_sun",
-      "correctAnswer": "East-to-west dung-ball rolling mirrored the sun's daily path",
+      "correctAnswer": "Dung-ball rolling like the sun",
       "acceptableAlternatives": [
         "the east-to-west rolling of dung balls symbolized the sun's daily journey across the sky"
       ],
@@ -3659,7 +3659,7 @@
     },
     {
       "id": "egypt_sym_scarab_heart",
-      "correctAnswer": "Heart scarab to prevent the heart testifying at judgment",
+      "correctAnswer": "Heart scarab at judgment",
       "acceptableAlternatives": [
         "a heart scarab inscribed to prevent the heart from testifying against the deceased at judgment"
       ],
@@ -3695,7 +3695,7 @@
     },
     {
       "id": "egypt_sym_eye_horus_myth",
-      "correctAnswer": "Set stole, trampled, or destroyed it; Thoth restored it",
+      "correctAnswer": "Set destroyed it; Thoth healed",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
       "answerTypePoolId": "concepts_terms",
@@ -3763,7 +3763,7 @@
     },
     {
       "id": "egypt_sym_eye_ra_nature",
-      "correctAnswer": "A violent feminine extension of Ra's power",
+      "correctAnswer": "Violent extension of Ra power",
       "acceptableAlternatives": [
         "a violent feminine counterpart to Ra that functioned as an extension of his power"
       ],
@@ -3802,7 +3802,7 @@
       "correctAnswer": "Thoth",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "concepts_terms",
+      "answerTypePoolId": "god_names",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen_adult",
@@ -3814,7 +3814,7 @@
         "Khonsu",
         "Ptah"
       ],
-      "quizQuestion": "In the 'Distant Goddess' myth, who was sent to retrieve the angry Eye of Ra from distant lands?",
+      "quizQuestion": "In the Distant Goddess myth, which god was sent to retrieve the angry Eye of Ra from Nubia?",
       "explanation": "In the Distant Goddess myth, the Eye goddess became angry and departed. Thoth was sent to retrieve her through a combination of lectures, enticement, and entertaining stories.",
       "statement": "",
       "wowFactor": "",
@@ -3833,7 +3833,7 @@
     },
     {
       "id": "egypt_sym_ankh_meaning",
-      "correctAnswer": "life",
+      "correctAnswer": "Life and immortality",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
       "answerTypePoolId": "descriptions_roles",
@@ -3867,7 +3867,7 @@
     },
     {
       "id": "egypt_sym_ankh_christian",
-      "correctAnswer": "Adopted by Coptic Christians as the crux ansata, 4th–5th c.",
+      "correctAnswer": "Became the Coptic crux ansata",
       "acceptableAlternatives": [
         "adopted by Coptic Christians as the crux ansata during the 4th–5th centuries CE"
       ],
@@ -3937,7 +3937,7 @@
     },
     {
       "id": "egypt_sym_djed_byblos",
-      "correctAnswer": "Isis found Osiris's body there and consecrated the pillar",
+      "correctAnswer": "Isis consecrated djed pillar",
       "acceptableAlternatives": [
         "Isis found Osiris's body hidden in a tree there and consecrated the pillar by anointing it in linen"
       ],
@@ -3973,7 +3973,7 @@
     },
     {
       "id": "egypt_sym_was_meaning",
-      "correctAnswer": "Power; a stylized animal head atop a staff with a forked end",
+      "correctAnswer": "Power; scepter with animal head",
       "acceptableAlternatives": [
         "power or dominion; a stylized animal head at top of a long staff with a forked end"
       ],
@@ -4009,10 +4009,10 @@
     },
     {
       "id": "egypt_sym_was_gods",
-      "correctAnswer": "Set, Anubis, and Khnum (also Thoth, Ptah, and pharaohs)",
+      "correctAnswer": "Set, Anubis, Khnum, Thoth",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "god_names",
+      "answerTypePoolId": "concepts_terms",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen_adult",
@@ -4043,7 +4043,7 @@
     },
     {
       "id": "egypt_sym_apis_bull_marks",
-      "correctAnswer": "White triangle, vulture on back, scarab under tongue",
+      "correctAnswer": "White triangle and vulture",
       "acceptableAlternatives": [
         "White forehead triangle, vulture on back, scarab under tongue, crescent on right flank, double tail"
       ],
@@ -4079,7 +4079,7 @@
     },
     {
       "id": "egypt_sym_apis_conception",
-      "correctAnswer": "Lightning or moonbeams from heaven impregnated its mother",
+      "correctAnswer": "Lightning from heaven",
       "acceptableAlternatives": [
         "a flash of lightning or moonbeams from the heavens impregnated its mother"
       ],
@@ -4115,7 +4115,7 @@
     },
     {
       "id": "egypt_sym_serapeum_weight",
-      "correctAnswer": "around 40 tonnes each (excluding lids of ~20 tonnes)",
+      "correctAnswer": "~40 tonnes each",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
       "answerTypePoolId": "numbers_dates",
@@ -4149,7 +4149,7 @@
     },
     {
       "id": "egypt_sym_serapeum_years",
-      "correctAnswer": "approximately 1,400 years (c. 1400 BCE to c. 30 BCE)",
+      "correctAnswer": "~1,400 years",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
       "answerTypePoolId": "numbers_dates",
@@ -4183,7 +4183,7 @@
     },
     {
       "id": "egypt_sym_wadjet_uraeus",
-      "correctAnswer": "the rearing cobra representing the goddess Wadjet",
+      "correctAnswer": "The rearing cobra of Wadjet",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
       "answerTypePoolId": "concepts_terms",
@@ -4251,7 +4251,7 @@
     },
     {
       "id": "egypt_sym_nekhbet_shen",
-      "correctAnswer": "the shen symbol (representing eternal encircling protection)",
+      "correctAnswer": "The shen symbol (eternal encircling protection)",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
       "answerTypePoolId": "symbols_objects",
@@ -4285,7 +4285,7 @@
     },
     {
       "id": "egypt_sym_tyet_material",
-      "correctAnswer": "Red jasper or carnelian, representing Isis's blood and power",
+      "correctAnswer": "Red jasper, representing Isis blood",
       "acceptableAlternatives": [
         "red jasper or carnelian, representing Isis's blood and protective power"
       ],
@@ -4321,10 +4321,10 @@
     },
     {
       "id": "egypt_sym_tyet_burial",
-      "correctAnswer": "within the mummy wrappings on the upper torso",
+      "correctAnswer": "Within mummy wrappings on torso",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "places_locations",
+      "answerTypePoolId": "descriptions_roles",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen_adult",
@@ -4391,7 +4391,7 @@
     },
     {
       "id": "egypt_sym_ibis_thoth",
-      "correctAnswer": "its curved beak resembled the crescent moon",
+      "correctAnswer": "Curved beak like crescent moon",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
       "answerTypePoolId": "concepts_terms",
@@ -4425,7 +4425,7 @@
     },
     {
       "id": "egypt_sym_falcon_horus",
-      "correctAnswer": "Pharaoh was identified as Horus, the falcon-headed sky god",
+      "correctAnswer": "Pharaoh identified as Horus",
       "acceptableAlternatives": [
         "the living pharaoh was identified as Horus, the falcon-headed sky god"
       ],
@@ -4461,7 +4461,7 @@
     },
     {
       "id": "egypt_sym_jackal_anubis",
-      "correctAnswer": "jackals were scavengers seen near cemeteries and burials",
+      "correctAnswer": "Jackals scavenged cemeteries",
       "acceptableAlternatives": [
         "jackals were scavengers seen near cemeteries and desert burial sites"
       ],
@@ -4497,7 +4497,7 @@
     },
     {
       "id": "egypt_sym_crocodile_sobek",
-      "correctAnswer": "pharaonic power, fertility, military prowess, Nile safety",
+      "correctAnswer": "Pharaonic power, Nile safety",
       "acceptableAlternatives": [
         "pharaonic power, fertility, military prowess, and Nile protection"
       ],
@@ -4635,7 +4635,7 @@
     },
     {
       "id": "egypt_temp_karnak_duration",
-      "correctAnswer": "over 2,000 years, built by approximately 30 pharaohs",
+      "correctAnswer": "Over 2,000 years",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "numbers_dates",
@@ -4669,7 +4669,7 @@
     },
     {
       "id": "egypt_temp_karnak_columns",
-      "correctAnswer": "134 columns arranged in 16 rows",
+      "correctAnswer": "134 columns",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "numbers_dates",
@@ -4703,7 +4703,7 @@
     },
     {
       "id": "egypt_temp_karnak_obelisk",
-      "correctAnswer": "328 tons, standing 29 meters tall",
+      "correctAnswer": "328 tons, 29m tall",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "numbers_dates",
@@ -4771,7 +4771,7 @@
     },
     {
       "id": "egypt_temp_abu_simbel_statues",
-      "correctAnswer": "Ramesses II seated in double crown, each statue 20m tall",
+      "correctAnswer": "Four Ramesses II statues, 20m",
       "acceptableAlternatives": [
         "Ramesses II seated wearing the double crown, each 20 meters tall"
       ],
@@ -4807,7 +4807,7 @@
     },
     {
       "id": "egypt_temp_abu_simbel_purpose",
-      "correctAnswer": "impress Egypt's might on Nubians and Egyptianize them",
+      "correctAnswer": "Impress Egypt power on Nubians",
       "acceptableAlternatives": [
         "to impress Egypt's might upon Nubians and Egyptianize the local people"
       ],
@@ -4843,7 +4843,7 @@
     },
     {
       "id": "egypt_temp_abu_simbel_relocation",
-      "correctAnswer": "moved due to Lake Nasser flooding; cost $41.7 million",
+      "correctAnswer": "Lake Nasser",
       "acceptableAlternatives": [
         "moved due to the Aswan High Dam creating Lake Nasser; cost $41.7 million"
       ],
@@ -4879,7 +4879,7 @@
     },
     {
       "id": "egypt_temp_abu_simbel_construction",
-      "correctAnswer": "started c. 1264 BCE; took about 20 years (until 1244 BCE)",
+      "correctAnswer": "1264 to 1244 BCE",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "numbers_dates",
@@ -4913,7 +4913,7 @@
     },
     {
       "id": "egypt_temp_philae_last_hieroglyphs",
-      "correctAnswer": "last known hieroglyphic inscription, carved in AD 394",
+      "correctAnswer": "Last hieroglyphs, AD 394",
       "acceptableAlternatives": [
         "it contains the last known inscription in Egyptian hieroglyphs, written in AD 394"
       ],
@@ -4949,7 +4949,7 @@
     },
     {
       "id": "egypt_temp_philae_relocation",
-      "correctAnswer": "approximately 40,000 units of 2–25 tons each",
+      "correctAnswer": "~40,000 units",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "numbers_dates",
@@ -5017,7 +5017,7 @@
     },
     {
       "id": "egypt_temp_opet_duration",
-      "correctAnswer": "11 days under Thutmose III; grew to 27 days by Ramesses III",
+      "correctAnswer": "11 to 27 days",
       "acceptableAlternatives": [
         "11 days under Thutmose III; expanded to 27 days by Ramesses III's death"
       ],
@@ -5053,7 +5053,7 @@
     },
     {
       "id": "egypt_temp_opet_purpose",
-      "correctAnswer": "renew pharaoh's divine authority via union with Amun-Re",
+      "correctAnswer": "Renew pharaoh divine authority",
       "acceptableAlternatives": [
         "renew the pharaoh's divine authority through a ritual marriage ceremony linking him with Amun-Re"
       ],
@@ -5089,7 +5089,7 @@
     },
     {
       "id": "egypt_temp_luxor_builders",
-      "correctAnswer": "Amenhotep III, Tutankhamun, Ramesses II, Alexander the Great",
+      "correctAnswer": "Amenhotep III, Ramesses II",
       "acceptableAlternatives": [
         "Amenhotep III (rear chapels), Tutankhamun, Ramesses II, and later Alexander the Great"
       ],
@@ -5125,7 +5125,7 @@
     },
     {
       "id": "egypt_temp_luxor_sphinx",
-      "correctAnswer": "about 2.7 km, lined with human-headed sphinxes",
+      "correctAnswer": "2.7 km",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "numbers_dates",
@@ -5227,10 +5227,10 @@
     },
     {
       "id": "egypt_temp_gods_wife_end",
-      "correctAnswer": "525 BCE when Persia conquered Egypt",
+      "correctAnswer": "525 BCE",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "god_names",
+      "answerTypePoolId": "numbers_dates",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen_adult",
@@ -5261,7 +5261,7 @@
     },
     {
       "id": "egypt_temp_isis_mediterranean",
-      "correctAnswer": "the Hellenistic period (323–30 BCE)",
+      "correctAnswer": "The Hellenistic period",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "concepts_terms",
@@ -5295,7 +5295,7 @@
     },
     {
       "id": "egypt_temp_ptah_memphis",
-      "correctAnswer": "'Hut-ka-Ptah'; the name 'Egypt' may derive from it",
+      "correctAnswer": "Hut-ka-Ptah (source of Egypt)",
       "acceptableAlternatives": [
         "'Hut-ka-Ptah' (Enclosure of the ka of Ptah); the country name 'Egypt' may derive from it"
       ],
@@ -5365,7 +5365,7 @@
     },
     {
       "id": "egypt_temp_khnum_elephantine",
-      "correctAnswer": "Khnum, Satis, and Anuket",
+      "correctAnswer": "Khnum, Satis, Anuket",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "places_locations",
@@ -5399,7 +5399,7 @@
     },
     {
       "id": "egypt_temp_amun_karnak_location",
-      "correctAnswer": "near Luxor, Egypt (ancient Thebes)",
+      "correctAnswer": "Near Luxor (Thebes)",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "places_locations",
@@ -5501,7 +5501,7 @@
     },
     {
       "id": "egypt_temp_thoth_hermopolis_city",
-      "correctAnswer": "Hermopolis — because the Greeks equated Thoth with Hermes",
+      "correctAnswer": "Thoth equated with Hermes",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "concepts_terms",
@@ -5535,7 +5535,7 @@
     },
     {
       "id": "egypt_temp_bastet_bubastis",
-      "correctAnswer": "Per-Bastet (House of Bastet)",
+      "correctAnswer": "Per-Bastet",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "places_locations",
@@ -5569,7 +5569,7 @@
     },
     {
       "id": "egypt_god_ra_apophis_nightly",
-      "correctAnswer": "if Apophis won, the sun would not rise and chaos would reign",
+      "correctAnswer": "If won, sun would not rise",
       "acceptableAlternatives": [
         "if Apophis won, the sun would not rise and eternal chaos would consume creation"
       ],
@@ -5605,7 +5605,7 @@
     },
     {
       "id": "egypt_cosm_shu_created",
-      "correctAnswer": "Atum (created Shu by masturbating or spitting)",
+      "correctAnswer": "Atum spat or ejected him",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "concepts_terms",
@@ -5639,7 +5639,7 @@
     },
     {
       "id": "egypt_death_anubis_middle_kingdom",
-      "correctAnswer": "Osiris replaced Anubis as lord of the underworld",
+      "correctAnswer": "Osiris replaced Anubis below",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
       "answerTypePoolId": "concepts_terms",
@@ -5673,7 +5673,7 @@
     },
     {
       "id": "egypt_sym_ankh_first_dynasty",
-      "correctAnswer": "Egypt's First Dynasty, c. 30th–29th century BCE",
+      "correctAnswer": "Egypt First Dynasty (3000 BCE)",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
       "answerTypePoolId": "concepts_terms",
@@ -5741,7 +5741,7 @@
     },
     {
       "id": "egypt_god_hathor_eye_ra",
-      "correctAnswer": "Ra's solar disk personified, his violent and joyful aspects",
+      "correctAnswer": "Ra's solar disk, his violent joyful side",
       "acceptableAlternatives": [
         "a feminine personification of Ra's solar disk, embodying both his violent and joyful aspects"
       ],
@@ -5777,7 +5777,7 @@
     },
     {
       "id": "egypt_cosm_duat_revive_dead",
-      "correctAnswer": "revived the dead for those hours while Ra passed through",
+      "correctAnswer": "Ra revived dead on his passage",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
       "answerTypePoolId": "concepts_terms",
@@ -5845,7 +5845,7 @@
     },
     {
       "id": "egypt_temp_opet_route",
-      "correctAnswer": "from Karnak Temple to Luxor Temple (approximately 2 km)",
+      "correctAnswer": "Karnak to Luxor Temple (~2 km)",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "concepts_terms",
@@ -5884,9 +5884,9 @@
       "label": "Gods & Divine Figures",
       "answerFormat": "name",
       "factIds": [
-        "egypt_sym_was_gods",
-        "egypt_temp_philae_deity",
-        "egypt_temp_gods_wife_end"
+        "egypt_god_ra_amun",
+        "egypt_sym_eye_ra_distant",
+        "egypt_temp_philae_deity"
       ],
       "minimumSize": 3,
       "syntheticDistractors": [
@@ -5927,7 +5927,8 @@
         "egypt_temp_abu_simbel_construction",
         "egypt_temp_philae_relocation",
         "egypt_temp_opet_duration",
-        "egypt_temp_luxor_sphinx"
+        "egypt_temp_luxor_sphinx",
+        "egypt_temp_gods_wife_end"
       ],
       "minimumSize": 3
     },
@@ -5941,9 +5942,7 @@
         "egypt_god_thoth_hermopolis",
         "egypt_god_hathor_temple",
         "egypt_god_sobek_location",
-        "egypt_cosm_atum_selfcreated",
         "egypt_death_anubis_cynopolis",
-        "egypt_sym_tyet_burial",
         "egypt_temp_khnum_elephantine",
         "egypt_temp_amun_karnak_location",
         "egypt_temp_bastet_bubastis"
@@ -6001,6 +6000,7 @@
         "egypt_cosm_solar_barque_crew",
         "egypt_cosm_bennu_bird",
         "egypt_cosm_bennu_creation",
+        "egypt_cosm_atum_selfcreated",
         "egypt_cosm_maat_regulation",
         "egypt_cosm_ra_horakhty",
         "egypt_death_botd_name",
@@ -6013,6 +6013,7 @@
         "egypt_sym_djed_meaning",
         "egypt_sym_was_meaning",
         "egypt_sym_tyet_material",
+        "egypt_sym_tyet_burial",
         "egypt_sym_cat_bastet",
         "egypt_sym_vulture_nekhbet",
         "egypt_sym_ram_amun",
@@ -6030,7 +6031,6 @@
       "answerFormat": "phrase",
       "factIds": [
         "egypt_god_ra_boats",
-        "egypt_god_ra_amun",
         "egypt_god_ra_daughters",
         "egypt_god_osiris_title",
         "egypt_god_osiris_crown",
@@ -6096,9 +6096,9 @@
         "egypt_sym_scarab_heart",
         "egypt_sym_eye_horus_myth",
         "egypt_sym_eye_ra_nature",
-        "egypt_sym_eye_ra_distant",
         "egypt_sym_ankh_christian",
         "egypt_sym_djed_byblos",
+        "egypt_sym_was_gods",
         "egypt_sym_apis_bull_marks",
         "egypt_sym_apis_conception",
         "egypt_sym_wadjet_uraeus",
