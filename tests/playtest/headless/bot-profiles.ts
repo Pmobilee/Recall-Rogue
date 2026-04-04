@@ -3,8 +3,9 @@
  * =================================================================
  * Provides preset BotSkills profiles for use with BotBrain.
  * Includes:
- *  - LEGACY_PROFILES: backward-compatible with the 6 original run-batch.ts profiles
+ *  - LEGACY_PROFILES: backward-compatible with the 6 original run-batch.ts profiles (@deprecated)
  *  - ARCHETYPE_PROFILES: strategy composites (turtle, chain_god, speedrunner, etc.)
+ *  - PROGRESSION_PROFILES: learning-curve model — 5 stages from first run to mastery + language_learner specialty
  *  - ALL_PROFILES: merged lookup for --profile flag
  *  - Generators: sweep profiles, isolation profiles
  *
@@ -77,6 +78,10 @@ export function makeSkills(overrides: Partial<BotSkills>, baseline: number = 0.5
  * The original 6 run-batch.ts profiles mapped to BotSkills.
  * Accuracy values match the original; skill axes are calibrated to represent
  * the implied strategy levels of each original profile.
+ *
+ * @deprecated Use PROGRESSION_PROFILES for balance work. Legacy profiles are
+ *   static archetypes that do not model a realistic player learning curve.
+ *   Still accessible via `--profile first_timer` etc. for backward compatibility.
  */
 export const LEGACY_PROFILES: Record<string, BotSkills> = {
   /** Confused new player: poor accuracy, rarely charges, no strategy. */
@@ -288,16 +293,131 @@ export const ARCHETYPE_PROFILES: Record<string, BotSkills> = {
 };
 
 // ──────────────────────────────────────────────────────────────────────────────
+// Progression profiles — learning curve model
+// ──────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Progression-based profiles modeling a single player's learning curve.
+ * Replaces the static archetype approach. Each profile represents a
+ * stage in the player journey from first run to mastery.
+ *
+ * Accuracy models 4-option MCQ on curated knowledge decks.
+ * Game skill axes model gradual system discovery through play.
+ *
+ * These are the DEFAULT profiles when running run-batch.ts with no --profile flag.
+ * Use them for balance work — they capture the realistic spread of win rates
+ * across the full player lifecycle, not just static skill archetypes.
+ */
+export const PROGRESSION_PROFILES: Record<string, BotSkills> = {
+  /** Runs 1-3: First contact with game and content. Tutorial-level strategy. */
+  new_player: makeSkills({
+    accuracy:       0.50,
+    cardSelection:  0.10,
+    chargeSkill:    0.15,
+    chainSkill:     0.00,
+    blockSkill:     0.05,
+    apEfficiency:   0.15,
+    surgeAwareness: 0.00,
+    masteryHunting: 0.00,
+    rewardSkill:    0.10,
+    shopSkill:      0.10,
+    restSkill:      0.05,
+    relicSkill:     0.00,
+  }, 0),
+
+  /** Runs 4-10: Content recognition starting, basic strategy emerging. */
+  developing: makeSkills({
+    accuracy:       0.60,
+    cardSelection:  0.25,
+    chargeSkill:    0.35,
+    chainSkill:     0.15,
+    blockSkill:     0.20,
+    apEfficiency:   0.35,
+    surgeAwareness: 0.10,
+    masteryHunting: 0.10,
+    rewardSkill:    0.30,
+    shopSkill:      0.25,
+    restSkill:      0.25,
+    relicSkill:     0.20,
+  }, 0),
+
+  /** Runs 11-25: All systems understood, strategic play begins. The average engaged player. */
+  competent: makeSkills({
+    accuracy:       0.68,
+    cardSelection:  0.45,
+    chargeSkill:    0.50,
+    chainSkill:     0.35,
+    blockSkill:     0.35,
+    apEfficiency:   0.50,
+    surgeAwareness: 0.30,
+    masteryHunting: 0.25,
+    rewardSkill:    0.50,
+    shopSkill:      0.45,
+    restSkill:      0.45,
+    relicSkill:     0.40,
+  }, 0),
+
+  /** Runs 25-50: Strong deck knowledge, optimizes most decisions. */
+  experienced: makeSkills({
+    accuracy:       0.76,
+    cardSelection:  0.65,
+    chargeSkill:    0.70,
+    chainSkill:     0.60,
+    blockSkill:     0.55,
+    apEfficiency:   0.75,
+    surgeAwareness: 0.65,
+    masteryHunting: 0.55,
+    rewardSkill:    0.70,
+    shopSkill:      0.65,
+    restSkill:      0.65,
+    relicSkill:     0.65,
+  }, 0),
+
+  /** Runs 50+: Near-perfect knowledge, near-optimal strategy. The aspirational ceiling. */
+  master: makeSkills({
+    accuracy:       0.85,
+    cardSelection:  0.80,
+    chargeSkill:    0.85,
+    chainSkill:     0.75,
+    blockSkill:     0.70,
+    apEfficiency:   0.90,
+    surgeAwareness: 0.80,
+    masteryHunting: 0.75,
+    rewardSkill:    0.80,
+    shopSkill:      0.80,
+    restSkill:      0.80,
+    relicSkill:     0.85,
+  }, 0),
+
+  /** Specialty: Foreign language deck with zero prior knowledge (JLPT, HSK, TOPIK, CEFR). */
+  language_learner: makeSkills({
+    accuracy:       0.35,
+    cardSelection:  0.45,
+    chargeSkill:    0.50,
+    chainSkill:     0.35,
+    blockSkill:     0.35,
+    apEfficiency:   0.50,
+    surgeAwareness: 0.30,
+    masteryHunting: 0.25,
+    rewardSkill:    0.50,
+    shopSkill:      0.45,
+    restSkill:      0.45,
+    relicSkill:     0.40,
+  }, 0),
+};
+
+// ──────────────────────────────────────────────────────────────────────────────
 // Combined lookup
 // ──────────────────────────────────────────────────────────────────────────────
 
 /**
- * All named profiles merged (legacy + archetype).
+ * All named profiles merged (legacy + archetype + progression).
  * Use with `--profile <name>` flag in run-batch.ts.
  */
 export const ALL_PROFILES: Record<string, BotSkills> = {
   ...LEGACY_PROFILES,
   ...ARCHETYPE_PROFILES,
+  ...PROGRESSION_PROFILES,
 };
 
 // ──────────────────────────────────────────────────────────────────────────────

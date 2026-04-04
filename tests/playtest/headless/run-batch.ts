@@ -35,6 +35,7 @@ import type { BotSkills } from './bot-brain.js';
 import {
   ALL_PROFILES,
   LEGACY_PROFILES,
+  PROGRESSION_PROFILES,
   SKILL_AXES,
   type SkillAxis,
   generateSweepProfiles,
@@ -229,8 +230,8 @@ if (sweepAxis) {
     }
   }
 } else {
-  // Default: run all legacy profiles using BotSkills
-  for (const [id, skills] of Object.entries(LEGACY_PROFILES)) {
+  // Default: run all progression profiles (learning curve model)
+  for (const [id, skills] of Object.entries(PROGRESSION_PROFILES)) {
     profilesToRun.push({ label: id, skills });
   }
 }
@@ -252,7 +253,7 @@ fs.mkdirSync(outputDir, { recursive: true });
 // Header
 // ──────────────────────────────────────────────────────────────────────────────
 
-const runMode = sweepAxis ? `SWEEP (${sweepAxis})` : isIsolation ? 'ISOLATION' : customSkillsJson ? 'CUSTOM SKILLS' : profileFilter ? `PROFILE: ${profileFilter}` : 'ALL LEGACY PROFILES';
+const runMode = sweepAxis ? `SWEEP (${sweepAxis})` : isIsolation ? 'ISOLATION' : customSkillsJson ? 'CUSTOM SKILLS' : profileFilter ? `PROFILE: ${profileFilter}` : 'ALL PROGRESSION PROFILES';
 
 console.log(`\n${'='.repeat(60)}`);
 console.log(`  HEADLESS SIMULATOR — BATCH RUN`);

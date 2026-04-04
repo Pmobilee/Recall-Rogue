@@ -25,7 +25,7 @@ Zero reimplementation, zero drift. When `balance.ts` changes, the sim uses the n
 The `--tsconfig` flag is mandatory — it maps `svelte/store` to a shim so game code loads in Node.js.
 
 ```bash
-# All 6 legacy profiles × 1000 full runs (default mode)
+# All 6 progression profiles × 1000 full runs (default mode)
 npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
   tests/playtest/headless/run-batch.ts --runs 1000
 
@@ -59,7 +59,7 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
 | Flag | Default | Description |
 |------|---------|-------------|
 | `--runs N` | 100 | Runs per profile |
-| `--profile ID` | all 6 legacy | Named profile (legacy or archetype) — see Player Profiles |
+| `--profile ID` | all 6 progression | Named profile (legacy, archetype, or progression) — see Player Profiles |
 | `--archetype NAME` | — | Alias for `--profile`; shorthand for archetype names |
 | `--ascension N` | 0 | Ascension level (0–20) |
 | `--mode full\|combat` | full | Full run vs combat-only |
@@ -149,9 +149,28 @@ Choice-based mystery events previously always picked option 0. The brain now sco
 
 ## Player Profiles
 
-### Legacy Profiles (6)
+### Progression Profiles (6) — Default
 
-The original 6 profiles are now mapped to `BotSkills` vectors. Access via `--profile NAME`.
+The default profile set when no `--profile` flag is given. Each profile represents a stage in the player journey from first run to mastery. Use these for balance work — they model the realistic spread of win rates across the player lifecycle.
+
+Accuracy models 4-option MCQ on curated knowledge decks. Game skill axes model gradual system discovery through play.
+
+| ID | Accuracy | Run Stage | Target WR | Description |
+|----|----------|-----------|-----------|-------------|
+| `new_player` | 50% | Runs 1–3 | ~5–15% | First contact with game and content. Tutorial-level strategy. |
+| `developing` | 60% | Runs 4–10 | ~30–50% | Content recognition starting, basic strategy emerging. |
+| `competent` | 68% | Runs 11–25 | ~45–65% | All systems understood, strategic play begins. Average engaged player. |
+| `experienced` | 76% | Runs 25–50 | ~60–75% | Strong deck knowledge, optimizes most decisions. |
+| `master` | 85% | Runs 50+ | ~80–90% | Near-perfect knowledge, near-optimal strategy. Aspirational ceiling. |
+| `language_learner` | 35% | Specialty | ~5–10% | Foreign language deck (JLPT/HSK/TOPIK/CEFR) with zero prior knowledge. Game-skilled but content-blind. |
+
+`language_learner` has competent-level game skills (0.25–0.50 axes) but only 35% accuracy — models a player who understands the roguelite systems but is in their first hours with a language deck.
+
+### Legacy Profiles (6) — Deprecated
+
+The original 6 profiles mapped to `BotSkills` vectors. Access via `--profile NAME`.
+
+> **Deprecated for balance work.** Legacy profiles are static archetypes that do not model a realistic player learning curve. Use `PROGRESSION_PROFILES` for balance iteration. Legacy profiles remain available for backward compatibility.
 
 | ID | Accuracy | Strategy Level | Description |
 |----|----------|---------------|-------------|
@@ -258,7 +277,9 @@ In `--mode combat`, the batch runner also outputs `MechanicStats[]`:
 - `makeSkills(overrides, baseline)` — builds a `BotSkills` object with baseline fill
 - `generateSweepProfiles(axis, steps, baseline, accuracy)` — generates step profiles for sweep mode
 - `generateIsolationProfiles(baseline, accuracy)` — one profile per axis at 1.0
-- `ALL_PROFILES` — merged lookup for `--profile` flag (legacy + archetype)
+- `ALL_PROFILES` — merged lookup for `--profile` flag (legacy + archetype + progression)
+- `PROGRESSION_PROFILES` — 6 learning-curve profiles; default set when no `--profile` is given
+- `LEGACY_PROFILES` — 6 original profiles (@deprecated for balance work; still accessible via `--profile`)
 - `SKILL_AXES` — typed tuple of all 10 non-accuracy axis names
 
 **`simulator.ts`:**
