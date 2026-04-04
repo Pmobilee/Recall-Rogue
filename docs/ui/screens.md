@@ -98,7 +98,7 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 | `postMiniBossRest` | `PostMiniBossRestOverlay` | |
 | `relicSwapOverlay` | `RelicSwapOverlay` | |
 | `runEnd` | `RunEndScreen` | Only if `activeRunEndData` exists |
-| `library` | `KnowledgeLibrary` | `libraryInitialTab` prop sets starting tab |
+| `library` | `KnowledgeLibrary` | `libraryInitialTab` prop sets starting tab; empty domains (0 total facts) are filtered out of the domain grid |
 | `profile` | `ProfileScreen` | |
 | `journal` | `JournalScreen` | |
 | `leaderboards` | `LeaderboardsScreen` | |

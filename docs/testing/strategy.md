@@ -1,7 +1,7 @@
 # Testing Strategy
 
 > **Purpose:** Overview of all testing layers in Recall Rogue — when to use each method, where tests live, and how to run them.
-> **Last verified:** 2026-04-02
+> **Last verified:** 2026-04-04
 > **Source files:** `vitest.config.ts`, `tests/unit/*.test.ts`, `src/services/__tests__/`, `CLAUDE.md`
 
 ## Four Testing Layers
@@ -164,4 +164,3 @@ npx vitest run       # Unit tests (1900+)
 ```
 
 For balance changes, also run the headless sim. For UI changes, also do a Playwright visual inspection. Never report a fix done without confirming the result.
-
