@@ -74,10 +74,10 @@ Two backfill scripts produced full coverage:
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-03 it contains **70 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-04 it contains **71 decks**:
 
 - **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
-- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**
+- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**, **AP World History: Modern**
 
 ### Deck Architecture Files
 
@@ -96,7 +96,7 @@ Architecture YAML files in `data/deck-architectures/` hold the verified source d
 | `ap_biology_arch_meta.yaml` | `ap_biology` | generation reference — live deck exists | 363 | Chain-theme-organized generation reference (meta file) |
 | `ap_biology_arch.yaml` | `ap_biology` | master architecture — pending full fact generation | 1100 target | Master arch: 11 pools, 11 templates, 18 chain themes, 8 sub-decks, 12 CED equations |
 | `ap_chemistry_arch.yaml` | `ap_chemistry` | architecture complete — live deck exists | 620 target (assembled) | CED-aligned, 6 chain themes, 16 pools, 22 templates, 5 sub-decks; exam Fall 2024 |
-| `ap_world_history_arch.yaml` | `ap_world_history` | architecture complete — pending generation | 620 target | CED-aligned, 9 chain themes, 15 pools, 18 templates, 9 sub-decks; AP WH: Modern |
+| `ap_world_history_arch.yaml` | `ap_world_history` | complete — live | 620 | CED-aligned, 9 chain themes, 15 pools, 9 sub-decks; assembled 2026-04-04 |
 | `ap_biology_unit2_arch.yaml` | `ap_biology_unit2` | architecture complete — pending fact generation | 130 target | Unit 2: Cell Structure and Function (Topics 2.1–2.11); 2 chain themes, 8 pools, ~130 verified facts in arch |
 | `ap_biology_unit3_arch.yaml` | `ap_biology_unit3` | architecture complete — pending fact generation | 160 target | Unit 3: Cellular Energetics (Topics 3.1–3.7); 3 chain themes, 7 pools, 7 templates, ~110 verified facts in arch |
 | `ap_biology_unit5_arch.yaml` | `ap_biology_unit5` | architecture complete — pending fact generation | 110 target | Unit 5: Heredity (Topics 5.1–5.6); 2 chain themes, 8 pools, 97 verified entities in arch |
@@ -1221,6 +1221,34 @@ Each pool contains only answers that a student could plausibly confuse with each
 **Distractor collisions removed (9 facts across 7 decks):**
 - `world_flags/flag_germany`, `us_presidents/pres_truman_atomic_bomb`, `nasa_missions/nasa_voyager_golden_record`, `greek_mythology/myth_harpies_phineus`, `world_war_ii/wwii_ax_donitz_fuhrer`, `medieval_world/med_4_cru_acre_fall_1291`, `medieval_world/med_5_goryeo_founded`, `medieval_world/med_6_afr_songhai_fall`, `movies_cinema/cinema_supp_film_braveheart`.
 
-**Result:** 0 failures across all 70 decks. 9/9 unit tests pass (`tests/unit/deck-content-quality.test.ts`).
+**Result:** 0 failures across all 70 decks at time of writing. 9/9 unit tests pass (`tests/unit/deck-content-quality.test.ts`).
 
 ---
+
+## ap_world_history Deck
+
+`data/decks/ap_world_history.json` — assembled 2026-04-04 from 9 WIP batch files. Exam-aligned to the College Board AP World History: Modern Course and Exam Description (CED), covering all 9 units (c. 1200–present).
+
+**Facts:** 620 | **Pools:** 15 | **Chain themes:** 9 | **Sub-decks:** 9
+
+**CED alignment:** College Board AP World History: Modern CED. All 9 units covered. Facts include `examTags` object with `unit`, `topic`, `exam_weight`, `time_period`, and `region` fields.
+
+**Difficulty distribution:** easy=275 (difficulty 1–2), medium=268 (difficulty 3), hard=77 (difficulty 4–5)
+
+**Source WIP batch files (9):**
+- `ap_world_sd1_batch1.json` (65 facts, Unit 1: The Global Tapestry, c. 1200–1450)
+- `ap_world_sd2_batch1.json` (65 facts, Unit 2: Webs of Exchange, c. 1200–1450)
+- `ap_world_sd3_batch1.json` (80 facts, Unit 3: Empires of the Land, c. 1450–1750)
+- `ap_world_sd4_batch1.json` (80 facts, Unit 4: Oceans Connected, c. 1450–1750)
+- `ap_world_sd5_batch1.json` (80 facts, Unit 5: Age of Revolution, c. 1750–1900)
+- `ap_world_sd6_batch1.json` (80 facts, Unit 6: The Imperial Age, c. 1750–1900)
+- `ap_world_sd7_batch1.json` (55 facts, Unit 7: Global Conflict, c. 1900–present)
+- `ap_world_sd8_batch1.json` (55 facts, Unit 8: Cold War and Liberation, c. 1900–present)
+- `ap_world_sd9_batch1.json` (60 facts, Unit 9: The Globalized World, c. 1900–present)
+
+**Post-assembly fixes applied:**
+- Pool ID typo corrected: `batch_event_names` -> `battle_event_names` on fact `apwh_8_011` (1 fact, generation artifact).
+
+**Validation:** 0 failures. 42 warnings are cross-unit duplicate `correctAnswer` entries (same concept reinforced across multiple CED units — e.g., "causation" as a historical thinking skill appears in Units 6, 7, and 8). These are intentional pedagogical repetition, not errors.
+
+**Assembly script:** `scripts/assemble-ap-world-history.mjs`

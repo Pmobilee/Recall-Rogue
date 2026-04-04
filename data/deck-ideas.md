@@ -1053,6 +1053,15 @@ Sports & Entertainment requires new domain scaffolding. FIFA World Cup is a uniq
 
 ---
 
+### 3.13.2 AP World History: Modern (CED-Aligned Deck)
+
+**Status:** Complete (2026-04-04). 620 facts across 9 CED units.
+**Architecture:** `data/deck-architectures/ap_world_history_arch.yaml`
+**Deck file:** `data/decks/ap_world_history.json`
+**Priority:** **Tier 1** — exam-aligned content, highest-value offering
+
+---
+
 ## Section 4: Production Priority Queue
 
 > Ranked by combined score of Demand × Feasibility × Strategic Value. History era decks (from Sections 1-2) are included and ranked against domain decks. This is the definitive build order for the next 20 decks.
