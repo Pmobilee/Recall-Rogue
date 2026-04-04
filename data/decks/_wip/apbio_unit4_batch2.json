@@ -1,0 +1,2225 @@
+[
+  {
+    "id": "ap_bio_u4_034",
+    "correctAnswer": "Phosphorylation cascade",
+    "acceptableAlternatives": [
+      "kinase cascade"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "process_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Which process describes sequential protein kinase activations where each activated kinase phosphorylates and activates the next?",
+    "explanation": "A phosphorylation cascade (kinase cascade) is a series of steps in which each kinase, once phosphorylated and activated, phosphorylates the next kinase in the chain. This relay greatly amplifies the original signal — one receptor can ultimately activate thousands of downstream enzymes.",
+    "visualDescription": "A chain of dominoes falling — each kinase activating the next in a sequential cascade",
+    "sourceName": "OpenStax Biology 2e Ch. 9.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Signal amplification",
+      "Second messenger production",
+      "Receptor internalization",
+      "Autophosphorylation",
+      "GTP hydrolysis",
+      "Negative feedback loop",
+      "Transcription factor binding",
+      "Endocytosis cascade"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_035",
+    "correctAnswer": "Protein kinases",
+    "acceptableAlternatives": [
+      "protein kinase"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "function_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What is the function of enzymes that transfer a phosphate group from ATP to a target protein, activating or inactivating it?",
+    "explanation": "Protein kinases catalyze the transfer of the gamma-phosphate group from ATP to serine, threonine, or tyrosine residues on target proteins. This phosphorylation changes the protein's conformation, either activating or inactivating it. Kinases are central regulators in virtually every signaling pathway.",
+    "visualDescription": "A kinase enzyme gripping ATP and a target protein, transferring a phosphate group to the protein",
+    "sourceName": "OpenStax Biology 2e Ch. 9.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Degrades excess cyclin after mitosis",
+      "Pumps protons across the inner mitochondrial membrane",
+      "Catalyzes peptide bond formation during translation",
+      "Unwinds the DNA double helix ahead of the replication fork",
+      "Joins Okazaki fragments on the lagging strand",
+      "Remove phosphate groups from proteins",
+      "Cleave peptide bonds to degrade proteins",
+      "Synthesize RNA from a DNA template"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_036",
+    "correctAnswer": "Protein phosphatases",
+    "acceptableAlternatives": [
+      "phosphatases",
+      "protein phosphatase"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "function_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What is the function of enzymes that remove phosphate groups from phosphorylated proteins, reversing the effects of kinases?",
+    "explanation": "Protein phosphatases catalyze dephosphorylation — the removal of phosphate groups from phosphorylated proteins. They are the counter-regulators of kinases. Together, kinases and phosphatases rapidly and reversibly switch proteins on and off, allowing precise temporal control of signaling pathways.",
+    "visualDescription": "A phosphatase enzyme removing a phosphate group from a signaling protein, switching it off",
+    "sourceName": "OpenStax Biology 2e Ch. 9.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Degrades excess cyclin after mitosis",
+      "Pumps protons across the inner mitochondrial membrane",
+      "Catalyzes peptide bond formation during translation",
+      "Unwinds the DNA double helix ahead of the replication fork",
+      "Joins Okazaki fragments on the lagging strand",
+      "Transfer phosphate groups from ATP to target proteins",
+      "Degrade second messengers like cAMP",
+      "Open ion channels in response to ligand binding"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_037",
+    "correctAnswer": "Kinases add phosphate; phosphatases remove phosphate",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "comparison_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "How do kinases differ from phosphatases in cell signaling regulation?",
+    "explanation": "Kinases and phosphatases perform opposing reactions. Kinases use ATP to add phosphate groups to proteins (phosphorylation), often activating them. Phosphatases remove those phosphate groups (dephosphorylation), reversing kinase effects. The balance between these two enzyme classes controls the on/off state of most signaling proteins.",
+    "visualDescription": "A seesaw with kinase on one side adding phosphate groups and phosphatase on the other removing them",
+    "sourceName": "OpenStax Biology 2e Ch. 9.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Both are types of passive transport",
+      "Both involve the electron transport chain",
+      "Both require ATP hydrolysis",
+      "Both occur only in prokaryotes",
+      "Both are forms of active transport",
+      "Both activate downstream G proteins",
+      "Kinases remove groups; phosphatases add groups",
+      "They perform identical functions on different substrates"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_038",
+    "correctAnswer": "Ras",
+    "acceptableAlternatives": [
+      "Ras GTPase",
+      "Ras proto-oncogene"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 4,
+    "funScore": 8,
+    "quizQuestion": "What molecule or protein is a small GTPase proto-oncogene that relays signals from RTKs to the MAPK/ERK kinase cascade?",
+    "explanation": "Ras is a small monomeric GTPase that acts as a molecular switch. When active (GTP-bound), it relays signals from activated RTKs to the MAPK cascade. Mutations in Ras that prevent GTP hydrolysis lock it in the permanently active state — constitutively activated Ras is found in about 30% of human cancers.",
+    "visualDescription": "Ras protein with a GTP molecule, positioned between an activated RTK and the downstream kinase Raf",
+    "sourceName": "OpenStax Biology 2e Ch. 9.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Adenylyl cyclase",
+      "Protein kinase A",
+      "Phospholipase C",
+      "ERK (extracellular signal-regulated kinase)",
+      "cAMP",
+      "Rb protein",
+      "p53",
+      "CDK4"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_039",
+    "correctAnswer": "MAPK/ERK pathway: Ras → Raf → MEK → ERK → gene expression",
+    "acceptableAlternatives": [
+      "MAPK pathway",
+      "ERK pathway",
+      "Ras-MAPK pathway"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "process_names",
+    "difficulty": 4,
+    "funScore": 8,
+    "quizQuestion": "Which process describes the signaling cascade: Ras activates Raf, Raf activates MEK, MEK activates ERK, ERK phosphorylates transcription factors?",
+    "explanation": "The MAPK/ERK pathway is a major signaling cascade activated by RTKs. Active Ras recruits and activates Raf (a MAPKKK), which phosphorylates MEK (a MAPKK), which phosphorylates ERK (a MAPK). Activated ERK can then enter the nucleus and phosphorylate transcription factors to alter gene expression driving cell proliferation.",
+    "visualDescription": "A linear cascade: RTK → Ras → Raf → MEK → ERK → nucleus with activated transcription factors",
+    "sourceName": "OpenStax Biology 2e Ch. 9.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "cAMP-PKA pathway",
+      "IP₃-Ca²⁺-PKC pathway",
+      "JAK-STAT pathway",
+      "Wnt-β-catenin pathway",
+      "Hedgehog signaling pathway",
+      "Notch signaling pathway",
+      "mTOR pathway",
+      "NF-κB signaling pathway"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_040",
+    "correctAnswer": "ERK (extracellular signal-regulated kinase)",
+    "acceptableAlternatives": [
+      "ERK",
+      "extracellular signal-regulated kinase"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "What molecule or protein is a MAP kinase that, once activated by MEK, enters the nucleus and phosphorylates transcription factors to regulate gene expression?",
+    "explanation": "ERK is the final effector kinase in the MAPK cascade. After being doubly phosphorylated by MEK, ERK can translocate into the nucleus and phosphorylate transcription factors (such as Elk-1 and c-Fos), turning on genes that promote cell growth and division. ERK is a key target in cancer drug development.",
+    "visualDescription": "An activated ERK protein moving from the cytoplasm into the nucleus to phosphorylate transcription factor proteins",
+    "sourceName": "OpenStax Biology 2e Ch. 9.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Ras",
+      "Adenylyl cyclase",
+      "Protein kinase A",
+      "Phospholipase C",
+      "CDK1",
+      "Cyclin B",
+      "p53",
+      "Rb protein"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_041",
+    "correctAnswer": "Signal amplification",
+    "acceptableAlternatives": [
+      "amplification"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "process_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "quizQuestion": "Which process describes how one receptor activates many G proteins, each activating many enzyme molecules, each producing many second messengers — exponential signal multiplication?",
+    "explanation": "Signal amplification occurs at each step of a signaling cascade. A single ligand-receptor binding event can activate dozens of G proteins, each of which activates an enzyme that produces hundreds of second messenger molecules. This exponential multiplication means that even a tiny hormone concentration can produce a massive cellular response.",
+    "visualDescription": "A pyramid showing one receptor at the top, branching into hundreds of second messenger molecules at the bottom",
+    "sourceName": "OpenStax Biology 2e Ch. 9.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Signal termination",
+      "Phosphorylation cascade",
+      "Receptor internalization",
+      "Crosstalk between pathways",
+      "GTP hydrolysis",
+      "Signal desensitization",
+      "Ligand degradation",
+      "Second messenger degradation"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_042",
+    "correctAnswer": "Scaffold proteins",
+    "acceptableAlternatives": [
+      "scaffold protein"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "function_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "What is the function of proteins that hold signaling pathway components together in a complex, increasing efficiency and specificity of signal transduction?",
+    "explanation": "Scaffold proteins bind multiple components of a signaling pathway simultaneously, tethering them into a single complex. This proximity speeds signal relay (no need for slow diffusion), increases specificity (components are co-localized), and insulates one pathway from crosstalk with others. Key examples include IQGAP and KSR in the MAPK pathway.",
+    "visualDescription": "A scaffold protein acting as a molecular platform, holding kinases Raf, MEK, and ERK together in a single complex",
+    "sourceName": "OpenStax Biology 2e Ch. 9.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Degrades excess cyclin after mitosis",
+      "Pumps protons across the inner mitochondrial membrane",
+      "Catalyzes peptide bond formation during translation",
+      "Unwinds the DNA double helix ahead of the replication fork",
+      "Joins Okazaki fragments on the lagging strand",
+      "Generate second messengers from membrane phospholipids",
+      "Phosphorylate receptor tyrosine residues",
+      "Cleave cohesin to allow sister chromatid separation"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_043",
+    "correctAnswer": "GTP hydrolysis by the G protein α subunit",
+    "acceptableAlternatives": [
+      "GTPase activity of Gα subunit",
+      "Gα hydrolyzes GTP to GDP"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "process_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Which process terminates the G protein signal — the α subunit hydrolyzing GTP to GDP, inactivating itself?",
+    "explanation": "G protein signaling is self-limiting. The α subunit has intrinsic GTPase activity — it slowly hydrolyzes GTP to GDP. This converts it back to the GDP-bound inactive form, causing it to reassociate with the β/γ subunits and dissociate from adenylyl cyclase or other effectors, terminating the signal.",
+    "visualDescription": "The G protein α subunit converting GTP to GDP, then reuniting with β/γ subunits to become inactive again",
+    "sourceName": "OpenStax Biology 2e Ch. 9.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Receptor internalization",
+      "Phosphodiesterase degrades cAMP",
+      "Phosphatase removes phosphate from ERK",
+      "Ligand degradation",
+      "Calcium pump restores Ca²⁺ to ER",
+      "Second messenger production",
+      "Transcription factor binding to DNA",
+      "Signal amplification"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_044",
+    "correctAnswer": "Receptor internalization (endocytosis)",
+    "acceptableAlternatives": [
+      "receptor endocytosis",
+      "receptor downregulation"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "process_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Which process terminates cell signaling by endocytosing ligand-bound receptors, removing them from the cell surface?",
+    "explanation": "Receptor internalization is a key mechanism of signal termination and desensitization. After activation, receptors are phosphorylated by kinases (e.g., GRKs), which recruit arrestin proteins. This marks the receptor for clathrin-mediated endocytosis — the receptor is taken up in vesicles, removing it from the cell surface and halting signal propagation.",
+    "visualDescription": "A vesicle forming around an activated receptor on the cell surface, pulling it into the cell interior",
+    "sourceName": "OpenStax Biology 2e Ch. 9.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "GTP hydrolysis",
+      "Phosphatase dephosphorylation",
+      "Second messenger degradation",
+      "Ligand synthesis",
+      "cAMP production",
+      "Transcription factor activation",
+      "Kinetochore attachment",
+      "Signal amplification"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_045",
+    "correctAnswer": "Phosphatases dephosphorylate active signaling proteins",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "process_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which process terminates cell signaling via phosphatases removing phosphate groups from activated signaling proteins?",
+    "explanation": "Phosphatases are crucial signal terminators. After a signaling cascade fires, phosphoprotein phosphatases rapidly dephosphorylate the activated kinases and signaling proteins, switching them off. This resets the pathway to its basal state, allowing the cell to respond to the next signal accurately.",
+    "visualDescription": "Phosphatase enzymes removing phosphate groups from a chain of activated kinases, turning them gray (inactive)",
+    "sourceName": "OpenStax Biology 2e Ch. 9.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "GTP hydrolysis by Gα subunit",
+      "Receptor internalization",
+      "Second messenger degradation by phosphodiesterase",
+      "Ligand degradation by extracellular enzymes",
+      "Calcium pump activity",
+      "Transcription factor ubiquitination",
+      "Cyclin proteolysis",
+      "Nuclear export of signaling proteins"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_046",
+    "correctAnswer": "Crosstalk between pathways",
+    "acceptableAlternatives": [
+      "signal crosstalk"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "What term describes when the same second messenger or kinase is shared by multiple signaling pathways, coordinating diverse cellular responses?",
+    "explanation": "Crosstalk occurs when signaling pathways share components. For example, cAMP can activate both PKA and guanine nucleotide exchange factors (EPACs). Similarly, Ca²⁺ participates in both the IP₃ pathway and other signaling contexts. Crosstalk allows pathways to coordinate or modulate each other's responses, adding regulatory complexity.",
+    "visualDescription": "Two signaling pathways intersecting at a shared kinase node, allowing one pathway to influence the other",
+    "sourceName": "OpenStax Biology 2e Ch. 9.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Signal amplification",
+      "Convergence in signaling",
+      "Signal termination",
+      "Receptor desensitization",
+      "Second messenger degradation",
+      "Phosphorylation cascade",
+      "Scaffold protein function",
+      "Negative feedback"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_047",
+    "correctAnswer": "Convergence in signaling",
+    "acceptableAlternatives": [
+      "signaling convergence"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "What term describes when multiple different extracellular signals activate the same intracellular pathway and produce the same cellular response?",
+    "explanation": "Convergence is when different signals funnel into the same pathway. For example, multiple growth factors (EGF, PDGF, FGF) each activating their own RTK all converge on the same Ras-MAPK pathway to drive cell proliferation. This means different stimuli can produce identical cellular outcomes.",
+    "visualDescription": "Multiple different signaling molecules at the top each activating different receptors but all feeding into the same downstream kinase pathway",
+    "sourceName": "OpenStax Biology 2e Ch. 9.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Crosstalk between pathways",
+      "Signal amplification",
+      "Signal divergence",
+      "Second messenger production",
+      "Phosphorylation cascade",
+      "Signal termination",
+      "Receptor internalization",
+      "Scaffold protein assembly"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_048",
+    "correctAnswer": "Negative feedback",
+    "acceptableAlternatives": [
+      "negative feedback loop"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 8,
+    "quizQuestion": "What type of feedback is when the output of a process inhibits the process itself — the primary mechanism for maintaining homeostasis?",
+    "explanation": "Negative feedback is the most common feedback mechanism in biological systems. In negative feedback, the product or outcome of a process feeds back to inhibit or reduce further production. This self-correcting mechanism keeps variables (temperature, glucose, hormone levels) at stable set points, which is the essence of homeostasis.",
+    "visualDescription": "A circular diagram showing a process output looping back with a minus sign to inhibit the process itself",
+    "sourceName": "OpenStax Biology 2e Ch. 9.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Positive feedback",
+      "Amplification feedback",
+      "Signal convergence",
+      "Hormonal cascades",
+      "Autocrine signaling",
+      "Forward inhibition",
+      "Receptor desensitization",
+      "Allosteric inhibition"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_049",
+    "correctAnswer": "Positive feedback",
+    "acceptableAlternatives": [
+      "positive feedback loop"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 8,
+    "quizQuestion": "What type of feedback is when the output of a process amplifies the process itself, driving it to completion rather than maintaining equilibrium?",
+    "explanation": "Positive feedback loops amplify their own output. Unlike negative feedback (which opposes change), positive feedback accelerates change, rapidly driving a process to completion. Positive feedback is less common in biology because it can be destabilizing, but it is critical for events that must occur rapidly and completely (childbirth, blood clotting, action potentials).",
+    "visualDescription": "A circular diagram showing a process output looping back with a plus sign to amplify the process further",
+    "sourceName": "OpenStax Biology 2e Ch. 9.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Negative feedback",
+      "Homeostatic regulation",
+      "Signal attenuation",
+      "Set point correction",
+      "Receptor desensitization",
+      "Hormonal damping",
+      "Convergent signaling",
+      "Allosteric feedback"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_050",
+    "correctAnswer": "Homeostasis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "What is the maintenance of a stable internal environment despite changes in external conditions?",
+    "explanation": "Homeostasis is the ability of an organism to maintain a relatively constant internal environment despite external fluctuations. It is achieved primarily through negative feedback loops that detect deviations from the set point and trigger corrective responses. Examples include thermoregulation, osmoregulation, and blood glucose regulation.",
+    "visualDescription": "A body with arrows showing temperature, pH, and glucose levels fluctuating but being constantly corrected back to center",
+    "sourceName": "OpenStax Biology 2e Ch. 9.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Apoptosis",
+      "Signal amplification",
+      "Positive feedback",
+      "Equilibrium in chemical reactions",
+      "Allosteric regulation",
+      "Receptor desensitization",
+      "Endocrine signaling only",
+      "Osmosis across membranes"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_051",
+    "correctAnswer": "Set point",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What is the target value that a homeostatic system maintains — e.g., 37°C body temperature or ~90 mg/dL blood glucose?",
+    "explanation": "The set point is the 'normal' or target value around which a homeostatic feedback loop operates. When the monitored variable deviates above or below the set point, sensors detect the deviation and activate effectors that correct it. Body temperature ~37°C and blood glucose ~90 mg/dL are classic set points.",
+    "visualDescription": "A thermostat-like dial showing 37°C as the target set point for body temperature homeostasis",
+    "sourceName": "OpenStax Biology 2e Ch. 9.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Threshold potential",
+      "Equilibrium potential",
+      "Optimal pH for enzyme activity",
+      "Maximum reaction rate (Vmax)",
+      "Critical concentration for tubulin polymerization",
+      "Activation energy",
+      "Gibbs free energy minimum",
+      "Half-saturation constant (Km)"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_052",
+    "correctAnswer": "Sweating and vasodilation cool body back to 37°C set point",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "What is the classic example of negative feedback in thermoregulation — when rising body temperature triggers cooling responses?",
+    "explanation": "Thermoregulation is a textbook negative feedback loop. When body temperature rises above the set point (~37°C), the hypothalamus detects this and activates effectors: sweat glands produce sweat (evaporative cooling) and blood vessels in the skin vasodilate (dissipating heat). As the body cools back to the set point, the feedback signal diminishes and cooling responses stop.",
+    "visualDescription": "A person sweating with dilated blood vessels near the skin, with a thermometer showing temperature returning to 37°C",
+    "sourceName": "OpenStax Biology 2e Ch. 9.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Blood clotting cascade — clotting factors activate more clotting factors",
+      "Oxytocin during childbirth — contractions stimulate more oxytocin",
+      "Action potential — Na⁺ influx opens more Na⁺ channels",
+      "Insulin triggers glucagon release during hypoglycemia",
+      "Fever intensification when pathogen is detected",
+      "Rising CO₂ stimulates more CO₂ production",
+      "Epinephrine release amplifies adrenal stimulation",
+      "Blood pressure surge activates renin-angiotensin"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_053",
+    "correctAnswer": "Insulin lowers blood glucose by driving glucose into cells",
+    "acceptableAlternatives": [
+      "insulin-blood glucose negative feedback"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "What is the example of negative feedback involving insulin: rising blood glucose stimulates insulin release, which drives glucose into cells?",
+    "explanation": "Blood glucose regulation is a classic negative feedback system. When blood glucose rises (e.g., after a meal), pancreatic beta cells detect this and release insulin. Insulin signals cells (especially muscle and fat) to take up glucose and signals the liver to convert glucose to glycogen. As glucose falls back toward the set point (~90 mg/dL), beta cells reduce insulin secretion.",
+    "visualDescription": "A blood vessel with rising glucose triggering insulin release from the pancreas, then cells absorbing glucose and blood glucose falling",
+    "sourceName": "OpenStax Biology 2e Ch. 9.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Oxytocin during childbirth — contractions stimulate more oxytocin release",
+      "Blood clotting cascade — clotting factors activate more clotting factors",
+      "Action potential — Na⁺ influx opens more Na⁺ channels",
+      "Fever: rising temperature stimulates more cytokine production",
+      "Renin-angiotensin amplifies blood pressure increase",
+      "Glucagon release amplifies low blood glucose signal",
+      "Epinephrine surge amplifies fight-or-flight response",
+      "Sweating triggers more sodium loss"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_054",
+    "correctAnswer": "Clotting factors activate more clotting factors (cascade)",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 9,
+    "quizQuestion": "What is the classic example of positive feedback in blood clotting — clotting factors activating more clotting factors until the wound is sealed?",
+    "explanation": "Blood clotting is a positive feedback cascade. When a vessel is damaged, exposed collagen activates clotting factors. Each activated clotting factor activates many more, creating an explosive amplification that rapidly produces a fibrin clot. This positive feedback continues until the wound is sealed, at which point anti-clotting factors (like thrombomodulin) terminate the process.",
+    "visualDescription": "A cascade of clotting factor activations, each step producing more activated clotting factors, ending in a fibrin mesh sealing a wound",
+    "sourceName": "OpenStax Biology 2e Ch. 9.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Thermoregulation — sweating cools the body back to 37°C",
+      "Blood glucose — insulin drives glucose into cells to lower blood sugar",
+      "Kidney filtration — ADH reduces urine output to maintain osmolarity",
+      "Blood pressure — baroreceptor reflex reduces heart rate",
+      "Breathing — rising CO₂ increases breathing rate",
+      "Body temperature — shivering generates heat when cold",
+      "Blood pH — bicarbonate buffer system corrects acidity",
+      "Osmoregulation — thirst response restores fluid balance"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_055",
+    "correctAnswer": "Uterine contractions → more oxytocin → stronger contractions",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 9,
+    "quizQuestion": "What is the positive feedback example: uterine contractions stimulate more oxytocin release, intensifying contractions until delivery?",
+    "explanation": "Oxytocin-driven labor is a classic positive feedback loop. Uterine contractions stimulate the pituitary to release oxytocin. Oxytocin stimulates stronger contractions, which stimulate even more oxytocin release. This escalating cycle continues until the baby is delivered, at which point the mechanical stimulus (cervical stretching) stops and the loop terminates.",
+    "visualDescription": "A pregnant uterus with contractions triggering pituitary oxytocin release, which triggers stronger contractions in a reinforcing cycle",
+    "sourceName": "OpenStax Biology 2e Ch. 9.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Thermoregulation — sweating cools the body to 37°C (negative feedback)",
+      "Blood glucose — insulin drives glucose into cells (negative feedback)",
+      "Blood pressure baroreceptor reflex (negative feedback)",
+      "Kidney ADH response to maintain osmolarity (negative feedback)",
+      "Blood pH bicarbonate buffer system (negative feedback)",
+      "Breathing rate response to CO₂ (negative feedback)",
+      "Shivering in response to cold (negative feedback)",
+      "Osmoregulation via thirst response (negative feedback)"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_056",
+    "correctAnswer": "Na⁺ influx opens more Na⁺ channels — all-or-nothing spike",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "What is the positive feedback mechanism during action potential depolarization — Na⁺ influx causes more Na⁺ channels to open?",
+    "explanation": "The depolarization phase of an action potential is driven by positive feedback. When the membrane depolarizes enough to reach threshold, voltage-gated Na⁺ channels open, allowing Na⁺ to rush in. This inflow depolarizes the membrane further, opening more Na⁺ channels, causing even more influx — a self-amplifying loop that produces the rapid all-or-nothing upstroke of the action potential.",
+    "visualDescription": "A neuron membrane with Na+ ions rushing in, the voltage graph showing rapid depolarization, with more channels opening",
+    "sourceName": "OpenStax Biology 2e Ch. 9.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Thermoregulation — sweating cools the body (negative feedback)",
+      "Blood glucose — insulin response (negative feedback)",
+      "Oxytocin during labor (positive feedback, same category — different example)",
+      "Kidney ADH response (negative feedback)",
+      "Heart rate baroreceptor reflex (negative feedback)",
+      "Bicarbonate buffer system (negative feedback)",
+      "Glucagon release to raise blood glucose (negative feedback)",
+      "Contact inhibition stopping cell division (negative feedback)"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_057",
+    "correctAnswer": "Negative: maintains homeostasis; positive: drives completion",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "comparison_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "How does negative feedback differ from positive feedback in biological systems?",
+    "explanation": "Negative feedback opposes change by inhibiting the process that caused the deviation — it is the primary mechanism for homeostasis and stability. Positive feedback amplifies change by enhancing the initiating process — it is used for explosive, all-or-nothing events. Negative feedback is far more common; positive feedback is reserved for events that must complete quickly and completely.",
+    "visualDescription": "Side-by-side diagrams: negative feedback loop with minus signs maintaining a set point vs. positive feedback escalating upward until an end event",
+    "sourceName": "OpenStax Biology 2e Ch. 9.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Both are types of passive transport",
+      "Both involve the electron transport chain",
+      "Both require ATP hydrolysis",
+      "Both occur only in prokaryotes",
+      "Both are forms of active transport",
+      "Negative feedback amplifies; positive feedback stabilizes",
+      "Both produce the same cellular outcomes",
+      "They differ only in the speed of response"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_058",
+    "correctAnswer": "Sequence from cell formation to division into daughter cells",
+    "acceptableAlternatives": [],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "What is the cell cycle?",
+    "explanation": "The cell cycle is the complete sequence of events that a eukaryotic cell undergoes from its formation (as a daughter cell) through its own division into two daughter cells. It is divided into two major stages: interphase (growth and DNA replication) and the M phase (mitosis and cytokinesis).",
+    "visualDescription": "A circular diagram showing the cell cycle phases — G1, S, G2, and M — arranged clockwise",
+    "sourceName": "OpenStax Biology 2e Ch. 10.1",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "The process of meiosis in germ cells",
+      "The sequence of events during DNA replication only",
+      "The stages of protein synthesis",
+      "The process of mitosis only, without interphase",
+      "The sequence of phases in meiosis I and II",
+      "The stages of the lytic cycle in bacteriophage",
+      "The electron transport chain in cellular respiration",
+      "The phases of photosynthesis"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_059",
+    "correctAnswer": "Interphase",
+    "acceptableAlternatives": [],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "What is the longest phase of the cell cycle — consisting of G1, S, and G2 subphases — during which the cell grows and prepares for division?",
+    "explanation": "Interphase is the period between cell divisions and comprises about 90% of the cell cycle. During G1, the cell grows and synthesizes proteins. During S phase, DNA is replicated. During G2, the cell continues growing and prepares mitotic machinery. Interphase is metabolically active — the cell is NOT dormant.",
+    "visualDescription": "A cell cycle pie chart with interphase (G1+S+G2) taking up the majority of the circle, M phase being a thin slice",
+    "sourceName": "OpenStax Biology 2e Ch. 10.1",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "M phase (mitotic phase)",
+      "G0 phase",
+      "S phase only",
+      "G1 phase only",
+      "Cytokinesis",
+      "Prophase",
+      "Metaphase",
+      "Telophase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_060",
+    "correctAnswer": "G1 phase (first gap)",
+    "acceptableAlternatives": [
+      "G1",
+      "G1 phase"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "What is the interphase sub-phase when the cell grows in size, synthesizes proteins and organelles, and prepares to replicate its DNA?",
+    "explanation": "G1 (first gap or growth 1) is the phase between the end of the previous M phase and the start of DNA replication. The cell grows, synthesizes mRNAs and proteins, and assesses whether conditions are favorable for division. If a cell passes the G1 checkpoint (restriction point), it commits to completing the cycle.",
+    "visualDescription": "A growing cell in G1 with arrows indicating protein synthesis, organelle production, and overall cell enlargement",
+    "sourceName": "OpenStax Biology 2e Ch. 10.1",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "S phase",
+      "G2 phase",
+      "M phase",
+      "G0 phase",
+      "Prophase",
+      "Metaphase",
+      "Telophase",
+      "Cytokinesis phase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_061",
+    "correctAnswer": "S phase (synthesis phase)",
+    "acceptableAlternatives": [
+      "S phase",
+      "synthesis phase"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "What is the interphase sub-phase during which DNA replication occurs, producing two identical sister chromatids joined at the centromere?",
+    "explanation": "During S (synthesis) phase, the entire genome is replicated using semi-conservative DNA replication. Each chromosome is copied, producing two identical sister chromatids that remain joined at the centromere by cohesin proteins. After S phase, the cell has double the DNA content (4N in a diploid cell).",
+    "visualDescription": "A chromosome being duplicated, resulting in two identical sister chromatids joined at a constricted centromere",
+    "sourceName": "OpenStax Biology 2e Ch. 10.1",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "G1 phase",
+      "G2 phase",
+      "M phase",
+      "Prophase",
+      "Metaphase",
+      "Anaphase",
+      "Cytokinesis",
+      "G0 phase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_062",
+    "correctAnswer": "G2 phase (second gap)",
+    "acceptableAlternatives": [
+      "G2",
+      "G2 phase"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "What is the interphase sub-phase during which the cell continues growing and synthesizes proteins needed for mitosis (e.g., tubulin for spindle fibers)?",
+    "explanation": "G2 (second gap or growth 2) occurs after DNA replication and before mitosis. The cell continues to grow and synthesizes proteins required for cell division, including tubulin (the building block of microtubules for the spindle apparatus) and other mitotic regulators. The G2 checkpoint verifies DNA replication is complete before allowing M phase entry.",
+    "visualDescription": "A cell in G2 with duplicated chromosomes inside and tubulin subunits being synthesized for spindle formation",
+    "sourceName": "OpenStax Biology 2e Ch. 10.1",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "G1 phase",
+      "S phase",
+      "M phase",
+      "G0 phase",
+      "Prophase",
+      "Metaphase",
+      "Anaphase",
+      "Telophase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_063",
+    "correctAnswer": "M phase (mitotic phase)",
+    "acceptableAlternatives": [
+      "M phase",
+      "mitotic phase"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "What is the cell cycle phase that includes mitosis (nuclear division) and cytokinesis (cytoplasmic division)?",
+    "explanation": "The M phase is the phase of actual cell division. It begins with mitosis (the division of the nucleus and its chromosomes) and ends with cytokinesis (the division of the cytoplasm). M phase includes prophase, prometaphase, metaphase, anaphase, telophase, and cytokinesis. It is typically the shortest phase of the cell cycle.",
+    "visualDescription": "A cell in M phase showing condensed chromosomes on a spindle, with the cell beginning to pinch into two",
+    "sourceName": "OpenStax Biology 2e Ch. 10.1",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "G1 phase",
+      "S phase",
+      "G2 phase",
+      "G0 phase",
+      "Interphase",
+      "Metaphase only",
+      "Cytokinesis only",
+      "Prophase only"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_064",
+    "correctAnswer": "G0 phase",
+    "acceptableAlternatives": [
+      "G0",
+      "G-zero phase"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What is the non-dividing, quiescent state that many differentiated cells (e.g., neurons, cardiac muscle cells) permanently reside in?",
+    "explanation": "G0 is a quiescent state that cells enter when they exit the cell cycle. Some cells enter G0 temporarily (waiting for growth signals), while others remain permanently (terminally differentiated cells like neurons and cardiomyocytes). G0 cells are metabolically active but have exited the proliferative cycle. Cancer cells characteristically fail to enter or remain in G0.",
+    "visualDescription": "A neuron branching out in G0, with an arrow showing it exited from G1 without entering S phase",
+    "sourceName": "OpenStax Biology 2e Ch. 10.1",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "G1 phase",
+      "G2 phase",
+      "S phase",
+      "M phase",
+      "Prophase",
+      "Metaphase",
+      "Interphase",
+      "Telophase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_065",
+    "correctAnswer": "Prophase, prometaphase, metaphase, anaphase, telophase",
+    "acceptableAlternatives": [
+      "prophase, prometaphase, metaphase, anaphase, telophase, cytokinesis"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "process_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "quizQuestion": "Which process lists the correct order of all mitotic phases from start to finish?",
+    "explanation": "Mitosis proceeds through six sequential stages. Prophase: chromosomes condense, spindle begins forming. Prometaphase: nuclear envelope breaks down, microtubules attach to kinetochores. Metaphase: chromosomes align at the equatorial plate. Anaphase: sister chromatids separate to opposite poles. Telophase: nuclear envelopes reform. Cytokinesis: cytoplasm divides.",
+    "visualDescription": "Six cells in sequence, each showing a different phase — from condensed chromosomes (prophase) to two daughter cells (cytokinesis)",
+    "sourceName": "OpenStax Biology 2e Ch. 10.2",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Metaphase → prophase → anaphase → telophase → cytokinesis",
+      "Prophase → metaphase → anaphase → telophase → cytokinesis (skipping prometaphase)",
+      "Interphase → anaphase → metaphase → prophase → cytokinesis",
+      "Prometaphase → prophase → metaphase → anaphase → cytokinesis",
+      "G1 → S → G2 → prophase → metaphase → anaphase",
+      "Prophase → metaphase → prometaphase → anaphase → telophase",
+      "Telophase → anaphase → metaphase → prometaphase → prophase",
+      "Cytokinesis → telophase → anaphase → metaphase → prophase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_066",
+    "correctAnswer": "Prophase",
+    "acceptableAlternatives": [],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What is the first phase of mitosis — chromatin condenses into visible chromosomes, centrioles migrate to opposite poles, and the mitotic spindle begins forming?",
+    "explanation": "During prophase, the duplicated chromosomes condense from diffuse chromatin into compact, visible structures. In animal cells, the centrosomes (each containing a pair of centrioles) migrate to opposite poles and begin organizing the mitotic spindle. The nucleolus disappears. The nuclear envelope remains intact until prometaphase.",
+    "visualDescription": "A cell showing chromatin condensing into distinct chromosomes, with centrioles at opposite sides and spindle fibers beginning to form",
+    "sourceName": "OpenStax Biology 2e Ch. 10.2",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Prometaphase",
+      "Metaphase",
+      "Anaphase",
+      "Telophase",
+      "S phase",
+      "G2 phase",
+      "Cytokinesis",
+      "Interphase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_067",
+    "correctAnswer": "Prometaphase",
+    "acceptableAlternatives": [],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "What is the phase of mitosis when the nuclear envelope breaks down and kinetochore microtubules attach to the centromeres of chromosomes?",
+    "explanation": "Prometaphase begins with the breakdown of the nuclear envelope, allowing spindle microtubules to access the chromosomes. Kinetochore microtubules attach to the kinetochore protein complexes assembled at the centromere of each chromatid. Chromosomes are jostled into position as microtubules from both poles compete to capture each kinetochore.",
+    "visualDescription": "A cell with a fragmented nuclear envelope, spindle microtubules reaching in to attach to chromosome centromeres",
+    "sourceName": "OpenStax Biology 2e Ch. 10.2",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Prophase",
+      "Metaphase",
+      "Anaphase",
+      "Telophase",
+      "S phase",
+      "G2 phase",
+      "Cytokinesis",
+      "G1 checkpoint"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_068",
+    "correctAnswer": "Metaphase",
+    "acceptableAlternatives": [],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What is the phase of mitosis when chromosomes align at the cell equator (metaphase plate), with all kinetochores attached to spindle fibers from opposite poles?",
+    "explanation": "During metaphase, all chromosomes are fully condensed and aligned at the metaphase plate — an imaginary equatorial plane at the center of the cell. This alignment is achieved when tension from microtubules pulling from opposite poles balances. Metaphase is the phase used most often in karyotyping because chromosomes are maximally condensed and visible.",
+    "visualDescription": "Condensed chromosomes lined up in a single plane across the middle of the cell with spindle fibers attached to both sides",
+    "sourceName": "OpenStax Biology 2e Ch. 10.2",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Prophase",
+      "Prometaphase",
+      "Anaphase",
+      "Telophase",
+      "G2 phase",
+      "Cytokinesis",
+      "Interphase",
+      "S phase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_069",
+    "correctAnswer": "Anaphase",
+    "acceptableAlternatives": [],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "What is the phase of mitosis when cohesin proteins are cleaved, sister chromatids separate, and are pulled to opposite poles by shortening kinetochore microtubules?",
+    "explanation": "Anaphase begins when separase cleaves cohesin, releasing sister chromatids from each other. Kinetochore microtubules shorten, pulling each chromatid toward its respective pole. Simultaneously, polar microtubules push the poles apart (cell elongates). By the end of anaphase, the two groups of chromosomes have reached opposite poles.",
+    "visualDescription": "A cell stretching with sister chromatids being pulled apart to opposite ends, the cell visibly elongating",
+    "sourceName": "OpenStax Biology 2e Ch. 10.2",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Prophase",
+      "Prometaphase",
+      "Metaphase",
+      "Telophase",
+      "G2 phase",
+      "Cytokinesis",
+      "G0 phase",
+      "Interphase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_070",
+    "correctAnswer": "Telophase",
+    "acceptableAlternatives": [],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What is the phase of mitosis when nuclear envelopes reform around each set of chromosomes, chromosomes decondense, and the spindle apparatus disassembles?",
+    "explanation": "Telophase essentially reverses prophase. Nuclear envelopes reform around each set of chromosomes at the poles. Chromosomes begin to decondense back into chromatin. The nucleolus reappears. The spindle microtubules depolymerize. Telophase ends when cytokinesis divides the cytoplasm, completing cell division.",
+    "visualDescription": "Two groups of chromosomes at opposite poles of an elongated cell, each surrounded by a reforming nuclear envelope, spindle fading",
+    "sourceName": "OpenStax Biology 2e Ch. 10.2",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Prophase",
+      "Prometaphase",
+      "Metaphase",
+      "Anaphase",
+      "G2 phase",
+      "S phase",
+      "Cytokinesis",
+      "Interphase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_071",
+    "correctAnswer": "Actin-myosin contractile ring pinches animal cell into two",
+    "acceptableAlternatives": [
+      "cleavage furrow"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Which process describes cytokinesis in animal cells — a contractile ring of actin filaments and myosin motors pinches the cell into two?",
+    "explanation": "Animal cell cytokinesis uses a cleavage furrow. A contractile ring composed of actin filaments and myosin II motor proteins assembles beneath the plasma membrane at the cell equator. As myosin walks along actin, the ring constricts, progressively pinching the cell until two daughter cells are produced.",
+    "visualDescription": "An animal cell pinching in at its equator, with a cleavage furrow deepening as actin-myosin contracts",
+    "sourceName": "OpenStax Biology 2e Ch. 10.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Cell plate formation from Golgi vesicles growing outward",
+      "Nuclear envelope breakdown and reformation",
+      "Kinetochore microtubule shortening pulling chromatids apart",
+      "Cohesin cleavage releasing sister chromatids",
+      "Tubulin polymerization building the spindle",
+      "Separase activation cleaving cohesins",
+      "Chromosome decondensation at telophase",
+      "cAMP production triggering cytoplasmic division"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_072",
+    "correctAnswer": "Golgi vesicles fuse at equator building outward cell plate",
+    "acceptableAlternatives": [
+      "cell plate formation"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Which process describes cytokinesis in plant cells — Golgi-derived vesicles fuse at the equator forming a cell plate that grows outward?",
+    "explanation": "Plant cells cannot form a cleavage furrow because their rigid cell walls prevent membrane inward pinching. Instead, Golgi-derived vesicles containing cell wall precursors (cellulose and pectin) migrate to the cell equator along the phragmoplast (spindle remnant). These vesicles fuse to form the cell plate, which grows outward until it fuses with the existing cell wall, dividing the cell.",
+    "visualDescription": "A plant cell with vesicles fusing at the equator to form a flat plate growing outward to become a new cell wall",
+    "sourceName": "OpenStax Biology 2e Ch. 10.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Actin-myosin contractile ring pinching the cell in two",
+      "Nuclear envelope breakdown driving cytoplasmic division",
+      "Kinetochore microtubule shortening separating cytoplasm",
+      "Cohesin cleavage followed by cytoplasmic separation",
+      "Tubulin polymerization into the new plasma membrane",
+      "Separase enzyme cleaving the cytoplasm",
+      "cAMP-triggered membrane fission",
+      "Membrane blebbing at telophase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_073",
+    "correctAnswer": "Animal: cleavage furrow; plant: cell plate (Golgi vesicles)",
+    "acceptableAlternatives": [],
+    "chainThemeId": 8,
+    "answerTypePoolId": "comparison_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "How does cytokinesis differ between animal and plant cells?",
+    "explanation": "The key difference is the presence of a cell wall in plants. Animal cells divide cytoplasmically by actin-myosin contracting a cleavage furrow inward. Plant cells cannot furrow inward because the rigid cell wall would block it; instead, Golgi vesicles fuse to build a new cell plate that expands outward from the center until it contacts the existing cell wall.",
+    "visualDescription": "Two side-by-side cells: an animal cell furrowing inward vs. a plant cell growing a cell plate outward from its center",
+    "sourceName": "OpenStax Biology 2e Ch. 10.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Both are types of passive transport",
+      "Both involve the electron transport chain",
+      "Both require ATP hydrolysis",
+      "Both occur only in prokaryotes",
+      "Both are forms of active transport",
+      "Animal cells form a cell plate; plant cells furrow inward",
+      "Both use identical actin-myosin rings",
+      "Plant cells use gap junctions to separate; animal cells use plasmodesmata"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_074",
+    "correctAnswer": "Sister chromatids",
+    "acceptableAlternatives": [
+      "sister chromatid"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What are the two identical copies of a duplicated chromosome, joined at the centromere after S phase, that separate during anaphase?",
+    "explanation": "After DNA replication in S phase, each chromosome consists of two identical copies called sister chromatids. They are held together by cohesin protein complexes, especially at the centromere. During anaphase, the enzyme separase cleaves cohesin, allowing the sister chromatids to be pulled to opposite poles — each then becoming its own chromosome in a daughter cell.",
+    "visualDescription": "An X-shaped chromosome structure showing two identical chromatids joined at the centromere region",
+    "sourceName": "OpenStax Biology 2e Ch. 10.2",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Homologous chromosomes",
+      "Non-sister chromatids",
+      "Bivalents",
+      "Tetrads",
+      "Autosomes",
+      "Sex chromosomes",
+      "Nucleosomes",
+      "Centromeres"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_075",
+    "correctAnswer": "Kinetochore",
+    "acceptableAlternatives": [
+      "kinetochore complex"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "What is the protein structure at the centromere of each chromatid where spindle microtubules attach during mitosis?",
+    "explanation": "The kinetochore is a specialized protein complex built on the centromere of each chromatid. Kinetochore microtubules (from opposite poles) capture kinetochores during prometaphase. The spindle assembly checkpoint monitors kinetochore-microtubule attachment — only when all kinetochores are properly attached will the cell proceed from metaphase to anaphase.",
+    "visualDescription": "An electron-dense protein disc (kinetochore) on a chromosome centromere, with microtubules emanating from it toward the spindle pole",
+    "sourceName": "OpenStax Biology 2e Ch. 10.2",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Centrosome",
+      "Centriole",
+      "Cohesin complex",
+      "Spindle pole body",
+      "Telomere",
+      "Nucleosome",
+      "Origin of replication",
+      "Condensin complex"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_076",
+    "correctAnswer": "Metaphase plate",
+    "acceptableAlternatives": [
+      "cell equator"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What is the imaginary plane at the cell equator where chromosomes align during metaphase — not a physical structure?",
+    "explanation": "The metaphase plate is not a physical entity — it is an imaginary equatorial plane perpendicular to the spindle axis. Chromosomes align their centromeres on this plane during metaphase because they are under equal tension from microtubules pulling from both poles. This ensures each daughter cell will receive one copy of each chromatid.",
+    "visualDescription": "A cell with chromosomes arranged in a flat plane exactly at the midpoint between the two poles",
+    "sourceName": "OpenStax Biology 2e Ch. 10.2",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Cleavage furrow",
+      "Cell plate",
+      "Kinetochore",
+      "Centrosome",
+      "Phragmoplast",
+      "Spindle midzone",
+      "Nuclear lamina",
+      "Contractile ring"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_077",
+    "correctAnswer": "Cohesin",
+    "acceptableAlternatives": [
+      "cohesin complex"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 4,
+    "funScore": 8,
+    "quizQuestion": "What molecule or protein holds sister chromatids together after replication and is cleaved by separase at the onset of anaphase?",
+    "explanation": "Cohesin is a ring-shaped protein complex (SMC family) that encircles both sister chromatids, holding them together from S phase through metaphase. At the metaphase-to-anaphase transition, the APC/C ubiquitinates securin, releasing active separase, which then cleaves cohesin, allowing sister chromatids to be pulled to opposite poles.",
+    "visualDescription": "A ring-shaped cohesin complex encircling two sister chromatids, then a scissors (separase) cutting it at anaphase",
+    "sourceName": "OpenStax Biology 2e Ch. 10.2",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "NADH",
+      "ATP synthase",
+      "RNA polymerase",
+      "Helicase",
+      "Telomerase",
+      "GTPase-activating protein",
+      "Separase enzyme",
+      "Condensin complex"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_078",
+    "correctAnswer": "Binary fission",
+    "acceptableAlternatives": [
+      "prokaryotic binary fission"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which process describes prokaryotic cell division — the circular chromosome replicates, the cell elongates, and divides without a spindle or mitosis?",
+    "explanation": "Binary fission is the reproductive mechanism of prokaryotes. The single circular chromosome replicates (bidirectionally from oriC), and as the cell elongates, the two chromosomes are pulled to opposite ends by attachment to the elongating cell membrane. FtsZ proteins form a Z-ring that constricts and divides the cell — no spindle, no nuclear envelope breakdown.",
+    "visualDescription": "A rod-shaped bacterium elongating with two copies of its circular chromosome moving to opposite ends, then pinching into two cells",
+    "sourceName": "OpenStax Biology 2e Ch. 10.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Mitosis",
+      "Meiosis",
+      "Cytokinesis via cleavage furrow",
+      "Cell plate formation",
+      "Budding (in yeast)",
+      "Conjugation in bacteria",
+      "Transduction",
+      "Transformation"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_079",
+    "correctAnswer": "Mitosis: spindle + phases; binary fission: no spindle",
+    "acceptableAlternatives": [],
+    "chainThemeId": 8,
+    "answerTypePoolId": "comparison_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "How does mitosis differ from binary fission?",
+    "explanation": "Mitosis is the eukaryotic nuclear division process featuring chromosome condensation, spindle apparatus formation, nuclear envelope breakdown and reformation, and distinct phases (prophase through telophase). Binary fission is the prokaryotic equivalent — simpler, faster, with no spindle, no condensed chromosomes, and no nuclear envelope (prokaryotes have no nucleus).",
+    "visualDescription": "Two side-by-side diagrams: a eukaryotic cell with a spindle and condensed chromosomes vs. a bacterium elongating and splitting without any spindle",
+    "sourceName": "OpenStax Biology 2e Ch. 10.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Both are types of passive transport",
+      "Both involve the electron transport chain",
+      "Both require ATP hydrolysis",
+      "Both occur only in prokaryotes",
+      "Both are forms of active transport",
+      "Mitosis uses FtsZ rings; binary fission uses spindle fibers",
+      "Both produce haploid daughter cells",
+      "Binary fission occurs in eukaryotes; mitosis in prokaryotes"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_080",
+    "correctAnswer": "Cyclins",
+    "acceptableAlternatives": [
+      "cyclin proteins"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "What molecule or protein is a regulatory protein whose concentration rises and falls in a predictable pattern during the cell cycle to activate CDKs?",
+    "explanation": "Cyclins are regulatory proteins that accumulate and degrade in a tightly timed pattern during the cell cycle. Each cyclin binds and activates its specific CDK partner only when it reaches sufficient concentration. At the end of each phase, the cyclin is rapidly degraded by the proteasome (via ubiquitination), inactivating its CDK and ensuring unidirectional cell cycle progression.",
+    "visualDescription": "A graph showing cyclin concentration rising and falling through the cell cycle phases like a wave, with CDK activity peaking when cyclin is highest",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "NADH",
+      "ATP synthase",
+      "RNA polymerase",
+      "Helicase",
+      "Telomerase",
+      "GTPase-activating protein",
+      "CDK (cyclin-dependent kinase)",
+      "p53 tumor suppressor"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_081",
+    "correctAnswer": "CDKs (cyclin-dependent kinases)",
+    "acceptableAlternatives": [
+      "CDKs",
+      "CDK",
+      "cyclin-dependent kinases"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "What molecule or protein is a cell cycle kinase that is only active when bound to its specific cyclin partner, phosphorylating targets to advance the cell cycle?",
+    "explanation": "CDKs are protein kinases that require a cyclin partner to become active — hence 'cyclin-dependent.' Different CDK-cyclin complexes phosphorylate different target proteins at different cell cycle stages. For example, CDK1-Cyclin B phosphorylates proteins needed to condense chromosomes and form the mitotic spindle.",
+    "visualDescription": "A CDK protein inactive alone, then paired with a cyclin becoming active and adding phosphate to a target protein",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "NADH",
+      "ATP synthase",
+      "RNA polymerase",
+      "Helicase",
+      "Telomerase",
+      "GTPase-activating protein",
+      "Cyclin proteins alone",
+      "Rb tumor suppressor"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_082",
+    "correctAnswer": "Cyclin D + CDK4/6",
+    "acceptableAlternatives": [
+      "Cyclin D-CDK4/6 complex"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 4,
+    "funScore": 8,
+    "quizQuestion": "What molecule or protein is the G1 cyclin-CDK complex that phosphorylates Rb, pushing the cell toward the G1 checkpoint and commitment to division?",
+    "explanation": "Cyclin D is induced by growth factor signaling during G1. The Cyclin D-CDK4/6 complex phosphorylates the Rb (retinoblastoma) protein, partially inactivating it. This releases some E2F transcription factors, promoting entry further into G1. Cyclin D-CDK4/6 is a major oncogenic target — it is overactive in many cancers.",
+    "visualDescription": "Cyclin D binding to CDK4 in G1, the complex approaching and phosphorylating the Rb tumor suppressor protein",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "NADH",
+      "ATP synthase",
+      "RNA polymerase",
+      "Helicase",
+      "Telomerase",
+      "GTPase-activating protein",
+      "Cyclin B + CDK1 (MPF)",
+      "Cyclin E + CDK2"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_083",
+    "correctAnswer": "Cyclin E + CDK2",
+    "acceptableAlternatives": [
+      "Cyclin E-CDK2 complex"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "What molecule or protein drives the G1-to-S transition (restriction point passage) and triggers initiation of DNA replication?",
+    "explanation": "Cyclin E accumulates late in G1 and pairs with CDK2 to drive cells past the restriction point into S phase. The Cyclin E-CDK2 complex hyperphosphorylates Rb, fully releasing E2F transcription factors that activate genes needed for DNA replication. Once past this restriction point, the cell is committed to dividing even if growth factors are removed.",
+    "visualDescription": "A cell in late G1 with Cyclin E-CDK2 complex fully phosphorylating Rb, freeing E2F to activate S-phase genes",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "NADH",
+      "ATP synthase",
+      "RNA polymerase",
+      "Helicase",
+      "Telomerase",
+      "GTPase-activating protein",
+      "Cyclin B + CDK1 (MPF)",
+      "Cyclin D + CDK4/6"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_084",
+    "correctAnswer": "Cyclin B + CDK1 (MPF, M-Phase Promoting Factor)",
+    "acceptableAlternatives": [
+      "MPF",
+      "Cyclin B-CDK1",
+      "M-Phase Promoting Factor"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 4,
+    "funScore": 9,
+    "quizQuestion": "What molecule or protein is the cyclin-CDK complex that drives entry into mitosis, phosphorylating proteins needed for chromosome condensation and spindle formation?",
+    "explanation": "MPF (M-Phase Promoting Factor) is the Cyclin B-CDK1 complex. It was originally discovered in frog eggs by Masui and Markert. MPF phosphorylates lamins (causing nuclear envelope breakdown), condensins (promoting chromosome condensation), and other targets that reorganize the cell for mitosis. Cyclin B is then degraded by APC/C to inactivate CDK1 and allow mitotic exit.",
+    "visualDescription": "Cyclin B accumulating and binding CDK1, the complex triggering chromosome condensation and nuclear envelope breakdown",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "NADH",
+      "ATP synthase",
+      "RNA polymerase",
+      "Helicase",
+      "Telomerase",
+      "GTPase-activating protein",
+      "Cyclin D + CDK4/6",
+      "Cyclin E + CDK2"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_085",
+    "correctAnswer": "G1 checkpoint (restriction point)",
+    "acceptableAlternatives": [
+      "restriction point",
+      "G1 checkpoint"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "What is the major cell cycle decision point in late G1 that checks cell size, nutrient availability, growth factor signals, and DNA integrity before committing to division?",
+    "explanation": "The G1 checkpoint (also called the restriction point or Start in yeast) is the most important cell cycle commitment point. The cell integrates signals about cell size, extracellular nutrients and growth factors, and DNA integrity. If all signals are positive, the cell passes the checkpoint and irreversibly commits to completing the cycle. If not, the cell exits to G0.",
+    "visualDescription": "A checkpoint gate at the G1-to-S transition with checklist items: correct cell size, growth factors present, DNA undamaged — all must be checked to proceed",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "G2 checkpoint",
+      "Spindle assembly checkpoint (M checkpoint)",
+      "Restriction point for protein synthesis",
+      "Apoptosis checkpoint",
+      "DNA replication checkpoint mid-S phase",
+      "MAPK activation threshold",
+      "Nutrient sensing checkpoint in mitochondria",
+      "cAMP concentration threshold"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_086",
+    "correctAnswer": "G2 checkpoint",
+    "acceptableAlternatives": [
+      "G2/M checkpoint"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What is the cell cycle checkpoint that verifies DNA replication is complete and no DNA damage is present before allowing entry into mitosis?",
+    "explanation": "The G2 checkpoint acts as a second safety gate before the cell begins mitosis. It verifies that DNA replication in S phase is complete and accurate, and that no DNA damage remains unrepaired. If DNA damage is detected, ATM/ATR kinases activate p53, which halts the cycle. Passing this checkpoint allows MPF (Cyclin B-CDK1) to drive the cell into M phase.",
+    "visualDescription": "A checkpoint gate at the G2-to-M boundary, checking two items: DNA replication complete and DNA undamaged",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "G1 checkpoint (restriction point)",
+      "Spindle assembly checkpoint",
+      "S phase checkpoint",
+      "Post-mitotic checkpoint",
+      "Apoptosis checkpoint",
+      "Nutrient checkpoint",
+      "Cyclin B degradation checkpoint",
+      "Telomere length checkpoint"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_087",
+    "correctAnswer": "Spindle assembly checkpoint (M checkpoint)",
+    "acceptableAlternatives": [
+      "spindle checkpoint",
+      "SAC",
+      "M checkpoint"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 9,
+    "quizQuestion": "What is the cell cycle checkpoint that ensures all kinetochores are properly attached to spindle fibers before allowing anaphase, preventing chromosome mis-segregation?",
+    "explanation": "The spindle assembly checkpoint (SAC) is the last gate before chromosome segregation. It is monitored by the mitotic checkpoint complex (MCC), which inhibits APC/C as long as any kinetochore remains unattached to spindle fibers. When all kinetochores are properly attached, MCC inhibition is relieved, APC/C activates, separase cleaves cohesin, and anaphase begins. Defects in the SAC cause aneuploidy.",
+    "visualDescription": "A cell in metaphase with a sensor at one unattached kinetochore blocking anaphase — only when the last kinetochore attaches does the signal release",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "G1 checkpoint (restriction point)",
+      "G2 checkpoint",
+      "DNA damage checkpoint",
+      "Apoptosis checkpoint",
+      "Nutrient sensing checkpoint",
+      "Cytokinesis initiation checkpoint",
+      "S phase DNA replication checkpoint",
+      "Telomere length checkpoint"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_088",
+    "correctAnswer": "p53",
+    "acceptableAlternatives": [
+      "TP53",
+      "p53 tumor suppressor"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 3,
+    "funScore": 10,
+    "quizQuestion": "What molecule or protein is the 'guardian of the genome' — a tumor suppressor activated by DNA damage that triggers cell cycle arrest or apoptosis if damage is irreparable?",
+    "explanation": "p53 is the most commonly mutated tumor suppressor in human cancer (altered in >50% of cancers). When DNA is damaged, p53 is stabilized by phosphorylation. It then activates p21 (a CDK inhibitor) to halt the cell cycle in G1, allowing DNA repair. If the damage is irreparable, p53 activates pro-apoptotic genes (e.g., Bax). Loss of p53 allows damaged cells to continue dividing.",
+    "visualDescription": "A DNA strand with a damage mark, triggering p53 protein to accumulate and either activate repair proteins or trigger cell death",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "NADH",
+      "ATP synthase",
+      "RNA polymerase",
+      "Helicase",
+      "Telomerase",
+      "GTPase-activating protein",
+      "Rb protein",
+      "CDK4"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_089",
+    "correctAnswer": "Rb (retinoblastoma protein)",
+    "acceptableAlternatives": [
+      "Rb",
+      "pRb",
+      "retinoblastoma protein"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 4,
+    "funScore": 9,
+    "quizQuestion": "What molecule or protein is a tumor suppressor that in its unphosphorylated form binds and blocks E2F transcription factors, preventing G1-to-S transition?",
+    "explanation": "Rb is a critical brake on the cell cycle. Unphosphorylated Rb binds E2F transcription factors, keeping them inactive and preventing S-phase gene expression. Growth factors trigger Cyclin D-CDK4/6, which progressively phosphorylates Rb. Hyperphosphorylated Rb releases E2F, which then activates genes needed for S phase entry. Rb is inactivated in many cancers.",
+    "visualDescription": "Unphosphorylated Rb gripping E2F, preventing it from activating S-phase genes, then phosphorylated Rb releasing E2F",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "NADH",
+      "ATP synthase",
+      "RNA polymerase",
+      "Helicase",
+      "Telomerase",
+      "GTPase-activating protein",
+      "p53 tumor suppressor",
+      "Cyclin B"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_090",
+    "correctAnswer": "E2F transcription factors",
+    "acceptableAlternatives": [
+      "E2F",
+      "E2F factors"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 4,
+    "funScore": 8,
+    "quizQuestion": "What molecule or protein activates S-phase genes, is held inactive by unphosphorylated Rb, and is released when Rb is phosphorylated by Cyclin D-CDK4/6?",
+    "explanation": "E2F transcription factors drive expression of genes needed for DNA replication and S-phase progression (e.g., cyclin E, dihydrofolate reductase, DNA polymerase subunits). They are held sequestered by Rb. When growth factor signaling causes Cyclin D-CDK4/6 to phosphorylate Rb, Rb releases E2F, which enters the nucleus and activates S-phase genes.",
+    "visualDescription": "E2F transcription factor being released from Rb after Rb phosphorylation, then E2F entering the nucleus to activate S-phase gene expression",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "NADH",
+      "ATP synthase",
+      "RNA polymerase",
+      "Helicase",
+      "Telomerase",
+      "GTPase-activating protein",
+      "p53 tumor suppressor",
+      "Cohesin complex"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_091",
+    "correctAnswer": "Proto-oncogenes",
+    "acceptableAlternatives": [
+      "proto-oncogene"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 9,
+    "quizQuestion": "What are normal cellular genes that promote cell growth and division (e.g., Ras, Myc) that become oncogenes when mutated to a constitutively active form?",
+    "explanation": "Proto-oncogenes are normal genes encoding proteins that promote cell division (growth factors, receptors, signal transducers, transcription factors). They are essential for normal growth and development. When mutated to gain-of-function forms (oncogenes), they drive uncontrolled cell proliferation. Classic examples: Ras (GTPase), Myc (transcription factor), ErbB2/HER2 (RTK).",
+    "visualDescription": "A normal proto-oncogene acting as a controlled on-switch for cell division, then a mutated oncogene stuck permanently ON",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Tumor suppressor genes",
+      "Oncogenes (already mutated)",
+      "Housekeeping genes",
+      "Apoptosis genes",
+      "Telomere-maintenance genes",
+      "DNA repair genes",
+      "Mismatch repair genes",
+      "Structural genes encoding cytoskeletal proteins"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_092",
+    "correctAnswer": "Oncogenes",
+    "acceptableAlternatives": [
+      "oncogene"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 9,
+    "quizQuestion": "What are mutated or overexpressed proto-oncogenes that drive uncontrolled cell proliferation, acting as constitutively active accelerators of the cell cycle?",
+    "explanation": "Oncogenes arise from gain-of-function mutations in proto-oncogenes. They require only one mutated allele to exert their cancer-promoting effect (dominant). An oncogene product is constitutively active — it continuously drives cell proliferation regardless of external signals. Examples: Ras with Gly12Val mutation (cannot hydrolyze GTP), amplified HER2 in breast cancer.",
+    "visualDescription": "A mutated Ras protein stuck in the GTP-bound ON state, continuously sending proliferation signals even without growth factor input",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Tumor suppressor genes",
+      "Proto-oncogenes (normal state)",
+      "Housekeeping genes",
+      "Apoptosis genes",
+      "Telomere-maintenance genes",
+      "DNA repair genes",
+      "Recessive loss-of-function mutations",
+      "Cell adhesion molecule genes"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_093",
+    "correctAnswer": "Tumor suppressor genes",
+    "acceptableAlternatives": [
+      "tumor suppressor gene",
+      "tumor suppressors"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 9,
+    "quizQuestion": "What are genes that inhibit cell division or promote apoptosis (e.g., p53, Rb, APC) — whose loss of function contributes to cancer?",
+    "explanation": "Tumor suppressor genes encode proteins that normally restrain cell division, repair DNA, or trigger apoptosis. They act recessively — both alleles must be inactivated to lose tumor suppression (two-hit hypothesis). Classic examples: p53 (DNA damage response), Rb (G1-S checkpoint), APC (Wnt pathway brake), BRCA1/2 (DNA repair). Loss of these genes is a hallmark of cancer.",
+    "visualDescription": "A brake pedal labeled Rb/p53 slowing the cell cycle, then both copies of the gene lost, leaving no brake and runaway division",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Oncogenes",
+      "Proto-oncogenes",
+      "Housekeeping genes",
+      "Growth factor receptor genes",
+      "mRNA stability regulators",
+      "Spindle assembly genes",
+      "Cell adhesion molecule genes",
+      "Telomerase genes"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_094",
+    "correctAnswer": "Proto-oncogenes dominant gain-of-function; suppressors loss",
+    "acceptableAlternatives": [],
+    "chainThemeId": 8,
+    "answerTypePoolId": "comparison_terms",
+    "difficulty": 3,
+    "funScore": 9,
+    "quizQuestion": "How do proto-oncogenes differ from tumor suppressor genes in their role in cancer?",
+    "explanation": "Proto-oncogenes promote division and become dominant oncogenes when gain-of-function mutations cause them to be constitutively active — one mutated allele is enough. Tumor suppressors inhibit division; loss-of-function mutations are typically recessive, requiring both alleles to be inactivated (two-hit hypothesis). Cancer generally requires mutations in both types of genes.",
+    "visualDescription": "Two lanes: left shows an accelerator (proto-oncogene) stuck down; right shows two brake pads (both tumor suppressor alleles) removed — both lead to uncontrolled cell division",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Both are types of passive transport",
+      "Both involve the electron transport chain",
+      "Both require ATP hydrolysis",
+      "Both occur only in prokaryotes",
+      "Both are forms of active transport",
+      "Proto-oncogenes brake the cycle; tumor suppressors accelerate it",
+      "Both are recessive loss-of-function mutations",
+      "Both are dominant gain-of-function mutations"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_095",
+    "correctAnswer": "Cancer",
+    "acceptableAlternatives": [
+      "malignant tumor",
+      "neoplasia"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 9,
+    "quizQuestion": "What is the disease of uncontrolled cell division resulting from accumulation of mutations in both proto-oncogenes AND tumor suppressor genes?",
+    "explanation": "Cancer is not caused by a single mutation but by an accumulation of multiple mutations over time. A cell typically needs 4–6 driver mutations — in both pro-growth genes (proto-oncogenes) and in braking genes (tumor suppressors) — to become fully malignant. These mutations disable checkpoints, evade apoptosis, promote angiogenesis, and enable metastasis.",
+    "visualDescription": "A normal cell accumulating multiple DNA mutations over time, eventually escaping all growth controls and dividing uncontrollably into a tumor mass",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Apoptosis",
+      "Senescence",
+      "Contact inhibition",
+      "Aneuploidy only",
+      "A single mutation in Ras",
+      "Loss of one tumor suppressor allele",
+      "Overproduction of cyclins alone",
+      "A defect in cytokinesis only"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_096",
+    "correctAnswer": "Apoptosis",
+    "acceptableAlternatives": [
+      "programmed cell death"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "quizQuestion": "Which process describes programmed cell death executed by a caspase protease cascade — important for development, immune function, and preventing cancer?",
+    "explanation": "Apoptosis is an orderly, genetically programmed form of cell death. The cell activates caspase proteases (executioner enzymes) that systematically dismantle the cell: DNA is cleaved by endonucleases, cytoskeletal proteins are degraded, and the cell is packaged into apoptotic bodies that are phagocytosed. Apoptosis is critical for removing damaged, abnormal, or unneeded cells without triggering inflammation.",
+    "visualDescription": "A cell shrinking and fragmenting into neat apoptotic bodies being engulfed by a neighboring macrophage",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Necrosis",
+      "Autophagy",
+      "Mitosis",
+      "Cytokinesis",
+      "Senescence",
+      "Binary fission",
+      "Signal amplification",
+      "Contact inhibition"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_097",
+    "correctAnswer": "Growth factors (e.g., PDGF, EGF)",
+    "acceptableAlternatives": [
+      "growth factors",
+      "PDGF",
+      "EGF"
+    ],
+    "chainThemeId": 8,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What molecule or protein is an extracellular protein that stimulates cell division by binding receptors — examples include platelet-derived growth factor (PDGF) and epidermal growth factor (EGF)?",
+    "explanation": "Growth factors are secreted proteins that signal cells to grow and divide. PDGF is released by platelets at wound sites, stimulating nearby fibroblasts to divide and repair tissue. EGF stimulates epidermal cell proliferation. Both bind RTKs, activating the MAPK/ERK cascade. Overexpression or constitutive activation of growth factor receptors is a common feature of cancer.",
+    "visualDescription": "PDGF molecules released from platelets binding to RTKs on fibroblasts, triggering cell division for wound healing",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "NADH",
+      "ATP synthase",
+      "RNA polymerase",
+      "Helicase",
+      "Telomerase",
+      "GTPase-activating protein",
+      "Second messengers (cAMP, IP₃)",
+      "Cyclins"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_098",
+    "correctAnswer": "Contact inhibition",
+    "acceptableAlternatives": [],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 9,
+    "quizQuestion": "What is the phenomenon where normal cells stop dividing when they come into physical contact with neighboring cells — a property lost in cancer cells?",
+    "explanation": "Contact inhibition is a property of normal cells: when they contact neighboring cells, growth-inhibitory signals are triggered and division stops. This is why normal cells form a single-cell-thick monolayer in culture. Cancer cells lose contact inhibition and continue proliferating even when crowded, piling up into multiple layers. Loss of contact inhibition is a hallmark of malignant transformation.",
+    "visualDescription": "Normal cells forming a neat monolayer and stopping when touching each other, vs. cancer cells piling up into a disorganized mass",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Apoptosis",
+      "Senescence",
+      "Anchorage dependence",
+      "Anoikis",
+      "Autocrine signaling loop",
+      "Tumor suppressor gene expression",
+      "G0 phase quiescence",
+      "Spindle assembly checkpoint"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_099",
+    "correctAnswer": "Metastasis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 8,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "What is the spread of cancer cells from the primary tumor to distant sites via the bloodstream or lymphatic system?",
+    "explanation": "Metastasis is the process by which cancer cells detach from the primary tumor, invade surrounding tissues, enter the bloodstream or lymphatic system, and colonize distant organs. It is the principal cause of cancer-related death. Metastatic cells must survive detachment from the extracellular matrix (evading anoikis), travel through circulation, extravasate, and establish in a new tissue.",
+    "visualDescription": "Cancer cells detaching from a primary tumor, entering a blood vessel, traveling to a distant organ and seeding a secondary tumor",
+    "sourceName": "OpenStax Biology 2e Ch. 10.4",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Apoptosis",
+      "Contact inhibition",
+      "Angiogenesis",
+      "Senescence",
+      "Cell cycle arrest",
+      "DNA damage response",
+      "Proto-oncogene amplification",
+      "Loss of heterozygosity"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_100",
+    "correctAnswer": "Phospholipase C",
+    "acceptableAlternatives": [
+      "PLC"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "What molecule or protein cleaves the membrane lipid PIP₂ to produce the two second messengers IP₃ and DAG?",
+    "explanation": "Phospholipase C (PLC) is a membrane-associated enzyme activated by Gq-type G proteins or by RTKs. It cleaves PIP₂ (phosphatidylinositol 4,5-bisphosphate) in the inner leaflet of the plasma membrane into two second messengers: IP₃ (water-soluble, diffuses to ER to release Ca²⁺) and DAG (lipid-soluble, stays in membrane to activate PKC).",
+    "visualDescription": "Phospholipase C cutting the PIP₂ phospholipid head group into IP₃ (shown drifting toward the ER) and DAG (remaining in the membrane)",
+    "sourceName": "OpenStax Biology 2e Ch. 9.2",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "NADH",
+      "ATP synthase",
+      "RNA polymerase",
+      "Helicase",
+      "Telomerase",
+      "GTPase-activating protein",
+      "Adenylyl cyclase",
+      "Protein kinase C"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_101",
+    "correctAnswer": "Calmodulin",
+    "acceptableAlternatives": [
+      "calmodulin protein"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "What molecule or protein is a Ca²⁺-binding protein that undergoes a conformational change upon Ca²⁺ binding, allowing it to activate downstream target enzymes?",
+    "explanation": "Calmodulin is a ubiquitous Ca²⁺ sensor protein. When cytoplasmic Ca²⁺ rises (e.g., after IP₃ stimulation), four Ca²⁺ ions bind calmodulin, causing it to change shape. This Ca²⁺-calmodulin complex activates calmodulin-dependent kinases (CaMKs) and other enzymes, coupling Ca²⁺ signals to diverse cellular responses including muscle contraction and neurotransmitter release.",
+    "visualDescription": "Four calcium ions binding to a calmodulin protein, causing it to wrap around and activate a kinase enzyme",
+    "sourceName": "OpenStax Biology 2e Ch. 9.2",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "NADH",
+      "ATP synthase",
+      "RNA polymerase",
+      "Helicase",
+      "Telomerase",
+      "GTPase-activating protein",
+      "Protein kinase A",
+      "Adenylyl cyclase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_102",
+    "correctAnswer": "Phosphodiesterase",
+    "acceptableAlternatives": [
+      "PDE"
+    ],
+    "chainThemeId": 7,
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 4,
+    "funScore": 6,
+    "quizQuestion": "What molecule or protein degrades cAMP into AMP, terminating cAMP-mediated signaling pathways?",
+    "explanation": "Phosphodiesterases (PDEs) are a family of enzymes that hydrolyze the phosphodiester bond in cAMP, converting it to the inactive 5'-AMP. By degrading cAMP, PDEs terminate PKA activation and reset the signaling pathway. PDE inhibitors (e.g., caffeine, sildenafil/Viagra) prolong cAMP/cGMP signaling by blocking cAMP/cGMP degradation.",
+    "visualDescription": "A phosphodiesterase enzyme converting cAMP molecules into regular AMP, reducing PKA activity",
+    "sourceName": "OpenStax Biology 2e Ch. 9.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "NADH",
+      "ATP synthase",
+      "RNA polymerase",
+      "Helicase",
+      "Telomerase",
+      "GTPase-activating protein",
+      "Adenylyl cyclase",
+      "Protein kinase A"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_u4_103",
+    "correctAnswer": "Gene expression, enzyme activity, cytoskeletal, or division",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "function_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What is the function of the response stage in cell signaling — the varied cellular outcomes produced by signal transduction?",
+    "explanation": "The response phase of cell signaling encompasses all the cellular changes produced by the signaling cascade. These responses include: altered gene expression (transcription factor activation), changes in enzyme activity (metabolic shifts), cytoskeletal rearrangements (cell shape, movement), or initiation of DNA replication and cell division. The same signal can produce different responses in different cell types depending on which signaling proteins they express.",
+    "visualDescription": "A cell showing four response types: nucleus (gene expression), enzymes being activated, cytoskeleton rearranging, and cell beginning to divide",
+    "sourceName": "OpenStax Biology 2e Ch. 9.3",
+    "sourceUrl": "https://openstax.org/details/books/biology-2e",
+    "distractors": [
+      "Degrades excess cyclin after mitosis",
+      "Pumps protons across the inner mitochondrial membrane",
+      "Catalyzes peptide bond formation during translation",
+      "Unwinds the DNA double helix ahead of the replication fork",
+      "Joins Okazaki fragments on the lagging strand",
+      "Converts ATP to cAMP as a second messenger",
+      "Hydrolyzes GTP to terminate G protein signaling",
+      "Cleaves cohesin to allow anaphase progression"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit4"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  }
+]

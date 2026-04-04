@@ -1,0 +1,3040 @@
+[
+  {
+    "id": "ap_bio_meiosis_def",
+    "correctAnswer": "Meiosis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "Which cell division process produces 4 haploid daughter cells from 1 diploid parent cell through two rounds of division?",
+    "explanation": "Meiosis is the specialized cell division that produces gametes (sperm and eggs). Unlike mitosis, meiosis undergoes two rounds of division — meiosis I and meiosis II — resulting in four genetically unique haploid cells from one diploid parent cell.",
+    "visualDescription": "Diagram showing one diploid cell splitting through two division stages into four haploid cells",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Mitosis",
+      "Binary fission",
+      "Budding",
+      "Cytokinesis",
+      "Fragmentation",
+      "Parthenogenesis",
+      "Conjugation",
+      "Endoreplication"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_meiosis_purpose",
+    "correctAnswer": "Produce gametes with half the chromosome number",
+    "acceptableAlternatives": [
+      "Produce haploid gametes",
+      "Make sperm and egg cells"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What is the primary purpose of meiosis in sexually reproducing organisms?",
+    "explanation": "Meiosis produces gametes — sperm and eggs — that carry only half the parent's chromosome number (haploid). When two gametes fuse at fertilization, the resulting zygote restores the full diploid chromosome number of the species.",
+    "visualDescription": "Sperm and egg cells with n chromosomes merging to form a zygote with 2n chromosomes",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Repair damaged DNA",
+      "Grow new body tissues",
+      "Produce identical daughter cells",
+      "Replicate the genome for somatic cells",
+      "Divide prokaryotic cells",
+      "Generate ATP",
+      "Synthesize proteins",
+      "Eliminate old cells"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_human_ploidy",
+    "correctAnswer": "{46}",
+    "acceptableAlternatives": [
+      "2n=46",
+      "46 chromosomes"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "How many chromosomes does a diploid (2n) human somatic cell contain?",
+    "explanation": "Human somatic (body) cells are diploid with 2n = 46 chromosomes arranged in 23 homologous pairs. Meiosis reduces this to n = 23 in each gamete. At fertilization, the diploid number of 46 is restored.",
+    "visualDescription": "Human karyotype showing 23 pairs of chromosomes arranged by size",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "{23}",
+      "{44}",
+      "{48}",
+      "{92}",
+      "{22}",
+      "{24}",
+      "{36}",
+      "{64}"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_meiosis_I_def",
+    "correctAnswer": "Meiosis I",
+    "acceptableAlternatives": [
+      "the first meiotic division"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which division of meiosis is called the reductional division because homologous chromosomes separate and chromosome number is halved?",
+    "explanation": "Meiosis I is the reductional division: homologous chromosome pairs (tetrads) separate from each other, cutting the chromosome number in half. This is the key event that distinguishes meiosis from mitosis — sister chromatids stay together until meiosis II.",
+    "visualDescription": "Two homologous chromosomes pulling apart to opposite poles during meiosis I",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Meiosis II",
+      "Mitosis",
+      "Prophase II",
+      "S phase",
+      "Cytokinesis",
+      "Interphase",
+      "G2 phase",
+      "Anaphase II"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_meiosis_II_def",
+    "correctAnswer": "Meiosis II",
+    "acceptableAlternatives": [
+      "the second meiotic division"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which division of meiosis is called the equational division because sister chromatids separate (analogous to mitosis but starting with haploid cells)?",
+    "explanation": "Meiosis II is the equational division: it resembles mitosis in that sister chromatids are pulled apart at the centromere. However, it starts with haploid cells produced by meiosis I, so the chromosome number does not change — it just separates the chromatids.",
+    "visualDescription": "Haploid cell with sister chromatids being pulled to opposite poles during meiosis II",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Meiosis I",
+      "Mitosis",
+      "DNA replication",
+      "G1 phase",
+      "Cytokinesis I",
+      "Prophase I",
+      "Interphase II",
+      "S phase II"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_prophase_I",
+    "correctAnswer": "Prophase I",
+    "acceptableAlternatives": [],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "During which phase of meiosis do chromosomes condense, homologs undergo synapsis to form tetrads, and crossing over occurs at chiasmata?",
+    "explanation": "Prophase I is the most complex phase of meiosis. Homologous chromosomes pair up (synapsis) forming tetrads, and non-sister chromatids exchange genetic material at points called chiasmata (crossing over). This recombination is a major source of genetic variation.",
+    "visualDescription": "Paired homologous chromosomes forming an X-shaped chiasma during prophase I",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Metaphase I",
+      "Anaphase I",
+      "Prophase II",
+      "Metaphase II",
+      "Interphase",
+      "Telophase I",
+      "Anaphase II",
+      "G2 phase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_synapsis",
+    "correctAnswer": "Synapsis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What term describes the pairing of homologous chromosomes during prophase I to form a tetrad, held together at chiasmata?",
+    "explanation": "Synapsis is the precise alignment and pairing of homologous chromosomes during prophase I of meiosis. The synaptonemal complex holds the homologs tightly together, enabling crossing over. Each synapsed pair of homologs is called a tetrad or bivalent.",
+    "visualDescription": "Two homologous chromosomes zipped together along their lengths by the synaptonemal complex",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Crossing over",
+      "Cytokinesis",
+      "Translation",
+      "Transcription",
+      "DNA replication",
+      "Independent assortment",
+      "Nondisjunction",
+      "Recombination"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_crossing_over",
+    "correctAnswer": "Crossing over",
+    "acceptableAlternatives": [
+      "chromosomal crossover",
+      "recombination"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What process during prophase I involves the exchange of genetic material between non-sister chromatids of homologous chromosomes at points called chiasmata?",
+    "explanation": "Crossing over (recombination) occurs when non-sister chromatids of homologous chromosomes break and rejoin at chiasmata during prophase I. This creates recombinant chromosomes with new allele combinations not present in either parent — a major source of genetic variation.",
+    "visualDescription": "Two homologous chromosomes with crossing over shown as an X-shaped chiasma, creating recombinant chromatids",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Synapsis",
+      "Independent assortment",
+      "Nondisjunction",
+      "Translation",
+      "Translocation",
+      "DNA repair",
+      "Random fertilization",
+      "Epigenetic silencing"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_metaphase_I",
+    "correctAnswer": "Metaphase I",
+    "acceptableAlternatives": [],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "During which phase of meiosis do homologous pairs (tetrads) align at the metaphase plate with random orientation — the physical basis of independent assortment?",
+    "explanation": "During metaphase I, homologous pairs line up at the cell's equator. Each pair orients randomly — either homolog can face either pole. This random orientation is the physical basis of Mendel's Law of Independent Assortment, generating 2^n possible gamete combinations.",
+    "visualDescription": "Tetrads lined up at the metaphase plate with random maternal/paternal orientation",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Metaphase II",
+      "Anaphase I",
+      "Prophase I",
+      "Telophase I",
+      "Metaphase of mitosis",
+      "Prophase II",
+      "Anaphase II",
+      "Interphase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_anaphase_I",
+    "correctAnswer": "Anaphase I",
+    "acceptableAlternatives": [],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "During which phase of meiosis do homologous chromosomes separate and move to opposite poles while sister chromatids remain joined at the centromere?",
+    "explanation": "Anaphase I is when homologous chromosomes are pulled to opposite poles by spindle fibers. Critically, sister chromatids remain attached to each other — they do not separate until anaphase II. This is what makes meiosis I the reductional division.",
+    "visualDescription": "Homologous chromosomes moving to opposite poles, with each chromosome still consisting of two joined chromatids",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Anaphase II",
+      "Anaphase of mitosis",
+      "Metaphase I",
+      "Telophase I",
+      "Prophase I",
+      "Metaphase II",
+      "Cytokinesis I",
+      "Interphase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_telophase_I",
+    "correctAnswer": "Telophase I and Cytokinesis I",
+    "acceptableAlternatives": [
+      "Telophase I",
+      "cytokinesis I"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which phase of meiosis produces two haploid cells, each with n chromosomes where every chromosome still consists of two joined sister chromatids?",
+    "explanation": "Telophase I and cytokinesis I complete the first meiotic division. Two haploid cells form, but each chromosome in these cells still consists of two joined sister chromatids — they have not yet separated. Meiosis II is needed to produce fully unreplicated haploid cells.",
+    "visualDescription": "One cell dividing into two cells, each haploid but with chromosomes still as paired chromatids",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Telophase II",
+      "Cytokinesis II",
+      "Anaphase I",
+      "Metaphase II",
+      "Prophase II",
+      "Telophase of mitosis",
+      "Interphase II",
+      "Metaphase I"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_prophase_II",
+    "correctAnswer": "Prophase II",
+    "acceptableAlternatives": [],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "During which phase of meiosis do chromosomes condense again in each of the two haploid cells produced by meiosis I, with NO crossing over occurring?",
+    "explanation": "Prophase II begins after cytokinesis I produces two haploid cells. Chromosomes re-condense in preparation for the second division. Critically, no crossing over occurs in prophase II — recombination is exclusive to prophase I.",
+    "visualDescription": "Two haploid cells with chromosomes condensing, but no chiasma formation",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Prophase I",
+      "Metaphase II",
+      "Anaphase II",
+      "Telophase II",
+      "Interphase II",
+      "Prophase of mitosis",
+      "Cytokinesis I",
+      "Metaphase I"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_metaphase_II",
+    "correctAnswer": "Metaphase II",
+    "acceptableAlternatives": [],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "During which phase of meiosis do individual chromosomes (NOT homologous pairs) align at the metaphase plate in each haploid cell?",
+    "explanation": "Metaphase II resembles mitotic metaphase: individual chromosomes (each still as two sister chromatids) align at the cell's equator. The key difference from metaphase I is that homologous pairs are gone — only individual chromosomes align here.",
+    "visualDescription": "Single chromosomes (not paired bivalents) lined up at the metaphase plate in a haploid cell",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Metaphase I",
+      "Anaphase II",
+      "Prophase II",
+      "Telophase II",
+      "Metaphase of mitosis",
+      "Anaphase I",
+      "Interphase",
+      "Prophase I"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_anaphase_II",
+    "correctAnswer": "Anaphase II",
+    "acceptableAlternatives": [],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "During which phase of meiosis do sister chromatids separate at the centromere and move to opposite poles?",
+    "explanation": "Anaphase II is when cohesin holding sister chromatids together is cleaved, allowing them to separate and move to opposite poles. This is analogous to anaphase of mitosis. After anaphase II, each pole has one complete set of unreplicated chromosomes.",
+    "visualDescription": "Sister chromatids splitting at the centromere and moving to opposite poles within a haploid cell",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Anaphase I",
+      "Anaphase of mitosis",
+      "Metaphase II",
+      "Telophase II",
+      "Prophase II",
+      "Metaphase I",
+      "Cytokinesis II",
+      "Interphase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_telophase_II",
+    "correctAnswer": "{4}",
+    "acceptableAlternatives": [
+      "four haploid cells",
+      "4 haploid daughter cells"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "How many haploid daughter cells are produced at the end of telophase II and cytokinesis II in meiosis?",
+    "explanation": "Telophase II and cytokinesis II complete meiosis, producing four haploid daughter cells — each containing n unreplicated chromosomes. In males, all four become sperm; in females, one becomes an egg and three become polar bodies.",
+    "visualDescription": "Four haploid cells produced at the end of meiosis II",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "{2}",
+      "{8}",
+      "{1}",
+      "{6}",
+      "{16}",
+      "{3}",
+      "{12}",
+      "{46}"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_meiosis_vs_mitosis",
+    "correctAnswer": "Meiosis: 2 divisions, 4 haploid cells; mitosis: 1 division, 2 diploid cells",
+    "acceptableAlternatives": [
+      "Meiosis produces 4 haploid cells; mitosis produces 2 diploid cells"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "comparison_terms",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "What is the key difference between meiosis and mitosis in terms of number of divisions and type of daughter cells produced?",
+    "explanation": "Meiosis undergoes two rounds of division (meiosis I and II) producing four genetically unique haploid cells — used for sexual reproduction. Mitosis undergoes one division producing two genetically identical diploid cells — used for growth and repair.",
+    "visualDescription": "Side-by-side comparison: meiosis branching into 4 haploid cells vs. mitosis producing 2 diploid cells",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Meiosis: 1 division, 2 haploid cells; mitosis: 2 divisions, 4 diploid cells",
+      "Both produce 2 diploid cells but meiosis is slower",
+      "Meiosis only occurs in prokaryotes; mitosis only in eukaryotes",
+      "Mitosis produces haploid cells; meiosis produces diploid cells",
+      "Both produce 4 cells but mitosis keeps them diploid",
+      "Meiosis adds chromosomes; mitosis removes chromosomes",
+      "Mitosis uses crossing over; meiosis does not",
+      "Meiosis produces 2 cells; mitosis produces 4 cells"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_homologous_chr",
+    "correctAnswer": "Homologous chromosomes",
+    "acceptableAlternatives": [
+      "homologs"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "What term describes a matched pair of chromosomes — one from each parent — that carry the same genes at the same loci but may carry different alleles?",
+    "explanation": "Homologous chromosomes (homologs) are matched pairs: one chromosome inherited from the mother and one from the father. They carry the same genes at the same positions (loci) but may have different allele versions of those genes. They pair during meiosis I.",
+    "visualDescription": "Two chromosomes of the same size and shape, one maternal and one paternal, aligned side by side",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Sister chromatids",
+      "Tetrads",
+      "Recombinant chromosomes",
+      "Sex chromosomes",
+      "Autosomes",
+      "Chromatids",
+      "Bivalents",
+      "Polyploid chromosomes"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_sister_chromatids",
+    "correctAnswer": "Sister chromatids",
+    "acceptableAlternatives": [],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "What are the two identical DNA copies of a chromosome, joined at the centromere, that are produced during DNA replication in S phase?",
+    "explanation": "Sister chromatids are produced when DNA replicates before cell division. The two identical copies remain attached at the centromere by cohesin proteins. In meiosis II (and mitosis), sister chromatids are separated at anaphase — not in meiosis I.",
+    "visualDescription": "Two identical chromosome copies joined at the centromere, forming an X shape",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Homologous chromosomes",
+      "Non-sister chromatids",
+      "Tetrads",
+      "Bivalents",
+      "Recombinant chromosomes",
+      "Autosomes",
+      "Haploid chromosomes",
+      "Polyploid chromosomes"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_tetrad",
+    "correctAnswer": "Tetrad (bivalent)",
+    "acceptableAlternatives": [
+      "tetrad",
+      "bivalent"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What structure, formed during prophase I, consists of two homologous chromosomes (each made of two sister chromatids) paired together — totaling 4 chromatids?",
+    "explanation": "A tetrad (also called a bivalent) forms when two homologous chromosomes synapse during prophase I. Each homolog is already a pair of sister chromatids, so the tetrad contains 4 chromatids total. Crossing over occurs between non-sister chromatids within the tetrad.",
+    "visualDescription": "Two homologous chromosomes, each as a pair of joined chromatids, synapsed together forming a 4-chromatid structure",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Sister chromatids",
+      "Homologous chromosomes",
+      "Recombinant chromosomes",
+      "Chiasma",
+      "Centromere",
+      "Chromatid",
+      "Autosome pair",
+      "Synaptonemal complex"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_reductional_equational",
+    "correctAnswer": "Meiosis I is reductional; meiosis II is equational",
+    "acceptableAlternatives": [
+      "Reductional division is meiosis I; equational is meiosis II"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "comparison_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "How do meiosis I and meiosis II differ in terms of 'reductional' vs. 'equational' division?",
+    "explanation": "Meiosis I is the reductional division because it halves the chromosome number by separating homologs. Meiosis II is the equational division because it separates sister chromatids without changing the chromosome number — similar to mitosis.",
+    "visualDescription": "Two-panel diagram: meiosis I arrows show chromosome number halving; meiosis II shows chromatids separating at same number",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Meiosis I is equational; meiosis II is reductional",
+      "Both divisions are reductional",
+      "Both divisions are equational",
+      "Meiosis I separates sister chromatids; meiosis II separates homologs",
+      "Reductional division occurs in mitosis; equational in meiosis",
+      "Meiosis II halves the chromosome number; meiosis I does not",
+      "Equational division doubles the chromosome number",
+      "Meiosis I is similar to mitosis; meiosis II is unique to meiosis"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_three_sources_variation",
+    "correctAnswer": "Crossing over, independent assortment, and random fertilization",
+    "acceptableAlternatives": [
+      "crossing over, independent assortment, random fertilization"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "What are the three main sources of genetic variation in sexually reproducing organisms?",
+    "explanation": "Sexual reproduction generates genetic variation through three mechanisms: (1) crossing over during prophase I creates recombinant chromosomes; (2) independent assortment of homologs at metaphase I shuffles whole chromosomes; and (3) random fertilization combines gametes unpredictably.",
+    "visualDescription": "Three icons: crossing chromosomes, randomly oriented chromosome pairs, and a sperm meeting an egg",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Mutation, crossing over, and translation",
+      "DNA replication, transcription, and translation",
+      "Synapsis, cytokinesis, and karyotyping",
+      "Dominance, recessiveness, and codominance",
+      "Mitosis, meiosis, and fertilization",
+      "Gene expression, epigenetics, and environment",
+      "Deletion, duplication, and inversion",
+      "Polyploidy, aneuploidy, and monosomy"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_indep_assortment_mechanism",
+    "correctAnswer": "Independent assortment",
+    "acceptableAlternatives": [
+      "random orientation at metaphase I"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which process, based on the random orientation of homologous pairs at metaphase I, generates 2^n possible gamete chromosome combinations?",
+    "explanation": "Independent assortment occurs because each homologous pair lines up randomly at metaphase I — either chromosome of a pair can face either pole. With n chromosome pairs, 2^n different chromosome combinations are possible in the gametes.",
+    "visualDescription": "Two homologous pairs at the metaphase plate shown in two possible orientations, illustrating independent assortment",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Crossing over",
+      "Random fertilization",
+      "Nondisjunction",
+      "Synapsis",
+      "DNA repair",
+      "Epigenetic modification",
+      "Gene regulation",
+      "Translocation"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_human_gamete_combos",
+    "correctAnswer": "{8,388,608}",
+    "acceptableAlternatives": [
+      "2^23",
+      "approximately 8.4 million",
+      "8.4 million"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "How many genetically different gametes can a human produce from independent assortment alone (humans have n=23)?",
+    "explanation": "With 23 pairs of homologous chromosomes, independent assortment generates 2^23 = 8,388,608 (approximately 8.4 million) different gamete chromosome combinations. Crossing over multiplies this diversity even further.",
+    "visualDescription": "23 pairs of chromosomes branching into millions of possible gamete combinations",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "{4,194,304}",
+      "{23}",
+      "{46}",
+      "{2}",
+      "{1,000,000}",
+      "{16,777,216}",
+      "{524,288}",
+      "{64}"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_recombinant_chr",
+    "correctAnswer": "Recombinant chromosomes",
+    "acceptableAlternatives": [
+      "recombinant chromatids"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What are chromosomes called that carry new allele combinations created by crossing over — combinations not present in either original parental chromosome?",
+    "explanation": "Recombinant chromosomes result from crossing over during prophase I. Non-sister chromatids exchange segments, creating chromosomes with allele combinations that didn't exist in either parent. This dramatically increases genetic diversity beyond what independent assortment alone provides.",
+    "visualDescription": "Two chromosomes after crossing over, each showing a mix of light and dark segments from both parental chromosomes",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Sister chromatids",
+      "Homologous chromosomes",
+      "Tetrads",
+      "Polyploid chromosomes",
+      "Aneuploid chromosomes",
+      "Sex chromosomes",
+      "Autosomes",
+      "Bivalents"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_random_fertilization",
+    "correctAnswer": "Random fertilization",
+    "acceptableAlternatives": [],
+    "chainThemeId": 9,
+    "answerTypePoolId": "process_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "Which source of genetic variation in sexual reproduction involves any sperm being able to fertilize any egg, vastly multiplying the possible genetically unique offspring?",
+    "explanation": "Random fertilization means any one of the ~8.4 million possible sperm can fertilize any one of the ~8.4 million possible eggs. This multiplies the possible combinations to more than 70 trillion — a key reason sexually reproducing populations are so genetically diverse.",
+    "visualDescription": "Many diverse sperm cells approaching an egg, with arrows showing unpredictable pairing",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Crossing over",
+      "Independent assortment",
+      "Nondisjunction",
+      "X-inactivation",
+      "Genomic imprinting",
+      "Epigenetic modification",
+      "DNA mutation",
+      "Gene flow"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_nondisjunction",
+    "correctAnswer": "Nondisjunction",
+    "acceptableAlternatives": [],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What is the failure of chromosomes or chromatids to separate properly during meiosis, resulting in gametes with an abnormal chromosome number?",
+    "explanation": "Nondisjunction occurs when chromosomes fail to separate correctly during meiosis I (homologs don't separate) or meiosis II (sister chromatids don't separate). This produces aneuploid gametes with either one extra chromosome (n+1) or one fewer (n-1).",
+    "visualDescription": "Chromosomes clumping together instead of separating during cell division, with unequal distribution to daughter cells",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Crossing over",
+      "Synapsis",
+      "Translocation",
+      "Polyploidy",
+      "Deletion",
+      "Inversion",
+      "Random fertilization",
+      "Independent assortment"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_nondisj_I_vs_II",
+    "correctAnswer": "Meiosis I: all 4 gametes aneuploid; meiosis II: 2 of 4 gametes aneuploid",
+    "acceptableAlternatives": [
+      "Meiosis I nondisjunction affects all gametes; meiosis II affects only 2"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "comparison_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "How do the outcomes of nondisjunction in meiosis I differ from nondisjunction in meiosis II in terms of aneuploid gametes produced?",
+    "explanation": "In meiosis I nondisjunction, both homologs go to the same pole — all four resulting gametes are aneuploid. In meiosis II nondisjunction, sister chromatids fail to separate in one cell — only two of the four gametes are aneuploid, and the other two are normal.",
+    "visualDescription": "Comparison diagram showing meiosis I nondisjunction producing 4 aneuploid cells vs. meiosis II producing 2 aneuploid and 2 normal cells",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Both produce the same proportion of aneuploid gametes",
+      "Meiosis I: 2 aneuploid; meiosis II: 4 aneuploid",
+      "Meiosis I: 1 aneuploid; meiosis II: 3 aneuploid",
+      "Nondisjunction only occurs in meiosis I",
+      "Meiosis II nondisjunction always produces polyploidy",
+      "Meiosis I: 0 normal gametes; meiosis II: 0 normal gametes",
+      "Both produce exactly 1 aneuploid gamete",
+      "Meiosis II nondisjunction is always lethal; meiosis I is not"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_aneuploidy",
+    "correctAnswer": "Aneuploidy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What term describes the condition of having an abnormal chromosome number that is NOT a whole multiple of the haploid number?",
+    "explanation": "Aneuploidy results from nondisjunction during meiosis. An aneuploid organism has one or more chromosomes too many or too few. Examples include trisomy (one extra chromosome) and monosomy (one missing chromosome). Polyploidy (whole extra sets) is NOT aneuploidy.",
+    "visualDescription": "Karyotype with one chromosome set having three copies instead of two, indicating trisomy",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Polyploidy",
+      "Monosomy",
+      "Trisomy",
+      "Haploidy",
+      "Diploidy",
+      "Translocation",
+      "Inversion",
+      "Deletion"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_trisomy",
+    "correctAnswer": "Trisomy",
+    "acceptableAlternatives": [
+      "2n+1"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "Which type of aneuploidy involves having three copies of a particular chromosome (2n+1)?",
+    "explanation": "Trisomy means three copies of one chromosome instead of the normal two. The most common example is Down syndrome (trisomy 21), where chromosome 21 has three copies. Trisomy results from nondisjunction producing an n+1 gamete that fuses with a normal n gamete.",
+    "visualDescription": "Chromosome pair shown with three copies of one chromosome highlighted",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Monosomy",
+      "Polyploidy",
+      "Haploidy",
+      "Tetraploidy",
+      "Nullisomy",
+      "Diploidy",
+      "Triploidy",
+      "Aneuploidy"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_down_syndrome",
+    "correctAnswer": "Down syndrome",
+    "acceptableAlternatives": [
+      "trisomy 21"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "disease_syndrome_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "Which condition results from trisomy 21 — the presence of three copies of chromosome 21 — caused by nondisjunction during meiosis?",
+    "explanation": "Down syndrome (trisomy 21) is the most common chromosomal aneuploidy compatible with survival. Three copies of chromosome 21 result from nondisjunction, most often during meiosis I in the egg. Incidence increases with maternal age.",
+    "visualDescription": "Karyotype showing three copies of chromosome 21 highlighted among 46 total chromosomes",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Turner syndrome",
+      "Klinefelter syndrome",
+      "Edwards syndrome",
+      "Patau syndrome",
+      "Cri-du-chat syndrome",
+      "Prader-Willi syndrome",
+      "Angelman syndrome",
+      "Philadelphia chromosome syndrome"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_monosomy",
+    "correctAnswer": "Monosomy",
+    "acceptableAlternatives": [
+      "2n-1"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which type of aneuploidy involves having only one copy of a particular chromosome (2n-1), which is often lethal?",
+    "explanation": "Monosomy means only one copy of a chromosome instead of the normal pair. Most autosomal monosomies are lethal in humans. Turner syndrome (45,X) is a notable exception — the only viable sex chromosome monosomy in humans.",
+    "visualDescription": "Karyotype with one chromosome pair showing only a single chromosome instead of two",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Trisomy",
+      "Polyploidy",
+      "Haploidy",
+      "Nullisomy",
+      "Triploidy",
+      "Tetraploidy",
+      "Aneuploidy",
+      "Diploidy"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_turner_syndrome",
+    "correctAnswer": "Turner syndrome",
+    "acceptableAlternatives": [
+      "45,X"
+    ],
+    "chainThemeId": 9,
+    "answerTypePoolId": "disease_syndrome_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which condition results from sex chromosome monosomy with a 45,X karyotype — one of the few human monosomies viable to birth?",
+    "explanation": "Turner syndrome arises from a 45,X karyotype — only one X chromosome, no second sex chromosome. It affects females and causes short stature, infertility, and heart defects. It is one of the few monosomies compatible with human survival.",
+    "visualDescription": "Karyotype with the sex chromosome pair showing only one X and no Y or second X",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Down syndrome",
+      "Klinefelter syndrome",
+      "Edwards syndrome",
+      "Patau syndrome",
+      "Cri-du-chat syndrome",
+      "Angelman syndrome",
+      "Prader-Willi syndrome",
+      "Color blindness"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_polyploidy",
+    "correctAnswer": "Polyploidy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 9,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What term describes having more than two complete sets of chromosomes (e.g., 3n or 4n) — common and often beneficial in plants, but usually lethal in animals?",
+    "explanation": "Polyploidy occurs when an organism has three or more complete chromosome sets. It is extremely common in flowering plants — many crop species (wheat, cotton, bananas) are polyploid. In animals, polyploidy is almost always lethal because it disrupts sex determination and other systems.",
+    "visualDescription": "Plant cell with four full sets of chromosomes labeled 4n, contrasted with a normal diploid 2n animal cell",
+    "sourceName": "OpenStax Biology 2e, Chapter 11",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/11-introduction",
+    "distractors": [
+      "Aneuploidy",
+      "Monosomy",
+      "Trisomy",
+      "Haploidy",
+      "Diploidy",
+      "Nullisomy",
+      "Translocation",
+      "Inversion"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_mendel",
+    "correctAnswer": "Gregor Mendel",
+    "acceptableAlternatives": [
+      "Mendel"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "person_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "Which scientist, working with pea plants (Pisum sativum) in the 1860s, discovered the fundamental laws of heredity using true-breeding lines and statistical analysis?",
+    "explanation": "Gregor Mendel, an Austrian monk, performed thousands of crosses with pea plants over eight years. His careful record-keeping and statistical analysis led to the discovery of segregation and independent assortment — the foundation of modern genetics.",
+    "visualDescription": "Portrait of a monk in garden surrounded by pea plants, with statistical tallies of offspring",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "Thomas Hunt Morgan",
+      "Charles Darwin",
+      "Walter Sutton",
+      "Francis Crick",
+      "James Watson",
+      "Rosalind Franklin",
+      "Mary Lyon",
+      "Theodor Boveri"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_gene_def",
+    "correctAnswer": "Gene",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What is the basic unit of heredity — a segment of DNA that encodes a protein or functional RNA molecule?",
+    "explanation": "A gene is a defined segment of DNA that carries the information to produce a specific protein or functional RNA. Genes are located at specific positions (loci) on chromosomes. Each organism has two copies (alleles) of most genes — one on each homolog.",
+    "visualDescription": "A DNA double helix with a highlighted segment labeled as a gene",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "Allele",
+      "Chromosome",
+      "Codon",
+      "Nucleotide",
+      "Phenotype",
+      "Genotype",
+      "Locus",
+      "Promoter"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_allele_def",
+    "correctAnswer": "Allele",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "What term describes an alternative form of a gene — multiple versions of which can exist at a given chromosomal locus in a population?",
+    "explanation": "Alleles are different versions of the same gene. For example, a gene controlling flower color might have a purple allele and a white allele. An individual inherits one allele from each parent; if both alleles are identical, the individual is homozygous; if different, heterozygous.",
+    "visualDescription": "Two chromosomes at the same locus showing different colored allele markers — one labeled 'B' and one 'b'",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "Gene",
+      "Chromosome",
+      "Genotype",
+      "Phenotype",
+      "Locus",
+      "Codon",
+      "Promoter",
+      "Exon"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_genotype_def",
+    "correctAnswer": "Genotype",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What term describes the genetic makeup of an individual for one or more genes, such as 'Bb' for a heterozygous individual?",
+    "explanation": "Genotype refers to the actual alleles an organism possesses at one or more loci. It is the underlying genetic constitution, not what is visible. Two individuals with different genotypes (BB and Bb) can have identical phenotypes if dominance is complete.",
+    "visualDescription": "Punnett square showing genotype labels BB, Bb, and bb with different color coding",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "Phenotype",
+      "Karyotype",
+      "Allele",
+      "Gene",
+      "Chromosome",
+      "Locus",
+      "Haplotype",
+      "Proteome"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_phenotype_def",
+    "correctAnswer": "Phenotype",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What term describes the observable physical or biochemical characteristics of an organism, such as brown eyes or tall stature?",
+    "explanation": "Phenotype is what you can actually observe or measure — traits like eye color, height, or blood type. Phenotype is determined by genotype interacting with the environment. Organisms with the same genotype can sometimes have different phenotypes due to environmental effects.",
+    "visualDescription": "Side-by-side comparison of two plants: genotype labels BB and Bb above, same tall green phenotype shown for both",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "Genotype",
+      "Karyotype",
+      "Allele",
+      "Norm of reaction",
+      "Penetrance",
+      "Expressivity",
+      "Locus",
+      "Gene"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_homozygous",
+    "correctAnswer": "Homozygous",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What term describes an individual having two identical alleles at a given locus, such as BB or bb?",
+    "explanation": "A homozygous individual carries two copies of the same allele at a locus — either two dominant alleles (homozygous dominant, BB) or two recessive alleles (homozygous recessive, bb). Homozygous individuals breed true for that trait.",
+    "visualDescription": "Locus on two homologs showing identical 'B' alleles on both, or identical 'b' alleles on both",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "Heterozygous",
+      "Hemizygous",
+      "Codominant",
+      "Polyploid",
+      "Diploid",
+      "Haploid",
+      "Dominant",
+      "Recessive"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_heterozygous",
+    "correctAnswer": "Heterozygous",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What term describes an individual having two different alleles at a given locus, such as Bb?",
+    "explanation": "A heterozygous individual (e.g., Bb) carries one copy of each of two different alleles. With complete dominance, the dominant allele's phenotype is expressed and the recessive is hidden. With incomplete dominance or codominance, both alleles contribute to the phenotype.",
+    "visualDescription": "Locus on two homologs showing 'B' on one chromosome and 'b' on the other",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "Homozygous",
+      "Hemizygous",
+      "Codominant",
+      "Polyploid",
+      "Diploid",
+      "Haploid",
+      "Dominant",
+      "Recessive"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_dominant_allele",
+    "correctAnswer": "Dominant allele",
+    "acceptableAlternatives": [
+      "dominant"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "Which type of allele has its phenotypic effect expressed in a heterozygote, and is conventionally written as an uppercase letter?",
+    "explanation": "A dominant allele's phenotype is expressed even when paired with a different allele. In a Bb heterozygote, the B allele is expressed if it is dominant. Dominance describes the relationship between alleles — it does NOT mean the allele is more common or 'better.'",
+    "visualDescription": "Bb genotype with a large 'B' phenotype shown, indicating the dominant allele controls the observable trait",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "Recessive allele",
+      "Codominant allele",
+      "Incomplete dominant allele",
+      "Sex-linked allele",
+      "Wild-type allele",
+      "Lethal allele",
+      "Mutant allele",
+      "Pleiotropic allele"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_recessive_allele",
+    "correctAnswer": "Recessive allele",
+    "acceptableAlternatives": [
+      "recessive"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "Which type of allele is masked by the dominant allele in a heterozygote and is only expressed in the homozygous recessive (bb) condition?",
+    "explanation": "A recessive allele is only expressed phenotypically when an individual carries two copies (bb). In heterozygotes (Bb), the recessive allele is 'hidden' but still present in the genotype and can be passed to offspring. Many genetic disorders are caused by recessive alleles.",
+    "visualDescription": "bb genotype showing the recessive phenotype, versus Bb showing dominant phenotype — same recessive allele, different expression",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "Dominant allele",
+      "Codominant allele",
+      "Incomplete dominant allele",
+      "Sex-linked allele",
+      "Wild-type allele",
+      "Epistatic allele",
+      "Lethal allele",
+      "Pleiotropic allele"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_law_segregation",
+    "correctAnswer": "Law of Segregation",
+    "acceptableAlternatives": [
+      "Mendel's first law",
+      "principle of segregation"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "Which of Mendel's laws states that the two alleles for a gene separate during gamete formation, so each gamete receives only one allele?",
+    "explanation": "Mendel's Law of Segregation states that the two alleles an organism has for a gene separate during meiosis — one goes to each gamete. This is the physical consequence of homologous chromosomes separating at anaphase I of meiosis.",
+    "visualDescription": "A Bb parent organism with alleles separating — B going to one gamete, b going to another",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "Law of Independent Assortment",
+      "Law of Dominance",
+      "Chromosome Theory",
+      "Law of Linkage",
+      "Law of Recombination",
+      "Law of Complementarity",
+      "Hardy-Weinberg Principle",
+      "Law of Epistasis"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_law_indep_assortment",
+    "correctAnswer": "Law of Independent Assortment",
+    "acceptableAlternatives": [
+      "Mendel's second law",
+      "independent assortment"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which of Mendel's laws states that genes on different (non-homologous) chromosomes assort independently into gametes during meiosis?",
+    "explanation": "Mendel's Law of Independent Assortment applies to genes on non-homologous chromosomes. Because homologous pairs orient randomly at metaphase I, the alleles for one gene assort independently of alleles for genes on other chromosome pairs. This law does NOT hold for linked genes.",
+    "visualDescription": "Two gene pairs on different chromosome pairs shown orienting randomly at metaphase I",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "Law of Segregation",
+      "Law of Dominance",
+      "Law of Linkage",
+      "Chromosome Theory",
+      "Law of Recombination",
+      "Hardy-Weinberg Principle",
+      "Law of Epistasis",
+      "Law of Penetrance"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_monohybrid_geno",
+    "correctAnswer": "1 BB : 2 Bb : 1 bb",
+    "acceptableAlternatives": [
+      "1:2:1"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "What is the genotypic ratio produced by a Bb × Bb monohybrid cross?",
+    "explanation": "A Bb × Bb cross produces offspring in a 1:2:1 genotypic ratio — 25% BB (homozygous dominant), 50% Bb (heterozygous), and 25% bb (homozygous recessive). This can be easily worked out with a 2×2 Punnett square.",
+    "visualDescription": "Punnett square for Bb × Bb showing BB, Bb, Bb, bb in the four boxes",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "3 BB : 1 bb",
+      "2 BB : 2 bb",
+      "1 BB : 1 Bb",
+      "3 Bb : 1 BB",
+      "1 BB : 3 bb",
+      "4 Bb",
+      "2 BB : 1 Bb : 1 bb",
+      "1 BB : 1 bb : 2 Bb"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_monohybrid_pheno",
+    "correctAnswer": "3:1",
+    "acceptableAlternatives": [
+      "3 dominant : 1 recessive",
+      "3 to 1"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "What phenotypic ratio results from a Bb × Bb monohybrid cross with complete dominance?",
+    "explanation": "With complete dominance, both BB and Bb individuals show the dominant phenotype, while only bb shows the recessive phenotype. The result is 3 dominant : 1 recessive (75% dominant, 25% recessive) — Mendel's classic 3:1 ratio from his pea plant crosses.",
+    "visualDescription": "Four offspring icons — three showing dominant trait (tall/purple) and one showing recessive trait (short/white)",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "1:2:1",
+      "9:3:3:1",
+      "1:1",
+      "2:1",
+      "1:3",
+      "1:1:1:1",
+      "3:1:1:3",
+      "1:2:3"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_dihybrid_pheno",
+    "correctAnswer": "9:3:3:1",
+    "acceptableAlternatives": [
+      "nine three three one"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What phenotypic ratio is produced by a BbRr × BbRr dihybrid cross with independent assortment and complete dominance?",
+    "explanation": "A dihybrid cross (BbRr × BbRr) produces a 9:3:3:1 phenotypic ratio among offspring: 9 show both dominant traits, 3 show dominant A/recessive B, 3 show recessive A/dominant B, and 1 shows both recessive traits. This is Mendel's signature dihybrid ratio.",
+    "visualDescription": "4×4 Punnett square for BbRr × BbRr with offspring sorted into four phenotypic classes in 9:3:3:1 proportions",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "3:1",
+      "1:2:1",
+      "1:1:1:1",
+      "3:3:1:1",
+      "9:1:1:1",
+      "4:2:2:1",
+      "6:3:1",
+      "9:6:1"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_test_cross",
+    "correctAnswer": "Test cross",
+    "acceptableAlternatives": [
+      "testcross"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "experiment_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What genetic cross involves mating an individual of unknown genotype with a homozygous recessive individual (bb) to determine if the unknown is BB or Bb?",
+    "explanation": "A test cross reveals whether an individual showing the dominant phenotype is homozygous dominant (BB) or heterozygous (Bb). If ALL offspring show the dominant phenotype, the unknown parent is BB. If HALF show recessive phenotype, the unknown parent is Bb.",
+    "visualDescription": "Unknown dominant parent crossed with bb showing two possible results: all dominant offspring (BB parent) or 50% recessive offspring (Bb parent)",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "Dihybrid cross",
+      "Monohybrid cross",
+      "Backcross",
+      "Chi-square test",
+      "Reciprocal cross",
+      "F1 cross",
+      "F2 cross",
+      "Punnett analysis"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_punnett_square",
+    "correctAnswer": "Punnett square",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "experiment_terms",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "What grid diagram is used to predict the genotypic and phenotypic ratios of offspring by systematically combining parental gametes?",
+    "explanation": "A Punnett square maps all possible combinations of parental gametes. Gametes from one parent are placed along the top; gametes from the other parent are placed along the side. Each inner box represents one possible genotype in the offspring.",
+    "visualDescription": "2×2 grid with B and b across the top and B and b down the side, showing BB, Bb, Bb, bb in the boxes",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "Test cross",
+      "Chi-square table",
+      "Karyotype",
+      "Linkage map",
+      "Pedigree chart",
+      "Restriction map",
+      "Cladogram",
+      "Phylogenetic tree"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_prob_mult_rule",
+    "correctAnswer": "Multiplication rule",
+    "acceptableAlternatives": [
+      "probability multiplication rule",
+      "product rule"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "experiment_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which probability rule states that for independent genetic events, P(A and B) = P(A) × P(B)?",
+    "explanation": "The multiplication rule applies when calculating the probability of two independent events both occurring. In genetics, if two gene pairs assort independently, the probability of a specific two-gene genotype equals the product of the individual probabilities for each gene.",
+    "visualDescription": "Two independent coin flips shown with P(heads AND heads) = 1/2 × 1/2 = 1/4",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "Addition rule",
+      "Chi-square rule",
+      "Complement rule",
+      "Bayes' theorem",
+      "Mendelian ratio rule",
+      "Segregation rule",
+      "Recombination rule",
+      "Linkage rule"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_prob_add_rule",
+    "correctAnswer": "Addition rule",
+    "acceptableAlternatives": [
+      "probability addition rule",
+      "sum rule"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "experiment_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which probability rule states that for mutually exclusive genetic outcomes, P(A or B) = P(A) + P(B)?",
+    "explanation": "The addition rule is used when calculating the probability of either one event or another occurring — where both cannot happen at the same time. In genetics, this is useful for calculating the probability of multiple alternative genotypes (e.g., P(BB or Bb)).",
+    "visualDescription": "Two exclusive outcome boxes labeled A and B with arrows pointing to 'P(A) + P(B)'",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "Multiplication rule",
+      "Chi-square rule",
+      "Complement rule",
+      "Bayes' theorem",
+      "Segregation rule",
+      "Linkage rule",
+      "Recombination rule",
+      "Mendelian ratio rule"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_pisum_sativum",
+    "correctAnswer": "Pisum sativum",
+    "acceptableAlternatives": [
+      "garden pea",
+      "pea plant"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "organism_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which plant species, with the scientific name Pisum sativum, did Gregor Mendel use in the 1860s to discover the laws of heredity?",
+    "explanation": "Mendel chose the garden pea (Pisum sativum) because it has distinct traits with clear-cut variation (tall vs. short; purple vs. white flowers), a short generation time, the ability to self-fertilize, and easy manual cross-pollination. These features made statistical analysis of inheritance straightforward.",
+    "visualDescription": "Green pea pod plant with labeled pairs of contrasting traits: tall/short stems, purple/white flowers, round/wrinkled seeds",
+    "sourceName": "OpenStax Biology 2e, Chapter 12",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/12-introduction",
+    "distractors": [
+      "Drosophila melanogaster",
+      "Antirrhinum majus",
+      "Zea mays",
+      "Arabidopsis thaliana",
+      "Caenorhabditis elegans",
+      "Neurospora crassa",
+      "Mus musculus",
+      "Felis catus"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_incomplete_dominance",
+    "correctAnswer": "Incomplete dominance",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "Which inheritance pattern produces a heterozygote with an intermediate phenotype between the two homozygous phenotypes (e.g., red × white = pink)?",
+    "explanation": "Incomplete dominance occurs when neither allele is completely dominant. The heterozygote shows a blended phenotype intermediate between the two homozygotes. Classic example: red snapdragons (R¹R¹) × white snapdragons (R²R²) → pink (R¹R²). The 1:2:1 genotypic ratio corresponds to a 1:2:1 phenotypic ratio.",
+    "visualDescription": "Red flower and white flower parents with a pink flower offspring in the center",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Codominance",
+      "Complete dominance",
+      "Epistasis",
+      "Pleiotropy",
+      "Polygenic inheritance",
+      "Multiple allelism",
+      "Sex-linkage",
+      "Genomic imprinting"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_snapdragon",
+    "correctAnswer": "Antirrhinum majus (snapdragon)",
+    "acceptableAlternatives": [
+      "snapdragon",
+      "Antirrhinum majus"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "organism_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which plant species produces pink-flowered heterozygotes when red-flowered (R¹R¹) and white-flowered (R²R²) varieties are crossed — a classic example of incomplete dominance?",
+    "explanation": "Snapdragons (Antirrhinum majus) demonstrate incomplete dominance: red (R¹R¹) × white (R²R²) → pink (R¹R²). Neither the red nor white allele is fully dominant over the other, resulting in a blended intermediate pink phenotype in heterozygotes.",
+    "visualDescription": "Snapdragon flowers in red, pink, and white arranged in a cross diagram showing parent × parent → offspring",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Pisum sativum",
+      "Drosophila melanogaster",
+      "Felis catus",
+      "Hydrangea macrophylla",
+      "Labrador retriever",
+      "Mus musculus",
+      "Zea mays",
+      "Arabidopsis thaliana"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_codominance",
+    "correctAnswer": "Codominance",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "Which inheritance pattern has both alleles fully and simultaneously expressed in the heterozygote, as seen in AB blood type displaying both A and B antigens?",
+    "explanation": "Codominance means both alleles are expressed equally and completely in the heterozygote — no blending occurs. In AB blood type, the I^A allele produces A antigens AND the I^B allele produces B antigens on the same red blood cells simultaneously.",
+    "visualDescription": "AB blood type red blood cell with both A and B antigen shapes visible on the surface",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Incomplete dominance",
+      "Complete dominance",
+      "Epistasis",
+      "Pleiotropy",
+      "Polygenic inheritance",
+      "Multiple allelism",
+      "Sex-linkage",
+      "Penetrance"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_incomp_vs_codom",
+    "correctAnswer": "Incomplete dominance blends phenotypes; codominance expresses both simultaneously",
+    "acceptableAlternatives": [
+      "Incomplete dominance: intermediate blended phenotype; codominance: both phenotypes fully expressed"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "comparison_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What is the key difference between incomplete dominance and codominance in heterozygotes?",
+    "explanation": "In incomplete dominance, the heterozygote shows a blended intermediate phenotype (e.g., red + white = pink — a new color not matching either parent). In codominance, BOTH parental phenotypes are fully expressed simultaneously in the heterozygote without blending (e.g., AB blood type shows both A AND B antigens).",
+    "visualDescription": "Two diagrams: pink flower (incomplete dominance) vs. red-and-white patches on same organism (codominance)",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Both produce blended phenotypes in heterozygotes",
+      "Both produce dominant phenotypes in heterozygotes",
+      "Incomplete dominance expresses both phenotypes; codominance blends them",
+      "Both produce recessive phenotypes only",
+      "Codominance is only for blood types; incomplete dominance is for all other traits",
+      "Both are the same pattern with different names",
+      "Incomplete dominance only occurs in plants; codominance only in animals",
+      "Codominance follows Mendel's laws; incomplete dominance does not"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_multiple_alleles",
+    "correctAnswer": "Multiple alleles",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What term describes the situation where more than two alleles exist in a population for a single gene, as in the ABO blood type system with I^A, I^B, and i?",
+    "explanation": "Multiple alleles means that while any individual can only carry two alleles at a locus, three or more different alleles exist within a population. ABO blood type is the classic example: the three alleles (I^A, I^B, i) produce four blood type phenotypes (A, B, AB, O).",
+    "visualDescription": "Three allele symbols I^A, I^B, and i shown as three options at a single gene locus on a chromosome",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Polygenic inheritance",
+      "Codominance",
+      "Incomplete dominance",
+      "Pleiotropy",
+      "Epistasis",
+      "Sex-linkage",
+      "Genomic imprinting",
+      "Linked genes"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_abo_blood_type",
+    "correctAnswer": "ABO blood type system",
+    "acceptableAlternatives": [
+      "ABO blood group"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which blood group system has three alleles — I^A (dominant, A antigen), I^B (dominant, B antigen), and i (recessive, no antigen) — where I^A and I^B are codominant with each other?",
+    "explanation": "The ABO system illustrates both multiple alleles and codominance. I^A and I^B are both dominant over i, but codominant with each other (I^A I^B = blood type AB). The recessive i allele (ii genotype) produces type O blood (no antigens). Four phenotypes arise from the three alleles.",
+    "visualDescription": "Chart showing three alleles (I^A, I^B, i) and the four resulting blood types (A, B, AB, O) with their genotypes",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Rh blood type system",
+      "MN blood type system",
+      "HLA system",
+      "Sickle cell system",
+      "P blood group system",
+      "Kell blood group",
+      "Lewis blood group",
+      "Duffy antigen system"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_polygenic",
+    "correctAnswer": "Polygenic inheritance",
+    "acceptableAlternatives": [
+      "polygenic trait"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which inheritance pattern, where two or more genes each contribute additively to a single trait, produces continuous phenotypic variation (e.g., skin color, height)?",
+    "explanation": "Polygenic inheritance involves multiple genes — each adding a small effect — controlling a single trait. The result is a continuous range of phenotypes that form a bell-curve distribution in a population. Skin color and height are classic human examples.",
+    "visualDescription": "Bell curve showing continuous distribution of human height, contrasted with discrete Mendelian ratios",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Pleiotropy",
+      "Epistasis",
+      "Multiple alleles",
+      "Codominance",
+      "Incomplete dominance",
+      "Sex-linkage",
+      "Genomic imprinting",
+      "Penetrance"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_epistasis",
+    "correctAnswer": "Epistasis",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Which genetic phenomenon involves one gene influencing or masking the expression of a different gene, as seen in Labrador coat color where 'ee' dogs are yellow regardless of B/b genotype?",
+    "explanation": "Epistasis occurs when one gene's product controls whether another gene's product is expressed. In Labradors, the E gene controls pigment deposition: ee dogs cannot deposit pigment at all, making them yellow regardless of whether they are BB, Bb, or bb for the B gene.",
+    "visualDescription": "Labrador coat color cross diagram showing yellow (ee), black (E_B_), and chocolate (E_bb) puppies",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Pleiotropy",
+      "Codominance",
+      "Incomplete dominance",
+      "Multiple alleles",
+      "Polygenic inheritance",
+      "Penetrance",
+      "Genomic imprinting",
+      "X-inactivation"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_labrador_epistasis",
+    "correctAnswer": "Labrador retriever",
+    "acceptableAlternatives": [
+      "Labrador",
+      "Lab dog"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "organism_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Which dog breed is the classic example of epistasis, where an E gene controls whether the B/b pigment gene is expressed — making ee dogs yellow regardless of their B genotype?",
+    "explanation": "Labrador retrievers demonstrate epistasis between the B gene (black vs. chocolate pigment) and the E gene (pigment deposition). An ee dog cannot deposit any pigment, producing a yellow coat no matter what B alleles it carries. E_ dogs can be black (B_) or chocolate (bb).",
+    "visualDescription": "Three Labrador puppies: one black, one chocolate brown, one yellow, with genotype labels showing epistasis",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Pisum sativum",
+      "Drosophila melanogaster",
+      "Antirrhinum majus",
+      "Felis catus",
+      "Siamese cat",
+      "Holstein cow",
+      "Mus musculus",
+      "Arabidopsis thaliana"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_pleiotropy",
+    "correctAnswer": "Pleiotropy",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which genetic phenomenon occurs when a single gene affects multiple phenotypic traits, as in sickle cell anemia causing both hemolytic anemia and malaria resistance?",
+    "explanation": "Pleiotropy means one gene has multiple phenotypic effects. The sickle cell allele alters hemoglobin shape, causing red blood cell sickling — which simultaneously causes hemolytic anemia and pain crises AND provides partial protection against malaria. One gene, many consequences.",
+    "visualDescription": "One gene arrow branching into three different body effects: misshapen red blood cells, anemia, and malaria resistance shield",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Epistasis",
+      "Polygenic inheritance",
+      "Codominance",
+      "Multiple alleles",
+      "Incomplete dominance",
+      "Penetrance",
+      "Genomic imprinting",
+      "X-inactivation"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_sickle_cell_pleiotropy",
+    "correctAnswer": "Sickle cell anemia",
+    "acceptableAlternatives": [
+      "sickle cell disease"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "disease_syndrome_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which disease is the classic example of pleiotropy — a single allele causing hemolytic anemia, increased malaria resistance, splenic damage, and multi-organ effects?",
+    "explanation": "Sickle cell anemia is caused by a single point mutation in the beta-globin gene. This one change causes hemoglobin to polymerize under low oxygen, leading to sickled red blood cells that cause anemia, pain crises, and organ damage — but also provides heterozygous carriers with partial malaria resistance.",
+    "visualDescription": "Sickled red blood cell shape vs. normal round cells, with an arrow showing multiple downstream effects",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Hemophilia",
+      "Down syndrome",
+      "PKU",
+      "Turner syndrome",
+      "Duchenne muscular dystrophy",
+      "Color blindness",
+      "Cystic fibrosis",
+      "Huntington's disease"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_linked_genes",
+    "correctAnswer": "Linked genes",
+    "acceptableAlternatives": [
+      "gene linkage",
+      "chromosomal linkage"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What term describes genes located on the same chromosome that tend to be inherited together and violate Mendel's Law of Independent Assortment?",
+    "explanation": "Linked genes are physically located on the same chromosome. Because they travel together during meiosis, they do not assort independently. However, crossing over can separate linked genes, creating recombinant offspring — the frequency of recombination indicates how far apart the genes are.",
+    "visualDescription": "Two genes shown on the same chromosome arm, traveling together into the same gamete",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Independent genes",
+      "Sex-linked genes",
+      "Epistatic genes",
+      "Pleiotropic genes",
+      "Polygenic genes",
+      "Codominant alleles",
+      "Multiple alleles",
+      "Imprinted genes"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_recombination_freq",
+    "correctAnswer": "Recombination frequency",
+    "acceptableAlternatives": [
+      "map distance",
+      "centimorgan frequency"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "What term describes the percentage of recombinant offspring from linked genes, used to estimate genetic map distance (1% = 1 centimorgan)?",
+    "explanation": "Recombination frequency measures how often crossing over separates two linked genes. The more often they recombine, the further apart they are on the chromosome. A 1% recombination frequency equals 1 centimorgan (cM) or 1 map unit — allowing geneticists to create linkage maps.",
+    "visualDescription": "Two genes on a chromosome with a distance scale in centimorgans, showing recombinant offspring",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Crossing-over rate",
+      "Mutation frequency",
+      "Penetrance",
+      "Expressivity",
+      "Chi-square value",
+      "Epistasis ratio",
+      "Allele frequency",
+      "Dominance ratio"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_sex_linked",
+    "correctAnswer": "Sex-linked traits",
+    "acceptableAlternatives": [
+      "X-linked traits",
+      "sex-linked inheritance"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What are traits encoded by genes on the X chromosome called — which are expressed more frequently in males (XY) than females (XX) when recessive?",
+    "explanation": "Sex-linked traits are controlled by genes on the sex chromosomes, most commonly the X chromosome. Because males have only one X chromosome (XY), a single recessive allele on that X is sufficient for the trait to be expressed. Females (XX) need two copies of the recessive allele.",
+    "visualDescription": "X chromosome with a trait gene marked, showing XY male expressing the trait vs. XX female who is a carrier",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Autosomal traits",
+      "Polygenic traits",
+      "Epistatic traits",
+      "Pleiotropic traits",
+      "Linked traits",
+      "Codominant traits",
+      "Imprinted traits",
+      "Maternal traits"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_color_blindness",
+    "correctAnswer": "Color blindness",
+    "acceptableAlternatives": [
+      "red-green color blindness"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "disease_syndrome_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "Which X-linked recessive trait affecting red-green color discrimination is more common in males than females because males need only one recessive allele to be affected?",
+    "explanation": "Red-green color blindness is caused by mutations in opsin genes on the X chromosome. Males (XY) need only one copy of the recessive allele (on their single X) to be colorblind, while females (XX) need two copies. About 8% of males but only 0.5% of females are colorblind.",
+    "visualDescription": "Ishihara color test plate showing numbers visible to normal vision but not to colorblind individuals",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Hemophilia",
+      "Duchenne muscular dystrophy",
+      "PKU",
+      "Down syndrome",
+      "Turner syndrome",
+      "Sickle cell anemia",
+      "Huntington's disease",
+      "Cystic fibrosis"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_hemophilia",
+    "correctAnswer": "Hemophilia",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "disease_syndrome_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which X-linked recessive blood-clotting disorder, caused by mutations in clotting factor genes on the X chromosome, almost exclusively affects males?",
+    "explanation": "Hemophilia results from mutations in clotting factor genes (factor VIII for hemophilia A, factor IX for hemophilia B) on the X chromosome. Males with the allele on their single X cannot clot blood normally. Females with one copy are carriers; only females with two copies of the recessive allele are affected.",
+    "visualDescription": "Pedigree showing X-linked recessive inheritance pattern with affected males and carrier females",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Color blindness",
+      "Duchenne muscular dystrophy",
+      "PKU",
+      "Down syndrome",
+      "Turner syndrome",
+      "Sickle cell anemia",
+      "Cystic fibrosis",
+      "Huntington's disease"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_dmd",
+    "correctAnswer": "Duchenne muscular dystrophy",
+    "acceptableAlternatives": [
+      "DMD"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "disease_syndrome_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which X-linked recessive disorder, caused by mutations in the dystrophin gene on the X chromosome, causes progressive muscle weakness and almost exclusively affects males?",
+    "explanation": "Duchenne muscular dystrophy (DMD) results from loss-of-function mutations in the dystrophin gene on the X chromosome. Without functional dystrophin, muscle cells break down progressively. Because the gene is X-linked, males with one mutant allele are fully affected, while females need two mutant alleles.",
+    "visualDescription": "X chromosome with dystrophin gene highlighted, showing muscle fiber degeneration in an affected male",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Hemophilia",
+      "Color blindness",
+      "PKU",
+      "Down syndrome",
+      "Turner syndrome",
+      "Sickle cell anemia",
+      "Marfan syndrome",
+      "Huntington's disease"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_x_inactivation",
+    "correctAnswer": "X-inactivation",
+    "acceptableAlternatives": [
+      "lyonization"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What process randomly and permanently inactivates one X chromosome in each cell of XX females early in development, condensing it into a Barr body?",
+    "explanation": "X-inactivation (lyonization) was discovered by Mary Lyon in 1961. Early in embryonic development, one X chromosome in each cell is randomly inactivated by methylation and condensed into a Barr body. The inactivated X remains silenced in all that cell's descendants, creating cellular mosaicism in females.",
+    "visualDescription": "Two XX cells, each with a different X chromosome highlighted as condensed and dark (Barr body)",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Genomic imprinting",
+      "Crossing over",
+      "DNA methylation in general",
+      "Nondisjunction",
+      "Translocation",
+      "Epigenetic activation",
+      "Mitotic inactivation",
+      "Telomere shortening"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_barr_body",
+    "correctAnswer": "Barr body",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What is the condensed, transcriptionally inactive X chromosome visible in the nucleus of XX female cells, resulting from X-inactivation?",
+    "explanation": "A Barr body is the visible manifestation of X-inactivation: the inactivated X chromosome is tightly coiled and stains darkly in cell nuclei. Females with two X chromosomes have exactly one Barr body; males with one X have none. The number of Barr bodies = number of X chromosomes minus 1.",
+    "visualDescription": "Cell nucleus with a dark, condensed Barr body visible at the nuclear periphery",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Nucleolus",
+      "Heterochromatin",
+      "Centromere",
+      "Telomere",
+      "Synaptonemal complex",
+      "Chiasma",
+      "Kinetochore",
+      "Nuclear lamina"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_calico_cats",
+    "correctAnswer": "Calico cat",
+    "acceptableAlternatives": [
+      "Felis catus (calico)",
+      "calico"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "organism_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "quizQuestion": "Which animal shows patches of orange and black fur because different cell lineages randomly inactivate different X chromosomes carrying different coat-color alleles?",
+    "explanation": "Calico cats are almost always female (XX). The orange vs. black coat color gene is on the X chromosome. Random X-inactivation during early development means some cell lineages express the orange allele while others express the black allele — creating the characteristic patches of color.",
+    "visualDescription": "Calico cat with distinct patches of orange and black fur on white background",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Siamese cat",
+      "Labrador retriever",
+      "Holstein cow",
+      "Drosophila melanogaster",
+      "Pisum sativum",
+      "Snapdragon",
+      "Hydrangea",
+      "Mus musculus"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_genomic_imprinting",
+    "correctAnswer": "Genomic imprinting",
+    "acceptableAlternatives": [
+      "imprinting"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Which epigenetic phenomenon causes gene expression to depend on which parent contributed the allele — silencing one parental copy by methylation — as in Prader-Willi and Angelman syndromes?",
+    "explanation": "Genomic imprinting is epigenetic: certain genes are permanently silenced with a chemical 'imprint' based on their parental origin. If the active copy is deleted or mutated, the silenced imprinted copy cannot compensate. Prader-Willi vs. Angelman syndromes result from the same chromosome 15 deletion — but which parent contributed the deleted copy determines which syndrome appears.",
+    "visualDescription": "Two copies of a gene — one with a methylation cap silencing it — and arrows showing only the other copy being transcribed",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "X-inactivation",
+      "Codominance",
+      "Penetrance",
+      "Crossing over",
+      "Epistasis",
+      "Pleiotropy",
+      "Polygenic inheritance",
+      "Organelle inheritance"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_mito_inheritance",
+    "correctAnswer": "Mitochondrial inheritance",
+    "acceptableAlternatives": [
+      "maternal inheritance",
+      "cytoplasmic inheritance"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "process_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which inheritance pattern involves organelle DNA passed exclusively through the egg cytoplasm from mothers to ALL offspring — bypassing Mendelian segregation?",
+    "explanation": "Mitochondria have their own circular DNA (mtDNA) inherited maternally. Sperm contribute essentially no cytoplasm at fertilization, so mitochondria come only from the egg. Mitochondrial disorders are passed from an affected mother to all her children, with no paternal transmission.",
+    "visualDescription": "Egg cell with many mitochondria highlighted, sperm contributing only nuclear DNA; arrows showing all offspring inheriting maternal mitochondria",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Chloroplast inheritance",
+      "X-linked inheritance",
+      "Autosomal dominant inheritance",
+      "Genomic imprinting",
+      "Y-linked inheritance",
+      "Epistatic inheritance",
+      "Codominant inheritance",
+      "Polygenic inheritance"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_chloroplast_inheritance",
+    "correctAnswer": "Chloroplast inheritance",
+    "acceptableAlternatives": [
+      "plastid inheritance"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "process_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Which type of organelle inheritance involves plastid DNA typically passed maternally through the egg in most plant species, not subject to Mendelian segregation?",
+    "explanation": "Chloroplasts, like mitochondria, contain their own DNA and are generally inherited maternally in most angiosperms — pollen contributes little or no plastid DNA. This means leaf variegation patterns caused by chloroplast mutations follow maternal inheritance, not Mendelian ratios.",
+    "visualDescription": "Plant egg cell with green chloroplasts highlighted; pollen tube contributing only nucleus; offspring showing maternal chloroplast pattern",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Mitochondrial inheritance",
+      "X-linked inheritance",
+      "Autosomal inheritance",
+      "Genomic imprinting",
+      "Polygenic inheritance",
+      "Nuclear inheritance",
+      "Codominant inheritance",
+      "Y-linked inheritance"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_pheno_env",
+    "correctAnswer": "Phenotype = genotype + environment",
+    "acceptableAlternatives": [
+      "Phenotype results from genotype interacting with environment"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "What fundamental principle states that an organism's observable traits are determined by the interaction of its genetic makeup with its environmental conditions?",
+    "explanation": "No gene acts in isolation from the environment. The same genotype can produce very different phenotypes under different conditions. For example, PKU genotype causes intellectual disability only if dietary phenylalanine is not restricted; Siamese cat pigmentation depends on temperature.",
+    "visualDescription": "Formula graphic: Genotype (DNA strand) + Environment (sun, food, temperature) = Phenotype (organism traits)",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Phenotype = genotype only",
+      "Phenotype = environment only",
+      "Genotype = phenotype + environment",
+      "Environment determines genotype",
+      "Phenotype is fixed at fertilization",
+      "Only dominant alleles affect phenotype",
+      "Penetrance determines phenotype alone",
+      "Expressivity equals phenotype"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_norm_of_reaction",
+    "correctAnswer": "Norm of reaction",
+    "acceptableAlternatives": [
+      "reaction norm"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "What term describes the range of phenotypes that a single genotype can produce when exposed to different environmental conditions?",
+    "explanation": "The norm of reaction illustrates phenotypic plasticity: the same genotype can produce different phenotypes across a range of environments. Plotting phenotype vs. environmental variable produces the reaction norm curve — different genotypes may show different norm-of-reaction shapes.",
+    "visualDescription": "Graph with environmental variable on x-axis and phenotype value on y-axis, showing two different genotype lines with different slopes",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Penetrance",
+      "Expressivity",
+      "Phenotypic ratio",
+      "Genotypic ratio",
+      "Epistasis range",
+      "Polygenic continuum",
+      "Heritability",
+      "Linkage map"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_siamese_cat",
+    "correctAnswer": "Siamese cat",
+    "acceptableAlternatives": [
+      "Felis catus (Siamese)"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "organism_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Which animal shows temperature-sensitive coat color because a heat-sensitive tyrosinase enzyme produces dark pigment only at cool extremities (ears, nose, paws, tail) and pale fur at the warm body core?",
+    "explanation": "Siamese cats have a temperature-sensitive (heat-labile) allele of the tyrosinase gene. The enzyme works at cool temperatures (below ~33°C) to produce dark pigment on extremities, but is inactivated at the warmer body core. This is a vivid example of how environment (temperature) modulates phenotype.",
+    "visualDescription": "Siamese cat showing dark-colored ears, nose, paws, and tail contrasting with pale cream body",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Calico cat",
+      "Labrador retriever",
+      "Drosophila melanogaster",
+      "Pisum sativum",
+      "Antirrhinum majus",
+      "Hydrangea macrophylla",
+      "Holstein cow",
+      "Mus musculus"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_hydrangea",
+    "correctAnswer": "Hydrangea",
+    "acceptableAlternatives": [
+      "Hydrangea macrophylla"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which plant produces blue flowers in acidic soil (aluminum available) and pink flowers in alkaline soil (aluminum unavailable), demonstrating that the same genotype can produce different phenotypes based on soil chemistry?",
+    "explanation": "Hydrangeas show that environmental chemistry (soil pH) alters phenotype independently of genotype. In acidic soil, aluminum ions are soluble and absorbed by the plant, shifting flower color to blue. In alkaline soil, aluminum is insoluble and unavailable, producing pink flowers.",
+    "visualDescription": "Two hydrangea plants with identical leaves: one in acidic soil with blue flowers, one in alkaline soil with pink flowers",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Antirrhinum majus (snapdragon)",
+      "Pisum sativum (pea)",
+      "Arabidopsis thaliana",
+      "Siamese cat",
+      "Zea mays (maize)",
+      "Labrador retriever",
+      "Mus musculus",
+      "Drosophila melanogaster"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_pku",
+    "correctAnswer": "Phenylketonuria (PKU)",
+    "acceptableAlternatives": [
+      "PKU"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "disease_syndrome_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which autosomal recessive disorder of phenylalanine metabolism can prevent intellectual disability through strict dietary restriction of phenylalanine from birth — demonstrating gene-environment interaction?",
+    "explanation": "PKU is caused by mutations in the phenylalanine hydroxylase gene. Without the enzyme, phenylalanine accumulates to toxic levels, causing intellectual disability. However, if phenylalanine intake is restricted through diet from birth, the toxic buildup is prevented and normal development occurs — a powerful example of environmental modification of gene expression.",
+    "visualDescription": "Metabolic pathway diagram showing blocked phenylalanine conversion, with a dietary restriction intervention arrow preventing accumulation",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Sickle cell anemia",
+      "Down syndrome",
+      "Hemophilia",
+      "Color blindness",
+      "Duchenne muscular dystrophy",
+      "Turner syndrome",
+      "Cystic fibrosis",
+      "Huntington's disease"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_twin_studies",
+    "correctAnswer": "Twin study",
+    "acceptableAlternatives": [
+      "twin studies"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "experiment_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which research method uses identical (monozygotic) twins raised apart to separate the contributions of genetics vs. environment to phenotypic differences?",
+    "explanation": "Identical twins share 100% of their DNA. When raised in different environments, any phenotypic differences between them must be due to environmental influences rather than genetics. Comparing identical twins raised apart allows researchers to estimate how much of a trait's variation is genetically vs. environmentally determined.",
+    "visualDescription": "Two identical twins raised in different households showing some shared and some different traits",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Test cross",
+      "Chi-square test",
+      "Karyotyping",
+      "Punnett square",
+      "Linkage mapping",
+      "GWAS study",
+      "Pedigree analysis",
+      "Dihybrid cross"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_penetrance",
+    "correctAnswer": "Penetrance",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "What term describes the proportion of individuals with a given genotype who actually exhibit the expected phenotype — where less than 100% is called 'incomplete'?",
+    "explanation": "Penetrance measures how reliably a genotype produces its expected phenotype. If 80% of individuals with a disease genotype show the disease, penetrance is 80% (incomplete). Many genetic disorders show incomplete penetrance, meaning some carriers with the genotype never develop symptoms.",
+    "visualDescription": "Group of individuals all with the same genotype, but some showing the phenotype and some not — illustrating incomplete penetrance",
+    "sourceName": "OpenStax Biology 2e, Chapter 13",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/13-introduction",
+    "distractors": [
+      "Expressivity",
+      "Norm of reaction",
+      "Heritability",
+      "Epistasis",
+      "Pleiotropy",
+      "Dominance",
+      "Recombination frequency",
+      "Gene flow"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_chr_theory",
+    "correctAnswer": "Chromosome theory of inheritance",
+    "acceptableAlternatives": [
+      "chromosomal theory of heredity"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which theory, developed by Sutton and Boveri (~1902), states that genes are located on chromosomes and that chromosome behavior during meiosis explains Mendel's laws?",
+    "explanation": "The chromosome theory of inheritance connected Mendel's abstract 'factors' to a physical structure — chromosomes. Sutton and Boveri independently noticed that the behavior of chromosomes during meiosis (pairing, segregation, independent assortment) perfectly paralleled the behavior of Mendel's hereditary factors.",
+    "visualDescription": "Split diagram: Mendel's pea plant ratios on left, chromosome behavior in meiosis on right, with equivalence arrows",
+    "sourceName": "OpenStax Biology 2e, Chapter 15",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Cell theory",
+      "Germ theory",
+      "Natural selection theory",
+      "Central dogma",
+      "Endosymbiotic theory",
+      "Fluid mosaic model",
+      "Hardy-Weinberg principle",
+      "Neutral theory of evolution"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_sutton_boveri",
+    "correctAnswer": "Sutton and Boveri",
+    "acceptableAlternatives": [
+      "Walter Sutton and Theodor Boveri"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "person_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which two scientists independently proposed the chromosome theory of inheritance (~1902), connecting Mendel's hereditary factors to chromosome behavior during meiosis?",
+    "explanation": "Walter Sutton (studying grasshopper meiosis) and Theodor Boveri (studying sea urchin development) independently realized that the behavior of chromosomes during meiosis mirrors the behavior of Mendel's hereditary units. Together, their work established the chromosomal basis of inheritance.",
+    "visualDescription": "Two portraits side by side — Sutton with grasshopper image, Boveri with sea urchin image, both pointing to the same chromosome diagram",
+    "sourceName": "OpenStax Biology 2e, Chapter 15",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Mendel and Morgan",
+      "Watson and Crick",
+      "Franklin and Wilkins",
+      "Avery and Griffith",
+      "McClintock and Lyon",
+      "Darwin and Wallace",
+      "Chargaff and Meselson",
+      "Hershey and Chase"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_morgan",
+    "correctAnswer": "Thomas Hunt Morgan",
+    "acceptableAlternatives": [
+      "Morgan",
+      "T.H. Morgan"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "person_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "Which American biologist used Drosophila melanogaster to prove genes are physically located on chromosomes and discovered X-linked inheritance through the white-eye trait?",
+    "explanation": "Thomas Hunt Morgan's white-eye Drosophila experiments in the early 1900s provided direct proof that genes are on chromosomes. The white-eye trait appeared only in males in F2 — proving it was linked to the X chromosome and giving the first concrete chromosomal location for a specific gene.",
+    "visualDescription": "Morgan's lab bench with fruit fly bottles, showing red-eyed and white-eyed flies, and an X chromosome diagram",
+    "sourceName": "OpenStax Biology 2e, Chapter 15",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Gregor Mendel",
+      "Walter Sutton",
+      "Theodor Boveri",
+      "Charles Darwin",
+      "Francis Crick",
+      "James Watson",
+      "Mary Lyon",
+      "Barbara McClintock"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_morgan_experiment",
+    "correctAnswer": "Morgan's white-eye Drosophila experiment",
+    "acceptableAlternatives": [
+      "white-eye experiment"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "experiment_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which experiment crossed white-eyed male Drosophila with red-eyed females, finding that F2 white eyes appeared ONLY in males — proving the eye-color gene is on the X chromosome?",
+    "explanation": "Morgan crossed white-eyed males (X^w Y) with wild-type red-eyed females (X^+ X^+). All F1 were red-eyed. In F2, white eyes appeared only in males — about half of F2 males had white eyes. This sex-specific pattern could only be explained if the gene was on the X chromosome.",
+    "visualDescription": "Cross diagram: white-eyed male × red-eyed female → all red F1 → F2 with white-eyed males and red-eyed females only",
+    "sourceName": "OpenStax Biology 2e, Chapter 15",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Mendel's pea plant cross",
+      "Sutton's grasshopper observation",
+      "Avery's DNA transformation",
+      "Hershey-Chase blender experiment",
+      "Griffith's transformation experiment",
+      "Meselson-Stahl replication experiment",
+      "Twin study",
+      "Chi-square analysis"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_drosophila",
+    "correctAnswer": "Drosophila melanogaster",
+    "acceptableAlternatives": [
+      "fruit fly",
+      "Drosophila"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "organism_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "Which model organism — the fruit fly — did Thomas Hunt Morgan use to demonstrate X-linked inheritance and the physical location of genes on chromosomes?",
+    "explanation": "Drosophila melanogaster is ideal for genetics research: short generation time (two weeks), large numbers of offspring, only 4 chromosome pairs, and easily observable phenotypes. Morgan used Drosophila to map the first genes to specific chromosomes and establish the chromosomal theory of heredity.",
+    "visualDescription": "Close-up of fruit fly (Drosophila) with red compound eyes, showing the small size and 4 chromosome karyotype",
+    "sourceName": "OpenStax Biology 2e, Chapter 15",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Pisum sativum",
+      "Caenorhabditis elegans",
+      "Arabidopsis thaliana",
+      "Mus musculus",
+      "Neurospora crassa",
+      "Antirrhinum majus",
+      "Saccharomyces cerevisiae",
+      "Felis catus"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_karyotype",
+    "correctAnswer": "Karyotype",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "experiment_terms",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "What is the organized display of an individual's full chromosome complement, arranged by size and banding pattern, used to detect aneuploidy and chromosomal mutations?",
+    "explanation": "A karyotype is produced by staining chromosomes, photographing them during metaphase when they are maximally condensed, and arranging them by size and banding pattern. Karyotypes can detect trisomies (Down syndrome), monosomies (Turner syndrome), and large structural mutations like translocations.",
+    "visualDescription": "Standard human karyotype with 23 numbered chromosome pairs arranged by size, with sex chromosomes labeled XX or XY",
+    "sourceName": "OpenStax Biology 2e, Chapter 15",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Punnett square",
+      "Linkage map",
+      "Restriction map",
+      "Southern blot",
+      "Pedigree chart",
+      "Chi-square table",
+      "Electrophoresis gel",
+      "PCR product"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_deletion",
+    "correctAnswer": "Deletion",
+    "acceptableAlternatives": [],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which chromosomal mutation involves the loss of a segment of a chromosome, potentially causing haploinsufficiency if essential genes are in the deleted region?",
+    "explanation": "A chromosomal deletion removes a segment of DNA, taking with it all genes in that region. If the remaining copy of those genes on the homolog cannot fully compensate, haploinsufficiency results. Cri-du-chat syndrome results from a deletion on chromosome 5.",
+    "visualDescription": "Chromosome diagram showing a segment missing (gap), contrasted with normal chromosome beside it",
+    "sourceName": "OpenStax Biology 2e, Chapter 15",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Duplication",
+      "Inversion",
+      "Translocation",
+      "Nondisjunction",
+      "Point mutation",
+      "Insertion",
+      "Frameshift",
+      "Substitution"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_duplication",
+    "correctAnswer": "Duplication",
+    "acceptableAlternatives": [
+      "chromosomal duplication"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which chromosomal mutation results in an extra copy of a chromosome segment, giving an organism more than two copies of the genes in that region?",
+    "explanation": "A chromosomal duplication creates an additional copy of a chromosomal segment. The duplicated genes can evolve independently over time — one copy maintaining the original function while the other may mutate to gain a new function. Gene family expansion often originates from ancient duplications.",
+    "visualDescription": "Chromosome showing a repeated segment, with the duplicated region labeled twice",
+    "sourceName": "OpenStax Biology 2e, Chapter 15",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Deletion",
+      "Inversion",
+      "Translocation",
+      "Nondisjunction",
+      "Point mutation",
+      "Insertion",
+      "Frameshift",
+      "Polyploidy"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_inversion",
+    "correctAnswer": "Inversion",
+    "acceptableAlternatives": [
+      "chromosomal inversion"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which chromosomal mutation involves a segment being excised and reinserted in the reverse orientation, potentially disrupting gene expression at the breakpoints?",
+    "explanation": "A chromosomal inversion flips a segment 180°, reversing the order of genes in that region. While no genetic material is gained or lost, gene expression can be disrupted if breakpoints fall within genes or separate genes from their promoters. Inversions also suppress recombination in heterozygous individuals.",
+    "visualDescription": "Chromosome diagram showing a segment flipped (arrows indicating reversal), contrasted with normal chromosome",
+    "sourceName": "OpenStax Biology 2e, Chapter 15",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Deletion",
+      "Duplication",
+      "Translocation",
+      "Nondisjunction",
+      "Point mutation",
+      "Insertion",
+      "Frameshift",
+      "Aneuploidy"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_translocation",
+    "correctAnswer": "Translocation",
+    "acceptableAlternatives": [
+      "chromosomal translocation"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which chromosomal mutation involves a segment moving from one chromosome to a non-homologous chromosome — as in the Philadelphia chromosome between chromosomes 9 and 22?",
+    "explanation": "A chromosomal translocation moves genetic material between non-homologous chromosomes. The Philadelphia chromosome results from a reciprocal translocation between chromosomes 9 and 22, fusing the BCR and ABL genes. This BCR-ABL fusion creates a constitutively active kinase that causes chronic myelogenous leukemia (CML).",
+    "visualDescription": "Two non-homologous chromosomes exchanging segments, resulting in two chimeric chromosomes with swapped ends",
+    "sourceName": "OpenStax Biology 2e, Chapter 15",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Deletion",
+      "Duplication",
+      "Inversion",
+      "Nondisjunction",
+      "Point mutation",
+      "Insertion",
+      "Frameshift",
+      "Aneuploidy"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_philadelphia_chr",
+    "correctAnswer": "Chronic myelogenous leukemia (CML)",
+    "acceptableAlternatives": [
+      "CML",
+      "chronic myelogenous leukemia"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "disease_syndrome_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Which cancer results from the Philadelphia chromosome — a reciprocal translocation between chromosomes 9 and 22 that creates the BCR-ABL fusion oncogene?",
+    "explanation": "The Philadelphia chromosome (Ph) is the hallmark of CML. The BCR-ABL fusion gene encodes a continuously active tyrosine kinase that drives uncontrolled white blood cell proliferation. The drug imatinib (Gleevec) specifically targets BCR-ABL, making CML a landmark success story in targeted cancer therapy.",
+    "visualDescription": "Chromosome 9 and chromosome 22 undergoing reciprocal translocation, producing the smaller Philadelphia chromosome (22q-) with BCR-ABL fusion",
+    "sourceName": "OpenStax Biology 2e, Chapter 15",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Acute lymphoblastic leukemia",
+      "Down syndrome",
+      "Burkitt lymphoma",
+      "Turner syndrome",
+      "Cri-du-chat syndrome",
+      "Retinoblastoma",
+      "Colorectal cancer",
+      "Breast cancer"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_chi_square_formula",
+    "correctAnswer": "χ² = Σ((observed − expected)² / expected)",
+    "acceptableAlternatives": [
+      "chi-square formula",
+      "sum of (O-E)^2/E"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "experiment_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "What is the formula for the chi-square test used in genetics to evaluate whether observed offspring ratios differ significantly from expected Mendelian ratios?",
+    "explanation": "The chi-square formula quantifies how much observed genetic ratios deviate from expected Mendelian ratios. For each phenotypic class, compute (O−E)²/E and sum all classes. A large χ² value indicates the observed data is unlikely to have come from the expected ratio by chance alone.",
+    "visualDescription": "Chi-square formula displayed with a worked example: observed vs. expected columns for a 3:1 ratio test",
+    "sourceName": "OpenStax Biology 2e, Chapter 15",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "χ² = Σ(observed/expected)",
+      "χ² = (observed − expected)/expected",
+      "χ² = Σ(expected − observed)²",
+      "χ² = (O+E)²/(O×E)",
+      "χ² = Σ(O/E)²",
+      "χ² = (O−E)/√expected",
+      "P = observed/total",
+      "df = n²−1"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_chi_square_df",
+    "correctAnswer": "Number of phenotypic classes minus 1",
+    "acceptableAlternatives": [
+      "df = n − 1",
+      "n minus 1"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "experiment_terms",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "How are degrees of freedom (df) calculated for a chi-square genetics test?",
+    "explanation": "Degrees of freedom for a genetics chi-square test = number of phenotypic classes − 1. For a monohybrid cross with 2 phenotypes, df = 1. For a dihybrid cross with 4 phenotypes, df = 3. The df value determines which critical value from the chi-square table to use.",
+    "visualDescription": "Chi-square table excerpt showing df rows 1-4 and critical values at p=0.05",
+    "sourceName": "OpenStax Biology 2e, Chapter 15",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Total number of offspring minus 1",
+      "Number of genotypic classes minus 1",
+      "Number of genes tested",
+      "Total offspring divided by expected",
+      "Number of alleles minus 2",
+      "Sample size minus 2",
+      "Number of parents minus 1",
+      "Number of crosses performed"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  },
+  {
+    "id": "ap_bio_chi_square_interpretation",
+    "correctAnswer": "Reject the null hypothesis if χ² exceeds the critical value at p=0.05",
+    "acceptableAlternatives": [
+      "If χ² > critical value at p=0.05, reject null hypothesis"
+    ],
+    "chainThemeId": 10,
+    "answerTypePoolId": "experiment_terms",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "How do you interpret a chi-square result in a genetics experiment — when do you reject the null hypothesis that observed ratios match expected Mendelian ratios?",
+    "explanation": "The null hypothesis in a genetics chi-square test states that any deviation from expected ratios is due to chance. If the calculated χ² exceeds the critical value (typically at p=0.05 for the given df), the probability that the difference is due to chance alone is less than 5% — so you reject the null hypothesis and conclude the ratio does not fit.",
+    "visualDescription": "Chi-square distribution curve showing the critical value at p=0.05, with 'reject null' region shaded in the right tail",
+    "sourceName": "OpenStax Biology 2e, Chapter 15",
+    "sourceUrl": "https://openstax.org/books/biology-2e/pages/15-introduction",
+    "distractors": [
+      "Accept the null hypothesis if χ² exceeds the critical value",
+      "Reject the null hypothesis if χ² is less than the critical value",
+      "Reject the null if p > 0.05",
+      "Accept the null if χ² equals the critical value",
+      "Reject the null if df > 3",
+      "Use p=0.01 as the standard threshold in AP Biology",
+      "Reject the null if all observed values equal expected values",
+      "Accept the null hypothesis whenever χ² is positive"
+    ],
+    "examTags": [
+      "AP_Biology",
+      "AP_Bio_Unit5"
+    ],
+    "categoryL1": "natural_sciences",
+    "categoryL2": "biology"
+  }
+]
