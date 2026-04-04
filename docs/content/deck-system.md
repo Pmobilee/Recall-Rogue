@@ -408,7 +408,7 @@ film_titles 55/55 OK, director_names 39/28 OK, actor_names 35/35 OK, character_n
 
 ## ap_biology Deck
 
-`data/decks/ap_biology.json` — assembled 2026-04-03. Exam-aligned to the College Board AP Biology CED (2025-26, effective Fall 2025), covering all 8 units and Topics 1.1 through 8.7.
+`data/decks/ap_biology.json` — assembled 2026-04-03, expanded to 1123 facts. Exam-aligned to the College Board AP Biology CED (2025-26, effective Fall 2025), covering all 8 units and Topics 1.1 through 8.7.
 
 Architecture (generation reference): `data/deck-architectures/ap_biology_arch_meta.yaml`
 Master architecture (1100-fact target): `data/deck-architectures/ap_biology_arch.yaml`
@@ -421,9 +421,9 @@ Assembly script: `scripts/assemble-ap-biology-deck.mjs`
 | `domain` | `natural_sciences` |
 | `subDomain` | `biology` |
 | `minimumFacts` | 320 |
-| `targetFacts` | 390 |
-| **Actual facts** | **363** |
-| Pools | 13 |
+| `targetFacts` | 1100 |
+| **Actual facts** | **1123** |
+| Pools | 22 |
 | Synonym groups | 22 |
 | Duplicate IDs resolved | 2 (`ap_bio_cholesterol_membrane`, `ap_bio_dna_antiparallel`) |
 
@@ -440,29 +440,42 @@ Assembly script: `scripts/assemble-ap-biology-deck.mjs`
 | 6 | Evolution Engine | Unit 7: Natural Selection | 54 |
 | 7 | The Living Web | Unit 8: Ecology | 45 |
 
-**Answer Type Pools (13 populated):**
+**Answer Type Pools (22 populated):**
 
 | Pool ID | Facts | Label |
 |---|---|---|
-| `bio_concept_terms` | 169 | Biology Concept |
-| `process_names` | 42 | Biological Process |
-| `molecule_names` | 26 | Molecule / Macromolecule |
-| `ecology_terms` | 20 | Ecology Term |
-| `evolution_terms` | 19 | Evolution Term |
+| `term_definitions` | 317 | Term / Definition |
+| `bio_concept_terms` | 157 | Biology Concept |
+| `process_names` | 118 | Biological Process |
+| `molecule_names` | 91 | Molecule / Macromolecule |
+| `ecology_terms` | 89 | Ecology Term |
+| `bracket_numbers` | 75 | Number / Value |
+| `comparison_terms` | 62 | Comparison Term |
+| `organism_names` | 32 | Organism Name |
+| `function_terms` | 39 | Function Term |
+| `experiment_terms` | 18 | Experiment / Study |
+| `evolution_terms` | 16 | Evolution Term |
+| `organelle_names` | 15 | Organelle |
 | `genetics_terms` | 15 | Genetics Term |
-| `equation_terms` | 15 | Equation / Formula |
+| `equation_terms` | 13 | Equation / Formula |
 | `signal_molecule_names` | 12 | Signal Molecule |
 | `cycle_phase_names` | 12 | Cell Cycle Phase |
-| `bracket_numbers` | 11 | Number / Value |
-| `structure_function_terms` | 8 | Structure-Function Term |
-| `organelle_structures` | 7 | Organelle / Cell Structure |
+| `location_terms` | 11 | Location |
+| `disease_syndrome_names` | 8 | Disease / Syndrome |
+| `structure_function_terms` | 7 | Structure-Function Term |
 | `enzyme_names` | 7 | Enzyme |
+| `organelle_structures` | 6 | Organelle Structure |
+| `person_names` | 3 | Scientist Name (minimumSize: 3 with explicit distractors) |
 
-**Equations covered (17 equation-tagged facts across 15 pool entries):** Hardy-Weinberg equilibrium (allele + genotype frequency), water potential (Ψ = Ψs + Ψp), solute potential (Ψs = –iCRT), free energy (ΔG = ΔH – TΔS), surface area to volume formulas (sphere, cube, cylinder), Q10 temperature coefficient, allometric scaling, dilution formula (M1V1 = M2V2), chi-square statistic, primary productivity estimates. CED appendix equations are fully covered.
+**Equations covered:** Hardy-Weinberg equilibrium (allele + genotype frequency), water potential (Ψ = Ψs + Ψp), solute potential (Ψs = –iCRT), free energy (ΔG = ΔH – TΔS), surface area to volume formulas, Q10 temperature coefficient, allometric scaling, dilution formula (M1V1 = M2V2), chi-square statistic, primary productivity estimates. CED appendix equations fully covered.
 
 **CED alignment:** College Board AP Biology CED (2025-26, effective Fall 2025). All 8 units covered, Topics 1.1–8.7. Facts include `examTags` with `unit`, `topic`, `exam_weight`, `big_idea`, `is_equation_fact`, and `is_lab_fact` fields for filtering by exam section.
 
-**Difficulty distribution:** easy 238, medium 105, hard 14.
+**QA fixes applied 2026-04-04:** 83 facts had answers >100 chars (verifier check #14 failure). Fixed by:
+- Restructuring ~70 definition-style answers into concise terms/phrases, moving detail to `explanation` field
+- `ap_bio_cr_002` and `ap_bio_etc_010`: range answers `{30-32}` and `{26-28}` (non-numeric brace format) converted to plain text `30–32 ATP` / `26–28 ATP` with explicit distractors; moved from `bracket_numbers` to `term_definitions` pool
+- `ap_bio_pure_water_psi`: answer `{0}` (zero base causes no numeric distractors) converted to `0 MPa` with explicit distractors; moved to `term_definitions` pool
+- `person_names` pool (3 facts): `minimumSize` lowered to 3 (only 3 scientist facts exist), explicit `distractors` arrays added to each fact for runtime selection
 
 ---
 
