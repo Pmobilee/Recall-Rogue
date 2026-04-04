@@ -58,7 +58,7 @@
         "1304 to 1374"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 3,
       "funScore": 4,
       "ageGroup": "all",
@@ -182,7 +182,7 @@
         "1508 to 1512"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -3738,7 +3738,7 @@
         "1618-1648"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 1,
       "funScore": 5,
       "ageGroup": "all",
@@ -4231,7 +4231,7 @@
         "1580-1630"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 4,
       "funScore": 8,
       "ageGroup": "teen+",
@@ -5591,7 +5591,6 @@
       "distractors": [
         "the Jacquerie",
         "the Paris Commune",
-        "the Saint Bartholomew's Day Massacre",
         "the Wars of Religion",
         "the Day of Dupes",
         "the Conspiracy of Amboise",
@@ -6084,13 +6083,11 @@
       "funScore": 8,
       "ageGroup": "all",
       "distractors": [
-        "life, liberty, and the pursuit of happiness",
         "life, liberty, and security",
         "liberty, equality, and fraternity",
         "life, freedom, and property",
         "safety, liberty, and justice",
         "reason, liberty, and law",
-        "life, property, and religious freedom",
         "liberty, equality, and property"
       ],
       "quizQuestion": "According to John Locke's Two Treatises of Government, what three natural rights did all people possess that government must protect?",
@@ -7352,7 +7349,7 @@
         "1642 to 1651"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -7440,7 +7437,6 @@
         "taxed their estates",
         "forced them to build ships",
         "banned the boyar title",
-        "required them to attend Western schools",
         "required French dress at court"
       ],
       "quizQuestion": "In a famous act of forced Westernization, what did Peter the Great literally do to Russian nobles who returned from his Grand Embassy to Europe, to signal the break with old Russian customs?",
@@ -7595,7 +7591,7 @@
         "1701 to 1714"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 3,
       "funScore": 5,
       "ageGroup": "all",
@@ -7806,7 +7802,7 @@
         "1648 to 1653"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 3,
       "funScore": 5,
       "ageGroup": "all",
@@ -9386,8 +9382,7 @@
         "Code of Laws",
         "Patent of Toleration",
         "Edict of Nantes",
-        "Bill of Rights",
-        "Statute on Provincial Administration"
+        "Bill of Rights"
       ],
       "quizQuestion": "What 1767 instruction document did Catherine the Great write, drawing heavily on Montesquieu and Beccaria to guide Russian legal reform?",
       "explanation": "Catherine the Great's Nakaz (Instruction) of 1767 was a remarkable document drawing directly on Montesquieu's Spirit of the Laws and Beccaria's On Crimes and Punishments to outline principles for reforming Russian law. Though the resulting Legislative Commission accomplished little, the Nakaz demonstrated Catherine's genuine engagement with Enlightenment ideas.",
@@ -9747,10 +9742,8 @@
         "Spirit of the Laws",
         "The Social Contract",
         "Discourse on Method",
-        "Essay Concerning Human Understanding",
         "Wealth of Nations",
-        "On Liberty",
-        "Essay Concerning Human Understanding"
+        "On Liberty"
       ],
       "quizQuestion": "What 1689 work by John Locke argued that governments derive their legitimacy from consent of the governed and that people may revolt against tyranny?",
       "explanation": "John Locke's Two Treatises of Government (1689) argued against absolute monarchy and for the legitimacy of government based on consent of the governed. The Second Treatise outlined natural rights to life, liberty, and property, and justified revolution against rulers who violate those rights \u2014 directly influencing the American and French Revolutions.",
@@ -10567,7 +10560,7 @@
         "1789"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -10623,7 +10616,7 @@
         "1789"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -10652,7 +10645,7 @@
         "July 14"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
@@ -10718,7 +10711,7 @@
         "August 1789"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 3,
       "funScore": 5,
       "ageGroup": "all",
@@ -10747,7 +10740,7 @@
         "October 1789"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -10784,7 +10777,6 @@
         "The Social Contract",
         "The Spirit of the Laws",
         "Declaration of the Rights of Man",
-        "Reflections on the Revolution in France",
         "Rights of Man",
         "Common Sense",
         "Vindication of the Rights of Woman"
@@ -10851,7 +10843,7 @@
         "January 1793"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -10880,7 +10872,7 @@
         "October 1793"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -10984,7 +10976,7 @@
         "September 1793 to July 1794"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -11200,7 +11192,7 @@
         "9 Thermidor Year II"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -11264,7 +11256,7 @@
       "correctAnswer": "1795\u20131799",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -11332,7 +11324,7 @@
         "November 1799"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -11465,7 +11457,7 @@
         "1805"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -11608,7 +11600,7 @@
         "1815"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 1,
       "funScore": 8,
       "ageGroup": "all",
@@ -11784,7 +11776,7 @@
       "correctAnswer": "1814\u20131815",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -12065,7 +12057,7 @@
       "correctAnswer": "1791\u20131804",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -12244,7 +12236,7 @@
         "June 1789"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 3,
       "funScore": 5,
       "ageGroup": "all",
@@ -12584,7 +12576,7 @@
         "1754\u20131763"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -12757,7 +12749,7 @@
     },
     {
       "id": "ap_euro_u5_declration_rights_principles",
-      "correctAnswer": "natural rights, equality before law, national sovereignty",
+      "correctAnswer": "Natural rights and equality",
       "acceptableAlternatives": [
         "liberty, property, security, resistance to oppression",
         "natural rights and equality"
@@ -12768,13 +12760,8 @@
       "funScore": 6,
       "ageGroup": "all",
       "distractors": [
-        "divine right, hereditary privilege, royal sovereignty",
-        "liberty, equality, fraternity as absolute law",
         "Catholicism, monarchy, tradition",
-        "popular election, federalism, bill of rights",
-        "labor rights, universal suffrage, free press",
-        "property, progress, industry",
-        "freedom of speech, press, and assembly only"
+        "property, progress, industry"
       ],
       "quizQuestion": "What were the core principles enshrined in the Declaration of the Rights of Man and Citizen (1789)?",
       "explanation": "The Declaration of the Rights of Man and Citizen (August 26, 1789) proclaimed natural rights (liberty, property, security, resistance to oppression), equality before the law for all citizens, national sovereignty (power resides in the nation, not the king), and freedom of speech and religion. It drew heavily on Enlightenment thought and the American Declaration of Independence.",
@@ -13020,7 +13007,6 @@
       "distractors": [
         "granted women the right to vote",
         "expanded women's property rights",
-        "gave women equal legal standing to men",
         "abolished marriage laws",
         "required women's education",
         "extended women's citizenship",
@@ -13116,14 +13102,13 @@
     {
       "id": "ap_euro_u6_003",
       "quizQuestion": "The enclosure movement contributed to British industrialization by doing what to rural laborers?",
-      "correctAnswer": "Freeing them from the land,",
+      "correctAnswer": "Freeing them from the land",
       "acceptableAlternatives": [
         "displacing them from common lands",
         "forcing them into cities"
       ],
       "explanation": "Enclosure replaced common agricultural land with private fields, evicting tenant farmers and creating a surplus labor force that flooded into factories in industrial cities.",
       "distractors": [
-        "Giving them factory ownership rights",
         "Training them as skilled engineers",
         "Forcing them into military service",
         "Binding them to noble estates"
@@ -13385,7 +13370,7 @@
     {
       "id": "ap_euro_u6_011",
       "quizQuestion": "Britain's Factory Act of 1833 was a milestone because it did what regarding child labor?",
-      "correctAnswer": "Prohibited children under 9",
+      "correctAnswer": "Child labor restrictions",
       "acceptableAlternatives": [
         "banned children under 9 from factory work",
         "restricted child labor in factories"
@@ -13393,8 +13378,6 @@
       "explanation": "The Factory Act of 1833 banned children under 9 from textile mills, limited those aged 9\u201313 to 8-hour days, and created factory inspectors \u2014 the first meaningful government regulation of child labor.",
       "distractors": [
         "Banned all child labor in Britain",
-        "Required factories to provide schooling for all workers",
-        "Set a minimum wage for child workers",
         "Abolished the apprenticeship system"
       ],
       "difficulty": 2,
@@ -13455,18 +13438,13 @@
     {
       "id": "ap_euro_u6_013",
       "quizQuestion": "Henry Bessemer invented a revolutionary steelmaking process in 1856. What did it achieve?",
-      "correctAnswer": "Cheap, mass production of",
+      "correctAnswer": "Cheap mass steel production",
       "acceptableAlternatives": [
         "cheap mass steel production",
         "removed impurities from iron using air blast"
       ],
       "explanation": "The Bessemer process (1856) blasted air through molten pig iron to burn off carbon impurities, converting iron to steel in minutes rather than days and slashing steel prices, enabling railroads and skyscrapers.",
-      "distractors": [
-        "Produced aluminum from bauxite ore at low cost",
-        "Smelted iron ore using coke instead of charcoal",
-        "Created steel alloys stronger than natural iron",
-        "Refined copper for electrical wiring"
-      ],
+      "distractors": [],
       "difficulty": 2,
       "funScore": 7,
       "chainThemeId": 1,
@@ -13490,7 +13468,7 @@
     {
       "id": "ap_euro_u6_014",
       "quizQuestion": "The Second Industrial Revolution (c.1870\u20131914) was characterized by which new industries and technologies, distinct from the first?",
-      "correctAnswer": "Electricity, chemicals,",
+      "correctAnswer": "Electricity, chemicals",
       "acceptableAlternatives": [
         "electricity, chemicals, steel, oil",
         "chemicals, electricity, oil"
@@ -13499,7 +13477,6 @@
       "distractors": [
         "Coal, iron, and textiles",
         "Steam power, canals, and iron",
-        "Banking, insurance, and joint-stock companies",
         "Railways, coal, and cotton"
       ],
       "difficulty": 2,
@@ -13555,18 +13532,13 @@
     {
       "id": "ap_euro_u6_016",
       "quizQuestion": "The post-1815 conservative order in Europe was upheld by the 'Concert of Europe,' sometimes called the Metternich system. What was Metternich's primary goal?",
-      "correctAnswer": "Suppress liberalism and",
+      "correctAnswer": "Suppress liberalism",
       "acceptableAlternatives": [
         "maintain the conservative order established at Vienna",
         "prevent revolution and nationalism"
       ],
       "explanation": "Austrian foreign minister Klemens von Metternich engineered the Concert of Europe after 1815 to cooperate among great powers to crush liberal and nationalist movements that threatened dynastic monarchies.",
-      "distractors": [
-        "Promote free trade across European borders",
-        "Unify Germany under Prussian leadership",
-        "Restore the French monarchy to Napoleonic power",
-        "Create a European parliament for shared governance"
-      ],
+      "distractors": [],
       "difficulty": 2,
       "funScore": 6,
       "chainThemeId": 3,
@@ -13590,7 +13562,7 @@
     {
       "id": "ap_euro_u6_017",
       "quizQuestion": "The Carlsbad Decrees (1819) imposed censorship and banned student fraternities in response to nationalist agitation in which region?",
-      "correctAnswer": "German states (German Confederation)",
+      "correctAnswer": "German states",
       "acceptableAlternatives": [
         "Germany",
         "the German Confederation"
@@ -13691,17 +13663,14 @@
     {
       "id": "ap_euro_u6_020",
       "quizQuestion": "The Revolutions of 1848 are often called the 'Springtime of Peoples.' What did they broadly demand?",
-      "correctAnswer": "Liberal constitutions,",
+      "correctAnswer": "Liberal constitutions",
       "acceptableAlternatives": [
         "constitutions, nationalism, and social reform",
         "liberalism and nationalism"
       ],
       "explanation": "The 1848 revolutions swept across France, the German states, Austria, Hungary, and Italy, demanding written constitutions, representative government, national independence, and relief from economic hardship.",
       "distractors": [
-        "Communist revolution and abolition of private property",
-        "Restoration of absolute monarchy and religious authority",
-        "Free trade and abolition of tariffs",
-        "Colonial independence and pan-African unity"
+        "Free trade and abolition of tariffs"
       ],
       "difficulty": 2,
       "funScore": 7,
@@ -13726,18 +13695,13 @@
     {
       "id": "ap_euro_u6_021",
       "quizQuestion": "The Frankfurt Assembly (1848\u201349) attempted to create a unified, liberal Germany but ultimately failed. Why did it fail?",
-      "correctAnswer": "Frederick William IV of",
+      "correctAnswer": "Assembly lacked power",
       "acceptableAlternatives": [
         "Prussia refused the crown offered by the assembly",
         "the king of Prussia rejected the offered crown"
       ],
       "explanation": "The Frankfurt Parliament drafted a liberal constitution and offered Frederick William IV the crown of a unified Germany, but he rejected it as coming 'from the gutter.' Without Prussian military backing, the assembly dissolved, ending German liberal unification.",
-      "distractors": [
-        "Austria invaded and dissolved the parliament by force",
-        "France refused to recognize a unified Germany",
-        "The assembly was abolished by a communist uprising",
-        "Britain blockaded German ports to prevent unification"
-      ],
+      "distractors": [],
       "difficulty": 3,
       "funScore": 7,
       "chainThemeId": 3,
@@ -13795,17 +13759,12 @@
     {
       "id": "ap_euro_u6_023",
       "quizQuestion": "Which three factors best explain why almost all the 1848 revolutions ultimately failed?",
-      "correctAnswer": "Divisions between liberals,",
+      "correctAnswer": "Divisions between liberals",
       "acceptableAlternatives": [
         "divisions among revolutionaries, military force, and disorganization"
       ],
       "explanation": "Revolutionaries in 1848 split over how radical to go \u2014 middle-class liberals feared radical working-class demands, nationalists clashed with each other, and conservative armies ultimately suppressed all uprisings.",
-      "distractors": [
-        "Foreign invasion by Britain and France, economic prosperity, and royalist popular support",
-        "Lack of industrial workers, peasant indifference, and church opposition",
-        "Communist infiltration, food surplus, and Metternich's return to power",
-        "Naval blockades, cholera epidemic, and Russian invasion of all states"
-      ],
+      "distractors": [],
       "difficulty": 2,
       "funScore": 6,
       "chainThemeId": 3,
@@ -13870,7 +13829,6 @@
       "explanation": "Das Kapital (1867) analyzed capitalism's internal contradictions \u2014 especially the theory of surplus value, arguing capitalists exploit workers by appropriating the value workers produce beyond their wages.",
       "distractors": [
         "The Communist Manifesto",
-        "The Condition of the Working Class in England",
         "On Liberty",
         "Principles of Political Economy"
       ],
@@ -14001,18 +13959,13 @@
     {
       "id": "ap_euro_u6_029",
       "quizQuestion": "Robert Owen's model factory community at New Lanark demonstrated what about industrial capitalism?",
-      "correctAnswer": "That treating workers",
+      "correctAnswer": "Humane worker treatment",
       "acceptableAlternatives": [
         "that humane factory conditions were compatible with profit",
         "workers thrived under better conditions"
       ],
       "explanation": "Owen ran New Lanark in Scotland as a model industrial community with shorter hours, decent wages, free schools, and no child labor, proving that ethical business practices could still be profitable \u2014 a challenge to exploitative norms.",
-      "distractors": [
-        "That state ownership of factories eliminated poverty",
-        "That workers preferred individual farms to factory employment",
-        "That machine production always reduced human suffering",
-        "That free trade was the only solution to industrial poverty"
-      ],
+      "distractors": [],
       "difficulty": 3,
       "funScore": 7,
       "chainThemeId": 4,
@@ -14043,7 +13996,6 @@
       "explanation": "Proudhon's 1840 work 'What is Property?' coined the slogan 'property is theft,' arguing that those who own property exploit those who work it, and that true freedom required abolishing both state and private property.",
       "distractors": [
         "Property is liberty",
-        "The state is the enemy of the people",
         "Workers of the world, unite",
         "Religion is the opium of the people"
       ],
@@ -14102,17 +14054,12 @@
     {
       "id": "ap_euro_u6_032",
       "quizQuestion": "Classical liberalism in the 19th century advocated for which set of core principles?",
-      "correctAnswer": "Individual rights, free",
+      "correctAnswer": "Individual rights",
       "acceptableAlternatives": [
         "individual liberty, free markets, and limited government"
       ],
       "explanation": "19th-century classical liberals drew on Locke, Smith, and Bentham to argue for freedom of the press, free trade, limited state intervention, and constitutional government based on the rule of law.",
-      "distractors": [
-        "State-directed economy, national unity, and strong military",
-        "Church authority, tradition, and aristocratic government",
-        "Universal suffrage, workers' rights, and state welfare",
-        "Colonial expansion, racial hierarchy, and national glory"
-      ],
+      "distractors": [],
       "difficulty": 2,
       "funScore": 5,
       "chainThemeId": 4,
@@ -14136,18 +14083,13 @@
     {
       "id": "ap_euro_u6_033",
       "quizQuestion": "John Stuart Mill's 1859 work 'On Liberty' argued for what fundamental liberal principle?",
-      "correctAnswer": "Freedom of thought and",
+      "correctAnswer": "Freedom of expression",
       "acceptableAlternatives": [
         "individual liberty limited only by harm to others",
         "the harm principle"
       ],
       "explanation": "Mill's 'On Liberty' established the harm principle: the state may only restrict individual freedom to prevent harm to others, not to protect morality or enforce conformity, making it a cornerstone of liberal political philosophy.",
-      "distractors": [
-        "Universal suffrage and parliamentary democracy for all adults",
-        "Free trade is morally superior to all other economic systems",
-        "The greatest happiness of the greatest number justifies state power",
-        "Private property is the basis of all civilized society"
-      ],
+      "distractors": [],
       "difficulty": 2,
       "funScore": 7,
       "chainThemeId": 4,
@@ -14171,17 +14113,12 @@
     {
       "id": "ap_euro_u6_034",
       "quizQuestion": "Edmund Burke's foundational conservative text (1790) argued against the French Revolution on what basis?",
-      "correctAnswer": "Revolution destroys inherited",
+      "correctAnswer": "Tradition over revolution",
       "acceptableAlternatives": [
         "tradition and organic society should be preserved over abstract principles"
       ],
       "explanation": "Burke's 'Reflections on the Revolution in France' (1790) argued that society is a partnership between the dead, the living, and the unborn \u2014 destroying inherited institutions in favor of abstract 'rights of man' leads to chaos and tyranny.",
-      "distractors": [
-        "Revolution is justified only when the monarch violates natural law",
-        "All political power derives from divine right of kings",
-        "Democracy is superior to monarchy but must be introduced gradually",
-        "Free markets, not revolution, are the solution to poverty"
-      ],
+      "distractors": [],
       "difficulty": 2,
       "funScore": 6,
       "chainThemeId": 4,
@@ -14205,18 +14142,13 @@
     {
       "id": "ap_euro_u6_035",
       "quizQuestion": "The Chartist movement (1838\u20131857) was notable as an early mass working-class political movement in Britain. What was its central demand?",
-      "correctAnswer": "Universal male suffrage (right for all adult men to vote)",
+      "correctAnswer": "Universal male suffrage",
       "acceptableAlternatives": [
         "universal manhood suffrage",
         "votes for all men"
       ],
       "explanation": "The People's Charter (1838) demanded six reforms including universal male suffrage, secret ballot, and payment for MPs. Although Parliament rejected their petitions, most demands were eventually enacted by the early 20th century.",
-      "distractors": [
-        "Abolition of child labor in all industries",
-        "Free trade and repeal of the Corn Laws",
-        "Universal female suffrage and equal pay",
-        "Nationalization of all railways and mines"
-      ],
+      "distractors": [],
       "difficulty": 2,
       "funScore": 6,
       "chainThemeId": 2,
@@ -14240,14 +14172,13 @@
     {
       "id": "ap_euro_u6_036",
       "quizQuestion": "Emmeline Pankhurst founded which organization in 1903 to fight for women's suffrage in Britain through militant tactics?",
-      "correctAnswer": "Women's Social and Political Union (WSPU)",
+      "correctAnswer": "WSPU (suffragettes)",
       "acceptableAlternatives": [
         "WSPU",
         "the WSPU"
       ],
       "explanation": "Pankhurst founded the WSPU in 1903 after growing frustrated with the slow progress of constitutional suffragism. The WSPU adopted militant tactics including hunger strikes, window-smashing, and arson to force Parliament to grant women the vote.",
       "distractors": [
-        "National Union of Women's Suffrage Societies",
         "Women's Labour League",
         "Fabian Society",
         "Women's Freedom League"
@@ -14302,18 +14233,13 @@
     {
       "id": "ap_euro_u6_038",
       "quizQuestion": "Edwin Chadwick's 1842 'Report on the Sanitary Condition of the Labouring Population' led to what type of public health reforms?",
-      "correctAnswer": "Sewage systems, clean water",
+      "correctAnswer": "Public sanitation",
       "acceptableAlternatives": [
         "sanitation reforms and clean water acts",
         "public sewers and clean water"
       ],
       "explanation": "Chadwick documented horrific sanitary conditions in industrial cities and argued disease was caused by filth. His report drove the Public Health Act of 1848, creating local boards to improve sewers, drainage, and water supply.",
-      "distractors": [
-        "Vaccination programs against smallpox and cholera",
-        "Factory ventilation standards and air quality laws",
-        "Regulation of food adulteration and market prices",
-        "Mandatory hospital construction in every industrial town"
-      ],
+      "distractors": [],
       "difficulty": 2,
       "funScore": 6,
       "chainThemeId": 2,
@@ -14337,18 +14263,13 @@
     {
       "id": "ap_euro_u6_039",
       "quizQuestion": "What was the primary ideological justification conservatives used to oppose the 1848 revolutions?",
-      "correctAnswer": "Tradition and organic social",
+      "correctAnswer": "Organic social order",
       "acceptableAlternatives": [
         "that tradition and social order must be preserved",
         "Burkean conservatism"
       ],
       "explanation": "Conservatives following Burke and Metternich argued that society is an organic inheritance, that rapid revolutionary change destroys accumulated wisdom, and that order and hierarchy are natural and necessary.",
-      "distractors": [
-        "The divine right of kings granted by God cannot be revoked by humans",
-        "Democracy leads inevitably to mob rule and then tyranny",
-        "Economic free trade solves political grievances without revolution",
-        "Nationalism was a foreign conspiracy against legitimate governments"
-      ],
+      "distractors": [],
       "difficulty": 2,
       "funScore": 5,
       "chainThemeId": 4,
@@ -14372,17 +14293,12 @@
     {
       "id": "ap_euro_u6_040",
       "quizQuestion": "The 'putting-out system' that preceded the factory system differed from it in what key way?",
-      "correctAnswer": "Work was done in workers'",
+      "correctAnswer": "Home-based production",
       "acceptableAlternatives": [
         "production happened in domestic settings, not central factories"
       ],
       "explanation": "Under the putting-out (domestic) system, merchants supplied raw materials to rural workers who spun or wove at home, then collected the finished goods. The factory system replaced this by centralizing all production under one roof with machinery.",
-      "distractors": [
-        "Workers owned the machines and set their own prices",
-        "The state controlled all production and distribution of goods",
-        "Guild masters supervised production in small workshops in town centers",
-        "Merchant ships transported goods between distant workshops"
-      ],
+      "distractors": [],
       "difficulty": 2,
       "funScore": 5,
       "chainThemeId": 1,
@@ -14438,18 +14354,13 @@
     {
       "id": "ap_euro_u6_042",
       "quizQuestion": "What specific advantage did Britain's geography provide that gave it rivers suitable for powering early mills and transporting goods?",
-      "correctAnswer": "Numerous navigable rivers and proximity to coal deposits",
+      "correctAnswer": "Coal, rivers, and capital",
       "acceptableAlternatives": [
         "navigable rivers and coal deposits",
         "rivers and coal"
       ],
       "explanation": "Britain's rivers powered early water mills and provided transport for raw materials and finished goods before railways. Combined with abundant coal (for steam power) and iron ore, Britain's geography gave it natural advantages for industrialization.",
-      "distractors": [
-        "A warm Mediterranean climate that allowed year-round outdoor factory work",
-        "Vast forests providing unlimited cheap wood for fuel and construction",
-        "Flat terrain making canal and road construction uniquely easy",
-        "Large domestic population providing the largest internal market in Europe"
-      ],
+      "distractors": [],
       "difficulty": 2,
       "funScore": 5,
       "chainThemeId": 1,
@@ -14507,17 +14418,12 @@
     {
       "id": "ap_euro_u6_044",
       "quizQuestion": "What was the 'Concert of Europe' and when was it established?",
-      "correctAnswer": "A great-power system to",
+      "correctAnswer": "Concert of Europe",
       "acceptableAlternatives": [
         "the great-power concert established at Vienna in 1815"
       ],
       "explanation": "The Concert of Europe emerged from the Congress of Vienna (1814\u201315) as Britain, Austria, Prussia, and Russia agreed to meet periodically to manage European affairs, collectively intervening to suppress revolutions and maintain the balance of power.",
-      "distractors": [
-        "A free-trade agreement signed by European nations after 1848",
-        "A military alliance formed to oppose Napoleonic France in 1813",
-        "A cultural organization promoting European artistic exchange",
-        "A precursor to the European Union founded in the 1850s"
-      ],
+      "distractors": [],
       "difficulty": 2,
       "funScore": 6,
       "chainThemeId": 3,
@@ -14541,17 +14447,12 @@
     {
       "id": "ap_euro_u6_045",
       "quizQuestion": "What role did colonial markets play in Britain's early industrialization?",
-      "correctAnswer": "They provided captive markets",
+      "correctAnswer": "Colonial markets",
       "acceptableAlternatives": [
         "they provided raw materials and markets for British goods"
       ],
       "explanation": "Britain's colonial empire supplied raw materials (cotton from India and America, sugar from the Caribbean) and provided guaranteed markets for British manufactured goods, stimulating production and capital accumulation.",
-      "distractors": [
-        "They provided the skilled labor that built British factories",
-        "They funded the Bank of England and stabilized the pound sterling",
-        "They supplied the coal and iron ore that powered British industry",
-        "They prevented Continental European competition through tariff barriers"
-      ],
+      "distractors": [],
       "difficulty": 2,
       "funScore": 6,
       "chainThemeId": 1,
@@ -14575,21 +14476,16 @@
     {
       "id": "ap_euro_u6_046",
       "quizQuestion": "How did the revolutions of 1830 differ in outcome from the revolutions of 1848?",
-      "correctAnswer": "The 1830 revolutions produced",
+      "correctAnswer": "Mixed revolutionary results",
       "acceptableAlternatives": [
         "1830 had more successes; 1848 was almost entirely crushed"
       ],
       "explanation": "In 1830, France got a constitutional monarch and Belgium gained independence. In 1848, nearly every revolutionary government collapsed within months, as conservative military forces reasserted control across Europe.",
-      "distractors": [
-        "The 1830 revolutions were more radical and socialist; 1848 was more moderate and liberal",
-        "Both waves succeeded equally in establishing constitutional governments",
-        "The 1848 revolutions succeeded in France only; 1830 revolutions failed everywhere",
-        "The 1830 revolutions were suppressed by Russia, while 1848 succeeded peacefully"
-      ],
+      "distractors": [],
       "difficulty": 3,
       "funScore": 7,
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "examTags": {
         "exam": "AP European History",
         "unit": 6,
@@ -14644,17 +14540,12 @@
     {
       "id": "ap_euro_u6_048",
       "quizQuestion": "The Bessemer process (1856) had what transformative effect on industrial construction?",
-      "correctAnswer": "It made steel cheap enough to",
+      "correctAnswer": "Mass steel production",
       "acceptableAlternatives": [
         "it enabled mass production of cheap steel for railways and infrastructure"
       ],
       "explanation": "Before Bessemer, steel was expensive and rare. By converting iron to steel rapidly and cheaply, the Bessemer process enabled the explosion of railway networks, steel-frame bridges, and eventually skyscrapers that defined the late 19th century.",
-      "distractors": [
-        "It replaced coal with oil as the primary fuel for industrial furnaces",
-        "It produced aluminum alloys lighter than iron for aircraft construction",
-        "It allowed factories to use electricity instead of steam power",
-        "It eliminated the need for skilled ironworkers in the production process"
-      ],
+      "distractors": [],
       "difficulty": 2,
       "funScore": 7,
       "chainThemeId": 1,
@@ -14678,18 +14569,13 @@
     {
       "id": "ap_euro_u6_049",
       "quizQuestion": "In Marxist theory, the 'bourgeoisie' refers to which social class?",
-      "correctAnswer": "The capitalist class that owns the means of production",
+      "correctAnswer": "Bourgeoisie",
       "acceptableAlternatives": [
         "capitalists who own factories and means of production",
         "owners of the means of production"
       ],
       "explanation": "Marx defined the bourgeoisie as the class owning the means of production (factories, land, capital) who exploit the proletariat by appropriating the surplus value workers produce, keeping wages below the value of what workers actually create.",
-      "distractors": [
-        "The rural aristocracy who owned inherited land",
-        "Government bureaucrats and state administrators",
-        "Urban intellectuals and professionals without inherited wealth",
-        "The petty bourgeoisie of small shopkeepers and artisans"
-      ],
+      "distractors": [],
       "difficulty": 1,
       "funScore": 6,
       "chainThemeId": 4,
@@ -14713,17 +14599,12 @@
     {
       "id": "ap_euro_u6_050",
       "quizQuestion": "What was the Corn Laws controversy in Britain, and how did its repeal in 1846 reflect liberal ideology?",
-      "correctAnswer": "Corn Laws protected",
+      "correctAnswer": "Corn Laws repeal",
       "acceptableAlternatives": [
         "Corn Laws were grain tariffs; repeal advanced free trade principles"
       ],
       "explanation": "The Corn Laws (from 1815) kept grain prices high by taxing imports, protecting aristocratic landowners at the expense of urban workers and manufacturers. Repeal in 1846 under Robert Peel was a liberal free-trade triumph, shifting power from agrarian to industrial interests.",
-      "distractors": [
-        "Corn Laws subsidized colonial grain exports; repeal ended the slave trade financing",
-        "Corn Laws required all grain to be processed in Britain; repeal allowed imports of flour",
-        "Corn Laws funded the Poor Law workhouses; repeal cut welfare spending",
-        "Corn Laws regulated factory wages; repeal removed government control over pay"
-      ],
+      "distractors": [],
       "difficulty": 3,
       "funScore": 7,
       "chainThemeId": 4,
@@ -14747,17 +14628,12 @@
     {
       "id": "ap_euro_u6_051",
       "quizQuestion": "How did the Second Industrial Revolution (c.1870\u20131914) change the role of science in industrial production?",
-      "correctAnswer": "It created research-driven",
+      "correctAnswer": "Research-driven industry",
       "acceptableAlternatives": [
         "science became systematically applied to industry through research labs"
       ],
       "explanation": "Unlike the First Industrial Revolution's practical inventors (Watt, Arkwright), the Second saw German chemical firms, American electrical companies, and others create in-house research labs, fusing science and industry in a new institutional model.",
-      "distractors": [
-        "Science became purely theoretical while engineering remained entirely practical",
-        "Universities replaced factories as centers of production",
-        "Scientific discoveries were kept secret through national patents to prevent foreign competition",
-        "Science played no greater role; the difference was only in scale of production"
-      ],
+      "distractors": [],
       "difficulty": 3,
       "funScore": 6,
       "chainThemeId": 1,
@@ -14781,17 +14657,12 @@
     {
       "id": "ap_euro_u6_052",
       "quizQuestion": "The 'division of labor' in the factory system, as described by Adam Smith, meant what for workers?",
-      "correctAnswer": "Workers performed one",
+      "correctAnswer": "Specialized task labor",
       "acceptableAlternatives": [
         "each worker did one small step in production, not the whole product"
       ],
       "explanation": "Smith's famous pin factory example in 'The Wealth of Nations' (1776) showed that dividing pin-making into 18 distinct operations dramatically increased output, but critics noted it also deskilled workers and made labor alienating and monotonous.",
-      "distractors": [
-        "Workers chose their own tasks and rotated between positions freely",
-        "Managers assigned tasks by social class, with elites doing skilled work",
-        "Workers learned all stages of production to become self-sufficient craftsmen",
-        "Piece-rate payment replaced hourly wages to reward faster workers"
-      ],
+      "distractors": [],
       "difficulty": 2,
       "funScore": 6,
       "chainThemeId": 1,
@@ -14815,17 +14686,12 @@
     {
       "id": "ap_euro_u6_053",
       "quizQuestion": "What is the significance of Manchester's growth from 25,000 people (1772) to 303,000 (1851) for understanding industrialization?",
-      "correctAnswer": "It illustrates how",
+      "correctAnswer": "Rapid urbanization",
       "acceptableAlternatives": [
         "it shows how industrialization drove explosive urban growth and new social conditions"
       ],
       "explanation": "Manchester's explosive growth epitomized industrial urbanization \u2014 rural migrants flooded in for factory work, creating overcrowded slums, pollution, disease, and a new urban working class whose conditions sparked socialist and reform movements.",
-      "distractors": [
-        "It shows Britain had the largest population in Europe by the 1850s",
-        "It demonstrates that industrialization raised living standards and attracted immigration",
-        "It proves that government planned the growth of industrial cities scientifically",
-        "It illustrates how trade, not industry, was the primary driver of urban growth"
-      ],
+      "distractors": [],
       "difficulty": 2,
       "funScore": 7,
       "chainThemeId": 2,
@@ -14849,17 +14715,12 @@
     {
       "id": "ap_euro_u6_054",
       "quizQuestion": "Henri de Saint-Simon differed from Marx in that he believed social improvement should be led by whom?",
-      "correctAnswer": "Scientists, engineers, and",
+      "correctAnswer": "Technical elite",
       "acceptableAlternatives": [
         "a technocratic elite of scientists and industrialists"
       ],
       "explanation": "Saint-Simon envisioned a rational society managed by scientists and industrialists who would apply modern knowledge to organize production efficiently, eliminating poverty without class revolution \u2014 an elitist, technocratic vision very different from Marx's proletarian revolution.",
-      "distractors": [
-        "Elected parliaments representing all social classes equally",
-        "The traditional aristocracy reformed through education and religion",
-        "Peasants organized into agricultural cooperatives with state support",
-        "Religious leaders applying Christian charity to industrial conditions"
-      ],
+      "distractors": [],
       "difficulty": 3,
       "funScore": 6,
       "chainThemeId": 4,
@@ -14883,17 +14744,12 @@
     {
       "id": "ap_euro_u6_055",
       "quizQuestion": "The cooperation between James Watt and Matthew Boulton exemplified which aspect of early British industrial capitalism?",
-      "correctAnswer": "The partnership of",
+      "correctAnswer": "Inventor-entrepreneur model",
       "acceptableAlternatives": [
         "the combination of engineering innovation and business investment"
       ],
       "explanation": "Watt had the engineering genius but needed Boulton's capital, business network, and marketing to commercialize the steam engine. Their Boulton & Watt partnership became the model for how invention and capital combined to drive the Industrial Revolution.",
-      "distractors": [
-        "State-funded scientific research leading directly to commercial applications",
-        "Guild cooperation between master craftsmen and apprentice engineers",
-        "Colonial wealth financing domestic industrial development without private investors",
-        "Church institutions providing loans to inventors in exchange for licensing revenue"
-      ],
+      "distractors": [],
       "difficulty": 3,
       "funScore": 6,
       "chainThemeId": 1,
@@ -14916,7 +14772,7 @@
     },
     {
       "id": "ap_euro_u7_nationalism_definition",
-      "correctAnswer": "Shared language, culture, and history",
+      "correctAnswer": "Language, culture, history",
       "acceptableAlternatives": [
         "common language, culture, history",
         "shared language and culture"
@@ -14928,10 +14784,8 @@
       "ageGroup": "all",
       "distractors": [
         "Common religion and monarchy",
-        "Shared economic interests and trade routes",
         "Geographic proximity and climate",
         "Military alliances and treaties",
-        "Colonial possessions and overseas trade",
         "Royal bloodlines and dynastic ties",
         "Shared agricultural traditions"
       ],
@@ -15269,7 +15123,7 @@
     },
     {
       "id": "ap_euro_u7_ems_dispatch",
-      "correctAnswer": "Bismarck edited a telegram to provoke France into war",
+      "correctAnswer": "Ems Dispatch provocation",
       "acceptableAlternatives": [
         "edited telegram to provoke France",
         "Bismarck altered a diplomatic telegram"
@@ -15279,15 +15133,7 @@
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
-      "distractors": [
-        "France intercepted a secret Prussian military communication",
-        "Napoleon III sent an ultimatum to Prussia over Alsace",
-        "A diplomatic courier was arrested at the French-Prussian border",
-        "Bismarck forged a French declaration of war against Austria",
-        "Napoleon III's ambassador publicly insulted Kaiser Wilhelm I",
-        "A French spy was caught stealing Prussian military plans",
-        "Wilhelm I sent an aggressive demand to the French Emperor"
-      ],
+      "distractors": [],
       "quizQuestion": "What was the Ems Dispatch (1870) that triggered the Franco-Prussian War?",
       "explanation": "Bismarck received a telegram from Kaiser Wilhelm I describing a tense meeting with the French ambassador over the Spanish throne succession. Bismarck edited the dispatch to make it sound more insulting before releasing it to the press, enraging French public opinion. France declared war, playing into Bismarck's plan to unite the southern German states against a common enemy.",
       "statement": "",
@@ -15382,7 +15228,7 @@
     },
     {
       "id": "ap_euro_u7_kulturkampf",
-      "correctAnswer": "Bismarck's campaign against the Catholic Church in Germany",
+      "correctAnswer": "Kulturkampf",
       "acceptableAlternatives": [
         "conflict between Bismarck and Catholic Church",
         "Bismarck vs Catholic Church"
@@ -15392,15 +15238,7 @@
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": [
-        "German suppression of socialist workers' parties",
-        "Prussian campaign to expel Polish-speaking minorities",
-        "Bismarck's war against Austrian cultural influence",
-        "German efforts to ban French language in Alsace-Lorraine",
-        "Campaign to impose Lutheran worship across Germany",
-        "German cultural movement promoting classical music",
-        "Bismarck's attempt to unify German dialects into one language"
-      ],
+      "distractors": [],
       "quizQuestion": "What was the Kulturkampf of the 1870s in Germany?",
       "explanation": "The Kulturkampf ('culture struggle') was Bismarck's effort to subordinate the Catholic Church to the German state through laws restricting clerical education and state control of church appointments. Bismarck feared Catholic loyalty to Rome over Germany. The campaign largely backfired, strengthening Catholic political organization, and Bismarck eventually reconciled with the Church in the 1880s.",
       "statement": "",
@@ -15430,15 +15268,7 @@
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": [
-        "Russia gained control of the Bosphorus Strait",
-        "The Ottoman Empire collapsed and was partitioned",
-        "France and Britain formed a permanent military alliance",
-        "Austria allied with Russia against Western powers",
-        "The Black Sea became a neutral international waterway",
-        "Britain gained permanent naval bases in the Mediterranean",
-        "Prussia emerged as the dominant continental power"
-      ],
+      "distractors": [],
       "quizQuestion": "What was the major diplomatic consequence of the Crimean War (1853\u20131856) for European international relations?",
       "explanation": "The Crimean War shattered the Concert of Europe \u2014 the system of great power cooperation established at the Congress of Vienna (1815). Britain and France fought Russia, Austria remained neutral and thus alienated Russia, and Prussia stood aside. The breakdown of cooperation among the great powers created the diplomatic vacuum that Bismarck would exploit to unify Germany through wars in the 1860s\u201370s.",
       "statement": "",
@@ -15567,7 +15397,7 @@
     },
     {
       "id": "ap_euro_u7_social_darwinism_uses",
-      "correctAnswer": "Imperialism, racial hierarchy, and laissez-faire capitalism",
+      "correctAnswer": "Justify imperialism",
       "acceptableAlternatives": [
         "to justify imperialism and racism",
         "imperialism and racial hierarchy"
@@ -15577,15 +15407,7 @@
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": [
-        "Socialism, workers' rights, and class struggle",
-        "Democracy, universal suffrage, and civil liberties",
-        "Trade unionism, collective bargaining, and welfare reform",
-        "Pacifism, international arbitration, and disarmament",
-        "Feminism, education reform, and temperance",
-        "Republicanism, secularism, and anti-clericalism",
-        "Nationalism, constitutionalism, and federalism"
-      ],
+      "distractors": [],
       "quizQuestion": "Social Darwinism applied evolutionary theory to justify which aspects of 19th-century European society and foreign policy?",
       "explanation": "Social Darwinism was used to justify imperialism (stronger nations had the right and duty to rule weaker ones), racial hierarchies (Europeans as evolutionarily 'superior'), and laissez-faire capitalism (the economically weak were naturally meant to fail). It gave a veneer of scientific legitimacy to policies of conquest and exploitation.",
       "statement": "",
@@ -15620,8 +15442,7 @@
         "The Ego and the Id",
         "Beyond the Pleasure Principle",
         "Studies on Hysteria",
-        "Totem and Taboo",
-        "The Psychopathology of Everyday Life"
+        "Totem and Taboo"
       ],
       "quizQuestion": "Which 1900 work by Sigmund Freud presented his theory of psychoanalysis, including the role of the unconscious mind?",
       "explanation": "The Interpretation of Dreams (1900) was Freud's foundational text, arguing that dreams are the 'royal road to the unconscious' \u2014 symbolic expressions of repressed desires and conflicts. Freud's psychoanalytic theory fundamentally challenged Enlightenment assumptions about rational human behavior and influenced 20th-century psychology, literature, and art.",
@@ -15683,7 +15504,7 @@
         "1885"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -15707,7 +15528,7 @@
     },
     {
       "id": "ap_euro_u7_berlin_conference_african_leaders",
-      "correctAnswer": "No African leaders were invited",
+      "correctAnswer": "No African leaders invited",
       "acceptableAlternatives": [
         "Africans were not invited",
         "no Africans attended"
@@ -15717,15 +15538,7 @@
       "difficulty": 1,
       "funScore": 8,
       "ageGroup": "all",
-      "distractors": [
-        "African kings were invited but refused to attend",
-        "African tribal representatives participated as observers",
-        "African leaders sent written protests that were read aloud",
-        "Ethiopia and Egypt sent diplomatic representatives",
-        "African leaders negotiated separate bilateral treaties",
-        "Muslim African leaders were invited but Christian ones excluded",
-        "African leaders participated but had no voting rights"
-      ],
+      "distractors": [],
       "quizQuestion": "Who was notably absent from the 1884\u20131885 Berlin Conference that divided the African continent among European powers?",
       "explanation": "No African leaders were invited to the Berlin Conference. European powers carved up the continent among themselves based on their own strategic and economic interests, with no regard for existing African political boundaries, ethnic groups, or sovereignty. The arbitrary borders drawn at Berlin would cause conflicts throughout African history into the modern era.",
       "statement": "",
@@ -15856,7 +15669,7 @@
     },
     {
       "id": "ap_euro_u7_boer_war",
-      "correctAnswer": "British vs Dutch (Boer) settlers in South Africa",
+      "correctAnswer": "Boer War",
       "acceptableAlternatives": [
         "Britain vs Boers",
         "Britain vs Dutch settlers"
@@ -15867,13 +15680,7 @@
       "funScore": 7,
       "ageGroup": "all",
       "distractors": [
-        "British vs Zulu warriors in Natal",
-        "Britain vs French colonists in West Africa",
-        "British vs German settlers in East Africa",
-        "Britain vs Portuguese traders in Mozambique",
-        "British vs Egyptian nationalists in Cairo",
-        "Britain vs Belgian forces in the Congo",
-        "British vs Ethiopian forces in Abyssinia"
+        "British vs Zulu warriors in Natal"
       ],
       "quizQuestion": "The Boer War (1899\u20131902) was fought between whom in South Africa?",
       "explanation": "The Boer War pitted Britain against Dutch-descended Afrikaner (Boer) settlers who had founded the republics of Transvaal and the Orange Free State. Britain used concentration camps to detain Boer civilians, causing thousands of deaths and international outrage. Britain won but the guerrilla war exposed imperial overreach and damaged Britain's global reputation.",
@@ -15894,7 +15701,7 @@
     },
     {
       "id": "ap_euro_u7_fashoda_incident",
-      "correctAnswer": "Britain and France nearly went to war over Sudan",
+      "correctAnswer": "Fashoda Incident",
       "acceptableAlternatives": [
         "Britain vs France in Sudan",
         "Anglo-French confrontation in Sudan"
@@ -15904,15 +15711,7 @@
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
-      "distractors": [
-        "Germany and France confronted each other over Morocco",
-        "Britain and Russia nearly fought over Afghanistan",
-        "France and Italy contested control of Tunisia",
-        "Britain and Belgium disputed the Congo River basin",
-        "France and Germany clashed over West African colonies",
-        "Britain and Portugal disputed Mozambique",
-        "Russia and Britain nearly clashed over Persia"
-      ],
+      "distractors": [],
       "quizQuestion": "The Fashoda Incident of 1898 brought which two European powers to the brink of war over African territory?",
       "explanation": "The Fashoda Incident occurred when British forces under Kitchener moving south from Egypt met a French force moving east across Africa at the town of Fashoda in Sudan. Both claimed the territory. After a tense standoff, France backed down, cementing British control of the Nile Valley. The crisis ultimately led the two powers toward the Entente Cordiale (1904).",
       "statement": "",
@@ -15932,7 +15731,7 @@
     },
     {
       "id": "ap_euro_u7_dreyfus_affair",
-      "correctAnswer": "A Jewish French army officer falsely convicted of treason",
+      "correctAnswer": "Dreyfus Affair",
       "acceptableAlternatives": [
         "Jewish officer falsely accused of treason",
         "Alfred Dreyfus falsely convicted"
@@ -15942,15 +15741,7 @@
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
-      "distractors": [
-        "A French general accused of selling military secrets to Germany",
-        "A Jewish banker falsely accused of funding German espionage",
-        "A French politician convicted of corruption in colonial Africa",
-        "A Catholic officer convicted of plotting against the republic",
-        "A Jewish journalist imprisoned for exposing military corruption",
-        "A French admiral court-martialed for losing at Fashoda",
-        "A Prussian spy caught passing secrets to French officers"
-      ],
+      "distractors": [],
       "quizQuestion": "What was the Dreyfus Affair (1894\u20131906)?",
       "explanation": "Captain Alfred Dreyfus, a Jewish French army officer, was falsely convicted of passing military secrets to Germany in 1894, largely due to anti-Semitic prejudice within the French military establishment. Writer \u00c9mile Zola's 1898 open letter 'J'accuse' exposed the cover-up. The affair deeply divided France between Republicans and conservatives/anti-Semites and spurred the Zionist movement.",
       "statement": "",
@@ -16045,7 +15836,7 @@
     },
     {
       "id": "ap_euro_u7_realism_art",
-      "correctAnswer": "Depicted harsh social realities of working-class life",
+      "correctAnswer": "Social realism",
       "acceptableAlternatives": [
         "showed harsh social realities",
         "portrayed working-class life honestly"
@@ -16055,15 +15846,7 @@
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": [
-        "Celebrated nationalist heroes and mythological subjects",
-        "Portrayed idealized classical beauty and ancient mythology",
-        "Focused on pure color and light without representational subjects",
-        "Depicted religious scenes and aristocratic patrons",
-        "Created dreamlike imagery from the unconscious mind",
-        "Captured fleeting moments of bourgeois leisure",
-        "Distorted form and perspective to express emotion"
-      ],
+      "distractors": [],
       "quizQuestion": "What characterized Realism in 19th-century art and literature, as practiced by Gustave Courbet, Charles Dickens, and \u00c9mile Zola?",
       "explanation": "Realism rejected Romanticism's idealization and instead depicted the world as it actually was, including poverty, labor, and social injustice. Courbet painted peasants and laborers rather than gods and heroes; Dickens exposed industrial poverty in Victorian England; Zola wrote unflinching novels about working-class life. Realism reflected growing awareness of social problems produced by industrialization.",
       "statement": "",
@@ -16083,7 +15866,7 @@
     },
     {
       "id": "ap_euro_u7_triple_alliance",
-      "correctAnswer": "Germany, Austria-Hungary, and Italy",
+      "correctAnswer": "Triple Alliance members",
       "acceptableAlternatives": [
         "Germany, Austria, Italy"
       ],
@@ -16093,12 +15876,6 @@
       "funScore": 7,
       "ageGroup": "all",
       "distractors": [
-        "Germany, Austria-Hungary, and Russia",
-        "Germany, Italy, and the Ottoman Empire",
-        "Prussia, Austria, and the German states",
-        "Germany, Bulgaria, and the Ottoman Empire",
-        "Austria-Hungary, Italy, and the Ottoman Empire",
-        "Germany, Austria-Hungary, and Romania",
         "France, Italy, and Spain"
       ],
       "quizQuestion": "The Triple Alliance of 1882 united which three powers against potential French or Russian aggression?",
@@ -16133,7 +15910,6 @@
         "France, Russia, and Belgium",
         "Britain, Russia, and Serbia",
         "France, Italy, and Britain",
-        "Britain, Russia, and the Ottoman Empire",
         "France, Portugal, and Britain",
         "Belgium, France, and Russia",
         "Britain, France, and Japan"
@@ -16157,7 +15933,7 @@
     },
     {
       "id": "ap_euro_u7_realpolitik",
-      "correctAnswer": "Politics based on practical",
+      "correctAnswer": "Realpolitik",
       "acceptableAlternatives": [
         "practical politics based on power",
         "power-based pragmatic politics"
@@ -16167,15 +15943,7 @@
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": [
-        "Politics guided by nationalist ideology and ethnic solidarity",
-        "Foreign policy based on international law and treaties",
-        "Government policy determined by democratic public opinion",
-        "Diplomacy based on religious principles and moral values",
-        "Politics focused on economic protectionism and tariffs",
-        "Military strategy prioritizing defensive fortifications",
-        "Foreign policy guided by revolutionary socialist principles"
-      ],
+      "distractors": [],
       "quizQuestion": "What is Realpolitik, the political philosophy practiced by both Bismarck and Cavour to achieve national unification?",
       "explanation": "Realpolitik (German: 'real politics') is the practice of politics based on practical power, self-interest, and circumstances rather than moral or ideological goals. Both Bismarck and Cavour used alliances, wars, and manipulations of public opinion as tools for national advantage \u2014 a stark contrast to the idealistic nationalism of Mazzini or the romantic liberalism of the 1848 revolutionaries.",
       "statement": "",
@@ -16276,7 +16044,7 @@
         "late 1800s to 1914"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -16347,10 +16115,8 @@
       "funScore": 6,
       "ageGroup": "all",
       "distractors": [
-        "Inheritance of acquired characteristics",
         "Directed mutation",
         "Survival of the strongest",
-        "Divine creation through gradual change",
         "Artificial selection by breeders",
         "Random genetic drift",
         "Progressive species improvement"
@@ -16411,7 +16177,7 @@
     },
     {
       "id": "ap_euro_u7_bismarck_three_wars",
-      "correctAnswer": "Danish War, Austro-Prussian War, Franco-Prussian War",
+      "correctAnswer": "Three wars of unification",
       "acceptableAlternatives": [
         "three wars against Denmark, Austria, and France"
       ],
@@ -16420,15 +16186,7 @@
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": [
-        "Crimean War, Austrian War, French War",
-        "Polish Uprising, Austro-Prussian War, Franco-Prussian War",
-        "Danish War, Russo-Prussian War, Franco-Prussian War",
-        "War of Austrian Succession, Seven Years' War, Franco-Prussian War",
-        "Schleswig War, Hungarian War, Franco-Prussian War",
-        "Danish War, Italian War, Franco-Prussian War",
-        "Austro-Prussian War, Russo-Turkish War, Franco-Prussian War"
-      ],
+      "distractors": [],
       "quizQuestion": "Bismarck unified Germany through three calculated wars. Which three nations did Prussia fight in these wars?",
       "explanation": "Bismarck orchestrated three wars to unify Germany: the Danish War (1864) against Denmark for Schleswig-Holstein, the Austro-Prussian War (1866) to exclude Austria from German affairs, and the Franco-Prussian War (1870\u201371) to galvanize the southern German states and humiliate France. Each war was calculated and ended quickly with Prussian dominance secured.",
       "statement": "",
@@ -16483,7 +16241,7 @@
     },
     {
       "id": "ap_euro_u7_impressionism_characteristics",
-      "correctAnswer": "Light, color, and everyday scenes with loose brushstrokes",
+      "correctAnswer": "Light and color",
       "acceptableAlternatives": [
         "capturing light and color in everyday life",
         "light, color, everyday subjects"
@@ -16493,15 +16251,7 @@
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": [
-        "Harsh depiction of poverty and working-class suffering",
-        "Idealized mythological and historical narrative scenes",
-        "Precise photographic realism of bourgeois interiors",
-        "Dreamlike imagery drawn from the unconscious mind",
-        "Abstract geometric forms and pure color fields",
-        "Religious symbolism and Gothic revival aesthetics",
-        "Heroic nationalist subjects and monumental scale"
-      ],
+      "distractors": [],
       "quizQuestion": "Impressionism, practiced by Monet, Renoir, and Degas, was characterized by its focus on what visual qualities?",
       "explanation": "Impressionists sought to capture transient effects of light and color rather than precise detail, often painting outdoors (en plein air). Their loose, visible brushstrokes and interest in everyday subjects \u2014 cafes, dancers, water \u2014 broke with academic painting traditions. Critics initially mocked their style as unfinished, but Impressionism became one of the most celebrated movements in art history.",
       "statement": "",
@@ -16597,7 +16347,7 @@
     },
     {
       "id": "ap_euro_u7_colonialism_economic_motives",
-      "correctAnswer": "Raw materials, markets, and investment opportunities",
+      "correctAnswer": "Raw materials and markets",
       "acceptableAlternatives": [
         "raw materials and markets",
         "economic resources and markets"
@@ -16607,15 +16357,7 @@
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
-      "distractors": [
-        "Scientific exploration and geographic discovery",
-        "Religious conversion and missionary work",
-        "Overpopulation relief through emigration",
-        "Strategic military bases and naval coaling stations only",
-        "Spreading democracy and constitutional government",
-        "Preserving ancient civilizations from internal conflict",
-        "Creating buffer zones against rival civilizations"
-      ],
+      "distractors": [],
       "quizQuestion": "What were the primary economic motivations driving European imperialism in the late 19th century?",
       "explanation": "European industrial nations sought raw materials (rubber, cotton, minerals, oil) not available at home, overseas markets for manufactured goods, and investment opportunities for surplus capital. J.A. Hobson's Imperialism (1902) and Lenin's later analysis both emphasized these economic drivers. Colonies also provided cheap labor and agricultural products that supported European industrial growth.",
       "statement": "",
@@ -16664,7 +16406,7 @@
     },
     {
       "id": "ap_euro_u7_franco_prussian_war_result",
-      "correctAnswer": "France ceded Alsace-Lorraine to Germany",
+      "correctAnswer": "Alsace-Lorraine ceded",
       "acceptableAlternatives": [
         "loss of Alsace-Lorraine",
         "Germany gained Alsace-Lorraine"
@@ -16675,12 +16417,6 @@
       "funScore": 8,
       "ageGroup": "all",
       "distractors": [
-        "France was partitioned between Germany and Britain",
-        "Napoleon III was exiled to Saint Helena",
-        "France lost all its overseas colonies",
-        "The Rhine River became the German-French border",
-        "France was forced to disband its military",
-        "Belgium was incorporated into Germany",
         "France lost Normandy to Germany"
       ],
       "quizQuestion": "What territorial consequence did France suffer as a result of its defeat in the Franco-Prussian War (1871)?",
@@ -16739,7 +16475,7 @@
     },
     {
       "id": "ap_euro_u7_bismarck_alliances_purpose",
-      "correctAnswer": "Isolate France diplomatically to prevent a war of revenge",
+      "correctAnswer": "Isolate France",
       "acceptableAlternatives": [
         "isolate France",
         "prevent French revenge war"
@@ -16749,15 +16485,7 @@
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": [
-        "Encircle Russia to prevent Russian expansion into the Balkans",
-        "Guarantee British neutrality in future European wars",
-        "Create a colonial empire to rival Britain and France",
-        "Protect Austria-Hungary from Russian and Ottoman pressure",
-        "Prevent the Ottoman Empire from collapsing and creating a power vacuum",
-        "Ensure Italian loyalty after unification under Piedmont",
-        "Maintain Prussian dominance within the German states"
-      ],
+      "distractors": [],
       "quizQuestion": "What was Bismarck's primary strategic goal in constructing his elaborate alliance system after German unification in 1871?",
       "explanation": "Bismarck's nightmare was a French war of revenge (revanche) to recover Alsace-Lorraine. His complex web of alliances \u2014 the Three Emperors' League, the Triple Alliance, the Reinsurance Treaty \u2014 was designed to keep France diplomatically isolated with no powerful ally. When Wilhelm II dismissed Bismarck in 1890 and let the Reinsurance Treaty with Russia lapse, France immediately allied with Russia, forming the Franco-Russian Alliance of 1894.",
       "statement": "",
@@ -16864,8 +16592,6 @@
       "ageGroup": "all",
       "distractors": [
         "Constitutional monarchy",
-        "Parliamentary democracy under existing princes",
-        "Federalist confederation of Italian states",
         "Theocratic state under the Pope",
         "Socialist workers' republic",
         "Military dictatorship",
@@ -16890,7 +16616,7 @@
     },
     {
       "id": "ap_euro_u7_imperialism_civilizing_mission",
-      "correctAnswer": "Mission civilisatrice (civilizing mission)",
+      "correctAnswer": "Mission civilisatrice",
       "acceptableAlternatives": [
         "civilizing mission",
         "the civilizing mission"
@@ -16928,7 +16654,7 @@
     },
     {
       "id": "ap_euro_u7_nationalism_multi_ethnic_empires",
-      "correctAnswer": "Austria-Hungary and the Ottoman Empire",
+      "correctAnswer": "Multi-ethnic empires",
       "acceptableAlternatives": [
         "Habsburg Empire and Ottoman Empire",
         "Austro-Hungarian and Ottoman empires"
@@ -16966,7 +16692,7 @@
     },
     {
       "id": "ap_euro_u7_boer_concentration_camps",
-      "correctAnswer": "Concentration camps to detain Boer civilians",
+      "correctAnswer": "Concentration camps",
       "acceptableAlternatives": [
         "concentration camps for civilians",
         "internment camps for Boer civilians"
@@ -16976,15 +16702,7 @@
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
-      "distractors": [
-        "Scorched earth bombardment of Boer cities",
-        "Forced deportation of Boers to Australia",
-        "Recruitment of African soldiers to fight the Boers",
-        "Blockade of Boer ports to prevent arms imports",
-        "Assassination of Boer military leaders",
-        "Bribery of Boer generals to switch sides",
-        "Flooding of Boer mines to destroy the economy"
-      ],
+      "distractors": [],
       "quizQuestion": "During the Boer War (1899\u20131902), Britain used what controversial tactic against Afrikaner civilians that caused international outrage?",
       "explanation": "To suppress Boer guerrilla resistance, Britain interned Boer civilian women and children in concentration camps while burning farms. Poor conditions caused thousands of deaths from disease and malnutrition \u2014 estimates range from 26,000 to 28,000 Boer deaths, along with many more African deaths in separate camps. The camps caused international outrage and damaged Britain's reputation as a liberal empire.",
       "statement": "",
@@ -17042,7 +16760,7 @@
     },
     {
       "id": "ap_euro_u7_positivism_definition",
-      "correctAnswer": "Only empirically verifiable",
+      "correctAnswer": "Positivism",
       "acceptableAlternatives": [
         "knowledge from observable evidence only",
         "scientific empiricism"
@@ -17052,15 +16770,7 @@
       "difficulty": 3,
       "funScore": 5,
       "ageGroup": "all",
-      "distractors": [
-        "All historical progress is driven by class struggle",
-        "Religious revelation is the highest form of knowledge",
-        "Individual reason and natural rights are the basis of society",
-        "The nation-state is the highest expression of human community",
-        "Economic forces determine all social and political outcomes",
-        "Art and culture are superior to scientific inquiry",
-        "Tradition and hierarchy are the foundations of stable society"
-      ],
+      "distractors": [],
       "quizQuestion": "What was Auguste Comte's positivism, which influenced 19th-century social thought?",
       "explanation": "Positivism, developed by Auguste Comte (1798\u20131857), held that genuine knowledge must be based on empirical observation and verifiable facts \u2014 the methods of natural science applied to human society. Comte argued that society could be scientifically studied and rationally reformed. Positivism contributed to the 19th-century confidence that science and progress could solve social problems.",
       "statement": "",
@@ -17080,7 +16790,7 @@
     },
     {
       "id": "ap_euro_u7_leopold_rubber_terror",
-      "correctAnswer": "Cutting off hands of workers who failed rubber quotas",
+      "correctAnswer": "Hand amputations",
       "acceptableAlternatives": [
         "mutilation of rubber workers",
         "hand amputation for quota failures"
@@ -17090,15 +16800,7 @@
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
-      "distractors": [
-        "Forcing Congolese to build railways without pay",
-        "Shipping Congolese workers to Belgian mines",
-        "Burning villages of tribes that resisted taxation",
-        "Forcing children into military service",
-        "Selling Congolese into slavery to Arab traders",
-        "Flooding agricultural land to destroy food supplies",
-        "Conscripting Congolese men into the Belgian army"
-      ],
+      "distractors": [],
       "quizQuestion": "King Leopold II's Congo Free State became infamous for what specific atrocity used to enforce rubber quotas?",
       "explanation": "Leopold's agents demanded rubber quotas from Congolese communities. When workers failed to meet quotas, agents proved their ammunition use by cutting off the hands of victims \u2014 including children \u2014 creating baskets of severed hands as proof of punishment. Photographs of victims spread internationally, triggering the first major human rights campaign of the 20th century and forcing Belgium to take over the colony in 1908.",
       "statement": "",
@@ -17231,7 +16933,7 @@
     },
     {
       "id": "ap_euro_u7_dickens_realism",
-      "correctAnswer": "Exposed industrial poverty",
+      "correctAnswer": "Social criticism fiction",
       "acceptableAlternatives": [
         "depicted poverty in Victorian England",
         "showed harsh industrial conditions"
@@ -17241,15 +16943,7 @@
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": [
-        "Celebrated British imperial conquests in prose epics",
-        "Wrote romantic novels celebrating aristocratic traditions",
-        "Documented scientific discoveries in popular journalism",
-        "Glorified the achievements of the Industrial Revolution",
-        "Wrote nationalist poetry celebrating British history",
-        "Exposed French political corruption in exile",
-        "Depicted the Chartist movement's political demands"
-      ],
+      "distractors": [],
       "quizQuestion": "How did novelist Charles Dickens contribute to the Realist movement in 19th-century literature?",
       "explanation": "Charles Dickens (1812\u20131870) used his novels \u2014 Oliver Twist, Hard Times, Bleak House, and others \u2014 to expose the brutal realities of poverty, child labor, workhouses, and legal corruption in industrializing Britain. His vivid, sympathetic portrayals of the poor helped build public pressure for social reforms and demonstrated literature's power as a tool for social criticism.",
       "statement": "",
@@ -17307,7 +17001,7 @@
     },
     {
       "id": "ap_euro_u7_nationalism_vs_liberalism",
-      "correctAnswer": "Nationalism superseded",
+      "correctAnswer": "Nationalism dominated",
       "acceptableAlternatives": [
         "nationalism replaced liberalism",
         "nationalism became dominant over liberalism"
@@ -17317,15 +17011,7 @@
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": [
-        "Liberalism conquered nationalism and created democratic states",
-        "Both liberalism and nationalism declined after 1848",
-        "Conservatism absorbed both nationalism and liberalism",
-        "Socialism replaced both nationalism and liberalism",
-        "Nationalism and liberalism merged into social democracy",
-        "Liberalism used nationalism to achieve constitutional reforms",
-        "Both ideologies were defeated by the Concert of Europe"
-      ],
+      "distractors": [],
       "quizQuestion": "How did the relationship between nationalism and liberalism change after the failed revolutions of 1848?",
       "explanation": "Before 1848, nationalism and liberalism were closely allied \u2014 nationalists typically also wanted constitutions and individual rights. The failure of the 1848 revolutions showed that romantic liberal nationalism couldn't achieve national unity. After 1848, nationalism became increasingly disconnected from liberalism and allied with conservative state power \u2014 as seen in Bismarck using nationalism for Prussian aggrandizement without liberal reforms.",
       "statement": "",
@@ -17345,7 +17031,7 @@
     },
     {
       "id": "ap_euro_u7_crimean_war_participants",
-      "correctAnswer": "Russia vs the Ottoman Empire, Britain, and France",
+      "correctAnswer": "Russia vs Ottoman alliance",
       "acceptableAlternatives": [
         "Russia vs Ottoman Empire, Britain, France"
       ],
@@ -17354,15 +17040,7 @@
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": [
-        "Austria vs Russia, Britain, and the Ottoman Empire",
-        "Britain vs Russia, France, and Austria",
-        "Russia vs Austria, Prussia, and the Ottoman Empire",
-        "France vs Russia, Britain, and Austria",
-        "Prussia vs Russia, France, and the Ottoman Empire",
-        "Russia vs Britain, Prussia, and Austria",
-        "Ottoman Empire vs Russia, Austria, and Prussia"
-      ],
+      "distractors": [],
       "quizQuestion": "Who were the main combatants in the Crimean War (1853\u20131856)?",
       "explanation": "Russia, claiming the right to protect Orthodox Christians in the Ottoman Empire, fought against an alliance of the Ottoman Empire, Britain, and France. Britain and France feared Russian expansion into the eastern Mediterranean would threaten their interests. The war was fought primarily in the Crimean Peninsula and ended with Russian defeat, checked Russian expansion, and demonstrated the military obsolescence of the old European powers.",
       "statement": "",
@@ -17448,7 +17126,7 @@
     },
     {
       "id": "ap_euro_u8_main__militarism__alliances__i",
-      "correctAnswer": "MAIN (Militarism, Alliances, Imperialism, Nationalism)",
+      "correctAnswer": "MAIN causes",
       "acceptableAlternatives": [
         "Militarism, Alliances, Imperialism, Nationalism",
         "MAIN causes"
@@ -17458,15 +17136,7 @@
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": [
-        "STEM (Statesmanship, Treaties, Economics, Monarchy)",
-        "RAGE (Rivalry, Alliances, Geography, Economics)",
-        "PINE (Politics, Industry, Nationalism, Economics)",
-        "WARS (Weapons, Alliances, Rivalry, Sovereignty)",
-        "FIRE (Finance, Imperialism, Rivalry, Expansion)",
-        "CAGE (Colonies, Arms, Geography, Economics)",
-        "PLAN (Politics, Land, Arms, Nationalism)"
-      ],
+      "distractors": [],
       "quizQuestion": "Historians use the acronym MAIN to summarize the four underlying causes of World War I. What does MAIN stand for?",
       "explanation": "MAIN stands for Militarism (arms races, military culture), Alliances (interlocking treaty obligations), Imperialism (competition for colonies and resources), and Nationalism (ethnic pride and rivalry). These structural factors made a local conflict spiral into a global war.",
       "statement": "",
@@ -20087,7 +19757,7 @@
         "1949-1963"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 3,
       "funScore": 5,
       "ageGroup": "all",
@@ -20185,9 +19855,6 @@
       "funScore": 6,
       "ageGroup": "all",
       "distractors": [
-        "Konrad Adenauer and Charles de Gaulle",
-        "Winston Churchill and Clement Attlee",
-        "Alcide De Gasperi and Paul-Henri Spaak",
         "Ludwig Erhard and Walter Hallstein",
         "Georges Bidault and Edvard Bene\u0161"
       ],
@@ -20382,7 +20049,7 @@
         "August 1961"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -20413,7 +20080,7 @@
         "1962"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 1,
       "funScore": 8,
       "ageGroup": "all",
@@ -20573,7 +20240,7 @@
     },
     {
       "id": "ap_euro_u9_brezhnev_doctrine",
-      "correctAnswer": "Soviet right to intervene in socialist states",
+      "correctAnswer": "Brezhnev Doctrine",
       "acceptableAlternatives": [
         "right to intervene in socialist countries",
         "right to intervene if socialism was threatened"
@@ -20584,8 +20251,6 @@
       "funScore": 6,
       "ageGroup": "all",
       "distractors": [
-        "peaceful coexistence between East and West",
-        "Soviet withdrawal from Eastern Europe",
         "mutual assured destruction",
         "Soviet economic aid to allies",
         "nuclear non-proliferation",
@@ -20723,7 +20388,7 @@
         "1954-1962"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -20883,7 +20548,7 @@
         "1979-1990"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -20914,7 +20579,7 @@
         "May\u2013June 1968"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -21164,7 +20829,7 @@
         "1989"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 1,
       "funScore": 9,
       "ageGroup": "all",
@@ -21271,7 +20936,7 @@
         "1990"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -21302,7 +20967,7 @@
         "1991"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -21423,7 +21088,7 @@
         "1991-2001"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -21454,7 +21119,7 @@
         "June 2016"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "event_names",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -21788,9 +21453,7 @@
       "answerFormat": "name",
       "factIds": [
         "ap_euro_u1_petrarch_title",
-        "ap_euro_u1_petrarch_dates",
         "ap_euro_u1_davinci_polymath",
-        "ap_euro_u1_sistine_dates",
         "ap_euro_u1_machiavelli_idea",
         "ap_euro_u1_northern_humanism",
         "ap_euro_u1_durer_innovation",
@@ -21821,8 +21484,6 @@
         "ap_euro_u2_anabaptists_adult_baptism",
         "ap_euro_u2_elizabethan_settlement",
         "ap_euro_u2_cuius_regio",
-        "ap_euro_u2_thirty_years_war_dates",
-        "ap_euro_u2_witchcraft_peak",
         "ap_euro_u2_printing_press_reformation",
         "ap_euro_u2_indulgences_cause",
         "ap_euro_u2_sola_scriptura",
@@ -21847,13 +21508,10 @@
         "ap_euro_u3_absolute_monarchy_france",
         "ap_euro_u3_constitutionalism",
         "ap_euro_u3_huguenots_flee_france",
-        "ap_euro_u3_english_civil_war_dates",
         "ap_euro_u3_versailles_court_culture",
-        "ap_euro_u3_war_spanish_succession_date",
         "ap_euro_u3_colbert_french_industry",
         "ap_euro_u3_prussian_militarism",
         "ap_euro_u3_consent_of_governed",
-        "ap_euro_u3_fronde_dates",
         "ap_euro_u3_locke_government_purpose",
         "ap_euro_u4_galileo_instrument",
         "ap_euro_u4_kepler_orbits",
@@ -21881,37 +21539,20 @@
         "ap_euro_u4_joseph_ii_radical",
         "ap_euro_u4_printing_press_enlightenment",
         "ap_euro_u4_catherine_serfdom",
-        "ap_euro_u5_estates_general_date",
-        "ap_euro_u5_tennis_court_oath",
-        "ap_euro_u5_bastille_date",
-        "ap_euro_u5_declaration_rights_date",
-        "ap_euro_u5_womens_march_versailles",
-        "ap_euro_u5_louis_xvi_execution",
-        "ap_euro_u5_marie_antoinette_execution",
         "ap_euro_u5_jacobins_vs_girondins",
-        "ap_euro_u5_reign_of_terror_dates",
         "ap_euro_u5_reign_of_terror_executions",
         "ap_euro_u5_robespierre_nickname",
-        "ap_euro_u5_robespierre_execution_date",
-        "ap_euro_u5_directory_dates",
-        "ap_euro_u5_napoleon_18_brumaire",
         "ap_euro_u5_napoleonic_code_content",
         "ap_euro_u5_continental_system",
-        "ap_euro_u5_battle_austerlitz",
         "ap_euro_u5_austerlitz_nickname",
         "ap_euro_u5_russia_invasion_army_size",
         "ap_euro_u5_russia_invasion_survivors",
-        "ap_euro_u5_battle_waterloo",
-        "ap_euro_u5_congress_of_vienna_dates",
         "ap_euro_u5_balance_of_power",
         "ap_euro_u5_legitimacy_principle",
         "ap_euro_u5_holy_alliance",
-        "ap_euro_u5_haitian_revolution_dates",
         "ap_euro_u5_romanticism_vs_enlightenment",
-        "ap_euro_u5_national_assembly_formation",
         "ap_euro_u5_sans_culottes",
         "ap_euro_u5_guerrilla_warfare",
-        "ap_euro_u5_seven_years_war_dates",
         "ap_euro_u5_old_regime_estates",
         "ap_euro_u5_napoleon_military_branch",
         "ap_euro_u5_declration_rights_principles",
@@ -21942,7 +21583,6 @@
         "ap_euro_u6_039",
         "ap_euro_u6_042",
         "ap_euro_u6_045",
-        "ap_euro_u6_046",
         "ap_euro_u6_047",
         "ap_euro_u6_048",
         "ap_euro_u6_049",
@@ -21956,14 +21596,12 @@
         "ap_euro_u7_kulturkampf",
         "ap_euro_u7_crimean_war_significance",
         "ap_euro_u7_social_darwinism_uses",
-        "ap_euro_u7_berlin_conference",
         "ap_euro_u7_berlin_conference_african_leaders",
         "ap_euro_u7_cecil_rhodes",
         "ap_euro_u7_realism_art",
         "ap_euro_u7_triple_alliance",
         "ap_euro_u7_triple_entente",
         "ap_euro_u7_realpolitik",
-        "ap_euro_u7_scramble_for_africa",
         "ap_euro_u7_darwin_natural_selection",
         "ap_euro_u7_impressionism_characteristics",
         "ap_euro_u7_colonialism_economic_motives",
@@ -21992,129 +21630,84 @@
         "ap_euro_u8_existentialism",
         "ap_euro_u8_fascism",
         "ap_euro_u9_marshall_plan_aid",
-        "ap_euro_u9_adenauer_chancellor_years",
         "ap_euro_u9_berlin_blockade_flights",
-        "ap_euro_u9_berlin_wall_built",
-        "ap_euro_u9_cuban_missile_crisis_month",
         "ap_euro_u9_brezhnev_doctrine",
         "ap_euro_u9_willy_brandt_ostpolitik",
         "ap_euro_u9_mad_definition",
-        "ap_euro_u9_algerian_war_dates",
         "ap_euro_u9_de_gaulle_eec_veto",
-        "ap_euro_u9_thatcher_pm_years",
-        "ap_euro_u9_paris_may_1968",
         "ap_euro_u9_glasnost_meaning",
         "ap_euro_u9_perestroika_meaning",
-        "ap_euro_u9_berlin_wall_fall",
-        "ap_euro_u9_german_reunification_date",
-        "ap_euro_u9_soviet_dissolution_date",
-        "ap_euro_u9_yugoslav_wars_years",
-        "ap_euro_u9_brexit_referendum",
         "ap_euro_u9_thatcher_neoliberalism",
         "ap_euro_u9_containment_policy"
       ],
       "members": [
         "$13 billion",
-        "1304\u20131374",
-        "1508\u20131512",
-        "1580 to 1630",
         "16,000\u201340,000",
-        "1618 to 1648",
-        "1642\u20131651",
-        "1648\u20131653",
-        "1701\u20131714",
-        "1756\u20131763",
-        "1791\u20131804",
-        "1795\u20131799",
-        "1814\u20131815",
-        "1880s\u20131914",
-        "1884\u20131885",
-        "1949\u20131963",
-        "1954\u20131962",
-        "1979\u20131990",
-        "1991\u20132001",
         "277,000",
         "303,000",
         "600,000",
         "72 years",
         "Adult baptism",
-        "August 13, 1961",
-        "August 26, 1789",
+        "Assembly lacked power",
         "Battle of Three Emperors",
-        "Bismarck's campaign against the Catholic Church in Germany",
         "Blitzkrieg",
+        "Bourgeoisie",
+        "Brezhnev Doctrine",
         "Britain and France",
         "Cape-to-Cairo railway",
-        "Cheap, mass production of",
+        "Cheap mass steel production",
         "Christian humanism",
+        "Coal, rivers, and capital",
         "Cogito ergo sum",
         "Collectivization",
-        "Concentration camps to detain Boer civilians",
+        "Colonial markets",
+        "Concentration camps",
         "Consubstantiation",
         "Continental System",
         "Cuius regio eius religio",
-        "December 2, 1805",
-        "December 25, 1991",
-        "Depicted harsh social realities of working-class life",
         "Dialectical materialism",
         "Diamond mining",
-        "Divisions between liberals,",
-        "Electricity, chemicals,",
+        "Divisions between liberals",
+        "Electricity, chemicals",
         "Existentialism",
-        "Exposed industrial poverty",
         "Fascism",
         "Father of Humanism",
         "Final Solution",
         "Four",
         "France, Russia, and Britain",
-        "Frederick William IV of",
-        "Freedom of thought and",
-        "Freeing them from the land,",
+        "Freedom of expression",
+        "Freeing them from the land",
         "German",
-        "Germany, Austria-Hungary, and Italy",
         "Girondins",
         "He condemned it",
         "Huguenots",
-        "Imperialism, racial hierarchy, and laissez-faire capitalism",
-        "Individual rights, free",
+        "Humane worker treatment",
+        "Individual rights",
         "Indulgences",
-        "Isolate France diplomatically to prevent a war of revenge",
-        "It created research-driven",
-        "It illustrates how",
-        "It made steel cheap enough to",
+        "Inventor-entrepreneur model",
+        "Isolate France",
         "Italian humanists",
-        "January 21, 1793",
-        "July 14, 1789",
-        "July 28, 1794",
-        "June 17, 1789",
-        "June 18, 1815",
-        "June 20, 1789",
-        "June 23, 2016",
+        "Justify imperialism",
+        "Kulturkampf",
         "L'\u00e9tat c'est moi",
-        "Liberal constitutions,",
-        "Light, color, and everyday scenes with loose brushstrokes",
+        "Language, culture, history",
+        "Liberal constitutions",
+        "Light and color",
         "Lord Protector",
-        "MAIN (Militarism, Alliances, Imperialism, Nationalism)",
+        "MAIN causes",
         "Mandate system",
-        "May 1968",
-        "May 5, 1789",
-        "Mission civilisatrice (civilizing mission)",
+        "Mass steel production",
+        "Mission civilisatrice",
         "Mutually Assured Destruction",
-        "Nationalism superseded",
+        "Nationalism dominated",
+        "Natural rights and equality",
         "Natural selection",
         "New Economic Policy (NEP)",
-        "No African leaders were invited",
-        "November 9, 1799",
-        "November 9, 1989",
-        "Numerous navigable rivers and proximity to coal deposits",
-        "October 16, 1793",
-        "October 1962",
-        "October 3, 1990",
-        "October 5\u20136, 1789",
-        "Only empirically verifiable",
+        "No African leaders invited",
+        "Organic social order",
         "Ostpolitik",
         "Phalanst\u00e8re (phalanstery)",
-        "Politics based on practical",
+        "Positivism",
         "Predestination",
         "Priesthood of all believers",
         "Printing press",
@@ -22122,46 +21715,43 @@
         "Property is theft",
         "Prussia",
         "Prussian-led customs union",
-        "Raw materials, markets, and investment opportunities",
+        "Public sanitation",
+        "Rapid urbanization",
+        "Raw materials and markets",
+        "Realpolitik",
         "Red Shirts",
         "Republic of Letters",
         "Republican",
-        "Revolution destroys inherited",
+        "Research-driven industry",
         "Russia, Austria, and Prussia",
         "Schlieffen Plan",
-        "Scientists, engineers, and",
         "Scripture and Tradition",
-        "September 1793 \u2013 July 1794",
-        "Sewage systems, clean water",
-        "Shared language, culture, and history",
+        "Social criticism fiction",
+        "Social realism",
         "Sola fide",
         "Sola scriptura",
-        "Soviet right to intervene in socialist states",
+        "Specialized task labor",
         "Spinning jenny",
         "Spinning jenny and water frame",
         "State sovereignty",
         "Sun King",
-        "Suppress liberalism and",
+        "Suppress liberalism",
         "Sweden",
-        "That treating workers",
-        "The 1830 revolutions produced",
+        "Technical elite",
         "The Concert of Europe collapsed",
         "The Incorruptible",
-        "The capitalist class that owns the means of production",
-        "The partnership of",
-        "They provided captive markets",
         "Total war",
         "Totalitarianism",
-        "Tradition and organic social",
+        "Tradition over revolution",
         "Trench warfare",
+        "Triple Alliance members",
         "UK's EEC entry",
-        "Universal male suffrage (right for all adult men to vote)",
+        "Universal male suffrage",
         "Utopian socialism",
         "Via media",
         "War Communism",
         "War guilt clause",
         "Water frame",
-        "Workers performed one",
         "absolutism",
         "artillery",
         "balance of power",
@@ -22200,7 +21790,6 @@
         "mercantilism",
         "metric system",
         "natural rights",
-        "natural rights, equality before law, national sovereignty",
         "new monarchs",
         "nobles",
         "oil painting",
@@ -22302,9 +21891,10 @@
       "members": [
         "Augsburg Confession",
         "Candide",
+        "Child labor restrictions",
         "Civil Constitution of the Clergy",
         "Concordat of 1801",
-        "Corn Laws protected",
+        "Corn Laws repeal",
         "Das Kapital",
         "David",
         "De Humani Corporis Fabrica",
@@ -22336,7 +21926,6 @@
         "Petition of Right",
         "Praise of Folly",
         "Principia Mathematica",
-        "Prohibited children under 9",
         "School of Athens",
         "Spirit of the Laws",
         "Spiritual Exercises",
@@ -22362,6 +21951,8 @@
       "label": "Event Names",
       "answerFormat": "name",
       "factIds": [
+        "ap_euro_u1_petrarch_dates",
+        "ap_euro_u1_sistine_dates",
         "ap_euro_u1_magellan_achievement",
         "ap_euro_u1_charles_v_problem",
         "ap_euro_u1_counter_reformation",
@@ -22371,8 +21962,10 @@
         "ap_euro_u2_zwingli_death",
         "ap_euro_u2_st_bartholemews_day",
         "ap_euro_u2_defenestration_prague",
+        "ap_euro_u2_thirty_years_war_dates",
         "ap_euro_u2_peace_of_westphalia",
         "ap_euro_u2_council_of_trent",
+        "ap_euro_u2_witchcraft_peak",
         "ap_euro_u2_marburg_colloquy",
         "ap_euro_u2_monastic_dissolution",
         "ap_euro_u2_pilgrimage_of_grace",
@@ -22380,26 +21973,49 @@
         "ap_euro_u3_english_civil_war_sides",
         "ap_euro_u3_tulip_mania",
         "ap_euro_u3_war_spanish_succession_cause",
+        "ap_euro_u3_english_civil_war_dates",
         "ap_euro_u3_peter_great_westernize_nobles",
+        "ap_euro_u3_war_spanish_succession_date",
         "ap_euro_u3_peter_grand_embassy",
+        "ap_euro_u3_fronde_dates",
         "ap_euro_u3_battle_poltava",
         "ap_euro_u4_enclosure_movement",
         "ap_euro_u4_scientific_revolution_period",
         "ap_euro_u4_age_of_reason",
+        "ap_euro_u5_estates_general_date",
+        "ap_euro_u5_tennis_court_oath",
+        "ap_euro_u5_bastille_date",
         "ap_euro_u5_great_fear",
+        "ap_euro_u5_declaration_rights_date",
+        "ap_euro_u5_womens_march_versailles",
+        "ap_euro_u5_louis_xvi_execution",
+        "ap_euro_u5_marie_antoinette_execution",
+        "ap_euro_u5_reign_of_terror_dates",
         "ap_euro_u5_levee_en_masse",
         "ap_euro_u5_thermidorian_reaction",
+        "ap_euro_u5_robespierre_execution_date",
+        "ap_euro_u5_directory_dates",
+        "ap_euro_u5_napoleon_18_brumaire",
+        "ap_euro_u5_battle_austerlitz",
+        "ap_euro_u5_battle_waterloo",
         "ap_euro_u5_hundred_days",
+        "ap_euro_u5_congress_of_vienna_dates",
+        "ap_euro_u5_haitian_revolution_dates",
+        "ap_euro_u5_national_assembly_formation",
         "ap_euro_u5_flight_to_varennes",
+        "ap_euro_u5_seven_years_war_dates",
         "ap_euro_u5_vendee_uprising",
+        "ap_euro_u6_046",
         "ap_euro_u7_garibaldi_expedition",
         "ap_euro_u7_austro_prussian_war_nickname",
         "ap_euro_u7_ems_dispatch",
         "ap_euro_u7_napoleon_iii_capture",
         "ap_euro_u7_nightingale",
+        "ap_euro_u7_berlin_conference",
         "ap_euro_u7_boer_war",
         "ap_euro_u7_fashoda_incident",
         "ap_euro_u7_dreyfus_affair",
+        "ap_euro_u7_scramble_for_africa",
         "ap_euro_u7_bismarck_three_wars",
         "ap_euro_u7_franco_prussian_war_result",
         "ap_euro_u7_austro_prussian_battle",
@@ -22423,12 +22039,42 @@
         "ap_euro_u8_yalta_conference",
         "ap_euro_u8_kristallnacht",
         "ap_euro_u8_the_holocaust",
-        "ap_euro_u8_nuremberg_trials"
+        "ap_euro_u8_nuremberg_trials",
+        "ap_euro_u9_adenauer_chancellor_years",
+        "ap_euro_u9_berlin_wall_built",
+        "ap_euro_u9_cuban_missile_crisis_month",
+        "ap_euro_u9_algerian_war_dates",
+        "ap_euro_u9_thatcher_pm_years",
+        "ap_euro_u9_paris_may_1968",
+        "ap_euro_u9_berlin_wall_fall",
+        "ap_euro_u9_german_reunification_date",
+        "ap_euro_u9_soviet_dissolution_date",
+        "ap_euro_u9_yugoslav_wars_years",
+        "ap_euro_u9_brexit_referendum"
       ],
       "members": [
-        "A Jewish French army officer falsely convicted of treason",
+        "1304\u20131374",
+        "1508\u20131512",
+        "1580 to 1630",
+        "1618 to 1648",
+        "1642\u20131651",
+        "1648\u20131653",
+        "1701\u20131714",
+        "1756\u20131763",
+        "1791\u20131804",
+        "1795\u20131799",
+        "1814\u20131815",
+        "1880s\u20131914",
+        "1884\u20131885",
+        "1949\u20131963",
+        "1954\u20131962",
+        "1979\u20131990",
+        "1991\u20132001",
         "Age of Reason",
+        "Alsace-Lorraine ceded",
         "Anschluss",
+        "August 13, 1961",
+        "August 26, 1789",
         "Battle of Britain",
         "Battle of Kappel",
         "Battle of Poltava",
@@ -22437,48 +22083,67 @@
         "Battle of Stalingrad",
         "Battle of Verdun",
         "Battle of the Somme",
-        "Bismarck edited a telegram to provoke France into war",
+        "Boer War",
         "Bombing of Guernica",
-        "Britain and France nearly went to war over Sudan",
-        "British vs Dutch (Boer) settlers in South Africa",
         "Cavaliers vs. Roundheads",
         "Council of Trent",
         "Crimean War",
-        "Cutting off hands of workers who failed rubber quotas",
         "D-Day (Normandy landings)",
-        "Danish War, Austro-Prussian War, Franco-Prussian War",
+        "December 2, 1805",
+        "December 25, 1991",
         "Defenestration of Prague",
         "Diet of Worms",
         "Dissolution of the Monasteries",
+        "Dreyfus Affair",
+        "Ems Dispatch provocation",
         "Expedition of the Thousand",
         "Fall of France",
+        "Fashoda Incident",
         "Flight to Varennes",
-        "France ceded Alsace-Lorraine to Germany",
         "German invasion of Poland",
         "Grand Embassy",
         "Great Depression",
         "Great Fear",
         "Great Purge",
+        "Hand amputations",
         "Hundred Days",
         "Italian Wars",
+        "January 21, 1793",
+        "July 14, 1789",
+        "July 28, 1794",
+        "June 17, 1789",
+        "June 18, 1815",
+        "June 20, 1789",
+        "June 23, 2016",
         "Kristallnacht",
         "Lev\u00e9e en masse",
         "Marburg Colloquy",
+        "May 1968",
+        "May 5, 1789",
+        "Mixed revolutionary results",
         "Neoplatonic Academy",
+        "November 9, 1799",
+        "November 9, 1989",
         "Nuremberg Trials",
+        "October 16, 1793",
+        "October 1962",
+        "October 3, 1990",
+        "October 5\u20136, 1789",
         "Operation Barbarossa",
         "Peace of Westphalia",
         "Pilgrimage of Grace",
         "Reformation",
         "Revolutions of 1848",
-        "Russia vs the Ottoman Empire, Britain, and France",
+        "Russia vs Ottoman alliance",
         "Russian Civil War",
         "Scientific Revolution",
+        "September 1793 \u2013 July 1794",
         "Seven Weeks' War",
         "Spanish Civil War",
         "St. Bartholomew's Day Massacre",
         "The Holocaust",
         "Thermidorian Reaction",
+        "Three wars of unification",
         "Vend\u00e9e",
         "War of Spanish Succession",
         "Yalta Conference",
@@ -22518,7 +22183,6 @@
         "ap_euro_u8_league_of_nations"
       ],
       "members": [
-        "A great-power system to",
         "Committee of Public Safety",
         "Concert of Europe",
         "Consulate",
@@ -22526,6 +22190,7 @@
         "Dutch East India Company",
         "Factory system",
         "First French Republic",
+        "Home-based production",
         "League of Nations",
         "New Model Army",
         "Patent system",
@@ -22534,8 +22199,7 @@
         "The Second Republic",
         "Triple Alliance",
         "Triple Entente",
-        "Women's Social and Political Union (WSPU)",
-        "Work was done in workers'",
+        "WSPU (suffragettes)",
         "coffeehouses",
         "intendants",
         "parlements"
@@ -22824,7 +22488,6 @@
         "Amsterdam",
         "Auschwitz-Birkenau",
         "Austria",
-        "Austria-Hungary and the Ottoman Empire",
         "Aztec Empire",
         "Belgium",
         "Britain",
@@ -22836,11 +22499,12 @@
         "Florence",
         "France",
         "Geneva",
-        "German states (German Confederation)",
+        "German states",
         "Hall of Mirrors at Versailles",
         "Inca Empire",
         "India",
         "Liverpool-Manchester Railway",
+        "Multi-ethnic empires",
         "Palace of Versailles",
         "Piedmont-Sardinia",
         "Polish",
