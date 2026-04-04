@@ -850,7 +850,7 @@ function handleRestNode(
   verbose: boolean,
   brain?: BotBrain,
 ): void {
-  const BASE_REST_HEAL_PCT = 0.30;
+  const BASE_REST_HEAL_PCT = 0.20; // Reduced from 0.30 (2026-04-04): less healing creates HP pressure across the run
 
   if (brain) {
     // ── BotBrain-driven rest ──────────────────────────────────────────────

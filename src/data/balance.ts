@@ -474,17 +474,17 @@ export const CANARY_CHALLENGE_ENEMY_DMG_MULT = 1.1;
 export const CANARY_CHALLENGE_STREAK_THRESHOLD = 5;
 
 /** Per-floor enemy damage scaling increment above floor 6. (AR-97b: 0.05→0.02, sweep r=+0.668; 2026-04-01: 0.02→0.06 to steepen late-game curve — floor 12 = +36%, floor 18 = +72%; reverted 2026-04-01: 0.06→0.03 — enemy HP scaling is the better lever; 2026-04-01: 0.03→0.06 — paired with FLOOR_DAMAGE_SCALE_MID 0.8→0.5 to keep early floors easy while steepening late-game pressure for experts) */
-export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.06;
+export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.07; // Raised from 0.06 (2026-04-04): chain momentum makes game too easy; 0.08 was too harsh on low-acc players
 
 /** Enemy damage multiplier for floors 1–6 (base). Reverted to 1.0 on 2026-04-01, raised to 1.2 on 2026-04-03 (balance pass #1), reduced to 1.0 on 2026-04-03 (balance pass #2 — Act 2/3 over-tuned; reducing flat multiplier gives more room under caps). Prior values: 0.5 (2026-04-01), 0.8, 1.0 (original), 1.2. */
 export const FLOOR_DAMAGE_SCALE_MID = 1.0;
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent() + re-applied after enrage in turnManager. */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 7,    // unchanged — Act 1 stays gentle for new players
-  2: 10,   // tightened from 12 (2026-04-04): enrage cap fix means caps matter now; creates gradual ramp
-  3: 15,   // tightened from 18 (2026-04-04): Act 3 was too easy after enrage fix
-  4: 22,   // tightened from 28 (2026-04-04): still allows meaningful boss damage, but not one-shot territory
+  1: 7,    // kept at 7: Act 1 must stay gentle for new players and language learners
+  2: 14,   // raised from 10 (2026-04-04): Act 2 needs more bite now that charges are often free
+  3: 20,   // raised from 15 (2026-04-04): Act 3 needs to be threatening
+  4: 28,   // raised from 22 (2026-04-04): Act 3 bosses need real danger; enrage is capped separately
   endless: null,
 };
 
