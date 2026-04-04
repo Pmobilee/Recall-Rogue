@@ -10,8 +10,8 @@
 - Quick Play = `getMasteryStats(mechanicId, level).qpValue` (explicit per-level value)
 - Charge Correct = `qpValue × CHARGE_CORRECT_MULTIPLIER (1.75)`
 - Charge Wrong = `Math.max(0, mechanic.chargeWrongValue + masteryBonus)` — floored at 0
-- CHARGE_AP_SURCHARGE = 0 (charging is free in AP)
-- Surge turns and Chain Momentum still waive surcharge (no-op while surcharge is 0)
+- CHARGE_AP_SURCHARGE = 1 (charging costs +1 AP over Quick Play)
+- Surge turns and Chain Momentum waive surcharge — surge is the strategic burst window for free charging
 
 ## Mastery Stat Tables (2026-04-03 overhaul, replaces perLevelDelta)
 - `MASTERY_STAT_TABLES` in `cardUpgradeService.ts` — 96 mechanics with full L0-L5 stat tables
@@ -28,6 +28,7 @@
 - Surge every 4th global turn (turns 2, 6, 10, 14...)
 - Counter persists across encounters — uses `RunState.globalTurnCounter`
 - Do NOT reset per encounter
+- Surge turns waive the CHARGE_AP_SURCHARGE (+1 → 0) — this is the primary strategic payoff of surge
 
 ## Facts & Cards
 - Facts assigned at charge-commit time, NOT draw time

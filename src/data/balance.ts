@@ -363,10 +363,11 @@ export const CHAIN_MOMENTUM_ENABLED = true;
 
 /**
  * AP surcharge for Charge plays (added on top of card's base apCost).
- * Set to 0 — Charge plays cost the same AP as Quick Play.
- * The risk/reward comes from the accuracy check, not tempo loss.
+ * Set to 1 — Charging costs +1 AP over Quick Play, creating a real charge-vs-quick decision.
+ * Waived on Surge turns (every 4th global turn), making Surge the burst window for free charging.
+ * Was 0 from 2026-04-03 stat overhaul; restored to 1 on 2026-04-04 balance audit (game too easy + surge meaningless).
  */
-export const CHARGE_AP_SURCHARGE = 0;
+export const CHARGE_AP_SURCHARGE = 1;
 
 // Free First Charge system (AR-59.23)
 /** AP surcharge for the first Charge of a fact in a run. 0 = free. */
@@ -478,12 +479,12 @@ export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.06;
 /** Enemy damage multiplier for floors 1–6 (base). Reverted to 1.0 on 2026-04-01, raised to 1.2 on 2026-04-03 (balance pass #1), reduced to 1.0 on 2026-04-03 (balance pass #2 — Act 2/3 over-tuned; reducing flat multiplier gives more room under caps). Prior values: 0.5 (2026-04-01), 0.8, 1.0 (original), 1.2. */
 export const FLOOR_DAMAGE_SCALE_MID = 1.0;
 
-/** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent(). */
+/** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent() + re-applied after enrage in turnManager. */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 7,    // reduced from 8 (pass #5, 2026-04-03): weaker L0 player needs lower incoming cap in Act 1
-  2: 12,   // reverted to original — balance pass #3 (2026-04-03): common HP reduction makes this sufficient
-  3: 18,   // reverted to original — balance pass #3 (2026-04-03)
-  4: 28,   // reverted to original — balance pass #3 (2026-04-03)
+  1: 7,    // unchanged — Act 1 stays gentle for new players
+  2: 10,   // tightened from 12 (2026-04-04): enrage cap fix means caps matter now; creates gradual ramp
+  3: 15,   // tightened from 18 (2026-04-04): Act 3 was too easy after enrage fix
+  4: 22,   // tightened from 28 (2026-04-04): still allows meaningful boss damage, but not one-shot territory
   endless: null,
 };
 
