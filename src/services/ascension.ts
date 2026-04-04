@@ -18,8 +18,8 @@ export const ASCENSION_LEVEL_RULES: AscensionLevelRule[] = [
   { level: 7, name: 'Harsh Grading', effect: 'Close distractors more common. BUFF: Charged correct +15% damage.' },
   { level: 8, name: 'Elite Surge', effect: 'Mini-bosses gain boss-tier attacks. BUFF: Mini-boss victories always drop a relic.' },
   { level: 9, name: 'Undying Foes', effect: 'Enemies regenerate 2 HP/turn. BUFF: Start encounters with 3 shield.' },
-  { level: 10, name: 'Cursed Start', effect: 'Start with a Curse card in deck. BUFF: Choose a 2nd starter relic + 1 free relic reroll per boss.' },
-  { level: 11, name: 'Slim Pickings', effect: 'Boss relics reduced to 2 choices. BUFF: Relics trigger +50% more.' },
+  { level: 10, name: 'Cursed Start', effect: 'Start with a Curse card in deck. BUFF: +1 free relic reroll per boss.' },
+  { level: 11, name: 'Slim Pickings', effect: 'Boss relics reduced to 2 choices. BUFF: Relics trigger +25% more.' },
   { level: 12, name: 'Deep Knowledge', effect: 'Tier 1 cards use 4-option MCQ. BUFF: Tier 1 charged correct +20% damage.' },
   { level: 13, name: 'Fragile', effect: 'Player max HP reduced to 80. BUFF: Start with Vitality Ring (+20 HP, takes slot).' },
   { level: 14, name: 'Combo Breaker', effect: 'Combo resets each turn. BUFF: Perfect turns grant +1 AP next turn.' },
@@ -27,8 +27,8 @@ export const ASCENSION_LEVEL_RULES: AscensionLevelRule[] = [
   { level: 16, name: 'No Echo', effect: 'Echo mechanic disabled. BUFF: Discarding a card grants 1 shield.' },
   { level: 17, name: "Scholar's Burden", effect: 'Wrong answers deal 3 self-damage. BUFF: Correct answers heal 1 HP.' },
   { level: 18, name: 'Minimalist', effect: 'Start with 10 cards. BUFF: Choose starting hand each encounter.' },
-  { level: 19, name: 'True Test', effect: 'All questions use hard formats. BUFF: Charge plays cost 0 extra AP.' },
-  { level: 20, name: 'Heart of the Archive', effect: 'Final boss gains second phase. BUFF: Start with 3 relics (choose from 7).' },
+  { level: 19, name: 'True Test', effect: 'All questions use hard formats. BUFF: (Reserved for future surcharge mechanic.)' },
+  { level: 20, name: 'Heart of the Archive', effect: 'Final boss gains second phase. BUFF: Start with 2 relics (choose from 5).' },
 ];
 
 export interface AscensionModifiers {
@@ -71,6 +71,7 @@ export interface AscensionModifiers {
   discardGivesShield: number;
   correctAnswerHeal: number;
   chooseStartingHand: boolean;
+  /** @deprecated CHARGE_AP_SURCHARGE is already 0 — always false until surcharge is restored. */
   freeCharging: boolean;
   startingRelicCount: number;
 }
@@ -114,15 +115,19 @@ export function getAscensionModifiers(level: number): AscensionModifiers {
     miniBossGuaranteedRelic: l >= 8,
     encounterStartShield: l >= 9 ? 3 : 0,
     freeRelicReroll: l >= 10,
-    relicTriggerBonus: l >= 11 ? 0.50 : 0,
+    // Reduced from 0.50 to 0.25 — +50% was too snowbally and contributed to Asc 20 > Asc 0 win rates
+    relicTriggerBonus: l >= 11 ? 0.25 : 0,
     tier1ChargedDamageBonus: l >= 12 ? 0.20 : 0,
     perfectTurnBonusAp: l >= 14 ? 1 : 0,
     bossDefeatFullHeal: l >= 15,
     discardGivesShield: l >= 16 ? 1 : 0,
     correctAnswerHeal: l >= 17 ? 1 : 0,
     chooseStartingHand: l >= 18,
-    freeCharging: l >= 19,
-    startingRelicCount: l >= 20 ? 3 : l >= 10 ? 2 : l >= 1 ? 1 : 0,
+    // Removed: CHARGE_AP_SURCHARGE is already 0, making this a no-op. Kept as false so if
+    // surcharge is restored later, Asc 19 doesn't automatically bypass it without review.
+    freeCharging: false,
+    // Reduced: Asc 20 gets 2 (was 3), Asc 10 gets 1 (was 2). Still a buff, less overwhelming.
+    startingRelicCount: l >= 20 ? 2 : l >= 10 ? 1 : l >= 1 ? 1 : 0,
   };
 }
 

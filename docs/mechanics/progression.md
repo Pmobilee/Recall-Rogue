@@ -1,7 +1,7 @@
 # Progression & Run Structure
 
 > **Purpose:** Documents the run lifecycle, floor/room generation, map layout, room types, ascension system, and shop mechanics.
-> **Last verified:** 2026-04-01
+> **Last verified:** 2026-04-04
 > **Source files:** `src/services/runManager.ts`, `src/services/floorManager.ts`, `src/services/mapGenerator.ts`, `src/services/ascension.ts`, `src/data/balance.ts`, `src/services/shopService.ts`
 
 ---
@@ -154,7 +154,7 @@ Named bosses: floor 3 = `final_exam`, floor 6 = `burning_deadline`, floor 9 = `a
 
 `MAX_ASCENSION_LEVEL = 20`. Each level adds one challenge + one buff (cumulative). `getAscensionModifiers(level)` returns `AscensionModifiers`.
 
-Selected level effects:
+Selected level effects (2026-04-04 rebalance — reduced buff strength to fix inverted win-rate scaling):
 | Level | Challenge | Buff |
 |-------|-----------|------|
 | 2  | Enemies +10% damage | +1 AP on first turn |
@@ -162,10 +162,17 @@ Selected level effects:
 | 5  | 12 starter cards | Free card removal per shop |
 | 7  | Close distractors more common | Charged correct +15% damage |
 | 9  | Enemies regen 2 HP/turn | Start encounters with 3 shield |
+| 10 | Start with a Curse card | +1 free relic reroll per boss (no longer grants 2nd starter relic) |
+| 11 | Boss relics reduced to 2 choices | Relics trigger +25% more (was +50%) |
 | 13 | Player max HP → 80 | Start with Vitality Ring |
 | 17 | Wrong answers deal 3 self-damage | Correct answers heal 1 HP |
-| 19 | All questions use hard formats | Charge plays cost 0 extra AP |
-| 20 | Final boss second phase | Start with 3 relics (choose from 7) |
+| 19 | All questions use hard formats | (Reserved for future surcharge mechanic — freeCharging removed as CHARGE_AP_SURCHARGE = 0) |
+| 20 | Final boss second phase | Start with 2 relics (choose from 5) (was 3 from 7) |
+
+**Key modifier values:**
+- `relicTriggerBonus`: `l >= 11 ? 0.25 : 0` (was 0.50)
+- `startingRelicCount`: `l >= 20 ? 2 : l >= 10 ? 1 : l >= 1 ? 1 : 0` (was 3/2/1)
+- `freeCharging`: always `false` — `CHARGE_AP_SURCHARGE` is 0, making this a no-op; preserved for future surcharge restoration
 
 `applyAscensionEnemyTemplateAdjustments` scales mini-boss attacks to boss-tier at level 8 and adds a second phase to `final_lesson` (floor 24) at level 20.
 
