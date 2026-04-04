@@ -4101,7 +4101,7 @@ AI-driven playtesting system using headless combat simulation:
 - **Extended Language Content:** Japanese Grammar deck (JLPT levels), Chinese Hanzi deck, Korean TOPIK grammar, European languages (ES/FR/DE) grammar decks.
 - **Mastery Skins (Animated Card Backs):** Cards with FSRS Tier 2a+ (stability ≥ 2d) unlock looping animated card backs (WAN2.1 video diffusion). Card back reverts to static if FSRS retrievability drops below learned threshold — knowledge decay visualized.
 - **Multi-enemy Encounters:** Toxic Bloom and Chain Reactor interactions designed for future multi-enemy rooms.
-- **Desktop Port / Steam Release:** Responsive landscape layout, keyboard+mouse input, Tauri wrapper, Steam achievements, Steam Cloud Save, Steam Rich Presence. See `docs/roadmap/phases/desktop-port/` for individual ARs.
+- **Desktop Port / Steam Release:** Responsive landscape layout, keyboard+mouse input, Tauri wrapper, Steam achievements, Steam Rich Presence. *(Steam Cloud Save implemented — see §29 Save System.)* See `docs/roadmap/phases/desktop-port/` for individual ARs.
 - **Anki Deck Import:** Import .apkg files, self-graded quiz system (Wrong/Hard/Good/Easy), FSRS tier conversion from Anki intervals. See `docs/roadmap/phases/anki-import/AR-85-ANKI-DECK-IMPORT.md`.
 - **Multiplayer (Seeded Competitive):** Race Mode and Same Cards mode — two players, same seed, compare scores. See `docs/roadmap/phases/future/AR-86-MULTIPLAYER-SEEDED.md`.
 - **Leaderboards & Daily Challenge:** Global leaderboards, daily seeded challenge (one attempt/day), scoring formula. See `docs/roadmap/phases/future/AR-87-LEADERBOARD-DAILY-CHALLENGE.md`.
@@ -4184,7 +4184,7 @@ Mouse enhancements (landscape only):
 
 - **Tauri v2** desktop wrapper (~10MB installer)
 - Steam Achievements mapped 1:1 from in-game achievements
-- Steam Cloud Save
+- Steam Cloud Save (file-based via `StorageBackend` — ready for Steam Auto-Cloud config)
 - Steam Rich Presence (shows current floor, enemy, activity)
 - Steam Deck Verified target (1280×800)
 
@@ -4270,10 +4270,40 @@ Achievements are registered in `src/data/steamAchievements.ts`. Unlock calls go 
 
 ### Steam Cloud Save
 
-- `steamService.cloudSave(data)` — serialize run + player save to JSON, write via Steamworks Cloud
-- `steamService.cloudLoad()` — read cloud save on launch
-- Conflict resolution: compare timestamps; prompt player if cloud save is newer than local
-- Auto-save triggers: run end, encounter end
+File-based save system is implemented and ready for Steam Auto-Cloud configuration.
+
+**Implementation** (`src/services/storageBackend.ts`):
+- `LocalStorageBackend` — wraps localStorage for web/mobile
+- `FileStorageBackend` — write-through in-memory cache + debounced file I/O (500ms) for Tauri/desktop
+- Atomic writes via `.tmp` then rename (crash-safe)
+- One-time migration from localStorage → files on first desktop launch
+
+**Rust I/O layer** (`src-tauri/src/filesave.rs`) — 4 IPC commands:
+`fs_get_save_dir`, `fs_write_save(filename, data)`, `fs_read_save(filename)`, `fs_delete_save(filename)`
+
+**Save file layout:**
+| File | Contents |
+|------|----------|
+| `profiles.json` | Profile list and active profile ID |
+| `profile_{uuid}.json` | Full PlayerSave per profile |
+| `run_active.json` | In-progress run checkpoint |
+| `settings.json` | Audio, UI scale, accessibility prefs |
+
+**Platform save directories:**
+| Platform | Path |
+|----------|------|
+| macOS | `~/Library/Application Support/com.bramblegategames.recallrogue/saves/` |
+| Windows | `%APPDATA%\com.bramblegategames.recallrogue\saves\` |
+| Linux | `~/.local/share/com.bramblegategames.recallrogue/saves/` |
+
+**Steam Auto-Cloud** (Steamworks dashboard — not yet configured):
+- Root override: platform save directory above
+- Include pattern: `saves/*.json`
+- Conflict resolution: Steam timestamp comparison, player prompt on conflict
+
+**Boot init order** (`main.ts`): `initStorageBackend()` → `migrateLocalStorageToFiles()` → `initPlayer()`
+
+Auto-save triggers: run end, encounter end (via `saveService.save()` → backend write).
 
 ### Rich Presence
 

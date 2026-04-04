@@ -40,6 +40,36 @@ Defined in `index.html` meta tag:
 - **API keys** stored in environment variables, never in code
 - **Build-time variables** prefixed with `VITE_` (Vite convention)
 
+## Data Protection
+
+### SQLite Database Obfuscation
+
+Both `facts.db` (trivia) and `curated.db` (curated decks) are XOR-obfuscated in production builds.
+
+- **Mechanism:** `scripts/obfuscate-db.mjs` XOR-encodes each byte using a rolling key derived from `__RR_VERSION__` (injected by Vite at build time).
+- **Scope:** Applied to `dist/` files only — after Vite copies `public/` into `dist/`. Do NOT run against `public/` originals.
+- **Runtime decoding:** `src/services/dbDecoder.ts` decodes the buffer in-memory before passing it to sql.js. No decoded file is ever written to disk.
+- **Strength:** This is obfuscation, not encryption. It deters casual extraction with `sqlite3` but does not prevent a determined reverse-engineer. It is appropriate for protecting quiz question spoilers, not cryptographic secrets.
+
+### No Developer Artifacts in Production
+
+The following files were removed from `public/` and will not appear in shipped builds:
+- `recall-rogue-agent-kit.zip` — AI agent kit zip
+- `sprite-review.html` — internal sprite review tool
+- `test-damage-number.html` — damage number test page
+- `seed-pack.json` — moved to `data/` (not served at runtime)
+
+All dev-only tooling (`__rrScenario`, `__rrDebug`, artstudio server) is conditionally compiled or excluded from production builds via Vite's `import.meta.env.DEV` guards.
+
+### File I/O Path Traversal Prevention
+
+The Rust file I/O commands in `src-tauri/src/filesave.rs` (`fs_write_save`, `fs_read_save`, `fs_delete_save`) reject any filename containing:
+- `..` (directory traversal)
+- `/` or `\` (directory separators)
+- Any character outside `[a-zA-Z0-9_\-.]`
+
+This prevents a compromised frontend from writing to arbitrary paths on the user's filesystem.
+
 ## Data Security (Planned)
 - JWT tokens with short expiry + refresh rotation
 - Passwords hashed with bcrypt (cost factor 12+)

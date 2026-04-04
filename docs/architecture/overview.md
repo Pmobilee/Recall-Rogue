@@ -2,7 +2,7 @@
 
 > **Purpose:** Documents the 3-layer architecture stack, boot sequence, and Svelte–Phaser communication pattern.
 > **Last verified:** 2026-03-31
-> **Source files:** `src/main.ts`, `src/CardApp.svelte`, `src/game/CardGameManager.ts`, `src/services/encounterBridge.ts`, `src/services/gameFlowController.ts`
+> **Source files:** `src/main.ts`, `src/CardApp.svelte`, `src/game/CardGameManager.ts`, `src/services/encounterBridge.ts`, `src/services/gameFlowController.ts`, `src/services/storageBackend.ts`
 
 ---
 
@@ -29,6 +29,14 @@
 │  src/data/: balance.ts, card-types.ts,     │
 │  enemies.ts, mechanics.ts, relics/,        │
 │  statusEffects.ts, factsDB (IndexedDB)      │
+├─────────────────────────────────────────────┤
+│  Storage Backend                            │
+│  storageBackend.ts: LocalStorageBackend    │
+│  (web/mobile) or FileStorageBackend        │
+│  (Tauri/desktop). Selected at boot by      │
+│  initStorageBackend() before initPlayer(). │
+│  Curated content: public/curated.db        │
+│  (SQLite, XOR-obfuscated in production).   │
 └─────────────────────────────────────────────┘
 ```
 
@@ -46,7 +54,9 @@ The Svelte UI layer renders above the Phaser canvas using CSS `position: absolut
 4. `mount(CardApp, { target: document.getElementById('app') })` — Svelte app mounted.
 5. `initAccessibilityManager()`, `initCardAudio()`, `initSyncDurabilityListener()`, `initScoreSubmissionQueue()` — global singletons initialized synchronously.
 6. `initCardbackManifest()`, `initCardFrameManifest()` — asset manifests loaded in background.
-7. `initPlayer('teen')` — player save loaded from localStorage.
+7. `await initStorageBackend()` — selects `LocalStorageBackend` (web/mobile) or `FileStorageBackend` (Tauri/desktop), loads all save files into in-memory cache. **Must complete before `initPlayer()`.**
+8. `migrateLocalStorageToFiles()` — one-time migration on first desktop launch (no-op on web/mobile).
+9. `initPlayer('teen')` — player save read from backend cache (synchronous after init).
 
 ### Phase 2 — Async boot (`bootGame()` in `src/main.ts`)
 
@@ -115,11 +125,13 @@ When combat ends, `encounterBridge` sets `combatExitEnemyId` (defeated enemy's I
 | 3 | `cardAudioManager` | `initCardAudio()` | Before user interaction |
 | 4 | `syncDurabilityService` | `initSyncDurabilityListener()` | Passive listener |
 | 5 | `scoreSubmissionQueue` | `initScoreSubmissionQueue()` | Passive queue |
-| 6 | `i18n` | `await initI18n()` | Blocks until locale loaded |
-| 7 | `factsDB` | `factsDB.init()` | Background; awaited before Phaser boot |
-| 8 | `playerData` | `initPlayer('teen')` | Sync localStorage read |
-| 9 | `CardGameManager` | `boot()` in `onMount` | After Svelte mount |
-| 10 | `encounterBridge` | Lazy, on first `startEncounterForRoom()` | Triggered by game flow |
+| 6 | `storageBackend` | `await initStorageBackend()` | Must complete before initPlayer; selects LocalStorage or File backend |
+| 7 | `localStorage→files migration` | `migrateLocalStorageToFiles()` | One-time migration on first desktop launch; no-op on web |
+| 8 | `i18n` | `await initI18n()` | Blocks until locale loaded |
+| 9 | `factsDB` | `factsDB.init()` | Background; awaited before Phaser boot |
+| 10 | `playerData` | `initPlayer('teen')` | Reads from backend cache (synchronous after storageBackend init) |
+| 11 | `CardGameManager` | `boot()` in `onMount` | After Svelte mount |
+| 12 | `encounterBridge` | Lazy, on first `startEncounterForRoom()` | Triggered by game flow |
 
 `CardGameManager` is a static singleton (`CardGameManager.getInstance()`). It is also stored on `globalThis[Symbol.for('rr:cardGameManager')]` to avoid circular imports between `encounterBridge` and `CardGameManager`.
 

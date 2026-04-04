@@ -297,3 +297,25 @@ Steam caches the running app binary in memory. Copying new files while the game 
 **Fix:** Added `TurnState.encounterQuizzedFacts: string[]` — a separate array that is only populated when `wasQuizzed: true` is passed to `playCardAction()`. The narrative snapshots in `encounterBridge.ts` (victory path and `devForceEncounterVictory`) now read from `encounterQuizzedFacts` instead of `encounterAnsweredFacts`. `encounterAnsweredFacts` remains unchanged for cooldown tracking.
 
 **Rule:** `encounterAnsweredFacts` = all played cards with factIds (cooldown). `encounterQuizzedFacts` = only cards where a quiz question was actually shown to the player (narrative). Callers of `handlePlayCard` must pass `wasQuizzed: true` when a real quiz was displayed.
+
+### 2026-04-04 — XOR Obfuscation Must Target dist/, Not public/
+
+`scripts/obfuscate-db.mjs` XOR-encodes `facts.db` and `curated.db` for production. It must run AFTER `vite build` copies `public/` into `dist/` — obfuscation targets `dist/facts.db` and `dist/curated.db`, not the originals in `public/`.
+
+Running obfuscation against `public/` directly would corrupt the dev-server files, breaking `npm run dev` until the files are regenerated. The `npm run build` script sequences this correctly (`vite build` → `build-curated-db.mjs` → `obfuscate-db.mjs`).
+
+**Rule:** Never run `obfuscate-db.mjs` against `public/` files. Always run it as the final step after `vite build`.
+
+### 2026-04-04 — initStorageBackend() Must Complete Before initPlayer()
+
+`src/services/storageBackend.ts` implements `FileStorageBackend` for Tauri/desktop: it loads all save files into an in-memory cache during `initStorageBackend()`. After init completes, `load()` / `save()` are synchronous reads/writes against that cache.
+
+`initPlayer()` calls `saveService.load()`, which calls `getBackend().readSync()`. On desktop, this reads from the cache. If `initStorageBackend()` hasn't completed yet, the cache is empty and `initPlayer()` returns a fresh default player — silently discarding the player's save.
+
+**Fix:** `initPlayer()` was moved into `bootGame()` so it runs after `await initStorageBackend()` completes. Never call `initPlayer()` before the storage backend is initialized.
+
+### 2026-04-04 — ProfileService Constructor Runs Before Backend Init, Requires reload()
+
+`ProfileService` constructs its initial state by reading from the storage backend in its constructor. If constructed before `initStorageBackend()` completes (e.g., as a module-level singleton), it reads an empty cache and sees no profiles.
+
+**Fix:** Call `profileService.reload()` after `initStorageBackend()` completes. This re-reads all profile data from the now-populated cache. Any service that constructs itself at module load time and reads from the backend must have a `reload()` path for this reason.

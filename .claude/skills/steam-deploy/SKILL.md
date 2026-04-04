@@ -109,6 +109,13 @@ Build the production macOS app:
    ```
    This runs `npm run build` (Vite) then `cargo tauri build` (Rust + bundle).
 
+   `npm run build` does the following in sequence:
+   - Vite production build (bundles all frontend assets into `dist/`)
+   - `build-curated-db.mjs` — compiles 77 curated deck JSONs into `public/curated.db`
+   - `obfuscate-db.mjs` — XOR-obfuscates `dist/facts.db` and `dist/curated.db` so they cannot be opened with a standard SQLite tool
+
+   The `steam-build.sh` script does **not** have a separate obfuscation step — obfuscation is fully handled inside `npm run build`.
+
 3. Verify output:
    ```bash
    ls -la "/Users/damion/CODE/Recall_Rogue/src-tauri/target/release/bundle/macos/Recall Rogue.app"
@@ -216,6 +223,37 @@ open steam://run/4547570
 
 **Why:** On 2026-04-04, a local deploy appeared to succeed but Steam kept running the old cached binary. The fix was killing the process + deleting the old .app before copying. The `steam-build.sh` script should handle this automatically, but if calling manually, always kill first.
 
+## Steam Cloud Save
+
+Save data uses a `StorageBackend` abstraction (`src/services/storageBackend.ts`) that routes writes to either localStorage (browser/dev) or the file system (desktop/Steam).
+
+**Desktop file saves** are handled via Rust IPC commands defined in `src-tauri/src/filesave.rs`. Save files are written to:
+
+```
+~/Library/Application Support/com.bramblegategames.recallrogue/saves/   (macOS)
+```
+
+Files in the saves directory:
+
+| File | Contents |
+|---|---|
+| `profiles.json` | All user profiles index |
+| `profile_{uuid}.json` | Per-profile FSRS state, deck progress, stats |
+| `run_active.json` | Active run state (mid-run persistence) |
+| `settings.json` | User preferences and keybinds |
+
+**Steamworks Auto-Cloud configuration** (must be set in the Steamworks Dashboard before shipping):
+
+| Field | Value |
+|---|---|
+| Root path | `{4547570}/saves/` |
+| OS | All platforms |
+| File pattern | `*.json` |
+| Max files | 10 |
+| Max size per file | 10 MB |
+
+Configure this under App Admin > Steam Cloud > Auto-Cloud in the Steamworks partner dashboard. Without this, save files stay local and are lost if the player reinstalls or switches machines.
+
 ## Important Notes
 
 - **steamcmd authentication** is interactive (Steam Guard) — the first login must be done by the user in a terminal: `steamcmd +login <username> +quit`
@@ -223,6 +261,9 @@ open steam://run/4547570
 - **Cross-platform builds** (Windows/Linux) require GitHub Actions CI — see docs/deployment/steam.md
 - **Build size** is ~750MB for macOS (includes all game assets). This is normal for Steam.
 - **Version bumping**: Update `version` in both `package.json` and `src-tauri/tauri.conf.json` before release builds.
+- **Database obfuscation**: `dist/facts.db` and `dist/curated.db` are XOR-obfuscated by `obfuscate-db.mjs` as part of `npm run build`. They cannot be opened with the `sqlite3` CLI in production builds — this is expected.
+- **No AI tooling artifacts in bundle**: `CLAUDE.md` and `.claude/` are never included in the production bundle. Verify with `du -sh` on the shipped `.app` if suspicious.
+- **Save file security**: Save files (`profiles.json`, `profile_{uuid}.json`, etc.) are plain JSON on disk — not encrypted. Steam handles integrity guarantees via Steam Cloud sync.
 
 ## Steamworks Dashboard Checklist
 
@@ -231,4 +272,4 @@ Before first upload, the user must configure in partner.steamgames.com:
 - [ ] Set launch options per OS (macOS: `Recall Rogue.app/Contents/MacOS/Recall Rogue`)
 - [ ] Create a `development` branch for testing
 - [ ] Set content descriptors and age ratings
-- [ ] Configure Steam Cloud settings (optional, stubs exist in code)
+- [ ] Configure Steam Cloud — Auto-Cloud sync for saves/ directory (*.json, 10 files, 10MB each)
