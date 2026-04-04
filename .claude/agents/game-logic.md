@@ -45,6 +45,11 @@ Before ANY code change, read the relevant doc under `docs/mechanics/` or `docs/a
 - DungeonMoodSystem modulates atmosphere per-frame based on HP/chain/streak/threat/depth — don't bypass or reset it manually
 - Chain escalation visuals (particles, lights, vignette) are driven by `CombatScene.onChainUpdated()` — wired automatically via encounterBridge after card plays
 
+## Task Tracking — MANDATORY
+- Break ALL work into granular TaskCreate tasks BEFORE starting — one task per mechanic, test, and validation step
+- Mark `in_progress` when beginning, `completed` when done
+- Run TaskList before delivering — zero pending tasks allowed
+
 ## After Making Changes
 1. `npm run typecheck` — must pass
 2. `npx vitest run` — must pass

@@ -140,6 +140,7 @@ After ANY deck modification:
 1. `node scripts/verify-all-decks.mjs` → 0 failures
 2. `npx vitest run tests/unit/deck-content-quality.test.ts` → 9/9 pass
 3. `npm run typecheck && npm run build` → clean
+4. **Trivia Bridge (knowledge decks only):** Add deck to `deck-bridge-config.json`, run `node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs`, verify 0 collisions. Commit `bridge-curated.json` + `bridge-manifest.json` alongside the deck. Language/vocab decks are exempt. See `docs/content/trivia-bridge.md`.
 
 ---
 

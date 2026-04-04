@@ -58,6 +58,11 @@ Before ANY review, read the relevant docs to understand expected behavior. After
 - New elements documented
 - Stale references removed
 
+## Task Tracking — MANDATORY
+- Break ALL work into granular TaskCreate tasks BEFORE starting — one task per test file, review area, and verification step
+- Mark `in_progress` when beginning, `completed` when done
+- Run TaskList before delivering — zero pending tasks allowed
+
 ## Reporting Format
 ```
 ## PASS

@@ -54,6 +54,11 @@ Before ANY code change, read the relevant doc under `docs/ui/`. After changes, u
 - For runes: fetch relevant section first
 - For errors: check MCP before guessing
 
+## Task Tracking — MANDATORY
+- Break ALL work into granular TaskCreate tasks BEFORE starting — one task per component, layout change, and visual verification
+- Mark `in_progress` when beginning, `completed` when done
+- Run TaskList before delivering — zero pending tasks allowed
+
 ## After Making Changes
 1. `npm run typecheck` — must pass
 2. `npm run build` — must pass

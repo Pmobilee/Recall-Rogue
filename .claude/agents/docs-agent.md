@@ -34,6 +34,11 @@ model: sonnet
 3. **`docs/`** — modular sub-files read on-demand by agents
 4. **`docs/RESEARCH/`** — design specs, research docs (reference)
 
+## Task Tracking — MANDATORY
+- Break ALL work into granular TaskCreate tasks BEFORE starting — one task per doc file, section update, and freshness check
+- Mark `in_progress` when beginning, `completed` when done
+- Run TaskList before delivering — zero pending tasks allowed
+
 ## When to Run
 - After every feature merge
 - After QA finds doc staleness

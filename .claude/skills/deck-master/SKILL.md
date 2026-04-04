@@ -1898,6 +1898,26 @@ Before a deck can ship, check off every item:
 
 ---
 
+## Step 7: Trivia Bridge (Knowledge Decks Only)
+
+**After ALL validation gates pass, bridge the deck into the trivia database.** This is MANDATORY for knowledge decks and must happen before committing.
+
+Language/vocabulary decks (JLPT, HSK, CEFR, TOPIK, Hangul, Hiragana, Katakana) and image-only decks are exempt.
+
+1. Add the deck to `scripts/content-pipeline/bridge/deck-bridge-config.json`:
+   - `domain` — trivia domain category
+   - `prefixSegments` — number of leading ID segments to skip (deck prefix + chain abbreviation)
+   - `entitySegments` — how many segments form the entity key (usually 1-2)
+   - `ageRating` — "kid" or "teen"
+   - `categoryL2` — sub-category within the domain
+2. Run: `node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs`
+3. Verify: 0 ID collisions, deck appears in output with expected entity count
+4. Commit `bridge-curated.json` + `bridge-manifest.json` + `deck-bridge-config.json` alongside the deck
+
+**Use `/curated-trivia-bridge` skill for the full workflow.** See `docs/content/trivia-bridge.md` for entity grouping and scoring details.
+
+---
+
 ## In-Game Visual Testing — SUPPLEMENTARY
 
 **After all automated and LLM testing passes, optionally verify in the browser.** This catches rendering/layout issues that code-level tests can't see (font overflow, z-index, animation).

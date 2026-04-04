@@ -128,6 +128,20 @@ node scripts/verify-all-decks.mjs --verbose  # Per-fact details on failures
 
 Target: **0 failures** across all decks. Warnings are informational — aim to minimize.
 
+## Trivia Bridge — MANDATORY (Knowledge Decks)
+
+**Every knowledge deck MUST be bridged to the trivia database before committing.** Language/vocabulary decks are exempt.
+
+After batch verification passes:
+1. Add the deck to `scripts/content-pipeline/bridge/deck-bridge-config.json` with correct `domain`, `prefixSegments`, `entitySegments`, `ageRating`, `categoryL2`
+2. Run `node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs` — verify 0 ID collisions
+3. Confirm the deck appears in the output summary with expected entity count
+4. Commit the updated `bridge-curated.json` and `bridge-manifest.json` alongside the deck
+
+**Why:** Trivia Dungeon and Study Temple share FSRS state. If a knowledge deck isn't bridged, players get zero knowledge transfer between modes. This was the default state before 2026-04-01 and caused confusion.
+
+**Exempt:** All vocabulary/language decks (Chinese HSK, Japanese JLPT, Spanish/French/German/Dutch/Czech CEFR, Korean TOPIK) and image-only decks (world_flags).
+
 ## Content Quality Limits
 
 | Field | Warn | Fail | Notes |
