@@ -489,7 +489,7 @@ export const FLOOR_DAMAGE_SCALE_MID = 1.0;
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent() + re-applied after enrage in turnManager. */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
   1: 7,    // kept at 7: Act 1 must stay gentle for new players and language learners
-  2: 14,   // raised from 10 (2026-04-04): Act 2 needs more bite now that charges are often free
+  2: 14,   // 2026-04-04: tested 11, didn't help new_player (accuracy bottleneck, not damage). 14 keeps mid-tier challenge appropriate
   3: 20,   // raised from 15 (2026-04-04): Act 3 needs to be threatening
   4: 28,   // raised from 22 (2026-04-04): Act 3 bosses need real danger; enrage is capped separately
   endless: null,
