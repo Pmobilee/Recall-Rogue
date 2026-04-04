@@ -101,6 +101,15 @@
 
 ---
 
+## Balance & Tuning
+
+| Doc | Summary |
+|-----|---------|
+| [balance-audit-2026-04-04](RESEARCH/balance-audit-2026-04-04.md) | Comprehensive balance audit from 24,500+ headless sim runs — 48 issues across 10 categories with data, root cause analysis, fix recommendations, and prioritized action plan |
+| [enemy-balance-analysis-2026-04-03](RESEARCH/enemy-balance-analysis-2026-04-03.md) | Enemy HP/damage rebalance analysis — 4-iteration tuning cycle with final convergence results |
+
+---
+
 ## Cross-cutting
 
 | Doc | Summary |

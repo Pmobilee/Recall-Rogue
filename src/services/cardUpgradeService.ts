@@ -419,7 +419,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 6 },                                          // L2
       { qpValue: 7 },                                          // L3
       { qpValue: 8 },                                          // L4
-      { qpValue: 10, tags: ['fortify_carry'] },                 // L5: block persists next turn!
+      { qpValue: 10, apCost: 1, tags: ['fortify_carry'] },      // L5: block persists next turn! AP cost reduced to 1
     ],
   },
 
@@ -441,9 +441,9 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 3, apCost: 2 },                               // L0
       { qpValue: 4 },                                          // L1
       { qpValue: 5 },                                          // L2
-      { qpValue: 6, tags: ['overheal_heal2'] },                 // L3: also heals 2 HP!
+      { qpValue: 6, apCost: 1, tags: ['overheal_heal2'] },      // L3: also heals 2 HP! AP cost reduced to 1
       { qpValue: 7 },                                          // L4
-      { qpValue: 8, tags: ['overheal_heal2', 'overheal_heal_pct5'] }, // L5: also heals 5% max HP
+      { qpValue: 8, apCost: 1, tags: ['overheal_heal2', 'overheal_heal_pct5'] }, // L5: also heals 5% max HP. AP=1
     ],
   },
 
@@ -493,7 +493,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 10 },                                         // L2
       { qpValue: 11 },                                         // L3
       { qpValue: 12 },                                         // L4
-      { qpValue: 14, tags: ['guard_taunt1t'] },                 // L5: enemy MUST attack you next turn (taunt)
+      { qpValue: 14, apCost: 1, tags: ['guard_taunt1t'] },      // L5: taunt + AP cost reduced to 1
     ],
   },
 
@@ -601,9 +601,9 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 1, apCost: 2, extras: { hitMult: 75 } },        // L0: 75% power per hit (QP)
       { qpValue: 1, apCost: 2, extras: { hitMult: 80 } },        // L1
       { qpValue: 1, apCost: 2, extras: { hitMult: 85 } },        // L2
-      { qpValue: 1, apCost: 2, extras: { hitMult: 90 } },        // L3
-      { qpValue: 1, apCost: 2, extras: { hitMult: 95 } },        // L4
-      { qpValue: 1, apCost: 2, extras: { hitMult: 100 }, tags: ['double_strike_pierce'] }, // L5: 100% power + pierces block!
+      { qpValue: 1, apCost: 1, extras: { hitMult: 90 } },        // L3: AP cost reduced to 1
+      { qpValue: 1, apCost: 1, extras: { hitMult: 95 } },        // L4
+      { qpValue: 1, apCost: 1, extras: { hitMult: 100 }, tags: ['double_strike_pierce'] }, // L5: 100% power + pierces block!
     ],
   },
 
@@ -612,9 +612,9 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 1, apCost: 2 },                                 // L0: +1 flat ATK all combat
       { qpValue: 1, apCost: 2 },                                 // L1
       { qpValue: 2, apCost: 2 },                                 // L2: +2 flat ATK
-      { qpValue: 2, apCost: 2 },                                 // L3
-      { qpValue: 3, apCost: 2 },                                 // L4: +3 flat ATK
-      { qpValue: 3, apCost: 2, tags: ['insc_fury_cc_bonus2'] },  // L5: CC gets extra +2 on top
+      { qpValue: 2, apCost: 1 },                                 // L3: AP cost reduced to 1
+      { qpValue: 3, apCost: 1 },                                 // L4: +3 flat ATK
+      { qpValue: 3, apCost: 1, tags: ['insc_fury_cc_bonus2'] },  // L5: CC gets extra +2 on top
     ],
   },
 
@@ -623,9 +623,9 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 1, apCost: 2 },                                 // L0: +1 block per turn all combat
       { qpValue: 2, apCost: 2 },                                 // L1: +2
       { qpValue: 2, apCost: 2 },                                 // L2
-      { qpValue: 3, apCost: 2 },                                 // L3: +3
-      { qpValue: 3, apCost: 2 },                                 // L4
-      { qpValue: 4, apCost: 2, tags: ['insc_iron_thorns1'] },    // L5: also +1 thorns per turn
+      { qpValue: 3, apCost: 1 },                                 // L3: +3. AP cost reduced to 1
+      { qpValue: 3, apCost: 1 },                                 // L4
+      { qpValue: 4, apCost: 1, tags: ['insc_iron_thorns1'] },    // L5: also +1 thorns per turn
     ],
   },
 
@@ -1146,9 +1146,9 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 0, apCost: 2, extras: { drawPerCC: 1, healPerCC: 0 } }, // L0: Each future CC draws 1 extra
       { qpValue: 0, apCost: 2, extras: { drawPerCC: 1, healPerCC: 0 } }, // L1
       { qpValue: 0, apCost: 2, extras: { drawPerCC: 1, healPerCC: 1 } }, // L2: also heal 1 per CC!
-      { qpValue: 0, apCost: 2, extras: { drawPerCC: 1, healPerCC: 1 } }, // L3
-      { qpValue: 0, apCost: 2, extras: { drawPerCC: 2, healPerCC: 1 } }, // L4: draw 2 per CC!
-      { qpValue: 0, apCost: 2, extras: { drawPerCC: 2, healPerCC: 2 } }, // L5: draw 2 + heal 2 per CC
+      { qpValue: 0, apCost: 1, extras: { drawPerCC: 1, healPerCC: 1 } }, // L3: AP cost reduced to 1
+      { qpValue: 0, apCost: 1, extras: { drawPerCC: 2, healPerCC: 1 } }, // L4: draw 2 per CC!
+      { qpValue: 0, apCost: 1, extras: { drawPerCC: 2, healPerCC: 2 } }, // L5: draw 2 + heal 2 per CC
     ],
   },
 

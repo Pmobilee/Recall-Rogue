@@ -1,7 +1,7 @@
 # Card Mechanics Reference
 
 > **Purpose:** Complete table of all card mechanics — attack, shield, buff, debuff, utility, and wild
-> **Last verified:** 2026-04-03
+> **Last verified:** 2026-04-04
 > **Source files:** `src/data/mechanics.ts`, `src/services/cardEffectResolver.ts`, `src/services/cardUpgradeService.ts`
 
 > **See also:** [`cards.md`](cards.md) — Card entity, types, tiers, damage formula, mastery system, and card creation pipeline.
@@ -44,12 +44,12 @@ Mechanics are assigned by the run pool builder and stored on the `Card` as `mech
 | `block` | Block | 1 | 3 | 1 | Basic block |
 | `thorns` | Thorns | 1 | 3 | 1 | Block + reflect `secondaryValue: 3` on hit; L5 (`thorns_persist`): thorns don't reset at encounter end |
 | `emergency` | Emergency | 1 | 2 | 1 | Block; doubled if HP < 30% |
-| `fortify` | Entrench | 1 | 4 | 2 | QP: 50% of current block. CC: 75% block + card value. CW: 25%; L5 (`fortify_carry`): block persists next turn |
+| `fortify` | Entrench | 1 | 4 | 2 | QP: 50% of current block. CC: 75% block + card value. CW: 25%; L5 (`fortify_carry`): block persists next turn, AP cost reduced to 1 |
 | `brace` | Brace | 1 | 0 | 1 | Block = enemy telegraph value; L3+ (`brace_exceed2`): +2 block bonus; L5 (`brace_draw1`): also draws 1 |
-| `overheal` | Overheal | 1 | 5 | 2 | 10 block; doubled if HP < 50%; L3+ (`overheal_heal2`): also heals 2 HP; L5 (`overheal_heal_pct5`): also heals 5% max HP |
+| `overheal` | Overheal | 1 | 5 | 2 | 10 block; doubled if HP < 50%; L3+ (`overheal_heal2`): also heals 2 HP, AP cost reduced to 1; L5 (`overheal_heal_pct5`): also heals 5% max HP (AP=1) |
 | `reinforce` | Reinforce | 1 | 4 | 1 | More block than basic shield; L5 (`reinforce_draw1`): also draws 1 |
 | `shrug_it_off` | Shrug It Off | 1 | 3 | 1 | Block + draw (1 or 2 from stat table); L5 (`shrug_cleanse1`): also removes 1 debuff |
-| `guard` | Guard | 1 | 7 | 2 | Large block; L5 (`guard_taunt1t`): enemy must attack player next turn |
+| `guard` | Guard | 1 | 7 | 2 | Large block; L5 (`guard_taunt1t`): enemy must attack player next turn, AP cost reduced to 1 |
 | `absorb` | Absorb | 1 | 3 | 1 | Block; CC draws 1 (or 2 at L3+ via `absorb_draw2cc`); L5 (`absorb_heal1cc`): CC also heals 1 |
 | `reactive_shield` | Reactive Shield | 1 | 2 | 1 | Block + Thorns (value from stat secondaryValue); L5 (`reactive_thorns_persist`): thorns persist encounter |
 | `aegis_pulse` | Aegis Pulse | 1 | 3 | 1 | Block; CC: same-chain cards in hand +2 block |
@@ -66,12 +66,13 @@ Mechanics are assigned by the run pool builder and stored on the `Card` as `mech
 | `empower` | Empower | 1 | Next card deals +X% damage; L3+ (`empower_2cards`): next 2 cards get the buff |
 | `quicken` | Quicken | 1 | +1 AP this turn (or +2 at L5 via `quicken_ap2`); L1+ (`quicken_draw1`): also draws 1; L3+ (`quicken_draw2`): draws 2 |
 | `focus` | Focus | 1 | Next card -1 AP; CC: 2 cards get AP reduction; L2+ (`focus_draw1`): also draws 1; L5 (`focus_next2free`): next 2 cards cost 0 AP |
-| `double_strike` | Double Strike | 1 | Next attack hits twice; CC (`double_strike_pierce`): next attack also pierces |
+| `double_strike` | Double Strike | 1 | Next attack hits twice; L3+: AP cost reduced to 1; CC (`double_strike_pierce`): next attack also pierces |
 | `ignite` | Ignite | 1 | Next attack applies Burn; L3+ (`ignite_2attacks`): applies to next 2 attacks |
 | `warcry` | Warcry | 2 | QP: +2 Str (turn); CC: +2 Str (perm) + next Charge free |
 | `battle_trance` | Battle Trance | 2 | Draw cards (count from stat table); QP/CW: no more cards this turn unless `trance_no_lockout_qp`; L5 (`trance_cc_ap1`): CC also grants +1 AP |
-| `inscription_fury` | Inscription of Fury | 1 | All attacks deal bonus dmg rest of combat; L5 (`insc_fury_cc_bonus2`): CC attacks deal +2 extra flat damage |
-| `inscription_iron` | Inscription of Iron | 1 | Gain block at start of each turn rest of combat; L5 (`insc_iron_thorns1`): also +1 thorns per turn |
+| `inscription_fury` | Inscription of Fury | 1 | All attacks deal bonus dmg rest of combat; L3+: AP cost reduced to 1; L5 (`insc_fury_cc_bonus2`): CC attacks deal +2 extra flat damage |
+| `inscription_iron` | Inscription of Iron | 1 | Gain block at start of each turn rest of combat; L3+: AP cost reduced to 1; L5 (`insc_iron_thorns1`): also +1 thorns per turn |
+| `inscription_wisdom` | Inscription of Wisdom | 1 | Each future CC draws 1 extra card (and heals at higher levels) rest of combat; L3+: AP cost reduced to 1; L5: draws 2 + heals 2 per CC |
 
 ### Debuff Mechanics
 

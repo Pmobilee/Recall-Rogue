@@ -1,7 +1,7 @@
 # Headless Balance Simulator
 
 > **Purpose:** How to run the headless combat simulator for balance testing — profiles, output format, and key internals.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-04
 > **Source files:** `tests/playtest/headless/simulator.ts`, `tests/playtest/headless/run-batch.ts`, `tests/playtest/headless/browser-shim.ts`, `tests/playtest/headless/tsconfig.json`, `tests/playtest/headless/full-run-simulator.ts`, `tests/playtest/headless/bot-brain.ts`, `tests/playtest/headless/bot-profiles.ts`
 
 ## What It Is
@@ -45,6 +45,10 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
 npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
   tests/playtest/headless/relic-audit.ts
 
+# Force a relic on every run (causal relic testing — no survivorship bias)
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
+  tests/playtest/headless/run-batch.ts --runs 500 --profile scholar --force-relic scavengers_eye
+
 # Single run with verbose output
 npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
   tests/playtest/headless/simulator.ts --verbose
@@ -65,6 +69,7 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
 | `--sweep AXIS\|all` | — | Sweep one axis (or all 10) from 0→1 in 0.1 steps |
 | `--isolation` | — | Test each axis at 1.0 with all others at baseline (0.3) |
 | `--skills JSON` | — | Custom `BotSkills` JSON (partial OK; unspecified axes default to 0.5) |
+| `--force-relic ID` | — | Force a specific relic at run start on every run (added on top of normal starter relics; for causal win-rate measurement free of survivorship bias) |
 
 ## BotBrain System
 

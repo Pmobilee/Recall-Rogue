@@ -176,6 +176,7 @@ const simMode         = (getArg('--mode') ?? 'full') as 'full' | 'combat';
 const sweepAxis       = getArg('--sweep');          // axis name or 'all'
 const isIsolation     = args.includes('--isolation');
 const customSkillsJson = getArg('--skills');
+const forceRelicArg   = getArg('--force-relic');
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Determine which profiles to run
@@ -304,6 +305,7 @@ for (const profile of profilesToRun) {
         verbose:              false,
         ascensionLevel:       ascensionLevel,
         acts:                 3,
+        forceRelics:          forceRelicArg ? [forceRelicArg] : undefined,
       } satisfies FullRunOptions);
       results.push(r);
       allFullResults.push({ ...r, profile: profile.label });

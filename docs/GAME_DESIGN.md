@@ -363,11 +363,12 @@ Each run uses exactly 3 chain themes, selected from the deck's available themes.
 
 | Chain Length | Multiplier | Visual Feedback |
 |-------------|-----------|-----------------|
-| 1 (no chain) | 1.0× | Normal play |
-| 2-chain | 1.3× | Subtle glow, thin line connecting cards |
-| 3-chain | 1.7× | Bright glow, particle trail, chain sound |
-| 4-chain | 2.2× | Screen edge pulse, chain lightning VFX |
-| 5-chain | 3.0× | Full celebration, screen shake, "KNOWLEDGE CHAIN!" text |
+| 0 (no chain) | 1.0× | Normal play |
+| 1-chain | 1.2× | Faint chain glow |
+| 2-chain | 1.5× | Subtle glow, thin line connecting cards |
+| 3-chain | 2.0× | Bright glow, particle trail, chain sound |
+| 4-chain | 2.5× | Screen edge pulse, chain lightning VFX |
+| 5-chain | 3.5× | Full celebration, screen shake, "KNOWLEDGE CHAIN!" text |
 
 **Chain multiplier stacks multiplicatively with all other multipliers:**
 
@@ -375,11 +376,11 @@ Each run uses exactly 3 chain themes, selected from the deck's available themes.
 
 | Scenario | Calculation | Total |
 |----------|-------------|-------|
-| 3-chain Quick Play Strikes | 7 × 1.7 each (M1 QP) | 35.7 |
-| 3-chain Charged (correct, mastery 1) middle card | 7, 10.5×1.7, 7×1.7 | 43.0 |
-| 3-chain all Charged on Surge turn (free Charge surcharge, mastery 1) | 10.5 × 1.7 each | 53.6 |
+| 3-chain Quick Play Strikes | 7 × 2.0 each (M1 QP) | 42.0 |
+| 3-chain Charged (correct, mastery 1) middle card | 7, 10.5×2.0, 7×2.0 | 49.0 |
+| 3-chain all Charged on Surge turn (free Charge surcharge, mastery 1) | 10.5 × 2.0 each | 63.0 |
 
-The 54-damage Surge chain is the "holy shit" peak at early mastery. Rare. Players will chase it — and at M5, a 3-chain CC sits at ~78 damage (see pipeline example above).
+The 63-damage Surge chain is the "holy shit" peak at early mastery. Rare. Players will chase it — and at M5, a 3-chain CC sits at ~92 damage (see pipeline example above).
 
 ### Chain Rules (Active in Combat)
 
@@ -2515,7 +2516,7 @@ The exact order of damage calculation for all attack cards. **The combo multipli
 3. + Inscription of Fury flat bonus (if active — applied here as flat addition, attack cards only)
 4. + relic flat bonuses (`barbed_edge`, etc.)
    *(Note: `card.effectMultiplier` is set by `TIER_MULTIPLIER[tier]` in `cardFactory.ts` but is always 1.0 for active tiers — a no-op multiplier that does not affect damage. Tier multipliers removed 2026-04-03; tiers now drive quiz difficulty only.)*
-5. × `chainMultiplier` (1.0–3.0, based on chain length)
+5. × `chainMultiplier` (1.0–3.5, based on chain length; see §3 Chain Multipliers table)
 6. × `speedBonus` (from quiz timer — only applies on CC)
 7. × `buffMultiplier` (from Empower/buff cards active this turn)
 8. × relic percent bonuses (Volatile Core, Reckless Resolve, Berserker's Oath, etc.)

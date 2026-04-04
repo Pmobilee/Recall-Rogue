@@ -83,6 +83,8 @@ export interface FullRunOptions {
   acts?: 1 | 2 | 3;
   /** Bot skill profile. If provided, overrides correctRate/chargeRate for BotBrain-driven play. */
   botSkills?: BotSkills;
+  /** Force specific relics at run start (for causal relic testing). These are added IN ADDITION to normal starter relics. */
+  forceRelics?: string[];
 }
 
 export interface NodeVisitRecord {
@@ -97,7 +99,7 @@ export interface NodeVisitRecord {
 
 export interface FullRunResult {
   runId: string;
-  options: Required<Omit<FullRunOptions, 'botSkills'>> & { botSkills?: BotSkills };
+  options: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics'>> & { botSkills?: BotSkills; forceRelics?: string[] };
   survived: boolean;
   actsCompleted: number;
   finalHP: number;
@@ -555,7 +557,7 @@ function handleCombatNode(
   nodeType: MapNodeType,
   floor: number,
   act: 1 | 2 | 3,
-  opts: Required<Omit<FullRunOptions, 'botSkills'>> & { botSkills?: BotSkills },
+  opts: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics'>> & { botSkills?: BotSkills; forceRelics?: string[] },
   ascMods: ReturnType<typeof getAscensionModifiers>,
   relicPool: string[],
   verbose: boolean,
@@ -937,7 +939,7 @@ function handleMysteryNode(
   runState: SimRunState,
   floor: number,
   act: 1 | 2 | 3,
-  opts: Required<Omit<FullRunOptions, 'botSkills'>> & { botSkills?: BotSkills },
+  opts: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics'>> & { botSkills?: BotSkills; forceRelics?: string[] },
   ascMods: ReturnType<typeof getAscensionModifiers>,
   relicPool: string[],
   verbose: boolean,
@@ -1084,7 +1086,7 @@ function walkMapPath(actMap: ActMap): MapNode[] {
 export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
   const startTime = Date.now();
 
-  const options: Required<Omit<FullRunOptions, 'botSkills'>> & { botSkills?: BotSkills } = {
+  const options: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics'>> & { botSkills?: BotSkills; forceRelics?: string[] } = {
     correctRate: opts.correctRate ?? 0.75,
     chargeRate: opts.chargeRate ?? 0.7,
     seed: opts.seed ?? Math.floor(Math.random() * 1_000_000),
@@ -1093,6 +1095,7 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
     ascensionLevel: opts.ascensionLevel ?? 0,
     acts: opts.acts ?? 3,
     botSkills: opts.botSkills,
+    forceRelics: opts.forceRelics,
   };
 
   const { verbose } = options;
@@ -1147,6 +1150,25 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
         if (eff.effectId === 'max_hp_bonus') {
           runState.maxHp += eff.value ?? 0;
           runState.hp = Math.min(runState.hp + (eff.value ?? 0), runState.maxHp);
+        }
+      }
+    }
+  }
+
+  // Add forced relics for causal testing
+  if (options.forceRelics) {
+    for (const id of options.forceRelics) {
+      if (!runState.relicIds.has(id)) {
+        runState.relicIds.add(id);
+        // Apply passive effects
+        const def = RELIC_BY_ID[id];
+        if (def) {
+          for (const eff of def.effects) {
+            if (eff.effectId === 'max_hp_bonus') {
+              runState.maxHp += eff.value ?? 0;
+              runState.hp = Math.min(runState.hp + (eff.value ?? 0), runState.maxHp);
+            }
+          }
         }
       }
     }

@@ -22,7 +22,6 @@ import {
   resolveLethalEffects,
   resolveCorrectAnswerEffects,
   resolveBaseDrawCount,
-  resolveComboStartValue,
 } from '../../../src/services/relicEffectResolver.js';
 
 type RelicStatus = 'WORKING' | 'BROKEN' | 'PASSIVE';
@@ -94,7 +93,8 @@ for (const relicId of STARTER_RELIC_IDS) {
   const drawBonus = drawCount - 5; // 5 is default
 
   // --- Combo start value ---
-  const comboBonus = resolveComboStartValue(ids);
+  // resolveComboStartValue was removed from relicEffectResolver — no combo start mechanic active
+  const comboBonus = 0;
 
   // --- Encounter-start effects ---
   const encounterEffects: string[] = [];
