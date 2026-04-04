@@ -547,8 +547,8 @@ export const ENRAGE_SEGMENTS: { maxFloor: number; startTurn: number }[] = [
 
 /** +1 damage per turn for the first 3 enrage turns. Reduced from 2 on 2026-04-01 — slower enrage ramp helps beginners at 100 HP. */
 export const ENRAGE_PHASE1_BONUS = 1;
-/** +2 damage per turn after 3 enrage turns. Reduced from 4 on 2026-04-01 — less punishing late enrage at 100 HP. */
-export const ENRAGE_PHASE2_BONUS = 3;
+/** +2 damage per turn after 3 enrage turns (was 3). Reduced from 4 on 2026-04-01; then 3→2 on 2026-04-04 — enrage was bypassing damage cap (+114 uncapped damage at turn 40 Act 3). Now subject to cap. */
+export const ENRAGE_PHASE2_BONUS = 2;
 /** Number of turns at phase 1 bonus before escalating to phase 2. */
 export const ENRAGE_PHASE1_DURATION = 3;
 /** Enemy HP threshold below which they gain bonus damage (desperate attack). */

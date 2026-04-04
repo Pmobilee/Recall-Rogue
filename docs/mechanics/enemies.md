@@ -33,6 +33,8 @@ damage = round((intent.value + enrageBonusDamage) × strengthModifier × getFloo
 ### Per-Turn Damage Caps (`ENEMY_TURN_DAMAGE_CAP`)
 Charged attacks with `bypassDamageCap: true` skip these caps.
 
+**Enrage cap enforcement (2026-04-04):** The global enrage bonus (from `getEnrageBonus()` in turnManager.ts) is added AFTER `executeEnemyIntent` returns. The cap is re-applied in turnManager after the enrage addition, using `enemy.floor` for the segment lookup. Without this fix, enrage bypassed the cap: at turn 40 in Act 3 (seg 4, cap 28), +114 enrage damage would be added on top of the 28 cap = 142 effective damage. `ENRAGE_PHASE2_BONUS` also reduced 3→2 as part of this fix.
+
 | Segment | Floors | Cap | Rationale |
 |---|---|---|---|
 | 1 | 1–6 | 7 | Reduced from 8 (pass #5, 2026-04-03) — L0 cards deal 9 dmg/turn QP; cap at 7% of player HP keeps Act 1 survivable |

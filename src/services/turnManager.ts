@@ -45,6 +45,7 @@ import {
   BLEED_BONUS_PER_STACK,
   BLEED_DECAY_PER_TURN,
   SURGE_DRAW_BONUS,
+  ENEMY_TURN_DAMAGE_CAP,
 } from '../data/balance';
 import { MECHANICS_BY_TYPE, getMechanicDefinition, type PlayMode } from '../data/mechanics';
 import { difficultyMode } from './cardPreferences';
@@ -2874,6 +2875,22 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     const enrageBonus = getEnrageBonus(turnState.encounterTurnNumber, currentFloor, enemyHpPercent);
     if (enrageBonus > 0) {
       incomingDamage += enrageBonus;
+    }
+    // Re-apply damage cap AFTER enrage so enrage cannot bypass it (bug fixed 2026-04-04).
+    // Must use enemy.floor (not deck currentFloor) to match the segment used in executeEnemyIntent.
+    // Replicates the getSegmentForFloor logic from enemyManager (unexported helper).
+    if (!enemy.nextIntent.bypassDamageCap) {
+      const enemyFloor = enemy.floor;
+      const capSeg: 1 | 2 | 3 | 4 | 'endless' =
+        enemyFloor <= 6 ? 1 :
+        enemyFloor <= 12 ? 2 :
+        enemyFloor <= 18 ? 3 :
+        enemyFloor <= 24 ? 4 : 'endless';
+      const capLookup = getBalanceValue('enemyTurnDamageCap', ENEMY_TURN_DAMAGE_CAP) as Record<1 | 2 | 3 | 4 | 'endless', number | null>;
+      const cap = capLookup[capSeg];
+      if (cap != null) {
+        incomingDamage = Math.min(incomingDamage, cap);
+      }
     }
     const mode = get(difficultyMode);
     if (mode === 'relaxed') {

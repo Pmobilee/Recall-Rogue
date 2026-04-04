@@ -313,7 +313,9 @@ Screen shake for the sword (micro shake) fires at the same T+250ms contact frame
 
 `getEnrageBonus(encounterTurnNumber, floor, enemyHpPercent)` returns flat bonus added to all enemy attacks.
 
-Uses `ENRAGE_SEGMENTS` (floor-based): Phase 1 ramps at `ENRAGE_PHASE1_BONUS` per turn for `ENRAGE_PHASE1_DURATION` turns; Phase 2 escalates faster. Enemies below `ENRAGE_LOW_HP_THRESHOLD` (30%) deal an extra `ENRAGE_LOW_HP_BONUS` regardless of segment.
+Uses `ENRAGE_SEGMENTS` (floor-based): Phase 1 ramps at `ENRAGE_PHASE1_BONUS` (+1/turn) for `ENRAGE_PHASE1_DURATION` (3) turns; Phase 2 escalates at `ENRAGE_PHASE2_BONUS` (+2/turn, reduced from +3 on 2026-04-04). Enemies below `ENRAGE_LOW_HP_THRESHOLD` (30%) deal an extra `ENRAGE_LOW_HP_BONUS` (+3) regardless of segment.
+
+**Damage cap enforcement (2026-04-04 fix):** The per-turn damage cap () is re-applied in  AFTER the enrage bonus is added. Previously,  capped damage before returning, then  added the enrage bonus on top — bypassing the cap entirely. At turn 40 in Act 3 this produced +114 uncapped flat damage. Fix: after adding enrage, re-cap using  to determine the segment (same floor-to-segment mapping as ). Charged attacks with  are still exempt.
 
 ---
 

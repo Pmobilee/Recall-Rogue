@@ -104,3 +104,13 @@ rm -rf node_modules/.vite && npm run dev
 - function_terms (13.5x) → 9x (moved 54 visual facts to structure sub-pools)
 - location_terms (31.5x) → 9.4x (extracted spinal level codes to spinal_levels pool)
 - Created new `spinal_levels` pool (10 facts, 2-6ch range, all vertebral level codes)
+
+### 2026-04-04 — Enrage Bonus Bypassed Per-Turn Damage Cap
+
+**What happened:** `executeEnemyIntent()` in `enemyManager.ts` applies the per-turn damage cap before returning. Then `endPlayerTurn()` in `turnManager.ts` adds the global enrage bonus AFTER getting that already-capped result. This means enrage damage was completely uncapped — at turn 40, Act 3 (segment 4, cap=28), the phase 2 enrage bonus accumulated to +114 flat damage, making effective per-turn damage 142.
+
+**Root cause:** Two-step pipeline where step 1 (cap) and step 2 (enrage) are in different files without a re-cap between them.
+
+**Fix:** After adding the enrage bonus in `turnManager.ts`, re-apply the damage cap using `enemy.floor` to determine the segment (same mapping as `getSegmentForFloor` in `enemyManager.ts`). Also reduced `ENRAGE_PHASE2_BONUS` 3→2 for a gentler ramp.
+
+**Critical gotcha:** Use `enemy.floor` for the segment lookup, NOT `turnState.deck?.currentFloor`. The deck's `currentFloor` may not match the enemy's floor (e.g., in tests where enemy is created at a specific floor but the deck isn't configured). The encounter engine test `detects player defeat from enemy attack` creates a floor-25 enemy but the test deck has no `currentFloor` — defaulting to 1 would apply segment 1 cap (7) and prevent the 999-damage one-shot.

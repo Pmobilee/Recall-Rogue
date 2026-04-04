@@ -608,8 +608,10 @@ Recommendations for new player experience:
 4. ~~Calculate enrage DPS at turn 40~~ — **DONE 2026-04-04**: Global enrage adds +114 uncapped damage at turn 40. Enrage bypasses per-turn damage cap (added after cap in turnManager.ts). THIS is the Act 3 boss wall — not stats. Fix: reduce ENRAGE_PHASE2_BONUS from +3 to +1, or make enrage subject to damage cap.
 
 ### Sprint 1: Critical Fixes (Highest Impact)
-1. **Smooth the difficulty curve** — Reduce Act 3 boss HP by 20-25%, increase Act 2 difficulty by 15-20%
-2. **Fix ascension scaling** — Audit `getAscensionModifiers()` in `src/services/ascension.ts`, reduce extra relic grants at high ascension
+1. ~~Smooth the difficulty curve~~ — **DONE 2026-04-04**: Root cause was enrage bypassing damage cap, not boss HP. Fixed: (a) enrage bonus now re-capped against per-turn damage cap in turnManager.ts, (b) ENRAGE_PHASE2_BONUS reduced 3→2. WR impact: regular 2.8%→67.3%, dedicated 25.5%→92.2%. Game is now too easy at baseline — needs follow-up difficulty tuning.
+2. ~~Fix ascension scaling~~ — **DONE 2026-04-04**: Reduced starter relics (Asc 20: 3→2, Asc 10: 2→1), reduced relic trigger bonus (+50%→+25%), removed redundant freeCharging. **Inversion fixed:** Asc 0=67% → Asc 5=63% → Asc 10=61% → Asc 15=46% → Asc 20=11%. Properly descending curve now.
+
+**NOTE:** Baseline WR is now very high (regular 67%, dedicated 92%). The enrage cap fix removed the primary difficulty source. Follow-up tuning needed: increase base enemy damage, reduce rest site healing, or tighten the damage cap. This should be Sprint 3-4 work — the uncapped enrage was a bug, not intended difficulty.
 3. ~~Nerf scavengers_eye~~ — **RETRACTED**: causal test shows no effect. No action needed.
 4. ~~Nerf merchants_favor~~ — **RETRACTED**: causal test shows no effect. No action needed.
 

@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { getEnrageBonus } from '../../src/services/turnManager';
 
 describe('getEnrageBonus', () => {
-  // Shallow (floors 1-6): enrage starts turn 12, phase1_bonus=1, phase2_bonus=3, phase1_duration=3
+  // Shallow (floors 1-6): enrage starts turn 12, phase1_bonus=1, phase2_bonus=2, phase1_duration=3
   it('returns 0 before enrage starts on shallow floors', () => {
     expect(getEnrageBonus(11, 3, 1.0)).toBe(0);
   });
@@ -12,8 +12,8 @@ describe('getEnrageBonus', () => {
     expect(getEnrageBonus(14, 3, 1.0)).toBe(3);  // turn 14: 3 * 1
   });
   it('escalates to phase 2 after 3 enrage turns', () => {
-    expect(getEnrageBonus(15, 3, 1.0)).toBe(6);  // 3*1 + 1*3
-    expect(getEnrageBonus(16, 3, 1.0)).toBe(9);  // 3*1 + 2*3
+    expect(getEnrageBonus(15, 3, 1.0)).toBe(5);  // 3*1 + 1*2 (ENRAGE_PHASE2_BONUS reduced 3→2 on 2026-04-04)
+    expect(getEnrageBonus(16, 3, 1.0)).toBe(7);  // 3*1 + 2*2
   });
 
   // Deep (floors 7-12): enrage starts turn 6
