@@ -1,7 +1,11 @@
 /**
  * Runtime store for loaded curated decks.
  * Separate from the trivia facts DB — curated decks are loaded from
- * /data/decks/*.json at startup via initializeCuratedDecks().
+ * /curated.db (SQLite via sql.js) at startup via initializeCuratedDecks().
+ *
+ * The sql.js WASM module is loaded lazily using the same pattern as factsDB.ts.
+ * In production, the database binary is XOR-obfuscated and decoded at runtime
+ * by decodeDbBuffer() from ../services/dbDecoder.
  */
 
 import type { CuratedDeck, DeckFact, AnswerTypePool, SynonymGroup } from './curatedDeckTypes';
@@ -10,6 +14,36 @@ import { registerDeckFacts, getSubDeckFactIds, getTagFactIds } from './deckFactI
 import type { DeckRegistryEntry } from './deckRegistry';
 import type { CanonicalFactDomain } from './card-types';
 import { getDomainMetadata } from './domainMetadata';
+import { decodeDbBuffer } from '../services/dbDecoder';
+
+// ---------------------------------------------------------------------------
+// sql.js lazy loader (mirrors the pattern in factsDB.ts)
+// ---------------------------------------------------------------------------
+
+type SqlJsStatic = typeof import('sql.js')['default'];
+let _initSqlJs: SqlJsStatic | null = null;
+
+/**
+ * Lazily loads sql.js on first call. Subsequent calls return the cached module.
+ * Defers ~300 KB of WASM from the critical path.
+ */
+async function getSqlJs(): Promise<SqlJsStatic> {
+  if (!_initSqlJs) {
+    try {
+      const mod = await import('sql.js');
+      _initSqlJs = mod.default;
+    } catch {
+      // Stale Vite dep cache (504 Outdated Optimize Dep) — retry once after clearing
+      const mod = await import(/* @vite-ignore */ 'sql.js');
+      _initSqlJs = mod.default;
+    }
+  }
+  return _initSqlJs;
+}
+
+// ---------------------------------------------------------------------------
+// In-memory store
+// ---------------------------------------------------------------------------
 
 /** In-memory store of fully loaded curated decks. */
 const loadedDecks: Map<string, CuratedDeck> = new Map();
@@ -72,6 +106,10 @@ export function getAllLoadedDecks(): CuratedDeck[] {
   return Array.from(loadedDecks.values());
 }
 
+// ---------------------------------------------------------------------------
+// Art placeholder helpers
+// ---------------------------------------------------------------------------
+
 /** Mix a hex color with a dark base (#0d1117) at the given ratio (0–1, where 1 = full color). */
 function mixHexWithDark(hex: string, ratio: number): string {
   const darkR = 13, darkG = 17, darkB = 23; // #0d1117
@@ -130,6 +168,10 @@ function deriveArtPlaceholder(
     icon,
   };
 }
+
+// ---------------------------------------------------------------------------
+// loadDeck — registration logic (unchanged from JSON era)
+// ---------------------------------------------------------------------------
 
 /**
  * Load a CuratedDeck into the store, register it in the deck registry,
@@ -196,58 +238,197 @@ function loadDeck(deck: CuratedDeck): void {
   });
 }
 
+// ---------------------------------------------------------------------------
+// SQL row → TypeScript type helpers
+// ---------------------------------------------------------------------------
+
+/** Map a raw deck row from the `decks` table to a partial CuratedDeck (without facts/pools/synonyms). */
+function rowToDeckShell(row: Record<string, unknown>): Omit<CuratedDeck, 'facts' | 'answerTypePools' | 'synonymGroups'> {
+  return {
+    id: String(row['id']),
+    name: String(row['name']),
+    description: String(row['description']),
+    domain: String(row['domain']),
+    subDomain: row['sub_domain'] ? String(row['sub_domain']) : undefined,
+    minimumFacts: Number(row['minimum_facts']),
+    targetFacts: Number(row['target_facts']),
+    questionTemplates: JSON.parse(String(row['question_templates'] ?? '[]')),
+    difficultyTiers: JSON.parse(String(row['difficulty_tiers'] ?? '[]')),
+  };
+}
+
+/** Map a raw row from the `deck_facts` table to a DeckFact. */
+function rowToDeckFact(row: Record<string, unknown>): DeckFact {
+  const examTagsRaw = JSON.parse(String(row['exam_tags'] ?? '[]')) as string[];
+  return {
+    id: String(row['id']),
+    correctAnswer: String(row['correct_answer']),
+    acceptableAlternatives: JSON.parse(String(row['acceptable_alternatives'] ?? '[]')),
+    synonymGroupId: row['synonym_group_id'] ? String(row['synonym_group_id']) : undefined,
+    chainThemeId: Number(row['chain_theme_id']),
+    answerTypePoolId: String(row['answer_type_pool_id']),
+    difficulty: Number(row['difficulty']),
+    funScore: Number(row['fun_score']),
+    quizQuestion: String(row['quiz_question']),
+    explanation: String(row['explanation']),
+    grammarNote: row['grammar_note'] ? String(row['grammar_note']) : undefined,
+    displayAsFullForm: row['display_as_full_form'] === 1 ? true : undefined,
+    fullFormDisplay: row['full_form_display'] ? String(row['full_form_display']) : undefined,
+    visualDescription: String(row['visual_description'] ?? ''),
+    sourceName: String(row['source_name'] ?? ''),
+    sourceUrl: row['source_url'] ? String(row['source_url']) : undefined,
+    volatile: row['volatile'] === 1 ? true : undefined,
+    distractors: JSON.parse(String(row['distractors'] ?? '[]')),
+    targetLanguageWord: row['target_language_word'] ? String(row['target_language_word']) : undefined,
+    reading: row['reading'] ? String(row['reading']) : undefined,
+    language: row['language'] ? String(row['language']) : undefined,
+    pronunciation: row['pronunciation'] ? String(row['pronunciation']) : undefined,
+    partOfSpeech: row['part_of_speech'] ? String(row['part_of_speech']) : undefined,
+    examTags: examTagsRaw.length > 0 ? examTagsRaw : undefined,
+    imageAssetPath: row['image_asset_path'] ? String(row['image_asset_path']) : undefined,
+    quizMode: row['quiz_mode'] ? (String(row['quiz_mode']) as DeckFact['quizMode']) : undefined,
+    quizResponseMode: row['quiz_response_mode'] ? (String(row['quiz_response_mode']) as DeckFact['quizResponseMode']) : undefined,
+  };
+}
+
+/** Map a raw row from the `answer_type_pools` table to an AnswerTypePool. */
+function rowToAnswerTypePool(row: Record<string, unknown>): AnswerTypePool {
+  const syntheticRaw = JSON.parse(String(row['synthetic_distractors'] ?? '[]')) as string[];
+  return {
+    id: String(row['id']),
+    label: String(row['label']),
+    answerFormat: String(row['answer_format']),
+    factIds: JSON.parse(String(row['fact_ids'] ?? '[]')),
+    minimumSize: Number(row['minimum_size']),
+    syntheticDistractors: syntheticRaw.length > 0 ? syntheticRaw : undefined,
+  };
+}
+
+/** Map a raw row from the `synonym_groups` table to a SynonymGroup. */
+function rowToSynonymGroup(row: Record<string, unknown>): SynonymGroup {
+  return {
+    id: String(row['id']),
+    factIds: JSON.parse(String(row['fact_ids'] ?? '[]')),
+    reason: String(row['reason']),
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Initialization — fetch curated.db, decode, query all data, register decks
+// ---------------------------------------------------------------------------
+
 /**
- * Initialize curated decks: fetch the manifest and load all deck JSON files.
+ * Initialize curated decks: fetch /curated.db, decode it, open with sql.js,
+ * query all decks/facts/pools/synonyms, reconstruct CuratedDeck objects, and
+ * register each via loadDeck().
+ *
  * Call at app startup alongside factsDB.init().
- * Gracefully handles a missing manifest or individual missing/malformed files.
+ * Gracefully handles a missing or unreadable curated.db.
  */
 let _initCalled = false;
 export async function initializeCuratedDecks(): Promise<void> {
   if (_initCalled) return; // Prevent duplicate initialization from re-running effects
   _initCalled = true;
+
   try {
-    const manifestResp = await fetch('/data/decks/manifest.json');
-    if (!manifestResp.ok) {
-      console.log('[CuratedDecks] No manifest found — 0 curated decks loaded');
+    const [initFn, bufferResp] = await Promise.all([
+      getSqlJs(),
+      fetch('/curated.db'),
+    ]);
+
+    if (!bufferResp.ok) {
+      console.log(`[CuratedDecks] /curated.db not found (${bufferResp.status}) — 0 curated decks loaded`);
       return;
     }
 
-    const manifest: { decks: string[] } = await manifestResp.json();
+    const rawBuffer = await bufferResp.arrayBuffer();
+    const decodedBytes = decodeDbBuffer(rawBuffer);
 
-    if (!manifest.decks || manifest.decks.length === 0) {
-      console.log('[CuratedDecks] Manifest empty — 0 curated decks loaded');
+    const SQL = await initFn({ locateFile: () => '/sql-wasm.wasm' });
+    const db = new SQL.Database(decodedBytes);
+
+    // Helper: run a SELECT and return all rows as plain objects.
+    function queryAll(sql: string, params: unknown[] = []): Record<string, unknown>[] {
+      const stmt = db.prepare(sql);
+      if (params.length > 0) {
+        stmt.bind(params as Parameters<typeof stmt.bind>[0]);
+      }
+      const rows: Record<string, unknown>[] = [];
+      try {
+        while (stmt.step()) {
+          rows.push(stmt.getAsObject() as Record<string, unknown>);
+        }
+      } finally {
+        stmt.free();
+      }
+      return rows;
+    }
+
+    // 1. Load all deck shells.
+    const deckRows = queryAll('SELECT * FROM decks');
+    if (deckRows.length === 0) {
+      console.log('[CuratedDecks] curated.db has no decks — 0 curated decks loaded');
+      db.close();
       return;
     }
 
+    // 2. Load facts, pools, synonyms grouped by deck_id for efficient lookup.
+    const factRows = queryAll('SELECT * FROM deck_facts');
+    const poolRows = queryAll('SELECT * FROM answer_type_pools');
+    const synonymRows = queryAll('SELECT * FROM synonym_groups');
+
+    // Group by deck_id.
+    const factsByDeck = new Map<string, DeckFact[]>();
+    for (const row of factRows) {
+      const deckId = String(row['deck_id']);
+      if (!factsByDeck.has(deckId)) factsByDeck.set(deckId, []);
+      factsByDeck.get(deckId)!.push(rowToDeckFact(row));
+    }
+
+    const poolsByDeck = new Map<string, AnswerTypePool[]>();
+    for (const row of poolRows) {
+      const deckId = String(row['deck_id']);
+      if (!poolsByDeck.has(deckId)) poolsByDeck.set(deckId, []);
+      poolsByDeck.get(deckId)!.push(rowToAnswerTypePool(row));
+    }
+
+    const synonymsByDeck = new Map<string, SynonymGroup[]>();
+    for (const row of synonymRows) {
+      const deckId = String(row['deck_id']);
+      if (!synonymsByDeck.has(deckId)) synonymsByDeck.set(deckId, []);
+      synonymsByDeck.get(deckId)!.push(rowToSynonymGroup(row));
+    }
+
+    // 3. Assemble and register each deck.
     let loaded = 0;
     let totalFacts = 0;
 
-    for (const filename of manifest.decks) {
+    for (const deckRow of deckRows) {
+      const deckId = String(deckRow['id']);
       try {
-        const resp = await fetch(`/data/decks/${filename}`);
-        if (!resp.ok) {
-          console.warn(`[CuratedDecks] Failed to fetch ${filename}: ${resp.status}`);
+        const shell = rowToDeckShell(deckRow);
+        const deck: CuratedDeck = {
+          ...shell,
+          facts: factsByDeck.get(deckId) ?? [],
+          answerTypePools: poolsByDeck.get(deckId) ?? [],
+          synonymGroups: synonymsByDeck.get(deckId) ?? [],
+        };
+
+        // Basic validation — deck must have an id and at least a facts array.
+        if (!deck.id || !Array.isArray(deck.facts)) {
+          console.warn(`[CuratedDecks] Invalid deck row for id="${deckId}" — skipping`);
           continue;
         }
-        const contentType = resp.headers.get('content-type') ?? '';
-        if (!contentType.includes('json')) {
-          // Vite dev server returns HTML for missing files — skip silently
-          continue;
-        }
-        const deck: CuratedDeck = await resp.json();
-        // Basic validation
-        if (!deck.id || !deck.facts || !Array.isArray(deck.facts)) {
-          console.warn(`[CuratedDecks] Invalid deck format in ${filename} — missing id or facts array`);
-          continue;
-        }
+
         loadDeck(deck);
         loaded++;
         totalFacts += deck.facts.length;
       } catch (err) {
-        console.warn(`[CuratedDecks] Error loading ${filename}:`, err);
+        console.warn(`[CuratedDecks] Error assembling deck id="${deckId}":`, err);
       }
     }
 
+    db.close();
     console.log(`[CuratedDecks] Loaded ${loaded} curated deck(s) with ${totalFacts} total facts`);
   } catch (err) {
     console.warn('[CuratedDecks] Failed to initialize:', err);

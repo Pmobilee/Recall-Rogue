@@ -6,6 +6,7 @@ import type { Fact, ContentType, Rarity, AgeRating, QuestionVariant } from '../d
 import { factPackService } from './factPackService'
 import { AGE_BRACKET_KEY } from './legalConstants'
 import { shuffled } from './randomUtils'
+import { decodeDbBuffer } from './dbDecoder'
 
 type SqlJsStatic = typeof import('sql.js')['default']
 let _initSqlJs: SqlJsStatic | null = null
@@ -119,7 +120,7 @@ class FactsDB {
       }),
     ])
     const SQL = await initFn({ locateFile: () => wasmUrl })
-    this.db = new SQL.Database(new Uint8Array(buffer))
+    this.db = new SQL.Database(decodeDbBuffer(buffer))
     this.initialized = true
     this.invalidateIndexes()
     this.ensureIndexes()

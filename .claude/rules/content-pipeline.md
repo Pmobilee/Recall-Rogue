@@ -184,3 +184,25 @@ This catches issues that the 19-check structural verifier CANNOT:
 - After pool redesign or reassignment
 
 **This is NON-NEGOTIABLE. The structural verifier passing does NOT mean the deck plays well.**
+
+## Build Artifacts — JSON to SQLite Compilation
+
+**JSON files in `data/decks/` are the authoring format. Never edit `public/curated.db` directly.**
+
+The content-agent works exclusively with JSON. At build time, a separate script compiles them:
+
+```bash
+npm run build:curated    # Compile data/decks/ → public/curated.db
+npm run build:obfuscate  # XOR-obfuscate public/facts.db + public/curated.db
+npm run build            # Production build (includes both steps above)
+```
+
+**Key scripts:**
+- `scripts/build-curated-db.mjs` — reads `data/decks/manifest.json`, writes all active JSON decks into a single SQLite DB at `public/curated.db`
+- `scripts/obfuscate-db.mjs` — XOR-obfuscates both DB files so they cannot be opened with the sqlite3 CLI; runtime-decoded by `src/services/dbDecoder.ts`
+
+**What is NOT shipped to users:**
+- `data/decks/*.json` — JSON source files stay in the repo, never copied to `dist/`
+- `data/seed-pack.json` — moved to `data/` (was previously `public/seed-pack.json`); not shipped
+
+**Why SQLite instead of JSON:** The 77 individual JSON files in `data/decks/` are only accessible via Vite's dev server (which serves the project root). They were never copied to `dist/`, so curated decks silently failed to load in production/Steam builds. A single `public/curated.db` is included in the Vite build output correctly.

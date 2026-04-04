@@ -30,6 +30,8 @@ npm run check            # Full type check (app + node configs)
 npx vitest run           # 1900+ unit tests
 npm run registry:sync    # Rebuild inspection registry from source
 npm run registry:stale   # Show stale/never-inspected elements
+npm run build:curated    # Rebuild public/curated.db from data/decks/ JSON files
+npm run build:obfuscate  # XOR-obfuscate public/facts.db and public/curated.db for production
 ```
 
 ## Directory Structure
@@ -41,6 +43,7 @@ src/data/          — TypeScript types, schemas, enemy/card/relic definitions
 src/assets/        — Sprites, card art, audio, UI graphics
 src/_archived/     — Archived deprecated components (not compiled)
 docs/              — Modular documentation (see docs/INDEX.md)
+public/curated.db  — Build artifact: all curated decks compiled to SQLite (XOR-obfuscated in prod)
 docs/RESEARCH/     — Design specs and research
 ```
 

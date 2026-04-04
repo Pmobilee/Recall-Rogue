@@ -1,3 +1,13 @@
+### 2026-04-04 — Curated Deck JSON Files Not Served in Production
+
+The 77 JSON files in `data/decks/` were only accessible via Vite's dev server (which serves the project root). They were never copied to `dist/` or `public/`, so curated decks silently failed to load in production/Steam builds.
+
+**Fix:** Migrated to `public/curated.db` (SQLite) compiled by `scripts/build-curated-db.mjs`. The single `.db` file is properly included in Vite build output. XOR-obfuscation applied to both `curated.db` and `facts.db` in production via `scripts/obfuscate-db.mjs` (decoded at runtime by `src/services/dbDecoder.ts`).
+
+**Also fixed:** `data/seed-pack.json` moved from `public/` to `data/` so it is not served to users. Deleted from `public/`: `recall-rogue-agent-kit.zip`, `sprite-review.html`, `test-damage-number.html`.
+
+**Rule:** JSON files under `data/decks/` are the authoring format only. Never reference them as runtime-loadable URLs. Content agents edit JSON; build script produces SQLite.
+
 ### 2026-04-04 — Automated Playtest Bug Sweep (19 bugs found)
 
 **Method:** 4 parallel Sonnet workers using Playwright MCP + __rrScenario at 1920×1080. Each worker tested a different area: full-run smoke test, combat deep dive, special rooms, HUD/menus/settings.
@@ -265,3 +275,13 @@ rm -rf node_modules/.vite && npm run dev
 - The `runEnd` branch now stops `CombatScene` via `window.__phaserGame` if it is active.
 
 **Rule:** `gameFlowState` and `currentScreen` must always be updated together. Never write `currentScreen` alone from scenario code when an active run might be in progress.
+
+### 2026-04-04 — seed-pack.json moved from public/ to data/ but test path not updated
+
+`tests/unit/fact-question-quality.test.ts` line 38 referenced `../../public/seed-pack.json`. The file had been moved to `data/seed-pack.json` but the test had a guard (`if (!fs.existsSync(packPath)) return`) that silently skipped the test rather than failing. Fixed path to `../../data/seed-pack.json`.
+
+**Rule:** When moving data files used by tests, search for all test references with `grep -r "seed-pack" tests/`. The silent-skip guard masked the stale path for an unknown period.
+
+### 2026-04-04 — FloorManager "respects event chance by segment" is a flaky test
+
+`tests/unit/floor-manager.test.ts` — "shouldOfferEvent > respects event chance by segment" asserts `events < 170` for Binomial(200, 0.80) whose 3-sigma upper bound is ~177. The bound is too tight and the test fails ~10% of runs. Not related to any code change — pre-existing statistical tightness. If this failure appears in CI, re-run once before investigating.

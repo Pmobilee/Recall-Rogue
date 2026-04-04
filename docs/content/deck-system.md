@@ -2,7 +2,7 @@
 
 > **Purpose:** Explains what curated decks are, how they are structured, loaded, registered, and how player progression is tracked against them.
 > **Last verified:** 2026-04-04
-> **Source files:** `src/data/curatedDeckStore.ts`, `src/data/deckRegistry.ts`, `src/data/deckFactIndex.ts`, `src/data/curatedDeckTypes.ts`, `src/services/deckManager.ts`, `src/services/deckOptionsService.ts`, `src/services/deckProgressService.ts`, `data/decks/manifest.json`
+> **Source files:** `src/data/curatedDeckStore.ts`, `src/data/deckRegistry.ts`, `src/data/deckFactIndex.ts`, `src/data/curatedDeckTypes.ts`, `src/services/deckManager.ts`, `src/services/deckOptionsService.ts`, `src/services/deckProgressService.ts`, `src/services/dbDecoder.ts`, `public/curated.db`
 
 ---
 
@@ -10,7 +10,19 @@
 
 A curated deck is a themed, hand-authored collection of facts organized around a specific topic (e.g. `world_war_ii`, `japanese_n3`, `periodic_table`). Every fact in a curated deck is a `DeckFact` object with a verified correct answer, pre-generated distractors, difficulty and fun scores, and optional vocabulary-specific fields.
 
-Curated decks are distinct from the trivia `facts.db` SQLite database. They live in `data/decks/*.json` and are fetched at runtime — never compiled into the JS bundle.
+Curated decks are distinct from the trivia `facts.db` SQLite database. They are packaged into `public/curated.db` (a single SQLite file) and fetched + decoded at runtime — never compiled into the JS bundle.
+
+### Authoring Format vs. Distribution Format
+
+**JSON is the authoring format. SQLite is the distribution format.** The content-agent edits JSON files in `data/decks/`. These are never served directly to users. At build time, `scripts/build-curated-db.mjs` compiles all active JSON decks into `public/curated.db` (a single SQLite file). The production build then XOR-obfuscates both `curated.db` and `facts.db` via `scripts/obfuscate-db.mjs`.
+
+| Step | Command | Output |
+|---|---|---|
+| Compile decks to SQLite | `npm run build:curated` | `public/curated.db` |
+| Obfuscate for production | `npm run build:obfuscate` | `public/curated.db` (XOR'd), `public/facts.db` (XOR'd) |
+| Full production build | `npm run build` | includes both steps above |
+
+`public/curated.db` is a build artifact — do not edit it directly. To add or modify deck content, edit the JSON files in `data/decks/` and re-run `npm run build:curated`.
 
 ---
 
@@ -596,10 +608,14 @@ For full rules (overlap constraints, best practices, the music_history worked ex
 
 `initializeCuratedDecks()` in `curatedDeckStore.ts` runs once at startup (guarded by `_initCalled` flag):
 
-1. Fetches `/data/decks/manifest.json`
-2. For each filename, fetches `/data/decks/<filename>` — skips HTML responses (Vite 404 fallback)
-3. Validates: deck must have `id` and a non-empty `facts` array
-4. Calls `loadDeck(deck)` which:
+1. Lazily loads the sql.js WASM module (shared lazy-load pattern with `factsDB.ts`)
+2. Fetches `/curated.db` as an `ArrayBuffer`
+3. Decodes the buffer via `decodeDbBuffer()` from `dbDecoder.ts` (XOR no-op in dev; decoded in prod)
+4. Opens the SQLite database with `new SQL.Database(decodedBytes)`
+5. Queries all rows from `decks`, `deck_facts`, `answer_type_pools`, and `synonym_groups` tables
+6. Groups facts/pools/synonyms by `deck_id` and assembles full `CuratedDeck` objects
+7. Validates: deck must have `id` and a `facts` array
+8. Calls `loadDeck(deck)` for each deck which:
    - Stores the full deck in `loadedDecks: Map<string, CuratedDeck>` (in-memory)
    - Registers metadata-only entry in `DECK_REGISTRY` via `registerDeck()`
    - Builds sub-deck and tag indexes, then registers via `registerDeckFacts()`

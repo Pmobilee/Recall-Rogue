@@ -982,7 +982,7 @@ QA Validation (automated scripts)
     ↓
 Promotion to Database
   - promote-approved-to-db.mjs (enforce-qa-gate: true)
-  - build-facts-db.mjs → public/facts.db + seed-pack.json
+  - build-facts-db.mjs → public/facts.db + data/seed-pack.json
 ```
 
 ### Key Files
@@ -1113,7 +1113,7 @@ All languages have per-level `categoryL2` values enabling level-specific deck se
 **File:** `scripts/build-facts-db.mjs` (unchanged)
 
 **Input:** `src/data/seed/facts-generated.json` (now includes 13,125 Japanese facts)
-**Output:** `public/facts.db` + `seed-pack.json`
+**Output:** `public/facts.db` + `data/seed-pack.json`
 
 **Indexing:** Facts indexed by:
 - `id` (unique)

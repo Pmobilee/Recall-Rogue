@@ -8,6 +8,11 @@
  */
 import { defineConfig, type Plugin } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
+import { readFileSync } from 'node:fs'
+
+// Read package.json for version injection.
+// __RR_VERSION__ is consumed by src/services/dbDecoder.ts at runtime.
+const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8')) as { version: string }
 
 /**
  * Vite plugin that injects a Content-Security-Policy meta tag into index.html.
@@ -174,6 +179,12 @@ export default defineConfig({
     excludeHiresCardbacks(),
     ...(visualizerPlugin ? [visualizerPlugin] : []),
   ],
+  // Inject build-time constants consumed by runtime modules.
+  // __RR_VERSION__ is used by src/services/dbDecoder.ts to derive the XOR key
+  // that matches the key used by scripts/obfuscate-db.mjs at build time.
+  define: {
+    __RR_VERSION__: JSON.stringify(pkg.version),
+  },
   base: process.env.VITE_ASSET_BASE_URL || '/',
   server: {
     // Mobile testing on local network

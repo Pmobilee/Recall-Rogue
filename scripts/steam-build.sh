@@ -52,10 +52,12 @@ if $DO_BUILD; then
     echo "[steam] Building frontend..."
     cd "$PROJECT_ROOT"
     npm run build
+    # Note: npm run build includes obfuscation (obfuscate-db.mjs) as the final step.
+    # Tauri's beforeBuildCommand also runs npm run build, which re-obfuscates dist/.
 
     echo "[steam] Building Tauri ($MODE)..."
     cd "$TAURI_DIR"
-    cargo tauri build $CARGO_FLAG
+    cargo tauri build --bundles app $CARGO_FLAG
 
     echo "[steam] Bundling libsteam_api.dylib..."
     DYLIB=$(find "$TAURI_DIR/target/$MODE/build" -name "libsteam_api.dylib" -path "*/steamworks-sys-*/out/*" | head -1)

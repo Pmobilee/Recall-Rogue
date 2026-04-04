@@ -62,6 +62,12 @@ coverage/
 # Generated facts database
 public/facts.db
 
+# Generated curated deck database (build artifact from data/decks/)
+public/curated.db
+
+# Generated seed-pack (build artifact written by build-facts-db.mjs)
+data/seed-pack.json
+
 # Phase 34: generated fact sprites (reproduced by pipeline)
 src/assets/sprites/facts/
 src/assets/sprites-hires/facts/

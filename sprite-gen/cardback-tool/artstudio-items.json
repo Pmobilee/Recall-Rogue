@@ -16633,6 +16633,136 @@
           "seed": 4092838718,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 3,
+          "seed": 1153252913,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 4,
+          "seed": 544499553,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 5,
+          "seed": 707152029,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "trivia_dungeon",
+      "name": "Trivia Dungeon — Mode Select",
+      "concept": "Grand torchlit dungeon armory chamber with weapons, shields, and battle maps",
+      "prompt": "16-bit pixel art RPG scene, a grand torchlit dungeon armory chamber viewed from the entrance, walls lined with racks of swords shields and crossbows, iron torch brackets casting warm amber glow across rough hewn stone walls, a heavy oak table with battle maps and scattered coins in the foreground, vaulted stone ceiling with chains and hanging battle banners, dramatic depth perspective pulling the eye inward, JRPG dungeon tileset aesthetic, rich pixel detail, warm amber burnt orange and deep slate palette, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 1024,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1425459093,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 1820821911,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 3317966843,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "study_temple",
+      "name": "Study Temple — Mode Select",
+      "concept": "Serene underground temple library with crystalline rock, glowing bookshelves, mystical study chamber",
+      "prompt": "16-bit pixel art RPG scene, a serene underground temple library carved into crystalline rock, tall bookshelves carved into the cavern walls filled with ancient tomes and scrolls, a central stone reading pedestal with a glowing open book, soft purple and indigo crystal formations embedded in the ceiling providing ambient light, floating dust motes catching the glow, moss covered floor tiles leading to the pedestal, JRPG dungeon tileset aesthetic, rich pixel detail, deep indigo soft purple and warm parchment gold palette, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 1024,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2354883146,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 919080702,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 1304523758,
+          "status": "done",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "id": "ap_physics_1",
+      "name": "AP Physics 1",
+      "concept": "Physics laboratory observatory with pendulums, prisms, light beams, and celestial instruments",
+      "prompt": "16-bit pixel art RPG scene, a dramatic physics laboratory built inside a stone observatory tower, a massive pendulum swinging from the vaulted ceiling, glass prisms splitting beams of white light into rainbow spectrums across dark stone walls, a telescope pointed at a starry sky through an open dome, rolling carts on inclined planes in the foreground, copper and brass instruments scattered on wooden workbenches, sparks of static electricity arcing between metal spheres, JRPG dungeon tileset aesthetic, rich pixel detail, electric blue cyan and deep navy palette, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 601891505,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 2500008950,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 2943719987,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "ap_world_history",
+      "name": "AP World History",
+      "concept": "Ancient civilizations mosaic — pyramids, Great Wall segments, temples, trade goods spanning cultures",
+      "prompt": "16-bit pixel art RPG scene, a vast underground chamber displaying artifacts from ancient civilizations across the world, a crumbling Egyptian pyramid fragment on the left with golden sarcophagus, a section of the Great Wall winding across the back wall like a mural, Mesopotamian ziggurat steps in the center, Greek amphora and Roman busts on stone shelves, silk road trade goods spilling from wooden crates, flickering oil lamps illuminating clay tablets and jade carvings, JRPG dungeon tileset aesthetic, rich pixel detail, earth tones terracotta jade green and sandstone palette, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2221383548,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 2287624518,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 3562817456,
+          "status": "done",
+          "accepted": false
         }
       ]
     }

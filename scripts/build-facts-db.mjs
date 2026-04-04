@@ -4,6 +4,10 @@
  * Reads all *.json seed files from src/data/seed/, inserts every Fact object
  * into a SQLite database, and writes the result to public/facts.db.
  *
+ * seed-pack.json is written to data/seed-pack.json (not public/) — it is a
+ * build artifact consumed by the curated-db build step and server-side
+ * tooling, not served statically to the browser.
+ *
  * Usage:  node scripts/build-facts-db.mjs
  */
 
@@ -21,8 +25,10 @@ const __dirname  = path.dirname(__filename);
 const ROOT       = path.resolve(__dirname, '..');
 const SEED_DIR   = path.join(ROOT, 'src', 'data', 'seed');
 const PUBLIC_DIR = path.join(ROOT, 'public');
+const DATA_DIR   = path.join(ROOT, 'data');
 const OUT_DB       = path.join(PUBLIC_DIR, 'facts.db');
-const OUT_SEED_PACK = path.join(PUBLIC_DIR, 'seed-pack.json');
+// seed-pack.json lives in data/ (build artifact, not a static public asset)
+const OUT_SEED_PACK = path.join(DATA_DIR, 'seed-pack.json');
 const WASM_PATH  = path.join(ROOT, 'node_modules', 'sql.js', 'dist', 'sql-wasm.wasm');
 
 // ---------------------------------------------------------------------------
@@ -362,6 +368,7 @@ async function main() {
   // -- Export seed-pack.json for offline FactPackService bootstrap --
   // Re-query all facts from the just-built database and format as a FactPack
   // so the client can serve quiz content without a network call on first run.
+  // Written to data/ (not public/) — it is a build artifact, not a static asset.
   const seedStmt = db.prepare(
     `SELECT
       id, quiz_question, correct_answer, distractors,
@@ -415,6 +422,7 @@ async function main() {
     facts:     seedFacts,
   };
 
+  fs.mkdirSync(DATA_DIR, { recursive: true });
   fs.writeFileSync(OUT_SEED_PACK, JSON.stringify(seedPack, null, 2));
 
   db.close();

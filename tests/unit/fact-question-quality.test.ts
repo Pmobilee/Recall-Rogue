@@ -35,7 +35,7 @@ describe('Fact question quality', () => {
   })
 
   it('public seed-pack facts must have a valid question', () => {
-    const packPath = path.resolve(__dirname, '../../public/seed-pack.json')
+    const packPath = path.resolve(__dirname, '../../data/seed-pack.json')
     if (!fs.existsSync(packPath)) return // skip if not built yet
 
     const facts = JSON.parse(fs.readFileSync(packPath, 'utf8'))
