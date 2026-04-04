@@ -26,3 +26,64 @@ rm -rf node_modules/.vite && npm run dev
 - `deck-content-quality.test.ts`: 4x ratio threshold (more lenient, unskip after remediation)
 
 **Bracket-number answers are excluded** from both checks — numerical distractors are generated algorithmically and always match in length.
+
+### 2026-04-04 — quiz-audit.mjs Generates False Positives for Pools with Duplicate Answers
+
+**What happened:** Running `node scripts/quiz-audit.mjs --deck solar_system --full` reported 58 failures — "Distractor matches correct answer" and "Duplicate distractors in selection". For the planet_names pool (39 facts, 10 unique planet answers), the audit was selecting "Jupiter" as a distractor for Jupiter facts.
+
+**Root cause:** `quiz-audit.mjs` simulates distractor selection by pulling from `poolFacts.filter(f => f.id !== fact.id)` — filtering by fact ID, not by answer value. The real game service (`curatedDistractorSelector.ts`) deduplicates by `correctAnswer` using a `seenAnswers` Set before including any candidate. The audit's simulation doesn't match the real deduplication logic.
+
+**Impact:** Any pool with multiple facts sharing the same correct answer (e.g., planet_names has ~5 Jupiter facts, ~5 Venus facts) will produce false-positive "answer in distractors" failures in the quiz audit. The actual game never shows the correct answer as a distractor.
+
+**Fix:** Treat quiz-audit failures of type `answer_in_distractors` and `duplicate_distractors` on pools with known answer duplication as false positives. The real test is whether the real `selectDistractors` service produces valid distractors — which it does because it deduplicates by answer value.
+
+**What to watch for:** The quiz-audit tool DOES correctly detect: length mismatches, em-dash in answers, too-few distractors, long answers. Only the distractor-collision checks are potentially false positives when a pool has multiple facts with the same answer.
+
+**Future fix:** Update `quiz-audit.mjs` to deduplicate by answer value when building the distractor candidate pool, matching the real game service behavior.
+
+### 2026-04-04 — quiz-audit.mjs False Positives Fixed (Deduplication by Answer Text)
+
+**What:** Fixed `quiz-audit.mjs` to deduplicate pool distractors by answer text (not just by fact ID), matching the actual game service behavior (`getPoolDistractors` in `verify-all-decks.mjs` and the runtime `curatedDistractorSelector.ts`).
+
+**Fix applied:** In `checkFact()`, replaced the naive `.filter(f => f.id !== fact.id).map(...)` with a loop that tracks `seenAnswers` (a Set initialized with the correct answer). This prevents pools with many facts sharing the same answer (e.g. 20 "Late Cretaceous" facts in geological_periods) from producing false-positive "answer_in_distractors" and "duplicate_distractors" failures.
+
+**Impact:** Eliminated all false-positive failures across knowledge decks. The solar_system deck had 58 such false positives from planet_names pool; geological_periods in dinosaurs had ~15.
+
+**Rule:** When building pool distractor simulations, ALWAYS deduplicate by answer value before the pick step — not just by fact ID.
+
+### 2026-04-04 — Dinosaurs Deck Pool Homogeneity Remediation
+
+**What:** Fixed the `dinosaurs` deck pool structure to resolve the 6.3x FAIL on `dinosaur_names` pool (Sue/3ch vs Carcharodontosaurus/19ch).
+
+**Changes made:**
+1. Created new `misc_concepts` pool for facts whose answers don't fit other named categories: specimen names (Sue), diet terms (Fish, Herbivore), comparison animals (Giraffe), geographical terms (China, Pangaea), booleans (False), anatomical features (Teeth), and date ranges (252–201, 201–145, 145–66).
+2. Moved `Roy Chapman Andrews` from `dinosaur_names` to `paleontologist_names` (19ch fits the 11-22ch range of that pool).
+3. Removed "False" boolean from `clade_names` — it was a True/False answer in a pool of clade/group names.
+4. Set `minimumSize: 3` on `clade_names` (now has 3 facts: Pterosaur, Monitor lizard, Live young).
+5. Moved 3 date-range facts (dino_triassic_dates, dino_jurassic_dates, dino_cretaceous_dates) from `bracket_numbers` to `misc_concepts` — their "252–201" style answers are plain strings, not bracket numbers, and caused length_mismatch FAILs in quiz-audit.
+6. Moved `dino_archaeopteryx_teeth` ("Teeth") from `clade_names` to `misc_concepts`.
+7. Expanded `paleontologist_names.syntheticDistractors` from 7 to 14 entries (added Xu Xing, William Buckland, Gideon Mantell, Harry Seeley, Friedrich von Huene, Werner Janensch, Paul Sereno).
+
+**Result:** `dinosaur_names` ratio: 6.3x FAIL → 2.4x WARN. Quiz audit: 17 fails → 0 fails (full mode). Structural verifier: 0 fails, 2 warns.
+
+**Rule:** When a pool has ratio > 3x, the outlier answer type should be identified and moved to a semantically appropriate pool. Don't just add syntheticDistractors — fix the pool membership.
+
+### 2026-04-04 — AP World History Pool Homogeneity: verify-all-decks `displayAnswer` only strips FIRST brace pair
+
+**What:** Fact `apwh_4_063` had `correctAnswer: "{1519}–{1522}"`. Appeared fine in manual testing (`displayAnswer` strips `{digits}`) but `verify-all-decks.mjs` flagged "Answer contains literal braces after display stripping."
+
+**Root cause:** The verifier's `displayAnswer` uses `/\{(\d[\d,]*\.?\d*)\}/` **without the `g` flag**, so it only strips the first `{1519}` — leaving `{1522}` in place. The UI runtime's `displayAnswer` also lacks `g` (same regex), so both-brace answers would display as `1519–{1522}` in-game.
+
+**Fix:** Changed answer to `"Departed 1519, returned 1522"` to match the distractor format and avoid double-brace notation entirely.
+
+**Rule:** Never use multiple `{N}` brace markers in a single `correctAnswer` field. Use plain concatenated text (e.g., "Departed 1519, returned 1522") or a single brace marker only.
+
+### 2026-04-04 — Pool Homogeneity: Expanding Short Answers to Reach Min Length
+
+**What:** AP World History `concept_terms` pool (297 facts) had 82 facts under 22 chars. With max=65, needed min >= 22 to achieve ratio < 3x.
+
+**Approach:** Added context parentheticals to each short answer (e.g., `Manorialism` → `Manorialism (feudal land system)`, `Janissaries` → `Janissaries (Ottoman slave soldiers)`). Preserved originals in `acceptableAlternatives`.
+
+**Key insight:** Reverting parenthetical expansions later will break the pool again. If you add context parentheticals to reach a pool minimum, the `acceptableAlternatives` field is the correct place for the original bare answer — not the other way around.
+
+**Rule:** When fixing pool homogeneity by expanding short answers, keep expanded form as `correctAnswer` and original as `acceptableAlternative`. Do NOT revert the expansion even if it causes in-game distractor length mismatch — fix the distractors instead.

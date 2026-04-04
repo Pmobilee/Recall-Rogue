@@ -1398,7 +1398,10 @@ Each pool contains only answers that a student could plausibly confuse with each
 
 **Post-assembly fixes applied:**
 - Pool ID typo corrected: `batch_event_names` -> `battle_event_names` on fact `apwh_8_011` (1 fact, generation artifact).
+- Pool homogeneity pass (2026-04-04): 14 of 15 pools were failing (>3x ratio). Fixed by: (1) expanding ~82 short `concept_terms` answers with context parentheticals (e.g., "Manorialism" → "Manorialism (feudal land system)"), (2) reassigning analytical sentence answers from named-entity pools to `concept_terms`, (3) expanding short proper nouns in ruler/place/tech pools with context identifiers, (4) fixing `{N}1519` notation to `{1519}` bracket notation for numerical distractors. Result: 0 pool FAIL, 15 pool WARN (all at 2.6–3.0x).
+- Distractor quality fixes (2026-04-04): Updated `Gold (commodity)` distractors to match parenthetical format, updated `Tlacopan (Triple Alliance)` distractors to use parenthetical format, rewrote Queue Order question/answer/distractors for format consistency.
+- Date fix: `apwh_4_063` (Magellan voyage) changed from `{1519}–{1522}` to `Departed 1519, returned 1522` to match distractor format and fix double-brace stripping bug.
 
-**Validation:** 0 failures. 42 warnings are cross-unit duplicate `correctAnswer` entries (same concept reinforced across multiple CED units — e.g., "causation" as a historical thinking skill appears in Units 6, 7, and 8). These are intentional pedagogical repetition, not errors.
+**Validation:** 0 failures. 35 warnings (all pool-homogeneity WARN at 2.6–3.0x ratio — inherent to pools with varied answer formats). Previous 42 duplicate-answer warnings resolved; remaining warnings are structural length ratios only.
 
 **Assembly script:** `scripts/assemble-ap-world-history.mjs`
