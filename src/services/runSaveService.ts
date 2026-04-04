@@ -11,6 +11,7 @@ import type { Card, CardRunState } from '../data/card-types';
 import type { RewardBundle, RewardRevealStep } from '../ui/stores/gameState';
 import type { EncounterSnapshot } from './encounterBridge';
 import { serializeRunRngState } from './seededRng';
+import { getBackend } from './storageBackend';
 
 const SAVE_KEY = 'recall-rogue-active-run';
 
@@ -153,7 +154,7 @@ export function saveActiveRun(state: {
     rngState: serializeRunRngState(),
   };
   try {
-    localStorage.setItem(SAVE_KEY, JSON.stringify(serialized));
+    getBackend().write(SAVE_KEY, JSON.stringify(serialized));
   } catch {
     // Silently fail if localStorage is full or unavailable
   }
@@ -174,7 +175,7 @@ export function loadActiveRun(): {
   rngState?: { seed: number; forks: Record<string, number> } | null;
 } | null {
   try {
-    const raw = localStorage.getItem(SAVE_KEY);
+    const raw = getBackend().readSync(SAVE_KEY);
     if (!raw) return null;
     const parsed: RunSaveState = JSON.parse(raw);
     if (!parsed || typeof parsed.version !== 'number') return null;
@@ -204,7 +205,7 @@ export function loadActiveRun(): {
 /** Clear the active run save from localStorage. */
 export function clearActiveRun(): void {
   try {
-    localStorage.removeItem(SAVE_KEY);
+    getBackend().remove(SAVE_KEY);
   } catch {
     // Silently fail
   }
@@ -213,7 +214,7 @@ export function clearActiveRun(): void {
 /** Check if an active run save exists. */
 export function hasActiveRun(): boolean {
   try {
-    return localStorage.getItem(SAVE_KEY) !== null;
+    return getBackend().readSync(SAVE_KEY) !== null;
   } catch {
     return false;
   }

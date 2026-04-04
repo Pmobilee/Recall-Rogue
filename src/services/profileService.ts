@@ -1,5 +1,6 @@
 import type { PlayerProfile, ProfilesStore } from '../data/profileTypes'
 import { generateUUID } from '../utils/uuid'
+import { getBackend } from './storageBackend'
 
 const PROFILES_KEY = 'rr_profiles'
 const SAVE_KEY_PREFIX = 'rr_save_'
@@ -20,7 +21,7 @@ export class ProfileService {
 
   private loadStore(): ProfilesStore {
     try {
-      const raw = localStorage.getItem(PROFILES_KEY)
+      const raw = getBackend().readSync(PROFILES_KEY)
       return raw ? (JSON.parse(raw) as ProfilesStore) : { profiles: [], activeProfileId: null }
     } catch {
       return { profiles: [], activeProfileId: null }
@@ -28,7 +29,7 @@ export class ProfileService {
   }
 
   private saveStore(): void {
-    localStorage.setItem(PROFILES_KEY, JSON.stringify(this.store))
+    getBackend().write(PROFILES_KEY, JSON.stringify(this.store))
   }
 
   /**
@@ -104,7 +105,7 @@ export class ProfileService {
   deleteProfile(id: string): void {
     this.store.profiles = this.store.profiles.filter(p => p.id !== id)
     // Clear namespaced save data
-    localStorage.removeItem(SAVE_KEY_PREFIX + id)
+    getBackend().remove(SAVE_KEY_PREFIX + id)
     if (this.store.activeProfileId === id) {
       this.store.activeProfileId = this.store.profiles[0]?.id ?? null
     }
@@ -139,6 +140,15 @@ export class ProfileService {
     return this.store.activeProfileId
       ? SAVE_KEY_PREFIX + this.store.activeProfileId
       : 'rr_save'
+  }
+
+  /**
+   * Re-reads the profiles store from the backend.
+   * Call this after initStorageBackend() completes on desktop, because
+   * the constructor runs at module import time before the FileStorageBackend cache is populated.
+   */
+  reload(): void {
+    this.store = this.loadStore()
   }
 
   /**

@@ -2,6 +2,7 @@ import { writable } from 'svelte/store'
 import { get } from 'svelte/store'
 import type { Writable } from 'svelte/store'
 import { MAX_ASCENSION_LEVEL } from './ascension'
+import { getBackend } from './storageBackend'
 
 export type DifficultyMode = 'relaxed' | 'normal'
 export type TextSize = 'small' | 'medium' | 'large'
@@ -40,7 +41,7 @@ const defaultAscensionProfile: AscensionProfile = {
 function read<T>(key: string, fallback: T): T {
   if (typeof window === 'undefined') return fallback
   try {
-    const raw = window.localStorage.getItem(key)
+    const raw = getBackend().readSync(key)
     if (!raw) return fallback
     return JSON.parse(raw) as T
   } catch {
@@ -53,7 +54,7 @@ function persistedWritable<T>(key: string, initial: T): Writable<T> {
   if (typeof window !== 'undefined') {
     store.subscribe((value) => {
       try {
-        window.localStorage.setItem(key, JSON.stringify(value))
+        getBackend().write(key, JSON.stringify(value))
       } catch {
         // ignore storage failures
       }

@@ -8,10 +8,45 @@ This project persists two save domains:
 Source files:
 
 - `src/data/types.ts`
+- `src/services/storageBackend.ts` (storage abstraction layer)
 - `src/services/saveService.ts`
 - `src/services/profileService.ts`
 - `src/data/saveState.ts`
 - `src/services/runSaveService.ts`
+- `src-tauri/src/filesave.rs` — Rust/Tauri file I/O layer (Steam Cloud compatible)
+
+## Storage backends
+
+### Current (localStorage)
+
+`saveService.ts` and `runSaveService.ts` read/write via `localStorage`. Keys are
+resolved through `profileService.getSaveKey()`.
+
+### File I/O layer (Tauri — `src-tauri/src/filesave.rs`)
+
+Four Tauri IPC commands provide atomic file-based persistence for the Steam build.
+The TypeScript frontend calls these via `invoke()` from `@tauri-apps/api/core`.
+
+| Command | Signature | Description |
+| --- | --- | --- |
+| `fs_get_save_dir` | `() -> Result<String>` | Returns (and creates) the platform save directory path |
+| `fs_write_save` | `(filename, data) -> Result<()>` | Atomic write: writes `.tmp` then renames into place |
+| `fs_read_save` | `(filename) -> Result<Option<String>>` | Reads file; returns `null`/`None` if not found |
+| `fs_delete_save` | `(filename) -> Result<()>` | Deletes file; no-op if not found |
+
+**Save directory paths** (resolved by Tauri's `app_data_dir()`):
+
+| Platform | Path |
+| --- | --- |
+| macOS | `~/Library/Application Support/com.bramblegategames.recallrogue/saves/` |
+| Windows | `%APPDATA%\com.bramblegategames.recallrogue\saves\` |
+| Linux | `~/.local/share/com.bramblegategames.recallrogue/saves/` |
+
+**Filename security**: all four commands reject filenames containing `..`, `/`, `\`,
+or any character outside `[a-zA-Z0-9_\-.]`. This prevents path traversal attacks.
+
+**Atomic write**: `fs_write_save` writes to `<filename>.tmp` then renames to
+`<filename>`. If the process is killed mid-write the old file remains intact.
 
 ## Storage keys
 
@@ -74,10 +109,15 @@ Optional/late-phase extension fields are also part of `PlayerSave` (social, mone
 
 ### Full save path (`saveService`)
 
-- `save(data)` writes JSON to active full-save key.
-- `load()` returns `null` if key missing or JSON parse fails.
+- `save(data)` writes JSON via `getBackend().write()`.
+- `load()` reads via `getBackend().readSync()`; returns `null` if key missing or JSON parse fails.
 - `createNewPlayer(ageRating)` constructs a full default `PlayerSave`.
-- `deleteSave()` removes only active full-save key.
+- `deleteSave()` removes only active full-save key via `getBackend().remove()`.
+
+All reads/writes route through `storageBackend` — `LocalStorageBackend` on web/mobile,
+`FileStorageBackend` on desktop (Tauri). The file backend uses a write-through in-memory
+cache populated by `initStorageBackend()` at startup, so `load()` / `save()` remain
+synchronous on all platforms.
 
 ### In-run checkpoint (`runSaveService`)
 

@@ -40,6 +40,8 @@ import { analyticsService } from './services/analyticsService'
 import { rescheduleNotificationsFromPlayerState } from './services/gameFlowController'
 import { initSyncDurabilityListener } from './services/syncDurabilityService'
 import { initScoreSubmissionQueue } from './services/scoreSubmissionQueue'
+import { initStorageBackend, migrateLocalStorageToFiles } from './services/storageBackend'
+import { profileService } from './services/profileService'
 
 /**
  * Sets up Capacitor-specific integrations: Android hardware back button handling
@@ -144,26 +146,35 @@ if (import.meta.env.PROD || import.meta.env.VITE_ENABLE_ERROR_REPORTING === 'tru
   initErrorReporting()
 }
 
-// Initialize player save data
-const save = initPlayer('teen')
-
-// Migrate legacy difficulty values from old saves + enforce relaxed during forced runs
-{
-  const _onb = get(onboardingState)
-  const currentMode = get(difficultyMode)
-  // Migrate legacy difficulty values from old saves
-  if (currentMode === ('explorer' as any) || currentMode === ('standard' as any) || currentMode === ('scholar' as any)) {
-    difficultyMode.set(currentMode === ('explorer' as any) ? 'relaxed' : 'normal')
-  }
-  // Force relaxed mode during the first N runs
-  if (_onb.runsCompleted < STORY_MODE_FORCED_RUNS) {
-    difficultyMode.set('normal')
-  }
-}
-
 // pendingArtifacts store removed — card roguelite doesn't use artifact system
 
 async function bootGame(): Promise<void> {
+  // Initialize storage backend (file-based on desktop, localStorage on web).
+  // Must complete before initPlayer() so that readSync() returns data from cache.
+  await initStorageBackend()
+  await migrateLocalStorageToFiles()
+
+  // Re-read profiles store now that the backend cache is populated (desktop only).
+  // On web, profileService constructor already read from localStorage correctly.
+  profileService.reload()
+
+  // Initialize player save data (reads from backend cache — synchronous after init above)
+  const save = initPlayer('teen')
+
+  // Migrate legacy difficulty values from old saves + enforce relaxed during forced runs
+  {
+    const _onb = get(onboardingState)
+    const currentMode = get(difficultyMode)
+    // Migrate legacy difficulty values from old saves
+    if (currentMode === ('explorer' as any) || currentMode === ('standard' as any) || currentMode === ('scholar' as any)) {
+      difficultyMode.set(currentMode === ('explorer' as any) ? 'relaxed' : 'normal')
+    }
+    // Force relaxed mode during the first N runs
+    if (_onb.runsCompleted < STORY_MODE_FORCED_RUNS) {
+      difficultyMode.set('normal')
+    }
+  }
+
   // Initialize i18n before rendering any UI (loads locale JSON, sets dir attribute)
   await initI18n()
 

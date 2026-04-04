@@ -289,3 +289,11 @@ rm -rf node_modules/.vite && npm run dev
 ### 2026-04-04 — Steam local deploy shows old version
 
 Steam caches the running app binary in memory. Copying new files while the game runs does not update it. Fix: kill the process first, delete old .app, then copy fresh. The steam-build.sh script now handles this automatically with pkill before copy.
+
+### 2026-04-04 — Narrative echoes referenced facts the player never saw
+
+`encounterAnsweredFacts` tracked ALL played cards (Quick Play, GUARANTEED auto-charge, Phoenix auto-charge) because it drives fact cooldown logic. The narrative snapshot was incorrectly reading from this array, causing echo templates to reference knowledge the player was never quizzed on.
+
+**Fix:** Added `TurnState.encounterQuizzedFacts: string[]` — a separate array that is only populated when `wasQuizzed: true` is passed to `playCardAction()`. The narrative snapshots in `encounterBridge.ts` (victory path and `devForceEncounterVictory`) now read from `encounterQuizzedFacts` instead of `encounterAnsweredFacts`. `encounterAnsweredFacts` remains unchanged for cooldown tracking.
+
+**Rule:** `encounterAnsweredFacts` = all played cards with factIds (cooldown). `encounterQuizzedFacts` = only cards where a quiz question was actually shown to the player (narrative). Callers of `handlePlayCard` must pass `wasQuizzed: true` when a real quiz was displayed.

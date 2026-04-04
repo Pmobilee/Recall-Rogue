@@ -134,6 +134,7 @@
 | socialService | src/services/socialService.ts | [social.md](social.md) |
 | steamService | src/services/steamService.ts | [platform.md](platform.md) |
 | storageMigration | src/services/storageMigration.ts | [persistence.md](persistence.md) |
+| storageBackend | src/services/storageBackend.ts | [persistence.md](persistence.md) |
 | studyPresetService | src/services/studyPresetService.ts | [deck.md](deck.md) |
 | studyScore | src/services/studyScore.ts | [learning.md](learning.md) |
 | subscriptionService | src/services/subscriptionService.ts | [social.md](social.md) |

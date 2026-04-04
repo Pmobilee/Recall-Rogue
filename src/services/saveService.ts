@@ -12,6 +12,7 @@ import { createDefaultInterestConfig } from '../data/interestConfig'
 import { DEFAULT_ARCHETYPE_DATA } from '../services/archetypeDetector'
 import { DEFAULT_ENGAGEMENT_DATA } from '../services/engagementScorer'
 import { profileService } from '../services/profileService'
+import { getBackend } from './storageBackend'
 
 /**
  * Legacy/fallback save key. Used when no profiles exist (backward compatibility).
@@ -50,7 +51,7 @@ const EMPTY_STATS: PlayerStats = {
  * Stores player save data in localStorage using the active profile's key.
  */
 export function save(data: PlayerSave): void {
-  localStorage.setItem(getActiveSaveKey(), JSON.stringify(data))
+  getBackend().write(getActiveSaveKey(), JSON.stringify(data))
 }
 
 /**
@@ -59,7 +60,7 @@ export function save(data: PlayerSave): void {
  * Returns null when no save exists or the stored JSON is invalid.
  */
 export function load(): PlayerSave | null {
-  const raw = localStorage.getItem(getActiveSaveKey())
+  const raw = getBackend().readSync(getActiveSaveKey())
 
   if (!raw) {
     return null
@@ -589,7 +590,7 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
  * Deletes the current player save from localStorage.
  */
 export function deleteSave(): void {
-  localStorage.removeItem(getActiveSaveKey())
+  getBackend().remove(getActiveSaveKey())
 }
 
 // ============================================================
