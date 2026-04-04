@@ -78,6 +78,11 @@ fi
 
 # ── Test (copy to Steam install + launch) ──
 if $DO_TEST; then
+    # Kill any running instance first — Steam caches the old binary in memory
+    echo "[steam] Killing any running instance..."
+    pkill -f "Recall Rogue" 2>/dev/null || true
+    sleep 1
+
     echo "[steam] Copying to Steam install..."
     rm -rf "$STEAM_INSTALL/Recall Rogue.app"
     cp -R "$APP_BUNDLE" "$STEAM_INSTALL/"

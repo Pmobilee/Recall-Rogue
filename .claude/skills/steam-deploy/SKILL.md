@@ -195,6 +195,27 @@ Promote a build to the public default branch:
 3. Direct user to partner.steamgames.com > App Admin > SteamPipe > Builds to promote the build
 4. Alternatively, re-upload with `setlive "default"` in the VDF
 
+## Local Deploy — Kill Before Copy (CRITICAL)
+
+Steam caches the running app in memory. If you just copy files while the game is running, Steam will keep serving the old version. **Always follow this sequence:**
+
+```bash
+# 1. Kill any running instance FIRST
+pkill -f "Recall Rogue" 2>/dev/null; sleep 1
+
+# 2. Delete the old app bundle entirely (not just overwrite)
+rm -rf "/Users/damion/Library/Application Support/Steam/steamapps/common/Recall Rogue/Recall Rogue.app"
+
+# 3. Copy fresh build
+cp -R "/Users/damion/CODE/Recall_Rogue/src-tauri/target/release/bundle/macos/Recall Rogue.app" \
+  "/Users/damion/Library/Application Support/Steam/steamapps/common/Recall Rogue/"
+
+# 4. Launch via Steam
+open steam://run/4547570
+```
+
+**Why:** On 2026-04-04, a local deploy appeared to succeed but Steam kept running the old cached binary. The fix was killing the process + deleting the old .app before copying. The `steam-build.sh` script should handle this automatically, but if calling manually, always kill first.
+
 ## Important Notes
 
 - **steamcmd authentication** is interactive (Steam Guard) — the first login must be done by the user in a terminal: `steamcmd +login <username> +quit`

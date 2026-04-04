@@ -179,7 +179,6 @@
         </div>
 
         <div class="shine-overlay"></div>
-        <div class="skylight"></div>
       </div>
     </div>
 
@@ -220,21 +219,23 @@
         </div>
 
         <div class="shine-overlay"></div>
-        <div class="skylight"></div>
       </div>
     </div>
   </div>
 
-  <!-- Background smoke wisps -->
+  <!-- Ground fog — thick persistent layer at the bottom -->
+  <div class="ground-fog"></div>
+
+  <!-- Background smoke wisps — thick, damp dungeon mist -->
   <div class="smoke-container">
-    {#each Array(8) as _}
+    {#each Array(12) as _}
       <div class="smoke-wisp"></div>
     {/each}
   </div>
 
   <!-- Foreground smoke wisps — pass in front of panels -->
   <div class="smoke-container smoke-foreground">
-    {#each Array(3) as _}
+    {#each Array(5) as _}
       <div class="smoke-wisp smoke-wisp-fg"></div>
     {/each}
   </div>
@@ -407,61 +408,67 @@
     opacity: 1;
   }
 
-  /* Skylight cone — appears on hover from above */
-  .skylight {
+  /* ===== Ground fog — thick persistent bottom layer ===== */
+  .ground-fog {
     position: absolute;
-    top: calc(-100px * var(--layout-scale, 1));
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(200px * var(--layout-scale, 1));
-    height: calc(600px * var(--layout-scale, 1));
-    background: linear-gradient(
-      180deg,
-      rgba(255, 248, 220, 0.25) 0%,
-      rgba(255, 248, 220, 0.12) 20%,
-      rgba(255, 248, 220, 0.04) 50%,
-      transparent 80%
-    );
-    clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%);
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    pointer-events: none;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
     z-index: 1;
-    filter: blur(calc(8px * var(--layout-scale, 1)));
-  }
-
-  .panel.hovering .skylight {
-    opacity: 1;
-  }
-
-  .panel--study .skylight {
+    pointer-events: none;
     background: linear-gradient(
-      180deg,
-      rgba(200, 210, 255, 0.25) 0%,
-      rgba(200, 210, 255, 0.12) 20%,
-      rgba(200, 210, 255, 0.04) 50%,
-      transparent 80%
+      0deg,
+      rgba(140, 150, 175, 0.35) 0%,
+      rgba(140, 150, 175, 0.25) 15%,
+      rgba(140, 150, 175, 0.12) 40%,
+      rgba(140, 150, 175, 0.04) 70%,
+      transparent 100%
     );
+    filter: blur(calc(15px * var(--layout-scale, 1)));
+    animation: fog-drift 8s ease-in-out infinite alternate;
   }
 
-  /* Dust motes floating in the skylight cone */
-  .skylight::after {
+  .ground-fog::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle at 30% 25%, rgba(255,255,255,0.6) 0%, transparent 2px),
-      radial-gradient(circle at 55% 40%, rgba(255,255,255,0.5) 0%, transparent 1.5px),
-      radial-gradient(circle at 70% 55%, rgba(255,255,255,0.4) 0%, transparent 2px),
-      radial-gradient(circle at 40% 65%, rgba(255,255,255,0.3) 0%, transparent 1.5px),
-      radial-gradient(circle at 60% 30%, rgba(255,255,255,0.5) 0%, transparent 1px),
-      radial-gradient(circle at 45% 50%, rgba(255,255,255,0.4) 0%, transparent 2px);
-    animation: dust-float 4s ease-in-out infinite alternate;
+    bottom: 0;
+    left: -10%;
+    right: -10%;
+    height: 60%;
+    background: radial-gradient(
+      ellipse 120% 100% at 50% 100%,
+      rgba(130, 140, 170, 0.40) 0%,
+      rgba(130, 140, 170, 0.20) 40%,
+      transparent 70%
+    );
+    animation: fog-sway 12s ease-in-out infinite alternate-reverse;
   }
 
-  @keyframes dust-float {
-    0% { transform: translateY(0) translateX(0); }
-    100% { transform: translateY(calc(-10px * var(--layout-scale, 1))) translateX(calc(5px * var(--layout-scale, 1))); }
+  .ground-fog::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -5%;
+    right: -5%;
+    height: 35%;
+    background: radial-gradient(
+      ellipse 100% 100% at 50% 100%,
+      rgba(150, 155, 180, 0.50) 0%,
+      rgba(150, 155, 180, 0.25) 50%,
+      transparent 80%
+    );
+    animation: fog-sway 9s ease-in-out infinite alternate;
+  }
+
+  @keyframes fog-drift {
+    0% { transform: translateX(calc(-20px * var(--layout-scale, 1))); }
+    100% { transform: translateX(calc(20px * var(--layout-scale, 1))); }
+  }
+
+  @keyframes fog-sway {
+    0% { transform: translateX(calc(-40px * var(--layout-scale, 1))) scaleY(0.9); }
+    100% { transform: translateX(calc(40px * var(--layout-scale, 1))) scaleY(1.1); }
   }
 
   /* Text content layer — floats above parallax in 3D space */
@@ -565,7 +572,7 @@
       0 calc(4px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.7);
   }
 
-  /* ===== Smoke wisps ===== */
+  /* ===== Smoke wisps — thick damp dungeon mist ===== */
   .smoke-container {
     position: absolute;
     inset: 0;
@@ -576,45 +583,56 @@
 
   .smoke-wisp {
     position: absolute;
-    bottom: calc(-80px * var(--layout-scale, 1));
-    width: calc(300px * var(--layout-scale, 1));
-    height: calc(400px * var(--layout-scale, 1));
-    background: radial-gradient(ellipse at center, rgba(180, 180, 200, 0.08) 0%, rgba(150, 150, 180, 0.04) 40%, transparent 70%);
+    bottom: calc(-100px * var(--layout-scale, 1));
+    width: calc(500px * var(--layout-scale, 1));
+    height: calc(500px * var(--layout-scale, 1));
+    background: radial-gradient(ellipse at center, rgba(160, 165, 185, 0.22) 0%, rgba(140, 145, 170, 0.12) 35%, transparent 65%);
     border-radius: 50%;
-    filter: blur(calc(30px * var(--layout-scale, 1)));
-    animation: smoke-rise var(--duration) ease-in-out infinite;
-    animation-delay: var(--delay);
+    filter: blur(calc(25px * var(--layout-scale, 1)));
+    animation: smoke-rise var(--duration) ease-in-out infinite, wind-gust var(--gust-duration, 7s) ease-in-out infinite;
+    animation-delay: var(--delay), var(--gust-delay, 0s);
     opacity: 0;
   }
 
-  .smoke-wisp:nth-child(1) { left: 5%; --duration: 12s; --delay: 0s; --sway: 60px; --peak-opacity: 0.7; }
-  .smoke-wisp:nth-child(2) { left: 15%; --duration: 15s; --delay: 2s; --sway: -80px; --peak-opacity: 0.5; }
-  .smoke-wisp:nth-child(3) { left: 30%; --duration: 11s; --delay: 4s; --sway: 50px; --peak-opacity: 0.8; }
-  .smoke-wisp:nth-child(4) { left: 45%; --duration: 14s; --delay: 1s; --sway: -70px; --peak-opacity: 0.6; }
-  .smoke-wisp:nth-child(5) { left: 55%; --duration: 13s; --delay: 3s; --sway: 90px; --peak-opacity: 0.7; }
-  .smoke-wisp:nth-child(6) { left: 70%; --duration: 16s; --delay: 5s; --sway: -60px; --peak-opacity: 0.5; }
-  .smoke-wisp:nth-child(7) { left: 80%; --duration: 10s; --delay: 2.5s; --sway: 40px; --peak-opacity: 0.9; }
-  .smoke-wisp:nth-child(8) { left: 90%; --duration: 14s; --delay: 6s; --sway: -50px; --peak-opacity: 0.6; }
+  .smoke-wisp:nth-child(1)  { left: 0%;  --duration: 10s; --delay: 0s;   --sway: 120px;  --peak-opacity: 0.9;  --gust-duration: 6s;  --gust-delay: 0s;   --gust-shift: 80px; }
+  .smoke-wisp:nth-child(2)  { left: 10%; --duration: 13s; --delay: 1.5s; --sway: -150px; --peak-opacity: 0.7;  --gust-duration: 8s;  --gust-delay: 2s;   --gust-shift: -100px; }
+  .smoke-wisp:nth-child(3)  { left: 22%; --duration: 9s;  --delay: 3s;   --sway: 100px;  --peak-opacity: 1.0;  --gust-duration: 5s;  --gust-delay: 1s;   --gust-shift: 60px; }
+  .smoke-wisp:nth-child(4)  { left: 35%; --duration: 12s; --delay: 0.5s; --sway: -130px; --peak-opacity: 0.8;  --gust-duration: 9s;  --gust-delay: 4s;   --gust-shift: -120px; }
+  .smoke-wisp:nth-child(5)  { left: 48%; --duration: 11s; --delay: 2.5s; --sway: 140px;  --peak-opacity: 0.85; --gust-duration: 7s;  --gust-delay: 1.5s; --gust-shift: 90px; }
+  .smoke-wisp:nth-child(6)  { left: 58%; --duration: 14s; --delay: 4s;   --sway: -110px; --peak-opacity: 0.7;  --gust-duration: 6s;  --gust-delay: 3s;   --gust-shift: -70px; }
+  .smoke-wisp:nth-child(7)  { left: 70%; --duration: 9s;  --delay: 1s;   --sway: 90px;   --peak-opacity: 1.0;  --gust-duration: 8s;  --gust-delay: 5s;   --gust-shift: 110px; }
+  .smoke-wisp:nth-child(8)  { left: 80%; --duration: 12s; --delay: 3.5s; --sway: -100px; --peak-opacity: 0.75; --gust-duration: 5s;  --gust-delay: 2.5s; --gust-shift: -80px; }
+  .smoke-wisp:nth-child(9)  { left: 88%; --duration: 10s; --delay: 5s;   --sway: 70px;   --peak-opacity: 0.9;  --gust-duration: 7s;  --gust-delay: 0.5s; --gust-shift: 60px; }
+  .smoke-wisp:nth-child(10) { left: 95%; --duration: 11s; --delay: 2s;   --sway: -80px;  --peak-opacity: 0.65; --gust-duration: 9s;  --gust-delay: 4.5s; --gust-shift: -90px; }
+  .smoke-wisp:nth-child(11) { left: 5%;  --duration: 8s;  --delay: 6s;   --sway: 110px;  --peak-opacity: 0.95; --gust-duration: 6s;  --gust-delay: 1.5s; --gust-shift: 100px; }
+  .smoke-wisp:nth-child(12) { left: 50%; --duration: 13s; --delay: 0.8s; --sway: -60px;  --peak-opacity: 0.85; --gust-duration: 10s; --gust-delay: 3s;   --gust-shift: -70px; }
 
   @keyframes smoke-rise {
     0% {
-      transform: translateY(0) translateX(0) scale(0.6);
+      transform: translateY(0) translateX(0) scale(0.8);
       opacity: 0;
     }
-    15% {
-      opacity: var(--peak-opacity, 0.6);
+    10% {
+      opacity: var(--peak-opacity, 0.8);
     }
     50% {
-      transform: translateY(calc(-500px * var(--layout-scale, 1))) translateX(calc(var(--sway, 50px) * var(--layout-scale, 1))) scale(1.2);
-      opacity: var(--peak-opacity, 0.6);
+      transform: translateY(calc(-450px * var(--layout-scale, 1))) translateX(calc(var(--sway, 80px) * var(--layout-scale, 1))) scale(1.4);
+      opacity: var(--peak-opacity, 0.8);
     }
-    85% {
-      opacity: 0.1;
+    80% {
+      opacity: 0.15;
     }
     100% {
-      transform: translateY(calc(-900px * var(--layout-scale, 1))) translateX(calc(var(--sway, 50px) * var(--layout-scale, 1) * -0.5)) scale(1.8);
+      transform: translateY(calc(-850px * var(--layout-scale, 1))) translateX(calc(var(--sway, 80px) * var(--layout-scale, 1) * -0.3)) scale(2.0);
       opacity: 0;
     }
+  }
+
+  /* Wind gust — periodic lateral shove */
+  @keyframes wind-gust {
+    0%, 100% { margin-left: 0; }
+    30% { margin-left: calc(var(--gust-shift, 80px) * var(--layout-scale, 1)); }
+    60% { margin-left: calc(var(--gust-shift, 80px) * var(--layout-scale, 1) * -0.4); }
   }
 
   .smoke-foreground {
@@ -622,14 +640,16 @@
   }
 
   .smoke-wisp-fg {
-    width: calc(200px * var(--layout-scale, 1));
-    height: calc(300px * var(--layout-scale, 1));
-    filter: blur(calc(40px * var(--layout-scale, 1)));
+    width: calc(350px * var(--layout-scale, 1));
+    height: calc(400px * var(--layout-scale, 1));
+    filter: blur(calc(35px * var(--layout-scale, 1)));
+    background: radial-gradient(ellipse at center, rgba(160, 165, 185, 0.15) 0%, rgba(140, 145, 170, 0.08) 35%, transparent 65%);
   }
 
-  .smoke-wisp-fg:nth-child(1) { left: 20%; --duration: 9s; --delay: 1s; --sway: 40px; --peak-opacity: 0.35; }
-  .smoke-wisp-fg:nth-child(2) { left: 50%; --duration: 11s; --delay: 4s; --sway: -55px; --peak-opacity: 0.25; }
-  .smoke-wisp-fg:nth-child(3) { left: 75%; --duration: 10s; --delay: 7s; --sway: 35px; --peak-opacity: 0.3; }
+  .smoke-wisp-fg:nth-child(1) { left: 15%; --duration: 8s;  --delay: 0.5s; --sway: 100px;  --peak-opacity: 0.5;  --gust-duration: 6s; --gust-delay: 1s;   --gust-shift: 70px; }
+  .smoke-wisp-fg:nth-child(2) { left: 45%; --duration: 10s; --delay: 3s;   --sway: -120px; --peak-opacity: 0.4;  --gust-duration: 8s; --gust-delay: 3.5s; --gust-shift: -90px; }
+  .smoke-wisp-fg:nth-child(3) { left: 65%; --duration: 9s;  --delay: 5.5s; --sway: 80px;   --peak-opacity: 0.45; --gust-duration: 7s; --gust-delay: 0s;   --gust-shift: 60px; }
+  .smoke-wisp-fg:nth-child(4) { left: 85%; --duration: 11s; --delay: 1.5s; --sway: -90px;  --peak-opacity: 0.35; --gust-duration: 5s; --gust-delay: 2s;   --gust-shift: -80px; }
 
   @media (prefers-reduced-motion: reduce) {
     .panel { transition: none !important; }
