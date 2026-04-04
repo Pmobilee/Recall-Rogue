@@ -23,9 +23,10 @@ export interface InRunFactState {
  * - LEARNING: seen but not graduated (progresses through steps on correct, resets on wrong)
  * - GRADUATED: completed all learning steps (long cooldown before review)
  *
- * Learning steps: [2 charges, 5 charges] then graduate (10 charge cooldown).
+ * Learning steps: [4 charges, 10 charges] then graduate (15 charge cooldown).
  * Wrong answer on ANY card → back to learning step 0 (Anki "Again").
  * Max 8 cards in learning simultaneously.
+ * New card forced every 3 charges with empty learning queue (card guarantee prevents starvation).
  */
 export class InRunFactTracker {
   private states: Map<string, InRunFactState> = new Map();
@@ -143,11 +144,11 @@ export class InRunFactTracker {
    * Anki-style learning step state machine. Called after every charge answer.
    *
    * State transitions:
-   * - NEW + correct → LEARNING step 0, due in 2 charges
-   * - LEARNING step 0 + correct → LEARNING step 1, due in 5 charges
-   * - LEARNING step 1 + correct → GRADUATED, due in 10 charges
-   * - GRADUATED + correct → stays GRADUATED, due in 10 charges
-   * - ANY + wrong → LEARNING step 0, due in 2 charges (Anki "Again")
+   * - NEW + correct → LEARNING step 0, due in 4 charges
+   * - LEARNING step 0 + correct → LEARNING step 1, due in 10 charges
+   * - LEARNING step 1 + correct → GRADUATED, due in 15 charges
+   * - GRADUATED + correct → stays GRADUATED, due in 15 charges
+   * - ANY + wrong → LEARNING step 0, due in 4 charges (Anki "Again")
    */
   recordCharge(factId: string, correct: boolean): void {
     this.lastFactId = factId;
