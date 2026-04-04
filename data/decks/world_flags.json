@@ -5201,6 +5201,8 @@
       "id": "country_names",
       "label": "Country Names",
       "answerFormat": "name",
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "inherent geographic name length variation (Chad vs Democratic Republic of the Congo)",
       "factIds": [
         "flag_afghanistan",
         "flag_albania",
