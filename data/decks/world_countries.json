@@ -4567,7 +4567,9 @@
         "country_tt",
         "country_ss"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "inherent geographic name length variation"
     }
   ],
   "synonymGroups": [

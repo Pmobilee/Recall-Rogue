@@ -4392,7 +4392,9 @@
         "us_states_hawaii_no_snakes",
         "us_states_alaska_coastline"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "inherent geographic name length variation"
     },
     {
       "id": "state_capitals",

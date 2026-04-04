@@ -4283,7 +4283,9 @@
         "capital_sb",
         "capital_vu"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "inherent geographic name length variation"
     },
     {
       "id": "country_names_caps",
@@ -4459,7 +4461,9 @@
         "capital_sb",
         "capital_vu"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "inherent geographic name length variation"
     }
   ],
   "synonymGroups": [
