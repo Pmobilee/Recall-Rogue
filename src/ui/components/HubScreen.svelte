@@ -10,7 +10,6 @@
   import { preloadImages } from '../utils/assetPreloader'
   import { isLandscape } from '../../stores/layoutStore'
   import CampSpriteButton from './CampSpriteButton.svelte'
-  import AnimatedPet from './AnimatedPet.svelte'
   import CampfireCanvas from './CampfireCanvas.svelte'
   import CampSpeechBubble from './CampSpeechBubble.svelte'
   import CampHudOverlay from './CampHudOverlay.svelte'
@@ -102,6 +101,7 @@
     getCampUpgradeUrl('journal', $campState.forms?.journal ?? $campState.tiers.journal),
     getCampUpgradeUrl('questboard', $campState.forms?.questboard ?? $campState.tiers.questboard),
     getCampUpgradeUrl('shop', $campState.forms?.shop ?? $campState.tiers.shop),
+    getCampUpgradeUrl('pet', $campState.forms?.pet ?? $campState.tiers.pet),
   ]
   holdScreenTransition()
   preloadImages(_campImagesToPreload).then(releaseScreenTransition)
@@ -502,11 +502,15 @@
         showBorder
       />
 
-      <!-- 11. Pet (Cat) - animated -->
-      <AnimatedPet
-        species="cat"
-        {disableEffects}
+      <!-- 11. Pet (Cat) -->
+      <CampSpriteButton
+        spriteUrl={getCampUpgradeUrl('pet', forms.pet)}
+        label="Pet"
+        zIndex={35}
         onclick={showPetBubble}
+        hitTop="69%" hitLeft="60%" hitWidth="11%" hitHeight="6%"
+        brightness={petBright}
+        showBorder
       />
 
       <!-- Pet speech bubble -->
@@ -719,11 +723,15 @@
       showBorder
     />
 
-    <!-- 11. Pet (Cat) - animated -->
-    <AnimatedPet
-      species="cat"
-      {disableEffects}
+    <!-- 11. Pet (Cat) -->
+    <CampSpriteButton
+      spriteUrl={getCampUpgradeUrl('pet', forms.pet)}
+      label="Pet"
+      zIndex={35}
       onclick={showPetBubble}
+      hitTop="69%" hitLeft="60%" hitWidth="11%" hitHeight="6%"
+      brightness={petBright}
+      showBorder
     />
 
     <!-- Pet speech bubble -->
