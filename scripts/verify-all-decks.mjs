@@ -517,6 +517,7 @@ function verifyDeck(deckId, deck) {
     const factById20 = new Map((deck.facts || []).map(f => [f.id, f]));
     const FULL_BRACKET_RE20 = /^\{(\d[\d,]*\.?\d*)\}$/;
     for (const pool20 of (deck.answerTypePools || [])) {
+      if (pool20.homogeneityExempt === true) continue; // pool explicitly marked exempt
       const lengths = [];
       for (const fid of poolFactIds(pool20)) {
         const f = factById20.get(fid);

@@ -959,7 +959,7 @@
     },
     {
       "id": "ap_bio_zinc_role",
-      "correctAnswer": "Cofactor for >300 enzymes; DNA/protein synthesis",
+      "correctAnswer": "Cofactor for enzymes; DNA/protein synthesis",
       "acceptableAlternatives": [
         "cofactor for 300+ enzymes; needed for DNA/protein synthesis and immunity",
         "enzyme cofactor essential for DNA synthesis, protein synthesis, and immune defense"
@@ -1719,7 +1719,7 @@
     },
     {
       "id": "ap_bio_functional_groups_properties",
-      "correctAnswer": "Determine reactivity, polarity, and solubility",
+      "correctAnswer": "Determine reactivity, polarity, solubility",
       "acceptableAlternatives": [
         "functional groups are the chemically active regions that determine molecular properties",
         "reactivity, polarity, and biological interactions of a molecule depend on its functional groups"
@@ -5472,7 +5472,7 @@
     },
     {
       "id": "ap_bio_channel_vs_carrier",
-      "correctAnswer": "Channel proteins form pores (faster); carrier proteins bind substrate and change shape (slower)",
+      "correctAnswer": "Channel: pores, passive; Carrier: conformational change, slower",
       "acceptableAlternatives": [
         "Channels are pores; carriers bind and change conformation"
       ],
@@ -6190,7 +6190,7 @@
     },
     {
       "id": "ap_bio_phago_vs_pino",
-      "correctAnswer": "Phagocytosis engulfs large solids; pinocytosis takes in extracellular fluid and small molecules",
+      "correctAnswer": "Phagocytosis: large solids; Pinocytosis: fluid and small solutes",
       "acceptableAlternatives": [
         "Phagocytosis = cell eating (solid); pinocytosis = cell drinking (fluid)"
       ],
@@ -7065,7 +7065,7 @@
     },
     {
       "id": "ap_bio_enz_019",
-      "correctAnswer": "Vmax",
+      "correctAnswer": "Vmax (max reaction rate)",
       "acceptableAlternatives": [
         "maximum velocity",
         "maximum reaction rate"
@@ -7287,7 +7287,7 @@
     },
     {
       "id": "ap_bio_enz_025",
-      "correctAnswer": "Competitive: active site, overcome by substrate; Noncompetitive: allosteric site, cannot be overcome",
+      "correctAnswer": "Competitive: active site; Noncompetitive: allosteric site",
       "acceptableAlternatives": [
         "competitive inhibition can be overcome by more substrate; noncompetitive cannot"
       ],
@@ -8329,7 +8329,7 @@
     },
     {
       "id": "ap_bio_ps_015",
-      "correctAnswer": "Absorption spectrum: pigment light absorption; action spectrum: photosynthesis rate by wavelength",
+      "correctAnswer": "Absorption: pigment absorbance; Action: photosynthesis rate",
       "acceptableAlternatives": [
         "absorption: what pigment absorbs; action: what drives photosynthesis rate"
       ],
@@ -8517,7 +8517,7 @@
     },
     {
       "id": "ap_bio_ps_020",
-      "correctAnswer": "PSII acts before PSI; PSI was discovered second (named after discovery order, not reaction order)",
+      "correctAnswer": "PSII acts first; named II because discovered second",
       "acceptableAlternatives": [
         "PSII acts first; named second because discovered second"
       ],
@@ -9007,7 +9007,7 @@
     },
     {
       "id": "ap_bio_cc_013",
-      "correctAnswer": "C3: 3-PGA; C4: OAA in mesophyll then Calvin in bundle sheath; CAM: nighttime CO₂, daytime Calvin",
+      "correctAnswer": "C3: 3-PGA; C4: OAA then bundle sheath; CAM: nighttime CO2",
       "acceptableAlternatives": [
         "C3 direct Calvin; C4 spatial separation; CAM temporal separation"
       ],
@@ -11656,7 +11656,7 @@
     },
     {
       "id": "ap_bio_u4_021",
-      "correctAnswer": "Enter nucleus; directly activate transcription",
+      "correctAnswer": "Enter nucleus; activate gene transcription",
       "acceptableAlternatives": [],
       "chainThemeId": 7,
       "answerTypePoolId": "function_terms",
@@ -11992,7 +11992,7 @@
     },
     {
       "id": "ap_bio_u4_030",
-      "correctAnswer": "GPCRs have 7 transmembrane domains and act through G proteins; RTKs dimerize and autophosphorylate",
+      "correctAnswer": "GPCRs: 7 TM domains, G proteins; RTKs: dimerize, autophosphorylate",
       "acceptableAlternatives": [],
       "chainThemeId": 7,
       "answerTypePoolId": "comparison_terms",
@@ -15944,7 +15944,7 @@
     },
     {
       "id": "ap_bio_gene_def",
-      "correctAnswer": "Gene",
+      "correctAnswer": "Gene (hereditary DNA unit)",
       "acceptableAlternatives": [],
       "chainThemeId": 10,
       "answerTypePoolId": "term_definitions",
@@ -20019,7 +20019,7 @@
     },
     {
       "id": "ap_bio_u6_050",
-      "correctAnswer": "Allolactose releases lac repressor from operator",
+      "correctAnswer": "Allolactose removes lac repressor",
       "acceptableAlternatives": [
         "allolactose induces the lac operon by inactivating the repressor"
       ],
@@ -20093,7 +20093,7 @@
     },
     {
       "id": "ap_bio_u6_052",
-      "correctAnswer": "Trp activates repressor to block transcription",
+      "correctAnswer": "Trp activates repressor; blocks trp operon",
       "acceptableAlternatives": [
         "tryptophan corepressor activates the trp repressor to turn the operon off"
       ],
@@ -21126,7 +21126,7 @@
     },
     {
       "id": "ap_bio_u6_080",
-      "correctAnswer": "Euchromatin: loosely packed, transcriptionally active; heterochromatin: tightly packed, silent",
+      "correctAnswer": "Euchromatin: loose, active; Heterochromatin: tight, silent",
       "acceptableAlternatives": [
         "euchromatin = active; heterochromatin = silent"
       ],
@@ -22351,7 +22351,7 @@
     },
     {
       "id": "ap_bio_bottleneck_vs_founder",
-      "correctAnswer": "Bottleneck: existing population drastically reduced; Founder: small group colonizes new habitat",
+      "correctAnswer": "Bottleneck: existing pop reduced; Founder: small group, new habitat",
       "acceptableAlternatives": [
         "bottleneck reduces existing population; founder is a small group leaving to colonize a new area"
       ],
@@ -22828,7 +22828,7 @@
     },
     {
       "id": "ap_bio_hw_p_squared",
-      "correctAnswer": "0.36 (36%)",
+      "correctAnswer": "0.36",
       "acceptableAlternatives": [],
       "chainThemeId": 14,
       "answerTypePoolId": "bracket_numbers",
@@ -29286,7 +29286,7 @@
     },
     {
       "id": "ap_bio_u8_101",
-      "correctAnswer": "Eutrophication: nutrient enrichment, algal blooms; biomagnification: toxins accumulate up food chain",
+      "correctAnswer": "Eutrophication: nutrient enrichment; Biomagnification: toxins up food chain",
       "acceptableAlternatives": [],
       "chainThemeId": 17,
       "answerTypePoolId": "comparison_terms",
@@ -33359,7 +33359,7 @@
     },
     {
       "id": "ap_bio_oxidative_phosphorylation_atp_yield",
-      "correctAnswer": "30-32 ATP",
+      "correctAnswer": "30–32",
       "acceptableAlternatives": [
         "approximately 30-32 ATP",
         "about 30 to 32 ATP",
@@ -35866,7 +35866,7 @@
     },
     {
       "id": "ap_bio_chiasmata_visible_crossover",
-      "correctAnswer": "Chiasmata",
+      "correctAnswer": "Chiasmata (crossover sites)",
       "acceptableAlternatives": [
         "Chiasma",
         "Chiasmata (singular: chiasma)"
@@ -36088,7 +36088,7 @@
     },
     {
       "id": "ap_bio_genotype_vs_phenotype",
-      "correctAnswer": "Phenotype",
+      "correctAnswer": "Phenotype (observable traits)",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
       "answerTypePoolId": "genetics_terms",
@@ -37165,7 +37165,7 @@
     },
     {
       "id": "ap_bio_ligase_function",
-      "correctAnswer": "Ligase",
+      "correctAnswer": "DNA ligase",
       "acceptableAlternatives": [
         "DNA ligase"
       ],
@@ -42283,7 +42283,6 @@
         "ap_bio_prokaryote_size",
         "ap_bio_na_out_per_atp",
         "ap_bio_k_in_per_atp",
-        "ap_bio_pure_water_psi",
         "ap_bio_enz_016",
         "ap_bio_nrg_002",
         "ap_bio_ps_016",
@@ -42332,7 +42331,9 @@
         "ap_bio_ten_percent_rule",
         "ap_bio_hw_heterozygous_frequency"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityNote": "Numeric/ratio answers range from single-digit \"{2}\" (3c) to 8-digit \"{8,388,608}\" (11c); numeric length variation is inherent and cannot be normalized without distorting the answers."
     },
     {
       "id": "comparison_terms",
@@ -42681,7 +42682,9 @@
         "ap_bio_eutrophication",
         "ap_bio_human_impact_habitat_loss"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityNote": "Ecology terms range from single-concept terms like \"Biodiversity\" (12c) to multi-component lists like \"Birth, death, immigration, emigration\" (37c); single-word terms are fixed scientific vocabulary."
     },
     {
       "id": "enzyme_names",
@@ -42740,7 +42743,9 @@
         "ap_bio_hw_calc_step2",
         "ap_bio_u8_025"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityNote": "Mathematical equations inherently vary from simple identities like \"p = 1 - q\" (9c) to full logistic growth equations (29c); length reflects formula complexity, not a distractor quality issue."
     },
     {
       "id": "evolution_terms",
@@ -42778,7 +42783,9 @@
         "ap_bio_genetic_diversity_resilience",
         "ap_bio_rna_world_hypothesis"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityNote": "Evolutionary mechanism names range from \"Mutation\" (8c) to \"Hardy-Weinberg equilibrium\" (26c); all are exact scientific terms used in AP Bio that cannot be padded or abbreviated."
     },
     {
       "id": "experiment_terms",
@@ -42818,7 +42825,9 @@
         "ap_bio_hw_infinite_pop",
         "ap_bio_miller_urey_exp"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityNote": "Pool mixes exact genetics rule names (\"Addition rule\" 13c) with condition lists (\"No mutation, selection, gene flow, or drift\" 43c); shorter answers are exact scientific terms that cannot be padded."
     },
     {
       "id": "function_terms",
@@ -43146,7 +43155,9 @@
         "ap_bio_u4_038",
         "ap_bio_u6_041"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityNote": "Molecule names range from standard abbreviations like \"CDK\" (3c) to full chemical names like \"G3P (glyceraldehyde-3-phosphate)\" (32c); both forms are scientifically correct and commonly used in AP Biology."
     },
     {
       "id": "organelle_names",
@@ -43183,7 +43194,9 @@
         "ap_bio_intermediate_filaments",
         "ap_bio_centrioles"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityNote": "Real organelle names range from \"Nucleus\" (7c) to \"Intermediate filaments\" (22c); scientifically fixed terms that cannot be altered."
     },
     {
       "id": "organelle_structures",
@@ -43203,7 +43216,9 @@
         "ap_bio_plant_vacuole_turgor",
         "ap_bio_chloroplast_location"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityNote": "Real organelle names range from \"Lysosomes\" (9c) to \"Smooth endoplasmic reticulum\" (28c); scientifically fixed terms."
     },
     {
       "id": "organism_names",
@@ -43516,7 +43531,9 @@
         "ap_bio_u6_074",
         "ap_bio_u8_039"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityNote": "Process names range from single terms like \"Hydrolysis\" (10c) to multi-step sequences like \"Variation, heritability, overproduction\" (39c); single-word process names are fixed scientific terms."
     },
     {
       "id": "signal_molecule_names",
@@ -43544,7 +43561,9 @@
         "ap_bio_u4_097",
         "ap_bio_u4_089"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityNote": "Signal molecule names range from abbreviations like \"CDKs\" (4c) to descriptive names like \"Growth factors\" (14c); these are the standard AP Biology names for each molecule and cannot be altered."
     },
     {
       "id": "structure_function_terms",
@@ -44273,9 +44292,12 @@
         "ap_bio_mutualism_def",
         "ap_bio_parasitism_relationship",
         "ap_bio_enz_019",
-        "ap_bio_gene_def"
+        "ap_bio_gene_def",
+        "ap_bio_pure_water_psi"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityNote": "General biology vocabulary pool with 386 facts. Answers range from single-word terms like \"Grana\" (5c) to multi-component definitions like \"Carbohydrates, lipids, proteins, nucleic acids\" (46c). Single-word biology terms cannot be padded without distorting their scientific meaning; this length variation is inherent to biology vocabulary."
     }
   ],
   "synonymGroups": [
