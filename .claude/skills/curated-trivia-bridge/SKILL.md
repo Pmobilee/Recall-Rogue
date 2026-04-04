@@ -26,9 +26,13 @@ Extract representative trivia facts from curated knowledge decks and inject them
 
 ---
 
+## Mandatory Integration
+
+**This skill is a REQUIRED final step in the `/deck-master` pipeline — not a standalone optional tool.** Every knowledge deck must be bridged before committing. The deck-master skill (Step 7), content-agent checklist (item 6), and content-pipeline rules all mandate this. Skipping the bridge means zero FSRS knowledge transfer for that deck's facts.
+
 ## When to Run
 
-- After `/deck-master` generates a new **knowledge** deck (not vocabulary/language)
+- **MANDATORY:** After `/deck-master` generates a new **knowledge** deck (not vocabulary/language)
 - After curated deck facts are updated, regenerated, or QA-fixed
 - After adding new decks to the manifest
 - Periodically to ensure bridge output is in sync with deck content

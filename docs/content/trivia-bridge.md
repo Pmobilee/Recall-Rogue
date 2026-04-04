@@ -6,6 +6,10 @@
 
 ---
 
+> **MANDATORY:** This bridge is a required step in the deck publishing pipeline for ALL knowledge decks. Every knowledge deck commit must include updated `bridge-curated.json` and `bridge-manifest.json`. Language/vocab decks are exempt. See `/deck-master` Step 7 and `.claude/rules/content-pipeline.md`.
+
+---
+
 ## What & Why
 
 Recall Rogue has two parallel fact systems that have historically been isolated:
