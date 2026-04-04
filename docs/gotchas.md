@@ -114,3 +114,23 @@ rm -rf node_modules/.vite && npm run dev
 **Fix:** After adding the enrage bonus in `turnManager.ts`, re-apply the damage cap using `enemy.floor` to determine the segment (same mapping as `getSegmentForFloor` in `enemyManager.ts`). Also reduced `ENRAGE_PHASE2_BONUS` 3→2 for a gentler ramp.
 
 **Critical gotcha:** Use `enemy.floor` for the segment lookup, NOT `turnState.deck?.currentFloor`. The deck's `currentFloor` may not match the enemy's floor (e.g., in tests where enemy is created at a specific floor but the deck isn't configured). The encounter engine test `detects player defeat from enemy attack` creates a floor-25 enemy but the test deck has no `currentFloor` — defaulting to 1 would apply segment 1 cap (7) and prevent the 999-damage one-shot.
+
+### 2026-04-04 — Pool Homogeneity Fixes: ancient_greece and ancient_rome (3-Round Fix Process)
+
+**What happened:** Both decks had 8-9 pool FAIL flags (length ratio >3×) where mixing short names with long descriptions in the same pool made correct answers trivially identifiable by length. Root causes: (1) `concept_terms` held 101 facts with answers ranging from "Doric" (5c) to "Ekecheiria (sacred truce)" (25c) — 5× ratio. (2) `general_politician_names` held compound group names like "Datis & Artaphernes" (19c) alongside single names like "Pericles" (8c). (3) Bare number answers ("three", "500", "60") created 1-3c outliers in otherwise longer pools.
+
+**Fix pattern applied:**
+1. Convert bare number answers to `{N}` bracket notation — these are excluded from ratio analysis since they use algorithmic distractors
+2. Create a new `historical_phrases` pool for longer descriptive answers (15-37c for Greece, 13-38c for Rome)
+3. Split `concept_terms` (5-25c) into `concept_terms` (5-15c short terms) + `historical_phrases` (15-37c descriptions)
+4. Move compound/group names from name pools to `historical_phrases`
+5. Trim verbose individual names (e.g., "L. Tarquinius Priscus" → "Tarquinius Priscus", "Quintus Fabius Maximus" → "Fabius Maximus")
+6. Trim date strings (e.g., "9 August 48 BCE" → "48 BCE")
+
+**Trap: the `historical_phrases` pool can fail itself.** When you dump all outliers into one pool, new outliers emerge. "Olive tree" (10c) made Greece's `historical_phrases` fail (3.4×); moved it back to `concept_terms`. "Virgil" (6c) made Rome's `historical_phrases` fail (6.3×); expanded answer to "Publius Vergilius Maro (Virgil)" (26c) with acceptableAlternatives keeping the short form.
+
+**Trap: moving a fact out of a pool to fix ratio may cause the receiving pool to fail.** Always check the receiving pool's existing range before moving. Use the analysis script to verify the net effect.
+
+**Fix scripts created:** `scripts/fix-pool-homogeneity-greece-rome.mjs` (round 1), `scripts/fix-pool-homogeneity-round2.mjs` (round 2), `scripts/fix-pool-homogeneity-round3.mjs` (round 3). All rebuild pool `factIds` arrays after changes.
+
+**Final result:** Both decks at 0 FAIL, 6-7 WARN (all within 3× threshold). 79 facts each in new `historical_phrases` pool.

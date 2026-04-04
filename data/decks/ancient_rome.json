@@ -107,8 +107,9 @@
     },
     {
       "id": "rome_rep_kings_count",
-      "correctAnswer": "7",
+      "correctAnswer": "{7}",
       "acceptableAlternatives": [
+        "7",
         "seven"
       ],
       "chainThemeId": 0,
@@ -156,7 +157,7 @@
     },
     {
       "id": "rome_rep_last_king",
-      "correctAnswer": "Lucius Tarquinius Superbus",
+      "correctAnswer": "Tarquin the Proud",
       "acceptableAlternatives": [
         "Tarquinius Superbus",
         "Tarquin the Proud",
@@ -263,7 +264,7 @@
         "Senate and People of Rome"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -509,8 +510,9 @@
     },
     {
       "id": "rome_rep_marius_consulships",
-      "correctAnswer": "7",
+      "correctAnswer": "{7}",
       "acceptableAlternatives": [
+        "7",
         "seven"
       ],
       "chainThemeId": 0,
@@ -658,13 +660,13 @@
     },
     {
       "id": "rome_rep_social_war_result",
-      "correctAnswer": "Roman citizenship for all free Italians",
+      "correctAnswer": "Citizenship for all free Italians",
       "acceptableAlternatives": [
         "Italian citizenship",
         "citizenship extended to Italy"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -713,7 +715,7 @@
         "Pompey, Caesar, Crassus"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "general_politician_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -855,7 +857,7 @@
     },
     {
       "id": "rome_rep_cloaca_maxima_builder",
-      "correctAnswer": "Lucius Tarquinius Priscus",
+      "correctAnswer": "Tarquinius Priscus",
       "acceptableAlternatives": [
         "Tarquinius Priscus",
         "Tarquin the Elder"
@@ -957,13 +959,13 @@
     },
     {
       "id": "rome_cae_civic_crown",
-      "correctAnswer": "Saving a fellow citizen's life in battle",
+      "correctAnswer": "Saving a fellow citizen in battle",
       "acceptableAlternatives": [
         "saving a citizen's life",
         "rescuing a comrade in battle"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 8,
       "ageGroup": "all",
@@ -1058,13 +1060,13 @@
     },
     {
       "id": "rome_cae_bello_gallico_opening",
-      "correctAnswer": "\"Gaul is a whole divided into three parts\"",
+      "correctAnswer": "\"Gaul is divided into three parts\"",
       "acceptableAlternatives": [
         "Gallia est omnis divisa in partes tres",
         "Gaul is divided into three parts"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -1308,7 +1310,7 @@
     },
     {
       "id": "rome_cae_pharsalus_date",
-      "correctAnswer": "9 August 48 BCE",
+      "correctAnswer": "48 BCE",
       "acceptableAlternatives": [
         "August 48 BCE",
         "48 BCE",
@@ -1368,7 +1370,7 @@
         "in a bedroll"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "city_place_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 10,
       "ageGroup": "all",
@@ -1464,14 +1466,14 @@
     },
     {
       "id": "rome_cae_dictator_perpetuo",
-      "correctAnswer": "Dictator in perpetuity / Dictator for life",
+      "correctAnswer": "Dictator in perpetuity",
       "acceptableAlternatives": [
         "dictator perpetuo",
         "perpetual dictator",
         "dictator for life"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -1515,7 +1517,7 @@
     },
     {
       "id": "rome_cae_ides_of_march",
-      "correctAnswer": "March 15, 44 BCE",
+      "correctAnswer": "44 BCE",
       "acceptableAlternatives": [
         "the Ides of March",
         "15 March 44 BCE",
@@ -1568,14 +1570,14 @@
     },
     {
       "id": "rome_cae_assassination_location",
-      "correctAnswer": "Curia of Pompey (Theatre of Pompey complex)",
+      "correctAnswer": "Curia of Pompey",
       "acceptableAlternatives": [
         "Theatre of Pompey",
         "Curia of Pompey",
         "Pompey's Theatre"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -1619,13 +1621,13 @@
     },
     {
       "id": "rome_cae_assassins_brutus_cassius",
-      "correctAnswer": "Marcus Junius Brutus and Gaius Cassius Longinus",
+      "correctAnswer": "Brutus and Cassius",
       "acceptableAlternatives": [
         "Brutus and Cassius",
         "Cassius and Brutus"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "general_politician_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -1768,7 +1770,7 @@
     },
     {
       "id": "rome_aug_actium_date",
-      "correctAnswer": "September 2, 31 BCE",
+      "correctAnswer": "31 BCE",
       "acceptableAlternatives": [
         "31 BCE",
         "September 31 BCE"
@@ -1819,7 +1821,7 @@
     },
     {
       "id": "rome_aug_title_meaning",
-      "correctAnswer": "January 16, 27 BCE",
+      "correctAnswer": "27 BCE",
       "acceptableAlternatives": [
         "27 BCE",
         "January 27 BCE"
@@ -1870,14 +1872,14 @@
     },
     {
       "id": "rome_aug_pax_romana_duration",
-      "correctAnswer": "Approximately 207 years (27 BCE – 180 CE)",
+      "correctAnswer": "About 207 years (27 BCE–180 CE)",
       "acceptableAlternatives": [
         "27 BCE to 180 CE",
         "about 200 years",
         "207 years"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -2024,13 +2026,14 @@
     },
     {
       "id": "rome_aug_aeneid_purpose",
-      "correctAnswer": "Virgil",
+      "correctAnswer": "Publius Vergilius Maro (Virgil)",
       "acceptableAlternatives": [
-        "Publius Vergilius Maro",
-        "Vergil"
+        "Virgil",
+        "Vergil",
+        "Publius Vergilius Maro"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "general_politician_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -2176,7 +2179,7 @@
     },
     {
       "id": "rome_aug_death_age",
-      "correctAnswer": "August 19, 14 CE",
+      "correctAnswer": "14 CE",
       "acceptableAlternatives": [
         "14 CE",
         "August 14 CE"
@@ -2377,7 +2380,7 @@
     },
     {
       "id": "rome_aug_antony_cleopatra_death",
-      "correctAnswer": "Alexandria, Egypt",
+      "correctAnswer": "Alexandria",
       "acceptableAlternatives": [
         "Egypt",
         "Alexandria"
@@ -2478,7 +2481,7 @@
     },
     {
       "id": "rome_rep_fabius_strategy",
-      "correctAnswer": "Quintus Fabius Maximus",
+      "correctAnswer": "Fabius Maximus",
       "acceptableAlternatives": [
         "Fabius Maximus",
         "the Cunctator"
@@ -2585,7 +2588,7 @@
         "three months in 67 BCE"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -2630,14 +2633,14 @@
     },
     {
       "id": "rome_rep_republic_duration",
-      "correctAnswer": "About 482 years (509 BCE to 27 BCE)",
+      "correctAnswer": "About 482 years",
       "acceptableAlternatives": [
         "482 years",
         "nearly 500 years",
         "509 to 27 BCE"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -2733,14 +2736,14 @@
     },
     {
       "id": "rome_cae_gallic_casualties_sources",
-      "correctAnswer": "1 million killed, 1 million enslaved (ancient, inflated)",
+      "correctAnswer": "1 million killed, 1 million enslaved",
       "acceptableAlternatives": [
         "1 million killed",
         "one million killed and one million enslaved",
         "1 million killed and 1 million enslaved (ancient sources, likely exaggerated)"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 8,
       "ageGroup": "all",
@@ -2783,14 +2786,14 @@
     },
     {
       "id": "rome_cae_britain_twice",
-      "correctAnswer": "Twice (55 BCE and 54 BCE)",
+      "correctAnswer": "Twice (55 and 54 BCE)",
       "acceptableAlternatives": [
         "two times",
         "2 times",
         "55 and 54 BCE"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -2931,7 +2934,7 @@
     },
     {
       "id": "rome_cae_caesarion",
-      "correctAnswer": "Caesarion (Ptolemy XV)",
+      "correctAnswer": "Caesarion",
       "acceptableAlternatives": [
         "Caesarion",
         "Ptolemy XV",
@@ -2990,7 +2993,7 @@
         "sixty senators"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -3141,7 +3144,7 @@
         "hidden behind a curtain"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -3284,14 +3287,14 @@
     },
     {
       "id": "rome_aug_colosseum_jerusalem",
-      "correctAnswer": "Spoils from the Siege of Jerusalem (70 CE)",
+      "correctAnswer": "Spoils from the Siege of Jerusalem",
       "acceptableAlternatives": [
         "spoils from Jerusalem",
         "plunder from the Jewish War",
         "spoils of the Jewish War"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -3335,7 +3338,7 @@
     },
     {
       "id": "rome_aug_urine_tax",
-      "correctAnswer": "Urine (used in tanning leather and processing cloth)",
+      "correctAnswer": "Urine (used in tanning/cloth)",
       "acceptableAlternatives": [
         "urine",
         "public urinals",
@@ -3343,7 +3346,7 @@
         "Urine collection (used in tanning leather and processing cloth)"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 10,
       "ageGroup": "all",
@@ -3440,7 +3443,7 @@
     },
     {
       "id": "rome_aug_hadrian_wall_length",
-      "correctAnswer": "73 modern miles (117 kilometers)",
+      "correctAnswer": "73 miles (117 km)",
       "acceptableAlternatives": [
         "80 Roman miles",
         "73 miles",
@@ -3448,7 +3451,7 @@
         "about 80 miles"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -3492,13 +3495,13 @@
     },
     {
       "id": "rome_aug_five_good_emperors_list",
-      "correctAnswer": "Nerva, Trajan, Hadrian, Antoninus Pius, Marcus Aurelius",
+      "correctAnswer": "Nerva to Marcus Aurelius",
       "acceptableAlternatives": [
         "Trajan, Nerva, Hadrian, Antoninus Pius, Marcus Aurelius",
         "the Five Good Emperors"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "general_politician_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -3540,13 +3543,13 @@
     },
     {
       "id": "rome_aug_trajans_column",
-      "correctAnswer": "2,662 individual figures in 155 scenes",
+      "correctAnswer": "2,662 figures in 155 scenes",
       "acceptableAlternatives": [
         "2,662 figures",
         "over 2,600 figures"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 8,
       "ageGroup": "all",
@@ -3590,14 +3593,14 @@
     },
     {
       "id": "rome_aug_marcus_stoicism",
-      "correctAnswer": "Stoic philosophy (Stoicism)",
+      "correctAnswer": "Stoic philosophy",
       "acceptableAlternatives": [
         "Stoicism",
         "Stoic",
         "the Stoics"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "text_work_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -3648,7 +3651,7 @@
         "renamed it after himself"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "city_place_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 10,
       "ageGroup": "all",
@@ -3693,14 +3696,14 @@
     },
     {
       "id": "rome_aug_trajan_optimus",
-      "correctAnswer": "Optimus Princeps (the best ruler)",
+      "correctAnswer": "Optimus Princeps (best ruler)",
       "acceptableAlternatives": [
         "Optimus",
         "Optimus Princeps",
         "the best"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -3852,7 +3855,7 @@
         "golden eagle standard"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -3904,7 +3907,7 @@
         "death list notices"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -3949,14 +3952,14 @@
     },
     {
       "id": "rome_rep_twelve_tables_purpose",
-      "correctAnswer": "To stop patricians arbitrarily interpreting unwritten custom",
+      "correctAnswer": "Stop patrician interpretation monopoly",
       "acceptableAlternatives": [
         "to prevent arbitrary interpretation by patricians",
         "written law so all could know the rules",
         "Plebeians demanded written laws so patricians could not arbitrarily interpret unwritten customs"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -4000,14 +4003,14 @@
     },
     {
       "id": "rome_cae_rubicon_meaning",
-      "correctAnswer": "The boundary between Cisalpine Gaul and Roman Italy proper",
+      "correctAnswer": "Border between Gaul and Roman Italy",
       "acceptableAlternatives": [
         "border of Roman Italy",
         "limit of Caesar's legal command",
         "boundary of his province"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "city_place_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -4050,14 +4053,14 @@
     },
     {
       "id": "rome_cae_pharsalus_pompey_cavalry",
-      "correctAnswer": "Deployed a hidden fourth line to stop the cavalry charge",
+      "correctAnswer": "Deployed hidden infantry vs. cavalry",
       "acceptableAlternatives": [
         "secret fourth line against cavalry",
         "hidden fourth line of veterans",
         "Caesar deployed a concealed fourth battle line to neutralize the cavalry charge"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "battle_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -4101,7 +4104,7 @@
     },
     {
       "id": "rome_cae_julian_calendar_error",
-      "correctAnswer": "About 11 minutes per year",
+      "correctAnswer": "11 minutes per year",
       "acceptableAlternatives": [
         "11 minutes too long per year",
         "slightly too long",
@@ -4109,7 +4112,7 @@
         "About 11 minutes per year (accumulating to ~10 days over 1,627 years)"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "all",
@@ -4153,7 +4156,7 @@
     },
     {
       "id": "rome_cae_wills_heir",
-      "correctAnswer": "Octavian, his great-nephew, posthumously adopted",
+      "correctAnswer": "Octavian, his great-nephew",
       "acceptableAlternatives": [
         "Octavian",
         "Gaius Octavius",
@@ -4161,7 +4164,7 @@
         "Octavian (his great-nephew, posthumously adopted in his will)"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "general_politician_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -4213,7 +4216,7 @@
         "princeps civitatis"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -4263,7 +4266,7 @@
         "father of the fatherland"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -4305,14 +4308,14 @@
     },
     {
       "id": "rome_aug_cursus_publicus",
-      "correctAnswer": "The official imperial postal relay system",
+      "correctAnswer": "Imperial postal relay system",
       "acceptableAlternatives": [
         "Rome's postal system",
         "official courier network",
         "imperial postal relay"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -4362,7 +4365,7 @@
         "Ovid, Virgil, Horace"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "general_politician_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -4406,14 +4409,14 @@
     },
     {
       "id": "rome_aug_augustus_reign_length",
-      "correctAnswer": "More than 40 years (27 BCE to 14 CE)",
+      "correctAnswer": "Over 40 years",
       "acceptableAlternatives": [
         "41 years",
         "over 40 years",
         "27 BCE-14 CE"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -4457,7 +4460,7 @@
     },
     {
       "id": "rome_aug_pantheon_rebuilt",
-      "correctAnswer": "Hadrian (117-138 CE)",
+      "correctAnswer": "Hadrian",
       "acceptableAlternatives": [
         "Hadrian",
         "Emperor Hadrian"
@@ -4508,13 +4511,13 @@
     },
     {
       "id": "rome_aug_hadrian_traveled",
-      "correctAnswer": "More than half his reign traveling the provinces",
+      "correctAnswer": "Over half his reign",
       "acceptableAlternatives": [
         "over half his reign outside Rome",
         "spent more time in provinces than Rome"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -4607,14 +4610,14 @@
     },
     {
       "id": "rome_rep_tribunes_sacrosanct",
-      "correctAnswer": "Sacrosanct (personally inviolable by law)",
+      "correctAnswer": "Sacrosanct (personally inviolable)",
       "acceptableAlternatives": [
         "sacrosanct",
         "personally sacrosanct",
         "legally untouchable"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -4655,13 +4658,13 @@
     },
     {
       "id": "rome_cae_gallic_legions",
-      "correctAnswer": "From 6 legions to 11 legions",
+      "correctAnswer": "From 6 to 11 legions",
       "acceptableAlternatives": [
         "6 to 11 legions",
         "started with 6 ended with 11"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 6,
       "ageGroup": "all",
@@ -4705,10 +4708,10 @@
     },
     {
       "id": "rome_cae_caesars_death_wounds",
-      "correctAnswer": "23",
+      "correctAnswer": "{23}",
       "acceptableAlternatives": [
-        "twenty-three",
-        "23 stab wounds"
+        "23",
+        "twenty-three"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "date_events",
@@ -4815,7 +4818,7 @@
         "Rhomaioi"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -4860,7 +4863,7 @@
     },
     {
       "id": "rome_aug_constantine_edict_milan",
-      "correctAnswer": "February 13, 313 CE",
+      "correctAnswer": "313 CE",
       "acceptableAlternatives": [
         "313 CE",
         "313 AD",
@@ -4910,7 +4913,7 @@
     },
     {
       "id": "rome_aug_476_ce",
-      "correctAnswer": "September 4, 476 CE",
+      "correctAnswer": "476 CE",
       "acceptableAlternatives": [
         "476 CE",
         "476 AD",
@@ -5217,7 +5220,7 @@
         "the Praetorian Guard"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -5261,13 +5264,13 @@
     },
     {
       "id": "rome_emp_claudius_curtain",
-      "correctAnswer": "behind a curtain",
+      "correctAnswer": "Behind a curtain",
       "acceptableAlternatives": [
         "hiding behind a curtain",
         "behind a palace curtain"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -5492,7 +5495,7 @@
       "correctAnswer": "Galba, Otho, Vitellius, Vespasian",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "emperor_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "all",
@@ -5632,7 +5635,7 @@
     },
     {
       "id": "rome_emp_five_good_coined",
-      "correctAnswer": "Niccolò Machiavelli",
+      "correctAnswer": "Machiavelli",
       "acceptableAlternatives": [
         "Machiavelli"
       ],
@@ -5682,7 +5685,7 @@
         "Optimus"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "all",
@@ -5726,8 +5729,11 @@
     },
     {
       "id": "rome_emp_trajan_column_figures",
-      "correctAnswer": "2,662",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{2662}",
+      "acceptableAlternatives": [
+        "2,662",
+        "two thousand six hundred sixty-two"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "date_events",
       "difficulty": 5,
@@ -6002,13 +6008,13 @@
     },
     {
       "id": "rome_emp_commodus_death",
-      "correctAnswer": "strangled in his bath",
+      "correctAnswer": "Strangled in his bath",
       "acceptableAlternatives": [
         "strangled while bathing",
         "his wrestling partner strangled him"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 9,
       "ageGroup": "all",
@@ -6099,7 +6105,7 @@
     },
     {
       "id": "rome_eng_via_appia_builder",
-      "correctAnswer": "Appius Claudius Caecus",
+      "correctAnswer": "Appius Claudius",
       "acceptableAlternatives": [
         "Appius Claudius"
       ],
@@ -6149,13 +6155,13 @@
     },
     {
       "id": "rome_eng_via_appia_nickname",
-      "correctAnswer": "queen of the long roads",
+      "correctAnswer": "Queen of the long roads",
       "acceptableAlternatives": [
         "queen of roads",
         "Appia longarum regina viarum"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -6199,9 +6205,10 @@
     },
     {
       "id": "rome_eng_aqueducts_number",
-      "correctAnswer": "eleven",
+      "correctAnswer": "{11}",
       "acceptableAlternatives": [
-        "11"
+        "11",
+        "eleven"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "structure_names",
@@ -6392,13 +6399,13 @@
     },
     {
       "id": "rome_eng_colosseum_name_origin",
-      "correctAnswer": "a giant bronze statue of Nero",
+      "correctAnswer": "A giant bronze statue of Nero",
       "acceptableAlternatives": [
         "the Colossus of Nero",
         "a bronze statue of Nero nearby"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 9,
       "ageGroup": "all",
@@ -6439,13 +6446,13 @@
     },
     {
       "id": "rome_eng_pantheon_dome_record",
-      "correctAnswer": "unreinforced concrete dome",
+      "correctAnswer": "Unreinforced concrete dome",
       "acceptableAlternatives": [
         "largest unreinforced concrete dome",
         "the largest unreinforced concrete dome in the world"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -6585,10 +6592,9 @@
     },
     {
       "id": "rome_eng_circus_maximus_capacity",
-      "correctAnswer": "150,000",
+      "correctAnswer": "{150000}",
       "acceptableAlternatives": [
-        "over 150,000",
-        "more than 150,000"
+        "150,000"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "structure_names",
@@ -6729,7 +6735,7 @@
     },
     {
       "id": "rome_eng_baths_caracalla",
-      "correctAnswer": "Baths of Diocletian",
+      "correctAnswer": "Baths of Caracalla",
       "acceptableAlternatives": [
         "the Baths of Diocletian"
       ],
@@ -6873,9 +6879,10 @@
     },
     {
       "id": "rome_eng_roman_numerals_symbols",
-      "correctAnswer": "seven",
+      "correctAnswer": "{7}",
       "acceptableAlternatives": [
-        "7"
+        "7",
+        "seven"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "political_terms",
@@ -6922,13 +6929,13 @@
     },
     {
       "id": "rome_eng_vigiles_purpose",
-      "correctAnswer": "firefighting and night policing",
+      "correctAnswer": "Firefighting and night policing",
       "acceptableAlternatives": [
         "fire brigade and night watchmen",
         "fire department and police force"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -6973,13 +6980,13 @@
     },
     {
       "id": "rome_eng_forum_romanum_purpose",
-      "correctAnswer": "political, commercial, religious, and judicial",
+      "correctAnswer": "Political, commercial, religious hub",
       "acceptableAlternatives": [
         "center of public life",
         "heart of Roman civic life"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -7121,8 +7128,9 @@
     },
     {
       "id": "rome_chr_paul_new_testament",
-      "correctAnswer": "13",
+      "correctAnswer": "{13}",
       "acceptableAlternatives": [
+        "13",
         "thirteen"
       ],
       "chainThemeId": 6,
@@ -7174,7 +7182,7 @@
         "July 64 CE"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -7218,13 +7226,13 @@
     },
     {
       "id": "rome_chr_decian_persecution",
-      "correctAnswer": "sacrifice certificates",
+      "correctAnswer": "Sacrifice certificates",
       "acceptableAlternatives": [
         "libelli",
         "signed certificates of sacrifice"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "all",
@@ -7320,7 +7328,7 @@
         "in this sign you will conquer"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "text_work_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 8,
       "ageGroup": "all",
@@ -7604,7 +7612,7 @@
     },
     {
       "id": "rome_chr_constantine_constantinople",
-      "correctAnswer": "May 11, 330 CE",
+      "correctAnswer": "330 CE",
       "acceptableAlternatives": [
         "330 CE",
         "AD 330"
@@ -7702,14 +7710,14 @@
     },
     {
       "id": "rome_chr_persecution_duration",
-      "correctAnswer": "approximately 250 years",
+      "correctAnswer": "Approximately 250 years",
       "acceptableAlternatives": [
         "about 250 years",
         "~250 years",
         "64 CE to 313 CE"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -7753,13 +7761,13 @@
     },
     {
       "id": "rome_chr_constantine_praetorian",
-      "correctAnswer": "disbanded the Praetorian Guard",
+      "correctAnswer": "Disbanded the Praetorian Guard",
       "acceptableAlternatives": [
         "dissolved the Praetorian Guard",
         "abolished the Praetorian Guard"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -7859,7 +7867,7 @@
         "Ethiopia"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 5,
       "funScore": 9,
       "ageGroup": "all",
@@ -7900,14 +7908,14 @@
     },
     {
       "id": "rome_chr_constantine_death_baptism",
-      "correctAnswer": "just before his death",
+      "correctAnswer": "Just before his death",
       "acceptableAlternatives": [
         "on his deathbed",
         "shortly before dying",
         "in 337 CE"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -8043,7 +8051,7 @@
     },
     {
       "id": "rome_emp_tiberius_death_ambiguity",
-      "correctAnswer": "March 16, 37 CE",
+      "correctAnswer": "37 CE",
       "acceptableAlternatives": [
         "37 CE"
       ],
@@ -8140,13 +8148,13 @@
     },
     {
       "id": "rome_emp_vespasian_last_words",
-      "correctAnswer": "I think I'm becoming a god",
+      "correctAnswer": "\"I think I'm becoming a god\"",
       "acceptableAlternatives": [
         "Dear me, I think I'm becoming a god",
         "I am becoming a god"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "emperor_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 10,
       "ageGroup": "all",
@@ -8240,13 +8248,13 @@
     },
     {
       "id": "rome_emp_trajan_column_ashes",
-      "correctAnswer": "the base of the column",
+      "correctAnswer": "At the base of the column",
       "acceptableAlternatives": [
         "within the column's base",
         "the column's base"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -8334,10 +8342,10 @@
     },
     {
       "id": "rome_emp_five_good_list",
-      "correctAnswer": "Nerva, Trajan, Hadrian, Antoninus Pius, Marcus Aurelius",
+      "correctAnswer": "Nerva to Marcus Aurelius",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "emperor_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "all",
@@ -8431,7 +8439,7 @@
         "started by Caligula, finished by Claudius"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "emperor_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 6,
       "ageGroup": "all",
@@ -8526,8 +8534,9 @@
     },
     {
       "id": "rome_eng_roads_radiate",
-      "correctAnswer": "29",
+      "correctAnswer": "{29}",
       "acceptableAlternatives": [
+        "29",
         "twenty-nine"
       ],
       "chainThemeId": 5,
@@ -8622,13 +8631,13 @@
     },
     {
       "id": "rome_chr_paul_missionary_dates",
-      "correctAnswer": "mid-40s to mid-50s CE",
+      "correctAnswer": "Mid-40s to mid-50s CE",
       "acceptableAlternatives": [
         "40s to 50s CE",
         "approximately 46–58 CE"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -8669,7 +8678,7 @@
     },
     {
       "id": "rome_chr_domitian_persecution",
-      "correctAnswer": "approximately 95 CE",
+      "correctAnswer": "c. 95 CE",
       "acceptableAlternatives": [
         "95 CE",
         "~95 CE",
@@ -8769,8 +8778,10 @@
     },
     {
       "id": "rome_chr_pilate_caesarea_inscription",
-      "correctAnswer": "1961",
-      "acceptableAlternatives": [],
+      "correctAnswer": "{1961}",
+      "acceptableAlternatives": [
+        "1961"
+      ],
       "chainThemeId": 6,
       "answerTypePoolId": "date_events",
       "difficulty": 4,
@@ -8909,14 +8920,14 @@
     },
     {
       "id": "rome_emp_pax_romana_length",
-      "correctAnswer": "approximately 207 years",
+      "correctAnswer": "About 207 years",
       "acceptableAlternatives": [
         "207 years",
         "about 200 years",
         "27 BCE to 180 CE"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -8960,13 +8971,13 @@
     },
     {
       "id": "rome_emp_claudius_disabilities",
-      "correctAnswer": "cerebral palsy, polio, or Tourette syndrome",
+      "correctAnswer": "Cerebral palsy or similar condition",
       "acceptableAlternatives": [
         "physical disabilities",
         "limp and speech impediment"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -9058,13 +9069,13 @@
     },
     {
       "id": "rome_eng_roman_arch_contribution",
-      "correctAnswer": "spanning large distances without stone lintels",
+      "correctAnswer": "Span distances without stone lintels",
       "acceptableAlternatives": [
         "spanning wide gaps without needing stone lintels",
         "allowing bridges and aqueducts to span wide gaps"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -9155,14 +9166,14 @@
     },
     {
       "id": "rome_chr_christian_refusal_sacrifice",
-      "correctAnswer": "refusal to sacrifice to the emperor",
+      "correctAnswer": "Refusal to sacrifice to the emperor",
       "acceptableAlternatives": [
         "refusing to sacrifice",
         "not sacrificing to Roman gods",
         "rejecting emperor worship"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -9447,7 +9458,7 @@
     },
     {
       "id": "rome_chr_constantine_death_date",
-      "correctAnswer": "May 22, 337 CE",
+      "correctAnswer": "337 CE",
       "acceptableAlternatives": [
         "337 CE",
         "AD 337"
@@ -9497,13 +9508,13 @@
     },
     {
       "id": "rome_eng_road_construction_features",
-      "correctAnswer": "cambered for drainage",
+      "correctAnswer": "Cambered for drainage",
       "acceptableAlternatives": [
         "built with a camber for drainage",
         "sloped for drainage"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -9547,7 +9558,7 @@
     },
     {
       "id": "rome_chr_milvian_bridge_date",
-      "correctAnswer": "October 28, 312 CE",
+      "correctAnswer": "312 CE",
       "acceptableAlternatives": [
         "312 CE",
         "AD 312"
@@ -9985,13 +9996,13 @@
     },
     {
       "id": "rome_pun_cannae_tactic",
-      "correctAnswer": "double envelopment",
+      "correctAnswer": "Double envelopment",
       "acceptableAlternatives": [
         "encirclement",
         "pincer movement"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -10274,13 +10285,13 @@
     },
     {
       "id": "rome_pun_zama_peace_terms",
-      "correctAnswer": "10,000 silver talents over 50 years",
+      "correctAnswer": "10,000 talents over 50 years",
       "acceptableAlternatives": [
         "10,000 talents",
         "war indemnity"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 6,
       "ageGroup": "all",
@@ -10321,13 +10332,13 @@
     },
     {
       "id": "rome_pun_hannibal_death",
-      "correctAnswer": "suicide by self-poisoning",
+      "correctAnswer": "Suicide by self-poisoning",
       "acceptableAlternatives": [
         "suicide",
         "poison"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -10514,13 +10525,13 @@
     },
     {
       "id": "rome_pun_hannibal_oath",
-      "correctAnswer": "never to be a friend of Rome",
+      "correctAnswer": "Never to be a friend of Rome",
       "acceptableAlternatives": [
         "enmity with Rome",
         "to hate Rome"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -10807,9 +10818,10 @@
     },
     {
       "id": "rome_pun_punic_wars_total",
-      "correctAnswer": "three",
+      "correctAnswer": "{3}",
       "acceptableAlternatives": [
-        "3"
+        "3",
+        "three"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "date_events",
@@ -10856,10 +10868,10 @@
     },
     {
       "id": "rome_fall_crisis_third_century",
-      "correctAnswer": "50",
+      "correctAnswer": "{50}",
       "acceptableAlternatives": [
-        "approximately 50",
-        "about 50"
+        "50",
+        "fifty"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "date_events",
@@ -11960,7 +11972,7 @@
         "Jupiter Juno Minerva"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "roman_god_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -12099,10 +12111,10 @@
     },
     {
       "id": "rome_mil_legion_size",
-      "correctAnswer": "5,200",
+      "correctAnswer": "{5200}",
       "acceptableAlternatives": [
-        "about 5,000",
-        "approximately 5,200"
+        "5,200",
+        "5200"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "political_terms",
@@ -12149,8 +12161,9 @@
     },
     {
       "id": "rome_mil_centurion_century",
-      "correctAnswer": "80",
+      "correctAnswer": "{80}",
       "acceptableAlternatives": [
+        "80",
         "eighty"
       ],
       "chainThemeId": 3,
@@ -12349,7 +12362,7 @@
       "correctAnswer": "Juvenal",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "text_work_names",
+      "answerTypePoolId": "general_politician_names",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -12393,13 +12406,13 @@
     },
     {
       "id": "rome_life_gladiators_status",
-      "correctAnswer": "slaves or condemned criminals",
+      "correctAnswer": "Slaves or condemned criminals",
       "acceptableAlternatives": [
         "mostly slaves",
         "primarily slaves"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -12489,9 +12502,10 @@
     },
     {
       "id": "rome_life_latin_romance_languages",
-      "correctAnswer": "six",
+      "correctAnswer": "{6}",
       "acceptableAlternatives": [
-        "6"
+        "6",
+        "six"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "political_terms",
@@ -12538,7 +12552,7 @@
     },
     {
       "id": "rome_pun_aegates_islands",
-      "correctAnswer": "Battle of the Aegates Islands",
+      "correctAnswer": "Battle of Aegates Islands",
       "acceptableAlternatives": [
         "Aegates Islands"
       ],
@@ -12830,12 +12844,12 @@
     },
     {
       "id": "rome_pun_third_punic_cause",
-      "correctAnswer": "fighting the Numidians without Roman permission",
+      "correctAnswer": "Fighting Numidia without permission",
       "acceptableAlternatives": [
         "raising an army to fight Numidia"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 6,
       "ageGroup": "all",
@@ -12879,13 +12893,13 @@
     },
     {
       "id": "rome_pun_hannibal_brothers_count",
-      "correctAnswer": "two brothers — Hasdrubal and Mago",
+      "correctAnswer": "Two brothers: Hasdrubal and Mago",
       "acceptableAlternatives": [
         "Hasdrubal and Mago",
         "two brothers"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -13082,7 +13096,7 @@
         "Plague of Galen"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -13173,13 +13187,13 @@
     },
     {
       "id": "rome_fall_romulus_augustulus_fate",
-      "correctAnswer": "exiled with a pension of 6,000 solidi",
+      "correctAnswer": "Exiled with a pension",
       "acceptableAlternatives": [
         "exiled with a pension",
         "given a pension and exiled"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 8,
       "ageGroup": "all",
@@ -13461,14 +13475,14 @@
     },
     {
       "id": "rome_fall_western_collapse_factors",
-      "correctAnswer": "Military, economic, political, climate, and disease factors",
+      "correctAnswer": "Military, economic, political factors",
       "acceptableAlternatives": [
         "multiple causes",
         "many factors",
         "military pressure, economic decline, political instability, climate, and disease"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -13535,7 +13549,6 @@
         "rome_cae_ides_of_march",
         "rome_aug_actium_date",
         "rome_aug_title_meaning",
-        "rome_aug_pax_romana_duration",
         "rome_aug_praetorian_guard_founded",
         "rome_aug_vigiles_founding",
         "rome_aug_ara_pacis_commission",
@@ -13543,20 +13556,11 @@
         "rome_aug_philippi_battle",
         "rome_aug_lepidus_stripped",
         "rome_rep_gracchi_violence",
-        "rome_rep_pompey_pirates",
-        "rome_rep_republic_duration",
         "rome_cae_consul_year",
-        "rome_cae_gallic_casualties_sources",
-        "rome_cae_britain_twice",
         "rome_cae_pontifex_pope",
-        "rome_cae_assassination_conspirators",
         "rome_aug_nero_fiddle_myth",
         "rome_aug_year_four_emperors",
         "rome_aug_vesuvius_eruption",
-        "rome_cae_julian_calendar_error",
-        "rome_aug_augustus_reign_length",
-        "rome_aug_hadrian_traveled",
-        "rome_cae_gallic_legions",
         "rome_cae_caesars_death_wounds",
         "rome_aug_constantine_edict_milan",
         "rome_aug_476_ce",
@@ -13568,21 +13572,16 @@
         "rome_emp_hadrian_wall_start",
         "rome_eng_pantheon_church",
         "rome_chr_jesus_crucifixion_date",
-        "rome_chr_nero_fire_date",
         "rome_chr_great_persecution_start",
         "rome_chr_nicaea_council_year",
         "rome_chr_constantine_constantinople",
-        "rome_chr_persecution_duration",
-        "rome_chr_constantine_death_baptism",
         "rome_emp_tiberius_death_ambiguity",
         "rome_emp_nero_fiddle_myth",
         "rome_emp_trajan_max_extent",
         "rome_eng_colosseum_start_year",
-        "rome_chr_paul_missionary_dates",
         "rome_chr_domitian_persecution",
         "rome_chr_pilate_caesarea_inscription",
         "rome_chr_galerius_edict_311",
-        "rome_emp_pax_romana_length",
         "rome_chr_constantine_death_date",
         "rome_chr_milvian_bridge_date",
         "rome_pun_cannae_casualties",
@@ -13604,7 +13603,6 @@
         "rome_pun_hannibal_alps_duration",
         "rome_pun_cato_elder_age",
         "rome_pun_first_punic_duration",
-        "rome_fall_antonine_plague",
         "rome_fall_376_danube_crossing",
         "rome_fall_constantine_praetorian_year"
       ],
@@ -13616,12 +13614,9 @@
       "answerFormat": "place",
       "factIds": [
         "rome_rep_she_wolf_legend",
-        "rome_cae_cleopatra_smuggled",
         "rome_aug_antony_cleopatra_death",
         "rome_cae_pompey_death_egypt",
         "rome_aug_tiberius_capri",
-        "rome_aug_commodus_renamed",
-        "rome_cae_rubicon_meaning",
         "rome_emp_tiberius_capri",
         "rome_emp_nero_fire_location",
         "rome_eng_pont_du_gard",
@@ -13641,21 +13636,16 @@
       "answerFormat": "name",
       "factIds": [
         "rome_rep_last_king",
-        "rome_rep_first_triumvirate_members",
         "rome_rep_numa_calendar",
         "rome_rep_cloaca_maxima_builder",
         "rome_cae_alea_iacta_est_source",
-        "rome_cae_assassins_brutus_cassius",
         "rome_aug_birth_name",
-        "rome_aug_aeneid_purpose",
         "rome_aug_cicero_proscribed",
         "rome_rep_ostia_founder",
         "rome_rep_fabius_strategy",
         "rome_cae_caesarion",
         "rome_aug_caligula_horse",
         "rome_rep_servius_tullius_census",
-        "rome_cae_wills_heir",
-        "rome_aug_horace_virgil_ovid",
         "rome_aug_pantheon_rebuilt",
         "rome_rep_lucretia_story",
         "rome_aug_actium_commander",
@@ -13676,6 +13666,7 @@
         "rome_fall_odoacer",
         "rome_fall_why_rome_fell",
         "rome_fall_theodoric_great",
+        "rome_life_bread_circuses",
         "rome_pun_masinissa",
         "rome_fall_stilicho",
         "rome_fall_aetius_last_roman"
@@ -13688,70 +13679,35 @@
       "answerFormat": "term",
       "factIds": [
         "rome_rep_kings_count",
-        "rome_rep_spqr_meaning",
         "rome_rep_consuls_veto",
-        "rome_rep_social_war_result",
-        "rome_cae_civic_crown",
-        "rome_cae_dictator_perpetuo",
-        "rome_aug_claudius_hidden",
-        "rome_aug_urine_tax",
-        "rome_aug_trajan_optimus",
         "rome_rep_dictatorship_limit",
-        "rome_rep_marius_army_reform",
-        "rome_rep_sulla_proscriptions",
-        "rome_rep_twelve_tables_purpose",
-        "rome_aug_augustus_princeps",
-        "rome_aug_pater_patriae",
-        "rome_rep_tribunes_sacrosanct",
-        "rome_aug_byzantine_self_name",
-        "rome_emp_caligula_assassination",
-        "rome_emp_claudius_curtain",
         "rome_emp_nero_fire_scapegoat",
         "rome_emp_vespasian_urine_tax",
-        "rome_emp_trajan_title",
         "rome_emp_hadrian_travel",
         "rome_emp_marcus_meditations",
         "rome_emp_commodus_gladiator",
-        "rome_emp_commodus_death",
         "rome_eng_julian_calendar_year",
         "rome_eng_roman_numerals_symbols",
-        "rome_eng_vigiles_purpose",
-        "rome_chr_decian_persecution",
+        "rome_chr_pilate_rank",
         "rome_chr_nicaea_controversy",
         "rome_chr_edict_thessalonica",
-        "rome_chr_constantine_praetorian",
         "rome_chr_jesus_cross_inscription",
-        "rome_chr_pilate_saint",
-        "rome_emp_claudius_disabilities",
         "rome_eng_cursus_publicus",
-        "rome_chr_christian_refusal_sacrifice",
         "rome_chr_byzantine_self_name",
         "rome_chr_edict_thessalonica_heresy",
         "rome_pun_carthage_government",
         "rome_pun_first_punic_corvus",
-        "rome_pun_cannae_tactic",
-        "rome_pun_zama_peace_terms",
+        "rome_fall_attila_nickname",
+        "rome_fall_vandals_455",
         "rome_fall_foederati",
         "rome_mil_legion_size",
         "rome_mil_centurion_century",
         "rome_mil_gladius_stabbing",
         "rome_mil_testudo",
         "rome_mil_triumph_memento_mori",
-        "rome_life_gladiators_status",
         "rome_life_toga_types",
         "rome_life_latin_romance_languages",
-        "rome_pun_third_punic_cause",
-        "rome_fall_western_collapse_factors",
-        "rome_chr_pilate_rank",
-        "rome_pun_hannibal_death",
-        "rome_pun_hannibal_oath",
-        "rome_fall_attila_nickname",
-        "rome_fall_vandals_455",
-        "rome_pun_hannibal_lifespan",
-        "rome_pun_hannibal_brothers_count",
-        "rome_fall_romulus_augustulus_fate",
-        "rome_cae_bello_gallico_opening",
-        "rome_aug_colosseum_jerusalem"
+        "rome_pun_hannibal_lifespan"
       ],
       "minimumSize": 5
     },
@@ -13760,12 +13716,9 @@
       "label": "Famous Roman Texts & Works",
       "answerFormat": "name",
       "factIds": [
-        "rome_aug_marcus_stoicism",
         "rome_chr_paul_new_testament",
-        "rome_chr_milvian_bridge_vision",
         "rome_chr_tacitus_christians",
-        "rome_chr_nicene_creed_product",
-        "rome_life_bread_circuses"
+        "rome_chr_nicene_creed_product"
       ],
       "minimumSize": 3,
       "syntheticDistractors": [
@@ -13787,7 +13740,6 @@
       "factIds": [
         "rome_cae_vercingetorix_battle",
         "rome_cae_veni_vidi_vici",
-        "rome_cae_pharsalus_pompey_cavalry",
         "rome_pun_lake_trasimene",
         "rome_pun_trebia",
         "rome_pun_cape_ecnomus",
@@ -13810,35 +13762,24 @@
       "label": "Roman Buildings & Structures",
       "answerFormat": "name",
       "factIds": [
-        "rome_cae_assassination_location",
         "rome_aug_marble_quote",
-        "rome_aug_hadrian_wall_length",
-        "rome_aug_trajans_column",
-        "rome_aug_cursus_publicus",
         "rome_eng_roads_total_km",
-        "rome_eng_via_appia_nickname",
         "rome_eng_aqueducts_number",
         "rome_eng_aqua_appia_fate",
         "rome_eng_colosseum_capacity",
-        "rome_eng_colosseum_name_origin",
-        "rome_eng_pantheon_dome_record",
         "rome_eng_roman_concrete_seawater",
         "rome_eng_circus_maximus_capacity",
         "rome_eng_cloaca_maxima_today",
         "rome_eng_insulae_housing",
         "rome_eng_baths_caracalla",
         "rome_eng_hadrian_wall_length",
-        "rome_eng_forum_romanum_purpose",
         "rome_chr_catacombs_purpose",
         "rome_chr_old_st_peters_site",
-        "rome_emp_trajan_column_ashes",
         "rome_eng_aqueduct_water_priority",
         "rome_eng_roads_radiate",
         "rome_eng_pantheon_sphere",
         "rome_eng_circus_maximus_dimensions",
-        "rome_eng_roman_arch_contribution",
-        "rome_chr_catacombs_number",
-        "rome_eng_road_construction_features"
+        "rome_chr_catacombs_number"
       ],
       "minimumSize": 5
     },
@@ -13849,12 +13790,8 @@
       "factIds": [
         "rome_emp_caligula_nickname",
         "rome_emp_caligula_horse",
-        "rome_emp_four_emperors_order",
         "rome_emp_marcus_successor",
         "rome_chr_edict_milan_second_issuer",
-        "rome_emp_vespasian_last_words",
-        "rome_emp_five_good_list",
-        "rome_eng_aqua_claudia_builders",
         "rome_emp_year_four_trigger",
         "rome_fall_tetrarchy",
         "rome_fall_division_395",
@@ -13877,7 +13814,6 @@
         "rome_god_jupiter_king",
         "rome_god_mars_month",
         "rome_god_venus_caesar",
-        "rome_god_capitoline_triad",
         "rome_god_saturn_saturnalia",
         "rome_god_cereal_ceres",
         "rome_life_vulcan_volcano"
@@ -13890,6 +13826,91 @@
         "Neptune",
         "Pluto",
         "Bacchus"
+      ]
+    },
+    {
+      "id": "historical_phrases",
+      "label": "Historical Phrases & Descriptions",
+      "factIds": [
+        "rome_rep_spqr_meaning",
+        "rome_rep_social_war_result",
+        "rome_rep_first_triumvirate_members",
+        "rome_cae_civic_crown",
+        "rome_cae_bello_gallico_opening",
+        "rome_cae_cleopatra_smuggled",
+        "rome_cae_dictator_perpetuo",
+        "rome_cae_assassination_location",
+        "rome_cae_assassins_brutus_cassius",
+        "rome_aug_pax_romana_duration",
+        "rome_aug_aeneid_purpose",
+        "rome_rep_pompey_pirates",
+        "rome_rep_republic_duration",
+        "rome_cae_gallic_casualties_sources",
+        "rome_cae_britain_twice",
+        "rome_cae_assassination_conspirators",
+        "rome_aug_claudius_hidden",
+        "rome_aug_colosseum_jerusalem",
+        "rome_aug_urine_tax",
+        "rome_aug_hadrian_wall_length",
+        "rome_aug_five_good_emperors_list",
+        "rome_aug_trajans_column",
+        "rome_aug_marcus_stoicism",
+        "rome_aug_commodus_renamed",
+        "rome_aug_trajan_optimus",
+        "rome_rep_marius_army_reform",
+        "rome_rep_sulla_proscriptions",
+        "rome_rep_twelve_tables_purpose",
+        "rome_cae_rubicon_meaning",
+        "rome_cae_pharsalus_pompey_cavalry",
+        "rome_cae_julian_calendar_error",
+        "rome_cae_wills_heir",
+        "rome_aug_augustus_princeps",
+        "rome_aug_pater_patriae",
+        "rome_aug_cursus_publicus",
+        "rome_aug_horace_virgil_ovid",
+        "rome_aug_augustus_reign_length",
+        "rome_aug_hadrian_traveled",
+        "rome_rep_tribunes_sacrosanct",
+        "rome_cae_gallic_legions",
+        "rome_aug_byzantine_self_name",
+        "rome_emp_caligula_assassination",
+        "rome_emp_claudius_curtain",
+        "rome_emp_four_emperors_order",
+        "rome_emp_trajan_title",
+        "rome_emp_commodus_death",
+        "rome_eng_via_appia_nickname",
+        "rome_eng_colosseum_name_origin",
+        "rome_eng_pantheon_dome_record",
+        "rome_eng_vigiles_purpose",
+        "rome_eng_forum_romanum_purpose",
+        "rome_chr_nero_fire_date",
+        "rome_chr_decian_persecution",
+        "rome_chr_milvian_bridge_vision",
+        "rome_chr_persecution_duration",
+        "rome_chr_constantine_praetorian",
+        "rome_chr_pilate_saint",
+        "rome_chr_constantine_death_baptism",
+        "rome_emp_vespasian_last_words",
+        "rome_emp_trajan_column_ashes",
+        "rome_emp_five_good_list",
+        "rome_eng_aqua_claudia_builders",
+        "rome_chr_paul_missionary_dates",
+        "rome_emp_pax_romana_length",
+        "rome_emp_claudius_disabilities",
+        "rome_eng_roman_arch_contribution",
+        "rome_chr_christian_refusal_sacrifice",
+        "rome_eng_road_construction_features",
+        "rome_pun_cannae_tactic",
+        "rome_pun_zama_peace_terms",
+        "rome_pun_hannibal_death",
+        "rome_pun_hannibal_oath",
+        "rome_god_capitoline_triad",
+        "rome_life_gladiators_status",
+        "rome_pun_third_punic_cause",
+        "rome_pun_hannibal_brothers_count",
+        "rome_fall_antonine_plague",
+        "rome_fall_romulus_augustulus_fate",
+        "rome_fall_western_collapse_factors"
       ]
     }
   ],

@@ -755,21 +755,24 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 | `minimumFacts` | 200 |
 | `targetFacts` | 280 |
 
-**Answer Type Pools (9):**
+**Answer Type Pools (10):**
 
-| Pool ID | Format | Facts (after 2026-04-01 fix) |
+| Pool ID | Format | Facts |
 |---|---|---|
-| `date_events` | date | dates/counts/numbers |
-| `city_place_names` | name | cities, places |
-| `general_politician_names` | name | 40 — person names only |
-| `political_terms` | term | 65 — terms, phrases, epitaphs, oaths |
-| `text_work_names` | name | 6 — text/work titles |
-| `battle_names` | name | battle names |
-| `structure_names` | name | 29 — building/structure names |
-| `emperor_names` | name | emperor names |
-| `roman_god_names` | name | Roman deity names |
+| `date_events` | date | 74 — dates, BCE/CE strings |
+| `city_place_names` | name | 11 — cities and regions |
+| `general_politician_names` | name | 35 — person names 7–19 chars |
+| `political_terms` | term | 30 — terms, phrases, Latin titles |
+| `text_work_names` | name | 3 — text/work titles |
+| `battle_names` | name | 8 — battle names |
+| `structure_names` | name | 18 — building/structure names |
+| `emperor_names` | name | 9 — emperor names |
+| `roman_god_names` | name | 8 — Roman deity names |
+| `historical_phrases` | phrase | 79 — descriptions and longer answers 13–38 chars |
 
 **Pool fix (2026-04-01):** 10 facts were reassigned from `general_politician_names`, `text_work_names`, and `structure_names` to `political_terms` because their correct answers were non-name types (epithets, oaths, date ranges, phrases) that would appear as bad distractors in person-name questions. See gotchas.md for the lesson.
+
+**Pool homogeneity fix (2026-04-04):** 3-round fix applied via scripts `fix-pool-homogeneity-greece-rome.mjs`, `fix-pool-homogeneity-round2.mjs`, `fix-pool-homogeneity-round3.mjs`. New `historical_phrases` pool created to hold long descriptive answers (13–38 chars) moved out of `political_terms`, `general_politician_names`, and other pools. 10+ bare number answers converted to `{N}` bracket notation. Result: 0 FAIL, 7 WARN (all pools within 3× length ratio threshold).
 
 ---
 
@@ -784,20 +787,23 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 | `subDomain` | `ancient_greece` |
 | `facts` | 246 |
 
-**Answer Type Pools (8):**
+**Answer Type Pools (9):**
 
-| Pool ID | Format | Facts (after 2026-04-01 fix) |
+| Pool ID | Format | Facts |
 |---|---|---|
-| `ruler_general_names` | name | 38 — person names |
-| `concept_terms` | term | 101 — terms, durations, descriptions |
-| `date_events` | date | 40 — calendar dates |
-| `structure_names` | name | 15 — building/place names |
-| `god_names` | name | 16 — Greek deity names |
-| `city_state_names` | place | 13 — polis/city names |
-| `battle_names` | name | 8 — battle names |
-| `work_text_names` | name | 15 — literary/artistic works |
+| `ruler_general_names` | name | 27 — person names 4–18 chars |
+| `concept_terms` | term | 51 — short terms and named concepts 5–15 chars |
+| `date_events` | date | 37 — calendar dates |
+| `structure_names` | name | 13 — building/place names |
+| `god_names` | name | 12 — Greek deity names |
+| `city_state_names` | place | 11 — polis/city names |
+| `battle_names` | name | 6 — battle names |
+| `work_text_names` | name | 10 — literary/artistic works |
+| `historical_phrases` | phrase | 79 — descriptions and longer answers 15–37 chars |
 
 **Pool fix (2026-04-01):** 5 facts were reassigned to correct pools: `greece_cs_ostracism_duration` ("Ten years") and `greece_rel_poseidon_domain` ("Seas, water, storms…") moved from name-format pools to `concept_terms`; `greece_cs_agora_function` (function description) moved to `concept_terms`; `greece_oc_kritios_boy` (artwork title) moved to `work_text_names`; `greece_alex_hellespont_crossing` ("334 BCE") moved from `battle_names` to `date_events`.
+
+**Pool homogeneity fix (2026-04-04):** 3-round fix applied via scripts `fix-pool-homogeneity-greece-rome.mjs`, `fix-pool-homogeneity-round2.mjs`, `fix-pool-homogeneity-round3.mjs`. New `historical_phrases` pool created; 52+ facts moved from `concept_terms` (formerly 101 facts, 5–25 char range) to establish two distinct pools: `concept_terms` (5–15 chars short named terms) and `historical_phrases` (15–37 chars longer descriptions). 14 bare numbers in `concept_terms` and `date_events` converted to `{N}` bracket notation. Compound names moved from `ruler_general_names` to `historical_phrases`. Result: 0 FAIL, 6 WARN (all pools within 3× length ratio threshold).
 
 ---
 

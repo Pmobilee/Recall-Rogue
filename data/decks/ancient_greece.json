@@ -69,8 +69,9 @@
     },
     {
       "id": "greece_cs_boule_members",
-      "correctAnswer": "500",
+      "correctAnswer": "{500}",
       "acceptableAlternatives": [
+        "500",
         "five hundred"
       ],
       "chainThemeId": 0,
@@ -126,7 +127,7 @@
         "broken pottery"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -214,11 +215,10 @@
     },
     {
       "id": "greece_cs_ecclesia_age",
-      "correctAnswer": "20",
+      "correctAnswer": "{20}",
       "acceptableAlternatives": [
-        "twenty",
-        "age 20",
-        "over 20"
+        "20",
+        "twenty"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "concept_terms",
@@ -265,13 +265,13 @@
     },
     {
       "id": "greece_cs_parthenon_architects",
-      "correctAnswer": "Ictinus and Callicrates",
+      "correctAnswer": "Ictinus & Callicrates",
       "acceptableAlternatives": [
         "Ictinus",
         "Callicrates"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "ruler_general_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -315,13 +315,13 @@
     },
     {
       "id": "greece_cs_parthenon_statue_material",
-      "correctAnswer": "Chryselephantine (gold and ivory)",
+      "correctAnswer": "Chryselephantine (gold/ivory)",
       "acceptableAlternatives": [
         "gold and ivory",
         "chryselephantine"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -372,7 +372,7 @@
         "link Athens to Piraeus"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -416,9 +416,10 @@
     },
     {
       "id": "greece_cs_trireme_rowers",
-      "correctAnswer": "170",
+      "correctAnswer": "{170}",
       "acceptableAlternatives": [
-        "one hundred and seventy"
+        "170",
+        "one hundred seventy"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "concept_terms",
@@ -517,10 +518,11 @@
     },
     {
       "id": "greece_cs_sparta_kings",
-      "correctAnswer": "Two",
+      "correctAnswer": "{2}",
       "acceptableAlternatives": [
         "2",
-        "dual kingship"
+        "two",
+        "Two"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "concept_terms",
@@ -567,9 +569,11 @@
     },
     {
       "id": "greece_cs_ephors_count",
-      "correctAnswer": "Five",
+      "correctAnswer": "{5}",
       "acceptableAlternatives": [
-        "5"
+        "5",
+        "five",
+        "Five"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "concept_terms",
@@ -615,11 +619,10 @@
     },
     {
       "id": "greece_cs_gerousia_age",
-      "correctAnswer": "60",
+      "correctAnswer": "{60}",
       "acceptableAlternatives": [
-        "sixty",
-        "at least 60",
-        "minimum 60"
+        "60",
+        "sixty"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "concept_terms",
@@ -666,9 +669,9 @@
     },
     {
       "id": "greece_cs_agoge_entry_age",
-      "correctAnswer": "7",
+      "correctAnswer": "{7}",
       "acceptableAlternatives": [
-        "age 7",
+        "7",
         "seven"
       ],
       "chainThemeId": 0,
@@ -864,12 +867,13 @@
     },
     {
       "id": "greece_cs_laconic_philip",
-      "correctAnswer": "If",
+      "correctAnswer": "\"If\" — the complete Spartan reply",
       "acceptableAlternatives": [
+        "If",
         "\"If\""
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 10,
       "ageGroup": "all",
@@ -919,7 +923,7 @@
         "formal schooling"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -969,7 +973,7 @@
         "both a market and a civic space"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -1019,7 +1023,7 @@
         "olive"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "god_names",
+      "answerTypePoolId": "concept_terms",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -1121,7 +1125,7 @@
         "75,000–100,000 people"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -1409,10 +1413,9 @@
     },
     {
       "id": "greece_cs_laurion_slavery",
-      "correctAnswer": "150,000",
+      "correctAnswer": "{150000}",
       "acceptableAlternatives": [
-        "about 150,000",
-        "~150,000"
+        "150,000"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "concept_terms",
@@ -1509,10 +1512,9 @@
     },
     {
       "id": "greece_cs_parthenon_damage_1687",
-      "correctAnswer": "1687",
+      "correctAnswer": "{1687}",
       "acceptableAlternatives": [
-        "AD 1687",
-        "CE 1687"
+        "1687"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "date_events",
@@ -1559,13 +1561,13 @@
     },
     {
       "id": "greece_cs_themistocles_fate",
-      "correctAnswer": "He was ostracized and later served the Persian king",
+      "correctAnswer": "Ostracized; later served Persia",
       "acceptableAlternatives": [
         "ostracized, fled to Persia",
         "exiled, entered Persian service"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "ruler_general_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 9,
       "ageGroup": "all",
@@ -1712,7 +1714,7 @@
         "one cloak"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -1811,7 +1813,7 @@
         "the Achaemenid Persian Empire"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "city_state_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -1860,7 +1862,7 @@
         "Master, remember the Athenians"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "ruler_general_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -1998,13 +2000,13 @@
     },
     {
       "id": "greece_pw_marathon_pheidippides_sparta",
-      "correctAnswer": "240 kilometers to Sparta",
+      "correctAnswer": "~240 km to Sparta",
       "acceptableAlternatives": [
         "240 km to Sparta",
         "ran to Sparta"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "ruler_general_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -2045,13 +2047,13 @@
     },
     {
       "id": "greece_pw_xerxes_hellespont",
-      "correctAnswer": "Whipped the Hellespont 300 times",
+      "correctAnswer": "Whipped the Hellespont {300} times",
       "acceptableAlternatives": [
         "had the sea whipped",
         "ordered the sea flogged 300 times"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "ruler_general_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 10,
       "ageGroup": "all",
@@ -2095,8 +2097,9 @@
     },
     {
       "id": "greece_pw_immortals",
-      "correctAnswer": "10,000",
+      "correctAnswer": "{10000}",
       "acceptableAlternatives": [
+        "10,000",
         "ten thousand"
       ],
       "chainThemeId": 1,
@@ -2242,14 +2245,14 @@
     },
     {
       "id": "greece_pw_salamis_strategy",
-      "correctAnswer": "Narrow straits between the island and mainland",
+      "correctAnswer": "Fight in narrow straits",
       "acceptableAlternatives": [
         "narrow straits",
         "confined straits",
         "strait of Salamis"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "battle_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -2293,13 +2296,13 @@
     },
     {
       "id": "greece_pw_artemisia",
-      "correctAnswer": "She rammed a friendly ship to escape an Athenian pursuer",
+      "correctAnswer": "Rammed a friendly ship to escape",
       "acceptableAlternatives": [
         "rammed a Calyndian ship",
         "sank an allied ship"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "ruler_general_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 10,
       "ageGroup": "all",
@@ -2492,7 +2495,7 @@
         "the Father of History"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "work_text_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 1,
       "funScore": 5,
       "ageGroup": "all",
@@ -2536,7 +2539,7 @@
     },
     {
       "id": "greece_pw_darius_death",
-      "correctAnswer": "October 486 BCE",
+      "correctAnswer": "486 BCE",
       "acceptableAlternatives": [
         "486 BCE",
         "c. 486 BCE"
@@ -2739,7 +2742,7 @@
         "jailed, died of gangrene"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "ruler_general_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 8,
       "ageGroup": "all",
@@ -2882,7 +2885,7 @@
     },
     {
       "id": "greece_pw_themistocles_ostracism",
-      "correctAnswer": "c. 472–471 BCE",
+      "correctAnswer": "471 BCE",
       "acceptableAlternatives": [
         "around 472 BCE",
         "471 BCE",
@@ -2983,13 +2986,13 @@
     },
     {
       "id": "greece_pw_pausanias_fate",
-      "correctAnswer": "Walled into a temple and starved to death",
+      "correctAnswer": "Walled in a temple and starved",
       "acceptableAlternatives": [
         "sealed in a temple and starved",
         "bricked in at a temple"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "ruler_general_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 9,
       "ageGroup": "all",
@@ -3039,7 +3042,7 @@
         "~10,000-11,000"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "battle_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -3181,12 +3184,12 @@
     },
     {
       "id": "greece_pw_darius_marathon_generals",
-      "correctAnswer": "Datis and Artaphernes",
+      "correctAnswer": "Datis & Artaphernes",
       "acceptableAlternatives": [
         "Datis and Artaphernes the Younger"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "ruler_general_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 6,
       "ageGroup": "all",
@@ -3378,14 +3381,14 @@
     },
     {
       "id": "greece_pw_sparta_carneia",
-      "correctAnswer": "The Carneia (a religious festival)",
+      "correctAnswer": "The Carneia festival",
       "acceptableAlternatives": [
         "Carneia",
         "religious festival",
         "the Carneia festival"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -3540,13 +3543,13 @@
     },
     {
       "id": "greece_ga_parthenon_architects",
-      "correctAnswer": "Iktinos and Callicrates",
+      "correctAnswer": "Iktinos & Callicrates",
       "acceptableAlternatives": [
         "Ictinus and Callicrates",
         "Callicrates and Iktinos"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "ruler_general_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -3844,8 +3847,9 @@
     },
     {
       "id": "greece_ga_euripides_surviving_plays",
-      "correctAnswer": "19",
+      "correctAnswer": "{19}",
       "acceptableAlternatives": [
+        "19",
         "nineteen"
       ],
       "chainThemeId": 2,
@@ -3947,7 +3951,7 @@
         "the Father of History"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
@@ -3998,7 +4002,7 @@
         "impartial historical method"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -4047,7 +4051,7 @@
         "the Father of Medicine"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
@@ -4392,7 +4396,7 @@
         "the Hippocratic Oath"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "work_text_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 1,
       "funScore": 8,
       "ageGroup": "all",
@@ -4633,8 +4637,9 @@
     },
     {
       "id": "greece_ga_aristophanes_surviving_plays",
-      "correctAnswer": "11",
+      "correctAnswer": "{11}",
       "acceptableAlternatives": [
+        "11",
         "eleven"
       ],
       "chainThemeId": 2,
@@ -4734,7 +4739,7 @@
         "History of the Peloponnesian War by Thucydides"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "work_text_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
@@ -4832,7 +4837,7 @@
         "plague"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -4933,7 +4938,7 @@
         "payment for jury duty"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -4977,7 +4982,7 @@
     },
     {
       "id": "greece_ga_hippocrates_kos",
-      "correctAnswer": "Kos",
+      "correctAnswer": "island of Kos",
       "acceptableAlternatives": [
         "Cos",
         "the island of Kos"
@@ -5331,7 +5336,7 @@
         "you cannot step into the same river twice"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 9,
       "ageGroup": "all",
@@ -5432,7 +5437,7 @@
         "Pythagoras theorem"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
@@ -5584,7 +5589,7 @@
         "four elements: earth water fire air"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 1,
       "funScore": 8,
       "ageGroup": "all",
@@ -5628,14 +5633,14 @@
     },
     {
       "id": "greece_ph_socrates_method",
-      "correctAnswer": "Socratic method (elenchus)",
+      "correctAnswer": "Socratic method",
       "acceptableAlternatives": [
         "elenchus",
         "Socratic method",
         "elenctic method"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 1,
       "funScore": 8,
       "ageGroup": "all",
@@ -5784,7 +5789,7 @@
         "the Cave"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 1,
       "funScore": 10,
       "ageGroup": "all",
@@ -5936,7 +5941,7 @@
         "social and political animal"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -5980,14 +5985,14 @@
     },
     {
       "id": "greece_ph_diogenes_barrel",
-      "correctAnswer": "Large ceramic storage jar (pithos)",
+      "correctAnswer": "A ceramic pithos jar",
       "acceptableAlternatives": [
         "a large jar",
         "pithos",
         "ceramic jar"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 10,
       "ageGroup": "all",
@@ -6036,7 +6041,7 @@
         "a Socrates gone mad"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -6081,7 +6086,7 @@
     },
     {
       "id": "greece_ph_zeno_stoicism",
-      "correctAnswer": "Stoa Poikile (Painted Porch)",
+      "correctAnswer": "Stoa Poikile",
       "acceptableAlternatives": [
         "the Stoa Poikile",
         "the Painted Porch",
@@ -6288,7 +6293,7 @@
         "homo mensura"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 9,
       "ageGroup": "all",
@@ -6491,7 +6496,7 @@
         "Plato, Xenophon, Aristophanes"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "ruler_general_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "adult",
@@ -6532,13 +6537,13 @@
     },
     {
       "id": "greece_ph_plato_soul",
-      "correctAnswer": "Reason, spirit (thumos), and appetite",
+      "correctAnswer": "Reason, spirit, and appetite",
       "acceptableAlternatives": [
         "rational, spirited, appetitive",
         "logos thumos epithumia"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "adult",
@@ -6582,13 +6587,13 @@
     },
     {
       "id": "greece_ph_aristotle_logic",
-      "correctAnswer": "Logic (syllogistic reasoning)",
+      "correctAnswer": "Syllogistic reasoning",
       "acceptableAlternatives": [
         "syllogistic logic",
         "formal logic"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -6633,13 +6638,13 @@
     },
     {
       "id": "greece_ph_zeno_virtue",
-      "correctAnswer": "Living according to nature and reason",
+      "correctAnswer": "Living by nature and reason",
       "acceptableAlternatives": [
         "according to nature",
         "in accordance with nature and logos"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -6688,7 +6693,7 @@
         "the Laughing Philosopher of Abdera"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -6780,13 +6785,13 @@
     },
     {
       "id": "greece_ph_pythagoras_music",
-      "correctAnswer": "Mathematical ratios (intervals)",
+      "correctAnswer": "Mathematical ratios",
       "acceptableAlternatives": [
         "mathematical relationships",
         "mathematical proportions between string lengths"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -6881,13 +6886,13 @@
     },
     {
       "id": "greece_ph_anaximander_earth",
-      "correctAnswer": "Floating unsupported in infinite space",
+      "correctAnswer": "Floating free in infinite space",
       "acceptableAlternatives": [
         "floating free in space",
         "unsupported in space"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -6989,7 +6994,7 @@
         "olive crown"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -7034,14 +7039,14 @@
     },
     {
       "id": "greece_oc_olympics_women",
-      "correctAnswer": "Barred from attending or competing (Demeter's priest only)",
+      "correctAnswer": "Barred from attending or competing",
       "acceptableAlternatives": [
         "women were excluded",
         "women could not attend or compete",
         "Barred from competing AND attending (except priestess of Demeter)"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -7091,7 +7096,7 @@
         "Olympic truce"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -7143,7 +7148,7 @@
         "the length of the stadium track"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -7284,7 +7289,7 @@
     },
     {
       "id": "greece_oc_pankration_arrhichion",
-      "correctAnswer": "Arrhichion of Phigalia",
+      "correctAnswer": "Arrhichion",
       "acceptableAlternatives": [
         "Arrhichion",
         "Arrakhion"
@@ -7384,13 +7389,13 @@
     },
     {
       "id": "greece_oc_theatrical_masks",
-      "correctAnswer": "Organic materials (linen, leather, cork)",
+      "correctAnswer": "Linen, leather, or cork",
       "acceptableAlternatives": [
         "stiffened linen and leather",
         "organic materials"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -7486,13 +7491,13 @@
     },
     {
       "id": "greece_oc_black_figure_pottery",
-      "correctAnswer": "Corinth, around 700 BCE",
+      "correctAnswer": "Corinth, c. 700 BCE",
       "acceptableAlternatives": [
         "Corinth c. 700 BCE",
         "Corinth (700 BC)"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "city_state_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -7584,7 +7589,7 @@
     },
     {
       "id": "greece_oc_kritios_boy",
-      "correctAnswer": "Kritios Boy (c. 480 BCE)",
+      "correctAnswer": "Kritios Boy",
       "acceptableAlternatives": [
         "the Kritios Boy",
         "Kritios Boy"
@@ -7842,7 +7847,7 @@
         "freeborn male Greeks"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -7934,7 +7939,7 @@
     },
     {
       "id": "greece_oc_olympic_chariot",
-      "correctAnswer": "Tethrippon (four-horse chariot race)",
+      "correctAnswer": "Tethrippon",
       "acceptableAlternatives": [
         "chariot racing",
         "the tethrippon",
@@ -8042,7 +8047,7 @@
         "the Phoenician abjad"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -8087,7 +8092,7 @@
     },
     {
       "id": "greece_oc_olympic_theodosius",
-      "correctAnswer": "Emperor Theodosius I",
+      "correctAnswer": "Theodosius I",
       "acceptableAlternatives": [
         "Theodosius I",
         "Emperor Theodosius"
@@ -8195,7 +8200,7 @@
         "sacrifice of 100 oxen"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -8286,10 +8291,10 @@
     },
     {
       "id": "greece_ga_sophocles_contests",
-      "correctAnswer": "24",
+      "correctAnswer": "{24}",
       "acceptableAlternatives": [
-        "twenty-four",
-        "24 first prizes"
+        "24",
+        "twenty-four"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_terms",
@@ -8690,7 +8695,7 @@
         "Hellenic League"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "adult",
@@ -8736,7 +8741,7 @@
     },
     {
       "id": "greece_alex_philip_assassination",
-      "correctAnswer": "Pausanias of Orestis",
+      "correctAnswer": "Pausanias",
       "acceptableAlternatives": [
         "Pausanias"
       ],
@@ -9047,14 +9052,14 @@
     },
     {
       "id": "greece_alex_tyre_causeway",
-      "correctAnswer": "A causeway (mole) approximately 1 kilometer long",
+      "correctAnswer": "About 1 km causeway",
       "acceptableAlternatives": [
         "a causeway",
         "a mole across the sea",
         "land bridge to Tyre"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 9,
       "ageGroup": "adult",
@@ -9311,14 +9316,14 @@
     },
     {
       "id": "greece_alex_army_mutiny",
-      "correctAnswer": "The Hyphasis River (modern Beas River)",
+      "correctAnswer": "The Hyphasis River",
       "acceptableAlternatives": [
         "Hyphasis",
         "Beas River",
         "the Hyphasis"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "adult",
@@ -9418,7 +9423,7 @@
     },
     {
       "id": "greece_alex_death_cause",
-      "correctAnswer": "Typhoid fever (or fever of unknown cause)",
+      "correctAnswer": "Typhoid fever",
       "acceptableAlternatives": [
         "typhoid fever",
         "unknown illness",
@@ -9631,14 +9636,14 @@
     },
     {
       "id": "greece_alex_pharos_lighthouse",
-      "correctAnswer": "103–118 meters (338–387 feet)",
+      "correctAnswer": "About 110 meters tall",
       "acceptableAlternatives": [
         "about 100 meters tall",
         "over 100 meters",
         "approximately 118 meters"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 8,
       "ageGroup": "adult",
@@ -9739,13 +9744,13 @@
     },
     {
       "id": "greece_alex_empire_size",
-      "correctAnswer": "Approximately 5.2 million km²",
+      "correctAnswer": "~5.2 million km²",
       "acceptableAlternatives": [
         "5.2 million square kilometers",
         "about 5 million km²"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "adult",
@@ -9849,7 +9854,7 @@
         "Babylon settlement"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 6,
       "ageGroup": "adult",
@@ -9994,14 +9999,14 @@
     },
     {
       "id": "greece_alex_companion_cavalry",
-      "correctAnswer": "Companion Cavalry (Hetairoi)",
+      "correctAnswer": "Companion Cavalry",
       "acceptableAlternatives": [
         "Companion Cavalry",
         "Hetairoi",
         "the Companions"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "adult",
@@ -10049,7 +10054,7 @@
         "severed it"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 9,
       "ageGroup": "teen",
@@ -10286,7 +10291,7 @@
         "Philip's phalanx"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "adult",
@@ -10426,13 +10431,13 @@
     },
     {
       "id": "greece_rel_poseidon_domain",
-      "correctAnswer": "Seas, water, storms, earthquakes, and horses",
+      "correctAnswer": "Seas, storms, earthquakes, horses",
       "acceptableAlternatives": [
         "the sea and earthquakes",
         "sea, earthquakes, horses"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "teen",
@@ -10743,14 +10748,14 @@
     },
     {
       "id": "greece_rel_twelfth_olympian",
-      "correctAnswer": "Hestia or Dionysus (the twelfth position varies by source)",
+      "correctAnswer": "Hestia or Dionysus",
       "acceptableAlternatives": [
         "Hestia",
         "Dionysus",
         "either Hestia or Dionysus"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "god_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 8,
       "ageGroup": "adult",
@@ -10797,14 +10802,14 @@
     },
     {
       "id": "greece_rel_pythia_role",
-      "correctAnswer": "High priestess of Apollo at Delphi who delivered prophecies",
+      "correctAnswer": "Apollo's high priestess at Delphi",
       "acceptableAlternatives": [
         "the oracle at Delphi",
         "prophetess of Apollo at Delphi",
         "High priestess of the Temple of Apollo at Delphi who delivered prophecies"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "adult",
@@ -10911,7 +10916,7 @@
         "a great empire would fall"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "adult",
@@ -10958,14 +10963,14 @@
     },
     {
       "id": "greece_rel_delphi_political_influence",
-      "correctAnswer": "Approximately 1,000 years (8th century BCE to ~390 CE)",
+      "correctAnswer": "About 1,000 years",
       "acceptableAlternatives": [
         "about 1000 years",
         "roughly a millennium",
         "from the 8th century BCE to 390 CE"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "adult",
@@ -11017,7 +11022,7 @@
         "Demeter/Persephone"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "god_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "adult",
@@ -11071,7 +11076,7 @@
         "the sacred truce"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "adult",
@@ -11216,7 +11221,7 @@
     },
     {
       "id": "greece_rel_temple_hephaestus",
-      "correctAnswer": "The Temple of Hephaestus (Hephaisteion)",
+      "correctAnswer": "Hephaisteion",
       "acceptableAlternatives": [
         "Hephaisteion",
         "Temple of Hephaestus",
@@ -11271,7 +11276,7 @@
         "the Iliad and Odyssey"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "work_text_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "teen",
@@ -11318,13 +11323,13 @@
     },
     {
       "id": "greece_rel_homer_question",
-      "correctAnswer": "Whether Homer was a single author or multiple poets",
+      "correctAnswer": "Single author vs. multiple poets",
       "acceptableAlternatives": [
         "whether Homer existed",
         "authorship of Homer's poems"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "adult",
@@ -11370,7 +11375,7 @@
         "the Theogony and Works and Days"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "work_text_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "adult",
@@ -11417,13 +11422,13 @@
     },
     {
       "id": "greece_rel_sacrifice_practices",
-      "correctAnswer": "Outdoor altars within sanctuary precincts",
+      "correctAnswer": "Outdoor altars in sanctuaries",
       "acceptableAlternatives": [
         "outdoor altars",
         "altars outside the temples"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "adult",
@@ -11614,14 +11619,14 @@
     },
     {
       "id": "greece_rel_mystery_religions",
-      "correctAnswer": "Initiation and personal salvation or a blessed afterlife",
+      "correctAnswer": "Initiation and personal salvation",
       "acceptableAlternatives": [
         "personal salvation",
         "blessed afterlife for initiates",
         "mystical awakening and afterlife promises"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "adult",
@@ -11662,7 +11667,7 @@
     },
     {
       "id": "greece_rel_schliemann_troy",
-      "correctAnswer": "Hisarlik in modern Turkey",
+      "correctAnswer": "Hisarlik",
       "acceptableAlternatives": [
         "Hisarlik, Turkey",
         "Hisarlik"
@@ -11761,13 +11766,13 @@
     },
     {
       "id": "greece_rel_apollo_domains",
-      "correctAnswer": "Sun, light, prophecy, archery, music, medicine, and healing",
+      "correctAnswer": "Sun, prophecy, archery, and music",
       "acceptableAlternatives": [
         "sun, prophecy, music, medicine",
         "prophecy, music, the sun, and healing"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "god_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "teen",
@@ -12080,7 +12085,7 @@
     },
     {
       "id": "greece_rel_greek_religion_structure",
-      "correctAnswer": "No central priestly authority; practice varied by city",
+      "correctAnswer": "No central priestly authority",
       "acceptableAlternatives": [
         "decentralized",
         "no central religious authority",
@@ -12088,7 +12093,7 @@
         "No unified priestly authority — religious practice organized at the civic level, varying by locality"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "adult",
@@ -12128,14 +12133,14 @@
     },
     {
       "id": "greece_rel_eleusinian_duration",
-      "correctAnswer": "Approximately 2,000 years (from the Bronze Age until 392 CE)",
+      "correctAnswer": "About 2,000 years",
       "acceptableAlternatives": [
         "about 2000 years",
         "nearly two millennia",
         "from the Bronze Age to 392 CE"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "adult",
@@ -12175,7 +12180,7 @@
     },
     {
       "id": "greece_rel_hesiod_dates",
-      "correctAnswer": "Approximately 750–650 BCE",
+      "correctAnswer": "c. 750–650 BCE",
       "acceptableAlternatives": [
         "around 700 BCE",
         "8th–7th century BCE",
@@ -12276,30 +12281,19 @@
       "answerFormat": "name",
       "factIds": [
         "greece_cs_democracy_founder",
-        "greece_cs_parthenon_architects",
         "greece_cs_sicilian_expedition",
         "greece_cs_aegospotami",
-        "greece_cs_themistocles_fate",
         "greece_cs_molon_labe",
         "greece_cs_thermopylae_betrayal",
-        "greece_pw_darius_remember_athenians",
         "greece_pw_marathon_commander",
-        "greece_pw_marathon_pheidippides_sparta",
-        "greece_pw_xerxes_hellespont",
         "greece_pw_thermopylae_fight_shade",
-        "greece_pw_artemisia",
         "greece_pw_plataea_commander",
         "greece_pw_plataea_mardonius",
         "greece_pw_xerxes_assassination",
-        "greece_pw_miltiades_fate",
-        "greece_pw_pausanias_fate",
         "greece_pw_cyrus_lydia",
-        "greece_pw_darius_marathon_generals",
         "greece_pw_sicinnus_deception",
-        "greece_ga_parthenon_architects",
         "greece_ga_euripides_deus_ex_machina",
         "greece_ga_pericles_aspasia",
-        "greece_ph_socrates_sources",
         "greece_oc_pankration_arrhichion",
         "greece_oc_olympic_theodosius",
         "greece_ph_plato_student",
@@ -12322,9 +12316,8 @@
       "answerFormat": "term",
       "factIds": [
         "greece_cs_boule_members",
-        "greece_cs_ostracism_material",
+        "greece_cs_ostracism_duration",
         "greece_cs_ecclesia_age",
-        "greece_cs_parthenon_statue_material",
         "greece_cs_trireme_rowers",
         "greece_cs_sparta_kings",
         "greece_cs_ephors_count",
@@ -12332,96 +12325,47 @@
         "greece_cs_agoge_entry_age",
         "greece_cs_krypteia",
         "greece_cs_helots_ratio",
-        "greece_cs_laconic_philip",
-        "greece_cs_spartan_women",
+        "greece_cs_athena_myth",
         "greece_cs_metics_rights",
         "greece_cs_laurion_slavery",
-        "greece_cs_spartan_training_barefoot",
         "greece_pw_immortals",
-        "greece_pw_sparta_carneia",
         "greece_ga_pericles_role",
         "greece_ga_aeschylus_innovation",
         "greece_ga_sophocles_plays_count",
         "greece_ga_euripides_surviving_plays",
-        "greece_ga_herodotus_title",
-        "greece_ga_thucydides_innovation",
-        "greece_ga_hippocrates_medicine",
         "greece_ga_sophocles_third_actor",
         "greece_ga_aristophanes_surviving_plays",
         "greece_ga_herodotus_histories",
-        "greece_ga_pericles_death",
-        "greece_ga_pericles_populist_policies",
         "greece_ga_parthenon_type",
         "greece_ph_thales_water",
         "greece_ph_anaximander_apeiron",
-        "greece_ph_heraclitus_flux",
         "greece_ph_parmenides_being",
-        "greece_ph_pythagoras_theorem",
         "greece_ph_democritus_atoms",
-        "greece_ph_empedocles_four_elements",
-        "greece_ph_socrates_method",
-        "greece_ph_plato_allegory_cave",
-        "greece_ph_aristotle_man_political",
-        "greece_ph_diogenes_barrel",
-        "greece_ph_diogenes_plato_socrates",
         "greece_ph_epicurus_ataraxia",
-        "greece_ph_protagoras_man_measure",
         "greece_ph_gorgias_nothing",
         "greece_ph_plato_forms",
         "greece_ph_aristotle_poetics",
-        "greece_ph_plato_soul",
-        "greece_ph_aristotle_logic",
-        "greece_ph_zeno_virtue",
-        "greece_ph_democritus_laughing",
-        "greece_ph_pythagoras_music",
         "greece_ph_plato_symposium",
-        "greece_ph_anaximander_earth",
-        "greece_oc_olympics_prize",
-        "greece_oc_olympics_women",
-        "greece_oc_olympics_truce",
-        "greece_oc_stadion_race",
         "greece_oc_pankration",
-        "greece_oc_theatrical_masks",
         "greece_oc_greek_chorus",
         "greece_oc_greek_alphabet",
-        "greece_oc_olympic_nudity",
         "greece_oc_sculpture_kouros",
         "greece_oc_olympic_chariot",
         "greece_oc_musical_modes",
-        "greece_oc_greek_alphabet_ancestor",
-        "greece_oc_olympic_hecatomb",
         "greece_oc_kithara_performer",
         "greece_ga_sophocles_contests",
         "greece_ph_heraclitus_logos",
         "greece_oc_olympic_events_total",
-        "greece_alex_league_corinth",
         "greece_alex_bucephalus_taming",
-        "greece_alex_tyre_causeway",
-        "greece_alex_army_mutiny",
         "greece_alex_death_cause",
         "greece_alex_diadochi",
         "greece_alex_koine_greek",
-        "greece_alex_empire_size",
-        "greece_alex_partition_babylon",
         "greece_alex_philip_sarissa",
-        "greece_alex_companion_cavalry",
-        "greece_alex_gordian_knot",
         "greece_alex_proskynesis",
-        "greece_alex_macedonian_phalanx",
-        "greece_rel_pythia_role",
-        "greece_rel_croesus_oracle",
-        "greece_rel_olympic_truce",
-        "greece_rel_homer_question",
-        "greece_rel_sacrifice_practices",
         "greece_rel_hero_cults",
         "greece_rel_city_dionysia",
-        "greece_rel_mystery_religions",
         "greece_alex_cities_founded",
-        "greece_rel_libation_ritual",
-        "greece_rel_greek_religion_structure",
-        "greece_cs_ostracism_duration",
-        "greece_rel_poseidon_domain",
-        "greece_cs_agora_function"
+        "greece_rel_libation_ritual"
       ],
       "minimumSize": 5
     },
@@ -12432,7 +12376,6 @@
       "factIds": [
         "greece_cs_helot_revolt",
         "greece_cs_peloponnesian_duration",
-        "greece_cs_plague_athens_death_toll",
         "greece_cs_pericles_funeral_oration",
         "greece_cs_parthenon_damage_1687",
         "greece_cs_delian_league",
@@ -12462,14 +12405,12 @@
         "greece_alex_persepolis_burning",
         "greece_alex_death_babylon",
         "greece_alex_hellenistic_period",
+        "greece_alex_hellespont_crossing",
         "greece_alex_battle_ipsus",
-        "greece_rel_delphi_political_influence",
         "greece_alex_bactra_campaign",
         "greece_alex_alexander_egypt_pharaoh",
-        "greece_rel_eleusinian_duration",
         "greece_rel_hesiod_dates",
-        "greece_rel_olympic_games_end",
-        "greece_alex_hellespont_crossing"
+        "greece_rel_olympic_games_end"
       ],
       "minimumSize": 5
     },
@@ -12478,7 +12419,6 @@
       "label": "Buildings & Structures",
       "answerFormat": "name",
       "factIds": [
-        "greece_cs_long_walls_purpose",
         "greece_cs_themistocles_fleet",
         "greece_cs_areopagus",
         "greece_pw_xerxes_canal",
@@ -12490,7 +12430,6 @@
         "greece_oc_theater_dionysus",
         "greece_oc_sculpture_polykleitos",
         "greece_alex_library_alexandria",
-        "greece_alex_pharos_lighthouse",
         "greece_alex_siwa_oracle",
         "greece_rel_temple_hephaestus"
       ],
@@ -12501,7 +12440,6 @@
       "label": "Gods & Deities",
       "answerFormat": "name",
       "factIds": [
-        "greece_cs_athena_myth",
         "greece_oc_lyre_apollo",
         "greece_oc_aulos_dionysus",
         "greece_rel_zeus_roman",
@@ -12511,10 +12449,7 @@
         "greece_rel_aphrodite_roman",
         "greece_rel_artemis_roman",
         "greece_rel_demeter_roman",
-        "greece_rel_twelfth_olympian",
-        "greece_rel_eleusinian_mysteries",
         "greece_rel_panathenaia",
-        "greece_rel_apollo_domains",
         "greece_rel_athena_roman",
         "greece_rel_hera_roman"
       ],
@@ -12526,14 +12461,12 @@
       "answerFormat": "place",
       "factIds": [
         "greece_cs_thirty_tyrants",
-        "greece_pw_cyrus_empire",
         "greece_pw_ionian_revolt_sardis",
         "greece_ga_aspasia",
         "greece_ga_herodotus_origin",
         "greece_ga_hippocrates_kos",
         "greece_ph_pythagoras_brotherhood",
         "greece_ph_pyrrho_skepticism",
-        "greece_oc_black_figure_pottery",
         "greece_oc_olympic_location",
         "greece_ph_aristotle_stagira",
         "greece_alex_egypt_pharaoh",
@@ -12551,9 +12484,7 @@
       "answerFormat": "name",
       "factIds": [
         "greece_pw_thermopylae_greeks",
-        "greece_pw_salamis_strategy",
         "greece_pw_salamis_losses",
-        "greece_pw_marathon_greek_forces",
         "greece_pw_salamis_greek_fleet",
         "greece_pw_battle_of_lade",
         "greece_ga_aeschylus_epitaph",
@@ -12575,23 +12506,103 @@
       "label": "Works, Texts & Plays",
       "answerFormat": "name",
       "factIds": [
-        "greece_pw_herodotus_title",
         "greece_pw_aeschylus_persians",
         "greece_ga_aeschylus_oresteia",
         "greece_ga_sophocles_oedipus",
         "greece_ga_aristophanes_comedy",
         "greece_ga_aristophanes_frogs",
-        "greece_ga_hippocratic_oath",
-        "greece_ga_thucydides_peloponnesian_war",
         "greece_ga_aristophanes_clouds",
         "greece_ga_euripides_medea",
+        "greece_oc_kritios_boy",
         "greece_ga_aristophanes_birds",
-        "greece_rel_delphi_maxims",
-        "greece_rel_homer_works",
-        "greece_rel_hesiod_works",
-        "greece_oc_kritios_boy"
+        "greece_rel_delphi_maxims"
       ],
       "minimumSize": 5
+    },
+    {
+      "id": "historical_phrases",
+      "label": "Historical Phrases & Descriptions",
+      "factIds": [
+        "greece_cs_ostracism_material",
+        "greece_cs_parthenon_architects",
+        "greece_cs_parthenon_statue_material",
+        "greece_cs_long_walls_purpose",
+        "greece_cs_laconic_philip",
+        "greece_cs_spartan_women",
+        "greece_cs_agora_function",
+        "greece_cs_plague_athens_death_toll",
+        "greece_cs_themistocles_fate",
+        "greece_cs_spartan_training_barefoot",
+        "greece_pw_cyrus_empire",
+        "greece_pw_darius_remember_athenians",
+        "greece_pw_marathon_pheidippides_sparta",
+        "greece_pw_xerxes_hellespont",
+        "greece_pw_salamis_strategy",
+        "greece_pw_artemisia",
+        "greece_pw_herodotus_title",
+        "greece_pw_miltiades_fate",
+        "greece_pw_pausanias_fate",
+        "greece_pw_marathon_greek_forces",
+        "greece_pw_darius_marathon_generals",
+        "greece_pw_sparta_carneia",
+        "greece_ga_parthenon_architects",
+        "greece_ga_herodotus_title",
+        "greece_ga_thucydides_innovation",
+        "greece_ga_hippocrates_medicine",
+        "greece_ga_hippocratic_oath",
+        "greece_ga_thucydides_peloponnesian_war",
+        "greece_ga_pericles_death",
+        "greece_ga_pericles_populist_policies",
+        "greece_ph_heraclitus_flux",
+        "greece_ph_pythagoras_theorem",
+        "greece_ph_empedocles_four_elements",
+        "greece_ph_socrates_method",
+        "greece_ph_plato_allegory_cave",
+        "greece_ph_aristotle_man_political",
+        "greece_ph_diogenes_barrel",
+        "greece_ph_diogenes_plato_socrates",
+        "greece_ph_protagoras_man_measure",
+        "greece_ph_socrates_sources",
+        "greece_ph_plato_soul",
+        "greece_ph_aristotle_logic",
+        "greece_ph_zeno_virtue",
+        "greece_ph_democritus_laughing",
+        "greece_ph_pythagoras_music",
+        "greece_ph_anaximander_earth",
+        "greece_oc_olympics_prize",
+        "greece_oc_olympics_women",
+        "greece_oc_olympics_truce",
+        "greece_oc_stadion_race",
+        "greece_oc_theatrical_masks",
+        "greece_oc_black_figure_pottery",
+        "greece_oc_olympic_nudity",
+        "greece_oc_greek_alphabet_ancestor",
+        "greece_oc_olympic_hecatomb",
+        "greece_alex_league_corinth",
+        "greece_alex_tyre_causeway",
+        "greece_alex_army_mutiny",
+        "greece_alex_pharos_lighthouse",
+        "greece_alex_empire_size",
+        "greece_alex_partition_babylon",
+        "greece_alex_companion_cavalry",
+        "greece_alex_gordian_knot",
+        "greece_alex_macedonian_phalanx",
+        "greece_rel_poseidon_domain",
+        "greece_rel_twelfth_olympian",
+        "greece_rel_pythia_role",
+        "greece_rel_croesus_oracle",
+        "greece_rel_delphi_political_influence",
+        "greece_rel_eleusinian_mysteries",
+        "greece_rel_olympic_truce",
+        "greece_rel_homer_works",
+        "greece_rel_homer_question",
+        "greece_rel_hesiod_works",
+        "greece_rel_sacrifice_practices",
+        "greece_rel_mystery_religions",
+        "greece_rel_apollo_domains",
+        "greece_rel_greek_religion_structure",
+        "greece_rel_eleusinian_duration"
+      ]
     }
   ],
   "synonymGroups": [],
