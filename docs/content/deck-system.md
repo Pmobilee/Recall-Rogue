@@ -482,6 +482,21 @@ Assembly script: `scripts/assemble-ap-biology-deck.mjs`
 - `ap_bio_pure_water_psi`: answer `{0}` (zero base causes no numeric distractors) converted to `0 MPa` with explicit distractors; moved to `term_definitions` pool
 - `person_names` pool (3 facts): `minimumSize` lowered to 3 (only 3 scientist facts exist), explicit `distractors` arrays added to each fact for runtime selection
 
+
+**Pool homogeneity passes (2026-04-04):** 5 passes of answer trimming and pool reassignment reduced failing pools from 21/22 → 3/22 (all borderline 3.0–3.3x). Approach:
+- Trimmed 150+ long descriptive answers to their core biological term (e.g. "The process by which..." → "Differential gene expression")
+- Converted bare numbers to `{N}` bracket notation (e.g. `9` → `{9}`) for algorithmic distractor generation
+- Reassigned ~50 facts to better-matched pools based on answer format (cycle_phase_names, signal_molecule_names, term_definitions, bio_concept_terms)
+- Scripts: `scripts/fix-ap-bio-homogeneity.mjs` through `scripts/fix-ap-bio-homogeneity-4.mjs` (passes 1–4)
+- Remaining 3 FAIL pools are borderline (3.0–3.3x): bracket_numbers (3.3x, min=`{1}` 3c vs max `{2.4} bya` 10c), comparison_terms (3.0x, inherently verbose comparison sentences), ecology_terms (3.1x, min 12c vs max 37c)
+
+**Distractor quality pass (2026-04-04):** In-game quiz audit found 51 facts where distractors were trivially eliminatable by length. Fixed by `scripts/fix-ap-bio-distractors.mjs`:
+- Replaced sentence-form distractors (50–107c) with matching-length term names for water property facts (Cohesion/Adhesion/Surface tension), functional group facts, and molecule name facts (ATP, CDK, cAMP, IP₃, G3P)
+- Stripped explanatory parentheticals from distractors (e.g. "Cyclin (regulatory partner — not the enzyme)" → "Cyclin") across abbreviation-type molecule facts
+- Expanded ultra-short distractors (<25% of answer length) to match answer format (e.g. bare `K` → `K (carrying capacity)` to match `r (growth rate)`)
+- Fixed bracket-number distractors to use clean `{N}` format without explanatory suffixes
+- Result: 0 critical length mismatches across all 1123 facts
+
 ---
 
 
@@ -914,22 +929,38 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 | `regional_anatomy` | Regional Anatomy | 60 |
 | `histology` | Histology | 90 |
 
-**Answer Type Pools (12):**
+**Answer Type Pools (26 — redesigned 2026-04-04 for pool homogeneity):**
 
-| Pool ID | Format | Facts | Notes |
-|---|---|---|---|
-| `bone_names` | — | 44 | |
-| `muscle_names` | — | 68 | |
-| `structure_names` | — | 1182 | Largest pool; image-answer facts use this |
-| `nerve_names` | — | 65 | |
-| `vessel_names` | — | 15 | |
-| `organ_names` | — | 7 | +2 synthetics (5 dropped — matched correct answers) |
-| `function_terms` | — | 260 | |
-| `location_terms` | — | 58 | |
-| `number_stats` | — | 104 | |
-| `clinical_terms` | — | 130 | |
-| `tissue_types` | — | 57 | |
-| `immune_terms` | — | 19 | |
+The original `structure_names` mega-pool (1182 facts, 49x ratio) was split into 14 sub-pools by body system, plus a new `spinal_levels` pool was created for short vertebral level codes (L4, T9, C3-C6, etc.) so they distract each other rather than competing against 60-char descriptions.
+
+| Pool ID | Facts | Notes |
+|---|---|---|
+| `bone_names` | 42 | |
+| `muscle_names` | 68 | |
+| `structure_cardiac` | 168 | Cardiovascular structures + image-answer facts |
+| `structure_respiratory` | 57 | Respiratory structures + image-answer facts |
+| `structure_digestive` | 99 | Digestive structures + image-answer facts |
+| `structure_skeletal` | 220 | Skeletal structures + image-answer facts |
+| `structure_muscular` | 83 | Muscular structures + image-answer facts |
+| `structure_nervous` | 151 | Nervous system structures + image-answer facts |
+| `structure_endocrine` | 24 | Endocrine structures + image-answer facts |
+| `structure_reproductive` | 51 | Reproductive structures + image-answer facts |
+| `structure_urinary` | 60 | Urinary structures + image-answer facts |
+| `structure_lymphatic` | 59 | Lymphatic/immune structures + image-answer facts |
+| `structure_histological` | 39 | Histological cell types and structures |
+| `structure_embryological` | 42 | Embryological structures and germ layers |
+| `structure_integumentary` | 53 | Skin and integumentary structures |
+| `structure_general` | 121 | Multi-system and miscellaneous structures |
+| `nerve_names` | 59 | Named nerves (11–44ch range; T9/T2-T3 moved to spinal_levels) |
+| `vessel_names` | 15 | |
+| `organ_names` | 6 | +syntheticDistractors (5 dropped — matched correct answers) |
+| `function_terms` | 219 | Biological processes, mechanisms, hormones |
+| `location_terms` | 57 | Anatomical locations (long-form; short spinal codes separated) |
+| `number_stats` | 98 | Numeric measurements (many use {N} bracket notation for algorithmic distractors) |
+| `clinical_terms` | 132 | Clinical conditions and findings |
+| `tissue_types` | 57 | |
+| `immune_terms` | 19 | |
+| `spinal_levels` | 10 | Short spinal level codes only: L4, T9, C3-C6, T1-T4, etc. |
 
 **Quiz Modes:**
 - 1191 text facts (no `quizMode`)
@@ -939,6 +970,8 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 **Difficulty:** 1=289, 2=875, 3=765, 4=26 (54 unset)
 
 **Fix (2026-04-02):** 19 `image_answers` facts had duplicate `quizQuestion` text across 9 groups (same structure shown from multiple angles). Fixed by `data/decks/_wip/fix-anatomy-duplicate-questions.mjs` (cleaned up after run). Each question now incorporates a parenthetical view label derived from the explanation: e.g. "Which image shows the Skull (lateral view)?", "Which image shows the Skull (inferior/base view)?". Validation: 2009/2009 PASS.
+
+**Pool Homogeneity Passes (2026-04-04):** 4 Python fix scripts (`fix-anatomy-pool-homogeneity-pass1.py` through `pass4.py`) were run to reduce pool length ratios. Key improvements: structure_names (49x→5.8x) via 14-way system split; nerve_names (22x→4x) by moving vertebral landmark codes to spinal_levels; function_terms (13.5x→9x) by moving 54 visual facts to structure sub-pools and trimming long entries; location_terms (31.5x→9.4x) by extracting short spinal codes. All 24 remaining FAIL flags are pool-homogeneity at the strict 3x threshold — anatomical vocabulary inherently has short names (Pons, Vein, MALT) alongside compound terms (Visceral and parietal pleura). This is an acceptable educational tradeoff.
 
 ---
 
