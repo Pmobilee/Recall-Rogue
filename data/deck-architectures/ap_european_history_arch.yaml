@@ -1,0 +1,565 @@
+deck_id: ap_european_history
+name: "AP European History"
+domain: history
+sub_domain: european_history
+target_facts: 520
+minimum_facts: 450
+description: "Master the complete AP European History curriculum — from the Renaissance through contemporary Europe. Covers all 9 CED units tested on the AP Euro exam, spanning c. 1450 to the present."
+
+# ═══════════════════════════════════════════════
+# DATA SOURCES
+# ═══════════════════════════════════════════════
+
+data_sources:
+  - name: College Board AP European History CED
+    url: https://apcentral.collegeboard.org/courses/ap-european-history
+    license: educational reference (scope/structure only — no content copied)
+    usage: Unit structure, topic numbering, exam weightings
+  - name: Wikipedia
+    url: https://en.wikipedia.org/
+    license: CC-BY-SA-4.0
+    usage: Fact text, explanations, narrative context
+  - name: Wikidata
+    url: https://www.wikidata.org/
+    license: CC0
+    usage: Structured data (dates, locations, participants)
+  - name: Encyclopaedia Britannica (verification)
+    url: https://www.britannica.com/
+    license: verification only — no text copied
+    usage: Cross-reference for factual accuracy
+
+# ═══════════════════════════════════════════════
+# ANSWER TYPE POOLS — The educational backbone
+# ═══════════════════════════════════════════════
+
+answer_type_pools:
+  - id: person_names
+    format: name
+    estimated_count: 130
+    min_distractors: 4
+    note: "Rulers, thinkers, reformers, generals, artists. The largest pool — European history IS the history of its key figures."
+    example_members:
+      - "Martin Luther"
+      - "Louis XIV"
+      - "Napoleon Bonaparte"
+      - "Otto von Bismarck"
+      - "Voltaire"
+      - "Galileo Galilei"
+      - "Peter the Great"
+      - "Robespierre"
+      - "Metternich"
+      - "Leonardo da Vinci"
+      - "Elizabeth I"
+      - "Oliver Cromwell"
+      - "Adam Smith"
+      - "Karl Marx"
+      - "Copernicus"
+      - "Isaac Newton"
+
+  - id: event_names
+    format: name
+    estimated_count: 70
+    min_distractors: 4
+    note: "Wars, battles, revolutions, treaties, conferences. High confusability — students mix up wars and their treaties constantly."
+    example_members:
+      - "Thirty Years' War"
+      - "French Revolution"
+      - "Congress of Vienna"
+      - "Treaty of Westphalia"
+      - "Battle of Waterloo"
+      - "Reign of Terror"
+      - "Glorious Revolution"
+      - "Franco-Prussian War"
+      - "Treaty of Versailles"
+      - "Battle of the Somme"
+
+  - id: concept_terms
+    format: term
+    estimated_count: 110
+    min_distractors: 4
+    note: "Ideologies, economic terms, political concepts, social movements. The conceptual backbone of AP Euro — students must understand these to pass."
+    example_members:
+      - "mercantilism"
+      - "absolutism"
+      - "humanism"
+      - "laissez-faire"
+      - "nationalism"
+      - "socialism"
+      - "imperialism"
+      - "balance of power"
+      - "divine right of kings"
+      - "social contract"
+      - "Romanticism"
+      - "Realism"
+      - "totalitarianism"
+
+  - id: year_dates
+    format: bracket_number
+    estimated_count: 60
+    min_distractors: 4
+    note: "Bracket notation for key dates. Runtime generates numeric distractors. Students MUST know key dates for the AP exam."
+    example_members:
+      - "{1517}"  # 95 Theses
+      - "{1648}"  # Peace of Westphalia
+      - "{1789}"  # French Revolution
+      - "{1815}"  # Congress of Vienna
+      - "{1848}"  # Revolutions
+      - "{1914}"  # WWI begins
+      - "{1917}"  # Russian Revolution
+      - "{1939}"  # WWII begins
+      - "{1945}"  # WWII ends
+      - "{1989}"  # Fall of Berlin Wall
+
+  - id: place_names
+    format: place
+    estimated_count: 45
+    min_distractors: 4
+    note: "Cities, countries, regions significant in European history."
+    example_members:
+      - "Florence"
+      - "Wittenberg"
+      - "Versailles"
+      - "Vienna"
+      - "Waterloo"
+      - "Sarajevo"
+      - "Berlin"
+      - "St. Petersburg"
+      - "Geneva"
+      - "Paris"
+
+  - id: document_names
+    format: name
+    estimated_count: 35
+    min_distractors: 4
+    note: "Treaties, manifestos, works, laws, declarations. Highly confusable — students mix up Ninety-Five Theses with other proclamations."
+    example_members:
+      - "Ninety-Five Theses"
+      - "The Prince"
+      - "Leviathan"
+      - "Two Treatises of Government"
+      - "The Social Contract"
+      - "Declaration of the Rights of Man"
+      - "Communist Manifesto"
+      - "Edict of Nantes"
+      - "Napoleonic Code"
+      - "Treaty of Versailles"
+
+  - id: movement_names
+    format: term
+    estimated_count: 40
+    min_distractors: 4
+    note: "Artistic, intellectual, religious, political movements. Students confuse Renaissance/Reformation/Enlightenment terminology."
+    example_members:
+      - "Renaissance"
+      - "Protestant Reformation"
+      - "Counter-Reformation"
+      - "Scientific Revolution"
+      - "Enlightenment"
+      - "Romanticism"
+      - "Realism"
+      - "Impressionism"
+      - "Existentialism"
+      - "Feminism"
+
+  - id: institution_names
+    format: name
+    estimated_count: 30
+    min_distractors: 4
+    note: "Organizations, alliances, governing bodies, churches."
+    example_members:
+      - "League of Nations"
+      - "United Nations"
+      - "NATO"
+      - "Warsaw Pact"
+      - "European Union"
+      - "Council of Trent"
+      - "Society of Jesus (Jesuits)"
+      - "Estates-General"
+      - "Duma"
+      - "Concert of Europe"
+
+# ═══════════════════════════════════════════════
+# QUESTION TEMPLATES
+# ═══════════════════════════════════════════════
+
+question_templates:
+  - id: person_from_achievement
+    answer_pool: person_names
+    questionFormat: "{quizQuestion}"
+    available_from_mastery: 0
+    difficulty: 1-3
+
+  - id: event_from_description
+    answer_pool: event_names
+    questionFormat: "{quizQuestion}"
+    available_from_mastery: 0
+    difficulty: 1-3
+
+  - id: concept_from_definition
+    answer_pool: concept_terms
+    questionFormat: "{quizQuestion}"
+    available_from_mastery: 0
+    difficulty: 2-4
+
+  - id: date_from_event
+    answer_pool: year_dates
+    questionFormat: "{quizQuestion}"
+    available_from_mastery: 1
+    difficulty: 2-4
+
+  - id: place_from_event
+    answer_pool: place_names
+    questionFormat: "{quizQuestion}"
+    available_from_mastery: 0
+    difficulty: 1-3
+
+  - id: document_from_author_or_content
+    answer_pool: document_names
+    questionFormat: "{quizQuestion}"
+    available_from_mastery: 1
+    difficulty: 2-4
+
+# ═══════════════════════════════════════════════
+# COMMON CONFUSIONS — seeded into confusion matrix
+# ═══════════════════════════════════════════════
+
+common_confusions:
+  # Rulers confused with each other
+  - ["Louis XIV", "Louis XVI"]  # Both French kings, very different eras
+  - ["Charles V", "Charles I"]  # HRE vs English Civil War
+  - ["Peter the Great", "Catherine the Great"]  # Both Russian reformers
+  - ["Frederick the Great", "Frederick William I"]  # Prussian kings
+  - ["Henry VIII", "Henry IV"]  # English vs French
+
+  # Thinkers confused with each other
+  - ["Locke", "Hobbes"]  # Both social contract, opposite conclusions
+  - ["Voltaire", "Rousseau"]  # Both Enlightenment, different views
+  - ["Luther", "Calvin"]  # Both Protestant reformers
+  - ["Copernicus", "Galileo"]  # Both heliocentrism
+
+  # Events confused with each other
+  - ["Treaty of Westphalia", "Treaty of Versailles"]  # Both ended major wars
+  - ["Congress of Vienna", "Treaty of Versailles"]  # Both post-war settlements
+  - ["Glorious Revolution", "French Revolution"]  # Both revolutions, very different
+  - ["Thirty Years' War", "Seven Years' War"]  # Named wars
+
+  # Concepts confused with each other
+  - ["mercantilism", "capitalism"]  # Both economic systems
+  - ["absolutism", "constitutionalism"]  # Opposing governance models
+  - ["socialism", "communism"]  # Related but distinct ideologies
+  - ["nationalism", "imperialism"]  # Both 19th century forces
+  - ["Renaissance", "Enlightenment"]  # Both intellectual movements, different eras
+
+# ═══════════════════════════════════════════════
+# SYNONYM GROUPS
+# ═══════════════════════════════════════════════
+
+synonym_groups:
+  - id: reformation_terms
+    members: ["Protestant Reformation", "the Reformation"]
+    reason: "Same event"
+  - id: counter_reformation
+    members: ["Counter-Reformation", "Catholic Reformation"]
+    reason: "Same movement"
+  - id: wwi_names
+    members: ["World War I", "WWI", "The Great War"]
+    reason: "Same conflict"
+  - id: wwii_names
+    members: ["World War II", "WWII"]
+    reason: "Same conflict"
+  - id: hre
+    members: ["Holy Roman Empire", "HRE"]
+    reason: "Same entity"
+
+# ═══════════════════════════════════════════════
+# SUB-DECKS (one per CED unit)
+# ═══════════════════════════════════════════════
+
+sub_decks:
+  - id: unit1_renaissance
+    name: "Unit 1: Renaissance & Exploration"
+    period: "c. 1450–1648"
+    exam_weight: "10–15%"
+    target_facts: 60
+    topics:
+      - "1.1 Context of Renaissance & Discovery"
+      - "1.2 Italian Renaissance — humanism, art, civic life (Florence, Venice)"
+      - "1.3 Northern Renaissance — Christian humanism, Erasmus, Dürer"
+      - "1.4 Printing — Gutenberg, spread of ideas"
+      - "1.5 New Monarchies — state centralization (Henry VII, Ferdinand & Isabella, Louis XI)"
+      - "1.6 Age of Exploration — navigation tech, Portuguese/Spanish voyages"
+      - "1.7 Colonial Rivals — competing European powers overseas"
+      - "1.8 Columbian Exchange — crops, animals, diseases"
+      - "1.9 Slave Trade — development of Atlantic slave trade"
+      - "1.10 Commercial Revolution — finance, markets, demographic effects"
+      - "1.11 Causation in Renaissance & Discovery"
+    key_figures:
+      - Leonardo da Vinci, Michelangelo, Raphael, Machiavelli
+      - Petrarch, Erasmus, Thomas More
+      - Gutenberg
+      - Henry VII, Ferdinand & Isabella, Louis XI, Charles V
+      - Vasco da Gama, Columbus, Magellan, Cortés, Pizarro
+    key_concepts:
+      - humanism, secularism, individualism
+      - movable type printing press
+      - new monarchies, state building
+      - Columbian Exchange, mercantilism
+      - encomienda, Middle Passage
+
+  - id: unit2_reformation
+    name: "Unit 2: Age of Reformation"
+    period: "c. 1450–1648"
+    exam_weight: "10–15%"
+    target_facts: 55
+    topics:
+      - "2.1 Context of 16th–17th Century Challenges"
+      - "2.2 Luther and the Protestant Reformation — 95 Theses, justification by faith"
+      - "2.3 Protestant Reform Continues — Calvin, Zwingli, Anabaptists, Anglicanism"
+      - "2.4 Wars of Religion — French Wars of Religion, Thirty Years' War, Westphalia"
+      - "2.5 Catholic Reformation — Council of Trent, Jesuits, Inquisition"
+      - "2.6 16th-Century Society & Politics — hierarchies, gender, witchcraft"
+      - "2.7 Mannerism and Baroque Art — El Greco, Bernini, Caravaggio"
+      - "2.8 Causation in Reformation & Wars of Religion"
+    key_figures:
+      - Martin Luther, John Calvin, Ulrich Zwingli, Henry VIII
+      - Ignatius of Loyola, Pope Paul III
+      - Philip II, Elizabeth I, Gustavus Adolphus
+      - El Greco, Bernini, Caravaggio
+    key_concepts:
+      - justification by faith alone (sola fide)
+      - predestination (Calvin)
+      - Act of Supremacy, Anglican Church
+      - Peace of Augsburg, Peace of Westphalia
+      - cuius regio eius religio
+
+  - id: unit3_absolutism
+    name: "Unit 3: Absolutism & Constitutionalism"
+    period: "c. 1648–1815"
+    exam_weight: "10–15%"
+    target_facts: 55
+    topics:
+      - "3.1 Context of State Building (1648–1815)"
+      - "3.2 English Civil War & Glorious Revolution"
+      - "3.3 Continuities & Changes in Economic Practice"
+      - "3.4 Economic Development & Mercantilism"
+      - "3.5 Dutch Golden Age — Republic as commercial/cultural power"
+      - "3.6 Balance of Power — diplomatic strategies"
+      - "3.7 Absolutist Approaches — Louis XIV, Peter the Great"
+      - "3.8 Comparison: Absolutism vs Constitutionalism"
+    key_figures:
+      - Louis XIV, Peter the Great, Frederick the Great
+      - Oliver Cromwell, William & Mary, Charles I, Charles II, James II
+      - Colbert, Cardinal Richelieu, Cardinal Mazarin
+      - William of Orange (William III)
+    key_concepts:
+      - divine right of kings
+      - absolute monarchy vs constitutional monarchy
+      - English Bill of Rights 1689
+      - mercantilism, balance of trade
+      - Dutch East India Company (VOC)
+      - Versailles as symbol of absolutism
+
+  - id: unit4_scientific_enlightenment
+    name: "Unit 4: Scientific Revolution & Enlightenment"
+    period: "c. 1648–1815"
+    exam_weight: "10–15%"
+    target_facts: 55
+    topics:
+      - "4.1 Context of Scientific Revolution & Enlightenment"
+      - "4.2 Scientific Revolution — Copernicus, Galileo, Newton, Vesalius, Harvey"
+      - "4.3 Enlightenment — Locke, Rousseau, Voltaire, Montesquieu, Diderot"
+      - "4.4 18th-Century Society & Demographics — Agricultural Revolution"
+      - "4.5 18th-Century Culture & Arts — Baroque to Neoclassicism"
+      - "4.6 Enlightened Absolutism — Frederick the Great, Catherine the Great, Joseph II"
+      - "4.7 Causation in the Scientific Revolution"
+    key_figures:
+      - Copernicus, Galileo, Kepler, Newton, Francis Bacon, Descartes
+      - Vesalius, Harvey, Boyle
+      - Locke, Voltaire, Montesquieu, Rousseau, Diderot
+      - Mary Wollstonecraft, Adam Smith
+      - Frederick the Great, Catherine the Great, Joseph II
+    key_concepts:
+      - heliocentrism, empiricism, scientific method
+      - natural rights, social contract, separation of powers
+      - deism, religious tolerance
+      - Encyclopédie
+      - enlightened absolutism/despotism
+      - Agricultural Revolution (enclosure, crop rotation)
+
+  - id: unit5_revolution_napoleon
+    name: "Unit 5: French Revolution & Napoleon"
+    period: "c. 1648–1815"
+    exam_weight: "10–15%"
+    target_facts: 60
+    topics:
+      - "5.1 Context of 18th-Century States"
+      - "5.2 Rise of Global Markets"
+      - "5.3 Britain's Ascendancy — commercial/imperial dominance"
+      - "5.4 French Revolution — causes, outbreak, early phases"
+      - "5.5 Effects of French Revolution — mass conscription, Haiti"
+      - "5.6 Napoleon — rise, Napoleonic Code, continental system, defeat"
+      - "5.7 Congress of Vienna — restoration, balance of power"
+      - "5.8 Romanticism — emotion over reason, national identity"
+      - "5.9 Continuity & Change in 18th-Century States"
+    key_figures:
+      - Louis XVI, Marie Antoinette, Robespierre, Danton
+      - Napoleon Bonaparte, Talleyrand, Metternich
+      - Toussaint Louverture (Haiti connection)
+      - Lord Nelson, Duke of Wellington
+      - Goethe, Beethoven, Delacroix (Romanticism)
+    key_concepts:
+      - Estates-General, Tennis Court Oath, storming of the Bastille
+      - Declaration of Rights of Man and Citizen
+      - Reign of Terror, Committee of Public Safety
+      - Napoleonic Code, Continental System
+      - Congress of Vienna, Concert of Europe, legitimacy
+      - Romanticism as reaction to Enlightenment rationalism
+
+  - id: unit6_industrialization
+    name: "Unit 6: Industrialization & Its Effects"
+    period: "c. 1815–1914"
+    exam_weight: "10–15%"
+    target_facts: 55
+    topics:
+      - "6.1 Context of Industrialization"
+      - "6.2 Spread of Industry Across Europe"
+      - "6.3 Second-Wave Industrialization — steel, electricity, chemicals"
+      - "6.4 Social Effects — family, gender roles, class"
+      - "6.5 Concert of Europe & European Conservatism"
+      - "6.6 Revolutions 1815–1914 (including 1848)"
+      - "6.7 Ideologies of Change — liberalism, socialism, anarchism"
+      - "6.8 19th-Century Social Reform — labor, feminism"
+      - "6.9 Institutional Reform — public health, education"
+      - "6.10 Causation in Industrialization"
+    key_figures:
+      - James Watt, George Stephenson, Henry Bessemer
+      - Robert Owen, Karl Marx, Friedrich Engels
+      - Emmeline Pankhurst, Flora Tristan
+      - Louis Kossuth, Giuseppe Mazzini
+    key_concepts:
+      - factory system, steam power, textile mills
+      - urbanization, child labor, working conditions
+      - proletariat, bourgeoisie, class consciousness
+      - utopian socialism, Marxism, anarchism
+      - liberalism, conservatism
+      - Revolutions of 1848 — "Springtime of Peoples"
+
+  - id: unit7_nationalism_imperialism
+    name: "Unit 7: 19th-Century Nationalism & Imperialism"
+    period: "c. 1815–1914"
+    exam_weight: "10–15%"
+    target_facts: 55
+    topics:
+      - "7.1 Context of 19th-Century Politics"
+      - "7.2 Nationalism — unification movements"
+      - "7.3 National Unification & Diplomatic Tensions — Italy, Germany, Balkans"
+      - "7.4 Darwinism & Social Darwinism"
+      - "7.5 Age of Progress & Modernity — positivism, Freud"
+      - "7.6 New Imperialism — motivations, methods"
+      - "7.7 Imperialism's Global Effects"
+      - "7.8 19th-Century Culture & Arts — Romanticism to Modernism"
+      - "7.9 Causation in 19th-Century Developments"
+    key_figures:
+      - Otto von Bismarck, Giuseppe Garibaldi, Camillo di Cavour
+      - Napoleon III, Queen Victoria, Alexander II
+      - Charles Darwin, Herbert Spencer, Sigmund Freud
+      - Cecil Rhodes, King Leopold II
+      - Monet, Zola, Dostoevsky
+    key_concepts:
+      - nationalism, self-determination
+      - Realpolitik, blood and iron
+      - Italian unification (Risorgimento)
+      - German unification, Ems Dispatch
+      - Berlin Conference 1884, Scramble for Africa
+      - Social Darwinism, "White Man's Burden"
+      - Impressionism, Realism, Modernism
+
+  - id: unit8_global_conflicts
+    name: "Unit 8: 20th-Century Global Conflicts"
+    period: "c. 1914–present"
+    exam_weight: "10–15%"
+    target_facts: 65
+    topics:
+      - "8.1 Context of 20th-Century Conflicts"
+      - "8.2 World War I — causes, trench warfare, effects"
+      - "8.3 Russian Revolution — Bolsheviks, Lenin, civil war"
+      - "8.4 Versailles Peace Settlement"
+      - "8.5 Great Depression — global economic crisis"
+      - "8.6 Fascism & Totalitarianism — Hitler, Mussolini, Stalin"
+      - "8.7 Interwar Period — appeasement, remilitarization"
+      - "8.8 World War II — blitzkrieg, theaters, turning points"
+      - "8.9 Holocaust — genocide of six million Jews"
+      - "8.10 20th-Century Cultural/Intellectual Developments"
+      - "8.11 Continuity & Change in Global Conflict"
+    key_figures:
+      - Archduke Franz Ferdinand, Kaiser Wilhelm II
+      - Lenin, Trotsky, Stalin
+      - Woodrow Wilson, Clemenceau, Lloyd George
+      - Hitler, Mussolini, Franco
+      - Churchill, de Gaulle, Eisenhower
+      - Picasso, Kafka, Orwell
+    key_concepts:
+      - alliance systems, militarism, imperialism (causes of WWI)
+      - trench warfare, total war, war of attrition
+      - Bolshevism, Soviet collectivization, Five-Year Plans
+      - Treaty of Versailles, war guilt clause, reparations
+      - fascism, Nazism, totalitarianism
+      - appeasement (Munich Agreement), Anschluss
+      - blitzkrieg, D-Day, Holocaust, Nuremberg Trials
+      - existentialism, surrealism, modernism
+
+  - id: unit9_cold_war_contemporary
+    name: "Unit 9: Cold War & Contemporary Europe"
+    period: "c. 1945–present"
+    exam_weight: "10–15%"
+    target_facts: 55
+    topics:
+      - "9.1 Context of Cold War & Contemporary Europe"
+      - "9.2 Rebuilding Europe — Marshall Plan, recovery"
+      - "9.3 Cold War — ideological conflict, Berlin, Cuba"
+      - "9.4 Two Superpowers Emerge"
+      - "9.5 Postwar Nationalism & Ethnic Conflict"
+      - "9.6 Contemporary Western Democracies"
+      - "9.7 Fall of Communism — 1989, collapse of Soviet Union"
+      - "9.8+ Contemporary Issues — EU, migration, decolonization, feminism, globalization"
+    key_figures:
+      - Truman, Marshall, Khrushchev, Gorbachev
+      - Adenauer, de Gaulle, Thatcher, Willy Brandt
+      - Lech Walesa, Vaclav Havel
+      - Jean Monnet (EU founding)
+      - Simone de Beauvoir
+    key_concepts:
+      - Marshall Plan, Truman Doctrine, containment
+      - Iron Curtain, Berlin Wall, NATO vs Warsaw Pact
+      - détente, Ostpolitik
+      - decolonization — Africa, Asia
+      - Solidarity movement, Velvet Revolution
+      - glasnost, perestroika
+      - Maastricht Treaty, European Union
+      - fall of Berlin Wall 1989, dissolution of USSR 1991
+
+# ═══════════════════════════════════════════════
+# DIFFICULTY TIERS
+# ═══════════════════════════════════════════════
+
+difficulty_tiers:
+  easy:
+    description: "Universally known — any educated person knows these"
+    examples: ["French Revolution started 1789", "Luther wrote 95 Theses", "Napoleon defeated at Waterloo", "Berlin Wall fell 1989"]
+  medium:
+    description: "Commonly known by AP students — core curriculum"
+    examples: ["Peace of Westphalia ended Thirty Years' War", "Bismarck unified Germany", "Locke wrote Two Treatises", "Marshall Plan rebuilt Europe"]
+  hard:
+    description: "Requires deeper study — advanced AP content"
+    examples: ["Carlsbad Decrees suppressed liberal movements", "Zollverein was Prussian customs union", "Joseph II abolished serfdom in Austria", "Willy Brandt's Ostpolitik"]
+
+# ═══════════════════════════════════════════════
+# CHAIN THEMES — generic slots (0-5)
+# ═══════════════════════════════════════════════
+# Not required for initial decks. Facts assigned to generic chain slots
+# distributed evenly across all facts. Named themes are a future enhancement.
+
+volatile_facts: []
+# AP Euro covers history through "present" — contemporary Europe facts
+# about current EU membership, current leaders etc. would be volatile.
+# We avoid these by keeping facts anchored to historical events with fixed dates.
