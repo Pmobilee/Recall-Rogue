@@ -1,0 +1,1102 @@
+[
+  {
+    "id": "ap_euro_u6_001",
+    "quizQuestion": "Where did the Industrial Revolution begin, approximately when?",
+    "correctAnswer": "Britain, c.1760s-1840s",
+    "acceptableAlternatives": ["Great Britain", "England"],
+    "explanation": "Britain industrialized first due to its coal deposits, navigable rivers, colonial markets, stable government, and labor freed by the enclosure movement.",
+    "distractors": ["France, c.1780s", "Belgium, c.1800s", "Germany, c.1750s", "Netherlands, c.1770s"],
+    "difficulty": 1,
+    "funScore": 5,
+    "chainThemeId": 1,
+    "answerTypePoolId": "place_names",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.1",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_002",
+    "quizQuestion": "Which British institution protected inventors' rights and incentivized technological innovation during the Industrial Revolution?",
+    "correctAnswer": "Patent system",
+    "acceptableAlternatives": ["patent law", "patents"],
+    "explanation": "Britain's patent system gave inventors exclusive rights to profit from their innovations, encouraging risk-taking and investment in new machinery and processes.",
+    "distractors": ["Guild system", "Royal Charter system", "Mercantile monopoly", "Board of Trade licensing"],
+    "difficulty": 2,
+    "funScore": 5,
+    "chainThemeId": 1,
+    "answerTypePoolId": "institutions_systems",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.1",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_003",
+    "quizQuestion": "The enclosure movement contributed to British industrialization by doing what to rural laborers?",
+    "correctAnswer": "Freeing them from the land, creating a mobile wage-labor workforce",
+    "acceptableAlternatives": ["displacing them from common lands", "forcing them into cities"],
+    "explanation": "Enclosure replaced common agricultural land with private fields, evicting tenant farmers and creating a surplus labor force that flooded into factories in industrial cities.",
+    "distractors": ["Giving them factory ownership rights", "Training them as skilled engineers", "Forcing them into military service", "Binding them to noble estates"],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": 1,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.1",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_004",
+    "quizQuestion": "James Hargreaves invented which spinning machine in 1764 that could spin multiple threads simultaneously?",
+    "correctAnswer": "Spinning jenny",
+    "acceptableAlternatives": [],
+    "explanation": "The spinning jenny (1764) multiplied a spinner's output by allowing one worker to spin 8 or more threads at once, revolutionizing textile production and making it far more efficient.",
+    "distractors": ["Water frame", "Spinning mule", "Power loom", "Flying shuttle"],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 1,
+    "answerTypePoolId": "invention_names",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.1",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_005",
+    "quizQuestion": "Richard Arkwright invented which device in 1769 that used water power to spin strong cotton thread?",
+    "correctAnswer": "Water frame",
+    "acceptableAlternatives": ["the water frame"],
+    "explanation": "Arkwright's water frame (1769) used water power to produce stronger, harder thread than the spinning jenny, enabling large-scale factory production and making Arkwright one of the first industrial capitalists.",
+    "distractors": ["Spinning jenny", "Spinning mule", "Steam loom", "Flying shuttle"],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": 1,
+    "answerTypePoolId": "invention_names",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.1",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_006",
+    "quizQuestion": "Samuel Crompton's 1779 'spinning mule' combined features of which two earlier inventions?",
+    "correctAnswer": "Spinning jenny and water frame",
+    "acceptableAlternatives": ["the spinning jenny and the water frame"],
+    "explanation": "Crompton's spinning mule (1779) combined the jenny's multiple spindles with the water frame's rollers, producing fine, strong thread and dramatically increasing textile output.",
+    "distractors": ["Water frame and power loom", "Flying shuttle and spinning jenny", "Steam engine and spinning jenny", "Power loom and water frame"],
+    "difficulty": 3,
+    "funScore": 6,
+    "chainThemeId": 1,
+    "answerTypePoolId": "invention_names",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.1",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_007",
+    "quizQuestion": "Who improved the steam engine in 1769 and formed a famous partnership with manufacturer Matthew Boulton?",
+    "correctAnswer": "James Watt",
+    "acceptableAlternatives": [],
+    "explanation": "James Watt (1736–1819) improved the Newcomen steam engine with a separate condenser in 1769, then partnered with Boulton to commercialize it, powering factories, mines, and eventually railways.",
+    "distractors": ["George Stephenson", "Richard Arkwright", "Thomas Newcomen", "Henry Bessemer"],
+    "difficulty": 1,
+    "funScore": 7,
+    "chainThemeId": 1,
+    "answerTypePoolId": "inventor_names",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.1",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_008",
+    "quizQuestion": "George Stephenson's 'Rocket' locomotive debuted on which railway in 1829, proving steam locomotion viable?",
+    "correctAnswer": "Liverpool-Manchester Railway",
+    "acceptableAlternatives": ["the Liverpool and Manchester Railway"],
+    "explanation": "The Rainhill Trials (1829) showcased Stephenson's Rocket on the Liverpool-Manchester Railway, which opened in 1830 as the world's first intercity steam-powered passenger railway.",
+    "distractors": ["Stockton-Darlington Railway", "Great Western Railway", "London-Birmingham Railway", "Bristol-Bath Railway"],
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": 1,
+    "answerTypePoolId": "place_names",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.1",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_009",
+    "quizQuestion": "Which railway, opened in 1825, was the world's first public steam-powered railway?",
+    "correctAnswer": "Stockton-Darlington Railway",
+    "acceptableAlternatives": ["the Stockton and Darlington Railway"],
+    "explanation": "The Stockton-Darlington Railway (1825), engineered by George Stephenson, was the first public railway to use steam locomotives, initially for carrying coal.",
+    "distractors": ["Liverpool-Manchester Railway", "Great Western Railway", "London-Birmingham Railway", "Midland Railway"],
+    "difficulty": 3,
+    "funScore": 6,
+    "chainThemeId": 1,
+    "answerTypePoolId": "place_names",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.1",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_010",
+    "quizQuestion": "What organizational innovation of industrialization concentrated workers under one roof, imposed clock discipline, and divided production into specialized tasks?",
+    "correctAnswer": "Factory system",
+    "acceptableAlternatives": ["the factory system"],
+    "explanation": "The factory system replaced cottage industry by centralizing workers, machinery, and management, imposing rigid schedules and task division to maximize output and managerial control.",
+    "distractors": ["Putting-out system", "Guild system", "Manorial system", "Cottage industry"],
+    "difficulty": 1,
+    "funScore": 5,
+    "chainThemeId": 1,
+    "answerTypePoolId": "institutions_systems",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.1",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_011",
+    "quizQuestion": "Britain's Factory Act of 1833 was a milestone because it did what regarding child labor?",
+    "correctAnswer": "Prohibited children under 9 from working in textile factories and limited hours for older children",
+    "acceptableAlternatives": ["banned children under 9 from factory work", "restricted child labor in factories"],
+    "explanation": "The Factory Act of 1833 banned children under 9 from textile mills, limited those aged 9–13 to 8-hour days, and created factory inspectors — the first meaningful government regulation of child labor.",
+    "distractors": ["Banned all child labor in Britain", "Required factories to provide schooling for all workers", "Set a minimum wage for child workers", "Abolished the apprenticeship system"],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": 2,
+    "answerTypePoolId": "legislation_names",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.2",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_012",
+    "quizQuestion": "Manchester's population explosion is often cited as emblematic of industrial urbanization. Approximately what was its population in 1851?",
+    "correctAnswer": "303,000",
+    "acceptableAlternatives": ["about 303,000", "roughly 300,000"],
+    "explanation": "Manchester grew from roughly 25,000 in 1772 to 303,000 by 1851, exemplifying how industrialization transformed market towns into massive urban centers within a single lifetime.",
+    "distractors": ["150,000", "500,000", "75,000", "1,000,000"],
+    "difficulty": 3,
+    "funScore": 6,
+    "chainThemeId": 2,
+    "answerTypePoolId": "statistics_figures",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.2",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_013",
+    "quizQuestion": "Henry Bessemer invented a revolutionary steelmaking process in 1856. What did it achieve?",
+    "correctAnswer": "Cheap, mass production of steel by blasting air through molten iron",
+    "acceptableAlternatives": ["cheap mass steel production", "removed impurities from iron using air blast"],
+    "explanation": "The Bessemer process (1856) blasted air through molten pig iron to burn off carbon impurities, converting iron to steel in minutes rather than days and slashing steel prices, enabling railroads and skyscrapers.",
+    "distractors": ["Produced aluminum from bauxite ore at low cost", "Smelted iron ore using coke instead of charcoal", "Created steel alloys stronger than natural iron", "Refined copper for electrical wiring"],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 1,
+    "answerTypePoolId": "invention_names",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.3",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_014",
+    "quizQuestion": "The Second Industrial Revolution (c.1870–1914) was characterized by which new industries and technologies, distinct from the first?",
+    "correctAnswer": "Electricity, chemicals, internal combustion engine, steel, and oil",
+    "acceptableAlternatives": ["electricity, chemicals, steel, oil", "chemicals, electricity, oil"],
+    "explanation": "Unlike the First Industrial Revolution's coal and textiles, the Second featured electricity (Edison, Siemens), synthetic chemicals (dyes, fertilizers), petroleum, and the internal combustion engine powering cars and airplanes.",
+    "distractors": ["Coal, iron, and textiles", "Steam power, canals, and iron", "Banking, insurance, and joint-stock companies", "Railways, coal, and cotton"],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": 1,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.3",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_015",
+    "quizQuestion": "By approximately what year had Germany surpassed Britain in total industrial output?",
+    "correctAnswer": "c.1900",
+    "acceptableAlternatives": ["around 1900", "by 1900"],
+    "explanation": "Germany's rapid industrialization after unification (1871), combined with state investment in railways, education, and cartels, allowed it to surpass British industrial output in steel and chemicals by around 1900.",
+    "distractors": ["c.1850", "c.1870", "c.1920", "c.1880"],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": 1,
+    "answerTypePoolId": "dates_periods",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.3",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "germany"
+    }
+  },
+  {
+    "id": "ap_euro_u6_016",
+    "quizQuestion": "The post-1815 conservative order in Europe was upheld by the 'Concert of Europe,' sometimes called the Metternich system. What was Metternich's primary goal?",
+    "correctAnswer": "Suppress liberalism and nationalism to preserve the conservative monarchical order",
+    "acceptableAlternatives": ["maintain the conservative order established at Vienna", "prevent revolution and nationalism"],
+    "explanation": "Austrian foreign minister Klemens von Metternich engineered the Concert of Europe after 1815 to cooperate among great powers to crush liberal and nationalist movements that threatened dynastic monarchies.",
+    "distractors": ["Promote free trade across European borders", "Unify Germany under Prussian leadership", "Restore the French monarchy to Napoleonic power", "Create a European parliament for shared governance"],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": 3,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.4",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_017",
+    "quizQuestion": "The Carlsbad Decrees (1819) imposed censorship and banned student fraternities in response to nationalist agitation in which region?",
+    "correctAnswer": "German states (German Confederation)",
+    "acceptableAlternatives": ["Germany", "the German Confederation"],
+    "explanation": "After student nationalist agitation and the assassination of playwright Kotzebue, Metternich pushed through the Carlsbad Decrees in 1819, imposing press censorship and dissolving student nationalist organizations (Burschenschaften) across the German Confederation.",
+    "distractors": ["Italian peninsula", "Austrian Empire", "Kingdom of France", "Kingdom of Poland"],
+    "difficulty": 3,
+    "funScore": 6,
+    "chainThemeId": 3,
+    "answerTypePoolId": "place_names",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.4",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "germany"
+    }
+  },
+  {
+    "id": "ap_euro_u6_018",
+    "quizQuestion": "The French July Revolution of 1830 overthrew Charles X and replaced him with which king, known as the 'Citizen King'?",
+    "correctAnswer": "Louis-Philippe",
+    "acceptableAlternatives": ["Louis Philippe"],
+    "explanation": "The July Revolution (1830) drove ultra-conservative Charles X from the throne. The liberal bourgeoisie installed Louis-Philippe of the Orléans branch, who ruled as a constitutional monarch and was called the 'Citizen King' for his middle-class style.",
+    "distractors": ["Charles X", "Louis XVIII", "Napoleon III", "Henry V"],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 3,
+    "answerTypePoolId": "person_names",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.4",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "france"
+    }
+  },
+  {
+    "id": "ap_euro_u6_019",
+    "quizQuestion": "Which country successfully achieved independence as a result of the Revolutions of 1830?",
+    "correctAnswer": "Belgium",
+    "acceptableAlternatives": [],
+    "explanation": "Belgium rose up against Dutch rule in 1830, inspired by the French July Revolution. The great powers recognized Belgian independence in 1831, making it one of the few successful outcomes of the 1830 revolutionary wave.",
+    "distractors": ["Poland", "Italy", "Hungary", "Greece"],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 3,
+    "answerTypePoolId": "place_names",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.4",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_020",
+    "quizQuestion": "The Revolutions of 1848 are often called the 'Springtime of Peoples.' What did they broadly demand?",
+    "correctAnswer": "Liberal constitutions, national self-determination, and social reform",
+    "acceptableAlternatives": ["constitutions, nationalism, and social reform", "liberalism and nationalism"],
+    "explanation": "The 1848 revolutions swept across France, the German states, Austria, Hungary, and Italy, demanding written constitutions, representative government, national independence, and relief from economic hardship.",
+    "distractors": ["Communist revolution and abolition of private property", "Restoration of absolute monarchy and religious authority", "Free trade and abolition of tariffs", "Colonial independence and pan-African unity"],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 3,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.4",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_021",
+    "quizQuestion": "The Frankfurt Assembly (1848–49) attempted to create a unified, liberal Germany but ultimately failed. Why did it fail?",
+    "correctAnswer": "Frederick William IV of Prussia refused the crown, and the assembly lacked military power to enforce its decisions",
+    "acceptableAlternatives": ["Prussia refused the crown offered by the assembly", "the king of Prussia rejected the offered crown"],
+    "explanation": "The Frankfurt Parliament drafted a liberal constitution and offered Frederick William IV the crown of a unified Germany, but he rejected it as coming 'from the gutter.' Without Prussian military backing, the assembly dissolved, ending German liberal unification.",
+    "distractors": ["Austria invaded and dissolved the parliament by force", "France refused to recognize a unified Germany", "The assembly was abolished by a communist uprising", "Britain blockaded German ports to prevent unification"],
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": 3,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.4",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "germany"
+    }
+  },
+  {
+    "id": "ap_euro_u6_022",
+    "quizQuestion": "In the Austrian Empire's 1848 revolution, who led the Hungarian nationalist uprising demanding self-rule?",
+    "correctAnswer": "Lajos Kossuth",
+    "acceptableAlternatives": ["Louis Kossuth"],
+    "explanation": "Lajos Kossuth led the Hungarian Diet and then the revolutionary government demanding autonomy from Vienna. The revolution was crushed in 1849 with Russian military assistance requested by Emperor Franz Joseph.",
+    "distractors": ["Giuseppe Garibaldi", "Giuseppe Mazzini", "Count Cavour", "Louis Blanc"],
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": 3,
+    "answerTypePoolId": "person_names",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.4",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "austria"
+    }
+  },
+  {
+    "id": "ap_euro_u6_023",
+    "quizQuestion": "Which three factors best explain why almost all the 1848 revolutions ultimately failed?",
+    "correctAnswer": "Divisions between liberals, radicals, and nationalists; military suppression; and lack of coordination",
+    "acceptableAlternatives": ["divisions among revolutionaries, military force, and disorganization"],
+    "explanation": "Revolutionaries in 1848 split over how radical to go — middle-class liberals feared radical working-class demands, nationalists clashed with each other, and conservative armies ultimately suppressed all uprisings.",
+    "distractors": ["Foreign invasion by Britain and France, economic prosperity, and royalist popular support", "Lack of industrial workers, peasant indifference, and church opposition", "Communist infiltration, food surplus, and Metternich's return to power", "Naval blockades, cholera epidemic, and Russian invasion of all states"],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": 3,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.4",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_024",
+    "quizQuestion": "Karl Marx and Friedrich Engels published which foundational socialist text in 1848?",
+    "correctAnswer": "The Communist Manifesto",
+    "acceptableAlternatives": ["Communist Manifesto"],
+    "explanation": "The Communist Manifesto (1848) opened with 'A spectre is haunting Europe — the spectre of communism,' arguing that all history is class struggle and calling on workers to unite and overthrow the bourgeoisie.",
+    "distractors": ["Das Kapital", "The Wealth of Nations", "On the Origin of Species", "Principles of Political Economy"],
+    "difficulty": 1,
+    "funScore": 8,
+    "chainThemeId": 4,
+    "answerTypePoolId": "work_titles",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.5",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_025",
+    "quizQuestion": "Marx published his massive economic analysis of capitalism in 1867. What is this work called?",
+    "correctAnswer": "Das Kapital",
+    "acceptableAlternatives": ["Capital"],
+    "explanation": "Das Kapital (1867) analyzed capitalism's internal contradictions — especially the theory of surplus value, arguing capitalists exploit workers by appropriating the value workers produce beyond their wages.",
+    "distractors": ["The Communist Manifesto", "The Condition of the Working Class in England", "On Liberty", "Principles of Political Economy"],
+    "difficulty": 1,
+    "funScore": 7,
+    "chainThemeId": 4,
+    "answerTypePoolId": "work_titles",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.5",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_026",
+    "quizQuestion": "In Marxist theory, what term describes the working class who own only their labor and must sell it to capitalists?",
+    "correctAnswer": "Proletariat",
+    "acceptableAlternatives": ["the proletariat", "workers"],
+    "explanation": "Marx defined the proletariat as the class dispossessed of the means of production who must sell their labor-power to the bourgeoisie to survive, making them structurally exploited under capitalism.",
+    "distractors": ["Bourgeoisie", "Lumpenproletariat", "Vanguard", "Petty bourgeoisie"],
+    "difficulty": 1,
+    "funScore": 6,
+    "chainThemeId": 4,
+    "answerTypePoolId": "ideological_terms",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.5",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_027",
+    "quizQuestion": "Marx's philosophy of history argued that social change is driven by contradictions within economic systems. What is this framework called?",
+    "correctAnswer": "Dialectical materialism",
+    "acceptableAlternatives": ["historical materialism", "materialist dialectic"],
+    "explanation": "Dialectical materialism held that history progresses through contradictions (thesis/antithesis) in material economic conditions, not ideas — capitalism's internal contradictions would inevitably produce socialism.",
+    "distractors": ["Idealist historicism", "Social Darwinism", "Positivism", "Utilitarianism"],
+    "difficulty": 3,
+    "funScore": 6,
+    "chainThemeId": 4,
+    "answerTypePoolId": "ideological_terms",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.5",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_028",
+    "quizQuestion": "Robert Owen, Charles Fourier, and Henri de Saint-Simon are associated with which early socialist tradition that envisioned model communities rather than class revolution?",
+    "correctAnswer": "Utopian socialism",
+    "acceptableAlternatives": ["utopian socialists"],
+    "explanation": "Utopian socialists like Owen (New Lanark mill community), Fourier (phalansteries), and Saint-Simon (technocratic industrial order) proposed cooperative model societies rather than Marx's revolutionary class struggle.",
+    "distractors": ["Scientific socialism", "Anarchism", "Christian socialism", "Syndicalism"],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 4,
+    "answerTypePoolId": "ideological_terms",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.5",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_029",
+    "quizQuestion": "Robert Owen's model factory community at New Lanark demonstrated what about industrial capitalism?",
+    "correctAnswer": "That treating workers humanely with good conditions, pay, and education improved productivity and morale",
+    "acceptableAlternatives": ["that humane factory conditions were compatible with profit", "workers thrived under better conditions"],
+    "explanation": "Owen ran New Lanark in Scotland as a model industrial community with shorter hours, decent wages, free schools, and no child labor, proving that ethical business practices could still be profitable — a challenge to exploitative norms.",
+    "distractors": ["That state ownership of factories eliminated poverty", "That workers preferred individual farms to factory employment", "That machine production always reduced human suffering", "That free trade was the only solution to industrial poverty"],
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": 4,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.5",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_030",
+    "quizQuestion": "Pierre-Joseph Proudhon, a founding anarchist, is famous for declaring what about property?",
+    "correctAnswer": "Property is theft",
+    "acceptableAlternatives": ["\"Property is theft\""],
+    "explanation": "Proudhon's 1840 work 'What is Property?' coined the slogan 'property is theft,' arguing that those who own property exploit those who work it, and that true freedom required abolishing both state and private property.",
+    "distractors": ["Property is liberty", "The state is the enemy of the people", "Workers of the world, unite", "Religion is the opium of the people"],
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": 4,
+    "answerTypePoolId": "ideological_terms",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.5",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "france"
+    }
+  },
+  {
+    "id": "ap_euro_u6_031",
+    "quizQuestion": "Which Russian anarchist argued that destroying the state and all authority was necessary for human freedom, opposing Marx's vision of a transitional state?",
+    "correctAnswer": "Mikhail Bakunin",
+    "acceptableAlternatives": [],
+    "explanation": "Bakunin clashed famously with Marx in the First International, arguing that Marx's 'dictatorship of the proletariat' would simply create a new tyranny. Bakunin wanted immediate abolition of all state power.",
+    "distractors": ["Pierre-Joseph Proudhon", "Peter Kropotkin", "Alexander Herzen", "Georges Sorel"],
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": 4,
+    "answerTypePoolId": "person_names",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.5",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "russia"
+    }
+  },
+  {
+    "id": "ap_euro_u6_032",
+    "quizQuestion": "Classical liberalism in the 19th century advocated for which set of core principles?",
+    "correctAnswer": "Individual rights, free trade, limited government, and constitutional rule",
+    "acceptableAlternatives": ["individual liberty, free markets, and limited government"],
+    "explanation": "19th-century classical liberals drew on Locke, Smith, and Bentham to argue for freedom of the press, free trade, limited state intervention, and constitutional government based on the rule of law.",
+    "distractors": ["State-directed economy, national unity, and strong military", "Church authority, tradition, and aristocratic government", "Universal suffrage, workers' rights, and state welfare", "Colonial expansion, racial hierarchy, and national glory"],
+    "difficulty": 2,
+    "funScore": 5,
+    "chainThemeId": 4,
+    "answerTypePoolId": "ideological_terms",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.5",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_033",
+    "quizQuestion": "John Stuart Mill's 1859 work 'On Liberty' argued for what fundamental liberal principle?",
+    "correctAnswer": "Freedom of thought and expression, limited only by harm to others (the harm principle)",
+    "acceptableAlternatives": ["individual liberty limited only by harm to others", "the harm principle"],
+    "explanation": "Mill's 'On Liberty' established the harm principle: the state may only restrict individual freedom to prevent harm to others, not to protect morality or enforce conformity, making it a cornerstone of liberal political philosophy.",
+    "distractors": ["Universal suffrage and parliamentary democracy for all adults", "Free trade is morally superior to all other economic systems", "The greatest happiness of the greatest number justifies state power", "Private property is the basis of all civilized society"],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 4,
+    "answerTypePoolId": "ideological_terms",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.5",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_034",
+    "quizQuestion": "Edmund Burke's foundational conservative text (1790) argued against the French Revolution on what basis?",
+    "correctAnswer": "Revolution destroys inherited wisdom and social order; tradition and gradual reform preserve civilization",
+    "acceptableAlternatives": ["tradition and organic society should be preserved over abstract principles"],
+    "explanation": "Burke's 'Reflections on the Revolution in France' (1790) argued that society is a partnership between the dead, the living, and the unborn — destroying inherited institutions in favor of abstract 'rights of man' leads to chaos and tyranny.",
+    "distractors": ["Revolution is justified only when the monarch violates natural law", "All political power derives from divine right of kings", "Democracy is superior to monarchy but must be introduced gradually", "Free markets, not revolution, are the solution to poverty"],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": 4,
+    "answerTypePoolId": "ideological_terms",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.5",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_035",
+    "quizQuestion": "The Chartist movement (1838–1857) was notable as an early mass working-class political movement in Britain. What was its central demand?",
+    "correctAnswer": "Universal male suffrage (right for all adult men to vote)",
+    "acceptableAlternatives": ["universal manhood suffrage", "votes for all men"],
+    "explanation": "The People's Charter (1838) demanded six reforms including universal male suffrage, secret ballot, and payment for MPs. Although Parliament rejected their petitions, most demands were eventually enacted by the early 20th century.",
+    "distractors": ["Abolition of child labor in all industries", "Free trade and repeal of the Corn Laws", "Universal female suffrage and equal pay", "Nationalization of all railways and mines"],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": 2,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.6",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_036",
+    "quizQuestion": "Emmeline Pankhurst founded which organization in 1903 to fight for women's suffrage in Britain through militant tactics?",
+    "correctAnswer": "Women's Social and Political Union (WSPU)",
+    "acceptableAlternatives": ["WSPU", "the WSPU"],
+    "explanation": "Pankhurst founded the WSPU in 1903 after growing frustrated with the slow progress of constitutional suffragism. The WSPU adopted militant tactics including hunger strikes, window-smashing, and arson to force Parliament to grant women the vote.",
+    "distractors": ["National Union of Women's Suffrage Societies", "Women's Labour League", "Fabian Society", "Women's Freedom League"],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 2,
+    "answerTypePoolId": "institutions_systems",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.6",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_037",
+    "quizQuestion": "In what year were trade unions first legalized in Britain?",
+    "correctAnswer": "1871",
+    "acceptableAlternatives": [],
+    "explanation": "The Trade Union Act of 1871 legalized trade unions in Britain, recognizing their right to exist and hold funds. This followed decades of organizing and pressure, establishing the legal framework for collective bargaining.",
+    "distractors": ["1824", "1848", "1900", "1906"],
+    "difficulty": 3,
+    "funScore": 5,
+    "chainThemeId": 2,
+    "answerTypePoolId": "dates_periods",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.6",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_038",
+    "quizQuestion": "Edwin Chadwick's 1842 'Report on the Sanitary Condition of the Labouring Population' led to what type of public health reforms?",
+    "correctAnswer": "Sewage systems, clean water supply, and improved sanitation in industrial cities",
+    "acceptableAlternatives": ["sanitation reforms and clean water acts", "public sewers and clean water"],
+    "explanation": "Chadwick documented horrific sanitary conditions in industrial cities and argued disease was caused by filth. His report drove the Public Health Act of 1848, creating local boards to improve sewers, drainage, and water supply.",
+    "distractors": ["Vaccination programs against smallpox and cholera", "Factory ventilation standards and air quality laws", "Regulation of food adulteration and market prices", "Mandatory hospital construction in every industrial town"],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": 2,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.6",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_039",
+    "quizQuestion": "What was the primary ideological justification conservatives used to oppose the 1848 revolutions?",
+    "correctAnswer": "Tradition and organic social order must be preserved against abstract revolutionary ideals",
+    "acceptableAlternatives": ["that tradition and social order must be preserved", "Burkean conservatism"],
+    "explanation": "Conservatives following Burke and Metternich argued that society is an organic inheritance, that rapid revolutionary change destroys accumulated wisdom, and that order and hierarchy are natural and necessary.",
+    "distractors": ["The divine right of kings granted by God cannot be revoked by humans", "Democracy leads inevitably to mob rule and then tyranny", "Economic free trade solves political grievances without revolution", "Nationalism was a foreign conspiracy against legitimate governments"],
+    "difficulty": 2,
+    "funScore": 5,
+    "chainThemeId": 4,
+    "answerTypePoolId": "ideological_terms",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.5",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_040",
+    "quizQuestion": "The 'putting-out system' that preceded the factory system differed from it in what key way?",
+    "correctAnswer": "Work was done in workers' homes rather than in a centralized factory",
+    "acceptableAlternatives": ["production happened in domestic settings, not central factories"],
+    "explanation": "Under the putting-out (domestic) system, merchants supplied raw materials to rural workers who spun or wove at home, then collected the finished goods. The factory system replaced this by centralizing all production under one roof with machinery.",
+    "distractors": ["Workers owned the machines and set their own prices", "The state controlled all production and distribution of goods", "Guild masters supervised production in small workshops in town centers", "Merchant ships transported goods between distant workshops"],
+    "difficulty": 2,
+    "funScore": 5,
+    "chainThemeId": 1,
+    "answerTypePoolId": "institutions_systems",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.1",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_041",
+    "quizQuestion": "Which British canal and railway engineer created both the Stockton-Darlington (1825) and Liverpool-Manchester (1830) railways?",
+    "correctAnswer": "George Stephenson",
+    "acceptableAlternatives": [],
+    "explanation": "George Stephenson (1781–1848), a self-taught engineer, designed the world's first steam railways, pioneered the standard rail gauge, and trained the next generation of railway engineers, earning the title 'Father of Railways.'",
+    "distractors": ["James Watt", "Isambard Kingdom Brunel", "Richard Trevithick", "Matthew Boulton"],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 1,
+    "answerTypePoolId": "person_names",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.1",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_042",
+    "quizQuestion": "What specific advantage did Britain's geography provide that gave it rivers suitable for powering early mills and transporting goods?",
+    "correctAnswer": "Numerous navigable rivers and proximity to coal deposits",
+    "acceptableAlternatives": ["navigable rivers and coal deposits", "rivers and coal"],
+    "explanation": "Britain's rivers powered early water mills and provided transport for raw materials and finished goods before railways. Combined with abundant coal (for steam power) and iron ore, Britain's geography gave it natural advantages for industrialization.",
+    "distractors": ["A warm Mediterranean climate that allowed year-round outdoor factory work", "Vast forests providing unlimited cheap wood for fuel and construction", "Flat terrain making canal and road construction uniquely easy", "Large domestic population providing the largest internal market in Europe"],
+    "difficulty": 2,
+    "funScore": 5,
+    "chainThemeId": 1,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.1",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_043",
+    "quizQuestion": "The French February Revolution of 1848 established what government?",
+    "correctAnswer": "The Second Republic",
+    "acceptableAlternatives": ["France's Second Republic"],
+    "explanation": "The February Revolution (1848) forced Louis-Philippe to abdicate and established the Second Republic, which introduced universal male suffrage — the first European nation to do so. It was later overthrown by Louis-Napoleon's coup in 1851.",
+    "distractors": ["The Third Republic", "The Second Empire", "The July Monarchy", "The Paris Commune"],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": 3,
+    "answerTypePoolId": "institutions_systems",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.4",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "france"
+    }
+  },
+  {
+    "id": "ap_euro_u6_044",
+    "quizQuestion": "What was the 'Concert of Europe' and when was it established?",
+    "correctAnswer": "A great-power system to maintain the conservative post-Napoleonic order, established at the Congress of Vienna (1814–15)",
+    "acceptableAlternatives": ["the great-power concert established at Vienna in 1815"],
+    "explanation": "The Concert of Europe emerged from the Congress of Vienna (1814–15) as Britain, Austria, Prussia, and Russia agreed to meet periodically to manage European affairs, collectively intervening to suppress revolutions and maintain the balance of power.",
+    "distractors": ["A free-trade agreement signed by European nations after 1848", "A military alliance formed to oppose Napoleonic France in 1813", "A cultural organization promoting European artistic exchange", "A precursor to the European Union founded in the 1850s"],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": 3,
+    "answerTypePoolId": "institutions_systems",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.4",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_045",
+    "quizQuestion": "What role did colonial markets play in Britain's early industrialization?",
+    "correctAnswer": "They provided captive markets for British manufactured goods and sources of raw materials",
+    "acceptableAlternatives": ["they provided raw materials and markets for British goods"],
+    "explanation": "Britain's colonial empire supplied raw materials (cotton from India and America, sugar from the Caribbean) and provided guaranteed markets for British manufactured goods, stimulating production and capital accumulation.",
+    "distractors": ["They provided the skilled labor that built British factories", "They funded the Bank of England and stabilized the pound sterling", "They supplied the coal and iron ore that powered British industry", "They prevented Continental European competition through tariff barriers"],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": 1,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.1",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_046",
+    "quizQuestion": "How did the revolutions of 1830 differ in outcome from the revolutions of 1848?",
+    "correctAnswer": "The 1830 revolutions produced some lasting successes (Belgian independence, constitutional monarchy in France), while 1848 revolutions were nearly universally crushed",
+    "acceptableAlternatives": ["1830 had more successes; 1848 was almost entirely crushed"],
+    "explanation": "In 1830, France got a constitutional monarch and Belgium gained independence. In 1848, nearly every revolutionary government collapsed within months, as conservative military forces reasserted control across Europe.",
+    "distractors": ["The 1830 revolutions were more radical and socialist; 1848 was more moderate and liberal", "Both waves succeeded equally in establishing constitutional governments", "The 1848 revolutions succeeded in France only; 1830 revolutions failed everywhere", "The 1830 revolutions were suppressed by Russia, while 1848 succeeded peacefully"],
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": 3,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.4",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_047",
+    "quizQuestion": "What was Charles Fourier's proposed socialist community called?",
+    "correctAnswer": "Phalanstère (phalanstery)",
+    "acceptableAlternatives": ["phalanstery", "phalanstère"],
+    "explanation": "Fourier envisioned cooperative communities of about 1,620 people — 'phalansteries' — organized around shared labor and matching personalities to tasks they naturally enjoyed, eliminating poverty and exploitation through social design.",
+    "distractors": ["New Lanark", "Icaria", "Brook Farm community", "Oneida community"],
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": 4,
+    "answerTypePoolId": "ideological_terms",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.5",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "france"
+    }
+  },
+  {
+    "id": "ap_euro_u6_048",
+    "quizQuestion": "The Bessemer process (1856) had what transformative effect on industrial construction?",
+    "correctAnswer": "It made steel cheap enough to build railways, bridges, and skyscrapers on a mass scale",
+    "acceptableAlternatives": ["it enabled mass production of cheap steel for railways and infrastructure"],
+    "explanation": "Before Bessemer, steel was expensive and rare. By converting iron to steel rapidly and cheaply, the Bessemer process enabled the explosion of railway networks, steel-frame bridges, and eventually skyscrapers that defined the late 19th century.",
+    "distractors": ["It replaced coal with oil as the primary fuel for industrial furnaces", "It produced aluminum alloys lighter than iron for aircraft construction", "It allowed factories to use electricity instead of steam power", "It eliminated the need for skilled ironworkers in the production process"],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 1,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.3",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_049",
+    "quizQuestion": "In Marxist theory, the 'bourgeoisie' refers to which social class?",
+    "correctAnswer": "The capitalist class that owns the means of production",
+    "acceptableAlternatives": ["capitalists who own factories and means of production", "owners of the means of production"],
+    "explanation": "Marx defined the bourgeoisie as the class owning the means of production (factories, land, capital) who exploit the proletariat by appropriating the surplus value workers produce, keeping wages below the value of what workers actually create.",
+    "distractors": ["The rural aristocracy who owned inherited land", "Government bureaucrats and state administrators", "Urban intellectuals and professionals without inherited wealth", "The petty bourgeoisie of small shopkeepers and artisans"],
+    "difficulty": 1,
+    "funScore": 6,
+    "chainThemeId": 4,
+    "answerTypePoolId": "ideological_terms",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.5",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_050",
+    "quizQuestion": "What was the Corn Laws controversy in Britain, and how did its repeal in 1846 reflect liberal ideology?",
+    "correctAnswer": "Corn Laws protected landowners with grain tariffs; repeal promoted free trade over aristocratic privilege",
+    "acceptableAlternatives": ["Corn Laws were grain tariffs; repeal advanced free trade principles"],
+    "explanation": "The Corn Laws (from 1815) kept grain prices high by taxing imports, protecting aristocratic landowners at the expense of urban workers and manufacturers. Repeal in 1846 under Robert Peel was a liberal free-trade triumph, shifting power from agrarian to industrial interests.",
+    "distractors": ["Corn Laws subsidized colonial grain exports; repeal ended the slave trade financing", "Corn Laws required all grain to be processed in Britain; repeal allowed imports of flour", "Corn Laws funded the Poor Law workhouses; repeal cut welfare spending", "Corn Laws regulated factory wages; repeal removed government control over pay"],
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": 4,
+    "answerTypePoolId": "legislation_names",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.5",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_051",
+    "quizQuestion": "How did the Second Industrial Revolution (c.1870–1914) change the role of science in industrial production?",
+    "correctAnswer": "It created research-driven industries where systematic science directly produced innovations, unlike the trial-and-error of the First Industrial Revolution",
+    "acceptableAlternatives": ["science became systematically applied to industry through research labs"],
+    "explanation": "Unlike the First Industrial Revolution's practical inventors (Watt, Arkwright), the Second saw German chemical firms, American electrical companies, and others create in-house research labs, fusing science and industry in a new institutional model.",
+    "distractors": ["Science became purely theoretical while engineering remained entirely practical", "Universities replaced factories as centers of production", "Scientific discoveries were kept secret through national patents to prevent foreign competition", "Science played no greater role; the difference was only in scale of production"],
+    "difficulty": 3,
+    "funScore": 6,
+    "chainThemeId": 1,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.3",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "europe"
+    }
+  },
+  {
+    "id": "ap_euro_u6_052",
+    "quizQuestion": "The 'division of labor' in the factory system, as described by Adam Smith, meant what for workers?",
+    "correctAnswer": "Workers performed one repetitive specialized task rather than making a complete product from start to finish",
+    "acceptableAlternatives": ["each worker did one small step in production, not the whole product"],
+    "explanation": "Smith's famous pin factory example in 'The Wealth of Nations' (1776) showed that dividing pin-making into 18 distinct operations dramatically increased output, but critics noted it also deskilled workers and made labor alienating and monotonous.",
+    "distractors": ["Workers chose their own tasks and rotated between positions freely", "Managers assigned tasks by social class, with elites doing skilled work", "Workers learned all stages of production to become self-sufficient craftsmen", "Piece-rate payment replaced hourly wages to reward faster workers"],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": 1,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.2",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_053",
+    "quizQuestion": "What is the significance of Manchester's growth from 25,000 people (1772) to 303,000 (1851) for understanding industrialization?",
+    "correctAnswer": "It illustrates how industrialization created massive, rapid urbanization and new urban social problems within a generation",
+    "acceptableAlternatives": ["it shows how industrialization drove explosive urban growth and new social conditions"],
+    "explanation": "Manchester's explosive growth epitomized industrial urbanization — rural migrants flooded in for factory work, creating overcrowded slums, pollution, disease, and a new urban working class whose conditions sparked socialist and reform movements.",
+    "distractors": ["It shows Britain had the largest population in Europe by the 1850s", "It demonstrates that industrialization raised living standards and attracted immigration", "It proves that government planned the growth of industrial cities scientifically", "It illustrates how trade, not industry, was the primary driver of urban growth"],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": 2,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.2",
+      "exam_weight": "high",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  },
+  {
+    "id": "ap_euro_u6_054",
+    "quizQuestion": "Henri de Saint-Simon differed from Marx in that he believed social improvement should be led by whom?",
+    "correctAnswer": "Scientists, engineers, and industrialists — a technocratic elite — not the working class",
+    "acceptableAlternatives": ["a technocratic elite of scientists and industrialists"],
+    "explanation": "Saint-Simon envisioned a rational society managed by scientists and industrialists who would apply modern knowledge to organize production efficiently, eliminating poverty without class revolution — an elitist, technocratic vision very different from Marx's proletarian revolution.",
+    "distractors": ["Elected parliaments representing all social classes equally", "The traditional aristocracy reformed through education and religion", "Peasants organized into agricultural cooperatives with state support", "Religious leaders applying Christian charity to industrial conditions"],
+    "difficulty": 3,
+    "funScore": 6,
+    "chainThemeId": 4,
+    "answerTypePoolId": "ideological_terms",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.5",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "france"
+    }
+  },
+  {
+    "id": "ap_euro_u6_055",
+    "quizQuestion": "The cooperation between James Watt and Matthew Boulton exemplified which aspect of early British industrial capitalism?",
+    "correctAnswer": "The partnership of inventor/engineer with entrepreneur/capital, combining technical innovation with business acumen",
+    "acceptableAlternatives": ["the combination of engineering innovation and business investment"],
+    "explanation": "Watt had the engineering genius but needed Boulton's capital, business network, and marketing to commercialize the steam engine. Their Boulton & Watt partnership became the model for how invention and capital combined to drive the Industrial Revolution.",
+    "distractors": ["State-funded scientific research leading directly to commercial applications", "Guild cooperation between master craftsmen and apprentice engineers", "Colonial wealth financing domestic industrial development without private investors", "Church institutions providing loans to inventors in exchange for licensing revenue"],
+    "difficulty": 3,
+    "funScore": 6,
+    "chainThemeId": 1,
+    "answerTypePoolId": "cause_effect_descriptions",
+    "examTags": {
+      "exam": "AP European History",
+      "unit": 6,
+      "topic": "6.1",
+      "exam_weight": "medium",
+      "time_period": "c_1815_1914",
+      "region": "britain"
+    }
+  }
+]

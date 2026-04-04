@@ -1,0 +1,2047 @@
+{
+  "facts": [
+    {
+      "id": "ap_euro_u6_spinning_jenny_inventor",
+      "correctAnswer": "James Hargreaves",
+      "acceptableAlternatives": [
+        "Hargreaves"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "Richard Arkwright",
+        "Edmund Cartwright",
+        "Samuel Crompton",
+        "James Watt",
+        "John Kay",
+        "Robert Owen",
+        "George Stephenson",
+        "Matthew Boulton"
+      ],
+      "quizQuestion": "Which British inventor created the spinning jenny around 1764, allowing one worker to spin multiple threads at once?",
+      "explanation": "James Hargreaves invented the spinning jenny around 1764 in Lancashire, England. The device let a single worker operate eight or more spindles simultaneously, dramatically increasing thread output and helping launch the textile revolution.",
+      "statement": "",
+      "wowFactor": "Hargreaves reportedly got the idea after watching a spinning wheel continue to spin after it was knocked over — and the world was never the same.",
+      "sourceName": "Wikipedia — Spinning jenny",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Spinning_jenny",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.1"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_water_frame_inventor",
+      "correctAnswer": "Richard Arkwright",
+      "acceptableAlternatives": [
+        "Arkwright"
+      ],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "James Hargreaves",
+        "Edmund Cartwright",
+        "Samuel Crompton",
+        "James Watt",
+        "John Kay",
+        "Robert Owen",
+        "Matthew Boulton",
+        "George Stephenson"
+      ],
+      "quizQuestion": "Who patented the water frame in 1769, a device that used waterpower to spin strong cotton thread suitable for warp?",
+      "explanation": "Richard Arkwright patented the water frame in 1769. Unlike the spinning jenny, it produced a stronger cotton thread by using waterpower, enabling the shift from cottage industry to factory production — Arkwright is often called the 'father of the factory system.'",
+      "statement": "",
+      "wowFactor": "Arkwright had almost no formal education but became one of the wealthiest men in Britain — pure industrial hustle.",
+      "sourceName": "Wikipedia — Water frame",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Water_frame",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.1"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_power_loom_inventor",
+      "correctAnswer": "Edmund Cartwright",
+      "acceptableAlternatives": [
+        "Cartwright"
+      ],
+      "chainThemeId": 2,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 4,
+      "ageGroup": "all",
+      "distractors": [
+        "Richard Arkwright",
+        "James Hargreaves",
+        "Samuel Crompton",
+        "James Watt",
+        "John Kay",
+        "George Stephenson",
+        "Robert Stephenson",
+        "Matthew Boulton"
+      ],
+      "quizQuestion": "Which inventor patented the power loom in 1785, mechanizing the weaving process and completing the textile revolution?",
+      "explanation": "Edmund Cartwright patented the power loom in 1785, anticipating that Arkwright's expiring spinning patent would flood markets with yarn and create a weaver shortage. His mechanical loom eventually displaced handloom weavers across Britain, triggering the Luddite protests.",
+      "statement": "",
+      "wowFactor": "Cartwright was a clergyman who taught himself engineering — and then accidentally sparked a workers' rebellion.",
+      "sourceName": "Wikipedia — Edmund Cartwright",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Edmund_Cartwright",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.1"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_watt_steam_engine_year",
+      "correctAnswer": "{1769}",
+      "acceptableAlternatives": [
+        "1769"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year did James Watt patent his separate condenser steam engine, the innovation that made steam power practical for industry?",
+      "explanation": "James Watt patented his improved steam engine in 1769, incorporating a separate condenser that reduced fuel waste by ~75% compared to Newcomen's design. Watt and partner Matthew Boulton sold nearly 500 engines before the patent expired in 1800, powering Britain's industrial takeoff.",
+      "statement": "",
+      "wowFactor": "Watt's engine used 75% less coal than its predecessor — it didn't just power the Industrial Revolution, it made it affordable.",
+      "sourceName": "Wikipedia — Watt steam engine",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Watt_steam_engine",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.1"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_stockton_darlington_year",
+      "correctAnswer": "{1825}",
+      "acceptableAlternatives": [
+        "1825"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year did the Stockton and Darlington Railway open, becoming the world's first steam-powered public railway to carry passengers?",
+      "explanation": "The Stockton and Darlington Railway opened in 1825, with George Stephenson's Locomotion No. 1 pulling the first train. It demonstrated that railways could move freight and passengers reliably, paving the way for the railway mania of the 1840s.",
+      "statement": "",
+      "wowFactor": "The opening day crowd was so enormous that the train exceeded design speed — railway fever had arrived.",
+      "sourceName": "Wikipedia — George Stephenson",
+      "sourceUrl": "https://en.wikipedia.org/wiki/George_Stephenson",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.2"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_stephensons_rocket",
+      "correctAnswer": "Rainhill Trials",
+      "acceptableAlternatives": [
+        "Rainhill"
+      ],
+      "chainThemeId": 5,
+      "answerTypePoolId": "event_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Great Exhibition",
+        "Crystal Palace contest",
+        "Manchester Speed Race",
+        "Liverpool Challenge",
+        "Parliamentary Trials",
+        "Derby Locomotive Race",
+        "Stephenson Challenge",
+        "Newcastle Prize"
+      ],
+      "quizQuestion": "Stephenson's Rocket won which 1829 competition, proving steam locomotives could reliably haul both passengers and freight?",
+      "explanation": "The Rainhill Trials of 1829 were organized by the Liverpool and Manchester Railway to select locomotive designs. The Rocket won convincingly, reaching nearly 30 mph — far beyond the judges' requirements — and established steam locomotion as the future of transport.",
+      "statement": "",
+      "wowFactor": "The Rocket hit 30 mph in 1829 — faster than any human had ever traveled under controlled conditions.",
+      "sourceName": "Wikipedia — Rainhill Trials",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rainhill_Trials",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.2"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_why_britain_first_coal",
+      "correctAnswer": "Coal and iron deposits",
+      "acceptableAlternatives": [
+        "coal and iron",
+        "abundant coal and iron"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "tropical colonies",
+        "Protestant work ethic alone",
+        "larger population than France",
+        "government factory subsidies",
+        "early stock market",
+        "superior canals",
+        "absence of guilds",
+        "feudal labor surplus"
+      ],
+      "quizQuestion": "Which natural resource advantage — combined with capital, labor supply, and stable institutions — gave Britain its head start in industrialization?",
+      "explanation": "Britain sat atop vast, accessible coal and iron deposits. Coal fueled steam engines; iron built machines, rails, and bridges. Combined with navigable rivers, colonial markets, available capital, and a patent system that rewarded inventors, no other nation had all these factors simultaneously.",
+      "statement": "",
+      "wowFactor": "Britain's Industrial Revolution was partly geographic luck — coal seams ran almost to the surface in Lancashire and Wales.",
+      "sourceName": "Wikipedia — Industrial Revolution",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Industrial_Revolution",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.1"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_agrarian_revolution_enclosures",
+      "correctAnswer": "Enclosure movement",
+      "acceptableAlternatives": [
+        "enclosures",
+        "parliamentary enclosure"
+      ],
+      "chainThemeId": 1,
+      "answerTypePoolId": "movement_names",
+      "difficulty": 3,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "crop rotation reform",
+        "guild dissolution",
+        "Poor Law reform",
+        "commons preservation",
+        "yeoman uprising",
+        "drainage projects",
+        "tithe abolition",
+        "parish reform"
+      ],
+      "quizQuestion": "What agricultural change displaced rural laborers from common lands, creating a mobile workforce that fueled Britain's early factories?",
+      "explanation": "The enclosure movement converted open common fields into private farmland, destroying peasant subsistence farming. Displaced rural workers flooded into industrial cities, providing cheap labor for the new factory system — a key precondition for British industrialization.",
+      "statement": "",
+      "wowFactor": "Without enclosures kicking millions off their land, there might have been no factory labor pool — displacement powered progress.",
+      "sourceName": "Wikipedia — Enclosure",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Enclosure",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.1"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_belgium_first_continent",
+      "correctAnswer": "Belgium",
+      "acceptableAlternatives": [],
+      "chainThemeId": 2,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "France",
+        "Germany",
+        "Prussia",
+        "Netherlands",
+        "Switzerland",
+        "Austria",
+        "Denmark",
+        "Sweden"
+      ],
+      "quizQuestion": "Which country was the first on the European continent to industrialize, building railways and textile mills with British expertise in the 1820s–1830s?",
+      "explanation": "Belgium industrialized rapidly after independence in 1830, having already begun in the 1820s. It possessed coal and iron in the Liège and Charleroi regions, recruited British engineers, and built continental Europe's first steam railway in 1835 (Brussels to Mechelen).",
+      "statement": "",
+      "wowFactor": "Belgium deliberately hired British engineers to steal industrial secrets — and became continental Europe's first industrial powerhouse.",
+      "sourceName": "Wikipedia — Industrialization in Belgium",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Industrialization_in_Belgium",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.2"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_bessemer_process_year",
+      "correctAnswer": "{1856}",
+      "acceptableAlternatives": [
+        "1856"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year did Henry Bessemer patent his process for mass-producing cheap steel by blasting air through molten iron?",
+      "explanation": "Henry Bessemer patented his converter process in 1856. It slashed the cost of steel from £40 to £6–7 per ton and accelerated construction of railways, bridges, and skyscrapers worldwide — making steel the signature material of the Second Industrial Revolution.",
+      "statement": "",
+      "wowFactor": "Steel prices crashed 85% within decades of Bessemer's patent — it's one of the biggest cost collapses in manufacturing history.",
+      "sourceName": "Wikipedia — Bessemer process",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bessemer_process",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.3"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_otto_cycle_engine",
+      "correctAnswer": "Nikolaus Otto",
+      "acceptableAlternatives": [
+        "Otto"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "person_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Karl Benz",
+        "Gottlieb Daimler",
+        "Rudolf Diesel",
+        "Henry Ford",
+        "Wilhelm Maybach",
+        "Werner von Siemens",
+        "James Watt",
+        "James Clerk Maxwell"
+      ],
+      "quizQuestion": "Which German engineer developed the practical four-stroke internal combustion engine in 1876, laying the foundation for automobiles?",
+      "explanation": "Nikolaus Otto perfected the four-stroke (intake-compression-power-exhaust) cycle engine in 1876. Over 30,000 were sold within a decade. Daimler and Benz both trained under Otto's influence before independently building the first true automobiles in 1885–1886.",
+      "statement": "",
+      "wowFactor": "Otto's engine design is still fundamentally how your car works today — a 150-year-old invention still running the roads.",
+      "sourceName": "Wikipedia — Nicolaus Otto",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nicolaus_Otto",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.3"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_germany_surpasses_britain_steel",
+      "correctAnswer": "{1893}",
+      "acceptableAlternatives": [
+        "1893",
+        "by 1900"
+      ],
+      "chainThemeId": 5,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In approximately what year did Germany's steel output first exceed Britain's, signaling Germany's rise as Europe's dominant industrial power?",
+      "explanation": "Germany surpassed British steel production around 1893, and by 1914 was producing more than twice as much. By 1900 Germany also dominated the global synthetic dye market and was growing twice as fast industrially as Britain — a stunning reversal from just 30 years earlier.",
+      "statement": "",
+      "wowFactor": "In 1870 Britain made twice as much steel as Germany; by 1914 Germany made twice as much as Britain — a total power flip in 40 years.",
+      "sourceName": "Wikipedia — Second Industrial Revolution",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Second_Industrial_Revolution",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.3"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_german_chemical_dominance",
+      "correctAnswer": "Synthetic dyes",
+      "acceptableAlternatives": [
+        "dye industry",
+        "aniline dyes",
+        "chemical dyes"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "dynamite production",
+        "rubber manufacturing",
+        "photographic film",
+        "aluminum refining",
+        "petroleum refining",
+        "locomotive manufacturing",
+        "glass production",
+        "steam turbine engines"
+      ],
+      "quizQuestion": "By 1900, Germany dominated the global market for what product, demonstrating the Second Industrial Revolution's emphasis on science-based industry?",
+      "explanation": "By 1900, German chemical firms like BASF and Bayer controlled approximately 90% of the world market for synthetic dyes. This dominance reflected Germany's investment in university-industry research partnerships — a model Britain had neglected — and previewed Germany's pharmaceutical dominance.",
+      "statement": "",
+      "wowFactor": "German chemists invented the color purple for British royalty's robes — and then cornered the entire global dye market.",
+      "sourceName": "Wikipedia — Second Industrial Revolution",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Second_Industrial_Revolution",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.3"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_karl_benz_automobile",
+      "correctAnswer": "{1886}",
+      "acceptableAlternatives": [
+        "1886"
+      ],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year did Karl Benz receive a patent for his Motorwagen, widely considered the first true gasoline-powered automobile?",
+      "explanation": "Karl Benz was granted a patent for his three-wheeled Motorwagen on January 29, 1886 — the same year Gottlieb Daimler independently produced his own automobile just 60 miles away. Both used Otto's four-stroke engine principle, launching the age of the automobile.",
+      "statement": "",
+      "wowFactor": "Two Germans invented the automobile in the same year without knowing each other — 60 miles apart, zero coordination.",
+      "sourceName": "Wikipedia — Benz Patent-Motorwagen",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Benz_Patent-Motorwagen",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.3"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_urbanization_britain_proportion",
+      "correctAnswer": "72%",
+      "acceptableAlternatives": [
+        "seventy-two percent"
+      ],
+      "chainThemeId": 2,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "17%",
+        "35%",
+        "50%",
+        "85%",
+        "45%",
+        "28%",
+        "60%",
+        "92%"
+      ],
+      "quizQuestion": "By 1891, approximately what percentage of England and Wales's population lived in cities — up from just 17% in 1801?",
+      "explanation": "England and Wales urbanized at an extraordinary pace: from 17% urban in 1801 to 72% urban in 1891. This transformation, driven by factory employment, was the fastest mass urbanization in human history up to that point, creating both industrial wealth and catastrophic public health crises.",
+      "statement": "",
+      "wowFactor": "Britain went from mostly rural to mostly urban in a single century — no society had ever urbanized that fast.",
+      "sourceName": "Lumen Learning — Urbanization",
+      "sourceUrl": "https://courses.lumenlearning.com/suny-hccc-worldhistory2/chapter/urbanization/",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.4"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_manchester_child_mortality",
+      "correctAnswer": "57%",
+      "acceptableAlternatives": [
+        "fifty-seven percent"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "teen+",
+      "distractors": [
+        "12%",
+        "25%",
+        "40%",
+        "70%",
+        "32%",
+        "80%",
+        "15%",
+        "90%"
+      ],
+      "quizQuestion": "In 1840 Manchester, approximately what percentage of poor children died before age 5 — revealing the deadly cost of industrial urbanization?",
+      "explanation": "In 1840 Manchester, 57% of poor children died before reaching age 5, compared to 32% in rural areas. Overcrowding, contaminated water, raw sewage, and no public health infrastructure made early industrial cities death traps, spurring later sanitation reform movements.",
+      "statement": "",
+      "wowFactor": "Early Manchester killed more than half its poor children before age 5 — the city was simultaneously the future and a nightmare.",
+      "sourceName": "Lumen Learning — Urbanization",
+      "sourceUrl": "https://courses.lumenlearning.com/suny-hccc-worldhistory2/chapter/urbanization/",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.4"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_bourgeoisie_proletariat",
+      "correctAnswer": "Proletariat",
+      "acceptableAlternatives": [
+        "working class",
+        "working-class"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "bourgeoisie",
+        "peasantry",
+        "aristocracy",
+        "petty bourgeoisie",
+        "lumpenproletariat",
+        "yeomanry",
+        "guild artisans",
+        "technocracy"
+      ],
+      "quizQuestion": "In Marxist terminology, what class name describes the industrial wage workers who sell their labor to factory owners?",
+      "explanation": "Marx and Engels called industrial wage workers the proletariat — those who own no means of production and must sell their labor for survival. The opposing class, the bourgeoisie, owned factories, capital, and the means of production. This framework shaped all subsequent socialist thought.",
+      "statement": "",
+      "wowFactor": "Marx predicted the proletariat would inevitably overthrow the bourgeoisie — a prophecy that shook every European government.",
+      "sourceName": "Wikipedia — Proletariat",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Proletariat",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.4"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_women_textile_factories",
+      "correctAnswer": "Women and children",
+      "acceptableAlternatives": [
+        "children and women"
+      ],
+      "chainThemeId": 5,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "skilled craftsmen",
+        "immigrant men only",
+        "freed serfs",
+        "military veterans",
+        "university graduates",
+        "domestic servants",
+        "guild masters",
+        "convict laborers"
+      ],
+      "quizQuestion": "Early British textile factories relied heavily on which labor groups because employers could pay them lower wages than adult men?",
+      "explanation": "Textile mills depended heavily on women and children, who received dramatically lower wages than adult men and were considered easier to discipline. Children as young as five worked 12–16 hour days, leading eventually to reform legislation like the Factory Act of 1833.",
+      "statement": "",
+      "wowFactor": "Victorian factories hired children as young as five — and considered them ideal workers because they fit inside the machinery.",
+      "sourceName": "Wikipedia — Factory Acts",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Factory_Acts",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.4"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_demographic_transition",
+      "correctAnswer": "Demographic transition",
+      "acceptableAlternatives": [
+        "demographic transition model"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 3,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "Malthusian trap",
+        "population implosion",
+        "mortality crisis",
+        "plague cycle",
+        "birth rate surge",
+        "migration explosion",
+        "social Darwinism",
+        "urbanization crisis"
+      ],
+      "quizQuestion": "What model describes how industrializing societies shift from high birth/death rates to low birth/death rates, causing a population explosion in the middle phase?",
+      "explanation": "The demographic transition model shows industrializing nations first lower death rates (through sanitation and medicine) while birth rates stay high, causing rapid population growth. Eventually birth rates also fall as urbanization and education change family patterns. Britain's population tripled 1750–1850.",
+      "statement": "",
+      "wowFactor": "Europe's population nearly doubled between 1800 and 1900 — the death rate fell faster than the birth rate, creating a human surge.",
+      "sourceName": "Wikipedia — Demographic transition",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Demographic_transition",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.4"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_metternich_system",
+      "correctAnswer": "Klemens von Metternich",
+      "acceptableAlternatives": [
+        "Metternich"
+      ],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Tsar Alexander I",
+        "Duke of Wellington",
+        "Lord Castlereagh",
+        "Prince Talleyrand",
+        "Frederick William III",
+        "Tsar Nicholas I",
+        "Francis II",
+        "Count Cavour"
+      ],
+      "quizQuestion": "Which Austrian chancellor dominated the Concert of Europe from 1815–1848, suppressing liberalism and nationalism across the continent?",
+      "explanation": "Klemens von Metternich served as Austria's foreign minister and chancellor from 1809 to 1848. He engineered the Concert of Europe system, which coordinated great-power intervention against revolutions and liberal movements, earning this period the label 'the Age of Metternich.'",
+      "statement": "",
+      "wowFactor": "Metternich ran European politics for 33 years like a chess grandmaster — until 1848 knocked all the pieces off the board at once.",
+      "sourceName": "Wikipedia — Klemens von Metternich",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Klemens_von_Metternich",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.5"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_carlsbad_decrees_year",
+      "correctAnswer": "{1819}",
+      "acceptableAlternatives": [
+        "1819"
+      ],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year did Metternich push through the Carlsbad Decrees, which banned nationalist student groups and censored German universities?",
+      "explanation": "The Carlsbad Decrees were passed in September 1819 after a nationalist student (Karl Sand) assassinated conservative writer August von Kotzebue. They banned the Burschenschaften fraternities, removed liberal professors, and established strict press censorship throughout the German Confederation.",
+      "statement": "",
+      "wowFactor": "Metternich used one student's murder to justify censoring every German university — collective punishment on a national scale.",
+      "sourceName": "Wikipedia — Carlsbad Decrees",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Carlsbad_Decrees",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.5"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_concert_of_europe_purpose",
+      "correctAnswer": "Balance of power",
+      "acceptableAlternatives": [
+        "maintaining balance of power",
+        "preserve balance of power"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "free trade promotion",
+        "colonial expansion",
+        "democratic reform",
+        "religious unity",
+        "military alliance",
+        "economic union",
+        "constitutional monarchy",
+        "Christian solidarity"
+      ],
+      "quizQuestion": "The Concert of Europe (1815–1848) was a system of great-power cooperation primarily designed to maintain what principle among European states?",
+      "explanation": "The Concert of Europe, created at the Congress of Vienna (1815), aimed to maintain the balance of power by preventing any single nation from dominating Europe, suppressing revolutionary movements, and coordinating collective intervention. It was the first sustained system of multilateral European diplomacy.",
+      "statement": "",
+      "wowFactor": "The Concert of Europe invented modern diplomacy — five great powers agreeing to talk before fighting, a radical idea in 1815.",
+      "sourceName": "Wikipedia — Concert of Europe",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Concert_of_Europe",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.5"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_conservatism_burke",
+      "correctAnswer": "Edmund Burke",
+      "acceptableAlternatives": [
+        "Burke"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "Metternich",
+        "Joseph de Maistre",
+        "Louis de Bonald",
+        "Robert Peel",
+        "Lord Castlereagh",
+        "Adam Smith",
+        "Jeremy Bentham",
+        "Thomas Paine"
+      ],
+      "quizQuestion": "Whose 1790 book 'Reflections on the Revolution in France' became the founding text of modern conservative political philosophy?",
+      "explanation": "Edmund Burke's Reflections on the Revolution in France (1790) argued that society is an inheritance from past generations, that radical change is dangerous, and that traditional institutions embody centuries of accumulated wisdom. It sold 13,000 copies in five weeks and defined conservatism.",
+      "statement": "",
+      "wowFactor": "Burke predicted the French Revolution would end in tyranny and military dictatorship — he was writing in 1790, before Napoleon.",
+      "sourceName": "Wikipedia — Reflections on the Revolution in France",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Reflections_on_the_Revolution_in_France",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.7"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_july_revolution_1830",
+      "correctAnswer": "{1830}",
+      "acceptableAlternatives": [
+        "1830"
+      ],
+      "chainThemeId": 5,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year did the July Revolution in France overthrow Charles X, replacing him with 'citizen king' Louis-Philippe of Orléans?",
+      "explanation": "The July Revolution of 1830 (Three Glorious Days, July 27–29) erupted after Charles X issued decrees dissolving parliament and suspending press freedom. The bourgeoisie offered the crown to Louis-Philippe, Duke of Orléans, who ruled as a constitutional monarch — a liberal victory within monarchical limits.",
+      "statement": "",
+      "wowFactor": "Three days of street fighting in Paris brought down a king and inspired revolutions across Europe — July 1830 was history's first viral revolution.",
+      "sourceName": "Wikipedia — July Revolution",
+      "sourceUrl": "https://en.wikipedia.org/wiki/July_Revolution",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.6"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_belgium_independence_year",
+      "correctAnswer": "{1830}",
+      "acceptableAlternatives": [
+        "1830"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year did Belgium successfully revolt against Dutch rule and establish itself as an independent constitutional monarchy?",
+      "explanation": "Belgium's revolution began in August 1830, inspired by the French July Revolution. Rioters in Brussels, inflamed partly by a performance of the nationalist opera La Muette de Portici, drove out Dutch forces. The London Conference of great powers recognized Belgian independence in 1831.",
+      "statement": "",
+      "wowFactor": "Belgium's revolution literally started after an opera — the audience walked out of the theater and started a revolt.",
+      "sourceName": "Wikipedia — Belgian Revolution",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Belgian_Revolution",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.6"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_springtime_of_peoples",
+      "correctAnswer": "Springtime of Peoples",
+      "acceptableAlternatives": [
+        "Spring of Nations",
+        "Springtime of Nations"
+      ],
+      "chainThemeId": 1,
+      "answerTypePoolId": "event_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Year of Revolutions",
+        "Red Summer",
+        "Liberal Awakening",
+        "Democratic Dawn",
+        "Nations' Uprising",
+        "Great Unrest",
+        "European Rebellion",
+        "July Uprising"
+      ],
+      "quizQuestion": "What nickname describes the wave of revolutions that swept France, Germany, Austria, Italy, and Hungary simultaneously in 1848?",
+      "explanation": "The Revolutions of 1848 are called the 'Springtime of Peoples' or 'Spring of Nations' because they erupted across Europe nearly simultaneously, driven by shared liberal and nationalist ideals. Over 50 countries experienced uprisings — it was the most widespread revolutionary wave in European history.",
+      "statement": "",
+      "wowFactor": "In 1848 revolutions broke out in over 50 countries simultaneously — the world had never seen anything like it, and hasn't since.",
+      "sourceName": "Wikipedia — Revolutions of 1848",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Revolutions_of_1848",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.6"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_louis_philippe_abdication",
+      "correctAnswer": "Louis-Philippe",
+      "acceptableAlternatives": [
+        "Louis Philippe",
+        "King Louis-Philippe"
+      ],
+      "chainThemeId": 2,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "Charles X",
+        "Napoleon III",
+        "Louis XVIII",
+        "Ferdinand I",
+        "Frederick William IV",
+        "Nicholas I",
+        "Francis Joseph",
+        "William IV"
+      ],
+      "quizQuestion": "Which French 'citizen king' was overthrown by the February Revolution of 1848 and fled to exile in Britain?",
+      "explanation": "Louis-Philippe, who had come to power through the 1830 July Revolution, was overthrown on February 24, 1848, after his government banned political 'banquet campaigns' for reform. He abdicated and fled to Britain, ending the July Monarchy and establishing the Second French Republic.",
+      "statement": "",
+      "wowFactor": "Louis-Philippe came to power via revolution in 1830 and lost power via revolution in 1848 — bookended by uprisings.",
+      "sourceName": "Wikipedia — Louis-Philippe I",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Louis-Philippe_I",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.6"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_frankfurt_assembly_failure",
+      "correctAnswer": "Frederick William IV",
+      "acceptableAlternatives": [
+        "Frederick William IV of Prussia"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Francis Joseph",
+        "Tsar Nicholas I",
+        "Metternich",
+        "Louis-Philippe",
+        "Napoleon III",
+        "Bismarck",
+        "William I",
+        "Emperor Francis Joseph"
+      ],
+      "quizQuestion": "Which Prussian king refused the Frankfurt Assembly's offer of a united German crown in 1849, fatally crippling German liberal nationalism?",
+      "explanation": "The Frankfurt Assembly (1848–1849) produced a liberal German constitution and offered the imperial crown to Frederick William IV of Prussia. He refused, calling it a 'crown from the gutter' — he would only accept from fellow princes, not a revolutionary parliament. The Assembly soon collapsed.",
+      "statement": "",
+      "wowFactor": "Frederick William IV called the German crown 'from the gutter' — and single-handedly killed the liberal vision of German unification.",
+      "sourceName": "Wikipedia — Frankfurt Parliament",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Frankfurt_Parliament",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.6"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_kossuth_hungary",
+      "correctAnswer": "Lajos Kossuth",
+      "acceptableAlternatives": [
+        "Kossuth"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Count Széchenyi",
+        "Batthyány",
+        "Deák",
+        "Petőfi",
+        "Jellačić",
+        "Windisch-Grätz",
+        "Görgei",
+        "Andrássy"
+      ],
+      "quizQuestion": "Who led the Hungarian revolutionary government in 1848–1849 until Russian military intervention crushed the rebellion?",
+      "explanation": "Lajos Kossuth became Hungary's de facto leader in 1848, winning major concessions from Austria and later declaring Hungarian independence. The rebellion collapsed only when Tsar Nicholas I sent 300,000 Russian troops at Austria's request in 1849 — demonstrating conservative powers' determination to suppress revolution.",
+      "statement": "",
+      "wowFactor": "Hungary nearly won independence from Austria in 1848 — it took a Russian army of 300,000 to stop them.",
+      "sourceName": "Wikipedia — Lajos Kossuth",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Lajos_Kossuth",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.6"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_revolutions_1848_failure_reason",
+      "correctAnswer": "Class divisions",
+      "acceptableAlternatives": [
+        "divisions between classes",
+        "split between bourgeoisie and workers"
+      ],
+      "chainThemeId": 5,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "lack of weapons",
+        "foreign invasion",
+        "bad harvests",
+        "religious opposition",
+        "British blockades",
+        "monarchs' military strength alone",
+        "epidemic disease",
+        "nationalist divisions"
+      ],
+      "quizQuestion": "Why did most of the 1848 revolutions ultimately fail? Historians most emphasize what internal weakness that split the revolutionary coalitions?",
+      "explanation": "The 1848 revolutions collapsed primarily because of class divisions: middle-class liberals wanted constitutional reform but feared radical worker demands for economic equality. After initial success, bourgeois liberals allied with conservative forces against the working class — seen most clearly in France's bloody June Days uprising.",
+      "statement": "",
+      "wowFactor": "Revolutionaries defeated their own revolutions — the moment workers demanded more, the middle class switched sides.",
+      "sourceName": "Wikipedia — Revolutions of 1848",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Revolutions_of_1848",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.6"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_june_days_1848",
+      "correctAnswer": "June Days",
+      "acceptableAlternatives": [
+        "June Days uprising",
+        "June Days insurrection"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "event_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "ageGroup": "teen+",
+      "distractors": [
+        "September Massacre",
+        "July Crisis",
+        "Red Terror",
+        "Commune uprising",
+        "August insurrection",
+        "Worker's Revolt",
+        "February uprising",
+        "Thermidor"
+      ],
+      "quizQuestion": "What was the name of the violent Parisian worker uprising in June 1848, suppressed by the French army — marking the failure of socialist hopes in the 1848 Revolution?",
+      "explanation": "The June Days (June 23–26, 1848) erupted when the new French republican government closed the National Workshops (public works programs for the unemployed). Parisian workers rose in armed revolt and were brutally suppressed by General Cavaignac, with 3,000 killed. It marked class war within the revolution.",
+      "statement": "",
+      "wowFactor": "The 1848 revolution in France ended with revolutionaries shooting other revolutionaries — the June Days was a civil war within a civil war.",
+      "sourceName": "Wikipedia — June Days uprising",
+      "sourceUrl": "https://en.wikipedia.org/wiki/June_Days_uprising",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.6"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_classical_liberalism_core",
+      "correctAnswer": "Laissez-faire",
+      "acceptableAlternatives": [
+        "laissez faire",
+        "free markets",
+        "economic liberalism"
+      ],
+      "chainThemeId": 1,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "collective ownership",
+        "state planning",
+        "religious authority",
+        "aristocratic privilege",
+        "national socialism",
+        "worker control",
+        "democratic socialism",
+        "parliamentary democracy"
+      ],
+      "quizQuestion": "What economic policy (meaning 'let it be') paired with individual rights to define 19th-century classical liberalism?",
+      "explanation": "Classical liberalism combined political commitments to individual rights, constitutionalism, and freedom of speech/press with economic commitments to laissez-faire (minimal government interference in markets). Thinkers like John Stuart Mill and Adam Smith shaped this ideology that challenged both aristocratic conservatism and socialist collectivism.",
+      "statement": "",
+      "wowFactor": "19th-century 'liberals' wanted LESS government, not more — the word has almost completely flipped its meaning in 200 years.",
+      "sourceName": "Wikipedia — Classical liberalism",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Classical_liberalism",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.7"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_communist_manifesto_year",
+      "correctAnswer": "{1848}",
+      "acceptableAlternatives": [
+        "1848"
+      ],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 1,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year was The Communist Manifesto published by Karl Marx and Friedrich Engels, opening with 'A spectre is haunting Europe'?",
+      "explanation": "The Communist Manifesto was published in February 1848, weeks before the revolutions it seemed to predict. Marx and Engels wrote it for the Communist League, arguing that all of history is the history of class struggle and calling on workers to unite and overthrow the bourgeoisie.",
+      "statement": "",
+      "wowFactor": "The Communist Manifesto was published in February 1848 — revolutions exploded across Europe the very same month.",
+      "sourceName": "Wikipedia — The Communist Manifesto",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Communist_Manifesto",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.7"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_marxist_class_struggle",
+      "correctAnswer": "Class struggle",
+      "acceptableAlternatives": [
+        "class conflict",
+        "class warfare"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "dialectical materialism",
+        "surplus value",
+        "false consciousness",
+        "historical determinism",
+        "alienation",
+        "base and superstructure",
+        "commodity fetishism",
+        "means of production"
+      ],
+      "quizQuestion": "According to Marx and Engels in the Communist Manifesto, what single force has been the engine of all historical change throughout human civilization?",
+      "explanation": "The Manifesto opens: 'The history of all hitherto existing society is the history of class struggles.' Marx argued that societies advance through conflicts between oppressor and oppressed classes — master vs. slave, lord vs. serf, bourgeoisie vs. proletariat — until the final revolution creates a classless society.",
+      "statement": "",
+      "wowFactor": "Marx condensed all of human history into one sentence: rich vs. poor, over and over — and billions have found that compelling.",
+      "sourceName": "Wikipedia — The Communist Manifesto",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Communist_Manifesto",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.7"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_utopian_socialism_owen",
+      "correctAnswer": "Robert Owen",
+      "acceptableAlternatives": [
+        "Owen"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Henri de Saint-Simon",
+        "Charles Fourier",
+        "Étienne Cabet",
+        "Pierre-Joseph Proudhon",
+        "Mikhail Bakunin",
+        "Flora Tristan",
+        "Louis Blanc",
+        "Auguste Blanqui"
+      ],
+      "quizQuestion": "Which British factory owner became a leading utopian socialist by demonstrating at New Lanark that humane working conditions could still be profitable?",
+      "explanation": "Robert Owen transformed New Lanark mills into a model community with shorter hours, decent housing, and schools — proving factory workers could be treated humanely while maintaining profit. He later founded utopian communes in America (New Harmony, Indiana). Marx criticized him as 'utopian' for not advocating revolution.",
+      "statement": "",
+      "wowFactor": "Owen proved humane factories could be profitable in 1800 — and was ignored for 200 years while the brutal model spread.",
+      "sourceName": "Wikipedia — Robert Owen",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Robert_Owen",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.7"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_saint_simon_technocracy",
+      "correctAnswer": "Henri de Saint-Simon",
+      "acceptableAlternatives": [
+        "Saint-Simon"
+      ],
+      "chainThemeId": 5,
+      "answerTypePoolId": "person_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "Robert Owen",
+        "Charles Fourier",
+        "Étienne Cabet",
+        "Louis Blanc",
+        "Pierre Leroux",
+        "Auguste Comte",
+        "Pierre-Joseph Proudhon",
+        "Auguste Blanqui"
+      ],
+      "quizQuestion": "Which French utopian socialist argued that society should be led by scientists, engineers, and industrialists rather than by aristocrats or clergy?",
+      "explanation": "Henri de Saint-Simon (1760–1825) advocated replacing the old aristocracy with a technocratic elite of scientists and industrialists who would rationally organize society for the benefit of all. His ideas influenced both socialism and Auguste Comte's positivism, and he is considered a founder of modern sociology.",
+      "statement": "",
+      "wowFactor": "Saint-Simon wanted to replace kings with engineers — a wild idea in 1815, now basically modern technocracy.",
+      "sourceName": "Wikipedia — Henri de Saint-Simon",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Henri_de_Saint-Simon",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.7"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_proudhon_property",
+      "correctAnswer": "Pierre-Joseph Proudhon",
+      "acceptableAlternatives": [
+        "Proudhon"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "person_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Mikhail Bakunin",
+        "Peter Kropotkin",
+        "Louis Blanc",
+        "Auguste Blanqui",
+        "Karl Marx",
+        "Friedrich Engels",
+        "Ferdinand Lassalle",
+        "Étienne Cabet"
+      ],
+      "quizQuestion": "Which French anarchist declared 'Property is theft!' and became the first person to call himself an anarchist in his 1840 work?",
+      "explanation": "Pierre-Joseph Proudhon published 'What is Property?' in 1840, famously answering 'Property is theft!' He became the first thinker to self-identify as an anarchist, arguing that all authority — state and capitalist — was illegitimate and should be replaced by voluntary mutual cooperation.",
+      "statement": "",
+      "wowFactor": "Proudhon's 'Property is theft!' from 1840 is still one of the most provocative political slogans ever written.",
+      "sourceName": "Wikipedia — Pierre-Joseph Proudhon",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Pierre-Joseph_Proudhon",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.7"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_bakunin_anarchism",
+      "correctAnswer": "Mikhail Bakunin",
+      "acceptableAlternatives": [
+        "Bakunin"
+      ],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Pierre-Joseph Proudhon",
+        "Peter Kropotkin",
+        "Auguste Blanqui",
+        "Ferdinand Lassalle",
+        "Louis Blanc",
+        "Flora Tristan",
+        "Karl Liebknecht",
+        "Emma Goldman"
+      ],
+      "quizQuestion": "Which Russian revolutionary and anarchist clashed with Marx in the First International, advocating immediate abolition of the state by mass uprising?",
+      "explanation": "Mikhail Bakunin was the most prominent anarchist of the mid-19th century, advocating the immediate and complete abolition of the state through spontaneous mass revolution. His bitter feud with Marx over tactics and authority split the First International (1872), permanently dividing socialist and anarchist movements.",
+      "statement": "",
+      "wowFactor": "Bakunin and Marx's personal feud literally split the global workers' movement — two revolutionaries, one irreconcilable argument.",
+      "sourceName": "Wikipedia — Mikhail Bakunin",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mikhail_Bakunin",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.7"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_dialectical_materialism",
+      "correctAnswer": "Dialectical materialism",
+      "acceptableAlternatives": [
+        "historical materialism"
+      ],
+      "chainThemeId": 2,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 4,
+      "funScore": 5,
+      "ageGroup": "teen+",
+      "distractors": [
+        "utopian socialism",
+        "social Darwinism",
+        "positivism",
+        "romanticism",
+        "anarcho-communism",
+        "syndicalism",
+        "revisionism",
+        "social positivism"
+      ],
+      "quizQuestion": "What is the name of Marx's philosophical framework, adapted from Hegel, holding that material economic conditions drive historical change through class conflict?",
+      "explanation": "Marx adapted Hegel's dialectical method (thesis-antithesis-synthesis) but grounded it in material economic conditions rather than ideas. Historical materialism argues that the economic base (modes of production and class relations) determines the political, legal, and cultural superstructure of every society.",
+      "statement": "",
+      "wowFactor": "Marx flipped Hegel upside down: ideas don't drive history, economic conditions do — a philosophical reversal that changed the world.",
+      "sourceName": "Wikipedia — Historical materialism",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Historical_materialism",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.7"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_peoples_charter_1838",
+      "correctAnswer": "People's Charter",
+      "acceptableAlternatives": [
+        "Chartism",
+        "The People's Charter"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "document_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "Reform Bill",
+        "Corn Law repeal",
+        "Factory Act",
+        "Combination Acts",
+        "Magna Carta extension",
+        "Working Men's Petition",
+        "Universal Suffrage Act",
+        "Repeal petition"
+      ],
+      "quizQuestion": "What document, published in May 1838, launched the Chartist movement by demanding six political reforms including universal male suffrage and the secret ballot?",
+      "explanation": "The People's Charter (1838) demanded: universal male suffrage, the secret ballot, no property requirement for MPs, payment for MPs, equal electoral districts, and annual elections. Chartism became Britain's first mass working-class political movement, submitting petitions with over 3 million signatures — all rejected by Parliament.",
+      "statement": "",
+      "wowFactor": "3 million Britons signed the Chartist petition in 1842 — Parliament rejected it anyway, and all six demands eventually became law.",
+      "sourceName": "Wikipedia — Chartism",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Chartism",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.8"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_factory_act_1833",
+      "correctAnswer": "{1833}",
+      "acceptableAlternatives": [
+        "1833"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year did the British Factory Act ban children under 9 from textile factories and limit working hours for children ages 9–13?",
+      "explanation": "The Factory Act of 1833 banned employing children under 9 in textile mills and limited children aged 9–13 to 9 hours per day. Crucially, it created the first factory inspectorate to enforce the law. It was the first effective child labor legislation in Britain, though enforcement remained weak for decades.",
+      "statement": "",
+      "wowFactor": "Before 1833, British law placed no limit on how many hours a 5-year-old could work in a factory.",
+      "sourceName": "Wikipedia — Factory Acts",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Factory_Acts",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.8"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_ten_hours_act",
+      "correctAnswer": "{1847}",
+      "acceptableAlternatives": [
+        "1847"
+      ],
+      "chainThemeId": 5,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year did Britain's Ten Hours Act limit women and children in textile mills to a 10-hour working day, a major victory for labor reform?",
+      "explanation": "The Factory Act of 1847 (Ten Hours Act) limited the working day for women and young people in textile factories to 10 hours. Since factories couldn't run without these workers, the law effectively set a 10-hour day for many men too. It was a landmark step from laissez-faire toward state labor protection.",
+      "statement": "",
+      "wowFactor": "A 10-hour workday was considered a radical workers' victory in 1847 — today we take the 8-hour day for granted.",
+      "sourceName": "Wikipedia — Factory Acts",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Factory_Acts",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.8"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_emmeline_pankhurst_wspu",
+      "correctAnswer": "Emmeline Pankhurst",
+      "acceptableAlternatives": [
+        "Pankhurst"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Flora Tristan",
+        "Mary Wollstonecraft",
+        "Millicent Fawcett",
+        "Annie Besant",
+        "Clara Zetkin",
+        "Rosa Luxemburg",
+        "Christabel Pankhurst",
+        "Annie Kenney"
+      ],
+      "quizQuestion": "Who founded the Women's Social and Political Union (WSPU) in 1903, leading the militant suffragette campaign for women's voting rights in Britain?",
+      "explanation": "Emmeline Pankhurst founded the WSPU in Manchester in 1903 after losing patience with peaceful suffragist methods. The WSPU's militant tactics — window-smashing, arson, hunger strikes — put women's suffrage on the political agenda. British women over 30 won the vote in 1918; women over 21 in 1928.",
+      "statement": "",
+      "wowFactor": "Pankhurst's suffragettes burned down post boxes and chained themselves to railings — and eventually won.",
+      "sourceName": "Wikipedia — Emmeline Pankhurst",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Emmeline_Pankhurst",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.8"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_flora_tristan_workers_union",
+      "correctAnswer": "Flora Tristan",
+      "acceptableAlternatives": [
+        "Tristan"
+      ],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "George Sand",
+        "Harriet Martineau",
+        "Emmeline Pankhurst",
+        "Clara Zetkin",
+        "Louise Michel",
+        "Rosa Luxemburg",
+        "Marie d'Agoult",
+        "Olympe de Gouges"
+      ],
+      "quizQuestion": "Which French-Peruvian socialist feminist published 'The Workers' Union' in 1843, arguing that women's liberation and workers' liberation were inseparable causes?",
+      "explanation": "Flora Tristan (1803–1844) published L'Union Ouvrière in 1843, calling for an international workers' union that would include women on equal terms. She argued that as long as women were oppressed, the working class could never be free. She predated Marx's Manifesto by five years and died before seeing its influence.",
+      "statement": "",
+      "wowFactor": "Flora Tristan called for international workers' unity in 1843 — five years before Marx used the same idea in the Communist Manifesto.",
+      "sourceName": "Wikipedia — Flora Tristan",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Flora_Tristan",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.8"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_trade_unions_combination_acts",
+      "correctAnswer": "Combination Acts",
+      "acceptableAlternatives": [
+        "Combination Laws"
+      ],
+      "chainThemeId": 2,
+      "answerTypePoolId": "document_names",
+      "difficulty": 3,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "Factory Acts",
+        "Poor Law Amendment",
+        "Corn Laws",
+        "Navigation Acts",
+        "Tolpuddle statutes",
+        "Press Acts",
+        "Seditious Meetings Act",
+        "Statute of Laborers"
+      ],
+      "quizQuestion": "What laws, passed in Britain in 1799–1800, banned workers from forming unions or organizing collectively — repealed only in 1824?",
+      "explanation": "The Combination Acts of 1799–1800 banned workers from combining (organizing) to demand wage increases or improved conditions under penalty of imprisonment. Their repeal in 1824 allowed trade union formation, though unions remained legally vulnerable until the Trade Union Act of 1871 fully protected them.",
+      "statement": "",
+      "wowFactor": "For 25 years, joining a trade union in Britain was literally a criminal offense — workers could be jailed just for meeting together.",
+      "sourceName": "Wikipedia — Combination Acts 1799",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Combination_Acts_1799",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.8"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_public_education_spread",
+      "correctAnswer": "Prussia",
+      "acceptableAlternatives": [
+        "Prussia/Germany"
+      ],
+      "chainThemeId": 3,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "France",
+        "Britain",
+        "Austria",
+        "Sweden",
+        "Netherlands",
+        "Switzerland",
+        "Russia",
+        "Denmark"
+      ],
+      "quizQuestion": "Which state led Europe in developing compulsory public education during the early 19th century, creating a model later copied by France and Britain?",
+      "explanation": "Prussia established compulsory primary education in 1763 (under Frederick the Great) and expanded it systematically in the early 19th century, creating a literate, disciplined workforce and military. France followed with the Ferry Laws (1881–1882); Britain made elementary schooling compulsory in 1880.",
+      "statement": "",
+      "wowFactor": "Prussia invented compulsory public schooling in 1763 partly to create obedient soldiers — and accidentally built a model for modern education.",
+      "sourceName": "Wikipedia — Education in Prussia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Education_in_Prussia",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.9"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_industrialization_class_system",
+      "correctAnswer": "Middle class (bourgeoisie)",
+      "acceptableAlternatives": [
+        "bourgeoisie",
+        "middle class",
+        "new middle class"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "landed aristocracy",
+        "proletariat",
+        "guild artisans",
+        "merchant marine",
+        "clergy",
+        "military officers",
+        "peasantry",
+        "merchant guilds"
+      ],
+      "quizQuestion": "Industrialization created a powerful new social class of factory owners, lawyers, and merchants that challenged the old aristocracy — what was this class called?",
+      "explanation": "The industrial bourgeoisie (middle class) grew dramatically during industrialization, accumulating wealth through manufacturing, finance, and commerce. Unlike the landed aristocracy, their power came from capital rather than birth. By mid-century they dominated parliaments, set cultural norms, and challenged aristocratic political supremacy.",
+      "statement": "",
+      "wowFactor": "Industrial capitalism created a class richer than kings — without a drop of 'noble blood,' just factories and ledgers.",
+      "sourceName": "Wikipedia — Bourgeoisie",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bourgeoisie",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.4"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_first_industrial_revolution_britain",
+      "correctAnswer": "Britain",
+      "acceptableAlternatives": [
+        "Great Britain",
+        "England"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "place_names",
+      "difficulty": 1,
+      "funScore": 4,
+      "ageGroup": "all",
+      "distractors": [
+        "France",
+        "Germany",
+        "Belgium",
+        "Netherlands",
+        "Austria",
+        "Sweden",
+        "United States",
+        "Russia"
+      ],
+      "quizQuestion": "Which nation was the birthplace of the Industrial Revolution, leading the world in factory production from approximately 1760–1850?",
+      "explanation": "Britain industrialized first due to a unique combination: accessible coal and iron deposits, capital from colonial trade, a patent system rewarding inventors, navigable waterways, a large domestic market, and political stability. By 1850, Britain produced about half the world's iron and cotton cloth.",
+      "statement": "",
+      "wowFactor": "By 1850, Britain with just 2% of the world's population produced half of the world's iron and cotton — the original manufacturing superpower.",
+      "sourceName": "Wikipedia — Industrial Revolution",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Industrial_Revolution",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.1"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_electric_telegraph_communications",
+      "correctAnswer": "Electric telegraph",
+      "acceptableAlternatives": [
+        "telegraph",
+        "electrical telegraph"
+      ],
+      "chainThemeId": 5,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "steam press",
+        "telephone",
+        "pneumatic tube",
+        "optical telegraph",
+        "radio",
+        "wireless telegraphy",
+        "postal reform",
+        "heliograph"
+      ],
+      "quizQuestion": "What Second Industrial Revolution communications technology, commercialized in the 1840s, allowed near-instant long-distance messages and transformed business and warfare?",
+      "explanation": "The electric telegraph, commercially deployed from the 1840s (Samuel Morse in the US, Cooke and Wheatstone in Britain), allowed messages to travel at near-light speed across continents and undersea cables. By 1866 a transatlantic cable linked Europe and North America, shrinking the world for commerce and imperial administration.",
+      "statement": "",
+      "wowFactor": "The telegraph meant a message could cross Britain faster than a horse could run a mile — the first time in history information outran travel.",
+      "sourceName": "Wikipedia — Electrical telegraph",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Electrical_telegraph",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.3"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_public_health_cholera",
+      "correctAnswer": "Cholera",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "typhus",
+        "tuberculosis",
+        "smallpox",
+        "plague",
+        "influenza",
+        "dysentery",
+        "scarlet fever",
+        "malaria"
+      ],
+      "quizQuestion": "Which waterborne disease struck industrial cities repeatedly from 1831 onward, killing tens of thousands and eventually prompting major urban sanitation reforms?",
+      "explanation": "Cholera epidemics (1831, 1848, 1853, 1866) devastated overcrowded industrial cities without adequate sewage systems. John Snow's 1854 identification of a contaminated Broad Street water pump in London proved the germ theory and triggered the 'sanitary revolution' — cities built sewers, cleaned water supplies, and death rates fell dramatically.",
+      "statement": "",
+      "wowFactor": "A London doctor solved cholera by removing a single water pump handle in 1854 — one of the greatest public health breakthroughs ever.",
+      "sourceName": "Wikipedia — 1854 Broad Street cholera outbreak",
+      "sourceUrl": "https://en.wikipedia.org/wiki/1854_Broad_Street_cholera_outbreak",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.4"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_mechanization_global_impact",
+      "correctAnswer": "De-industrialized Asia",
+      "acceptableAlternatives": [
+        "destroyed Asian textile industries",
+        "destroyed Indian textile industry"
+      ],
+      "chainThemeId": 1,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "unified European trade",
+        "ended colonial trade",
+        "created African industry",
+        "equalised global wages",
+        "promoted Asian independence",
+        "reduced European power",
+        "spread democracy globally",
+        "boosted African industry"
+      ],
+      "quizQuestion": "One major global impact of European industrialization was that cheap machine-made textiles flooded world markets and effectively did what to Asian and Indian craft industries?",
+      "explanation": "British machine-made cotton textiles undercut hand-woven Indian cloth so severely that India's centuries-old textile industry collapsed in the early 19th century. Similar effects hit China and other regions. European industrialization created global economic dependency as non-industrialized regions became markets for manufactured goods and suppliers of raw materials.",
+      "statement": "",
+      "wowFactor": "British cotton mills in Lancashire destroyed the Indian textile industry from 8,000 miles away — economic imperialism without armies.",
+      "sourceName": "Wikipedia — Economic history of India",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Economic_history_of_India",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.10"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_congress_of_vienna_year",
+      "correctAnswer": "{1815}",
+      "acceptableAlternatives": [
+        "1815"
+      ],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 1,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year did the Congress of Vienna establish the Concert of Europe and redraw the map of Europe after Napoleon's defeat?",
+      "explanation": "The Congress of Vienna (1814–1815) was a conference of European powers that restored conservative order after Napoleon's defeat. Metternich of Austria, Castlereagh of Britain, and Tsar Alexander I of Russia were key figures. It created the Concert of Europe system and aimed to prevent another revolutionary outbreak.",
+      "statement": "",
+      "wowFactor": "The Congress of Vienna drew Europe's borders so carefully that some of them lasted until World War I — 100 years of relative stability.",
+      "sourceName": "Wikipedia — Congress of Vienna",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Congress_of_Vienna",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.5"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_european_imperialism_link",
+      "correctAnswer": "Raw materials and markets",
+      "acceptableAlternatives": [
+        "raw materials and new markets",
+        "markets and resources"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "concept_terms",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "missionary work alone",
+        "military glory",
+        "population overflow",
+        "religious conversion",
+        "geographic exploration",
+        "democratic ideals",
+        "disease control",
+        "scientific exploration"
+      ],
+      "quizQuestion": "How did industrialization economically motivate European imperial expansion in Asia and Africa — what did empires provide to industrial nations?",
+      "explanation": "Industrial economies needed two things: raw materials (cotton from Egypt and India, rubber from Congo, coal from everywhere) to feed factories, and markets to absorb manufactured goods. Formal empires guaranteed both through political control. The 'Scramble for Africa' (1880s–1900s) was largely industrialization's demand for resources.",
+      "statement": "",
+      "wowFactor": "The entire Scramble for Africa was really about industrialists needing rubber for bicycle tires, cotton for mills, and copper for telegraph wires.",
+      "sourceName": "Wikipedia — New Imperialism",
+      "sourceUrl": "https://en.wikipedia.org/wiki/New_Imperialism",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.10"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_reform_act_1832",
+      "correctAnswer": "{1832}",
+      "acceptableAlternatives": [
+        "1832"
+      ],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [],
+      "quizQuestion": "In what year did Britain pass the Great Reform Act, extending the vote to middle-class men in industrial cities and ending many 'rotten boroughs'?",
+      "explanation": "The Great Reform Act of 1832 was Britain's first major expansion of the franchise since the 17th century. It extended the vote to middle-class property owners, eliminated 'rotten boroughs' (tiny constituencies electing MPs), and gave representation to industrial cities like Manchester and Birmingham that had none. It was a liberal victory without revolution.",
+      "statement": "",
+      "wowFactor": "Before 1832, Old Sarum — a field with no residents — elected two MPs to Parliament; Manchester with 150,000 people elected none.",
+      "sourceName": "Wikipedia — Reform Act 1832",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Reform_Act_1832",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.9"
+      ]
+    },
+    {
+      "id": "ap_euro_u6_manchester_population_growth",
+      "correctAnswer": "Manchester",
+      "acceptableAlternatives": [],
+      "chainThemeId": 1,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "London",
+        "Birmingham",
+        "Liverpool",
+        "Sheffield",
+        "Leeds",
+        "Glasgow",
+        "Bristol",
+        "Newcastle"
+      ],
+      "quizQuestion": "Which British city's population grew sixfold between 1771 and 1831, becoming the world's first industrial metropolis and symbol of both industrial power and social misery?",
+      "explanation": "Manchester's population exploded from roughly 25,000 in 1771 to 150,000+ by 1831, powered by cotton textile mills. It became the model industrial city — celebrated by capitalists for its productivity and condemned by reformers for its slums, pollution, child labor, and grinding poverty. Engels wrote 'The Condition of the Working Class in England' about it.",
+      "statement": "",
+      "wowFactor": "Engels wrote his landmark socialist tract about Manchester after working there — the city that built capitalism also inspired its most famous critique.",
+      "sourceName": "Wikipedia — Manchester",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Manchester",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "european_history",
+      "variants": [],
+      "tags": [],
+      "visualDescription": "",
+      "examTags": [
+        "AP_European_History",
+        "Unit_6",
+        "Topic_6.4"
+      ]
+    }
+  ]
+}

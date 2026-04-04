@@ -1,0 +1,2566 @@
+[
+  {
+    "id": "ap_euro_u8_gavrilo_princip",
+    "correctAnswer": "Gavrilo Princip",
+    "acceptableAlternatives": [
+      "Princip"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "person_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Archduke Franz Ferdinand",
+      "Kaiser Wilhelm II",
+      "Tsar Nicholas II",
+      "Woodrow Wilson",
+      "Georges Clemenceau",
+      "David Lloyd George",
+      "Czar Ferdinand of Bulgaria"
+    ],
+    "quizQuestion": "Who assassinated Archduke Franz Ferdinand in Sarajevo on June 28, 1914, triggering the chain of events that led to World War I?",
+    "explanation": "Gavrilo Princip, a Bosnian Serb nationalist and member of the Black Hand secret society, shot Archduke Franz Ferdinand and his wife Sophie in Sarajevo. The assassination triggered a diplomatic crisis that rapidly escalated into World War I as alliance systems activated.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Assassination of Archduke Franz Ferdinand",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Assassination_of_Archduke_Franz_Ferdinand",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.1"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_1914",
+    "correctAnswer": "{1914}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "year_dates",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was Archduke Franz Ferdinand assassinated, sparking the outbreak of World War I?",
+    "explanation": "The assassination on June 28, 1914 set off a chain reaction through Europe's alliance systems. Austria-Hungary issued an ultimatum to Serbia, leading to declarations of war that quickly drew in Germany, Russia, France, and Britain within weeks.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 World War I",
+    "sourceUrl": "https://en.wikipedia.org/wiki/World_War_I",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.1"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_main__militarism__alliances__i",
+    "correctAnswer": "MAIN (Militarism, Alliances, Imperialism, Nationalism)",
+    "acceptableAlternatives": [
+      "Militarism, Alliances, Imperialism, Nationalism",
+      "MAIN causes"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "concept_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "STEM (Statesmanship, Treaties, Economics, Monarchy)",
+      "RAGE (Rivalry, Alliances, Geography, Economics)",
+      "PINE (Politics, Industry, Nationalism, Economics)",
+      "WARS (Weapons, Alliances, Rivalry, Sovereignty)",
+      "FIRE (Finance, Imperialism, Rivalry, Expansion)",
+      "CAGE (Colonies, Arms, Geography, Economics)",
+      "PLAN (Politics, Land, Arms, Nationalism)"
+    ],
+    "quizQuestion": "Historians use the acronym MAIN to summarize the four underlying causes of World War I. What does MAIN stand for?",
+    "explanation": "MAIN stands for Militarism (arms races, military culture), Alliances (interlocking treaty obligations), Imperialism (competition for colonies and resources), and Nationalism (ethnic pride and rivalry). These structural factors made a local conflict spiral into a global war.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Causes of World War I",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Causes_of_World_War_I",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.1"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_triple_alliance",
+    "correctAnswer": "Triple Alliance",
+    "acceptableAlternatives": [
+      "The Triple Alliance",
+      "Central Powers alliance"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "institution_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Triple Entente",
+      "Central Powers Pact",
+      "Dual Alliance",
+      "Bismarck Coalition",
+      "Berlin Accord",
+      "Eastern Alliance",
+      "Habsburg League"
+    ],
+    "quizQuestion": "What was the name of the pre-WWI alliance that bound Germany, Austria-Hungary, and Italy together in a mutual defense agreement formed in 1882?",
+    "explanation": "The Triple Alliance of 1882 linked Germany, Austria-Hungary, and Italy in a defensive pact. However, Italy remained neutral in 1914 and later joined the Entente in 1915, arguing Austria-Hungary had launched an offensive war, violating the alliance's defensive terms.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Triple Alliance (1882)",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Triple_Alliance_(1882)",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.1"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_triple_entente",
+    "correctAnswer": "Triple Entente",
+    "acceptableAlternatives": [
+      "The Triple Entente",
+      "Entente Cordiale alliance"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "institution_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Triple Alliance",
+      "Allied Powers Pact",
+      "Franco-Russian League",
+      "Western Coalition",
+      "Crimean Alliance",
+      "London Accord",
+      "Democratic Alliance"
+    ],
+    "quizQuestion": "What was the informal alliance of France, Russia, and Britain that opposed the Triple Alliance before World War I?",
+    "explanation": "The Triple Entente brought together France (Franco-Russian Alliance, 1894), Russia, and Britain (Entente Cordiale, 1904; Anglo-Russian Convention, 1907). Though not a formal military alliance like the Triple Alliance, it formed the basis of the Allied Powers in WWI.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Triple Entente",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Triple_Entente",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.1"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_schlieffen_plan",
+    "correctAnswer": "Schlieffen Plan",
+    "acceptableAlternatives": [
+      "The Schlieffen Plan"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "concept_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Blitzkrieg strategy",
+      "Von Moltke Doctrine",
+      "Iron Curtain strategy",
+      "Total War Plan",
+      "Bismarck Offensive",
+      "Rhine Strategy",
+      "Two-Front Gambit"
+    ],
+    "quizQuestion": "What was the German military strategy that called for a rapid sweep through neutral Belgium to defeat France quickly before turning to face Russia in the east?",
+    "explanation": "The Schlieffen Plan (developed 1905\u20131906) aimed to avoid a two-front war by knocking France out in six weeks via a massive flanking attack through Belgium, then shifting forces east against Russia. Germany's invasion of Belgium brought Britain into the war and ultimately failed when France held at the Marne in 1914.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Schlieffen Plan",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Schlieffen_Plan",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.2"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_trench_warfare",
+    "correctAnswer": "Trench warfare",
+    "acceptableAlternatives": [
+      "trench system",
+      "trench war"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "concept_terms",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Blitzkrieg",
+      "Siege warfare",
+      "Cavalry charges",
+      "Mobile warfare",
+      "Naval blockade",
+      "Guerrilla warfare",
+      "Aerial bombardment"
+    ],
+    "quizQuestion": "What style of warfare, characterized by soldiers living and fighting in long defensive ditches on the Western Front, typified World War I combat?",
+    "explanation": "Trench warfare resulted from the defensive superiority of machine guns, barbed wire, and artillery over offensive infantry assaults. The Western Front stabilized into roughly 400 miles of parallel trenches from the English Channel to Switzerland, leading to years of static, attritional combat with enormous casualties for minimal territorial gain.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Trench warfare",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Trench_warfare",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.2"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_battle_of_the_somme",
+    "correctAnswer": "Battle of the Somme",
+    "acceptableAlternatives": [
+      "Somme",
+      "the Somme"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "event_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Battle of Verdun",
+      "Battle of the Marne",
+      "Battle of Passchendaele",
+      "Battle of Ypres",
+      "Battle of Gallipoli",
+      "Battle of Jutland",
+      "Battle of Tannenberg"
+    ],
+    "quizQuestion": "Which 1916 WWI battle saw nearly one million casualties, marked the first large-scale use of tanks, and became synonymous with the futile slaughter of trench warfare?",
+    "explanation": "The Battle of the Somme (July\u2013November 1916) was one of WWI's bloodiest engagements, with approximately 420,000 British, 200,000 French, and 450,000 German casualties. On the first day alone, British forces suffered 57,470 casualties. Tanks were deployed by Britain for the first time in September 1916.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Battle of the Somme",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Somme",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.2"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_battle_of_verdun",
+    "correctAnswer": "Battle of Verdun",
+    "acceptableAlternatives": [
+      "Verdun"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "event_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Battle of the Somme",
+      "Battle of the Marne",
+      "Battle of Passchendaele",
+      "Battle of Ypres",
+      "Battle of Gallipoli",
+      "Battle of Jutland",
+      "Battle of Tannenberg"
+    ],
+    "quizQuestion": "Which 1916 battle, lasting nearly 10 months with roughly 700,000 casualties, was Germany's attempt to 'bleed France white' and became a symbol of French endurance?",
+    "explanation": "The Battle of Verdun (February\u2013December 1916) was Germany's strategic attempt to exhaust French reserves by attacking a symbolically vital fortress city. France's determined defense under P\u00e9tain, using the 'Sacred Way' supply route, held Verdun but at catastrophic cost to both sides \u2014 approximately 300,000 dead and 400,000 wounded combined.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Battle of Verdun",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Verdun",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.2"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_total_war",
+    "correctAnswer": "Total war",
+    "acceptableAlternatives": [
+      "total warfare"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "concept_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Guerrilla warfare",
+      "Proxy war",
+      "Limited war",
+      "Cold war",
+      "Asymmetric warfare",
+      "War of attrition",
+      "Economic warfare"
+    ],
+    "quizQuestion": "What concept describes WWI's mobilization of entire economies and societies \u2014 including women entering the industrial workforce in unprecedented numbers \u2014 to support the war effort?",
+    "explanation": "Total war required nations to marshal all economic, industrial, and human resources. Women replaced men in factories, farms, and offices across Britain, France, and Germany. Governments controlled food, rationed goods, censored press, and directed industries \u2014 fundamentally transforming the relationship between state and society.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Total war",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Total_war",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.2"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_ypres",
+    "correctAnswer": "Ypres",
+    "acceptableAlternatives": [
+      "Ieper",
+      "Ypres, Belgium"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "place_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Verdun",
+      "Passchendaele",
+      "Gallipoli",
+      "the Somme",
+      "Marne",
+      "Flanders",
+      "Amiens"
+    ],
+    "quizQuestion": "At which Belgian town did Germany first use poison gas (chlorine) on a large scale against Allied troops in April 1915, inaugurating chemical warfare in WWI?",
+    "explanation": "On April 22, 1915, at the Second Battle of Ypres, Germany released approximately 168 tons of chlorine gas along a 4-mile front. The yellowish-green cloud caused panic and a gap in Allied lines, though Germany lacked reserves to exploit the breakthrough. All major powers subsequently developed and used chemical weapons.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Second Battle of Ypres",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Second_Battle_of_Ypres",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.2"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_1918",
+    "correctAnswer": "{1918}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "year_dates",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year did the Armistice ending World War I take effect on the eleventh hour of the eleventh day of the eleventh month?",
+    "explanation": "World War I ended with the Armistice on November 11, 1918, at 11:00 AM. Fighting ceased across the Western Front after four years of devastating conflict. The armistice was negotiated as Germany faced military collapse, revolution at home, and the defection of its allies \u2014 Austria-Hungary, Bulgaria, and the Ottoman Empire.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Armistice of 11 November 1918",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Armistice_of_11_November_1918",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.2"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_kaiser_wilhelm_ii",
+    "correctAnswer": "Kaiser Wilhelm II",
+    "acceptableAlternatives": [
+      "Wilhelm II",
+      "Kaiser Wilhelm"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "person_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Tsar Nicholas II",
+      "Paul von Hindenburg",
+      "Erich Ludendorff",
+      "Otto von Bismarck",
+      "Franz Joseph I",
+      "Crown Prince Wilhelm",
+      "Friedrich Ebert"
+    ],
+    "quizQuestion": "Which German leader abdicated on November 9, 1918, two days before the Armistice, as revolution spread through Germany and the war was clearly lost?",
+    "explanation": "Kaiser Wilhelm II abdicated on November 9, 1918, as German sailors mutinied at Kiel and revolutionary councils formed across Germany. He fled to the Netherlands, where he lived in exile until his death in 1941. His abdication allowed the new Weimar Republic to sign the Armistice and later the Treaty of Versailles.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Wilhelm II, German Emperor",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wilhelm_II,_German_Emperor",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.2"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_nicholas_ii",
+    "correctAnswer": "Nicholas II",
+    "acceptableAlternatives": [
+      "Tsar Nicholas II",
+      "Czar Nicholas II"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "person_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Alexander Kerensky",
+      "Vladimir Lenin",
+      "Leon Trotsky",
+      "Kaiser Wilhelm II",
+      "Grigori Rasputin",
+      "Mikhail Rodzianko",
+      "Paul Milyukov"
+    ],
+    "quizQuestion": "Which Russian tsar abdicated in March 1917 following the February Revolution, ending three centuries of Romanov rule after food shortages and war losses sparked mass protests?",
+    "explanation": "Tsar Nicholas II abdicated on March 15, 1917 (March 2, Old Style) as the February Revolution swept Petrograd. Bread riots and soldiers refusing to fire on protesters led the Duma to form a Provisional Government. Nicholas and his family were later executed by Bolsheviks at Yekaterinburg in July 1918.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Nicholas II of Russia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nicholas_II_of_Russia",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_vladimir_lenin",
+    "correctAnswer": "Vladimir Lenin",
+    "acceptableAlternatives": [
+      "Lenin"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "person_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Leon Trotsky",
+      "Joseph Stalin",
+      "Alexander Kerensky",
+      "Grigori Zinoviev",
+      "Nikolai Bukharin",
+      "Felix Dzerzhinsky",
+      "Lev Kamenev"
+    ],
+    "quizQuestion": "Who led the Bolshevik seizure of power during the October Revolution of November 1917, overthrowing the Provisional Government and establishing Soviet rule in Russia?",
+    "explanation": "Vladimir Lenin returned to Russia in April 1917 via Germany's famous 'sealed train' and led the Bolsheviks to seize power on November 7, 1917 (October 25, Old Style). He became head of the new Soviet government, signed the Treaty of Brest-Litovsk withdrawing Russia from WWI, and launched the world's first communist state.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Vladimir Lenin",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vladimir_Lenin",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_lenin",
+    "correctAnswer": "Lenin",
+    "acceptableAlternatives": [
+      "Vladimir Lenin",
+      "the Bolsheviks"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "person_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Leon Trotsky",
+      "Joseph Stalin",
+      "Alexander Kerensky",
+      "Karl Marx",
+      "Nikolai Bukharin",
+      "Rosa Luxemburg",
+      "Friedrich Engels"
+    ],
+    "quizQuestion": "Who popularized the slogan 'Peace, Land, Bread' that galvanized Russian workers and peasants behind the Bolshevik cause in 1917?",
+    "explanation": "Lenin's April Theses and the slogan 'Peace, Land, Bread' addressed the three most urgent demands of war-weary Russians: immediate withdrawal from WWI, redistribution of aristocratic land to peasants, and an end to wartime food shortages. This resonant program won mass support for the Bolsheviks over the Provisional Government.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Peace, Land, and Bread",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Peace,_Land,_and_Bread",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_treaty_of_brest_litovsk",
+    "correctAnswer": "Treaty of Brest-Litovsk",
+    "acceptableAlternatives": [
+      "Brest-Litovsk",
+      "the Brest-Litovsk Treaty"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "document_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Treaty of Versailles",
+      "Treaty of Rapallo",
+      "Treaty of Bucharest",
+      "Armistice of Compi\u00e8gne",
+      "Treaty of Saint-Germain",
+      "Treaty of Trianon",
+      "London Treaty"
+    ],
+    "quizQuestion": "What March 1918 treaty ended Russia's involvement in WWI, forcing the Bolsheviks to cede vast territories including Ukraine, Finland, and the Baltic states to Germany?",
+    "explanation": "The Treaty of Brest-Litovsk (March 3, 1918) was a punishing peace that stripped Russia of 1.3 million square miles of territory, one-third of its European population, and most of its coal and iron resources. Lenin accepted the harsh terms to end the war and consolidate Bolshevik power, though the treaty was annulled after Germany's defeat in November 1918.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Treaty of Brest-Litovsk",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Treaty_of_Brest-Litovsk",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_russian_civil_war",
+    "correctAnswer": "Russian Civil War",
+    "acceptableAlternatives": [
+      "the Russian Civil War"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "event_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "February Revolution",
+      "October Revolution",
+      "Bolshevik Uprising",
+      "Red Terror",
+      "War of Intervention",
+      "Soviet-Polish War",
+      "Russian Revolution"
+    ],
+    "quizQuestion": "What conflict (1917\u20131922) pitted Lenin's Red Army against the anti-Bolshevik White Army \u2014 supported by foreign powers including Britain, France, and the US \u2014 for control of Russia?",
+    "explanation": "The Russian Civil War was a brutal conflict between the Bolshevik Red Army, commanded by Leon Trotsky, and the loosely coordinated White forces comprising tsarists, liberals, and socialists. Foreign intervention by 14 nations failed to dislodge the Bolsheviks, who won through superior organization and the Whites' inability to unify around a common program.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Russian Civil War",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Russian_Civil_War",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_war_communism",
+    "correctAnswer": "War Communism",
+    "acceptableAlternatives": [
+      "war communism policy"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "concept_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "New Economic Policy",
+      "Collectivization",
+      "Five-Year Plan",
+      "State capitalism",
+      "Radical nationalization",
+      "Red Terror",
+      "Soviet industrialization"
+    ],
+    "quizQuestion": "What was the Bolshevik economic policy (1918\u20131921) that nationalized industry, banned private trade, and forcibly seized grain from peasants to feed the Red Army during the Civil War?",
+    "explanation": "War Communism prioritized military victory over economic sustainability, requisitioning peasant grain surpluses and nationalizing factories. The policy caused famine, economic collapse, and peasant revolts, including the Tambov Rebellion. It was abandoned in 1921 when Lenin introduced the more pragmatic New Economic Policy.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 War communism",
+    "sourceUrl": "https://en.wikipedia.org/wiki/War_communism",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_new_economic_policy__nep",
+    "correctAnswer": "New Economic Policy (NEP)",
+    "acceptableAlternatives": [
+      "NEP",
+      "New Economic Policy"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "concept_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "War Communism",
+      "Five-Year Plan",
+      "Collectivization",
+      "Gosplan strategy",
+      "Market Leninism",
+      "Socialist construction",
+      "Soviet industrialization"
+    ],
+    "quizQuestion": "What pragmatic 1921 Soviet economic policy replaced forced grain requisitions with a tax-in-kind and permitted limited private trade, allowing partial market mechanisms under state control?",
+    "explanation": "Lenin introduced the NEP in 1921 as a tactical retreat to rebuild an economy devastated by WWI, revolution, and civil war. Small businesses could operate privately; peasants could sell surplus grain on the market after paying a tax. The NEP stabilized the economy but was abandoned by Stalin in 1928 in favor of forced collectivization.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 New Economic Policy",
+    "sourceUrl": "https://en.wikipedia.org/wiki/New_Economic_Policy",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_treaty_of_versailles",
+    "correctAnswer": "Treaty of Versailles",
+    "acceptableAlternatives": [
+      "the Versailles Treaty",
+      "Versailles"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "document_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Treaty of Brest-Litovsk",
+      "Treaty of Saint-Germain",
+      "Treaty of Trianon",
+      "Treaty of Neuilly",
+      "Treaty of S\u00e8vres",
+      "Treaty of London",
+      "Armistice Agreement"
+    ],
+    "quizQuestion": "What June 1919 peace treaty formally ended WWI, imposed war guilt on Germany, demanded reparations, stripped German territories, and created the League of Nations?",
+    "explanation": "The Treaty of Versailles, signed June 28, 1919, was negotiated by the 'Big Three': Wilson (USA), Clemenceau (France), and Lloyd George (Britain). Germany was forced to accept sole war guilt (Article 231), pay 132 billion gold marks in reparations, lose 13% of its territory, and drastically limit its military. Its perceived harshness fueled German resentment that helped Hitler rise to power.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Treaty of Versailles",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Treaty_of_Versailles",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.4"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_war_guilt_clause",
+    "correctAnswer": "War guilt clause",
+    "acceptableAlternatives": [
+      "Article 231",
+      "war guilt",
+      "war-guilt clause"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "concept_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Reparations clause",
+      "Disarmament provision",
+      "Territorial penalty",
+      "Indemnity clause",
+      "Sovereignty restriction",
+      "Military limitation article",
+      "Colonial forfeiture"
+    ],
+    "quizQuestion": "What is Article 231 of the Treaty of Versailles commonly called \u2014 the provision that forced Germany to accept sole moral and legal responsibility for starting World War I?",
+    "explanation": "Article 231, the 'war guilt clause,' stated Germany accepted responsibility for causing all losses from the war, providing the legal basis for demanding reparations. German delegates signed under protest, calling it the 'Kriegsschuldl\u00fcge' (war guilt lie). The clause became a major rallying point for German nationalists and Nazi propaganda in the 1920s\u201330s.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 War Guilt clause",
+    "sourceUrl": "https://en.wikipedia.org/wiki/War_guilt_clause",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.4"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_league_of_nations",
+    "correctAnswer": "League of Nations",
+    "acceptableAlternatives": [
+      "the League of Nations"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "institution_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "United Nations",
+      "World Court",
+      "International Peace Forum",
+      "Allied Council",
+      "Paris Peace Conference",
+      "International Labour Organization",
+      "Concert of Europe"
+    ],
+    "quizQuestion": "What international organization, proposed in Woodrow Wilson's Fourteen Points and established by the Paris Peace Conference in 1919, was intended to prevent future wars through collective security?",
+    "explanation": "The League of Nations, a centerpiece of Wilson's Fourteen Points, was established by the Treaty of Versailles but weakened from the start when the US Senate refused to ratify the treaty. The League lacked its own military force and struggled to enforce decisions, ultimately failing to stop aggression by Japan (1931), Italy (1935), and Germany (1936\u20131939).",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 League of Nations",
+    "sourceUrl": "https://en.wikipedia.org/wiki/League_of_Nations",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.4"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_mandate_system",
+    "correctAnswer": "Mandate system",
+    "acceptableAlternatives": [
+      "League mandates",
+      "mandate territories"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "concept_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Colonial partition",
+      "Trusteeship system",
+      "Protectorate system",
+      "Direct annexation",
+      "Sphere of influence",
+      "Commonwealth model",
+      "Dependency system"
+    ],
+    "quizQuestion": "What post-WWI system placed former German and Ottoman colonies under League of Nations supervision, administered by Britain and France as trustees rather than outright colonial possessions?",
+    "explanation": "The mandate system, established at Paris in 1919, divided former German and Ottoman territories into Class A (near independence), Class B (colonial administration), and Class C (integral to mandatory power) mandates. Britain received Palestine, Iraq, and Tanganyika; France received Syria and Lebanon. The system was widely seen as disguised imperialism dressed in Wilsonian language.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 League of Nations mandate",
+    "sourceUrl": "https://en.wikipedia.org/wiki/League_of_Nations_mandate",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.4"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_1929",
+    "correctAnswer": "{1929}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "year_dates",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year did the Wall Street Crash occur, triggering the Great Depression and sending economic shockwaves through Europe?",
+    "explanation": "The Wall Street Crash of October 1929 ('Black Thursday' and 'Black Tuesday') wiped out billions in stock values and triggered a global banking crisis. European economies, heavily dependent on American loans and trade, collapsed rapidly \u2014 German unemployment reached 30% by 1932, creating the political crisis that brought Hitler to power.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Wall Street Crash of 1929",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wall_Street_Crash_of_1929",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.5"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_great_depression",
+    "correctAnswer": "Great Depression",
+    "acceptableAlternatives": [
+      "the Great Depression",
+      "the Depression"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "event_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Great Recession",
+      "Weimar Hyperinflation",
+      "Post-war economic crisis",
+      "Black Tuesday collapse",
+      "European banking crisis",
+      "Dawes Plan failure",
+      "Ruhr occupation crisis"
+    ],
+    "quizQuestion": "What global economic catastrophe, beginning after the 1929 stock market crash, caused mass unemployment across Europe and undermined faith in liberal democracy?",
+    "explanation": "The Great Depression (1929\u20131939) devastated European economies: unemployment reached 30%+ in Germany and Britain, industrial production collapsed, and governments struggled to respond. The crisis discredited mainstream parties and fueled support for extremist movements \u2014 fascism in Germany and Italy, and various authoritarian parties elsewhere.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Great Depression",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Great_Depression",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.5"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_benito_mussolini",
+    "correctAnswer": "Benito Mussolini",
+    "acceptableAlternatives": [
+      "Mussolini"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "person_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Adolf Hitler",
+      "Francisco Franco",
+      "Ant\u00f3nio de Oliveira Salazar",
+      "Engelbert Dollfuss",
+      "Mikl\u00f3s Horthy",
+      "J\u00f3zef Pi\u0142sudski",
+      "Ion Antonescu"
+    ],
+    "quizQuestion": "Who led the March on Rome in October 1922, which intimidated King Victor Emmanuel III into appointing him as Italy's Prime Minister and establishing the world's first fascist government?",
+    "explanation": "Benito Mussolini organized his Blackshirt squadristi to march on Rome in October 1922, threatening to seize power by force. King Victor Emmanuel III, fearing civil war, appointed Mussolini prime minister rather than declare martial law. Mussolini gradually dismantled democratic institutions, declaring himself Il Duce ('The Leader') and establishing a one-party fascist state by 1925.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 March on Rome",
+    "sourceUrl": "https://en.wikipedia.org/wiki/March_on_Rome",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.6"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_1922",
+    "correctAnswer": "{1922}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "year_dates",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year did Mussolini's March on Rome bring the fascists to power in Italy, making it the first European country with a fascist government?",
+    "explanation": "In October 1922, Mussolini's March on Rome ended parliamentary democracy in Italy. It served as a model and inspiration for Hitler and other fascist movements across Europe, demonstrating that paramilitary intimidation could force democratic governments to surrender power without a full revolution.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 March on Rome",
+    "sourceUrl": "https://en.wikipedia.org/wiki/March_on_Rome",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.6"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_adolf_hitler",
+    "correctAnswer": "Adolf Hitler",
+    "acceptableAlternatives": [
+      "Hitler"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "person_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Benito Mussolini",
+      "Ernst R\u00f6hm",
+      "Hermann G\u00f6ring",
+      "Heinrich Himmler",
+      "Rudolf Hess",
+      "Alfred Rosenberg",
+      "Gregor Strasser"
+    ],
+    "quizQuestion": "Who led the failed Beer Hall Putsch in Munich in November 1923 and later wrote 'Mein Kampf' while imprisoned, outlining his ideology of racial supremacy and German expansion?",
+    "explanation": "Hitler's Beer Hall Putsch (November 8\u20139, 1923) attempted to overthrow the Bavarian government as a step toward seizing national power. It failed and Hitler was imprisoned, where he dictated 'Mein Kampf' to Rudolf Hess. The book laid out his antisemitic ideology, concept of Lebensraum (living space), and ambitions for German domination of Europe.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Beer Hall Putsch",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Beer_Hall_Putsch",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.6"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_1933",
+    "correctAnswer": "{1933}",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "year_dates",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [],
+    "quizQuestion": "In what year was Adolf Hitler appointed Chancellor of Germany, beginning the Nazi takeover of the German state?",
+    "explanation": "On January 30, 1933, President Paul von Hindenburg appointed Hitler as Chancellor, believing conservative politicians could control him. Within weeks, the Reichstag Fire (February 27) provided pretext for emergency decrees, and the Enabling Act (March 23) gave Hitler dictatorial powers, ending the Weimar Republic.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Adolf Hitler",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Adolf_Hitler",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.6"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_enabling_act",
+    "correctAnswer": "Enabling Act",
+    "acceptableAlternatives": [
+      "the Enabling Act",
+      "Erm\u00e4chtigungsgesetz"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "document_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Nuremberg Laws",
+      "Reichstag Fire Decree",
+      "Four-Year Plan",
+      "Night of the Long Knives decree",
+      "Anschluss proclamation",
+      "F\u00fchrerprinzip decree",
+      "Aryan Paragraph"
+    ],
+    "quizQuestion": "What March 1933 law gave Hitler the power to enact legislation without Reichstag approval, effectively ending parliamentary democracy in Germany and establishing his dictatorship?",
+    "explanation": "The Enabling Act (Law for Removing the Distress of People and Reich) passed on March 23, 1933, with only the Social Democrats voting against it \u2014 the Communists had already been arrested. It gave Hitler's cabinet the power to pass laws, including those contradicting the constitution, for four years. Only the Social Democrats resisted; their leader Otto Wels declared 'Freedom and Life can be taken from us, but not our honor.'",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Enabling Act of 1933",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Enabling_Act_of_1933",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.6"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_nuremberg_laws",
+    "correctAnswer": "Nuremberg Laws",
+    "acceptableAlternatives": [
+      "the Nuremberg Laws"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "document_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Enabling Act",
+      "Racial Purity Laws",
+      "Anti-Jewish Decrees",
+      "Reich Citizenship Act",
+      "Night of Broken Glass laws",
+      "Aryan Paragraph",
+      "Kristallnacht legislation"
+    ],
+    "quizQuestion": "What 1935 Nazi racial legislation stripped Jews of German citizenship, prohibited marriage between Jews and non-Jews, and provided the legal foundation for systematic persecution?",
+    "explanation": "The Nuremberg Laws (September 1935) comprised the Reich Citizenship Law and the Law for the Protection of German Blood and Honour. Jews were stripped of citizenship and classified by racial categories. The laws formalized state-sponsored antisemitism, excluded Jews from professions, and began the legal isolation that escalated toward the Holocaust.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Nuremberg Laws",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nuremberg_Laws",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.6"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_joseph_stalin",
+    "correctAnswer": "Joseph Stalin",
+    "acceptableAlternatives": [
+      "Stalin"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "person_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Vladimir Lenin",
+      "Leon Trotsky",
+      "Nikolai Bukharin",
+      "Vyacheslav Molotov",
+      "Lazar Kaganovich",
+      "Grigori Zinoviev",
+      "Anastas Mikoyan"
+    ],
+    "quizQuestion": "Which Soviet leader launched the Five-Year Plans beginning in 1928, transforming the USSR from a peasant agrarian economy into an industrial superpower through forced rapid industrialization?",
+    "explanation": "Stalin's Five-Year Plans (Pyatiletka) set ambitious industrial targets for coal, steel, electricity, and machinery production. The first plan (1928\u20131932) roughly doubled industrial output, though often at horrific human cost. By 1940, the USSR had become one of the world's top industrial powers \u2014 a transformation that enabled survival against Nazi Germany in WWII.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Soviet five-year plans",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Soviet_five-year_plans",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_collectivization",
+    "correctAnswer": "Collectivization",
+    "acceptableAlternatives": [
+      "forced collectivization",
+      "agricultural collectivization"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "concept_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "War Communism",
+      "New Economic Policy",
+      "Industrialization drive",
+      "Dekulakization",
+      "Nationalization",
+      "Land redistribution",
+      "Agrarian reform"
+    ],
+    "quizQuestion": "What Stalinist policy forcibly merged peasant farms into state-controlled collective farms, targeting 'kulaks' (wealthier peasants) for deportation or execution and causing a famine that killed millions?",
+    "explanation": "Stalin's collectivization campaign (1929\u20131933) eliminated private farming and created collective farms (kolkhozy). The campaign deliberately targeted kulaks \u2014 defined broadly to include any peasant who resisted. The resulting disruption, combined with grain procurement quotas, caused the Holodomor famine in Ukraine (1932\u201333) that killed an estimated 3.5\u20137.5 million people.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Collectivization in the Soviet Union",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Collectivization_in_the_Soviet_Union",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_great_purge",
+    "correctAnswer": "Great Purge",
+    "acceptableAlternatives": [
+      "the Great Purge",
+      "Great Terror",
+      "Stalin's purges"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "event_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Night of the Long Knives",
+      "Red Terror",
+      "Show Trials",
+      "Gulag Archipelago",
+      "Soviet Inquisition",
+      "Stalinist Repression",
+      "NKVD Campaign"
+    ],
+    "quizQuestion": "What was Stalin's campaign of political repression from 1936\u20131938 called, during which over 750,000 people were executed and millions sent to Gulags \u2014 including most of the Red Army's senior officers?",
+    "explanation": "The Great Purge (Yezhovshchina) saw Stalin use show trials to eliminate perceived rivals, including veteran Bolsheviks like Zinoviev, Kamenev, and Bukharin. The military purge executed three of five marshals and 35,000 officers, severely weakening the Red Army on the eve of WWII. The terror created a culture of fear that enforced conformity throughout Soviet society.",
+    "statement": "",
+    "wowFactor": "",
+    "sourceName": "Wikipedia \u2014 Great Purge",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Great_Purge",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_neville_chamberlain",
+    "quizQuestion": "Which British PM declared 'peace for our time' after Munich in 1938?",
+    "correctAnswer": "Neville Chamberlain",
+    "acceptableAlternatives": [
+      "Chamberlain"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "person_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Winston Churchill",
+      "Stanley Baldwin",
+      "Anthony Eden",
+      "Harold Macmillan",
+      "Clement Attlee",
+      "David Lloyd George",
+      "Ramsay MacDonald",
+      "Lord Halifax"
+    ],
+    "explanation": "Neville Chamberlain returned from Munich in September 1938 waving the agreement and proclaiming 'peace for our time.' His policy of appeasing Hitler proved catastrophically wrong when Germany invaded Poland less than a year later.",
+    "statement": "",
+    "wowFactor": "Chamberlain's infamous phrase became history's most mocked prediction \u2014 Hitler violated the agreement within months.",
+    "sourceName": "Wikipedia \u2014 Munich Agreement",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Munich_Agreement",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "appeasement",
+      "WWII",
+      "diplomacy"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.2"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_munich_agreement",
+    "quizQuestion": "What 1938 agreement ceded the Sudetenland to Germany in exchange for 'peace'?",
+    "correctAnswer": "Munich Agreement",
+    "acceptableAlternatives": [
+      "Munich Pact",
+      "Munich Accords"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "document_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Locarno Treaty",
+      "Kellogg-Briand Pact",
+      "Treaty of Lausanne",
+      "Molotov-Ribbentrop Pact",
+      "Atlantic Charter",
+      "Four-Power Pact",
+      "Hoare-Laval Pact",
+      "Stresa Front"
+    ],
+    "explanation": "Signed in September 1938 by Germany, Britain, France, and Italy, the Munich Agreement forced Czechoslovakia to surrender the Sudetenland to Nazi Germany. It is the defining example of appeasement policy, rewarding Hitler's aggression without a shot fired.",
+    "statement": "",
+    "wowFactor": "Czechoslovakia was not even allowed to attend the conference that dismembered its own territory.",
+    "sourceName": "Wikipedia \u2014 Munich Agreement",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Munich_Agreement",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "appeasement",
+      "WWII",
+      "diplomacy"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.2"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_anschluss",
+    "quizQuestion": "What was the name for Nazi Germany's March 1938 annexation of Austria?",
+    "correctAnswer": "Anschluss",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "event_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Blitzkrieg",
+      "Operation Sea Lion",
+      "Operation Barbarossa",
+      "Fall Weiss",
+      "Operation Overlord",
+      "Kristallnacht",
+      "Lebensraum",
+      "Weltpolitik"
+    ],
+    "explanation": "The Anschluss ('union') of March 1938 saw Nazi Germany annex Austria, merging it into the Third Reich. Despite being forbidden by the Treaty of Versailles, the Western powers took no action, emboldening Hitler's further territorial demands.",
+    "statement": "",
+    "wowFactor": "Many Austrians greeted German troops with cheering crowds, complicating postwar narratives about forced annexation.",
+    "sourceName": "Wikipedia \u2014 Anschluss",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Anschluss",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "WWII",
+      "Nazi Germany",
+      "appeasement"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.2"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_spanish_civil_war",
+    "quizQuestion": "Which 1936\u20131939 conflict saw fascist and democratic forces clash in a prelude to WWII?",
+    "correctAnswer": "Spanish Civil War",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "event_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "First World War",
+      "Greco-Italian War",
+      "Winter War",
+      "Russo-Finnish War",
+      "Ethiopian War",
+      "Sino-Japanese War",
+      "Albanian invasion",
+      "Czech crisis"
+    ],
+    "explanation": "The Spanish Civil War (1936\u20131939) pitted Franco's Nationalist forces (backed by Hitler and Mussolini) against the Republican government (aided by the USSR and International Brigades). Franco's victory established a fascist dictatorship and previewed WWII tactics.",
+    "statement": "",
+    "wowFactor": "Nearly 40,000 foreign volunteers from 50+ countries joined the International Brigades to fight fascism in Spain.",
+    "sourceName": "Wikipedia \u2014 Spanish Civil War",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Spanish_Civil_War",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "fascism",
+      "Spain",
+      "WWII prelude"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.2"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_bombing_of_guernica",
+    "quizQuestion": "What 1937 aerial bombing of a Basque town became an antiwar symbol in the Spanish Civil War?",
+    "correctAnswer": "Bombing of Guernica",
+    "acceptableAlternatives": [
+      "Guernica bombing",
+      "Guernica attack"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "event_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Blitz of London",
+      "Bombing of Dresden",
+      "Bombing of Rotterdam",
+      "Bombing of Warsaw",
+      "Battle of Madrid",
+      "Siege of Teruel",
+      "Battle of Jarama",
+      "Bombing of Barcelona"
+    ],
+    "explanation": "On April 26, 1937, Nazi Germany's Condor Legion bombed the Basque town of Guernica during market day, killing hundreds of civilians. It was one of the first deliberate bombings of a civilian population and became a global symbol of fascist brutality.",
+    "statement": "",
+    "wowFactor": "Picasso immortalized the atrocity in his massive painting 'Guernica,' still one of the most powerful antiwar artworks ever created.",
+    "sourceName": "Wikipedia \u2014 Bombing of Guernica",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bombing_of_Guernica",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "Spanish Civil War",
+      "fascism",
+      "civilian casualties"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.2"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_german_invasion_of_poland",
+    "quizQuestion": "What event on September 1, 1939 began WWII in Europe, featuring blitzkrieg tactics?",
+    "correctAnswer": "German invasion of Poland",
+    "acceptableAlternatives": [
+      "invasion of Poland",
+      "Nazi invasion of Poland"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "event_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Invasion of France",
+      "Invasion of Belgium",
+      "Invasion of Norway",
+      "Anschluss",
+      "Invasion of Czechoslovakia",
+      "Battle of Britain",
+      "Invasion of Denmark",
+      "Fall of Paris"
+    ],
+    "explanation": "On September 1, 1939, Germany invaded Poland using rapid armored blitzkrieg tactics. Britain and France declared war on Germany two days later. Poland fell within weeks after the USSR invaded from the east on September 17.",
+    "statement": "",
+    "wowFactor": "Germany staged a fake Polish attack on a German radio station (Gleiwitz incident) as a pretext for the invasion.",
+    "sourceName": "Wikipedia \u2014 Invasion of Poland",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Invasion_of_Poland",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "WWII",
+      "blitzkrieg",
+      "Poland"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_1939",
+    "quizQuestion": "In what year did World War II begin with Germany's invasion of Poland?",
+    "correctAnswer": "{1939}",
+    "acceptableAlternatives": [
+      "1939"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "year_dates",
+    "difficulty": 1,
+    "funScore": 3,
+    "ageGroup": "all",
+    "distractors": [],
+    "explanation": "World War II began in Europe on September 1, 1939, when Nazi Germany invaded Poland. Britain and France declared war on Germany on September 3, marking the formal start of the conflict.",
+    "statement": "",
+    "wowFactor": "Britain and France had guaranteed Poland's borders just months earlier, making their declaration of war a rare case of honoring a commitment.",
+    "sourceName": "Wikipedia \u2014 World War II",
+    "sourceUrl": "https://en.wikipedia.org/wiki/World_War_II",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "WWII",
+      "dates"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_blitzkrieg",
+    "quizQuestion": "What German military doctrine combined fast armored vehicles, air support, and infantry in swift coordinated strikes?",
+    "correctAnswer": "Blitzkrieg",
+    "acceptableAlternatives": [
+      "lightning war"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "concept_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Vernichtungsschlacht",
+      "Auftragstaktik",
+      "Kesselschlacht",
+      "Stellungskrieg",
+      "Materialschlacht",
+      "Bewegungskrieg",
+      "Schwerpunkt",
+      "Panzergruppe"
+    ],
+    "explanation": "Blitzkrieg ('lightning war') was a German tactical approach combining tanks, mechanized infantry, artillery, and dive bombers to break through enemy lines at speed, bypassing defenses and creating encirclements. It overwhelmed Poland in weeks and France in six weeks.",
+    "statement": "",
+    "wowFactor": "Despite its fame, 'Blitzkrieg' was never an official German military doctrine \u2014 the term was coined by Western journalists.",
+    "sourceName": "Wikipedia \u2014 Blitzkrieg",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blitzkrieg",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "WWII",
+      "military tactics",
+      "Germany"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_fall_of_france",
+    "quizQuestion": "What June 1940 German victory divided France into occupied and Vichy zones under P\u00e9tain?",
+    "correctAnswer": "Fall of France",
+    "acceptableAlternatives": [
+      "Battle of France",
+      "French armistice"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "event_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Battle of Britain",
+      "Dunkirk evacuation",
+      "Battle of the Bulge",
+      "Operation Torch",
+      "Liberation of Paris",
+      "Battle of Normandy",
+      "Italian armistice",
+      "Battle of Monte Cassino"
+    ],
+    "explanation": "Germany's rapid conquest of France in May\u2013June 1940 shocked the world. France was divided: the north occupied by Germany, the south governed by the collaborationist Vichy regime under Marshal P\u00e9tain. The armistice was signed on June 22, 1940.",
+    "statement": "",
+    "wowFactor": "Hitler insisted the armistice be signed in the same railway car where Germany surrendered in 1918 \u2014 the ultimate act of symbolic revenge.",
+    "sourceName": "Wikipedia \u2014 Battle of France",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_France",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "WWII",
+      "France",
+      "Vichy"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_battle_of_britain",
+    "quizQuestion": "What 1940 air campaign saw the RAF defend Britain against the German Luftwaffe?",
+    "correctAnswer": "Battle of Britain",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "event_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Battle of the Atlantic",
+      "Operation Sea Lion",
+      "Blitz of London",
+      "Battle of El Alamein",
+      "Battle of Midway",
+      "Operation Dynamo",
+      "Battle of Crete",
+      "Battle of Malta"
+    ],
+    "explanation": "The Battle of Britain (July\u2013October 1940) was the first major campaign fought entirely by air forces. The RAF's victory denied Germany air superiority and forced Hitler to postpone Operation Sea Lion (the planned invasion of Britain), marking Germany's first major defeat.",
+    "statement": "",
+    "wowFactor": "Britain's radar system (Chain Home) gave defenders crucial advance warning \u2014 Germany had nothing comparable and never understood why Britain kept winning.",
+    "sourceName": "Wikipedia \u2014 Battle of Britain",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Britain",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "WWII",
+      "RAF",
+      "air warfare"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_winston_churchill",
+    "quizQuestion": "Which British PM rallied his nation during WWII, declaring 'this was their finest hour'?",
+    "correctAnswer": "Winston Churchill",
+    "acceptableAlternatives": [
+      "Churchill"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "person_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Neville Chamberlain",
+      "Clement Attlee",
+      "Anthony Eden",
+      "Harold Macmillan",
+      "Ernest Bevin",
+      "Lord Halifax",
+      "Herbert Asquith",
+      "David Lloyd George"
+    ],
+    "explanation": "Winston Churchill became Prime Minister in May 1940 and immediately rejected any negotiated peace with Hitler. His famous speeches \u2014 including 'We shall fight on the beaches' and 'Their finest hour' \u2014 galvanized British resistance during the darkest days of the war.",
+    "statement": "",
+    "wowFactor": "Churchill was voted out of office just weeks after Germany's defeat in 1945, while Britain was still celebrating victory.",
+    "sourceName": "Wikipedia \u2014 Winston Churchill",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Winston_Churchill",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "WWII",
+      "Britain",
+      "leadership"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_operation_barbarossa",
+    "quizQuestion": "What June 22, 1941 German operation launched a massive invasion of the Soviet Union?",
+    "correctAnswer": "Operation Barbarossa",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "event_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Operation Citadel",
+      "Operation Sea Lion",
+      "Operation Overlord",
+      "Operation Market Garden",
+      "Operation Torch",
+      "Operation Bagration",
+      "Operation Weser\u00fcbung",
+      "Operation Fall Gelb"
+    ],
+    "explanation": "Operation Barbarossa, launched June 22, 1941, was the largest military invasion in history, deploying over 3 million German and Axis troops against the USSR. Initially stunning successes gave way to stalled advances as Soviet resistance stiffened and winter arrived.",
+    "statement": "",
+    "wowFactor": "Named after a medieval Holy Roman Emperor, Barbarossa's failure was partly because Hitler couldn't decide whether Moscow, Leningrad, or Ukraine was the primary objective.",
+    "sourceName": "Wikipedia \u2014 Operation Barbarossa",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "WWII",
+      "Eastern Front",
+      "USSR"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_battle_of_stalingrad",
+    "quizQuestion": "Which 1942\u201343 Eastern Front battle is considered the turning point of WWII in Europe?",
+    "correctAnswer": "Battle of Stalingrad",
+    "acceptableAlternatives": [
+      "Stalingrad"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "event_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Battle of Moscow",
+      "Battle of Kursk",
+      "Operation Bagration",
+      "Battle of Berlin",
+      "Siege of Leningrad",
+      "Battle of Smolensk",
+      "Battle of Kiev",
+      "Battle of Kharkov"
+    ],
+    "explanation": "The Battle of Stalingrad (August 1942\u2013February 1943) ended with the surrender of Germany's 6th Army under Field Marshal Paulus. It was the bloodiest battle in history (~2 million casualties) and marked the first major German strategic defeat, permanently shifting momentum to the Allies.",
+    "statement": "",
+    "wowFactor": "German Field Marshal Paulus became the first German officer of that rank to surrender in battle \u2014 Hitler had promoted him the day before hoping he would fight to the death.",
+    "sourceName": "Wikipedia \u2014 Battle of Stalingrad",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "WWII",
+      "Eastern Front",
+      "turning point"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_d_day__normandy_landings",
+    "quizQuestion": "What June 6, 1944 Allied amphibious assault on the Normandy coast opened a Western Front?",
+    "correctAnswer": "D-Day (Normandy landings)",
+    "acceptableAlternatives": [
+      "D-Day",
+      "Normandy landings",
+      "Operation Overlord"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "event_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Operation Market Garden",
+      "Battle of the Bulge",
+      "Invasion of Sicily",
+      "Anzio landings",
+      "Dieppe Raid",
+      "Operation Torch",
+      "Liberation of Paris",
+      "Operation Dragoon"
+    ],
+    "explanation": "D-Day, June 6, 1944, was the largest seaborne invasion in history, with over 156,000 Allied troops landing on five Normandy beaches. It opened the long-awaited second front in Western Europe, beginning the liberation of France and the drive toward Germany.",
+    "statement": "",
+    "wowFactor": "The Allies ran an elaborate deception operation (Operation Fortitude) that convinced Hitler the real invasion would target Pas-de-Calais \u2014 he held back crucial panzer reserves for weeks.",
+    "sourceName": "Wikipedia \u2014 Normandy landings",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Normandy_landings",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "WWII",
+      "Normandy",
+      "Allies"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_1944",
+    "quizQuestion": "In what year did the D-Day Normandy landings take place?",
+    "correctAnswer": "{1944}",
+    "acceptableAlternatives": [
+      "1944"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "year_dates",
+    "difficulty": 1,
+    "funScore": 3,
+    "ageGroup": "all",
+    "distractors": [],
+    "explanation": "The D-Day landings occurred on June 6, 1944. The year 1944 also saw the liberation of Paris in August and the failed German counteroffensive at the Battle of the Bulge in December.",
+    "statement": "",
+    "wowFactor": "Eisenhower had written a draft letter accepting personal blame in case D-Day failed \u2014 a remarkable act of leadership accountability.",
+    "sourceName": "Wikipedia \u2014 Normandy landings",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Normandy_landings",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "WWII",
+      "dates"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_1945",
+    "quizQuestion": "In what year did Germany surrender, ending the war in Europe (V-E Day, May 8)?",
+    "correctAnswer": "{1945}",
+    "acceptableAlternatives": [
+      "1945"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "year_dates",
+    "difficulty": 1,
+    "funScore": 3,
+    "ageGroup": "all",
+    "distractors": [],
+    "explanation": "V-E Day (Victory in Europe Day) on May 8, 1945 marked Germany's unconditional surrender to the Allied powers. The war in Europe ended with Hitler's suicide on April 30 and the fall of Berlin to Soviet forces.",
+    "statement": "",
+    "wowFactor": "Germany actually signed two surrender documents \u2014 one to Western Allies in Reims, France, and a second ceremony demanded by Stalin in Berlin.",
+    "sourceName": "Wikipedia \u2014 Victory in Europe Day",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Victory_in_Europe_Day",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "WWII",
+      "dates",
+      "Germany"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_yalta_conference",
+    "quizQuestion": "What February 1945 conference had Churchill, Roosevelt, and Stalin divide postwar Europe?",
+    "correctAnswer": "Yalta Conference",
+    "acceptableAlternatives": [
+      "Yalta"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "event_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Tehran Conference",
+      "Potsdam Conference",
+      "Casablanca Conference",
+      "Quebec Conference",
+      "Moscow Conference",
+      "San Francisco Conference",
+      "Paris Peace Conference",
+      "Geneva Conference"
+    ],
+    "explanation": "The Yalta Conference (February 1945) brought together the 'Big Three' \u2014 Churchill, Roosevelt, and Stalin \u2014 to plan the postwar world. Agreements on German occupation zones, free elections in liberated nations, and Soviet entry into the Pacific war shaped the emerging Cold War order.",
+    "statement": "",
+    "wowFactor": "Roosevelt was gravely ill at Yalta and died just two months later \u2014 critics argued this weakened his negotiating position against Stalin.",
+    "sourceName": "Wikipedia \u2014 Yalta Conference",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Yalta_Conference",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "WWII",
+      "diplomacy",
+      "Big Three"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_totalitarianism",
+    "quizQuestion": "What political concept describes a system where a single party controls all aspects of public and private life?",
+    "correctAnswer": "Totalitarianism",
+    "acceptableAlternatives": [
+      "totalitarian state"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "concept_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Authoritarianism",
+      "Fascism",
+      "Oligarchy",
+      "Dictatorship",
+      "Nationalism",
+      "Corporatism",
+      "Militarism",
+      "Imperialism"
+    ],
+    "explanation": "Totalitarianism refers to political systems \u2014 like Nazi Germany and Stalinist USSR \u2014 where the state seeks total control over all aspects of society, using propaganda, terror, secret police, and mass mobilization. It differs from mere authoritarianism in its ideological ambition to reshape humanity itself.",
+    "statement": "",
+    "wowFactor": "Hannah Arendt's 1951 'Origins of Totalitarianism' was one of the first works to argue Nazism and Stalinism were fundamentally similar systems despite their ideological differences.",
+    "sourceName": "Wikipedia \u2014 Totalitarianism",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Totalitarianism",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "political theory",
+      "fascism",
+      "Stalinism"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.1"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_kristallnacht",
+    "quizQuestion": "What Nov 9\u201310, 1938 Nazi pogrom targeted Jewish businesses, synagogues, and people across Germany?",
+    "correctAnswer": "Kristallnacht",
+    "acceptableAlternatives": [
+      "Night of Broken Glass",
+      "Night of Crystal"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "event_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Anschluss",
+      "Nuremberg Laws",
+      "Wannsee Conference",
+      "Beer Hall Putsch",
+      "Night of Long Knives",
+      "Reichstag Fire",
+      "Enabling Act",
+      "R\u00f6hm Putsch"
+    ],
+    "explanation": "Kristallnacht ('Night of Broken Glass'), November 9\u201310, 1938, was a coordinated Nazi pogrom in which over 7,500 Jewish businesses were destroyed, 1,400 synagogues burned, and ~30,000 Jewish men arrested and sent to concentration camps. It marked a dramatic escalation toward genocide.",
+    "statement": "",
+    "wowFactor": "The Nazis fined the Jewish community 1 billion Reichsmarks for the property damage caused by the Nazis themselves.",
+    "sourceName": "Wikipedia \u2014 Kristallnacht",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kristallnacht",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "Holocaust",
+      "Nazi Germany",
+      "antisemitism"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.4"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_final_solution",
+    "quizQuestion": "What was the Nazi euphemism for the systematic murder of European Jews, planned at Wannsee in 1942?",
+    "correctAnswer": "Final Solution",
+    "acceptableAlternatives": [
+      "Endl\u00f6sung",
+      "Final Solution to the Jewish Question"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "concept_terms",
+    "difficulty": 2,
+    "funScore": 4,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Kristallnacht",
+      "Nuremberg Laws",
+      "Aktion Reinhard",
+      "Gleichschaltung",
+      "Lebensraum",
+      "Aryanization",
+      "T4 Program",
+      "Night of Long Knives"
+    ],
+    "explanation": "The 'Final Solution to the Jewish Question' (Endl\u00f6sung) was the Nazi plan for the systematic genocide of European Jews, coordinated at the January 1942 Wannsee Conference. SS and police leaders met to plan the logistics of murdering millions of people across occupied Europe.",
+    "statement": "",
+    "wowFactor": "The Wannsee Conference lasted only 90 minutes \u2014 the genocide of millions was treated as a bureaucratic scheduling problem.",
+    "sourceName": "Wikipedia \u2014 Wannsee Conference",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wannsee_Conference",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "Holocaust",
+      "genocide",
+      "Nazi Germany"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.4"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_auschwitz_birkenau",
+    "quizQuestion": "Which Nazi death camp in occupied Poland killed approximately 1.1 million people, mainly Jews?",
+    "correctAnswer": "Auschwitz-Birkenau",
+    "acceptableAlternatives": [
+      "Auschwitz",
+      "Auschwitz concentration camp"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "place_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Treblinka",
+      "Sobibor",
+      "Belzec",
+      "Chelmno",
+      "Majdanek",
+      "Dachau",
+      "Bergen-Belsen",
+      "Buchenwald"
+    ],
+    "explanation": "Auschwitz-Birkenau was the largest Nazi concentration and extermination camp, located in occupied Poland. Between 1940 and 1945, the SS murdered approximately 1.1 million people there, roughly 90% of them Jewish, using industrial-scale gas chambers.",
+    "statement": "",
+    "wowFactor": "The Soviet army liberated Auschwitz on January 27, 1945 \u2014 this date is now observed as International Holocaust Remembrance Day.",
+    "sourceName": "Wikipedia \u2014 Auschwitz concentration camp",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Auschwitz_concentration_camp",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "Holocaust",
+      "death camps",
+      "genocide"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.4"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_the_holocaust",
+    "quizQuestion": "What term describes the Nazi genocide that murdered approximately 6 million Jews during WWII?",
+    "correctAnswer": "The Holocaust",
+    "acceptableAlternatives": [
+      "Holocaust",
+      "Shoah"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "event_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "ageGroup": "teen+",
+    "distractors": [
+      "The Purge",
+      "The Great Terror",
+      "Kristallnacht",
+      "The Final Solution",
+      "The Pogroms",
+      "The Gulag",
+      "The Inquisition",
+      "The Reign of Terror"
+    ],
+    "explanation": "The Holocaust was the systematic, state-sponsored persecution and murder of six million Jews by the Nazi regime and its collaborators between 1933 and 1945. Two-thirds of European Jewry was destroyed. The Nazis also murdered millions of others including Roma, disabled people, and political prisoners.",
+    "statement": "",
+    "wowFactor": "The word 'genocide' was coined in 1944 specifically to describe what the Nazis were doing to the Jews, by Polish-Jewish lawyer Raphael Lemkin.",
+    "sourceName": "Wikipedia \u2014 The Holocaust",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Holocaust",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "Holocaust",
+      "genocide",
+      "Nazi Germany"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.4"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_nuremberg_trials",
+    "quizQuestion": "What 1945\u201346 tribunal tried Nazi leaders for war crimes and 'crimes against humanity' for the first time?",
+    "correctAnswer": "Nuremberg Trials",
+    "acceptableAlternatives": [
+      "Nuremberg Tribunal",
+      "International Military Tribunal"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "event_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Tokyo Trials",
+      "Eichmann Trial",
+      "Demjanjuk Trial",
+      "My Lai Tribunal",
+      "Hague Tribunal",
+      "Geneva Convention",
+      "Paris Peace Conference",
+      "Potsdam Conference"
+    ],
+    "explanation": "The Nuremberg Trials (1945\u20131946) prosecuted 24 major Nazi war criminals before an international military tribunal. The trials established the precedents that 'following orders' was not a defense for atrocities and that crimes against humanity could be prosecuted internationally.",
+    "statement": "",
+    "wowFactor": "Hermann G\u00f6ring cheated the hangman by swallowing a cyanide capsule smuggled into his cell the night before his scheduled execution.",
+    "sourceName": "Wikipedia \u2014 Nuremberg trials",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nuremberg_trials",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "Holocaust",
+      "war crimes",
+      "international law"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.4"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_pablo_picasso",
+    "quizQuestion": "Which artist painted the monumental 1937 antiwar canvas 'Guernica' depicting the bombing of a Spanish town?",
+    "correctAnswer": "Pablo Picasso",
+    "acceptableAlternatives": [
+      "Picasso"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "person_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Salvador Dal\u00ed",
+      "Joan Mir\u00f3",
+      "Georges Braque",
+      "Henri Matisse",
+      "Marcel Duchamp",
+      "Wassily Kandinsky",
+      "Paul Klee",
+      "Max Ernst"
+    ],
+    "explanation": "Pablo Picasso painted Guernica in 1937 in response to the Nazi bombing of the Basque town, creating an 11-foot tall black-and-white canvas depicting screaming horses, mothers with dead children, and fragmented bodies. It became the 20th century's most powerful antiwar statement.",
+    "statement": "",
+    "wowFactor": "When a Gestapo officer asked Picasso if he made Guernica, Picasso reportedly replied, 'No, you did.'",
+    "sourceName": "Wikipedia \u2014 Guernica (Picasso)",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Guernica_(Picasso)",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "art",
+      "Spanish Civil War",
+      "modernism"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.5"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_franz_kafka",
+    "quizQuestion": "Which Czech-German author explored alienation and bureaucratic absurdity in 'The Trial' and 'The Metamorphosis'?",
+    "correctAnswer": "Franz Kafka",
+    "acceptableAlternatives": [
+      "Kafka"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "person_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Albert Camus",
+      "Jean-Paul Sartre",
+      "Samuel Beckett",
+      "Bertolt Brecht",
+      "Thomas Mann",
+      "Heinrich B\u00f6ll",
+      "Robert Musil",
+      "Stefan Zweig"
+    ],
+    "explanation": "Franz Kafka (1883\u20131924) wrote dark, surreal fiction exploring themes of alienation, guilt, and the crushing power of faceless bureaucracy. 'The Metamorphosis' (1915) and 'The Trial' (1925) became defining texts of modernist literature and feel prophetic of 20th-century totalitarianism.",
+    "statement": "",
+    "wowFactor": "Kafka asked his friend Max Brod to burn all his manuscripts after death \u2014 Brod ignored the request and published them, giving the world some of the 20th century's most influential literature.",
+    "sourceName": "Wikipedia \u2014 Franz Kafka",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Franz_Kafka",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "literature",
+      "modernism",
+      "alienation"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.5"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_george_orwell",
+    "quizQuestion": "Which author warned against totalitarianism in '1984' (1949) and 'Animal Farm' (1945)?",
+    "correctAnswer": "George Orwell",
+    "acceptableAlternatives": [
+      "Orwell",
+      "Eric Arthur Blair"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "person_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Aldous Huxley",
+      "Arthur Koestler",
+      "Franz Kafka",
+      "Albert Camus",
+      "Bertolt Brecht",
+      "H.G. Wells",
+      "Evelyn Waugh",
+      "Graham Greene"
+    ],
+    "explanation": "George Orwell's 'Animal Farm' (1945) used farm animals as allegory to critique Stalinist communism, while '1984' (1949) depicted a nightmarish surveillance state with thought police and doublespeak. Both works drew on his experiences fighting in the Spanish Civil War and observing totalitarian systems.",
+    "statement": "",
+    "wowFactor": "Orwell fought for the Republicans in Spain, was shot through the throat by a sniper, and barely survived \u2014 experiences that radically shaped his anti-totalitarian politics.",
+    "sourceName": "Wikipedia \u2014 George Orwell",
+    "sourceUrl": "https://en.wikipedia.org/wiki/George_Orwell",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "literature",
+      "totalitarianism",
+      "political fiction"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.5"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_existentialism",
+    "quizQuestion": "What philosophical movement, associated with Sartre's 'existence precedes essence,' emphasized individual freedom?",
+    "correctAnswer": "Existentialism",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "concept_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Absurdism",
+      "Phenomenology",
+      "Structuralism",
+      "Nihilism",
+      "Pragmatism",
+      "Positivism",
+      "Surrealism",
+      "Marxism"
+    ],
+    "explanation": "Existentialism, developed by Jean-Paul Sartre, Simone de Beauvoir, and Albert Camus in postwar Paris, argued that humans have no predetermined essence or purpose \u2014 we define ourselves through choices. Sartre's phrase 'existence precedes essence' became its slogan, reflecting WWII trauma and rejection of fixed meaning.",
+    "statement": "",
+    "wowFactor": "Sartre was offered the Nobel Prize in Literature in 1964 but refused it, saying no writer should become an institution.",
+    "sourceName": "Wikipedia \u2014 Existentialism",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Existentialism",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "philosophy",
+      "postwar",
+      "literature"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.5"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_albert_camus",
+    "quizQuestion": "Which French author explored absurdism in 'The Stranger' (1942) and 'The Myth of Sisyphus'?",
+    "correctAnswer": "Albert Camus",
+    "acceptableAlternatives": [
+      "Camus"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "person_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Jean-Paul Sartre",
+      "Simone de Beauvoir",
+      "Andr\u00e9 Gide",
+      "Marcel Proust",
+      "Samuel Beckett",
+      "Franz Kafka",
+      "Eug\u00e8ne Ionesco",
+      "Jean Anouilh"
+    ],
+    "explanation": "Albert Camus (1913\u20131960) developed absurdism \u2014 the idea that humans crave meaning in a universe that offers none, and the only honest response is to live fully anyway. 'The Stranger' (1942) and 'The Myth of Sisyphus' (1942) were foundational texts of postwar European thought.",
+    "statement": "",
+    "wowFactor": "Though often grouped together, Camus and Sartre had a public philosophical falling-out \u2014 Camus rejected Sartre's Marxism and their friendship ended bitterly.",
+    "sourceName": "Wikipedia \u2014 Albert Camus",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Albert_Camus",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "philosophy",
+      "literature",
+      "absurdism"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.5"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_charles_de_gaulle",
+    "quizQuestion": "Which general led the Free French Forces from London after France fell to Germany in 1940?",
+    "correctAnswer": "Charles de Gaulle",
+    "acceptableAlternatives": [
+      "de Gaulle",
+      "General de Gaulle"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "person_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Philippe P\u00e9tain",
+      "Ferdinand Foch",
+      "Maxime Weygand",
+      "Jean-Fran\u00e7ois Darlan",
+      "Henri Giraud",
+      "Pierre Laval",
+      "Georges Clemenceau",
+      "Louis Mountbatten"
+    ],
+    "explanation": "General Charles de Gaulle refused to accept the French armistice and broadcast his famous June 18, 1940 radio appeal from London urging French resistance. He led the Free French Forces throughout the war and returned in triumph to liberate Paris in August 1944.",
+    "statement": "",
+    "wowFactor": "De Gaulle was sentenced to death in absentia by the Vichy French government for treason \u2014 the sentence was annulled after liberation.",
+    "sourceName": "Wikipedia \u2014 Charles de Gaulle",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Charles_de_Gaulle",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "WWII",
+      "France",
+      "resistance"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.3"
+    ]
+  },
+  {
+    "id": "ap_euro_u8_fascism",
+    "quizQuestion": "What political ideology merged extreme nationalism with state-directed capitalism and rejected Marxist class struggle?",
+    "correctAnswer": "Fascism",
+    "acceptableAlternatives": [
+      "fascism"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "concept_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Communism",
+      "Socialism",
+      "Anarchism",
+      "Conservatism",
+      "Liberalism",
+      "Totalitarianism",
+      "Militarism",
+      "Syndicalism"
+    ],
+    "explanation": "Fascism, pioneered by Mussolini in Italy, combined ultranationalism, authoritarianism, and a 'third way' corporatist economy that rejected both free-market capitalism and Marxist socialism. The state, nation, and leader were supreme; class conflict was replaced by national unity enforced through violence.",
+    "statement": "",
+    "wowFactor": "The word 'fascism' comes from 'fasces' \u2014 a bundle of rods with an axe used in ancient Rome as a symbol of state authority and collective strength.",
+    "sourceName": "Wikipedia \u2014 Fascism",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fascism",
+    "volatile": false,
+    "categoryL1": "history",
+    "categoryL2": "european_history",
+    "variants": [],
+    "tags": [
+      "fascism",
+      "political ideology",
+      "interwar"
+    ],
+    "visualDescription": "",
+    "examTags": [
+      "AP_European_History",
+      "Unit_8",
+      "Topic_8.1"
+    ]
+  }
+]
