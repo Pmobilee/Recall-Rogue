@@ -1090,6 +1090,138 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 
 ---
 
+## japanese_n2_grammar Deck
+
+`data/decks/japanese_n2_grammar.json` — 708 facts covering upper-intermediate JLPT N2 grammar patterns. Assembled 2026-04-04 from batch files via `scripts/assemble-n2-grammar.py`.
+
+**Fill-in-the-blank format.** Each fact presents a Japanese sentence with the target grammar point replaced by `{___}`. The player chooses the correct grammar point to complete the sentence.
+
+| Field | Value |
+|---|---|
+| `id` | `japanese_n2_grammar` |
+| `domain` | `vocabulary` |
+| `subDomain` | `japanese_grammar` |
+| `facts` | 708 |
+| `minimumFacts` | 400 |
+| `targetFacts` | 708 |
+
+**Answer Type Pools (21 — 20 category pools + grammar_all master):**
+
+| Pool ID | Facts |
+|---|---|
+| `grammar_all` (master) | 708 |
+| `temporal` | 84 |
+| `concession_contrast` | 68 |
+| `conjunction` | 56 |
+| `degree_extent` | 56 |
+| `basis_standard` | 40 |
+| `conditional` | 40 |
+| `emphasis` | 44 |
+| `supposition` | 44 |
+| `limitation` | 48 |
+| `obligation` | 52 |
+| `addition` | 20 |
+| `appearance_state` | 20 |
+| `impossibility` | 20 |
+| `tendency` | 28 |
+| `viewpoint` | 28 |
+| `scope_range` | 16 |
+| `surprise` | 16 |
+| `purpose` | 12 |
+| `ability` | 8 |
+| `result_consequence` | 8 |
+
+**Difficulty distribution:**
+- Easy (1–2): 125 facts (17.7%)
+- Medium (3): 275 facts (38.8%)
+- Hard (4–5): 308 facts (43.5%)
+
+**Synonym groups (6):**
+- `syn_n2_cannot_help` — ないではいられない / ずにはいられない (cannot help but do)
+- `syn_n2_no_choice` — しかない / ほかない / より仕方がない / より他ない (no choice but to)
+- `syn_n2_merely` — に過ぎない / でしかない (merely / nothing more than)
+- `syn_n2_regardless` — にもかかわらず / にかかわらず (despite / regardless of)
+- `syn_n2_through` — を通じて / を通して (through / via)
+- `syn_n2_based_on` — に基づいて / を元に (based on)
+
+**Assembly source files:** 11 batch files in `data/decks/_wip/n2_gram_*.json` (0 duplicates across 708 facts).
+
+**Assembler script:** `scripts/assemble-n2-grammar.py` — reads all batch files, deduplicates by ID, builds pools/synonymGroups/difficultyTiers, and writes the final deck.
+
+**Validator note:** The `verify-all-decks.mjs` script reports 0 failures and 0 warnings for this deck. The `{___}` marker is the intended question blank format (same pattern as N3/N4/N5 grammar decks).
+
+**chainThemeId:** Rotates 0–5 sequentially across all facts (grammar decks use generic chain slots, not named themes).
+
+---
+
+## japanese_n1_grammar Deck
+
+`data/decks/japanese_n1_grammar.json` — 951 facts covering advanced JLPT N1 grammar patterns. Assembled 2026-04-04 from 14 batch files via `scripts/assemble-n1-grammar.py`.
+
+**Fill-in-the-blank format.** Each fact presents a Japanese sentence with the target grammar point replaced by `{___}`. The player chooses the correct grammar point to complete the sentence.
+
+| Field | Value |
+|---|---|
+| `id` | `japanese_n1_grammar` |
+| `domain` | `vocabulary` |
+| `subDomain` | `japanese_grammar` |
+| `facts` | 951 |
+| `minimumFacts` | 400 |
+| `targetFacts` | 951 |
+
+**Answer Type Pools (20 — 19 category pools + grammar_all master):**
+
+| Pool ID | Facts |
+|---|---|
+| `grammar_all` (master) | 951 |
+| `concession_contrast` | 111 |
+| `emphasis` | 108 |
+| `conditional` | 76 |
+| `temporal` | 68 |
+| `formal_written` | 64 |
+| `judgment` | 56 |
+| `method_means` | 56 |
+| `scope_selection` | 56 |
+| `degree_extent` | 56 |
+| `cause_reason` | 44 |
+| `opinions_stance` | 44 |
+| `appearance` | 40 |
+| `negative_forms` | 36 |
+| `probability` | 36 |
+| `result_outcome` | 28 |
+| `simultaneous` | 24 |
+| `unexpected` | 20 |
+| `obligation_emotion` | 16 |
+| `purpose` | 12 |
+
+**Difficulty distribution:**
+- Easy (1–2): 7 facts (0.7%)
+- Medium (3–4): 703 facts (73.9%)
+- Hard (5): 241 facts (25.3%)
+
+**Synonym groups (10):**
+- `syn_n1_cannot_help` — ずにはいられない / ないではいられない (cannot help but do)
+- `syn_n1_as_soon_as` — が早いか / や否や / なり (as soon as / no sooner than)
+- `syn_n1_regardless` — いかんにかかわらず / いかんによらず / いかんをとわず (regardless of)
+- `syn_n1_forced` — を余儀なくされる / を余儀なくさせる / を余儀なくされた (forced/compelled)
+- `syn_n1_must` — ないではすまない / ずにはすまない (cannot get away without doing)
+- `syn_n1_will_definitely` — ないではおかない / ずにはおかない (will definitely/inevitably)
+- `syn_n1_like_literary` — ごとき / ごとく / ごとし / かのごとく (literary "like/as if")
+- `syn_n1_while` — がてら / かたがた / かたわら (while doing / on the occasion of)
+- `syn_n1_whether` — (よ)うが～まいが and variants (whether or not)
+- `syn_n1_fail` — そびれる / 損なう / 損ねる (fail to do / miss the opportunity)
+
+**Assembly source files:** 14 batch files in `data/decks/_wip/n1_gram_*.json`.
+- Deduplication: 240 id-duplicates removed, 1 content-duplicate removed (same question/answer regenerated with different id).
+
+**Assembler script:** `scripts/assemble-n1-grammar.py` — reads all batch files, deduplicates by ID then by (quizQuestion, correctAnswer) fingerprint, builds pools/synonymGroups/difficultyTiers, and writes the final deck.
+
+**Validator note:** The `verify-all-decks.mjs` script reports 0 failures and 0 warnings for this deck. The `{___}` marker is the intended question blank format (same pattern as N2/N3/N4/N5 grammar decks).
+
+**chainThemeId:** Rotates 0–5 sequentially across all facts (grammar decks use generic chain slots, not named themes).
+
+---
+
 ## movies_cinema_batch3 (WIP)
 
 `data/decks/_wip/movies_cinema_batch3.json` — generated 2026-04-03 from Wikidata-verified source data. Sub-deck: "Iconic Films" — Batch 3: Modern era (1995–2020) + Famous Quotes.
