@@ -123,7 +123,7 @@ Structural (FAIL): braces in answer/question, answer-in-distractors, duplicate d
 
 Content quality: answer too long (FAIL >100 chars, WARN >60), question too long (FAIL >400 chars, WARN >300), difficulty out of range (FAIL), funScore out of range (FAIL), explanation too short (WARN <20 chars), explanation duplicates question (WARN).
 
-Pool homogeneity (check #20, non-vocab only): Per pool, if the max/min display-length ratio of non-bracket answers exceeds 3x → FAIL; exceeds 2x → WARN. Catches pools that mix very short answers with long ones, making the correct answer visually obvious. Bracket-number answers are excluded (numerical distractors are algorithmic).
+Pool homogeneity (check #20, non-vocab only): Per pool, if the max/min display-length ratio of non-bracket answers exceeds 3x → FAIL (displayed); exceeds 2x → WARN. Catches pools that mix very short answers with long ones, making the correct answer visually obvious. Bracket-number answers are excluded (numerical distractors are algorithmic). NOTE: Pool-homogeneity FAIL does NOT block commits — it is informational only, since educational content inherently has name-length variation (e.g. 'Pons' vs 'Visceral and parietal pleura' in the same anatomy pool). The 3x threshold is a quality guide, not a hard gate. Use `pool-homogeneity-analysis.mjs` for detailed per-pool analysis.
 
 ### Unit Tests — `tests/unit/deck-content-quality.test.ts`
 
