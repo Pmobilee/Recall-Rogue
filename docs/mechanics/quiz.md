@@ -1,7 +1,7 @@
 # Quiz Engine Mechanics
 
 > **Purpose:** Documents how quiz questions are selected, formatted, graded, and how the FSRS spaced repetition algorithm schedules fact reviews.
-> **Last verified:** 2026-04-03
+> **Last verified:** 2026-04-04
 > **Source files:** `src/services/quizService.ts`, `src/services/fsrsScheduler.ts`, `src/services/questionFormatter.ts`, `src/services/questionTemplateSelector.ts`, `src/services/curatedFactSelector.ts`, `src/services/accuracyGradeSystem.ts`, `src/services/curatedDistractorSelector.ts`
 
 ---
@@ -183,3 +183,52 @@ Defined in `balance.ts`:
 - `SPEED_BONUS_MULTIPLIER = 1.5` — card effect multiplied 1.5×
 
 Timer durations by floor (`FLOOR_TIMER`): 12s (floors 1–6), 9s (floors 7–12), 7s (floors 13–18), 4s (floors 19+). Timer is for speed bonus only — no auto-dismiss or auto-play on expiry.
+
+## Language Deck Options (`deckOptionsService.ts`)
+
+Per-language player preferences stored in `localStorage` under the key `card:deckOptions`. All options are per-language and default to `false` unless stated otherwise.
+
+### Japanese (`ja`)
+
+| Option ID | Label | Default | Effect |
+|-----------|-------|---------|--------|
+| `furigana` | Show Furigana | `true` | Display hiragana readings above kanji |
+| `romaji` | Show Romaji | `false` | Display romanized readings |
+| `kanaOnly` | Kana Only | `false` | Replace all kanji with hiragana (beginner mode) |
+| `alwaysWrite` | Always Write Answers | `false` | Type answers instead of multiple choice for grammar questions |
+
+### Chinese (`zh`)
+
+| Option ID | Label | Default | Effect |
+|-----------|-------|---------|--------|
+| `pinyin` | Show Pinyin | `true` | Display pinyin pronunciation above characters |
+| `pinyinOnly` | Pinyin Only | `false` | Replace characters with pinyin (beginner mode) |
+
+### Korean (`ko`)
+
+| Option ID | Label | Default | Effect |
+|-----------|-------|---------|--------|
+| `romanization` | Show Romanization | `false` | Display romanized pronunciation |
+
+### Helper API
+
+```typescript
+// Generic
+getDeckOption(languageCode, optionId, defaultValue)
+setDeckOption(languageCode, optionId, value)
+
+// Japanese
+isFuriganaEnabled()        setFuriganaEnabled(enabled)
+isRomajiEnabled()          setRomajiEnabled(enabled)
+isKanaOnlyEnabled()        setKanaOnlyEnabled(enabled)
+isAlwaysWriteEnabled('ja') setAlwaysWriteEnabled('ja', enabled)
+
+// Chinese
+isPinyinEnabled()          setPinyinEnabled(enabled)
+isPinyinOnlyEnabled()      setPinyinOnlyEnabled(enabled)
+
+// Korean
+isKoreanRomanizationEnabled()  setKoreanRomanizationEnabled(enabled)
+```
+
+`isAlwaysWriteEnabled(languageCode)` accepts any language code — useful for future expansion to other grammar decks. Currently configured only for Japanese via the `SUPPORTED_LANGUAGES` options array.

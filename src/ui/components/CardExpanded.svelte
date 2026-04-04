@@ -22,6 +22,7 @@
   import KeywordPopup from './KeywordPopup.svelte'
   import FuriganaText from '../FuriganaText.svelte'
   import WordHover from './WordHover.svelte'
+  import GrammarSentenceFurigana from './GrammarSentenceFurigana.svelte'
   import { deckOptions } from '../../services/deckOptionsService'
   import DeckOptionsPanel from '../DeckOptionsPanel.svelte'
   import { getLanguageConfig } from '../../types/vocabulary'
@@ -178,6 +179,17 @@
     if (!isJapaneseFact) return false
     return $deckOptions?.ja?.kanaOnly ?? false
   })
+
+  /** Whether always-write mode is active for the current language (grammar typing instead of MC). */
+  const alwaysWriteEnabled = $derived.by(() => {
+    const opts = $deckOptions
+    return opts?.[quizLanguageCode ?? '']?.alwaysWrite ?? false
+  })
+
+  /** Effective response mode: 'typing' if alwaysWrite is on OR quizResponseMode is 'typing'. */
+  const effectiveResponseMode = $derived(
+    alwaysWriteEnabled || quizResponseMode === 'typing' ? 'typing' : 'choice'
+  )
 
   /**
    * Parse a Japanese question into { before, word, reading, after } parts.
@@ -530,7 +542,7 @@
       {@const sentence = grammarParts[0]}
       {@const translation = grammarParts[1] || ''}
       {#each sentence.split('{___}') as segment, i}
-        {#if i > 0}<span class="grammar-blank">______</span>{/if}<WordHover sentence={segment} excludeWords={[correctAnswer]} />
+        {#if i > 0}<span class="grammar-blank">______</span>{/if}<GrammarSentenceFurigana sentence={segment} excludeWords={[correctAnswer]} />
       {/each}
       {#if translation}
         <p class="grammar-translation">{translation}</p>
@@ -568,7 +580,7 @@
     {/if}
   {/if}
 
-  {#if quizResponseMode === 'typing' && !answersDisabled}
+  {#if effectiveResponseMode === 'typing' && !answersDisabled}
     <GrammarTypingInput
       {correctAnswer}
       acceptableAlternatives={[]}

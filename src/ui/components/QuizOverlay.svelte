@@ -20,6 +20,7 @@
   import KidWowStars from './KidWowStars.svelte'
   import { getWowScore } from '../../services/wowScore'
   import FuriganaText from '../FuriganaText.svelte'
+  import GrammarSentenceFurigana from './GrammarSentenceFurigana.svelte'
   import { deckOptions } from '../../services/deckOptionsService'
   import { isLandscape } from '../../stores/layoutStore'
   import DeckOptionsPanel from '../DeckOptionsPanel.svelte'
@@ -27,6 +28,7 @@
   import { inputService } from '../../services/inputService'
   import { turboDelay } from '../../utils/turboMode'
   import { displayAnswer } from '../../services/numericalDistractorService'
+  import GrammarTypingInput from './GrammarTypingInput.svelte'
 
   // GAIA sprite imports for reaction bubble
   const gaiaNeutralImg = '/assets/sprites/dome/gaia_neutral.png'
@@ -190,6 +192,18 @@
   /** Whether the current fact is a grammar fill-in-the-blank question. */
   const isGrammarFillBlank = $derived(
     fact.quizQuestion.includes('{___}')
+  )
+
+  /** Whether always-write mode is active for the current fact's language. */
+  const alwaysWriteEnabled = $derived.by(() => {
+    const opts = $deckOptions
+    const lang = fact.language ?? ''
+    return opts?.[lang]?.alwaysWrite ?? false
+  })
+
+  /** Whether to render a typing input instead of multiple-choice for this question. */
+  const useTypingMode = $derived(
+    alwaysWriteEnabled && isGrammarFillBlank
   )
 
   const resultClass = $derived.by(() => {
@@ -573,7 +587,7 @@
           {@const translation = parts[1] || ''}
           <p class="question grammar-fill-blank {questionLengthClass}" data-testid="quiz-question">
             {#each sentence.split('{___}') as segment, i}
-              {#if i > 0}<span class="grammar-blank">______</span>{/if}{segment}
+              {#if i > 0}<span class="grammar-blank">______</span>{/if}<GrammarSentenceFurigana sentence={segment} excludeWords={[fact.correctAnswer]} />
             {/each}
           </p>
           {#if translation}
@@ -590,7 +604,22 @@
 
       <!-- Zone B: answer area — content-sized, anchored to bottom of panel -->
       <div class="quiz-zone-answers">
-        {#if quizMode === 'image_answers' && answerImagePaths?.length}
+        {#if useTypingMode && !showResult}
+          <div class="typing-mode-container">
+            <GrammarTypingInput
+              correctAnswer={fact.correctAnswer}
+              acceptableAlternatives={fact.acceptableAnswers ?? []}
+              onsubmit={(correct, _typed) => {
+                if (correct) {
+                  void handleAnswer(fact.correctAnswer)
+                } else {
+                  const wrongChoice = choices.find(c => c !== fact.correctAnswer)
+                  void handleAnswer(wrongChoice ?? choices[0])
+                }
+              }}
+            />
+          </div>
+        {:else if quizMode === 'image_answers' && answerImagePaths?.length}
           <div class="choices-image-grid">
             {#each choices as choice, i}
               <button
@@ -765,6 +794,18 @@
       <p class="question {questionLengthClass}" data-testid="quiz-question">
         {koreanParts.before}<FuriganaText text={koreanParts.word} reading={koreanParts.reading} size="md" />{koreanParts.after}
       </p>
+    {:else if isGrammarFillBlank}
+      {@const parts = fact.quizQuestion.split('\n')}
+      {@const sentence = parts[0]}
+      {@const translation = parts[1] || ''}
+      <p class="question grammar-fill-blank {questionLengthClass}" data-testid="quiz-question">
+        {#each sentence.split('{___}') as segment, i}
+          {#if i > 0}<span class="grammar-blank">______</span>{/if}<GrammarSentenceFurigana sentence={segment} excludeWords={[fact.correctAnswer]} />
+        {/each}
+      </p>
+      {#if translation}
+        <p class="grammar-translation">{translation}</p>
+      {/if}
     {:else}
       <p class="question {questionLengthClass}" data-testid="quiz-question">{displayAnswer(fact.quizQuestion)}</p>
     {/if}
@@ -773,7 +814,22 @@
       <p class="attempts">Attempts: {attemptsRemaining}/{totalAttempts}</p>
     {/if}
 
-    {#if quizMode === 'image_answers' && answerImagePaths?.length}
+    {#if useTypingMode && !showResult}
+      <div class="typing-mode-container">
+        <GrammarTypingInput
+          correctAnswer={fact.correctAnswer}
+          acceptableAlternatives={fact.acceptableAnswers ?? []}
+          onsubmit={(correct, _typed) => {
+            if (correct) {
+              void handleAnswer(fact.correctAnswer)
+            } else {
+              const wrongChoice = choices.find(c => c !== fact.correctAnswer)
+              void handleAnswer(wrongChoice ?? choices[0])
+            }
+          }}
+        />
+      </div>
+    {:else if quizMode === 'image_answers' && answerImagePaths?.length}
       <div class="choices-image-grid">
         {#each choices as choice, i}
           <button
@@ -890,6 +946,13 @@
 {/if}
 
 <style>
+  /* ── Typing mode container ── */
+  .typing-mode-container {
+    padding: calc(8px * var(--layout-scale, 1));
+    display: flex;
+    justify-content: center;
+  }
+
   /* ── Outcome animations (matter-burst for correct, border-ripple for wrong) ── */
   @keyframes matter-burst {
     0%   { transform: scale(1); opacity: 1; }
@@ -1669,19 +1732,19 @@
   /* ── Language options cogwheel (in-quiz) ──────────────────────────────── */
   .quiz-options-cogwheel {
     position: absolute;
-    top: calc(8px * var(--layout-scale, 1));
-    right: calc(12px * var(--layout-scale, 1));
+    top: calc(4px * var(--layout-scale, 1));
+    right: calc(8px * var(--layout-scale, 1));
     display: flex;
     align-items: center;
     justify-content: center;
     width: calc(44px * var(--layout-scale, 1));
     height: calc(44px * var(--layout-scale, 1));
-    background: transparent;
+    background: rgba(255, 255, 255, 0.06);
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    color: rgba(255, 255, 255, 0.35);
-    font-size: calc(22px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.6);
+    font-size: calc(28px * var(--text-scale, 1));
     transition: color 0.15s, background 0.15s;
     z-index: 10;
     padding: 0;

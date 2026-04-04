@@ -144,6 +144,7 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
       { id: 'furigana', label: 'Show Furigana', description: 'Display hiragana readings above kanji', type: 'toggle', default: true },
       { id: 'romaji', label: 'Show Romaji', description: 'Display romanized readings', type: 'toggle', default: false },
       { id: 'kanaOnly', label: 'Kana Only', description: 'Replace all kanji with hiragana (for beginners)', type: 'toggle', default: false },
+      { id: 'alwaysWrite', label: 'Always Write Answers', description: 'Type answers instead of multiple choice for grammar questions', type: 'toggle', default: false },
     ]
   },
   {

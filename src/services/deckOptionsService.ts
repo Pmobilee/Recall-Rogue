@@ -165,3 +165,27 @@ export function isKoreanRomanizationEnabled(): boolean {
 export function setKoreanRomanizationEnabled(enabled: boolean): void {
   setDeckOption('ko', 'romanization', enabled)
 }
+
+// ---- Always-write mode (grammar typing) ----
+
+/**
+ * Check if always-write mode is enabled for a given language.
+ * When enabled, grammar questions use typing input instead of multiple choice.
+ * Defaults to false.
+ *
+ * @param languageCode - The language code (e.g., 'ja')
+ * @returns true if always-write mode is enabled, false otherwise
+ */
+export function isAlwaysWriteEnabled(languageCode: string): boolean {
+  return getDeckOption(languageCode, 'alwaysWrite', false)
+}
+
+/**
+ * Set always-write mode for a given language.
+ *
+ * @param languageCode - The language code (e.g., 'ja')
+ * @param enabled - Whether always-write mode should be enabled
+ */
+export function setAlwaysWriteEnabled(languageCode: string, enabled: boolean): void {
+  setDeckOption(languageCode, 'alwaysWrite', enabled)
+}
