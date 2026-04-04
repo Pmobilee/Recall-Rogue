@@ -461,7 +461,7 @@ The floor 24 boss combines every punishment mechanic:
 - **Wrong Charge penalty** — +2 permanent Strength (accelerating damage each wrong answer)
 - **Phase 2** (at 33% HP) — attack value 6, multi_attack 4×4 hits (16 damage potential per action), Vulnerable 4 stacks for 3 turns
 - **Heal** — 10-12 HP heals in both phases
-- **Damage cap 28** — can deal up to 28 damage per turn
+- **Damage cap 22** — can deal up to 22 damage per turn (tightened from 28 on 2026-04-04)
 
 A scholar-level player needs roughly 40-50 turns to kill this boss. During that time, the boss accumulates Strength from wrong answers, heals multiple times, and phases into its most dangerous form. Even 1-2 wrong answers during the rapid-fire quiz phase can cascade into a death spiral via permanent Strength gain.
 
@@ -623,7 +623,7 @@ Recommendations for new player experience:
 ### Sprint 3: Build Diversity
 8. **Shield viability** — Add block-to-damage conversion payoff, make block carry more accessible
 9. **DoT archetype** — Buff bleed/poison application rates, add DoT synergy cards
-10. **Surge system** — Restore `CHARGE_AP_SURCHARGE` to 1 (waived on surge turns) to make surge meaningful
+10. ~~Surge system~~ — **DONE 2026-04-04**: Restored `CHARGE_AP_SURCHARGE` to 1 (was 0). Charging now costs +1 AP, waived on surge turns. Surge is now the strategic burst window it was designed to be.
 
 ### Sprint 4: Polish & Feel
 11. **New player safety net** — Act 1 damage cap 7→5, or "learning mode" for first runs

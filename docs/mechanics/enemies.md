@@ -33,14 +33,14 @@ damage = round((intent.value + enrageBonusDamage) × strengthModifier × getFloo
 ### Per-Turn Damage Caps (`ENEMY_TURN_DAMAGE_CAP`)
 Charged attacks with `bypassDamageCap: true` skip these caps.
 
-**Enrage cap enforcement (2026-04-04):** The global enrage bonus (from `getEnrageBonus()` in turnManager.ts) is added AFTER `executeEnemyIntent` returns. The cap is re-applied in turnManager after the enrage addition, using `enemy.floor` for the segment lookup. Without this fix, enrage bypassed the cap: at turn 40 in Act 3 (seg 4, cap 28), +114 enrage damage would be added on top of the 28 cap = 142 effective damage. `ENRAGE_PHASE2_BONUS` also reduced 3→2 as part of this fix.
+**Enrage cap enforcement (2026-04-04):** The global enrage bonus (from `getEnrageBonus()` in turnManager.ts) is added AFTER `executeEnemyIntent` returns. The cap is re-applied in turnManager after the enrage addition, using `enemy.floor` for the segment lookup. Without this fix, enrage bypassed the cap: at turn 40 in Act 3 (seg 4, cap 22 after 2026-04-04 tightening), enrage damage was added on top of the cap entirely unbounded. `ENRAGE_PHASE2_BONUS` also reduced 3→2 as part of this fix.
 
 | Segment | Floors | Cap | Rationale |
 |---|---|---|---|
 | 1 | 1–6 | 7 | Reduced from 8 (pass #5, 2026-04-03) — L0 cards deal 9 dmg/turn QP; cap at 7% of player HP keeps Act 1 survivable |
-| 2 | 7–12 | 12 | Original value — reverted from 14 (pass #2) in pass #3; Act 2/3 common HP reduction makes lower cap sufficient |
-| 3 | 13–18 | 18 | Original value — reverted from 20 (pass #2) in pass #3 |
-| 4 | 19–24 | 28 | Original value — reverted from 30 (pass #2) in pass #3 |
+| 2 | 7–12 | 10 | Tightened from 12 (2026-04-04 balance pass) — post-enrage-fix WR too high, tighter cap restores difficulty |
+| 3 | 13–18 | 15 | Tightened from 18 (2026-04-04 balance pass) |
+| 4 | 19–24 | 22 | Tightened from 28 (2026-04-04 balance pass) |
 | endless | 25+ | none | — |
 
 ### Ascension and Aura Scaling
