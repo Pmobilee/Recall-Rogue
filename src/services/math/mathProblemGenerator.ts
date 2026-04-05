@@ -42,6 +42,41 @@ import {
   generateTrigUnitCircle,
   generateTrigIdentity,
 } from './trigGenerators';
+import {
+  generatePrimeFactorization,
+  generateLcmGcd,
+  generateModularArithmetic,
+  generateDivisibility,
+  generatePrimeIdentification,
+} from './numberTheoryGenerators';
+import {
+  generateMatrixAddition,
+  generateScalarMultiplication,
+  generateDeterminant,
+  generateDotProduct,
+  generateMatrixVectorMultiply,
+} from './linearAlgebraGenerators';
+import {
+  generateDerivativePowerRule,
+  generateDerivativeChainRule,
+  generateBasicIntegral,
+  generateLimitEvaluation,
+  generateDefiniteIntegral,
+} from './calculusGenerators';
+import {
+  generateTruthTable,
+  generateSetOperations,
+  generateVennDiagram,
+  generateLogicalEquivalence,
+  generateSetCardinality,
+} from './logicSetsGenerators';
+import {
+  generateLogarithm,
+  generateExponentRules,
+  generateSequence,
+  generateLimitIntro,
+  generatePolynomialDivision,
+} from './preCalculusGenerators';
 
 // ── Dispatcher ────────────────────────────────────────────────────────────────
 
@@ -94,6 +129,31 @@ export function generateProblem(
     case 'trig_right_triangle': return generateTrigRightTriangle(params, rng);
     case 'trig_unit_circle':    return generateTrigUnitCircle(params, rng);
     case 'trig_identity':       return generateTrigIdentity(params, rng);
+    case 'prime_factorization':   return generatePrimeFactorization(params, rng);
+    case 'lcm_gcd':               return generateLcmGcd(params, rng);
+    case 'modular_arithmetic':    return generateModularArithmetic(params, rng);
+    case 'divisibility':          return generateDivisibility(params, rng);
+    case 'prime_identification':  return generatePrimeIdentification(params, rng);
+    case 'matrix_addition':        return generateMatrixAddition(params, rng);
+    case 'scalar_multiplication':  return generateScalarMultiplication(params, rng);
+    case 'determinant':            return generateDeterminant(params, rng);
+    case 'dot_product':            return generateDotProduct(params, rng);
+    case 'matrix_vector_multiply': return generateMatrixVectorMultiply(params, rng);
+    case 'derivative_power_rule':   return generateDerivativePowerRule(params, rng);
+    case 'derivative_chain_rule':   return generateDerivativeChainRule(params, rng);
+    case 'basic_integral':          return generateBasicIntegral(params, rng);
+    case 'limit_evaluation':        return generateLimitEvaluation(params, rng);
+    case 'definite_integral':       return generateDefiniteIntegral(params, rng);
+    case 'truth_table':          return generateTruthTable(params, rng);
+    case 'set_operations':       return generateSetOperations(params, rng);
+    case 'venn_diagram':         return generateVennDiagram(params, rng);
+    case 'logical_equivalence':  return generateLogicalEquivalence(params, rng);
+    case 'set_cardinality':      return generateSetCardinality(params, rng);
+    case 'logarithm':            return generateLogarithm(params, rng);
+    case 'exponent_rules':       return generateExponentRules(params, rng);
+    case 'sequence':             return generateSequence(params, rng);
+    case 'limit_intro':          return generateLimitIntro(params, rng);
+    case 'polynomial_division':  return generatePolynomialDivision(params, rng);
     default:
       throw new Error(`Unknown generatorId: "${skill.generatorId}"`);
   }
