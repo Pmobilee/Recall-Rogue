@@ -175,7 +175,7 @@
         "10 years"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 1,
       "funScore": 5,
       "ageGroup": "all",
@@ -773,7 +773,7 @@
         "7 helots per Spartan"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -3649,7 +3649,7 @@
         "second speaking actor"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -3751,7 +3751,7 @@
         "120+"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -4446,7 +4446,7 @@
         "a third speaking actor"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -7646,7 +7646,7 @@
         "Greeks added vowels to the Phoenician consonants"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -11998,7 +11998,7 @@
         "over twenty cities"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "adult",
@@ -12315,15 +12315,10 @@
       "label": "Concepts & Terms",
       "answerFormat": "term",
       "factIds": [
-        "greece_cs_ostracism_duration",
         "greece_cs_krypteia",
-        "greece_cs_helots_ratio",
         "greece_cs_athena_myth",
         "greece_cs_metics_rights",
         "greece_ga_pericles_role",
-        "greece_ga_aeschylus_innovation",
-        "greece_ga_sophocles_plays_count",
-        "greece_ga_sophocles_third_actor",
         "greece_ga_herodotus_histories",
         "greece_ga_parthenon_type",
         "greece_ph_thales_water",
@@ -12336,7 +12331,6 @@
         "greece_ph_aristotle_poetics",
         "greece_ph_plato_symposium",
         "greece_oc_pankration",
-        "greece_oc_greek_alphabet",
         "greece_oc_sculpture_kouros",
         "greece_oc_olympic_chariot",
         "greece_oc_musical_modes",
@@ -12350,7 +12344,6 @@
         "greece_alex_proskynesis",
         "greece_rel_hero_cults",
         "greece_rel_city_dionysia",
-        "greece_alex_cities_founded",
         "greece_rel_libation_ritual"
       ],
       "minimumSize": 5
@@ -12594,7 +12587,14 @@
         "greece_rel_greek_religion_structure",
         "greece_rel_eleusinian_duration",
         "greece_ga_aeschylus_epitaph",
-        "greece_cs_laconic_philip"
+        "greece_cs_laconic_philip",
+        "greece_cs_ostracism_duration",
+        "greece_cs_helots_ratio",
+        "greece_ga_sophocles_plays_count",
+        "greece_alex_cities_founded",
+        "greece_oc_greek_alphabet",
+        "greece_ga_aeschylus_innovation",
+        "greece_ga_sophocles_third_actor"
       ],
       "homogeneityExempt": true,
       "homogeneityExemptNote": "Historical phrases range from single-word replies (Spartan laconic speech) to full sentence descriptions — inherent domain variation"
