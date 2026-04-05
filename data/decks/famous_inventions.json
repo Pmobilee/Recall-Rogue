@@ -1981,7 +1981,7 @@
       "correctAnswer": "Milwaukee, Wisconsin",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
-      "answerTypePoolId": "invention_specs",
+      "answerTypePoolId": "invention_details",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "In which city did Christopher Latham Sholes patent the first commercially successful typewriter in 1868?",
@@ -3198,7 +3198,7 @@
       "correctAnswer": "Altair 8800",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "invention_specs",
+      "answerTypePoolId": "invention_names",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "What is considered the first commercially successful personal computer, released in 1974?",
@@ -3229,7 +3229,7 @@
       "correctAnswer": "1977 Trinity",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "invention_specs",
+      "answerTypePoolId": "invention_details",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "The Apple II, Commodore PET, and TRS-80 — all released in 1977 — are collectively known by what nickname?",
@@ -6398,7 +6398,8 @@
         "inv_4_pat_wiper_patent",
         "inv_4_pat_postit_failure",
         "inv_2_tv_location",
-        "inv_3_ic_months"
+        "inv_3_ic_months",
+        "inv_3_pc_altair"
       ],
       "homogeneityExempt": true
     },
@@ -6479,13 +6480,10 @@
         "inv_1_cotton_gin_slavery",
         "inv_1_steam_coal",
         "inv_1_ford_price",
-        "inv_1_typewriter_sholes",
         "inv_2_nylon_stockings",
         "inv_2_eniac_cost",
         "inv_2_microwave_size",
         "inv_2_assembly_steps",
-        "inv_3_pc_altair",
-        "inv_3_pc_trinity",
         "inv_4_pat_postit_color",
         "inv_4_pat_microwave_accident",
         "inv_3_arpanet_funding",
@@ -6552,7 +6550,9 @@
         "inv_3_crispr_origins",
         "inv_0_compass_south",
         "inv_4_pat_postit_silver",
-        "inv_1_bicycle_pedal"
+        "inv_1_bicycle_pedal",
+        "inv_3_pc_trinity",
+        "inv_1_typewriter_sholes"
       ],
       "homogeneityExempt": true
     },

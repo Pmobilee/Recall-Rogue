@@ -992,7 +992,7 @@
       "chainThemeId": 1,
       "categoryL2": "medieval",
       "quizQuestion": "Built between 685–692 CE by Caliph Abd al-Malik, what is considered the world's oldest surviving work of Islamic architecture?",
-      "correctAnswer": "The Dome of the Rock in Jerusalem",
+      "correctAnswer": "The Dome of the Rock",
       "explanation": "The Dome of the Rock was built by Umayyad Caliph Abd al-Malik ibn Marwan between 685–692 CE on Jerusalem's Temple Mount. Its octagonal design with a dome approximately 20 meters in diameter contains the earliest surviving inscriptions proclaiming Islam. Muslims associate the site with Muhammad's Night Journey; Jews consider it the holiest site in Judaism.",
       "wowFactor": "The Dome of the Rock has stood for over 1,300 years and contains the oldest surviving inscriptions of the Islamic faith — carved when the Prophet Muhammad had been dead for only 60 years.",
       "distractors": [
@@ -1705,7 +1705,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Longship",
-      "answerTypePoolId": "description_phrases",
+      "answerTypePoolId": "concept_terms",
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
@@ -1865,7 +1865,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Carolingian_minuscule",
-      "answerTypePoolId": "person_group_names",
+      "answerTypePoolId": "concept_terms",
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
@@ -3451,7 +3451,7 @@
         "Qubbat al-Sakhrah"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "concept_terms",
       "difficulty": 2,
       "funScore": 7,
       "distractors": [
@@ -4942,22 +4942,22 @@
     },
     {
       "id": "med_5_song_su_song_clock",
-      "correctAnswer": "40 feet",
+      "correctAnswer": "About 40 feet (12 m) tall",
       "acceptableAlternatives": [
         "12 meters",
         "40 feet tall"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "quantities_measures",
       "difficulty": 4,
       "funScore": 8,
       "distractors": [
-        "20 feet",
-        "60 feet",
-        "100 feet",
-        "15 feet",
-        "80 feet",
-        "30 feet"
+        "About 20 feet (6 m) tall",
+        "About 60 feet (18 m) tall",
+        "About 100 feet (30 m) tall",
+        "About 15 feet (5 m) tall",
+        "About 80 feet (24 m) tall",
+        "About 30 feet (9 m) tall"
       ],
       "quizQuestion": "How tall was Su Song's water-powered astronomical clock tower, completed in Kaifeng in 1094?",
       "explanation": "Su Song (1020–1101) completed his astronomical clock tower in Kaifeng by 1094 (wooden pilot model in 1088; bronze components cast by 1090). The 40-foot-tall tower featured a rotating armillary sphere at the top, a 4.5-foot bronze celestial globe in the middle, and mechanical mannequins that announced the time. It featured 'the oldest known endless power-transmitting chain drive.' The Jurchen army dismantled it in 1127. Source: Wikipedia, Su Song.",
@@ -5740,22 +5740,22 @@
     },
     {
       "id": "med_5_song_rice_revolution",
-      "correctAnswer": "Doubled",
+      "correctAnswer": "Roughly doubled in size",
       "acceptableAlternatives": [
         "population doubled",
         "doubled between 10th–11th centuries"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "description_phrases",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
-        "Tripled",
-        "Increased by 25%",
-        "Increased by 50%",
-        "Remained stable",
+        "Tripled in size",
+        "Increased by about 25%",
+        "Increased by about 50%",
+        "Remained largely stable",
         "Decreased due to plague",
-        "Quadrupled"
+        "Grew by about one-quarter"
       ],
       "quizQuestion": "How did Song dynasty China's population change between the 10th and 11th centuries, driven by expanded rice cultivation?",
       "explanation": "The Song dynasty population doubled between the 10th and 11th centuries, driven by expanded rice cultivation — particularly the introduction of drought-resistant Champa rice from Vietnam. The Northern Song census counted approximately 20 million households and an estimated 90 million total population. Source: Wikipedia, Song dynasty.",
@@ -7016,12 +7016,10 @@
         "med_5_tang_wu_zetian_born",
         "med_5_tang_gunpowder_origin",
         "med_5_tang_gunpowder_military",
-        "med_5_song_su_song_clock",
         "med_5_goryeo_founded",
         "med_5_goryeo_kwago",
         "med_5_goryeo_fall",
         "med_5_song_hand_cannon",
-        "med_5_song_rice_revolution",
         "med_6_afr_mali_battle_kirina",
         "med_6_afr_mansa_musa_gold",
         "med_6_afr_vasco_da_gama",
@@ -7138,7 +7136,10 @@
         "med_6_afr_timbuktu_manuscripts",
         "med_6_afr_great_zimbabwe_trade",
         "med_6_afr_swahili_exports",
-        "med_feu_carolingian_renaissance"
+        "med_feu_carolingian_renaissance",
+        "med_feu_carolingian_minuscule",
+        "med_4_cru_dome_of_rock",
+        "med_vik_longship_tactics"
       ],
       "minimumSize": 5
     },
@@ -7176,8 +7177,7 @@
         "med_isl_dome_of_rock",
         "med_isl_alhambra",
         "med_feu_cluny_abbey",
-        "med_4_cru_krak_des_chevaliers",
-        "med_4_cru_dome_of_rock"
+        "med_4_cru_krak_des_chevaliers"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
@@ -7227,8 +7227,7 @@
         "med_feu_thing_democracy",
         "med_4_cru_bernard_jews",
         "med_6_afr_great_zimbabwe_builders",
-        "med_byz_plague_justinian",
-        "med_feu_carolingian_minuscule"
+        "med_byz_plague_justinian"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
@@ -7262,7 +7261,7 @@
         "med_5_song_paper_money",
         "med_6_afr_swahili_word",
         "med_vik_longship_design",
-        "med_vik_longship_tactics"
+        "med_5_song_rice_revolution"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
@@ -7354,7 +7353,8 @@
         "med_5_song_paper_money_factory",
         "med_5_song_gdp",
         "med_6_afr_great_zimbabwe_walls",
-        "med_6_afr_mansa_musa_cairo"
+        "med_6_afr_mansa_musa_cairo",
+        "med_5_song_su_song_clock"
       ],
       "syntheticDistractors": [
         "Over 500 manuscripts",

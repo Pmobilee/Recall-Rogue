@@ -4886,7 +4886,7 @@
         "Ziggy"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "album_names",
+      "answerTypePoolId": "nickname_terms",
       "difficulty": 2,
       "funScore": 9,
       "quizQuestion": "What was the name of David Bowie's androgynous alien rock star alter ego introduced in 1972?",
@@ -7481,7 +7481,6 @@
         "mh_2_mingus_ah_um",
         "mh_3_beatles_sgt_pepper",
         "mh_3_pink_floyd_dark_side",
-        "mh_3_bowie_ziggy",
         "mh_3_nirvana_nevermind",
         "mh_3_beach_boys_pet_sounds",
         "mh_3_fleetwood_mac_rumours",
@@ -7670,7 +7669,8 @@
         "mh_0_haydn_papa_nickname",
         "mh_2_armstrong_nickname",
         "mh_2_billie_holiday_nickname",
-        "mh_4_mj_king_of_pop"
+        "mh_4_mj_king_of_pop",
+        "mh_3_bowie_ziggy"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
@@ -7708,8 +7708,8 @@
         "mh_1_trombone_slide",
         "mh_1_staccato_meaning",
         "mh_3_elvis_sun_records",
-        "mh_4_napster_1999",
-        "mh_4_streaming_revolution"
+        "mh_4_streaming_revolution",
+        "mh_4_napster_1999"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
