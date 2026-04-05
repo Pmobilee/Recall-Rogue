@@ -1,3 +1,16 @@
+### 2026-04-05 — tsx ESM Loader Does NOT Propagate to worker_threads Spawned from Different Files
+
+When using `new Worker('./sim-worker.ts', ...)` from a tsx-run main file, tsx's IPC-based ESM loader (`.js`→`.ts` extension remapping) is NOT inherited by the worker. This causes `ERR_MODULE_NOT_FOUND` for `.js` imports inside the worker even though the `.ts` source exists.
+
+**Why:** tsx v4 uses an IPC server (`preflight.cjs` + `loader.mjs`) that only starts in the main thread. Workers spawned from the SAME file work because they inherit `process.execArgv`. Workers from a DIFFERENT file don't.
+
+**Fix:** Use a plain `.mjs` bootstrap file (`tsx-worker-bootstrap.mjs`) that calls `import { register } from 'tsx/esm/api'` then `await import(workerData.workerFile)`. Spawn with `new Worker(bootstrapPath, { workerData: { workerFile: '...' } })`. The bootstrap activates tsx hooks for the worker process before any `.ts` imports happen.
+
+**Does NOT work:**
+- `execArgv: ['--import', tsxEsmPath]`
+- `execArgv: ['--require', tsxCjsPath]`
+- Same file with `isMainThread` pattern propagates FINE — only cross-file workers are affected.
+
 ### 2026-04-04 — Curated Deck JSON Files Not Served in Production
 
 The 77 JSON files in `data/decks/` were only accessible via Vite's dev server (which serves the project root). They were never copied to `dist/` or `public/`, so curated decks silently failed to load in production/Steam builds.
@@ -319,3 +332,19 @@ Running obfuscation against `public/` directly would corrupt the dev-server file
 `ProfileService` constructs its initial state by reading from the storage backend in its constructor. If constructed before `initStorageBackend()` completes (e.g., as a module-level singleton), it reads an empty cache and sees no profiles.
 
 **Fix:** Call `profileService.reload()` after `initStorageBackend()` completes. This re-reads all profile data from the now-populated cache. Any service that constructs itself at module load time and reads from the backend must have a `reload()` path for this reason.
+
+### 2026-04-05 — ancient_rome Pool Redesign: Pool Semantic Homogeneity Rules
+
+`ancient_rome` shipped with several pool design errors that caused quiz-audit FAILs and distractor contamination:
+
+1. **`city_place_names` contained non-places**: "She-wolf" (animal) and "bricks" (building material) were incorrectly assigned. Fix: "She-wolf" moved to `roman_god_names` (sacred Roman symbol — short answer matches other god names); "bricks" moved back to `structure_names`.
+
+2. **`political_terms` mixed person names with terms**: "Theodosius I" (a person name) was in the terms pool, appearing as a distractor for proportion/count questions. Fix: moved to `general_politician_names`.
+
+3. **`political_terms` mixed numbers with terms**: Bracket-number facts ({5200}, {80}, {6}, {7}) alongside text answers ("cursus publicus", "three languages") create 3x length ratio and semantically incoherent distractors. Fix: split numeric facts into a new `bracket_numbers` pool.
+
+4. **`structure_names` mixed named structures with measurements**: "43 meters", "400,000 km", "621 meters" alongside "Baths of Caracalla" means structural-name questions get measurement distractors. Fix: split into `structure_names` (named/described structures) and `numeric_measurements` (text measurement answers).
+
+5. **Short descriptive answers in `historical_phrases`**: One-word answers like "Saturday", "She-wolf" (8 chars) alongside "Stop patrician interpretation monopoly" (38 chars) create 4.8x ratio. Fix: move short answers to pools with similarly short answers; mark `historical_phrases` with `homogeneityExempt: true`.
+
+**General rule**: When splitting pools, check that ALL facts in a pool can plausibly be distractors for ALL other facts in the same pool. A {5200} (legion size) should never appear as a wrong answer for "Who whispered memento mori to the general?"

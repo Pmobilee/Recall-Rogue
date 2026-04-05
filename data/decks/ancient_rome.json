@@ -65,7 +65,7 @@
         "wolf"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "city_place_names",
+      "answerTypePoolId": "roman_god_names",
       "difficulty": 1,
       "funScore": 8,
       "ageGroup": "all",
@@ -113,7 +113,7 @@
         "seven"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -3044,7 +3044,7 @@
         "Capreae"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "city_place_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -6065,7 +6065,7 @@
         "250,000 miles"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "numeric_measurements",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -6211,7 +6211,7 @@
         "eleven"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -6355,7 +6355,7 @@
         "up to 80,000"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "numeric_measurements",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -6597,7 +6597,7 @@
         "150,000"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -6789,7 +6789,7 @@
         "117 kilometers"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "numeric_measurements",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -6885,7 +6885,7 @@
         "seven"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -7134,7 +7134,7 @@
         "thirteen"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "text_work_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -7568,7 +7568,7 @@
         "Emperor Theodosius"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "general_politician_names",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -8540,7 +8540,7 @@
         "twenty-nine"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 6,
       "ageGroup": "all",
@@ -8590,7 +8590,7 @@
         "142 feet"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "numeric_measurements",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -9025,7 +9025,7 @@
         "2,037 feet"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "numeric_measurements",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "all",
@@ -9319,7 +9319,7 @@
         "over 40"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "numeric_measurements",
       "difficulty": 4,
       "funScore": 6,
       "ageGroup": "all",
@@ -9368,7 +9368,7 @@
         "a city of bricks"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "city_place_names",
+      "answerTypePoolId": "structure_names",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -12117,7 +12117,7 @@
         "5200"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -12167,7 +12167,7 @@
         "eighty"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -12508,7 +12508,7 @@
         "six"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -12606,7 +12606,7 @@
         "247 to 183 BCE"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "political_terms",
+      "answerTypePoolId": "numeric_measurements",
       "difficulty": 4,
       "funScore": 5,
       "ageGroup": "all",
@@ -13613,21 +13613,24 @@
       "label": "Cities & Places in the Roman World",
       "answerFormat": "place",
       "factIds": [
-        "rome_rep_she_wolf_legend",
         "rome_aug_antony_cleopatra_death",
         "rome_cae_pompey_death_egypt",
-        "rome_aug_tiberius_capri",
         "rome_emp_tiberius_capri",
         "rome_emp_nero_fire_location",
         "rome_eng_pont_du_gard",
-        "rome_emp_augustan_marble_quote",
         "rome_pun_first_punic_outcome",
         "rome_fall_ravenna_capital",
         "rome_fall_hunnic_origin"
       ],
       "minimumSize": 3,
       "syntheticDistractors": [
-        "Alexandria"
+        "Carthage",
+        "Athens",
+        "Corinth",
+        "Antioch",
+        "Constantinople",
+        "Jerusalem",
+        "Ephesus"
       ]
     },
     {
@@ -13652,6 +13655,7 @@
         "rome_emp_nero_death",
         "rome_emp_five_good_coined",
         "rome_eng_via_appia_builder",
+        "rome_chr_edict_thessalonica",
         "rome_emp_tiberius_sejanus",
         "rome_emp_hadrian_pantheon",
         "rome_pun_carthage_founding",
@@ -13678,7 +13682,6 @@
       "label": "Roman Political & Military Terms",
       "answerFormat": "term",
       "factIds": [
-        "rome_rep_kings_count",
         "rome_rep_consuls_veto",
         "rome_rep_dictatorship_limit",
         "rome_emp_nero_fire_scapegoat",
@@ -13687,10 +13690,8 @@
         "rome_emp_marcus_meditations",
         "rome_emp_commodus_gladiator",
         "rome_eng_julian_calendar_year",
-        "rome_eng_roman_numerals_symbols",
         "rome_chr_pilate_rank",
         "rome_chr_nicaea_controversy",
-        "rome_chr_edict_thessalonica",
         "rome_chr_jesus_cross_inscription",
         "rome_eng_cursus_publicus",
         "rome_chr_byzantine_self_name",
@@ -13700,14 +13701,10 @@
         "rome_fall_attila_nickname",
         "rome_fall_vandals_455",
         "rome_fall_foederati",
-        "rome_mil_legion_size",
-        "rome_mil_centurion_century",
         "rome_mil_gladius_stabbing",
         "rome_mil_testudo",
         "rome_mil_triumph_memento_mori",
-        "rome_life_toga_types",
-        "rome_life_latin_romance_languages",
-        "rome_pun_hannibal_lifespan"
+        "rome_life_toga_types"
       ],
       "minimumSize": 5
     },
@@ -13716,11 +13713,10 @@
       "label": "Famous Roman Texts & Works",
       "answerFormat": "name",
       "factIds": [
-        "rome_chr_paul_new_testament",
         "rome_chr_tacitus_christians",
         "rome_chr_nicene_creed_product"
       ],
-      "minimumSize": 3,
+      "minimumSize": 2,
       "syntheticDistractors": [
         "De Rerum Natura",
         "Metamorphoses",
@@ -13730,7 +13726,11 @@
         "Satyricon",
         "Confessions",
         "Aeneid",
-        "Odes of Horace"
+        "Odes of Horace",
+        "Institutio Oratoria",
+        "Noctes Atticae",
+        "Res Gestae",
+        "Bellum Catilinae"
       ]
     },
     {
@@ -13763,25 +13763,75 @@
       "answerFormat": "name",
       "factIds": [
         "rome_aug_marble_quote",
-        "rome_eng_roads_total_km",
-        "rome_eng_aqueducts_number",
         "rome_eng_aqua_appia_fate",
-        "rome_eng_colosseum_capacity",
         "rome_eng_roman_concrete_seawater",
-        "rome_eng_circus_maximus_capacity",
         "rome_eng_cloaca_maxima_today",
         "rome_eng_insulae_housing",
         "rome_eng_baths_caracalla",
-        "rome_eng_hadrian_wall_length",
         "rome_chr_catacombs_purpose",
         "rome_chr_old_st_peters_site",
         "rome_eng_aqueduct_water_priority",
+        "rome_emp_augustan_marble_quote"
+      ],
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Pantheon",
+        "Colosseum",
+        "Forum Romanum",
+        "Temple of Saturn",
+        "Arch of Titus"
+      ],
+      "homogeneityExempt": true
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Roman Numbers & Counts",
+      "answerFormat": "number",
+      "factIds": [
+        "rome_rep_kings_count",
+        "rome_eng_aqueducts_number",
+        "rome_eng_circus_maximus_capacity",
+        "rome_eng_roman_numerals_symbols",
+        "rome_chr_paul_new_testament",
         "rome_eng_roads_radiate",
+        "rome_mil_legion_size",
+        "rome_mil_centurion_century",
+        "rome_life_latin_romance_languages"
+      ],
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "{3}",
+        "{6}",
+        "{8}",
+        "{12}",
+        "{15}",
+        "{20}"
+      ]
+    },
+    {
+      "id": "numeric_measurements",
+      "label": "Roman Measurements & Statistics",
+      "answerFormat": "measurement",
+      "factIds": [
+        "rome_eng_roads_total_km",
+        "rome_eng_colosseum_capacity",
+        "rome_eng_hadrian_wall_length",
         "rome_eng_pantheon_sphere",
         "rome_eng_circus_maximus_dimensions",
-        "rome_chr_catacombs_number"
+        "rome_chr_catacombs_number",
+        "rome_pun_hannibal_lifespan"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "25 miles",
+        "150 miles",
+        "1,000 km",
+        "10 meters",
+        "100 meters",
+        "200,000 km",
+        "1 million",
+        "about 100,000"
+      ]
     },
     {
       "id": "emperor_names",
@@ -13809,6 +13859,7 @@
       "label": "Roman Gods & Goddesses",
       "answerFormat": "name",
       "factIds": [
+        "rome_rep_she_wolf_legend",
         "rome_emp_commodus_hercules",
         "rome_eng_cloaca_goddess",
         "rome_god_jupiter_king",
@@ -13825,7 +13876,9 @@
         "Mercury",
         "Neptune",
         "Pluto",
-        "Bacchus"
+        "Bacchus",
+        "Diana",
+        "Apollo"
       ]
     },
     {
@@ -13848,6 +13901,7 @@
         "rome_cae_gallic_casualties_sources",
         "rome_cae_britain_twice",
         "rome_cae_assassination_conspirators",
+        "rome_aug_tiberius_capri",
         "rome_aug_claudius_hidden",
         "rome_aug_colosseum_jerusalem",
         "rome_aug_urine_tax",
@@ -13911,7 +13965,8 @@
         "rome_fall_antonine_plague",
         "rome_fall_romulus_augustulus_fate",
         "rome_fall_western_collapse_factors"
-      ]
+      ],
+      "homogeneityExempt": true
     }
   ],
   "synonymGroups": [],
