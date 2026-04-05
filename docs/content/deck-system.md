@@ -120,6 +120,47 @@ The 4 `world_wonders` architecture files total 195 facts in the live deck. They 
 
 ---
 
+## Pool Design Best Practices
+
+Correct pool design is required for quiz quality. A pool with heterogeneous answer types produces distractors that students can eliminate by format alone — without any subject knowledge.
+
+### The One-Type Rule
+
+Every answer pool must contain facts of **one semantic answer type**. All members answer the same kind of question:
+- Good: all person names, all dates, all city names, all chemical formulas, all battle counts
+- Bad: mixing "Marathon" (battle name) with "About 7,000" (troop count) with "Plague of Athens" (event name)
+
+**The distractor test:** If you cannot use every pool member as a plausible distractor for every other member's question, the pool is too broad and must be split.
+
+**Format tell test:** If a student can eliminate a distractor by its FORMAT alone — it's a number when the question asks for a name, or it's 3 characters when everything else is 20+ characters — the pool is broken.
+
+### Minimum Size Rules
+
+| Situation | Rule |
+|-----------|------|
+| Any non-bracket pool | Minimum 5 real facts |
+| Any pool (real + synthetic) | Minimum 15 total for good distractor variety |
+| Pool after splitting | If split would create <5 real facts, merge into parent instead |
+| Synthetics | Must match answer format, length distribution, and knowledge domain |
+
+### Common Split Patterns
+
+| Broad pool | Split into |
+|------------|-----------|
+| `person_names` | `person_inventor_names` + `person_politician_names` + `person_scientist_names` |
+| `term_definitions` (mixed length) | `short_terms` (≤20c) + `long_definitions` (>20c) |
+| `number` (mixed types) | `count_values` + `percentage_values` + `year_values` |
+| `country_region_names` | `country_names` + `region_names` + `civilization_names` |
+| `technique_terms` (mixed domains) | `cooking_technique_names` + `person_names_food` |
+
+### When to Use `homogeneityExempt`
+
+Use `pool.homogeneityExempt: true` only when answer-length variation is inherent to the domain and cannot be normalized — for example, NASA mission official names ("Dawn" 4c vs "Nancy Grace Roman Space Telescope" 33c) or Greek deity names ("Pan" 3c vs "Hephaestus" 10c). Always add `homogeneityExemptNote` with a reason.
+
+Do NOT use it to avoid fixing a misclassified fact, a bare number that should use `{N}` bracket notation, or an outlier that can reasonably be trimmed or expanded.
+
+---
+
 ## Verification & Quality Gates
 
 ### Batch Verifier — `scripts/verify-all-decks.mjs`

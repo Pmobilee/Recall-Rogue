@@ -421,3 +421,30 @@ When merging a hollow pool (< 5 real facts) into a destination pool, the destina
 3. Check the ratio BEFORE merging: `max(destRange + newAnswers) / min(destRange + newAnswers) < 3`.
 
 **Rule:** Always run `node scripts/verify-all-decks.mjs` after EVERY merge, not just after all merges are complete.
+
+### 2026-04-05 — quiz-audit-engine.ts Check 26 (distractor_format_inconsistency) Generates High Baseline Warning Count
+
+After adding Check 26 (`distractor_format_inconsistency`) to `quiz-audit-engine.ts`, the full cross-deck audit produced ~5,802 warnings across all knowledge decks. These are **genuine pool heterogeneity issues** — pools contain numeric answers ("12-15 members", "23 events") alongside name/phrase answers ("Pottery shards (ostraka)", "Marketplace and civic center") due to overly broad pool definitions.
+
+**What triggers it:** A distractor has ≥2 of these format features different from the correct answer: `hasUnits`, `isNumericOnly`, `startsCapital`, `isAllLower`, `isMultiWord`.
+
+**Not a false positive problem.** The warnings correctly identify real player-facing UX issues where a numeric distractor can be trivially eliminated when the question and all other options are phrases (or vice versa).
+
+**How to fix flagged facts:** Split overly broad pools into separate `term_definitions` and `bracket_numbers` (or dedicated `numeric_values`) pools. Numeric facts belong in `bracket_numbers`; phrase-answer facts belong in `term_definitions`.
+
+### 2026-04-05 — Heterogeneous Pool Disaster
+
+**What:** LLM content review found ~200 quiz quality issues across 34 knowledge decks. Root cause: answer pools mixing incompatible types (names with dates, counts with descriptions). Distractors were trivially eliminatable by format alone — a student with zero subject knowledge could guess correctly just by looking at answer lengths or types.
+
+**Scale:** 30+ pools affected across 25+ decks. 13 factual errors discovered. 16 hollow pools (3 or fewer real facts padded with synthetics) producing low-quality distractor sets.
+
+**Fix:** 3-day remediation effort: built `quiz-audit-engine.ts` (27 checks + render mode), fixed all 13 factual errors, redesigned 30+ pools for semantic homogeneity, merged hollow pools into appropriate parent pools, padded thin pools to 15+ total members with domain-appropriate synthetics, standardized answer formats within pools.
+
+**Prevention:**
+1. Pool design rules in `.claude/rules/content-pipeline.md` (new "Pool Design Rules — MANDATORY" section) — semantic homogeneity required before assembly
+2. `quiz-audit-engine.ts` checks 25-27 catch format mismatches programmatically at engine level
+3. LLM content review is now MANDATORY for all deck builds — not just structural checks
+4. No non-bracket pool under 5 real facts (merge instead of creating thin pools)
+5. Minimum 15 total pool members (real facts + synthetics) before a pool is production-ready
+
+**Lesson:** Programmatic checks catch FORMAT problems. LLM review catches SEMANTIC problems. Both are required. The old workflow (verify-all-decks.mjs passes → ship) was necessary but NOT sufficient. The quiz-audit-engine.ts programmatic checks are also necessary but not sufficient. Only the combination of programmatic + LLM review catches all categories of quality failures.
