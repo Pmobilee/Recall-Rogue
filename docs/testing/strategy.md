@@ -159,6 +159,16 @@ The **real-engine quiz audit** (`scripts/quiz-audit-engine.ts`) exercises the ac
 
 **Relationship to `quiz-audit.mjs`:** `quiz-audit.mjs` is a fast JS structural gate (run before every commit). `quiz-audit-engine.ts` is comprehensive engine-level validation (run after structural checks pass, especially before releases or after quiz engine changes).
 
+### Two Modes — Both Required for Production Quality
+
+The quiz-audit-engine runs in two complementary modes. **Running only one mode is insufficient.**
+
+**Programmatic mode** (default): Runs automated checks against every fact. Catches structural and format issues: wrong distractor counts, length ratio violations, em-dash in answers, synonym violations, POS mismatches, template rendering failures, unresolved placeholders, empty answers, mastery count errors, confusion matrix responsiveness. Fast (~1000 facts/sec). Exits with code 1 on any FAIL.
+
+**Render mode** (`--render`): Skips programmatic checks and outputs human-readable quiz samples — one question with 4 shuffled lettered answer options per fact. Designed for LLM content review. Catches what programmatic checks cannot: cross-domain distractors that are wrong but plausible-looking, factual errors in explanations, ambiguous questions with multiple defensible answers, length-tell situations, and context clues that let a student guess without domain knowledge.
+
+**Both modes are required for production quality. Running only programmatic checks is insufficient — it misses cross-domain distractors, ambiguous questions, and factual errors that only a human or LLM can catch.**
+
 ```bash
 # npm shorthand
 npm run audit:quiz-engine                             # All knowledge decks
@@ -181,8 +191,26 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engi
 | `--json` | Machine-readable JSON output (pipe to file for CI) |
 | `--include-vocab` | Include vocabulary/language decks (skipped by default) |
 | `--confusion-test` | Seed synthetic confusions and verify they surface in distractors |
+| `--min-pool-facts <n>` | Minimum real factIds per non-bracket pool before WARN is raised (default: 5) |
 
-**24 quality checks** — 10 preserved from `quiz-audit.mjs` plus 14 new engine-enabled checks:
+**Render mode** (`--render`) skips all programmatic checks and outputs human-readable quiz samples suitable for LLM content review. Facts are sampled per pool using a reproducible seeded RNG. Each sample shows the question, shuffled lettered answer options (correct marked with checkmark), and a metadata line with mastery level, difficulty, and distractor sources.
+
+| Render Option | Description |
+|---------------|-------------|
+| `--render` | Activate render mode (skips programmatic checks) |
+| `--render-per-pool <n>` | Facts to sample per pool (default: 5) |
+| `--deck <id>` | Limit to a single deck |
+| `--include-vocab` | Include vocabulary/language decks |
+
+```bash
+# Render 5 samples per pool for one deck (LLM review)
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engine.ts --render --deck solar_system
+
+# Render 10 samples per pool across all knowledge decks
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engine.ts --render --render-per-pool 10
+```
+
+**27 quality checks** — 10 preserved from `quiz-audit.mjs` plus 17 engine-enabled checks (3 new in 2026-04-05):
 
 | Check | Severity | Description |
 |-------|----------|-------------|
@@ -210,8 +238,25 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engi
 | `mastery_count_wrong` | WARN | Distractor count returned does not match what mastery level requests |
 | `confusion_not_responsive` | FAIL | `--confusion-test` mode: seeded confusion entry did not surface in distractors |
 | `mastery_count_over` | FAIL | Got more distractors than the mastery level expects |
+| `question_type_mismatch` | WARN | Question keyword (who/when/where/how many) implies an answer type but ≥2 options don't match that format |
+| `distractor_format_inconsistency` | WARN | Distractor has ≥2 format features different from correct answer (e.g., capitalization, units, multi-word) |
+| `near_duplicate_options` | WARN | Two options in the same quiz are suspiciously similar (Levenshtein >80%, substring containment, or trailing-digit variant) |
+| `min_pool_facts` (deck-level) | WARN | A non-bracket pool has fewer real factIds than `--min-pool-facts` (default: 5) |
 
 Runs at ~1000 facts/sec. Exits with code 1 if any FAILs. Image facts (`quizMode: image_question` or `image_answers`) are always skipped.
+
+### Full Deck Quality Pipeline
+
+For every new deck or major modification, run these steps in order:
+
+1. `node scripts/verify-all-decks.mjs` — structural + content quality (0 failures required)
+2. `node scripts/pool-homogeneity-analysis.mjs --deck <id>` — pool design check (0 FAILs required)
+3. `npm run audit:quiz-engine -- --deck <id>` — programmatic engine audit (0 FAILs required)
+4. `npm run audit:quiz-engine -- --render --deck <id>` — generate render output for LLM review
+5. LLM agent reviews rendered quiz samples — flags semantic issues not caught by checks 1-3
+6. Fix all flagged issues, re-run checks 1-3 to confirm clean
+
+**Do not skip steps 4-5.** Passing all programmatic checks does not mean the deck plays well.
 
 ## Standard Verification Sequence
 

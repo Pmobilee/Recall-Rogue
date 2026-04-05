@@ -113,6 +113,25 @@ The code now catches empty-placeholder replacements and falls back to `fact.quiz
 - Facts about different domains (languages vs companies vs hardware) should NOT share pools used by domain-specific templates
 - `correctAnswer` format must be consistent within a pool (no mixing "Elon Musk" single names with "Nerva, Trajan, Hadrian..." lists)
 
+## Pool Design Rules — MANDATORY
+
+**Every answer pool must contain facts of ONE semantic answer type.**
+
+All members of a pool must answer the same kind of question — all person names, all dates, all counts, all geographic locations, all technical terms, etc. Never mix types within a single pool.
+
+- **Semantic homogeneity test:** Ask "can every pool member serve as a plausible distractor for every other member's question?" If any member fails this test, the pool is too broad — split it.
+- **Never mix:** dates with counts, names with descriptions, measurements with events, battle names with troop totals
+- **Format consistency:** All answers in a pool must be the same grammatical/syntactic form (bare nouns, full sentences, "X BCE", percentages, etc.)
+- **No non-bracket-numbers pool may have fewer than 5 real facts.** If splitting would produce a pool under 5 real facts, merge into a larger parent pool instead — do not create thin pools.
+- **After splitting:** Pad any pool below 15 total members (real facts + synthetic distractors) with domain-appropriate `syntheticDistractors`. Synthetics must match the answer format, length distribution, and knowledge domain of the real members.
+- **Use `homogeneityExempt: true` sparingly** — only for pools where variation is inherent to the domain and cannot be normalized (e.g., NASA mission official names, Greek deity names). Always add a `homogeneityExemptNote` explaining why.
+
+**Common split patterns:**
+- `person_names` → `person_inventor_names` + `person_politician_names` + `person_scientist_names`
+- `term_definitions` (mixed length) → `short_terms` (≤20c) + `long_definitions` (>20c)
+- `number` (mixed types) → `count_values` + `percentage_values` + `year_values`
+- `country_region_names` (mixed scale) → `country_names` + `region_names` + `civilization_names`
+
 ## Batch Deck Verification — MANDATORY
 
 After modifying ANY curated deck, run the batch verifier:
@@ -197,6 +216,40 @@ npm run audit:quiz-engine -- --confusion-test         # Verify confusion matrix 
 ```
 
 This exercises the REAL `selectDistractors()` and `selectQuestionTemplate()` code paths, catching issues the simplified `quiz-audit.mjs` cannot: synonym group violations, unit contamination, POS mismatches, template rendering failures, mastery-dependent distractor count errors, and confusion matrix responsiveness. 24 checks total (10 structural + 14 engine-enabled).
+
+## LLM Content Review — MANDATORY
+
+**After structural checks AND programmatic engine audit pass, you MUST run LLM content review.**
+
+Programmatic checks catch FORMAT issues. LLM review catches SEMANTIC issues. **Both are required. Neither alone is sufficient.**
+
+### How to run:
+
+1. Generate quiz samples with render mode:
+```bash
+npm run audit:quiz-engine -- --render --deck <id>
+# or for all decks:
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engine.ts --render --render-per-pool 5
+```
+
+2. Have an LLM agent review the rendered output, evaluating each quiz item for:
+   - **Question clarity** — is the question unambiguous?
+   - **Answer correctness** — is the marked correct answer actually correct?
+   - **Distractor plausibility** — could a non-expert be fooled by each wrong answer?
+   - **Eliminatability** — can 2+ distractors be eliminated by format/length alone without domain knowledge?
+   - **Length tells** — is the correct answer dramatically longer or shorter than all distractors?
+   - **Domain coherence** — do all 4 options belong to the same semantic category?
+   - **Ambiguity** — could 2+ options reasonably be correct?
+
+3. Fix all flagged facts before committing.
+
+### When LLM review is required:
+- After initial deck assembly (before first commit)
+- After any bulk answer or distractor modification affecting 10+ facts
+- After pool redesign or reassignment
+- Before any deck is considered production-ready
+
+**Why:** The quiz-audit-engine.ts checks 24-27 structural and format conditions automatically. But it cannot detect: cross-domain distractors that are wrong but plausible-looking, factual errors in explanations, questions that have multiple defensible correct answers, or cases where a student with zero subject knowledge can still guess correctly from context clues. Only an LLM review catches these.
 
 ## Build Artifacts — JSON to SQLite Compilation
 

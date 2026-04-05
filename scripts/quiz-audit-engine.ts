@@ -2,13 +2,17 @@
  * Real-Engine Quiz Audit Script
  *
  * Imports and exercises the REAL game engine quiz functions against all curated
- * deck JSON files. Detects 24 categories of quiz quality issues including
+ * deck JSON files. Detects 27 categories of quiz quality issues including
  * engine-enabled checks that the static quiz-audit.mjs cannot perform.
  *
  * Usage:
  *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engine.ts [options]
  *
- * Options:
+ * Modes:
+ *   (default)            Programmatic checks (27 automated quality checks)
+ *   --render             Render quiz samples for LLM content review
+ *
+ * Programmatic options:
  *   --deck <id>          Single deck (default: all non-image decks)
  *   --sample <N>         Max facts per pool (default: all)
  *   --mastery 0,2,4      Comma-separated mastery levels (default: 0,2,4)
@@ -16,6 +20,12 @@
  *   --json               JSON output to stdout
  *   --include-vocab      Include vocab/language decks (default: knowledge only)
  *   --confusion-test     Seed synthetic confusions to verify confusion matrix path
+ *
+ * Render options:
+ *   --render             Output rendered quizzes for LLM review
+ *   --render-per-pool N  Facts per pool (default: 5)
+ *   --deck <id>          Single deck
+ *   --include-vocab      Include vocab/language decks
  */
 
 // Browser shim must load FIRST before any src/ imports
@@ -47,6 +57,25 @@ function extractUnit(answer: string): string | null {
   return match ? match[1].toLowerCase().trim() : null;
 }
 
+/** Seeded pseudo-random number generator (LCG). Returns values in [0, 1). */
+function makeRng(seed: number): () => number {
+  let s = seed >>> 0;
+  return () => {
+    s = (Math.imul(1664525, s) + 1013904223) >>> 0;
+    return s / 0x100000000;
+  };
+}
+
+/** Shuffle array in-place using a seeded RNG. */
+function seededShuffle<T>(arr: T[], seed: number): T[] {
+  const rng = makeRng(seed);
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 // ---------------------------------------------------------------------------
 // Deck classification
 // ---------------------------------------------------------------------------
@@ -72,6 +101,9 @@ interface CliOptions {
   jsonOutput: boolean;
   includeVocab: boolean;
   confusionTest: boolean;
+  renderMode: boolean;
+  renderPerPool: number;
+  minPoolFacts: number;
 }
 
 function parseArgs(): CliOptions {
@@ -83,6 +115,9 @@ function parseArgs(): CliOptions {
   let jsonOutput = false;
   let includeVocab = false;
   let confusionTest = false;
+  let renderMode = false;
+  let renderPerPool = 5;
+  let minPoolFacts = 5;
 
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
@@ -100,10 +135,16 @@ function parseArgs(): CliOptions {
       includeVocab = true;
     } else if (arg === '--confusion-test') {
       confusionTest = true;
+    } else if (arg === '--render') {
+      renderMode = true;
+    } else if (arg === '--render-per-pool' && args[i + 1]) {
+      renderPerPool = parseInt(args[++i], 10);
+    } else if (arg === '--min-pool-facts' && args[i + 1]) {
+      minPoolFacts = parseInt(args[++i], 10);
     }
   }
 
-  return { deckId, sample, masteryLevels, verbose, jsonOutput, includeVocab, confusionTest };
+  return { deckId, sample, masteryLevels, verbose, jsonOutput, includeVocab, confusionTest, renderMode, renderPerPool, minPoolFacts };
 }
 
 // ---------------------------------------------------------------------------
@@ -384,6 +425,150 @@ function runChecks(
     }
   }
 
+  // Check 25: question_type_mismatch
+  // Detect when question keyword implies a specific answer type but options don't match.
+  // e.g. "Who invented..." → all options should look like person names.
+  if (!isNumerical && distractorFacts.length > 0) {
+    const qLower = renderedQuestion.toLowerCase();
+    type FormatTest = (s: string) => boolean;
+    let impliedType: [string, FormatTest] | null = null;
+
+    if (/\bwho\b|\bwhich person\b|\bwhich ruler\b|\bwhich leader\b|\bwhich author\b/.test(qLower)) {
+      // Expect person-name-like: starts with capital, no bare numeric strings
+      impliedType = ['person name', (s: string) => /^[A-Z]/.test(s.trim()) && !/^\d+$/.test(s.trim())];
+    } else if (/\bwhat year\b|\bwhich year\b|\bin what year\b|\bwhen was\b|\bwhen did\b|\bwhen were\b/.test(qLower)) {
+      // Expect date/year token
+      impliedType = ['year/date', (s: string) => /\d/.test(s)];
+    } else if (/\bhow many\b|\bhow much\b|\bhow long\b|\bhow far\b|\bhow tall\b|\bhow deep\b/.test(qLower)) {
+      // Expect a numeric quantity
+      impliedType = ['quantity', (s: string) => /\d/.test(s)];
+    } else if (/\bwhere\b|\bwhich city\b|\bwhich country\b|\bwhich continent\b|\bwhich region\b|\bwhich state\b|\bwhich planet\b/.test(qLower)) {
+      // Expect place-like: starts with capital
+      impliedType = ['place name', (s: string) => /^[A-Z]/.test(s.trim())];
+    }
+
+    if (impliedType !== null) {
+      const [typeLabel, matchesFn] = impliedType;
+      const allOptions = [correctDisplay, ...distractorFacts.map(d => displayAnswer(d.correctAnswer))];
+      const mismatched = allOptions.filter(opt => !matchesFn(opt));
+      if (mismatched.length >= 2) {
+        issues.push({
+          severity: 'WARN',
+          type: 'question_type_mismatch',
+          detail: `Question implies ${typeLabel} answers but ${mismatched.length} options don't match: ${mismatched.map(s => '"' + s.slice(0, 30) + '"').join(', ')}`,
+        });
+      }
+    }
+  }
+
+  // Check 26: distractor_format_inconsistency
+  // Flag when a distractor has ≥2 format features different from the correct answer.
+  // Catches cases like: correct="15 days" (has units, has digit, multi-word) but distractor="7" (numeric only).
+  if (!isNumerical && distractorFacts.length > 0) {
+    const getFormatFeatures = (s: string): Record<string, boolean> => {
+      const stripped = displayAnswer(s);
+      return {
+        hasUnits: /[a-zA-Z]+$/.test(stripped.replace(/[.,]/g, '')) && /\d/.test(stripped),
+        isNumericOnly: /^[\d,.\s]+$/.test(stripped.trim()),
+        startsCapital: /^[A-Z]/.test(stripped.trim()),
+        isAllLower: stripped === stripped.toLowerCase() && /[a-z]/.test(stripped),
+        isMultiWord: stripped.trim().split(/\s+/).length > 1,
+      };
+    };
+    const correctFeatures = getFormatFeatures(correctDisplay);
+    for (const d of distractorFacts) {
+      if (d.id.startsWith('_numerical_') || d.id.startsWith('_fallback_') || d.id.startsWith('_synthetic_')) continue;
+      const dDisplay = displayAnswer(d.correctAnswer);
+      const dFeatures = getFormatFeatures(dDisplay);
+      let diffCount = 0;
+      for (const key of Object.keys(correctFeatures) as Array<keyof typeof correctFeatures>) {
+        if (correctFeatures[key] !== dFeatures[key]) diffCount++;
+      }
+      if (diffCount >= 2) {
+        issues.push({
+          severity: 'WARN',
+          type: 'distractor_format_inconsistency',
+          detail: `Distractor "${dDisplay.slice(0, 40)}" has ${diffCount} format features different from correct "${correctDisplay.slice(0, 40)}"`,
+        });
+        break; // one warning per fact is enough
+      }
+    }
+  }
+
+  // Check 27: near_duplicate_options
+  // Detect suspiciously similar options in the same quiz presentation.
+  // Catches near-duplicates (Levenshtein > 0.8), substring containment, and trailing-digit variants.
+  if (distractorFacts.length > 0) {
+    const allOptions = [correctDisplay, ...distractorFacts.map(d => displayAnswer(d.correctAnswer))];
+
+    /** Normalized Levenshtein similarity in [0, 1]. */
+    const levenshteinSimilarity = (a: string, b: string): number => {
+      const al = a.toLowerCase().replace(/\s+/g, ' ').trim();
+      const bl = b.toLowerCase().replace(/\s+/g, ' ').trim();
+      if (al === bl) return 1;
+      const maxLen = Math.max(al.length, bl.length);
+      if (maxLen === 0) return 1;
+      // DP Levenshtein
+      const row: number[] = Array.from({ length: bl.length + 1 }, (_, i) => i);
+      for (let ii = 1; ii <= al.length; ii++) {
+        let prev = ii;
+        for (let jj = 1; jj <= bl.length; jj++) {
+          const cost = al[ii - 1] === bl[jj - 1] ? 0 : 1;
+          const curr = Math.min(prev + 1, row[jj] + 1, row[jj - 1] + cost);
+          row[jj - 1] = prev;
+          prev = curr;
+        }
+        row[bl.length] = prev;
+      }
+      return 1 - row[bl.length] / maxLen;
+    };
+
+    let nearDupFound = false;
+    for (let ii = 0; ii < allOptions.length - 1 && !nearDupFound; ii++) {
+      for (let jj = ii + 1; jj < allOptions.length && !nearDupFound; jj++) {
+        const a = allOptions[ii];
+        const b = allOptions[jj];
+        const sim = levenshteinSimilarity(a, b);
+        if (sim > 0.8) {
+          issues.push({
+            severity: 'WARN',
+            type: 'near_duplicate_options',
+            detail: `Options "${a.slice(0, 40)}" and "${b.slice(0, 40)}" are ${(sim * 100).toFixed(0)}% similar`,
+          });
+          nearDupFound = true;
+        } else {
+          // Substring containment (meaningful length > 5)
+          const minLen = Math.min(a.length, b.length);
+          if (minLen > 5) {
+            const aLower = a.toLowerCase();
+            const bLower = b.toLowerCase();
+            if (aLower.includes(bLower) || bLower.includes(aLower)) {
+              issues.push({
+                severity: 'WARN',
+                type: 'near_duplicate_options',
+                detail: `Option "${b.slice(0, 40)}" is a substring of "${a.slice(0, 40)}"`,
+              });
+              nearDupFound = true;
+            }
+          }
+          // Trailing-digit variant: options differ only by trailing number (e.g. "Voyager 1" vs "Voyager 2")
+          if (!nearDupFound) {
+            const aBase = a.replace(/\s*\d+$/, '').trim().toLowerCase();
+            const bBase = b.replace(/\s*\d+$/, '').trim().toLowerCase();
+            if (aBase.length > 3 && aBase === bBase && a !== b) {
+              issues.push({
+                severity: 'WARN',
+                type: 'near_duplicate_options',
+                detail: `Options "${a}" and "${b}" differ only by trailing number`,
+              });
+              nearDupFound = true;
+            }
+          }
+        }
+      }
+    }
+  }
+
   return issues;
 }
 
@@ -551,11 +736,44 @@ function auditDeck(
   deck: CuratedDeck,
   masteryLevels: number[],
   samplePerPool: number | null,
-  opts: { verbose: boolean; confusionTestMode: boolean },
+  opts: { verbose: boolean; confusionTestMode: boolean; minPoolFacts: number },
 ): DeckAuditResult {
   const deckClass = classifyDeck(deck.id);
   const factResults: FactAuditResult[] = [];
   const issuesByType: Record<string, { fail: number; warn: number }> = {};
+
+  // Deck-level check: min_pool_facts
+  // Run once per pool before per-fact loop. Catches hollow pools early.
+  // Bracket-numbers pools (numerical distractors) are exempt.
+  if (deckClass !== 'vocab') {
+    for (const pool of deck.answerTypePools) {
+      const isBracketPool = pool.factIds.length === 0 && (pool.syntheticDistractors?.length ?? 0) > 0;
+      if (isBracketPool) continue;
+      const realFactCount = pool.factIds.length;
+      if (realFactCount < opts.minPoolFacts) {
+        const key = 'min_pool_facts';
+        if (!issuesByType[key]) issuesByType[key] = { fail: 0, warn: 0 };
+        issuesByType[key].warn++;
+        // Synthesize a FactAuditResult with no mastery/question context for the pool-level issue
+        factResults.push({
+          factId: `_pool_${pool.id}`,
+          masteryLevel: -1,
+          poolId: pool.id,
+          renderedQuestion: `(pool-level check)`,
+          correctAnswer: '',
+          distractors: [],
+          isNumerical: false,
+          templateId: '_pool_check',
+          requestedCount: 0,
+          issues: [{
+            severity: 'WARN',
+            type: 'min_pool_facts',
+            detail: `Pool "${pool.id}" has only ${realFactCount} real factIds (min: ${opts.minPoolFacts})`,
+          }],
+        });
+      }
+    }
+  }
 
   // Determine facts to audit (optionally sampled per pool)
   let factsToAudit: DeckFact[];
@@ -699,11 +917,7 @@ function printAllVerboseResults(result: FactAuditResult): void {
 
 function printDeckLine(result: DeckAuditResult): void {
   const icon = result.failCount > 0 ? `${RED}✗${RESET}` : result.warnCount > 0 ? `${YELLOW}~${RESET}` : `${GREEN}✓${RESET}`;
-  const name = pad(result.deckName, 35);
-  const checks = `${result.totalFacts} facts × ${result.factResults.length / result.totalFacts || 0}... = ${result.totalChecks} checks`;
-  const failStr = result.failCount > 0 ? `${RED}${result.failCount} fails${RESET}` : `0 fails`;
-  const warnStr = result.warnCount > 0 ? `${YELLOW}${result.warnCount} warns${RESET}` : `0 warns`;
-  const levelsPerFact = result.totalFacts > 0 ? Math.round(result.totalChecks / result.totalFacts) : 0;  console.log(`${icon} ${BOLD}${result.deckName}${RESET} (${result.deckId}) — ${result.totalFacts} facts × ${levelsPerFact} levels = ${result.totalChecks} checks | ${failStr} ${warnStr}`);
+  const levelsPerFact = result.totalFacts > 0 ? Math.round(result.totalChecks / result.totalFacts) : 0;  console.log(`${icon} ${BOLD}${result.deckName}${RESET} (${result.deckId}) — ${result.totalFacts} facts × ${levelsPerFact} levels = ${result.totalChecks} checks | ${result.failCount > 0 ? `${RED}${result.failCount} fails${RESET}` : '0 fails'} ${result.warnCount > 0 ? `${YELLOW}${result.warnCount} warns${RESET}` : '0 warns'}`);
 }
 
 function printReport(
@@ -821,11 +1035,193 @@ function buildJsonOutput(
 }
 
 // ---------------------------------------------------------------------------
+// Render mode — human-readable quiz output for LLM content review
+// ---------------------------------------------------------------------------
+
+/** Extended deck type that includes the optional subDecks array present in JSON. */
+interface DeckWithSubDecks extends CuratedDeck {
+  subDecks?: Array<{ id: string; name: string; factIds: string[] }>;
+}
+
+/**
+ * Look up the subDeck name for a fact by matching its ID against subDeck.factIds.
+ * Returns the subDeck name, or null if no subDecks defined or no match found.
+ */
+function getSubDeckLabel(fact: DeckFact, deck: DeckWithSubDecks): string | null {
+  if (!deck.subDecks || deck.subDecks.length === 0) return null;
+  for (const sd of deck.subDecks) {
+    if (sd.factIds && sd.factIds.includes(fact.id)) return sd.name;
+  }
+  return null;
+}
+
+/**
+ * Render a single fact as a quiz question with shuffled answer options.
+ * Uses a seeded RNG based on the fact ID so output is reproducible.
+ * Options are labelled A–D (or A–E for mastery-4 five-option quizzes).
+ */
+function renderFactAsQuiz(
+  fact: DeckFact,
+  deck: CuratedDeck,
+  masteryLevel: number,
+  questionIndex: number,
+): string {
+  const confusionMatrix = new ConfusionMatrix(); // empty — no history in render mode
+  const seed = djb2(fact.id + '_render' + masteryLevel);
+
+  const templateResult = selectQuestionTemplate(fact, deck, masteryLevel, [], seed);
+  const { renderedQuestion, answerPoolId, correctAnswer } = templateResult;
+  const correctDisplay = displayAnswer(correctAnswer);
+  const requestedCount = getDistractorCount(masteryLevel);
+
+  const isNumerical = isNumericalAnswer(fact.correctAnswer);
+  let distractorDisplays: string[] = [];
+  let distractorSources: string[] = [];
+
+  if (isNumerical) {
+    const factAdapter = { id: fact.id, correctAnswer: fact.correctAnswer } as unknown as Fact;
+    const numericalDistractors = getNumericalDistractors(factAdapter, requestedCount);
+    distractorDisplays = numericalDistractors.map(d => displayAnswer(d));
+    distractorSources = numericalDistractors.map(() => 'numerical');
+  } else {
+    const pool = deck.answerTypePools.find(p => p.id === answerPoolId);
+    if (pool) {
+      const result = selectDistractors(
+        fact,
+        pool,
+        deck.facts,
+        deck.synonymGroups,
+        confusionMatrix,
+        null,
+        requestedCount,
+        masteryLevel,
+      );
+      distractorDisplays = result.distractors.map(d => displayAnswer(d.correctAnswer));
+      distractorSources = result.sources;
+    }
+  }
+
+  // Build shuffled options array: [{ text, isCorrect }]
+  const options: Array<{ text: string; isCorrect: boolean; source: string }> = [
+    { text: correctDisplay, isCorrect: true, source: 'correct' },
+    ...distractorDisplays.map((d, i) => ({ text: d, isCorrect: false, source: distractorSources[i] ?? 'unknown' })),
+  ];
+
+  // Shuffle using a seeded RNG based on factId — correct answer position varies
+  const shuffleSeed = djb2(fact.id + '_shuffle');
+  seededShuffle(options, shuffleSeed);
+
+  const labels = ['A', 'B', 'C', 'D', 'E'];
+  const lines: string[] = [];
+
+  // Question line
+  const tags: string[] = [];
+  if (isNumerical) tags.push('[NUMERICAL]');
+  const hasFallback = distractorSources.some(s => s === 'fallback' || s.startsWith('fallback'));
+  if (hasFallback) tags.push('[FALLBACK DISTRACTORS]');
+  const tagSuffix = tags.length > 0 ? `  ${tags.join(' ')}` : '';
+  lines.push(`[Q${questionIndex}] ${renderedQuestion}${tagSuffix}`);
+
+  // Option lines
+  for (let i = 0; i < options.length; i++) {
+    const label = labels[i] ?? String(i + 1);
+    const opt = options[i];
+    const mark = opt.isCorrect ? '  ✓' : '';
+    lines.push(`  ${label}) ${opt.text}${mark}`);
+  }
+
+  // Metadata line
+  const sourceSummary = distractorSources.join(', ');
+  lines.push(`  [Mastery: ${masteryLevel} | Difficulty: ${fact.difficulty} | Sources: ${sourceSummary}]`);
+
+  return lines.join('\n');
+}
+
+/**
+ * Render mode entry point. Samples N facts per pool for each deck and outputs
+ * human-readable quiz text suitable for LLM content review.
+ */
+function renderMode(opts: CliOptions): void {
+  // Determine which decks to render
+  let deckIds: string[];
+  if (opts.deckId) {
+    deckIds = [opts.deckId];
+  } else {
+    deckIds = getAllDeckIds().filter(id => {
+      if (id.startsWith('_')) return false;
+      const cls = classifyDeck(id);
+      if (cls === 'image') return false;
+      if (cls === 'vocab' && !opts.includeVocab) return false;
+      return true;
+    });
+  }
+
+  const MASTERY_OPTIONS = [0, 2, 4];
+
+  for (const deckId of deckIds) {
+    let deck: DeckWithSubDecks;
+    try {
+      deck = loadDeck(deckId) as DeckWithSubDecks;
+    } catch (_e) {
+      console.error(`Skipping ${deckId} — load failed`);
+      continue;
+    }
+
+    console.log(`\n=== DECK: ${deck.name} (${deck.id}) ===`);
+
+    // Group facts by pool
+    const factsByPool = new Map<string, DeckFact[]>();
+    for (const fact of deck.facts) {
+      if (fact.quizMode === 'image_question' || fact.quizMode === 'image_answers') continue;
+      const list = factsByPool.get(fact.answerTypePoolId) ?? [];
+      list.push(fact);
+      factsByPool.set(fact.answerTypePoolId, list);
+    }
+
+    for (const pool of deck.answerTypePools) {
+      const poolFacts = factsByPool.get(pool.id);
+      if (!poolFacts || poolFacts.length === 0) continue;
+
+      // Determine subdeck label from first fact in pool (most facts in a pool share a subdeck)
+      const subDeckLabel = getSubDeckLabel(poolFacts[0], deck);
+      const subDeckSuffix = subDeckLabel ? ` | SubDeck: ${subDeckLabel}` : '';
+
+      console.log(`--- Pool: ${pool.id} (${poolFacts.length} members)${subDeckSuffix} ---`);
+
+      // Sample facts using a seeded RNG (different seed from programmatic mode)
+      const sampleSeed = djb2(pool.id + '_render');
+      const shuffled = seededShuffle([...poolFacts], sampleSeed);
+      const sampled = shuffled.slice(0, opts.renderPerPool);
+
+      let questionIndex = 1;
+      for (const fact of sampled) {
+        // Pick one random mastery level per fact using a seeded RNG
+        const masteryRng = makeRng(djb2(fact.id + '_mastery_pick'));
+        const masteryLevel = MASTERY_OPTIONS[Math.floor(masteryRng() * MASTERY_OPTIONS.length)];
+
+        const rendered = renderFactAsQuiz(fact, deck, masteryLevel, questionIndex);
+        console.log('');
+        console.log(rendered);
+        questionIndex++;
+      }
+
+      console.log('');
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Entry point
 // ---------------------------------------------------------------------------
 
 function main(): void {
   const opts = parseArgs();
+
+  // Dispatch to render mode when --render flag is present
+  if (opts.renderMode) {
+    renderMode(opts);
+    return;
+  }
 
   // Determine which decks to audit
   let deckIds: string[];
@@ -858,6 +1254,7 @@ function main(): void {
     const result = auditDeck(deck, opts.masteryLevels, opts.sample, {
       verbose: opts.verbose,
       confusionTestMode: opts.confusionTest,
+      minPoolFacts: opts.minPoolFacts,
     });
     deckResults.push(result);
   }
