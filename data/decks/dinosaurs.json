@@ -2719,7 +2719,7 @@
         "flying reptile"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "clade_names",
+      "answerTypePoolId": "misc_concepts",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Pteranodon was a flying reptile — what group does it belong to?",
@@ -2913,7 +2913,7 @@
         "mosasauridae"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "clade_names",
+      "answerTypePoolId": "misc_concepts",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "Mosasaurus was a giant marine reptile more closely related to which group of modern animals than to dinosaurs?",
@@ -3038,7 +3038,7 @@
         "viviparous"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "clade_names",
+      "answerTypePoolId": "misc_concepts",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Unlike many reptiles, Ichthyosaurus gave birth how — as proven by fossils showing mothers with embryos?",
@@ -4912,29 +4912,6 @@
       "minimumSize": 5
     },
     {
-      "id": "clade_names",
-      "label": "Clade & Group Names",
-      "answerFormat": "term",
-      "factIds": [
-        "dino_pteranodon_not_dinosaur",
-        "dino_mosasaurus_not_dinosaur",
-        "dino_ichthyosaurus_live_birth"
-      ],
-      "minimumSize": 3,
-      "syntheticDistractors": [
-        "Ornithischia",
-        "Saurischia",
-        "Pterosauria",
-        "Ankylosauria",
-        "Ceratopsia",
-        "Hadrosauridae",
-        "Stegosauria",
-        "Pachycephalosauria",
-        "Sauropoda",
-        "Theropoda"
-      ]
-    },
-    {
       "id": "bracket_numbers",
       "label": "Numeric Values",
       "answerFormat": "bracket_number",
@@ -5020,7 +4997,10 @@
         "dino_triassic_pangaea",
         "dino_jurassic_dates",
         "dino_cretaceous_dates",
-        "dino_feathered_liaoning"
+        "dino_feathered_liaoning",
+        "dino_pteranodon_not_dinosaur",
+        "dino_mosasaurus_not_dinosaur",
+        "dino_ichthyosaurus_live_birth"
       ],
       "syntheticDistractors": [
         "True",
@@ -5041,7 +5021,8 @@
         "Rodinia",
         "Gondwana"
       ],
-      "label": "Miscellaneous Concepts & Terms"
+      "label": "Miscellaneous Concepts & Terms",
+      "homogeneityExempt": true
     }
   ],
   "synonymGroups": [

@@ -728,7 +728,7 @@
         "Beehive Cluster"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "deep_sky_names",
+      "answerTypePoolId": "concept_terms",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "teen_adult",
@@ -914,7 +914,7 @@
         "Cyg X-1"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "deep_sky_names",
+      "answerTypePoolId": "concept_terms",
       "difficulty": 4,
       "funScore": 9,
       "ageGroup": "teen_adult",
@@ -1969,7 +1969,7 @@
         "M45"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "deep_sky_names",
+      "answerTypePoolId": "concept_terms",
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
@@ -4438,31 +4438,6 @@
       "homogeneityExemptNote": "Mythological figures range from short names to full names with titles — inherent domain variation"
     },
     {
-      "id": "deep_sky_names",
-      "label": "Deep Sky Objects",
-      "answerFormat": "name",
-      "factIds": [
-        "const_mc_cancer_cluster",
-        "const_mc_cygnus_black_hole",
-        "const_dso_pleiades_name"
-      ],
-      "minimumSize": 3,
-      "syntheticDistractors": [
-        "Pleiades",
-        "Betelgeuse",
-        "Vega",
-        "Polaris",
-        "Proxima Centauri",
-        "Andromeda Galaxy",
-        "Triangulum Galaxy",
-        "Whirlpool Galaxy",
-        "Sombrero Galaxy",
-        "Pinwheel Galaxy",
-        "Messier 87",
-        "Centaurus A"
-      ]
-    },
-    {
       "id": "concept_terms",
       "label": "Concepts & Terms",
       "answerFormat": "word",
@@ -4511,7 +4486,10 @@
         "const_myth_crab_nebula_name_origin",
         "const_mc_scorpius_ancient",
         "const_star_rigel_supernova_future",
-        "const_myth_cassiopeia_punishment"
+        "const_myth_cassiopeia_punishment",
+        "const_mc_cancer_cluster",
+        "const_mc_cygnus_black_hole",
+        "const_dso_pleiades_name"
       ],
       "minimumSize": 5,
       "homogeneityExempt": true,

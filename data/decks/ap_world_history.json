@@ -18457,7 +18457,18 @@
         "Nanjing Massacre",
         "Roma, disabled people, LGBTQ+ individuals"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Rwandan Genocide",
+        "Cambodian Genocide",
+        "Bosnian Genocide",
+        "Darfur Genocide",
+        "Bengali Famine of 1943",
+        "Herero Genocide",
+        "Holodomor",
+        "Partition of India massacres",
+        "Srebrenica Massacre"
+      ]
     },
     {
       "id": "labor_economic_terms",

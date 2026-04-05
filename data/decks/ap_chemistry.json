@@ -1612,7 +1612,7 @@
         "F"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "element_names",
+      "answerTypePoolId": "chemistry_concepts",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "Which element has the highest electronegativity on the Pauling scale, with a value of 3.98?",
@@ -1857,7 +1857,7 @@
         "The Period 3 halogen"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "element_names",
+      "answerTypePoolId": "chemistry_concepts",
       "difficulty": 4,
       "funScore": 9,
       "quizQuestion": "Although fluorine is the most electronegative element, which of the two Period 2 and Period 3 halogens has a more negative (more favorable) first electron affinity, and why?",
@@ -3084,7 +3084,7 @@
         "Tetrahedral geometry"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "molecular_geometries",
+      "answerTypePoolId": "reaction_types",
       "difficulty": 1,
       "funScore": 5,
       "ageGroup": "all",
@@ -3125,7 +3125,7 @@
         "Trigonal pyramid"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "molecular_geometries",
+      "answerTypePoolId": "reaction_types",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -3247,7 +3247,7 @@
         "Octahedral geometry"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "molecular_geometries",
+      "answerTypePoolId": "reaction_types",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -15822,7 +15822,9 @@
         "ap_chem_9_7_atp_hydrolysis_coupling",
         "ap_chem_9_7_metal_smelting_coupling",
         "ap_chem_9_9_positive_ecell_spontaneous",
-        "ap_chem_9_10_q_increases_e_decreases"
+        "ap_chem_9_10_q_increases_e_decreases",
+        "ap_chem_117_highest_electronegativity",
+        "ap_chem_117_electron_affinity_fluorine_vs_chlorine"
       ],
       "members": [
         "amount of substance",
@@ -15984,7 +15986,8 @@
         "ATP hydrolysis",
         "carbon oxidation",
         "positive E°cell"
-      ]
+      ],
+      "homogeneityExempt": true
     },
     {
       "id": "bond_and_imf_types",
@@ -16021,54 +16024,6 @@
         "molecular solid",
         "covalent network solid",
         "metallic solid"
-      ]
-    },
-    {
-      "id": "molecular_geometries",
-      "description": "VSEPR molecular geometry names",
-      "factIds": [
-        "ap_chem_u2_vsepr_tetrahedral_geometry",
-        "ap_chem_u2_vsepr_trigonal_pyramidal",
-        "ap_chem_u2_vsepr_octahedral_sf6"
-      ],
-      "members": [
-        "Tetrahedral",
-        "Trigonal pyramidal",
-        "Octahedral"
-      ],
-      "minimumSize": 3,
-      "syntheticDistractors": [
-        "Linear",
-        "Bent",
-        "Trigonal bipyramidal",
-        "T-shaped",
-        "See-saw",
-        "Square planar",
-        "Square pyramidal",
-        "Trigonal planar"
-      ]
-    },
-    {
-      "id": "element_names",
-      "description": "Element names when the correct answer is a single element",
-      "factIds": [
-        "ap_chem_117_highest_electronegativity",
-        "ap_chem_117_electron_affinity_fluorine_vs_chlorine"
-      ],
-      "members": [
-        "Fluorine",
-        "Chlorine"
-      ],
-      "minimumSize": 2,
-      "syntheticDistractors": [
-        "Nitrogen",
-        "Oxygen",
-        "Sulfur",
-        "Phosphorus",
-        "Bromine",
-        "Iodine",
-        "Carbon",
-        "Silicon"
       ]
     },
     {
@@ -16114,7 +16069,10 @@
         "ap_chem_4_7_double_replacement",
         "ap_chem_4_7_combustion_products",
         "ap_chem_4_7_precipitation_reaction",
-        "ap_chem_9_11_electrolysis_water_products"
+        "ap_chem_9_11_electrolysis_water_products",
+        "ap_chem_u2_vsepr_tetrahedral_geometry",
+        "ap_chem_u2_vsepr_trigonal_pyramidal",
+        "ap_chem_u2_vsepr_octahedral_sf6"
       ],
       "members": [
         "precipitate",
@@ -16218,6 +16176,14 @@
         "positive",
         "concentration cell",
         "electroplating"
+      ],
+      "syntheticDistractors": [
+        "Electrolysis",
+        "Galvanic cell",
+        "Electrolytic cell",
+        "Salt bridge",
+        "Half-reaction",
+        "Faraday constant"
       ]
     },
     {

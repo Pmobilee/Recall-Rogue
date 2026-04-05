@@ -15915,7 +15915,7 @@
         "Mendel"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "person_names",
+      "answerTypePoolId": "experiment_terms",
       "difficulty": 1,
       "funScore": 6,
       "quizQuestion": "Which scientist, working with pea plants (Pisum sativum) in the 1860s, discovered the fundamental laws of heredity using true-breeding lines and statistical analysis?",
@@ -17745,7 +17745,7 @@
         "Walter Sutton and Theodor Boveri"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "person_names",
+      "answerTypePoolId": "experiment_terms",
       "difficulty": 2,
       "funScore": 5,
       "quizQuestion": "Which two scientists independently proposed the chromosome theory of inheritance (~1902), connecting Mendel's hereditary factors to chromosome behavior during meiosis?",
@@ -17780,7 +17780,7 @@
         "T.H. Morgan"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "person_names",
+      "answerTypePoolId": "experiment_terms",
       "difficulty": 1,
       "funScore": 6,
       "quizQuestion": "Which American biologist used Drosophila melanogaster to prove genes are physically located on chromosomes and discovered X-linked inheritance through the white-eye trait?",
@@ -42515,7 +42515,16 @@
         "ap_bio_pku",
         "ap_bio_philadelphia_chr"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Huntington's disease",
+        "Cystic fibrosis",
+        "Fragile X syndrome",
+        "Klinefelter's syndrome",
+        "Tay-Sachs disease",
+        "Albinism",
+        "Marfan syndrome"
+      ]
     },
     {
       "id": "ecology_terms",
@@ -42706,7 +42715,17 @@
         "ap_bio_reverse_transcriptase",
         "ap_bio_restriction_enzyme"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Primase",
+        "Telomerase",
+        "DNA polymerase I",
+        "DNA polymerase III",
+        "Nuclease",
+        "Lipase",
+        "Amylase",
+        "Protease"
+      ]
     },
     {
       "id": "equation_terms",
@@ -42823,7 +42842,10 @@
         "ap_bio_hw_calc_step1",
         "ap_bio_hw_diploid_sexual",
         "ap_bio_hw_infinite_pop",
-        "ap_bio_miller_urey_exp"
+        "ap_bio_miller_urey_exp",
+        "ap_bio_mendel",
+        "ap_bio_sutton_boveri",
+        "ap_bio_morgan"
       ],
       "minimumSize": 5,
       "homogeneityExempt": true,
@@ -42969,7 +42991,17 @@
         "ap_bio_u6_039",
         "ap_bio_cristae"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Stroma",
+        "Lumen",
+        "Inner membrane",
+        "Outer membrane",
+        "Intermembrane space",
+        "E site",
+        "Nucleus",
+        "Cytosol"
+      ]
     },
     {
       "id": "molecule_names",
@@ -43218,7 +43250,18 @@
       ],
       "minimumSize": 5,
       "homogeneityExempt": true,
-      "homogeneityNote": "Real organelle names range from \"Lysosomes\" (9c) to \"Smooth endoplasmic reticulum\" (28c); scientifically fixed terms."
+      "homogeneityNote": "Real organelle names range from \"Lysosomes\" (9c) to \"Smooth endoplasmic reticulum\" (28c); scientifically fixed terms.",
+      "syntheticDistractors": [
+        "Peroxisome",
+        "Centriole",
+        "Ribosome",
+        "Golgi apparatus",
+        "Nuclear envelope",
+        "Cytoskeleton",
+        "Plasma membrane",
+        "Nucleolus",
+        "Vacuole"
+      ]
     },
     {
       "id": "organism_names",
@@ -43287,30 +43330,6 @@
         "ap_bio_u8_092"
       ],
       "minimumSize": 5
-    },
-    {
-      "id": "person_names",
-      "members": [
-        "Gregor Mendel",
-        "Sutton and Boveri",
-        "Thomas Hunt Morgan"
-      ],
-      "factIds": [
-        "ap_bio_mendel",
-        "ap_bio_sutton_boveri",
-        "ap_bio_morgan"
-      ],
-      "minimumSize": 3,
-      "syntheticDistractors": [
-        "Gregor Mendel",
-        "Charles Darwin",
-        "Barbara McClintock",
-        "James Watson",
-        "Rosalind Franklin",
-        "Thomas Hunt Morgan",
-        "Lynn Margulis",
-        "Alfred Wallace"
-      ]
     },
     {
       "id": "process_names",
@@ -43563,7 +43582,16 @@
       ],
       "minimumSize": 5,
       "homogeneityExempt": true,
-      "homogeneityNote": "Signal molecule names range from abbreviations like \"CDKs\" (4c) to descriptive names like \"Growth factors\" (14c); these are the standard AP Biology names for each molecule and cannot be altered."
+      "homogeneityNote": "Signal molecule names range from abbreviations like \"CDKs\" (4c) to descriptive names like \"Growth factors\" (14c); these are the standard AP Biology names for each molecule and cannot be altered.",
+      "syntheticDistractors": [
+        "Protein kinase A",
+        "Phospholipase C",
+        "Inositol trisphosphate (IP3)",
+        "Diacylglycerol (DAG)",
+        "Nitric oxide (NO)",
+        "Tyrosine kinase receptor",
+        "Ras protein"
+      ]
     },
     {
       "id": "structure_function_terms",
@@ -43584,7 +43612,17 @@
         "ap_bio_na_k_pump",
         "ap_bio_endosymbiosis_evidence_double_membrane"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Tight junctions",
+        "Gap junctions",
+        "Plasmodesmata",
+        "Glycocalyx",
+        "Cytoskeleton",
+        "Microtubules",
+        "Microfilaments",
+        "Intermediate filaments"
+      ]
     },
     {
       "id": "term_definitions",

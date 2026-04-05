@@ -370,3 +370,32 @@ Running obfuscation against `public/` directly would corrupt the dev-server file
 **Rule:** When a pool has answers like "NASA" (4c) AND "Milwaukee, Wisconsin" (20c), the quiz WILL generate bad presentations. `homogeneityExempt` bypasses the structural check but does NOT fix playability — quiz-audit catches it. Separate pools by length band AND answer type.
 
 **Final pool counts:** world_cuisines: 9 pools (was 5). famous_inventions: 10 pools (was 5).
+
+### 2026-04-05 — Pool Merges for 6 Decks: Hollow Pools, Misplaced Facts, homogeneityExempt Usage
+
+**Decks fixed:** egyptian_mythology, periodic_table, solar_system, famous_paintings, music_history, movies_cinema.
+
+**What:** Several pools had ≤3 real facts (padded with synthetics to hide thinness). Root cause: facts were assigned to overly-specific pools that didn't attract enough facts at generation time.
+
+**Fixes applied:**
+- `egyptian_mythology`: Deleted `god_names` pool (3 real); merged into `descriptions_roles`. Moved `egypt_temp_khnum_elephantine` (answer "Khnum, Satis, Anuket" — a divine triad, not a location) from `places_locations` to `descriptions_roles`. Marked `descriptions_roles` as `homogeneityExempt` because mythology answers inherently range from single deity names (Isis=4c) to multi-attribute descriptions (56c).
+- `periodic_table`: Fixed `periodic_table_neon_signs_color` — answer was "Red-orange" (a color, not an element name) in the `element_names` pool; corrected to "Neon". Split `element_symbols` by moving 5 Latin-origin answers (Aurum, Argentum, Hydrargyrum, Wolfram, Stannum) to `element_names` pool, leaving only chemical symbols (Na, Fe, Cu, etc.) in `element_symbols`.
+- `solar_system`: Padded `system_facts` pool (3 real facts: Kuiper Belt, G-type star, Prograde direction) with 12 synthetic distractors — these 3 facts are semantically unrelated so merging them into another pool would cause worse homogeneity.
+- `famous_paintings`: Renamed `date_periods` pool to `counts_amounts` — all 8 facts were counts/quantities ("4 years", "About 2,100", "~$250 million"), not actual dates or periods. Content unchanged, only pool name fixed.
+- `music_history`: Merged `nationality_names` (1 real: "Polish") + `company_names` (3 real: Sun Records, Napster, Spotify) into `description_terms`. Merged `person_names` (3 real: instrument inventors) into `artist_names`. Fixed garbled answer "Not standard in it" → "Non-orchestral". Marked `artist_names` as `homogeneityExempt` (person names inherently vary from "Mozart" to "Bartolomeo Cristofori").
+- `movies_cinema`: Added 9 synthetic distractors to `film_trivia` (was 6 real, 0 synth → 6 real, 9 synth). Fixed `{10000000000}` → `{10,000,000,000}` (James Cameron box office total, now comma-formatted).
+
+**Lesson:** When generating facts, avoid creating specialty pools for answer types unless you're confident of ≥10 facts. Pool names like "nationality_names" encourage only 1-2 facts to be assigned (only one fact asks for nationality). Use broader pools like `description_terms` or `artist_names` for small semantic clusters.
+
+### 2026-04-05 — Merging Hollow Pools Onto a Destination Pool Can Introduce Homogeneity Failures
+
+When merging a hollow pool (< 5 real facts) into a destination pool, the destination pool may gain answers that are shorter or longer than the existing range, pushing the max/min ratio above the 3x FAIL threshold.
+
+**Example:** `ap_chemistry element_names` contained "Fluorine" (8 chars) and "Chlorine" (8 chars). Merging into `compound_names` (range 8–25 chars = 3.1x) caused a FAIL. Moving to `chemistry_concepts` (broad pool, range 8–30 chars after merge) triggered a 3.8x FAIL there too.
+
+**Fix options:**
+1. Choose a destination pool whose answer length range accommodates the merging facts.
+2. Add `homogeneityExempt: true` to the destination pool if it is an intentionally broad pool (chemistry_concepts, misc_concepts, concept_terms) where domain variation is inherent.
+3. Check the ratio BEFORE merging: `max(destRange + newAnswers) / min(destRange + newAnswers) < 3`.
+
+**Rule:** Always run `node scripts/verify-all-decks.mjs` after EVERY merge, not just after all merges are complete.

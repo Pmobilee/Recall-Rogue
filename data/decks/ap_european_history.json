@@ -22253,7 +22253,15 @@
         "Northern Renaissance",
         "humanism"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Pietism",
+        "Romanticism",
+        "Rationalism",
+        "Empiricism",
+        "Mercantilism",
+        "Scholasticism"
+      ]
     },
     {
       "id": "person_names",

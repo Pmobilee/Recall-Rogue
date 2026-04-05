@@ -112,7 +112,7 @@ Architecture YAML files in `data/deck-architectures/` hold the verified source d
 | `ap_biology_unit2_arch.yaml` | `ap_biology_unit2` | architecture complete — pending fact generation | 130 target | Unit 2: Cell Structure and Function (Topics 2.1–2.11); 2 chain themes, 8 pools, ~130 verified facts in arch |
 | `ap_biology_unit3_arch.yaml` | `ap_biology_unit3` | architecture complete — pending fact generation | 160 target | Unit 3: Cellular Energetics (Topics 3.1–3.7); 3 chain themes, 7 pools, 7 templates, ~110 verified facts in arch |
 | `ap_biology_unit5_arch.yaml` | `ap_biology_unit5` | architecture complete — pending fact generation | 110 target | Unit 5: Heredity (Topics 5.1–5.6); 2 chain themes, 8 pools, 97 verified entities in arch |
-| *(inline generation)* | `ap_physics_1` | complete — live | 326 | CED-aligned Fall 2024; 8 units, 10 chain themes, 13 answer pools, 8 sub-decks; expanded 2026-04-04 from 180→326 facts; pool homogeneity remediation 2026-04-04 (10 FAILs → 0; created `concept_statements` and `equation_explanations` pools by splitting bimodal `term_definitions`/`equation_identifiers`; set `minimumSize` on small specialty pools with `syntheticDistractors`); sourced from OpenStax/HyperPhysics |
+| *(inline generation)* | `ap_physics_1` | complete — live | 326 | CED-aligned Fall 2024; 8 units, 10 chain themes, 11 answer pools, 8 sub-decks; expanded 2026-04-04; pool homogeneity remediation 2026-04-04 and 2026-04-05 (`fluid_properties`→`quantity_definitions`, `collision_types`→`term_definitions`; `force_type_names`/`rotational_quantities` synthetics added); sourced from OpenStax/HyperPhysics |
 | *(inline generation)* | `world_cuisines` | complete — live, pool-redesigned | 141 | Pool redesign 2026-04-05 (5 pools → 9): split `technique_terms` into `person_names_food` + technique; split `country_region_names` into `civilization_names` + `compound_location_names`; added `cultural_references`; moved percentage/short-answer outliers. 0 quiz-audit fails. |
 | *(inline generation)* | `famous_inventions` | complete — live, pool-redesigned | 200 | Pool redesign 2026-04-05 (5 pools → 10): split 104-fact `term` pool into `invention_specs` (short ≤20c), `invention_details` (long), `discovery_descriptions` (narratives), `invention_dates`; split `name` into `person_inventor_names` + `invention_names`; added `tech_codes` for acronyms ≤7c; split `number` into `percentage_values` + `count_values`. 0 quiz-audit fails. |
 
@@ -1571,3 +1571,29 @@ This pool is a reusable pattern for any deck that has small count answers like {
 - Trivia bridge: 54 entities extracted, 0 ID collisions
 
 ---
+
+---
+
+## Pool Remediation History
+
+### 2026-04-05 — Batch hollow/thin pool fixes (13 decks)
+
+Hollow pools (< 5 real facts) and thin pools (< 15 total including synthetics) were fixed across 13 decks:
+
+| Deck | Action | Detail |
+|---|---|---|
+| `ap_biology` | Merge + synthetics | `person_names` (3 facts) → merged into `experiment_terms`; 6 thin pools got 7–9 synthetics each |
+| `ap_chemistry` | Merge + synthetics + exempt | `element_names` (2 facts) → `chemistry_concepts` (+ `homogeneityExempt`); `molecular_geometries` (3 facts) → `reaction_types`; `electrochemistry_terms` got 6 synthetics |
+| `ap_physics_1` | Merge + synthetics | `fluid_properties` (3 facts) → `quantity_definitions`; `collision_types` (4 facts) → `term_definitions`; `force_type_names` got 10 synthetics; `rotational_quantities` got 8 synthetics |
+| `ap_psychology` | Merge | `intelligence_terms` (2 facts) → `psych_concept_terms` |
+| `ap_us_history` | Synthetics | `supreme_court_cases` (5 facts) got 10 synthetics (landmark case names) |
+| `ap_european_history` | Synthetics | `movement_names` (9 facts) got 6 synthetics |
+| `ap_world_history` | Synthetics | `mass_atrocity_names` (6 facts) got 9 synthetics (historically accurate event names) |
+| `constellations` | Merge | `deep_sky_names` (3 facts) → `concept_terms` |
+| `dinosaurs` | Merge + exempt | `clade_names` (3 facts) → `misc_concepts` (+ `homogeneityExempt` for broad pool) |
+| `nasa_missions` | Synthetics | `launch_years` (6 bracket facts) got 20 year synthetics |
+| `us_presidents` | Synthetics | `inauguration_years` (8 bracket facts) got 20 year synthetics |
+| `world_wonders` | Exempt | `measurement_number` marked `homogeneityExempt` (mixed units: metres/km/years/tonnes inherently vary) |
+| `medical_terminology` | Standardize | `condition_names`: 23 definition-format answers converted to bare clinical term names (e.g. "underactive thyroid producing insufficient thyroid hormone" → "Hypothyroidism") |
+
+Result: 0 FAIL across all 75 decks after remediation.

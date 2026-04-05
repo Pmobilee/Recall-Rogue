@@ -4710,7 +4710,7 @@
       "correctAnswer": "Flynn effect",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "intelligence_terms",
+      "answerTypePoolId": "psych_concept_terms",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -4748,7 +4748,7 @@
         "Intellectual developmental disorder"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "intelligence_terms",
+      "answerTypePoolId": "psych_concept_terms",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -15181,7 +15181,9 @@
         "ap_psych_diathesis_stress",
         "ap_psych_ssri_definition",
         "ap_psych_antipsychotics_dopamine",
-        "ap_psych_labeling_stigma"
+        "ap_psych_labeling_stigma",
+        "ap_psych_intelligence_flynn_effect",
+        "ap_psych_intelligence_intellectual_disability"
       ],
       "minimumSize": 5
     },
@@ -15358,31 +15360,6 @@
         "ap_psych_forgetting_false_memories"
       ],
       "minimumSize": 5
-    },
-    {
-      "id": "intelligence_terms",
-      "label": "Intelligence / Thinking Term",
-      "answerFormat": "term",
-      "factIds": [
-        "ap_psych_intelligence_flynn_effect",
-        "ap_psych_intelligence_intellectual_disability"
-      ],
-      "minimumSize": 2,
-      "syntheticDistractors": [
-        "Crystallized intelligence",
-        "Fluid intelligence",
-        "Savant syndrome",
-        "Gifted threshold",
-        "Intelligence quotient",
-        "Mental age",
-        "Deviation IQ",
-        "Factor analysis",
-        "Stereotype threat",
-        "Growth mindset",
-        "Fixed mindset",
-        "Cognitive reserve",
-        "Neural efficiency"
-      ]
     },
     {
       "id": "social_psych_terms",

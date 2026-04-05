@@ -41,7 +41,11 @@
         "ap_phys1_shm_max_accel",
         "ap_phys1_vector_addition_tip_to_tail",
         "ap_phys1_vector_subtraction",
-        "ap_phys1_accel_at_peak_projectile"
+        "ap_phys1_accel_at_peak_projectile",
+        "ap_phys1_elastic_collision",
+        "ap_phys1_inelastic_collision",
+        "ap_phys1_perfectly_inelastic",
+        "ap_phys1_momentum_elastic_ke"
       ]
     },
     {
@@ -129,6 +133,18 @@
         "ap_phys1_gravity_force_type",
         "ap_phys1_spring_force_type",
         "ap_phys1_buoyant_force_type"
+      ],
+      "syntheticDistractors": [
+        "Friction force",
+        "Applied force",
+        "Magnetic force",
+        "Electric force",
+        "Air resistance",
+        "Centripetal force",
+        "Net force",
+        "Weight force",
+        "Contact force",
+        "Nuclear force"
       ]
     },
     {
@@ -146,7 +162,10 @@
         "ap_phys1_friction_coefficient",
         "ap_phys1_work_perpendicular",
         "ap_phys1_position_vs_displacement",
-        "ap_phys1_distance_vs_displacement"
+        "ap_phys1_distance_vs_displacement",
+        "ap_phys1_density_def",
+        "ap_phys1_pressure_def",
+        "ap_phys1_flow_rate_def"
       ]
     },
     {
@@ -184,22 +203,6 @@
       ]
     },
     {
-      "id": "collision_types",
-      "name": "Collision Types",
-      "factIds": [
-        "ap_phys1_elastic_collision",
-        "ap_phys1_inelastic_collision",
-        "ap_phys1_perfectly_inelastic",
-        "ap_phys1_momentum_elastic_ke"
-      ],
-      "syntheticDistractors": [
-        "Explosive collision",
-        "Superelastic collision",
-        "Oblique collision"
-      ],
-      "minimumSize": 4
-    },
-    {
       "id": "bracket_numbers",
       "name": "Bracket Numbers",
       "factIds": [
@@ -212,21 +215,6 @@
       ]
     },
     {
-      "id": "fluid_properties",
-      "name": "Fluid Properties",
-      "factIds": [
-        "ap_phys1_density_def",
-        "ap_phys1_pressure_def",
-        "ap_phys1_flow_rate_def"
-      ],
-      "syntheticDistractors": [
-        "Viscosity (resistance to flow)",
-        "Surface tension (cohesion)",
-        "Capillarity (narrow tube flow)"
-      ],
-      "minimumSize": 3
-    },
-    {
       "id": "rotational_quantities",
       "name": "Rotational Quantities",
       "factIds": [
@@ -237,6 +225,16 @@
         "ap_phys1_radian_def",
         "ap_phys1_angular_pos_units",
         "ap_phys1_moi_axis_dependence"
+      ],
+      "syntheticDistractors": [
+        "Torque (tau, rotational force)",
+        "Angular momentum (L = Iω)",
+        "Rotational kinetic energy (½Iω²)",
+        "Tangential velocity (v = rω)",
+        "Period (T, time per revolution)",
+        "Frequency (f = 1/T)",
+        "Centripetal acceleration (v²/r)",
+        "Linear momentum (p = mv)"
       ]
     },
     {
@@ -4855,7 +4853,7 @@
         "collision where kinetic energy is conserved"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "collision_types",
+      "answerTypePoolId": "term_definitions",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What type of collision conserves BOTH momentum AND kinetic energy?",
@@ -4893,7 +4891,7 @@
         "collision where kinetic energy is NOT conserved"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "collision_types",
+      "answerTypePoolId": "term_definitions",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What type of collision conserves momentum but NOT kinetic energy, with some KE converted to other forms?",
@@ -4931,7 +4929,7 @@
         "objects stick together after collision"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "collision_types",
+      "answerTypePoolId": "term_definitions",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What special type of collision results in the objects sticking together with a common final velocity, with maximum kinetic energy loss?",
@@ -5156,7 +5154,7 @@
         "elastic collision conserves both p and KE"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "collision_types",
+      "answerTypePoolId": "term_definitions",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "In an elastic collision, what quantities are conserved?",
@@ -6806,7 +6804,7 @@
         "mass per unit volume"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "fluid_properties",
+      "answerTypePoolId": "quantity_definitions",
       "difficulty": 1,
       "funScore": 5,
       "quizQuestion": "What property of matter equals mass divided by volume, with SI unit kg/m³?",
@@ -6844,7 +6842,7 @@
         "P = F⊥/A"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "fluid_properties",
+      "answerTypePoolId": "quantity_definitions",
       "difficulty": 1,
       "funScore": 6,
       "quizQuestion": "What quantity equals the perpendicular force exerted per unit area on a surface, measured in pascals (Pa)?",
@@ -7294,7 +7292,7 @@
         "flow rate = cross-sectional area times fluid speed"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "fluid_properties",
+      "answerTypePoolId": "quantity_definitions",
       "difficulty": 1,
       "funScore": 6,
       "quizQuestion": "What equation gives the volume flow rate Q (volume per unit time) through a pipe in terms of cross-sectional area A and fluid speed v?",
