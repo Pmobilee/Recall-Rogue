@@ -2643,11 +2643,11 @@
       ]
     },
     {
-      "id": "solar_system_voyager2_interstellar",
-      "correctAnswer": "Voyager 2",
+      "id": "solar_system_voyager1_interstellar",
+      "correctAnswer": "Voyager 1",
       "acceptableAlternatives": [
-        "Voyager Two",
-        "Voyager II"
+        "Voyager One",
+        "Voyager I"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "mission_names",
@@ -2665,28 +2665,28 @@
         "Galileo"
       ],
       "quizQuestion": "Which spacecraft launched in 1977 is still sending data from interstellar space?",
-      "explanation": "Voyager 2 was launched on August 20, 1977 — over 47 years ago. It crossed into interstellar space in 2018 and continues to transmit data back to Earth, making it one of humanity's longest-running space missions.",
-      "statement": "Voyager 2, launched in 1977, is still sending data from interstellar space.",
-      "wowFactor": "A spacecraft built with 1970s technology is still communicating from beyond our solar system. It's farther from Earth than almost anything we've ever made.",
+      "explanation": "Voyager 1 was launched on September 5, 1977 — over 47 years ago. It crossed into interstellar space in 2012, becoming the first human-made object to do so, and continues to transmit data back to Earth.",
+      "statement": "Voyager 1, launched in 1977, was the first spacecraft to reach interstellar space and is still sending data.",
+      "wowFactor": "A spacecraft built with 1970s technology is still communicating from beyond our solar system — Voyager 1 crossed into interstellar space in 2012.",
       "visualDescription": "A tiny silver probe with a golden dish antenna floating in pure black space, a faint radio signal beam stretching back toward a distant glowing sun.",
       "sourceName": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Voyager_2",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Voyager_1",
       "volatile": false,
       "categoryL1": "space_astronomy",
       "categoryL2": "missions_spacecraft",
       "variants": [
         {
-          "quizQuestion": "What year was Voyager 2 launched?",
+          "quizQuestion": "What year was Voyager 1 launched?",
           "correctAnswer": "{1977}",
           "distractors": []
         },
         {
-          "quizQuestion": "Voyager 2 entered interstellar space in which year?",
-          "correctAnswer": "{2018}",
+          "quizQuestion": "Voyager 1 entered interstellar space in which year?",
+          "correctAnswer": "{2012}",
           "distractors": []
         },
         {
-          "quizQuestion": "Which region of space is Voyager 2 currently traveling through?",
+          "quizQuestion": "Which region of space is Voyager 1 currently traveling through?",
           "correctAnswer": "Interstellar space",
           "distractors": [
             "The Kuiper Belt",
@@ -2700,7 +2700,7 @@
           ]
         },
         {
-          "quizQuestion": "How many years had Voyager 2 been in space by 2026?",
+          "quizQuestion": "How many years had Voyager 1 been in space by 2026?",
           "correctAnswer": "{49}",
           "distractors": []
         }
@@ -6883,7 +6883,7 @@
       "factIds": [
         "solar_system_voyager2_ice_giants",
         "solar_system_voyager2_grand_tour",
-        "solar_system_voyager2_interstellar",
+        "solar_system_voyager1_interstellar",
         "solar_system_cassini_saturn_orbit_years",
         "solar_system_cassini_titan_landing",
         "solar_system_cassini_enceladus_geysers",

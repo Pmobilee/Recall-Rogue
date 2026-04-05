@@ -3972,10 +3972,11 @@
     },
     {
       "id": "food_dish_turkish_delight_narnia",
-      "correctAnswer": "C.S. Lewis",
+      "correctAnswer": "The Lion, the Witch and the Wardrobe",
       "acceptableAlternatives": [
         "The Lion the Witch and the Wardrobe",
-        "Narnia"
+        "Lion, Witch and the Wardrobe",
+        "The Chronicles of Narnia"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "technique_terms",
@@ -3983,12 +3984,12 @@
       "funScore": 8,
       "ageGroup": "all",
       "distractors": [
-        "J.R.R. Tolkien",
-        "Roald Dahl",
-        "Charles Dickens",
-        "Jane Austen",
-        "George Orwell",
-        "Harry Potter"
+        "Alice in Wonderland",
+        "Charlie and the Chocolate Factory",
+        "The Hobbit",
+        "Peter Pan",
+        "The Secret Garden",
+        "Treasure Island"
       ],
       "quizQuestion": "Which 1950 novel by C.S. Lewis featured Turkish delight (lokum) so prominently it boosted sales of the confection?",
       "explanation": "Turkish delight (lokum) was featured in C.S. Lewis's 'The Lion, the Witch and the Wardrobe' (1950), which boosted sales after the 2005 film adaptation. Ali Muhiddin Hacı Bekir claims to have created lokum in Constantinople in 1777, though Persian starch-sugar recipes predate him. Source: Wikipedia/Turkish_delight",
@@ -5686,9 +5687,10 @@
     },
     {
       "id": "food_hist_potato_europe",
-      "correctAnswer": "1500s",
+      "correctAnswer": "1570s",
       "acceptableAlternatives": [
-        "16th century",
+        "1570",
+        "late 1500s",
         "second half of the 1500s"
       ],
       "chainThemeId": 3,
@@ -5705,9 +5707,9 @@
         "1200s",
         "1300s"
       ],
-      "quizQuestion": "Spanish conquistadors brought potatoes to Europe in the latter half of which century, following the conquest of the Inca?",
-      "explanation": "Spanish conquistadors brought potatoes to Europe in the latter half of the 1500s, following the conquest of the Inca Empire. Potatoes were first domesticated near Lake Titicaca ~7,000–10,000 years ago. After 1750, they became an important food staple. Source: Wikipedia/Potato",
-      "statement": "Spanish conquistadors brought the potato to Europe in the 1500s following the conquest of the Inca Empire.",
+      "quizQuestion": "Spanish conquistadors brought potatoes to Europe in which decade, following the conquest of the Inca?",
+      "explanation": "Spanish conquistadors brought potatoes to Europe in the 1570s, following the conquest of the Inca Empire. The potato reached Spain around 1570, then spread through Europe. After 1750, it became a crucial food staple across the continent.",
+      "statement": "Spanish conquistadors brought the potato to Europe in the 1570s following the conquest of the Inca Empire.",
       "wowFactor": "When the potato arrived in Europe in the 1500s, it was viewed with deep suspicion — not in the Bible, grew underground in darkness, and botanists noted it was related to deadly nightshade. Centuries of resistance before it transformed European agriculture.",
       "visualDescription": "Spanish conquistadors carrying potato plants from the Inca highlands in the 1500s, European peasants reluctantly accepting the strange tuber that would eventually feed their descendants",
       "sourceName": "Wikipedia",

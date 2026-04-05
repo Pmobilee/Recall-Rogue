@@ -21,7 +21,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Paris",
       "volatile": false,
-      "distractors": ["London", "Berlin", "Madrid", "Rome", "Brussels", "Amsterdam", "Vienna", "Lisbon"]
+      "distractors": [
+        "London",
+        "Berlin",
+        "Madrid",
+        "Rome",
+        "Brussels",
+        "Amsterdam",
+        "Vienna",
+        "Lisbon"
+      ]
     },
     {
       "id": "wc_japan",
@@ -37,7 +46,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Tokyo",
       "volatile": false,
-      "distractors": ["Seoul", "Bangkok", "Beijing", "Manila", "Jakarta", "Delhi", "Shanghai", "Hong Kong"]
+      "distractors": [
+        "Seoul",
+        "Bangkok",
+        "Beijing",
+        "Manila",
+        "Jakarta",
+        "Delhi",
+        "Shanghai",
+        "Hong Kong"
+      ]
     },
     {
       "id": "wc_uk",
@@ -53,12 +71,24 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/London",
       "volatile": false,
-      "distractors": ["Paris", "Berlin", "Dublin", "Edinburgh", "Manchester", "Liverpool", "Oxford", "Cambridge"]
+      "distractors": [
+        "Paris",
+        "Berlin",
+        "Dublin",
+        "Edinburgh",
+        "Manchester",
+        "Liverpool",
+        "Oxford",
+        "Cambridge"
+      ]
     },
     {
       "id": "wc_usa",
       "correctAnswer": "Washington, D.C.",
-      "acceptableAlternatives": ["Washington DC", "Washington"],
+      "acceptableAlternatives": [
+        "Washington DC",
+        "Washington"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "capital_names",
       "difficulty": 1,
@@ -69,7 +99,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Washington,_D.C.",
       "volatile": false,
-      "distractors": ["New York", "Los Angeles", "Chicago", "Boston", "Philadelphia", "Atlanta", "Denver", "San Francisco"]
+      "distractors": [
+        "New York",
+        "Los Angeles",
+        "Chicago",
+        "Boston",
+        "Philadelphia",
+        "Atlanta",
+        "Denver",
+        "San Francisco"
+      ]
     },
     {
       "id": "wc_germany",
@@ -85,7 +124,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Berlin",
       "volatile": false,
-      "distractors": ["Munich", "Hamburg", "Frankfurt", "Cologne", "Stuttgart", "Düsseldorf", "Dresden", "Leipzig"]
+      "distractors": [
+        "Munich",
+        "Hamburg",
+        "Frankfurt",
+        "Cologne",
+        "Stuttgart",
+        "Düsseldorf",
+        "Dresden",
+        "Leipzig"
+      ]
     },
     {
       "id": "wc_italy",
@@ -101,7 +149,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Rome",
       "volatile": false,
-      "distractors": ["Milan", "Venice", "Florence", "Naples", "Turin", "Genoa", "Palermo", "Bologna"]
+      "distractors": [
+        "Milan",
+        "Venice",
+        "Florence",
+        "Naples",
+        "Turin",
+        "Genoa",
+        "Palermo",
+        "Bologna"
+      ]
     },
     {
       "id": "wc_spain",
@@ -117,7 +174,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Madrid",
       "volatile": false,
-      "distractors": ["Barcelona", "Valencia", "Seville", "Bilbao", "Malaga", "Palma", "Cordoba", "Granada"]
+      "distractors": [
+        "Barcelona",
+        "Valencia",
+        "Seville",
+        "Bilbao",
+        "Malaga",
+        "Palma",
+        "Cordoba",
+        "Granada"
+      ]
     },
     {
       "id": "wc_australia",
@@ -133,12 +199,23 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Canberra",
       "volatile": false,
-      "distractors": ["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide", "Hobart", "Gold Coast", "Newcastle"]
+      "distractors": [
+        "Sydney",
+        "Melbourne",
+        "Brisbane",
+        "Perth",
+        "Adelaide",
+        "Hobart",
+        "Gold Coast",
+        "Newcastle"
+      ]
     },
     {
       "id": "wc_brazil",
       "correctAnswer": "Brasília",
-      "acceptableAlternatives": ["Brasilia"],
+      "acceptableAlternatives": [
+        "Brasilia"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "capital_names",
       "difficulty": 1,
@@ -149,12 +226,23 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Bras%C3%ADlia",
       "volatile": false,
-      "distractors": ["Rio de Janeiro", "São Paulo", "Salvador", "Recife", "Fortaleza", "Belo Horizonte", "Manaus", "Porto Alegre"]
+      "distractors": [
+        "Rio de Janeiro",
+        "São Paulo",
+        "Salvador",
+        "Recife",
+        "Fortaleza",
+        "Belo Horizonte",
+        "Manaus",
+        "Porto Alegre"
+      ]
     },
     {
       "id": "wc_china",
       "correctAnswer": "Beijing",
-      "acceptableAlternatives": ["Peking"],
+      "acceptableAlternatives": [
+        "Peking"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "capital_names",
       "difficulty": 1,
@@ -165,7 +253,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Beijing",
       "volatile": false,
-      "distractors": ["Shanghai", "Hong Kong", "Xi'an", "Chongqing", "Tianjin", "Nanjing", "Hangzhou", "Guangzhou"]
+      "distractors": [
+        "Shanghai",
+        "Hong Kong",
+        "Xi'an",
+        "Chongqing",
+        "Tianjin",
+        "Nanjing",
+        "Hangzhou",
+        "Guangzhou"
+      ]
     },
     {
       "id": "wc_south_korea",
@@ -181,7 +278,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Seoul",
       "volatile": false,
-      "distractors": ["Busan", "Incheon", "Daegu", "Daejeon", "Gwangju", "Ulsan", "Seoul", "Seongnam"]
+      "distractors": [
+        "Busan",
+        "Incheon",
+        "Daegu",
+        "Daejeon",
+        "Gwangju",
+        "Ulsan",
+        "Seoul",
+        "Seongnam"
+      ]
     },
     {
       "id": "wc_egypt",
@@ -197,12 +303,23 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Cairo",
       "volatile": false,
-      "distractors": ["Alexandria", "Giza", "Helwan", "Aswan", "Luxor", "Suez", "Port Said", "Mansoura"]
+      "distractors": [
+        "Alexandria",
+        "Giza",
+        "Helwan",
+        "Aswan",
+        "Luxor",
+        "Suez",
+        "Port Said",
+        "Mansoura"
+      ]
     },
     {
       "id": "wc_india",
       "correctAnswer": "New Delhi",
-      "acceptableAlternatives": ["Delhi"],
+      "acceptableAlternatives": [
+        "Delhi"
+      ],
       "chainThemeId": 0,
       "answerTypePoolId": "capital_names",
       "difficulty": 3,
@@ -213,12 +330,23 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/New_Delhi",
       "volatile": false,
-      "distractors": ["Mumbai", "Bangalore", "Kolkata", "Hyderabad", "Pune", "Chennai", "Ahmedabad", "Jaipur"]
+      "distractors": [
+        "Mumbai",
+        "Bangalore",
+        "Kolkata",
+        "Hyderabad",
+        "Pune",
+        "Chennai",
+        "Ahmedabad",
+        "Jaipur"
+      ]
     },
     {
       "id": "wc_mexico",
       "correctAnswer": "Mexico City",
-      "acceptableAlternatives": ["Mexico"],
+      "acceptableAlternatives": [
+        "Mexico"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "capital_names",
       "difficulty": 3,
@@ -229,7 +357,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Mexico_City",
       "volatile": false,
-      "distractors": ["Guadalajara", "Monterrey", "Cancún", "Veracruz", "Puebla", "León", "Acapulco", "Querétaro"]
+      "distractors": [
+        "Guadalajara",
+        "Monterrey",
+        "Cancún",
+        "Veracruz",
+        "Puebla",
+        "León",
+        "Acapulco",
+        "Querétaro"
+      ]
     },
     {
       "id": "wc_turkey",
@@ -245,7 +382,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Ankara",
       "volatile": false,
-      "distractors": ["Istanbul", "Izmir", "Adana", "Gaziantep", "Konya", "Urfa", "Ankara", "Antalya"]
+      "distractors": [
+        "Istanbul",
+        "Izmir",
+        "Adana",
+        "Gaziantep",
+        "Konya",
+        "Urfa",
+        "Ankara",
+        "Antalya"
+      ]
     },
     {
       "id": "wc_poland",
@@ -261,7 +407,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Warsaw",
       "volatile": false,
-      "distractors": ["Krakow", "Gdansk", "Wroclaw", "Poznan", "Lodz", "Szczecin", "Katowice", "Bialystok"]
+      "distractors": [
+        "Krakow",
+        "Gdansk",
+        "Wroclaw",
+        "Poznan",
+        "Lodz",
+        "Szczecin",
+        "Katowice",
+        "Bialystok"
+      ]
     },
     {
       "id": "wc_argentina",
@@ -277,7 +432,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Buenos_Aires",
       "volatile": false,
-      "distractors": ["Córdoba", "Rosario", "Mendoza", "La Plata", "San Juan", "Tucumán", "Mar del Plata", "Salta"]
+      "distractors": [
+        "Córdoba",
+        "Rosario",
+        "Mendoza",
+        "La Plata",
+        "San Juan",
+        "Tucumán",
+        "Mar del Plata",
+        "Salta"
+      ]
     },
     {
       "id": "wc_thailand",
@@ -293,7 +457,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Bangkok",
       "volatile": false,
-      "distractors": ["Chiang Mai", "Pattaya", "Phuket", "Krabi", "Samui", "Hua Hin", "Ayutthaya", "Sukhothai"]
+      "distractors": [
+        "Chiang Mai",
+        "Pattaya",
+        "Phuket",
+        "Krabi",
+        "Samui",
+        "Hua Hin",
+        "Ayutthaya",
+        "Sukhothai"
+      ]
     },
     {
       "id": "wc_sweden",
@@ -309,7 +482,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Stockholm",
       "volatile": false,
-      "distractors": ["Gothenburg", "Malmö", "Uppsala", "Västerås", "Örebro", "Linköping", "Helsingborg", "Jönköping"]
+      "distractors": [
+        "Gothenburg",
+        "Malmö",
+        "Uppsala",
+        "Västerås",
+        "Örebro",
+        "Linköping",
+        "Helsingborg",
+        "Jönköping"
+      ]
     },
     {
       "id": "wc_portugal",
@@ -325,12 +507,23 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Lisbon",
       "volatile": false,
-      "distractors": ["Porto", "Covilhã", "Covilha", "Funchal", "Ponta Delgada", "Évora", "Viseu", "Guarda"]
+      "distractors": [
+        "Porto",
+        "Covilhã",
+        "Covilha",
+        "Funchal",
+        "Ponta Delgada",
+        "Évora",
+        "Viseu",
+        "Guarda"
+      ]
     },
     {
       "id": "wc_myanmar",
       "correctAnswer": "Naypyidaw",
-      "acceptableAlternatives": ["Nay Pyi Taw"],
+      "acceptableAlternatives": [
+        "Nay Pyi Taw"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "capital_names",
       "difficulty": 5,
@@ -341,12 +534,24 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Naypyidaw",
       "volatile": false,
-      "distractors": ["Yangon", "Mandalay", "Bagan", "Naypyidaw", "Pagan", "Rangoon", "Tavoy", "Moulmein"]
+      "distractors": [
+        "Yangon",
+        "Mandalay",
+        "Bagan",
+        "Naypyidaw",
+        "Pagan",
+        "Rangoon",
+        "Tavoy",
+        "Moulmein"
+      ]
     },
     {
       "id": "wc_kazakhstan",
       "correctAnswer": "Astana",
-      "acceptableAlternatives": ["Nur-Sultan", "Akmola"],
+      "acceptableAlternatives": [
+        "Nur-Sultan",
+        "Akmola"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "capital_names",
       "difficulty": 5,
@@ -357,12 +562,24 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Astana",
       "volatile": true,
-      "distractors": ["Almaty", "Karaganda", "Aktau", "Atyrau", "Pavlodar", "Semey", "Kostanay", "Kyzylorda"]
+      "distractors": [
+        "Almaty",
+        "Karaganda",
+        "Aktau",
+        "Atyrau",
+        "Pavlodar",
+        "Semey",
+        "Kostanay",
+        "Kyzylorda"
+      ]
     },
     {
       "id": "wc_sri_lanka",
       "correctAnswer": "Sri Jayawardenepura Kotte",
-      "acceptableAlternatives": ["Jayawardenepura Kotte", "Colombo"],
+      "acceptableAlternatives": [
+        "Jayawardenepura Kotte",
+        "Colombo"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "capital_names",
       "difficulty": 5,
@@ -373,7 +590,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Sri_Jayawardenepura_Kotte",
       "volatile": false,
-      "distractors": ["Colombo", "Kandy", "Galle", "Matara", "Batticaloa", "Trincomalee", "Jaffna", "Kurunegala"]
+      "distractors": [
+        "Colombo",
+        "Kandy",
+        "Galle",
+        "Matara",
+        "Batticaloa",
+        "Trincomalee",
+        "Jaffna",
+        "Kurunegala"
+      ]
     },
     {
       "id": "wc_nigeria",
@@ -389,7 +615,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Abuja",
       "volatile": false,
-      "distractors": ["Lagos", "Ibadan", "Kano", "Enugu", "Port Harcourt", "Benin City", "Owerri", "Jos"]
+      "distractors": [
+        "Lagos",
+        "Ibadan",
+        "Kano",
+        "Enugu",
+        "Port Harcourt",
+        "Benin City",
+        "Owerri",
+        "Jos"
+      ]
     },
     {
       "id": "wc_switzerland",
@@ -405,7 +640,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Bern",
       "volatile": false,
-      "distractors": ["Zürich", "Geneva", "Basel", "Lucerne", "Lausanne", "Neuchâtel", "Winterthur", "St. Gallen"]
+      "distractors": [
+        "Zürich",
+        "Geneva",
+        "Basel",
+        "Lucerne",
+        "Lausanne",
+        "Neuchâtel",
+        "Winterthur",
+        "St. Gallen"
+      ]
     },
     {
       "id": "wc_morocco",
@@ -421,7 +665,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Rabat",
       "volatile": false,
-      "distractors": ["Casablanca", "Fez", "Marrakesh", "Meknes", "Agadir", "Essaouira", "Tanger", "Oujda"]
+      "distractors": [
+        "Casablanca",
+        "Fez",
+        "Marrakesh",
+        "Meknes",
+        "Agadir",
+        "Essaouira",
+        "Tanger",
+        "Oujda"
+      ]
     },
     {
       "id": "wc_new_zealand",
@@ -437,12 +690,24 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Wellington,_New_Zealand",
       "volatile": false,
-      "distractors": ["Auckland", "Christchurch", "Dunedin", "Hamilton", "Tauranga", "Lower Hutt", "Porirua", "Kapiti"]
+      "distractors": [
+        "Auckland",
+        "Christchurch",
+        "Dunedin",
+        "Hamilton",
+        "Tauranga",
+        "Lower Hutt",
+        "Porirua",
+        "Kapiti"
+      ]
     },
     {
       "id": "wc_south_africa",
       "correctAnswer": "Pretoria",
-      "acceptableAlternatives": ["Cape Town", "Bloemfontein"],
+      "acceptableAlternatives": [
+        "Cape Town",
+        "Bloemfontein"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "capital_names",
       "difficulty": 5,
@@ -453,7 +718,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Pretoria",
       "volatile": false,
-      "distractors": ["Cape Town", "Johannesburg", "Durban", "Bloemfontein", "Port Elizabeth", "Soweto", "Sandton", "Bellville"]
+      "distractors": [
+        "Cape Town",
+        "Johannesburg",
+        "Durban",
+        "Bloemfontein",
+        "Port Elizabeth",
+        "Soweto",
+        "Sandton",
+        "Bellville"
+      ]
     },
     {
       "id": "wc_pakistan",
@@ -469,7 +743,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Islamabad",
       "volatile": false,
-      "distractors": ["Karachi", "Lahore", "Peshawar", "Multan", "Faisalabad", "Quetta", "Rawalpindi", "Sialkot"]
+      "distractors": [
+        "Karachi",
+        "Lahore",
+        "Peshawar",
+        "Multan",
+        "Faisalabad",
+        "Quetta",
+        "Rawalpindi",
+        "Sialkot"
+      ]
     },
     {
       "id": "wc_philippines",
@@ -485,7 +768,16 @@
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Manila",
       "volatile": false,
-      "distractors": ["Cebu", "Davao", "Quezon City", "Makati", "Caloocan", "Las Piñas", "Pasay", "Taguig"]
+      "distractors": [
+        "Cebu",
+        "Davao",
+        "Quezon City",
+        "Makati",
+        "Caloocan",
+        "Las Piñas",
+        "Pasay",
+        "Taguig"
+      ]
     }
   ],
   "answerTypePools": [
@@ -494,20 +786,36 @@
       "label": "Capital City Names",
       "answerFormat": "place",
       "factIds": [
-        "wc_france", "wc_japan", "wc_uk", "wc_usa", "wc_germany", "wc_italy", "wc_spain", "wc_australia", "wc_brazil", "wc_china",
-        "wc_south_korea", "wc_egypt", "wc_india", "wc_mexico", "wc_turkey", "wc_poland", "wc_argentina", "wc_thailand", "wc_sweden", "wc_portugal",
-        "wc_myanmar", "wc_kazakhstan", "wc_sri_lanka", "wc_nigeria", "wc_switzerland", "wc_morocco", "wc_new_zealand", "wc_south_africa", "wc_pakistan", "wc_philippines"
-      ],
-      "minimumSize": 5
-    },
-    {
-      "id": "country_names",
-      "label": "Country Names",
-      "answerFormat": "name",
-      "factIds": [
-        "wc_france", "wc_japan", "wc_uk", "wc_usa", "wc_germany", "wc_italy", "wc_spain", "wc_australia", "wc_brazil", "wc_china",
-        "wc_south_korea", "wc_egypt", "wc_india", "wc_mexico", "wc_turkey", "wc_poland", "wc_argentina", "wc_thailand", "wc_sweden", "wc_portugal",
-        "wc_myanmar", "wc_kazakhstan", "wc_sri_lanka", "wc_nigeria", "wc_switzerland", "wc_morocco", "wc_new_zealand", "wc_south_africa", "wc_pakistan", "wc_philippines"
+        "wc_france",
+        "wc_japan",
+        "wc_uk",
+        "wc_usa",
+        "wc_germany",
+        "wc_italy",
+        "wc_spain",
+        "wc_australia",
+        "wc_brazil",
+        "wc_china",
+        "wc_south_korea",
+        "wc_egypt",
+        "wc_india",
+        "wc_mexico",
+        "wc_turkey",
+        "wc_poland",
+        "wc_argentina",
+        "wc_thailand",
+        "wc_sweden",
+        "wc_portugal",
+        "wc_myanmar",
+        "wc_kazakhstan",
+        "wc_sri_lanka",
+        "wc_nigeria",
+        "wc_switzerland",
+        "wc_morocco",
+        "wc_new_zealand",
+        "wc_south_africa",
+        "wc_pakistan",
+        "wc_philippines"
       ],
       "minimumSize": 5
     }
@@ -521,28 +829,53 @@
       "availableFromMastery": 0,
       "difficulty": 1,
       "reverseCapable": true
-    },
-    {
-      "id": "country_of_capital",
-      "answerPoolId": "country_names",
-      "questionFormat": "Which country has {correctAnswer} as its capital?",
-      "availableFromMastery": 2,
-      "difficulty": 3,
-      "reverseCapable": false
     }
   ],
   "difficultyTiers": [
     {
       "tier": "easy",
-      "factIds": ["wc_france", "wc_japan", "wc_uk", "wc_usa", "wc_germany", "wc_italy", "wc_spain", "wc_australia", "wc_brazil", "wc_china"]
+      "factIds": [
+        "wc_france",
+        "wc_japan",
+        "wc_uk",
+        "wc_usa",
+        "wc_germany",
+        "wc_italy",
+        "wc_spain",
+        "wc_australia",
+        "wc_brazil",
+        "wc_china"
+      ]
     },
     {
       "tier": "medium",
-      "factIds": ["wc_south_korea", "wc_egypt", "wc_india", "wc_mexico", "wc_turkey", "wc_poland", "wc_argentina", "wc_thailand", "wc_sweden", "wc_portugal"]
+      "factIds": [
+        "wc_south_korea",
+        "wc_egypt",
+        "wc_india",
+        "wc_mexico",
+        "wc_turkey",
+        "wc_poland",
+        "wc_argentina",
+        "wc_thailand",
+        "wc_sweden",
+        "wc_portugal"
+      ]
     },
     {
       "tier": "hard",
-      "factIds": ["wc_myanmar", "wc_kazakhstan", "wc_sri_lanka", "wc_nigeria", "wc_switzerland", "wc_morocco", "wc_new_zealand", "wc_south_africa", "wc_pakistan", "wc_philippines"]
+      "factIds": [
+        "wc_myanmar",
+        "wc_kazakhstan",
+        "wc_sri_lanka",
+        "wc_nigeria",
+        "wc_switzerland",
+        "wc_morocco",
+        "wc_new_zealand",
+        "wc_south_africa",
+        "wc_pakistan",
+        "wc_philippines"
+      ]
     }
   ]
 }

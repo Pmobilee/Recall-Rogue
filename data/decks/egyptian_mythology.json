@@ -4845,23 +4845,24 @@
       "id": "egypt_temp_abu_simbel_relocation",
       "correctAnswer": "Lake Nasser",
       "acceptableAlternatives": [
-        "moved due to the Aswan High Dam creating Lake Nasser; cost $41.7 million"
+        "Rising waters of Lake Nasser",
+        "the Aswan High Dam creating Lake Nasser",
+        "Aswan High Dam flooding"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "numbers_dates",
+      "answerTypePoolId": "places_locations",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen_adult",
       "distractors": [
-        "relocated to prevent flooding from the Nile's natural flood cycle; cost $5 million",
-        "moved because of earthquake damage; cost $15 million",
-        "relocated to a museum for better preservation; cost $100 million",
-        "moved after looters damaged the original site; cost $25 million",
-        "relocated for a new road construction project; cost $8 million",
-        "moved to be closer to Luxor for tourism; cost $20 million"
+        "Earthquake damage to the original site",
+        "Looting and vandalism of the temples",
+        "A new road construction project",
+        "Erosion from Nile flood cycles",
+        "Relocation for better tourism access"
       ],
-      "quizQuestion": "Why was Abu Simbel relocated in 1968, and how much did the project cost?",
-      "explanation": "The complex was relocated in its entirety in 1968 to higher ground due to the Aswan High Dam creating Lake Nasser. The project cost $41.7 million and was completed 18 months ahead of schedule.",
+      "quizQuestion": "Why was Abu Simbel relocated in 1968?",
+      "explanation": "The Abu Simbel temples were relocated in 1968 because the Aswan High Dam was creating Lake Nasser, and the rising waters would have submerged the ancient site permanently.",
       "statement": "",
       "wowFactor": "",
       "visualDescription": "",
@@ -4870,12 +4871,41 @@
       "volatile": false,
       "categoryL1": "mythology_folklore",
       "categoryL2": "egyptian",
-      "variants": [
-        {
-          "question": "Abu Simbel features a solar alignment — what happens twice yearly?",
-          "correct_answer": "sunlight penetrates to illuminate the innermost sanctum"
-        }
-      ]
+      "variants": []
+    },
+    {
+      "id": "egypt_temp_abu_simbel_relocation_cost",
+      "correctAnswer": "{40000000}",
+      "acceptableAlternatives": [
+        "40000000",
+        " million",
+        "approximately  million",
+        "41700000",
+        ".7 million"
+      ],
+      "chainThemeId": 4,
+      "answerTypePoolId": "numbers_dates",
+      "difficulty": 4,
+      "funScore": 6,
+      "ageGroup": "teen_adult",
+      "distractors": [
+        "{5000000}",
+        "{15000000}",
+        "{100000000}",
+        "{25000000}",
+        "{8000000}"
+      ],
+      "quizQuestion": "How much did the Abu Simbel relocation project cost in 1968?",
+      "explanation": "The Abu Simbel relocation cost approximately .7 million (roughly  million). It was an international UNESCO effort completed 18 months ahead of schedule.",
+      "statement": "",
+      "wowFactor": "",
+      "visualDescription": "",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Abu_Simbel_temples",
+      "volatile": false,
+      "categoryL1": "mythology_folklore",
+      "categoryL2": "egyptian",
+      "variants": []
     },
     {
       "id": "egypt_temp_abu_simbel_construction",
@@ -5923,12 +5953,12 @@
         "egypt_temp_karnak_duration",
         "egypt_temp_karnak_columns",
         "egypt_temp_karnak_obelisk",
-        "egypt_temp_abu_simbel_relocation",
         "egypt_temp_abu_simbel_construction",
         "egypt_temp_philae_relocation",
         "egypt_temp_opet_duration",
         "egypt_temp_luxor_sphinx",
-        "egypt_temp_gods_wife_end"
+        "egypt_temp_gods_wife_end",
+        "egypt_temp_abu_simbel_relocation_cost"
       ],
       "minimumSize": 3
     },
@@ -5945,7 +5975,8 @@
         "egypt_death_anubis_cynopolis",
         "egypt_temp_khnum_elephantine",
         "egypt_temp_amun_karnak_location",
-        "egypt_temp_bastet_bubastis"
+        "egypt_temp_bastet_bubastis",
+        "egypt_temp_abu_simbel_relocation"
       ],
       "minimumSize": 3,
       "syntheticDistractors": [
