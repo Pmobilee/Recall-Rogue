@@ -531,7 +531,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Plague_of_Justinian",
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "person_group_names",
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
@@ -571,7 +571,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Byzantine_Empire",
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "quantities_measures",
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
@@ -944,7 +944,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Arabic_numerals",
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "place_names",
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
@@ -1055,7 +1055,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Great_Mosque_of_C%C3%B3rdoba",
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "quantities_measures",
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
@@ -1129,7 +1129,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/C%C3%B3rdoba,_Andalusia",
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "quantities_measures",
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
@@ -1243,7 +1243,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Longship",
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "description_phrases",
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
@@ -1705,7 +1705,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Longship",
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "description_phrases",
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
@@ -1865,7 +1865,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Carolingian_minuscule",
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "person_group_names",
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
@@ -2369,7 +2369,7 @@
         "Deus Vult"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "description_phrases",
       "difficulty": 2,
       "funScore": 7,
       "distractors": [
@@ -3727,7 +3727,7 @@
         "100,000 to 160,000"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "quantities_measures",
       "difficulty": 4,
       "funScore": 7,
       "distractors": [
@@ -4138,7 +4138,7 @@
         "drowned crossing a river"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "description_phrases",
       "difficulty": 3,
       "funScore": 8,
       "distractors": [
@@ -4328,7 +4328,7 @@
         "paupers and the poor"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "description_phrases",
       "difficulty": 4,
       "funScore": 8,
       "distractors": [
@@ -4782,7 +4782,7 @@
         "jiaozi"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "description_phrases",
       "difficulty": 3,
       "funScore": 8,
       "distractors": [
@@ -4834,7 +4834,7 @@
         "over a thousand workers"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "quantities_measures",
       "difficulty": 4,
       "funScore": 8,
       "distractors": [
@@ -5076,7 +5076,7 @@
         "3x European GDP"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "quantities_measures",
       "difficulty": 3,
       "funScore": 9,
       "distractors": [
@@ -5808,7 +5808,7 @@
         "western Sudan region"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "place_names",
       "difficulty": 3,
       "funScore": 8,
       "distractors": [
@@ -6381,7 +6381,7 @@
         "11m"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "quantities_measures",
       "difficulty": 3,
       "funScore": 8,
       "distractors": [
@@ -6494,7 +6494,7 @@
         "'coast' in Arabic"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "description_phrases",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -6973,7 +6973,7 @@
         "July–October 1324"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "quantities_measures",
       "difficulty": 4,
       "funScore": 7,
       "distractors": [
@@ -7116,48 +7116,29 @@
       "label": "Concepts & Terms",
       "answerFormat": "term",
       "factIds": [
-        "med_byz_plague_justinian",
-        "med_byz_justinian_territory",
-        "med_isl_arabic_numerals",
-        "med_isl_cordoba_mosque",
-        "med_isl_cordoba_city",
-        "med_vik_longship_design",
         "med_vik_althing",
-        "med_vik_longship_tactics",
-        "med_feu_carolingian_renaissance",
-        "med_feu_carolingian_minuscule",
         "med_feu_feudalism_basics",
         "med_feu_feudal_hierarchy",
         "med_feu_motte_bailey",
         "med_feu_chivalry",
         "med_feu_castle_evolution",
-        "med_4_cru_deus_vult",
         "med_4_cru_second_crusade_outcome",
         "med_4_cru_crusades_cultural_exchange",
-        "med_4_cru_crusades_total_force",
         "med_4_cru_fourth_crusade_impact",
         "med_4_cru_urban_promise",
         "med_4_cru_hattin_true_cross",
-        "med_4_cru_frederick_barbarossa",
         "med_4_cru_hospitallers_origin",
-        "med_4_cru_childrens_crusade_scholarship",
-        "med_5_song_paper_money",
-        "med_5_song_paper_money_factory",
         "med_5_song_bi_sheng_method",
-        "med_5_song_gdp",
         "med_5_song_exam_system",
         "med_5_heian_scripts",
         "med_5_goryeo_metal_type",
         "med_5_heian_samurai_rise",
-        "med_6_afr_ghana_location",
         "med_6_afr_ghana_trade",
         "med_6_afr_trans_saharan_goods",
         "med_6_afr_timbuktu_manuscripts",
-        "med_6_afr_great_zimbabwe_walls",
         "med_6_afr_great_zimbabwe_trade",
-        "med_6_afr_swahili_word",
         "med_6_afr_swahili_exports",
-        "med_6_afr_mansa_musa_cairo"
+        "med_feu_carolingian_renaissance"
       ],
       "minimumSize": 5
     },
@@ -7177,9 +7158,14 @@
         "med_4_cru_hospitaller_malta",
         "med_5_tang_capital_changan",
         "med_6_afr_timbuktu_sankore",
-        "med_6_afr_sijilmasa"
+        "med_6_afr_sijilmasa",
+        "med_isl_arabic_numerals",
+        "med_6_afr_ghana_location"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Alexandria, Egypt"
+      ]
     },
     {
       "id": "structure_names",
@@ -7240,22 +7226,24 @@
         "med_byz_varangian_guard",
         "med_feu_thing_democracy",
         "med_4_cru_bernard_jews",
-        "med_6_afr_great_zimbabwe_builders"
+        "med_6_afr_great_zimbabwe_builders",
+        "med_byz_plague_justinian",
+        "med_feu_carolingian_minuscule"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
-        "Robert Guiscard",
-        "Bayezid I",
-        "Theodoric the Great",
-        "The Janissaries",
+        "Robert Guiscard of Sicily",
+        "The Janissary Corps",
         "The Assassins (Hashashin)",
-        "Ibn Battuta",
-        "Timur (Tamerlane)",
-        "The Almohads",
-        "Nur ad-Din",
-        "Zengi of Mosul",
-        "The Cathars",
-        "The Bogomils"
+        "Ibn Battuta of Tangier",
+        "Timur the Lame (Tamerlane)",
+        "The Almohad Caliphate",
+        "Nur ad-Din of Damascus",
+        "Zengi of Mosul and Aleppo",
+        "The Cathar heretics",
+        "The Bogomil movement",
+        "Theodoric the Ostrogoth",
+        "The Teutonic Order knights"
       ]
     },
     {
@@ -7267,7 +7255,14 @@
         "med_byz_theodora_origins",
         "med_vik_lindisfarne",
         "med_vik_erik_red",
-        "med_vik_runes_jelling"
+        "med_vik_runes_jelling",
+        "med_4_cru_deus_vult",
+        "med_4_cru_frederick_barbarossa",
+        "med_4_cru_childrens_crusade_scholarship",
+        "med_5_song_paper_money",
+        "med_6_afr_swahili_word",
+        "med_vik_longship_design",
+        "med_vik_longship_tactics"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
@@ -7347,6 +7342,29 @@
         "{40}",
         "{50}",
         "{100}"
+      ]
+    },
+    {
+      "id": "quantities_measures",
+      "factIds": [
+        "med_byz_justinian_territory",
+        "med_isl_cordoba_mosque",
+        "med_isl_cordoba_city",
+        "med_4_cru_crusades_total_force",
+        "med_5_song_paper_money_factory",
+        "med_5_song_gdp",
+        "med_6_afr_great_zimbabwe_walls",
+        "med_6_afr_mansa_musa_cairo"
+      ],
+      "syntheticDistractors": [
+        "Over 500 manuscripts",
+        "Roughly 200 kilometers",
+        "More than 40 tributaries",
+        "About 300 years",
+        "Twice as large as France",
+        "Around 60,000 soldiers",
+        "Nearly 90 fortresses",
+        "Five times larger than Britain"
       ]
     }
   ],
