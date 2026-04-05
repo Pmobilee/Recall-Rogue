@@ -711,9 +711,9 @@
         "Phobos",
         "Charon"
       ],
-      "quizQuestion": "Which moon of Saturn has a thick atmosphere and methane lakes?",
-      "explanation": "Titan is Saturn's largest moon and the only moon in the solar system with a dense atmosphere. Its surface has lakes and rivers of liquid methane. Source: Wikipedia/Saturn",
-      "statement": "Saturn's moon Titan has a thick atmosphere and lakes of liquid methane on its surface.",
+      "quizQuestion": "Which moon of Saturn is larger than the planet Mercury?",
+      "explanation": "Titan is Saturn's largest moon and the second-largest moon in the solar system. It is larger than the planet Mercury, though less massive. Titan is also the only moon with a thick atmosphere and the only world besides Earth with surface liquids — lakes of liquid methane.",
+      "statement": "Saturn's moon Titan is larger than the planet Mercury and is the second-largest moon in the solar system.",
       "wowFactor": "Titan has lakes and rain — but not of water. It rains liquid methane there, and rivers of it carve through orange haze-covered terrain.",
       "visualDescription": "Orange haze-shrouded moon Titan with dark methane lakes gleaming on its surface, thick amber atmosphere glowing at its edge, Saturn's rings visible in the distant background",
       "sourceName": "Wikipedia",
@@ -2655,7 +2655,7 @@
       "funScore": 9,
       "ageGroup": "all",
       "distractors": [
-        "Voyager 1",
+        "Voyager 2",
         "Pioneer 10",
         "New Horizons",
         "Cassini-Huygens",
@@ -3709,7 +3709,7 @@
         "Kuiper belt"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "system_facts",
+      "answerTypePoolId": "mission_names",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen+",
@@ -3802,9 +3802,11 @@
     },
     {
       "id": "solar_system_age_4_6_billion",
-      "correctAnswer": "{4.6} billion years",
+      "correctAnswer": "{4.6}",
       "acceptableAlternatives": [
-        "about 4.6 billion years"
+        "4.6 billion years",
+        "about 4.6 billion years",
+        "4600000000"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "bracket_numbers",
@@ -3812,7 +3814,7 @@
       "funScore": 6,
       "ageGroup": "all",
       "distractors": [],
-      "quizQuestion": "Approximately how many billion years old is the solar system?",
+      "quizQuestion": "Approximately how many billion years old is the solar system (to one decimal place)?",
       "explanation": "The solar system formed approximately 4.6 billion years ago from a collapsing cloud of gas and dust. The Sun ignited first, followed by the planets coalescing from the remaining material. This age is determined through radiometric dating of meteorites.",
       "statement": "The solar system is approximately 4.6 billion years old.",
       "wowFactor": "Meteorites are time capsules from the solar system's birth. By measuring the decay of radioactive isotopes in them, scientists pinpointed the solar system's age to 4.568 billion years.",
@@ -3891,10 +3893,11 @@
     },
     {
       "id": "solar_system_sun_mass_percentage",
-      "correctAnswer": "{99.86}%",
+      "correctAnswer": "{99.86}",
       "acceptableAlternatives": [
         "99.86 percent",
-        "nearly 99.9 percent"
+        "nearly 99.9 percent",
+        "99.86%"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "bracket_numbers",
@@ -3902,7 +3905,7 @@
       "funScore": 9,
       "ageGroup": "all",
       "distractors": [],
-      "quizQuestion": "What percentage of the solar system's total mass does the Sun contain?",
+      "quizQuestion": "What percentage of the solar system total mass does the Sun contain (to 2 decimal places)?",
       "explanation": "The Sun contains 99.86% of all the mass in the solar system. Everything else — all 8 planets, all moons, all asteroids, all comets — makes up just 0.14%. Jupiter alone accounts for most of that remaining fraction.",
       "statement": "The Sun contains 99.86% of all the mass in the solar system.",
       "wowFactor": "All 8 planets, their moons, the asteroid belt, the Kuiper Belt — everything except the Sun — makes up just 0.14% of the solar system's total mass. The Sun dominates completely.",
@@ -3980,11 +3983,11 @@
     },
     {
       "id": "solar_system_light_travel_time_sun_earth",
-      "correctAnswer": "About {8} minutes",
+      "correctAnswer": "{8.3}",
       "acceptableAlternatives": [
+        "8.3 minutes",
         "8 minutes",
-        "about 8 minutes",
-        "roughly 8 minutes"
+        "about 8 minutes"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "bracket_numbers",
@@ -3992,7 +3995,7 @@
       "funScore": 8,
       "ageGroup": "all",
       "distractors": [],
-      "quizQuestion": "Approximately how many minutes does light take to travel from the Sun to Earth?",
+      "quizQuestion": "Approximately how many minutes (to 1 decimal place) does light take to travel from the Sun to Earth?",
       "explanation": "Light travels at 299,792 km/s, and the average distance from the Sun to Earth (1 AU) is about 150 million km. At that speed, sunlight takes approximately 8 minutes and 20 seconds to reach us. This means we always see the Sun as it was 8 minutes ago.",
       "statement": "Light takes approximately 8 minutes to travel from the Sun to Earth.",
       "wowFactor": "When you look at the Sun, you're seeing it as it was 8 minutes ago. If the Sun somehow vanished instantly, we wouldn't know for 8 minutes — and Earth would continue orbiting a ghost star.",
@@ -4071,7 +4074,7 @@
         "G-type main-sequence"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "system_facts",
+      "answerTypePoolId": "mission_names",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -4172,7 +4175,7 @@
         "all orbit the same way"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "system_facts",
+      "answerTypePoolId": "mission_names",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -6892,38 +6895,16 @@
         "solar_system_new_horizons_pluto_flyby",
         "solar_system_new_horizons_fastest_launch",
         "solar_system_pioneer10_asteroid_belt",
-        "solar_system_messenger_mercury_orbit"
+        "solar_system_messenger_mercury_orbit",
+        "solar_system_kuiper_belt_pluto",
+        "solar_system_sun_medium_star",
+        "solar_system_prograde_orbits"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
         "Apollo 11",
         "Apollo 13",
         "Mariner 4"
-      ]
-    },
-    {
-      "id": "system_facts",
-      "label": "System Facts",
-      "answerFormat": "term",
-      "factIds": [
-        "solar_system_kuiper_belt_pluto",
-        "solar_system_sun_medium_star",
-        "solar_system_prograde_orbits"
-      ],
-      "minimumSize": 1,
-      "syntheticDistractors": [
-        "Retrograde motion",
-        "Elliptical orbit",
-        "Main asteroid belt",
-        "Scattered disc",
-        "Hot Jupiter (F-type)",
-        "Counter-clockwise direction",
-        "Aphelion region",
-        "Oort Cloud boundary",
-        "Dwarf planet zone",
-        "Heliosphere edge",
-        "Solar minimum phase",
-        "Ecliptic plane"
       ]
     }
   ],
