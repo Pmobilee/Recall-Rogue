@@ -266,9 +266,10 @@ export class BotBrain {
           // Smart block: prioritize shields when enemy damage is high
           const shieldValue = cardQuickPlayEffective(card);
           score += 100 * Math.min(shieldValue / enemyNextDamage, 1.0) * skills.blockSkill;
-        } else if (skills.blockSkill < 0.3) {
-          // Low blockSkill: deprioritize shields
-          score -= 50;
+        } else {
+          // Linear shield deprioritization: -50 at blockSkill=0, fades to 0 at blockSkill≥0.5
+          const shieldPenalty = Math.max(0, Math.round(50 * (1 - skills.blockSkill / 0.5)));
+          if (shieldPenalty > 0) score -= shieldPenalty;
         }
 
         // Persistence-aware shield scoring: block compounds value over remaining turns
@@ -385,14 +386,16 @@ export class BotBrain {
     }
 
     if (skills.chargeSkill < 0.5) {
-      // 0.3–0.5: charge when accuracy gives positive EV (break-even ~25% with 2.0× CC, 0.25× CW)
-      return acc >= 0.35 ? 'charge' : 'quick';
+      // 0.3–0.5: charge when EV positive, soft gate on buff/utility
+      if (acc < 0.35) return 'quick';
+      if (isBuffOrUtility(card.cardType) && Math.random() > skills.chargeSkill) return 'quick';
+      return 'charge';
     }
 
     if (skills.chargeSkill < 0.7) {
       // 0.5–0.7: charge at EV break-even, also factor in card type
       if (acc < 0.35) return 'quick';
-      if (isBuffOrUtility(card.cardType)) return 'quick'; // low multiplier payoff
+      if (isBuffOrUtility(card.cardType) && Math.random() > skills.chargeSkill) return 'quick';
       return 'charge';
     }
 

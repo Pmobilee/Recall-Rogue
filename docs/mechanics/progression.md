@@ -152,27 +152,59 @@ Named bosses: floor 3 = `final_exam`, floor 6 = `burning_deadline`, floor 9 = `a
 
 ## Ascension System (`ascension.ts`)
 
-`MAX_ASCENSION_LEVEL = 20`. Each level adds one challenge + one buff (cumulative). `getAscensionModifiers(level)` returns `AscensionModifiers`.
+`MAX_ASCENSION_LEVEL = 20`. Each level adds one challenge, most with a compensating buff (cumulative). `getAscensionModifiers(level)` returns `AscensionModifiers`.
 
-Selected level effects (2026-04-04 rebalance — reduced buff strength to fix inverted win-rate scaling):
+**2026-04-05 redesign** — reverted progressive multipliers to stepped values, strengthened challenge bites, fixed broken field wiring, removed overcompensating buffs (STS philosophy: challenges stand alone).
+
+Selected level effects:
 | Level | Challenge | Buff |
 |-------|-----------|------|
-| 2  | Enemies +10% damage | +1 AP on first turn |
+| 2  | Enemies +15% damage | *(none — challenge stands alone)* |
 | 4  | Timer -1s all questions | Start with random uncommon |
 | 5  | 12 starter cards | Free card removal per shop |
-| 7  | Close distractors more common | Charged correct +15% damage |
-| 9  | Enemies regen 2 HP/turn | Start encounters with 3 shield |
-| 10 | Start with a Curse card | +1 free relic reroll per boss (no longer grants 2nd starter relic) |
-| 11 | Boss relics reduced to 2 choices | Relics trigger +25% more (was +50%) |
-| 13 | Player max HP → 80 | Start with Vitality Ring |
-| 17 | Wrong answers deal 3 self-damage | Correct answers heal 1 HP |
-| 19 | All questions use hard formats | (Reserved for future surcharge mechanic — freeCharging removed as CHARGE_AP_SURCHARGE = 0) |
-| 20 | Final boss second phase | Start with 2 relics (choose from 5) (was 3 from 7) |
+| 6  | Cannot flee encounters | Heal 5 HP on 3+ combo |
+| 7  | Close distractors more common | Charged correct +10% damage |
+| 8  | Mini-bosses use boss-tier attacks | Mini-boss victories always drop a relic |
+| 9  | Enemies regen 3 HP/turn | Start encounters with 3 shield |
+| 10 | Start with a Curse card | +1 free relic reroll per boss |
+| 11 | Boss relics reduced to 2 choices | Relics trigger +15% more |
+| 13 | Player max HP → 75 | Start with Vitality Ring |
+| 14 | Combo resets each turn | *(none — challenge stands alone)* |
+| 15 | Bosses +50% HP | *(none — challenge stands alone)* |
+| 17 | Wrong answers deal 5 self-damage | Correct answers heal 1 HP |
+| 19 | All questions use hard formats | (Reserved for future surcharge mechanic) |
+| 20 | Final boss second phase | Start with 2 relics (choose from 5) |
+
+**Stepped multipliers (2026-04-05 — reverted from progressive formula):**
+- `enemyHpMultiplier`: `l >= 15 ? 1.15 : l >= 9 ? 1.10 : 1.00` (A9 durability wall, A15 tougher regulars)
+- `enemyDamageMultiplier`: `l >= 17 ? 1.30 : l >= 8 ? 1.20 : l >= 2 ? 1.15 : 1.00` (A2 raw damage, A8 all enemies, A17 pressure)
 
 **Key modifier values:**
-- `relicTriggerBonus`: `l >= 11 ? 0.25 : 0` (was 0.50)
-- `startingRelicCount`: `l >= 20 ? 2 : l >= 10 ? 1 : l >= 1 ? 1 : 0` (was 3/2/1)
+- `enemyRegenPerTurn`: `l >= 9 ? 3 : 0` (was 2 — forces faster kills)
+- `playerMaxHpOverride`: `l >= 13 ? 75 : null` (was 80)
+- `bossHpMultiplier`: `l >= 15 ? 1.50 : 1.00` (was 1.25)
+- `wrongAnswerSelfDamage`: `l >= 17 ? 5 : 0` (was 3)
+- `chargeCorrectDamageBonus`: `l >= 7 ? 0.10 : 0` (was 0.15)
+- `relicTriggerBonus`: `l >= 11 ? 0.15 : 0` (was 0.25)
+- `firstTurnBonusAp`: always `0` (removed — A2 challenge stands alone)
+- `perfectTurnBonusAp`: always `0` (removed — A14 challenge stands alone)
+- `bossDefeatFullHeal`: always `false` (removed — A15 challenge stands alone)
+- `comboHealThreshold`: `l >= 6 ? 3 : 0` (NEW — wired A6 buff)
+- `comboHealAmount`: `l >= 6 ? 5 : 0` (NEW — wired A6 buff)
+- `comboResetsOnTurnEnd`: `l >= 14` (NEW — wired A14 challenge)
+- `startingRelicCount`: `l >= 20 ? 2 : l >= 10 ? 1 : l >= 1 ? 1 : 0`
 - `freeCharging`: always `false` — `CHARGE_AP_SURCHARGE` is 0, making this a no-op; preserved for future surcharge restoration
+
+**Sim results (2026-04-05, 500 runs each):**
+| Profile | A0 win% | A20 win% | Direction |
+|---------|---------|----------|-----------|
+| new_player | 0% | 0% | flat (expected) |
+| developing | 63% | 5% | correct drop |
+| competent | 64% | 3% | correct drop |
+| experienced | 90% | 10% | correct drop |
+| master | 100% | 82% | still too high — further tuning needed |
+
+Master at A20 is still 82% (target: 5-15%). The sim cannot test quiz-pressure penalties (A4/A7/A12/A19), so the real number will be lower. Further combat-side tuning may be needed.
 
 `applyAscensionEnemyTemplateAdjustments` scales mini-boss attacks to boss-tier at level 8 and adds a second phase to `final_lesson` (floor 24) at level 20.
 

@@ -7,14 +7,23 @@ import {
 import { ENEMY_TEMPLATES } from '../../src/data/enemies'
 
 describe('ascension modifiers', () => {
-  it('stacks early stat modifiers by level', () => {
-    const level4 = getAscensionModifiers(4)
-    // enemyHpMultiplier is always 1.0 (global HP mult removed — elites handle difficulty)
-    expect(level4.enemyHpMultiplier).toBe(1.0)
-    expect(level4.enemyDamageMultiplier).toBe(1.1)
+  it('uses stepped enemyHpMultiplier and enemyDamageMultiplier', () => {
+    // A0-A1: no multiplier
+    expect(getAscensionModifiers(0).enemyHpMultiplier).toBe(1.00)
+    expect(getAscensionModifiers(0).enemyDamageMultiplier).toBe(1.00)
+    // A2: +15% damage step
+    expect(getAscensionModifiers(2).enemyDamageMultiplier).toBe(1.15)
+    expect(getAscensionModifiers(4).enemyDamageMultiplier).toBe(1.15)
+    // A8: +20% damage step
+    expect(getAscensionModifiers(8).enemyDamageMultiplier).toBe(1.20)
+    // A9: +10% HP step
+    expect(getAscensionModifiers(9).enemyHpMultiplier).toBe(1.10)
+    // A15: +15% HP step, A17: +30% damage step
+    expect(getAscensionModifiers(15).enemyHpMultiplier).toBe(1.15)
+    expect(getAscensionModifiers(17).enemyDamageMultiplier).toBe(1.30)
     // shieldCardMultiplier is always 1.0 (removed — wasn't fun)
-    expect(level4.shieldCardMultiplier).toBe(1.0)
-    expect(level4.timerBasePenaltySeconds).toBe(1)
+    expect(getAscensionModifiers(4).shieldCardMultiplier).toBe(1.0)
+    expect(getAscensionModifiers(4).timerBasePenaltySeconds).toBe(1)
   })
 
   it('uses minimalist override at level 18+', () => {
@@ -67,8 +76,46 @@ describe('ascension modifiers', () => {
     expect(getAscensionRule(14)?.name).toBe('Combo Breaker')
   })
 
-  it('perfectTurnBonusAp activates at level 14', () => {
+  it('perfectTurnBonusAp is always 0 (removed buff)', () => {
     expect(getAscensionModifiers(13).perfectTurnBonusAp).toBe(0)
-    expect(getAscensionModifiers(14).perfectTurnBonusAp).toBe(1)
+    expect(getAscensionModifiers(14).perfectTurnBonusAp).toBe(0)
+    expect(getAscensionModifiers(20).perfectTurnBonusAp).toBe(0)
+  })
+
+  it('firstTurnBonusAp is always 0 (removed buff)', () => {
+    expect(getAscensionModifiers(2).firstTurnBonusAp).toBe(0)
+    expect(getAscensionModifiers(20).firstTurnBonusAp).toBe(0)
+  })
+
+  it('bossDefeatFullHeal is always false (removed buff)', () => {
+    expect(getAscensionModifiers(15).bossDefeatFullHeal).toBe(false)
+    expect(getAscensionModifiers(20).bossDefeatFullHeal).toBe(false)
+  })
+
+  it('combo heal fields activate at level 6', () => {
+    expect(getAscensionModifiers(5).comboHealThreshold).toBe(0)
+    expect(getAscensionModifiers(5).comboHealAmount).toBe(0)
+    expect(getAscensionModifiers(6).comboHealThreshold).toBe(3)
+    expect(getAscensionModifiers(6).comboHealAmount).toBe(5)
+  })
+
+  it('comboResetsOnTurnEnd activates at level 14', () => {
+    expect(getAscensionModifiers(13).comboResetsOnTurnEnd).toBe(false)
+    expect(getAscensionModifiers(14).comboResetsOnTurnEnd).toBe(true)
+  })
+
+  it('strengthened challenge values at key thresholds', () => {
+    expect(getAscensionModifiers(9).enemyRegenPerTurn).toBe(3)
+    expect(getAscensionModifiers(8).enemyRegenPerTurn).toBe(0)
+    expect(getAscensionModifiers(13).playerMaxHpOverride).toBe(75)
+    expect(getAscensionModifiers(15).bossHpMultiplier).toBe(1.50)
+    expect(getAscensionModifiers(17).wrongAnswerSelfDamage).toBe(5)
+  })
+
+  it('reduced buff values', () => {
+    expect(getAscensionModifiers(7).chargeCorrectDamageBonus).toBe(0.10)
+    expect(getAscensionModifiers(6).chargeCorrectDamageBonus).toBe(0)
+    expect(getAscensionModifiers(11).relicTriggerBonus).toBe(0.15)
+    expect(getAscensionModifiers(10).relicTriggerBonus).toBe(0)
   })
 })

@@ -447,7 +447,7 @@ export const ENEMY_HP_SCALING_PER_FLOOR = 0.18;
 /** HP scaling per floor, by segment. Early floors gentle, late floors steep. */
 export const ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT: Record<number, number> = {
   1: 0.10,   // Segment 1 (floors 1-6): gentle — QP-able early enemies
-  2: 0.25,   // Segment 2 (floors 7-12): moderate — charging starts to matter
+  2: 0.18,   // Segment 2 (floors 7-12): moderate — charging starts to matter
   3: 0.60,   // Segment 3 (floors 13-18): steep — must charge + chain to win
   4: 0.80,   // Segment 4 (floors 19-24): wall — full mastery required
 };
@@ -481,7 +481,7 @@ export const CANARY_CHALLENGE_ENEMY_DMG_MULT = 1.1;
 export const CANARY_CHALLENGE_STREAK_THRESHOLD = 5;
 
 /** Per-floor enemy damage scaling increment above floor 6. (AR-97b: 0.05→0.02, sweep r=+0.668; 2026-04-01: 0.02→0.06 to steepen late-game curve — floor 12 = +36%, floor 18 = +72%; reverted 2026-04-01: 0.06→0.03 — enemy HP scaling is the better lever; 2026-04-01: 0.03→0.06 — paired with FLOOR_DAMAGE_SCALE_MID 0.8→0.5 to keep early floors easy while steepening late-game pressure for experts) */
-export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.07; // Raised from 0.06 (2026-04-04): chain momentum makes game too easy; 0.08 was too harsh on low-acc players
+export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.09; // Raised from 0.06 (2026-04-04): chain momentum makes game too easy; 0.08 was too harsh on low-acc players
 
 /** Enemy damage multiplier for floors 1–6 (base). Reverted to 1.0 on 2026-04-01, raised to 1.2 on 2026-04-03 (balance pass #1), reduced to 1.0 on 2026-04-03 (balance pass #2 — Act 2/3 over-tuned; reducing flat multiplier gives more room under caps). Prior values: 0.5 (2026-04-01), 0.8, 1.0 (original), 1.2. */
 export const FLOOR_DAMAGE_SCALE_MID = 1.0;

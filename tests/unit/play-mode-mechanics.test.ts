@@ -162,22 +162,22 @@ describe('Phase 1 promotions', () => {
   });
 });
 
-// ── Strike: 4 / 6 / 3 ──
+// ── Strike: 4 / 7 / 3 ──
 
 describe('strike mechanic play modes', () => {
-  it('quick: deals 3 damage (stat table L0 QP=3)', () => {
+  it('quick: deals 4 damage (stat table L0 QP=4)', () => {
     const result = resolve('strike', 'quick');
-    expect(result.damageDealt).toBe(3);
+    expect(result.damageDealt).toBe(4);
   });
 
-  it('charge_correct: deals 5 damage (round(3*1.75)=5, stat table L0 QP=3)', () => {
+  it('charge_correct: deals 7 damage (round(4*1.75)=7, stat table L0 QP=4)', () => {
     const result = resolve('strike', 'charge_correct');
-    expect(result.damageDealt).toBe(5);
+    expect(result.damageDealt).toBe(7);
   });
 
-  it('charge_wrong: deals 2 damage (chargeWrongValue=3 + masteryBonus=-1 = 2)', () => {
+  it('charge_wrong: deals 3 damage (chargeWrongValue=3 + masteryBonus=0 = 3)', () => {
     const result = resolve('strike', 'charge_wrong');
-    expect(result.damageDealt).toBe(2);
+    expect(result.damageDealt).toBe(3);
   });
 
   it('wrong answer always deals > 0 damage', () => {
@@ -413,17 +413,17 @@ describe('scout mechanic', () => {
 // ── Block: shield values scale ──
 
 describe('block mechanic', () => {
-  it('quick: 3 shield (stat table L0 QP=3)', () => {
+  it('quick: 4 shield (stat table L0 QP=4)', () => {
     const result = resolve('block', 'quick');
-    expect(result.shieldApplied).toBe(3);
+    expect(result.shieldApplied).toBe(4);
   });
-  it('charge_correct: 5 shield (Math.round(3*1.75)=5, stat table L0 QP=3 and CC_MULT=1.75)', () => {
+  it('charge_correct: 7 shield (Math.round(4*1.75)=7, stat table L0 QP=4 and CC_MULT=1.75)', () => {
     const result = resolve('block', 'charge_correct');
-    expect(result.shieldApplied).toBe(5);
+    expect(result.shieldApplied).toBe(7);
   });
-  it('charge_wrong: 1 shield (chargeWrongValue=3 + masteryBonus=-2 = 1, stat table L0 QP=3 vs mechanic QP=5)', () => {
+  it('charge_wrong: 2 shield (chargeWrongValue=3 + masteryBonus=-1 = 2, stat table L0 QP=4 vs mechanic QP=5)', () => {
     const result = resolve('block', 'charge_wrong');
-    expect(result.shieldApplied).toBe(1);
+    expect(result.shieldApplied).toBe(2);
   });
 });
 

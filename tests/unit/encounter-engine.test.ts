@@ -394,8 +394,8 @@ describe('Enemy Manager', () => {
       expect(getFloorScaling(5)).toBeCloseTo(1.40);
     });
 
-    it('returns 3.25 for floor 10 (segment 2, 0.25/floor)', () => {
-      expect(getFloorScaling(10)).toBeCloseTo(3.25);
+    it('returns 2.62 for floor 10 (segment 2, 0.18/floor)', () => {
+      expect(getFloorScaling(10)).toBeCloseTo(2.62);
     });
   });
 

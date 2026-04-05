@@ -10,22 +10,22 @@ export interface AscensionLevelRule {
 
 export const ASCENSION_LEVEL_RULES: AscensionLevelRule[] = [
   { level: 1, name: 'First Trial', effect: '+1 elite per segment. BUFF: Choose 1 of 3 starter relics.' },
-  { level: 2, name: 'Aggressive Foes', effect: 'Enemies +10% damage. BUFF: +1 AP on first turn of each encounter.' },
+  { level: 2, name: 'Aggressive Foes', effect: 'Enemies +15% damage.' },
   { level: 3, name: 'Scarce Healing', effect: 'Rest heals 25% instead of 30%. BUFF: Free card removal at rest.' },
   { level: 4, name: 'Quick Thinking', effect: 'Timer -1s on all questions. BUFF: Start with a random uncommon card.' },
   { level: 5, name: 'Lean Start', effect: 'Start with 12 cards. BUFF: One free card removal per shop visit.' },
   { level: 6, name: 'No Escape', effect: 'Cannot flee encounters. BUFF: Heal 5 HP on 3+ combo.' },
-  { level: 7, name: 'Harsh Grading', effect: 'Close distractors more common. BUFF: Charged correct +15% damage.' },
+  { level: 7, name: 'Harsh Grading', effect: 'Close distractors more common. BUFF: Charged correct +10% damage.' },
   { level: 8, name: 'Elite Surge', effect: 'Mini-bosses gain boss-tier attacks. BUFF: Mini-boss victories always drop a relic.' },
-  { level: 9, name: 'Undying Foes', effect: 'Enemies regenerate 2 HP/turn. BUFF: Start encounters with 3 shield.' },
+  { level: 9, name: 'Undying Foes', effect: 'Enemies regenerate 3 HP/turn. BUFF: Start encounters with 3 shield.' },
   { level: 10, name: 'Cursed Start', effect: 'Start with a Curse card in deck. BUFF: +1 free relic reroll per boss.' },
-  { level: 11, name: 'Slim Pickings', effect: 'Boss relics reduced to 2 choices. BUFF: Relics trigger +25% more.' },
+  { level: 11, name: 'Slim Pickings', effect: 'Boss relics reduced to 2 choices. BUFF: Relics trigger +15% more.' },
   { level: 12, name: 'Deep Knowledge', effect: 'Tier 1 cards use 4-option MCQ. BUFF: Tier 1 charged correct +20% damage.' },
-  { level: 13, name: 'Fragile', effect: 'Player max HP reduced to 80. BUFF: Start with Vitality Ring (+20 HP, takes slot).' },
-  { level: 14, name: 'Combo Breaker', effect: 'Combo resets each turn. BUFF: Perfect turns grant +1 AP next turn.' },
-  { level: 15, name: 'Boss Rush', effect: 'Bosses +25% HP. BUFF: Boss defeat fully heals player.' },
+  { level: 13, name: 'Fragile', effect: 'Player max HP reduced to 75. BUFF: Start with Vitality Ring (+20 HP, takes slot).' },
+  { level: 14, name: 'Combo Breaker', effect: 'Combo resets each turn.' },
+  { level: 15, name: 'Boss Rush', effect: 'Bosses +50% HP.' },
   { level: 16, name: 'No Echo', effect: 'Echo mechanic disabled. BUFF: Discarding a card grants 1 shield.' },
-  { level: 17, name: "Scholar's Burden", effect: 'Wrong answers deal 3 self-damage. BUFF: Correct answers heal 1 HP.' },
+  { level: 17, name: "Scholar's Burden", effect: 'Wrong answers deal 5 self-damage. BUFF: Correct answers heal 1 HP.' },
   { level: 18, name: 'Minimalist', effect: 'Start with 10 cards. BUFF: Choose starting hand each encounter.' },
   { level: 19, name: 'True Test', effect: 'All questions use hard formats. BUFF: (Reserved for future surcharge mechanic.)' },
   { level: 20, name: 'Heart of the Archive', effect: 'Final boss gains second phase. BUFF: Start with 2 relics (choose from 5).' },
@@ -55,6 +55,8 @@ export interface AscensionModifiers {
   enemyRegenPerTurn: number;
   startWithCurseCard: boolean;
   restHealMultiplier: number;
+  /** Whether combo counter resets at the end of each turn (A14). */
+  comboResetsOnTurnEnd: boolean;
   // --- New buff fields ---
   starterRelicChoice: boolean;
   firstTurnBonusAp: number;
@@ -74,6 +76,10 @@ export interface AscensionModifiers {
   /** @deprecated CHARGE_AP_SURCHARGE is already 0 — always false until surcharge is restored. */
   freeCharging: boolean;
   startingRelicCount: number;
+  /** HP healed when player achieves a combo >= comboHealThreshold (A6). 0 = inactive. */
+  comboHealThreshold: number;
+  /** Amount healed per combo-heal trigger (A6). */
+  comboHealAmount: number;
 }
 
 function clampAscensionLevel(level: number): number {
@@ -86,8 +92,10 @@ export function getAscensionModifiers(level: number): AscensionModifiers {
   return {
     level: l,
     // --- Challenges (cumulative) ---
-    enemyHpMultiplier: 1.00,  // No global HP mult anymore — elites handle difficulty
-    enemyDamageMultiplier: l >= 2 ? 1.10 : 1.00,
+    // Stepped HP multiplier: A9 durability wall, A15 slightly tougher regular enemies
+    enemyHpMultiplier: l >= 15 ? 1.15 : l >= 9 ? 1.10 : 1.00,
+    // Stepped damage multiplier: A2 raw damage, A8 all enemies scarier, A17 pressure cooker
+    enemyDamageMultiplier: l >= 17 ? 1.30 : l >= 8 ? 1.20 : l >= 2 ? 1.15 : 1.00,
     shieldCardMultiplier: 1.00,  // Removed — wasn't fun
     timerBasePenaltySeconds: l >= 4 ? 1 : 0,
     encounterTwoTimerPenaltySeconds: 0,  // Removed — not relevant to sim
@@ -98,28 +106,33 @@ export function getAscensionModifiers(level: number): AscensionModifiers {
     minRetreatFloorForRewards: null,  // Removed — boring
     relicCap: l >= 11 ? 2 : 3,
     tier1OptionCount: l >= 12 ? 4 : 3,
-    playerMaxHpOverride: l >= 13 ? 80 : null,
-    bossHpMultiplier: l >= 15 ? 1.25 : 1.00,
-    wrongAnswerSelfDamage: l >= 17 ? 3 : 0,
+    playerMaxHpOverride: l >= 13 ? 75 : null,
+    bossHpMultiplier: l >= 15 ? 1.50 : 1.00,
+    wrongAnswerSelfDamage: l >= 17 ? 5 : 0,
     forceHardQuestionFormats: l >= 19,
     curatorSecretSecondPhase: l >= 20,
     restHealMultiplier: l >= 3 ? 0.83 : 1.00,  // 25/30 = 0.83
-    enemyRegenPerTurn: l >= 9 ? 2 : 0,
+    enemyRegenPerTurn: l >= 9 ? 3 : 0,
     startWithCurseCard: l >= 10,
+    comboResetsOnTurnEnd: l >= 14,
     // --- Buffs (cumulative) ---
     starterRelicChoice: l >= 1,
-    firstTurnBonusAp: l >= 2 ? 1 : 0,
+    // Removed: +1 AP first turn was too strong — A2 challenge (15% enemy damage) stands alone
+    firstTurnBonusAp: 0,
     freeRestCardRemoval: l >= 3,
     freeShopCardRemoval: l >= 5,
-    chargeCorrectDamageBonus: l >= 7 ? 0.15 : 0,
+    // Reduced from 0.15: 10% still meaningful but compounds less with mastery/chains/surge
+    chargeCorrectDamageBonus: l >= 7 ? 0.10 : 0,
     miniBossGuaranteedRelic: l >= 8,
     encounterStartShield: l >= 9 ? 3 : 0,
     freeRelicReroll: l >= 10,
-    // Reduced from 0.50 to 0.25 — +50% was too snowbally and contributed to Asc 20 > Asc 0 win rates
-    relicTriggerBonus: l >= 11 ? 0.25 : 0,
+    // Reduced from 0.25 to 0.15 — still rewards relic builds but less snowbally
+    relicTriggerBonus: l >= 11 ? 0.15 : 0,
     tier1ChargedDamageBonus: l >= 12 ? 0.20 : 0,
-    perfectTurnBonusAp: l >= 14 ? 1 : 0,
-    bossDefeatFullHeal: l >= 15,
+    // Removed: perfect turn +1 AP was broken for master players who hit perfect turns constantly
+    perfectTurnBonusAp: 0,
+    // Removed: full heal on boss defeat erased run attrition — A15's challenge stands alone
+    bossDefeatFullHeal: false,
     discardGivesShield: l >= 16 ? 1 : 0,
     correctAnswerHeal: l >= 17 ? 1 : 0,
     chooseStartingHand: l >= 18,
@@ -128,6 +141,9 @@ export function getAscensionModifiers(level: number): AscensionModifiers {
     freeCharging: false,
     // Reduced: Asc 20 gets 2 (was 3), Asc 10 gets 1 (was 2). Still a buff, less overwhelming.
     startingRelicCount: l >= 20 ? 2 : l >= 10 ? 1 : l >= 1 ? 1 : 0,
+    // A6 buff: heal HP when achieving a combo streak of 3+
+    comboHealThreshold: l >= 6 ? 3 : 0,
+    comboHealAmount: l >= 6 ? 5 : 0,
   };
 }
 

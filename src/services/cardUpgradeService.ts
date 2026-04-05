@@ -67,7 +67,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** Standard reliable attack. L3 and L5 are the big damage jumps. */
   strike: {
     levels: [
-      { qpValue: 3 },                                                         // L0 — Weak but reliable
+      { qpValue: 4 },                                                         // L0 — Weak but reliable
       { qpValue: 4 },                                                         // L1
       { qpValue: 5 },                                                         // L2
       { qpValue: 6 },                                                         // L3
@@ -378,7 +378,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** block: simple block scaling, reliable baseline */
   block: {
     levels: [
-      { qpValue: 3 },                                          // L0: weak but reliable
+      { qpValue: 4 },                                          // L0: weak but reliable
       { qpValue: 4 },                                          // L1
       { qpValue: 5 },                                          // L2
       { qpValue: 6 },                                          // L3
