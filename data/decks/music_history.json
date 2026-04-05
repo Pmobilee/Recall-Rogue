@@ -656,7 +656,7 @@
         "Poland"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "nationality_names",
+      "answerTypePoolId": "description_terms",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "What nationality was Romantic composer Frédéric Chopin?",
@@ -1738,7 +1738,7 @@
         "Cristofori"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "person_names",
+      "answerTypePoolId": "artist_names",
       "difficulty": 3,
       "funScore": 8,
       "distractors": [
@@ -1792,7 +1792,7 @@
         "Stradivarius"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "person_names",
+      "answerTypePoolId": "artist_names",
       "difficulty": 2,
       "funScore": 9,
       "distractors": [
@@ -1855,7 +1855,7 @@
         "Adolphe-Sax"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "person_names",
+      "answerTypePoolId": "artist_names",
       "difficulty": 2,
       "funScore": 8,
       "distractors": [
@@ -1882,10 +1882,11 @@
     },
     {
       "id": "mh_1_saxophone_orchestra",
-      "correctAnswer": "Not standard in it",
+      "correctAnswer": "Non-orchestral",
       "acceptableAlternatives": [
-        "rarely in orchestra",
-        "not in standard orchestra"
+        "Not traditionally orchestral",
+        "Not standard in orchestra",
+        "Not a standard orchestral instrument"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "description_terms",
@@ -4551,7 +4552,7 @@
         "Sun"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "company_names",
+      "answerTypePoolId": "description_terms",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "At which Memphis label did Elvis Presley record his first tracks in 1954?",
@@ -6825,7 +6826,7 @@
       "correctAnswer": "Napster",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "company_names",
+      "answerTypePoolId": "description_terms",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "Which 1999 file-sharing service disrupted the music industry and triggered mass piracy?",
@@ -6855,7 +6856,7 @@
       "correctAnswer": "Spotify",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "company_names",
+      "answerTypePoolId": "description_terms",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Which streaming service launched in 2008 and led the shift from music ownership to access?",
@@ -7244,6 +7245,9 @@
         "mh_0_liszt_piano_virtuoso",
         "mh_0_verdi_risorgimento",
         "mh_0_mozart_child_prodigy",
+        "mh_1_piano_inventor",
+        "mh_1_violin_stradivari",
+        "mh_1_saxophone_inventor",
         "mh_2_armstrong_wonderful_world",
         "mh_2_armstrong_solo_art",
         "mh_2_armstrong_scat",
@@ -7370,7 +7374,9 @@
         "Thelonious Monk",
         "Tupac Shakur",
         "Wolfgang Amadeus Mozart"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptReason": "Person names inherently vary in length (single name vs full name)"
     },
     {
       "id": "instrument_names",
@@ -7688,48 +7694,22 @@
       ]
     },
     {
-      "id": "company_names",
-      "label": "Record Labels & Music Companies",
-      "answerFormat": "name",
-      "factIds": [
-        "mh_3_elvis_sun_records",
-        "mh_4_napster_1999",
-        "mh_4_streaming_revolution"
-      ],
-      "minimumSize": 3,
-      "syntheticDistractors": [
-        "Motown Records",
-        "Atlantic Records",
-        "Columbia Records",
-        "Apple Records",
-        "Capitol Records",
-        "Decca Records",
-        "Chess Records",
-        "Stax Records",
-        "Epic Records",
-        "Island Records",
-        "Elektra Records",
-        "Interscope Records"
-      ],
-      "members": [
-        "Napster",
-        "Spotify",
-        "Sun Records"
-      ]
-    },
-    {
       "id": "description_terms",
       "label": "Mechanism & Technique Descriptions",
       "answerFormat": "term",
       "factIds": [
         "mh_0_bach_cantatas_count",
         "mh_0_beethoven_deafness",
+        "mh_0_chopin_nationality",
         "mh_1_saxophone_orchestra",
         "mh_1_harpsichord_vs_piano",
         "mh_1_clarinet_reed",
         "mh_1_oboe_double_reed",
         "mh_1_trombone_slide",
-        "mh_1_staccato_meaning"
+        "mh_1_staccato_meaning",
+        "mh_3_elvis_sun_records",
+        "mh_4_napster_1999",
+        "mh_4_streaming_revolution"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
@@ -7750,62 +7730,6 @@
         "Slide",
         "deaf",
         "over 200"
-      ]
-    },
-    {
-      "id": "person_names",
-      "label": "Person Names",
-      "factIds": [
-        "mh_1_piano_inventor",
-        "mh_1_violin_stradivari",
-        "mh_1_saxophone_inventor"
-      ],
-      "syntheticDistractors": [
-        "Robert Moog",
-        "Leo Fender",
-        "Theobald Boehm",
-        "Laurens Hammond",
-        "Les Paul",
-        "Heinrich Steinweg",
-        "Johann Christoph Denner",
-        "Yamaha Torakusu",
-        "Étienne Oehlert",
-        "Henry Distin",
-        "Charles Wheatstone",
-        "Johann Sebastian Bach"
-      ],
-      "minimumSize": 3,
-      "members": [
-        "Adolphe Sax",
-        "Antonio Stradivari",
-        "Bartolomeo Cristofori"
-      ]
-    },
-    {
-      "id": "nationality_names",
-      "label": "Nationality Names",
-      "factIds": [
-        "mh_0_chopin_nationality"
-      ],
-      "syntheticDistractors": [
-        "German",
-        "French",
-        "Austrian",
-        "Italian",
-        "Russian",
-        "Czech",
-        "Hungarian",
-        "Norwegian",
-        "Finnish",
-        "Spanish",
-        "English",
-        "Dutch",
-        "Belgian",
-        "Swedish"
-      ],
-      "minimumSize": 1,
-      "members": [
-        "Polish"
       ]
     }
   ],

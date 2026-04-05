@@ -148,7 +148,7 @@
       "correctAnswer": "Amun-Ra",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "god_names",
+      "answerTypePoolId": "descriptions_roles",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen_adult",
@@ -3802,7 +3802,7 @@
       "correctAnswer": "Thoth",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "god_names",
+      "answerTypePoolId": "descriptions_roles",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen_adult",
@@ -5016,7 +5016,7 @@
       "correctAnswer": "Isis",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "god_names",
+      "answerTypePoolId": "descriptions_roles",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen_adult",
@@ -5398,7 +5398,7 @@
       "correctAnswer": "Khnum, Satis, Anuket",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "places_locations",
+      "answerTypePoolId": "descriptions_roles",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen_adult",
@@ -5910,31 +5910,6 @@
   ],
   "answerTypePools": [
     {
-      "id": "god_names",
-      "label": "Gods & Divine Figures",
-      "answerFormat": "name",
-      "factIds": [
-        "egypt_god_ra_amun",
-        "egypt_sym_eye_ra_distant",
-        "egypt_temp_philae_deity"
-      ],
-      "minimumSize": 3,
-      "syntheticDistractors": [
-        "Sekhmet",
-        "Sobek",
-        "Hathor",
-        "Ptah",
-        "Khnum",
-        "Nut",
-        "Nephthys",
-        "Khonsu",
-        "Ra",
-        "Osiris",
-        "Horus",
-        "Seth"
-      ]
-    },
-    {
       "id": "numbers_dates",
       "label": "Numbers & Dates",
       "answerFormat": "number",
@@ -5953,12 +5928,12 @@
         "egypt_temp_karnak_duration",
         "egypt_temp_karnak_columns",
         "egypt_temp_karnak_obelisk",
+        "egypt_temp_abu_simbel_relocation_cost",
         "egypt_temp_abu_simbel_construction",
         "egypt_temp_philae_relocation",
         "egypt_temp_opet_duration",
         "egypt_temp_luxor_sphinx",
-        "egypt_temp_gods_wife_end",
-        "egypt_temp_abu_simbel_relocation_cost"
+        "egypt_temp_gods_wife_end"
       ],
       "minimumSize": 3
     },
@@ -5973,10 +5948,9 @@
         "egypt_god_hathor_temple",
         "egypt_god_sobek_location",
         "egypt_death_anubis_cynopolis",
-        "egypt_temp_khnum_elephantine",
+        "egypt_temp_abu_simbel_relocation",
         "egypt_temp_amun_karnak_location",
-        "egypt_temp_bastet_bubastis",
-        "egypt_temp_abu_simbel_relocation"
+        "egypt_temp_bastet_bubastis"
       ],
       "minimumSize": 3,
       "syntheticDistractors": [
@@ -6017,6 +5991,7 @@
       "answerFormat": "phrase",
       "factIds": [
         "egypt_god_ra_humans",
+        "egypt_god_ra_amun",
         "egypt_god_osiris_skin",
         "egypt_god_horus_pharaohs",
         "egypt_god_set_land",
@@ -6040,6 +6015,7 @@
         "egypt_death_ushabti_purpose",
         "egypt_death_maat_virtue",
         "egypt_sym_eye_horus_meaning",
+        "egypt_sym_eye_ra_distant",
         "egypt_sym_ankh_meaning",
         "egypt_sym_djed_meaning",
         "egypt_sym_was_meaning",
@@ -6049,12 +6025,16 @@
         "egypt_sym_vulture_nekhbet",
         "egypt_sym_ram_amun",
         "egypt_sym_hippo_ammit",
+        "egypt_temp_philae_deity",
         "egypt_temp_sekhmet_healing",
+        "egypt_temp_khnum_elephantine",
         "egypt_temp_westcar_khnum",
         "egypt_god_hathor_eye_ra",
         "egypt_death_botd_spell125"
       ],
-      "minimumSize": 3
+      "minimumSize": 3,
+      "homogeneityExempt": true,
+      "homogeneityExemptReason": "Mythology descriptions inherently vary: deity names (Isis, Thoth) to complex role descriptions (multiple attributes); this reflects authentic domain variation"
     },
     {
       "id": "concepts_terms",

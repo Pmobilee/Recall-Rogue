@@ -6658,7 +6658,7 @@
     },
     {
       "id": "cinema_dir_cameron_grossing_rank",
-      "correctAnswer": "{10000000000}",
+      "correctAnswer": "{10,000,000,000}",
       "acceptableAlternatives": [
         "$10 billion",
         "10 billion"
@@ -16360,7 +16360,18 @@
         "cinema_back_to_future_delorean",
         "cinema_hist_bollywood_output"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "George Orwell",
+        "F. Scott Fitzgerald",
+        "Mary Shelley",
+        "Ayn Rand",
+        "Homer (ancient Greek poet)",
+        "New York City",
+        "Los Angeles",
+        "Paris",
+        "London"
+      ]
     },
     {
       "id": "bracket_years",

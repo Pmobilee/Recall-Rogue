@@ -737,7 +737,7 @@
         "13000"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_periods",
+      "answerTypePoolId": "counts_amounts",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -774,7 +774,7 @@
         "more than 40"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_periods",
+      "answerTypePoolId": "counts_amounts",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -811,7 +811,7 @@
         "34 to 36"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_periods",
+      "answerTypePoolId": "counts_amounts",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -1725,7 +1725,7 @@
         "around $250 million"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "date_periods",
+      "answerTypePoolId": "counts_amounts",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -3021,7 +3021,7 @@
         "about 4 years"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_periods",
+      "answerTypePoolId": "counts_amounts",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -3132,7 +3132,7 @@
         "about 15-20"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_periods",
+      "answerTypePoolId": "counts_amounts",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -3389,7 +3389,7 @@
         "approximately 2,100"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "date_periods",
+      "answerTypePoolId": "counts_amounts",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -3463,7 +3463,7 @@
         "over 20,000"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "date_periods",
+      "answerTypePoolId": "counts_amounts",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -4314,7 +4314,7 @@
       "homogeneityExemptNote": "Museum names range from abbreviations to full formal names — inherent domain variation"
     },
     {
-      "id": "date_periods",
+      "id": "counts_amounts",
       "members": [
         "1434",
         "1495",
@@ -4384,7 +4384,8 @@
         "18th century"
       ],
       "homogeneityExempt": true,
-      "homogeneityExemptNote": "Date/number answers range from bare counts to price values — inherent domain variation"
+      "homogeneityExemptNote": "Date/number answers range from bare counts to price values — inherent domain variation",
+      "displayName": "Counts & Amounts"
     },
     {
       "id": "technique_terms",

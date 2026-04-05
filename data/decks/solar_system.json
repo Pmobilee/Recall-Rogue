@@ -6809,8 +6809,8 @@
       "label": "Numeric Values",
       "answerFormat": "number",
       "factIds": [
-        "solar_system_eight_planets",
         "solar_system_jupiter_moon_count",
+        "solar_system_eight_planets",
         "solar_system_age_4_6_billion",
         "solar_system_sun_mass_percentage",
         "solar_system_light_travel_time_sun_earth"
@@ -6912,20 +6912,18 @@
       ],
       "minimumSize": 1,
       "syntheticDistractors": [
-        "Oort Cloud",
-        "Heliosphere",
-        "Scattered Disc",
-        "Heliopause",
-        "Asteroid Belt",
-        "Red dwarf",
-        "Blue giant",
-        "White dwarf",
-        "Retrograde direction",
-        "Clockwise direction",
-        "Random directions",
-        "Alternating directions",
-        "Orbital resonance",
-        "Tidal locking"
+        "Retrograde motion",
+        "Elliptical orbit",
+        "Main asteroid belt",
+        "Scattered disc",
+        "Hot Jupiter (F-type)",
+        "Counter-clockwise direction",
+        "Aphelion region",
+        "Oort Cloud boundary",
+        "Dwarf planet zone",
+        "Heliosphere edge",
+        "Solar minimum phase",
+        "Ecliptic plane"
       ]
     }
   ],
