@@ -1,7 +1,7 @@
 # Procedural Math System
 
 > **Purpose:** Documents the runtime math problem generation system used by Study Temple. Covers skill nodes, generators, distractor strategies, FSRS integration, skill selection, and difficulty scaling.
-> **Last verified:** 2026-04-05 (Pre-Calculus deck added)
+> **Last verified:** 2026-04-05 (Complex Numbers deck added)
 > **Source files:**
 > - `src/data/proceduralDeckTypes.ts` — core types (SkillNode, ProceduralDeck, PlayerSkillState, MathProblem)
 > - `src/data/mathDecks/arithmetic.ts` — Arithmetic deck definition (5 skills)
@@ -9,7 +9,7 @@
 > - `src/data/mathDecks/algebra.ts` — Algebra deck definition (5 skills)
 > - `src/data/mathDecks/geometry.ts` — Geometry deck definition (5 skills)
 > - `src/data/mathDecks/statistics.ts` — Statistics & Probability deck definition (5 skills)
-> - `src/services/math/mathProblemGenerator.ts` — dispatcher (41 generator cases)
+> - `src/services/math/mathProblemGenerator.ts` — dispatcher (56 generator cases)
 > - `src/services/math/algebraGenerators.ts` — 5 algebra generator functions
 > - `src/services/math/geometryGenerators.ts` — 5 geometry generator functions
 > - `src/services/math/statisticsGenerators.ts` — 5 statistics/probability generator functions
@@ -25,9 +25,19 @@
 > - `src/services/math/logicSetsGenerators.ts` — 5 logic/sets generator functions
 > - `src/data/mathDecks/precalculus.ts` — Pre-Calculus deck definition (5 skills)
 > - `src/services/math/preCalculusGenerators.ts` — 5 pre-calculus generator functions
+> - `src/data/mathDecks/financialMath.ts` — Financial Math deck definition (5 skills)
+> - `src/services/math/financialMathGenerators.ts` — 5 financial math generator functions
 > - `src/services/math/mathDistractorGenerator.ts` — algorithmic distractor strategies
 > - `src/services/math/skillStateManager.ts` — FSRS wrapper for skill states
 > - `src/services/math/proceduralSkillSelector.ts` — Anki-model skill selection
+> - `src/data/mathDecks/discreteMath.ts` — Discrete Math deck definition (5 skills)
+> - `src/services/math/discreteMathGenerators.ts` — 5 discrete math generator functions
+> - `src/data/mathDecks/coordGeometry.ts` — Coordinate Geometry deck definition (5 skills)
+> - `src/services/math/coordGeometryGenerators.ts` — 5 coordinate geometry generator functions + 2 format helpers (formatSlope, formatLineEquation)
+> - `src/data/mathDecks/complexNumbers.ts` — Complex Numbers deck definition (5 skills)
+> - `src/services/math/complexNumbersGenerators.ts` — 5 complex number generator functions + formatComplex helper
+> - `src/data/mathDecks/unitConversion.ts` — Unit Conversion deck definition (5 skills)
+> - `src/services/math/unitConversionGenerators.ts` — 5 unit conversion generator functions + lookup tables
 > - `src/services/math/proceduralDeckRegistry.ts` — startup registration
 > - `src/services/math/proceduralQuizSession.ts` — session bridge to quiz overlay
 > - `src/services/math/proceduralStatsService.ts` — stats aggregation
@@ -218,6 +228,77 @@ All five pre-calculus generators use the **construct-backward** strategy to guar
 | `sequence` | Sequences & Series | Varies by sub-type | Integer string | steps=1: arithmetic nth term a₁+(n-1)d. steps=2: geometric nth term a₁×r^(n-1). steps=3: arithmetic sum (n/2)(2a₁+(n-1)d), n always even. steps=4: geometric sum a₁(r^n-1)/(r-1) with a₁=1, r=2. |
 | `limit_intro` | Introductory Limits | `lim_{x->a} ...` | Integer string | steps=1: linear direct substitution. steps=2: quadratic direct substitution. steps=3: difference-of-squares cancel, answer = 2a. steps=4: cubic factoring cancel, answer = 3a². |
 | `polynomial_division` | Polynomial Division | `Divide: (P(x)) / (x-r)` | Polynomial quotient string | Construct-backward: pick Q(x) and root r, compute P = Q*(x-r)+R. steps=1: linear quotient no remainder. steps=2: +remainder. steps=3: quadratic quotient no remainder. steps=4: quadratic +remainder. Uses `formatPolynomial`. |
+
+---
+
+### Financial Math generators (in `financialMathGenerators.ts`)
+
+All five financial math generators use the **construct-forward** strategy and produce integer answers.
+Principals and prices are always multiples of 100 or 10 respectively for clean arithmetic.
+Distractors model the most common student errors (confused interest vs total, wrong compounding model, depreciation amount vs remaining value, markup direction error, tax on wrong base).
+
+| `generatorId` | Skill | Question form | Answer format | Notes |
+|----------------|-------|---------------|---------------|-------|
+| `simple_interest` | Simple Interest | `You invest  at R% simple interest for T years. How much interest do you earn?` | Integer dollar amount | Forward: I = P × r × t. P is multiple of 100, r ∈ {5,8,10,12,15}%, t from rangeB. Distractors: P+I (total confusion), I×2, single-year interest, off-by-rate. |
+| `compound_interest` | Compound Interest | `You invest  at R% compounded {freq} for T years. What is the final amount?` | Rounded integer | A = P(1+r/n)^(nt). Freq inferred from rangeB[1]: ≤2→annual, ≤3→annual (wider r), ≤4→semi-annual, else→quarterly. Distractors: simple interest amount, flat 1-year growth, wrong compounding model. |
+| `depreciation` | Straight-Line Depreciation | `A  asset depreciates at R% per year. What is its value after T years?` | Integer dollar amount | V = P − P×rate×t. t clamped to keep V > 0. Distractors: depreciation amount (vs remaining value), 1-year-only value, geometric model error. |
+| `markup_discount` | Markup & Discount | Markup: ` item has a R% markup. What is the selling price?` Discount: ` item is discounted R%. What is the sale price?` | Integer dollar amount | rangeB[1] ≥ 4 → successive-discount mode: price×(1-d1)×(1-d2). Distractors: adjustment amount only, wrong direction (add vs subtract), simple combined rate. |
+| `tax_calculation` | Sales Tax | Varies by tier — total with tax / tax amount / reverse pre-tax / multi-item | Integer dollar amount | Tier inferred from rangeB[1]: 1→total including tax, 2→tax amount only, 3→reverse (find pre-tax from total), 4→two items with tax. Rates from {5,6,7,8,9,10,15,20}%. |
+
+---
+
+### Coordinate Geometry generators (in `coordGeometryGenerators.ts`)
+
+All five coordinate geometry generators use the **construct-backward** strategy: the answer (distance, midpoint, slope, equation) is determined first, then the problem is built so the numbers work out cleanly. All answers are integers, simplified fractions, canonical "y = mx + b" strings, or "(h, k)" coordinate pairs — never decimals.
+
+**Helpers exported from `coordGeometryGenerators.ts`:**
+- `formatSlope(rise, run)` — returns simplified fraction string (e.g. "3/4", "-2", "0", "undefined")
+- `formatLineEquation(m, b)` — returns canonical y = mx + b string (handles m=0, m=±1, b=0 special cases)
+
+| `generatorId` | Skill | Question form | Answer format | Notes |
+|---------------|-------|---------------|---------------|-------|
+| `distance_formula` | Distance Formula | `Find the distance between (x1, y1) and (x2, y2).` | Integer string | Construct-backward: pick Pythagorean triple (a,b,c), scale by k from rangeA, set (x2,y2)=(x1+a,y1+b). Distance = c·k exactly. Distractors: Manhattan distance (a+b), legs separately, ±1 and ±5 offsets. |
+| `midpoint_formula` | Midpoint Formula | `Find the midpoint of (x1, y1) and (x2, y2).` | "(mx, my)" pair string | Construct-backward: all coordinates are even (rangeA×2) so midpoint is always an integer pair. Distractors: forgot-to-divide (x1+x2, y1+y2), swapped x/y, off-by-one on each component. |
+| `slope_formula` | Slope of a Line | `Find the slope of the line through (x1, y1) and (x2, y2).` | Integer, fraction string, "0", or "undefined" | Pick rise (possibly 0 or negative) and run (possibly 0 for vertical). Simplified via GCD. 10% vertical-line probability. Distractors: inverted (Δx/Δy), wrong sign, ±1 on numerator, "undefined" or "0" when wrong. |
+| `line_equation` | Line Equations | Varies by tier (see below) | "y = mx + b" canonical string | Uses `formatLineEquation`. Tier controlled by `params.operations`: tier1 (given m and b), tier2a (given m and point), tier2b (given two points), tier3 (perpendicular line). Distractors: negated slope, negated intercept, swapped m/b, ±1 on each. |
+| `circle_equation` | Circle Equations | Varies by tier (see below) | Integer r², "(h, k)", or integer r | Tier controlled by `params.operations`: tier1 (find r²), tier2a (find center from standard form), tier2b (find radius from standard form), tier3 (complete the square from general form x²+y²+Dx+Ey+F=0). Construct-backward: pick h, k, r; expand for tier3 as D=−2h, E=−2k, F=h²+k²−r². |
+
+---
+
+### Complex Numbers generators (in `complexNumbersGenerators.ts`)
+
+All five complex number generators use the **construct-backward** strategy: answers are always in canonical complex form (integer real, integer imaginary), with Pythagorean triples used for modulus to guarantee integer results.
+
+**Helper exported from `complexNumbersGenerators.ts`:**
+- `formatComplex(real, imag)` — canonical display: "3 + 4i", "3 - 4i", "-2 + i", "-2 - i", "5", "3i", "i", "-i", "0"
+
+| `generatorId` | Skill | Question form | Answer format | Notes |
+|---------------|-------|---------------|---------------|-------|
+| `complex_addition` | Complex Addition | `Calculate ({z1}) + ({z2})` | formatComplex string | Pick a,b from rangeA, c,d from rangeB. Result (a+c)+(b+d)i. Distractors: subtraction result, wrong imaginary sign, real-only, imaginary-only. |
+| `complex_multiplication` | Complex Multiplication | `Calculate ({z1}) × ({z2})` | formatComplex string | FOIL: real=ac-bd, imag=ad+bc (i²=-1). Distractors: forgot i²=-1 (ac+bd), naive distribution, swapped real/imag, sign flip. |
+| `complex_modulus` | Complex Modulus | `Find |z| where z = {formatComplex}` | Integer string | Uses PYTHAGOREAN_TRIPLES for integer result: pick triple (a,b,c), scale by k from rangeA. |z|=c·k. Distractors: a+b, a*b, sum-of-squares (forgot sqrt), ±1. |
+| `complex_conjugate` | Conjugate Operations | Varies by `steps` param | Varies | steps=1: conjugate a-bi; steps=2: z×z̄=a²+b²; steps=3: z+z̄=2a; steps=4: z-z̄=2bi. |
+| `complex_polar` | Polar Form & Argument | `Find the argument (angle in degrees) of z = {z}` | Integer degree string | Uses axis-aligned (0/90/180/270°) and 45° angles. steps=1: axis only; steps=2+: adds 45° multiples. Distractors: 360-θ, 180-θ, θ±45, perpendicular. |
+
+---
+
+### Unit Conversion generators (in `unitConversionGenerators.ts`)
+
+All five unit conversion generators use a **lookup-table** strategy: input values are pre-validated so output is always an integer or a clean 1-decimal value. Each generator uses `params.steps` (1-4) to control tier, escalating from same-system conversions (integer always) through cross-system (1-decimal) to chained multi-step conversions. Distractors are generated by `buildNumericDistractors` using ±10%, ±25%, double, half, and ±1/±2 offset patterns.
+
+**Tier progression (all 5 generators):**
+- T1 (steps=1): same-system conversions, always integer results (cm↔m, g↔kg, °F→°C, mL↔L, m/s↔km/h)
+- T2a (steps=2): cross-system with clean values (inches↔cm, lbs→kg, °C→°F, ft²→m², mph→km/h)
+- T2b (steps=3): less-clean cross-system, still ≤ 1 decimal (km→miles, kg→lbs, °C→K, gallons→liters, km/h→mph)
+- T3 (steps=4): chained multi-step conversions (inches→cm→m, lbs→kg→g, °F→K, gallons→liters→mL, m/s→km/h→mph)
+
+| `generatorId` | Skill | Question form | Answer format | Notes |
+|---------------|-------|---------------|---------------|-------|
+| `length_conversion` | Length Conversion | `Convert N {from_unit} to {to_unit}.` | Numeric string (int or 1-decimal) | T1 pairs: cm↔m, mm↔cm, km↔m, inches↔feet. T2a: inches↔cm (2.54 factor), miles→km (1.609). T2b: km→miles (reciprocal), feet→meters. T3: inches→cm→m, miles→km→m. |
+| `weight_conversion` | Weight & Mass | `Convert N {from_unit} to {to_unit}.` | Numeric string (int or 1-decimal) | T1: g↔kg (multiples of 1000 only), mg↔g, oz↔lbs (multiples of 16). T2a: lbs→kg (×0.4536). T2b: kg→lbs (×2.205), tonnes→kg. T3: lbs→kg→g, tonnes→kg→g. |
+| `temperature_conversion` | Temperature | `Convert N°F to °C.` / `Convert N°C to °F.` / `Convert N°C to K.` / `Convert N°F to K.` | Integer string | TEMP_F_TO_C lookup: 21 pre-validated pairs where F→C is always exact integer. T1: F→C. T2a: C→F (reverse lookup). T2b: C→K (+273). T3: F→K chain. Common mistake distractors: forgot-to-subtract-32, inverted-fraction (9/5 vs 5/9). |
+| `area_volume_conversion` | Area & Volume | `Convert N {from_unit} to {to_unit}.` | Numeric string (int or 1-decimal) | T1: cm²↔m² (÷/×10000), in²↔ft² (÷/×144), mL↔L (multiples of 1000 only). T2a: cm³↔m³, ft²→m² (×0.0929). T2b: gallons→liters (×3.785), m²→ft² (×10.764). T3: gallons→mL, m²→cm². |
+| `speed_conversion` | Speed | `Convert N {from_unit} to {to_unit}.` | Numeric string (int or 1-decimal) | T1: m/s↔km/h (×3.6; integer m/s inputs always give clean 1-decimal km/h). T2a: mph→km/h (×1.609). T2b: km/h→mph (×0.6214), m/s→mph. T3: m/s→mph via km/h, knots→km/h (×1.852). |
 
 ---
 
@@ -445,6 +526,16 @@ Two formatting helpers exported for reuse: `formatMatrix(rows: number[][])` → 
 | Introductory Limits | Linear substitution, coeff 1–5, point [−3,4] | Quadratic substitution, coeff 1–4, point [−3,3] | Difference-of-squares cancel | Cubic factoring cancel |
 | Polynomial Division | Linear quotient no remainder, root [−3,3] | Linear quotient with remainder | Quadratic quotient no remainder | Quadratic quotient with remainder |
 
+### Financial Math — Ranges by Tier
+
+| Skill | Tier 1 | Tier 2a | Tier 2b | Tier 3 |
+|-------|--------|---------|---------|--------|
+| Simple Interest | P: –500, t: 1–2 yr | P: –1000, t: 1–3 yr | P: –2000, t: 1–5 yr | P: –5000, t: 2–10 yr |
+| Compound Interest | P: –1000, annual (n=1), t: 1–2 yr | P: –1000, annual, t: 1–3 yr | P: –2000, semi-annual (n=2), t: 1–4 yr | P: –5000, quarterly (n=4), t: 2–5 yr |
+| Depreciation | P: –1000, t: 1–2 yr | P: –2000, t: 1–3 yr | P: –5000, t: 1–4 yr | P: –10000, t: 1–5 yr |
+| Markup & Discount | Single markup/discount, base –100 | Single markup/discount, base –200 | Successive discounts, base –500 | Successive discounts, base –1000 |
+| Sales Tax | Total incl. tax, price –100 | Tax amount only, price –200 | Reverse (pre-tax from total), price –500 | Multi-item (2 items), price –1000 |
+
 ---
 
 ---
@@ -463,6 +554,35 @@ Two formatting helpers exported for reuse: `formatMatrix(rows: number[][])` → 
 | Linear Algebra | `linear_algebra` | 5 (Matrix Addition, Scalar Multiplication, Determinant, Dot Product, Matrix-Vector Multiply) | 5 (one per skill) |
 | Calculus | `calculus` | 5 (Power Rule Derivatives, Chain Rule, Basic Integrals, Limit Evaluation, Definite Integrals) | 5 (one per skill) |
 | Logic & Sets | `logic_sets` | 5 (Truth Tables, Set Operations, Venn Diagrams, Logical Equivalence, Set Cardinality) | 5 (one per skill) |
+| Pre-Calculus | `precalculus` | 5 (Logarithms, Exponent Rules, Sequences & Series, Introductory Limits, Polynomial Division) | 5 (one per skill) |
+| Financial Math | `financial_math` | 5 (Simple Interest, Compound Interest, Depreciation, Markup & Discount, Sales Tax) | 5 (one per skill) |
+| Discrete Math | `discrete_math` | 5 (Recurrence Relations, Graph Theory, Base Conversion, Summation Formulas, Induction Concepts) | 5 (one per skill) |
+| Complex Numbers | `complex_numbers` | 5 (Complex Addition, Complex Multiplication, Modulus, Conjugate Operations, Polar Form & Argument) | 5 (one per skill) |
+
+### Complex Numbers — Ranges by Tier
+
+| Skill | Tier 1 | Tier 2a | Tier 2b | Tier 3 |
+|-------|--------|---------|---------|--------|
+| Complex Addition | a,b in [1,5], c,d in [1,5] | a-d in [-5,5] | a-d in [-10,10] | a-d in [-15,15] |
+| Complex Multiplication | a,b,c,d in [1,4] | a-d in [-4,4] | a-d in [-6,6] | a-d in [-8,8] |
+| Complex Modulus | scale k in [1,5] (Pythagorean triples) | k in [1,10] | k in [1,15] | k in [1,25] |
+| Complex Conjugate | steps=1 (conjugate), a,b in [1,5] | steps=2 (z×z̄), a,b in [-5,5] | steps=3 (z+z̄), a,b in [-8,8] | steps=4 (z-z̄), a,b in [-10,10] |
+| Polar Argument | steps=1 (axis angles 0/90/180/270°) | steps=2 (+ 45° multiples) | steps=3 (all standard angles) | steps=4 (all standard angles) |
+
+Art placeholder: crimson gradient (#E11D48 -> #9F1239), icon: i.
+
+### Discrete Math — Ranges by Tier
+
+| Skill | Tier 1 | Tier 2a | Tier 2b | Tier 3 |
+|-------|--------|---------|---------|--------|
+| Recurrence Relations | arithmetic, a1 1-5, d 1-5 | Fibonacci-like, a1 1-5, a2 1-5, n 5-8 | geometric, a1 1-5, c 2-4, n 3-6 | linear+constant, a1 1-5, c 2-3, d 1-4, n 3-5 |
+| Graph Theory | Handshaking Lemma, n 3-8, e 2-10 | min connected edges, n 3-10 | complete graph K_n, n 3-10 | regular graph, n 4-12, d 2-6 |
+| Base Conversion | dec->bin, n 1-31 | bin->dec, n 1-63 | dec->hex, n 1-255 | hex->dec, n 1-255 |
+| Summation Formulas | sum i, n 3-10 | sum i^2, n 3-8 | geometric series, n 2-8 | sum odd numbers, n 3-10 |
+| Induction Concepts | evaluate P(1) | inductive step goal | LHS of P(k+1) | strong induction hypothesis |
+
+Art placeholder: purple gradient (#A855F7 -> #7E22CE), icon: Sigma.
+
 
 Registered at startup via `registerProceduralDecks()` called from `CardApp.svelte`. Appears in Study Temple under a Math tab. The `DeckTileV2` component shows skill count (not fact count) and uses a blue gradient placeholder (`#3B82F6` → `#1D4ED8`) until custom art ships.
 

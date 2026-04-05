@@ -77,6 +77,41 @@ import {
   generateLimitIntro,
   generatePolynomialDivision,
 } from './preCalculusGenerators';
+import {
+  generateSimpleInterest,
+  generateCompoundInterest,
+  generateDepreciation,
+  generateMarkupDiscount,
+  generateTaxCalculation,
+} from './financialMathGenerators';
+import {
+  generateRecurrence,
+  generateGraphTheory,
+  generateBaseConversion,
+  generateSummation,
+  generateInductionBase,
+} from './discreteMathGenerators';
+import {
+  generateComplexAddition,
+  generateComplexMultiplication,
+  generateComplexModulus,
+  generateComplexConjugate,
+  generateComplexPolar,
+} from './complexNumbersGenerators';
+import {
+  generateDistance,
+  generateMidpoint,
+  generateSlope,
+  generateLineEquation,
+  generateCircleEquation,
+} from './coordGeometryGenerators';
+import {
+  generateLengthConversion,
+  generateWeightConversion,
+  generateTemperatureConversion,
+  generateAreaVolumeConversion,
+  generateSpeedConversion,
+} from './unitConversionGenerators';
 
 // ── Dispatcher ────────────────────────────────────────────────────────────────
 
@@ -154,6 +189,31 @@ export function generateProblem(
     case 'sequence':             return generateSequence(params, rng);
     case 'limit_intro':          return generateLimitIntro(params, rng);
     case 'polynomial_division':  return generatePolynomialDivision(params, rng);
+    case 'simple_interest':      return generateSimpleInterest(params, rng);
+    case 'compound_interest':    return generateCompoundInterest(params, rng);
+    case 'depreciation':         return generateDepreciation(params, rng);
+    case 'markup_discount':      return generateMarkupDiscount(params, rng);
+    case 'tax_calculation':      return generateTaxCalculation(params, rng);
+    case 'recurrence':       return generateRecurrence(params, rng);
+    case 'graph_theory':     return generateGraphTheory(params, rng);
+    case 'base_conversion':  return generateBaseConversion(params, rng);
+    case 'summation':        return generateSummation(params, rng);
+    case 'induction_base':   return generateInductionBase(params, rng);
+    case 'distance_formula':   return generateDistance(params, rng);
+    case 'midpoint_formula':   return generateMidpoint(params, rng);
+    case 'slope_formula':      return generateSlope(params, rng);
+    case 'line_equation':      return generateLineEquation(params, rng);
+    case 'circle_equation':    return generateCircleEquation(params, rng);
+    case 'length_conversion':      return generateLengthConversion(params, rng);
+    case 'weight_conversion':      return generateWeightConversion(params, rng);
+    case 'temperature_conversion': return generateTemperatureConversion(params, rng);
+    case 'area_volume_conversion': return generateAreaVolumeConversion(params, rng);
+    case 'speed_conversion':       return generateSpeedConversion(params, rng);
+    case 'complex_addition':       return generateComplexAddition(params, rng);
+    case 'complex_multiplication': return generateComplexMultiplication(params, rng);
+    case 'complex_modulus':        return generateComplexModulus(params, rng);
+    case 'complex_conjugate':      return generateComplexConjugate(params, rng);
+    case 'complex_polar':          return generateComplexPolar(params, rng);
     default:
       throw new Error(`Unknown generatorId: "${skill.generatorId}"`);
   }
