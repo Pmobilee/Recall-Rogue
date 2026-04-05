@@ -185,6 +185,19 @@ This catches issues that the 19-check structural verifier CANNOT:
 
 **This is NON-NEGOTIABLE. The structural verifier passing does NOT mean the deck plays well.**
 
+### Real-Engine Quiz Audit
+
+After the structural `quiz-audit.mjs` passes, run the engine-level audit for comprehensive validation:
+
+```bash
+npm run audit:quiz-engine                            # All knowledge decks
+npm run audit:quiz-engine -- --include-vocab          # Include vocab decks
+npm run audit:quiz-engine -- --deck <id> --verbose    # Single deck, full detail
+npm run audit:quiz-engine -- --confusion-test         # Verify confusion matrix path
+```
+
+This exercises the REAL `selectDistractors()` and `selectQuestionTemplate()` code paths, catching issues the simplified `quiz-audit.mjs` cannot: synonym group violations, unit contamination, POS mismatches, template rendering failures, mastery-dependent distractor count errors, and confusion matrix responsiveness. 24 checks total (10 structural + 14 engine-enabled).
+
 ## Build Artifacts — JSON to SQLite Compilation
 
 **JSON files in `data/decks/` are the authoring format. Never edit `public/curated.db` directly.**

@@ -1,7 +1,7 @@
 # Testing Strategy
 
 > **Purpose:** Overview of all testing layers in Recall Rogue — when to use each method, where tests live, and how to run them.
-> **Last verified:** 2026-04-04
+> **Last verified:** 2026-04-05
 > **Source files:** `vitest.config.ts`, `tests/unit/*.test.ts`, `src/services/__tests__/`, `CLAUDE.md`
 
 ## Four Testing Layers
@@ -152,6 +152,66 @@ Detects pools where answer-length disparity lets players guess by length alone. 
 - **FAIL** pool <5 members with no `syntheticDistractors`
 
 Exempt: all vocabulary/language decks, `world_flags`, script decks (hiragana/katakana/hangul). Run after any pool redesign or fact reassignment.
+
+## Real-Engine Quiz Audit
+
+The **real-engine quiz audit** (`scripts/quiz-audit-engine.ts`) exercises the actual game engine functions — `selectDistractors()`, `selectQuestionTemplate()`, `getNumericalDistractors()`, and `ConfusionMatrix` — against all curated deck JSON files. Unlike the static `quiz-audit.mjs` pre-commit gate, it catches engine-specific failures that only occur at runtime.
+
+**Relationship to `quiz-audit.mjs`:** `quiz-audit.mjs` is a fast JS structural gate (run before every commit). `quiz-audit-engine.ts` is comprehensive engine-level validation (run after structural checks pass, especially before releases or after quiz engine changes).
+
+```bash
+# npm shorthand
+npm run audit:quiz-engine                             # All knowledge decks
+npm run audit:quiz-engine -- --include-vocab          # Include vocab/language decks
+npm run audit:quiz-engine -- --deck <id> --verbose    # Single deck, full detail
+npm run audit:quiz-engine -- --confusion-test         # Verify confusion matrix path
+
+# Direct invocation with full options
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engine.ts [options]
+```
+
+**Options:**
+
+| Option | Description |
+|--------|-------------|
+| `--deck <id>` | Audit a single deck by ID |
+| `--sample <n>` | Sample N facts per pool (faster for large decks; default: all) |
+| `--mastery <levels>` | Comma-separated mastery levels to test (default: `0,2,4`) |
+| `--verbose` | Print every fact result, not just failures |
+| `--json` | Machine-readable JSON output (pipe to file for CI) |
+| `--include-vocab` | Include vocabulary/language decks (skipped by default) |
+| `--confusion-test` | Seed synthetic confusions and verify they surface in distractors |
+
+**24 quality checks** — 10 preserved from `quiz-audit.mjs` plus 14 new engine-enabled checks:
+
+| Check | Severity | Description |
+|-------|----------|-------------|
+| `answer_emdash` | FAIL | Answer contains em-dash (formatting error baked into answer text) |
+| `answer_too_long` | FAIL/>100, WARN/>60 | Answer too long for comfortable in-game display |
+| `distractor_count_low` | FAIL | Fewer than 2 distractors returned by engine |
+| `length_ratio` | FAIL/>3×, WARN/>2× | Answer length vs distractor length ratio too large |
+| `answer_in_distractors` | FAIL | Correct answer text appears as a distractor |
+| `duplicate_distractors` | FAIL | Same distractor text appears twice |
+| `question_too_long` | FAIL/>400, WARN/>300 | Rendered question too long for display |
+| `missing_explanation` | FAIL | Fact has empty or missing explanation |
+| `outlier_option_length` | WARN | One option length is >4× or <0.2× the average |
+| `double_space` | WARN | Double spaces suggest an empty template placeholder slot |
+| `synonym_violation` | FAIL | Distractor shares a synonym group with the correct fact |
+| `unit_contamination` | WARN | Distractor has a different measurement unit than the answer |
+| `pos_mismatch` | WARN | Vocab: distractor part-of-speech differs from correct answer |
+| `template_fallback` | WARN | Real template fell back to `fact.quizQuestion` |
+| `unresolved_placeholder` | FAIL | `{placeholder}` pattern still present in the rendered question |
+| `reverse_answer_wrong` | FAIL | Reverse template returned the wrong answer |
+| `reading_answer_wrong` | FAIL | Reading template returned the wrong answer |
+| `question_text_leak` | WARN | Distractor answer text appears verbatim in the question |
+| `all_pool_fill` | WARN | All distractors are `pool_fill` (no confusion or difficulty signals used) |
+| `fallback_distractors` | WARN | Pre-generated fallback distractors used because pool was too small |
+| `empty_correct_answer` | FAIL | Displayed correct answer is empty after template rendering |
+| `mastery_count_wrong` | WARN | Distractor count returned does not match what mastery level requests |
+| `confusion_not_responsive` | FAIL | `--confusion-test` mode: seeded confusion entry did not surface in distractors |
+| `mastery_count_over` | FAIL | Got more distractors than the mastery level expects |
+
+Runs at ~1000 facts/sec. Exits with code 1 if any FAILs. Image facts (`quizMode: image_question` or `image_answers`) are always skipped.
 
 ## Standard Verification Sequence
 
