@@ -3163,26 +3163,29 @@
     },
     {
       "id": "paint_bar_caravaggio_fugitive",
-      "correctAnswer": "He killed a man in a brawl",
+      "correctAnswer": "Caravaggio",
       "acceptableAlternatives": [
         "murder",
         "killing",
         "manslaughter"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "technique_terms",
+      "answerTypePoolId": "artist_names",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
       "quizMode": "text",
       "distractors": [
-        "He stole from the Church",
-        "He insulted the Pope",
-        "He forged paintings",
-        "He was accused of heresy",
-        "He assaulted a cardinal"
+        "Rubens",
+        "Rembrandt",
+        "Vermeer",
+        "Poussin",
+        "El Greco",
+        "Artemisia Gentileschi",
+        "Frans Hals",
+        "Jan Steen"
       ],
-      "quizQuestion": "Why did Caravaggio spend his final years as a fugitive — fleeing through Naples, Malta, and Sicily?",
+      "quizQuestion": "Which Baroque master spent his final years as a fugitive after killing a man in a brawl in 1606?",
       "explanation": "Caravaggio killed Ranuccio Tomassoni in a brawl in 1606 — possibly over a disputed tennis match — and was sentenced to death in absentia by the Pope. He spent his final four years as a fugitive through Naples, Malta, and Sicily, dying at 38, possibly of lead poisoning or fever, while trying to return to Rome.",
       "statement": "Caravaggio killed a man in 1606 and spent his final years as a fugitive under a papal death sentence, dying at 38 while attempting to return to Rome.",
       "wowFactor": "Caravaggio painted some of his greatest works while fleeing a death sentence — in Malta he created The Beheading of St. John, one of his largest works, but was expelled from the Knights of Malta before it was completed.",
@@ -3587,8 +3590,8 @@
         "British Museum",
         "National Palace Museum"
       ],
-      "quizQuestion": "Which museum — home to the Mona Lisa and Winged Victory of Samothrace — is the world's most visited art museum?",
-      "explanation": "The Louvre in Paris is the world's most visited art museum, with approximately 9 million visitors per year (pre-pandemic). It holds over 550,000 works, of which about 35,000 are on display. It became a public museum in 1793. In addition to the Mona Lisa, it houses the Venus de Milo and Winged Victory of Samothrace.",
+      "quizQuestion": "The Winged Victory of Samothrace and the Venus de Milo are both housed in which museum?",
+      "explanation": "The Louvre in Paris is home to both the Winged Victory of Samothrace (Nike of Samothrace) and the Venus de Milo — two of the most celebrated ancient Greek sculptures in the world. With over 9 million visitors per year, it is also the world's most visited art museum.",
       "statement": "The Louvre in Paris is the world's most visited art museum (~9 million visitors/year), holding over 550,000 works including the Mona Lisa.",
       "wowFactor": "The Louvre's glass pyramid entrance — designed by I. M. Pei and opened in 1989 — was intensely controversial at first. Critics called it a 'jewel of ignorance.' Today it is considered an architectural masterpiece.",
       "sourceName": "Wikipedia — Louvre",
@@ -4116,7 +4119,8 @@
         "paint_mov_medici_patronage",
         "paint_imp_gauguin_van_gogh_arles",
         "paint_mov_vangogh_brother_theo",
-        "paint_mov_art_patronage_church"
+        "paint_mov_art_patronage_church",
+        "paint_bar_caravaggio_fugitive"
       ],
       "minimumSize": 5,
       "homogeneityExempt": true,
@@ -4429,7 +4433,6 @@
         "paint_mov_fresco_technique",
         "paint_mov_sfumato_meaning",
         "paint_mov_impressionism_plein_air",
-        "paint_bar_caravaggio_fugitive",
         "paint_mod_abstract_expressionism_two_types",
         "paint_mod_surrealism_unconscious",
         "paint_imp_degas_preferred_medium",
