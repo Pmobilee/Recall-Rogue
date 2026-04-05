@@ -1597,3 +1597,43 @@ Hollow pools (< 5 real facts) and thin pools (< 15 total including synthetics) w
 | `medical_terminology` | Standardize | `condition_names`: 23 definition-format answers converted to bare clinical term names (e.g. "underactive thyroid producing insufficient thyroid hormone" → "Hypothyroidism") |
 
 Result: 0 FAIL across all 75 decks after remediation.
+
+---
+
+## world_war_ii Deck — Pool Contamination Fix (2026-04-05)
+
+`data/decks/world_war_ii.json` — 735 facts. Pool contamination fixed: wrong-type entries moved to semantically correct pools.
+
+**Pool moves:**
+- `famous_quotes`: Removed biographical fragment ("She had a prosthetic leg"), time-period answer ("Until the 1970s"), moved to `historical_events`. "Play it, Sam" (actual wartime movie quote) retained.
+- `military_terms`: Removed tactic description ("Burned block by block"), moved to `historical_events`.
+- `organization_names`: Removed law name ("Enabling Act") and policy descriptor ("Swiss neutrality"), both moved to `historical_events`.
+- `number_stats`: Bracket-notation facts (51 pure `{N}` entries) split off into new `bracket_counts` pool. Prevents short bracket-rendered values ("4", "12") from appearing as distractors for long human-readable numbers ("60–85 million").
+
+**Result:** 0 failures, 0 quiz-audit failures.
+
+---
+
+## mammals_world Deck — Pool Architecture Overhaul (2026-04-05)
+
+`data/decks/mammals_world.json` — 170 facts. Original 4-pool design had a single 124-fact `term` pool with 15x answer-length ratio. Overhauled to 8 pools for quiz-audit compliance.
+
+**Original pools (4):** `number` (11), `term` (124), `name` (27), `bracket_numbers` (8)
+
+**New pools (8):**
+| Pool | Size | Purpose | Length range |
+|---|---|---|---|
+| `bracket_numbers` | 13 | Pure `{N}` facts for algorithmic distractors | N/A (numerical) |
+| `stats_short` | 25 | Short statistics: ≤8 chars ("96%", "66 kg", "None") | 3–8 ch |
+| `stats_medium` | 31 | Medium statistics: 9–20 chars ("10,400 kg", "Up to 30.5 m") | 9–20 ch |
+| `stats_long` | 21 | Long stat descriptions (>20 chars) | 21–55 ch |
+| `behavior_descriptions` | 24 | Behavioral observations and mechanisms | 5–60 ch (exempt) |
+| `conservation_terms` | 7 | Conservation status, threats, locations | 19–60 ch (exempt) |
+| `name` | 24 | Species names, concepts, status terms | 5–24 ch (exempt) |
+| `term` | 25 | Descriptive scientific explanations | 22–59 ch (exempt) |
+
+**Key changes:**
+- `name` pool cleaned: conservation statuses, concepts, and behavioral terms moved to appropriate pools.
+- Stats split into 3 length-banded pools to keep quiz-audit distractor ratios within 3x.
+- Facts with semantically mismatched pool assignments corrected (e.g. conservation dates moved from `conservation_terms` to `stats_medium`).
+- Original pre-change quiz-audit had 31 failures. Post-overhaul: 0 failures.

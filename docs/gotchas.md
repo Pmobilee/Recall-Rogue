@@ -1,3 +1,25 @@
+### 2026-04-05 — quiz-audit.mjs Uses Simpler Distractor Selection Than Runtime
+
+`scripts/quiz-audit.mjs` selects distractors differently from the runtime `selectDistractors` service:
+- **Audit:** Shuffles ALL pool members with a seeded PRNG (seed = sum of charCodes of fact ID), takes first 3. No quality scoring. Fact-level `distractors[]` only used when pool has <3 members.
+- **Runtime:** Scores candidates by unit-matching, confusion matrix, difficulty band, jitter. Fact-level `distractors[]` used as fallback if pool fills <3 slots.
+
+**Implications:**
+1. Adding `syntheticDistractors` to a large pool (>3 members) does NOT help the audit — synthetics are last priority.
+2. Adding `fact.distractors[]` does NOT help the audit for facts in large pools — they never get used.
+3. The audit seed is deterministic from fact ID → same 3 distractors every time → pool composition changes directly fix or break the audit.
+4. Only way to fix audit failures: ensure ALL pool members have similar answer lengths (~within 3x of each other).
+
+**Lesson:** Pool design must be validated by the audit, not just by `pool-homogeneity-analysis.mjs`. Run `quiz-audit.mjs --full` after ANY pool restructuring.
+
+### 2026-04-05 — Bracket Notation `{N} unit` Is NOT Treated as Numerical by quiz-audit.mjs
+
+`quiz-audit.mjs` defines `isNumerical` using `/^\{(\d[\d,]*\.?\d*)\}$/` — requires the ENTIRE answer string to be just the bare number in braces. Answers like `{104} km/h` or `About {45} cm` do NOT match, so length-mismatch checks still apply.
+
+Only pure `{N}` (e.g., `{104}`, `{6495}`) bypass the length check. With-unit bracket answers (`{N} unit`) are treated as text → prone to length mismatch if pool mixes short and long answers.
+
+**Rule:** Reserve bracket notation for facts where the answer is conceptually just a number (count, year, quantity). Don't convert "104 km/h" to "{104} km/h" hoping to bypass length checks.
+
 ### 2026-04-05 — tsx ESM Loader Does NOT Propagate to worker_threads Spawned from Different Files
 
 When using `new Worker('./sim-worker.ts', ...)` from a tsx-run main file, tsx's IPC-based ESM loader (`.js`→`.ts` extension remapping) is NOT inherited by the worker. This causes `ERR_MODULE_NOT_FOUND` for `.js` imports inside the worker even though the `.ts` source exists.
