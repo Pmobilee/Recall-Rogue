@@ -38,7 +38,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Byzantine_Empire",
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
@@ -149,7 +149,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Hagia_Sophia",
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
@@ -186,7 +186,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Hagia_Sophia",
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
@@ -223,7 +223,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Nika_riots",
-      "answerTypePoolId": "battle_event_names",
+      "answerTypePoolId": "description_phrases",
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
@@ -263,7 +263,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Theodora_(wife_of_Justinian_I)",
-      "answerTypePoolId": "ruler_leader_names",
+      "answerTypePoolId": "description_phrases",
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
@@ -340,7 +340,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Greek_fire",
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "person_group_names",
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
@@ -420,7 +420,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/East%E2%80%93West_Schism",
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
@@ -457,7 +457,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Fall_of_Constantinople",
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
@@ -494,7 +494,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Varangian_Guard",
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "person_group_names",
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
@@ -1055,7 +1055,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Great_Mosque_of_C%C3%B3rdoba",
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "concept_terms",
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
@@ -1203,7 +1203,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Sack_of_Lindisfarne",
-      "answerTypePoolId": "battle_event_names",
+      "answerTypePoolId": "description_phrases",
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
@@ -1317,7 +1317,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Erik_the_Red",
-      "answerTypePoolId": "ruler_leader_names",
+      "answerTypePoolId": "description_phrases",
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
@@ -1357,7 +1357,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Leif_Erikson",
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
@@ -1665,7 +1665,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Harald_Bluetooth",
-      "answerTypePoolId": "work_text_names",
+      "answerTypePoolId": "description_phrases",
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
@@ -1745,7 +1745,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Charlemagne",
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
@@ -2105,7 +2105,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Magna_Carta",
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
@@ -2145,7 +2145,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Magna_Carta",
-      "answerTypePoolId": "work_text_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "volatile": false,
@@ -2219,7 +2219,7 @@
         }
       ],
       "sourceUrl": "https://en.wikipedia.org/wiki/Thing_(assembly)",
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "person_group_names",
       "difficulty": 2,
       "funScore": 7,
       "volatile": false,
@@ -2316,7 +2316,7 @@
         "November 1095"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 8,
       "distractors": [
@@ -2456,7 +2456,7 @@
         "1096-1099"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -2501,7 +2501,7 @@
         "July 1099"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 8,
       "distractors": [
@@ -2544,7 +2544,7 @@
         "4"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -2729,7 +2729,7 @@
         "July 3–4, 1187"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 9,
       "distractors": [
@@ -2782,7 +2782,7 @@
         "October 1187"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 8,
       "distractors": [
@@ -2955,7 +2955,7 @@
         "Treaty of Jaffa"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -3181,7 +3181,7 @@
         "1307"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 9,
       "distractors": [
@@ -3411,7 +3411,7 @@
         "9"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -3996,7 +3996,7 @@
         "Saint Bernard"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "person_group_names",
       "difficulty": 4,
       "funScore": 7,
       "distractors": [
@@ -4296,7 +4296,7 @@
         "1097"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 4,
       "funScore": 6,
       "distractors": [
@@ -4399,7 +4399,7 @@
         "618-907"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -4602,7 +4602,7 @@
         "868"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 9,
       "distractors": [
@@ -4739,7 +4739,7 @@
         "960-1279"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 2,
       "funScore": 7,
       "distractors": [
@@ -5200,7 +5200,7 @@
         "794-1185"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -5378,7 +5378,7 @@
         "fifty-four"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 4,
       "funScore": 6,
       "distractors": [
@@ -5496,7 +5496,7 @@
         "200 years before Gutenberg"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "concept_terms",
       "difficulty": 3,
       "funScore": 9,
       "distractors": [
@@ -5888,7 +5888,7 @@
         "early centuries CE"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 4,
       "funScore": 7,
       "distractors": [
@@ -6044,7 +6044,7 @@
         "born c. 1217, died c. 1255"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 4,
       "funScore": 6,
       "distractors": [
@@ -6074,7 +6074,7 @@
         "1324 CE"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 2,
       "funScore": 9,
       "distractors": [
@@ -6201,7 +6201,7 @@
         "1312 to 1337"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -6424,7 +6424,7 @@
         "proto-Shona Bantu people"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "concept_terms",
+      "answerTypePoolId": "person_group_names",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -6568,7 +6568,7 @@
         "10th century"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 4,
       "funScore": 7,
       "distractors": [
@@ -6683,7 +6683,7 @@
         "eleven"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 8,
       "distractors": [
@@ -6820,7 +6820,7 @@
         "c. 1076"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 4,
       "funScore": 7,
       "distractors": [
@@ -6943,7 +6943,7 @@
         "~375 years"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_named",
       "difficulty": 4,
       "funScore": 6,
       "distractors": [
@@ -7003,63 +7003,31 @@
       "label": "Dates & Years",
       "answerFormat": "date",
       "factIds": [
-        "med_byz_empire_overview",
-        "med_byz_hagia_sophia_build",
-        "med_byz_hagia_sophia_record",
-        "med_byz_great_schism",
-        "med_byz_fall_constantinople",
         "med_isl_muhammad_hijra",
         "med_isl_rashidun_caliphate",
-        "med_vik_leif_erikson_vinland",
-        "med_feu_charlemagne_coronation",
-        "med_feu_magna_carta_date",
-        "med_4_cru_clermont_date",
-        "med_4_cru_first_crusade_dates",
-        "med_4_cru_jerusalem_fall_date",
-        "med_4_cru_crusader_states_count",
         "med_4_cru_edessa_fall",
-        "med_4_cru_battle_hattin_date",
-        "med_4_cru_saladin_jerusalem_recapture",
-        "med_4_cru_treaty_jaffa",
         "med_4_cru_templars_founded",
-        "med_4_cru_templars_arrest",
         "med_4_cru_hospitaller_founded",
         "med_4_cru_teutonic_founded",
         "med_4_cru_acre_fall_1291",
-        "med_4_cru_crusades_number",
         "med_4_cru_templars_banking",
         "med_4_cru_antioch_fall_1268",
-        "med_4_cru_nicaea_capture",
         "med_4_cru_teutonic_prussia",
-        "med_5_tang_dynasty_dates",
         "med_5_tang_wu_zetian_born",
-        "med_5_tang_diamond_sutra",
         "med_5_tang_gunpowder_origin",
         "med_5_tang_gunpowder_military",
-        "med_5_song_dynasty_dates",
         "med_5_song_su_song_clock",
-        "med_5_heian_period",
-        "med_5_heian_genji_chapters",
         "med_5_goryeo_founded",
-        "med_5_goryeo_metal_type",
         "med_5_goryeo_kwago",
         "med_5_goryeo_fall",
         "med_5_song_hand_cannon",
         "med_5_song_rice_revolution",
-        "med_6_afr_trans_saharan_camels",
         "med_6_afr_mali_battle_kirina",
-        "med_6_afr_sundiata_dates",
-        "med_6_afr_mansa_musa_hajj",
         "med_6_afr_mansa_musa_gold",
-        "med_6_afr_mansa_musa_reign",
-        "med_6_afr_kilwa_founded",
         "med_6_afr_vasco_da_gama",
-        "med_6_afr_lalibela_churches",
         "med_6_afr_lalibela_unesco",
         "med_6_afr_almoravid_marrakesh",
-        "med_6_afr_almoravid_ghana",
-        "med_6_afr_songhai_timbuktu",
-        "med_6_afr_mali_duration"
+        "med_6_afr_songhai_timbuktu"
       ],
       "minimumSize": 5
     },
@@ -7069,10 +7037,8 @@
       "answerFormat": "name",
       "factIds": [
         "med_byz_justinian_reign",
-        "med_byz_theodora_origins",
         "med_byz_belisarius",
         "med_isl_baghdad_founded",
-        "med_vik_erik_red",
         "med_vik_bluetooth",
         "med_vik_cnut_empire",
         "med_vik_normandy",
@@ -7101,8 +7067,6 @@
       "answerFormat": "name",
       "factIds": [
         "med_byz_corpus_juris",
-        "med_vik_runes_jelling",
-        "med_feu_magna_carta_provisions",
         "med_4_cru_second_crusade_bull",
         "med_5_song_wujing_zongyao",
         "med_5_heian_tale_of_genji",
@@ -7117,7 +7081,9 @@
         "Song of Roland",
         "El Cid",
         "Nibelungenlied",
-        "Arthurian Legends"
+        "Arthurian Legends",
+        "Domesday Book",
+        "Liber Abaci"
       ]
     },
     {
@@ -7125,10 +7091,8 @@
       "label": "Battles & Events",
       "answerFormat": "name",
       "factIds": [
-        "med_byz_nika_riots",
         "med_byz_iconoclasm",
         "med_vik_age_timeline",
-        "med_vik_lindisfarne",
         "med_vik_stamford_bridge",
         "med_vik_great_heathen_army",
         "med_feu_charlemagne_saxons",
@@ -7142,7 +7106,9 @@
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
-        "Battle of Hastings"
+        "Battle of Hastings",
+        "Battle of Crécy",
+        "Battle of Poitiers"
       ]
     },
     {
@@ -7150,11 +7116,10 @@
       "label": "Concepts & Terms",
       "answerFormat": "term",
       "factIds": [
-        "med_byz_greek_fire_origin",
-        "med_byz_varangian_guard",
         "med_byz_plague_justinian",
         "med_byz_justinian_territory",
         "med_isl_arabic_numerals",
+        "med_isl_cordoba_mosque",
         "med_isl_cordoba_city",
         "med_vik_longship_design",
         "med_vik_althing",
@@ -7165,7 +7130,6 @@
         "med_feu_feudal_hierarchy",
         "med_feu_motte_bailey",
         "med_feu_chivalry",
-        "med_feu_thing_democracy",
         "med_feu_castle_evolution",
         "med_4_cru_deus_vult",
         "med_4_cru_second_crusade_outcome",
@@ -7174,7 +7138,6 @@
         "med_4_cru_fourth_crusade_impact",
         "med_4_cru_urban_promise",
         "med_4_cru_hattin_true_cross",
-        "med_4_cru_bernard_jews",
         "med_4_cru_frederick_barbarossa",
         "med_4_cru_hospitallers_origin",
         "med_4_cru_childrens_crusade_scholarship",
@@ -7184,13 +7147,13 @@
         "med_5_song_gdp",
         "med_5_song_exam_system",
         "med_5_heian_scripts",
+        "med_5_goryeo_metal_type",
         "med_5_heian_samurai_rise",
         "med_6_afr_ghana_location",
         "med_6_afr_ghana_trade",
         "med_6_afr_trans_saharan_goods",
         "med_6_afr_timbuktu_manuscripts",
         "med_6_afr_great_zimbabwe_walls",
-        "med_6_afr_great_zimbabwe_builders",
         "med_6_afr_great_zimbabwe_trade",
         "med_6_afr_swahili_word",
         "med_6_afr_swahili_exports",
@@ -7225,7 +7188,6 @@
       "factIds": [
         "med_isl_house_of_wisdom",
         "med_isl_dome_of_rock",
-        "med_isl_cordoba_mosque",
         "med_isl_alhambra",
         "med_feu_cluny_abbey",
         "med_4_cru_krak_des_chevaliers",
@@ -7240,7 +7202,8 @@
         "Cologne Cathedral",
         "Notre-Dame de Paris",
         "Chartres Cathedral",
-        "Westminster Abbey"
+        "Westminster Abbey",
+        "Canterbury Cathedral"
       ]
     },
     {
@@ -7266,6 +7229,124 @@
         "Peter Abelard",
         "Thomas Aquinas",
         "Albertus Magnus"
+      ]
+    },
+    {
+      "id": "person_group_names",
+      "label": "People & Groups",
+      "answerFormat": "name",
+      "factIds": [
+        "med_byz_greek_fire_origin",
+        "med_byz_varangian_guard",
+        "med_feu_thing_democracy",
+        "med_4_cru_bernard_jews",
+        "med_6_afr_great_zimbabwe_builders"
+      ],
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Robert Guiscard",
+        "Bayezid I",
+        "Theodoric the Great",
+        "The Janissaries",
+        "The Assassins (Hashashin)",
+        "Ibn Battuta",
+        "Timur (Tamerlane)",
+        "The Almohads",
+        "Nur ad-Din",
+        "Zengi of Mosul",
+        "The Cathars",
+        "The Bogomils"
+      ]
+    },
+    {
+      "id": "description_phrases",
+      "label": "Event Descriptions",
+      "answerFormat": "description",
+      "factIds": [
+        "med_byz_nika_riots",
+        "med_byz_theodora_origins",
+        "med_vik_lindisfarne",
+        "med_vik_erik_red",
+        "med_vik_runes_jelling"
+      ],
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Demanded ransom, then released prisoners",
+        "Burned the city and salted the earth",
+        "Converted the population by decree",
+        "Looted the treasury and withdrew",
+        "Signed a truce and exchanged hostages",
+        "Razed the walls and expelled the garrison",
+        "Massacred the nobles, spared the commons",
+        "Built a fortress and garrisoned it",
+        "Struck a coin and declared sovereignty",
+        "Forced tribute but allowed local rule"
+      ]
+    },
+    {
+      "id": "date_named",
+      "label": "Named Dates & Durations",
+      "answerFormat": "date",
+      "factIds": [
+        "med_byz_empire_overview",
+        "med_byz_hagia_sophia_build",
+        "med_byz_hagia_sophia_record",
+        "med_byz_great_schism",
+        "med_byz_fall_constantinople",
+        "med_vik_leif_erikson_vinland",
+        "med_feu_charlemagne_coronation",
+        "med_feu_magna_carta_date",
+        "med_4_cru_clermont_date",
+        "med_4_cru_first_crusade_dates",
+        "med_4_cru_jerusalem_fall_date",
+        "med_4_cru_battle_hattin_date",
+        "med_4_cru_saladin_jerusalem_recapture",
+        "med_4_cru_treaty_jaffa",
+        "med_4_cru_templars_arrest",
+        "med_4_cru_nicaea_capture",
+        "med_5_tang_dynasty_dates",
+        "med_5_tang_diamond_sutra",
+        "med_5_song_dynasty_dates",
+        "med_5_heian_period",
+        "med_6_afr_trans_saharan_camels",
+        "med_6_afr_sundiata_dates",
+        "med_6_afr_mansa_musa_hajj",
+        "med_6_afr_mansa_musa_reign",
+        "med_6_afr_kilwa_founded",
+        "med_6_afr_almoravid_ghana",
+        "med_6_afr_mali_duration"
+      ],
+      "minimumSize": 5,
+      "syntheticDistractors": []
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Counts & Numbers",
+      "answerFormat": "number",
+      "factIds": [
+        "med_feu_magna_carta_provisions",
+        "med_4_cru_crusader_states_count",
+        "med_4_cru_crusades_number",
+        "med_5_heian_genji_chapters",
+        "med_6_afr_lalibela_churches"
+      ],
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "{2}",
+        "{3}",
+        "{5}",
+        "{6}",
+        "{7}",
+        "{8}",
+        "{10}",
+        "{12}",
+        "{15}",
+        "{20}",
+        "{25}",
+        "{30}",
+        "{40}",
+        "{50}",
+        "{100}"
       ]
     }
   ],

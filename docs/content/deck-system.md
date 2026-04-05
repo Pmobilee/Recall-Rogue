@@ -1,7 +1,7 @@
 # Curated Deck System
 
 > **Purpose:** Explains what curated decks are, how they are structured, loaded, registered, and how player progression is tracked against them.
-> **Last verified:** 2026-04-04
+> **Last verified:** 2026-04-05
 > **Source files:** `src/data/curatedDeckStore.ts`, `src/data/deckRegistry.ts`, `src/data/deckFactIndex.ts`, `src/data/curatedDeckTypes.ts`, `src/services/deckManager.ts`, `src/services/deckOptionsService.ts`, `src/services/deckProgressService.ts`, `src/services/dbDecoder.ts`, `public/curated.db`
 
 ---
@@ -1490,3 +1490,78 @@ Each pool contains only answers that a student could plausibly confuse with each
 **Validation:** 0 failures. 35 warnings (all pool-homogeneity WARN at 2.6–3.0x ratio — inherent to pools with varied answer formats). Previous 42 duplicate-answer warnings resolved; remaining warnings are structural length ratios only.
 
 **Assembly script:** `scripts/assemble-ap-world-history.mjs`
+
+---
+
+## medieval_world Deck — Pool Redesign (2026-04-05)
+
+`data/decks/medieval_world.json` — 178 facts covering the medieval period (c. 400–1500 CE) across Byzantine, Islamic, European feudal, Viking, Crusades, East Asian, and African civilizations.
+
+| Field | Value |
+|---|---|
+| `id` | `medieval_world` |
+| `domain` | `history` |
+| `subDomain` | `medieval` |
+| `facts` | 178 |
+| `minimumFacts` | 100 |
+| `targetFacts` | 178 |
+
+### Pool Redesign (2026-04-05)
+
+The original 8-pool structure had a `concept_terms` mega-pool (45 facts) mixing person names, measurements, place descriptions, currencies, bracket-number counts, and descriptive phrases — producing cross-type distractors that were obviously wrong. Four new pools were created to achieve semantic homogeneity.
+
+**Original 8 pools → 12 pools:**
+
+| Pool ID | Type | Real facts | Synth | Notes |
+|---|---|---|---|---|
+| `date_events` | bracket_year / short CE date | 25 | 0 | 3–8 char answers: bracket years ({624}, {1144}) + short CE strings ("904 CE") |
+| `date_named` | date phrase | 27 | 0 | NEW (split from date_events): 9–18 char named dates ("July 16, 1054", "5 years, 10 months") |
+| `bracket_numbers` | bracket_number | 5 | 15 | NEW: pure count answers only ({3}, {4}, {9}, {11}, {54}). Separated from bracket years to prevent count vs. year mixing. |
+| `ruler_leader_names` | name | 22 | 0 | Removed 2 description-phrase misfits |
+| `work_text_names` | name | 6 | 9 | Removed Jelling stones description + Magna Carta count |
+| `battle_event_names` | name | 12 | 3 | Removed Nika Riots + Lindisfarne descriptions |
+| `concept_terms` | term/definition/measurement | 42 | 0 | Removed person-group names and small counts; added "~850 columns" from structure_names |
+| `place_names` | name | 12 | 0 | Unchanged |
+| `structure_names` | name | 6 | 9 | Removed "~850 columns" (moved to concept_terms) |
+| `scholar_names` | name | 11 | 4 | Unchanged |
+| `person_group_names` | name | 5 | 12 | NEW: collective or obscure individual names ("The Varangian Guard", "Kallinikos of Heliopolis") |
+| `description_phrases` | description | 5 | 10 | NEW: sentence-fragment answers ("Bear keeper; actress", "Constantinople revolt; 30,000 killed") |
+
+### Key fact reassignments
+
+| Fact ID | Old pool | New pool | Reason |
+|---|---|---|---|
+| `med_byz_theodora_origins` | ruler_leader_names | description_phrases | Answer is a description, not a name |
+| `med_vik_erik_red` | ruler_leader_names | description_phrases | Answer is a description, not a name |
+| `med_byz_nika_riots` | battle_event_names | description_phrases | Answer is a description, not a name |
+| `med_vik_lindisfarne` | battle_event_names | description_phrases | Answer is a description, not a name |
+| `med_vik_runes_jelling` | work_text_names | description_phrases | Answer is a description, not a name |
+| `med_byz_greek_fire_origin` | concept_terms | person_group_names | Answer is a person name |
+| `med_byz_varangian_guard` | concept_terms | person_group_names | Answer is a group name |
+| `med_4_cru_bernard_jews` | concept_terms | person_group_names | Answer is a person name |
+| `med_6_afr_great_zimbabwe_builders` | concept_terms | person_group_names | Answer is a group name |
+| `med_feu_thing_democracy` | concept_terms | person_group_names | Answer is a group/assembly name |
+| `med_isl_cordoba_mosque` | structure_names | concept_terms | Answer "~850 columns" is a measurement |
+| `med_feu_magna_carta_provisions` | work_text_names | bracket_numbers | Answer is a pure count {3} |
+| `med_4_cru_crusader_states_count` | date_events | bracket_numbers | Answer is a pure count {4} |
+| `med_4_cru_crusades_number` | date_events | bracket_numbers | Answer is a pure count {9} |
+| `med_5_heian_genji_chapters` | date_events | bracket_numbers | Answer is a pure count {54} |
+| `med_6_afr_lalibela_churches` | date_events | bracket_numbers | Answer is a pure count {11} |
+| 27 long-date facts | date_events | date_named | Display length ≥9 chars |
+
+### bracket_numbers pool pattern
+
+This pool is a reusable pattern for any deck that has small count answers like {3}, {4}, {9}. The rule:
+
+- **bracket_numbers**: pure small counts (value < ~200). Display as 1–3 char numerals. Use numerical synthetic distractors.
+- **date_events**: bracket years (value ≥ 600) and short CE strings. Display as 4–8 chars. These must never share a pool with pure counts, since "How many crusades? A) 9 B) 1099 C) 1244 D) 1453" makes the year answers obviously wrong.
+- **date_named**: full date phrases 9–18 chars ("November 27, 1095", "5 years, 10 months").
+
+### Validation results
+
+- `node scripts/verify-all-decks.mjs` → 0 failures, 5 warnings
+- `node scripts/pool-homogeneity-analysis.mjs --deck medieval_world` → 0 FAIL, 5 WARN
+- `node scripts/quiz-audit.mjs --deck medieval_world --full` → 0 FAIL, 10 WARN
+- Trivia bridge: 54 entities extracted, 0 ID collisions
+
+---
