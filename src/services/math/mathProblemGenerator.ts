@@ -13,47 +13,35 @@
 import type { CardTier } from '../../data/card-types';
 import type { GeneratorParams, MathProblem, SkillNode } from '../../data/proceduralDeckTypes';
 import { generateMathDistractors } from './mathDistractorGenerator';
-
-// ── Seeded PRNG (mulberry32) ──────────────────────────────────────────────────
-
-/**
- * Returns a mulberry32 PRNG function initialised with `seed`.
- * Each call to the returned function advances the state and returns a
- * uniformly distributed float in [0, 1).
- */
-function mulberry32(seed: number): () => number {
-  let s = seed >>> 0;
-  return function () {
-    s += 0x6d2b79f5;
-    let t = Math.imul(s ^ (s >>> 15), 1 | s);
-    t ^= t + Math.imul(t ^ (t >>> 7), 61 | t);
-    return ((t ^ (t >>> 14)) >>> 0) / 0x100000000;
-  };
-}
-
-/**
- * Returns a random integer in [min, max] inclusive using the provided PRNG.
- */
-function randInt(rng: () => number, min: number, max: number): number {
-  return Math.floor(rng() * (max - min + 1)) + min;
-}
-
-/**
- * Returns a random element from an array using the provided PRNG.
- */
-function randPick<T>(rng: () => number, arr: T[]): T {
-  return arr[Math.floor(rng() * arr.length)];
-}
-
-/**
- * Compute the GCD of two non-negative integers (Euclidean).
- */
-function gcd(a: number, b: number): number {
-  a = Math.abs(a);
-  b = Math.abs(b);
-  while (b !== 0) { const t = b; b = a % b; a = t; }
-  return a;
-}
+import { mulberry32, randInt, randPick, gcd } from './mathUtils';
+import {
+  generateLinearEquation,
+  generateQuadraticEquation,
+  generateExpressionSimplify,
+  generateInequality,
+  generateLinearSystem,
+} from './algebraGenerators';
+import {
+  generateArea,
+  generatePerimeter,
+  generateVolume,
+  generateAngleRelationship,
+  generatePythagorean,
+} from './geometryGenerators';
+import {
+  generateCentralTendency,
+  generateStandardDeviation,
+  generateBasicProbability,
+  generateCombinationsPermutations,
+  generateExpectedValue,
+} from './statisticsGenerators';
+import {
+  generateTrigStandardAngle,
+  generateTrigInverse,
+  generateTrigRightTriangle,
+  generateTrigUnitCircle,
+  generateTrigIdentity,
+} from './trigGenerators';
 
 // ── Dispatcher ────────────────────────────────────────────────────────────────
 
@@ -86,6 +74,26 @@ export function generateProblem(
     case 'fraction_decimal':    return generateFractionDecimal(params, rng);
     case 'estimation':          return generateEstimation(params, rng);
     case 'order_of_operations': return generateOrderOfOperations(params, rng);
+    case 'linear_equation':     return generateLinearEquation(params, rng);
+    case 'quadratic_equation':  return generateQuadraticEquation(params, rng);
+    case 'expression_simplify': return generateExpressionSimplify(params, rng);
+    case 'inequality':          return generateInequality(params, rng);
+    case 'linear_system':       return generateLinearSystem(params, rng);
+    case 'area':                return generateArea(params, rng);
+    case 'perimeter':           return generatePerimeter(params, rng);
+    case 'volume':              return generateVolume(params, rng);
+    case 'angle_relationship':  return generateAngleRelationship(params, rng);
+    case 'pythagorean':         return generatePythagorean(params, rng);
+    case 'central_tendency':        return generateCentralTendency(params, rng);
+    case 'standard_deviation':      return generateStandardDeviation(params, rng);
+    case 'basic_probability':       return generateBasicProbability(params, rng);
+    case 'combinations_permutations': return generateCombinationsPermutations(params, rng);
+    case 'expected_value':          return generateExpectedValue(params, rng);
+    case 'trig_standard_angle': return generateTrigStandardAngle(params, rng);
+    case 'trig_inverse':        return generateTrigInverse(params, rng);
+    case 'trig_right_triangle': return generateTrigRightTriangle(params, rng);
+    case 'trig_unit_circle':    return generateTrigUnitCircle(params, rng);
+    case 'trig_identity':       return generateTrigIdentity(params, rng);
     default:
       throw new Error(`Unknown generatorId: "${skill.generatorId}"`);
   }
@@ -273,6 +281,7 @@ function generateFractionDecimal(params: GeneratorParams, rng: () => number): Ma
 
 /**
  * Generate plausible wrong-fraction distractors (varied numerator/denominator).
+ * Kept in this file as it is specific to the fraction_decimal generator.
  */
 function buildFractionDistractors(num: number, den: number, rng: () => number): string[] {
   const seen = new Set<string>([`${num}/${den}`]);

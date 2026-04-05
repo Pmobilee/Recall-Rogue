@@ -31,6 +31,24 @@ export interface GeneratorParams {
    * Useful for division or decimal problems where rounding varies.
    */
   tolerance?: number;
+  /** Shape/type pool for geometry generators, e.g. ['rectangle','triangle','circle']. */
+  shapes?: string[];
+  /** Maximum coefficient magnitude for algebra generators. */
+  maxCoefficient?: number;
+  /** Whether to include negative coefficients in algebra generators. */
+  allowNegativeCoefficients?: boolean;
+  /** Equation form hint for algebra, e.g. 'linear','quadratic','system'. */
+  equationForm?: string;
+  /** Number of data points for statistics generators. */
+  dataSetSize?: number;
+  /** Maximum value in a generated data set. */
+  dataMax?: number;
+  /** Standard angle set for trig generators in degrees, e.g. [0, 30, 45, 60, 90]. */
+  angles?: number[];
+  /** Trig functions to use, e.g. ['sin','cos','tan']. */
+  trigFunctions?: string[];
+  /** Probability context types, e.g. ['dice','cards','coins']. */
+  probabilityContext?: string[];
 }
 
 /**
