@@ -867,7 +867,7 @@
     },
     {
       "id": "greece_cs_laconic_philip",
-      "correctAnswer": "\"If\" — the complete Spartan reply",
+      "correctAnswer": "\"If\"",
       "acceptableAlternatives": [
         "If",
         "\"If\""
@@ -886,7 +886,7 @@
         "Wait"
       ],
       "quizQuestion": "When Philip II of Macedon threatened 'If I invade Laconia, I shall turn you out,' what single word did the Spartan ephors send back as their entire reply?",
-      "explanation": "The ephors replied with one word: 'If.' This reply implied that Sparta's resistance was not guaranteed — Philip should consider the conditional carefully. The term 'laconic' (meaning terse, concise speech) derives directly from Laconia, the region containing Sparta, because Spartans were famously brief in their communications.",
+      "explanation": "The complete Spartan reply. The ephors replied with one word: 'If.' This reply implied that Sparta's resistance was not guaranteed — Philip should consider the conditional carefully. The term 'laconic' (meaning terse, concise speech) derives directly from Laconia, the region containing Sparta, because Spartans were famously brief in their communications.",
       "statement": "When Philip II threatened to invade Laconia, the Spartan ephors replied with a single word: 'If.'",
       "wowFactor": "Philip II never invaded Sparta. Whether 'If' was genuinely intimidating or Philip just had other priorities, the Spartans never needed to back up the bluff — and the exchange became one of the most famous one-word putdowns in human history.",
       "visualDescription": "Pixel art of a messenger kneeling before five stern Spartan officials who hold up a single pottery shard with one word carved in it",
@@ -12602,7 +12602,9 @@
         "greece_rel_apollo_domains",
         "greece_rel_greek_religion_structure",
         "greece_rel_eleusinian_duration"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Historical phrases range from single-word replies (Spartan laconic speech) to full sentence descriptions — inherent domain variation"
     }
   ],
   "synonymGroups": [],

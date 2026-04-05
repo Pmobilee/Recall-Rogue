@@ -8852,10 +8852,10 @@
         "Absorbs water from fecal matter entering the cecum",
         "Stores bile salts for fat digestion in the large intestine"
       ],
-      "explanation": "The appendix is considered vestigial in digestion. However, it contains lymphoid tissue and plays a role in immune function, acting as a reservoir for beneficial gut bacteria.",
+      "explanation": "No known significant digestive function. The appendix is considered vestigial in digestion. However, it contains lymphoid tissue and plays a role in immune function, acting as a reservoir for beneficial gut bacteria.",
       "sourceUrl": "https://en.wikipedia.org/wiki/Appendix_(anatomy)",
       "quizQuestion": "What is the digestive function of the appendix?",
-      "correctAnswer": "Vestigial — no known significant digestive function",
+      "correctAnswer": "Vestigial",
       "chainThemeId": "clinical_gi",
       "difficulty": 2,
       "acceptableAlternatives": [],
@@ -12823,10 +12823,10 @@
         "Positive feedback is too slow to be useful and is only used as a backup when negative feedback fails",
         "Positive feedback requires more energy than negative feedback and is metabolically costly"
       ],
-      "explanation": "Positive feedback escalates rather than stabilizes, making it unsuitable for homeostasis. It is only adaptive in processes with a clear endpoint — like the oxytocin-labor loop (ends at delivery) or the LH surge triggering ovulation.",
+      "explanation": "Cannot maintain stable homeostasis. Positive feedback escalates rather than stabilizes, making it unsuitable for homeostasis. It is only adaptive in processes with a clear endpoint — like the oxytocin-labor loop (ends at delivery) or the LH surge triggering ovulation.",
       "difficulty": 3,
       "quizQuestion": "Positive feedback loops are rare in the endocrine system. Why is positive feedback only useful in limited situations?",
-      "correctAnswer": "Self-amplifying — cannot maintain stable homeostasis",
+      "correctAnswer": "Self-amplifying",
       "chainThemeId": "feedback_loops",
       "acceptableAlternatives": [
         "Positive feedback is self-amplifying and cannot maintain stable homeostasis"
@@ -24202,7 +24202,7 @@
     {
       "id": "ha_musc_082",
       "subDeckId": "muscular_system",
-      "correctAnswer": "Abduct (DAB — Dorsal interossei ABduct)",
+      "correctAnswer": "Abduct (DAB)",
       "acceptableAlternatives": [
         "abduction",
         "spread the fingers",
@@ -24213,7 +24213,7 @@
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "Using the classic hand interossei mnemonic, what does the 'DAB' in 'PAD-DAB' stand for, describing the action of the dorsal interossei?",
-      "explanation": "The mnemonic PAD-DAB summarises the interossei: Palmar interossei ADduct fingers toward the midline (middle finger), and Dorsal interossei ABduct fingers away from the midline. There are 4 dorsal interossei (bipennate) and 3 palmar interossei (unipennate). Both groups are innervated by the deep branch of the ulnar nerve.",
+      "explanation": "Dorsal interossei ABduct. The mnemonic PAD-DAB summarises the interossei: Palmar interossei ADduct fingers toward the midline (middle finger), and Dorsal interossei ABduct fingers away from the midline. There are 4 dorsal interossei (bipennate) and 3 palmar interossei (unipennate). Both groups are innervated by the deep branch of the ulnar nerve.",
       "visualDescription": "Pixel art dorsal view of the hand with arrows showing the four dorsal interossei spreading fingers 2, 3, and 4 away from the midline axis of the middle finger",
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Interosseous_muscles_of_the_hand",
@@ -30570,7 +30570,7 @@
     },
     {
       "id": "ha_regional_012",
-      "correctAnswer": "Tendon, Artery, Nerve (TAN — lateral to medial)",
+      "correctAnswer": "Tendon, Artery, Nerve (TAN)",
       "acceptableAlternatives": [
         "TAN from lateral to medial",
         "Biceps tendon, brachial artery, median nerve"
@@ -30587,7 +30587,7 @@
         "Nerve, Tendon, Artery (NTA — lateral to medial)"
       ],
       "quizQuestion": "In the cubital fossa, the mnemonic 'TAN' describes which three contents from lateral to medial?",
-      "explanation": "The cubital fossa is the triangular depression at the front of the elbow, bounded laterally by brachioradialis, medially by pronator teres, and superiorly by a line between the epicondyles. Its floor is formed by brachialis and supinator. The roof is the bicipital aponeurosis. From lateral to medial, the contents are: biceps Tendon, brachial Artery, Median Nerve — remembered as TAN.",
+      "explanation": "Lateral to medial order. The cubital fossa is the triangular depression at the front of the elbow, bounded laterally by brachioradialis, medially by pronator teres, and superiorly by a line between the epicondyles. Its floor is formed by brachialis and supinator. The roof is the bicipital aponeurosis. From lateral to medial, the contents are: biceps Tendon, brachial Artery, Median Nerve — remembered as TAN.",
       "statement": "The cubital fossa contents from lateral to medial are: biceps Tendon, brachial Artery, Median Nerve (TAN).",
       "wowFactor": "The cubital fossa is where blood pressure is measured — the brachial artery is pressed by the cuff just proximal, and the stethoscope bell listens for Korotkoff sounds right over it.",
       "visualDescription": "Anterior elbow with the cubital fossa triangle highlighted, showing the biceps tendon in the center, brachial artery just medial to it, and the median nerve most medially, labeled TAN left-to-right",
@@ -37561,7 +37561,7 @@
     {
       "id": "ha_resp_042",
       "subDeckId": "respiratory_system",
-      "correctAnswer": "Right shift — more O₂ released",
+      "correctAnswer": "Right shift",
       "acceptableAlternatives": [
         "Rightward shift",
         "Curve shifts right"
@@ -37571,7 +37571,7 @@
       "difficulty": 3,
       "funScore": 5,
       "quizQuestion": "During exercise, rising temperature and falling pH both shift the oxygen-hemoglobin dissociation curve in which direction, and what is the physiological benefit?",
-      "explanation": "Exercise raises muscle temperature and produces lactic acid, CO₂, and H⁺ — all of which shift the oxygen-hemoglobin dissociation curve to the right (reduced O₂ affinity). At any given PO₂, hemoglobin releases more oxygen to the working muscle. This is the Bohr effect in action: the body automatically delivers more O₂ precisely where metabolic demand is greatest.",
+      "explanation": "More O₂ released. Exercise raises muscle temperature and produces lactic acid, CO₂, and H⁺ — all of which shift the oxygen-hemoglobin dissociation curve to the right (reduced O₂ affinity). At any given PO₂, hemoglobin releases more oxygen to the working muscle. This is the Bohr effect in action: the body automatically delivers more O₂ precisely where metabolic demand is greatest.",
       "visualDescription": "Oxygen-hemoglobin dissociation curve showing baseline sigmoid curve and a rightward-shifted curve labeled 'exercise (high temp, low pH)', increased O₂ unloading at tissue PO₂ highlighted",
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Bohr_effect",
@@ -52898,7 +52898,7 @@
     {
       "id": "ha_embryo_078",
       "subDeckId": "embryology",
-      "correctAnswer": "Turner syndrome: 45X — lymphedema, short stature",
+      "correctAnswer": "Turner syndrome: 45X",
       "acceptableAlternatives": [
         "Turner is 45,X females only; Noonan is autosomal dominant both sexes",
         "Turner karyotypic, Noonan phenocopy with normal karyotype",
@@ -52909,7 +52909,7 @@
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Turner syndrome and Noonan syndrome share webbed neck, short stature, and cardiac defects, but differ in karyotype, sex, and which cardiac lesion. What are the key differences?",
-      "explanation": "Turner syndrome (45,X) affects females only, with coarctation of the aorta (left-sided), primary ovarian failure, and lymphedema. Noonan syndrome is autosomal dominant (PTPN11 gene most commonly), affects both males and females, and is associated with pulmonary stenosis (right-sided) rather than coarctation. Both have webbed neck and short stature, but Noonan has normal karyotype (46,XX or 46,XY). Noonan is the 'male Turner equivalent' though it affects females too. Hypertrophic cardiomyopathy is also associated with Noonan syndrome. Turner syndrome (45X): features include lymphedema, short stature, and ovarian dysgenesis.",
+      "explanation": "Features include lymphedema and short stature. Turner syndrome (45,X) affects females only, with coarctation of the aorta (left-sided), primary ovarian failure, and lymphedema. Noonan syndrome is autosomal dominant (PTPN11 gene most commonly), affects both males and females, and is associated with pulmonary stenosis (right-sided) rather than coarctation. Both have webbed neck and short stature, but Noonan has normal karyotype (46,XX or 46,XY). Noonan is the 'male Turner equivalent' though it affects females too. Hypertrophic cardiomyopathy is also associated with Noonan syndrome. Turner syndrome (45X): features include lymphedema, short stature, and ovarian dysgenesis.",
       "visualDescription": "Pixel art split comparison: left — Turner syndrome (female silhouette, 45X karyotype, left-sided coarctation arrow); right — Noonan syndrome (male and female, normal karyotype, pulmonary stenosis arrow)",
       "sourceName": "Wikipedia — Turner Syndrome; StatPearls — Genetics Gonadal Dysgenesis",
       "sourceUrl": "https://en.wikipedia.org/wiki/Gonadal_dysgenesis_Turner_type",
@@ -55344,7 +55344,7 @@
     {
       "id": "ha_musc_118",
       "subDeckId": "muscular_system",
-      "correctAnswer": "T8 — inferior vena cava",
+      "correctAnswer": "T8",
       "acceptableAlternatives": [
         "IVC at T8",
         "vena cava hiatus at T8"
@@ -55354,7 +55354,7 @@
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "Using the mnemonic 'I Ate 10 Eggs At 12,' which structure passes through the diaphragm at the T8 vertebral level?",
-      "explanation": "The diaphragm has three major openings: at T8, the caval hiatus transmits the inferior vena cava (IVC) and right phrenic nerve; at T10, the esophageal hiatus transmits the esophagus and vagus nerves (CN X); at T12, the aortic hiatus transmits the aorta, azygos vein, and thoracic duct. The mnemonic 'I Ate 10 Eggs At 12' uses the number of letters: I(VC) = 8 letters, (10) Eggs = esophagus at 10, At(12) = aorta at 12.",
+      "explanation": "Inferior vena cava passes through at this level. The diaphragm has three major openings: at T8, the caval hiatus transmits the inferior vena cava (IVC) and right phrenic nerve; at T10, the esophageal hiatus transmits the esophagus and vagus nerves (CN X); at T12, the aortic hiatus transmits the aorta, azygos vein, and thoracic duct. The mnemonic 'I Ate 10 Eggs At 12' uses the number of letters: I(VC) = 8 letters, (10) Eggs = esophagus at 10, At(12) = aorta at 12.",
       "visualDescription": "Inferior view of the diaphragm showing three labeled openings: T8 caval hiatus (IVC), T10 esophageal hiatus, T12 aortic hiatus with arrows at each vertebral level",
       "sourceName": "First Aid Team — Mnemonic Monday",
       "sourceUrl": "https://firstaidteam.com/2020/03/02/mnemonic-monday-structures-of-the-diaphragm/",
@@ -55382,7 +55382,7 @@
     {
       "id": "ha_musc_119",
       "subDeckId": "muscular_system",
-      "correctAnswer": "T12 — aorta, azygos vein, and thoracic duct",
+      "correctAnswer": "T12",
       "acceptableAlternatives": [
         "aorta at T12",
         "aortic hiatus at T12"
@@ -55392,7 +55392,7 @@
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "The most inferior diaphragmatic opening, at T12, forms the aortic hiatus. Which three structures pass through it?",
-      "explanation": "The aortic hiatus at T12 transmits the descending aorta, azygos vein, and thoracic duct. It is strictly speaking posterior to the diaphragm (between the crura and the vertebral column), so the diaphragm does not compress the aorta during contraction — which is why the aortic pulse is not affected by breathing. The thoracic duct, the main lymphatic collecting vessel, also passes here before ascending to drain into the left subclavian vein.",
+      "explanation": "Aorta, azygos vein, and thoracic duct pass through at this level. The aortic hiatus at T12 transmits the descending aorta, azygos vein, and thoracic duct. It is strictly speaking posterior to the diaphragm (between the crura and the vertebral column), so the diaphragm does not compress the aorta during contraction — which is why the aortic pulse is not affected by breathing. The thoracic duct, the main lymphatic collecting vessel, also passes here before ascending to drain into the left subclavian vein.",
       "visualDescription": "Sagittal cross-section at T12 showing the aortic hiatus posterior to the diaphragmatic crura, with aorta, azygos vein, and thoracic duct passing through",
       "sourceName": "First Aid Team — Mnemonic Monday",
       "sourceUrl": "https://firstaidteam.com/2020/03/02/mnemonic-monday-structures-of-the-diaphragm/",
@@ -55851,7 +55851,7 @@
     {
       "id": "ha_musc_132",
       "subDeckId": "muscular_system",
-      "correctAnswer": "Subscapularis — internal rotation",
+      "correctAnswer": "Subscapularis",
       "acceptableAlternatives": [
         "subscapularis",
         "subscapularis muscle",
@@ -55862,7 +55862,7 @@
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "Which rotator cuff muscle is the only one originating from the anterior (costal) surface of the scapula, internally rotates the humerus, and is tested by the belly-press or lift-off test?",
-      "explanation": "The subscapularis arises from the subscapular fossa (costal/anterior scapular surface) and inserts onto the lesser tuberosity of the humerus. It is the largest and most powerful rotator cuff muscle and internally rotates the arm. The lift-off test (placing the dorsum of the hand on the lower back and lifting away) and belly-press test (pressing the palm on the abdomen while keeping the elbow forward) specifically test subscapularis integrity. It is innervated by the upper and lower subscapular nerves (C5–C6). Subscapularis: only anterior rotator cuff muscle; internal rotation; tested by lift-off and belly-press tests.",
+      "explanation": "Internal rotation; tested by lift-off or belly-press test. The subscapularis arises from the subscapular fossa (costal/anterior scapular surface) and inserts onto the lesser tuberosity of the humerus. It is the largest and most powerful rotator cuff muscle and internally rotates the arm. The lift-off test (placing the dorsum of the hand on the lower back and lifting away) and belly-press test (pressing the palm on the abdomen while keeping the elbow forward) specifically test subscapularis integrity. It is innervated by the upper and lower subscapular nerves (C5–C6). Subscapularis: only anterior rotator cuff muscle; internal rotation; tested by lift-off and belly-press tests.",
       "visualDescription": "Anterior view of the scapula with the subscapular fossa and subscapularis muscle highlighted, tendon inserting on the lesser tuberosity; inset showing belly-press test position",
       "sourceName": "Medbullets — Rotator Cuff Injury",
       "sourceUrl": "https://step2.medbullets.com/orthopedics/120532/rotator-cuff-injury",
@@ -55976,7 +55976,7 @@
     {
       "id": "ha_musc_136",
       "subDeckId": "muscular_system",
-      "correctAnswer": "Posterior cricoarytenoid — sole vocal cord abductor",
+      "correctAnswer": "Posterior cricoarytenoid",
       "acceptableAlternatives": [
         "posterior cricoarytenoid",
         "PCA muscle",
@@ -55987,7 +55987,7 @@
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "Which intrinsic laryngeal muscle is the ONLY muscle that abducts (opens) the vocal cords? Its bilateral paralysis is a surgical emergency causing airway obstruction.",
-      "explanation": "The posterior cricoarytenoid (PCA) is the only muscle that abducts the vocal cords by rotating the arytenoid cartilages laterally, drawing the vocal processes apart and opening the rima glottidis. It is innervated by the recurrent laryngeal nerve (RLN). Bilateral RLN damage (e.g., bilateral thyroidectomy, mediastinal tumour) paralyses both PCAs, causing both vocal cords to fall toward the midline, producing stridor and potentially fatal airway obstruction requiring emergency tracheostomy. The posterior cricoarytenoid is the only muscle that abducts the vocal cords (opens the glottis).",
+      "explanation": "Sole vocal cord abductor. The posterior cricoarytenoid (PCA) is the only muscle that abducts the vocal cords by rotating the arytenoid cartilages laterally, drawing the vocal processes apart and opening the rima glottidis. It is innervated by the recurrent laryngeal nerve (RLN). Bilateral RLN damage (e.g., bilateral thyroidectomy, mediastinal tumour) paralyses both PCAs, causing both vocal cords to fall toward the midline, producing stridor and potentially fatal airway obstruction requiring emergency tracheostomy. The posterior cricoarytenoid is the only muscle that abducts the vocal cords (opens the glottis).",
       "visualDescription": "Superior view of the larynx looking down at the vocal cords: PCA muscles highlighted on each side with arrows showing lateral rotation of arytenoids opening the glottis",
       "sourceName": "StatPearls — Anatomy, Head and Neck: Laryngeal Nerves",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK557742/",
@@ -56105,7 +56105,7 @@
     {
       "id": "ha_musc_140",
       "subDeckId": "muscular_system",
-      "correctAnswer": "C3, C4, C5 — phrenic nerve",
+      "correctAnswer": "C3, C4, C5",
       "acceptableAlternatives": [
         "C3 C4 C5 keeps the diaphragm alive",
         "phrenic nerve C3-C5"
@@ -56115,7 +56115,7 @@
       "difficulty": 1,
       "funScore": 8,
       "quizQuestion": "The diaphragm is the primary muscle of inspiration and is innervated by the phrenic nerve. The classic mnemonic is 'C3, C4, C5 keeps the diaphragm ___.' Complete the mnemonic and give the nerve name.",
-      "explanation": "The phrenic nerve arises from cervical roots C3, C4, C5 ('C3, 4, 5 keeps the diaphragm alive'). It is the sole motor supply to the diaphragm and provides sensory supply to the central diaphragm and pericardium. Injury at or above C3–C5 (e.g., high cervical cord injury) eliminates diaphragmatic function and requires mechanical ventilation. The referred pain from diaphragmatic irritation (e.g., subphrenic abscess, ruptured spleen) travels via the phrenic nerve to the C3–C5 dermatomes, producing shoulder tip pain.",
+      "explanation": "Phrenic nerve — C3, C4, C5 keeps the diaphragm alive. The phrenic nerve arises from cervical roots C3, C4, C5 ('C3, 4, 5 keeps the diaphragm alive'). It is the sole motor supply to the diaphragm and provides sensory supply to the central diaphragm and pericardium. Injury at or above C3–C5 (e.g., high cervical cord injury) eliminates diaphragmatic function and requires mechanical ventilation. The referred pain from diaphragmatic irritation (e.g., subphrenic abscess, ruptured spleen) travels via the phrenic nerve to the C3–C5 dermatomes, producing shoulder tip pain.",
       "visualDescription": "Cervical spine diagram showing C3, C4, C5 nerve roots converging to form the phrenic nerve descending alongside the heart to innervate the diaphragm; an inset shows referred shoulder tip pain from diaphragm irritation",
       "sourceName": "Kenhub — Diaphragm",
       "sourceUrl": "https://www.kenhub.com/en/library/anatomy/diaphragm",
@@ -56549,7 +56549,7 @@
     {
       "id": "ha_nerv_107",
       "subDeckId": "nervous_system",
-      "correctAnswer": "Huntington's disease — caudate nucleus atrophy",
+      "correctAnswer": "Huntington's disease",
       "acceptableAlternatives": [
         "Huntington's disease",
         "Huntington disease",
@@ -56561,7 +56561,7 @@
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "Which autosomal dominant neurodegenerative disease is caused by CAG trinucleotide repeat expansion in the huntingtin gene and is pathologically characterised by loss of striatal neurons (especially caudate), producing chorea and psychiatric symptoms?",
-      "explanation": "Huntington's disease results from CAG repeat expansion on chromosome 4p (>36 repeats). Loss of striatal neurons, predominantly those of the indirect pathway (caudate nucleus atrophy visible on imaging as 'boxing glove' or 'flattened caudate' ventricles), disinhibits the thalamus, allowing random motor programs — chorea and hemiballismus. Late disease causes generalised striatal and cortical atrophy. Psychiatric symptoms (depression, personality change, psychosis) often precede motor symptoms. Autosomal dominant with anticipation.",
+      "explanation": "Caudate nucleus atrophy. Huntington's disease results from CAG repeat expansion on chromosome 4p (>36 repeats). Loss of striatal neurons, predominantly those of the indirect pathway (caudate nucleus atrophy visible on imaging as 'boxing glove' or 'flattened caudate' ventricles), disinhibits the thalamus, allowing random motor programs — chorea and hemiballismus. Late disease causes generalised striatal and cortical atrophy. Psychiatric symptoms (depression, personality change, psychosis) often precede motor symptoms. Autosomal dominant with anticipation.",
       "visualDescription": "Axial MRI: enlarged lateral ventricles with flattened/concave caudate heads (box-car ventricles) versus normal convex caudate impression; labeled 'Huntington's Disease — Caudate Atrophy'",
       "sourceName": "Kenhub — Basal Ganglia Direct and Indirect Pathways",
       "sourceUrl": "https://www.kenhub.com/en/library/anatomy/direct-and-indirect-pathways-of-the-basal-ganglia",
@@ -57517,7 +57517,7 @@
     {
       "id": "ha_cardio_094",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "SA node — Phase 0 (Ca²⁺), Phase 3 (K⁺ efflux)",
+      "correctAnswer": "SA node",
       "acceptableAlternatives": [
         "SA node pacemaker potential",
         "funny current If",
@@ -57529,7 +57529,7 @@
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "The SA node action potential has no stable resting membrane potential and automatically fires. What is the ionic basis of the spontaneous Phase 4 depolarisation (pacemaker potential) in SA nodal cells?",
-      "explanation": "The SA node pacemaker potential (Phase 4) is driven by: (1) the 'funny current' (If) — inward Na⁺ current through HCN channels that opens on hyperpolarisation; (2) decreasing K⁺ conductance (less IK outward current as time passes); (3) a slow inward Ca²⁺ current (T-type Ca²⁺ channels at ~ -55 mV). These together cause slow, spontaneous depolarisation from ~ -60 mV to threshold (~-40 mV). Ivabradine selectively blocks If channels to slow heart rate without affecting contractility. Unlike ventricular AP, the SA node Phase 0 depolarisation is carried by L-type Ca²⁺ channels (blocked by verapamil/diltiazem), not fast Na⁺ channels.",
+      "explanation": "Phase 0 (Ca²⁺), Phase 3 (K⁺ efflux). The SA node pacemaker potential (Phase 4) is driven by: (1) the 'funny current' (If) — inward Na⁺ current through HCN channels that opens on hyperpolarisation; (2) decreasing K⁺ conductance (less IK outward current as time passes); (3) a slow inward Ca²⁺ current (T-type Ca²⁺ channels at ~ -55 mV). These together cause slow, spontaneous depolarisation from ~ -60 mV to threshold (~-40 mV). Ivabradine selectively blocks If channels to slow heart rate without affecting contractility. Unlike ventricular AP, the SA node Phase 0 depolarisation is carried by L-type Ca²⁺ channels (blocked by verapamil/diltiazem), not fast Na⁺ channels.",
       "visualDescription": "SA node action potential graph: smooth, spontaneous upslope from -60 mV to -40 mV threshold (Phase 4 labeled with If arrow), rapid Phase 0 upstroke via Ca²⁺ channels, Phase 3 repolarisation via K⁺",
       "sourceName": "CV Physiology — Sinoatrial Node Action Potentials",
       "sourceUrl": "https://cvphysiology.com/arrhythmias/a004",
@@ -57589,7 +57589,7 @@
     {
       "id": "ha_cardio_096",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "HFrEF (systolic heart failure) — EF ≤ 40%",
+      "correctAnswer": "HFrEF (systolic heart failure)",
       "acceptableAlternatives": [
         "HFrEF",
         "systolic dysfunction",
@@ -57601,7 +57601,7 @@
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "Heart failure with reduced ejection fraction (HFrEF) is defined by an EF ≤ 40% and is caused by impaired myocardial contractility. What is the most common cause, and which drug class improves survival by reducing afterload and preventing cardiac remodelling?",
-      "explanation": "HFrEF is caused most commonly by ischaemic heart disease (post-MI) and dilated cardiomyopathy. The LV dilates and contractility fails, reducing stroke volume and ejection fraction. Neurohormonal activation (RAAS, sympathetic) initially compensates but accelerates remodelling. ACE inhibitors (or ARBs) reduce afterload and preload and prevent cardiac remodelling — they are the cornerstone of HFrEF therapy and reduce mortality. Beta-blockers (carvedilol, metoprolol succinate, bisoprolol) also reduce mortality. Loop diuretics improve symptoms by reducing preload. SGLT2 inhibitors (dapagliflozin, empagliflozin) are newer mortality-reducing agents.",
+      "explanation": "EF ≤ 40%. HFrEF is caused most commonly by ischaemic heart disease (post-MI) and dilated cardiomyopathy. The LV dilates and contractility fails, reducing stroke volume and ejection fraction. Neurohormonal activation (RAAS, sympathetic) initially compensates but accelerates remodelling. ACE inhibitors (or ARBs) reduce afterload and preload and prevent cardiac remodelling — they are the cornerstone of HFrEF therapy and reduce mortality. Beta-blockers (carvedilol, metoprolol succinate, bisoprolol) also reduce mortality. Loop diuretics improve symptoms by reducing preload. SGLT2 inhibitors (dapagliflozin, empagliflozin) are newer mortality-reducing agents.",
       "visualDescription": "Side-by-side diagram of normal LV (round, contracting to ~60% EF) vs dilated HFrEF LV (enlarged, thin walls, poor contraction to ~30% EF); treatment pill icons for ACE inhibitor and beta-blocker",
       "sourceName": "CV Physiology — Ventricular Systolic Dysfunction (HFrEF)",
       "sourceUrl": "https://cvphysiology.com/heart-failure/hf005",
@@ -57663,7 +57663,7 @@
     {
       "id": "ha_cardio_098",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Cardiogenic shock — high PCWP, low CO, high SVR",
+      "correctAnswer": "Cardiogenic shock",
       "acceptableAlternatives": [
         "cardiogenic shock",
         "pump failure shock",
@@ -57674,7 +57674,7 @@
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Which type of shock results from primary cardiac failure (e.g., massive MI), is characterised by high pulmonary capillary wedge pressure, low cardiac output, and high SVR, and presents with cold, clammy skin and pulmonary oedema?",
-      "explanation": "Cardiogenic shock results from impaired cardiac contractility (massive MI, acute decompensated HF, myocarditis, severe valvular disease). The failing pump cannot maintain forward flow: CO↓, LVEDP↑ (PCWP↑, causing pulmonary oedema), and SVR↑ (compensatory vasoconstriction causing cold, clammy skin). Management: inotropes (dobutamine), vasopressors (norepinephrine if hypotensive), and mechanical circulatory support (IABP, Impella, ECMO). Revascularisation (PCI) is the definitive treatment in STEMI-related cardiogenic shock.",
+      "explanation": "High PCWP, low CO, high SVR. Cardiogenic shock results from impaired cardiac contractility (massive MI, acute decompensated HF, myocarditis, severe valvular disease). The failing pump cannot maintain forward flow: CO↓, LVEDP↑ (PCWP↑, causing pulmonary oedema), and SVR↑ (compensatory vasoconstriction causing cold, clammy skin). Management: inotropes (dobutamine), vasopressors (norepinephrine if hypotensive), and mechanical circulatory support (IABP, Impella, ECMO). Revascularisation (PCI) is the definitive treatment in STEMI-related cardiogenic shock.",
       "visualDescription": "Hemodynamic profile table comparing cardiogenic shock (CO↓, PCWP↑, SVR↑) with hypovolemic (CO↓, PCWP↓, SVR↑) and distributive/septic (CO↑, PCWP↓, SVR↓) shock",
       "sourceName": "StatPearls — Shock",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK531492/",
@@ -57953,7 +57953,7 @@
     {
       "id": "ha_cardio_106",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Neurogenic shock — vasodilation and bradycardia",
+      "correctAnswer": "Neurogenic shock",
       "acceptableAlternatives": [
         "neurogenic shock",
         "spinal shock",
@@ -57964,7 +57964,7 @@
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "A patient with T5 spinal cord injury develops hypotension and an unexpectedly SLOW heart rate (bradycardia). Which type of distributive shock is this, and why does bradycardia occur instead of the expected compensatory tachycardia?",
-      "explanation": "Neurogenic shock results from high spinal cord injury (above T6), causing loss of descending sympathetic tone. Vasodilation (low SVR) reduces preload and BP. Crucially, the compensatory sympathetic tachycardia response is also ablated, leaving unopposed parasympathetic (vagal) tone — causing paradoxical bradycardia rather than tachycardia. This distinguishes neurogenic from all other shock types (which cause reflex tachycardia). Treatment: IV fluids to restore preload, vasopressors (norepinephrine to restore SVR), and atropine or pacing for severe bradycardia.",
+      "explanation": "Vasodilation and bradycardia. Neurogenic shock results from high spinal cord injury (above T6), causing loss of descending sympathetic tone. Vasodilation (low SVR) reduces preload and BP. Crucially, the compensatory sympathetic tachycardia response is also ablated, leaving unopposed parasympathetic (vagal) tone — causing paradoxical bradycardia rather than tachycardia. This distinguishes neurogenic from all other shock types (which cause reflex tachycardia). Treatment: IV fluids to restore preload, vasopressors (norepinephrine to restore SVR), and atropine or pacing for severe bradycardia.",
       "visualDescription": "Shock haemodynamic table: neurogenic shock highlighted with CO normal/↑, SVR↓↓, PCWP↓, HR↓ (bradycardia) — contrasting with septic shock (HR↑) in the same table",
       "sourceName": "StatPearls — Shock",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK531492/",
@@ -58219,7 +58219,7 @@
     {
       "id": "ha_cardio_114",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "ASD auscultation — fixed wide splitting of S2",
+      "correctAnswer": "ASD auscultation",
       "acceptableAlternatives": [
         "fixed split S2 ASD",
         "ASD fixed S2 splitting"
@@ -58229,7 +58229,7 @@
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Which congenital heart defect is classically identified by fixed, wide splitting of the second heart sound (S2) that does not vary with respiration, along with a soft systolic ejection murmur at the left upper sternal border?",
-      "explanation": "ASD causes fixed wide splitting of S2. Normally, inspiration increases RV filling and delays pulmonary valve closure (P2), causing physiological S2 splitting. In ASD, the left-to-right shunt delivers extra volume to the RV throughout the respiratory cycle, constantly delaying P2 — so S2 splitting is wide and does not change with respiration (fixed splitting). The systolic murmur is caused by increased flow across the pulmonary valve (functional pulmonary stenosis), not by flow through the ASD itself. A flow rumble at the tricuspid area (increased TR flow) may also be heard.",
+      "explanation": "Fixed wide splitting of S2. ASD causes fixed wide splitting of S2. Normally, inspiration increases RV filling and delays pulmonary valve closure (P2), causing physiological S2 splitting. In ASD, the left-to-right shunt delivers extra volume to the RV throughout the respiratory cycle, constantly delaying P2 — so S2 splitting is wide and does not change with respiration (fixed splitting). The systolic murmur is caused by increased flow across the pulmonary valve (functional pulmonary stenosis), not by flow through the ASD itself. A flow rumble at the tricuspid area (increased TR flow) may also be heard.",
       "visualDescription": "Phonocardiogram showing A2 and P2 widely and fixedly split in both inspiration and expiration, contrasted with normal (splits on inspiration only) and paradoxical splitting (splits on expiration)",
       "sourceName": "StatPearls — Atrial Septal Defect",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK535440/",
@@ -58251,7 +58251,7 @@
     {
       "id": "ha_cardio_115",
       "subDeckId": "cardiovascular",
-      "correctAnswer": "Septic shock — LPS → cytokine storm (TNF-α, IL-1)",
+      "correctAnswer": "Septic shock",
       "acceptableAlternatives": [
         "septic shock",
         "gram-negative septic shock",
@@ -58262,7 +58262,7 @@
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "The most common type of distributive shock in ICU patients, often caused by gram-negative bacteria, features a cytokine-mediated vasodilation producing warm skin and high cardiac output early, followed by myocardial depression. Name the shock type and its first-line vasopressor.",
-      "explanation": "Septic shock: gram-negative LPS (and gram-positive cell wall components) activate TLR4 (and TLR2) on macrophages → TNF-α, IL-1, IL-6 → endothelial dysfunction, massive vasodilation (↓SVR), and later myocardial depression. Early ('warm') septic shock: ↑CO, ↓SVR, warm skin (hyperdynamic phase). Late ('cold') phase: myocardial depression, ↓CO. Diagnostic criteria: sepsis with persistent hypotension requiring vasopressors + lactate ≥ 2 mmol/L despite adequate resuscitation. First-line vasopressor: norepinephrine (maintains MAP ≥ 65 mmHg). Vasopressin (second-line) spares catecholamines. Steroids if refractory.",
+      "explanation": "LPS → cytokine storm (TNF-α, IL-1). Septic shock: gram-negative LPS (and gram-positive cell wall components) activate TLR4 (and TLR2) on macrophages → TNF-α, IL-1, IL-6 → endothelial dysfunction, massive vasodilation (↓SVR), and later myocardial depression. Early ('warm') septic shock: ↑CO, ↓SVR, warm skin (hyperdynamic phase). Late ('cold') phase: myocardial depression, ↓CO. Diagnostic criteria: sepsis with persistent hypotension requiring vasopressors + lactate ≥ 2 mmol/L despite adequate resuscitation. First-line vasopressor: norepinephrine (maintains MAP ≥ 65 mmHg). Vasopressin (second-line) spares catecholamines. Steroids if refractory.",
       "visualDescription": "ICU monitor showing hypotension, tachycardia, and high CO (early septic shock); IV line with norepinephrine label; gram-negative rod bacteria icon with LPS molecule",
       "sourceName": "StatPearls — Shock",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK531492/",

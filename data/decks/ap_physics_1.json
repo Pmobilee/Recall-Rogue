@@ -369,7 +369,8 @@
         "ap_phys1_buoyancy_partial_submerge",
         "ap_phys1_neutral_buoyancy",
         "ap_phys1_flow_rate_units"
-      ]
+      ],
+      "homogeneityExempt": true
     },
     {
       "id": "equation_explanations",
@@ -421,7 +422,8 @@
         "ap_phys1_buoyant_force_formula",
         "ap_phys1_bernoulli_equation_full",
         "ap_phys1_pressure_depth_formula"
-      ]
+      ],
+      "homogeneityExempt": true
     }
   ],
   "synonymGroups": [],
@@ -2071,7 +2073,7 @@
     },
     {
       "id": "ap_phys1_negative_accel_not_decel",
-      "correctAnswer": "Acceleration in the negative direction — could be speeding up or slowing down",
+      "correctAnswer": "Acceleration in the negative direction",
       "acceptableAlternatives": [
         "negative acceleration depends on direction of velocity",
         "not always slowing down"
@@ -2081,7 +2083,7 @@
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "Does negative acceleration always mean an object is slowing down?",
-      "explanation": "No. Negative acceleration means acceleration in the negative direction. If the object also moves in the negative direction (negative velocity), it SPEEDS UP. Only when velocity and acceleration have opposite signs does the object slow down. A ball thrown upward has downward (negative) acceleration throughout — it slows going up, stops, then speeds up going down — all with the same acceleration.",
+      "explanation": "Could be speeding up or slowing down. No. Negative acceleration means acceleration in the negative direction. If the object also moves in the negative direction (negative velocity), it SPEEDS UP. Only when velocity and acceleration have opposite signs does the object slow down. A ball thrown upward has downward (negative) acceleration throughout — it slows going up, stops, then speeds up going down — all with the same acceleration.",
       "visualDescription": "A ball thrown upward with a downward acceleration arrow constant throughout, showing slowing on the way up and speeding on the way down",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/2-4-acceleration",
@@ -3122,7 +3124,7 @@
     },
     {
       "id": "ap_phys1_centripetal_force_not_separate",
-      "correctAnswer": "Centripetal force is NOT a separate force — it is the net inward force",
+      "correctAnswer": "Centripetal force is NOT a separate force",
       "acceptableAlternatives": [
         "centripetal force is the net force directed toward center",
         "not a new type of force"
@@ -3132,7 +3134,7 @@
       "difficulty": 2,
       "funScore": 9,
       "quizQuestion": "Why is 'centripetal force' never drawn as a separate arrow on a free-body diagram?",
-      "explanation": "Centripetal force is NOT a new type of force — it is the label for whatever net force happens to point toward the center of circular motion. For a car turning, friction provides the centripetal force. For a satellite, gravity provides it. For a ball on a string, tension provides it. Drawing 'F_c' as an extra arrow on an FBD would double-count forces.",
+      "explanation": "It is the net inward force. Centripetal force is NOT a new type of force — it is the label for whatever net force happens to point toward the center of circular motion. For a car turning, friction provides the centripetal force. For a satellite, gravity provides it. For a ball on a string, tension provides it. Drawing 'F_c' as an extra arrow on an FBD would double-count forces.",
       "visualDescription": "A free-body diagram of a car turning with only friction labeled (not a separate centripetal force arrow)",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/6-3-centripetal-force",
@@ -8480,7 +8482,7 @@
     },
     {
       "id": "ap_phys1_weightlessness_misconception",
-      "correctAnswer": "Astronauts in orbit are not weightless — they are in continuous freefall",
+      "correctAnswer": "Astronauts in orbit are not weightless",
       "acceptableAlternatives": [
         "apparent weightlessness in orbit is due to freefall, not absence of gravity"
       ],
@@ -8489,7 +8491,7 @@
       "difficulty": 3,
       "funScore": 9,
       "quizQuestion": "Why do astronauts in the International Space Station appear weightless even though Earth's gravity still acts on them?",
-      "explanation": "The ISS and astronauts are continuously falling toward Earth under gravity, but moving fast enough horizontally that they keep 'missing' Earth's surface — this is orbit. Both the station and the astronauts fall together at the same rate, so there's no normal force between them — apparent weightlessness. Gravity at ISS altitude (~400 km) is about 90% of surface gravity.",
+      "explanation": "They are in continuous freefall. The ISS and astronauts are continuously falling toward Earth under gravity, but moving fast enough horizontally that they keep 'missing' Earth's surface — this is orbit. Both the station and the astronauts fall together at the same rate, so there's no normal force between them — apparent weightlessness. Gravity at ISS altitude (~400 km) is about 90% of surface gravity.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/6-6-satellites-and-keplers-laws-an-argument-for-simplicity",
       "distractors": [
@@ -8655,7 +8657,7 @@
     },
     {
       "id": "ap_phys1_circular_centripetal_misconception",
-      "correctAnswer": "Centripetal force is not a separate force — it is the net force directed toward the center",
+      "correctAnswer": "Centripetal force is not a separate force",
       "acceptableAlternatives": [
         "centripetal force is the net inward force, not an additional force"
       ],
@@ -8664,7 +8666,7 @@
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "A student draws a free-body diagram for a car on a circular track and adds a 'centripetal force' arrow. What is wrong?",
-      "explanation": "Centripetal force is NOT a new separate force — it is the label for the net inward force that produces circular motion. On the FBD, you should only draw real forces (friction, normal, gravity, tension). The centripetal force = net inward force — which is provided by friction for a car on a flat track. Adding a separate 'centripetal force' arrow double-counts an existing force.",
+      "explanation": "It is the net force directed toward the center. Centripetal force is NOT a new separate force — it is the label for the net inward force that produces circular motion. On the FBD, you should only draw real forces (friction, normal, gravity, tension). The centripetal force = net inward force — which is provided by friction for a car on a flat track. Adding a separate 'centripetal force' arrow double-counts an existing force.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/6-3-centripetal-force",
       "distractors": [
@@ -8690,7 +8692,7 @@
     },
     {
       "id": "ap_phys1_centrifugal_force",
-      "correctAnswer": "Centrifugal force is a fictitious force — it does not exist in an inertial reference frame",
+      "correctAnswer": "Centrifugal force is a fictitious force",
       "acceptableAlternatives": [
         "centrifugal force is not real; it is an inertial effect felt in rotating frames"
       ],
@@ -8699,7 +8701,7 @@
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "Why is 'centrifugal force' (the outward force felt in circular motion) not a real force in AP Physics 1?",
-      "explanation": "In an inertial (non-rotating) reference frame, there is no outward centrifugal force. What people feel as 'centrifugal force' is actually their inertia — their tendency to continue in a straight line while the surface pushes them inward. AP Physics 1 works exclusively in inertial frames, so centrifugal force should never appear on a free-body diagram.",
+      "explanation": "It does not exist in an inertial reference frame. In an inertial (non-rotating) reference frame, there is no outward centrifugal force. What people feel as 'centrifugal force' is actually their inertia — their tendency to continue in a straight line while the surface pushes them inward. AP Physics 1 works exclusively in inertial frames, so centrifugal force should never appear on a free-body diagram.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/6-3-centripetal-force",
       "distractors": [
@@ -9497,7 +9499,7 @@
     },
     {
       "id": "ap_phys1_apparent_weight",
-      "correctAnswer": "The normal force exerted by a scale — equals true weight only when acceleration is zero",
+      "correctAnswer": "The normal force exerted by a scale",
       "acceptableAlternatives": [
         "scale reading = N = m(g ± a); equals mg only when not accelerating"
       ],
@@ -9506,7 +9508,7 @@
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "What is 'apparent weight' and when does it equal true weight?",
-      "explanation": "Apparent weight is what a scale reads — the normal force N the scale exerts on you. It equals true weight (mg) only when acceleration = 0 (constant velocity or at rest). In an elevator accelerating upward, N = m(g + a) > mg (you feel heavier). Accelerating downward: N = m(g − a) < mg (feel lighter). In free fall: N = 0 (weightless). True weight mg depends only on mass and g.",
+      "explanation": "Equals true weight only when acceleration is zero. Apparent weight is what a scale reads — the normal force N the scale exerts on you. It equals true weight (mg) only when acceleration = 0 (constant velocity or at rest). In an elevator accelerating upward, N = m(g + a) > mg (you feel heavier). Accelerating downward: N = m(g − a) < mg (feel lighter). In free fall: N = 0 (weightless). True weight mg depends only on mass and g.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/4-5-normal-tension-and-other-examples-of-forces",
       "distractors": [
@@ -10238,7 +10240,7 @@
     },
     {
       "id": "ap_phys1_energy_transfer_no_motion",
-      "correctAnswer": "Work requires displacement — no displacement means no work, regardless of force applied",
+      "correctAnswer": "Work requires displacement",
       "acceptableAlternatives": [
         "holding a weight stationary does zero work (no displacement)"
       ],
@@ -10247,7 +10249,7 @@
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Does holding a heavy suitcase stationary require work (in the physics sense)?",
-      "explanation": "No. Work = F·d·cosθ requires displacement d > 0. Holding a stationary suitcase means d = 0, so W = 0 even though you exert a large upward force and your muscles fatigue. Physiologically your muscles are doing internal work (contracting and relaxing), but the physics definition of work is F·d. This distinction between biological and physics 'work' is frequently tested on AP exams.",
+      "explanation": "No displacement means no work, regardless of force applied. No. Work = F·d·cosθ requires displacement d > 0. Holding a stationary suitcase means d = 0, so W = 0 even though you exert a large upward force and your muscles fatigue. Physiologically your muscles are doing internal work (contracting and relaxing), but the physics definition of work is F·d. This distinction between biological and physics 'work' is frequently tested on AP exams.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/7-1-work-the-scientific-definition",
       "distractors": [
@@ -10379,7 +10381,7 @@
     },
     {
       "id": "ap_phys1_momentum_vector",
-      "correctAnswer": "Momentum is a vector — direction matters and it can be positive, negative, or in any direction",
+      "correctAnswer": "Momentum is a vector",
       "acceptableAlternatives": [
         "p = mv is a vector with the same direction as velocity"
       ],
@@ -10388,7 +10390,7 @@
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "Why must you track the direction of momentum in collision problems?",
-      "explanation": "Momentum p = mv is a vector quantity pointing in the same direction as velocity. In 1D, momentum can be positive (moving right) or negative (moving left). In collisions: if two equal-mass objects collide head-on and stick together, the total momentum (p₁ + p₂ = mv + m(−v) = 0) is zero — they stop! Ignoring direction leads to incorrect results. Always define a positive direction first.",
+      "explanation": "Direction matters and it can be positive, negative, or in any direction. Momentum p = mv is a vector quantity pointing in the same direction as velocity. In 1D, momentum can be positive (moving right) or negative (moving left). In collisions: if two equal-mass objects collide head-on and stick together, the total momentum (p₁ + p₂ = mv + m(−v) = 0) is zero — they stop! Ignoring direction leads to incorrect results. Always define a positive direction first.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/8-1-linear-momentum-and-force",
       "distractors": [
@@ -10625,7 +10627,7 @@
     },
     {
       "id": "ap_phys1_momentum_newton2_form",
-      "correctAnswer": "F_net = Δp/Δt — net force equals rate of change of momentum",
+      "correctAnswer": "F_net = Δp/Δt",
       "acceptableAlternatives": [
         "Newton's 2nd law: F = dp/dt",
         "force equals change in momentum per unit time"
@@ -10635,7 +10637,7 @@
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What is the more general form of Newton's 2nd Law that uses momentum instead of acceleration?",
-      "explanation": "F_net = Δp/Δt is the general form of Newton's 2nd Law. For constant mass, Δp/Δt = m(Δv/Δt) = ma, recovering the familiar form. But for variable mass systems (rockets expelling gas), you must use the momentum form. This formulation also immediately shows why large forces (like during collisions) occur when Δp is large and Δt is small: F = Δp/Δt grows as Δt shrinks.",
+      "explanation": "Net force equals rate of change of momentum. F_net = Δp/Δt is the general form of Newton's 2nd Law. For constant mass, Δp/Δt = m(Δv/Δt) = ma, recovering the familiar form. But for variable mass systems (rockets expelling gas), you must use the momentum form. This formulation also immediately shows why large forces (like during collisions) occur when Δp is large and Δt is small: F = Δp/Δt grows as Δt shrinks.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/8-1-linear-momentum-and-force",
       "distractors": [
@@ -11295,7 +11297,7 @@
     },
     {
       "id": "ap_phys1_newton2_rotation",
-      "correctAnswer": "Στ = Iα — net torque equals moment of inertia times angular acceleration",
+      "correctAnswer": "Στ = Iα",
       "acceptableAlternatives": [
         "rotational Newton's 2nd law: net torque = I × alpha"
       ],
@@ -11304,7 +11306,7 @@
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What is the rotational analog of Newton's 2nd Law (F_net = ma)?",
-      "explanation": "Στ = Iα is the rotational form of Newton's 2nd Law: net torque = moment of inertia × angular acceleration. Compare: F↔τ, m↔I, a↔α. Larger I means harder to angularly accelerate (rotational inertia). A larger net torque produces greater angular acceleration. This equation governs spinning tops, wheels, and any rotating system. Units: N·m = kg·m²·(rad/s²).",
+      "explanation": "Net torque equals moment of inertia times angular acceleration. Στ = Iα is the rotational form of Newton's 2nd Law: net torque = moment of inertia × angular acceleration. Compare: F↔τ, m↔I, a↔α. Larger I means harder to angularly accelerate (rotational inertia). A larger net torque produces greater angular acceleration. This equation governs spinning tops, wheels, and any rotating system. Units: N·m = kg·m²·(rad/s²).",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/10-6-newton-s-second-law-for-rotation",
       "distractors": [
@@ -11435,7 +11437,7 @@
     },
     {
       "id": "ap_phys1_pivot_choice_strategy",
-      "correctAnswer": "Choose pivot where unknown force acts — that force has zero torque and is eliminated",
+      "correctAnswer": "Choose pivot where unknown force acts",
       "acceptableAlternatives": [
         "put pivot at unknown force to eliminate it from torque equation"
       ],
@@ -11444,7 +11446,7 @@
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "What is the strategic advantage of choosing a smart pivot point when writing the torque equation for static equilibrium?",
-      "explanation": "The torque equation Στ = 0 can be written about ANY point for an object in static equilibrium. A force applied at the chosen pivot has r = 0 and produces zero torque — it vanishes from the equation. By choosing the pivot at a point where an unknown force acts (e.g., a hinge or reaction force you don't want to find), you eliminate that unknown and simplify to one equation with one unknown. This is the most powerful AP Physics 1 equilibrium strategy.",
+      "explanation": "That force has zero torque and is eliminated from the equation. The torque equation Στ = 0 can be written about ANY point for an object in static equilibrium. A force applied at the chosen pivot has r = 0 and produces zero torque — it vanishes from the equation. By choosing the pivot at a point where an unknown force acts (e.g., a hinge or reaction force you don't want to find), you eliminate that unknown and simplify to one equation with one unknown. This is the most powerful AP Physics 1 equilibrium strategy.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/12-1-conditions-for-static-equilibrium",
       "distractors": [
@@ -11715,7 +11717,7 @@
     },
     {
       "id": "ap_phys1_rolling_without_slip_condition",
-      "correctAnswer": "v_cm = Rω — the contact point has zero velocity relative to the ground",
+      "correctAnswer": "v_cm = Rω",
       "acceptableAlternatives": [
         "rolling without slipping: v = Rω; contact point momentarily at rest"
       ],
@@ -11724,7 +11726,7 @@
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What condition defines 'rolling without slipping' and what is special about the contact point?",
-      "explanation": "Rolling without slipping requires v_cm = Rω — the translational speed equals the rotational speed times radius. At the contact point, the translational velocity (v forward) and rotational velocity (Rω backward at contact) exactly cancel: contact point velocity = 0. This is why rolling wheels don't skid (no kinetic friction; static friction acts instead). If v > Rω, the wheel spins (peeling out). If v < Rω, it skids.",
+      "explanation": "The contact point has zero velocity relative to the ground. Rolling without slipping requires v_cm = Rω — the translational speed equals the rotational speed times radius. At the contact point, the translational velocity (v forward) and rotational velocity (Rω backward at contact) exactly cancel: contact point velocity = 0. This is why rolling wheels don't skid (no kinetic friction; static friction acts instead). If v > Rω, the wheel spins (peeling out). If v < Rω, it skids.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/10-4-rotational-kinetic-energy-work-and-energy-revisited",
       "distractors": [

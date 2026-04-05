@@ -23468,14 +23468,14 @@
     },
     {
       "id": "ap_bio_pesticide_resistance",
-      "correctAnswer": "Same mechanism as antibiotic resistance — pre-existing alleles selected",
+      "correctAnswer": "Same mechanism as antibiotic resistance",
       "acceptableAlternatives": [],
       "chainThemeId": 14,
       "answerTypePoolId": "comparison_terms",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "How does pesticide resistance in insects compare mechanistically to antibiotic resistance in bacteria?",
-      "explanation": "Pesticide resistance and antibiotic resistance operate by the same natural selection mechanism: individuals with pre-existing resistance alleles survive the chemical treatment, reproduce, and increase resistance allele frequency in the population.",
+      "explanation": "Pre-existing alleles are selected for. Pesticide resistance and antibiotic resistance operate by the same natural selection mechanism: individuals with pre-existing resistance alleles survive the chemical treatment, reproduce, and increase resistance allele frequency in the population.",
       "visualDescription": "",
       "sourceName": "OpenStax Biology 2e",
       "sourceUrl": "https://openstax.org/books/biology-2e",
@@ -23948,14 +23948,14 @@
     },
     {
       "id": "ap_bio_human_arm_homology",
-      "correctAnswer": "Homologous — same ancestral anatomy, different functions",
+      "correctAnswer": "Homologous",
       "acceptableAlternatives": [],
       "chainThemeId": 15,
       "answerTypePoolId": "comparison_terms",
       "difficulty": 2,
       "funScore": 9,
       "quizQuestion": "The human arm, whale flipper, bat wing, and horse leg all share the humerus-radius-ulna bone arrangement. What type of structures are these?",
-      "explanation": "The human arm, whale flipper, bat wing, and horse leg are homologous structures — all derived from the same ancestral forelimb structure (humerus, radius, ulna), modified for different functions. They are evidence of descent from a common tetrapod ancestor.",
+      "explanation": "Same ancestral anatomy, different functions. The human arm, whale flipper, bat wing, and horse leg are homologous structures — all derived from the same ancestral forelimb structure (humerus, radius, ulna), modified for different functions. They are evidence of descent from a common tetrapod ancestor.",
       "visualDescription": "",
       "sourceName": "OpenStax Biology 2e",
       "sourceUrl": "https://openstax.org/books/biology-2e",
@@ -42457,7 +42457,9 @@
         "ap_bio_u8_079",
         "ap_bio_u8_101"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Comparison terms range from single-word labels (Homologous) to full mechanistic explanations — inherent domain variation in biology comparisons"
     },
     {
       "id": "cycle_phase_names",
