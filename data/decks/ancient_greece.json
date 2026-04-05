@@ -873,7 +873,7 @@
         "\"If\""
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "short_replies",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 2,
       "funScore": 10,
       "ageGroup": "all",
@@ -4202,7 +4202,7 @@
         "The Battle of Marathon"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "battle_names",
+      "answerTypePoolId": "historical_phrases",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -12485,28 +12485,6 @@
       ]
     },
     {
-      "id": "battle_names",
-      "label": "Battles & Military Events",
-      "answerFormat": "name",
-      "factIds": [
-        "greece_ga_aeschylus_epitaph"
-      ],
-      "minimumSize": 1,
-      "syntheticDistractors": [
-        "Battle of Leuctra",
-        "Battle of Mantinea",
-        "Battle of Plataea",
-        "Battle of Mycale",
-        "Battle of Cunaxa",
-        "Battle of Chaeronea",
-        "Battle of Granicus",
-        "Battle of Issus",
-        "Battle of Gaugamela",
-        "Battle of the Hydaspes"
-      ],
-      "minimumSizeNote": "Single unique battle-name fact; runtime pool padded by 10 Ancient Greek synthetic battle names"
-    },
-    {
       "id": "work_text_names",
       "label": "Works, Texts & Plays",
       "answerFormat": "name",
@@ -12614,28 +12592,12 @@
         "greece_rel_mystery_religions",
         "greece_rel_apollo_domains",
         "greece_rel_greek_religion_structure",
-        "greece_rel_eleusinian_duration"
+        "greece_rel_eleusinian_duration",
+        "greece_ga_aeschylus_epitaph",
+        "greece_cs_laconic_philip"
       ],
       "homogeneityExempt": true,
       "homogeneityExemptNote": "Historical phrases range from single-word replies (Spartan laconic speech) to full sentence descriptions — inherent domain variation"
-    },
-    {
-      "id": "short_replies",
-      "label": "Short & Laconic Replies",
-      "answerFormat": "word",
-      "factIds": [
-        "greece_cs_laconic_philip"
-      ],
-      "minimumSize": 1,
-      "minimumSizeNote": "Single fact; runtime pool uses synthetic one-word distractors",
-      "syntheticDistractors": [
-        "Never",
-        "Try",
-        "Come",
-        "Leave",
-        "No",
-        "Wait"
-      ]
     }
   ],
   "synonymGroups": [],
