@@ -113,6 +113,8 @@ Architecture YAML files in `data/deck-architectures/` hold the verified source d
 | `ap_biology_unit3_arch.yaml` | `ap_biology_unit3` | architecture complete — pending fact generation | 160 target | Unit 3: Cellular Energetics (Topics 3.1–3.7); 3 chain themes, 7 pools, 7 templates, ~110 verified facts in arch |
 | `ap_biology_unit5_arch.yaml` | `ap_biology_unit5` | architecture complete — pending fact generation | 110 target | Unit 5: Heredity (Topics 5.1–5.6); 2 chain themes, 8 pools, 97 verified entities in arch |
 | *(inline generation)* | `ap_physics_1` | complete — live | 326 | CED-aligned Fall 2024; 8 units, 10 chain themes, 13 answer pools, 8 sub-decks; expanded 2026-04-04 from 180→326 facts; pool homogeneity remediation 2026-04-04 (10 FAILs → 0; created `concept_statements` and `equation_explanations` pools by splitting bimodal `term_definitions`/`equation_identifiers`; set `minimumSize` on small specialty pools with `syntheticDistractors`); sourced from OpenStax/HyperPhysics |
+| *(inline generation)* | `world_cuisines` | complete — live, pool-redesigned | 141 | Pool redesign 2026-04-05 (5 pools → 9): split `technique_terms` into `person_names_food` + technique; split `country_region_names` into `civilization_names` + `compound_location_names`; added `cultural_references`; moved percentage/short-answer outliers. 0 quiz-audit fails. |
+| *(inline generation)* | `famous_inventions` | complete — live, pool-redesigned | 200 | Pool redesign 2026-04-05 (5 pools → 10): split 104-fact `term` pool into `invention_specs` (short ≤20c), `invention_details` (long), `discovery_descriptions` (narratives), `invention_dates`; split `name` into `person_inventor_names` + `invention_names`; added `tech_codes` for acronyms ≤7c; split `number` into `percentage_values` + `count_values`. 0 quiz-audit fails. |
 
 The 4 `world_wonders` architecture files total 195 facts in the live deck. They were merged by `data/decks/_wip/assemble-world-wonders.mjs`.
 
@@ -824,23 +826,27 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 | `subDomain` | `ancient_greece` |
 | `facts` | 246 |
 
-**Answer Type Pools (9):**
+**Answer Type Pools (11):**
 
-| Pool ID | Format | Facts |
-|---|---|---|
-| `ruler_general_names` | name | 27 — person names 4–18 chars |
-| `concept_terms` | term | 51 — short terms and named concepts 5–15 chars |
-| `date_events` | date | 37 — calendar dates |
-| `structure_names` | name | 13 — building/place names |
-| `god_names` | name | 12 — Greek deity names |
-| `city_state_names` | place | 11 — polis/city names |
-| `battle_names` | name | 6 — battle names |
-| `work_text_names` | name | 10 — literary/artistic works |
-| `historical_phrases` | phrase | 79 — descriptions and longer answers 15–37 chars |
+| Pool ID | Format | Facts | Synthetics | Notes |
+|---|---|---|---|---|
+| `ruler_general_names` | name | 27 | — | Person names |
+| `concept_terms` | term | 37 | — | Short Greek terms 5–15 chars |
+| `bracket_numbers` | bracket_number | 12 | — | Pure {N} numeric facts only |
+| `date_events` | date | 37 | — | Calendar dates |
+| `structure_names` | name | 11 | — | Building/place names |
+| `god_names` | name | 12 | — | Greek/Roman deity names |
+| `city_state_names` | place | 11 | 2 | Polis/city names |
+| `battle_names` | name | 1 | 10 | Named battles; minimumSize=1; 10 Ancient Greek synthetic battle names |
+| `work_text_names` | name | 10 | — | Literary/artistic works |
+| `historical_phrases` | phrase | 87 | — | Descriptions 9–37 chars; homogeneityExempt |
+| `short_replies` | word | 1 | 6 | One-word answers (Laconic reply "If"); minimumSize=1 |
 
-**Pool fix (2026-04-01):** 5 facts were reassigned to correct pools: `greece_cs_ostracism_duration` ("Ten years") and `greece_rel_poseidon_domain` ("Seas, water, storms…") moved from name-format pools to `concept_terms`; `greece_cs_agora_function` (function description) moved to `concept_terms`; `greece_oc_kritios_boy` (artwork title) moved to `work_text_names`; `greece_alex_hellespont_crossing` ("334 BCE") moved from `battle_names` to `date_events`.
+**Pool fix (2026-04-01):** 5 facts reassigned to correct pools.
 
-**Pool homogeneity fix (2026-04-04):** 3-round fix applied via scripts `fix-pool-homogeneity-greece-rome.mjs`, `fix-pool-homogeneity-round2.mjs`, `fix-pool-homogeneity-round3.mjs`. New `historical_phrases` pool created; 52+ facts moved from `concept_terms` (formerly 101 facts, 5–25 char range) to establish two distinct pools: `concept_terms` (5–15 chars short named terms) and `historical_phrases` (15–37 chars longer descriptions). 14 bare numbers in `concept_terms` and `date_events` converted to `{N}` bracket notation. Compound names moved from `ruler_general_names` to `historical_phrases`. Result: 0 FAIL, 6 WARN (all pools within 3× length ratio threshold).
+**Pool homogeneity fix (2026-04-04):** Created `historical_phrases` pool; split `concept_terms` (formerly 101 facts) into short terms and descriptions.
+
+**Pool redesign (2026-04-05):** LLM review found 4 critical issues. Fixes: (1) `battle_names` had counts ("About 7,000", "371–378 triremes") and disease/event names mixed with actual battles — moved counts to new `bracket_numbers` pool, events to `historical_phrases`, replaced WWII synthetic distractors with Ancient Greek battles; (2) `concept_terms` had 12 bracket-numeric facts mixed with named terms — moved all `{N}` facts to new `bracket_numbers` pool; (3) `structure_names` had "Criminal court" and "Silver mines at Laurion" — moved both to `historical_phrases`; (4) `historical_phrases` had `greece_cs_laconic_philip` ("If", 4 chars) causing quiz-audit length-mismatch FAILs — moved to new `short_replies` pool with own single-word distractors. Result: 0 FAIL quiz-audit, 0 FAIL homogeneity, 4 WARN only.
 
 ---
 

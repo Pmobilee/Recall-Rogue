@@ -348,3 +348,25 @@ Running obfuscation against `public/` directly would corrupt the dev-server file
 5. **Short descriptive answers in `historical_phrases`**: One-word answers like "Saturday", "She-wolf" (8 chars) alongside "Stop patrician interpretation monopoly" (38 chars) create 4.8x ratio. Fix: move short answers to pools with similarly short answers; mark `historical_phrases` with `homogeneityExempt: true`.
 
 **General rule**: When splitting pools, check that ALL facts in a pool can plausibly be distractors for ALL other facts in the same pool. A {5200} (legion size) should never appear as a wrong answer for "Who whispered memento mori to the general?"
+
+### 2026-04-05 — Pool Redesign: world_cuisines + famous_inventions
+
+**Problem:** Both decks had pools mixing answer types that caused quiz audit failures — short answers (4c "NASA") appearing alongside 60c distractor options from the same pool.
+
+**Root cause:** The quiz-audit picks pool-member correct answers as distractors (preferred before per-fact distractors). A pool like `term` (104 facts) had answers ranging from 6c ("VS-300") to 60c full sentences. Short-answer facts got long distractors; long-answer facts got short distractors.
+
+**Key patterns fixed:**
+
+1. **Person names mixed with technique names** — `world_cuisines.technique_terms` had people ("Momofuku Ando") alongside processes ("SCOBY", "Osmosis"). Splitting into `person_names_food` fixed.
+
+2. **Ancient civilizations mixed with modern cities** — `world_cuisines.country_region_names` had "Aztecs and Maya", "Sumer" alongside modern cities. Splitting into `civilization_names` fixed.
+
+3. **Single-word country names (4c) mixed with compound locations (18c)** — "Iran" vs "Frankfurt, Germany" in the same pool. Splitting into `compound_location_names` fixed. The fix is not just aesthetic — the quiz was generating "Iran"/"China" as distractors for "Frankfurt, Germany" questions.
+
+4. **Literary/cultural titles in technique pools** — "The Lion, the Witch and the Wardrobe" in a culinary techniques pool. Moved to `cultural_references`.
+
+5. **Famous_inventions `term` pool was 104 facts with 10x length ratio** — Needed splitting into `invention_specs` (short ≤20c), `invention_details` (long >20c), `discovery_descriptions` (narratives), `invention_dates` (temporal), and `tech_codes` (≤7c acronyms/codes).
+
+**Rule:** When a pool has answers like "NASA" (4c) AND "Milwaukee, Wisconsin" (20c), the quiz WILL generate bad presentations. `homogeneityExempt` bypasses the structural check but does NOT fix playability — quiz-audit catches it. Separate pools by length band AND answer type.
+
+**Final pool counts:** world_cuisines: 9 pools (was 5). famous_inventions: 10 pools (was 5).
