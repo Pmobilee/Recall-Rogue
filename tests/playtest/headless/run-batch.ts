@@ -1,8 +1,8 @@
 /**
  * Headless Batch Runner
  *
- * Runs thousands of headless simulations in a single process (no tsx restart overhead)
- * and outputs results to a timestamped folder.
+ * Runs thousands of headless simulations across worker threads and outputs
+ * results to a timestamped folder.
  *
  * Modes:
  *   --mode full   (default) Full run simulation: map, relics, shop, rest, mystery, gold economy
@@ -16,21 +16,29 @@
  *   --sweep all          Sweep ALL 10 non-accuracy axes sequentially
  *   --isolation          Run isolation test (each axis at 1.0, rest at baseline)
  *
+ * Parallelism flags:
+ *   --parallel           Enable parallel execution (default: ON)
+ *   --no-parallel        Disable parallel execution (sequential fallback)
+ *   --workers N          Number of worker threads (default: min(cpus-2, 12), min 1)
+ *
  * Usage:
- *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000
- *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 500 --description "Post healing buff"
- *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 200 --profile scholar
+ *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts
+ *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 10000 --description "Post healing buff"
+ *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile scholar
  *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 200 --mode combat --encounters 30
- *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 100 --sweep chargeSkill
- *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 100 --sweep all
- *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 100 --isolation
- *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 100 --archetype chain_god
- *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 100 --skills '{"accuracy":0.7,"chargeSkill":1.0}'
+ *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 200 --sweep chargeSkill
+ *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 200 --sweep all
+ *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 200 --isolation
+ *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 200 --archetype chain_god
+ *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 200 --skills '{"accuracy":0.7,"chargeSkill":1.0}'
+ *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 10000 --workers 8
+ *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --no-parallel
  */
 
 import './browser-shim.js';
 import { runSimulation, type SimOptions, type SimRunResult } from './simulator.js';
 import { simulateFullRun, type FullRunOptions, type FullRunResult } from './full-run-simulator.js';
+import { PLAYER_START_HP } from '../../../src/data/balance.js';
 import type { BotSkills } from './bot-brain.js';
 import {
   ALL_PROFILES,
@@ -45,6 +53,20 @@ import {
 } from './bot-profiles.js';
 import * as fs from 'fs';
 import * as path from 'path';
+import * as os from 'os';
+import { Worker } from 'node:worker_threads';
+import { fileURLToPath } from 'node:url';
+import type { WorkerTask, WorkerResult } from './sim-worker.js';
+// ──────────────────────────────────────────────────────────────────────────────
+// Worker bootstrap path — a plain .mjs file that registers tsx ESM hooks before
+// importing the actual sim-worker.ts. This is necessary because tsx's IPC-based
+// ESM loader is NOT automatically propagated to worker threads spawned from a
+// different file. See tsx-worker-bootstrap.mjs for details.
+// ──────────────────────────────────────────────────────────────────────────────
+
+const WORKER_BOOTSTRAP = fileURLToPath(new URL('./tsx-worker-bootstrap.mjs', import.meta.url));
+const WORKER_TS_URL = new URL('./sim-worker.ts', import.meta.url).href;
+
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Per-mechanic win contribution stats
@@ -126,6 +148,164 @@ function aggregateMechanicStats(results: SimRunResult[]): MechanicStats[] {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
+// HP Curve aggregation (Phase 2)
+// ──────────────────────────────────────────────────────────────────────────────
+
+interface HpCurvePoint {
+  floor: number;
+  avgHp: number;
+  minHp: number;
+  maxHp: number;
+  deathCount: number;
+  sampleCount: number;
+}
+
+function computeHpCurve(results: FullRunResult[], startHp: number): HpCurvePoint[] {
+  const floorData: Record<number, { hpValues: number[]; deaths: number }> = {};
+
+  for (const run of results) {
+    let hp = startHp;
+    for (const visit of run.nodeVisits) {
+      hp = Math.max(0, hp + (visit.hpChange ?? 0));
+      const f = visit.floor;
+      if (!floorData[f]) floorData[f] = { hpValues: [], deaths: 0 };
+      floorData[f].hpValues.push(hp);
+      if (!run.survived && visit.result === 'defeat') {
+        floorData[f].deaths++;
+      }
+    }
+  }
+
+  return Object.entries(floorData)
+    .map(([floor, data]) => {
+      const sum = data.hpValues.reduce((s, v) => s + v, 0);
+      return {
+        floor: parseInt(floor),
+        avgHp: data.hpValues.length > 0 ? sum / data.hpValues.length : 0,
+        minHp: data.hpValues.length > 0 ? Math.min(...data.hpValues) : 0,
+        maxHp: data.hpValues.length > 0 ? Math.max(...data.hpValues) : 0,
+        deathCount: data.deaths,
+        sampleCount: data.hpValues.length,
+      };
+    })
+    .sort((a, b) => a.floor - b.floor);
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Profile-parallel shared pool (Phase 3)
+// Builds all tasks upfront and dispatches to a shared worker pool
+// ──────────────────────────────────────────────────────────────────────────────
+
+interface PoolTask {
+  profileLabel: string;
+  chunkRuns: number;
+  fullRunOpts: Omit<FullRunOptions, 'verbose'>;
+  combatOpts: Omit<SimOptions, 'verbose'>;
+}
+
+/**
+ * Run all profiles in parallel using a shared worker pool.
+ * All profile×chunk tasks are dispatched across N persistent-ish workers.
+ * Results are collected and merged per profile.
+ */
+async function runAllProfilesParallel(
+  profiles: ProfileRun[],
+  runsEach: number,
+  workers: number,
+): Promise<Map<string, FullRunResult[] | SimRunResult[]>> {
+  // Build all tasks upfront
+  const chunkSize = Math.max(1, Math.ceil(runsEach / workers));
+  const allTasks: PoolTask[] = [];
+
+  for (const profile of profiles) {
+    const fullRunOpts: Omit<FullRunOptions, 'verbose'> = {
+      ...(profile.skills
+        ? { botSkills: profile.skills }
+        : { correctRate: profile.correctRate!, chargeRate: profile.chargeRate! }),
+      maxTurnsPerEncounter: 50,
+      ascensionLevel,
+      acts: 3,
+      forceRelics: forceRelicArg ? [forceRelicArg] : undefined,
+    };
+    const combatOpts: Omit<SimOptions, 'verbose'> = {
+      encounterCount: maxEncounters,
+      ...(profile.skills
+        ? { botSkills: profile.skills }
+        : { correctRate: profile.correctRate!, chargeRate: profile.chargeRate! }),
+      deckSize: 15,
+      act: 1,
+      nodeType: 'combat',
+      maxTurnsPerEncounter: 50,
+      healBetweenEncounters: healRate,
+      ascensionLevel,
+    };
+
+    let remaining = runsEach;
+    while (remaining > 0) {
+      const runs = Math.min(chunkSize, remaining);
+      allTasks.push({ profileLabel: profile.label, chunkRuns: runs, fullRunOpts, combatOpts });
+      remaining -= runs;
+    }
+  }
+
+  const resultMap = new Map<string, Array<FullRunResult | SimRunResult>>();
+  for (const p of profiles) resultMap.set(p.label, []);
+
+  // Dispatch tasks to pool of N workers, refilling as each completes
+  let taskIndex = 0;
+  let completed = 0;
+  const total = allTasks.length;
+
+  async function runTask(task: PoolTask): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const worker = new Worker(WORKER_BOOTSTRAP, {
+        workerData: { workerFile: WORKER_TS_URL },
+      });
+
+      const workerTask: WorkerTask = {
+        taskId: taskIndex++,
+        mode: simMode,
+        profileLabel: task.profileLabel,
+        runs: task.chunkRuns,
+        ...(simMode === 'full' ? { fullRunOptions: task.fullRunOpts } : { combatOptions: task.combatOpts }),
+      };
+
+      worker.on('message', (result: WorkerResult) => {
+        completed++;
+        const arr = resultMap.get(task.profileLabel)!;
+        arr.push(...(result.results as Array<FullRunResult | SimRunResult>));
+        process.stdout.write(`    [${String(completed).padStart(3)}/${total} tasks] ${task.profileLabel}: +${result.results.length} runs\n`);
+        void worker.terminate();
+        resolve();
+      });
+      worker.on('error', (err) => {
+        void worker.terminate();
+        reject(err);
+      });
+
+      worker.postMessage(workerTask);
+    });
+  }
+
+  // Run at most `workers` concurrent tasks
+  const queue = [...allTasks];
+  const running: Promise<void>[] = [];
+
+  while (queue.length > 0 || running.length > 0) {
+    while (running.length < workers && queue.length > 0) {
+      const task = queue.shift()!;
+      const p = runTask(task).finally(() => {
+        running.splice(running.indexOf(p), 1);
+      });
+      running.push(p);
+    }
+    if (running.length > 0) await Promise.race(running);
+  }
+
+  return resultMap as Map<string, FullRunResult[] | SimRunResult[]>;
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
 // Bot profiles matching the browser bot (legacy, kept for backward compat)
 // ──────────────────────────────────────────────────────────────────────────────
 
@@ -165,13 +345,18 @@ function getArg(flag: string): string | null {
   return i >= 0 && i + 1 < args.length ? args[i + 1] : null;
 }
 
-const runsPerProfile  = parseInt(getArg('--runs') ?? '100', 10);
+const runsPerProfile  = parseInt(getArg('--runs') ?? '10000', 10);
 const description     = getArg('--description') ?? 'Headless balance run';
 const profileFilter   = (getArg('--profile') ?? getArg('--archetype')) as string | null;
 const maxEncounters   = parseInt(getArg('--encounters') ?? '30', 10);
 const healRate        = parseFloat(getArg('--heal-rate') ?? '0.2');
 const ascensionLevel  = parseInt(getArg('--ascension') ?? '0', 10);
 const simMode         = (getArg('--mode') ?? 'full') as 'full' | 'combat';
+
+// Parallelism flags
+const useParallel     = !args.includes('--no-parallel');
+const defaultWorkers  = Math.max(1, Math.min(os.cpus().length - 2, 12));
+const workerCount     = Math.max(1, parseInt(getArg('--workers') ?? String(defaultWorkers), 10));
 
 // New flags
 const sweepAxis       = getArg('--sweep');          // axis name or 'all'
@@ -265,9 +450,104 @@ console.log(`  Total runs : ${profilesToRun.length * runsPerProfile}`);
 if (simMode === 'combat') console.log(`  Max floors : ${maxEncounters}`);
 if (simMode === 'combat') console.log(`  Heal rate  : ${(healRate * 100).toFixed(0)}%`);
 console.log(`  Ascension  : ${ascensionLevel}`);
+console.log(`  Parallel   : ${useParallel ? `YES (${workerCount} workers)` : 'NO (sequential)'}`);
 console.log(`  Description: ${description}`);
 console.log(`  Output     : ${outputDir}`);
 console.log(`${'='.repeat(60)}\n`);
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Parallel worker execution
+// ──────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Run a single profile's simulations in parallel across N workers.
+ * Splits runsPerProfile into chunks (one per worker), collects results, merges.
+ */
+async function runProfileParallel(
+  profile: ProfileRun,
+  runs: number,
+  workers: number,
+): Promise<FullRunResult[] | SimRunResult[]> {
+  // Split run count into per-worker chunks
+  const chunkSize = Math.floor(runs / workers);
+  const remainder = runs % workers;
+  const chunks: number[] = Array.from({ length: workers }, (_, i) =>
+    i < remainder ? chunkSize + 1 : chunkSize,
+  ).filter(n => n > 0);
+
+
+
+  // Build shared options for this profile
+  const fullRunOpts: Omit<FullRunOptions, 'verbose'> = {
+    ...(profile.skills
+      ? { botSkills: profile.skills }
+      : { correctRate: profile.correctRate!, chargeRate: profile.chargeRate! }),
+    maxTurnsPerEncounter: 50,
+    ascensionLevel,
+    acts: 3,
+    forceRelics: forceRelicArg ? [forceRelicArg] : undefined,
+  };
+
+  const combatOpts: Omit<SimOptions, 'verbose'> = {
+    encounterCount: maxEncounters,
+    ...(profile.skills
+      ? { botSkills: profile.skills }
+      : { correctRate: profile.correctRate!, chargeRate: profile.chargeRate! }),
+    deckSize: 15,
+    act: 1,
+    nodeType: 'combat',
+    maxTurnsPerEncounter: 50,
+    healBetweenEncounters: healRate,
+    ascensionLevel,
+  };
+
+  // Launch all chunks concurrently
+  const workerPromises = chunks.map((chunkRuns, idx) => {
+    return new Promise<WorkerResult>((resolve, reject) => {
+      const worker = new Worker(WORKER_BOOTSTRAP, {
+        // workerData passes the .ts worker file URL to the bootstrap script.
+        // The bootstrap registers tsx ESM hooks, then imports sim-worker.ts.
+        workerData: { workerFile: WORKER_TS_URL },
+      });
+
+      const task: WorkerTask = {
+        taskId: idx,
+        mode: simMode,
+        profileLabel: profile.label,
+        runs: chunkRuns,
+        ...(simMode === 'full' ? { fullRunOptions: fullRunOpts } : { combatOptions: combatOpts }),
+      };
+
+      worker.on('message', (result: WorkerResult) => {
+        resolve(result);
+        void worker.terminate();
+      });
+
+      worker.on('error', (err) => {
+        reject(err);
+        void worker.terminate();
+      });
+
+      worker.postMessage(task);
+    });
+  });
+
+  // Collect results as workers complete and print progress
+  let completed = 0;
+  const allResults: Array<FullRunResult | SimRunResult> = [];
+
+  await Promise.all(
+    workerPromises.map(p =>
+      p.then(result => {
+        completed++;
+        allResults.push(...(result.results as Array<FullRunResult | SimRunResult>));
+        console.log(`    [${String(completed).padStart(2)}/${chunks.length} workers] ${profile.label}: ${result.results.length} runs done`);
+      }),
+    ),
+  );
+
+  return allResults as FullRunResult[] | SimRunResult[];
+}
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Run simulations
@@ -277,6 +557,16 @@ const startTime = Date.now();
 const allResults: Array<SimRunResult & { profile: string }> = [];
 const allFullResults: Array<FullRunResult & { profile: string }> = [];
 const profileMechanicStats: Record<string, MechanicStats[]> = {};
+const profileHpCurves: Record<string, HpCurvePoint[]> = {};
+
+// Phase 3: If running multiple profiles with parallel enabled, use shared pool
+// for cross-profile parallelism (dispatches all profile×chunk tasks concurrently)
+const isMultiProfile = profilesToRun.length > 1 && !sweepAxis && !isIsolation;
+let poolResults: Map<string, FullRunResult[] | SimRunResult[]> | null = null;
+if (isMultiProfile && useParallel && workerCount > 1 && simMode === 'full') {
+  console.log(`  Running all profiles in shared pool (${workerCount} workers)...`);
+  poolResults = await runAllProfilesParallel(profilesToRun, runsPerProfile, workerCount);
+}
 
 // For sweep summary: track results per axis level
 interface SweepPoint {
@@ -295,20 +585,31 @@ for (const profile of profilesToRun) {
 
   if (simMode === 'full') {
     // ── Full Run Mode ──────────────────────────────────────────────────────────
-    const results: FullRunResult[] = [];
+    let results: FullRunResult[];
 
-    for (let i = 0; i < runsPerProfile; i++) {
-      const r = simulateFullRun({
-        ...(profile.skills
-          ? { botSkills: profile.skills }
-          : { correctRate: profile.correctRate!, chargeRate: profile.chargeRate! }),
-        maxTurnsPerEncounter: 50,
-        verbose:              false,
-        ascensionLevel:       ascensionLevel,
-        acts:                 3,
-        forceRelics:          forceRelicArg ? [forceRelicArg] : undefined,
-      } satisfies FullRunOptions);
-      results.push(r);
+    if (poolResults) {
+      // Use results from shared pool (cross-profile parallel dispatch)
+      results = (poolResults.get(profile.label) ?? []) as FullRunResult[];
+    } else if (useParallel && workerCount > 1) {
+      results = (await runProfileParallel(profile, runsPerProfile, workerCount)) as FullRunResult[];
+    } else {
+      results = [];
+      for (let i = 0; i < runsPerProfile; i++) {
+        const r = simulateFullRun({
+          ...(profile.skills
+            ? { botSkills: profile.skills }
+            : { correctRate: profile.correctRate!, chargeRate: profile.chargeRate! }),
+          maxTurnsPerEncounter: 50,
+          verbose:              false,
+          ascensionLevel:       ascensionLevel,
+          acts:                 3,
+          forceRelics:          forceRelicArg ? [forceRelicArg] : undefined,
+        } satisfies FullRunOptions);
+        results.push(r);
+      }
+    }
+
+    for (const r of results) {
       allFullResults.push({ ...r, profile: profile.label });
     }
 
@@ -320,17 +621,28 @@ for (const profile of profilesToRun) {
     const avgRelics   = results.reduce((s, r) => s + r.relicsAcquired.length, 0) / results.length;
     const avgEncWon   = results.reduce((s, r) => s + r.encountersWon, 0) / results.length;
     const avgDmgPerTurn = results.reduce((s, r) => s + (r.totalTurns > 0 ? r.totalDamageDealt / r.totalTurns : 0), 0) / results.length;
+    // New Phase 1/2 aggregates
+    const avgMastery  = results.reduce((s, r) => s + r.avgMasteryLevel, 0) / results.length;
+    const totalCharged = results.reduce((s, r) => s + r.totalChargedPlays, 0);
+    const totalPlays  = results.reduce((s, r) => s + r.totalCardsPlayed, 0);
+    const chargeRate_ = totalPlays > 0 ? totalCharged / totalPlays : 0;
+    const totalCorrCharged = results.reduce((s, r) => s + r.chargeSuccessRate * r.totalChargedPlays, 0);
+    const chargeAcc   = totalCharged > 0 ? totalCorrCharged / totalCharged : 0;
+    const nearMissCount = results.filter(r => r.isNearMiss).length;
+    const comebackCount = results.filter(r => r.isComeback).length;
+
+    // Phase 2: HP curve
+    const hpCurve = computeHpCurve(results, PLAYER_START_HP);
+    profileHpCurves[profile.label] = hpCurve;
 
     console.log(
-      `  ${profile.label.padEnd(24)} ` +
-      `${runsPerProfile} runs | ` +
-      `Survived: ${String(survived).padStart(4)}/${runsPerProfile} (${Math.round(survived / runsPerProfile * 100)}%) | ` +
-      `Avg acts: ${avgActs.toFixed(2)} | ` +
-      `Avg enc won: ${avgEncWon.toFixed(1)} | ` +
-      `Avg deck: ${avgDeckSize.toFixed(1)} | ` +
-      `Avg relics: ${avgRelics.toFixed(1)} | ` +
-      `Avg gold: ${avgGoldEarned.toFixed(0)} | ` +
-      `Avg HP (surv): ${avgHP.toFixed(0)} | ` +
+      `  ${profile.label.padEnd(20)} ` +
+      `${results.length} runs | ` +
+      `Win: ${Math.round(survived / results.length * 100)}% | ` +
+      `Charge: ${Math.round(chargeRate_ * 100)}% (${Math.round(chargeAcc * 100)}% acc) | ` +
+      `Mastery: ${avgMastery.toFixed(1)} avg | ` +
+      `Near-miss: ${Math.round(nearMissCount / results.length * 100)}% | ` +
+      `Comeback: ${Math.round(comebackCount / results.length * 100)}% | ` +
       `${elapsed()}s`,
     );
 
@@ -347,7 +659,7 @@ for (const profile of profilesToRun) {
       .sort((a, b) => b[1] - a[1])
       .map(([type, n]) => `${type}=${(n / results.length).toFixed(1)}`)
       .join(' ');
-    console.log(`    Avg rooms/run: ${(totalRooms / results.length).toFixed(1)} — ${roomSummary}`);
+    console.log(`    Avg rooms/run: ${(totalRooms / results.length).toFixed(1)} — ${roomSummary} | Avg acts: ${avgActs.toFixed(2)} | Avg enc: ${avgEncWon.toFixed(1)} | Gold: ${avgGoldEarned.toFixed(0)} | HP(surv): ${avgHP.toFixed(0)}`);
 
     // Collect sweep point if running sweep
     if (sweepAxis && sweepAxis !== 'all') {
@@ -367,28 +679,36 @@ for (const profile of profilesToRun) {
     const safeLabel = profile.label.replace(/[^a-zA-Z0-9_.-]/g, '_');
     fs.writeFileSync(
       path.join(outputDir, `${safeLabel}.json`),
-      JSON.stringify({ results }, null, 2),
+      JSON.stringify({ results, hpCurve }, null, 2),
     );
 
   } else {
     // ── Legacy Combat-Only Mode ───────────────────────────────────────────────
-    const results: SimRunResult[] = [];
+    let results: SimRunResult[];
 
-    for (let i = 0; i < runsPerProfile; i++) {
-      const r = runSimulation({
-        encounterCount:        maxEncounters,
-        ...(profile.skills
-          ? { botSkills: profile.skills }
-          : { correctRate: profile.correctRate!, chargeRate: profile.chargeRate! }),
-        deckSize:              15,
-        act:                   1,
-        nodeType:              'combat',
-        maxTurnsPerEncounter:  50,
-        verbose:               false,
-        healBetweenEncounters: healRate,
-        ascensionLevel:        ascensionLevel,
-      } satisfies SimOptions);
-      results.push(r);
+    if (useParallel && workerCount > 1) {
+      results = (await runProfileParallel(profile, runsPerProfile, workerCount)) as SimRunResult[];
+    } else {
+      results = [];
+      for (let i = 0; i < runsPerProfile; i++) {
+        const r = runSimulation({
+          encounterCount:        maxEncounters,
+          ...(profile.skills
+            ? { botSkills: profile.skills }
+            : { correctRate: profile.correctRate!, chargeRate: profile.chargeRate! }),
+          deckSize:              15,
+          act:                   1,
+          nodeType:              'combat',
+          maxTurnsPerEncounter:  50,
+          verbose:               false,
+          healBetweenEncounters: healRate,
+          ascensionLevel:        ascensionLevel,
+        } satisfies SimOptions);
+        results.push(r);
+      }
+    }
+
+    for (const r of results) {
       allResults.push({ ...r, profile: profile.label });
     }
 
@@ -470,7 +790,7 @@ const combined = {
   runsPerProfile,
   durationSeconds: parseFloat(totalElapsed),
   profiles:        profilesToRun.map(p => p.label),
-  config:          { maxEncounters, healRate, ascensionLevel, simMode, sweepAxis, isIsolation },
+  config:          { maxEncounters, healRate, ascensionLevel, simMode, sweepAxis, isIsolation, parallel: useParallel, workers: workerCount },
   mechanicStats:   simMode === 'combat' ? profileMechanicStats : {},
   results:         simMode === 'full' ? allFullResults : allResults,
   ...(sweepResults.length > 0 ? { sweepResults } : {}),
@@ -493,6 +813,7 @@ const readmeLines: string[] = [
   `**Total runs:** ${totalRunCount}`,
   `**Ascension level:** ${ascensionLevel}`,
   `**Run mode:** ${runMode}`,
+  `**Parallel:** ${useParallel ? `Yes (${workerCount} workers)` : 'No (sequential)'}`,
   ...(simMode === 'combat' ? [
     `**Max encounters per run:** ${maxEncounters}`,
     `**Heal between encounters:** ${(healRate * 100).toFixed(0)}%`,
@@ -530,12 +851,14 @@ if (sweepAxis && sweepAxis !== 'all' && sweepResults.length > 0) {
 
 if (simMode === 'full') {
   // ── Full Run README ─────────────────────────────────────────────────────────
+  const runCount = allFullResults.length;
+
   readmeLines.push(
     '',
     '## Results by Profile',
     '',
-    '| Profile | Runs | Survived | Survive% | Avg Acts | Avg Enc Won | Avg Deck | Avg Relics | Avg Gold Earned | Avg HP (surv) |',
-    '|---------|------|----------|----------|----------|-------------|----------|------------|-----------------|---------------|',
+    '| Profile | Runs | Win% | Charge% | Charge Acc | Avg Mastery | Near-Miss% | Comeback% | Avg Acts | Avg HP (surv) |',
+    '|---------|------|------|---------|------------|-------------|------------|-----------|----------|---------------|',
   );
 
   for (const profile of profilesToRun) {
@@ -544,16 +867,79 @@ if (simMode === 'full') {
     const survived = pResults.filter(r => r.survived).length;
     const survPct  = Math.round(survived / pResults.length * 100);
     const avgActs  = (pResults.reduce((s, r) => s + r.actsCompleted, 0) / pResults.length).toFixed(2);
-    const avgEnc   = (pResults.reduce((s, r) => s + r.encountersWon, 0) / pResults.length).toFixed(1);
-    const avgDeck  = (pResults.reduce((s, r) => s + r.finalDeckSize, 0) / pResults.length).toFixed(1);
-    const avgRelic = (pResults.reduce((s, r) => s + r.relicsAcquired.length, 0) / pResults.length).toFixed(1);
-    const avgGold  = (pResults.reduce((s, r) => s + r.goldEarned, 0) / pResults.length).toFixed(0);
     const avgHP    = (pResults.filter(r => r.survived).reduce((s, r) => s + r.finalHP, 0) / Math.max(survived, 1)).toFixed(0);
-    readmeLines.push(`| ${profile.label} | ${pResults.length} | ${survived} | ${survPct}% | ${avgActs} | ${avgEnc} | ${avgDeck} | ${avgRelic} | ${avgGold} | ${avgHP} |`);
+    const pTotalCharged = pResults.reduce((s, r) => s + r.totalChargedPlays, 0);
+    const pTotalPlays = pResults.reduce((s, r) => s + r.totalCardsPlayed, 0);
+    const pChargeRate = pTotalPlays > 0 ? Math.round(pTotalCharged / pTotalPlays * 100) : 0;
+    const pCorrCharged = pResults.reduce((s, r) => s + r.chargeSuccessRate * r.totalChargedPlays, 0);
+    const pChargeAcc = pTotalCharged > 0 ? Math.round(pCorrCharged / pTotalCharged * 100) : 0;
+    const pAvgMastery = (pResults.reduce((s, r) => s + r.avgMasteryLevel, 0) / pResults.length).toFixed(2);
+    const pNearMiss = Math.round(pResults.filter(r => r.isNearMiss).length / pResults.length * 100);
+    const pComeback = Math.round(pResults.filter(r => r.isComeback).length / pResults.length * 100);
+    readmeLines.push(`| ${profile.label} | ${pResults.length} | ${survPct}% | ${pChargeRate}% | ${pChargeAcc}% | ${pAvgMastery} | ${pNearMiss}% | ${pComeback}% | ${avgActs} | ${avgHP} |`);
+  }
+
+  // Mastery Distribution
+  readmeLines.push('', '## Mastery Distribution (avg deck at run end)', '', '| Profile | L0 | L1 | L2 | L3 | L4 | L5 | Avg Level |', '|---------|----|----|----|----|----|----|-----------|');
+  for (const profile of profilesToRun) {
+    const pResults = allFullResults.filter(r => r.profile === profile.label);
+    if (pResults.length === 0) continue;
+    const dist = [0,0,0,0,0,0];
+    for (const r of pResults) { for (let i=0;i<6;i++) dist[i] += r.masteryDistribution[i] ?? 0; }
+    const total = dist.reduce((s,v)=>s+v,0) || 1;
+    const pct = dist.map(v=>`${(v/total*100).toFixed(0)}%`).join(' | ');
+    const avgMastery = (pResults.reduce((s,r)=>s+r.avgMasteryLevel,0)/pResults.length).toFixed(2);
+    readmeLines.push(`| ${profile.label} | ${pct} | ${avgMastery} |`);
+  }
+
+  // Charge Analysis
+  readmeLines.push('', '## Charge Analysis', '', '| Profile | Charge Rate | Charge Acc | Dmg from Charges | Dmg from Quick | Charge DMG% |', '|---------|-------------|------------|-----------------|----------------|-------------|');
+  for (const profile of profilesToRun) {
+    const pResults = allFullResults.filter(r => r.profile === profile.label);
+    if (pResults.length === 0) continue;
+    const n = pResults.length;
+    const pTotalCharged = pResults.reduce((s,r)=>s+r.totalChargedPlays,0);
+    const pTotalPlays = pResults.reduce((s,r)=>s+r.totalCardsPlayed,0);
+    const pCorrCharged = pResults.reduce((s,r)=>s+r.chargeSuccessRate*r.totalChargedPlays,0);
+    const chargeRate_ = pTotalPlays > 0 ? (pTotalCharged/pTotalPlays*100).toFixed(0) : '0';
+    const chargeAcc_ = pTotalCharged > 0 ? (pCorrCharged/pTotalCharged*100).toFixed(0) : '0';
+    const avgDmgCharge = (pResults.reduce((s,r)=>s+r.damageFromCharges,0)/n).toFixed(0);
+    const avgDmgQuick = (pResults.reduce((s,r)=>s+r.damageFromQuickPlays,0)/n).toFixed(0);
+    const totalDmg = pResults.reduce((s,r)=>s+r.damageFromCharges+r.damageFromQuickPlays,0);
+    const chargeDmgPct = totalDmg > 0 ? (pResults.reduce((s,r)=>s+r.damageFromCharges,0)/totalDmg*100).toFixed(0) : '0';
+    readmeLines.push(`| ${profile.label} | ${chargeRate_}% | ${chargeAcc_}% | ${avgDmgCharge} | ${avgDmgQuick} | ${chargeDmgPct}% |`);
+  }
+
+  // Near-Miss and Tension Metrics
+  readmeLines.push('', '## Tension Metrics', '', '| Profile | Near-Miss% | Comeback% | Avg Min HP | Avg Turns/Enc |', '|---------|------------|-----------|------------|---------------|');
+  for (const profile of profilesToRun) {
+    const pResults = allFullResults.filter(r => r.profile === profile.label);
+    if (pResults.length === 0) continue;
+    const nearMissPct = (pResults.filter(r=>r.isNearMiss).length/pResults.length*100).toFixed(0);
+    const comebackPct = (pResults.filter(r=>r.isComeback).length/pResults.length*100).toFixed(0);
+    const avgMinHp = (pResults.reduce((s,r)=>s+r.minHpSeen,0)/pResults.length).toFixed(0);
+    const avgTurnsPerEnc = (pResults.reduce((s,r)=>s+r.avgTurnsPerEncounter,0)/pResults.length).toFixed(1);
+    readmeLines.push(`| ${profile.label} | ${nearMissPct}% | ${comebackPct}% | ${avgMinHp} | ${avgTurnsPerEnc} |`);
+  }
+
+  // HP Curve section (first profile or all profiles summary)
+  if (profilesToRun.length > 0 && Object.keys(profileHpCurves).length > 0) {
+    readmeLines.push('', '## HP Curve by Floor', '');
+    for (const profile of profilesToRun) {
+      const curve = profileHpCurves[profile.label];
+      if (!curve || curve.length === 0) continue;
+      readmeLines.push(`### ${profile.label}`, '', '| Floor | Avg HP | Min HP | Max HP | Death% |', '|-------|--------|--------|--------|--------|');
+      for (const pt of curve) {
+        const totalSamples = pt.sampleCount || 1;
+        const deathPct = (pt.deathCount / totalSamples * 100).toFixed(0);
+        readmeLines.push(`| ${pt.floor} | ${pt.avgHp.toFixed(0)} | ${pt.minHp} | ${pt.maxHp} | ${deathPct}% |`);
+      }
+      readmeLines.push('');
+    }
   }
 
   // Room distribution
-  readmeLines.push('', '## Room Type Distribution (avg per run)', '', '| Room Type | Avg Visits | % of Total |', '|-----------|-----------|-----------|');
+  readmeLines.push('## Room Type Distribution (avg per run)', '', '| Room Type | Avg Visits | % of Total |', '|-----------|-----------|-----------|');
   const roomTotals: Record<string, number> = {};
   for (const r of allFullResults) {
     for (const [type, count] of Object.entries(r.roomsVisited)) {
@@ -561,7 +947,6 @@ if (simMode === 'full') {
     }
   }
   const totalRoomsAll = Object.values(roomTotals).reduce((s, n) => s + n, 0);
-  const runCount = allFullResults.length;
   Object.entries(roomTotals)
     .sort((a, b) => b[1] - a[1])
     .forEach(([type, n]) => {
@@ -682,11 +1067,69 @@ readmeLines.push('');
 fs.writeFileSync(path.join(outputDir, 'README.md'), readmeLines.join('\n'));
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Update latest symlink
+// Phase 4: Cross-Run Delta — compare to previous run before updating symlink
 // ──────────────────────────────────────────────────────────────────────────────
 
 const runsBase  = path.resolve('data/playtests/runs');
 const latestPath = path.join(runsBase, 'latest');
+
+if (simMode === 'full' && profilesToRun.length > 0) {
+  try {
+    const prevCombinedPath = path.join(runsBase, 'latest', 'combined.json');
+    if (fs.existsSync(prevCombinedPath)) {
+      const prevCombined = JSON.parse(fs.readFileSync(prevCombinedPath, 'utf-8'));
+      // Only compare if same mode
+      if (prevCombined.mode === 'full' && Array.isArray(prevCombined.results)) {
+        const prevResults: Array<FullRunResult & { profile: string }> = prevCombined.results;
+
+        const deltaLines: string[] = [
+          `# Delta vs Previous Run`,
+          '',
+          `**Previous:** ${prevCombined.timestamp ?? 'unknown'}`,
+          `**Current:**  ${new Date().toISOString()}`,
+          '',
+          '| Profile | Old Win% | New Win% | Delta | Charge% | Mastery | Near-Miss% |',
+          '|---------|----------|----------|-------|---------|---------|------------|',
+        ];
+
+        let hasDelta = false;
+        for (const profile of profilesToRun) {
+          const prevProf = prevResults.filter(r => r.profile === profile.label);
+          const curProf  = allFullResults.filter(r => r.profile === profile.label);
+          if (prevProf.length === 0 || curProf.length === 0) {
+            if (curProf.length > 0) deltaLines.push(`| ${profile.label} | — | ${Math.round(curProf.filter(r=>r.survived).length/curProf.length*100)}% | NEW | — | — | — |`);
+            continue;
+          }
+          const oldWin = prevProf.filter(r=>r.survived).length / prevProf.length;
+          const newWin = curProf.filter(r=>r.survived).length / curProf.length;
+          const delta  = newWin - oldWin;
+          const deltaStr = `${delta >= 0 ? '+' : ''}${(delta * 100).toFixed(1)}%`;
+          const curCharged = curProf.reduce((s,r)=>s+r.totalChargedPlays,0);
+          const curTotal = curProf.reduce((s,r)=>s+r.totalCardsPlayed,0);
+          const chargeRatePct = curTotal > 0 ? Math.round(curCharged/curTotal*100) : 0;
+          const avgMastery = (curProf.reduce((s,r)=>s+r.avgMasteryLevel,0)/curProf.length).toFixed(2);
+          const nearMissPct = Math.round(curProf.filter(r=>r.isNearMiss).length/curProf.length*100);
+          deltaLines.push(`| ${profile.label} | ${(oldWin*100).toFixed(1)}% | ${(newWin*100).toFixed(1)}% | ${deltaStr} | ${chargeRatePct}% | ${avgMastery} | ${nearMissPct}% |`);
+          hasDelta = true;
+        }
+
+        if (hasDelta) {
+          const deltaPath = path.join(outputDir, 'delta.md');
+          fs.writeFileSync(deltaPath, deltaLines.join('\n') + '\n');
+          console.log('\n  Delta vs previous run:');
+          console.log(deltaLines.slice(6).join('\n'));
+        }
+      }
+    }
+  } catch {
+    // Non-fatal — delta comparison is best-effort
+  }
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Update latest symlink
+// ──────────────────────────────────────────────────────────────────────────────
+
 try {
   if (fs.existsSync(latestPath)) fs.unlinkSync(latestPath);
   fs.symlinkSync(timestamp, latestPath);

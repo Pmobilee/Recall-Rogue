@@ -128,6 +128,23 @@ export interface FullRunResult {
   cardsAddedToRun: number;
   cardsRemovedFromRun: number;
   durationMs: number;
+  // Mastery distribution at run end
+  masteryDistribution: number[];    // [L0count, L1, L2, L3, L4, L5]
+  avgMasteryLevel: number;
+  totalMasteryUpgrades: number;
+  // Charge breakdown
+  totalChargedPlays: number;
+  totalQuickPlays: number;
+  chargeSuccessRate: number;        // correctWhenCharged / totalChargedPlays
+  damageFromCharges: number;
+  damageFromQuickPlays: number;
+  // Near-miss / tension
+  isNearMiss: boolean;              // !survived && (actsCompleted>=2 || lastEnemyHpPct<0.25)
+  deathFloor: number;               // 0 if survived
+  lastEnemyHpPct?: number;          // enemy HP% on fatal encounter
+  minHpSeen: number;                // lowest HP reached during run
+  isComeback: boolean;              // survived && minHpSeen < maxHp * 0.3
+  avgTurnsPerEncounter: number;
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -294,6 +311,14 @@ interface EncounterResult {
   correctAnswers: number;
   wrongAnswers: number;
   maxCombo: number;
+  // Phase 1 new metrics
+  enemyHpPct: number;              // enemy HP% when encounter ended (0 if defeated)
+  chargedPlays: number;
+  quickPlays: number;
+  correctWhenCharged: number;
+  damageFromCharges: number;
+  damageFromQuickPlays: number;
+  masteryUpgradesEarned: number;
 }
 
 function simulateSingleEncounter(
@@ -314,6 +339,13 @@ function simulateSingleEncounter(
   let correctAnswers = 0;
   let wrongAnswers = 0;
   let maxCombo = 0;
+  // New Phase 1 tracking
+  let chargedPlays = 0;
+  let quickPlays = 0;
+  let correctWhenCharged = 0;
+  let damageFromCharges = 0;
+  let damageFromQuickPlays = 0;
+  let masteryUpgradesEarned = 0;
 
   const { correctRate, chargeRate, maxTurns, brain } = opts;
 
@@ -374,6 +406,17 @@ function simulateSingleEncounter(
           cardsPlayed++;
           played = true;
 
+          // Track charge/quick breakdown
+          if (play.mode === 'charge') {
+            chargedPlays++;
+            if (answeredCorrectly) correctWhenCharged++;
+            damageFromCharges += res.effect.damageDealt > 0 ? res.effect.damageDealt : 0;
+            if (res.masteryChange === 'upgrade') masteryUpgradesEarned++;
+          } else {
+            quickPlays++;
+            damageFromQuickPlays += res.effect.damageDealt > 0 ? res.effect.damageDealt : 0;
+          }
+
           if (answeredCorrectly) {
             correctAnswers++;
             if (ascMods.correctAnswerHeal > 0) {
@@ -398,7 +441,8 @@ function simulateSingleEncounter(
 
           const midCheckResult = checkEncounterEnd(turnState);
           if (midCheckResult !== null) {
-            return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo };
+            const enemyHpPctMid = Math.max(0, Math.min(1, turnState.enemy.currentHP / (turnState.enemy.maxHP || 1)));
+            return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctMid, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned };
           }
 
           break; // Only execute first valid play, then re-plan
@@ -450,6 +494,17 @@ function simulateSingleEncounter(
         turnState = res.turnState;
         cardsPlayed++;
 
+        // Track charge/quick breakdown
+        if (isCharge) {
+          chargedPlays++;
+          if (answeredCorrectly) correctWhenCharged++;
+          damageFromCharges += res.effect.damageDealt > 0 ? res.effect.damageDealt : 0;
+          if (res.masteryChange === 'upgrade') masteryUpgradesEarned++;
+        } else {
+          quickPlays++;
+          damageFromQuickPlays += res.effect.damageDealt > 0 ? res.effect.damageDealt : 0;
+        }
+
         if (answeredCorrectly) {
           correctAnswers++;
           if (ascMods.correctAnswerHeal > 0) {
@@ -474,7 +529,8 @@ function simulateSingleEncounter(
 
         const midCheckResult = checkEncounterEnd(turnState);
         if (midCheckResult !== null) {
-          return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo };
+          const enemyHpPctMid = Math.max(0, Math.min(1, turnState.enemy.currentHP / (turnState.enemy.maxHP || 1)));
+          return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctMid, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned };
         }
       }
     }
@@ -494,11 +550,13 @@ function simulateSingleEncounter(
 
     const afterEnemyResult = checkEncounterEnd(turnState);
     if (afterEnemyResult !== null) {
-      return { result: afterEnemyResult, turnsUsed, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo };
+      const enemyHpPctEnd = Math.max(0, Math.min(1, turnState.enemy.currentHP / (turnState.enemy.maxHP || 1)));
+      return { result: afterEnemyResult, turnsUsed, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctEnd, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned };
     }
   }
 
-  return { result: 'timeout', turnsUsed, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo };
+  const enemyHpPctTimeout = Math.max(0, Math.min(1, turnState.enemy.currentHP / (turnState.enemy.maxHP || 1)));
+  return { result: 'timeout', turnsUsed, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctTimeout, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned };
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -1211,6 +1269,16 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
   let maxComboSeen = 0;
   let actsCompleted = 0;
   let survived = true;
+  // Phase 1 new counters
+  let totalChargedPlays = 0;
+  let totalQuickPlays = 0;
+  let totalCorrectWhenCharged = 0;
+  let totalDamageFromCharges = 0;
+  let totalDamageFromQuickPlays = 0;
+  let totalMasteryUpgrades = 0;
+  let minHpSeen = baseMaxHp;
+  let deathFloor = 0;
+  let lastEnemyHpPct: number | undefined = undefined;
 
   // ── Act loop ──
   for (let act = 1; act <= options.acts; act++) {
@@ -1261,11 +1329,21 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
           totalCorrect += combatResult.correctAnswers;
           totalWrong += combatResult.wrongAnswers;
           if (combatResult.maxCombo > maxComboSeen) maxComboSeen = combatResult.maxCombo;
+          // Accumulate new Phase 1 fields
+          totalChargedPlays += combatResult.chargedPlays;
+          totalQuickPlays += combatResult.quickPlays;
+          totalCorrectWhenCharged += combatResult.correctWhenCharged;
+          totalDamageFromCharges += combatResult.damageFromCharges;
+          totalDamageFromQuickPlays += combatResult.damageFromQuickPlays;
+          totalMasteryUpgrades += combatResult.masteryUpgradesEarned;
+          minHpSeen = Math.min(minHpSeen, runState.hp);
 
           if (combatResult.result === 'victory' || combatResult.result === 'timeout') {
             encountersWon++;
           } else {
             // Defeat
+            deathFloor = deriveFloorFromNode(actMap, node);
+            lastEnemyHpPct = combatResult.enemyHpPct;
             survived = false;
             runState.hp = 0;
           }
@@ -1301,9 +1379,19 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
             totalCorrect += combatResult.correctAnswers;
             totalWrong += combatResult.wrongAnswers;
             if (combatResult.maxCombo > maxComboSeen) maxComboSeen = combatResult.maxCombo;
+            // Accumulate new Phase 1 fields
+            totalChargedPlays += combatResult.chargedPlays;
+            totalQuickPlays += combatResult.quickPlays;
+            totalCorrectWhenCharged += combatResult.correctWhenCharged;
+            totalDamageFromCharges += combatResult.damageFromCharges;
+            totalDamageFromQuickPlays += combatResult.damageFromQuickPlays;
+            totalMasteryUpgrades += combatResult.masteryUpgradesEarned;
+            minHpSeen = Math.min(minHpSeen, runState.hp);
             if (combatResult.result === 'victory' || combatResult.result === 'timeout') {
               encountersWon++;
             } else {
+              deathFloor = floor;
+              lastEnemyHpPct = combatResult.enemyHpPct;
               survived = false;
               runState.hp = 0;
             }
@@ -1319,6 +1407,9 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
       visitRecord.goldChange = runState.gold - goldBefore;
       visitRecord.deckSizeChange = runState.deck.length - deckSizeBefore;
       nodeVisits.push(visitRecord);
+
+      // Track minimum HP seen across the run
+      minHpSeen = Math.min(minHpSeen, runState.hp);
 
       // Check defeat after any node
       if (runState.hp <= 0) {
@@ -1384,6 +1475,22 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
 
   const totalAnswered = totalCorrect + totalWrong;
 
+  // Compute mastery distribution from runState.deck at run end
+  const masteryDistribution = [0, 0, 0, 0, 0, 0];
+  let masterySum = 0;
+  for (const card of runState.deck) {
+    const level = Math.max(0, Math.min(5, card.masteryLevel ?? 0));
+    masteryDistribution[level]++;
+    masterySum += level;
+  }
+  const avgMasteryLevel = runState.deck.length > 0 ? masterySum / runState.deck.length : 0;
+
+  // Near-miss: died AND (reached act 3+ OR final enemy was nearly dead)
+  const isNearMiss = !survived && (actsCompleted >= 2 || (lastEnemyHpPct !== undefined && lastEnemyHpPct < 0.25));
+  // Comeback: survived but was in dire straits
+  const isComeback = survived && minHpSeen < baseMaxHp * 0.3;
+  const avgTurnsPerEncounter = totalEncounters > 0 ? totalTurns / totalEncounters : 0;
+
   return {
     runId,
     options,
@@ -1410,6 +1517,21 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
     cardsAddedToRun: runState.cardsAdded,
     cardsRemovedFromRun: runState.cardsRemoved,
     durationMs: Date.now() - startTime,
+    // Phase 1 new fields
+    masteryDistribution,
+    avgMasteryLevel,
+    totalMasteryUpgrades,
+    totalChargedPlays,
+    totalQuickPlays,
+    chargeSuccessRate: totalChargedPlays > 0 ? totalCorrectWhenCharged / totalChargedPlays : 0,
+    damageFromCharges: totalDamageFromCharges,
+    damageFromQuickPlays: totalDamageFromQuickPlays,
+    isNearMiss,
+    deathFloor,
+    lastEnemyHpPct,
+    minHpSeen,
+    isComeback,
+    avgTurnsPerEncounter,
   };
 }
 

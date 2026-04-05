@@ -1,8 +1,8 @@
 # Headless Balance Simulator
 
 > **Purpose:** How to run the headless combat simulator for balance testing — profiles, output format, and key internals.
-> **Last verified:** 2026-04-04
-> **Source files:** `tests/playtest/headless/simulator.ts`, `tests/playtest/headless/run-batch.ts`, `tests/playtest/headless/browser-shim.ts`, `tests/playtest/headless/tsconfig.json`, `tests/playtest/headless/full-run-simulator.ts`, `tests/playtest/headless/bot-brain.ts`, `tests/playtest/headless/bot-profiles.ts`
+> **Last verified:** 2026-04-05 (upgraded with 7 new metrics)
+> **Source files:** `tests/playtest/headless/simulator.ts`, `tests/playtest/headless/run-batch.ts`, `tests/playtest/headless/sim-worker.ts`, `tests/playtest/headless/browser-shim.ts`, `tests/playtest/headless/tsconfig.json`, `tests/playtest/headless/full-run-simulator.ts`, `tests/playtest/headless/bot-brain.ts`, `tests/playtest/headless/bot-profiles.ts`
 
 ## What It Is
 
@@ -18,7 +18,7 @@ The headless simulator runs full card-roguelite encounters entirely in Node.js �
 
 Zero reimplementation, zero drift. When `balance.ts` changes, the sim uses the new values automatically.
 
-**Performance:** ~6,000 runs in 5 seconds (single process, no browser startup overhead).
+**Performance:** ~6,000 runs in 5 seconds (single-threaded). With parallel execution on a 14-core machine (12 workers): 60,000 runs across 6 profiles in ~20-30 seconds. tsx v4 propagates its loader to worker threads automatically — no extra configuration needed.
 
 ## Running the Simulator
 
@@ -58,7 +58,7 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
 
 | Flag | Default | Description |
 |------|---------|-------------|
-| `--runs N` | 100 | Runs per profile |
+| `--runs N` | 10000 | Runs per profile |
 | `--profile ID` | all 6 progression | Named profile (legacy, archetype, or progression) — see Player Profiles |
 | `--archetype NAME` | — | Alias for `--profile`; shorthand for archetype names |
 | `--ascension N` | 0 | Ascension level (0–20) |
@@ -70,6 +70,31 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
 | `--isolation` | — | Test each axis at 1.0 with all others at baseline (0.3) |
 | `--skills JSON` | — | Custom `BotSkills` JSON (partial OK; unspecified axes default to 0.5) |
 | `--force-relic ID` | — | Force a specific relic at run start on every run (added on top of normal starter relics; for causal win-rate measurement free of survivorship bias) |
+| `--parallel` | ON | Enable parallel execution (default: on) |
+| `--no-parallel` | — | Disable parallel, run sequentially |
+| `--workers N` | min(cpus-2, 12) | Number of worker threads (parallel mode only) |
+
+
+## Parallel Execution
+
+`run-batch.ts` distributes simulation work across worker threads by default. Each profile's runs are split into equal chunks (one chunk per worker) and all workers run concurrently. Results are merged before reporting.
+
+**Default worker count:** `Math.min(os.cpus().length - 2, 12)`. Leaves 2 cores for OS/other work, caps at 12 to avoid diminishing returns from IPC overhead.
+
+**tsx compatibility:** tsx v4's IPC-based ESM loader is NOT automatically inherited by worker threads spawned from a different `.ts` file. The fix is a plain `.mjs` bootstrap file (`tsx-worker-bootstrap.mjs`) that calls `tsx/esm/api`'s `register()` to activate tsx's ESM hooks, then dynamically imports the actual worker. `run-batch.ts` spawns `Worker(bootstrapPath, { workerData: { workerFile: '...' } })` — the bootstrap registers tsx and imports the worker file. This enables `.js` → `.ts` extension remapping for all downstream imports like `'./browser-shim.js'`.
+
+**Worker file:** `sim-worker.ts` receives a `WorkerTask` message (mode, profile, run count, options), runs the requested simulations, and posts back a `WorkerResult` with the results array. Imports `browser-shim.js` before any game code.
+
+**Progress output per profile:**
+```
+    [ 4/12 workers] competent: 833 runs done
+    [ 8/12 workers] competent: 833 runs done
+    [12/12 workers] competent: 834 runs done
+```
+
+**Aggregation:** Happens in the main thread after all workers for a profile complete. Output (JSON, README.md, mechanic stats) is identical to sequential mode.
+
+**Disable:** `--no-parallel` falls back to the original sequential loop.
 
 ## BotBrain System
 
@@ -255,6 +280,62 @@ Files written:
 - `relicsAcquired: string[]`
 - `goldEarned: number`
 - `roomsVisited: Record<string, number>` — room type counts
+- `masteryDistribution: number[]` — [L0count, L1, L2, L3, L4, L5] from `runState.deck` at run end
+- `avgMasteryLevel: number` — mean mastery level across final deck
+- `totalMasteryUpgrades: number` — total upgrades earned during the run
+- `totalChargedPlays: number` — total charge plays across all encounters
+- `totalQuickPlays: number` — total quick plays across all encounters
+- `chargeSuccessRate: number` — correctWhenCharged / totalChargedPlays (0 if no charges)
+- `damageFromCharges: number` — cumulative damage attributed to charged plays
+- `damageFromQuickPlays: number` — cumulative damage attributed to quick plays
+- `isNearMiss: boolean` — `!survived && (actsCompleted >= 2 || lastEnemyHpPct < 0.25)` — target 25-30%
+- `deathFloor: number` — floor where the player died (0 if survived)
+- `lastEnemyHpPct?: number` — enemy HP% on the fatal encounter
+- `minHpSeen: number` — lowest HP reached during the run
+- `isComeback: boolean` — `survived && minHpSeen < maxHp * 0.3` — great tension indicator
+- `avgTurnsPerEncounter: number` — total turns / total encounters
+
+## New Metrics Reference (2026-04-05)
+
+Seven upgrades added to the simulator to expose deeper player behavior and balance signals:
+
+### 1. Mastery Tracking
+Scans `runState.deck` at run end (card objects are shared references — no sync needed).
+Reports per-level distribution and average, plus total upgrades earned mid-run.
+
+### 2. Charge Breakdown
+Per-encounter `chargedPlays`, `quickPlays`, `correctWhenCharged`, `damageFromCharges`,
+`damageFromQuickPlays` — aggregated into `FullRunResult`. Use charge DMG% to see if
+the knowledge mechanic is contributing to damage.
+
+### 3. Near-Miss Detection
+`isNearMiss = !survived && (actsCompleted >= 2 || lastEnemyHpPct < 0.25)`.
+**Target: 25-30% of deaths.** Higher = good tension; if near-miss rate is high, check
+if players are consistently reaching Act 3 but barely dying.
+
+### 4. Per-Floor HP Curve
+`computeHpCurve(results, PLAYER_START_HP)` reconstructs HP trajectory from
+`nodeVisits[].hpChange`. Saved as `hpCurve` in per-profile JSON and in README tables.
+Use to spot floors where HP collapses unexpectedly.
+
+### 5. Cross-Run Delta
+Before updating the `latest` symlink, reads `latest/combined.json` and computes
+win-rate / charge-rate / mastery / near-miss deltas per profile. Prints a comparison
+table and saves `delta.md` in the output directory.
+
+### 6. Tension Metrics
+`isComeback`, `minHpSeen`, `avgTurnsPerEncounter` — diagnose whether runs feel tense
+(comebacks) or swingy (min HP near 0 all the time).
+
+### 7. Profile-Parallel Execution
+When running all 6 progression profiles, all profile×chunk tasks are dispatched to a
+shared pool of N workers (`runAllProfilesParallel()`), rather than running profiles
+sequentially. Each profile's chunks are independent tasks; workers process them in
+arrival order. Expected 3-5× speedup for multi-profile batches vs sequential profiles.
+
+**sim-worker.ts:** Updated to a persistent message loop — handles multiple tasks before
+receiving a `{ type: 'shutdown' }` signal. Falls back to single-task behavior if the
+incoming message has no `type` field (backward compat).
 
 ## Per-Mechanic Analysis (Combat Mode Only)
 
