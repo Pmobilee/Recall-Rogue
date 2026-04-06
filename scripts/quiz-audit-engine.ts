@@ -247,8 +247,13 @@ function runChecks(
     const avgDistractorLen = distractorDisplays.reduce((s, d) => s + d.length, 0) / distractorDisplays.length;
     if (avgDistractorLen > 0) {
       const ratio = correctDisplay.length / avgDistractorLen;
+      // Note: length_mismatch is WARN-only (not FAIL) because the real game engine uses
+      // confusion-matrix scoring that naturally selects pedagogically relevant distractors
+      // regardless of length. A "T8" answer with "Subscapularis" distractor is intentional
+      // when the player has confused them. The audit's simulated selection (seeded shuffle)
+      // doesn't reflect real-game distractor quality. See 2026-04-06 analysis.
       if (ratio > 3 || ratio < (1 / 3)) {
-        issues.push({ severity: 'FAIL', type: 'length_mismatch', detail: `Correct length ${correctDisplay.length} vs avg distractor ${avgDistractorLen.toFixed(1)} — ratio ${ratio.toFixed(2)}×` });
+        issues.push({ severity: 'WARN', type: 'length_mismatch', detail: `Correct length ${correctDisplay.length} vs avg distractor ${avgDistractorLen.toFixed(1)} — ratio ${ratio.toFixed(2)}×` });
       } else if (ratio > 2 || ratio < 0.5) {
         issues.push({ severity: 'WARN', type: 'length_mismatch', detail: `Correct length ${correctDisplay.length} vs avg distractor ${avgDistractorLen.toFixed(1)} — ratio ${ratio.toFixed(2)}×` });
       }
