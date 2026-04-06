@@ -38,7 +38,7 @@
 |-----------|---------|
 | `ProfileScreen.svelte` | Player profile: stats, badges, knowledge tree, run history |
 | `AccountSettings.svelte` | Account settings: password, linked accounts, delete account |
-| `SettingsPanel.svelte` | In-game settings: audio, accessibility, notifications, account. **Accessibility tab** includes a Fullscreen toggle (hidden on mobile/Capacitor). Uses `fullscreenService.ts` — Tauri API on desktop, standard Fullscreen API on web. State syncs via `fullscreenchange` DOM event so external ESC-to-exit is reflected. F11 keyboard shortcut also triggers toggle globally (registered in `main.ts`). |
+| `SettingsPanel.svelte` | In-game settings: audio, accessibility, notifications, account. `.settings-overlay` background is fully opaque `rgb(5, 9, 16)` — prevents Phaser combat scene bleed-through (changed from `rgba(5, 9, 16, 0.88)` 2026-04-06). **Accessibility tab** includes a Fullscreen toggle (hidden on mobile/Capacitor). Uses `fullscreenService.ts` — Tauri API on desktop, standard Fullscreen API on web. State syncs via `fullscreenchange` DOM event so external ESC-to-exit is reflected. F11 keyboard shortcut also triggers toggle globally (registered in `main.ts`). |
 | `InterestAssessment.svelte` | Onboarding interest quiz to pre-select relevant domains |
 | `InterestSettings.svelte` | Settings panel for updating domain interest preferences |
 | `LanguageModePanel.svelte` | Language learning mode toggle and configuration |

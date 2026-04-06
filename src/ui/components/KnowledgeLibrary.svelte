@@ -19,17 +19,13 @@
     type LoreFragment,
   } from '../../services/loreService'
   import { playerSave } from '../stores/playerData'
-  import DeckBuilder from './DeckBuilder.svelte'
   import { isLandscape } from '../../stores/layoutStore'
 
   interface Props {
     onback: () => void
-    initialTab?: 'knowledge' | 'deckbuilder'
   }
 
-  let { onback, initialTab }: Props = $props()
-
-  let activeTab = $state<'knowledge' | 'deckbuilder'>(initialTab ?? 'knowledge')
+  let { onback }: Props = $props()
 
   let loading = $state(true)
   let allFacts = $state<Fact[]>([])
@@ -42,6 +38,7 @@
   let activeLore = $state<LoreFragment | null>(null)
   let latestLoreUnlocks = $state<LoreFragment[]>([])
   let syncAnchor = $state(-1)
+  let searchQuery = $state('')
 
   const reviewStates = $derived($playerSave?.reviewStates ?? [])
   const masteredCount = $derived(getMasteredFactCount(reviewStates))
@@ -58,6 +55,17 @@
     loading || !selectedDomain
       ? []
       : buildDomainEntries(selectedDomain, allFacts, reviewStates, tierFilter, sortBy, selectedSubcategory ?? undefined),
+  )
+
+  const filteredDomainEntries = $derived(
+    searchQuery.trim()
+      ? domainEntries.filter(e => {
+          const q = searchQuery.toLowerCase().trim()
+          return e.fact.statement.toLowerCase().includes(q)
+            || e.fact.correctAnswer.toLowerCase().includes(q)
+            || (e.fact.quizQuestion && e.fact.quizQuestion.toLowerCase().includes(q))
+        })
+      : domainEntries
   )
 
   function labelDomain(domain: FactDomain): string {
@@ -126,6 +134,7 @@
       } else if (selectedDomain) {
         selectedDomain = null
         selectedSubcategory = null
+        searchQuery = ''
       } else {
         onback()
       }
@@ -163,35 +172,20 @@
 
 <div class="library-overlay" class:landscape={$isLandscape} onkeydown={handleKeydown} role="presentation">
   <div class="library-topbar">
-    {#if activeTab === 'knowledge' && selectedEntry}
+    {#if selectedEntry}
       <button class="back-btn" onclick={() => (selectedEntry = null)}>Back</button>
-    {:else if activeTab === 'knowledge' && selectedDomain}
-      <button class="back-btn" onclick={() => { selectedDomain = null; selectedSubcategory = null; }}>Back</button>
+    {:else if selectedDomain}
+      <button class="back-btn" onclick={() => { selectedDomain = null; selectedSubcategory = null; searchQuery = ''; }}>Back</button>
     {:else}
       <button class="back-btn" onclick={onback}>Back</button>
     {/if}
     <h2>Library</h2>
-    {#if activeTab === 'knowledge' && !selectedDomain && !selectedEntry && !loading}
+    {#if !selectedDomain && !selectedEntry && !loading}
       <span class="mastery-inline">{masteredCount} mastered</span>
     {/if}
   </div>
 
-  <div class="library-tabs">
-    <button
-      class="tab-btn"
-      class:active={activeTab === 'knowledge'}
-      onclick={() => { activeTab = 'knowledge'; selectedDomain = null; selectedEntry = null; }}
-    >Knowledge</button>
-    <button
-      class="tab-btn"
-      class:active={activeTab === 'deckbuilder'}
-      onclick={() => { activeTab = 'deckbuilder'; selectedDomain = null; selectedEntry = null; }}
-    >Deck Builder</button>
-  </div>
-
-  {#if activeTab === 'deckbuilder'}
-    <DeckBuilder />
-  {:else if loading}
+  {#if loading}
     <div class="loading">Loading facts...</div>
   {:else if selectedEntry}
     <section class="detail-card">
@@ -225,25 +219,41 @@
     </section>
   {:else if selectedDomain}
     <section class="domain-section">
-      {#if domainSubcategories.length > 1}
-        <div class="subcategory-bar">
-          <button
-            class="sub-chip"
-            class:active={selectedSubcategory === null}
-            onclick={() => { selectedSubcategory = null }}
-          >All</button>
-          {#each domainSubcategories as sub (sub.id)}
+      <div class="domain-header">
+        <h3 class="domain-header-title">{getDomainMetadata(selectedDomain).displayName}</h3>
+        {#if domainSubcategories.length > 1}
+          <div class="subcategory-bar">
             <button
               class="sub-chip"
-              class:active={selectedSubcategory === sub.id}
-              onclick={() => { selectedSubcategory = sub.id }}
-            >{sub.name} <span class="sub-count">({sub.count})</span></button>
-          {/each}
-        </div>
-      {/if}
+              class:active={selectedSubcategory === null}
+              onclick={() => { selectedSubcategory = null }}
+            >All</button>
+            {#each domainSubcategories as sub (sub.id)}
+              <button
+                class="sub-chip"
+                class:active={selectedSubcategory === sub.id}
+                onclick={() => { selectedSubcategory = sub.id }}
+              >{sub.name} <span class="sub-count">({sub.count})</span></button>
+            {/each}
+          </div>
+        {/if}
+        <span class="domain-header-count">{filteredDomainEntries.length}{searchQuery.trim() ? ` of ${domainEntries.length}` : ''}</span>
+      </div>
 
-      <div class="filters">
-        <label>
+      <div class="domain-controls">
+        <div class="search-bar">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search facts..."
+            bind:value={searchQuery}
+          />
+          {#if searchQuery}
+            <button class="search-clear" onclick={() => { searchQuery = '' }}>✕</button>
+          {/if}
+        </div>
+
+        <label class="filter-label">
           Tier
           <select bind:value={tierFilter}>
             <option value="all">All</option>
@@ -255,7 +265,7 @@
           </select>
         </label>
 
-        <label>
+        <label class="filter-label">
           Sort
           <select bind:value={sortBy}>
             <option value="tier">Tier</option>
@@ -267,7 +277,7 @@
       </div>
 
       <div class="fact-list">
-        {#each domainEntries as entry (entry.fact.id)}
+        {#each filteredDomainEntries as entry (entry.fact.id)}
           <button class="fact-row" onclick={() => (selectedEntry = entry)}>
             <div class="fact-title">{entry.fact.statement}</div>
             <div class="fact-meta">{accuracyText(entry)}</div>
@@ -298,11 +308,16 @@
         </div>
       {/if}
 
+      <h3 class="domain-heading">Knowledge Domains</h3>
+
       <div class="domain-grid">
         {#each domainSummaries.filter(s => s.totalFacts > 0) as summary}
           <button class="domain-card" data-domain={summary.domain} style="--domain-accent: {domainAccentColor(summary.domain)}" onclick={() => { selectedDomain = summary.domain; selectedSubcategory = null; }}>
             <div class="domain-row">
-              <strong>{getDomainMetadata(summary.domain).shortName}</strong>
+              <div class="domain-row-left">
+                <span class="domain-icon">{getDomainMetadata(summary.domain).icon}</span>
+                <strong>{getDomainMetadata(summary.domain).shortName}</strong>
+              </div>
               <span>{summary.tier3Count}/{summary.totalFacts}</span>
             </div>
             <div class="progress-bg">
@@ -350,7 +365,7 @@
     justify-content: space-between;
     gap: calc(10px * var(--layout-scale, 1));
     padding: calc(8px * var(--layout-scale, 1)) 0;
-    background: linear-gradient(180deg, #081225, rgba(8, 18, 37, 0.9));
+    background: #081225;
     z-index: 2;
   }
 
@@ -392,14 +407,26 @@
   }
 
   .lore-grid,
-  .domain-grid,
   .fact-list {
     display: grid;
     gap: calc(10px * var(--layout-scale, 1));
   }
 
+  .domain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(240px * var(--layout-scale, 1)), 1fr));
+    gap: calc(10px * var(--layout-scale, 1));
+  }
+
+  .domain-heading {
+    margin: 0;
+    font-size: calc(15px * var(--text-scale, 1));
+    color: #94a3b8;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
   .lore-card,
-  .domain-card,
   .fact-row {
     border: 1px solid #334155;
     border-radius: 12px;
@@ -408,6 +435,25 @@
     text-align: left;
     min-height: calc(48px * var(--layout-scale, 1));
     padding: calc(12px * var(--layout-scale, 1));
+  }
+
+  .domain-card {
+    border: 1px solid #334155;
+    border-left: calc(3px * var(--layout-scale, 1)) solid var(--domain-accent, #94a3b8);
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.8);
+    color: #e2e8f0;
+    text-align: left;
+    min-height: calc(48px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1));
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .domain-card:hover {
+    border-color: var(--domain-accent, #94a3b8);
+    transform: translateY(calc(-2px * var(--layout-scale, 1)));
+    box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.3);
   }
 
   .lore-card span {
@@ -422,6 +468,16 @@
     justify-content: space-between;
     align-items: center;
     font-size: calc(13px * var(--text-scale, 1));
+  }
+
+  .domain-row-left {
+    display: flex;
+    align-items: center;
+    gap: calc(6px * var(--layout-scale, 1));
+  }
+
+  .domain-icon {
+    font-size: calc(20px * var(--text-scale, 1));
   }
 
   .progress-bg {
@@ -450,10 +506,27 @@
     line-height: 1.35;
   }
 
-  .filters {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  .domain-controls {
+    display: flex;
+    gap: calc(12px * var(--layout-scale, 1));
+    align-items: flex-end;
+  }
+
+  .domain-controls .search-bar {
+    flex: 1;
+  }
+
+  .filter-row {
+    display: flex;
     gap: calc(10px * var(--layout-scale, 1));
+    flex-shrink: 0;
+  }
+
+  .filter-label {
+    display: grid;
+    gap: calc(4px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #cbd5e1;
   }
 
   label {
@@ -538,33 +611,29 @@
     font-size: calc(13px * var(--text-scale, 1));
   }
 
-  .library-tabs {
+  /* ── Domain Header ── */
+
+  .domain-header {
     display: flex;
-    gap: 0;
-    width: 100%;
-    max-width: calc(520px * var(--layout-scale, 1));
-    margin: 0 auto calc(16px * var(--layout-scale, 1));
-    border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    align-items: center;
+    gap: calc(10px * var(--layout-scale, 1));
+    padding-bottom: calc(8px * var(--layout-scale, 1));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .tab-btn {
+  .domain-header-title {
+    margin: 0;
+    font-size: calc(18px * var(--text-scale, 1));
+    color: #f1f5f9;
     flex: 1;
-    padding: calc(10px * var(--layout-scale, 1));
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    color: #8b949e;
-    font-size: calc(14px * var(--text-scale, 1));
-    font-weight: 600;
-    cursor: pointer;
-    min-height: calc(44px * var(--layout-scale, 1));
-    white-space: nowrap;
   }
 
-  .tab-btn.active {
-    color: #e6edf3;
-    border-bottom-color: #16a34a;
+  .domain-header-count {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #64748b;
   }
+
+  /* ── Subcategory Chips ── */
 
   .subcategory-bar {
     display: flex;
@@ -575,27 +644,86 @@
   }
 
   .sub-chip {
-    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
-    border-radius: 14px;
-    border: 1px solid rgba(148, 163, 184, 0.3);
-    background: rgba(30, 41, 59, 0.6);
-    color: #94a3b8;
-    font-size: calc(11px * var(--text-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    border-radius: calc(8px * var(--layout-scale, 1));
+    border: 1px solid #475569;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-size: calc(13px * var(--text-scale, 1));
     cursor: pointer;
     white-space: nowrap;
     -webkit-tap-highlight-color: transparent;
     font-family: inherit;
+    transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+    min-height: calc(36px * var(--layout-scale, 1));
+    display: inline-flex;
+    align-items: center;
+    gap: calc(4px * var(--layout-scale, 1));
+  }
+
+  .sub-chip:hover:not(.active) {
+    border-color: #64748b;
+    color: #f1f5f9;
+    background: #334155;
   }
 
   .sub-chip.active {
-    background: rgba(59, 130, 246, 0.3);
+    background: #2563eb;
     border-color: #3b82f6;
-    color: #e2e8f0;
+    color: #ffffff;
+    font-weight: 600;
   }
 
   .sub-count {
-    opacity: 0.6;
-    font-size: calc(10px * var(--text-scale, 1));
+    opacity: 0.7;
+    font-size: calc(11px * var(--text-scale, 1));
+  }
+
+  /* ── Search Bar ── */
+
+  .search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-input {
+    width: 100%;
+    min-height: calc(40px * var(--layout-scale, 1));
+    border-radius: calc(8px * var(--layout-scale, 1));
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    background: rgba(15, 23, 42, 0.8);
+    color: #e2e8f0;
+    padding: 0 calc(36px * var(--layout-scale, 1)) 0 calc(12px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s;
+    box-sizing: border-box;
+  }
+
+  .search-input:focus {
+    border-color: #3b82f6;
+  }
+
+  .search-input::placeholder {
+    color: #475569;
+  }
+
+  .search-clear {
+    position: absolute;
+    right: calc(8px * var(--layout-scale, 1));
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    font-size: calc(14px * var(--text-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1));
+    line-height: 1;
+  }
+
+  .search-clear:hover {
+    color: #e2e8f0;
   }
 
   /* Hidden in portrait, shown in landscape via :global override */
@@ -607,7 +735,7 @@
 
   .library-overlay.landscape {
     display: grid;
-    grid-template-rows: auto auto 1fr;
+    grid-template-rows: auto 1fr;
     overflow-x: hidden;
     overflow-y: auto;
     padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
@@ -638,13 +766,6 @@
   .library-overlay.landscape .detail-card {
     overflow-y: auto;
     max-height: calc(100vh - calc(140px * var(--layout-scale, 1)));
-  }
-
-  /* Filters inline in landscape */
-  .library-overlay.landscape .filters {
-    grid-template-columns: repeat(4, auto);
-    justify-content: start;
-    align-items: center;
   }
 
   /* Wider subcategory bar in landscape */
@@ -678,11 +799,6 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  /* Tabs max-width removed in landscape */
-  .library-overlay.landscape .library-tabs {
-    max-width: none;
-  }
-
   /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
 
   :global([data-layout="landscape"]) .library-overlay {
@@ -711,42 +827,27 @@
     margin-left: calc(4px * var(--layout-scale, 1));
   }
 
-  /* Eliminate gap between tabs and content — tighten tabs bottom margin */
-  :global([data-layout="landscape"]) .library-overlay .library-tabs {
-    max-width: none;
-    margin-bottom: 0;
-    flex: none;
-    justify-content: center;
-  }
-
-  /* Content section starts immediately after tabs with only ~24px gap */
+  /* Content section starts immediately after topbar with only ~24px gap */
   :global([data-layout="landscape"]) .library-overlay .summary-section,
   :global([data-layout="landscape"]) .library-overlay .domain-section,
   :global([data-layout="landscape"]) .library-overlay .detail-card {
     margin-top: calc(24px * var(--layout-scale, 1));
   }
 
-  /* Tab labels: 16px Cinzel */
-  :global([data-layout="landscape"]) .library-overlay .tab-btn {
-    font-size: calc(16px * var(--text-scale, 1));
-    font-family: 'Cinzel', serif;
-    letter-spacing: 0.03em;
-    flex: none;
-    padding: calc(10px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
-  }
-
   /* Domain card: left accent border via CSS variable */
   :global([data-layout="landscape"]) .library-overlay .domain-card {
-    border-left: 4px solid var(--domain-accent, #94a3b8);
+    border-left: calc(4px * var(--layout-scale, 1)) solid var(--domain-accent, #94a3b8);
     border-top: 1px solid #334155;
     border-right: 1px solid #334155;
     border-bottom: 1px solid #334155;
-    transition: border-color 0.15s ease, filter 0.15s ease;
+    transition: border-color 0.15s ease, filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   }
 
   :global([data-layout="landscape"]) .library-overlay .domain-card:hover {
     border-left-color: #f59e0b;
     filter: brightness(1.1);
+    transform: translateY(calc(-2px * var(--layout-scale, 1)));
+    box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.3);
   }
 
   /* Domain name: 16px */
@@ -781,4 +882,19 @@
   :global([data-layout="landscape"]) .library-overlay label {
     font-size: calc(13px * var(--text-scale, 1));
   }
+
+  /* Domain header landscape: slightly larger title */
+  :global([data-layout="landscape"]) .library-overlay .domain-header-title {
+    font-size: calc(20px * var(--text-scale, 1));
+  }
+
+  :global([data-layout="landscape"]) .library-overlay .domain-header-count {
+    font-size: calc(13px * var(--text-scale, 1));
+  }
+
+  /* Search bar landscape: slightly larger */
+  :global([data-layout="landscape"]) .library-overlay .search-input {
+    font-size: calc(14px * var(--text-scale, 1));
+  }
+
 </style>

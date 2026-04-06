@@ -31,6 +31,8 @@
   } from '../../services/notificationService'
   import { isLandscape } from '../../stores/layoutStore'
   import { answerDisplaySpeed, autoResumeAfterAnswer } from '../stores/settings'
+  import { toggleFullscreen, isFullscreen } from '../../services/fullscreenService'
+  import { isMobile } from '../../services/platformService'
 
   interface Props {
     onback: () => void
@@ -134,6 +136,29 @@
       onback()
     }
   }
+
+  // ── Fullscreen toggle (desktop + web only; not shown on mobile) ──
+  /** Current fullscreen state — updated on toggle and on fullscreenchange events. */
+  let fullscreenActive = $state(false)
+
+  $effect(() => {
+    // Sync initial state
+    isFullscreen().then((v) => { fullscreenActive = v })
+
+    // Keep in sync with OS-level fullscreen changes (e.g. user presses Escape to exit)
+    const onFsChange = (): void => {
+      isFullscreen().then((v) => { fullscreenActive = v })
+    }
+    document.addEventListener('fullscreenchange', onFsChange)
+    return () => document.removeEventListener('fullscreenchange', onFsChange)
+  })
+
+  async function handleFullscreenToggle(): Promise<void> {
+    const newState = await toggleFullscreen()
+    fullscreenActive = newState
+    playCardAudio(newState ? 'toggle-on' : 'toggle-off')
+    trackSettingChange('fullscreen', newState)
+  }
 </script>
 
 {#if $isLandscape}
@@ -229,6 +254,18 @@
             />
             <strong>{uiScale}%</strong>
           </label>
+          {#if !isMobile}
+            <label class="toggle-row">
+              <span>Fullscreen <span class="hint-text">(F11)</span></span>
+              <!-- svelte-ignore a11y_click_events_have_key_events -->
+              <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+              <input
+                type="checkbox"
+                checked={fullscreenActive}
+                onclick={() => void handleFullscreenToggle()}
+              />
+            </label>
+          {/if}
           <label class="toggle-row">
             <span>High Contrast</span>
             <input
@@ -404,6 +441,19 @@
         <strong>{uiScale}%</strong>
       </label>
 
+      {#if !isMobile}
+        <label class="toggle-row">
+          <span>Fullscreen <span class="hint-text">(F11)</span></span>
+          <!-- svelte-ignore a11y_click_events_have_key_events -->
+          <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+          <input
+            type="checkbox"
+            checked={fullscreenActive}
+            onclick={() => void handleFullscreenToggle()}
+          />
+        </label>
+      {/if}
+
       <label class="toggle-row">
         <span>High Contrast</span>
         <input
@@ -576,7 +626,7 @@
   .settings-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(5, 9, 16, 0.88);
+    background: rgb(5, 9, 16);
     display: grid;
     align-items: center;
     justify-items: stretch;
@@ -698,6 +748,13 @@
     min-width: calc(52px * var(--layout-scale, 1));
     text-align: right;
     color: #f8fafc;
+  }
+
+  /** Keyboard shortcut hint shown after the Fullscreen label. */
+  .hint-text {
+    color: #64748b;
+    font-size: calc(10px * var(--text-scale, 1));
+    margin-left: calc(4px * var(--layout-scale, 1));
   }
 
   /* ── Landscape Styles ── */

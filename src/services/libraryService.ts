@@ -101,8 +101,8 @@ export function buildDomainSummaries(facts: Fact[], reviewStates: ReviewState[])
       tier2bCount: stats.tier2bCount,
       tier3Count: stats.tier3Count,
       completionPercent: Math.round((stats.tier3Count / Math.max(1, stats.totalFacts)) * 100),
-      masteryPercent: stats.encounteredFacts > 0
-        ? Math.round(((stats.tier2aCount + stats.tier2bCount + stats.tier3Count) / stats.encounteredFacts) * 100)
+      masteryPercent: stats.totalFacts > 0
+        ? Math.round(((stats.tier2aCount + stats.tier2bCount + stats.tier3Count) / stats.totalFacts) * 100)
         : 0,
     })
   }
