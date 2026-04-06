@@ -196,6 +196,13 @@ Do NOT use it to avoid fixing a misclassified fact, a bare number that should us
 - Question type keywords must match answer format: who→name, when→date, how many→number
 - No duplicate or near-duplicate Q/A pairs within the same deck
 
+### Image-Quiz Pool Separation
+Facts with `quizMode: "image_question"` or `"image_answers"` must be in dedicated `visual_*` pools.
+Image-caption answers ("Heart (cross-section)") contaminate text-based distractor selection when
+mixed in the same pool as text-quiz facts. human_anatomy required 11 visual pool splits to fix this
+(2026-04-06).
+
+
 ---
 
 ## Verification & Quality Gates

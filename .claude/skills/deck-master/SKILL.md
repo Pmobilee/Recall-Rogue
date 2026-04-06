@@ -176,6 +176,7 @@ Also create tasks for:
 | Self-answering questions | Q: "The Wujing Zongyao contained what?" A: "Wujing Zongyao" | Answer must not be stated in the question stem. Rewrite the question. |
 | Duplicate facts | Two Titan methane-lake questions in same pool | Check for near-duplicate Q/A pairs before committing. |
 | Question-answer type mismatch | Q asks "which city?" but all answers are dates | Ensure question keywords ("who", "when", "where", "how many") match the answer format. |
+| Image facts in text pools | human_anatomy had 794 image-quiz facts (quizMode: image_question/image_answers) in text-quiz pools — caption answers ("Skeleton (frontal view)") leaked as text distractors (2026-04-06) | ALWAYS create separate `visual_*` pools for `quizMode: "image_question"` and `"image_answers"` facts. Never mix with text-quiz facts. |
 
 ### Lessons Learned: Grammar / Fill-Blank Deck Builds (2026-03-28)
 
@@ -1947,6 +1948,13 @@ Every pool must contain facts of **one semantic answer type**:
 - No non-bracket-numbers pool under 5 real facts
 - After splitting, pad to 15+ total (real facts + `syntheticDistractors`)
 - If splitting would create a pool under 5 real facts, do NOT split — merge into a larger parent pool
+
+#### Image-Quiz Fact Separation
+Facts with `quizMode: "image_question"` or `"image_answers"` MUST be in their
+own dedicated pools (prefix with `visual_`). Never mix image-quiz and text-quiz
+facts in the same pool — image-caption answers ("Skeleton (frontal view)") will
+leak as text distractors, creating obvious format tells.
+
 
 **Common mistakes to avoid:**
 

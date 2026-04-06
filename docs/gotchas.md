@@ -1,3 +1,17 @@
+### 2026-04-06 — Image-Caption Facts Contaminating Text Distractor Pools
+
+**What:** human_anatomy deck had 794 image-quiz facts (`quizMode: image_question/image_answers`) in the same pools as text-quiz facts. Image-caption answers like "Skeleton (frontal view)" appeared as text distractors, creating obvious format tells.
+
+**Fix:** Created 11 dedicated `visual_*` pools for image-based facts. All text pools now contain only text-based quiz facts.
+
+**Prevention:** ALWAYS create separate `visual_*` pools for image-quiz facts. Never mix `quizMode: "image_question"` with `quizMode: "text"` in the same pool.
+
+### 2026-04-06 — length_mismatch Downgraded from FAIL to WARN
+
+**What:** 782 length_mismatch FAILs from inherent academic domain variation — "T8" (3 chars) alongside "Posterior triangle of the neck" (30 chars). NOT fixable by pool splitting.
+
+**Why WARN not FAIL:** The real in-game engine uses confusion-matrix scoring (+10.0 per confusion) that selects pedagogically relevant distractors regardless of length. The audit's seeded shuffle doesn't reflect actual game quality. Adding length scoring to the engine would suppress pedagogically valuable confusions.
+
 ### 2026-04-05 — quiz-audit.mjs Uses Simpler Distractor Selection Than Runtime
 
 `scripts/quiz-audit.mjs` selects distractors differently from the runtime `selectDistractors` service:

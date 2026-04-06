@@ -105,6 +105,7 @@ Every fact-generation worker MUST receive verified source data IN ITS PROMPT.
 - Answer must not appear verbatim in question stem (self-answering)
 - Question type keywords must match answer format (who→name, when→date, how many→number)
 - No duplicate or near-duplicate facts within the same pool
+- Image-quiz facts (`quizMode: "image_question"/"image_answers"`) MUST be in separate `visual_*` pools — never mixed with text facts
 
 ## Answer Pool Homogeneity — CRITICAL
 
