@@ -1,0 +1,1530 @@
+deck_id: pharmacology
+name: "Nursing Pharmacology"
+domain: human_body_health
+sub_domain: pharmacology
+description: "Master 101 essential medications — drug classes, mechanisms of action, side effects, and nursing considerations. NCLEX-aligned."
+target_facts: 450
+minimum_facts: 350
+
+# SCOPE SOURCE: NCLEX-RN 2026 Test Plan (NCSBN) + Lehne's Pharmacology for Nursing Care 12th Ed
+# Drug list: Nurseslabs "101 Must-Know NCLEX Medications" cross-referenced with Lehne's chapter structure
+# Pharmacology = 13-19% of NCLEX-RN exam (Pharmacological & Parenteral Therapies category)
+
+data_sources:
+  - name: NCLEX-RN 2026 Test Plan
+    url: https://www.ncsbn.org/publications/2026-nclex-rn-test-plan
+    license: public document
+    usage: Exam scope — defines testable pharmacology content categories
+  - name: Lehne's Pharmacology for Nursing Care, 12th Edition
+    url: https://www.educate.elsevier.com/book/details/9780443107108
+    license: textbook reference (structure only, not content)
+    usage: Chapter organization — maps drug classifications to nursing curriculum
+  - name: Nurseslabs 101 Must-Know NCLEX Medications
+    url: https://nurseslabs.com/must-know-nclex-medications-cheat-sheet/
+    license: CC-BY-SA (educational reference)
+    usage: High-yield drug list with classifications and nursing pearls
+  - name: DailyMed (NIH/NLM)
+    url: https://dailymed.nlm.nih.gov/dailymed/
+    license: public domain (US government)
+    usage: FDA-approved drug labels — authoritative mechanism, indication, side effect data
+  - name: Wikidata
+    url: https://www.wikidata.org/
+    license: CC0
+    usage: Structured drug data — Wikidata IDs, ATC codes, drug classes
+  - name: Wikipedia
+    url: https://en.wikipedia.org/
+    license: CC-BY-SA-4.0
+    usage: Drug mechanism descriptions, history, clinical context
+
+asset_sources: []
+
+# ============================================================
+# ANSWER TYPE POOLS
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: Generic Drug Names — "Which drug is a loop diuretic?"
+  # 101 members — excellent pool size for distractor variety
+  - id: drug_names
+    format: name
+    estimated_count: 101
+    note: >
+      Generic drug names only (no brand names — those go in acceptableAlternatives).
+      All 101 NCLEX must-know medications. Excellent pool — players will confuse
+      drugs within the same class (metoprolol vs atenolol, lisinopril vs losartan).
+
+  # POOL 2: Drug Class Names — "What class does metoprolol belong to?"
+  # ~35 distinct classes
+  - id: drug_classes
+    format: term
+    estimated_count: 35
+    note: >
+      "Beta-blocker", "ACE inhibitor", "SSRI", "Loop diuretic", "Aminoglycoside", etc.
+      Key confusions: ACE inhibitor vs ARB, SSRI vs SNRI vs TCA,
+      first-gen vs second-gen antipsychotic, thiazide vs loop diuretic.
+
+  # POOL 3: Mechanisms of Action — "How does lisinopril work?"
+  # ~30 distinct mechanisms
+  - id: mechanisms
+    format: term
+    estimated_count: 30
+    note: >
+      "Blocks angiotensin-converting enzyme", "Inhibits serotonin reuptake",
+      "Blocks beta-1 receptors", "Inhibits HMG-CoA reductase", etc.
+      Semantically rich pool — mechanisms within a class are similar enough to confuse.
+
+  # POOL 4: Clinical Indications — "What condition is warfarin used to treat?"
+  # ~50 distinct indications
+  - id: indications
+    format: term
+    estimated_count: 50
+    note: >
+      "Hypertension", "Type 2 diabetes", "Atrial fibrillation", "Deep vein thrombosis",
+      "Major depressive disorder", "Seizures", "GERD", etc.
+      Multiple drugs treat the same condition — good confusion source.
+
+  # POOL 5: Side Effects — "What is a common side effect of ACE inhibitors?"
+  # ~40 distinct side effects
+  - id: side_effects
+    format: term
+    estimated_count: 40
+    note: >
+      "Dry cough", "Hyperkalemia", "Ototoxicity", "Hepatotoxicity",
+      "QT prolongation", "Agranulocytosis", "Stevens-Johnson syndrome", etc.
+      Players confuse which drug causes which side effect constantly.
+
+  # POOL 6: Nursing Interventions — "What should the nurse monitor for a patient on warfarin?"
+  # ~35 distinct interventions
+  - id: nursing_interventions
+    format: term
+    estimated_count: 35
+    note: >
+      "Monitor INR", "Check potassium levels", "Hold if HR < 60",
+      "Assess for bleeding", "Monitor blood glucose", "Check peak/trough levels", etc.
+
+  # POOL 7: Antidotes/Reversal Agents — "What is the antidote for heparin?"
+  # ~15 members — small but critical pool, use syntheticDistractors
+  - id: antidotes
+    format: name
+    estimated_count: 15
+    note: >
+      "Protamine sulfate" (heparin), "Vitamin K / phytonadione" (warfarin),
+      "Naloxone" (opioids), "Flumazenil" (benzodiazepines), "Digoxin immune Fab" (digoxin),
+      "Acetylcysteine" (acetaminophen), "Glucagon" (beta-blockers), etc.
+      Small but high-yield — every nursing student must know these cold.
+    syntheticDistractors:
+      - "Calcium gluconate"
+      - "Sodium bicarbonate"
+      - "Activated charcoal"
+      - "Deferoxamine"
+      - "Succimer"
+      - "Pralidoxime"
+      - "Ipecac syrup"
+
+  # POOL 8: Drug Interactions — "Which food should be avoided with warfarin?"
+  # ~20 members
+  - id: interactions
+    format: term
+    estimated_count: 20
+    note: >
+      "Vitamin K-rich foods", "Grapefruit juice", "Tyramine-containing foods",
+      "Alcohol", "NSAIDs", "Antacids", etc.
+      Cross-references between drug pools — tests applied knowledge.
+
+# ============================================================
+# QUESTION TEMPLATES — Mastery-driven difficulty curve
+# ============================================================
+
+question_templates:
+  - id: class_from_drug
+    answerPoolId: drug_classes
+    questionFormat: "What drug class does {drug} belong to?"
+    availableFromMastery: 0
+    difficulty: 1
+
+  - id: drug_from_class
+    answerPoolId: drug_names
+    questionFormat: "Which drug is a {drug_class}?"
+    availableFromMastery: 1
+    difficulty: 2
+
+  - id: mechanism_from_drug
+    answerPoolId: mechanisms
+    questionFormat: "What is the mechanism of action of {drug}?"
+    availableFromMastery: 1
+    difficulty: 2
+
+  - id: indication_from_drug
+    answerPoolId: indications
+    questionFormat: "What is the primary indication for {drug}?"
+    availableFromMastery: 0
+    difficulty: 1
+
+  - id: drug_from_indication
+    answerPoolId: drug_names
+    questionFormat: "Which drug is used to treat {condition}?"
+    availableFromMastery: 2
+    difficulty: 3
+
+  - id: side_effect_from_drug
+    answerPoolId: side_effects
+    questionFormat: "What is a common adverse effect of {drug}?"
+    availableFromMastery: 2
+    difficulty: 3
+
+  - id: nursing_from_drug
+    answerPoolId: nursing_interventions
+    questionFormat: "What should the nurse monitor for a patient on {drug}?"
+    availableFromMastery: 3
+    difficulty: 4
+
+  - id: antidote_from_drug
+    answerPoolId: antidotes
+    questionFormat: "What is the antidote for {drug} toxicity?"
+    availableFromMastery: 2
+    difficulty: 3
+
+  - id: interaction_from_drug
+    answerPoolId: interactions
+    questionFormat: "Which substance should be avoided when taking {drug}?"
+    availableFromMastery: 3
+    difficulty: 4
+
+  - id: drug_from_side_effect
+    answerPoolId: drug_names
+    questionFormat: "Which drug is associated with {side_effect}?"
+    availableFromMastery: 4
+    difficulty: 5
+
+# ============================================================
+# COMMON CONFUSIONS — Seeded into confusion matrix
+# ============================================================
+
+common_confusions:
+  # Within-class confusions (same mechanism, different drugs)
+  - ["lisinopril", "losartan"]           # ACE inhibitor vs ARB — both block RAAS
+  - ["metoprolol", "amlodipine"]         # Beta-blocker vs CCB — both lower BP
+  - ["furosemide", "hydrochlorothiazide"] # Loop vs thiazide diuretic
+  - ["warfarin", "heparin"]              # Both anticoagulants, different mechanisms
+  - ["fluoxetine", "amitriptyline"]      # SSRI vs TCA — both antidepressants
+  - ["haloperidol", "clozapine"]         # First-gen vs second-gen antipsychotic
+  - ["phenytoin", "carbamazepine"]       # Both anticonvulsants
+  - ["morphine", "fentanyl"]             # Both opioids, different potency
+  - ["insulin_lispro", "insulin_glargine"] # Rapid vs long-acting insulin
+  - ["metformin", "glipizide"]           # Biguanide vs sulfonylurea
+  - ["amoxicillin", "azithromycin"]      # Penicillin vs macrolide
+  - ["omeprazole", "famotidine"]         # PPI vs H2 blocker
+  - ["albuterol", "ipratropium"]         # Beta-2 agonist vs anticholinergic bronchodilator
+  - ["prednisone", "fluticasone"]        # Systemic vs inhaled corticosteroid
+  # Cross-class confusions (similar names or indications)
+  - ["metoprolol", "metformin"]          # Similar names, completely different drugs
+  - ["clopidogrel", "ceftriaxone"]       # Similar starting sounds
+  - ["lorazepam", "losartan"]            # Similar names
+
+# ============================================================
+# SYNONYM GROUPS — Never distract each other
+# ============================================================
+
+synonym_groups:
+  - id: ace_inhibitors
+    members: ["lisinopril", "enalapril", "captopril"]
+    reason: "All ACE inhibitors with -pril suffix — interchangeable as distractors would be confusing"
+  - id: insulin_types
+    members: ["insulin_lispro", "insulin_regular", "insulin_nph", "insulin_glargine"]
+    reason: "All insulin preparations — quiz tests which TYPE, not whether it's insulin"
+
+# ============================================================
+# SUB-DECKS — Organized by body system / drug category
+# ============================================================
+
+sub_decks:
+  - id: cardiovascular
+    name: "Cardiovascular Drugs"
+    description: "Antihypertensives, antiarrhythmics, anticoagulants, antiplatelets, and cardiac emergency drugs"
+    estimated_facts: 130
+    drugs:
+      - lisinopril
+      - losartan
+      - metoprolol
+      - amlodipine
+      - diltiazem
+      - clonidine
+      - nitroprusside
+      - digoxin
+      - amiodarone
+      - adenosine
+      - atropine
+      - epinephrine
+      - norepinephrine
+      - dopamine
+      - nitroglycerin
+      - atorvastatin
+      - furosemide
+      - spironolactone
+      - hydrochlorothiazide
+      - mannitol
+      - epoetin_alfa
+      - ferrous_sulfate
+      - warfarin
+      - heparin
+      - enoxaparin
+      - rivaroxaban
+      - clopidogrel
+      - aspirin
+      - alteplase
+
+  - id: anti_infectives
+    name: "Anti-Infective Drugs"
+    description: "Antibiotics, antifungals, antivirals, and antitubercular agents"
+    estimated_facts: 55
+    drugs:
+      - amoxicillin
+      - ceftriaxone
+      - vancomycin
+      - doxycycline
+      - azithromycin
+      - gentamicin
+      - trimethoprim_sulfamethoxazole
+      - ciprofloxacin
+      - metronidazole
+      - isoniazid
+      - rifampin
+      - fluconazole
+      - acyclovir
+
+  - id: cns_psychiatric
+    name: "CNS & Psychiatric Drugs"
+    description: "Antidepressants, antipsychotics, anxiolytics, anticonvulsants, and neurologic drugs"
+    estimated_facts: 100
+    drugs:
+      - fluoxetine
+      - amitriptyline
+      - phenelzine
+      - bupropion
+      - lithium
+      - haloperidol
+      - clozapine
+      - lorazepam
+      - buspirone
+      - zolpidem
+      - phenytoin
+      - carbamazepine
+      - valproic_acid
+      - levetiracetam
+      - carbidopa_levodopa
+      - benztropine
+      - donepezil
+      - morphine
+      - hydromorphone
+      - oxycodone
+      - fentanyl
+      - naloxone
+      - succinylcholine
+      - dantrolene
+
+  - id: endocrine_metabolic
+    name: "Endocrine & Metabolic Drugs"
+    description: "Insulin, oral antidiabetics, thyroid drugs, corticosteroids, and bone health"
+    estimated_facts: 65
+    drugs:
+      - insulin_lispro
+      - insulin_regular
+      - insulin_nph
+      - insulin_glargine
+      - metformin
+      - glipizide
+      - glucagon
+      - levothyroxine
+      - propylthiouracil
+      - desmopressin
+      - prednisone
+      - fludrocortisone
+      - alendronate
+      - allopurinol
+
+  - id: gi_respiratory
+    name: "GI & Respiratory Drugs"
+    description: "Acid reducers, antiemetics, bronchodilators, and inhaled corticosteroids"
+    estimated_facts: 60
+    drugs:
+      - omeprazole
+      - famotidine
+      - docusate
+      - lactulose
+      - loperamide
+      - ondansetron
+      - metoclopramide
+      - pancrelipase
+      - sulfasalazine
+      - albuterol
+      - ipratropium
+      - fluticasone
+      - montelukast
+      - diphenhydramine
+      - theophylline
+
+  - id: ob_womens_health
+    name: "OB & Women's Health Drugs"
+    description: "Labor and delivery drugs, contraceptives, and reproductive health"
+    estimated_facts: 30
+    drugs:
+      - oxytocin
+      - magnesium_sulfate
+      - terbutaline
+      - rho_d_immune_globulin
+      - tamoxifen
+      - oral_contraceptive
+
+# ============================================================
+# DIFFICULTY TIERS
+# ============================================================
+
+difficulty_tiers:
+  easy:
+    - "Drug class identification (what class is metoprolol?)"
+    - "Primary indication (what does metformin treat?)"
+    - "Common, well-known drugs (aspirin, insulin, amoxicillin)"
+  medium:
+    - "Mechanism of action"
+    - "Major side effects"
+    - "Antidote identification"
+    - "Less common but important drugs"
+  hard:
+    - "Nursing monitoring (what labs to check)"
+    - "Drug interactions"
+    - "Drug-from-side-effect (which drug causes THIS?)"
+    - "Distinguishing between similar drugs"
+
+# ============================================================
+# SOURCE DATA — Populated by research workers
+# ============================================================
+# Each drug entry below will be verified against Wikidata + DailyMed
+# by Sonnet research workers before fact generation begins.
+# Fields: generic_name, brand_name, wikidata_id, drug_class, mechanism,
+#         primary_indication, key_side_effects, nursing_considerations,
+#         antidote (if applicable), interactions, difficulty
+
+source_data:
+  # === CARDIOVASCULAR ===
+  cardiovascular:
+    lisinopril:
+      brand: "Prinivil, Zestril"
+      class: "ACE inhibitor"
+      mechanism: "Blocks angiotensin-converting enzyme, preventing angiotensin I → II conversion"
+      indication: "Hypertension, heart failure"
+      side_effects: ["Dry cough", "Hyperkalemia", "Angioedema"]
+      nursing: "Monitor potassium, renal function, BP; hold if angioedema"
+      antidote: null
+      interactions: ["NSAIDs", "Potassium supplements", "Potassium-sparing diuretics"]
+      difficulty: easy
+
+    losartan:
+      brand: "Cozaar"
+      class: "Angiotensin II receptor blocker (ARB)"
+      mechanism: "Blocks angiotensin II at AT1 receptors"
+      indication: "Hypertension, diabetic nephropathy"
+      side_effects: ["Hyperkalemia", "Hypotension", "Dizziness"]
+      nursing: "Monitor potassium, renal function, BP; no dry cough (unlike ACE inhibitors)"
+      antidote: null
+      interactions: ["NSAIDs", "Potassium supplements"]
+      difficulty: easy
+
+    metoprolol:
+      brand: "Lopressor, Toprol-XL"
+      class: "Beta-1 selective blocker"
+      mechanism: "Selectively blocks beta-1 adrenergic receptors in the heart"
+      indication: "Hypertension, angina, heart failure, post-MI"
+      side_effects: ["Bradycardia", "Hypotension", "Fatigue", "Bronchospasm"]
+      nursing: "Hold if HR < 60 or BP < 90/60; do not stop abruptly"
+      antidote: "Glucagon"
+      interactions: ["Calcium channel blockers", "Digoxin"]
+      difficulty: easy
+
+    amlodipine:
+      brand: "Norvasc"
+      class: "Calcium channel blocker (dihydropyridine)"
+      mechanism: "Blocks L-type calcium channels in vascular smooth muscle"
+      indication: "Hypertension, angina"
+      side_effects: ["Peripheral edema", "Dizziness", "Flushing", "Headache"]
+      nursing: "Monitor BP, heart rate; assess for peripheral edema"
+      antidote: null
+      interactions: ["Grapefruit juice"]
+      difficulty: easy
+
+    diltiazem:
+      brand: "Cardizem"
+      class: "Calcium channel blocker (non-dihydropyridine)"
+      mechanism: "Blocks calcium channels in heart and vascular smooth muscle"
+      indication: "Hypertension, angina, atrial fibrillation/flutter"
+      side_effects: ["Bradycardia", "Hypotension", "Constipation", "Peripheral edema"]
+      nursing: "Monitor HR and BP; avoid with beta-blockers (risk of severe bradycardia)"
+      antidote: null
+      interactions: ["Beta-blockers", "Digoxin", "Simvastatin"]
+      difficulty: medium
+
+    clonidine:
+      brand: "Catapres"
+      class: "Alpha-2 adrenergic agonist"
+      mechanism: "Stimulates alpha-2 receptors in brainstem, reducing sympathetic outflow"
+      indication: "Hypertension, ADHD, opioid withdrawal"
+      side_effects: ["Drowsiness", "Dry mouth", "Rebound hypertension if stopped abruptly"]
+      nursing: "Taper gradually; do not stop abruptly; monitor for rebound hypertension"
+      antidote: null
+      interactions: ["Beta-blockers", "CNS depressants"]
+      difficulty: medium
+
+    nitroprusside:
+      brand: "Nipride"
+      class: "Direct vasodilator"
+      mechanism: "Releases nitric oxide, relaxing both arteriolar and venous smooth muscle"
+      indication: "Hypertensive emergency"
+      side_effects: ["Cyanide toxicity", "Hypotension", "Thiocyanate accumulation"]
+      nursing: "Protect from light (wrap IV bag); monitor thiocyanate levels; use for <72 hours"
+      antidote: "Sodium thiosulfate (for cyanide toxicity)"
+      interactions: []
+      difficulty: hard
+
+    digoxin:
+      brand: "Lanoxin"
+      class: "Cardiac glycoside"
+      mechanism: "Inhibits Na+/K+ ATPase pump, increasing intracellular calcium"
+      indication: "Heart failure, atrial fibrillation"
+      side_effects: ["Bradycardia", "Visual disturbances (yellow/green halos)", "Nausea", "Dysrhythmias"]
+      nursing: "Hold if HR < 60; monitor digoxin levels (0.8-2.0 ng/mL); watch for hypokalemia (increases toxicity)"
+      antidote: "Digoxin immune Fab (Digibind)"
+      interactions: ["Amiodarone", "Diuretics (hypokalemia)", "Verapamil"]
+      difficulty: medium
+
+    amiodarone:
+      brand: "Cordarone, Pacerone"
+      class: "Class III antiarrhythmic"
+      mechanism: "Blocks potassium channels, prolonging action potential and refractory period"
+      indication: "Ventricular and supraventricular arrhythmias"
+      side_effects: ["Pulmonary toxicity", "Thyroid dysfunction", "Hepatotoxicity", "QT prolongation", "Corneal microdeposits"]
+      nursing: "Monitor thyroid, liver, lung function; photosensitivity; very long half-life (40-55 days)"
+      antidote: null
+      interactions: ["Warfarin", "Digoxin", "Statins"]
+      difficulty: hard
+
+    adenosine:
+      brand: "Adenocard"
+      class: "AV node blocker"
+      mechanism: "Slows conduction through AV node by activating adenosine receptors"
+      indication: "Supraventricular tachycardia (SVT)"
+      side_effects: ["Transient asystole", "Flushing", "Chest pressure", "Dyspnea"]
+      nursing: "Give rapid IV push followed by NS flush; warn patient about brief chest discomfort; half-life <10 seconds"
+      antidote: null
+      interactions: ["Caffeine (antagonizes)", "Dipyridamole (potentiates)"]
+      difficulty: medium
+
+    atropine:
+      brand: "AtroPen"
+      class: "Anticholinergic (muscarinic antagonist)"
+      mechanism: "Blocks muscarinic acetylcholine receptors"
+      indication: "Symptomatic bradycardia, organophosphate poisoning"
+      side_effects: ["Tachycardia", "Dry mouth", "Urinary retention", "Mydriasis", "Hyperthermia"]
+      nursing: "Monitor HR; contraindicated in glaucoma; 'hot as a hare, dry as a bone, blind as a bat'"
+      antidote: null
+      interactions: ["Other anticholinergics (additive effects)"]
+      difficulty: medium
+
+    epinephrine:
+      brand: "Adrenalin, EpiPen"
+      class: "Sympathomimetic (alpha and beta agonist)"
+      mechanism: "Stimulates alpha-1, beta-1, and beta-2 adrenergic receptors"
+      indication: "Anaphylaxis, cardiac arrest, severe asthma"
+      side_effects: ["Tachycardia", "Hypertension", "Anxiety", "Tremor", "Dysrhythmias"]
+      nursing: "IM for anaphylaxis (anterolateral thigh); IV for cardiac arrest; monitor HR and BP"
+      antidote: null
+      interactions: ["Beta-blockers (antagonize)", "MAOIs (potentiate)"]
+      difficulty: easy
+
+    norepinephrine:
+      brand: "Levophed"
+      class: "Sympathomimetic (alpha-1 agonist predominant)"
+      mechanism: "Potent alpha-1 agonist with some beta-1 activity; increases SVR"
+      indication: "Septic shock, cardiogenic shock"
+      side_effects: ["Tissue necrosis with extravasation", "Hypertension", "Bradycardia (reflex)"]
+      nursing: "Administer via central line; monitor for extravasation; antidote for extravasation is phentolamine"
+      antidote: null
+      interactions: ["MAOIs", "TCAs"]
+      difficulty: medium
+
+    dopamine:
+      brand: "Intropin"
+      class: "Sympathomimetic (dose-dependent receptor activation)"
+      mechanism: "Low dose: dopamine receptors (renal); Medium: beta-1 (cardiac); High: alpha-1 (vasoconstriction)"
+      indication: "Shock, symptomatic bradycardia"
+      side_effects: ["Tachycardia", "Dysrhythmias", "Tissue necrosis with extravasation"]
+      nursing: "Dose-dependent effects; administer via central line; monitor urine output at low doses"
+      antidote: null
+      interactions: ["MAOIs", "Phenytoin"]
+      difficulty: medium
+
+    nitroglycerin:
+      brand: "Nitrostat, Tridil"
+      class: "Nitrate vasodilator"
+      mechanism: "Releases nitric oxide, dilating veins (primarily) and arteries"
+      indication: "Angina, acute coronary syndrome, heart failure"
+      side_effects: ["Headache", "Hypotension", "Dizziness", "Reflex tachycardia"]
+      nursing: "3 doses 5 min apart for angina; do NOT use with PDE-5 inhibitors (sildenafil); store in dark glass"
+      antidote: null
+      interactions: ["PDE-5 inhibitors (severe hypotension)", "Alcohol"]
+      difficulty: easy
+
+    atorvastatin:
+      brand: "Lipitor"
+      class: "HMG-CoA reductase inhibitor (statin)"
+      mechanism: "Inhibits HMG-CoA reductase enzyme in cholesterol synthesis"
+      indication: "Hyperlipidemia, prevention of cardiovascular events"
+      side_effects: ["Myopathy/rhabdomyolysis", "Hepatotoxicity", "GI upset"]
+      nursing: "Monitor liver enzymes, CK; report unexplained muscle pain; take at bedtime"
+      antidote: null
+      interactions: ["Grapefruit juice", "Fibrates", "Macrolide antibiotics"]
+      difficulty: easy
+
+    furosemide:
+      brand: "Lasix"
+      class: "Loop diuretic"
+      mechanism: "Inhibits Na+/K+/2Cl- cotransporter in thick ascending loop of Henle"
+      indication: "Heart failure, edema, pulmonary edema, hypertension"
+      side_effects: ["Hypokalemia", "Ototoxicity", "Dehydration", "Hyponatremia", "Hyperglycemia"]
+      nursing: "Monitor potassium, I&O, daily weight; give in AM to avoid nocturia; ototoxicity with IV push too fast"
+      antidote: null
+      interactions: ["Aminoglycosides (ototoxicity)", "Digoxin (hypokalemia increases toxicity)", "NSAIDs"]
+      difficulty: easy
+
+    spironolactone:
+      brand: "Aldactone"
+      class: "Potassium-sparing diuretic (aldosterone antagonist)"
+      mechanism: "Blocks aldosterone receptors in collecting duct"
+      indication: "Heart failure, hypertension, edema, hyperaldosteronism"
+      side_effects: ["Hyperkalemia", "Gynecomastia", "Menstrual irregularities"]
+      nursing: "Monitor potassium; avoid potassium supplements and salt substitutes; contraindicated with ACE/ARBs (hyperkalemia risk)"
+      antidote: null
+      interactions: ["ACE inhibitors", "ARBs", "Potassium supplements"]
+      difficulty: medium
+
+    hydrochlorothiazide:
+      brand: "Microzide"
+      class: "Thiazide diuretic"
+      mechanism: "Inhibits NaCl reabsorption in distal convoluted tubule"
+      indication: "Hypertension, edema"
+      side_effects: ["Hypokalemia", "Hyperglycemia", "Hyperuricemia", "Hypercalcemia", "Photosensitivity"]
+      nursing: "Monitor electrolytes; take in AM; may worsen gout and diabetes"
+      antidote: null
+      interactions: ["Lithium (increased levels)", "Digoxin (hypokalemia risk)", "NSAIDs"]
+      difficulty: easy
+
+    mannitol:
+      brand: "Osmitrol"
+      class: "Osmotic diuretic"
+      mechanism: "Creates osmotic gradient in renal tubules, pulling water into urine"
+      indication: "Cerebral edema, increased intracranial pressure, acute glaucoma"
+      side_effects: ["Fluid overload", "Electrolyte imbalances", "Pulmonary edema"]
+      nursing: "Use inline filter; monitor I&O, serum osmolality; contraindicated in anuria"
+      antidote: null
+      interactions: []
+      difficulty: medium
+
+    epoetin_alfa:
+      brand: "Epogen, Procrit"
+      class: "Erythropoiesis-stimulating agent"
+      mechanism: "Stimulates RBC production in bone marrow (recombinant erythropoietin)"
+      indication: "Anemia from CKD, chemotherapy, or HIV treatment"
+      side_effects: ["Hypertension", "Thromboembolic events", "Pure red cell aplasia"]
+      nursing: "Monitor H&H; target Hgb 10-12 g/dL; do not shake vial; Black Box: increased mortality in cancer patients"
+      antidote: null
+      interactions: []
+      difficulty: medium
+
+    ferrous_sulfate:
+      brand: "Fer-In-Sol"
+      class: "Iron supplement"
+      mechanism: "Provides elemental iron for hemoglobin synthesis"
+      indication: "Iron deficiency anemia"
+      side_effects: ["Constipation", "Black/dark stools", "GI upset", "Nausea"]
+      nursing: "Give with vitamin C (enhances absorption); avoid with antacids/dairy; take on empty stomach if tolerated"
+      antidote: "Deferoxamine (for iron toxicity)"
+      interactions: ["Antacids", "Tetracyclines", "Levothyroxine"]
+      difficulty: easy
+
+    warfarin:
+      brand: "Coumadin"
+      class: "Vitamin K antagonist anticoagulant"
+      mechanism: "Inhibits vitamin K-dependent clotting factor synthesis (II, VII, IX, X)"
+      indication: "DVT/PE prevention, atrial fibrillation, mechanical heart valves"
+      side_effects: ["Bleeding", "Skin necrosis", "Purple toe syndrome"]
+      nursing: "Monitor INR (target 2-3); antidote is vitamin K; avoid vitamin K-rich foods; many drug interactions"
+      antidote: "Vitamin K (phytonadione)"
+      interactions: ["Vitamin K-rich foods", "NSAIDs", "Antibiotics", "Amiodarone"]
+      difficulty: medium
+
+    heparin:
+      brand: "Heparin"
+      class: "Parenteral anticoagulant (unfractionated)"
+      mechanism: "Enhances antithrombin III activity, inactivating thrombin and factor Xa"
+      indication: "DVT/PE treatment and prevention, acute coronary syndrome"
+      side_effects: ["Bleeding", "Heparin-induced thrombocytopenia (HIT)", "Osteoporosis (long-term)"]
+      nursing: "Monitor aPTT (target 1.5-2.5x control); monitor platelets for HIT; never give IM"
+      antidote: "Protamine sulfate"
+      interactions: ["Aspirin", "NSAIDs", "Thrombolytics"]
+      difficulty: medium
+
+    enoxaparin:
+      brand: "Lovenox"
+      class: "Low-molecular-weight heparin"
+      mechanism: "Selectively inhibits factor Xa (more than thrombin)"
+      indication: "DVT/PE prevention and treatment"
+      side_effects: ["Bleeding", "Thrombocytopenia", "Injection site bruising"]
+      nursing: "Give SubQ in abdomen; do not expel air bubble; no routine monitoring (anti-Xa if needed); partially reversed by protamine"
+      antidote: "Protamine sulfate (partial reversal)"
+      interactions: ["Aspirin", "NSAIDs"]
+      difficulty: medium
+
+    rivaroxaban:
+      brand: "Xarelto"
+      class: "Direct factor Xa inhibitor"
+      mechanism: "Directly inhibits factor Xa without needing antithrombin"
+      indication: "DVT/PE, stroke prevention in atrial fibrillation"
+      side_effects: ["Bleeding", "GI bleeding"]
+      nursing: "No routine monitoring; take with food; no reliable reversal agent (andexanet alfa limited)"
+      antidote: "Andexanet alfa (limited availability)"
+      interactions: ["Anticoagulants", "Antiplatelet agents"]
+      difficulty: medium
+
+    clopidogrel:
+      brand: "Plavix"
+      class: "Platelet aggregation inhibitor (P2Y12 inhibitor)"
+      mechanism: "Irreversibly blocks ADP P2Y12 receptor on platelets"
+      indication: "ACS, recent MI/stroke, post-stent placement"
+      side_effects: ["Bleeding", "GI upset", "Thrombotic thrombocytopenic purpura (rare)"]
+      nursing: "Hold 5-7 days before surgery; monitor for bleeding; avoid with omeprazole (reduces effectiveness)"
+      antidote: null
+      interactions: ["Omeprazole (inhibits CYP2C19 activation)", "NSAIDs"]
+      difficulty: medium
+
+    aspirin:
+      brand: "Ecotrin, Bayer"
+      class: "Platelet aggregation inhibitor / NSAID"
+      mechanism: "Irreversibly inhibits cyclooxygenase (COX-1), blocking thromboxane A2"
+      indication: "MI prevention, stroke prevention, pain, fever, inflammation"
+      side_effects: ["GI bleeding", "Tinnitus", "Reye syndrome in children"]
+      nursing: "Avoid in children with viral illness (Reye syndrome); monitor for bleeding; low dose for cardiac prevention"
+      antidote: null
+      interactions: ["Warfarin", "Other NSAIDs", "Methotrexate"]
+      difficulty: easy
+
+    alteplase:
+      brand: "Activase"
+      class: "Fibrinolytic (thrombolytic)"
+      mechanism: "Converts plasminogen to plasmin, breaking down fibrin clots"
+      indication: "Acute MI, acute ischemic stroke, massive PE"
+      side_effects: ["Bleeding (especially intracranial)", "Angioedema"]
+      nursing: "Administer within 3-4.5 hours of stroke onset; monitor for bleeding; no IM injections or invasive procedures"
+      antidote: "Aminocaproic acid (for severe bleeding)"
+      interactions: ["Anticoagulants", "Antiplatelets"]
+      difficulty: hard
+
+  # === ANTI-INFECTIVES ===
+  anti_infectives:
+    amoxicillin:
+      brand: "Amoxil"
+      class: "Penicillin antibiotic"
+      mechanism: "Inhibits bacterial cell wall synthesis by binding PBPs"
+      indication: "Otitis media, sinusitis, UTI, H. pylori"
+      side_effects: ["Diarrhea", "Rash", "Allergic reaction", "Anaphylaxis"]
+      nursing: "Assess for penicillin allergy; complete full course; may decrease oral contraceptive effectiveness"
+      antidote: null
+      interactions: ["Methotrexate", "Warfarin"]
+      difficulty: easy
+
+    ceftriaxone:
+      brand: "Rocephin"
+      class: "Third-generation cephalosporin"
+      mechanism: "Inhibits bacterial cell wall synthesis (beta-lactam)"
+      indication: "Meningitis, pneumonia, gonorrhea, Lyme disease"
+      side_effects: ["Diarrhea", "Allergic reaction", "Biliary sludging"]
+      nursing: "Cross-sensitivity with penicillin allergy (~1-2%); do not mix with calcium-containing solutions"
+      antidote: null
+      interactions: ["Calcium-containing IV solutions"]
+      difficulty: medium
+
+    vancomycin:
+      brand: "Vancocin"
+      class: "Glycopeptide antibiotic"
+      mechanism: "Inhibits cell wall synthesis by binding D-Ala-D-Ala peptide"
+      indication: "MRSA, C. difficile (oral), serious gram-positive infections"
+      side_effects: ["Red Man Syndrome", "Ototoxicity", "Nephrotoxicity"]
+      nursing: "Infuse over ≥60 min (prevent Red Man Syndrome); monitor trough levels (15-20 mcg/mL); assess renal function"
+      antidote: null
+      interactions: ["Aminoglycosides (additive nephrotoxicity/ototoxicity)"]
+      difficulty: medium
+
+    doxycycline:
+      brand: "Vibramycin"
+      class: "Tetracycline antibiotic"
+      mechanism: "Inhibits bacterial protein synthesis by binding 30S ribosomal subunit"
+      indication: "Acne, Lyme disease, chlamydia, rickettsial infections"
+      side_effects: ["Photosensitivity", "GI upset", "Tooth discoloration in children", "Esophageal ulceration"]
+      nursing: "Avoid in pregnancy and children <8; take with full glass of water; avoid dairy, antacids, iron"
+      antidote: null
+      interactions: ["Dairy products", "Antacids", "Iron supplements", "Warfarin"]
+      difficulty: medium
+
+    azithromycin:
+      brand: "Zithromax, Z-Pack"
+      class: "Macrolide antibiotic"
+      mechanism: "Inhibits bacterial protein synthesis by binding 50S ribosomal subunit"
+      indication: "Upper/lower RTI, STIs, otitis media"
+      side_effects: ["GI upset", "QT prolongation", "Hepatotoxicity"]
+      nursing: "Take on empty stomach (some formulations); monitor for cardiac arrhythmias; complete full course"
+      antidote: null
+      interactions: ["Warfarin", "Digoxin"]
+      difficulty: easy
+
+    gentamicin:
+      brand: "Garamycin"
+      class: "Aminoglycoside antibiotic"
+      mechanism: "Irreversibly binds 30S ribosomal subunit, causing misreading of mRNA"
+      indication: "Serious gram-negative infections, endocarditis (synergy)"
+      side_effects: ["Nephrotoxicity", "Ototoxicity (vestibular and cochlear)", "Neuromuscular blockade"]
+      nursing: "Monitor peak and trough levels; assess renal function and hearing; never mix with penicillins in same IV"
+      antidote: null
+      interactions: ["Loop diuretics (ototoxicity)", "Vancomycin (nephrotoxicity)", "Neuromuscular blockers"]
+      difficulty: hard
+
+    trimethoprim_sulfamethoxazole:
+      brand: "Bactrim, Septra"
+      class: "Sulfonamide combination antibiotic"
+      mechanism: "Sequential inhibition of folate synthesis (TMP + SMX block different enzymes)"
+      indication: "UTI, PCP pneumonia, MRSA skin infections"
+      side_effects: ["Rash", "Stevens-Johnson syndrome", "Bone marrow suppression", "Hyperkalemia", "Photosensitivity"]
+      nursing: "Increase fluid intake; monitor CBC; avoid in sulfa allergy; avoid in late pregnancy"
+      antidote: null
+      interactions: ["Warfarin", "Methotrexate", "Phenytoin"]
+      difficulty: medium
+
+    ciprofloxacin:
+      brand: "Cipro"
+      class: "Fluoroquinolone antibiotic"
+      mechanism: "Inhibits DNA gyrase and topoisomerase IV"
+      indication: "UTI, respiratory infections, anthrax prophylaxis"
+      side_effects: ["Tendon rupture", "QT prolongation", "CNS effects", "Photosensitivity", "C. difficile"]
+      nursing: "Black Box: tendon rupture risk (especially with corticosteroids, age >60); avoid antacids within 2 hours"
+      antidote: null
+      interactions: ["Antacids", "Iron", "Calcium", "Theophylline", "Warfarin"]
+      difficulty: medium
+
+    metronidazole:
+      brand: "Flagyl"
+      class: "Nitroimidazole antibiotic"
+      mechanism: "Disrupts DNA synthesis in anaerobic organisms"
+      indication: "C. difficile, anaerobic infections, trichomoniasis, H. pylori"
+      side_effects: ["Metallic taste", "Nausea", "Disulfiram-like reaction with alcohol", "Peripheral neuropathy"]
+      nursing: "Absolutely NO alcohol during treatment and 72 hours after; monitor for neuropathy with prolonged use"
+      antidote: null
+      interactions: ["Alcohol (disulfiram reaction)", "Warfarin", "Lithium"]
+      difficulty: medium
+
+    isoniazid:
+      brand: "INH"
+      class: "Antitubercular agent"
+      mechanism: "Inhibits mycolic acid synthesis in TB cell wall"
+      indication: "Tuberculosis (treatment and prophylaxis)"
+      side_effects: ["Hepatotoxicity", "Peripheral neuropathy", "Pyridoxine (B6) deficiency"]
+      nursing: "Give with vitamin B6 (pyridoxine); monitor liver enzymes; avoid alcohol; take on empty stomach"
+      antidote: "Pyridoxine (B6) for neuropathy"
+      interactions: ["Alcohol", "Phenytoin", "Rifampin (combined hepatotoxicity)"]
+      difficulty: medium
+
+    rifampin:
+      brand: "Rifadin"
+      class: "Antitubercular agent"
+      mechanism: "Inhibits bacterial RNA polymerase"
+      indication: "Tuberculosis (always used in combination), meningitis prophylaxis"
+      side_effects: ["Hepatotoxicity", "Orange discoloration of body fluids", "Flu-like syndrome"]
+      nursing: "Warn about orange urine/tears/sweat; potent CYP450 inducer (decreases many drug levels); monitor liver"
+      antidote: null
+      interactions: ["Oral contraceptives (reduced effectiveness)", "Warfarin", "HIV medications", "Many drugs via CYP450"]
+      difficulty: medium
+
+    fluconazole:
+      brand: "Diflucan"
+      class: "Azole antifungal"
+      mechanism: "Inhibits fungal CYP450 enzyme lanosterol 14-alpha-demethylase (ergosterol synthesis)"
+      indication: "Candidiasis, cryptococcal meningitis"
+      side_effects: ["Hepatotoxicity", "QT prolongation", "GI upset"]
+      nursing: "Monitor liver enzymes; CYP450 inhibitor (many drug interactions)"
+      antidote: null
+      interactions: ["Warfarin", "Phenytoin", "Cyclosporine"]
+      difficulty: medium
+
+    acyclovir:
+      brand: "Zovirax"
+      class: "Nucleoside analog antiviral"
+      mechanism: "Inhibits viral DNA polymerase after phosphorylation by viral thymidine kinase"
+      indication: "HSV, varicella-zoster (shingles/chickenpox)"
+      side_effects: ["Nephrotoxicity (crystalluria)", "Neurotoxicity", "GI upset"]
+      nursing: "Maintain adequate hydration; infuse IV slowly; most effective if started within 72 hours of symptom onset"
+      antidote: null
+      interactions: ["Nephrotoxic drugs"]
+      difficulty: medium
+
+  # === CNS & PSYCHIATRIC ===
+  cns_psychiatric:
+    fluoxetine:
+      brand: "Prozac"
+      class: "Selective serotonin reuptake inhibitor (SSRI)"
+      mechanism: "Selectively inhibits serotonin (5-HT) reuptake in the synapse"
+      indication: "Major depressive disorder, OCD, bulimia, panic disorder"
+      side_effects: ["Sexual dysfunction", "Insomnia", "GI upset", "Serotonin syndrome", "Suicidal ideation (Black Box)"]
+      nursing: "Black Box: increased suicidal thinking in youth <25; takes 4-6 weeks for full effect; monitor for serotonin syndrome"
+      antidote: "Cyproheptadine (for serotonin syndrome)"
+      interactions: ["MAOIs (contraindicated — serotonin syndrome)", "TCAs", "Triptans", "St. John's Wort"]
+      difficulty: easy
+
+    amitriptyline:
+      brand: "Elavil"
+      class: "Tricyclic antidepressant (TCA)"
+      mechanism: "Blocks reuptake of serotonin and norepinephrine; also blocks histamine, acetylcholine, and alpha-1 receptors"
+      indication: "Depression, neuropathic pain, migraine prophylaxis"
+      side_effects: ["Anticholinergic effects (dry mouth, constipation, urinary retention)", "Sedation", "Weight gain", "Cardiac toxicity in overdose"]
+      nursing: "Lethal in overdose (cardiac arrhythmias); anticholinergic burden; avoid in elderly"
+      antidote: "Sodium bicarbonate (for cardiac toxicity in overdose)"
+      interactions: ["MAOIs", "Alcohol", "Anticholinergics"]
+      difficulty: medium
+
+    phenelzine:
+      brand: "Nardil"
+      class: "Monoamine oxidase inhibitor (MAOI)"
+      mechanism: "Irreversibly inhibits MAO-A and MAO-B, increasing serotonin, norepinephrine, and dopamine"
+      indication: "Treatment-resistant depression, atypical depression"
+      side_effects: ["Hypertensive crisis (with tyramine)", "Serotonin syndrome", "Orthostatic hypotension", "Weight gain"]
+      nursing: "STRICT tyramine-free diet (no aged cheese, cured meats, red wine, soy sauce); 14-day washout before switching antidepressants"
+      antidote: "Phentolamine (for hypertensive crisis)"
+      interactions: ["Tyramine-containing foods", "SSRIs", "TCAs", "Meperidine", "Sympathomimetics"]
+      difficulty: hard
+
+    bupropion:
+      brand: "Wellbutrin, Zyban"
+      class: "Atypical antidepressant (NDRI)"
+      mechanism: "Inhibits norepinephrine and dopamine reuptake"
+      indication: "Depression, smoking cessation, seasonal affective disorder"
+      side_effects: ["Seizures (dose-dependent)", "Insomnia", "Dry mouth", "Agitation"]
+      nursing: "Contraindicated in seizure disorders and eating disorders; NO sexual dysfunction (unlike SSRIs); do not exceed 450 mg/day"
+      antidote: null
+      interactions: ["MAOIs", "Alcohol", "Drugs that lower seizure threshold"]
+      difficulty: medium
+
+    lithium:
+      brand: "Lithobid, Eskalith"
+      class: "Mood stabilizer"
+      mechanism: "Exact mechanism unknown; modulates neurotransmitter release and intracellular signaling"
+      indication: "Bipolar disorder (mania and maintenance)"
+      side_effects: ["Tremor", "Polyuria/polydipsia", "Hypothyroidism", "Nephrogenic diabetes insipidus", "Toxicity (N/V, ataxia, seizures)"]
+      nursing: "Very narrow therapeutic index (0.6-1.2 mEq/L); monitor lithium levels, thyroid, renal function; maintain adequate sodium and fluid intake"
+      antidote: "Hemodialysis (for severe toxicity)"
+      interactions: ["NSAIDs (increase levels)", "Diuretics (increase levels)", "ACE inhibitors"]
+      difficulty: hard
+
+    haloperidol:
+      brand: "Haldol"
+      class: "First-generation (typical) antipsychotic"
+      mechanism: "Blocks dopamine D2 receptors in the mesolimbic pathway"
+      indication: "Schizophrenia, acute psychosis, Tourette syndrome"
+      side_effects: ["Extrapyramidal symptoms (EPS)", "Tardive dyskinesia", "Neuroleptic malignant syndrome (NMS)", "QT prolongation"]
+      nursing: "Monitor for EPS (dystonia, akathisia, pseudoparkinsonism); NMS is a medical emergency (fever, rigidity, autonomic instability)"
+      antidote: "Dantrolene (for NMS); Benztropine/diphenhydramine (for EPS)"
+      interactions: ["CNS depressants", "Anticholinergics", "QT-prolonging drugs"]
+      difficulty: medium
+
+    clozapine:
+      brand: "Clozaril"
+      class: "Second-generation (atypical) antipsychotic"
+      mechanism: "Blocks dopamine D4 and serotonin 5-HT2A receptors"
+      indication: "Treatment-resistant schizophrenia, suicidality in schizophrenia"
+      side_effects: ["Agranulocytosis", "Metabolic syndrome", "Seizures", "Myocarditis", "Sedation", "Sialorrhea"]
+      nursing: "MANDATORY ANC monitoring (REMS program); weekly CBC initially; Black Box: agranulocytosis, seizures, myocarditis"
+      antidote: null
+      interactions: ["CYP1A2 inhibitors", "CNS depressants"]
+      difficulty: hard
+
+    lorazepam:
+      brand: "Ativan"
+      class: "Benzodiazepine anxiolytic"
+      mechanism: "Enhances GABA-A receptor activity by increasing chloride channel opening frequency"
+      indication: "Anxiety, status epilepticus, alcohol withdrawal, procedural sedation"
+      side_effects: ["Sedation", "Respiratory depression", "Dependence", "Paradoxical agitation"]
+      nursing: "Taper gradually (do not stop abruptly — seizure risk); monitor respiratory status; have flumazenil available"
+      antidote: "Flumazenil"
+      interactions: ["Alcohol", "Opioids (respiratory depression)", "CNS depressants"]
+      difficulty: easy
+
+    buspirone:
+      brand: "BuSpar"
+      class: "Azapirone anxiolytic"
+      mechanism: "Partial agonist at serotonin 5-HT1A receptors"
+      indication: "Generalized anxiety disorder"
+      side_effects: ["Dizziness", "Headache", "Nausea"]
+      nursing: "Takes 2-4 weeks for effect; NO sedation, NO dependence, NO withdrawal; do not use PRN"
+      antidote: null
+      interactions: ["MAOIs", "Grapefruit juice"]
+      difficulty: easy
+
+    zolpidem:
+      brand: "Ambien"
+      class: "Non-benzodiazepine sedative-hypnotic"
+      mechanism: "Binds selectively to GABA-A BZ1 receptors (sleep-related)"
+      indication: "Insomnia"
+      side_effects: ["Complex sleep behaviors (sleepwalking, sleep-driving)", "Amnesia", "Dizziness"]
+      nursing: "Take immediately before bed; Black Box: complex sleep behaviors; lower dose for women and elderly"
+      antidote: "Flumazenil"
+      interactions: ["Alcohol", "CNS depressants"]
+      difficulty: easy
+
+    phenytoin:
+      brand: "Dilantin"
+      class: "Hydantoin anticonvulsant"
+      mechanism: "Stabilizes neuronal membranes by blocking voltage-gated sodium channels"
+      indication: "Tonic-clonic seizures, status epilepticus, partial seizures"
+      side_effects: ["Gingival hyperplasia", "Hirsutism", "Nystagmus", "Ataxia", "Stevens-Johnson syndrome", "Purple glove syndrome"]
+      nursing: "Very narrow therapeutic index (10-20 mcg/mL); many drug interactions (CYP450); IV: give slowly (no faster than 50 mg/min); oral hygiene critical"
+      antidote: null
+      interactions: ["Warfarin", "Oral contraceptives", "Many drugs via CYP450"]
+      difficulty: hard
+
+    carbamazepine:
+      brand: "Tegretol"
+      class: "Anticonvulsant / mood stabilizer"
+      mechanism: "Blocks voltage-gated sodium channels, reducing repetitive neuronal firing"
+      indication: "Seizures, trigeminal neuralgia, bipolar disorder"
+      side_effects: ["Aplastic anemia", "Agranulocytosis", "Stevens-Johnson syndrome", "SIADH", "Hepatotoxicity"]
+      nursing: "Black Box: serious dermatologic reactions (HLA-B*1502 testing in Asian patients); monitor CBC, liver, sodium"
+      antidote: null
+      interactions: ["Oral contraceptives (reduced effectiveness)", "Warfarin", "Many drugs via CYP3A4 induction"]
+      difficulty: hard
+
+    valproic_acid:
+      brand: "Depakote, Depakene"
+      class: "Anticonvulsant / mood stabilizer"
+      mechanism: "Increases GABA levels; blocks sodium and calcium channels"
+      indication: "Seizures (all types), bipolar mania, migraine prophylaxis"
+      side_effects: ["Hepatotoxicity", "Pancreatitis", "Teratogenicity (neural tube defects)", "Thrombocytopenia", "Weight gain"]
+      nursing: "Black Box: hepatotoxicity, teratogenicity, pancreatitis; monitor liver, CBC, drug levels (50-100 mcg/mL); contraindicated in pregnancy"
+      antidote: "L-carnitine (for valproate-induced hyperammonemia)"
+      interactions: ["Other anticonvulsants", "Aspirin"]
+      difficulty: medium
+
+    levetiracetam:
+      brand: "Keppra"
+      class: "Anticonvulsant"
+      mechanism: "Binds synaptic vesicle protein SV2A, modulating neurotransmitter release"
+      indication: "Partial-onset seizures, generalized seizures"
+      side_effects: ["Behavioral changes (irritability, aggression)", "Somnolence", "Dizziness"]
+      nursing: "Fewer drug interactions than older anticonvulsants; monitor mood/behavior; dose adjust for renal impairment"
+      antidote: null
+      interactions: "Minimal — does not affect CYP450"
+      difficulty: easy
+
+    carbidopa_levodopa:
+      brand: "Sinemet"
+      class: "Dopamine precursor / decarboxylase inhibitor"
+      mechanism: "Levodopa converts to dopamine in brain; carbidopa prevents peripheral conversion"
+      indication: "Parkinson disease"
+      side_effects: ["Dyskinesia", "Orthostatic hypotension", "Nausea", "On-off phenomenon", "Darkened urine"]
+      nursing: "Take on empty stomach (protein interferes); avoid with MAOIs; 'drug holiday' may be needed; monitor for wearing-off"
+      antidote: null
+      interactions: ["MAOIs", "High-protein meals", "Antipsychotics (antagonize dopamine)"]
+      difficulty: medium
+
+    benztropine:
+      brand: "Cogentin"
+      class: "Anticholinergic (antiparkinson)"
+      mechanism: "Blocks muscarinic acetylcholine receptors in the basal ganglia"
+      indication: "Drug-induced EPS, Parkinson disease (adjunct)"
+      side_effects: ["Anticholinergic effects (dry mouth, constipation, urinary retention, blurred vision)", "Confusion in elderly"]
+      nursing: "Monitor for anticholinergic toxicity; avoid in elderly with dementia; contraindicated in glaucoma"
+      antidote: null
+      interactions: ["Other anticholinergics", "Antihistamines"]
+      difficulty: medium
+
+    donepezil:
+      brand: "Aricept"
+      class: "Acetylcholinesterase inhibitor"
+      mechanism: "Reversibly inhibits acetylcholinesterase, increasing ACh in the brain"
+      indication: "Alzheimer disease (mild to severe)"
+      side_effects: ["Nausea", "Diarrhea", "Insomnia", "Bradycardia"]
+      nursing: "Give at bedtime; does not cure or stop progression; monitor for GI effects and bradycardia"
+      antidote: null
+      interactions: ["Anticholinergics (antagonize effect)", "NSAIDs"]
+      difficulty: easy
+
+    morphine:
+      brand: "MS Contin"
+      class: "Opioid agonist analgesic"
+      mechanism: "Binds mu-opioid receptors in CNS, inhibiting pain transmission"
+      indication: "Severe pain, MI pain, pulmonary edema (reduces preload)"
+      side_effects: ["Respiratory depression", "Constipation", "Sedation", "Nausea", "Hypotension", "Urinary retention"]
+      nursing: "Assess respiratory rate (hold if <12); have naloxone available; monitor pain level; constipation prevention"
+      antidote: "Naloxone (Narcan)"
+      interactions: ["CNS depressants", "Benzodiazepines (Black Box)", "MAOIs"]
+      difficulty: easy
+
+    hydromorphone:
+      brand: "Dilaudid"
+      class: "Opioid agonist analgesic"
+      mechanism: "Binds mu-opioid receptors (5-7x more potent than morphine)"
+      indication: "Severe pain"
+      side_effects: ["Respiratory depression", "Constipation", "Sedation", "Hypotension"]
+      nursing: "HIGH ALERT medication; easily confused with morphine (different potency); same monitoring as morphine"
+      antidote: "Naloxone"
+      interactions: ["CNS depressants", "Benzodiazepines"]
+      difficulty: medium
+
+    oxycodone:
+      brand: "OxyContin, Percocet"
+      class: "Opioid agonist analgesic"
+      mechanism: "Binds mu-opioid receptors in CNS"
+      indication: "Moderate to severe pain"
+      side_effects: ["Respiratory depression", "Constipation", "Sedation", "High abuse potential"]
+      nursing: "Extended-release: swallow whole (no crushing); high abuse potential (Schedule II); monitor respiratory status"
+      antidote: "Naloxone"
+      interactions: ["CNS depressants", "Benzodiazepines", "Alcohol"]
+      difficulty: easy
+
+    fentanyl:
+      brand: "Duragesic, Sublimaze"
+      class: "Synthetic opioid agonist"
+      mechanism: "Binds mu-opioid receptors (50-100x more potent than morphine)"
+      indication: "Severe pain, anesthesia, breakthrough cancer pain"
+      side_effects: ["Respiratory depression", "Bradycardia", "Chest wall rigidity", "Overdose/death"]
+      nursing: "Patch: apply to hairless skin, rotate sites, takes 12-24h for effect; HIGH ALERT: extreme potency"
+      antidote: "Naloxone (may need repeated doses)"
+      interactions: ["CNS depressants", "CYP3A4 inhibitors"]
+      difficulty: medium
+
+    naloxone:
+      brand: "Narcan"
+      class: "Opioid antagonist"
+      mechanism: "Competitively blocks mu, kappa, and delta opioid receptors"
+      indication: "Opioid overdose (reversal)"
+      side_effects: ["Acute opioid withdrawal", "Tachycardia", "Hypertension", "Pulmonary edema"]
+      nursing: "Short duration (30-90 min) — may need repeat doses; monitor for re-sedation; can give IM, IV, SubQ, intranasal"
+      antidote: null
+      interactions: []
+      difficulty: easy
+
+    succinylcholine:
+      brand: "Anectine"
+      class: "Depolarizing neuromuscular blocker"
+      mechanism: "Mimics ACh at nicotinic receptors causing sustained depolarization"
+      indication: "Rapid sequence intubation"
+      side_effects: ["Malignant hyperthermia", "Hyperkalemia", "Fasciculations", "Bradycardia"]
+      nursing: "Have dantrolene available; contraindicated in burns, crush injuries, hyperkalemia; shortest acting paralytic"
+      antidote: "Dantrolene (for malignant hyperthermia)"
+      interactions: ["Cholinesterase inhibitors"]
+      difficulty: hard
+
+    dantrolene:
+      brand: "Dantrium"
+      class: "Skeletal muscle relaxant"
+      mechanism: "Blocks calcium release from sarcoplasmic reticulum"
+      indication: "Malignant hyperthermia, NMS, spasticity"
+      side_effects: ["Hepatotoxicity", "Muscle weakness", "Drowsiness"]
+      nursing: "Monitor liver function; keep available wherever succinylcholine or anesthesia is used"
+      antidote: null
+      interactions: ["Calcium channel blockers (risk of cardiac collapse)"]
+      difficulty: medium
+
+  # === ENDOCRINE & METABOLIC ===
+  endocrine_metabolic:
+    insulin_lispro:
+      brand: "Humalog"
+      class: "Rapid-acting insulin"
+      mechanism: "Binds insulin receptors, facilitating glucose uptake into cells"
+      indication: "Type 1 and Type 2 diabetes (mealtime coverage)"
+      side_effects: ["Hypoglycemia", "Lipodystrophy", "Hypokalemia"]
+      nursing: "Give 15 min before meals; onset 15 min, peak 1-2 hr, duration 3-5 hr; rotate injection sites"
+      antidote: "Glucagon or D50 (for hypoglycemia)"
+      interactions: ["Beta-blockers (mask hypoglycemia symptoms)"]
+      difficulty: easy
+
+    insulin_regular:
+      brand: "Humulin R, Novolin R"
+      class: "Short-acting insulin"
+      mechanism: "Binds insulin receptors, facilitating glucose uptake"
+      indication: "Diabetes, DKA (IV), hyperkalemia (with glucose)"
+      side_effects: ["Hypoglycemia", "Hypokalemia"]
+      nursing: "Give 30 min before meals; onset 30-60 min, peak 2-4 hr; ONLY insulin that can be given IV; clear solution"
+      antidote: "Glucagon"
+      interactions: ["Beta-blockers"]
+      difficulty: easy
+
+    insulin_nph:
+      brand: "Humulin N"
+      class: "Intermediate-acting insulin"
+      mechanism: "Insulin complexed with protamine for slower absorption"
+      indication: "Diabetes (basal coverage)"
+      side_effects: ["Hypoglycemia", "Lipodystrophy"]
+      nursing: "Onset 1-2 hr, peak 4-12 hr; cloudy suspension — roll gently (do not shake); can mix with regular insulin"
+      antidote: "Glucagon"
+      interactions: ["Beta-blockers"]
+      difficulty: easy
+
+    insulin_glargine:
+      brand: "Lantus, Basaglar"
+      class: "Long-acting insulin"
+      mechanism: "Provides steady basal insulin release via subcutaneous microprecipitate"
+      indication: "Diabetes (basal coverage)"
+      side_effects: ["Hypoglycemia", "Lipodystrophy"]
+      nursing: "Give once daily at same time; onset 1-2 hr, NO peak, duration 24 hr; do NOT mix with other insulins; clear solution"
+      antidote: "Glucagon"
+      interactions: ["Beta-blockers"]
+      difficulty: easy
+
+    metformin:
+      brand: "Glucophage"
+      class: "Biguanide oral antidiabetic"
+      mechanism: "Decreases hepatic glucose production, increases insulin sensitivity"
+      indication: "Type 2 diabetes (first-line therapy)"
+      side_effects: ["GI upset (diarrhea, nausea)", "Lactic acidosis (rare but serious)", "B12 deficiency"]
+      nursing: "Hold 48 hours before/after iodinated contrast; monitor renal function; contraindicated in severe CKD; no hypoglycemia as monotherapy"
+      antidote: null
+      interactions: ["Iodinated contrast dye", "Alcohol"]
+      difficulty: easy
+
+    glipizide:
+      brand: "Glucotrol"
+      class: "Sulfonylurea oral antidiabetic"
+      mechanism: "Stimulates pancreatic beta cells to release insulin"
+      indication: "Type 2 diabetes"
+      side_effects: ["Hypoglycemia", "Weight gain", "GI upset"]
+      nursing: "Take 30 min before meals; CAN cause hypoglycemia (unlike metformin); monitor blood glucose"
+      antidote: "Glucagon, D50"
+      interactions: ["Beta-blockers (mask hypoglycemia)", "Alcohol (disulfiram-like reaction)"]
+      difficulty: easy
+
+    glucagon:
+      brand: "GlucaGen"
+      class: "Hyperglycemic agent"
+      mechanism: "Stimulates glycogenolysis and gluconeogenesis in the liver"
+      indication: "Severe hypoglycemia, beta-blocker/CCB overdose"
+      side_effects: ["Nausea", "Vomiting", "Hyperglycemia"]
+      nursing: "Give IM or SubQ; position patient on side (vomiting risk); follow with carbohydrate when conscious"
+      antidote: null
+      interactions: ["Warfarin (may increase INR)"]
+      difficulty: easy
+
+    levothyroxine:
+      brand: "Synthroid, Levoxyl"
+      class: "Thyroid hormone replacement"
+      mechanism: "Synthetic T4 that converts to active T3 in peripheral tissues"
+      indication: "Hypothyroidism"
+      side_effects: ["Tachycardia", "Tremor", "Weight loss", "Heat intolerance (if overdosed — mimics hyperthyroidism)"]
+      nursing: "Take on empty stomach 30-60 min before breakfast; monitor TSH; many drug interactions; lifelong therapy"
+      antidote: null
+      interactions: ["Calcium", "Iron", "Antacids", "Soy (all decrease absorption)"]
+      difficulty: easy
+
+    propylthiouracil:
+      brand: "PTU"
+      class: "Antithyroid agent (thioamide)"
+      mechanism: "Inhibits thyroid peroxidase, blocking T3/T4 synthesis; also blocks T4→T3 conversion"
+      indication: "Hyperthyroidism, thyroid storm"
+      side_effects: ["Agranulocytosis", "Hepatotoxicity", "Hypothyroidism"]
+      nursing: "Monitor CBC, liver function; report sore throat/fever (agranulocytosis sign); preferred in first trimester pregnancy"
+      antidote: null
+      interactions: ["Anticoagulants"]
+      difficulty: medium
+
+    desmopressin:
+      brand: "DDAVP"
+      class: "Vasopressin analog (ADH)"
+      mechanism: "Synthetic ADH — increases water reabsorption in collecting duct"
+      indication: "Diabetes insipidus, enuresis, von Willebrand disease, hemophilia A"
+      side_effects: ["Water intoxication", "Hyponatremia", "Headache"]
+      nursing: "Monitor I&O, daily weight, sodium; restrict fluid if hyponatremia develops"
+      antidote: null
+      interactions: ["Lithium (antagonizes ADH effect)"]
+      difficulty: medium
+
+    prednisone:
+      brand: "Deltasone"
+      class: "Systemic corticosteroid (glucocorticoid)"
+      mechanism: "Binds intracellular glucocorticoid receptors, suppressing inflammation and immune response"
+      indication: "Inflammation, autoimmune disorders, asthma exacerbations, transplant rejection"
+      side_effects: ["Hyperglycemia", "Immunosuppression", "Osteoporosis", "Cushingoid features", "Adrenal suppression", "GI ulceration"]
+      nursing: "Taper gradually (never stop abruptly — adrenal crisis); monitor glucose; take with food; calcium/vitamin D supplementation"
+      antidote: null
+      interactions: ["NSAIDs (GI bleed risk)", "Live vaccines (contraindicated)", "Diabetic medications"]
+      difficulty: medium
+
+    fludrocortisone:
+      brand: "Florinef"
+      class: "Mineralocorticoid"
+      mechanism: "Binds mineralocorticoid receptors, promoting sodium and water retention"
+      indication: "Adrenal insufficiency (Addison disease), orthostatic hypotension"
+      side_effects: ["Hypertension", "Hypokalemia", "Edema", "Heart failure"]
+      nursing: "Monitor BP, weight, potassium; supplement potassium if needed"
+      antidote: null
+      interactions: ["NSAIDs", "Diuretics"]
+      difficulty: medium
+
+    alendronate:
+      brand: "Fosamax"
+      class: "Bisphosphonate"
+      mechanism: "Inhibits osteoclast-mediated bone resorption"
+      indication: "Osteoporosis prevention and treatment"
+      side_effects: ["Esophageal irritation/ulceration", "Osteonecrosis of the jaw", "Atypical femur fractures"]
+      nursing: "Take on empty stomach with full glass of water; remain upright 30 min after dose; dental exam before starting"
+      antidote: null
+      interactions: ["Calcium", "Antacids", "Iron (take 30 min apart)"]
+      difficulty: easy
+
+    allopurinol:
+      brand: "Zyloprim"
+      class: "Xanthine oxidase inhibitor"
+      mechanism: "Inhibits xanthine oxidase, reducing uric acid production"
+      indication: "Gout (chronic management), uric acid nephropathy"
+      side_effects: ["Rash (may progress to Stevens-Johnson)", "GI upset", "Hepatotoxicity"]
+      nursing: "Increase fluid intake; may initially worsen gout attacks (give with colchicine for first 3-6 months); monitor uric acid levels"
+      antidote: null
+      interactions: ["Azathioprine (allopurinol increases its levels)", "Warfarin"]
+      difficulty: easy
+
+  # === GI & RESPIRATORY ===
+  gi_respiratory:
+    omeprazole:
+      brand: "Prilosec"
+      class: "Proton pump inhibitor (PPI)"
+      mechanism: "Irreversibly inhibits H+/K+ ATPase pump in parietal cells"
+      indication: "GERD, peptic ulcer disease, Zollinger-Ellison syndrome, H. pylori (triple therapy)"
+      side_effects: ["Headache", "C. difficile risk", "Hypomagnesemia", "B12 deficiency", "Fracture risk (long-term)"]
+      nursing: "Take 30 min before first meal; long-term use risks; may decrease clopidogrel effectiveness"
+      antidote: null
+      interactions: ["Clopidogrel (reduced activation)", "Methotrexate", "Iron/calcium absorption"]
+      difficulty: easy
+
+    famotidine:
+      brand: "Pepcid"
+      class: "H2-receptor antagonist"
+      mechanism: "Blocks histamine-2 receptors on parietal cells, reducing acid secretion"
+      indication: "GERD, peptic ulcers, heartburn"
+      side_effects: ["Headache", "Dizziness", "Constipation"]
+      nursing: "Fewer drug interactions than PPIs; can take before meals or at bedtime"
+      antidote: null
+      interactions: ["Minimal"]
+      difficulty: easy
+
+    docusate:
+      brand: "Colace"
+      class: "Stool softener"
+      mechanism: "Surfactant that allows water and fat to penetrate stool"
+      indication: "Constipation prevention (especially with opioids)"
+      side_effects: ["Mild cramping", "Diarrhea"]
+      nursing: "Prophylactic with opioid therapy; takes 1-3 days to work; increase fluid intake"
+      antidote: null
+      interactions: ["Mineral oil"]
+      difficulty: easy
+
+    lactulose:
+      brand: "Enulose, Kristalose"
+      class: "Osmotic laxative / ammonia reducer"
+      mechanism: "Draws water into bowel lumen; acidifies colon to trap ammonia"
+      indication: "Constipation, hepatic encephalopathy"
+      side_effects: ["Bloating", "Flatulence", "Diarrhea", "Electrolyte imbalances"]
+      nursing: "For hepatic encephalopathy: titrate to 2-3 soft stools/day; monitor ammonia levels and electrolytes"
+      antidote: null
+      interactions: ["Antacids"]
+      difficulty: medium
+
+    loperamide:
+      brand: "Imodium"
+      class: "Antidiarrheal (opioid agonist — peripheral)"
+      mechanism: "Activates mu-opioid receptors in intestinal wall, slowing motility"
+      indication: "Diarrhea (acute and chronic)"
+      side_effects: ["Constipation", "Abdominal pain", "Cardiac toxicity in overdose"]
+      nursing: "Do not use in C. difficile or bacterial dysentery; OTC; excessive doses can cause cardiac arrest"
+      antidote: null
+      interactions: []
+      difficulty: easy
+
+    ondansetron:
+      brand: "Zofran"
+      class: "5-HT3 receptor antagonist antiemetic"
+      mechanism: "Blocks serotonin 5-HT3 receptors in CTZ and vagal nerve"
+      indication: "Nausea/vomiting (chemo-induced, postoperative, pregnancy)"
+      side_effects: ["Headache", "Constipation", "QT prolongation"]
+      nursing: "Give 30 min before chemotherapy; monitor ECG in patients at QT risk; safe in pregnancy"
+      antidote: null
+      interactions: ["QT-prolonging drugs"]
+      difficulty: easy
+
+    metoclopramide:
+      brand: "Reglan"
+      class: "Prokinetic antiemetic (dopamine antagonist)"
+      mechanism: "Blocks dopamine D2 receptors in CTZ; enhances GI motility"
+      indication: "Gastroparesis, GERD, nausea"
+      side_effects: ["Extrapyramidal symptoms", "Tardive dyskinesia (Black Box)", "Drowsiness"]
+      nursing: "Black Box: risk of tardive dyskinesia with prolonged use (>12 weeks); avoid in Parkinson disease"
+      antidote: "Diphenhydramine (for EPS)"
+      interactions: ["Opioids (antagonizes motility effect)", "Antipsychotics"]
+      difficulty: medium
+
+    pancrelipase:
+      brand: "Creon, Zenpep"
+      class: "Pancreatic enzyme replacement"
+      mechanism: "Provides exogenous lipase, protease, and amylase for fat/protein/starch digestion"
+      indication: "Pancreatic insufficiency (cystic fibrosis, chronic pancreatitis)"
+      side_effects: ["GI upset", "Fibrosing colonopathy (high doses)"]
+      nursing: "Take with meals; do not crush enteric-coated capsules; monitor stool fat and weight gain"
+      antidote: null
+      interactions: ["Antacids (reduce effectiveness)"]
+      difficulty: easy
+
+    sulfasalazine:
+      brand: "Azulfidine"
+      class: "Aminosalicylate"
+      mechanism: "Releases 5-ASA locally in colon, reducing inflammation"
+      indication: "Ulcerative colitis, Crohn disease, rheumatoid arthritis"
+      side_effects: ["Nausea", "Orange discoloration of urine/skin", "Blood dyscrasias", "Sulfa allergy"]
+      nursing: "Maintain adequate hydration; monitor CBC; contains sulfa component; take with food"
+      antidote: null
+      interactions: ["Folate (decreases absorption)", "Digoxin"]
+      difficulty: medium
+
+    albuterol:
+      brand: "ProAir, Ventolin, Proventil"
+      class: "Short-acting beta-2 agonist (SABA)"
+      mechanism: "Stimulates beta-2 receptors in bronchial smooth muscle, causing bronchodilation"
+      indication: "Acute bronchospasm, asthma, exercise-induced bronchospasm"
+      side_effects: ["Tachycardia", "Tremor", "Hypokalemia", "Nervousness"]
+      nursing: "Rescue inhaler — use first for acute symptoms; if using with corticosteroid inhaler, use albuterol first; shake before use"
+      antidote: null
+      interactions: ["Beta-blockers (antagonize)", "Digoxin (hypokalemia risk)"]
+      difficulty: easy
+
+    ipratropium:
+      brand: "Atrovent"
+      class: "Anticholinergic bronchodilator"
+      mechanism: "Blocks muscarinic M3 receptors in bronchial smooth muscle"
+      indication: "COPD maintenance, severe asthma (with albuterol)"
+      side_effects: ["Dry mouth", "Cough", "Headache"]
+      nursing: "Slower onset than albuterol; often combined (DuoNeb); rinse mouth after use; avoid with soy/peanut allergy"
+      antidote: null
+      interactions: ["Other anticholinergics (additive effects)"]
+      difficulty: easy
+
+    fluticasone:
+      brand: "Flovent (inhaled), Flonase (nasal)"
+      class: "Inhaled corticosteroid (ICS)"
+      mechanism: "Reduces airway inflammation by suppressing cytokine and mediator release"
+      indication: "Asthma maintenance, allergic rhinitis"
+      side_effects: ["Oral candidiasis (thrush)", "Dysphonia", "Adrenal suppression (high doses)"]
+      nursing: "RINSE MOUTH after each use (prevent thrush); controller medication — not for acute attacks; use spacer with MDI"
+      antidote: null
+      interactions: ["CYP3A4 inhibitors (increase systemic absorption)"]
+      difficulty: easy
+
+    montelukast:
+      brand: "Singulair"
+      class: "Leukotriene receptor antagonist"
+      mechanism: "Blocks leukotriene D4 receptors, reducing bronchoconstriction and inflammation"
+      indication: "Asthma prophylaxis, exercise-induced bronchospasm, allergic rhinitis"
+      side_effects: ["Headache", "Neuropsychiatric effects (Black Box: mood changes, suicidal thinking)"]
+      nursing: "Black Box: neuropsychiatric events; take in evening; not for acute attacks; monitor mood changes"
+      antidote: null
+      interactions: ["Phenobarbital", "Rifampin"]
+      difficulty: easy
+
+    diphenhydramine:
+      brand: "Benadryl"
+      class: "First-generation antihistamine"
+      mechanism: "Blocks H1 histamine receptors; crosses blood-brain barrier (sedating)"
+      indication: "Allergic reactions, insomnia, motion sickness, EPS treatment"
+      side_effects: ["Sedation", "Anticholinergic effects", "Paradoxical excitement in children"]
+      nursing: "Avoid in elderly (Beers list); CNS depression; use as EPS antidote; may cause paradoxical excitation in children"
+      antidote: null
+      interactions: ["CNS depressants", "Alcohol", "Other anticholinergics"]
+      difficulty: easy
+
+    theophylline:
+      brand: "Theo-24"
+      class: "Methylxanthine bronchodilator"
+      mechanism: "Inhibits phosphodiesterase and blocks adenosine receptors"
+      indication: "Asthma, COPD (adjunct)"
+      side_effects: ["Tachycardia", "Seizures", "Nausea/vomiting", "Insomnia", "Dysrhythmias"]
+      nursing: "Very narrow therapeutic index (10-20 mcg/mL); monitor levels; avoid caffeine; many drug interactions"
+      antidote: null
+      interactions: ["Ciprofloxacin (increases levels)", "Phenytoin", "Smoking (decreases levels)"]
+      difficulty: medium
+
+  # === OB & WOMEN'S HEALTH ===
+  ob_womens_health:
+    oxytocin:
+      brand: "Pitocin"
+      class: "Uterotonic (oxytocic)"
+      mechanism: "Stimulates oxytocin receptors in uterine smooth muscle, inducing contractions"
+      indication: "Labor induction/augmentation, postpartum hemorrhage"
+      side_effects: ["Uterine hyperstimulation", "Water intoxication", "Neonatal hyperbilirubinemia", "Uterine rupture"]
+      nursing: "Titrate based on contractions; monitor FHR and contraction pattern; discontinue if uterine hyperstimulation"
+      antidote: "Terbutaline (for uterine hyperstimulation)"
+      interactions: ["Vasopressors"]
+      difficulty: medium
+
+    magnesium_sulfate:
+      brand: "MgSO4"
+      class: "Anticonvulsant / tocolytic"
+      mechanism: "Blocks neuromuscular transmission; reduces acetylcholine release"
+      indication: "Preeclampsia/eclampsia (seizure prevention), preterm labor (neuroprotection)"
+      side_effects: ["Respiratory depression", "Hypotension", "Loss of deep tendon reflexes", "Cardiac arrest"]
+      nursing: "Monitor DTRs, respiratory rate, urine output, magnesium levels (4-7 mEq/L); have calcium gluconate at bedside"
+      antidote: "Calcium gluconate"
+      interactions: ["Calcium channel blockers", "CNS depressants"]
+      difficulty: hard
+
+    terbutaline:
+      brand: "Brethine"
+      class: "Beta-2 adrenergic agonist (tocolytic)"
+      mechanism: "Stimulates beta-2 receptors, relaxing uterine smooth muscle"
+      indication: "Preterm labor (short-term tocolysis), acute uterine hyperstimulation"
+      side_effects: ["Tachycardia", "Tremor", "Hyperglycemia", "Pulmonary edema"]
+      nursing: "Black Box: do not use >48-72 hours; monitor maternal HR and FHR; monitor glucose"
+      antidote: null
+      interactions: ["Beta-blockers (antagonize)", "MAOIs"]
+      difficulty: medium
+
+    rho_d_immune_globulin:
+      brand: "RhoGAM"
+      class: "Immunoglobulin"
+      mechanism: "Prevents maternal Rh sensitization by destroying fetal Rh+ RBCs in maternal circulation"
+      indication: "Rh-negative mothers exposed to Rh-positive fetal blood"
+      side_effects: ["Injection site pain", "Fever", "Mild allergic reaction"]
+      nursing: "Give at 28 weeks and within 72 hours of delivery (if newborn is Rh+); never give to Rh-positive mothers or newborns"
+      antidote: null
+      interactions: ["Live vaccines (may interfere — wait 3 months)"]
+      difficulty: medium
+
+    tamoxifen:
+      brand: "Nolvadex"
+      class: "Selective estrogen receptor modulator (SERM)"
+      mechanism: "Blocks estrogen receptors in breast tissue; agonist in bone and uterus"
+      indication: "ER-positive breast cancer (adjuvant), breast cancer prevention"
+      side_effects: ["Hot flashes", "Endometrial cancer risk", "Thromboembolic events", "Vaginal dryness"]
+      nursing: "Monitor for abnormal vaginal bleeding (endometrial cancer); annual gyn exam; increased VTE risk"
+      antidote: null
+      interactions: ["Warfarin (increased effect)", "CYP2D6 inhibitors"]
+      difficulty: medium
+
+    oral_contraceptive:
+      brand: "Various (Ortho-Cyclen, Yaz)"
+      class: "Combined oral contraceptive (estrogen + progestin)"
+      mechanism: "Suppresses ovulation via negative feedback on hypothalamic-pituitary axis"
+      indication: "Contraception, menstrual regulation, acne, endometriosis"
+      side_effects: ["VTE risk", "Hypertension", "Headache", "Nausea", "Breast tenderness"]
+      nursing: "Contraindicated in smokers >35, history of VTE, migraine with aura; take at same time daily; many drug interactions reduce effectiveness"
+      antidote: null
+      interactions: ["Rifampin (reduces effectiveness)", "Anticonvulsants", "Antibiotics (controversial)"]
+      difficulty: easy
