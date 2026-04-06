@@ -1470,8 +1470,8 @@
         distractorSource = fact.distractors
       } else {
         question = variant.question || (variant as any).quizQuestion || ''
-        correctAnswer = variant.answer ?? variant.correctAnswer ?? fact.correctAnswer
-        distractorSource = variant.distractors ?? fact.distractors
+        correctAnswer = variant.answer ?? variant.correctAnswer ?? (variant as any).correct_answer ?? fact.correctAnswer
+        distractorSource = variant.distractors ?? (variant as any).distractors ?? fact.distractors
       }
       // Store back the source index in the original array for variety tracking.
       const variantQuestion = typeof variant === 'string' ? variant : (variant.question || (variant as any).quizQuestion || '')

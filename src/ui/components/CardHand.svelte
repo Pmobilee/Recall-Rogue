@@ -844,7 +844,7 @@
         {isDraggingThis && chargeProgress > 0.05 ? `filter: drop-shadow(0 0 ${8 + chargeProgress * 8}px rgba(250, 204, 21, ${chargeProgress * 0.8})) drop-shadow(0 0 ${16 + chargeProgress * 16}px rgba(250, 204, 21, ${chargeProgress * 0.4}));` : (isActiveChainMatch && !isSelected && !isDraggingThis && selectedIndex === null && activeChainHex ? `filter: drop-shadow(0 0 6px ${activeChainHex}99) drop-shadow(0 0 12px ${activeChainHex}55);` : '')}
       "
       data-testid="card-hand-{i}"
-      aria-label="{card.mechanicName}: costs {card.apCost ?? 1} AP, {getShortCardDescription(card)}. Card {i + 1} of {cards.length}."
+      aria-label="{card.mechanicName}: costs {card.apCost ?? 1} AP, {getShortCardDescription(card, getEffectValue(card))}. Card {i + 1} of {cards.length}."
       disabled={disabled || isOther}
       use:initCardAnimOffsets
       onpointerdown={(e) => handlePointerDown(e, i)}
@@ -1192,7 +1192,7 @@
         {isDraggingThis && chargeProgress > 0.05 ? `filter: drop-shadow(0 0 ${8 + chargeProgress * 8}px rgba(250, 204, 21, ${chargeProgress * 0.8})) drop-shadow(0 0 ${16 + chargeProgress * 16}px rgba(250, 204, 21, ${chargeProgress * 0.4}));` : (isActiveChainMatch && !isSelected && !isDraggingThis && selectedIndex === null && activeChainHex ? `filter: drop-shadow(0 0 6px ${activeChainHex}99) drop-shadow(0 0 12px ${activeChainHex}55);` : '')}
       "
       data-testid="card-hand-{i}"
-      aria-label="{card.mechanicName}: costs {card.apCost ?? 1} AP, {getShortCardDescription(card)}. Card {i + 1} of {cards.length}."
+      aria-label="{card.mechanicName}: costs {card.apCost ?? 1} AP, {getShortCardDescription(card, getEffectValue(card))}. Card {i + 1} of {cards.length}."
       disabled={disabled || isOther}
       use:initCardAnimOffsets
       onpointerdown={(e) => handlePointerDown(e, i)}
