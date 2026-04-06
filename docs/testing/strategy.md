@@ -134,7 +134,7 @@ node scripts/verify-all-decks.mjs           # All decks, summary table
 node scripts/verify-all-decks.mjs --verbose  # Per-fact details on failures
 ```
 
-Checks 12 quality dimensions across all 63 decks (45K+ facts): pool field naming, orphaned pool references, duplicate questions (excluding image-based), braces in questions (excluding fill-in-blank `{___}`), distractor collisions, missing fields, pool size minimums.
+Checks 22 quality dimensions across all 75 decks (53K+ facts): pool field naming, orphaned pool references, duplicate questions (excluding image-based), braces in questions (excluding fill-in-blank `{___}`), distractor collisions, missing fields, pool size minimums, em-dash in answers (FAIL), and answer-in-question self-answering (WARN).
 
 Run after modifying any deck JSON or assembly script. Target: 0 failures.
 

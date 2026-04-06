@@ -448,3 +448,40 @@ After adding Check 26 (`distractor_format_inconsistency`) to `quiz-audit-engine.
 5. Minimum 15 total pool members (real facts + synthetics) before a pool is production-ready
 
 **Lesson:** Programmatic checks catch FORMAT problems. LLM review catches SEMANTIC problems. Both are required. The old workflow (verify-all-decks.mjs passes → ship) was necessary but NOT sufficient. The quiz-audit-engine.ts programmatic checks are also necessary but not sufficient. Only the combination of programmatic + LLM review catches all categories of quality failures.
+
+### 2026-04-05 — Mass Percentage Distractors Can Exceed 100% (Impossible Values)
+
+In `solar_system` bracket_numbers pool, distractors for "What percentage of the solar system's total mass does the Sun contain?" included 120.24% and 138.52%. A percentage of total mass cannot exceed 100% — these are physically impossible and trivially eliminatable.
+
+**Rule:** When generating numerical distractors for percentage-of-total questions, ALL distractors MUST be in the range 0-100. Distractor generation workers must be explicitly instructed to validate this for percentage questions.
+
+### 2026-04-05 — Small Pools (3 members) Produce Categorically Incoherent Distractors
+
+In `solar_system` system_facts pool (3 members: "Kuiper Belt", "Medium-sized (G-type)", "Prograde direction"), each question asked about a different concept (region, star type, direction). Because the pool is only 3 members, distractors for each question are the other two facts' answers — which belong to completely different semantic categories. A student asking "what region is beyond Neptune?" is shown "Medium-sized (G-type)" (a stellar classification) and "Prograde direction" (an orbital direction) as wrong options. These are trivially eliminatable as non-regions.
+
+**Rule:** Pools with fewer than 5 members must be evaluated for semantic coherence. If pool members answer different semantic questions (region vs. classification vs. direction), the pool is misconfigured. Either merge with a larger coherent pool or add 5+ semantically consistent members.
+
+### 2026-04-05 — Distractor Annotation Tells (Metadata in Answer Text)
+
+In `us_presidents` home_states pool, the Ohio distractor was written as "Ohio (8 presidents)" while the correct answer "Virginia" had no annotation. When a question asks "which state has produced the MOST presidents," showing a count annotation only on a distractor (Ohio) but not on the correct answer (Virginia, also 8) creates an asymmetry that signals Virginia is correct. Answer display text must be uniform — either all answers include parenthetical metadata or none do. Never annotate only distractors.
+
+### 2026-04-05 — Self-Answering Check Must Be WARN Not FAIL in verify-all-decks.mjs
+
+When adding the "answer appears in question" check (check #22), it was initially placed inside `checkFact()` which routes all return values as FAILs. This turned ~50 existing facts into hard failures.
+
+The fix: move the self-answering check out of `checkFact()` and into the per-fact warning block in the main `verifyDeck()` loop (where checks #14, #15, #18, #19 live). That block uses `factWarnings.push()` which shows as WARN, not FAIL.
+
+Rule of thumb for `verify-all-decks.mjs`: put hard structural errors inside `checkFact()`, put quality guidance (subjective, may have legitimate exceptions) in the per-fact warning block after the `checkFact()` call.
+
+### 2026-04-05 — Em-Dash Explanations in correctAnswer Fields
+
+**What:** 41 facts across 7 decks (human_anatomy, ap_physics_1, ancient_greece, ap_biology, constellations, famous_inventions, mammals_world) had explanatory text baked into the correctAnswer using em-dashes: `"Vestigial — no known significant digestive function"`.
+
+**Why it's bad:** The explanation makes the answer 2-3x longer than distractors, creating an obvious length tell. Students can guess the correct answer just by picking the longest option without any subject knowledge.
+
+**Fix:** Split on ` — `. Keep the part before as `correctAnswer`. Move the part after to the `explanation` field.
+
+**Prevention:**
+1. Em-dash check added to `quiz-audit-engine.ts` (check #1: `em_dash_answer`)
+2. Rule added to `.claude/rules/content-pipeline.md` and deck-master skill: "NEVER use em-dashes in correctAnswer"
+3. `verify-all-decks.mjs` now checks for em-dashes in answers

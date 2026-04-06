@@ -250,7 +250,7 @@ function getPoolDistractors(fact, deck, count = 3) {
 }
 
 // ---------------------------------------------------------------------------
-// Issue checking — 20 checks total (8 original + 4 new + 1 template-pool compatibility + 6 new quality checks + 1 pool-homogeneity)
+// Issue checking — 22 checks total (8 original + 4 new + 1 template-pool compatibility + 6 new quality checks + 1 pool-homogeneity + 2 new answer-quality checks)
 // ---------------------------------------------------------------------------
 
 /**
@@ -385,6 +385,11 @@ function checkFact(fact, displayedAnswer, distractors, isBracket, pool, usedFall
     if (s === undefined || s === null || s < 1 || s > 10) {
       issues.push(`funScore out of range (${s}, must be 1-10)`);
     }
+  }
+
+  // 21. Em-dash in correctAnswer (baked-in explanation — creates unfair length tell)
+  if (fact.correctAnswer && fact.correctAnswer.includes('—')) {
+    issues.push(`correctAnswer contains em-dash: "${fact.correctAnswer.slice(0, 60)}". Move explanation to explanation field.`);
   }
 
   return issues;
@@ -618,6 +623,15 @@ function verifyDeck(deckId, deck) {
     if (!isVocab && fact.explanation && fact.quizQuestion) {
       if (normaliseQuestion(fact.explanation) === normaliseQuestion(fact.quizQuestion)) {
         factWarnings.push({ index: i + 1, factId: fact.id, msg: 'Explanation duplicates quizQuestion' });
+      }
+    }
+
+    // Check #22 WARNING: answer text appears verbatim in question (self-answering; skip vocab)
+    if (!isVocab) {
+      const ansLower22 = (fact.correctAnswer || '').toLowerCase().replace(/[{}]/g, '');
+      const qLower22 = (fact.quizQuestion || '').toLowerCase();
+      if (ansLower22.length > 5 && qLower22.includes(ansLower22)) {
+        factWarnings.push({ index: i + 1, factId: fact.id, msg: `correctAnswer "${(fact.correctAnswer || '').slice(0, 40)}" appears verbatim in quizQuestion — self-answering` });
       }
     }
   }

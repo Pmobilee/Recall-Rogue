@@ -31,6 +31,29 @@ Curated decks are distinct from the trivia `facts.db` SQLite database. They are 
 ### Exam-Aligned Decks
 Decks covering material from standardized exams (AP, JLPT, CEFR, TOPIK, HSK, USMLE, NCLEX, SAT, IB, GCSE/A-Level) are structured to match the exam's official scope document. Every testable concept is covered, content is weighted by exam importance, and facts include the `examTags` field for filtering by exam name and unit/section. See `.claude/rules/content-pipeline.md` — "Exam-Aligned Deck Standard" section — for the full standard. AP Biology is the first deck built under this standard.
 
+### Personal Decks (Anki Import / Manual)
+
+Personal decks are player-created or Anki-imported decks stored in `PlayerSave.personalDecks`. They share the same `CuratedDeck` / `DeckFact` shape but are persisted in the save file rather than compiled into `public/curated.db`.
+
+**Key differences from curated decks:**
+- Domain is `'personal'` (not a CanonicalFactDomain)
+- No pre-generated distractors — default `quizResponseMode: 'typing'`
+- Single answer pool: `anki_default` (all facts in one pool)
+- Registered into the in-memory store at startup via `personalDeckStore.registerPersonalDecks()`
+- Extends `CuratedDeck` with extra fields: `source`, `importedAt`, `ankiDeckName?`, `cardCount`
+
+**Source files:**
+- `src/data/curatedDeckTypes.ts` — `PersonalDeck` interface
+- `src/services/ankiService.ts` — Anki .apkg import/export (parse, convert, create)
+- `src/services/personalDeckStore.ts` — persistence and registration
+
+**Anki .apkg format notes:**
+- An .apkg is a ZIP containing `collection.anki2` (SQLite) and a `media` JSON file
+- Notes (facts) have fields separated by char code 31 (`\x1f`). Field 0 = Front, Field 1 = Back for Basic notes.
+- Scheduling data is in the `cards` table: `type` (0=new/1=learning/2=review/3=relearning), `factor` in permille, `ivl` in days
+- Import maps Anki scheduling → `ReviewState` on a best-effort basis (SM-2 → FSRS approximation)
+- Export uses the "Basic" note type with `schedVer: 2`
+
 ---
 
 ## Deck JSON Structure
@@ -159,24 +182,42 @@ Use `pool.homogeneityExempt: true` only when answer-length variation is inherent
 
 Do NOT use it to avoid fixing a misclassified fact, a bare number that should use `{N}` bracket notation, or an outlier that can reasonably be trimmed or expanded.
 
+### Answer Format Rules (2026-04-05)
+
+**NEVER use em-dashes (—) in `correctAnswer` fields.** Em-dash explanations make the answer 2-3x longer than distractors — an obvious length tell.
+
+- Wrong: `"correctAnswer": "Vestigial — no known digestive function"`
+- Right: `"correctAnswer": "Vestigial"`, `"explanation": "No known digestive function."`
+
+**Answer conciseness rules:**
+- Answers must contain the core answer only — no parenthetical elaborations
+- No compound questions asking two things with one answer (split into two facts)
+- Answer must not appear verbatim in the question stem (self-answering)
+- Question type keywords must match answer format: who→name, when→date, how many→number
+- No duplicate or near-duplicate Q/A pairs within the same deck
+
 ---
 
 ## Verification & Quality Gates
 
 ### Batch Verifier — `scripts/verify-all-decks.mjs`
 
-Runs 20 checks across all decks. Must produce 0 failures before committing deck changes.
+Runs 22 checks across all decks. Must produce 0 failures before committing deck changes.
 
 ```bash
 node scripts/verify-all-decks.mjs           # Summary table
 node scripts/verify-all-decks.mjs --verbose  # Per-fact failure details
 ```
 
-**20 checks — 13 structural + 6 content quality + 1 pool homogeneity:**
+**22 checks — 13 structural + 6 content quality + 1 pool homogeneity + 2 answer-quality:**
 
 Structural (FAIL): braces in answer/question, answer-in-distractors, duplicate distractors, distractor count, pool size, missing fields, non-numeric bracket distractors, missing explanation, duplicate questions, orphaned pool refs, empty pools, template-pool placeholder compatibility.
 
 Content quality: answer too long (FAIL >100 chars, WARN >60), question too long (FAIL >400 chars, WARN >300), difficulty out of range (FAIL), funScore out of range (FAIL), explanation too short (WARN <20 chars), explanation duplicates question (WARN).
+
+Answer quality (2 new checks):
+- Em-dash in correctAnswer (FAIL): Answer contains — — baked-in explanations create unfair length tells. Move explanation text to the explanation field.
+- Answer appears in question (WARN): correctAnswer text (>5 chars) appears verbatim in quizQuestion — self-answering question (skip vocab).
 
 Pool homogeneity (check #20, non-vocab only): Per pool, if the max/min display-length ratio of non-bracket answers exceeds 3x → FAIL (displayed); exceeds 2x → WARN. Catches pools that mix very short answers with long ones, making the correct answer visually obvious. Bracket-number answers are excluded (numerical distractors are algorithmic). NOTE: Pool-homogeneity FAIL does NOT block commits — it is informational only, since educational content inherently has name-length variation (e.g. 'Pons' vs 'Visceral and parietal pleura' in the same anatomy pool). The 3x threshold is a quality guide, not a hard gate. Use `pool-homogeneity-analysis.mjs` for detailed per-pool analysis.
 

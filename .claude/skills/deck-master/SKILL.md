@@ -170,6 +170,12 @@ Also create tasks for:
 | Missing difficulty/funScore on visual batch | human_anatomy (2026-04-03): 134 visual anatomy facts shipped without funScore and 54 without difficulty. Image fact batch generation worker did not populate metadata fields. Checks #16/#17 in verify-all-decks.mjs now catch undefined values as FAIL. | Every fact generation worker must set ALL required metadata fields (difficulty, funScore, categoryL1, categoryL2). Run verify-all-decks.mjs before committing. |
 | correctAnswer appears in own distractors array | 9 facts across 7 decks had their own correct answer listed as a distractor (2026-04-03). Same text appeared twice as answer buttons at runtime. Caught by unit test deck-content-quality.test.ts. | After any distractor generation, verify no fact's distractors[] contains its correctAnswer (case-insensitive). The batch verifier catches this as check #2 (answer-in-distractors). |
 | Deck shipped without in-game quiz audit | AP Biology (2026-04-04): 102 facts had distractors dramatically shorter than the correct answer (3-4 char distractors for 30+ char answers), making the correct answer trivially identifiable by length alone. The 19-check structural verifier passed because it checks answer length, not distractor-vs-answer length ratio. | After assembly and structural verification, ALWAYS run a 20-fact in-game quiz audit sampling all pools. Check that distractors are plausible in length, format, and content. See content-pipeline.md 'In-Game Quiz Audit' section for full protocol. |
+| Em-dash in answers | "Vestigial — no digestive function" as correctAnswer (2026-04-05, 41 facts across 7 decks) | NEVER put explanations in correctAnswer. Keep answer concise. Explanation goes in `explanation` field. Em-dash makes answer 2-3x longer than distractors — an obvious length tell. |
+| Heterogeneous pools | battle_names pool with troop counts, disease events mixed with battle names (2026-04-05, 30+ pools across 25+ decks) | Every pool must be semantically homogeneous. If members aren't interchangeable as distractors, split the pool. |
+| Hollow pools | 1-fact pool with 14 synthetics (2026-04-05, 16 hollow pools dissolved) | Never create a pool with <5 real facts. If splitting produces <5, merge into parent instead. |
+| Self-answering questions | Q: "The Wujing Zongyao contained what?" A: "Wujing Zongyao" | Answer must not be stated in the question stem. Rewrite the question. |
+| Duplicate facts | Two Titan methane-lake questions in same pool | Check for near-duplicate Q/A pairs before committing. |
+| Question-answer type mismatch | Q asks "which city?" but all answers are dates | Ensure question keywords ("who", "when", "where", "how many") match the answer format. |
 
 ### Lessons Learned: Grammar / Fill-Blank Deck Builds (2026-03-28)
 
@@ -1908,6 +1914,63 @@ Before a deck can ship, check off every item:
 - [ ] **Wow factors present** — Every fact has a deck-specific wowFactor string
 
 **If ANY checklist item fails, fix and re-run until ALL pass. No exceptions.**
+
+---
+
+## Answer Quality Rules — Learned from 2026-04-05 Audit
+
+### Em-Dash Prohibition
+
+**NEVER use em-dashes (—) in `correctAnswer` fields.**
+
+Wrong: `"correctAnswer": "Vestigial — no known significant digestive function"`
+Right: `"correctAnswer": "Vestigial"` and `"explanation": "No known significant digestive function."`
+
+The explanation belongs in the `explanation` field, not baked into the answer.
+On 2026-04-05, 41 facts across 7 decks had to be manually fixed because em-dash explanations in answers caused quiz-audit FAIL — the answer was 2-3x longer than distractors, creating an obvious length tell that students could exploit without any subject knowledge.
+
+### Answer Format Rules
+
+- Answers must be **concise** — the core answer only, no elaboration
+- No parenthetical explanations in answers: `"Term (which means X)"` → just `"Term"`
+- No compound questions asking for two answers at once: split into two separate facts
+- Answers must not restate the question: if Q asks "which city" the answer cannot be a date
+- Answers must not appear verbatim in the question stem (self-answering)
+- Answer must not contain `{N}` bracket notation followed by a unit UNLESS the display-stripped version will match distractor lengths
+
+### Pool Design Rules
+
+Every pool must contain facts of **one semantic answer type**:
+
+- All person names, OR all dates, OR all counts, OR all places — NEVER mixed
+- **The distractor test:** "Can every pool member serve as a plausible distractor for every other member's question?" If NO → split the pool.
+- No non-bracket-numbers pool under 5 real facts
+- After splitting, pad to 15+ total (real facts + `syntheticDistractors`)
+- If splitting would create a pool under 5 real facts, do NOT split — merge into a larger parent pool
+
+**Common mistakes to avoid:**
+
+| Bad pool | Why it fails |
+|----------|-------------|
+| Mixing "Marathon" (battle name) with "About 7,000" (troop count) | Different semantic types — troop count is trivially eliminatable in a name context |
+| Mixing "1500s" (date) with "Elon Musk" (name) | Format tells — student picks by type not knowledge |
+| Mixing "DNA" (3c) with "Mitochondrial oxidative phosphorylation" (40c) | Length tells — longest option is obvious |
+| Pool with 1-2 real facts + 13 synthetics | Hollow — player always sees same question, synthetics don't add variety |
+
+### Mandatory Two-Mode Audit
+
+**BOTH modes are required before ANY deck can be committed:**
+
+1. **Programmatic:** `npm run audit:quiz-engine -- --deck <id>`
+   - 27+ automated checks (structural, format, engine path)
+   - Must show 0 FAIL
+
+2. **LLM Review:** `npm run audit:quiz-engine -- --render --deck <id>` (or equivalent rendered quiz review)
+   - Output rendered quizzes, have LLM agent evaluate for:
+     clarity, correctness, plausibility, eliminatability, length tells, domain coherence, ambiguity
+   - Must show 0 CRITICAL, 0 MAJOR issues
+
+Programmatic catches FORMAT issues. LLM catches SEMANTIC issues. Neither alone is sufficient. This is NON-NEGOTIABLE.
 
 ---
 

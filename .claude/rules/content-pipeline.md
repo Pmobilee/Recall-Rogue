@@ -99,6 +99,12 @@ Every fact-generation worker MUST receive verified source data IN ITS PROMPT.
 - Pool `factIds` populated by scanning facts, never hand-crafted
 - Pool answer length homogeneity: max/min ratio < 3× within each pool (check #20). Run `node scripts/pool-homogeneity-analysis.mjs --deck <id>` — 0 FAIL required
 - Run `node scripts/quiz-audit.mjs --deck <id> --full` after every deck build — 0 FAIL required
+- NEVER use em-dashes (—) in `correctAnswer` — explanation text goes in `explanation` field
+- Answers must be concise: core answer only, no parenthetical elaborations
+- No compound questions asking two things with one answer — split into two facts
+- Answer must not appear verbatim in question stem (self-answering)
+- Question type keywords must match answer format (who→name, when→date, how many→number)
+- No duplicate or near-duplicate facts within the same pool
 
 ## Answer Pool Homogeneity — CRITICAL
 
@@ -141,9 +147,11 @@ node scripts/verify-all-decks.mjs           # Summary table (all decks)
 node scripts/verify-all-decks.mjs --verbose  # Per-fact details on failures
 ```
 
-20 checks per fact/deck — 13 structural + 6 content quality + 1 pool homogeneity:
+22 checks per fact/deck — 13 structural + 6 content quality + 1 pool homogeneity + 2 answer-quality:
 
 **Structural checks (FAIL):** braces in answer/question, answer-in-distractors, duplicate distractors, distractor count, pool size, missing fields, non-numeric bracket distractors, missing explanation, duplicate questions, orphaned pool refs, empty pools, template-pool placeholder compatibility.
+
+**Answer-quality checks:** em-dash in correctAnswer (FAIL — baked-in explanation creates length tell), answer text appears verbatim in quizQuestion (WARN — self-answering; skip vocab).
 
 **Content quality checks:** answer too long (FAIL >100 chars, WARN >60), question too long (FAIL >400 chars, WARN >300), difficulty out of range (FAIL, must be 1-5), funScore out of range (FAIL, must be 1-10), explanation too short (WARN <20 chars), explanation duplicates question (WARN).
 
