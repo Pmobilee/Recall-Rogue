@@ -3,7 +3,7 @@
 > Navigation hub for all modular documentation. Each file is independently useful —
 > an agent reading just that file should understand that system.
 >
-> **Last rebuilt:** 2026-04-04
+> **Last rebuilt:** 2026-04-06
 
 ---
 
@@ -73,6 +73,7 @@
 | [fact-pipeline](content/fact-pipeline.md) | `Fact` data format, `facts.db` SQLite build pipeline, `factsDB` runtime service, and content production workflow |
 | [domains](content/domains.md) | All knowledge domains, subcategory taxonomy, domain resolution logic, and language vs. knowledge domain distinction |
 | [content-strategy](content/CONTENT_STRATEGY.md) | Content strategy and production pipeline overview |
+| [anki-integration](content/anki-integration.md) | Anki .apkg import/export: FSRS mapping, personal deck storage, wizard UI, and known limitations |
 | [image-quiz-assets](content/image-quiz-assets.md) | Image asset library for `quizMode: 'image_question'` — dinosaur set (39 species), manifest format, license notes |
 | [enemy-animations](content/ENEMY-ANIMATIONS.md) | Enemy sprite animation states and definitions (114KB reference) |
 | [art-backgrounds](content/ART_BRIEF_BACKGROUNDS.md) | Background art requirements and briefs |
@@ -138,6 +139,7 @@ Skill definitions live in `.claude/skills/`. Invoke with `/skill-name`. Key art 
 | `/depth-transitions` | `.claude/skills/depth-transitions/SKILL.md` | Generate depth maps and manage parallax room transition shader |
 | `/narration` | `.claude/skills/narration/SKILL.md` | Author, implement, and iterate on the Woven Narrative Architecture |
 | `/steam-deploy` | `.claude/skills/steam-deploy/SKILL.md` | Build Tauri app and upload to Steam via SteamPipe — setup, build, upload, release promotion |
+| `/anki-sync` | `.claude/skills/anki-sync/SKILL.md` | Import .apkg files as personal decks, export any deck to Anki with FSRS stats, debug personal deck issues |
 
 ---
 

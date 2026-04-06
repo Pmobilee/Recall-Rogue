@@ -3621,6 +3621,80 @@ Phase 1.5 adds free-text typed input. Later phases add Algebra, CS/Logic, Geomet
 
 For full implementation details, see `docs/mechanics/procedural-math.md`.
 
+
+## 23.55. Anki Import/Export (Study Temple)
+
+Players can import their existing Anki flashcard decks into Recall Rogue and export any deck back to Anki format — enabling seamless cross-tool study continuity.
+
+### Import Flow
+
+The Library (Study Temple) header includes an **Import Anki** button that opens a 4-step wizard:
+
+1. **Upload** — Drag-and-drop or file picker for `.apkg` files (50 MB limit)
+2. **Preview** — Shows deck name, card count, note types, field names, and first 5 cards. Indicates whether scheduling data exists.
+3. **Configure** — Deck name (editable), front/back field mapping dropdowns, toggle for FSRS scheduling import, toggle for typing vs multiple-choice mode
+4. **Import** — Progress bar, then confirmation with card count
+
+Imported cards default to **typing mode** (matching Anki's free-recall paradigm) with no pre-generated distractors. Players can opt into multiple-choice mode during import.
+
+### Export Flow
+
+Every deck (curated or personal) has an **Export to Anki** button in its detail modal. Options:
+- Include FSRS review progress (preserves scheduling continuity)
+- Export only due/overdue cards (for focused Anki review)
+
+Exports generate a standard `.apkg` file (ZIP + SQLite schema v11) compatible with all Anki versions (2.0+).
+
+### FSRS Scheduling Preservation
+
+Both import and export preserve spaced repetition state. On import, Anki's scheduling fields (type, ivl, factor, reps, lapses) are mapped to the game's `ReviewState` / FSRS fields. On export, the game's FSRS state is mapped back to Anki's schema. This means a player can:
+1. Study a deck in Anki for months
+2. Import it into Recall Rogue with all progress intact
+3. Continue studying in the game (FSRS continues where Anki left off)
+4. Export back to Anki later with updated progress
+
+### Personal Deck Storage
+
+Imported decks are stored in `PlayerSave.personalDecks` and appear under a **My Decks** tab in the Library sidebar. They participate fully in the Study Temple run flow — same combat, same FSRS, same mastery progression as curated decks.
+
+### Limitations (Current)
+
+- Media files (images, audio) are not imported/exported
+- Cloze deletions are treated as plain text
+- Only the first card template per note is imported
+- No live sync — import/export is file-based one-time transfer
+
+For implementation details, see `docs/content/anki-integration.md`.
+
+---
+
+## 23.56. Steam Workshop Deck Sharing
+
+Players can publish personal decks (Anki imports or manually created) to the Steam Workshop, and subscribe to decks shared by other players.
+
+### How it works
+
+1. **Browse** — A **Workshop** tab in the Library sidebar opens the Workshop browser. Decks show title, author, subscriber count, tags, and vote counts.
+2. **Subscribe** — Triggers a Steamworks UGC download. The deck is deserialized into a personal deck and appears in **My Decks** immediately.
+3. **Publish** — In the Workshop browser's "My Published Decks" view, select a personal deck and enter title, description, tags. Serialized and uploaded as a Workshop item.
+4. **Update** — Previously published decks can be updated with revised content.
+
+### Wire format
+
+`WorkshopDeckPackage` JSON stored as `deck.json` in the Workshop item content directory. Only quiz-essential fields travel: quizQuestion, correctAnswer, explanation, distractors, difficulty, funScore. Authors may optionally include FSRS scheduling data so subscribers continue from the same spaced repetition state.
+
+### Fact ID namespacing
+
+Subscribed deck fact IDs are prefixed with `ws_` to prevent collisions with locally imported Anki facts.
+
+### Platform requirement
+
+Workshop is only available in Steam desktop builds (Tauri). In browser/mobile builds the tab is visible but shows a "Requires Steam Build" notice. All API functions gracefully return `{ error: 'Workshop not available' }`.
+
+### Implementation status
+
+Serialize/deserialize fully implemented and tested (`src/services/workshopService.ts`). Steamworks UGC Tauri commands (`steam_ugc_create_item`, `steam_ugc_subscribe`, `steam_ugc_browse`, etc.) are stubbed — pending Rust backend. See `docs/content/anki-integration.md` §Steam Workshop Integration.
+
 ---
 
 ## 23.5. Trivia Mode

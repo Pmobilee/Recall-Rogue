@@ -25,9 +25,10 @@
     onStartRun: (deckId: string, subDeckId?: string, examTags?: string[]) => void;
     onClose: () => void;
     onAddToCustom?: (deckId: string, subDeckId?: string) => void;
+    onExportAnki?: (deckId: string, deckName: string) => void;
   }
 
-  const { deck, progress, onStartRun, onClose, onAddToCustom }: Props = $props();
+  const { deck, progress, onStartRun, onClose, onAddToCustom, onExportAnki }: Props = $props();
 
   const isAvailable = $derived(deck.status === 'available');
   const hasSubDecks = $derived(!!deck.subDecks && deck.subDecks.length > 0);
@@ -230,6 +231,12 @@
           {#if onAddToCustom}
             <button class="btn-playlist" onclick={handleAddToCustom} type="button">
               + Add to Custom Deck
+            </button>
+          {/if}
+
+          {#if onExportAnki}
+            <button class="export-anki-btn" onclick={() => onExportAnki?.(deck.id, deck.name)} type="button">
+              Export to Anki
             </button>
           {/if}
         </div>
@@ -608,5 +615,25 @@
 
   .btn-playlist:hover {
     background: rgba(99, 102, 241, 0.12);
+  }
+
+  .export-anki-btn {
+    padding: calc(6px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    color: #a78bfa;
+    font-size: calc(12px * var(--text-scale, 1));
+    cursor: pointer;
+    transition: all 0.15s ease;
+    width: 100%;
+    height: calc(36px * var(--layout-scale, 1));
+    font-weight: 600;
+  }
+
+  .export-anki-btn:hover {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: rgba(139, 92, 246, 0.4);
+    color: #c4b5fd;
   }
 </style>

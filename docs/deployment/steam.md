@@ -168,8 +168,8 @@ steamcmd +login <username> +run_app_build steam/app_build_4547570.vdf +quit
 ## Steamworks SDK Integration
 
 ### Working Features
-- **Achievements** — `steamService.unlockAchievement(id)` → Rust → Steamworks SDK
-- **Rich Presence** — Auto-updates per screen (combat, hub, library, shop, etc.)
+- **Achievements** — `steamService.unlockAchievement(id)` → Rust → Steamworks SDK. 18 achievements defined; wired in `gameFlowController.ts`.
+- **Rich Presence** — Auto-updates per screen via `steamPresenceWatcher.ts` (initialized at boot in `main.ts`). Combat shows floor + enemy name; hub/library/shop show contextual status.
 - **Platform Detection** — `platformService.hasSteam` guards all Steam calls
 - **File-Based Saves** — implemented (see above); ready for Steam Auto-Cloud configuration
 
@@ -177,25 +177,127 @@ steamcmd +login <username> +run_app_build steam/app_build_4547570.vdf +quit
 - **Leaderboards** — Requires async callback handler
 - **DLC Ownership** — Requires DLC configuration in dashboard
 
+### Achievements
+
+18 achievements defined in `src/data/steamAchievements.ts`. IDs must match the Steamworks dashboard exactly.
+
+| ID | Name | Trigger |
+|---|---|---|
+| `FIRST_VICTORY` | First Blood | First combat win (`encountersWon` reaches 1) |
+| `FIRST_RUN_COMPLETE` | The Scholar's Journey | Any run end (retreat, victory, or defeat) |
+| `BOSS_SLAYER` | Boss Slayer | Defeat a boss |
+| `FLOOR_5` | Deeper Knowledge | Reach floor 5 |
+| `FLOOR_12` | Into the Depths | Reach floor 12 |
+| `FLOOR_24` | The Final Test | Reach floor 24 |
+| `PERFECT_ENCOUNTER` | Flawless Scholar | Win combat with 0 wrong answers |
+| `STREAK_10` | Chain Master | 10-answer streak in a single run |
+| `STREAK_25` | Unstoppable Mind | 25-answer streak in a single run |
+| `LEVEL_5` | Novice | Reach character level 5 (triggers on level-up) |
+| `LEVEL_15` | Adept | Reach character level 15 |
+| `LEVEL_25` | Grand Scholar | Reach character level 25 |
+| `RELIC_COLLECTOR` | Relic Hoarder | Collect 5+ relics in a single run |
+| `FACTS_100` | Century of Knowledge | 100 cumulative correct answers (`stats.totalQuizCorrect`) |
+| `FACTS_1000` | Encyclopedic Mind | 1000 cumulative correct answers |
+| `ASCENSION_1` | Rising Challenge | Complete a run (non-defeat) at Ascension 1+ |
+| `ASCENSION_5` | True Scholar | Complete a run (non-defeat) at Ascension 5+ |
+| `ELITE_SLAYER` | Elite Hunter | 10 cumulative elite kills (`stats.totalElitesDefeated` — extended field) |
+
+**Wiring points:**
+- Combat victories: `onEncounterComplete()` in `gameFlowController.ts` — `FIRST_VICTORY`, `BOSS_SLAYER`, `PERFECT_ENCOUNTER`, and cumulative elite tracking
+- Run end: `finishRunAndReturnToHub()` — floor/streak/relic/ascension/cumulative achievements
+- Level-ups: inside XP award block in `finishRunAndReturnToHub()` — `LEVEL_5/15/25`
+
+**Cumulative achievements** (`FACTS_100/1000`, `ELITE_SLAYER`) read from `playerSave` via `checkCumulativeAchievements()`. `ELITE_SLAYER` uses `stats.totalElitesDefeated` (an extended field on `PlayerStats` — not in the TypeScript interface, stored as `any` extension).
+
+### Dev Override Fix
+
+The unconditional dev-mode save override (`characterLevel = 25`, `totalXP = 999999`, all relics unlocked) in `saveService.ts` is now guarded by `import.meta.env.DEV`. It will NOT execute in production builds.
+
+New players created via `createNewPlayer()` now start at `characterLevel: 1` (was incorrectly hardcoded to 25).
+
 ### Key Files
 - `src-tauri/src/steam.rs` — Rust Steamworks wrapper
 - `src-tauri/src/filesave.rs` — File I/O commands for save system
 - `src-tauri/src/main.rs` — Tauri entry point, registers Steam + file commands
-- `src/services/steamService.ts` — TypeScript IPC wrapper
+- `src/services/steamService.ts` — TypeScript IPC wrapper (`unlockAchievement`, `updateRichPresence`, `setRichPresence`)
+- `src/services/steamPresenceWatcher.ts` — Screen-to-Rich-Presence subscription (initialized in `main.ts`)
+- `src/data/steamAchievements.ts` — Achievement definitions (ID, name, description)
 - `src/services/storageBackend.ts` — Storage abstraction (localStorage / file backends)
 - `src/services/platformService.ts` — Platform detection (Tauri/Capacitor/Web)
 - `src-tauri/steam_appid.txt` — App ID for development (4547570)
 
-## Steamworks Dashboard Checklist
+## Steam Launch TODO
 
-Before first upload:
+Comprehensive checklist for shipping Recall Rogue on Steam. Items grouped by phase.
+
+### Phase 1 — Steamworks Dashboard Setup
+
 - [ ] Create depots (4547571 Content, 4547572 Windows, 4547573 Linux, 4547574 macOS)
-- [ ] Set launch options per OS
-- [ ] Create `development` branch
+- [ ] Set launch options per OS (macOS: `.app`, Linux: AppImage)
+- [ ] Create `development` and `staging` branches
 - [ ] Set content descriptors and age ratings
-- [ ] Upload store page assets (see docs/marketing/steam-store-page.md)
+- [ ] Configure Steam Auto-Cloud (saves/*.json, per-OS root paths — see Save System section)
+- [ ] Register 18 achievements in App Admin → Achievements (IDs from `steamAchievements.ts`)
+- [ ] Upload achievement icons (locked + unlocked, 256×256 PNG) — use `/artstudio` to generate
+- [ ] Configure Rich Presence localization tokens (optional — English hardcoded in `steamService.ts`)
+
+### Phase 2 — Store Page
+
+- [ ] Upload store page assets (see `docs/marketing/steam-store-page.md` for full spec)
+  - [ ] Header capsule (460×215)
+  - [ ] Small capsule (231×87)
+  - [ ] Main capsule (616×353)
+  - [ ] Hero graphic (3840×1240)
+  - [ ] Page background (1438×810)
+  - [ ] 8 screenshots (1920×1080) — see marketing doc for the 8-screenshot sequence
+  - [ ] Library capsule (600×900)
+  - [ ] Library hero (3840×1240)
+  - [ ] Library logo (1280×720, transparent)
+- [ ] Write store description (short + long)
+- [ ] Set tags and categories
 - [ ] Set Coming Soon page live (2-week minimum before release)
-- [ ] Configure Steam Auto-Cloud (saves/*.json pattern, per-OS root paths — see above)
+- [ ] Upload trailer (optional but strongly recommended)
+
+### Phase 3 — Build & Test
+
+- [ ] Bump version in `package.json` AND `src-tauri/tauri.conf.json` (must match)
+- [ ] Full production build: `npm run steam:build`
+- [ ] Local Steam test: `npm run steam:test` — verify launch, save/load, fullscreen toggle (F11)
+- [ ] Verify save files appear in correct platform directory
+- [ ] Test Steam overlay (Shift+Tab) doesn't break WebView rendering
+- [ ] Verify achievements fire (use `steam_set_achievement` Steamworks debug in dev)
+- [ ] Verify Rich Presence shows in Steam friends list
+- [ ] Test offline mode — game must be fully playable with no network
+- [ ] Verify XOR-obfuscated DBs load correctly in production bundle
+- [ ] Check no dev flags leak to production (`import.meta.env.DEV` guards all dev overrides)
+- [ ] Verify `createNewPlayer()` starts at level 1 (not 25)
+
+### Phase 4 — Upload & QA
+
+- [ ] First SteamPipe upload to `development` branch: `npm run steam:deploy`
+- [ ] Download from Steam on a clean machine — verify first-run experience
+- [ ] Test Steam Cloud sync: play on machine A, verify save appears on machine B
+- [ ] Test auto-update flow (upload a second build, verify Steam patches correctly)
+- [ ] Promote `development` → `staging` for wider QA
+
+### Phase 5 — Pre-Release
+
+- [ ] Set up Community Hub (discussions, guides)
+- [ ] Configure language DLCs in Steamworks (if shipping with language packs)
+  - [ ] Create DLC apps for each language (dlc_japanese, dlc_korean, etc.)
+  - [ ] Wire `steam_has_dlc` Rust command once DLC IDs are registered
+- [ ] Set up Trading Cards (optional, post-launch)
+- [ ] Review partner.steamgames.com release checklist — Valve has their own requirements
+- [ ] Final version bump + build + upload to `default` branch
+
+### Phase 6 — Post-Launch (Deferred)
+
+- [ ] Leaderboards — implement Rust async callback handler + `steam_get_leaderboard_entries`
+- [ ] Background callback pump thread (`client.run_callbacks()` on ~16ms timer)
+- [ ] GitHub Actions CI for cross-platform builds (Windows/Linux)
+- [ ] Windows build testing (currently macOS + Linux only at launch)
+- [ ] Steam Deck verification (Linux + gamepad controls)
+- [ ] Workshop support — wire 6 Tauri UGC commands (`steam_ugc_create_item`, `steam_ugc_update_item`, `steam_ugc_subscribe`, `steam_ugc_browse`, `steam_ugc_get_my_items`, `steam_ugc_get_item_path`) in `src-tauri/src/steam.rs`. TypeScript service layer + UI already implemented in `workshopService.ts` and `WorkshopBrowser.svelte`. See `docs/content/anki-integration.md` §Steam Workshop Integration.
 
 ## Cross-Platform CI (Planned)
 

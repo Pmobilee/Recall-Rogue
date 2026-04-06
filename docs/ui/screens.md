@@ -38,7 +38,7 @@ Defined as a TypeScript union type in `src/ui/stores/gameState.ts`:
 | `relicReward` | Deprecated — relic rewards now handled by `rewardRoom` Phaser scene |
 | `relicSwapOverlay` | Swap offered relic with an equipped one |
 | `runEnd` | Run summary screen: win/loss, XP, facts |
-| `library` | Knowledge Library + Deck Builder (tabbed) |
+| `library` | Knowledge Library — domain knowledge browser (no Deck Builder tab) |
 | `profile` | Player profile: stats, badges, run history |
 | `journal` | Learning journal and fact history |
 | `leaderboards` | Global / friends / guild / season leaderboards |
@@ -98,7 +98,7 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 | `postMiniBossRest` | `PostMiniBossRestOverlay` | |
 | `relicSwapOverlay` | `RelicSwapOverlay` | |
 | `runEnd` | `RunEndScreen` | Only if `activeRunEndData` exists |
-| `library` | `KnowledgeLibrary` | `libraryInitialTab` prop sets starting tab; empty domains (0 total facts) are filtered out of the domain grid |
+| `library` | `KnowledgeLibrary` | No tab switcher — renders knowledge content directly. Props: `onback`. Empty domains (0 total facts) are filtered out of the domain grid. Domain grid shows icons, section heading, and left accent border via `--domain-accent` CSS var. |
 | `profile` | `ProfileScreen` | |
 | `journal` | `JournalScreen` | |
 | `leaderboards` | `LeaderboardsScreen` | |

@@ -1,7 +1,7 @@
 # UI Components — Social, Account & Utility
 
 > **Purpose:** Non-gameplay Svelte components: social, auth, monetization, onboarding, and utility
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-05
 > **Source files:** `src/ui/components/**/*.svelte`
 
 > **See also:** [`components.md`](components.md) — Gameplay-critical components: Combat UI, Quiz & Study, Hub & Navigation, Dungeon & Map, Card Management, Rooms & Events, Rewards & Progression, Relics.
@@ -38,7 +38,7 @@
 |-----------|---------|
 | `ProfileScreen.svelte` | Player profile: stats, badges, knowledge tree, run history |
 | `AccountSettings.svelte` | Account settings: password, linked accounts, delete account |
-| `SettingsPanel.svelte` | In-game settings: difficulty, font, text size, accessibility |
+| `SettingsPanel.svelte` | In-game settings: audio, accessibility, notifications, account. **Accessibility tab** includes a Fullscreen toggle (hidden on mobile/Capacitor). Uses `fullscreenService.ts` — Tauri API on desktop, standard Fullscreen API on web. State syncs via `fullscreenchange` DOM event so external ESC-to-exit is reflected. F11 keyboard shortcut also triggers toggle globally (registered in `main.ts`). |
 | `InterestAssessment.svelte` | Onboarding interest quiz to pre-select relevant domains |
 | `InterestSettings.svelte` | Settings panel for updating domain interest preferences |
 | `LanguageModePanel.svelte` | Language learning mode toggle and configuration |
@@ -123,3 +123,23 @@
 | `OverflowLabel.svelte` | Label that truncates with an expand-on-click behavior |
 | `ShareCardModal.svelte` | Share a card's fact as a social image |
 | `FeedbackButton.svelte` | Floating "Send Feedback" button |
+
+---
+
+## Services
+
+### fullscreenService.ts
+
+`src/services/fullscreenService.ts` — Fullscreen toggle for Steam PC / desktop and web.
+
+| Export | Signature | Description |
+|--------|-----------|-------------|
+| `toggleFullscreen` | `() => Promise<boolean>` | Toggle fullscreen. Returns new state (true = fullscreen). No-op on mobile (Capacitor). |
+| `isFullscreen` | `() => Promise<boolean>` | Returns current fullscreen state. |
+
+Platform behavior:
+- **Desktop (Tauri):** uses `@tauri-apps/api/window` `getCurrentWindow().setFullscreen()` — dynamically imported so it tree-shakes on web
+- **Web:** standard `document.documentElement.requestFullscreen()` / `document.exitFullscreen()`
+- **Mobile (Capacitor):** returns `false` immediately — Capacitor manages fullscreen via native manifest
+
+F11 global shortcut registered in `src/main.ts` via `window.addEventListener('keydown')` — calls `void toggleFullscreen()`, preventDefault to suppress browser default behavior.

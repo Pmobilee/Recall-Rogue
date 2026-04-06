@@ -105,6 +105,10 @@ Progression/feature state (persisted by default path):
 
 Optional/late-phase extension fields are also part of `PlayerSave` (social, monetization, prestige, referral, sparks, etc.) and are represented as optional (`?`) keys in `src/data/types.ts`.
 
+| Field | Type | Purpose |
+| --- | --- | --- |
+| `personalDecks` | `PersonalDeck[]` | Player-imported Anki decks and manually created decks. Type defined in `src/data/curatedDeckTypes.ts`. Registered into the in-memory deck store at startup via `personalDeckStore.registerPersonalDecks()`. |
+
 ## Save and load behavior
 
 ### Full save path (`saveService`)

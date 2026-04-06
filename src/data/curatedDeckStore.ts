@@ -434,3 +434,11 @@ export async function initializeCuratedDecks(): Promise<void> {
     console.warn('[CuratedDecks] Failed to initialize:', err);
   }
 }
+
+/**
+ * Register a personal deck in the in-memory store so the quiz engine can access its facts.
+ * Called by personalDeckStore.registerPersonalDecks() at startup.
+ */
+export function registerPersonalDeckInStore(deck: CuratedDeck): void {
+  loadedDecks.set(deck.id, deck);
+}

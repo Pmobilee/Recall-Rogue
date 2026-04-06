@@ -13,6 +13,11 @@
   import DeckFilterChips from './DeckFilterChips.svelte';
   import PlaylistBar from './PlaylistBar.svelte';
   import PlaylistPickerPopup from './PlaylistPickerPopup.svelte';
+  import AnkiImportWizard from './AnkiImportWizard.svelte';
+  import AnkiExportWizard from './AnkiExportWizard.svelte';
+  import WorkshopBrowser from './WorkshopBrowser.svelte';
+  import { getPersonalDecks } from '../../services/personalDeckStore';
+  import { registerPersonalDecks } from '../../services/personalDeckStore';
   import type { CustomPlaylist, CustomPlaylistItem } from '../../data/studyPreset';
 
   interface Props {
@@ -36,8 +41,12 @@
   let showPlaylistPicker = $state(false);
   let pendingCustomItem = $state<CustomPlaylistItem | null>(null);
   let dealKey = $state(0);
+  let showAnkiImport = $state(false);
+  let showAnkiExport = $state<{ deckId: string; deckName: string } | null>(null);
   let initialTabSet = false;
   let sidebarCollapsed = $state(false);
+  /** True when the Workshop sidebar tab is active. */
+  const showWorkshop = $derived(activeTab === 'workshop');
 
   const LANGUAGE_MAP: Record<string, { name: string; flag: string }> = {
     japanese: { name: 'Japanese', flag: '\u{1F1EF}\u{1F1F5}' },
@@ -196,6 +205,12 @@
         result.push({ id: domain, label: meta.shortName, count: decks.filter(d => d.domain === domain).length });
       } catch { /* skip unknown */ }
     }
+    // Add personal decks category if any exist
+    const personalCount = decks.filter(d => (d.domain as string) === 'personal').length;
+    if (personalCount > 0) {
+      result.push({ id: 'personal', label: 'My Decks', count: personalCount });
+    }
+    result.push({ id: 'workshop', label: 'Workshop', count: 0 });
     return result;
   });
 
@@ -231,6 +246,7 @@
   const showPlaylistBar = $derived(customPlaylists.length > 0 && customPlaylists.some(p => p.items.length > 0));
 
   onMount(() => {
+    registerPersonalDecks(); // Register imported Anki decks in the deck registry
     playCardAudio('modal-open');
     // Trigger initial deal animation after tiles have mounted
     requestAnimationFrame(() => { dealKey++; });
@@ -378,6 +394,26 @@
     playCardAudio('tab-switch');
   }
 
+  function handleAnkiImportComplete(result: { deckId: string; deckName: string }) {
+    showAnkiImport = false;
+    // Re-register personal decks so they appear in the grid
+    registerPersonalDecks();
+    // Switch to Personal tab to show the new deck
+    activeTab = 'personal';
+    dealKey++;
+  }
+
+  function handleExportDeck(deckId: string, deckName: string) {
+    showAnkiExport = { deckId, deckName };
+  }
+
+  function handleWorkshopSubscribed(deckId: string, deckName: string) {
+    // Re-register personal decks so the newly subscribed Workshop deck appears.
+    registerPersonalDecks();
+    activeTab = 'personal';
+    dealKey++;
+  }
+
   $effect(() => {
     void activeTab;
     untrack(() => {
@@ -399,6 +435,9 @@
     <DeckSearchBar value={searchQuery} onsearchchange={handleSearchChange} placeholder="Search decks..." />
     <DeckSortDropdown value={sortOption} onsortchange={handleSortChange} />
     <DeckFilterChips {activeFilters} onFiltersChange={(f) => { activeFilters = f; }} />
+    <button class="anki-import-btn" onclick={() => { showAnkiImport = true; }} type="button">
+      Import Anki
+    </button>
   </header>
 
   <div class="body-layout">
@@ -424,29 +463,36 @@
     </aside>
 
     <div class="main-content">
-      <div class="deck-summary">
-        {filteredDecks.length} deck{filteredDecks.length !== 1 ? 's' : ''}
-        {#if searchQuery || activeFilters.length > 0}
-          <span class="summary-filter-note">(filtered)</span>
-        {/if}
-      </div>
-
-      <div class="deck-scroll">
-        <div class="deck-grid">
-          {#if filteredDecks.length === 0}
-            <div class="empty-state">
-              <p class="empty-title">{searchQuery ? 'No matching decks' : 'No decks available'}</p>
-              <p class="empty-sub">{searchQuery ? 'Try a different search term' : 'Decks for this category are coming soon.'}</p>
-            </div>
-          {:else}
-            {#each filteredDecks as deck, i (deck.id)}
-              {@const progress = getDeckProgress(deck.id)}
-              <DeckTileV2 {deck} {progress} onclick={() => handleDeckSelect(deck.id)} dealIndex={i} {dealKey} />
-            {/each}
+      {#if showWorkshop}
+        <WorkshopBrowser
+          personalDecks={getPersonalDecks()}
+          onSubscribed={handleWorkshopSubscribed}
+        />
+      {:else}
+        <div class="deck-summary">
+          {filteredDecks.length} deck{filteredDecks.length !== 1 ? 's' : ''}
+          {#if searchQuery || activeFilters.length > 0}
+            <span class="summary-filter-note">(filtered)</span>
           {/if}
         </div>
-      </div>
-      <div class="scroll-fade" aria-hidden="true"></div>
+
+        <div class="deck-scroll">
+          <div class="deck-grid">
+            {#if filteredDecks.length === 0}
+              <div class="empty-state">
+                <p class="empty-title">{searchQuery ? 'No matching decks' : 'No decks available'}</p>
+                <p class="empty-sub">{searchQuery ? 'Try a different search term' : 'Decks for this category are coming soon.'}</p>
+              </div>
+            {:else}
+              {#each filteredDecks as deck, i (deck.id)}
+                {@const progress = getDeckProgress(deck.id)}
+                <DeckTileV2 {deck} {progress} onclick={() => handleDeckSelect(deck.id)} dealIndex={i} {dealKey} />
+              {/each}
+            {/if}
+          </div>
+        </div>
+        <div class="scroll-fade" aria-hidden="true"></div>
+      {/if}
     </div>
   </div>
 
@@ -468,6 +514,7 @@
     onStartRun={handleStartStudyRun}
     onClose={handleModalClose}
     onAddToCustom={handleAddToCustom}
+    onExportAnki={handleExportDeck}
   />
 {/if}
 
@@ -477,6 +524,21 @@
     onAddToPlaylist={handleAddToPlaylist}
     onCreateAndAdd={handleCreateAndAdd}
     onClose={() => { showPlaylistPicker = false; pendingCustomItem = null; }}
+  />
+{/if}
+
+{#if showAnkiImport}
+  <AnkiImportWizard
+    onclose={() => { showAnkiImport = false; }}
+    onimport={handleAnkiImportComplete}
+  />
+{/if}
+
+{#if showAnkiExport}
+  <AnkiExportWizard
+    deckId={showAnkiExport.deckId}
+    deckName={showAnkiExport.deckName}
+    onclose={() => { showAnkiExport = null; }}
   />
 {/if}
 
@@ -740,5 +802,28 @@
     font-size: calc(13px * var(--text-scale, 1));
     color: #4b5563;
     margin: 0;
+  }
+
+  .anki-import-btn {
+    display: flex;
+    align-items: center;
+    gap: calc(4px * var(--layout-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    background: rgba(139, 92, 246, 0.15);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    color: #a78bfa;
+    font-size: calc(12px * var(--text-scale, 1));
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .anki-import-btn:hover {
+    background: rgba(139, 92, 246, 0.25);
+    border-color: rgba(139, 92, 246, 0.5);
+    color: #c4b5fd;
   }
 </style>

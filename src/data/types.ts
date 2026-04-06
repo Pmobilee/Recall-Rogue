@@ -2,6 +2,7 @@ import type { InterestConfig } from './interestConfig'
 import { CATEGORIES, type FactDomain, isFactDomain } from './categories'
 import type { StudyPreset, DeckMode, LastDungeonSelection } from './studyPreset'
 import type { PlayerSkillState } from './proceduralDeckTypes'
+import type { PersonalDeck } from './curatedDeckTypes'
 
 /** Visual upgrade tier for a hub floor. 0 = bare scaffolding, 3 = premium. */
 export type FloorUpgradeTier = 0 | 1 | 2 | 3
@@ -703,6 +704,10 @@ export interface PlayerSave {
   characterLevel: number
   /** ISO date string (YYYY-MM-DD) of the last run that claimed the daily-first bonus, or null. */
   lastDailyBonusDate: string | null
+
+  // Personal Decks (Anki import / manual creation)
+  /** Player-authored or Anki-imported decks stored in the save file. */
+  personalDecks?: PersonalDeck[]
 }
 
 /** Player statistics */

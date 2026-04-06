@@ -98,3 +98,19 @@ export interface DifficultyTier {
   tier: 'easy' | 'medium' | 'hard';
   factIds: string[];
 }
+
+/**
+ * A player-created or imported deck (extends CuratedDeck with metadata).
+ * Personal decks bypass the curated.db pipeline — they are persisted in PlayerSave
+ * and registered into the in-memory deck store at startup via personalDeckStore.ts.
+ */
+export interface PersonalDeck extends CuratedDeck {
+  /** How the deck was created. */
+  source: 'anki_import' | 'manual';
+  /** Unix timestamp (ms) when the deck was imported. */
+  importedAt: number;
+  /** Original deck name from the Anki .apkg file, if applicable. */
+  ankiDeckName?: string;
+  /** Total card count (may differ from facts.length if some notes were skipped). */
+  cardCount: number;
+}
