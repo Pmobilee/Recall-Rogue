@@ -488,7 +488,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   }
 
   function handleJoinLobby(code: string): void {
-    joinLobby(code, localPlayerId, 'Player')
+    const lobby = joinLobby(code, localPlayerId, 'Player')
+    currentLobby = lobby
     transitionScreen('multiplayerLobby')
   }
 

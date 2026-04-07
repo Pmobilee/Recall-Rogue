@@ -112,9 +112,27 @@ export function createLobby(playerId: string, displayName: string, mode: Multipl
   return _currentLobby;
 }
 
-/** Join an existing lobby by code */
-export function joinLobby(lobbyCode: string, playerId: string, displayName: string): void {
+/** Join an existing lobby by code. Returns a placeholder LobbyState that will
+ *  be overwritten when the host broadcasts the real lobby state. */
+export function joinLobby(lobbyCode: string, playerId: string, displayName: string): LobbyState {
   _localPlayerId = playerId;
+
+  // Create a placeholder lobby so the settings handler has something to
+  // Object.assign into when the host responds. The real values arrive via
+  // the 'mp:lobby:settings' message shortly after connecting.
+  _currentLobby = {
+    lobbyId: '',
+    hostId: '',
+    mode: 'race',
+    deckSelectionMode: 'host_picks',
+    houseRules: { ...DEFAULT_HOUSE_RULES },
+    players: [{ id: playerId, displayName, isHost: false, isReady: false }],
+    maxPlayers: 4,
+    isRanked: false,
+    lobbyCode,
+    status: 'waiting',
+  };
+
   // Use BroadcastChannel transport when ?mp param is present (two-tab dev testing).
   // The joiner connects using the lobby CODE as the channel name so it matches
   // what the host used when it called connect(lobbyId, ...) — but for broadcast
@@ -123,6 +141,8 @@ export function joinLobby(lobbyCode: string, playerId: string, displayName: stri
   transport.connect(lobbyCode, playerId);
   transport.send('mp:lobby:join', { playerId, displayName, lobbyCode });
   setupMessageHandlers();
+
+  return _currentLobby;
 }
 
 /** Leave the current lobby */
