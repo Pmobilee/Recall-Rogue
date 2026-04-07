@@ -11,6 +11,10 @@
  *   3. Host configures mode, deck, house rules (updateSettings)
  *   4. All players ready up (setReady)
  *   5. Host starts game (startGame) → shared seed generated and distributed
+ *
+ * Two-tab local testing:
+ *   Add `?mp` to the URL in both tabs to activate BroadcastChannel transport.
+ *   No server or Steam required. See docs/mechanics/multiplayer.md.
  */
 
 import { getMultiplayerTransport, destroyMultiplayerTransport, createLocalTransportPair, LocalMultiplayerTransport } from "./multiplayerTransport";
@@ -19,6 +23,31 @@ import type {
   HouseRules, RaceProgress, RaceResults, LobbyContentSelection
 } from '../data/multiplayerTypes';
 import { DEFAULT_HOUSE_RULES, MODE_MAX_PLAYERS } from '../data/multiplayerTypes';
+
+// ── Broadcast Mode Detection ──────────────────────────────────────────────────
+
+/**
+ * Returns true when the `?mp` URL param is present, activating BroadcastChannel
+ * transport for two-tab local multiplayer testing.
+ * Safe to call in non-browser environments (returns false).
+ */
+function isBroadcastMode(): boolean {
+  if (typeof window === 'undefined') return false;
+  return new URLSearchParams(window.location.search).has('mp');
+}
+
+// ── Player ID Generation ──────────────────────────────────────────────────────
+
+/**
+ * Generate a unique player ID for this tab session.
+ * Combines a timestamp (base-36) and 4 random chars to guarantee uniqueness
+ * across tabs opened within the same millisecond.
+ *
+ * Used by CardApp.svelte to avoid the two tabs colliding on 'local_player'.
+ */
+export function generatePlayerId(): string {
+  return `player_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 6)}`;
+}
 
 // ── Lobby State ──────────────────────────────────────────────────────────────
 
@@ -66,9 +95,13 @@ export function createLobby(playerId: string, displayName: string, mode: Multipl
     status: 'waiting',
   };
 
-  // Connect transport and listen for messages
-  const transport = getMultiplayerTransport();
-  transport.connect(lobbyId, playerId);
+  // Use BroadcastChannel transport when ?mp param is present (two-tab dev testing),
+  // otherwise fall back to the default platform transport (Steam P2P or WebSocket).
+  // BroadcastChannel uses lobbyCode as the channel key (shared with joiner);
+  // other transports use the full lobbyId.
+  const broadcast = isBroadcastMode();
+  const transport = getMultiplayerTransport(broadcast ? 'broadcast' : 'auto');
+  transport.connect(broadcast ? lobbyCode : lobbyId, playerId);
   setupMessageHandlers();
 
   return _currentLobby;
@@ -77,8 +110,11 @@ export function createLobby(playerId: string, displayName: string, mode: Multipl
 /** Join an existing lobby by code */
 export function joinLobby(lobbyCode: string, playerId: string, displayName: string): void {
   _localPlayerId = playerId;
-  // Send join request through transport
-  const transport = getMultiplayerTransport();
+  // Use BroadcastChannel transport when ?mp param is present (two-tab dev testing).
+  // The joiner connects using the lobby CODE as the channel name so it matches
+  // what the host used when it called connect(lobbyId, ...) — but for broadcast
+  // mode the host also uses lobbyCode as the shared rendezvous key.
+  const transport = getMultiplayerTransport(isBroadcastMode() ? 'broadcast' : 'auto');
   transport.connect(lobbyCode, playerId);
   transport.send('mp:lobby:join', { playerId, displayName, lobbyCode });
   setupMessageHandlers();

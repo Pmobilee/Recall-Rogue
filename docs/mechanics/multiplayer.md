@@ -2,7 +2,7 @@
 
 > **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopEffects.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-07 — addLocalBot() / removeLocalBot() added for same-machine dev testing
+> **Last verified:** 2026-04-07 — BroadcastChannelTransport added for two-tab local testing
 
 ## Modes
 
@@ -224,30 +224,35 @@ Source: `src/services/triviaNightService.ts`.
 - **Lobbies and matchmaking:** Fastify backend (REST + WebSocket)
 - **Gameplay transport:** Steam P2P (Steamworks Networking Sockets) primary, WebSocket fallback
 - **Same-screen local play:** LocalMultiplayerTransport (in-memory, no networking)
+- **Two-tab dev testing:** BroadcastChannelTransport (same-origin BroadcastChannel, `?mp` URL param)
 - **Anti-cheat:** Host validates quiz answers; ranked uses post-hoc replay audit
 
 ### Transport Abstraction
 
-`src/services/multiplayerTransport.ts` defines a `MultiplayerTransport` interface with three implementations:
+`src/services/multiplayerTransport.ts` defines a `MultiplayerTransport` interface with four implementations:
 
 - `SteamP2PTransport` — wraps Tauri `steamNetworkingService.ts` bridge (10 Tauri commands)
 - `WebSocketTransport` — WebSocket fallback for web/mobile
 - `LocalMultiplayerTransport` — in-memory event bus for same-screen multiplayer (Race Mode or Trivia Night hot-seat, no networking required)
+- `BroadcastChannelTransport` — browser BroadcastChannel for two-tab dev testing, activated by `?mp` URL param
 
 `createTransport(mode?)` selects the implementation:
 - `mode === 'local'` → `LocalMultiplayerTransport`
+- `mode === 'broadcast'` → `BroadcastChannelTransport`
 - `hasSteam === true` → `SteamP2PTransport`
 - otherwise → `WebSocketTransport`
 
 For same-screen play, use `createLocalTransportPair()` which returns two pre-linked instances (`[t1, t2]`). Messages sent on `t1` arrive on `t2`'s listeners via `queueMicrotask`, and vice versa.
 
-`getMultiplayerTransport(mode?)` returns the lazily-created singleton.
+`getMultiplayerTransport(mode?)` accepts `'auto' | 'local' | 'broadcast'` and returns the lazily-created singleton.
 
 ## Local Testing (Dev-Only)
 
+### `addLocalBot` / `removeLocalBot` — same-machine bot testing
+
 Two functions in `src/services/multiplayerLobbyService.ts` allow same-machine multiplayer testing without a second client, network connection, or Steam running.
 
-### `addLocalBot(botName?: string): void`
+#### `addLocalBot(botName?: string): void`
 
 Call after `createLobby()`. The function:
 
@@ -260,11 +265,11 @@ The bot transport reference is held in the module-level `_botTransport` variable
 
 **Preconditions:** A lobby must exist (`_currentLobby !== null`) and the caller must be the host (`isHost() === true`). The function is a no-op otherwise.
 
-### `removeLocalBot(): void`
+#### `removeLocalBot(): void`
 
 Filters all `bot_*` players from `_currentLobby.players`, calls `disconnect()` on the stored bot transport, nulls `_botTransport`, and fires `_onLobbyUpdate`.
 
-### Example usage
+#### Example usage
 
 ```typescript
 import { createLobby, addLocalBot, removeLocalBot } from './multiplayerLobbyService';
@@ -274,6 +279,32 @@ addLocalBot('Test Bot');    // bot appears in lobby, ready-ups in 500ms
 // ... test lobby UI, allReady(), startGame() ...
 removeLocalBot();           // clean up before leaving
 ```
+
+### Two-Tab Testing (BroadcastChannel)
+
+Test multiplayer with two browser tabs — no server or Steam needed.
+
+1. Start the dev server: `npm run dev`
+2. Open **Tab 1**: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial&mp`
+3. Open **Tab 2**: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial&mp`
+4. Tab 1: Multiplayer → Create Lobby → copy the 6-char code
+5. Tab 2: Multiplayer → Join Lobby → paste the code
+6. Both tabs are now in the same lobby via BroadcastChannel
+
+The `&mp` URL parameter activates `BroadcastChannelTransport` instead of WebSocket/Steam. Both `createLobby()` and `joinLobby()` in `multiplayerLobbyService.ts` check `isBroadcastMode()` and pass `'broadcast'` to `getMultiplayerTransport()` automatically.
+
+#### Player ID uniqueness
+
+Each tab needs a distinct player ID — `generatePlayerId()` (exported from `multiplayerLobbyService.ts`) produces collision-resistant IDs using `player_<timestamp36>_<4 random chars>`. Use this instead of hardcoded strings like `'local_player'` when two tabs may be open simultaneously.
+
+```typescript
+import { generatePlayerId } from './multiplayerLobbyService';
+const myId = generatePlayerId(); // e.g. 'player_lk3x2a_f7z9'
+```
+
+#### Channel naming
+
+The BroadcastChannel name is `rr-mp:<target>` where `<target>` is the lobby ID (host) or lobby code (joiner). Self-echo is suppressed by comparing `senderId` to `localId` on each incoming message.
 
 
 ## Lobby Flow
@@ -301,8 +332,8 @@ hub → multiplayerMenu → (mode selected) → multiplayerLobby → (game start
 |------|------|
 | `src/data/multiplayerTypes.ts` | All shared types, constants, `MultiplayerMode` union, lobby/fairness/race types, `LobbyContentSelection`, `MODE_DESCRIPTIONS`, `MODE_TAGLINES` |
 | `src/services/multiplayerScoring.ts` | `computeRaceScore()` — pure race score formula (AR-86 v1) |
-| `src/services/multiplayerLobbyService.ts` | Lobby lifecycle: create, join, configure, start; `setContentSelection()` for rich content targeting; `addLocalBot()` / `removeLocalBot()` for same-machine dev testing |
-| `src/services/multiplayerTransport.ts` | Transport abstraction (WebSocket + Steam P2P + Local) |
+| `src/services/multiplayerLobbyService.ts` | Lobby lifecycle: create, join, configure, start; `setContentSelection()` for rich content targeting; `addLocalBot()` / `removeLocalBot()` for same-machine dev testing; `generatePlayerId()` for unique tab IDs; `isBroadcastMode()` for two-tab transport selection |
+| `src/services/multiplayerTransport.ts` | Transport abstraction (WebSocket + Steam P2P + Local + BroadcastChannel) |
 | `src/services/multiplayerGameService.ts` | Race / Duel / Same Cards game sync + `DuelTurnAction` / `DuelTurnResolution` |
 | `src/services/coopEffects.ts` | 6 co-op exclusive effects, damage multiplier computation |
 | `src/services/coopService.ts` | Client-side REST + WebSocket facade for co-op lobby REST API |

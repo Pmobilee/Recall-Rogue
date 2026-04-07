@@ -184,6 +184,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     getCurrentLobby,
     onLobbyUpdate,
     onGameStart as registerGameStartCb,
+    generatePlayerId,
   } from './services/multiplayerLobbyService'
   import { onOpponentProgressUpdate } from './services/multiplayerGameService'
   import type { LobbyState, RaceProgress, MultiplayerMode, LobbyContentSelection } from './data/multiplayerTypes'
@@ -459,6 +460,9 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   })
   let opponentDisplayName = $state('Opponent')
 
+  /** Unique player ID for this tab session (stable across lobby create/join). */
+  const localPlayerId = generatePlayerId()
+
   /** True while an active multiplayer lobby exists (race progress HUD visible in combat). */
   let isMultiplayerRun = $derived(currentLobby !== null)
 
@@ -478,13 +482,13 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   }
 
   function handleCreateLobby(mode: MultiplayerMode): void {
-    const lobby = createLobby('local_player', 'Player', mode)
+    const lobby = createLobby(localPlayerId, 'Player', mode)
     currentLobby = lobby
     transitionScreen('multiplayerLobby')
   }
 
   function handleJoinLobby(code: string): void {
-    joinLobby(code, 'local_player', 'Player')
+    joinLobby(code, localPlayerId, 'Player')
     transitionScreen('multiplayerLobby')
   }
 
@@ -499,7 +503,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   // Wire game start and live opponent progress for multiplayer races.
   $effect(() => {
     const unsubStart = registerGameStartCb((seed: number, lobby: LobbyState) => {
-      const opponent = lobby.players.find(p => p.id !== 'local_player')
+      const opponent = lobby.players.find(p => p.id !== localPlayerId)
       opponentDisplayName = opponent?.displayName ?? 'Opponent'
 
       // Set deck mode from lobby content selection so the run knows what content to load
@@ -1708,7 +1712,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     <div in:fly={{ y: 8, duration: 350 }}>
       <MultiplayerLobby
         lobby={currentLobby}
-        localPlayerId="local_player"
+        localPlayerId={localPlayerId}
         onBack={handleMultiplayerBack}
       />
     </div>

@@ -7,9 +7,10 @@
  * touches wsClient or steamNetworkingService directly.
  *
  * Platform selection at factory time:
- *   mode === 'local'   → LocalMultiplayerTransport (in-memory, no networking)
- *   hasSteam === true  → SteamP2PTransport (Tauri IPC → Steamworks relay)
- *   hasSteam === false → WebSocketTransport (Fastify server)
+ *   mode === 'local'     → LocalMultiplayerTransport (in-memory, no networking)
+ *   mode === 'broadcast' → BroadcastChannelTransport (two-tab, same origin)
+ *   hasSteam === true    → SteamP2PTransport (Tauri IPC → Steamworks relay)
+ *   hasSteam === false   → WebSocketTransport (Fastify server)
  *
  * Singleton lifecycle:
  *   getMultiplayerTransport()   — creates lazily on first call
@@ -92,6 +93,10 @@ export interface MultiplayerTransport {
    *
    * For LocalMultiplayerTransport, `target` is ignored (no network target
    * exists) and `localId` identifies this player's side (e.g. 'player1').
+   *
+   * For BroadcastChannelTransport, `target` is the lobby ID or lobby code
+   * (used as the BroadcastChannel name) and `localId` is this tab's unique
+   * player ID.
    */
   connect(target: string, localId: string): void;
 
@@ -468,20 +473,103 @@ export function createLocalTransportPair(): [LocalMultiplayerTransport, LocalMul
   return [t1, t2];
 }
 
+// ── BroadcastChannel Transport ────────────────────────────────────────────────
+
+/**
+ * BroadcastChannel-based transport for two-tab local multiplayer.
+ * Both tabs open on the same origin share a BroadcastChannel keyed on
+ * the lobby code. Zero server required — works in any modern browser.
+ *
+ * Usage:
+ *   Tab 1: createLobby → connect(lobbyId, localId)
+ *   Tab 2: joinLobby(code) → connect(lobbyCode, localId)
+ *   Messages broadcast to all other tabs on that channel.
+ *
+ * The channel name is prefixed with 'rr-mp:' to avoid collisions with other
+ * BroadcastChannel users on the same origin.
+ *
+ * Self-echo prevention: messages include the sender's localId. When a message
+ * arrives from the channel it is dropped if senderId === this.localId.
+ *
+ * Activate via URL param: ?mp — see multiplayerLobbyService.ts isBroadcastMode()
+ */
+export class BroadcastChannelTransport implements MultiplayerTransport {
+  private state: TransportState = 'disconnected';
+  private listeners: ListenerMap = new Map();
+  private localId: string = '';
+  private channel: BroadcastChannel | null = null;
+
+  /**
+   * Open a BroadcastChannel named `rr-mp:<target>`.
+   * @param target Lobby ID (host) or lobby code (joiner) — both sides must use the same value
+   * @param localId Unique ID for this tab's player — used to filter self-echo
+   */
+  connect(target: string, localId: string): void {
+    this.localId = localId;
+    const channelName = `rr-mp:${target}`;
+    this.channel = new BroadcastChannel(channelName);
+    this.channel.onmessage = (ev: MessageEvent) => {
+      const raw = ev.data as { type: string; payload: Record<string, unknown>; senderId: string; timestamp: number };
+      // Ignore messages we sent ourselves — BroadcastChannel delivers to all
+      // tabs INCLUDING the sender on some browser versions.
+      if (raw.senderId === this.localId) return;
+      const msg: MultiplayerMessage = {
+        type: raw.type as MultiplayerMessageType,
+        payload: raw.payload,
+        timestamp: raw.timestamp,
+        senderId: raw.senderId,
+      };
+      emitToListeners(this.listeners, msg.type, msg);
+    };
+    this.state = 'connected';
+  }
+
+  send(type: MultiplayerMessageType, payload: Record<string, unknown>): void {
+    if (!this.channel || this.state !== 'connected') return;
+    this.channel.postMessage({
+      type,
+      payload,
+      senderId: this.localId,
+      timestamp: Date.now(),
+    });
+  }
+
+  on(type: string, callback: (msg: MultiplayerMessage) => void): () => void {
+    return addListener(this.listeners, type, callback);
+  }
+
+  disconnect(): void {
+    this.channel?.close();
+    this.channel = null;
+    this.listeners.clear();
+    this.state = 'disconnected';
+  }
+
+  getState(): TransportState {
+    return this.state;
+  }
+
+  isConnected(): boolean {
+    return this.state === 'connected';
+  }
+}
+
 // ── Factory ───────────────────────────────────────────────────────────────────
 
 /**
  * Create the appropriate transport for the current platform and mode.
  *
- * mode === 'local'   → LocalMultiplayerTransport (same-screen, no networking)
- * Steam desktop      → SteamP2PTransport (direct peer relay, no game server)
- * Web / mobile       → WebSocketTransport (Fastify WebSocket server)
+ * mode === 'local'     → LocalMultiplayerTransport (same-screen, no networking)
+ * mode === 'broadcast' → BroadcastChannelTransport (two-tab, same origin, dev)
+ * Steam desktop        → SteamP2PTransport (direct peer relay, no game server)
+ * Web / mobile         → WebSocketTransport (Fastify WebSocket server)
  *
  * For local mode, the returned instance is NOT yet linked to a peer.
  * Use `createLocalTransportPair()` when you need both sides at once.
  */
-export function createTransport(mode?: 'auto' | 'local'): MultiplayerTransport {
+export function createTransport(mode?: 'auto' | 'local' | 'broadcast'): MultiplayerTransport {
   if (mode === 'local') return new LocalMultiplayerTransport();
+  if (mode === 'broadcast') return new BroadcastChannelTransport();
   if (hasSteam) return new SteamP2PTransport();
   return new WebSocketTransport();
 }
@@ -493,14 +581,17 @@ let _transport: MultiplayerTransport | null = null;
 
 /**
  * Get the active multiplayer transport, creating it if this is the first call.
- * The transport type (WebSocket vs Steam P2P vs Local) is determined by the
- * current platform and the optional mode argument.
+ * The transport type (WebSocket vs Steam P2P vs Local vs BroadcastChannel) is
+ * determined by the current platform and the optional mode argument.
  *
  * Pass `mode: 'local'` for same-screen multiplayer — returns a standalone
  * LocalMultiplayerTransport (not linked to a peer). Use
  * `createLocalTransportPair()` to get a pre-linked pair instead.
+ *
+ * Pass `mode: 'broadcast'` for two-tab testing via BroadcastChannel.
+ * Activated automatically by multiplayerLobbyService when `?mp` is in the URL.
  */
-export function getMultiplayerTransport(mode?: 'auto' | 'local'): MultiplayerTransport {
+export function getMultiplayerTransport(mode?: 'auto' | 'local' | 'broadcast'): MultiplayerTransport {
   if (!_transport) _transport = createTransport(mode);
   return _transport;
 }
