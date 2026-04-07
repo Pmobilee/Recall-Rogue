@@ -66,11 +66,14 @@ export function selectFactForCharge(
       !tracker.isInLearning(f.id) &&
       !tracker.isGraduated(f.id)
     );
-    // Sort by difficulty ascending (easier first)
-    forcedNew.sort((a, b) => {
-      const diffDelta = (a.difficulty ?? 3) - (b.difficulty ?? 3);
-      return diffDelta !== 0 ? diffDelta : rand() - 0.5;
-    });
+    // Fisher-Yates shuffle for true randomization, then stable sort by difficulty.
+    // Avoids the rand()-0.5 tiebreaker bias that favors earlier (larger-deck) elements
+    // in playlist runs where the fact pool is built by concatenation.
+    for (let i = forcedNew.length - 1; i > 0; i--) {
+      const j = Math.floor(rand() * (i + 1));
+      [forcedNew[i], forcedNew[j]] = [forcedNew[j], forcedNew[i]];
+    }
+    forcedNew.sort((a, b) => (a.difficulty ?? 3) - (b.difficulty ?? 3));
     if (forcedNew.length > 0) {
       tracker.recordNewCardServed();
       return { fact: forcedNew[0], selectionReason: 'unseen' };
@@ -112,13 +115,16 @@ export function selectFactForCharge(
     }
   }
 
-  // Sort new cards by difficulty (ascending) with random tiebreaking.
+  // Fisher-Yates shuffle first, then stable sort by difficulty (ascending).
   // Easier facts are introduced first, matching the DECKBUILDER spec:
   // "At mastery 0, the system prefers to select easier facts."
-  newCards.sort((a, b) => {
-    const diffDelta = (a.difficulty ?? 3) - (b.difficulty ?? 3);
-    return diffDelta !== 0 ? diffDelta : rand() - 0.5;
-  });
+  // Fisher-Yates before sort avoids the rand()-0.5 tiebreaker bias that
+  // favors earlier (larger-deck) elements in interleaved playlist runs.
+  for (let i = newCards.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [newCards[i], newCards[j]] = [newCards[j], newCards[i]];
+  }
+  newCards.sort((a, b) => (a.difficulty ?? 3) - (b.difficulty ?? 3));
 
   // Anki Intersperser: proportional mixing
   if (dueReviews.length > 0 && newCards.length > 0) {

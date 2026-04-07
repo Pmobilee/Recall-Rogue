@@ -37,7 +37,13 @@
       {:else}
         <span class="playlist-name">{activePlaylist?.name ?? playlists[0]?.name ?? 'Custom Deck'}</span>
       {/if}
-      <span class="playlist-meta">{activeItems.length} item{activeItems.length !== 1 ? 's' : ''}</span>
+      <span class="playlist-meta">
+        {#if activeItems.length <= 3}
+          {activeItems.map(it => it.label).join(', ')}
+        {:else}
+          {activeItems.slice(0, 2).map(it => it.label).join(', ')} +{activeItems.length - 2} more
+        {/if}
+      </span>
     </div>
 
     <div class="bar-right">

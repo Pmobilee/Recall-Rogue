@@ -20,6 +20,7 @@ import type { DeckMode } from '../data/studyPreset';
 import { InRunFactTracker } from './inRunFactTracker';
 import { getCuratedDeckFacts } from '../data/curatedDeckStore';
 import { playerSave } from '../ui/stores/playerData';
+import { interleaveFacts } from '../utils/interleaveFacts';
 
 export type RewardArchetype = 'balanced' | 'aggressive' | 'defensive' | 'control' | 'hybrid';
 
@@ -175,6 +176,12 @@ export interface RunState {
    * Populated at run start; undefined for non-playlist runs.
    */
   factSourceDeckMap?: Record<string, string>;
+  /** Cumulative damage dealt across all encounters (for multiplayer scoring). */
+  totalDamageDealt?: number;
+  /** Count of encounters won with 0 wrong answers (for multiplayer scoring). */
+  perfectEncountersCount?: number;
+  /** Multiplayer mode for this run, if any. */
+  multiplayerMode?: import('../data/multiplayerTypes').MultiplayerMode;
 }
 
 export interface RunEndData {
@@ -224,9 +231,11 @@ export function createRunState(
     poolNoveltyPct?: number;
     poolFactCount?: number;
     includeOutsideDueReviews?: boolean;
+    providedSeed?: number;
+    multiplayerMode?: import('../data/multiplayerTypes').MultiplayerMode;
   },
 ): RunState {
-  const runSeed = crypto.getRandomValues(new Uint32Array(1))[0];
+  const runSeed = options?.providedSeed ?? crypto.getRandomValues(new Uint32Array(1))[0];
   const bountyCount = (crypto.getRandomValues(new Uint32Array(1))[0] % 2 === 0) ? 1 : 2;
   const ascensionLevel = options?.ascensionLevel ?? 0;
   const ascensionModifiers = getAscensionModifiers(ascensionLevel);
@@ -298,6 +307,9 @@ export function createRunState(
     poolNoveltyPct: options?.poolNoveltyPct,
     poolFactCount: options?.poolFactCount,
     includeOutsideDueReviews: options?.includeOutsideDueReviews ?? false,
+    totalDamageDealt: 0,
+    perfectEncountersCount: 0,
+    multiplayerMode: options?.multiplayerMode,
   };
 
   // Study mode: initialize in-run fact tracker
@@ -314,19 +326,22 @@ export function createRunState(
   }
 
   // Playlist mode: merge facts from all deck items into a single tracker with source map.
+  // Facts are interleaved round-robin (not concatenated) so each deck contributes
+  // proportionally from the first encounter — prevents largest deck monopolizing quizzes.
   if (options?.deckMode?.type === 'playlist') {
     const tracker = new InRunFactTracker();
-    const allFacts: { id: string }[] = [];
     const factSourceMap: Record<string, string> = {};
+    const perDeckFacts: { id: string }[][] = [];
 
     for (const item of options.deckMode.items) {
       const deckFacts = getCuratedDeckFacts(item.deckId, item.subDeckId, item.examTags);
+      perDeckFacts.push(deckFacts);
       for (const f of deckFacts) {
-        allFacts.push(f);
         factSourceMap[f.id] = item.deckId;
       }
     }
 
+    const allFacts = interleaveFacts(perDeckFacts);
     const factIds = allFacts.map(f => f.id);
     const reviewStates = get(playerSave)?.reviewStates ?? [];
     tracker.seedFromGlobalFSRS(factIds, (factId: string) => {

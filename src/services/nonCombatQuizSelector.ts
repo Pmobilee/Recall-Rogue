@@ -8,6 +8,7 @@ import { InRunFactTracker } from './inRunFactTracker';
 import type { ConfusionMatrix } from './confusionMatrix';
 import { isNumericalAnswer, getNumericalDistractors, displayAnswer } from './numericalDistractorService';
 import type { Fact } from '../data/types';
+import { interleaveFacts } from '../utils/interleaveFacts';
 
 /** Continent names indexed by chainThemeId (0–4) for World Flags deck. */
 export const REGION_NAMES = ['Europe', 'Asia', 'Africa', 'Americas', 'Oceania'] as const;
@@ -286,9 +287,10 @@ export function selectNonCombatPlaylistQuestion(
   meditatedThemeId?: number,
   excludeFactIds?: ReadonlySet<string>,
 ): NonCombatQuizQuestion | null {
-  // Merge facts from all playlist items
-  let factPool: DeckFact[] = playlistItems.flatMap(item =>
-    getCuratedDeckFacts(item.deckId, item.subDeckId, item.examTags),
+  // Merge facts from all playlist items — interleaved round-robin so all decks
+  // contribute proportionally from the start (flatMap would front-load the largest deck).
+  let factPool: DeckFact[] = interleaveFacts(
+    playlistItems.map(item => getCuratedDeckFacts(item.deckId, item.subDeckId, item.examTags)),
   );
   if (factPool.length === 0) return null;
 

@@ -519,3 +519,15 @@ Rule of thumb for `verify-all-decks.mjs`: put hard structural errors inside `che
 **Planned fix:** Shuffle or interleave across decks during seeding — e.g., round-robin by deck, or shuffle the full concatenated array before seeding — so the new-card introduction queue distributes proportionally across all playlist items from the first charge of the run.
 
 **Affected code:** `src/services/runManager.ts` (playlist branch in `createRunState`), `src/services/inRunFactTracker.ts` (seeding logic).
+
+### 2026-04-07 — Playlist Runs: Largest Deck Monopolizes Quiz Encounters
+
+**What:** In playlist runs (multiple decks combined), the largest deck dominated all quiz encounters. Two compounding causes:
+1. Facts were merged via `flatMap` (sequential concatenation) — largest deck's facts appeared first in FIFO order
+2. `curatedFactSelector.ts` used `rand() - 0.5` as a sort tiebreaker when ordering new cards by difficulty. This has a subtle positive-mean bias for small array indices (the xorshift32 RNG's output distribution after `- 0.5` is symmetric, but V8's `Array.sort` is not stable when comparisons return non-zero values unpredictably), compounding the FIFO bias.
+
+**Fix:**
+- New `src/utils/interleaveFacts.ts` — generic round-robin interleave (`[[a1,a2],[b1,b2]]` → `[a1,b1,a2,b2]`)
+- `runManager.ts` playlist branch now uses `interleaveFacts` instead of sequential push
+- `nonCombatQuizSelector.ts` `selectNonCombatPlaylistQuestion` uses `interleaveFacts` instead of `flatMap`
+- `curatedFactSelector.ts` — both `rand()-0.5` tiebreakers replaced with Fisher-Yates shuffle + stable sort by difficulty

@@ -40,6 +40,7 @@
   import { audioManager } from '../../services/audioService'
   import { REVEAL_DURATION, SWOOSH_DURATION, IMPACT_DURATION, DISCARD_DURATION, FIZZLE_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
   import { turboDelay } from '../../utils/turboMode'
+  import { interleaveFacts } from '../../utils/interleaveFacts'
   import { shuffled } from '../../services/randomUtils'
   import { getRunRng, isRunRngActive, seededShuffled } from '../../services/seededRng'
   import { isPlaceholderDistractor } from '../../services/distractorFilter'
@@ -1185,8 +1186,8 @@
 
     if (deckMode.type === 'playlist') {
       // Multi-deck: merge facts from all items; use factSourceDeckMap for per-fact deck resolution
-      factPool = deckMode.items.flatMap(item =>
-        getCuratedDeckFacts(item.deckId, item.subDeckId, item.examTags)
+      factPool = interleaveFacts(
+        deckMode.items.map(item => getCuratedDeckFacts(item.deckId, item.subDeckId, item.examTags))
       )
       resolveDeckForFact = (factId: string) => {
         const sourceDeckId = runState.factSourceDeckMap?.[factId]

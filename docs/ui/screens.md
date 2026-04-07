@@ -173,7 +173,7 @@ building a `CustomPlaylist` of `CustomPlaylistItem`s. When "Start Custom Run" is
 `CardApp.handleDungeonRunStart` accepts `{ mode: 'playlist'; items: PlaylistDeckItem[] }` and persists it to `playerSave.activeDeckMode`. `runManager` then merges all facts from playlist items into a single `InRunFactTracker` and populates `RunState.factSourceDeckMap` (factId → source deckId) for per-fact deck resolution.
 
 During combat, `CardCombatOverlay.getStudyModeQuiz` handles both `type: 'study'` and `type: 'playlist'` deckModes:
-- **Playlist**: merges all items' fact pools and uses `factSourceDeckMap` to look up the correct deck for template selection and distractor generation.
+- **Playlist (2026-04-07)**: uses `interleaveFacts()` from `src/utils/interleaveFacts.ts` to round-robin facts across all deck items (instead of flat concat), ensuring proportional representation from all sources from the very first encounter. Uses `factSourceDeckMap` for per-fact deck resolution.
 - **Study**: unchanged behavior — single deck, no source map needed.
 
 The guard in `getQuizForCard` activates the study-mode quiz path for both modes:
@@ -184,6 +184,18 @@ if ((runState?.deckMode?.type === 'study' || runState?.deckMode?.type === 'playl
 Non-combat quiz (shop, rest, boss) uses `selectNonCombatPlaylistQuestion` from `nonCombatQuizSelector.ts`
 (separate function from the single-deck `selectNonCombatStudyQuestion`). Callers in `gameFlowController.ts`
 and `bossQuizPhase.ts` need updating to invoke the playlist variant when `deckMode.type === 'playlist'`.
+
+### Playlist View / Edit Flow
+
+**Added 2026-04-07.** When a playlist exists on the `studyTemple` screen, the `PlaylistBar` shows a **View** button. Clicking it opens `PlaylistViewModal` as an overlay (z-index 350, backdrop click to close).
+
+- **Rename**: click the playlist name in the modal header to enter inline edit mode; commit with Enter or blur.
+- **Remove item**: each item row has an X button; removing the last item auto-deletes the playlist and advances to the next.
+- **Delete playlist**: footer "Delete Playlist" button shows an inline confirm/cancel row before executing.
+- **Duplicate feedback**: when adding a deck already present in the active playlist, a fixed-position toast appears for 2s (bottom: 80px scaled, z-index 400).
+- **Meta display**: the `PlaylistBar` shows deck names (not item count) — up to 3 names joined with commas; 3+ collapses to first two + "+N more".
+
+All changes persist immediately to `playerSave.lastDungeonSelection.customPlaylists` via `persistStudySelection()`.
 
 ### Combat Loop
 ```

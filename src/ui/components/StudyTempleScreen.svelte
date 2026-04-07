@@ -13,6 +13,7 @@
   import DeckFilterChips from './DeckFilterChips.svelte';
   import PlaylistBar from './PlaylistBar.svelte';
   import PlaylistPickerPopup from './PlaylistPickerPopup.svelte';
+  import PlaylistViewModal from './PlaylistViewModal.svelte';
   import AnkiImportWizard from './AnkiImportWizard.svelte';
   import AnkiExportWizard from './AnkiExportWizard.svelte';
   import WorkshopBrowser from './WorkshopBrowser.svelte';
@@ -40,6 +41,8 @@
   let customPlaylists = $state<CustomPlaylist[]>([]);
   let activePlaylistId = $state<string | null>(null);
   let showPlaylistPicker = $state(false);
+  let showPlaylistView = $state(false);
+  let duplicateToast = $state('');
   let pendingCustomItem = $state<CustomPlaylistItem | null>(null);
   let dealKey = $state(0);
   let showAnkiImport = $state(false);
@@ -339,10 +342,17 @@
   function handleAddToPlaylist(playlistId: string) {
     if (!pendingCustomItem) return;
     const item = pendingCustomItem;
+    const targetPlaylist = customPlaylists.find(p => p.id === playlistId);
+    if (targetPlaylist) {
+      const alreadyIn = targetPlaylist.items.some(it => it.type === 'study' && it.deckId === (item as Extract<CustomPlaylistItem, { type: 'study' }>).deckId && it.subDeckId === (item as Extract<CustomPlaylistItem, { type: 'study' }>).subDeckId);
+      if (alreadyIn) {
+        duplicateToast = `"${pendingCustomItem.label}" is already in this playlist`;
+        setTimeout(() => { duplicateToast = ''; }, 2000);
+        return;
+      }
+    }
     customPlaylists = customPlaylists.map(p => {
       if (p.id !== playlistId) return p;
-      const alreadyIn = p.items.some(it => it.type === 'study' && it.deckId === (item as Extract<CustomPlaylistItem, { type: 'study' }>).deckId && it.subDeckId === (item as Extract<CustomPlaylistItem, { type: 'study' }>).subDeckId);
-      if (alreadyIn) return p;
       return { ...p, items: [...p.items, item] };
     });
     activePlaylistId = playlistId;
@@ -376,6 +386,37 @@
         items: studyItems.map(si => ({ deckId: si.deckId, subDeckId: si.subDeckId })),
       });
     }
+  }
+
+  function handleRemoveFromPlaylist(itemIndex: number) {
+    if (!activePlaylistId) return;
+    customPlaylists = customPlaylists.map(p => {
+      if (p.id !== activePlaylistId) return p;
+      const newItems = [...p.items];
+      newItems.splice(itemIndex, 1);
+      return { ...p, items: newItems };
+    });
+    // If playlist is now empty, remove it
+    const playlist = customPlaylists.find(p => p.id === activePlaylistId);
+    if (playlist && playlist.items.length === 0) {
+      customPlaylists = customPlaylists.filter(p => p.id !== activePlaylistId);
+      activePlaylistId = customPlaylists[0]?.id ?? null;
+    }
+    persistStudySelection();
+  }
+
+  function handleDeletePlaylist() {
+    customPlaylists = customPlaylists.filter(p => p.id !== activePlaylistId);
+    activePlaylistId = customPlaylists[0]?.id ?? null;
+    showPlaylistView = false;
+    persistStudySelection();
+  }
+
+  function handleRenamePlaylist(newName: string) {
+    customPlaylists = customPlaylists.map(p =>
+      p.id === activePlaylistId ? { ...p, name: newName.trim() } : p
+    );
+    persistStudySelection();
   }
 
   function persistStudySelection() {
@@ -512,10 +553,24 @@
       {activePlaylistId}
       onSwitchPlaylist={(id) => { activePlaylistId = id; }}
       onStartCustomRun={handleStartCustomRun}
-      onViewPlaylist={() => {}}
+      onViewPlaylist={() => { showPlaylistView = true; }}
     />
   {/if}
+
+  {#if duplicateToast}
+    <div class="duplicate-toast" role="status" aria-live="polite">{duplicateToast}</div>
+  {/if}
 </div>
+
+{#if showPlaylistView && activePlaylist}
+  <PlaylistViewModal
+    playlist={activePlaylist}
+    onClose={() => { showPlaylistView = false; }}
+    onRemoveItem={handleRemoveFromPlaylist}
+    onDeletePlaylist={handleDeletePlaylist}
+    onRenamePlaylist={handleRenamePlaylist}
+  />
+{/if}
 
 {#if selectedDeck && selectedProgress}
   <DeckDetailModal
@@ -835,5 +890,23 @@
     background: rgba(139, 92, 246, 0.25);
     border-color: rgba(139, 92, 246, 0.5);
     color: #c4b5fd;
+  }
+
+  /* ── Duplicate toast ── */
+  .duplicate-toast {
+    position: fixed;
+    bottom: calc(80px * var(--layout-scale, 1));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 400;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    color: #a5b4fc;
+    font-size: calc(13px * var(--text-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    white-space: nowrap;
+    pointer-events: none;
+    box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.5);
   }
 </style>

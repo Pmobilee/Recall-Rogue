@@ -235,3 +235,71 @@ describe('selectFactForCharge — Priority 3: ahead learning fallback', () => {
     expect(result.fact.id).not.toBe('z'); // lastFactId excluded when possible
   });
 });
+
+describe('selectFactForCharge — interleaved pool diversity', () => {
+  /**
+   * Verifies that when facts from multiple decks are interleaved (round-robin),
+   * selectFactForCharge surfaces facts from all source groups across a full pool
+   * traversal.
+   *
+   * The Fisher-Yates shuffle inside the selector randomises pool order per call,
+   * so diversity is only guaranteed after enough selections for the scheduler to
+   * visit all groups. 15 calls is sufficient: 15 unique facts exist, so even with
+   * learning-card repeats all 3 prefixes will appear within 15 picks.
+   *
+   * Note: learning cards resurface after 4 charges (step-0 delay), so total
+   * selections may include repeats — "≤5 per group" is intentionally NOT asserted.
+   */
+  it('selects facts from all 3 source groups across 15 calls on an interleaved pool', () => {
+    // Build 3 groups of 5 facts each (15 total), all difficulty 3
+    const groupA = [1, 2, 3, 4, 5].map(n => makeFact(`a-${n}`));
+    const groupB = [1, 2, 3, 4, 5].map(n => makeFact(`b-${n}`));
+    const groupC = [1, 2, 3, 4, 5].map(n => makeFact(`c-${n}`));
+
+    // Interleave: [a-1, b-1, c-1, a-2, b-2, c-2, ...]
+    const interleavedPool: DeckFact[] = [];
+    for (let i = 0; i < 5; i++) {
+      interleavedPool.push(groupA[i], groupB[i], groupC[i]);
+    }
+
+    const tracker = new InRunFactTracker();
+    const selected: string[] = [];
+
+    // 15 calls gives enough coverage for the scheduler to reach all groups.
+    // Use distinct seeds per call; record each charge so tracker state advances.
+    for (let i = 0; i < 15; i++) {
+      const result = selectFactForCharge(interleavedPool, tracker, 0, RUN_SEED + i);
+      selected.push(result.fact.id);
+      tracker.recordCharge(result.fact.id, true);
+    }
+
+    // All three source groups must appear across 15 selections
+    const prefixes = selected.map(id => id.split('-')[0]);
+    expect(prefixes).toContain('a');
+    expect(prefixes).toContain('b');
+    expect(prefixes).toContain('c');
+  });
+
+  it('non-interleaved (concatenated) pool also covers all groups via Fisher-Yates shuffle', () => {
+    // Concatenated order: [a-1..a-5, b-1..b-5, c-1..c-5]
+    const concatenatedPool: DeckFact[] = [
+      ...[1, 2, 3, 4, 5].map(n => makeFact(`a-${n}`)),
+      ...[1, 2, 3, 4, 5].map(n => makeFact(`b-${n}`)),
+      ...[1, 2, 3, 4, 5].map(n => makeFact(`c-${n}`)),
+    ];
+
+    const tracker = new InRunFactTracker();
+    const selected: string[] = [];
+    for (let i = 0; i < 15; i++) {
+      const result = selectFactForCharge(concatenatedPool, tracker, 0, RUN_SEED + i);
+      selected.push(result.fact.id);
+      tracker.recordCharge(result.fact.id, true);
+    }
+
+    // Fisher-Yates shuffle means even a concatenated pool covers all groups over 15 picks
+    const prefixes = selected.map(id => id.split('-')[0]);
+    expect(prefixes).toContain('a');
+    expect(prefixes).toContain('b');
+    expect(prefixes).toContain('c');
+  });
+});

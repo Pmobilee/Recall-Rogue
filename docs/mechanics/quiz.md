@@ -47,6 +47,23 @@ template and distractor selection. Called from `generateStudyQuestions` (rest si
 `generateQuizPhaseQuestions` (boss quiz phase) when `deckMode.type === 'playlist'`.
 Distractors are drawn from the source deck's own answer type pools to preserve pool coherence.
 
+**Playlist fact pool interleaving** (`src/utils/interleaveFacts.ts`):
+Facts from playlist decks are merged via round-robin interleaving — NOT sequential concatenation.
+`interleaveFacts([[a1,a2,a3],[b1,b2],[c1]])` → `[a1,b1,c1,a2,b2,a3]`.
+This applies in two places:
+- `runManager.ts` (`createRunState`, playlist branch) — seeds the `InRunFactTracker` with interleaved IDs
+- `nonCombatQuizSelector.ts` (`selectNonCombatPlaylistQuestion`) — builds the `factPool` passed to `selectFactForCharge`
+
+Without interleaving, the largest deck's facts appear first in every FIFO queue, monopolizing early
+encounters because the Anki selector introduces new cards in pool order.
+
+**Selector tiebreaker bias fix** (`curatedFactSelector.ts`):
+The two `rand() - 0.5` tiebreakers used when sorting new cards by difficulty (Priority 0 and Priority 2)
+were replaced with Fisher-Yates shuffle + stable sort. The old pattern slightly biased toward earlier
+elements (expected value is positive for small indices), compounding the FIFO problem. The new pattern:
+1. Fisher-Yates shuffles the candidate list uniformly at random (using the seeded `rand()`)
+2. `Array.sort` by `difficulty` then preserves shuffle order within the same difficulty tier (stable)
+
 ### 2. Template Selection (`questionTemplateSelector.ts`)
 
 `selectQuestionTemplate` selects from `deck.questionTemplates` using a seeded xorshift32 RNG:
