@@ -1,3 +1,11 @@
+### 2026-04-06 — Vite 504 Outdated Optimize Dep for Phaser
+
+**What:** Intermittent `504 Outdated Optimize Dep` error for `node_modules/.vite/deps/phaser.js` on dev server start. Vite discovers Phaser lazily (via dynamic import in `CardGameManager.ts`) and can serve a stale pre-bundle handle before the background pre-bundling job completes, causing the entire Phaser layer (sprites, backgrounds, VFX) to fail silently.
+
+**Fix:** Added `optimizeDeps: { include: ['phaser'] }` to `vite.config.ts`. This forces Vite to eagerly pre-bundle Phaser at server start rather than discovering it lazily, eliminating the race condition.
+
+**Workaround (before fix):** `rm -rf node_modules/.vite` then restart dev server.
+
 ### 2026-04-06 — Image-Caption Facts Contaminating Text Distractor Pools
 
 **What:** human_anatomy deck had 794 image-quiz facts (`quizMode: image_question/image_answers`) in the same pools as text-quiz facts. Image-caption answers like "Skeleton (frontal view)" appeared as text distractors, creating obvious format tells.

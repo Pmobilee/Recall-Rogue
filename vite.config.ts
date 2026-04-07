@@ -212,6 +212,13 @@ export default defineConfig({
       ],
     },
   },
+  // Force Phaser to be pre-bundled eagerly at dev-server start.
+  // Without this, Vite discovers Phaser lazily on first import and may serve a
+  // stale pre-bundle handle, resulting in a 504 "Outdated Optimize Dep" error
+  // that prevents CardGameManager from loading the Phaser layer entirely.
+  optimizeDeps: {
+    include: ['phaser'],
+  },
   build: {
     // Optimize for mobile — target <500KB per chunk
     // Run `npm run build -- --mode analyze` with rollup-plugin-visualizer to inspect

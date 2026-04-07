@@ -415,7 +415,7 @@
         "451-449 BCE"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_range_events",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -1015,7 +1015,7 @@
         "58-51 BCE"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_range_events",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -12655,7 +12655,7 @@
         "Spain campaign"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "date_events",
+      "answerTypePoolId": "date_range_events",
       "difficulty": 4,
       "funScore": 6,
       "ageGroup": "all",
@@ -13534,14 +13534,12 @@
         "rome_rep_founding_date",
         "rome_rep_republic_founded",
         "rome_rep_tribunes_secession",
-        "rome_rep_twelve_tables_date",
         "rome_rep_lex_hortensia",
         "rome_rep_marius_consulships",
         "rome_rep_sulla_march",
         "rome_rep_sulla_dictator_retired",
         "rome_rep_second_triumvirate_formed",
         "rome_cae_birth_date",
-        "rome_cae_gallic_wars_years",
         "rome_cae_vercingetorix_fate",
         "rome_cae_rubicon_date",
         "rome_cae_pharsalus_date",
@@ -13599,7 +13597,6 @@
         "rome_fall_theodosius_christianity",
         "rome_fall_adrianople",
         "rome_fall_eastern_survived",
-        "rome_pun_scipio_spain",
         "rome_pun_hannibal_alps_duration",
         "rome_pun_cato_elder_age",
         "rome_pun_first_punic_duration",
@@ -13607,6 +13604,31 @@
         "rome_fall_constantine_praetorian_year"
       ],
       "minimumSize": 5
+    },
+    {
+      "id": "date_range_events",
+      "label": "Date Ranges in Roman History",
+      "answerFormat": "date",
+      "factIds": [
+        "rome_rep_twelve_tables_date",
+        "rome_cae_gallic_wars_years",
+        "rome_pun_scipio_spain"
+      ],
+      "syntheticDistractors": [
+        "73–71 BCE",
+        "264–241 BCE",
+        "218–201 BCE",
+        "149–146 BCE",
+        "133–121 BCE",
+        "88–82 BCE",
+        "49–45 BCE",
+        "43–33 BCE",
+        "91–88 BCE",
+        "112–106 BCE",
+        "27 BCE–14 CE",
+        "235–284 CE"
+      ],
+      "minimumSize": 3
     },
     {
       "id": "city_place_names",
