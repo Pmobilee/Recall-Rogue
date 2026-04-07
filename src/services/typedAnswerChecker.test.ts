@@ -397,3 +397,38 @@ describe('close match detection', () => {
     expect(result.closeMatch).toBe(true)
   })
 })
+
+// ---------------------------------------------------------------------------
+// checkTypedAnswer — synonym blocklist
+// ---------------------------------------------------------------------------
+
+describe('synonym blocklist', () => {
+  it('blocks run/test false positive', () => {
+    const result = checkTypedAnswer('test', 'run', [], '')
+    expect(result.correct).toBe(false)
+    expect(result.synonymMatch).toBe(false)
+  })
+
+  it('blocks in both directions', () => {
+    const result = checkTypedAnswer('run', 'test', [], '')
+    expect(result.correct).toBe(false)
+    expect(result.synonymMatch).toBe(false)
+  })
+
+  it('blocks close/finish', () => {
+    const result = checkTypedAnswer('finish', 'close', [], '')
+    expect(result.correct).toBe(false)
+  })
+
+  it('blocks bear/have', () => {
+    const result = checkTypedAnswer('have', 'bear', [], '')
+    expect(result.correct).toBe(false)
+  })
+
+  it('still allows non-blocked synonyms', () => {
+    // glad/happy should still work (not in blocklist)
+    const result = checkTypedAnswer('glad', 'happy', [], '')
+    expect(result.correct).toBe(true)
+    expect(result.synonymMatch).toBe(true)
+  })
+})

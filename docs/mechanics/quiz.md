@@ -207,6 +207,24 @@ Matching rules:
 - Bidirectional check: typed word is a synonym of any answer candidate, OR any answer candidate is a synonym of the typed word
 - Result: `TypedAnswerResult.correct = true`, `matchedSynonym = true`
 - Example: answer is `"happy"`, player types `"glad"` → `getSynonyms("glad")` includes `"happy"` → accepted
+- Blocked pairs (see below) are skipped even if WordNet reports them as synonyms
+
+**Synonym Blocklist (`SYNONYM_BLOCKLIST` constant in `typedAnswerChecker.ts`):**
+
+WordNet groups multiple semantic senses under a single synset for polysemous words, causing false positive matches that would be wrong in a vocabulary quiz context. The blocklist is a `Set<string>` of `"word1:word2"` pairs (lowercased, alphabetically ordered). The check is bidirectional via the `isSynonymBlocked(word1, word2)` helper.
+
+Examples of blocked pairs and why:
+
+| Blocked Pair | Reason |
+|---|---|
+| `run:test` | WordNet "trial/run/test" synset — different senses (movement vs. examination) |
+| `close:finish` | Related but not interchangeable as vocab answers |
+| `bear:have` | "bear" (endure) shares a synset with "have" (possess) — too broad |
+| `lay:set`, `put:set`, `fix:set` | "set" is extremely polysemous |
+| `jump:spring`, `leap:spring` | "spring" multi-sense (season / water source / jump) |
+| `nation:state` | "state" (condition) vs. "state" (country/region) — distinct vocab concepts |
+
+To add a new blocked pair: append a lowercase alphabetically-ordered `'word1:word2'` string to `SYNONYM_BLOCKLIST` in `typedAnswerChecker.ts` with a comment explaining the semantic conflict.
 
 **Note:** `GrammarTypingInput.svelte` (Japanese only) does not call `checkTypedAnswer` and is unaffected by synonym matching. Japanese kana particles and grammar forms don't benefit from English WordNet synonyms.
 

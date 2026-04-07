@@ -29,6 +29,83 @@ export interface TypedAnswerResult {
 }
 
 /**
+ * Synonym pairs that should be BLOCKED despite WordNet synset membership.
+ * These are polysemous words where WordNet groups different semantic senses,
+ * causing false positive matches in a vocabulary quiz context.
+ *
+ * Format: Set of "word1:word2" pairs (lowercased, alphabetically ordered).
+ * Check is bidirectional — blocking "a:b" also blocks "b:a".
+ */
+const SYNONYM_BLOCKLIST = new Set<string>([
+  // "run" (movement) vs "test" (examination) — different senses in WordNet "trial/run/test" synset
+  'run:test',
+  // "match" (pairing) vs "catch" (grab) — incompatible meanings
+  'catch:match',
+  // "bank" (financial) vs "cant/camber" (structural angle) — domain-specific jargon
+  'bank:camber', 'bank:cant',
+  // "close" (shut) vs "finish" (complete) — related but not interchangeable as vocab answers
+  'close:finish',
+  // "play" (engage) vs "bid" (offer price) — different domains
+  'bid:play',
+  // "bear" (endure/animal) vs "have" (possess) — too broad
+  'bear:have',
+  // "set" is extremely polysemous — block common false matches
+  'lay:set', 'put:set', 'fix:set',
+  // "light" (illumination) vs "fire" (combustion) — related but distinct vocab concepts
+  'fire:light',
+  // "change" vs "exchange" — overlapping but distinct for language learners
+  'alter:change',
+  // "right" (correct) vs "right" (direction) are same word, but "correct" vs "right" is too loose
+  'correct:right',
+  // "spring" (season) vs "spring" (water source) vs "jump" — multi-sense
+  'jump:spring', 'leap:spring',
+  // "watch" (observe) vs "watch" (timepiece) — same word, but "see" vs "watch" too loose
+  'see:watch',
+  // "order" (command) vs "order" (arrangement) — "decree" vs "order" is too specific
+  'decree:order',
+  // "train" (vehicle) vs "train" (practice) — "prepare" vs "train" is too loose for vocab
+  'prepare:train',
+  // "point" (tip) vs "point" (score) — "dot" vs "point" might be OK, but "head" vs "point" isn't
+  'head:point',
+  // "ring" (jewelry) vs "ring" (sound) — "band" vs "ring" is too loose
+  'band:ring',
+  // "rock" (stone) vs "rock" (sway) — "sway" vs "rock" is too loose for vocab
+  'rock:sway',
+  // "fly" (insect) vs "fly" (travel by air) — "flee" vs "fly" overlaps but means escape
+  'flee:fly',
+  // "kind" (type) vs "kind" (generous) — "sort" vs "kind" is OK, but "tolerant" isn't
+  'kind:tolerant',
+  // "mean" (signify) vs "mean" (unkind) — "intend" vs "mean" could work, but "base" is wrong
+  'base:mean',
+  // "leave" (depart) vs "leave" (permission) — "go" vs "leave" might be OK for some, but risky
+  'farewell:leave',
+  // "state" (condition) vs "state" (country/region) — "nation" vs "state" too loose
+  'nation:state',
+  // "turn" (rotate) vs "turn" (opportunity) — "chance" vs "turn" is wrong sense
+  'chance:turn',
+  // "present" (gift) vs "present" (current time) — "gift" vs "present" is actually OK, keep
+  // "second" (time) vs "second" (ordinal) — "moment" vs "second" could mislead
+  'moment:second',
+  // "save" (rescue) vs "save" (store) — "keep" vs "save" too loose
+  'keep:save',
+  // "stand" (be upright) vs "stand" (booth/position) — "booth" vs "stand" too niche
+  'booth:stand',
+])
+
+/**
+ * Check if a synonym pair is blocklisted. Order-independent.
+ *
+ * @param word1 - First word of the pair (lowercased).
+ * @param word2 - Second word of the pair (lowercased).
+ * @returns true if this pair is in the blocklist and should not be accepted as a synonym match.
+ */
+function isSynonymBlocked(word1: string, word2: string): boolean {
+  const a = word1 < word2 ? word1 : word2
+  const b = word1 < word2 ? word2 : word1
+  return SYNONYM_BLOCKLIST.has(`${a}:${b}`)
+}
+
+/**
  * Normalizes an answer string for lenient comparison.
  * Applies: trim, lowercase, NFD accent-fold, strip trailing punctuation,
  * collapse internal whitespace.
@@ -113,6 +190,7 @@ export function extractCandidates(answer: string): string[] {
  * Matching phases:
  * 1. Direct candidate match (normalization, slash/comma decomposition, parentheticals, "to " prefix).
  * 2. Synonym matching via WordNet synonyms (single-word typed answers only).
+ *    Blocked pairs in SYNONYM_BLOCKLIST are never accepted to prevent polysemous false positives.
  * 3. Close match detection — Levenshtein distance ≤ 2 and ≤ 30% of candidate length.
  *
  * @param typed - The raw string the player typed.
@@ -169,12 +247,12 @@ export function checkTypedAnswer(
     for (const candidate of singleWordCandidates) {
       // Forward: typed is a synonym of the candidate
       const candidateSyns = getSynonyms(candidate).map(s => s.toLowerCase())
-      if (candidateSyns.includes(normalizedTyped)) {
+      if (candidateSyns.includes(normalizedTyped) && !isSynonymBlocked(candidate, normalizedTyped)) {
         return { correct: true, closeMatch: false, synonymMatch: true }
       }
       // Reverse: candidate is a synonym of typed
       const typedSyns = getSynonyms(normalizedTyped).map(s => s.toLowerCase())
-      if (typedSyns.includes(candidate)) {
+      if (typedSyns.includes(candidate) && !isSynonymBlocked(normalizedTyped, candidate)) {
         return { correct: true, closeMatch: false, synonymMatch: true }
       }
     }
