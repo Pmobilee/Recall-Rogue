@@ -19,6 +19,7 @@
   } from '../../data/balance'
   import { answerDisplaySpeed, autoResumeAfterAnswer } from '../stores/settings'
   import GrammarTypingInput from './GrammarTypingInput.svelte'
+  import TypingInput from './TypingInput.svelte'
   import KeywordPopup from './KeywordPopup.svelte'
   import FuriganaText from '../FuriganaText.svelte'
   import WordHover from './WordHover.svelte'
@@ -26,7 +27,7 @@
   import { deckOptions } from '../../services/deckOptionsService'
   import DeckOptionsPanel from '../DeckOptionsPanel.svelte'
   import { getLanguageConfig } from '../../types/vocabulary'
-  import { displayAnswer } from '../../services/numericalDistractorService'
+  import { displayAnswer, isNumericalAnswer } from '../../services/numericalDistractorService'
 
   interface Props {
     card: Card
@@ -190,6 +191,14 @@
   const effectiveResponseMode = $derived(
     alwaysWriteEnabled || quizResponseMode === 'typing' ? 'typing' : 'choice'
   )
+
+  /** Whether this fact should be excluded from typing mode (fall back to multiple choice). */
+  const isTypingExcluded = $derived.by(() => {
+    if (quizMode === 'image_question' || quizMode === 'image_answers') return true
+    if (isNumericalAnswer(correctAnswer)) return true
+    if (displayAnswer(correctAnswer).length > 80) return true
+    return false
+  })
 
   /**
    * Parse a Japanese question into { before, word, reading, after } parts.
@@ -580,20 +589,35 @@
     {/if}
   {/if}
 
-  {#if effectiveResponseMode === 'typing' && !answersDisabled}
-    <GrammarTypingInput
-      {correctAnswer}
-      acceptableAlternatives={[]}
-      onsubmit={(correct, _typed) => {
-        if (correct) {
-          handleAnswer(answers.indexOf(correctAnswer))
-        } else {
-          // Pick first wrong answer index to trigger wrong-answer flow
-          const wrongIdx = answers.findIndex(a => a !== correctAnswer)
-          handleAnswer(wrongIdx >= 0 ? wrongIdx : 0)
-        }
-      }}
-    />
+  {#if effectiveResponseMode === 'typing' && !isTypingExcluded && !answersDisabled}
+    {#if quizLanguageCode === 'ja'}
+      <GrammarTypingInput
+        {correctAnswer}
+        acceptableAlternatives={[]}
+        onsubmit={(correct, _typed) => {
+          if (correct) {
+            handleAnswer(answers.indexOf(correctAnswer))
+          } else {
+            const wrongIdx = answers.findIndex(a => a !== correctAnswer)
+            handleAnswer(wrongIdx >= 0 ? wrongIdx : 0)
+          }
+        }}
+      />
+    {:else}
+      <TypingInput
+        {correctAnswer}
+        acceptableAlternatives={[]}
+        language={quizLanguageCode ?? ''}
+        onsubmit={(correct, _typed) => {
+          if (correct) {
+            handleAnswer(answers.indexOf(correctAnswer))
+          } else {
+            const wrongIdx = answers.findIndex(a => a !== correctAnswer)
+            handleAnswer(wrongIdx >= 0 ? wrongIdx : 0)
+          }
+        }}
+      />
+    {/if}
   {:else if quizMode === 'image_answers' && answerImagePaths?.length}
     <div class="card-answers-image-grid">
       {#each answers as answer, i}

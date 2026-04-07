@@ -1,8 +1,8 @@
 # Quiz Engine Mechanics
 
 > **Purpose:** Documents how quiz questions are selected, formatted, graded, and how the FSRS spaced repetition algorithm schedules fact reviews.
-> **Last verified:** 2026-04-04
-> **Source files:** `src/services/quizService.ts`, `src/services/fsrsScheduler.ts`, `src/services/questionFormatter.ts`, `src/services/questionTemplateSelector.ts`, `src/services/curatedFactSelector.ts`, `src/services/accuracyGradeSystem.ts`, `src/services/curatedDistractorSelector.ts`
+> **Last verified:** 2026-04-07
+> **Source files:** `src/services/quizService.ts`, `src/services/fsrsScheduler.ts`, `src/services/questionFormatter.ts`, `src/services/questionTemplateSelector.ts`, `src/services/curatedFactSelector.ts`, `src/services/accuracyGradeSystem.ts`, `src/services/curatedDistractorSelector.ts`, `src/services/typedAnswerChecker.ts`, `src/services/synonymService.ts`
 
 ---
 
@@ -162,6 +162,124 @@ For non-bridged facts: uses `fact.distractors` directly; falls back to `getVocab
 
 `gradeAnswer(fact, answer)` — exact string match against `displayAnswer(fact.correctAnswer)`. Binary: correct or incorrect. No partial credit. `acceptableAlternatives` are handled upstream before calling `gradeAnswer`.
 
+### Typed Answer Grading (`typedAnswerChecker.ts`)
+
+Used by both tier-3 card formatting (where options count = 0 forces typing) and the always-write typing mode (all language decks). `checkTypedAnswer` replaces `gradeAnswer` for lenient matching whenever a text input is presented.
+
+**`TypedAnswerResult` interface:**
+
+```typescript
+interface TypedAnswerResult {
+  correct: boolean;       // true = accepted for scoring
+  closeMatch: boolean;    // true = within Levenshtein threshold but not accepted
+  matchedSynonym: boolean; // true = accepted via synonym lookup
+}
+```
+
+**Exported API:**
+- `checkTypedAnswer(typed, correctAnswer, acceptableAlternatives, language): TypedAnswerResult` — returns a result object indicating whether the answer is correct, a close-but-wrong match, or a synonym match.
+- `normalizeAnswer(str): string` — applies trim, lowercase, NFD accent folding, trailing punctuation strip, space collapse. Exported for reuse by UI display normalization.
+- `extractCandidates(answer): string[]` — decomposes an answer string into all matchable normalized variants.
+
+**Normalization pipeline** (applied to both typed input and all answer candidates):
+1. `trim()` and `.toLowerCase()`
+2. Unicode NFD accent folding — strips combining diacritics (café → cafe)
+3. Strip trailing punctuation (`[.!?;:]`)
+4. Collapse multiple internal spaces
+
+**Candidate decomposition** (applied to correctAnswer and each acceptableAlternative):
+- Split on ` / ` for slash alternatives (`"grey / gray"` → `["grey", "gray"]`)
+- Split each slash segment on `, ` for comma synonyms (`"lawyer, solicitor"` → `["lawyer", "solicitor"]`)
+- Full unsplit string is always a candidate (handles answers like `"bacon, lettuce, and tomato"`)
+- Trailing parenthetical stripped: `"sandwich (bread roll)"` → `"sandwich"`
+- Leading `"to "` stripped: `"to abandon"` → `"abandon"`
+
+**Bidirectional "to" prefix:** If the player types `"to eat"` against answer `"eat"`, the typed "to" is stripped. If the player types `"eat"` against answer `"to eat"`, a `"to {typed}"` candidate is also tried.
+
+**Language parameter:** Reserved for future locale-specific normalization. Currently unused.
+
+#### Synonym Matching (Phase 2)
+
+`synonymService.ts` exposes `getSynonyms(word): string[]`, backed by a 13,000+ word WordNet-derived synonym map bundled at build time.
+
+Matching rules:
+- Only applied when the typed input is a **single word** (no spaces after normalization)
+- Bidirectional check: typed word is a synonym of any answer candidate, OR any answer candidate is a synonym of the typed word
+- Result: `TypedAnswerResult.correct = true`, `matchedSynonym = true`
+- Example: answer is `"happy"`, player types `"glad"` → `getSynonyms("glad")` includes `"happy"` → accepted
+
+**Note:** `GrammarTypingInput.svelte` (Japanese only) does not call `checkTypedAnswer` and is unaffected by synonym matching. Japanese kana particles and grammar forms don't benefit from English WordNet synonyms.
+
+#### Close Match Detection (Phase 3)
+
+After exact and synonym matching fail, `checkTypedAnswer` computes Levenshtein distance between the normalized typed input and each answer candidate.
+
+**Acceptance threshold:** distance `<= 2` AND distance `<= Math.ceil(answer.length * 0.3)`
+
+Both conditions must hold — this prevents short answers (e.g. 3-letter words) from accepting single-character typos that would change meaning.
+
+Close matches are **wrong for scoring**: `TypedAnswerResult.correct = false`, `closeMatch = true`. FSRS records the attempt as incorrect. The threshold exists purely for UX feedback — players see a hint that they were nearly right rather than a blunt wrong-answer response.
+
+#### UI Feedback States
+
+| State | `correct` | `closeMatch` | UI Display |
+|-------|-----------|--------------|------------|
+| Exact / synonym match | `true` | `false` | Green "Correct!" |
+| Close match | `false` | `true` | Amber "Almost!" |
+| Wrong | `false` | `false` | Red "Wrong" |
+
+The `closeMatch` flag is consumed by `TypingInput.svelte` to conditionally apply the amber feedback style. `GrammarTypingInput.svelte` is unchanged — it uses its own result handling for Japanese IME input and does not read `closeMatch`.
+
+---
+
+## Typing Mode (Always Write Answers)
+
+### Activation
+
+The "Always Write Answers" toggle is available in deck options for all 8 language decks: Japanese (`ja`), Spanish (`es`), French (`fr`), German (`de`), Dutch (`nl`), Czech (`cs`), Korean (`ko`), and Mandarin Chinese (`zh`). When enabled, every eligible quiz question shows a text input instead of multiple-choice buttons.
+
+Previously this toggle was wired only to Japanese grammar fill-in-blank questions. As of 2026-04-07 it applies to all vocab and grammar questions across all language decks.
+
+Toggle state is stored per-language in `localStorage` under `card:deckOptions`. Read via `isAlwaysWriteEnabled(languageCode)`.
+
+### Exclusions (automatic fallback to multiple choice)
+
+`isTypingExcluded` is computed in both `QuizOverlay.svelte` and `CardExpanded.svelte` and returns `true` (forcing multiple choice) when any of the following apply:
+
+| Condition | Reason |
+|-----------|--------|
+| `fact.quizMode === 'image_question'` or `'image_answers'` | Image quiz modes have no text answer to type |
+| `isNumericalAnswer(fact.correctAnswer)` | Brace-marked numerical answers (e.g. `{107} days`) use algorithmic distractors, not free text |
+| `displayAnswer(fact.correctAnswer).length > 80` | Very long answers are impractical to type correctly |
+
+### Input Components
+
+Two components handle typing input, selected by language:
+
+**`GrammarTypingInput.svelte`** — Japanese only (`fact.language === 'ja'`):
+- Binds wanakana for romaji→hiragana IME conversion
+- Politeness form tolerance (e.g. `-masu` / `-ru` alternation)
+- Props: `correctAnswer`, `acceptableAlternatives?`, `onsubmit`
+
+**`TypingInput.svelte`** — All other languages (es, fr, de, nl, cs, ko, zh):
+- Plain text input, no IME binding
+- Calls `checkTypedAnswer()` from `typedAnswerChecker.ts` for lenient matching
+- Props: `correctAnswer: string`, `acceptableAlternatives?: string[]`, `language: string`, `onsubmit: (isCorrect: boolean, typed: string) => void`
+- Placeholder: "Type the English meaning..."
+
+### Quiz Surfaces
+
+Typing mode is rendered in both quiz surfaces:
+
+| Surface | Component | Location |
+|---------|-----------|----------|
+| Gate quiz / study review | `QuizOverlay.svelte` | Zone B (landscape) and portrait answer area; hidden once `showResult` is true |
+| Combat card charge | `CardExpanded.svelte` | Answer area; controlled via `effectiveResponseMode` derived value |
+
+`CardExpanded.svelte` also accepts a `quizResponseMode: 'choice' | 'typing'` prop — typing mode is active if `alwaysWriteEnabled` OR `quizResponseMode === 'typing'` (the `effectiveResponseMode` derived value).
+
+---
+
 ## FSRS Scheduler (`fsrsScheduler.ts`)
 
 Uses the `ts-fsrs` library with `enable_fuzz: true`. The scheduler instance is module-level (`const scheduler = fsrs(generatorParameters({ enable_fuzz: true }))`).
@@ -219,7 +337,44 @@ Per-language player preferences stored in `localStorage` under the key `card:dec
 | `furigana` | Show Furigana | `true` | Display hiragana readings above kanji |
 | `romaji` | Show Romaji | `false` | Display romanized readings |
 | `kanaOnly` | Kana Only | `false` | Replace all kanji with hiragana (beginner mode) |
-| `alwaysWrite` | Always Write Answers | `false` | Type answers instead of multiple choice for grammar questions |
+| `alwaysWrite` | Always Write Answers | `false` | Type answers instead of multiple choice (uses GrammarTypingInput with wanakana IME) |
+
+### Spanish (`es`)
+
+| Option ID | Label | Default | Effect |
+|-----------|-------|---------|--------|
+| `alwaysWrite` | Always Write Answers | `false` | Type answers instead of multiple choice |
+
+### French (`fr`)
+
+| Option ID | Label | Default | Effect |
+|-----------|-------|---------|--------|
+| `alwaysWrite` | Always Write Answers | `false` | Type answers instead of multiple choice |
+
+### German (`de`)
+
+| Option ID | Label | Default | Effect |
+|-----------|-------|---------|--------|
+| `alwaysWrite` | Always Write Answers | `false` | Type answers instead of multiple choice |
+
+### Dutch (`nl`)
+
+| Option ID | Label | Default | Effect |
+|-----------|-------|---------|--------|
+| `alwaysWrite` | Always Write Answers | `false` | Type answers instead of multiple choice |
+
+### Czech (`cs`)
+
+| Option ID | Label | Default | Effect |
+|-----------|-------|---------|--------|
+| `alwaysWrite` | Always Write Answers | `false` | Type answers instead of multiple choice |
+
+### Korean (`ko`)
+
+| Option ID | Label | Default | Effect |
+|-----------|-------|---------|--------|
+| `romanization` | Show Romanization | `false` | Display romanized pronunciation |
+| `alwaysWrite` | Always Write Answers | `false` | Type answers instead of multiple choice |
 
 ### Chinese (`zh`)
 
@@ -227,12 +382,7 @@ Per-language player preferences stored in `localStorage` under the key `card:dec
 |-----------|-------|---------|--------|
 | `pinyin` | Show Pinyin | `true` | Display pinyin pronunciation above characters |
 | `pinyinOnly` | Pinyin Only | `false` | Replace characters with pinyin (beginner mode) |
-
-### Korean (`ko`)
-
-| Option ID | Label | Default | Effect |
-|-----------|-------|---------|--------|
-| `romanization` | Show Romanization | `false` | Display romanized pronunciation |
+| `alwaysWrite` | Always Write Answers | `false` | Type answers instead of multiple choice |
 
 ### Helper API
 
@@ -245,7 +395,6 @@ setDeckOption(languageCode, optionId, value)
 isFuriganaEnabled()        setFuriganaEnabled(enabled)
 isRomajiEnabled()          setRomajiEnabled(enabled)
 isKanaOnlyEnabled()        setKanaOnlyEnabled(enabled)
-isAlwaysWriteEnabled('ja') setAlwaysWriteEnabled('ja', enabled)
 
 // Chinese
 isPinyinEnabled()          setPinyinEnabled(enabled)
@@ -253,6 +402,9 @@ isPinyinOnlyEnabled()      setPinyinOnlyEnabled(enabled)
 
 // Korean
 isKoreanRomanizationEnabled()  setKoreanRomanizationEnabled(enabled)
+
+// All language decks (any language code accepted)
+isAlwaysWriteEnabled(languageCode)  setAlwaysWriteEnabled(languageCode, enabled)
 ```
 
-`isAlwaysWriteEnabled(languageCode)` accepts any language code — useful for future expansion to other grammar decks. Currently configured only for Japanese via the `SUPPORTED_LANGUAGES` options array.
+`isAlwaysWriteEnabled(languageCode)` accepts any ISO 639-1 language code. The `alwaysWrite` option is configured in `SUPPORTED_LANGUAGES` (`src/types/vocabulary.ts`) for all 8 language decks: `ja`, `es`, `fr`, `de`, `nl`, `cs`, `ko`, `zh`.

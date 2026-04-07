@@ -27,8 +27,9 @@
   import { getLanguageConfig } from '../../types/vocabulary'
   import { inputService } from '../../services/inputService'
   import { turboDelay } from '../../utils/turboMode'
-  import { displayAnswer } from '../../services/numericalDistractorService'
+  import { displayAnswer, isNumericalAnswer } from '../../services/numericalDistractorService'
   import GrammarTypingInput from './GrammarTypingInput.svelte'
+  import TypingInput from './TypingInput.svelte'
 
   // GAIA sprite imports for reaction bubble
   const gaiaNeutralImg = '/assets/sprites/dome/gaia_neutral.png'
@@ -201,9 +202,17 @@
     return opts?.[lang]?.alwaysWrite ?? false
   })
 
+  /** Whether this fact should be excluded from typing mode (fall back to multiple choice). */
+  const isTypingExcluded = $derived.by(() => {
+    if (fact.quizMode === 'image_question' || fact.quizMode === 'image_answers') return true
+    if (isNumericalAnswer(fact.correctAnswer)) return true
+    if (displayAnswer(fact.correctAnswer).length > 80) return true
+    return false
+  })
+
   /** Whether to render a typing input instead of multiple-choice for this question. */
   const useTypingMode = $derived(
-    alwaysWriteEnabled && isGrammarFillBlank
+    alwaysWriteEnabled && !isTypingExcluded
   )
 
   const resultClass = $derived.by(() => {
@@ -606,18 +615,34 @@
       <div class="quiz-zone-answers">
         {#if useTypingMode && !showResult}
           <div class="typing-mode-container">
-            <GrammarTypingInput
-              correctAnswer={fact.correctAnswer}
-              acceptableAlternatives={fact.acceptableAnswers ?? []}
-              onsubmit={(correct, _typed) => {
-                if (correct) {
-                  void handleAnswer(fact.correctAnswer)
-                } else {
-                  const wrongChoice = choices.find(c => c !== fact.correctAnswer)
-                  void handleAnswer(wrongChoice ?? choices[0])
-                }
-              }}
-            />
+            {#if fact.language === 'ja'}
+              <GrammarTypingInput
+                correctAnswer={fact.correctAnswer}
+                acceptableAlternatives={fact.acceptableAnswers ?? []}
+                onsubmit={(correct, _typed) => {
+                  if (correct) {
+                    void handleAnswer(fact.correctAnswer)
+                  } else {
+                    const wrongChoice = choices.find(c => c !== fact.correctAnswer)
+                    void handleAnswer(wrongChoice ?? choices[0])
+                  }
+                }}
+              />
+            {:else}
+              <TypingInput
+                correctAnswer={fact.correctAnswer}
+                acceptableAlternatives={fact.acceptableAnswers ?? []}
+                language={fact.language ?? ''}
+                onsubmit={(correct, _typed) => {
+                  if (correct) {
+                    void handleAnswer(fact.correctAnswer)
+                  } else {
+                    const wrongChoice = choices.find(c => c !== fact.correctAnswer)
+                    void handleAnswer(wrongChoice ?? choices[0])
+                  }
+                }}
+              />
+            {/if}
           </div>
         {:else if quizMode === 'image_answers' && answerImagePaths?.length}
           <div class="choices-image-grid">
@@ -816,18 +841,34 @@
 
     {#if useTypingMode && !showResult}
       <div class="typing-mode-container">
-        <GrammarTypingInput
-          correctAnswer={fact.correctAnswer}
-          acceptableAlternatives={fact.acceptableAnswers ?? []}
-          onsubmit={(correct, _typed) => {
-            if (correct) {
-              void handleAnswer(fact.correctAnswer)
-            } else {
-              const wrongChoice = choices.find(c => c !== fact.correctAnswer)
-              void handleAnswer(wrongChoice ?? choices[0])
-            }
-          }}
-        />
+        {#if fact.language === 'ja'}
+          <GrammarTypingInput
+            correctAnswer={fact.correctAnswer}
+            acceptableAlternatives={fact.acceptableAnswers ?? []}
+            onsubmit={(correct, _typed) => {
+              if (correct) {
+                void handleAnswer(fact.correctAnswer)
+              } else {
+                const wrongChoice = choices.find(c => c !== fact.correctAnswer)
+                void handleAnswer(wrongChoice ?? choices[0])
+              }
+            }}
+          />
+        {:else}
+          <TypingInput
+            correctAnswer={fact.correctAnswer}
+            acceptableAlternatives={fact.acceptableAnswers ?? []}
+            language={fact.language ?? ''}
+            onsubmit={(correct, _typed) => {
+              if (correct) {
+                void handleAnswer(fact.correctAnswer)
+              } else {
+                const wrongChoice = choices.find(c => c !== fact.correctAnswer)
+                void handleAnswer(wrongChoice ?? choices[0])
+              }
+            }}
+          />
+        {/if}
       </div>
     {:else if quizMode === 'image_answers' && answerImagePaths?.length}
       <div class="choices-image-grid">

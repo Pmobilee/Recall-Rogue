@@ -166,11 +166,11 @@ export function setKoreanRomanizationEnabled(enabled: boolean): void {
   setDeckOption('ko', 'romanization', enabled)
 }
 
-// ---- Always-write mode (grammar typing) ----
+// ---- Always-write mode ---
 
 /**
  * Check if always-write mode is enabled for a given language.
- * When enabled, grammar questions use typing input instead of multiple choice.
+ * When enabled, questions use typing input instead of multiple choice.
  * Defaults to false.
  *
  * @param languageCode - The language code (e.g., 'ja')

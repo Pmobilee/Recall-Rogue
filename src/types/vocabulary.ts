@@ -144,7 +144,7 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
       { id: 'furigana', label: 'Show Furigana', description: 'Display hiragana readings above kanji', type: 'toggle', default: true },
       { id: 'romaji', label: 'Show Romaji', description: 'Display romanized readings', type: 'toggle', default: false },
       { id: 'kanaOnly', label: 'Kana Only', description: 'Replace all kanji with hiragana (for beginners)', type: 'toggle', default: false },
-      { id: 'alwaysWrite', label: 'Always Write Answers', description: 'Type answers instead of multiple choice for grammar questions', type: 'toggle', default: false },
+      { id: 'alwaysWrite', label: 'Always Write Answers', description: 'Type answers instead of multiple choice', type: 'toggle', default: false },
     ]
   },
   {
@@ -160,7 +160,10 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
       { id: 'C2', name: 'CEFR C2', wordCount: 5200, order: 6 }
     ],
     voiceId: 'es-ES-ElviraNeural',
-    subdecks: ['spanish_a1', 'spanish_a2', 'spanish_b1', 'spanish_b2', 'spanish_c1']
+    subdecks: ['spanish_a1', 'spanish_a2', 'spanish_b1', 'spanish_b2', 'spanish_c1'],
+    options: [
+      { id: 'alwaysWrite', label: 'Always Write Answers', description: 'Type answers instead of multiple choice', type: 'toggle' as const, default: false }
+    ]
   },
   {
     code: 'fr',
@@ -175,7 +178,10 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
       { id: 'C2', name: 'CEFR C2', wordCount: 5000, order: 6 }
     ],
     voiceId: 'fr-FR-DeniseNeural',
-    subdecks: ['french_a1', 'french_a2', 'french_b1', 'french_b2', 'french_c1', 'french_c2']
+    subdecks: ['french_a1', 'french_a2', 'french_b1', 'french_b2', 'french_c1', 'french_c2'],
+    options: [
+      { id: 'alwaysWrite', label: 'Always Write Answers', description: 'Type answers instead of multiple choice', type: 'toggle' as const, default: false }
+    ]
   },
   {
     code: 'de',
@@ -190,7 +196,10 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
       { id: 'C2', name: 'CEFR C2', wordCount: 5300, order: 6 }
     ],
     voiceId: 'de-DE-KatjaNeural',
-    subdecks: ['german_a1', 'german_a2', 'german_b1', 'german_b2', 'german_c1', 'german_c2']
+    subdecks: ['german_a1', 'german_a2', 'german_b1', 'german_b2', 'german_c1', 'german_c2'],
+    options: [
+      { id: 'alwaysWrite', label: 'Always Write Answers', description: 'Type answers instead of multiple choice', type: 'toggle' as const, default: false }
+    ]
   },
   {
     code: 'nl',
@@ -204,7 +213,10 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
       { id: 'C1', name: 'CEFR C1', wordCount: 4400, order: 5 }
     ],
     voiceId: 'nl-NL-ColetteNeural',
-    subdecks: ['dutch_a1', 'dutch_a2', 'dutch_b1', 'dutch_b2', 'dutch_c1']
+    subdecks: ['dutch_a1', 'dutch_a2', 'dutch_b1', 'dutch_b2', 'dutch_c1'],
+    options: [
+      { id: 'alwaysWrite', label: 'Always Write Answers', description: 'Type answers instead of multiple choice', type: 'toggle' as const, default: false }
+    ]
   },
   {
     code: 'cs',
@@ -218,7 +230,10 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
       { id: 'C1', name: 'CEFR C1', wordCount: 4400, order: 5 }
     ],
     voiceId: 'cs-CZ-VlastaNeural',
-    subdecks: ['czech_a1', 'czech_a2', 'czech_b1', 'czech_b2', 'czech_c1']
+    subdecks: ['czech_a1', 'czech_a2', 'czech_b1', 'czech_b2', 'czech_c1'],
+    options: [
+      { id: 'alwaysWrite', label: 'Always Write Answers', description: 'Type answers instead of multiple choice', type: 'toggle' as const, default: false }
+    ]
   },
   {
     code: 'ko',
@@ -236,6 +251,7 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
     subdecks: ['korean_beginner', 'korean_intermediate', 'korean_advanced'],
     options: [
       { id: 'romanization', label: 'Show Romanization', description: 'Display romanized pronunciation', type: 'toggle', default: false },
+      { id: 'alwaysWrite', label: 'Always Write Answers', description: 'Type answers instead of multiple choice', type: 'toggle' as const, default: false },
     ]
   },
   {
@@ -255,6 +271,7 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
     options: [
       { id: 'pinyin', label: 'Show Pinyin', description: 'Display pinyin pronunciation above characters', type: 'toggle', default: true },
       { id: 'pinyinOnly', label: 'Pinyin Only', description: 'Replace characters with pinyin (for beginners)', type: 'toggle', default: false },
+      { id: 'alwaysWrite', label: 'Always Write Answers', description: 'Type answers instead of multiple choice', type: 'toggle' as const, default: false },
     ]
   },
 ]
