@@ -1173,17 +1173,34 @@
    */
   function getStudyModeQuiz(card: Card, runState: NonNullable<typeof $activeRunState>, useReverse = false): QuizData {
     const deckMode = runState.deckMode
-    if (!deckMode || deckMode.type !== 'study') {
+    if (!deckMode || (deckMode.type !== 'study' && deckMode.type !== 'playlist')) {
       return { question: 'Error: not in study mode', answers: ['OK'], correctAnswer: 'OK', variantIndex: 0 }
     }
 
-    const deck = getCuratedDeck(deckMode.deckId)
-    if (!deck) {
-      return { question: 'Error: deck not loaded', answers: ['OK'], correctAnswer: 'OK', variantIndex: 0 }
-    }
-
     const tracker = runState.inRunFactTracker!
-    const factPool = getCuratedDeckFacts(deckMode.deckId, deckMode.subDeckId, deckMode.examTags)
+
+    // Resolve fact pool and per-fact deck resolver based on mode
+    let factPool: ReturnType<typeof getCuratedDeckFacts>
+    let resolveDeckForFact: (factId: string) => ReturnType<typeof getCuratedDeck>
+
+    if (deckMode.type === 'playlist') {
+      // Multi-deck: merge facts from all items; use factSourceDeckMap for per-fact deck resolution
+      factPool = deckMode.items.flatMap(item =>
+        getCuratedDeckFacts(item.deckId, item.subDeckId, item.examTags)
+      )
+      resolveDeckForFact = (factId: string) => {
+        const sourceDeckId = runState.factSourceDeckMap?.[factId]
+        return sourceDeckId ? getCuratedDeck(sourceDeckId) : undefined
+      }
+    } else {
+      // Single study deck (existing behavior)
+      const deck = getCuratedDeck(deckMode.deckId)
+      if (!deck) {
+        return { question: 'Error: deck not loaded', answers: ['OK'], correctAnswer: 'OK', variantIndex: 0 }
+      }
+      factPool = getCuratedDeckFacts(deckMode.deckId, deckMode.subDeckId, deckMode.examTags)
+      resolveDeckForFact = () => deck
+    }
 
     if (factPool.length === 0) {
       return { question: 'Error: empty deck', answers: ['OK'], correctAnswer: 'OK', variantIndex: 0 }
@@ -1195,13 +1212,14 @@
 
     // 2. Select a question template
     const recentTemplates = tracker.getRecentTemplateIds()
-    const templateResult = selectQuestionTemplate(fact, deck, cardMastery, recentTemplates, runState.runSeed)
+    const resolvedDeck = resolveDeckForFact(fact.id)
+    const templateResult = selectQuestionTemplate(fact, resolvedDeck!, cardMastery, recentTemplates, runState.runSeed)
     tracker.recordTemplateUsed(templateResult.template.id)
 
     // 3. Select distractors from the answer type pool
     // AR-273: Meditation Chamber reduces distractor count by 1 for the meditated theme.
     const distractorCount = getDistractorCount(cardMastery, runState.meditatedThemeId, fact.chainThemeId)
-    const pool = deck.answerTypePools.find(p => p.id === templateResult.answerPoolId)
+    const pool = resolvedDeck?.answerTypePools.find(p => p.id === templateResult.answerPoolId)
 
     let distractorAnswers: string[]
     let distractorMap: Record<string, string> = {}
@@ -1212,10 +1230,10 @@
       const factAdapter = { id: fact.id, correctAnswer: fact.correctAnswer } as Fact
       distractorAnswers = getNumericalDistractors(factAdapter, distractorCount)
       // distractorMap stays empty — numerical distractors have no deck fact IDs
-    } else if (pool) {
+    } else if (pool && resolvedDeck) {
       const confusionMatrix = getConfusionMatrix()
       const { distractors } = selectDistractors(
-        fact, pool, deck.facts, deck.synonymGroups,
+        fact, pool, resolvedDeck.facts, resolvedDeck.synonymGroups,
         confusionMatrix, tracker, distractorCount, cardMastery
       )
       distractorAnswers = distractors.map(d => d.correctAnswer)
@@ -1396,7 +1414,7 @@
   function getQuizForCard(card: Card, optionCount: number, useReverse = false): QuizData {
     // Study mode: dynamic fact assignment from curated deck
     const runState = $activeRunState
-    if (runState?.deckMode?.type === 'study' && runState.inRunFactTracker) {
+    if ((runState?.deckMode?.type === 'study' || runState?.deckMode?.type === 'playlist') && runState.inRunFactTracker) {
       return getStudyModeQuiz(card, runState, useReverse)
     }
 

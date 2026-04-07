@@ -117,7 +117,7 @@ import type { UpgradePreview } from './cardUpgradeService';
 import { getUpgradeCandidates, getUpgradePreview, upgradeCard, canMasteryUpgrade, masteryUpgrade } from './cardUpgradeService'
 import type { QuizQuestion } from './bossQuizPhase';
 import { factsDB } from './factsDB';
-import { selectNonCombatStudyQuestion } from './nonCombatQuizSelector';
+import { selectNonCombatStudyQuestion, selectNonCombatPlaylistQuestion } from './nonCombatQuizSelector';
 import { getConfusionMatrix } from './confusionMatrixStore';
 import type { ShopInventory } from './shopService';
 import { generateShopRelics, priceShopCards, removalPrice, transformPrice, applySaleDiscount, getSalePrice } from './shopService';
@@ -140,9 +140,42 @@ import {
 import { preloadNarrativeData } from './narrativeLoader'
 import { showNarrative } from '../ui/stores/narrativeStore'
 import { CHAIN_TYPES } from '../data/chainTypes'
+import { unlockAchievement } from './steamService'
 // Fire-and-forget: preload narrative JSON data in parallel with other init.
 // The loader warns but never throws if narrative files are absent.
 void preloadNarrativeData();
+
+// ── Steam Achievements ────────────────────────────────────────────────────────
+
+/**
+ * Fire-and-forget achievement unlock. Safe to call redundantly — Steam ignores
+ * re-unlocks. Suppresses floating promise lint warnings.
+ */
+function tryUnlock(id: string): void {
+  void unlockAchievement(id);
+}
+
+/**
+ * Check cumulative per-save achievements that require totalling across runs.
+ * Call at run end (after playerSave has been updated with the run's stats).
+ */
+function checkCumulativeAchievements(): void {
+  const save = get(playerSave);
+  if (!save) return;
+
+  // Cumulative correct quiz answers
+  const totalCorrect = save.stats.totalQuizCorrect;
+  if (totalCorrect >= 100) tryUnlock('FACTS_100');
+  if (totalCorrect >= 1000) tryUnlock('FACTS_1000');
+
+  // Cumulative elite kills — tracked in bestFloor proxy via elitesDefeated field
+  // (stored in stats when each run ends via recordRunComplete; we derive from
+  // totalDivesCompleted as a proxy — see ELITE_SLAYER note below)
+  // Since PlayerStats does not yet track cumulative elites, we accumulate via
+  // the save.stats extension field; gracefully handle missing field.
+  const cumulativeElites = (save.stats as any).totalElitesDefeated as number | undefined;
+  if ((cumulativeElites ?? 0) >= 10) tryUnlock('ELITE_SLAYER');
+}
 
 /**
  * Set ambient audio context for a combat encounter based on floor and boss status.
@@ -700,7 +733,36 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
     playCardAudio('xp-award');
     if (xpResult.levelsGained > 0) {
       playCardAudio('level-up');
+      // Steam achievements: character level milestones
+      if (xpResult.newLevel >= 5) tryUnlock('LEVEL_5');
+      if (xpResult.newLevel >= 15) tryUnlock('LEVEL_15');
+      if (xpResult.newLevel >= 25) tryUnlock('LEVEL_25');
     }
+  }
+
+  // Steam achievements: run-completion milestones
+  if (!endData.isPracticeRun) {
+    tryUnlock('FIRST_RUN_COMPLETE');
+
+    if (endData.floorReached >= 5) tryUnlock('FLOOR_5');
+    if (endData.floorReached >= 12) tryUnlock('FLOOR_12');
+    if (endData.floorReached >= 24) tryUnlock('FLOOR_24');
+
+    if (endData.bestCombo >= 10) tryUnlock('STREAK_10');
+    if (endData.bestCombo >= 25) tryUnlock('STREAK_25');
+
+    if (endData.relicsCollected !== undefined && endData.relicsCollected >= 5) tryUnlock('RELIC_COLLECTOR');
+
+    const ascLevel = run.ascensionLevel ?? 0;
+    if (ascLevel >= 1 && (endData.result === 'victory' || endData.result === 'retreat')) {
+      tryUnlock('ASCENSION_1');
+    }
+    if (ascLevel >= 5 && (endData.result === 'victory' || endData.result === 'retreat')) {
+      tryUnlock('ASCENSION_5');
+    }
+
+    // Cumulative achievements (read from save after XP/stats have been applied)
+    checkCumulativeAchievements();
   }
 
   // Compute fact state summary for the run-end screen
@@ -1374,9 +1436,10 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     if (exitEnemyId) {
       (run.defeatedEnemyIds ??= []).push(exitEnemyId);
     }
+    const encounterWasFlawless = run.currentEncounterWrongAnswers === 0;
     run.bounties = updateBounties(run.bounties, {
       type: 'encounter_won',
-      flawless: run.currentEncounterWrongAnswers === 0,
+      flawless: encounterWasFlawless,
     });
     run.currentEncounterWrongAnswers = 0;
 
@@ -1388,10 +1451,28 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     const victoryWasMiniBoss = isMiniBossEncounter(victoryFloor, victoryEncounter);
     if (victoryNode?.type === 'elite') {
       run.elitesDefeated += 1;
+      // Increment cumulative elite counter in save for ELITE_SLAYER achievement
+      playerSave.update(s => {
+        if (!s) return s;
+        const prev = (s.stats as any).totalElitesDefeated as number | undefined;
+        return { ...s, stats: { ...s.stats, totalElitesDefeated: (prev ?? 0) + 1 } as any };
+      });
     } else if (victoryNode?.type === 'boss' || (isBossFloor(victoryFloor) && victoryEncounter === run.floor.encountersPerFloor)) {
       run.bossesDefeated += 1;
+      // Achievement: defeat a boss
+      tryUnlock('BOSS_SLAYER');
     } else if (victoryWasMiniBoss) {
       run.miniBossesDefeated += 1;
+    }
+
+    // Achievement: first combat victory
+    if (run.encountersWon === 1) {
+      tryUnlock('FIRST_VICTORY');
+    }
+
+    // Achievement: flawless encounter (0 wrong answers, captured before reset above)
+    if (encounterWasFlawless) {
+      tryUnlock('PERFECT_ENCOUNTER');
     }
   }
 
@@ -2411,6 +2492,42 @@ export function generateStudyQuestions(): QuizQuestion[] {
     }
     if (questions.length > 0) return questions;
     // Fall through to trivia path if no study questions could be generated
+  }
+
+  // Playlist mode branch: use curated deck selector across all playlist items
+  if (run?.deckMode?.type === 'playlist') {
+    const confusionMatrix = getConfusionMatrix();
+    const inRunTracker = run.inRunFactTracker ?? null;
+    const factSourceDeckMap = run.factSourceDeckMap ?? {};
+    const questions: QuizQuestion[] = [];
+    const excludeFactIds = new Set<string>();
+    for (let i = 0; i < 3; i++) {
+      const q = selectNonCombatPlaylistQuestion(
+        'rest',
+        run.deckMode.items,
+        factSourceDeckMap,
+        confusionMatrix,
+        inRunTracker,
+        1,
+        run.runSeed + i * 1000,
+        undefined, // meditatedThemeId
+        excludeFactIds,
+      );
+      if (q) {
+        excludeFactIds.add(q.factId);
+        questions.push({
+          factId: q.factId,
+          question: q.question,
+          answers: q.choices,
+          correctAnswer: q.correctAnswer,
+          quizMode: q.quizMode,
+          imageAssetPath: q.imageAssetPath,
+          answerImagePaths: q.answerImagePaths,
+        });
+      }
+    }
+    if (questions.length > 0) return questions;
+    // Fall through to trivia path if no playlist questions could be generated
   }
 
   const allFacts = factsDB.getTriviaFacts();

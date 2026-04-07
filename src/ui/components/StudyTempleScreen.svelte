@@ -18,13 +18,14 @@
   import WorkshopBrowser from './WorkshopBrowser.svelte';
   import { getPersonalDecks } from '../../services/personalDeckStore';
   import { registerPersonalDecks } from '../../services/personalDeckStore';
-  import type { CustomPlaylist, CustomPlaylistItem } from '../../data/studyPreset';
+  import type { CustomPlaylist, CustomPlaylistItem, PlaylistDeckItem } from '../../data/studyPreset';
 
   interface Props {
     onback: () => void;
     onStartRun: (config:
       | { mode: 'study'; deckId: string; subDeckId?: string; examTags?: string[] }
       | { mode: 'procedural'; deckId: string; subDeckId?: string }
+      | { mode: 'playlist'; items: PlaylistDeckItem[] }
     ) => void;
   }
 
@@ -362,9 +363,18 @@
 
   function handleStartCustomRun() {
     const items = activePlaylist?.items ?? [];
-    const firstStudy = items.find((it): it is Extract<CustomPlaylistItem, { type: 'study' }> => it.type === 'study');
-    if (firstStudy) {
-      onStartRun({ mode: 'study', deckId: firstStudy.deckId, subDeckId: firstStudy.subDeckId });
+    const studyItems = items.filter((it): it is Extract<CustomPlaylistItem, { type: 'study' }> => it.type === 'study');
+    if (studyItems.length === 0) return;
+
+    if (studyItems.length === 1) {
+      // Single deck — use existing study mode for backward compat
+      onStartRun({ mode: 'study', deckId: studyItems[0].deckId, subDeckId: studyItems[0].subDeckId });
+    } else {
+      // Multi-deck playlist
+      onStartRun({
+        mode: 'playlist',
+        items: studyItems.map(si => ({ deckId: si.deckId, subDeckId: si.subDeckId })),
+      });
     }
   }
 

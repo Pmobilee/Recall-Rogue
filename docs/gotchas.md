@@ -507,3 +507,15 @@ Rule of thumb for `verify-all-decks.mjs`: put hard structural errors inside `che
 1. Em-dash check added to `quiz-audit-engine.ts` (check #1: `em_dash_answer`)
 2. Rule added to `.claude/rules/content-pipeline.md` and deck-master skill: "NEVER use em-dashes in correctAnswer"
 3. `verify-all-decks.mjs` now checks for em-dashes in answers
+
+### 2026-04-07 — Playlist Runs Dominated by Largest Deck Due to Sequential Fact Seeding
+
+**What:** `InRunFactTracker` seeds facts into the new-card introduction queue by iterating over playlist items in order. In a playlist like `spanish_a1` (1,546 facts) + `japanese_n5_grammar` (375 facts) + `computer_science` (296 facts), all 1,546 Spanish facts are enqueued before any Japanese or CS facts. A typical run sees ~30-40 charges total, so only Spanish facts appear in practice. Japanese and CS cards are never introduced even though the player explicitly added them to the playlist.
+
+**Root cause:** `createRunState` in `runManager.ts` calls `getCuratedDeckFacts` for each playlist item in array order, then passes the concatenated array to `InRunFactTracker`. The tracker's Anki-model new-card queue processes facts in the order they were seeded. There is no interleaving step.
+
+**Current status:** Known design limitation as of 2026-04-07. Not yet fixed.
+
+**Planned fix:** Shuffle or interleave across decks during seeding — e.g., round-robin by deck, or shuffle the full concatenated array before seeding — so the new-card introduction queue distributes proportionally across all playlist items from the first charge of the run.
+
+**Affected code:** `src/services/runManager.ts` (playlist branch in `createRunState`), `src/services/inRunFactTracker.ts` (seeding logic).

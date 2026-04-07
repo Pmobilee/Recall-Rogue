@@ -1,4 +1,5 @@
 import type { DeckFact } from '../data/curatedDeckTypes';
+import type { PlaylistDeckItem } from '../data/studyPreset';
 import { getCuratedDeck, getCuratedDeckFacts } from '../data/curatedDeckStore';
 import { selectFactForCharge } from './curatedFactSelector';
 import { selectQuestionTemplate } from './questionTemplateSelector';
@@ -237,6 +238,188 @@ export function selectNonCombatStudyQuestion(
     }
   } else if (fact.quizMode && fact.quizMode !== 'text') {
     // Non-flag image facts (future use): preserve original behavior.
+    quizMode = fact.quizMode;
+    if (fact.quizMode === 'image_question') {
+      imageAssetPath = fact.imageAssetPath;
+    }
+  }
+
+  return {
+    question: displayQuestion,
+    correctAnswer: finalCorrectAnswer,
+    choices,
+    factId: fact.id,
+    isStudyMode: true,
+    distractorFactIds,
+    quizMode,
+    imageAssetPath,
+    answerImagePaths,
+  };
+}
+
+/**
+ * Select a quiz question for non-combat contexts (shop, rest, boss, mystery) in playlist mode.
+ *
+ * Playlist mode runs use multiple curated decks. This function merges facts from all playlist
+ * items and uses the factSourceDeckMap to resolve the correct deck per-fact for template and
+ * distractor selection.
+ *
+ * @param context - Which non-combat context is requesting the quiz
+ * @param playlistItems - The playlist deck items from DeckMode.playlist.items
+ * @param factSourceDeckMap - Maps factId -> source deckId (from RunState.factSourceDeckMap)
+ * @param confusionMatrix - Player's cross-run confusion matrix
+ * @param inRunTracker - In-run fact tracker; if null, a temporary empty one is created
+ * @param cardMasteryLevel - Card mastery for difficulty scaling (default 1)
+ * @param runSeed - Run seed for deterministic selection
+ * @param meditatedThemeId - Optional chain theme ID with reduced distractors
+ * @param excludeFactIds - Fact IDs already selected in this batch; excluded to prevent duplicates
+ * @returns A NonCombatQuizQuestion or null if no facts available
+ */
+export function selectNonCombatPlaylistQuestion(
+  context: 'shop' | 'rest' | 'boss' | 'mystery',
+  playlistItems: PlaylistDeckItem[],
+  factSourceDeckMap: Record<string, string>,
+  confusionMatrix: ConfusionMatrix,
+  inRunTracker: InRunFactTracker | null,
+  cardMasteryLevel: number,
+  runSeed: number,
+  meditatedThemeId?: number,
+  excludeFactIds?: ReadonlySet<string>,
+): NonCombatQuizQuestion | null {
+  // Merge facts from all playlist items
+  let factPool: DeckFact[] = playlistItems.flatMap(item =>
+    getCuratedDeckFacts(item.deckId, item.subDeckId, item.examTags),
+  );
+  if (factPool.length === 0) return null;
+
+  // Exclude already-selected facts to prevent duplicates across a multi-question batch.
+  if (excludeFactIds && excludeFactIds.size > 0) {
+    const filtered = factPool.filter(f => !excludeFactIds.has(f.id));
+    if (filtered.length > 0) {
+      factPool = filtered;
+    }
+  }
+
+  const tracker = inRunTracker ?? new InRunFactTracker();
+  const contextOffset = context.charCodeAt(0);
+  const effectiveSeed = runSeed + contextOffset;
+
+  const { fact } = selectFactForCharge(factPool, tracker, cardMasteryLevel, effectiveSeed);
+
+  // Resolve the source deck for this specific fact
+  const sourceDeckId = factSourceDeckMap[fact.id];
+  const deck = sourceDeckId ? getCuratedDeck(sourceDeckId) : undefined;
+  if (!deck) return null;
+
+  const templateResult = selectQuestionTemplate(fact, deck, cardMasteryLevel, [], effectiveSeed);
+
+  const distractorCount = getDistractorCount(cardMasteryLevel, meditatedThemeId, fact.chainThemeId);
+  const pool = deck.answerTypePools.find(p => p.id === templateResult.answerPoolId);
+
+  let choices: string[];
+  let distractorFactIds: string[] = [];
+
+  if (isNumericalAnswer(fact.correctAnswer)) {
+    const factAdapter = { id: fact.id, correctAnswer: fact.correctAnswer } as Fact;
+    const numericalDistractors = getNumericalDistractors(factAdapter, distractorCount);
+    const correctDisplay = displayAnswer(fact.correctAnswer);
+    choices = [correctDisplay, ...numericalDistractors];
+  } else if (pool) {
+    // Use the source deck's facts for distractor selection (pool-internal coherence)
+    const { distractors } = selectDistractors(
+      fact,
+      pool,
+      deck.facts,
+      deck.synonymGroups,
+      confusionMatrix,
+      tracker,
+      distractorCount,
+      cardMasteryLevel,
+    );
+    choices = [templateResult.correctAnswer, ...distractors.map((d: DeckFact) => d.correctAnswer)];
+    distractorFactIds = distractors.map((d: DeckFact) => d.id);
+  } else {
+    choices = [templateResult.correctAnswer, ...fact.distractors.slice(0, distractorCount)];
+  }
+
+  // Shuffle choices
+  for (let i = choices.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [choices[i], choices[j]] = [choices[j], choices[i]];
+  }
+
+  // Build image quiz fields
+  let quizMode: 'text' | 'image_question' | 'image_answers' | undefined;
+  let imageAssetPath: string | undefined;
+  let answerImagePaths: string[] | undefined;
+  let displayQuestion = templateResult.renderedQuestion;
+  let finalCorrectAnswer = displayAnswer(templateResult.correctAnswer);
+
+  if (fact.quizMode === 'image_question' && fact.imageAssetPath) {
+    const questionType = rollFlagQuestionType();
+    switch (questionType) {
+      case 'identify':
+        quizMode = 'image_question';
+        imageAssetPath = fact.imageAssetPath;
+        break;
+      case 'reverse': {
+        quizMode = 'image_answers';
+        const imageByAnswerRev = new Map<string, string>();
+        for (const df of factPool) {
+          if (df.imageAssetPath) {
+            imageByAnswerRev.set(df.correctAnswer.toLowerCase(), df.imageAssetPath);
+            imageByAnswerRev.set(displayAnswer(df.correctAnswer).toLowerCase(), df.imageAssetPath);
+          }
+        }
+        answerImagePaths = choices.map(c => imageByAnswerRev.get(c.toLowerCase()) ?? '');
+        displayQuestion = `Select the flag of ${finalCorrectAnswer}`;
+        break;
+      }
+      case 'continent': {
+        quizMode = 'image_question';
+        imageAssetPath = fact.imageAssetPath;
+        displayQuestion = 'This flag belongs to a country on which continent?';
+        const correctContinent = REGION_NAMES[fact.chainThemeId] ?? 'Europe';
+        const continentChoices = [...REGION_NAMES].sort(() => Math.random() - 0.5);
+        choices.length = 0;
+        choices.push(...continentChoices);
+        finalCorrectAnswer = correctContinent;
+        break;
+      }
+      case 'not_elimination': {
+        const factContinent = fact.chainThemeId;
+        const otherContinentIdx = ((factContinent + 1 + Math.floor(Math.random() * 4)) % 5);
+        const otherContinentName = REGION_NAMES[otherContinentIdx];
+        const sameRegionFacts = factPool.filter(
+          df => df.chainThemeId === otherContinentIdx && !!df.imageAssetPath && df.id !== fact.id,
+        );
+        if (sameRegionFacts.length >= 3) {
+          quizMode = 'image_answers';
+          const shuffledSame = [...sameRegionFacts].sort(() => Math.random() - 0.5).slice(0, 3);
+          const notChoices = [...shuffledSame.map(f => f.correctAnswer), fact.correctAnswer];
+          for (let i = notChoices.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [notChoices[i], notChoices[j]] = [notChoices[j], notChoices[i]];
+          }
+          const imageByAnswerNot = new Map<string, string>();
+          for (const df of factPool) {
+            if (df.imageAssetPath) {
+              imageByAnswerNot.set(df.correctAnswer.toLowerCase(), df.imageAssetPath);
+            }
+          }
+          answerImagePaths = notChoices.map(a => imageByAnswerNot.get(a.toLowerCase()) ?? '');
+          choices.length = 0;
+          choices.push(...notChoices);
+          displayQuestion = `Which of these flags is NOT from ${otherContinentName}?`;
+          finalCorrectAnswer = displayAnswer(fact.correctAnswer);
+        } else {
+          quizMode = 'image_question';
+          imageAssetPath = fact.imageAssetPath;
+        }
+        break;
+      }
+    }
+  } else if (fact.quizMode && fact.quizMode !== 'text') {
     quizMode = fact.quizMode;
     if (fact.quizMode === 'image_question') {
       imageAssetPath = fact.imageAssetPath;

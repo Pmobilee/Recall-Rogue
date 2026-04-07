@@ -2,11 +2,11 @@
   /**
    * EventQuiz — standalone quiz component for mystery events.
    * Shows MCQ questions one at a time, calls onComplete(correct, total) when done.
-   * Uses facts from the active run's curated deck (or trivia DB as fallback).
+   * Uses facts from the active run's curated deck (study/playlist mode) or trivia DB as fallback.
    */
   import { get } from 'svelte/store'
   import { activeRunState } from '../../services/runStateStore'
-  import { selectNonCombatStudyQuestion } from '../../services/nonCombatQuizSelector'
+  import { selectNonCombatStudyQuestion, selectNonCombatPlaylistQuestion } from '../../services/nonCombatQuizSelector'
   import { getConfusionMatrix } from '../../services/confusionMatrixStore'
   import { factsDB } from '../../services/factsDB'
 
@@ -42,7 +42,7 @@
     const run = get(activeRunState)
 
     for (let i = 0; i < questionCount; i++) {
-      // Try curated deck first
+      // Try curated study deck first
       if (run?.deckMode?.type === 'study') {
         const q = selectNonCombatStudyQuestion(
           'mystery',
@@ -53,6 +53,28 @@
           1,
           (run.runSeed ?? 0) + i * 1000,
           run.deckMode.examTags,
+        )
+        if (q) {
+          built.push({
+            question: q.question,
+            correctAnswer: q.correctAnswer,
+            choices: q.choices,
+            factId: q.factId,
+          })
+          continue
+        }
+      } else if (run?.deckMode?.type === 'playlist') {
+        // Playlist mode: merge facts from all decks in the playlist.
+        // Uses factSourceDeckMap to resolve the correct deck per fact for
+        // template and distractor selection.
+        const q = selectNonCombatPlaylistQuestion(
+          'mystery',
+          run.deckMode.items,
+          run.factSourceDeckMap ?? {},
+          getConfusionMatrix(),
+          run.inRunFactTracker ?? null,
+          1,
+          (run.runSeed ?? 0) + i * 1000,
         )
         if (q) {
           built.push({

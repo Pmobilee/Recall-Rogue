@@ -18,6 +18,13 @@ export interface StudyPreset {
   cachedFactCount: number;
 }
 
+/** A single deck item in a playlist run. */
+export interface PlaylistDeckItem {
+  deckId: string;
+  subDeckId?: string;
+  examTags?: string[];
+}
+
 /** The active study mode for the current/next run. */
 export type DeckMode =
   | { type: 'general' }
@@ -25,7 +32,8 @@ export type DeckMode =
   | { type: 'language'; languageCode: string }
   | { type: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> }
   | { type: 'study'; deckId: string; subDeckId?: string; examTags?: string[] }
-  | { type: 'procedural'; deckId: string; subDeckId?: string };
+  | { type: 'procedural'; deckId: string; subDeckId?: string }
+  | { type: 'playlist'; items: PlaylistDeckItem[] };
 
 /** A single item in a custom playlist — either a trivia domain or a curated study deck. */
 export type CustomPlaylistItem =

@@ -765,6 +765,27 @@ Procedural decks generate quiz problems on-the-fly instead of drawing from stati
 ```
 The `encounterBridge.ts` if-else chain falls through to the general fallback for `type: 'procedural'` until Phase 2 wires the math pool builder. `masteryScalingService.getLeaderboardEligibility()` returns `null` for procedural mode (not leaderboard-eligible).
 
+**DeckMode: playlist** (added 2026-04-07) — the `'playlist'` variant combines multiple heterogeneous curated decks (e.g. `spanish_a1` + `japanese_n5_grammar` + `computer_science`) into a single Study Temple run. Defined in `src/data/studyPreset.ts`:
+
+```typescript
+{ type: 'playlist'; items: PlaylistDeckItem[] }
+
+// PlaylistDeckItem:
+interface PlaylistDeckItem {
+  deckId: string;
+  subDeckId?: string;    // optional sub-deck filter
+  examTags?: string[];   // optional exam-tag filter
+}
+```
+
+**Run initialization** (`runManager.ts` `createRunState`): iterates over all items, merges facts via `getCuratedDeckFacts`, seeds a shared `InRunFactTracker`, and populates `RunState.factSourceDeckMap` (`Record<string, string>`) mapping each `factId` to its source `deckId` for downstream template/distractor resolution.
+
+**Chain distribution** (`chainDistribution.ts` `precomputeChainDistribution`): playlist runs use `extractTopicGroupsMultiDeck` across all item decks — the same FSRS-weighted LPT bin-packing used for `all:` language aggregate runs.
+
+**Encounter pool** (`encounterBridge.ts` `startEncounterForRoom`): per-item pool building — vocab items (language-prefixed deckId) use `buildLanguageRunPool`, knowledge items use `buildGeneralRunPool` with domain stamping — then merged with factId deduplication into a single `activeRunPool`.
+
+**Leaderboard eligibility**: `null` (playlist runs are not eligible for any leaderboard category).
+
 **No fact DB entries:** `DOMAIN_TO_CATEGORY['mathematics']` is an empty array in `runPoolBuilder.ts` — querying `factsDB` for math facts always returns nothing. `getKnowledgeDomains()` excludes `'mathematics'` so it never appears in trivia domain loops.
 
 **Math Service Layer** — four services in `src/services/math/` implement the procedural math system:

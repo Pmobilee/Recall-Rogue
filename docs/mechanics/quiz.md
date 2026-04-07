@@ -40,6 +40,13 @@ The caller (`generateStudyQuestions` in `gameFlowController.ts`) accumulates `ex
 iterations and passes it on each call. If filtering would leave zero candidates (tiny deck), the full
 pool is used as a fallback so the function never returns `null` due to exhaustion.
 
+**Playlist mode non-combat questions** (`nonCombatQuizSelector.ts: selectNonCombatPlaylistQuestion`):
+Playlist runs (multiple curated decks) use a separate selector that merges facts from all playlist items.
+`factSourceDeckMap` (from `RunState.factSourceDeckMap`) resolves the correct source deck per-fact for
+template and distractor selection. Called from `generateStudyQuestions` (rest sites) and
+`generateQuizPhaseQuestions` (boss quiz phase) when `deckMode.type === 'playlist'`.
+Distractors are drawn from the source deck's own answer type pools to preserve pool coherence.
+
 ### 2. Template Selection (`questionTemplateSelector.ts`)
 
 `selectQuestionTemplate` selects from `deck.questionTemplates` using a seeded xorshift32 RNG:

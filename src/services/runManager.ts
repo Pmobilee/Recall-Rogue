@@ -170,6 +170,11 @@ export interface RunState {
    * Undefined for trivia (non-curated) runs.
    */
   chainDistribution?: ChainDistribution;
+  /**
+   * For playlist runs: maps factId → source deckId for template/distractor resolution.
+   * Populated at run start; undefined for non-playlist runs.
+   */
+  factSourceDeckMap?: Record<string, string>;
 }
 
 export interface RunEndData {
@@ -306,6 +311,30 @@ export function createRunState(
       return reviewState?.stability;
     });
     runState.inRunFactTracker = tracker;
+  }
+
+  // Playlist mode: merge facts from all deck items into a single tracker with source map.
+  if (options?.deckMode?.type === 'playlist') {
+    const tracker = new InRunFactTracker();
+    const allFacts: { id: string }[] = [];
+    const factSourceMap: Record<string, string> = {};
+
+    for (const item of options.deckMode.items) {
+      const deckFacts = getCuratedDeckFacts(item.deckId, item.subDeckId, item.examTags);
+      for (const f of deckFacts) {
+        allFacts.push(f);
+        factSourceMap[f.id] = item.deckId;
+      }
+    }
+
+    const factIds = allFacts.map(f => f.id);
+    const reviewStates = get(playerSave)?.reviewStates ?? [];
+    tracker.seedFromGlobalFSRS(factIds, (factId: string) => {
+      const reviewState = reviewStates.find((rs) => rs.factId === factId);
+      return reviewState?.stability;
+    });
+    runState.inRunFactTracker = tracker;
+    runState.factSourceDeckMap = factSourceMap;
   }
 
   return runState;

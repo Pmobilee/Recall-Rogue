@@ -162,6 +162,29 @@ hub → (handleStartRun) → deckSelectionHub → triviaDungeon or studyTemple
 
 If a saved run exists, `handleStartRun` shows a Run Guard popup (continue vs. abandon).
 
+### Playlist Run Flow
+
+A playlist run combines multiple curated decks into a single run. The `studyTemple` screen supports
+building a `CustomPlaylist` of `CustomPlaylistItem`s. When "Start Custom Run" is clicked:
+
+- **Single study deck**: emits `onStartRun({ mode: 'study', deckId, subDeckId? })` — identical to a normal study run
+- **Multiple study decks**: emits `onStartRun({ mode: 'playlist', items: PlaylistDeckItem[] })` — merged fact pool
+
+`CardApp.handleDungeonRunStart` accepts `{ mode: 'playlist'; items: PlaylistDeckItem[] }` and persists it to `playerSave.activeDeckMode`. `runManager` then merges all facts from playlist items into a single `InRunFactTracker` and populates `RunState.factSourceDeckMap` (factId → source deckId) for per-fact deck resolution.
+
+During combat, `CardCombatOverlay.getStudyModeQuiz` handles both `type: 'study'` and `type: 'playlist'` deckModes:
+- **Playlist**: merges all items' fact pools and uses `factSourceDeckMap` to look up the correct deck for template selection and distractor generation.
+- **Study**: unchanged behavior — single deck, no source map needed.
+
+The guard in `getQuizForCard` activates the study-mode quiz path for both modes:
+```typescript
+if ((runState?.deckMode?.type === 'study' || runState?.deckMode?.type === 'playlist') && runState.inRunFactTracker)
+```
+
+Non-combat quiz (shop, rest, boss) uses `selectNonCombatPlaylistQuestion` from `nonCombatQuizSelector.ts`
+(separate function from the single-deck `selectNonCombatStudyQuestion`). Callers in `gameFlowController.ts`
+and `bossQuizPhase.ts` need updating to invoke the playlist variant when `deckMode.type === 'playlist'`.
+
 ### Combat Loop
 ```
 dungeonMap → (node select) → combat

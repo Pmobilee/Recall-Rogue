@@ -151,8 +151,8 @@ export function getLeaderboardEligibility(deckMode: DeckMode): string | null {
     return `language:${deckMode.languageCode}`;
   }
 
-  // Trivia/study/procedural modes: not yet eligible for leaderboards.
-  if (deckMode.type === 'trivia' || deckMode.type === 'study' || deckMode.type === 'procedural') {
+  // Trivia/study/procedural/playlist modes: not yet eligible for leaderboards.
+  if (deckMode.type === 'trivia' || deckMode.type === 'study' || deckMode.type === 'procedural' || deckMode.type === 'playlist') {
     return null;
   }
 

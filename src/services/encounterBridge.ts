@@ -434,6 +434,56 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
           funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
           includeOutsideDueReviews: run.includeOutsideDueReviews ?? false,
         });
+      } else if (run.deckMode.type === 'playlist') {
+        // Playlist mode: build merged pool from all deck items.
+        // Each item is either a vocab deck (language prefix) or a knowledge deck.
+        const LANG_PREFIX_TO_CODE: Record<string, string> = {
+          japanese: 'ja', korean: 'ko', chinese: 'zh', mandarin: 'zh',
+          spanish: 'es', french: 'fr', german: 'de', dutch: 'nl',
+          czech: 'cs', portuguese: 'pt', italian: 'it', russian: 'ru',
+          arabic: 'ar', hindi: 'hi', vietnamese: 'vi', turkish: 'tr',
+        };
+
+        let mergedPool: Card[] = [];
+        const seenFactIds = new Set<string>();
+
+        for (const item of run.deckMode.items) {
+          const deckPrefix = item.deckId.indexOf('_') > 0 ? item.deckId.substring(0, item.deckId.indexOf('_')) : item.deckId;
+          const langCode = LANG_PREFIX_TO_CODE[deckPrefix];
+
+          let itemPool: Card[];
+          if (langCode) {
+            itemPool = buildLanguageRunPool(langCode, reviewStates, {
+              categoryFilters,
+              funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+              chainDistribution: run.chainDistribution,
+            });
+          } else {
+            // Knowledge curated deck — build general pool and stamp domain.
+            itemPool = buildGeneralRunPool(reviewStates, {
+              categoryFilters,
+              funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+              chainDistribution: run.chainDistribution,
+            });
+            const curatedDeck = getCuratedDeck(item.deckId);
+            if (curatedDeck) {
+              const deckDomain = curatedDeck.domain as FactDomain;
+              for (const card of itemPool) {
+                card.domain = deckDomain;
+              }
+            }
+          }
+
+          // Deduplicate by factId across deck items.
+          for (const card of itemPool) {
+            if (!seenFactIds.has(card.factId)) {
+              seenFactIds.add(card.factId);
+              mergedPool.push(card);
+            }
+          }
+        }
+
+        activeRunPool = mergedPool;
       } else {
         // Other modes — fall back to general pool until dedicated builders exist.
         activeRunPool = buildGeneralRunPool(reviewStates, {

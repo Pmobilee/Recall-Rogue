@@ -15,7 +15,7 @@
 import type { CuratedDeck } from '../data/curatedDeckTypes';
 import type { ReviewState } from '../data/types';
 import type { DeckMode } from '../data/studyPreset';
-import { getCuratedDeck, getAllLoadedDecks } from '../data/curatedDeckStore';
+import { getCuratedDeck, getAllLoadedDecks, getCuratedDeckFacts } from '../data/curatedDeckStore';
 import { selectRunChainTypes } from '../data/chainTypes';
 
 // ---------------------------------------------------------------------------
@@ -467,8 +467,28 @@ export function precomputeChainDistribution(
   reviewStates: ReviewState[],
   seed: number,
 ): ChainDistribution | undefined {
-  // Only curated study runs get topic-aware chain distribution.
-  if (deckMode.type !== 'study') return undefined;
+  // Only curated study runs and playlist runs get topic-aware chain distribution.
+  if (deckMode.type !== 'study' && deckMode.type !== 'playlist') return undefined;
+
+  // Playlist mode: merge topic groups from all deck items.
+  if (deckMode.type === 'playlist') {
+    const decks = deckMode.items
+      .map(item => getCuratedDeck(item.deckId))
+      .filter((d): d is NonNullable<typeof d> => d != null);
+    if (decks.length === 0) return undefined;
+
+    // Scope fact IDs per deck (respecting subDeckId/examTags filters).
+    const allFactIds: string[] = [];
+    for (const item of deckMode.items) {
+      const deckFacts = getCuratedDeckFacts(item.deckId, item.subDeckId, item.examTags);
+      allFactIds.push(...deckFacts.map(f => f.id));
+    }
+    if (allFactIds.length === 0) return undefined;
+
+    const groups = extractTopicGroupsMultiDeck(decks, allFactIds, reviewStates);
+    const runChainTypes = selectRunChainTypes(seed);
+    return distributeTopicGroups(groups, runChainTypes, seed);
+  }
 
   if (deckMode.deckId.startsWith('all:')) {
     // Multi-deck language aggregate: load ALL loaded decks whose ID starts with
