@@ -181,7 +181,9 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     leaveLobby,
     getCurrentLobby,
     onLobbyUpdate,
+    onGameStart as registerGameStartCb,
   } from './services/multiplayerLobbyService'
+  import { onOpponentProgressUpdate } from './services/multiplayerGameService'
   import type { LobbyState, RaceProgress } from './data/multiplayerTypes'
 
   // Update Steam Rich Presence whenever the active screen changes.
@@ -442,17 +444,18 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   /** Current lobby state — null when not in a multiplayer lobby. */
   let currentLobby = $state<LobbyState | null>(getCurrentLobby())
 
-  /** Placeholder opponent progress for MultiplayerHUD until real race wiring lands. */
-  const placeholderProgress: RaceProgress = {
+  /** Live opponent progress for MultiplayerHUD — updated via onOpponentProgressUpdate subscription. */
+  let opponentProgress = $state<RaceProgress>({
     playerId: 'opponent',
     floor: 1,
-    playerHp: 80,
+    playerHp: 100,
     playerMaxHp: 100,
     score: 0,
     accuracy: 0,
     encountersWon: 0,
     isFinished: false,
-  }
+  })
+  let opponentDisplayName = $state('Opponent')
 
   /** True while an active multiplayer lobby exists (race progress HUD visible in combat). */
   let isMultiplayerRun = $derived(currentLobby !== null)
@@ -476,6 +479,25 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       currentLobby = lobby
     })
     return unsub
+  })
+
+  // Wire game start and live opponent progress for multiplayer races.
+  $effect(() => {
+    const unsubStart = registerGameStartCb((seed: number, lobby: LobbyState) => {
+      const opponent = lobby.players.find(p => p.id !== 'local_player')
+      opponentDisplayName = opponent?.displayName ?? 'Opponent'
+      startNewRun({
+        multiplayerSeed: seed,
+        multiplayerMode: lobby.mode,
+      })
+    })
+    const unsubProgress = onOpponentProgressUpdate((progress: RaceProgress) => {
+      opponentProgress = progress
+    })
+    return () => {
+      unsubStart()
+      unsubProgress()
+    }
   })
 
   function handleStartDailyExpedition(): Promise<{ ok: true } | { ok: false; reason: string }> {
@@ -1316,8 +1338,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     {/if}
     {#if isMultiplayerRun}
       <MultiplayerHUD
-        progress={placeholderProgress}
-        displayName="Opponent"
+        progress={opponentProgress}
+        displayName={opponentDisplayName}
       />
     {/if}
     {#if combatTransitionActive}

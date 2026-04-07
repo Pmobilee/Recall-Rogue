@@ -48,6 +48,15 @@ Comprehensive multiplayer for Recall Rogue: competitive, cooperative, and social
 | 4.3 Local/same-screen play | DONE | LocalMultiplayerTransport in multiplayerTransport.ts + createLocalTransportPair() |
 | 4.4 Documentation | DONE | INDEX.md, GAME_DESIGN.md §multiplayer, mechanics/multiplayer.md, memory updated |
 
+### Phase 5: Gameplay Wiring (Race Mode end-to-end)
+| Task | Status | Notes |
+|------|--------|-------|
+| 5.1 runManager seed override | DONE | providedSeed option, perfectEncountersCount + totalDamageDealt fields |
+| 5.2 multiplayerScoring.ts | DONE | computeRaceScore() — AR-86 formula (floors, combo, correct, perfect) |
+| 5.3 gameFlowController wiring | DONE | multiplayer_race mode, seed passthrough, race broadcast start/stop, finish send |
+| 5.4 CardApp wiring | DONE | onGameStart → startNewRun, live opponent progress → MultiplayerHUD |
+| 5.5 Verification | DONE | 974 files, 0 errors, build clean |
+
 ## Modes Summary
 
 | Mode | Players | Priority | Cost |

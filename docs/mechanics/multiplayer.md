@@ -1,8 +1,8 @@
 # Multiplayer Mechanics
 
-> **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopEffects.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`
+> **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopEffects.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-06
+> **Last verified:** 2026-04-07 — gameFlowController wiring complete
 
 ## Modes
 
@@ -13,6 +13,69 @@
 | Real-Time Duel | 2 | Per-turn (host-authoritative) | Shared enemy, simultaneous turns, damage attribution |
 | Co-op | 2 | Per-turn (host-authoritative) | Shared enemy, co-op exclusive effects |
 | Trivia Night | 2-8 | Per-round | Pure quiz, speed bonus scoring, no combat |
+
+## Race Mode Scoring
+
+Pure function `computeRaceScore()` in `src/services/multiplayerScoring.ts`. Uses a structural type — does not import `RunState` directly so it remains testable in isolation.
+
+**Formula (AR-86 v1):**
+```
+score = (floor × 100) + (bestCombo × 50) + (correct × 10)
+      − (wrong × 5) + (perfectEncounters × 200) + (totalDamage × 1)
+```
+
+| Term | Weight | Notes |
+|------|--------|-------|
+| `floor.currentFloor × 100` | 100/floor | Dominant term — progression is primary axis |
+| `bestCombo × 50` | 50/combo | Rewards knowledge chains |
+| `factsCorrect × 10` | 10/correct | Accumulates through run |
+| `(factsAnswered − factsCorrect) × −5` | −5/wrong | Penalizes guessing |
+| `perfectEncountersCount × 200` | 200/encounter | Bonus for 0-wrong-answer fights |
+| `totalDamageDealt × 1` | 1/damage | Low weight; meaningful once wired, negligible before |
+
+The `totalDamageDealt` weight (1) is intentionally negligible vs `floor × 100` so scoring is valid even before `turnManager` damage-tracking is wired to `RunState.totalDamageDealt`.
+
+### RunState fields added for scoring
+
+Three optional fields added to `RunState` in `src/services/runManager.ts`:
+
+| Field | Type | Init | Purpose |
+|-------|------|------|---------|
+| `totalDamageDealt` | `number?` | `0` | Cumulative damage dealt — incremented by turnManager on hit |
+| `perfectEncountersCount` | `number?` | `0` | Encounters completed with 0 wrong answers — incremented by `onEncounterComplete()` in `gameFlowController.ts` when `encounterWasFlawless` is true |
+| `multiplayerMode` | `MultiplayerMode?` | `undefined` | Mode for this run; `undefined` for single-player runs |
+
+### createRunState options added
+
+Two optional fields added to the `options` argument of `createRunState()`:
+
+| Option | Type | Effect |
+|--------|------|--------|
+| `providedSeed` | `number?` | If present, used as `runSeed` instead of `crypto.getRandomValues()`. Required for Race and Same Cards modes to ensure all players share the same seed. |
+| `multiplayerMode` | `MultiplayerMode?` | Stored on `RunState.multiplayerMode`. |
+
+## gameFlowController Race Mode Wiring
+
+Race mode is wired into `src/services/gameFlowController.ts`. The `ActiveRunMode` union includes `'multiplayer_race'`. Module-level state:
+
+```typescript
+let multiplayerSeed: number | null = null
+let multiplayerModeState: MultiplayerMode | null = null
+let stopRaceBroadcastFn: (() => void) | null = null
+```
+
+| Hook | Location | Behavior |
+|------|----------|----------|
+| `startNewRun()` options | Expanded with `multiplayerSeed?` and `multiplayerMode?` | Sets `activeRunMode = 'multiplayer_race'` when `multiplayerMode` is provided |
+| `createRunState()` call | `onArchetypeSelected()` | Passes `providedSeed` and `multiplayerMode` from module state |
+| Race broadcast start | After `initRunRng()` in `onArchetypeSelected()` | `startRaceProgressBroadcast()` called; cleanup stored in `stopRaceBroadcastFn` |
+| `perfectEncountersCount` | `onEncounterComplete()` after flawless check | Incremented whenever encounter ends with 0 wrong answers |
+| Race finish send | `finishRunAndReturnToHub()` before cleanup | `updateLocalProgress({ isFinished: true, result })` broadcasts final state |
+| Cleanup | `finishRunAndReturnToHub()` | `stopRaceBroadcastFn?.()`, then `multiplayerSeed = null`, `multiplayerModeState = null` |
+
+`stopRaceProgressBroadcast` is exported from `multiplayerGameService.ts` (was previously module-private).
+
+`restoreRunMode()` in `gameFlowController.ts` also accepts `'multiplayer_race'` as a valid `runMode` parameter. `runSaveService.ts` includes `'multiplayer_race'` in all three `runMode` type annotations.
 
 ## Co-op Enemy Scaling
 
@@ -153,6 +216,7 @@ Lobby lifecycle managed by `src/services/multiplayerLobbyService.ts`.
 | File | Role |
 |------|------|
 | `src/data/multiplayerTypes.ts` | All shared types, constants, `MultiplayerMode` union, lobby/fairness/race types |
+| `src/services/multiplayerScoring.ts` | `computeRaceScore()` — pure race score formula (AR-86 v1) |
 | `src/services/multiplayerLobbyService.ts` | Lobby lifecycle: create, join, configure, start |
 | `src/services/multiplayerTransport.ts` | Transport abstraction (WebSocket + Steam P2P + Local) |
 | `src/services/multiplayerGameService.ts` | Race / Duel / Same Cards game sync + `DuelTurnAction` / `DuelTurnResolution` |
@@ -162,6 +226,7 @@ Lobby lifecycle managed by `src/services/multiplayerLobbyService.ts`.
 | `src/services/triviaNightService.ts` | Trivia Night game logic: rounds, scoring, standings |
 | `src/services/steamNetworkingService.ts` | Tauri bridge for Steam P2P (10 Tauri commands) |
 | `src/services/enemyManager.ts` | `getCoopHpMultiplier()`, `getCoopBlockMultiplier()`, `getCoopDamageCapMultiplier()` |
+| `src/services/gameFlowController.ts` | Race mode wiring: `startNewRun()` options, broadcast lifecycle, `perfectEncountersCount` tracking |
 
 ## Implementation Status
 

@@ -143,7 +143,7 @@ export function startRaceProgressBroadcast(getProgress: () => RaceProgress): () 
 }
 
 /** Stop the broadcast loop without destroying other state. */
-function stopRaceProgressBroadcast(): void {
+export function stopRaceProgressBroadcast(): void {
   if (_raceProgressInterval !== null) {
     clearInterval(_raceProgressInterval);
     _raceProgressInterval = null;

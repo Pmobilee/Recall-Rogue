@@ -141,6 +141,10 @@ import { preloadNarrativeData } from './narrativeLoader'
 import { showNarrative } from '../ui/stores/narrativeStore'
 import { CHAIN_TYPES } from '../data/chainTypes'
 import { unlockAchievement } from './steamService'
+import { startRaceProgressBroadcast, updateLocalProgress, stopRaceProgressBroadcast } from './multiplayerGameService'
+import { getCurrentLobby } from './multiplayerLobbyService'
+import { computeRaceScore } from './multiplayerScoring'
+import type { MultiplayerMode } from '../data/multiplayerTypes'
 // Fire-and-forget: preload narrative JSON data in parallel with other init.
 // The loader warns but never throws if narrative files are absent.
 void preloadNarrativeData();
@@ -248,8 +252,11 @@ let pendingPostCombatAction: (() => void) | null = null;
  */
 let isProcessingEncounterResult = false;
 let pendingDomainSelection: { primary: FactDomain; secondary: FactDomain } | null = null;
-type ActiveRunMode = 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge'
+type ActiveRunMode = 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge' | 'multiplayer_race'
 let activeRunMode: ActiveRunMode = 'standard'
+let multiplayerSeed: number | null = null
+let multiplayerModeState: MultiplayerMode | null = null
+let stopRaceBroadcastFn: (() => void) | null = null
 
 /** The relic being offered when the player's slots are full (pending swap decision). */
 let pendingSwapRelicId: string | null = null;
@@ -361,10 +368,19 @@ let activeDailySeed: number | null = null
 let pendingDeckMode: DeckMode | null = null
 let pendingIncludeOutsideDueReviews = false
 
-export function startNewRun(options?: { includeOutsideDueReviews?: boolean }): void {
+export function startNewRun(options?: {
+  includeOutsideDueReviews?: boolean;
+  multiplayerSeed?: number;
+  multiplayerMode?: MultiplayerMode;
+}): void {
   activeRunMode = 'standard'
   activeDailySeed = null
   pendingIncludeOutsideDueReviews = options?.includeOutsideDueReviews ?? false
+  if (options?.multiplayerMode) {
+    activeRunMode = 'multiplayer_race'
+    multiplayerSeed = options.multiplayerSeed ?? null
+    multiplayerModeState = options.multiplayerMode
+  }
   deactivateDeterministicRandom()
   destroyRunRng()
   resetEncounterBridge()  // clear stale encounter state from previous run
@@ -689,8 +705,29 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
       persistPlayer();
     }
   }
+  // Send race finish update and stop broadcast for multiplayer race
+  if (activeRunMode === 'multiplayer_race') {
+    const lobby = getCurrentLobby();
+    const localId = lobby?.players.find(p => p.isHost !== undefined)?.id ?? 'local';
+    updateLocalProgress({
+      playerId: localId,
+      floor: run.floor.currentFloor,
+      playerHp: run.playerHp,
+      playerMaxHp: run.playerMaxHp,
+      score: computeRaceScore(run),
+      accuracy: run.factsAnswered > 0 ? run.factsCorrect / run.factsAnswered : 0,
+      encountersWon: run.encountersWon,
+      isFinished: true,
+      result: endData.result,
+    });
+    stopRaceBroadcastFn?.();
+    stopRaceBroadcastFn = null;
+  }
+
   activeRunMode = 'standard'
   activeDailySeed = null
+  multiplayerSeed = null
+  multiplayerModeState = null
   deactivateDeterministicRandom()
   destroyRunRng()
   resetEncounterBridge()
@@ -885,6 +922,8 @@ export async function onArchetypeSelected(archetype: RewardArchetype): Promise<v
     ascensionLevel: selectedAscensionLevel,
     deckMode: pendingDeckMode ?? undefined,
     includeOutsideDueReviews: pendingIncludeOutsideDueReviews,
+    providedSeed: multiplayerSeed ?? undefined,
+    multiplayerMode: multiplayerModeState ?? undefined,
   });
   pendingDeckMode = null;
   pendingIncludeOutsideDueReviews = false;
@@ -939,6 +978,38 @@ export async function onArchetypeSelected(archetype: RewardArchetype): Promise<v
   if (activeRunMode === 'standard' || activeRunMode === 'endless_depths') {
     activateDeterministicRandom(run.runSeed);
   }
+
+  // Start multiplayer race progress broadcast
+  if (activeRunMode === 'multiplayer_race') {
+    stopRaceBroadcastFn = startRaceProgressBroadcast(() => {
+      const r = get(activeRunState);
+      if (!r) {
+        return {
+          playerId: 'local',
+          floor: 0,
+          playerHp: 0,
+          playerMaxHp: 0,
+          score: 0,
+          accuracy: 0,
+          encountersWon: 0,
+          isFinished: true,
+        };
+      }
+      const lobby = getCurrentLobby();
+      const localId = lobby?.players.find(p => p.isHost)?.id ?? 'local';
+      return {
+        playerId: localId,
+        floor: r.floor.currentFloor,
+        playerHp: r.playerHp,
+        playerMaxHp: r.playerMaxHp,
+        score: computeRaceScore(r),
+        accuracy: r.factsAnswered > 0 ? r.factsCorrect / r.factsAnswered : 0,
+        encountersWon: r.encountersWon,
+        isFinished: false,
+      };
+    });
+  }
+
   pendingDomainSelection = null;
 
   // Route to run preview screen if a chain distribution was computed (Study Temple).
@@ -1473,6 +1544,8 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     // Achievement: flawless encounter (0 wrong answers, captured before reset above)
     if (encounterWasFlawless) {
       tryUnlock('PERFECT_ENCOUNTER');
+      // Track perfect encounters for multiplayer scoring
+      run.perfectEncountersCount = (run.perfectEncountersCount ?? 0) + 1;
     }
   }
 
@@ -2927,7 +3000,7 @@ export function playAgain(): void {
   return;
 }
 
-export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge', dailySeed?: number | null, runSeed?: number | null): void {
+export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge' | 'multiplayer_race', dailySeed?: number | null, runSeed?: number | null): void {
   if (runMode === 'daily_expedition' && typeof dailySeed === 'number' && Number.isFinite(dailySeed)) {
     activeRunMode = 'daily_expedition'
     activeDailySeed = dailySeed
