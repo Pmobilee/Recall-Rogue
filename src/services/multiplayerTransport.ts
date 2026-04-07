@@ -1,11 +1,13 @@
 /**
  * Transport-agnostic multiplayer messaging layer.
  *
- * Abstracts over WebSocket (for web/mobile) and Steam P2P (for desktop).
+ * Abstracts over WebSocket (for web/mobile), Steam P2P (for desktop), and
+ * local in-memory messaging (for same-screen multiplayer).
  * The multiplayer game logic uses this interface exclusively — it never
  * touches wsClient or steamNetworkingService directly.
  *
  * Platform selection at factory time:
+ *   mode === 'local'   → LocalMultiplayerTransport (in-memory, no networking)
  *   hasSteam === true  → SteamP2PTransport (Tauri IPC → Steamworks relay)
  *   hasSteam === false → WebSocketTransport (Fastify server)
  *
@@ -56,6 +58,9 @@ export type MultiplayerMessageType =
   | 'mp:trivia:answer'
   | 'mp:trivia:scores'
   | 'mp:trivia:end'
+  // Workshop
+  | 'mp:workshop:vote_submit'
+  | 'mp:workshop:vote_result'
   // System
   | 'mp:ping'
   | 'mp:pong'
@@ -84,6 +89,9 @@ export interface MultiplayerTransport {
    *
    * For SteamP2PTransport, `target` is the remote player's 64-bit Steam ID
    * (as string) and `localId` is the local player's Steam ID.
+   *
+   * For LocalMultiplayerTransport, `target` is ignored (no network target
+   * exists) and `localId` identifies this player's side (e.g. 'player1').
    */
   connect(target: string, localId: string): void;
 
@@ -342,18 +350,139 @@ export class SteamP2PTransport implements MultiplayerTransport {
   }
 }
 
+// ── Local Multiplayer Transport ───────────────────────────────────────────────
+
+/**
+ * Local multiplayer transport for same-screen play.
+ *
+ * Both "players" are on the same device. Messages are delivered synchronously
+ * through an in-memory event bus. No networking involved.
+ *
+ * Two instances are created (one per player) and linked via a shared message bus.
+ * When Player 1's transport sends a message, Player 2's transport receives it
+ * immediately (via queueMicrotask), and vice versa.
+ *
+ * Use case: Race Mode or Trivia Night on the same screen (split-screen or
+ * hot-seat), where two people share a keyboard/controller.
+ *
+ * Setup:
+ *   const [t1, t2] = createLocalTransportPair();
+ *   t1.connect('', 'player1');
+ *   t2.connect('', 'player2');
+ */
+export class LocalMultiplayerTransport implements MultiplayerTransport {
+  private state: TransportState = 'disconnected';
+  private listeners: ListenerMap = new Map();
+  private localId: string = '';
+  private peer: LocalMultiplayerTransport | null = null;
+
+  /**
+   * Link two local transports together so messages sent on one are delivered
+   * to the other. Call this once during setup — before connect().
+   *
+   * Note: linkPeer is symmetric. You only need to call it on one instance;
+   * the other side is wired automatically.
+   */
+  linkPeer(peer: LocalMultiplayerTransport): void {
+    this.peer = peer;
+    peer.peer = this;
+  }
+
+  /**
+   * Mark this transport as connected. The `target` argument is unused for
+   * local transport (there is no network target), but is kept for interface
+   * compatibility.
+   */
+  connect(target: string, localId: string): void {
+    this.localId = localId;
+    this.state = 'connected'; // Instantly connected — no networking
+  }
+
+  send(type: MultiplayerMessageType, payload: Record<string, unknown>): void {
+    if (!this.peer || this.state !== 'connected') return;
+    const msg: MultiplayerMessage = {
+      type,
+      payload,
+      timestamp: Date.now(),
+      senderId: this.localId,
+    };
+    // Deliver to peer asynchronously via microtask to avoid synchronous call
+    // stack depth issues when both sides exchange messages in tight loops.
+    const target = this.peer;
+    queueMicrotask(() => {
+      target.deliverMessage(msg);
+    });
+  }
+
+  /**
+   * Internal: receive a message delivered by the linked peer's send().
+   * Not part of the public MultiplayerTransport interface.
+   */
+  private deliverMessage(msg: MultiplayerMessage): void {
+    emitToListeners(this.listeners, msg.type, msg);
+  }
+
+  on(type: string, callback: (msg: MultiplayerMessage) => void): () => void {
+    return addListener(this.listeners, type, callback);
+  }
+
+  disconnect(): void {
+    this.state = 'disconnected';
+    this.listeners.clear();
+    // Unlink the peer so the other side stops routing to this instance.
+    // The peer's listeners and state are left intact — only the reference
+    // back to us is cleared so it doesn't try to deliver messages here.
+    if (this.peer) {
+      this.peer.peer = null;
+      this.peer = null;
+    }
+  }
+
+  getState(): TransportState {
+    return this.state;
+  }
+
+  isConnected(): boolean {
+    return this.state === 'connected';
+  }
+}
+
+/**
+ * Create a pair of linked local transports for same-screen multiplayer.
+ * Returns [player1Transport, player2Transport].
+ *
+ * Both transports are already linked — call connect() on each to make them
+ * active, then register listeners before any messages are sent.
+ *
+ * Example:
+ *   const [t1, t2] = createLocalTransportPair();
+ *   t1.connect('', 'player1');
+ *   t2.connect('', 'player2');
+ *   t2.on('mp:race:progress', (msg) => { ... });
+ *   t1.send('mp:race:progress', { floor: 2, score: 100 });
+ */
+export function createLocalTransportPair(): [LocalMultiplayerTransport, LocalMultiplayerTransport] {
+  const t1 = new LocalMultiplayerTransport();
+  const t2 = new LocalMultiplayerTransport();
+  t1.linkPeer(t2);
+  return [t1, t2];
+}
+
 // ── Factory ───────────────────────────────────────────────────────────────────
 
 /**
- * Create the appropriate transport for the current platform.
+ * Create the appropriate transport for the current platform and mode.
  *
- * Steam desktop → SteamP2PTransport (direct peer relay, no game server)
- * Web / mobile  → WebSocketTransport (Fastify WebSocket server)
+ * mode === 'local'   → LocalMultiplayerTransport (same-screen, no networking)
+ * Steam desktop      → SteamP2PTransport (direct peer relay, no game server)
+ * Web / mobile       → WebSocketTransport (Fastify WebSocket server)
+ *
+ * For local mode, the returned instance is NOT yet linked to a peer.
+ * Use `createLocalTransportPair()` when you need both sides at once.
  */
-export function createTransport(): MultiplayerTransport {
-  if (hasSteam) {
-    return new SteamP2PTransport();
-  }
+export function createTransport(mode?: 'auto' | 'local'): MultiplayerTransport {
+  if (mode === 'local') return new LocalMultiplayerTransport();
+  if (hasSteam) return new SteamP2PTransport();
   return new WebSocketTransport();
 }
 
@@ -364,10 +493,15 @@ let _transport: MultiplayerTransport | null = null;
 
 /**
  * Get the active multiplayer transport, creating it if this is the first call.
- * The transport type (WebSocket vs Steam P2P) is determined by the current platform.
+ * The transport type (WebSocket vs Steam P2P vs Local) is determined by the
+ * current platform and the optional mode argument.
+ *
+ * Pass `mode: 'local'` for same-screen multiplayer — returns a standalone
+ * LocalMultiplayerTransport (not linked to a peer). Use
+ * `createLocalTransportPair()` to get a pre-linked pair instead.
  */
-export function getMultiplayerTransport(): MultiplayerTransport {
-  if (!_transport) _transport = createTransport();
+export function getMultiplayerTransport(mode?: 'auto' | 'local'): MultiplayerTransport {
+  if (!_transport) _transport = createTransport(mode);
   return _transport;
 }
 

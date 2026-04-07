@@ -3,7 +3,7 @@
 > Navigation hub for all modular documentation. Each file is independently useful —
 > an agent reading just that file should understand that system.
 >
-> **Last rebuilt:** 2026-04-06
+> **Last rebuilt:** 2026-04-07
 
 ---
 
@@ -38,6 +38,15 @@
 | [progression](mechanics/progression.md) | Run lifecycle, floor/room generation, map layout, room types, ascension system, and shop mechanics |
 | [narrative](mechanics/narrative.md) | Woven Narrative Architecture: 4 concurrent threads (Descent/Echo/Seeker/Inhabitants), archetypes, domain lenses, fact-reactive echo system, NPC dialogue, gravity scoring |
 | [procedural-math](mechanics/procedural-math.md) | Runtime math problem generation: skill nodes, 6 generators, algorithmic distractors, FSRS skill tracking, Anki-model selection, tier-based difficulty scaling |
+| [multiplayer](mechanics/multiplayer.md) | 5 multiplayer modes (Race, Same Cards, Duel, Co-op, Trivia Night), co-op enemy scaling, 6 co-op effects, ELO system, networking architecture |
+
+---
+
+## Multiplayer
+
+| Doc | Summary |
+|-----|---------|
+| [AR-MULTIPLAYER](roadmap/AR-MULTIPLAYER.md) | Master tracking doc: 4 phases, 7 modes, co-op scaling, networking architecture, implementation status |
 
 ---
 

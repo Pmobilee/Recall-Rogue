@@ -201,12 +201,14 @@ Platform services form the bridge between web-standard APIs and the three deploy
 | | |
 |---|---|
 | **File** | src/services/multiplayerTransport.ts |
-| **Purpose** | Transport-agnostic multiplayer messaging layer — abstracts over WebSocket (web/mobile) and Steam P2P (desktop) so game logic never touches either transport directly |
-| **Key exports** | `getMultiplayerTransport`, `destroyMultiplayerTransport`, `createTransport`, `WebSocketTransport`, `SteamP2PTransport` |
+| **Purpose** | Transport-agnostic multiplayer messaging layer — abstracts over WebSocket (web/mobile), Steam P2P (desktop), and in-memory local bus (same-screen) so game logic never touches any transport directly |
+| **Key exports** | `getMultiplayerTransport`, `destroyMultiplayerTransport`, `createTransport`, `createLocalTransportPair`, `WebSocketTransport`, `SteamP2PTransport`, `LocalMultiplayerTransport` |
 | **Key types** | `MultiplayerTransport` (interface), `MultiplayerMessage`, `MultiplayerMessageType`, `TransportState` |
 | **Key dependencies** | platformService (`hasSteam`), steamNetworkingService (`acceptP2PSession`, `sendP2PMessage`, `startMessagePollLoop`, `leaveSteamLobby`) |
-| **Platform selection** | `hasSteam === true` → `SteamP2PTransport`; otherwise → `WebSocketTransport` |
-| **Singleton** | `getMultiplayerTransport()` creates lazily; `destroyMultiplayerTransport()` disconnects and nulls the instance |
+| **Platform selection** | `createTransport('local')` → `LocalMultiplayerTransport`; `hasSteam === true` → `SteamP2PTransport`; otherwise → `WebSocketTransport` |
+| **Singleton** | `getMultiplayerTransport(mode?)` creates lazily; `destroyMultiplayerTransport()` disconnects and nulls the instance |
 | **WebSocketTransport** | Connects via `ws://` or `wss://` URL with playerId query param; exponential backoff reconnect (5 attempts, 1 s base delay) |
 | **SteamP2PTransport** | `connect(peerId, localId)` calls `acceptP2PSession(peerId)` then starts the 16 ms poll loop; `setActiveLobby(id)` registers lobby for cleanup on `disconnect()` |
-| **Message types** | 33 typed values: `mp:lobby:*`, `mp:race:*`, `mp:duel:*`, `mp:coop:*`, `mp:trivia:*`, `mp:ping/pong/error/sync` |
+| **LocalMultiplayerTransport** | In-memory event bus for same-screen play; `connect()` is instantaneous; messages delivered via `queueMicrotask` to avoid stack overflows; `disconnect()` unlinks peer |
+| **createLocalTransportPair()** | Returns `[t1, t2]` pre-linked via `linkPeer()` — send on one, receive on the other; use for Race Mode or Trivia Night hot-seat |
+| **Message types** | 35 typed values: `mp:lobby:*`, `mp:race:*`, `mp:duel:*`, `mp:coop:*`, `mp:trivia:*`, `mp:workshop:*`, `mp:ping/pong/error/sync` |

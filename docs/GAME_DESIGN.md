@@ -4177,7 +4177,14 @@ AI-driven playtesting system using headless combat simulation:
 - **Multi-enemy Encounters:** Toxic Bloom and Chain Reactor interactions designed for future multi-enemy rooms.
 - **Desktop Port / Steam Release:** Responsive landscape layout, keyboard+mouse input, Tauri wrapper, Steam achievements, Steam Rich Presence. *(Steam Cloud Save implemented — see §29 Save System.)* See `docs/roadmap/phases/desktop-port/` for individual ARs.
 - **Anki Deck Import:** Import .apkg files, self-graded quiz system (Wrong/Hard/Good/Easy), FSRS tier conversion from Anki intervals. See `docs/roadmap/phases/anki-import/AR-85-ANKI-DECK-IMPORT.md`.
-- **Multiplayer (Seeded Competitive):** Race Mode and Same Cards mode — two players, same seed, compare scores. See `docs/roadmap/phases/future/AR-86-MULTIPLAYER-SEEDED.md`.
+- **Multiplayer System (AR-MULTIPLAYER):** Comprehensive competitive, cooperative, and social multiplayer implemented across Phases 1-3 (2026-04-07). See `docs/roadmap/AR-MULTIPLAYER.md` for full spec and `docs/mechanics/multiplayer.md` for mechanic reference.
+  - **Race Mode (2-4P):** Same seed, independent play, compare final scores. 0.5 Hz progress panel shows opponent floor/HP/score.
+  - **Same Cards (2P):** Race Mode with shared fork seeds for identical card draws. Pure skill comparison.
+  - **Real-Time Knowledge Duel (2P):** Both players fight the same enemy simultaneously. Simultaneous turns, host-authoritative resolution, damage attribution per player. The signature competitive mode.
+  - **Co-op vs Shared Enemy (2P):** Fight together with 6 co-op exclusive effects — Synapse Link, Guardian Shield, Knowledge Share, Team Chain Bonus, Fog Contagion, Shared Surge. All bonuses additive (max +1.25x).
+  - **Trivia Night (2-8P):** Pure quiz party mode, no combat. Speed bonus scoring (1000 base + up to 500 speed). 15 rounds default.
+  - **ELO Matchmaking:** 8 rank tiers (Novice through Grandmaster), K=32/16, widening band queue (200 ELO → 400 → anyone → AI fallback at 90s).
+  - **Networking:** Steam P2P (Steamworks Networking Sockets) primary, WebSocket fallback. Transport abstracted via `multiplayerTransport.ts`.
 - **Leaderboards & Daily Challenge:** Global leaderboards, daily seeded challenge (one attempt/day), scoring formula. See `docs/roadmap/phases/future/AR-87-LEADERBOARD-DAILY-CHALLENGE.md`.
 - **Community Packs & Steam Workshop:** User-created fact packs, Workshop distribution, self-graded quiz for community content. See `docs/roadmap/phases/future/AR-88-COMMUNITY-PACKS-WORKSHOP.md`.
 - **Cross-Platform Save Sync:** Cloud save across mobile and Steam, conflict resolution, account linking. See `docs/roadmap/phases/future/AR-89-CROSS-PLATFORM-SAVE.md`.

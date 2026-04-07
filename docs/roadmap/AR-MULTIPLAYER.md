@@ -43,9 +43,10 @@ Comprehensive multiplayer for Recall Rogue: competitive, cooperative, and social
 ### Phase 4: Polish (Weeks 11-12)
 | Task | Status | Notes |
 |------|--------|-------|
-| 4.1 Workshop deck integration | PENDING | In-lobby browser, deck voting |
-| 4.2 Fairness mechanisms | PENDING | Fresh Facts, handicap, practice period |
-| 4.3 Local/same-screen play | PENDING | No networking needed |
+| 4.1 Workshop deck integration | DONE | multiplayerWorkshopService.ts: deck browser, voting, Deck of the Day, post-match rating |
+| 4.2 Fairness mechanisms | DONE | fairnessService.ts: Fresh Facts filter, handicap, FSRS normalization, fairness rating 0-100 |
+| 4.3 Local/same-screen play | DONE | LocalMultiplayerTransport in multiplayerTransport.ts + createLocalTransportPair() |
+| 4.4 Documentation | DONE | INDEX.md, GAME_DESIGN.md §multiplayer, mechanics/multiplayer.md, memory updated |
 
 ## Modes Summary
 

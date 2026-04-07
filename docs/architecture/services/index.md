@@ -2,7 +2,7 @@
 
 > **Purpose:** Lookup table mapping every service name to its domain sub-doc.
 > **Last verified:** 2026-04-06
-> **Source files:** All `src/services/*.ts` (147 files, excluding test files) + `src/services/math/*.ts` (7 files)
+> **Source files:** All `src/services/*.ts` (149 files, excluding test files) + `src/services/math/*.ts` (7 files)
 
 | Service | File | Sub-doc |
 |---------|------|---------|
@@ -62,6 +62,7 @@
 | entitlementService | src/services/entitlementService.ts | [platform.md](platform.md) |
 | errorReporting | src/services/errorReporting.ts | [platform.md](platform.md) |
 | experimentService | src/services/experimentService.ts | [platform.md](platform.md) |
+| fairnessService | src/services/fairnessService.ts | [social.md](social.md) |
 | factPackService | src/services/factPackService.ts | [quiz.md](quiz.md) |
 | factSpriteManifest | src/services/factSpriteManifest.ts | [quiz.md](quiz.md) |
 | factsDB | src/services/factsDB.ts | [quiz.md](quiz.md) |
@@ -96,6 +97,7 @@
 | multiplayerGameService | src/services/multiplayerGameService.ts | [social.md](social.md) |
 | multiplayerLobbyService | src/services/multiplayerLobbyService.ts | [social.md](social.md) |
 | multiplayerTransport | src/services/multiplayerTransport.ts | [platform.md](platform.md) |
+| multiplayerWorkshopService | src/services/multiplayerWorkshopService.ts | [social.md](social.md) |
 | nonCombatQuizSelector | src/services/nonCombatQuizSelector.ts | [quiz.md](quiz.md) |
 | notificationService | src/services/notificationService.ts | [platform.md](platform.md) |
 | numericalDistractorService | src/services/numericalDistractorService.ts | [quiz.md](quiz.md) |
