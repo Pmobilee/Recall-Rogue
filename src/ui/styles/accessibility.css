@@ -95,3 +95,27 @@ button, [role="button"], a[href] {
   --font-body: system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-pixel: system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
+
+/* ── Color-blind simulation filters ───────────────────── */
+/*
+ * SVG <feColorMatrix> filters are injected into the DOM by accessibilityManager.ts.
+ * These CSS rules reference those filters by ID via url().
+ * Applied to the root element so all rendered content (Phaser canvas + Svelte overlays)
+ * is affected uniformly.
+ *
+ * Modes:
+ *   deuteranopia — red-green (missing M cones, most common, ~8% of males)
+ *   protanopia   — red-green variant (missing L cones)
+ *   tritanopia   — blue-yellow (missing S cones, rare)
+ */
+:root[data-colorblind="deuteranopia"] {
+  filter: url(#cb-deuteranopia);
+}
+
+:root[data-colorblind="protanopia"] {
+  filter: url(#cb-protanopia);
+}
+
+:root[data-colorblind="tritanopia"] {
+  filter: url(#cb-tritanopia);
+}

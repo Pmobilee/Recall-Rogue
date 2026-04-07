@@ -6,11 +6,13 @@
     isSlowReader,
     reduceMotionMode,
     textSize,
+    colorBlindMode,
     onboardingState,
     getDifficultyDisplayName,
     type DifficultyMode,
     type FontChoice,
     type TextSize,
+    type ColorBlindMode,
   } from '../../services/cardPreferences'
   import { STORY_MODE_FORCED_RUNS } from '../../data/balance'
   import {
@@ -93,6 +95,20 @@
 
   function setFont(fc: FontChoice): void {
     fontChoice.set(fc)
+    unlockCardAudio()
+    playCardAudio('card-cast')
+  }
+
+  const colorBlindOptions: { value: ColorBlindMode; label: string }[] = [
+    { value: 'off', label: 'Off' },
+    { value: 'deuteranopia', label: 'Deuteranopia (Red-Green)' },
+    { value: 'protanopia', label: 'Protanopia (Red-Green Variant)' },
+    { value: 'tritanopia', label: 'Tritanopia (Blue-Yellow)' },
+  ]
+
+  function setColorBlindMode(mode: ColorBlindMode): void {
+    colorBlindMode.set(mode)
+    trackSettingChange('colorBlindMode', mode)
     unlockCardAudio()
     playCardAudio('card-cast')
   }
@@ -304,6 +320,18 @@
               onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); trackSettingChange('reduceMotionMode', c) }}
             />
           </label>
+          <div class="setting-group">
+            <span class="setting-label">Color-Blind Mode</span>
+            <select
+              class="select-input"
+              value={$colorBlindMode}
+              onchange={(event) => setColorBlindMode((event.currentTarget as HTMLSelectElement).value as ColorBlindMode)}
+            >
+              {#each colorBlindOptions as opt}
+                <option value={opt.value}>{opt.label}</option>
+              {/each}
+            </select>
+          </div>
           <label class="toggle-row">
             <span>Slow Reader (+3s)</span>
             <input
@@ -493,6 +521,19 @@
           onchange={(event) => trackSettingChange('reduceMotionMode', (event.currentTarget as HTMLInputElement).checked)}
         />
       </label>
+
+      <div class="setting-group">
+        <span class="setting-label">Color-Blind Mode</span>
+        <select
+          class="select-input"
+          value={$colorBlindMode}
+          onchange={(event) => setColorBlindMode((event.currentTarget as HTMLSelectElement).value as ColorBlindMode)}
+        >
+          {#each colorBlindOptions as opt}
+            <option value={opt.value}>{opt.label}</option>
+          {/each}
+        </select>
+      </div>
 
       <label class="toggle-row">
         <span>Slow Reader (+3s)</span>
@@ -1015,5 +1056,29 @@
     background: #0f2942;
     color: #f8fafc;
     box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.25);
+  }
+
+  /* Color-blind mode select dropdown */
+  .select-input {
+    flex: 1;
+    background: #1f2c42;
+    color: #e2e8f0;
+    border: 1px solid #334155;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--text-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+    cursor: pointer;
+    appearance: auto;
+  }
+
+  .select-input:focus {
+    outline: 2px solid #38bdf8;
+    outline-offset: 2px;
+  }
+
+  :global([data-layout="landscape"]) .select-input {
+    font-size: calc(14px * var(--text-scale, 1));
+    min-height: calc(48px * var(--layout-scale, 1));
   }
 </style>

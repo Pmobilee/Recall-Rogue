@@ -8,11 +8,11 @@ Recall Rogue targets Steam PC first. Accessibility features are essential for re
 
 | Feature | Status | Priority | Notes |
 |---------|--------|----------|-------|
-| Color-blind mode | Implemented | P0 | CSS SVG filters for deuteranopia/protanopia/tritanopia |
+| Color-blind mode | Implemented | P0 | CSS SVG filters for deuteranopia/protanopia/tritanopia — selector in Settings > Accessibility |
 | Keyboard navigation | Planned | P0 | Tab through UI, Enter to confirm, Esc to cancel |
-| Text sizing | Partial | P1 | `--text-scale` CSS var exists, needs settings slider |
+| Text sizing | Partial | P1 | `--text-scale` CSS var exists, settings chips for Small/Medium/Large |
 | Quiz timer pausable | Existing | P1 | Timer is speed bonus only, not hard deadline |
-| High contrast mode | Planned | P1 | WCAG AA 4.5:1 on critical UI |
+| High contrast mode | Implemented | P1 | Toggle in Settings > Accessibility; applies `body.high-contrast` |
 | Remappable controls | Planned | P1 | All combat/quiz actions rebindable |
 | Game speed control | Planned | P2 | 75%–150% speed slider |
 | Screen reader support | Planned | P2 | ARIA labels on quiz, combat log |
@@ -20,16 +20,28 @@ Recall Rogue targets Steam PC first. Accessibility features are essential for re
 
 ## Color-Blind Mode
 
-Three modes available in Settings:
-- **Deuteranopia** (red-green, most common ~8% of males)
-- **Protanopia** (red-green variant)
-- **Tritanopia** (blue-yellow, rare)
+Three modes available in Settings > Accessibility via a dropdown:
+- **Off** (default)
+- **Deuteranopia** (red-green, most common ~8% of males) — missing M cones
+- **Protanopia** (red-green variant) — missing L cones
+- **Tritanopia** (blue-yellow, rare) — missing S cones
 
-Implementation: SVG `<feColorMatrix>` filters applied to the root element. Chain colors and status effect indicators use icon+text, never color alone.
+### Implementation
 
-**Source files:**
-- `src/ui/styles/accessibility.css` — SVG filter definitions
-- Settings toggle in player preferences
+- `src/services/cardPreferences.ts` — `ColorBlindMode` type + `colorBlindMode` persisted store (key: `card:colorBlindMode`)
+- `src/services/accessibilityManager.ts` — subscribes to `colorBlindMode`; injects hidden SVG `<feColorMatrix>` filters into `document.body`; sets `data-colorblind` attribute on `document.documentElement`
+- `src/ui/styles/accessibility.css` — `:root[data-colorblind="<mode>"]` rules applying `filter: url(#cb-<mode>)`
+- `src/ui/components/SettingsPanel.svelte` — dropdown selector in the Accessibility tab (both landscape and portrait layouts)
+
+### Color Matrix Values (LMS-based, industry standard)
+
+| Mode | Matrix |
+|------|--------|
+| deuteranopia | `0.625 0.375 0 0 0 / 0.7 0.3 0 0 0 / 0 0.3 0.7 0 0 / 0 0 0 1 0` |
+| protanopia | `0.567 0.433 0 0 0 / 0.558 0.442 0 0 0 / 0 0.242 0.758 0 0 / 0 0 0 1 0` |
+| tritanopia | `0.95 0.05 0 0 0 / 0 0.433 0.567 0 0 / 0 0.475 0.525 0 0 / 0 0 0 1 0` |
+
+The filter is applied to `:root` (html element), which means both the Phaser canvas and all Svelte overlays are uniformly affected. The SVG filter element (`id="cb-svg-filters"`) is lazily injected into `document.body` on first activation.
 
 ## Keyboard Navigation
 
@@ -47,7 +59,7 @@ Implementation: SVG `<feColorMatrix>` filters applied to the root element. Chain
 
 ## Text Sizing
 
-The `--text-scale` CSS custom property scales all font sizes dynamically. Settings slider: 80% to 150% in 10% increments.
+The `--text-scale` CSS custom property scales all font sizes dynamically. Settings chips: Small (0.85×), Medium (1×), Large (1.2×). Full slider (80%–150%) is planned.
 
 ## Performance Considerations
 

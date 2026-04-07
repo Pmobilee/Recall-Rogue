@@ -7,6 +7,7 @@ import { getBackend } from './storageBackend'
 export type DifficultyMode = 'relaxed' | 'normal'
 export type TextSize = 'small' | 'medium' | 'large'
 export type FontChoice = 'rpg' | 'dyslexic' | 'system'
+export type ColorBlindMode = 'off' | 'deuteranopia' | 'protanopia' | 'tritanopia'
 
 export interface OnboardingState {
   hasCompletedOnboarding: boolean
@@ -69,6 +70,7 @@ export const textSize = persistedWritable<TextSize>('card:textSize', 'medium')
 export const fontChoice = persistedWritable<FontChoice>('recall-rogue-font-choice', 'rpg')
 export const highContrastMode = persistedWritable<boolean>('card:highContrastMode', false)
 export const reduceMotionMode = persistedWritable<boolean>('card:reduceMotionMode', false)
+export const colorBlindMode = persistedWritable<ColorBlindMode>('card:colorBlindMode', 'off')
 export const onboardingState = persistedWritable<OnboardingState>('card:onboardingState', defaultOnboardingState)
 export const ascensionProfile = persistedWritable<AscensionProfile>('card:ascensionProfile', defaultAscensionProfile)
 
