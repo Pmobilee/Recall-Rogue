@@ -11,7 +11,6 @@
   import DeckSearchBar from './DeckSearchBar.svelte';
   import DeckSortDropdown from './DeckSortDropdown.svelte';
   import DeckFilterChips from './DeckFilterChips.svelte';
-  import CustomDeckBar from './CustomDeckBar.svelte';
   import CustomDeckPickerPopup from './CustomDeckPickerPopup.svelte';
   import CustomDeckViewModal from './CustomDeckViewModal.svelte';
   import AnkiImportWizard from './AnkiImportWizard.svelte';
@@ -65,6 +64,8 @@
   };
 
   const rawDecks = $derived.by<DeckRegistryEntry[]>(() => {
+    // Custom Decks tab: not DeckRegistryEntries — return empty
+    if (activeTab === 'custom') return [];
     const allAvailable = getAllDecks().filter(d => d.status === 'available');
     if (activeTab === null) {
       // ALL tab: show knowledge decks + one representative per language for vocab
@@ -199,6 +200,8 @@
     const result: Array<{ id: string | null; label: string; count: number }> = [
       { id: null, label: 'All', count: decks.length },
     ];
+    // Custom Decks entry right after All
+    result.push({ id: 'custom', label: 'Custom Decks', count: customDecks.length });
     if (domains.has('vocabulary')) {
       result.push({ id: 'vocabulary', label: 'Languages', count: decks.filter(d => d.domain === 'vocabulary').length });
     }
@@ -247,7 +250,6 @@
     return getDeckProgress(selectedDeck.id);
   });
   const activeDeck = $derived(activeCustomDeckId ? customDecks.find(p => p.id === activeCustomDeckId) ?? null : null);
-  const showCustomDeckBar = $derived(customDecks.length > 0 && customDecks.some(p => p.items.length > 0));
 
   onMount(() => {
     registerPersonalDecks(); // Register imported Anki decks in the deck registry
@@ -485,6 +487,7 @@
     <h1 class="title">THE LIBRARY</h1>
     <DeckSearchBar value={searchQuery} onsearchchange={handleSearchChange} placeholder="Search decks..." />
     <DeckSortDropdown value={sortOption} onsortchange={handleSortChange} />
+    <div class="header-spacer"></div>
     <DeckFilterChips {activeFilters} onFiltersChange={(f) => { activeFilters = f; }} />
     <button class="anki-import-btn" onclick={() => { showAnkiImport = true; }} type="button">
       Import Anki
@@ -519,6 +522,30 @@
           personalDecks={getPersonalDecks()}
           onSubscribed={handleWorkshopSubscribed}
         />
+      {:else if activeTab === 'custom'}
+        <div class="custom-decks-content">
+          {#if customDecks.length === 0}
+            <div class="empty-state">
+              <p class="empty-title">No custom decks made yet</p>
+              <p class="empty-sub">Add decks from the library to create a custom study playlist.</p>
+            </div>
+          {:else}
+            <div class="custom-deck-list">
+              {#each customDecks as deck (deck.id)}
+                <div class="custom-deck-card">
+                  <div class="custom-deck-card-left">
+                    <span class="custom-deck-card-name">{deck.name}</span>
+                    <span class="custom-deck-card-meta">{deck.items.length} item{deck.items.length !== 1 ? 's' : ''}</span>
+                  </div>
+                  <div class="custom-deck-card-actions">
+                    <button class="custom-deck-view-btn" onclick={() => { activeCustomDeckId = deck.id; showDeckView = true; }} type="button">View</button>
+                    <button class="custom-deck-start-btn" onclick={() => { activeCustomDeckId = deck.id; handleStartCustomRun(); }} type="button">Start</button>
+                  </div>
+                </div>
+              {/each}
+            </div>
+          {/if}
+        </div>
       {:else}
         <div class="deck-summary">
           {filteredDecks.length} deck{filteredDecks.length !== 1 ? 's' : ''}
@@ -546,16 +573,6 @@
       {/if}
     </div>
   </div>
-
-  {#if showCustomDeckBar}
-    <CustomDeckBar
-      customDecks={customDecks}
-      {activeCustomDeckId}
-      onSwitchDeck={(id) => { activeCustomDeckId = id; }}
-      onStartCustomRun={handleStartCustomRun}
-      onViewDeck={() => { showDeckView = true; }}
-    />
-  {/if}
 
   {#if duplicateToast}
     <div class="duplicate-toast" role="status" aria-live="polite">{duplicateToast}</div>
@@ -660,6 +677,11 @@
     white-space: nowrap;
     flex-shrink: 0;
     margin-right: calc(4px * var(--layout-scale, 1));
+  }
+
+  /* Pushes filter chips + import button to the right side of header */
+  .header-spacer {
+    flex: 1;
   }
 
   /* ── Body: sidebar + main content ── */
@@ -890,6 +912,91 @@
     background: rgba(139, 92, 246, 0.25);
     border-color: rgba(139, 92, 246, 0.5);
     color: #c4b5fd;
+  }
+
+  /* ── Custom Decks tab content ── */
+
+  .custom-decks-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: calc(20px * var(--layout-scale, 1));
+  }
+
+  .custom-deck-list {
+    display: flex;
+    flex-direction: column;
+    gap: calc(10px * var(--layout-scale, 1));
+  }
+
+  .custom-deck-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: calc(14px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    transition: border-color 0.15s;
+  }
+
+  .custom-deck-card:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+  }
+
+  .custom-deck-card-left {
+    display: flex;
+    flex-direction: column;
+    gap: calc(2px * var(--layout-scale, 1));
+  }
+
+  .custom-deck-card-name {
+    font-size: calc(14px * var(--text-scale, 1));
+    font-weight: 600;
+    color: #c4b5fd;
+  }
+
+  .custom-deck-card-meta {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #6b7280;
+  }
+
+  .custom-deck-card-actions {
+    display: flex;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  .custom-deck-view-btn {
+    background: transparent;
+    border: 1px solid rgba(99, 102, 241, 0.5);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    color: #818cf8;
+    font-size: calc(12px * var(--text-scale, 1));
+    font-weight: 500;
+    padding: calc(5px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .custom-deck-view-btn:hover {
+    border-color: rgba(99, 102, 241, 0.9);
+    color: #a5b4fc;
+  }
+
+  .custom-deck-start-btn {
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    border: none;
+    border-radius: calc(6px * var(--layout-scale, 1));
+    color: #fff;
+    font-size: calc(12px * var(--text-scale, 1));
+    font-weight: 600;
+    padding: calc(5px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .custom-deck-start-btn:hover {
+    opacity: 0.88;
   }
 
   /* ── Duplicate toast ── */

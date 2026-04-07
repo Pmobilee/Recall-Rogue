@@ -34,55 +34,9 @@
   let publishTags = $state('');
   let publishLoading = $state(false);
 
-  /** Mock data shown while Tauri UGC commands are not yet wired. */
-  const MOCK_DECKS: WorkshopDeck[] = [
-    {
-      workshopId: 'mock_001',
-      deckId: '',
-      title: 'JLPT N5 Vocabulary (Community)',
-      description: 'A community-curated set of 500 essential N5 vocabulary words with example sentences.',
-      tags: ['japanese', 'jlpt', 'vocabulary', 'n5'],
-      authorSteamId: '76561198000000001',
-      authorName: 'KanjiSensei',
-      subscriberCount: 1243,
-      upvotes: 892,
-      downvotes: 14,
-      createdAt: 1712000000,
-      updatedAt: 1714000000,
-    },
-    {
-      workshopId: 'mock_002',
-      deckId: '',
-      title: 'AP Biology Core Concepts',
-      description: 'Covers all major units from the AP Biology CED including cell biology, genetics, and evolution.',
-      tags: ['biology', 'ap-exam', 'science', 'high-school'],
-      authorSteamId: '76561198000000002',
-      authorName: 'BioNerd42',
-      subscriberCount: 674,
-      upvotes: 501,
-      downvotes: 8,
-      createdAt: 1711000000,
-      updatedAt: 1713500000,
-    },
-    {
-      workshopId: 'mock_003',
-      deckId: '',
-      title: 'World Capitals Quiz Pack',
-      description: 'All 195 world capitals. Great for travel trivia and geography enthusiasts.',
-      tags: ['geography', 'capitals', 'world', 'trivia'],
-      authorSteamId: '76561198000000003',
-      authorName: 'GeoQuizzer',
-      subscriberCount: 3102,
-      upvotes: 2874,
-      downvotes: 31,
-      createdAt: 1705000000,
-      updatedAt: 1712000000,
-    },
-  ];
-
   async function loadBrowse() {
     if (!workshopAvailable) {
-      browseResults = MOCK_DECKS;
+      browseResults = [];
       return;
     }
     loading = true;
@@ -210,7 +164,6 @@
     <div class="notice-banner">
       <p class="notice-text">
         Steam Workshop is only available in the Steam desktop build of Recall Rogue.
-        Browse the preview below to see what will be available.
       </p>
     </div>
   {/if}
@@ -229,7 +182,7 @@
     {#if browseResults.length === 0}
       <div class="empty-state">
         <p class="empty-title">No Workshop decks found</p>
-        <p class="empty-sub">{workshopAvailable ? 'Try a different search.' : 'Workshop preview — mock data shown.'}</p>
+        <p class="empty-sub">{workshopAvailable ? 'Try a different search.' : 'Workshop is available in the Steam desktop build.'}</p>
       </div>
     {:else}
       <div class="deck-grid">
