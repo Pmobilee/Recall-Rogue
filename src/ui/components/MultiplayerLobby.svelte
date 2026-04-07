@@ -22,6 +22,7 @@
     isHost,
     addLocalBot,
     removeLocalBot,
+    isBroadcastMode,
   } from '../../services/multiplayerLobbyService'
   import LobbyDeckPicker from './LobbyDeckPicker.svelte'
 
@@ -42,6 +43,9 @@
 
   /** Is the current user the host? */
   let amHost = $derived(isHost())
+
+  /** True when ?mp is in the URL — enables two-tab broadcast testing mode */
+  let devMode = $derived(isBroadcastMode())
 
   /** Local player's ready state */
   let myPlayer = $derived(lobby.players.find(p => p.id === localPlayerId))
@@ -138,6 +142,9 @@
       <span class="back-icon">&#8592;</span>
     </button>
     <h1 class="mp-title">Multiplayer</h1>
+    {#if devMode}
+      <span class="dev-badge">DEV MODE</span>
+    {/if}
     <div class="header-spacer"></div>
   </header>
 
@@ -523,6 +530,20 @@
     color: #FFD700;
     margin: 0;
     letter-spacing: calc(2px * var(--layout-scale, 1));
+  }
+
+  /* ── Dev mode badge ── */
+  .dev-badge {
+    background: rgba(231, 76, 60, 0.2);
+    border: 1px solid rgba(231, 76, 60, 0.4);
+    border-radius: calc(4px * var(--layout-scale, 1));
+    color: #e74c3c;
+    font-size: calc(10px * var(--text-scale, 1));
+    font-family: var(--font-body, 'Lora', serif);
+    padding: calc(3px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    letter-spacing: calc(0.5px * var(--layout-scale, 1));
+    text-transform: uppercase;
+    font-weight: 700;
   }
 
   .header-spacer {

@@ -27,11 +27,16 @@ import { DEFAULT_HOUSE_RULES, MODE_MAX_PLAYERS } from '../data/multiplayerTypes'
 // ── Broadcast Mode Detection ──────────────────────────────────────────────────
 
 /**
+ * Check if we're in broadcast (two-tab) multiplayer dev mode.
+ *
  * Returns true when the `?mp` URL param is present, activating BroadcastChannel
  * transport for two-tab local multiplayer testing.
  * Safe to call in non-browser environments (returns false).
+ *
+ * Exported so the UI layer can show a dev-mode indicator badge when running
+ * with simulated latency/packet-loss conditions.
  */
-function isBroadcastMode(): boolean {
+export function isBroadcastMode(): boolean {
   if (typeof window === 'undefined') return false;
   return new URLSearchParams(window.location.search).has('mp');
 }

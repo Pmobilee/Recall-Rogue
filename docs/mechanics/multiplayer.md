@@ -2,7 +2,7 @@
 
 > **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopEffects.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-07 — BroadcastChannelTransport added for two-tab local testing
+> **Last verified:** 2026-04-07 — BroadcastChannelTransport latency/jitter simulation added; isBroadcastMode() exported
 
 ## Modes
 
@@ -293,6 +293,20 @@ Test multiplayer with two browser tabs — no server or Steam needed.
 
 The `&mp` URL parameter activates `BroadcastChannelTransport` instead of WebSocket/Steam. Both `createLobby()` and `joinLobby()` in `multiplayerLobbyService.ts` check `isBroadcastMode()` and pass `'broadcast'` to `getMultiplayerTransport()` automatically.
 
+#### Network simulation (dev-only)
+
+`BroadcastChannelTransport` simulates real network conditions so timing bugs that only appear on Steam relay are caught during two-tab dev testing:
+
+| Simulation | Value | Purpose |
+|-----------|-------|---------|
+| Outbound latency | 30–150 ms per message | Mimics typical Steam relay RTT |
+| Packet loss | 2% drop rate | Exercises retry/tolerance logic |
+| Receive jitter | 5–20 ms | Mimics OS/network scheduling variance |
+
+Constants are defined at the top of the BroadcastChannel section in `multiplayerTransport.ts` (`BC_MIN_LATENCY_MS`, `BC_MAX_LATENCY_MS`, `BC_PACKET_LOSS_RATE`) and can be tuned for stress-testing.
+
+`isBroadcastMode()` is exported from `multiplayerLobbyService.ts` so the UI layer can show a dev-mode indicator badge when running in this simulated-network mode.
+
 #### Player ID uniqueness
 
 Each tab needs a distinct player ID — `generatePlayerId()` (exported from `multiplayerLobbyService.ts`) produces collision-resistant IDs using `player_<timestamp36>_<4 random chars>`. Use this instead of hardcoded strings like `'local_player'` when two tabs may be open simultaneously.
@@ -332,7 +346,7 @@ hub → multiplayerMenu → (mode selected) → multiplayerLobby → (game start
 |------|------|
 | `src/data/multiplayerTypes.ts` | All shared types, constants, `MultiplayerMode` union, lobby/fairness/race types, `LobbyContentSelection`, `MODE_DESCRIPTIONS`, `MODE_TAGLINES` |
 | `src/services/multiplayerScoring.ts` | `computeRaceScore()` — pure race score formula (AR-86 v1) |
-| `src/services/multiplayerLobbyService.ts` | Lobby lifecycle: create, join, configure, start; `setContentSelection()` for rich content targeting; `addLocalBot()` / `removeLocalBot()` for same-machine dev testing; `generatePlayerId()` for unique tab IDs; `isBroadcastMode()` for two-tab transport selection |
+| `src/services/multiplayerLobbyService.ts` | Lobby lifecycle: create, join, configure, start; `setContentSelection()` for rich content targeting; `addLocalBot()` / `removeLocalBot()` for same-machine dev testing; `generatePlayerId()` for unique tab IDs; `isBroadcastMode()` (exported) for two-tab transport selection and UI indicator |
 | `src/services/multiplayerTransport.ts` | Transport abstraction (WebSocket + Steam P2P + Local + BroadcastChannel) |
 | `src/services/multiplayerGameService.ts` | Race / Duel / Same Cards game sync + `DuelTurnAction` / `DuelTurnResolution` |
 | `src/services/coopEffects.ts` | 6 co-op exclusive effects, damage multiplier computation |

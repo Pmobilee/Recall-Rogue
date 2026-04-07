@@ -475,6 +475,12 @@ export function createLocalTransportPair(): [LocalMultiplayerTransport, LocalMul
 
 // ── BroadcastChannel Transport ────────────────────────────────────────────────
 
+/** Dev-mode simulated network latency range (ms). Mimics typical Steam relay RTT. */
+const BC_MIN_LATENCY_MS = 30;
+const BC_MAX_LATENCY_MS = 150;
+/** Simulated packet loss rate (0–1). 0.02 = 2% chance any outbound message is dropped. */
+const BC_PACKET_LOSS_RATE = 0.02;
+
 /**
  * BroadcastChannel-based transport for two-tab local multiplayer.
  * Both tabs open on the same origin share a BroadcastChannel keyed on
@@ -492,6 +498,11 @@ export function createLocalTransportPair(): [LocalMultiplayerTransport, LocalMul
  * arrives from the channel it is dropped if senderId === this.localId.
  *
  * Activate via URL param: ?mp — see multiplayerLobbyService.ts isBroadcastMode()
+ *
+ * Network simulation (dev-only): outbound messages are delayed 30–150 ms and
+ * dropped with 2% probability to mimic Steam relay conditions. Inbound messages
+ * receive an additional 5–20 ms of receive-side jitter. This makes two-tab
+ * testing representative of real peer-to-peer network behaviour.
  */
 export class BroadcastChannelTransport implements MultiplayerTransport {
   private state: TransportState = 'disconnected';
@@ -519,19 +530,37 @@ export class BroadcastChannelTransport implements MultiplayerTransport {
         timestamp: raw.timestamp,
         senderId: raw.senderId,
       };
-      emitToListeners(this.listeners, msg.type, msg);
+      // Simulate receive-side jitter (5–20 ms) to mimic real network variance.
+      const jitter = 5 + Math.random() * 15;
+      setTimeout(() => {
+        emitToListeners(this.listeners, msg.type, msg);
+      }, jitter);
     };
     this.state = 'connected';
   }
 
+  /**
+   * Send a message with simulated network latency and packet loss.
+   *
+   * Each call has a BC_PACKET_LOSS_RATE chance of being silently dropped,
+   * and is delayed by a random value in [BC_MIN_LATENCY_MS, BC_MAX_LATENCY_MS]
+   * before postMessage is called. This keeps the channel's instant delivery
+   * from masking timing bugs that would appear on a real Steam relay.
+   */
   send(type: MultiplayerMessageType, payload: Record<string, unknown>): void {
     if (!this.channel || this.state !== 'connected') return;
-    this.channel.postMessage({
+    const msg = {
       type,
       payload,
       senderId: this.localId,
       timestamp: Date.now(),
-    });
+    };
+    // Simulate packet loss
+    if (Math.random() < BC_PACKET_LOSS_RATE) return;
+    // Simulate network latency with jitter
+    const delay = BC_MIN_LATENCY_MS + Math.random() * (BC_MAX_LATENCY_MS - BC_MIN_LATENCY_MS);
+    const ch = this.channel;
+    setTimeout(() => { ch.postMessage(msg); }, delay);
   }
 
   on(type: string, callback: (msg: MultiplayerMessage) => void): () => void {
