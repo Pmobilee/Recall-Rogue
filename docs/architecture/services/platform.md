@@ -1,8 +1,8 @@
 # Platform & Device Services
 
-> **Purpose:** Device detection, haptics, performance monitoring, analytics, error reporting, input handling, accessibility, notifications, entitlements, Steam integration, and browser compatibility.
-> **Last verified:** 2026-03-31
-> **Source files:** platformService.ts, hapticService.ts, perfService.ts, analyticsService.ts, errorReporting.ts, inputService.ts, keyboardInput.ts, shortcutService.ts, accessibilityManager.ts, notificationService.ts, entitlementService.ts, steamService.ts, reviewPromptService.ts, browserCompat.ts, deviceTierService.ts, experimentService.ts, kidModeService.ts, legalConstants.ts, sessionTimer.ts
+> **Purpose:** Device detection, haptics, performance monitoring, analytics, error reporting, input handling, accessibility, notifications, entitlements, Steam integration, Steam P2P networking, and browser compatibility.
+> **Last verified:** 2026-04-06
+> **Source files:** platformService.ts, hapticService.ts, perfService.ts, analyticsService.ts, errorReporting.ts, inputService.ts, keyboardInput.ts, shortcutService.ts, accessibilityManager.ts, notificationService.ts, entitlementService.ts, steamService.ts, steamNetworkingService.ts, reviewPromptService.ts, browserCompat.ts, deviceTierService.ts, experimentService.ts, kidModeService.ts, legalConstants.ts, sessionTimer.ts, multiplayerTransport.ts
 
 > **See also:** [`platform-audio.md`](platform-audio.md) — audioService, cardAudioManager, and juiceManager (audio synthesis and game-feel coordination).
 
@@ -120,6 +120,19 @@ Platform services form the bridge between web-standard APIs and the three deploy
 | **Key exports** | `unlockAchievement`, `setStatInt`, `hasDLC`, `getPersonaName` |
 | **Key dependencies** | platformService (@tauri-apps/api/core dynamic import) |
 
+## steamNetworkingService
+
+| | |
+|---|---|
+| **File** | src/services/steamNetworkingService.ts |
+| **Purpose** | Wraps Steamworks P2P Networking and Lobby API via Tauri IPC — lobby create/join/leave, lobby metadata, P2P send/receive, callback pump; no-ops on non-Steam platforms |
+| **Key exports** | `createSteamLobby`, `joinSteamLobby`, `leaveSteamLobby`, `getLobbyMembers`, `setLobbyData`, `getLobbyData`, `sendP2PMessage`, `readP2PMessages`, `acceptP2PSession`, `runSteamCallbacks`, `startMessagePollLoop` |
+| **Key types** | `SteamLobbyType`, `SteamLobbyMember`, `SteamP2PMessage` |
+| **Key dependencies** | platformService (@tauri-apps/api/core dynamic import) |
+| **Poll loop** | `startMessagePollLoop(onMessage, channel?, intervalMs?)` — starts a 16 ms setInterval that pumps Steam callbacks then reads P2P messages; returns cleanup function |
+| **Tauri commands** | `steam_create_lobby`, `steam_join_lobby`, `steam_leave_lobby`, `steam_get_lobby_members`, `steam_set_lobby_data`, `steam_get_lobby_data`, `steam_send_p2p_message`, `steam_read_p2p_messages`, `steam_accept_p2p_session`, `steam_run_callbacks` |
+| **Arg convention** | All Tauri IPC args use snake_case to match Rust side (`lobby_id`, `lobby_type`, `max_members`, `steam_id`, etc.) |
+
 ## reviewPromptService
 
 | | |
@@ -182,3 +195,18 @@ Platform services form the bridge between web-standard APIs and the three deploy
 | **Purpose** | Daily play time tracker with gentle 5-min warning and hard-stop at parental time limit |
 | **Key exports** | `sessionTimer` (singleton with `start`, `stop`, `getState`, `subscribe`) |
 | **Key dependencies** | localStorage |
+
+## multiplayerTransport
+
+| | |
+|---|---|
+| **File** | src/services/multiplayerTransport.ts |
+| **Purpose** | Transport-agnostic multiplayer messaging layer — abstracts over WebSocket (web/mobile) and Steam P2P (desktop) so game logic never touches either transport directly |
+| **Key exports** | `getMultiplayerTransport`, `destroyMultiplayerTransport`, `createTransport`, `WebSocketTransport`, `SteamP2PTransport` |
+| **Key types** | `MultiplayerTransport` (interface), `MultiplayerMessage`, `MultiplayerMessageType`, `TransportState` |
+| **Key dependencies** | platformService (`hasSteam`), steamNetworkingService (`acceptP2PSession`, `sendP2PMessage`, `startMessagePollLoop`, `leaveSteamLobby`) |
+| **Platform selection** | `hasSteam === true` → `SteamP2PTransport`; otherwise → `WebSocketTransport` |
+| **Singleton** | `getMultiplayerTransport()` creates lazily; `destroyMultiplayerTransport()` disconnects and nulls the instance |
+| **WebSocketTransport** | Connects via `ws://` or `wss://` URL with playerId query param; exponential backoff reconnect (5 attempts, 1 s base delay) |
+| **SteamP2PTransport** | `connect(peerId, localId)` calls `acceptP2PSession(peerId)` then starts the 16 ms poll loop; `setActiveLobby(id)` registers lobby for cleanup on `disconnect()` |
+| **Message types** | 33 typed values: `mp:lobby:*`, `mp:race:*`, `mp:duel:*`, `mp:coop:*`, `mp:trivia:*`, `mp:ping/pong/error/sync` |

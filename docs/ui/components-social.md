@@ -1,7 +1,7 @@
 # UI Components — Social, Account & Utility
 
 > **Purpose:** Non-gameplay Svelte components: social, auth, monetization, onboarding, and utility
-> **Last verified:** 2026-04-05
+> **Last verified:** 2026-04-06
 > **Source files:** `src/ui/components/**/*.svelte`
 
 > **See also:** [`components.md`](components.md) — Gameplay-critical components: Combat UI, Quiz & Study, Hub & Navigation, Dungeon & Map, Card Management, Rooms & Events, Rewards & Progression, Relics.
@@ -29,6 +29,8 @@
 | `TradeMarketView.svelte` | Card trading marketplace browse view |
 | `TradeOfferModal.svelte` | Modal for creating or reviewing a trade offer |
 | `GuestbookModal.svelte` | Hub guestbook: leave messages on other players' hubs |
+| `MultiplayerLobby.svelte` | Full-screen multiplayer lobby: mode selection (5 modes), player list with ready check, host-editable house rules (turn timer / quiz difficulty / fairness options / ranked), deck selection. Props: `lobby: LobbyState`, `localPlayerId: string`, `onBack: () => void`. Host-only controls are disabled (read-only) for non-host players. Not yet wired into app flow. |
+| `MultiplayerHUD.svelte` | Race Mode opponent progress HUD — compact fixed overlay (top-right, 260px wide). Compact mode shows name + floor badge + mini HP bar. Expands on click to show full HP bar, score, accuracy, encounters won, and status pill (In Combat / Finished). Props: `progress: RaceProgress`, `displayName: string`. HP bar transitions smoothly with CSS. Not yet wired into app flow. |
 
 ---
 

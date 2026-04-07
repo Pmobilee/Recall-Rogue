@@ -1,8 +1,8 @@
 # Services Index
 
 > **Purpose:** Lookup table mapping every service name to its domain sub-doc.
-> **Last verified:** 2026-04-03
-> **Source files:** All `src/services/*.ts` (142 files, excluding test files) + `src/services/math/*.ts` (7 files)
+> **Last verified:** 2026-04-06
+> **Source files:** All `src/services/*.ts` (145 files, excluding test files) + `src/services/math/*.ts` (7 files)
 
 | Service | File | Sub-doc |
 |---------|------|---------|
@@ -91,6 +91,8 @@
 | masteryScalingService | src/services/masteryScalingService.ts | [learning.md](learning.md) |
 | mentorService | src/services/mentorService.ts | [social.md](social.md) |
 | monetizationService | src/services/monetizationService.ts | [social.md](social.md) |
+| multiplayerLobbyService | src/services/multiplayerLobbyService.ts | [social.md](social.md) |
+| multiplayerTransport | src/services/multiplayerTransport.ts | [platform.md](platform.md) |
 | nonCombatQuizSelector | src/services/nonCombatQuizSelector.ts | [quiz.md](quiz.md) |
 | notificationService | src/services/notificationService.ts | [platform.md](platform.md) |
 | numericalDistractorService | src/services/numericalDistractorService.ts | [quiz.md](quiz.md) |
@@ -132,6 +134,7 @@
 | shortcutService | src/services/shortcutService.ts | [platform.md](platform.md) |
 | sm2 | src/services/sm2.ts | [learning.md](learning.md) |
 | socialService | src/services/socialService.ts | [social.md](social.md) |
+| steamNetworkingService | src/services/steamNetworkingService.ts | [platform.md](platform.md) |
 | steamService | src/services/steamService.ts | [platform.md](platform.md) |
 | storageMigration | src/services/storageMigration.ts | [persistence.md](persistence.md) |
 | storageBackend | src/services/storageBackend.ts | [persistence.md](persistence.md) |

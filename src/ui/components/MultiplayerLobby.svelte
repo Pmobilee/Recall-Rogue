@@ -1,0 +1,1096 @@
+<!-- MultiplayerLobby.svelte
+     Full-screen multiplayer lobby for Recall Rogue.
+     Handles mode selection, player list, house rules, deck settings, and start.
+     Props: lobby state from multiplayerLobbyService. Not yet wired into app flow. -->
+<script lang="ts">
+  import type { LobbyState, MultiplayerMode, DeckSelectionMode } from '../../data/multiplayerTypes'
+  import {
+    MODE_DISPLAY_NAMES,
+    MODE_DESCRIPTIONS,
+    MODE_MAX_PLAYERS,
+    DEFAULT_HOUSE_RULES,
+  } from '../../data/multiplayerTypes'
+  import {
+    setMode,
+    setDeckSelectionMode,
+    selectDeck,
+    setHouseRules,
+    setRanked,
+    setReady,
+    allReady,
+    startGame,
+    leaveLobby,
+    isHost,
+  } from '../../services/multiplayerLobbyService'
+
+  interface Props {
+    lobby: LobbyState
+    localPlayerId: string
+    onBack: () => void
+  }
+
+  let { lobby, localPlayerId, onBack }: Props = $props()
+
+  // Local reactive state
+  let fairnessExpanded = $state(false)
+  let deckIdInput = $state('')
+  let copyFeedback = $state(false)
+
+  // Sync deckIdInput from lobby when host broadcasts a deck selection
+  $effect(() => {
+    if (lobby.selectedDeckId && lobby.selectedDeckId !== deckIdInput) {
+      deckIdInput = lobby.selectedDeckId
+    }
+  })
+
+  const MODES: MultiplayerMode[] = ['race', 'same_cards', 'duel', 'coop', 'trivia_night']
+
+  /** Is the current user the host? */
+  let amHost = $derived(isHost())
+
+  /** Local player's ready state */
+  let myPlayer = $derived(lobby.players.find(p => p.id === localPlayerId))
+  let isReady = $derived(myPlayer?.isReady ?? false)
+  let canStart = $derived(amHost && allReady())
+
+  /** Empty slots to fill player list up to maxPlayers */
+  let emptySlots = $derived(
+    Array.from({ length: Math.max(0, lobby.maxPlayers - lobby.players.length) })
+  )
+
+  function handleModeSelect(mode: MultiplayerMode): void {
+    if (!amHost) return
+    setMode(mode)
+  }
+
+  function handleDeckSelectionMode(mode: DeckSelectionMode): void {
+    if (!amHost) return
+    setDeckSelectionMode(mode)
+  }
+
+  function handleDeckInput(e: Event): void {
+    const val = (e.target as HTMLInputElement).value
+    deckIdInput = val
+    if (amHost && val.trim()) {
+      selectDeck(val.trim())
+    }
+  }
+
+  function handleTimerChange(secs: number): void {
+    if (!amHost) return
+    setHouseRules({ turnTimerSecs: secs })
+  }
+
+  function handleDifficultyChange(e: Event): void {
+    if (!amHost) return
+    const val = (e.target as HTMLSelectElement).value as 'adaptive' | 'easy' | 'hard'
+    setHouseRules({ quizDifficulty: val })
+  }
+
+  function handleFairnessToggle(key: 'freshFactsOnly' | 'masteryEqualized'): void {
+    if (!amHost) return
+    setHouseRules({
+      fairness: {
+        ...lobby.houseRules.fairness,
+        [key]: !lobby.houseRules.fairness[key],
+      },
+    })
+  }
+
+  function handleHandicapChange(e: Event): void {
+    if (!amHost) return
+    const val = parseInt((e.target as HTMLInputElement).value, 10)
+    setHouseRules({
+      fairness: {
+        ...lobby.houseRules.fairness,
+        handicapPercent: val,
+      },
+    })
+  }
+
+  function handleRankedToggle(): void {
+    if (!amHost) return
+    setRanked(!lobby.isRanked)
+  }
+
+  function handleReadyToggle(): void {
+    setReady(!isReady)
+  }
+
+  function handleStart(): void {
+    if (canStart) startGame()
+  }
+
+  function handleLeave(): void {
+    leaveLobby()
+    onBack()
+  }
+
+  async function handleCopyCode(): Promise<void> {
+    if (!lobby.lobbyCode) return
+    try {
+      await navigator.clipboard.writeText(lobby.lobbyCode)
+      copyFeedback = true
+      setTimeout(() => { copyFeedback = false }, 1800)
+    } catch {
+      // Clipboard API may not be available in all environments
+    }
+  }
+</script>
+
+<div class="mp-lobby" role="main" aria-label="Multiplayer Lobby">
+
+  <!-- Header -->
+  <header class="mp-header">
+    <button class="back-btn" onclick={onBack} aria-label="Back">
+      <span class="back-icon">&#8592;</span>
+    </button>
+    <h1 class="mp-title">Multiplayer</h1>
+    <div class="header-spacer"></div>
+  </header>
+
+  <!-- Three-column layout -->
+  <div class="mp-body">
+
+    <!-- LEFT: Mode Selection -->
+    <aside class="mp-panel mode-panel" aria-label="Mode selection">
+      <h2 class="panel-title">Mode</h2>
+      <ul class="mode-list" role="listbox" aria-label="Game modes">
+        {#each MODES as mode}
+          {@const isSelected = lobby.mode === mode}
+          <li
+            class="mode-item"
+            class:selected={isSelected}
+            role="option"
+            aria-selected={isSelected}
+            aria-disabled={!amHost}
+            onclick={() => handleModeSelect(mode)}
+            onkeydown={(e) => e.key === 'Enter' && handleModeSelect(mode)}
+            tabindex={amHost ? 0 : -1}
+          >
+            <div class="mode-name">
+              {MODE_DISPLAY_NAMES[mode]}
+              <span class="mode-max-badge">{MODE_MAX_PLAYERS[mode]}P</span>
+            </div>
+            <div class="mode-desc">{MODE_DESCRIPTIONS[mode]}</div>
+          </li>
+        {/each}
+      </ul>
+    </aside>
+
+    <!-- CENTER: Lobby -->
+    <main class="mp-panel lobby-panel" aria-label="Lobby">
+
+      <!-- Lobby code -->
+      {#if lobby.lobbyCode}
+        <div class="lobby-code-section">
+          <span class="lobby-code-label">Lobby Code</span>
+          <button
+            class="lobby-code-value"
+            class:copied={copyFeedback}
+            onclick={handleCopyCode}
+            aria-label="Copy lobby code {lobby.lobbyCode}"
+            title="Click to copy"
+          >
+            {lobby.lobbyCode}
+            <span class="copy-hint">{copyFeedback ? 'Copied!' : 'Copy'}</span>
+          </button>
+        </div>
+      {/if}
+
+      <!-- Player list -->
+      <div class="player-list" aria-label="Players">
+        {#each lobby.players as player}
+          <div
+            class="player-slot"
+            class:ready={player.isReady}
+            class:is-local={player.id === localPlayerId}
+            aria-label="{player.displayName} {player.isReady ? 'ready' : 'not ready'}"
+          >
+            <div class="player-avatar" aria-hidden="true">
+              {player.displayName.charAt(0).toUpperCase()}
+            </div>
+            <span class="player-name">
+              {player.displayName}
+              {#if player.id === localPlayerId}<span class="you-label">(You)</span>{/if}
+            </span>
+            {#if player.isHost}
+              <span class="host-crown" title="Host" aria-label="Host">&#9819;</span>
+            {/if}
+            <span
+              class="ready-dot"
+              class:ready={player.isReady}
+              aria-label={player.isReady ? 'Ready' : 'Not ready'}
+              title={player.isReady ? 'Ready' : 'Not ready'}
+            ></span>
+          </div>
+        {/each}
+
+        {#each emptySlots as _}
+          <div class="player-slot empty" aria-label="Empty slot">
+            <div class="player-avatar empty-avatar" aria-hidden="true">?</div>
+            <span class="player-name waiting-text">Waiting for player...</span>
+          </div>
+        {/each}
+      </div>
+
+      <!-- Actions -->
+      <div class="lobby-actions">
+        <button
+          class="ready-btn"
+          class:is-ready={isReady}
+          onclick={handleReadyToggle}
+          aria-pressed={isReady}
+        >
+          {isReady ? 'Not Ready' : 'Ready'}
+        </button>
+
+        {#if amHost}
+          <button
+            class="start-btn"
+            disabled={!canStart}
+            onclick={handleStart}
+            aria-label="Start game"
+          >
+            {canStart ? 'Start Game' : 'Waiting for players...'}
+          </button>
+        {/if}
+      </div>
+    </main>
+
+    <!-- RIGHT: Settings -->
+    <aside class="mp-panel settings-panel" aria-label="Lobby settings">
+      <h2 class="panel-title">Settings</h2>
+
+      <!-- Deck Selection -->
+      <section class="settings-section">
+        <h3 class="section-label">Deck</h3>
+
+        <!-- Deck ID input -->
+        <div class="setting-row">
+          <label for="deck-id-input" class="setting-name">Deck ID</label>
+          <input
+            id="deck-id-input"
+            class="deck-input"
+            type="text"
+            placeholder="Enter deck ID..."
+            value={deckIdInput}
+            oninput={handleDeckInput}
+            disabled={!amHost}
+            aria-label="Deck identifier"
+          />
+        </div>
+
+        <!-- Deck selection mode -->
+        <div class="setting-row radio-row" role="radiogroup" aria-label="Deck selection mode">
+          {#each (['host_picks', 'each_picks', 'random'] as DeckSelectionMode[]) as dsMode}
+            {@const labels: Record<string, string> = {
+              host_picks: 'Host Picks',
+              each_picks: 'Each Picks',
+              random: 'Random',
+            }}
+            <label class="radio-label" class:active={lobby.deckSelectionMode === dsMode}>
+              <input
+                type="radio"
+                name="deck-selection"
+                value={dsMode}
+                checked={lobby.deckSelectionMode === dsMode}
+                disabled={!amHost}
+                onchange={() => handleDeckSelectionMode(dsMode)}
+              />
+              {labels[dsMode]}
+            </label>
+          {/each}
+        </div>
+      </section>
+
+      <!-- House Rules -->
+      <section class="settings-section">
+        <h3 class="section-label">House Rules</h3>
+
+        <!-- Turn Timer -->
+        <div class="setting-row" role="radiogroup" aria-label="Turn timer">
+          <span class="setting-name">Turn Timer</span>
+          <div class="radio-pills">
+            {#each ([20, 45, 90] as const) as secs}
+              {@const timerLabels: Record<number, string> = { 20: 'Speed', 45: 'Standard', 90: 'Relaxed' }}
+              <label class="pill-label" class:active={lobby.houseRules.turnTimerSecs === secs}>
+                <input
+                  type="radio"
+                  name="turn-timer"
+                  value={secs}
+                  checked={lobby.houseRules.turnTimerSecs === secs}
+                  disabled={!amHost}
+                  onchange={() => handleTimerChange(secs)}
+                />
+                {timerLabels[secs]}
+              </label>
+            {/each}
+          </div>
+        </div>
+
+        <!-- Quiz Difficulty -->
+        <div class="setting-row">
+          <label for="quiz-difficulty" class="setting-name">Quiz Difficulty</label>
+          <select
+            id="quiz-difficulty"
+            class="setting-select"
+            value={lobby.houseRules.quizDifficulty}
+            onchange={handleDifficultyChange}
+            disabled={!amHost}
+            aria-label="Quiz difficulty"
+          >
+            <option value="adaptive">Adaptive</option>
+            <option value="easy">Easy</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Fairness Options (collapsible) -->
+      <section class="settings-section">
+        <button
+          class="collapsible-header"
+          onclick={() => { fairnessExpanded = !fairnessExpanded }}
+          aria-expanded={fairnessExpanded}
+          aria-controls="fairness-options"
+        >
+          <h3 class="section-label">Fairness Options</h3>
+          <span class="collapse-icon" aria-hidden="true">{fairnessExpanded ? '▲' : '▼'}</span>
+        </button>
+
+        {#if fairnessExpanded}
+          <div id="fairness-options" class="fairness-options">
+            <label class="toggle-row" class:disabled={!amHost}>
+              <span class="toggle-name">Fresh Facts Only</span>
+              <input
+                type="checkbox"
+                class="toggle-input"
+                checked={lobby.houseRules.fairness.freshFactsOnly}
+                disabled={!amHost}
+                onchange={() => handleFairnessToggle('freshFactsOnly')}
+                aria-label="Fresh facts only"
+              />
+              <span class="toggle-track" aria-hidden="true"></span>
+            </label>
+
+            <label class="toggle-row" class:disabled={!amHost}>
+              <span class="toggle-name">Mastery Equalized</span>
+              <input
+                type="checkbox"
+                class="toggle-input"
+                checked={lobby.houseRules.fairness.masteryEqualized}
+                disabled={!amHost}
+                onchange={() => handleFairnessToggle('masteryEqualized')}
+                aria-label="Mastery equalized"
+              />
+              <span class="toggle-track" aria-hidden="true"></span>
+            </label>
+
+            <div class="setting-row slider-row">
+              <label for="handicap-slider" class="setting-name">
+                Handicap
+                <span class="slider-value">{lobby.houseRules.fairness.handicapPercent}%</span>
+              </label>
+              <input
+                id="handicap-slider"
+                type="range"
+                class="handicap-slider"
+                min="0"
+                max="50"
+                step="5"
+                value={lobby.houseRules.fairness.handicapPercent}
+                disabled={!amHost}
+                oninput={handleHandicapChange}
+                aria-label="Handicap percentage"
+                aria-valuemin={0}
+                aria-valuemax={50}
+                aria-valuenow={lobby.houseRules.fairness.handicapPercent}
+              />
+            </div>
+          </div>
+        {/if}
+      </section>
+
+      <!-- Ranked Mode -->
+      <section class="settings-section">
+        <label class="toggle-row ranked-toggle" class:disabled={!amHost}>
+          <span class="toggle-name">Ranked Mode</span>
+          <input
+            type="checkbox"
+            class="toggle-input"
+            checked={lobby.isRanked}
+            disabled={!amHost}
+            onchange={handleRankedToggle}
+            aria-label="Ranked mode"
+          />
+          <span class="toggle-track" aria-hidden="true"></span>
+        </label>
+      </section>
+
+      {#if !amHost}
+        <p class="readonly-notice" aria-live="polite">Only the host can change settings.</p>
+      {/if}
+    </aside>
+  </div>
+
+  <!-- Bottom bar -->
+  <footer class="mp-footer">
+    <button class="leave-btn" onclick={handleLeave} aria-label="Leave lobby">
+      Cancel / Leave
+    </button>
+  </footer>
+</div>
+
+<style>
+  /* ── Root ── */
+  .mp-lobby {
+    position: fixed;
+    inset: 0;
+    background: var(--panel-bg, #12151E);
+    display: flex;
+    flex-direction: column;
+    z-index: 150;
+    font-family: var(--font-body, 'Lora', serif);
+    color: #e0e0e0;
+    overflow: hidden;
+  }
+
+  /* ── Header ── */
+  .mp-header {
+    display: flex;
+    align-items: center;
+    gap: calc(16px * var(--layout-scale, 1));
+    padding: calc(14px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
+    border-bottom: 1px solid #2A2E38;
+    flex-shrink: 0;
+  }
+
+  .back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid #2A2E38;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    color: #c0c0c0;
+    cursor: pointer;
+    width: calc(44px * var(--layout-scale, 1));
+    height: calc(44px * var(--layout-scale, 1));
+    transition: background 0.15s;
+  }
+
+  .back-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+
+  .back-icon {
+    font-size: calc(18px * var(--text-scale, 1));
+  }
+
+  .mp-title {
+    font-family: var(--font-rpg, 'Cinzel', serif);
+    font-size: calc(24px * var(--text-scale, 1));
+    color: #FFD700;
+    margin: 0;
+    letter-spacing: calc(2px * var(--layout-scale, 1));
+  }
+
+  .header-spacer {
+    flex: 1;
+  }
+
+  /* ── Body (3-column) ── */
+  .mp-body {
+    display: grid;
+    grid-template-columns: calc(260px * var(--layout-scale, 1)) 1fr calc(280px * var(--layout-scale, 1));
+    gap: calc(16px * var(--layout-scale, 1));
+    padding: calc(16px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* ── Shared Panel ── */
+  .mp-panel {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #2A2E38;
+    border-radius: calc(12px * var(--layout-scale, 1));
+    padding: calc(16px * var(--layout-scale, 1));
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: calc(12px * var(--layout-scale, 1));
+  }
+
+  .panel-title {
+    font-family: var(--font-rpg, 'Cinzel', serif);
+    font-size: calc(13px * var(--text-scale, 1));
+    color: #FFD700;
+    margin: 0 0 calc(4px * var(--layout-scale, 1)) 0;
+    letter-spacing: calc(1.5px * var(--layout-scale, 1));
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  /* ── Mode List ── */
+  .mode-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--layout-scale, 1));
+    flex: 1;
+  }
+
+  .mode-item {
+    padding: calc(12px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    border-radius: calc(8px * var(--layout-scale, 1));
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    min-height: calc(44px * var(--layout-scale, 1));
+  }
+
+  .mode-item:hover {
+    background: rgba(255, 215, 0, 0.07);
+    border-color: rgba(255, 215, 0, 0.2);
+  }
+
+  .mode-item.selected {
+    background: rgba(255, 215, 0, 0.12);
+    border-color: rgba(255, 215, 0, 0.5);
+  }
+
+  .mode-item[aria-disabled="true"] {
+    cursor: default;
+  }
+
+  .mode-name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(13px * var(--text-scale, 1));
+    font-weight: 600;
+    color: #e8e8e8;
+    margin-bottom: calc(3px * var(--layout-scale, 1));
+  }
+
+  .mode-max-badge {
+    font-size: calc(10px * var(--text-scale, 1));
+    background: rgba(255, 215, 0, 0.18);
+    color: #FFD700;
+    border-radius: calc(4px * var(--layout-scale, 1));
+    padding: calc(1px * var(--layout-scale, 1)) calc(5px * var(--layout-scale, 1));
+    font-weight: 700;
+  }
+
+  .mode-desc {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #888;
+    line-height: 1.4;
+  }
+
+  /* ── Lobby Panel ── */
+  .lobby-panel {
+    align-items: stretch;
+  }
+
+  /* Lobby code */
+  .lobby-code-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(6px * var(--layout-scale, 1));
+    margin-bottom: calc(4px * var(--layout-scale, 1));
+  }
+
+  .lobby-code-label {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: calc(1.5px * var(--layout-scale, 1));
+  }
+
+  .lobby-code-value {
+    background: none;
+    border: 1px solid #4A5068;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    color: #FFD700;
+    font-family: var(--font-rpg, 'Cinzel', monospace);
+    font-size: calc(28px * var(--text-scale, 1));
+    letter-spacing: calc(6px * var(--layout-scale, 1));
+    cursor: pointer;
+    padding: calc(8px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    display: flex;
+    align-items: center;
+    gap: calc(12px * var(--layout-scale, 1));
+    transition: border-color 0.15s, background 0.15s;
+    min-height: calc(44px * var(--layout-scale, 1));
+  }
+
+  .lobby-code-value:hover {
+    border-color: #FFD700;
+    background: rgba(255, 215, 0, 0.05);
+  }
+
+  .lobby-code-value.copied {
+    border-color: #2ecc71;
+    color: #2ecc71;
+  }
+
+  .copy-hint {
+    font-size: calc(10px * var(--text-scale, 1));
+    color: #666;
+    letter-spacing: 0;
+    font-family: var(--font-body, 'Lora', serif);
+  }
+
+  /* Player list */
+  .player-list {
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--layout-scale, 1));
+    flex: 1;
+  }
+
+  .player-slot {
+    display: flex;
+    align-items: center;
+    gap: calc(10px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    border-radius: calc(24px * var(--layout-scale, 1));
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.04);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    min-height: calc(48px * var(--layout-scale, 1));
+  }
+
+  .player-slot.ready {
+    border-color: rgba(46, 204, 113, 0.5);
+    box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) rgba(46, 204, 113, 0.15);
+  }
+
+  .player-slot.is-local {
+    background: rgba(255, 215, 0, 0.05);
+  }
+
+  .player-slot.empty {
+    opacity: 0.35;
+    border-style: dashed;
+    border-color: #333;
+  }
+
+  .player-avatar {
+    width: calc(32px * var(--layout-scale, 1));
+    height: calc(32px * var(--layout-scale, 1));
+    border-radius: 50%;
+    background: rgba(255, 215, 0, 0.18);
+    color: #FFD700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(13px * var(--text-scale, 1));
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .empty-avatar {
+    background: rgba(255, 255, 255, 0.06);
+    color: #444;
+  }
+
+  .player-name {
+    flex: 1;
+    font-size: calc(13px * var(--text-scale, 1));
+    color: #ddd;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .waiting-text {
+    color: #555;
+    font-style: italic;
+  }
+
+  .you-label {
+    color: #888;
+    font-size: calc(11px * var(--text-scale, 1));
+    margin-left: calc(4px * var(--layout-scale, 1));
+  }
+
+  .host-crown {
+    font-size: calc(16px * var(--text-scale, 1));
+    color: #FFD700;
+  }
+
+  .ready-dot {
+    width: calc(10px * var(--layout-scale, 1));
+    height: calc(10px * var(--layout-scale, 1));
+    border-radius: 50%;
+    background: #444;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+
+  .ready-dot.ready {
+    background: #2ecc71;
+    box-shadow: 0 0 calc(5px * var(--layout-scale, 1)) rgba(46, 204, 113, 0.6);
+  }
+
+  /* Action buttons */
+  .lobby-actions {
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--layout-scale, 1));
+    margin-top: calc(4px * var(--layout-scale, 1));
+    flex-shrink: 0;
+  }
+
+  .ready-btn,
+  .start-btn {
+    width: 100%;
+    padding: calc(12px * var(--layout-scale, 1));
+    border: none;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    font-family: var(--font-rpg, 'Cinzel', serif);
+    font-size: calc(12px * var(--text-scale, 1));
+    cursor: pointer;
+    transition: opacity 0.15s, background 0.15s;
+    min-height: calc(44px * var(--layout-scale, 1));
+    font-weight: 700;
+    letter-spacing: calc(1px * var(--layout-scale, 1));
+  }
+
+  .ready-btn {
+    background: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+    border: 1px solid rgba(46, 204, 113, 0.4);
+  }
+
+  .ready-btn:hover {
+    background: rgba(46, 204, 113, 0.32);
+  }
+
+  .ready-btn.is-ready {
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+    border-color: rgba(231, 76, 60, 0.4);
+  }
+
+  .ready-btn.is-ready:hover {
+    background: rgba(231, 76, 60, 0.32);
+  }
+
+  .start-btn {
+    background: #FFD700;
+    color: #12151E;
+  }
+
+  .start-btn:hover:not(:disabled) {
+    background: #ffe84d;
+  }
+
+  .start-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  /* ── Settings Panel ── */
+  .settings-section {
+    border-bottom: 1px solid #1e2130;
+    padding-bottom: calc(12px * var(--layout-scale, 1));
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  .settings-section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .section-label {
+    font-size: calc(11px * var(--text-scale, 1));
+    text-transform: uppercase;
+    letter-spacing: calc(1px * var(--layout-scale, 1));
+    color: #888;
+    margin: 0;
+  }
+
+  .setting-row {
+    display: flex;
+    align-items: center;
+    gap: calc(10px * var(--layout-scale, 1));
+    min-height: calc(36px * var(--layout-scale, 1));
+  }
+
+  .setting-name {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #ccc;
+    flex: 1;
+    white-space: nowrap;
+  }
+
+  /* Deck input */
+  .deck-input {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid #3a3f52;
+    border-radius: calc(6px * var(--layout-scale, 1));
+    color: #e0e0e0;
+    font-size: calc(12px * var(--text-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    width: calc(140px * var(--layout-scale, 1));
+    min-height: calc(32px * var(--layout-scale, 1));
+    transition: border-color 0.15s;
+  }
+
+  .deck-input:focus {
+    outline: none;
+    border-color: #FFD700;
+  }
+
+  .deck-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Radio rows */
+  .radio-row {
+    display: flex;
+    gap: calc(8px * var(--layout-scale, 1));
+    flex-wrap: wrap;
+  }
+
+  .radio-label {
+    display: flex;
+    align-items: center;
+    gap: calc(5px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #999;
+    cursor: pointer;
+    padding: calc(4px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    border-radius: calc(4px * var(--layout-scale, 1));
+    border: 1px solid transparent;
+    transition: border-color 0.12s, color 0.12s;
+    min-height: calc(28px * var(--layout-scale, 1));
+  }
+
+  .radio-label.active {
+    color: #FFD700;
+    border-color: rgba(255, 215, 0, 0.4);
+  }
+
+  .radio-label input[type="radio"] {
+    accent-color: #FFD700;
+    width: calc(14px * var(--layout-scale, 1));
+    height: calc(14px * var(--layout-scale, 1));
+  }
+
+  /* Pill radio buttons */
+  .radio-pills {
+    display: flex;
+    gap: calc(4px * var(--layout-scale, 1));
+  }
+
+  .pill-label {
+    display: flex;
+    align-items: center;
+    gap: calc(4px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #888;
+    cursor: pointer;
+    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    border-radius: calc(12px * var(--layout-scale, 1));
+    border: 1px solid #2e3244;
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.12s;
+    min-height: calc(28px * var(--layout-scale, 1));
+  }
+
+  .pill-label.active {
+    background: rgba(255, 215, 0, 0.14);
+    color: #FFD700;
+    border-color: rgba(255, 215, 0, 0.4);
+  }
+
+  .pill-label input[type="radio"] {
+    display: none;
+  }
+
+  /* Select */
+  .setting-select {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid #3a3f52;
+    border-radius: calc(6px * var(--layout-scale, 1));
+    color: #e0e0e0;
+    font-size: calc(12px * var(--text-scale, 1));
+    padding: calc(5px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    min-height: calc(32px * var(--layout-scale, 1));
+    cursor: pointer;
+    flex: 1;
+  }
+
+  .setting-select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Collapsible header */
+  .collapsible-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    width: 100%;
+    padding: 0;
+    min-height: calc(36px * var(--layout-scale, 1));
+  }
+
+  .collapse-icon {
+    font-size: calc(10px * var(--text-scale, 1));
+    color: #666;
+  }
+
+  .fairness-options {
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--layout-scale, 1));
+    padding-top: calc(4px * var(--layout-scale, 1));
+  }
+
+  /* Toggle rows */
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    gap: calc(10px * var(--layout-scale, 1));
+    cursor: pointer;
+    min-height: calc(36px * var(--layout-scale, 1));
+    position: relative;
+  }
+
+  .toggle-row.disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+
+  .toggle-name {
+    flex: 1;
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #ccc;
+  }
+
+  /* Visually hide native checkbox, show track instead */
+  .toggle-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .toggle-track {
+    width: calc(36px * var(--layout-scale, 1));
+    height: calc(20px * var(--layout-scale, 1));
+    border-radius: calc(10px * var(--layout-scale, 1));
+    background: #333;
+    border: 1px solid #444;
+    flex-shrink: 0;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .toggle-track::after {
+    content: '';
+    position: absolute;
+    top: calc(2px * var(--layout-scale, 1));
+    left: calc(2px * var(--layout-scale, 1));
+    width: calc(14px * var(--layout-scale, 1));
+    height: calc(14px * var(--layout-scale, 1));
+    border-radius: 50%;
+    background: #666;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .toggle-input:checked ~ .toggle-track {
+    background: rgba(46, 204, 113, 0.4);
+    border-color: #2ecc71;
+  }
+
+  .toggle-input:checked ~ .toggle-track::after {
+    transform: translateX(calc(16px * var(--layout-scale, 1)));
+    background: #2ecc71;
+  }
+
+  /* Slider */
+  .slider-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .slider-value {
+    color: #FFD700;
+    font-size: calc(11px * var(--text-scale, 1));
+    margin-left: calc(6px * var(--layout-scale, 1));
+  }
+
+  .handicap-slider {
+    width: 100%;
+    accent-color: #FFD700;
+    cursor: pointer;
+  }
+
+  .handicap-slider:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Ranked toggle */
+  .ranked-toggle {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    border: 1px solid #2A2E38;
+  }
+
+  .readonly-notice {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #555;
+    text-align: center;
+    font-style: italic;
+    margin: 0;
+    margin-top: auto;
+  }
+
+  /* ── Footer ── */
+  .mp-footer {
+    display: flex;
+    justify-content: flex-start;
+    padding: calc(12px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
+    border-top: 1px solid #2A2E38;
+    flex-shrink: 0;
+  }
+
+  .leave-btn {
+    background: rgba(231, 76, 60, 0.12);
+    border: 1px solid rgba(231, 76, 60, 0.35);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    color: #e74c3c;
+    font-size: calc(13px * var(--text-scale, 1));
+    cursor: pointer;
+    padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+    transition: background 0.15s;
+  }
+
+  .leave-btn:hover {
+    background: rgba(231, 76, 60, 0.22);
+  }
+</style>
