@@ -246,7 +246,7 @@ export function addLocalBot(botName: string = 'Bot Player'): void {
     isHost: false,
     isReady: false,
   });
-  _onLobbyUpdate?.(_currentLobby);
+  notifyLobbyUpdate();
 
   // Auto-ready the bot after a brief delay
   setTimeout(() => {
@@ -254,7 +254,7 @@ export function addLocalBot(botName: string = 'Bot Player'): void {
     const bot = _currentLobby.players.find(p => p.id === botId);
     if (bot) {
       bot.isReady = true;
-      _onLobbyUpdate?.(_currentLobby);
+      notifyLobbyUpdate();
     }
   }, 500);
 }
@@ -267,7 +267,7 @@ export function removeLocalBot(): void {
     _botTransport.disconnect();
     _botTransport = null;
   }
-  _onLobbyUpdate?.(_currentLobby);
+  notifyLobbyUpdate();
 }
 
 // ── Ready & Start ────────────────────────────────────────────────────────────
@@ -280,6 +280,7 @@ export function setReady(ready: boolean): void {
     player.isReady = ready;
     const transport = getMultiplayerTransport();
     transport.send('mp:lobby:ready', { playerId: _localPlayerId, ready });
+    notifyLobbyUpdate();
   }
 }
 
@@ -348,6 +349,14 @@ export function onRaceResults(cb: (results: RaceResults) => void): () => void {
 
 // ── Internal ─────────────────────────────────────────────────────────────────
 
+/** Notify the UI of a lobby state change. Spreads a new object so Svelte
+ *  detects the update (same-reference assignments are optimized away). */
+function notifyLobbyUpdate(): void {
+  if (_currentLobby && _onLobbyUpdate) {
+    _onLobbyUpdate({ ..._currentLobby, players: [..._currentLobby.players] });
+  }
+}
+
 function setupMessageHandlers(): void {
   const transport = getMultiplayerTransport();
 
@@ -359,7 +368,7 @@ function setupMessageHandlers(): void {
         id: playerId, displayName, isHost: false, isReady: false
       });
     }
-    _onLobbyUpdate?.(_currentLobby);
+    notifyLobbyUpdate();
     if (isHost()) broadcastSettings(); // Sync new player
   });
 
@@ -367,7 +376,7 @@ function setupMessageHandlers(): void {
     if (!_currentLobby) return;
     const { playerId } = msg.payload as { playerId: string };
     _currentLobby.players = _currentLobby.players.filter(p => p.id !== playerId);
-    _onLobbyUpdate?.(_currentLobby);
+    notifyLobbyUpdate();
   });
 
   transport.on('mp:lobby:ready', (msg) => {
@@ -375,14 +384,23 @@ function setupMessageHandlers(): void {
     const { playerId, ready } = msg.payload as { playerId: string; ready: boolean };
     const player = _currentLobby.players.find(p => p.id === playerId);
     if (player) player.isReady = ready;
-    _onLobbyUpdate?.(_currentLobby);
+    notifyLobbyUpdate();
   });
 
   transport.on('mp:lobby:settings', (msg) => {
     if (!_currentLobby || isHost()) return; // Host already has correct state
     const settings = msg.payload as Partial<LobbyState>;
+    // Preserve local player ready states — settings broadcasts can arrive
+    // after ready messages due to network latency, which would overwrite them.
+    if (settings.players && _currentLobby.players) {
+      const readyMap = new Map(_currentLobby.players.map(p => [p.id, p.isReady]));
+      for (const p of settings.players as LobbyPlayer[]) {
+        const localReady = readyMap.get(p.id);
+        if (localReady !== undefined) p.isReady = p.isReady || localReady;
+      }
+    }
     Object.assign(_currentLobby, settings);
-    _onLobbyUpdate?.(_currentLobby);
+    notifyLobbyUpdate();
   });
 
   transport.on('mp:lobby:start', (msg) => {
@@ -416,7 +434,7 @@ function broadcastSettings(): void {
     isRanked: _currentLobby.isRanked,
     status: _currentLobby.status,
   });
-  _onLobbyUpdate?.(_currentLobby);
+  notifyLobbyUpdate();
 }
 
 function generateLobbyId(): string {
