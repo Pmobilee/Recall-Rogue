@@ -353,7 +353,7 @@ export function onRaceResults(cb: (results: RaceResults) => void): () => void {
  *  detects the update (same-reference assignments are optimized away). */
 function notifyLobbyUpdate(): void {
   if (_currentLobby && _onLobbyUpdate) {
-    _onLobbyUpdate({ ..._currentLobby, players: [..._currentLobby.players] });
+    _onLobbyUpdate({ ..._currentLobby, players: _currentLobby.players.map(p => ({ ...p })) });
   }
 }
 
