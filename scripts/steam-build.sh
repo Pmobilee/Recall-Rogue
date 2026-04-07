@@ -20,7 +20,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 TAURI_DIR="$PROJECT_ROOT/src-tauri"
-STEAM_INSTALL="/Users/damion/Library/Application Support/Steam/steamapps/common/Recall Rogue"
+STEAM_INSTALL="${HOME}/Library/Application Support/Steam/steamapps/common/Recall Rogue"
 APP_ID="4547570"
 
 MODE="release"

@@ -316,3 +316,53 @@ Both files must stay in sync:
 - `src-tauri/tauri.conf.json` → `version` field
 
 Current: `0.1.0`
+
+## PNG Metadata Stripping
+
+503 PNG files in the repository (AI-generated sprites, card art, anatomy images) contain embedded metadata chunks (`tEXt`, `iTXt`, `zTXt`, `eXIf`) including "Made with Google AI" attribution tags. These must be stripped before shipping to Steam.
+
+### Why strip metadata
+
+- Exposes AI toolchain details to players via file inspection
+- Inflates file sizes (84 KB total, ~168 bytes per file average)
+- Some chunks constitute attribution notices that should not appear in shipped products
+
+### Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `scripts/strip-asset-metadata.mjs` | Strips metadata chunks from `public/assets/*.png` in-place (no re-encoding) |
+| `scripts/audit-asset-metadata.mjs` | CI gate — scans `dist/` and exits 1 if any PNG contains forbidden chunks |
+
+### Usage
+
+```bash
+# Dry-run first (no files modified) — shows what will be stripped
+node scripts/strip-asset-metadata.mjs --dry-run
+
+# Apply — rewrites only files that have metadata chunks
+node scripts/strip-asset-metadata.mjs
+
+# After build, verify dist/ is clean
+node scripts/audit-asset-metadata.mjs dist/
+```
+
+### Implementation
+
+Both scripts use pure binary chunk surgery with no external dependencies (no `sharp`). PNG chunk format per RFC 2083: `[4B length][4B type][N bytes data][4B CRC]`. The strip script copies all chunks except the four forbidden types and writes back only if at least one chunk was removed. Pixel data is never modified.
+
+### Pre-release checklist entry
+
+Add to Phase 3 pre-release checklist:
+- Strip metadata: `node scripts/strip-asset-metadata.mjs` → `npm run build`
+- Audit: `node scripts/audit-asset-metadata.mjs dist/` must exit 0
+
+### Affected asset directories (on 2026-04-07 baseline)
+
+| Directory | Files with metadata | Total PNGs | Bytes removed |
+|-----------|--------------------:|------------|---------------|
+| sprites | 100 | 655 | 46.2 KB |
+| cardart | 93 | 96 | 15.3 KB |
+| sprites-hires | 81 | 254 | 13.3 KB |
+| anatomy | 228 | 239 | 8.2 KB |
+| reward_room | 1 | 10 | 1.3 KB |

@@ -559,3 +559,15 @@ Rule of thumb for `verify-all-decks.mjs`: put hard structural errors inside `che
 **Also fixed in same pass:** `hostCreateSharedEnemy()` in `multiplayerGameService.ts` had inline math `1 + (playerCount - 1) * 0.5` computing its own `hpMultiplier` and passing `{ hpMultiplier }` to `createEnemy()`. Since `createEnemy()` already calls `getCoopHpMultiplier(playerCount)` internally when `playerCount` is provided, this caused the two code paths to diverge (and also bypassed the 2.3× cap). Fixed by passing `{ playerCount }` instead, fully delegating to the canonical function.
 
 **Affected code:** `src/services/multiplayerGameService.ts` (hostCreateSharedEnemy), `src/services/enemyManager.ts` (JSDoc only — code untouched).
+
+### 2026-04-07 — 503 PNGs Ship with "Made with Google AI" Metadata to Steam
+
+**What:** All AI-generated PNG assets (sprites, card art, anatomy images) contain embedded `tEXt`/`iTXt`/`eXIf` metadata chunks written by the generation toolchain. These chunks include attribution strings like "Made with Google AI" and inflate each file by ~168 bytes. `npm run build` copies them verbatim to `dist/` and into the Steam depot without stripping.
+
+**Why:** The Vite build pipeline does not process binary assets — it copies PNGs as-is. No CI gate existed to catch metadata before shipping.
+
+**Fix:** Two scripts added:
+- `scripts/strip-asset-metadata.mjs` — pure binary chunk surgery (no re-encoding), strips `tEXt`, `iTXt`, `zTXt`, `eXIf` from `public/assets/` in-place. Run once before release: `node scripts/strip-asset-metadata.mjs`
+- `scripts/audit-asset-metadata.mjs` — CI gate, scans `dist/` and exits 1 if any forbidden chunk is found: `node scripts/audit-asset-metadata.mjs dist/`
+
+**Pre-release step:** Strip → rebuild → audit must all pass before any Steam depot upload.
