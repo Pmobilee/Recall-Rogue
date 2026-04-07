@@ -434,8 +434,8 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
           funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
           includeOutsideDueReviews: run.includeOutsideDueReviews ?? false,
         });
-      } else if (run.deckMode.type === 'playlist') {
-        // Playlist mode: build merged pool from all deck items.
+      } else if (run.deckMode.type === 'custom_deck') {
+        // Custom deck mode: build merged pool from all deck items.
         // Each item is either a vocab deck (language prefix) or a knowledge deck.
         const LANG_PREFIX_TO_CODE: Record<string, string> = {
           japanese: 'ja', korean: 'ko', chinese: 'zh', mandarin: 'zh',

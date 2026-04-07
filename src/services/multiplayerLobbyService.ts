@@ -16,7 +16,7 @@
 import { getMultiplayerTransport, destroyMultiplayerTransport } from './multiplayerTransport';
 import type {
   LobbyState, LobbyPlayer, MultiplayerMode, DeckSelectionMode,
-  HouseRules, RaceProgress, RaceResults
+  HouseRules, RaceProgress, RaceResults, LobbyContentSelection
 } from '../data/multiplayerTypes';
 import { DEFAULT_HOUSE_RULES, MODE_MAX_PLAYERS } from '../data/multiplayerTypes';
 
@@ -117,6 +117,24 @@ export function selectDeck(deckId: string): void {
     const player = _currentLobby.players.find(p => p.id === _localPlayerId);
     if (player) {
       player.selectedDeckId = deckId;
+      broadcastSettings();
+    }
+  }
+}
+
+/** Set the content selection for the lobby (replaces selectDeck for rich content types) */
+export function setContentSelection(selection: LobbyContentSelection): void {
+  if (!_currentLobby) return;
+  if (_currentLobby.deckSelectionMode === 'host_picks' && isHost()) {
+    _currentLobby.contentSelection = selection;
+    // Also set legacy selectedDeckId for backwards compat
+    _currentLobby.selectedDeckId = selection.type === 'study' ? selection.deckId : selection.type === 'custom_deck' ? selection.customDeckId : undefined;
+    broadcastSettings();
+  } else if (_currentLobby.deckSelectionMode === 'each_picks') {
+    const player = _currentLobby.players.find(p => p.id === _localPlayerId);
+    if (player) {
+      player.contentSelection = selection;
+      player.selectedDeckId = selection.type === 'study' ? selection.deckId : selection.type === 'custom_deck' ? selection.customDeckId : undefined;
       broadcastSettings();
     }
   }
@@ -275,6 +293,7 @@ function broadcastSettings(): void {
     mode: _currentLobby.mode,
     deckSelectionMode: _currentLobby.deckSelectionMode,
     selectedDeckId: _currentLobby.selectedDeckId,
+    contentSelection: _currentLobby.contentSelection as unknown as Record<string, unknown> | undefined,
     houseRules: _currentLobby.houseRules as unknown as Record<string, unknown>,
     players: _currentLobby.players as unknown as Record<string, unknown>[],
     maxPlayers: _currentLobby.maxPlayers,

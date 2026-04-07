@@ -40,19 +40,19 @@ The caller (`generateStudyQuestions` in `gameFlowController.ts`) accumulates `ex
 iterations and passes it on each call. If filtering would leave zero candidates (tiny deck), the full
 pool is used as a fallback so the function never returns `null` due to exhaustion.
 
-**Playlist mode non-combat questions** (`nonCombatQuizSelector.ts: selectNonCombatPlaylistQuestion`):
-Playlist runs (multiple curated decks) use a separate selector that merges facts from all playlist items.
+**Custom deck mode non-combat questions** (`nonCombatQuizSelector.ts: selectNonCombatCustomDeckQuestion`):
+Custom deck runs (multiple curated decks) use a separate selector that merges facts from all custom deck items.
 `factSourceDeckMap` (from `RunState.factSourceDeckMap`) resolves the correct source deck per-fact for
 template and distractor selection. Called from `generateStudyQuestions` (rest sites) and
-`generateQuizPhaseQuestions` (boss quiz phase) when `deckMode.type === 'playlist'`.
+`generateQuizPhaseQuestions` (boss quiz phase) when `deckMode.type === 'custom_deck'`.
 Distractors are drawn from the source deck's own answer type pools to preserve pool coherence.
 
-**Playlist fact pool interleaving** (`src/utils/interleaveFacts.ts`):
-Facts from playlist decks are merged via round-robin interleaving — NOT sequential concatenation.
+**Custom deck fact pool interleaving** (`src/utils/interleaveFacts.ts`):
+Facts from custom deck items are merged via round-robin interleaving — NOT sequential concatenation.
 `interleaveFacts([[a1,a2,a3],[b1,b2],[c1]])` → `[a1,b1,c1,a2,b2,a3]`.
 This applies in two places:
-- `runManager.ts` (`createRunState`, playlist branch) — seeds the `InRunFactTracker` with interleaved IDs
-- `nonCombatQuizSelector.ts` (`selectNonCombatPlaylistQuestion`) — builds the `factPool` passed to `selectFactForCharge`
+- `runManager.ts` (`createRunState`, custom deck branch) — seeds the `InRunFactTracker` with interleaved IDs
+- `nonCombatQuizSelector.ts` (`selectNonCombatCustomDeckQuestion`) — builds the `factPool` passed to `selectFactForCharge`
 
 Without interleaving, the largest deck's facts appear first in every FIFO queue, monopolizing early
 encounters because the Anki selector introduces new cards in pool order.

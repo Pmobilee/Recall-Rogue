@@ -172,8 +172,8 @@ export interface RunState {
    */
   chainDistribution?: ChainDistribution;
   /**
-   * For playlist runs: maps factId → source deckId for template/distractor resolution.
-   * Populated at run start; undefined for non-playlist runs.
+   * For custom deck runs: maps factId → source deckId for template/distractor resolution.
+   * Populated at run start; undefined for non-custom-deck runs.
    */
   factSourceDeckMap?: Record<string, string>;
   /** Cumulative damage dealt across all encounters (for multiplayer scoring). */
@@ -325,10 +325,10 @@ export function createRunState(
     runState.inRunFactTracker = tracker;
   }
 
-  // Playlist mode: merge facts from all deck items into a single tracker with source map.
+  // Custom deck mode: merge facts from all deck items into a single tracker with source map.
   // Facts are interleaved round-robin (not concatenated) so each deck contributes
   // proportionally from the first encounter — prevents largest deck monopolizing quizzes.
-  if (options?.deckMode?.type === 'playlist') {
+  if (options?.deckMode?.type === 'custom_deck') {
     const tracker = new InRunFactTracker();
     const factSourceMap: Record<string, string> = {};
     const perDeckFacts: { id: string }[][] = [];

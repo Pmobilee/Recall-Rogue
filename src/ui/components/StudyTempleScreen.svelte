@@ -11,22 +11,22 @@
   import DeckSearchBar from './DeckSearchBar.svelte';
   import DeckSortDropdown from './DeckSortDropdown.svelte';
   import DeckFilterChips from './DeckFilterChips.svelte';
-  import PlaylistBar from './PlaylistBar.svelte';
-  import PlaylistPickerPopup from './PlaylistPickerPopup.svelte';
-  import PlaylistViewModal from './PlaylistViewModal.svelte';
+  import CustomDeckBar from './CustomDeckBar.svelte';
+  import CustomDeckPickerPopup from './CustomDeckPickerPopup.svelte';
+  import CustomDeckViewModal from './CustomDeckViewModal.svelte';
   import AnkiImportWizard from './AnkiImportWizard.svelte';
   import AnkiExportWizard from './AnkiExportWizard.svelte';
   import WorkshopBrowser from './WorkshopBrowser.svelte';
   import { getPersonalDecks } from '../../services/personalDeckStore';
   import { registerPersonalDecks } from '../../services/personalDeckStore';
-  import type { CustomPlaylist, CustomPlaylistItem, PlaylistDeckItem } from '../../data/studyPreset';
+  import type { CustomDeck, CustomDeckItem, CustomDeckRunItem } from '../../data/studyPreset';
 
   interface Props {
     onback: () => void;
     onStartRun: (config:
       | { mode: 'study'; deckId: string; subDeckId?: string; examTags?: string[] }
       | { mode: 'procedural'; deckId: string; subDeckId?: string }
-      | { mode: 'playlist'; items: PlaylistDeckItem[] }
+      | { mode: 'custom_deck'; items: CustomDeckRunItem[] }
     ) => void;
   }
 
@@ -38,12 +38,12 @@
   let activeFilters = $state<Array<'in-progress' | 'not-started' | 'mastered'>>([]);
   let selectedDeckId = $state<string | null>(null);
   let syntheticLanguageDeck = $state<DeckRegistryEntry | null>(null);
-  let customPlaylists = $state<CustomPlaylist[]>([]);
-  let activePlaylistId = $state<string | null>(null);
-  let showPlaylistPicker = $state(false);
-  let showPlaylistView = $state(false);
+  let customDecks = $state<CustomDeck[]>([]);
+  let activeCustomDeckId = $state<string | null>(null);
+  let showDeckPicker = $state(false);
+  let showDeckView = $state(false);
   let duplicateToast = $state('');
-  let pendingCustomItem = $state<CustomPlaylistItem | null>(null);
+  let pendingCustomItem = $state<CustomDeckItem | null>(null);
   let dealKey = $state(0);
   let showAnkiImport = $state(false);
   let showAnkiExport = $state<{ deckId: string; deckName: string } | null>(null);
@@ -246,8 +246,8 @@
     }
     return getDeckProgress(selectedDeck.id);
   });
-  const activePlaylist = $derived(activePlaylistId ? customPlaylists.find(p => p.id === activePlaylistId) ?? null : null);
-  const showPlaylistBar = $derived(customPlaylists.length > 0 && customPlaylists.some(p => p.items.length > 0));
+  const activeDeck = $derived(activeCustomDeckId ? customDecks.find(p => p.id === activeCustomDeckId) ?? null : null);
+  const showCustomDeckBar = $derived(customDecks.length > 0 && customDecks.some(p => p.items.length > 0));
 
   onMount(() => {
     registerPersonalDecks(); // Register imported Anki decks in the deck registry
@@ -258,9 +258,9 @@
     if (save?.lastDungeonSelection?.mode === 'study' && save.lastDungeonSelection.studyConfig) {
       // Could restore tab from deckId's domain — skip for simplicity
     }
-    if (save?.lastDungeonSelection?.customPlaylists) {
-      customPlaylists = save.lastDungeonSelection.customPlaylists;
-      activePlaylistId = save.lastDungeonSelection.activePlaylistId ?? customPlaylists[0]?.id ?? null;
+    if (save?.lastDungeonSelection?.customDecks) {
+      customDecks = save.lastDungeonSelection.customDecks;
+      activeCustomDeckId = save.lastDungeonSelection.activeCustomDeckId ?? customDecks[0]?.id ?? null;
     }
   });
 
@@ -336,44 +336,44 @@
       label = sub?.name ?? subDeckId;
     }
     pendingCustomItem = { type: 'study', deckId, subDeckId, label };
-    showPlaylistPicker = true;
+    showDeckPicker = true;
   }
 
-  function handleAddToPlaylist(playlistId: string) {
+  function handleAddToDeck(deckId: string) {
     if (!pendingCustomItem) return;
     const item = pendingCustomItem;
-    const targetPlaylist = customPlaylists.find(p => p.id === playlistId);
-    if (targetPlaylist) {
-      const alreadyIn = targetPlaylist.items.some(it => it.type === 'study' && it.deckId === (item as Extract<CustomPlaylistItem, { type: 'study' }>).deckId && it.subDeckId === (item as Extract<CustomPlaylistItem, { type: 'study' }>).subDeckId);
+    const targetDeck = customDecks.find(p => p.id === deckId);
+    if (targetDeck) {
+      const alreadyIn = targetDeck.items.some(it => it.type === 'study' && it.deckId === (item as Extract<CustomDeckItem, { type: 'study' }>).deckId && it.subDeckId === (item as Extract<CustomDeckItem, { type: 'study' }>).subDeckId);
       if (alreadyIn) {
-        duplicateToast = `"${pendingCustomItem.label}" is already in this playlist`;
+        duplicateToast = `"${pendingCustomItem.label}" is already in this custom deck`;
         setTimeout(() => { duplicateToast = ''; }, 2000);
         return;
       }
     }
-    customPlaylists = customPlaylists.map(p => {
-      if (p.id !== playlistId) return p;
+    customDecks = customDecks.map(p => {
+      if (p.id !== deckId) return p;
       return { ...p, items: [...p.items, item] };
     });
-    activePlaylistId = playlistId;
+    activeCustomDeckId = deckId;
     pendingCustomItem = null;
-    showPlaylistPicker = false;
+    showDeckPicker = false;
     persistStudySelection();
   }
 
   function handleCreateAndAdd(name: string) {
     if (!pendingCustomItem) return;
-    const newPlaylist: CustomPlaylist = { id: makeId(), name: name.trim(), createdAt: Date.now(), items: [pendingCustomItem] };
-    customPlaylists = [...customPlaylists, newPlaylist];
-    activePlaylistId = newPlaylist.id;
+    const newDeck: CustomDeck = { id: makeId(), name: name.trim(), createdAt: Date.now(), items: [pendingCustomItem] };
+    customDecks = [...customDecks, newDeck];
+    activeCustomDeckId = newDeck.id;
     pendingCustomItem = null;
-    showPlaylistPicker = false;
+    showDeckPicker = false;
     persistStudySelection();
   }
 
   function handleStartCustomRun() {
-    const items = activePlaylist?.items ?? [];
-    const studyItems = items.filter((it): it is Extract<CustomPlaylistItem, { type: 'study' }> => it.type === 'study');
+    const items = activeDeck?.items ?? [];
+    const studyItems = items.filter((it): it is Extract<CustomDeckItem, { type: 'study' }> => it.type === 'study');
     if (studyItems.length === 0) return;
 
     if (studyItems.length === 1) {
@@ -382,39 +382,39 @@
     } else {
       // Multi-deck playlist
       onStartRun({
-        mode: 'playlist',
+        mode: 'custom_deck',
         items: studyItems.map(si => ({ deckId: si.deckId, subDeckId: si.subDeckId })),
       });
     }
   }
 
-  function handleRemoveFromPlaylist(itemIndex: number) {
-    if (!activePlaylistId) return;
-    customPlaylists = customPlaylists.map(p => {
-      if (p.id !== activePlaylistId) return p;
+  function handleRemoveDeckItem(itemIndex: number) {
+    if (!activeCustomDeckId) return;
+    customDecks = customDecks.map(p => {
+      if (p.id !== activeCustomDeckId) return p;
       const newItems = [...p.items];
       newItems.splice(itemIndex, 1);
       return { ...p, items: newItems };
     });
     // If playlist is now empty, remove it
-    const playlist = customPlaylists.find(p => p.id === activePlaylistId);
-    if (playlist && playlist.items.length === 0) {
-      customPlaylists = customPlaylists.filter(p => p.id !== activePlaylistId);
-      activePlaylistId = customPlaylists[0]?.id ?? null;
+    const deck = customDecks.find(p => p.id === activeCustomDeckId);
+    if (deck && deck.items.length === 0) {
+      customDecks = customDecks.filter(p => p.id !== activeCustomDeckId);
+      activeCustomDeckId = customDecks[0]?.id ?? null;
     }
     persistStudySelection();
   }
 
-  function handleDeletePlaylist() {
-    customPlaylists = customPlaylists.filter(p => p.id !== activePlaylistId);
-    activePlaylistId = customPlaylists[0]?.id ?? null;
-    showPlaylistView = false;
+  function handleDeleteDeck() {
+    customDecks = customDecks.filter(p => p.id !== activeCustomDeckId);
+    activeCustomDeckId = customDecks[0]?.id ?? null;
+    showDeckView = false;
     persistStudySelection();
   }
 
-  function handleRenamePlaylist(newName: string) {
-    customPlaylists = customPlaylists.map(p =>
-      p.id === activePlaylistId ? { ...p, name: newName.trim() } : p
+  function handleRenameDeck(newName: string) {
+    customDecks = customDecks.map(p =>
+      p.id === activeCustomDeckId ? { ...p, name: newName.trim() } : p
     );
     persistStudySelection();
   }
@@ -425,8 +425,8 @@
       lastDungeonSelection: {
         ...s.lastDungeonSelection,
         mode: 'study' as const,
-        customPlaylists: customPlaylists.length > 0 ? customPlaylists : undefined,
-        activePlaylistId: activePlaylistId ?? undefined,
+        customDecks: customDecks.length > 0 ? customDecks : undefined,
+        activeCustomDeckId: activeCustomDeckId ?? undefined,
       },
     } : s);
     persistPlayer();
@@ -547,13 +547,13 @@
     </div>
   </div>
 
-  {#if showPlaylistBar}
-    <PlaylistBar
-      playlists={customPlaylists}
-      {activePlaylistId}
-      onSwitchPlaylist={(id) => { activePlaylistId = id; }}
+  {#if showCustomDeckBar}
+    <CustomDeckBar
+      customDecks={customDecks}
+      {activeCustomDeckId}
+      onSwitchDeck={(id) => { activeCustomDeckId = id; }}
       onStartCustomRun={handleStartCustomRun}
-      onViewPlaylist={() => { showPlaylistView = true; }}
+      onViewDeck={() => { showDeckView = true; }}
     />
   {/if}
 
@@ -562,13 +562,13 @@
   {/if}
 </div>
 
-{#if showPlaylistView && activePlaylist}
-  <PlaylistViewModal
-    playlist={activePlaylist}
-    onClose={() => { showPlaylistView = false; }}
-    onRemoveItem={handleRemoveFromPlaylist}
-    onDeletePlaylist={handleDeletePlaylist}
-    onRenamePlaylist={handleRenamePlaylist}
+{#if showDeckView && activeDeck}
+  <CustomDeckViewModal
+    customDeck={activeDeck}
+    onClose={() => { showDeckView = false; }}
+    onRemoveItem={handleRemoveDeckItem}
+    onDeleteDeck={handleDeleteDeck}
+    onRenameDeck={handleRenameDeck}
   />
 {/if}
 
@@ -583,12 +583,12 @@
   />
 {/if}
 
-{#if showPlaylistPicker}
-  <PlaylistPickerPopup
-    playlists={customPlaylists}
-    onAddToPlaylist={handleAddToPlaylist}
+{#if showDeckPicker}
+  <CustomDeckPickerPopup
+    customDecks={customDecks}
+    onAddToDeck={handleAddToDeck}
     onCreateAndAdd={handleCreateAndAdd}
-    onClose={() => { showPlaylistPicker = false; pendingCustomItem = null; }}
+    onClose={() => { showDeckPicker = false; pendingCustomItem = null; }}
   />
 {/if}
 

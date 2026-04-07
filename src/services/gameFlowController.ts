@@ -117,7 +117,7 @@ import type { UpgradePreview } from './cardUpgradeService';
 import { getUpgradeCandidates, getUpgradePreview, upgradeCard, canMasteryUpgrade, masteryUpgrade } from './cardUpgradeService'
 import type { QuizQuestion } from './bossQuizPhase';
 import { factsDB } from './factsDB';
-import { selectNonCombatStudyQuestion, selectNonCombatPlaylistQuestion } from './nonCombatQuizSelector';
+import { selectNonCombatStudyQuestion, selectNonCombatCustomDeckQuestion } from './nonCombatQuizSelector';
 import { getConfusionMatrix } from './confusionMatrixStore';
 import type { ShopInventory } from './shopService';
 import { generateShopRelics, priceShopCards, removalPrice, transformPrice, applySaleDiscount, getSalePrice } from './shopService';
@@ -2567,15 +2567,15 @@ export function generateStudyQuestions(): QuizQuestion[] {
     // Fall through to trivia path if no study questions could be generated
   }
 
-  // Playlist mode branch: use curated deck selector across all playlist items
-  if (run?.deckMode?.type === 'playlist') {
+  // Custom deck mode branch: use curated deck selector across all custom deck items
+  if (run?.deckMode?.type === 'custom_deck') {
     const confusionMatrix = getConfusionMatrix();
     const inRunTracker = run.inRunFactTracker ?? null;
     const factSourceDeckMap = run.factSourceDeckMap ?? {};
     const questions: QuizQuestion[] = [];
     const excludeFactIds = new Set<string>();
     for (let i = 0; i < 3; i++) {
-      const q = selectNonCombatPlaylistQuestion(
+      const q = selectNonCombatCustomDeckQuestion(
         'rest',
         run.deckMode.items,
         factSourceDeckMap,
@@ -2600,7 +2600,7 @@ export function generateStudyQuestions(): QuizQuestion[] {
       }
     }
     if (questions.length > 0) return questions;
-    // Fall through to trivia path if no playlist questions could be generated
+    // Fall through to trivia path if no custom deck questions could be generated
   }
 
   const allFacts = factsDB.getTriviaFacts();

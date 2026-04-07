@@ -164,18 +164,18 @@ hub → (handleStartRun) → deckSelectionHub → triviaDungeon or studyTemple
 
 If a saved run exists, `handleStartRun` shows a Run Guard popup (continue vs. abandon).
 
-### Playlist Run Flow
+### Custom Deck Run Flow
 
-A playlist run combines multiple curated decks into a single run. The `studyTemple` screen supports
-building a `CustomPlaylist` of `CustomPlaylistItem`s. When "Start Custom Run" is clicked:
+A custom deck run combines multiple curated decks into a single run. The `studyTemple` screen supports
+building a `CustomDeck` of `CustomDeckItem`s. When "Start Custom Run" is clicked:
 
 - **Single study deck**: emits `onStartRun({ mode: 'study', deckId, subDeckId? })` — identical to a normal study run
-- **Multiple study decks**: emits `onStartRun({ mode: 'playlist', items: PlaylistDeckItem[] })` — merged fact pool
+- **Multiple study decks**: emits `onStartRun({ mode: 'custom_deck', items: CustomDeckRunItem[] })` — merged fact pool
 
-`CardApp.handleDungeonRunStart` accepts `{ mode: 'playlist'; items: PlaylistDeckItem[] }` and persists it to `playerSave.activeDeckMode`. `runManager` then merges all facts from playlist items into a single `InRunFactTracker` and populates `RunState.factSourceDeckMap` (factId → source deckId) for per-fact deck resolution.
+`CardApp.handleDungeonRunStart` accepts `{ mode: 'custom_deck'; items: CustomDeckRunItem[] }` and persists it to `playerSave.activeDeckMode`. `runManager` then merges all facts from playlist items into a single `InRunFactTracker` and populates `RunState.factSourceDeckMap` (factId → source deckId) for per-fact deck resolution.
 
-During combat, `CardCombatOverlay.getStudyModeQuiz` handles both `type: 'study'` and `type: 'playlist'` deckModes:
-- **Playlist (2026-04-07)**: uses `interleaveFacts()` from `src/utils/interleaveFacts.ts` to round-robin facts across all deck items (instead of flat concat), ensuring proportional representation from all sources from the very first encounter. Uses `factSourceDeckMap` for per-fact deck resolution.
+During combat, `CardCombatOverlay.getStudyModeQuiz` handles both `type: 'study'` and `type: 'custom_deck'` deckModes:
+- **Custom Deck (2026-04-07)**: uses `interleaveFacts()` from `src/utils/interleaveFacts.ts` to round-robin facts across all deck items (instead of flat concat), ensuring proportional representation from all sources from the very first encounter. Uses `factSourceDeckMap` for per-fact deck resolution.
 - **Study**: unchanged behavior — single deck, no source map needed.
 
 The guard in `getQuizForCard` activates the study-mode quiz path for both modes:
@@ -183,11 +183,11 @@ The guard in `getQuizForCard` activates the study-mode quiz path for both modes:
 if ((runState?.deckMode?.type === 'study' || runState?.deckMode?.type === 'playlist') && runState.inRunFactTracker)
 ```
 
-Non-combat quiz (shop, rest, boss) uses `selectNonCombatPlaylistQuestion` from `nonCombatQuizSelector.ts`
+Non-combat quiz (shop, rest, boss) uses `selectNonCombatCustomDeckQuestion` from `nonCombatQuizSelector.ts`
 (separate function from the single-deck `selectNonCombatStudyQuestion`). Callers in `gameFlowController.ts`
-and `bossQuizPhase.ts` need updating to invoke the playlist variant when `deckMode.type === 'playlist'`.
+and `bossQuizPhase.ts` need updating to invoke the custom deck variant when `deckMode.type === 'playlist'`.
 
-### Playlist View / Edit Flow
+### Custom Deck View / Edit Flow
 
 **Added 2026-04-07.** When a playlist exists on the `studyTemple` screen, the `PlaylistBar` shows a **View** button. Clicking it opens `PlaylistViewModal` as an overlay (z-index 350, backdrop click to close).
 
@@ -197,7 +197,7 @@ and `bossQuizPhase.ts` need updating to invoke the playlist variant when `deckMo
 - **Duplicate feedback**: when adding a deck already present in the active playlist, a fixed-position toast appears for 2s (bottom: 80px scaled, z-index 400).
 - **Meta display**: the `PlaylistBar` shows deck names (not item count) — up to 3 names joined with commas; 3+ collapses to first two + "+N more".
 
-All changes persist immediately to `playerSave.lastDungeonSelection.customPlaylists` via `persistStudySelection()`.
+All changes persist immediately to `playerSave.lastDungeonSelection.customDecks` via `persistStudySelection()`.
 
 ### Combat Loop
 ```

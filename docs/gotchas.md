@@ -1,3 +1,13 @@
+### 2026-04-07 — "Playlist" → "Custom Deck" Rename: String Literal vs Type Alias
+
+**What:** When renaming `DeckMode.type` from `'playlist'` to `'custom_deck'`, deprecated *type name* aliases (e.g. `export type CustomPlaylist = CustomDeck`) are NOT sufficient to keep Svelte components compiling. TypeScript comparison expressions like `deckMode.type === 'playlist'` generate type errors ("types have no overlap") even if the underlying type alias is preserved. The string literal in the union must be updated in every consumer.
+
+**Fix:** For every file that compares `deckMode.type === 'playlist'`, the string must be updated to `'custom_deck'`. This includes `.svelte` files even when owned by a different agent. Only ui-agent can own the files long-term, but the mechanical rename still needs to touch them.
+
+**Save migration:** A shim was added to `saveService.ts` that migrates `lastDungeonSelection.customPlaylists` → `customDecks` and `activePlaylistId` → `activeCustomDeckId` on load for existing saves.
+
+**Deprecated aliases kept in `studyPreset.ts`:** `CustomPlaylist`, `CustomPlaylistItem`, `PlaylistDeckItem` — these are type aliases for backward compat while any remaining references are cleaned up.
+
 ### 2026-04-06 — Vite 504 Outdated Optimize Dep for Phaser
 
 **What:** Intermittent `504 Outdated Optimize Dep` error for `node_modules/.vite/deps/phaser.js` on dev server start. Vite discovers Phaser lazily (via dynamic import in `CardGameManager.ts`) and can serve a stale pre-bundle handle before the background pre-bundling job completes, causing the entire Phaser layer (sprites, backgrounds, VFX) to fail silently.

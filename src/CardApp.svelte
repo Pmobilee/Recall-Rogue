@@ -121,7 +121,7 @@
   import { registerProceduralDecks } from './services/math/proceduralDeckRegistry'
   import { initConfusionMatrix } from './services/confusionMatrixStore'
   import { getPresetById } from './services/studyPresetService'
-  import type { PlaylistDeckItem } from './data/studyPreset'
+  import type { CustomDeckRunItem } from './data/studyPreset'
   import { collectMatchingFactIds } from './services/presetSelectionService'
   import { resumeCombatWithFallback } from './services/combatResumeService'
   import { BASE_WIDTH } from './data/layout'
@@ -275,7 +275,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     transitionScreen('deckSelectionHub')
   }
 
-  function handleDungeonRunStart(config: { mode: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> } | { mode: 'study'; deckId: string; subDeckId?: string; examTags?: string[] } | { mode: 'procedural'; deckId: string; subDeckId?: string } | { mode: 'playlist'; items: PlaylistDeckItem[] }): void {
+  function handleDungeonRunStart(config: { mode: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> } | { mode: 'study'; deckId: string; subDeckId?: string; examTags?: string[] } | { mode: 'procedural'; deckId: string; subDeckId?: string } | { mode: 'custom_deck'; items: CustomDeckRunItem[] }): void {
     // Procedural math decks bypass the combat run — navigate directly to practice screen
     if (config.mode === 'procedural') {
       proceduralDeckId = config.deckId
@@ -285,8 +285,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     }
 
     // Set the deck mode in playerSave so the run uses it
-    if (config.mode === 'playlist') {
-      playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'playlist' as const, items: config.items } } : s)
+    if (config.mode === 'custom_deck') {
+      playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'custom_deck' as const, items: config.items } } : s)
     } else if (config.mode === 'trivia') {
       playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'trivia' as const, domains: config.domains, subdomains: config.subdomains } } : s)
     } else {

@@ -461,17 +461,19 @@ export function load(): PlayerSave | null {
       parsedAny['totalXP'] = 0
     }
     if (typeof parsedAny['characterLevel'] !== 'number') {
-      parsedAny['characterLevel'] = 25
+      parsedAny['characterLevel'] = 1
     }
     // DEV: force max level + all relics unlocked for testing
-    parsedAny['characterLevel'] = 25;
-    parsedAny['totalXP'] = 999999;
-    // Unlock all relics in collection
-    try {
-      const { FULL_RELIC_CATALOGUE } = require('../data/relics/index');
-      parsedAny['unlockedRelicIds'] = FULL_RELIC_CATALOGUE.map((r: any) => r.id);
-    } catch { /* relics not loaded yet */ }
-    console.log('[DEV] Forced characterLevel 25 + all relics unlocked');
+    if (import.meta.env.DEV) {
+      parsedAny['characterLevel'] = 25;
+      parsedAny['totalXP'] = 999999;
+      // Unlock all relics in collection
+      try {
+        const { FULL_RELIC_CATALOGUE } = require('../data/relics/index');
+        parsedAny['unlockedRelicIds'] = FULL_RELIC_CATALOGUE.map((r: any) => r.id);
+      } catch { /* relics not loaded yet */ }
+      console.log('[DEV] Forced characterLevel 25 + all relics unlocked');
+    }
     if (!('lastDailyBonusDate' in parsedAny) || (parsedAny['lastDailyBonusDate'] !== null && typeof parsedAny['lastDailyBonusDate'] !== 'string')) {
       parsedAny['lastDailyBonusDate'] = null
     }
@@ -479,7 +481,21 @@ export function load(): PlayerSave | null {
     if (!Array.isArray(parsedAny['skillStates'])) {
       parsedAny['skillStates'] = []
     }
-    return parsed as PlayerSave
+    // Migration: rename customPlaylists → customDecks in lastDungeonSelection (2026-04-07)
+    {
+      const lds = parsedAny['lastDungeonSelection'] as Record<string, unknown> | undefined
+      if (lds) {
+        if (lds['customPlaylists'] !== undefined && lds['customDecks'] === undefined) {
+          lds['customDecks'] = lds['customPlaylists']
+          delete lds['customPlaylists']
+        }
+        if (lds['activePlaylistId'] !== undefined && lds['activeCustomDeckId'] === undefined) {
+          lds['activeCustomDeckId'] = lds['activePlaylistId']
+          delete lds['activePlaylistId']
+        }
+      }
+    }
+        return parsed as PlayerSave
   } catch {
     return null
   }
@@ -579,7 +595,7 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     excludedRelicIds: [],
     // Character progression
     totalXP: 0,
-    characterLevel: 25, // DEV: max level — all cards/relics unlocked
+    characterLevel: 1, // New players start at level 1
     lastDailyBonusDate: null,
     // Procedural math skill states
     skillStates: [],

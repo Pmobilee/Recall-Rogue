@@ -1,5 +1,5 @@
 import type { DeckFact } from '../data/curatedDeckTypes';
-import type { PlaylistDeckItem } from '../data/studyPreset';
+import type { CustomDeckRunItem } from '../data/studyPreset';
 import { getCuratedDeck, getCuratedDeckFacts } from '../data/curatedDeckStore';
 import { selectFactForCharge } from './curatedFactSelector';
 import { selectQuestionTemplate } from './questionTemplateSelector';
@@ -259,14 +259,14 @@ export function selectNonCombatStudyQuestion(
 }
 
 /**
- * Select a quiz question for non-combat contexts (shop, rest, boss, mystery) in playlist mode.
+ * Select a quiz question for non-combat contexts (shop, rest, boss, mystery) in custom deck mode.
  *
- * Playlist mode runs use multiple curated decks. This function merges facts from all playlist
- * items and uses the factSourceDeckMap to resolve the correct deck per-fact for template and
+ * Custom deck mode runs use multiple curated decks. This function merges facts from all custom
+ * deck items and uses the factSourceDeckMap to resolve the correct deck per-fact for template and
  * distractor selection.
  *
  * @param context - Which non-combat context is requesting the quiz
- * @param playlistItems - The playlist deck items from DeckMode.playlist.items
+ * @param customDeckItems - The custom deck items from DeckMode.custom_deck.items
  * @param factSourceDeckMap - Maps factId -> source deckId (from RunState.factSourceDeckMap)
  * @param confusionMatrix - Player's cross-run confusion matrix
  * @param inRunTracker - In-run fact tracker; if null, a temporary empty one is created
@@ -276,9 +276,9 @@ export function selectNonCombatStudyQuestion(
  * @param excludeFactIds - Fact IDs already selected in this batch; excluded to prevent duplicates
  * @returns A NonCombatQuizQuestion or null if no facts available
  */
-export function selectNonCombatPlaylistQuestion(
+export function selectNonCombatCustomDeckQuestion(
   context: 'shop' | 'rest' | 'boss' | 'mystery',
-  playlistItems: PlaylistDeckItem[],
+  customDeckItems: CustomDeckRunItem[],
   factSourceDeckMap: Record<string, string>,
   confusionMatrix: ConfusionMatrix,
   inRunTracker: InRunFactTracker | null,
@@ -287,10 +287,10 @@ export function selectNonCombatPlaylistQuestion(
   meditatedThemeId?: number,
   excludeFactIds?: ReadonlySet<string>,
 ): NonCombatQuizQuestion | null {
-  // Merge facts from all playlist items — interleaved round-robin so all decks
+  // Merge facts from all custom deck items — interleaved round-robin so all decks
   // contribute proportionally from the start (flatMap would front-load the largest deck).
   let factPool: DeckFact[] = interleaveFacts(
-    playlistItems.map(item => getCuratedDeckFacts(item.deckId, item.subDeckId, item.examTags)),
+    customDeckItems.map(item => getCuratedDeckFacts(item.deckId, item.subDeckId, item.examTags)),
   );
   if (factPool.length === 0) return null;
 
@@ -440,3 +440,9 @@ export function selectNonCombatPlaylistQuestion(
     answerImagePaths,
   };
 }
+
+// ---------------------------------------------------------------------------
+// Deprecated alias — kept for backward compatibility while callers are updated.
+// @deprecated Use selectNonCombatCustomDeckQuestion
+// ---------------------------------------------------------------------------
+export const selectNonCombatPlaylistQuestion = selectNonCombatCustomDeckQuestion;

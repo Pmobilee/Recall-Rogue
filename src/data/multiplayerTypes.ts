@@ -35,13 +35,21 @@ export interface HouseRules {
   fairness: FairnessOptions;
 }
 
+/** Content selection for a multiplayer lobby — replaces bare deckId */
+export type LobbyContentSelection =
+  | { type: 'study'; deckId: string; subDeckId?: string; deckName: string }
+  | { type: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> }
+  | { type: 'custom_deck'; customDeckId: string; deckName: string }
+
 /** A player in a multiplayer lobby */
 export interface LobbyPlayer {
   id: string;                   // Platform-specific ID (Steam ID or user UUID)
   displayName: string;
   isHost: boolean;
   isReady: boolean;
+  /** @deprecated Use contentSelection */
   selectedDeckId?: string;      // For 'each_picks' mode
+  contentSelection?: LobbyContentSelection;
   elo?: number;                 // For ranked modes
 }
 
@@ -51,7 +59,9 @@ export interface LobbyState {
   hostId: string;
   mode: MultiplayerMode;
   deckSelectionMode: DeckSelectionMode;
+  /** @deprecated Use contentSelection */
   selectedDeckId?: string;      // For 'host_picks' mode
+  contentSelection?: LobbyContentSelection;
   houseRules: HouseRules;
   players: LobbyPlayer[];
   maxPlayers: number;

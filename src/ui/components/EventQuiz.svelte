@@ -63,8 +63,8 @@
           })
           continue
         }
-      } else if (run?.deckMode?.type === 'playlist') {
-        // Playlist mode: merge facts from all decks in the playlist.
+      } else if (run?.deckMode?.type === 'custom_deck') {
+        // Custom deck mode: merge facts from all decks in the custom deck.
         // Uses factSourceDeckMap to resolve the correct deck per fact for
         // template and distractor selection.
         const q = selectNonCombatPlaylistQuestion(

@@ -1174,7 +1174,7 @@
    */
   function getStudyModeQuiz(card: Card, runState: NonNullable<typeof $activeRunState>, useReverse = false): QuizData {
     const deckMode = runState.deckMode
-    if (!deckMode || (deckMode.type !== 'study' && deckMode.type !== 'playlist')) {
+    if (!deckMode || (deckMode.type !== 'study' && deckMode.type !== 'custom_deck')) {
       return { question: 'Error: not in study mode', answers: ['OK'], correctAnswer: 'OK', variantIndex: 0 }
     }
 
@@ -1184,7 +1184,7 @@
     let factPool: ReturnType<typeof getCuratedDeckFacts>
     let resolveDeckForFact: (factId: string) => ReturnType<typeof getCuratedDeck>
 
-    if (deckMode.type === 'playlist') {
+    if (deckMode.type === 'custom_deck') {
       // Multi-deck: merge facts from all items; use factSourceDeckMap for per-fact deck resolution
       factPool = interleaveFacts(
         deckMode.items.map(item => getCuratedDeckFacts(item.deckId, item.subDeckId, item.examTags))
@@ -1415,7 +1415,7 @@
   function getQuizForCard(card: Card, optionCount: number, useReverse = false): QuizData {
     // Study mode: dynamic fact assignment from curated deck
     const runState = $activeRunState
-    if ((runState?.deckMode?.type === 'study' || runState?.deckMode?.type === 'playlist') && runState.inRunFactTracker) {
+    if ((runState?.deckMode?.type === 'study' || runState?.deckMode?.type === 'custom_deck') && runState.inRunFactTracker) {
       return getStudyModeQuiz(card, runState, useReverse)
     }
 

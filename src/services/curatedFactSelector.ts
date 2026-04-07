@@ -68,7 +68,7 @@ export function selectFactForCharge(
     );
     // Fisher-Yates shuffle for true randomization, then stable sort by difficulty.
     // Avoids the rand()-0.5 tiebreaker bias that favors earlier (larger-deck) elements
-    // in playlist runs where the fact pool is built by concatenation.
+    // in custom deck runs where the fact pool is built by concatenation.
     for (let i = forcedNew.length - 1; i > 0; i--) {
       const j = Math.floor(rand() * (i + 1));
       [forcedNew[i], forcedNew[j]] = [forcedNew[j], forcedNew[i]];
@@ -119,7 +119,7 @@ export function selectFactForCharge(
   // Easier facts are introduced first, matching the DECKBUILDER spec:
   // "At mastery 0, the system prefers to select easier facts."
   // Fisher-Yates before sort avoids the rand()-0.5 tiebreaker bias that
-  // favors earlier (larger-deck) elements in interleaved playlist runs.
+  // favors earlier (larger-deck) elements in interleaved custom deck runs.
   for (let i = newCards.length - 1; i > 0; i--) {
     const j = Math.floor(rand() * (i + 1));
     [newCards[i], newCards[j]] = [newCards[j], newCards[i]];

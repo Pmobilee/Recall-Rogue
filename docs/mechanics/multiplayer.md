@@ -2,7 +2,7 @@
 
 > **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopEffects.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-07 — MODE_TAGLINES added, multiplayerMenu screen registered
+> **Last verified:** 2026-04-07 — LobbyContentSelection type added, setContentSelection() added to lobby service
 
 ## Modes
 
@@ -25,6 +25,37 @@ All mode metadata lives in `src/data/multiplayerTypes.ts`. Three exports cover U
 | `MODE_TAGLINES` | Ultra-short tagline for mode cards | `'Race to the highest score'` |
 
 `MODE_TAGLINES` was added alongside the `multiplayerMenu` screen registration (2026-04-07). UI components should prefer `MODE_TAGLINES` for compact contexts (mode cards, tooltip headers) and `MODE_DESCRIPTIONS` for full description panels.
+
+## Content Selection
+
+`LobbyContentSelection` (in `src/data/multiplayerTypes.ts`) is a discriminated union that replaces bare `deckId` strings for richer content targeting:
+
+```typescript
+export type LobbyContentSelection =
+  | { type: 'study'; deckId: string; subDeckId?: string; deckName: string }
+  | { type: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> }
+  | { type: 'custom_deck'; customDeckId: string; deckName: string }
+```
+
+| Variant | Use case |
+|---------|----------|
+| `study` | Curated Study Temple deck, optionally narrowed to a sub-deck |
+| `trivia` | Trivia Dungeon — one or more knowledge domains, optional subdomain filters |
+| `custom_deck` | Player-owned personal/Anki-imported deck |
+
+Both `LobbyState` and `LobbyPlayer` carry an optional `contentSelection?: LobbyContentSelection` field. The legacy `selectedDeckId?: string` fields are retained on both interfaces but marked `@deprecated` — use `contentSelection` for new code.
+
+### Setting content in the lobby service
+
+`setContentSelection(selection: LobbyContentSelection)` in `src/services/multiplayerLobbyService.ts` mirrors `selectDeck()` but accepts the full union type. It also backfills `selectedDeckId` for backwards-compatibility:
+
+- `type: 'study'` → `selectedDeckId = selection.deckId`
+- `type: 'custom_deck'` → `selectedDeckId = selection.customDeckId`
+- `type: 'trivia'` → `selectedDeckId = undefined` (no single deck ID applies)
+
+Respects `deckSelectionMode`: host-only writes to `LobbyState.contentSelection` when `host_picks`; per-player writes to the local `LobbyPlayer.contentSelection` when `each_picks`.
+
+`broadcastSettings()` now includes `contentSelection` in the settings payload so non-host clients receive it via `mp:lobby:settings`.
 
 ## Race Mode Scoring
 
@@ -235,9 +266,9 @@ hub → multiplayerMenu → (mode selected) → multiplayerLobby → (game start
 
 | File | Role |
 |------|------|
-| `src/data/multiplayerTypes.ts` | All shared types, constants, `MultiplayerMode` union, lobby/fairness/race types, `MODE_DESCRIPTIONS`, `MODE_TAGLINES` |
+| `src/data/multiplayerTypes.ts` | All shared types, constants, `MultiplayerMode` union, lobby/fairness/race types, `LobbyContentSelection`, `MODE_DESCRIPTIONS`, `MODE_TAGLINES` |
 | `src/services/multiplayerScoring.ts` | `computeRaceScore()` — pure race score formula (AR-86 v1) |
-| `src/services/multiplayerLobbyService.ts` | Lobby lifecycle: create, join, configure, start |
+| `src/services/multiplayerLobbyService.ts` | Lobby lifecycle: create, join, configure, start; `setContentSelection()` for rich content targeting |
 | `src/services/multiplayerTransport.ts` | Transport abstraction (WebSocket + Steam P2P + Local) |
 | `src/services/multiplayerGameService.ts` | Race / Duel / Same Cards game sync + `DuelTurnAction` / `DuelTurnResolution` |
 | `src/services/coopEffects.ts` | 6 co-op exclusive effects, damage multiplier computation |

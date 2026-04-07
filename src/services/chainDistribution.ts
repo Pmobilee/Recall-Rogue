@@ -7,7 +7,7 @@
  *
  * Entry points:
  *   extractTopicGroups()          — single deck → TopicGroup[]
- *   extractTopicGroupsMultiDeck() — playlist of decks → TopicGroup[]
+ *   extractTopicGroupsMultiDeck() — custom deck of decks → TopicGroup[]
  *   distributeTopicGroups()       — TopicGroup[] → ChainDistribution
  *   precomputeChainDistribution() — full pipeline for a study-mode DeckMode
  */
@@ -294,7 +294,7 @@ export function extractTopicGroups(
 }
 
 /**
- * Extract TopicGroups from multiple decks (mixed playlist).
+ * Extract TopicGroups from multiple decks (mixed custom deck).
  * Calls extractTopicGroups per deck, passing ONLY that deck's own fact IDs
  * as the run pool. This prevents the ungrouped-facts safety net from absorbing
  * fact IDs from other decks, which would inflate group sizes incorrectly.
@@ -467,11 +467,11 @@ export function precomputeChainDistribution(
   reviewStates: ReviewState[],
   seed: number,
 ): ChainDistribution | undefined {
-  // Only curated study runs and playlist runs get topic-aware chain distribution.
-  if (deckMode.type !== 'study' && deckMode.type !== 'playlist') return undefined;
+  // Only curated study runs and custom deck runs get topic-aware chain distribution.
+  if (deckMode.type !== 'study' && deckMode.type !== 'custom_deck') return undefined;
 
-  // Playlist mode: merge topic groups from all deck items.
-  if (deckMode.type === 'playlist') {
+  // Custom deck mode: merge topic groups from all deck items.
+  if (deckMode.type === 'custom_deck') {
     const decks = deckMode.items
       .map(item => getCuratedDeck(item.deckId))
       .filter((d): d is NonNullable<typeof d> => d != null);

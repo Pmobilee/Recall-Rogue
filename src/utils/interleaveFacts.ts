@@ -4,11 +4,11 @@
  * Given [[a1,a2,a3], [b1,b2], [c1]], produces [a1,b1,c1,a2,b2,a3].
  *
  * This ensures proportional representation from ALL sources starting from the
- * very first element. Without interleaving, a playlist run's fact pool is built
+ * very first element. Without interleaving, a custom deck run's fact pool is built
  * via sequential concatenation — the largest deck appears first and monopolizes
  * early quiz encounters because the Anki selector works FIFO for new cards.
  *
- * @param arrays - One array per source (e.g. one per playlist deck item).
+ * @param arrays - One array per source (e.g. one per custom deck item).
  *   Empty arrays are accepted and contribute nothing.
  * @returns A single flat array with elements round-robined across sources.
  */

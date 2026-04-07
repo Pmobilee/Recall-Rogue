@@ -18,8 +18,8 @@ export interface StudyPreset {
   cachedFactCount: number;
 }
 
-/** A single deck item in a playlist run. */
-export interface PlaylistDeckItem {
+/** A single deck item in a custom deck run. */
+export interface CustomDeckRunItem {
   deckId: string;
   subDeckId?: string;
   examTags?: string[];
@@ -33,23 +33,23 @@ export type DeckMode =
   | { type: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> }
   | { type: 'study'; deckId: string; subDeckId?: string; examTags?: string[] }
   | { type: 'procedural'; deckId: string; subDeckId?: string }
-  | { type: 'playlist'; items: PlaylistDeckItem[] };
+  | { type: 'custom_deck'; items: CustomDeckRunItem[] };
 
-/** A single item in a custom playlist — either a trivia domain or a curated study deck. */
-export type CustomPlaylistItem =
+/** A single item in a custom deck — either a trivia domain or a curated study deck. */
+export type CustomDeckItem =
   | { type: 'trivia'; domain: string; subdomain?: string; label: string }
   | { type: 'study'; deckId: string; subDeckId?: string; label: string };
 
-/** A named custom playlist combining items from trivia domains and/or curated decks. */
-export interface CustomPlaylist {
+/** A named custom deck combining items from trivia domains and/or curated decks. */
+export interface CustomDeck {
   /** Unique ID (timestamp-based, e.g. Date.now().toString(36)). */
   id: string;
   /** User-chosen name, e.g. "Japanese + Space". */
   name: string;
-  /** When this playlist was created (Unix ms). */
+  /** When this custom deck was created (Unix ms). */
   createdAt: number;
-  /** Items in this playlist. */
-  items: CustomPlaylistItem[];
+  /** Items in this custom deck. */
+  items: CustomDeckItem[];
 }
 
 /** Persisted last selection on the Dungeon Selection screen. */
@@ -66,8 +66,20 @@ export interface LastDungeonSelection {
     deckId: string;
     subDeckId?: string;
   };
-  /** Named custom playlists. */
-  customPlaylists?: CustomPlaylist[];
-  /** ID of the currently active playlist. */
-  activePlaylistId?: string;
+  /** Named custom decks. */
+  customDecks?: CustomDeck[];
+  /** ID of the currently active custom deck. */
+  activeCustomDeckId?: string;
 }
+
+// ---------------------------------------------------------------------------
+// Deprecated aliases — kept for backward compatibility while ui-agent files
+// are updated. Do NOT use in new code.
+// ---------------------------------------------------------------------------
+
+/** @deprecated Use CustomDeck */
+export type CustomPlaylist = CustomDeck;
+/** @deprecated Use CustomDeckItem */
+export type CustomPlaylistItem = CustomDeckItem;
+/** @deprecated Use CustomDeckRunItem */
+export type PlaylistDeckItem = CustomDeckRunItem;

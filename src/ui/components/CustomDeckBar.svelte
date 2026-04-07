@@ -1,43 +1,43 @@
 <script lang="ts">
-  import type { CustomPlaylist } from '../../data/studyPreset';
+  import type { CustomDeck } from '../../data/studyPreset';
 
   interface Props {
-    playlists: CustomPlaylist[];
-    activePlaylistId: string | null;
-    onSwitchPlaylist: (id: string) => void;
+    customDecks: CustomDeck[];
+    activeCustomDeckId: string | null;
+    onSwitchDeck: (id: string) => void;
     onStartCustomRun: () => void;
-    onViewPlaylist: () => void;
+    onViewDeck: () => void;
   }
 
-  let { playlists, activePlaylistId, onSwitchPlaylist, onStartCustomRun, onViewPlaylist }: Props = $props();
+  let { customDecks, activeCustomDeckId, onSwitchDeck, onStartCustomRun, onViewDeck }: Props = $props();
 
-  const activePlaylist = $derived(
-    activePlaylistId ? playlists.find(p => p.id === activePlaylistId) ?? null : null
+  const activeDeck = $derived(
+    activeCustomDeckId ? customDecks.find(p => p.id === activeCustomDeckId) ?? null : null
   );
 
-  const activeItems = $derived(activePlaylist?.items ?? []);
+  const activeItems = $derived(activeDeck?.items ?? []);
 
-  const showBar = $derived(playlists.length > 0 && playlists.some(p => p.items.length > 0));
+  const showBar = $derived(customDecks.length > 0 && customDecks.some(p => p.items.length > 0));
 </script>
 
 {#if showBar}
-  <div class="playlist-bar">
+  <div class="custom-deck-bar">
     <div class="bar-left">
-      <span class="playlist-icon">&#128203;</span>
-      {#if playlists.length > 1}
+      <span class="custom-deck-icon">&#128203;</span>
+      {#if customDecks.length > 1}
         <select
-          class="playlist-select"
-          value={activePlaylistId ?? ''}
-          onchange={(e) => onSwitchPlaylist((e.target as HTMLSelectElement).value)}
+          class="custom-deck-select"
+          value={activeCustomDeckId ?? ''}
+          onchange={(e) => onSwitchDeck((e.target as HTMLSelectElement).value)}
         >
-          {#each playlists as pl (pl.id)}
-            <option value={pl.id}>{pl.name}</option>
+          {#each customDecks as deck (deck.id)}
+            <option value={deck.id}>{deck.name}</option>
           {/each}
         </select>
       {:else}
-        <span class="playlist-name">{activePlaylist?.name ?? playlists[0]?.name ?? 'Custom Deck'}</span>
+        <span class="custom-deck-name">{activeDeck?.name ?? customDecks[0]?.name ?? 'Custom Deck'}</span>
       {/if}
-      <span class="playlist-meta">
+      <span class="custom-deck-meta">
         {#if activeItems.length <= 3}
           {activeItems.map(it => it.label).join(', ')}
         {:else}
@@ -47,7 +47,7 @@
     </div>
 
     <div class="bar-right">
-      <button class="btn-view" onclick={onViewPlaylist}>View</button>
+      <button class="btn-view" onclick={onViewDeck}>View</button>
       <button class="btn-start" onclick={onStartCustomRun}>
         <span class="play-icon">&#9654;</span> Start
       </button>
@@ -56,7 +56,7 @@
 {/if}
 
 <style>
-  .playlist-bar {
+  .custom-deck-bar {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -74,12 +74,12 @@
     min-width: 0;
   }
 
-  .playlist-icon {
+  .custom-deck-icon {
     font-size: calc(18px * var(--text-scale, 1));
     flex-shrink: 0;
   }
 
-  .playlist-name {
+  .custom-deck-name {
     font-size: calc(14px * var(--text-scale, 1));
     font-weight: 600;
     color: #c4b5fd;
@@ -89,7 +89,7 @@
     max-width: calc(200px * var(--layout-scale, 1));
   }
 
-  .playlist-select {
+  .custom-deck-select {
     background: rgba(79, 70, 229, 0.2);
     border: 1px solid rgba(99, 102, 241, 0.4);
     border-radius: calc(6px * var(--layout-scale, 1));
@@ -100,12 +100,12 @@
     max-width: calc(200px * var(--layout-scale, 1));
   }
 
-  .playlist-select:focus {
+  .custom-deck-select:focus {
     outline: none;
     border-color: rgba(99, 102, 241, 0.8);
   }
 
-  .playlist-meta {
+  .custom-deck-meta {
     font-size: calc(12px * var(--text-scale, 1));
     color: #6b7280;
     white-space: nowrap;

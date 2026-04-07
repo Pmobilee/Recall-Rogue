@@ -11,7 +11,7 @@ import {
 } from '../data/balance';
 import { shuffled } from './randomUtils';
 import { factsDB } from './factsDB';
-import { selectNonCombatStudyQuestion, selectNonCombatPlaylistQuestion } from './nonCombatQuizSelector';
+import { selectNonCombatStudyQuestion, selectNonCombatCustomDeckQuestion } from './nonCombatQuizSelector';
 import { getConfusionMatrix } from './confusionMatrixStore';
 
 // ---------------------------------------------------------------------------
@@ -133,14 +133,14 @@ export function generateQuizPhaseQuestions(
     // Fall through to trivia path if study questions unavailable
   }
 
-  // Playlist mode branch: use curated deck selector across all playlist items
-  if (runState.deckMode?.type === 'playlist') {
+  // Custom deck mode branch: use curated deck selector across all custom deck items
+  if (runState.deckMode?.type === 'custom_deck') {
     const confusionMatrix = getConfusionMatrix();
     const inRunTracker = runState.inRunFactTracker ?? null;
     const factSourceDeckMap = runState.factSourceDeckMap ?? {};
     const questions: QuizQuestion[] = [];
     for (let i = 0; i < config.questionCount; i++) {
-      const q = selectNonCombatPlaylistQuestion(
+      const q = selectNonCombatCustomDeckQuestion(
         'boss',
         runState.deckMode.items,
         factSourceDeckMap,
@@ -162,7 +162,7 @@ export function generateQuizPhaseQuestions(
       }
     }
     if (questions.length > 0) return questions;
-    // Fall through to trivia path if playlist questions unavailable
+    // Fall through to trivia path if custom deck questions unavailable
   }
 
   const allFacts = factsDB.getTriviaFacts();

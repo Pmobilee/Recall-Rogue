@@ -1,32 +1,32 @@
 <script lang="ts">
-  import type { CustomPlaylist } from '../../data/studyPreset';
+  import type { CustomDeck } from '../../data/studyPreset';
 
   interface Props {
-    /** Existing playlists to show. */
-    playlists: CustomPlaylist[];
-    /** Called when an item is added to an existing playlist. */
-    onAddToPlaylist: (playlistId: string) => void;
-    /** Called when a new playlist is created and the item added to it. */
+    /** Existing custom decks to show. */
+    customDecks: CustomDeck[];
+    /** Called when an item is added to an existing custom deck. */
+    onAddToDeck: (deckId: string) => void;
+    /** Called when a new custom deck is created and the item added to it. */
     onCreateAndAdd: (name: string) => void;
     /** Called to close the popup. */
     onClose: () => void;
   }
 
-  let { playlists, onAddToPlaylist, onCreateAndAdd, onClose }: Props = $props();
+  let { customDecks, onAddToDeck, onCreateAndAdd, onClose }: Props = $props();
 
-  let newPlaylistName = $state('');
+  let newDeckName = $state('');
 
   function handleBackdropClick(e: MouseEvent): void {
     if (e.target === e.currentTarget) onClose();
   }
 
-  function handleAddTo(playlistId: string): void {
-    onAddToPlaylist(playlistId);
+  function handleAddTo(deckId: string): void {
+    onAddToDeck(deckId);
     onClose();
   }
 
   function handleCreate(): void {
-    const trimmed = newPlaylistName.trim();
+    const trimmed = newDeckName.trim();
     if (!trimmed) return;
     onCreateAndAdd(trimmed);
     onClose();
@@ -52,20 +52,20 @@
     </div>
 
     <div class="popup-body">
-      {#if playlists.length > 0}
-        <div class="playlists-list">
-          {#each playlists as playlist (playlist.id)}
-            <div class="playlist-row">
-              <div class="playlist-info">
-                <span class="playlist-name">{playlist.name}</span>
-                <span class="playlist-count">
-                  {playlist.items.length} item{playlist.items.length !== 1 ? 's' : ''}
+      {#if customDecks.length > 0}
+        <div class="decks-list">
+          {#each customDecks as deck (deck.id)}
+            <div class="deck-row">
+              <div class="deck-info">
+                <span class="deck-name">{deck.name}</span>
+                <span class="deck-count">
+                  {deck.items.length} item{deck.items.length !== 1 ? 's' : ''}
                 </span>
               </div>
               <button
                 class="add-btn"
-                onclick={() => handleAddTo(playlist.id)}
-                aria-label="Add to {playlist.name}"
+                onclick={() => handleAddTo(deck.id)}
+                aria-label="Add to {deck.name}"
               >
                 Add
               </button>
@@ -83,14 +83,14 @@
             type="text"
             placeholder="Custom deck name..."
             maxlength="40"
-            bind:value={newPlaylistName}
+            bind:value={newDeckName}
             onkeydown={handleKeydown}
             aria-label="New custom deck name"
           />
           <button
             class="create-btn"
             onclick={handleCreate}
-            disabled={!newPlaylistName.trim()}
+            disabled={!newDeckName.trim()}
             aria-label="Create custom deck and add item"
           >
             Create
@@ -168,14 +168,14 @@
     gap: calc(12px * var(--layout-scale, 1));
   }
 
-  /* ── Playlist rows ── */
-  .playlists-list {
+  /* ── Deck rows ── */
+  .decks-list {
     display: flex;
     flex-direction: column;
     gap: calc(6px * var(--layout-scale, 1));
   }
 
-  .playlist-row {
+  .deck-row {
     display: flex;
     align-items: center;
     gap: calc(10px * var(--layout-scale, 1));
@@ -186,12 +186,12 @@
     transition: background 0.12s, border-color 0.12s;
   }
 
-  .playlist-row:hover {
+  .deck-row:hover {
     background: rgba(99, 102, 241, 0.13);
     border-color: rgba(99, 102, 241, 0.3);
   }
 
-  .playlist-info {
+  .deck-info {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -199,7 +199,7 @@
     overflow: hidden;
   }
 
-  .playlist-name {
+  .deck-name {
     font-size: calc(13px * var(--text-scale, 1));
     font-weight: 600;
     color: #e2e8f0;
@@ -208,7 +208,7 @@
     text-overflow: ellipsis;
   }
 
-  .playlist-count {
+  .deck-count {
     font-size: calc(11px * var(--text-scale, 1));
     color: #64748b;
   }

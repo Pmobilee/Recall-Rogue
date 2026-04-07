@@ -768,10 +768,10 @@ The `encounterBridge.ts` if-else chain falls through to the general fallback for
 **DeckMode: playlist** (added 2026-04-07) — the `'playlist'` variant combines multiple heterogeneous curated decks (e.g. `spanish_a1` + `japanese_n5_grammar` + `computer_science`) into a single Study Temple run. Defined in `src/data/studyPreset.ts`:
 
 ```typescript
-{ type: 'playlist'; items: PlaylistDeckItem[] }
+{ type: 'custom_deck'; items: CustomDeckRunItem[] }
 
-// PlaylistDeckItem:
-interface PlaylistDeckItem {
+// CustomDeckRunItem:
+interface CustomDeckRunItem {
   deckId: string;
   subDeckId?: string;    // optional sub-deck filter
   examTags?: string[];   // optional exam-tag filter
@@ -784,7 +784,7 @@ interface PlaylistDeckItem {
 
 **Encounter pool** (`encounterBridge.ts` `startEncounterForRoom`): per-item pool building — vocab items (language-prefixed deckId) use `buildLanguageRunPool`, knowledge items use `buildGeneralRunPool` with domain stamping — then merged with factId deduplication into a single `activeRunPool`.
 
-**Leaderboard eligibility**: `null` (playlist runs are not eligible for any leaderboard category).
+**Leaderboard eligibility**: `null` (custom deck runs are not eligible for any leaderboard category).
 
 **No fact DB entries:** `DOMAIN_TO_CATEGORY['mathematics']` is an empty array in `runPoolBuilder.ts` — querying `factsDB` for math facts always returns nothing. `getKnowledgeDomains()` excludes `'mathematics'` so it never appears in trivia domain loops.
 

@@ -3,17 +3,16 @@
      Handles mode selection, player list, house rules, deck settings, and start.
      Props: lobby state from multiplayerLobbyService. Not yet wired into app flow. -->
 <script lang="ts">
-  import type { LobbyState, MultiplayerMode, DeckSelectionMode } from '../../data/multiplayerTypes'
+  import type { LobbyState, MultiplayerMode, DeckSelectionMode, LobbyContentSelection } from '../../data/multiplayerTypes'
   import {
     MODE_DISPLAY_NAMES,
     MODE_DESCRIPTIONS,
     MODE_MAX_PLAYERS,
-    DEFAULT_HOUSE_RULES,
   } from '../../data/multiplayerTypes'
   import {
     setMode,
     setDeckSelectionMode,
-    selectDeck,
+    setContentSelection,
     setHouseRules,
     setRanked,
     setReady,
@@ -22,6 +21,7 @@
     leaveLobby,
     isHost,
   } from '../../services/multiplayerLobbyService'
+  import LobbyDeckPicker from './LobbyDeckPicker.svelte'
 
   interface Props {
     lobby: LobbyState
@@ -33,15 +33,8 @@
 
   // Local reactive state
   let fairnessExpanded = $state(false)
-  let deckIdInput = $state('')
+  let showDeckPicker = $state(false)
   let copyFeedback = $state(false)
-
-  // Sync deckIdInput from lobby when host broadcasts a deck selection
-  $effect(() => {
-    if (lobby.selectedDeckId && lobby.selectedDeckId !== deckIdInput) {
-      deckIdInput = lobby.selectedDeckId
-    }
-  })
 
   const MODES: MultiplayerMode[] = ['race', 'same_cards', 'duel', 'coop', 'trivia_night']
 
@@ -68,12 +61,9 @@
     setDeckSelectionMode(mode)
   }
 
-  function handleDeckInput(e: Event): void {
-    const val = (e.target as HTMLInputElement).value
-    deckIdInput = val
-    if (amHost && val.trim()) {
-      selectDeck(val.trim())
-    }
+  function handleContentSelect(selection: LobbyContentSelection): void {
+    setContentSelection(selection)
+    showDeckPicker = false
   }
 
   function handleTimerChange(secs: number): void {
@@ -262,26 +252,39 @@
     <aside class="mp-panel settings-panel" aria-label="Lobby settings">
       <h2 class="panel-title">Settings</h2>
 
-      <!-- Deck Selection -->
+      <!-- Content Selection -->
       <section class="settings-section">
-        <h3 class="section-label">Deck</h3>
+        <h3 class="section-label">Content</h3>
 
-        <!-- Deck ID input -->
-        <div class="setting-row">
-          <label for="deck-id-input" class="setting-name">Deck ID</label>
-          <input
-            id="deck-id-input"
-            class="deck-input"
-            type="text"
-            placeholder="Enter deck ID..."
-            value={deckIdInput}
-            oninput={handleDeckInput}
-            disabled={!amHost}
-            aria-label="Deck identifier"
-          />
+        <!-- Current selection display -->
+        <div class="content-selection-display">
+          {#if lobby.contentSelection}
+            {#if lobby.contentSelection.type === 'study'}
+              <span class="content-badge content-badge--study">Study Deck</span>
+              <span class="content-name">{lobby.contentSelection.deckName}</span>
+            {:else if lobby.contentSelection.type === 'trivia'}
+              <span class="content-badge content-badge--trivia">Trivia Mix</span>
+              <span class="content-name">{lobby.contentSelection.domains.length} domains</span>
+            {:else if lobby.contentSelection.type === 'custom_deck'}
+              <span class="content-badge content-badge--custom">Custom Deck</span>
+              <span class="content-name">{lobby.contentSelection.deckName}</span>
+            {/if}
+          {:else}
+            <span class="content-none">No content selected</span>
+          {/if}
         </div>
 
-        <!-- Deck selection mode -->
+        {#if amHost}
+          <button
+            class="choose-content-btn"
+            onclick={() => { showDeckPicker = true }}
+            aria-label={lobby.contentSelection ? 'Change content selection' : 'Choose content'}
+          >
+            {lobby.contentSelection ? 'Change Content' : 'Choose Content'}
+          </button>
+        {/if}
+
+        <!-- Deck selection mode radios -->
         <div class="setting-row radio-row" role="radiogroup" aria-label="Deck selection mode">
           {#each (['host_picks', 'each_picks', 'random'] as DeckSelectionMode[]) as dsMode}
             {@const labels: Record<string, string> = {
@@ -440,6 +443,14 @@
       Cancel / Leave
     </button>
   </footer>
+
+  <!-- Deck picker modal -->
+  {#if showDeckPicker}
+    <LobbyDeckPicker
+      onSelect={handleContentSelect}
+      onClose={() => { showDeckPicker = false }}
+    />
+  {/if}
 </div>
 
 <style>
@@ -836,27 +847,77 @@
     white-space: nowrap;
   }
 
-  /* Deck input */
-  .deck-input {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid #3a3f52;
-    border-radius: calc(6px * var(--layout-scale, 1));
-    color: #e0e0e0;
-    font-size: calc(12px * var(--text-scale, 1));
-    padding: calc(6px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
-    width: calc(140px * var(--layout-scale, 1));
+  /* Content selection display */
+  .content-selection-display {
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
     min-height: calc(32px * var(--layout-scale, 1));
-    transition: border-color 0.15s;
+    flex-wrap: wrap;
   }
 
-  .deck-input:focus {
-    outline: none;
+  .content-badge {
+    font-size: calc(10px * var(--text-scale, 1));
+    font-weight: 700;
+    border-radius: calc(4px * var(--layout-scale, 1));
+    padding: calc(2px * var(--layout-scale, 1)) calc(7px * var(--layout-scale, 1));
+    text-transform: uppercase;
+    letter-spacing: calc(0.5px * var(--layout-scale, 1));
+    flex-shrink: 0;
+  }
+
+  .content-badge--study {
+    background: rgba(59, 130, 246, 0.25);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.4);
+  }
+
+  .content-badge--trivia {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.35);
+  }
+
+  .content-badge--custom {
+    background: rgba(168, 85, 247, 0.2);
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.35);
+  }
+
+  .content-name {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #d0d0e0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .content-none {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #505060;
+    font-style: italic;
+  }
+
+  .choose-content-btn {
+    padding: calc(7px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    background: rgba(255, 215, 0, 0.12);
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    color: #FFD700;
+    font-size: calc(12px * var(--text-scale, 1));
+    font-family: var(--font-body, 'Lora', serif);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    min-height: calc(44px * var(--layout-scale, 1));
+    width: 100%;
+    font-weight: 600;
+  }
+
+  .choose-content-btn:hover {
+    background: rgba(255, 215, 0, 0.22);
     border-color: #FFD700;
-  }
-
-  .deck-input:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
   }
 
   /* Radio rows */
