@@ -60,6 +60,14 @@ model: sonnet
 3. Flag discrepancies as STALE with specific corrections needed
 4. Run `/docs-validate` for automated prediction-test accuracy check
 
+## Mandatory Prompt Requirements (for orchestrator)
+When spawning this agent, the orchestrator MUST include in the prompt:
+1. This agent's full instructions (this file)
+2. "Navigate via docs/INDEX.md to find relevant sub-files."
+3. "Verify doc claims against actual source files before updating."
+4. The specific documentation task description
+5. "Break work into granular TaskCreate tasks BEFORE starting."
+
 ## Source File → GDD Section Mapping
 | Source File | GDD Section |
 |---|---|

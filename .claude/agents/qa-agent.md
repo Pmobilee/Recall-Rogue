@@ -80,3 +80,12 @@ What happened, why, fix.
 - `npm run registry:sync` — rebuild after element changes
 - `npm run registry:stale` — find what needs testing
 - Testing skills auto-stamp dates
+
+## Mandatory Prompt Requirements (for orchestrator)
+When spawning this agent, the orchestrator MUST include in the prompt:
+1. This agent's full instructions (this file)
+2. "Read relevant docs under docs/ BEFORE reviewing code."
+3. "After finding issues, update docs or append to docs/gotchas.md."
+4. "Run `npm run typecheck` and `npm run build` to verify."
+5. The specific review/test task description
+6. "Break work into granular TaskCreate tasks BEFORE starting."

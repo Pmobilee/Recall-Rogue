@@ -56,3 +56,12 @@ Before ANY code change, read the relevant doc under `docs/mechanics/` or `docs/a
 3. Flag qa-agent if balance values changed
 4. Update relevant `docs/mechanics/` files
 5. `npm run registry:sync` if game elements added/removed
+
+## Mandatory Prompt Requirements (for orchestrator)
+When spawning this agent, the orchestrator MUST include in the prompt:
+1. This agent's full instructions (this file)
+2. "Read relevant docs under docs/ BEFORE writing code. Navigate via docs/INDEX.md."
+3. "After changes, update those same doc files."
+4. "Run `npm run typecheck` and `npm run build` after implementation."
+5. The specific task description
+6. "Break work into granular TaskCreate tasks BEFORE starting."

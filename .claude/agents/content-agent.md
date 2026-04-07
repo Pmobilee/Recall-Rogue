@@ -65,3 +65,11 @@ Before ANY content work, read `docs/content/`. After changes, update those docs.
 5. Update `docs/content/` files
 6. `npm run registry:sync` if domains changed
 7. Run `/curated-trivia-bridge` if this is a knowledge deck (not vocab/language) — bridge output must be committed alongside the deck
+
+## Mandatory Prompt Requirements (for orchestrator)
+When spawning this agent, the orchestrator MUST include in the prompt:
+1. This agent's full instructions (this file)
+2. "Read relevant docs under docs/ BEFORE writing code. Navigate via docs/INDEX.md."
+3. "After changes, update those same doc files."
+4. The specific task description
+5. "Break work into granular TaskCreate tasks BEFORE starting."

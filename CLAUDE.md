@@ -53,13 +53,20 @@ Stable conventions are in `.claude/rules/` (auto-loaded every session):
 
 | Rule File | Covers |
 |---|---|
+| `agent-mindset.md` | Self-review protocol, production standards, proactive skill triggers |
 | `agent-routing.md` | Mandatory agent routing, file ownership, sub-agent prompts |
 | `code-style.md` | TypeScript strict, security, no Anthropic API |
+| `content-pipeline.md` | Curriculum sourcing, fact verification, distractor generation |
+| `deck-quality.md` | Pool design, batch verification, quiz audit, LLM review |
+| `docs-first.md` | Read docs before code, update after every change |
+| `error-handling.md` | Error boundaries, recoverable vs fatal, logging patterns |
 | `game-conventions.md` | Damage pipeline, charge values, surge, FSRS, chains |
+| `git-workflow.md` | Branch naming, commit format, tags, worktree hygiene |
+| `performance.md` | FPS/memory targets, optimization guidelines |
+| `save-load.md` | Schema versioning, migration strategy, crash-safe writes |
+| `task-tracking.md` | CLI tasks for ALL work, no exceptions |
 | `testing.md` | Vitest, build verification, headless sim, Playwright |
 | `ui-layout.md` | Dynamic scaling, Steam PC target, layer architecture |
-| `content-pipeline.md` | Distractor rules, fact sourcing, deck quality |
-| `docs-first.md` | Read docs before code, update after every change |
 
 ## Agent Definitions
 

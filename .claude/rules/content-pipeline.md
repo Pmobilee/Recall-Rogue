@@ -27,26 +27,15 @@ Before generating a single fact, you MUST:
 **Any deck covering material tested by an official standardized exam MUST align to that exam's official scope document.**
 
 This means:
-1. **Find the exam's official Course Description / Syllabus / Scope Document** — the published document that defines what is tested
-2. **Use its structure as the deck's architecture** — units, topics, learning objectives map directly to sub-decks and chain themes
+1. **Find the exam's official Course Description / Syllabus / Scope Document**
+2. **Use its structure as the deck's architecture** — units, topics, learning objectives map to sub-decks and chain themes
 3. **Cover every testable concept** — if it's in the exam scope, it must be in the deck
 4. **Tag facts with exam metadata** — `examTags` field with exam name and unit/section identifiers
 5. **Weight content by exam weighting** — units worth more on the exam get proportionally more facts
 
-**Applicable exam frameworks:**
-- **AP exams** (College Board) — use the Course and Exam Description (CED) for each subject
-- **JLPT** (Japanese) — already aligned to official N5-N1 word/grammar lists
-- **CEFR** (European languages) — already aligned to A1-B2 level descriptors
-- **TOPIK** (Korean) — already aligned to official level lists
-- **HSK** (Chinese) — already aligned to official HSK 1-6 word lists
-- **IB** (International Baccalaureate) — use subject guide and syllabus
-- **SAT Subject Tests / SAT** — use College Board published content specifications
-- **GCSE / A-Level** (UK) — use exam board specification documents
-- **USMLE / NCLEX** (medical) — use published content outlines
+**Applicable exam frameworks:** AP (College Board CED), JLPT, CEFR, TOPIK, HSK, IB, SAT, GCSE/A-Level, USMLE/NCLEX.
 
-**Why:** Official exam scope documents are the ONLY reliable way to ensure completeness. Students using our decks for exam prep need to trust that every testable concept is covered. If we miss topics that appear on the exam, that's a critical failure of our educational product.
-
-**This does NOT apply to:** Casual knowledge decks (movies, mythology, dinosaurs) where no standardized exam exists.
+**This does NOT apply to:** Casual knowledge decks where no standardized exam exists.
 
 ## Distractor Generation — NEVER From Database
 
@@ -82,189 +71,9 @@ Every fact-generation worker MUST receive verified source data IN ITS PROMPT.
 
 **Why:** LLMs confidently produce wrong dates/numbers. QA by another LLM has the SAME blind spots. One wrong fact undermines educational trust in the entire product.
 
-## Deck Quality Checklist
-- Answer pools ≥5 per question (runtime floor), ≥15 recommended for distractor variety
-- Pools with 5-14 members: add syntheticDistractors to reach 15+
-- Chain themes ≥8 per knowledge deck, ≥3 themes selected per run
-- Total facts ≥30-50 per deck
-- Synonyms computed
-- No duplicate questions (image_question facts excluded — image differentiates them)
-- funScore and difficulty assigned
-- No ambiguous answers
-- `answerTypePools` uses `factIds` array — NEVER `members`, `facts`, or `items`
-- Every fact's `answerTypePoolId` references an existing pool in the deck
-- Pool `id` fields match what facts reference — no naming mismatches
-- Image-based facts (`imageAssetPath`) must have `quizMode: "image_question"` or `"image_answers"`
-- Fill-in-blank `{___}` in quizQuestion is valid grammar syntax, not a braces error
-- Pool `factIds` populated by scanning facts, never hand-crafted
-- Pool answer length homogeneity: max/min ratio < 3× within each pool (check #20). Run `node scripts/pool-homogeneity-analysis.mjs --deck <id>` — 0 FAIL required
-- Run `node scripts/quiz-audit.mjs --deck <id> --full` after every deck build — 0 FAIL required
-- NEVER use em-dashes (—) in `correctAnswer` — explanation text goes in `explanation` field
-- Answers must be concise: core answer only, no parenthetical elaborations
-- No compound questions asking two things with one answer — split into two facts
-- Answer must not appear verbatim in question stem (self-answering)
-- Question type keywords must match answer format (who→name, when→date, how many→number)
-- No duplicate or near-duplicate facts within the same pool
-- Image-quiz facts (`quizMode: "image_question"/"image_answers"`) MUST be in separate `visual_*` pools — never mixed with text facts
-
-## Answer Pool Homogeneity — CRITICAL
-
-**Pools shared by questionTemplates MUST only contain facts that make sense for ALL templates using that pool.**
-
-On 2026-04-02, a `person_names` pool contained both programming language creators AND tech company founders (SpaceX/Elon Musk). The template "Who created the {language} programming language?" was applied to the SpaceX fact, producing "Who created the  programming language?" with answer "Elon Musk".
-
-The code now catches empty-placeholder replacements and falls back to `fact.quizQuestion`, but **pool design must still be correct**:
-
-- If a pool is used by a `questionTemplate`, every fact in that pool must have the fields the template's placeholders reference (e.g., `{language}` requires all facts to have a non-empty language-related field)
-- Split broad pools into domain-specific sub-pools when templates reference domain-specific placeholders: `person_names_language_creators`, `person_names_company_founders`, etc.
-- Facts about different domains (languages vs companies vs hardware) should NOT share pools used by domain-specific templates
-- `correctAnswer` format must be consistent within a pool (no mixing "Elon Musk" single names with "Nerva, Trajan, Hadrian..." lists)
-
-## Pool Design Rules — MANDATORY
-
-**Every answer pool must contain facts of ONE semantic answer type.**
-
-All members of a pool must answer the same kind of question — all person names, all dates, all counts, all geographic locations, all technical terms, etc. Never mix types within a single pool.
-
-- **Semantic homogeneity test:** Ask "can every pool member serve as a plausible distractor for every other member's question?" If any member fails this test, the pool is too broad — split it.
-- **Never mix:** dates with counts, names with descriptions, measurements with events, battle names with troop totals
-- **Format consistency:** All answers in a pool must be the same grammatical/syntactic form (bare nouns, full sentences, "X BCE", percentages, etc.)
-- **No non-bracket-numbers pool may have fewer than 5 real facts.** If splitting would produce a pool under 5 real facts, merge into a larger parent pool instead — do not create thin pools.
-- **After splitting:** Pad any pool below 15 total members (real facts + synthetic distractors) with domain-appropriate `syntheticDistractors`. Synthetics must match the answer format, length distribution, and knowledge domain of the real members.
-- **Use `homogeneityExempt: true` sparingly** — only for pools where variation is inherent to the domain and cannot be normalized (e.g., NASA mission official names, Greek deity names). Always add a `homogeneityExemptNote` explaining why.
-
-**Common split patterns:**
-- `person_names` → `person_inventor_names` + `person_politician_names` + `person_scientist_names`
-- `term_definitions` (mixed length) → `short_terms` (≤20c) + `long_definitions` (>20c)
-- `number` (mixed types) → `count_values` + `percentage_values` + `year_values`
-- `country_region_names` (mixed scale) → `country_names` + `region_names` + `civilization_names`
-
-## Batch Deck Verification — MANDATORY
-
-After modifying ANY curated deck, run the batch verifier:
-
-```bash
-node scripts/verify-all-decks.mjs           # Summary table (all decks)
-node scripts/verify-all-decks.mjs --verbose  # Per-fact details on failures
-```
-
-22 checks per fact/deck — 13 structural + 6 content quality + 1 pool homogeneity + 2 answer-quality:
-
-**Structural checks (FAIL):** braces in answer/question, answer-in-distractors, duplicate distractors, distractor count, pool size, missing fields, non-numeric bracket distractors, missing explanation, duplicate questions, orphaned pool refs, empty pools, template-pool placeholder compatibility.
-
-**Answer-quality checks:** em-dash in correctAnswer (FAIL — baked-in explanation creates length tell), answer text appears verbatim in quizQuestion (WARN — self-answering; skip vocab).
-
-**Content quality checks:** answer too long (FAIL >100 chars, WARN >60), question too long (FAIL >400 chars, WARN >300), difficulty out of range (FAIL, must be 1-5), funScore out of range (FAIL, must be 1-10), explanation too short (WARN <20 chars), explanation duplicates question (WARN).
-
-Check #20 (pool homogeneity): per pool, if the max/min display-length ratio of non-bracket answers > 3x → FAIL; > 2x → WARN. Skips vocab decks and pools with fewer than 2 non-bracket members.
-
-Target: **0 failures** across all decks. Warnings are informational — aim to minimize.
-
-## Trivia Bridge — MANDATORY (Knowledge Decks)
-
-**Every knowledge deck MUST be bridged to the trivia database before committing.** Language/vocabulary decks are exempt.
-
-After batch verification passes:
-1. Add the deck to `scripts/content-pipeline/bridge/deck-bridge-config.json` with correct `domain`, `prefixSegments`, `entitySegments`, `ageRating`, `categoryL2`
-2. Run `node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs` — verify 0 ID collisions
-3. Confirm the deck appears in the output summary with expected entity count
-4. Commit the updated `bridge-curated.json` and `bridge-manifest.json` alongside the deck
-
-**Why:** Trivia Dungeon and Study Temple share FSRS state. If a knowledge deck isn't bridged, players get zero knowledge transfer between modes. This was the default state before 2026-04-01 and caused confusion.
-
-**Exempt:** All vocabulary/language decks (Chinese HSK, Japanese JLPT, Spanish/French/German/Dutch/Czech CEFR, Korean TOPIK) and image-only decks (world_flags).
-
-## Content Quality Limits
-
-| Field | Warn | Fail | Notes |
-|-------|------|------|-------|
-| `correctAnswer` length | >60 chars | >100 chars | Strip `{N}` markers first. Skip vocab decks |
-| `quizQuestion` length | >300 chars | >400 chars | Skip vocab decks |
-| `difficulty` | — | <1 or >5, or missing | Required for all facts |
-| `funScore` | — | <1 or >10, or missing | Required for all facts |
-| `explanation` length | <20 chars | empty/missing | Skip vocab for short warning |
-| `explanation` content | duplicates question | — | Normalized comparison |
-
-These limits are enforced by both `verify-all-decks.mjs` (batch check) and `tests/unit/deck-content-quality.test.ts` (CI test suite).
-
-## In-Game Quiz Audit — MANDATORY
-
-After EVERY deck creation or major modification, a random sample of 20+ facts MUST be reviewed **as they would appear in-game** — showing the quiz question with 4 answer options (1 correct + 3 distractors).
-
-This catches issues that the 19-check structural verifier CANNOT:
-- **Trivially eliminatable distractors** — answer is 50 chars but distractors are 3-4 chars ("DNA", "RNA")
-- **Length mismatch** — correct answer dramatically longer/shorter than distractors (obvious tell)
-- **Em-dash explanations baked into answers** — "Term — plus a whole explanation" as the answer text
-- **Ambiguous questions** — where 2+ options could reasonably be correct
-- **Nonsensical distractors** — plausible-looking but grammatically/semantically incoherent
-- **Pool contamination** — distractors from wrong domain (organelle names mixed with process names)
-
-### How to audit:
-1. Sample 20+ facts across ALL units/sub-decks and ALL answer pools (not just term_definitions)
-2. For each fact, display: question, 4 shuffled options (mark correct), explanation preview
-3. Flag any fact where a student could eliminate 2+ distractors without knowing the subject
-4. Flag any answer >60 chars appearing alongside <20 char distractors
-5. Fix flagged facts before committing
-
-### When:
-- After initial deck assembly (before first commit of assembled deck)
-- After any bulk answer/distractor modification
-- After pool redesign or reassignment
-
-**This is NON-NEGOTIABLE. The structural verifier passing does NOT mean the deck plays well.**
-
-### Real-Engine Quiz Audit
-
-After the structural `quiz-audit.mjs` passes, run the engine-level audit for comprehensive validation:
-
-```bash
-npm run audit:quiz-engine                            # All knowledge decks
-npm run audit:quiz-engine -- --include-vocab          # Include vocab decks
-npm run audit:quiz-engine -- --deck <id> --verbose    # Single deck, full detail
-npm run audit:quiz-engine -- --confusion-test         # Verify confusion matrix path
-```
-
-This exercises the REAL `selectDistractors()` and `selectQuestionTemplate()` code paths, catching issues the simplified `quiz-audit.mjs` cannot: synonym group violations, unit contamination, POS mismatches, template rendering failures, mastery-dependent distractor count errors, and confusion matrix responsiveness. 24 checks total (10 structural + 14 engine-enabled).
-
-## LLM Content Review — MANDATORY
-
-**After structural checks AND programmatic engine audit pass, you MUST run LLM content review.**
-
-Programmatic checks catch FORMAT issues. LLM review catches SEMANTIC issues. **Both are required. Neither alone is sufficient.**
-
-### How to run:
-
-1. Generate quiz samples with render mode:
-```bash
-npm run audit:quiz-engine -- --render --deck <id>
-# or for all decks:
-npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engine.ts --render --render-per-pool 5
-```
-
-2. Have an LLM agent review the rendered output, evaluating each quiz item for:
-   - **Question clarity** — is the question unambiguous?
-   - **Answer correctness** — is the marked correct answer actually correct?
-   - **Distractor plausibility** — could a non-expert be fooled by each wrong answer?
-   - **Eliminatability** — can 2+ distractors be eliminated by format/length alone without domain knowledge?
-   - **Length tells** — is the correct answer dramatically longer or shorter than all distractors?
-   - **Domain coherence** — do all 4 options belong to the same semantic category?
-   - **Ambiguity** — could 2+ options reasonably be correct?
-
-3. Fix all flagged facts before committing.
-
-### When LLM review is required:
-- After initial deck assembly (before first commit)
-- After any bulk answer or distractor modification affecting 10+ facts
-- After pool redesign or reassignment
-- Before any deck is considered production-ready
-
-**Why:** The quiz-audit-engine.ts checks 24-27 structural and format conditions automatically. But it cannot detect: cross-domain distractors that are wrong but plausible-looking, factual errors in explanations, questions that have multiple defensible correct answers, or cases where a student with zero subject knowledge can still guess correctly from context clues. Only an LLM review catches these.
-
 ## Build Artifacts — JSON to SQLite Compilation
 
 **JSON files in `data/decks/` are the authoring format. Never edit `public/curated.db` directly.**
-
-The content-agent works exclusively with JSON. At build time, a separate script compiles them:
 
 ```bash
 npm run build:curated    # Compile data/decks/ → public/curated.db
@@ -272,12 +81,6 @@ npm run build:obfuscate  # XOR-obfuscate public/facts.db + public/curated.db
 npm run build            # Production build (includes both steps above)
 ```
 
-**Key scripts:**
-- `scripts/build-curated-db.mjs` — reads `data/decks/manifest.json`, writes all active JSON decks into a single SQLite DB at `public/curated.db`
-- `scripts/obfuscate-db.mjs` — XOR-obfuscates both DB files so they cannot be opened with the sqlite3 CLI; runtime-decoded by `src/services/dbDecoder.ts`
+Key scripts: `scripts/build-curated-db.mjs` (JSON→SQLite), `scripts/obfuscate-db.mjs` (XOR obfuscation). Runtime decode: `src/services/dbDecoder.ts`.
 
-**What is NOT shipped to users:**
-- `data/decks/*.json` — JSON source files stay in the repo, never copied to `dist/`
-- `data/seed-pack.json` — moved to `data/` (was previously `public/seed-pack.json`); not shipped
-
-**Why SQLite instead of JSON:** The 77 individual JSON files in `data/decks/` are only accessible via Vite's dev server (which serves the project root). They were never copied to `dist/`, so curated decks silently failed to load in production/Steam builds. A single `public/curated.db` is included in the Vite build output correctly.
+**What is NOT shipped:** `data/decks/*.json` (repo only), `data/seed-pack.json` (repo only).

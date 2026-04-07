@@ -128,6 +128,17 @@
 
 ---
 
+## Release & Operations
+
+| Doc | Summary |
+|-----|---------|
+| [RELEASE_MANAGEMENT](RELEASE_MANAGEMENT.md) | Semantic versioning, branch strategy, release checklist, hotfix process, post-launch cadence |
+| [ACCESSIBILITY](ACCESSIBILITY.md) | Color-blind mode, keyboard navigation, text sizing, accessibility testing checklist |
+| [PERFORMANCE](PERFORMANCE.md) | Target metrics (FPS/memory/load), baselines, monitoring tools, optimization guidelines |
+| [CHANGELOG](../CHANGELOG.md) | All notable changes in Keep a Changelog format |
+
+---
+
 ## Cross-cutting
 
 | Doc | Summary |

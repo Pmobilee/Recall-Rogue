@@ -64,3 +64,14 @@ Before ANY code change, read the relevant doc under `docs/ui/`. After changes, u
 2. `npm run build` — must pass
 3. Visual inspect at 1920×1080: `__rrScreenshotFile()` + `__rrLayoutDump()`
 4. Update `docs/ui/` files
+
+## Mandatory Prompt Requirements (for orchestrator)
+When spawning this agent, the orchestrator MUST include in the prompt:
+1. This agent's full instructions (this file)
+2. "Read relevant docs under docs/ BEFORE writing code. Navigate via docs/INDEX.md."
+3. "After changes, update those same doc files."
+4. "Run `npm run typecheck` and `npm run build` after implementation."
+5. "For UI work: verify with `__rrScreenshotFile()` + `__rrLayoutDump()`. Target: Steam PC 1920×1080."
+6. "Use `calc(Npx * var(--layout-scale, 1))` for dimensions, `calc(Npx * var(--text-scale, 1))` for fonts. ZERO hardcoded px."
+7. The specific task description
+8. "Break work into granular TaskCreate tasks BEFORE starting."
