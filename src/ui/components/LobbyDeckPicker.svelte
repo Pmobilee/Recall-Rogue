@@ -29,6 +29,7 @@
 
   // My Decks tab
   let selectedCustomDeckId = $state<string | null>(null)
+  let showCreateHint = $state(false)
 
   // ── Derived data ───────────────────────────────────────────────────────────
   let allDecks = $derived(getAllDecks().filter(d => d.status === 'available'))
@@ -265,6 +266,18 @@
       <!-- My Decks tab -->
       {:else}
         <div class="ldp-mydecks">
+          <button
+            class="ldp-create-new-btn"
+            onclick={() => { showCreateHint = !showCreateHint }}
+            aria-expanded={showCreateHint}
+            aria-label="Create a new custom deck"
+          >
+            + Create New
+          </button>
+          {#if showCreateHint}
+            <p class="ldp-create-hint">Visit Study Temple from the hub to create custom decks.</p>
+          {/if}
+
           {#if customDecks.length === 0}
             <p class="ldp-empty ldp-mydecks-empty">
               No custom decks yet.<br />
@@ -717,6 +730,47 @@
     font-size: calc(18px * var(--text-scale, 1));
     color: #FFD700;
     flex-shrink: 0;
+  }
+
+  /* ── My Decks create-new button ── */
+  .ldp-create-new-btn {
+    display: block;
+    width: 100%;
+    padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    background: transparent;
+    border: 1px solid #FFD700;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    color: #FFD700;
+    font-size: calc(14px * var(--text-scale, 1));
+    font-family: var(--font-rpg, 'Cinzel', serif);
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: calc(0.5px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+    margin-bottom: calc(12px * var(--layout-scale, 1));
+    transition: background 0.15s, box-shadow 0.15s, color 0.15s;
+  }
+
+  .ldp-create-new-btn:hover {
+    background: rgba(255, 215, 0, 0.1);
+    box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) rgba(255, 215, 0, 0.25);
+    color: #ffe34d;
+  }
+
+  .ldp-create-hint {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #888;
+    font-style: italic;
+    margin: 0 0 calc(14px * var(--layout-scale, 1)) 0;
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    animation: ldp-fade-in 0.15s ease-out;
+  }
+
+  @keyframes ldp-fade-in {
+    from { opacity: 0; transform: translateY(calc(-4px * var(--layout-scale, 1))); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   /* ── Footer ── */

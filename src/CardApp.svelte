@@ -186,7 +186,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     onGameStart as registerGameStartCb,
   } from './services/multiplayerLobbyService'
   import { onOpponentProgressUpdate } from './services/multiplayerGameService'
-  import type { LobbyState, RaceProgress, MultiplayerMode } from './data/multiplayerTypes'
+  import type { LobbyState, RaceProgress, MultiplayerMode, LobbyContentSelection } from './data/multiplayerTypes'
 
   // Update Steam Rich Presence whenever the active screen changes.
   $effect(() => {
@@ -501,6 +501,28 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     const unsubStart = registerGameStartCb((seed: number, lobby: LobbyState) => {
       const opponent = lobby.players.find(p => p.id !== 'local_player')
       opponentDisplayName = opponent?.displayName ?? 'Opponent'
+
+      // Set deck mode from lobby content selection so the run knows what content to load
+      if (lobby.contentSelection) {
+        const sel: LobbyContentSelection = lobby.contentSelection
+        if (sel.type === 'study') {
+          playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'study' as const, deckId: sel.deckId, subDeckId: sel.subDeckId } } : s)
+        } else if (sel.type === 'trivia') {
+          playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'trivia' as const, domains: sel.domains, subdomains: sel.subdomains } } : s)
+        } else if (sel.type === 'custom_deck') {
+          // Load custom deck items from player's saved custom decks and map to run items
+          const save = get(playerSave)
+          const customDeck = save?.lastDungeonSelection?.customDecks?.find(d => d.id === sel.customDeckId)
+          if (customDeck) {
+            const items: CustomDeckRunItem[] = customDeck.items
+              .filter((item): item is { type: 'study'; deckId: string; subDeckId?: string; label: string } => item.type === 'study')
+              .map(item => ({ deckId: item.deckId, subDeckId: item.subDeckId }))
+            playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'custom_deck' as const, items } } : s)
+          }
+        }
+        persistPlayer()
+      }
+
       startNewRun({
         multiplayerSeed: seed,
         multiplayerMode: lobby.mode,
