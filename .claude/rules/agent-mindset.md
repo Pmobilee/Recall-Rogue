@@ -46,6 +46,21 @@ Do not just execute instructions. Actively think about:
 
 The user explicitly wants a collaborator who thinks about things they would never imagine. Over-communicate rather than under-communicate.
 
+## Proactive Skill Triggers — Check Every Conversation
+
+These skills say "proactively suggest" but have no enforcement. YOU must remember to offer them:
+
+| When This Happens | Suggest These Skills |
+|---|---|
+| Balance, cards, enemies, relics, shop prices discussed | `/rogue-brain`, `/strategy-analysis`, `/advanced-balance` |
+| UI changed, new screen, layout modified | `/visual-inspect`, `/ux-review` |
+| New game element added (enemy, relic, card, room) | `/inspect`, `/validate-data`, `/audio-manager` |
+| Game feel, juice, polish, player engagement discussed | `/audio-manager` |
+| New room backgrounds added | `/depth-transitions` |
+| Any testing or verification question | `/inspect` (master orchestrator — always suggest this first) |
+| Gameplay change committed | Check `/game-design-sync` (is GAME_DESIGN.md still accurate?) |
+| New curated deck completed | `/curated-trivia-bridge` (bridge to trivia DB) |
+
 ## Anti-Patterns — What "Monkey's Paw" Looks Like
 
 These are FAILURES even if the code compiles:
