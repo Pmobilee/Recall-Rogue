@@ -37,8 +37,8 @@
     onOpenJournal: () => void
     onOpenLeaderboards: () => void
     onOpenSocial: () => void
+    onOpenMultiplayer: () => void
     onOpenRelicSanctum: () => { ok: true } | { ok: false; reason: string }
-    onOpenDeckBuilder?: () => void
     onReplayBootAnim?: () => void
     disableEffects?: boolean
   }
@@ -54,8 +54,8 @@
     onOpenJournal,
     onOpenLeaderboards,
     onOpenSocial,
+    onOpenMultiplayer,
     onOpenRelicSanctum,
-    onOpenDeckBuilder,
     onReplayBootAnim,
     disableEffects = false,
   }: Props = $props()
@@ -521,6 +521,14 @@
         left="66%"
       />
 
+      <!-- Multiplayer quick-access button — positioned bottom-left of hub-center -->
+      <button
+        type="button"
+        class="multiplayer-hub-btn"
+        onclick={onOpenMultiplayer}
+        aria-label="Multiplayer lobby"
+      >&#x2694; Multiplayer</button>
+
       <!-- Moths orbiting the campfire -->
       {#if !disableEffects}
         <HubMoths />
@@ -746,6 +754,14 @@
     {#if !disableEffects}
       <HubFireflies />
     {/if}
+
+    <!-- Multiplayer quick-access button — positioned bottom-left of camp-hub -->
+    <button
+      type="button"
+      class="multiplayer-hub-btn"
+      onclick={onOpenMultiplayer}
+      aria-label="Multiplayer lobby"
+    >&#x2694; Multiplayer</button>
 
     <!-- Moths orbiting the campfire -->
     {#if !disableEffects}
@@ -978,6 +994,52 @@
 
   .hub-landscape .level-xp-text {
     font-size: calc(13px * var(--text-scale, 1));
+  }
+
+  /* ═══ MULTIPLAYER BUTTON ═══════════════════════════════════════════════════ */
+
+  .multiplayer-hub-btn {
+    position: absolute;
+    bottom: calc(12px * var(--layout-scale, 1));
+    left: calc(12px * var(--layout-scale, 1));
+    z-index: 45;
+    padding: calc(8px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #e2d9f3;
+    background: rgba(80, 40, 120, 0.55);
+    border: 1px solid rgba(160, 100, 220, 0.5);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    backdrop-filter: blur(8px);
+    cursor: inherit;
+    white-space: nowrap;
+    transition: background 150ms ease, border-color 150ms ease;
+    min-width: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+    display: flex;
+    align-items: center;
+    gap: calc(6px * var(--layout-scale, 1));
+    letter-spacing: 0.03em;
+  }
+
+  .multiplayer-hub-btn:hover,
+  .multiplayer-hub-btn:focus-visible {
+    background: rgba(100, 60, 160, 0.75);
+    border-color: rgba(180, 130, 255, 0.7);
+    outline: none;
+  }
+
+  .multiplayer-hub-btn:active {
+    background: rgba(120, 70, 180, 0.85);
+  }
+
+  /* Landscape: fixed positioning so it escapes the portrait column constraint */
+  .hub-landscape .multiplayer-hub-btn {
+    position: fixed;
+    bottom: calc(20px * var(--layout-scale, 1));
+    left: calc(20px * var(--layout-scale, 1));
+    font-size: calc(15px * var(--text-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
   }
 
 

@@ -91,6 +91,7 @@
 | masteryScalingService | src/services/masteryScalingService.ts | [learning.md](learning.md) |
 | mentorService | src/services/mentorService.ts | [social.md](social.md) |
 | monetizationService | src/services/monetizationService.ts | [social.md](social.md) |
+| multiplayerGameService | src/services/multiplayerGameService.ts | [social.md](social.md) |
 | multiplayerLobbyService | src/services/multiplayerLobbyService.ts | [social.md](social.md) |
 | multiplayerTransport | src/services/multiplayerTransport.ts | [platform.md](platform.md) |
 | nonCombatQuizSelector | src/services/nonCombatQuizSelector.ts | [quiz.md](quiz.md) |

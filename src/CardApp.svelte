@@ -173,6 +173,15 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   import { getReviewQueueLength } from './services/reviewQueueSystem'
   import { getAuraLevel, getAuraState } from './services/knowledgeAuraSystem'
   import { narrativeDisplay, dismissNarrative } from './ui/stores/narrativeStore'
+  import MultiplayerLobby from './ui/components/MultiplayerLobby.svelte'
+  import MultiplayerHUD from './ui/components/MultiplayerHUD.svelte'
+  import {
+    createLobby,
+    leaveLobby,
+    getCurrentLobby,
+    onLobbyUpdate,
+  } from './services/multiplayerLobbyService'
+  import type { LobbyState, RaceProgress } from './data/multiplayerTypes'
 
   // Update Steam Rich Presence whenever the active screen changes.
   $effect(() => {
@@ -313,15 +322,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   }
 
 
-  let libraryInitialTab = $state<'knowledge' | 'deckbuilder' | undefined>(undefined)
-
   function handleOpenLibrary(): void {
-    libraryInitialTab = undefined
-    transitionScreen('library')
-  }
-
-  function handleOpenDeckBuilder(): void {
-    libraryInitialTab = 'deckbuilder'
     transitionScreen('library')
   }
 
@@ -432,6 +433,47 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   function handleOpenCosmeticStore(): void {
     showCosmeticStoreModal = true
   }
+
+  // ── Multiplayer state ─────────────────────────────────────────────────────
+
+  /** Current lobby state — null when not in a multiplayer lobby. */
+  let currentLobby = $state<LobbyState | null>(getCurrentLobby())
+
+  /** Placeholder opponent progress for MultiplayerHUD until real race wiring lands. */
+  const placeholderProgress: RaceProgress = {
+    playerId: 'opponent',
+    floor: 1,
+    playerHp: 80,
+    playerMaxHp: 100,
+    score: 0,
+    accuracy: 0,
+    encountersWon: 0,
+    isFinished: false,
+  }
+
+  /** True while an active multiplayer lobby exists (race progress HUD visible in combat). */
+  let isMultiplayerRun = $derived(currentLobby !== null)
+
+  function handleOpenMultiplayer(): void {
+    // Create a lobby as host with a placeholder Steam ID (real ID wired in later).
+    const lobby = createLobby('local_player', 'Player', 'race')
+    currentLobby = lobby
+    transitionScreen('multiplayerLobby')
+  }
+
+  function handleMultiplayerBack(): void {
+    leaveLobby()
+    currentLobby = null
+    transitionScreen('hub')
+  }
+
+  // Keep currentLobby in sync when the lobby service updates state (other players join/leave).
+  $effect(() => {
+    const unsub = onLobbyUpdate((lobby) => {
+      currentLobby = lobby
+    })
+    return unsub
+  })
 
   function handleStartDailyExpedition(): Promise<{ ok: true } | { ok: false; reason: string }> {
     return startDailyExpeditionRun()
@@ -951,6 +993,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
                 if (container) {
                   container.style.transition = ''
                   container.style.opacity = ''
+                  if (import.meta.env.DEV) console.log('[BootAnim] opacity reset, container opacity:', container?.style.opacity)
                 }
               }, 350)
             })
@@ -969,6 +1012,13 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   $effect(() => {
     if ($currentScreen === 'combat' || $currentScreen === 'rewardRoom') {
       void ensurePhaserBooted()
+      // Defensive: clear any lingering inline styles from boot animation
+      // that could leave the canvas invisible (opacity: '0')
+      const el = document.getElementById('phaser-container')
+      if (el) {
+        el.style.opacity = ''
+        el.style.transition = ''
+      }
     }
   })
 
@@ -1147,8 +1197,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       onOpenJournal={handleOpenJournal}
       onOpenLeaderboards={handleOpenLeaderboards}
       onOpenSocial={handleOpenSocial}
+      onOpenMultiplayer={handleOpenMultiplayer}
       onOpenRelicSanctum={() => handleOpenRelicSanctum()}
-      onOpenDeckBuilder={handleOpenDeckBuilder}
       onReplayBootAnim={handleReplayBootAnim}
       disableEffects={showBootAnimation}
     />
@@ -1260,6 +1310,12 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         class="dev-skip-btn"
         onclick={() => devForceEncounterVictory()}
       >&#x23ED; Skip</button>
+    {/if}
+    {#if isMultiplayerRun}
+      <MultiplayerHUD
+        progress={placeholderProgress}
+        displayName="Opponent"
+      />
     {/if}
     {#if combatTransitionActive}
       {@const enemyId = combatTransitionType === 'exit-forward' ? exitEnemyId : $activeTurnState?.enemy?.template?.id}
@@ -1500,7 +1556,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
   {#if $currentScreen === 'library'}
     <div in:fly={{ y: 8, duration: 350 }}>
-      <KnowledgeLibrary onback={handleBackToMenu} initialTab={libraryInitialTab} />
+      <KnowledgeLibrary onback={handleBackToMenu} />
     </div>
   {/if}
 
@@ -1573,6 +1629,16 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   {#if $currentScreen === 'leaderboards'}
     <div in:fly={{ y: 8, duration: 350 }}>
       <LeaderboardsScreen onBack={handleBackToMenu} />
+    </div>
+  {/if}
+
+  {#if $currentScreen === 'multiplayerLobby' && currentLobby}
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <MultiplayerLobby
+        lobby={currentLobby}
+        localPlayerId="local_player"
+        onBack={handleMultiplayerBack}
+      />
     </div>
   {/if}
 
@@ -1749,6 +1815,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   .phaser-container.visible {
     visibility: visible;
     pointer-events: auto;
+    z-index: 1;
+    opacity: 1;
   }
 
   .phaser-container.boot-anim-active {

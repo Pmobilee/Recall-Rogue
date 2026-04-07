@@ -238,6 +238,12 @@ export interface EnemyInstance {
    * Decremented each turn start; when it reaches 0 the lock is cleared.
    */
   _lockTurnsRemaining?: number;
+  /**
+   * Co-op player count this enemy was spawned for.
+   * Stored at creation time for use by block and damage cap scaling.
+   * Defaults to 1 (solo). Used by getCoopBlockMultiplier and getCoopDamageCapMultiplier.
+   */
+  playerCount?: number;
 }
 
 // ============================================================

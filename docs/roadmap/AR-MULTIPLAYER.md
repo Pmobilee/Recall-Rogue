@@ -26,10 +26,12 @@ Comprehensive multiplayer for Recall Rogue: competitive, cooperative, and social
 ### Phase 2: Competitive Core — Duel + Same Cards (Weeks 4-7)
 | Task | Status | Notes |
 |------|--------|-------|
-| 2.1 Same Cards Mode | PENDING | Share fork seeds |
-| 2.2 Real-Time Duel server-side | PENDING | Authoritative enemy, turn resolution |
-| 2.3 Real-Time Duel client-side | PENDING | Opponent panel, damage attribution |
-| 2.4 ELO matchmaking | PENDING | Ranked mode, replay anti-cheat |
+| 2.0 Wire MP into app flow | DONE | Screen routing, HubScreen button, MultiplayerHUD in combat |
+| 2.1 Same Cards Mode | DONE | Fork seed sharing via multiplayerGameService (5 labels) |
+| 2.2 Real-Time Duel game service | DONE | multiplayerGameService.ts: host-authoritative enemy, simultaneous turns, damage attribution |
+| 2.3 Co-op enemy scaling | DONE | getCoopHpMultiplier (1.6x 2P), block (+50%), damage cap (+50%) in enemyManager |
+| 2.4 Duel UI | DONE | DuelOpponentPanel.svelte (damage bar, timer, chain) + RaceResultsScreen.svelte |
+| 2.5 ELO matchmaking | PENDING | Ranked mode, replay anti-cheat |
 
 ### Phase 3: Social — Co-op + Trivia (Weeks 8-10)
 | Task | Status | Notes |

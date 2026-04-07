@@ -64,24 +64,73 @@ function weightedRandomIntent(pool: EnemyIntent[]): EnemyIntent {
 }
 
 /**
+ * Computes HP scaling multiplier for co-op/multiplayer encounters.
+ * Uses a sublinear curve inspired by Monster Hunter:
+ * - 1 player: 1.0x (solo baseline)
+ * - 2 players: 1.6x (not 2x — accounts for accuracy-dependent damage)
+ * - 3 players: 2.0x
+ * - 4 players: 2.3x (capped)
+ *
+ * Recall Rogue scales lower than StS2 because damage depends on quiz accuracy:
+ * two 70% accuracy players deal ~1.4x effective DPS, not 2x.
+ *
+ * @param playerCount - Number of players in the encounter (1 = solo baseline).
+ * @returns The HP scaling multiplier (1.0 minimum).
+ */
+export function getCoopHpMultiplier(playerCount: number): number {
+  if (playerCount <= 1) return 1.0;
+  return Math.min(2.3, 1.0 + (playerCount - 1) * 0.5);
+}
+
+/**
+ * Computes block scaling for co-op encounters.
+ * +50% per additional player prevents combined DPS from trivializing enemy defense.
+ *
+ * @param playerCount - Number of players in the encounter (1 = solo baseline).
+ * @returns The block scaling multiplier (1.0 minimum).
+ */
+export function getCoopBlockMultiplier(playerCount: number): number {
+  if (playerCount <= 1) return 1.0;
+  return 1.0 + (playerCount - 1) * 0.5;
+}
+
+/**
+ * Computes damage cap scaling for co-op encounters.
+ * Prevents co-op caps from bottlenecking enemy damage output against multi-HP pools.
+ * Solo caps: 7/10/15/22 → 2P: ~10/15/22/33.
+ *
+ * @param playerCount - Number of players in the encounter (1 = solo baseline).
+ * @returns The damage cap scaling multiplier (1.0 minimum).
+ */
+export function getCoopDamageCapMultiplier(playerCount: number): number {
+  if (playerCount <= 1) return 1.0;
+  return 1.0 + (playerCount - 1) * 0.5;
+}
+
+/**
  * Creates a live enemy instance from a template, scaled to the given floor.
  *
- * HP = round(baseHP * getFloorScaling(floor) * hpMultiplier * difficultyVariance).
+ * HP = round(baseHP × ENEMY_BASE_HP_MULTIPLIER × getFloorScaling(floor) × hpMultiplier × coopHpScale × difficultyVariance).
  * The first intent is pre-rolled.
  *
  * @param template - The enemy template to instantiate.
  * @param floor - The current floor number for HP scaling.
- * @param options - Optional {hpMultiplier, difficultyVariance}. Both default to 1.
+ * @param options - Optional {hpMultiplier, difficultyVariance, playerCount}. All default to 1.
  * @returns A fully initialized EnemyInstance.
  */
 export function createEnemy(
   template: EnemyTemplate,
   floor: number,
-  options?: { hpMultiplier?: number; difficultyVariance?: number },
+  options?: { hpMultiplier?: number; difficultyVariance?: number; playerCount?: number },
 ): EnemyInstance {
   const hpMultiplier = options?.hpMultiplier ?? 1;
   const difficultyVariance = options?.difficultyVariance ?? 1;
-  const scaledHP = Math.max(1, Math.round(template.baseHP * ENEMY_BASE_HP_MULTIPLIER * getFloorScaling(floor) * hpMultiplier * difficultyVariance));
+  const playerCount = options?.playerCount ?? 1;
+  const coopHpScale = getCoopHpMultiplier(playerCount);
+  const scaledHP = Math.max(1, Math.round(
+    template.baseHP * ENEMY_BASE_HP_MULTIPLIER * getFloorScaling(floor)
+    * hpMultiplier * coopHpScale * difficultyVariance
+  ));
   const instance: EnemyInstance = {
     template,
     currentHP: scaledHP,
@@ -96,6 +145,7 @@ export function createEnemy(
     difficultyVariance,
     enrageBonusDamage: 0,
     playerChargedThisTurn: false,
+    playerCount,
   };
   // AR-263: Initialize hardcover armor from template if defined (The Textbook)
   if (template.hardcoverArmor !== undefined) {

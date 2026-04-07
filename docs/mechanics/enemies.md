@@ -1,7 +1,7 @@
 # Enemy System
 
 > **Purpose:** Complete reference for the enemy roster, categories, scaling formulas, special behaviors, and encounter selection.
-> **Last verified:** 2026-04-03 (balance pass #7)
+> **Last verified:** 2026-04-06 (co-op scaling added)
 > **Source files:** `src/data/enemies.ts`, `src/services/enemyManager.ts`, `src/data/balance.ts`, `src/services/ascension.ts`
 
 ## Enemy Categories
@@ -17,10 +17,11 @@
 
 HP formula (in `createEnemy`):
 ```
-scaledHP = round(baseHP × ENEMY_BASE_HP_MULTIPLIER × getFloorScaling(floor) × hpMultiplier × difficultyVariance)
+scaledHP = round(baseHP × ENEMY_BASE_HP_MULTIPLIER × getFloorScaling(floor) × hpMultiplier × coopHpScale × difficultyVariance)
 ```
 - `ENEMY_BASE_HP_MULTIPLIER = 4.0` (applied to all enemies)
 - `getFloorScaling(floor) = 1.0 + (floor - 1) × 0.10` — +10% HP per floor
+- `coopHpScale`: from `getCoopHpMultiplier(playerCount)` — 1.0 for solo (see Co-op Scaling section)
 - `difficultyVariance`: 0.8–1.2 for common enemies
 
 Damage formula (in `executeEnemyIntent`):
@@ -48,6 +49,31 @@ Charged attacks with `bypassDamageCap: true` skip these caps.
 - `enemyHpMultiplier = 1.0` (no global HP mult; difficulty comes from elite design)
 - High ascension: `miniBossTierAttacks` flag upgrades mini-boss intent pools to boss-tier attacks
 - Brain Fog aura: all enemy attacks deal ×1.2 damage
+
+### Co-op Scaling (Multiplayer)
+
+Three exported functions in `enemyManager.ts` scale enemy stats for multi-player encounters. All default to 1.0× at solo (playerCount ≤ 1).
+
+The curve is intentionally sublinear because quiz accuracy gates damage: two 70%-accuracy players deal roughly 1.4× effective DPS, not 2×. Scaling too aggressively would punish weaker players in a co-op party.
+
+**`getCoopHpMultiplier(playerCount)`** — applied to HP at `createEnemy` time:
+
+| Players | Multiplier | Formula |
+|---|---|---|
+| 1 | 1.0× | baseline |
+| 2 | 1.5× | 1.0 + 0.5 |
+| 3 | 2.0× | 1.0 + 1.0 |
+| 4 | 2.3× | min(2.3, 1.0 + 1.5) |
+
+**`getCoopBlockMultiplier(playerCount)`** — multiply enemy `defend` intent block value:
+- Formula: `1.0 + (playerCount - 1) × 0.5`
+- Prevents combined player DPS from trivializing enemy defense. Apply in the caller (turnManager or multiplayerGameService) using `enemy.playerCount`.
+
+**`getCoopDamageCapMultiplier(playerCount)`** — multiply `ENEMY_TURN_DAMAGE_CAP` segment cap:
+- Formula: `1.0 + (playerCount - 1) × 0.5`
+- Prevents caps from bottlenecking enemy damage output against multi-player HP pools. Apply in turnManager when computing the cap using `enemy.playerCount`.
+
+**`EnemyInstance.playerCount`** — stored on the instance at spawn time. Defaults to 1. Used by block and damage cap callers to retrieve the scaling factor post-creation without needing the original options object.
 
 ---
 

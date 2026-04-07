@@ -16,6 +16,7 @@ export type Screen =
   | 'journal'
   | 'leaderboards'
   | 'social'
+  | 'multiplayerLobby' // Multiplayer lobby — mode/deck/house-rules config and player readying
   | 'mysteryEvent'
   | 'restRoom'
   | 'runEnd'
@@ -56,6 +57,7 @@ const VALID_SCREENS: Screen[] = [
   'journal',
   'leaderboards',
   'social',
+  'multiplayerLobby',
   'mysteryEvent',
   'restRoom',
   'runEnd',

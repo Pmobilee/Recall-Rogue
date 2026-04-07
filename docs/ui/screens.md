@@ -1,7 +1,7 @@
 # Screen Flow & State Machine
 
 > **Purpose:** Complete list of all Screen values, routing logic, transition rules, and component mappings.
-> **Last verified:** 2026-04-03
+> **Last verified:** 2026-04-06
 > **Source files:** `src/ui/stores/gameState.ts`, `src/CardApp.svelte`, `src/services/screenController.ts`
 
 ---
@@ -43,6 +43,7 @@ Defined as a TypeScript union type in `src/ui/stores/gameState.ts`:
 | `journal` | Learning journal and fact history |
 | `leaderboards` | Global / friends / guild / season leaderboards |
 | `social` | Social hub: friends, guilds, duels, trades |
+| `multiplayerLobby` | Multiplayer lobby — mode/deck/house-rules config and player readying; entered via "Multiplayer" hub button |
 | `settings` | In-game settings panel |
 | `studyTemple` | Study Temple screen for dedicated flashcard study |
 | `runPreview` | Pre-run chain distribution preview — shows topic assignments across 3 chains before expedition begins |
@@ -103,6 +104,7 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 | `journal` | `JournalScreen` | |
 | `leaderboards` | `LeaderboardsScreen` | |
 | `social` | `SocialScreen` | |
+| `multiplayerLobby` | `MultiplayerLobby` | Only mounts when `currentLobby !== null`; Props: `lobby`, `localPlayerId`, `onBack`. `MultiplayerHUD` also overlaid during `combat` when `isMultiplayerRun` is true. |
 | `settings` | `SettingsPanel` | |
 | `studyTemple` | `StudyTempleScreen` | |
 | `proceduralStudy` | `ProceduralStudyScreen` | Props: `deckId`, `subDeckId?`, `onBack`; `onBack` returns to `studyTemple` |
