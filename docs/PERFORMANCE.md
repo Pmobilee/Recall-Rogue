@@ -33,15 +33,61 @@ Steam Hardware Survey baseline (2026):
 | Test suite | 1900+ tests | ~15s | 2026-04-08 |
 | Headless sim | 6000 runs | ~5s | 2026-04-04 |
 
+## FPS Monitoring
+
+### Architecture
+
+FPS monitoring is wired in `src/dev/debugBridge.ts` and activated by `src/game/CardGameManager.ts` immediately after the Phaser game instance is created.
+
+**Key components:**
+
+| Symbol | File | Purpose |
+|--------|------|---------|
+| `startFpsMonitoring(game)` | `src/dev/debugBridge.ts` | Sets up 1s interval sampling `game.loop.actualFps`; call once after Phaser boot |
+| `getFpsStats()` | `src/dev/debugBridge.ts` | Returns `{ current, min, avg }` from last 60 samples |
+| `fpsWindow` | `src/dev/debugBridge.ts` | Module-level rolling array, 60 samples max (60s window) |
+| `fps` field | `RRDebugSnapshot` | Included in every `__rrDebug()` call |
+
+### Accessing FPS in Dev
+
+In the browser console or via Playwright `browser_evaluate`:
+
+```js
+// Full debug snapshot including FPS
+const snap = window.__rrDebug();
+console.log(snap.fps); // { current: 60, min: 58, avg: 60 }
+
+// Direct FPS stats (if you only need FPS)
+// Note: getFpsStats is not directly exposed to window — use __rrDebug()
+```
+
+### Low-FPS Analytics Alert
+
+The monitor fires a `low_fps_alert` analytics event when performance degrades:
+
+- **Threshold**: FPS < 40 for 3+ consecutive samples (3+ seconds)
+- **Cooldown**: Maximum one alert per 60 seconds per session
+- **Event payload**:
+  ```ts
+  { fps: number, scene: string, sustained_seconds: number }
+  ```
+- **Analytics guard**: The alert uses a dynamic import of `analyticsService` to avoid circular deps. The analytics service itself gates on user consent and COPPA rules as normal.
+- **In headless bot mode**: `game.loop.actualFps` returns 0 — this triggers the low-FPS path, which is harmless since analytics won't fire in test environments.
+
+### Low-FPS Alert Anti-Spam
+
+The streak counter (`lowFpsStreak`) resets to 0 whenever FPS recovers to ≥ 40. This means transient dips do not accumulate toward the 3-sample threshold. The 60-second cooldown (`lastLowFpsAlertTs`) prevents repeated alerts during prolonged slowdowns.
+
 ## Monitoring Tools
 
 ### Development
-- **Phaser Debug Overlay**: `window.__rrDebug()` — FPS, draw calls, texture count
+- **FPS via debug API**: `window.__rrDebug().fps` — `{ current, min, avg }` from last 60s
+- **FPS log entries**: Check `window.__rrLog` for `type: 'fps'` entries (written on each low-FPS alert)
 - **Chrome DevTools Performance**: Profile combat scenes for 30s
 - **Bundle Analyzer**: `npm run build` — check Vite chunk output
 
 ### Production
-- **Analytics**: Low FPS events tracked when sustained <40 FPS
+- **Analytics**: `low_fps_alert` events tracked when sustained <40 FPS (with 60s cooldown)
 - **Memory**: Snapshot every 60s in dev mode via `performance.memory`
 
 ## Optimization Guidelines

@@ -494,6 +494,16 @@ interface BadgeSharedEvent {
   }
 }
 
+/** Fired when FPS drops below 40 for 3+ consecutive seconds during active gameplay. */
+interface LowFpsAlertEvent {
+  name: 'low_fps_alert'
+  properties: {
+    fps: number
+    scene: string
+    sustained_seconds: number
+  }
+}
+
 /** Union of all supported analytics events. */
 export type AnalyticsEvent =
   | AppOpenEvent
@@ -541,6 +551,7 @@ export type AnalyticsEvent =
   | ReferralLinkSharedEvent
   | ReferralConvertedEvent
   | BadgeSharedEvent
+  | LowFpsAlertEvent
   | PrestigeEvent
 
 // Re-export specific types used externally

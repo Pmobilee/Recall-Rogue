@@ -11,6 +11,7 @@ import { DepthLightingFX } from './shaders/DepthLightingFX'
 import { layoutMode, getCanvasForMode } from '../stores/layoutStore'
 import { get } from 'svelte/store'
 import type { LayoutMode } from '../stores/layoutStore'
+import { startFpsMonitoring } from '../dev/debugBridge'
 
 export class CardGameManager {
   private static instance: CardGameManager | null = null
@@ -65,6 +66,10 @@ export class CardGameManager {
       // Transparent during boot animation so HubScreen renders behind Phaser canvas
       transparent: startAnimation,
     })
+
+    // Wire FPS telemetry to the live Phaser loop (dev + prod — analytics is gated inside).
+    // In headless bot mode game.loop.actualFps is always 0, which is fine.
+    startFpsMonitoring(this.game)
 
     // Subscribe to layout mode changes for future orientation switches.
     // Skip the immediate callback (bootMode already applied above) by checking

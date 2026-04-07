@@ -9,6 +9,12 @@ import { initScenarioSimulator } from './scenarioSimulator'
 import { initScreenshotHelper } from './screenshotHelper'
 import { initLayoutDump } from './layoutDump'
 
+export interface FpsStats {
+  current: number;
+  min: number;
+  avg: number;
+}
+
 export interface RRDebugSnapshot {
   currentScreen: string;
   timestamp: number;
@@ -18,6 +24,7 @@ export interface RRDebugSnapshot {
     inputHandlerCount: number;
     lastPointerPosition: { x: number; y: number } | null;
   } | null;
+  fps: FpsStats;
   stores: Record<string, unknown>;
   interactiveElements: Array<{
     testId: string;
@@ -42,6 +49,89 @@ const MAX_LOG = 100;
 const MAX_ERRORS = 20;
 const logBuffer: LogEntry[] = [];
 const errorBuffer: string[] = [];
+
+// ── FPS tracking state ────────────────────────────────────────────────────────
+
+/** Rolling window of FPS samples — one sample per second, last 60 retained. */
+const FPS_WINDOW_SIZE = 60;
+const fpsWindow: number[] = [];
+
+/** Count of consecutive seconds where FPS < 40. Resets when FPS recovers. */
+let lowFpsStreak = 0;
+
+/** Timestamp of the last low_fps_alert event to enforce 60s cooldown. */
+let lastLowFpsAlertTs = 0;
+
+/** The setInterval handle returned by startFpsMonitoring. */
+let fpsIntervalHandle: ReturnType<typeof setInterval> | null = null;
+
+/**
+ * Return current FPS statistics derived from the rolling sample window.
+ * Returns zero values if no samples have been collected yet.
+ */
+export function getFpsStats(): FpsStats {
+  if (fpsWindow.length === 0) return { current: 0, min: 0, avg: 0 };
+  const current = fpsWindow[fpsWindow.length - 1];
+  const min = Math.min(...fpsWindow);
+  const avg = Math.round(fpsWindow.reduce((s, v) => s + v, 0) / fpsWindow.length);
+  return { current, min, avg };
+}
+
+/**
+ * Start sampling Phaser's actual FPS once per second.
+ * Fires a low_fps_alert analytics event when FPS stays below 40 for 3+ seconds.
+ * Safe to call multiple times — subsequent calls are no-ops.
+ *
+ * @param game - The live Phaser.Game instance.
+ */
+export function startFpsMonitoring(game: Phaser.Game): void {
+  // Avoid duplicate intervals if boot() is called more than once
+  if (fpsIntervalHandle !== null) return;
+
+  fpsIntervalHandle = setInterval(() => {
+    // game.loop.actualFps is updated every frame by Phaser's TimeStep
+    const sample = Math.round(game.loop.actualFps);
+    fpsWindow.push(sample);
+    if (fpsWindow.length > FPS_WINDOW_SIZE) fpsWindow.shift();
+
+    if (sample < 40) {
+      lowFpsStreak++;
+      if (lowFpsStreak >= 3) {
+        const now = Date.now();
+        const cooldownElapsed = now - lastLowFpsAlertTs >= 60_000;
+        if (cooldownElapsed) {
+          lastLowFpsAlertTs = now;
+          // Resolve active scene name for context
+          let sceneName = 'unknown';
+          try {
+            const scenes = game.scene.getScenes(true);
+            if (scenes.length > 0) {
+              sceneName = scenes[0].sys.settings.key;
+            }
+          } catch {
+            // Ignore — scene manager may not be ready
+          }
+          // Dynamic import to avoid circular dep: debugBridge → analyticsService → playerData
+          import('../services/analyticsService').then(({ analyticsService }) => {
+            analyticsService.track({
+              name: 'low_fps_alert',
+              properties: {
+                fps: sample,
+                scene: sceneName,
+                sustained_seconds: lowFpsStreak,
+              },
+            });
+          }).catch(() => {
+            // Silently ignore — analytics not critical
+          });
+          rrLog('fps', `Low FPS alert: ${sample} fps in ${sceneName} for ${lowFpsStreak}s`);
+        }
+      }
+    } else {
+      lowFpsStreak = 0;
+    }
+  }, 1000);
+}
 
 /** Push an event into the ring buffer log. */
 export function rrLog(type: string, detail: string): void {
@@ -122,6 +212,7 @@ function buildSnapshot(): RRDebugSnapshot {
     currentScreen: typeof screen === 'string' ? screen : 'unknown',
     timestamp: Date.now(),
     phaser: getPhaserState(),
+    fps: getFpsStats(),
     stores,
     interactiveElements: getInteractiveElements(),
     recentErrors: [...errorBuffer],
