@@ -33,6 +33,7 @@
 | `MultiplayerHUD.svelte` | Race Mode opponent progress HUD — compact fixed overlay (top-right, 260px wide). Compact mode shows name + floor badge + mini HP bar. Expands on click to show full HP bar, score, accuracy, encounters won, and status pill (In Combat / Finished). Props: `progress: RaceProgress`, `displayName: string`. HP bar transitions smoothly with CSS. **Wired into app flow (2026-04-06):** shown in the `combat` screen block when `isMultiplayerRun` is true (i.e. `currentLobby !== null`). Passes `placeholderProgress` for now — real race progress wiring deferred to task 2.1. |
 | `DuelOpponentPanel.svelte` | Real-Time Duel live opponent state panel — fixed left-side overlay (~280px wide), vertically centered. Sections: opponent name + HP bar; damage contribution bar (two-color, blue=you vs red=them, with live % labels — the competitive star visual); chain state (color dot + length + name); last-turn summary (cards played, damage dealt, quiz result pill); circular SVG turn timer (stroke-dashoffset animates 0→circumference as time runs out, color shifts green→amber→red); enemy target indicator (flashes red with pulse animation when targeting local player). Props: `opponentName`, `opponentHp`, `opponentMaxHp`, `localDamageTotal`, `opponentDamageTotal`, `opponentChainLength`, `opponentChainColor?`, `lastTurnSummary?` (`cardsPlayed`, `damageDealt`, `quizResult: 'correct'|'wrong'|'quick_play'`), `turnTimerSecs`, `turnTimerMax`, `enemyTargetIsLocal`. All sizing via `calc() * var(--layout-scale/--text-scale)`. |
 | `RaceResultsScreen.svelte` | Full-screen race/duel results overlay shown when both players finish. Centered card (~820px). Sections: mode label header; large VICTORY (green glow) / DEFEAT (red glow) banner with flavor subtitle; side-by-side stat comparison table (Score, Floor Reached, Accuracy, Facts Answered, Correct, Duration) with winner-column gold highlight, per-row green arrow on the better value; collapsible score breakdown table (Floors×100, Correct×10, Wrong×-5, total); three action buttons (Play Again / Return to Lobby / Return to Hub). Props: `results: RaceResults`, `localPlayerId: string`, `mode: 'race'|'same_cards'|'duel'`, `onPlayAgain`, `onReturnToLobby`, `onReturnToHub`. Duration formatted as M:SS. All sizing via `calc() * var(--layout-scale/--text-scale)`. |
+| `TriviaRoundScreen.svelte` | Full-screen Trivia Night round overlay for 2-8 players. Three phases: **question** (large question text, 2×2 color-coded answer buttons A/B/C/D, circular SVG countdown timer that pulses red under 5 s, "Waiting..." message after local answer); **revealing** (correct answer green glow + checkmark, wrong answer red + X, other options dimmed, animated points pop-up, per-player results table with timing and points earned); **finished** (winner spotlight with crown + CSS confetti if local player won, full leaderboard table with rank/name/points/accuracy/avg-time, three action buttons). Props: `gameState: TriviaGameState`, `localPlayerId: string`, `currentQuestion: TriviaQuestion | null`, `lastRoundResult: TriviaRoundResult | null`, `onAnswer(selectedIndex, timingMs)`, `onPlayAgain`, `onReturnToLobby`, `onReturnToHub`. Delegates all scoring to `triviaNightService`. All sizing via `calc() * var(--layout-scale/--text-scale)`. |
 
 ---
 
@@ -147,3 +148,27 @@ Platform behavior:
 - **Mobile (Capacitor):** returns `false` immediately — Capacitor manages fullscreen via native manifest
 
 F11 global shortcut registered in `src/main.ts` via `window.addEventListener('keydown')` — calls `void toggleFullscreen()`, preventDefault to suppress browser default behavior.
+
+### triviaNightService.ts
+
+`src/services/triviaNightService.ts` — Pure quiz party mode service for 2-8 players. No combat, no cards, no FSRS.
+
+| Export | Description |
+|--------|-------------|
+| `initTriviaGame(players, totalRounds, isHost)` | Initialize game state for all players. Call once when host starts the game. |
+| `hostNextQuestion(factId, question, options, correctIndex, domain?, difficulty?)` | Host broadcasts next question via `mp:trivia:question`. Starts auto-resolve timer (DEFAULT_TIME_LIMIT + 500 ms grace). |
+| `submitAnswer(selectedIndex, timingMs)` | Local player submits answer via `mp:trivia:answer`. Use -1 for timeout. |
+| `hostResolveRound()` | Host scores all answers, updates standings, broadcasts `mp:trivia:scores`. Idempotent (no-op if already resolved). |
+| `hostEndGame()` | Host broadcasts `mp:trivia:end` with final standings, transitions to `'finished'` phase. |
+| `destroyTriviaGame()` | Clears all state and timers on screen unmount. |
+| `getTriviaState()` | Returns current `TriviaGameState` or null. |
+| `onTriviaQuestion(cb)` | Register callback for incoming questions (non-host). Returns unsubscribe fn. |
+| `onTriviaRoundResult(cb)` | Register callback for round results. Returns unsubscribe fn. |
+| `onTriviaGameOver(cb)` | Register callback for final standings. Returns unsubscribe fn. |
+| `onTriviaStateChange(cb)` | Register callback for any state mutation. Returns unsubscribe fn. |
+| `initTriviaMessageHandlers()` | Wire all four `mp:trivia:*` transport listeners. Returns cleanup fn — call on unmount. |
+| `calculateTriviaPoints(correct, timingMs, timeLimitMs)` | Pure scoring: CORRECT_POINTS (1000) + linear speed bonus up to SPEED_BONUS_MAX (500). |
+
+Constants: `DEFAULT_ROUNDS=15`, `MIN_ROUNDS=5`, `MAX_ROUNDS=30`, `DEFAULT_TIME_LIMIT=15` s, `CORRECT_POINTS=1000`, `SPEED_BONUS_MAX=500`, `REVEAL_DELAY_MS=3000`.
+
+Transport protocol: `mp:trivia:question` (host→all), `mp:trivia:answer` (player→host), `mp:trivia:scores` (host→all), `mp:trivia:end` (host→all). All four types pre-registered in `multiplayerTransport.ts`.

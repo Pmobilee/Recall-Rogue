@@ -31,14 +31,14 @@ Comprehensive multiplayer for Recall Rogue: competitive, cooperative, and social
 | 2.2 Real-Time Duel game service | DONE | multiplayerGameService.ts: host-authoritative enemy, simultaneous turns, damage attribution |
 | 2.3 Co-op enemy scaling | DONE | getCoopHpMultiplier (1.6x 2P), block (+50%), damage cap (+50%) in enemyManager |
 | 2.4 Duel UI | DONE | DuelOpponentPanel.svelte (damage bar, timer, chain) + RaceResultsScreen.svelte |
-| 2.5 ELO matchmaking | PENDING | Ranked mode, replay anti-cheat |
+| 2.5 ELO matchmaking | DONE | eloMatchmakingService.ts: ELO calc, 8 rank tiers, queue with band widening, AI fallback |
 
 ### Phase 3: Social — Co-op + Trivia (Weeks 8-10)
 | Task | Status | Notes |
 |------|--------|-------|
-| 3.1 Co-op vs Enemy | PENDING | Simultaneous turns, shared enemy |
-| 3.2 Co-op exclusive effects | PENDING | Synapse Link, Guardian, Knowledge Share |
-| 3.3 Trivia Night mode | PENDING | Pure quiz, 2-8 players |
+| 3.1 Co-op vs Enemy | DONE | Covered by multiplayerGameService + enemyManager co-op scaling |
+| 3.2 Co-op exclusive effects | DONE | coopEffects.ts: 6 effects (Synapse Link, Guardian, Knowledge Share, Team Chain, Fog Contagion, Shared Surge) |
+| 3.3 Trivia Night mode | DONE | triviaNightService.ts + TriviaRoundScreen.svelte: 2-8 players, speed bonus, 3-phase UI |
 
 ### Phase 4: Polish (Weeks 11-12)
 | Task | Status | Notes |

@@ -1,8 +1,8 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-03
-> **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`
+> **Last verified:** 2026-04-06
+> **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`
 
 ---
 
@@ -221,7 +221,7 @@ The reward screen (`CardRewardScreen.svelte`) skips the heal UI step when `healA
 
 ---
 
-## Tag-Based Mastery Features in cardEffectResolver (2026-04-03)
+## Tag-Based Mastery Features in cardEffectResolver (2026-04-06)
 
 `resolveCardEffect()` now checks cumulative mastery tags via `hasTag('tag_name')`. Tags are set in `MASTERY_STAT_TABLES` and read via `getMasteryStats().tags`.
 
@@ -230,7 +230,7 @@ Key behavioral changes driven by tags:
 - **Buff mechanics**: `empower_2cards`, `quicken_draw1/draw2/ap2`, `focus_draw1/next2free`, `insc_fury_cc_bonus2`, `insc_iron_thorns1`
 - **Debuff mechanics**: `hex_vuln1t`, `slow_any_action/slow_weak1t`, `sap_weak2t/strip3block`, `corrode_vuln1t/strip_all`, `expose_dmg3`, `corrtouch_vuln1t`, `bash_vuln2t`, `stagger_weak1t`
 
-## turnManager Wiring of CardEffectResult Fields (2026-04-03)
+## turnManager Wiring of CardEffectResult Fields (2026-04-06)
 
 All new `CardEffectResult` fields are now wired in `playCardAction()` and `endPlayerTurn()`. New `TurnState` fields added to support them:
 
@@ -295,7 +295,7 @@ All new `CardEffectResult` fields are now wired in `playCardAction()` and `endPl
 
 ---
 
-## Weapon-Enemy Impact Timing (2026-04-03)
+## Weapon-Enemy Impact Timing (2026-04-06)
 
 Sword slash and tome cast animations defer the enemy hit reaction to the weapon's visual contact frame rather than firing at T+0 (when the card resolves):
 
@@ -319,7 +319,7 @@ Uses `ENRAGE_SEGMENTS` (floor-based): Phase 1 ramps at `ENRAGE_PHASE1_BONUS` (+1
 
 ---
 
-## Knowledge-Reactive Dungeon Feedback (Spec 05, 2026-04-03)
+## Knowledge-Reactive Dungeon Feedback (Spec 05, 2026-04-06)
 
 Correct and wrong quiz answers modulate the dungeon atmosphere in real time, binding the knowledge system and combat environment together spatially.
 
@@ -377,7 +377,7 @@ Warm and cold streaks are mutually exclusive — activating one cancels the othe
 
 ---
 
-## Dynamic Dungeon Mood (Spec 09, 2026-04-03)
+## Dynamic Dungeon Mood (Spec 09, 2026-04-06)
 
 A continuous mood state (0.0 calm → 1.0 desperate) driven by real-time combat signals that modulates all visual atmosphere parameters. The mood value smooth-interpolates toward its target over ~2.5 seconds, never jumping instantly. This is the orchestration baseline layer that all other immersion specs stack their transient spikes on top of.
 
@@ -428,3 +428,62 @@ Multiplier fields stack multiplicatively; `colorTempShift` and `desaturationAmou
 - `src/game/scenes/CombatScene.ts` — `feedMoodInputs`, `calculateEnemyThreat`, `applyMoodModifiers`, `applyMoodSaturation`, `moodVignetteOverlay`
 - `src/game/systems/CombatAtmosphereSystem.ts` — `setMoodParticleRate`
 - `src/game/systems/DepthLightingSystem.ts` — `setMoodFlickerSpeed`, `setMoodFogMultiplier`
+
+---
+
+## Co-op Exclusive Effects (coop / duel modes)
+
+> **Source file:** `src/services/coopEffects.ts`
+> **Last verified:** 2026-04-06
+
+Six mechanics activate only in `coop` and `duel` multiplayer modes. They stack on top of the solo damage pipeline (GDD §15.5) without bypassing any existing steps.
+
+### Lifecycle
+
+| Call | When |
+|------|------|
+| `initCoopEffects()` | Encounter start in coop/duel mode |
+| `processTurnActions(local, partner)` | After both players submit DuelTurnAction, before damage |
+| `tickEndOfTurn()` | After all damage, block, and fog are applied |
+| `destroyCoopEffects()` | Encounter end or multiplayer exit |
+
+### The 6 Effects
+
+| Effect | Mechanic | Value | Notes |
+|--------|----------|-------|-------|
+| **Synapse Link** | Both charge same chain type | +0.5× additive | `synapseLinkBonus`; resets each turn |
+| **Guardian Shield** | Redirect own block to partner | Queued block amount | Opt-in via card tag `guardian_shield`; call `queueGuardianShield()` from resolver, `consumeGuardianShield()` from partner |
+| **Knowledge Share** | Partner answers correctly | +0.25× additive, 1 turn | `knowledgeShareBuff`; refreshes if partner answers again before expiry |
+| **Team Chain Bonus** | Both players have active chains | +0.5× additive | `teamChainBonus`; requires `chainLength > 0` for each |
+| **Fog Contagion** | Wrong answers from either player | +1 fog per wrong | Applied to ALL players via `adjustAura()`; `getSharedFogIncrease()` |
+| **Shared Surge** | Combined turn counter | Waives AP surcharge | Same 4-turn cycle as solo surge (turns 2, 6, 10, 14…); `isCoopSurgeTurn()` |
+
+### Multiplier Stacking
+
+All three additive bonuses (Synapse Link, Knowledge Share, Team Chain) stack additively — NOT multiplicatively — to limit maximum swing:
+
+```
+coopMultiplier = 1.0 + synapseLinkBonus + knowledgeShareBuff + teamChainBonus
+               // max: 1.0 + 0.5 + 0.25 + 0.5 = 2.25×
+```
+
+`getCoopDamageMultiplier()` returns this value. Multiply the resolved solo damage by it in the damage pipeline when in coop/duel mode.
+
+### Constants
+
+| Constant | Value | Meaning |
+|----------|-------|---------|
+| `SYNAPSE_LINK_MULTIPLIER` | 0.5 | Additive bonus for linked chain |
+| `KNOWLEDGE_SHARE_BUFF` | 0.25 | Additive buff from partner correct |
+| `KNOWLEDGE_SHARE_DURATION` | 1 | Turns buff persists |
+| `TEAM_CHAIN_BONUS` | 0.5 | Additive bonus for dual chains |
+| `COOP_SURGE_INTERVAL` | 4 | Mirrors solo `SURGE_INTERVAL` |
+| `FOG_PER_WRONG_ANSWER` | 1 | Fog per wrong answer (any player) |
+
+### Guardian Shield Integration
+
+Guardian Shield is opt-in: the card resolver must call `queueGuardianShield(blockAmount)` when a card tagged `guardian_shield` is played charged. The partner retrieves it via `consumeGuardianShield()` — returns 0 if nothing is queued. Any unconsumed pending block is discarded by `tickEndOfTurn()`.
+
+### Fog Contagion Integration
+
+After `processTurnActions()`, read `getSharedFogIncrease()` and call `adjustAura(n)` for BOTH players in encounterBridge. This is the accountability mechanic: wrong answers from either partner hurt everyone.

@@ -2,7 +2,7 @@
 
 > **Purpose:** Lookup table mapping every service name to its domain sub-doc.
 > **Last verified:** 2026-04-06
-> **Source files:** All `src/services/*.ts` (145 files, excluding test files) + `src/services/math/*.ts` (7 files)
+> **Source files:** All `src/services/*.ts` (147 files, excluding test files) + `src/services/math/*.ts` (7 files)
 
 | Service | File | Sub-doc |
 |---------|------|---------|
@@ -37,6 +37,7 @@
 | combatResumeService | src/services/combatResumeService.ts | [combat.md](combat.md) |
 | confusionMatrix | src/services/confusionMatrix.ts | [learning.md](learning.md) |
 | confusionMatrixStore | src/services/confusionMatrixStore.ts | [learning.md](learning.md) |
+| coopEffects | src/services/coopEffects.ts | [combat.md](../../mechanics/combat.md) |
 | coopService | src/services/coopService.ts | [social.md](social.md) |
 | curatedDistractorSelector | src/services/curatedDistractorSelector.ts | [quiz.md](quiz.md) |
 | curatedFactSelector | src/services/curatedFactSelector.ts | [quiz.md](quiz.md) |
@@ -52,6 +53,7 @@
 | domainResolver | src/services/domainResolver.ts | [deck.md](deck.md) |
 | domainSubcategoryService | src/services/domainSubcategoryService.ts | [deck.md](deck.md) |
 | duelService | src/services/duelService.ts | [social.md](social.md) |
+| eloMatchmakingService | src/services/eloMatchmakingService.ts | [social.md](social.md) |
 | encounterBridge | src/services/encounterBridge.ts | [combat.md](combat.md) |
 | encounterRewards | src/services/encounterRewards.ts | [run.md](run.md) |
 | endlessDepthsService | src/services/endlessDepthsService.ts | [run-competitive.md](run-competitive.md) |
@@ -148,6 +150,7 @@
 | syncService | src/services/syncService.ts | [persistence.md](persistence.md) |
 | tierDerivation | src/services/tierDerivation.ts | [deck.md](deck.md) |
 | tradingService | src/services/tradingService.ts | [social.md](social.md) |
+| triviaNightService | src/services/triviaNightService.ts | [social.md](social.md) |
 | turnManager | src/services/turnManager.ts | [combat.md](combat.md) |
 | vocabDistractorService | src/services/vocabDistractorService.ts | [quiz.md](quiz.md) |
 | vocabVariantService | src/services/vocabVariantService.ts | [quiz.md](quiz.md) |
