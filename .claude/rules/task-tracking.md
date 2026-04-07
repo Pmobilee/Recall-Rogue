@@ -2,7 +2,7 @@
 
 ## Core Rule
 
-EVERY non-trivial task MUST use CLI tasks (TaskCreate, TaskUpdate, TaskList). No exceptions. If it's not a single-line fix, it needs tasks.
+EVERY task MUST use CLI tasks (TaskCreate, TaskUpdate, TaskList). **No exceptions. No "too small." No "just a quick fix."** Even a one-line change gets: a task for the fix, a task for verification. The user's #1 process requirement.
 
 ## Before Starting Work
 - Break ALL work into granular TaskCreate tasks BEFORE writing any code
@@ -24,3 +24,6 @@ Three entire answer pools were skipped in the Medical Terminology deck (2026-04-
 
 ## Every Agent Must Follow This
 This rule applies to ALL agents — content-agent, game-logic, ui-agent, qa-agent, docs-agent. No agent is exempt. The orchestrator must also track its own coordination tasks.
+
+## Even "Trivial" Work Gets Tasks
+The user explicitly requires tasks for EVERYTHING — reading docs, one-line fixes, verification steps, doc updates. If you think "this is too small for a task," you are wrong. Create the task. The overhead is near-zero; the cost of forgetting is high.
