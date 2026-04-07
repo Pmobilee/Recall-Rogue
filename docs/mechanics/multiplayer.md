@@ -2,7 +2,7 @@
 
 > **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopEffects.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-07 — gameFlowController wiring complete
+> **Last verified:** 2026-04-07 — MODE_TAGLINES added, multiplayerMenu screen registered
 
 ## Modes
 
@@ -13,6 +13,18 @@
 | Real-Time Duel | 2 | Per-turn (host-authoritative) | Shared enemy, simultaneous turns, damage attribution |
 | Co-op | 2 | Per-turn (host-authoritative) | Shared enemy, co-op exclusive effects |
 | Trivia Night | 2-8 | Per-round | Pure quiz, speed bonus scoring, no combat |
+
+## Mode Display Constants
+
+All mode metadata lives in `src/data/multiplayerTypes.ts`. Three exports cover UI needs:
+
+| Export | Purpose | Example (race) |
+|--------|---------|----------------|
+| `MODE_DISPLAY_NAMES` | Short title for cards/headers | `'Race Mode'` |
+| `MODE_DESCRIPTIONS` | 1-2 sentence player-friendly description | `'Both players run the same dungeon independently. Same enemies, same layout — race to the highest score.'` |
+| `MODE_TAGLINES` | Ultra-short tagline for mode cards | `'Race to the highest score'` |
+
+`MODE_TAGLINES` was added alongside the `multiplayerMenu` screen registration (2026-04-07). UI components should prefer `MODE_TAGLINES` for compact contexts (mode cards, tooltip headers) and `MODE_DESCRIPTIONS` for full description panels.
 
 ## Race Mode Scoring
 
@@ -211,11 +223,19 @@ For same-screen play, use `createLocalTransportPair()` which returns two pre-lin
 
 Lobby lifecycle managed by `src/services/multiplayerLobbyService.ts`.
 
+## Screen Flow
+
+```
+hub → multiplayerMenu → (mode selected) → multiplayerLobby → (game start) → [mode-specific game]
+```
+
+`multiplayerMenu` is registered as a hub screen in `screenController.ts` (`HUB_SCREENS` set). It is accessible from the hub without an active run.
+
 ## Key Files
 
 | File | Role |
 |------|------|
-| `src/data/multiplayerTypes.ts` | All shared types, constants, `MultiplayerMode` union, lobby/fairness/race types |
+| `src/data/multiplayerTypes.ts` | All shared types, constants, `MultiplayerMode` union, lobby/fairness/race types, `MODE_DESCRIPTIONS`, `MODE_TAGLINES` |
 | `src/services/multiplayerScoring.ts` | `computeRaceScore()` — pure race score formula (AR-86 v1) |
 | `src/services/multiplayerLobbyService.ts` | Lobby lifecycle: create, join, configure, start |
 | `src/services/multiplayerTransport.ts` | Transport abstraction (WebSocket + Steam P2P + Local) |

@@ -124,9 +124,18 @@ export const MODE_DISPLAY_NAMES: Record<MultiplayerMode, string> = {
 
 /** Mode descriptions */
 export const MODE_DESCRIPTIONS: Record<MultiplayerMode, string> = {
-  race: 'Same seed, independent play. Compare final scores.',
-  same_cards: 'Identical hands and shuffles. Pure skill comparison.',
-  duel: 'Head-to-head vs shared enemy. Simultaneous turns.',
-  coop: 'Fight together against a shared enemy.',
-  trivia_night: 'Pure quiz mode. No combat, just knowledge.',
+  race: 'Both players run the same dungeon independently. Same enemies, same layout \u2014 race to the highest score.',
+  same_cards: 'Everything is identical \u2014 same cards, same draws, same shuffles. The only difference is you.',
+  duel: 'Face-to-face battle. You share one enemy and take simultaneous turns. Outsmart your opponent.',
+  coop: 'Team up against a tougher shared enemy. Combine your knowledge to survive.',
+  trivia_night: 'No combat, no cards \u2014 just rapid-fire quiz rounds for up to 8 players.',
+};
+
+/** Short taglines for mode cards */
+export const MODE_TAGLINES: Record<MultiplayerMode, string> = {
+  race: 'Race to the highest score',
+  same_cards: 'Pure skill, zero luck',
+  duel: 'Outsmart your opponent',
+  coop: 'Survive together',
+  trivia_night: 'Party quiz for up to 8',
 };

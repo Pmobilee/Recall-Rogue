@@ -1,6 +1,6 @@
 import type { Screen } from '../ui/stores/gameState'
 
-export type HubScreenName = Extract<Screen, 'hub' | 'library' | 'settings' | 'profile' | 'journal' | 'leaderboards' | 'social' | 'deckSelectionHub' | 'triviaDungeon' | 'studyTemple'>
+export type HubScreenName = Extract<Screen, 'hub' | 'library' | 'settings' | 'profile' | 'journal' | 'leaderboards' | 'social' | 'deckSelectionHub' | 'triviaDungeon' | 'studyTemple' | 'multiplayerMenu'>
 
 const RUN_LOCKED_SCREENS = new Set<Screen>([
   'combat',
@@ -26,6 +26,7 @@ const HUB_SCREENS = new Set<Screen>([
   'relicSanctum',
   'mainMenu',
   'base',
+  'multiplayerMenu', // Multiplayer mode selection — accessible from hub without a run
 ])
 
 export function normalizeHomeScreen(screen: Screen): Screen {

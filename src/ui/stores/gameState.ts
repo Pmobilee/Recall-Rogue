@@ -17,6 +17,7 @@ export type Screen =
   | 'leaderboards'
   | 'social'
   | 'multiplayerLobby' // Multiplayer lobby — mode/deck/house-rules config and player readying
+  | 'multiplayerMenu'  // Multiplayer mode selection menu — entry point before lobby creation
   | 'mysteryEvent'
   | 'restRoom'
   | 'runEnd'
@@ -58,6 +59,7 @@ const VALID_SCREENS: Screen[] = [
   'leaderboards',
   'social',
   'multiplayerLobby',
+  'multiplayerMenu',
   'mysteryEvent',
   'restRoom',
   'runEnd',

@@ -176,15 +176,17 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   import { narrativeDisplay, dismissNarrative } from './ui/stores/narrativeStore'
   import MultiplayerLobby from './ui/components/MultiplayerLobby.svelte'
   import MultiplayerHUD from './ui/components/MultiplayerHUD.svelte'
+  import MultiplayerMenu from './ui/components/MultiplayerMenu.svelte'
   import {
     createLobby,
+    joinLobby,
     leaveLobby,
     getCurrentLobby,
     onLobbyUpdate,
     onGameStart as registerGameStartCb,
   } from './services/multiplayerLobbyService'
   import { onOpponentProgressUpdate } from './services/multiplayerGameService'
-  import type { LobbyState, RaceProgress } from './data/multiplayerTypes'
+  import type { LobbyState, RaceProgress, MultiplayerMode } from './data/multiplayerTypes'
 
   // Update Steam Rich Presence whenever the active screen changes.
   $effect(() => {
@@ -461,16 +463,29 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   let isMultiplayerRun = $derived(currentLobby !== null)
 
   function handleOpenMultiplayer(): void {
-    // Create a lobby as host with a placeholder Steam ID (real ID wired in later).
-    const lobby = createLobby('local_player', 'Player', 'race')
+    // Navigate to the multiplayer menu for mode selection before creating a lobby.
+    transitionScreen('multiplayerMenu')
+  }
+
+  function handleMultiplayerBack(): void {
+    if (currentLobby) {
+      leaveLobby()
+      currentLobby = null
+      transitionScreen('multiplayerMenu')
+    } else {
+      transitionScreen('hub')
+    }
+  }
+
+  function handleCreateLobby(mode: MultiplayerMode): void {
+    const lobby = createLobby('local_player', 'Player', mode)
     currentLobby = lobby
     transitionScreen('multiplayerLobby')
   }
 
-  function handleMultiplayerBack(): void {
-    leaveLobby()
-    currentLobby = null
-    transitionScreen('hub')
+  function handleJoinLobby(code: string): void {
+    joinLobby(code, 'local_player', 'Player')
+    transitionScreen('multiplayerLobby')
   }
 
   // Keep currentLobby in sync when the lobby service updates state (other players join/leave).
@@ -1654,6 +1669,16 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   {#if $currentScreen === 'leaderboards'}
     <div in:fly={{ y: 8, duration: 350 }}>
       <LeaderboardsScreen onBack={handleBackToMenu} />
+    </div>
+  {/if}
+
+  {#if $currentScreen === 'multiplayerMenu'}
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <MultiplayerMenu
+        onBack={() => transitionScreen('hub')}
+        onCreateLobby={handleCreateLobby}
+        onJoinLobby={handleJoinLobby}
+      />
     </div>
   {/if}
 

@@ -1,7 +1,7 @@
 # Screen Flow & State Machine
 
 > **Purpose:** Complete list of all Screen values, routing logic, transition rules, and component mappings.
-> **Last verified:** 2026-04-06
+> **Last verified:** 2026-04-07
 > **Source files:** `src/ui/stores/gameState.ts`, `src/CardApp.svelte`, `src/services/screenController.ts`
 
 ---
@@ -43,7 +43,8 @@ Defined as a TypeScript union type in `src/ui/stores/gameState.ts`:
 | `journal` | Learning journal and fact history |
 | `leaderboards` | Global / friends / guild / season leaderboards |
 | `social` | Social hub: friends, guilds, duels, trades |
-| `multiplayerLobby` | Multiplayer lobby — mode/deck/house-rules config and player readying; entered via "Multiplayer" hub button |
+| `multiplayerMenu` | Multiplayer entry screen — two-tab UI (Create Lobby with 5 mode cards, Join Lobby with 6-char code); shown when hub "Multiplayer" button is pressed; entry point before lobby creation |
+| `multiplayerLobby` | Multiplayer lobby — mode/deck/house-rules config and player readying; entered via `multiplayerMenu` |
 | `settings` | In-game settings panel |
 | `studyTemple` | Study Temple screen for dedicated flashcard study |
 | `runPreview` | Pre-run chain distribution preview — shows topic assignments across 3 chains before expedition begins |
@@ -104,6 +105,7 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 | `journal` | `JournalScreen` | |
 | `leaderboards` | `LeaderboardsScreen` | |
 | `social` | `SocialScreen` | |
+| `multiplayerMenu` | `MultiplayerMenu` | Two-tab entry screen. Create tab: 5 mode cards (race/same_cards/duel/coop/trivia_night) + "Create Lobby" button. Join tab: monospace 6-char code input + "Join Lobby" button. Props: `onBack`, `onCreateLobby(mode)`, `onJoinLobby(code)`. `onBack` returns to hub; creating transitions to `multiplayerLobby` with new lobby; joining transitions to `multiplayerLobby` (lobby syncs via onLobbyUpdate). |
 | `multiplayerLobby` | `MultiplayerLobby` | Only mounts when `currentLobby !== null`; Props: `lobby`, `localPlayerId`, `onBack`. `MultiplayerHUD` also overlaid during `combat` when `isMultiplayerRun` is true. |
 | `settings` | `SettingsPanel` | |
 | `studyTemple` | `StudyTempleScreen` | |
@@ -225,6 +227,13 @@ combat (boss) → retreatOrDelve
     → resume → previous screen
     → return to hub → hub (run saved, resumable)
 ```
+
+### Multiplayer Flow
+```
+hub → multiplayerMenu → (select mode) → multiplayerLobby → (game start) → [mode-specific game]
+```
+
+`multiplayerMenu` is a hub screen (in `HUB_SCREENS` set in `screenController.ts`). It navigates to `multiplayerLobby` after the player picks a mode and the host creates or joins a lobby.
 
 ---
 
