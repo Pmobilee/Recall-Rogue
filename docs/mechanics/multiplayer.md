@@ -2,7 +2,7 @@
 
 > **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopEffects.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-07 — LobbyContentSelection type added, setContentSelection() added to lobby service
+> **Last verified:** 2026-04-07 — addLocalBot() / removeLocalBot() added for same-machine dev testing
 
 ## Modes
 
@@ -243,6 +243,39 @@ For same-screen play, use `createLocalTransportPair()` which returns two pre-lin
 
 `getMultiplayerTransport(mode?)` returns the lazily-created singleton.
 
+## Local Testing (Dev-Only)
+
+Two functions in `src/services/multiplayerLobbyService.ts` allow same-machine multiplayer testing without a second client, network connection, or Steam running.
+
+### `addLocalBot(botName?: string): void`
+
+Call after `createLobby()`. The function:
+
+1. Creates a linked `LocalMultiplayerTransport` pair via `createLocalTransportPair()`
+2. Generates a bot player ID (`bot_<timestamp36>`) and calls `connect()` on both sides
+3. Pushes the bot entry directly into `_currentLobby.players` and fires `_onLobbyUpdate`
+4. Schedules a 500 ms `setTimeout` that sets `bot.isReady = true` and fires another update
+
+The bot transport reference is held in the module-level `_botTransport` variable to prevent garbage collection while the lobby is active.
+
+**Preconditions:** A lobby must exist (`_currentLobby !== null`) and the caller must be the host (`isHost() === true`). The function is a no-op otherwise.
+
+### `removeLocalBot(): void`
+
+Filters all `bot_*` players from `_currentLobby.players`, calls `disconnect()` on the stored bot transport, nulls `_botTransport`, and fires `_onLobbyUpdate`.
+
+### Example usage
+
+```typescript
+import { createLobby, addLocalBot, removeLocalBot } from './multiplayerLobbyService';
+
+const lobby = createLobby(myPlayerId, 'Host', 'race');
+addLocalBot('Test Bot');    // bot appears in lobby, ready-ups in 500ms
+// ... test lobby UI, allReady(), startGame() ...
+removeLocalBot();           // clean up before leaving
+```
+
+
 ## Lobby Flow
 
 1. Host creates lobby via `coopService.createLobby()` — returns `roomId` and 6-char invite code
@@ -268,7 +301,7 @@ hub → multiplayerMenu → (mode selected) → multiplayerLobby → (game start
 |------|------|
 | `src/data/multiplayerTypes.ts` | All shared types, constants, `MultiplayerMode` union, lobby/fairness/race types, `LobbyContentSelection`, `MODE_DESCRIPTIONS`, `MODE_TAGLINES` |
 | `src/services/multiplayerScoring.ts` | `computeRaceScore()` — pure race score formula (AR-86 v1) |
-| `src/services/multiplayerLobbyService.ts` | Lobby lifecycle: create, join, configure, start; `setContentSelection()` for rich content targeting |
+| `src/services/multiplayerLobbyService.ts` | Lobby lifecycle: create, join, configure, start; `setContentSelection()` for rich content targeting; `addLocalBot()` / `removeLocalBot()` for same-machine dev testing |
 | `src/services/multiplayerTransport.ts` | Transport abstraction (WebSocket + Steam P2P + Local) |
 | `src/services/multiplayerGameService.ts` | Race / Duel / Same Cards game sync + `DuelTurnAction` / `DuelTurnResolution` |
 | `src/services/coopEffects.ts` | 6 co-op exclusive effects, damage multiplier computation |

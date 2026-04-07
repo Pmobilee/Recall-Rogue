@@ -13,7 +13,7 @@
  *   5. Host starts game (startGame) → shared seed generated and distributed
  */
 
-import { getMultiplayerTransport, destroyMultiplayerTransport } from './multiplayerTransport';
+import { getMultiplayerTransport, destroyMultiplayerTransport, createLocalTransportPair, LocalMultiplayerTransport } from "./multiplayerTransport";
 import type {
   LobbyState, LobbyPlayer, MultiplayerMode, DeckSelectionMode,
   HouseRules, RaceProgress, RaceResults, LobbyContentSelection
@@ -28,6 +28,9 @@ let _onLobbyUpdate: ((lobby: LobbyState) => void) | null = null;
 let _onGameStart: ((seed: number, lobby: LobbyState) => void) | null = null;
 let _onRaceProgress: ((progress: RaceProgress) => void) | null = null;
 let _onRaceResults: ((results: RaceResults) => void) | null = null;
+
+/** Transport for the local bot player, if one is active. Dev-only. */
+let _botTransport: LocalMultiplayerTransport | null = null;
 
 /** Get the current lobby state (null if not in a lobby) */
 export function getCurrentLobby(): LobbyState | null { return _currentLobby; }
@@ -152,6 +155,58 @@ export function setRanked(ranked: boolean): void {
   if (!_currentLobby || !isHost()) return;
   _currentLobby.isRanked = ranked;
   broadcastSettings();
+}
+
+// ── Local Bot (dev-only) ────────────────────────────────────────────────────
+
+/**
+ * Add a local bot player to the current lobby for same-machine testing.
+ * Creates a linked local transport pair so messages flow between host and bot.
+ * The bot auto-readies after a short delay.
+ * Dev-only — does not use networking.
+ */
+export function addLocalBot(botName: string = 'Bot Player'): void {
+  if (!_currentLobby || !isHost()) return;
+
+  // Create linked transport pair — host side drives the host transport, bot side
+  // is stored module-level so it isn't garbage-collected.
+  const [hostSide, botSide] = createLocalTransportPair();
+  _botTransport = botSide;
+
+  // The bot "connects" on its side — instantly connected (no networking)
+  const botId = `bot_${Date.now().toString(36)}`;
+  hostSide.connect('', _localPlayerId);
+  botSide.connect('', botId);
+
+  // Add bot to lobby directly (since we're the host and this is local)
+  _currentLobby.players.push({
+    id: botId,
+    displayName: botName,
+    isHost: false,
+    isReady: false,
+  });
+  _onLobbyUpdate?.(_currentLobby);
+
+  // Auto-ready the bot after a brief delay
+  setTimeout(() => {
+    if (!_currentLobby) return;
+    const bot = _currentLobby.players.find(p => p.id === botId);
+    if (bot) {
+      bot.isReady = true;
+      _onLobbyUpdate?.(_currentLobby);
+    }
+  }, 500);
+}
+
+/** Remove the local bot from the lobby (cleans up transport reference). */
+export function removeLocalBot(): void {
+  if (!_currentLobby) return;
+  _currentLobby.players = _currentLobby.players.filter(p => !p.id.startsWith('bot_'));
+  if (_botTransport) {
+    _botTransport.disconnect();
+    _botTransport = null;
+  }
+  _onLobbyUpdate?.(_currentLobby);
 }
 
 // ── Ready & Start ────────────────────────────────────────────────────────────

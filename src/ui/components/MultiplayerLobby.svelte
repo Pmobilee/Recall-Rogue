@@ -20,6 +20,8 @@
     startGame,
     leaveLobby,
     isHost,
+    addLocalBot,
+    removeLocalBot,
   } from '../../services/multiplayerLobbyService'
   import LobbyDeckPicker from './LobbyDeckPicker.svelte'
 
@@ -213,6 +215,14 @@
               aria-label={player.isReady ? 'Ready' : 'Not ready'}
               title={player.isReady ? 'Ready' : 'Not ready'}
             ></span>
+            {#if amHost && player.id.startsWith('bot_')}
+              <button
+                class="remove-bot-btn"
+                onclick={() => removeLocalBot()}
+                aria-label="Remove bot"
+                title="Remove bot"
+              >&#x2715;</button>
+            {/if}
           </div>
         {/each}
 
@@ -223,6 +233,13 @@
           </div>
         {/each}
       </div>
+
+      <!-- Dev: Add bot for local testing -->
+      {#if amHost && lobby.players.length < lobby.maxPlayers}
+        <button class="add-bot-btn" onclick={() => addLocalBot()}>
+          + Add Bot
+        </button>
+      {/if}
 
       <!-- Actions -->
       <div class="lobby-actions">
@@ -1153,5 +1170,40 @@
 
   .leave-btn:hover {
     background: rgba(231, 76, 60, 0.22);
+  }
+
+  /* ── Dev Bot Buttons ── */
+  .add-bot-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px dashed rgba(255, 215, 0, 0.3);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    color: rgba(255, 215, 0, 0.7);
+    font-size: calc(12px * var(--text-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    cursor: pointer;
+    transition: all 0.15s;
+    min-height: calc(36px * var(--layout-scale, 1));
+    width: 100%;
+  }
+
+  .add-bot-btn:hover {
+    background: rgba(255, 215, 0, 0.08);
+    border-color: rgba(255, 215, 0, 0.5);
+    color: #FFD700;
+  }
+
+  .remove-bot-btn {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: calc(14px * var(--text-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1));
+    transition: color 0.15s;
+    flex-shrink: 0;
+  }
+
+  .remove-bot-btn:hover {
+    color: #e74c3c;
   }
 </style>
