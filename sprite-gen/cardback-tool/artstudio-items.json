@@ -16969,8 +16969,9 @@
         {
           "variant": 0,
           "seed": 3246651265,
-          "status": "generating",
-          "accepted": false
+          "status": "error",
+          "accepted": false,
+          "error": "fetch failed"
         },
         {
           "variant": 1,
@@ -17599,12 +17600,12 @@
       "name": "Hub Campfire Ambience",
       "concept": "Warm crackling campfire in a stone chamber with occasional wood pops — primary hub atmosphere layer",
       "codeLocation": "ambientAudioService.ts:83 (hub recipe vol 0.7, rest recipe vol 0.6, run_end_victory recipe vol 0.4)",
-      "needsReplacement": true,
+      "needsReplacement": false,
       "variants": [
         {
           "variant": 0,
           "status": "done",
-          "accepted": false,
+          "accepted": true,
           "source": "opengameart.org/content/fireplace-sound-loop",
           "license": "CC0",
           "duration_s": 29,
@@ -17617,12 +17618,12 @@
       "name": "Water Drip Close",
       "concept": "Close-mic slow water drip echoing in a stone cave — used in multiple dungeon ambiences",
       "codeLocation": "ambientAudioService.ts:84 (hub vol 0.12, dungeon_map vol 0.1, rest vol 0.15, combat_dust vol 0.35, combat_ice vol 0.1)",
-      "needsReplacement": true,
+      "needsReplacement": false,
       "variants": [
         {
           "variant": 0,
           "status": "done",
-          "accepted": false,
+          "accepted": true,
           "source": "opengameart.org/content/dripping-water-loop",
           "license": "CC0",
           "duration_s": 20,
@@ -17635,16 +17636,16 @@
       "name": "Stone Room Resonance",
       "concept": "Deep stone chamber resonance hum — subtle low rumble giving indoor stone spaces a physical presence",
       "codeLocation": "ambientAudioService.ts:85 (hub recipe vol 0.2)",
-      "needsReplacement": true,
+      "needsReplacement": false,
       "variants": [
         {
           "variant": 0,
           "status": "done",
-          "accepted": false,
-          "source": "soundcloud.com/mcfunkypants (CC0 game music)",
+          "accepted": true,
+          "source": "opengameart.org/content/dark-cavern-ambient",
           "license": "CC0",
-          "duration_s": 94,
-          "description": "Dungeon ambient music loop"
+          "duration_s": 120,
+          "description": "Dark cavern ambient continuous loop"
         }
       ]
     },
@@ -17697,7 +17698,7 @@
         {
           "variant": 1,
           "status": "done",
-          "accepted": false,
+          "accepted": true,
           "source": "soundcloud.com/mcfunkypants (CC0 game music)",
           "license": "CC0",
           "duration_s": 87,
@@ -17715,7 +17716,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": false,
+          "accepted": true,
           "source": "soundcloud.com/mcfunkypants (CC0 game music)",
           "license": "CC0",
           "duration_s": 94,
@@ -17917,16 +17918,16 @@
       "name": "Boss Arena Ambient",
       "concept": "Grand foreboding arena ambient — large reverberant space with dark harmonic overtones",
       "codeLocation": "ambientAudioService.ts:160 (boss_arena recipe vol 0.4)",
-      "needsReplacement": true,
+      "needsReplacement": false,
       "variants": [
         {
           "variant": 0,
           "status": "done",
-          "accepted": false,
-          "source": "soundcloud.com/mcfunkypants (CC0 game music)",
+          "accepted": true,
+          "source": "opengameart.org/content/dark-cavern-ambient",
           "license": "CC0",
-          "duration_s": 128,
-          "description": "Draft Monk ambient music loop"
+          "duration_s": 120,
+          "description": "Dark cavern ambient with fade in/out"
         }
       ]
     },
@@ -17935,12 +17936,12 @@
       "name": "Dungeon Drip Ambient",
       "concept": "Steady dripping water in a deep dungeon chamber — lower and more reverberant than close drip",
       "codeLocation": "ambientAudioService.ts:184 (retreat_delve recipe vol 0.1)",
-      "needsReplacement": true,
+      "needsReplacement": false,
       "variants": [
         {
           "variant": 0,
           "status": "done",
-          "accepted": false,
+          "accepted": true,
           "source": "opengameart.org/content/loopable-dungeon-ambience",
           "license": "CC0",
           "duration_s": 94,
@@ -18150,7 +18151,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },
@@ -18202,7 +18203,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },
@@ -18215,7 +18216,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },
@@ -18254,7 +18255,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },
@@ -18267,7 +18268,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },
@@ -18280,7 +18281,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },
@@ -18293,7 +18294,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },
@@ -18540,7 +18541,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },
@@ -18804,7 +18805,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },
@@ -18843,7 +18844,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },
@@ -18856,7 +18857,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },
@@ -18975,7 +18976,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },
@@ -18988,7 +18989,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },
@@ -19001,7 +19002,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },
@@ -19014,7 +19015,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },
@@ -19157,7 +19158,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },
@@ -19183,7 +19184,7 @@
         {
           "variant": 0,
           "status": "done",
-          "accepted": true
+          "accepted": false
         }
       ]
     },

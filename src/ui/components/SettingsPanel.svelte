@@ -16,8 +16,10 @@
   import {
     sfxEnabled,
     musicEnabled,
+    ambientEnabled,
     sfxVolume,
     musicVolume,
+    ambientVolume,
     unlockCardAudio,
     playCardAudio,
   } from '../../services/cardAudioManager'
@@ -227,6 +229,26 @@
               onchange={(event) => trackSettingChange('musicVolume', Number((event.currentTarget as HTMLInputElement).value))}
             />
             <strong>{Math.round($musicVolume * 100)}%</strong>
+          </label>
+          <label class="toggle-row">
+            <span>Ambient Enabled</span>
+            <input
+              type="checkbox"
+              bind:checked={$ambientEnabled}
+              onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); trackSettingChange('ambientEnabled', c) }}
+            />
+          </label>
+          <label class="slider-row">
+            <span>Ambient Volume</span>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              bind:value={$ambientVolume}
+              onchange={(event) => trackSettingChange('ambientVolume', Number((event.currentTarget as HTMLInputElement).value))}
+            />
+            <strong>{Math.round($ambientVolume * 100)}%</strong>
           </label>
         </section>
 
@@ -563,6 +585,28 @@
           onchange={(event) => trackSettingChange('musicVolume', Number((event.currentTarget as HTMLInputElement).value))}
         />
         <strong>{Math.round($musicVolume * 100)}%</strong>
+      </label>
+
+      <label class="toggle-row">
+        <span>Ambient Enabled</span>
+        <input
+          type="checkbox"
+          bind:checked={$ambientEnabled}
+          onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); trackSettingChange('ambientEnabled', c) }}
+        />
+      </label>
+
+      <label class="slider-row">
+        <span>Ambient Volume</span>
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.05"
+          bind:value={$ambientVolume}
+          onchange={(event) => trackSettingChange('ambientVolume', Number((event.currentTarget as HTMLInputElement).value))}
+        />
+        <strong>{Math.round($ambientVolume * 100)}%</strong>
       </label>
     </section>
 

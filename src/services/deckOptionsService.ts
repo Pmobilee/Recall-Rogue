@@ -189,3 +189,29 @@ export function isAlwaysWriteEnabled(languageCode: string): boolean {
 export function setAlwaysWriteEnabled(languageCode: string, enabled: boolean): void {
   setDeckOption(languageCode, 'alwaysWrite', enabled)
 }
+
+// ---- Deck ID → language code mapping ----
+
+const DECK_PREFIX_TO_LANG: Record<string, string> = {
+  japanese: 'ja',
+  korean: 'ko',
+  chinese: 'zh',
+  mandarin: 'zh',
+  spanish: 'es',
+  french: 'fr',
+  german: 'de',
+  dutch: 'nl',
+  czech: 'cs',
+}
+
+/**
+ * Extract the ISO 639-1 language code from a deck ID.
+ * Handles both regular IDs ("japanese_n3") and synthetic "all:" prefixed IDs ("all:japanese").
+ * Returns null for non-language decks.
+ */
+export function getLanguageCodeForDeck(deckId: string): string | null {
+  const stripped = deckId.startsWith('all:') ? deckId.substring(4) : deckId
+  const idx = stripped.indexOf('_')
+  const prefix = idx > 0 ? stripped.substring(0, idx) : stripped
+  return DECK_PREFIX_TO_LANG[prefix.toLowerCase()] ?? null
+}

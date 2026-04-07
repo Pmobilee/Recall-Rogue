@@ -1,3 +1,11 @@
+### 2026-04-07 — Vite staticAssetCachePlugin caches SPA fallback HTML for missing assets
+
+**What:** The `staticAssetCachePlugin()` in `vite.config.ts` set `Cache-Control: public, max-age=86400` on ALL `/assets/` URL middleware responses before Vite resolved whether the file existed. When a file was missing, Vite served the SPA fallback `index.html` with `text/html` content-type — and that HTML response got cached for 24 hours. This caused deck front images (algebra, calculus, geometry, etc.) to appear broken for a full day after the files were added to disk.
+
+**Fix:** Check `existsSync(join(process.cwd(), 'public', urlPath))` before setting the cache header. Only cache if the file actually exists. Missing assets get no cache header, so browsers re-request them on every load and eventually get the real file once it exists.
+
+**Source files:** `vite.config.ts` — `staticAssetCachePlugin()` function. Added `existsSync` from `node:fs` and `join` from `node:path`.
+
 ### 2026-04-07 — "Playlist" → "Custom Deck" Rename: String Literal vs Type Alias
 
 **What:** When renaming `DeckMode.type` from `'playlist'` to `'custom_deck'`, deprecated *type name* aliases (e.g. `export type CustomPlaylist = CustomDeck`) are NOT sufficient to keep Svelte components compiling. TypeScript comparison expressions like `deckMode.type === 'playlist'` generate type errors ("types have no overlap") even if the underlying type alias is preserved. The string literal in the union must be updated in every consumer.

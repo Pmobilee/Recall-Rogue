@@ -76,15 +76,15 @@ const MUSIC_COEXISTENCE_RATIO = 0.3
 
 // ─── Recipe definitions ──────────────────────────────────────────────────────
 // Source: docs/roadmap/future/SFX-SOUND-GENERATION-PROMPTS.md §AMBIENT ATMOSPHERE RECIPES
+// Accepted loop files (2026-04-07): hub_campfire_ambience, water_drip_close, dungeon_drip_ambient,
+//   stone_room_resonance, boss_arena_ambient, insect_cave, map_exploration_ambient, low_hp_warning_pulse.
+// All other referenced files (wind_passage, stone_creak_settle, etc.) are deleted and will be
+// silently skipped at runtime via the `if (!buffer) continue` guard in crossfadeTo().
 
 const RECIPES: Record<AmbientContext, AmbientRecipe> = {
   hub: {
     layers: [
       { file: '/assets/audio/sfx/loops/hub_campfire_ambience.m4a', volume: 0.7 },
-      { file: '/assets/audio/sfx/loops/water_drip_close.m4a', volume: 0.12 },
-      { file: '/assets/audio/sfx/loops/stone_room_resonance.m4a', volume: 0.2 },
-      { file: '/assets/audio/sfx/loops/camp_cloth_rustle.m4a', volume: 0.08 },
-      { file: '/assets/audio/sfx/loops/distant_creature_stir.m4a', volume: 0.06 },
     ],
   },
   dungeon_map: {
@@ -92,6 +92,8 @@ const RECIPES: Record<AmbientContext, AmbientRecipe> = {
       { file: '/assets/audio/sfx/loops/wind_passage.m4a', volume: 0.4 },
       { file: '/assets/audio/sfx/loops/water_drip_close.m4a', volume: 0.1 },
       { file: '/assets/audio/sfx/loops/stone_creak_settle.m4a', volume: 0.08 },
+      { file: '/assets/audio/sfx/loops/insect_cave.m4a', volume: 0.15 },
+      { file: '/assets/audio/sfx/loops/map_exploration_ambient.m4a', volume: 0.2 },
     ],
   },
   shop: {
@@ -99,6 +101,8 @@ const RECIPES: Record<AmbientContext, AmbientRecipe> = {
       { file: '/assets/audio/sfx/loops/fire_torch_crackle.m4a', volume: 0.5 },
       { file: '/assets/audio/sfx/loops/chain_rattle_distant.m4a', volume: 0.15 },
       { file: '/assets/audio/sfx/loops/wind_passage.m4a', volume: 0.08 },
+      { file: '/assets/audio/sfx/loops/insect_cave.m4a', volume: 0.15 },
+      { file: '/assets/audio/sfx/loops/dungeon_drip_ambient.m4a', volume: 0.1 },
     ],
   },
   rest: {
@@ -107,6 +111,7 @@ const RECIPES: Record<AmbientContext, AmbientRecipe> = {
       { file: '/assets/audio/sfx/loops/water_drip_close.m4a', volume: 0.15 },
       { file: '/assets/audio/sfx/loops/wind_passage.m4a', volume: 0.1 },
       { file: '/assets/audio/sfx/loops/stone_creak_settle.m4a', volume: 0.05 },
+      { file: '/assets/audio/sfx/loops/insect_cave.m4a', volume: 0.15 },
     ],
   },
   mystery: {
@@ -114,6 +119,8 @@ const RECIPES: Record<AmbientContext, AmbientRecipe> = {
       { file: '/assets/audio/sfx/loops/arcane_whisper.m4a', volume: 0.5 },
       { file: '/assets/audio/sfx/loops/void_drone.m4a', volume: 0.25 },
       { file: '/assets/audio/sfx/loops/wind_passage.m4a', volume: 0.08 },
+      { file: '/assets/audio/sfx/loops/insect_cave.m4a', volume: 0.15 },
+      { file: '/assets/audio/sfx/loops/dungeon_drip_ambient.m4a', volume: 0.1 },
     ],
   },
   combat_dust: {
@@ -122,6 +129,7 @@ const RECIPES: Record<AmbientContext, AmbientRecipe> = {
       { file: '/assets/audio/sfx/loops/stone_creak_settle.m4a', volume: 0.2 },
       { file: '/assets/audio/sfx/loops/wind_passage.m4a', volume: 0.1 },
       { file: '/assets/audio/sfx/loops/fire_torch_crackle.m4a', volume: 0.08 },
+      { file: '/assets/audio/sfx/loops/insect_cave.m4a', volume: 0.15 },
     ],
   },
   combat_embers: {
@@ -130,6 +138,9 @@ const RECIPES: Record<AmbientContext, AmbientRecipe> = {
       { file: '/assets/audio/sfx/loops/lava_bubble.m4a', volume: 0.3 },
       { file: '/assets/audio/sfx/loops/steam_vent_hiss.m4a', volume: 0.15 },
       { file: '/assets/audio/sfx/loops/stone_creak_settle.m4a', volume: 0.08 },
+      { file: '/assets/audio/sfx/loops/insect_cave.m4a', volume: 0.15 },
+      { file: '/assets/audio/sfx/loops/dungeon_drip_ambient.m4a', volume: 0.1 },
+      { file: '/assets/audio/sfx/loops/stone_room_resonance.m4a', volume: 0.15 },
     ],
   },
   combat_ice: {
@@ -138,6 +149,8 @@ const RECIPES: Record<AmbientContext, AmbientRecipe> = {
       { file: '/assets/audio/sfx/loops/wind_howl_deep.m4a', volume: 0.3 },
       { file: '/assets/audio/sfx/loops/water_drip_close.m4a', volume: 0.1 },
       { file: '/assets/audio/sfx/loops/crystal_hum.m4a', volume: 0.05 },
+      { file: '/assets/audio/sfx/loops/dungeon_drip_ambient.m4a', volume: 0.15 },
+      { file: '/assets/audio/sfx/loops/stone_room_resonance.m4a', volume: 0.2 },
     ],
   },
   combat_arcane: {
@@ -146,12 +159,15 @@ const RECIPES: Record<AmbientContext, AmbientRecipe> = {
       { file: '/assets/audio/sfx/loops/crystal_hum.m4a', volume: 0.25 },
       { file: '/assets/audio/sfx/loops/wind_passage.m4a', volume: 0.1 },
       { file: '/assets/audio/sfx/loops/stone_creak_settle.m4a', volume: 0.08 },
+      { file: '/assets/audio/sfx/loops/map_exploration_ambient.m4a', volume: 0.2 },
+      { file: '/assets/audio/sfx/loops/stone_room_resonance.m4a', volume: 0.15 },
     ],
   },
   combat_void: {
     layers: [
       { file: '/assets/audio/sfx/loops/void_drone.m4a', volume: 0.5 },
       { file: '/assets/audio/sfx/loops/wind_howl_deep.m4a', volume: 0.15 },
+      { file: '/assets/audio/sfx/loops/map_exploration_ambient.m4a', volume: 0.2 },
     ],
   },
   boss_arena: {
@@ -164,6 +180,8 @@ const RECIPES: Record<AmbientContext, AmbientRecipe> = {
     layers: [
       { file: '/assets/audio/sfx/loops/arcane_whisper.m4a', volume: 0.4 },
       { file: '/assets/audio/sfx/loops/crystal_hum.m4a', volume: 0.3 },
+      { file: '/assets/audio/sfx/loops/map_exploration_ambient.m4a', volume: 0.2 },
+      { file: '/assets/audio/sfx/loops/stone_room_resonance.m4a', volume: 0.2 },
     ],
   },
   run_end_victory: {
@@ -175,6 +193,7 @@ const RECIPES: Record<AmbientContext, AmbientRecipe> = {
     layers: [
       { file: '/assets/audio/sfx/loops/void_drone.m4a', volume: 0.3 },
       { file: '/assets/audio/sfx/loops/wind_passage.m4a', volume: 0.15 },
+      { file: '/assets/audio/sfx/loops/dungeon_drip_ambient.m4a', volume: 0.15 },
     ],
   },
   retreat_delve: {
@@ -182,15 +201,16 @@ const RECIPES: Record<AmbientContext, AmbientRecipe> = {
       { file: '/assets/audio/sfx/loops/wind_passage.m4a', volume: 0.35 },
       { file: '/assets/audio/sfx/loops/stone_creak_settle.m4a', volume: 0.15 },
       { file: '/assets/audio/sfx/loops/dungeon_drip_ambient.m4a', volume: 0.1 },
+      { file: '/assets/audio/sfx/loops/insect_cave.m4a', volume: 0.15 },
     ],
   },
   silent: { layers: [] },
 }
 
-// Boss overlay layers added on top of the current recipe without stopping it
-const BOSS_OVERLAY_LAYERS: AmbientLayer[] = [
-  { file: '/assets/audio/sfx/loops/combat_tension_underbed.m4a', volume: 0.3 },
-]
+// Boss overlay layers added on top of the current recipe without stopping it.
+// combat_tension_underbed.m4a was deleted (2026-04-07) — overlay is intentionally empty;
+// addBossOverlay() becomes a no-op until a replacement file is sourced.
+const BOSS_OVERLAY_LAYERS: AmbientLayer[] = []
 
 // ─── Pure helpers ────────────────────────────────────────────────────────────
 
@@ -227,6 +247,12 @@ class AmbientAudioService {
   private pendingContext: AmbientContext = 'silent'
   private musicCoexistence = false
   private ducking = false
+  /** Context that was active when setEnabled(false) was called; restored on re-enable. */
+  private disabledContext: AmbientContext = 'silent'
+  /** Whether ambient audio is enabled at all (user preference). */
+  private enabled = true
+  /** Master volume level set by the user (0.0–1.0). Applied directly to masterGain. */
+  private userVolume = 0.7
 
   // ─── Public API ────────────────────────────────────────────────────────────
 
@@ -242,7 +268,7 @@ class AmbientAudioService {
     if (this.ctx) return
     this.ctx = new AudioContext()
     this.masterGain = this.ctx.createGain()
-    this.masterGain.gain.value = 1
+    this.masterGain.gain.value = this.userVolume
     this.masterGain.connect(this.ctx.destination)
 
     // Replay any context that was requested before the AudioContext existed.
@@ -275,6 +301,11 @@ class AmbientAudioService {
   async setContext(context: AmbientContext): Promise<void> {
     // Always store as pending so init() can pick it up after the first gesture.
     this.pendingContext = context
+    if (!this.enabled) {
+      // Remember for when re-enabled; skip actual playback.
+      this.disabledContext = context
+      return
+    }
     if (context === this.currentContext) return
     // AudioContext not yet created — bail, init() will replay pendingContext.
     if (!this.ctx) return
@@ -316,9 +347,11 @@ class AmbientAudioService {
   /**
    * Start the boss overlay layers on top of the current recipe.
    * Fades them in over 800 ms. Calling again while overlay is active is a no-op.
+   * NOTE: BOSS_OVERLAY_LAYERS is currently empty — this is a no-op until a
+   * replacement for combat_tension_underbed.m4a is sourced.
    */
   addBossOverlay(): void {
-    if (!this.ctx || !this.masterGain) return
+    if (!this.ctx || !this.masterGain || !this.enabled) return
     if (this.bossOverlayLayers.length > 0) return
 
     for (const layer of BOSS_OVERLAY_LAYERS) {
@@ -337,6 +370,41 @@ class AmbientAudioService {
   }
 
   /**
+   * Enable or disable all ambient audio (user preference toggle).
+   *
+   * When disabled: all layers fade out immediately and playback stops.
+   * The current context is remembered so it can be resumed when re-enabled.
+   * When re-enabled: restores the last active context via setContext().
+   */
+  setEnabled(value: boolean): void {
+    if (this.enabled === value) return
+    this.enabled = value
+    if (!value) {
+      // Snapshot what was playing, then silence everything.
+      this.disabledContext = this.currentContext
+      this.stopAllLayers()
+    } else {
+      // Resume the context that was active before disabling.
+      if (this.disabledContext !== 'silent') {
+        // Reset currentContext so setContext() doesn't short-circuit the equality check.
+        this.currentContext = 'silent'
+        void this.setContext(this.disabledContext)
+      }
+    }
+  }
+
+  /**
+   * Set the master output volume for all ambient audio (user preference).
+   * Range: 0.0 – 1.0. Applied directly to the Web Audio master gain node.
+   */
+  setVolume(volume: number): void {
+    this.userVolume = volume
+    if (this.masterGain) {
+      this.masterGain.gain.value = volume
+    }
+  }
+
+  /**
    * Immediately stop all ambient audio and reset to silent.
    */
   stop(): void {
@@ -347,6 +415,8 @@ class AmbientAudioService {
     this.bossOverlayLayers = []
     this.currentContext = 'silent'
     this.pendingContext = 'silent'
+    // disabledContext is intentionally NOT reset here — re-enabling after a stop
+    // should remain silent until a new setContext() call.
   }
 
   // ─── Private — buffer loading ──────────────────────────────────────────────
@@ -460,6 +530,17 @@ class AmbientAudioService {
     setTimeout(() => {
       this.stopLayers(layers)
     }, CROSSFADE_DISCONNECT_DELAY_MS)
+  }
+
+  /**
+   * Stop all active and boss overlay layers immediately. Used when disabling ambient audio.
+   */
+  private stopAllLayers(): void {
+    if (!this.ctx) return
+    this.stopLayers(this.activeLayers)
+    this.stopLayers(this.bossOverlayLayers)
+    this.activeLayers = []
+    this.bossOverlayLayers = []
   }
 
   /**

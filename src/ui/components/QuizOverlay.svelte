@@ -1733,7 +1733,7 @@
   .quiz-options-cogwheel {
     position: absolute;
     top: calc(4px * var(--layout-scale, 1));
-    right: calc(8px * var(--layout-scale, 1));
+    right: calc(48px * var(--layout-scale, 1));
     display: flex;
     align-items: center;
     justify-content: center;

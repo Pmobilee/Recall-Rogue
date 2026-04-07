@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "lastSynced": "2026-04-04",
+  "lastSynced": "2026-04-05",
   "tables": {
     "cards": [
       {
@@ -7189,7 +7189,7 @@
         "id": "10",
         "name": "Cursed Start",
         "category": "",
-        "description": "Start with a Curse card in deck. BUFF: Choose a 2nd starter relic + 1 free relic reroll per boss.",
+        "description": "Start with a Curse card in deck. BUFF: +1 free relic reroll per boss.",
         "sourceFile": "src/services/ascension.ts",
         "status": "active",
         "mechanicDate": "not_checked",
@@ -7207,7 +7207,7 @@
         "id": "11",
         "name": "Slim Pickings",
         "category": "",
-        "description": "Boss relics reduced to 2 choices. BUFF: Relics trigger +50% more.",
+        "description": "Boss relics reduced to 2 choices. BUFF: Relics trigger +25% more.",
         "sourceFile": "src/services/ascension.ts",
         "status": "active",
         "mechanicDate": "not_checked",
@@ -7351,7 +7351,7 @@
         "id": "19",
         "name": "True Test",
         "category": "",
-        "description": "All questions use hard formats. BUFF: Charge plays cost 0 extra AP.",
+        "description": "All questions use hard formats. BUFF: (Reserved for future surcharge mechanic.)",
         "sourceFile": "src/services/ascension.ts",
         "status": "active",
         "mechanicDate": "not_checked",
@@ -7369,7 +7369,7 @@
         "id": "20",
         "name": "Heart of the Archive",
         "category": "",
-        "description": "Final boss gains second phase. BUFF: Start with 3 relics (choose from 7).",
+        "description": "Final boss gains second phase. BUFF: Start with 2 relics (choose from 5).",
         "sourceFile": "src/services/ascension.ts",
         "status": "active",
         "mechanicDate": "not_checked",

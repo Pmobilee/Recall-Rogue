@@ -4,6 +4,9 @@
   import { getSubDeckProgress } from '../../services/deckProgressService';
   import { playCardAudio } from '../../services/cardAudioManager';
   import { getDeckTags, getTagFactIds } from '../../data/deckFactIndex';
+  import DeckOptionsPanel from '../DeckOptionsPanel.svelte';
+  import { getLanguageCodeForDeck } from '../../services/deckOptionsService';
+  import { getLanguageConfig } from '../../types/vocabulary';
 
   /** Human-readable display labels for known exam tags. */
   const TAG_DISPLAY: Record<string, string> = {
@@ -39,6 +42,12 @@
   /** All exam tags present in this deck. */
   const deckTags = $derived(getDeckTags(deck.id));
   const hasExamTags = $derived(deckTags.length > 0);
+
+  /** Language code for this deck, if it's a language deck. */
+  const deckLanguageCode = $derived(getLanguageCodeForDeck(deck.id));
+  const hasLanguageOptions = $derived(
+    deckLanguageCode ? (getLanguageConfig(deckLanguageCode)?.options?.length ?? 0) > 0 : false
+  );
 
   /**
    * Count of facts matching the selected tags (union).
@@ -240,6 +249,13 @@
             </button>
           {/if}
         </div>
+
+        <!-- Language display options (Japanese, Chinese, Korean only) -->
+        {#if hasLanguageOptions && deckLanguageCode}
+          <div class="deck-options-wrapper">
+            <DeckOptionsPanel languageCode={deckLanguageCode} />
+          </div>
+        {/if}
       </div>
 
     </div>
@@ -325,7 +341,7 @@
     border-right: 1px solid rgba(255, 255, 255, 0.07);
   }
 
-  /* RIGHT COLUMN — fixed, vertically centered */
+  /* RIGHT COLUMN — scrollable when language options are present */
   .col-right {
     flex: 1;
     min-width: calc(200px * var(--layout-scale, 1));
@@ -336,6 +352,7 @@
     align-items: stretch;
     gap: calc(20px * var(--layout-scale, 1));
     padding: calc(20px * var(--layout-scale, 1));
+    overflow-y: auto;
   }
 
   /* Deck header */
@@ -635,5 +652,17 @@
     background: rgba(139, 92, 246, 0.2);
     border-color: rgba(139, 92, 246, 0.4);
     color: #c4b5fd;
+  }
+
+  /* Deck language options — retheme DeckOptionsPanel for modal context */
+  .deck-options-wrapper {
+    --color-surface: rgba(255, 255, 255, 0.03);
+    --color-surface-dim: rgba(255, 255, 255, 0.06);
+    --color-surface-dim-hover: rgba(255, 255, 255, 0.1);
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-text-primary: #e2e8f0;
+    --color-text-muted: #64748b;
+    --color-accent: #818cf8;
+    --color-accent-hover: #a5b4fc;
   }
 </style>

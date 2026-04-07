@@ -198,6 +198,10 @@
     transition: border-color 0.2s;
   }
   .item-card:hover { border-color: #3a3a5a; }
+  .item-card.skim-active {
+    outline: 2px solid #4ecca3;
+    outline-offset: 2px;
+  }
 
   .item-header {
     display: flex;
@@ -842,6 +846,7 @@
   let currentTab = 'cardframes';
   let allItems = Object.fromEntries([...ALL_CATEGORIES, 'music'].map(c => [c, []]));
   let pollTimers = {};
+  let currentSkimIndex = 0;
 
   /** Returns true if the given category key is an audio SFX category */
   function isAudioCategory(tab) {
@@ -860,6 +865,36 @@
     });
   }
 
+  // ── Audio skim navigation ────────────────────────────────
+  function skimToItem(index) {
+    const cards = document.querySelectorAll('#items-grid .item-card');
+    if (index < 0 || index >= cards.length) return;
+    currentSkimIndex = index;
+
+    // Stop any currently playing audio
+    document.querySelectorAll('audio.artstudio-audio').forEach(el => {
+      el.pause();
+      el.currentTime = 0;
+      const btn = el.closest('.audio-variant-card')?.querySelector('.audio-play-btn');
+      if (btn) { btn.textContent = '▶ Play'; btn.classList.remove('playing'); }
+    });
+
+    // Scroll to the card
+    cards[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // Highlight it
+    cards.forEach(c => c.classList.remove('skim-active'));
+    cards[index].classList.add('skim-active');
+
+    // Auto-play the first audio in this card
+    const audio = cards[index].querySelector('audio.artstudio-audio');
+    if (audio) { audio.play().catch(() => {}); }
+
+    // Update counter
+    const counter = document.getElementById('skim-counter');
+    if (counter) counter.textContent = (index + 1) + ' / ' + cards.length;
+  }
+
   // ── Tab switching ──────────────────────────────────────────
   function switchTab(tab) {
     currentTab = tab;
@@ -868,6 +903,12 @@
     });
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     document.getElementById(`panel-${tab}`).classList.add('active');
+    // Show skim toolbar only on audio tabs
+    const skimToolbar = document.getElementById('skim-toolbar');
+    if (skimToolbar) {
+      skimToolbar.style.display = isAudioCategory(tab) ? 'flex' : 'none';
+      currentSkimIndex = 0;
+    }
     renderItems();
   }
 
@@ -1096,10 +1137,19 @@
       return aAccepted - bAccepted;
     });
 
-    panel.innerHTML = '';
+    // Build skim toolbar + items grid wrapper
+    panel.innerHTML = `<div id="skim-toolbar" style="display:flex;align-items:center;gap:12px;padding:8px 16px;background:rgba(30,34,50,0.9);border-radius:8px;margin-bottom:12px;position:sticky;top:0;z-index:100;">
+      <button onclick="skimToItem(currentSkimIndex - 1)" style="background:#334;color:#aabbdd;border:1px solid #445;border-radius:4px;padding:6px 12px;cursor:pointer;font-size:0.85rem;">&#9198; Prev</button>
+      <span id="skim-counter" style="color:#aabbdd;font-size:0.85rem;min-width:60px;text-align:center;">0 / 0</span>
+      <button onclick="skimToItem(currentSkimIndex + 1)" style="background:#334;color:#aabbdd;border:1px solid #445;border-radius:4px;padding:6px 12px;cursor:pointer;font-size:0.85rem;">Next &#9197;</button>
+    </div><div id="items-grid"></div>`;
+    const grid = panel.querySelector('#items-grid');
     for (const item of items) {
-      panel.appendChild(buildAudioItemCard(item, tab));
+      grid.appendChild(buildAudioItemCard(item, tab));
     }
+    // Initialize counter
+    const counter = document.getElementById('skim-counter');
+    if (counter) counter.textContent = '0 / ' + items.length;
   }
 
   // ── Build an audio item card ───────────────────────────────
@@ -1512,6 +1562,21 @@
     if (e.key === 'Escape') {
       closeLightbox();
       closeModal();
+    }
+    // Audio skim keyboard shortcuts (arrow keys + space)
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (!isAudioCategory(currentTab)) return;
+    if (e.code === 'ArrowLeft') {
+      e.preventDefault();
+      skimToItem(currentSkimIndex - 1);
+    } else if (e.code === 'ArrowRight') {
+      e.preventDefault();
+      skimToItem(currentSkimIndex + 1);
+    } else if (e.code === 'Space') {
+      e.preventDefault();
+      const cards = document.querySelectorAll('#items-grid .item-card');
+      const audio = cards[currentSkimIndex]?.querySelector('audio.artstudio-audio');
+      if (audio) { audio.paused ? audio.play() : audio.pause(); }
     }
   });
 

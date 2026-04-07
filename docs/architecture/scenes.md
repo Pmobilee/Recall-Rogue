@@ -62,6 +62,8 @@ Minimal first scene. On `create()`: emits `'boot-complete'` on `this.game.events
 
 Renders the combat display zone (top ~58% of viewport in portrait, full canvas in landscape). Owns enemy sprite, HP bars, block indicators, intent text, floor counter, and relic tray. The bottom 45% (card hand, quiz overlay) is handled by Svelte.
 
+**`create()` error handling:** The entire `create()` body is wrapped in a `try/catch/finally`. On any thrown error, `console.error('[CombatScene] create() failed:', err)` is called. `this.sceneReady = true` is set in the `finally` block regardless of success or failure, so `encounterBridge` does not spin forever waiting for readiness.
+
 **Systems instantiated in `create()`:**
 - `EnemySpriteSystem` — enemy sprite with 3D paper-cutout layers
 - `CombatAtmosphereSystem` — ambient particles, fog, light shafts

@@ -1,5 +1,6 @@
 import { get, writable, type Writable } from 'svelte/store'
 import { audioManager, type SoundName } from './audioService'
+import { ambientAudio } from './ambientAudioService'
 
 export type CardAudioCue =
   | 'correct-impact'
@@ -405,6 +406,8 @@ export const sfxEnabled = persistedWritable<boolean>('card:sfxEnabled', true)
 export const musicEnabled = persistedWritable<boolean>('card:musicEnabled', true)
 export const sfxVolume = persistedWritable<number>('card:sfxVolume', 1)
 export const musicVolume = persistedWritable<number>('card:musicVolume', 0.5)
+export const ambientEnabled = persistedWritable<boolean>('card:ambientEnabled', true)
+export const ambientVolume = persistedWritable<number>('card:ambientVolume', 0.7)
 
 let initialized = false
 
@@ -426,6 +429,18 @@ export function initCardAudio(): void {
   // Reserved toggles for future BGM channel integration.
   musicEnabled.subscribe(() => {})
   musicVolume.subscribe(() => {})
+
+  // Ambient audio enable/volume — wired to ambientAudioService.
+  ambientEnabled.subscribe((enabled) => {
+    if (enabled) {
+      ambientAudio.setEnabled(true)
+    } else {
+      ambientAudio.setEnabled(false)
+    }
+  })
+  ambientVolume.subscribe((vol) => {
+    ambientAudio.setVolume(Math.max(0, Math.min(1, vol)))
+  })
 
   applyAudioSettings()
 }

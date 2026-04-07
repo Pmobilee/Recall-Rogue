@@ -294,3 +294,22 @@ The following Svelte/WebGL changes are flagged for ui-agent:
 ### Boss Floor Variant
 
 Boss floors (floors 3, 6, 9, 12, 15, 18, 21, 24 — from `SEGMENT_BOSS_FLOORS`) use a 4000ms transition duration on the Svelte side and a T+3800ms rumble on the Phaser side. `run.floor.isBossFloor` is read after `advanceFloor()` to detect boss floors.
+
+
+## Character Level & Steam Achievements
+
+Character level is derived from cumulative XP earned across runs. XP is awarded at run end via `awardRunXP()` in `src/ui/stores/playerData.ts`.
+
+Steam achievements fire at the following level milestones:
+
+| Level | Achievement ID | Name |
+|-------|---------------|------|
+| 5 | `LEVEL_5` | Novice |
+| 15 | `LEVEL_15` | Adept |
+| 25 | `LEVEL_25` | Grand Scholar |
+
+Level achievements trigger only when `xpResult.levelsGained > 0` (i.e., when a level-up actually occurs in that run), so they fire at the moment the milestone is first crossed. Steam ignores re-unlock attempts.
+
+New players start at `characterLevel: 1` (set in `createNewPlayer()` in `saveService.ts`). The migration fallback for saves that pre-date character progression sets level to 25 to avoid penalising existing players.
+
+See `docs/deployment/steam.md` for the full achievement list and wiring details.

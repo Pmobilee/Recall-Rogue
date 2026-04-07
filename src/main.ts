@@ -40,8 +40,10 @@ import { analyticsService } from './services/analyticsService'
 import { rescheduleNotificationsFromPlayerState } from './services/gameFlowController'
 import { initSyncDurabilityListener } from './services/syncDurabilityService'
 import { initScoreSubmissionQueue } from './services/scoreSubmissionQueue'
+import { initSteamPresence } from './services/steamPresenceWatcher'
 import { initStorageBackend, migrateLocalStorageToFiles } from './services/storageBackend'
 import { profileService } from './services/profileService'
+import { toggleFullscreen } from './services/fullscreenService'
 
 /**
  * Sets up Capacitor-specific integrations: Android hardware back button handling
@@ -119,6 +121,14 @@ if (import.meta.env.DEV) {
 // Prevent long-press context menu on mobile
 document.addEventListener('contextmenu', (e) => e.preventDefault())
 
+// F11: toggle fullscreen (Steam PC / desktop and web). Mobile is no-op inside toggleFullscreen.
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'F11') {
+    e.preventDefault()
+    void toggleFullscreen()
+  }
+})
+
 // Show fallback if WebGL is unavailable — game requires it (DD-V2-190)
 if (!isWebGLSupported()) {
   mount(WebGLFallback, { target: document.getElementById('app')! })
@@ -136,6 +146,7 @@ initAccessibilityManager()
 initCardAudio()
 initSyncDurabilityListener()
 initScoreSubmissionQueue()
+initSteamPresence()
 
 // Start loading cardback manifest in background (enables live reload in dev)
 initCardbackManifest()

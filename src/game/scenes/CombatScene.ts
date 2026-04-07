@@ -650,6 +650,7 @@ export class CombatScene extends Phaser.Scene {
 
   /** Create all game objects for the combat display zone. */
   create(): void {
+    try {
     this.reduceMotion = isReduceMotionEnabled()
     this.effectScale = getDeviceTier() === 'low-end' ? 0.65 : 1
     const w = this.scale.width
@@ -954,7 +955,11 @@ export class CombatScene extends Phaser.Scene {
       this.repositionAll()
     }
 
-    this.sceneReady = true
+    } catch (err) {
+      console.error('[CombatScene] create() failed:', err)
+    } finally {
+      this.sceneReady = true
+    }
   }
 
   // ═════════════════════════════════════════════════════════

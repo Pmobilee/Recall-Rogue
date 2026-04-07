@@ -2086,10 +2086,33 @@ app.get('/api/artstudio/image/:category/:id/:variant', (req, res) => {
   const isAudio = category.startsWith('audio_');
   if (isAudio) {
     const audioPath = resolve(ARTSTUDIO_OUTPUT_DIR, category, id, `variant-${variant}.m4a`);
-    if (!existsSync(audioPath)) return res.status(404).json({ error: 'Audio not found' });
-    res.setHeader('Content-Type', 'audio/mp4');
-    res.setHeader('Cache-Control', 'no-store');
-    res.sendFile(audioPath);
+    if (existsSync(audioPath)) {
+      res.setHeader('Content-Type', 'audio/mp4');
+      res.setHeader('Cache-Control', 'no-store');
+      return res.sendFile(audioPath);
+    }
+    // Fallback: serve from game audio directory when no artstudio variant exists yet
+    // audio_loops -> sfx/loops/, audio_combat -> sfx/combat/, etc.
+    const subdir = category.replace('audio_', '');
+    const gameAudioPath = resolve(__dirname, '..', '..', 'public', 'assets', 'audio', 'sfx', subdir, `${id}.m4a`);
+    if (existsSync(gameAudioPath)) {
+      res.setHeader('Content-Type', 'audio/mp4');
+      res.setHeader('Cache-Control', 'no-store');
+      return res.sendFile(gameAudioPath);
+    }
+    // audio_other covers multiple subdirs: relic, map, mystery, run, turn, reward, surge, keeper, tutorial, transition, legacy, mastery, reveal
+    if (category === 'audio_other') {
+      const otherDirs = ['relic', 'map', 'mystery', 'run', 'turn', 'reward', 'surge', 'keeper', 'tutorial', 'transition', 'legacy', 'mastery', 'reveal'];
+      for (const dir of otherDirs) {
+        const altPath = resolve(__dirname, '..', '..', 'public', 'assets', 'audio', 'sfx', dir, `${id}.m4a`);
+        if (existsSync(altPath)) {
+          res.setHeader('Content-Type', 'audio/mp4');
+          res.setHeader('Cache-Control', 'no-store');
+          return res.sendFile(altPath);
+        }
+      }
+    }
+    return res.status(404).json({ error: 'Audio not found' });
   } else {
     const imgPath = resolve(ARTSTUDIO_OUTPUT_DIR, category, id, `variant-${variant}.png`);
     if (!existsSync(imgPath)) return res.status(404).json({ error: 'Image not found' });

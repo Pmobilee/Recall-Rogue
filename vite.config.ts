@@ -8,7 +8,8 @@
  */
 import { defineConfig, type Plugin } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
-import { readFileSync } from 'node:fs'
+import { readFileSync, existsSync } from 'node:fs'
+import { join } from 'node:path'
 
 // Read package.json for version injection.
 // __RR_VERSION__ is consumed by src/services/dbDecoder.ts at runtime.
@@ -134,7 +135,10 @@ function devScreenshotEndpoint(): Plugin {
 /**
  * Adds Cache-Control headers for static assets during development.
  * Prevents the Android webview from re-fetching every image on every app launch.
- * Applies Cache-Control: public, max-age=86400 (1 day) to all /assets/ requests.
+ * Applies Cache-Control: public, max-age=86400 (1 day) to /assets/ requests ONLY
+ * when the file actually exists in public/. Missing files get no-cache so the SPA
+ * fallback index.html is never cached — which previously caused deck front images to
+ * appear missing for 24 hours after the file was added to disk.
  */
 function staticAssetCachePlugin(): Plugin {
   return {
@@ -142,7 +146,12 @@ function staticAssetCachePlugin(): Plugin {
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         if (req.url && req.url.startsWith('/assets/')) {
-          res.setHeader('Cache-Control', 'public, max-age=86400')
+          // Only cache responses for files that actually exist in public/
+          // to avoid caching SPA fallback HTML for missing assets
+          const filePath = join(process.cwd(), 'public', req.url.split('?')[0])
+          if (existsSync(filePath)) {
+            res.setHeader('Cache-Control', 'public, max-age=86400')
+          }
         }
         next()
       })
