@@ -57,6 +57,21 @@ Comprehensive multiplayer for Recall Rogue: competitive, cooperative, and social
 | 5.4 CardApp wiring | DONE | onGameStart → startNewRun, live opponent progress → MultiplayerHUD |
 | 5.5 Verification | DONE | 974 files, 0 errors, build clean |
 
+## Next Steps (Post-Wiring)
+
+| Priority | Task | Complexity | Notes |
+|----------|------|-----------|-------|
+| HIGH | Test with 2 Steam accounts on LAN | Low | Verify P2P connectivity and seed sharing |
+| HIGH | Wire RaceResultsScreen into run end | Low | Show comparison overlay when both finish |
+| HIGH | Wire Duel mode into gameplay | Medium | Shared enemy, simultaneous turns via multiplayerGameService |
+| MEDIUM | Server-side matchmaking queue | Medium | Replace client-side simulation in eloMatchmakingService |
+| MEDIUM | Wire Co-op mode into gameplay | Medium | Co-op effects active during combat |
+| MEDIUM | Wire Trivia Night into gameplay | Medium | Question flow, TriviaRoundScreen rendering |
+| LOW | ELO updates after match completion | Low | Call processMatchResult on race/duel end |
+| LOW | Tournament bracket system | Medium | Single-elimination using Duel format |
+| LOW | Spectator mode | Medium | Read-only state broadcast |
+| LOW | Real Steam ID integration | Low | Replace 'local_player' placeholder |
+
 ## Modes Summary
 
 | Mode | Players | Priority | Cost |
@@ -132,12 +147,21 @@ Lobby creation and join are asynchronous (Steamworks callback-based). JS must:
 | `src-tauri/src/main.rs` | Tauri command registration |
 | `src/services/steamService.ts` | TS bridge for Steam (extend for new commands) |
 | `src/services/steamNetworkingService.ts` | DONE: P2P networking bridge (10 functions + poll loop) |
-| `src/services/multiplayerTransport.ts` | DONE: Transport abstraction (WS + Steam P2P + factory) |
+| `src/services/multiplayerTransport.ts` | DONE: Transport abstraction (WS + Steam P2P + Local factory) |
 | `src/data/multiplayerTypes.ts` | DONE: All shared MP types, constants, mode metadata |
 | `src/services/multiplayerLobbyService.ts` | DONE: MP lobby orchestration |
-| `src/services/multiplayerGameService.ts` | PENDING: MP game state sync |
+| `src/services/multiplayerGameService.ts` | DONE: Race / Duel / Same Cards sync |
+| `src/services/multiplayerScoring.ts` | DONE: computeRaceScore() — AR-86 formula |
+| `src/services/eloMatchmakingService.ts` | DONE: ELO calc, 8 rank tiers, queue with band widening |
+| `src/services/coopEffects.ts` | DONE: 6 co-op exclusive effects |
+| `src/services/triviaNightService.ts` | DONE: Trivia Night rounds, scoring, standings |
+| `src/services/multiplayerWorkshopService.ts` | DONE: In-lobby deck browser, voting, Deck of the Day |
+| `src/services/fairnessService.ts` | DONE: Fresh Facts, handicap, FSRS normalization, fairness rating |
 | `src/ui/components/MultiplayerLobby.svelte` | DONE: 3-column lobby (modes/players/settings) |
-| `src/ui/components/MultiplayerHUD.svelte` | DONE: Compact/expanded opponent progress overlay |
+| `src/ui/components/MultiplayerHUD.svelte` | DONE: Compact/expanded opponent progress overlay (wired) |
+| `src/ui/components/DuelOpponentPanel.svelte` | DONE: Duel damage bar, timer, chain state (not wired) |
+| `src/ui/components/RaceResultsScreen.svelte` | DONE: End-of-race score comparison (not wired) |
+| `src/ui/components/TriviaRoundScreen.svelte` | DONE: Trivia Night 3-phase UI (not wired) |
 | `src/services/seededRng.ts` | Seed sharing (reuse as-is) |
 
 ## Changelog
@@ -158,3 +182,8 @@ Lobby creation and join are asynchronous (Steamworks callback-based). JS must:
   - Task 1.5: MultiplayerHUD.svelte — compact/expanded Race Mode opponent progress
   - Task 1.6: Verified: 961 files, 0 errors, build clean
   Total new files: 6 (steam.rs extended, 5 new TS/Svelte files). All docs updated.
+- 2026-04-07: **ALL 5 PHASES COMPLETE.** 20 files, ~11K lines, 974 files typecheck clean.
+  Race Mode wired end-to-end: lobby → shared seed → play → live opponent HUD → run end.
+  Key Files table updated: multiplayerGameService, multiplayerScoring, fairnessService,
+  multiplayerWorkshopService all DONE (were marked PENDING). Next Steps section added.
+  Next milestone: test P2P with real Steam accounts, wire remaining modes (Duel, Co-op, Trivia).

@@ -1,0 +1,96 @@
+---
+name: multiplayer
+description: "Manage the multiplayer system — modes, networking, lobby, co-op scaling, ELO, Trivia Night, Workshop integration. Use when discussing or working on any multiplayer feature."
+user_invocable: true
+---
+
+# Multiplayer System
+
+Manage all multiplayer features: Race Mode, Same Cards, Real-Time Duel, Co-op, Trivia Night, ELO matchmaking, Workshop integration, fairness mechanisms, and local play.
+
+## Arguments
+
+Parse the user's message for a subcommand:
+
+| Subcommand | Description |
+|------------|-------------|
+| `status` | Show current implementation status across all phases |
+| `next` | Show prioritized next steps |
+| `test` | Test multiplayer with 2 Steam accounts on LAN |
+| `wire <mode>` | Wire a specific mode (duel, coop, trivia) into gameplay |
+
+## Current Implementation Status
+
+### Complete (Phases 1-5, 6 commits, ~11K lines)
+
+| Layer | Files | Status |
+|-------|-------|--------|
+| **Rust/Tauri** | `src-tauri/src/steam.rs` (+10 networking commands) | DONE |
+| **Steam P2P Bridge** | `src/services/steamNetworkingService.ts` | DONE |
+| **Transport** | `src/services/multiplayerTransport.ts` (WS + P2P + Local) | DONE |
+| **Types** | `src/data/multiplayerTypes.ts` | DONE |
+| **Lobby** | `src/services/multiplayerLobbyService.ts` | DONE |
+| **Game Sync** | `src/services/multiplayerGameService.ts` | DONE |
+| **Scoring** | `src/services/multiplayerScoring.ts` | DONE |
+| **ELO** | `src/services/eloMatchmakingService.ts` | DONE |
+| **Co-op Effects** | `src/services/coopEffects.ts` | DONE |
+| **Trivia Night** | `src/services/triviaNightService.ts` | DONE |
+| **Workshop MP** | `src/services/multiplayerWorkshopService.ts` | DONE |
+| **Fairness** | `src/services/fairnessService.ts` | DONE |
+| **Lobby UI** | `src/ui/components/MultiplayerLobby.svelte` | DONE |
+| **Race HUD** | `src/ui/components/MultiplayerHUD.svelte` | DONE (live wired) |
+| **Duel Panel** | `src/ui/components/DuelOpponentPanel.svelte` | DONE (not wired) |
+| **Results** | `src/ui/components/RaceResultsScreen.svelte` | DONE (not wired) |
+| **Trivia UI** | `src/ui/components/TriviaRoundScreen.svelte` | DONE (not wired) |
+| **Gameplay Wiring** | gameFlowController + runManager + CardApp | DONE (Race Mode) |
+
+### Race Mode Flow (End-to-End)
+Hub → Multiplayer button → Lobby (mode/deck/rules) → Start Game → shared seed → play with live opponent HUD → run end → race finish broadcast
+
+### Next Steps (Prioritized)
+
+| Priority | Task | Complexity |
+|----------|------|-----------|
+| **HIGH** | Test with 2 Steam accounts on LAN (verify P2P) | Low |
+| **HIGH** | Wire RaceResultsScreen into run end flow | Low |
+| **HIGH** | Wire Duel mode (shared enemy, simultaneous turns) into gameplay | Medium |
+| **MEDIUM** | Server-side matchmaking queue (replace client simulation) | Medium |
+| **MEDIUM** | Wire Co-op mode into gameplay (co-op effects active) | Medium |
+| **MEDIUM** | Wire Trivia Night into gameplay (question flow) | Medium |
+| **LOW** | ELO updates after match completion | Low |
+| **LOW** | Tournament bracket system | Medium |
+| **LOW** | Spectator mode | Medium |
+| **LOW** | Real Steam ID integration (replace 'local_player') | Low |
+
+### Key References
+- **AR Spec:** `docs/roadmap/AR-MULTIPLAYER.md`
+- **Mechanics Doc:** `docs/mechanics/multiplayer.md`
+- **Master Plan:** `~/.claude-pmobilee/plans/proud-fluttering-sketch.md`
+- **Co-op Scaling:** HP 1.6x, Block 1.5x, Cap 1.5x for 2P (Monster Hunter sublinear)
+- **Scoring:** `(floor×100) + (combo×50) + (correct×10) - (wrong×5) + (perfect×200)`
+
+### Architecture
+- **Lobbies/Matchmaking:** Fastify server (REST + WS)
+- **Gameplay:** Steam P2P primary, WebSocket fallback, Local for same-screen
+- **Anti-cheat:** Host validates quiz answers; ranked uses post-hoc replay audit
+- **Transport:** `MultiplayerTransport` interface with 3 implementations
+
+## Subcommand: `status`
+Read `docs/roadmap/AR-MULTIPLAYER.md` and report the phase status table.
+
+## Subcommand: `next`
+Show the next steps table above. Ask the user which to tackle.
+
+## Subcommand: `test`
+Guide the user through testing with 2 Steam accounts:
+1. Build with `npm run steam:build`
+2. Copy to second machine or use Steam Family Sharing
+3. Both launch, one creates lobby, other joins via code
+4. Verify P2P message round-trip via console logs
+5. Start Race Mode, verify shared seed produces same encounters
+
+## Subcommand: `wire <mode>`
+For each mode, read the relevant service file and existing UI component, then wire into gameFlowController following the Race Mode pattern:
+- **duel**: `multiplayerGameService.ts` (initDuel, hostCreateSharedEnemy, submitDuelTurnAction) + `DuelOpponentPanel.svelte`
+- **coop**: Same as duel + `coopEffects.ts` (initCoopEffects, processTurnActions)
+- **trivia**: `triviaNightService.ts` (initTriviaGame, hostNextQuestion) + `TriviaRoundScreen.svelte`
