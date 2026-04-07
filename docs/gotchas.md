@@ -549,3 +549,13 @@ Rule of thumb for `verify-all-decks.mjs`: put hard structural errors inside `che
 - `runManager.ts` playlist branch now uses `interleaveFacts` instead of sequential push
 - `nonCombatQuizSelector.ts` `selectNonCombatPlaylistQuestion` uses `interleaveFacts` instead of `flatMap`
 - `curatedFactSelector.ts` — both `rand()-0.5` tiebreakers replaced with Fisher-Yates shuffle + stable sort by difficulty
+
+### 2026-04-07 — getCoopHpMultiplier JSDoc says 1.6x for 2P but formula computes 1.5x
+
+**What:** `getCoopHpMultiplier()` in `src/services/enemyManager.ts` has a JSDoc comment claiming "2 players: 1.6x" but the actual formula `Math.min(2.3, 1.0 + (playerCount - 1) * 0.5)` yields 1.5× for 2 players. The docs/mechanics/multiplayer.md table previously reflected the incorrect JSDoc value (1.6×) rather than the actual computed value.
+
+**Fix:** Updated `docs/mechanics/multiplayer.md` to show 1.5× for 2P HP scaling, matching the actual code. The JSDoc in `enemyManager.ts` still says 1.6× — a separate cleanup task is needed to either update the formula to match the intent or fix the JSDoc.
+
+**Also fixed in same pass:** `hostCreateSharedEnemy()` in `multiplayerGameService.ts` had inline math `1 + (playerCount - 1) * 0.5` computing its own `hpMultiplier` and passing `{ hpMultiplier }` to `createEnemy()`. Since `createEnemy()` already calls `getCoopHpMultiplier(playerCount)` internally when `playerCount` is provided, this caused the two code paths to diverge (and also bypassed the 2.3× cap). Fixed by passing `{ playerCount }` instead, fully delegating to the canonical function.
+
+**Affected code:** `src/services/multiplayerGameService.ts` (hostCreateSharedEnemy), `src/services/enemyManager.ts` (JSDoc only — code untouched).

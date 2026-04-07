@@ -60,7 +60,7 @@ export interface DuelTurnResolution {
   enemyMaxHp: number;
   enemyBlock: number;
   /** Enemy's next declared intent (after resolving this turn). */
-  enemyIntent: { type: string; value: number; targetPlayerId: string };
+  enemyIntent: { type: string; value: number; targetPlayerId: string | 'all' };
   /** Damage the host-side player dealt. */
   player1Damage: number;
   /** Damage the guest-side player dealt. */
@@ -85,7 +85,7 @@ export interface SharedEnemyState {
   currentHp: number;
   maxHp: number;
   block: number;
-  nextIntent: { type: string; value: number; targetPlayerId: string };
+  nextIntent: { type: string; value: number; targetPlayerId: string | 'all' };
   statusEffects: Array<{ type: string; value: number; turnsRemaining: number }>;
   phase: number;
 }
@@ -327,11 +327,6 @@ interface DuelSession {
   totalDamage: Record<string, number>;
   /** Timer handle for auto-resolve when a player's submission times out. */
   turnTimer: ReturnType<typeof setTimeout> | null;
-  /**
-   * Player ID who the enemy attacks this turn (alternates round-robin).
-   * Host initialises to opponentId so local player is targeted on even turns.
-   */
-  targetPlayerId: string;
   /** Current HP values so host can track player defeats. */
   playerHp: Record<string, number>;
 }
@@ -362,7 +357,6 @@ export function initDuel(isHost: boolean, localPlayerId: string, opponentId: str
     opponentAction: null,
     totalDamage: { [localPlayerId]: 0, [opponentId]: 0 },
     turnTimer: null,
-    targetPlayerId: opponentId, // enemy targets opponent first
     playerHp: {},
   };
 }
@@ -370,12 +364,14 @@ export function initDuel(isHost: boolean, localPlayerId: string, opponentId: str
 /**
  * Host: create the shared enemy from a template and broadcast its initial state.
  *
- * HP is scaled for 2-player co-op by applying a 1.5× multiplier so the fight
- * remains challenging with combined DPS.
+ * HP is scaled via the canonical `getCoopHpMultiplier()` in `enemyManager.ts` (called
+ * internally by `createEnemy` when `playerCount` is provided). Sublinear scaling
+ * accounts for accuracy-dependent combined DPS — two 70% accuracy players deal ~1.4×
+ * effective DPS, not 2×. See `getCoopHpMultiplier` for exact per-player values.
  *
  * @param templateId - The enemy template ID to look up in ENEMY_TEMPLATES.
  * @param floor - Current floor number for HP scaling.
- * @param playerCount - Number of players (scales HP accordingly).
+ * @param playerCount - Number of players (passed to createEnemy for HP scaling via getCoopHpMultiplier).
  */
 export function hostCreateSharedEnemy(templateId: string, floor: number, playerCount: number): void {
   if (!_duelState?.isHost) return;
@@ -386,9 +382,9 @@ export function hostCreateSharedEnemy(templateId: string, floor: number, playerC
     return;
   }
 
-  // Co-op HP scaling: each additional player adds 50% base HP
-  const hpMultiplier = 1 + (playerCount - 1) * 0.5;
-  _duelState.sharedEnemy = createEnemy(template, floor, { hpMultiplier });
+  // Delegate HP scaling to createEnemy's playerCount option, which calls the canonical
+  // getCoopHpMultiplier() — 1.6× for 2P, 2.0× for 3P, 2.3× for 4P (capped).
+  _duelState.sharedEnemy = createEnemy(template, floor, { playerCount });
 
   _broadcastEnemyState();
 }
@@ -453,23 +449,19 @@ export function hostResolveTurn(): DuelTurnResolution | null {
     reason = 'enemy_defeated';
   }
 
-  // Roll next intent with round-robin targeting
-  const nextTarget = _duelState.targetPlayerId;
+  // Roll next intent. In co-op, enemy attacks ALL players simultaneously.
   rollNextIntent(sharedEnemy);
-  // Alternate target for the next turn
-  _duelState.targetPlayerId = (nextTarget === localPlayerId) ? opponentId : localPlayerId;
 
-  // Apply enemy attack to the target player's HP
+  // Apply enemy attack to ALL players at full damage (1.0× — no per-player scaling).
+  // The "scaling" comes from hitting two targets, matching the increased co-op enemy HP.
   let p1Hp = _duelState.playerHp[localPlayerId] ?? 80; // default starting HP
   let p2Hp = _duelState.playerHp[opponentId] ?? 80;
 
   if (!isOver && sharedEnemy.nextIntent.type === 'attack') {
     const attackValue = sharedEnemy.nextIntent.value;
-    if (nextTarget === localPlayerId) {
-      p1Hp = Math.max(0, p1Hp - attackValue);
-    } else {
-      p2Hp = Math.max(0, p2Hp - attackValue);
-    }
+    // Full damage to every player — no round-robin targeting.
+    p1Hp = Math.max(0, p1Hp - attackValue);
+    p2Hp = Math.max(0, p2Hp - attackValue);
     _duelState.playerHp[localPlayerId] = p1Hp;
     _duelState.playerHp[opponentId] = p2Hp;
 
@@ -479,7 +471,7 @@ export function hostResolveTurn(): DuelTurnResolution | null {
       isOver = true;
       if (p1Dead && p2Dead) {
         reason = 'both_defeated';
-        // In this edge case, higher total damage wins
+        // Both fall simultaneously — higher total damage contribution wins
         const p1Total = _duelState.totalDamage[localPlayerId] ?? 0;
         const p2Total = _duelState.totalDamage[opponentId] ?? 0;
         winnerId = p1Total >= p2Total ? localPlayerId : opponentId;
@@ -501,7 +493,8 @@ export function hostResolveTurn(): DuelTurnResolution | null {
     enemyIntent: {
       type: sharedEnemy.nextIntent.type,
       value: sharedEnemy.nextIntent.value,
-      targetPlayerId: nextTarget,
+      // 'all' signals that every player is targeted — used by UI for attack indicators.
+      targetPlayerId: 'all',
     },
     player1Damage: p1Action.damageDealt,
     player2Damage: p2Action.damageDealt,
@@ -703,7 +696,8 @@ function _broadcastEnemyState(): void {
     nextIntent: {
       type: enemy.nextIntent.type,
       value: enemy.nextIntent.value,
-      targetPlayerId: _duelState.targetPlayerId,
+      // Enemy always targets all players in co-op — signal this to UI layer.
+      targetPlayerId: 'all',
     },
     statusEffects: enemy.statusEffects.map(se => ({
       type: se.type as string,

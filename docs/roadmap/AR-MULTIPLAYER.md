@@ -187,3 +187,17 @@ Lobby creation and join are asynchronous (Steamworks callback-based). JS must:
   Key Files table updated: multiplayerGameService, multiplayerScoring, fairnessService,
   multiplayerWorkshopService all DONE (were marked PENDING). Next Steps section added.
   Next milestone: test P2P with real Steam accounts, wire remaining modes (Duel, Co-op, Trivia).
+
+## Future Co-op Combat Ideas (Post-Launch Backlog)
+
+> **Status: NOT SCHEDULED — design ideas only. No implementation tasks created yet.**
+> Full design notes in `docs/mechanics/multiplayer.md` § "Future Co-op Combat Enhancements".
+
+| Idea | Summary | Affected Files (when implemented) |
+|------|---------|----------------------------------|
+| Aggro / Taunt mechanics | Players can draw enemy focus; enables tank role | `enemyManager.ts`, `coopEffects.ts`, `statusEffects.ts` |
+| Co-op-specific enemy intents | Enemies with distinct patterns: "attacks both for 5" vs "attacks one for 8" | `multiplayerGameService.ts`, `EnemyIntent` type |
+| Split damage AoE attacks | AoE damage divided across all players rather than full damage to each | `multiplayerGameService.ts`, new `targeting: 'aoe_split'` intent variant |
+
+These three ideas are designed to layer coherently: taunt + split AoE + multi-target intents combine into a genuine co-op tactical system. None require changes to the quiz or card systems.
+- 2026-04-07: Future co-op combat ideas recorded (aggro/taunt, co-op intents, split AoE).

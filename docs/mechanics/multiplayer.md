@@ -2,7 +2,7 @@
 
 > **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopEffects.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-07 — BroadcastChannelTransport latency/jitter simulation added; isBroadcastMode() exported
+> **Last verified:** 2026-04-07 — co-op enemy attacks now hit ALL players for full damage (was round-robin single target). `targetPlayerId` in `DuelTurnResolution` and `SharedEnemyState` intents is now `string | 'all'`.
 
 ## Modes
 
@@ -123,18 +123,35 @@ let stopRaceBroadcastFn: (() => void) | null = null
 ## Co-op Enemy Scaling
 
 Designed for sublinear scaling — two players at 70% quiz accuracy deal ~1.4x effective DPS, not 2x,
-so HP does not scale to 2x. Source: `getCoopHpMultiplier()` in `enemyManager.ts`.
+so HP does not scale to 2x. The 0.6 coefficient (vs naive 0.5) accounts for co-op synergy effects
+pushing combined DPS above raw accuracy alone. Source: `getCoopHpMultiplier()` in `enemyManager.ts`.
 
 | Stat | 1P | 2P | 3P | 4P |
 |------|----|----|----|----|
-| HP | 1.0x | 1.6x | 2.0x | 2.3x (cap) |
-| Block | 1.0x | 1.5x | 2.0x | 2.5x |
-| Damage Cap | 1.0x | 1.5x | 2.0x | 2.5x |
+| HP | 1.0x | 1.6x | 2.2x | 2.3x (cap) |
+| Block | 1.0x | 1.6x | 2.2x | 2.8x |
+| Damage Cap | 1.0x | 1.6x | 2.2x | 2.8x |
 | Enemy Damage | 1.0x | 1.0x | 1.0x | 1.0x |
 
-Block and damage cap use formula `1.0 + (playerCount - 1) * 0.5`. HP uses the JSDoc-documented values above (1.6/2.0/2.3) capped at 2.3.
+All three scale with formula `1.0 + (playerCount - 1) * 0.6`, with HP capped at 2.3.
+Block and damage cap use the same 0.6 coefficient to stay in lockstep with HP.
 
 Functions: `getCoopHpMultiplier()`, `getCoopBlockMultiplier()`, `getCoopDamageCapMultiplier()` in `src/services/enemyManager.ts`.
+
+`hostCreateSharedEnemy()` in `multiplayerGameService.ts` passes `{ playerCount }` to `createEnemy()`, which calls `getCoopHpMultiplier()` internally — scaling is fully delegated to the canonical function, not computed inline.
+
+## Co-op Enemy Attack Targeting
+
+In co-op mode, enemy attacks hit **ALL players simultaneously** for the full (1.0×) solo damage value. This is intentional — the "scaling" comes from hitting multiple targets, not from inflating per-player damage numbers. There is no round-robin targeting in co-op.
+
+**Implementation details (`hostResolveTurn()` in `multiplayerGameService.ts`):**
+- Both `p1Hp` and `p2Hp` are decremented by `attackValue` each attack turn
+- `DuelTurnResolution.enemyIntent.targetPlayerId` is always `'all'` (not a specific player ID)
+- `SharedEnemyState.nextIntent.targetPlayerId` is always `'all'` — UI reads this to show attack indicators on all players
+- The `targetPlayerId` field type on both interfaces is `string | 'all'`
+- `DuelSession` no longer tracks a per-turn `targetPlayerId` — the field was removed when round-robin was eliminated
+
+**Why 1.0× damage per player:** The co-op HP multiplier (1.6× for 2P) already accounts for two players hitting the same enemy. Reducing per-player attack damage would make the enemy feel weak against survivors once one player is low. Full damage keeps combat tension consistent across both players throughout the encounter.
 
 ## Co-op Exclusive Effects
 
@@ -162,7 +179,7 @@ Host-authoritative model prevents desync. Both players submit actions each turn;
 3. Both face quiz — each sends `mp:duel:quiz_result`
 4. Host collects both `DuelTurnAction` objects, calls `hostResolveTurn()`
 5. `hostResolveTurn()` combines damage, applies to shared enemy, rolls next intent, broadcasts `mp:duel:turn_resolve` and `mp:duel:enemy_state`
-6. Enemy attacks — target chosen round-robin, HP applied locally
+6. Enemy attacks — ALL players take full damage simultaneously (co-op mode); `targetPlayerId: 'all'` signals this to UI
 7. If enemy or player defeated, host sends `mp:duel:end`
 
 Source: `src/services/multiplayerGameService.ts`.
@@ -369,3 +386,54 @@ Phases 1-3 complete as of 2026-04-07. Phase 4 (Polish) in progress.
 | Phase 4: Polish (Workshop, fairness, local play) | IN PROGRESS |
 
 See `docs/roadmap/AR-MULTIPLAYER.md` for full task breakdown.
+
+---
+
+## Future Co-op Combat Enhancements
+
+> **Status: NOT IMPLEMENTED — design ideas for post-launch co-op depth.**
+> These are recorded here for design continuity. None of these systems exist in source code yet.
+
+### Aggro / Taunt Mechanics
+
+Players would be able to intentionally draw enemy focus — creating a "tank" role in co-op encounters.
+
+- A player who taunts becomes the enemy's preferred attack target for N turns
+- Cards tagged `taunt` or a dedicated co-op card mechanic would activate aggro
+- Synergizes with the existing `guardian_shield` effect: tank builds block, shields partner
+- Tactical depth: decide which player absorbs punishment so the other can deal damage freely
+- Implementation scope: new intent targeting logic in `enemyManager.ts`, new `coopEffects.ts` entry, taunt status effect
+
+### Co-op-Specific Enemy Intents
+
+Enemies in co-op encounters could have distinct multi-target attack patterns that do not exist in single-player:
+
+| Intent Pattern | Description |
+|---------------|-------------|
+| "Attacks both players for 5" | Each player takes 5 damage — total 10 outgoing |
+| "Attacks one player for 8" | Enemy picks a target (or taunted player); partner unharmed |
+| "Cleaves all for 6" | Hits every player, distributed or full depending on split rules |
+
+This creates genuine tactical decisions around positioning (who blocks, who attacks) that are absent from the current "enemy attacks one target round-robin" model.
+
+Implementation scope: extend the `EnemyIntent` type with a `targeting` field (`'single' | 'aoe_full' | 'aoe_split'`) and update `hostResolveTurn()` in `multiplayerGameService.ts` to dispatch damage accordingly.
+
+### Split Damage AoE Attacks
+
+A subset of AoE attacks would divide their total damage pool across all players rather than dealing full damage to each:
+
+- Enemy with "Volcanic Slam — 12 split" hits two players for 6 each (not 12 each)
+- Incentivizes spreading out rather than everyone playing defensively
+- Differentiates from cleave attacks (which deal full damage to each target)
+- Prevents AoE from being trivially punishing at 4P (total incoming would be ×4 otherwise)
+- Implementation scope: `targeting: 'aoe_split'` intent variant + `splitDamageAcrossPlayers()` helper in `multiplayerGameService.ts`
+
+### Design Notes
+
+These three systems are designed to work together as a coherent co-op combat layer:
+
+1. Taunt lets a tank player absorb split AoE predictably
+2. Co-op intents create varied combat puzzles where the answer changes based on who is targeted
+3. Split damage keeps AoE from feeling punishing at higher player counts
+
+None of these require changes to the quiz or card systems — they are purely enemy-side targeting upgrades and one new status effect (taunt).

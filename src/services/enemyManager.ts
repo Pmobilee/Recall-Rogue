@@ -67,44 +67,48 @@ function weightedRandomIntent(pool: EnemyIntent[]): EnemyIntent {
  * Computes HP scaling multiplier for co-op/multiplayer encounters.
  * Uses a sublinear curve inspired by Monster Hunter:
  * - 1 player: 1.0x (solo baseline)
- * - 2 players: 1.6x (not 2x — accounts for accuracy-dependent damage)
- * - 3 players: 2.0x
+ * - 2 players: 1.6x (not 2x — accounts for accuracy-dependent damage + co-op synergy)
+ * - 3 players: 2.2x
  * - 4 players: 2.3x (capped)
  *
  * Recall Rogue scales lower than StS2 because damage depends on quiz accuracy:
- * two 70% accuracy players deal ~1.4x effective DPS, not 2x.
+ * two 70% accuracy players deal ~1.4x effective DPS, not 2x. The 0.6 coefficient
+ * (vs naive 0.5) accounts for co-op synergy effects pushing combined DPS above
+ * raw accuracy alone.
  *
  * @param playerCount - Number of players in the encounter (1 = solo baseline).
  * @returns The HP scaling multiplier (1.0 minimum).
  */
 export function getCoopHpMultiplier(playerCount: number): number {
   if (playerCount <= 1) return 1.0;
-  return Math.min(2.3, 1.0 + (playerCount - 1) * 0.5);
+  return Math.min(2.3, 1.0 + (playerCount - 1) * 0.6);
 }
 
 /**
  * Computes block scaling for co-op encounters.
- * +50% per additional player prevents combined DPS from trivializing enemy defense.
+ * +60% per additional player scales in lockstep with HP to prevent combined
+ * DPS from trivializing enemy defense.
  *
  * @param playerCount - Number of players in the encounter (1 = solo baseline).
  * @returns The block scaling multiplier (1.0 minimum).
  */
 export function getCoopBlockMultiplier(playerCount: number): number {
   if (playerCount <= 1) return 1.0;
-  return 1.0 + (playerCount - 1) * 0.5;
+  return 1.0 + (playerCount - 1) * 0.6;
 }
 
 /**
  * Computes damage cap scaling for co-op encounters.
- * Prevents co-op caps from bottlenecking enemy damage output against multi-HP pools.
- * Solo caps: 7/10/15/22 → 2P: ~10/15/22/33.
+ * Scales in lockstep with HP (0.6 coefficient) so caps don't bottleneck enemy
+ * damage output against multi-HP pools.
+ * Solo caps: 7/10/15/22 → 2P: ~11/16/24/35.
  *
  * @param playerCount - Number of players in the encounter (1 = solo baseline).
  * @returns The damage cap scaling multiplier (1.0 minimum).
  */
 export function getCoopDamageCapMultiplier(playerCount: number): number {
   if (playerCount <= 1) return 1.0;
-  return 1.0 + (playerCount - 1) * 0.5;
+  return 1.0 + (playerCount - 1) * 0.6;
 }
 
 /**
