@@ -11,10 +11,11 @@
  *   HTMLAudioElement → MediaElementSourceNode → gainNode → AnalyserNode → destination
  */
 
-import { type MusicCategory, type MusicTrack, getTracksByCategory } from '../data/musicTracks'
+import { type MusicCategory, type MusicTrack, getTracksByCategory, getPlayableTracks } from '../data/musicTracks'
 import { ambientAudio } from './ambientAudioService'
 import { musicVolume, musicEnabled } from './cardAudioManager'
 import { get } from 'svelte/store'
+import { playerSave } from '../ui/stores/playerData'
 
 const PREFS_KEY = 'music_prefs'
 const CROSSFADE_MS = 1500
@@ -43,6 +44,11 @@ class MusicService {
   private shuffleQueue: MusicTrack[] = []
   private listeners = new Set<() => void>()
 
+  // ─── Preview state ────────────────────────────────────────────────────────
+  private previewAudio: HTMLAudioElement | null = null
+  private previewTimeout: ReturnType<typeof setTimeout> | null = null
+  private _isPreviewing = false
+
   // ─── Public getters ──────────────────────────────────────────────────────
 
   get isPlaying(): boolean { return this._isPlaying }
@@ -53,6 +59,7 @@ class MusicService {
   get ready(): boolean {
     return this._userGestureReceived && this.ctx != null && this.ctx.state !== 'suspended'
   }
+  get isPreviewing(): boolean { return this._isPreviewing }
 
   // ─── Initialisation ───────────────────────────────────────────────────────
 
@@ -144,6 +151,12 @@ class MusicService {
 
       // Start playback — volume crossfade via element.volume (not Web Audio gain)
       await audio.play()
+
+      // Epic tracks: skip 5-second intro (intros sound too similar)
+      if (track.category === 'epic') {
+        audio.currentTime = 5
+      }
+
       this.crossfadeIn(audio)
 
       // Now connect to Web Audio analyser (after playback started)
@@ -220,7 +233,7 @@ class MusicService {
   async playCategory(category: MusicCategory): Promise<void> {
     this.init()
     this._currentCategory = category
-    const tracks = getTracksByCategory(category)
+    const tracks = getPlayableTracks(category, this.getUnlockedIds())
     this.shuffleQueue = this.shuffleArray([...tracks])
     const first = this.shuffleQueue.pop()
     if (first) {
@@ -239,7 +252,7 @@ class MusicService {
   /** Skip to the next track in the shuffle queue. */
   async next(): Promise<void> {
     this._userGestureReceived = true
-    const tracks = getTracksByCategory(this._currentCategory)
+    const tracks = getPlayableTracks(this._currentCategory, this.getUnlockedIds())
     if (tracks.length === 0) return
 
     if (this.shuffleQueue.length === 0) {
@@ -262,7 +275,7 @@ class MusicService {
   /** Play a random track from the current category. */
   async prev(): Promise<void> {
     this._userGestureReceived = true
-    const tracks = getTracksByCategory(this._currentCategory)
+    const tracks = getPlayableTracks(this._currentCategory, this.getUnlockedIds())
     if (tracks.length === 0) return
     this.shuffleQueue = this.shuffleArray([...tracks])
     await this.next()
@@ -333,6 +346,80 @@ class MusicService {
     this.notify()
   }
 
+  // ─── Preview ──────────────────────────────────────────────────────────────
+
+  /** Play a 15-second preview snippet from the middle of a track. */
+  async previewTrack(track: MusicTrack): Promise<void> {
+    this.stopPreview()
+
+    try {
+      const audio = new Audio()
+      audio.preload = 'auto'
+      audio.volume = 0
+
+      await new Promise<void>((resolve, reject) => {
+        const onCanPlay = () => { cleanup(); resolve() }
+        const onError = () => { cleanup(); reject(new Error(`Preview load failed: ${track.file}`)) }
+        const cleanup = () => {
+          audio.removeEventListener('canplaythrough', onCanPlay)
+          audio.removeEventListener('error', onError)
+        }
+        audio.addEventListener('canplaythrough', onCanPlay, { once: true })
+        audio.addEventListener('error', onError, { once: true })
+        audio.src = track.file
+        audio.load()
+      })
+
+      // Seek to middle of track
+      const midpoint = Math.max(0, (track.duration / 2) - 7.5)
+      audio.currentTime = midpoint
+      await audio.play()
+
+      this.previewAudio = audio
+      this._isPreviewing = true
+
+      // Duck main BGM to 20%
+      if (this.currentAudio) {
+        this.currentAudio.volume = get(musicVolume) * 0.2
+      }
+
+      // Fade in preview over 500ms
+      this.fadePreviewVolume(audio, 0, get(musicVolume), 500)
+
+      // Auto-stop after 15 seconds (with 500ms fade-out at end)
+      this.previewTimeout = setTimeout(() => {
+        this.fadePreviewVolume(audio, audio.volume, 0, 500, () => {
+          this.stopPreview()
+        })
+      }, 14500)
+
+      this.notify()
+    } catch (err) {
+      console.error('[Music] Preview failed:', err)
+      this.stopPreview()
+    }
+  }
+
+  /** Stop the current preview and restore main BGM volume. */
+  stopPreview(): void {
+    if (this.previewTimeout) {
+      clearTimeout(this.previewTimeout)
+      this.previewTimeout = null
+    }
+    if (this.previewAudio) {
+      this.previewAudio.pause()
+      this.previewAudio.src = ''
+      this.previewAudio.load()
+      this.previewAudio = null
+    }
+    // Restore main BGM volume
+    if (this.currentAudio && get(musicEnabled)) {
+      this.currentAudio.volume = get(musicVolume)
+    }
+    this._isPreviewing = false
+    this.notify()
+  }
+
   // ─── Visualiser ───────────────────────────────────────────────────────────
 
   /** Populate `out` with frequency data for the spectrogram. */
@@ -348,6 +435,26 @@ class MusicService {
   }
 
   // ─── Private helpers ──────────────────────────────────────────────────────
+
+  /** Returns the player's unlocked music track IDs from the save. */
+  private getUnlockedIds(): string[] {
+    return get(playerSave)?.unlockedTracks ?? []
+  }
+
+  /** Fade an audio element's volume from -> to over durationMs. */
+  private fadePreviewVolume(audio: HTMLAudioElement, from: number, to: number, durationMs: number, onComplete?: () => void): void {
+    const steps = 20
+    const stepMs = durationMs / steps
+    let step = 0
+    const interval = setInterval(() => {
+      step++
+      audio.volume = Math.max(0, Math.min(1, from + (to - from) * (step / steps)))
+      if (step >= steps) {
+        clearInterval(interval)
+        onComplete?.()
+      }
+    }, stepMs)
+  }
 
   private notify(): void {
     this.listeners.forEach(fn => fn())

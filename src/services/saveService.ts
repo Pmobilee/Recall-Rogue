@@ -446,6 +446,9 @@ export function load(): PlayerSave | null {
     if (!Array.isArray(parsedAny['unlockedRelicIds'])) {
       parsedAny['unlockedRelicIds'] = []
     }
+    if (!Array.isArray(parsedAny['unlockedTracks'])) {
+      parsedAny['unlockedTracks'] = []
+    }
     if (!Array.isArray(parsedAny['excludedRelicIds'])) {
       parsedAny['excludedRelicIds'] = []
     }
@@ -593,6 +596,7 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     masteryCoinsAvailable: 0,
     unlockedRelicIds: [],
     excludedRelicIds: [],
+    unlockedTracks: [],
     // Character progression
     totalXP: 0,
     characterLevel: 1, // New players start at level 1

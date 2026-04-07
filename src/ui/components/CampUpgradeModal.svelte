@@ -1,12 +1,15 @@
 <script lang="ts">
   import { campState, getCampUpgradeCost, setCampTier, setCampForm, CAMP_MAX_TIERS } from '../stores/campState'
   import type { CampElement } from '../stores/campState'
-  import { playerSave, spendGreyMatter } from '../stores/playerData'
+  import { playerSave, spendGreyMatter, purchaseMusicTrack } from '../stores/playerData'
   import { getCampUpgradeUrl } from '../utils/campArtManifest'
   import { getLevelProgress, MAX_LEVEL } from '../../services/characterLevel'
   import { UNLOCKABLE_RELICS } from '../../data/relics/unlockable'
   import { isLandscape } from '../../stores/layoutStore'
   import { getGreyMatterIconPath } from '../utils/iconAssets'
+  import { getLockedTracks, type MusicTrack } from '../../data/musicTracks'
+  import { musicService } from '../../services/musicService'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
   interface Props {
     onClose: () => void
@@ -14,13 +17,41 @@
 
   let { onClose }: Props = $props()
 
-  let activeTab = $state<'upgrades' | 'relics'>('upgrades')
+  let activeTab = $state<'upgrades' | 'relics' | 'jukebox'>('upgrades')
 
   let greyMatterBalance = $derived($playerSave?.minerals?.greyMatter ?? 0)
   let totalXP = $derived($playerSave?.totalXP ?? 0)
   let levelInfo = $derived(getLevelProgress(totalXP))
   // Use stored characterLevel as primary (survives XP desync), fall back to XP-derived
   let effectiveLevel = $derived(Math.max($playerSave?.characterLevel ?? 0, levelInfo.level))
+
+  // ── Jukebox state ─────────────────────────────────────────────────────────
+
+  let jukeboxFilter = $state<'all' | 'epic' | 'quiet'>('all')
+  let previewingTrackId = $state<string | null>(null)
+  let justPurchasedId = $state<string | null>(null)
+
+  let unlockedIds = $derived(new Set($playerSave?.unlockedTracks ?? []))
+  let jukeboxTracks = $derived(
+    getLockedTracks().filter(t =>
+      jukeboxFilter === 'all' || t.category === jukeboxFilter
+    )
+  )
+
+  // Stop preview when switching away from jukebox tab
+  $effect(() => {
+    if (activeTab !== 'jukebox' && previewingTrackId) {
+      musicService.stopPreview()
+      previewingTrackId = null
+    }
+  })
+
+  // Stop preview on unmount
+  $effect(() => {
+    return () => {
+      musicService.stopPreview()
+    }
+  })
 
   const ELEMENT_CONFIG: { element: CampElement; name: string }[] = [
     { element: 'tent', name: 'Tent' },
@@ -70,6 +101,36 @@
     const posY = b.top + b.height / 2
     return `background-size: ${bgSize}%; background-position: ${posX}% ${posY}%; background-repeat: no-repeat;`
   }
+
+  // ── Jukebox helpers ───────────────────────────────────────────────────────
+
+  function formatDuration(seconds: number): string {
+    const m = Math.floor(seconds / 60)
+    const s = Math.floor(seconds % 60)
+    return `${m}:${s.toString().padStart(2, '0')}`
+  }
+
+  function handlePreview(track: MusicTrack): void {
+    if (previewingTrackId === track.id) {
+      musicService.stopPreview()
+      previewingTrackId = null
+    } else {
+      previewingTrackId = track.id
+      musicService.previewTrack(track)
+    }
+  }
+
+  function handleBuyTrack(track: MusicTrack): void {
+    if (!track.price) return
+    const success = purchaseMusicTrack(track.id, track.price)
+    if (success) {
+      playCardAudio('shop-purchase')
+      justPurchasedId = track.id
+      setTimeout(() => { justPurchasedId = null }, 2000)
+    } else {
+      playCardAudio('shop-insufficient')
+    }
+  }
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -94,6 +155,11 @@
         class:active={activeTab === 'relics'}
         onclick={() => activeTab = 'relics'}
       >Relics</button>
+      <button
+        class="tab-btn"
+        class:active={activeTab === 'jukebox'}
+        onclick={() => { activeTab = 'jukebox'; musicService.stopPreview(); previewingTrackId = null }}
+      >Jukebox</button>
     </div>
 
     {#if activeTab === 'upgrades'}
@@ -163,7 +229,7 @@
           </div>
         {/each}
       </div>
-    {:else}
+    {:else if activeTab === 'relics'}
       <div class="relics-content">
         <!-- Level + XP Progress Bar -->
         <div class="level-header">
@@ -200,6 +266,70 @@
               </div>
             </div>
           {/each}
+        </div>
+      </div>
+    {:else}
+      <div class="jukebox-content">
+        <!-- Sub-filter tabs -->
+        <div class="jukebox-filter">
+          <button class="jk-filter-btn" class:active={jukeboxFilter === 'all'} onclick={() => jukeboxFilter = 'all'}>ALL</button>
+          <button class="jk-filter-btn" class:active={jukeboxFilter === 'epic'} onclick={() => jukeboxFilter = 'epic'}>EPIC</button>
+          <button class="jk-filter-btn" class:active={jukeboxFilter === 'quiet'} onclick={() => jukeboxFilter = 'quiet'}>LO-FI</button>
+        </div>
+
+        <!-- Track list -->
+        <div class="jukebox-list">
+          {#each jukeboxTracks as track (track.id)}
+            {@const owned = unlockedIds.has(track.id)}
+            {@const canAfford = greyMatterBalance >= (track.price ?? 0)}
+            {@const isPreviewing = previewingTrackId === track.id}
+            {@const justBought = justPurchasedId === track.id}
+
+            <div class="jk-row" class:owned class:just-bought={justBought}>
+              <span class="jk-badge" class:epic={track.category === 'epic'} class:quiet={track.category === 'quiet'}>
+                {track.category === 'epic' ? 'EPIC' : 'LO-FI'}
+              </span>
+              <span class="jk-title">{track.title}</span>
+              <span class="jk-duration">{formatDuration(track.duration)}</span>
+
+              <!-- Preview button -->
+              <button
+                class="jk-preview-btn"
+                class:active={isPreviewing}
+                onclick={() => handlePreview(track)}
+                aria-label={isPreviewing ? 'Stop preview' : 'Preview track'}
+              >
+                {#if isPreviewing}
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h12v12H6z" fill="currentColor"/></svg>
+                {:else}
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7L8 5z" fill="currentColor"/></svg>
+                {/if}
+              </button>
+
+              <!-- Buy / Owned -->
+              {#if owned}
+                <span class="jk-owned-badge">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/></svg>
+                </span>
+              {:else}
+                <button
+                  class="jk-buy-btn"
+                  class:affordable={canAfford}
+                  disabled={!canAfford}
+                  onclick={() => handleBuyTrack(track)}
+                >
+                  <img class="jk-gm-icon" src={getGreyMatterIconPath()} alt="" aria-hidden="true" />
+                  {track.price}
+                </button>
+              {/if}
+            </div>
+          {:else}
+            <div class="jk-empty">No locked tracks in this category.</div>
+          {/each}
+        </div>
+
+        <div class="jk-footer">
+          {jukeboxTracks.length} track{jukeboxTracks.length !== 1 ? 's' : ''} available
         </div>
       </div>
     {/if}
@@ -329,7 +459,7 @@
   }
 
   /* Subtle pulse on the Relics tab to draw attention */
-  .tab-btn:not(.active):last-child {
+  .tab-btn:nth-child(2):not(.active) {
     animation: relicPulse 3s ease-in-out infinite;
   }
 
@@ -644,6 +774,218 @@
     color: #94a3b8;
     text-align: center;
     white-space: nowrap;
+  }
+
+  /* ── Jukebox tab ── */
+  .jukebox-content {
+    overflow-y: auto;
+    padding: calc(12px * var(--layout-scale, 1));
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  .jukebox-filter {
+    display: flex;
+    gap: calc(4px * var(--layout-scale, 1));
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    padding: calc(2px * var(--layout-scale, 1));
+  }
+
+  .jk-filter-btn {
+    flex: 1;
+    padding: calc(6px * var(--layout-scale, 1));
+    border: none;
+    border-radius: calc(4px * var(--layout-scale, 1));
+    background: transparent;
+    color: #94a3b8;
+    font-size: calc(10px * var(--text-scale, 1));
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .jk-filter-btn.active {
+    background: rgba(29, 185, 84, 0.15);
+    color: #1db954;
+  }
+
+  .jk-filter-btn:not(.active):hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #cbd5e1;
+  }
+
+  .jukebox-list {
+    display: flex;
+    flex-direction: column;
+    gap: calc(2px * var(--layout-scale, 1));
+  }
+
+  .jk-row {
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    background: rgba(30, 41, 59, 0.5);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    border: 1px solid transparent;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .jk-row:hover {
+    background: rgba(30, 41, 59, 0.8);
+  }
+
+  .jk-row.owned {
+    opacity: 0.5;
+  }
+
+  .jk-row.just-bought {
+    border-color: rgba(29, 185, 84, 0.5);
+    background: rgba(29, 185, 84, 0.08);
+  }
+
+  .jk-badge {
+    display: inline-block;
+    padding: calc(2px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
+    border-radius: calc(3px * var(--layout-scale, 1));
+    font-size: calc(9px * var(--text-scale, 1));
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    min-width: calc(36px * var(--layout-scale, 1));
+    text-align: center;
+  }
+
+  .jk-badge.epic {
+    background: rgba(255, 100, 50, 0.15);
+    color: #ff6432;
+  }
+
+  .jk-badge.quiet {
+    background: rgba(50, 180, 255, 0.15);
+    color: #32b4ff;
+  }
+
+  .jk-title {
+    flex: 1;
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #e2e8f0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+
+  .jk-duration {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #64748b;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .jk-preview-btn {
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
+    border-radius: 50%;
+    border: 1px solid rgba(29, 185, 84, 0.3);
+    background: rgba(29, 185, 84, 0.1);
+    color: #1db954;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(5px * var(--layout-scale, 1));
+    flex-shrink: 0;
+    transition: all 0.15s;
+  }
+
+  .jk-preview-btn svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .jk-preview-btn:hover {
+    background: rgba(29, 185, 84, 0.2);
+    border-color: rgba(29, 185, 84, 0.5);
+  }
+
+  .jk-preview-btn.active {
+    background: rgba(29, 185, 84, 0.25);
+    border-color: #1db954;
+    box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) rgba(29, 185, 84, 0.3);
+    animation: previewPulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes previewPulse {
+    0%, 100% { box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) rgba(29, 185, 84, 0.3); }
+    50% { box-shadow: 0 0 calc(12px * var(--layout-scale, 1)) rgba(29, 185, 84, 0.5); }
+  }
+
+  .jk-buy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(3px * var(--layout-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    border-radius: calc(4px * var(--layout-scale, 1));
+    border: 1px solid rgba(100, 70, 20, 0.6);
+    background: rgba(30, 20, 5, 0.8);
+    color: #64748b;
+    font-size: calc(11px * var(--text-scale, 1));
+    font-weight: 700;
+    cursor: not-allowed;
+    flex-shrink: 0;
+    transition: all 0.15s;
+  }
+
+  .jk-buy-btn.affordable {
+    background: #3d2e0a;
+    border-color: rgba(255, 180, 60, 0.5);
+    color: #ffe0a6;
+    cursor: pointer;
+  }
+
+  .jk-buy-btn.affordable:hover {
+    background: #4d3a0f;
+    border-color: rgba(255, 200, 80, 0.7);
+  }
+
+  .jk-gm-icon {
+    width: calc(12px * var(--layout-scale, 1));
+    height: calc(12px * var(--layout-scale, 1));
+    object-fit: contain;
+  }
+
+  .jk-owned-badge {
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1db954;
+    flex-shrink: 0;
+  }
+
+  .jk-owned-badge svg {
+    width: calc(16px * var(--layout-scale, 1));
+    height: calc(16px * var(--layout-scale, 1));
+  }
+
+  .jk-empty {
+    text-align: center;
+    color: #64748b;
+    font-size: calc(12px * var(--text-scale, 1));
+    padding: calc(24px * var(--layout-scale, 1));
+  }
+
+  .jk-footer {
+    text-align: center;
+    color: #64748b;
+    font-size: calc(10px * var(--text-scale, 1));
+    padding-top: calc(4px * var(--layout-scale, 1));
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
   }
 
   /* ── Landscape overrides ── */

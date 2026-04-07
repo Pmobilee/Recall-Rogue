@@ -682,6 +682,8 @@ export interface PlayerSave {
   unlockedRelicIds?: string[]
   /** Relic definition IDs the player has excluded from their run pool. */
   excludedRelicIds?: string[]
+  /** Music track IDs unlocked via the Jukebox shop. */
+  unlockedTracks?: string[]
 
   // Study Presets & Deck Builder
   /** Saved study presets (max 10). */

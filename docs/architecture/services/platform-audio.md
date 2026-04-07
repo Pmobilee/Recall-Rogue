@@ -1,7 +1,7 @@
 # Platform Services — Audio & Game Feel
 
 > **Purpose:** Audio synthesis, file-based SFX playback, card audio cues, ambient atmosphere layering, BGM music playback, and game-feel (juice) coordination services
-> **Last verified:** 2026-04-01
+> **Last verified:** 2026-04-07
 > **Source files:** `src/services/audioService.ts`, `src/services/cardAudioManager.ts`, `src/services/juiceManager.ts`, `src/services/ambientAudioService.ts`, `src/services/musicService.ts`
 
 > **See also:** [`platform.md`](platform.md) — All other platform services: device detection, haptics, performance, analytics, input, accessibility, notifications, entitlements, and more.
@@ -34,26 +34,28 @@ AudioBufferSourceNode ─┘   (N layers per recipe)
 
 ### Contexts and Recipes
 
-Each `AmbientContext` maps to a recipe: an ordered list of `{ file, volume }` layers. All layers play simultaneously as looping AudioBufferSourceNodes.
+Each `AmbientContext` maps to a recipe: an ordered list of `{ file, volume }` layers. All layers play simultaneously as looping AudioBufferSourceNodes. Layers referencing deleted files are silently skipped at runtime via the `if (!buffer) continue` guard in `crossfadeTo()`.
 
-| Context | Layers | Primary character |
-|---------|--------|-------------------|
-| `hub` | 5 | Campfire + stone room — warm/safe underground |
-| `dungeon_map` | 3 | Wind + drips — contemplative planning |
-| `shop` | 3 | Torch crackle + chain rattle — merchant alcove |
-| `rest` | 4 | Campfire + wind — deeper rest site |
-| `mystery` | 3 | Arcane whisper + void — eerie unknown |
-| `combat_dust` | 4 | Drips + stone — Floors 1–3 basic cave |
-| `combat_embers` | 4 | Ember pit + lava — Floors 4–6 volcanic |
-| `combat_ice` | 4 | Ice creak + wind howl — Floors 7–9 frozen |
-| `combat_arcane` | 4 | Arcane whisper + crystal — Floors 10–12 |
-| `combat_void` | 2 | Void drone + howl — minimal void |
-| `boss_arena` | 2 | Tension underbed + arena ambient |
-| `mastery_challenge` | 2 | Arcane + crystal hum |
-| `run_end_victory` | 1 | Soft campfire |
-| `run_end_defeat` | 2 | Void drone + wind |
-| `retreat_delve` | 3 | Wind + stone + dungeon drip |
-| `silent` | 0 | No audio |
+**Accepted loop files (2026-04-07):** `hub_campfire_ambience`, `water_drip_close`, `dungeon_drip_ambient`, `stone_room_resonance`, `boss_arena_ambient`, `insect_cave`, `map_exploration_ambient`, `low_hp_warning_pulse`. All other formerly-referenced files have been deleted and will produce a `console.warn` then be skipped.
+
+| Context | Layers | Active layers (accepted files only) | Primary character |
+|---------|--------|--------------------------------------|-------------------|
+| `hub` | 5 | campfire, water_drip, stone_resonance | Campfire + stone room — warm/safe underground |
+| `dungeon_map` | 5 | water_drip, insect_cave, map_exploration | Wind + cave insects + exploration — contemplative planning |
+| `shop` | 5 | insect_cave, dungeon_drip | Cave insects + drips in background |
+| `rest` | 5 | campfire, water_drip, insect_cave | Campfire + ambient cave life |
+| `mystery` | 5 | insect_cave, dungeon_drip | Subtle cave life beneath the arcane |
+| `combat_dust` | 5 | water_drip, insect_cave | Drips + cave insects — Floors 1–3 basic cave |
+| `combat_embers` | 7 | insect_cave, dungeon_drip, stone_resonance | Ember pit + stone chamber — Floors 4–6 volcanic |
+| `combat_ice` | 6 | water_drip, dungeon_drip, stone_resonance | Ice cavern + dripping water — Floors 7–9 frozen |
+| `combat_arcane` | 6 | map_exploration, stone_resonance | Underground chamber + arcane — Floors 10–12 |
+| `combat_void` | 3 | map_exploration | Void drone + subtle presence |
+| `boss_arena` | 2 | boss_arena_ambient | Arena ambient (tension underbed deleted) |
+| `mastery_challenge` | 4 | map_exploration, stone_resonance | Stone chamber + ambient backdrop |
+| `run_end_victory` | 1 | campfire | Soft campfire |
+| `run_end_defeat` | 3 | dungeon_drip | Void + dripping dungeon |
+| `retreat_delve` | 4 | dungeon_drip, insect_cave | Wind + cave life + drips |
+| `silent` | 0 | — | No audio |
 
 Recipe definitions live in the `RECIPES` constant at the top of `ambientAudioService.ts`. Spec source: `docs/roadmap/future/SFX-SOUND-GENERATION-PROMPTS.md §AMBIENT ATMOSPHERE RECIPES`.
 
@@ -77,7 +79,7 @@ Volume math lives in the pure function `effectiveVolume(targetVolume, musicCoexi
 
 ### Boss Overlay
 
-`addBossOverlay()` starts additional tension layers on top of the current recipe without crossfading away the existing ones. `removeBossOverlay()` fades them out over 800 ms. The overlay layers are defined in `BOSS_OVERLAY_LAYERS` (currently: `combat_tension_underbed.m4a` at 0.3).
+`addBossOverlay()` starts additional tension layers on top of the current recipe without crossfading away the existing ones. `removeBossOverlay()` fades them out over 800 ms. The overlay layers are defined in `BOSS_OVERLAY_LAYERS`. As of 2026-04-07, `combat_tension_underbed.m4a` was deleted and `BOSS_OVERLAY_LAYERS` is empty — `addBossOverlay()` is currently a no-op until a replacement file is sourced and added.
 
 ### Pre-init Pending Context
 
@@ -101,9 +103,11 @@ await ambientAudio.setContext('combat_dust')   // switch context with crossfade;
 ambientAudio.duck()                            // quiz overlay — reduce to 50%
 ambientAudio.unduck()                          // restore from duck
 ambientAudio.setMusicCoexistence(true)         // BGM active — reduce to 30%
-ambientAudio.addBossOverlay()                  // add boss tension layers on top
+ambientAudio.addBossOverlay()                  // add boss tension layers on top (no-op while BOSS_OVERLAY_LAYERS is empty)
 ambientAudio.removeBossOverlay()               // fade out boss layers
 ambientAudio.stop()                            // hard stop all layers, reset to silent + pending
+ambientAudio.setEnabled(false)                 // user toggle — stops all layers, remembers context for resume
+ambientAudio.setVolume(0.7)                    // master output volume 0.0–1.0; applied to Web Audio masterGain
 ```
 
 ### Buffer Cache
@@ -120,6 +124,7 @@ Decoded `AudioBuffer` objects are cached by file path string. Failed fetches are
 | `src/services/musicService.ts` — `playTrack()` | After `newSource.start()` when a BGM track begins playing | `setMusicCoexistence(true)` ducks ambient to 30% |
 | `src/services/musicService.ts` — `fadeOutAndStop()` | Before `this._isPlaying = false` when music fully stops | `setMusicCoexistence(false)` restores ambient to full volume |
 | `src/services/musicService.ts` — `togglePlayPause()` | Inside `ctx.suspend().then()` callback when user pauses music | `setMusicCoexistence(false)` restores ambient while music is paused |
+| `src/services/cardAudioManager.ts` — `initCardAudio()` | Called on first user gesture via `unlockCardAudio()` | Subscribes `ambientEnabled`/`ambientVolume` stores → calls `setEnabled()`/`setVolume()` on every store change |
 
 The `setCombatAmbient` helper in `gameFlowController.ts` is called at four combat start points:
 1. Auto-started encounter 3 (boss/mini-boss) inside `proceedAfterReward()`
@@ -221,9 +226,33 @@ The synthesis fallback still fires on the very first play of any sound before it
 | | |
 |---|---|
 | **File** | src/services/cardAudioManager.ts |
-| **Purpose** | Maps semantic card audio cues to audioService sound names; provides Svelte store for mute state |
-| **Key exports** | `playCardAudio`, `CardAudioCue` (type) |
-| **Key dependencies** | audioService |
+| **Purpose** | Maps semantic card audio cues to audioService sound names; provides persisted Svelte stores for all audio user preferences |
+| **Key exports** | `playCardAudio`, `CardAudioCue` (type), `sfxEnabled`, `sfxVolume`, `musicEnabled`, `musicVolume`, `ambientEnabled`, `ambientVolume` |
+| **Key dependencies** | audioService, ambientAudioService |
+
+### Persisted Stores
+
+All stores use `localStorage` with the `card:` key prefix. Values persist across sessions.
+
+| Store | Key | Default | Wired to |
+|-------|-----|---------|----------|
+| `sfxEnabled` | `card:sfxEnabled` | `true` | `audioManager.mute()/unmute()` |
+| `sfxVolume` | `card:sfxVolume` | `1.0` | `audioManager.setVolume()` |
+| `musicEnabled` | `card:musicEnabled` | `true` | `musicService` (subscribes directly) |
+| `musicVolume` | `card:musicVolume` | `0.5` | `musicService` (subscribes directly) |
+| `ambientEnabled` | `card:ambientEnabled` | `true` | `ambientAudio.setEnabled()` |
+| `ambientVolume` | `card:ambientVolume` | `0.7` | `ambientAudio.setVolume()` |
+
+`ambientEnabled` and `ambientVolume` subscriptions are wired inside `initCardAudio()`, which runs on the first user gesture via `unlockCardAudio()`.
+
+### Ambient Audio User Controls
+
+User ambient audio preferences are exposed in the Settings Panel and MusicWidget:
+
+- **Settings Panel (landscape/portrait)**: Ambient Enabled toggle (stored as `ambientEnabled`) + Ambient Volume slider (stored as `ambientVolume`, range 0.0–1.0). Both are wired to `ambientAudio.setEnabled()` and `ambientAudio.setVolume()` respectively.
+- **MusicWidget expanded panel**: Ambient On/Off toggle for quick access during gameplay. Subscribes to the same `ambientEnabled` store.
+
+When `ambientEnabled` is toggled `false`, `ambientAudio.setEnabled(false)` stops all currently playing layers but remembers the active context for resume. When toggled back `true`, playback resumes with the same context. Volume changes apply immediately to the `masterGain` node and persist across context changes.
 
 ## musicService (BGM)
 
@@ -232,8 +261,9 @@ The synthesis fallback still fires on the very first play of any sound before it
 | **File** | src/services/musicService.ts |
 | **Purpose** | BGM playback using HTMLAudioElement — Safari-compatible, real-time frequency data for visualiser |
 | **Key exports** | `musicService` (singleton) |
-| **Key dependencies** | Web Audio API (`createMediaElementSource`), `src/data/musicTracks.ts` (track manifest), `ambientAudioService` (coexistence ducking), `cardAudioManager` (`musicVolume`/`musicEnabled` stores) |
+| **Key dependencies** | Web Audio API (`createMediaElementSource`), `src/data/musicTracks.ts` (track manifest), `ambientAudioService` (coexistence ducking), `cardAudioManager` (`musicVolume`/`musicEnabled` stores), `playerSave` store (unlocked track IDs) |
 | **Track files** | `public/assets/audio/music/epic/*.m4a` (AAC 192k 44.1kHz), `public/assets/audio/music/quiet/*.m4a` — re-encoded from Suno mp3s that contained embedded JPEG cover art (see gotchas) |
+| **Track counts** | 40 epic (29 free + 11 locked), 55 quiet (35 free + 20 locked) — 95 total |
 
 ### Audio Graph
 
@@ -248,12 +278,40 @@ AnalyserNode is connected after `element.play()` starts (Safari compatibility �
 - **Two categories**: Epic (combat) and Lo-Fi/Quiet (ambient) — user toggles via MusicWidget. Category label shown as EPIC / LO-FI in the widget; internal key is `'quiet'` for the Lo-Fi category.
 - **Crossfade**: Sequential 1.5s fade-out → 1.5s fade-in (no overlap). `HTMLAudioElement.volume` ramped via `requestAnimationFrame`.
 - **Run start fade-in**: `startWithFadeIn(5000)` provides a 5-second gentle fade-in when entering a run.
-- **Shuffle queue**: Fisher-Yates with back-to-back repeat avoidance
+- **Shuffle queue**: Fisher-Yates with back-to-back repeat avoidance. Only playable tracks enter the queue (see Jukebox below).
 - **AnalyserNode**: 32 frequency bins at 60fps for spectrogram visualiser in MusicWidget
 - **Volume / mute**: Single source of truth is `musicVolume` / `musicEnabled` Svelte stores from `cardAudioManager`. `musicService` subscribes to these — never duplicates its own mute state.
 - **Persistence**: Volume, mute, category saved to `localStorage` key `music_prefs`
 - **User gesture gating**: AudioContext created lazily; `startIfNotPlaying()` is a no-op until `unlock()` is called from a user gesture handler
 - **Ambient coexistence**: Calls `ambientAudio.setMusicCoexistence(true/false)` to duck ambient layers when music plays
+- **Epic 5s offset**: Epic tracks seek to `currentTime = 5` immediately after `play()` to skip intros that sound too similar across tracks.
+
+### Jukebox — Locked Track System
+
+Tracks in `musicTracks.ts` with `locked: true` are not included in shuffle until purchased. The purchase flow is handled by the Jukebox UI shop (not yet implemented as of 2026-04-07 — data layer is ready).
+
+| Symbol | Description |
+|--------|-------------|
+| `getPlayableTracks(category, unlockedIds)` | Returns free + player-unlocked tracks for a category. Used by `playCategory()`, `next()`, `prev()`. |
+| `getLockedTracks()` | Returns all locked tracks — for the Jukebox shop listing. |
+| `purchaseMusicTrack(trackId, price)` | In `playerData.ts` — deducts grey matter, appends to `PlayerSave.unlockedTracks`. |
+| `PlayerSave.unlockedTracks` | Persisted string[] of purchased track IDs. Migrated to `[]` for existing saves. |
+
+**Pricing tiers by duration:**
+- < 120s: 25 grey matter
+- 120–180s: 40 grey matter
+- 180–240s: 60 grey matter
+- ≥ 240s: 80 grey matter
+
+### Preview System
+
+`musicService.previewTrack(track)` plays a 15-second snippet from the midpoint of any track (including locked ones, for the Jukebox purchase decision flow).
+
+- Seeks to `duration / 2 - 7.5s` as start point
+- Ducks main BGM to 20% volume while previewing
+- Fades preview in over 500ms, auto-fades out at 14.5s
+- `musicService.stopPreview()` cancels preview and restores BGM volume
+- `musicService.isPreviewing` getter exposes preview state for UI
 
 ### UI Integration
 

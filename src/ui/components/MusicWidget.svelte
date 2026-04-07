@@ -11,7 +11,7 @@
    */
 
   import { musicService } from '../../services/musicService'
-  import { musicVolume, musicEnabled } from '../../services/cardAudioManager'
+  import { musicVolume, musicEnabled, ambientEnabled } from '../../services/cardAudioManager'
   import type { MusicTrack, MusicCategory } from '../../data/musicTracks'
 
   // ── Reactive state ──────────────────────────────────────────────────────
@@ -249,6 +249,25 @@
       <div class="slider-track" style="--pct: {isMuted ? 0 : volume}%">
         <input type="range" class="volume-slider" class:dimmed={isMuted} min="0" max="100" value={volume} oninput={handleVolumeInput} aria-label="Volume" />
       </div>
+    </div>
+
+    <!-- Ambient toggle -->
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div class="ambient-row" onclick={(e) => e.stopPropagation()}>
+      <span class="ambient-label">AMB</span>
+      <button
+        type="button"
+        class="ambient-toggle"
+        class:active={$ambientEnabled}
+        onclick={(e) => { e.stopPropagation(); ambientEnabled.update(v => !v) }}
+        aria-label={$ambientEnabled ? 'Disable ambient sounds' : 'Enable ambient sounds'}
+      >
+        {#if $ambientEnabled}
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8.07V15.9A4.478 4.478 0 0 0 16.5 12zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" fill="currentColor"/></svg>
+        {:else}
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.5 12A4.5 4.5 0 0 0 14 8.07V10l2.45 2.45c.03-.15.05-.3.05-.45zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.79 8.79 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" fill="currentColor"/></svg>
+        {/if}
+      </button>
     </div>
   {/if}
 </div>
@@ -500,4 +519,41 @@
     cursor: pointer;
     border: none;
   }
+
+  /* ── Ambient toggle ────────────────────────────────────────────── */
+  .ambient-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .ambient-label {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: clamp(7px, 0.7vw, 9px);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .ambient-toggle {
+    width: clamp(18px, 1.8vw, 24px);
+    height: clamp(18px, 1.8vw, 24px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.35);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: color 150ms ease, background 150ms ease;
+    padding: 2px;
+    box-sizing: border-box;
+  }
+
+  .ambient-toggle svg { width: 100%; height: 100%; }
+  .ambient-toggle:hover { color: rgba(255, 255, 255, 0.8); }
+  .ambient-toggle.active { color: rgba(29, 185, 84, 0.8); }
 </style>

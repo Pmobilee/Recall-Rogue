@@ -1223,6 +1223,27 @@ export function spendGreyMatter(amount: number): boolean {
 }
 
 /**
+ * Purchases a music track from the Jukebox, deducting grey matter.
+ * @returns true if purchase succeeded.
+ */
+export function purchaseMusicTrack(trackId: string, price: number): boolean {
+  const current = get(playerSave)
+  if (!current) return false
+  if ((current.unlockedTracks ?? []).includes(trackId)) return false
+  if (!spendGreyMatter(price)) return false
+
+  playerSave.update(save => {
+    if (!save) return save
+    return {
+      ...save,
+      unlockedTracks: [...(save.unlockedTracks ?? []), trackId],
+    }
+  })
+  persistPlayer()
+  return true
+}
+
+/**
  * Sets or clears the active cosmetic title displayed under the pilot name.
  *
  * @param title - The title string to activate, or `null` to clear.
