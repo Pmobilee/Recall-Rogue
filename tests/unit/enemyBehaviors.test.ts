@@ -204,31 +204,37 @@ describe('singularity — quickPlayDamageMultiplier', () => {
 
 // ── Venomfang (was timer_wyrm): enrage via onEnemyTurnStart ──
 
+// 6.5: Plagiarist now uses Strength status effect (visible indicator) instead of enrageBonusDamage
 describe('plagiarist — onEnemyTurnStart enrage', () => {
-  it('does NOT enrage on turns 1-3', () => {
+  it('does NOT gain Strength on turns 1-3', () => {
     const enemy = makeInstance('plagiarist');
-    const startBonus = enemy.enrageBonusDamage;
     for (let t = 1; t <= 3; t++) {
       dispatchEnemyTurnStart(enemy, t, false, []);
     }
-    expect(enemy.enrageBonusDamage).toBe(startBonus);
+    const strength = enemy.statusEffects.find((e: { type: string }) => e.type === 'strength');
+    expect(strength).toBeUndefined();
   });
 
-  it('adds +5 enrageBonusDamage on turn 4', () => {
+  it('adds +1 Strength (9999 turns) on turn 4', () => {
     const enemy = makeInstance('plagiarist');
     dispatchEnemyTurnStart(enemy, 4, false, []);
-    expect(enemy.enrageBonusDamage).toBe(5);
+    const strength = enemy.statusEffects.find((e: { type: string }) => e.type === 'strength');
+    expect(strength).toBeDefined();
+    expect(strength!.value).toBe(1);
+    expect(strength!.turnsRemaining).toBe(9999);
   });
 
-  it('stacks +5 per turn from turn 4 onwards', () => {
+  it('stacks +1 Strength per turn from turn 4 onwards', () => {
     const enemy = makeInstance('plagiarist');
     dispatchEnemyTurnStart(enemy, 4, false, []);
     dispatchEnemyTurnStart(enemy, 5, false, []);
     dispatchEnemyTurnStart(enemy, 6, false, []);
-    expect(enemy.enrageBonusDamage).toBe(15); // 3 × +5
+    const strength = enemy.statusEffects.find((e: { type: string }) => e.type === 'strength');
+    expect(strength).toBeDefined();
+    expect(strength!.value).toBe(3); // stacks additively
   });
 
-  it('createEnemy initializes enrageBonusDamage to 0', () => {
+  it('createEnemy initializes enrageBonusDamage to 0 (still used by other enemies)', () => {
     const enemy = makeInstance('plagiarist');
     expect(enemy.enrageBonusDamage).toBe(0);
   });

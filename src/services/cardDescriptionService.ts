@@ -212,7 +212,12 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
     case 'hex': return `Poison ${power}×${secondary ?? 3}`;
     case 'scout': return `Draw ${power}`;
     case 'recycle': return 'Draw 3';
-    case 'foresight': return `Draw ${power}`;
+    case 'foresight': {
+      // 10.2: use drawCount from mastery stat table, not qpValue (which is 0)
+      const foresightStatsShort = getMasteryStats(mechanic.id, card.masteryLevel ?? 0);
+      const foresightDrawShort = foresightStatsShort?.drawCount ?? 1;
+      return `Draw ${foresightDrawShort}`;
+    }
     case 'transmute': return 'Transform';
     case 'mirror': return 'Copy last';
     case 'adapt': return 'Smart';
@@ -395,8 +400,13 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     }
     case 'recycle':
       return [txt('Draw '), num(3)];
-    case 'foresight':
-      return [txt('Draw '), num(power)];
+    case 'foresight': {
+      // 10.2: foresight qpValue=0 at all mastery levels (utility draw card); draw count comes
+      // from drawCount in the mastery stat table, not from power (which would show "Draw 0").
+      const foresightStats = getMasteryStats(mechanic.id, masteryLevel);
+      const foresightDraw = foresightStats?.drawCount ?? 1;
+      return [txt('Draw '), num(foresightDraw)];
+    }
     case 'transmute':
       return [txt('Transform\nweakest card')];
     case 'cleanse':

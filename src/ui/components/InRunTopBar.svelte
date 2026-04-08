@@ -278,36 +278,34 @@
     <!-- Relics row -->
     <div class="relics-row" role="list" aria-label="Equipped relics">
       {#each relics as relic, i (relic.definitionId)}
-        <div class="relic-slot-wrapper" role="listitem">
-          <button
-            class="relic-btn"
-            class:triggered={triggeredRelicId === relic.definitionId}
-            aria-label={relic.name}
-            onclick={() => toggleTooltip(i)}
-            type="button"
-          >
-            <img
-              class="relic-icon"
-              src={getRelicIconPath(relic.definitionId)}
-              alt={relic.name}
-              onerror={(e) => {
-                const img = e.currentTarget as HTMLImageElement
-                img.style.display = 'none'
-                const fallback = img.nextElementSibling as HTMLElement | null
-                if (fallback) fallback.style.display = 'flex'
-              }}
-            />
-            <span class="relic-emoji-fallback" aria-hidden="true">{relic.icon}</span>
-          </button>
+        <button
+          class="relic-btn"
+          class:triggered={triggeredRelicId === relic.definitionId}
+          aria-label={relic.name}
+          onclick={() => toggleTooltip(i)}
+          type="button"
+        >
+          <img
+            class="relic-icon"
+            src={getRelicIconPath(relic.definitionId)}
+            alt={relic.name}
+            onerror={(e) => {
+              const img = e.currentTarget as HTMLImageElement
+              img.style.display = 'none'
+              const fallback = img.nextElementSibling as HTMLElement | null
+              if (fallback) fallback.style.display = 'flex'
+            }}
+          />
+          <span class="relic-emoji-fallback" aria-hidden="true">{relic.icon}</span>
+        </button>
 
-          {#if openTooltipIndex === i}
-            <div class="relic-tooltip" role="tooltip">
-              <div class="tooltip-arrow"></div>
-              <div class="tooltip-name">{relic.name}</div>
-              <div class="tooltip-desc">{relic.description}</div>
-            </div>
-          {/if}
-        </div>
+        {#if openTooltipIndex === i}
+          <div class="relic-tooltip" role="tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-name">{relic.name}</div>
+            <div class="tooltip-desc">{relic.description}</div>
+          </div>
+        {/if}
       {/each}
 
       <!-- Empty slots -->
@@ -739,6 +737,7 @@
      Relics Row
      ============================================================ */
   .relics-row {
+    position: relative;
     display: flex;
     align-items: center;
     gap: calc(3px * var(--layout-scale, 1));
@@ -746,9 +745,7 @@
     max-height: 100%;
   }
 
-  .relic-slot-wrapper {
-    position: relative;
-  }
+  /* relic-slot-wrapper removed; position: relative moved to relics-row */
 
   .relic-btn {
     width: calc(var(--topbar-height, 4.5vh) * 0.65);

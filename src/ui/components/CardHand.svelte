@@ -606,7 +606,8 @@
       // Released in Charge zone (above screen-position threshold) — trigger Charge Play (quiz)
       // Check affordability: if charge can't be paid, return card to hand (no silent Quick Play)
       const card = cards[index]
-      const chargeApCost = (card?.apCost ?? 1) + (isSurgeActive || (chargeMomentumChainType !== null && card?.chainType === chargeMomentumChainType) ? 0 : 1)
+      const isActiveChainMatchForDrag = activeChainColor !== null && card?.chainType === activeChainColor
+      const chargeApCost = (card?.apCost ?? 1) + (isSurgeActive || (chargeMomentumChainType !== null && card?.chainType === chargeMomentumChainType) || isActiveChainMatchForDrag ? 0 : 1)
       const canAffordCharge = card && card.tier !== '3' && chargeApCost <= apCurrent
       if (canAffordCharge && onchargeplay) {
         markChargeDragSeen()
@@ -803,7 +804,8 @@
     {@const isMastered = card.tier === '3'}
     {@const isFreeCharge = (runState !== null && card.factId) ? isFirstChargeFree(card.factId, runState.firstChargeFreeFactIds) : false}
     {@const isMomentumMatch = chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType}
-    {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch ? 0 : 1)}
+    {@const isActiveChainMatch = activeChainColor !== null && card.chainType === activeChainColor}
+    {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch || isActiveChainMatch ? 0 : 1)}
     {@const chargeAffordableForDrag = chargeApCostForDrag <= apCurrent}
     {@const showChargeZoneIndicator = isDraggingThis && isInChargeZone && !isMastered && !!onchargeplay}
     {@const isDragInChargeZone = isDraggingThis && isInChargeZone && !isMastered}
@@ -828,7 +830,6 @@
     {@const scatterX = getHoverScatterX(i, hoveredIndex, cards.length)}
     {@const hoverLiftLs = isHovered ? 60 : 0}
     {@const hoverScaleLs = isHovered ? 1.15 : 1}
-    {@const isActiveChainMatch = activeChainColor !== null && card.chainType === activeChainColor}
     {@const activeChainHex = isActiveChainMatch ? getChainTypeColor(activeChainColor!) : null}
 
     <button
@@ -974,9 +975,9 @@
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
-      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch || isFreeCharge ? 0 : 1)}
+      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
-      {@const isFreeAp = isSurgeActive || isMomentumMatch || isFreeCharge}
+      {@const isFreeAp = isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch}
       {@const chargeApDisplay = String(chargeApCost)}
       {@const apBadgeColor = isFreeAp ? '#4ADE80' : chargeApCost > 1 ? '#EF4444' : undefined}
       <button
@@ -1153,7 +1154,8 @@
     {@const isFreeCharge = (runState !== null && card.factId) ? isFirstChargeFree(card.factId, runState.firstChargeFreeFactIds) : false}
     {@const isMastered = card.tier === '3'}
     {@const isMomentumMatch = chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType}
-    {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch ? 0 : 1)}
+    {@const isActiveChainMatch = activeChainColor !== null && card.chainType === activeChainColor}
+    {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch || isActiveChainMatch ? 0 : 1)}
     {@const chargeAffordableForDrag = chargeApCostForDrag <= apCurrent}
     {@const showChargeZoneIndicator = isDraggingThis && isInChargeZone && !isMastered && !!onchargeplay}
     {@const isDragInChargeZone = isDraggingThis && isInChargeZone && !isMastered}
@@ -1172,7 +1174,6 @@
     {@const effectVal = preview ? (isChargePreview ? preview.ccValue : preview.qpValue) : getEffectValue(card, isChargePreview)}
     {@const modState = preview ? (isChargePreview ? preview.ccModified : preview.qpModified) : 'neutral'}
     {@const descPower = effectVal}
-    {@const isActiveChainMatch = activeChainColor !== null && card.chainType === activeChainColor}
     {@const activeChainHex = isActiveChainMatch ? getChainTypeColor(activeChainColor!) : null}
 
     <button
@@ -1330,9 +1331,9 @@
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
-      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch || isFreeCharge ? 0 : 1)}
+      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
-      {@const isFreeAp = isSurgeActive || isMomentumMatch || isFreeCharge}
+      {@const isFreeAp = isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch}
       {@const chargeApDisplay = String(chargeApCost)}
       {@const apBadgeColor = isFreeAp ? '#4ADE80' : chargeApCost > 1 ? '#EF4444' : undefined}
       <button

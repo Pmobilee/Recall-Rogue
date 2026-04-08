@@ -1,7 +1,7 @@
 # Status Effects
 
 > **Purpose:** Complete list of all status effects, stacking rules, tick timing, and application behavior.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-08 (6.3 enemy buff persistence, 6.5 Plagiarist strength indicator)
 > **Source files:** `src/data/statusEffects.ts`, `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`
 
 ---
@@ -48,7 +48,8 @@ export interface StatusEffect {
 - **Formula:** `modifier = 1.0 + strength.value * 0.25` (minimum 0.25 after weakness)
 - **Stacking:** Values add; duration = max
 - **Tick:** Does not tick — passive multiplier read at damage resolution time
-- **Expiry:** `turnsRemaining` countdown (99 = permanent for rest of combat)
+- **Expiry:** `turnsRemaining` countdown (99/9999 = sentinel, permanent for rest of encounter)
+- **Enemy buffs (6.3):** All enemy buff intents applied via `executeEnemyIntent()` use `turnsRemaining: 9999` so they persist the entire encounter. Per-encounter direct applications (e.g. Plagiarist `onEnemyTurnStart`) also use `999`/`9999`. Player debuffs (weakness, poison, etc.) still use their normal durations.
 
 ### Weakness
 - **Target:** player or enemy

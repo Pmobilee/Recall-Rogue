@@ -7,6 +7,11 @@
 // "active chain color". Cards matching the active color extend the chain multiplier.
 // The multiplier persists across turns; only the active color rotates. This forces
 // variety — players cannot hoard a single color to build chains indefinitely.
+//
+// 7.7: Weighted rotation (rotateActiveChainColorWeighted) biases toward chain types
+// with more cards in the deck, improving distribution fairness.
+//
+// 7.8: Wrong off-colour charges reduce the chain (×0.5) rather than fully resetting.
 
 import { CHAIN_MULTIPLIERS, MAX_CHAIN_LENGTH, CHAIN_DECAY_PER_TURN } from '../data/balance';
 
@@ -40,18 +45,27 @@ let _chainRotationSeed: number = 0;
 let _activeChainColor: number | null = null;
 
 /**
+ * Deck composition for weighted chain color rotation (AR-7.7).
+ * Maps chainTypeIndex → card count. Set via initChainSystem.
+ * When empty, uniform distribution is used.
+ */
+let _deckComposition: Map<number, number> = new Map();
+
+/**
  * Initialise the chain system for a new encounter.
  * Stores the run chain types and rotation seed so `rotateActiveChainColor` can
  * select a deterministic color per turn without needing external state.
  *
  * Call this once from encounterBridge when starting a new combat encounter.
  *
- * @param runChainTypes - The 3 chain type indices for this run (e.g. [0, 2, 4]).
- * @param seed          - Deterministic rotation seed (use RunState.runSeed).
+ * @param runChainTypes   - The 3 chain type indices for this run (e.g. [0, 2, 4]).
+ * @param seed            - Deterministic rotation seed (use RunState.runSeed).
+ * @param deckComposition - Optional map of chainTypeIndex → card count for weighted rotation (7.7).
  */
-export function initChainSystem(runChainTypes: number[], seed: number): void {
+export function initChainSystem(runChainTypes: number[], seed: number, deckComposition?: Map<number, number>): void {
   _runChainTypes = runChainTypes.length > 0 ? runChainTypes : [];
   _chainRotationSeed = seed;
+  _deckComposition = deckComposition ?? new Map();
 }
 
 /**
@@ -105,6 +119,53 @@ export function rotateActiveChainColor(turnNumber: number): number | null {
 }
 
 /**
+ * Selects the active chain color weighted by deck composition (AR-7.7).
+ * Chain types with more cards in the deck appear more frequently as the active color.
+ * This improves turn fairness: a color representing 13/24 cards is the active color
+ * ~54% of turns rather than the uniform 33%.
+ *
+ * Falls back to uniform distribution if deckComposition is empty or all counts are 0.
+ * Falls back to null if no run chain types are configured.
+ *
+ * @param turnNumber      - The global turn number (used as RNG seed input).
+ * @param deckComposition - chainTypeIndex → card count (can override the stored one).
+ * @returns The newly active chain type index, or null if rotation is not configured.
+ */
+export function rotateActiveChainColorWeighted(turnNumber: number, deckComposition?: Map<number, number>): number | null {
+  if (_runChainTypes.length === 0) {
+    _activeChainColor = null;
+    return null;
+  }
+
+  const composition = deckComposition ?? _deckComposition;
+  const totalCards = _runChainTypes.reduce((sum, ct) => sum + (composition.get(ct) ?? 0), 0);
+
+  if (totalCards === 0) {
+    // No deck composition data — fall back to uniform rotation.
+    return rotateActiveChainColor(turnNumber);
+  }
+
+  // Deterministic LCG: same constants as rotateActiveChainColor for reproducibility.
+  const mixed = ((_chainRotationSeed * 1664525 + turnNumber * 1013904223) & 0xFFFFFFFF) >>> 0;
+  // Scale to [0, totalCards) bucket.
+  const roll = mixed % totalCards;
+
+  // Walk cumulative buckets to find which chain type was rolled.
+  let cumulative = 0;
+  for (const ct of _runChainTypes) {
+    cumulative += composition.get(ct) ?? 0;
+    if (roll < cumulative) {
+      _activeChainColor = ct;
+      return ct;
+    }
+  }
+
+  // Fallback: last chain type (should never reach here if totalCards > 0).
+  _activeChainColor = _runChainTypes[_runChainTypes.length - 1];
+  return _activeChainColor;
+}
+
+/**
  * Returns the active chain color for the current turn, or null if not configured.
  * Used by the UI (CardHand.svelte) to highlight cards that would extend the chain.
  */
@@ -123,18 +184,32 @@ export function getActiveChainColor(): number | null {
  *   (multiplier is preserved at its current level)
  * - null/undefined chainType → resets chain to 0
  *
+ * 7.8: isOffColourWrong — if true, chain length is halved (floor) instead of fully reset.
+ * This applies when the player charges a card off-colour and answers incorrectly,
+ * turning a full chain break into a partial penalty that preserves some momentum.
+ *
  * If no run chain types are configured (_runChainTypes is empty), falls back
  * to the legacy same-type-consecutive matching for backward compatibility.
  *
- * @param chainType - The chainType (0-5) of the card just played. Undefined/null = no chain contribution.
+ * @param chainType           - The chainType (0-5) of the card just played. Undefined/null = no chain contribution.
  * @param chainMultiplierOverride - If set, the raw chain multiplier is clamped to this value.
  *   Used by The Nullifier (AR-59.13) to neutralize chain stacking.
+ * @param isOffColourWrong    - If true (7.8): halve chain length instead of full reset.
  * @returns The chain multiplier that applies to this card's effect.
  */
-export function extendOrResetChain(chainType: number | undefined | null, chainMultiplierOverride?: number): number {
+export function extendOrResetChain(
+  chainType: number | undefined | null,
+  chainMultiplierOverride?: number,
+  isOffColourWrong?: boolean,
+): number {
   if (chainType === undefined || chainType === null) {
-    // Card has no chainType — reset chain, no bonus
-    _chain = { chainType: null, length: 0 };
+    if (isOffColourWrong) {
+      // 7.8: Wrong off-colour charge: partial chain reset (halve, floor at 1)
+      _chain = { ..._chain, length: Math.max(1, Math.floor(_chain.length * 0.5)) };
+    } else {
+      // Wrong on-colour charge or unchained card — full reset
+      _chain = { chainType: null, length: 0 };
+    }
     return 1.0;
   }
 

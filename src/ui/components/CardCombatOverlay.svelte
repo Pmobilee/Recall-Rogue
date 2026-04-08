@@ -562,33 +562,7 @@
     })()
   )
 
-  let intentPopupOpen = $state(false)
-  let intentNameVisible = $state(false)
-  let intentNameTimer = $state<ReturnType<typeof setTimeout> | null>(null)
-
-  /** Solid dark colors for intent name label (darkened versions of the intent colors) */
-  const INTENT_DARK_COLORS: Record<string, string> = {
-    attack: '#7a1a12',
-    multi_attack: '#5c1208',
-    defend: '#1a3d5c',
-    buff: '#6b5000',
-    debuff: '#4a2060',
-    heal: '#0d4a60',
-  }
-
-  function showIntentName() {
-    if (intentNameTimer) clearTimeout(intentNameTimer)
-    if (intentNameVisible) {
-      intentNameVisible = false
-      intentNameTimer = null
-      return
-    }
-    intentNameVisible = true
-    intentNameTimer = setTimeout(() => {
-      intentNameVisible = false
-      intentNameTimer = null
-    }, 3000)
-  }
+  // Intent bubble is static — no click-cycle state needed (removed 2026-04-08 HUD fix)
 
   function pileTooltip(label: string, cards: Card[], fromTop = true): string {
     if (cards.length === 0) return `${label}: empty`
@@ -691,15 +665,16 @@
     return { icon, text: val > 0 ? `${val}` : '', type: enemyIntent.type, label, color, borderColor, telegraph }
   })
 
+  /** Second line of the static intent bubble (bottom line). */
   let intentDetailText = $derived.by(() => {
     if (!enemyIntent) return 'Preparing...'
     const val = enemyIntent.value
     switch (enemyIntent.type) {
       case 'attack':
-        return `Attacks for ${val} damage`
+        return `Charging ${val} damage next turn`
       case 'multi_attack': {
         const hits = enemyIntent.hitCount ?? 2
-        return `Attacks ${hits} times for ${val} each`
+        return `Charging ${val} × ${hits} damage next turn`
       }
       case 'defend':
         return `Gains ${val} Block`
@@ -2662,31 +2637,19 @@
 
     {#if intentDisplay && cardPlayStage !== 'committed'}
       {#key intentDetailText}
-        <button
+        <div
           class="enemy-intent-bubble"
           style="background: {intentDisplay.color}; border-color: {intentDisplay.borderColor};"
           aria-label={intentDetailText}
-          onclick={() => { showIntentName() }}
         >
-          {#if intentNameVisible && intentDisplay.telegraph}
-            <div class="intent-expanded-text">
-              <strong>{intentDisplay.telegraph}</strong>: {intentDetailText}
-            </div>
-          {:else}
-            <div class="intent-bubble-summary">
-              <img class="intent-icon-img" src={enemyIntent ? getIntentIconPath(enemyIntent.type) : ''} alt=""
-                onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; (e.currentTarget.nextElementSibling as HTMLElement)?.style.setProperty('display', 'inline'); }} />
-              <span class="intent-icon-fallback" style="display:none">{enemyIntent ? INTENT_EMOJI[enemyIntent.type] ?? '❓' : '❓'}</span>
-              {#if intentDisplay.text}
-                <span class="intent-value" class:intent-value-attack={intentDisplay.type === 'attack' || intentDisplay.type === 'multi_attack'}
-                  class:intent-value-defend={intentDisplay.type === 'defend'}
-                  class:intent-value-heal={intentDisplay.type === 'heal'}
-                  class:intent-value-buff={intentDisplay.type === 'buff'}
-                  class:intent-value-debuff={intentDisplay.type === 'debuff'}>{intentDisplay.text}</span>
-              {/if}
-            </div>
-          {/if}
-        </button>
+          <div class="intent-bubble-name">
+            <img class="intent-icon-img" src={enemyIntent ? getIntentIconPath(enemyIntent.type) : ''} alt=""
+              onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; (e.currentTarget.nextElementSibling as HTMLElement)?.style.setProperty('display', 'inline'); }} />
+            <span class="intent-icon-fallback" style="display:none">{enemyIntent ? INTENT_EMOJI[enemyIntent.type] ?? '❓' : '❓'}</span>
+            <strong class="intent-attack-name">{intentDisplay.telegraph || intentDisplay.label}</strong>
+          </div>
+          <div class="intent-detail-line">{intentDetailText}</div>
+        </div>
       {/key}
     {/if}
 
@@ -2897,13 +2860,6 @@
 
   <!-- Landscape three-strip layout: Stats bar sits between arena (top 65%) and card hand (bottom 27%) -->
   {#if $isLandscape && turnState}
-    <!-- AP sphere: standalone fixed element at 15% left, 2x size -->
-    <div class="lsb-ap-standalone" aria-label="Action Points">
-      <div class="lsb-ap-circle" class:lsb-ap-active={apCurrent > 0} class:lsb-ap-empty={apCurrent === 0}>
-        <span class="lsb-ap-number">{apCurrent}</span>
-      </div>
-    </div>
-
     <div class="landscape-stats-bar" aria-label="Player status">
     </div>
 
@@ -3156,7 +3112,6 @@
 
 
   .enemy-intent-bubble {
-    --intent-expanded-width: calc(200px * var(--layout-scale, 1));
     position: fixed;
     top: calc(16% + var(--safe-top));
     left: 50%;
@@ -3166,43 +3121,38 @@
     border-radius: 14px;
     width: auto;
     min-width: calc(80px * var(--layout-scale, 1));
-    padding: calc(12px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
     backdrop-filter: blur(8px);
-    cursor: pointer;
     font: inherit;
     outline: none;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: calc(4px * var(--layout-scale, 1));
     color: inherit;
-    -webkit-tap-highlight-color: transparent;
-    transition: width 220ms cubic-bezier(0.22, 1, 0.36, 1), padding 160ms ease;
+    pointer-events: none;
   }
 
-  .enemy-intent-bubble:active {
-    transform: scale(0.95);
-    filter: brightness(0.85);
-  }
-
-  .intent-bubble-summary {
+  .intent-bubble-name {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 7px;
-    width: 100%;
+    gap: calc(6px * var(--layout-scale, 1));
   }
 
-  .intent-expanded-text {
+  .intent-attack-name {
     font-size: calc(13px * var(--text-scale, 1));
-    color: #e2e8f0;
-    text-align: center;
-    line-height: 1.3;
+    font-weight: 800;
+    color: #f1f5f9;
     white-space: nowrap;
   }
 
-  .intent-expanded-text strong {
-    font-weight: 800;
+  .intent-detail-line {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.75);
+    white-space: nowrap;
+    line-height: 1.3;
   }
 
   .intent-bubble-tail {
@@ -3461,7 +3411,7 @@
     50% { opacity: 1; box-shadow: 0 0 18px rgba(125, 211, 252, 0.5); }
   }
 
-  /* AP indicator positioned right of End Turn button (portrait). Slightly smaller. */
+  /* AP indicator — portrait: right of status strip; landscape: right of End Turn button */
   .player-ap-right {
     position: absolute;
     right: calc(12px * var(--layout-scale, 1));
@@ -3482,6 +3432,18 @@
     font-weight: 700;
     z-index: 6;
     pointer-events: none;
+  }
+
+  /* Landscape: reposition to right of End Turn button (fixed position) */
+  .layout-landscape .player-ap-right {
+    position: fixed;
+    left: calc(148px * var(--layout-scale, 1));
+    right: auto;
+    bottom: calc(16px * var(--layout-scale, 1));
+    z-index: 20;
+    background: rgba(150, 50, 20, 0.88);
+    box-shadow: 0 0 calc(12px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1)) rgba(255, 100, 0, 0.55);
+    border-color: rgba(255, 100, 0, 0.85);
   }
 
   .player-ap-right.ap-active {
@@ -4250,58 +4212,6 @@
     padding: 0;
     background: transparent;
     z-index: 15;
-  }
-
-  /* ── AP sphere: standalone fixed element ──── */
-  .lsb-ap-standalone {
-    display: none; /* hidden in portrait */
-  }
-
-  .layout-landscape .lsb-ap-standalone {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    /* Sit immediately to the right of the landscape End Turn button.
-       End Turn: left 16px, min-width 120px → AP starts at left 16+120+12 = 148px. */
-    left: calc(148px * var(--layout-scale, 1));
-    bottom: calc(16px * var(--layout-scale, 1));
-    z-index: 20;
-  }
-
-  .lsb-ap-circle {
-    width: calc(46px * var(--layout-scale, 1));
-    height: calc(46px * var(--layout-scale, 1));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s, box-shadow 0.3s;
-  }
-
-  .lsb-ap-circle.lsb-ap-active {
-    background: radial-gradient(circle at 40% 35%, #ff6633, #cc2200);
-    box-shadow: 0 0 12px 3px rgba(255, 100, 0, 0.55);
-  }
-
-  .lsb-ap-circle.lsb-ap-empty {
-    background: radial-gradient(circle at 40% 35%, #555, #333);
-    box-shadow: none;
-  }
-
-  .lsb-ap-number {
-    font-size: calc(18px * var(--layout-scale, 1));
-    font-weight: 800;
-    color: #fff;
-    text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
-    line-height: 1;
-  }
-
-  .lsb-ap-label {
-    font-size: calc(10px * var(--text-scale, 1));
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.6);
-    letter-spacing: 0.5px;
   }
 
   /* ── Landscape chain indicator: right of card hand ──── */

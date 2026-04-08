@@ -625,11 +625,18 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 4, weight: 2, telegraph: 'Tail whip' },
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Venom bite', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
     ],
-    description: 'Gets deadlier each turn. Survive to turn 4 and it permanently gains +5 damage per turn after that.',
+    description: 'Gets deadlier each turn. Survive to turn 4 and it permanently gains Strength each turn after that.',
     animArchetype: 'crawler',
     onEnemyTurnStart: (ctx) => {
+      // 6.5: Use Strength status effect instead of enrageBonusDamage so the UI shows
+      // a visible "growing stronger" indicator. Each turn from turn 4, +1 Strength
+      // (≈ +25% damage multiplier per stack). Sentinel 9999 so it never expires.
       if (ctx.turnNumber >= 4) {
-        ctx.enemy.enrageBonusDamage += 5;
+        applyStatusEffect(ctx.enemy.statusEffects, {
+          type: 'strength',
+          value: 1,
+          turnsRemaining: 9999,
+        });
       }
     },
   },

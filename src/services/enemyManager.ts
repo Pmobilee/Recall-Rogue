@@ -314,12 +314,15 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
       break;
     }
     case 'buff': {
-      // Apply buff to enemy (e.g., strength)
+      // Apply buff to enemy (e.g., strength).
+      // 6.3: Enemy buffs persist the entire encounter — use 9999 sentinel so
+      // tickStatusEffects never expires them mid-fight. Player debuffs still use
+      // their normal duration (handled in the 'debuff' case below).
       if (intent.statusEffect) {
         applyStatusEffect(enemy.statusEffects, {
           type: intent.statusEffect.type,
           value: intent.statusEffect.value,
-          turnsRemaining: intent.statusEffect.turns,
+          turnsRemaining: 9999,
         });
       }
       break;

@@ -811,8 +811,9 @@ export function playCardAction(
   let apCost = Math.max(0, cardInHand.apCost ?? 1);
 
   // Charge AP surcharge: charging costs base AP + CHARGE_AP_SURCHARGE (1) on normal turns.
-  // Surge, Warcry, Chain Momentum, and active chain color match waive the surcharge.
-  // Free First Charge uses FIRST_CHARGE_FREE_AP_SURCHARGE.
+  // Priority order (7.6): Surge → Warcry → Chain Momentum → On-Colour → Free First Charge → surcharge.
+  // On-Colour is checked before Free First Charge so an on-colour first charge does NOT consume
+  // the free-first-charge slot — player keeps that slot for future off-colour charges.
   let usedFreeCharge = false;
   if (playMode === 'charge') {
     const runStateForCharge = get(activeRunState);
@@ -828,13 +829,13 @@ export function playCardAction(
     } else if (CHAIN_MOMENTUM_ENABLED && turnState.nextChargeFreeForChainType !== null && cardInHand.chainType === turnState.nextChargeFreeForChainType) {
       // Chain Momentum: waive surcharge for matching chain type, consume the flag
       turnState.nextChargeFreeForChainType = null; // consume the flag
+    } else if (cardInHand.chainType != null && cardInHand.chainType === getActiveChainColor()) {
+      // On-Colour charge: waive surcharge — charging into the active chain is free.
+      // Rewards focused chain-building play. Does NOT consume free-first-charge slot.
     } else if (cardInHand.factId && runStateForCharge && isFirstChargeFree(cardInHand.factId, runStateForCharge.firstChargeFreeFactIds)) {
       // Free first Charge: surcharge is FIRST_CHARGE_FREE_AP_SURCHARGE (0) — first attempt is always free
       apCost += FIRST_CHARGE_FREE_AP_SURCHARGE;
       usedFreeCharge = true;
-    } else if (cardInHand.chainType != null && cardInHand.chainType === getActiveChainColor()) {
-      // Chain color match: waive surcharge — charging into the active chain is free.
-      // Rewards focused chain-building play by not penalizing AP for on-color charges.
     } else {
       // Normal Charge: apply CHARGE_AP_SURCHARGE (+1 AP over Quick Play)
       apCost += CHARGE_AP_SURCHARGE;
@@ -939,16 +940,22 @@ export function playCardAction(
       enemy.playerChargedThisTurn = true;
     }
 
-    // Wrong Charge: break the chain and lose momentum
+    // Wrong Charge: break or reduce the chain and lose momentum.
+    // 7.8: Off-colour wrong charges halve chain length instead of fully resetting,
+    // preserving partial momentum. On-colour wrong charges still fully reset.
     if (playMode === 'charge') {
       const prevChainLengthWrong = getCurrentChainLength();
-      extendOrResetChain(null); // null chainType resets chain
+      const isOffColourWrong = cardInHand.chainType !== getActiveChainColor();
+      extendOrResetChain(null, undefined, isOffColourWrong); // null chainType = wrong answer
       if (prevChainLengthWrong > 0) playCardAudio('chain-break');
       if (prevChainLengthWrong > 0 && turnState.activeRelicIds.size > 0) {
         resolveChainBreakEffects(turnState.activeRelicIds, { previousChainLength: prevChainLengthWrong });
       }
       const chainState = getChainState();
-      turnState.chainMultiplier = 1.0;
+      // After off-colour wrong: chainMultiplier reflects reduced (not zero) chain.
+      turnState.chainMultiplier = isOffColourWrong && chainState.length > 0
+        ? getChainMultiplier(chainState.length)
+        : 1.0;
       turnState.chainLength = chainState.length;
       turnState.chainType = chainState.chainType;
       // Chain Momentum: wrong Charge answer loses momentum

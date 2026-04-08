@@ -305,7 +305,7 @@ Status effect values (poison, weakness, vulnerable) kept at 1–2 per applicatio
 ### Act 1 Mini-Bosses
 | Enemy | Base HP | Special |
 |---|---|---|
-| `plagiarist` | 7 | Enrages +5 dmg/turn from turn 4 |
+| `plagiarist` | 7 | Gains +1 Strength/turn from turn 4 (visible status badge, 9999 sentinel) |
 | `card_catalogue` | 8 | Healer + multi-hit |
 | `headmistress` | 8 | Heavy defender + charge 7 |
 | `tutor` | 6 | Debuffer + healer |

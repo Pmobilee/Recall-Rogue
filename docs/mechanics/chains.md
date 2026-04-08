@@ -1,7 +1,7 @@
 # Chain System
 
 > **Purpose:** How the Knowledge Chain system works — consecutive correct answers, multiplier scaling, chain types, break conditions, rotating chain color, and themed chain distribution.
-> **Last verified:** 2026-04-03
+> **Last verified:** 2026-04-08 (7.7 weighted rotation, 7.8 off-colour partial reset)
 > **Source files:** `src/services/chainSystem.ts`, `src/data/chainTypes.ts`, `src/services/chainVisuals.ts`, `src/data/balance.ts`, `src/services/chainDistribution.ts`, `src/services/presetPoolBuilder.ts`, `src/services/gameFlowController.ts`, `src/services/encounterBridge.ts`, `src/ui/components/StudyTempleScreen.svelte`
 
 ---
@@ -78,15 +78,16 @@ Once `MAX_CHAIN_LENGTH = 5` is reached, the multiplier stays at `3.5×`. Capped 
 
 ## Core Functions (`chainSystem.ts`)
 
-### `initChainSystem(runChainTypes, seed)`
+### `initChainSystem(runChainTypes, seed, deckComposition?)`
 
-Stores run chain types and rotation seed for active chain color selection. Call once per encounter from `encounterBridge.ts`.
+Stores run chain types, rotation seed, and optional deck composition for active chain color selection. Call once per encounter from `encounterBridge.ts`. The `deckComposition` parameter (AR-7.7) accepts a `Map<chainTypeIndex, cardCount>` for weighted rotation.
 
-### `extendOrResetChain(chainType, chainMultiplierOverride?)`
+### `extendOrResetChain(chainType, chainMultiplierOverride?, isOffColourWrong?)`
 
-Called by `turnManager` on every Charge Correct play:
+Called by `turnManager` on every Charge play:
 
-- If `chainType === null/undefined` — resets chain to 0, returns `1.0`
+- If `chainType === null/undefined` AND `isOffColourWrong === false` (default) — **fully resets** chain to 0, returns `1.0`
+- If `chainType === null/undefined` AND `isOffColourWrong === true` (AR-7.8) — **halves** chain length (floor, min 1), returns `1.0`
 - **Rotation mode** (when `_runChainTypes` is configured):
   - If `chainType === _activeChainColor` — extends chain (length + 1), returns new multiplier
   - If `chainType !== _activeChainColor` — chain length preserved (multiplier unchanged), no extension
@@ -97,7 +98,15 @@ Called by `turnManager` on every Charge Correct play:
 
 ### `rotateActiveChainColor(turnNumber)`
 
-Selects active chain color for the given turn. LCG: `(seed * 1664525 + turnNumber * 1013904223) & 0xFFFFFFFF`. Returns one of the 3 run chain types or `null` if none configured.
+Selects active chain color for the given turn. LCG: `(seed * 1664525 + turnNumber * 1013904223) & 0xFFFFFFFF`. Returns one of the 3 run chain types or `null` if none configured. Uses **uniform** (1/3) distribution across the 3 run chain types.
+
+### `rotateActiveChainColorWeighted(turnNumber, deckComposition?)` (AR-7.7)
+
+Like `rotateActiveChainColor` but **weighted** by deck composition. A chain type with 13 cards out of 24 total appears as the active color ~54% of turns rather than a uniform 33%. Falls back to uniform rotation when `deckComposition` is empty or all counts are zero.
+
+- `deckComposition: Map<chainTypeIndex, cardCount>` — passed in or stored via `initChainSystem`.
+- The internal rotation seed is still deterministic (same LCG), but the roll is bucketed by card count rather than index count.
+- Unit tested: given `{A:13, B:10, C:1}`, 10,000 rolls produce ratios within 5% of the expected proportions.
 
 ### `resetChain()`
 
@@ -143,19 +152,22 @@ Tier multipliers are all 1.0 for active tiers and do not appear in the formula. 
 
 ---
 
-## Break / Preserve Conditions (AR-310 update)
+## Break / Preserve Conditions (AR-310 update, 7.8 partial-reset update)
 
-The chain resets in these cases:
+The chain **fully resets** in these cases:
 
 1. **Encounter start** — `resetChain()` is called by `startEncounter()` for a clean slate
-2. **No chainType** — passing `null/undefined` to `extendOrResetChain()` resets chain to 0
+2. **Wrong on-colour charge** — `extendOrResetChain(null, undefined, false)` (default `isOffColourWrong=false`) resets chain to 0
 3. **Turn decay** — `decayChain()` at end of each turn reduces length by 1 (not a full reset)
 
-The chain does NOT reset when:
+The chain is **partially reduced** (7.8) when:
 
-4. **Non-active color played** (AR-310) — playing a card whose color does not match the active chain color. The chain length is preserved; only extension is skipped.
-5. **Quick Play** — QP does not call `extendOrResetChain()`; chain state unchanged [UNVERIFIED — turnManager behavior]
-6. **Charge Wrong** — does not extend chain; behavior in turnManager [UNVERIFIED]
+- **Wrong off-colour charge** — `extendOrResetChain(null, undefined, isOffColourWrong=true)`. Chain length is halved (floored, minimum 1) instead of fully reset. Fires in `turnManager.ts` when `playMode === 'charge'` and `!answeredCorrectly` and `cardInHand.chainType !== getActiveChainColor()`.
+
+The chain does NOT change when:
+
+4. **Non-active color played correctly** (AR-310) — playing a card whose color does not match the active chain color via CC. Chain length is preserved; only extension is skipped.
+5. **Quick Play** — QP does not call `extendOrResetChain()`; chain state unchanged
 
 ---
 
