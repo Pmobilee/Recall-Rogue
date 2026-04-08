@@ -456,6 +456,8 @@
         } else if (topbar) {
           stageTop = topbar.getBoundingClientRect().bottom
         }
+        // Breathing room below fog meter / topbar
+        stageTop += 12
 
         // Find card hand top edge
         const cardHand = document.querySelector('.card-hand-landscape')
@@ -1823,6 +1825,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
     gap: calc(6px * var(--layout-scale, 1));
   }
 
@@ -1841,12 +1844,13 @@
 
   /** Zone B: answer area — content-sized, anchored to bottom */
   .quiz-zone-answers {
-    flex: 0 0 auto;
+    flex: 0 1 auto;
     display: flex;
     flex-direction: column;
     gap: calc(6px * var(--layout-scale, 1));
-    max-height: 55%;
+    max-height: 60%;
     overflow-y: auto;
+    padding-bottom: calc(8px * var(--layout-scale, 1));
   }
 
   /** Subtle separator between zones */

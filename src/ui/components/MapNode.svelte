@@ -1,12 +1,21 @@
 <script lang="ts">
   import type { MapNode as MapNodeData } from '../../services/mapGenerator'
 
+  /** A player who has tentatively picked this node (multiplayer consensus). */
+  export interface NodePickIndicator {
+    playerId: string
+    initial: string
+    color: string
+  }
+
   interface Props {
     node: MapNodeData
     onclick: () => void
+    /** Players who have currently picked this node (multiplayer only). */
+    pickedBy?: NodePickIndicator[]
   }
 
-  let { node, onclick }: Props = $props()
+  let { node, onclick, pickedBy = [] }: Props = $props()
 
   const TYPE_BORDER: Record<MapNodeData['type'], string> = {
     combat:   '#E74C3C',
@@ -52,6 +61,18 @@
 </script>
 
 <div class="node-wrapper">
+  {#if pickedBy.length > 0}
+    <div class="pick-badge-row" aria-label="Picked by other players">
+      {#each pickedBy as picker (picker.playerId)}
+        <div
+          class="pick-badge"
+          style="background: {picker.color}; border-color: {picker.color};"
+          title="{picker.initial} picked this room"
+          data-testid="pick-badge-{picker.playerId}-{node.id}"
+        >{picker.initial}</div>
+      {/each}
+    </div>
+  {/if}
   <button
     class="map-node"
     class:state-visited={node.state === 'visited'}
@@ -83,6 +104,37 @@
     display: inline-flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  /* Multiplayer pick badge: small circles above the node showing which
+     players have tentatively picked it. Cleared when consensus is reached
+     and the room transition begins. */
+  .pick-badge-row {
+    display: flex;
+    gap: calc(3px * var(--layout-scale, 1));
+    margin-bottom: calc(3px * var(--layout-scale, 1));
+    pointer-events: none;
+  }
+
+  .pick-badge {
+    width: calc(18px * var(--layout-scale, 1));
+    height: calc(18px * var(--layout-scale, 1));
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(11px * var(--text-scale, 1));
+    font-weight: 800;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.6), 0 0 8px currentColor;
+    animation: pickBadgePulse 1.4s ease-in-out infinite;
+  }
+
+  @keyframes pickBadgePulse {
+    0%, 100% { transform: scale(1); opacity: 0.95; }
+    50% { transform: scale(1.12); opacity: 1; }
   }
 
   .map-node {

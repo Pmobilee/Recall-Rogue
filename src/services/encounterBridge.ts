@@ -48,6 +48,7 @@ import { buildPresetRunPool, buildGeneralRunPool, buildLanguageRunPool } from '.
 import { getCuratedDeck } from '../data/curatedDeckStore'
 import type { FactDomain } from '../data/card-types'
 import { turboDelay } from '../utils/turboMode'
+import { getRunRng, isRunRngActive } from './seededRng'
 import { calculateFunnessBoostFactor } from './funnessBoost';
 import { calculateAccuracyGrade } from './accuracyGradeSystem';
 import {
@@ -594,8 +595,11 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
     (ascensionTemplate.category === 'boss' ? ascensionModifiers.bossHpMultiplier : 1)
   );
   // Roll difficulty variance for common and elite enemies (0.85-1.15x HP and damage)
+  // Uses a dedicated seeded RNG fork ('enemyVariance') so co-op players see identical
+  // enemy HP for the same node. Falls back to Math.random in non-run contexts (tests, dev).
+  const varianceRng = isRunRngActive() ? getRunRng('enemyVariance') : null;
   const difficultyVariance = (ascensionTemplate.category === 'common' || ascensionTemplate.category === 'elite')
-    ? 0.85 + Math.random() * 0.30
+    ? 0.85 + (varianceRng ? varianceRng.next() : Math.random()) * 0.30
     : 1.0;
   const enemy = createEnemy(ascensionTemplate, run.floor.currentFloor, { hpMultiplier: enemyHpMultiplier, difficultyVariance });
   // AR-310: Initialise chain color rotation before startEncounter so the first-turn
@@ -1153,8 +1157,8 @@ export async function handleEndTurn(): Promise<void> {
   activeTurnState.set(preAnimTurnState);
 
   // AR-222: Delay before enemy animations so the player can register their
-  // turn ending before the enemy immediately acts. 1 second normal, shorter in turbo.
-  await new Promise<void>((r) => setTimeout(r, turboDelay(1000)));
+  // turn ending before the enemy immediately acts. 2 seconds normal, shorter in turbo.
+  await new Promise<void>((r) => setTimeout(r, turboDelay(2000)));
 
   // Now update HP in run state and the active turn state with the real post-turn values.
   // This runs after the animation delay so the UI shows the damage at the same moment

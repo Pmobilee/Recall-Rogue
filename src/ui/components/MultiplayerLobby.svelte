@@ -16,10 +16,8 @@
     setHouseRules,
     setRanked,
     setReady,
-    allReady,
     startGame,
     leaveLobby,
-    isHost,
     addLocalBot,
     removeLocalBot,
     isBroadcastMode,
@@ -42,7 +40,7 @@
   const MODES: MultiplayerMode[] = ['race', 'same_cards', 'duel', 'coop', 'trivia_night']
 
   /** Is the current user the host? */
-  let amHost = $derived(isHost())
+  let amHost = $derived(lobby.hostId === localPlayerId)
 
   /** True when ?mp is in the URL — enables two-tab broadcast testing mode */
   let devMode = $derived(isBroadcastMode())
@@ -50,7 +48,7 @@
   /** Local player's ready state */
   let myPlayer = $derived(lobby.players.find(p => p.id === localPlayerId))
   let isReady = $derived(myPlayer?.isReady ?? false)
-  let canStart = $derived(amHost && allReady())
+  let canStart = $derived(amHost && lobby.players.length >= 2 && lobby.players.every(p => p.isReady))
 
   /** Empty slots to fill player list up to maxPlayers */
   let emptySlots = $derived(

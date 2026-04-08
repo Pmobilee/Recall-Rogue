@@ -159,8 +159,8 @@
     Math.min(1.0, getSpriteBrightness(76, 5, 23, 9, $hubLighting.intensity) +
     getMouseProximityBonus(76, 5, 23, 9, mouseX, mouseY, hubCenterEl)))
   let shopBright = $derived(disableEffects ? 1.0 :
-    Math.min(1.0, getSpriteBrightness(52, 2, 16, 13, $hubLighting.intensity) +
-    getMouseProximityBonus(52, 2, 16, 13, mouseX, mouseY, hubCenterEl)))
+    Math.min(1.0, getSpriteBrightness(61, -21, 19, 11, $hubLighting.intensity) +
+    getMouseProximityBonus(61, -21, 19, 11, mouseX, mouseY, hubCenterEl)))
   let tentBright = $derived(disableEffects ? 1.0 :
     Math.min(1.0, getSpriteBrightness(40, 90, 30, 20, $hubLighting.intensity) +
     getMouseProximityBonus(40, 90, 30, 20, mouseX, mouseY, hubCenterEl)))
@@ -445,7 +445,7 @@
         label="Relic Collection"
         zIndex={15}
         onclick={openUpgradeModal}
-        hitTop="52%" hitLeft="-2%" hitWidth="16%" hitHeight="13%"
+        hitTop="61%" hitLeft="-21%" hitWidth="19%" hitHeight="11%"
         spriteOffsetX="-73%" spriteOffsetY="-27%"
         brightness={shopBright}
         showBorder

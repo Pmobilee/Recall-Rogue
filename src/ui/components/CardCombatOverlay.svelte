@@ -2772,10 +2772,6 @@
 
 
     <div class="player-status-strip" aria-label="Player health and block">
-      <div class="player-ap-inline" class:ap-active={apCurrent > 0}>
-        <span class="ap-num">{apCurrent}</span>
-        <span class="ap-label">AP</span>
-      </div>
       {#if playerShield > 0}
       <div class="player-block-badge">
         <span class="player-block-icon">🛡️</span>
@@ -2790,6 +2786,12 @@
         ></div>
         <span class="player-hp-text" class:hp-critical-text={isHpCritical}>{playerHpCurrent}/{playerHpMax}</span>
       </div>
+    </div>
+
+    <!-- AP indicator: positioned right of End Turn button (portrait) -->
+    <div class="player-ap-right" class:ap-active={apCurrent > 0} aria-label="Action Points">
+      <span class="ap-num">{apCurrent}</span>
+      <span class="ap-label">AP</span>
     </div>
 
     <ChainCounter {isPerfectTurn} {chainLength} {chainType} {chainMultiplier} {activeChainColor} />
@@ -3390,7 +3392,8 @@
 
   .end-turn-btn {
     position: absolute;
-    right: calc(12px * var(--layout-scale, 1));
+    /* Shifted left to make room for the AP indicator on the far right. */
+    right: calc(70px * var(--layout-scale, 1));
     left: auto;
     bottom: calc(calc(12px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
     width: auto;
@@ -3409,6 +3412,48 @@
     font-family: inherit;
     letter-spacing: 1.5px;
     text-transform: uppercase;
+  }
+
+  /* AP indicator positioned right of End Turn button (portrait). Slightly smaller. */
+  .player-ap-right {
+    position: absolute;
+    right: calc(12px * var(--layout-scale, 1));
+    left: auto;
+    bottom: calc(calc(18px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: calc(1px * var(--layout-scale, 1));
+    padding: calc(2px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
+    min-width: calc(48px * var(--layout-scale, 1));
+    height: calc(38px * var(--layout-scale, 1));
+    border-radius: 8px;
+    border: 1px solid rgba(255, 100, 0, 0.4);
+    background: rgba(60, 20, 10, 0.6);
+    color: #f8fafc;
+    font-weight: 700;
+    z-index: 6;
+    pointer-events: none;
+  }
+
+  .player-ap-right.ap-active {
+    border-color: rgba(255, 100, 0, 0.85);
+    background: rgba(100, 30, 10, 0.78);
+    box-shadow: 0 0 6px 1px rgba(255, 120, 0, 0.35);
+  }
+
+  .player-ap-right .ap-num {
+    font-size: calc(15px * var(--text-scale, 1));
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .player-ap-right .ap-label {
+    font-size: calc(9px * var(--text-scale, 1));
+    opacity: 0.8;
+    letter-spacing: 0.5px;
+    line-height: 1;
   }
 
   .end-turn-btn.disabled,
@@ -3485,7 +3530,9 @@
   .player-status-strip {
     position: absolute;
     left: calc(12px * var(--layout-scale, 1));
-    right: calc(140px * var(--layout-scale, 1));
+    /* End Turn now sits at right: 70px with min-width 110px, AP at right: 12px width ~48px.
+       Reserve room for both: 70 + 110 + 6 gap = ~186 + a bit. */
+    right: calc(200px * var(--layout-scale, 1));
     bottom: calc(calc(14px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
     z-index: 8;
     display: flex;
@@ -4168,14 +4215,16 @@
     flex-direction: column;
     align-items: center;
     position: fixed;
-    left: calc(16px * var(--layout-scale, 1));
-    bottom: 38vh;
-    z-index: 16;
+    /* Sit immediately to the right of the landscape End Turn button.
+       End Turn: left 16px, min-width 120px → AP starts at left 16+120+12 = 148px. */
+    left: calc(148px * var(--layout-scale, 1));
+    bottom: calc(16px * var(--layout-scale, 1));
+    z-index: 20;
   }
 
   .lsb-ap-circle {
-    width: calc(56px * var(--layout-scale, 1));
-    height: calc(56px * var(--layout-scale, 1));
+    width: calc(46px * var(--layout-scale, 1));
+    height: calc(46px * var(--layout-scale, 1));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -4194,7 +4243,7 @@
   }
 
   .lsb-ap-number {
-    font-size: calc(22px * var(--layout-scale, 1));
+    font-size: calc(18px * var(--layout-scale, 1));
     font-weight: 800;
     color: #fff;
     text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);

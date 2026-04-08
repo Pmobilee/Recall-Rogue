@@ -186,6 +186,14 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     generatePlayerId,
   } from './services/multiplayerLobbyService'
   import { onOpponentProgressUpdate } from './services/multiplayerGameService'
+  import {
+    initMapNodeSync,
+    destroyMapNodeSync,
+    pickMapNode,
+    resetMapNodePicks,
+    onMapNodeConsensus,
+    onMapNodePicksChanged,
+  } from './services/multiplayerMapSync'
   import type { LobbyState, RaceProgress, MultiplayerMode, LobbyContentSelection } from './data/multiplayerTypes'
 
   // Update Steam Rich Presence whenever the active screen changes.
@@ -462,6 +470,29 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   /** True while an active multiplayer lobby exists (race progress HUD visible in combat). */
   let isMultiplayerRun = $derived(currentLobby !== null)
 
+  /** Live map node picks across all players, refreshed via multiplayerMapSync. */
+  let mapNodePicks = $state<Record<string, string | null>>({})
+
+  /** Stable distinct colors per player slot used for the map node pick badges. */
+  const PLAYER_PICK_COLORS = ['#3b82f6', '#ef4444', '#22c55e', '#eab308'] as const
+
+  /** Derived: nodeId → list of players who've picked that node (for DungeonMap). */
+  let nodePickIndicators = $derived.by(() => {
+    const out: Record<string, Array<{ playerId: string; initial: string; color: string }>> = {}
+    if (!currentLobby) return out
+    const players = currentLobby.players
+    for (let i = 0; i < players.length; i++) {
+      const p = players[i]
+      const picked = mapNodePicks[p.id]
+      if (!picked) continue
+      const initial = (p.displayName || p.id).charAt(0).toUpperCase()
+      const color = PLAYER_PICK_COLORS[i % PLAYER_PICK_COLORS.length]
+      if (!out[picked]) out[picked] = []
+      out[picked].push({ playerId: p.id, initial, color })
+    }
+    return out
+  })
+
   function handleOpenMultiplayer(): void {
     // Navigate to the multiplayer menu for mode selection before creating a lobby.
     transitionScreen('multiplayerMenu')
@@ -528,13 +559,28 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         multiplayerSeed: seed,
         multiplayerMode: lobby.mode,
       })
+
+      // Initialise map node consensus so both players must agree on the next room.
+      initMapNodeSync(localPlayerId)
     })
     const unsubProgress = onOpponentProgressUpdate((progress: RaceProgress) => {
       opponentProgress = progress
     })
+    const unsubPicks = onMapNodePicksChanged((picks) => {
+      mapNodePicks = { ...picks }
+    })
+    const unsubConsensus = onMapNodeConsensus((nodeId) => {
+      // Both players have agreed on this node — commit the selection locally.
+      // Reset picks first so the badges clear before the room transition.
+      resetMapNodePicks()
+      void commitMapNodeSelection(nodeId)
+    })
     return () => {
       unsubStart()
       unsubProgress()
+      unsubPicks()
+      unsubConsensus()
+      destroyMapNodeSync()
     }
   })
 
@@ -697,7 +743,26 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   }
 
   let mapNodeSelectionInProgress = false
+
+  /**
+   * User clicked a map node. In single-player this commits immediately.
+   * In multiplayer, this broadcasts a "pick" for consensus — the actual room
+   * transition only happens when every player has picked the SAME node
+   * (handled by the onMapNodeConsensus callback).
+   */
   async function handleMapNodeSelect(nodeId: string): Promise<void> {
+    if (mapNodeSelectionInProgress) return
+    if (isMultiplayerRun) {
+      // Multiplayer: broadcast pick, wait for consensus before committing.
+      pickMapNode(nodeId)
+      return
+    }
+    await commitMapNodeSelection(nodeId)
+  }
+
+  /** Run the actual map node selection + room transition (single-player path
+   *  and the multiplayer consensus callback path both call this). */
+  async function commitMapNodeSelection(nodeId: string): Promise<void> {
     if (mapNodeSelectionInProgress) return
     mapNodeSelectionInProgress = true
     try {
@@ -1487,6 +1552,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
           playerHp={run.playerHp}
           playerMaxHp={run.playerMaxHp}
           onNodeSelect={handleMapNodeSelect}
+          nodePicks={nodePickIndicators}
         />
         <button
           type="button"

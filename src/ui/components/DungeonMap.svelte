@@ -12,14 +12,23 @@
   // Props
   // =========================================================
 
+  /** Multiplayer pick indicator: who has tentatively picked which node. */
+  export interface NodePickIndicator {
+    playerId: string
+    initial: string
+    color: string
+  }
+
   interface Props {
     map: ActMap
     playerHp: number
     playerMaxHp: number
     onNodeSelect: (nodeId: string) => void
+    /** Optional map of nodeId → list of players who've picked it (multiplayer). */
+    nodePicks?: Record<string, NodePickIndicator[]>
   }
 
-  let { map, playerHp, playerMaxHp, onNodeSelect }: Props = $props()
+  let { map, playerHp, playerMaxHp, onNodeSelect, nodePicks = {} }: Props = $props()
 
   // =========================================================
   // Layout scale helper
@@ -361,6 +370,7 @@
         >
           <MapNodeComponent
             {node}
+            pickedBy={nodePicks[node.id] ?? []}
             onclick={() => node.state === 'available' && onNodeSelect(node.id)}
           />
         </div>

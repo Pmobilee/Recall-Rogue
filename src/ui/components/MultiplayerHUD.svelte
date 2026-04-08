@@ -140,14 +140,16 @@
   /* ── Root ── */
   .mp-hud {
     position: fixed;
-    top: calc(16px * var(--layout-scale, 1));
+    /* Sit just below the fog meter (which sits below the topbar). topbar = 4.5vh, fog ≈ 28px. */
+    top: calc(var(--topbar-height, 4.5vh) + 36px * var(--layout-scale, 1));
     right: calc(16px * var(--layout-scale, 1));
     width: calc(260px * var(--layout-scale, 1));
     background: rgba(10, 12, 20, 0.82);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: calc(10px * var(--layout-scale, 1));
     backdrop-filter: blur(8px);
-    z-index: 120;
+    /* Above topbar (200) and fog meter (199) so it's not occluded. */
+    z-index: 205;
     font-family: var(--font-body, 'Lora', serif);
     color: #e0e0e0;
     overflow: hidden;
