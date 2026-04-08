@@ -15941,6 +15941,34 @@
   ],
   "deckfronts": [
     {
+      "id": "ap_human_geography",
+      "name": "AP Human Geography",
+      "concept": "Cartographer study of human civilization patterns — relief map with settlement clusters, migration routes, population charts",
+      "prompt": "16-bit pixel art RPG scene, an underground cartographer's study dedicated to the patterns of human civilization, a massive relief map of continents on a stone table in the foreground dotted with clusters of tiny glowing settlements showing population centers, strings of red and blue yarn connecting pinned markers across a large wall-mounted world map showing migration routes, population pyramid charts sketched on aged parchment scrolls pinned to the cavern walls, miniature models of city skylines and rural villages arranged on stone shelves, an antique brass sextant and compass on a wooden drafting desk, flickering oil lanterns casting warm pools of light across cobblestone floors, JRPG dungeon tileset aesthetic, rich pixel detail, palette dominated by forest green warm parchment gold and deep ocean blue, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 4229228578,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 778063024,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 2,
+          "seed": 4212039250,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
       "id": "japanese",
       "name": "Japanese — All Decks",
       "concept": "Ancient stone shrine deep underground, lanterns and moss, mysterious dungeon atmosphere",
@@ -16175,6 +16203,34 @@
         {
           "variant": 0,
           "seed": 1709775727,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "world_religions",
+      "name": "World Religions",
+      "concept": "Ancient dungeon pantheon chamber with alcoves holding sacred objects from multiple traditions arranged equally around a central ring of flames",
+      "prompt": "16-bit pixel art RPG scene, ancient stone pantheon chamber inside a vast underground cavern with multiple weathered alcoves carved into curving walls, each alcove holding a different sacred object resting on worn stone plinths — a seven-branched candelabrum glowing with golden flame, a crescent-shaped bronze lantern hanging from chains, a simple wooden cross weathered by centuries, a carved wheel with eight radiating spokes, a bronze trident resting against mossy stone, a steel ringlet on folded silk cloth, an eight-petaled stone lotus in a shallow water basin, a round drum with crossed ceremonial swords, a central circular brazier ringed with small dancing flames in the foreground, incense smoke rising in soft dithered spirals, shafts of pale light filtering down from a cracked oculus above mixing with warm candlelight, JRPG dungeon tileset aesthetic, rich pixel detail, deep stone grey warm candle amber and muted gold palette, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2829112448,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1735783311,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 2,
+          "seed": 2323056267,
           "status": "done",
           "accepted": false
         }
@@ -17012,6 +17068,7 @@
           "accepted": false
         }
       ]
+    },
     }
   ],
   "enemy_power_icons": [
