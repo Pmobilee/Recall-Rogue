@@ -739,3 +739,23 @@ ProfileScreen and JournalScreen use `.profile-landscape` / `.journal-landscape` 
 **Where:** `scripts/japanese/build-kanji-decks.mjs` does this conversion in the build loop. `kanji_onyomi` pool answers are katakana post-conversion; `kanji_kunyomi` pool answers remain hiragana. The split into two pools (per `.claude/rules/deck-quality.md` homogeneity rule) is specifically because katakana and hiragana are not interchangeable as quiz answers.
 
 **How to apply:** For new kanji decks or extensions, never emit raw `data.readings_on` — route through `wanakana.toKatakana()`. Similarly apply `stripOkurigana()` + katakana filter on `data.readings_kun`.
+
+### 2026-04-08 — `public/curated.db` is racy when multiple Claude sessions run in parallel
+
+**What:** `public/curated.db` is a build artifact written by `npm run build:curated` from `data/decks/*.json` + `data/decks/manifest.json`. It is **not** in git (gitignored) and is regenerated on demand. When multiple `claude` CLI sessions are running in parallel terminals (common during heavy multi-session work), any one of them can trigger a rebuild — typically as part of `npm run build`, a pre-commit hook, or an explicit `build:curated`. If the rebuilding session has a different `manifest.json` state than yours, your decks silently disappear from the compiled DB even though the source JSON still exists.
+
+**Concrete incident (kanji decks ship 2026-04-08):** I rebuilt `curated.db` with all 5 new kanji decks present. ~30 minutes later, a parallel session ran its own build with a stale `manifest.json` (kanji entries hadn't been committed yet from that session's perspective). The compiled `curated.db` was overwritten and the kanji decks were silently dropped. Discovery happened only when a SQL validation query against the live DB returned zero rows for `deck_id LIKE '%kanji'`. The runtime would have served the kanji-less DB to players until the next manual rebuild.
+
+**Detection:**
+```bash
+node -e "const db = require('better-sqlite3')('public/curated.db', {readonly:true}); console.log(db.prepare('SELECT id FROM decks').all().map(r=>r.id).join('\n'));"
+```
+Compare against the current `data/decks/manifest.json` deck list. Any mismatch = stale build.
+
+**Rules:**
+1. **Always rebuild `curated.db` immediately before any test, screenshot, or commit that depends on it.** Don't trust a previous build's state, especially if other sessions are active.
+2. **Pre-commit hooks should rebuild `curated.db` from the actual `manifest.json` at commit time** — this guarantees committed state matches what verification ran against. If you're adding a hook for `data/decks/manifest.json` or `data/decks/*.json`, include `npm run build:curated`.
+3. **If you discover a stale `curated.db`, do NOT panic about lost data** — the source JSON files in `data/decks/` are the source of truth. A single `npm run build:curated` regenerates everything in <10s.
+4. **For long-running test/playtest sessions in one terminal, periodically re-verify deck count** via the SQL query above before trusting results.
+
+**Why this matters more than you'd think:** the bug is silent. There's no error, no warning, no crash. The dev server happily loads the truncated DB and the missing decks just don't appear in the deck picker. A user could miss the regression entirely if they aren't specifically looking for the missing decks. Visual tests that load existing decks would still pass — it's only specifically the new/affected decks that vanish.
