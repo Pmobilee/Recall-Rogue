@@ -31,15 +31,36 @@ node tests/e2e/05-portrait-regression.cjs
 
 Both use `chromium.launch({ headless: true, channel: 'chrome' })` — system Chrome is required.
 
-## WebGL Requirement: Must Use System Chrome
+### 3. Docker Containers (parallel-safe — use when multiple agents test simultaneously)
 
-Playwright's bundled Chromium does NOT have WebGL on macOS ARM64 (no SwiftShader). Phaser 3 requires WebGL. Always use:
+Isolated Docker containers with Xvfb + Chromium + SwiftShader. No chrome-lock, no shared state, full WebGL 2.0.
+
+```bash
+# Cold mode (one-shot, ~54s)
+scripts/docker-visual-test.sh --scenario combat-basic --agent-id agent-1
+
+# Warm mode (boot once ~74s, then ~5s per test)
+scripts/docker-visual-test.sh --warm start --agent-id agent-1
+scripts/docker-visual-test.sh --warm test --agent-id agent-1 --scenario combat-boss
+scripts/docker-visual-test.sh --warm test --agent-id agent-1 --scenario shop
+scripts/docker-visual-test.sh --warm stop --agent-id agent-1
+```
+
+Output files: `screenshot.png`, `rr-screenshot.jpg`, `layout-dump.txt`, `result.json` in `/tmp/rr-docker-visual/`.
+
+Requires Docker Desktop running. Supports 2-3 parallel containers (stagger starts by 3s). Uses turbo mode + reduce-motion for speed.
+
+## WebGL Requirement: System Chrome or Docker
+
+**Native macOS:** Playwright's bundled Chromium does NOT have WebGL on macOS ARM64. Phaser 3 requires WebGL. Always use:
 
 ```javascript
 const browser = await chromium.launch({ headless: true, channel: 'chrome' });
 ```
 
 Never use `chromium.launch({ headless: true })` — it shows "Device Not Supported" because WebGL is unavailable.
+
+**Docker containers:** Use system Chromium from apt + SwiftShader. Full WebGL 2.0 support via software rendering. No `channel: 'chrome'` needed inside Docker.
 
 ## Screenshot Method: `__rrScreenshotFile()`
 

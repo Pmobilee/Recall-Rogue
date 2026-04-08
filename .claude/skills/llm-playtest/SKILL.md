@@ -174,7 +174,7 @@ Before spawning testers, create the batch manifest:
 
 ## Phase 2: Run Testers Sequentially
 
-**IMPORTANT: Run testers SEQUENTIALLY, not in parallel.** They all use Playwright MCP which shares a browser session. Parallel runs would corrupt each other's game state.
+**IMPORTANT: Run testers SEQUENTIALLY when using Playwright MCP** (shared browser session — parallel runs corrupt state). For parallel visual testing, use Docker containers instead: `scripts/docker-visual-test.sh --scenario X --agent-id Y` — each gets an isolated browser.
 
 For each requested tester, spawn a Sonnet sub-agent with the full self-contained prompt from the templates below. Pass:
 - `batchDir`: absolute path to the batch directory (e.g., `/Users/damion/CODE/Recall_Rogue/data/playtests/llm-batches/BATCH-2026-03-27-001`)

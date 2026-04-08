@@ -25,7 +25,7 @@ Before ANY code change, read the relevant doc under `docs/ui/`. After changes, u
 - `data/decks/` — owned by content-agent
 
 ## Pre-Loaded Skills
-- `/visual-inspect` — Instant game state screenshots via Playwright + __rrScenario
+- `/visual-inspect` — Instant game state screenshots via Playwright + __rrScenario. For parallel testing use Docker: `scripts/docker-visual-test.sh --scenario X --agent-id Y`
 - `/ux-review` — Professional UX audit with DOM analysis
 - `/card-frames` — PSD extraction, card art positioning, frame layering
 - `/card-design` — Card visual design rules, typography

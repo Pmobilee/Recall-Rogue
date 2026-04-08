@@ -23,10 +23,14 @@
 
 ## Visual Testing
 - Use `/visual-inspect` or `/quick-verify` skills
-- Chrome lock: acquire before ANY Chrome tool call (see CLAUDE.md protocol)
+- **Parallel agents: use Docker containers** — `scripts/docker-visual-test.sh` — no chrome-lock needed
+  - Cold mode: `--scenario X --agent-id Y` (~54s, fully isolated)
+  - Warm mode: `--warm start`, then `--warm test --scenario X` (~5s per test after boot)
+- Chrome-lock only needed for `claude-in-chrome` MCP tools (shared browser session)
 - ALWAYS use `__rrScreenshotFile()` + `__rrLayoutDump()` — NEVER `mcp__playwright__browser_take_screenshot` (Phaser RAF blocks it)
 - ALWAYS use `__rrScenario.load()` to jump to game states — NEVER click through menus manually
-- Playwright WebGL: ALWAYS use `channel: 'chrome'` — bundled Chromium has no WebGL on macOS ARM64
+- Native Playwright: use `channel: 'chrome'` — bundled Chromium has no WebGL on macOS ARM64
+- Docker containers: use system Chromium + SwiftShader — full WebGL 2.0, no GPU needed
 
 ## Inspection Registry
 - `npm run registry:sync` — rebuild from source after adding/removing game elements

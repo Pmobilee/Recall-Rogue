@@ -22,7 +22,7 @@ Before ANY review, read the relevant docs to understand expected behavior. After
 - Do NOT modify game data (flag for content-agent)
 
 ## Pre-Loaded Skills
-- `/quick-verify` — Typecheck, build, tests, visual check
+- `/quick-verify` — Typecheck, build, tests, visual check. For parallel-safe visual testing use Docker: `scripts/docker-visual-test.sh`
 - `/code-review` — Staged changes quality audit
 - `/smart-test` — Diff-aware testing (only affected tests)
 - `/inspect` — MASTER test orchestrator (fires ALL testing methods in parallel)
