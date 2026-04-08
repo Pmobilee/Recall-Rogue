@@ -115,11 +115,21 @@ The `showRomaji` reactive is derived from `$deckOptions?.ja?.romaji`. A `.gramma
 
 **`.card-expanded-landscape`** is the combat charge-quiz panel in `CardExpanded.svelte`. It is `position: fixed`, left-aligned, and spans `58vw` wide.
 
-**Vertical positioning (2026-04-08):**
+**Vertical positioning (2026-04-08, updated Ch8):**
 - `top: calc(var(--topbar-height, 4.5vh) + calc(40px * var(--layout-scale, 1)))` — topbar height + fog meter (28px) + 12px gap ≈ 89px at 1080p. Positions the panel below the fog meter with breathing room.
-- `bottom: calc(24vh + calc(16px * var(--layout-scale, 1)))` — stops above the card hand (35vh), leaving ~24vh + 16px gap. Gives more vertical space vs. the old `27vh + 36px`.
+- `bottom: calc(9vh + calc(16px * var(--layout-scale, 1)))` — stops near the card hand, leaving ~9vh + 16px gap. Extended 15vh lower than before (was 24vh). Overlap with card hand is intentional by design.
 - `overflow: hidden` — no scrolling; all content must fit within the available panel height.
 - Content uses `flex-direction: column` with `justify-content: center` to distribute space.
+
+**Header (2026-04-08 Ch8):** `.header-domain` shows text only (`deckDisplayName ?? domainName`). The `.header-domain-icon` `<img>` element, `getDomainIconPath` import, and `domainIconPath` derived have all been removed.
+
+**Font sizes (2026-04-08 Ch8):**
+- `.card-question` base: `14px` (was 11px)
+- `.quiz-text-short` (< 30 chars): `26px` (was 22px)
+- `.quiz-text-medium` (< 80 chars): `22px` (was 18px)
+- `.quiz-text-long` (≥ 80 chars): `18px` (was 14px)
+- `.answer-btn` font: `15px` (was 11px)
+- All values use `calc(Npx * var(--text-scale, 1))`
 
 ### QuizOverlay Landscape Two-Zone Layout — DELETED (2026-04-08)
 

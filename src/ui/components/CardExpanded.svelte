@@ -5,7 +5,6 @@
   import { inputService } from '../../services/inputService'
   import { getDomainMetadata } from '../../data/domainMetadata'
   import { getChainColor, getChainGlowColor } from '../../services/chainVisuals'
-  import { getDomainIconPath } from '../utils/domainAssets'
   import { getBorderUrl, getBannerUrl, getBaseFrameUrl, getUpgradeIconUrl } from '../utils/cardFrameV2'
   import { getCardTypeEmoji, getCardTypeIconCandidates } from '../utils/iconAssets'
   import { getMechanicDefinition } from '../../data/mechanics'
@@ -129,7 +128,6 @@
   let typeIconAttempt = $state(0)
   let typeIconPath = $derived(typeIconCandidates[typeIconAttempt] ?? null)
   // V2: frame is now rendered as layered images, not a CSS background variable
-  let domainIconPath = $derived(getDomainIconPath(card.domain))
 
   const TIMER_UPDATE_INTERVAL_MS = 33
 
@@ -515,7 +513,6 @@
 
   <div class="card-header">
     <span class="header-domain">
-      <img class="header-domain-icon" src={domainIconPath} alt={`${domainName} icon`} />
       {deckDisplayName ?? domainName}
     </span>
     <span class="header-icon">
@@ -787,7 +784,7 @@
     max-width: 58vw;
     /* Vertically: fill arena above stats bar + card hand */
     top: calc(var(--topbar-height, 4.5vh) + calc(40px * var(--layout-scale, 1)));
-    bottom: calc(24vh + calc(16px * var(--layout-scale, 1)));
+    bottom: calc(9vh + calc(16px * var(--layout-scale, 1)));
     /* Center content vertically within the panel */
     display: flex;
     flex-direction: column;
@@ -953,13 +950,6 @@
     letter-spacing: 0.04em;
   }
 
-  .header-domain-icon {
-    width: calc(20px * var(--layout-scale, 1));
-    height: calc(20px * var(--layout-scale, 1));
-    object-fit: contain;
-    image-rendering: pixelated;
-  }
-
   .header-icon {
     font-size: calc(14px * var(--layout-scale, 1));
     display: inline-flex;
@@ -1048,7 +1038,7 @@
   /* ── Question text: pixel font, auto-scales by length ── */
   .card-question {
     font-family: var(--font-rpg);
-    font-size: calc(11px * var(--text-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
     color: #e8edf5;
     line-height: 1.6;
     padding: calc(6px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
@@ -1057,15 +1047,15 @@
 
   /* AR-221: Auto-scaling font sizes based on question character count */
   .card-question.quiz-text-short {
-    font-size: calc(22px * var(--text-scale, 1));
+    font-size: calc(26px * var(--text-scale, 1));
   }
 
   .card-question.quiz-text-medium {
-    font-size: calc(18px * var(--text-scale, 1));
+    font-size: calc(22px * var(--text-scale, 1));
   }
 
   .card-question.quiz-text-long {
-    font-size: calc(14px * var(--text-scale, 1));
+    font-size: calc(18px * var(--text-scale, 1));
   }
 
   .grammar-blank {
@@ -1136,7 +1126,7 @@
     border-radius: 6px;
     color: #e2e8f0;
     font-family: var(--font-rpg);
-    font-size: calc(11px * var(--text-scale, 1));
+    font-size: calc(15px * var(--text-scale, 1));
     line-height: 1.5;
     padding: calc(14px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
     text-align: left;
