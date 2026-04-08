@@ -508,7 +508,7 @@ The  plus  centers the title horizontally over the art, independent of its text 
 | Component | Purpose |
 |-----------|---------|
 | `RelicTray.svelte` | Horizontal relic tray with triggered-relic highlight. `.relic-slot` container is `40px` (scaled); `.relic-icon` is `32px` (scaled). Uses `image-rendering: auto` (bilinear filtering). |
-| `RelicPickupOverlay.svelte` | Relic acquisition: accept or decline a found relic |
+| `RelicPickupOverlay.svelte` | Relic acquisition: accept or decline a found relic. **Buttons (2026-04-08):** "Take" renamed to "Accept" to match card reward convention. Both `.btn-take` and `.btn-leave` use `min-width: calc(140px * var(--layout-scale, 1))` and identical padding (`12px/28px`) for equal sizing — they are `flex-direction: row` horizontally. `.btn-leave` is now red (`background: #dc2626`, hover `#991b1b`, `color: #fff`) instead of grey, making it clearly a rejection action. Base font size for `.relic-description` and `.relic-effect-line` increased from 14px/12px to 20px; button font from 16px to 20px. |
 | `RelicPickupToast.svelte` | Toast when a relic is auto-picked up; offers Swap if slots are full |
 | `RelicSwapOverlay.svelte` | Overlay for swapping an offered relic with an equipped one |
 | `RelicCollectionScreen.svelte` | Browse all discovered relics with lore and stats |

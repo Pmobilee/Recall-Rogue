@@ -36,7 +36,7 @@
       </div>
     {/if}
     <div class="relic-buttons">
-      <button class="btn-take" onclick={() => { playCardAudio('relic-acquired'); onAccept() }}>Take</button>
+      <button class="btn-take" onclick={() => { playCardAudio('relic-acquired'); onAccept() }}>Accept</button>
       <button class="btn-leave" onclick={onDecline}>Leave</button>
     </div>
   </div>
@@ -114,7 +114,7 @@
   }
 
   .relic-description {
-    font-size: calc(14px * var(--text-scale, 1));
+    font-size: calc(20px * var(--text-scale, 1));
     color: #c8c8d0;
     line-height: 1.5;
     margin: 0 0 calc(8px * var(--layout-scale, 1));
@@ -129,13 +129,14 @@
   }
 
   .relic-effect-line {
-    font-size: calc(12px * var(--text-scale, 1));
+    font-size: calc(20px * var(--text-scale, 1));
     color: #6ee7b7;
     line-height: 1.3;
   }
 
   .relic-buttons {
     display: flex;
+    flex-direction: row;
     gap: calc(12px * var(--layout-scale, 1));
     width: 100%;
     justify-content: center;
@@ -147,12 +148,13 @@
     color: #fff;
     border: none;
     border-radius: calc(10px * var(--layout-scale, 1));
-    padding: calc(12px * var(--layout-scale, 1)) calc(36px * var(--layout-scale, 1));
-    font-size: calc(16px * var(--text-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1)) calc(28px * var(--layout-scale, 1));
+    font-size: calc(20px * var(--text-scale, 1));
     font-weight: 800;
     font-family: inherit;
     cursor: pointer;
     min-height: calc(48px * var(--layout-scale, 1));
+    min-width: calc(140px * var(--layout-scale, 1));
     box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.3);
     transition: transform 100ms ease, box-shadow 100ms ease;
   }
@@ -162,22 +164,24 @@
     box-shadow: 0 calc(6px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.4);
   }
 
+  /* Leave = red "danger" button so players notice it's the reject action */
   .btn-leave {
-    background: #2d333b;
-    color: #9ba4ad;
+    background: #dc2626;
+    color: #fff;
     border: none;
     border-radius: calc(10px * var(--layout-scale, 1));
     padding: calc(12px * var(--layout-scale, 1)) calc(28px * var(--layout-scale, 1));
-    font-size: calc(16px * var(--text-scale, 1));
+    font-size: calc(20px * var(--text-scale, 1));
     font-weight: 800;
     font-family: inherit;
     cursor: pointer;
     min-height: calc(48px * var(--layout-scale, 1));
+    min-width: calc(140px * var(--layout-scale, 1));
     transition: background 100ms ease;
   }
 
   .btn-leave:hover {
-    background: #3a414a;
+    background: #991b1b;
   }
 
   /* Landscape overrides */
@@ -195,7 +199,7 @@
   }
 
   .relic-overlay.landscape .relic-description {
-    font-size: calc(15px * var(--text-scale, 1));
+    font-size: calc(20px * var(--text-scale, 1));
     max-width: calc(380px * var(--layout-scale, 1));
   }
 

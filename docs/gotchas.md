@@ -719,3 +719,13 @@ ProfileScreen and JournalScreen use `.profile-landscape` / `.journal-landscape` 
 - `.music-widget`: `border: 1px solid rgba(255,255,255,0.12)` → `border: 1px solid transparent` (keeps border-color transitions for hover/playing states) + `box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12), [existing shadow]`
 
 **Rule:** ANY Svelte overlay element that uses `backdrop-filter` MUST NOT use `border` for visual outlines. Use `box-shadow: inset` instead. The border creates a GPU compositing plane edge that renders as a visible line over the Phaser canvas beneath.
+
+### 2026-04-08 — Ch11.3 Power Strike reward visual bugs: Svelte layer is clean, root cause in Phaser
+
+**What:** Playtest reported Power Strike reward card showing "strange container around the card, haziness/overlay, no art on hover." Investigation of all Svelte reward components (`RewardCardDetail.svelte`, `CardRewardScreen.svelte`) found zero CSS that would cause these symptoms — no suspicious `opacity`, `backdrop-filter`, `filter: blur()`, or tier-specific rendering paths. The `.frame-card-art` is rendered only inside `{#if artUrl}` so a missing art result for Power Strike's `mechanicId` would produce no art, but only on that specific card.
+
+**Most likely root causes:**
+1. `getCardArtUrl('power_strike')` returns `null` — the Power Strike art asset is missing from the card art manifest. Check `src/ui/utils/cardArtManifest.ts`.
+2. Some Phaser-side rendering in `RewardRoomScene.ts` (game-logic owned file) adds a visual overlay for certain card tiers.
+
+**Rule:** When a visual bug is card-specific (only affects Power Strike, not all cards), the cause is almost always a missing/misnamed art asset rather than a CSS layout bug. Check the art manifest first before investigating layout code.
