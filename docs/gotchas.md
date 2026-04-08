@@ -1,3 +1,30 @@
+### 2026-04-08 — Kanji decks restructured: standalone → sub-decks of japanese_n*
+
+**What:** After the initial kanji ship (commit 1c5f2fc6), the 5 standalone top-level kanji decks (`japanese_n5_kanji.json` through `japanese_n1_kanji.json`) were deleted and their facts merged into the existing `japanese_n*.json` parent decks as a `kanji` sub-deck.
+
+**Why:** The DeckBuilder UI in `DeckBuilder.svelte` (lines 90–101) groups Japanese decks by parent and uses the `subDecks` array to present vocabulary/kanji/grammar selections within a single registered deck entry. Registering 5 standalone kanji decks created 5 extra top-level tiles in the library instead of integrating with the existing Japanese deck grouping. Additionally, `curatedDeckStore.ts` line 187 uses explicit `factIds` arrays in `subDecks` — making the merge safe and predictable.
+
+**Merge approach:** `scripts/japanese/build-kanji-decks.mjs` was rewritten to:
+1. Read the existing parent `japanese_n*.json`
+2. Strip any prior kanji facts (identified by `sourceName` containing `"KANJIDIC2"`) and the 4 kanji pools
+3. Generate fresh kanji facts from source data
+4. Inject kanji facts + 4 pools into the parent deck
+5. Update `subDecks` array: `[{id:"vocabulary", factIds:[...]}, {id:"kanji", factIds:[...]}]`
+
+**Manifest + taxonomy:** Entries for `japanese_n*_kanji` were removed. Only the 5 existing `japanese_n*` entries remain, which now contain kanji as a sub-deck (7 pools each: 3 vocab + 4 kanji).
+
+**Drift detection:** If `japanese_n*_kanji.json` files ever reappear in `data/decks/`, they are stale artifacts from an old build run. The correct action is to re-run `node scripts/japanese/build-kanji-decks.mjs` (idempotent — safe to re-run) and delete the standalone files.
+
+**Integrity preserved:** All 6,633 kanji facts and their pool assignments are unchanged. The restructure was purely organizational — fact IDs, pool IDs, answers, and distractors are identical.
+
+### 2026-04-08 — Special-room narration was firing on entry, causing flash before room content appeared
+
+**What:** `onRoomSelected()` in `gameFlowController.ts` had a narration block that ran immediately when the player entered a shop/rest/mystery/treasure room — BEFORE the room UI opened. This caused the narrative overlay to flash on screen briefly, then disappear, before the room content appeared. Players saw the narration first and the room second, which is backwards.
+
+**Fix (Ch13.1):** Deleted the entry narration block entirely. Added `showRoomExitNarrative(roomType, mysteryRoomId?)` private helper called from each room's resolution/exit function: `onShopDone()`, `onRestResolved()`, `onMysteryResolved()`, `onMysteryEffectResolved()` default branch, and the treasure room `onComplete` callback.
+
+**Rule:** Narration fires on EXIT, never on entry. This applies to ALL room types. The player should experience the room first.
+
 ### 2026-04-08 — QuizOverlay.svelte was dead code for months; grammar fixes applied to wrong component
 
 **What:** `src/ui/components/QuizOverlay.svelte` existed in the repo and looked like the central combat quiz panel (it had landscape + portrait layouts, `isGrammarFillBlank` derivations, and full charge/typing/answer rendering). An Explore agent investigating a Japanese grammar rendering bug grepped it up and confidently pointed at it as the live component. An implementation agent then patched all 5 user-reported bugs (furigana, kana-only, romaji, hover gloss, typing hints) into QuizOverlay.svelte. **Typecheck passed, build passed — but nothing worked in-game**, because `QuizOverlay.svelte` was never imported anywhere. A `grep -rn "import.*QuizOverlay\\|<QuizOverlay"` would have caught it instantly.

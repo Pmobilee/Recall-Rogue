@@ -2,11 +2,23 @@
  * build-kanji-decks.mjs
  *
  * Deterministic ES module — no LLM calls, no network.
- * Builds 5 JLPT kanji curated decks (N5–N1) from:
+ * Builds JLPT kanji facts (N5–N1) from:
  *   - data/references/kanji-data-davidluzgouveia.json (KANJIDIC2-derived)
  *   - data/references/full-japanese-study-deck/results/kanji-info.json (mnemonics + compound words)
  *
- * Output: data/decks/japanese_n{5,4,3,2,1}_kanji.json
+ * MERGE MODE (default): kanji facts are merged INTO the parent vocabulary decks.
+ * Each japanese_n{L}.json receives:
+ *   - New facts appended after vocab facts (kanji IDs start with ja-kanji-n{L}-)
+ *   - 4 new answer pools (kanji_meanings, kanji_onyomi, kanji_kunyomi, kanji_characters)
+ *   - A top-level subDecks array: [{ id: "vocabulary", factIds: [...] }, { id: "kanji", factIds: [...] }]
+ *   - Updated targetFacts
+ *
+ * IDEMPOTENT: re-running strips prior kanji content before inserting fresh content.
+ * Prior kanji content is detected by:
+ *   - facts whose id starts with `ja-kanji-n{L}-`
+ *   - pools whose id starts with `kanji_`
+ *   - subDeck with id `kanji`
+ *   - subDeck with id `vocabulary` (regenerated fresh from current vocab facts)
  *
  * Run from repo root: node scripts/japanese/build-kanji-decks.mjs
  */
@@ -523,11 +535,25 @@ function buildPools(facts, L, kanjiDataMap) {
 }
 
 // ---------------------------------------------------------------------------
-// Main build loop
+// Main build loop — MERGE MODE
 // ---------------------------------------------------------------------------
+// Kanji facts are merged into the parent japanese_n{L}.json vocabulary decks.
+// Prior kanji content is stripped before re-inserting (idempotent).
 
 for (const L of [5, 4, 3, 2, 1]) {
-  console.log(`\n=== Building N${L} Kanji Deck ===`);
+  console.log(`\n=== Building N${L} Kanji (merging into japanese_n${L}.json) ===`);
+
+  // Load the parent vocabulary deck
+  const parentPath = join(ROOT, `data/decks/japanese_n${L}.json`);
+  const parent = JSON.parse(readFileSync(parentPath, 'utf-8'));
+
+  // Strip any prior kanji content (idempotency: safe to re-run)
+  const vocabFacts = parent.facts.filter(f => !f.id.startsWith(`ja-kanji-n${L}-`));
+  const vocabPools = parent.answerTypePools.filter(p => !p.id.startsWith('kanji_'));
+  // Strip prior subDecks entirely — will be regenerated
+  delete parent.subDecks;
+
+  console.log(`  Vocab facts retained: ${vocabFacts.length} (stripped ${parent.facts.length - vocabFacts.length} prior kanji facts)`);
 
   // Filter and sort by frequency (most frequent first; undefined freq → 99999)
   const kanjiList = Object.entries(KANJIDIC)
@@ -540,7 +566,7 @@ for (const L of [5, 4, 3, 2, 1]) {
   const kanjiDataMap = new Map(kanjiList);
   const kanjiMeaningsMap = new Map();
 
-  const facts = [];
+  const kanjiFacts = [];
   let skipped = 0;
 
   for (let idx = 0; idx < kanjiList.length; idx++) {
@@ -562,22 +588,22 @@ for (const L of [5, 4, 3, 2, 1]) {
     const primaryRead = readingType === 'on' ? (onKata[0] ?? '') : (kunHira[0] ?? '');
     const explanation = buildExplanation({ k, data, info, meanings, onKata, kunHira });
 
-    facts.push(makeMeaningFact({ k, idx, L, meanings, primaryRead, explanation }));
-    facts.push(makeReadingFact({ k, idx, L, readingType, onKata, kunHira, primaryRead, explanation }));
-    facts.push(makeRecognitionFact({ k, idx, L, meanings, primaryRead, explanation }));
+    kanjiFacts.push(makeMeaningFact({ k, idx, L, meanings, primaryRead, explanation }));
+    kanjiFacts.push(makeReadingFact({ k, idx, L, readingType, onKata, kunHira, primaryRead, explanation }));
+    kanjiFacts.push(makeRecognitionFact({ k, idx, L, meanings, primaryRead, explanation }));
   }
 
   // Resolve recognition question collisions
-  const collisions = resolveRecognitionCollisions(facts, kanjiDataMap, kanjiMeaningsMap);
+  const collisions = resolveRecognitionCollisions(kanjiFacts, kanjiDataMap, kanjiMeaningsMap);
   if (collisions > 0) {
     console.log(`  Resolved ${collisions} recognition question collision(s)`);
   }
 
-  // Build pools
-  const pools = buildPools(facts, L, kanjiDataMap);
+  // Build 4 kanji-specific pools
+  const kanjiPools = buildPools(kanjiFacts, L, kanjiDataMap);
 
   // Log pool sizes
-  for (const p of pools) {
+  for (const p of kanjiPools) {
     const synCount = p.syntheticDistractors?.length ?? 0;
     console.log(`  Pool ${p.id}: ${p.factIds.length} facts${synCount > 0 ? ` + ${synCount} synthetics` : ''}`);
   }
@@ -585,26 +611,27 @@ for (const L of [5, 4, 3, 2, 1]) {
   if (skipped > 0) {
     console.log(`  Skipped: ${skipped} kanji (empty meanings after normalization)`);
   }
-  console.log(`  Total facts: ${facts.length}`);
+  console.log(`  Kanji facts generated: ${kanjiFacts.length}`);
 
-  const deck = {
-    id: `japanese_n${L}_kanji`,
-    name: `Japanese N${L} Kanji`,
-    domain: 'vocabulary',
-    subDomain: 'japanese',
-    description: `JLPT N${L} kanji — meaning, reading, and recognition drills`,
-    minimumFacts: 30,
-    targetFacts: facts.length,
-    facts,
-    answerTypePools: pools,
-    synonymGroups: [],
-    questionTemplates: [],
-    difficultyTiers: [],
+  // Build subDecks array
+  const vocabFactIds = vocabFacts.map(f => f.id);
+  const kanjiFactIds = kanjiFacts.map(f => f.id);
+  const subDecks = [
+    { id: 'vocabulary', name: 'Vocabulary', factIds: vocabFactIds },
+    { id: 'kanji', name: 'Kanji', factIds: kanjiFactIds },
+  ];
+
+  // Assemble merged deck (preserve all top-level parent fields)
+  const merged = {
+    ...parent,
+    targetFacts: vocabFacts.length + kanjiFacts.length,
+    facts: [...vocabFacts, ...kanjiFacts],
+    answerTypePools: [...vocabPools, ...kanjiPools],
+    subDecks,
   };
 
-  const outPath = join(ROOT, `data/decks/japanese_n${L}_kanji.json`);
-  writeFileSync(outPath, JSON.stringify(deck, null, 2) + '\n');
-  console.log(`  Written: ${outPath}`);
+  writeFileSync(parentPath, JSON.stringify(merged, null, 2) + '\n');
+  console.log(`  Written: ${parentPath} (${merged.facts.length} total facts, ${merged.answerTypePools.length} pools, 2 subDecks)`);
 }
 
-console.log('\nDone. All 5 kanji decks written.');
+console.log('\nDone. All 5 parent vocabulary decks updated with kanji sub-deck.');
