@@ -12,7 +12,18 @@
     cards: Card[]
     onselect: (card: Card) => void
     onskip: () => void
+    /** How many cards to pick (exact count). Backward-compatible prop. */
     pickCount?: number
+    /**
+     * Selection mode.
+     * - `single` — clicking a card immediately confirms (no confirm button).
+     * - `multi` — must select exactly `pickCount` cards, then click Confirm.
+     * - `multiUpTo` — select 1..pickCount cards; Confirm enabled when ≥1 selected.
+     * Defaults to `single` when pickCount === 1, otherwise `multi`.
+     */
+    mode?: 'single' | 'multi' | 'multiUpTo'
+    /** Label for the confirm button in multi/multiUpTo modes. */
+    confirmLabel?: string
   }
 
   let {
@@ -21,14 +32,33 @@
     onselect,
     onskip,
     pickCount = 1,
+    mode: modeProp,
+    confirmLabel = 'Confirm',
   }: Props = $props()
 
-  /** Cards selected so far (for multi-pick mode). */
+  /**
+   * Effective mode: derive from `mode` prop if supplied, otherwise infer from `pickCount`.
+   * This keeps backward compatibility — existing callers only pass `pickCount`.
+   */
+  let effectiveMode = $derived(
+    modeProp ?? (pickCount === 1 ? 'single' : 'multi')
+  )
+
+  /** Cards selected so far (for multi/multiUpTo modes). */
   let selectedCards = $state<Card[]>([])
   /** Tracks which card is mid-click animation. */
   let pulsing = $state<string | null>(null)
 
   let remaining = $derived(pickCount - selectedCards.length)
+
+  /** Confirm button enabled: multi = all picks made, multiUpTo = ≥1 selected. */
+  let confirmEnabled = $derived(
+    effectiveMode === 'multi'
+      ? selectedCards.length === pickCount
+      : effectiveMode === 'multiUpTo'
+        ? selectedCards.length > 0
+        : false
+  )
 
   function isSelected(card: Card): boolean {
     return selectedCards.some(c => c.id === card.id)
@@ -37,7 +67,7 @@
   function handleCardClick(card: Card): void {
     if (pulsing) return
 
-    if (pickCount === 1) {
+    if (effectiveMode === 'single') {
       // Single-pick: pulse then immediately call onselect
       pulsing = card.id
       setTimeout(() => {
@@ -45,7 +75,7 @@
         onselect(card)
       }, 200)
     } else {
-      // Multi-pick: toggle selection
+      // Multi / multiUpTo: toggle selection
       if (isSelected(card)) {
         selectedCards = selectedCards.filter(c => c.id !== card.id)
       } else if (remaining > 0) {
@@ -54,20 +84,18 @@
     }
   }
 
-  function handleDone(): void {
+  function handleConfirm(): void {
     for (const card of selectedCards) {
       onselect(card)
     }
   }
 
-  /** Bob animation delay strings by card index. */
-  const BOB_DELAYS = ['0ms', '300ms', '600ms']
-
-  /** Bob animation durations by card index (slightly different rates for each). */
-  const BOB_DURATIONS = ['2.5s', '3s', '3.5s']
-
-  /** Staggered fade-in delays. */
-  const FADE_DELAYS = ['0ms', '150ms', '300ms']
+  /** Bob animation delay strings by card index (wraps for grids beyond 3 cards). */
+  const BOB_DELAYS = ['0ms', '300ms', '600ms', '900ms', '200ms', '500ms']
+  /** Bob animation durations by card index. */
+  const BOB_DURATIONS = ['2.5s', '3s', '3.5s', '2.8s', '3.2s', '2.6s']
+  /** Staggered fade-in delays (capped beyond 6 cards). */
+  const FADE_DELAYS = ['0ms', '100ms', '200ms', '300ms', '400ms', '500ms']
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -79,19 +107,28 @@
     <!-- Title -->
     <h2 class="picker-title">{title}</h2>
 
-    <!-- Multi-pick counter -->
-    {#if pickCount > 1}
+    <!-- Multi-pick counter (shown for multi/multiUpTo modes) -->
+    {#if effectiveMode === 'multi' || effectiveMode === 'multiUpTo'}
       <div class="pick-counter">
-        {#if remaining > 0}
-          Pick <strong>{remaining}</strong> more
+        {#if effectiveMode === 'multi'}
+          {#if remaining > 0}
+            Pick <strong>{remaining}</strong> more
+          {:else}
+            All picks made — confirm below
+          {/if}
         {:else}
-          All picks made — confirm below
+          <!-- multiUpTo -->
+          {#if selectedCards.length === 0}
+            Pick up to <strong>{pickCount}</strong> cards
+          {:else}
+            <strong>{selectedCards.length}</strong> selected
+          {/if}
         {/if}
       </div>
     {/if}
 
-    <!-- Cards row -->
-    <div class="cards-row">
+    <!-- Cards grid (scrollable, adapts from 3-card row to many-card grid) -->
+    <div class="picker-cards">
       {#each cards as card, i (card.id)}
         {@const mechanic = getMechanicDefinition(card.mechanicId)}
         {@const artUrl = card.mechanicId ? getCardArtUrl(card.mechanicId) : null}
@@ -103,9 +140,9 @@
           class:card-selected={selected}
           class:card-pulsing={pulsing === card.id}
           style="
-            --bob-duration: {BOB_DURATIONS[i] ?? '3s'};
-            --bob-delay: {BOB_DELAYS[i] ?? '0ms'};
-            --fade-delay: {FADE_DELAYS[i] ?? '0ms'};
+            --bob-duration: {BOB_DURATIONS[i % BOB_DURATIONS.length]};
+            --bob-delay: {BOB_DELAYS[i % BOB_DELAYS.length]};
+            --fade-delay: {FADE_DELAYS[Math.min(i, FADE_DELAYS.length - 1)]};
             --chain-color: {chainColor};
             --chain-glow: {chainGlow};
             animation-delay: var(--bob-delay), var(--fade-delay);
@@ -130,8 +167,8 @@
           <!-- AP cost gem -->
           <div class="card-ap">{card.apCost ?? mechanic?.apCost ?? 1}</div>
 
-          <!-- Gold checkmark for selected cards in multi-pick mode -->
-          {#if selected && pickCount > 1}
+          <!-- Gold checkmark for selected cards in multi/multiUpTo modes -->
+          {#if selected && effectiveMode !== 'single'}
             <div class="card-check" aria-hidden="true">✓</div>
           {/if}
 
@@ -146,9 +183,17 @@
 
     <!-- Action buttons -->
     <div class="picker-actions">
-      {#if pickCount > 1 && selectedCards.length === pickCount}
-        <button class="btn-done" onclick={handleDone}>Done</button>
-      {:else if pickCount > 1 && selectedCards.length > 0}
+      {#if effectiveMode !== 'single'}
+        <button
+          class="btn-confirm"
+          class:btn-confirm-enabled={confirmEnabled}
+          disabled={!confirmEnabled}
+          onclick={handleConfirm}
+        >
+          {confirmLabel}
+        </button>
+      {/if}
+      {#if effectiveMode === 'multi' && selectedCards.length > 0 && !confirmEnabled}
         <button class="btn-skip-remaining" onclick={onskip}>Skip remaining</button>
       {/if}
       <button class="btn-skip" onclick={onskip}>Skip</button>
@@ -183,7 +228,7 @@
     gap: calc(20px * var(--layout-scale, 1));
     padding: calc(32px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
     width: 100%;
-    max-width: calc(780px * var(--layout-scale, 1));
+    max-width: calc(960px * var(--layout-scale, 1));
   }
 
   /* ===== Title ===== */
@@ -207,13 +252,32 @@
     color: #f6d57d;
   }
 
-  /* ===== Cards row ===== */
-  .cards-row {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: center;
-    gap: calc(24px * var(--layout-scale, 1));
+  /* ===== Cards grid (scrollable) ===== */
+  .picker-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(160px * var(--layout-scale, 1)), 1fr));
+    gap: calc(12px * var(--layout-scale, 1));
+    overflow-y: auto;
+    max-height: calc(60vh);
+    padding: calc(12px * var(--layout-scale, 1));
+    width: 100%;
+    /* Subtle scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(246, 213, 125, 0.3) rgba(255, 255, 255, 0.05);
+  }
+
+  .picker-cards::-webkit-scrollbar {
+    width: calc(6px * var(--layout-scale, 1));
+  }
+
+  .picker-cards::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: calc(3px * var(--layout-scale, 1));
+  }
+
+  .picker-cards::-webkit-scrollbar-thumb {
+    background: rgba(246, 213, 125, 0.3);
+    border-radius: calc(3px * var(--layout-scale, 1));
   }
 
   /* ===== Card button ===== */
@@ -227,7 +291,7 @@
     flex-direction: column;
     align-items: center;
     gap: calc(8px * var(--layout-scale, 1));
-    width: calc(160px * var(--layout-scale, 1));
+    width: 100%;
 
     /* Staggered fade-in, then persistent bob */
     animation:
@@ -391,19 +455,28 @@
     color: #e0e8f0;
   }
 
-  .btn-done {
+  /* Confirm button — disabled state (dim) */
+  .btn-confirm {
     padding: calc(10px * var(--layout-scale, 1)) calc(28px * var(--layout-scale, 1));
-    background: #f6d57d;
-    border: none;
+    background: rgba(246, 213, 125, 0.2);
+    border: 1px solid rgba(246, 213, 125, 0.3);
     border-radius: calc(6px * var(--layout-scale, 1));
-    color: #1a1204;
+    color: rgba(246, 213, 125, 0.5);
     font-size: calc(14px * var(--text-scale, 1));
     font-weight: 800;
-    cursor: pointer;
-    transition: background 120ms ease, transform 80ms ease;
+    cursor: not-allowed;
+    transition: background 120ms ease, transform 80ms ease, color 120ms ease, border-color 120ms ease;
   }
 
-  .btn-done:hover {
+  /* Confirm button — enabled state (bright gold) */
+  .btn-confirm.btn-confirm-enabled {
+    background: #f6d57d;
+    border-color: transparent;
+    color: #1a1204;
+    cursor: pointer;
+  }
+
+  .btn-confirm.btn-confirm-enabled:hover {
     background: #fde899;
     transform: translateY(calc(-1px * var(--layout-scale, 1)));
   }

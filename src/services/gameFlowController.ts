@@ -222,6 +222,7 @@ export type GameFlowState =
   | 'relicSwapOverlay'
   | 'restStudy'
   | 'restMeditate'
+  | 'studyUpgradeSelection'
   | 'runPreview';
   // 'starterRelicSelection' removed AR-59.12 — runs start directly at dungeonMap
 
@@ -239,6 +240,13 @@ export const activeRelicRewardOptions = writable<RelicDefinition[]>([]);
 export const activeRelicPickup = writable<RelicDefinition | null>(null);
 export const activeUpgradeCandidates = writable<Array<{ card: Card; preview: UpgradePreview }>>([]);
 export const activeShopInventory = writable<ShopInventory | null>(null);
+
+/**
+ * Set when Study quiz completes with upgradeable cards.
+ * The UI subscribes to this and shows the card picker (multi mode).
+ * Cleared by onStudyUpgradeConfirmed() after the player makes their selection.
+ */
+export const pendingStudyUpgrade = writable<{ count: number; candidates: Card[] } | null>(null);
 
 let pendingFloorCompleted = false;
 let pendingSpecialEvent = false;
@@ -2699,22 +2707,49 @@ export function generateStudyQuestions(): QuizQuestion[] {
 
 /**
  * Called when Study quiz completes.
- * Upgrades the specific card whose fact was answered correctly, via the mastery system.
+ * If upgrade candidates exist, sets pendingStudyUpgrade and transitions to
+ * studyUpgradeSelection so the player can choose which cards to upgrade.
+ * Falls through to onRestResolved() when no upgradeable cards are available.
  */
 export function onStudyComplete(correctFactIds: string[]): void {
   const run = get(activeRunState);
   if (!run) return;
 
-  const allCards = getActiveDeckCards();
-  for (const factId of correctFactIds) {
-    const card = allCards.find(c => c.factId === factId);
-    if (card && canMasteryUpgrade(card)) {
+  const upgradeCount = correctFactIds.length;
+  const upgradeCandidates = getActiveDeckCards().filter(c => canMasteryUpgrade(c));
+
+  if (upgradeCount > 0 && upgradeCandidates.length > 0) {
+    // Defer to the picker UI — don't auto-upgrade
+    pendingStudyUpgrade.set({
+      count: Math.min(upgradeCount, upgradeCandidates.length),
+      candidates: upgradeCandidates,
+    });
+    gameFlowState.set('studyUpgradeSelection');
+    return;
+  }
+
+  // No upgrades available — proceed normally
+  onRestResolved();
+}
+
+/**
+ * Called when the player confirms their card selections in the study upgrade picker.
+ * Applies mastery upgrades to the selected cards, clears the pending store, and
+ * resumes the rest flow via onRestResolved().
+ */
+export function onStudyUpgradeConfirmed(selectedCards: Card[]): void {
+  const run = get(activeRunState);
+  if (!run) return;
+
+  for (const card of selectedCards) {
+    if (canMasteryUpgrade(card)) {
       masteryUpgrade(card);
       run.cardsUpgraded = (run.cardsUpgraded ?? 0) + 1;
     }
   }
 
   activeRunState.set(run);
+  pendingStudyUpgrade.set(null);
   onRestResolved();
 }
 

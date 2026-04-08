@@ -266,7 +266,8 @@ One card per visit is on sale: `getSalePrice` = 50% off (applied after floor dis
 
 Players choose one option at each rest room:
 - **Rest (Heal)**: Restores `REST_SITE_HEAL_PCT` (20%) of max HP. Reduced from 30% on 2026-04-04 to create HP pressure across the run. Ascension level 3+ applies `restHealMultiplier` (0.83×), giving ~16.6% effective healing.
-- **Study**: Presents 3 quiz questions — each correct answer upgrades a card.
+- **Study**: Presents 3 quiz questions. When ≥1 question is answered correctly and the deck has upgradeable cards, `onStudyComplete()` sets the `pendingStudyUpgrade` store and transitions `gameFlowState` to `studyUpgradeSelection` — the UI subscribes and shows `CardPickerOverlay` in `multi` mode so the player chooses which N cards to upgrade. `onStudyUpgradeConfirmed(selectedCards)` applies the upgrades, clears the store, and calls `onRestResolved()`. If no upgradeable cards exist, `onStudyComplete()` falls through directly to `onRestResolved()`.
+  - Key store: `pendingStudyUpgrade: { count: number; candidates: Card[] } | null` (exported from `gameFlowController.ts`)
 - **Meditate**: Removes 1 card from the deck (disabled if deck < 5 cards).
 
 The heal amount displayed and applied is always computed from `REST_SITE_HEAL_PCT * restHealMultiplier * playerMaxHp` (rounded). The constant is exported from `src/data/balance.ts` to keep the UI, `CardApp.svelte::handleRestHeal`, and `tests/playtest/headless/full-run-simulator.ts` in sync.
