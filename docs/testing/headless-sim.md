@@ -1,7 +1,7 @@
 # Headless Balance Simulator
 
 > **Purpose:** How to run the headless combat simulator for balance testing — profiles, output format, and key internals.
-> **Last verified:** 2026-04-05 (upgraded with 7 new metrics)
+> **Last verified:** 2026-04-08 (Ch12.2 bot heuristic improvements — block priority + HP-aware charge decisions)
 > **Source files:** `tests/playtest/headless/simulator.ts`, `tests/playtest/headless/run-batch.ts`, `tests/playtest/headless/sim-worker.ts`, `tests/playtest/headless/browser-shim.ts`, `tests/playtest/headless/tsconfig.json`, `tests/playtest/headless/full-run-simulator.ts`, `tests/playtest/headless/bot-brain.ts`, `tests/playtest/headless/bot-profiles.ts`
 
 ## What It Is
@@ -118,12 +118,28 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
 
 ### How planTurn() Works
 
-1. `_orderHand()` — scores/sorts hand using `cardSelection`, `chainSkill`, `blockSkill`, `apEfficiency`
+1. `_orderHand()` — scores/sorts hand using `cardSelection`, `chainSkill`, `blockSkill`, `apEfficiency`, and damage-threat ratio
 2. Iterates ordered hand; checks AP budget, calls `_decideMode()` per card → `charge` or `quick`
-3. `_decideMode()` — tiered thresholds for `chargeSkill`, `surgeAwareness`, `masteryHunting`
+3. `_decideMode()` — tiered thresholds for `chargeSkill`, `surgeAwareness`, `masteryHunting`; receives `playerHpPct` + `enemyNextDamage` for HP-aware override logic
 4. Returns `CardPlay[]` — `{ cardId, mode }` pairs. **The simulator rolls accuracy, not the brain.**
 
 Other methods: `pickReward()`, `planShop()`, `planRest()`, `pickRoom()` — each driven by its axis.
+
+### HP-Aware Heuristics (Ch12.2, 2026-04-08)
+
+Added to survive `GLOBAL_ENEMY_DAMAGE_MULTIPLIER=2.0`:
+
+**Block priority in `_orderHand()`:**
+- Emergency block threshold lowered: triggers at  (was 0.3). With doubled damage, waiting until 30% HP is often fatal.
+- Urgency scales continuously: 50% HP → 1.0× bonus, 0% HP → 2.0× bonus.
+- Smart-block triggered at `blockSkill >= 0.3` (was 0.7) — any player with some block awareness responds to incoming attacks.
+- Damage-threat ratio: if `enemyNextDamage >= 30% of current HP`, shields get +150 bonus × skill.
+- Survival-critical override: if `enemyNextDamage >= 60% of current HP`, shields get +400 bonus (overrides most other scores).
+- Attack base bonus reduced when `damageThreatRatio > 0` and `blockSkill >= 0.3`.
+
+**Charge decision in `_decideMode()`:**
+- Shield cards: forced quick-play when `acc < 0.72` AND (`playerHpPct < 0.40` OR `damageThreatRatio >= 0.30`). High-accuracy bots (master: 0.85) still charge shields for the 1.75× CC multiplier.
+- Attack cards: forced quick-play when `playerHpPct < 0.25` AND `acc < 0.65`. Avoids wasting AP surcharge on a fizzle when survival is at risk.
 
 ### makeSkills() Helper
 
@@ -190,6 +206,19 @@ Accuracy models 4-option MCQ on curated knowledge decks. Game skill axes model g
 | `language_learner` | 35% | Specialty | ~5–10% | Foreign language deck (JLPT/HSK/TOPIK/CEFR) with zero prior knowledge. Game-skilled but content-blind. |
 
 `language_learner` has competent-level game skills (0.25–0.50 axes) but only 35% accuracy — models a player who understands the roguelite systems but is in their first hours with a language deck.
+
+**Observed win rates with GLOBAL_ENEMY_DAMAGE_MULTIPLIER=2.0 (2026-04-08 Ch12.2):**
+
+| Profile | Pre-Ch12.1 (baseline) | Post-Ch12.1 (before fix) | Post-Ch12.2 (after bot fix) |
+|---------|----------------------|--------------------------|------------------------------|
+| new_player | ~10% | 0% | 0% |
+| developing | ~35% | 0% | 0% |
+| competent | ~55% | 0% | 0% |
+| experienced | ~46% | 1% | ~9% |
+| master | ~93% | 15% | ~31% |
+| language_learner | ~5% | 0% | 0% |
+
+The x2 damage multiplier was intentional (Ch12.1). Ch12.2 bot fixes ensure bots represent realistic player behavior at the new difficulty level rather than underperforming due to pre-x2 heuristics. The remaining low win rates for developing/competent/new_player reflect genuine difficulty with the x2 multiplier — a balance concern separate from heuristic quality.
 
 ### Legacy Profiles (6) — Deprecated
 
@@ -397,6 +426,20 @@ The following correctness bugs were fixed in the bot decision logic:
 | Mastery not tracked | Sim cards had no `masteryLevel` field | `masteryLevel: 0` initialized on `buildSimDeck()` |
 | Chain momentum AP cost | Free-charge turns not detected | Full momentum/surge/warcry pre-check added (2026-04-04) |
 | Bot momentum threshold | `chargeSkill >= 0.3` required to exploit free charges | Lowered to `chargeSkill >= 0.1` — free is free |
+
+## Heuristic Improvements (2026-04-08, Ch12.2)
+
+Bot heuristics updated to survive `GLOBAL_ENEMY_DAMAGE_MULTIPLIER=2.0`:
+
+| Change | Rationale |
+|--------|-----------|
+| Emergency block threshold: 30% HP → 50% HP | With 2x damage, 30% HP was too late to start blocking |
+| Smart-block trigger: `blockSkill >= 0.7` → `>= 0.3` | Any player with block awareness should respond to incoming attacks |
+| Urgency scaling: continuous 1.0×2.0 curve vs flat 200pts | Gradual escalation models real player behavior better than hard threshold |
+| Damage-threat ratio scoring | Shields get +150 when enemyDamage >= 30% current HP; +400 at >= 60% |
+| Shield quick-play gate: acc < 0.72 | Only force guaranteed block when fizzle risk is meaningful (>28%); high-acc bots still charge |
+| Attack quick-play gate: HP < 25% AND acc < 65% | Avoids AP surcharge waste on fizzle when survival matters more than EV |
+| `_decideMode` receives HP context | `playerHpPct`, `enemyNextDamage`, `playerCurrentHP` now passed through |
 
 ## Ascension Support
 

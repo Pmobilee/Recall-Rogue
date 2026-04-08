@@ -8,6 +8,14 @@
  *   const brain = new BotBrain(skills);
  *   const plan  = brain.planTurn(hand, turnState, ascMods);
  *   // plan is { cardId, mode }[] — the simulator then rolls accuracy per play
+ *
+ * Heuristic update 2026-04-08 (Ch12.2):
+ *   - Block priority dramatically increased to survive GLOBAL_ENEMY_DAMAGE_MULTIPLIER=2.0
+ *   - Emergency block threshold lowered from 30% HP to 50% HP
+ *   - Damage-threat scoring: if enemyNextDamage >= 30% of current HP, shields get massive bonus
+ *   - _decideMode now receives playerHpPct + enemyNextDamage for HP-aware charge decisions
+ *   - Shield cards at low HP (<40%): quick-played when acc < 0.72 (high-acc bots still charge shields)
+ *   - Attack quick-play bias when HP < 35% and accuracy < 65% (save AP for next turn)
  */
 
 import type { Card, CardType } from '../../../src/data/card-types.js';
@@ -174,7 +182,7 @@ export class BotBrain {
   planTurn(hand: Card[], turnState: TurnState, ascMods: AscensionMods = {}): CardPlay[] {
     const { skills } = this;
     const isSurge = isSurgeTurn(turnState.turnNumber);
-    // CHARGE_AP_SURCHARGE = 0: Charge costs same AP as Quick Play for all turns
+    // CHARGE_AP_SURCHARGE = 1: Charge costs +1 AP over Quick Play
     const chargeSurcharge = CHARGE_AP_SURCHARGE;
     const apAvailable = turnState.apCurrent;
     const playerHpPct = turnState.playerState.hp / (turnState.playerState.maxHP || 100);
@@ -190,9 +198,13 @@ export class BotBrain {
         : 0)
       : 0;
 
+    // Current player HP (absolute) for threat ratio calculations
+    const playerCurrentHP = turnState.playerState.hp;
+
     // Step 1: Order cards using cardSelection + chainSkill + blockSkill axes
     let ordered = this._orderHand(hand, {
       playerHpPct,
+      playerCurrentHP,
       enemyHp,
       currentChainType,
       apAvailable,
@@ -222,7 +234,10 @@ export class BotBrain {
       const effectiveSurcharge = hasMomentum ? 0 : chargeSurcharge;
       const chargeApCost = apCost + effectiveSurcharge;
       const canCharge = apRemaining >= chargeApCost;
-      const mode = this._decideMode(card, canCharge, isSurge, currentChainType, plan.length, hasMomentum);
+      const mode = this._decideMode(
+        card, canCharge, isSurge, currentChainType, plan.length, hasMomentum,
+        playerHpPct, enemyNextDamage, playerCurrentHP,
+      );
 
       plan.push({ cardId: card.id, mode });
       apRemaining -= mode === 'charge' ? chargeApCost : apCost;
@@ -237,6 +252,7 @@ export class BotBrain {
     hand: Card[],
     ctx: {
       playerHpPct: number;
+      playerCurrentHP: number;
       enemyHp: number;
       currentChainType: number | null;
       apAvailable: number;
@@ -246,12 +262,16 @@ export class BotBrain {
     },
   ): Card[] {
     const { skills } = this;
-    const { playerHpPct, enemyHp, currentChainType, apAvailable, chargeSurcharge, enemyNextDamage, playerShield } = ctx;
+    const { playerHpPct, playerCurrentHP, enemyHp, currentChainType, apAvailable, chargeSurcharge, enemyNextDamage, playerShield } = ctx;
 
     if (skills.cardSelection < 0.3) {
       // 0.0–0.3: play in hand order
       return [...hand];
     }
+
+    // Damage threat ratio: how dangerous is the incoming attack relative to current HP?
+    // Values >= 0.3 mean the enemy can deal 30%+ of current HP this turn.
+    const damageThreatRatio = playerCurrentHP > 0 ? enemyNextDamage / playerCurrentHP : 0;
 
     const scored = hand.map(card => {
       let score = 0;
@@ -259,17 +279,38 @@ export class BotBrain {
       // ── blockSkill contribution ─────────────────────────────────────────
       const isDefensive = isDefensiveType(card.cardType);
       if (isDefensive) {
-        if (skills.blockSkill >= 0.3 && playerHpPct < 0.3) {
-          // Urgently prioritize shields when HP low
-          score += 200 * skills.blockSkill;
-        } else if (skills.blockSkill >= 0.7 && enemyNextDamage > 0) {
-          // Smart block: prioritize shields when enemy damage is high
+        // Emergency block: lowered threshold from 0.3 to 0.5 HP to account for doubled enemy damage.
+        // With GLOBAL_ENEMY_DAMAGE_MULTIPLIER=2.0, waiting until 30% HP is often fatal.
+        if (skills.blockSkill >= 0.3 && playerHpPct < 0.5) {
+          // Scale urgency: at 50% HP → 100*blockSkill bonus; at 10% HP → 200*blockSkill bonus
+          const urgencyScale = 1.0 + (0.5 - playerHpPct) * 2.0; // 1.0 at 50%, 2.0 at 0%
+          score += 200 * skills.blockSkill * urgencyScale;
+        }
+
+        // Damage-threat scoring: triggered at blockSkill >= 0.3 now (was 0.7).
+        // If enemy is about to deal significant damage, shields get a big priority boost.
+        if (skills.blockSkill >= 0.3 && enemyNextDamage > 0) {
           const shieldValue = cardQuickPlayEffective(card);
-          score += 100 * Math.min(shieldValue / enemyNextDamage, 1.0) * skills.blockSkill;
-        } else {
-          // Linear shield deprioritization: -50 at blockSkill=0, fades to 0 at blockSkill≥0.5
-          const shieldPenalty = Math.max(0, Math.round(50 * (1 - skills.blockSkill / 0.5)));
-          if (shieldPenalty > 0) score -= shieldPenalty;
+          // Base smart-block bonus — scales with how much of the damage the shield can absorb
+          const coverageBonus = 120 * Math.min(shieldValue / Math.max(enemyNextDamage, 1), 1.0) * skills.blockSkill;
+          score += coverageBonus;
+
+          // Extra threat bonus: if enemy can deal >= 30% of current HP, shields become critical
+          if (skills.blockSkill >= 0.5 && damageThreatRatio >= 0.30) {
+            score += 150 * skills.blockSkill * Math.min(damageThreatRatio, 1.0);
+          }
+
+          // Survival-critical bonus: if enemy can one-shot or near-one-shot, always block first
+          if (skills.blockSkill >= 0.3 && damageThreatRatio >= 0.60) {
+            score += 400 * skills.blockSkill; // Override nearly everything else
+          }
+        } else if (enemyNextDamage === 0) {
+          // Enemy is not attacking this turn — deprioritize shields unless HP is very low
+          if (playerHpPct > 0.6) {
+            // Linear shield deprioritization: -50 at blockSkill=0, fades to 0 at blockSkill>=0.5
+            const shieldPenalty = Math.max(0, Math.round(50 * (1 - skills.blockSkill / 0.5)));
+            if (shieldPenalty > 0) score -= shieldPenalty;
+          }
         }
 
         // Persistence-aware shield scoring: block compounds value over remaining turns
@@ -290,7 +331,9 @@ export class BotBrain {
 
       // ── cardSelection: attack priority and efficiency ───────────────────
       if (skills.cardSelection >= 0.3 && !isDefensive) {
-        score += 50; // prefer attacks over shields at base level
+        // Base attack bonus, but reduce it when we're in danger so blocks can compete
+        const dangerPenalty = skills.blockSkill >= 0.3 ? Math.min(damageThreatRatio * 60, 50) : 0;
+        score += Math.max(0, 50 - dangerPenalty);
       }
 
       if (skills.cardSelection >= 0.7) {
@@ -363,13 +406,42 @@ export class BotBrain {
     currentChainType: number | null,
     playsInPlanSoFar: number,
     hasMomentum: boolean = false,
+    playerHpPct: number = 1.0,
+    enemyNextDamage: number = 0,
+    playerCurrentHP: number = 100,
   ): 'charge' | 'quick' {
     if (!canCharge) return 'quick';
 
     const { skills } = this;
     const acc = skills.accuracy;
 
-    // surgeAwareness: during surge turns, ALWAYS charge (CC bonus multiplier = always higher EV)
+    // ── HP-aware override: survival takes priority over charge gains ────────
+    // When HP is critically low, guarantee quick-play output rather than risking
+    // a fizzle that wastes AP (especially costly with CHARGE_AP_SURCHARGE = 1).
+    if (skills.blockSkill >= 0.3 || skills.chargeSkill >= 0.3) {
+      const damageThreatRatio = playerCurrentHP > 0 ? enemyNextDamage / playerCurrentHP : 0;
+
+      // Shield cards: only force quick-play when fizzle risk is high (acc < 0.72 = >28% fizzle rate).
+      // High-accuracy bots (master: 0.85) benefit more from the 1.75x CC multiplier than from
+      // guaranteed QP block, so they should still charge shields when threatened.
+      // Low-to-medium accuracy bots risk fizzling shields at critical moments — force QP.
+      if (isDefensiveType(card.cardType) && skills.blockSkill >= 0.3 && acc < 0.72) {
+        if (playerHpPct < 0.40 || damageThreatRatio >= 0.30) {
+          return 'quick'; // Guarantee the block — fizzle risk too high when threatened
+        }
+      }
+
+      // Attack cards: when HP is low and accuracy isn't high, quick-play is safer.
+      // Avoids wasting the AP surcharge on a failed charge when survival is at risk.
+      if (!isDefensiveType(card.cardType) && skills.chargeSkill >= 0.3) {
+        if (playerHpPct < 0.25 && acc < 0.65) {
+          return 'quick'; // Low HP + medium accuracy: guaranteed damage beats EV gamble
+        }
+      }
+    }
+
+    // ── surgeAwareness: during surge turns, ALWAYS charge ──────────────────
+    // (CC bonus multiplier = always higher EV, surcharge waived on surge turns)
     if (isSurge && skills.surgeAwareness >= 1.0) return 'charge';
     if (isSurge && skills.surgeAwareness >= 0.5) {
       // 50% boost to charge rate during surge (CC bonus multiplier)

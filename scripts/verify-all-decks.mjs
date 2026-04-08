@@ -181,6 +181,37 @@ function getNumericalDistractors(fact, count = 3) {
   return results;
 }
 
+
+// ---------------------------------------------------------------------------
+// Word-level leak detection (Check #22 extension)
+// Common function words that appear in question stems and may also appear in
+// answers without constituting a semantic leak (e.g. "were" in "...which were
+// built" + "were" in an answer phrase). Domain-specific content words like
+// "war", "battle", "empire" are intentionally NOT in this list — their presence
+// in both Q and A is genuinely suspicious and should be flagged.
+// Minimum answer-word length: 3 chars (captures "war", "age", "act" etc.).
+// ---------------------------------------------------------------------------
+const ANSWER_WORD_STOPWORDS = new Set([
+  // Articles
+  'the', 'a', 'an',
+  // Interrogative / relative pronouns and adverbs (common in question phrasing)
+  'what', 'who', 'how', 'why', 'did', 'does', 'was', 'are', 'is',
+  'which', 'when', 'where', 'whom', 'whose', 'that', 'this', 'these', 'those',
+  // Prepositions
+  'in', 'on', 'at', 'to', 'of', 'by', 'as', 'or', 'for',
+  'with', 'from', 'into', 'over', 'under', 'about', 'after', 'before', 'upon',
+  'between', 'during', 'through', 'among', 'within', 'against', 'without', 'above',
+  // Conjunctions / discourse markers
+  'and', 'but', 'nor', 'yet', 'so', 'not', 'its',
+  'also', 'both', 'each', 'many', 'most', 'more', 'some', 'such', 'then', 'than',
+  // Auxiliary / modal verbs
+  'has', 'had', 'have', 'were', 'been', 'will', 'can', 'may', 'his', 'her',
+  // Possessives / pronouns
+  'his', 'her', 'its', 'our', 'they', 'their', 'them',
+  // Filler words that appear in both question stems and generic answers
+  'name', 'term', 'type', 'kind', 'form', 'word', 'used', 'known', 'called',
+]);
+
 // ---------------------------------------------------------------------------
 // Answer type classification (for variant mismatch detection)
 // ---------------------------------------------------------------------------
@@ -646,11 +677,36 @@ function verifyDeck(deckId, deck) {
     }
 
     // Check #22 WARNING: answer text appears verbatim in question (self-answering; skip vocab)
+    // Two sub-checks:
+    //   (a) Full answer is a substring of question — strict verbatim match (existing behaviour)
+    //   (b) A content word from the answer (≥3 chars, not a function word) appears as a
+    //       whole word in the question — word-level leak that lets a player eliminate
+    //       distractors without knowing the answer.
+    //       Example (Florence Nightingale pattern): answer "Crimean War", question "...during
+    //       which 19th-century war?" — the word "war" appears in both, revealing the answer
+    //       type and making non-war distractors immediately eliminable.
     if (!isVocab) {
       const ansLower22 = (fact.correctAnswer || '').toLowerCase().replace(/[{}]/g, '');
       const qLower22 = (fact.quizQuestion || '').toLowerCase();
+
+      // (a) Verbatim substring match (keep existing check)
       if (ansLower22.length > 5 && qLower22.includes(ansLower22)) {
         factWarnings.push({ index: i + 1, factId: fact.id, msg: `correctAnswer "${(fact.correctAnswer || '').slice(0, 40)}" appears verbatim in quizQuestion — self-answering` });
+      } else {
+        // (b) Word-level leak: content words (≥3 chars, not a function word stopword) from
+        // the answer that also appear as whole words in the question.
+        // Whole-word matching: split on whitespace+punctuation so "war" inside "forward"
+        // does NOT trigger, but "war" in "which war" does.
+        const answerWords = ansLower22.split(/[\s\-/]+/).filter(w => w.length >= 3 && !ANSWER_WORD_STOPWORDS.has(w));
+        if (answerWords.length > 0) {
+          const qWordSet = new Set(qLower22.split(/[\s\-/,.:;!?'"()\[\]{}]+/));
+          for (const ansWord of answerWords) {
+            if (qWordSet.has(ansWord)) {
+              factWarnings.push({ index: i + 1, factId: fact.id, msg: `answer word "${ansWord}" (from "${(fact.correctAnswer || '').slice(0, 40)}") appears in quizQuestion — eliminable distractor risk` });
+              break; // One warning per fact is sufficient
+            }
+          }
+        }
       }
     }
 

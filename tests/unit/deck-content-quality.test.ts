@@ -272,4 +272,105 @@ describe('Curated deck content quality', () => {
     expect(violations.length).toBe(0)
   })
 
+  /**
+   * Regression test for the "Florence Nightingale / Crimean War" pattern.
+   * Checks that answer content words (≥3 chars, non-stopword) do not appear
+   * verbatim as whole words in the question stem, which would let a player
+   * eliminate distractors without knowing the answer.
+   *
+   * Example of the bug this catches:
+   *   Q: "...during which 19th-century war?"
+   *   A: "Crimean War"
+   *   → "war" appears in both — non-war distractors become immediately eliminable.
+   *
+   * This is a WARNING-level check (not a hard failure) — some overlap is
+   * unavoidable in anatomy/science decks. This test specifically guards the
+   * known-bad pattern by verifying detection logic works correctly.
+   */
+  it('word-level leak detection correctly flags the Florence Nightingale pattern', () => {
+    // Function words that should NOT trigger a flag even if they appear in Q+A
+    const STOPWORDS = new Set([
+      'the', 'a', 'an',
+      'what', 'who', 'how', 'why', 'did', 'does', 'was', 'are', 'is',
+      'which', 'when', 'where', 'whom', 'whose', 'that', 'this', 'these', 'those',
+      'in', 'on', 'at', 'to', 'of', 'by', 'as', 'or', 'for',
+      'with', 'from', 'into', 'over', 'under', 'about', 'after', 'before', 'upon',
+      'between', 'during', 'through', 'among', 'within', 'against', 'without', 'above',
+      'and', 'but', 'nor', 'yet', 'so', 'not',
+      'also', 'both', 'each', 'many', 'most', 'more', 'some', 'such', 'then', 'than',
+      'has', 'had', 'have', 'were', 'been', 'will', 'can', 'may',
+      'his', 'her', 'its', 'our', 'they', 'their', 'them',
+      'name', 'term', 'type', 'kind', 'form', 'word', 'used', 'known', 'called',
+    ])
+
+    function detectWordLevelLeak(answer: string, question: string): string | null {
+      const ansLower = answer.toLowerCase().replace(/[{}]/g, '')
+      const qLower = question.toLowerCase()
+
+      // Skip: verbatim match is handled by a separate check
+      if (ansLower.length > 5 && qLower.includes(ansLower)) return null
+
+      const answerWords = ansLower
+        .split(/[\s\-/]+/)
+        .filter(w => w.length >= 3 && !STOPWORDS.has(w))
+      const qWordSet = new Set(qLower.split(/[\s\-/,.:;!?\'\"()\[\]{}]+/))
+
+      for (const ansWord of answerWords) {
+        if (qWordSet.has(ansWord)) return ansWord
+      }
+      return null
+    }
+
+    // --- Cases that MUST be flagged ---
+    const shouldFlag: Array<{ answer: string; question: string; expectedWord: string }> = [
+      {
+        // The original Florence Nightingale / Crimean War bug
+        answer: 'Crimean War',
+        question: 'Florence Nightingale pioneered modern nursing practices during which 19th-century war?',
+        expectedWord: 'war',
+      },
+      {
+        // Generic "which X... answer is X" pattern
+        answer: 'Civil War',
+        question: 'Which war was Abraham Lincoln president during?',
+        expectedWord: 'war',
+      },
+      {
+        // Answer category word appears in question
+        answer: 'Mitral valve',
+        question: 'Which two-cusped AV valve guards the opening between the left atrium and left ventricle?',
+        expectedWord: 'valve',
+      },
+      {
+        // Answer category word appears verbatim in question ("artery" in both Q+A)
+        answer: 'Radial artery',
+        question: 'The brachial artery divides at the cubital fossa into two branches — which lateral branch?',
+        expectedWord: 'artery',
+      },
+    ]
+
+    for (const { answer, question, expectedWord } of shouldFlag) {
+      const leakWord = detectWordLevelLeak(answer, question)
+      expect(leakWord, `Expected "${expectedWord}" to be detected as a leak in: A="${answer}" Q="${question}"`).toBe(expectedWord)
+    }
+
+    // --- Cases that must NOT be flagged (false-positive check) ---
+    const shouldNotFlag: Array<{ answer: string; question: string }> = [
+      { answer: 'Leonardo da Vinci', question: 'Who painted the Mona Lisa?' },
+      { answer: 'Marie Curie', question: 'Which scientist discovered polonium and radium?' },
+      { answer: '1969', question: 'When did humans first land on the Moon?' },
+      { answer: 'Photosynthesis', question: 'What process do plants use to convert sunlight and CO2 into glucose?' },
+      { answer: 'Alexander Graham Bell', question: 'Who invented the telephone?' },
+      { answer: 'Black hole', question: 'What astronomical object has such strong gravity that nothing can escape it?' },
+      // Stopword-only overlap should not flag
+      { answer: 'World War II', question: 'Which conflict involved both the Allied and Axis powers during 1939-1945?' },
+    ]
+
+    for (const { answer, question } of shouldNotFlag) {
+      const leakWord = detectWordLevelLeak(answer, question)
+      expect(leakWord, `Expected no leak for: A="${answer}" Q="${question}" — but got "${leakWord}"`).toBeNull()
+    }
+  })
+
+
 })

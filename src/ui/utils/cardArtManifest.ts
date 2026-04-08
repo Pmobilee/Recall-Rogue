@@ -1,6 +1,9 @@
 /**
  * Card Art Manifest — maps mechanic IDs to card art image URLs.
  * Art is displayed in the pentagon window of the V2 card frame.
+ *
+ * IMPORTANT: When adding new art here, the Phaser RewardRoomScene will
+ * automatically pick it up via CARD_ART_MECHANIC_IDS. No other changes needed.
  */
 
 const ART_BASE = '/assets/cardart'
@@ -103,6 +106,13 @@ const CARD_ART_MAP: Record<string, string> = {
   war_drum: 'war_drum.png',
   warcry: 'warcry.png',
 }
+
+/**
+ * All mechanic IDs that have card art available.
+ * Used by RewardRoomScene to preload art textures for the reward cloth display.
+ * Automatically kept in sync with CARD_ART_MAP — no manual maintenance required.
+ */
+export const CARD_ART_MECHANIC_IDS: readonly string[] = Object.keys(CARD_ART_MAP)
 
 /** Get URL for card art by mechanic ID. Returns null if no art exists. */
 export function getCardArtUrl(mechanicId: string): string | null {

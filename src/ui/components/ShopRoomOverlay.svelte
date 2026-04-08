@@ -132,7 +132,6 @@
   let hagglingState = $state<HaggleState>('idle')
   let haggledThisItem = $state(false)
   let haggledPrice = $state(0)
-  let penaltyPrice = $state(0)
   let quizQuestion = $state<Fact | null>(null)
   let quizAnswers = $state<string[]>([])
   let quizResult = $state<'correct' | 'wrong' | null>(null)
@@ -268,7 +267,6 @@
     hagglingState = 'idle'
     haggledThisItem = false
     haggledPrice = 0
-    penaltyPrice = 0
     quizQuestion = null
     quizAnswers = []
     quizResult = null
@@ -278,7 +276,6 @@
   function closePurchaseModal() {
     pendingPurchase = null
     hagglingState = 'idle'
-    penaltyPrice = 0
   }
 
   function confirmBuy() {
@@ -313,7 +310,6 @@
     recordHaggleAttempt()
     haggledThisItem = true
     haggledPrice = Math.floor(pendingPurchase.price * (1 - SHOP_HAGGLE_DISCOUNT))
-    penaltyPrice = Math.floor(pendingPurchase.price * (1 + SHOP_HAGGLE_DISCOUNT))
 
     // Fetch a quiz question — study mode uses curated deck selector, trivia uses random factsDB fact
     try {
@@ -391,11 +387,7 @@
         confirmBuy()
       }, 800)
     } else {
-      // Apply penalty price increase — update the pending purchase price in place
-      if (pendingPurchase) {
-        pendingPurchase = { ...pendingPurchase, price: penaltyPrice }
-      }
-      // Return to idle after showing wrong answer + penalty
+      // Return to idle after showing wrong answer
       setTimeout(() => {
         hagglingState = 'idle'
         quizResult = null
@@ -660,7 +652,7 @@
                 data-testid="shop-btn-haggle"
                 onclick={startHaggle}
               >
-                Haggle — correct: 30% off, wrong: 30% up
+                Haggle — correct: 30% off
               </button>
             {/if}
           {:else}
@@ -683,7 +675,7 @@
               data-testid="shop-btn-haggle"
               onclick={startHaggle}
             >
-              Haggle — correct: 30% off, wrong: 30% up
+              Haggle — correct: 30% off
             </button>
           {/if}
         {/if}
@@ -705,14 +697,14 @@
             </button>
           {/each}
         </div>
-        <div class="modal-note">Correct = 30% off ({haggledPrice}g). Wrong = 30% markup ({penaltyPrice}g).</div>
+        <div class="modal-note">Correct = 30% off ({haggledPrice}g). Wrong = original price kept, haggle disabled.</div>
 
       {:else if hagglingState === 'result'}
         {#if quizResult === 'correct'}
           <div class="haggle-success">Haggled! Price: {haggledPrice}g</div>
           <div class="modal-note">Completing purchase…</div>
         {:else}
-          <div class="haggle-fail">Wrong! Price marked up 30%: {penaltyPrice}g</div>
+          <div class="haggle-fail">Wrong! Original price kept: {pendingPurchase?.price}g</div>
           {#if quizQuestion}
             <div class="modal-note">Answer: {displayAnswer(quizQuestion.correctAnswer)}</div>
           {/if}

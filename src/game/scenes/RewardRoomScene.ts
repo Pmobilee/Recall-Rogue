@@ -5,6 +5,7 @@ import type { Card } from '../../data/card-types'
 import type { RelicDefinition } from '../../data/relics/types'
 import { playCardAudio } from '../../services/cardAudioManager'
 import { isTurboMode } from '../../utils/turboMode'
+import { CARD_ART_MECHANIC_IDS } from '../../ui/utils/cardArtManifest'
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -133,16 +134,9 @@ export class RewardRoomScene extends Phaser.Scene {
     this.load.json('cloth_spawn_zone', '/assets/reward_room/cloth_spawn_zone.json' + cb)
     this.load.json('cloth_spawn_zone_landscape', '/assets/reward_room/cloth_spawn_zone_landscape.json')
 
-    // Preload all known card frame textures
-    const MECHANIC_IDS = [
-      'strike', 'block', 'multi_hit', 'thorns', 'emergency', 'scout', 'recycle',
-      'cleanse', 'empower', 'quicken', 'weaken', 'expose', 'mirror', 'adapt',
-      'focus', 'heavy_strike', 'piercing', 'reckless', 'execute', 'lifetap',
-      'fortify', 'parry', 'brace', 'overheal', 'double_strike', 'slow', 'hex',
-      'foresight', 'transmute', 'immunity', 'overclock',
-    ]
-
-    for (const id of MECHANIC_IDS) {
+    // Preload all card art textures — list sourced from cardArtManifest.ts
+    // (CARD_ART_MECHANIC_IDS is automatically in sync with the manifest)
+    for (const id of CARD_ART_MECHANIC_IDS) {
       this.load.image(`cardart_${id}`, `/assets/cardart/${id}.png${cb}`)
     }
 

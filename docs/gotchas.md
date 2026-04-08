@@ -1,3 +1,22 @@
+### 2026-04-08 — Check #22 self-answering detection: full-string vs word-level
+
+**What:** `verify-all-decks.mjs` Check #22 only compared the full `correctAnswer` as a verbatim substring of `quizQuestion`. This missed cases where a single content word from the answer appeared in the question stem and made non-matching distractors immediately eliminable.
+
+**Example (Florence Nightingale pattern):**
+- Q: "Florence Nightingale pioneered modern nursing practices during which 19th-century **war**?"
+- A: "Crimean **War**"
+- The word "war" appears in both Q and A. A player sees 4 options (Crimean War, World War I, ...) and immediately eliminates any non-war option without knowing the answer.
+
+**Fix:** Check #22 now has two sub-checks:
+  (a) Full-answer verbatim substring (existing behaviour, kept)
+  (b) Word-level leak: content words ≥3 chars from the answer that appear as whole words in the question (new). A conservative stopword list (`ANSWER_WORD_STOPWORDS`) excludes function words (prepositions, conjunctions, pronouns, auxiliary verbs). Domain-specific terms like "war", "valve", "artery" are intentionally NOT in the stopword list.
+
+**Scale:** Running across 83 curated decks found 3,306 word-level leaks vs 374 pre-existing verbatim matches. Worst offenders: `human_anatomy` (686), `ap_biology` (392), `ap_microeconomics` (240). All 3,306 are genuine issues for content-agent to fix.
+
+**Rule:** Check #22 warnings (both sub-checks) are WARNING severity, not FAIL — they do not block commits. Content-agent is responsible for rewriting flagged questions.
+
+**Regression test:** `tests/unit/deck-content-quality.test.ts` — "word-level leak detection correctly flags the Florence Nightingale pattern".
+
 ### 2026-04-08 — Kanji decks restructured: standalone → sub-decks of japanese_n*
 
 **What:** After the initial kanji ship (commit 1c5f2fc6), the 5 standalone top-level kanji decks (`japanese_n5_kanji.json` through `japanese_n1_kanji.json`) were deleted and their facts merged into the existing `japanese_n*.json` parent decks as a `kanji` sub-deck.
@@ -796,3 +815,13 @@ Compare against the current `data/decks/manifest.json` deck list. Any mismatch =
 4. **For long-running test/playtest sessions in one terminal, periodically re-verify deck count** via the SQL query above before trusting results.
 
 **Why this matters more than you'd think:** the bug is silent. There's no error, no warning, no crash. The dev server happily loads the truncated DB and the missing decks just don't appear in the deck picker. A user could miss the regression entirely if they aren't specifically looking for the missing decks. Visual tests that load existing decks would still pass — it's only specifically the new/affected decks that vanish.
+
+### 2026-04-08 — RewardRoomScene preload list was a stale subset — card art missing on cloth tiles
+
+**What:** `RewardRoomScene.ts` had a hardcoded `MECHANIC_IDS` array of only 31 mechanic IDs to preload as Phaser textures. `cardArtManifest.ts` had 96 mechanic IDs with art files. Any reward card whose mechanic ID was not in the hardcoded list (e.g., `power_strike`, `absorb`, `bash`, etc.) would silently fail `this.textures.exists(artKey)` and show no art on the cloth reward tiles, even though the same card showed art correctly in CardHand and the RewardCardDetail popup (which use the Svelte `<img>` tag and browser image loading, not Phaser texture preloading).
+
+**Root cause:** Two separate art lists existed — the Phaser preload list in `RewardRoomScene.ts` and the authoritative `CARD_ART_MAP` in `cardArtManifest.ts` — and they drifted apart as new art was added to the manifest without updating the Phaser preload list.
+
+**Fix:** Exported `CARD_ART_MECHANIC_IDS: readonly string[]` from `cardArtManifest.ts` (derived from `Object.keys(CARD_ART_MAP)`) and replaced the hardcoded list in `RewardRoomScene.ts` with `for (const id of CARD_ART_MECHANIC_IDS)`. Single source of truth — new art additions are automatically preloaded.
+
+**Rule:** If a Phaser scene needs to preload art from the same manifest that Svelte components use, always import the manifest's key list rather than duplicating it. Duplication guarantees drift.

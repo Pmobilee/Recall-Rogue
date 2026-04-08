@@ -473,7 +473,7 @@ The  plus  centers the title horizontally over the art, independent of its text 
 
 | Component | Purpose |
 |-----------|---------|
-| `ShopRoomOverlay.svelte` | Shop: buy/sell cards and relics, card removal, haggle quiz. Calls `ambientAudio.setContext('shop')` on `$effect`. **Layout (2026-04-08):** `.shop-hud` height `48px`, `background: rgba(10, 15, 25, 0.95)`, `border-bottom: 2px solid rgba(194, 157, 72, 0.5)` — matches InRunTopBar gold style. `.unaffordable` uses `filter: grayscale(0.3)` + `border-color: rgba(239, 68, 68, 0.3)` instead of `opacity: 0.4` (keeps text readable). **Synergy system removed (2026-04-08):** `highlightedMechanics` state, `onCardHover`/`onCardLeave` handlers, `deckMechanics` derived, synergy-badge template, `.synergy-match`, `.synergy-none`, `.synergy-highlight`, and `synergy-pulse` keyframes all deleted. **Card display (2026-04-08):** Shop card items now show a `.chain-dot` colored pip (8px circle) inline with the effect label via `.card-sub-row` flex row — indicates chain type without synergy cross-highlighting. **Relic tooltip:** Already rendered when `relicTooltip` state is set (hover triggers `showRelicTooltip()`, mouseleave triggers `dismissRelicTooltip()`). Shows relic name (rarity-colored), description, and trigger; max-width `220px` scaled, z-index 200, dark background. |
+| `ShopRoomOverlay.svelte` | Shop: buy/sell cards and relics, card removal, haggle quiz. Calls `ambientAudio.setContext('shop')` on `$effect`. **Layout (2026-04-08):** `.shop-hud` height `48px`, `background: rgba(10, 15, 25, 0.95)`, `border-bottom: 2px solid rgba(194, 157, 72, 0.5)` — matches InRunTopBar gold style. `.unaffordable` uses `filter: grayscale(0.3)` + `border-color: rgba(239, 68, 68, 0.3)` instead of `opacity: 0.4` (keeps text readable). **Synergy system removed (2026-04-08):** `highlightedMechanics` state, `onCardHover`/`onCardLeave` handlers, `deckMechanics` derived, synergy-badge template, `.synergy-match`, `.synergy-none`, `.synergy-highlight`, and `synergy-pulse` keyframes all deleted. **Card display (2026-04-08):** Shop card items now show a `.chain-dot` colored pip (8px circle) inline with the effect label via `.card-sub-row` flex row — indicates chain type without synergy cross-highlighting. **Relic tooltip:** Already rendered when `relicTooltip` state is set (hover triggers `showRelicTooltip()`, mouseleave triggers `dismissRelicTooltip()`). Shows relic name (rarity-colored), description, and trigger; max-width `220px` scaled, z-index 200, dark background. **Haggle fail behavior (2026-04-08):** On haggle quiz failure, NO price penalty is applied — the item keeps its original price and the haggle button is disabled for that item (`haggledThisItem = true`). The `penaltyPrice` state variable and all related markup/computation have been removed. |
 | `RestRoomOverlay.svelte` | Rest room: heal HP, study to upgrade a card, meditate to remove one. Calls `ambientAudio.setContext('rest')` on `$effect` |
 | `MysteryEventOverlay.svelte` | Mystery event: narrative choice cards with quiz-gated outcomes. Calls `ambientAudio.setContext('mystery')` on `$effect` when event is set |
 | `SpecialEventOverlay.svelte` | Scripted lore/mechanic special events |
@@ -563,3 +563,20 @@ Was (pre-2026-04-01): single flex row — label + two buttons in one row with `j
 - **Deck progress**: Filters `getAllDeckProgress()` to entries with `factsEncountered > 0`, sorted by encounters desc.
 - **Bestiary**: From `save.lifetimeEnemyKillCounts` — top 5 sorted by kill count desc.
 - **Scaling**: Same rules as JournalScreen. Landscape tile grids expand from 2-column to 4-column for record/mastery/streak tiles.
+
+---
+
+## UI Utilities — Card Art
+
+### `src/ui/utils/cardArtManifest.ts`
+
+Single source of truth for card art files. Maps mechanic IDs to PNG filenames under `/assets/cardart/`.
+
+**Exports:**
+- `getCardArtUrl(mechanicId: string): string | null` — returns `/assets/cardart/X.png` or `null` if no art.
+- `hasCardArt(mechanicId: string): boolean` — fast existence check.
+- `CARD_ART_MECHANIC_IDS: readonly string[]` — all mechanic IDs with art (derived from `Object.keys(CARD_ART_MAP)`).
+
+**CARD_ART_MECHANIC_IDS usage:** Imported by `RewardRoomScene.ts` in Phaser to preload all card art textures during `preload()`. This keeps the Phaser preload list automatically in sync with the manifest — adding a new art entry here is the only change needed. Previously the Phaser scene had a hardcoded subset of 31 IDs (out of 96+), causing card art to silently disappear on the reward cloth for any mechanic not in the hardcoded list (2026-04-08 fix).
+
+**Rule:** Never maintain a separate list of mechanic IDs in any Phaser scene — always import `CARD_ART_MECHANIC_IDS`.
