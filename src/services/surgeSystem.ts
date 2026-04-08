@@ -5,11 +5,11 @@
  * The turn counter persists across encounters within a run (not reset per encounter).
  * Surge turns: 2, 6, 10, 14, ...
  *
- * Note: Surge no longer waives a charge AP surcharge (CHARGE_AP_SURCHARGE = 0 globally).
- * Surge's value is its CC bonus multiplier (SURGE_CC_BONUS_MULTIPLIER) and extra card draw.
+ * Surge waives the CHARGE_AP_SURCHARGE (+1 AP) on Charge plays, making it the strategic
+ * burst window for free charging. On non-surge turns, charging costs base AP + CHARGE_AP_SURCHARGE.
  */
 
-import { SURGE_FIRST_TURN, SURGE_INTERVAL } from '../data/balance';
+import { CHARGE_AP_SURCHARGE, SURGE_FIRST_TURN, SURGE_INTERVAL } from '../data/balance';
 
 /**
  * Returns true if the given (global, run-persistent) turn number is a Surge turn.
@@ -28,9 +28,9 @@ export function isSurgeTurn(turnNumber: number): boolean {
 
 /**
  * Returns the AP surcharge for Charge Play on this turn.
- * Always 0 — CHARGE_AP_SURCHARGE is 0 globally (Surge no longer waives a surcharge).
- * @deprecated Surcharge is always 0 now. Use CHARGE_AP_SURCHARGE directly.
+ * Surge turns return 0 (surcharge waived — free charging window).
+ * Non-surge turns return CHARGE_AP_SURCHARGE (currently 1).
  */
-export function getSurgeChargeSurcharge(_turnNumber: number): number {
-  return 0;
+export function getSurgeChargeSurcharge(turnNumber: number): number {
+  return isSurgeTurn(turnNumber) ? 0 : CHARGE_AP_SURCHARGE;
 }
