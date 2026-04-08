@@ -1873,12 +1873,12 @@
       "distractors": [
         "frictional + cyclical",
         "structural + cyclical",
-        "frictional + structural + cyclical",
-        "seasonal + frictional",
-        "cyclical + seasonal",
+        "frictional + seasonal",
         "structural + seasonal",
-        "total unemployment - seasonal",
-        "frictional + structural + seasonal"
+        "cyclical + seasonal",
+        "frictional + voluntary",
+        "structural + technological",
+        "seasonal + discouraged"
       ],
       "quizQuestion": "The natural rate of unemployment (NRU) is equal to the sum of which two types of unemployment that exist even when the economy is at full employment?",
       "explanation": "The natural rate of unemployment (NRU) equals frictional plus structural unemployment — the unemployment that persists even in a healthy, growing economy. Cyclical unemployment is zero at the NRU. Full employment is defined as cyclical unemployment equaling zero, not total unemployment equaling zero.",
@@ -3226,10 +3226,10 @@
     },
     {
       "id": "ap_macro_6b_nco_equals_nx",
-      "correctAnswer": "NCO = NX",
+      "correctAnswer": "Net capital outflow is positive",
       "acceptableAlternatives": [
-        "Net capital outflow equals net exports",
-        "NCO equals NX"
+        "NCO > 0",
+        "NCO is positive"
       ],
       "chainThemeId": 10,
       "answerTypePoolId": "equation_formulas_macro",
@@ -3237,16 +3237,17 @@
       "funScore": 6,
       "ageGroup": "all",
       "distractors": [
-        "NCO = CA + CFA",
-        "NCO = I - S",
-        "NCO = G - T",
-        "NX = CA only",
-        "NCO = Y - C - G",
-        "NX = I + NCO",
-        "NCO = M - X"
+        "Net capital outflow is negative",
+        "Net capital outflow is zero",
+        "Capital inflow exceeds outflow",
+        "The financial account is in surplus",
+        "Foreign investment dominates",
+        "The current account is in deficit",
+        "Domestic saving decreases",
+        "The exchange rate appreciates"
       ],
-      "quizQuestion": "What macroeconomic identity links net capital outflow and the trade balance?",
-      "explanation": "NCO = NX is a fundamental open-economy identity. When a country exports more than it imports (NX > 0), it accumulates foreign assets (NCO > 0) — it is a net capital exporter. When it imports more than it exports (NX < 0, trade deficit), it must borrow or sell assets to foreigners (NCO < 0, net capital inflow).",
+      "quizQuestion": "In an open economy, if a country runs a trade surplus (exports exceed imports), what must be true about its net capital outflow?",
+      "explanation": "The identity NCO = NX links the capital account to the trade balance. A trade surplus (NX > 0) means the country is lending or investing abroad more than foreigners invest domestically, so net capital outflow is positive. This identity ensures the balance of payments always balances.",
       "statement": "",
       "wowFactor": "",
       "sourceName": "OpenStax Principles of Macroeconomics 3e",
@@ -4037,7 +4038,7 @@
         "Real rate = nominal rate + risk premium"
       ],
       "quizQuestion": "What equation relates the real interest rate, nominal interest rate, and inflation rate?",
-      "explanation": "The Fisher equation states: real interest rate = nominal interest rate - inflation rate. If a bank offers 7% nominal interest but inflation is 3%, the real return is only 4%. This distinction matters enormously for saving and lending decisions. Lenders who fail to anticipate inflation will earn a lower real return than expected.",
+      "explanation": "The Fisher equation approximation states that the real interest rate roughly equals the nominal interest rate minus the inflation rate (r ≈ i − π). This is the form tested on the AP Macro exam. The exact formula is r = (1+i)/(1+π) − 1, but the approximation is standard for low-to-moderate inflation rates.",
       "statement": "",
       "wowFactor": "",
       "sourceName": "OpenStax Principles of Macroeconomics 3e",

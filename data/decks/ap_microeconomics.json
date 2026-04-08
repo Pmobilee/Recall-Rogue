@@ -2070,7 +2070,7 @@
         "Social efficiency",
         "Deadweight loss minimization"
       ],
-      "quizQuestion": "When an economy operates on (not inside) the production possibilities curve, using all its resources fully with no waste, what type of efficiency is it achieving?",
+      "quizQuestion": "When an economy uses all available resources and technology to produce goods, operating at its maximum output capacity, it achieves what type of efficiency?",
       "explanation": "Productive efficiency means producing goods at the lowest possible cost — operating on the PPC rather than inside it. Every point on the PPC is productively efficient. However, productive efficiency doesn't guarantee allocative efficiency (producing the right mix of goods for society's wants). Both types of efficiency are tested on the AP exam.",
       "statement": "",
       "wowFactor": "",
@@ -4345,7 +4345,7 @@
         "Tariff",
         "Import quota",
         "Price cap",
-        "Minimum price guarantee"
+        "Equilibrium price mandate"
       ],
       "quizQuestion": "A government-set legal minimum price below which a good cannot be sold is called a ___.",
       "explanation": "A price floor prevents the market price from falling below the set level. It is binding only when the floor is set above the equilibrium price, creating a surplus (excess supply).",
@@ -8143,11 +8143,10 @@
     },
     {
       "id": "ap_micro_3a_shutdown_condition_short_run",
-      "correctAnswer": "TR is less than Variable Cost",
+      "correctAnswer": "Price is below average variable cost",
       "acceptableAlternatives": [
         "P < AVC",
-        "total revenue doesn't cover variable costs",
-        "price falls below AVC"
+        "Price < AVC"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "econ_concept_terms",
@@ -8164,8 +8163,8 @@
         "Price falls below AFC",
         "Revenue fails to cover implicit costs"
       ],
-      "quizQuestion": "In the short run, a firm should shut down production temporarily when what condition holds?",
-      "explanation": "A firm should shut down in the short run when Total Revenue is less than Variable Cost (equivalently, when price falls below AVC). In this case, producing generates losses greater than simply paying fixed costs and producing nothing. Fixed costs are sunk in the short run and paid regardless.",
+      "quizQuestion": "In the short run, a firm should shut down production temporarily when what condition holds regarding price and costs?",
+      "explanation": "The shutdown rule states that a firm should cease production when price falls below average variable cost (P < AVC). At this point, the firm cannot even cover its variable costs, so it loses less money by shutting down and paying only fixed costs.",
       "statement": "",
       "wowFactor": "",
       "sourceName": "College Board AP Microeconomics CED — Unit 3",

@@ -17068,6 +17068,76 @@
           "accepted": false
         }
       ]
+    },
+    {
+      "id": "ap_microeconomics",
+      "name": "AP Microeconomics",
+      "concept": "Underground market bazaar with supply and demand forces",
+      "prompt": "16-bit pixel art RPG scene, a vast underground stone market bazaar inside a dungeon cavern, glowing crystal price tags floating above merchant stalls, a giant ornate balance scale in the center weighing gold coins against gemstones, supply and demand scrolls pinned to wooden posts, tiny pixel merchants trading goods under lantern light, JRPG dungeon tileset aesthetic, rich pixel detail, emerald green warm gold and deep navy palette, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 455588764,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 876168616,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 1035332891,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 3,
+          "seed": 1168688054,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "ap_macroeconomics",
+      "name": "AP Macroeconomics",
+      "concept": "Grand clockwork economy engine room with interconnected gears",
+      "prompt": "16-bit pixel art RPG scene, a massive steampunk clockwork engine room deep underground, enormous interlocking brass gears and pistons driving a glowing circular flow diagram etched into the stone floor, pipes carrying pixel gold flowing between chambers labeled with glowing runes, a central furnace casting warm light on polished metal surfaces, tiny pixel workers operating levers, JRPG dungeon tileset aesthetic, rich pixel detail, warm brass deep crimson and steel blue palette, dithered shadows, clean pixel edges, retro game screenshot composition, fills entire frame edge to edge, no border no frame, absolutely no readable text no letters no numbers no words no symbols that resemble writing",
+      "targetWidth": 768,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3053518642,
+          "status": "error",
+          "accepted": false,
+          "error": "Response was text only: \"`\""
+        },
+        {
+          "variant": 1,
+          "seed": 2969471077,
+          "status": "error",
+          "accepted": false,
+          "error": "Response was text only: \"`\""
+        },
+        {
+          "variant": 2,
+          "seed": 741641384,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 3,
+          "seed": 2483034107,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     }
   ],
   "enemy_power_icons": [

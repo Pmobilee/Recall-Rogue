@@ -756,3 +756,43 @@ ProfileScreen and JournalScreen use `.profile-landscape` / `.journal-landscape` 
 2. Some Phaser-side rendering in `RewardRoomScene.ts` (game-logic owned file) adds a visual overlay for certain card tiers.
 
 **Rule:** When a visual bug is card-specific (only affects Power Strike, not all cards), the cause is almost always a missing/misnamed art asset rather than a CSS layout bug. Check the art manifest first before investigating layout code.
+
+### 2026-04-08 — Kanji deck kun'yomi corrupted by KANJIDIC source: デシメートル as a reading
+
+**What:** `data/references/kanji-data-davidluzgouveia.json` contains 26 kanji where a KANJIDIC encoding artifact inserted Japanese katakana loan-word readings (SI units like デシメートル = decimeter, シリング = shilling, キログラム = kilogram) into the `readings_kun` field. These are NOT valid kun'yomi — they are metrological notation kanji assigned phonetic readings. The pollution also leaks into the `meanings` array as English equivalents ("Shilling" appears in 志's meanings).
+
+**Initial impact (detected by LLM content review):** `ja-kanji-n2-粉-reading` had `correctAnswer='デシメートル'`; `ja-kanji-n1-志-meaning` had `'shilling'` in alternatives; explanations displayed corrupted kun readings.
+
+**Fix (same commit, via `scripts/japanese/build-kanji-decks.mjs`):**
+1. `stripOkurigana()` rejects any reading containing katakana (`/[\u30A0-\u30FF]/` or `wanakana.isKatakana()`). Kun'yomi is hiragana-only.
+2. `normalizeMeanings(arr, kanjiData)` detects pollutant meanings by romanizing katakana entries in `readings_kun` via `wanakana.toRomaji` and dropping matches. A `loanMap` covers known SI-unit / currency transliterations.
+
+**Rule:** Any pipeline consuming KANJIDIC2-derived data MUST filter kun'yomi by script type. The deck verifier doesn't check script-type correctness inside pools — defensive filtering is the generator's responsibility.
+
+### 2026-04-08 — KANJIDIC2 stores on'yomi as HIRAGANA, not katakana — convert at build time
+
+**What:** `kanji-data-davidluzgouveia.json` stores both `readings_on` and `readings_kun` as hiragana. Example: `日 → readings_on: ["にち","じつ"]`. Standard JLPT / dictionary convention displays on'yomi in katakana, so pipelines emitting on'yomi MUST convert via `wanakana.toKatakana(reading)`.
+
+**Where:** `scripts/japanese/build-kanji-decks.mjs` does this conversion in the build loop. `kanji_onyomi` pool answers are katakana post-conversion; `kanji_kunyomi` pool answers remain hiragana. The split into two pools (per `.claude/rules/deck-quality.md` homogeneity rule) is specifically because katakana and hiragana are not interchangeable as quiz answers.
+
+**How to apply:** For new kanji decks or extensions, never emit raw `data.readings_on` — route through `wanakana.toKatakana()`. Similarly apply `stripOkurigana()` + katakana filter on `data.readings_kun`.
+
+### 2026-04-08 — `public/curated.db` is racy when multiple Claude sessions run in parallel
+
+**What:** `public/curated.db` is a build artifact written by `npm run build:curated` from `data/decks/*.json` + `data/decks/manifest.json`. It is **not** in git (gitignored) and is regenerated on demand. When multiple `claude` CLI sessions are running in parallel terminals (common during heavy multi-session work), any one of them can trigger a rebuild — typically as part of `npm run build`, a pre-commit hook, or an explicit `build:curated`. If the rebuilding session has a different `manifest.json` state than yours, your decks silently disappear from the compiled DB even though the source JSON still exists.
+
+**Concrete incident (kanji decks ship 2026-04-08):** I rebuilt `curated.db` with all 5 new kanji decks present. ~30 minutes later, a parallel session ran its own build with a stale `manifest.json` (kanji entries hadn't been committed yet from that session's perspective). The compiled `curated.db` was overwritten and the kanji decks were silently dropped. Discovery happened only when a SQL validation query against the live DB returned zero rows for `deck_id LIKE '%kanji'`. The runtime would have served the kanji-less DB to players until the next manual rebuild.
+
+**Detection:**
+```bash
+node -e "const db = require('better-sqlite3')('public/curated.db', {readonly:true}); console.log(db.prepare('SELECT id FROM decks').all().map(r=>r.id).join('\n'));"
+```
+Compare against the current `data/decks/manifest.json` deck list. Any mismatch = stale build.
+
+**Rules:**
+1. **Always rebuild `curated.db` immediately before any test, screenshot, or commit that depends on it.** Don't trust a previous build's state, especially if other sessions are active.
+2. **Pre-commit hooks should rebuild `curated.db` from the actual `manifest.json` at commit time** — this guarantees committed state matches what verification ran against. If you're adding a hook for `data/decks/manifest.json` or `data/decks/*.json`, include `npm run build:curated`.
+3. **If you discover a stale `curated.db`, do NOT panic about lost data** — the source JSON files in `data/decks/` are the source of truth. A single `npm run build:curated` regenerates everything in <10s.
+4. **For long-running test/playtest sessions in one terminal, periodically re-verify deck count** via the SQL query above before trusting results.
+
+**Why this matters more than you'd think:** the bug is silent. There's no error, no warning, no crash. The dev server happily loads the truncated DB and the missing decks just don't appear in the deck picker. A user could miss the regression entirely if they aren't specifically looking for the missing decks. Visual tests that load existing decks would still pass — it's only specifically the new/affected decks that vanish.
