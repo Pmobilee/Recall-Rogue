@@ -194,6 +194,12 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     onMapNodeConsensus,
     onMapNodePicksChanged,
   } from './services/multiplayerMapSync'
+  import {
+    initCoopSync,
+    destroyCoopSync,
+    onPartnerStateUpdate,
+    type PartnerState,
+  } from './services/multiplayerCoopSync'
   import type { LobbyState, RaceProgress, MultiplayerMode, LobbyContentSelection } from './data/multiplayerTypes'
 
   // Update Steam Rich Presence whenever the active screen changes.
@@ -562,6 +568,10 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
       // Initialise map node consensus so both players must agree on the next room.
       initMapNodeSync(localPlayerId)
+      // Initialise co-op turn-end barrier and partner HP heartbeat.
+      if (lobby.mode === 'coop') {
+        initCoopSync(localPlayerId)
+      }
     })
     const unsubProgress = onOpponentProgressUpdate((progress: RaceProgress) => {
       opponentProgress = progress
@@ -575,12 +585,27 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       resetMapNodePicks()
       void commitMapNodeSelection(nodeId)
     })
+    const unsubPartner = onPartnerStateUpdate((states) => {
+      // Pipe the first available partner's HP into opponentProgress so the
+      // existing MultiplayerHUD renders it during co-op combat.
+      const ids = Object.keys(states)
+      if (ids.length === 0) return
+      const partner: PartnerState = states[ids[0]]
+      opponentProgress = {
+        ...opponentProgress,
+        playerId: partner.playerId,
+        playerHp: partner.hp,
+        playerMaxHp: partner.maxHp,
+      }
+    })
     return () => {
       unsubStart()
       unsubProgress()
       unsubPicks()
       unsubConsensus()
+      unsubPartner()
       destroyMapNodeSync()
+      destroyCoopSync()
     }
   })
 

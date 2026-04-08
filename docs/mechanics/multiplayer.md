@@ -389,6 +389,53 @@ See `docs/roadmap/AR-MULTIPLAYER.md` for full task breakdown.
 
 ---
 
+## Map Node Consensus (2026-04-08)
+
+In any multiplayer mode that shares a map, both players must agree on the next room before either client transitions. Owned by `src/services/multiplayerMapSync.ts`.
+
+Flow:
+1. Player clicks a node in `DungeonMap.svelte` → `CardApp.handleMapNodeSelect(nodeId)`.
+2. If `isMultiplayerRun`, the click calls `pickMapNode(nodeId)` instead of committing immediately. This broadcasts `mp:map:node_pick` and updates the local picks store.
+3. Each player's pick renders as a small initial-bearing badge above the corresponding node (`MapNode.svelte` `pickedBy` prop, threaded through `DungeonMap.nodePicks`).
+4. When `_checkConsensus()` sees that every player in `getCurrentLobby().players` has picked the SAME `nodeId`, it fires the `onMapNodeConsensus` callback.
+5. CardApp's consensus handler resets the picks (clearing badges) and calls `commitMapNodeSelection(nodeId)`, which runs the existing `onMapNodeSelected` + `startEncounterForRoom` flow.
+
+Picking a different node before consensus simply replaces the previous pick — no need to "unpick" first.
+
+Source: `src/services/multiplayerMapSync.ts`, `src/CardApp.svelte` (`handleMapNodeSelect` / `commitMapNodeSelection`), `src/ui/components/MapNode.svelte` (`pickedBy` prop), `src/ui/components/DungeonMap.svelte` (`nodePicks` prop).
+
+---
+
+## Co-op Turn Synchronization (2026-04-08)
+
+Co-op combat now waits for every player to end their turn before any enemy phase runs. Owned by `src/services/multiplayerCoopSync.ts`.
+
+Flow:
+1. `encounterBridge.handleEndTurn()` reads `runState.multiplayerMode`. If it's `'coop'`, sets `coopWaitingForPartner` to true and calls `awaitCoopTurnEnd()`.
+2. `awaitCoopTurnEnd` sends `mp:coop:turn_end` with the local player ID, then awaits a barrier promise that resolves when every player in the lobby has signaled.
+3. While waiting, the End Turn button shows `WAITING…` and is disabled, plus a `coop-waiting-banner` pulses above it.
+4. Once both signals are in, the existing `endPlayerTurn(turnState)` runs locally on each client. The 2-second pre-attack visual delay still applies (`turboDelay(2000)`).
+5. After the local player's HP is updated post-damage, `broadcastPartnerState({hp, maxHp, block})` sends `mp:coop:partner_state`. Each receiving client updates its `MultiplayerHUD` with the partner's new HP via the `onPartnerStateUpdate` callback wired in `CardApp.svelte`.
+
+Key invariants:
+- Each client runs its OWN enemy locally (no host-authoritative resolution). Determinism comes from the shared run seed plus the new `'enemyVariance'` RNG fork — both clients see the same enemy template AND the same HP for that enemy.
+- The barrier has a 30s timeout safety net. If a partner disconnects, the local turn resolves anyway after the timeout to avoid hanging.
+- Partner HP appears in the existing `MultiplayerHUD` panel by writing into the `opponentProgress` Svelte state (just the `playerHp`/`playerMaxHp` fields).
+
+Source: `src/services/multiplayerCoopSync.ts`, `src/services/encounterBridge.ts` (`handleEndTurn`, `coopWaitingForPartner` store), `src/CardApp.svelte` (init/destroy + partner subscription), `src/ui/components/CardCombatOverlay.svelte` (`coopWaitingForPartner` UI binding).
+
+---
+
+## Enemy Variance Determinism (2026-04-08)
+
+Common and elite enemies receive a `0.85-1.15×` HP/damage variance roll in `encounterBridge.ts`. Until 2026-04-08 this used unseeded `Math.random()`, which broke co-op enemy parity (both players saw the same enemy template at the same node but with different HP values).
+
+The variance now reads from a dedicated `'enemyVariance'` seeded RNG fork via `getRunRng('enemyVariance')`. Two clients with the same shared run seed produce identical enemy HP for every node. Boss enemies still use a flat `1.0` variance.
+
+Source: `src/services/encounterBridge.ts:586` (`difficultyVariance` calculation), `src/services/seededRng.ts` (`getRunRng` fork API). Tests: `tests/unit/multiplayerSync.test.ts`.
+
+---
+
 ## Future Co-op Combat Enhancements
 
 > **Status: NOT IMPLEMENTED — design ideas for post-launch co-op depth.**

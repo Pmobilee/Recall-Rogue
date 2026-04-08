@@ -2,6 +2,24 @@
 
 A 2D card roguelite knowledge game built with Vite + Svelte + TypeScript + Phaser 3, targeting Steam PC (1920×1080 landscape) first, mobile via Capacitor later.
 
+## 🚨 FIRST ACTION EVERY NEW CONVERSATION — MANDATORY
+
+**Before doing ANYTHING else in a fresh conversation, you MUST invoke the `/catchup` skill.**
+
+This is non-negotiable. It applies to:
+- The very first user message in any new chat, regardless of content
+- Every `/clear` or conversation reset
+- Every new worktree session
+- Every sub-agent spawn that starts a new orchestrator context
+
+The only exception is when the user's first message IS a skill invocation (e.g. they paste `/catchup` themselves). In that case the requirement is already satisfied.
+
+**Why:** sessions end abruptly, work lives across many conversations, and without a fresh snapshot of recent git activity, active tasks, memory, and project health, you will miss critical context and duplicate or contradict prior work. The `/catchup` skill takes seconds and prevents hours of wasted effort.
+
+**How:** call the Skill tool with `skill: "catchup"` as your first action. Then read any docs the user points you to. Then begin the requested work.
+
+Do not announce the catchup invocation with preamble. Just invoke it, read the output, then respond to the user.
+
 ## Task Management — MANDATORY — NO EXCEPTIONS
 
 **USE CLAUDE CLI TASKS (TaskCreate, TaskUpdate, TaskList) FOR EVERYTHING.**

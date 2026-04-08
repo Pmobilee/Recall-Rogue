@@ -137,6 +137,10 @@ export interface EnemyDamageEvent {
 }
 export const enemyDamageEvent = writable<EnemyDamageEvent | null>(null);
 
+/** True while the local player has ended their turn but is waiting for co-op partners
+ *  to do the same. UI uses this to dim the End Turn button and show a "Waiting…" hint. */
+export const coopWaitingForPartner = writable<boolean>(false);
+
 // ── Boss rotation helpers (AR-98) ──
 const LAST_BOSS_KEY = 'recall-rogue-last-boss';
 
@@ -1186,6 +1190,15 @@ export async function handleEndTurn(): Promise<void> {
     activeRunState.set(runAfterDelay);
   }
   activeTurnState.set(freshTurnState(result.turnState));
+
+  // Co-op: broadcast our post-turn HP/block so the partner's HUD reflects damage taken.
+  if (isCoop && runAfterDelay) {
+    broadcastPartnerState({
+      hp: runAfterDelay.playerHp,
+      maxHp: runAfterDelay.playerMaxHp,
+      block: result.turnState.playerState.shield ?? 0,
+    });
+  }
 
   // Update chain visuals to reflect chain decay at turn end (Spec 03).
   // decayChain() already ran inside endPlayerTurn; chainLength reflects the decayed value.
