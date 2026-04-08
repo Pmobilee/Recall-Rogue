@@ -719,3 +719,23 @@ ProfileScreen and JournalScreen use `.profile-landscape` / `.journal-landscape` 
 - `.music-widget`: `border: 1px solid rgba(255,255,255,0.12)` → `border: 1px solid transparent` (keeps border-color transitions for hover/playing states) + `box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12), [existing shadow]`
 
 **Rule:** ANY Svelte overlay element that uses `backdrop-filter` MUST NOT use `border` for visual outlines. Use `box-shadow: inset` instead. The border creates a GPU compositing plane edge that renders as a visible line over the Phaser canvas beneath.
+
+### 2026-04-08 — Kanji deck kun'yomi corrupted by KANJIDIC source: デシメートル as a reading
+
+**What:** `data/references/kanji-data-davidluzgouveia.json` contains 26 kanji where a KANJIDIC encoding artifact inserted Japanese katakana loan-word readings (SI units like デシメートル = decimeter, シリング = shilling, キログラム = kilogram) into the `readings_kun` field. These are NOT valid kun'yomi — they are metrological notation kanji assigned phonetic readings. The pollution also leaks into the `meanings` array as English equivalents ("Shilling" appears in 志's meanings).
+
+**Initial impact (detected by LLM content review):** `ja-kanji-n2-粉-reading` had `correctAnswer='デシメートル'`; `ja-kanji-n1-志-meaning` had `'shilling'` in alternatives; explanations displayed corrupted kun readings.
+
+**Fix (same commit, via `scripts/japanese/build-kanji-decks.mjs`):**
+1. `stripOkurigana()` rejects any reading containing katakana (`/[\u30A0-\u30FF]/` or `wanakana.isKatakana()`). Kun'yomi is hiragana-only.
+2. `normalizeMeanings(arr, kanjiData)` detects pollutant meanings by romanizing katakana entries in `readings_kun` via `wanakana.toRomaji` and dropping matches. A `loanMap` covers known SI-unit / currency transliterations.
+
+**Rule:** Any pipeline consuming KANJIDIC2-derived data MUST filter kun'yomi by script type. The deck verifier doesn't check script-type correctness inside pools — defensive filtering is the generator's responsibility.
+
+### 2026-04-08 — KANJIDIC2 stores on'yomi as HIRAGANA, not katakana — convert at build time
+
+**What:** `kanji-data-davidluzgouveia.json` stores both `readings_on` and `readings_kun` as hiragana. Example: `日 → readings_on: ["にち","じつ"]`. Standard JLPT / dictionary convention displays on'yomi in katakana, so pipelines emitting on'yomi MUST convert via `wanakana.toKatakana(reading)`.
+
+**Where:** `scripts/japanese/build-kanji-decks.mjs` does this conversion in the build loop. `kanji_onyomi` pool answers are katakana post-conversion; `kanji_kunyomi` pool answers remain hiragana. The split into two pools (per `.claude/rules/deck-quality.md` homogeneity rule) is specifically because katakana and hiragana are not interchangeable as quiz answers.
+
+**How to apply:** For new kanji decks or extensions, never emit raw `data.readings_on` — route through `wanakana.toKatakana()`. Similarly apply `stripOkurigana()` + katakana filter on `data.readings_kun`.

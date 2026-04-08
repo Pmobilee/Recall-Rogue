@@ -32,6 +32,11 @@ Single source of truth for all Japanese language content in Recall Rogue. Covers
 | `japanese_n1_grammar.json` | Grammar | 1183 | Shipped |
 | `japanese_n2.json` | Vocabulary | - | Shipped |
 | `japanese_n1.json` | Vocabulary | - | Shipped |
+| `japanese_n5_kanji.json` | Kanji | 237 | Shipped 2026-04-08 |
+| `japanese_n4_kanji.json` | Kanji | 498 | Shipped 2026-04-08 |
+| `japanese_n3_kanji.json` | Kanji | 1,101 | Shipped 2026-04-08 |
+| `japanese_n2_kanji.json` | Kanji | 1,101 | Shipped 2026-04-08 |
+| `japanese_n1_kanji.json` | Kanji | 3,696 | Shipped 2026-04-08 |
 
 **All 5 grammar decks baked with furigana/romaji/translation/grammar-point label (2026-04-08)** — see "Grammar Deck Baked Rendering Data" section below.
 
@@ -58,6 +63,53 @@ Single source of truth for all Japanese language content in Recall Rogue. Covers
 | JMdict common | `data/references/jmdict/jmdict-eng-common-3.6.2.json` (22,576 entries) |
 | JMdict compact | `public/assets/dict/jdict-compact.json` (37,956 entries, built for runtime hover) |
 | Kuromoji dicts | `public/assets/kuromoji/*.dat.gz` (17MB, tokenizer dictionary files) |
+| KANJIDIC2-derived kanji data | `data/references/kanji-data-davidluzgouveia.json` (2,211 JLPT kanji: strokes, readings, meanings) |
+| FJSD kanji info | `data/references/full-japanese-study-deck/results/kanji-info.json` (mnemonics + example compounds, CC BY-SA 4.0) |
+
+## Kanji Deck Architecture
+
+Five decks cover all 2,211 JLPT kanji across N5–N1. Each kanji produces exactly 3 facts.
+
+### Fact Model — 3 Per Kanji
+
+| Fact type | Question | Answer pool |
+|-----------|----------|-------------|
+| Meaning | "What does [kanji] mean?" | `kanji_meanings` (English meanings) |
+| Reading | "How do you read [kanji]?" | `kanji_onyomi` (katakana) OR `kanji_kunyomi` (hiragana) |
+| Recognition | "Which kanji means [meaning]?" | `kanji_characters` (CJK glyphs, homogeneityExempt) |
+
+### Reading-Type Heuristic
+
+Quiz on'yomi OR kun'yomi based on which is primary. Checks whether the first example compound's reading matches a kun'yomi root — if yes, use `kanji_kunyomi`; otherwise use `kanji_onyomi`. Reflects real-world usage: everyday native words favor kun'yomi; sino-Japanese compounds favor on'yomi.
+
+### 4 Answer Pools Per Deck
+
+On'yomi (`kanji_onyomi`, katakana) and kun'yomi (`kanji_kunyomi`, hiragana) are **split** — never mixed — to satisfy the pool homogeneity rule (katakana vs hiragana scripts must not cross-contaminate distractors). `kanji_characters` is `homogeneityExempt: true` (glyph complexity varies inherently).
+
+### Build Script
+
+`node scripts/japanese/build-kanji-decks.mjs` — deterministic, no LLM, no network. Reads both source reference files and emits all 5 deck JSON files. Run after any source data or logic change.
+
+### KANJIDIC Corruption Filters (see gotchas 2026-04-08)
+
+- `stripOkurigana()` rejects katakana entries in kun'yomi fields (KANJIDIC2 data corruption)
+- `normalizeMeanings()` drops pollutant meanings via romaji matching
+- Both filters are idempotent and run on every build
+
+### sourceName Attribution
+
+Every kanji fact: `sourceName: "KANJIDIC2 + WaniKani + FJSD"`
+
+### Explanation Field
+
+Composed by `buildExplanation()` in the build script (~280 chars):
+```
+On: コウ / Kun: ひかり / Strokes: 6
+Example: 光 → 光線 (kousen — ray of light)
+Mnemonic: A person (人) standing on a fire (火) — they glow with light.
+```
+
+---
 
 ## Grammar Deck Architecture (N3 — Reference Implementation)
 
