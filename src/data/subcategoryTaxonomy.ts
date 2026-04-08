@@ -108,6 +108,13 @@ export const SUBCATEGORY_TAXONOMY: Partial<Record<CanonicalFactDomain, Subcatego
     { id: 'architectural_styles', label: 'Architectural Styles', description: 'Gothic, Baroque, Art Deco, Brutalism, Modernism' },
     { id: 'engineering_design', label: 'Engineering & Design', description: 'Structural engineering, bridges, dams, infrastructure' },
   ],
+  social_sciences: [
+    { id: 'psychology', label: 'Psychology', description: 'Cognitive, behavioral, developmental, and clinical psychology' },
+    { id: 'microeconomics', label: 'Microeconomics', description: 'Supply and demand, market structures, firm theory, factor markets' },
+    { id: 'macroeconomics', label: 'Macroeconomics', description: 'GDP, monetary policy, fiscal policy, international trade' },
+    { id: 'sociology', label: 'Sociology', description: 'Social structures, institutions, culture, and group behavior' },
+    { id: 'political_science', label: 'Political Science', description: 'Government systems, political theory, public policy' },
+  ],
   language: [
     { id: 'chinese_hsk1', label: 'Chinese HSK 1', description: 'HSK Level 1 (A1) beginner Chinese vocabulary' },
     { id: 'chinese_hsk2', label: 'Chinese HSK 2', description: 'HSK Level 2 (A2) elementary Chinese vocabulary' },

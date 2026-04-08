@@ -99,6 +99,8 @@ Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
 | `pronunciation` | no | Reading (e.g. hiragana for Japanese kanji) |
 | `partOfSpeech` | no | Used for POS-matched distractor selection; all vocab decks have this field as of 2026-04-02 |
 | `examTags` | no | Filtering tags (e.g. `"USMLE_Step1"`, `"high_yield"`) |
+| `categoryL1` | no | Top-level domain category (e.g. `'history'`, `'science'`, `'language'`). Persisted to curated.db — read at runtime by `domainResolver.ts` to resolve card domain. Fixes category bleed (2026-04-08). |
+| `categoryL2` | no | Sub-domain category (e.g. `'ancient_rome'`, `'mammals'`). Persisted to curated.db alongside `categoryL1`. |
 | `quizResponseMode` | no | `'choice'` (default) or `'typing'` (text input) |
 | `quizMode` | no | `'text'`, `'image_question'`, or `'image_answers'` |
 | `volatile` | no | `true` if the answer may become outdated |
@@ -115,9 +117,9 @@ Two backfill scripts produced full coverage:
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-08 it contains **81 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-08 it contains **84 decks**:
 
-- **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
+- **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar/N1–N5 Kanji, Korean Hangul/TOPIK 1–2, Spanish A1–B2
 - **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**, **AP World History: Modern**, **AP Physics 1: Algebra-Based**, **Pharmacology**, **World Literature**, **AP Human Geography**
 
 ### Deck Architecture Files
@@ -788,6 +790,16 @@ interface CustomDeckRunItem {
 **Run initialization** (`runManager.ts` `createRunState`): iterates over all items, merges facts via `getCuratedDeckFacts`, seeds a shared `InRunFactTracker`, and populates `RunState.factSourceDeckMap` (`Record<string, string>`) mapping each `factId` to its source `deckId` for downstream template/distractor resolution.
 
 **Chain distribution** (`chainDistribution.ts` `precomputeChainDistribution`): playlist runs use `extractTopicGroupsMultiDeck` across all item decks — the same FSRS-weighted LPT bin-packing used for `all:` language aggregate runs.
+
+**Group label rules** (`extractTopicGroups`):
+
+| Priority | Source | Label format |
+|---|---|---|
+| 1 — subDecks present | `subDecks[].name` | Exact sub-deck name (e.g. "Ancient Wonders") |
+| 2 — partOfSpeech present | POS + plural suffix | "Nouns", "Verbs", "Other" |
+| 3 — chainThemeId fallback | deck name + counter | "`{deck.name} Group N`" (e.g. "Japanese N5 Group 1") |
+
+For multi-deck runs, `extractTopicGroupsMultiDeck` adds a post-pass: if two groups from **different** source decks share the same label (e.g. two decks both have a "Nouns" or "Chapter 1" sub-deck), each group is prefixed with its source deck name — `"{deckName}: {label}"` — to prevent UI ambiguity. Groups that are already unique across decks are not prefixed. (Fix: 2026-04-08, playtest bug 2.1.)
 
 **Encounter pool** (`encounterBridge.ts` `startEncounterForRoom`): per-item pool building — vocab items (language-prefixed deckId) use `buildLanguageRunPool`, knowledge items use `buildGeneralRunPool` with domain stamping — then merged with factId deduplication into a single `activeRunPool`.
 
@@ -1831,3 +1843,82 @@ Result: 0 FAIL across all 75 decks after remediation.
 - `data/decks/_wip/world_religions_buddhism.json` (55 facts)
 - `data/decks/_wip/world_religions_sikhism.json` (30 facts)
 - `data/decks/_wip/world_religions_other.json` (46 facts)
+
+---
+
+## Japanese Kanji Decks (N5–N1)
+
+Five kanji decks ship as part of the Japanese language family, covering all 2,211 JLPT kanji across five proficiency levels. Built 2026-04-08.
+
+### Deck Roster
+
+| Deck ID | File | Facts | Kanji | JLPT Level |
+|---------|------|-------|-------|------------|
+| `japanese_n5_kanji` | `japanese_n5_kanji.json` | 237 | 79 | N5 |
+| `japanese_n4_kanji` | `japanese_n4_kanji.json` | 498 | 166 | N4 |
+| `japanese_n3_kanji` | `japanese_n3_kanji.json` | 1,101 | 367 | N3 |
+| `japanese_n2_kanji` | `japanese_n2_kanji.json` | 1,101 | 367 | N2 |
+| `japanese_n1_kanji` | `japanese_n1_kanji.json` | 3,696 | 1,232 | N1 |
+| **Total** | | **6,633** | **2,211** | N5–N1 |
+
+### Build Command
+
+```bash
+node scripts/japanese/build-kanji-decks.mjs
+```
+
+Deterministic, no LLM, no network. Reads two source files and emits all five deck JSON files. Re-run after any source data change or logic fix.
+
+### 3-Fact-Per-Kanji Structure
+
+Each kanji produces exactly three facts — the first deck type in the project with multiple quiz variations per entity:
+
+| Fact type | Quiz question | Answer pool |
+|-----------|---------------|-------------|
+| Meaning | "What does [kanji] mean?" | `kanji_meanings` (English meanings) |
+| Reading | "How do you read [kanji]?" | `kanji_onyomi` OR `kanji_kunyomi` (based on heuristic) |
+| Recognition | "Which kanji means [meaning]?" | `kanji_characters` |
+
+**Reading-type heuristic:** Quiz on'yomi (katakana pool) OR kun'yomi (hiragana pool) based on which is primary. The heuristic checks whether the first example compound's reading matches a kun'yomi root — if it does, the fact goes into `kanji_kunyomi`; otherwise `kanji_onyomi`. This reflects real-world usage: everyday nouns and native Japanese words favor kun'yomi; sino-Japanese compounds favor on'yomi.
+
+### 4 Answer Pools Per Deck
+
+| Pool ID | Script | Homogeneity |
+|---------|--------|-------------|
+| `kanji_meanings` | English meaning strings | standard |
+| `kanji_onyomi` | On'yomi readings (katakana) | standard |
+| `kanji_kunyomi` | Kun'yomi readings (hiragana) | standard |
+| `kanji_characters` | Kanji characters (CJK glyphs) | `homogeneityExempt: true` |
+
+On'yomi and kun'yomi use **separate pools** to enforce script homogeneity — katakana vs hiragana distractors must not cross-contaminate.
+
+`kanji_characters` is exempt because single-kanji glyphs vary inherently in visual complexity and stroke count; length-based homogeneity is inapplicable.
+
+### Explanation Field Format
+
+The `explanation` field packs ~280 chars of structured data composed by `buildExplanation()` in the build script:
+
+```
+On: コウ / Kun: ひかり / Strokes: 6
+Example: 光 → 光線 (kousen — ray of light)
+Mnemonic: A person (人) standing on a fire (火) — they glow with light.
+```
+
+Fields: on'yomi, kun'yomi, stroke count, example compound with reading and gloss, mnemonic from FJSD.
+
+### Source Attribution
+
+`sourceName: "KANJIDIC2 + WaniKani + FJSD"` appears on every fact.
+
+**Source files:**
+- `data/references/kanji-data-davidluzgouveia.json` — KANJIDIC2-derived, 2,211 JLPT kanji with strokes, on'yomi, kun'yomi, meanings
+- `data/references/full-japanese-study-deck/results/kanji-info.json` — FJSD mnemonics + example compounds (CC BY-SA 4.0)
+
+### Data Quality Notes
+
+Two corruption issues were caught and fixed in the build script (see `docs/gotchas.md` 2026-04-08 entries):
+
+1. **KANJIDIC kun'yomi corruption** — Some kun'yomi entries in the source data are katakana (e.g., `"スイ"` instead of hiragana). The build script's `stripOkurigana()` function rejects katakana kun'yomi entries; `normalizeMeanings()` drops pollutant meanings via romaji matching. These filters are idempotent.
+
+2. **On'yomi convention** — On'yomi readings are stored in katakana in KANJIDIC2, which is conventional. The build script preserves this. Distractors for on'yomi questions must also be katakana (enforced by pool separation above).
+

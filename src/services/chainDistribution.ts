@@ -283,7 +283,7 @@ export function extractTopicGroups(
   for (const [tid, fids] of themeBuckets) {
     themeGroups.push({
       id: `theme_${tid}`,
-      label: `Group ${groupNum++}`,
+      label: `${deck.name} Group ${groupNum++}`,
       deckId: deck.id,
       factIds: fids,
       fsrs: buildFsrsSummary(fids, reviewMap),
@@ -322,6 +322,24 @@ export function extractTopicGroupsMultiDeck(
     if (deckFactIds.length === 0) continue;
     groups.push(...extractTopicGroups(deck, deckFactIds, reviewStates));
   }
+
+  // Disambiguate: if labels collide across different source decks, prefix with deck name.
+  // Priority 1 (subDecks) and Priority 2 (POS) groups don't carry a deck prefix,
+  // so two decks with identically-named sub-decks (e.g. two decks both having
+  // a "Nouns" or "Chapter 1" group) would be indistinguishable in the UI.
+  const labelCounts = new Map<string, number>();
+  for (const g of groups) {
+    labelCounts.set(g.label, (labelCounts.get(g.label) ?? 0) + 1);
+  }
+  for (const g of groups) {
+    if ((labelCounts.get(g.label) ?? 0) > 1) {
+      const sourceDeck = decks.find(d => d.id === g.deckId);
+      if (sourceDeck && !g.label.startsWith(sourceDeck.name)) {
+        g.label = `${sourceDeck.name}: ${g.label}`;
+      }
+    }
+  }
+
   return groups;
 }
 

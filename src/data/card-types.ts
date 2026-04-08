@@ -18,6 +18,7 @@ export const CANONICAL_FACT_DOMAINS = [
   'human_body_health',
   'food_cuisine',
   'art_architecture',
+  'social_sciences',
   'language',
   'mathematics',   // Procedural math domain — generates problems algorithmically, no static facts
 ] as const;

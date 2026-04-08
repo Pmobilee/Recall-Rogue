@@ -62,7 +62,7 @@ Before ANY code change, read the relevant doc under `docs/ui/`. After changes, u
 ## After Making Changes
 1. `npm run typecheck` — must pass
 2. `npm run build` — must pass
-3. Visual inspect at 1920×1080: `__rrScreenshotFile()` + `__rrLayoutDump()`
+3. **MANDATORY Docker visual verify** — `scripts/docker-visual-test.sh` with `__rrScreenshotFile()` + `__rrLayoutDump()` at 1920×1080. No exceptions. Do not skip. Do not wait for user to ask.
 4. Update `docs/ui/` files
 
 ## Mandatory Prompt Requirements (for orchestrator)

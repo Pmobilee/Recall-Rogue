@@ -39,6 +39,7 @@
   let syncAnchor = $state(-1)
   let searchQuery = $state('')
   let sidebarCollapsed = $state(false)
+  let factScrollEl = $state<HTMLElement | null>(null)
 
   const reviewStates = $derived($playerSave?.reviewStates ?? [])
   const masteredCount = $derived(getMasteredFactCount(reviewStates))
@@ -138,6 +139,7 @@
     selectedSubcategory = null
     selectedEntry = null
     searchQuery = ''
+    if (factScrollEl) factScrollEl.scrollTop = 0
   }
 
   function handleBack(): void {
@@ -346,7 +348,7 @@
         </div>
 
         <!-- Scrollable fact grid -->
-        <div class="fact-scroll">
+        <div class="fact-scroll" bind:this={factScrollEl}>
           <div class="fact-grid">
             {#each filteredDomainEntries as entry (entry.fact.id)}
               <button class="fact-row" onclick={() => (selectedEntry = entry)} type="button">

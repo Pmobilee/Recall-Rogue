@@ -355,8 +355,8 @@ describe('extractTopicGroups – chainThemeId fallback', () => {
     const theme0 = groups.find(g => g.id === 'theme_0');
     expect(theme0).toBeDefined();
     expect(theme0!.factIds).toHaveLength(2);
-    // Labels should be generic
-    expect(groups.map(g => g.label)).toContain('Group 1');
+    // Labels are prefixed with deck name
+    expect(groups.map(g => g.label)).toContain('d1 Group 1');
   });
 });
 
@@ -760,5 +760,133 @@ describe('no facts silently dropped', () => {
     for (const fid of ['f1', 'f2', 'f3', 'f4', 'f5']) {
       expect(dist.factToChain.has(fid)).toBe(true);
     }
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 7. Fallback group labels — deck name prefix
+// ---------------------------------------------------------------------------
+
+describe('extractTopicGroups – fallback group label prefix', () => {
+  it('prefixes fallback group labels with deck name', () => {
+    // A deck with no subDecks and no partOfSpeech falls back to chainThemeId grouping.
+    // Each group label should be "DeckName Group N", not bare "Group N".
+    const facts = [
+      makeFact('f1', { chainThemeId: 0 }),
+      makeFact('f2', { chainThemeId: 0 }),
+      makeFact('f3', { chainThemeId: 1 }),
+    ];
+    const deck = makeDeck('Japanese N5', facts); // makeDeck sets name = id
+
+    const groups = extractTopicGroups(deck, ['f1', 'f2', 'f3'], []);
+
+    expect(groups).toHaveLength(2);
+    // Labels must be prefixed with deck name
+    for (const g of groups) {
+      expect(g.label).toMatch(/^Japanese N5 Group \d+$/);
+    }
+    // Should not use bare "Group N"
+    for (const g of groups) {
+      expect(g.label).not.toMatch(/^Group \d+$/);
+    }
+  });
+
+  it('uses the numeric suffix 1, 2, 3... per distinct chainThemeId bucket', () => {
+    const facts = [
+      makeFact('a', { chainThemeId: 5 }),
+      makeFact('b', { chainThemeId: 10 }),
+      makeFact('c', { chainThemeId: 20 }),
+    ];
+    const deck = makeDeck('My Deck', facts); // makeDeck sets name = id
+
+    const groups = extractTopicGroups(deck, ['a', 'b', 'c'], []);
+
+    expect(groups).toHaveLength(3);
+    const labels = groups.map(g => g.label).sort();
+    expect(labels).toEqual(['My Deck Group 1', 'My Deck Group 2', 'My Deck Group 3']);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 8. Multi-deck collision disambiguation
+// ---------------------------------------------------------------------------
+
+describe('extractTopicGroupsMultiDeck – collision disambiguation', () => {
+  it('disambiguates colliding subDeck names from different decks with deck prefix', () => {
+    // Two decks both have a sub-deck named "Vocabulary".
+    // After multi-deck extraction, both groups share the label "Vocabulary".
+    // The disambiguation pass should prefix them with their source deck name.
+    const deck1Facts = [makeFact('d1f1'), makeFact('d1f2'), makeFact('d1f3')];
+    const deck2Facts = [makeFact('d2f1'), makeFact('d2f2'), makeFact('d2f3')];
+
+    const deck1 = makeDeck('deck_alpha', deck1Facts, [
+      { id: 'vocab_a', name: 'Vocabulary', factIds: ['d1f1', 'd1f2', 'd1f3'] },
+    ]);
+
+    const deck2 = makeDeck('deck_beta', deck2Facts, [
+      { id: 'vocab_b', name: 'Vocabulary', factIds: ['d2f1', 'd2f2', 'd2f3'] },
+    ]);
+
+    const allFactIds = [...deck1Facts, ...deck2Facts].map(f => f.id);
+    const groups = extractTopicGroupsMultiDeck([deck1, deck2], allFactIds, []);
+
+    // Both source groups had "Vocabulary" — they should now be prefixed
+    const labels = groups.map(g => g.label);
+    expect(labels).not.toContain('Vocabulary'); // bare label should be gone
+    expect(labels).toContain('deck_alpha: Vocabulary');
+    expect(labels).toContain('deck_beta: Vocabulary');
+  });
+
+  it('does NOT prefix labels that are unique across decks', () => {
+    // Deck 1 has "Nouns", deck 2 has "Grammar". No collision — no prefix.
+    const deck1Facts = [
+      makeFact('n1', { partOfSpeech: 'noun' }),
+      makeFact('n2', { partOfSpeech: 'noun' }),
+      makeFact('n3', { partOfSpeech: 'noun' }),
+      makeFact('n4', { partOfSpeech: 'noun' }),
+      makeFact('n5', { partOfSpeech: 'noun' }),
+    ];
+    const deck2Facts = [
+      makeFact('g1', { partOfSpeech: 'grammar' }),
+      makeFact('g2', { partOfSpeech: 'grammar' }),
+      makeFact('g3', { partOfSpeech: 'grammar' }),
+      makeFact('g4', { partOfSpeech: 'grammar' }),
+      makeFact('g5', { partOfSpeech: 'grammar' }),
+    ];
+
+    const deck1 = makeDeck('deck_a', deck1Facts); // name = 'deck_a'
+    const deck2 = makeDeck('deck_b', deck2Facts); // name = 'deck_b'
+
+    const allFactIds = [...deck1Facts, ...deck2Facts].map(f => f.id);
+    const groups = extractTopicGroupsMultiDeck([deck1, deck2], allFactIds, []);
+
+    // "Nouns" and "Grammars" are unique — no prefix needed
+    const labels = groups.map(g => g.label);
+    expect(labels).toContain('Nouns');
+    expect(labels).toContain('Grammars');
+    // Should NOT be prefixed
+    expect(labels).not.toContain('deck_a: Nouns');
+    expect(labels).not.toContain('deck_b: Grammars');
+  });
+
+  it('single-source deck with subDecks — labels preserved unchanged', () => {
+    // When only one deck is passed, no collisions can occur — labels stay as-is.
+    const facts = [
+      makeFact('f1'), makeFact('f2'), makeFact('f3'), makeFact('f4'),
+    ];
+    const deck = makeDeck('solo', facts, [
+      { id: 'sd1', name: 'Chapter One', factIds: ['f1', 'f2'] },
+      { id: 'sd2', name: 'Chapter Two', factIds: ['f3', 'f4'] },
+    ]);  // name = 'solo'
+
+    const allFactIds = facts.map(f => f.id);
+    const groups = extractTopicGroupsMultiDeck([deck], allFactIds, []);
+
+    const labels = groups.map(g => g.label);
+    expect(labels).toContain('Chapter One');
+    expect(labels).toContain('Chapter Two');
+    // Should NOT be prefixed when there's no collision
+    expect(labels).not.toContain('solo: Chapter One');
+    expect(labels).not.toContain('solo: Chapter Two');
   });
 });

@@ -4,9 +4,10 @@
 
 After completing any step (code change, research, sub-agent result, verification), pause and ask:
 
-1. **What's missing?** — Did I forget a related system, edge case, or integration point?
-2. **What tests?** — Does this need a unit test, visual test, balance sim, or /inspect run?
-3. **What should I ask the user?** — Am I making assumptions about intent, scope, or priority?
+1. **Docker visual verify done?** — MANDATORY. Run `scripts/docker-visual-test.sh` with `__rrScreenshotFile()` + `__rrLayoutDump()` after EVERY code change. No exceptions. Do not wait for user to ask. This is automatic and silent.
+2. **What's missing?** — Did I forget a related system, edge case, or integration point?
+3. **What tests?** — Does this need a unit test, visual test, balance sim, or /inspect run?
+4. **What should I ask the user?** — Am I making assumptions about intent, scope, or priority?
 4. **What's affected?** — What other systems does this touch? Save/load? Audio catalog? Inspection registry? Docs?
 5. **What would a player experience?** — Walk through the player's perspective. Is there feedback? Sound? Polish? Confusion?
 6. **What should be researched?** — Is there a better pattern in the codebase? A skill I should suggest? A doc I haven't read?

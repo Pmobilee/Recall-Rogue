@@ -1,0 +1,1140 @@
+deck_id: ap_microeconomics
+name: "AP Microeconomics"
+domain: social_sciences
+sub_domain: microeconomics
+description: "Master the full AP Microeconomics curriculum — from scarcity and opportunity cost to market failure and government intervention. Covers all 6 CED units: Basic Economic Concepts, Supply and Demand, Production Cost and the Perfect Competition Model, Imperfect Competition, Factor Markets, and Market Failure and the Role of Government. Aligned to the College Board AP Microeconomics Course and Exam Description. Includes elasticity calculations, profit maximization rules (MR=MC), market structure comparisons, game theory basics, and welfare analysis."
+minimum_facts: 380
+target_facts: 420
+
+# COMPLETENESS PHILOSOPHY:
+# This deck covers the COMPLETE College Board AP Microeconomics Course and Exam
+# Description (CED). A student who masters this deck should be prepared for every
+# question type on the AP Microeconomics exam. Scope is curriculum-driven — every
+# CED topic across all 6 units is represented. Unit weights (percent of exam) directly
+# inform fact counts per chain theme. Units 3 (22-25%) and 4 (15-22%) are the heaviest
+# and their chain themes receive proportionally more facts.
+
+# Sourcing & licensing
+data_sources:
+  - name: College Board AP Microeconomics Course and Exam Description (CED)
+    url: https://apcentral.collegeboard.org/media/pdf/ap-microeconomics-course-and-exam-description.pdf
+    license: public educational resource
+    usage: Authoritative unit/topic structure, learning objectives, essential knowledge statements, exam weight distribution
+  - name: OpenStax Principles of Microeconomics 3e
+    url: https://openstax.org/books/principles-microeconomics-3e/pages/1-introduction
+    license: CC-BY-4.0
+    usage: Concept definitions, explanations, worked examples
+  - name: Wikipedia — Economics
+    url: https://en.wikipedia.org/wiki/Economics
+    license: CC-BY-SA-4.0
+    usage: Economist biographies, concept summaries, historical context
+  - name: Wikidata
+    url: https://www.wikidata.org/
+    license: CC0
+    usage: Economist birth/death dates, Nobel Prize years, verified numerical values
+
+asset_sources: []
+
+# ============================================================
+# CHAIN THEMES — 10 thematic zones mapping to CED unit groupings
+# Each theme is a distinct "dungeon zone" with its own facts pool
+# Fact counts weighted by exam percentage per CED
+# ============================================================
+
+chain_themes:
+
+  - id: 0
+    name: "The Invisible Hand"
+    ced_coverage: "Unit 1 Topics 1.1-1.6: Basic Economic Concepts (12-15% of exam)"
+    target_facts: 55
+    description: >
+      The foundational layer of economic reasoning — scarcity, trade-offs, and the logic of
+      markets. Players build from first principles: why scarcity forces choices, how opportunity
+      cost is calculated, how the Production Possibilities Curve illustrates efficiency and growth,
+      and why comparative advantage drives gains from trade. The unit closes with the mechanics of
+      demand and supply and how markets reach equilibrium. Every concept in the course ultimately
+      rests on the ideas introduced here — this is the bedrock.
+    key_concepts:
+      - Scarcity — unlimited wants vs. limited resources; forces trade-offs and choice
+      - Factors of production — land, labor, capital, entrepreneurship; distinguish human vs. physical capital
+      - Opportunity cost — value of the next-best alternative forgone; implicit and explicit costs
+      - Marginal analysis — decisions made at the margin; marginal benefit vs. marginal cost
+      - Production Possibilities Curve (PPC) — all combinations of two goods with given resources and technology
+      - Points on the PPC — productive efficiency (on curve), inefficiency (inside), unattainable (outside)
+      - Shape of PPC — linear (constant opportunity cost), bowed-out/concave (increasing opportunity cost, law of increasing opportunity costs)
+      - Shifts of the PPC — caused by changes in resources, technology, or trade; growth = rightward shift
+      - Absolute advantage — producing more of a good with same resources (or same good with fewer resources)
+      - Comparative advantage — producing a good at lower opportunity cost; the basis for specialization
+      - Calculating comparative advantage from output or input tables — compare opportunity costs
+      - Terms of trade — must be between the two countries' opportunity costs to benefit both parties
+      - Gains from trade — total output increases when parties specialize according to comparative advantage
+      - Law of Demand — inverse relationship between price and quantity demanded; ceteris paribus
+      - Income effect and substitution effect — explain why quantity demanded falls when price rises
+      - Normal goods vs. inferior goods — income effect direction differs
+      - Complements vs. substitutes — define and distinguish; effect on cross-price elasticity sign
+      - Determinants of demand (TRIBE) — Tastes, Related goods prices, Income, Buyers (number of), Expectations
+      - Law of Supply — direct relationship between price and quantity supplied; ceteris paribus
+      - Determinants of supply (ROTTEN) — Resource costs, Other goods prices, Technology, Taxes/subsidies, Expectations, Number of sellers
+      - Demand curve vs. supply curve shifts — change in non-price determinant causes shift; change in price causes movement
+      - Market equilibrium — where quantity demanded = quantity supplied; equilibrium price and quantity
+      - Surplus (excess supply) — price above equilibrium; downward pressure on price
+      - Shortage (excess demand) — price below equilibrium; upward pressure on price
+      - Changes in equilibrium — predict new P* and Q* from shift in demand or supply using four-step analysis
+
+  - id: 1
+    name: "The Market Crossroads"
+    ced_coverage: "Unit 2 Topics 2.1-2.4: Elasticity (15-20% of exam, elasticity portion)"
+    target_facts: 50
+    description: >
+      Elasticity quantifies how responsive buyers and sellers are to price changes — and understanding
+      responsiveness is critical for predicting the effects of taxes, subsidies, and price controls.
+      Players master the midpoint formula for price elasticity of demand, learn the determinants that
+      make goods elastic or inelastic, and use the total revenue test to connect elasticity to business
+      decisions. Income elasticity reveals normal vs. inferior goods. Cross-price elasticity reveals
+      complements vs. substitutes. Price elasticity of supply completes the picture.
+    key_concepts:
+      - Price elasticity of demand (PED) — % change in quantity demanded / % change in price; always negative (by convention sometimes stated as absolute value)
+      - Midpoint formula — use midpoint of price and quantity to calculate % changes symmetrically
+      - Elastic demand — |PED| > 1; quantity very responsive to price change
+      - Inelastic demand — |PED| < 1; quantity not very responsive to price change
+      - Unit elastic demand — |PED| = 1; % change in Q exactly equals % change in P
+      - Perfectly elastic demand — |PED| = ∞; horizontal demand curve; any price increase = zero quantity demanded
+      - Perfectly inelastic demand — |PED| = 0; vertical demand curve; quantity unresponsive to any price change
+      - Determinants of PED — number of substitutes (more = more elastic), necessity vs. luxury (necessity = inelastic), time horizon (longer = more elastic), proportion of income (larger share = more elastic)
+      - Total revenue test — elastic: price and TR move in opposite directions; inelastic: same direction; unit elastic: TR unchanged
+      - Total revenue = P × Q; used to determine elasticity without knowing coefficient
+      - Income elasticity of demand (YED) — % change in Qd / % change in income
+      - YED > 0 → normal good; YED < 0 → inferior good; YED > 1 → luxury good
+      - Cross-price elasticity of demand (XED) — % change in Qd of good A / % change in price of good B
+      - XED > 0 → substitutes (higher price of B increases demand for A); XED < 0 → complements
+      - Price elasticity of supply (PES) — % change in quantity supplied / % change in price; always positive
+      - Elastic supply — |PES| > 1; Inelastic supply — |PES| < 1
+      - Determinants of PES — time to produce (longer production time = more inelastic), availability of inputs, storage costs, spare capacity
+      - Short-run supply more inelastic than long-run (firms need time to adjust capacity)
+      - Slope vs. elasticity — two different things; elasticity changes along a linear demand curve even when slope is constant
+      - Elasticity and tax incidence — more inelastic side bears larger share of tax burden
+
+  - id: 2
+    name: "Price Signals"
+    ced_coverage: "Unit 2 Topics 2.5-2.8: Consumer/Producer Surplus, Government Intervention, International Trade (15-20% of exam, intervention portion)"
+    target_facts: 50
+    description: >
+      Markets generate welfare — and government interventions redistribute it. Players measure
+      consumer surplus and producer surplus graphically, see how total surplus is maximized at
+      equilibrium (allocative efficiency), and trace how deadweight loss emerges when markets
+      are distorted. Price ceilings create shortages; price floors create surpluses. Per-unit
+      taxes shift supply, reduce quantity, and split the burden between buyers and sellers in
+      proportion to their elasticities. International trade expands total surplus but creates
+      winners and losers — the foundation of every trade policy debate.
+    key_concepts:
+      - Consumer surplus — area above price below demand curve; difference between willingness to pay and actual price paid
+      - Producer surplus — area below price above supply curve; difference between price received and minimum acceptable price
+      - Total surplus (economic surplus) — consumer surplus + producer surplus; maximized at competitive equilibrium
+      - Allocative efficiency — resources allocated where MB = MC; achieved at competitive equilibrium (P = MC)
+      - Deadweight loss — loss in total surplus from market distortion; triangle in supply-demand diagram
+      - Price ceiling — legal maximum price; binding when set below equilibrium; creates persistent shortage
+      - Rent control as price ceiling example — below-equilibrium max price creates housing shortage
+      - Price floor — legal minimum price; binding when set above equilibrium; creates persistent surplus
+      - Minimum wage as price floor example — above-equilibrium minimum creates labor surplus (unemployment)
+      - Non-binding price controls — set above equilibrium (ceiling) or below equilibrium (floor) have no effect
+      - Effects of binding price ceiling — shortage, deadweight loss, non-price rationing, black markets
+      - Effects of binding price floor — surplus, deadweight loss, government purchases to maintain floor
+      - Per-unit tax — shifts supply curve upward by tax amount; reduces equilibrium quantity; raises price buyers pay, lowers price sellers receive
+      - Tax incidence — how burden is shared; more inelastic side bears more of the tax
+      - Tax wedge — difference between price buyers pay and price sellers receive after tax
+      - Per-unit subsidy — shifts supply curve downward; increases equilibrium quantity; lowers price buyers pay, raises price sellers receive
+      - Deadweight loss from taxation — triangle between consumer's price and seller's price at new quantity
+      - Tariff — tax on imported goods; raises domestic price, reduces imports, creates deadweight loss; benefits domestic producers
+      - Import quota — quantity limit on imports; similar effects to tariff but government receives no revenue
+      - World price vs. domestic price — if world price < domestic: country imports; if world price > domestic: country exports
+      - Effects of free trade on domestic welfare — import-competing producers lose; consumers and export producers gain; net gain for economy
+
+  - id: 3
+    name: "The Cost Machine"
+    ced_coverage: "Unit 3 Topics 3.1-3.4: Production Functions and Cost Curves (22-25% of exam)"
+    target_facts: 45
+    description: >
+      Inside the firm: how inputs become outputs and how output volume determines costs. Players
+      trace the short-run production function from total product to marginal and average product,
+      see diminishing marginal returns kick in, and connect the production function to cost curves
+      through the relationship between marginal product and marginal cost. The full family of cost
+      curves — AFC, AVC, ATC, MC — is constructed and their geometric relationships mastered.
+      Long-run average cost and returns to scale complete the picture from short-run production
+      through economies of scale to minimum efficient scale.
+    key_concepts:
+      - Short run — at least one fixed input (typically capital); cannot vary all inputs
+      - Long run — all inputs are variable; no fixed costs in the long run
+      - Total product (TP) — total output produced for a given quantity of labor input
+      - Marginal product (MP) — change in TP from adding one more unit of variable input; MP = ΔTP/ΔL
+      - Average product (AP) — total output per unit of input; AP = TP/L
+      - Law of diminishing marginal returns — as variable input added to fixed input, MP eventually falls
+      - MP rises initially (specialization), peaks, then falls as fixed input becomes congested
+      - When MP > AP, AP is rising; when MP < AP, AP is falling; MP intersects AP at AP's maximum
+      - Fixed costs (FC) — costs that do not change with output (rent, equipment payments); paid even at Q = 0
+      - Variable costs (VC) — costs that change with output (labor, materials)
+      - Total cost (TC) — TC = FC + VC; TC curve starts at FC and rises as Q increases
+      - Average fixed cost (AFC) — AFC = FC/Q; always falls as output increases (spreads fixed cost over more units)
+      - Average variable cost (AVC) — AVC = VC/Q; U-shaped; minimum at low-to-medium output
+      - Average total cost (ATC) — ATC = TC/Q = AFC + AVC; U-shaped; minimum at higher output than AVC minimum
+      - Marginal cost (MC) — MC = ΔTC/ΔQ = ΔAVC/ΔQ; represents cost of producing one more unit
+      - MC curve is U-shaped; MC intersects AVC and ATC at their minimum points (from below)
+      - Relationship between MP and MC — when MP is rising, MC is falling; when MP is falling, MC is rising; inverse relationship
+      - ATC curve lies above AVC curve by exactly AFC at every quantity (gap = AFC)
+      - AFC continually falls and approaches zero; gap between ATC and AVC narrows as Q increases
+      - Long-run average total cost (LRATC) — envelope curve of all possible short-run ATC curves
+      - Economies of scale — LRATC falls as output increases; larger firms have lower average costs
+      - Diseconomies of scale — LRATC rises as output increases; organizational inefficiencies dominate
+      - Constant returns to scale — LRATC flat; doubling inputs doubles output exactly
+      - Minimum efficient scale (MES) — smallest output level where LRATC is minimized
+      - Accounting profit — total revenue minus explicit (out-of-pocket) costs only
+      - Economic profit — total revenue minus explicit AND implicit costs (including opportunity costs)
+      - Normal profit — zero economic profit; all resources earning their opportunity cost; firm stays in industry
+      - Explicit costs — actual money payments (wages paid, rent paid, materials purchased)
+      - Implicit costs — opportunity costs of owner-supplied resources (foregone salary, foregone interest)
+
+  - id: 4
+    name: "The Profit Calculator"
+    ced_coverage: "Unit 3 Topics 3.5-3.8: Perfect Competition and Profit Maximization (22-25% of exam)"
+    target_facts: 45
+    description: >
+      The logic of the profit-maximizing firm and the ideal competitive market. Players master the
+      universal MR = MC profit maximization rule, apply it to four profit/loss outcomes, locate the
+      shutdown point, and derive the firm supply curve. Perfect competition's characteristics make
+      individual firms price takers facing perfectly elastic demand. The long-run mechanism — entry
+      when profit exists, exit when losses persist — drives every firm to zero economic profit,
+      productive efficiency, and allocative efficiency simultaneously. This is the benchmark against
+      which every other market structure is judged.
+    key_concepts:
+      - Profit maximization rule — produce where MR = MC (and MC is rising); universal rule for all market structures
+      - Total revenue (TR) — TR = P × Q
+      - Marginal revenue (MR) — additional revenue from selling one more unit; MR = ΔTR/ΔQ
+      - Profit = TR - TC; equivalently, profit = (P - ATC) × Q (graphically: rectangle between P and ATC)
+      - Four profit/loss outcomes — economic profit (P > ATC), break-even / normal profit (P = ATC), economic loss but continue (AVC < P < ATC), shutdown (P < AVC)
+      - Economic profit is positive (above-normal); economic loss is negative; normal profit = zero economic profit
+      - Shutdown rule (short run) — shut down if P < AVC; firm loses more by producing than by closing
+      - Shutdown point — minimum AVC; below this price, firm shuts down immediately
+      - Continue producing at a loss if P > AVC — at least covers variable costs and part of fixed costs
+      - In the short run, fixed costs are sunk — irrelevant for shutdown decision
+      - Firm supply curve = MC curve above the AVC minimum (shutdown point)
+      - Perfect competition characteristics — many independent buyers and sellers, identical/homogeneous products, free entry and exit, perfect information, no individual market power
+      - Price taker — individual competitive firm has no control over price; takes market price as given
+      - Demand curve for individual perfectly competitive firm — perfectly elastic (horizontal) at market price
+      - For a perfectly competitive firm: P = MR = AR = D (price equals marginal revenue equals average revenue)
+      - Short-run equilibrium in perfect competition — firm produces where P = MR = MC
+      - Short-run industry supply — horizontal sum of all individual firm MC curves above AVC
+      - Long-run adjustment — if economic profit exists, new firms enter; if losses exist, firms exit
+      - Entry of new firms — supply increases, price falls, profits shrink toward zero
+      - Exit of firms — supply decreases, price rises, losses shrink toward zero
+      - Long-run equilibrium in perfect competition — P = MR = MC = ATC (zero economic profit)
+      - Productive efficiency — output at minimum ATC; achieved in long-run competitive equilibrium
+      - Allocative efficiency — output where P = MC; society's marginal benefit equals marginal cost; achieved in perfect competition
+      - Long-run supply curve — horizontal if constant-cost industry; upward sloping if increasing-cost industry
+
+  - id: 5
+    name: "The Monopoly Engine"
+    ced_coverage: "Unit 4 Topics 4.1-4.3: Monopoly and Price Discrimination (15-22% of exam)"
+    target_facts: 40
+    description: >
+      A single seller with market power — no close substitutes, no entry. Players learn why monopoly
+      MR lies below the demand curve, why this forces the monopolist to restrict output below the
+      socially optimal level, and how to find the profit-maximizing price and quantity graphically.
+      Monopoly produces deadweight loss that perfect competition eliminates — the comparison drives
+      the rationale for antitrust law. Natural monopoly and its regulation (socially optimal vs.
+      fair-return pricing) add policy depth. Price discrimination shows how monopolists can extract
+      more consumer surplus — and under what conditions they choose to do so.
+    key_concepts:
+      - Monopoly characteristics — single seller, unique product with no close substitutes, high barriers to entry, price maker
+      - Barriers to entry — legal barriers (patents, licenses, franchises), natural barriers (economies of scale), strategic barriers (brand loyalty, predatory pricing)
+      - Natural monopoly — one firm can supply entire market at lower cost than two or more firms; LRATC falls throughout demand range
+      - Monopoly faces downward-sloping market demand curve (unlike competitive firm's horizontal demand)
+      - Monopolist must lower price to sell more; affects all units sold (no price discrimination base case)
+      - Marginal revenue for monopolist — MR < P because each additional unit sold requires price reduction on all previous units
+      - MR curve lies below demand curve; for linear demand, MR has same y-intercept and twice the slope
+      - Monopoly profit maximization — produce where MR = MC, then charge the price on the demand curve above that quantity
+      - Monopoly equilibrium — P > MC (unlike perfect competition where P = MC); allocatively inefficient
+      - Monopoly deadweight loss — triangle between competitive quantity and monopoly quantity, bounded by demand and MC curves
+      - Monopoly profit — (P - ATC) × Q if P > ATC; monopoly does not always earn economic profit
+      - Monopoly compared to perfect competition — higher price, lower output, less total surplus, deadweight loss
+      - Regulation of monopoly — two approaches: socially optimal (P = MC, may require subsidy if below ATC) or fair-return (P = ATC, zero economic profit but no DWL)
+      - Socially optimal regulation — sets P = MC; allocatively efficient but natural monopoly earns economic loss
+      - Fair-return (average cost) regulation — sets P = ATC; earns normal profit; some DWL remains
+      - Price discrimination — charging different prices to different consumers for the same good
+      - Conditions for price discrimination — must have market power, ability to separate markets, ability to prevent resale between groups
+      - First-degree (perfect) price discrimination — charge each consumer their maximum willingness to pay; captures all consumer surplus; eliminates DWL
+      - Second-degree price discrimination — charge different prices based on quantity purchased (bulk discounts, tiered pricing)
+      - Third-degree price discrimination — separate markets by identifiable group characteristic (student discounts, geographic pricing)
+      - Price discrimination increases producer surplus; effects on total surplus depend on degree and method
+
+  - id: 6
+    name: "The Competition Spectrum"
+    ced_coverage: "Unit 4 Topics 4.4-4.7: Monopolistic Competition, Oligopoly, Game Theory (15-22% of exam)"
+    target_facts: 40
+    description: >
+      Between perfect competition and monopoly lies the real world of differentiated products and
+      strategic interdependence. Monopolistic competition gives each firm short-run pricing power but
+      long-run zero profit — the same entry mechanism as perfect competition. Oligopoly introduces
+      mutual interdependence: what one firm does affects all others. Game theory formalizes this
+      strategic thinking — players solve payoff matrices, find dominant strategies and Nash equilibria,
+      and see why cartels are unstable. The prisoner's dilemma explains why oligopolists often compete
+      even when collusion would benefit them collectively.
+    key_concepts:
+      - Monopolistic competition characteristics — many firms, differentiated (non-identical) products, easy entry and exit, some pricing power over own product
+      - Product differentiation — physical differences, branding, location, perceived quality; basis of market power in monopolistic competition
+      - Short-run equilibrium in monopolistic competition — same as monopoly: MR = MC, P > MC; may earn economic profit or loss
+      - Long-run equilibrium in monopolistic competition — entry eliminates profit; demand curve shifts left until tangent with ATC
+      - Tangency condition — in long-run monopolistic competition, P = ATC (zero economic profit) but P > MC (allocatively inefficient)
+      - Excess capacity in monopolistic competition — firm produces below minimum ATC in long run; distinguishes it from perfect competition
+      - Advertising and non-price competition — shift demand curve and/or make it less elastic; increase costs
+      - Oligopoly characteristics — few dominant firms, homogeneous or differentiated products, significant barriers to entry, mutual interdependence
+      - Mutual interdependence — each firm's optimal decision depends on what rivals do; key distinction from other market structures
+      - Collusion — oligopolists agree to restrict output and raise prices; behave as a cartel/joint monopoly
+      - Cartel — formal collusion agreement; maximizes joint profit but individually unstable
+      - Prisoner's dilemma — each player has incentive to defect; Nash equilibrium is mutual defection even when cooperation is better for both
+      - Dominant strategy — best response regardless of what the other player does
+      - Nash equilibrium — no player can improve their outcome by unilaterally changing strategy; each player plays best response to others
+      - Payoff matrix — grid showing outcomes for each combination of strategies; used to find dominant strategies and Nash equilibrium
+      - Cartel instability — each member has incentive to cheat (produce more than quota) since MR > MC at cartel quantity; prisoner's dilemma logic
+      - Kinked demand curve model — oligopolist faces elastic demand for price increases (rivals don't follow) but inelastic demand for price decreases (rivals match); creates price rigidity
+      - Herfindahl-Hirschman Index (HHI) — sum of squared market shares; measures market concentration; used by antitrust regulators
+      - Contestable markets — even monopoly or oligopoly may price competitively if entry/exit is free and costless (threat of entry constrains behavior)
+      - Game theory applications — predicts behavior when firms make simultaneous strategic decisions under uncertainty
+
+  - id: 7
+    name: "Factor Markets"
+    ced_coverage: "Unit 5 Topics 5.1-5.4: Factor Markets (10-13% of exam)"
+    target_facts: 50
+    description: >
+      Labor, capital, and land are bought and sold in factor markets — and the same optimization
+      logic that governs product markets governs resource markets. Players discover derived demand
+      (why firms hire labor), compute marginal revenue product (MRP) as the firm's demand for labor,
+      apply the universal hiring rule (MRP = MRC), and see how competitive labor markets set wages.
+      Monopsony — a single buyer of labor — forces wages and employment below the competitive level,
+      the mirror image of monopoly in product markets. Factor market analysis also reveals why wages
+      differ across workers and why minimum wage effects differ in competitive vs. monopsonistic markets.
+    key_concepts:
+      - Factor markets — markets for inputs to production: labor, capital, land, entrepreneurship
+      - Derived demand — demand for a factor input derived from demand for the product it produces; more product demand = more factor demand
+      - Marginal revenue product (MRP) — additional revenue from hiring one more unit of a factor; MRP = MR × MP
+      - In perfectly competitive product market, MRP = P × MP (since P = MR in competitive markets)
+      - MRP curve is the firm's demand curve for a factor input; slopes downward due to diminishing marginal returns
+      - Marginal resource cost (MRC) — additional cost of hiring one more unit of a factor
+      - In competitive labor market, MRC = wage rate (firm is wage taker)
+      - Profit-maximizing hiring rule — hire until MRP = MRC; this maximizes profit from input use
+      - Competitive labor market equilibrium — wage = MRP of labor; determined by intersection of labor supply and demand
+      - Shifts in labor demand — caused by: change in product price, change in worker productivity, change in number of firms, change in technology (substitutes vs. complements for labor)
+      - Shifts in labor supply — caused by: demographic changes, immigration, non-wage benefits, education and training, alternative wages
+      - Wage differentials — caused by: differences in human capital, working conditions, geographic immobility, discrimination, union bargaining
+      - Human capital — skills, knowledge, experience embodied in workers; investment in education increases human capital and wages
+      - Monopsony — single buyer (employer) in a factor market; faces upward-sloping labor supply curve
+      - Monopsonist's labor supply = MRC relationship — MRC > wage because hiring one more worker requires raising wage for all workers
+      - Monopsony equilibrium — hire where MRP = MRC, but pay wage on supply curve (below MRC); lower employment and lower wages than competitive market
+      - Monopsony deadweight loss — triangle between competitive and monopsony equilibrium; underallocation of labor
+      - Minimum wage in competitive labor market — above-equilibrium minimum wage creates unemployment (surplus of labor)
+      - Minimum wage in monopsony — can increase both wages and employment simultaneously up to competitive level (corrects monopsony underpayment)
+      - Bilateral monopoly — monopsonist buyer faces monopoly union seller; wage determined by bargaining; indeterminate in theory
+      - Least-cost combination of inputs — minimize cost for given output: MP of L / W = MP of K / R (input prices equalize marginal products per dollar)
+      - Profit-maximizing combination of inputs — hire until MRP of each factor equals its price (MRP_L = W and MRP_K = R)
+
+  - id: 8
+    name: "Market Failures"
+    ced_coverage: "Unit 6 Topics 6.1-6.4: Externalities and Public Goods (8-13% of exam)"
+    target_facts: 25
+    description: >
+      Markets are efficient — but only when all costs and benefits are captured in private prices.
+      Externalities break this link: negative externalities (pollution, noise) cause overproduction;
+      positive externalities (vaccination, education) cause underproduction. Players identify the gap
+      between private and social costs/benefits, calculate optimal output, and evaluate Pigouvian
+      taxes, subsidies, cap-and-trade, and the Coase theorem as corrective mechanisms. Public goods
+      (non-rival, non-excludable) suffer from free-rider problems that prevent private markets from
+      providing them efficiently — the core justification for government provision.
+    key_concepts:
+      - Market failure — market equilibrium is not allocatively efficient; private markets over- or under-allocate resources
+      - Negative externality — cost imposed on third parties not involved in the transaction (pollution, second-hand smoke, noise)
+      - Negative externality causes overproduction — private supply understates social cost; MSC > MPC
+      - Marginal social cost (MSC) — marginal private cost + marginal external cost; lies above private supply curve
+      - Socially optimal quantity with negative externality — where MSC = MSB (demand); less than market equilibrium
+      - Deadweight loss from negative externality — triangle between market quantity and optimal quantity
+      - Positive externality — benefit received by third parties not involved in the transaction (vaccination, education, research)
+      - Positive externality causes underproduction — private demand understates social benefit; MSB > MPB
+      - Marginal social benefit (MSB) — marginal private benefit + marginal external benefit; lies above demand curve
+      - Socially optimal quantity with positive externality — where MSC = MSB; greater than market equilibrium
+      - Pigouvian tax — per-unit tax equal to external cost; shifts private supply up to equal MSC; internalizes negative externality
+      - Pigouvian subsidy — per-unit subsidy equal to external benefit; shifts private demand up to equal MSB; internalizes positive externality
+      - Cap and trade — government sets total cap on emissions, issues tradeable permits; firms choose to reduce emissions or buy permits; efficient allocation of abatement
+      - Coase theorem — if property rights are well-defined and transaction costs are low, private parties can bargain to the efficient outcome regardless of who holds the rights
+      - Limitations of Coase theorem — fails with many parties, high transaction costs, or difficulty defining/enforcing property rights
+      - Public goods — non-rival (one person's consumption does not reduce availability to others) and non-excludable (cannot prevent non-payers from consuming)
+      - Private goods — rival and excludable; markets allocate efficiently
+      - Common resources — rival but non-excludable; tragedy of the commons — overuse and depletion (fisheries, grazing land)
+      - Club goods — non-rival but excludable; can be provided privately (cable TV, toll roads)
+      - Free-rider problem — individuals consume public good without paying because exclusion is impossible; private market under-provides
+      - Government provision of public goods — justified by free-rider problem; funded through taxation
+
+  - id: 9
+    name: "The Policy Toolbox"
+    ced_coverage: "Unit 6 Topics 6.5-6.8: Inequality, Government Policy, and Consumer Choice (8-13% of exam)"
+    target_facts: 20
+    description: >
+      The final chapter: measuring income inequality, understanding why government interventions
+      sometimes fail, and completing the microeconomic model with marginal utility and consumer
+      optimization. Players read the Lorenz curve and Gini coefficient to quantify inequality,
+      examine redistributive policy tools and their trade-offs, and explore government failure —
+      regulatory capture, rent-seeking, and the public choice critique. The utility maximization
+      rule (MU/P equalized across goods) closes the circle from consumer preferences to demand
+      back to market equilibrium.
+    key_concepts:
+      - Lorenz curve — plots cumulative share of income vs. cumulative share of population; perfect equality = 45° diagonal
+      - Gini coefficient — area between Lorenz curve and 45° line / total area under 45° line; ranges from 0 (perfect equality) to 1 (perfect inequality)
+      - Higher Gini = more inequality; Gini of 0 = all income equally distributed; Gini of 1 = one person has all income
+      - Income inequality sources — differences in wages, wealth accumulation, inheritance, capital returns, discrimination
+      - Progressive tax — higher-income earners pay higher percentage; reduces post-tax inequality
+      - Regressive tax — lower-income earners pay higher percentage of income (e.g., flat consumption tax); increases inequality
+      - Proportional (flat) tax — same percentage regardless of income
+      - Transfer payments — government payments to individuals (welfare, Social Security, food stamps); redistribute income downward
+      - Trade-off between equity and efficiency — redistribution reduces incentives to work and invest; efficiency loss
+      - Government failure — government intervention creates inefficiency or fails to improve on market outcome
+      - Regulatory capture — regulated industry gains control of regulatory agency; agency serves industry interests, not public interest
+      - Rent-seeking — spending resources to gain monopoly power or subsidies rather than creating value; socially wasteful
+      - Public choice theory — politicians and bureaucrats act in their self-interest (re-election, budget maximization), not public interest
+      - Marginal utility — additional satisfaction from consuming one more unit of a good
+      - Law of diminishing marginal utility — marginal utility declines as consumption of a good increases
+      - Total utility — sum of all marginal utilities; rises at a decreasing rate; may eventually fall
+      - Utility maximization rule — consumer maximizes total utility when MU₁/P₁ = MU₂/P₂ (= MU per dollar equalized across all goods)
+      - Consumer equilibrium — all income spent, MU per dollar equal across goods; consistent with demand curve derivation
+      - Budget constraint — shows all combinations of goods purchasable given income and prices; slope = -P₁/P₂
+
+# ============================================================
+# ANSWER TYPE POOLS — 16 pools for distractor selection
+# These define the "answer space" for multiple-choice generation
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: Economic Concept Terms
+  # "What is the term for the value of the next-best alternative forgone?" → "opportunity cost"
+  - id: econ_concept_terms
+    label: "Economic Concept Terms"
+    format: term
+    estimated_count: 45
+    note: >
+      Core microeconomic vocabulary terms: opportunity cost, scarcity, comparative advantage,
+      absolute advantage, marginal utility, consumer surplus, producer surplus, deadweight loss,
+      price ceiling, price floor, price elasticity of demand, inelastic, elastic, unit elastic,
+      normal good, inferior good, substitute good, complement good, derived demand, marginal revenue
+      product, monopsony, externality, public good, free rider, Pigouvian tax, Gini coefficient,
+      Lorenz curve, regulatory capture, rent-seeking, minimum efficient scale, economies of scale,
+      allocative efficiency, productive efficiency, marginal cost, marginal revenue.
+      Key confusions: consumer surplus vs. producer surplus (above price/below price distinction);
+      allocative efficiency (P=MC) vs. productive efficiency (min ATC); normal good vs. inferior good
+      (income effect direction).
+
+  # POOL 2: Market Structure Names
+  # "A market with one seller and no close substitutes is called a?" → "monopoly"
+  - id: market_structure_names
+    label: "Market Structure Names"
+    format: proper_noun
+    estimated_count: 8
+    syntheticDistractors:
+      - "bilateral oligopoly"
+      - "triopoly"
+      - "competitive monopsony"
+      - "discriminating monopoly"
+      - "regulated duopoly"
+      - "natural oligopoly"
+      - "contestable market"
+    note: >
+      Market structure names: perfect competition, monopoly, monopolistic competition, oligopoly,
+      monopsony, natural monopoly, cartel, duopoly.
+      Key confusions: monopolistic competition vs. monopoly (many firms with differentiated products
+      vs. single firm); oligopoly vs. monopolistic competition (few vs. many firms); monopsony
+      (buyer power) vs. monopoly (seller power).
+
+  # POOL 3: Economist Names
+  # "Which economist developed the concept of Nash equilibrium?" → "John Nash"
+  - id: economist_names
+    label: "Economist Names"
+    format: proper_noun
+    estimated_count: 18
+    syntheticDistractors:
+      - "Milton Friedman"
+      - "John Maynard Keynes"
+      - "Paul Samuelson"
+      - "Eugene Fama"
+    note: >
+      Economists associated with AP Microeconomics concepts: Adam Smith (invisible hand, comparative
+      advantage), Alfred Marshall (supply and demand, elasticity), John Nash (Nash equilibrium, game
+      theory), Arthur Pigou (externalities, Pigouvian tax/subsidy), Ronald Coase (Coase theorem,
+      transaction costs, property rights), Gary Becker (human capital, discrimination economics),
+      Antoine Augustin Cournot (oligopoly duopoly model, demand curve), Vilfredo Pareto (Pareto
+      efficiency), Harold Hotelling (spatial competition, duopoly), William Vickrey (auction theory,
+      price discrimination), George Stigler (regulatory capture), James Buchanan (public choice theory),
+      Abba Lerner (Lerner index of market power), George Akerlof (asymmetric information), Lionel
+      Robbins (scarcity definition of economics), Joan Robinson (imperfect competition).
+      Key confusions: Adam Smith (microeconomics, invisible hand) vs. John Maynard Keynes
+      (macroeconomics — not covered in AP Micro); Pigou (externalities) vs. Coase (same topic,
+      different solution approach).
+
+  # POOL 4: Curve and Graph Names
+  # "Which curve shows all combinations of two goods producible with given resources?" → "production possibilities curve"
+  - id: curve_and_graph_names
+    label: "Curve and Graph Names"
+    format: term
+    estimated_count: 20
+    note: >
+      Named curves tested on AP Microeconomics: demand curve, supply curve, production possibilities
+      curve (PPC), Lorenz curve, marginal cost curve (MC), average total cost curve (ATC), average
+      variable cost curve (AVC), average fixed cost curve (AFC), marginal revenue curve (MR), total
+      product curve, marginal product curve, average product curve, long-run average total cost curve
+      (LRATC), marginal revenue product curve (MRP), labor supply curve, labor demand curve, kinked
+      demand curve.
+      Key confusions: MR curve (lies below demand for monopolist, equals demand for competitive firm);
+      ATC vs. AVC (ATC lies above AVC by AFC; both U-shaped; MC intersects both at minimum); LRATC
+      as envelope of short-run ATC curves.
+
+  # POOL 5: Equations and Formulas (Micro)
+  # "Which equation represents the profit maximization rule?" → "MR = MC"
+  - id: equation_formulas_micro
+    label: "Economic Equations and Formulas"
+    format: formula
+    estimated_count: 15
+    note: >
+      Key microeconomic equations and formulas: MR = MC (profit maximization), P = ATC (zero
+      economic profit / normal profit), MRP = MRC (input hiring rule), PED = %ΔQd / %ΔP (midpoint
+      formula), profit = TR - TC, ATC = TC/Q, MC = ΔTC/ΔQ, TR = P × Q, MRP = MR × MP,
+      YED = %ΔQd / %ΔY (income elasticity), XED = %ΔQd(A) / %ΔP(B) (cross-price elasticity),
+      MU₁/P₁ = MU₂/P₂ (utility maximization), AVC = VC/Q, AFC = FC/Q, TC = FC + VC.
+      Key confusions: MR = MC (profit maximization) vs. P = MC (allocative efficiency); profit = TR
+      - TC vs. economic profit vs. accounting profit distinction.
+
+  # POOL 6: Bracket Numbers (Micro Numerical Answers)
+  # "If |PED| = 1.5, what type of elasticity is this?" → "elastic"
+  - id: bracket_numbers_micro
+    label: "Numeric and Calculated Answers"
+    format: number
+    estimated_count: 25
+    note: >
+      Numeric answers in AP Microeconomics: elasticity coefficients (0 to ∞), Gini coefficient
+      values (0 to 1), price elasticity values (1.0, 0.5, 2.0, 0, ∞), total revenue test results,
+      output quantities at various equilibria, profit/loss rectangles, deadweight loss triangles,
+      MRP = W quantities, number of firms (1, 2, many, few), reaction function intercepts, payoff
+      matrix values (dollars of profit). Distractors must be numerically plausible and in the same
+      range as the correct answer.
+
+  # POOL 7: Shift Direction Terms
+  # "If consumer income increases and the good is normal, the demand curve will?" → "shift right"
+  - id: shift_direction_terms
+    label: "Shift and Movement Direction Terms"
+    format: term
+    estimated_count: 8
+    syntheticDistractors:
+      - "rotate clockwise"
+      - "rotate counterclockwise"
+      - "become more vertical"
+      - "become more horizontal"
+    note: >
+      Direction terms for curves: shift left (decrease), shift right (increase), movement along
+      the curve (price change), increase, decrease, no change.
+      Key confusions: shift (change in non-price determinant) vs. movement along the curve (change
+      in own price); demand increase = rightward shift = increase in demand (these are synonymous).
+
+  # POOL 8: Policy Instrument Names
+  # "A government payment equal to the external benefit of a positive externality is called a?" → "Pigouvian subsidy"
+  - id: policy_instrument_names
+    label: "Economic Policy Instrument Names"
+    format: term
+    estimated_count: 15
+    note: >
+      Government policy tools in microeconomics: price ceiling, price floor, per-unit tax, per-unit
+      subsidy, Pigouvian tax (corrective tax), Pigouvian subsidy (corrective subsidy), tariff, import
+      quota, antitrust regulation, cap and trade (emissions trading), property rights assignment (Coase
+      solution), minimum wage, rent control, transfer payment.
+      Key confusions: Pigouvian tax (corrects negative externality by taxing) vs. per-unit tax (any
+      excise tax, not necessarily corrective); tariff vs. quota (both restrict trade but tariff generates
+      government revenue while quota does not).
+
+  # POOL 9: Cost Type Names
+  # "Costs that do not change with the level of output are called?" → "fixed costs"
+  - id: cost_type_names
+    label: "Types of Costs"
+    format: term
+    estimated_count: 12
+    note: >
+      Cost categories in AP Microeconomics: fixed cost (FC), variable cost (VC), total cost (TC),
+      marginal cost (MC), average total cost (ATC), average variable cost (AVC), average fixed cost
+      (AFC), sunk cost (fixed and irrecoverable), implicit cost (opportunity cost of owned resources),
+      explicit cost (out-of-pocket payment), accounting cost (explicit only), economic cost (explicit
+      + implicit).
+      Key confusions: economic cost (explicit + implicit) vs. accounting cost (explicit only);
+      fixed cost vs. sunk cost (all sunk costs are fixed, not all fixed costs are sunk — e.g., ongoing
+      rent); AFC always falls (denominator grows) vs. AVC U-shaped (denominator grows but VC also grows).
+
+  # POOL 10: Law and Principle Names
+  # "The principle that as variable input is added to fixed input, marginal product eventually falls is called?" → "law of diminishing marginal returns"
+  - id: law_and_principle_names
+    label: "Named Laws and Principles"
+    format: proper_noun
+    estimated_count: 15
+    syntheticDistractors:
+      - "law of supply and demand"
+      - "law of one price"
+      - "law of increasing marginal utility"
+      - "Giffen paradox"
+    note: >
+      Named laws and principles in AP Microeconomics: law of demand, law of supply, law of
+      diminishing marginal returns (also called law of diminishing returns), law of diminishing
+      marginal utility, Coase theorem, Nash equilibrium, invisible hand, tragedy of the commons,
+      comparative advantage principle, prisoner's dilemma, law of increasing opportunity costs
+      (bowed-out PPC).
+      Key confusions: law of diminishing marginal returns (production in short run) vs. law of
+      diminishing marginal utility (consumer satisfaction); Coase theorem vs. Pigouvian solution
+      (private bargaining vs. government intervention for externalities).
+
+  # POOL 11: Efficiency Type Terms
+  # "The condition where production occurs at minimum average total cost is called?" → "productive efficiency"
+  - id: efficiency_type_terms
+    label: "Types of Efficiency and Welfare Terms"
+    format: term
+    estimated_count: 8
+    syntheticDistractors:
+      - "dynamic efficiency"
+      - "technical efficiency"
+      - "informational efficiency"
+      - "distributive efficiency"
+    note: >
+      Efficiency and welfare terms: allocative efficiency (P = MC; resources go to highest-valued
+      use), productive efficiency (production at minimum ATC), Pareto efficiency (impossible to make
+      one person better off without making another worse off), X-inefficiency (monopoly slack, not
+      producing at minimum cost), deadweight loss (reduction in total surplus from market distortion),
+      market failure (market fails to achieve allocative efficiency).
+      Key confusions: allocative efficiency (P = MC) vs. productive efficiency (min ATC) — both occur
+      simultaneously in long-run perfect competition but not in other market structures; Pareto
+      efficiency is a broader welfare concept, not just about P = MC.
+
+  # POOL 12: Elasticity Type Terms
+  # "Elasticity that measures the responsiveness of quantity demanded to a change in income is called?" → "income elasticity of demand"
+  - id: elasticity_type_terms
+    label: "Types of Elasticity"
+    format: term
+    estimated_count: 8
+    syntheticDistractors:
+      - "demand elasticity coefficient"
+      - "output elasticity"
+      - "factor elasticity"
+      - "supply responsiveness index"
+    note: >
+      Elasticity types: price elasticity of demand (PED), price elasticity of supply (PES), income
+      elasticity of demand (YED), cross-price elasticity of demand (XED), perfectly elastic (|E| = ∞,
+      horizontal curve), perfectly inelastic (|E| = 0, vertical curve), unit elastic (|E| = 1),
+      elastic (|E| > 1), inelastic (|E| < 1).
+      Key confusions: income elasticity (YED > 0 = normal, YED < 0 = inferior) vs. cross-price
+      elasticity (XED > 0 = substitutes, XED < 0 = complements); price elasticity of demand vs.
+      price elasticity of supply (demand always negative in sign; supply always positive).
+
+  # POOL 13: Surplus and Welfare Terms
+  # "The difference between what consumers are willing to pay and what they actually pay is?" → "consumer surplus"
+  - id: surplus_welfare_terms
+    label: "Surplus and Welfare Terminology"
+    format: term
+    estimated_count: 10
+    note: >
+      Surplus and welfare vocabulary: consumer surplus, producer surplus, total surplus (social
+      surplus), deadweight loss, economic rent (payment above opportunity cost), economic profit
+      (profit above normal profit), normal profit (zero economic profit; all resources earning
+      opportunity cost), accounting profit (TR minus explicit costs only).
+      Key confusions: consumer surplus vs. producer surplus (who benefits from price); economic
+      profit vs. accounting profit (implicit costs included vs. excluded); normal profit (zero
+      economic profit) is still positive accounting profit.
+
+  # POOL 14: Game Theory Terms
+  # "The outcome in a game where no player can improve by unilaterally changing strategy is called?" → "Nash equilibrium"
+  - id: game_theory_terms
+    label: "Game Theory and Oligopoly Terms"
+    format: term
+    estimated_count: 8
+    syntheticDistractors:
+      - "Pareto dominant strategy"
+      - "minimax solution"
+      - "cooperative equilibrium"
+      - "tit-for-tat equilibrium"
+      - "collusion-proof strategy"
+    note: >
+      Game theory and oligopoly terms: Nash equilibrium, dominant strategy, prisoner's dilemma,
+      payoff matrix, mutual interdependence, collusion, tit-for-tat (repeated game cooperation
+      strategy).
+      Key confusions: Nash equilibrium (no unilateral incentive to deviate) vs. dominant strategy
+      equilibrium (both players have dominant strategies — special case of Nash); prisoner's dilemma
+      (rational self-interest leads to mutually bad outcome) vs. cooperative solution (jointly better
+      but not individually rational without enforcement).
+
+  # POOL 15: Visual Graph Types (for image_question facts)
+  # Facts that require displaying a specific graph type
+  - id: visual_graph_types
+    label: "Economic Graph Types (Image Questions)"
+    format: term
+    estimated_count: 12
+    note: >
+      Graph types used in image_question facts — each fact displays a graph and asks about it:
+      supply and demand diagram (market equilibrium, price controls, taxes), PPC diagram (points on
+      curve, shifts), cost curves diagram (ATC, AVC, AFC, MC — competitive firm), monopoly diagram
+      (MR < D, profit rectangle, DWL triangle), perfect competition diagram (P = MR = MC = D,
+      long-run tangency), externality diagram (MSC/MSB curves, optimal vs. market quantity),
+      Lorenz curve diagram (income distribution), payoff matrix (game theory), factor market diagram
+      (MRP = labor demand, wage determination), long-run supply diagram (entry and exit).
+      Image facts must be in separate visual_* pools per deck-quality rules.
+
+  # POOL 16: Market Outcome Descriptions
+  # "When a binding price ceiling is imposed, the market outcome is a persistent?" → "shortage"
+  - id: market_outcome_descriptions
+    label: "Market Outcome and Equilibrium Descriptions"
+    format: short_phrase
+    estimated_count: 15
+    note: >
+      Market outcome descriptions: shortage (Qd > Qs), surplus (Qs > Qd), equilibrium (Qd = Qs),
+      long-run zero economic profit (entry/exit mechanism), short-run economic profit (P > ATC),
+      short-run economic loss (P < ATC), deadweight loss (total surplus less than maximum),
+      overproduction (negative externality equilibrium), underproduction (positive externality
+      equilibrium), productive efficiency (output at min ATC), allocative efficiency (P = MC),
+      excess capacity (monopolistic competition long run), price rigidity (kinked demand oligopoly).
+      Key confusions: shortage (price too low) vs. surplus (price too high) — students often confuse
+      which direction causes which; short-run loss does not mean firm shuts down (continue if P > AVC).
+
+# ============================================================
+# EXAM TAGS SCHEMA — CED-aligned metadata for each fact
+# ============================================================
+
+exam_tags_schema:
+  description: >
+    Every fact MUST include an examTags object. These drive difficulty calibration
+    and allow filtering by CED unit/topic for targeted study. AP Microeconomics has
+    6 units and approximately 40 topics (1.1 through 6.8).
+
+  fields:
+    unit:
+      type: integer
+      range: [1, 6]
+      description: "CED unit number (1=Basic Economic Concepts, 2=Supply and Demand, 3=Production Cost and Perfect Competition, 4=Imperfect Competition, 5=Factor Markets, 6=Market Failure and Government)"
+    topic:
+      type: string
+      description: "CED topic code, e.g. '3.5' (Unit 3, Topic 5 — Profit Maximization)"
+    skill:
+      type: string
+      enum: ["definition_identification", "explanation_application", "graph_analysis", "calculation", "comparison", "prediction"]
+      description: "AP Microeconomics skill category (adapted from College Board skill categories)"
+      required: false
+    exam_weight:
+      type: string
+      enum: ["high", "medium", "low"]
+      description: >
+        Estimated AP exam frequency. High = core concept tested most years (MR=MC, elasticity,
+        competitive equilibrium), medium = appears regularly, low = depth/enrichment content.
+    is_graph_fact:
+      type: boolean
+      description: "True if the fact primarily involves reading, drawing, or interpreting a graph (supply/demand, cost curves, etc.)"
+    is_calculation_fact:
+      type: boolean
+      description: "True if the fact involves a numerical calculation (elasticity, profit, MRP, etc.)"
+    is_market_structure_fact:
+      type: boolean
+      description: "True if the fact is primarily about comparing or characterizing a market structure"
+
+  example: >
+    examTags:
+      unit: 3
+      topic: "3.5"
+      skill: "graph_analysis"
+      exam_weight: "high"
+      is_graph_fact: true
+      is_calculation_fact: false
+      is_market_structure_fact: false
+
+# ============================================================
+# QUESTION TEMPLATES — 22 templates spanning mastery 0-5
+# ============================================================
+
+question_templates:
+
+  # --- MASTERY 0: Foundational identification ---
+  - id: tmpl_define_econ_term
+    template: "In economics, what is the term for {definition_of_concept}?"
+    answer_pool: econ_concept_terms
+    mastery_range: [0, 1]
+    note: "Pure vocabulary recall — definition to term. Most common AP Micro question type for Unit 1 foundational concepts."
+
+  - id: tmpl_identify_market_structure
+    template: "A market characterized by {structural_feature} is best described as a?"
+    answer_pool: market_structure_names
+    mastery_range: [0, 1]
+    note: "Market structure identification from a given characteristic. Tests ability to match features to structure types."
+
+  - id: tmpl_identify_cost_type
+    template: "Costs that {cost_description} are called?"
+    answer_pool: cost_type_names
+    mastery_range: [0, 1]
+    note: "Cost category identification — maps cost description to cost type name. Core Unit 3 vocabulary."
+
+  - id: tmpl_economist_association
+    template: "Which economist is credited with {contribution_or_theory}?"
+    answer_pool: economist_names
+    mastery_range: [0, 1]
+    note: "Economist attribution. Covers Smith, Marshall, Nash, Pigou, Coase — commonly tested in AP Micro free response context."
+
+  # --- MASTERY 1: Structural and definitional understanding ---
+  - id: tmpl_law_or_principle_identify
+    template: "Which economic law or principle states that {phenomenon_description}?"
+    answer_pool: law_and_principle_names
+    mastery_range: [1, 2]
+    note: "Law-to-phenomenon matching. Tests whether student can identify which principle applies to a given scenario."
+
+  - id: tmpl_elasticity_type_identify
+    template: "When the {elasticity_scenario}, the type of elasticity being measured is?"
+    answer_pool: elasticity_type_terms
+    mastery_range: [1, 2]
+    note: "Elasticity type identification — distinguishes PED, PES, YED, XED by the variables being measured."
+
+  - id: tmpl_policy_instrument_identify
+    template: "A {policy_description} that results in {market_effect} is an example of a?"
+    answer_pool: policy_instrument_names
+    mastery_range: [1, 2]
+    note: "Policy instrument identification — connects policy description and market effect to correct instrument name."
+
+  - id: tmpl_surplus_welfare_identify
+    template: "The area {graphical_area_description} in a supply-demand diagram represents?"
+    answer_pool: surplus_welfare_terms
+    mastery_range: [1, 2]
+    note: "Surplus area identification on supply-demand diagrams — core welfare analysis skill."
+
+  # --- MASTERY 2: Trends, patterns, and predictions ---
+  - id: tmpl_demand_supply_shift
+    template: "If {non_price_determinant_changes}, the {demand/supply} curve will?"
+    answer_pool: shift_direction_terms
+    mastery_range: [2, 3]
+    note: "Demand/supply shift direction. Tests all TRIBE and ROTTEN determinants. Most frequent short-answer question type."
+
+  - id: tmpl_equilibrium_change_predict
+    template: "If {demand_or_supply_change}, the equilibrium price will {direction} and equilibrium quantity will?"
+    answer_pool: shift_direction_terms
+    mastery_range: [2, 3]
+    note: "Equilibrium prediction from shift — requires applying supply-demand model to predict P and Q direction changes."
+
+  - id: tmpl_efficiency_classify
+    template: "The condition {efficiency_description} is an example of?"
+    answer_pool: efficiency_type_terms
+    mastery_range: [2, 3]
+    note: "Efficiency type classification — distinguishes allocative (P=MC), productive (min ATC), and Pareto efficiency."
+
+  - id: tmpl_elasticity_classify_coefficient
+    template: "A price elasticity of demand coefficient of {numerical_value} indicates?"
+    answer_pool: elasticity_type_terms
+    mastery_range: [2, 3]
+    note: "Elasticity classification from coefficient — elastic/inelastic/unit elastic from given |PED| value."
+
+  # --- MASTERY 3: Mechanistic and equilibrium reasoning ---
+  - id: tmpl_profit_max_outcome
+    template: "At a price of {P} with ATC of {ATC} and AVC of {AVC}, the firm should?"
+    answer_pool: market_outcome_descriptions
+    mastery_range: [3, 4]
+    note: "Profit/loss/shutdown decision from price and cost comparison — requires applying shutdown rule (P vs AVC) and loss identification (P vs ATC)."
+
+  - id: tmpl_game_theory_equilibrium
+    template: "In a prisoners' dilemma payoff matrix where {payoff_structure}, the Nash equilibrium is?"
+    answer_pool: game_theory_terms
+    mastery_range: [3, 4]
+    note: "Nash equilibrium identification from payoff matrix — requires checking all strategy combinations for mutual best response."
+
+  - id: tmpl_externality_type
+    template: "When {activity} imposes {cost_or_benefit} on {third_parties}, this is an example of?"
+    answer_pool: econ_concept_terms
+    mastery_range: [3, 4]
+    note: "Externality classification — requires distinguishing negative vs. positive externality and identifying affected parties."
+
+  - id: tmpl_mrp_hiring_decision
+    template: "If the MRP of the 10th worker is $20 and the wage is $15, the firm should?"
+    answer_pool: shift_direction_terms
+    mastery_range: [3, 4]
+    note: "MRP = MRC hiring rule application — if MRP > wage, hire more; if MRP < wage, hire less. Core factor markets logic."
+
+  # --- MASTERY 4-5: Integration and calculation ---
+  - id: tmpl_market_structure_compare
+    template: "Compared to perfect competition, a monopolist produces {quantity_comparison} and charges?"
+    answer_pool: market_structure_names
+    mastery_range: [4, 5]
+    note: "Market structure comparison — connects quantity, price, and efficiency outcomes across structures. High-frequency AP FRQ topic."
+
+  - id: tmpl_elasticity_tax_incidence
+    template: "If demand is {elasticity_description} relative to supply, who bears the larger share of a per-unit tax?"
+    answer_pool: econ_concept_terms
+    mastery_range: [4, 5]
+    note: "Tax incidence from elasticity — requires understanding that more inelastic side bears larger burden."
+
+  - id: tmpl_graph_interpret_cost_curves
+    template: "On the standard cost curve diagram, the MC curve intersects the ATC curve at?"
+    answer_pool: econ_concept_terms
+    mastery_range: [4, 5]
+    note: "Cost curve geometry — minimum points, intersections, and the relationship between MC, ATC, AVC. Pure graphical reasoning."
+
+  - id: tmpl_long_run_competition_outcome
+    template: "In long-run equilibrium, a perfectly competitive firm earns zero economic profit because?"
+    answer_pool: market_outcome_descriptions
+    mastery_range: [4, 5]
+    note: "Long-run competitive equilibrium mechanism — entry/exit drives to P = ATC; requires understanding the full adjustment process."
+
+  - id: tmpl_ped_total_revenue
+    template: "If demand is elastic and the firm raises its price, total revenue will?"
+    answer_pool: shift_direction_terms
+    mastery_range: [4, 5]
+    note: "Total revenue test application — elastic demand means price and TR move in opposite directions. Tested on virtually every AP Micro exam."
+
+  - id: tmpl_utility_maximization_rule
+    template: "A consumer maximizes utility when {utility_condition_statement}?"
+    answer_pool: equation_formulas_micro
+    mastery_range: [4, 5]
+    note: "Utility maximization condition — MU₁/P₁ = MU₂/P₂ for all goods; connects to consumer equilibrium and demand derivation."
+
+# ============================================================
+# SYNONYM GROUPS — Terms that should never distract each other
+# ============================================================
+
+synonym_groups:
+
+  # Demand terminology variants
+  - id: demand_increase_variants
+    members: ["demand increases", "demand rises", "demand curve shifts right", "rightward shift in demand", "increase in demand"]
+    reason: "All describe the same event — do not use as distractors for each other"
+
+  - id: supply_increase_variants
+    members: ["supply increases", "supply curve shifts right", "rightward shift in supply", "increase in supply"]
+    reason: "All describe the same event — do not use as distractors for each other"
+
+  # Efficiency synonyms
+  - id: productive_efficiency_variants
+    members: ["productive efficiency", "production at minimum ATC", "technical efficiency", "output at the minimum of average total cost"]
+    reason: "All describe productive efficiency — never use as distractors for each other"
+
+  - id: allocative_efficiency_variants
+    members: ["allocative efficiency", "P = MC", "resources allocated to highest-valued use", "MB = MC equilibrium"]
+    reason: "All describe allocative efficiency — never use as distractors for each other"
+
+  # Profit variants
+  - id: normal_profit_variants
+    members: ["normal profit", "zero economic profit", "breaking even economically", "accounting profit equals implicit costs"]
+    reason: "Normal profit IS zero economic profit — these are the same condition; never use as distractors for each other"
+
+  - id: economic_profit_variants
+    members: ["economic profit", "above-normal profit", "positive economic profit", "profit above opportunity cost"]
+    reason: "All describe positive economic profit; do not use as distractors for each other"
+
+  # Market structure naming variants
+  - id: perfect_competition_variants
+    members: ["perfect competition", "perfectly competitive market", "competitive market"]
+    reason: "All refer to the same market structure — never use as distractors for each other"
+
+  # Externality naming variants
+  - id: pigouvian_tax_variants
+    members: ["Pigouvian tax", "corrective tax", "per-unit tax equal to marginal external cost"]
+    reason: "All describe the same policy instrument for negative externalities"
+
+  - id: pigouvian_subsidy_variants
+    members: ["Pigouvian subsidy", "corrective subsidy", "per-unit subsidy equal to marginal external benefit"]
+    reason: "All describe the same policy instrument for positive externalities"
+
+  # Comparative advantage variants
+  - id: comparative_advantage_variants
+    members: ["comparative advantage", "lower opportunity cost", "relative cost advantage"]
+    reason: "Comparative advantage is defined by lower opportunity cost — never use as distractors for each other"
+
+  # Coase theorem variants
+  - id: coase_theorem_variants
+    members: ["Coase theorem", "private bargaining solution to externalities", "property rights solution"]
+    reason: "All refer to Coase's insight that private bargaining can solve externalities — never use as distractors for each other"
+    flag_for_qa: true
+
+  # Nash equilibrium variants
+  - id: nash_equilibrium_variants
+    members: ["Nash equilibrium", "no player can benefit from unilateral deviation", "mutual best response"]
+    reason: "All describe Nash equilibrium — never use as distractors for each other"
+    flag_for_qa: true
+
+# ============================================================
+# COMMON CONFUSIONS — Priority distractor pairs for seeding confusion matrix
+# ============================================================
+
+common_confusions:
+  # Supply and demand fundamentals
+  - ["shift in demand", "movement along the demand curve"]       # Non-price determinant change vs. own-price change
+  - ["change in demand", "change in quantity demanded"]          # Same as above — terminology distinction
+  - ["normal good", "inferior good"]                             # YED positive vs. negative
+  - ["substitute goods", "complement goods"]                     # XED positive vs. negative
+  - ["price ceiling", "price floor"]                             # Maximum price (shortage) vs. minimum price (surplus)
+  - ["shortage", "surplus"]                                      # Qd > Qs (price too low) vs. Qs > Qd (price too high)
+
+  # Elasticity
+  - ["elastic demand", "inelastic demand"]                       # |PED| > 1 vs. |PED| < 1
+  - ["price elasticity of demand", "price elasticity of supply"] # Demand responsiveness vs. supply responsiveness
+  - ["income elasticity", "cross-price elasticity"]              # Responsiveness to income vs. other good's price
+  - ["elastic supply", "inelastic supply"]                       # Producers can respond vs. producers cannot respond
+  - ["determinant of PED", "determinant of PES"]                 # Different factors affect demand vs. supply elasticity
+
+  # Cost and production
+  - ["fixed costs", "variable costs"]                            # Do not change with output vs. change with output
+  - ["average total cost", "marginal cost"]                      # Per-unit total cost vs. cost of one more unit
+  - ["accounting profit", "economic profit"]                     # TR - explicit costs vs. TR - explicit - implicit costs
+  - ["normal profit", "economic profit"]                         # Zero economic profit vs. positive economic profit
+  - ["short run", "long run"]                                     # At least one fixed input vs. all inputs variable
+  - ["diminishing marginal returns", "economies of scale"]       # Short-run production concept vs. long-run cost concept
+
+  # Market structures
+  - ["perfect competition", "monopolistic competition"]          # Identical products vs. differentiated products
+  - ["monopoly", "monopolistic competition"]                     # One firm vs. many firms with differentiation
+  - ["monopoly MR", "competitive firm MR"]                       # MR < P (below demand) vs. MR = P (equals demand)
+  - ["monopoly equilibrium P", "monopoly equilibrium Q"]         # Price read from demand curve vs. quantity from MR=MC intersection
+  - ["oligopoly", "monopolistic competition"]                    # Few firms (interdependent) vs. many firms (independent)
+
+  # Efficiency and welfare
+  - ["consumer surplus", "producer surplus"]                     # Area above price (CS) vs. below price (PS)
+  - ["total surplus", "consumer surplus"]                        # CS + PS vs. CS alone
+  - ["allocative efficiency", "productive efficiency"]           # P = MC vs. production at minimum ATC
+  - ["deadweight loss", "consumer surplus"]                      # Lost surplus vs. transferred/retained surplus
+  - ["negative externality overproduction", "positive externality underproduction"]  # Direction of market failure
+
+  # Factor markets
+  - ["MRP", "MRC"]                                               # Demand for input vs. supply-side cost of input
+  - ["monopsony", "monopoly"]                                    # Single buyer vs. single seller; both have market power
+  - ["competitive wage", "monopsony wage"]                       # Intersection of S and D vs. below-competitive wage
+  - ["derived demand", "direct demand"]                          # Factor demand depends on product demand vs. consumer direct desire
+
+  # Policy
+  - ["Pigouvian tax", "per-unit tax"]                            # Corrective (set to external cost) vs. any excise tax
+  - ["tariff", "quota"]                                          # Tax on imports (revenue) vs. quantity limit (no revenue)
+  - ["price discrimination", "price differentiation"]            # Same good different prices to different buyers vs. different goods
+  - ["Nash equilibrium", "dominant strategy"]                    # Mutual best response vs. always best regardless of rival
+
+# ============================================================
+# DIFFICULTY TIERS
+# ============================================================
+
+difficulty_tiers:
+  easy:
+    description: "Core AP Microeconomics vocabulary and single-concept identification — foundational knowledge every student learns in first pass"
+    examples:
+      - "The profit maximization rule is MR = MC"
+      - "A price ceiling set below equilibrium causes a shortage"
+      - "Opportunity cost is the value of the next-best alternative forgone"
+      - "Consumer surplus is the area above the price line and below the demand curve"
+      - "Law of demand: when price rises, quantity demanded falls (ceteris paribus)"
+      - "In perfect competition, the firm is a price taker"
+      - "A natural monopoly occurs when one firm can supply the entire market at lower cost than multiple firms"
+  medium:
+    description: "Precise distinctions, multi-step reasoning, and applying economic models — requires understanding of how and why, not just what"
+    examples:
+      - "Total revenue test: if demand is elastic, raising price reduces total revenue"
+      - "Tax incidence: more inelastic side bears larger share of a per-unit tax"
+      - "Monopolistic competition long-run tangency: P = ATC but P > MC (excess capacity)"
+      - "MRP = MRC hiring rule: hire additional workers until MRP equals the wage rate"
+      - "Comparative advantage calculation: compare opportunity costs, not absolute output levels"
+      - "Pigouvian tax: set equal to marginal external cost to internalize a negative externality"
+      - "Nash equilibrium: mutual best response where no player benefits from unilateral deviation"
+  hard:
+    description: "Multi-concept integration, quantitative analysis, and nuanced distinctions requiring synthesis across units"
+    examples:
+      - "Monopsony: MRC > wage because raising wage to hire one more worker requires paying higher wage to all workers already hired"
+      - "Long-run competitive equilibrium: entry drives P = ATC; both allocative and productive efficiency achieved simultaneously"
+      - "Price discrimination welfare effects: first-degree eliminates DWL but transfers all CS to producer; third-degree ambiguous"
+      - "Cap and trade vs. Pigouvian tax: both correct externalities; cap sets quantity while tax sets price; efficiency equivalence under certainty"
+      - "Kinked demand curve model: above kink demand is elastic (rivals don't follow price increases), below kink inelastic (rivals match price decreases)"
+      - "Bilateral monopoly indeterminacy: monopsonist wants low wage, union monopolist wants high wage; outcome determined by bargaining"
+      - "Long-run constant-cost industry supply is perfectly elastic (horizontal) due to entry/exit mechanism"
+
+# ============================================================
+# IMAGE FACTS NOTES — Topics requiring graph-based image questions
+# ============================================================
+
+image_facts_notes:
+  description: >
+    These topics are best tested with image_question facts (graph displayed, question asks about it).
+    Image facts MUST be placed in separate visual_* pools, never mixed with text facts. Target 15-20
+    image facts across the deck to ensure graph-reading skills are tested.
+  required_graph_types:
+    - topic: "Supply and demand equilibrium"
+      graph: "Upward-sloping supply and downward-sloping demand intersecting at equilibrium P* and Q*"
+      question_types: "Identify equilibrium, predict effect of shift, locate surplus/shortage areas"
+    - topic: "Consumer/producer surplus and DWL"
+      graph: "Supply-demand diagram with shaded CS triangle, PS triangle, and (if distorted) DWL triangle"
+      question_types: "Identify which area is consumer surplus, producer surplus, or DWL"
+    - topic: "Price ceiling and price floor effects"
+      graph: "Supply-demand diagram with horizontal price control line, Qd and Qs marked"
+      question_types: "Identify shortage or surplus quantity, binding vs. non-binding"
+    - topic: "Per-unit tax incidence"
+      graph: "Supply-demand diagram with supply shifted upward by tax amount, buyer price and seller price labeled"
+      question_types: "Identify tax revenue rectangle, DWL triangle, burden split"
+    - topic: "PPC with opportunity cost"
+      graph: "Production possibilities curve (linear or bowed-out) with specific points labeled"
+      question_types: "Identify efficient/inefficient/unattainable points, calculate opportunity cost"
+    - topic: "Cost curves (firm)"
+      graph: "U-shaped ATC, AVC, AFC, MC curves on same diagram with correct relationships"
+      question_types: "Identify minimum ATC and AVC points, MC intersections, profit/loss shading"
+    - topic: "Perfectly competitive firm short-run equilibrium"
+      graph: "Horizontal P=MR=D line intersecting MC curve; profit/loss rectangle shaded"
+      question_types: "Identify profit/loss, shutdown point, continue or exit decision"
+    - topic: "Monopoly equilibrium"
+      graph: "Downward-sloping D and MR curves (MR below D), MC curve, profit-maximizing quantity and price marked"
+      question_types: "Identify MR=MC point, monopoly price from demand curve, DWL triangle"
+    - topic: "Negative externality diagram"
+      graph: "MSC curve above supply/MPC; market quantity vs. optimal (lower) quantity; DWL triangle"
+      question_types: "Identify overproduction, DWL, and Pigouvian tax amount"
+    - topic: "Positive externality diagram"
+      graph: "MSB curve above demand/MPB; market quantity vs. optimal (higher) quantity; DWL triangle"
+      question_types: "Identify underproduction, DWL, and Pigouvian subsidy amount"
+    - topic: "Lorenz curve"
+      graph: "45° line of perfect equality and curved Lorenz curve below it; area between = Gini numerator"
+      question_types: "Identify more vs. less equal distributions, interpret Gini coefficient"
+    - topic: "Factor market (labor market)"
+      graph: "Downward-sloping MRP = labor demand, upward-sloping labor supply; competitive equilibrium wage and quantity"
+      question_types: "Identify wage rate, employment level, effects of minimum wage"
+
+# ============================================================
+# SUB-DECKS — 6 content groupings for deck selection screen
+# ============================================================
+
+sub_decks:
+
+  - id: sd_foundations
+    name: "Economic Foundations"
+    chain_theme_ids: [0]
+    ced_units: [1]
+    description: "Scarcity, opportunity cost, PPC, comparative advantage, demand, supply, and market equilibrium."
+    target_facts: 55
+
+  - id: sd_elasticity_intervention
+    name: "Markets & Government Policy"
+    chain_theme_ids: [1, 2]
+    ced_units: [2]
+    description: "Elasticity of demand and supply, consumer/producer surplus, price controls, taxes, subsidies, and international trade."
+    target_facts: 100
+
+  - id: sd_costs_competition
+    name: "Costs & Competition"
+    chain_theme_ids: [3, 4]
+    ced_units: [3]
+    description: "Production functions, cost curves, profit maximization, shutdown decisions, and long-run perfect competition equilibrium."
+    target_facts: 90
+
+  - id: sd_imperfect_competition
+    name: "Imperfect Competition"
+    chain_theme_ids: [5, 6]
+    ced_units: [4]
+    description: "Monopoly, price discrimination, monopolistic competition, oligopoly, game theory, and Nash equilibrium."
+    target_facts: 80
+
+  - id: sd_factor_markets
+    name: "Factor Markets"
+    chain_theme_ids: [7]
+    ced_units: [5]
+    description: "Derived demand, MRP, hiring rule, competitive and monopsonistic labor markets, wage differentials, and human capital."
+    target_facts: 50
+
+  - id: sd_market_failures
+    name: "Market Failures & Policy"
+    chain_theme_ids: [8, 9]
+    ced_units: [6]
+    description: "Externalities, public goods, free-rider problem, income inequality, Lorenz curve, Gini coefficient, and utility maximization."
+    target_facts: 45

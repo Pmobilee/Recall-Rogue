@@ -21,16 +21,40 @@
 - Relic audit: `npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/relic-audit.ts`
 - Browser bots are for VISUAL TESTING ONLY — 1000x slower, never for balance data
 
-## Visual Testing
-- Use `/visual-inspect` or `/quick-verify` skills
+## Docker Visual Verification — MANDATORY AFTER EVERY CHANGE
+
+**Every code change MUST be visually verified via Docker before committing. No exceptions. No user prompting required — this is a silent, automatic step.**
+
+```bash
+# Warm mode (preferred for multi-item batches):
+scripts/docker-visual-test.sh --warm start --agent-id <task-id>
+scripts/docker-visual-test.sh --warm test --agent-id <task-id> --scenario <preset>
+scripts/docker-visual-test.sh --warm stop --agent-id <task-id>
+
+# Cold mode (one-shot):
+scripts/docker-visual-test.sh --scenario <preset> --agent-id <task-id>
+```
+
+**Rules:**
+- ALWAYS use `__rrScreenshotFile()` + `__rrLayoutDump()` — NEVER `mcp__playwright__browser_take_screenshot` (Phaser RAF blocks it)
+- ALWAYS use `__rrScenario.load()` to jump to game states — NEVER click through menus manually
+- ALWAYS capture BOTH screenshot AND layout dump — one without the other is incomplete
+- ALWAYS reference `/tmp/rr-docker-visual/...` artifact paths in commit messages
+- Docker containers use system Chromium + SwiftShader — full WebGL 2.0, no GPU needed
+- Chrome-lock only needed for `claude-in-chrome` MCP tools (shared browser session)
+- Native Playwright: use `channel: 'chrome'` — bundled Chromium has no WebGL on macOS ARM64
+- Use `/visual-inspect` or `/quick-verify` skills for orchestrated verification
 - **Parallel agents: use Docker containers** — `scripts/docker-visual-test.sh` — no chrome-lock needed
   - Cold mode: `--scenario X --agent-id Y` (~54s, fully isolated)
   - Warm mode: `--warm start`, then `--warm test --scenario X` (~5s per test after boot)
-- Chrome-lock only needed for `claude-in-chrome` MCP tools (shared browser session)
-- ALWAYS use `__rrScreenshotFile()` + `__rrLayoutDump()` — NEVER `mcp__playwright__browser_take_screenshot` (Phaser RAF blocks it)
-- ALWAYS use `__rrScenario.load()` to jump to game states — NEVER click through menus manually
-- Native Playwright: use `channel: 'chrome'` — bundled Chromium has no WebGL on macOS ARM64
-- Docker containers: use system Chromium + SwiftShader — full WebGL 2.0, no GPU needed
+
+**What to verify per change type:**
+- UI/layout changes → screenshot the affected screen at 1920x1080
+- Mechanic/data changes → screenshot the game state where the change is observable
+- Content/deck changes → load a relevant deck scenario and verify rendering
+- Schema/DB changes → load a scenario that reads the changed data and verify it displays correctly
+
+**"It's just a data change" is NOT an excuse to skip.** The Ch9 category schema fix was "just data" but affected every card's displayed category in combat.
 
 ## Inspection Registry
 - `npm run registry:sync` — rebuild from source after adding/removing game elements

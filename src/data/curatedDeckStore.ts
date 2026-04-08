@@ -292,6 +292,8 @@ function rowToDeckFact(row: Record<string, unknown>): DeckFact {
     sentenceRomaji: row['sentence_romaji'] ? String(row['sentence_romaji']) : undefined,
     sentenceTranslation: row['sentence_translation'] ? String(row['sentence_translation']) : undefined,
     grammarPointLabel: row['grammar_point_label'] ? String(row['grammar_point_label']) : undefined,
+    categoryL1: row['category_l1'] ? String(row['category_l1']) : undefined,
+    categoryL2: row['category_l2'] ? String(row['category_l2']) : undefined,
   };
 }
 

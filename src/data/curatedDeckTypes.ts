@@ -64,6 +64,10 @@ export interface DeckFact {
   partOfSpeech?: string;
   /** Exam relevance tags for filtering study sessions. E.g. "USMLE_Step1", "high_yield", "clinical_correlation" */
   examTags?: string[];
+  /** Top-level domain category (e.g. 'history', 'science', 'language'). Persisted to curated.db for runtime domain resolution. */
+  categoryL1?: string;
+  /** Sub-domain category (e.g. 'ancient_rome', 'mammals'). Persisted to curated.db for runtime domain resolution. */
+  categoryL2?: string;
   /** Path to image asset (relative to /public/). For image-based quiz modes. */
   imageAssetPath?: string;
   /** Quiz presentation: 'text' (default), 'image_question' (image shown, text answers), 'image_answers' (text shown, image answer grid). */

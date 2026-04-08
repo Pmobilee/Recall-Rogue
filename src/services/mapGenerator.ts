@@ -215,8 +215,18 @@ function buildNodeStubs(sizes: number[], rng: () => number): Record<string, MapN
  *
  * Non-crossing rule: if node A is to the left of node B in row r,
  * then A's rightmost connection must be ≤ B's leftmost connection in row r+1.
- * We enforce this by assigning connections left-to-right and only connecting
- * to same-or-adjacent columns in the next row, then verifying orphans.
+ * We enforce this by processing nodes left-to-right and tracking
+ * `maxChildColUsed` (the rightmost child column assigned so far). Primary
+ * connections must be >= maxChildColUsed. Secondary right-branch connections
+ * advance maxChildColUsed; secondary left-branch connections do not.
+ *
+ * Directional bias fix (2026-04-08): the primary candidate is now selected from
+ * a symmetrically-shuffled set [baseCol-1, baseCol, baseCol+1] — the first
+ * candidate >= maxChildColUsed wins. Previously the primary was always exactly
+ * `Math.max(maxChildColUsed, baseCol)`, which enforced a rightward monotonicity
+ * bias on primaries. The secondary branch direction is also randomized: both
+ * left (primaryChild-1) and right (primaryChild+1) are placed in a 2-element
+ * list and shuffled before attempting, so neither direction is preferred.
  */
 function createEdges(
   nodes: Record<string, MapNode>,
@@ -229,18 +239,47 @@ function createEdges(
     const curCount = sizes[r]
     const nextCount = sizes[r + 1]
 
-    // Track rightmost child column assigned so far (for non-crossing enforcement)
+    // Track rightmost child column assigned so far (for non-crossing enforcement).
+    // Primary connections must be >= maxChildColUsed.
+    // Right secondary advances maxChildColUsed; left secondary does not.
     let maxChildColUsed = -1
 
     for (let c = 0; c < curCount; c++) {
       const curId = nodeId(r, c)
       const curNode = nodes[curId]
 
-      // Map this node's column position proportionally to the next row's range
-      const mapped = Math.round((c / Math.max(curCount - 1, 1)) * Math.max(nextCount - 1, 0))
-      const primaryChild = Math.max(maxChildColUsed, Math.min(nextCount - 1, mapped))
+      // Proportional base column: maps this node's position in the current row
+      // to an equivalent position in the next row.
+      const baseCol = Math.round((c / Math.max(curCount - 1, 1)) * Math.max(nextCount - 1, 0))
 
-      // Connect to primary child
+      // Collect symmetric primary candidates: [baseCol-1, baseCol, baseCol+1]
+      // filtered to the valid column range, then shuffled with the seeded RNG.
+      // Shuffling removes the original rightward bias in primary selection.
+      const primaryCandidates: number[] = []
+      if (baseCol - 1 >= 0) primaryCandidates.push(baseCol - 1)
+      primaryCandidates.push(Math.min(baseCol, nextCount - 1))
+      if (baseCol + 1 < nextCount) primaryCandidates.push(baseCol + 1)
+
+      // Fisher-Yates shuffle using seeded RNG (deterministic, unbiased)
+      for (let i = primaryCandidates.length - 1; i > 0; i--) {
+        const j = Math.floor(rng() * (i + 1));
+        [primaryCandidates[i], primaryCandidates[j]] = [primaryCandidates[j], primaryCandidates[i]]
+      }
+
+      // Primary: first shuffled candidate >= maxChildColUsed (non-crossing constraint).
+      // Fallback to maxChildColUsed if no candidate qualifies (heavy merge case).
+      let primaryChild = -1
+      for (const col of primaryCandidates) {
+        if (col >= maxChildColUsed) {
+          primaryChild = col
+          break
+        }
+      }
+      if (primaryChild === -1) {
+        primaryChild = Math.min(maxChildColUsed, nextCount - 1)
+      }
+
+      // Connect primary child
       const childId = nodeId(r + 1, primaryChild)
       if (!curNode.childIds.includes(childId)) {
         curNode.childIds.push(childId)
@@ -248,23 +287,36 @@ function createEdges(
       }
       maxChildColUsed = Math.max(maxChildColUsed, primaryChild)
 
-      // Ensure at least 2 connections per node (when the next row has room).
-      // Also branch randomly for organic variety.
+      // Secondary connection: build a 2-element list of [right, left] neighbors of
+      // primaryChild, then shuffle it so left and right have equal priority.
+      // Right secondary advances maxChildColUsed (same as original).
+      // Left secondary does NOT advance maxChildColUsed (same as original).
       const wantBranch = curNode.childIds.length < 2 || rng() < 0.35
-      if (wantBranch && primaryChild + 1 < nextCount) {
-        const altChildId = nodeId(r + 1, primaryChild + 1)
-        if (!curNode.childIds.includes(altChildId)) {
-          curNode.childIds.push(altChildId)
-          nodes[altChildId].parentIds.push(curId)
-          maxChildColUsed = Math.max(maxChildColUsed, primaryChild + 1)
+      if (wantBranch) {
+        type SecCandidate = { col: number; isRight: boolean }
+        const secondaryCandidates: SecCandidate[] = []
+        if (primaryChild + 1 < nextCount) {
+          secondaryCandidates.push({ col: primaryChild + 1, isRight: true })
         }
-      }
-      // If still only 1 child and we can branch left, try the left neighbour
-      if (curNode.childIds.length < 2 && primaryChild - 1 >= 0) {
-        const leftChildId = nodeId(r + 1, primaryChild - 1)
-        if (!curNode.childIds.includes(leftChildId)) {
-          curNode.childIds.push(leftChildId)
-          nodes[leftChildId].parentIds.push(curId)
+        if (primaryChild - 1 >= 0) {
+          secondaryCandidates.push({ col: primaryChild - 1, isRight: false })
+        }
+
+        // Fisher-Yates shuffle for secondary direction — removes right-first bias
+        for (let i = secondaryCandidates.length - 1; i > 0; i--) {
+          const j = Math.floor(rng() * (i + 1));
+          [secondaryCandidates[i], secondaryCandidates[j]] = [secondaryCandidates[j], secondaryCandidates[i]]
+        }
+
+        for (const { col: altCol, isRight } of secondaryCandidates) {
+          const altChildId = nodeId(r + 1, altCol)
+          if (!curNode.childIds.includes(altChildId)) {
+            curNode.childIds.push(altChildId)
+            nodes[altChildId].parentIds.push(curId)
+            // Right secondary advances the monotonic pointer; left does not
+            if (isRight) maxChildColUsed = Math.max(maxChildColUsed, altCol)
+            break
+          }
         }
       }
     }

@@ -91,6 +91,8 @@ CREATE TABLE IF NOT EXISTS deck_facts (
   sentence_romaji        TEXT,
   sentence_translation   TEXT,
   grammar_point_label    TEXT,
+  category_l1            TEXT,
+  category_l2            TEXT,
   FOREIGN KEY (deck_id) REFERENCES decks(id)
 );
 
@@ -174,6 +176,8 @@ function factToRow(fact, deckId) {
     fact.sentenceRomaji                              ?? null,
     fact.sentenceTranslation                         ?? null,
     fact.grammarPointLabel                           ?? null,
+    fact.categoryL1                                  ?? null,
+    fact.categoryL2                                  ?? null,
   ];
 }
 
@@ -316,7 +320,8 @@ async function main() {
       distractors, acceptable_alternatives, synonym_group_id,
       target_language_word, reading, language, pronunciation,
       part_of_speech, exam_tags,
-      sentence_furigana, sentence_romaji, sentence_translation, grammar_point_label
+      sentence_furigana, sentence_romaji, sentence_translation, grammar_point_label,
+      category_l1, category_l2
     ) VALUES (
       ?, ?, ?, ?, ?,
       ?, ?, ?,
@@ -327,7 +332,8 @@ async function main() {
       ?, ?, ?,
       ?, ?, ?, ?,
       ?, ?,
-      ?, ?, ?, ?
+      ?, ?, ?, ?,
+      ?, ?
     )
   `);
 
