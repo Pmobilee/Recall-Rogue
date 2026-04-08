@@ -37,7 +37,8 @@ Before ANY review, read the relevant docs to understand expected behavior. After
 ### Test Suite
 - `npx vitest run` — 1900+ tests must pass
 
-### Layout Verification
+### Layout Verification — MANDATORY Docker Visual Verify
+- **ALWAYS** run `scripts/docker-visual-test.sh` with `__rrScreenshotFile()` + `__rrLayoutDump()` after EVERY change. No exceptions. Do not skip. Do not wait for user to ask.
 - Visual inspect at 1920×1080 (Steam PC primary)
 - Check dynamic scaling (no hardcoded px)
 
