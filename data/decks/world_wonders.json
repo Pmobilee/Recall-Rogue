@@ -5376,7 +5376,10 @@
         "ww_mon_christ_redeemer_sculptor"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Architect names range from single names to pairs — inherent domain variation"
+      "homogeneityExemptNote": "Architect names range from single names to pairs — inherent domain variation",
+      "syntheticDistractors": [
+        "Hadrian"
+      ]
     },
     {
       "id": "architect_designer_long",
@@ -5393,7 +5396,16 @@
         "ww_sac_hagia_sophia_architects"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Architect names range from single names to pairs — inherent domain variation"
+      "homogeneityExemptNote": "Architect names range from single names to pairs — inherent domain variation",
+      "syntheticDistractors": [
+        "I.M. Pei and Partners",
+        "Renzo Piano Building Workshop",
+        "Skidmore Owings & Merrill",
+        "Rafael Viñoly Architects",
+        "Zaha Hadid Architects",
+        "HOK Architects",
+        "Grimshaw Architects"
+      ]
     },
     {
       "id": "year_date",
@@ -5532,7 +5544,13 @@
         "ww_nat_great_barrier_reef_builders"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Feature descriptions range from single words to full sentences — inherent domain variation"
+      "homogeneityExemptNote": "Feature descriptions range from single words to full sentences — inherent domain variation",
+      "syntheticDistractors": [
+        "Steel",
+        "Concrete",
+        "Granite",
+        "Marble"
+      ]
     },
     {
       "id": "material_feature_long",
@@ -5551,7 +5569,14 @@
         "ww_mod_birds_nest_olympic_distinction"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Feature descriptions range from single words to full sentences — inherent domain variation"
+      "homogeneityExemptNote": "Feature descriptions range from single words to full sentences — inherent domain variation",
+      "syntheticDistractors": [
+        "Reinforced concrete structure",
+        "Tensile steel cable system",
+        "Pre-stressed concrete beams",
+        "Natural stone cladding",
+        "Solar panel integration"
+      ]
     },
     {
       "id": "person_historical_short",
@@ -5566,7 +5591,18 @@
         "ww_nat_paricutin_farmer"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Historical figures range from single names to lists — inherent domain variation"
+      "homogeneityExemptNote": "Historical figures range from single names to lists — inherent domain variation",
+      "syntheticDistractors": [
+        "Napoleon",
+        "Ramesses II",
+        "Charlemagne",
+        "Saladin",
+        "Cleopatra",
+        "Genghis Khan",
+        "Julius Caesar",
+        "Marcus Aurelius",
+        "Justinian"
+      ]
     },
     {
       "id": "person_historical_long",
@@ -5586,7 +5622,13 @@
         "ww_mon_rushmore_presidents"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Historical figures range from single names to lists — inherent domain variation"
+      "homogeneityExemptNote": "Historical figures range from single names to lists — inherent domain variation",
+      "syntheticDistractors": [
+        "Emperor Yongle of the Ming dynasty",
+        "Sultan Suleiman the Magnificent",
+        "Empress Wu Zetian of Tang",
+        "Emperor Ashoka of Maurya"
+      ]
     },
     {
       "id": "bracket_numbers",

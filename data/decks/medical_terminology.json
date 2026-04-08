@@ -40584,7 +40584,14 @@
       ],
       "minimumSize": 5,
       "homogeneityExemptNote": "Medical root meanings vary widely in length — inherent domain variation",
-      "label": "root_meanings (short)"
+      "label": "root_meanings (short)",
+      "syntheticDistractors": [
+        "gut",
+        "jaw",
+        "arm",
+        "leg",
+        "lip"
+      ]
     },
     {
       "id": "root_meanings_mid",

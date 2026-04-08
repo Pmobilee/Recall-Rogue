@@ -16635,7 +16635,14 @@
         "cinema_quote_et_phone_home",
         "cinema_quote_bond_james_bond"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "\"May the Force be with you\"",
+        "\"You talking to me?\"",
+        "\"There's no place like home\"",
+        "\"E.T. phone home\"",
+        "\"Life is like a box of chocolates\""
+      ]
     }
   ],
   "synonymGroups": [],

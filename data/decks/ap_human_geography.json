@@ -9844,7 +9844,9 @@
         "August Losch",
         "Waldo Tobler",
         "Carl Sauer",
-        "Yi-Fu Tuan"
+        "Yi-Fu Tuan",
+        "Johann Heinrich von Thünen",
+        "David Harvey"
       ]
     },
     {
@@ -9868,7 +9870,8 @@
         "crop rotation",
         "polyculture",
         "agropastoralism",
-        "hydroponics"
+        "hydroponics",
+        "terracing"
       ],
       "homogeneityExemptNote": "AP HuG agriculture pool spans single-word practices (ranching, 8 chars) to compound systems (community-supported agriculture, 31 chars); all are CED-specified farming practice names."
     },
@@ -9890,7 +9893,11 @@
         "crop rotation",
         "polyculture",
         "agropastoralism",
-        "hydroponics"
+        "hydroponics",
+        "truck farming",
+        "organic farming",
+        "collective farming",
+        "contract farming"
       ],
       "homogeneityExemptNote": "AP HuG agriculture pool spans single-word practices (ranching, 8 chars) to compound systems (community-supported agriculture, 31 chars); all are CED-specified farming practice names."
     },
@@ -9937,7 +9944,9 @@
         "enclave",
         "irredentism",
         "balkanization",
-        "political ecology"
+        "political ecology",
+        "buffer zone",
+        "protectorate"
       ],
       "homogeneityExemptNote": "AP HuG political terms span single-word (state, 5 chars) to compound (multinational state, 19 chars); all are CED-specified political geography terms and share the same answer pool naturally."
     },
@@ -9958,7 +9967,12 @@
         "enclave",
         "irredentism",
         "balkanization",
-        "political ecology"
+        "political ecology",
+        "supranationalism",
+        "territorial integrity",
+        "choke point",
+        "domino effect",
+        "zero-sum game"
       ],
       "homogeneityExemptNote": "AP HuG political terms span single-word (state, 5 chars) to compound (multinational state, 19 chars); all are CED-specified political geography terms and share the same answer pool naturally."
     },
@@ -9982,7 +9996,9 @@
         "Edge City Theory",
         "Squatter Settlement Model",
         "Metropolitan Statistical Area Model",
-        "Urban Gravity Model"
+        "Urban Gravity Model",
+        "Von Thünen Model",
+        "Weber Least-Cost Model"
       ]
     },
     {
@@ -10053,7 +10069,8 @@
         "maritime boundary",
         "buffer boundary",
         "contested boundary",
-        "colonial boundary"
+        "colonial boundary",
+        "fortified boundary"
       ]
     },
     {
@@ -10073,7 +10090,12 @@
         "digital diffusion",
         "cultural osmosis",
         "spatial propagation",
-        "network diffusion"
+        "network diffusion",
+        "maladaptive diffusion",
+        "cascade diffusion",
+        "global diffusion",
+        "cultural diffusion",
+        "technological diffusion"
       ]
     },
     {
@@ -10157,7 +10179,12 @@
         "structuralist theory",
         "growth pole theory",
         "cumulative causation theory",
-        "underdevelopment theory"
+        "underdevelopment theory",
+        "Rostow's stages of growth",
+        "import substitution",
+        "export-led growth",
+        "structural adjustment",
+        "human development index"
       ]
     },
     {
@@ -10219,7 +10246,11 @@
         "eminent domain",
         "urban heat island",
         "fiscal zoning",
-        "deed restriction"
+        "deed restriction",
+        "slum",
+        "favela",
+        "shantytown",
+        "infill"
       ],
       "homogeneityExemptNote": "AP HuG urban challenge terms span single-word concepts (exurbs, 6 chars) to compound phrases (environmental injustice, 23 chars); all are CED-specified urban geography terms."
     },
@@ -10244,7 +10275,8 @@
         "eminent domain",
         "urban heat island",
         "fiscal zoning",
-        "deed restriction"
+        "deed restriction",
+        "urban decline"
       ],
       "homogeneityExemptNote": "AP HuG urban challenge terms span single-word concepts (exurbs, 6 chars) to compound phrases (environmental injustice, 23 chars); all are CED-specified urban geography terms."
     },
@@ -10385,7 +10417,17 @@
       ],
       "minimumSize": 5,
       "homogeneityExemptNote": "AP unit vocabulary spans acronyms to multi-word terms by design",
-      "syntheticDistractors": []
+      "syntheticDistractors": [
+        "suburb",
+        "exurb",
+        "hinterland",
+        "downtown",
+        "CBD",
+        "zone",
+        "density",
+        "sprawl",
+        "infill"
+      ]
     },
     {
       "id": "unit6_urban_concept_terms_long",
@@ -10406,7 +10448,12 @@
       ],
       "minimumSize": 5,
       "homogeneityExemptNote": "AP unit vocabulary spans acronyms to multi-word terms by design",
-      "syntheticDistractors": []
+      "syntheticDistractors": [
+        "central business district",
+        "urban morphology",
+        "brownfield redevelopment",
+        "mixed-use development"
+      ]
     },
     {
       "id": "unit1_spatial_concept_terms_short",
@@ -10559,7 +10606,12 @@
       ],
       "minimumSize": 5,
       "homogeneityExemptNote": "AP unit vocabulary — short terms (acronyms, single-word, brief phrases)",
-      "syntheticDistractors": []
+      "syntheticDistractors": [
+        "yield",
+        "soil",
+        "erosion",
+        "runoff"
+      ]
     },
     {
       "id": "unit5_agriculture_concept_terms_long",
@@ -10577,7 +10629,15 @@
       ],
       "minimumSize": 5,
       "homogeneityExemptNote": "AP unit vocabulary — short terms (acronyms, single-word, brief phrases)",
-      "syntheticDistractors": []
+      "syntheticDistractors": [
+        "food security",
+        "seed bank",
+        "soil degradation",
+        "water scarcity",
+        "land reform",
+        "agricultural surplus",
+        "food miles"
+      ]
     },
     {
       "id": "unit5_agriculture_concept_terms_long",
@@ -10613,7 +10673,18 @@
       ],
       "minimumSize": 5,
       "homogeneityExemptNote": "AP unit vocabulary — short terms (acronyms, single-word, brief phrases)",
-      "syntheticDistractors": []
+      "syntheticDistractors": [
+        "trade",
+        "tariff",
+        "quota",
+        "surplus",
+        "deficit",
+        "labor",
+        "capital",
+        "wage",
+        "export",
+        "import"
+      ]
     },
     {
       "id": "unit7_economic_concept_terms_long",
@@ -10630,7 +10701,16 @@
       ],
       "minimumSize": 5,
       "homogeneityExemptNote": "AP unit vocabulary — short terms (acronyms, single-word, brief phrases)",
-      "syntheticDistractors": []
+      "syntheticDistractors": [
+        "global supply chain",
+        "trade deficit",
+        "foreign direct investment",
+        "special economic zone",
+        "maquiladora",
+        "free trade zone",
+        "world systems theory",
+        "industrial symbiosis"
+      ]
     },
     {
       "id": "unit7_economic_concept_terms_long",

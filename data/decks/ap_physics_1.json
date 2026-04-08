@@ -205,6 +205,11 @@
         "ap_phys1_power_real_world",
         "ap_phys1_water_density_value",
         "ap_phys1_atm_pressure_value"
+      ],
+      "syntheticDistractors": [
+        "Pascal (Pa) = N/m²",
+        "Hertz (Hz) = cycles per second (1/s)",
+        "Coulomb (C) = ampere × second"
       ]
     },
     {
@@ -221,6 +226,13 @@
         "ap_phys1_vt_area_displacement",
         "ap_phys1_work_area_under_Fx",
         "ap_phys1_impulse_area_Ft"
+      ],
+      "syntheticDistractors": [
+        "Net force (slope of momentum-time)",
+        "Power output (area under F-v)",
+        "Net work done (area under F-x)",
+        "Angular acceleration (slope of ω-t)",
+        "Angular displacement (area under ω-t)"
       ]
     },
     {

@@ -4389,7 +4389,18 @@
         "const_myth_betelgeuse_arabic"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Star names and meanings range from single words to full Arabic phrases — inherent domain variation"
+      "homogeneityExemptNote": "Star names and meanings range from single words to full Arabic phrases — inherent domain variation",
+      "syntheticDistractors": [
+        "Alpha and Beta Centauri",
+        "Mira (the wonderful)",
+        "Epsilon Eridani",
+        "Tau Ceti",
+        "Gamma Velorum",
+        "Xi Persei (the interloper)",
+        "Eta Carinae (hypergiant)",
+        "Alpha Orionis (Betelgeuse)",
+        "Beta Orionis (Rigel)"
+      ]
     },
     {
       "id": "constellation_names",
@@ -4430,7 +4441,18 @@
         "const_myth_cygnus_orpheus"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Mythological figures range from short names to full names with titles — inherent domain variation"
+      "homogeneityExemptNote": "Mythological figures range from short names to full names with titles — inherent domain variation",
+      "syntheticDistractors": [
+        "Orion",
+        "Andromeda",
+        "Cassiopeia",
+        "Aquila",
+        "Lyra",
+        "Heracles",
+        "Boötes",
+        "Auriga",
+        "Crater"
+      ]
     },
     {
       "id": "god_figure_names_mid",
@@ -4445,7 +4467,18 @@
         "const_myth_gemini_dioscuri"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Mythological figures range from short names to full names with titles — inherent domain variation"
+      "homogeneityExemptNote": "Mythological figures range from short names to full names with titles — inherent domain variation",
+      "syntheticDistractors": [
+        "Tycho Brahe",
+        "Hipparchus of Nicaea",
+        "Edmund Halley",
+        "Caroline Herschel",
+        "Nicolas Louis de Lacaille",
+        "A scorpion sent by Gaia",
+        "The river Eridanus",
+        "Aratus of Soli",
+        "Ptolemy of Alexandria"
+      ]
     },
     {
       "id": "god_figure_names_long",
@@ -4459,7 +4492,19 @@
         "const_myth_cassiopeia_sin"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Mythological figures range from short names to full names with titles — inherent domain variation"
+      "homogeneityExemptNote": "Mythological figures range from short names to full names with titles — inherent domain variation",
+      "syntheticDistractors": [
+        "Callisto transformed by Zeus",
+        "Ariadne abandoned by Theseus",
+        "Ganymede cupbearer of the gods",
+        "Erigone searching for her father",
+        "Clytie turned toward the sun",
+        "Arion saved by a dolphin",
+        "Actaeon turned into a stag",
+        "Phaethon who drove the sun chariot",
+        "Iphigenia sacrificed at Aulis by Agamemnon",
+        "Hyacinthus killed by discus thrown by Zephyrus"
+      ]
     },
     {
       "id": "concept_terms_short",
@@ -4478,7 +4523,14 @@
         "const_mc_cancer_cluster"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Astronomical concepts range from single words to full definitions — inherent domain variation"
+      "homogeneityExemptNote": "Astronomical concepts range from single words to full definitions — inherent domain variation",
+      "syntheticDistractors": [
+        "zenith",
+        "nadir",
+        "meridian",
+        "ecliptic",
+        "equinox"
+      ]
     },
     {
       "id": "concept_terms_mid",
@@ -4551,7 +4603,17 @@
         "const_mc_orion_betelgeuse_second"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Numbers range from star counts to probability descriptions — inherent domain variation"
+      "homogeneityExemptNote": "Numbers range from star counts to probability descriptions — inherent domain variation",
+      "syntheticDistractors": [
+        "7th",
+        "First",
+        "Fourth",
+        "Eighth",
+        "Tenth",
+        "0.5",
+        "1.2",
+        "2.0"
+      ]
     },
     {
       "id": "date_numbers_mid",
@@ -4565,7 +4627,19 @@
         "const_sci_precession_cycle"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Numbers range from star counts to probability descriptions — inherent domain variation"
+      "homogeneityExemptNote": "Numbers range from star counts to probability descriptions — inherent domain variation",
+      "syntheticDistractors": [
+        "June",
+        "September",
+        "December",
+        "March",
+        "3000 BC",
+        "2000 years",
+        "50,000 years",
+        "1781 AD",
+        "1930s",
+        "400 BCE"
+      ]
     },
     {
       "id": "date_numbers_long",

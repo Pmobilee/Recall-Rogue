@@ -20976,7 +20976,13 @@
         "myth_furies_punishment"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Mythological creature names range from single words to descriptive names — inherent domain variation"
+      "homogeneityExemptNote": "Mythological creature names range from single words to descriptive names — inherent domain variation",
+      "syntheticDistractors": [
+        "Harpy",
+        "Cyclops",
+        "Satyr",
+        "Centaur"
+      ]
     },
     {
       "id": "creature_names_long",
@@ -21167,7 +21173,16 @@
         "myth_tartarus_pit"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Greek location names range from short city names to full place names — inherent domain variation"
+      "homogeneityExemptNote": "Greek location names range from short city names to full place names — inherent domain variation",
+      "syntheticDistractors": [
+        "Olympus",
+        "Crete",
+        "Corinth",
+        "Mycenae",
+        "Erebus",
+        "Asphodel",
+        "Aulis"
+      ]
     },
     {
       "id": "location_names_long",
@@ -21184,7 +21199,16 @@
         "myth_asphodel_neutral"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Greek location names range from short city names to full place names — inherent domain variation"
+      "homogeneityExemptNote": "Greek location names range from short city names to full place names — inherent domain variation",
+      "syntheticDistractors": [
+        "Elysian Fields",
+        "Isles of the Blessed",
+        "Mount Parnassus",
+        "Pillars of Heracles",
+        "Garden of Hesperides",
+        "Labyrinth of Crete",
+        "Cave of Trophonius"
+      ]
     },
     {
       "id": "object_names_short",

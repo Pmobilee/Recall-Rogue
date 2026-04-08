@@ -16792,7 +16792,19 @@
         "ap_macro_5a_lrpc_shift_causes"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Economic terms naturally vary in length"
+      "homogeneityExemptNote": "Economic terms naturally vary in length",
+      "syntheticDistractors": [
+        "Loanable Funds supply curve",
+        "Money Supply vertical line",
+        "Investment Demand curve",
+        "Net Export curve",
+        "Keynesian cross diagram",
+        "Money Market equilibrium graph",
+        "Multiplier effect diagram",
+        "aggregate expenditure model",
+        "money demand curve",
+        "labor demand curve"
+      ]
     },
     {
       "id": "equation_symbols",
@@ -16853,6 +16865,17 @@
         "ap_macro_3a_spending_multiplier_formula",
         "ap_macro_2a_gdp_expenditure_formula",
         "ap_macro_3a_ad_components"
+      ],
+      "syntheticDistractors": [
+        "Y = C + I + G + NX",
+        "ΔY = (1/1-MPC) × ΔI",
+        "M × V = P × Q",
+        "Budget balance = T - G",
+        "Trade balance = X - M",
+        "C = a + bY",
+        "I = f(r)",
+        "NX = X - M",
+        "π = ΔP/P"
       ]
     },
     {
@@ -16893,6 +16916,15 @@
         "ap_macro_2a_real_gdp_conversion",
         "ap_macro_2b_007",
         "ap_macro_5a_quantity_theory_constant_v"
+      ],
+      "syntheticDistractors": [
+        "Unemployment rate = unemployed / labor force × 100",
+        "Velocity of money = Nominal GDP / Money Supply",
+        "Real interest rate = Nominal rate minus inflation rate",
+        "Money multiplier = 1 / Reserve requirement ratio",
+        "Balanced budget multiplier = 1 (fiscal policy)",
+        "Current account + Capital account = 0",
+        "Foreign exchange rate = domestic/foreign price ratio"
       ]
     },
     {
@@ -16977,6 +17009,17 @@
         "ap_macro_2a_nominal_gdp_definition",
         "ap_macro_2a_gdp_deflator_vs_cpi",
         "ap_macro_2a_potential_gdp"
+      ],
+      "syntheticDistractors": [
+        "CPI",
+        "PPI",
+        "PCE",
+        "MPC",
+        "MPS",
+        "APC",
+        "APS",
+        "Gini",
+        "HDI"
       ]
     },
     {
@@ -16992,6 +17035,14 @@
         "ap_macro_2b_022",
         "ap_macro_2b_033",
         "ap_macro_2b_040"
+      ],
+      "syntheticDistractors": [
+        "Current account balance",
+        "Trade balance",
+        "balance of payments surplus",
+        "terms of trade index",
+        "capital flight measure",
+        "Potential output gap"
       ]
     },
     {
@@ -17031,7 +17082,19 @@
         "ap_macro_6b_absolute_advantage"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Economic terms naturally vary in length"
+      "homogeneityExemptNote": "Economic terms naturally vary in length",
+      "syntheticDistractors": [
+        "Gresham's law",
+        "Say's law",
+        "Keynes multiplier",
+        "Solow residual",
+        "Tobin's Q",
+        "Taylor rule",
+        "Mundell rule",
+        "Tinbergen rule",
+        "Friedman rule",
+        "Pigou effect"
+      ]
     },
     {
       "id": "law_and_principle_names_macro_long",
@@ -17050,7 +17113,14 @@
         "ap_macro_5a_monetary_inflation_long_run"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Economic terms naturally vary in length"
+      "homogeneityExemptNote": "Economic terms naturally vary in length",
+      "syntheticDistractors": [
+        "Crowding-out effect",
+        "Quantity theory of money",
+        "Permanent income hypothesis",
+        "Life-cycle hypothesis",
+        "Rational expectations theory"
+      ]
     },
     {
       "id": "macro_concept_terms_short",
@@ -17066,7 +17136,17 @@
         "ap_macro_2b_018"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Economic terms naturally vary in length"
+      "homogeneityExemptNote": "Economic terms naturally vary in length",
+      "syntheticDistractors": [
+        "NDP",
+        "NNP",
+        "GNI",
+        "CPI",
+        "PPI",
+        "MPS",
+        "MPC",
+        "APS"
+      ]
     },
     {
       "id": "macro_concept_terms_mid",

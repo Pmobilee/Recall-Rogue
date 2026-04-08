@@ -4136,7 +4136,17 @@
       ],
       "minimumSize": 5,
       "homogeneityExemptNote": "Museum names range from abbreviations to full formal names — inherent domain variation",
-      "label": "museum_names (short)"
+      "label": "museum_names (short)",
+      "syntheticDistractors": [
+        "Orsay",
+        "Tate",
+        "Hermitage",
+        "Vatican",
+        "Rijks",
+        "Topkapi",
+        "Met",
+        "Gemäldegalerie"
+      ]
     },
     {
       "id": "museum_names_long",
@@ -4153,7 +4163,15 @@
       ],
       "minimumSize": 5,
       "homogeneityExemptNote": "Museum names range from abbreviations to full formal names — inherent domain variation",
-      "label": "museum_names (long)"
+      "label": "museum_names (long)",
+      "syntheticDistractors": [
+        "Tate Modern",
+        "Musée d'Orsay",
+        "Museo del Prado",
+        "Smithsonian Institution",
+        "Philadelphia Museum of Art",
+        "Victoria and Albert Museum"
+      ]
     },
     {
       "id": "counts_amounts",
@@ -4190,7 +4208,15 @@
       "minimumSize": 5,
       "syntheticDistractors": [
         "Fresco",
-        "Tempera"
+        "Tempera",
+        "Glazing",
+        "Grisaille",
+        "Scumbling",
+        "Sgrafito",
+        "Encaustic",
+        "Acrylic",
+        "Gouache",
+        "Aquatint"
       ],
       "homogeneityExemptNote": "Art technique terms range from single words to paired movement names — inherent domain variation",
       "label": "technique_terms (short)"
@@ -4210,7 +4236,12 @@
       "minimumSize": 5,
       "syntheticDistractors": [
         "Fresco",
-        "Tempera"
+        "Tempera",
+        "Slow braising in wine",
+        "Flash-frying in hot oil",
+        "Cold smoking over wood chips",
+        "Salt-curing and air-drying",
+        "Fermentation in clay pots"
       ],
       "homogeneityExemptNote": "Art technique terms range from single words to paired movement names — inherent domain variation",
       "label": "technique_terms (long)"

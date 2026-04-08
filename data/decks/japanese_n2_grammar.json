@@ -66027,7 +66027,16 @@
         "ja-gram-n2-ability-yougainai-fill-2",
         "ja-gram-n2-ability-yougainai-fill-3"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "きれない",
+        "きれる",
+        "にすぎない",
+        "ことになっている",
+        "はずだ",
+        "べきだ",
+        "はずがない"
+      ]
     },
     {
       "id": "addition",
@@ -66691,7 +66700,12 @@
         "ja-gram-n2-purpose-nikakete-fill-2",
         "ja-gram-n2-purpose-nikakete-fill-3"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "ために",
+        "ように",
+        "んがために"
+      ]
     },
     {
       "id": "reported_formal",
@@ -66747,7 +66761,16 @@
         "ja-gram-n2-result-ippoda-fill-2",
         "ja-gram-n2-result-ippoda-fill-3"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "ことになった",
+        "ようになった",
+        "てしまった",
+        "にいたる",
+        "にいたった",
+        "すえに",
+        "結果"
+      ]
     },
     {
       "id": "scope_range",
@@ -66995,7 +67018,12 @@
         "ja-gram-n2-n2-trig-kini-fill-2",
         "ja-gram-n2-n2-trig-kini-fill-3"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "をもとに",
+        "にしたがって",
+        "とともに"
+      ]
     },
     {
       "id": "viewpoint",

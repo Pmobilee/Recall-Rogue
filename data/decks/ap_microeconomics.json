@@ -16834,7 +16834,18 @@
         "ap_micro_6b_001"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Inherently variable pool — economic terms range from short abbreviations to multi-word concepts"
+      "homogeneityExemptNote": "Inherently variable pool — economic terms range from short abbreviations to multi-word concepts",
+      "syntheticDistractors": [
+        "isocost",
+        "isoquant",
+        "Engel curve",
+        "offer curve",
+        "reaction curve",
+        "Edgeworth box",
+        "indifference curve",
+        "price-consumption curve",
+        "income-consumption curve"
+      ]
     },
     {
       "id": "curve_and_graph_names_mid",
@@ -16854,7 +16865,13 @@
         "ap_micro_4b_034"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Inherently variable pool — economic terms range from short abbreviations to multi-word concepts"
+      "homogeneityExemptNote": "Inherently variable pool — economic terms range from short abbreviations to multi-word concepts",
+      "syntheticDistractors": [
+        "long-run average cost",
+        "short-run supply",
+        "marginal factor cost",
+        "average variable cost"
+      ]
     },
     {
       "id": "curve_and_graph_names_long",
@@ -16902,7 +16919,14 @@
         "ap_micro_5_038"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Inherently variable pool — economic terms range from short abbreviations to multi-word concepts"
+      "homogeneityExemptNote": "Inherently variable pool — economic terms range from short abbreviations to multi-word concepts",
+      "syntheticDistractors": [
+        "elasticity",
+        "efficiency",
+        "incentive",
+        "margin",
+        "utility"
+      ]
     },
     {
       "id": "econ_concept_terms_mid",
@@ -17173,7 +17197,15 @@
         "ap_micro_5_003"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Formulas vary from short (MR=MC) to full equations"
+      "homogeneityExemptNote": "Formulas vary from short (MR=MC) to full equations",
+      "syntheticDistractors": [
+        "TC / Q",
+        "TR / Q",
+        "TR - TC",
+        "TR - VC",
+        "ΔTR / ΔQ",
+        "ΔTC / ΔQ"
+      ]
     },
     {
       "id": "equation_formulas_micro_mid",
@@ -17191,7 +17223,15 @@
         "ap_micro_3a_mc_equals_delta_vc"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Formulas vary from short (MR=MC) to full equations"
+      "homogeneityExemptNote": "Formulas vary from short (MR=MC) to full equations",
+      "syntheticDistractors": [
+        "Wage = Marginal Revenue Product of Labor",
+        "Price = Marginal Cost = Minimum ATC",
+        "Profit = Total Revenue minus Total Cost",
+        "Average Fixed Cost = Fixed Cost divided by Quantity",
+        "Marginal Revenue equals the slope of Total Revenue",
+        "Total Cost = Fixed Cost plus Variable Cost"
+      ]
     },
     {
       "id": "equation_formulas_micro_long",
@@ -17285,7 +17325,17 @@
         "ap_micro_2b_038"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Inherently variable pool — economic terms range from short abbreviations to multi-word concepts"
+      "homogeneityExemptNote": "Inherently variable pool — economic terms range from short abbreviations to multi-word concepts",
+      "syntheticDistractors": [
+        "excess demand",
+        "quantity restriction",
+        "voluntary exchange",
+        "market clearing",
+        "rent seeking",
+        "bargaining",
+        "signaling",
+        "screening"
+      ]
     },
     {
       "id": "market_outcome_descriptions_mid",
@@ -17303,7 +17353,15 @@
         "ap_micro_2b_033"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Inherently variable pool — economic terms range from short abbreviations to multi-word concepts"
+      "homogeneityExemptNote": "Inherently variable pool — economic terms range from short abbreviations to multi-word concepts",
+      "syntheticDistractors": [
+        "social optimum is achieved",
+        "resources are misallocated",
+        "monopoly restricts output",
+        "competitive equilibrium is maintained",
+        "prices are above marginal cost",
+        "consumer gains at producer expense"
+      ]
     },
     {
       "id": "market_outcome_descriptions_long",
@@ -17345,7 +17403,19 @@
         "ap_micro_4a_002"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Market structures range from one word (monopoly) to compound terms"
+      "homogeneityExemptNote": "Market structures range from one word (monopoly) to compound terms",
+      "syntheticDistractors": [
+        "duopoly",
+        "franchise",
+        "syndicate",
+        "guild",
+        "trust",
+        "conglomerate",
+        "cooperative",
+        "joint venture",
+        "consortium",
+        "holding company"
+      ]
     },
     {
       "id": "market_structure_names_long",
@@ -17367,7 +17437,11 @@
         "ap_micro_3b_043"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Market structures range from one word (monopoly) to compound terms"
+      "homogeneityExemptNote": "Market structures range from one word (monopoly) to compound terms",
+      "syntheticDistractors": [
+        "price-taking competitive firm",
+        "non-cooperative oligopoly"
+      ]
     },
     {
       "id": "policy_instrument_names_short",
@@ -17383,7 +17457,17 @@
         "ap_micro_2b_030"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Policy instruments range from short to compound terms"
+      "homogeneityExemptNote": "Policy instruments range from short to compound terms",
+      "syntheticDistractors": [
+        "tax",
+        "fine",
+        "ban",
+        "cap",
+        "credit",
+        "rebate",
+        "voucher",
+        "ceiling"
+      ]
     },
     {
       "id": "policy_instrument_names_long",
@@ -17402,7 +17486,14 @@
         "ap_micro_6a_022"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Policy instruments range from short to compound terms"
+      "homogeneityExemptNote": "Policy instruments range from short to compound terms",
+      "syntheticDistractors": [
+        "tradable permits",
+        "command and control",
+        "performance standard",
+        "technology mandate",
+        "information disclosure"
+      ]
     },
     {
       "id": "shift_direction_terms_short",
@@ -17417,7 +17508,18 @@
         "ap_micro_5_009"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Direction terms include short and compound phrases"
+      "homogeneityExemptNote": "Direction terms include short and compound phrases",
+      "syntheticDistractors": [
+        "rises",
+        "falls",
+        "up",
+        "down",
+        "inward",
+        "outward",
+        "steeper",
+        "flatter",
+        "unchanged"
+      ]
     },
     {
       "id": "shift_direction_terms_long",
@@ -17471,7 +17573,10 @@
         "ap_micro_2b_047"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Surplus and profit terms vary in length naturally"
+      "homogeneityExemptNote": "Surplus and profit terms vary in length naturally",
+      "syntheticDistractors": [
+        "excess supply"
+      ]
     },
     {
       "id": "surplus_welfare_terms_long",
@@ -17485,7 +17590,19 @@
         "ap_micro_4a_034"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Surplus and profit terms vary in length naturally"
+      "homogeneityExemptNote": "Surplus and profit terms vary in length naturally",
+      "syntheticDistractors": [
+        "involuntary unemployment rate",
+        "structural adjustment program",
+        "export subsidization policy",
+        "technological unemployment cost",
+        "factor price equalization",
+        "compensating variation",
+        "equivalent variation",
+        "willingness to accept",
+        "social indifference curve",
+        "aggregate welfare function"
+      ]
     }
   ],
   "chainThemes": [

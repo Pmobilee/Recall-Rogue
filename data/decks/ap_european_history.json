@@ -21705,7 +21705,13 @@
         "ap_euro_u5_reign_of_terror_dates"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Date formats vary: month/year, full ranges — inherent domain variation"
+      "homogeneityExemptNote": "Date formats vary: month/year, full ranges — inherent domain variation",
+      "syntheticDistractors": [
+        "June 28, 1914",
+        "November 11, 1918",
+        "September 1, 1939",
+        "May 8, 1945"
+      ]
     },
     {
       "id": "document_names_short",
@@ -22081,7 +22087,10 @@
         "ap_euro_u7_german_empire_proclaimed"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Place names range from short island names to descriptive locations — inherent domain variation"
+      "homogeneityExemptNote": "Place names range from short island names to descriptive locations — inherent domain variation",
+      "syntheticDistractors": [
+        "Ottoman Empire"
+      ]
     },
     {
       "id": "year_dates",

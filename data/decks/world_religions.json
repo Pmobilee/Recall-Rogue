@@ -12349,7 +12349,16 @@
         "world_religions_bud_wife"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Proper-noun pool with variable-length Buddhist names"
+      "homogeneityExemptNote": "Proper-noun pool with variable-length Buddhist names",
+      "syntheticDistractors": [
+        "Asanga",
+        "Vasubandhu",
+        "Milarepa",
+        "Yashodhara",
+        "Ananda",
+        "Mahakasyapa",
+        "Shariputra"
+      ]
     },
     {
       "id": "bodhisattva_and_buddhist_figures_long",
@@ -12364,7 +12373,18 @@
         "world_religions_bud_thich_nhat_hanh"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Proper-noun pool with variable-length Buddhist names"
+      "homogeneityExemptNote": "Proper-noun pool with variable-length Buddhist names",
+      "syntheticDistractors": [
+        "Shantideva",
+        "Chandrakirti",
+        "Atisha Dipankara",
+        "Tsongkhapa",
+        "Milarepa the hermit",
+        "Gampopa the physician",
+        "Tilopa the fisherman",
+        "Yeshe Tsogyal",
+        "Machig Labdron"
+      ]
     },
     {
       "id": "bracket_numbers",
@@ -12420,7 +12440,19 @@
         "world_religions_sik_gurdwara"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Mixes general building types (Stupa, Pagoda) with specific named sites (Dome of the Rock, Al-Aqsa Mosque). Cross-tradition pool inherently variable."
+      "homogeneityExemptNote": "Mixes general building types (Stupa, Pagoda) with specific named sites (Dome of the Rock, Al-Aqsa Mosque). Cross-tradition pool inherently variable.",
+      "syntheticDistractors": [
+        "basilica",
+        "abbey",
+        "chapel",
+        "shrine",
+        "temple",
+        "vihara",
+        "zendo",
+        "lamasery",
+        "mandir",
+        "tabernacle"
+      ]
     },
     {
       "id": "building_type_names_long",
@@ -12434,7 +12466,19 @@
         "world_religions_isl_dome_of_rock"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Mixes general building types (Stupa, Pagoda) with specific named sites (Dome of the Rock, Al-Aqsa Mosque). Cross-tradition pool inherently variable."
+      "homogeneityExemptNote": "Mixes general building types (Stupa, Pagoda) with specific named sites (Dome of the Rock, Al-Aqsa Mosque). Cross-tradition pool inherently variable.",
+      "syntheticDistractors": [
+        "Buddhist monastery",
+        "Hindu temple complex",
+        "Jewish synagogue",
+        "Zoroastrian fire temple",
+        "Sikh gurdwara",
+        "Shinto torii gate",
+        "Islamic minaret",
+        "Orthodox iconostasis",
+        "Protestant chapel",
+        "Jain assembly hall"
+      ]
     },
     {
       "id": "denomination_names_short",
@@ -12480,7 +12524,17 @@
         "world_religions_jud_orthodox_denomination"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Denominational names span traditions: short names (Zen, Shia) to compound names (Eastern Orthodox, Roman Catholic). Cross-tradition pool inherently variable."
+      "homogeneityExemptNote": "Denominational names span traditions: short names (Zen, Shia) to compound names (Eastern Orthodox, Roman Catholic). Cross-tradition pool inherently variable.",
+      "syntheticDistractors": [
+        "Conservative Judaism",
+        "Theravada Buddhism",
+        "Shia Islam",
+        "Sunni Islam",
+        "Mahayana Buddhism",
+        "Vajrayana Buddhism",
+        "Quaker",
+        "Coptic Christian"
+      ]
     },
     {
       "id": "founder_names_short",
@@ -12494,7 +12548,19 @@
         "world_religions_oth_confucius_founder"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Proper-noun pool: short names (Laozi, Moses) vs full names (Siddhartha Gautama). Cross-tradition founder names inherently variable in length."
+      "homogeneityExemptNote": "Proper-noun pool: short names (Laozi, Moses) vs full names (Siddhartha Gautama). Cross-tradition founder names inherently variable in length.",
+      "syntheticDistractors": [
+        "Zoroaster",
+        "Vardhamana",
+        "Nanak",
+        "Mani",
+        "Akhenaten",
+        "Pythagoras",
+        "Empedocles",
+        "Prabhupada",
+        "Valentinus",
+        "Marduk"
+      ]
     },
     {
       "id": "founder_names_long",
@@ -12508,7 +12574,19 @@
         "world_religions_bud_founder_name"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Proper-noun pool: short names (Laozi, Moses) vs full names (Siddhartha Gautama). Cross-tradition founder names inherently variable in length."
+      "homogeneityExemptNote": "Proper-noun pool: short names (Laozi, Moses) vs full names (Siddhartha Gautama). Cross-tradition founder names inherently variable in length.",
+      "syntheticDistractors": [
+        "Joseph Smith Jr.",
+        "Ellen G. White",
+        "Mary Baker Eddy",
+        "Sun Myung Moon",
+        "Maharishi Mahesh Yogi",
+        "Sri Aurobindo",
+        "Ramakrishna Paramahamsa",
+        "Prabhupada Bhaktivedanta",
+        "Charles Taze Russell",
+        "William Miller"
+      ]
     },
     {
       "id": "hindu_deity_names",
@@ -12530,7 +12608,10 @@
         "world_religions_hin_surya",
         "world_religions_hin_vishnu_role"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Kartikeya"
+      ]
     },
     {
       "id": "holy_day_names_short",
@@ -12552,7 +12633,11 @@
         "world_religions_jud_shavuot"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Religious holidays span traditions: short names (Holi, Lent) to compound names (Krishna Janmashtami). Cross-tradition pool inherently variable."
+      "homogeneityExemptNote": "Religious holidays span traditions: short names (Holi, Lent) to compound names (Krishna Janmashtami). Cross-tradition pool inherently variable.",
+      "syntheticDistractors": [
+        "Eid",
+        "Pesach"
+      ]
     },
     {
       "id": "holy_day_names_long",
@@ -12575,7 +12660,10 @@
         "world_religions_hin_janmashtami"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Religious holidays span traditions: short names (Holi, Lent) to compound names (Krishna Janmashtami). Cross-tradition pool inherently variable."
+      "homogeneityExemptNote": "Religious holidays span traditions: short names (Holi, Lent) to compound names (Krishna Janmashtami). Cross-tradition pool inherently variable.",
+      "syntheticDistractors": [
+        "Maha Shivaratri"
+      ]
     },
     {
       "id": "holy_site_names_short",
@@ -12622,7 +12710,10 @@
         "world_religions_chr_santiago"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Religious sites span traditions: short names (Ise, Qom) to compound names (Santiago de Compostela). Cross-tradition place names inherently variable."
+      "homogeneityExemptNote": "Religious sites span traditions: short names (Ise, Qom) to compound names (Santiago de Compostela). Cross-tradition place names inherently variable.",
+      "syntheticDistractors": [
+        "Tirupati"
+      ]
     },
     {
       "id": "religious_concept_names",
@@ -12738,7 +12829,19 @@
         "world_religions_oth_bahai_nine_pointed_star"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Mixes short Sanskrit terms (Om, Kara, Kesh) with multi-word object names (Nine-pointed star)"
+      "homogeneityExemptNote": "Mixes short Sanskrit terms (Om, Kara, Kesh) with multi-word object names (Nine-pointed star)",
+      "syntheticDistractors": [
+        "Rosary beads",
+        "Incense burner",
+        "Prayer mat",
+        "Ablution basin",
+        "Turban",
+        "Bindi",
+        "Tilak",
+        "Mala beads",
+        "Conch shell",
+        "Singing bowl"
+      ]
     },
     {
       "id": "religious_practice_names_short",
@@ -12782,7 +12885,14 @@
         "world_religions_bud_right_mindfulness"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Mixes short names (Hajj, Salat) with longer multi-word practices"
+      "homogeneityExemptNote": "Mixes short names (Hajj, Salat) with longer multi-word practices",
+      "syntheticDistractors": [
+        "pilgrimage",
+        "fasting",
+        "meditation",
+        "ablution",
+        "tithing"
+      ]
     },
     {
       "id": "sacred_text_names",

@@ -29095,7 +29095,11 @@
         "ja-gram-n4-n4-caus-sasete-kudasai-fill-1",
         "ja-gram-n4-n4-caus-sasete-kudasai-fill-2"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "させられます",
+        "させられる"
+      ]
     },
     {
       "id": "honorific",
@@ -29206,7 +29210,11 @@
         "ja-gram-n4-n4-comp-sugiru-fill-2",
         "ja-gram-n4-n4-comp-sugiru-fill-3"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "にくい",
+        "にくかった"
+      ]
     },
     {
       "id": "quotation",
@@ -29226,7 +29234,12 @@
         "ja-gram-n4-n4-quot-to-iwarete-iru-fill-1",
         "ja-gram-n4-n4-quot-to-iwarete-iru-fill-2"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "とのことです",
+        "とのことだ",
+        "とか"
+      ]
     },
     {
       "id": "purpose_intent",

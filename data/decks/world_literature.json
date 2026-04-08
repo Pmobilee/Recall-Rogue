@@ -11792,7 +11792,17 @@
         "lit_ren_dante_beatrice"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Character names range from single-name classical figures ('Laura') to full formal names ('Fitzwilliam Darcy') — inherent domain variation."
+      "homogeneityExemptNote": "Character names range from single-name classical figures ('Laura') to full formal names ('Fitzwilliam Darcy') — inherent domain variation.",
+      "syntheticDistractors": [
+        "Iago",
+        "Falstaff",
+        "Portia",
+        "Ophelia",
+        "Raskolnikov",
+        "Natasha",
+        "Heathcliff",
+        "Gatsby"
+      ]
     },
     {
       "id": "character_names_long",
@@ -11810,7 +11820,15 @@
         "lit_19c_austen_pp_hero"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Character names range from single-name classical figures ('Laura') to full formal names ('Fitzwilliam Darcy') — inherent domain variation."
+      "homogeneityExemptNote": "Character names range from single-name classical figures ('Laura') to full formal names ('Fitzwilliam Darcy') — inherent domain variation.",
+      "syntheticDistractors": [
+        "Hester Prynne",
+        "Jay Gatsby",
+        "Emma Bovary",
+        "Raskolnikov",
+        "Ivan Karamazov",
+        "Prince Myshkin"
+      ]
     },
     {
       "id": "country_names",
@@ -11935,7 +11953,13 @@
       "syntheticDistractors": [
         "Don Quixote",
         "Beloved",
-        "Lolita"
+        "Lolita",
+        "Canterbury Tales",
+        "Candide",
+        "Troilus and Cressida",
+        "Henry V",
+        "Richard III",
+        "Othello II"
       ],
       "homogeneityExemptNote": "Opening line sources range from short titles ('Hamlet') to longer titles ('A Tale of Two Cities') — inherent variation in literary titles."
     },
@@ -11955,7 +11979,13 @@
       "syntheticDistractors": [
         "Don Quixote",
         "Beloved",
-        "Lolita"
+        "Lolita",
+        "Dead Souls",
+        "Fathers and Sons",
+        "The Possessed",
+        "The Metamorphosis",
+        "The Magic Mountain",
+        "Notre-Dame de Paris"
       ],
       "homogeneityExemptNote": "Opening line sources range from short titles ('Hamlet') to longer titles ('A Tale of Two Cities') — inherent variation in literary titles."
     },

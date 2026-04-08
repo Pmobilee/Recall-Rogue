@@ -7099,7 +7099,11 @@
         "food_dish_injera_fermentation",
         "food_tech_preservation_drying"
       ],
-      "label": "date_facts (short)"
+      "label": "date_facts (short)",
+      "syntheticDistractors": [
+        "1800s",
+        "400 BC"
+      ]
     },
     {
       "id": "date_facts_long",
@@ -7161,7 +7165,17 @@
         "food_hist_falafel_raw",
         "food_spice_black_pepper_currency"
       ],
-      "label": "technique_terms (long)"
+      "label": "technique_terms (long)",
+      "syntheticDistractors": [
+        "Slow braising in wine",
+        "Flash-frying in hot oil",
+        "Cold smoking over wood chips",
+        "Salt-curing and air-drying",
+        "Fermentation in clay pots",
+        "Stone-grinding by hand",
+        "Sous vide at precise temperature",
+        "Deep-frying in clarified butter"
+      ]
     },
     {
       "id": "ingredient_names_short",

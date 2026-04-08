@@ -15780,6 +15780,12 @@
         "ap_chem_8_1_strong_acids_list",
         "ap_chem_8_6_hf_weak_acid_despite_electronegativity",
         "ap_chem_9_4_diamond_graphite"
+      ],
+      "syntheticDistractors": [
+        "H2O (polar molecule)",
+        "NH3 (pyramidal)",
+        "CH4 (tetrahedral)",
+        "HCl (polar)"
       ]
     },
     {
@@ -15799,6 +15805,10 @@
         "ap_chem_u2_vsepr_tetrahedral_geometry",
         "ap_chem_u2_vsepr_trigonal_pyramidal",
         "ap_chem_u2_vsepr_octahedral_sf6"
+      ],
+      "syntheticDistractors": [
+        "gas evolution",
+        "reduction"
       ]
     },
     {
@@ -15819,6 +15829,9 @@
         "ap_chem_7_10_catalyst_equilibrium",
         "ap_chem_7_10_temperature_changes_K",
         "ap_chem_7_12_common_ion_le_chatelier"
+      ],
+      "syntheticDistractors": [
+        "Q < K (reaction proceeds forward)"
       ]
     },
     {

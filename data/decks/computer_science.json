@@ -7408,7 +7408,19 @@
         "cs_7_kubernetes_inspiration"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Technology terms range from abbreviations to full paper titles — inherent domain variation"
+      "homogeneityExemptNote": "Technology terms range from abbreviations to full paper titles — inherent domain variation",
+      "syntheticDistractors": [
+        "RAM",
+        "ROM",
+        "CPU",
+        "GPU",
+        "cache",
+        "kernel",
+        "daemon",
+        "mutex",
+        "semaphore",
+        "thread"
+      ]
     },
     {
       "id": "technology_terms_mid",
@@ -7430,7 +7442,11 @@
         "cs_7_nvidia_original_focus"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Technology terms range from abbreviations to full paper titles — inherent domain variation"
+      "homogeneityExemptNote": "Technology terms range from abbreviations to full paper titles — inherent domain variation",
+      "syntheticDistractors": [
+        "linked list",
+        "binary tree"
+      ]
     },
     {
       "id": "technology_terms_long",
@@ -7475,7 +7491,19 @@
         "cs_4_lan_expansion"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Acronym expansions range from short code names to multi-word phrases — inherent domain variation"
+      "homogeneityExemptNote": "Acronym expansions range from short code names to multi-word phrases — inherent domain variation",
+      "syntheticDistractors": [
+        "Hypertext Transfer Protocol",
+        "Structured Query Language",
+        "Cascading Style Sheets",
+        "Application Programming Interface",
+        "Command-Line Interface",
+        "Object-Oriented Programming",
+        "User Interface",
+        "Operating System",
+        "Read-Only Memory",
+        "Integrated Development Environment"
+      ]
     },
     {
       "id": "acronym_expansions_long",
@@ -7518,7 +7546,12 @@
         "COBOL",
         "Pascal",
         "Ada",
-        "Prolog"
+        "Prolog",
+        "Ruby",
+        "Swift",
+        "Rust",
+        "Haskell",
+        "Clojure"
       ],
       "homogeneityExemptNote": "Programming language names range from short to compound words — inherent domain variation"
     },
@@ -7539,7 +7572,12 @@
         "COBOL",
         "Pascal",
         "Ada",
-        "Prolog"
+        "Prolog",
+        "Visual Basic",
+        "Delphi",
+        "ColdFusion",
+        "ActionScript",
+        "PowerShell"
       ],
       "homogeneityExemptNote": "Programming language names range from short to compound words — inherent domain variation"
     },
@@ -7555,7 +7593,19 @@
         "cs_2_objective_c_adopted_by"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Company names range from acronyms to full historical names — inherent domain variation"
+      "homogeneityExemptNote": "Company names range from acronyms to full historical names — inherent domain variation",
+      "syntheticDistractors": [
+        "Sun",
+        "SGI",
+        "DEC",
+        "MCI",
+        "AOL",
+        "NCR",
+        "HP",
+        "SAP",
+        "EDS",
+        "NEC"
+      ]
     },
     {
       "id": "company_names_mid",
@@ -7575,7 +7625,13 @@
         "cs_7_adobe_origin"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Company names range from acronyms to full historical names — inherent domain variation"
+      "homogeneityExemptNote": "Company names range from acronyms to full historical names — inherent domain variation",
+      "syntheticDistractors": [
+        "Borland",
+        "Novell",
+        "Compaq",
+        "Lotus"
+      ]
     },
     {
       "id": "company_names_long",
@@ -7590,7 +7646,18 @@
         "cs_7_ibm_original_name"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Company names range from acronyms to full historical names — inherent domain variation"
+      "homogeneityExemptNote": "Company names range from acronyms to full historical names — inherent domain variation",
+      "syntheticDistractors": [
+        "Massachusetts Institute of Technology",
+        "Stanford Research Institute",
+        "Johns Hopkins University",
+        "Carnegie Mellon University",
+        "Stanford Artificial Intelligence Laboratory",
+        "IBM Research Division",
+        "Bell Labs Murray Hill",
+        "MIT Computer Science Lab",
+        "RAND Corporation"
+      ]
     },
     {
       "id": "product_names_short",
@@ -7609,7 +7676,14 @@
         "cs_7_android_first_device"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Product names range from single words to full product titles — inherent domain variation"
+      "homogeneityExemptNote": "Product names range from single words to full product titles — inherent domain variation",
+      "syntheticDistractors": [
+        "Mosaic",
+        "HyperCard",
+        "MS-DOS",
+        "WordStar",
+        "QuarkXPress"
+      ]
     },
     {
       "id": "product_names_long",
@@ -7629,7 +7703,13 @@
         "cs_7_apache_web_server"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Product names range from single words to full product titles — inherent domain variation"
+      "homogeneityExemptNote": "Product names range from single words to full product titles — inherent domain variation",
+      "syntheticDistractors": [
+        "Apple Macintosh 128K",
+        "Commodore 64 home computer",
+        "Altair 8800 kit",
+        "IBM System/360"
+      ]
     },
     {
       "id": "bracket_numbers",

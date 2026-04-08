@@ -42234,7 +42234,12 @@
         "ap_bio_telophase_II_four_haploid",
         "ap_bio_g0_quiescence"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "G1 phase",
+        "G2 phase",
+        "M phase"
+      ]
     },
     {
       "id": "disease_syndrome_names",
@@ -42385,7 +42390,16 @@
         "ap_bio_simpsons_diversity_index"
       ],
       "minimumSize": 5,
-      "label": "equation_terms (short)"
+      "label": "equation_terms (short)",
+      "syntheticDistractors": [
+        "Net productivity = GPP - R",
+        "h² = VA / VP",
+        "Fitness (w) = 1 - s",
+        "ΔAllele = q × (Δq)",
+        "r = b/c ratio",
+        "G × E interaction",
+        "Effective population (Ne)"
+      ]
     },
     {
       "id": "equation_terms_long",
@@ -42400,7 +42414,16 @@
         "ap_bio_u8_041"
       ],
       "minimumSize": 5,
-      "label": "equation_terms (long)"
+      "label": "equation_terms (long)",
+      "syntheticDistractors": [
+        "Realized heritability = R / S",
+        "Hardy-Weinberg equilibrium holds when no evolution occurs",
+        "Mean fitness = p²w₁₁ + 2pqw₁₂ + q²w₂₂",
+        "Change in q = -sq²(1-q) / mean fitness",
+        "Log-linear growth: Nt = N0 × e^(rt)",
+        "Survivorship: lx = Nx / N0",
+        "Net reproductive rate: R0 = Σ(lx × mx)"
+      ]
     },
     {
       "id": "evolution_terms_short",
@@ -42416,7 +42439,15 @@
         "ap_bio_adaptive_radiation"
       ],
       "minimumSize": 5,
-      "label": "evolution_terms (short)"
+      "label": "evolution_terms (short)",
+      "syntheticDistractors": [
+        "Speciation",
+        "Isolation",
+        "Selection",
+        "Variation",
+        "Divergence",
+        "Parapatric"
+      ]
     },
     {
       "id": "evolution_terms_long",
@@ -42429,7 +42460,18 @@
         "ap_bio_hardy_weinberg_conditions"
       ],
       "minimumSize": 5,
-      "label": "evolution_terms (long)"
+      "label": "evolution_terms (long)",
+      "syntheticDistractors": [
+        "Allopatric speciation",
+        "Sympatric speciation",
+        "Punctuated equilibrium",
+        "Molecular clock",
+        "Cladistics",
+        "Homologous structures",
+        "Analogous structures",
+        "Vestigial organs",
+        "Biogeographic distribution"
+      ]
     },
     {
       "id": "experiment_terms_short",
@@ -42443,7 +42485,17 @@
         "ap_bio_prob_mult_rule"
       ],
       "minimumSize": 5,
-      "label": "experiment_terms (short)"
+      "label": "experiment_terms (short)",
+      "syntheticDistractors": [
+        "null hypothesis",
+        "chi-square test",
+        "control group",
+        "replication",
+        "random sampling",
+        "experimental bias",
+        "standard deviation",
+        "p-value"
+      ]
     },
     {
       "id": "experiment_terms_long",
@@ -42460,7 +42512,14 @@
         "ap_bio_hw_five_conditions"
       ],
       "minimumSize": 5,
-      "label": "experiment_terms (long)"
+      "label": "experiment_terms (long)",
+      "syntheticDistractors": [
+        "Controlled experimental design",
+        "Statistical significance threshold",
+        "Chi-square critical value at p=0.05",
+        "Random sampling eliminates bias",
+        "Mendel's experimental methodology"
+      ]
     },
     {
       "id": "function_terms",
@@ -42520,7 +42579,12 @@
         "ap_bio_mitochondrial_inheritance_maternal",
         "ap_bio_phenotypic_plasticity_def"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Sex-linked trait",
+        "Haplosufficiency",
+        "Haploinsufficiency"
+      ]
     },
     {
       "id": "location_terms",
@@ -42663,7 +42727,17 @@
         "ap_bio_chloroplast"
       ],
       "minimumSize": 5,
-      "label": "organelle_names (short)"
+      "label": "organelle_names (short)",
+      "syntheticDistractors": [
+        "Ribosome",
+        "Vacuole",
+        "Centriole",
+        "Peroxisome",
+        "Cytoskeleton",
+        "Flagellum",
+        "Cilium",
+        "Capsule"
+      ]
     },
     {
       "id": "organelle_names_long",
@@ -42677,7 +42751,17 @@
         "ap_bio_intermediate_filaments"
       ],
       "minimumSize": 5,
-      "label": "organelle_names (long)"
+      "label": "organelle_names (long)",
+      "syntheticDistractors": [
+        "Endoplasmic reticulum",
+        "Nuclear envelope",
+        "Cell membrane",
+        "Contractile vacuole",
+        "Thylakoid membrane",
+        "Cristae (inner mitochondrial membrane)",
+        "Tonoplast membrane",
+        "Glyoxysome"
+      ]
     },
     {
       "id": "organelle_structures",
@@ -42922,7 +43006,18 @@
         "ap_bio_pure_water_psi"
       ],
       "minimumSize": 5,
-      "label": "term_definitions (short)"
+      "label": "term_definitions (short)",
+      "syntheticDistractors": [
+        "NADH",
+        "FADH2",
+        "lumen",
+        "granum",
+        "starch",
+        "NADP+",
+        "ADP",
+        "CoA",
+        "NAD+"
+      ]
     },
     {
       "id": "term_definitions_mid",

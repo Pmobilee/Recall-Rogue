@@ -12603,7 +12603,14 @@
         "pharm-cv-atorvastatin-indication",
         "pharm-cv-mannitol-indication"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Arrhythmia",
+        "Heart failure",
+        "Asthma",
+        "COPD",
+        "Diabetes"
+      ]
     },
     {
       "id": "indications_long",
@@ -12664,7 +12671,15 @@
         "pharm-cns-buspirone-nursing",
         "pharm-cns-zolpidem-nursing"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Check liver function tests",
+        "Assess renal function",
+        "Monitor blood pressure",
+        "Watch for bleeding",
+        "Assess respiratory rate",
+        "Monitor blood glucose"
+      ]
     },
     {
       "id": "nursing_interventions_long",
@@ -12797,7 +12812,16 @@
         "pharm-gir-omeprazole-interaction",
         "pharm-ob-oral-contraceptive-interaction"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Grapefruit juice inhibits CYP3A4",
+        "NSAIDs reduce antihypertensive effects",
+        "St. John's Wort induces liver enzymes",
+        "MAO inhibitors cause hypertensive crisis",
+        "Warfarin potentiated by aspirin",
+        "Phenytoin reduces oral contraceptive efficacy",
+        "Quinolones chelate with calcium"
+      ]
     }
   ],
   "synonymGroups": [],

@@ -72872,7 +72872,14 @@
         "ha_resp_032",
         "ha_resp_009"
       ],
-      "homogeneityExemptNote": "Image-dominated pool: image labels vary from short names (Lungs, Larynx) to descriptive titles (Upper airway sagittal view)"
+      "homogeneityExemptNote": "Image-dominated pool: image labels vary from short names (Lungs, Larynx) to descriptive titles (Upper airway sagittal view)",
+      "syntheticDistractors": [
+        "bronchi",
+        "cilia",
+        "alveoli",
+        "sinuses",
+        "turbinates"
+      ]
     },
     {
       "id": "structure_respiratory_long",
@@ -72884,7 +72891,19 @@
         "ha_resp_013",
         "ha_resp_031"
       ],
-      "homogeneityExemptNote": "Image-dominated pool: image labels vary from short names (Lungs, Larynx) to descriptive titles (Upper airway sagittal view)"
+      "homogeneityExemptNote": "Image-dominated pool: image labels vary from short names (Lungs, Larynx) to descriptive titles (Upper airway sagittal view)",
+      "syntheticDistractors": [
+        "tracheal rings",
+        "bronchioles",
+        "pleural cavity",
+        "intercostal muscles",
+        "respiratory bronchioles",
+        "alveolar sacs",
+        "vocal cords",
+        "respiratory epithelium",
+        "pulmonary capillaries",
+        "bronchial tree"
+      ]
     },
     {
       "id": "structure_digestive_short",
@@ -72896,7 +72915,19 @@
         "ha_digest_014",
         "ha_clinical_078"
       ],
-      "homogeneityExemptNote": "Mixed digestive pool: short anatomical terms (Mucosa, 6c) vs multi-word anatomical structure names (External anal sphincter, 23c) — variation inherent to digestive anatomy nomenclature"
+      "homogeneityExemptNote": "Mixed digestive pool: short anatomical terms (Mucosa, 6c) vs multi-word anatomical structure names (External anal sphincter, 23c) — variation inherent to digestive anatomy nomenclature",
+      "syntheticDistractors": [
+        "jejunum",
+        "ileum",
+        "cecum",
+        "colon",
+        "anus",
+        "villi",
+        "pylorus",
+        "fundus",
+        "antrum",
+        "cardia"
+      ]
     },
     {
       "id": "structure_digestive_long",
@@ -72911,7 +72942,16 @@
         "ha_digest_012",
         "ha_digest_016"
       ],
-      "homogeneityExemptNote": "Mixed digestive pool: short anatomical terms (Mucosa, 6c) vs multi-word anatomical structure names (External anal sphincter, 23c) — variation inherent to digestive anatomy nomenclature"
+      "homogeneityExemptNote": "Mixed digestive pool: short anatomical terms (Mucosa, 6c) vs multi-word anatomical structure names (External anal sphincter, 23c) — variation inherent to digestive anatomy nomenclature",
+      "syntheticDistractors": [
+        "haustra folds",
+        "ileocecal valve",
+        "mucous membrane",
+        "submucosa",
+        "muscularis externa",
+        "hepatic flexure",
+        "splenic flexure"
+      ]
     },
     {
       "id": "structure_skeletal",
@@ -72955,7 +72995,13 @@
         "ha_musc_126",
         "ha_musc_129"
       ],
-      "homogeneityExemptNote": "Mixed pool: single molecular names (Myosin, 6c) vs multi-muscle anatomy lists (Trapezius, latissimus dorsi, scapular border, 44c) — variation intrinsic to muscle anatomy vocabulary"
+      "homogeneityExemptNote": "Mixed pool: single molecular names (Myosin, 6c) vs multi-muscle anatomy lists (Trapezius, latissimus dorsi, scapular border, 44c) — variation intrinsic to muscle anatomy vocabulary",
+      "syntheticDistractors": [
+        "biceps",
+        "triceps",
+        "deltoid",
+        "gluteus"
+      ]
     },
     {
       "id": "structure_muscular_long",
@@ -72974,7 +73020,12 @@
         "ha_musc_086",
         "ha_regional_037"
       ],
-      "homogeneityExemptNote": "Mixed pool: single molecular names (Myosin, 6c) vs multi-muscle anatomy lists (Trapezius, latissimus dorsi, scapular border, 44c) — variation intrinsic to muscle anatomy vocabulary"
+      "homogeneityExemptNote": "Mixed pool: single molecular names (Myosin, 6c) vs multi-muscle anatomy lists (Trapezius, latissimus dorsi, scapular border, 44c) — variation intrinsic to muscle anatomy vocabulary",
+      "syntheticDistractors": [
+        "internal oblique",
+        "pectoralis minor",
+        "serratus anterior"
+      ]
     },
     {
       "id": "structure_nervous_short",
@@ -73089,7 +73140,16 @@
         "ha_visual_212",
         "ha_visual_212_img_ans"
       ],
-      "homogeneityExemptNote": "100% image facts — all answers are image labels; length variation inherent to image description format"
+      "homogeneityExemptNote": "100% image facts — all answers are image labels; length variation inherent to image description format",
+      "syntheticDistractors": [
+        "adrenal cortex",
+        "thyroid follicles",
+        "pineal gland",
+        "parathyroid glands",
+        "chromaffin cells",
+        "zona fasciculata",
+        "zona glomerulosa"
+      ]
     },
     {
       "id": "structure_reproductive_short",
@@ -73109,7 +73169,11 @@
         "ha_repro_028",
         "ha_repro_008"
       ],
-      "homogeneityExemptNote": "Image-dominated pool: image labels inherently vary from short names (Vulva) to descriptive titles (Female reproductive hormones)"
+      "homogeneityExemptNote": "Image-dominated pool: image labels inherently vary from short names (Vulva) to descriptive titles (Female reproductive hormones)",
+      "syntheticDistractors": [
+        "ovary",
+        "uterus"
+      ]
     },
     {
       "id": "structure_reproductive_long",
@@ -73124,7 +73188,16 @@
         "ha_repro_002",
         "ha_repro_009"
       ],
-      "homogeneityExemptNote": "Image-dominated pool: image labels inherently vary from short names (Vulva) to descriptive titles (Female reproductive hormones)"
+      "homogeneityExemptNote": "Image-dominated pool: image labels inherently vary from short names (Vulva) to descriptive titles (Female reproductive hormones)",
+      "syntheticDistractors": [
+        "fallopian tube",
+        "rete testis",
+        "bulbourethral gland",
+        "seminal plasma",
+        "interstitial cells",
+        "zona pellucida",
+        "corpus albicans"
+      ]
     },
     {
       "id": "structure_urinary_short",
@@ -73166,7 +73239,15 @@
         "ha_urin_040",
         "ha_urin_023"
       ],
-      "homogeneityExemptNote": "Mixed renal pool: short anatomical terms and abbreviations (cortex, 6c) vs multi-component physiological answers (Vasoconstriction and aldosterone release, 40c) — variation inherent to renal anatomy and physiology"
+      "homogeneityExemptNote": "Mixed renal pool: short anatomical terms and abbreviations (cortex, 6c) vs multi-component physiological answers (Vasoconstriction and aldosterone release, 40c) — variation inherent to renal anatomy and physiology",
+      "syntheticDistractors": [
+        "renal cortex",
+        "renal medulla",
+        "collecting duct",
+        "loop of Henle",
+        "ureter",
+        "urethra"
+      ]
     },
     {
       "id": "structure_lymphatic",
@@ -73306,7 +73387,17 @@
         "ha_integ_036",
         "ha_integ_041"
       ],
-      "homogeneityExemptNote": "Mixed pool: short layer names (Dermis, lunula 6c) vs descriptive image labels (Epidermis cellular detail, 25c) — variation inherent to skin anatomy and image labeling"
+      "homogeneityExemptNote": "Mixed pool: short layer names (Dermis, lunula 6c) vs descriptive image labels (Epidermis cellular detail, 25c) — variation inherent to skin anatomy and image labeling",
+      "syntheticDistractors": [
+        "follicle",
+        "sebum",
+        "keratin",
+        "melanin",
+        "stratum",
+        "cuticle",
+        "nails",
+        "pores"
+      ]
     },
     {
       "id": "structure_integumentary_long",
@@ -73327,7 +73418,10 @@
         "ha_integ_023",
         "ha_integ_039"
       ],
-      "homogeneityExemptNote": "Mixed pool: short layer names (Dermis, lunula 6c) vs descriptive image labels (Epidermis cellular detail, 25c) — variation inherent to skin anatomy and image labeling"
+      "homogeneityExemptNote": "Mixed pool: short layer names (Dermis, lunula 6c) vs descriptive image labels (Epidermis cellular detail, 25c) — variation inherent to skin anatomy and image labeling",
+      "syntheticDistractors": [
+        "stratum granulosum"
+      ]
     },
     {
       "id": "structure_general_short",
@@ -73514,7 +73608,8 @@
         "spleen",
         "pancreas",
         "thyroid",
-        "gallbladder"
+        "gallbladder",
+        "bladder"
       ]
     },
     {
@@ -73941,7 +74036,19 @@
         "ha_sense_007"
       ],
       "homogeneityExemptNote": "Heterogeneous clinical pool: contains both short acronyms (COPD) and multi-clause clinical descriptions — semantic breadth is intentional for clinical anatomy",
-      "label": "clinical_terms (short)"
+      "label": "clinical_terms (short)",
+      "syntheticDistractors": [
+        "edema",
+        "cyanosis",
+        "ischemia",
+        "necrosis",
+        "fibrosis",
+        "stenosis",
+        "occlusion",
+        "perfusion",
+        "infarction",
+        "atrophy"
+      ]
     },
     {
       "id": "clinical_terms_mid",
@@ -74565,7 +74672,16 @@
         "ha_visual_076",
         "ha_visual_076_img_ans"
       ],
-      "homogeneityExemptNote": "Image-only pool: all answers are image caption labels — length variation inherent to image description format"
+      "homogeneityExemptNote": "Image-only pool: all answers are image caption labels — length variation inherent to image description format",
+      "syntheticDistractors": [
+        "medulla",
+        "calyx",
+        "ureter",
+        "tubule",
+        "capsule",
+        "hilum",
+        "papilla"
+      ]
     },
     {
       "id": "visual_urinary_long",
@@ -74948,6 +75064,13 @@
         "ha_visual_262",
         "ha_visual_255_img_ans",
         "ha_visual_262_img_ans"
+      ],
+      "syntheticDistractors": [
+        "ovary",
+        "uterus",
+        "follicle",
+        "fallopian",
+        "testis"
       ]
     },
     {
@@ -75100,6 +75223,9 @@
         "ha_visual_223_img_ans",
         "ha_visual_222",
         "ha_visual_222_img_ans"
+      ],
+      "syntheticDistractors": [
+        "capsule"
       ]
     },
     {

@@ -5077,7 +5077,17 @@
         "mamm_1_rec_loudest_land"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Animal names range from single species to compared groups — inherent domain variation"
+      "homogeneityExemptNote": "Animal names range from single species to compared groups — inherent domain variation",
+      "syntheticDistractors": [
+        "Blue whale",
+        "African elephant",
+        "White rhinoceros",
+        "Mountain gorilla",
+        "Snow leopard",
+        "Amur leopard",
+        "Sumatran orangutan",
+        "Giant panda"
+      ]
     },
     {
       "id": "bracket_numbers",
@@ -5119,7 +5129,9 @@
         "Territorial marking",
         "Cooperative hunting",
         "Cache food for winter",
-        "Scent marking territory"
+        "Scent marking territory",
+        "Bioluminescence",
+        "Camouflage"
       ]
     },
     {

@@ -12432,7 +12432,13 @@
         "greece_alex_siwa_oracle",
         "greece_rel_temple_hephaestus"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Temple of Artemis at Ephesus",
+        "Oracle at Delphi",
+        "Odeon of Herodes Atticus",
+        "Library of Pergamon"
+      ]
     },
     {
       "id": "god_names",
@@ -12452,7 +12458,12 @@
         "greece_rel_athena_roman",
         "greece_rel_hera_roman"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Hermes",
+        "Hestia",
+        "Persephone"
+      ]
     },
     {
       "id": "city_state_names",
@@ -12474,7 +12485,9 @@
       "minimumSize": 5,
       "syntheticDistractors": [
         "Athens",
-        "Corinth"
+        "Corinth",
+        "Thebes",
+        "Argos"
       ]
     },
     {
@@ -12493,7 +12506,14 @@
         "greece_ga_aristophanes_birds",
         "greece_rel_delphi_maxims"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Electra",
+        "Antigone",
+        "The Iliad",
+        "The Odyssey",
+        "Works and Days"
+      ]
     },
     {
       "id": "historical_phrases_short",
@@ -12509,7 +12529,15 @@
         "greece_oc_greek_alphabet",
         "greece_ga_aeschylus_innovation"
       ],
-      "homogeneityExemptNote": "Historical phrases range from single-word replies (Spartan laconic speech) to full sentence descriptions — inherent domain variation"
+      "homogeneityExemptNote": "Historical phrases range from single-word replies (Spartan laconic speech) to full sentence descriptions — inherent domain variation",
+      "syntheticDistractors": [
+        "Thirty tyrants",
+        "Five years",
+        "Three hundred",
+        "Ten months",
+        "Twelve gods",
+        "Four years"
+      ]
     },
     {
       "id": "historical_phrases_long",
