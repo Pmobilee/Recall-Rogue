@@ -15,7 +15,6 @@ export type Screen =
   | 'profile'
   | 'journal'
   | 'leaderboards'
-  | 'social'
   | 'multiplayerLobby' // Multiplayer lobby — mode/deck/house-rules config and player readying
   | 'multiplayerMenu'  // Multiplayer mode selection menu — entry point before lobby creation
   | 'mysteryEvent'
@@ -57,7 +56,6 @@ const VALID_SCREENS: Screen[] = [
   'profile',
   'journal',
   'leaderboards',
-  'social',
   'multiplayerLobby',
   'multiplayerMenu',
   'mysteryEvent',
@@ -97,7 +95,6 @@ const PERSISTABLE_SCREENS = new Set<Screen>([
   'profile',
   'journal',
   'leaderboards',
-  'social',
   'relicSanctum',
   'deckSelectionHub',
 ])

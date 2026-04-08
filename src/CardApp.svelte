@@ -148,7 +148,6 @@
   import ProfileScreen from './ui/components/ProfileScreen.svelte'
   import JournalScreen from './ui/components/JournalScreen.svelte'
   import LeaderboardsScreen from './ui/components/LeaderboardsScreen.svelte'
-  import SocialScreen from './ui/components/SocialScreen.svelte'
   import RelicCollectionScreen from './ui/components/RelicCollectionScreen.svelte'
   import RelicSwapOverlay from './ui/components/RelicSwapOverlay.svelte'
   import RelicPickupToast from './ui/components/RelicPickupToast.svelte'
@@ -350,9 +349,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     transitionScreen('leaderboards')
   }
 
-  function handleOpenSocial(): void {
-    transitionScreen('social')
-  }
 
 
   function handleReplayBootAnim(): void {
@@ -1263,7 +1259,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       onOpenProfile={handleOpenProfile}
       onOpenJournal={handleOpenJournal}
       onOpenLeaderboards={handleOpenLeaderboards}
-      onOpenSocial={handleOpenSocial}
       onOpenMultiplayer={handleOpenMultiplayer}
       onOpenRelicSanctum={() => handleOpenRelicSanctum()}
       onReplayBootAnim={handleReplayBootAnim}
@@ -1719,21 +1714,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     </div>
   {/if}
 
-  {#if $currentScreen === 'social'}
-    <div in:fly={{ y: 8, duration: 350 }}>
-      <SocialScreen
-        onBack={handleBackToMenu}
-        onOpenSettings={handleOpenSettings}
-        onStartDailyExpedition={handleStartDailyExpedition}
-        onStartEndlessDepths={handleStartEndlessDepths}
-        onStartScholarChallenge={handleStartScholarChallenge}
-        onOpenRelicSanctum={handleOpenRelicSanctum}
-        onOpenArcanePass={handleOpenArcanePass}
-        onOpenSeasonPass={handleOpenSeasonPass}
-        onOpenCosmeticStore={handleOpenCosmeticStore}
-      />
-    </div>
-  {/if}
 
   {#if $currentScreen === 'relicSanctum'}
     <div in:fly={{ y: 8, duration: 350 }}>

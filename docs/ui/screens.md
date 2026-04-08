@@ -42,7 +42,6 @@ Defined as a TypeScript union type in `src/ui/stores/gameState.ts`:
 | `profile` | Player profile: stats, badges, run history |
 | `journal` | Learning journal and fact history |
 | `leaderboards` | Global / friends / guild / season leaderboards |
-| `social` | Social hub: friends, guilds, duels, trades |
 | `multiplayerMenu` | Multiplayer entry screen — two-tab UI (Create Lobby with 5 mode cards, Join Lobby with 6-char code); shown when hub "Multiplayer" button is pressed; entry point before lobby creation |
 | `multiplayerLobby` | Multiplayer lobby — mode/deck/house-rules config and player readying; entered via `multiplayerMenu` |
 | `settings` | In-game settings panel |
@@ -56,7 +55,7 @@ Defined as a TypeScript union type in `src/ui/stores/gameState.ts`:
 
 Only these screens survive a page refresh:
 
-`hub`, `mainMenu`, `base`, `library`, `settings`, `profile`, `journal`, `leaderboards`, `social`, `relicSanctum`, `deckSelectionHub`
+`hub`, `mainMenu`, `base`, `library`, `settings`, `profile`, `journal`, `leaderboards`, `relicSanctum`, `deckSelectionHub`
 
 All in-run screens (`combat`, `dungeonMap`, `shopRoom`, etc.) default back to `hub` on reload. Run state is restored separately via `gameFlowController`.
 
@@ -104,7 +103,6 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 | `profile` | `ProfileScreen` | |
 | `journal` | `JournalScreen` | |
 | `leaderboards` | `LeaderboardsScreen` | |
-| `social` | `SocialScreen` | |
 | `multiplayerMenu` | `MultiplayerMenu` | Two-tab entry screen. Create tab: 5 mode cards (race/same_cards/duel/coop/trivia_night) + "Create Lobby" button. Join tab: monospace 6-char code input + "Join Lobby" button. Props: `onBack`, `onCreateLobby(mode)`, `onJoinLobby(code)`. `onBack` returns to hub; creating transitions to `multiplayerLobby` with new lobby; joining transitions to `multiplayerLobby` (lobby syncs via onLobbyUpdate). |
 | `multiplayerLobby` | `MultiplayerLobby` | Only mounts when `currentLobby !== null`; Props: `lobby`, `localPlayerId`, `onBack`. `MultiplayerHUD` also overlaid during `combat` when `isMultiplayerRun` is true. |
 | `settings` | `SettingsPanel` | |

@@ -36,7 +36,6 @@
     onOpenProfile: () => void
     onOpenJournal: () => void
     onOpenLeaderboards: () => void
-    onOpenSocial: () => void
     onOpenMultiplayer: () => void
     onOpenRelicSanctum: () => { ok: true } | { ok: false; reason: string }
     onReplayBootAnim?: () => void
@@ -53,7 +52,6 @@
     onOpenProfile,
     onOpenJournal,
     onOpenLeaderboards,
-    onOpenSocial,
     onOpenMultiplayer,
     onOpenRelicSanctum,
     onReplayBootAnim,
@@ -447,18 +445,18 @@
         label="Relic Collection"
         zIndex={15}
         onclick={openUpgradeModal}
-        hitTop="52%" hitLeft="2%" hitWidth="16%" hitHeight="13%"
+        hitTop="52%" hitLeft="-2%" hitWidth="16%" hitHeight="13%"
         spriteOffsetX="-73%" spriteOffsetY="-27%"
         brightness={shopBright}
         showBorder
       />
 
-      <!-- 8. Tent - Social -->
+      <!-- 8. Tent - Multiplayer -->
       <CampSpriteButton
         spriteUrl={getCampUpgradeUrl('tent', forms.tent)}
-        label="Social"
+        label="Multiplayer"
         zIndex={20}
-        onclick={onOpenSocial}
+        onclick={onOpenMultiplayer}
         hitTop="40%" hitLeft="90%" hitWidth="30%" hitHeight="20%"
         spriteOffsetX="30%" spriteOffsetY="-2%"
         brightness={tentBright}
@@ -521,13 +519,6 @@
         left="66%"
       />
 
-      <!-- Multiplayer quick-access button — positioned bottom-left of hub-center -->
-      <button
-        type="button"
-        class="multiplayer-hub-btn"
-        onclick={onOpenMultiplayer}
-        aria-label="Multiplayer lobby"
-      >&#x2694; Multiplayer</button>
 
       <!-- Moths orbiting the campfire -->
       {#if !disableEffects}
@@ -683,12 +674,12 @@
       showBorder
     />
 
-    <!-- 8. Tent - Social — portrait position differs from landscape -->
+    <!-- 8. Tent - Multiplayer — portrait position differs from landscape -->
     <CampSpriteButton
       spriteUrl={getCampUpgradeUrl('tent', forms.tent)}
-      label="Social"
+      label="Multiplayer"
       zIndex={20}
-      onclick={onOpenSocial}
+      onclick={onOpenMultiplayer}
       hitTop="44%" hitLeft="66%" hitWidth="36%" hitHeight="22%"
       brightness={tentBrightPortrait}
       showBorder
@@ -755,13 +746,6 @@
       <HubFireflies />
     {/if}
 
-    <!-- Multiplayer quick-access button — positioned bottom-left of camp-hub -->
-    <button
-      type="button"
-      class="multiplayer-hub-btn"
-      onclick={onOpenMultiplayer}
-      aria-label="Multiplayer lobby"
-    >&#x2694; Multiplayer</button>
 
     <!-- Moths orbiting the campfire -->
     {#if !disableEffects}
@@ -994,52 +978,6 @@
 
   .hub-landscape .level-xp-text {
     font-size: calc(13px * var(--text-scale, 1));
-  }
-
-  /* ═══ MULTIPLAYER BUTTON ═══════════════════════════════════════════════════ */
-
-  .multiplayer-hub-btn {
-    position: absolute;
-    bottom: calc(12px * var(--layout-scale, 1));
-    left: calc(12px * var(--layout-scale, 1));
-    z-index: 45;
-    padding: calc(8px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
-    font-size: calc(13px * var(--text-scale, 1));
-    font-weight: 700;
-    color: #e2d9f3;
-    background: rgba(80, 40, 120, 0.55);
-    border: 1px solid rgba(160, 100, 220, 0.5);
-    border-radius: calc(6px * var(--layout-scale, 1));
-    backdrop-filter: blur(8px);
-    cursor: inherit;
-    white-space: nowrap;
-    transition: background 150ms ease, border-color 150ms ease;
-    min-width: calc(44px * var(--layout-scale, 1));
-    min-height: calc(44px * var(--layout-scale, 1));
-    display: flex;
-    align-items: center;
-    gap: calc(6px * var(--layout-scale, 1));
-    letter-spacing: 0.03em;
-  }
-
-  .multiplayer-hub-btn:hover,
-  .multiplayer-hub-btn:focus-visible {
-    background: rgba(100, 60, 160, 0.75);
-    border-color: rgba(180, 130, 255, 0.7);
-    outline: none;
-  }
-
-  .multiplayer-hub-btn:active {
-    background: rgba(120, 70, 180, 0.85);
-  }
-
-  /* Landscape: fixed positioning so it escapes the portrait column constraint */
-  .hub-landscape .multiplayer-hub-btn {
-    position: fixed;
-    bottom: calc(20px * var(--layout-scale, 1));
-    left: calc(20px * var(--layout-scale, 1));
-    font-size: calc(15px * var(--text-scale, 1));
-    padding: calc(10px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
   }
 
 
