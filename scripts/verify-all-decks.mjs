@@ -182,6 +182,25 @@ function getNumericalDistractors(fact, count = 3) {
 }
 
 // ---------------------------------------------------------------------------
+// Answer type classification (for variant mismatch detection)
+// ---------------------------------------------------------------------------
+
+function classifyAnswerType(answer) {
+  if (!answer) return 'unknown';
+  const s = answer.trim();
+  // Brace-wrapped numbers: {16}, {1440}
+  if (/^\{\d[\d,]*\.?\d*\}$/.test(s)) return 'numeric';
+  // Pure numbers
+  if (/^\d[\d,]*\.?\d*$/.test(s)) return 'numeric';
+  // Date patterns: "1500 BC", "3500–3350 BCE", "Around 1600 BC", "By end of 1990"
+  if (/\b\d{3,4}\s*(BC|AD|BCE|CE)\b/i.test(s)) return 'date';
+  if (/^(around|by|circa|c\.)\s/i.test(s) && /\d{3,4}/.test(s)) return 'date';
+  if (/^\d{4}$/.test(s)) return 'date'; // standalone 4-digit year
+  // Everything else
+  return 'other';
+}
+
+// ---------------------------------------------------------------------------
 // Pool-based distractor selection
 // Mirrors curatedDistractorSelector.ts — simplified (no confusion matrix /
 // in-run tracker since those are session-state).
@@ -632,6 +651,24 @@ function verifyDeck(deckId, deck) {
       const qLower22 = (fact.quizQuestion || '').toLowerCase();
       if (ansLower22.length > 5 && qLower22.includes(ansLower22)) {
         factWarnings.push({ index: i + 1, factId: fact.id, msg: `correctAnswer "${(fact.correctAnswer || '').slice(0, 40)}" appears verbatim in quizQuestion — self-answering` });
+      }
+    }
+
+    // Check #23 WARNING: variant answer type mismatch (skip vocab)
+    // When a variant has a different answer type than the parent and no own distractors,
+    // the quiz will show wrong distractors (e.g., numbers mixed with person names).
+    if (!isVocab && Array.isArray(fact.variants)) {
+      for (let vi = 0; vi < fact.variants.length; vi++) {
+        const v = fact.variants[vi];
+        if (typeof v === 'string') continue;
+        const variantAnswer = v.correct_answer || v.correctAnswer || v.answer;
+        if (!variantAnswer) continue;
+        if (Array.isArray(v.distractors) && v.distractors.length >= 3) continue;
+        const parentType = classifyAnswerType(fact.correctAnswer);
+        const variantType = classifyAnswerType(variantAnswer);
+        if (parentType !== 'other' && parentType !== 'unknown' && variantType !== 'other' && variantType !== 'unknown' && parentType !== variantType) {
+          factWarnings.push({ index: i + 1, factId: fact.id, msg: `variant #${vi} answer type mismatch: parent="${(fact.correctAnswer || '').slice(0, 30)}" (${parentType}) vs variant="${variantAnswer.slice(0, 30)}" (${variantType}) — needs own distractors` });
+        }
       }
     }
   }
