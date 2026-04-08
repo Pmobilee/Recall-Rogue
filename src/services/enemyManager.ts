@@ -5,7 +5,7 @@
 import type { EnemyTemplate, EnemyInstance, EnemyIntent, EnemyTurnStartContext } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
 import { applyStatusEffect, tickStatusEffects, getStrengthModifier } from '../data/statusEffects';
-import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR, FLOOR_DAMAGE_SCALE_MID, getBalanceValue, ENEMY_BASE_HP_MULTIPLIER, ENEMY_HP_SCALING_PER_FLOOR, ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT } from '../data/balance';
+import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR, FLOOR_DAMAGE_SCALE_MID, GLOBAL_ENEMY_DAMAGE_MULTIPLIER, getBalanceValue, ENEMY_BASE_HP_MULTIPLIER, ENEMY_HP_SCALING_PER_FLOOR, ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT } from '../data/balance';
 import { resolvePoisonTickBonus } from './relicEffectResolver';
 import { getAuraState } from './knowledgeAuraSystem';
 
@@ -300,13 +300,13 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
   switch (intent.type) {
     case 'attack': {
       const baseValue = intent.value + (enemy.enrageBonusDamage ?? 0);
-      damage = Math.round(baseValue * strengthMod * getFloorDamageScaling(enemy.floor));
+      damage = Math.round(baseValue * strengthMod * getFloorDamageScaling(enemy.floor) * GLOBAL_ENEMY_DAMAGE_MULTIPLIER);
       break;
     }
     case 'multi_attack': {
       const hits = intent.hitCount ?? 1;
       const baseValue = intent.value + (enemy.enrageBonusDamage ?? 0);
-      damage = Math.round(baseValue * strengthMod * getFloorDamageScaling(enemy.floor)) * hits;
+      damage = Math.round(baseValue * strengthMod * getFloorDamageScaling(enemy.floor) * GLOBAL_ENEMY_DAMAGE_MULTIPLIER) * hits;
       break;
     }
     case 'defend': {

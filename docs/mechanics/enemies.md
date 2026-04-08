@@ -26,10 +26,11 @@ scaledHP = round(baseHP × ENEMY_BASE_HP_MULTIPLIER × getFloorScaling(floor) ×
 
 Damage formula (in `executeEnemyIntent`):
 ```
-damage = round((intent.value + enrageBonusDamage) × strengthModifier × getFloorDamageScaling(floor))
+damage = round((intent.value + enrageBonusDamage) × strengthModifier × getFloorDamageScaling(floor) × GLOBAL_ENEMY_DAMAGE_MULTIPLIER)
 ```
 - Floors 1–6: `FLOOR_DAMAGE_SCALE_MID = 1.0` (reduced from 1.2 in balance pass #2, 2026-04-03)
 - Floors 7+: `1.0 + (floor - 6) × FLOOR_DAMAGE_SCALING_PER_FLOOR` (0.06 per floor above 6)
+- `GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 2.0` (added 2026-04-08 Ch12.1 — flat x2 all enemy attacks across all acts)
 
 ### Per-Turn Damage Caps (`ENEMY_TURN_DAMAGE_CAP`)
 Charged attacks with `bypassDamageCap: true` skip these caps.
@@ -38,10 +39,10 @@ Charged attacks with `bypassDamageCap: true` skip these caps.
 
 | Segment | Floors | Cap | Rationale |
 |---|---|---|---|
-| 1 | 1–6 | 7 | Reduced from 8 (pass #5, 2026-04-03) — L0 cards deal 9 dmg/turn QP; cap at 7% of player HP keeps Act 1 survivable |
-| 2 | 7–12 | 10 | Tightened from 12 (2026-04-04 balance pass) — post-enrage-fix WR too high, tighter cap restores difficulty |
-| 3 | 13–18 | 15 | Tightened from 18 (2026-04-04 balance pass) |
-| 4 | 19–24 | 22 | Tightened from 28 (2026-04-04 balance pass) |
+| 1 | 1–6 | 14 | Doubled from 7 (2026-04-08 Ch12.1 — proportional to GLOBAL_ENEMY_DAMAGE_MULTIPLIER=2.0) |
+| 2 | 7–12 | 28 | Doubled from 14 (2026-04-08 Ch12.1) |
+| 3 | 13–18 | 40 | Doubled from 20 (2026-04-08 Ch12.1) |
+| 4 | 19–24 | 56 | Doubled from 28 (2026-04-08 Ch12.1) |
 | endless | 25+ | none | — |
 
 ### Ascension and Aura Scaling
@@ -552,7 +553,7 @@ Enemies telegraph next action via `EnemyIntent.telegraph`. Selected by `weighted
 
 | Type | Effect |
 |---|---|
-| `attack` | `round(value × strengthMod × floorDamageScaling)` damage |
+| `attack` | `round(value × strengthMod × floorDamageScaling × GLOBAL_ENEMY_DAMAGE_MULTIPLIER)` damage |
 | `multi_attack` | Above × `hitCount` hits |
 | `defend` | Adds `value` to enemy block (resets at enemy turn start) |
 | `buff` | Applies status effect to self (e.g., Strength) |
@@ -571,6 +572,37 @@ Enemies telegraph next action via `EnemyIntent.telegraph`. Selected by `weighted
 | `onPhaseTransition(enemy)` | When phase 1 → 2 transition fires |
 
 `chainMultiplierOverride` (used by The Nullifier): forces all Knowledge Chain multipliers to a fixed value while the enemy is alive.
+
+---
+
+## 2026-04-08 Balance Pass Ch12.1 — Global x2 Damage Multiplier
+
+**Root cause:** Playtest 2026-04-08 revealed all player profiles except master were surviving too easily. Enemy damage felt inconsequential and master-tier was winning too often (93%) for a roguelite. Decision: flat x2 global multiplier to raise pressure across all acts uniformly.
+
+**Change:** Added `GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 2.0` in `balance.ts`. Applied in `executeEnemyIntent()` to both `attack` and `multi_attack` intent cases. Damage caps doubled proportionally so cap ratios remain the same relative to base enemy output.
+
+**Pre-change sim results (500 runs each):**
+| Profile | Win rate |
+|---|---|
+| new_player | 0% |
+| developing | 10% |
+| competent | 14% |
+| experienced | 46% |
+| master | 93% |
+
+**Post-change sim results (500 runs each):**
+| Profile | Win rate | Delta |
+|---|---|---|
+| new_player | 0% | 0% |
+| developing | 1% | −9% |
+| competent | 0% | −14% |
+| experienced | 0% | −46% |
+| master | 22% | −71% |
+| language_learner | 0% | −0.2% |
+
+**Analysis:** Overcorrected significantly. Master dropped 93% → 22%. Developing/competent/experienced collapsed to ~0%. The x2 multiplier is too aggressive as a final value — further tuning needed. This serves as a starting point for playtest feedback; next steps likely involve reducing to 1.3–1.5× or adjusting base attack values directly rather than a global multiplier.
+
+---
 
 ## Balance Testing After Enemy Changes
 

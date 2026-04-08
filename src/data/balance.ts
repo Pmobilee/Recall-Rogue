@@ -488,12 +488,15 @@ export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.09; // Raised from 0.06 (2026-04
 /** Enemy damage multiplier for floors 1–6 (base). Reverted to 1.0 on 2026-04-01, raised to 1.2 on 2026-04-03 (balance pass #1), reduced to 1.0 on 2026-04-03 (balance pass #2 — Act 2/3 over-tuned; reducing flat multiplier gives more room under caps). Prior values: 0.5 (2026-04-01), 0.8, 1.0 (original), 1.2. */
 export const FLOOR_DAMAGE_SCALE_MID = 1.0;
 
-/** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent() + re-applied after enrage in turnManager. */
+/** Global enemy damage multiplier. Applied to ALL enemy attacks across all acts. Added 2026-04-08 playtest Ch12.1. */
+export const GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 2.0;
+
+/** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent() + re-applied after enrage in turnManager. Doubled 2026-04-08 to match GLOBAL_ENEMY_DAMAGE_MULTIPLIER x2. */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 7,    // kept at 7: Act 1 must stay gentle for new players and language learners
-  2: 14,   // 2026-04-04: tested 11, didn't help new_player (accuracy bottleneck, not damage). 14 keeps mid-tier challenge appropriate
-  3: 20,   // raised from 15 (2026-04-04): Act 3 needs to be threatening
-  4: 28,   // raised from 22 (2026-04-04): Act 3 bosses need real danger; enrage is capped separately
+  1: 14,   // was 7, doubled for x2 global multiplier
+  2: 28,   // was 14
+  3: 40,   // was 20
+  4: 56,   // was 28
   endless: null,
 };
 
