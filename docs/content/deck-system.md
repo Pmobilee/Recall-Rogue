@@ -99,6 +99,8 @@ Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
 | `pronunciation` | no | Reading (e.g. hiragana for Japanese kanji) |
 | `partOfSpeech` | no | Used for POS-matched distractor selection; all vocab decks have this field as of 2026-04-02 |
 | `examTags` | no | Filtering tags (e.g. `"USMLE_Step1"`, `"high_yield"`) |
+| `categoryL1` | no | Top-level domain category (e.g. `'history'`, `'science'`, `'language'`). Persisted to curated.db — read at runtime by `domainResolver.ts` to resolve card domain. Fixes category bleed (2026-04-08). |
+| `categoryL2` | no | Sub-domain category (e.g. `'ancient_rome'`, `'mammals'`). Persisted to curated.db alongside `categoryL1`. |
 | `quizResponseMode` | no | `'choice'` (default) or `'typing'` (text input) |
 | `quizMode` | no | `'text'`, `'image_question'`, or `'image_answers'` |
 | `volatile` | no | `true` if the answer may become outdated |
