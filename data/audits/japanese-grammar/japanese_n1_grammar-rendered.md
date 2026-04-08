@@ -1,7 +1,7 @@
 # japanese_n1_grammar — Static In-Game Quiz Audit
 
 - Total facts: **1183**
-- Flagged: **11** (0.9%)
+- Flagged: **0** (0.0%)
 
 Each row shows the rendered question, correct answer, and the 3 distractors a player would see.
 Selection is deterministic (seeded PRNG keyed on fact.id).
@@ -36,8 +36,8 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n1-n1-advanced_particles-tote-fill-3|天才{___}、努力なしには成功できない。<br>(Even a genius cannot succeed without effort.)|とて|といえども|たりとも|だに||
 |ja-gram-n1-n1-advanced_particles-ttara-fill-0|うちの子供{___}、また宿題を忘れてきた。<br>(That child of mine — he forgot his homework again.)|ったら|てば|なんて|といったら||
 |ja-gram-n1-n1-advanced_particles-ttara-fill-1|あの人{___}、いつも遅刻するんだから。<br>(That person — always being late!)|ったら|といったら|ときたら|ってば||
-|ja-gram-n1-n1-advanced_particles-ttara-fill-2|もう、あなた{___}、いつもそうなんだから！<br>(Honestly, you — you're always like this!)|ったら|なんて|といったら|といったら|DUPE_WITHIN_DISTRACTORS|
-|ja-gram-n1-n1-advanced_particles-ttara-fill-3|うちの夫{___}、片付けを全くしないんです。<br>(My husband — he absolutely never tidies up.)|ったら|といったら|ちゃ|といったら|DUPE_WITHIN_DISTRACTORS|
+|ja-gram-n1-n1-advanced_particles-ttara-fill-2|もう、あなた{___}、いつもそうなんだから！<br>(Honestly, you — you're always like this!)|ったら|なんて|ったらない|といったら||
+|ja-gram-n1-n1-advanced_particles-ttara-fill-3|うちの夫{___}、片付けを全くしないんです。<br>(My husband — he absolutely never tidies up.)|ったら|ったらありゃしない|ちゃ|といったら||
 |ja-gram-n1-n1-advanced_particles-tteba-fill-0|聞いてる{___}！何度言えばわかるの？<br>(I'm telling you, I heard it! How many times do I have to say it?)|ってば|てば|ったら|といったら||
 |ja-gram-n1-n1-advanced_particles-tteba-fill-1|もう行くな{___}、なんでついてくるの？<br>(I told you not to come, so why are you following me?)|ってば|じゃないか|てば|ったら||
 |ja-gram-n1-n1-advanced_particles-tteba-fill-2|大丈夫だ{___}、心配しないで。<br>(I'm telling you I'm fine, don't worry.)|ってば|ちゃ|ときたら|じゃないか||
@@ -330,7 +330,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n1-conditional-youga-maiga-fill-2|みんなが{___}、この計画は進む。<br>(Whether everyone agrees or not, this plan will proceed.)|賛成しようがしまいが|くらいなら|ようによっては|ばそれまでだ||
 |ja-gram-n1-conditional-youga-maiga-fill-3|彼女が{___}、パーティーは楽しくなるだろう。<br>(Whether she comes or not, the party will likely be fun.)|来ようが来まいが|とあれば|限りは|ばこそ||
 |ja-gram-n1-conditional-youga-youga-fill-0|{___}、私の気持ちは変わらない。<br>(No matter what you say or how you say it, my feelings won't change.)|どう言おうが何を言おうが|限りは|ないまでも|たところで||
-|ja-gram-n1-conditional-youga-youga-fill-1|{___}、計画通りに進める。<br>(No matter who comes or what happens, we will proceed as planned.)|誰が来ようが何が起きようが|ない限り|とあれば|限りは|LENGTH_TELL|
+|ja-gram-n1-conditional-youga-youga-fill-1|{___}、計画通りに進める。<br>(No matter who comes or what happens, we will proceed as planned.)|誰が来ようが何が起きようが|限りは|雨が降ろうが風が吹こうが|しようが～しまいが||
 |ja-gram-n1-conditional-youga-youga-fill-2|{___}、全力を尽くすことに意味がある。<br>(Whether you succeed or fail, there is meaning in giving your all.)|成功しようが失敗しようが|ものなら|たところで|限りは||
 |ja-gram-n1-conditional-youga-youga-fill-3|{___}、毎朝ランニングを欠かさない。<br>(Rain or wind, I never miss my morning run.)|雨が降ろうが風が吹こうが|ない限り|ようが～まいが|たところで||
 |ja-gram-n1-conditional-younimonai-fill-0|足を怪我して、逃げ{___}。<br>(I injured my leg and even if I wanted to run away, I couldn't.)|ようにも動けない|ようが～まいが|ばこそ|限りは||
@@ -429,7 +429,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n1-degree-naimondemonai-fill-3|彼の言い訳も、理解でき{___}。<br>(His excuse is not impossible to understand.)|ないものでもない|きっての|にひきかえ|並み||
 |ja-gram-n1-degree-nami-fill-0|彼女はプロ{___}の腕前を持つアマチュア選手だ。<br>(She is an amateur player with skills on par with professionals.)|並み|きっての|にとどまらず|いかなる||
 |ja-gram-n1-degree-nami-fill-1|その子供は大人{___}の知識を持っている。<br>(That child has knowledge on par with an adult.)|並み|からある|にひきかえ|いかなる||
-|ja-gram-n1-degree-nami-fill-2|彼の英語力は母語話者{___}だ。<br>(His English proficiency is on par with native speakers.)|並み|にひきかえ|にもまして|いかんにかかわらず|LENGTH_TELL|
+|ja-gram-n1-degree-nami-fill-2|彼の英語力は母語話者{___}だ。<br>(His English proficiency is on par with native speakers.)|並み|いかに|いかんにかかわらず|にもまして||
 |ja-gram-n1-degree-nami-fill-3|彼女は世界{___}の技術を持つ職人だ。<br>(She is an artisan with world-class skills.)|並み|きっての|いかにも|いかなる||
 |ja-gram-n1-degree-nimashite-fill-0|今年は去年{___}暑い夏になった。<br>(This year became an even hotter summer than last year.)|にもまして|までもない|きっての|からある||
 |ja-gram-n1-degree-nimashite-fill-1|彼は以前{___}熱心に勉強するようになった。<br>(He came to study even more enthusiastically than before.)|にもまして|いかんにかかわらず|並み|きっての||
@@ -596,7 +596,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n1-formal-orini-fill-0|お越しの{___}、ぜひお声がけください。<br>(When you come, please do not hesitate to say hello.)|折に|案の定|に先駆けて|もはや||
 |ja-gram-n1-formal-orini-fill-1|機会の{___}ぜひご連絡ください。<br>(When the occasion arises, please do not hesitate to contact me.)|折に|あくまでも|をもって|に先駆けて||
 |ja-gram-n1-formal-orini-fill-2|東京にお越しの{___}、ぜひ当社にお立ち寄りください。<br>(When you visit Tokyo, please do stop by our company.)|折に|案の定|さぞ|をもって||
-|ja-gram-n1-formal-orini-fill-3|このような{___、先生にご挨拶するのが礼儀だ。<br>(On such an occasion, it is good manners to greet one's teacher.)|折に|に先駆けて|もはや|をもって|NO_BLANK|
+|ja-gram-n1-formal-orini-fill-3|このような{___}、先生にご挨拶するのが礼儀だ。<br>(On such an occasion, it is good manners to greet one's teacher.)|折に|に先駆けて|もはや|をもって||
 |ja-gram-n1-formal-oyoso-fill-0|会場には{___}500名が集まった。<br>(About 500 people gathered at the venue.)|およそ|敢えて|もはや|あらかじめ||
 |ja-gram-n1-formal-oyoso-fill-1|この工事は{___}三ヶ月かかる予定だ。<br>(This construction is expected to take approximately three months.)|およそ|かつて|あくまでも|案の定||
 |ja-gram-n1-formal-oyoso-fill-2|彼の言動は{___}常識とかけ離れていた。<br>(His behavior was utterly removed from common sense.)|およそ|もはや|案の定|かつて||
@@ -872,7 +872,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n1-opinions-nisokushite-fill-3|事実{___}、正確な報告書を作成してください。<br>(Please write an accurate report in accordance with the facts.)|に即して|に言わせれば|ならいざしらず|としたところで||
 |ja-gram-n1-opinions-temae-fill-0|みんなの前で宣言した{___}、今さら諦めるわけにはいかない。<br>(Considering that I declared it in front of everyone, I cannot give up now.)|手前|に言わせれば|としたことが|とあれば||
 |ja-gram-n1-opinions-temae-fill-1|上司に強く勧めた{___}、自分もそのセミナーに参加しなければならない。<br>(Having strongly recommended it to my boss, I too must attend the seminar.)|手前|というわけだ|とあれば|にして||
-|ja-gram-n1-opinions-temae-fill-2|一度約束した{___}、撤回するのは面目が立たない。<br>(Having made the promise once, withdrawing it would be a loss of face.)|手前|ならいざしらず|に言わせれば|というわけだ|LENGTH_TELL|
+|ja-gram-n1-opinions-temae-fill-2|一度約束した{___}、撤回するのは面目が立たない。<br>(Having made the promise once, withdrawing it would be a loss of face.)|手前|というわけだ|わけ|に即して||
 |ja-gram-n1-opinions-temae-fill-3|部下の{___}、弱音は吐けない。<br>(In front of my subordinates, I cannot afford to show weakness.)|手前|にして|に即して|としたことが||
 |ja-gram-n1-opinions-toareba-fill-0|子供のためになる{___}、どんな苦労もいとわない。<br>(If it is for the sake of my child, I will spare no effort.)|とあれば|にしたところで|ならいざしらず|というわけだ||
 |ja-gram-n1-opinions-toareba-fill-1|社長の命令{___}、従わないわけにはいかない。<br>(Given that it is the president's order, there is no choice but to comply.)|とあれば|ならいざしらず|ならば|にして||
@@ -925,7 +925,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n1-prob-tosareru-fill-3|睡眠は健康に不可欠{___}。<br>(Sleep is considered to be indispensable for health.)|とされる|得る|ものと思われる|ざるを得ない||
 |ja-gram-n1-prob-uru-fill-0|そんなことは十分に起こり{___}。<br>(Such a thing could quite possibly happen.)|得る|次第で|ようものなら|に越したことはない||
 |ja-gram-n1-prob-uru-fill-1|これは絶対にあり{___}話だ。<br>(This is a story that absolutely cannot happen.)|得ない|に越したことはない|ようものなら|ないものか||
-|ja-gram-n1-prob-uru-fill-2|最悪の場合、そのような事態も考え{___}。<br>(In the worst case, such a situation is also conceivable.)|得る|ものと思われる|に越したことはない|とされる|LENGTH_TELL|
+|ja-gram-n1-prob-uru-fill-2|最悪の場合、そのような事態も考え{___}。<br>(In the worst case, such a situation is also conceivable.)|得る|ものと思われる|得ない|ないものか||
 |ja-gram-n1-prob-uru-fill-3|努力すれば、誰でも成功し{___}。<br>(If one works hard, anyone can possibly succeed.)|得る|ざるを得ない|とされる|かねない||
 |ja-gram-n1-prob-youmonara-fill-0|先生に嘘をつこう{___}、大変なことになる。<br>(If you happen to lie to the teacher, it will become a serious matter.)|ようものなら|ざるを得ない|に越したことはない|ないものか||
 |ja-gram-n1-prob-youmonara-fill-1|失敗しよう{___}、全員に迷惑がかかる。<br>(If by chance we fail, it will cause trouble for everyone.)|ようものなら|かねない|とされる|次第だ||
@@ -1172,10 +1172,10 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n1-n1-simultaneous-tomonaku-fill-1|聞く{___}隣の会話が耳に入った。<br>(Without really meaning to listen, the neighboring conversation reached my ears.)|ともなく|ともなしに|というでもなく|とはなく||
 |ja-gram-n1-n1-simultaneous-tomonaku-fill-2|どこへ行く{___}、ただ街をぶらぶら歩いた。<br>(Without any particular destination in mind, I just wandered around town.)|ともなく|かどうかなく|とはなく|というでもなく||
 |ja-gram-n1-n1-simultaneous-tomonaku-fill-3|誰に言う{___}、ふと口から言葉が出た。<br>(Without meaning to tell anyone in particular, the words just slipped out.)|ともなく|ながら|かどうかなく|ともなしに||
-|ja-gram-n1-n1-simultaneous-tsutsu-fill-0|波に揺られ{___}揺られ{___}、船は港に近づいた。<br>(Rocking back and forth with the waves, the ship approached the harbor.)|つ|てみたり|たり～たり|かわるがわる|LENGTH_TELL|
-|ja-gram-n1-n1-simultaneous-tsutsu-fill-1|二人は追い{___}追われ{___}、駅まで走った。<br>(The two chased and were chased in turn as they ran to the station.)|つ|ては|たり～たり|かと思えば|LENGTH_TELL|
+|ja-gram-n1-n1-simultaneous-tsutsu-fill-0|波に揺られ{___}揺られ{___}、船は港に近づいた。<br>(Rocking back and forth with the waves, the ship approached the harbor.)|つ|かと思えば|て|も||
+|ja-gram-n1-n1-simultaneous-tsutsu-fill-1|二人は追い{___}追われ{___}、駅まで走った。<br>(The two chased and were chased in turn as they ran to the station.)|つ|てみたり|かと思えば|つつ||
 |ja-gram-n1-n1-simultaneous-tsutsu-fill-2|持ち{___}持たれ{___}の関係が大切だ。<br>(A relationship of mutual support — give and take — is important.)|つ|ながら|つつ|てみたり||
-|ja-gram-n1-n1-simultaneous-tsutsu-fill-3|抜き{___}抜かれ{___}、最後まで接戦が続いた。<br>(Trading the lead back and forth, it remained a close race to the end.)|つ|かと思えば|たり|ながら|LENGTH_TELL|
+|ja-gram-n1-n1-simultaneous-tsutsu-fill-3|抜き{___}抜かれ{___}、最後まで接戦が続いた。<br>(Trading the lead back and forth, it remained a close race to the end.)|つ|かと思えば|たり|ながら||
 |ja-gram-n1-simul-katawara-fill-0|彼は会社員として働く{___}、小説を書いている。<br>(While working as a company employee, he writes novels.)|かたわら|かたがた|つ～つ|つつある||
 |ja-gram-n1-simul-katawara-fill-1|彼女は主婦業の{___}、ネットショップを経営している。<br>(Alongside her work as a homemaker, she runs an online shop.)|かたわら|ともなく|がてら|てみせる||
 |ja-gram-n1-simul-katawara-fill-2|研究の{___}、大学で教壇に立っている。<br>(Alongside his research, he also teaches at university.)|かたわら|なりに|つ～つ|ともなく||
@@ -1240,7 +1240,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n1-time-nitarumade-fill-0|子供から大人{___}、多くの人がこのゲームを楽しんでいる。<br>(From children all the way up to adults, many people enjoy this game.)|に至るまで|に至っては|てからというもの|を限りに||
 |ja-gram-n1-time-nitarumade-fill-1|食材の選び方から調理の仕方{___}、彼女はすべて丁寧に教えてくれた。<br>(From how to choose ingredients all the way up to how to cook them, she taught me everything carefully.)|に至るまで|あげく|てからというもの|最中に||
 |ja-gram-n1-time-nitarumade-fill-2|日常の食事から特別なお祝い{___}、この料理は日本中で食べられている。<br>(From everyday meals all the way up to special celebrations, this dish is eaten throughout Japan.)|に至るまで|かたがた|矢先に|てからというもの||
-|ja-gram-n1-time-nitarumade-fill-3|会社の設立から現在{___}、彼は一貫して研究開発に取り組んできた。<br>(From the founding of the company all the way up to the present, he has consistently devoted himself to research and development.)|に至るまで|を機に|に至っては|に至っては|DUPE_WITHIN_DISTRACTORS|
+|ja-gram-n1-time-nitarumade-fill-3|会社の設立から現在{___}、彼は一貫して研究開発に取り組んできた。<br>(From the founding of the company all the way up to the present, he has consistently devoted himself to research and development.)|に至るまで|を機に|を皮切りに|に至っては||
 |ja-gram-n1-time-saichuni-fill-0|会議の{___}、突然電話が鳴り出した。<br>(In the middle of the meeting, the phone suddenly started ringing.)|最中に|た拍子に|が早いか|や否や||
 |ja-gram-n1-time-saichuni-fill-1|試験勉強の{___}、友人からパーティーの誘いが来た。<br>(In the middle of studying for an exam, an invitation to a party arrived from a friend.)|最中に|なり|に至るまで|や否や||
 |ja-gram-n1-time-saichuni-fill-2|手術の{___}、停電が起きて医師たちは焦った。<br>(In the middle of surgery, a power outage occurred and the doctors panicked.)|最中に|あげく|を境に|た拍子に||

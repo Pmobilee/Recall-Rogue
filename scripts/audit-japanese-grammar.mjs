@@ -50,8 +50,12 @@ const DECK_FILES = [
 // Mirror of BALANCE.QUIZ_DISTRACTORS_SHOWN (src/data/balance.ts:6)
 const QUIZ_DISTRACTORS_SHOWN = 3;
 
-// LENGTH_TELL threshold: correct answer length deviates >Nx from mean distractor length
+// LENGTH_TELL: flag only when BOTH the ratio is >3× AND the absolute char-length
+// difference is ≥3. Prevents false positives like 1-char particles vs 3-char
+// particles (ratio is 3 but no human would notice), while still catching real
+// tells like 「つ」 vs 「かと思えば」 (1 vs 5, ratio=5, diff=4).
 const LENGTH_TELL_RATIO = 3;
+const LENGTH_TELL_MIN_ABS_DIFF = 3;
 
 const FLAG_DESCRIPTIONS = {
   NO_DISTRACTORS:               'fact.distractors has fewer than 3 entries',
@@ -209,7 +213,10 @@ function flagFact(fact, sim, deck, poolIndex) {
       const ratio = correct.length >= meanLen
         ? correct.length / meanLen
         : meanLen / Math.max(correct.length, 1);
-      if (ratio > LENGTH_TELL_RATIO) flags.push('LENGTH_TELL');
+      const absDiff = Math.abs(correct.length - meanLen);
+      if (ratio > LENGTH_TELL_RATIO && absDiff >= LENGTH_TELL_MIN_ABS_DIFF) {
+        flags.push('LENGTH_TELL');
+      }
     }
   }
 

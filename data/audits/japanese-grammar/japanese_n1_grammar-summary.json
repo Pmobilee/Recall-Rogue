@@ -2,16 +2,16 @@
   "deckId": "japanese_n1_grammar",
   "sourceFile": "japanese_n1_grammar.json",
   "totalFacts": 1183,
-  "flaggedFacts": 11,
-  "passRate": 0.9907,
+  "flaggedFacts": 0,
+  "passRate": 1,
   "flagCounts": {
     "NO_DISTRACTORS": 0,
     "DUPE_DISTRACTOR": 0,
-    "DUPE_WITHIN_DISTRACTORS": 3,
+    "DUPE_WITHIN_DISTRACTORS": 0,
     "Q_EQUALS_A": 0,
     "SELF_ANSWERING": 0,
-    "NO_BLANK": 1,
-    "LENGTH_TELL": 7,
+    "NO_BLANK": 0,
+    "LENGTH_TELL": 0,
     "SHORT_EXPLANATION": 0,
     "POOL_MISMATCH": 0,
     "ORPHAN_POOL_MEMBER": 0,
@@ -32,72 +32,5 @@
     "EMPTY_DISTRACTOR": "fact.distractors contains an empty/whitespace entry",
     "CORRECT_IN_DISTRACTORS_SOURCE": "fact.distractors source array contains the correct answer"
   },
-  "failingFacts": [
-    {
-      "factId": "ja-gram-n1-conditional-youga-youga-fill-1",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n1-degree-nami-fill-2",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n1-formal-orini-fill-3",
-      "flags": [
-        "NO_BLANK"
-      ]
-    },
-    {
-      "factId": "ja-gram-n1-n1-advanced_particles-ttara-fill-2",
-      "flags": [
-        "DUPE_WITHIN_DISTRACTORS"
-      ]
-    },
-    {
-      "factId": "ja-gram-n1-n1-advanced_particles-ttara-fill-3",
-      "flags": [
-        "DUPE_WITHIN_DISTRACTORS"
-      ]
-    },
-    {
-      "factId": "ja-gram-n1-n1-simultaneous-tsutsu-fill-0",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n1-n1-simultaneous-tsutsu-fill-1",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n1-n1-simultaneous-tsutsu-fill-3",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n1-opinions-temae-fill-2",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n1-prob-uru-fill-2",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n1-time-nitarumade-fill-3",
-      "flags": [
-        "DUPE_WITHIN_DISTRACTORS"
-      ]
-    }
-  ]
+  "failingFacts": []
 }

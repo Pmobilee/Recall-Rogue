@@ -1,7 +1,7 @@
 # japanese_n2_grammar — Static In-Game Quiz Audit
 
 - Total facts: **820**
-- Flagged: **12** (1.5%)
+- Flagged: **0** (0.0%)
 
 Each row shows the rendered question, correct answer, and the 3 distractors a player would see.
 Selection is deterministic (seeded PRNG keyed on fact.id).
@@ -364,7 +364,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n2-degree-nanishiro-fill-2|{___}急いでください。時間がありません。<br>(At any rate, please hurry. There's no time.)|何しろ|なかなか|更に|ろくに||
 |ja-gram-n2-degree-nanishiro-fill-3|{___}子供なんだから、大目に見てあげて。<br>(After all, they're just a child, so please be lenient.)|何しろ|なかなか|ろくに|何といっても||
 |ja-gram-n2-degree-naniyori-fill-0|健康が{___}大切だ。<br>(Health is most important of all.)|何より|せめて|何しろ|なかなか||
-|ja-gram-n2-degree-naniyori-fill-1|ご無事でなによりです。<br>(Above all else, I'm glad you are safe.)|何より|べつに|なるべく|何しろ|NO_BLANK|
+|ja-gram-n2-degree-naniyori-fill-1|ご無事で{___}です。<br>(Above all else, I'm glad you are safe.)|何より|べつに|なるべく|何しろ||
 |ja-gram-n2-degree-naniyori-fill-2|家族と過ごす時間が{___}の楽しみだ。<br>(Time spent with family is my greatest pleasure above all else.)|何より|とうてい|ろくに|せめて||
 |ja-gram-n2-degree-naniyori-fill-3|合格できたこと、{___}嬉しい。<br>(I am happier than anything else that I passed.)|何より|べつに|ろくに|なるべく||
 |ja-gram-n2-degree-nantoittemo-fill-0|この店は{___}ラーメンが一番うまい。<br>(Whatever you say, the ramen at this shop is the best.)|何といっても|何より|何しろ|なるべく||
@@ -417,13 +417,13 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n2-emphasis-kotoda-fill-2|風邪を早く治すには、よく寝て水分を取る{___}。<br>(To recover quickly from a cold, the thing to do is sleep well and stay hydrated.)|ことだ|ものか|ばこそ|ことか||
 |ja-gram-n2-emphasis-kotoda-fill-3|悩んでいるなら、まず専門家に相談する{___}よ。<br>(If you're worried, the first thing to do is consult a specialist.)|ことだ|ばこそ|にほかならない|ことか||
 |ja-gram-n2-emphasis-kotoka-fill-0|合格通知を見た時、どれほど嬉しかった{___}！<br>(How happy I was when I saw the acceptance letter!)|ことか|に決まっている|にほかならない|に相違ない||
-|ja-gram-n2-emphasis-kotoka-fill-1|彼に何度注意したことか。もう疲れた。<br>(How many times have I warned him! I'm exhausted.)|ことか|にほかならない|ことだ|に相違ない|SELF_ANSWERING, NO_BLANK|
+|ja-gram-n2-emphasis-kotoka-fill-1|彼に何度注意した{___}。もう疲れた。<br>(How many times have I warned him! I'm exhausted.)|ことか|にほかならない|ことだ|に相違ない||
 |ja-gram-n2-emphasis-kotoka-fill-2|故郷に帰りたいと、どれほど思った{___}。<br>(How much I longed to return to my hometown.)|ことか|ものだ|に決まっている|ものではない||
 |ja-gram-n2-emphasis-kotoka-fill-3|あの時どんなに悲しかった{___}、今でも忘れられない。<br>(How sad I was at that time — I still can't forget it.)|ことか|に相違ない|ことだ|てこそ||
 |ja-gram-n2-emphasis-monoda-fill-0|年をとると、時間が経つのは早い{___}。<br>(As you get older, time passes quickly — that's just how it is.)|ものだ|ことだ|ものか|ばこそ||
 |ja-gram-n2-emphasis-monoda-fill-1|人は誰でも間違いを犯す{___}。完璧な人間はいない。<br>(Everyone makes mistakes — that's just how people are. There are no perfect humans.)|ものだ|に決まっている|てこそ|ことだ||
 |ja-gram-n2-emphasis-monoda-fill-2|子供は外で元気よく遊ぶ{___}。<br>(Children should play energetically outdoors — that's natural.)|ものだ|ばこそ|ことだ|に相違ない||
-|ja-gram-n2-emphasis-monoda-fill-3|昔は夜遅くまで勉強したものだ、今は考えられない。<br>(I used to study until late at night — unthinkable now.)|ものだ|ことか|ことだ|にほかならない|SELF_ANSWERING, NO_BLANK|
+|ja-gram-n2-emphasis-monoda-fill-3|昔は夜遅くまで勉強した{___}、今は考えられない。<br>(I used to study until late at night — unthinkable now.)|ものだ|ことか|ことだ|にほかならない||
 |ja-gram-n2-emphasis-monoda-nostalgic-fill-0|子供のころ、よく川で泳いだ{___}。<br>(I used to swim in the river a lot when I was a child.)|ものだ|ばこそ|に相違ない|に決まっている||
 |ja-gram-n2-emphasis-monoda-nostalgic-fill-1|学生時代は毎晩友達とゲームをした{___}なあ。<br>(I used to play games with friends every night during my student days.)|ものだ|に相違ない|に決まっている|にほかならない||
 |ja-gram-n2-emphasis-monoda-nostalgic-fill-2|若い時は徹夜で働いた{___}が、今はもう無理だ。<br>(I used to work all night when I was young, but it's no longer possible.)|ものだ|に決まっている|に相違ない|ことだ||
@@ -501,7 +501,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n2-impos-kaneru-fill-0|その件については申し上げ{___}。<br>(I find it difficult to say regarding that matter.)|かねる|得る|ざるを得ない|っこない||
 |ja-gram-n2-impos-kaneru-fill-1|そのご要望にはお応えし{___}。<br>(I'm afraid I find it difficult to meet that request.)|かねる|がたい|得る|ざるを得ない||
 |ja-gram-n2-impos-kaneru-fill-2|そのような無礼な態度は見て見ぬ振りはし{___}。<br>(I find it difficult to turn a blind eye to such rude behavior.)|かねる|わけがない|得ない|がたい||
-|ja-gram-n2-impos-kaneru-fill-3|個人情報のためお答えし{___。<br>(I find it difficult to answer due to personal information privacy.)|かねる|がたい|わけがない|っこない|NO_BLANK|
+|ja-gram-n2-impos-kaneru-fill-3|個人情報のためお答えし{___}。<br>(I find it difficult to answer due to personal information privacy.)|かねる|がたい|わけがない|っこない||
 |ja-gram-n2-impos-kkonai-fill-0|あんな難しい試験、受かり{___}。<br>(There's no way I'll pass such a difficult exam.)|っこない|がたい|わけがない|ようがない||
 |ja-gram-n2-impos-kkonai-fill-1|彼女が私のことを好きなんて、あり{___}。<br>(There's no way she likes me.)|っこない|ようがない|かねる|ざるを得ない||
 |ja-gram-n2-impos-kkonai-fill-2|一人でそんな量の仕事、でき{___}。<br>(There's absolutely no way one person can do that much work.)|っこない|ざるを得ない|がたい|得ない||
@@ -574,7 +574,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n2-oblig-bekarazu-fill-3|此処に捨てる{___}。<br>(Littering here is forbidden.)|べからず|わけにはいかない|ないではいられない|ねばならない||
 |ja-gram-n2-oblig-beki-fill-0|学生は一生懸命勉強する{___}だ。<br>(Students ought to study hard.)|べき|ねばならない|べからず|ねば||
 |ja-gram-n2-oblig-beki-fill-1|約束は守る{___}だ。<br>(One ought to keep promises.)|べき|わけにはいかない|ねば|べからず||
-|ja-gram-n2-oblig-beki-fill-2|他人の意見も尊重する{___}だ。<br>(One should also respect the opinions of others.)|べき|ないではいられない|わけにはいかない|ほかない|LENGTH_TELL|
+|ja-gram-n2-oblig-beki-fill-2|他人の意見も尊重する{___}だ。<br>(One should also respect the opinions of others.)|べき|ねば|ざるを得ない|ねばならない||
 |ja-gram-n2-oblig-beki-fill-3|リーダーは責任を持つ{___}だ。<br>(Leaders ought to be responsible.)|べき|ねばならない|ねば|べからず||
 |ja-gram-n2-oblig-hokanai-fill-0|もう選択肢がないから認める{___}。<br>(There are no more options, so I have no choice but to admit it.)|ほかない|より他ない|ないではいられない|しかない||
 |ja-gram-n2-oblig-hokanai-fill-1|状況を見守る{___}。<br>(There is no choice but to watch how the situation develops.)|ほかない|より仕方がない|しかない|べき||
@@ -590,7 +590,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n2-oblig-naiwakeni-fill-3|仕事を頼まれたから断ら{___}。<br>(Since I was asked to do the job, I can't not refuse... I can't say no.)|ない訳にはいかない|ざるを得ない|ほかない|しかない||
 |ja-gram-n2-oblig-neba-fill-0|急が{___}ならない。<br>(I must hurry.)|ねば|ざるを得ない|わけにはいかない|しかない||
 |ja-gram-n2-oblig-neba-fill-1|今すぐ出発せ{___}間に合わない。<br>(If I don't depart right now, I won't make it.)|ねば|べき|ねばならない|わけにはいかない||
-|ja-gram-n2-oblig-neba-fill-2|真実を話さ{___}ならない。<br>(I must tell the truth.)|ねば|ないではいられない|しかない|ねばならない|LENGTH_TELL|
+|ja-gram-n2-oblig-neba-fill-2|真実を話さ{___}ならない。<br>(I must tell the truth.)|ねば|わけにはいかない|こと|しかない||
 |ja-gram-n2-oblig-neba-fill-3|この問題を解決せ{___}前に進めない。<br>(Unless we solve this problem, we cannot move forward.)|ねば|ざるを得ない|しかない|ほかない||
 |ja-gram-n2-oblig-nebanaranu-fill-0|約束した以上、守ら{___}。<br>(Since I made a promise, I must keep it.)|ねばならない|ずにはいられない|しかない|わけにはいかない||
 |ja-gram-n2-oblig-nebanaranu-fill-1|問題を解決せ{___}。<br>(We must solve the problem.)|ねばならない|べき|ほかない|わけにはいかない||
@@ -738,9 +738,9 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n2-supp-masaka-fill-2|{___}、あの真面目な人が嘘をついたとは信じられない。<br>(No way — I can't believe that such a serious person told a lie.)|まさか|恐らく|確かに|果たして||
 |ja-gram-n2-supp-masaka-fill-3|{___}、あの二人が結婚するとは！<br>(No way — those two are getting married!)|まさか|確かに|一応|かのようだ||
 |ja-gram-n2-supp-nodeha-fill-0|このやり方には問題がある{___}。<br>(I think there might be a problem with this method, don't you think?)|のではないでしょうか|まさか|どうやら|果たして||
-|ja-gram-n2-supp-nodeha-fill-1|今の状況では、予算を増やす必要がある{___}。<br>(I think it may be necessary to increase the budget given the current situation, don't you think?)|のではないでしょうか|確かに|一応|どうやら|LENGTH_TELL|
+|ja-gram-n2-supp-nodeha-fill-1|今の状況では、予算を増やす必要がある{___}。<br>(I think it may be necessary to increase the budget given the current situation, don't you think?)|のではないでしょうか|確かに|のだろうか|んじゃないか||
 |ja-gram-n2-supp-nodeha-fill-2|もう少し練習すれば、合格できる{___}。<br>(I think if you practice a little more, you'll be able to pass, don't you think?)|のではないでしょうか|恐らく|かのようだ|果たして||
-|ja-gram-n2-supp-nodeha-fill-3|この映画は子供には少し難しすぎる{___}。<br>(I think this movie might be a bit too difficult for children, don't you think?)|のではないでしょうか|一応|確かに|果たして|LENGTH_TELL|
+|ja-gram-n2-supp-nodeha-fill-3|この映画は子供には少し難しすぎる{___}。<br>(I think this movie might be a bit too difficult for children, don't you think?)|のではないでしょうか|果たして|と思われます|ようなのです||
 |ja-gram-n2-supp-osoraku-fill-0|{___}、明日は雨になるでしょう。<br>(Probably, it will rain tomorrow.)|恐らく|どうも|果たして|らしい||
 |ja-gram-n2-supp-osoraku-fill-1|{___}、彼は試験に合格したと思う。<br>(Probably, I think he passed the exam.)|恐らく|まさか|どうも|一応||
 |ja-gram-n2-supp-osoraku-fill-2|{___}、その噂は本当ではないだろう。<br>(Most likely, that rumor isn't true.)|恐らく|一応|まさか|どうやら||
@@ -815,7 +815,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n2-temp-iyoiyo-fill-1|練習を重ねてきた成果が、{___}発揮される時が来た。<br>(The time has finally come to demonstrate the results of all the practice.)|いよいよ|とっくに|一旦|未だに||
 |ja-gram-n2-temp-iyoiyo-fill-2|長い旅が終わり、{___}帰国の日を迎えた。<br>(The long journey ended, and at last the day of returning home arrived.)|いよいよ|やがて|いつの間にか|いきなり||
 |ja-gram-n2-temp-iyoiyo-fill-3|冬が深まり、{___}本格的な寒さになってきた。<br>(Winter deepened, and it has finally become truly cold.)|いよいよ|とっくに|やがて|いきなり||
-|ja-gram-n2-temp-kanaikanouchi-fill-0|試合が始まる{___}、点が入った。<br>(Right after the game started — almost before it began — a point was scored.)|かないかのうちに|以来|振りに|末に|LENGTH_TELL|
+|ja-gram-n2-temp-kanaikanouchi-fill-0|試合が始まる{___}、点が入った。<br>(Right after the game started — almost before it began — a point was scored.)|かないかのうちに|てからでないと|以来|つつある||
 |ja-gram-n2-temp-kanaikanouchi-fill-1|映画が始まる{___}、隣の席の人が話しかけてきた。<br>(Almost as soon as the movie started, the person next to me started talking.)|かないかのうちに|振りに|たとたんに|あげく||
 |ja-gram-n2-temp-kanaikanouchi-fill-2|子供が目を閉じる{___}、眠ってしまった。<br>(Almost as soon as the child closed her eyes, she fell asleep.)|かないかのうちに|上で|たとたんに|振りに||
 |ja-gram-n2-temp-kanaikanouchi-fill-3|新しい商品が棚に並べられる{___}、売れてしまった。<br>(Almost before the new products were placed on the shelves, they sold out.)|かないかのうちに|あげく|たとたんに|以来||
@@ -876,10 +876,10 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n2-tend-gachida-fill-1|冬は運動不足になり{___}。<br>(In winter, one tends to become short on exercise.)|がちだ|ものだ|向きだ|っぽい||
 |ja-gram-n2-tend-gachida-fill-2|疲れていると物事を悲観的に考え{___}。<br>(When tired, one tends to think about things pessimistically.)|がちだ|向きだ|げ|ものだ||
 |ja-gram-n2-tend-gachida-fill-3|独り暮らしをしていると食事が偏り{___}。<br>(When living alone, one's diet tends to become unbalanced.)|がちだ|気味|げ|ようだ||
-|ja-gram-n2-tend-ge-fill-0|彼は何か言いた{___}な顔をしていた。<br>(He had an expression that looked like he wanted to say something.)|げ|っぽい|向けだ|きらいがある|LENGTH_TELL|
+|ja-gram-n2-tend-ge-fill-0|彼は何か言いた{___}な顔をしていた。<br>(He had an expression that looked like he wanted to say something.)|げ|様|化|風||
 |ja-gram-n2-tend-ge-fill-1|子どもたちは楽し{___}に遊んでいる。<br>(The children are playing as if enjoying themselves.)|げ|っぽい|気味|向けだ||
-|ja-gram-n2-tend-ge-fill-2|彼女は悲し{___}な表情を見せた。<br>(She showed an expression that looked sad.)|げ|っぽい|きらいがある|向けだ|LENGTH_TELL|
-|ja-gram-n2-tend-ge-fill-3|彼は退屈そう{___}にあくびをした。<br>(He yawned as though looking bored.)|げ|っぽい|向けだ|きらいがある|LENGTH_TELL|
+|ja-gram-n2-tend-ge-fill-2|彼女は悲し{___}な表情を見せた。<br>(She showed an expression that looked sad.)|げ|様|ぽい|っぽい||
+|ja-gram-n2-tend-ge-fill-3|彼は退屈そう{___}にあくびをした。<br>(He yawned as though looking bored.)|げ|きらいがある|風|気味||
 |ja-gram-n2-tend-gimi-fill-0|最近仕事が忙しくて疲れ{___}だ。<br>(Work has been busy lately and I'm somewhat tired.)|気味|ようだ|っぽい|がちだ||
 |ja-gram-n2-tend-gimi-fill-1|風邪{___}で鼻水が出る。<br>(I have a slight cold and my nose is running.)|気味|向けだ|きらいがある|げ||
 |ja-gram-n2-tend-gimi-fill-2|最近太り{___}なので、ダイエットを始めた。<br>(I've been somewhat gaining weight lately, so I started a diet.)|気味|向きだ|きらいがある|っぽい||

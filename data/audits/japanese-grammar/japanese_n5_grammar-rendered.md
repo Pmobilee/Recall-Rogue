@@ -1,7 +1,7 @@
 # japanese_n5_grammar — Static In-Game Quiz Audit
 
 - Total facts: **375**
-- Flagged: **41** (10.9%)
+- Flagged: **0** (0.0%)
 
 Each row shows the rendered question, correct answer, and the 3 distractors a player would see.
 Selection is deterministic (seeded PRNG keyed on fact.id).
@@ -13,9 +13,9 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n5-n5-adj-i-fill-0|この映画は面白{___}です。<br>(This movie is interesting.)|い|な|も|は||
 |ja-gram-n5-n5-adj-i-fill-1|今日は寒くな{___}ですね。<br>(It's not cold today, is it.)|い|の|前に|に||
 |ja-gram-n5-n5-adj-i-fill-3|高{___}山ですね。<br>(That's a tall mountain, isn't it.)|い|この|が|に行く||
-|ja-gram-n5-n5-adj-i-fill-4|この料理はお{___}しくなかった。<br>(This dish was not delicious.)|い|ので|より〜ほうが|まで|LENGTH_TELL|
+|ja-gram-n5-n5-adj-i-fill-4|この料理はお{___}しくなかった。<br>(This dish was not delicious.)|い|ので|より〜ほうが|まで||
 |ja-gram-n5-n5-adj-na-fill-1|元気{___}子供ですね。<br>(That's a lively child, isn't it.)|な|すぎる|のが好き|が||
-|ja-gram-n5-n5-adj-na-fill-3|静か{___}部屋が好きです。<br>(I like quiet rooms.)|な|がいる|ない|なくてもいい|LENGTH_TELL|
+|ja-gram-n5-n5-adj-na-fill-3|静か{___}部屋が好きです。<br>(I like quiet rooms.)|な|がいる|ない|なくてもいい||
 
 ## Pool: `demonstrative` (15 facts)
 
@@ -43,7 +43,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |---|---|---|---|---|---|---|
 |ja-gram-n5-n5-exist-ga-aru-fill-0|机の上に本{___}。<br>(There is a book on the desk.)|があります|で|か〜か|じゃない||
 |ja-gram-n5-n5-exist-ga-aru-fill-1|近くにコンビニ{___}か。<br>(Is there a convenience store nearby?)|があります|のが上手|すぎる|たい||
-|ja-gram-n5-n5-exist-ga-aru-fill-2|冷蔵庫にミルク{___}。<br>(There is no milk in the refrigerator.)|がありません|で|か〜か|に|LENGTH_TELL|
+|ja-gram-n5-n5-exist-ga-aru-fill-2|冷蔵庫にミルク{___}。<br>(There is no milk in the refrigerator.)|がありません|か〜か|けど|がいる||
 |ja-gram-n5-n5-exist-ga-aru-fill-3|明日は授業{___}。<br>(There is no class tomorrow.)|がありません|なくてはいけない|てから|がいる||
 |ja-gram-n5-n5-exist-ga-iru-fill-0|公園に子供{___}。<br>(There are children in the park.)|がいます|で|に|いっしょに||
 |ja-gram-n5-n5-exist-ga-iru-fill-1|猫{___}。<br>(There is a cat.)|がいます|の|がある|てある||
@@ -89,20 +89,20 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n5-n5-particle-de-mo-fill-1|疲れました。{___}、まだ仕事があります。<br>(I am tired. But there is still work to do.)|でも|の|が|けど||
 |ja-gram-n5-n5-particle-de-mo-fill-2|雨が降っています。{___}、出かけます。<br>(It is raining. But I will go out.)|でも|に|なくてはならない|てある||
 |ja-gram-n5-n5-particle-de-mo-fill-3|日本語は難しいです。{___}、楽しいです。<br>(Japanese is difficult. But it is fun.)|でも|まだ|と思う|けれども||
-|ja-gram-n5-n5-particle-ga-contrast-fill-0|突然です{___}ボードゲーム告知をてっきり忘れてました。<br>(This is out of nowhere but I completely forgot about the board game notice.)|が|で|いっしょに|のが下手|LENGTH_TELL|
+|ja-gram-n5-n5-particle-ga-contrast-fill-0|突然です{___}ボードゲーム告知をてっきり忘れてました。<br>(This is out of nowhere but I completely forgot about the board game notice.)|が|で|いっしょに|のが下手||
 |ja-gram-n5-n5-particle-ga-contrast-fill-1|悪いです{___}ちょっと静かにしてください。<br>(Sorry but could you keep it a little quieter?)|が|を|ましょうか|も||
 |ja-gram-n5-n5-particle-ga-contrast-fill-2|料理はあまりおいしくなかった{___}、その他の点では、そのパーティーは成功だった。<br>(The dishes were not so delicious, but otherwise the party was a success.)|が|しかし|だけ|たい||
-|ja-gram-n5-n5-particle-ga-contrast-fill-3|行きたいです{___}、時間がありません。<br>(I want to go, but I don't have time.)|が|方|や|しかし|SELF_ANSWERING|
+|ja-gram-n5-n5-particle-ga-contrast-fill-3|行きたいです{___}、忙しくて無理です。<br>(I want to go, but I'm too busy.)|が|方|や|しかし||
 |ja-gram-n5-n5-particle-ga-subject-fill-0|バス{___}来るよ。<br>(The bus is coming!)|が|で|まで|すぎる||
 |ja-gram-n5-n5-particle-ga-subject-fill-1|台所にテレビ{___}あります。<br>(There is a television in the kitchen.)|が|に|は|がいる||
-|ja-gram-n5-n5-particle-ga-subject-fill-2|日本語{___}できます。<br>(I can speak Japanese.)|が|より〜ほうが|前に|がある|LENGTH_TELL|
+|ja-gram-n5-n5-particle-ga-subject-fill-2|日本語{___}できます。<br>(I can speak Japanese.)|が|より〜ほうが|前に|がある||
 |ja-gram-n5-n5-particle-ga-subject-fill-3|猫{___}好きです。<br>(I like cats.)|が|てから|で|がある||
 |ja-gram-n5-n5-particle-ga-subject-fill-4|だれ{___}来ましたか。<br>(Who came?)|が|お|や|は||
 |ja-gram-n5-n5-particle-he-fill-0|学校{___}行きます。<br>(I go to school.)|へ|まで|は|に行く||
 |ja-gram-n5-n5-particle-he-fill-1|日本{___}来ました。<br>(I came to Japan.)|へ|か|いちばん|もう||
 |ja-gram-n5-n5-particle-he-fill-2|家{___}帰ります。<br>(I return home.)|へ|が|から|方||
 |ja-gram-n5-n5-particle-he-fill-3|どこ{___}行きますか。<br>(Where are you going?)|へ|まだ|は|を||
-|ja-gram-n5-n5-particle-ka-or-fill-0|コーヒー{___}紅茶を飲みますか。<br>(Will you drink coffee or tea?)|か|それから|が|で|SELF_ANSWERING|
+|ja-gram-n5-n5-particle-ka-or-fill-0|コーヒー{___}紅茶を飲みたいです。<br>(I'd like coffee or tea.)|か|それから|が|で||
 |ja-gram-n5-n5-particle-ka-or-fill-1|月曜日{___}火曜日に来てください。<br>(Please come on Monday or Tuesday.)|か|や|から|が||
 |ja-gram-n5-n5-particle-ka-or-fill-2|バス{___}電車で行きます。<br>(I will go by bus or train.)|か|は|けど|も||
 |ja-gram-n5-n5-particle-ka-or-fill-3|日本語{___}英語で書いてください。<br>(Please write in Japanese or English.)|か|まだ|に|それから||
@@ -117,41 +117,41 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n5-n5-particle-made-fill-4|駅{___}歩きます。<br>(I walk to the station.)|まで|が|か|しかし||
 |ja-gram-n5-n5-particle-mo-fill-0|これ{___}私のです。<br>(This is also mine.)|も|だろう|に|は〜より||
 |ja-gram-n5-n5-particle-mo-fill-1|あなた{___}ジャズが好きですか？<br>(Do you also like jazz?)|も|すぎる|いちばん|たい||
-|ja-gram-n5-n5-particle-mo-fill-2|あの小さいの{___}わたしのです。<br>(That small one is also mine.)|も|でも|まで|ないでください|LENGTH_TELL|
+|ja-gram-n5-n5-particle-mo-fill-2|あの小さいの{___}わたしのです。<br>(That small one is also mine.)|も|でも|まで|ないでください||
 |ja-gram-n5-n5-particle-mo-fill-3|私{___}日本語を勉強しています。<br>(I am also studying Japanese.)|も|を|に|まで||
 |ja-gram-n5-n5-particle-mo-fill-4|田中さん{___}来ますか。<br>(Will Tanaka-san come too?)|も|まだ|けれども|に||
-|ja-gram-n5-n5-particle-ni-he-fill-0|駅{___}（へ）行きます。<br>(I go to the station. (に and へ interchangeable here))|に|ここ|か〜か|や|SELF_ANSWERING|
+|ja-gram-n5-n5-particle-ni-he-fill-0|駅{___}行きます。<br>(I go to the station.)|に|ここ|か〜か|や||
 |ja-gram-n5-n5-particle-ni-he-fill-1|友達の家{___}（へ）来てください。<br>(Please come to my friend's house.)|に|そして|けれども|や||
 |ja-gram-n5-n5-particle-ni-he-fill-2|北海道{___}（へ）旅行したいです。<br>(I want to travel to Hokkaido.)|に|で|いっしょに|そして||
 |ja-gram-n5-n5-particle-ni-indirect-fill-0|これは母{___}貰いました。<br>(I got this from my mother.)|に|を|の|が||
-|ja-gram-n5-n5-particle-ni-indirect-fill-1|そこ{___}着いたら私に教えてください。<br>(Please let me know when we get there.)|に|から|お|が|SELF_ANSWERING|
+|ja-gram-n5-n5-particle-ni-indirect-fill-1|そこ{___}着いたら知らせてください。<br>(Please let us know when we get there.)|に|から|お|が||
 |ja-gram-n5-n5-particle-ni-indirect-fill-2|私はあなた{___}りんごをあげる。<br>(I will give an apple to you.)|に|前に|けど|が||
 |ja-gram-n5-n5-particle-ni-indirect-fill-3|私はともだち{___}電話をします。<br>(I will call a friend.)|に|ので|そして|なる||
 |ja-gram-n5-n5-particle-ni-indirect-fill-4|彼は先生{___}しかられた。<br>(He got scolded by the teacher.)|に|から|ので|どうやって||
 |ja-gram-n5-n5-particle-ni-location-fill-0|その車のなか{___}犬がいます。<br>(There is a dog in that car.)|に|そして|しかし|が||
-|ja-gram-n5-n5-particle-ni-location-fill-1|１０時{___}約束があります。<br>(I have an appointment at ten.)|に|より〜ほうが|の|すぎる|LENGTH_TELL|
-|ja-gram-n5-n5-particle-ni-location-fill-2|２時{___}空港に見送りに行きます。<br>(I'm going to see her off at the airport at 2:00.)|に|で|が|も|SELF_ANSWERING|
+|ja-gram-n5-n5-particle-ni-location-fill-1|１０時{___}約束があります。<br>(I have an appointment at ten.)|に|より〜ほうが|の|すぎる||
+|ja-gram-n5-n5-particle-ni-location-fill-2|２時{___}友達と会います。<br>(I'm meeting my friend at 2:00.)|に|で|が|も||
 |ja-gram-n5-n5-particle-ni-location-fill-3|きっかり９時{___}来なさい。<br>(Come at nine o'clock sharp.)|に|じゃない|で|前に||
 |ja-gram-n5-n5-particle-ni-location-fill-4|東京{___}行きます。<br>(I go to Tokyo.)|に|前に|がいる|から||
-|ja-gram-n5-n5-particle-no-fill-0|フレッド君{___}車はどこにありますか。<br>(Where is Fred's car?)|の|まで|いちばん|のが好き|LENGTH_TELL|
-|ja-gram-n5-n5-particle-no-fill-1|「これは誰{___}ペン？」「私の。」<br>("Whose pen is this?" "Mine.")|の|の中で〜が一番|なる|か〜か|SELF_ANSWERING, LENGTH_TELL|
+|ja-gram-n5-n5-particle-no-fill-0|フレッド君{___}車はどこにありますか。<br>(Where is Fred's car?)|の|まで|いちばん|のが好き||
+|ja-gram-n5-n5-particle-no-fill-1|これは誰{___}ペンですか。<br>(Whose pen is this?)|の|の中で〜が一番|も|お||
 |ja-gram-n5-n5-particle-no-fill-2|リリー{___}靴はどこにあるか知りません。<br>(I don't know where Lilly's shoes are.)|の|へ|に|たことがある||
 |ja-gram-n5-n5-particle-no-fill-3|これは私{___}本です。<br>(This is my book.)|の|だけ|けれども|と||
 |ja-gram-n5-n5-particle-no-fill-4|日本{___}食べ物が好きです。<br>(I like Japanese food.)|の|いつも|や|なる||
 |ja-gram-n5-n5-particle-to-fill-0|パン{___}ミルクを買いました。<br>(I bought bread and milk.)|と|に行く|に|から||
 |ja-gram-n5-n5-particle-to-fill-1|友達{___}映画を見ました。<br>(I watched a movie with a friend.)|と|お|か〜か|まだ||
-|ja-gram-n5-n5-particle-to-fill-2|彼は「行く」{___}言いました。<br>(He said "I will go.")|と|と思う|から|より〜ほうが|LENGTH_TELL|
+|ja-gram-n5-n5-particle-to-fill-2|彼は「行く」{___}言いました。<br>(He said "I will go.")|と|と思う|から|より〜ほうが||
 |ja-gram-n5-n5-particle-to-fill-3|春になる{___}桜が咲きます。<br>(When spring comes, the cherry blossoms bloom.)|と|いつも|ない|けれども||
 |ja-gram-n5-n5-particle-wa-fill-0|私{___}学生です。<br>(I am a student.)|は|てある|まだ|か〜か||
-|ja-gram-n5-n5-particle-wa-fill-1|これ{___}本です。<br>(This is a book.)|は|が|か〜か|ないといけない|LENGTH_TELL|
+|ja-gram-n5-n5-particle-wa-fill-1|これ{___}本です。<br>(This is a book.)|は|が|か〜か|ないといけない||
 |ja-gram-n5-n5-particle-wa-fill-2|田中さん{___}先生ですか。<br>(Is Tanaka-san a teacher?)|は|と|ので|は〜より||
 |ja-gram-n5-n5-particle-wa-fill-3|今日{___}月曜日です。<br>(Today is Monday.)|は|けど|お|だけ||
-|ja-gram-n5-n5-particle-wa-fill-4|猫{___}魚が好きです。<br>(Cats like fish.)|は|より〜ほうが|は〜より|がある|LENGTH_TELL|
+|ja-gram-n5-n5-particle-wa-fill-4|猫{___}魚が好きです。<br>(Cats like fish.)|は|か|で|がある||
 |ja-gram-n5-n5-particle-wo-fill-0|新しいカメラ{___}買った。<br>(I bought a new camera.)|を|より〜ほうが|で|なる||
 |ja-gram-n5-n5-particle-wo-fill-1|それ{___}ください。<br>(That one, please.)|を|でも|いちばん|もう||
 |ja-gram-n5-n5-particle-wo-fill-2|私はチキン{___}もらいます。<br>(I'll have chicken.)|を|だけ|と|で||
-|ja-gram-n5-n5-particle-wo-fill-3|彼は「イマジン」{___}歌いました。<br>(He sang "Imagine".)|を|で|ないといけない|でも|LENGTH_TELL|
-|ja-gram-n5-n5-particle-wo-fill-4|仕事{___}探している。<br>(I'm looking for a job.)|を|は|の中で〜が一番|だろう|LENGTH_TELL|
+|ja-gram-n5-n5-particle-wo-fill-3|彼は「イマジン」{___}歌いました。<br>(He sang "Imagine".)|を|で|ないといけない|でも||
+|ja-gram-n5-n5-particle-wo-fill-4|仕事{___}探している。<br>(I'm looking for a job.)|を|は|の中で〜が一番|だろう||
 |ja-gram-n5-n5-particle-ya-fill-0|机の上に本{___}ノートがあります。<br>(There are books and notebooks (among other things) on the desk.)|や|が|と|いつも||
 |ja-gram-n5-n5-particle-ya-fill-1|冷蔵庫に野菜{___}果物などが入っています。<br>(There are vegetables, fruit, and such in the refrigerator.)|や|と思う|は|から||
 |ja-gram-n5-n5-particle-ya-fill-2|バッグの中に財布{___}カギがあります。<br>(In my bag there is a wallet and keys (and other things).)|や|で|は|に||
@@ -191,8 +191,8 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n5-n5-qw-ikura-fill-2|このＴシャツの値段は{___}ですか。<br>(How much is this T-shirt?)|いくら|けど|よ|なくてもいい||
 |ja-gram-n5-n5-qw-ikura-fill-3|「それは{___}かかりましたか。」「１０００円かかりました。」<br>("How much did it cost?" "It cost me a thousand yen.")|いくら|どうして|の|何||
 |ja-gram-n5-n5-qw-ikura-fill-4|これは{___}ですか。<br>(How much is this?)|いくら|なくてはいけない|どうやって|がほしい||
-|ja-gram-n5-n5-qw-nani-fill-0|{___}にしますか。<br>(What will you have?)|何|てから|どうやって|なる|LENGTH_TELL, SHORT_EXPLANATION|
-|ja-gram-n5-n5-qw-nani-fill-1|{___}の用ですか。<br>(What is your business here?)|何|どうやって|が|どうして|LENGTH_TELL, SHORT_EXPLANATION|
+|ja-gram-n5-n5-qw-nani-fill-0|{___}にしますか。<br>(What will you have?)|何|てから|どうやって|なる||
+|ja-gram-n5-n5-qw-nani-fill-1|{___}の用ですか。<br>(What is your business here?)|何|どうやって|が|どうして||
 |ja-gram-n5-n5-qw-nani-fill-2|この花は英語で{___}（なん）と言いますか。<br>(What do you call this flower in English?)|何|で|どんな|ほうがいい||
 |ja-gram-n5-n5-qw-nani-fill-3|この箱の中に{___}がありますか。<br>(What is in this box?)|何|いくら|も|どんな||
 |ja-gram-n5-n5-qw-nani-fill-4|あなたの好きな食べ物は{___}ですか。<br>(What is your favourite food?)|何|どんな|の|どうやって||
@@ -232,35 +232,35 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n5-n5-copula-deshou-fill-1|それは田中さんの傘{___}？<br>(That's Tanaka-san's umbrella, right?)|でしょう|はどうですか|だろう|か||
 |ja-gram-n5-n5-copula-deshou-fill-2|もうすぐ来る{___}。<br>(They will probably come soon.)|でしょう|ね|だ|はどうですか||
 |ja-gram-n5-n5-copula-deshou-fill-3|難しい{___}ね。<br>(It's probably difficult, isn't it.)|でしょう|も|じゃない|んです||
-|ja-gram-n5-n5-copula-janai-fill-0|これは本{___}。<br>(This is not a book.)|じゃない|よ|ね|だ|LENGTH_TELL|
-|ja-gram-n5-n5-copula-janai-fill-1|彼は先生{___}。<br>(He is not a teacher.)|ではありません|と|よ|でしょう|LENGTH_TELL|
+|ja-gram-n5-n5-copula-janai-fill-0|これは本{___}。<br>(This is not a book.)|じゃない|よ|ではない|か||
+|ja-gram-n5-n5-copula-janai-fill-1|彼は先生{___}。<br>(He is not a teacher.)|ではありません|ね|じゃありません|と||
 |ja-gram-n5-n5-copula-janai-fill-2|今日は月曜日{___}ですよ。<br>(Today is not Monday, you know.)|じゃない|だ|なくてはならない|それから||
 |ja-gram-n5-n5-copula-janai-fill-3|私の問題{___}。<br>(It is not my problem.)|ではない|か|なくちゃ|よ||
-|ja-gram-n5-n5-copula-janai-fill-4|これは私の{___}。<br>(This is not mine.)|じゃありません|だ|もう|よ|LENGTH_TELL|
+|ja-gram-n5-n5-copula-janai-fill-4|これは私の{___}。<br>(This is not mine.)|じゃありません|ね|ではありません|よ||
 |ja-gram-n5-n5-exp-n-desu-fill-0|どうして泣いている{___}か。<br>(Why are you crying? (seeking explanation))|んです|だろう|じゃない|はどうですか||
 |ja-gram-n5-n5-exp-n-desu-fill-1|実は、道に迷った{___}。<br>(The truth is, I got lost.)|んです|でしょう|けど|じゃない||
 |ja-gram-n5-n5-exp-n-desu-fill-2|頭が痛い{___}。<br>(I have a headache. (explaining))|んです|だ|ね|じゃない||
 |ja-gram-n5-n5-exp-n-desu-fill-3|どこへ行く{___}か。<br>(Where are you going? (curious/seeking explanation))|んです|だ|か|じゃない||
 |ja-gram-n5-n5-honor-o-go-fill-0|{___}水をください。<br>(Please give me some water.)|お|もう|の|だ||
 |ja-gram-n5-n5-honor-o-go-fill-1|ご家族は{___}元気ですか。<br>(Is your family doing well?)|お|が|も|は||
-|ja-gram-n5-n5-honor-o-go-fill-2|{___}名前は何ですか。<br>(What is your name?)|お|はどうですか|もう|の中で〜が一番|LENGTH_TELL|
+|ja-gram-n5-n5-honor-o-go-fill-2|{___}名前は何ですか。<br>(What is your name?)|お|ご|もう|そして||
 |ja-gram-n5-n5-honor-o-go-fill-3|{___}ちそうさまでした。<br>(Thank you for the meal.)|ご|もう|は|前に||
 |ja-gram-n5-n5-inv-dou-desu-ka-fill-0|コーヒー{___}。<br>(How about some coffee?)|はどうですか|じゃない|よ|てはいけない||
-|ja-gram-n5-n5-inv-dou-desu-ka-fill-1|明日{___}。<br>(How about tomorrow?)|はどうですか|んです|だ|か|LENGTH_TELL|
-|ja-gram-n5-n5-inv-dou-desu-ka-fill-2|日本語の勉強{___}。<br>(How is your Japanese study going?)|はどうですか|だ|だろう|ね|LENGTH_TELL|
+|ja-gram-n5-n5-inv-dou-desu-ka-fill-1|明日{___}。<br>(How about tomorrow?)|はどうですか|じゃない|ね|それから||
+|ja-gram-n5-n5-inv-dou-desu-ka-fill-2|日本語の勉強{___}。<br>(How is your Japanese study going?)|はどうですか|それから|ではない|けれども||
 |ja-gram-n5-n5-inv-dou-desu-ka-fill-3|散歩してみて{___}。<br>(How about trying a walk?)|はどうですか|だ|だろう|なくてもいい||
 |ja-gram-n5-n5-particle-ka-fill-0|これは本です{___}。<br>(Is this a book?)|か|ね|じゃない|よ||
-|ja-gram-n5-n5-particle-ka-fill-1|日本語が分かります{___}。<br>(Do you understand Japanese?)|か|じゃない|よ|だろう|SELF_ANSWERING|
-|ja-gram-n5-n5-particle-ka-fill-2|どこに行きます{___}。<br>(Where are you going?)|か|よ|だろう|より〜ほうが|LENGTH_TELL|
-|ja-gram-n5-n5-particle-ka-fill-3|今日は忙しいです{___}。<br>(Are you busy today?)|か|よ|はどうですか|どんな|LENGTH_TELL|
-|ja-gram-n5-n5-sfp-ne-fill-0|今日はいい天気です{___}。<br>(It's nice weather today, isn't it.)|ね|てある|はどうですか|だろう|LENGTH_TELL|
+|ja-gram-n5-n5-particle-ka-fill-1|日本語、できます{___}。<br>(Do you understand Japanese?)|か|じゃない|よ|だろう||
+|ja-gram-n5-n5-particle-ka-fill-2|どこに行きます{___}。<br>(Where are you going?)|か|よ|だろう|より〜ほうが||
+|ja-gram-n5-n5-particle-ka-fill-3|今日は忙しいです{___}。<br>(Are you busy today?)|か|よ|はどうですか|どんな||
+|ja-gram-n5-n5-sfp-ne-fill-0|今日はいい天気です{___}。<br>(It's nice weather today, isn't it.)|ね|てある|ましょう|お||
 |ja-gram-n5-n5-sfp-ne-fill-1|この映画、面白いです{___}。<br>(This movie is interesting, isn't it.)|ね|だ|よ|はどうですか||
 |ja-gram-n5-n5-sfp-ne-fill-2|田中さんは日本人です{___}。<br>(Tanaka-san is Japanese, right.)|ね|だ|でしょう|よ||
-|ja-gram-n5-n5-sfp-ne-fill-3|明日また来ます{___}。<br>(I'll come again tomorrow, okay.)|ね|へ|んです|はどうですか|LENGTH_TELL|
+|ja-gram-n5-n5-sfp-ne-fill-3|明日また来ます{___}。<br>(I'll come again tomorrow, okay.)|ね|へ|んです|はどうですか||
 |ja-gram-n5-n5-sfp-yo-fill-0|バスが来ました{___}。<br>(The bus has come, you know.)|よ|か|んです|ね||
-|ja-gram-n5-n5-sfp-yo-fill-1|これは危ないです{___}。<br>(This is dangerous, I'm telling you.)|よ|はどうですか|を|んです|LENGTH_TELL|
+|ja-gram-n5-n5-sfp-yo-fill-1|これは危ないです{___}。<br>(This is dangerous, I'm telling you.)|よ|はどうですか|を|んです||
 |ja-gram-n5-n5-sfp-yo-fill-2|もうすぐ着きます{___}。<br>(We'll arrive soon, I assure you.)|よ|が|ね|じゃない||
-|ja-gram-n5-n5-sfp-yo-fill-3|あのお店は美味しいです{___}。<br>(That restaurant is delicious, I'm telling you.)|よ|じゃない|でしょう|なくてはならない|LENGTH_TELL|
+|ja-gram-n5-n5-sfp-yo-fill-3|あのお店は美味しいです{___}。<br>(That restaurant is delicious, I'm telling you.)|よ|ね|はどうですか|だ||
 
 ## Pool: `verb_form` (149 facts)
 
@@ -376,10 +376,10 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n5-n5-verb-tai-fill-2|日本語を学び{___}です。<br>(I want to learn Japanese.)|たい|は|ている|すぎる||
 |ja-gram-n5-n5-verb-tai-fill-3|日本で英語をおしえ{___}です。<br>(I want to teach English in Japan.)|たい|前に|なくちゃ|ほうがいい||
 |ja-gram-n5-n5-verb-tai-fill-4|水が飲み{___}。<br>(I want to drink water.)|たい|ましょうか|がほしい|どうやって||
-|ja-gram-n5-n5-verb-tari-tari-fill-0|週末は映画を見{___}、買い物をしたりします。<br>(On weekends I do things like watch movies and go shopping.)|たり|ちゃいけない|てから|たことがある|SELF_ANSWERING|
+|ja-gram-n5-n5-verb-tari-tari-fill-0|週末は映画を見{___}、買い物をし{___}します。<br>(On weekends I do things like watch movies and go shopping.)|たり|ちゃいけない|てから|たことがある||
 |ja-gram-n5-n5-verb-tari-tari-fill-1|音楽を聴い{___}、本を読んだりするのが好きです。<br>(I like to do things like listen to music and read books.)|たり|てください|てある|ないでください||
-|ja-gram-n5-n5-verb-tari-tari-fill-2|立っ{___}座ったりしないでください。<br>(Please don't keep standing up and sitting down.)|たり|ほうがいい|が|のが好き|SELF_ANSWERING|
-|ja-gram-n5-n5-verb-tari-tari-fill-3|笑っ{___}泣いたりしました。<br>(I laughed and cried (alternately).)|たり|と|のが上手|てもいい|SELF_ANSWERING|
+|ja-gram-n5-n5-verb-tari-tari-fill-2|立っ{___}座っ{___}しないでください。<br>(Please don't keep standing up and sitting down.)|たり|ほうがいい|が|のが好き||
+|ja-gram-n5-n5-verb-tari-tari-fill-3|笑っ{___}泣い{___}しました。<br>(I laughed and cried (alternately).)|たり|と|のが上手|てもいい||
 |ja-gram-n5-n5-verb-te-aru-fill-0|窓が開け{___}。<br>(The window has been opened (and is open).)|てあります|がほしい|ている|に行く||
 |ja-gram-n5-n5-verb-te-aru-fill-1|名前が書い{___}。<br>(A name is written (there).)|てあります|てから|たり〜たり|が||
 |ja-gram-n5-n5-verb-te-aru-fill-2|花が飾っ{___}。<br>(Flowers have been arranged.)|てあります|つもり|てください|は||
@@ -411,7 +411,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n5-n5-want-ga-hoshii-fill-1|お水{___}ですか。<br>(Do you want some water?)|がほしい|ほうがいい|なくてはいけない|つもり||
 |ja-gram-n5-n5-want-ga-hoshii-fill-2|子供の頃、犬{___}。<br>(When I was a child, I wanted a dog.)|がほしかった|も|たことがある|つもり||
 |ja-gram-n5-n5-want-ga-hoshii-fill-3|もっと時間{___}。<br>(I want more time.)|がほしい|ちゃいけない|お|がいる||
-|ja-gram-n5-n5-way-kata-fill-0|この漢字の読み{___}を教えてください。<br>(Please teach me how to read this kanji.)|方|たことがある|にする|なくちゃ|LENGTH_TELL|
-|ja-gram-n5-n5-way-kata-fill-1|ご飯の炊き{___}を知っていますか。<br>(Do you know how to cook rice?)|方|てもいい|はどうですか|にする|LENGTH_TELL|
-|ja-gram-n5-n5-way-kata-fill-2|この機械の使い{___}が分かりません。<br>(I don't know how to use this machine.)|方|ちゃいけない|の中で〜が一番|から|LENGTH_TELL|
-|ja-gram-n5-n5-way-kata-fill-3|日本語の書き{___}を勉強しています。<br>(I am studying how to write Japanese.)|方|は|ちゃいけない|に行く|LENGTH_TELL|
+|ja-gram-n5-n5-way-kata-fill-0|この漢字の読み{___}を教えてください。<br>(Please teach me how to read this kanji.)|方|にする|所|ないでください||
+|ja-gram-n5-n5-way-kata-fill-1|ご飯の炊き{___}を知っていますか。<br>(Do you know how to cook rice?)|方|所|なくちゃ|化||
+|ja-gram-n5-n5-way-kata-fill-2|この機械の使い{___}が分かりません。<br>(I don't know how to use this machine.)|方|者|事|の中で〜が一番||
+|ja-gram-n5-n5-way-kata-fill-3|日本語の書き{___}を勉強しています。<br>(I am studying how to write Japanese.)|方|は|ちゃいけない|に行く||

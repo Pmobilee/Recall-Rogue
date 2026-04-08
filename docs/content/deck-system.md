@@ -89,6 +89,12 @@ Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
 | `chainThemeId` | yes | numeric index (0–N) mapping to a named chain theme |
 | `answerTypePoolId` | yes | Links to an `AnswerTypePool` for distractor selection |
 | `grammarNote` | no | Rich grammar explanation for language/grammar facts |
+| `displayAsFullForm` | no | When true, answers are displayed with ~ prefix + full grammar form. Used for fragment extractions |
+| `fullFormDisplay` | no | Canonical grammar point to display when `displayAsFullForm` is true (e.g. "てくれる" for fragment "くれ") |
+| `sentenceFurigana` | no | Baked furigana segments for Japanese grammar sentences: `{t, r?, g?}` per token — surface text, optional hiragana reading (kanji only), optional JMdict gloss (content words). Produced by `scripts/japanese/bake-grammar-furigana.mjs` |
+| `sentenceRomaji` | no | Baked whole-sentence romaji for Japanese grammar facts. Displayed under the sentence when romaji toggle is on |
+| `sentenceTranslation` | no | First-class English translation for Japanese grammar sentences, promoted out of `quizQuestion` line 2 |
+| `grammarPointLabel` | no | Short grammar-point label displayed as a hint in typing mode (e.g., "が — subject marker particle"). Derived from `explanation` |
 | `targetLanguageWord` | no | The target-language word (vocabulary decks) |
 | `pronunciation` | no | Reading (e.g. hiragana for Japanese kanji) |
 | `partOfSpeech` | no | Used for POS-matched distractor selection; all vocab decks have this field as of 2026-04-02 |
@@ -1245,6 +1251,14 @@ The original `structure_names` mega-pool (1182 facts, 49x ratio) was split into 
 **Validator note:** The `verify-curated-deck.mjs` script flags every fact with "Question contains literal braces" — this is a known false-positive for fill-blank grammar decks (identical behaviour in `japanese_n3_grammar`). The `{___}` marker is the intended question blank format, not a template literal.
 
 **chainThemeId:** Rotates 0–5 sequentially across all facts (grammar decks use generic chain slots, not named themes).
+
+### Japanese Grammar Static Quiz Audit (2026-04-08)
+
+`scripts/audit-japanese-grammar.mjs` (`npm run audit:japanese-grammar`) reproduces the exact in-game quiz view (rendered question + correct answer + 3 deterministically-selected distractors) for every fact across all 5 grammar decks (N5–N1, 3,448 facts) without running a live LLM playtest. The script ports `renderTemplate`, `displayAnswer`, and `getQuizChoices` from `src/services/`, uses a seeded mulberry32 PRNG keyed on `fact.id` for byte-stable output, and runs 12 quality flags (NO_DISTRACTORS, DUPE_DISTRACTOR, DUPE_WITHIN_DISTRACTORS, Q_EQUALS_A, SELF_ANSWERING, NO_BLANK, LENGTH_TELL, SHORT_EXPLANATION, POOL_MISMATCH, ORPHAN_POOL_MEMBER, EMPTY_DISTRACTOR, CORRECT_IN_DISTRACTORS_SOURCE). Reports land in `data/audits/japanese-grammar/<deckId>-rendered.md` (per-pool tables) and `<deckId>-summary.json` (machine-readable). Grammar decks are exempt from the general `quiz-audit.mjs` so this is the only mechanical pre-filter that touches them — run before `/llm-playtest` to avoid wasting LLM budget on facts with mechanical bugs.
+
+LENGTH_TELL uses a dual criterion: `ratio > 3` AND `|correct.length − meanDistractorLength| ≥ 3` chars. The absolute-diff floor suppresses noise from 1-char particles vs 3-char particles (no human would spot a tell) while still catching genuine cases like 1-char vs 6-char.
+
+**Initial audit cleanup pass (2026-04-08):** Found 180 issues (5.2% fail rate) across all 5 grammar decks; after metric refinement, 148 real issues. Fixed all of them: 5 NO_BLANK (typo'd `{___` placeholders, missing blanks), 3 DUPE_WITHIN_DISTRACTORS (duplicate `といったら`, `に至っては`), 1 NO_DISTRACTORS (only 2 distractors), 5 SHORT_EXPLANATION (one-line explanations expanded), 41 SELF_ANSWERING (rewrote question stems where the correct answer appeared verbatim — heavy in N3 with multiple answer-leaks pasted into stems), 144 LENGTH_TELL (padded distractor pools using `/tmp/pad-length-tell.mjs` which pulls length-matched answers from sibling facts in the same `answerTypePool`, plus `/tmp/pad-residual.mjs` which injects curated short-particle banks for residual cases like 1-char `つ`, `べき`, `げ`, `て`, `と`, `を`, `の`, `は`, `か`, `ね` where same-pool siblings are all multi-char compounds). Final state: **0 flagged across 3,448 facts (100.0% pass)**, deterministic, verified by `node scripts/verify-all-decks.mjs` (0 failures, no grammar deck warnings).
 
 ---
 

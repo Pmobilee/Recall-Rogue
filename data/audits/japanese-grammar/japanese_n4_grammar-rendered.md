@@ -1,7 +1,7 @@
 # japanese_n4_grammar — Static In-Game Quiz Audit
 
 - Total facts: **400**
-- Flagged: **28** (7.0%)
+- Flagged: **0** (0.0%)
 
 Each row shows the rendered question, correct answer, and the 3 distractors a player would see.
 Selection is deterministic (seeded PRNG keyed on fact.id).
@@ -78,7 +78,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n4-n4-cond-nara-fill-2|君が行かない{___}、私も行きません。<br>(If you're not going, I won't go either.)|なら|と|てしまう|いたします||
 |ja-gram-n4-n4-cond-nara-fill-3|安い{___}、二つ買います。<br>(If it's cheap, I'll buy two.)|なら|たらいいですか|ば|ので||
 |ja-gram-n4-n4-cond-tara-dou-fill-0|医者に行っ{___}。<br>(Why don't you go to the doctor?)|たらどうですか|たらいいですか|場合は|ば||
-|ja-gram-n4-n4-cond-tara-dou-fill-1|もっと野菜を食べ{___}。<br>(How about eating more vegetables?)|たらどうですか|きっと|と|ば|LENGTH_TELL|
+|ja-gram-n4-n4-cond-tara-dou-fill-1|もっと野菜を食べ{___}。<br>(How about eating more vegetables?)|たらどうですか|場合は|ば|たらどうでしょうか||
 |ja-gram-n4-n4-cond-tara-dou-fill-2|先生に相談し{___}。<br>(Why don't you consult with the teacher?)|たらどうでしょうか|たらいいですか|と|そうに||
 |ja-gram-n4-n4-cond-tara-fill-0|その夜半に目覚め{___}呼吸が酷く不規則で苦しくなっていました。<br>(When I woke up late that night my breathing had become horribly irregular and difficult.)|たら|なら|場合は|させてください||
 |ja-gram-n4-n4-cond-tara-fill-1|私ももし、イギリスに行っ{___}そうなるのか。<br>(If I go to England will it be like that for me as well?)|たら|みたいに|または|にする||
@@ -89,8 +89,8 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n4-n4-cond-tara-ii-desu-ka-fill-1|この薬はいつ飲んだ{___}。<br>(When should I take this medicine?)|らいいですか|場合は|おきに|てみる||
 |ja-gram-n4-n4-cond-tara-ii-desu-ka-fill-2|駅までどう行っ{___}。<br>(How should I go to the station?)|たらいいですか|場合は|たらどう|予定だ||
 |ja-gram-n4-n4-cond-to-fill-0|春になる{___}、桜が咲きます。<br>(When spring comes, the cherry blossoms bloom.)|と|たら|てしまう|なら||
-|ja-gram-n4-n4-cond-to-fill-1|このボタンを押す{___}、ドアが開きます。<br>(When you press this button, the door opens.)|と|たらいいですか|出す|なら|LENGTH_TELL|
-|ja-gram-n4-n4-cond-to-fill-2|北に行く{___}、山が見えます。<br>(If you go north, you can see mountains.)|と|なら|たらどう|たらいいですか|LENGTH_TELL|
+|ja-gram-n4-n4-cond-to-fill-1|このボタンを押す{___}、ドアが開きます。<br>(When you press this button, the door opens.)|と|たらいいですか|出す|なら||
+|ja-gram-n4-n4-cond-to-fill-2|北に行く{___}、山が見えます。<br>(If you go north, you can see mountains.)|と|ては|たらどう|なら||
 |ja-gram-n4-n4-cond-to-fill-3|お酒を飲みすぎる{___}、体に悪いです。<br>(If you drink too much alcohol, it's bad for your body.)|と|たら|場合は|頃||
 
 ## Pool: `difficulty_ease` (13 facts)
@@ -130,14 +130,14 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n4-n4-adv-zehi-fill-2|日本に来たら、{___}京都にも行ってみてください。<br>(When you come to Japan, by all means try visiting Kyoto too.)|ぜひ|なければいけない|でも|ていく||
 |ja-gram-n4-n4-comp-yori-fill-0|{___}いい方法知りませんか。<br>(Don't you know a better method?)|より|かな|ことになる|てしまう||
 |ja-gram-n4-n4-comp-yori-fill-1|あなたと会って、{___}一層あなたのことが好きになりました。<br>(I liked you even more when I met you.)|より|ようにする|みたいな|と||
-|ja-gram-n4-n4-comp-yori-fill-2|{___}早く着く電車はないのですか？<br>(Isn't there a train that gets there earlier?)|より|ということ|ようになる|ていただけませんか|LENGTH_TELL|
+|ja-gram-n4-n4-comp-yori-fill-2|{___}早く着く電車はないのですか？<br>(Isn't there a train that gets there earlier?)|より|ていただけませんか|など|ながら||
 |ja-gram-n4-n4-other-demo-but-fill-0|品質はいい。{___}、値段は高いです。<br>(The quality is good but the price is high.)|でも|ことにする|と言ってもいい|ながら||
 |ja-gram-n4-n4-other-demo-but-fill-1|{___}、あなたにあげるりんごはありません。<br>(But I have no apples left to give you.)|でも|欲しい|にくい|ているところ||
 |ja-gram-n4-n4-other-demo-but-fill-2|教室に来ました。{___}、誰もいません。<br>(I came to the class. But no one is here.)|でも|にする|て|てもらう||
 |ja-gram-n4-n4-other-demo-or-something-fill-0|お茶{___}飲みませんか。<br>(How about having some tea or something?)|でも|ながら|間|ていく||
 |ja-gram-n4-n4-other-demo-or-something-fill-1|散歩{___}しましょうか。<br>(Shall we take a walk or something?)|でも|なら|たがる|がる||
 |ja-gram-n4-n4-other-demo-or-something-fill-2|映画{___}見に行きませんか。<br>(How about going to see a movie or something?)|でも|そうだ|ていく|まま||
-|ja-gram-n4-n4-other-goro-koro-fill-0|子供の{___}、毎日川で泳いでいました。<br>(When I was a child, I used to swim in the river every day.)|頃|にする|てすみません|てみる|LENGTH_TELL|
+|ja-gram-n4-n4-other-goro-koro-fill-0|子供の{___}、毎日川で泳いでいました。<br>(When I was a child, I used to swim in the river every day.)|頃|てみる|は|ば||
 |ja-gram-n4-n4-other-goro-koro-fill-1|彼女は3時{___}に来るそうです。<br>(I hear she will come around 3 o'clock.)|頃|ね|が必要|少し||
 |ja-gram-n4-n4-other-goro-koro-fill-2|春{___}に新しいアパートに引っ越す予定です。<br>(I plan to move to a new apartment around spring.)|頃|てみる|にくい|て||
 |ja-gram-n4-n4-other-ijou-fill-0|あなたは必要{___}のカロリーを摂っている。<br>(You take more calories than necessary.)|以上|たばかり|ておく|てみる||
@@ -154,7 +154,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n4-n4-other-kudasai-fill-2|あの方が言われる事を、何でもしてあげて{___}。<br>(Do whatever he tells you.)|ください|終わる|予定だ|のに||
 |ja-gram-n4-n4-other-kudasai-fill-3|「塩をとって{___}。」「はい、どうぞ。」<br>("Pass me the salt, please." "Here you are.")|ください|たら|ではないか|てほしい||
 |ja-gram-n4-n4-other-na-prohibit-fill-0|走る{___}！<br>(Don't run!)|な|前に|ば|なさる||
-|ja-gram-n4-n4-other-na-prohibit-fill-1|そこに入る{___}。<br>(Don't go in there.)|な|させられる|終わる|てあげる|LENGTH_TELL|
+|ja-gram-n4-n4-other-na-prohibit-fill-1|そこに入る{___}。<br>(Don't go in there.)|な|前に|ね|ので||
 |ja-gram-n4-n4-other-na-prohibit-fill-2|嘘をつく{___}。<br>(Don't lie.)|な|てみる|間|みたいに||
 |ja-gram-n4-n4-other-nanode-fill-0|この情報は内々に知らされたもの{___}、あなたに何も教えることはできない。<br>(This information was given to me in confidence, so I can't tell you anything.)|なので|かい|らしい|てやる||
 |ja-gram-n4-n4-other-nanode-fill-1|あんなに子供が好き{___}、スーは先生になるべきだ。<br>(Liking children the way she does, Sue should become a teacher.)|なので|ことにする|間に|から作る||
@@ -176,7 +176,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n4-n4-other-oki-ni-fill-2|一つ{___}座ってください。<br>(Please sit with one seat between each person.)|おきに|ことにする|てもらう|なさい||
 |ja-gram-n4-n4-other-sa-nominalizer-fill-0|この山の高{___}は3776メートルです。<br>(The height of this mountain is 3,776 meters.)|さ|たら|てみる|みたいな||
 |ja-gram-n4-n4-other-sa-nominalizer-fill-1|彼女の優し{___}にいつも感動します。<br>(I am always moved by her kindness.)|さ|やすい|ていく|ておく||
-|ja-gram-n4-n4-other-sa-nominalizer-fill-2|このプールの深{___}はどのくらいですか。<br>(How deep is this pool?)|さ|てくれる|な|ことがある|LENGTH_TELL|
+|ja-gram-n4-n4-other-sa-nominalizer-fill-2|このプールの深{___}はどのくらいですか。<br>(How deep is this pool?)|さ|てくれる|な|ことがある||
 |ja-gram-n4-n4-other-shikashi-fill-0|{___}、私はあなたが大好きですよ。<br>(However, I really like you.)|しかし|てもらう|ないように|ぜひ||
 |ja-gram-n4-n4-other-shikashi-fill-1|{___}今や事態は大きく変わった。<br>(But now things have changed tremendously.)|しかし|のに|以上|みたいに||
 |ja-gram-n4-n4-other-shikashi-fill-2|{___}、外国で友達を作るのはあまり簡単ではありません。<br>(However, making friends in a foreign country is not too simple.)|しかし|が必要|のに|たら||
@@ -186,10 +186,10 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n4-n4-part-ka-dou-ka-fill-0|彼が来る{___}分かりません。<br>(I don't know whether or not he will come.)|かどうか|やっと|なければいけない|かしら||
 |ja-gram-n4-n4-part-ka-dou-ka-fill-1|この情報が正しい{___}確認してください。<br>(Please confirm whether or not this information is correct.)|かどうか|は|みたいに|ではないか||
 |ja-gram-n4-n4-part-ka-dou-ka-fill-2|合格できる{___}心配です。<br>(I am worried about whether or not I can pass.)|かどうか|てもらう|かしら|たところ||
-|ja-gram-n4-n4-part-ka-fill-0|これはあなたの本です{___}。<br>(Is this your book?)|か|は|ことになる|ていただけませんか|LENGTH_TELL|
-|ja-gram-n4-n4-part-ka-fill-1|家に帰りましょう{___}。<br>(Why don't we go home?)|か|でございます|たところ|前に|LENGTH_TELL|
-|ja-gram-n4-n4-part-ka-fill-2|ひとつ質問をしてもいいです{___}。<br>(May I ask you a question?)|か|がする|てくれる|でございます|LENGTH_TELL|
-|ja-gram-n4-n4-part-ka-fill-3|今日は鶏肉を買いました{___}。<br>(Did you buy chicken today?)|か|なさる|ば|たらいいですか|LENGTH_TELL|
+|ja-gram-n4-n4-part-ka-fill-0|これはあなたの本です{___}。<br>(Is this your book?)|か|わ|に|も||
+|ja-gram-n4-n4-part-ka-fill-1|家に帰りましょう{___}。<br>(Why don't we go home?)|か|頃|てすみません|予定だ||
+|ja-gram-n4-n4-part-ka-fill-2|ひとつ質問をしてもいいです{___}。<br>(May I ask you a question?)|か|ぜひ|ことがある|さ||
+|ja-gram-n4-n4-part-ka-fill-3|今日は鶏肉を買いました{___}。<br>(Did you buy chicken today?)|か|なさる|ば|たらいいですか||
 |ja-gram-n4-n4-part-kai-fill-0|君も一緒に来る{___}？<br>(Are you coming along too?)|かい|に見える|てすみません|でも||
 |ja-gram-n4-n4-part-kai-fill-1|もう宿題は終わった{___}？<br>(Have you finished your homework already?)|かい|なさい|ているところ|たらどう||
 |ja-gram-n4-n4-part-kai-fill-2|それって本当のこと{___}？<br>(Is that really true?)|かい|ようになる|かしら|にする||
@@ -205,18 +205,18 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n4-n4-part-matawa-fill-0|電話{___}メールでご連絡ください。<br>(Please contact us by phone or email.)|または|させてください|て|ようになる||
 |ja-gram-n4-n4-part-matawa-fill-1|赤{___}青のペンを使ってください。<br>(Please use a red or blue pen.)|または|欲しい|てしまう|はずだ||
 |ja-gram-n4-n4-part-matawa-fill-2|現金{___}カードでお支払いいただけます。<br>(You can pay with cash or card.)|または|欲しい|やすい|ば||
-|ja-gram-n4-n4-part-mo-fill-0|コーヒー{___}紅茶も飲みません。<br>(I drink neither coffee nor tea.)|も|たら|必要がある|に見える|SELF_ANSWERING, LENGTH_TELL|
-|ja-gram-n4-n4-part-mo-fill-1|これ{___}会社の車じゃありません。<br>(This isn't a company car either.)|も|そうだ|ようになる|られる|LENGTH_TELL|
+|ja-gram-n4-n4-part-mo-fill-0|コーヒー{___}紅茶{___}飲みません。<br>(I drink neither coffee nor tea.)|も|たら|必要がある|に見える||
+|ja-gram-n4-n4-part-mo-fill-1|これ{___}会社の車じゃありません。<br>(This isn't a company car either.)|も|そうだ|ようになる|られる||
 |ja-gram-n4-n4-part-mo-fill-2|あなたがスキーに行かないのなら、私{___}行きません。<br>(If you don't go skiing, I won't, either.)|も|場合は|など|られる||
 |ja-gram-n4-n4-part-mo-fill-3|彼が死んだ理由を僕{___}知らない。<br>(I don't know the reason of his death either.)|も|がる|はずだ|頃||
 |ja-gram-n4-n4-part-nado-fill-0|彼は失敗{___}しないと言う。<br>(He says he is above failure.)|など|なさる|あまり〜ない|そうだ||
 |ja-gram-n4-n4-part-nado-fill-1|私は野球や、テニスや、バレーボール{___}をすることができます。<br>(I can play baseball, tennis, volleyball, and so on.)|など|てくれる|なら|はずだ||
 |ja-gram-n4-n4-part-nado-fill-2|鉛筆やペンや消しゴムや本{___}を買いました。<br>(I bought pencils, pens, erasers and books and so on.)|など|そうだ|ようと思う|たら||
 |ja-gram-n4-n4-part-nado-fill-3|彼らは私の年齢、姓名、国籍{___}を聞きました。<br>(They asked about my age, my name, my nationality and so on.)|など|場合は|みたいに|てくれる||
-|ja-gram-n4-n4-part-ne-fill-0|これはいいです{___}。<br>(Isn't this nice!)|ね|たところ|ということ|予定だ|LENGTH_TELL|
-|ja-gram-n4-n4-part-ne-fill-1|ええと、映画館は駅の近くにあります{___}。<br>(Er, the cinema is near the station, right?)|ね|から作る|らしい|はずがない|LENGTH_TELL|
-|ja-gram-n4-n4-part-ne-fill-2|突然寒くなった{___}。<br>(It has suddenly got cold, hasn't it?)|ね|そうに|ように|てほしい|LENGTH_TELL|
-|ja-gram-n4-n4-part-ne-fill-3|「彼女は音楽が好きだ{___}。」「そうだね。」<br>("She likes music, doesn't she?" "Yep, she does.")|ね|てしまう|ように|てすみません|SELF_ANSWERING, LENGTH_TELL|
+|ja-gram-n4-n4-part-ne-fill-0|これはいいです{___}。<br>(Isn't this nice!)|ね|てやる|さ|の||
+|ja-gram-n4-n4-part-ne-fill-1|ええと、映画館は駅の近くにあります{___}。<br>(Er, the cinema is near the station, right?)|ね|はずがない|のに|らしい||
+|ja-gram-n4-n4-part-ne-fill-2|突然寒くなった{___}。<br>(It has suddenly got cold, hasn't it?)|ね|そうに|ように|てほしい||
+|ja-gram-n4-n4-part-ne-fill-3|「彼女は音楽が好きだ{___}。」「うん。」<br>("She likes music, doesn't she?" "Yeah.")|ね|は|ように|てすみません||
 |ja-gram-n4-n4-part-noni-although-fill-0|あんなに勉強した{___}、試験に落ちてしまいました。<br>(Even though I studied so hard, I failed the exam.)|のに|たら|たところ|でも||
 |ja-gram-n4-n4-part-noni-although-fill-1|頑張っている{___}、全然うまくいきません。<br>(Even though I'm trying hard, nothing is going well at all.)|のに|けれども|に見える|でも||
 |ja-gram-n4-n4-part-noni-although-fill-2|高いお金を払った{___}、品質がよくなかった。<br>(Even though I paid a lot of money, the quality wasn't good.)|のに|しかし|けれども|ば||
@@ -225,10 +225,10 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n4-n4-part-noni-purpose-fill-2|この仕事をする{___}特別な技術が必要です。<br>(Special skills are needed for doing this work.)|のに|出す|すぎる|ているところ||
 |ja-gram-n4-n4-part-temo-fill-0|雨が降っ{___}、試合は続けます。<br>(Even if it rains, we will continue the game.)|ても|そうだ|つもり|ように||
 |ja-gram-n4-n4-part-temo-fill-1|どんなに疲れてい{___}、毎日運動します。<br>(No matter how tired I am, I exercise every day.)|ても|ば|てあげる|頃||
-|ja-gram-n4-n4-part-wa-topic-fill-0|田中さん{___}大学生です。<br>(Mr. Tanaka is a university student.)|は|と言われている|頃|なければならない|LENGTH_TELL|
+|ja-gram-n4-n4-part-wa-topic-fill-0|田中さん{___}大学生です。<br>(Mr. Tanaka is a university student.)|は|か|ぜひ|はずがない||
 |ja-gram-n4-n4-part-wa-topic-fill-1|私{___}マイケルです。<br>(I am Michael.)|は|らしい|やすい|て||
 |ja-gram-n4-n4-part-wa-topic-fill-2|林檎{___}緑です。<br>(The apple is green.)|は|かどうか|かい|でも||
-|ja-gram-n4-n4-part-wa-topic-fill-3|皆さん{___}どこですか？<br>(Where is everyone?)|は|終わる|と言ってもいい|ていく|LENGTH_TELL|
+|ja-gram-n4-n4-part-wa-topic-fill-3|皆さん{___}どこですか？<br>(Where is everyone?)|は|終わる|さ|な||
 |ja-gram-n4-n4-q-dewa-nai-ka-fill-0|これは問題{___}。<br>(Isn't this a problem?)|ではないか|ことができる|てくれる|場合は||
 |ja-gram-n4-n4-q-dewa-nai-ka-fill-1|もっと努力すべき{___}。<br>(Shouldn't we be making more effort?)|ではないか|てやる|かどうか|ていく||
 |ja-gram-n4-n4-q-dewa-nai-ka-fill-2|彼こそが最もふさわしい人{___}。<br>(Isn't he the most suitable person?)|ではないか|がる|かしら|つもり||
@@ -315,7 +315,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n4-n4-obl-hazu-ga-nai-fill-2|こんなに安い{___}。何か問題があるはずだ。<br>(There's no way it's this cheap. There must be some problem.)|はずがない|たら|なければいけない|が必要||
 |ja-gram-n4-n4-obl-nakereba-ikenai-fill-0|毎日薬を飲ま{___}。<br>(I must take medicine every day.)|なければいけません|はずがない|ばかり|なければならない||
 |ja-gram-n4-n4-obl-nakereba-ikenai-fill-1|明日までにレポートを出さ{___}。<br>(I have to submit the report by tomorrow.)|なければいけない|はずだ|が必要|なければならない||
-|ja-gram-n4-n4-obl-nakereba-naranai-fill-0|法律を守ら{___}。<br>(We must obey the law.)|なければなりません|なら|が必要|かい|LENGTH_TELL|
+|ja-gram-n4-n4-obl-nakereba-naranai-fill-0|法律を守ら{___}。<br>(We must obey the law.)|なければなりません|はずがない|が必要|かい||
 |ja-gram-n4-n4-obl-nakereba-naranai-fill-1|パスポートを取得し{___}。<br>(I must obtain a passport.)|なければならない|なければいけない|必要がある|はずがない||
 |ja-gram-n4-n4-obl-nakereba-naranai-fill-2|学生は一生懸命勉強し{___}。<br>(Students must study hard.)|なければならない|なければいけない|たところ|てほしい||
 |ja-gram-n4-n4-other-ga-hitsuyou-fill-0|ビザを取得するためにパスポート{___}。<br>(A passport is necessary to obtain a visa.)|が必要です|てすみません|必要がある|なければならない||
@@ -380,9 +380,9 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 
 | Fact ID | Question | Correct | D1 | D2 | D3 | Flags |
 |---|---|---|---|---|---|---|
-|ja-gram-n4-n4-te-de-conjunctive-fill-0|朝ご飯を食べ{___}、学校に行きました。<br>(I ate breakfast and went to school.)|て|てよかった|たらどう|てくれる|LENGTH_TELL|
-|ja-gram-n4-n4-te-de-conjunctive-fill-1|彼は学生で、アルバイトもし{___}います。<br>(He is a student and also works part-time.)|て|てすみません|てくる|てしまう|LENGTH_TELL|
-|ja-gram-n4-n4-te-de-conjunctive-fill-2|財布をなくし{___}、困りました。<br>(I lost my wallet and was in trouble.)|て|ておく|てすみません|てよかった|LENGTH_TELL|
+|ja-gram-n4-n4-te-de-conjunctive-fill-0|朝ご飯を食べ{___}、学校に行きました。<br>(I ate breakfast and went to school.)|て|ば|たら|で||
+|ja-gram-n4-n4-te-de-conjunctive-fill-1|彼は学生で、アルバイトもし{___}います。<br>(He is a student and also works part-time.)|て|たり|で|てしまう||
+|ja-gram-n4-n4-te-de-conjunctive-fill-2|財布をなくし{___}、困りました。<br>(I lost my wallet and was in trouble.)|て|てみる|たり|つ||
 |ja-gram-n4-n4-te-iku-fill-0|これからも日本語を勉強し{___}。<br>(I will continue to study Japanese from now on.)|ていきます|ぜひ|てくる|ておく||
 |ja-gram-n4-n4-te-iku-fill-1|気温がだんだん下がっ{___}。<br>(The temperature gradually keeps going down.)|ていきます|ていただけませんか|前に|てすみません||
 |ja-gram-n4-n4-te-iku-fill-2|彼は荷物を持っ{___}きました。<br>(He took the luggage and left.)|てい|てすみません|てしまう|お〜になる||
@@ -398,9 +398,9 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n4-n4-te-shimau-fill-2|財布を家に忘れ{___}。<br>(I accidentally left my wallet at home.)|ちゃった|ながら|ておく|どうして||
 |ja-gram-n4-n4-te-shimau-fill-3|宿題をもうやっ{___}。<br>(I've already finished my homework.)|てしまいました|お〜ください|ておく|ていく||
 |ja-gram-n4-n4-te-sumimasen-fill-0|遅れ{___}。<br>(I'm sorry for being late.)|てすみません|て|てみる|ておく||
-|ja-gram-n4-n4-te-sumimasen-fill-1|うるさくし{___}。<br>(I'm sorry for being noisy.)|てすみませんでした|てもらう|ていく|て|LENGTH_TELL|
+|ja-gram-n4-n4-te-sumimasen-fill-1|うるさくし{___}。<br>(I'm sorry for being noisy.)|てすみませんでした|てしまいました|てもらう|て||
 |ja-gram-n4-n4-te-sumimasen-fill-2|ご迷惑をかけ{___}。<br>(I'm sorry for causing you trouble.)|てすみません|なら|てしまう|な||
-|ja-gram-n4-n4-te-yokatta-fill-0|日本語を勉強し{___}。<br>(I'm glad I studied Japanese.)|てよかったです|て|ておく|前に|LENGTH_TELL|
+|ja-gram-n4-n4-te-yokatta-fill-0|日本語を勉強し{___}。<br>(I'm glad I studied Japanese.)|てよかったです|てすみません|ていきます|てしまった||
 |ja-gram-n4-n4-te-yokatta-fill-1|傘を持ってき{___}。雨が降ってきた。<br>(I'm glad I brought an umbrella. It started raining.)|てよかった|なら|てみる|ていく||
 |ja-gram-n4-n4-te-yokatta-fill-2|早めに予約し{___}。満席でした。<br>(I'm glad I made a reservation early. It was fully booked.)|てよかったです|ていく|けれども|てしまう||
 
@@ -440,9 +440,9 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n4-n4-adv-sakki-fill-0|{___}田中さんから電話がありましたよ。<br>(There was a phone call from Tanaka-san just now.)|さっき|たばかり|ところ|まま||
 |ja-gram-n4-n4-adv-sakki-fill-1|{___}食べたばかりなのに、もうお腹がすいた。<br>(I just ate a moment ago, but I'm hungry again already.)|さっき|きっと|ているところ|ところ||
 |ja-gram-n4-n4-adv-sakki-fill-2|{___}駅でばったり彼に会いました。<br>(I ran into him by chance at the station just a while ago.)|さっき|まま|にくい|前に||
-|ja-gram-n4-n4-temp-aida-fill-0|夏休みの{___}、毎日海で泳ぎました。<br>(During summer vacation, I swam in the sea every day.)|間|さっき|ところ|ているところ|LENGTH_TELL|
+|ja-gram-n4-n4-temp-aida-fill-0|夏休みの{___}、毎日海で泳ぎました。<br>(During summer vacation, I swam in the sea every day.)|間|間に|みたいな|まま||
 |ja-gram-n4-n4-temp-aida-fill-1|授業の{___}、スマホを使ってはいけません。<br>(You must not use your smartphone during class.)|間|さっき|間に|まま||
-|ja-gram-n4-n4-temp-aida-fill-2|彼が寝ている{___}、静かにしてください。<br>(Please be quiet while he is sleeping.)|間|さっき|ているところ|間に|LENGTH_TELL|
+|ja-gram-n4-n4-temp-aida-fill-2|彼が寝ている{___}、静かにしてください。<br>(Please be quiet while he is sleeping.)|間|さっき|ているところ|間に||
 |ja-gram-n4-n4-temp-aida-ni-fill-0|私が出かけている{___}、荷物が届きました。<br>(While I was out, the package arrived.)|間に|さっき|ながら|ようにする||
 |ja-gram-n4-n4-temp-aida-ni-fill-1|眠っている{___}財布を盗まれました。<br>(My wallet was stolen while I was sleeping.)|間に|まま|たところ|ているところ||
 |ja-gram-n4-n4-temp-aida-ni-fill-2|若い{___}、いろいろな経験をしてください。<br>(While you are young, please have various experiences.)|間に|たところ|ところ|まま||
@@ -461,7 +461,7 @@ Selection is deterministic (seeded PRNG keyed on fact.id).
 |ja-gram-n4-n4-temp-ta-tokoro-fill-0|今起き{___}。<br>(I just woke up.)|たところです|ところ|前に|ようにする||
 |ja-gram-n4-n4-temp-ta-tokoro-fill-1|先生に質問し{___}、すぐに答えてくれました。<br>(When I asked the teacher a question, they answered immediately.)|たところ|まま|はずがない|ているところ||
 |ja-gram-n4-n4-temp-ta-tokoro-fill-2|電話し{___}、彼は留守でした。<br>(When I called, he was not at home.)|たところ|さっき|ところ|ているところ||
-|ja-gram-n4-n4-temp-teiru-tokoro-fill-0|今、報告書を書い{___}。<br>(I am in the middle of writing the report right now.)|ているところです|まま|間に|さっき|LENGTH_TELL|
+|ja-gram-n4-n4-temp-teiru-tokoro-fill-0|今、報告書を書い{___}。<br>(I am in the middle of writing the report right now.)|ているところです|前に|たところです|さっき||
 |ja-gram-n4-n4-temp-teiru-tokoro-fill-1|ちょうど準備し{___}でした。<br>(I was just in the middle of getting ready.)|ているところ|前に|ございます|てほしい||
 |ja-gram-n4-n4-temp-teiru-tokoro-fill-2|今、荷物をまとめ{___}。<br>(I am in the process of packing right now.)|ているところです|前に|ところ|ながら||
 |ja-gram-n4-n4-temp-tokoro-fill-0|今から出かける{___}。<br>(I am about to go out now.)|ところです|さっき|てしまう|まま||

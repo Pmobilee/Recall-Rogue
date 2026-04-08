@@ -2,16 +2,16 @@
   "deckId": "japanese_n2_grammar",
   "sourceFile": "japanese_n2_grammar.json",
   "totalFacts": 820,
-  "flaggedFacts": 12,
-  "passRate": 0.9854,
+  "flaggedFacts": 0,
+  "passRate": 1,
   "flagCounts": {
     "NO_DISTRACTORS": 0,
     "DUPE_DISTRACTOR": 0,
     "DUPE_WITHIN_DISTRACTORS": 0,
     "Q_EQUALS_A": 0,
-    "SELF_ANSWERING": 2,
-    "NO_BLANK": 4,
-    "LENGTH_TELL": 8,
+    "SELF_ANSWERING": 0,
+    "NO_BLANK": 0,
+    "LENGTH_TELL": 0,
     "SHORT_EXPLANATION": 0,
     "POOL_MISMATCH": 0,
     "ORPHAN_POOL_MEMBER": 0,
@@ -32,80 +32,5 @@
     "EMPTY_DISTRACTOR": "fact.distractors contains an empty/whitespace entry",
     "CORRECT_IN_DISTRACTORS_SOURCE": "fact.distractors source array contains the correct answer"
   },
-  "failingFacts": [
-    {
-      "factId": "ja-gram-n2-degree-naniyori-fill-1",
-      "flags": [
-        "NO_BLANK"
-      ]
-    },
-    {
-      "factId": "ja-gram-n2-emphasis-kotoka-fill-1",
-      "flags": [
-        "SELF_ANSWERING",
-        "NO_BLANK"
-      ]
-    },
-    {
-      "factId": "ja-gram-n2-emphasis-monoda-fill-3",
-      "flags": [
-        "SELF_ANSWERING",
-        "NO_BLANK"
-      ]
-    },
-    {
-      "factId": "ja-gram-n2-impos-kaneru-fill-3",
-      "flags": [
-        "NO_BLANK"
-      ]
-    },
-    {
-      "factId": "ja-gram-n2-oblig-beki-fill-2",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n2-oblig-neba-fill-2",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n2-supp-nodeha-fill-1",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n2-supp-nodeha-fill-3",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n2-temp-kanaikanouchi-fill-0",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n2-tend-ge-fill-0",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n2-tend-ge-fill-2",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n2-tend-ge-fill-3",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    }
-  ]
+  "failingFacts": []
 }

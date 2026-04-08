@@ -2,16 +2,16 @@
   "deckId": "japanese_n4_grammar",
   "sourceFile": "japanese_n4_grammar.json",
   "totalFacts": 400,
-  "flaggedFacts": 28,
-  "passRate": 0.93,
+  "flaggedFacts": 0,
+  "passRate": 1,
   "flagCounts": {
     "NO_DISTRACTORS": 0,
     "DUPE_DISTRACTOR": 0,
     "DUPE_WITHIN_DISTRACTORS": 0,
     "Q_EQUALS_A": 0,
-    "SELF_ANSWERING": 2,
+    "SELF_ANSWERING": 0,
     "NO_BLANK": 0,
-    "LENGTH_TELL": 28,
+    "LENGTH_TELL": 0,
     "SHORT_EXPLANATION": 0,
     "POOL_MISMATCH": 0,
     "ORPHAN_POOL_MEMBER": 0,
@@ -32,176 +32,5 @@
     "EMPTY_DISTRACTOR": "fact.distractors contains an empty/whitespace entry",
     "CORRECT_IN_DISTRACTORS_SOURCE": "fact.distractors source array contains the correct answer"
   },
-  "failingFacts": [
-    {
-      "factId": "ja-gram-n4-n4-comp-yori-fill-2",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-cond-tara-dou-fill-1",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-cond-to-fill-1",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-cond-to-fill-2",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-0",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-other-goro-koro-fill-0",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-other-na-prohibit-fill-1",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-other-sa-nominalizer-fill-2",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-part-ka-fill-0",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-part-ka-fill-1",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-part-ka-fill-2",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-part-ka-fill-3",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-part-mo-fill-0",
-      "flags": [
-        "SELF_ANSWERING",
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-part-mo-fill-1",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-part-ne-fill-0",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-part-ne-fill-1",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-part-ne-fill-2",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-part-ne-fill-3",
-      "flags": [
-        "SELF_ANSWERING",
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-part-wa-topic-fill-0",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-part-wa-topic-fill-3",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-te-de-conjunctive-fill-0",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-te-de-conjunctive-fill-1",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-te-de-conjunctive-fill-2",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-te-sumimasen-fill-1",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-te-yokatta-fill-0",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-temp-aida-fill-0",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-temp-aida-fill-2",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    },
-    {
-      "factId": "ja-gram-n4-n4-temp-teiru-tokoro-fill-0",
-      "flags": [
-        "LENGTH_TELL"
-      ]
-    }
-  ]
+  "failingFacts": []
 }
