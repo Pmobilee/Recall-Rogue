@@ -17,9 +17,36 @@ Run lifecycle starts in `gameFlowController` (screen state machine) and `runMana
 | | |
 |---|---|
 | **File** | src/services/runManager.ts |
-| **Purpose** | Run lifecycle — creates RunState, tracks HP, floor progression, bounties, canary state, and run-end data |
+| **Purpose** | Run lifecycle — creates RunState, tracks HP, floor progression, bounties, canary state, and run-end data. Also computes FSRS tier deltas for Journal/Profile stats at run end. |
 | **Key exports** | `createRunState`, `endRun`, `healPlayer`, `recordCardPlay`, `RunState` (interface), `RunEndData` (interface) |
-| **Key dependencies** | floorManager, ascension, masteryScalingService, bountyManager, canaryService, cardPreferences |
+| **Key dependencies** | floorManager, ascension, masteryScalingService, bountyManager, canaryService, cardPreferences, tierDerivation |
+
+### RunState — Journal/Profile tracking fields (v3)
+
+Added in v3 to enable per-run knowledge delta tracking. All in-memory only — not persisted to `runSaveService`.
+
+| Field | Type | Notes |
+|---|---|---|
+| `reviewStateSnapshot` | `Map<factId, {cardState, stability, tier}>` | Snapshot of FSRS state at run start. Built by `gameFlowController.onArchetypeSelected()`. |
+| `firstTimeFactIds` | `Set<string>` | Fact IDs with no snapshot entry (never seen before). Populated by `recordCardPlay()`. |
+| `tierAdvancedFactIds` | `Set<string>` | Fact IDs that advanced at least one tier during the run. Populated by `endRun()`. |
+| `masteredThisRunFactIds` | `Set<string>` | Fact IDs that reached tier 3 for the first time this run. Populated by `endRun()`. |
+| `runDeckId` | `string?` | Curated deck ID (for Journal history display). Set in `gameFlowController`. |
+| `runDeckLabel` | `string?` | Human-readable deck label. Set in `gameFlowController`. |
+
+### RunEndData — new fields (v3)
+
+`endRun()` now computes real knowledge deltas instead of returning hardcoded zeros.
+
+| Field | Notes |
+|---|---|
+| `newFactsSeen` | `firstTimeFactIds.size` — facts never encountered before this run. |
+| `factsReviewed` | Facts answered that had a snapshot entry (known facts). |
+| `factsMasteredThisRun` | Facts that went from non-tier-3 to tier-3 during this run. |
+| `factsTierAdvanced` | Any tier-up during the run (superset of `factsMasteredThisRun`). |
+| `enemiesDefeatedList` | `defeatedEnemyIds` passed through (previously hardcoded empty). |
+| `domainAccuracy` | Per-domain answer accuracy breakdown from `state.domainAccuracy`. |
+| `deckId`, `deckLabel` | Curated deck context for Journal history. |
 
 ## floorManager
 
@@ -129,6 +156,8 @@ Run lifecycle starts in `gameFlowController` (screen state machine) and `runMana
 | **Purpose** | Persists last-run summary to localStorage and provides reactive stores for hub screen state |
 | **Key exports** | `lastRunSummary` (store), `saveRunSummary`, `RunSummary` (interface) |
 | **Key dependencies** | Svelte stores, localStorage |
+
+**v3 change:** `RunSummary` type moved to `src/data/types.ts` (was defined inline in `hubState.ts`). `captureRunSummary()` now threads all knowledge delta fields from `RunEndData` instead of hardcoding zeros. `hubState.ts` re-exports `RunSummary` for backward compatibility.
 
 ## screenController
 

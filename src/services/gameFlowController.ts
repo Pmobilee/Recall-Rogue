@@ -64,6 +64,7 @@ import {
 } from '../ui/stores/playerData';
 import { recordRunCompleted as recordRunForReview, checkBossKillTrigger } from './reviewPromptService';
 import { captureRunSummary, lastRunSummary } from './hubState';
+import type { RunSummary } from '../data/types';
 import {
   getRunNumberForDomain,
   incrementDomainRunCount,
@@ -630,7 +631,7 @@ export function rescheduleNotificationsFromPlayerState(): void {
   void rescheduleNotifications(playerData);
 }
 
-function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
+function finishRunAndReturnToHub(run: RunState, endData: RunEndData, prebuiltSummary?: RunSummary): void {
   // Always clear the encounter-result guard when a run ends, regardless of path.
   isProcessingEncounterResult = false;
   // Clear narrative state on run end
@@ -802,26 +803,9 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
     checkCumulativeAchievements();
   }
 
-  // Compute fact state summary for the run-end screen
-  {
-    const touchedFactIds = new Set([
-      ...run.factsAnsweredCorrectly,
-      ...run.factsAnsweredIncorrectly,
-    ]);
-    const save = get(playerSave);
-    const reviewStates = save?.reviewStates ?? [];
-    const reviewMap = new Map(reviewStates.map((r: any) => [r.factId ?? r.id, r]));
-    let seen = 0, reviewing = 0, mastered = 0;
-    for (const factId of touchedFactIds) {
-      const rs = reviewMap.get(factId);
-      if (!rs || (rs.totalAttempts ?? 0) < 3) seen++;
-      else if ((rs.stability ?? 0) >= 30) mastered++;
-      else reviewing++;
-    }
-    (endData as any).factStateSummary = { seen, reviewing, mastered };
-  }
+  // factStateSummary is now computed inside endRun() from snapshot diffs — no post-hoc patch needed.
 
-  lastRunSummary.set(captureRunSummary(run, endData));
+  lastRunSummary.set(prebuiltSummary ?? captureRunSummary(run, endData));
   activeRunEndData.set(endData);
   activeRunState.set(null);
   activeCardRewardOptions.set([]);
@@ -927,6 +911,41 @@ export async function onArchetypeSelected(archetype: RewardArchetype): Promise<v
   });
   pendingDeckMode = null;
   pendingIncludeOutsideDueReviews = false;
+
+  // Build reviewStateSnapshot for Journal/Profile tracking.
+  // Snapshot current FSRS state per fact so endRun() can compute tier deltas.
+  {
+    const currentSave = get(playerSave);
+    const reviewStates = currentSave?.reviewStates ?? [];
+    const snapshot = new Map<string, { cardState: string; stability: number; tier: string }>();
+    for (const rs of reviewStates) {
+      const factId = (rs as unknown as Record<string, unknown>)['factId'] as string | undefined ?? (rs as unknown as Record<string, unknown>)['id'] as string | undefined;
+      if (!factId) continue;
+      const tier = getCardTier({
+        stability: rs.stability ?? (rs as unknown as Record<string, unknown>)['interval'] as number ?? 0,
+        consecutiveCorrect: rs.consecutiveCorrect ?? (rs as unknown as Record<string, unknown>)['repetitions'] as number ?? 0,
+        passedMasteryTrial: rs.passedMasteryTrial ?? false,
+      });
+      snapshot.set(factId, {
+        cardState: (rs as unknown as Record<string, unknown>)['cardState'] as string ?? 'new',
+        stability: rs.stability ?? 0,
+        tier,
+      });
+    }
+    run.reviewStateSnapshot = snapshot;
+    run.firstTimeFactIds = new Set<string>();
+    run.tierAdvancedFactIds = new Set<string>();
+    run.masteredThisRunFactIds = new Set<string>();
+    // Capture deck label for run history display
+    if (run.deckMode?.type === 'study') {
+      run.runDeckId = run.deckMode.deckId;
+      run.runDeckLabel = run.deckMode.deckId; // UI can resolve to human label; store ID for now
+    } else if (run.deckMode?.type === 'custom_deck' && run.deckMode.items.length > 0) {
+      run.runDeckId = run.deckMode.items[0].deckId;
+      run.runDeckLabel = run.deckMode.items.map(i => i.deckId).join(', ');
+    }
+  }
+
   analyticsService.track({
     name: 'domain_select',
     properties: {
@@ -1575,12 +1594,13 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
         encounters_won: run.encountersWon,
       },
     });
-    recordRunComplete(run.floor.currentFloor);
     applyRunCompletionBonuses(run);
     markRunCompleted();
     const endData = endRun(run, 'defeat');
+    const summary = captureRunSummary(run, endData);
+    recordRunComplete(run.floor.currentFloor, endData, summary);
     isProcessingEncounterResult = false;
-    finishRunAndReturnToHub(run, endData);
+    finishRunAndReturnToHub(run, endData, summary);
     return;
   }
 
@@ -2120,7 +2140,6 @@ export function onRetreat(): void {
       ascension_level: run.ascensionLevel ?? 0,
     },
   });
-  recordRunComplete(run.floor.currentFloor);
   applyRunCompletionBonuses(run);
   markRunCompleted();
   if (isAscensionSuccess(run, 'retreat')) {
@@ -2129,7 +2148,9 @@ export function onRetreat(): void {
   // Boss kill review prompt (retreat always follows a boss floor)
   void checkBossKillTrigger();
   const endData = endRun(run, 'retreat');
-  finishRunAndReturnToHub(run, endData);
+  const summary = captureRunSummary(run, endData);
+  recordRunComplete(run.floor.currentFloor, endData, summary);
+  finishRunAndReturnToHub(run, endData, summary);
 }
 
 export function onDelve(): void {

@@ -64,7 +64,7 @@ Note: `src/services/saveService.ts` still exports `SAVE_KEY = 'recall-rogue-save
 
 | Domain | Version field | Current constant |
 | --- | --- | --- |
-| Full player save | `PlayerSave.version` | `SAVE_VERSION = 2` (`saveService.ts`) |
+| Full player save | `PlayerSave.version` | `SAVE_VERSION = 3` (`saveService.ts`) |
 
 ## Save version history
 
@@ -72,6 +72,7 @@ Note: `src/services/saveService.ts` still exports `SAVE_KEY = 'recall-rogue-save
 | --- | --- |
 | 1 | Original schema — 50-relic catalogue |
 | 2 | Relic catalogue replacement: 50 relics → 42 relics. IDs renamed, merged, refunded, or dropped. Migration function: `migrateRelicsV1toV2()` in `saveMigration.ts`. |
+| 3 | Journal/Profile overhaul: added `runHistory: RunSummary[]` (cap 50), `lifetimeEnemyKillCounts: Record<string,number>` to `PlayerSave`; added `totalVictories`, `totalDefeats`, `totalRetreats`, `cumulativePlaytimeMs`, `totalEnemiesDefeated`, `totalElitesDefeated`, `totalBossesDefeated`, `lifetimeFactsMastered` to `PlayerStats`. Migration function: `migrateV2toV3()` in `saveMigration.ts`. |
 
 ## Full save schema (`PlayerSave`)
 
@@ -99,6 +100,8 @@ Gameplay economy and learning core:
 
 `PlayerStats` key fields: `totalDivesCompleted` (maps to run count), `bestFloor`, `totalFactsLearned`, `totalQuizCorrect`, `totalQuizWrong`, `currentStreak`, `bestStreak`.
 
+V3 additions: `totalVictories`, `totalDefeats`, `totalRetreats` (per-result run counters); `cumulativePlaytimeMs` (sum of all `runDurationMs`); `totalEnemiesDefeated`, `totalElitesDefeated`, `totalBossesDefeated` (enemy kill totals); `lifetimeFactsMastered` (facts that first reached tier 3 across all runs). All default to `0`.
+
 Progression/feature state (persisted by default path):
 
 | Area | Key fields |
@@ -116,6 +119,8 @@ Optional/late-phase extension fields are also part of `PlayerSave` (social, mone
 | Field | Type | Purpose |
 | --- | --- | --- |
 | `personalDecks` | `PersonalDeck[]` | Player-imported Anki decks and manually created decks. Type defined in `src/data/curatedDeckTypes.ts`. Registered into the in-memory deck store at startup via `personalDeckStore.registerPersonalDecks()`. |
+| `runHistory` | `RunSummary[]` | Ordered run history, newest first. Capped at 50 entries. Populated by `recordRunComplete()` in `playerData.ts`. `RunSummary` type defined in `src/data/types.ts`. |
+| `lifetimeEnemyKillCounts` | `Record<string, number>` | Bestiary: enemy template ID → lifetime kill count. Merged from `RunSummary.enemiesDefeatedList` on each run end. |
 
 ## Save and load behavior
 
@@ -157,6 +162,7 @@ Current migrations/defaulting include:
 | Tutorial/addictiveness fields | Adds onboarding counters, login calendar, grace/streak support fields |
 | Monetization/prestige/gallery/analyzer | Adds newly introduced optional arrays/numbers (`unlockedPaintings`, `prestigeLevel`, `pendingArtifacts`, etc.) |
 | V1 → V2 relic catalogue | Renames/refunds/drops v1 relic IDs via `migrateRelicsV1toV2()`; saves are immediately re-persisted after migration so it only runs once. Triggered when `save.version < 2` or `version` is absent. |
+| V2 → V3 Journal/Profile | Initializes `runHistory: []`, `lifetimeEnemyKillCounts: {}`, and all new `PlayerStats` counters to `0` via `migrateV2toV3()` in `saveMigration.ts`. Triggered when `save.version < 3`. Re-persists immediately after migration. |
 
 There is no external migration framework; compatibility is code-based inside `load()`.
 

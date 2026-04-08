@@ -1,24 +1,9 @@
 import { writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
 import type { RunEndData, RunState } from './runManager'
+import type { RunSummary } from '../data/types'
 
-export interface RunSummary {
-  result: RunEndData['result']
-  floorReached: number
-  enemiesDefeated: number
-  encountersTotal: number
-  factsLearned: number
-  goldEarned: number
-  cardsCollected: number
-  runDate: string
-  primaryDomain: string
-  secondaryDomain: string
-  timedOutCombats: number
-  accuracy: number
-  bestCombo: number
-  runDurationMs: number
-  completedBounties: string[]
-}
+export type { RunSummary }
 
 const LAST_RUN_SUMMARY_KEY = 'card:lastRunSummary'
 
@@ -55,7 +40,16 @@ export function captureRunSummary(run: RunState, endData: RunEndData): RunSummar
     floorReached: endData.floorReached,
     enemiesDefeated: endData.encountersWon,
     encountersTotal: endData.encountersTotal,
+    elitesDefeated: endData.elitesDefeated,
+    miniBossesDefeated: endData.miniBossesDefeated,
+    bossesDefeated: endData.bossesDefeated,
+    enemiesDefeatedList: endData.enemiesDefeatedList ?? [],
     factsLearned: endData.correctAnswers,
+    newFactsSeen: endData.newFactsSeen ?? 0,
+    factsReviewed: endData.factsReviewed ?? 0,
+    factsMasteredThisRun: endData.factsMasteredThisRun ?? 0,
+    factsTierAdvanced: endData.factsTierAdvanced ?? 0,
+    factStateSummary: endData.factStateSummary ?? { seen: 0, reviewing: 0, mastered: 0 },
     goldEarned: endData.currencyEarned,
     cardsCollected: endData.cardsEarned,
     runDate: new Date().toISOString(),
@@ -66,5 +60,8 @@ export function captureRunSummary(run: RunState, endData: RunEndData): RunSummar
     bestCombo: endData.bestCombo,
     runDurationMs: endData.runDurationMs,
     completedBounties: [...endData.completedBounties],
+    domainAccuracy: endData.domainAccuracy ?? {},
+    deckId: endData.deckId,
+    deckLabel: endData.deckLabel,
   }
 }

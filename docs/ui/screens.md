@@ -375,3 +375,105 @@ Not used for masks (no masks exist), but fog wisps can be tinted per-segment. Se
 | 2 | `#0a0e14` | Cool blue-grey — Deep Caverns |
 | 3 | `#0a0c16` | Icy blue-purple — The Abyss |
 | 4 | `#0c0812` | Arcane purple — The Archive |
+
+---
+
+## Journal Screen — "Expedition Log"
+
+**Source file:** `src/ui/components/JournalScreen.svelte`
+**Last updated:** 2026-04-08
+
+### Purpose
+
+Displays a full run history with detailed stats for any selected expedition.
+
+### Layout (landscape primary)
+
+Two-column layout:
+- **Left (3fr)**: Scrollable detail view of the selected run
+- **Right (2fr)**: Run history list with filter pills
+
+### Props
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `summary` | `RunSummary \| null` | Legacy single-run fallback (used if `runHistory` is empty) |
+| `onBack` | `() => void` | Returns to previous screen |
+
+### Data Sources
+
+- Reads `$playerSave.runHistory` directly from the `playerSave` store (no prop for history).
+- Falls back to the `summary` prop (legacy `lastRunSummary`) if `runHistory` is empty.
+- `$lastRunSummary` imported from `hubState` (persistent store).
+
+### Left Column Cards
+
+1. **Run header card**: Result icon (🏆/💀/🚪) + result label, deck label (from `deckLabel`, fallback to domain), date, duration, Share button.
+2. **Combat card**: Floor, encounters (won/total), elites, bosses, best chain, accuracy %, gold, cards — 4-column tile grid.
+3. **Knowledge Gained card**: New facts seen, reviewed, mastered this run, tier advances + FSRS state bar (seen/reviewing/mastered segments).
+4. **Enemies Felled card**: Normal/elite/mini-boss/boss counts + scrollable enemy chip list from `enemiesDefeatedList`.
+5. **Domain Accuracy card**: Horizontal bar per domain from `domainAccuracy`, showing correct/answered %.
+6. **Bounties card**: Chips for each completed bounty (amber styling). Only shown if bounties > 0.
+
+### Right Column
+
+- **Filter pills**: All / 🏆 / 💀 / 🚪 — filters `runHistory` by result. Resets selected index on change.
+- **History list**: Scrollable rows, each with result icon, deck label, floor, duration, relative date ("2h ago", "yesterday").
+- Clicking a row sets `selectedIndex` → swaps the left column detail view to that run.
+- Empty state: "No expeditions logged yet. Dive into a run to begin your log."
+
+### Relative Date Helper
+
+`formatRelativeDate(iso)` shows: just now / Nm ago / Nh ago / yesterday / Nd ago / absolute date fallback.
+
+---
+
+## Profile Screen — "Scholar's Profile"
+
+**Source file:** `src/ui/components/ProfileScreen.svelte`
+**Last updated:** 2026-04-08
+
+### Purpose
+
+Comprehensive meta-progression dashboard covering run record, knowledge mastery, streaks, domain stats, deck progress, bestiary, and achievements.
+
+### Layout (landscape primary)
+
+- Portrait: single column, all sections stacked, `overflow-y: auto`.
+- Landscape: CSS grid `1fr 1fr`, hero card spans full width (`grid-column: 1 / -1`), remaining sections fill two columns.
+
+### Props
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `onBack` | `() => void` | Returns to previous screen |
+
+### Data Sources
+
+- `$playerSave` store — `stats`, `reviewStates`, `runHistory`, `lifetimeEnemyKillCounts`, `domainRunCounts`, `claimedMilestones`.
+- `$activeProfile` store — profile name.
+- `getCardTier()` from `tierDerivation.ts` — mastery classification.
+- `getAllDeckProgress()` from `deckProgressService.ts` — per-deck progress (filtered to `factsEncountered > 0`).
+- Per-domain accuracy averaged from `runHistory[].domainAccuracy`.
+
+### Sections
+
+| # | Section | Key Data |
+|---|---------|----------|
+| 1 | Hero Banner | Avatar (👤), profile name, character level + XP bar, prestige badge, "Scholar since" date |
+| 2 | Expedition Record | Total/victories/defeats/retreats tiles, win %, best floor, best chain, cumulative playtime |
+| 3 | Knowledge Mastery | Facts learned, in review, mastered, lifetime mastered; mastery progress bar |
+| 4 | Streak & Rhythm | Current/best streak, milestones count, sessions, daily avg playtime |
+| 5 | Domain Breakdown | Per domain: run count + accuracy bar (averaged from run history). Scrollable if long. |
+| 6 | Deck Progress | Per encountered deck: progress bar, seen/total, mastered count. Only shown if any deck has `factsEncountered > 0`. |
+| 7 | Bestiary Preview | Unique enemies defeated, total kills, top 5 enemies by kill count. |
+| 8 | Achievements | Streak milestone chips, completed biome chips, earned badge chips. Only shown if any data. |
+
+### Tile Color Coding
+
+- Victory tile: green (`#86efac`)
+- Defeat tile: red (`#fca5a5`)
+- Review tile: blue (`#93c5fd`)
+- Mastered tile: green (`#86efac`)
+- Lifetime mastered tile: purple (`#c4b5fd`)
+- Current streak tile: orange (`#fdba74`)

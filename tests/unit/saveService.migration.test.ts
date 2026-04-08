@@ -120,7 +120,7 @@ describe('saveService migration safety', () => {
       expect(migrated?.unlockedRelicIds).not.toContain('glass_cannon')
       expect(migrated?.masteryCoins).toBe(35) // 10 + 25 refund
       // version bumped to 2
-      expect(migrated?.version).toBe(2)
+      expect(migrated?.version).toBe(3) // v3 now — migration pipeline runs V1→V2→V3
     })
 
     it('does not re-run migration on a v2 save', () => {
@@ -147,7 +147,7 @@ describe('saveService migration safety', () => {
 
       // Second load — must not re-run migration (version is now 2 in storage)
       const secondLoad = JSON.parse(localStorage.getItem(activeSaveKey()) ?? '{}') as Record<string, unknown>
-      expect(secondLoad['version']).toBe(2)
+      expect(secondLoad['version']).toBe(3) // v3 now — V2→V3 migration also runs
       // Confirms iron_buckler was replaced in persisted data
       expect((secondLoad['unlockedRelicIds'] as string[])).toContain('iron_shield')
       expect((secondLoad['unlockedRelicIds'] as string[])).not.toContain('iron_buckler')
@@ -164,7 +164,59 @@ describe('saveService migration safety', () => {
       expect(migrated).not.toBeNull()
       expect(migrated?.unlockedRelicIds).toContain('whetstone')
       expect(migrated?.unlockedRelicIds).not.toContain('flame_brand')
-      expect(migrated?.version).toBe(2)
+      expect(migrated?.version).toBe(3) // v3 now — migration pipeline runs V1→V2→V3
     })
+  })
+})
+
+describe('saveMigration V2 → V3', () => {
+  it('migrates a v2 save to v3 with new PlayerStats fields defaulting to 0', () => {
+    const base = createNewPlayer('teen') as unknown as Record<string, unknown>
+    base.version = 2
+    // Remove the new fields to simulate an old v2 save
+    const stats = base.stats as Record<string, unknown>
+    delete stats.totalVictories
+    delete stats.totalDefeats
+    delete stats.totalRetreats
+    delete stats.cumulativePlaytimeMs
+    delete stats.totalEnemiesDefeated
+    delete stats.totalElitesDefeated
+    delete stats.totalBossesDefeated
+    delete stats.lifetimeFactsMastered
+    delete base.runHistory
+    delete base.lifetimeEnemyKillCounts
+
+    writeRawSave(base)
+    const migrated = load()
+
+    expect(migrated).not.toBeNull()
+    expect(migrated?.version).toBe(3)
+    expect(migrated?.stats.totalVictories).toBe(0)
+    expect(migrated?.stats.totalDefeats).toBe(0)
+    expect(migrated?.stats.totalRetreats).toBe(0)
+    expect(migrated?.stats.cumulativePlaytimeMs).toBe(0)
+    expect(migrated?.stats.totalEnemiesDefeated).toBe(0)
+    expect(migrated?.stats.lifetimeFactsMastered).toBe(0)
+    expect(migrated?.runHistory).toEqual([])
+    expect(migrated?.lifetimeEnemyKillCounts).toEqual({})
+  })
+
+  it('does not overwrite existing v3 counters when already present', () => {
+    const base = createNewPlayer('teen') as unknown as Record<string, unknown>
+    base.version = 3
+    const stats = base.stats as Record<string, unknown>
+    stats.totalVictories = 5
+    stats.totalDefeats = 3
+    // Run history already populated
+    base.runHistory = [{ result: 'victory', floorReached: 10, runDate: '2026-01-01T00:00:00.000Z' }]
+
+    writeRawSave(base)
+    const migrated = load()
+
+    expect(migrated).not.toBeNull()
+    // V2→V3 migration should NOT run (version is already 3)
+    expect(migrated?.stats.totalVictories).toBe(5)
+    expect(migrated?.stats.totalDefeats).toBe(3)
+    expect(migrated?.runHistory).toHaveLength(1)
   })
 })

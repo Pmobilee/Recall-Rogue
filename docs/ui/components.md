@@ -78,7 +78,7 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 
 | Component | Purpose |
 |-----------|---------|
-| `QuizOverlay.svelte` | Multiple-choice quiz modal for card activation; Gaia avatar, 3 distractors, timer. **Landscape two-zone layout (2026-04-03):** see section below. **Grammar fill-blank (2026-04-04):** `isGrammarFillBlank` branch exists in both landscape (~line 571) and portrait (~line 769); uses `GrammarSentenceFurigana` for each segment, rendering furigana and hover tooltips. **Cogwheel (2026-04-04):** `.quiz-options-cogwheel` — `top: 4px` (was 8px), `right: 8px` (was 12px), `font-size: 28px` (was 22px), `color: rgba(255,255,255,0.6)` (was 0.35), `background: rgba(255,255,255,0.06)` (was transparent). **Always-Write typing mode (2026-04-07 expanded):** `alwaysWriteEnabled` reads `$deckOptions[fact.language]?.alwaysWrite`; `isTypingExcluded` is true for image quiz modes, numerical answers (`isNumericalAnswer()`), or answers >80 chars; `useTypingMode = alwaysWriteEnabled && !isTypingExcluded`. When `useTypingMode` is true, renders either `GrammarTypingInput` (Japanese, `fact.language === 'ja'`) or `TypingInput` (all other languages) in Zone B (landscape) and the portrait answer area instead of multiple-choice buttons — hidden once `showResult` is true. Correct submit calls `handleAnswer(fact.correctAnswer)`; wrong submit calls `handleAnswer` with any other choice. Uses `fact.acceptableAnswers ?? []` for alternatives. Styled by `.typing-mode-container` (padding `8px`, flex center). |
+| `QuizOverlay.svelte` | Multiple-choice quiz modal for card activation; Gaia avatar, 3 distractors, timer. **Landscape two-zone layout (2026-04-03):** see section below. **Grammar fill-blank (2026-04-08 rewrite):** `isGrammarFillBlank` branch exists in both landscape (~line 597) and portrait (~line 826); passes `fact.sentenceFurigana` directly to `GrammarSentenceFurigana` as `segments`; `fact.sentenceTranslation` and fallback from `quizQuestion\n[1]` used for translation; `showRomaji` (`$derived` from `$deckOptions.ja.romaji`) controls `.grammar-romaji` paragraph rendered below translation when `fact.sentenceRomaji` is present. **Grammar typing-mode hints (2026-04-08):** When `useTypingMode` is true and `fact.language === 'ja'`, a `.grammar-typing-hints` panel (teal left-border) renders above `GrammarTypingInput` showing `fact.grammarPointLabel` (`.grammar-hint-label`, teal `#4ecdc4`) and `fact.sentenceTranslation` (`.grammar-hint-translation`, italic muted white); panel is omitted when both fields are absent. **Cogwheel (2026-04-04):** `.quiz-options-cogwheel` — `top: 4px`, `right: 8px`, `font-size: 28px`, `color: rgba(255,255,255,0.6)`, `background: rgba(255,255,255,0.06)`. **Always-Write typing mode (2026-04-07 expanded):** `alwaysWriteEnabled` reads `$deckOptions[fact.language]?.alwaysWrite`; `isTypingExcluded` is true for image quiz modes, numerical answers (`isNumericalAnswer()`), or answers >80 chars; `useTypingMode = alwaysWriteEnabled && !isTypingExcluded`. When `useTypingMode` is true, renders either `GrammarTypingInput` (Japanese) or `TypingInput` (all other languages) in Zone B (landscape) and portrait answer area. Uses `fact.acceptableAnswers ?? []` for alternatives. |
 | `ChallengeQuizOverlay.svelte` | Challenge-mode quiz (speed round, mastery) with configurable ChallengeMode |
 | `StudyQuizOverlay.svelte` | Rest-room study quiz: boss-quiz–style questions to upgrade card charges. Shows inline `SRS +` / `SRS -` indicator (green/red, 0.65 opacity, scaled `10px`) alongside correct/wrong feedback text. |
 | `MasteryChallengeOverlay.svelte` | Mastery challenge room: timed quiz sequence for card mastery rewards. Calls `ambientAudio.setContext('mastery_challenge')` on `$effect` when challenge is set |
@@ -87,20 +87,48 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 | `GrammarTypingInput.svelte` | Free-text typing input for grammar deck tilde-fragment answers (Japanese-specific: wanakana IME binding, hiragana normalization, politeness variant checking). Props: `correctAnswer`, `acceptableAlternatives?`, `onsubmit`. |
 | `TypingInput.svelte` | General-purpose free-text typing input for non-Japanese vocabulary quiz answers. Uses `checkTypedAnswer()` from `typedAnswerChecker.ts` for robust lenient matching (accent folding, slash alternatives, comma synonyms, parenthetical stripping, leading "to " handling). Returns `TypedAnswerResult { correct, closeMatch, synonymMatch }`. Props: `correctAnswer: string`, `acceptableAlternatives?: string[]`, `language: string`, `onsubmit: (isCorrect: boolean, typed: string) => void`. Placeholder: "Type the English meaning...". No IME, no wanakana. **Feedback states (2026-04-07):** Correct = teal border (`.correct`); close match (Levenshtein near-miss) = amber border (`.close-match`) + "Almost! Correct answer: X" in amber (`.typing-close-match`); synonym accepted = teal border (`.correct`) + "Synonym accepted! Answer was: X" in soft teal (`.typing-synonym-accepted`); wrong = red border (`.wrong`) + "Correct: X" in red (`.typing-correct-answer`). All feedback text uses `calc(13px * var(--text-scale, 1))`. |
 | `WordHover.svelte` | Hoverable word revealing dictionary definition on hover/tap |
-| `GrammarSentenceFurigana.svelte` | Renders a Japanese grammar sentence segment with furigana ruby annotations, kana-only mode, and WordHover-style tooltips. Used in grammar fill-in-the-blank questions in `QuizOverlay.svelte` (both landscape and portrait) and `CardExpanded.svelte`. Props: `sentence: string`, `excludeWords?: string[]`. Tokenizes via `tokenizeWithGloss()` on mount; shows plain text fallback until tokenizer loads. Reads `$deckOptions.ja.furigana` / `.kanaOnly` reactively. Non-hoverable tokens with kanji also show furigana ruby annotations. |
+| `GrammarSentenceFurigana.svelte` | Renders a Japanese grammar sentence using pre-baked segment data from `fact.sentenceFurigana`. **Rewritten 2026-04-08:** replaced runtime kuromoji tokenization with a synchronous segment renderer. Props: `segments: Array<{ t: string; r?: string; g?: string }>`, `excludeWords?: string[]`, `fallbackText?: string`. Each segment: `t` = surface text (or `"{___}"` for blank), `r` = hiragana reading (only when t has kanji), `g` = English gloss (content words only). Blank segments render as `<span class="grammar-blank">______</span>`. Reads `$deckOptions.ja.furigana` / `.kanaOnly` reactively — no async dependency. Hover tooltip activates on segments with `g` not in `excludeWords`: shows `r ?? t` as reading and `g` as gloss. When `segments` is empty, renders `fallbackText.split('
+')[0]` as plain text. Used in `CardExpanded.svelte` via props forwarded from `CardCombatOverlay.svelte`. (QuizOverlay.svelte was dead code and has been deleted — 2026-04-08.) |
 | `ProceduralStudyScreen.svelte` | Full-screen procedural math practice session. Calls `startProceduralSession` on mount, generates questions via `getNextQuestion`, grades with `gradeProceduralAnswer`. Shows running accuracy stats (questions answered, accuracy %). Answer buttons go green/red on feedback with a 1.2s delay before next question. "Stop" button returns to `studyTemple`. Tier badge shows current skill difficulty (Learning/Familiar/Advanced/Mastered). Uses same CSS scaling conventions as other screens. Props: `deckId: string`, `subDeckId?: string`, `onBack: () => void`. |
 | `StudySession.svelte` | Standalone study session for the Study Temple screen. After player taps a rating button, shows a floating `SRS +` (green) or `SRS -` (red) label above the rating buttons for the 300ms pause before advancing. State: `srsIndicator: '+' | '-' | null`. |
 | `StudyStation.svelte` | Quick-review widget inside the Hub |
 | `StudyModeSelector.svelte` | Toggle between multiple-choice / typing / flashcard modes |
 | `FactReveal.svelte` | Animates the reveal of a new fact after answering correctly |
 | `FactArtwork.svelte` | Displays the artwork image associated with a knowledge fact card |
-### QuizOverlay Landscape Two-Zone Layout
+### CardExpanded — Japanese Grammar Props (2026-04-08)
 
-**Refactored 2026-04-03.** The landscape quiz overlay uses a space-filling two-zone flex column anchored dynamically between the fog meter and card hand.
+`CardExpanded.svelte` now accepts four additional optional props forwarded from `CardCombatOverlay.svelte`:
+
+| Prop | Type | Purpose |
+|------|------|---------|
+| `sentenceFurigana` | `Array<{ t: string; r?: string; g?: string }>` | Pre-baked furigana segments; passed to `GrammarSentenceFurigana` when present |
+| `sentenceRomaji` | `string` | Whole-sentence romaji; shown below the sentence when the romaji toggle is ON |
+| `sentenceTranslation` | `string` | English translation; shown as `.grammar-translation` in MCQ mode and as `.grammar-hint-translation` in typing mode |
+| `grammarPointLabel` | `string` | Short label (e.g., "が — subject marker particle"); shown as `.grammar-hint-label` in typing mode |
+
+The `showRomaji` reactive is derived from `$deckOptions?.ja?.romaji`. A `.grammar-typing-hints` panel (teal left-border box) renders above `GrammarTypingInput` when typing mode is active and either label or translation is present. Grammar rendering no longer loops `sentence.split('{___}')` — `GrammarSentenceFurigana` handles blanks internally via `{ t: "{___}" }` segment entries.
+
+`CardCombatOverlay.svelte` forwards these four fields through `QuizData` (interface updated with the same fields) from the curated-deck path in `getStudyModeQuiz()`.
+
+### CardExpanded Landscape Panel Positioning
+
+**`.card-expanded-landscape`** is the combat charge-quiz panel in `CardExpanded.svelte`. It is `position: fixed`, left-aligned, and spans `58vw` wide.
+
+**Vertical positioning (2026-04-08):**
+- `top: calc(var(--topbar-height, 4.5vh) + calc(40px * var(--layout-scale, 1)))` — topbar height + fog meter (28px) + 12px gap ≈ 89px at 1080p. Positions the panel below the fog meter with breathing room.
+- `bottom: calc(24vh + calc(16px * var(--layout-scale, 1)))` — stops above the card hand (35vh), leaving ~24vh + 16px gap. Gives more vertical space vs. the old `27vh + 36px`.
+- `overflow: hidden` — no scrolling; all content must fit within the available panel height.
+- Content uses `flex-direction: column` with `justify-content: center` to distribute space.
+
+### QuizOverlay Landscape Two-Zone Layout — DELETED (2026-04-08)
+
+**`QuizOverlay.svelte` was dead code (no importers) and has been deleted.** The live combat quiz path is `CardCombatOverlay.svelte` → `CardExpanded.svelte`. The boss/rest-room study path uses `StudyQuizOverlay.svelte` (separate component, unchanged). Always grep for importers before trusting a component is live.
+
+Historical note — **Refactored 2026-04-03:** The landscape quiz overlay uses a space-filling two-zone flex column anchored dynamically between the fog meter and card hand.
 
 **Stage anchoring via ResizeObserver:**
 - A `ResizeObserver` on `.card-app` fires on every resize and sets `--quiz-stage-top` / `--quiz-stage-bottom` CSS custom properties on the stage element.
-- `--quiz-stage-top` = bottom of `.fog-wing-wrapper` (falls back to `.topbar` bottom) + 12px breathing room gap.
+- `--quiz-stage-top` = bottom of `.fog-wing-wrapper` (falls back to `.topbar` bottom). Breathing room is provided by `CardExpanded.svelte` `.card-expanded-landscape` CSS `top` calculation.
 - `--quiz-stage-bottom` = `window.innerHeight - .card-hand-landscape.top`.
 - `.quiz-landscape-stage` uses `top: var(--quiz-stage-top, 0)` / `bottom: var(--quiz-stage-bottom, 0)` to fill exactly the space between HUD and card hand.
 
@@ -112,8 +140,8 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 - Close button and cogwheel are `position: absolute` outside both zones.
 - `gap` reduced to `6px` (was `8px`) and `padding` to `8px 12px` (was `10px 14px`).
 
-**Zone A — `.quiz-zone-question`** (`flex: 1 1 auto; overflow-y: auto; min-height: 0; align-items: flex-start; justify-content: center`):
-- `align-items: flex-start` — question content aligns left for readability. `justify-content: center` — vertically centers content when question does not fill the full zone height (avoids dead space at top).
+**Zone A — `.quiz-zone-question`** (`flex: 1 1 auto; overflow-y: auto; min-height: 0; align-items: flex-start`):
+- `align-items: flex-start` — question content aligns left for readability.
 - Contains: category label, mode headers (gate/artifact/layer/random), fact artwork, question image, question text, attempts counter.
 - Scrollable when content overflows. `.has-overflow::after` adds a sticky gradient fade at the bottom.
 - `.quiz-category-label`: flush left, 11px, uppercase, `rgba(255,255,255,0.45)` — shows `fact.categoryL2` or `fact.category[0]`. **Emoji characters stripped** via `/[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu` regex before display.
@@ -125,10 +153,9 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 - `questionLengthClass` thresholds updated: short < 60 (was < 30), medium < 120 (was < 80).
 - `zoneAOverflows` boolean drives `has-overflow` class for the scroll indicator.
 
-**Zone B — `.quiz-zone-answers`** (`flex: 0 1 auto; max-height: 60%; overflow-y: auto; padding-bottom: 8px`):
-- `flex: 0 1 auto` (was `0 0 auto`) — allows answers zone to shrink if content is small, giving more vertical room to Zone A.
-- `max-height: 60%` (was 55%) — allows answers zone to grow larger for decks with longer answers.
-- `padding-bottom: calc(8px * var(--layout-scale, 1))` added for bottom breathing room.
+**Zone B — `.quiz-zone-answers`** (`flex: 0 0 auto; max-height: 55%; overflow-y: auto`):
+- `flex: 0 0 auto` — answer zone does not shrink; sized to content.
+- `max-height: 55%` — caps growth so Zone A always has adequate question display space.
 - Contains: answer buttons, dev-skip, result text, GAIA reaction, memory tip, continue button, report button.
 - A 1px `::before` pseudo-element separator divides zones visually.
 - **`answerSizeClass`** CSS class derived from `choices.length`:
@@ -495,3 +522,32 @@ Fixed banner at the top of the screen (z-index 250) shown when `showActiveRunBan
 - Abandon button (`.banner-abandon-btn`): muted slate background, `min-height: 44px`
 
 Was (pre-2026-04-01): single flex row — label + two buttons in one row with `justify-content: center`, causing buttons to be visually off-center because the label text shifted the group to the right.
+
+---
+
+## Hub Screens (Profile & Journal)
+
+| Component | Purpose |
+|-----------|---------|
+| `JournalScreen.svelte` | Expedition Log — two-column run history browser with detailed per-run cards. See `docs/ui/screens.md` for full section spec. |
+| `ProfileScreen.svelte` | Scholar's Profile — 8-section meta-progression dashboard. See `docs/ui/screens.md` for full section spec. |
+
+### JournalScreen
+
+- **Props**: `summary: RunSummary | null`, `onBack: () => void`
+- **Layout**: Fixed `inset: 0`, flex column. Landscape: `grid-template-columns: 3fr 2fr` body.
+- **State**: `selectedIndex: number` (which run row is active), `filterResult: 'all' | 'victory' | 'defeat' | 'retreat'`
+- **Derived**: `filteredHistory` (runHistory filtered by result), `displayedRun` (filteredHistory[selectedIndex] or summary prop fallback)
+- **Data**: Reads `$playerSave.runHistory` reactively; falls back to `summary` prop for legacy callers.
+- **Scaling**: All dimensions `calc(Npx * var(--layout-scale, 1))`, fonts `calc(Npx * var(--text-scale, 1))`. Landscape overrides via `.journal-landscape` class selector (not `:global([data-layout="landscape"])`) — avoids dependency on `data-layout` attribute timing.
+
+### ProfileScreen
+
+- **Props**: `onBack: () => void`
+- **Layout**: Fixed `inset: 0`, flex column with scrollable body. Landscape: 2-column CSS grid in `.profile-body`.
+- **Data**: `$playerSave` + `$activeProfile` stores. Calls `getAllDeckProgress()` inline (synchronous, reads `playerSave` via `get()`).
+- **Mastery classification**: Uses `getCardTier(reviewState)` from `tierDerivation.ts` — tier '3' = mastered.
+- **Domain accuracy**: Aggregated by summing `correct`/`answered` across all `runHistory[].domainAccuracy` entries.
+- **Deck progress**: Filters `getAllDeckProgress()` to entries with `factsEncountered > 0`, sorted by encounters desc.
+- **Bestiary**: From `save.lifetimeEnemyKillCounts` — top 5 sorted by kill count desc.
+- **Scaling**: Same rules as JournalScreen. Landscape tile grids expand from 2-column to 4-column for record/mastery/streak tiles.

@@ -21,6 +21,7 @@ import { InRunFactTracker } from './inRunFactTracker';
 import { getCuratedDeckFacts } from '../data/curatedDeckStore';
 import { playerSave } from '../ui/stores/playerData';
 import { interleaveFacts } from '../utils/interleaveFacts';
+import { getCardTier } from './tierDerivation';
 
 export type RewardArchetype = 'balanced' | 'aggressive' | 'defensive' | 'control' | 'hybrid';
 
@@ -182,6 +183,23 @@ export interface RunState {
   perfectEncountersCount?: number;
   /** Multiplayer mode for this run, if any. */
   multiplayerMode?: import('../data/multiplayerTypes').MultiplayerMode;
+
+  // Journal / Profile tracking (in-memory only — not persisted to run save)
+  /**
+   * Snapshot of FSRS review state at run start, keyed by factId.
+   * Used to compute tier-delta at endRun. Not serialized to disk.
+   */
+  reviewStateSnapshot?: Map<string, { cardState: string; stability: number; tier: string }>;
+  /** Fact IDs seen for the first time this run (no snapshot entry when first answered). */
+  firstTimeFactIds?: Set<string>;
+  /** Fact IDs that advanced at least one FSRS tier during this run. */
+  tierAdvancedFactIds?: Set<string>;
+  /** Fact IDs that reached tier 3 (mastered) during this run. */
+  masteredThisRunFactIds?: Set<string>;
+  /** Curated deck ID active for this run, if any. */
+  runDeckId?: string;
+  /** Display label of the curated deck, if any. */
+  runDeckLabel?: string;
 }
 
 export interface RunEndData {
@@ -212,6 +230,24 @@ export interface RunEndData {
   relicsCollected?: number;
   /** Whether this was a practice run (player already mastered the material) — camp rewards disabled. */
   isPracticeRun: boolean;
+  // Knowledge delta fields (computed in endRun from snapshot diffs; optional for legacy contexts)
+  /** Facts seen for the first time this run. */
+  newFactsSeen?: number;
+  /** Already-known facts that were answered this run (had snapshot entry). */
+  factsReviewed?: number;
+  /** Facts that reached tier 3 (mastered) for the first time this run. */
+  factsMasteredThisRun?: number;
+  /** Facts that advanced at least one tier this run (superset of factsMasteredThisRun). */
+  factsTierAdvanced?: number;
+  // Enemy breakdown
+  /** Template IDs of all defeated enemies this run. */
+  enemiesDefeatedList?: string[];
+  /** Per-domain answer accuracy breakdown. */
+  domainAccuracy?: Record<string, { answered: number; correct: number }>;
+  /** Curated deck ID used for this run, if any. */
+  deckId?: string;
+  /** Display label of the curated deck, if any. */
+  deckLabel?: string;
 }
 
 export function createRunState(
@@ -310,6 +346,12 @@ export function createRunState(
     totalDamageDealt: 0,
     perfectEncountersCount: 0,
     multiplayerMode: options?.multiplayerMode,
+    reviewStateSnapshot: undefined,
+    firstTimeFactIds: new Set<string>(),
+    tierAdvancedFactIds: new Set<string>(),
+    masteredThisRunFactIds: new Set<string>(),
+    runDeckId: undefined,
+    runDeckLabel: undefined,
   };
 
   // Study mode: initialize in-run fact tracker
@@ -380,6 +422,12 @@ export function recordCardPlay(
       state.factsAnsweredCorrectly.delete(factId);
     }
   }
+  // Track first-time fact encounters: if no snapshot entry exists, this is a new fact.
+  if (factId && state.firstTimeFactIds !== undefined && state.reviewStateSnapshot !== undefined) {
+    if (!state.reviewStateSnapshot.has(factId) && !state.firstTimeFactIds.has(factId)) {
+      state.firstTimeFactIds.add(factId);
+    }
+  }
   if (isNovel) {
     state.novelQuestionsAnswered += 1;
     if (correct) state.novelQuestionsCorrect += 1;
@@ -434,6 +482,52 @@ export function endRun(state: RunState, reason: 'victory' | 'defeat' | 'retreat'
   const baseCurrency = (rewardsSuppressed || practiceRun) ? 0 : (state.currency + bountyBonusCurrency);
   const currencyEarned = Math.floor(baseCurrency * rewardMultiplier);
 
+  // Compute real knowledge deltas from snapshot diff.
+  // We compare each answered fact's tier at run-start vs current to detect tier advances.
+  const save = get(playerSave);
+  const reviewStates = save?.reviewStates ?? [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const reviewMap = new Map(reviewStates.map((r: any) => [(r.factId ?? r.id) as string, r]));
+
+  const touchedFactIds = new Set([
+    ...state.factsAnsweredCorrectly,
+    ...state.factsAnsweredIncorrectly,
+  ]);
+
+  let seen = 0, reviewing = 0, mastered = 0;
+  let newFactsSeen = state.firstTimeFactIds?.size ?? 0;
+  let factsReviewed = 0;
+  let factsMasteredThisRun = 0;
+  let factsTierAdvanced = 0;
+
+  for (const factId of touchedFactIds) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const rs = reviewMap.get(factId) as any;
+    // Fact state summary (post-run mastery distribution)
+    if (!rs || ((rs.totalAttempts as number | undefined) ?? 0) < 3) seen++;
+    else if (((rs.stability as number | undefined) ?? 0) >= 30) mastered++;
+    else reviewing++;
+
+    // Tier delta computation
+    const snapshotEntry = state.reviewStateSnapshot?.get(factId);
+    const currentTier = getCardTier(rs);
+    if (snapshotEntry) {
+      // Had snapshot → was a known fact going in
+      factsReviewed++;
+      const prevTier = snapshotEntry.tier;
+      // Tier order: '1' < '2a' < '2b' < '3'
+      const tierOrder: Record<string, number> = { '1': 1, '2a': 2, '2b': 3, '3': 4 };
+      if ((tierOrder[currentTier] ?? 0) > (tierOrder[prevTier] ?? 0)) {
+        factsTierAdvanced++;
+        if (currentTier === '3' && prevTier !== '3') {
+          factsMasteredThisRun++;
+          state.masteredThisRunFactIds?.add(factId);
+        }
+      }
+    }
+    // else: no snapshot = first-time fact (counted in newFactsSeen above)
+  }
+
   return {
     result: reason,
     floorReached: state.floor.currentFloor,
@@ -450,7 +544,7 @@ export function endRun(state: RunState, reason: 'victory' | 'defeat' | 'retreat'
     miniBossesDefeated: state.miniBossesDefeated,
     bossesDefeated: state.bossesDefeated,
     defeatedEnemyIds: state.defeatedEnemyIds ?? [],
-    factStateSummary: { seen: 0, reviewing: 0, mastered: 0 },
+    factStateSummary: { seen, reviewing, mastered },
     completedBounties,
     duration,
     runDurationMs: duration,
@@ -458,5 +552,14 @@ export function endRun(state: RunState, reason: 'victory' | 'defeat' | 'retreat'
     currencyEarned,
     relicsCollected: state.runRelics.length,
     isPracticeRun: practiceRun,
+    // New Journal/Profile fields
+    newFactsSeen,
+    factsReviewed,
+    factsMasteredThisRun,
+    factsTierAdvanced,
+    enemiesDefeatedList: state.defeatedEnemyIds ?? [],
+    domainAccuracy: { ...state.domainAccuracy },
+    deckId: state.runDeckId,
+    deckLabel: state.runDeckLabel,
   };
 }

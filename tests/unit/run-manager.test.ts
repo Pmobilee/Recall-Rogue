@@ -197,3 +197,121 @@ describe('RunManager', () => {
     })
   })
 })
+
+describe('RunManager — Journal/Profile tracking (Section A+B)', () => {
+  describe('createRunState — new tracking fields', () => {
+    it('initializes firstTimeFactIds as empty Set', () => {
+      const state = createRunState('science', 'history')
+      expect(state.firstTimeFactIds).toBeInstanceOf(Set)
+      expect(state.firstTimeFactIds!.size).toBe(0)
+    })
+
+    it('initializes masteredThisRunFactIds as empty Set', () => {
+      const state = createRunState('science', 'history')
+      expect(state.masteredThisRunFactIds).toBeInstanceOf(Set)
+      expect(state.masteredThisRunFactIds!.size).toBe(0)
+    })
+
+    it('initializes reviewStateSnapshot as undefined (populated by caller)', () => {
+      const state = createRunState('science', 'history')
+      // Snapshot starts undefined — set by gameFlowController after createRunState
+      expect(state.reviewStateSnapshot).toBeUndefined()
+    })
+  })
+
+  describe('recordCardPlay — first-time fact tracking', () => {
+    it('adds factId to firstTimeFactIds when snapshot has no entry', () => {
+      const state = createRunState('science', 'history')
+      // Set up empty snapshot (simulating run start with no prior FSRS data)
+      state.reviewStateSnapshot = new Map()
+
+      recordCardPlay(state, true, 1, 'fact_001')
+      expect(state.firstTimeFactIds!.has('fact_001')).toBe(true)
+    })
+
+    it('does NOT add factId to firstTimeFactIds when snapshot has entry (known fact)', () => {
+      const state = createRunState('science', 'history')
+      state.reviewStateSnapshot = new Map([
+        ['fact_001', { cardState: 'review', stability: 5, tier: '2a' }],
+      ])
+
+      recordCardPlay(state, true, 1, 'fact_001')
+      expect(state.firstTimeFactIds!.has('fact_001')).toBe(false)
+    })
+
+    it('does not add factId again if already in firstTimeFactIds', () => {
+      const state = createRunState('science', 'history')
+      state.reviewStateSnapshot = new Map()
+
+      recordCardPlay(state, true, 1, 'fact_001')
+      recordCardPlay(state, false, 0, 'fact_001') // second answer
+      expect(state.firstTimeFactIds!.size).toBe(1) // still 1, not 2
+    })
+
+    it('works when snapshot is undefined (no tracking, silent no-op)', () => {
+      const state = createRunState('science', 'history')
+      // No snapshot set — recordCardPlay should not crash
+      expect(() => recordCardPlay(state, true, 1, 'fact_abc')).not.toThrow()
+    })
+  })
+
+  describe('endRun — delta computation', () => {
+    it('counts firstTimeFactIds.size as newFactsSeen', () => {
+      const state = createRunState('science', 'history')
+      state.reviewStateSnapshot = new Map()
+      // Two new facts answered
+      recordCardPlay(state, true, 1, 'new_fact_1')
+      recordCardPlay(state, true, 2, 'new_fact_2')
+      const endData = endRun(state, 'victory')
+      expect(endData.newFactsSeen).toBe(2)
+    })
+
+    it('returns newFactsSeen=0 when snapshot is undefined', () => {
+      const state = createRunState('science', 'history')
+      // No snapshot — firstTimeFactIds is empty (not populated)
+      recordCardPlay(state, true, 1, 'fact_x')
+      const endData = endRun(state, 'victory')
+      expect(endData.newFactsSeen).toBe(0)
+    })
+
+    it('counts factsReviewed from snapshot entries that were answered', () => {
+      const state = createRunState('science', 'history')
+      // Simulate run start with 2 known facts in snapshot (tier 2a)
+      state.reviewStateSnapshot = new Map([
+        ['known_1', { cardState: 'review', stability: 3, tier: '2a' }],
+        ['known_2', { cardState: 'review', stability: 3, tier: '2a' }],
+        ['known_3', { cardState: 'review', stability: 3, tier: '2a' }], // not answered
+      ])
+      recordCardPlay(state, true, 1, 'known_1')
+      recordCardPlay(state, true, 2, 'known_2')
+      const endData = endRun(state, 'victory')
+      // known_1 and known_2 were answered and had snapshot entries
+      expect(endData.factsReviewed).toBe(2)
+    })
+
+    it('returns enemiesDefeatedList from defeatedEnemyIds', () => {
+      const state = createRunState('science', 'history')
+      state.defeatedEnemyIds = ['goblin', 'orc', 'dragon']
+      const endData = endRun(state, 'victory')
+      expect(endData.enemiesDefeatedList).toEqual(['goblin', 'orc', 'dragon'])
+    })
+
+    it('returns domainAccuracy from state', () => {
+      const state = createRunState('science', 'history')
+      recordCardPlay(state, true, 1, 'f1', 'science')
+      recordCardPlay(state, false, 0, 'f2', 'science')
+      const endData = endRun(state, 'retreat')
+      expect(endData.domainAccuracy?.['science']).toEqual({ answered: 2, correct: 1 })
+    })
+
+    it('computes factStateSummary with non-zero seen when no reviewStates', () => {
+      const state = createRunState('science', 'history')
+      state.reviewStateSnapshot = new Map()
+      recordCardPlay(state, true, 1, 'brand_new_fact')
+      const endData = endRun(state, 'victory')
+      // With no reviewStates loaded, all touched facts count as seen
+      expect(endData.factStateSummary.seen).toBe(1)
+      expect(endData.factStateSummary.mastered).toBe(0)
+    })
+  })
+})

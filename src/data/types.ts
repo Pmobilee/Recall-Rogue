@@ -157,6 +157,16 @@ export interface Fact {
    *  Null when the sprite has not yet been generated or approved.
    *  e.g. "/assets/sprites/facts/fact_geol_001.png" */
   pixelArtPath?: string | null
+
+  // Japanese grammar deck fields (baked offline by scripts/japanese/bake-grammar-furigana.mjs)
+  /** Pre-baked furigana segments for Japanese grammar sentences. Each entry: t=surface, r=hiragana reading (if kanji), g=English gloss (content words only). {___} entries mark blank positions. */
+  sentenceFurigana?: Array<{ t: string; r?: string; g?: string }>
+  /** Pre-baked whole-sentence romaji for Japanese grammar facts. */
+  sentenceRomaji?: string
+  /** First-class English translation for Japanese grammar sentences. */
+  sentenceTranslation?: string
+  /** Short grammar-point label for typing-mode hint (e.g., "が — subject marker particle"). */
+  grammarPointLabel?: string
 }
 
 // ============================================================
@@ -710,6 +720,12 @@ export interface PlayerSave {
   // Personal Decks (Anki import / manual creation)
   /** Player-authored or Anki-imported decks stored in the save file. */
   personalDecks?: PersonalDeck[]
+
+  // Run history & lifetime bestiary (Journal/Profile screen data)
+  /** Ordered run history, newest first. Capped at 50 entries. JSON-serializable. */
+  runHistory?: RunSummary[]
+  /** Lifetime kill counts per enemy template ID. Used for bestiary. */
+  lifetimeEnemyKillCounts?: Record<string, number>
 }
 
 /** Player statistics */
@@ -724,5 +740,70 @@ export interface PlayerStats {
   bestStreak: number
   totalSessions: number         // incremented on app open
   zeroDiveSessions: number      // incremented when session ends with 0 runs completed
+  // Journal/Profile stats (added v3)
+  /** Runs ended with result === 'victory'. */
+  totalVictories?: number
+  /** Runs ended with result === 'defeat'. */
+  totalDefeats?: number
+  /** Runs ended with result === 'retreat'. */
+  totalRetreats?: number
+  /** Sum of runDurationMs across all runs (ms). */
+  cumulativePlaytimeMs?: number
+  /** Total normal enemies defeated across all runs. */
+  totalEnemiesDefeated?: number
+  /** Total elite enemies defeated across all runs. */
+  totalElitesDefeated?: number
+  /** Total boss enemies defeated across all runs. */
+  totalBossesDefeated?: number
+  /** Number of facts that reached tier 3 for the first time across all runs. */
+  lifetimeFactsMastered?: number
 }
 
+/**
+ * Persisted shape of a completed run. Stored in PlayerSave.runHistory (newest first, capped at 50).
+ * Must remain JSON-serializable — no Sets or Maps.
+ */
+export interface RunSummary {
+  result: 'victory' | 'defeat' | 'retreat'
+  floorReached: number
+  /** Normal enemies defeated count (encountersWon). */
+  enemiesDefeated: number
+  encountersTotal: number
+  /** Elites defeated this run. */
+  elitesDefeated: number
+  /** Mini-bosses defeated this run. */
+  miniBossesDefeated: number
+  /** Bosses defeated this run. */
+  bossesDefeated: number
+  /** Template IDs of enemies defeated (ordered by defeat). */
+  enemiesDefeatedList: string[]
+  /** Correct answers count (factsCorrect). */
+  factsLearned: number
+  /** New facts seen for the first time this run. */
+  newFactsSeen: number
+  /** Fact IDs with snapshot entries that were answered this run. */
+  factsReviewed: number
+  /** Facts that reached tier 3 during this run. */
+  factsMasteredThisRun: number
+  /** Facts that advanced at least one tier during this run. */
+  factsTierAdvanced: number
+  /** Current mastery state distribution after the run. */
+  factStateSummary: { seen: number; reviewing: number; mastered: number }
+  goldEarned: number
+  cardsCollected: number
+  /** ISO date string when the run ended. */
+  runDate: string
+  primaryDomain: string
+  secondaryDomain: string
+  timedOutCombats: number
+  accuracy: number
+  bestCombo: number
+  runDurationMs: number
+  completedBounties: string[]
+  /** Per-domain answer accuracy breakdown. */
+  domainAccuracy: Record<string, { answered: number; correct: number }>
+  /** Curated deck ID used, if any. */
+  deckId?: string
+  /** Display label for the deck (for history display). */
+  deckLabel?: string
+}

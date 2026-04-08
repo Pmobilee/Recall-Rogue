@@ -661,3 +661,15 @@ Also removed the now-unused `isHost` and `allReady` imports.
 **Fix:** Run `npm run audit:japanese-grammar` after any change to grammar deck content. The tool reproduces the exact in-game quiz view (rendered question + correct + 3 deterministic distractors via seeded mulberry32 PRNG keyed on `fact.id`) and runs 12 quality flags. Reports under `data/audits/japanese-grammar/`. For LENGTH_TELL fixes, the cleanest pattern is to pull length-matched distractors from sibling facts in the same `answerTypePool`. For pools where 1-char particles dominate, inject curated short-particle banks per pool.
 
 **Rule:** Any new language/grammar deck (Korean, Chinese, etc.) MUST have its own dedicated audit script — `quiz-audit.mjs` will silently skip it. When generating grammar decks, NEVER paste the correct answer into the question stem as a hint/comment. Validate the curriculum-sourced sentences contain a `{___}` placeholder before serialization, not after.
+
+### 2026-04-08 — Journal/Profile: Use `$derived.by()` for block-body derived values in Svelte 5
+
+`$derived<T>(() => { ... })` passes the function as the initial value instead of running it — TypeScript doesn't catch this because the function satisfies the generic constraint `T`. Use `$derived.by<T>(() => { ... })` when the derived value requires a multi-statement function body (Map construction, conditional logic, etc.). Simple expression-form `$derived(expr)` is always safe.
+
+### 2026-04-08 — devpreset=post_tutorial creates in-memory save, not localStorage
+
+The `devpreset=post_tutorial` URL param applies a preset through the `playerSave` Svelte store but does NOT write it to localStorage. To inject test data for visual inspection, update the store directly: `globalThis[Symbol.for('rr:playerSave')]?.update(save => { ... return save; })` from a Playwright `page.evaluate()` call. Do not use `localStorage.setItem` + reload as the store won't re-read on reload (it reads once at module init).
+
+### 2026-04-08 — Landscape mode class vs data-layout attribute timing
+
+ProfileScreen and JournalScreen use `.profile-landscape` / `.journal-landscape` CSS class selectors for landscape overrides instead of `:global([data-layout="landscape"])`. This avoids a timing dependency where `data-layout` may not be set at first render. The `$isLandscape` store triggers the class binding, which is reactive and always correct. The `:global([data-layout])` pattern requires `CardApp.svelte`'s `updateLayoutScale()` to have run — reliable after boot but risky in test scenarios.

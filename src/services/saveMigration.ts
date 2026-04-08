@@ -207,3 +207,48 @@ export function migrateRelicsV1toV2(save: RelicSaveState): number {
 export function needsRelicMigrationV1toV2(save: RelicSaveState): boolean {
   return (save.version ?? 1) < 2;
 }
+
+// ─── V2 → V3 Journal/Profile Data Migration ─────────────────────────────────
+
+/**
+ * Migrate a save from v2 to v3.
+ *
+ * V3 adds: runHistory, lifetimeEnemyKillCounts, and new PlayerStats counters
+ * (totalVictories, totalDefeats, totalRetreats, cumulativePlaytimeMs,
+ *  totalEnemiesDefeated, totalElitesDefeated, totalBossesDefeated, lifetimeFactsMastered).
+ *
+ * All new fields default to 0 / empty — historical data cannot be reconstructed.
+ *
+ * Mutates `save` in-place and sets `save.version = 3`.
+ */
+export function migrateV2toV3(save: Record<string, unknown>): void {
+  // New PlayerSave fields
+  if (!Array.isArray(save['runHistory'])) {
+    save['runHistory'] = [];
+  }
+  if (!save['lifetimeEnemyKillCounts'] || typeof save['lifetimeEnemyKillCounts'] !== 'object') {
+    save['lifetimeEnemyKillCounts'] = {};
+  }
+
+  // New PlayerStats fields — default all counters to 0
+  const stats = save['stats'] as Record<string, unknown> | undefined;
+  if (stats) {
+    if (typeof stats['totalVictories'] !== 'number') stats['totalVictories'] = 0;
+    if (typeof stats['totalDefeats'] !== 'number') stats['totalDefeats'] = 0;
+    if (typeof stats['totalRetreats'] !== 'number') stats['totalRetreats'] = 0;
+    if (typeof stats['cumulativePlaytimeMs'] !== 'number') stats['cumulativePlaytimeMs'] = 0;
+    if (typeof stats['totalEnemiesDefeated'] !== 'number') stats['totalEnemiesDefeated'] = 0;
+    if (typeof stats['totalElitesDefeated'] !== 'number') stats['totalElitesDefeated'] = 0;
+    if (typeof stats['totalBossesDefeated'] !== 'number') stats['totalBossesDefeated'] = 0;
+    if (typeof stats['lifetimeFactsMastered'] !== 'number') stats['lifetimeFactsMastered'] = 0;
+  }
+
+  save['version'] = 3;
+}
+
+/**
+ * Returns true if the save requires V2 → V3 migration.
+ */
+export function needsMigrationV2toV3(save: Record<string, unknown>): boolean {
+  return ((save['version'] as number | undefined) ?? 1) < 3;
+}

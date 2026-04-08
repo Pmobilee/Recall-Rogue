@@ -1,6 +1,7 @@
 import { get } from 'svelte/store'
 import { singletonWritable } from './singletonStore'
-import type { AgeRating, HubSaveState, PendingArtifact, PlayerMinerals, PlayerSave, ReviewState } from '../../data/types'
+import type { AgeRating, HubSaveState, PendingArtifact, PlayerMinerals, PlayerSave, ReviewState, RunSummary } from '../../data/types'
+import type { RunEndData } from '../../services/runManager'
 import { createNewPlayer, load, save as saveFn } from '../../services/saveService'
 // Achievement gallery is archived — getUnlockedPaintingIds inlined as no-op
 function getUnlockedPaintingIds(): string[] { return [] }
@@ -945,7 +946,7 @@ export function updateDailyStreak(save: PlayerSave): PlayerSave {
  *
  * @param bestFloor - Deepest floor reached in the run.
  */
-export function recordRunComplete(bestFloor: number): void {
+export function recordRunComplete(bestFloor: number, endData?: RunEndData, runSummary?: RunSummary): void {
   let capturedStreak = 0
 
   playerSave.update((save) => {
@@ -1012,6 +1013,17 @@ export function recordRunComplete(bestFloor: number): void {
 
     const highestClaimed = claimedMilestones.length > 0 ? Math.max(...claimedMilestones) : 0
 
+    // Journal/Profile counters — read prev values from save.stats (default 0 for old saves)
+    const prevVictories = save.stats.totalVictories ?? 0
+    const prevDefeats = save.stats.totalDefeats ?? 0
+    const prevRetreats = save.stats.totalRetreats ?? 0
+    const prevPlaytime = save.stats.cumulativePlaytimeMs ?? 0
+    const prevEnemies = save.stats.totalEnemiesDefeated ?? 0
+    const prevElites = save.stats.totalElitesDefeated ?? 0
+    const prevBosses = save.stats.totalBossesDefeated ?? 0
+    const prevMastered = save.stats.lifetimeFactsMastered ?? 0
+    const result = endData?.result
+
     const updatedStats = {
       ...save.stats,
       totalDivesCompleted: newDiveCount,
@@ -1021,6 +1033,15 @@ export function recordRunComplete(bestFloor: number): void {
           : save.stats.bestFloor,
       currentStreak: newStreak,
       bestStreak: streakUpdated.stats.bestStreak,
+      // Journal/Profile counters
+      totalVictories: prevVictories + (result === 'victory' ? 1 : 0),
+      totalDefeats: prevDefeats + (result === 'defeat' ? 1 : 0),
+      totalRetreats: prevRetreats + (result === 'retreat' ? 1 : 0),
+      cumulativePlaytimeMs: prevPlaytime + (endData?.runDurationMs ?? 0),
+      totalEnemiesDefeated: prevEnemies + (endData?.encountersWon ?? 0),
+      totalElitesDefeated: prevElites + (endData?.elitesDefeated ?? 0),
+      totalBossesDefeated: prevBosses + (endData?.bossesDefeated ?? 0),
+      lifetimeFactsMastered: prevMastered + (endData?.factsMasteredThisRun ?? 0),
     }
 
     // Phase 12: Evaluate archetype (weekly re-eval)
@@ -1045,6 +1066,53 @@ export function recordRunComplete(bestFloor: number): void {
       gaiaMessage.set(gaiaComment)
     }
 
+    // Build run history entry and merge bestiary
+    let updatedRunHistory = [...(save.runHistory ?? [])]
+    let updatedBestiary = { ...(save.lifetimeEnemyKillCounts ?? {}) }
+    if (runSummary) {
+      // Prepend the provided summary and cap at 50 entries
+      updatedRunHistory = [runSummary, ...updatedRunHistory].slice(0, 50)
+      // Merge bestiary kill counts
+      for (const enemyId of (runSummary.enemiesDefeatedList ?? [])) {
+        updatedBestiary[enemyId] = (updatedBestiary[enemyId] ?? 0) + 1
+      }
+    } else if (endData) {
+      // Fallback: build a minimal summary when no pre-built one is available (e.g. legacy callers).
+      const fallbackSummary: RunSummary = {
+        result: endData.result,
+        floorReached: endData.floorReached,
+        enemiesDefeated: endData.encountersWon,
+        encountersTotal: endData.encountersTotal,
+        elitesDefeated: endData.elitesDefeated,
+        miniBossesDefeated: endData.miniBossesDefeated,
+        bossesDefeated: endData.bossesDefeated,
+        enemiesDefeatedList: endData.enemiesDefeatedList ?? [],
+        factsLearned: endData.correctAnswers,
+        newFactsSeen: endData.newFactsSeen ?? 0,
+        factsReviewed: endData.factsReviewed ?? 0,
+        factsMasteredThisRun: endData.factsMasteredThisRun ?? 0,
+        factsTierAdvanced: endData.factsTierAdvanced ?? 0,
+        factStateSummary: endData.factStateSummary ?? { seen: 0, reviewing: 0, mastered: 0 },
+        goldEarned: endData.currencyEarned,
+        cardsCollected: endData.cardsEarned,
+        runDate: new Date().toISOString(),
+        primaryDomain: '',
+        secondaryDomain: '',
+        timedOutCombats: 0,
+        accuracy: endData.accuracy,
+        bestCombo: endData.bestCombo,
+        runDurationMs: endData.runDurationMs,
+        completedBounties: [...endData.completedBounties],
+        domainAccuracy: endData.domainAccuracy ?? {},
+        deckId: endData.deckId,
+        deckLabel: endData.deckLabel,
+      }
+      updatedRunHistory = [fallbackSummary, ...updatedRunHistory].slice(0, 50)
+      for (const enemyId of (endData.enemiesDefeatedList ?? [])) {
+        updatedBestiary[enemyId] = (updatedBestiary[enemyId] ?? 0) + 1
+      }
+    }
+
     return {
       ...save,
       lastPlayDate: today,
@@ -1060,6 +1128,8 @@ export function recordRunComplete(bestFloor: number): void {
       archetypeData: updatedArchetype,
       engagementData: updatedEngagement,
       stats: updatedStats,
+      runHistory: updatedRunHistory,
+      lifetimeEnemyKillCounts: updatedBestiary,
     }
   })
 

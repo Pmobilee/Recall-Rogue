@@ -13,14 +13,14 @@ import { DEFAULT_ARCHETYPE_DATA } from '../services/archetypeDetector'
 import { DEFAULT_ENGAGEMENT_DATA } from '../services/engagementScorer'
 import { profileService } from '../services/profileService'
 import { getBackend } from './storageBackend'
-import { migrateRelicsV1toV2, needsRelicMigrationV1toV2 } from './saveMigration'
+import { migrateRelicsV1toV2, needsRelicMigrationV1toV2, migrateV2toV3, needsMigrationV2toV3 } from './saveMigration'
 
 /**
  * Legacy/fallback save key. Used when no profiles exist (backward compatibility).
  * Active profile saves use the profile-namespaced key from profileService.getSaveKey().
  */
 export const SAVE_KEY = 'recall-rogue-save'
-export const SAVE_VERSION = 2
+export const SAVE_VERSION = 3
 
 /**
  * Returns the localStorage key to use for the current player's save.
@@ -46,6 +46,15 @@ const EMPTY_STATS: PlayerStats = {
   bestStreak: 0,
   totalSessions: 0,
   zeroDiveSessions: 0,
+  // Journal/Profile counters (v3)
+  totalVictories: 0,
+  totalDefeats: 0,
+  totalRetreats: 0,
+  cumulativePlaytimeMs: 0,
+  totalEnemiesDefeated: 0,
+  totalElitesDefeated: 0,
+  totalBossesDefeated: 0,
+  lifetimeFactsMastered: 0,
 }
 
 /**
@@ -512,6 +521,13 @@ export function load(): PlayerSave | null {
       getBackend().write(getActiveSaveKey(), JSON.stringify(parsed))
     }
 
+    // V2 → V3: Journal/Profile stats and run history.
+    // Additive migration — no existing data is removed or changed.
+    if (needsMigrationV2toV3(parsed as unknown as Record<string, unknown>)) {
+      migrateV2toV3(parsed as unknown as Record<string, unknown>)
+      getBackend().write(getActiveSaveKey(), JSON.stringify(parsed))
+    }
+
     return parsed as PlayerSave
   } catch {
     return null
@@ -617,6 +633,9 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     lastDailyBonusDate: null,
     // Procedural math skill states
     skillStates: [],
+    // Journal/Profile history (v3)
+    runHistory: [],
+    lifetimeEnemyKillCounts: {},
   }
 }
 
