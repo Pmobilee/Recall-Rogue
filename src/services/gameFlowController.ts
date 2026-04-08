@@ -146,6 +146,7 @@ import { startRaceProgressBroadcast, updateLocalProgress, stopRaceProgressBroadc
 import { getCurrentLobby } from './multiplayerLobbyService'
 import { computeRaceScore } from './multiplayerScoring'
 import type { MultiplayerMode } from '../data/multiplayerTypes'
+import { ensureCuratedDeckLoaded } from '../data/curatedDeckStore'
 // Fire-and-forget: preload narrative JSON data in parallel with other init.
 // The loader warns but never throws if narrative files are absent.
 void preloadNarrativeData();
@@ -1431,6 +1432,7 @@ function openTreasureRoom(): void {
     // onComplete — proceed directly to map, bypassing openCardReward()
     () => {
       activeRelicRewardOptions.set([]);
+      showRoomExitNarrative('treasure');
       void proceedAfterReward();
     },
   );
@@ -2094,6 +2096,45 @@ export function recordHaggleAttempt(): void {
   activeRunState.set(run);
 }
 
+/**
+ * Show exit narration for a special room (shop/rest/mystery/treasure).
+ * Narration fires on EXIT — never on room entry — so the player sees it
+ * after experiencing the room content, just before returning to the map.
+ *
+ * @param roomType  The room type string for NarrativeContext.
+ * @param mysteryRoomId  Optional mystery event ID (for 13.4 pool-specific templates).
+ */
+function showRoomExitNarrative(
+  roomType: 'shop' | 'rest' | 'mystery' | 'treasure',
+  mysteryRoomId?: string,
+): void {
+  const run = get(activeRunState);
+  if (!run) return;
+  const chainColors = run.chainDistribution?.runChainTypes.map(
+    (i: number) => CHAIN_TYPES[i]?.name ?? 'Unknown',
+  ) ?? [];
+  const topicLabels = run.chainDistribution?.assignments.flatMap(
+    (g: Array<{ label?: string }>) => g.map(t => t.label ?? '').filter(Boolean),
+  );
+  const narrativeLines = getNarrativeLines({
+    roomType,
+    isPostBoss: false,
+    isPostEncounter: false,
+    floor: run.floor.currentFloor,
+    segment: run.floor.segment,
+    playerHp: run.playerHp,
+    playerMaxHp: run.playerMaxHp,
+    relicIds: run.runRelics.map(r => r.definitionId),
+    currentStreak: 0,
+    chainColors,
+    topicLabels,
+    mysteryRoomId,
+  });
+  if (narrativeLines.length > 0) {
+    showNarrative(narrativeLines, 'click-through');
+  }
+}
+
 export function onShopDone(): void {
   const run = get(activeRunState);
   if (!run) return;
@@ -2101,6 +2142,7 @@ export function onShopDone(): void {
   activeShopInventory.set(null);
   run.floor.lastSlotWasEvent = true;
   activeRunState.set(run);
+  showRoomExitNarrative('shop');
   activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
   gameFlowState.set('dungeonMap');
   currentScreen.set('dungeonMap');
@@ -2276,32 +2318,6 @@ export async function onRoomSelected(room: RoomOption): Promise<void> {
       },
     });
   }
-  // Show narrative lines for room transitions (non-blocking auto-fade for combat, click-through for special rooms)
-  if (run && (room.type === 'shop' || room.type === 'rest' || room.type === 'mystery' || room.type === 'treasure')) {
-    const chainColors = run.chainDistribution?.runChainTypes.map(
-      (i: number) => CHAIN_TYPES[i]?.name ?? 'Unknown',
-    ) ?? [];
-    const topicLabels = run.chainDistribution?.assignments.flatMap(
-      (g: Array<{ label?: string }>) => g.map(t => t.label ?? '').filter(Boolean),
-    );
-    const roomNarrativeLines = getNarrativeLines({
-      roomType: room.type as 'shop' | 'rest' | 'mystery' | 'treasure',
-      isPostBoss: false,
-      isPostEncounter: false,
-      floor: run.floor.currentFloor,
-      segment: run.floor.segment,
-      playerHp: run.playerHp,
-      playerMaxHp: run.playerMaxHp,
-      relicIds: run.runRelics.map(r => r.definitionId),
-      currentStreak: 0,
-      chainColors,
-      topicLabels,
-    });
-    if (roomNarrativeLines.length > 0) {
-      showNarrative(roomNarrativeLines, 'click-through');
-    }
-  }
-
   switch (room.type) {
     case 'combat':
       // Set ambient for regular combat encounter
@@ -2311,6 +2327,11 @@ export async function onRoomSelected(room: RoomOption): Promise<void> {
       currentScreen.set('combat');
       break;
     case 'mystery':
+      // Guard: ensure curated deck is loaded before opening mystery room (13.2).
+      // In study mode, some mystery events (e.g. flashcard_merchant) need deck facts.
+      if (run?.deckMode?.type === 'study' && run.deckMode.deckId) {
+        await ensureCuratedDeckLoaded(run.deckMode.deckId);
+      }
       activeMasteryChallenge.set(null);
       activeMysteryEvent.set(null);
       {
@@ -2767,10 +2788,13 @@ export function onPostMiniBossUpgradeSkipped(): void {
 export function onMysteryResolved(): void {
   const run = get(activeRunState);
   if (!run) return;
+  // Capture event ID before clearing (needed for per-event narration templates — 13.4).
+  const mysteryEventId = get(activeMysteryEvent)?.id;
   activeMysteryEvent.set(null)
   activeMasteryChallenge.set(null)
   run.floor.lastSlotWasEvent = true;
   activeRunState.set(run);
+  showRoomExitNarrative('mystery', mysteryEventId);
   activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
   gameFlowState.set('dungeonMap');
   currentScreen.set('dungeonMap');
@@ -2786,6 +2810,9 @@ let isMysteryRoomCombat = false;
 export function onMysteryEffectResolved(effect: MysteryEffect): void {
   const run = get(activeRunState);
   if (!run) return;
+
+  // Capture event ID before applying/clearing — needed for per-event narration (13.4).
+  const mysteryEventId = get(activeMysteryEvent)?.id;
 
   // Apply all single-step effects directly
   applyMysteryEffect(effect, run);
@@ -2823,6 +2850,7 @@ export function onMysteryEffectResolved(effect: MysteryEffect): void {
       activeMasteryChallenge.set(null);
       run.floor.lastSlotWasEvent = true;
       activeRunState.set(run);
+      showRoomExitNarrative('mystery', mysteryEventId);
       activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
       gameFlowState.set('dungeonMap');
       currentScreen.set('dungeonMap');
@@ -2966,6 +2994,7 @@ export function onRestResolved(): void {
   if (!run) return;
   run.floor.lastSlotWasEvent = true;
   activeRunState.set(run);
+  showRoomExitNarrative('rest');
   activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
   gameFlowState.set('dungeonMap');
   currentScreen.set('dungeonMap');

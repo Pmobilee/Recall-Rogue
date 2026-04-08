@@ -106,6 +106,30 @@ export function getAllLoadedDecks(): CuratedDeck[] {
   return Array.from(loadedDecks.values());
 }
 
+/**
+ * Idempotent guard: waits until the specified curated deck is available in the store.
+ *
+ * All curated decks are loaded at app startup via initializeCuratedDecks(), so by the
+ * time a player can trigger a mystery event mid-run the deck should already be present.
+ * This guard handles the edge case where startup loading races with the first encounter.
+ *
+ * Polls every 100 ms for up to 5 s, then logs a warning and returns so the event
+ * can still open (it will just show "no facts available" rather than crashing).
+ */
+export async function ensureCuratedDeckLoaded(deckId: string): Promise<void> {
+  if (loadedDecks.has(deckId)) return; // fast path — already loaded
+  const POLL_MS = 100;
+  const TIMEOUT_MS = 5000;
+  let waited = 0;
+  while (!loadedDecks.has(deckId) && waited < TIMEOUT_MS) {
+    await new Promise<void>(resolve => setTimeout(resolve, POLL_MS));
+    waited += POLL_MS;
+  }
+  if (!loadedDecks.has(deckId)) {
+    console.warn(`[CuratedDecks] ensureCuratedDeckLoaded: deck "${deckId}" not available after ${TIMEOUT_MS}ms`);
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Art placeholder helpers
 // ---------------------------------------------------------------------------

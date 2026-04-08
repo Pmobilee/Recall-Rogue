@@ -94,6 +94,14 @@ export interface NarrativeContext {
   /** Which chain has been used most this run. */
   dominantChainColor?: string;
   topicLabels?: string[];
+  /**
+   * ID of the mystery event that was resolved (e.g. "tutor", "flashcard_merchant").
+   * Only set when roomType === "mystery" and narration fires on exit.
+   * When set, getNarrativeLines checks for pool-specific templates first;
+   * falls back to global mystery pool if none are found.
+   * Template authoring is content-agent work — infrastructure only here.
+   */
+  mysteryRoomId?: string;
 }
 
 // ============================================================
@@ -333,6 +341,11 @@ export function getNarrativeLines(context: NarrativeContext): NarrativeLine[] {
   if (context.roomType === 'shop') state.shopVisits += 1;
   if (context.roomType === 'rest') state.restVisits += 1;
   if (context.roomType === 'mystery') state.mysteryVisits += 1;
+
+  // ── Mystery room pool-specific template check (13.4 infrastructure) ──
+  // When mysteryRoomId is set, a per-event template pool can be checked here.
+  // No per-event pools are authored yet — this is the hook point for content-agent.
+  // Pattern: if (context.mysteryRoomId) { check pool for context.mysteryRoomId; if found, use it; else fall through }
 
   // Update relic tracking for callbacks
   for (const rid of context.relicIds) {

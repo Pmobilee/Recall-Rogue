@@ -1,7 +1,7 @@
 # Run Narrative System — Woven Narrative Architecture
 
 > **Purpose:** Design spec for the procedural narrative system that delivers dark RPG storytelling woven from four concurrent threads, reactive to actual knowledge the player studies.
-> **Last verified:** 2026-04-04
+> **Last verified:** 2026-04-08
 > **Status:** IMPLEMENTED — Full pipeline operational. Engine, overlay, and game flow integration complete.
 > **Source files:** `src/services/narrativeTypes.ts` (data interfaces), `src/services/narrativeGravity.ts` (classification + gravity scoring), `src/services/narrativeLoader.ts` (runtime loader), `src/services/narrativeEngine.ts` (IMPLEMENTED — 2026-04-03), `src/services/encounterBridge.ts` (NarrativeEncounterSnapshot snapshot mechanism), `src/services/gameFlowController.ts` (integration hooks), `data/narratives/` (COMPLETE — 61 YAML files), `scripts/build-narratives.mjs` (YAML-to-JSON converter), `public/data/narratives/` (generated JSON output)
 
@@ -678,17 +678,25 @@ After each room:
 
 **Input types defined in narrativeEngine.ts:**
 - `EncounterNarrativeData` — correct/wrong answers, chain completions, domain, boss/elite flags
-- `NarrativeContext` — roomType, HP, streak, relicIds, chainColors, floor/segment, post-boss flag
+- `NarrativeContext` — roomType, HP, streak, relicIds, chainColors, floor/segment, post-boss flag, `mysteryRoomId?` (optional, for per-event template pools — 13.4 infrastructure)
 
-**Integration hooks wired (gameFlowController.ts — 2026-04-03):**
+**Integration hooks wired (gameFlowController.ts — 2026-04-03, updated 2026-04-08):**
 - `preloadNarrativeData()` — fire-and-forget at module init (line ~147)
 - `initNarrative(run)` — called in `onArchetypeSelected()` after `activeRunState.set(run)`
 - `recordEncounterResults()` — called in `onEncounterComplete()` victory branch, using a `NarrativeEncounterSnapshot` captured in `encounterBridge.ts` before `activeTurnState` is cleared
-- `getNarrativeLines()` — called post-encounter (auto-fade) and on special-room entry (auto-fade)
+- `getNarrativeLines()` — called post-encounter (auto-fade) and on special-room EXIT via `showRoomExitNarrative()` (click-through)
 - `recordShopPurchase('relic')` — in `onShopBuyRelic()`
 - `recordShopPurchase('card')` — in `onShopBuyCard()`
 - `recordRestAction('upgrade')` — in `onUpgradeSelected()`
 - `resetNarrative()` — in `finishRunAndReturnToHub()`
+
+**Narration timing rule (2026-04-08):**
+Special-room narration fires on **EXIT**, never on entry. `showRoomExitNarrative(roomType, mysteryRoomId?)` is a private helper in `gameFlowController.ts` that assembles the context and calls `getNarrativeLines` + `showNarrative`. Called in:
+- `onShopDone()` — when player leaves the shop
+- `onRestResolved()` — when player completes a rest action
+- `onMysteryResolved()` — when player leaves a mastery challenge or standard mystery event
+- `onMysteryEffectResolved()` default branch — when a direct-effect mystery event resolves to map
+- Treasure room `onComplete` callback — after player accepts/skips relic choice
 
 **NarrativeEncounterSnapshot** (added to `encounterBridge.ts`):
 Because `activeTurnState` is cleared inside a 550ms setTimeout before `notifyEncounterComplete` fires,
@@ -713,9 +721,10 @@ Fact details (answer text, quizQuestion) are resolved synchronously from `factsD
 | Combat room transition | 1 line | 3s auto-fade or click |
 | Pre-boss | 1-2 lines | Click-through |
 | Post-boss | 2-3 lines | Click-through |
-| Shop entry | 2-3 lines (greeting + state) | Click-through |
-| Rest site entry | 2-3 lines (greeting + reflection) | Click-through |
-| Mystery room entry | 2-4 lines (greeting + oracle content) | Click-through |
+| Shop exit | 2-3 lines (greeting + state) | Click-through |
+| Rest site exit | 2-3 lines (greeting + reflection) | Click-through |
+| Mystery room exit | 2-4 lines (greeting + oracle content) | Click-through |
+| Treasure room exit | 1-2 lines | Click-through |
 | Floor transition | 1-2 lines (descent beat + ambient) | 4s auto-fade or click |
 
 ---
