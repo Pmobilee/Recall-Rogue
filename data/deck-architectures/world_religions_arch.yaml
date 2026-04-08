@@ -1,0 +1,329 @@
+deck_id: world_religions
+name: "World Religions"
+domain: mythology_folklore
+sub_domain: world_religions
+target_facts: 360
+minimum_facts: 280
+description: "Major living world religions — Christianity, Islam, Hinduism, Buddhism, Judaism, Sikhism, and other living traditions. Founders, sacred texts, beliefs, practices, holy sites, key figures, and history."
+
+# ============================================================================
+# DESIGN PHILOSOPHY
+# ============================================================================
+# This is a CASUAL KNOWLEDGE deck (per content-pipeline.md), not exam-locked.
+# Encyclopedic comprehensive coverage rather than curriculum-aligned.
+# Goal: a player who masters this deck can confidently discuss any major
+# world religion at a dinner party — founders, beliefs, history, practices,
+# holy sites, sacred texts, and the figures who shaped them.
+#
+# SENSITIVITY: Religious content requires neutral, descriptive framing.
+# - State beliefs as "Muslims believe" / "Hindus believe" — never assert truth/falsity
+# - No commentary on which religion is "correct" or "better"
+# - Treat all religions with equal seriousness and depth
+# - Avoid loaded vocabulary ("cult", "primitive", "pagan" used pejoratively)
+# - Death/martyrdom/violence content → ageGroup: "teen+"
+# - Aim for ~40% "all" (kids 8+) — basic factual content (founders, holy sites, holidays)
+
+# ============================================================================
+# DATA SOURCES
+# ============================================================================
+data_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Major_religious_groups
+    license: CC-BY-SA-4.0
+    usage: fact text, narratives, explanations
+  - name: Wikidata
+    url: https://www.wikidata.org/
+    license: CC0
+    usage: structured data — dates, locations, founders, populations
+  - name: Encyclopedia Britannica
+    url: https://www.britannica.com/topic/religion
+    license: editorial reference (cross-check only, no copy)
+    usage: cross-verification of claims
+  - name: Pew Research Religious Landscape
+    url: https://www.pewresearch.org/religion/
+    license: CC-BY (with attribution)
+    usage: adherent counts, demographic data (mark volatile)
+
+asset_sources:
+  - type: none
+    note: "No images required — text-only deck. Future: holy site photos from Wikimedia Commons."
+
+# ============================================================================
+# SUB-DECKS
+# ============================================================================
+sub_decks:
+  - id: christianity
+    name: "Christianity"
+    target_facts: 70
+    scope: |
+      Jesus's life (birth, ministry, parables, miracles, Passion, Resurrection),
+      apostles (12 + Paul), early Church, persecution & Constantine, Council of Nicaea,
+      Great Schism (1054), Reformation (Luther, Calvin, Henry VIII), denominations
+      (Catholic, Orthodox, Protestant, Anglican, Baptist, Methodist, Mormon),
+      sacraments, key concepts (Trinity, salvation, original sin, grace), Bible
+      structure (Old/New Testament, Gospels, Pauline epistles, Revelation),
+      famous saints (Augustine, Aquinas, Francis), Vatican, papacy, Crusades,
+      key holy sites (Jerusalem, Bethlehem, Rome, Canterbury, Santiago).
+  - id: islam
+    name: "Islam"
+    target_facts: 60
+    scope: |
+      Muhammad's life (birth in Mecca, revelations, Hijra to Medina, conquest of Mecca),
+      Five Pillars (Shahada, Salat, Zakat, Sawm, Hajj), Quran structure, Hadith,
+      Sunni/Shia split (succession of Ali, Karbala, Husayn), Sufism, caliphates
+      (Rashidun, Umayyad, Abbasid), Islamic Golden Age (Al-Khwarizmi, Ibn Sina, Al-Razi),
+      Mecca/Kaaba/Medina/Jerusalem (Al-Aqsa), Eid al-Fitr, Eid al-Adha, Ramadan,
+      key figures (Ali, Aisha, Fatimah, Salah ad-Din), mosque architecture,
+      angels (Jibril/Gabriel), prophets (Adam, Ibrahim, Musa, Isa, Muhammad as seal).
+  - id: hinduism
+    name: "Hinduism"
+    target_facts: 55
+    scope: |
+      Trimurti (Brahma, Vishnu, Shiva), avatars of Vishnu (10 — esp. Rama, Krishna),
+      major deities (Ganesha, Hanuman, Durga, Kali, Lakshmi, Saraswati, Parvati),
+      Vedas (Rig, Sama, Yajur, Atharva), Upanishads, Bhagavad Gita, Mahabharata,
+      Ramayana, core concepts (karma, dharma, samsara, moksha, atman, brahman),
+      yoga (bhakti, karma, jnana, raja), four ashramas, four purusharthas, varnas,
+      Diwali, Holi, Navaratri, Kumbh Mela, Varanasi, Ayodhya, holy rivers (Ganges),
+      key figures (Adi Shankara, Ramanuja, Gandhi as practitioner, Vivekananda),
+      sacred symbols (Om, swastika, lotus, tilak).
+  - id: buddhism
+    name: "Buddhism"
+    target_facts: 55
+    scope: |
+      Siddhartha Gautama (birth in Lumbini, Four Sights, enlightenment under Bodhi tree
+      at Bodh Gaya, first sermon at Sarnath, parinirvana at Kushinagar),
+      Four Noble Truths, Eightfold Path, Three Marks of Existence (anicca, dukkha, anatta),
+      Three Jewels (Buddha, Dharma, Sangha), Five Precepts, karma, rebirth, nirvana,
+      Theravada vs Mahayana vs Vajrayana, bodhisattvas (Avalokiteshvara, Manjushri,
+      Maitreya), Zen, Pure Land, Tibetan Buddhism, Dalai Lama, stupa, mandala,
+      prayer wheels, Tripitaka/Pali Canon, Heart Sutra, Lotus Sutra, key figures
+      (Ashoka, Nagarjuna, Bodhidharma, Padmasambhava, Thich Nhat Hanh),
+      Vesak, holy sites (Lumbini, Bodh Gaya, Sarnath, Kushinagar).
+  - id: judaism
+    name: "Judaism"
+    target_facts: 50
+    scope: |
+      Patriarchs (Abraham, Isaac, Jacob), Moses & Exodus, Ten Commandments, Sinai,
+      Torah (5 books — Genesis, Exodus, Leviticus, Numbers, Deuteronomy),
+      Tanakh structure (Torah, Nevi'im, Ketuvim), Talmud, Mishnah, Gemara,
+      key figures (David, Solomon, Maimonides, Rashi, Hillel, Theodor Herzl),
+      First & Second Temples, destruction by Babylonians/Romans, Diaspora, Holocaust,
+      modern Israel founding (1948), Jerusalem, Western Wall, Masada,
+      denominations (Orthodox, Conservative, Reform, Reconstructionist, Hasidic),
+      holidays (Passover, Yom Kippur, Rosh Hashanah, Hanukkah, Sukkot, Purim, Shavuot),
+      practices (kosher, Shabbat, bar/bat mitzvah, brit milah, Kaddish),
+      symbols (Star of David, menorah, mezuzah, tallit, kippah).
+  - id: sikhism
+    name: "Sikhism"
+    target_facts: 30
+    scope: |
+      Guru Nanak (founder, 1469-1539), 10 Sikh Gurus through Guru Gobind Singh,
+      Guru Granth Sahib (11th and eternal Guru), Five Ks (Kesh, Kangha, Kara,
+      Kachera, Kirpan), Khalsa (founded 1699), gurdwara, Golden Temple (Harmandir
+      Sahib, Amritsar), langar (community kitchen), core beliefs (one God,
+      equality, honest work, sharing, service), Vaisakhi, key figures (Guru Arjan
+      martyrdom, Guru Tegh Bahadur, Banda Singh Bahadur), Punjab origins,
+      symbols (Khanda, Ik Onkar).
+  - id: other_living
+    name: "Other Living Religions"
+    target_facts: 40
+    scope: |
+      Jainism (Mahavira, ahimsa, 24 Tirthankaras, Digambara/Svetambara),
+      Bahá'í (Bahá'u'lláh, Báb, 1844, Haifa, unity of religions),
+      Shinto (kami, torii gates, Amaterasu, shrines, Ise, Mt. Fuji),
+      Taoism (Lao Tzu, Tao Te Ching, yin-yang, Zhuangzi, wu wei),
+      Confucianism (Confucius, Analects, ren, li, filial piety, Mencius),
+      Zoroastrianism (Zarathustra, Ahura Mazda, Avesta, fire temples, Parsis),
+      Indigenous/Traditional (Yoruba/Ifa, Vodou, Candomblé, Native American spirituality),
+      Rastafari (Haile Selassie, Jamaica, dreadlocks),
+      Cao Dai, Tenrikyo (briefly).
+
+# ============================================================================
+# ANSWER TYPE POOLS
+# ============================================================================
+# Every pool must contain semantically homogeneous answers that are genuinely
+# confusable with each other. NO mixing of answer types within a pool.
+# Pools < 5 real facts → merge or pad with syntheticDistractors.
+answer_type_pools:
+  - id: founder_names
+    format: name
+    estimated_count: 12
+    members: [Jesus Christ, Muhammad, Siddhartha Gautama, Guru Nanak, Lao Tzu, Confucius, Zarathustra, Mahavira, Bahá'u'lláh, Moses, Abraham, Bodhidharma]
+    note: "Founders/seminal figures. Pad with synthetic distractors of similar format."
+
+  - id: religious_figure_names
+    format: name
+    estimated_count: 50
+    note: "Saints, apostles, gurus, scholars, prophets, theologians. Split by tradition only if pool exceeds 60. Examples: Paul, Augustine, Aquinas, Francis of Assisi, Ali ibn Abi Talib, Aisha, Maimonides, Rashi, Adi Shankara, Vivekananda, Nagarjuna, Padmasambhava, Guru Gobind Singh, Tirthankara Parshvanatha."
+
+  - id: hindu_deity_names
+    format: name
+    estimated_count: 15
+    members: [Brahma, Vishnu, Shiva, Krishna, Rama, Ganesha, Hanuman, Durga, Kali, Lakshmi, Saraswati, Parvati, Indra, Surya, Agni]
+    note: "Hindu deities only — separate pool from Abrahamic figures to avoid category mixing."
+
+  - id: bodhisattva_and_buddhist_figures
+    format: name
+    estimated_count: 12
+    members: [Avalokiteshvara, Manjushri, Maitreya, Tara, Padmasambhava, Bodhidharma, Nagarjuna, Ashoka, Dalai Lama, Thich Nhat Hanh, Milarepa, Atisha]
+    note: "Buddhist bodhisattvas, masters, and historical figures. Separate from general religious_figure_names due to confusable Buddhist-internal references."
+
+  - id: sacred_text_names
+    format: term
+    estimated_count: 25
+    members: [Bible, Quran, Torah, Tanakh, Talmud, Mishnah, Vedas, Rig Veda, Upanishads, Bhagavad Gita, Mahabharata, Ramayana, Tripitaka, Pali Canon, Heart Sutra, Lotus Sutra, Diamond Sutra, Guru Granth Sahib, Tao Te Ching, Analects, Avesta, Book of Mormon, Kitáb-i-Aqdas, Adi Granth, Dhammapada]
+    note: "Scriptures and sacred books. Genuinely confusable across traditions."
+
+  - id: holy_site_names
+    format: place
+    estimated_count: 25
+    members: [Mecca, Medina, Jerusalem, Vatican City, Bethlehem, Nazareth, Varanasi, Bodh Gaya, Lumbini, Sarnath, Kushinagar, Amritsar, Lhasa, Ayodhya, Mathura, Rishikesh, Haridwar, Najaf, Karbala, Qom, Hebron, Canterbury, Santiago de Compostela, Mount Sinai, Mount Fuji, Ise, Haifa]
+    note: "Cities and sites of religious significance. Cross-tradition confusable."
+
+  - id: religious_concept_names
+    format: term
+    estimated_count: 40
+    members: [Karma, Dharma, Nirvana, Moksha, Samsara, Atman, Brahman, Ahimsa, Bhakti, Tao, Wu wei, Yin-yang, Ren, Li, Salvation, Grace, Original sin, Trinity, Incarnation, Resurrection, Eucharist, Tawhid, Shahada, Jihad, Ummah, Sunnah, Mitzvah, Tikkun olam, Tzedakah, Anatta, Anicca, Dukkha, Sunyata, Bodhicitta, Filial piety, Sangha]
+    note: "Core theological/philosophical concepts. Largest pool — split by tradition only if homogeneity audit fails."
+
+  - id: religious_practice_names
+    format: term
+    estimated_count: 25
+    members: [Baptism, Communion, Confession, Confirmation, Hajj, Salat, Sawm, Zakat, Wudu, Bar mitzvah, Bat mitzvah, Brit milah, Shabbat, Kosher, Puja, Yoga, Meditation, Pradakshina, Aarti, Langar, Sadhana, Tantra, Zazen, Koan recitation, Lighting menorah]
+    note: "Rituals, observances, and devotional practices."
+
+  - id: holy_day_names
+    format: term
+    estimated_count: 25
+    members: [Christmas, Easter, Good Friday, Pentecost, Ash Wednesday, Lent, Advent, Ramadan, Eid al-Fitr, Eid al-Adha, Mawlid, Ashura, Passover, Yom Kippur, Rosh Hashanah, Hanukkah, Sukkot, Purim, Shavuot, Diwali, Holi, Navaratri, Krishna Janmashtami, Vesak, Vaisakhi, Bodhi Day, Nowruz]
+    note: "Religious festivals, holy days, observance periods."
+
+  - id: denomination_names
+    format: term
+    estimated_count: 25
+    members: [Roman Catholic, Eastern Orthodox, Anglican, Lutheran, Calvinist, Baptist, Methodist, Pentecostal, Mormon, Jehovah's Witness, Sunni, Shia, Sufi, Ismaili, Wahhabi, Theravada, Mahayana, Vajrayana, Zen, Pure Land, Nichiren, Tibetan Buddhism, Orthodox Judaism, Reform Judaism, Conservative Judaism, Hasidic, Reconstructionist, Vaishnavism, Shaivism, Shaktism, Smartism, Digambara, Svetambara]
+    note: "Sects and denominations across traditions."
+
+  - id: religious_object_names
+    format: term
+    estimated_count: 18
+    members: [Rosary, Crucifix, Chalice, Icon, Prayer rug, Misbaha, Quran stand, Menorah, Mezuzah, Tallit, Kippah, Tefillin, Shofar, Prayer wheel, Mala, Mandala, Vajra, Stupa, Khanda, Kara, Kirpan, Torii, Ofuda]
+    note: "Physical objects of religious practice."
+
+  - id: building_type_names
+    format: term
+    estimated_count: 12
+    members: [Church, Cathedral, Basilica, Chapel, Monastery, Mosque, Madrasa, Synagogue, Temple, Mandir, Gurdwara, Stupa, Pagoda, Vihara, Shrine, Torii gate]
+    note: "Religious building types — cross-tradition confusable."
+
+  - id: bracket_numbers
+    format: bracket_number
+    estimated_count: 50
+    note: "Dates of founders, key events, council years, scripture compilation dates. Use {N} notation. Runtime generates numeric distractors."
+
+# ============================================================================
+# QUESTION TEMPLATES
+# Cross-pool templates create connected understanding.
+# ============================================================================
+question_templates:
+  - id: founder_of_religion
+    format: "Who is considered the founder of {religion}?"
+    answer_pool: founder_names
+    available_from_mastery: 0
+    difficulty: 1
+  - id: religion_of_text
+    format: "{text} is a sacred text of which religion?"
+    answer_pool: religion_names  # tagging — uses denomination/religion enum
+    available_from_mastery: 1
+    difficulty: 2
+  - id: holy_site_significance
+    format: "{site} is a major pilgrimage site for which religion?"
+    answer_pool: religion_names
+    available_from_mastery: 1
+    difficulty: 2
+  - id: concept_meaning
+    format: "Which concept refers to {definition}?"
+    answer_pool: religious_concept_names
+    available_from_mastery: 2
+    difficulty: 3
+  - id: practice_belongs
+    format: "{practice} is a core practice in which tradition?"
+    answer_pool: religion_names
+    available_from_mastery: 2
+    difficulty: 3
+  - id: figure_known_for
+    format: "Who is known for {accomplishment}?"
+    answer_pool: religious_figure_names
+    available_from_mastery: 2
+    difficulty: 3
+
+# ============================================================================
+# COMMON CONFUSIONS — seed the matrix
+# ============================================================================
+common_confusions:
+  - [sunni, shia]
+  - [theravada, mahayana]
+  - [catholic, orthodox]
+  - [karma, dharma]
+  - [moksha, nirvana]
+  - [hajj, umrah]
+  - [torah, talmud]
+  - [vedas, upanishads]
+  - [vishnu, shiva]
+  - [eid_al_fitr, eid_al_adha]
+  - [hanukkah, passover]
+  - [diwali, holi]
+  - [bodhisattva, arhat]
+  - [muhammad, ali]
+  - [abraham, moses]
+  - [zen, pure_land]
+  - [confucianism, taoism]
+  - [shia, sufi]
+
+# ============================================================================
+# DIFFICULTY TIERS
+# ============================================================================
+difficulty_tiers:
+  easy: "Universally known: Jesus, Muhammad, Buddha, Bible, Quran, Torah, Christmas, Ramadan, Hajj, Mecca, Vatican."
+  medium: "Commonly known to interested learners: Trinity, Five Pillars, Eightfold Path, Sunni/Shia, Reformation, Bodhisattva, Diwali, Yom Kippur, Guru Nanak."
+  hard: "Specialist knowledge: Adi Shankara, Nagarjuna, Tirthankara names, Smartism, Pure Land founding, specific Vedas, Council dates, Ismaili branches."
+
+# ============================================================================
+# AGE TAGGING TARGET
+# ============================================================================
+age_targets:
+  all_min_pct: 40
+  notes: |
+    "all" = founders, holy sites, sacred text names, holidays, basic concepts (one God,
+    pilgrimage, prayer, fasting), iconic figures (Jesus, Buddha, Moses, Muhammad).
+    "teen+" = martyrdoms, sectarian conflict, theological abstractions (Trinity nuance,
+    sunyata), Holocaust, Karbala, Crusades, Inquisition, religious violence,
+    sex/celibacy practices, nuanced denominational distinctions.
+
+# ============================================================================
+# CHAIN SLOTS (generic 0-5, distributed evenly per task-tracking rule)
+# ============================================================================
+# No named themes — slot indices 0-5 distributed evenly across all facts.
+
+# ============================================================================
+# VOLATILE FACTS
+# ============================================================================
+volatile_facts:
+  - "current_dalai_lama"  # 14th, but a 15th will eventually be named
+  - "current_pope"        # changes
+  - adherent_counts       # populations shift; mark all demographic counts volatile
+
+# ============================================================================
+# SENSITIVITY NOTES
+# ============================================================================
+sensitivity:
+  - Frame all beliefs as "X believe" / "according to Y tradition" — never assert truth
+  - No comparative judgments between religions
+  - Death, martyrdom, sectarian violence → ageGroup: "teen+"
+  - Avoid "cult" except for explicitly historical/scholarly usage
+  - Avoid "pagan" used pejoratively — use "polytheistic" or "indigenous"
+  - For prophetic figures sacred to multiple traditions (Jesus, Abraham, Moses), note
+    cross-tradition reverence in explanations
+  - Neutral on contested claims (founding dates, historical existence) — use "according to
+    tradition" / "scholars debate"

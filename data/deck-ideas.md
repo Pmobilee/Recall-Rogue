@@ -2,7 +2,7 @@
 
 **Purpose:** Master planning document for all curated deck content. Tracks pool architecture, chain themes, estimated fact counts, and cross-deck dependencies before any fact generation begins.
 
-**Last Updated:** 2026-03-29
+**Last Updated:** 2026-04-08
 
 **Design Philosophy:**
 - **Pool-first design:** Every deck starts by identifying answer type pools — semantically confusable groups of 5+ answers. Pool viability determines fact count, not the other way around. A domain is only writable if its pools hold up.
@@ -1104,7 +1104,7 @@ Sports & Entertainment requires new domain scaffolding. FIFA World Cup is a uniq
 | Geography | 4 (Countries, Capitals, Flags, US States) | — | 14 total | World Rivers & Mountains | 4-6 weeks |
 | Natural Sciences | 1 (Periodic Table) | Human Anatomy (2,009 facts) | 18 total | Human Anatomy | **1-2 weeks** |
 | Space & Astronomy | 2 (Solar System, NASA Missions) | — | 8 total | Constellations | 2-4 weeks |
-| Mythology & Folklore | 2 (Greek, Norse) | — | 10 total | Egyptian Mythology | 3-5 weeks |
+| Mythology & Folklore / Religion | 3 (Greek, Norse, world_religions) | — | 10 total | Egyptian Mythology | 3-5 weeks |
 | Animals & Wildlife | 0 | — | 10 total | Mammals of the World | 4-6 weeks |
 | Human Body & Health | 0 | 2,009 anatomy facts in _wip/ | 10 total | Human Anatomy — Core Systems | **1-2 weeks** |
 | Art & Architecture | 0 | — | 10 total | Famous Paintings & Artists | 5-7 weeks |
@@ -1114,7 +1114,7 @@ Sports & Entertainment requires new domain scaffolding. FIFA World Cup is a uniq
 | Sports & Entertainment | 0 | Requires new domain setup | 8 total | Olympic Games History | 6-8 weeks (domain setup first) |
 | Language (Vocabulary) | **37** | Portuguese/Italian/Russian next | 22 remaining | Portuguese A1-B2 | 1-2 weeks (pipeline exists) |
 | Academic / Exam Prep | 0 | Composite — depends on source decks | 18 total | AP US History | After Tier 1 History ships |
-| **TOTAL** | **48** | **~2,200 WIP facts** | **~180 candidates** | — | — |
+| **TOTAL** | **49** | **~2,200 WIP facts** | **~180 candidates** | — | — |
 
 **Key gaps to close first:**
 1. Human Anatomy (WIP facts → published deck) — immediate
@@ -1123,4 +1123,12 @@ Sports & Entertainment requires new domain scaffolding. FIFA World Cup is a uniq
 
 ---
 
-*Last updated: 2026-03-29 by Opus orchestrator*
+*Last updated: 2026-04-08 by docs-agent*
+
+---
+
+## Recently Shipped
+
+| Date | Deck ID | Facts | Sub-decks | Summary |
+|---|---|---|---|---|
+| 2026-04-08 | `world_religions` | 377 | 7 | World religions survey: Christianity, Islam, Judaism, Hinduism, Buddhism, Sikhism, and 8 other living traditions. Wikipedia CC BY-SA 4.0. |

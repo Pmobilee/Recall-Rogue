@@ -109,10 +109,10 @@ Two backfill scripts produced full coverage:
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-08 it contains **77 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-08 it contains **80 decks**:
 
 - **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
-- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**, **AP World History: Modern**, **AP Physics 1: Algebra-Based**, **Pharmacology**, **World Literature**
+- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**, **AP World History: Modern**, **AP Physics 1: Algebra-Based**, **Pharmacology**, **World Literature**, **AP Human Geography**
 
 ### Deck Architecture Files
 
@@ -136,6 +136,7 @@ Architecture YAML files in `data/deck-architectures/` hold the verified source d
 | `ap_biology_unit3_arch.yaml` | `ap_biology_unit3` | architecture complete — pending fact generation | 160 target | Unit 3: Cellular Energetics (Topics 3.1–3.7); 3 chain themes, 7 pools, 7 templates, ~110 verified facts in arch |
 | `ap_biology_unit5_arch.yaml` | `ap_biology_unit5` | architecture complete — pending fact generation | 110 target | Unit 5: Heredity (Topics 5.1–5.6); 2 chain themes, 8 pools, 97 verified entities in arch |
 | *(inline generation)* | `ap_physics_1` | complete — live | 326 | CED-aligned Fall 2024; 8 units, 10 chain themes, 11 answer pools, 8 sub-decks; expanded 2026-04-04; pool homogeneity remediation 2026-04-04 and 2026-04-05 (`fluid_properties`→`quantity_definitions`, `collision_types`→`term_definitions`; `force_type_names`/`rotational_quantities` synthetics added); sourced from OpenStax/HyperPhysics |
+| `ap_human_geography_arch.yaml` | `ap_human_geography` | complete — live | 299 | CED-aligned Fall 2020; 7 units, 14 chain themes, 24 answer pools (split for length homogeneity), 7 sub-decks; 9 facts removed (duplicates across units), 1 NOT-question rewritten, concept pool split into short/medium/long tiers; 0 verify fails, 0 quiz-audit fails. 2026-04-08. |
 | *(inline generation)* | `world_cuisines` | complete — live, pool-redesigned | 141 | Pool redesign 2026-04-05 (5 pools → 9): split `technique_terms` into `person_names_food` + technique; split `country_region_names` into `civilization_names` + `compound_location_names`; added `cultural_references`; moved percentage/short-answer outliers. 0 quiz-audit fails. |
 | *(inline generation)* | `famous_inventions` | complete — live, pool-redesigned | 200 | Pool redesign 2026-04-05 (5 pools → 10): split 104-fact `term` pool into `invention_specs` (short ≤20c), `invention_details` (long), `discovery_descriptions` (narratives), `invention_dates`; split `name` into `person_inventor_names` + `invention_names`; added `tech_codes` for acronyms ≤7c; split `number` into `percentage_values` + `count_values`. 0 quiz-audit fails. |
 
@@ -1747,3 +1748,72 @@ Result: 0 FAIL across all 75 decks after remediation.
 - Stats split into 3 length-banded pools to keep quiz-audit distractor ratios within 3x.
 - Facts with semantically mismatched pool assignments corrected (e.g. conservation dates moved from `conservation_terms` to `stats_medium`).
 - Original pre-change quiz-audit had 31 failures. Post-overhaul: 0 failures.
+
+
+---
+
+## world_religions Deck — Assembly (2026-04-08)
+
+`data/decks/world_religions.json` — assembled 2026-04-08 from 7 WIP sub-deck files by content-agent.
+
+| Field | Value |
+|---|---|
+| `id` | `world_religions` |
+| `domain` | `mythology_folklore` |
+| `subDomain` | `world_religions` |
+| `facts` | 377 (70 Christianity, 66 Islam, 50 Judaism, 60 Hinduism, 55 Buddhism, 30 Sikhism, 46 Other Living) |
+| `answerTypePools` | 17 |
+| `synonymGroups` | 3 |
+| `questionTemplates` | 0 (all templates dropped — use {placeholder} fields not present in facts) |
+| `difficultyTiers` | easy=258, medium=102, hard=17 |
+| `subDecks` | 7 |
+
+**Pools (17):**
+| Pool | Size | Format | Exempt |
+|---|---|---|---|
+| `bodhisattva_and_buddhist_figures` | 14 | name | yes — variable Buddhist name lengths |
+| `bracket_numbers` | 27 | bracket_number | yes — numeric |
+| `building_type_names` | 10 | term | yes — mixes building types with specific named sites |
+| `denomination_names` | 28 | term | yes — short (Zen, Shia) to long (Eastern Orthodox) |
+| `founder_names` | 10 | name | yes — short (Laozi) to long (Siddhartha Gautama) |
+| `hindu_deity_names` | 14 | name | no |
+| `holy_day_names` | 27 | term | yes — short (Holi) to long (Krishna Janmashtami) |
+| `holy_site_names` | 29 | place | yes — short (Ise) to long (Santiago de Compostela) |
+| `religious_concept_names` | 32 | term | yes — medium-length concepts (9-20 chars) |
+| `religious_concept_names_short` | 47 | term | yes — short concepts ≤8 chars (Sanskrit, Arabic, Hebrew terms) |
+| `religious_concept_names_long` | 9 | term | yes — compound phrases >20 chars |
+| `religious_figure_names` | 27 | name | yes — cross-tradition names >8 chars |
+| `religious_figure_names_short` | 31 | name | yes — short figure names ≤8 chars (Isa, Paul, Musa, Rumi) |
+| `religious_object_names` | 20 | term | yes — short symbols to multi-word objects |
+| `religious_practice_names` | 26 | term | yes — short (Hajj) to long (Right Mindfulness) |
+| `sacred_text_names` | 19 | term | yes — medium/long text names |
+| `sacred_text_names_short` | 7 | term | yes — short text names ≤7 chars (Quran, Vedas, Bible) |
+
+**Pool split rationale:** `religious_concept_names`, `religious_figure_names`, and `sacred_text_names` were split into short/long/short sub-pools to eliminate quiz-audit length-tell failures. The runtime selects 3 distractors from the same pool; without splitting, short answers like "Om" or "Isa" would always get long distractors. 13 original pools → 17 final pools.
+
+**Synonym groups (3):**
+- `sg_abraham_ibrahim`: Abraham (Judaism) and Ibrahim (Islam) — same patriarch
+- `sg_moses_musa`: Moses (Judaism) and Musa (Islam) — same figure
+- `sg_pentecost_shavuot`: Christian Pentecost and Jewish Shavuot — shared historical origin
+
+**Age distribution:** 297 "all" (79%), 80 "teen+" (21%)
+
+**Assembly notes:**
+- 7 bracket_numbers facts had plain integer answers (12, 27, 325...) — corrected to {N} format
+- `world_religions_sik_ten_gurus` had `correctAnswer: "ten"` in `religious_concept_names` — corrected to `{10}` in `bracket_numbers`
+- `world_religions_jud_holocaust_shoah` had `correctAnswer: "Six million"` in `bracket_numbers` — moved to `religious_concept_names` (word form, not numeric)
+- `world_religions_oth_jainism_buddhism_connection` had `correctAnswer: "6th–5th century BCE"` in `bracket_numbers` — moved to `religious_concept_names` (date range, not numeric)
+- `world_religions_bud_mother` ("Maya") was in `bodhisattva_and_buddhist_figures` — moved to `religious_figure_names_short` (she is Siddhartha's mother, not a bodhisattva)
+- `world_religions_hin_om_symbol` ("Om") was in `religious_object_names` — moved to `religious_concept_names_short` (Om is primarily a sacred syllable/concept)
+- Pool-collision distractors stripped post-assembly (762 removed); runtime selects distractors from pool at quiz time
+- All question templates dropped — `{definition}`, `{religion}`, `{accomplishment}` placeholders not present as fields in facts
+- `verify-all-decks.mjs`: 0 failures. `quiz-audit.mjs --full`: 0 failures.
+
+**Source WIP files:**
+- `data/decks/_wip/world_religions_christianity.json` (70 facts)
+- `data/decks/_wip/world_religions_islam.json` (66 facts)
+- `data/decks/_wip/world_religions_judaism.json` (50 facts)
+- `data/decks/_wip/world_religions_hinduism.json` (60 facts)
+- `data/decks/_wip/world_religions_buddhism.json` (55 facts)
+- `data/decks/_wip/world_religions_sikhism.json` (30 facts)
+- `data/decks/_wip/world_religions_other.json` (46 facts)

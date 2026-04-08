@@ -1,0 +1,1234 @@
+[
+  {
+    "id": "world_religions_sik_founder",
+    "correctAnswer": "Guru Nanak",
+    "acceptableAlternatives": [
+      "Nanak",
+      "Baba Nanak",
+      "Guru Nanak Dev"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "founder_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Guru Gobind Singh",
+      "Guru Arjan",
+      "Guru Tegh Bahadur",
+      "Guru Ram Das",
+      "Guru Amar Das"
+    ],
+    "quizQuestion": "Who is regarded as the founder of Sikhism and its first Guru?",
+    "explanation": "Guru Nanak (1469–1539) was born in Nankana Sahib, Punjab (present-day Pakistan). He taught a revolutionary message of one God, equality of all humans, honest living, and sharing with others — rejecting the caste system and idolatry at a time when both were deeply entrenched. He traveled widely across South Asia and the Middle East spreading his teachings.",
+    "statement": "Guru Nanak, born in 1469, is the founder of Sikhism and the first of its ten Gurus.",
+    "wowFactor": "Guru Nanak traveled over 28,000 kilometers — on foot — across India, Sri Lanka, Tibet, Arabia, and Persia to spread his message of equality and one God, centuries before modern transport.",
+    "visualDescription": "Pixel art of Guru Nanak in white robes with a blue turban, surrounded by a glowing halo, holding a prayer book",
+    "sourceName": "Wikipedia — Guru Nanak",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Guru_Nanak",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Guru Nanak is the founder of which major world religion?",
+        "correctAnswer": "Sikhism",
+        "distractors": [
+          "Hinduism",
+          "Buddhism",
+          "Jainism",
+          "Bahá'í Faith"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Guru Nanak was born in 1469 in Nankana Sahib, located in the _____ region of what is now Pakistan.",
+        "correctAnswer": "Punjab",
+        "distractors": [
+          "Kashmir",
+          "Sindh",
+          "Bengal",
+          "Balochistan"
+        ]
+      }
+    ],
+    "tags": [
+      "guru_nanak",
+      "founder",
+      "sikhism",
+      "punjab"
+    ]
+  },
+  {
+    "id": "world_religions_sik_nanak_born",
+    "correctAnswer": "{1469}",
+    "acceptableAlternatives": [
+      "1469"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "1399",
+      "1499",
+      "1439",
+      "1519",
+      "1449",
+      "1479"
+    ],
+    "quizQuestion": "In what year was Guru Nanak, the founder of Sikhism, born?",
+    "explanation": "Guru Nanak was born on April 15, 1469, in Rai Bhoi di Talwandi, now known as Nankana Sahib in present-day Pakistan's Punjab province. The place was renamed in his honor. Sikhs celebrate his birth on Gurpurab, which falls on a full moon day in the month of Kartik.",
+    "statement": "Guru Nanak was born in 1469 in what is now Nankana Sahib, Pakistan.",
+    "wowFactor": "The town where Guru Nanak was born was renamed Nankana Sahib in his honor and is now one of the holiest sites in Sikhism — located in modern-day Pakistan.",
+    "visualDescription": "Pixel art of a glowing date stone reading '1469' set in a temple gateway with lotus flowers",
+    "sourceName": "Wikipedia — Guru Nanak",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Guru_Nanak",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "guru_nanak",
+      "date",
+      "birth",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_ik_onkar",
+    "correctAnswer": "Ik Onkar",
+    "acceptableAlternatives": [
+      "Ek Onkar",
+      "Ikk Onkar"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "religious_concept_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Waheguru",
+      "Naam Japna",
+      "Seva",
+      "Sangat",
+      "Ardas"
+    ],
+    "quizQuestion": "What Sikh concept, meaning 'One God' or 'There is only one God,' opens the Guru Granth Sahib and is a foundational symbol of Sikh belief?",
+    "explanation": "Ik Onkar (ੴ) is the opening phrase of the Mool Mantar — the core creed of Sikhism — and means 'One Universal Creator God.' The symbol combines the numeral 1 with the Gurmukhi script for 'Onkar.' It expresses the central Sikh belief in the absolute oneness and formlessness of God, rejecting polytheism and idol worship.",
+    "statement": "Ik Onkar, meaning 'One God,' is the foundational symbol and concept of Sikhism.",
+    "wowFactor": "The Ik Onkar symbol (ੴ) is a single ligature combining two Gurmukhi characters — it's used everywhere from temples to jewelry as the defining mark of Sikh identity, equivalent to the Christian cross in visibility.",
+    "visualDescription": "Pixel art of the glowing Ik Onkar symbol rendered in gold against a blue background with lotus borders",
+    "sourceName": "Wikipedia — Sikhism",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sikhism",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The Sikh symbol ੴ represents which core theological concept?",
+        "correctAnswer": "One God (Ik Onkar)",
+        "distractors": [
+          "The Ten Gurus",
+          "The Eternal Guru",
+          "The Five Ks",
+          "The Khalsa brotherhood"
+        ]
+      }
+    ],
+    "tags": [
+      "ik_onkar",
+      "monotheism",
+      "belief",
+      "symbol",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_ten_gurus",
+    "correctAnswer": "ten",
+    "acceptableAlternatives": [
+      "10"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "religious_concept_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "five",
+      "twelve",
+      "eight",
+      "fourteen",
+      "seven"
+    ],
+    "quizQuestion": "How many human Gurus guided Sikhism from Guru Nanak (1469) through Guru Gobind Singh (1708)?",
+    "explanation": "Sikhism recognizes ten human Gurus: Guru Nanak (1st), Guru Angad (2nd), Guru Amar Das (3rd), Guru Ram Das (4th), Guru Arjan (5th), Guru Hargobind (6th), Guru Har Rai (7th), Guru Har Krishan (8th), Guru Tegh Bahadur (9th), and Guru Gobind Singh (10th). The lineage ended with Guru Gobind Singh, who declared the Guru Granth Sahib the eternal Guru.",
+    "statement": "Sikhism recognizes ten human Gurus, from Guru Nanak to Guru Gobind Singh.",
+    "wowFactor": "Guru Har Krishan, the 8th Sikh Guru, became Guru at age 5 and died of smallpox at age 8 after reportedly healing hundreds of smallpox victims in Delhi — still venerated as the 'child Guru.'",
+    "visualDescription": "Pixel art showing ten portrait medallions in a row, each glowing softly, representing the ten Sikh Gurus",
+    "sourceName": "Wikipedia — Sikhism",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sikhism",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "gurus",
+      "ten_gurus",
+      "sikhism",
+      "lineage"
+    ]
+  },
+  {
+    "id": "world_religions_sik_guru_granth_sahib",
+    "correctAnswer": "Guru Granth Sahib",
+    "acceptableAlternatives": [
+      "the Guru Granth Sahib",
+      "Adi Granth"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "sacred_text_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Adi Granth",
+      "Dasam Granth",
+      "Nitnem",
+      "Rehat Maryada",
+      "Janam Sakhi"
+    ],
+    "quizQuestion": "What is the name of the central sacred scripture of Sikhism, regarded as the final and eternal living Guru?",
+    "explanation": "The Guru Granth Sahib is the central holy scripture of Sikhism. It was compiled by Guru Arjan in 1604 (as the Adi Granth) and expanded by Guru Gobind Singh in 1708, who declared it the eternal living Guru of the Sikhs. It contains hymns from six Sikh Gurus and 36 saints from various Hindu and Muslim traditions — expressing the universality of Sikh spiritual teaching.",
+    "statement": "The Guru Granth Sahib is Sikhism's central scripture and is revered as the eternal living Guru.",
+    "wowFactor": "The Guru Granth Sahib includes hymns from Muslim saints and Hindu bhakti poets alongside Sikh Gurus — making it one of the most religiously inclusive scriptures in the world, compiled in the 17th century.",
+    "visualDescription": "Pixel art of a large sacred text on a golden stand beneath a canopy, surrounded by offerings and flowers",
+    "sourceName": "Wikipedia — Guru Granth Sahib",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Guru_Granth_Sahib",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Sikhs regard the Guru Granth Sahib as what — beyond simply a religious text?",
+        "correctAnswer": "The eternal living Guru",
+        "distractors": [
+          "A legal code",
+          "A historical chronicle",
+          "A book of prophecy",
+          "A meditation manual"
+        ]
+      }
+    ],
+    "tags": [
+      "guru_granth_sahib",
+      "scripture",
+      "guru",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_adi_granth_date",
+    "correctAnswer": "{1604}",
+    "acceptableAlternatives": [
+      "1604"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "1574",
+      "1634",
+      "1564",
+      "1644",
+      "1594",
+      "1614"
+    ],
+    "quizQuestion": "In what year did Guru Arjan compile the first edition of the Sikh scripture, known as the Adi Granth?",
+    "explanation": "Guru Arjan, the fifth Sikh Guru, compiled the Adi Granth in 1604 at the Golden Temple in Amritsar. It contained hymns from the first five Gurus and 30 saints (bhagats) from Hindu and Sufi traditions. In 1708, Guru Gobind Singh added hymns from Guru Tegh Bahadur and declared the expanded scripture — now called Guru Granth Sahib — as the eternal Guru.",
+    "statement": "Guru Arjan compiled the Adi Granth, the first edition of the Sikh scripture, in 1604.",
+    "wowFactor": "The Adi Granth was compiled to preserve authentic Sikh hymns and prevent corruption by impostors — Guru Arjan literally built an archive to protect his religion from forgeries.",
+    "visualDescription": "Pixel art of a scribe at a wooden desk writing by candlelight in a temple interior with golden domes visible outside",
+    "sourceName": "Wikipedia — Guru Arjan",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Guru_Arjan",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "adi_granth",
+      "guru_arjan",
+      "scripture",
+      "1604",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_guru_arjan",
+    "correctAnswer": "Guru Arjan",
+    "acceptableAlternatives": [
+      "Arjan Dev",
+      "Guru Arjan Dev"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "religious_figure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Guru Hargobind",
+      "Guru Tegh Bahadur",
+      "Guru Ram Das",
+      "Guru Amar Das",
+      "Guru Har Rai"
+    ],
+    "quizQuestion": "Which fifth Sikh Guru compiled the Adi Granth, completed the Golden Temple, and became the first Sikh martyr in 1606?",
+    "explanation": "Guru Arjan (1563–1606) was the fifth Sikh Guru and one of the most significant figures in Sikh history. He completed the Harmandir Sahib (Golden Temple), compiled the Adi Granth (1604), and was executed by Mughal Emperor Jahangir in 1606 — becoming the first of the two Sikh Guru martyrs. Sikhs regard his death as a foundational event that shaped Sikh identity as a community willing to sacrifice for faith.",
+    "statement": "Guru Arjan, the fifth Sikh Guru, compiled the Adi Granth and became the first Sikh martyr in 1606.",
+    "wowFactor": "Guru Arjan was executed by being seated on a burning hot plate and having hot sand poured over him — he reportedly remained in prayer throughout, inspiring generations of Sikhs with the concept of dignity in the face of oppression.",
+    "visualDescription": "Pixel art of a dignified Sikh figure in white robes with a serene expression, golden light emanating from behind",
+    "sourceName": "Wikipedia — Guru Arjan",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Guru_Arjan",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Guru Arjan was executed in 1606 by Mughal Emperor _____, making him the first Sikh martyr.",
+        "correctAnswer": "Jahangir",
+        "distractors": [
+          "Aurangzeb",
+          "Akbar",
+          "Shah Jahan",
+          "Babur"
+        ]
+      }
+    ],
+    "tags": [
+      "guru_arjan",
+      "martyrdom",
+      "adi_granth",
+      "sikhism",
+      "fifth_guru"
+    ]
+  },
+  {
+    "id": "world_religions_sik_guru_tegh_bahadur",
+    "correctAnswer": "Guru Tegh Bahadur",
+    "acceptableAlternatives": [
+      "Tegh Bahadur",
+      "the ninth Guru"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "religious_figure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Guru Arjan",
+      "Guru Hargobind",
+      "Guru Har Rai",
+      "Guru Ram Das",
+      "Guru Amar Das"
+    ],
+    "quizQuestion": "Which ninth Sikh Guru was executed by Mughal Emperor Aurangzeb in 1675, and is known as 'Hind di Chaadar' (Shield of India) for defending Kashmiri Hindus' religious freedom?",
+    "explanation": "Guru Tegh Bahadur (1621–1675) was the ninth Sikh Guru. He was beheaded in Delhi on November 24, 1675, by order of Emperor Aurangzeb after refusing to convert to Islam. According to Sikh tradition, he intervened to protect Kashmiri Pandits (Hindu Brahmins) who faced forced conversion — sacrificing his own life for others' religious freedom, even though they were of a different faith.",
+    "statement": "Guru Tegh Bahadur, the ninth Sikh Guru, was executed by Aurangzeb in 1675 and is venerated as the 'Shield of India.'",
+    "wowFactor": "Guru Tegh Bahadur died defending the religious rights of Kashmiri Hindus — not his own community — making his martyrdom an act of interfaith solidarity that remains deeply significant in Sikh teaching.",
+    "visualDescription": "Pixel art of a Sikh Guru standing defiantly before a Mughal court, head held high, wearing warrior robes",
+    "sourceName": "Wikipedia — Guru Tegh Bahadur",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Guru_Tegh_Bahadur",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Guru Tegh Bahadur is known as 'Hind di Chaadar' (Shield of India) because he died defending whose religious freedom?",
+        "correctAnswer": "Kashmiri Hindus",
+        "distractors": [
+          "Sikh community",
+          "Mughal converts",
+          "Christian missionaries",
+          "Sufi Muslims"
+        ]
+      }
+    ],
+    "tags": [
+      "guru_tegh_bahadur",
+      "martyrdom",
+      "ninth_guru",
+      "aurangzeb",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_guru_gobind_singh",
+    "correctAnswer": "Guru Gobind Singh",
+    "acceptableAlternatives": [
+      "Gobind Singh",
+      "the tenth Guru"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "religious_figure_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Guru Arjan",
+      "Guru Tegh Bahadur",
+      "Guru Hargobind",
+      "Guru Ram Das",
+      "Banda Singh Bahadur"
+    ],
+    "quizQuestion": "Who was the tenth and last human Sikh Guru, who founded the Khalsa in 1699 and declared the Guru Granth Sahib the eternal Guru?",
+    "explanation": "Guru Gobind Singh (1666–1708) became Guru at age 9 after his father, Guru Tegh Bahadur, was martyred. He founded the Khalsa in 1699, instituted the Five Ks, commanded Sikhs to adopt the surname Singh (men) or Kaur (women), and before his death declared the Guru Granth Sahib the eternal, living Guru — ending the line of human Gurus.",
+    "statement": "Guru Gobind Singh was the tenth Sikh Guru, who founded the Khalsa and declared the scripture as the eternal Guru.",
+    "wowFactor": "Guru Gobind Singh lost all four of his sons — two died in battle against the Mughals, and two were executed by the Mughal governor Wazir Khan — yet he is described in historical accounts as expressing no bitterness, only resolve.",
+    "visualDescription": "Pixel art of a warrior-guru figure in blue robes holding a sword, with a hawk on his arm and the Khanda symbol behind him",
+    "sourceName": "Wikipedia — Guru Gobind Singh",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Guru_Gobind_Singh",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Guru Gobind Singh founded the Khalsa and ended the human Guru lineage by declaring the _____ as the eternal, living Guru.",
+        "correctAnswer": "Guru Granth Sahib",
+        "distractors": [
+          "Adi Granth",
+          "Dasam Granth",
+          "Nitnem",
+          "Rehat Maryada"
+        ]
+      }
+    ],
+    "tags": [
+      "guru_gobind_singh",
+      "tenth_guru",
+      "khalsa",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_khalsa_founded",
+    "correctAnswer": "{1699}",
+    "acceptableAlternatives": [
+      "1699"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "1669",
+      "1729",
+      "1649",
+      "1709",
+      "1679",
+      "1689"
+    ],
+    "quizQuestion": "In what year did Guru Gobind Singh found the Khalsa at Anandpur Sahib on the festival of Vaisakhi?",
+    "explanation": "On Vaisakhi (April 13) 1699, Guru Gobind Singh gathered Sikhs at Anandpur Sahib and founded the Khalsa — the community of initiated Sikhs. He asked for five volunteers willing to sacrifice their lives; these five (the Panj Pyare, or 'Five Beloved') became the first Khalsa initiates. Guru Gobind Singh also received initiation from these five, symbolizing equality between Guru and disciple.",
+    "statement": "The Khalsa was founded on Vaisakhi, April 13, 1699, by Guru Gobind Singh at Anandpur Sahib.",
+    "wowFactor": "When Guru Gobind Singh asked for five volunteers to give their heads, the crowd of thousands fell silent — yet five men stepped forward. He then initiated them as the Panj Pyare and received initiation from them in return, declaring the disciple and Guru equal.",
+    "visualDescription": "Pixel art of five armored Sikh warriors standing before a Guru figure at a ceremony with a crowd behind them",
+    "sourceName": "Wikipedia — Khalsa",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Khalsa",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "khalsa",
+      "1699",
+      "vaisakhi",
+      "panj_pyare",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_khalsa_concept",
+    "correctAnswer": "Khalsa",
+    "acceptableAlternatives": [
+      "the Khalsa"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "religious_concept_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Sangat",
+      "Panth",
+      "Panj Pyare",
+      "Seva",
+      "Ardas"
+    ],
+    "quizQuestion": "What is the name for the community of initiated Sikhs, founded in 1699, who commit to wearing the Five Ks and upholding a code of conduct?",
+    "explanation": "The Khalsa (meaning 'pure' or 'sovereign') is the community of initiated Sikhs who have undergone Amrit Sanchar (initiation ceremony). Members commit to wearing the Five Ks at all times, abstaining from alcohol and tobacco, and adhering to the Sikh code of conduct (Rehat Maryada). The Khalsa tradition was founded by Guru Gobind Singh in 1699 and its founding is celebrated at Vaisakhi.",
+    "statement": "The Khalsa is the community of initiated Sikhs, founded in 1699, bound by the Five Ks and a code of conduct.",
+    "wowFactor": "The Khalsa abolished caste distinctions in a radical way — all male members took the surname 'Singh' (lion) and all women 'Kaur' (princess), replacing caste-indicating surnames with identity-equalizing ones.",
+    "visualDescription": "Pixel art of a diverse group of Sikh men and women in traditional dress standing under the Nishan Sahib flag",
+    "sourceName": "Wikipedia — Khalsa",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Khalsa",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "khalsa",
+      "initiation",
+      "community",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_five_ks",
+    "correctAnswer": "Five Ks",
+    "acceptableAlternatives": [
+      "Panj Kakars",
+      "5 Ks",
+      "the Five Ks"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "religious_concept_names",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Five Pillars",
+      "Five Precepts",
+      "Five Rites",
+      "Panj Pyare",
+      "Five Virtues"
+    ],
+    "quizQuestion": "What is the collective name for the five articles of faith — including uncut hair and a steel bracelet — that Khalsa Sikhs are required to wear at all times?",
+    "explanation": "The Five Ks (Panj Kakars) are five articles of faith instituted by Guru Gobind Singh in 1699 that Khalsa Sikhs must wear at all times: Kesh (uncut hair), Kangha (small wooden comb), Kara (steel bracelet), Kachera (specific undergarment), and Kirpan (ceremonial sword). Each article carries spiritual symbolism — the Kara represents the infinite God with no beginning or end; the Kesh represents acceptance of God's will.",
+    "statement": "The Five Ks (Panj Kakars) are five articles of faith that Khalsa Sikhs must wear at all times.",
+    "wowFactor": "Every one of the Five Ks starts with the letter 'K' in the Punjabi language — which is why they're called the Five Ks. This mnemonic has helped Sikhs remember their faith obligations for over 300 years.",
+    "visualDescription": "Pixel art showing five glowing objects: uncut hair, a wooden comb, a steel bracelet, white shorts, and a small curved sword",
+    "sourceName": "Wikipedia — Five Ks",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Five_Ks",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Five Ks include Kesh (uncut hair), Kangha (comb), Kara (bracelet), Kachera (undergarment), and _____ (ceremonial sword).",
+        "correctAnswer": "Kirpan",
+        "distractors": [
+          "Khanda",
+          "Kirtan",
+          "Kulah",
+          "Kachh"
+        ]
+      }
+    ],
+    "tags": [
+      "five_ks",
+      "panj_kakars",
+      "kesh",
+      "kara",
+      "kirpan",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_kesh",
+    "correctAnswer": "Kesh",
+    "acceptableAlternatives": [
+      "Kes"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "religious_object_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Kangha",
+      "Kara",
+      "Kachera",
+      "Kirpan",
+      "Dastar"
+    ],
+    "quizQuestion": "Which of the Five Ks refers to unshorn, uncut hair — an article of faith symbolizing acceptance of God's gift and will?",
+    "explanation": "Kesh refers to the practice of keeping hair (and beard) uncut, which is one of the Five Ks of Sikhism. Sikhs believe hair is God's gift and should not be altered. The turban (dastar) is worn by many Sikhs to cover and protect the Kesh. This practice distinguishes Sikh identity and has historical significance as a rejection of the requirement to shave and convert imposed by Mughal authorities.",
+    "statement": "Kesh — uncut hair — is one of the Five Ks and represents acceptance of God's will in Sikh belief.",
+    "wowFactor": "Keeping Kesh (uncut hair) was not just spiritually symbolic — it was historically defiant. When Mughals demanded Sikhs shave to appear non-Sikh, keeping hair was an act of identity and resistance.",
+    "visualDescription": "Pixel art of a turban-wearing Sikh man with a long beard, a warm expression, standing confidently",
+    "sourceName": "Wikipedia — Five Ks",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Five_Ks",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "kesh",
+      "five_ks",
+      "uncut_hair",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_kirpan",
+    "correctAnswer": "Kirpan",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "religious_object_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Kara",
+      "Kangha",
+      "Khanda",
+      "Talwar",
+      "Kachera"
+    ],
+    "quizQuestion": "Which of the Five Ks is a ceremonial curved sword worn by Khalsa Sikhs as a symbol of their duty to defend truth and protect the innocent?",
+    "explanation": "The Kirpan is a ceremonial sword — one of the Five Ks — worn by initiated (Khalsa) Sikhs. It is a religious article, not a weapon, and symbolizes the Sikh commitment to justice, dignity, and the defense of the weak. Wearing the Kirpan is a religious obligation, not optional. In many countries it is legally recognized as a religious article of faith equivalent to a cross or prayer beads.",
+    "statement": "The Kirpan is a ceremonial sword worn by Khalsa Sikhs as a symbol of the duty to protect truth and the innocent.",
+    "wowFactor": "The Kirpan is not a weapon in Sikh religious practice — it is a symbol of justice. Sikhs describe it as the 'sword of mercy,' and many Kirpans are blunted or sealed in their scabbards as an expression of its purely symbolic role.",
+    "visualDescription": "Pixel art of an ornate curved sword in a decorated scabbard with a blue textile strap, displayed against a golden background",
+    "sourceName": "Wikipedia — Five Ks",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Five_Ks",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "kirpan",
+      "five_ks",
+      "ceremonial_sword",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_kara",
+    "correctAnswer": "Kara",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "religious_object_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Kangha",
+      "Kesh",
+      "Kachera",
+      "Kirpan",
+      "Khanda"
+    ],
+    "quizQuestion": "Which of the Five Ks is a steel or iron bracelet worn on the wrist, symbolizing God's infinity and the Sikh's bond with the Guru?",
+    "explanation": "The Kara is a plain steel or iron bracelet worn on the wrist by Khalsa Sikhs, and is one of the Five Ks. Its circular shape with no beginning or end symbolizes the eternal, infinite nature of God (Waheguru) and the eternal bond between a Sikh and their Guru. It also serves as a reminder of righteous action — the hand wearing it should only do good deeds.",
+    "statement": "The Kara, a steel bracelet, is one of the Five Ks, symbolizing God's infinity and the Sikh's bond with the Guru.",
+    "wowFactor": "The Kara is one of the most visible Sikh articles of faith and is often the first thing a non-Sikh notices. It is worn by virtually all Sikhs, even those who have not formally undergone initiation, making it the most universally shared Sikh symbol.",
+    "visualDescription": "Pixel art of a simple steel bracelet on a wrist, glowing softly in golden light",
+    "sourceName": "Wikipedia — Five Ks",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Five_Ks",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "kara",
+      "bracelet",
+      "five_ks",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_amrit_sanchar",
+    "correctAnswer": "Amrit Sanchar",
+    "acceptableAlternatives": [
+      "Amrit Sanskar",
+      "Khande di Pahul"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "religious_practice_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Ardas",
+      "Naam Simran",
+      "Kirtan",
+      "Langar",
+      "Anand Karaj"
+    ],
+    "quizQuestion": "What is the name of the Sikh initiation ceremony in which a person officially joins the Khalsa and takes an oath to uphold the Five Ks and Sikh code of conduct?",
+    "explanation": "Amrit Sanchar (also called Khande di Pahul) is the Sikh initiation ceremony introduced by Guru Gobind Singh when he founded the Khalsa in 1699. During the ceremony, five Khalsa Sikhs (Panj Pyare) prepare Amrit (sacred sweetened water) stirred with a double-edged sword (Khanda) while reciting prayers. The initiate drinks Amrit, has it sprinkled on their eyes and hair, and takes an oath to uphold Sikh values.",
+    "statement": "Amrit Sanchar is the Sikh initiation ceremony in which a person joins the Khalsa by drinking Amrit and taking an oath.",
+    "wowFactor": "The Amrit ceremony was first performed in 1699 when Guru Gobind Singh himself received Amrit from the five men he had just initiated — deliberately reversing the typical teacher-student hierarchy as a statement of equality.",
+    "visualDescription": "Pixel art of five Sikh figures in blue attire around an iron bowl, one holding a double-edged sword, rays of light emanating from the center",
+    "sourceName": "Wikipedia — Amrit Sanchar",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Amrit_Sanchar",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "amrit_sanchar",
+      "initiation",
+      "khalsa",
+      "panj_pyare",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_golden_temple",
+    "correctAnswer": "Amritsar",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "holy_site_names",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Lahore",
+      "Anandpur Sahib",
+      "Patna Sahib",
+      "Nankana Sahib",
+      "Chandigarh"
+    ],
+    "quizQuestion": "In which city is the Harmandir Sahib — known in English as the Golden Temple — the most sacred shrine in Sikhism, located?",
+    "explanation": "The Harmandir Sahib (Golden Temple) is located in Amritsar, Punjab, India. It was built by Guru Arjan in the late 16th century and completed around 1604. The temple is built in the center of a sacred pool (Amrit Sarovar, from which Amritsar takes its name) and is covered in gold leaf on its upper floors. It is the spiritual and cultural center of Sikhism and one of the most visited pilgrimage sites in the world.",
+    "statement": "The Harmandir Sahib (Golden Temple), the holiest shrine in Sikhism, is located in Amritsar, India.",
+    "wowFactor": "The Golden Temple was deliberately built lower than the surrounding land — you descend steps to enter it — symbolizing the Sikh principle of humility. It also has four doors facing all four directions, open to people of all faiths.",
+    "visualDescription": "Pixel art of the Golden Temple at night, reflected in still water, glowing in warm golden light with a starry sky above",
+    "sourceName": "Wikipedia — Golden Temple",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Golden_Temple",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the formal Punjabi name for the Golden Temple, the holiest shrine in Sikhism?",
+        "correctAnswer": "Harmandir Sahib",
+        "distractors": [
+          "Darbar Sahib",
+          "Akal Takht",
+          "Gurdwara Sahib",
+          "Manji Sahib"
+        ]
+      }
+    ],
+    "tags": [
+      "golden_temple",
+      "harmandir_sahib",
+      "amritsar",
+      "holy_site",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_langar",
+    "correctAnswer": "Langar",
+    "acceptableAlternatives": [
+      "the langar"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "religious_practice_names",
+    "difficulty": 1,
+    "funScore": 10,
+    "ageGroup": "all",
+    "distractors": [
+      "Kirtan",
+      "Ardas",
+      "Seva",
+      "Puja",
+      "Sangat"
+    ],
+    "quizQuestion": "What is the name of the free community kitchen found in every gurdwara, which serves meals to all visitors regardless of religion, caste, gender, or economic status?",
+    "explanation": "The langar is the community kitchen of a gurdwara that serves free meals to all — Sikh or non-Sikh, rich or poor, any caste or background. Meals are always lacto-vegetarian to be inclusive of all dietary restrictions. The langar is maintained by volunteers performing seva (selfless service). The Golden Temple's langar serves over 100,000 people daily, making it one of the largest free kitchens in the world.",
+    "statement": "Langar is the free community kitchen in every gurdwara, open to all regardless of religion, caste, or social status.",
+    "wowFactor": "The Golden Temple in Amritsar serves a free meal to over 100,000 people every single day — all cooked by volunteers. This makes it one of the largest free food operations on earth, running continuously for over 400 years.",
+    "visualDescription": "Pixel art of a bright open kitchen with volunteers in traditional attire serving food to a long line of seated people from all walks of life",
+    "sourceName": "Wikipedia — Langar (Sikhism)",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Langar_(Sikhism)",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "In Sikhism, meals at the langar are always cooked in what dietary style to ensure inclusivity for all visitors?",
+        "correctAnswer": "Lacto-vegetarian",
+        "distractors": [
+          "Halal",
+          "Kosher",
+          "Vegan",
+          "Pescatarian"
+        ]
+      }
+    ],
+    "tags": [
+      "langar",
+      "community_kitchen",
+      "seva",
+      "equality",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_gurdwara",
+    "correctAnswer": "Gurdwara",
+    "acceptableAlternatives": [
+      "Gurudwara",
+      "Gurudwar"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "building_type_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Mandir",
+      "Mosque",
+      "Synagogue",
+      "Vihara",
+      "Stupa"
+    ],
+    "quizQuestion": "What is the name for a Sikh place of worship and assembly, literally meaning 'home of the Guru,' which always includes a copy of the Guru Granth Sahib and a langar?",
+    "explanation": "A gurdwara ('home of the Guru') is the Sikh place of worship and community gathering. Every gurdwara contains a Darbar Sahib (main hall) where the Guru Granth Sahib is enshrined on a raised platform (takht) and read aloud. Gurdwaras also always have a langar (community kitchen). People of all faiths are welcome. Outside every gurdwara flies the Nishan Sahib — the triangular Sikh flag bearing the Khanda symbol.",
+    "statement": "A gurdwara is the Sikh place of worship, meaning 'home of the Guru,' always housing the Guru Granth Sahib and a langar.",
+    "wowFactor": "Gurdwaras have an official policy of welcoming everyone — not just Sikhs. During crises like the 1984 anti-Sikh riots or the COVID-19 pandemic, gurdwaras across the world opened their kitchens to feed anyone in need.",
+    "visualDescription": "Pixel art of a white domed gurdwara with a triangular Nishan Sahib flag flying outside, surrounded by visitors removing their shoes",
+    "sourceName": "Wikipedia — Gurdwara",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gurdwara",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "gurdwara",
+      "worship",
+      "sikhism",
+      "building"
+    ]
+  },
+  {
+    "id": "world_religions_sik_vaisakhi",
+    "correctAnswer": "Vaisakhi",
+    "acceptableAlternatives": [
+      "Baisakhi",
+      "Baisakhi/Vaisakhi"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "holy_day_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Gurpurab",
+      "Diwali",
+      "Hola Mohalla",
+      "Maghi",
+      "Lohri"
+    ],
+    "quizQuestion": "Which Sikh festival, celebrated on April 13 or 14, marks the founding of the Khalsa in 1699 and is one of the most important days in the Sikh calendar?",
+    "explanation": "Vaisakhi (also Baisakhi) is celebrated on April 13 or 14 each year and marks the Sikh New Year as well as the founding of the Khalsa by Guru Gobind Singh in 1699. Sikhs celebrate with processions (Nagar Kirtan), prayers, and gatherings at gurdwaras. Vaisakhi is also traditionally a harvest festival in Punjab, giving it both religious and cultural significance.",
+    "statement": "Vaisakhi, celebrated on April 13 or 14, marks the founding of the Khalsa in 1699 and is the Sikh New Year.",
+    "wowFactor": "Vaisakhi 1919 became a tragic date in history when British troops opened fire on a peaceful Vaisakhi gathering in Amritsar's Jallianwala Bagh, killing hundreds. The event galvanized the Indian independence movement.",
+    "visualDescription": "Pixel art of a colorful Sikh procession with people in traditional dress, carrying the Nishan Sahib flag through a village in spring",
+    "sourceName": "Wikipedia — Vaisakhi",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vaisakhi",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "vaisakhi",
+      "khalsa",
+      "festival",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_gurpurab",
+    "correctAnswer": "Gurpurab",
+    "acceptableAlternatives": [
+      "Gurpurb",
+      "Gurpurabs"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "holy_day_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "distractors": [
+      "Vaisakhi",
+      "Maghi",
+      "Hola Mohalla",
+      "Diwali",
+      "Sangrand"
+    ],
+    "quizQuestion": "What is the Sikh term for holy days that commemorate the births or martyrdoms of the Sikh Gurus, including the most celebrated one marking Guru Nanak's birth?",
+    "explanation": "Gurpurab (literally 'Guru's anniversary') refers to the religious observances marking the birth or death anniversaries of the Sikh Gurus. The most widely celebrated is Guru Nanak Gurpurab, which falls on a full moon in October or November and marks Guru Nanak's birth. Celebrations include early-morning prayers, processions (Prabhat Pheris), and all-day kirtan (devotional music) at gurdwaras.",
+    "statement": "Gurpurab refers to Sikh holy days commemorating the birth or death anniversaries of the ten Gurus.",
+    "wowFactor": "The celebration of Guru Nanak's Gurpurab begins at 3 AM with a procession through the streets, singing hymns — a tradition called Prabhat Pheri that has been observed for hundreds of years.",
+    "visualDescription": "Pixel art of a nighttime procession with lanterns and candles winding through streets, singing figures in traditional dress",
+    "sourceName": "Wikipedia — Gurpurab",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gurpurab",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "gurpurab",
+      "holy_day",
+      "guru_nanak",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_naam_japna",
+    "correctAnswer": "Naam Japna",
+    "acceptableAlternatives": [
+      "Naam Simran",
+      "Nam Simran",
+      "Naam Jap"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "religious_concept_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Seva",
+      "Kirat Karni",
+      "Vand Chakna",
+      "Ardas",
+      "Sangat"
+    ],
+    "quizQuestion": "What Sikh practice involves the constant remembrance of God through meditation, prayer, and the repetition of God's name — particularly 'Waheguru' — as one of the three pillars of Sikh daily life?",
+    "explanation": "Naam Japna (remembrance of God's Name) is one of the three fundamental duties of a Sikh, alongside Kirat Karni (honest labor) and Vand Chakna (sharing with others). It involves meditating on God's name — especially 'Waheguru' — through prayer, kirtan (devotional singing), and repetition of the name. Guru Nanak taught that Naam Simran purifies the mind and brings one closer to God.",
+    "statement": "Naam Japna — remembrance of God's name — is one of the three foundational duties of Sikh daily life.",
+    "wowFactor": "Guru Nanak taught that you don't need to leave the world, become a monk, or perform elaborate rituals to be spiritual — simply remembering God's name while living a full, honest life is the Sikh path.",
+    "visualDescription": "Pixel art of a Sikh figure in meditation with eyes closed, soft golden light radiating, Waheguru written in Gurmukhi script above",
+    "sourceName": "Wikipedia — Naam Simran",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Naam_Simran",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "naam_japna",
+      "meditation",
+      "waheguru",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_seva",
+    "correctAnswer": "Seva",
+    "acceptableAlternatives": [
+      "Sewa"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "religious_concept_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Ardas",
+      "Sangat",
+      "Naam Japna",
+      "Kirat Karni",
+      "Simran"
+    ],
+    "quizQuestion": "What Sikh concept, meaning 'selfless service,' is expressed through cooking in the langar, cleaning the gurdwara, and caring for others — regardless of personal benefit?",
+    "explanation": "Seva (selfless service) is a central pillar of Sikh ethics. It encompasses all forms of voluntary service to the community and to God — cooking and serving in the langar, cleaning temple floors, caring for the sick, and any act done without expectation of reward. Guru Nanak taught that serving others is equivalent to serving God. Seva underpins the gurdwara's open-door policy and the langar tradition.",
+    "statement": "Seva (selfless service) is a core Sikh value expressed through volunteering in the langar and caring for others.",
+    "wowFactor": "During natural disasters and refugee crises, Sikh organizations run 'Seva vans' — mobile kitchens staffed entirely by volunteers — deploying worldwide within days. This is considered a direct religious duty, not charity.",
+    "visualDescription": "Pixel art of a Sikh volunteer in an orange apron stirring a massive pot in a busy kitchen, smiling, others working around them",
+    "sourceName": "Wikipedia — Sikhism",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sikhism",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "seva",
+      "service",
+      "langar",
+      "ethics",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_khanda_symbol",
+    "correctAnswer": "Khanda",
+    "acceptableAlternatives": [
+      "the Khanda"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "religious_object_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Ik Onkar",
+      "Nishan Sahib",
+      "Kara",
+      "Kirpan",
+      "Chakkar"
+    ],
+    "quizQuestion": "What is the name of the main symbol of Sikhism, consisting of a double-edged sword in the center, a circular throwing weapon (chakkar), and two crossed swords?",
+    "explanation": "The Khanda is the emblem of Sikhism, found on the Nishan Sahib (Sikh flag) and displayed at every gurdwara. It consists of three elements: a double-edged sword (khanda) in the center representing the power of divine knowledge, a chakkar (circular weapon) representing the infinite nature of God, and two kirpans (swords) crossed at the base representing the balance of spiritual and temporal power. The symbol attained its current form in the early 20th century.",
+    "statement": "The Khanda is the symbol of Sikhism, combining a double-edged sword, a chakkar (circle), and two crossed kirpans.",
+    "wowFactor": "The three elements of the Khanda encode a complete Sikh theology: the double-edged sword for God's creative and destructive power, the circle for God's infinity, and the two swords for the unity of spiritual life (miri) and temporal life (piri).",
+    "visualDescription": "Pixel art of the Khanda symbol in gold and steel on a deep blue background, glowing with sacred light",
+    "sourceName": "Wikipedia — Khanda (Sikh symbol)",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Khanda_(Sikh_symbol)",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "khanda",
+      "symbol",
+      "sikhism",
+      "nishan_sahib"
+    ]
+  },
+  {
+    "id": "world_religions_sik_dastar",
+    "correctAnswer": "Dastar",
+    "acceptableAlternatives": [
+      "turban",
+      "pagri",
+      "pagg"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "religious_object_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Kangha",
+      "Kara",
+      "Kachera",
+      "Dupatta",
+      "Chunni"
+    ],
+    "quizQuestion": "What is the Punjabi word for the turban worn by many Sikhs, which serves to cover and honor the Kesh (uncut hair) and is considered a crown of dignity and honor?",
+    "explanation": "The dastar (turban) is worn by many Sikhs — especially Khalsa Sikhs — to cover and honor their Kesh (uncut hair), one of the Five Ks. Though not technically one of the Five Ks itself, the dastar is considered an integral expression of Sikh identity, dignity, and commitment. It is described as a 'crown' given by the Gurus. Women Sikhs may also wear dastar. The style and tying differs across regions and traditions.",
+    "statement": "The dastar (turban) is worn by many Sikhs to cover their Kesh and is regarded as a crown of honor and Sikh identity.",
+    "wowFactor": "Sikh soldiers in the British Indian Army refused to wear steel helmets in World War I, choosing to wear only their turbans into battle — a stance on religious identity that was eventually respected by the British military command.",
+    "visualDescription": "Pixel art of a neatly wrapped navy-blue turban against a golden background, a small Khanda pin at the front",
+    "sourceName": "Wikipedia — Dastar",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dastar",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "dastar",
+      "turban",
+      "kesh",
+      "identity",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_equality",
+    "correctAnswer": "equality",
+    "acceptableAlternatives": [
+      "equal dignity",
+      "caste equality"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "religious_concept_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "predestination",
+      "reincarnation",
+      "monasticism",
+      "asceticism",
+      "idol worship"
+    ],
+    "quizQuestion": "One of Sikhism's most distinctive founding principles — rejecting the Hindu caste system and declaring all humans equal before God — is best described as what core value?",
+    "explanation": "Guru Nanak's teachings were radically egalitarian for their time. He rejected the Hindu caste system, declaring all humans equal before the one God. He also taught equality of men and women, and this was institutionalized through the langar (where all sit together on the floor and eat the same food), and later through the Khalsa (where all men took the surname Singh and women Kaur, erasing caste identifiers).",
+    "statement": "Sikhism teaches the fundamental equality of all human beings, rejecting caste distinctions and gender hierarchy.",
+    "wowFactor": "At the langar, a king and a beggar sit side by side on the floor and are served the same food — this was a deliberate symbolic statement by Guru Nanak against hierarchies, practiced for 500 years.",
+    "visualDescription": "Pixel art of people of many backgrounds sitting together on a colorful mat, sharing a meal, smiling",
+    "sourceName": "Wikipedia — Sikhism",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sikhism",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "equality",
+      "caste",
+      "guru_nanak",
+      "ethics",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_kirtan",
+    "correctAnswer": "Kirtan",
+    "acceptableAlternatives": [
+      "shabad kirtan",
+      "Gurbani kirtan"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "religious_practice_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Ardas",
+      "Langar",
+      "Seva",
+      "Naam Simran",
+      "Akhand Path"
+    ],
+    "quizQuestion": "What is the Sikh devotional practice of singing hymns (shabads) from the Guru Granth Sahib, accompanied by traditional instruments like the tabla and harmonium?",
+    "explanation": "Kirtan (devotional music) is a central practice in Sikhism. Gurdwara services revolve around kirtan — the singing of hymns (shabads) from the Guru Granth Sahib, typically accompanied by a tabla (drum) and harmonium. It is performed by raagis (trained musicians). Guru Nanak himself was a musician and poet, and music is woven into Sikh scripture: the Guru Granth Sahib specifies ragas (musical modes) for each hymn.",
+    "statement": "Kirtan — devotional hymn-singing from the Guru Granth Sahib — is the central act of worship in Sikh gurdwara services.",
+    "wowFactor": "The entire Guru Granth Sahib is set to specific ragas (classical Indian musical modes) — making it not just a scripture but a musical masterwork. Guru Nanak composed his teachings in poetry designed to be sung, not just read.",
+    "visualDescription": "Pixel art of two musicians in white attire playing tabla and harmonium inside a golden gurdwara, congregation seated before them",
+    "sourceName": "Wikipedia — Sikhism",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sikhism",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "kirtan",
+      "worship",
+      "music",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_banda_singh",
+    "correctAnswer": "Banda Singh Bahadur",
+    "acceptableAlternatives": [
+      "Banda Bahadur",
+      "Gurbaksh Singh"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "religious_figure_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Hari Singh Nalwa",
+      "Baba Deep Singh",
+      "Mahan Singh",
+      "Jassa Singh Ahluwalia",
+      "Charhat Singh Sukerchakia"
+    ],
+    "quizQuestion": "Which Sikh military commander, commissioned by Guru Gobind Singh in 1708, led the Khalsa army to defeat the Mughal forces at Samana and Sirhind, avenging the martyrdom of Guru Gobind Singh's sons?",
+    "explanation": "Banda Singh Bahadur (1670–1716) was originally an ascetic named Madho Das who became a disciple of Guru Gobind Singh. In 1708, Guru Gobind Singh sent him to Punjab to lead the Sikhs in struggle against Mughal oppression. He defeated Mughal forces, captured Sirhind (where Guru Gobind Singh's two younger sons had been executed), and established a short-lived Sikh state. He was eventually captured and executed by Mughal Emperor Farrukhsiyar in 1716.",
+    "statement": "Banda Singh Bahadur was a Sikh military commander who led the Khalsa army against Mughal forces after Guru Gobind Singh's death.",
+    "wowFactor": "Banda Singh Bahadur began life as a Hindu hermit who had renounced the world — he became the most feared military commander in Punjab after a single meeting with Guru Gobind Singh transformed his life's purpose.",
+    "visualDescription": "Pixel art of a warrior figure on horseback in Khalsa blue armor, sword raised, leading a charge through a battlefield",
+    "sourceName": "Wikipedia — Banda Singh Bahadur",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Banda_Singh_Bahadur",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "banda_singh_bahadur",
+      "khalsa",
+      "mughal",
+      "military",
+      "sikhism"
+    ]
+  },
+  {
+    "id": "world_religions_sik_sikhism_origin",
+    "correctAnswer": "Punjab",
+    "acceptableAlternatives": [
+      "the Punjab region",
+      "Punjab region"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "holy_site_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Bengal",
+      "Gujarat",
+      "Rajasthan",
+      "Kashmir",
+      "Sindh"
+    ],
+    "quizQuestion": "In which region of the Indian subcontinent did Sikhism originate in the late 15th century, under the teachings of Guru Nanak?",
+    "explanation": "Sikhism originated in the Punjab region of the Indian subcontinent, which today spans both the Indian state of Punjab and the Pakistani province of Punjab. Guru Nanak was born in Nankana Sahib (now Pakistan), and many of the holiest Sikh sites — Amritsar's Golden Temple, Anandpur Sahib, Fatehgarh Sahib — are in Punjab. The Punjabi language and culture are inseparably linked with Sikh history and identity.",
+    "statement": "Sikhism originated in the Punjab region of the Indian subcontinent in the late 15th century.",
+    "wowFactor": "The partition of India in 1947 divided Punjab between India and Pakistan — cutting the Sikh homeland in two and forcing mass migration. Many of the holiest Sikh sites, including Guru Nanak's birthplace, are now in Pakistan.",
+    "visualDescription": "Pixel art of a golden wheat field in Punjab at sunset, a gurdwara dome visible on the horizon",
+    "sourceName": "Wikipedia — Sikhism",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sikhism",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "punjab",
+      "origin",
+      "sikhism",
+      "homeland"
+    ]
+  },
+  {
+    "id": "world_religions_sik_waheguru",
+    "correctAnswer": "Waheguru",
+    "acceptableAlternatives": [
+      "Wahe Guru",
+      "Wahiguru"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "religious_concept_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Ik Onkar",
+      "Sat Nam",
+      "Ardas",
+      "Akaal",
+      "Nirvair"
+    ],
+    "quizQuestion": "What is the principal Sikh name for God, commonly chanted during Naam Japna meditation and meaning 'Wonderful Teacher' or 'Wondrous Lord'?",
+    "explanation": "Waheguru is the most common name for God in Sikhism, chanted during Naam Simran (remembrance of God). It translates roughly as 'Wonderful Guru' or 'Wondrous Lord' and encapsulates the Sikh concept of a formless, eternal God without gender or attributes. While many names for God appear in the Guru Granth Sahib (including Hari, Ram, and Allah), Waheguru is the most distinctively Sikh term for the divine.",
+    "statement": "Waheguru is the principal Sikh name for God, meaning 'Wonderful Teacher,' chanted during meditation and prayer.",
+    "wowFactor": "The Guru Granth Sahib uses over 100 names for God — including Hindu names like Ram and Hari, and the Muslim name Allah — reflecting the Sikh teaching that all sincere seekers worship the same one God by different names.",
+    "visualDescription": "Pixel art of the word Waheguru in Gurmukhi script rendered in gold, radiating soft light against a deep blue background",
+    "sourceName": "Wikipedia — Sikhism",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sikhism",
+    "volatile": false,
+    "categoryL1": "religion",
+    "categoryL2": "sikhism",
+    "variants": [],
+    "tags": [
+      "waheguru",
+      "god",
+      "naam",
+      "sikhism"
+    ]
+  }
+]

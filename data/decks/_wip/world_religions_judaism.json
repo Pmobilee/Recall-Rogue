@@ -1,0 +1,1609 @@
+[
+  {
+    "id": "world_religions_jud_abraham_patriarch",
+    "correctAnswer": "Abraham",
+    "acceptableAlternatives": [
+      "Abram"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "founder_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Moses",
+      "Isaac",
+      "Jacob",
+      "Noah",
+      "Joseph",
+      "David"
+    ],
+    "quizQuestion": "Who is considered the founding patriarch of Judaism and the first to enter into a covenant with God?",
+    "explanation": "According to the Torah, Abraham (originally Abram) was called by God to leave his homeland and travel to Canaan, where God promised to make his descendants into a great nation. He is the founding patriarch of Judaism and is also revered in Christianity and Islam (where he is called Ibrahim).",
+    "statement": "Abraham is the founding patriarch of Judaism and first figure of the Abrahamic covenant.",
+    "wowFactor": "Abraham is revered as a founding father in three separate world religions — Judaism, Christianity, and Islam — making him perhaps the most cross-culturally significant figure in all of religious history.",
+    "sourceName": "Wikipedia — Abraham",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Abraham",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "According to Jewish tradition, Abraham was called by God to travel to which region that was promised to his descendants?",
+        "correctAnswer": "Canaan",
+        "distractors": [
+          "Egypt",
+          "Babylon",
+          "Mesopotamia",
+          "Persia"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "world_religions_jud_jacob_israel",
+    "correctAnswer": "Israel",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "religious_figure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Canaan",
+      "Judah",
+      "Hebrew",
+      "Zion",
+      "David",
+      "Solomon"
+    ],
+    "quizQuestion": "According to the Torah, what name was the patriarch Jacob given after wrestling with God — a name that became the name of the Jewish people?",
+    "explanation": "The Book of Genesis recounts that Jacob wrestled with a divine being through the night and was given the name Israel, meaning 'one who struggles with God.' His 12 sons became the founders of the Twelve Tribes of Israel, and the Jewish people descend from them.",
+    "statement": "Jacob was renamed Israel, becoming the ancestor of the Twelve Tribes.",
+    "wowFactor": "The name 'Israel' literally means 'one who struggles with God' — built into the very name of the Jewish people is an acknowledgment that wrestling with faith and doubt is central to the tradition.",
+    "sourceName": "Wikipedia — Jacob",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jacob",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "According to the Torah, Jacob had {___} sons who became the founders of the Twelve Tribes of Israel.",
+        "correctAnswer": "12",
+        "distractors": [
+          "10",
+          "7",
+          "13",
+          "6"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "world_religions_jud_moses_exodus",
+    "correctAnswer": "Moses",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "religious_figure_names",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Abraham",
+      "Joseph",
+      "Aaron",
+      "Joshua",
+      "Elijah",
+      "David"
+    ],
+    "quizQuestion": "According to the Torah, who led the Israelites out of slavery in Egypt in the Exodus?",
+    "explanation": "According to the Book of Exodus, Moses was chosen by God — speaking from a burning bush — to demand that Pharaoh free the Israelites. After ten plagues, Pharaoh relented, and Moses led the Israelites across the Red Sea to freedom. Moses is considered the most important prophet in Judaism.",
+    "statement": "Moses led the Israelites out of slavery in Egypt, according to the Torah.",
+    "wowFactor": "Moses is revered as the greatest prophet in Judaism but also appears as a major prophet in Christianity and Islam (where he is called Musa) — making him sacred to well over half of humanity.",
+    "sourceName": "Wikipedia — Moses",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Moses",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "According to the Torah, God spoke to Moses from within what miraculous object on Mount Horeb?",
+        "correctAnswer": "A burning bush",
+        "distractors": [
+          "A pillar of fire",
+          "A thundercloud",
+          "A stone tablet",
+          "A river"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "world_religions_jud_ten_commandments",
+    "correctAnswer": "Mount Sinai",
+    "acceptableAlternatives": [
+      "Sinai",
+      "Mt. Sinai"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "holy_site_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Mount Nebo",
+      "Mount Carmel",
+      "Jerusalem",
+      "Hebron",
+      "Bethlehem",
+      "Jericho"
+    ],
+    "quizQuestion": "According to the Torah, God gave Moses the Ten Commandments at which holy mountain?",
+    "explanation": "The Bible describes God revealing the Ten Commandments to Moses at Mount Sinai amidst thunder and fire. God inscribed the commandments on two stone tablets. Moses later broke the first set after discovering the Israelites worshiping a golden calf, and received a second set. The commandments are foundational to Jewish law (Halakha).",
+    "statement": "God gave Moses the Ten Commandments at Mount Sinai, according to the Torah.",
+    "wowFactor": "Moses broke the first set of tablets in anger when he descended from the mountain and found the Israelites had built a golden calf to worship — making the second set the 'replacement copy' of the most sacred laws in Judaism.",
+    "sourceName": "Wikipedia — Ten Commandments",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ten_Commandments",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Ten Commandments were written on two stone {___} and later kept in the Ark of the Covenant.",
+        "correctAnswer": "tablets",
+        "distractors": [
+          "scrolls",
+          "pillars",
+          "vessels",
+          "plates"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "world_religions_jud_torah_books",
+    "correctAnswer": "5",
+    "acceptableAlternatives": [
+      "five"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "How many books make up the Torah (also called the Pentateuch or Five Books of Moses)?",
+    "explanation": "The Torah consists of five books: Genesis, Exodus, Leviticus, Numbers, and Deuteronomy. In Hebrew, 'Torah' means 'instruction' or 'teaching.' The Torah is the holiest text in Judaism and is read publicly in synagogue on a weekly cycle.",
+    "statement": "The Torah consists of 5 books: Genesis, Exodus, Leviticus, Numbers, and Deuteronomy.",
+    "wowFactor": "The Torah is written on a parchment scroll by a specially trained scribe (sofer) using a quill — a single error can render the entire scroll unkosher and require starting over.",
+    "sourceName": "Wikipedia — Torah",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Torah",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the Hebrew word for the first five books of the Bible (Genesis through Deuteronomy), meaning 'instruction' or 'teaching'?",
+        "correctAnswer": "Torah",
+        "distractors": [
+          "Tanakh",
+          "Talmud",
+          "Mishnah",
+          "Midrash"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "world_religions_jud_tanakh_structure",
+    "correctAnswer": "Ketuvim",
+    "acceptableAlternatives": [
+      "Writings",
+      "Kethuvim"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "sacred_text_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Torah",
+      "Nevi'im",
+      "Mishnah",
+      "Gemara",
+      "Midrash"
+    ],
+    "quizQuestion": "The Tanakh is an acronym: T = Torah, N = Nevi'im (Prophets), and K = what?",
+    "explanation": "The word 'Tanakh' is an acronym: T = Torah (Five Books of Moses), N = Nevi'im (Prophets: Joshua, Isaiah, Ezekiel, and others), and K = Ketuvim (Writings: Psalms, Proverbs, Job, Song of Solomon, and others). Together they form the complete Hebrew Bible.",
+    "statement": "Tanakh = Torah + Nevi'im (Prophets) + Ketuvim (Writings); the K stands for Ketuvim.",
+    "wowFactor": "The name 'Tanakh' is itself an acronym — its three letters are the first letters of its three sections. The Christian Old Testament contains much the same material but organized differently.",
+    "sourceName": "Wikipedia — Torah",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Torah",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "In the Tanakh acronym, what does the 'N' stand for?",
+        "correctAnswer": "Nevi'im (Prophets)",
+        "distractors": [
+          "Numbers",
+          "Nehemiah",
+          "Nisan",
+          "Nazareth"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "world_religions_jud_talmud_composition",
+    "correctAnswer": "Mishnah and Gemara",
+    "acceptableAlternatives": [
+      "Mishnah + Gemara"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "sacred_text_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Torah and Nevi'im",
+      "Ketuvim and Midrash",
+      "Zohar and Mishnah",
+      "Halakha and Aggadah",
+      "Torah and Talmud"
+    ],
+    "quizQuestion": "The Talmud, the central text of Rabbinic Judaism, is composed of two parts — what are they?",
+    "explanation": "The Talmud consists of the Mishnah (the first written collection of Jewish oral law, compiled ~200 CE) and the Gemara (extended rabbinic commentary and discussion on the Mishnah). The Babylonian Talmud, compiled around 500-600 CE, is the more authoritative version.",
+    "statement": "The Talmud = Mishnah (oral law) + Gemara (commentary on Mishnah).",
+    "wowFactor": "The Talmud preserves centuries of rabbinical debate — including minority opinions that were overruled — because Jewish tradition holds that every sincere interpretation of Torah deserves to be remembered.",
+    "sourceName": "Wikipedia — Talmud",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Talmud",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Talmud is written in a combination of Hebrew and {___}.",
+        "correctAnswer": "Aramaic",
+        "distractors": [
+          "Greek",
+          "Latin",
+          "Syriac",
+          "Persian"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "world_religions_jud_covenant_concept",
+    "correctAnswer": "Covenant",
+    "acceptableAlternatives": [
+      "Brit",
+      "the Covenant"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "religious_concept_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Mitzvah",
+      "Tikkun olam",
+      "Monotheism",
+      "Tzedakah",
+      "Shekhinah",
+      "Halakha"
+    ],
+    "quizQuestion": "What is the term for the sacred binding agreement between God and the Jewish people, first established with Abraham and renewed through Moses?",
+    "explanation": "The covenant (Hebrew: brit) is a foundational concept in Judaism — a binding relationship between God and the Jewish people. The Torah describes multiple covenants: with Noah (all living creatures), Abraham (circumcision, the promised land), and Moses at Sinai (the entire Torah). Keeping the commandments is the Jewish people's part of the agreement.",
+    "statement": "The covenant (brit) is the binding agreement between God and the Jewish people central to Jewish theology.",
+    "wowFactor": "The Hebrew Bible records at least five distinct covenants between God and humanity — Noahic, Abrahamic, Sinaitic, Priestly, and Davidic — each with its own terms, signs, and parties.",
+    "sourceName": "Wikipedia — Covenant (biblical)",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Covenant_(biblical)",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_first_temple_builder",
+    "correctAnswer": "Solomon",
+    "acceptableAlternatives": [
+      "King Solomon"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "religious_figure_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "David",
+      "Herod",
+      "Ezra",
+      "Zerubbabel",
+      "Nehemiah",
+      "Joshua"
+    ],
+    "quizQuestion": "According to the Hebrew Bible, which Israelite king built the First Temple in Jerusalem?",
+    "explanation": "The First Temple (also called Solomon's Temple) was commissioned and built by King Solomon, son of David, on the Temple Mount in Jerusalem. The Hebrew Bible places its construction in the 10th century BCE. It contained the Ark of the Covenant in its innermost chamber (the Holy of Holies), which only the High Priest could enter, and only on Yom Kippur.",
+    "statement": "King Solomon built the First Temple in Jerusalem, according to the Hebrew Bible.",
+    "wowFactor": "The Holy of Holies — the inner sanctuary housing the Ark of the Covenant — was so sacred that only the High Priest could enter it, and only once a year on Yom Kippur. The exact location remains one of the most contested sites on Earth.",
+    "sourceName": "Wikipedia — Solomon's Temple",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Solomon%27s_Temple",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What was the name of the innermost chamber of the First Temple, which housed the Ark of the Covenant?",
+        "correctAnswer": "Holy of Holies",
+        "distractors": [
+          "Outer Court",
+          "Tabernacle",
+          "Sanctuary",
+          "Narthex"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "world_religions_jud_first_temple_destroyed",
+    "correctAnswer": "{586}",
+    "acceptableAlternatives": [
+      "586 BCE",
+      "587 BCE",
+      "{587}"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [],
+    "quizQuestion": "In what year BCE did Babylonian forces under Nebuchadnezzar II destroy the First Temple in Jerusalem?",
+    "explanation": "The First Temple was destroyed by Nebuchadnezzar II of the Neo-Babylonian Empire in 586/587 BCE (historians debate the exact year). The destruction ended the First Temple period and led to the Babylonian Captivity — the exile of many Judeans to Babylon. This event profoundly shaped Judaism, leading to the emphasis on synagogue worship and written law.",
+    "statement": "Babylonian forces destroyed the First Temple in Jerusalem in ~586 BCE.",
+    "wowFactor": "The destruction of the First Temple is still mourned annually on Tisha B'Av — the same date is also observed as the anniversary of the Second Temple's destruction, creating a day of double mourning in Jewish tradition.",
+    "sourceName": "Wikipedia — Solomon's Temple",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Solomon%27s_Temple",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_second_temple_destroyed",
+    "correctAnswer": "{70}",
+    "acceptableAlternatives": [
+      "70 CE"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [],
+    "quizQuestion": "In what year CE did Roman forces destroy the Second Temple in Jerusalem?",
+    "explanation": "The Second Temple was destroyed by Roman forces under General Titus in 70 CE during the First Jewish-Roman War. The destruction led to the dispersal of the Jewish people (Diaspora) and the end of Temple-based Judaism. Rabbinic Judaism emerged as the dominant form, centered on the Torah, Talmud, and synagogue. The Western Wall is the last remaining structure from the Temple complex.",
+    "statement": "Roman forces destroyed the Second Temple in Jerusalem in 70 CE.",
+    "wowFactor": "After 70 CE, the Romans carried the Temple's golden Menorah back to Rome in triumph — it is depicted on the Arch of Titus, which still stands in Rome today, over 1,950 years later.",
+    "sourceName": "Wikipedia — Second Temple",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Second_Temple",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The destruction of the Second Temple in 70 CE led to the dispersal of the Jewish people known as what?",
+        "correctAnswer": "Diaspora",
+        "distractors": [
+          "Exodus",
+          "Captivity",
+          "Pilgrimage",
+          "Migration"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "world_religions_jud_masada",
+    "correctAnswer": "Masada",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "holy_site_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Hebron",
+      "Mount Sinai",
+      "Qumran",
+      "Jericho",
+      "Beersheba",
+      "Caesarea"
+    ],
+    "quizQuestion": "What is the name of the Judaean Desert fortress where, according to the historian Josephus, Jewish rebels made their last stand against Rome in 73/74 CE?",
+    "explanation": "Masada was a mountaintop fortress (over 400m above the Dead Sea) built by Herod the Great. During the First Jewish-Roman War, it became the final holdout of the Sicarii rebels. According to Josephus, when Romans breached the walls, nearly 1,000 inhabitants chose mass suicide rather than surrender — though historians debate this account. 'Masada shall not fall again' became a powerful symbol of Jewish resistance.",
+    "statement": "Masada was the site of the last Jewish rebel stand against Rome in 73/74 CE.",
+    "wowFactor": "The phrase 'Masada complex' entered political psychology — describing a mindset where a group prefers collective death to surrender. The site is now a UNESCO World Heritage Site and a powerful symbol for the modern State of Israel.",
+    "sourceName": "Wikipedia — Masada",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Masada",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_maimonides",
+    "correctAnswer": "Maimonides",
+    "acceptableAlternatives": [
+      "Rambam",
+      "Moses ben Maimon"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "religious_figure_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Rashi",
+      "Hillel",
+      "Nachmanides",
+      "Saadia Gaon",
+      "Rabbi Akiva",
+      "Yehuda Halevi"
+    ],
+    "quizQuestion": "Which 12th-century Jewish scholar, known by the acronym Rambam, codified Jewish law in his 14-volume Mishneh Torah?",
+    "explanation": "Moses ben Maimon (Maimonides, born 1135/38 in Córdoba) was one of the most influential Jewish thinkers of the Middle Ages. His 14-volume Mishneh Torah codified all of Jewish law, and his 13 Principles of Faith remain central to Jewish theology. He was also a physician, philosopher, and astronomer. His family fled Spain after the Almohad Caliphate persecuted Jews.",
+    "statement": "Maimonides (Rambam), a 12th-century Jewish scholar, wrote the Mishneh Torah and the 13 Principles of Faith.",
+    "wowFactor": "Maimonides simultaneously served as personal physician to the Islamic sultan Saladin while writing the definitive codification of Jewish law — a remarkable example of cross-cultural intellectual life in medieval Egypt.",
+    "sourceName": "Wikipedia — Maimonides",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Maimonides",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What is the Hebrew acronym for Moses ben Maimon, one of the greatest medieval Jewish scholars?",
+        "correctAnswer": "Rambam",
+        "distractors": [
+          "Rashi",
+          "Ramban",
+          "RaMaL",
+          "Rashba"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "world_religions_jud_rashi",
+    "correctAnswer": "Rashi",
+    "acceptableAlternatives": [
+      "Shlomo Yitzchaki"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "religious_figure_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Maimonides",
+      "Hillel",
+      "Nachmanides",
+      "Saadia Gaon",
+      "Ibn Ezra",
+      "Yehuda Halevi"
+    ],
+    "quizQuestion": "Which 11th-century French rabbi, known by his acronym, is famous for writing the most widely-read commentary on the Torah and the Babylonian Talmud?",
+    "explanation": "Rashi (Shlomo Yitzchaki, 1040-1105 CE) was born in Troyes, France, and authored comprehensive commentaries on nearly the entire Babylonian Talmud and the Hebrew Bible. His Torah commentary is considered the standard reference for Jewish learners of all levels, and his Talmud commentary has appeared in every edition since the first printing in the 1520s.",
+    "statement": "Rashi (1040-1105 CE) wrote the foundational commentaries on the Torah and Babylonian Talmud.",
+    "wowFactor": "Rashi's commentary is so central to Jewish study that reading the Talmud without Rashi is like reading Shakespeare without footnotes — the text has never been printed without his explanations alongside it.",
+    "sourceName": "Wikipedia — Rashi",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rashi",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_hillel_golden_rule",
+    "correctAnswer": "Hillel",
+    "acceptableAlternatives": [
+      "Hillel the Elder"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "religious_figure_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Rashi",
+      "Maimonides",
+      "Rabbi Akiva",
+      "Shammai",
+      "Ezra",
+      "Nehemiah"
+    ],
+    "quizQuestion": "Which ancient Jewish sage, active in the 1st century BCE, famously summarized the entire Torah in one sentence: 'What is hateful to you, do not do unto your fellow'?",
+    "explanation": "Hillel the Elder was a leading sage whose school of thought (House of Hillel) became the dominant force in Jewish law. His summary of Torah — 'That which is hateful to you, do not do unto your fellow. That is the whole Torah; the rest is the explanation; go and learn' — predates Jesus's Golden Rule by a generation and is one of the most quoted sayings in religious history.",
+    "statement": "Hillel the Elder (1st century BCE) summarized all of Torah as: 'What is hateful to you, do not do to your fellow.'",
+    "wowFactor": "Hillel's famous formulation of the Golden Rule — 'what is hateful to you, do not do to your fellow' — was said in response to a Gentile who challenged him to teach the entire Torah while standing on one foot. Hillel responded without hesitation.",
+    "sourceName": "Wikipedia — Hillel the Elder",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hillel_the_Elder",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_david_king",
+    "correctAnswer": "David",
+    "acceptableAlternatives": [
+      "King David"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "religious_figure_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Solomon",
+      "Saul",
+      "Joshua",
+      "Samson",
+      "Gideon",
+      "Samuel"
+    ],
+    "quizQuestion": "Which Israelite king, famous for defeating the giant Goliath as a young man, is traditionally credited with writing many of the Psalms?",
+    "explanation": "According to the Hebrew Bible, David was the second king of the united Kingdom of Israel after Saul. He united the Israelite tribes, made Jerusalem the political and religious capital, and is credited (by tradition) with composing many Psalms. His son Solomon built the First Temple. Jews, Christians, and Muslims all revere David.",
+    "statement": "King David defeated Goliath, united Israel, and made Jerusalem the capital.",
+    "wowFactor": "David the giant-slayer became king, but according to the Tanakh, God denied David his greatest wish — building the Temple — because he had shed too much blood in warfare. That honor passed to his son Solomon.",
+    "sourceName": "Wikipedia — David",
+    "sourceUrl": "https://en.wikipedia.org/wiki/David",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_herzl_zionism",
+    "correctAnswer": "Theodor Herzl",
+    "acceptableAlternatives": [
+      "Herzl"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "religious_figure_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "David Ben-Gurion",
+      "Chaim Weizmann",
+      "Golda Meir",
+      "Vladimir Jabotinsky",
+      "Max Nordau",
+      "Moses Hess"
+    ],
+    "quizQuestion": "Which Hungarian-Jewish journalist, who published Der Judenstaat (The Jewish State) in 1896, is considered the father of modern political Zionism?",
+    "explanation": "Theodor Herzl (1860-1904) witnessed rising antisemitism across Europe and concluded that a Jewish homeland was the only solution. His 1896 pamphlet Der Judenstaat called for the establishment of a Jewish state. In 1897, he convened the First Zionist Congress in Basel. He died in 1904, but is officially called the 'spiritual father of the Jewish State' in Israel's Declaration of Independence.",
+    "statement": "Theodor Herzl (1860-1904) was the founder of modern political Zionism.",
+    "wowFactor": "Herzl predicted in his diary that a Jewish state would be founded within 50 years of the First Zionist Congress. It was founded almost exactly 51 years later, in 1948.",
+    "sourceName": "Wikipedia — Theodor Herzl",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Theodor_Herzl",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_israel_founded",
+    "correctAnswer": "{1948}",
+    "acceptableAlternatives": [
+      "1948 CE",
+      "14 May 1948"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [],
+    "quizQuestion": "In what year was the modern State of Israel established?",
+    "explanation": "Israel declared independence on 14 May 1948, following the end of the British Mandate for Palestine. Theodor Herzl is named in the Israeli Declaration of Independence as the 'spiritual father of the Jewish State.' The founding fulfilled the Zionist movement's central goal of establishing a Jewish homeland after nearly 2,000 years of Diaspora.",
+    "statement": "The modern State of Israel was established in 1948.",
+    "wowFactor": "Israel was declared a state at midnight, and within hours was recognized by the United States — but also simultaneously attacked by neighboring Arab armies, beginning the 1948 Arab-Israeli War on the day of its founding.",
+    "sourceName": "Wikipedia — Theodor Herzl",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Theodor_Herzl",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_holocaust_shoah",
+    "correctAnswer": "Six million",
+    "acceptableAlternatives": [
+      "~6 million",
+      "approximately 6 million",
+      "6,000,000"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 2,
+    "funScore": 2,
+    "ageGroup": "teen+",
+    "distractors": [],
+    "quizQuestion": "During the Holocaust (Shoah), approximately how many Jewish people were systematically murdered by Nazi Germany and its collaborators between 1941 and 1945?",
+    "explanation": "The Holocaust (Hebrew: Shoah, meaning 'catastrophe') was the genocide of European Jews during World War II. From 1941 to 1945, Nazi Germany and its collaborators murdered approximately six million Jews — about two-thirds of Europe's Jewish population. The murders were carried out through mass shootings and poison gas chambers at extermination camps including Auschwitz-Birkenau, Treblinka, and others in occupied Poland.",
+    "statement": "The Holocaust (Shoah) killed approximately six million Jews during WWII under Nazi Germany.",
+    "wowFactor": "The Hebrew word Shoah means 'catastrophe' or 'destruction.' Holocaust Remembrance Day (Yom HaShoah) is observed on 27 Nisan in the Hebrew calendar — a date falling between the anniversary of the Warsaw Ghetto Uprising and Israel's Independence Day.",
+    "sourceName": "Wikipedia — The Holocaust",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Holocaust",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_western_wall",
+    "correctAnswer": "Western Wall",
+    "acceptableAlternatives": [
+      "Kotel",
+      "Wailing Wall",
+      "Kosel"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "holy_site_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Temple Mount",
+      "Mount Sinai",
+      "Cave of Machpelah",
+      "Tomb of Rachel",
+      "Mount of Olives",
+      "Masada"
+    ],
+    "quizQuestion": "What is the name of the ancient wall in Jerusalem, a surviving remnant of the Second Temple complex, that is Judaism's most sacred site accessible for prayer?",
+    "explanation": "The Western Wall (Hebrew: HaKotel HaMa'aravi) is an ancient retaining wall of the Temple Mount. The lower courses date from the Herodian period (late Second Temple). Jews have prayed here for centuries, especially since the Ottoman era. It is sometimes called the 'Wailing Wall' in English. Jews often insert written prayers into the cracks between the stones.",
+    "statement": "The Western Wall (Kotel) in Jerusalem is Judaism's most sacred site accessible for prayer.",
+    "wowFactor": "An estimated one million paper prayer notes (kvitlech) are placed into the Western Wall's cracks each year. Twice a year, they are ceremonially buried on the Mount of Olives in a genizah — a respectful burial for sacred texts.",
+    "sourceName": "Wikipedia — Western Wall",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Western_Wall",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_passover_holiday",
+    "correctAnswer": "Passover",
+    "acceptableAlternatives": [
+      "Pesach"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "holy_day_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Yom Kippur",
+      "Hanukkah",
+      "Rosh Hashanah",
+      "Shavuot",
+      "Sukkot",
+      "Purim"
+    ],
+    "quizQuestion": "Which major Jewish holiday commemorates the Exodus of the Israelites from slavery in ancient Egypt?",
+    "explanation": "Passover (Hebrew: Pesach) is one of the Three Pilgrimage Festivals. It celebrates the Exodus from Egypt and commemorates the night God 'passed over' the homes of the Israelites during the tenth plague. The holiday is observed with a ritual Seder meal at which the Haggadah — a text retelling the Exodus story — is read aloud.",
+    "statement": "Passover (Pesach) celebrates the Exodus of the Israelites from slavery in Egypt.",
+    "wowFactor": "At the Passover Seder, participants are commanded to feel as though they personally left Egypt — not just to remember the story, but to experience it. The Haggadah says 'In every generation, each person is obligated to see themselves as if they personally left Egypt.'",
+    "sourceName": "Wikipedia — Passover",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Passover",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Passover Seder ritual meal involves reading a book called the {___}, which retells the story of the Exodus.",
+        "correctAnswer": "Haggadah",
+        "distractors": [
+          "Mishnah",
+          "Megillah",
+          "Siddur",
+          "Machzor"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "world_religions_jud_yom_kippur",
+    "correctAnswer": "Yom Kippur",
+    "acceptableAlternatives": [
+      "Day of Atonement"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "holy_day_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Rosh Hashanah",
+      "Passover",
+      "Shavuot",
+      "Tisha B'Av",
+      "Purim",
+      "Sukkot"
+    ],
+    "quizQuestion": "What is the holiest day of the year in Judaism, observed with fasting and prayer and known as the 'Day of Atonement'?",
+    "explanation": "Yom Kippur falls on the 10th of Tishrei (late September or October) and is the last of the Ten Days of Repentance that begin with Rosh Hashanah. Traditional observance involves a 25-hour fast, extended prayer services, and confessing sins. The day focuses on seeking forgiveness from God and repairing relationships with others.",
+    "statement": "Yom Kippur (Day of Atonement) is the holiest day of the year in Judaism, observed with fasting.",
+    "wowFactor": "The Kol Nidrei service that opens Yom Kippur evening is one of the most emotionally powerful moments in Judaism — the haunting melody has been called one of the most recognizable pieces of sacred music in the world.",
+    "sourceName": "Wikipedia — Yom Kippur",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Yom_Kippur",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_rosh_hashanah",
+    "correctAnswer": "Rosh Hashanah",
+    "acceptableAlternatives": [
+      "Rosh Hashana",
+      "Jewish New Year"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "holy_day_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Yom Kippur",
+      "Shavuot",
+      "Passover",
+      "Hanukkah",
+      "Purim",
+      "Sukkot"
+    ],
+    "quizQuestion": "What is the Jewish New Year, whose name literally means 'Head of the Year,' celebrated in late September or early October?",
+    "explanation": "Rosh Hashanah falls on the 1st and 2nd of Tishrei (the seventh month of the Hebrew calendar). It marks the traditional anniversary of the creation of humanity and begins the Ten Days of Repentance, culminating in Yom Kippur. The shofar (ram's horn) is blown during the holiday as a call to reflection and repentance.",
+    "statement": "Rosh Hashanah is the Jewish New Year, beginning the Ten Days of Repentance that end on Yom Kippur.",
+    "wowFactor": "The Jewish calendar places the New Year not in the first Hebrew month (Nisan, which contains Passover) but in the seventh — because tradition holds the seventh month contains the anniversary of the creation of humanity, not just the nation.",
+    "sourceName": "Wikipedia — Rosh Hashanah",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rosh_Hashanah",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_hanukkah",
+    "correctAnswer": "Hanukkah",
+    "acceptableAlternatives": [
+      "Chanukah",
+      "Festival of Lights"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "holy_day_names",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageGroup": "all",
+    "distractors": [
+      "Passover",
+      "Sukkot",
+      "Purim",
+      "Shavuot",
+      "Rosh Hashanah",
+      "Yom Kippur"
+    ],
+    "quizQuestion": "Which 8-day Jewish holiday commemorates the Maccabean revolt and the rededication of the Second Temple, celebrated by lighting a 9-branched candelabrum?",
+    "explanation": "Hanukkah (Hebrew: 'dedication') commemorates the Maccabees' victory over the Seleucid Empire in the 2nd century BCE and the rededication of the Second Temple. Each of the 8 nights, one additional candle is lit on the hanukkiah (9-branched menorah). The ninth candle (shamash) is used to light the others. Though religiously minor, it has become culturally prominent in Western countries.",
+    "statement": "Hanukkah commemorates the Maccabean revolt and is observed by lighting candles on a hanukkiah for 8 nights.",
+    "wowFactor": "According to the Talmud, when the Maccabees rededicated the Temple, they found only enough ritually pure oil to light the Temple menorah for one day — but the oil miraculously burned for eight days, which is why the holiday lasts eight nights.",
+    "sourceName": "Wikipedia — Hanukkah",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hanukkah",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_sukkot",
+    "correctAnswer": "Sukkot",
+    "acceptableAlternatives": [
+      "Feast of Tabernacles",
+      "Feast of Booths"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "holy_day_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Passover",
+      "Shavuot",
+      "Purim",
+      "Hanukkah",
+      "Rosh Hashanah",
+      "Yom Kippur"
+    ],
+    "quizQuestion": "Which Jewish autumn festival — one of the Three Pilgrimage Festivals — is observed by eating and sometimes sleeping in a temporary outdoor hut?",
+    "explanation": "Sukkot (Hebrew: 'booths' or 'tabernacles') begins on the 15th of Tishrei, five days after Yom Kippur. It is both an autumn harvest festival and a commemoration of the Israelites' 40 years of wandering in the desert after the Exodus. The temporary hut (sukkah) is open to the sky, recalling the temporary shelters of the desert wandering. It is one of the Three Pilgrimage Festivals.",
+    "statement": "Sukkot is observed by eating in a temporary outdoor hut (sukkah) to recall the Israelites' desert wandering.",
+    "wowFactor": "During Sukkot, Jews wave the four species together: an etrog (citron), a lulav (palm branch), myrtle, and willow — a ritual that combines agriculture, gratitude, and mystical unity of heaven and earth.",
+    "sourceName": "Wikipedia — Sukkot",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sukkot",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_purim",
+    "correctAnswer": "Purim",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "holy_day_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Passover",
+      "Hanukkah",
+      "Sukkot",
+      "Shavuot",
+      "Yom Kippur",
+      "Rosh Hashanah"
+    ],
+    "quizQuestion": "Which joyous Jewish holiday commemorates Queen Esther and Mordecai foiling a plot to destroy the Jews of Persia, as recounted in the Book of Esther?",
+    "explanation": "Purim commemorates the story in the Book of Esther in which the Jewish Queen Esther and her cousin Mordecai foiled Haman's plan to exterminate the Jews of the Persian Empire. The holiday is celebrated with festive meals, the reading of the Book of Esther (Megillah), costumes, gifts to friends, and charity to the poor.",
+    "statement": "Purim commemorates Queen Esther and Mordecai saving the Jewish people from the villain Haman in ancient Persia.",
+    "wowFactor": "Purim is arguably the most festive holiday in Judaism — the Talmud says one should drink until they cannot distinguish between 'cursed is Haman' and 'blessed is Mordecai.' It is sometimes called the Jewish Mardi Gras.",
+    "sourceName": "Wikipedia — Purim",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Purim",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_shavuot",
+    "correctAnswer": "Shavuot",
+    "acceptableAlternatives": [
+      "Feast of Weeks",
+      "Pentecost"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "holy_day_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Passover",
+      "Sukkot",
+      "Purim",
+      "Hanukkah",
+      "Rosh Hashanah",
+      "Yom Kippur"
+    ],
+    "quizQuestion": "Which Jewish Pilgrimage Festival, occurring 50 days after Passover, celebrates the wheat harvest and the giving of the Torah at Mount Sinai?",
+    "explanation": "Shavuot (Hebrew: 'Weeks') marks the end of the seven-week Counting of the Omer from Passover. As a harvest festival it celebrated the first wheat harvest; rabbinically it became the anniversary of God giving the Torah to Moses at Sinai. In Christianity, the same 50-day count after Passover/Easter became Pentecost.",
+    "statement": "Shavuot, 50 days after Passover, celebrates both the wheat harvest and the giving of Torah at Sinai.",
+    "wowFactor": "Many observant Jews stay awake all night on Shavuot studying Torah — a practice called Tikkun Leil Shavuot — to make up for the fact that, according to the Midrash, the Israelites overslept on the morning they were to receive the Torah at Sinai.",
+    "sourceName": "Wikipedia — Shavuot",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Shavuot",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_shabbat",
+    "correctAnswer": "Shabbat",
+    "acceptableAlternatives": [
+      "Shabbos",
+      "Sabbath"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "religious_practice_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Yom Kippur",
+      "Passover Seder",
+      "Bar Mitzvah",
+      "Brit Milah",
+      "Kaddish",
+      "Rosh Hashanah"
+    ],
+    "quizQuestion": "What is Judaism's weekly day of rest, observed from Friday sunset to Saturday nightfall, in which work is forbidden and festive meals are shared?",
+    "explanation": "Shabbat (Hebrew: 'rest' or 'cessation') is observed every week from Friday sunset to Saturday night. It commemorates the biblical account of God resting on the seventh day of creation and the Exodus from Egypt. Shabbat is ushered in by lighting candles and reciting blessings over wine and challah bread. Traditional observance forbids creative work.",
+    "statement": "Shabbat is Judaism's weekly day of rest, observed from Friday sunset to Saturday night.",
+    "wowFactor": "The great Jewish thinker Ahad Ha'am wrote, 'More than Jews have kept Shabbat, Shabbat has kept the Jews.' During two thousand years of Diaspora, the weekly ritual became a portable homeland that Jews carried wherever they went.",
+    "sourceName": "Wikipedia — Shabbat",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Shabbat",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_kosher",
+    "correctAnswer": "Kosher",
+    "acceptableAlternatives": [
+      "Kashrut",
+      "kashrus"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "religious_practice_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Halal",
+      "Shabbat",
+      "Bar Mitzvah",
+      "Brit Milah",
+      "Tzedakah",
+      "Tikkun Olam"
+    ],
+    "quizQuestion": "What is the term for foods that meet the requirements of Jewish dietary law (kashrut), which includes prohibitions on pork and shellfish and rules against mixing meat and dairy?",
+    "explanation": "The word 'kosher' (Hebrew: 'fit') refers to food that conforms to kashrut — the body of Jewish dietary laws derived from the Torah. Key rules include: only certain animals are permitted; pork and shellfish are forbidden; meat and dairy may never be mixed in the same meal; animals must be slaughtered via shechita (ritual slaughter).",
+    "statement": "Kosher (kashrut) refers to Jewish dietary laws that forbid pork and shellfish and prohibit mixing meat and dairy.",
+    "wowFactor": "Keeping kosher requires maintaining two entirely separate sets of dishes, cookware, and utensils for meat and dairy — plus a waiting period between eating them. Some households have up to four sets of dishes (meat, dairy, Passover-meat, Passover-dairy).",
+    "sourceName": "Wikipedia — Kashrut",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kashrut",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_bar_mitzvah",
+    "correctAnswer": "Bar mitzvah",
+    "acceptableAlternatives": [
+      "Bat mitzvah",
+      "Bar/Bat Mitzvah",
+      "b'nai mitzvah"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "religious_practice_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Brit Milah",
+      "Confirmation",
+      "Shabbat",
+      "Kaddish",
+      "Aliyah",
+      "Havdalah"
+    ],
+    "quizQuestion": "What is the Jewish coming-of-age ceremony that marks the point at which a Jewish child becomes accountable for their own actions under religious law?",
+    "explanation": "Bar mitzvah (for boys at age 13) and bat mitzvah (for girls at 12 in Orthodox communities, 13 in Reform/Conservative) literally mean 'son/daughter of the commandment.' At this milestone, the young person is now obligated to observe Jewish commandments and may participate fully in religious life. The ceremony typically includes reading from the Torah scroll in synagogue.",
+    "statement": "Bar/bat mitzvah is the Jewish coming-of-age ceremony at which a young person becomes accountable for observing Jewish law.",
+    "wowFactor": "The term 'bar mitzvah' describes not a ceremony but a person — 'bar mitzvah' means 'one who is obligated by the commandments.' The elaborate celebration that accompanies it was a much later development; originally, the boy simply read from the Torah and was done.",
+    "sourceName": "Wikipedia — Bar and bat mitzvah",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bar_and_bat_mitzvah",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_kaddish",
+    "correctAnswer": "Kaddish",
+    "acceptableAlternatives": [
+      "Qaddish"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "religious_practice_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Shema",
+      "Amidah",
+      "Havdalah",
+      "Kiddush",
+      "Hallel",
+      "Aleinu"
+    ],
+    "quizQuestion": "What is the name of the Jewish prayer of praise to God that is traditionally recited by mourners for 11 months after the death of a parent?",
+    "explanation": "Kaddish (Hebrew: 'holy' or 'sanctification') is a hymn praising God recited during Jewish prayer services. Although it is associated with mourning, the prayer itself contains no reference to death — it is entirely about glorifying God. Mourners recite Kaddish to demonstrate that, even in grief, they still praise God. It must traditionally be said with a minyan (quorum of 10 adult Jews).",
+    "statement": "Kaddish is the Jewish prayer recited by mourners that praises God — though it contains no mention of death.",
+    "wowFactor": "The Mourner's Kaddish is written almost entirely in Aramaic (not Hebrew) — the everyday language of Jews in Babylonia at the time it was composed. Its haunting recitation at funerals and memorial services has made it one of the most universally recognized Jewish prayers.",
+    "sourceName": "Wikipedia — Kaddish",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kaddish",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_star_of_david",
+    "correctAnswer": "Star of David",
+    "acceptableAlternatives": [
+      "Magen David",
+      "Shield of David",
+      "Hexagram"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "religious_object_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Menorah",
+      "Mezuzah",
+      "Shofar",
+      "Kippah",
+      "Tallit",
+      "Chai symbol"
+    ],
+    "quizQuestion": "What six-pointed Jewish symbol, formed by two overlapping triangles, appears on the flag of Israel and represents Jewish identity worldwide?",
+    "explanation": "The Star of David (Hebrew: Magen David, 'Shield of David') is a hexagram that became associated with Jewish identity in the 17th century and spread widely in the 19th century. It was chosen as the central symbol of Zionism at the First Zionist Congress in 1897 and became the emblem on the Israeli national flag in 1948.",
+    "statement": "The Star of David (Magen David) is a six-pointed Jewish symbol on the flag of Israel.",
+    "wowFactor": "Despite its now-universal association with Judaism, the Star of David was not uniquely Jewish until the 17th century — it was previously used as a decorative motif in Christian churches and Islamic mosques without any specific Jewish meaning.",
+    "sourceName": "Wikipedia — Star of David",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Star_of_David",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_menorah_seven",
+    "correctAnswer": "Menorah",
+    "acceptableAlternatives": [
+      "Temple menorah",
+      "seven-branched menorah"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "religious_object_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Hanukkiah",
+      "Shofar",
+      "Tallit",
+      "Mezuzah",
+      "Tefillin",
+      "Kippah"
+    ],
+    "quizQuestion": "What is the name of the seven-branched golden candelabrum that stood in the ancient Temple in Jerusalem and is now the official emblem of the State of Israel?",
+    "explanation": "The Temple menorah was a seven-branched candelabrum made of pure gold that stood in the Tabernacle and both Temples in Jerusalem. It was fueled by fresh olive oil. After the Romans destroyed the Second Temple in 70 CE, the menorah was taken to Rome — its removal is depicted on the Arch of Titus. The menorah became the official emblem of the State of Israel in 1948.",
+    "statement": "The menorah — a seven-branched golden candelabrum — stood in the Temple in Jerusalem and is Israel's official state emblem.",
+    "wowFactor": "The seven-branched Temple menorah and the nine-branched Hanukkah hanukkiah are distinct objects — it is actually prohibited in Jewish law to make a seven-branched menorah resembling the Temple one, which is why Hanukkah menorahs have nine branches.",
+    "sourceName": "Wikipedia — Temple menorah",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Temple_menorah",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_mezuzah",
+    "correctAnswer": "Mezuzah",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "religious_object_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Tefillin",
+      "Kippah",
+      "Tallit",
+      "Shofar",
+      "Amulet",
+      "Tzitzit"
+    ],
+    "quizQuestion": "What is the name of the small case containing a Torah parchment that Jewish families affix to their doorposts in accordance with Deuteronomy 6:9?",
+    "explanation": "A mezuzah (Hebrew: 'doorpost') is a small case containing a parchment scroll inscribed with two passages from Deuteronomy (6:4-9 and 11:13-21), including the Shema prayer. It is placed on the doorposts of Jewish homes and buildings. The scroll is handwritten by a certified Torah scribe. Touching and kissing the mezuzah upon entering is a common custom.",
+    "statement": "A mezuzah is a small case containing Torah verses affixed to the doorposts of Jewish homes.",
+    "wowFactor": "A mezuzah must be inspected twice every seven years to ensure the hand-written parchment inside has not faded, cracked, or become invalid — an invalid mezuzah must be replaced, as the obligation is ongoing.",
+    "sourceName": "Wikipedia — Mezuzah",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mezuzah",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_tallit",
+    "correctAnswer": "Tallit",
+    "acceptableAlternatives": [
+      "Tallis",
+      "prayer shawl"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "religious_object_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Kippah",
+      "Tefillin",
+      "Shofar",
+      "Mezuzah",
+      "Tzitzit",
+      "Sash"
+    ],
+    "quizQuestion": "What is the name of the fringed prayer shawl worn by Jewish men (and in some communities, women) during morning worship services?",
+    "explanation": "A tallit is a rectangular prayer shawl with knotted fringes (tzitzit) at each of its four corners. The fringes are mentioned in Numbers 15:38-40 as a reminder to observe God's commandments. It is worn during morning prayer services and throughout all Yom Kippur services.",
+    "statement": "A tallit is a fringed prayer shawl worn during Jewish morning worship services.",
+    "wowFactor": "The knotted fringes (tzitzit) on the tallit have a specific pattern: 5 double knots and 4 sections of winding, totalling 613 windings — one for each of the 613 commandments in the Torah according to rabbinic counting.",
+    "sourceName": "Wikipedia — Tallit",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tallit",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_shofar",
+    "correctAnswer": "Shofar",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "religious_object_names",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Trumpet",
+      "Lyre",
+      "Kinnor",
+      "Tuba",
+      "Chalil",
+      "Sistrum"
+    ],
+    "quizQuestion": "What ancient ram's horn instrument is blown in synagogue during Rosh Hashanah and at the close of Yom Kippur?",
+    "explanation": "The shofar is an ancient wind instrument made from a ram's horn. It is blown during Rosh Hashanah services as a spiritual wake-up call and at the end of Yom Kippur to mark the close of the holiest day. The shofar also has a long historical use in the Torah — it was sounded at Mount Sinai and before the walls of Jericho.",
+    "statement": "The shofar is a ram's horn blown during Rosh Hashanah and at the end of Yom Kippur.",
+    "wowFactor": "The shofar has no valves, keys, or pitch-altering mechanisms — it can produce only a handful of notes, yet its sound has pierced Jewish worship for over 3,000 years. The piercing blast is meant to awaken the soul to repentance.",
+    "sourceName": "Wikipedia — Shofar",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Shofar",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_tefillin",
+    "correctAnswer": "Tefillin",
+    "acceptableAlternatives": [
+      "phylacteries"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "religious_object_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Tallit",
+      "Mezuzah",
+      "Shofar",
+      "Kippah",
+      "Rosary",
+      "Misbaha"
+    ],
+    "quizQuestion": "What are the small leather boxes containing Torah verses that observant Jewish men bind to their arm and forehead during weekday morning prayers?",
+    "explanation": "Tefillin (also called phylacteries) consist of two small black leather boxes with leather straps, each containing handwritten Torah parchments. One is worn on the upper non-dominant arm (near the heart) and one between the eyes (on the forehead), fulfilling the biblical command in Deuteronomy 6:8 to bind God's words 'as a sign upon your hand and as totafot between your eyes.'",
+    "statement": "Tefillin are leather boxes containing Torah verses bound to the arm and forehead during weekday morning prayers.",
+    "wowFactor": "The word 'totafot' in Deuteronomy — which commands the wearing of tefillin — is so obscure that even ancient rabbis debated its meaning. Most scholars believe it is a foreign loanword, making it one of the Bible's rare borrowings from another language.",
+    "sourceName": "Wikipedia — Tefillin",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tefillin",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_synagogue",
+    "correctAnswer": "Synagogue",
+    "acceptableAlternatives": [
+      "shul",
+      "temple"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "building_type_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageGroup": "all",
+    "distractors": [
+      "Temple",
+      "Cathedral",
+      "Mosque",
+      "Gurdwara",
+      "Mandir",
+      "Basilica"
+    ],
+    "quizQuestion": "What is the name of the Jewish house of prayer and communal gathering?",
+    "explanation": "A synagogue (Hebrew: beit knesset, 'house of assembly'; Yiddish: shul) is the Jewish communal center for prayer, Torah study, and community life. After the destruction of the Second Temple in 70 CE, synagogues became the centers of Jewish religious and community life. The Torah scroll is kept in a special ark (Aron Kodesh) on the synagogue's eastern wall.",
+    "statement": "A synagogue is the Jewish house of worship and community center.",
+    "wowFactor": "The synagogue was so revolutionary that it became the model for Christian churches and Islamic mosques — the idea of a communal space dedicated to prayer, reading scripture, and religious education was largely a Jewish invention that transformed Western religious practice.",
+    "sourceName": "Wikipedia — Synagogue",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Synagogue",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_tikkun_olam",
+    "correctAnswer": "Tikkun olam",
+    "acceptableAlternatives": [
+      "repairing the world"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "religious_concept_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Tzedakah",
+      "Mitzvah",
+      "Shekhinah",
+      "Covenant",
+      "Halakha",
+      "Monotheism"
+    ],
+    "quizQuestion": "What is the Hebrew phrase meaning 'repairing the world' that describes the Jewish imperative toward social justice and making the world a better place?",
+    "explanation": "Tikkun olam (Hebrew: 'repairing the world') is a concept in Judaism that has evolved over time. In classical rabbinic literature it referred to legal enactments for social order; in Kabbalistic mysticism it refers to mystical repair of the divine. In modern usage, particularly in liberal Jewish movements, it refers to the pursuit of social justice — the idea that Jews bear responsibility for the welfare of society as a whole.",
+    "statement": "Tikkun olam is the Jewish concept of 'repairing the world' through social justice and ethical action.",
+    "wowFactor": "Tikkun olam has become one of the most influential concepts exported by Judaism to broader culture — it underlies much of the Jewish community's outsized engagement with social justice movements, civil rights, and human rights activism.",
+    "sourceName": "Wikipedia — Tikkun olam",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tikkun_olam",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_orthodox_denomination",
+    "correctAnswer": "Orthodox Judaism",
+    "acceptableAlternatives": [
+      "Orthodox"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "denomination_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Reform Judaism",
+      "Conservative Judaism",
+      "Reconstructionist Judaism",
+      "Hasidic Judaism",
+      "Karaite Judaism",
+      "Liberal Judaism"
+    ],
+    "quizQuestion": "Which major Jewish denomination most strictly adheres to traditional Halakha (Jewish law) and holds that the Torah was divinely given to Moses at Sinai?",
+    "explanation": "Orthodox Judaism represents the most traditionally observant branch. It maintains that both the Written Torah and the Oral Torah (as codified in the Talmud) were divinely revealed and are binding on all Jews. Orthodox communities keep Shabbat strictly, observe all dietary laws, and maintain traditional gender roles in prayer. It encompasses a wide spectrum from Modern Orthodox to Haredi (ultra-Orthodox).",
+    "statement": "Orthodox Judaism strictly observes traditional Jewish law (Halakha) and believes the Torah was divinely revealed.",
+    "wowFactor": "Contrary to popular assumption, 'Orthodox' as a label for traditional Judaism only emerged in the 19th century — as a contrast to the newly-formed Reform movement. Before Reform Judaism existed, all Jews were simply 'Jewish.'",
+    "sourceName": "Wikipedia — Orthodox Judaism",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Orthodox_Judaism",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_reform_denomination",
+    "correctAnswer": "Reform Judaism",
+    "acceptableAlternatives": [
+      "Reform",
+      "Liberal Judaism",
+      "Progressive Judaism"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "denomination_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Orthodox Judaism",
+      "Conservative Judaism",
+      "Reconstructionist Judaism",
+      "Hasidic Judaism",
+      "Sephardic Judaism",
+      "Masorti Judaism"
+    ],
+    "quizQuestion": "Which Jewish denomination, originating in 19th-century Germany, emphasizes Judaism's ethical dimensions over ceremonial law and allows individual autonomy in observance?",
+    "explanation": "Reform Judaism (also called Liberal or Progressive Judaism) emerged in early 19th-century Germany under Rabbi Abraham Geiger. It views Jewish law as non-binding but as a source of guidance, allowing individuals to choose their practices. Reform is the largest Jewish denomination in the United States and emphasizes social justice, gender equality, and the evolving nature of Jewish tradition.",
+    "statement": "Reform Judaism, originating in 19th-century Germany, views Jewish law as non-binding and emphasizes individual autonomy.",
+    "wowFactor": "The First Reform congregation in the US held its services in German rather than Hebrew and introduced organ music — practices so radical that traditional Jews compared it to converting to Christianity. Today Reform is the largest Jewish denomination in America.",
+    "sourceName": "Wikipedia — Reform Judaism",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Reform_Judaism",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_hasidic_denomination",
+    "correctAnswer": "Hasidic Judaism",
+    "acceptableAlternatives": [
+      "Hasidism",
+      "Chasidic Judaism"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "denomination_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Orthodox Judaism",
+      "Reform Judaism",
+      "Conservative Judaism",
+      "Kabbalistic Judaism",
+      "Musar movement",
+      "Mitnagdim"
+    ],
+    "quizQuestion": "Which movement within Orthodox Judaism, founded in 18th-century Ukraine by the Baal Shem Tov, emphasizes joyful devotion, prayer, and mystical connection with God?",
+    "explanation": "Hasidism (Hasidic Judaism) was founded by Israel Ben Eliezer, known as the Baal Shem Tov ('Master of the Good Name'), in early 18th-century Podolia (now Ukraine). It was a spiritual revival emphasizing joyful prayer, storytelling, and personal devotion over formal scholarship. Today most Hasidic Jews live in Israel and the United States.",
+    "statement": "Hasidic Judaism was founded by the Baal Shem Tov in 18th-century Ukraine, emphasizing joyful devotion and mystical prayer.",
+    "wowFactor": "The Hasidic movement was so controversial when it began that traditional rabbis (Mitnagdim, 'opponents') excommunicated the early Hasidim — accusing them of neglecting Torah study in favor of dance, song, and ecstasy. The two groups eventually reconciled and united against secularism.",
+    "sourceName": "Wikipedia — Hasidic Judaism",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hasidic_Judaism",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_kippah",
+    "correctAnswer": "Kippah",
+    "acceptableAlternatives": [
+      "Yarmulke"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "religious_object_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Tallit",
+      "Tefillin",
+      "Shofar",
+      "Mezuzah",
+      "Tzitzit",
+      "Turban"
+    ],
+    "quizQuestion": "What is the name of the small head covering worn by observant Jewish men as a sign of reverence for God?",
+    "explanation": "The kippah (Hebrew) or yarmulke (Yiddish) is a small, rounded cap worn on the crown of the head. Although not explicitly commanded in the Torah, it is a well-established Jewish practice reflecting humility and recognition that God is above all. Different communities wear different styles — knitted kippot are common among Modern Orthodox; large black velvet kippot among Ultra-Orthodox.",
+    "statement": "The kippah (yarmulke) is a small head covering worn by observant Jewish men as a sign of reverence for God.",
+    "wowFactor": "The style of a Jewish man's kippah can instantly identify his community affiliation — a small knitted kippah signals Modern Orthodox; a large black velvet one signals Haredi; a colorful suede kippah often signals Conservative. It functions as a visible religious identity badge.",
+    "sourceName": "Wikipedia — Kippah",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kippah",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_mishnah",
+    "correctAnswer": "Mishnah",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "sacred_text_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Gemara",
+      "Midrash",
+      "Zohar",
+      "Targum",
+      "Siddur",
+      "Machzor"
+    ],
+    "quizQuestion": "What is the name of the first major written compilation of Jewish oral law, composed around 200 CE by Rabbi Judah the Prince, that forms the basis of the Talmud?",
+    "explanation": "The Mishnah (Hebrew: 'study by repetition') is the foundational document of Rabbinic Judaism. Compiled ~200 CE by Rabbi Judah the Prince (Yehuda HaNasi), it organizes Jewish oral traditions into six orders (sedarim) covering topics from agriculture to civil law to festivals. The Mishnah became the text on which the Gemara (Talmudic commentary) was written.",
+    "statement": "The Mishnah, compiled ~200 CE by Rabbi Judah the Prince, is the first written collection of Jewish oral law.",
+    "wowFactor": "For centuries, the Jewish Oral Torah was passed down through memory alone — writing it down was considered forbidden. Rabbi Judah the Prince finally committed it to writing around 200 CE, fearing that persecution and exile would cause it to be lost forever.",
+    "sourceName": "Wikipedia — Talmud",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Talmud",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_jerusalem_holycity",
+    "correctAnswer": "Jerusalem",
+    "acceptableAlternatives": [],
+    "chainThemeId": 4,
+    "answerTypePoolId": "holy_site_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Hebron",
+      "Bethlehem",
+      "Tel Aviv",
+      "Jericho",
+      "Nazareth",
+      "Haifa"
+    ],
+    "quizQuestion": "Which ancient city, home to the Temple Mount and Western Wall, is the holiest city in Judaism?",
+    "explanation": "Jerusalem has been the spiritual and political center of Jewish life for over 3,000 years. According to the Hebrew Bible, King David made it his capital and brought the Ark of the Covenant there. His son Solomon built the First Temple there. Today the Western Wall — a remnant of the Second Temple complex — is Judaism's holiest accessible prayer site. Jewish prayers traditionally face Jerusalem.",
+    "statement": "Jerusalem has been the holiest city in Judaism for over 3,000 years, home to the Temple Mount.",
+    "wowFactor": "Jewish prayer has been directed toward Jerusalem for millennia — at every service, Jews face toward Jerusalem (mizrach, 'east'). At Passover and Yom Kippur, the traditional closing phrase is 'Next year in Jerusalem!'",
+    "sourceName": "Wikipedia — Jerusalem",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jerusalem",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_hebron_patriarchs",
+    "correctAnswer": "Hebron",
+    "acceptableAlternatives": [
+      "Cave of Machpelah"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "holy_site_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Jerusalem",
+      "Bethlehem",
+      "Jericho",
+      "Beersheba",
+      "Nazareth",
+      "Caesarea"
+    ],
+    "quizQuestion": "Which city in the West Bank is home to the Cave of Machpelah, the traditional burial site of Abraham, Isaac, Jacob, and their wives?",
+    "explanation": "Hebron (Hebrew: Chevron) is one of the four holy cities in Judaism. It contains the Cave of Machpelah (Ma'arat HaMachpelah), traditionally believed to be the burial place of Abraham and Sarah, Isaac and Rebecca, and Jacob and Leah. According to Genesis, Abraham purchased this cave to bury Sarah, establishing one of the oldest Jewish connections to the land.",
+    "statement": "Hebron contains the Cave of Machpelah, traditionally the burial site of Abraham, Isaac, and Jacob.",
+    "wowFactor": "The Cave of Machpelah is one of the most contested holy sites in the world — it is revered by Jews, Christians, and Muslims (as the tomb of Ibrahim/Abraham). Today a mosque stands above part of the site, and a synagogue above another — both communities pray directly above the same tomb.",
+    "sourceName": "Wikipedia — Abraham",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Abraham",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_mitzvah_concept",
+    "correctAnswer": "Mitzvah",
+    "acceptableAlternatives": [
+      "commandment",
+      "mitzvot"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "religious_concept_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Tikkun olam",
+      "Tzedakah",
+      "Halakha",
+      "Covenant",
+      "Shekhinah",
+      "Torah"
+    ],
+    "quizQuestion": "What is the Hebrew term for a divine commandment or good deed, of which traditional Judaism counts 613 in the Torah?",
+    "explanation": "Mitzvah (plural: mitzvot) literally means 'commandment' in Hebrew, referring to the divine commands in the Torah. Traditional Jewish law identifies 613 mitzvot: 248 positive ('do this') and 365 negative ('do not do this'). In common usage, 'mitzvah' is also used colloquially to mean any good deed or kind act.",
+    "statement": "A mitzvah is a divine commandment; traditional Judaism counts 613 mitzvot in the Torah.",
+    "wowFactor": "The Talmudic rabbi who first counted 613 commandments (Rabbi Simlai, 3rd century CE) noted that the number 613 corresponds to the 365 days of the solar year (negative commandments) plus the 248 bones in the human body (positive commandments) — a beautiful, if unscientific, mnemonic.",
+    "sourceName": "Wikipedia — Mitzvah",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mitzvah",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_monotheism_shema",
+    "correctAnswer": "Shema Yisrael",
+    "acceptableAlternatives": [
+      "The Shema",
+      "Shema"
+    ],
+    "chainThemeId": 1,
+    "answerTypePoolId": "religious_concept_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "distractors": [
+      "Kaddish",
+      "Amidah",
+      "Aleinu",
+      "Hallel",
+      "Kiddush",
+      "Havdalah"
+    ],
+    "quizQuestion": "What is the name of Judaism's central declaration of faith, beginning 'Hear, O Israel: the Lord our God, the Lord is One'?",
+    "explanation": "The Shema Yisrael (Hebrew: 'Hear, O Israel') is the central affirmation of Jewish monotheism, drawn from Deuteronomy 6:4. It is recited in morning and evening prayers, before sleep, and is traditionally the last words spoken by a Jew before death. The Shema affirms the oneness of God and is the cornerstone of Jewish theology.",
+    "statement": "The Shema Yisrael ('Hear, O Israel, the Lord is One') is Judaism's central declaration of faith.",
+    "wowFactor": "Historically, the Shema was the prayer on the lips of Jewish martyrs — from those killed in ancient persecutions to victims of the Holocaust. Many survivors recount that when they were liberated from Nazi camps, the first thing they said was the Shema.",
+    "sourceName": "Wikipedia — Shema Yisrael",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Shema_Yisrael",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_tzedakah",
+    "correctAnswer": "Tzedakah",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "religious_concept_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "all",
+    "distractors": [
+      "Tikkun olam",
+      "Mitzvah",
+      "Shekhinah",
+      "Halakha",
+      "Chesed",
+      "Kavvanah"
+    ],
+    "quizQuestion": "What is the Hebrew term for charity or justice — a religious obligation in Judaism, not merely a voluntary act of generosity?",
+    "explanation": "Tzedakah (from the Hebrew root tzedek, 'justice' or 'righteousness') refers to the Jewish obligation to give to those in need. Unlike the English word 'charity' which implies a voluntary gift, tzedakah is a religious duty — one of the most important mitzvot. Maimonides described eight levels of tzedakah, with the highest being helping someone become self-sufficient.",
+    "statement": "Tzedakah is the Jewish concept of charitable giving as a religious obligation, not mere generosity.",
+    "wowFactor": "Maimonides' 'Ladder of Tzedakah' ranks eight levels of charity from lowest (giving reluctantly) to highest (giving a person work, a loan, or skills to become self-supporting). His 12th-century framework anticipates modern concepts of 'giving that empowers' rather than creates dependency.",
+    "sourceName": "Wikipedia — Tzedakah",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tzedakah",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  },
+  {
+    "id": "world_religions_jud_diaspora",
+    "correctAnswer": "Diaspora",
+    "acceptableAlternatives": [
+      "Jewish Diaspora",
+      "Galut"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "religious_concept_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "distractors": [
+      "Exodus",
+      "Exile",
+      "Captivity",
+      "Migration",
+      "Pilgrimage",
+      "Aliyah"
+    ],
+    "quizQuestion": "What is the term for the dispersion of the Jewish people outside of Israel, which intensified dramatically after the Roman destruction of the Second Temple in 70 CE?",
+    "explanation": "The Diaspora (Hebrew: Galut, 'exile') refers to Jewish communities living outside of Israel. While Jews had lived in Babylon and Egypt since ancient times, the Roman destruction of Jerusalem in 70 CE caused a massive dispersion across Europe, North Africa, and the Middle East. For nearly two thousand years, the majority of Jews lived in the Diaspora until the establishment of Israel in 1948.",
+    "statement": "The Diaspora refers to the dispersion of Jewish communities outside of Israel, intensified after 70 CE.",
+    "wowFactor": "The Jewish Diaspora preserved a common identity across 70+ countries for nearly 2,000 years without a state, army, or territory — a feat of cultural cohesion unmatched in history, maintained through shared text (Talmud), shared law (Halakha), and shared memory.",
+    "sourceName": "Wikipedia — Jewish diaspora",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jewish_diaspora",
+    "volatile": false,
+    "categoryL1": "mythology_folklore",
+    "categoryL2": "world_religions",
+    "variants": []
+  }
+]

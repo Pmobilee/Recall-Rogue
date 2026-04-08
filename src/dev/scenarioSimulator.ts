@@ -501,6 +501,10 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     screen: 'restStudy',
     deckId: 'famous_inventions',
   },
+  'study-deck-religions': {
+    screen: 'restStudy',
+    deckId: 'world_religions',
+  },
   'study-deck-egypt-myth': {
     screen: 'restStudy',
     deckId: 'egyptian_mythology',
