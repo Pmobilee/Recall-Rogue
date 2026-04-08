@@ -54,8 +54,13 @@ RUN npm init -y && npm install playwright@latest
 
 # Copy test scripts
 COPY test-webgl.mjs /app/test-webgl.mjs
+COPY visual-test-runner.mjs /app/visual-test-runner.mjs
+COPY warm-server.mjs /app/warm-server.mjs
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
+
+# Warm server port
+EXPOSE 3200
 
 # Xvfb display
 ENV DISPLAY=:99

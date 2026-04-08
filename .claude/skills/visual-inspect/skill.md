@@ -17,6 +17,45 @@ Jump to ANY game state instantly via Playwright MCP + `window.__rrScenario`. Thi
 
 ## Core Workflow
 
+### Docker Method: Isolated Container (Parallel-Safe) — RECOMMENDED FOR PARALLEL AGENTS
+
+When multiple agents need to test simultaneously, use Docker. Each container has its own Xvfb + Chromium + SwiftShader WebGL — no chrome-lock needed, fully isolated.
+
+**Requirements:** Docker Desktop must be running.
+
+```bash
+# Single scenario test — no chrome-lock needed
+scripts/docker-visual-test.sh --scenario combat-basic --agent-id my-agent
+```
+
+After the script completes, read the outputs from the timestamped output directory:
+
+```
+# Directory: /tmp/rr-docker-visual/{agent-id}_{scenario}_{timestamp}/
+#
+# Screenshot (page.screenshot):
+Read("/tmp/rr-docker-visual/{agent-id}_{scenario}_{timestamp}/screenshot.png")
+#
+# RR Screenshot (__rrScreenshotFile composite — Phaser + DOM):
+Read("/tmp/rr-docker-visual/{agent-id}_{scenario}_{timestamp}/rr-screenshot.jpg")
+#
+# Layout Dump (__rrLayoutDump — exact pixel coordinates):
+Read("/tmp/rr-docker-visual/{agent-id}_{scenario}_{timestamp}/layout-dump.txt")
+#
+# Result JSON (success flag, errors, timing):
+Read("/tmp/rr-docker-visual/{agent-id}_{scenario}_{timestamp}/result.json")
+```
+
+**Key facts about the Docker method:**
+- Full WebGL 2.0 support via SwiftShader software renderer (shaders, framebuffers, all Phaser features)
+- No chrome-lock required — each container is fully isolated
+- Supports 2-3 parallel containers — stagger launches by 3 seconds for reliability
+- All scenario presets work (`combat-basic`, `combat-boss`, `shop`, `reward-room`, etc.)
+- Both `page.screenshot()` and `__rrScreenshotFile()` work inside the container
+- `__rrLayoutDump()` works perfectly
+- Slower than native (~60-110s per test) due to software rendering
+- For single quick tests where no parallelism is needed, the Direct Node.js Script method below is faster
+
 ### Primary Method: Direct Node.js Script
 
 When Playwright MCP tools are unavailable (common), use this approach directly:
@@ -82,11 +121,24 @@ If ANY screenshot or browser tool fails (Playwright won't launch, Chrome not con
 5. Result: full game view with enemy sprites + backgrounds + cards + UI
 
 ### CRITICAL RULES
-- **ALWAYS use `channel: 'chrome'`** when launching Playwright (system Chrome has WebGL via Metal GPU; bundled Chromium does not)
-- **NEVER use `page.screenshot()`** (Phaser RAF blocks it — 30s timeout)
+- **ALWAYS use `channel: 'chrome'`** when launching Playwright natively (system Chrome has WebGL via Metal GPU; bundled Chromium does not)
+- **NEVER use `page.screenshot()`** natively (Phaser RAF blocks it — 30s timeout) — inside Docker containers this works fine
 - **NEVER use `mcp__playwright__browser_take_screenshot`** (same RAF issue)
 - **NEVER use `page.context().newCDPSession()`** (hangs permanently)
 - **ALWAYS wait 5 seconds** after scenario load before capturing
+
+### Chrome Lock Protocol
+
+The chrome-lock (`scripts/chrome-lock.sh`) is required for the Direct Node.js Script and Playwright MCP methods since they share the system Chrome process.
+
+**The Docker method does NOT need chrome-lock** — each container runs its own isolated Chromium instance.
+
+```bash
+scripts/chrome-lock.sh check                    # Check if locked
+scripts/chrome-lock.sh wait 60                  # Wait up to 60s
+scripts/chrome-lock.sh acquire <task-id>        # Acquire lock (native methods only)
+scripts/chrome-lock.sh release                  # Release lock
+```
 
 ## Available Presets
 

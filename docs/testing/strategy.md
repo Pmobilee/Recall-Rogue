@@ -103,6 +103,15 @@ node tests/e2e/03-save-resume.cjs  # Save/resume flow
 
 Both scripts use `channel: 'chrome'` (system Chrome) — mandatory on macOS ARM64 for WebGL.
 
+**Docker parallel testing (no chrome-lock):**
+```bash
+# Each container gets its own Xvfb + Chromium + SwiftShader WebGL — fully isolated
+scripts/docker-visual-test.sh --scenario combat-basic --agent-id my-agent
+# Outputs: /tmp/rr-docker-visual/{agent}_{scenario}_{timestamp}/
+#   screenshot.png, rr-screenshot.jpg, layout-dump.txt, result.json
+```
+Supports 2-3 simultaneous containers (stagger launches by 3s). Requires Docker Desktop. ~60-110s per test due to software rendering. See `/visual-inspect` skill for full details.
+
 ## LLM Playtest (`/llm-playtest` skill)
 
 Spawns Sonnet sub-agents that actually play the game via Playwright. Each agent has a distinct focus (quiz quality, balance curve, engagement, study flow). Reports land in `data/playtests/llm-batches/`.

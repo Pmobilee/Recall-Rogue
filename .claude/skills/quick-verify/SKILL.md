@@ -45,6 +45,7 @@ await page.evaluate(() => __rrScenario.spawn(__rrScenario.recipes('soul_jar').co
 Use `spawn()` instead of navigating through menus — it's faster and more reliable.
 
 ## Optional: Full Visual Check
+
 If the user adds `--visual` or if the change was UI-related:
 1. Ensure dev server is running (`npm run dev`)
 2. Navigate: `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
@@ -53,6 +54,16 @@ If the user adds `--visual` or if the change was UI-related:
    - Layout dump: `browser_evaluate(() => window.__rrLayoutDump())` — returns text with exact pixel coordinates of ALL Phaser + DOM elements (structured coordinate data to complement the visual)
 4. Check console: `mcp__playwright__browser_console_messages`
 5. Report any visual issues or console errors.
+
+### Parallel-Safe Visual Testing (Docker)
+
+When multiple agents are running visual tests simultaneously, use the Docker method instead of Playwright MCP tools to avoid chrome-lock contention:
+
+```bash
+scripts/docker-visual-test.sh --scenario combat-basic --agent-id my-agent
+```
+
+Each Docker container runs its own isolated Chromium with SwiftShader WebGL — no chrome-lock needed. Read outputs from `/tmp/rr-docker-visual/{agent-id}_{scenario}_{timestamp}/`. Slower (~60-110s) but fully parallel-safe. See `.claude/skills/visual-inspect/skill.md` for full Docker method documentation.
 
 ### Registry Update (AUTO)
 If all unit tests pass, stamp affected elements:

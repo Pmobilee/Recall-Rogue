@@ -115,8 +115,16 @@ Agent roles and file ownership in `.claude/agents/`:
 
 ## Chrome Browser Locking
 
-**Only ONE agent can use Chrome at a time.**
+**Chrome-lock is only needed for `claude-in-chrome` MCP tools** (shared browser session).
 
+For Playwright-based visual testing, use **Docker containers instead** — no lock needed:
+```bash
+scripts/docker-visual-test.sh --scenario combat-basic --agent-id my-agent
+# Outputs: /tmp/rr-docker-visual/{agent}_{scenario}_{timestamp}/
+# Requires Docker Desktop running. Supports 2-3 parallel containers.
+```
+
+Legacy chrome-lock (for claude-in-chrome MCP only):
 ```bash
 scripts/chrome-lock.sh check                    # Check if locked
 scripts/chrome-lock.sh wait 60                  # Wait up to 60s
