@@ -238,6 +238,35 @@ Answer quality (2 new checks):
 
 Pool homogeneity (check #20, non-vocab only): Per pool, if the max/min display-length ratio of non-bracket answers exceeds 3x → FAIL (displayed); exceeds 2x → WARN. Catches pools that mix very short answers with long ones, making the correct answer visually obvious. Bracket-number answers are excluded (numerical distractors are algorithmic). NOTE: Pool-homogeneity FAIL from `verify-all-decks.mjs` is now a hard gate — all 41 knowledge decks have 0 verify-all-decks FAIL as of 2026-04-09. Separate quiz-audit `length_mismatch` failures (from `quiz-audit.mjs --full`) are also now at 0. Use `scripts/fix-pool-heterogeneity.mjs` to auto-split heterogeneous pools; manually resolve outlier facts that cannot be auto-split. Use `pool-homogeneity-analysis.mjs` for detailed per-pool analysis.
 
+### Self-Answering Fix — `scripts/fix-self-answering.mjs`
+
+Detects and rewrites quiz questions where the correct answer appears verbatim in the question stem (making the quiz trivial). Run once after any large content addition or on-demand.
+
+```bash
+node scripts/fix-self-answering.mjs --dry-run          # Preview only, no writes
+node scripts/fix-self-answering.mjs                    # Apply fixes
+node scripts/fix-self-answering.mjs --deck ancient_rome # Single deck
+```
+
+**Detection rule:** answer length > 5 chars AND answer appears at a word boundary in quizQuestion. Uses word-boundary regex — not plain substring match — to avoid false positives where the answer is embedded inside a different word (e.g. "dermis" inside "epidermis" is not flagged).
+
+**Skips automatically:**
+- All vocabulary domain decks (cognate translations are intentionally self-referential)
+- Facts with `quizMode: "image_question"` or `"image_answers"` (image differentiates the question)
+- Medical combining-form facts ("What does ureter/o mean?" — answer is the form being defined)
+
+**Rewrite strategies (in priority order):**
+1. `manual_fix` — hand-crafted replacement from the `MANUAL_FIXES` object keyed by exact factId
+2. `what_is_x_definition` — "What is X?" / "What does X mean?" rewrites to "What is the definition of this term?"
+3. `subject_lead_rewrite` — "[Answer] was the term for..." rewrites to "What was the term for..."
+4. `what_was_x_stripped` — strips subject from "What was X and..." style questions
+5. `word_boundary_replacement` — replaces first word-boundary occurrence with a generic placeholder
+
+Output: `data/self-answering-fix-report.json` — lists every fixed fact with old/new question and strategy used.
+
+**2026-04-08 baseline:** 121 facts fixed across 27 knowledge decks. 12 acceptable false positives remain (answer is substring-only inside a longer unrelated word). Vocabulary and image-quiz facts account for 1,056 intentionally skipped detections.
+
+
 ### Unit Tests — `tests/unit/deck-content-quality.test.ts`
 
 10 Vitest tests run as part of `npx vitest run`. Hard-fail thresholds only. All 10 currently active (pool remediation 2026-04-09 resolved the previously-skipped test):

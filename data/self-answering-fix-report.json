@@ -1,0 +1,105 @@
+{
+  "timestamp": "2026-04-08T16:00:22.472Z",
+  "dryRun": false,
+  "summary": {
+    "fixed": 7,
+    "skipped": 5,
+    "flaggedForReview": 0
+  },
+  "changes": [
+    {
+      "deckId": "ancient_greece",
+      "factId": "greece_rel_panathenaia",
+      "originalQuestion": "Which goddess of wisdom and warfare was the patron deity honored by the Panathenaia festival in Athens, which included athletic and musical competitions?",
+      "newQuestion": "Which goddess of wisdom and warfare was the patron deity honored by the Panathenaia festival in Athens, which included athletic and musical competitions?",
+      "answer": "Athena",
+      "strategy": "manual_fix"
+    },
+    {
+      "deckId": "ap_biology",
+      "factId": "ap_bio_meiosis_I_def",
+      "originalQuestion": "Which division — the first or the second — of meiosis is called the reductional division, in which homologous chromosomes separate and the chromosome number is halved?",
+      "newQuestion": "Which division — the first or the second — of meiosis is called the reductional division, in which homologous chromosomes separate and the chromosome number is halved?",
+      "answer": "Meiosis I",
+      "strategy": "manual_fix"
+    },
+    {
+      "deckId": "ap_psychology",
+      "factId": "ap_psych_cc_cs_definition",
+      "originalQuestion": "In classical conditioning, what term describes a previously neutral stimulus that — after repeated pairing with an unconditioned stimulus — triggers a learned response on its own?",
+      "newQuestion": "In classical conditioning, what term describes a previously neutral stimulus that — after repeated pairing with an unconditioned stimulus — triggers a learned response on its own?",
+      "answer": "Conditioned stimulus",
+      "strategy": "manual_fix"
+    },
+    {
+      "deckId": "dinosaurs",
+      "factId": "dino_quetzalcoatlus_name_origin",
+      "originalQuestion": "The giant pterosaur Quetzalcoatlus was named after a feathered serpent deity of the Aztec religion. What was the name of that deity?",
+      "newQuestion": "The giant pterosaur Quetzalcoatlus was named after a feathered serpent deity of the Aztec religion. What was the name of that deity?",
+      "answer": "Quetzalcoatl",
+      "strategy": "manual_fix"
+    },
+    {
+      "deckId": "human_anatomy",
+      "factId": "ha_integ_010",
+      "originalQuestion": "Which skin layer — lying between the epidermis above and the hypodermis below — contains blood vessels, hair follicles, and nerve endings?",
+      "newQuestion": "Which skin layer — lying between the epidermis above and the hypodermis below — contains blood vessels, hair follicles, and nerve endings?",
+      "answer": "dermis",
+      "strategy": "manual_fix"
+    },
+    {
+      "deckId": "periodic_table",
+      "factId": "periodic_table_nickel_devils_copper",
+      "originalQuestion": "Which element was originally called \"Kupfernickel\" — devil's copper — by German miners who were frustrated that the ore looked like copper but yielded none?",
+      "newQuestion": "Which element was originally called \"Kupfernickel\" — devil's copper — by German miners who were frustrated that the ore looked like copper but yielded none?",
+      "answer": "Nickel",
+      "strategy": "manual_fix"
+    },
+    {
+      "deckId": "us_states",
+      "factId": "us_states_indiana_indy500",
+      "originalQuestion": "The Indianapolis 500 — considered the world's largest single-day sporting event — takes place at the Motor Speedway in which U.S. state?",
+      "newQuestion": "The Indianapolis 500 — considered the world's largest single-day sporting event — takes place at the Motor Speedway in which U.S. state?",
+      "answer": "Indiana",
+      "strategy": "manual_fix"
+    }
+  ],
+  "flaggedForReview": [],
+  "skipped": [
+    {
+      "deckId": "medical_terminology",
+      "factId": "medterm_root_uretero",
+      "reason": "medical_combining_form",
+      "q": "What does the combining form ureter/o mean?",
+      "a": "Ureter"
+    },
+    {
+      "deckId": "medical_terminology",
+      "factId": "medterm_root_ligamento",
+      "reason": "medical_combining_form",
+      "q": "What does the medical root 'ligament/o' mean?",
+      "a": "ligament"
+    },
+    {
+      "deckId": "medical_terminology",
+      "factId": "medterm_root_insulino",
+      "reason": "medical_combining_form",
+      "q": "What does the medical combining form 'insulin/o' mean?",
+      "a": "insulin"
+    },
+    {
+      "deckId": "medical_terminology",
+      "factId": "medterm_organ_ureter",
+      "reason": "medical_combining_form",
+      "q": "The combining form ureter/o refers to which organ?",
+      "a": "Ureter"
+    },
+    {
+      "deckId": "medical_terminology",
+      "factId": "medterm_abbr_pt_inr",
+      "reason": "medical_combining_form",
+      "q": "What does the medical abbreviation PT/INR stand for?",
+      "a": "PT/INR"
+    }
+  ]
+}
