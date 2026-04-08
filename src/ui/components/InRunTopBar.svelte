@@ -539,16 +539,15 @@
     width: calc(var(--topbar-height, 4.5vh) * 0.58);
     height: calc(var(--topbar-height, 4.5vh) * 0.58);
     min-width: calc(var(--topbar-height, 4.5vh) * 0.58);
-    border-radius: 50%;
     border: none;
-    background: rgba(0, 0, 0, 0.35);
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     padding: 0;
     flex-shrink: 0;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.7));
+    filter: drop-shadow(0 0 calc(1px * var(--layout-scale, 1)) rgba(255, 255, 255, 0.7)) drop-shadow(0 0 calc(1px * var(--layout-scale, 1)) rgba(255, 255, 255, 0.5));
     transition: transform 120ms ease;
   }
 
