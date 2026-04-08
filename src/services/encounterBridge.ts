@@ -49,6 +49,7 @@ import { getCuratedDeck } from '../data/curatedDeckStore'
 import type { FactDomain } from '../data/card-types'
 import { turboDelay } from '../utils/turboMode'
 import { getRunRng, isRunRngActive } from './seededRng'
+import { awaitCoopTurnEnd, broadcastPartnerState } from './multiplayerCoopSync'
 import { calculateFunnessBoostFactor } from './funnessBoost';
 import { calculateAccuracyGrade } from './accuracyGradeSystem';
 import {
@@ -1134,6 +1135,22 @@ export async function handleEndTurn(): Promise<void> {
 
   // Capture pre-turn HP so the UI stays at the old value during the animation delay
   const previousHp = turnState.playerState.hp;
+
+  // Co-op turn barrier: in co-op multiplayer the enemy phase must wait until
+  // every player has ended their turn. awaitCoopTurnEnd resolves immediately
+  // for single-player and resolves once all peers signal in co-op.
+  // We set a "waiting for partner" flag on the turn state so the UI can dim
+  // the End Turn button while we wait.
+  const runForMode = get(activeRunState);
+  const isCoop = runForMode?.multiplayerMode === 'coop';
+  if (isCoop) {
+    coopWaitingForPartner.set(true);
+    try {
+      await awaitCoopTurnEnd();
+    } finally {
+      coopWaitingForPartner.set(false);
+    }
+  }
 
   const result = endPlayerTurn(turnState);
   playCardAudio('enemy-turn-start');
