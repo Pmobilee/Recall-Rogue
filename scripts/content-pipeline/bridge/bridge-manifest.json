@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-04-08T07:59:45.519Z",
-  "totalBridgedFacts": 5003,
+  "lastRun": "2026-04-08T13:27:40.156Z",
+  "totalBridgedFacts": 5024,
   "decks": {
     "ancient_greece": {
       "totalFacts": 246,
@@ -223,6 +223,18 @@
       "totalFacts": 377,
       "entities": 232,
       "bridged": 232,
+      "skipped": 0
+    },
+    "ap_microeconomics": {
+      "totalFacts": 430,
+      "entities": 10,
+      "bridged": 10,
+      "skipped": 0
+    },
+    "ap_macroeconomics": {
+      "totalFacts": 440,
+      "entities": 11,
+      "bridged": 11,
       "skipped": 0
     }
   }
