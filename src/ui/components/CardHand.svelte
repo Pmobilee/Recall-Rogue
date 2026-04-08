@@ -174,6 +174,23 @@
     return ''
   }
 
+  /** Split a flat CardDescPart[] into lines wherever a text part contains '\n'. */
+  function groupIntoLines(parts: CardDescPart[]): CardDescPart[][] {
+    const lines: CardDescPart[][] = [[]]
+    for (const p of parts) {
+      if (p.type === 'text' && p.value.includes('\n')) {
+        const segs = p.value.split('\n')
+        for (let i = 0; i < segs.length; i++) {
+          if (segs[i]) lines[lines.length - 1].push({ type: 'text', value: segs[i] })
+          if (i < segs.length - 1) lines.push([])
+        }
+      } else {
+        lines[lines.length - 1].push(p)
+      }
+    }
+    return lines.filter(l => l.length > 0)
+  }
+
   /**
    * Returns the display value for a card's primary effect.
    * Uses mechanic.quickPlayValue as the base (Quick Play = no quiz).
@@ -889,18 +906,22 @@
             <!-- Effect description text -->
             <div class="frame-text v2-effect-text {effectTextSizeClass(card)}" style={GUIDE_STYLES.effectText}>
               <span class="parchment-inner">
-                {#each getCardDescriptionParts(card, undefined, effectVal) as part}
-                  {#if part.type === 'number'}
-                    <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview} class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'} class:damage-buffed={modState === 'buffed'} class:damage-nerfed={modState === 'nerfed'}>{part.value}</span>
-                  {:else if part.type === 'keyword'}
-                    <span class="desc-keyword">{part.value}</span>
-                  {:else if part.type === 'conditional-number'}
-                    <span class="desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
-                  {:else if part.type === 'mastery-bonus'}
-                    <span class="desc-mastery-bonus">{part.value}</span>
-                  {:else}
-                    {part.value}
-                  {/if}
+                {#each groupIntoLines(getCardDescriptionParts(card, undefined, effectVal)) as line}
+                  <div class="desc-line">
+                    {#each line as part}
+                      {#if part.type === 'number'}
+                        <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview} class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'} class:damage-buffed={modState === 'buffed'} class:damage-nerfed={modState === 'nerfed'}>{part.value}</span>
+                      {:else if part.type === 'keyword'}
+                        <span class="desc-keyword">{part.value}</span>
+                      {:else if part.type === 'conditional-number'}
+                        <span class="desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
+                      {:else if part.type === 'mastery-bonus'}
+                        <span class="desc-mastery-bonus">{part.value}</span>
+                      {:else}
+                        {part.value}
+                      {/if}
+                    {/each}
+                  </div>
                 {/each}
               </span>
             </div>
@@ -1236,18 +1257,22 @@
             <!-- Effect description text -->
             <div class="frame-text v2-effect-text {effectTextSizeClass(card)}" style={GUIDE_STYLES.effectText}>
               <span class="parchment-inner">
-                {#each getCardDescriptionParts(card, undefined, descPower) as part}
-                  {#if part.type === 'number'}
-                    <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview} class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'} class:damage-buffed={modState === 'buffed'} class:damage-nerfed={modState === 'nerfed'}>{part.value}</span>
-                  {:else if part.type === 'keyword'}
-                    <span class="desc-keyword">{part.value}</span>
-                  {:else if part.type === 'conditional-number'}
-                    <span class="desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
-                  {:else if part.type === 'mastery-bonus'}
-                    <span class="desc-mastery-bonus">{part.value}</span>
-                  {:else}
-                    {part.value}
-                  {/if}
+                {#each groupIntoLines(getCardDescriptionParts(card, undefined, descPower)) as line}
+                  <div class="desc-line">
+                    {#each line as part}
+                      {#if part.type === 'number'}
+                        <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview} class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'} class:damage-buffed={modState === 'buffed'} class:damage-nerfed={modState === 'nerfed'}>{part.value}</span>
+                      {:else if part.type === 'keyword'}
+                        <span class="desc-keyword">{part.value}</span>
+                      {:else if part.type === 'conditional-number'}
+                        <span class="desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
+                      {:else if part.type === 'mastery-bonus'}
+                        <span class="desc-mastery-bonus">{part.value}</span>
+                      {:else}
+                        {part.value}
+                      {/if}
+                    {/each}
+                  </div>
                 {/each}
               </span>
             </div>
@@ -1808,6 +1833,11 @@
     display: block;
     width: 100%;
     text-align: center;
+  }
+
+  .desc-line {
+    display: block;
+    width: 100%;
   }
 
   .desc-conditional {

@@ -2,8 +2,9 @@
   import type { Card } from '../../data/card-types'
   import { getBorderUrl, getBaseFrameUrl, getBannerUrl, getUpgradeIconUrl, getMasteryIconFilter, hasMasteryGlow, GUIDE_STYLES } from '../utils/cardFrameV2'
   import { getCardArtUrl } from '../utils/cardArtManifest'
-  import { getCardDescriptionParts } from '../../services/cardDescriptionService'
+  import { getCardDescriptionParts, type CardDescPart } from '../../services/cardDescriptionService'
   import { stretchText } from '../utils/stretchText'
+  import { getChainColor } from '../../services/chainVisuals'
 
   interface Props {
     card: Card
@@ -22,6 +23,23 @@
     if (desc.length > 25) return 'effect-text-sm'
     if (desc.length > 15) return 'effect-text-md'
     return ''
+  }
+
+  /** Split a flat CardDescPart[] into lines wherever a text part contains '\n'. */
+  function groupIntoLines(parts: CardDescPart[]): CardDescPart[][] {
+    const lines: CardDescPart[][] = [[]]
+    for (const p of parts) {
+      if (p.type === 'text' && p.value.includes('\n')) {
+        const segs = p.value.split('\n')
+        for (let i = 0; i < segs.length; i++) {
+          if (segs[i]) lines[lines.length - 1].push({ type: 'text', value: segs[i] })
+          if (i < segs.length - 1) lines.push([])
+        }
+      } else {
+        lines[lines.length - 1].push(p)
+      }
+    }
+    return lines.filter(l => l.length > 0)
   }
 </script>
 
@@ -60,23 +78,27 @@
             <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{apCost}</div>
             <!-- Mechanic name overlay (on the banner) -->
             <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName} use:stretchText>{card.mechanicName ?? ''}</div>
-            <!-- Card type label overlay -->
-            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}>{card.cardType?.toUpperCase() ?? ''}</div>
+            <!-- Chain color pill — matches CardHand.svelte card-type area -->
+            <div class="frame-text v2-card-type" style="{GUIDE_STYLES.cardTypePill} background-color: {getChainColor(card.chainType)};"></div>
             <!-- Effect description text -->
             <div class="frame-text v2-effect-text {effectTextSizeClass(card)}" style={GUIDE_STYLES.effectText}>
               <span class="parchment-inner">
-                {#each getCardDescriptionParts(card) as part}
-                  {#if part.type === 'number'}
-                    <span class="desc-number">{part.value}</span>
-                  {:else if part.type === 'keyword'}
-                    <span class="desc-keyword">{part.value}</span>
-                  {:else if part.type === 'conditional-number'}
-                    <span class="desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
-                  {:else if part.type === 'mastery-bonus'}
-                    <span class="desc-mastery-bonus">{part.value}</span>
-                  {:else}
-                    {part.value}
-                  {/if}
+                {#each groupIntoLines(getCardDescriptionParts(card)) as line}
+                  <div class="desc-line">
+                    {#each line as part}
+                      {#if part.type === 'number'}
+                        <span class="desc-number">{part.value}</span>
+                      {:else if part.type === 'keyword'}
+                        <span class="desc-keyword">{part.value}</span>
+                      {:else if part.type === 'conditional-number'}
+                        <span class="desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
+                      {:else if part.type === 'mastery-bonus'}
+                        <span class="desc-mastery-bonus">{part.value}</span>
+                      {:else}
+                        {part.value}
+                      {/if}
+                    {/each}
+                  </div>
                 {/each}
               </span>
             </div>
@@ -270,21 +292,6 @@
     text-align: center;
   }
 
-  .v2-card-type {
-    font-family: system-ui, -apple-system, sans-serif;
-    font-weight: 700;
-    font-size: calc(var(--card-w) * 0.032);
-    color: #e0e0e0;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-  }
-
   .v2-effect-text {
     font-family: 'Kreon', 'Georgia', serif;
     font-size: calc(var(--card-w) * 0.095);
@@ -322,6 +329,11 @@
     display: block;
     width: 100%;
     text-align: center;
+  }
+
+  .desc-line {
+    display: block;
+    width: 100%;
   }
 
   .desc-number {
