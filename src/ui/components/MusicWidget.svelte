@@ -288,8 +288,10 @@
     background: rgba(8, 10, 18, 0.4);
     backdrop-filter: blur(20px) saturate(1.3);
     -webkit-backdrop-filter: blur(20px) saturate(1.3);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    /* box-shadow inset instead of border — hard borders with backdrop-filter create
+       compositing artifacts (visible lines) at corners when rendering over Phaser canvas */
+    border: 1px solid transparent;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 2px 12px rgba(0, 0, 0, 0.4);
 
     cursor: pointer;
     overflow: hidden;

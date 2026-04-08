@@ -916,8 +916,8 @@
     height: calc(28px * var(--layout-scale, 1));
     background: rgba(20, 30, 50, 0.35);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    /* box-shadow edges instead of border — hard borders with backdrop-filter create
+       compositing artifacts (visible lines) at the element boundary on the canvas below */
     border-bottom-right-radius: calc(16px * var(--layout-scale, 1));
     display: flex;
     align-items: center;
@@ -925,6 +925,8 @@
     transition: background 400ms ease, box-shadow 400ms ease;
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.12),
+      inset -1px 0 0 rgba(255, 255, 255, 0.12),
       0 calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.3);
   }
 

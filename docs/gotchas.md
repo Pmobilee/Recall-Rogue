@@ -702,3 +702,20 @@ The `devpreset=post_tutorial` URL param applies a preset through the `playerSave
 ### 2026-04-08 — Landscape mode class vs data-layout attribute timing
 
 ProfileScreen and JournalScreen use `.profile-landscape` / `.journal-landscape` CSS class selectors for landscape overrides instead of `:global([data-layout="landscape"])`. This avoids a timing dependency where `data-layout` may not be set at first render. The `$isLandscape` store triggers the class binding, which is reactive and always correct. The `:global([data-layout])` pattern requires `CardApp.svelte`'s `updateLayoutScale()` to have run — reliable after boot but risky in test scenarios.
+
+### 2026-04-08 — backdrop-filter + CSS border = compositing artifact lines over Phaser canvas
+
+**What:** Faint lines (1 vertical + 3 horizontal) appeared in both top corners of the combat scene background. The pattern was identical in both top-left and top-right corners, consistent across all enemy backgrounds, and didn't move with the background breathing effect.
+
+**Root cause:** Svelte overlay elements with `backdrop-filter: blur()` AND a `border: 1px solid rgba(255,255,255,N)` create hard compositing boundaries at the element edges. When these elements sit over the Phaser WebGL canvas, the browser composites the blur region against the canvas, and the border's physical edge becomes a visible artifact — particularly noticeable at corners where vertical and horizontal edges intersect.
+
+**Affected elements:**
+- `.fog-wing` in `InRunTopBar.svelte` — had `border-bottom` + `border-right` with `backdrop-filter: blur(12px)`. Positioned at top-left, width 35%, visible below the topbar. The bottom and right borders created 1 horizontal + 1 vertical line.
+- `.music-widget` in `MusicWidget.svelte` — had `border: 1px solid rgba(255,255,255,0.12)` (all sides) with `backdrop-filter: blur(20px)`. Positioned top-right. All 4 borders created potential artifacts.
+
+**Fix:** Replace CSS `border` with equivalent `box-shadow: inset 0 0 0 1px rgba(...)` or directional inset shadows. Box-shadows don't create the same hard compositing plane boundaries that `border` does. The visual result is identical for users, but no hard GPU layer boundary is written.
+
+- `.fog-wing`: `border-bottom` + `border-right` → `box-shadow: inset 0 -1px 0 rgba(255,255,255,0.12), inset -1px 0 0 rgba(255,255,255,0.12)` (added to existing box-shadow list)
+- `.music-widget`: `border: 1px solid rgba(255,255,255,0.12)` → `border: 1px solid transparent` (keeps border-color transitions for hover/playing states) + `box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12), [existing shadow]`
+
+**Rule:** ANY Svelte overlay element that uses `backdrop-filter` MUST NOT use `border` for visual outlines. Use `box-shadow: inset` instead. The border creates a GPU compositing plane edge that renders as a visible line over the Phaser canvas beneath.
