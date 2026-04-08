@@ -36,6 +36,9 @@
   const isAvailable = $derived(deck.status === 'available');
   const hasSubDecks = $derived(!!deck.subDecks && deck.subDecks.length > 0);
 
+  /** Sub-decks sorted alphabetically by name for consistent display order. */
+  const sortedSubDecks = $derived(deck.subDecks ? [...deck.subDecks].sort((a, b) => a.name.localeCompare(b.name)) : []);
+
   let selectedSubDeck = $state<string | null>(null);
   let selectedTags = $state<Set<string>>(new Set());
 
@@ -160,8 +163,8 @@
                 <span class="mini-pct">{Math.round(progress.progressPercent)}%</span>
               </label>
 
-              <!-- Individual sub-decks -->
-              {#each deck.subDecks as subDeck (subDeck.id)}
+              <!-- Individual sub-decks — sorted alphabetically by name -->
+              {#each sortedSubDecks as subDeck (subDeck.id)}
                 {@const subProgress = getSubDeckProgress(deck.id, subDeck.id)}
                 <label class="subdeck-row">
                   <input
@@ -341,7 +344,9 @@
     border-right: 1px solid rgba(255, 255, 255, 0.07);
   }
 
-  /* RIGHT COLUMN — scrollable when language options are present */
+  /* RIGHT COLUMN — scrollable when language options are present.
+     Top padding is 44px (close button 32px height + 12px buffer) to prevent
+     the stat block from sitting behind the absolute-positioned close button. */
   .col-right {
     flex: 1;
     min-width: calc(200px * var(--layout-scale, 1));
@@ -351,7 +356,7 @@
     justify-content: center;
     align-items: stretch;
     gap: calc(20px * var(--layout-scale, 1));
-    padding: calc(20px * var(--layout-scale, 1));
+    padding: calc(44px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
     overflow-y: auto;
   }
 
