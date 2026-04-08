@@ -1086,7 +1086,7 @@ Sports & Entertainment requires new domain scaffolding. FIFA World Cup is a uniq
 | 13 | Nobel Prize Winners | general_knowledge | 180-220 | High (academic community, Jeopardy devotees) | Very High — Nobelprize.org complete through 2025 | Unlocks EP-02 AP Bio (science laureates layer) | 6 categories = 6 natural pool groups |
 | 14 | Dinosaurs & Paleontology | natural_sciences | 140-180 | High (kids + museum audience, perennial favorite) | High — Wikipedia paleontology articles complete | Opens kid-audience funnel; NS domain flagship | Pool: 55+ genera, 5 geologic periods |
 | 15 | European Countries Deep Dive | geography | 140-180 | Medium-High (European students, travelers) | High — Wikipedia European countries complete | Deepens Geography; enables EU composite | 44 countries, languages, EU membership |
-| 16 | Ocean Life | animals_wildlife | 130-170 | High (kids, marine bio, documentary audience) | High — Wikipedia marine life lists complete | Second Animals deck; ocean zone pool | 5 ocean zones = natural difficulty tiers |
+| 16 | ✅ Ocean Life | animals_wildlife | **182 shipped** | High (kids, marine bio, documentary audience) | High — Wikipedia marine life lists complete | Second Animals deck; ocean zone pool | **SHIPPED 2026-04-08** |
 | 17 | Ancient Egypt | history | 160-200 | High (popular culture, museum audiences) | High — Egyptology Wikipedia excellent | Cross-sells with Egyptian Mythology (rank 7) | Pool: pharaohs, gods, periods, dynasties |
 | 18 | Brain & Neuroscience | human_body_health | 130-170 | High (psychology students, mental health interest) | Medium — requires careful clinical sourcing | Third HB deck; unlocks psychology composite | Pool: 30+ brain regions, 8+ neurotransmitters |
 | 19 | Famous Scientists & Discoveries | natural_sciences | 160-200 | High (science students, history of science) | High — Wikipedia and Nobel records complete | Opens NS narrative layer (not just periodic table) | Combines with Nobel deck for mega-deck potential |
@@ -1134,4 +1134,5 @@ Sports & Entertainment requires new domain scaffolding. FIFA World Cup is a uniq
 
 | Date | Deck ID | Facts | Sub-decks | Summary |
 |---|---|---|---|---|
+| 2026-04-08 | `ocean_life` | 182 | 5 | Marine life from iconic whales and sharks to deep-sea creatures, coral reefs, and conservation. 12 answer pools, Wikipedia sourced. |
 | 2026-04-08 | `world_religions` | 377 | 7 | World religions survey: Christianity, Islam, Judaism, Hinduism, Buddhism, Sikhism, and 8 other living traditions. Wikipedia CC BY-SA 4.0. |

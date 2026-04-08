@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-04-08T13:27:40.156Z",
-  "totalBridgedFacts": 5024,
+  "lastRun": "2026-04-08T14:19:28.842Z",
+  "totalBridgedFacts": 5169,
   "decks": {
     "ancient_greece": {
       "totalFacts": 246,
@@ -102,6 +102,12 @@
       "totalFacts": 223,
       "entities": 54,
       "bridged": 54,
+      "skipped": 0
+    },
+    "ocean_life": {
+      "totalFacts": 182,
+      "entities": 145,
+      "bridged": 145,
       "skipped": 0
     },
     "periodic_table": {
