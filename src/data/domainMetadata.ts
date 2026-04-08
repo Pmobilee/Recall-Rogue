@@ -119,6 +119,15 @@ export const DOMAIN_METADATA: Record<CanonicalFactDomain, DomainMetadata> = {
     ageDefault: 'kid',
     comingSoon: true,
   },
+  social_sciences: {
+    id: 'social_sciences',
+    displayName: 'Social Sciences',
+    shortName: 'Social Sci',
+    colorTint: '#7C3AED',
+    icon: '📊',
+    description: 'Psychology, economics, sociology, and behavioral sciences.',
+    ageDefault: 'teen',
+  },
   language: {
     id: 'language',
     displayName: 'Language',

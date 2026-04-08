@@ -1,0 +1,1075 @@
+deck_id: ap_macroeconomics
+name: "AP Macroeconomics"
+domain: social_sciences
+sub_domain: macroeconomics
+description: "Master the full AP Macroeconomics curriculum — from GDP measurement to international finance. Covers all 6 CED units: Basic Economic Concepts, Economic Indicators and the Business Cycle, National Income and Price Determination, Financial Sector, Long-Run Consequences of Stabilization Policies, and Open Economy International Trade and Finance. Aligned to the College Board AP Macroeconomics Course and Exam Description. Includes GDP calculations, multiplier effects, money creation, Phillips curve analysis, and exchange rate determination."
+minimum_facts: 400
+target_facts: 440
+
+# COMPLETENESS PHILOSOPHY:
+# This deck covers the COMPLETE College Board AP Macroeconomics Course and Exam
+# Description (CED). A student who masters this deck should be prepared for every
+# question type on the AP Macroeconomics exam. Scope is curriculum-driven, not
+# topic-sampled — every CED topic (1.1 through 6.6) across all 6 units is represented.
+# Unit weights (percent of exam) directly inform fact counts per chain theme.
+# Units 3 (17-27%) and 4 (18-23%) are the heaviest, and their chain themes receive
+# proportionally more facts.
+
+# Sourcing & licensing
+data_sources:
+  - name: College Board AP Macroeconomics Course and Exam Description (CED)
+    url: https://apcentral.collegeboard.org/media/pdf/ap-macroeconomics-course-and-exam-description.pdf
+    license: public educational resource
+    usage: Authoritative unit/topic structure, learning objectives, essential knowledge statements, exam weight distribution
+  - name: OpenStax Principles of Macroeconomics 3e
+    url: https://openstax.org/books/principles-macroeconomics-3e/pages/1-introduction
+    license: CC-BY-4.0
+    usage: Concept definitions, explanations, worked examples
+  - name: Wikipedia — Economics
+    url: https://en.wikipedia.org/wiki/Economics
+    license: CC-BY-SA-4.0
+    usage: Economist biographies, concept summaries, historical context
+  - name: Wikidata
+    url: https://www.wikidata.org/
+    license: CC0
+    usage: Economist birth/death dates, Nobel Prize years, verified numerical values
+
+asset_sources: []
+
+# ============================================================
+# CHAIN THEMES — 11 thematic zones mapping to CED unit groupings
+# Each theme is a distinct "dungeon zone" with its own facts pool
+# Fact counts weighted by exam percentage per CED
+# ============================================================
+
+chain_themes:
+
+  - id: 0
+    name: "The Economic Engine"
+    ced_coverage: "Unit 1 Topics 1.1-1.6: Basic Economic Concepts (5-10% of exam)"
+    target_facts: 30
+    description: >
+      The foundational logic of macroeconomics — how societies allocate scarce resources,
+      the trade-offs encoded in the Production Possibilities Curve, and how nations specialize
+      through comparative advantage. Players explore the circular flow model showing how
+      households, firms, government, and foreign sectors interact, and trace how leakages
+      (savings, taxes, imports) and injections (investment, government spending, exports)
+      keep the economy in balance. Supply and demand mechanics at the aggregate level ground
+      all later AD/AS analysis.
+    key_concepts:
+      - Scarcity at the national level — unlimited wants, limited resources (land, labor, capital, entrepreneurship)
+      - The four factors of production — land (natural resources), labor, physical capital, human capital
+      - Opportunity cost — what you give up to get something else; the next best alternative
+      - Production Possibilities Curve (PPC) — shows maximum combinations of two goods with full employment
+      - PPC shape — concave (bowed out) due to increasing opportunity costs as resources shifted
+      - Points on the PPC — efficient; inside = inefficient (unemployed resources); outside = unattainable
+      - PPC and economic growth — outward shift from more resources, better technology, or increased capital investment
+      - Capital goods vs. consumer goods trade-off on PPC — investing in capital goods shifts PPC out in future
+      - Absolute advantage vs. comparative advantage — comparative advantage (lower opportunity cost) drives trade
+      - Comparative advantage and specialization — nations should specialize in goods with lowest opportunity cost
+      - Terms of trade — the price at which nations exchange goods; must be between both nations' opportunity costs
+      - Gains from trade — total production increases when each nation specializes per comparative advantage
+      - Circular flow model — real flows (goods, services, resources) vs. money flows (spending, income)
+      - Circular flow sectors — households, firms (businesses), government, foreign sector (exports/imports)
+      - Product markets (goods and services traded) vs. factor markets (resources traded)
+      - Leakages from the circular flow — savings, taxes, imports (reduce spending flow)
+      - Injections into the circular flow — investment, government spending, exports (add to spending flow)
+      - Equilibrium in circular flow — leakages must equal injections for stable economy
+      - Demand — law of demand, demand curve, determinants of demand (TIMER: Tastes, Income, related goods Market size, Expected price, Related goods)
+      - Supply — law of supply, supply curve, determinants of supply (ROTTEN: Resources, Other prices, Taxes, Technology, Expectations, Number of sellers)
+      - Market equilibrium — price and quantity where supply meets demand
+      - Changes in equilibrium — effect of demand/supply shifts on equilibrium price and quantity
+
+  - id: 1
+    name: "Measuring the Machine"
+    ced_coverage: "Unit 2 Topics 2.1-2.4: GDP, Unemployment, Price Indices (20-30% of exam)"
+    target_facts: 40
+    description: >
+      The dashboard of the macroeconomy — how economists measure what an economy produces,
+      how many people are working, and how fast prices are rising. Players master all three
+      approaches to GDP, learn what GDP counts and what it deliberately ignores, convert
+      nominal GDP to real GDP using the GDP deflator, classify workers by their employment
+      status, calculate the unemployment rate, and compute CPI inflation from a market basket.
+      These are the most heavily tested measurement skills on the AP exam.
+    key_concepts:
+      - GDP definition — market value of all final goods and services produced within a country's borders in a given year
+      - Expenditure approach — GDP = C + I + G + NX (consumption + investment + government spending + net exports)
+      - Consumption (C) — households spending on goods and services; largest GDP component (~70% in U.S.)
+      - Investment (I) — business spending on capital goods, new construction, and inventory changes (NOT financial investment)
+      - Government spending (G) — federal, state, local government purchases of goods and services (excludes transfer payments)
+      - Net exports (NX) — exports minus imports; can be negative (trade deficit)
+      - Income approach — GDP = wages + rent + interest + profit; equivalent to expenditure approach
+      - Final goods vs. intermediate goods — only final goods counted; intermediate goods avoided to prevent double-counting
+      - What is EXCLUDED from GDP — transfer payments (Social Security, welfare), used goods, non-market production, financial transactions
+      - Nominal GDP — output valued at current year prices
+      - Real GDP — output valued at base year prices; adjusts for inflation to show true output growth
+      - GDP deflator — (Nominal GDP / Real GDP) × 100; measures overall price level
+      - Converting nominal to real GDP — Real GDP = (Nominal GDP / GDP deflator) × 100
+      - GDP per capita — GDP divided by population; used to compare living standards across countries
+      - Limitations of GDP — ignores income inequality, non-market work (household labor), environmental costs, quality of life, underground economy
+      - GNP vs. GDP — GNP counts output by a country's residents regardless of location; GDP counts within borders regardless of who produces
+      - Labor force = employed + unemployed (actively seeking work)
+      - Unemployment rate = (number unemployed / labor force) × 100
+      - Labor force participation rate = (labor force / working-age population) × 100
+      - Frictional unemployment — temporary, workers between jobs or entering workforce; voluntary
+      - Structural unemployment — mismatch between skills and available jobs; permanent layoffs due to technology or structural change
+      - Cyclical unemployment — caused by recessions; demand for labor falls; involuntary
+      - Seasonal unemployment — predictable due to time of year (farm workers, ski instructors)
+      - Natural rate of unemployment (NRU) = frictional + structural; exists even at full employment
+      - Full employment — when cyclical unemployment = 0; NRU approximately 4-5%
+      - Discouraged workers — stopped looking for work; NOT counted as unemployed (not in labor force)
+      - Underemployment — working part-time when full-time is desired; not counted as unemployed
+      - Consumer Price Index (CPI) — measures cost of a fixed market basket of goods relative to base year
+      - CPI calculation — (cost of basket in current year / cost of basket in base year) × 100
+      - Inflation rate — ((CPI current - CPI previous) / CPI previous) × 100
+      - CPI basket — food, housing, apparel, transportation, medical care, recreation, education
+
+  - id: 2
+    name: "The Business Cycle"
+    ced_coverage: "Unit 2 Topics 2.5-2.8: Inflation, Real vs Nominal, Business Cycle (continued from Unit 2)"
+    target_facts: 40
+    description: >
+      The rhythm of the macroeconomy — the recurring expansions and contractions that drive
+      policy responses. Players explore all costs of inflation, distinguish real from nominal
+      values using the Fisher equation, trace the four phases of the business cycle, and learn
+      which economic indicators lead, lag, or coincide with the cycle. Demand-pull vs. cost-push
+      inflation distinguish the causes that determine appropriate policy responses.
+    key_concepts:
+      - Costs of inflation — menu costs (updating prices), shoe leather costs (more frequent bank trips), uncertainty reduces investment
+      - Redistribution effects of inflation — hurts savers and lenders (fixed nominal returns); helps debtors and borrowers
+      - Hyperinflation — extremely rapid price increases; erodes currency's function as store of value
+      - Deflation — falling price level; can cause deflationary spiral (delay spending → less demand → more deflation)
+      - Disinflation — slowing rate of inflation (still positive, just smaller); not the same as deflation
+      - Real vs. nominal interest rate — Fisher equation: real interest rate = nominal interest rate − inflation rate
+      - If inflation is unexpected, real returns differ from expected real returns
+      - Real wage = nominal wage / price level; inflation erodes purchasing power if wages don't keep pace
+      - Business cycle definition — recurring fluctuations in economic activity around a long-run growth trend
+      - Business cycle phases — expansion (rising output, falling unemployment), peak (maximum output), contraction/recession (falling output, rising unemployment), trough (minimum output)
+      - Recession definition — two consecutive quarters of falling real GDP
+      - Output gap — difference between actual GDP and potential GDP (full employment GDP)
+      - Business cycle phases — expansion (rising output, falling unemployment), peak (maximum output), contraction (recession), trough (lowest point)
+      - Leading economic indicators — predict future business cycle; examples: stock market prices, building permits, consumer confidence index, new orders for capital goods, money supply
+      - Lagging economic indicators — change after business cycle turns; examples: unemployment rate, CPI, prime interest rate, commercial loans outstanding
+      - Coincident economic indicators — change at same time as business cycle; examples: real GDP, industrial production, personal income, retail sales
+      - Demand-pull inflation — too much money chasing too few goods; aggregate demand grows faster than supply
+      - Cost-push inflation (supply-side inflation) — rising input costs shift SRAS left; prices rise while output falls
+      - Stagflation — simultaneous high inflation and high unemployment; caused by adverse supply shock
+      - Expected vs. unexpected inflation — expected inflation allows adjustment; unexpected inflation creates real economic distortions
+      - Price stability — low, stable inflation (~2%) is a macroeconomic goal; allows business planning
+
+  - id: 3
+    name: "Aggregate Supply & Demand"
+    ced_coverage: "Unit 3 Topics 3.1-3.5: AD/AS Model (17-27% of exam — most heavily tested)"
+    target_facts: 50
+    description: >
+      The central model of macroeconomics — the aggregate demand and aggregate supply framework
+      that explains the price level and real GDP simultaneously. Players master the three reasons
+      AD slopes downward, all AD shifters, why SRAS slopes up (sticky wages), what shifts SRAS,
+      why LRAS is vertical at potential output, and how to identify and close recessionary and
+      inflationary gaps. The spending and tax multipliers quantify how initial spending changes
+      ripple through the economy via MPC and MPS.
+    key_concepts:
+      - Aggregate demand (AD) — inverse relationship between price level and real GDP demanded
+      - Three reasons AD slopes downward — wealth effect (higher prices reduce real wealth), interest rate effect (higher prices raise interest rates, reduce investment/spending), net export effect (higher domestic prices make exports less competitive)
+      - AD shifters (non-price determinants of AD) — changes in consumer spending (C), investment (I), government spending (G), or net exports (NX)
+      - Consumer spending shifters — consumer confidence, wealth, debt levels, expectations about future income
+      - Investment shifters — real interest rate, business confidence, expected returns, government tax policy on investment
+      - Government spending (G) changes — fiscal policy; directly shifts AD
+      - Net export shifters — exchange rates, relative incomes of trading partners
+      - Marginal Propensity to Consume (MPC) — fraction of additional income spent on consumption; 0 < MPC < 1
+      - Marginal Propensity to Save (MPS) — fraction of additional income saved; MPC + MPS = 1
+      - Spending (expenditure) multiplier — 1/(1-MPC) = 1/MPS; magnifies initial spending change
+      - Example: MPC = 0.8 → multiplier = 1/(1-0.8) = 1/0.2 = 5; $100 increase in spending → $500 increase in GDP
+      - Tax multiplier — -MPC/(1-MPC) = -MPC/MPS; smaller magnitude than spending multiplier (negative: tax increase reduces GDP)
+      - Balanced budget multiplier — when G increases by same amount as taxes, multiplier = 1; small positive effect
+      - Short-run aggregate supply (SRAS) — upward sloping because wages and input prices are sticky in short run
+      - SRAS shifters (non-price) — input prices (especially wages), productivity, business taxes, government subsidies, inflationary expectations, supply shocks
+      - Positive supply shock — SRAS shifts right (lower oil prices, technological improvement)
+      - Negative supply shock — SRAS shifts left (higher oil prices, natural disaster, tariffs on inputs)
+      - Long-run aggregate supply (LRAS) — vertical at potential output (Yf = full employment GDP)
+      - LRAS vertical because — in long run, wages and prices fully adjust; economy returns to full employment regardless of price level
+      - LRAS shifters — changes in quantity or quality of resources (land, labor, capital, technology); same as economic growth drivers
+      - AD-AS equilibrium — where AD and SRAS intersect; determines short-run price level and real GDP
+      - Recessionary gap — actual output (Y) < potential output (Yf); high cyclical unemployment; price level below expected
+      - Inflationary gap — actual output (Y) > potential output (Yf); labor market tight; price level above expected
+      - Self-correction mechanism — in long run, wages adjust: recession → wages fall → SRAS shifts right back to Yf; inflation → wages rise → SRAS shifts left back to Yf
+      - Sticky wages in short run — workers resist nominal wage cuts; prevents immediate self-correction
+      - Keynesian view — economy can stay in recession long time; government intervention needed
+      - Classical (monetarist) view — economy self-corrects quickly; policy lags make intervention counterproductive
+
+  - id: 4
+    name: "Fiscal Firepower"
+    ced_coverage: "Unit 3 Topics 3.6-3.9: Fiscal Policy (continued from Unit 3 — combined 17-27%)"
+    target_facts: 50
+    description: >
+      The government's toolkit for managing aggregate demand — taxing and spending decisions
+      that shift AD and their magnified effects through the multiplier. Players work through
+      expansionary vs. contractionary fiscal policy responses to gaps, distinguish discretionary
+      policy from automatic stabilizers, trace the crowding-out effect of deficit financing,
+      and evaluate fiscal policy limitations including time lags, political obstacles, and the
+      Ricardian equivalence critique. Supply-side fiscal policy and the Laffer curve round out
+      the picture.
+    key_concepts:
+      - Fiscal policy definition — government's use of spending (G) and taxation (T) to influence macroeconomic conditions
+      - Expansionary fiscal policy — increase G or decrease T (or both); shifts AD rightward; used to close recessionary gap
+      - Contractionary fiscal policy — decrease G or increase T (or both); shifts AD leftward; used to close inflationary gap
+      - Effect of expansionary fiscal policy — price level rises, real GDP rises, unemployment falls
+      - Effect of contractionary fiscal policy — price level falls, real GDP falls, unemployment rises
+      - Discretionary fiscal policy — requires legislative action (passing a bill); not automatic
+      - Automatic stabilizers — built-in fiscal policy that changes automatically with economic conditions WITHOUT legislation
+      - Examples of automatic stabilizers — progressive income tax (higher income → higher tax rate; lower income → lower tax rate), unemployment insurance, welfare programs (SNAP, Medicaid)
+      - How automatic stabilizers work — in recession: tax revenues fall (less income), transfer payments rise → AD supported; in boom: taxes rise, transfers fall → AD restrained
+      - Government budget — revenues (taxes) vs. expenditures (spending + transfers); budget deficit when G > T; surplus when T > G
+      - National debt — cumulative total of all past budget deficits minus surpluses
+      - Debt-to-GDP ratio — national debt as percentage of GDP; standard cross-country comparison
+      - Budget deficit and the deficit spending debate — Keynesians support deficit spending in recessions; classicals/monetarists favor balanced budgets
+      - Crowding out effect — government borrows in loanable funds market → demand for loanable funds increases → real interest rate rises → private investment decreases
+      - Partial crowding out vs. complete crowding out — partial: some crowding out but net increase in AD; complete: private investment falls by full amount of G increase (rare)
+      - Fiscal policy time lags — recognition lag (time to identify problem), legislative/administrative lag (time to pass/implement), impact lag (time for policy to affect economy)
+      - Supply-side fiscal policy — policies aimed at shifting LRAS right; focus on production incentives
+      - Supply-side tools — income tax cuts (increase work incentive), capital gains tax cuts (increase investment), deregulation, infrastructure investment, education and training subsidies
+      - Laffer curve — shows tax revenue as function of tax rate; at very high rates, lower rate can increase revenue by expanding taxable activity
+      - Ricardian equivalence — rational consumers anticipate future taxes to repay deficit; increase savings by amount of tax cut; neutralizes fiscal policy multiplier
+      - Fiscal policy and AD-AS — show effect on AD curve, new intersection, output, price level, and unemployment changes
+
+  - id: 5
+    name: "The Banking Vault"
+    ced_coverage: "Unit 4 Topics 4.1-4.4: Financial Assets and Banking (18-23% of exam)"
+    target_facts: 40
+    description: >
+      How money is defined, created, and multiplied through the banking system. Players learn
+      the three functions of money, distinguish M1 from M2, trace the fractional reserve
+      banking process through T-accounts from initial deposit through successive rounds of
+      lending, calculate required reserves and excess reserves, and apply the money multiplier
+      to find the maximum possible increase in money supply. The Federal Reserve System
+      structure and its mandate ground the institutional context.
+    key_concepts:
+      - Functions of money — medium of exchange (eliminates barter), unit of account (common measure of value), store of value (purchasing power over time)
+      - Commodity money vs. fiat money — commodity money (gold, silver) has intrinsic value; fiat money valuable only by government decree
+      - Liquidity — ease of converting an asset to cash without loss of value; cash is most liquid
+      - M1 money supply — most liquid; currency in circulation + demand deposits (checking accounts) + traveler's checks
+      - M2 money supply — M1 + savings deposits + small time deposits (CDs) + money market mutual funds; broader measure
+      - Financial assets — stocks (ownership claim), bonds (debt instrument), Treasury securities, mutual funds
+      - Bonds and interest rates — inverse relationship; when interest rates rise, existing bond prices fall
+      - Bond price and yield — current yield = annual payment / current price; higher price = lower yield
+      - Present value — value today of future payment; present value = future payment / (1 + r)^n
+      - Fractional reserve banking — banks hold only a fraction of deposits as reserves; lend the rest
+      - Reserve requirement (reserve ratio, rr) — fraction of deposits banks must hold; set by the Fed
+      - Required reserves = deposits × reserve requirement ratio
+      - Excess reserves = total reserves − required reserves; banks can lend excess reserves
+      - Money creation example — $1,000 deposit with 10% rr: bank keeps $100, lends $900; that $900 becomes a new deposit
+      - Money multiplier = 1 / reserve requirement ratio
+      - Maximum change in money supply = initial excess reserves × money multiplier
+      - Example: $1,000 deposit, 10% rr → $900 excess reserves → $900 × (1/0.10) = $9,000 max new money
+      - Deposit expansion process — deposit → loan → redeposit → loan → continues; each round smaller
+      - T-account analysis — assets (reserves + loans) = liabilities (deposits); shows bank's balance sheet
+      - Federal Reserve System (the Fed) — U.S. central bank; created by Federal Reserve Act of 1913
+      - Fed structure — Board of Governors (7 members, 14-year terms) + 12 regional Federal Reserve Banks + FOMC
+      - Federal Open Market Committee (FOMC) — conducts monetary policy; meets 8 times per year
+      - Fed mandate — dual mandate: price stability (low inflation ~2%) + maximum employment
+      - Fed independence — insulated from political pressure; important for credibility of inflation targets
+
+  - id: 6
+    name: "The Money Machine"
+    ced_coverage: "Unit 4 Topics 4.5-4.8: Monetary Policy and Money Market (continued from Unit 4)"
+    target_facts: 45
+    description: >
+      The Federal Reserve's levers — how the Fed manipulates the money supply, interest rates,
+      and ultimately aggregate demand. Players work through the money market graph (vertical
+      supply, downward-sloping demand), trace all three Fed policy tools, connect the money
+      market to the loanable funds market, and follow the full transmission mechanism from Fed
+      action through investment to AD and output. Quantitative easing and interest on reserves
+      extend the toolkit beyond the textbook big three.
+    key_concepts:
+      - Money demand — inverse relationship between nominal interest rate and quantity of money demanded
+      - Transaction demand for money — money held to buy goods and services; increases with income and GDP
+      - Asset (speculative) demand for money — money held as a store of value; decreases when interest rates rise (opportunity cost of holding money rises)
+      - Money demand curve — downward sloping; horizontal axis = quantity of money, vertical axis = nominal interest rate
+      - Money demand shifters — changes in income/GDP (rightward shift), changes in price level (rightward shift), changes in payment technology (leftward shift)
+      - Money supply curve — vertical (perfectly inelastic); fixed by the Fed regardless of interest rate
+      - Money market equilibrium — intersection of money demand and supply curves; determines nominal interest rate
+      - If money supply increases (Fed buys bonds) → MS shifts right → nominal interest rate falls
+      - If money supply decreases (Fed sells bonds) → MS shifts left → nominal interest rate rises
+      - Fed's three traditional tools of monetary policy — open market operations, discount rate, reserve requirement
+      - Open market operations (OMO) — most commonly used Fed tool; Fed buys or sells U.S. government securities (bonds)
+      - Expansionary OMO — Fed buys bonds → pays banks with new reserves → MS increases → interest rates fall
+      - Contractionary OMO — Fed sells bonds → withdraws reserves from banks → MS decreases → interest rates rise
+      - Discount rate — interest rate the Fed charges commercial banks for short-term loans; secondary tool
+      - Lowering discount rate → cheaper for banks to borrow → banks hold fewer excess reserves → MS increases
+      - Raising discount rate → more expensive for banks to borrow → MS decreases
+      - Reserve requirement changes — rarely used; lowering rr increases money multiplier and MS; raising rr decreases MS
+      - Federal funds rate — overnight interest rate banks charge each other for reserve loans; the Fed targets this rate
+      - Expansionary monetary policy — buy bonds, lower discount rate, lower rr → MS increases → interest rates fall → investment increases → AD shifts right
+      - Contractionary monetary policy — sell bonds, raise discount rate, raise rr → MS decreases → interest rates rise → investment decreases → AD shifts left
+      - Loanable funds market — supply of loanable funds comes from savings (households, government surplus, foreign); demand comes from investment borrowing
+      - Loanable funds supply shifters — changes in savings behavior, government budget position, foreign capital inflows
+      - Loanable funds demand shifters — changes in investment profitability, government borrowing
+      - Real interest rate determined in loanable funds market (inflation-adjusted)
+      - Crowding out in loanable funds market — government deficit spending increases demand for loanable funds → real interest rate rises → private investment falls
+      - Monetary policy transmission mechanism — Fed action → change in bank reserves → change in money supply → change in nominal interest rate → change in investment → change in AD → change in real GDP and price level
+      - Quantitative easing (QE) — Fed purchases long-term bonds or mortgage-backed securities; used when interest rates near zero
+      - Interest on reserves (IOR) — Fed pays interest on bank reserves held at the Fed; new tool to manage federal funds rate floor
+      - Monetary policy effectiveness — faster to implement than fiscal policy; no legislative lag
+
+  - id: 7
+    name: "The Phillips Frontier"
+    ced_coverage: "Unit 5 Topics 5.1-5.4: Phillips Curve and Money Growth (5-10% of exam)"
+    target_facts: 40
+    description: >
+      The trade-off between unemployment and inflation — and why that trade-off breaks down
+      in the long run. Players work through the short-run Phillips curve (SRPC) as the mirror
+      image of AD in the AD/AS model, trace how supply shocks shift the SRPC causing stagflation,
+      connect the long-run Phillips curve (LRPC) to the natural rate of unemployment, apply the
+      quantity theory of money to the long-run connection between money growth and inflation, and
+      analyze the costs of disinflation through the sacrifice ratio.
+    key_concepts:
+      - Short-run Phillips curve (SRPC) — inverse relationship between inflation rate and unemployment rate in the short run
+      - SRPC as mirror of AD/AS — AD rightward shift → higher price level (inflation up) + higher output (unemployment down); matches SRPC movement
+      - Movement along SRPC — demand-side policy (changes in AD) moves economy along the SRPC
+      - Shifts of the SRPC — supply shocks change expected inflation rate; adverse supply shock shifts SRPC up (more inflation at every unemployment level)
+      - Stagflation on SRPC — adverse supply shock shifts SRPC up and left → both inflation and unemployment rise simultaneously
+      - Long-run Phillips curve (LRPC) — vertical at the natural rate of unemployment (NRU); no long-run trade-off
+      - Why LRPC is vertical — in long run, expected inflation equals actual inflation; workers demand higher wages; economy returns to NRU
+      - Expected inflation — workers and firms adjust wage/price expectations; built-in inflation shifts SRPC
+      - Adaptive expectations — people form inflation expectations based on past inflation rates
+      - Rational expectations — people use all available information; policy may lose effectiveness
+      - Disinflation — reducing the rate of inflation; requires contractionary policy; causes temporary unemployment
+      - Sacrifice ratio — percentage points of GDP lost (or unemployment increase) per percentage point of inflation reduction
+      - Quantity theory of money — MV = PQ (or MV = PY); M = money supply, V = velocity, P = price level, Q (Y) = real output
+      - Velocity of money (V) — average number of times each dollar is spent per year; assumed constant in simple quantity theory
+      - If V and Q constant: percentage change in M ≈ percentage change in P (inflation)
+      - Money neutrality — in long run, changes in money supply affect only price level, not real output
+      - Budget deficits monetized — government borrows from the Fed (money-financed deficit) → increases money supply → inflation
+      - Debt-to-GDP ratio — national debt / GDP × 100; rising ratio signals potential fiscal unsustainability
+      - Government deficit effects on interest rates — deficit borrowing competes with private sector → crowding out
+
+  - id: 8
+    name: "Growth & Debt"
+    ced_coverage: "Unit 5 Topics 5.5-5.8: Economic Growth and Stabilization Policies (continued Unit 5)"
+    target_facts: 45
+    description: >
+      What makes economies grow over time and how policy can accelerate or undermine that
+      growth. Players explore all sources of economic growth (capital accumulation, human
+      capital, technology), the Solow growth model's key insights, the rule of 70 for
+      doubling time, supply-side policy options for shifting LRAS outward, and the debate
+      between Keynesian deficit spending and monetarist balanced budget rules. Crowding out
+      connects fiscal policy to long-run growth potential.
+    key_concepts:
+      - Economic growth definition — sustained increase in real GDP per capita over time
+      - Real GDP growth vs. GDP per capita growth — per capita accounts for population growth; better living standard measure
+      - Rule of 70 — approximate years to double = 70 / annual growth rate; e.g., 3.5% growth → doubles in 20 years
+      - Sources of economic growth — physical capital accumulation, human capital investment, technological progress, natural resource availability, institutional quality
+      - Physical capital — machines, equipment, factories, infrastructure; increases labor productivity
+      - Human capital — knowledge, skills, health of workers; increased by education, training, experience
+      - Technology — new production methods, innovations; most important source of long-run growth
+      - Productivity — output per unit of input; productivity = real GDP / labor hours
+      - Investment and capital accumulation — more investment → more capital → higher productivity → higher potential output
+      - Solow growth model basics — capital and labor produce output; diminishing returns to capital alone; technology drives long-run growth
+      - Diminishing returns to capital — each additional unit of capital adds less output than the previous; explains convergence hypothesis
+      - Convergence hypothesis — poor countries grow faster than rich countries (more returns to capital); incomes converge over time
+      - Crowding out and long-run growth — government borrowing raises interest rates → private investment falls → slower capital accumulation → slower long-run growth
+      - Complete vs. partial crowding out — complete crowding out: private investment falls by full amount of government borrowing; partial: some investment reduction but net positive effect
+      - Supply-side policies to increase LRAS — invest in public infrastructure, subsidize R&D, fund education, reduce business regulations, lower marginal tax rates on investment
+      - Infrastructure investment — public goods (roads, bridges, internet) that increase private sector productivity
+      - R&D tax credits — incentivize private investment in research and innovation
+      - Human capital policies — education subsidies, job training programs, immigration of skilled workers
+      - Deregulation — remove inefficient regulations that raise business costs; shifts LRAS right
+      - Keynesian view on stabilization — active fiscal and monetary policy can stabilize business cycle; deficits acceptable in recessions
+      - Monetarist view — money supply growth should be steady and predictable; discretionary policy causes instability
+      - Supply-side (classical) view — focus on increasing production capacity; tax cuts increase incentives; trickle-down
+      - Policy mix — combining fiscal and monetary policy; e.g., expansionary fiscal + contractionary monetary to change composition of GDP without changing output level
+      - Fiscal policy and interest rates — expansionary fiscal policy in loanable funds market raises interest rates; monetary policy can offset by buying bonds
+
+  - id: 9
+    name: "The Global Market"
+    ced_coverage: "Unit 6 Topics 6.1-6.3: Balance of Payments and Exchange Rates (8-13% of exam)"
+    target_facts: 30
+    description: >
+      How nations track their international economic relationships and how currency values
+      are determined. Players work through all three components of the balance of payments,
+      understand why the BOP always balances, analyze how exchange rates are set by supply
+      and demand in foreign exchange markets, trace all determinants of exchange rate changes,
+      and distinguish floating from fixed exchange rate systems. The link between the current
+      account and the capital/financial account is the key insight.
+    key_concepts:
+      - Balance of payments (BOP) — systematic record of all economic transactions between a country and the rest of the world
+      - BOP must balance — current account balance + capital/financial account balance = 0 (by accounting identity)
+      - Current account — records trade in goods and services, net income (wages, dividends, interest), and net transfers (foreign aid, remittances)
+      - Trade balance (merchandise trade balance) — exports of goods minus imports of goods; most watched component
+      - Current account surplus — net exporter; earns more from abroad than pays; e.g., China, Germany
+      - Current account deficit — net importer; pays more abroad than earns; e.g., United States
+      - Capital/financial account — records cross-border investment flows; foreign purchase of domestic assets − domestic purchase of foreign assets
+      - Capital inflow — foreigners buy domestic assets (stocks, bonds, real estate); positive capital account entry
+      - Capital outflow — domestic residents buy foreign assets; negative capital account entry
+      - BOP balance relationship — current account deficit must equal capital/financial account surplus (and vice versa)
+      - Example: U.S. current account deficit → U.S. must be financing it with capital/financial account surplus (foreigners buying U.S. assets)
+      - Exchange rate — price of one currency in terms of another; e.g., 1 USD = 1.20 EUR
+      - Appreciation — currency becomes more valuable; buys more of foreign currency
+      - Depreciation — currency becomes less valuable; buys less of foreign currency
+      - Floating exchange rate — determined by supply and demand in foreign exchange market; most common system
+      - Fixed exchange rate — government pegs currency to another currency or gold; requires intervention to maintain
+      - Managed float — currency floats but central bank intervenes to prevent excessive fluctuations
+      - Foreign exchange market for dollars — demand = foreigners want dollars to buy U.S. goods/assets; supply = Americans offering dollars to buy foreign goods/assets
+      - Dollar appreciates when — U.S. interest rates rise (attracts foreign capital), U.S. inflation falls (U.S. goods more competitive), foreign incomes rise (want more U.S. goods), speculation expects dollar to rise
+      - Dollar depreciates when — U.S. interest rates fall, U.S. inflation rises, foreign incomes fall, speculation expects dollar to fall
+      - Effect of appreciation on trade — exports fall (more expensive for foreigners), imports rise (cheaper for domestic buyers); trade balance worsens
+      - Effect of depreciation on trade — exports rise (cheaper for foreigners), imports fall (more expensive domestically); trade balance improves
+      - Purchasing power parity (PPP) — exchange rates should equalize purchasing power across countries in long run
+
+  - id: 10
+    name: "Trade & Policy"
+    ced_coverage: "Unit 6 Topics 6.4-6.6: Trade Policy and International Effects (continued Unit 6)"
+    target_facts: 30
+    description: >
+      How monetary and fiscal policy transmit through exchange rates to affect trade, and how
+      trade policy and capital flows connect the domestic economy to the global one. Players
+      trace the complete linkage from Fed action through exchange rate to net exports and AD,
+      explore how fiscal deficits produce trade deficits (twin deficits hypothesis), apply
+      comparative advantage to trade policy debates, and analyze how real interest rate
+      differentials drive international capital flows.
+    key_concepts:
+      - Effect of expansionary monetary policy on exchange rate — Fed buys bonds → interest rates fall → capital outflows increase (foreigners sell U.S. assets) → dollar supply increases → dollar depreciates
+      - Dollar depreciation effect on trade — exports increase (cheaper for foreigners), imports decrease (more expensive domestically) → NX increases → AD shifts right
+      - Complete monetary policy chain — expansionary MP → ↓ interest rates → ↓ investment + ↓ exchange rate → ↑ NX → AD shifts right (two channels)
+      - Effect of contractionary monetary policy on exchange rate — interest rates rise → capital inflows → dollar appreciates → NX decreases → partially offsets contractionary effect on AD
+      - Effect of expansionary fiscal policy on exchange rate — G increases → budget deficit → government borrows in loanable funds market → real interest rates rise → capital inflows → dollar appreciates
+      - Dollar appreciation from fiscal expansion → exports fall, imports rise → NX falls → partially offsets expansionary fiscal policy effect on AD (crowding out of net exports)
+      - Twin deficits hypothesis — budget deficit (government spending > taxes) tends to cause trade deficit (imports > exports) through the interest rate-exchange rate-trade channel
+      - Twin deficits mechanism — budget deficit → higher interest rates → capital inflows → appreciation → trade deficit
+      - Net capital outflow (NCO) = net exports (NX) — an economy's net lending to foreigners always equals its trade balance
+      - Capital flows and interest rate differentials — capital flows to countries with higher real interest rates
+      - Real interest rates and international capital — if domestic real interest rates rise relative to world, capital inflows, currency appreciates, NX falls
+      - Comparative advantage and trade — nations gain from trade by specializing in goods with lower opportunity cost
+      - Tariffs — taxes on imported goods; raise domestic price, reduce imports, protect domestic producers, harm consumers
+      - Quotas — limits on quantity of imports; similar effects to tariff but revenue goes to import license holders, not government
+      - Arguments for protectionism — infant industry argument, national security, anti-dumping (foreign firms below cost), retaliation
+      - Arguments against protectionism — higher prices for consumers, retaliation risk, prevents gains from comparative advantage, inefficiency
+      - Trade agreements — bilateral and multilateral agreements to reduce trade barriers; increase specialization and gains from trade
+      - World Trade Organization (WTO) — international organization that oversees global trade rules and dispute resolution
+      - Terms of trade — price at which one country's exports trade for another's imports; favorable if exports price rises relative to imports price
+      - Free trade vs. protectionism debate — economists broadly support free trade for efficiency; political pressures favor protectionism for affected industries
+
+# ============================================================
+# ANSWER TYPE POOLS — 18 pools for distractor selection
+# These define the "answer space" for multiple-choice generation
+# ============================================================
+
+answer_type_pools:
+
+  # POOL 1: Macroeconomic Concept Terms
+  # "What is the term for the total market value of all final goods and services produced within a country in a year?" → "GDP"
+  - id: macro_concept_terms
+    label: "Macroeconomic Concept Terms"
+    format: term
+    estimated_count: 50
+    note: >
+      Core macro vocabulary: GDP, GNP, inflation, deflation, disinflation, stagflation,
+      recession, depression, aggregate demand, aggregate supply, potential GDP, output gap,
+      recessionary gap, inflationary gap, crowding out, money multiplier, spending multiplier,
+      natural rate of unemployment, full employment, trade deficit, trade surplus, balance of
+      payments, exchange rate, appreciation, depreciation, monetary policy, fiscal policy,
+      automatic stabilizers, discretionary fiscal policy, supply-side policy, velocity of money,
+      money neutrality, purchasing power parity, comparative advantage, terms of trade.
+      Key confusions: disinflation vs. deflation (slowing rate vs. falling prices);
+      GDP vs. GNP (location vs. nationality of production);
+      recessionary gap vs. inflationary gap (Y < Yf vs. Y > Yf).
+
+  # POOL 2: Economist Names (Macro)
+  # "Which economist developed the theory of aggregate demand management?" → "John Maynard Keynes"
+  - id: economist_names_macro
+    label: "Economist Names (Macroeconomics)"
+    format: proper_noun
+    estimated_count: 20
+    syntheticDistractors:
+      - "Paul Krugman"
+      - "Gregory Mankiw"
+      - "Ben Bernanke"
+      - "Janet Yellen"
+    note: >
+      Key macroeconomists: John Maynard Keynes (aggregate demand, multiplier, Keynesian economics),
+      Milton Friedman (monetarism, quantity theory, natural rate of unemployment),
+      A.W. Phillips (Phillips curve trade-off between inflation and unemployment),
+      Irving Fisher (Fisher equation, quantity theory of money, nominal vs. real interest),
+      Arthur Okun (Okun's Law — unemployment-GDP relationship),
+      Friedrich Hayek (business cycle theory, spontaneous order, anti-Keynesian),
+      Robert Solow (Solow growth model, sources of economic growth, Nobel 1987),
+      Paul Samuelson (neoclassical synthesis, textbook author, Nobel 1970),
+      Edmund Phelps (expectations-augmented Phillips curve, long-run Phillips curve, Nobel 2006),
+      Robert Lucas (rational expectations, real business cycle theory, Nobel 1995),
+      William Phillips (original Phillips curve data from UK 1958 paper).
+      Key confusions: Fisher (interest rate) vs. Friedman (monetarism) — both associated with inflation;
+      Keynes (demand management) vs. Hayek (market processes) — fundamental macro debate.
+
+  # POOL 3: Economic Indicator Names
+  # "What measure tracks the cost of a fixed market basket of goods relative to a base year?" → "Consumer Price Index"
+  - id: indicator_names
+    label: "Economic Indicator Names"
+    format: term
+    estimated_count: 15
+    syntheticDistractors:
+      - "Producer Price Index"
+      - "Personal Consumption Expenditures index"
+      - "Employment Cost Index"
+    note: >
+      Major economic indicators: Consumer Price Index (CPI), GDP deflator, unemployment rate,
+      real GDP, nominal GDP, labor force participation rate, real GDP per capita,
+      federal funds rate, prime rate, M1 money supply, M2 money supply,
+      trade balance, current account balance, exchange rate index.
+      Key confusions: CPI vs. GDP deflator (fixed basket vs. changing basket; CPI measures consumer
+      prices while GDP deflator covers all domestically produced goods);
+      nominal GDP vs. real GDP (current prices vs. constant base-year prices).
+
+  # POOL 4: Curve and Graph Names (Macro)
+  # "Which graph shows the relationship between the price level and real GDP demanded?" → "Aggregate demand curve"
+  - id: curve_and_graph_names_macro
+    label: "Curve and Graph Names (Macroeconomics)"
+    format: term
+    estimated_count: 18
+    syntheticDistractors:
+      - "Indifference curve"
+      - "Lorenz curve"
+      - "Engel curve"
+    note: >
+      Key macroeconomic graphs and curves: aggregate demand curve (AD), short-run aggregate
+      supply curve (SRAS), long-run aggregate supply curve (LRAS), Phillips curve (SRPC),
+      long-run Phillips curve (LRPC), money demand curve, money supply curve, loanable funds
+      market (supply and demand), production possibilities curve (PPC), circular flow diagram,
+      business cycle diagram, AD/AS model, foreign exchange market curves, Laffer curve.
+      Key confusions: SRPC vs. LRPC (inverse trade-off vs. vertical at NRU);
+      AD curve vs. demand curve (aggregate economy vs. single market);
+      money market vs. loanable funds market (nominal vs. real interest rate).
+
+  # POOL 5: Equations and Formulas (Macro)
+  # "What is the formula for the spending multiplier?" → "1/(1-MPC)"
+  - id: equation_formulas_macro
+    label: "Macroeconomic Equations and Formulas"
+    format: formula
+    estimated_count: 20
+    note: >
+      Essential macro formulas: GDP = C + I + G + NX (expenditure approach),
+      spending multiplier = 1/(1-MPC) = 1/MPS,
+      tax multiplier = -MPC/(1-MPC) = -MPC/MPS,
+      balanced budget multiplier = 1,
+      money multiplier = 1/reserve requirement ratio,
+      MPC + MPS = 1,
+      unemployment rate = (unemployed / labor force) × 100,
+      labor force participation rate = (labor force / working-age population) × 100,
+      inflation rate = ((CPI₂ - CPI₁)/CPI₁) × 100,
+      CPI = (cost of basket in current year / cost of basket in base year) × 100,
+      GDP deflator = (nominal GDP / real GDP) × 100,
+      real interest rate = nominal interest rate − inflation rate (Fisher equation),
+      MV = PQ (quantity theory of money),
+      years to double ≈ 70 / growth rate (rule of 70).
+      Key confusions: spending multiplier vs. tax multiplier (1/MPS vs. -MPC/MPS);
+      money multiplier vs. spending multiplier (different processes).
+
+  # POOL 6: Bracket Numbers (Numerical Answers)
+  # "If MPC = 0.75, what is the value of the spending multiplier?" → "4"
+  - id: bracket_numbers_macro
+    label: "Numeric and Calculated Answers (Macroeconomics)"
+    format: number
+    estimated_count: 30
+    note: >
+      Numerical answers across all macro topics: spending multiplier values (2, 2.5, 4, 5, 10),
+      tax multiplier values (-1, -1.5, -3, -4, -9), money multiplier values (5, 10, 20),
+      reserve requirement percentages (5%, 10%, 20%), MPC values (0.5, 0.6, 0.75, 0.8, 0.9),
+      unemployment rate values (4%, 5%, 6%, 9%), inflation rate values (2%, 3%, 5%, 8%),
+      GDP growth rate values, natural rate of unemployment (~4-5%),
+      rule of 70 doubling times, percentage change calculations.
+      Distractors must be numerically plausible (e.g., multiplier 4 vs. 5 vs. 3, not multiplier 100).
+      Generation note: all numerical facts must come from verified textbook examples or
+      standard formula results — never invented.
+
+  # POOL 7: Policy Type Terms
+  # "What type of policy involves increasing government spending to stimulate the economy?" → "Expansionary fiscal policy"
+  - id: policy_type_terms
+    label: "Economic Policy Type Terms"
+    format: term
+    estimated_count: 12
+    note: >
+      Fiscal policy types: expansionary fiscal policy, contractionary fiscal policy,
+      discretionary fiscal policy, automatic stabilizers, supply-side fiscal policy,
+      balanced budget policy.
+      Monetary policy types: expansionary monetary policy, contractionary monetary policy,
+      conventional monetary policy, unconventional monetary policy (QE), zero lower bound policy.
+      Combined: policy mix, fiscal-monetary coordination.
+      Key confusions: expansionary vs. contractionary (direction of AD shift);
+      fiscal vs. monetary (who implements — Congress/President vs. Fed);
+      discretionary vs. automatic (requires action vs. built-in).
+
+  # POOL 8: Federal Reserve Tool Names
+  # "What is the Fed's most commonly used monetary policy tool?" → "Open market operations"
+  - id: fed_tool_names
+    label: "Federal Reserve Policy Tool Names"
+    format: term
+    estimated_count: 8
+    syntheticDistractors:
+      - "currency devaluation"
+      - "bond yield targeting"
+      - "capital controls"
+    note: >
+      Traditional Fed tools: open market operations (OMO), discount rate, reserve requirement.
+      Modern/unconventional tools: federal funds rate target, quantitative easing (QE),
+      interest on reserves (IOR/IOER), forward guidance, Operation Twist (maturity extension program).
+      Key confusions: discount rate (Fed charges banks) vs. federal funds rate (banks charge each other);
+      open market operations (buying/selling bonds) vs. reserve requirement (fraction held back);
+      open market purchase (expansionary) vs. open market sale (contractionary).
+
+  # POOL 9: GDP Component Terms
+  # "Which component of GDP includes business purchases of new equipment and machinery?" → "Investment (I)"
+  - id: gdp_component_terms
+    label: "GDP Component and Measurement Terms"
+    format: term
+    estimated_count: 8
+    syntheticDistractors:
+      - "Net factor income from abroad"
+      - "Statistical discrepancy"
+      - "Gross national product"
+    note: >
+      GDP expenditure components: consumption (C), investment (I), government spending (G),
+      net exports (NX = exports − imports).
+      GDP concepts: final goods, intermediate goods, value added, transfer payments (excluded),
+      depreciation/capital consumption allowance, gross vs. net investment.
+      Income approach terms: wages and salaries, rent, interest, profit.
+      Key confusions: investment (I) in GDP = business fixed investment, residential investment,
+      and inventory changes — NOT financial investment (stocks/bonds);
+      government spending (G) excludes transfer payments (welfare, Social Security).
+
+  # POOL 10: Unemployment Type Terms
+  # "What type of unemployment results from a skills mismatch between workers and available jobs?" → "Structural unemployment"
+  - id: unemployment_type_terms
+    label: "Types of Unemployment"
+    format: term
+    estimated_count: 8
+    syntheticDistractors:
+      - "technological unemployment"
+      - "disguised unemployment"
+      - "voluntary unemployment"
+    note: >
+      Unemployment types: frictional unemployment (between jobs, temporary),
+      structural unemployment (skills mismatch, technology displacement),
+      cyclical unemployment (recession-caused, demand deficient),
+      seasonal unemployment (predictable, time of year).
+      Related concepts: natural rate of unemployment (NRU = frictional + structural),
+      full employment (cyclical = 0), discouraged workers, underemployment.
+      Key confusions: structural vs. cyclical (permanent change vs. temporary downturn);
+      frictional vs. structural (short-term job search vs. long-term skills gap);
+      discouraged workers (NOT counted as unemployed — not in labor force).
+
+  # POOL 11: Inflation Type Terms
+  # "What type of inflation is caused by increases in production costs such as rising oil prices?" → "Cost-push inflation"
+  - id: inflation_type_terms
+    label: "Types of Inflation"
+    format: term
+    estimated_count: 8
+    syntheticDistractors:
+      - "imported inflation"
+      - "wage-price spiral"
+      - "asset price inflation"
+    note: >
+      Inflation types: demand-pull inflation (excess AD, too much money chasing too few goods),
+      cost-push inflation (supply-side, rising input costs shift SRAS left),
+      built-in inflation (wage-price spiral, adaptive expectations),
+      hyperinflation (extremely rapid price increases, currency collapses).
+      Related concepts: disinflation (reducing inflation rate), deflation (falling price level),
+      stagflation (inflation + recession simultaneously).
+      Key confusions: demand-pull vs. cost-push (AD shift vs. SRAS shift; different policy responses);
+      inflation vs. disinflation vs. deflation (rising prices vs. slowing increases vs. falling prices).
+
+  # POOL 12: Shift Direction Terms (Macro)
+  # "When the Fed buys bonds, in which direction does the money supply curve shift?" → "Shift right"
+  - id: shift_direction_terms_macro
+    label: "Direction Terms for Curve Shifts (Macro)"
+    format: term
+    estimated_count: 8
+    syntheticDistractors:
+      - "rotates clockwise"
+      - "becomes more elastic"
+      - "becomes steeper"
+    note: >
+      Direction vocabulary for macro graphs: shift right (increase), shift left (decrease),
+      movement along the curve (price level change causing movement along AD/SRAS),
+      no change (when a change affects only one variable not the curve).
+      Common contexts: AD shifts (fiscal/monetary policy effects), SRAS shifts (supply shocks,
+      input price changes), LRAS shifts (economic growth), money supply shifts (Fed actions),
+      loanable funds supply/demand shifts, SRPC/LRPC shifts.
+      Key confusions: shift of curve (non-price determinant changes) vs. movement along curve
+      (price level or interest rate change); many students confuse these on the AP exam.
+
+  # POOL 13: Financial Asset Terms
+  # "What type of financial asset is a certificate of debt issued by a corporation or government?" → "Bond"
+  - id: financial_asset_terms
+    label: "Financial Asset and Money Terms"
+    format: term
+    estimated_count: 10
+    syntheticDistractors:
+      - "derivative"
+      - "hedge fund"
+      - "currency futures"
+    note: >
+      Financial instruments: bonds (government and corporate), stocks/equities, Treasury bills
+      (T-bills), Treasury notes, Treasury bonds, certificates of deposit (CDs),
+      money market accounts, mutual funds, savings accounts, checking accounts.
+      Money supply measures: M1 (currency + checking deposits), M2 (M1 + savings + CDs + money market).
+      Liquidity spectrum: currency (most liquid) → checking → savings → CDs → bonds → stocks.
+      Key confusions: stocks vs. bonds (ownership vs. debt; different risk/return);
+      M1 vs. M2 (transaction money vs. broad money);
+      bond price vs. bond yield (inverse relationship).
+
+  # POOL 14: Exchange Rate Terms
+  # "When a country's currency buys more foreign currency than before, the currency has ___." → "Appreciated"
+  - id: exchange_rate_terms
+    label: "Exchange Rate and Trade Terms"
+    format: term
+    estimated_count: 8
+    syntheticDistractors:
+      - "revalued"
+      - "been devalued"
+      - "strengthened relative to gold"
+    note: >
+      Exchange rate vocabulary: appreciation (currency gains value vs. foreign currencies),
+      depreciation (currency loses value), fixed exchange rate, floating exchange rate,
+      managed float, nominal exchange rate, real exchange rate.
+      Trade balance terms: trade surplus (exports > imports), trade deficit (imports > exports),
+      current account surplus/deficit, balance of payments, net exports (NX), capital inflows,
+      capital outflows.
+      Key confusions: appreciation vs. depreciation effect on trade (appreciation hurts exports
+      by making them more expensive for foreigners; depreciation helps exports);
+      fixed vs. floating (government sets price vs. market determines price).
+
+  # POOL 15: Multiplier Type Terms
+  # "Which multiplier has a smaller absolute value than the spending multiplier?" → "Tax multiplier"
+  - id: multiplier_type_terms
+    label: "Economic Multiplier Types"
+    format: term
+    estimated_count: 6
+    syntheticDistractors:
+      - "investment accelerator"
+      - "foreign trade multiplier"
+      - "credit multiplier"
+    note: >
+      Fiscal multipliers: spending (expenditure) multiplier = 1/MPS,
+      tax multiplier = -MPC/MPS, balanced budget multiplier = 1.
+      Banking/money: money multiplier = 1/reserve requirement ratio.
+      Relationships: |spending multiplier| > |tax multiplier| by 1 unit;
+      tax cut stimulus is smaller than equivalent government spending increase
+      because some of tax cut is saved.
+      Key confusions: spending vs. tax multiplier magnitude (spending = 1/MPS, tax = MPC/MPS;
+      spending is larger because initial round of spending is immediate);
+      money multiplier (banking) vs. spending multiplier (GDP effect of fiscal policy).
+
+  # POOL 16: Named Laws and Principles (Macro)
+  # "What relationship states that a 1% rise in unemployment above the natural rate is associated with a 2% fall in real GDP?" → "Okun's Law"
+  - id: law_and_principle_names_macro
+    label: "Named Laws and Principles (Macroeconomics)"
+    format: proper_noun
+    estimated_count: 12
+    syntheticDistractors:
+      - "Gresham's Law"
+      - "Goodhart's Law"
+      - "Tiebout hypothesis"
+    note: >
+      Named macroeconomic principles: Say's Law (supply creates its own demand; classical view),
+      quantity theory of money (MV=PQ; monetarist), Okun's Law (unemployment-GDP relationship;
+      ~2% GDP loss per 1% unemployment above NRU), Fisher equation (real = nominal − inflation),
+      Keynesian economics (aggregate demand management; fiscal multiplier),
+      monetarism (stable money growth rule; Friedman), Ricardian equivalence (tax cut savings offset),
+      Phillips curve (inflation-unemployment trade-off), Laffer curve (tax rate and revenue),
+      convergence hypothesis (poor countries grow faster).
+      Key confusions: Say's Law (classical — supply creates demand) vs. Keynesian view
+      (demand creates supply; recessions possible); Fisher equation (two different applications —
+      interest rates and quantity theory).
+
+  # POOL 17: Visual Macro Graphs (Image Questions)
+  # Image-based identification questions showing unlabeled graphs
+  - id: visual_macro_graphs
+    label: "Macroeconomic Graph Identification (Image-Based)"
+    format: term
+    estimated_count: 15
+    note: >
+      Image-question pool for graph identification. Students see an unlabeled graph and must
+      identify what it shows. Graphs: AD/AS diagram (three-curve model), short-run Phillips curve,
+      long-run Phillips curve (vertical), money market (vertical MS, downward MD), loanable funds
+      market (upward S, downward D), business cycle diagram (oscillation around trend), circular
+      flow diagram (four-sector), foreign exchange market (supply/demand for dollars), PPC
+      (concave curve), Laffer curve (inverted U).
+      All facts using this pool must have quizMode: "image_question" and imageAssetPath set.
+      Distractors are other graph names from this pool.
+
+  # POOL 18: Balance of Payments Account Terms
+  # "Which account in the balance of payments records trade in goods and services?" → "Current account"
+  - id: bop_account_terms
+    label: "Balance of Payments Account Terms"
+    format: term
+    estimated_count: 8
+    syntheticDistractors:
+      - "reserve account"
+      - "unilateral transfers account"
+      - "official settlements balance"
+    note: >
+      BOP account categories: current account (trade in goods/services, net income, transfers),
+      capital account (small; transfer of capital assets), financial account (investment flows),
+      official reserves account (central bank foreign currency holdings).
+      Trade sub-components: merchandise trade balance (goods only), services trade balance,
+      net primary income (wages, dividends, interest), net secondary income (transfers).
+      Key confusions: capital account vs. financial account (capital account is small transfers;
+      financial account is the large investment flows that offset current account);
+      current account deficit = financial account surplus (accounting identity).
+
+# ============================================================
+# SYNONYM GROUPS — equivalent answer forms that must all be accepted
+# ============================================================
+
+synonym_groups:
+  - canonical: "expansionary fiscal policy"
+    synonyms:
+      - "fiscal stimulus"
+      - "expansionary fiscal"
+      - "loose fiscal policy"
+      - "stimulative fiscal policy"
+
+  - canonical: "contractionary fiscal policy"
+    synonyms:
+      - "fiscal austerity"
+      - "contractionary fiscal"
+      - "tight fiscal policy"
+      - "fiscal tightening"
+
+  - canonical: "expansionary monetary policy"
+    synonyms:
+      - "easy money policy"
+      - "loose monetary policy"
+      - "accommodative monetary policy"
+      - "expansionary monetary"
+
+  - canonical: "contractionary monetary policy"
+    synonyms:
+      - "tight money policy"
+      - "tight monetary policy"
+      - "restrictive monetary policy"
+      - "contractionary monetary"
+
+  - canonical: "aggregate demand"
+    synonyms:
+      - "AD"
+      - "total demand in the economy"
+
+  - canonical: "short-run aggregate supply"
+    synonyms:
+      - "SRAS"
+      - "short-run aggregate supply curve"
+
+  - canonical: "long-run aggregate supply"
+    synonyms:
+      - "LRAS"
+      - "long-run aggregate supply curve"
+      - "potential output curve"
+
+  - canonical: "natural rate of unemployment"
+    synonyms:
+      - "NRU"
+      - "full employment unemployment rate"
+      - "non-accelerating inflation rate of unemployment"
+      - "NAIRU"
+
+  - canonical: "Consumer Price Index"
+    synonyms:
+      - "CPI"
+
+  - canonical: "gross domestic product"
+    synonyms:
+      - "GDP"
+
+  - canonical: "marginal propensity to consume"
+    synonyms:
+      - "MPC"
+
+  - canonical: "marginal propensity to save"
+    synonyms:
+      - "MPS"
+
+  - canonical: "open market operations"
+    synonyms:
+      - "OMO"
+      - "open market purchases and sales"
+
+  - canonical: "federal funds rate"
+    synonyms:
+      - "fed funds rate"
+      - "overnight lending rate"
+
+  - canonical: "M1 money supply"
+    synonyms:
+      - "M1"
+      - "narrow money"
+      - "transaction money"
+
+  - canonical: "M2 money supply"
+    synonyms:
+      - "M2"
+      - "broad money"
+
+  - canonical: "balance of payments"
+    synonyms:
+      - "BOP"
+
+  - canonical: "short-run Phillips curve"
+    synonyms:
+      - "SRPC"
+      - "Phillips curve"
+
+  - canonical: "long-run Phillips curve"
+    synonyms:
+      - "LRPC"
+
+  - canonical: "production possibilities curve"
+    synonyms:
+      - "PPC"
+      - "production possibilities frontier"
+      - "PPF"
+
+# ============================================================
+# DIFFICULTY TIERS — CED-aligned difficulty calibration
+# ============================================================
+
+difficulty_tiers:
+  description: >
+    Five difficulty tiers aligned to AP Macroeconomics exam skill levels.
+    Facts must have difficulty assigned (1-5). Tier weights reflect typical
+    AP exam question distribution and CED skill emphasis.
+
+  tiers:
+    - level: 1
+      label: "Definition/Identification"
+      description: >
+        Pure recall — name to definition, term identification, basic relationships.
+        Examples: "What does GDP stand for?", "What are the four factors of production?",
+        "What type of unemployment is caused by recession?"
+      target_percentage: 15
+      ced_skill: "Skill 1: Principles and Models"
+
+    - level: 2
+      label: "Conceptual Understanding"
+      description: >
+        Explain a concept, identify cause-and-effect in a single-step scenario.
+        Examples: "Why does the AD curve slope downward?", "What happens to the unemployment
+        rate if discouraged workers re-enter the labor force?", "Why is LRAS vertical?"
+      target_percentage: 25
+      ced_skill: "Skill 1: Principles and Models"
+
+    - level: 3
+      label: "Applied Analysis"
+      description: >
+        Multi-step reasoning, graph shifts, policy effect analysis.
+        Examples: "If the Fed buys bonds, what happens to the money supply, interest rates,
+        and investment?", "How does expansionary fiscal policy affect the AD-AS model?",
+        "Given MPC = 0.8, calculate the spending multiplier."
+      target_percentage: 35
+      ced_skill: "Skill 2: Graphs and Visuals / Skill 3: Calculations"
+
+    - level: 4
+      label: "Cross-Market Connections"
+      description: >
+        Connect multiple markets (money market + loanable funds + AD/AS), trace policy
+        through multiple transmission mechanisms, integrate domestic and international effects.
+        Examples: "How does a budget deficit affect exchange rates through the loanable funds
+        market?", "Trace the effects of contractionary monetary policy on the Phillips curve."
+      target_percentage: 20
+      ced_skill: "Skill 4: Short-Answer Reasoning"
+
+    - level: 5
+      label: "Policy Design and Evaluation"
+      description: >
+        Compare policy options, evaluate trade-offs, integrate crowding out with exchange rate
+        effects, assess long-run vs. short-run consequences, analyze self-correction.
+        Examples: "Compare the effectiveness of fiscal vs. monetary policy when interest rates
+        are near zero", "Explain why stagflation poses a policy dilemma."
+      target_percentage: 5
+      ced_skill: "Skill 4: Short-Answer Reasoning"
+
+# ============================================================
+# EXAM TAGS SCHEMA — CED-aligned metadata for each fact
+# ============================================================
+
+exam_tags_schema:
+  description: >
+    Every fact MUST include an examTags object. These drive difficulty calibration
+    and allow filtering by CED unit/topic for targeted study. AP Macroeconomics has
+    6 units and 20 topics (1.1 through 6.6).
+
+  fields:
+    unit:
+      type: integer
+      range: [1, 6]
+      description: >
+        CED unit number: 1=Basic Economic Concepts, 2=Economic Indicators and Business Cycle,
+        3=National Income and Price Determination, 4=Financial Sector,
+        5=Long-Run Consequences of Stabilization Policies, 6=Open Economy
+
+    topic:
+      type: string
+      description: "CED topic code, e.g. '3.2' (Unit 3, Topic 2 — Multipliers)"
+
+    skill:
+      type: string
+      enum: ["principles_and_models", "graphs_and_visuals", "calculations", "short_answer_reasoning"]
+      description: >
+        AP Macroeconomics skill category alignment (College Board 4 skills):
+        principles_and_models = Skill 1, graphs_and_visuals = Skill 2,
+        calculations = Skill 3, short_answer_reasoning = Skill 4
+      required: false
+
+    exam_weight:
+      type: string
+      enum: ["high", "medium", "low"]
+      description: >
+        Estimated AP exam frequency. High = core concept tested most years (AD/AS, multipliers,
+        monetary policy), medium = appears regularly, low = depth/enrichment or edge cases.
+
+    is_calculation_fact:
+      type: boolean
+      description: "True if the fact involves a numerical calculation (multiplier, unemployment rate, GDP deflator, etc.)"
+
+    is_graph_fact:
+      type: boolean
+      description: "True if the fact requires interpreting or drawing a graph (AD/AS, Phillips curve, money market, etc.)"
+
+    is_policy_fact:
+      type: boolean
+      description: "True if the fact is primarily about the design or effect of fiscal or monetary policy"
+
+  example: >
+    examTags:
+      unit: 3
+      topic: "3.2"
+      skill: "calculations"
+      exam_weight: "high"
+      is_calculation_fact: true
+      is_graph_fact: false
+      is_policy_fact: false
+
+# ============================================================
+# IMAGE FACTS NOTES — Guidelines for image-based questions
+# ============================================================
+
+image_facts_notes:
+  description: >
+    AP Macroeconomics has significant graph-interpretation content (Skill 2). Image-based
+    facts allow students to practice reading unlabeled or partially labeled graphs.
+
+  guidelines:
+    - All image-based facts must use quizMode "image_question" and be in the visual_macro_graphs pool
+    - Images should show standard AP-style graphs: axis labels, curve labels, equilibrium points
+    - For graph-shift questions, show before and after curves with arrows indicating direction
+    - Priority graphs for image facts (most tested on AP exam):
+        - AD/AS diagram showing recessionary gap and inflationary gap
+        - AD/AS diagram showing effects of fiscal/monetary policy
+        - Short-run and long-run Phillips curve together
+        - Money market equilibrium and Fed intervention
+        - Loanable funds market with crowding out
+        - Foreign exchange market showing appreciation/depreciation
+        - Business cycle diagram
+        - PPC showing growth shift
+    - Keep image descriptions precise enough to reconstruct if art is regenerated
+    - Image asset naming convention: macro_{graph_type}_{variant}.png
+      e.g., macro_adas_recessionary_gap.png, macro_phillips_stagflation.png
