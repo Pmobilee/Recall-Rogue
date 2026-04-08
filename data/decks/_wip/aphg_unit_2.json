@@ -1,0 +1,1732 @@
+[
+  {
+    "id": "aphg_u2_arithmetic_density",
+    "quizQuestion": "Which population density measure divides the total population by the total land area of a country?",
+    "correctAnswer": "arithmetic density",
+    "acceptableAlternatives": [
+      "crude density",
+      "population density"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 1,
+    "funScore": 4,
+    "distractors": [
+      "physiological density",
+      "agricultural density",
+      "carrying capacity index",
+      "arable land ratio",
+      "population pressure index",
+      "resource density",
+      "settlement density",
+      "habitation density"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Arithmetic density (total population / total land area) is the most basic density measure. It treats all land as equally usable, which can be misleading — Canada has low arithmetic density but much of its land is Arctic tundra.",
+    "wowFactor": "Canada has fewer people per square kilometer than many African countries — yet most Canadians live crammed into a thin strip along the US border.",
+    "statement": "Arithmetic density divides total population by total land area.",
+    "visualDescription": "A map with the total population number divided by the full country outline area.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.2"
+    ],
+    "sourceDetails": "CED EK PSO-2.B.1: Arithmetic density (total population / total land area), physiological density (total population / arable land), and agricultural density (farmers / arable land) are used to understand the relationship between humans and the environment."
+  },
+  {
+    "id": "aphg_u2_physiological_density",
+    "quizQuestion": "Which population density measure divides total population by the amount of arable (farmable) land?",
+    "correctAnswer": "physiological density",
+    "acceptableAlternatives": [
+      "nutritional density"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "arithmetic density",
+      "agricultural density",
+      "carrying capacity density",
+      "arable pressure index",
+      "food security ratio",
+      "resource density",
+      "land use intensity index",
+      "settlement pressure ratio"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Physiological density reveals how much pressure a population places on productive farmland. Egypt has one of the world's highest physiological densities because nearly all its population crowds into the fertile Nile Valley while the rest is desert.",
+    "wowFactor": "Egypt's physiological density is among the world's highest — nearly all 100 million Egyptians live in just 4% of the country's land along the Nile.",
+    "statement": "Physiological density divides total population by arable land area.",
+    "visualDescription": "A population figure divided by only the green (farmable) portion of a country map.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.2"
+    ],
+    "sourceDetails": "CED EK PSO-2.B.1: Arithmetic density (total population / total land area), physiological density (total population / arable land), and agricultural density (farmers / arable land)."
+  },
+  {
+    "id": "aphg_u2_agricultural_density",
+    "quizQuestion": "Which type of population density compares the number of farmers to the amount of arable land available?",
+    "correctAnswer": "agricultural density",
+    "acceptableAlternatives": [
+      "farmer density"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "distractors": [
+      "physiological density",
+      "arithmetic density",
+      "rural land intensity",
+      "crop yield density",
+      "subsistence pressure index",
+      "arable labor ratio",
+      "farm worker density",
+      "carrying capacity ratio"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Agricultural density measures efficiency of agricultural land use. More developed countries tend to have lower agricultural density because mechanized farming means fewer farmers can work the same amount of arable land.",
+    "wowFactor": "Developed countries like the US have very low agricultural density — advanced machinery means a tiny fraction of the population feeds everyone else.",
+    "statement": "Agricultural density = farmers divided by arable land area.",
+    "visualDescription": "A tractor icon and farm workers counted against a green-highlighted field on a map.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.2"
+    ],
+    "sourceDetails": "CED EK PSO-2.B.1: Arithmetic density (total population / total land area), physiological density (total population / arable land), and agricultural density (farmers / arable land)."
+  },
+  {
+    "id": "aphg_u2_population_pyramid",
+    "quizQuestion": "Which type of diagram uses horizontal bars to show the age and sex composition of a population?",
+    "correctAnswer": "population pyramid",
+    "acceptableAlternatives": [
+      "age-sex pyramid",
+      "age structure diagram"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 1,
+    "funScore": 5,
+    "distractors": [
+      "demographic histogram",
+      "cohort flowchart",
+      "age-gender bar chart",
+      "dependency ratio graph",
+      "fertility rate diagram",
+      "mortality profile chart",
+      "census distribution chart",
+      "population scatter plot"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Population pyramids show males on one side and females on the other, with younger age cohorts at the bottom. A wide base indicates high birth rates (rapid growth); a rectangular shape indicates slow growth; an inverted pyramid signals population decline.",
+    "wowFactor": "A country's entire demographic future — birth rates, aging, military potential, labor supply — can be read at a glance from one population pyramid.",
+    "statement": "Population pyramids display age-sex composition with age groups stacked horizontally.",
+    "visualDescription": "A symmetrical pyramid shape with age groups labeled on the left and bars extending left (male) and right (female).",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.3"
+    ],
+    "sourceDetails": "CED EK IMP-2.A.1: Population pyramids are used to understand the age-sex composition of a population and predict future trends."
+  },
+  {
+    "id": "aphg_u2_dependency_ratio",
+    "quizQuestion": "Which population measure compares the non-working population (young and elderly) to the working-age population?",
+    "correctAnswer": "dependency ratio",
+    "acceptableAlternatives": [
+      "age dependency ratio"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "economic_indicator_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "distractors": [
+      "natural increase rate",
+      "total fertility rate",
+      "infant mortality rate",
+      "age-sex ratio",
+      "labor force participation rate",
+      "demographic dividend index",
+      "cohort survival rate",
+      "population support ratio"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "A high dependency ratio (many young or elderly per worker) strains economies because fewer productive workers must support more dependents. Countries in DTM Stage 2 have high youth dependency; Stage 5 countries face high elderly dependency.",
+    "wowFactor": "In countries with very high youth dependency, a single working adult may economically support four or more dependents — a massive drag on development.",
+    "statement": "Dependency ratio compares non-working population to working-age population.",
+    "visualDescription": "A scale balancing children and elderly figures against working adults.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.3"
+    ],
+    "sourceDetails": "CED EK IMP-2.A.2: Dependency ratio compares the non-working population to the working-age population."
+  },
+  {
+    "id": "aphg_u2_sex_ratio",
+    "quizQuestion": "In population geography, the number of males per 100 females in a given population is called the {___}.",
+    "correctAnswer": "sex ratio",
+    "acceptableAlternatives": [
+      "gender ratio"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "distractors": [
+      "cohort ratio",
+      "dependency ratio",
+      "fertility differential",
+      "gender composition index",
+      "male-female balance index",
+      "demographic parity index",
+      "population balance ratio",
+      "reproductive ratio"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Sex ratio is expressed as males per 100 females. Ratios above 100 indicate more males; below 100 indicates more females. Wars, migration patterns, and selective practices can all skew sex ratios in a population.",
+    "wowFactor": "China's decades-long One-Child Policy combined with son preference created one of the most skewed sex ratios in history — millions of 'missing' women.",
+    "statement": "Sex ratio measures the number of males per 100 females in a population.",
+    "visualDescription": "A bar chart comparing male to female silhouettes with a ratio number.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.3"
+    ],
+    "sourceDetails": "CED EK IMP-2.A.1: Population pyramids are used to understand the age-sex composition of a population and predict future trends."
+  },
+  {
+    "id": "aphg_u2_cbr",
+    "quizQuestion": "Which demographic indicator measures the number of live births per 1,000 people in a population per year?",
+    "correctAnswer": "crude birth rate",
+    "acceptableAlternatives": [
+      "CBR"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "economic_indicator_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "distractors": [
+      "total fertility rate",
+      "natural increase rate",
+      "infant mortality rate",
+      "general fertility rate",
+      "crude death rate",
+      "gross reproduction rate",
+      "net reproduction rate",
+      "age-specific fertility rate"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "CBR is a rough measure because it counts births against the entire population (including men and post-menopausal women). It is compared with CDR to calculate the natural increase rate (NIR).",
+    "wowFactor": "The 'crude' in crude birth rate refers to the fact that it uses the whole population as denominator — not just women of childbearing age, making it less precise than TFR.",
+    "statement": "Crude birth rate (CBR) = live births per 1,000 people per year.",
+    "visualDescription": "A baby icon with the number per 1,000 population symbol.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.4"
+    ],
+    "sourceDetails": "CED EK IMP-2.B.1: Crude birth rate (CBR), crude death rate (CDR), and the total fertility rate (TFR) are used to analyze population change."
+  },
+  {
+    "id": "aphg_u2_tfr",
+    "quizQuestion": "Which demographic measure estimates the average number of children a woman would have over her lifetime at current birth rates?",
+    "correctAnswer": "total fertility rate",
+    "acceptableAlternatives": [
+      "TFR"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "economic_indicator_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "crude birth rate",
+      "natural increase rate",
+      "general fertility rate",
+      "gross reproduction rate",
+      "replacement fertility level",
+      "infant mortality rate",
+      "net fertility index",
+      "cohort fertility rate"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "TFR is more precise than CBR because it tracks age-specific fertility for women aged 15–49. A TFR of 2.1 is considered replacement-level fertility in developed countries. Sub-Saharan Africa averages around 4–5, while much of Europe is below 1.5.",
+    "wowFactor": "South Korea's TFR dropped below 0.8 in 2023 — the lowest ever recorded for a major country — alarming demographers worldwide.",
+    "statement": "Total fertility rate (TFR) = average children per woman over her lifetime.",
+    "visualDescription": "A woman icon with a number representing average children alongside an age bracket label.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.4"
+    ],
+    "sourceDetails": "CED EK IMP-2.B.1: Crude birth rate (CBR), crude death rate (CDR), and the total fertility rate (TFR) are used to analyze population change."
+  },
+  {
+    "id": "aphg_u2_nir",
+    "quizQuestion": "Natural increase rate (NIR) is calculated by subtracting the {___} from the crude birth rate.",
+    "correctAnswer": "crude death rate",
+    "acceptableAlternatives": [
+      "CDR",
+      "death rate"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "economic_indicator_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "distractors": [
+      "infant mortality rate",
+      "total fertility rate",
+      "emigration rate",
+      "net migration rate",
+      "dependency ratio",
+      "life expectancy index",
+      "crude birth rate",
+      "replacement rate"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "NIR = CBR minus CDR. It measures natural population change without counting migration. A positive NIR means more births than deaths; a negative NIR means the population is naturally shrinking. Many European countries now have negative NIRs.",
+    "wowFactor": "Some European countries have negative NIRs — they're losing population naturally, without any migration counted. Immigration is what keeps their numbers stable.",
+    "statement": "NIR = CBR minus CDR, measuring population change excluding migration.",
+    "visualDescription": "A formula: CBR - CDR = NIR with arrows showing population growth or decline.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.4"
+    ],
+    "sourceDetails": "CED EK IMP-2.B.2: Natural increase rate (NIR) is calculated by subtracting CDR from CBR and represents growth (or decline) without migration."
+  },
+  {
+    "id": "aphg_u2_doubling_time",
+    "quizQuestion": "The Rule of 70 is used to estimate a population's {___} by dividing 70 by the growth rate.",
+    "correctAnswer": "doubling time",
+    "acceptableAlternatives": [
+      "population doubling time",
+      "time to double"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "natural increase rate",
+      "replacement rate",
+      "demographic dividend period",
+      "carrying capacity threshold",
+      "population momentum lag",
+      "exponential growth rate",
+      "birth rate trajectory",
+      "fertility transition timeline"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Doubling time is the number of years it takes a population to double at its current growth rate. The Rule of 70 provides a quick estimate: divide 70 by the growth rate percentage. A population growing at 2% annually would double in about 35 years.",
+    "wowFactor": "At a 3% annual growth rate — common in parts of sub-Saharan Africa — a population doubles in just 23 years. That means children born today will live to see twice as many people.",
+    "statement": "Doubling time estimates years for population to double; Rule of 70 divides 70 by growth rate.",
+    "visualDescription": "A timeline with a population bar doubling in length, labeled with years.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.4"
+    ],
+    "sourceDetails": "CED EK IMP-2.B.3: Doubling time is the number of years it takes a population to double at its current rate of growth."
+  },
+  {
+    "id": "aphg_u2_imr",
+    "quizQuestion": "Which development indicator measures the number of infant deaths per 1,000 live births in a given year?",
+    "correctAnswer": "infant mortality rate",
+    "acceptableAlternatives": [
+      "IMR"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "economic_indicator_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "distractors": [
+      "crude death rate",
+      "child mortality rate",
+      "under-five mortality rate",
+      "neonatal mortality rate",
+      "maternal mortality rate",
+      "perinatal death rate",
+      "life expectancy index",
+      "total fertility rate"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "IMR is one of the most sensitive indicators of a country's level of development, reflecting access to prenatal care, clean water, nutrition, and healthcare. Countries in DTM Stage 2 see dramatic IMR declines as medical technology improves.",
+    "wowFactor": "IMR dropped over 95% in many developed countries during the 20th century — from over 100 infant deaths per 1,000 births to under 5 today.",
+    "statement": "Infant mortality rate measures infant deaths per 1,000 live births per year.",
+    "visualDescription": "A chart showing infant mortality declining steeply as development increases.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.4"
+    ],
+    "sourceDetails": "CED EK IMP-2.B.1: Crude birth rate (CBR), crude death rate (CDR), and the total fertility rate (TFR) are used to analyze population change."
+  },
+  {
+    "id": "aphg_u2_dtm_stage_count",
+    "quizQuestion": "How many stages does the Demographic Transition Model (DTM) have?",
+    "correctAnswer": "{5}",
+    "acceptableAlternatives": [
+      "five",
+      "5 stages"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "bracket_numbers",
+    "difficulty": 1,
+    "funScore": 3,
+    "distractors": [],
+    "quizMode": "multiple_choice",
+    "explanation": "The DTM has 5 stages that show how populations change over time as CBR and CDR shift. Stage 1: both high. Stage 2: CDR drops. Stage 3: CBR drops. Stage 4: both low. Stage 5: birth rate falls below death rate.",
+    "wowFactor": "Stage 5 was only theorized when the model was created — but today over a dozen countries, including Japan and Germany, have actually entered negative natural growth.",
+    "statement": "The DTM consists of 5 stages tracking birth and death rate transitions.",
+    "visualDescription": "A 5-stage line graph showing CBR and CDR crossing over time.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.5"
+    ],
+    "sourceDetails": "CED EK IMP-2.C.1: The DTM is a 5-stage model that shows how population changes through time, as crude birth rates and crude death rates change."
+  },
+  {
+    "id": "aphg_u2_dtm_stage1",
+    "quizQuestion": "In which DTM stage are both crude birth rates and crude death rates high, resulting in low overall population growth?",
+    "correctAnswer": "Stage 1",
+    "acceptableAlternatives": [
+      "DTM Stage 1",
+      "stage one"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 4,
+    "distractors": [
+      "Stage 2",
+      "Stage 3",
+      "Stage 4",
+      "Stage 5",
+      "pre-demographic stage",
+      "subsistence equilibrium stage",
+      "pre-transition phase",
+      "static population stage"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Stage 1 represents pre-industrial societies where high death rates (from disease, famine, warfare) offset high birth rates. Population grows slowly and fluctuates. No country today is considered Stage 1, though isolated societies historically fit this profile.",
+    "wowFactor": "No country remains in Stage 1 today — the spread of basic medicine and food security has pulled even the poorest nations into Stage 2.",
+    "statement": "DTM Stage 1: high CBR, high CDR, low population growth.",
+    "visualDescription": "A DTM graph with Stage 1 highlighted, showing both lines at high stable levels.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.5"
+    ],
+    "sourceDetails": "CED EK IMP-2.C.2: Stage 1: high birth rate, high death rate, low growth."
+  },
+  {
+    "id": "aphg_u2_dtm_stage2",
+    "quizQuestion": "Which DTM stage is characterized by a rapidly declining death rate while birth rates remain high, causing rapid population growth?",
+    "correctAnswer": "Stage 2",
+    "acceptableAlternatives": [
+      "DTM Stage 2",
+      "stage two"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "distractors": [
+      "Stage 1",
+      "Stage 3",
+      "Stage 4",
+      "Stage 5",
+      "early transition phase",
+      "mortality decline stage",
+      "population surge phase",
+      "pre-fertility transition"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Stage 2 occurs when medical advances, improved sanitation, and better food supply dramatically lower death rates while birth rates stay high. This creates the fastest population growth. Many countries in sub-Saharan Africa are in Stage 2.",
+    "wowFactor": "Stage 2 is why world population exploded from 1 billion in 1800 to over 8 billion today — death rates fell while birth rates stayed high for decades.",
+    "statement": "DTM Stage 2: death rate declines sharply, birth rate stays high, rapid population growth.",
+    "visualDescription": "A DTM graph showing CDR dropping steeply in Stage 2 while CBR stays high.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.5"
+    ],
+    "sourceDetails": "CED EK IMP-2.C.2: Stage 2: death rate declines, high birth rate, population grows rapidly."
+  },
+  {
+    "id": "aphg_u2_dtm_stage3",
+    "quizQuestion": "In DTM Stage 3, which demographic rate begins to decline, causing population growth to slow?",
+    "correctAnswer": "birth rate",
+    "acceptableAlternatives": [
+      "crude birth rate",
+      "CBR",
+      "fertility rate"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 4,
+    "distractors": [
+      "death rate",
+      "infant mortality rate",
+      "migration rate",
+      "life expectancy",
+      "natural increase rate",
+      "dependency ratio",
+      "total fertility rate rises",
+      "crude death rate"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "In Stage 3, urbanization, women's education, and access to contraception cause birth rates to fall. Death rates remain low. Population still grows but at a decelerating rate. Brazil and Mexico transitioned through Stage 3 in the late 20th century.",
+    "wowFactor": "The single most powerful predictor of when a country leaves Stage 3? Girls' education. Every additional year of schooling correlates with lower fertility rates.",
+    "statement": "DTM Stage 3: birth rate declines, slowing population growth.",
+    "visualDescription": "A DTM graph with Stage 3 showing CBR dropping while CDR stays low.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.5"
+    ],
+    "sourceDetails": "CED EK IMP-2.C.2: Stage 3: birth rate declines, slowing growth."
+  },
+  {
+    "id": "aphg_u2_dtm_stage4",
+    "quizQuestion": "In which DTM stage are both birth rates and death rates low, resulting in low but stable population growth?",
+    "correctAnswer": "Stage 4",
+    "acceptableAlternatives": [
+      "DTM Stage 4",
+      "stage four"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 1,
+    "funScore": 3,
+    "distractors": [
+      "Stage 1",
+      "Stage 2",
+      "Stage 3",
+      "Stage 5",
+      "post-industrial equilibrium",
+      "demographic plateau phase",
+      "stable growth period",
+      "mature demographic stage"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Stage 4 is where most developed nations sit today. Both CBR and CDR are low, producing near-zero natural increase. Population is large and aging. Examples include the United States, France, and Australia.",
+    "wowFactor": "The US is technically in Stage 4, but its population still grows — almost entirely because of immigration, not natural increase.",
+    "statement": "DTM Stage 4: both CBR and CDR are low, near-zero natural growth.",
+    "visualDescription": "A DTM graph showing both lines converging at low levels in Stage 4.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.5"
+    ],
+    "sourceDetails": "CED EK IMP-2.C.2: Stage 4: low birth rate, low death rate, low growth."
+  },
+  {
+    "id": "aphg_u2_dtm_stage5",
+    "quizQuestion": "In DTM Stage 5, which rate exceeds the birth rate, causing natural population decline?",
+    "correctAnswer": "death rate",
+    "acceptableAlternatives": [
+      "crude death rate",
+      "CDR",
+      "mortality rate"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "distractors": [
+      "emigration rate",
+      "infant mortality rate",
+      "net migration rate",
+      "dependency ratio",
+      "life expectancy",
+      "natural increase rate",
+      "fertility replacement level",
+      "crude birth rate"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Stage 5 occurs when birth rates fall below death rates, causing the population to naturally shrink. Japan, South Korea, and many Eastern European nations are in Stage 5. Aging populations and low immigration make this a major policy challenge.",
+    "wowFactor": "Japan's population peaked around 2008 and has been shrinking ever since — it could lose one-third of its current population by 2100 at current trends.",
+    "statement": "DTM Stage 5: death rate exceeds birth rate, natural population decline.",
+    "visualDescription": "A DTM graph with Stage 5 showing CDR slightly above CBR at low levels.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.5"
+    ],
+    "sourceDetails": "CED EK IMP-2.C.2: Stage 5: birth rate below death rate, population declines."
+  },
+  {
+    "id": "aphg_u2_etm_description",
+    "quizQuestion": "Which model describes how the leading causes of death in a population shift from infectious diseases to chronic/degenerative diseases as a country develops economically?",
+    "correctAnswer": "Epidemiological Transition Model",
+    "acceptableAlternatives": [
+      "epidemiological transition",
+      "ETM"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "model_and_theory_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "Demographic Transition Model",
+      "Malthusian Theory",
+      "Gravity Model",
+      "Ravenstein's Laws",
+      "Health Transition Framework",
+      "Mortality Transition Theory",
+      "Human Development Model",
+      "Disease Burden Index"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "The Epidemiological Transition Model, developed by Abdel Omran, describes how societies move from high death rates caused by infectious/parasitic diseases (Stage 1: pestilence and famine) to death rates dominated by chronic diseases like heart disease and cancer as development improves.",
+    "wowFactor": "Just 200 years ago, infectious diseases like cholera and smallpox were the leading killers worldwide. Today heart disease and cancer dominate — a complete reversal in how humans die.",
+    "statement": "The Epidemiological Transition Model tracks how causes of death shift from infectious to chronic diseases.",
+    "visualDescription": "A timeline showing disease icons shifting from bacteria/viruses to heart and tumor icons.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.9"
+    ],
+    "sourceDetails": "CED EK IMP-2.E.1: The epidemiological transition describes changes in the causes of death in a population as it develops economically. Disease patterns shift from infectious/parasitic to chronic/degenerative diseases."
+  },
+  {
+    "id": "aphg_u2_etm_stage1_disease",
+    "quizQuestion": "In the Epidemiological Transition Model, Stage 1 (Pestilence and Famine) is characterized by high death rates from which type of disease?",
+    "correctAnswer": "infectious diseases",
+    "acceptableAlternatives": [
+      "infectious and parasitic diseases",
+      "epidemic disease",
+      "communicable diseases"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "distractors": [
+      "chronic diseases",
+      "degenerative diseases",
+      "cardiovascular diseases",
+      "cancer and tumors",
+      "lifestyle diseases",
+      "neurological disorders",
+      "metabolic syndrome diseases",
+      "delayed degenerative diseases"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "In ETM Stage 1, high death rates are driven by infectious and parasitic diseases — plague, cholera, malaria, and dysentery. Life expectancy is low (25–35 years). This corresponds with DTM Stage 1.",
+    "wowFactor": "In medieval Europe, plague (Yersinia pestis) killed up to one-third of the population in a single outbreak — the defining feature of ETM Stage 1.",
+    "statement": "ETM Stage 1: high death rates from infectious and parasitic diseases.",
+    "visualDescription": "A historical scene showing disease vectors (rats, mosquitoes) beside a population graph with high mortality.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.9"
+    ],
+    "sourceDetails": "CED EK IMP-2.E.1: Disease patterns shift from infectious/parasitic to chronic/degenerative diseases."
+  },
+  {
+    "id": "aphg_u2_etm_late_stages",
+    "quizQuestion": "In the later stages of the Epidemiological Transition Model, the leading causes of death shift to which category of disease?",
+    "correctAnswer": "chronic and degenerative diseases",
+    "acceptableAlternatives": [
+      "degenerative diseases",
+      "chronic diseases",
+      "non-communicable diseases"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "distractors": [
+      "infectious diseases",
+      "parasitic diseases",
+      "epidemic diseases",
+      "nutritional deficiency diseases",
+      "communicable diseases",
+      "vector-borne diseases",
+      "waterborne diseases",
+      "airborne contagious diseases"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "As countries develop economically, infectious disease mortality falls while chronic/degenerative diseases (heart disease, cancer, stroke) become the primary killers. This shift reflects longer life spans, better sanitation, and changed diets and lifestyles.",
+    "wowFactor": "Today, heart disease kills more people globally than all infectious diseases combined — a complete reversal from 200 years ago.",
+    "statement": "ETM later stages: death rates dominated by chronic and degenerative diseases.",
+    "visualDescription": "A pie chart showing cause of death shifting from infectious to chronic diseases over development stages.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.9"
+    ],
+    "sourceDetails": "CED EK IMP-2.E.1: Disease patterns shift from infectious/parasitic to chronic/degenerative diseases."
+  },
+  {
+    "id": "aphg_u2_malthus_theory",
+    "quizQuestion": "Which theorist argued that population growth would eventually outstrip food supply, leading to famine, disease, and war as 'positive checks'?",
+    "correctAnswer": "Thomas Malthus",
+    "acceptableAlternatives": [
+      "Malthus",
+      "T.R. Malthus"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "geographer_names",
+    "difficulty": 1,
+    "funScore": 7,
+    "distractors": [
+      "Ernst Ravenstein",
+      "Ester Boserup",
+      "Johann von Thunen",
+      "Immanuel Wallerstein",
+      "Walter Rostow",
+      "Paul Ehrlich",
+      "Carl Sauer",
+      "Alfred Weber"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Thomas Malthus published 'An Essay on the Principle of Population' in 1798. He argued population grows geometrically (2, 4, 8...) while food supply grows arithmetically (2, 4, 6...), making catastrophe inevitable unless 'preventive checks' (celibacy, late marriage) or 'positive checks' (famine, disease, war) limit growth.",
+    "wowFactor": "Malthus wrote his famous essay in 1798 as a direct response to Enlightenment optimism about human progress. He essentially argued that poverty was mathematically inevitable.",
+    "statement": "Thomas Malthus argued population growth would outstrip food supply, leading to catastrophe.",
+    "visualDescription": "A graph showing geometric population growth diverging steeply above arithmetic food supply growth.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.6"
+    ],
+    "sourceDetails": "CED EK IMP-2.D.1: Thomas Malthus argued that population growth would outstrip food supply, leading to catastrophe. Neo-Malthusians apply this to modern resource limits."
+  },
+  {
+    "id": "aphg_u2_neo_malthusianism",
+    "quizQuestion": "Scholars who apply Malthus's overpopulation concerns to modern resource limits such as water, energy, and ecosystem capacity are called {___}.",
+    "correctAnswer": "neo-Malthusians",
+    "acceptableAlternatives": [
+      "neo-Malthusian theorists",
+      "modern Malthusians"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "Boserupians",
+      "cornucopians",
+      "demographic optimists",
+      "techno-progressivists",
+      "resource nationalists",
+      "environmental determinists",
+      "sustainable development theorists",
+      "ecological pessimists"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Neo-Malthusians like Paul Ehrlich ('The Population Bomb', 1968) warned that rapid population growth would exhaust not just food but water, oil, and ecosystem services. Critics counter that human ingenuity and technology continuously expand Earth's effective carrying capacity.",
+    "wowFactor": "Paul Ehrlich predicted mass famine in the 1970s–80s. The Green Revolution made him wrong — but neo-Malthusians argue we've only delayed the reckoning.",
+    "statement": "Neo-Malthusians apply Malthus's overpopulation concerns to modern resource and environmental limits.",
+    "visualDescription": "A planet Earth icon surrounded by population growth arrows pressing against shrinking resource bars.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.6"
+    ],
+    "sourceDetails": "CED EK IMP-2.D.1: Neo-Malthusians apply this to modern resource limits."
+  },
+  {
+    "id": "aphg_u2_malthus_critics",
+    "quizQuestion": "Critics of Malthusian theory point to {___} as evidence that food production can keep pace with population growth.",
+    "correctAnswer": "technology and improved agriculture",
+    "acceptableAlternatives": [
+      "agricultural technology",
+      "the Green Revolution",
+      "technological innovation"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "distractors": [
+      "natural resource depletion",
+      "demographic transition",
+      "population redistribution",
+      "government food rationing",
+      "reduced consumer demand",
+      "geographic expansion of farmland",
+      "declining birth rates alone",
+      "international food aid programs"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Critics, including Ester Boserup, argue that human innovation — crop rotation, fertilizers, high-yield seeds, irrigation — has consistently increased food production faster than Malthus predicted. The Green Revolution in the mid-20th century dramatically increased yields globally.",
+    "wowFactor": "Ester Boserup flipped Malthus on his head: she argued that population pressure actually DRIVES agricultural innovation — necessity is the mother of invention.",
+    "statement": "Malthus's critics argue that technology and social change prevent the predicted catastrophe.",
+    "visualDescription": "A tractor and lab equipment symbolizing agricultural and technological progress outpacing population growth.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.6"
+    ],
+    "sourceDetails": "CED EK IMP-2.D.2: Critics of Malthus argue that technology and social change prevent the Malthusian catastrophe."
+  },
+  {
+    "id": "aphg_u2_pro_natalist_policy",
+    "quizQuestion": "A government policy designed to encourage higher birth rates by offering incentives such as tax breaks or paid parental leave is called a {___} policy.",
+    "correctAnswer": "pro-natalist",
+    "acceptableAlternatives": [
+      "pronatalist",
+      "pro-natalist population policy"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 1,
+    "funScore": 5,
+    "distractors": [
+      "anti-natalist",
+      "eugenic",
+      "demographic incentive",
+      "population stabilization",
+      "fertility control",
+      "replacement-level policy",
+      "immigration-substitution policy",
+      "reproductive rights policy"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Pro-natalist policies are used by countries with declining or aging populations. France has offered family bonuses and subsidized childcare since the 1930s. Singapore and South Korea have introduced financial incentives to reverse low TFRs.",
+    "wowFactor": "France has maintained one of Europe's highest TFRs through aggressive pro-natalist policy — cash bonuses for third children, heavily subsidized childcare, and generous parental leave.",
+    "statement": "Pro-natalist policies incentivize higher birth rates to address population decline.",
+    "visualDescription": "A family icon with a plus sign and government building symbolizing birth incentives.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.7"
+    ],
+    "sourceDetails": "CED EK SPS-2.A.1: Countries that favor increased population have pro-natalist policies."
+  },
+  {
+    "id": "aphg_u2_anti_natalist_policy",
+    "quizQuestion": "China's One-Child Policy (1980–2015) is the most famous example of which type of population policy?",
+    "correctAnswer": "anti-natalist",
+    "acceptableAlternatives": [
+      "antinatalist",
+      "anti-natalist policy"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 1,
+    "funScore": 7,
+    "distractors": [
+      "pro-natalist",
+      "eugenic",
+      "replacement-level",
+      "demographic stabilization",
+      "family planning neutral",
+      "coercive fertility policy",
+      "reproductive rights policy",
+      "population redistribution policy"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Anti-natalist policies aim to reduce birth rates. China's One-Child Policy was the most sweeping state intervention in reproductive history, involving fines, forced sterilizations, and social pressure. It contributed to a severely skewed sex ratio and an aging population.",
+    "wowFactor": "China's One-Child Policy may be the largest state intervention in reproductive history — affecting over a billion people's family decisions for 35 years.",
+    "statement": "Anti-natalist policies aim to reduce birth rates; China's One-Child Policy is a prime example.",
+    "visualDescription": "A family icon with a restriction symbol and a Chinese government emblem.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.7"
+    ],
+    "sourceDetails": "CED EK SPS-2.A.1: Countries that favor reduced population have anti-natalist policies."
+  },
+  {
+    "id": "aphg_u2_women_education_fertility",
+    "quizQuestion": "Improvements in women's education and social status are most directly linked to which demographic change?",
+    "correctAnswer": "declining fertility rates",
+    "acceptableAlternatives": [
+      "lower fertility rates",
+      "falling birth rates",
+      "lower TFR"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "distractors": [
+      "rising infant mortality",
+      "increasing migration rates",
+      "higher dependency ratios",
+      "increased natural increase rate",
+      "population aging acceleration",
+      "rising crude death rates",
+      "growing dependency burden",
+      "higher crude birth rates"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Research consistently shows that women's education is the strongest predictor of fertility decline. Educated women marry later, have better access to contraception, and participate more in the workforce — all factors that reduce TFR and accelerate the demographic transition.",
+    "wowFactor": "In Bangladesh, women's education programs reduced TFR from 6.9 in 1975 to under 2.3 today — one of the fastest fertility transitions ever recorded.",
+    "statement": "Improved women's education and status leads to declining fertility rates.",
+    "visualDescription": "A graph showing inverse relationship between women's education levels and fertility rates.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.8"
+    ],
+    "sourceDetails": "CED EK SPS-2.B.1: Improvements in education and the status of women have led to declining fertility rates in many parts of the world."
+  },
+  {
+    "id": "aphg_u2_women_dtm_progression",
+    "quizQuestion": "According to the CED, which factor — linked to DTM Stage 3 — is most closely associated with women's changing demographic role?",
+    "correctAnswer": "education and status of women",
+    "acceptableAlternatives": [
+      "women's empowerment",
+      "female education",
+      "women's social status"
+    ],
+    "chainThemeId": "population_pulse",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "economic development alone",
+      "government anti-natalist policies",
+      "urbanization without education",
+      "increased life expectancy",
+      "improved sanitation infrastructure",
+      "access to medical technology",
+      "rising crude death rates",
+      "declining infant mortality alone"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "The CED explicitly connects women's improved education and social status to the fertility decline that drives Stage 3 of the DTM. This reflects the Gender Inequality Index's inclusion of education and empowerment measures alongside reproductive health indicators.",
+    "wowFactor": "The UN argues that girls' education is the single highest-return investment in development — it simultaneously reduces fertility, improves child health, and boosts economic output.",
+    "statement": "Women's education and status improvements drive fertility rate declines in DTM Stage 3.",
+    "visualDescription": "A female graduation figure beside a DTM graph with a declining birth rate in Stage 3.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.8"
+    ],
+    "sourceDetails": "CED EK SPS-2.B.1: Improvements in education and the status of women have led to declining fertility rates in many parts of the world."
+  },
+  {
+    "id": "aphg_u2_push_pull_factors",
+    "quizQuestion": "In migration theory, conditions that drive people away from their origin country are called {___} factors.",
+    "correctAnswer": "push",
+    "acceptableAlternatives": [
+      "push factors"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 1,
+    "funScore": 4,
+    "distractors": [
+      "pull",
+      "intervening",
+      "expulsion",
+      "migration impetus",
+      "displacement",
+      "forced departure",
+      "origin deterrent",
+      "emigration driver"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Push factors are negative conditions at the origin that motivate people to leave — poverty, conflict, persecution, natural disasters, lack of opportunity. They are distinguished from pull factors, which are positive conditions at the destination that attract migrants.",
+    "wowFactor": "Wars are the ultimate push factor: the Syrian Civil War displaced over 13 million people — the largest refugee and displacement crisis since World War II.",
+    "statement": "Push factors are negative conditions at the origin that drive people to migrate.",
+    "visualDescription": "A person figure being pushed away from a location marked with negative symbols (conflict, drought).",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.10"
+    ],
+    "sourceDetails": "CED EK SPS-2.C.1: Push-and-pull factors — economic, cultural, environmental — explain why people migrate."
+  },
+  {
+    "id": "aphg_u2_pull_factors",
+    "quizQuestion": "Economic opportunity, political freedom, and family connections at a destination that attract migrants are examples of {___} factors.",
+    "correctAnswer": "pull",
+    "acceptableAlternatives": [
+      "pull factors"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 1,
+    "funScore": 4,
+    "distractors": [
+      "push",
+      "intervening opportunity",
+      "attraction",
+      "destination incentive",
+      "magnet force",
+      "migration corridor driver",
+      "immigration stimulus",
+      "gravity factor"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Pull factors attract migrants to a destination: higher wages, job openings, political stability, existing immigrant community networks, and educational opportunities. The decision to migrate typically involves weighing both push and pull factors together.",
+    "wowFactor": "The United States received more immigrants than any other country in the 20th century — primarily because of pull factors: economic opportunity, political freedom, and an open immigration policy for much of that period.",
+    "statement": "Pull factors are positive conditions at the destination that attract migrants.",
+    "visualDescription": "A person figure being pulled toward a location marked with positive symbols (jobs, safety, family).",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.10"
+    ],
+    "sourceDetails": "CED EK SPS-2.C.1: Push-and-pull factors — economic, cultural, environmental — explain why people migrate."
+  },
+  {
+    "id": "aphg_u2_intervening_obstacle",
+    "quizQuestion": "In migration theory, a physical or cultural barrier (such as a mountain range or strict immigration law) that deters migration between origin and destination is called an {___}.",
+    "correctAnswer": "intervening obstacle",
+    "acceptableAlternatives": [
+      "migration obstacle",
+      "intervening barrier"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "distractors": [
+      "intervening opportunity",
+      "distance decay barrier",
+      "migration filter",
+      "spatial friction",
+      "push deterrent",
+      "destination barrier",
+      "gravity resistance",
+      "step migration block"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Intervening obstacles slow or redirect migration flows. Physical obstacles include oceans, deserts, and mountains. Cultural/political obstacles include language barriers, visa restrictions, and discrimination. An intervening opportunity, by contrast, is an alternative destination that intercepts the migrant before they reach their original target.",
+    "wowFactor": "The US-Mexico border fence is one of the most literal intervening obstacles on Earth — billions of dollars of infrastructure aimed at converting a pull into a barrier.",
+    "statement": "Intervening obstacles are barriers between origin and destination that deter or redirect migration.",
+    "visualDescription": "A migration arrow deflected by a wall/mountain symbol between origin and destination points.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.10"
+    ],
+    "sourceDetails": "CED EK SPS-2.C.1: Push-and-pull factors — economic, cultural, environmental — explain why people migrate."
+  },
+  {
+    "id": "aphg_u2_ravenstein_laws",
+    "quizQuestion": "Which 19th-century geographer developed the foundational 'Laws of Migration' describing that most migrants move short distances and migration occurs in steps?",
+    "correctAnswer": "Ernst Ravenstein",
+    "acceptableAlternatives": [
+      "Ravenstein",
+      "E.G. Ravenstein"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "geographer_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "Thomas Malthus",
+      "Johann von Thunen",
+      "Immanuel Wallerstein",
+      "Walter Rostow",
+      "Ester Boserup",
+      "Walter Christaller",
+      "Carl Sauer",
+      "Alfred Weber"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Ernst Ravenstein published his Laws of Migration in 1885 using British census data. Key laws: (1) most migrants move short distances; (2) migration proceeds in steps; (3) longer-distance migrants tend to head to major urban centers; (4) each migration stream creates a counter-stream; (5) rural inhabitants are more mobile than urban ones.",
+    "wowFactor": "Ravenstein derived his laws of migration in 1885 using Victorian-era census data — and they still accurately describe global migration patterns 140 years later.",
+    "statement": "Ernst Ravenstein developed the Laws of Migration, including short-distance and step migration patterns.",
+    "visualDescription": "A 19th-century British map with arrows showing short-distance and step migration patterns.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.10"
+    ],
+    "sourceDetails": "CED EK SPS-2.C.3: Ravenstein's laws of migration describe spatial patterns of migration, including that most migrants move short distances, migration occurs in steps, and streams of migrants follow corridors."
+  },
+  {
+    "id": "aphg_u2_gravity_model_migration",
+    "quizQuestion": "Which model predicts that migration flows between two places increase with larger population sizes and decrease with greater distance between them?",
+    "correctAnswer": "gravity model",
+    "acceptableAlternatives": [
+      "gravity model of migration"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "model_and_theory_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "Ravenstein's Laws",
+      "Demographic Transition Model",
+      "push-pull model",
+      "step migration model",
+      "chain migration theory",
+      "distance decay model",
+      "intervening opportunity model",
+      "rank-size rule"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "The gravity model of migration (inspired by Newton's law of gravitation) predicts that larger and closer places will have greater interaction (including migration). A large, nearby city exerts a stronger 'pull' on migrants than a large but distant one. It helps explain why most international migration flows from less-developed to nearby wealthy countries.",
+    "wowFactor": "Newton's physics equation predicts human migration patterns with surprising accuracy — the bigger and closer the destination city, the more migrants it attracts, just like gravitational attraction.",
+    "statement": "The gravity model predicts migration flows based on population size and distance.",
+    "visualDescription": "Two city circles with arrows showing stronger migration toward the larger/closer city.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.12"
+    ],
+    "sourceDetails": "CED EK SPS-2.E.2: The gravity model describes patterns of migration based on population size and distance between places."
+  },
+  {
+    "id": "aphg_u2_step_migration",
+    "quizQuestion": "When a rural villager first moves to a small regional town, then to a city, then to a major metropolitan area over several years, this pattern is called {___} migration.",
+    "correctAnswer": "step",
+    "acceptableAlternatives": [
+      "step migration"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "migration_type_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "distractors": [
+      "chain",
+      "transnational",
+      "forced",
+      "rural-to-urban",
+      "circular",
+      "return",
+      "seasonal",
+      "international"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Step migration follows Ravenstein's observation that long-distance migration often occurs in stages, with each move to a progressively larger or more prosperous location. It is common in developing countries as rural-to-urban migration unfolds incrementally.",
+    "wowFactor": "Most rural-to-urban migrants don't leap directly to the capital city — they step through progressively larger cities, following job opportunity gradients like water flowing downhill.",
+    "statement": "Step migration involves moving in stages through progressively larger or more prosperous places.",
+    "visualDescription": "An arrow moving from village to small town to city to metropolis in sequential steps.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.10"
+    ],
+    "sourceDetails": "CED EK SPS-2.C.4: Migration occurs at different scales including step migration."
+  },
+  {
+    "id": "aphg_u2_chain_migration",
+    "quizQuestion": "Which migration pattern occurs when migrants follow earlier migrants from the same community to the same destination, creating an established migration network?",
+    "correctAnswer": "chain migration",
+    "acceptableAlternatives": [
+      "network migration",
+      "family migration chain"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "migration_type_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "step migration",
+      "transnational migration",
+      "forced migration",
+      "return migration",
+      "circular migration",
+      "seasonal migration",
+      "mass migration",
+      "guest worker migration"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Chain migration (also called network migration) occurs when established migrants send back information and provide assistance to newer migrants from their home community. It creates ethnic enclaves, reduces migration costs, and explains why certain immigrant communities cluster in specific cities.",
+    "wowFactor": "Chain migration explains why Chicago has a huge Polish community, why Somali refugees concentrated in Minneapolis, and why Silicon Valley became home to so many Indian engineers — each was preceded by a pioneer migration that laid the network.",
+    "statement": "Chain migration follows established migration networks, with earlier migrants guiding later ones.",
+    "visualDescription": "A series of human figures following each other along an arrow path from origin to destination.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.11"
+    ],
+    "sourceDetails": "CED EK SPS-2.D.1: Transnational and chain migration are forms of voluntary migration."
+  },
+  {
+    "id": "aphg_u2_transnational_migration",
+    "quizQuestion": "Which type of migration involves migrants who maintain strong cultural, economic, and social ties to both their origin and destination countries simultaneously?",
+    "correctAnswer": "transnational migration",
+    "acceptableAlternatives": [
+      "transnationalism"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "migration_type_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "chain migration",
+      "voluntary migration",
+      "circular migration",
+      "international migration",
+      "step migration",
+      "return migration",
+      "guest worker migration",
+      "forced migration"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Transnational migrants live in one country while maintaining deep connections — economic (remittances), cultural (dual identity), and political (dual citizenship) — to their homeland. Modern communication technology has greatly facilitated transnationalism.",
+    "wowFactor": "Transnational migrants now send over $700 billion in remittances to developing countries annually — more than all foreign aid combined.",
+    "statement": "Transnational migrants maintain strong ties to both origin and destination countries.",
+    "visualDescription": "A person figure with arrows connecting to two countries, with phone/money transfer symbols.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.11"
+    ],
+    "sourceDetails": "CED EK SPS-2.D.1: Transnational and chain migration are forms of voluntary migration."
+  },
+  {
+    "id": "aphg_u2_forced_migration",
+    "quizQuestion": "Migration driven by conflict, persecution, or environmental disaster — where people have little or no choice but to leave — is classified as {___} migration.",
+    "correctAnswer": "forced",
+    "acceptableAlternatives": [
+      "forced migration"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "migration_type_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "distractors": [
+      "voluntary",
+      "economic",
+      "chain",
+      "step",
+      "transnational",
+      "circular",
+      "labor",
+      "return"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Forced migration occurs when people must leave because of war, persecution, natural disaster, or famine. Examples include the Trans-Atlantic slave trade, the Holocaust, and modern displacement from Syria, South Sudan, and Myanmar. This produces refugees and internally displaced persons (IDPs).",
+    "wowFactor": "The Trans-Atlantic slave trade was the largest forced migration in human history — an estimated 12 million people forcibly removed from Africa over 400 years.",
+    "statement": "Forced migration occurs when people leave due to conflict, persecution, or disaster with little choice.",
+    "visualDescription": "Figures fleeing a burning building or conflict zone with displacement arrows.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.11"
+    ],
+    "sourceDetails": "CED EK SPS-2.C.2: Forced migrations include slavery, conflict-driven displacement, and environmental disasters."
+  },
+  {
+    "id": "aphg_u2_transhumance",
+    "quizQuestion": "The seasonal movement of livestock between mountain pastures in summer and valley lowlands in winter is an example of which migration type?",
+    "correctAnswer": "transhumance",
+    "acceptableAlternatives": [],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "migration_type_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "distractors": [
+      "nomadic herding",
+      "pastoral nomadism",
+      "step migration",
+      "circular migration",
+      "seasonal migration",
+      "internal migration",
+      "voluntary migration",
+      "rural-to-urban migration"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Transhumance is a specific form of seasonal, cyclical movement tied to agricultural practices — particularly livestock herding. Herders move animals to high-altitude pastures in summer and return to lower valleys in winter following available forage. Common in the Alps, Andes, and Central Asia.",
+    "wowFactor": "Swiss alphorn music originated as a way for transhumant herders to communicate across mountain valleys — a cultural artifact of 5,000 years of seasonal livestock migration.",
+    "statement": "Transhumance is seasonal livestock movement between altitude zones following seasonal pasture.",
+    "visualDescription": "Sheep/cattle moving up a mountain in summer and back down in winter, shown in a seasonal cycle diagram.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.10"
+    ],
+    "sourceDetails": "CED EK SPS-2.C.4: Migration occurs at different scales including transhumance and step migration."
+  },
+  {
+    "id": "aphg_u2_rural_urban_migration",
+    "quizQuestion": "Which migration pattern — characteristic of industrialization and economic development — involves people relocating from the countryside to cities seeking employment?",
+    "correctAnswer": "rural-to-urban migration",
+    "acceptableAlternatives": [
+      "rural to urban migration",
+      "urbanward migration"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "migration_type_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "distractors": [
+      "step migration",
+      "chain migration",
+      "counter-urbanization",
+      "suburban migration",
+      "return migration",
+      "seasonal migration",
+      "transnational migration",
+      "forced migration"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Rural-to-urban migration is the dominant internal migration pattern worldwide. It is driven by push factors (agricultural mechanization, limited rural jobs) and pull factors (urban employment, services, opportunity). It has produced megacities of 10+ million in the developing world.",
+    "wowFactor": "In 2007, for the first time in human history, more people lived in cities than rural areas — a milestone created by the unstoppable wave of rural-to-urban migration.",
+    "statement": "Rural-to-urban migration drives urbanization as people move from countryside to cities for work.",
+    "visualDescription": "A map with arrows pointing from rural farmland areas into expanding city boundaries.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.10"
+    ],
+    "sourceDetails": "CED EK SPS-2.C.4: Migration occurs at different scales including rural-to-urban migration."
+  },
+  {
+    "id": "aphg_u2_refugee",
+    "quizQuestion": "A person who has fled their home country due to a well-founded fear of persecution based on race, religion, nationality, or political opinion, and has crossed an international border, is legally classified as a {___}.",
+    "correctAnswer": "refugee",
+    "acceptableAlternatives": [
+      "international refugee"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "migration_type_names",
+    "difficulty": 1,
+    "funScore": 6,
+    "distractors": [
+      "internally displaced person",
+      "asylum seeker",
+      "economic migrant",
+      "stateless person",
+      "guest worker",
+      "undocumented immigrant",
+      "environmental refugee",
+      "voluntary migrant"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "The 1951 UN Refugee Convention defines a refugee as someone outside their country with a well-founded fear of persecution. Unlike IDPs, refugees have crossed an international border. Host countries are obligated under international law not to return refugees to places where they face persecution (non-refoulement).",
+    "wowFactor": "The world reached a record 110 million forcibly displaced people in 2023 — more than the entire population of France. About 35 million meet the legal definition of refugee.",
+    "statement": "Refugees are forced migrants who have crossed an international border due to persecution.",
+    "visualDescription": "A person figure crossing a dotted international border line with a UN protection symbol.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.11"
+    ],
+    "sourceDetails": "CED EK SPS-2.D.1: Refugees, internally displaced persons (IDPs), and asylum seekers are forced migrants."
+  },
+  {
+    "id": "aphg_u2_idp",
+    "quizQuestion": "A person who has been forced to flee their home due to conflict or disaster but who remains within their own country's borders is called an {___}.",
+    "correctAnswer": "internally displaced person",
+    "acceptableAlternatives": [
+      "IDP",
+      "internally displaced persons"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "migration_type_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "refugee",
+      "asylum seeker",
+      "stateless person",
+      "economic migrant",
+      "guest worker",
+      "climate migrant",
+      "voluntary migrant",
+      "cross-border displaced person"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "IDPs are in many ways more vulnerable than refugees because they remain under the jurisdiction of their own government — which may be the same entity persecuting them. They do not have the legal protections afforded to refugees under international law. Colombia and Syria have had some of the world's largest IDP populations.",
+    "wowFactor": "IDPs outnumber refugees by more than 2 to 1 globally — they're the forgotten displaced, trapped within their own country without international legal protections.",
+    "statement": "Internally displaced persons (IDPs) are forced migrants who remain within their own country.",
+    "visualDescription": "A person figure with a displacement arrow that stays within a country's border outline.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.11"
+    ],
+    "sourceDetails": "CED EK SPS-2.D.1: Refugees, internally displaced persons (IDPs), and asylum seekers are forced migrants."
+  },
+  {
+    "id": "aphg_u2_asylum_seeker",
+    "quizQuestion": "A person who has left their home country and applied for legal protection as a refugee in another country — but whose claim has not yet been officially decided — is called an {___}.",
+    "correctAnswer": "asylum seeker",
+    "acceptableAlternatives": [
+      "asylum-seeker",
+      "refugee applicant"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "migration_type_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "distractors": [
+      "refugee",
+      "internally displaced person",
+      "economic migrant",
+      "guest worker",
+      "stateless person",
+      "undocumented immigrant",
+      "temporary protected status holder",
+      "naturalized citizen"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Asylum seekers are in a legal limbo — they have fled their country and are requesting refugee status, but that status has not been granted. Depending on the host country, they may wait years in detention or uncertainty. If granted, they become refugees with formal protections; if denied, they may be deported.",
+    "wowFactor": "In the EU, processing an asylum application can take 3–5 years, leaving millions in legal limbo — neither protected refugees nor deportable migrants.",
+    "statement": "Asylum seekers are forced migrants awaiting official refugee status determination.",
+    "visualDescription": "A person figure standing before a legal scale with a pending status indicator.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.11"
+    ],
+    "sourceDetails": "CED EK SPS-2.D.1: Refugees, internally displaced persons (IDPs), and asylum seekers are forced migrants."
+  },
+  {
+    "id": "aphg_u2_brain_drain",
+    "quizQuestion": "The emigration of highly educated or skilled workers from less-developed to more-developed countries, reducing human capital in the sending country, is called {___}.",
+    "correctAnswer": "brain drain",
+    "acceptableAlternatives": [
+      "human capital flight",
+      "skills emigration"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "remittances",
+      "chain migration",
+      "guest worker migration",
+      "reverse migration",
+      "circular migration",
+      "labor diaspora",
+      "international talent transfer",
+      "skills diffusion"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Brain drain deprives developing countries of the doctors, engineers, and teachers they most need for development. Sub-Saharan Africa loses hundreds of millions of dollars in medical training investment annually as doctors emigrate to Europe and North America.",
+    "wowFactor": "Some Caribbean islands have lost over 80% of their university-educated citizens to emigration — entire generations of human capital absorbed by wealthier countries.",
+    "statement": "Brain drain is the emigration of skilled workers from developing to developed countries.",
+    "visualDescription": "An educated figure emigrating with diplomas/skills leaving a developing country map.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.12"
+    ],
+    "sourceDetails": "CED EK SPS-2.E.1: Migration has social, economic, and cultural effects on the origin and destination countries, including remittances, brain drain, and changing population composition."
+  },
+  {
+    "id": "aphg_u2_remittances",
+    "quizQuestion": "Money sent by migrants working abroad back to their families in their home country is called {___}.",
+    "correctAnswer": "remittances",
+    "acceptableAlternatives": [
+      "remittance payments",
+      "worker remittances"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 1,
+    "funScore": 6,
+    "distractors": [
+      "brain drain",
+      "foreign direct investment",
+      "foreign aid",
+      "migrant transfer payments",
+      "diaspora bonds",
+      "development assistance",
+      "international wage transfers",
+      "trade payments"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Remittances are a major source of income for many developing countries. For nations like the Philippines, Haiti, and Nepal, remittances from citizens working abroad represent a significant percentage of GDP — often exceeding foreign aid. They support household consumption but do not always lead to long-term development investment.",
+    "wowFactor": "Global remittances exceed $700 billion annually — more than triple all official foreign aid combined. For Tajikistan, remittances represent over 40% of GDP.",
+    "statement": "Remittances are money sent by international migrants to family members in their home country.",
+    "visualDescription": "A money transfer arrow from a migrant worker abroad to a family in a developing country.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.12"
+    ],
+    "sourceDetails": "CED EK SPS-2.E.1: Migration has social, economic, and cultural effects on the origin and destination countries, including remittances, brain drain, and changing population composition."
+  },
+  {
+    "id": "aphg_u2_guest_workers",
+    "quizQuestion": "Temporary foreign workers recruited by a receiving country to fill labor shortages — such as those recruited to the Persian Gulf oil states or post-WWII Germany — are commonly called {___}.",
+    "correctAnswer": "guest workers",
+    "acceptableAlternatives": [
+      "temporary migrant workers",
+      "gastarbeiter"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "migration_type_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "refugees",
+      "asylum seekers",
+      "transnational migrants",
+      "chain migrants",
+      "brain drain emigrants",
+      "internally displaced persons",
+      "economic asylum seekers",
+      "seasonal agricultural workers"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Guest worker programs invite temporary labor migration. West Germany's Gastarbeiter program (1960s–70s) brought millions of Turks and Italians — many of whom stayed permanently, changing German demographics. Persian Gulf states rely heavily on South Asian guest workers who lack citizenship rights.",
+    "wowFactor": "Qatar's World Cup stadiums were built almost entirely by South Asian guest workers — with some estimates suggesting over 6,500 workers died during construction, highlighting guest worker rights abuses.",
+    "statement": "Guest workers are temporary foreign laborers recruited to fill labor shortages in receiving countries.",
+    "visualDescription": "A construction or factory worker figure with a temporary work visa symbol and an outward-pointing arrow.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.11"
+    ],
+    "sourceDetails": "CED EK SPS-2.D.1: Refugees, internally displaced persons (IDPs), and asylum seekers are forced migrants. Transnational and chain migration are forms of voluntary migration."
+  },
+  {
+    "id": "aphg_u2_migration_cultural_effects",
+    "quizQuestion": "The creation of ethnic neighborhoods, new foods, languages, and cultural practices in the destination country as a result of immigration is an example of which type of migration effect?",
+    "correctAnswer": "cultural effects",
+    "acceptableAlternatives": [
+      "cultural impact",
+      "cultural changes from migration"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "distractors": [
+      "economic effects",
+      "demographic effects",
+      "political effects",
+      "environmental effects",
+      "social assimilation only",
+      "remittance effects",
+      "urban structure effects",
+      "labor market effects"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Migration produces profound cultural effects in destination countries: formation of ethnic enclaves (Chinatowns, Little Italys), introduction of new cuisines and languages, changing religious demographics, and enriched cultural diversity. These effects can also produce tensions around cultural identity and integration.",
+    "wowFactor": "One in six people in the United States today was born abroad — migration has made the US one of the most culturally diverse societies in human history.",
+    "statement": "Migration creates cultural effects in destination countries including ethnic enclaves, new foods, and language diversity.",
+    "visualDescription": "A destination city map with colored ethnic neighborhood zones and cultural icons.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.12"
+    ],
+    "sourceDetails": "CED EK SPS-2.E.1: Migration has social, economic, and cultural effects on the origin and destination countries, including remittances, brain drain, and changing population composition."
+  },
+  {
+    "id": "aphg_u2_migration_population_composition",
+    "quizQuestion": "Migration typically affects the population composition of receiving countries by increasing the proportion of which demographic group?",
+    "correctAnswer": "working-age adults",
+    "acceptableAlternatives": [
+      "young adults",
+      "working age population",
+      "economically active population"
+    ],
+    "chainThemeId": "migration_currents",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "distractors": [
+      "elderly population",
+      "children under 15",
+      "retired population",
+      "dependent population",
+      "indigenous population",
+      "school-age children",
+      "post-working age adults",
+      "infants and toddlers"
+    ],
+    "quizMode": "multiple_choice",
+    "explanation": "Most voluntary migrants are working-age adults (especially young adults) who migrate for economic opportunity. This skews the destination country's population pyramid toward working-age adults, potentially reducing dependency ratios and boosting labor supply. This 'demographic dividend' from immigration helps many aging developed countries.",
+    "wowFactor": "Germany, Japan, and the US all depend on immigration to maintain their working-age labor force as their native-born populations age — immigrants literally keep these economies running.",
+    "statement": "Migration increases the proportion of working-age adults in receiving countries, affecting population composition.",
+    "visualDescription": "A population pyramid showing a bulge in the working-age bands caused by immigration.",
+    "sourceName": "College Board AP Human Geography CED 2020",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "volatile": false,
+    "ageGroup": "all",
+    "examTags": [
+      "APHG",
+      "Unit 2",
+      "Topic 2.12"
+    ],
+    "sourceDetails": "CED EK SPS-2.E.1: Migration has social, economic, and cultural effects on the origin and destination countries, including remittances, brain drain, and changing population composition."
+  }
+]

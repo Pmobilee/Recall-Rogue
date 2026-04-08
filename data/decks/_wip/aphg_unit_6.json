@@ -1,0 +1,1432 @@
+[
+  {
+    "id": "aphg_u6_site_vs_situation",
+    "quizQuestion": "Which urban geography term refers to the physical characteristics of the land on which a city is built (terrain, water access)?",
+    "correctAnswer": "site",
+    "acceptableAlternatives": [
+      "city site"
+    ],
+    "explanation": "Site refers to the absolute physical characteristics of a city's location — its terrain, soil, water supply, and topography. Situation refers to the city's location relative to other places. Both influence a city's origin and growth.",
+    "distractors": [
+      "situation",
+      "situation factor",
+      "relative location",
+      "hinterland",
+      "central place",
+      "threshold",
+      "range",
+      "gravity zone"
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.A.1: Site and situation influence the origin, function, and growth of cities.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.1",
+      "ek_code": "PSO-6.A.1"
+    }
+  },
+  {
+    "id": "aphg_u6_situation_def",
+    "quizQuestion": "A city's location relative to surrounding regions, transportation routes, and other cities is called its {___}.",
+    "correctAnswer": "situation",
+    "acceptableAlternatives": [
+      "city situation"
+    ],
+    "explanation": "Situation describes a city's relative location — its connectivity and relationship to other places. New York's situation is excellent: at the mouth of the Hudson River, connected to interior markets. Situation is often more important than site for long-term urban growth.",
+    "distractors": [
+      "site",
+      "hinterland",
+      "central place",
+      "nodal region",
+      "threshold distance",
+      "range factor",
+      "bid-rent zone",
+      "gravity index"
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.A.1: Site and situation influence the origin, function, and growth of cities.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.1",
+      "ek_code": "PSO-6.A.1"
+    }
+  },
+  {
+    "id": "aphg_u6_megacity_def",
+    "quizQuestion": "A city with a population of at least 10 million people is classified as a {___}.",
+    "correctAnswer": "megacity",
+    "acceptableAlternatives": [
+      "mega-city"
+    ],
+    "explanation": "Megacities are urban agglomerations with populations exceeding 10 million. Examples include Tokyo, Mumbai, and Lagos. The CED notes that megacities and metacities are increasingly located in the periphery and semiperiphery, not just in wealthy core nations.",
+    "distractors": [
+      "metacity",
+      "world city",
+      "global city",
+      "primate city",
+      "boomburb",
+      "edge city",
+      "metropolitan area",
+      "conurbation"
+    ],
+    "difficulty": 1,
+    "funScore": 6,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.A.3: Megacities and metacities are distinct spatial outcomes of urbanization increasingly located in countries of the periphery and semiperiphery.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.2",
+      "ek_code": "PSO-6.A.3"
+    }
+  },
+  {
+    "id": "aphg_u6_metacity_def",
+    "quizQuestion": "Which term describes an urban agglomeration with a population exceeding 20 million people?",
+    "correctAnswer": "metacity",
+    "acceptableAlternatives": [
+      "meta-city"
+    ],
+    "explanation": "Metacities have populations above 20 million. Tokyo is currently the world's largest metacity. The CED distinguishes metacities from megacities (10M+) as especially large spatial outcomes of urbanization. Both are increasingly found in the Global South.",
+    "distractors": [
+      "megacity",
+      "world city",
+      "global city",
+      "primate city",
+      "hypercity",
+      "conurbation",
+      "metropolitan region",
+      "megalopolis"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.A.3: Megacities and metacities are distinct spatial outcomes of urbanization increasingly located in countries of the periphery and semiperiphery.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.2",
+      "ek_code": "PSO-6.A.3"
+    }
+  },
+  {
+    "id": "aphg_u6_edge_city_def",
+    "quizQuestion": "A large node of office and retail activity on the urban fringe with more jobs than bedrooms is called an {___}.",
+    "correctAnswer": "edge city",
+    "acceptableAlternatives": [
+      "edge cities"
+    ],
+    "explanation": "Edge cities emerge at the periphery of older metropolitan areas, often near highway interchanges. They have suburban locations but urban-scale employment. The term was popularized by journalist Joel Garreau. Examples include Tysons Corner, Virginia.",
+    "distractors": [
+      "exurb",
+      "boomburb",
+      "suburb",
+      "metacity",
+      "megacity",
+      "new town",
+      "inner-ring suburb",
+      "galactic city"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "urban_challenge_terms",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.A.4: Processes of suburbanization, sprawl, and decentralization have created new land-use forms — including edge cities, exurbs, and boomburbs.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.2",
+      "ek_code": "PSO-6.A.4"
+    }
+  },
+  {
+    "id": "aphg_u6_exurb_def",
+    "quizQuestion": "Residential communities beyond the suburbs that are largely bedroom communities for distant city workers are called {___}.",
+    "correctAnswer": "exurbs",
+    "acceptableAlternatives": [
+      "exurb"
+    ],
+    "explanation": "Exurbs lie beyond the suburbs, typically with lower density and longer commutes to urban employment centers. Residents are often higher-income households seeking larger lots. Unlike edge cities, exurbs lack significant employment nodes of their own.",
+    "distractors": [
+      "edge cities",
+      "boomburbs",
+      "inner suburbs",
+      "satellite cities",
+      "bedroom communities",
+      "greenfield developments",
+      "new towns",
+      "peri-urban zones"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "urban_challenge_terms",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.A.4: Processes of suburbanization, sprawl, and decentralization have created new land-use forms — including edge cities, exurbs, and boomburbs.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.2",
+      "ek_code": "PSO-6.A.4"
+    }
+  },
+  {
+    "id": "aphg_u6_world_city_def",
+    "quizQuestion": "Cities that function at the top of the world's urban hierarchy and drive globalization are called {___}.",
+    "correctAnswer": "world cities",
+    "acceptableAlternatives": [
+      "world city",
+      "global cities",
+      "global city"
+    ],
+    "explanation": "World cities (also called global cities) serve as command-and-control centers of the global economy. London, New York, and Tokyo are tier-one world cities. They house headquarters of multinational corporations, major financial exchanges, and international organizations.",
+    "distractors": [
+      "megacities",
+      "primate cities",
+      "metacities",
+      "edge cities",
+      "gateway cities",
+      "boomburbs",
+      "metropolitan areas",
+      "capital cities"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.B.1: World cities function at the top of the world's urban hierarchy and drive globalization.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.3",
+      "ek_code": "PSO-6.B.1"
+    }
+  },
+  {
+    "id": "aphg_u6_central_place_theory",
+    "quizQuestion": "Which theory, developed by Walter Christaller, explains the size and spacing of cities using hexagonal market areas?",
+    "correctAnswer": "Central Place Theory",
+    "acceptableAlternatives": [
+      "central place theory",
+      "Christaller's central place theory"
+    ],
+    "explanation": "Christaller's Central Place Theory (1933) argues that settlements exist to provide goods and services to surrounding populations. Larger settlements offer higher-order goods with greater range and threshold. The theory predicts a hexagonal lattice pattern of market areas across an isotropic plain.",
+    "distractors": [
+      "Rank-Size Rule",
+      "Gravity Model",
+      "Bid-Rent Theory",
+      "Galactic City Model",
+      "Multiple-Nuclei Model",
+      "Primate City Concept",
+      "Burgess Concentric-Zone Model",
+      "Hoyt Sector Model"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "model_and_theory_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.C.1: Principles useful for explaining the distribution and size of cities include rank-size rule, the primate city, gravity model, and Christaller's central place theory.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.4",
+      "ek_code": "PSO-6.C.1"
+    }
+  },
+  {
+    "id": "aphg_u6_christaller_geographer",
+    "quizQuestion": "Which geographer developed Central Place Theory, proposing that settlements are distributed in hexagonal market areas based on threshold and range?",
+    "correctAnswer": "Walter Christaller",
+    "acceptableAlternatives": [
+      "Christaller"
+    ],
+    "explanation": "Walter Christaller (1893-1969) was a German geographer who published Central Place Theory in 1933. His model explained urban hierarchy using two key concepts: threshold (minimum population needed to support a service) and range (maximum distance consumers travel for a service).",
+    "distractors": [
+      "Ernest Burgess",
+      "Homer Hoyt",
+      "Chauncy Harris",
+      "Edward Ullman",
+      "August Losch",
+      "Carl Sauer",
+      "Waldo Tobler",
+      "Johann von Thunen"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "geographer_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.C.1: Principles useful for explaining the distribution and size of cities include Christaller's central place theory.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.4",
+      "ek_code": "PSO-6.C.1"
+    }
+  },
+  {
+    "id": "aphg_u6_threshold_def",
+    "quizQuestion": "In Central Place Theory, the minimum number of customers needed to make a business economically viable is called the {___}.",
+    "correctAnswer": "threshold",
+    "acceptableAlternatives": [],
+    "explanation": "Threshold is the minimum market size (population) needed to support a central place function. Low-order goods (convenience stores) have low thresholds; high-order goods (specialty hospitals) require large thresholds. Threshold and range together determine where services locate.",
+    "distractors": [
+      "range",
+      "gravity index",
+      "primate ratio",
+      "rank-size coefficient",
+      "market area",
+      "hinterland capacity",
+      "catchment size",
+      "service zone"
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.C.1: Christaller's central place theory explains city size and distribution using threshold and range.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.4",
+      "ek_code": "PSO-6.C.1"
+    }
+  },
+  {
+    "id": "aphg_u6_range_def",
+    "quizQuestion": "In Central Place Theory, the maximum distance a customer will travel to obtain a good or service is called the {___}.",
+    "correctAnswer": "range",
+    "acceptableAlternatives": [],
+    "explanation": "Range is the outer limit of a central place's market area — beyond this distance, customers will seek a closer alternative. High-order goods (e.g., major surgery) have large ranges; low-order goods (e.g., a loaf of bread) have small ranges. Range and threshold together define a service area.",
+    "distractors": [
+      "threshold",
+      "gravity radius",
+      "hinterland",
+      "service area",
+      "market catchment",
+      "primate ratio",
+      "bid-rent boundary",
+      "hexagonal limit"
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.C.1: Christaller's central place theory explains city size and distribution using threshold and range.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.4",
+      "ek_code": "PSO-6.C.1"
+    }
+  },
+  {
+    "id": "aphg_u6_rank_size_rule",
+    "quizQuestion": "The principle that a country's cities will be ranked by population so that the second city is 1/2 the size of the largest, the third is 1/3, etc. is the {___}.",
+    "correctAnswer": "rank-size rule",
+    "acceptableAlternatives": [
+      "Rank-Size Rule",
+      "rank size rule"
+    ],
+    "explanation": "The rank-size rule (Zipf's Law applied to cities) predicts a regular, hierarchical distribution of city sizes. In countries that follow the rule (e.g., United States), the relationship between rank and size is proportional. Countries dominated by one very large city deviate from this pattern.",
+    "distractors": [
+      "primate city rule",
+      "Central Place Theory",
+      "gravity model",
+      "bid-rent gradient",
+      "urban hierarchy principle",
+      "Zipf's distribution",
+      "Christaller's hierarchy",
+      "threshold spacing rule"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "model_and_theory_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.C.1: Principles useful for explaining the distribution and size of cities include rank-size rule.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.4",
+      "ek_code": "PSO-6.C.1"
+    }
+  },
+  {
+    "id": "aphg_u6_primate_city_def",
+    "quizQuestion": "A country's largest city that is disproportionately larger than all other cities and dominates economic and cultural life is called a {___}.",
+    "correctAnswer": "primate city",
+    "acceptableAlternatives": [
+      "primate cities"
+    ],
+    "explanation": "A primate city is at least twice the population of the second largest city and dominates economic, political, and cultural functions. Examples include Paris (France), Bangkok (Thailand), and Mexico City (Mexico). Countries with primate cities often deviate from the rank-size rule.",
+    "distractors": [
+      "megacity",
+      "world city",
+      "rank-size city",
+      "global city",
+      "gateway city",
+      "capital city",
+      "metropolitan core",
+      "central place"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.C.1: Principles useful for explaining the distribution and size of cities include the primate city.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.4",
+      "ek_code": "PSO-6.C.1"
+    }
+  },
+  {
+    "id": "aphg_u6_gravity_model_urban",
+    "quizQuestion": "Which model predicts that the interaction between two cities is proportional to their populations and inversely proportional to distance?",
+    "correctAnswer": "Gravity Model",
+    "acceptableAlternatives": [
+      "gravity model of spatial interaction",
+      "Gravity Model of Migration"
+    ],
+    "explanation": "The Gravity Model (based on Newton's law of gravitation) predicts the degree of spatial interaction between two places. Larger populations increase interaction; greater distance decreases it. It is used to predict migration, trade flows, commuting patterns, and city-to-city connections.",
+    "distractors": [
+      "Central Place Theory",
+      "Rank-Size Rule",
+      "Bid-Rent Theory",
+      "Burgess Concentric-Zone Model",
+      "Primate City Concept",
+      "Multiple-Nuclei Model",
+      "Galactic City Model",
+      "Hoyt Sector Model"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "model_and_theory_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.C.1: Principles useful for explaining the distribution and size of cities include the gravity model.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.4",
+      "ek_code": "PSO-6.C.1"
+    }
+  },
+  {
+    "id": "aphg_u6_burgess_model",
+    "quizQuestion": "Which urban land-use model depicts cities as a series of concentric rings expanding outward from the Central Business District?",
+    "correctAnswer": "Burgess Concentric-Zone Model",
+    "acceptableAlternatives": [
+      "concentric zone model",
+      "Burgess model",
+      "concentric-zone model"
+    ],
+    "explanation": "Ernest Burgess developed this model based on 1920s Chicago. Five concentric rings: Zone 1 (CBD), Zone 2 (Zone in Transition / light manufacturing), Zone 3 (working-class housing), Zone 4 (middle-class residential), Zone 5 (commuter zone / suburbs). Criticized for reflecting only early 20th-century American cities.",
+    "distractors": [
+      "Hoyt Sector Model",
+      "Harris-Ullman Multiple-Nuclei Model",
+      "Galactic City Model",
+      "Latin American City Model",
+      "Southeast Asian City Model",
+      "African City Model",
+      "Bid-Rent Urban Model",
+      "Edge City Theory"
+    ],
+    "difficulty": 1,
+    "funScore": 7,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "urban_model_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.D.1: Models and theories useful for explaining internal structures of cities include the Burgess concentric-zone model.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.5",
+      "ek_code": "PSO-6.D.1"
+    }
+  },
+  {
+    "id": "aphg_u6_burgess_geographer",
+    "quizQuestion": "Which geographer developed the Concentric-Zone Model using 1920s Chicago as a template for urban land-use patterns?",
+    "correctAnswer": "Ernest Burgess",
+    "acceptableAlternatives": [
+      "Burgess"
+    ],
+    "explanation": "Ernest Burgess (1886–1966) was a University of Chicago sociologist-geographer who proposed the concentric zone model in 1925. Chicago's industrial growth and immigrant neighborhoods made it an ideal case study. His model described how cities expand outward from a central core in distinct rings.",
+    "distractors": [
+      "Homer Hoyt",
+      "Chauncy Harris",
+      "Edward Ullman",
+      "Walter Christaller",
+      "Alfred Weber",
+      "August Losch",
+      "Waldo Tobler",
+      "Carl Sauer"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "geographer_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.D.1: Models and theories useful for explaining internal structures of cities include the Burgess concentric-zone model.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.5",
+      "ek_code": "PSO-6.D.1"
+    }
+  },
+  {
+    "id": "aphg_u6_hoyt_sector_model",
+    "quizQuestion": "Which urban land-use model argues that cities grow in wedge-shaped sectors radiating outward from the CBD along transportation routes?",
+    "correctAnswer": "Hoyt Sector Model",
+    "acceptableAlternatives": [
+      "sector model",
+      "Hoyt model"
+    ],
+    "explanation": "Homer Hoyt's 1939 Sector Model revised Burgess by showing that land uses extend outward in pie-shaped sectors, not concentric rings. High-income housing develops along scenic routes and away from industrial sectors. Transportation corridors (rail lines, highways) shape the direction of growth.",
+    "distractors": [
+      "Burgess Concentric-Zone Model",
+      "Harris-Ullman Multiple-Nuclei Model",
+      "Galactic City Model",
+      "Latin American City Model",
+      "Southeast Asian City Model",
+      "African City Model",
+      "Bid-Rent Urban Model",
+      "Edge City Theory"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "urban_model_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.D.1: Models and theories useful for explaining internal structures of cities include the Hoyt sector model.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.5",
+      "ek_code": "PSO-6.D.1"
+    }
+  },
+  {
+    "id": "aphg_u6_multiple_nuclei_model",
+    "quizQuestion": "Which urban land-use model, developed by Harris and Ullman, argues that cities have multiple centers of activity rather than a single CBD?",
+    "correctAnswer": "Harris-Ullman Multiple-Nuclei Model",
+    "acceptableAlternatives": [
+      "Multiple-Nuclei Model",
+      "multiple nuclei model",
+      "Harris and Ullman model"
+    ],
+    "explanation": "Chauncy Harris and Edward Ullman proposed the Multiple-Nuclei Model in 1945. Cities develop around multiple distinct nodes — the CBD, industrial district, university campus, airport — rather than a single center. This better reflects post-WWII American cities shaped by the automobile.",
+    "distractors": [
+      "Burgess Concentric-Zone Model",
+      "Hoyt Sector Model",
+      "Galactic City Model",
+      "Latin American City Model",
+      "Southeast Asian City Model",
+      "African City Model",
+      "Bid-Rent Urban Model",
+      "Edge City Theory"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "urban_model_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.D.1: Models and theories useful for explaining internal structures of cities include the Harris and Ullman multiple-nuclei model.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.5",
+      "ek_code": "PSO-6.D.1"
+    }
+  },
+  {
+    "id": "aphg_u6_galactic_city_model",
+    "quizQuestion": "Which urban model describes a dispersed, automobile-dependent city with multiple peripheral employment and retail nodes linked by highways?",
+    "correctAnswer": "Galactic City Model",
+    "acceptableAlternatives": [
+      "galactic city model",
+      "peripheral model",
+      "edge city model"
+    ],
+    "explanation": "The Galactic City Model (also called the Peripheral Model) reflects late 20th-century American urban form. The CBD loses dominance as edge cities, malls, and office parks develop along beltways. The pattern resembles a galaxy with scattered nodes of activity around a weakened core.",
+    "distractors": [
+      "Burgess Concentric-Zone Model",
+      "Hoyt Sector Model",
+      "Harris-Ullman Multiple-Nuclei Model",
+      "Latin American City Model",
+      "Southeast Asian City Model",
+      "African City Model",
+      "Bid-Rent Urban Model",
+      "Metropolitan Statistical Area Model"
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "urban_model_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.D.1: Models and theories useful for explaining internal structures of cities include the galactic city model.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.5",
+      "ek_code": "PSO-6.D.1"
+    }
+  },
+  {
+    "id": "aphg_u6_latin_american_city_model",
+    "quizQuestion": "Which urban land-use model features a commercial spine extending from the CBD, elite housing along the spine, and a disamenity zone on the periphery?",
+    "correctAnswer": "Latin American City Model",
+    "acceptableAlternatives": [
+      "Griffin-Ford model",
+      "Latin American urban model"
+    ],
+    "explanation": "The Griffin-Ford Latin American City Model depicts a spine of commercial activity and high-income housing radiating from the CBD, surrounded by a zone of maturity, an inner city zone of accretion, and a disamenity zone (squatter settlements) on the outer fringe. This contrasts with North American models where wealthy residents suburbanize outward.",
+    "distractors": [
+      "Burgess Concentric-Zone Model",
+      "Hoyt Sector Model",
+      "Harris-Ullman Multiple-Nuclei Model",
+      "Galactic City Model",
+      "Southeast Asian City Model",
+      "African City Model",
+      "Bid-Rent Urban Model",
+      "Edge City Theory"
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "urban_model_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.D.1: Models and theories useful for explaining internal structures of cities include urban models drawn from Latin America.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.5",
+      "ek_code": "PSO-6.D.1"
+    }
+  },
+  {
+    "id": "aphg_u6_african_city_model",
+    "quizQuestion": "Which urban land-use model, developed to describe Sub-Saharan African cities, features three CBDs (colonial, traditional, and market) reflecting a legacy of colonial urban planning?",
+    "correctAnswer": "African City Model",
+    "acceptableAlternatives": [
+      "Sub-Saharan African City Model",
+      "de Blij model"
+    ],
+    "explanation": "The African City Model (associated with de Blij) depicts three distinct CBDs: the colonial CBD (European-built), the traditional/ethnic CBD, and the informal/market CBD. Mining, manufacturing, and squatter settlements surround these cores. The structure reflects colonial spatial policies that segregated populations by ethnicity.",
+    "distractors": [
+      "Burgess Concentric-Zone Model",
+      "Hoyt Sector Model",
+      "Harris-Ullman Multiple-Nuclei Model",
+      "Galactic City Model",
+      "Latin American City Model",
+      "Southeast Asian City Model",
+      "Bid-Rent Urban Model",
+      "Metropolitan Statistical Area Model"
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "urban_model_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.D.1: Models and theories useful for explaining internal structures of cities include urban models drawn from Africa.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.5",
+      "ek_code": "PSO-6.D.1"
+    }
+  },
+  {
+    "id": "aphg_u6_southeast_asian_city_model",
+    "quizQuestion": "Which urban model describes a port zone as the dominant center, surrounded by a commercial zone and ethnic quarters radiating outward, reflecting colonial-era Southeast Asian cities?",
+    "correctAnswer": "Southeast Asian City Model",
+    "acceptableAlternatives": [
+      "McGee model",
+      "Southeast Asian urban model"
+    ],
+    "explanation": "T.G. McGee's Southeast Asian City Model places a colonial port zone at the center rather than a traditional CBD. An alien commercial zone (often Chinese merchants) and government quarters surround it. This model reflects the colonial history of cities like Singapore, Jakarta, and Hanoi, shaped by trade and European administration.",
+    "distractors": [
+      "Burgess Concentric-Zone Model",
+      "Hoyt Sector Model",
+      "Harris-Ullman Multiple-Nuclei Model",
+      "Galactic City Model",
+      "Latin American City Model",
+      "African City Model",
+      "Bid-Rent Urban Model",
+      "Edge City Theory"
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "urban_model_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.D.1: Models and theories useful for explaining internal structures of cities include urban models drawn from Southeast Asia.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.5",
+      "ek_code": "PSO-6.D.1"
+    }
+  },
+  {
+    "id": "aphg_u6_bid_rent_theory_urban",
+    "quizQuestion": "The urban theory that explains how land values and land use change with distance from the city center — highest rents near CBD, declining outward — is called {___}.",
+    "correctAnswer": "bid-rent theory",
+    "acceptableAlternatives": [
+      "bid rent theory",
+      "bid-rent gradient"
+    ],
+    "explanation": "Bid-rent theory (applied to urban areas) shows that different users — commercial, industrial, residential — compete for land based on their willingness to pay. Commercial uses can pay the most near the CBD; residential uses tolerate greater distance. The result is a predictable gradient of land use from CBD outward.",
+    "distractors": [
+      "rank-size rule",
+      "Central Place Theory",
+      "Von Thunen Model",
+      "density gradient theory",
+      "gravity model",
+      "concentric zone theory",
+      "sector theory",
+      "zoning ordinance model"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "model_and_theory_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.D.1: Models and theories useful for explaining internal structures of cities include bid-rent theory.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.5",
+      "ek_code": "PSO-6.D.1"
+    }
+  },
+  {
+    "id": "aphg_u6_mixed_land_use",
+    "quizQuestion": "A zoning approach that combines residential, commercial, and office uses within the same district or building is called {___}.",
+    "correctAnswer": "mixed land use",
+    "acceptableAlternatives": [
+      "mixed-use development",
+      "mixed use"
+    ],
+    "explanation": "Mixed land use integrates residential, retail, office, and civic functions within walkable proximity. It contrasts with single-use (Euclidean) zoning that separates these activities into distinct areas. The CED identifies mixed land use as a key component of smart growth and New Urbanism.",
+    "distractors": [
+      "single-use zoning",
+      "Euclidean zoning",
+      "exclusionary zoning",
+      "inclusionary zoning",
+      "transit-oriented development",
+      "greenfield development",
+      "urban renewal",
+      "infill development"
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-6.C.1: Sustainable design initiatives and zoning practices include mixed land use.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.6",
+      "ek_code": "IMP-6.C.1"
+    }
+  },
+  {
+    "id": "aphg_u6_infrastructure_quality",
+    "quizQuestion": "According to the CED, a city's {___} — including transportation, water, sewage, and power systems — directly affects its spatial patterns of economic and social development.",
+    "correctAnswer": "infrastructure",
+    "acceptableAlternatives": [],
+    "explanation": "Infrastructure is the foundational network of physical systems (roads, transit, water, sewer, broadband, power) that enables urban economic and social activity. High-quality infrastructure attracts investment and supports dense, walkable development; poor infrastructure perpetuates poverty and inequality.",
+    "distractors": [
+      "zoning code",
+      "tax base",
+      "governance structure",
+      "cultural capital",
+      "social mobility",
+      "land tenure system",
+      "demographic composition",
+      "urban renewal policy"
+    ],
+    "difficulty": 1,
+    "funScore": 4,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-6.B.1: The location and quality of a city's infrastructure directly affects its spatial patterns of economic and social development.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.7",
+      "ek_code": "IMP-6.B.1"
+    }
+  },
+  {
+    "id": "aphg_u6_transit_oriented_development",
+    "quizQuestion": "Mixed-use development concentrated within a walkable area around a transit station is called {___}.",
+    "correctAnswer": "transit-oriented development",
+    "acceptableAlternatives": [
+      "TOD",
+      "transportation-oriented development"
+    ],
+    "explanation": "Transit-oriented development (TOD) clusters high-density housing, offices, and retail within a quarter-mile walking radius of rail or bus rapid transit stations. It reduces car dependence, supports ridership, and creates walkable urban environments. The CED lists TOD as a sustainable design initiative.",
+    "distractors": [
+      "mixed land use",
+      "New Urbanism",
+      "smart growth",
+      "urban growth boundary",
+      "infilling",
+      "greenfield development",
+      "exurban planning",
+      "inclusionary zoning"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-6.C.1: Sustainable design initiatives and zoning practices include transportation-oriented development.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.8",
+      "ek_code": "IMP-6.C.1"
+    }
+  },
+  {
+    "id": "aphg_u6_new_urbanism",
+    "quizQuestion": "Which urban planning movement advocates for walkable neighborhoods, mixed uses, transit access, and traditional town design to reduce sprawl?",
+    "correctAnswer": "New Urbanism",
+    "acceptableAlternatives": [
+      "new urbanism"
+    ],
+    "explanation": "New Urbanism is a planning movement that emerged in the 1980s-90s to counter suburban sprawl. It promotes compact, walkable neighborhoods with grid street patterns, mixed housing types, front porches, and nearby transit. Celebrated examples include Seaside, Florida. Critics note it can raise housing costs and create exclusionary enclaves.",
+    "distractors": [
+      "smart growth",
+      "transit-oriented development",
+      "mixed land use",
+      "urban renewal",
+      "greenbelt policy",
+      "urban growth boundary",
+      "infill development",
+      "inclusionary zoning"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-6.C.1: Sustainable design initiatives and zoning practices include New Urbanism.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.8",
+      "ek_code": "IMP-6.C.1"
+    }
+  },
+  {
+    "id": "aphg_u6_smart_growth",
+    "quizQuestion": "Which urban planning policy framework promotes compact development, infill, mixed uses, and transit to limit sprawl and protect open space?",
+    "correctAnswer": "smart growth",
+    "acceptableAlternatives": [
+      "smart-growth policy"
+    ],
+    "explanation": "Smart growth is a broad policy approach including urban growth boundaries, infill incentives, mixed-use zoning, and transit investment to channel urban growth inward rather than outward. It is supported by the EPA and many state governments as an alternative to unmanaged sprawl.",
+    "distractors": [
+      "New Urbanism",
+      "transit-oriented development",
+      "greenbelt policy",
+      "urban renewal",
+      "mixed land use",
+      "urban growth boundary",
+      "inclusionary zoning",
+      "exclusionary zoning"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-6.C.1: Sustainable design initiatives and zoning practices include smart-growth policies, including New Urbanism, greenbelts, and slow-growth cities.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.8",
+      "ek_code": "IMP-6.C.1"
+    }
+  },
+  {
+    "id": "aphg_u6_greenbelt_def",
+    "quizQuestion": "A protected ring of open land (parks, farms, or forests) surrounding a city, designated to prevent urban sprawl, is called a {___}.",
+    "correctAnswer": "greenbelt",
+    "acceptableAlternatives": [
+      "green belt"
+    ],
+    "explanation": "Greenbelts are legally protected open spaces around cities that prevent outward urban expansion. London's greenbelt, established in 1938, is the most famous. Critics argue greenbelts can inflate housing prices inside the city. The CED lists greenbelts as a smart-growth response to urban sprawl.",
+    "distractors": [
+      "urban growth boundary",
+      "buffer zone",
+      "urban forest",
+      "parkland reserve",
+      "brownfield",
+      "conservation easement",
+      "farmland preservation zone",
+      "open space corridor"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-6.C.1: Sustainable design initiatives and zoning practices include greenbelts.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.8",
+      "ek_code": "IMP-6.C.1"
+    }
+  },
+  {
+    "id": "aphg_u6_redlining",
+    "quizQuestion": "The discriminatory practice of denying mortgages, insurance, or other financial services to residents of minority neighborhoods — often literally outlined in red on maps — is called {___}.",
+    "correctAnswer": "redlining",
+    "acceptableAlternatives": [],
+    "explanation": "Redlining was formally institutionalized in the 1930s by the Home Owners' Loan Corporation (HOLC), which graded neighborhoods and denied federally backed mortgages to Black and immigrant communities marked in red. The practice was outlawed by the Fair Housing Act of 1968 but created lasting patterns of urban disinvestment.",
+    "distractors": [
+      "blockbusting",
+      "white flight",
+      "gentrification",
+      "urban renewal",
+      "exclusionary zoning",
+      "steering",
+      "environmental injustice",
+      "deed restriction"
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "urban_challenge_terms",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-6.A.1: Issues related to housing and housing discrimination such as redlining, blockbusting, and affordability affect urban populations.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.10",
+      "ek_code": "SPS-6.A.1"
+    }
+  },
+  {
+    "id": "aphg_u6_blockbusting",
+    "quizQuestion": "The practice of encouraging white homeowners to sell quickly by warning that minority groups are moving into the neighborhood — driving down prices — is called {___}.",
+    "correctAnswer": "blockbusting",
+    "acceptableAlternatives": [],
+    "explanation": "Blockbusting was practiced by real estate agents who would profit by inducing white homeowners to sell cheaply (through fear of integration), then reselling or renting at inflated prices to Black families desperate for housing in any neighborhood. It accelerated racial residential segregation and is now illegal.",
+    "distractors": [
+      "redlining",
+      "white flight",
+      "gentrification",
+      "urban renewal",
+      "exclusionary zoning",
+      "steering",
+      "displacement",
+      "eminent domain"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "urban_challenge_terms",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-6.A.1: Issues related to housing and housing discrimination such as redlining, blockbusting, and affordability affect urban populations.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.10",
+      "ek_code": "SPS-6.A.1"
+    }
+  },
+  {
+    "id": "aphg_u6_gentrification",
+    "quizQuestion": "The process by which wealthier residents move into older urban neighborhoods, renovating properties and raising land values while displacing lower-income residents, is called {___}.",
+    "correctAnswer": "gentrification",
+    "acceptableAlternatives": [],
+    "explanation": "Gentrification transforms disinvested urban neighborhoods by attracting higher-income residents who renovate buildings and bring new businesses. It revitalizes neglected areas but often displaces long-term residents who can no longer afford rising rents. The CED notes both positive and negative consequences of gentrification.",
+    "distractors": [
+      "urban renewal",
+      "redlining",
+      "blockbusting",
+      "white flight",
+      "infilling",
+      "suburbanization",
+      "mixed-use development",
+      "eminent domain"
+    ],
+    "difficulty": 1,
+    "funScore": 8,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "urban_challenge_terms",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-6.A.4: Urban renewal and gentrification have both positive and negative consequences.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.10",
+      "ek_code": "SPS-6.A.4"
+    }
+  },
+  {
+    "id": "aphg_u6_white_flight",
+    "quizQuestion": "The large-scale migration of white residents from racially mixed urban areas to predominantly white suburbs, often in response to racial integration, is called {___}.",
+    "correctAnswer": "white flight",
+    "acceptableAlternatives": [],
+    "explanation": "White flight describes the post-WWII phenomenon of white middle-class families leaving cities for suburbs, accelerated by blockbusting, integration of schools, and suburbanization policy. It reduced the tax base of inner cities, worsening public services, and reinforced racial residential segregation.",
+    "distractors": [
+      "suburbanization",
+      "blockbusting",
+      "redlining",
+      "gentrification",
+      "urban renewal",
+      "exclusionary zoning",
+      "exurbanization",
+      "boomburb growth"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "urban_challenge_terms",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-6.A.1: As urban populations move within a city, economic and social challenges result, including issues related to housing discrimination.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.10",
+      "ek_code": "SPS-6.A.1"
+    }
+  },
+  {
+    "id": "aphg_u6_urban_renewal",
+    "quizQuestion": "Government programs that demolish deteriorated urban areas and replace them with new housing, commercial facilities, or public spaces are called {___}.",
+    "correctAnswer": "urban renewal",
+    "acceptableAlternatives": [],
+    "explanation": "Urban renewal in the 1950s-70s used federal funds to clear 'slums' (often minority neighborhoods) and replace them with highways, public housing, or commercial development. Critics called it 'Negro removal.' The CED notes both positive outcomes (modernized infrastructure) and negative consequences (community destruction, displacement).",
+    "distractors": [
+      "gentrification",
+      "redlining",
+      "urban sprawl",
+      "blockbusting",
+      "smart growth",
+      "New Urbanism",
+      "infilling",
+      "brownfield remediation"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "urban_challenge_terms",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-6.A.4: Urban renewal and gentrification have both positive and negative consequences.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.10",
+      "ek_code": "SPS-6.A.4"
+    }
+  },
+  {
+    "id": "aphg_u6_squatter_settlement",
+    "quizQuestion": "Informal housing areas built on land without legal ownership, typically lacking water, sewage, and electricity, found on the urban periphery in developing countries, are called {___}.",
+    "correctAnswer": "squatter settlements",
+    "acceptableAlternatives": [
+      "squatter settlement",
+      "informal settlements",
+      "shantytown",
+      "favela",
+      "slum"
+    ],
+    "explanation": "Squatter settlements (favelas in Brazil, shantytowns, barrios marginales) form when rural migrants cannot afford formal housing. Residents build homes on unused land — often hazardous land unsuited for legal development. The CED notes that squatter settlements and conflicts over land tenure are growing challenges in large cities worldwide.",
+    "distractors": [
+      "disamenity zone",
+      "zone of abandonment",
+      "inner-city slum",
+      "public housing project",
+      "refugee camp",
+      "exurb",
+      "boomburb",
+      "edge city"
+    ],
+    "difficulty": 1,
+    "funScore": 8,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "urban_challenge_terms",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-6.A.2: Squatter settlements and conflicts over land tenure within large cities have increased.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.10",
+      "ek_code": "SPS-6.A.2"
+    }
+  },
+  {
+    "id": "aphg_u6_disamenity_zone",
+    "quizQuestion": "An area of the worst housing in a city — abandoned buildings, extreme poverty, and social disorder — that lacks access to basic services is called a {___}.",
+    "correctAnswer": "disamenity zone",
+    "acceptableAlternatives": [
+      "zone of abandonment"
+    ],
+    "explanation": "Disamenity zones (zones of abandonment) are found in both the developed and developing world — Detroit's abandoned inner neighborhoods or the outer periphery of Latin American cities. The CED cites their growth as a consequence of urban economic and social challenges including housing discrimination and disinvestment.",
+    "distractors": [
+      "squatter settlement",
+      "redlined neighborhood",
+      "inner-city slum",
+      "zone in transition",
+      "brownfield site",
+      "declining suburb",
+      "public housing district",
+      "food desert zone"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "urban_challenge_terms",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-6.A.1: Issues related to housing and housing discrimination result in the growth of disamenity zones or zones of abandonment.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.10",
+      "ek_code": "SPS-6.A.1"
+    }
+  },
+  {
+    "id": "aphg_u6_food_desert",
+    "quizQuestion": "An area — often low-income and urban — where residents have limited or no access to affordable, nutritious food is called a {___}.",
+    "correctAnswer": "food desert",
+    "acceptableAlternatives": [],
+    "explanation": "Food deserts result from the absence of grocery stores in low-income neighborhoods, leaving residents dependent on fast food and convenience stores. They are linked to health disparities. The USDA defines a food desert as a low-income area where more than one-third of residents live more than one mile from a supermarket.",
+    "distractors": [
+      "food insecurity zone",
+      "urban food gap",
+      "nutrition desert",
+      "hunger zone",
+      "squatter settlement",
+      "disamenity zone",
+      "greenfield area",
+      "brownfield district"
+    ],
+    "difficulty": 1,
+    "funScore": 8,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "urban_challenge_terms",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-6.A.1: Issues related to housing and housing discrimination include access to services; challenges include environmental injustice.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.10",
+      "ek_code": "SPS-6.A.1"
+    }
+  },
+  {
+    "id": "aphg_u6_environmental_injustice",
+    "quizQuestion": "The disproportionate burden of environmental hazards (pollution, toxic waste sites, flooding) on low-income communities and communities of color is called {___}.",
+    "correctAnswer": "environmental injustice",
+    "acceptableAlternatives": [
+      "environmental racism"
+    ],
+    "explanation": "Environmental injustice occurs when marginalized communities bear greater exposure to pollution, industrial hazards, and climate risks than wealthier communities. Studies show that hazardous waste facilities are disproportionately sited near low-income and minority neighborhoods. The CED lists environmental injustice as a key urban challenge.",
+    "distractors": [
+      "food desert",
+      "disamenity zone",
+      "ecological footprint",
+      "urban heat island",
+      "brownfield contamination",
+      "climate gentrification",
+      "spatial inequality",
+      "infrastructure gap"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "urban_challenge_terms",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-6.A.1: Issues include rising crime, environmental injustice, and the growth of disamenity zones.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.10",
+      "ek_code": "SPS-6.A.1"
+    }
+  },
+  {
+    "id": "aphg_u6_urban_heat_island",
+    "quizQuestion": "The phenomenon where an urban area is significantly warmer than its surrounding rural areas due to human activities, dark surfaces, and reduced vegetation is called the {___}.",
+    "correctAnswer": "urban heat island",
+    "acceptableAlternatives": [
+      "urban heat island effect"
+    ],
+    "explanation": "Urban heat islands form because asphalt, concrete, and buildings absorb and retain solar radiation, while less vegetation means less evaporative cooling. Cities can be 2-5°F warmer than surrounding rural areas. This worsens air conditioning demand, air quality, and heat-related mortality in low-income neighborhoods.",
+    "distractors": [
+      "environmental injustice",
+      "urban ecological footprint",
+      "greenhouse gas dome",
+      "thermal pollution zone",
+      "atmospheric warming",
+      "particulate buildup",
+      "carbon sink deficit",
+      "climate change hotspot"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-6.B.1: Challenges to urban sustainability include air and water quality and climate change impacts.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.11",
+      "ek_code": "SPS-6.B.1"
+    }
+  },
+  {
+    "id": "aphg_u6_urban_growth_boundary",
+    "quizQuestion": "A legally defined line that restricts urban development beyond its border, used to prevent sprawl and protect agricultural land, is called an {___}.",
+    "correctAnswer": "urban growth boundary",
+    "acceptableAlternatives": [
+      "UGB",
+      "urban growth limit"
+    ],
+    "explanation": "Urban growth boundaries (UGBs) are adopted by municipalities to concentrate development inside the boundary and preserve farmland and open space outside. Portland, Oregon's UGB is the most studied example in the United States. The CED identifies UGBs as a response to urban sustainability challenges.",
+    "distractors": [
+      "greenbelt",
+      "conservation easement",
+      "smart growth zone",
+      "buffer zone",
+      "farmland protection area",
+      "exclusionary zoning",
+      "growth moratorium",
+      "eminent domain boundary"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "urban_challenge_terms",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-6.B.2: Responses to urban sustainability challenges can include establishment of urban growth boundaries.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.11",
+      "ek_code": "SPS-6.B.2"
+    }
+  },
+  {
+    "id": "aphg_u6_brownfield",
+    "quizQuestion": "A former industrial or commercial site contaminated by pollution that requires environmental cleanup before redevelopment is called a {___}.",
+    "correctAnswer": "brownfield",
+    "acceptableAlternatives": [
+      "brownfields"
+    ],
+    "explanation": "Brownfields are abandoned or underused industrial or commercial properties where expansion or redevelopment is complicated by real or perceived environmental contamination. Brownfield remediation and redevelopment is a smart-growth strategy that recycles urban land rather than expanding into undeveloped areas.",
+    "distractors": [
+      "greenfield",
+      "superfund site",
+      "disamenity zone",
+      "infill site",
+      "urban renewal site",
+      "contaminated aquifer",
+      "Superfund zone",
+      "squatter settlement"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "urban_challenge_terms",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-6.B.2: Responses to urban sustainability challenges can include remediation and redevelopment of brownfields.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.11",
+      "ek_code": "SPS-6.B.2"
+    }
+  },
+  {
+    "id": "aphg_u6_suburban_sprawl",
+    "quizQuestion": "The uncontrolled outward expansion of urban areas into surrounding rural land, characterized by low-density housing and car dependence, is called {___}.",
+    "correctAnswer": "urban sprawl",
+    "acceptableAlternatives": [
+      "suburban sprawl",
+      "sprawl"
+    ],
+    "explanation": "Urban sprawl converts farmland and natural habitat into low-density subdivisions, strip malls, and highways at the urban fringe. It increases vehicle miles traveled, carbon emissions, and infrastructure costs while reducing walkability. The CED identifies sprawl as both a product of suburbanization and a challenge to urban sustainability.",
+    "distractors": [
+      "exurbanization",
+      "suburbanization",
+      "edge city formation",
+      "boomburb growth",
+      "decentralization",
+      "infilling",
+      "metropolitan expansion",
+      "greenfield development"
+    ],
+    "difficulty": 1,
+    "funScore": 6,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "urban_challenge_terms",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-6.B.1: Challenges to urban sustainability include suburban sprawl and the large ecological footprint of cities.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.11",
+      "ek_code": "SPS-6.B.1"
+    }
+  },
+  {
+    "id": "aphg_u6_suburbanization",
+    "quizQuestion": "The population movement from urban cores to surrounding residential areas, made possible by automobiles, highways, and affordable mortgages, is called {___}.",
+    "correctAnswer": "suburbanization",
+    "acceptableAlternatives": [],
+    "explanation": "Suburbanization accelerated in the U.S. after WWII, driven by GI Bill mortgages, the Interstate Highway System, and zoning laws separating residential from commercial land. The CED links suburbanization to the creation of edge cities, exurbs, and boomburbs, and to challenges like urban sprawl and city disinvestment.",
+    "distractors": [
+      "urban sprawl",
+      "exurbanization",
+      "decentralization",
+      "counterurbanization",
+      "white flight",
+      "gentrification",
+      "urban renewal",
+      "infilling"
+    ],
+    "difficulty": 1,
+    "funScore": 5,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.A.4: Processes of suburbanization, sprawl, and decentralization have created new land-use forms.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.2",
+      "ek_code": "PSO-6.A.4"
+    }
+  },
+  {
+    "id": "aphg_u6_boomburb",
+    "quizQuestion": "A rapidly growing suburban city with populations above 100,000 that maintains a suburban character despite its size is called a {___}.",
+    "correctAnswer": "boomburb",
+    "acceptableAlternatives": [
+      "boom burb"
+    ],
+    "explanation": "Boomburbs are defined as places with over 100,000 residents that have maintained double-digit population growth in recent decades but are not central cities of metropolitan areas. Examples include Mesa, Arizona and Henderson, Nevada. They represent a distinct form of urban growth that blurs city-suburb distinctions.",
+    "distractors": [
+      "edge city",
+      "exurb",
+      "megacity",
+      "satellite city",
+      "new town",
+      "galactic city",
+      "metropolitan area",
+      "primate city"
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "urban_challenge_terms",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.A.4: Processes of suburbanization, sprawl, and decentralization have created new land-use forms — including edge cities, exurbs, and boomburbs.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.2",
+      "ek_code": "PSO-6.A.4"
+    }
+  },
+  {
+    "id": "aphg_u6_inclusionary_zoning",
+    "quizQuestion": "A zoning policy that requires or incentivizes developers to include a percentage of affordable housing units in new market-rate residential projects is called {___}.",
+    "correctAnswer": "inclusionary zoning",
+    "acceptableAlternatives": [],
+    "explanation": "Inclusionary zoning mandates that a share (typically 10-20%) of new residential units be priced affordably for low- and moderate-income households. The CED lists it as one response to urban economic and social challenges. Critics argue it can reduce overall housing supply by discouraging development.",
+    "distractors": [
+      "exclusionary zoning",
+      "mixed land use",
+      "smart growth",
+      "urban renewal",
+      "eminent domain",
+      "rent control",
+      "public housing policy",
+      "transit-oriented development"
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": "city_challenges",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "teen",
+    "sourceDetails": "CED EK SPS-6.A.3: Responses to economic and social challenges in urban areas can include inclusionary zoning and local food movements.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.10",
+      "ek_code": "SPS-6.A.3"
+    }
+  },
+  {
+    "id": "aphg_u6_mdcs_vs_ldcs_urbanization",
+    "quizQuestion": "A key spatial pattern in modern urbanization is that megacities are increasingly located in countries of the {___} rather than wealthy core nations.",
+    "correctAnswer": "periphery and semiperiphery",
+    "acceptableAlternatives": [
+      "Global South",
+      "developing world",
+      "semiperiphery and periphery"
+    ],
+    "explanation": "The CED explicitly notes that megacities and metacities are increasingly located in peripheral and semiperipheral countries (India, China, Nigeria, Brazil, Bangladesh). This contrasts with earlier urbanization dominated by core (MDC) cities. Cities like Lagos, Dhaka, and Kinshasa are growing faster than any European or North American city.",
+    "distractors": [
+      "core nations only",
+      "more developed countries",
+      "European Union members",
+      "OECD member states",
+      "North American cities",
+      "former colonial powers",
+      "industrialized nations",
+      "world city network members"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": "urban_skylines",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-6.A.3: Megacities and metacities are distinct spatial outcomes of urbanization increasingly located in countries of the periphery and semiperiphery.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 6,
+      "topic": "6.2",
+      "ek_code": "PSO-6.A.3"
+    }
+  }
+]

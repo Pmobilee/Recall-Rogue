@@ -1,7 +1,7 @@
 # Curated Deck → Trivia Bridge
 
 > **Purpose:** Documents the build-time bridge that extracts representative trivia facts from curated knowledge decks and injects them into `facts.db`, enabling FSRS knowledge transfer between Study Temple and Trivia Dungeon. Also covers the runtime pool-based distractor selection that activates for bridged facts in trivia mode.
-> **Last verified:** 2026-04-01
+> **Last verified:** 2026-04-08
 > **Source files:** `scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs`, `scripts/content-pipeline/bridge/deck-bridge-config.json`, `src/data/seed/bridge-curated.json`, `src/services/quizService.ts`, `src/services/curatedDistractorSelector.ts`
 
 ---
@@ -21,7 +21,7 @@ The isolation meant a player could master T-Rex facts in Study Temple (dinosaurs
 
 The **trivia bridge** fixes this. It is a build-time script that reads curated knowledge deck JSONs, selects the single best trivia question per entity, maps `DeckFact` fields to the `Fact` schema, and outputs a seed file (`bridge-curated.json`) that is ingested into `facts.db` alongside regular trivia.
 
-**Impact:** ~2,000 new trivia facts across 22 knowledge decks — a 32% increase in the trivia pool — with shared FSRS states.
+**Impact:** ~2,000+ new trivia facts across 23 knowledge decks (including AP Human Geography, added 2026-04-08) — a 32%+ increase in the trivia pool — with shared FSRS states.
 
 ---
 

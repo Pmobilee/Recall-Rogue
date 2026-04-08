@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-04-08T05:37:05.219Z",
-  "totalBridgedFacts": 4714,
+  "lastRun": "2026-04-08T05:47:05.013Z",
+  "totalBridgedFacts": 5003,
   "decks": {
     "ancient_greece": {
       "totalFacts": 246,
@@ -24,6 +24,12 @@
       "totalFacts": 620,
       "entities": 80,
       "bridged": 80,
+      "skipped": 0
+    },
+    "ap_human_geography": {
+      "totalFacts": 299,
+      "entities": 289,
+      "bridged": 289,
       "skipped": 0
     },
     "constellations": {

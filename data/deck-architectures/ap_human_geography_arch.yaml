@@ -1,0 +1,868 @@
+# AP Human Geography — Deck Architecture
+# Source: College Board AP Human Geography CED, Effective Fall 2020 (V.1)
+# PDF: data/deck-sources/ap_human_geography/ced.pdf
+# Scope reference: data/deck-sources/ap_human_geography/ced-scope.md
+# Vocab reference: data/deck-sources/ap_human_geography/vocabulary-by-unit.md
+#
+# FACT SOURCING RULE: Every fact MUST be grounded in a CED EK statement
+# listed in ced-scope.md. Authors cite the EK code (e.g., PSO-1.A.1).
+# DO NOT generate facts from LLM world knowledge alone.
+
+deck_id: ap_human_geography
+name: AP Human Geography
+domain: geography
+sub_domain: ap_human_geography
+description: >
+  Complete AP Human Geography exam prep aligned to the College Board CED (Fall 2020).
+  Covers all 7 units and 60 topics across the three Big Ideas: Patterns and Spatial
+  Organization (PSO), Impacts and Interactions (IMP), and Spatial Patterns and
+  Societal Change (SPS). 300 facts weighted proportionally to exam percentage.
+
+target_facts: 300
+minimum_facts: 280
+
+exam_alignment:
+  exam_name: AP Human Geography
+  governing_body: College Board
+  scope_document: "AP Human Geography Course and Exam Description, Effective Fall 2020, V.1"
+  scope_url: "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf"
+  scope_local: "data/deck-sources/ap_human_geography/ced.pdf"
+  unit_weights:
+    unit_1: "8-10%"
+    unit_2: "12-17%"
+    unit_3: "12-17%"
+    unit_4: "12-17%"
+    unit_5: "12-17%"
+    unit_6: "12-17%"
+    unit_7: "12-17%"
+
+data_sources:
+  - name: "College Board AP HuG CED 2020"
+    url: "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf"
+    type: official_exam_framework
+    notes: "Primary authoritative source. All EK statements extracted verbatim to ced-scope.md."
+
+# ============================================================
+# ANSWER TYPE POOLS
+# ============================================================
+# Rules:
+#   - Every pool must be semantically homogeneous (distractor test)
+#   - min 5 real facts per pool; pad to 15+ with syntheticDistractors
+#   - max/min correctAnswer length ratio < 3x within pool
+#   - factIds array populated during fact generation phase
+#   - bracket_numbers pool uses {N} notation for numeric answers
+
+answer_type_pools:
+
+  # --- CORE KNOWLEDGE POOLS ---
+
+  - id: model_and_theory_names
+    format: proper_noun
+    estimated_count: 22
+    note: >
+      Named geographic models and theories (not descriptions). Examples:
+      Demographic Transition Model, Von Thunen Model, Burgess Concentric-Zone Model,
+      Rostow's Stages of Economic Growth, Wallerstein's World System Theory,
+      Dependency Theory, Malthusian Theory, Ravenstein's Laws, Central Place Theory,
+      Rank-Size Rule, Epidemiological Transition Model, Bid-Rent Theory,
+      Hoyt Sector Model, Harris-Ullman Multiple-Nuclei Model, Galactic City Model,
+      Least Cost Theory, Gravity Model, Environmental Determinism, Possibilism.
+    factIds: []
+    syntheticDistractors:
+      - "Christaller's Hexagonal Theory"
+      - "Weber's Industrial Location Theory"
+      - "Tobler's First Law of Geography"
+      - "Zipf's Rank-Size Rule"
+      - "Losch's Market Area Theory"
+
+  - id: geographer_names
+    format: proper_noun
+    estimated_count: 14
+    note: >
+      Named theorists and geographers explicitly cited in the CED.
+      Examples: Thomas Malthus, Ernst Ravenstein, Johann von Thunen,
+      Immanuel Wallerstein, Walter Christaller, Walter Rostow, Ernest Burgess,
+      Homer Hoyt, Chauncy Harris, Edward Ullman.
+    factIds: []
+    syntheticDistractors:
+      - "Alfred Weber"
+      - "August Losch"
+      - "Waldo Tobler"
+      - "Carl Sauer"
+      - "Yi-Fu Tuan"
+
+  - id: concept_term_definitions
+    format: short_phrase
+    estimated_count: 40
+    note: >
+      Core AP HuG vocabulary terms (1–5 words). Examples: sequent occupance,
+      cultural relativism, ethnocentrism, time-space compression, distance decay,
+      lingua franca, creolization, devolution, gerrymandering, shatterbelt,
+      choke point, bid-rent theory, carrying capacity, agglomeration, multiplier effect.
+      Answers are the term name (not the definition — question gives definition).
+    factIds: []
+    syntheticDistractors:
+      - "perceptual filtering"
+      - "spatial autocorrelation"
+      - "isotropic plain"
+      - "territorial morphology"
+      - "geodemographic clustering"
+
+  - id: agriculture_practice_names
+    format: short_phrase
+    estimated_count: 14
+    note: >
+      Named agricultural practices and farming systems. Examples:
+      shifting cultivation, nomadic herding, slash and burn, market gardening,
+      plantation agriculture, mixed crop-livestock farming, pastoral nomadism,
+      subsistence agriculture, monoculture, aquaculture, community-supported agriculture,
+      organic farming, fair trade farming.
+      Answers are 1–4 word practice names; no mixing with effects or regions.
+    factIds: []
+    syntheticDistractors:
+      - "intercropping"
+      - "crop rotation"
+      - "polyculture"
+      - "agropastoralism"
+      - "hydroponics"
+
+  - id: religion_and_language_terms
+    format: short_phrase
+    estimated_count: 16
+    note: >
+      Specific religions, language concepts, and cultural diffusion terms explicitly named
+      in the CED. Examples: universalizing religion, ethnic religion, Christianity, Islam,
+      Buddhism, Sikhism, Hinduism, Judaism, lingua franca, creolization, language family,
+      dialect, Indo-European, relocation diffusion, hierarchical diffusion, stimulus diffusion.
+    factIds: []
+    syntheticDistractors:
+      - "syncretism"
+      - "nativism"
+      - "cultural hearth"
+      - "Afro-Asiatic"
+      - "Sino-Tibetan"
+
+  - id: political_term_names
+    format: short_phrase
+    estimated_count: 20
+    note: >
+      Political geography terms: nation-state, stateless nation, multinational state,
+      sovereignty, self-determination, colonialism, neocolonialism, superimposed boundary,
+      relic boundary, antecedent boundary, subsequent boundary, consequent boundary,
+      geometric boundary, unitary state, federal state, centrifugal force, centripetal force,
+      devolution, shatterbelt, choke point.
+    factIds: []
+    syntheticDistractors:
+      - "exclave"
+      - "enclave"
+      - "irredentism"
+      - "balkanization"
+      - "political ecology"
+
+  - id: urban_model_names
+    format: proper_noun
+    estimated_count: 10
+    note: >
+      Named urban structure models. Examples: Burgess Concentric-Zone Model,
+      Hoyt Sector Model, Harris-Ullman Multiple-Nuclei Model, Galactic City Model,
+      Latin American City Model, Southeast Asian City Model, African City Model,
+      Central Place Theory, Rank-Size Rule, Primate City concept.
+      Short answer: model name only (2–5 words). Separate from model_and_theory_names
+      to allow urban-specific question templates.
+    factIds: []
+    syntheticDistractors:
+      - "Bid-Rent Urban Model"
+      - "Edge City Theory"
+      - "Squatter Settlement Model"
+      - "Metropolitan Statistical Area Model"
+      - "Urban Gravity Model"
+
+  - id: economic_indicator_names
+    format: short_phrase
+    estimated_count: 12
+    note: >
+      Named economic and development measures. Examples: GDP, GNP, GNI per capita,
+      Human Development Index (HDI), Gender Inequality Index (GII), infant mortality rate,
+      literacy rate, total fertility rate, natural increase rate, dependency ratio.
+      Answers are the indicator acronym or short name (2–5 words max).
+    factIds: []
+    syntheticDistractors:
+      - "Gini coefficient"
+      - "Purchasing Power Parity (PPP)"
+      - "Inequality-adjusted HDI (IHDI)"
+      - "Multidimensional Poverty Index (MPI)"
+      - "Human Capital Index (HCI)"
+
+  - id: migration_type_names
+    format: short_phrase
+    estimated_count: 12
+    note: >
+      Named migration types and related statuses. Examples: forced migration,
+      voluntary migration, transnational migration, chain migration, step migration,
+      transhumance, rural-to-urban migration, internally displaced person (IDP),
+      refugee, asylum seeker, brain drain, remittances.
+    factIds: []
+    syntheticDistractors:
+      - "circular migration"
+      - "seasonal migration"
+      - "return migration"
+      - "guest worker program"
+      - "economic migrant"
+
+  - id: boundary_type_names
+    format: short_phrase
+    estimated_count: 8
+    note: >
+      Types of political boundaries explicitly named in CED. Examples:
+      relic boundary, superimposed boundary, antecedent boundary,
+      subsequent boundary, consequent boundary, geometric boundary,
+      defined boundary, delimited boundary, demarcated boundary.
+      Answers are the boundary type (2 words). Pool is homogeneous: all answers
+      are boundary type names, not descriptions.
+    factIds: []
+    syntheticDistractors:
+      - "natural boundary"
+      - "maritime boundary"
+      - "buffer boundary"
+      - "contested boundary"
+      - "colonial boundary"
+
+  - id: diffusion_type_names
+    format: short_phrase
+    estimated_count: 6
+    note: >
+      Types of cultural diffusion named in CED. Examples: relocation diffusion,
+      expansion diffusion, contagious diffusion, hierarchical diffusion,
+      stimulus diffusion.
+      Answers are 2-word diffusion type names only.
+    factIds: []
+    syntheticDistractors:
+      - "reverse diffusion"
+      - "digital diffusion"
+      - "cultural osmosis"
+      - "spatial propagation"
+      - "network diffusion"
+
+  - id: state_shape_names
+    format: single_word_or_short_phrase
+    estimated_count: 5
+    note: >
+      State shape types: compact, elongated, prorupt, fragmented, perforated.
+      Answers are single-word shape descriptors. Examples used in CED include
+      Kenya (compact), Chile (elongated), Thailand (prorupt),
+      Indonesia/Philippines (fragmented), South Africa (perforated).
+    factIds: []
+    homogeneityExempt: true
+    homogeneityExemptNote: "Only 5 members by definition; cannot be expanded without LLM invention."
+    syntheticDistractors:
+      - "landlocked"
+      - "archipelagic"
+      - "enclave"
+      - "corridor"
+      - "peninsular"
+
+  - id: survey_method_names
+    format: short_phrase
+    estimated_count: 3
+    note: >
+      Land survey methods named in CED: metes and bounds, township and range,
+      long-lot system. Pool is intentionally small — question templates must be
+      recognition-style ("which survey method creates long narrow strips?").
+    factIds: []
+    homogeneityExempt: true
+    homogeneityExemptNote: "Only 3 canonical CED survey methods exist; homogeneity rule waived."
+    syntheticDistractors:
+      - "cadastral survey"
+      - "grid survey system"
+      - "radial survey method"
+      - "strip field system"
+      - "allodial survey"
+
+  - id: economic_sector_names
+    format: single_word_or_short_phrase
+    estimated_count: 5
+    note: >
+      Economic sectors: primary, secondary, tertiary, quaternary, quinary.
+      Answers are single-word sector names only.
+    factIds: []
+    homogeneityExempt: true
+    homogeneityExemptNote: "Exactly 5 sectors per CED; inherent pool size limit."
+    syntheticDistractors:
+      - "senary"
+      - "informal"
+      - "extractive"
+      - "industrial"
+      - "service"
+
+  - id: development_theory_names
+    format: proper_noun
+    estimated_count: 8
+    note: >
+      Named theories of development explicitly in CED: Rostow's Stages of Economic Growth,
+      Wallerstein's World System Theory, dependency theory, commodity dependence.
+      Also includes: core-periphery model, neoliberalism, comparative advantage.
+    factIds: []
+    syntheticDistractors:
+      - "modernization theory"
+      - "structuralist theory"
+      - "growth pole theory"
+      - "cumulative causation theory"
+      - "underdevelopment theory"
+
+  - id: region_type_names
+    format: short_phrase
+    estimated_count: 6
+    note: >
+      Types of geographic regions: formal region, functional region, perceptual region,
+      vernacular region, nodal region, uniform region. Answers are the region type name.
+    factIds: []
+    syntheticDistractors:
+      - "transitional region"
+      - "cultural hearth region"
+      - "metropolitan region"
+      - "physiographic region"
+      - "administrative region"
+
+  - id: organization_names
+    format: proper_noun
+    estimated_count: 10
+    note: >
+      Named international organizations explicitly in CED: UN, NATO, EU,
+      African Union, ASEAN, WTO, IMF, Mercosur, OPEC.
+      Answers are organization names (full or acronym as commonly used on AP exam).
+    factIds: []
+    syntheticDistractors:
+      - "G20"
+      - "World Bank"
+      - "NAFTA"
+      - "OECD"
+      - "APEC"
+
+  - id: urban_challenge_terms
+    format: short_phrase
+    estimated_count: 10
+    note: >
+      Urban challenge vocabulary: redlining, blockbusting, gentrification, urban renewal,
+      disamenity zone, squatter settlement, edge city, exurb, boomburb, brownfield,
+      urban growth boundary, environmental injustice.
+    factIds: []
+    syntheticDistractors:
+      - "exclusionary zoning"
+      - "eminent domain"
+      - "urban heat island"
+      - "fiscal zoning"
+      - "deed restriction"
+
+  # --- NUMERIC BRACKET POOL ---
+  - id: bracket_numbers
+    format: bracket_number
+    estimated_count: 20
+    note: >
+      Numeric answers using {N} bracket notation. Covers: DTM stages (1–5),
+      Rostow stages (5), population density numbers, unit exam weightings (8-10% vs 12-17%),
+      number of units (7), Big Ideas (3), Ravenstein law distances, specific dates
+      (Berlin Conference 1884, Columbian Exchange 1492, Green Revolution decade).
+      Answers stored as {N} e.g., {5}, {1492}, {1884}.
+    factIds: []
+    syntheticDistractors: []
+
+# ============================================================
+# SUB-DECKS
+# ============================================================
+# 7 sub-decks, one per CED unit.
+# Target facts proportional to exam weighting.
+# Unit 1 = 8-10% → ~27 facts. Units 2-7 = 12-17% → ~45 facts each.
+# Total: 27 + 5×45 + 40 = ~292 → round to 300 with padding.
+
+sub_decks:
+
+  - id: unit_1_thinking_geographically
+    name: "Unit 1: Thinking Geographically"
+    description: >
+      Maps, GIS, spatial concepts (distance decay, time-space compression),
+      environmental determinism vs. possibilism, scales of analysis, region types.
+    target_facts: 27
+    exam_weight: "8-10%"
+    topics:
+      - "1.1 Introduction to Maps"
+      - "1.2 Geographic Data"
+      - "1.3 The Power of Geographic Data"
+      - "1.4 Spatial Concepts"
+      - "1.5 Human-Environmental Interaction"
+      - "1.6 Scales of Analysis"
+      - "1.7 Regional Analysis"
+
+  - id: unit_2_population_migration
+    name: "Unit 2: Population and Migration"
+    description: >
+      Population density types, DTM stages, epidemiological transition, Malthus,
+      push-pull migration theory, Ravenstein's laws, forced vs. voluntary migration,
+      IDPs, refugees, chain migration, step migration.
+    target_facts: 46
+    exam_weight: "12-17%"
+    topics:
+      - "2.1 Population Distribution"
+      - "2.2 Consequences of Population Distribution"
+      - "2.3 Population Composition"
+      - "2.4 Population Dynamics"
+      - "2.5 The Demographic Transition Model"
+      - "2.6 Malthusian Theory"
+      - "2.7 Population Policies"
+      - "2.8 Women and Demographic Change"
+      - "2.9 Epidemiological Transition"
+      - "2.10 Causes of Migration"
+      - "2.11 Forced and Voluntary Migration"
+      - "2.12 Effects of Migration"
+
+  - id: unit_3_cultural_patterns
+    name: "Unit 3: Cultural Patterns and Processes"
+    description: >
+      Cultural traits, cultural landscapes, sequent occupance, cultural relativism,
+      diffusion types (relocation/contagious/hierarchical/stimulus), language families,
+      lingua franca, universalizing vs. ethnic religions, acculturation, syncretism.
+    target_facts: 44
+    exam_weight: "12-17%"
+    topics:
+      - "3.1 Introduction to Culture"
+      - "3.2 Cultural Landscapes"
+      - "3.3 Types of Diffusion"
+      - "3.4 Historical Causes of Diffusion"
+      - "3.5 Contemporary Causes of Diffusion"
+      - "3.6 Diffusion of Religion and Language"
+      - "3.7 Effects of Diffusion"
+      - "3.8 Effects of Diffusion (continued)"
+
+  - id: unit_4_political_patterns
+    name: "Unit 4: Political Patterns and Processes"
+    description: >
+      Nation-states, sovereignty, colonialism, neocolonialism, boundary types,
+      state shapes, gerrymandering, devolution, centrifugal/centripetal forces,
+      supranational organizations, Berlin Conference, UNCLOS/EEZ.
+    target_facts: 46
+    exam_weight: "12-17%"
+    topics:
+      - "4.1 Introduction to Political Geography"
+      - "4.2 Political Power and Territoriality"
+      - "4.3 Colonialism and Imperialism"
+      - "4.4 Shapes of States"
+      - "4.5 Internal Boundaries"
+      - "4.6 Internal Organization of States"
+      - "4.7 Forms of Governance"
+      - "4.8 Defining Devolutionary Forces"
+      - "4.9 Challenges to Sovereignty"
+      - "4.10 Consequences of Centrifugal and Centripetal Forces"
+
+  - id: unit_5_agriculture_rural
+    name: "Unit 5: Agriculture and Rural Land-Use"
+    description: >
+      Farming intensity spectrum, settlement patterns, survey methods, agricultural
+      hearths, Columbian Exchange, Agricultural Revolutions, Green Revolution,
+      Von Thunen model, bid-rent theory, commodity chains, food security challenges.
+    target_facts: 46
+    exam_weight: "12-17%"
+    topics:
+      - "5.1 Introduction to Agriculture"
+      - "5.2 Settlement Patterns and Survey Methods"
+      - "5.3 Agricultural Origins"
+      - "5.4 Diffusion of Agriculture"
+      - "5.5 The Green Revolution"
+      - "5.6 Agricultural Production Regions"
+      - "5.7 Spatial Organization of Agriculture"
+      - "5.8 Von Thunen Model"
+      - "5.9 The Global System of Agriculture"
+      - "5.10 Consequences of Agricultural Practices"
+      - "5.11 Challenges of Contemporary Agriculture"
+      - "5.12 Women in Agriculture"
+
+  - id: unit_6_cities_urban
+    name: "Unit 6: Cities and Urban Land-Use"
+    description: >
+      Site and situation, megacities, world cities, urban hierarchy, rank-size rule,
+      urban structure models (Burgess/Hoyt/Harris-Ullman/Latin American/SE Asian/African),
+      suburbanization, edge cities, redlining, gentrification, New Urbanism, smart growth.
+    target_facts: 46
+    exam_weight: "12-17%"
+    topics:
+      - "6.1 The Origin and Influences of Urbanization"
+      - "6.2 Cities Across the World"
+      - "6.3 Cities and Globalization"
+      - "6.4 The Size and Distribution of Cities"
+      - "6.5 The Internal Structure of Cities"
+      - "6.6 Density and Land Use"
+      - "6.7 Infrastructure"
+      - "6.8 Urban Sustainability"
+      - "6.9 Urban Data"
+      - "6.10 Challenges of Urban Changes"
+      - "6.11 Challenges of Urban Sustainability"
+
+  - id: unit_7_industrial_economic
+    name: "Unit 7: Industrial and Economic Development"
+    description: >
+      Industrial Revolution causes, economic sectors, least cost theory, break-of-bulk,
+      development measures (GDP/HDI/GII), Rostow's stages, Wallerstein's World System,
+      dependency theory, trade organizations (WTO/IMF/Mercosur/OPEC), outsourcing,
+      deindustrialization, special economic zones, sustainable development goals.
+    target_facts: 45
+    exam_weight: "12-17%"
+    topics:
+      - "7.1 The Industrial Revolution"
+      - "7.2 Economic Sectors and Patterns"
+      - "7.3 Measures of Development"
+      - "7.4 Women and Economic Development"
+      - "7.5 Theories of Development"
+      - "7.6 Trade and the World Economy"
+      - "7.7 Changes as a Result of the World Economy"
+      - "7.8 Sustainable Development"
+
+# ============================================================
+# CHAIN THEMES
+# ============================================================
+# Knowledge deck: requires ≥8 chain themes total, ≥3 per run
+# Theme names should feel engaging, not just unit titles
+# Each theme anchors a coherent sub-pool of facts
+
+chain_themes:
+  - id: mapmakers_lens
+    name: "The Mapmaker's Lens"
+    description: "Spatial concepts, map types, GIS, projections, scales of analysis"
+    unit_coverage: [1]
+    emoji: "🗺"
+
+  - id: population_pulse
+    name: "Population Pulse"
+    description: "DTM stages, population metrics (CBR/CDR/TFR), density types, demographic change"
+    unit_coverage: [2]
+    emoji: "📊"
+
+  - id: migration_currents
+    name: "Migration Currents"
+    description: "Push-pull factors, migration types, Ravenstein's laws, forced/voluntary migration"
+    unit_coverage: [2]
+    emoji: "🌊"
+
+  - id: cultures_in_motion
+    name: "Cultures in Motion"
+    description: "Cultural diffusion types, cultural landscapes, sequent occupance, acculturation"
+    unit_coverage: [3]
+    emoji: "🎭"
+
+  - id: faiths_and_tongues
+    name: "Faiths and Tongues"
+    description: "Universalizing vs. ethnic religions, language families, lingua franca, creolization"
+    unit_coverage: [3]
+    emoji: "🕌"
+
+  - id: borders_and_power
+    name: "Borders and Power"
+    description: "Boundary types, state shapes, sovereignty, colonialism, gerrymandering"
+    unit_coverage: [4]
+    emoji: "🏛"
+
+  - id: centrifugal_centripetal
+    name: "Forces That Bind or Break"
+    description: "Devolution, centrifugal/centripetal forces, supranational organizations, separatism"
+    unit_coverage: [4]
+    emoji: "⚡"
+
+  - id: field_and_fork
+    name: "Field to Fork"
+    description: "Farming systems (intensive/extensive), agricultural hearths, Columbian Exchange"
+    unit_coverage: [5]
+    emoji: "🌾"
+
+  - id: models_of_land
+    name: "Models of the Land"
+    description: "Von Thunen model, bid-rent theory, survey methods, settlement patterns"
+    unit_coverage: [5]
+    emoji: "📐"
+
+  - id: urban_skylines
+    name: "Urban Skylines"
+    description: "Urban structure models, rank-size rule, primate cities, world cities, megacities"
+    unit_coverage: [6]
+    emoji: "🏙"
+
+  - id: city_challenges
+    name: "City Challenges"
+    description: "Gentrification, redlining, squatter settlements, New Urbanism, urban sustainability"
+    unit_coverage: [6]
+    emoji: "🏚"
+
+  - id: engines_of_industry
+    name: "Engines of Industry"
+    description: "Industrial Revolution, economic sectors, least cost theory, industrial location"
+    unit_coverage: [7]
+    emoji: "⚙"
+
+  - id: measuring_development
+    name: "Measuring Development"
+    description: "GDP/HDI/GII metrics, Rostow's stages, Wallerstein's World System, dependency theory"
+    unit_coverage: [7]
+    emoji: "📈"
+
+  - id: global_trade_web
+    name: "The Global Trade Web"
+    description: "WTO, IMF, OPEC, Mercosur, special economic zones, outsourcing, deindustrialization"
+    unit_coverage: [7]
+    emoji: "🌐"
+
+# ============================================================
+# QUESTION TEMPLATES
+# ============================================================
+# Templates map pool IDs to question patterns.
+# {term} = the correct answer. {definition} = its definition.
+# All bracket placeholders are lower_snake_case.
+
+question_templates:
+
+  - id: qt_define_term
+    pattern: "What geographic term refers to {definition}?"
+    answer_pool: concept_term_definitions
+    note: "Definition → term. Most common AP HuG question type."
+
+  - id: qt_term_to_definition
+    pattern: "Which of the following best defines {term}?"
+    answer_pool: concept_term_definitions
+    note: "Term → definition (multiple choice). Pool provides wrong-answer distractors."
+
+  - id: qt_which_model
+    pattern: "Which model or theory {model_description}?"
+    answer_pool: model_and_theory_names
+    note: "Identifies the correct model from its description."
+
+  - id: qt_who_developed
+    pattern: "Which geographer or theorist {contribution_description}?"
+    answer_pool: geographer_names
+    note: "Associates a contribution with its author."
+
+  - id: qt_which_farming
+    pattern: "Which type of agriculture {practice_description}?"
+    answer_pool: agriculture_practice_names
+    note: "Identifies farming system from description."
+
+  - id: qt_which_diffusion
+    pattern: "When {diffusion_scenario}, which type of diffusion is occurring?"
+    answer_pool: diffusion_type_names
+    note: "Scenario → diffusion type."
+
+  - id: qt_boundary_type
+    pattern: "A boundary that {boundary_description} is called a {___}."
+    answer_pool: boundary_type_names
+    note: "Fill-in-blank identifies boundary type from description."
+
+  - id: qt_state_shape
+    pattern: "A state whose territory {shape_description} is described as {___}."
+    answer_pool: state_shape_names
+    note: "Shape description → shape name."
+
+  - id: qt_migration_type
+    pattern: "Which migration type or status describes {migration_scenario}?"
+    answer_pool: migration_type_names
+    note: "Scenario → migration category."
+
+  - id: qt_economic_indicator
+    pattern: "Which economic indicator measures {indicator_description}?"
+    answer_pool: economic_indicator_names
+    note: "Description → indicator name/acronym."
+
+  - id: qt_economic_sector
+    pattern: "Which economic sector includes {sector_example_activity}?"
+    answer_pool: economic_sector_names
+    note: "Activity description → sector name."
+
+  - id: qt_development_theory
+    pattern: "Which theory of development {theory_description}?"
+    answer_pool: development_theory_names
+    note: "Theory description → theory name."
+
+  - id: qt_urban_model
+    pattern: "Which urban land-use model {model_description}?"
+    answer_pool: urban_model_names
+    note: "Urban model description → model name."
+
+  - id: qt_region_type
+    pattern: "A region defined by {region_characteristic} is an example of a {___} region."
+    answer_pool: region_type_names
+    note: "Region characteristic → region type."
+
+  - id: qt_organization
+    pattern: "Which international organization {org_description}?"
+    answer_pool: organization_names
+    note: "Organization role/description → organization name."
+
+  - id: qt_religion_language
+    pattern: "Which religion or language concept {rl_description}?"
+    answer_pool: religion_and_language_terms
+    note: "Religion/language scenario → term."
+
+  - id: qt_urban_challenge
+    pattern: "The practice of {challenge_description} is known as {___}."
+    answer_pool: urban_challenge_terms
+    note: "Urban challenge description → term name."
+
+  - id: qt_numeric
+    pattern: "{numeric_question_stem}"
+    answer_pool: bracket_numbers
+    note: "Numeric answer using {N} bracket. Examples: DTM stage count, exam percentage, key dates."
+
+# ============================================================
+# DIFFICULTY TIERS
+# ============================================================
+# Tier 1 (easy): Direct vocabulary recognition, one-step recall
+# Tier 2 (medium): Application of concept to scenario, model identification
+# Tier 3 (hard): Compare/contrast two models, multi-step inference, nuanced distinctions
+
+difficulty_tiers:
+  - tier: 1
+    description: "Vocabulary recall — define a term or match a definition"
+    target_percent: 35
+  - tier: 2
+    description: "Concept application — identify model from scenario, compare two terms"
+    target_percent: 45
+  - tier: 3
+    description: "Critical analysis — strengths/limitations of models, cross-unit synthesis"
+    target_percent: 20
+
+# ============================================================
+# COMMON CONFUSIONS (for distractor design)
+# ============================================================
+# These pairs are commonly mixed up on the AP exam.
+# Distractor generators should prioritize these as wrong-answer choices.
+
+common_confusions:
+  - pair: ["arithmetic density", "physiological density"]
+    note: "Students confuse total land vs. arable land in denominator"
+
+  - pair: ["CBR", "TFR"]
+    note: "Both measure birth rates but at different levels of analysis"
+
+  - pair: ["push factor", "pull factor"]
+    note: "Direction of motivation is often reversed"
+
+  - pair: ["forced migration", "voluntary migration"]
+    note: "Gray areas (economic desperation) cause confusion"
+
+  - pair: ["refugee", "internally displaced person (IDP)"]
+    note: "Both flee conflict but IDPs stay within their country"
+
+  - pair: ["relocation diffusion", "expansion diffusion"]
+    note: "Relocation = origin loses trait; expansion = origin retains trait"
+
+  - pair: ["contagious diffusion", "hierarchical diffusion"]
+    note: "Both are expansion subtypes but spread via different paths"
+
+  - pair: ["universalizing religion", "ethnic religion"]
+    note: "Students often misclassify Hinduism as universalizing"
+
+  - pair: ["nation-state", "multinational state"]
+    note: "Most modern states are multinational, not true nation-states"
+
+  - pair: ["unitary state", "federal state"]
+    note: "Power distribution direction is often reversed"
+
+  - pair: ["centrifugal force", "centripetal force"]
+    note: "Physics analogy often inverted: centrifugal = pulls apart, centripetal = holds together"
+
+  - pair: ["antecedent boundary", "subsequent boundary"]
+    note: "Time sequence relative to settlement is reversed by students"
+
+  - pair: ["superimposed boundary", "consequent boundary"]
+    note: "Superimposed = ignores cultural patterns; consequent = reflects them"
+
+  - pair: ["Von Thunen model", "bid-rent theory"]
+    note: "Both deal with distance from market/center but at different scales"
+
+  - pair: ["intensive agriculture", "extensive agriculture"]
+    note: "Input per land unit vs. land area per output is reversed"
+
+  - pair: ["Burgess concentric-zone model", "Hoyt sector model"]
+    note: "Zone shape (rings vs. wedges) and time period are confused"
+
+  - pair: ["rank-size rule", "primate city"]
+    note: "Rank-size = distribution follows pattern; primate = one city dominates disproportionately"
+
+  - pair: ["GDP", "HDI"]
+    note: "GDP is economic only; HDI includes health and education dimensions"
+
+  - pair: ["Rostow's Stages of Economic Growth", "Wallerstein's World System Theory"]
+    note: "Rostow = linear progression all countries can achieve; Wallerstein = structural inequality maintained"
+
+  - pair: ["dependency ratio", "natural increase rate"]
+    note: "Both are population measures but measure entirely different things"
+
+  - pair: ["metes and bounds", "township and range"]
+    note: "Irregular vs. grid patterns; students confuse which creates the checkerboard Midwest landscape"
+
+  - pair: ["edge city", "exurb"]
+    note: "Edge city has commercial/employment center; exurb is residential beyond suburbs"
+
+  - pair: ["environmental determinism", "possibilism"]
+    note: "Determinism = environment controls humans; possibilism = humans adapt to environment"
+
+# ============================================================
+# SYNONYM GROUPS
+# ============================================================
+# For answer-matching: multiple phrasings that should count as correct
+
+synonym_groups:
+  - canonical: "Demographic Transition Model"
+    synonyms: ["DTM", "demographic transition model", "demographic transition"]
+
+  - canonical: "Gross Domestic Product"
+    synonyms: ["GDP", "gross domestic product"]
+
+  - canonical: "Human Development Index"
+    synonyms: ["HDI", "human development index"]
+
+  - canonical: "Gender Inequality Index"
+    synonyms: ["GII", "gender inequality index"]
+
+  - canonical: "Gross National Income per capita"
+    synonyms: ["GNI per capita", "GNI", "gross national income"]
+
+  - canonical: "World Trade Organization"
+    synonyms: ["WTO", "World Trade Organization"]
+
+  - canonical: "International Monetary Fund"
+    synonyms: ["IMF", "International Monetary Fund"]
+
+  - canonical: "internally displaced person"
+    synonyms: ["IDP", "internally displaced person", "internally displaced persons"]
+
+  - canonical: "community-supported agriculture"
+    synonyms: ["CSA", "community-supported agriculture", "community supported agriculture"]
+
+  - canonical: "Wallerstein's World System Theory"
+    synonyms: ["World System Theory", "world-systems theory", "Wallerstein's theory"]
+
+  - canonical: "Rostow's Stages of Economic Growth"
+    synonyms: ["Rostow's model", "modernization theory", "Rostow's stages"]
+
+  - canonical: "contagious diffusion"
+    synonyms: ["contact diffusion", "contagious spatial diffusion"]
+
+  - canonical: "Von Thunen model"
+    synonyms: ["von Thunen's model", "Von Thunen Model", "von Thunen land use model"]
+
+  - canonical: "township and range"
+    synonyms: ["rectangular survey system", "township and range system", "public land survey system"]
+
+# ============================================================
+# NOTES FOR FACT AUTHORS
+# ============================================================
+# 1. Every fact MUST cite a CED EK code in its sourceDetails field.
+#    Example: sourceDetails: "CED EK PSO-2.B.1: Arithmetic density..."
+#
+# 2. correctAnswer must be concise (the term, model name, or {N} value).
+#    All elaboration goes in explanation field.
+#
+# 3. Never put an em-dash (—) in correctAnswer. Never use compound answers.
+#
+# 4. quizQuestion must not contain the correctAnswer verbatim.
+#
+# 5. difficulty: 1-5 scale. funScore: 1-10 scale (higher for surprising/counterintuitive).
+#
+# 6. Numeric facts: use bracket notation in correctAnswer: {1492}, {5}, {1884}.
+#
+# 7. Sub-deck fact distribution target (verified via sum):
+#    27 + 46 + 44 + 46 + 46 + 46 + 45 = 300 total

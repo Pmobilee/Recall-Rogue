@@ -517,6 +517,10 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     screen: 'restStudy',
     deckId: 'ap_chemistry',
   },
+  'study-deck-aphg': {
+    screen: 'restStudy',
+    deckId: 'ap_human_geography',
+  },
   'mastery-challenge': {
     screen: 'masteryChallenge',
   },

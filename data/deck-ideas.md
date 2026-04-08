@@ -960,8 +960,11 @@ Sports & Entertainment requires new domain scaffolding. FIFA World Cup is a uniq
 | EP-03 | SAT/ACT Vocabulary | language (English vocab) | Requires English vocab deck (not yet built) | Tier 2 |
 | EP-04 | MCAT — Biology & Chemistry | natural_sciences + human_body_health | HB-01 Anatomy, NS-05 Cell Bio, NS-06 Chemistry | After HB/NS Tier 1 |
 | EP-05 | GRE Vocabulary | language (English vocab) | Requires English vocab deck | Tier 2 |
-| EP-06 | AP World History | history (global) | WWII, Ancient Rome/Greece/China | After Tier 1 history |
-| EP-07 | AP Chemistry | natural_sciences | Standalone (not composite) — CED-aligned like AP Bio | **Tier 1 — HIGH PRIORITY** |
+| EP-06 | AP World History | history (global) | Standalone (not composite) — CED-aligned | **SHIPPED** — `data/decks/ap_world_history.json` (620 facts, 2026-04-04) |
+| EP-07 | AP Chemistry | natural_sciences | Standalone (not composite) — CED-aligned | **SHIPPED** — `data/decks/ap_chemistry.json` (assembled 2026-04-03) |
+| EP-08 | AP Human Geography | geography | Standalone (not composite) — CED-aligned Fall 2020 | **SHIPPED** — `data/decks/ap_human_geography.json` (299 facts, 2026-04-08) |
+
+**Reusable patterns established by AP Human Geography (2026-04-08):** Pool-first architecture (define pools before generating facts), unit sub-pool splitting (never share a `concept_definitions` pool across AP units), language-family pool separation (prevents two-right-answer failures), fill-blank rewrite (knowledge decks must not use `{___}` format), curriculum-sourced EK-code grounding. See `docs/deck-provenance/ap_human_geography.md`.
 
 **Note:** English vocabulary (SAT/GRE words) is not yet a domain. It would require a new `english_vocabulary` domain distinct from Language (which currently covers non-English languages only). This is a high-demand gap.
 

@@ -612,3 +612,42 @@ Rule of thumb for `verify-all-decks.mjs`: put hard structural errors inside `che
 **Fix:** Updated test expectations to match actual resolver output. For "ordering" tests (CC > QP > CW) where values are equal at L0, changed `toBeLessThan` to `toBeLessThanOrEqual`. Added comments explaining the mastery system mechanics behind each change.
 
 **Source files:** `tests/unit/phase2-mechanics.test.ts`, `tests/unit/phase3-mechanics.test.ts`, `src/services/cardUpgradeService.ts` (MASTERY_STAT_TABLES), `src/services/cardEffectResolver.ts`.
+
+### 2026-04-08 — Svelte 5 $derived cannot track non-reactive module state
+
+**What:** In `MultiplayerLobby.svelte`, the Start Game button stayed disabled ("Waiting for players...") forever even after both players readied up. Two `$derived` runes called service functions (`isHost()` and `allReady()`) from `multiplayerLobbyService.ts` that read a plain module-level `let _currentLobby` variable. Svelte 5's `$derived` can only track reactive state (`$state` runes) — not plain JS variables, regardless of how they are accessed. The `lobby` prop IS reactive (passed as a `$props()` binding updated via `onLobbyUpdate` in `CardApp.svelte`), but the `$derived` expressions never read `lobby` so Svelte had no dependency to track and the derivations never re-evaluated on prop change.
+
+**Fix:** Replace the service-function calls with direct reads of the reactive `lobby` prop:
+```svelte
+// Before (broken — reads non-reactive module var via wrapper function)
+let amHost = $derived(isHost())
+let canStart = $derived(amHost && allReady())
+
+// After (correct — reads reactive lobby prop directly)
+let amHost = $derived(lobby.hostId === localPlayerId)
+let canStart = $derived(amHost && lobby.players.length >= 2 && lobby.players.every(p => p.isReady))
+```
+
+Also removed the now-unused `isHost` and `allReady` imports.
+
+**Rule:** In Svelte 5, `$derived` only re-evaluates when `$state` runes or `$props()` values it DIRECTLY reads change. Wrapping a `$state` read inside a plain JS function and calling that function from `$derived` breaks reactivity tracking — the function call is opaque to Svelte's compiler. Always either (a) read `$state`/`$props` values directly in the `$derived` expression, or (b) make the service function use `$state` internally so its return value is reactive.
+
+**Source files:** `src/ui/components/MultiplayerLobby.svelte`
+
+### 2026-04-08 — Two-Right-Answers Bug: Pool Contains Both Concept and Instance
+
+**What:** AP Human Geography deck had `aphg_u3_language_family` (answer: "language family") in the same pool as `aphg_u3_indo_european` (answer: "Indo-European") and `aphg_u3_sino_tibetan` (answer: "Sino-Tibetan"). At runtime, Indo-European and Sino-Tibetan could be selected as distractors for the "language family" question — but they ARE language families, creating two-right-answers.
+
+**Pattern:** When a pool contains both (a) a concept/category term and (b) instances of that concept, instances will be served as distractors for the concept question. Every instance is a correct answer to "what is this concept?" when the options are [the concept, instance1, instance2, instance3].
+
+**Fix:** Move instances (Indo-European, Sino-Tibetan, Afro-Asiatic) to a separate `language_family_names` pool. The concept fact ("language family") stays in `religion_and_language_terms` with non-instance distractors.
+
+**Rule:** A pool MUST NOT contain both a category label AND instances of that category. Split into `<domain>_category_terms` vs `<domain>_instance_names`.
+
+### 2026-04-08 — Unit-Coherent Pool Splits Still Require Length Sub-Splits
+
+**What:** AP HuG's `concept_short_terms` and `concept_long_phrases` pools were merged into 7 unit-specific pools for semantic coherence. The unit pools had wide answer-length variance (GIS=3ch alongside choropleth map=14ch, push=4ch alongside neo-Malthusians=15ch). The quiz audit's deterministic shuffle picked length-mismatched distractors for outlier short-answer facts, causing FAIL.
+
+**Fix:** Further split each unit pool into `_short` (≤15ch) and `_long` (>15ch) sub-pools. Ultra-short outliers (GIS, site, push/pull/Stage labels) were moved to mini-pools (≤5 members) that trigger the early-exit fallback, using fact-level `distractors[]` instead of pool members.
+
+**Rule:** When merging length-stratified pools into domain/unit pools, always verify that the new pools don't reintroduce the length-mismatch problem. Run `quiz-audit.mjs --full` after every pool restructuring.

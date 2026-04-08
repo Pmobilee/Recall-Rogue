@@ -1,0 +1,1053 @@
+[
+  {
+    "id": "aphg_u1_mercator_projection",
+    "quizQuestion": "Which map projection preserves shape but severely distorts the size of high-latitude landmasses?",
+    "correctAnswer": "Mercator projection",
+    "acceptableAlternatives": [
+      "Mercator",
+      "mercator"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "model_and_theory_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "volatile": false,
+    "distractors": [
+      "Robinson projection",
+      "Peters projection",
+      "Azimuthal projection",
+      "Conic projection",
+      "Sinusoidal projection",
+      "Goode's Homolosine projection",
+      "Stereographic projection",
+      "Equirectangular projection"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "The Mercator projection preserves shape (conformal) but dramatically inflates land area near the poles — making Greenland appear as large as Africa.",
+    "explanation": "The Mercator projection is conformal — it preserves local shape and angles, making it useful for navigation. However, it severely distorts size at high latitudes, so Greenland appears comparable to Africa when Africa is actually 14 times larger.",
+    "wowFactor": "On a Mercator map, Greenland looks the same size as Africa, but Africa is actually 14 times bigger.",
+    "visualDescription": "World map with visible grid lines; landmasses near poles (Greenland, Antarctica, Alaska) appear dramatically stretched compared to equatorial regions like Africa.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.A.3: There are several types of map projections, each with a specific purpose and limitations.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.1"
+    ]
+  },
+  {
+    "id": "aphg_u1_equal_area_projection",
+    "quizQuestion": "A map projection that accurately represents the relative size of landmasses is called what type?",
+    "correctAnswer": "equal-area projection",
+    "acceptableAlternatives": [
+      "equal area projection",
+      "equivalent projection"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "all",
+    "volatile": false,
+    "distractors": [
+      "conformal projection",
+      "azimuthal projection",
+      "equidistant projection",
+      "cylindrical projection",
+      "conic projection",
+      "planar projection",
+      "compromise projection",
+      "perspective projection"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Equal-area projections accurately show the relative sizes of land areas but distort shape, particularly toward the map's edges.",
+    "explanation": "Equal-area (equivalent) projections preserve the proportional size of regions, so students can accurately compare how large Africa is versus Europe. The trade-off is that shapes become distorted, especially at the map's margins.",
+    "wowFactor": "There is no perfect map — every projection sacrifices either shape, size, distance, or direction to flatten a sphere onto paper.",
+    "visualDescription": "Side-by-side comparison of two world maps — one showing equal-area with squished shapes at the edges, one conformal with stretched polar regions.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.A.3: No map projection is perfect; each has a specific purpose and limitations.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.1"
+    ]
+  },
+  {
+    "id": "aphg_u1_map_characteristics",
+    "quizQuestion": "Which element of a map tells the reader what the symbols and colors mean?",
+    "correctAnswer": "legend",
+    "acceptableAlternatives": [
+      "map legend",
+      "key",
+      "map key"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 1,
+    "funScore": 4,
+    "ageGroup": "all",
+    "volatile": false,
+    "distractors": [
+      "scale bar",
+      "north arrow",
+      "title",
+      "graticule",
+      "inset map",
+      "projection label",
+      "dateline",
+      "source citation"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "A map legend (key) explains the meaning of all symbols, colors, and patterns used in the map.",
+    "explanation": "Maps have standard characteristics: title, scale, north arrow, legend, date, and projection. The legend is the decoder — it tells readers what each symbol, color, or line means, making a map readable without prior knowledge.",
+    "wowFactor": "A map without a legend is like a sentence without a dictionary — you can see the symbols but not what they mean.",
+    "visualDescription": "Close-up of a thematic map corner showing a box labeled 'Legend' with colored squares next to descriptive text labels.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.A.2: Maps have specific characteristics, including a title, scale, north arrow, legend, date, and projection.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.1"
+    ]
+  },
+  {
+    "id": "aphg_u1_azimuthal_projection",
+    "quizQuestion": "Which projection type is centered on a single point and shows true direction from that point to all others?",
+    "correctAnswer": "azimuthal projection",
+    "acceptableAlternatives": [
+      "azimuthal",
+      "planar projection"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "volatile": false,
+    "distractors": [
+      "conformal projection",
+      "equal-area projection",
+      "equidistant projection",
+      "cylindrical projection",
+      "conic projection",
+      "transverse projection",
+      "pseudocylindrical projection",
+      "polyconic projection"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "An azimuthal projection is centered on one point and accurately shows direction from that central point, making it useful for polar or navigation maps.",
+    "explanation": "Azimuthal projections project Earth's surface onto a flat plane tangent to the globe at one point. They accurately preserve direction from the center, which is why they are used for polar maps and flight-path planning. Distortion increases with distance from the center point.",
+    "wowFactor": "The United Nations emblem uses an azimuthal projection centered on the North Pole — chosen to show all member nations without political bias.",
+    "visualDescription": "Circular world map centered on the North Pole, showing all continents radiating outward like spokes, with Antarctica along the outer ring.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.A.3: There are several types of map projections, each with a specific purpose and limitations.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.1"
+    ]
+  },
+  {
+    "id": "aphg_u1_choropleth_map",
+    "quizQuestion": "A thematic map that uses shading or color to show data values across defined areas is called a what?",
+    "correctAnswer": "choropleth map",
+    "acceptableAlternatives": [
+      "choropleth"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "volatile": false,
+    "distractors": [
+      "isoline map",
+      "dot distribution map",
+      "cartogram",
+      "proportional symbol map",
+      "flow-line map",
+      "reference map",
+      "topographic map",
+      "graduated color map"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "A choropleth map uses shading or color intensity within predefined areas (like countries or counties) to represent statistical data such as population density or GDP per capita.",
+    "explanation": "Choropleth maps are one of the most common thematic map types on the AP exam. They shade enumeration units (countries, states) according to a data variable — darker shading typically signals higher values. A key limitation is that they imply uniform conditions within each unit, which may not be true.",
+    "wowFactor": "The word 'choropleth' comes from Greek: 'choros' (area/region) + 'plethos' (multitude) — a map that shows how many are in each place.",
+    "visualDescription": "Map of the United States with states shaded in different intensities of blue, with a legend showing a color gradient from light (low) to dark (high).",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.A.1: Different types of maps present specific information about the world.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.1"
+    ]
+  },
+  {
+    "id": "aphg_u1_isoline_map",
+    "quizQuestion": "Which map type uses lines connecting points of equal value to show continuous data across space?",
+    "correctAnswer": "isoline map",
+    "acceptableAlternatives": [
+      "isoline",
+      "contour map",
+      "isopleth map"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "volatile": false,
+    "distractors": [
+      "choropleth map",
+      "dot distribution map",
+      "cartogram",
+      "proportional symbol map",
+      "reference map",
+      "flow-line map",
+      "topographic profile",
+      "dasymetric map"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "An isoline map connects points of equal value with continuous lines, commonly used to show elevation (contour lines), temperature (isotherms), or barometric pressure (isobars).",
+    "explanation": "Isoline maps show spatial variation in a continuous variable by drawing lines through all points with the same value. Weather maps use isolines (isobars for pressure, isotherms for temperature). When lines are close together, change is rapid; when spread apart, change is gradual.",
+    "wowFactor": "Every contour line on a topographic map is an isoline — walk along one and you never go uphill or downhill, just around the mountain.",
+    "visualDescription": "Topographic map segment showing concentric irregular oval lines labeled with elevation numbers, with a steep cliff shown by closely packed lines.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.A.1: Different types of maps present specific information about the world.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.1"
+    ]
+  },
+  {
+    "id": "aphg_u1_cartogram",
+    "quizQuestion": "Which thematic map distorts the size of regions to be proportional to a data variable like population?",
+    "correctAnswer": "cartogram",
+    "acceptableAlternatives": [
+      "value-by-area map"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "volatile": false,
+    "distractors": [
+      "choropleth map",
+      "isoline map",
+      "dot distribution map",
+      "proportional symbol map",
+      "flow-line map",
+      "reference map",
+      "dasymetric map",
+      "mental map"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "A cartogram replaces geographic area with a variable like population or GDP, so China and India appear enormous while sparsely populated countries shrink dramatically.",
+    "explanation": "Cartograms deliberately distort the physical size of regions to represent a quantitative variable. On a population cartogram, countries with more people appear larger regardless of their actual land area. This makes patterns like global population concentration immediately visible.",
+    "wowFactor": "On a population cartogram, Bangladesh looks larger than Russia — even though Russia is geographically 115 times bigger.",
+    "visualDescription": "World cartogram where large countries like China and India are vastly inflated in size, while Australia, Canada, and Russia are tiny slivers compared to their geographic reality.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.A.1: Different types of maps present specific information about the world.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.1"
+    ]
+  },
+  {
+    "id": "aphg_u1_gis_definition",
+    "quizQuestion": "Which technology overlays multiple spatial data layers to create comprehensive analytical maps?",
+    "correctAnswer": "GIS",
+    "acceptableAlternatives": [
+      "Geographic Information System",
+      "geographic information system"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "volatile": false,
+    "distractors": [
+      "remote sensing",
+      "global positioning system",
+      "aerial photography",
+      "satellite imagery analysis",
+      "cartographic modeling",
+      "spatial statistics software",
+      "topographic survey system",
+      "digital elevation modeling"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "A Geographic Information System (GIS) layers different types of spatial data — roads, population, elevation, climate — to create comprehensive maps for analysis.",
+    "explanation": "GIS allows geographers to combine and analyze multiple layers of spatial data. For example, overlaying a population layer with a pollution layer can reveal which communities face environmental injustice. GIS is the dominant tool in modern spatial analysis.",
+    "wowFactor": "City planners use GIS to answer questions like 'Which neighborhoods have both high asthma rates AND proximity to highways?' by overlaying health and transportation data.",
+    "visualDescription": "Diagram showing three transparent map layers being stacked — one for roads, one for land use, one for elevation — combining into a single composite map.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.B.3: Geographic information systems (GIS) use multiple layers of data to create comprehensive maps.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.2"
+    ]
+  },
+  {
+    "id": "aphg_u1_remote_sensing",
+    "quizQuestion": "Which geographic data collection method gathers information about Earth's surface from a distance without direct contact?",
+    "correctAnswer": "remote sensing",
+    "acceptableAlternatives": [
+      "remote-sensing"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageGroup": "all",
+    "volatile": false,
+    "distractors": [
+      "field observation",
+      "GPS tracking",
+      "topographic survey",
+      "census enumeration",
+      "ethnographic research",
+      "participatory mapping",
+      "ground-truth verification",
+      "hydrological measurement"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Remote sensing collects data about Earth from satellites, aircraft, or drones without physically touching the surface, enabling study of large or inaccessible areas.",
+    "explanation": "Remote sensing uses sensors aboard satellites or aircraft to detect reflected energy from Earth's surface. It can track deforestation, measure sea ice extent, monitor crop health, and map land cover — all without field teams on the ground. It provides secondary source data for GIS analysis.",
+    "wowFactor": "Satellites can detect illegal logging in remote rainforests by measuring changes in infrared light reflected from tree canopies — no human on the ground required.",
+    "visualDescription": "Satellite orbiting Earth with sensor beams directed downward at a forested landscape; inset shows a false-color satellite image with healthy vegetation in red.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.B.3: Remote sensing collects data from a distance.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.2"
+    ]
+  },
+  {
+    "id": "aphg_u1_primary_vs_secondary_data",
+    "quizQuestion": "A geographer conducting field interviews to collect location data is using what type of data source?",
+    "correctAnswer": "primary source",
+    "acceptableAlternatives": [
+      "primary data",
+      "primary data source"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "volatile": false,
+    "distractors": [
+      "secondary source",
+      "satellite imagery",
+      "quantitative data",
+      "qualitative analysis",
+      "archival data",
+      "census data",
+      "remote sensing data",
+      "GIS-derived data"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Primary geographic data is collected firsthand — through field observations, interviews, or surveys. Secondary data comes from existing sources like satellite images or aerial photographs.",
+    "explanation": "Geographers distinguish between primary data (collected directly by the researcher through surveys, interviews, or fieldwork) and secondary data (previously collected by others, such as satellite imagery, census records, or aerial photographs). Both types serve as inputs for GIS analysis.",
+    "wowFactor": "Some of the most powerful geographic insights come from combining both: a researcher's field interviews (primary) layered over satellite imagery (secondary) in GIS.",
+    "visualDescription": "Split image: left shows a geographer with a clipboard conducting a street interview; right shows a computer screen displaying satellite imagery of the same neighborhood.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.B.2: Spatial data is collected from primary and secondary sources.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.2"
+    ]
+  },
+  {
+    "id": "aphg_u1_spatial_data_power",
+    "quizQuestion": "Using geographic data to explain trends and make predictions is the core purpose of what practice?",
+    "correctAnswer": "spatial analysis",
+    "acceptableAlternatives": [
+      "geographic analysis",
+      "spatial pattern analysis"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "volatile": false,
+    "distractors": [
+      "data collection requires fieldwork",
+      "maps reflect the mapmaker's perspective",
+      "GIS layers must be verified",
+      "remote sensing replaces observation",
+      "secondary data is more reliable",
+      "qualitative data cannot be mapped",
+      "scale changes conclusions",
+      "projections distort reality"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Spatial data presented in maps and other visual formats can be used to explain geographic patterns and trends and to make predictions about future conditions.",
+    "explanation": "The power of geographic data lies in its ability to reveal spatial patterns not visible in raw numbers. Mapping disease outbreaks can identify the source; overlaying income and pollution data reveals environmental injustice. This is the core purpose of geographic information — turning data into spatial insight.",
+    "wowFactor": "John Snow's 1854 cholera map of London — one of history's first spatial analyses — identified a contaminated water pump as the outbreak's source by plotting where victims lived.",
+    "visualDescription": "Replica of John Snow's 1854 cholera map showing dots clustered around a central water pump symbol on a London street grid.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK IMP-1.A.1: Spatial data presented in maps and other visual formats can be used to explain patterns and trends and make predictions.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.3"
+    ]
+  },
+  {
+    "id": "aphg_u1_absolute_location",
+    "quizQuestion": "Which type of location uses latitude and longitude coordinates to identify an exact position on Earth?",
+    "correctAnswer": "absolute location",
+    "acceptableAlternatives": [
+      "absolute"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "volatile": false,
+    "distractors": [
+      "relative location",
+      "site",
+      "situation",
+      "GPS waypoint",
+      "cognitive location",
+      "nodal location",
+      "spatial reference",
+      "functional location"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Absolute location identifies a place using a fixed coordinate system such as latitude and longitude. Every point on Earth has a unique absolute location.",
+    "explanation": "Absolute location uses a standardized grid system — latitude (north/south) and longitude (east/west) — to pinpoint any location on Earth precisely. Unlike relative location, absolute location does not change based on perspective or reference points.",
+    "wowFactor": "The GPS in your phone calculates your absolute location by triangulating signals from at least three satellites orbiting 20,000 km above Earth.",
+    "visualDescription": "Globe showing grid lines of latitude and longitude with a red pin marker placed at an intersection, labeled with coordinate numbers (e.g., 40°N, 74°W).",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.C.1: Location can be identified using absolute location (latitude/longitude).",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.4"
+    ]
+  },
+  {
+    "id": "aphg_u1_relative_location",
+    "quizQuestion": "Describing a city as 'north of the river and adjacent to the highway interchange' is an example of what type of location?",
+    "correctAnswer": "relative location",
+    "acceptableAlternatives": [
+      "relative"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "volatile": false,
+    "distractors": [
+      "absolute location",
+      "site",
+      "situation",
+      "functional location",
+      "cognitive location",
+      "nodal position",
+      "spatial reference",
+      "geographic coordinate"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Relative location describes a place's position in relation to other places using social, cultural, or directional references rather than fixed coordinates.",
+    "explanation": "Relative location expresses where something is by reference to other known places ('two miles east of downtown,' 'across the river from the stadium'). It is more useful for everyday communication but changes depending on the reference point and can shift over time as surrounding landmarks change.",
+    "wowFactor": "The same city can have many different relative locations depending on who is describing it — 'near the airport,' 'south of the mountains,' 'across the bay from San Francisco.'",
+    "visualDescription": "Simple hand-drawn style map showing a town with annotations like arrows and labels saying 'north of river,' 'adjacent to highway,' and 'east of the forest.'",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.C.1: Location can be identified using relative location (position relative to other places).",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.4"
+    ]
+  },
+  {
+    "id": "aphg_u1_distance_decay",
+    "quizQuestion": "The principle that interaction between two places decreases as the distance between them increases is called what?",
+    "correctAnswer": "distance decay",
+    "acceptableAlternatives": [
+      "the distance decay effect"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "volatile": false,
+    "distractors": [
+      "time-space compression",
+      "spatial interaction",
+      "friction of distance",
+      "gravity model",
+      "Tobler's First Law",
+      "relative distance",
+      "accessibility gradient",
+      "diffusion barrier"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Distance decay describes how the intensity of spatial interaction — trade, migration, communication — diminishes as the distance between places increases.",
+    "explanation": "Distance decay reflects the friction of distance: the greater the separation between two places, the less they interact. This principle explains why most trade, migration, and cultural exchange happens between nearby places rather than distant ones. Technology (internet, air travel) has weakened but not eliminated distance decay.",
+    "wowFactor": "You're far more likely to call a friend who lives 1 mile away than one who lives 1,000 miles away — distance decay affects human connection just as much as trade routes.",
+    "visualDescription": "Graph showing a steep downward curve: y-axis labeled 'Interaction' and x-axis labeled 'Distance,' with data points clustered near the origin and tapering off sharply.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.C.4: Distance decay states that the interaction between two places declines as the distance between them increases.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.4"
+    ]
+  },
+  {
+    "id": "aphg_u1_time_space_compression",
+    "quizQuestion": "The reduction in travel and communication time between distant places due to improved technology is called what?",
+    "correctAnswer": "time-space compression",
+    "acceptableAlternatives": [
+      "time space compression"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "volatile": false,
+    "distractors": [
+      "distance decay",
+      "spatial interaction",
+      "relative distance",
+      "accessibility effect",
+      "globalization friction",
+      "friction of distance",
+      "network compression",
+      "connectivity gradient"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Time-space compression describes how advances in transportation and communication technology have effectively shrunk the world by reducing the time needed to connect distant places.",
+    "explanation": "Time-space compression (associated with geographer David Harvey) describes how technology collapses the effective distance between places. A message that took weeks by ship in 1800 now travels globally in milliseconds. Air travel reduced a week-long ocean crossing to hours. This accelerates globalization and weakens distance decay.",
+    "wowFactor": "In 1800, a letter from London to New York took about 6 weeks. Today the same information travels in less than one second — that is time-space compression in action.",
+    "visualDescription": "Timeline graphic comparing travel/communication speeds across eras: sailing ship (weeks), telegraph (hours), internet (milliseconds), visually compressing the space between two globe icons.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.C.3: Time-space compression is the reduction in time it takes to diffuse something to a distant place due to advances in communications and transportation technology.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.4"
+    ]
+  },
+  {
+    "id": "aphg_u1_site_vs_situation",
+    "quizQuestion": "The physical characteristics of a place — its terrain, soil, and water supply — describe its what?",
+    "correctAnswer": "site",
+    "acceptableAlternatives": [],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "volatile": false,
+    "distractors": [
+      "situation",
+      "relative location",
+      "sense of place",
+      "topographic profile",
+      "environmental context",
+      "physical setting",
+      "geographic footprint",
+      "territorial base"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Site refers to the physical characteristics of a location: its terrain, soil type, climate, water access, and natural resources. Situation refers to its position relative to surrounding places.",
+    "explanation": "Site and situation are two complementary ways to describe a city's location. Site is internal — the land itself (a natural harbor, a defensible hilltop, a river crossing). Situation is external — where the city sits relative to trade routes, other cities, and regional resources. Many great cities have both excellent site and advantageous situation.",
+    "wowFactor": "New York City has both: its site is a deep natural harbor, and its situation is at the mouth of the Hudson River connecting the interior of North America to Atlantic trade.",
+    "visualDescription": "Map of Manhattan island with labels pointing to 'Site: island protected by rivers' and 'Situation: gateway between Atlantic Ocean and Hudson River valley.'",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.C.1: Location can be identified using absolute location and relative location.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.4"
+    ]
+  },
+  {
+    "id": "aphg_u1_spatial_interaction",
+    "quizQuestion": "The movement of people, goods, and ideas between places is called what geographic concept?",
+    "correctAnswer": "spatial interaction",
+    "acceptableAlternatives": [
+      "spatial interactions"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 5,
+    "ageGroup": "all",
+    "volatile": false,
+    "distractors": [
+      "distance decay",
+      "time-space compression",
+      "cultural diffusion",
+      "migration flow",
+      "accessibility network",
+      "connectivity pattern",
+      "friction of distance",
+      "spatial organization"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Spatial interaction refers to the movement and exchange of people, goods, services, and ideas between different geographic locations.",
+    "explanation": "Spatial interaction encompasses all forms of movement between places — migration, trade, communication, tourism. It is shaped by distance decay (declining with distance), time-space compression (increasing with technology), and the size and complementarity of the places involved.",
+    "wowFactor": "The internet has made spatial interaction nearly frictionless for information — a YouTube video can receive millions of views globally within hours of posting.",
+    "visualDescription": "Network diagram showing cities as dots connected by varying-width lines representing trade and migration flows, with thicker lines between nearer or larger cities.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.C.3: Spatial interaction is a product of absolute and relative distance.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.4"
+    ]
+  },
+  {
+    "id": "aphg_u1_environmental_determinism",
+    "quizQuestion": "Which geographic theory argues that the natural environment controls and determines human cultural development?",
+    "correctAnswer": "environmental determinism",
+    "acceptableAlternatives": [
+      "environmental determinism theory",
+      "climatic determinism"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "model_and_theory_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "volatile": false,
+    "distractors": [
+      "possibilism",
+      "cultural ecology",
+      "human agency theory",
+      "landscape determinism",
+      "geographic fatalism",
+      "adaptationism",
+      "neodeterminism",
+      "spatial determinism"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Environmental determinism holds that physical geography — climate, terrain, and natural resources — determines the culture, intelligence, and development of human societies.",
+    "explanation": "Environmental determinism was a dominant view in early 20th-century geography, arguing that people living in tropical climates were 'lazy' while temperate climates produced 'energetic' peoples. This view is now discredited as pseudoscientific racism. It has been largely replaced by possibilism, which acknowledges environmental constraints but emphasizes human agency.",
+    "wowFactor": "Early environmental determinists used this theory to justify colonialism — claiming that European climates produced 'superior' peoples destined to rule over 'inferior' tropical ones.",
+    "visualDescription": "Old-style world map from the early 1900s with annotations claiming different climate zones produce different human characteristics, with tropical zones labeled as 'unfavorable.'",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.D.1: Environmental determinism: the view that natural environment controls human development, so that humans are products of their environment.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.5"
+    ]
+  },
+  {
+    "id": "aphg_u1_possibilism",
+    "quizQuestion": "Which geographic perspective holds that the environment limits human choices but people can adapt and overcome those constraints?",
+    "correctAnswer": "possibilism",
+    "acceptableAlternatives": [
+      "geographic possibilism"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "model_and_theory_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "volatile": false,
+    "distractors": [
+      "environmental determinism",
+      "cultural ecology",
+      "landscape determinism",
+      "human agency theory",
+      "adaptationism",
+      "neodeterminism",
+      "environmental constraint theory",
+      "geographic fatalism"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Possibilism acknowledges that the environment sets limits on human activity but emphasizes human creativity and technology as tools for overcoming geographic constraints.",
+    "explanation": "Possibilism, developed in part by French geographer Paul Vidal de la Blache, replaced environmental determinism as the dominant geographic perspective. It argues that while physical geography creates constraints (deserts are hard to farm, mountains impede movement), humans use technology and culture to adapt. The Netherlands built its country on reclaimed sea — a classic possibilist example.",
+    "wowFactor": "The Netherlands has reclaimed over 6,500 square kilometers of land from the sea using dikes and pumping systems — a textbook example of possibilism in action.",
+    "visualDescription": "Photo of the Dutch coastline showing windmills and dikes holding back the North Sea, with agricultural fields visible on reclaimed polder land below sea level.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.D.2: Possibilism: the view that the physical environment may limit some human actions, but people have the ability to adjust to the environment.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.5"
+    ]
+  },
+  {
+    "id": "aphg_u1_carl_sauer_cultural_landscape",
+    "quizQuestion": "Which geographer is most associated with the concept of the cultural landscape as the human imprint on the physical environment?",
+    "correctAnswer": "Carl Sauer",
+    "acceptableAlternatives": [
+      "Sauer"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "geographer_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "volatile": false,
+    "distractors": [
+      "Ellsworth Huntington",
+      "Friedrich Ratzel",
+      "Paul Vidal de la Blache",
+      "Waldo Tobler",
+      "Yi-Fu Tuan",
+      "William Morris Davis",
+      "Griffith Taylor",
+      "Richard Hartshorne"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Carl Sauer, an American geographer, developed the concept of the cultural landscape — the visible imprint that human cultures leave on the physical environment through settlement patterns, agriculture, and architecture.",
+    "explanation": "Carl Sauer argued that cultures transform natural landscapes into cultural landscapes through human activity. A field of wheat, a city grid, or a religious shrine are all examples of humans reshaping nature. Sauer's work positioned cultural geography as the study of how different cultures modify their environments differently.",
+    "wowFactor": "Sauer argued that the most important question in geography isn't 'What is the land like?' but 'How has culture changed the land?' — shifting geography from nature to human agency.",
+    "visualDescription": "Split landscape photo: left half shows a wild forest with natural terrain; right half shows the same area transformed with farmfields, roads, and a small town — the cultural landscape.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.D.2: Possibilism — humans have the ability to adjust to the environment; cultural landscape reflects human modification.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.5"
+    ]
+  },
+  {
+    "id": "aphg_u1_scales_of_analysis",
+    "quizQuestion": "When the same data about income inequality reveals different patterns at the national level versus the neighborhood level, what concept explains this?",
+    "correctAnswer": "scale of analysis",
+    "acceptableAlternatives": [
+      "scales of analysis",
+      "geographic scale"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageGroup": "teen+",
+    "volatile": false,
+    "distractors": [
+      "map projection distortion",
+      "relative distance effect",
+      "spatial autocorrelation",
+      "modifiable areal unit problem",
+      "ecological fallacy",
+      "geographic aggregation",
+      "choropleth averaging",
+      "data resolution limit"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Scale of analysis refers to the geographic level — global, regional, national, or local — at which spatial data is examined. Different scales can reveal different patterns and lead to different conclusions.",
+    "explanation": "The scale of analysis chosen fundamentally shapes what a geographer sees. A national map of income may show a country as relatively equal, while a city-level map reveals extreme neighborhood inequality. Geographers must be aware that conclusions drawn at one scale may not hold at another — this is sometimes called the modifiable areal unit problem.",
+    "wowFactor": "A country can look economically equal on a national map while hiding extreme poverty in specific neighborhoods — scale of analysis can literally hide or reveal injustice.",
+    "visualDescription": "Three side-by-side maps of the same region at different zoom levels — world, country, city — with color shading showing how income inequality patterns shift and become more visible at finer scales.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK IMP-1.B.1: Geographic patterns can be analyzed at global, regional, national, and local scales; using the same data at different scales can lead to different conclusions.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.6"
+    ]
+  },
+  {
+    "id": "aphg_u1_map_scale_vs_geographic_scale",
+    "quizQuestion": "A large-scale map shows a smaller area in greater detail. What does 'large' refer to in this context?",
+    "correctAnswer": "representative fraction",
+    "acceptableAlternatives": [
+      "the representative fraction",
+      "the map ratio"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "volatile": false,
+    "distractors": [
+      "the physical size of the map",
+      "the geographic area covered",
+      "the number of features shown",
+      "the resolution of satellite data",
+      "the zoom level in GIS",
+      "the amount of generalization used",
+      "the coordinate system precision",
+      "the paper dimensions"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Map scale refers to the ratio of map distance to real-world distance. A large-scale map has a larger fraction (e.g., 1:1,000) and shows a small area with high detail; a small-scale map has a smaller fraction (e.g., 1:1,000,000) and shows a large area with less detail.",
+    "explanation": "This is a common source of confusion: 'large-scale' maps show small areas in great detail (like a city block), while 'small-scale' maps show large areas with less detail (like a world map). 'Large' and 'small' refer to the representative fraction — 1/1,000 is a larger number than 1/1,000,000.",
+    "wowFactor": "A map of your neighborhood (large-scale) and a map of the world (small-scale) both have 'scale' — but what's 'large' is the fraction, not the area covered.",
+    "visualDescription": "Two maps side by side: left shows one city block with building outlines labeled '1:1,000'; right shows an entire continent with country outlines labeled '1:10,000,000.'",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK IMP-1.B.1: Geographic patterns can be analyzed at different scales; scale affects the patterns and conclusions drawn.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.6"
+    ]
+  },
+  {
+    "id": "aphg_u1_formal_region",
+    "quizQuestion": "A region defined by a shared measurable characteristic such as language, climate, or political boundaries is called what type?",
+    "correctAnswer": "formal region",
+    "acceptableAlternatives": [
+      "uniform region"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "region_type_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "volatile": false,
+    "distractors": [
+      "functional region",
+      "perceptual region",
+      "vernacular region",
+      "nodal region",
+      "transitional region",
+      "metropolitan region",
+      "cultural hearth region",
+      "administrative region"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "A formal (uniform) region shares one or more measurable characteristics throughout — examples include the Corn Belt, the French-speaking world, or the humid subtropical climate zone.",
+    "explanation": "Formal regions are defined by a consistent, measurable attribute. Examples: the Corn Belt (dominant crop), the Bible Belt (religious affiliation), the Rocky Mountain region (physical geography), or any country (political jurisdiction). The defining characteristic is uniform across the region, even if its edges are transitional.",
+    "wowFactor": "The 'Rust Belt' is a formal region defined by deindustrialization — a shared economic characteristic that geographers can measure and map.",
+    "visualDescription": "Map of the United States with the Corn Belt shaded in yellow — a large region spanning Iowa, Illinois, Indiana — demonstrating a formal region defined by agricultural dominance.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.E.1: Formal (uniform) regions have one or more shared traits.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.7"
+    ]
+  },
+  {
+    "id": "aphg_u1_functional_region",
+    "quizQuestion": "A region organized around a central node or focal point, such as a city's newspaper circulation area, is called what type of region?",
+    "correctAnswer": "functional region",
+    "acceptableAlternatives": [
+      "nodal region"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "region_type_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "volatile": false,
+    "distractors": [
+      "formal region",
+      "perceptual region",
+      "vernacular region",
+      "uniform region",
+      "transitional region",
+      "administrative region",
+      "physiographic region",
+      "metropolitan region"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "A functional (nodal) region is defined by a central node and the surrounding area connected to it by movement, service, or communication — like a city's commuter zone or a radio broadcast area.",
+    "explanation": "Functional regions are held together by flows of people, goods, or information connecting an area to its central node. Examples: a metropolitan area (people commuting to a central city), a school district (students traveling to a central school), or a TV station's coverage area. The region exists because of the node's function.",
+    "wowFactor": "A sports team's fan base is a functional region — it radiates outward from the home stadium, with density declining with distance, just like distance decay predicts.",
+    "visualDescription": "Map showing a city at the center with radiating rings of commuter traffic and newspaper delivery routes extending outward, with intensity fading at the edges.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.E.1: Functional (nodal) regions are organized around a focal point.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.7"
+    ]
+  },
+  {
+    "id": "aphg_u1_perceptual_region",
+    "quizQuestion": "The 'American South' as a region defined by cultural identity, shared history, and people's feelings rather than official boundaries is an example of what region type?",
+    "correctAnswer": "perceptual region",
+    "acceptableAlternatives": [
+      "vernacular region"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "region_type_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "teen+",
+    "volatile": false,
+    "distractors": [
+      "formal region",
+      "functional region",
+      "nodal region",
+      "uniform region",
+      "transitional region",
+      "administrative region",
+      "cultural hearth region",
+      "physiographic region"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "A perceptual (vernacular) region exists in people's minds based on shared identity, feelings, or cultural attitudes — like 'the Deep South,' 'the Middle East,' or 'the Bible Belt.'",
+    "explanation": "Perceptual regions reflect how people mentally organize geographic space. They are not officially defined and their boundaries vary from person to person. 'The South' means different things to different Americans. These regions reflect cultural values and historical narratives, making them powerful even without precise maps.",
+    "wowFactor": "Ask 100 people where 'the South' begins and you'll get 100 different answers — perceptual regions exist in the mind, not on any official map.",
+    "visualDescription": "Sketch map of the eastern US with a loosely drawn, fuzzy-edged oval labeled 'The South' with overlapping question marks at its borders, contrasting with sharp lines of state boundaries.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.E.1: Perceptual (vernacular) regions are defined by people's beliefs or feelings.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.7"
+    ]
+  },
+  {
+    "id": "aphg_u1_overlapping_regions",
+    "quizQuestion": "The fact that a city can simultaneously be in the 'Sunbelt,' the 'Bible Belt,' and a state's political district demonstrates which key property of geographic regions?",
+    "correctAnswer": "regions can overlap",
+    "acceptableAlternatives": [
+      "regions overlap",
+      "overlapping regions"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageGroup": "teen+",
+    "volatile": false,
+    "distractors": [
+      "regions have fixed boundaries",
+      "all regions are formal regions",
+      "regions must be contiguous",
+      "functional regions cannot overlap",
+      "regions require official recognition",
+      "regions are determined by physical geography",
+      "perceptual regions are not geographic",
+      "regions only exist at a single scale"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Geographic regions can overlap because they are defined by different criteria. A single place can belong to multiple regions simultaneously — formal, functional, and perceptual regions can all apply to the same location.",
+    "explanation": "Regions are human constructs defined for specific analytical purposes, so they overlap freely. Atlanta is simultaneously in the formal Sun Belt climate region, the perceptual 'New South' cultural region, Georgia's political jurisdiction, and the functional metropolitan region. Each region is valid for a different analytical purpose.",
+    "wowFactor": "Phoenix, Arizona belongs to the Sunbelt (climate), the Desert Southwest (physical), the Mountain Time Zone (functional), and what many locals call 'the Valley' (perceptual) — four overlapping regions at once.",
+    "visualDescription": "Map of the southeastern US with three overlapping transparent colored shapes — one labeled 'Sunbelt,' one 'Bible Belt,' one 'Atlantic Coastal region' — with a city dot sitting inside all three.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.E.2: Regions can overlap, and people may have different views of regional boundaries.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.7"
+    ]
+  },
+  {
+    "id": "aphg_u1_five_themes",
+    "quizQuestion": "Location, place, human-environment interaction, movement, and region are the five organizing principles known as what?",
+    "correctAnswer": "Five Themes of Geography",
+    "acceptableAlternatives": [
+      "the Five Themes",
+      "5 Themes of Geography",
+      "five themes"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 1,
+    "funScore": 5,
+    "ageGroup": "all",
+    "volatile": false,
+    "distractors": [
+      "Six Essential Elements of Geography",
+      "Three Big Ideas of AP HuG",
+      "Geographic Information Systems framework",
+      "National Geography Standards framework",
+      "Spatial Analysis Framework",
+      "Geographic Inquiry Process",
+      "World Regional Geography model",
+      "Human-Environment Interaction model"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "The Five Themes of Geography — location, place, human-environment interaction, movement, and region — were developed by the National Council for Geographic Education and AAG in 1984 to guide K-12 geographic education.",
+    "explanation": "The Five Themes of Geography provide a framework for geographic analysis at all levels. Every geographic question can be approached through one or more of these themes: Where is it? (Location), What is it like? (Place), How do people interact with the environment? (HEI), How do people, ideas, and goods move? (Movement), How can areas be grouped? (Region).",
+    "wowFactor": "The Five Themes were created specifically to help teachers explain geography — before them, many students thought geography was only about memorizing capitals.",
+    "visualDescription": "Circular diagram with five equal sections labeled with each theme, each containing a simple icon — a compass for Location, a house for Place, trees for HEI, arrows for Movement, an oval for Region.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.A.1: Maps are representations of the world; geographic study organizes space through foundational frameworks including location, place, region, and human-environment interaction.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.1"
+    ]
+  },
+  {
+    "id": "aphg_u1_map_reflects_perspective",
+    "quizQuestion": "A country-centric world map reflects which inherent quality of all maps?",
+    "correctAnswer": "mapmaker perspective",
+    "acceptableAlternatives": [
+      "the mapmaker's perspective",
+      "perspective"
+    ],
+    "chainThemeId": "mapmakers_lens",
+    "answerTypePoolId": "concept_term_definitions",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageGroup": "all",
+    "volatile": false,
+    "distractors": [
+      "maps require a north arrow",
+      "no map projection is perfect",
+      "scale determines what is shown",
+      "all maps use the same projection",
+      "thematic maps are always biased",
+      "satellite data is objective",
+      "GIS eliminates perspective",
+      "map legends standardize data"
+    ],
+    "quizMode": "multiple_choice",
+    "statement": "Every map reflects choices made by its creator — what to include, what to omit, which projection to use, and what to place at the center. These choices embed the mapmaker's perspective.",
+    "explanation": "Maps are not neutral records of reality — they reflect the values, priorities, and power of their makers. Placing one's own country at the center of the world is a common convention (compare American vs. Chinese vs. Australian maps). Choosing which data to show, how to color regions, and what to label all reflect point of view.",
+    "wowFactor": "In Chinese world maps, China sits at the center — while in most Western maps, the Americas or Europe are centered. The same Earth looks completely different depending on who drew the map.",
+    "visualDescription": "Two world maps side by side: a Western-centered map with Europe/Americas in the middle and a Chinese-centered map with China in the middle — same data, radically different perspective.",
+    "sourceName": "College Board AP HuG CED",
+    "sourceUrl": "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+    "sourceDetails": "CED EK PSO-1.A.2: Maps reflect the perspective of the mapmaker.",
+    "examTags": [
+      "APHG",
+      "Unit 1",
+      "Topic 1.1"
+    ]
+  }
+]

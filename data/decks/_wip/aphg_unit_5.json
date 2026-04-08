@@ -1,0 +1,1703 @@
+[
+  {
+    "id": "aphg_u5_intensive_vs_extensive",
+    "quizQuestion": "Farming that uses high labor or capital inputs per unit of land is called {___} agriculture.",
+    "correctAnswer": "intensive",
+    "acceptableAlternatives": [
+      "intensive agriculture"
+    ],
+    "explanation": "Intensive agriculture maximizes output from a small land area by investing heavily in labor, irrigation, or fertilizers. Market gardening and plantation farming are classic examples. The opposite — extensive agriculture — uses large land areas with fewer inputs per acre.",
+    "distractors": [
+      "extensive",
+      "subsistence",
+      "commercial",
+      "pastoral",
+      "sedentary",
+      "mechanized",
+      "nomadic",
+      "shifting"
+    ],
+    "difficulty": 1,
+    "funScore": 4,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.A.1: Intensive farming involves greater inputs per unit of land.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.1",
+      "ek_code": "PSO-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_extensive_agriculture",
+    "quizQuestion": "Shifting cultivation and nomadic herding are both examples of {___} agriculture because they use large land areas per unit of output.",
+    "correctAnswer": "extensive",
+    "acceptableAlternatives": [
+      "extensive agriculture"
+    ],
+    "explanation": "Extensive agriculture spreads production across large territories with relatively low inputs of labor or capital per acre. Nomadic herding, ranching, and shifting cultivation all fall into this category — they need space, not intensive inputs.",
+    "distractors": [
+      "intensive",
+      "subsistence",
+      "commercial",
+      "sedentary",
+      "mixed",
+      "monoculture",
+      "plantation",
+      "industrial"
+    ],
+    "difficulty": 1,
+    "funScore": 4,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.A.1: Extensive farming involves large land areas per output (shifting cultivation, nomadic herding, ranching).",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.1",
+      "ek_code": "PSO-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_subsistence_vs_commercial",
+    "quizQuestion": "Agriculture practiced primarily to feed the farming family, with little surplus sold, is called {___} agriculture.",
+    "correctAnswer": "subsistence",
+    "acceptableAlternatives": [
+      "subsistence agriculture"
+    ],
+    "explanation": "Subsistence agriculture produces just enough food for the farm household's own consumption. It is common in less economically developed regions where market access is limited. Commercial agriculture, by contrast, produces surplus food for sale in markets.",
+    "distractors": [
+      "commercial",
+      "plantation",
+      "intensive",
+      "extensive",
+      "monoculture",
+      "industrial",
+      "organic",
+      "market gardening"
+    ],
+    "difficulty": 1,
+    "funScore": 4,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.C.1: Agricultural production regions defined by subsistence or commercial practices.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.6",
+      "ek_code": "PSO-5.C.1"
+    }
+  },
+  {
+    "id": "aphg_u5_clustered_settlement",
+    "quizQuestion": "A rural settlement pattern in which homes are grouped closely together, often around a central square or well, is called a {___} settlement.",
+    "correctAnswer": "clustered",
+    "acceptableAlternatives": [
+      "clustered settlement",
+      "nucleated",
+      "nucleated settlement"
+    ],
+    "explanation": "Clustered (nucleated) settlements concentrate homes and buildings near a central point — a church, well, or market. This pattern is common in Europe, parts of Africa, and areas where communal defense or resource sharing was important.",
+    "distractors": [
+      "dispersed",
+      "linear",
+      "ribbon",
+      "radial",
+      "grid",
+      "isolated",
+      "suburban",
+      "planned"
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "chainThemeId": "models_of_land",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.B.1: Rural settlement patterns include clustered (nucleated), dispersed, and linear forms.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.2",
+      "ek_code": "PSO-5.B.1"
+    }
+  },
+  {
+    "id": "aphg_u5_dispersed_settlement",
+    "quizQuestion": "When farmsteads are spread widely across a landscape with no central village, the rural settlement pattern is called {___}.",
+    "correctAnswer": "dispersed",
+    "acceptableAlternatives": [
+      "dispersed settlement"
+    ],
+    "explanation": "Dispersed settlement places individual farms at a distance from one another across the countryside. This pattern is typical of the American Midwest and other areas settled under the township and range system, where each family received a separate parcel.",
+    "distractors": [
+      "clustered",
+      "linear",
+      "nucleated",
+      "radial",
+      "ribbon",
+      "compact",
+      "grid",
+      "suburban"
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "chainThemeId": "models_of_land",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.B.1: Rural settlement patterns include clustered (nucleated), dispersed, and linear forms.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.2",
+      "ek_code": "PSO-5.B.1"
+    }
+  },
+  {
+    "id": "aphg_u5_linear_settlement",
+    "quizQuestion": "A rural settlement pattern in which homes and buildings are arranged along a road, river, or coastline is called a {___} settlement.",
+    "correctAnswer": "linear",
+    "acceptableAlternatives": [
+      "linear settlement"
+    ],
+    "explanation": "Linear settlements string out along transport corridors such as roads, rivers, or rail lines. The long-lot system in French Canada and Louisiana produced linear patterns because narrow strips of land ran perpendicular to waterways, and farms lined up along the shore.",
+    "distractors": [
+      "clustered",
+      "dispersed",
+      "nucleated",
+      "radial",
+      "ribbon",
+      "grid",
+      "compact",
+      "planned"
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "chainThemeId": "models_of_land",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.B.1: Rural settlement patterns include clustered (nucleated), dispersed, and linear forms.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.2",
+      "ek_code": "PSO-5.B.1"
+    }
+  },
+  {
+    "id": "aphg_u5_metes_and_bounds",
+    "quizQuestion": "The land survey system that uses natural features such as streams and trees as boundary markers, creating irregular land parcels, is called {___}.",
+    "correctAnswer": "metes and bounds",
+    "acceptableAlternatives": [
+      "metes-and-bounds"
+    ],
+    "explanation": "Metes and bounds surveys describe land using physical landmarks and compass directions, producing irregular, non-geometric parcels. It was used in the original thirteen colonies and areas settled before the Public Land Survey System. The resulting land patterns are visibly irregular from the air.",
+    "distractors": [
+      "township and range",
+      "long-lot system",
+      "cadastral survey",
+      "grid survey system",
+      "rectangular survey",
+      "strip field system",
+      "allodial survey",
+      "radial survey method"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "models_of_land",
+    "answerTypePoolId": "survey_method_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.B.2: Land survey methods include metes and bounds, township and range, and long-lot systems.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.2",
+      "ek_code": "PSO-5.B.2"
+    }
+  },
+  {
+    "id": "aphg_u5_township_and_range",
+    "quizQuestion": "The U.S. survey system that divides land into a grid of 6-mile-square townships, creating the checkerboard pattern visible in the Midwest, is called {___}.",
+    "correctAnswer": "township and range",
+    "acceptableAlternatives": [
+      "township and range system",
+      "rectangular survey system",
+      "public land survey system"
+    ],
+    "explanation": "The township and range (rectangular survey) system, established by the Land Ordinance of 1785, divided western territories into a perfect grid of 6-mile-by-6-mile townships subdivided into 36 one-square-mile sections. This created the patchwork landscape visible in aerial photos of the Midwest and Great Plains.",
+    "distractors": [
+      "metes and bounds",
+      "long-lot system",
+      "cadastral survey",
+      "grid survey system",
+      "strip field system",
+      "allodial survey",
+      "radial survey method",
+      "French arpent system"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "models_of_land",
+    "answerTypePoolId": "survey_method_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.B.2: Township and range (rectangular survey) creates grid patterns visible on the landscape.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.2",
+      "ek_code": "PSO-5.B.2"
+    }
+  },
+  {
+    "id": "aphg_u5_long_lot",
+    "quizQuestion": "The French Canadian survey method that created narrow strips of land perpendicular to a river, giving each farm river access, is called the {___} system.",
+    "correctAnswer": "long-lot",
+    "acceptableAlternatives": [
+      "long-lot system",
+      "long lot",
+      "long lot system"
+    ],
+    "explanation": "The long-lot (seigneurial) system was used in French Canada, Louisiana, and parts of the Mississippi Valley. Each farm was a narrow strip running back from a river, ensuring all farms had water access and producing linear settlement patterns along riverbanks. It is visually distinct from the grid of township and range.",
+    "distractors": [
+      "metes and bounds",
+      "township and range",
+      "cadastral survey",
+      "grid survey system",
+      "strip field system",
+      "allodial survey",
+      "radial survey method",
+      "rectangular survey"
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": "models_of_land",
+    "answerTypePoolId": "survey_method_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.B.2: Long-lot (French Canadian) system creates narrow strips perpendicular to rivers.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.2",
+      "ek_code": "PSO-5.B.2"
+    }
+  },
+  {
+    "id": "aphg_u5_fertile_crescent_hearth",
+    "quizQuestion": "The region in Southwest Asia stretching from modern Iraq to Israel, often called the 'cradle of civilization,' was one of the earliest agricultural hearths. What is it called?",
+    "correctAnswer": "Fertile Crescent",
+    "acceptableAlternatives": [
+      "the Fertile Crescent"
+    ],
+    "explanation": "The Fertile Crescent is a crescent-shaped zone of productive land in Southwest Asia where wheat, barley, goats, sheep, and cattle were first domesticated around 10,000 BCE. Its rivers (Tigris and Euphrates) and Mediterranean climate supported early farming communities that gave rise to civilization.",
+    "distractors": [
+      "Nile Delta",
+      "Indus River Valley",
+      "Mesoamerican Highland",
+      "Yangtze Valley",
+      "Ganges Plain",
+      "Ethiopian Plateau",
+      "Niger River Basin",
+      "Mekong Delta"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-5.A.1: Agricultural hearths include the Fertile Crescent (Southwest Asia).",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.3",
+      "ek_code": "SPS-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_hearth_east_asia",
+    "quizQuestion": "Millet and rice were first cultivated in this region of Asia, making it an early agricultural hearth.",
+    "correctAnswer": "East Asia",
+    "acceptableAlternatives": [
+      "China",
+      "Southeast Asia",
+      "Southeast Asian hearth"
+    ],
+    "explanation": "East and Southeast Asia were independent agricultural hearths where rice, millet, and soybeans were domesticated. China's Yellow River and Yangtze valleys are especially important origins of rice cultivation, beginning around 7000 BCE — a development that would eventually feed billions.",
+    "distractors": [
+      "Southwest Asia",
+      "Sub-Saharan Africa",
+      "Mesoamerica",
+      "South America",
+      "South Asia",
+      "Central Asia",
+      "Western Europe",
+      "North Africa"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-5.A.1: Agricultural hearths include Southeast Asia.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.3",
+      "ek_code": "SPS-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_hearth_mesoamerica",
+    "quizQuestion": "Maize (corn), squash, and beans were first domesticated in this region, making it a major agricultural hearth.",
+    "correctAnswer": "Mesoamerica",
+    "acceptableAlternatives": [
+      "Central America",
+      "Mexico",
+      "Central Mexico"
+    ],
+    "explanation": "Mesoamerica — roughly modern Mexico and Central America — is where maize, squash, and beans (the 'Three Sisters') were domesticated. This hearth gave the world one of its most important staple crops: corn, which today is the most widely grown grain globally.",
+    "distractors": [
+      "South America",
+      "North America",
+      "Fertile Crescent",
+      "East Africa",
+      "South Asia",
+      "Southeast Asia",
+      "West Africa",
+      "Caribbean"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-5.A.1: Agricultural hearths include Central America.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.3",
+      "ek_code": "SPS-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_hearth_indus_valley",
+    "quizQuestion": "Cotton, sesame, and eggplant were among the crops first domesticated in this South Asian agricultural hearth.",
+    "correctAnswer": "Indus River Valley",
+    "acceptableAlternatives": [
+      "Indus Valley",
+      "South Asia",
+      "Indian subcontinent"
+    ],
+    "explanation": "The Indus River Valley (modern Pakistan and northwest India) was an independent center of agricultural innovation. Cotton was first cultivated there, along with sesame, eggplant, and humped cattle. The Harappan civilization that emerged around 2500 BCE was supported by this agricultural base.",
+    "distractors": [
+      "Fertile Crescent",
+      "Nile Valley",
+      "Yangtze Valley",
+      "Mesoamerica",
+      "Tigris-Euphrates Valley",
+      "Ganges Plain",
+      "Yellow River Valley",
+      "Ethiopian Highlands"
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-5.A.1: Agricultural hearths include the Indus River Valley.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.3",
+      "ek_code": "SPS-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_first_agricultural_revolution",
+    "quizQuestion": "The domestication of plants and animals that began around 10,000 BCE is known as the {___} Agricultural Revolution.",
+    "correctAnswer": "First",
+    "acceptableAlternatives": [
+      "First Agricultural Revolution",
+      "Neolithic Revolution"
+    ],
+    "explanation": "The First Agricultural Revolution (also called the Neolithic Revolution) transformed human societies from hunter-gatherers to settled farmers. Plants like wheat and barley and animals like sheep and goats were domesticated in multiple independent hearths, permanently changing how humans fed themselves.",
+    "distractors": [
+      "Second",
+      "Third",
+      "Green",
+      "Industrial",
+      "Agrarian",
+      "Modern",
+      "Scientific",
+      "Digital"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "bracket_numbers",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-5.B.1: The First Agricultural Revolution is the domestication of plants and animals.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.4",
+      "ek_code": "SPS-5.B.1"
+    }
+  },
+  {
+    "id": "aphg_u5_second_agricultural_revolution",
+    "quizQuestion": "Crop rotation, selective breeding of livestock, and improved farm tools characterized the {___} Agricultural Revolution, which began in Europe in the 1700s.",
+    "correctAnswer": "Second",
+    "acceptableAlternatives": [
+      "Second Agricultural Revolution",
+      "British Agricultural Revolution"
+    ],
+    "explanation": "The Second Agricultural Revolution (British Agricultural Revolution) introduced innovations like crop rotation, selective livestock breeding, the seed drill, and iron plows. It dramatically increased food production in Europe during the 1700s–1800s, supporting industrialization and population growth.",
+    "distractors": [
+      "First",
+      "Third",
+      "Green",
+      "Industrial",
+      "Neolithic",
+      "Scientific",
+      "Modern",
+      "Digital"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "bracket_numbers",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-5.B.1: The Second Agricultural Revolution introduced new technologies (crop rotation, selective breeding) to increase food production.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.4",
+      "ek_code": "SPS-5.B.1"
+    }
+  },
+  {
+    "id": "aphg_u5_diffusion_of_agriculture",
+    "quizQuestion": "Agricultural practices and crops spread from their original hearths to other regions through trade, migration, and colonialism. This process is called the {___} of agriculture.",
+    "correctAnswer": "diffusion",
+    "acceptableAlternatives": [
+      "diffusion of agriculture",
+      "agricultural diffusion"
+    ],
+    "explanation": "Agriculture did not spread evenly — it diffused along trade routes, through migrations, and via colonialism. For example, European colonizers brought wheat and cattle to the Americas, while indigenous American crops like potatoes and maize spread worldwide after 1492. This exchange reshaped diets on every continent.",
+    "distractors": [
+      "intensification",
+      "commercialization",
+      "mechanization",
+      "modernization",
+      "industrialization",
+      "globalization",
+      "commodification",
+      "specialization"
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-5.B.2: Agricultural practices and products have diffused through trade, migration, and colonialism.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.4",
+      "ek_code": "SPS-5.B.2"
+    }
+  },
+  {
+    "id": "aphg_u5_columbian_exchange",
+    "quizQuestion": "The transfer of plants, animals, diseases, and culture between the Old World and the New World that began after Columbus's 1492 voyage is called the {___}.",
+    "correctAnswer": "Columbian Exchange",
+    "acceptableAlternatives": [
+      "the Columbian Exchange"
+    ],
+    "explanation": "The Columbian Exchange reshaped global agriculture and diets. Old World items — horses, pigs, wheat, and smallpox — reached the Americas, while New World crops — potatoes, maize, tomatoes, and cacao — transformed European and Asian diets. It is one of the most consequential events in agricultural history.",
+    "distractors": [
+      "Silk Road trade",
+      "Triangular Trade",
+      "Atlantic Trade Network",
+      "Trans-Saharan Exchange",
+      "Indian Ocean Exchange",
+      "Transatlantic Slave Trade",
+      "Hanseatic Trade System",
+      "Spice Route diffusion"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-5.A.2: The Columbian Exchange transferred plants, animals, diseases, and culture between Old World and New World after 1492.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.3",
+      "ek_code": "SPS-5.A.2"
+    }
+  },
+  {
+    "id": "aphg_u5_columbian_exchange_year",
+    "quizQuestion": "In what year did the Columbian Exchange begin with Columbus's first voyage to the Americas?",
+    "correctAnswer": "{1492}",
+    "acceptableAlternatives": [
+      "1492"
+    ],
+    "explanation": "Columbus's 1492 voyage initiated the Columbian Exchange — the sustained biological exchange between Eastern and Western hemispheres. Within decades, crops like potatoes and maize were transforming diets in Europe, Africa, and Asia, while Old World diseases devastated indigenous American populations.",
+    "distractors": [
+      "{1500}",
+      "{1519}",
+      "{1607}",
+      "{1347}",
+      "{1588}",
+      "{1453}",
+      "{1776}",
+      "{1620}"
+    ],
+    "difficulty": 1,
+    "funScore": 5,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "bracket_numbers",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-5.A.2: Columbian Exchange began after 1492.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.3",
+      "ek_code": "SPS-5.A.2"
+    }
+  },
+  {
+    "id": "aphg_u5_green_revolution_features",
+    "quizQuestion": "The mid-20th-century agricultural transformation characterized by high-yield seed varieties, chemical fertilizers, pesticides, and mechanized farming is called the {___}.",
+    "correctAnswer": "Green Revolution",
+    "acceptableAlternatives": [
+      "the Green Revolution",
+      "Third Agricultural Revolution"
+    ],
+    "explanation": "The Green Revolution (1940s–1970s) dramatically increased food production in developing countries through scientific plant breeding, especially of wheat and rice. Norman Borlaug led much of this effort. While it averted mass famine in parts of Asia and Latin America, it also increased chemical dependency and benefited larger farms over small ones.",
+    "distractors": [
+      "Second Agricultural Revolution",
+      "Columbian Exchange",
+      "Agrarian Revolution",
+      "Industrial Farm Movement",
+      "Biotech Revolution",
+      "Blue Revolution",
+      "Gene Revolution",
+      "Organic Transition"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-5.D.1: The Green Revolution was characterized by high-yield seeds, increased use of chemicals, and mechanized farming.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.5",
+      "ek_code": "SPS-5.D.1"
+    }
+  },
+  {
+    "id": "aphg_u5_green_revolution_consequences",
+    "quizQuestion": "Which of the following best describes a NEGATIVE consequence of the Green Revolution?",
+    "correctAnswer": "environmental degradation and inequality",
+    "acceptableAlternatives": [
+      "increased inequality",
+      "environmental degradation",
+      "soil degradation",
+      "chemical dependency"
+    ],
+    "explanation": "While the Green Revolution increased food production and prevented famines, it also had serious downsides: heavy pesticide and fertilizer use degraded soils and waterways, mechanization favored large farms over small subsistence farmers, and water-intensive irrigation strained aquifers. Wealthier farmers adopted new technologies faster, widening rural inequality.",
+    "distractors": [
+      "decreased crop yields in Asia",
+      "elimination of all food deserts",
+      "reduction in global trade",
+      "reduced need for irrigation",
+      "loss of chemical knowledge",
+      "decline in population growth",
+      "collapse of commercial farming",
+      "increase in subsistence farming"
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-5.D.2: The Green Revolution had negative consequences including environmental degradation and inequality.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.5",
+      "ek_code": "SPS-5.D.2"
+    }
+  },
+  {
+    "id": "aphg_u5_high_yield_varieties",
+    "quizQuestion": "The Green Revolution's most important agricultural input was the development of {___} seeds that produced far more grain per acre than traditional varieties.",
+    "correctAnswer": "high-yield",
+    "acceptableAlternatives": [
+      "high-yield varieties",
+      "high-yield seeds",
+      "HYV"
+    ],
+    "explanation": "High-yield variety (HYV) seeds — notably dwarf wheat developed by Norman Borlaug and IR8 miracle rice — were the centerpiece of the Green Revolution. These varieties responded dramatically to fertilizers and irrigation, producing two to three times the grain of traditional varieties and allowing double-cropping in some regions.",
+    "distractors": [
+      "organic",
+      "drought-resistant",
+      "heirloom",
+      "nitrogen-fixing",
+      "GMO",
+      "hybrid",
+      "salt-tolerant",
+      "shade-grown"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK SPS-5.D.1: Green Revolution used high-yield seeds.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.5",
+      "ek_code": "SPS-5.D.1"
+    }
+  },
+  {
+    "id": "aphg_u5_shifting_cultivation",
+    "quizQuestion": "A farming practice in which land is cleared, farmed for a few years until nutrients are depleted, then abandoned while a new area is cleared is called {___}.",
+    "correctAnswer": "shifting cultivation",
+    "acceptableAlternatives": [
+      "shifting cultivation agriculture",
+      "slash and burn"
+    ],
+    "explanation": "Shifting cultivation (including slash-and-burn) is a form of extensive subsistence agriculture practiced in tropical regions of Africa, South Asia, and Latin America. Farmers burn vegetation to release nutrients, grow crops for 2–3 years, then move on as fertility declines. The practice is sustainable at low population densities but not at high ones.",
+    "distractors": [
+      "pastoral nomadism",
+      "market gardening",
+      "plantation agriculture",
+      "mixed crop-livestock farming",
+      "intensive subsistence farming",
+      "ranching",
+      "nomadic herding",
+      "crop rotation"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.A.1 and IMP-5.A.2: Shifting cultivation is an extensive farming practice; slash and burn alters the landscape.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.6",
+      "ek_code": "PSO-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_pastoral_nomadism",
+    "quizQuestion": "A type of extensive subsistence agriculture in which herders move their livestock seasonally to find fresh pasture is called {___}.",
+    "correctAnswer": "pastoral nomadism",
+    "acceptableAlternatives": [
+      "nomadic herding",
+      "nomadic pastoralism"
+    ],
+    "explanation": "Pastoral nomads move their herds of cattle, camels, sheep, or goats across vast landscapes, following seasonal grass and water. This extensive farming system is practiced in arid and semi-arid regions of Central Asia, the Sahel, the Arabian Peninsula, and East Africa. Nomadic herders do not grow crops.",
+    "distractors": [
+      "shifting cultivation",
+      "ranching",
+      "transhumance",
+      "mixed crop-livestock farming",
+      "market gardening",
+      "plantation agriculture",
+      "intensive subsistence farming",
+      "slash and burn"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.A.1: Nomadic herding is an extensive farming practice. IMP-5.A.2: Pastoral nomadism alters the landscape.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.6",
+      "ek_code": "PSO-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_intensive_subsistence",
+    "quizQuestion": "The type of agriculture practiced on small plots in densely populated regions of Asia, using high labor inputs to maximize rice or wheat yield, is called {___} subsistence agriculture.",
+    "correctAnswer": "intensive",
+    "acceptableAlternatives": [
+      "intensive subsistence",
+      "intensive subsistence agriculture"
+    ],
+    "explanation": "Intensive subsistence agriculture uses every available technique — transplanting seedlings, double-cropping, terracing — to maximize yields on tiny plots. It is the dominant farming system in East and South Asia, where high population density means a family may feed itself on less than one hectare of paddy rice.",
+    "distractors": [
+      "extensive",
+      "shifting",
+      "commercial",
+      "plantation",
+      "mixed",
+      "market",
+      "pastoral",
+      "organic"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.A.1: Intensive farming involves greater inputs per unit of land (including market gardening, plantation, mixed crop-livestock).",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.6",
+      "ek_code": "PSO-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_plantation_agriculture",
+    "quizQuestion": "Large estates in tropical or subtropical regions that grow a single export crop using low-wage or historically enslaved labor are examples of {___} agriculture.",
+    "correctAnswer": "plantation",
+    "acceptableAlternatives": [
+      "plantation agriculture",
+      "plantation farming"
+    ],
+    "explanation": "Plantation agriculture is an intensive commercial system concentrated in tropical areas. Crops like sugar, cotton, coffee, rubber, and bananas were historically grown on plantations using enslaved or indentured labor. Today's large export-oriented estates in Central America, Southeast Asia, and sub-Saharan Africa continue this pattern.",
+    "distractors": [
+      "shifting cultivation",
+      "mixed crop-livestock farming",
+      "market gardening",
+      "ranching",
+      "pastoral nomadism",
+      "subsistence farming",
+      "intensive subsistence",
+      "community-supported agriculture"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.A.1: Plantation is an intensive farming practice. PSO-5.C.1: Agricultural production regions defined by commercial practices.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.6",
+      "ek_code": "PSO-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_mediterranean_agriculture",
+    "quizQuestion": "A distinctive agricultural system that combines growing grains, fruits, vegetables, and olives in areas with dry summers and mild wet winters describes {___} agriculture.",
+    "correctAnswer": "Mediterranean",
+    "acceptableAlternatives": [
+      "Mediterranean agriculture",
+      "Mediterranean farming"
+    ],
+    "explanation": "Mediterranean agriculture takes advantage of the Mediterranean climate (dry summers, wet winters) and focuses on wheat, grapes, olives, and citrus. It is practiced around the Mediterranean Sea, in California, Chile, South Africa, and southern Australia. The system's emphasis on high-value specialty crops often makes it commercially oriented.",
+    "distractors": [
+      "mixed crop-livestock",
+      "market gardening",
+      "commercial grain",
+      "dairying",
+      "ranching",
+      "plantation",
+      "shifting cultivation",
+      "pastoral nomadism"
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.C.1: Agricultural production regions reflect climate and subsistence/commercial orientation.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.6",
+      "ek_code": "PSO-5.C.1"
+    }
+  },
+  {
+    "id": "aphg_u5_market_gardening",
+    "quizQuestion": "The intensive commercial farming of fruits, vegetables, and flowers near urban markets is called {___}.",
+    "correctAnswer": "market gardening",
+    "acceptableAlternatives": [
+      "market gardening farming",
+      "truck farming",
+      "horticulture"
+    ],
+    "explanation": "Market gardening (truck farming) grows high-value perishables — tomatoes, lettuce, strawberries, cut flowers — on small plots near cities. It requires intensive labor and irrigation but commands high prices. In Von Thünen's model, market gardening occupies the innermost ring closest to the central market.",
+    "distractors": [
+      "plantation agriculture",
+      "mixed crop-livestock farming",
+      "commercial grain farming",
+      "dairying",
+      "ranching",
+      "shifting cultivation",
+      "pastoral nomadism",
+      "intensive subsistence farming"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.A.1: Market gardening is an intensive farming practice. PSO-5.D.1: Von Thunen model shows market gardening closest to market.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.6",
+      "ek_code": "PSO-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_commercial_grain",
+    "quizQuestion": "Large-scale mechanized farming of wheat or corn on flat, fertile plains, primarily for sale in global markets, is called {___} farming.",
+    "correctAnswer": "commercial grain",
+    "acceptableAlternatives": [
+      "commercial grain farming"
+    ],
+    "explanation": "Commercial grain farming dominates the American and Canadian Great Plains, the Eurasian steppes, and the Argentine Pampas. Huge, highly mechanized operations grow wheat, corn, or soybeans almost exclusively for global commodity markets. This system requires very little labor relative to output because of machinery.",
+    "distractors": [
+      "mixed crop-livestock farming",
+      "market gardening",
+      "plantation agriculture",
+      "dairying",
+      "ranching",
+      "intensive subsistence farming",
+      "Mediterranean agriculture",
+      "shifting cultivation"
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.C.1: Agricultural production regions defined by commercial practices and monoculture.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.6",
+      "ek_code": "PSO-5.C.1"
+    }
+  },
+  {
+    "id": "aphg_u5_mixed_crop_livestock",
+    "quizQuestion": "The agricultural system that integrates crop growing and animal raising on the same farm, allowing crops to feed animals and animal manure to fertilize crops, is called {___} farming.",
+    "correctAnswer": "mixed crop-livestock",
+    "acceptableAlternatives": [
+      "mixed crop-livestock farming",
+      "mixed farming"
+    ],
+    "explanation": "Mixed crop-livestock farming is the dominant system in the U.S. Corn Belt and much of temperate Europe. Corn and soybeans are grown to feed hogs, cattle, and poultry on the same farm. The integration creates efficiencies: manure fertilizes fields while crops provide feed, reducing reliance on external inputs.",
+    "distractors": [
+      "shifting cultivation",
+      "market gardening",
+      "commercial grain farming",
+      "plantation agriculture",
+      "dairying",
+      "ranching",
+      "intensive subsistence farming",
+      "pastoral nomadism"
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.A.1: Mixed crop-livestock farming is an intensive farming practice.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.6",
+      "ek_code": "PSO-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_ranching",
+    "quizQuestion": "The extensive commercial farming of livestock on large open pastures, primarily in semi-arid regions, is called {___}.",
+    "correctAnswer": "ranching",
+    "acceptableAlternatives": [
+      "ranching agriculture",
+      "commercial ranching"
+    ],
+    "explanation": "Ranching is an extensive commercial system practiced in areas too dry for crops: the American West, Argentine Pampas, Australian Outback, and the Brazilian Cerrado. Large herds of cattle, sheep, or horses graze across vast land areas. In Von Thünen's model, ranching occupies the outermost ring farthest from the market.",
+    "distractors": [
+      "pastoral nomadism",
+      "shifting cultivation",
+      "mixed crop-livestock farming",
+      "commercial grain farming",
+      "plantation agriculture",
+      "market gardening",
+      "dairying",
+      "intensive subsistence farming"
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.A.1: Ranching is an extensive farming practice. PSO-5.D.1: Von Thunen model places ranching in the outermost ring.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.6",
+      "ek_code": "PSO-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_von_thunen_model",
+    "quizQuestion": "Which geographic model uses concentric rings to explain rural land use based on transportation costs to a central market?",
+    "correctAnswer": "Von Thunen model",
+    "acceptableAlternatives": [
+      "von Thunen's model",
+      "Von Thunen Model",
+      "von Thunen land use model"
+    ],
+    "explanation": "Johann Heinrich von Thünen developed his model in the 1820s to explain why different farm types cluster at different distances from a market city. Land near the city is expensive, so only high-value perishables (market gardening) can afford it. Cheaper land farther out supports forestry, crop rotation, and ranching in concentric rings.",
+    "distractors": [
+      "Bid-Rent Theory",
+      "Central Place Theory",
+      "Hoyt Sector Model",
+      "Burgess Concentric-Zone Model",
+      "Wallerstein's World System Theory",
+      "Rostow's Stages of Economic Growth",
+      "Harris-Ullman Multiple-Nuclei Model",
+      "Christaller's Hexagonal Theory"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": "models_of_land",
+    "answerTypePoolId": "model_and_theory_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.D.1: Von Thunen's model helps explain rural land use by emphasizing transportation costs associated with distance from market.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.8",
+      "ek_code": "PSO-5.D.1"
+    }
+  },
+  {
+    "id": "aphg_u5_von_thunen_ring1",
+    "quizQuestion": "In Von Thünen's model, which type of farming occupies the innermost ring closest to the central market city?",
+    "correctAnswer": "market gardening",
+    "acceptableAlternatives": [
+      "horticulture",
+      "truck farming",
+      "market gardens"
+    ],
+    "explanation": "Market gardening occupies the innermost ring in Von Thünen's model because perishable fruits and vegetables must be delivered to the city quickly and therefore cannot be transported from far away. The high land costs near the city are justified by the high prices these perishables command.",
+    "distractors": [
+      "forestry",
+      "crop rotation farming",
+      "ranching",
+      "plantation agriculture",
+      "dairying",
+      "pastoral nomadism",
+      "commercial grain farming",
+      "shifting cultivation"
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": "models_of_land",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.D.1: Von Thunen model — regions of specialty farming do not always conform to concentric rings.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.8",
+      "ek_code": "PSO-5.D.1"
+    }
+  },
+  {
+    "id": "aphg_u5_von_thunen_ring2",
+    "quizQuestion": "In Von Thünen's model, the second ring (just outside market gardening) is occupied by which land use, because wood was heavy to transport and cities needed fuel?",
+    "correctAnswer": "forestry",
+    "acceptableAlternatives": [
+      "forest",
+      "timber",
+      "timber production"
+    ],
+    "explanation": "Forestry occupies the second ring in Von Thünen's model. In the early 19th century, wood was essential for heating, cooking, and construction, but it was extremely heavy to transport. Placing forests close to the city minimized transport costs for this bulky resource. (Today this ring has largely been replaced by dairying in many interpretations.)",
+    "distractors": [
+      "market gardening",
+      "crop rotation farming",
+      "ranching",
+      "dairying",
+      "commercial grain farming",
+      "plantation agriculture",
+      "shifting cultivation",
+      "pastoral nomadism"
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "chainThemeId": "models_of_land",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.D.1: Von Thunen model explains rural land use by transportation costs from market.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.8",
+      "ek_code": "PSO-5.D.1"
+    }
+  },
+  {
+    "id": "aphg_u5_von_thunen_outermost",
+    "quizQuestion": "In Von Thünen's model, which agricultural activity occupies the outermost ring farthest from the market, because animals can walk to market themselves?",
+    "correctAnswer": "ranching",
+    "acceptableAlternatives": [
+      "livestock ranching",
+      "grazing",
+      "animal grazing"
+    ],
+    "explanation": "Ranching is placed in Von Thünen's outermost ring because cattle and sheep can be driven to market on their own feet, making distance less costly than for crops or timber. The land is also cheap at this distance, suited to the extensive land needs of livestock grazing on vast pastures.",
+    "distractors": [
+      "market gardening",
+      "forestry",
+      "crop rotation farming",
+      "dairying",
+      "shifting cultivation",
+      "plantation agriculture",
+      "commercial grain farming",
+      "pastoral nomadism"
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "chainThemeId": "models_of_land",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.D.1: Von Thunen model explains rural land use by transportation costs from market.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.8",
+      "ek_code": "PSO-5.D.1"
+    }
+  },
+  {
+    "id": "aphg_u5_bid_rent_theory",
+    "quizQuestion": "The concept that land values and rents decrease as distance from the central market increases, affecting which agricultural or urban activities can afford each location, is called {___}.",
+    "correctAnswer": "bid-rent theory",
+    "acceptableAlternatives": [
+      "bid rent theory",
+      "bid-rent",
+      "bid rent"
+    ],
+    "explanation": "Bid-rent theory explains why different land uses cluster at different distances from the city center: land close to the market is most valuable and is bid on by the highest-value users (retailers, intensive farmers). As distance increases, land values fall and extensive activities (ranching, industry) take over. It underpins both Von Thünen's agricultural model and urban structure models.",
+    "distractors": [
+      "Von Thunen model",
+      "Central Place Theory",
+      "Gravity Model",
+      "Rank-Size Rule",
+      "Least Cost Theory",
+      "Core-Periphery Model",
+      "Hoyt Sector Model",
+      "Distance Decay Theory"
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": "models_of_land",
+    "answerTypePoolId": "model_and_theory_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.C.2: Intensive and extensive farming practices are determined in part by land costs (bid-rent theory).",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.6",
+      "ek_code": "PSO-5.C.2"
+    }
+  },
+  {
+    "id": "aphg_u5_agribusiness",
+    "quizQuestion": "The system in which large corporations control the entire food production process — from seeds and fertilizers to processing and distribution — is called {___}.",
+    "correctAnswer": "agribusiness",
+    "acceptableAlternatives": [
+      "agribusiness model",
+      "industrial agriculture"
+    ],
+    "explanation": "Agribusiness refers to the integration of agriculture into a corporate industrial system. Giant companies like Cargill and Archer Daniels Midland control inputs (seeds, chemicals), processing, and distribution, replacing small family farms. The CED notes that large-scale commercial operations are replacing small farms as part of this trend.",
+    "distractors": [
+      "community-supported agriculture",
+      "cooperative farming",
+      "subsistence agriculture",
+      "fair trade farming",
+      "organic farming",
+      "market gardening",
+      "mixed crop-livestock farming",
+      "urban agriculture"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.C.3: Large-scale commercial agricultural operations are replacing small family farms.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.7",
+      "ek_code": "PSO-5.C.3"
+    }
+  },
+  {
+    "id": "aphg_u5_commodity_chain",
+    "quizQuestion": "The network of labor and production processes that links the raw materials of agriculture to the final food product on a grocery shelf is called a {___}.",
+    "correctAnswer": "commodity chain",
+    "acceptableAlternatives": [
+      "commodity chains",
+      "supply chain",
+      "food commodity chain"
+    ],
+    "explanation": "A commodity chain traces the journey of a food product from farm to table: seed production, growing, harvesting, processing, packaging, distribution, and retail. The CED emphasizes that complex commodity chains link global production and consumption of agricultural products, meaning a single food item may travel through a dozen countries.",
+    "distractors": [
+      "value-added chain",
+      "production network",
+      "trade corridor",
+      "distribution pipeline",
+      "logistics web",
+      "agribusiness cluster",
+      "economic corridor",
+      "supply route"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.C.4: Complex commodity chains link production and consumption of agricultural products.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.7",
+      "ek_code": "PSO-5.C.4"
+    }
+  },
+  {
+    "id": "aphg_u5_economies_of_scale_agriculture",
+    "quizQuestion": "Technology has increased {___} in agriculture, meaning larger farms can produce food at a lower cost per unit than smaller farms.",
+    "correctAnswer": "economies of scale",
+    "acceptableAlternatives": [
+      "economies of scale",
+      "agricultural economies of scale"
+    ],
+    "explanation": "Economies of scale occur when increasing the size of a farm operation reduces the cost per unit of production. Large farms spread the cost of expensive machinery, storage facilities, and inputs over more output. The CED notes that technology has increased economies of scale and the carrying capacity of agricultural land.",
+    "distractors": [
+      "comparative advantage",
+      "commodity dependence",
+      "agglomeration benefits",
+      "multiplier effects",
+      "just-in-time delivery",
+      "vertical integration",
+      "market efficiency",
+      "industrial synergy"
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.C.5: Technology has increased economies of scale in the agricultural sector and the carrying capacity of the land.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.7",
+      "ek_code": "PSO-5.C.5"
+    }
+  },
+  {
+    "id": "aphg_u5_global_food_supply_chain",
+    "quizQuestion": "The fact that a banana sold in a U.S. grocery store may have been grown in Honduras, shipped through a U.S. port, and distributed by a multinational corporation reflects the concept of a global {___}.",
+    "correctAnswer": "commodity chain",
+    "acceptableAlternatives": [
+      "supply chain",
+      "food commodity chain"
+    ],
+    "explanation": "The global food supply chain means that agricultural products are part of a worldwide network. The CED notes that food distribution is affected by political relationships, infrastructure, and patterns of world trade. Some countries have become dependent on exporting one or two commodities, making them vulnerable to price fluctuations.",
+    "distractors": [
+      "value chain",
+      "agribusiness network",
+      "logistics corridor",
+      "food desert pathway",
+      "trade agreement",
+      "distribution system",
+      "production network",
+      "trade bloc"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.E.1-5.E.3: Food and agricultural products are part of a global supply chain affected by political relationships, infrastructure, and trade patterns.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.9",
+      "ek_code": "PSO-5.E.1"
+    }
+  },
+  {
+    "id": "aphg_u5_food_insecurity",
+    "quizQuestion": "A condition in which people lack reliable access to sufficient, safe, and nutritious food is called {___}.",
+    "correctAnswer": "food insecurity",
+    "acceptableAlternatives": [
+      "food insecurity problem"
+    ],
+    "explanation": "Food insecurity affects hundreds of millions of people globally and results from a combination of poverty, conflict, adverse weather, poor infrastructure, and land loss to suburbanization. The CED identifies it as a key challenge of contemporary agriculture alongside food deserts and distribution problems.",
+    "distractors": [
+      "food desert",
+      "food sovereignty",
+      "malnutrition",
+      "famine",
+      "nutritional deficit",
+      "food apartheid",
+      "caloric poverty",
+      "agricultural vulnerability"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-5.B.3: Challenges of feeding a global population include food insecurity, food deserts, problems with distribution, adverse weather, and land use lost to suburbanization.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.11",
+      "ek_code": "IMP-5.B.3"
+    }
+  },
+  {
+    "id": "aphg_u5_food_desert",
+    "quizQuestion": "An area — typically a low-income urban neighborhood — that lacks access to affordable, nutritious food due to an absence of grocery stores is called a {___}.",
+    "correctAnswer": "food desert",
+    "acceptableAlternatives": [
+      "food deserts"
+    ],
+    "explanation": "Food deserts are areas where fresh produce and healthy foods are unavailable or unaffordable, often because supermarkets have relocated to suburban areas while fast-food restaurants remain. They disproportionately affect low-income and minority urban communities and are identified in the CED as a contemporary challenge of agriculture.",
+    "distractors": [
+      "food insecurity",
+      "food swamp",
+      "nutritional gap",
+      "hunger zone",
+      "caloric void",
+      "food apartheid",
+      "urban food shortage",
+      "agricultural void"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-5.B.3: Challenges include food insecurity, food deserts, and problems with distribution.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.11",
+      "ek_code": "IMP-5.B.3"
+    }
+  },
+  {
+    "id": "aphg_u5_soil_salinization",
+    "quizQuestion": "The buildup of salt in soil due to excessive irrigation — making the land less fertile or infertile over time — is called {___}.",
+    "correctAnswer": "soil salinization",
+    "acceptableAlternatives": [
+      "salinization",
+      "salinization of soil"
+    ],
+    "explanation": "Soil salinization is a major consequence of irrigation-based agriculture in arid regions. When irrigation water evaporates, it leaves behind dissolved salts that accumulate in the topsoil, eventually making it too salty for crops. The Fertile Crescent itself experienced this problem in ancient times, and it threatens millions of acres today in Central Asia and the Middle East.",
+    "distractors": [
+      "desertification",
+      "soil erosion",
+      "deforestation",
+      "soil acidification",
+      "waterlogging",
+      "soil compaction",
+      "nutrient depletion",
+      "topsoil loss"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-5.A.1: Environmental effects of agricultural land use include soil salinization.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.10",
+      "ek_code": "IMP-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_desertification",
+    "quizQuestion": "The transformation of arable or semi-arid land into desert-like conditions through overgrazing, deforestation, and drought is called {___}.",
+    "correctAnswer": "desertification",
+    "acceptableAlternatives": [
+      "desertification process"
+    ],
+    "explanation": "Desertification is the degradation of dryland ecosystems into unproductive desert-like terrain. It is most severe in the Sahel region of Africa, where overgrazing by livestock and removal of vegetation cover has left soils vulnerable to wind erosion. Climate change is expected to accelerate desertification in many regions.",
+    "distractors": [
+      "soil salinization",
+      "deforestation",
+      "soil erosion",
+      "land degradation",
+      "waterlogging",
+      "acidification",
+      "urbanization",
+      "soil compaction"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-5.A.1: Environmental effects include desertification.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.10",
+      "ek_code": "IMP-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_deforestation_agriculture",
+    "quizQuestion": "The large-scale clearing of forests, often to create agricultural land, is called {___}.",
+    "correctAnswer": "deforestation",
+    "acceptableAlternatives": [
+      "agricultural deforestation"
+    ],
+    "explanation": "Deforestation driven by agriculture — particularly cattle ranching and soybean farming in the Amazon, and palm oil cultivation in Southeast Asia — is a leading cause of habitat loss and carbon emissions. The CED identifies deforestation as a key consequence of agricultural land-use change and landscape alteration.",
+    "distractors": [
+      "desertification",
+      "soil salinization",
+      "land degradation",
+      "clear-cutting",
+      "soil erosion",
+      "waterlogging",
+      "slash and burn",
+      "urbanization"
+    ],
+    "difficulty": 1,
+    "funScore": 6,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-5.A.1-IMP-5.A.2: Agricultural practices including deforestation alter the landscape.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.10",
+      "ek_code": "IMP-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_water_use_agriculture",
+    "quizQuestion": "Agriculture accounts for roughly 70% of global freshwater withdrawals, meaning irrigation is the leading driver of global {___} depletion.",
+    "correctAnswer": "aquifer",
+    "acceptableAlternatives": [
+      "aquifer depletion",
+      "groundwater depletion",
+      "freshwater depletion"
+    ],
+    "explanation": "Agricultural irrigation draws so heavily on aquifers and rivers that many are being depleted faster than they recharge. The CED identifies water use as a key environmental consequence of agricultural practices, alongside soil degradation, salinization, and deforestation. Aquifer depletion threatens long-term food security in regions like the U.S. Great Plains and India.",
+    "distractors": [
+      "soil",
+      "carbon",
+      "nitrogen",
+      "biodiversity",
+      "topsoil",
+      "phosphorus",
+      "energy",
+      "forest"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-5.A.1: Environmental effects include pollution, land cover change, desertification, soil salinization, and conservation efforts.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.10",
+      "ek_code": "IMP-5.A.1"
+    }
+  },
+  {
+    "id": "aphg_u5_gmos_biotechnology",
+    "quizQuestion": "Crops whose DNA has been altered using genetic engineering to improve yield, pest resistance, or nutritional content are called {___}.",
+    "correctAnswer": "GMOs",
+    "acceptableAlternatives": [
+      "genetically modified organisms",
+      "GMO crops",
+      "genetically modified crops"
+    ],
+    "explanation": "GMOs (genetically modified organisms) are a product of agricultural biotechnology. Herbicide-tolerant soybeans, pest-resistant Bt corn, and Golden Rice (enriched with Vitamin A) are examples. The CED notes that GMOs have sparked debates over sustainability, biodiversity, and the use of pesticides, with supporters citing higher yields and critics raising health and ecological concerns.",
+    "distractors": [
+      "high-yield varieties",
+      "hybrid seeds",
+      "organic crops",
+      "heirloom varieties",
+      "synthetic fertilizers",
+      "selective breeding products",
+      "cloned livestock",
+      "aquaculture products"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-5.B.1: Agricultural innovations such as biotechnology and genetically modified organisms (GMOs) have been accompanied by debates over sustainability.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.11",
+      "ek_code": "IMP-5.B.1"
+    }
+  },
+  {
+    "id": "aphg_u5_aquaculture",
+    "quizQuestion": "The controlled cultivation of fish, shellfish, or aquatic plants in pens, ponds, or tanks — sometimes called fish farming — is called {___}.",
+    "correctAnswer": "aquaculture",
+    "acceptableAlternatives": [
+      "fish farming",
+      "mariculture"
+    ],
+    "explanation": "Aquaculture is the fastest-growing food production sector globally and now supplies about half of all seafood consumed worldwide. The CED identifies it as an agricultural innovation that has been accompanied by sustainability debates, including concerns about disease spread, water pollution, and escaped non-native species.",
+    "distractors": [
+      "hydroponics",
+      "urban farming",
+      "community-supported agriculture",
+      "fair trade farming",
+      "organic farming",
+      "mariculture",
+      "subsistence fishing",
+      "commercial fishing"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-5.B.1: Agricultural innovations such as aquaculture have been accompanied by debates over sustainability.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.11",
+      "ek_code": "IMP-5.B.1"
+    }
+  },
+  {
+    "id": "aphg_u5_csa",
+    "quizQuestion": "A subscription-based arrangement in which consumers pay a local farm at the start of a season and receive a weekly share of the harvest is called a {___}.",
+    "correctAnswer": "community-supported agriculture",
+    "acceptableAlternatives": [
+      "CSA",
+      "community supported agriculture",
+      "community-supported agriculture (CSA)"
+    ],
+    "explanation": "Community-supported agriculture (CSA) connects urban consumers directly with local farms. Members pre-pay for a 'share' of the season's crop, receiving a box of seasonal produce each week. This arrangement shifts financial risk from farmer to consumer and builds a direct supply chain that bypasses agribusiness commodity networks.",
+    "distractors": [
+      "fair trade farming",
+      "urban farming",
+      "organic farming",
+      "cooperative farming",
+      "farmers market",
+      "locavore movement",
+      "food cooperative",
+      "subscription box delivery"
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-5.B.2: Patterns of food production and consumption are influenced by movements such as community-supported agriculture (CSA).",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.11",
+      "ek_code": "IMP-5.B.2"
+    }
+  },
+  {
+    "id": "aphg_u5_fair_trade",
+    "quizQuestion": "A market-based movement that ensures producers in developing countries receive fair prices and better labor conditions for their products is called {___}.",
+    "correctAnswer": "fair trade",
+    "acceptableAlternatives": [
+      "fair trade farming",
+      "fair trade movement"
+    ],
+    "explanation": "Fair trade is a system that guarantees farmers and producers in less economically developed countries a minimum price for commodities like coffee, cocoa, and bananas, regardless of global market fluctuations. The CED identifies fair trade as a contemporary influence on patterns of food production and consumption.",
+    "distractors": [
+      "organic farming",
+      "community-supported agriculture",
+      "local food movement",
+      "food sovereignty",
+      "ethical consumerism",
+      "green labeling",
+      "agro-ecology",
+      "cooperative farming"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-5.B.2: Patterns of food production and consumption are influenced by movements such as fair trade.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.11",
+      "ek_code": "IMP-5.B.2"
+    }
+  },
+  {
+    "id": "aphg_u5_urban_farming",
+    "quizQuestion": "The practice of growing food in cities — in rooftop gardens, vacant lots, vertical farms, or community gardens — is called {___}.",
+    "correctAnswer": "urban farming",
+    "acceptableAlternatives": [
+      "urban agriculture",
+      "urban gardening"
+    ],
+    "explanation": "Urban farming uses otherwise underutilized city spaces to grow food locally, reducing transportation distances and improving access to fresh produce in food deserts. The CED identifies urban farming as one of the contemporary movements influencing food production and consumption patterns, alongside CSAs, organic farming, and local-food movements.",
+    "distractors": [
+      "community-supported agriculture",
+      "aquaculture",
+      "hydroponics",
+      "vertical integration",
+      "rooftop gardening",
+      "subsistence farming",
+      "fair trade farming",
+      "market gardening"
+    ],
+    "difficulty": 1,
+    "funScore": 7,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-5.B.2: Patterns of food production influenced by urban farming.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.11",
+      "ek_code": "IMP-5.B.2"
+    }
+  },
+  {
+    "id": "aphg_u5_women_in_agriculture",
+    "quizQuestion": "In less economically developed countries, women perform the majority of agricultural labor, including planting, weeding, and food processing. According to the CED, how does the role of women in agriculture {___} depending on the type of production?",
+    "correctAnswer": "varies",
+    "acceptableAlternatives": [
+      "vary",
+      "varies widely",
+      "differs"
+    ],
+    "explanation": "The CED (IMP-5.C.1) states that the role of females in food production, distribution, and consumption varies in many places depending on the type of production involved. In many LDCs, women constitute more than 60–80% of the agricultural workforce, performing subsistence food production while men more often engage in cash-crop farming. Yet women often lack land rights, credit access, and decision-making power.",
+    "distractors": [
+      "remains constant",
+      "declines",
+      "disappears",
+      "increases uniformly",
+      "is irrelevant",
+      "stays the same",
+      "is negligible",
+      "is non-existent"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK IMP-5.C.1: The role of females in food production, distribution, and consumption varies in many places depending on the type of production involved.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.12",
+      "ek_code": "IMP-5.C.1"
+    }
+  },
+  {
+    "id": "aphg_u5_monoculture",
+    "quizQuestion": "The agricultural practice of growing a single crop species over a large area, season after season, is called {___}.",
+    "correctAnswer": "monoculture",
+    "acceptableAlternatives": [
+      "monocropping",
+      "monoculture farming"
+    ],
+    "explanation": "Monoculture maximizes efficiency for mechanized, large-scale commercial farming — cornfields in Iowa or wheat fields in Kansas. The CED notes that agricultural production regions are defined by the extent to which they reflect monoculture practices. However, monocultures are vulnerable to pests and disease, require heavy pesticide use, and deplete specific soil nutrients.",
+    "distractors": [
+      "polyculture",
+      "mixed crop-livestock farming",
+      "crop rotation",
+      "intercropping",
+      "organic farming",
+      "agroforestry",
+      "shifting cultivation",
+      "subsistence farming"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "agriculture_practice_names",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.C.1: Agricultural production regions are defined by the extent to which they reflect subsistence or commercial practices (monocropping or monoculture).",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.6",
+      "ek_code": "PSO-5.C.1"
+    }
+  },
+  {
+    "id": "aphg_u5_carrying_capacity_agriculture",
+    "quizQuestion": "Technology in agriculture has increased the {___} of the land, allowing it to support larger populations than in previous eras.",
+    "correctAnswer": "carrying capacity",
+    "acceptableAlternatives": [
+      "land's carrying capacity"
+    ],
+    "explanation": "Agricultural carrying capacity refers to the maximum population a given land area can support. The CED states that technology (irrigation, fertilizers, GMOs, improved seeds) has increased both economies of scale and the carrying capacity of land. The Green Revolution, for example, allowed India and other countries to avert famine by dramatically increasing wheat and rice yields.",
+    "distractors": [
+      "land tenure",
+      "agricultural density",
+      "physiological density",
+      "soil fertility",
+      "biodiversity",
+      "land productivity",
+      "crop rotation cycle",
+      "crop yield"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "chainThemeId": "field_and_fork",
+    "answerTypePoolId": "concept_term_definitions",
+    "ageGroup": "all",
+    "sourceDetails": "CED EK PSO-5.C.5: Technology has increased economies of scale in the agricultural sector and the carrying capacity of the land.",
+    "examTags": {
+      "exam": "AP Human Geography",
+      "unit": 5,
+      "topic": "5.7",
+      "ek_code": "PSO-5.C.5"
+    }
+  }
+]
