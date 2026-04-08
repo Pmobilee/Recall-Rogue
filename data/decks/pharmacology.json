@@ -72,7 +72,7 @@
         "Persistent dry cough"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -103,7 +103,7 @@
         "Heart failure"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -194,7 +194,7 @@
         "Monitor potassium"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 4,
       "distractors": [
@@ -225,7 +225,7 @@
         "Kidney protection in diabetes"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -318,7 +318,7 @@
         "Do not stop abruptly"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -346,7 +346,7 @@
       "correctAnswer": "Glucagon",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_short",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -438,7 +438,7 @@
         "Pedal edema"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -469,7 +469,7 @@
         "High blood pressure"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -560,7 +560,7 @@
         "Heart block"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -592,7 +592,7 @@
         "Angina"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -682,7 +682,7 @@
         "Rebound hypertension on discontinuation"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -713,7 +713,7 @@
         "Opioid withdrawal"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -804,7 +804,7 @@
         "Monitor for cyanide toxicity"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 4,
       "funScore": 6,
       "distractors": [
@@ -834,7 +834,7 @@
         "Sodium thiosulfate for cyanide toxicity"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_long",
       "difficulty": 4,
       "funScore": 7,
       "distractors": [
@@ -923,7 +923,7 @@
         "Xanthopsia"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -954,7 +954,7 @@
         "DigiFab"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -1046,7 +1046,7 @@
         "Lung toxicity"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 4,
       "funScore": 7,
       "distractors": [
@@ -1077,7 +1077,7 @@
         "V-fib, V-tach"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -1169,7 +1169,7 @@
         "Rapid IV bolus"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 4,
       "funScore": 6,
       "distractors": [
@@ -1200,7 +1200,7 @@
         "Paroxysmal SVT"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -1292,7 +1292,7 @@
         "Dry mouth"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -1323,7 +1323,7 @@
         "Organophosphate poisoning"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -1415,7 +1415,7 @@
         "IM anterolateral thigh injection"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -1447,7 +1447,7 @@
         "Severe allergic reaction"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_short",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -1538,7 +1538,7 @@
         "Central line required; watch for tissue necrosis"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 4,
       "funScore": 5,
       "distractors": [
@@ -1569,7 +1569,7 @@
         "Vasodilatory shock"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -1660,7 +1660,7 @@
         "Central line required; watch for extravasation"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 4,
       "funScore": 5,
       "distractors": [
@@ -1691,7 +1691,7 @@
         "Symptomatic bradycardia"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -1783,7 +1783,7 @@
         "Contraindicated with PDE-5 inhibitors"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -1815,7 +1815,7 @@
         "Heart failure"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_short",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -1907,7 +1907,7 @@
         "Muscle breakdown"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -1938,7 +1938,7 @@
         "Cardiovascular event prevention"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_short",
       "difficulty": 1,
       "funScore": 3,
       "distractors": [
@@ -2026,7 +2026,7 @@
         "Hearing loss"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -2057,7 +2057,7 @@
         "Monitor electrolytes"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -2148,7 +2148,7 @@
         "Elevated potassium"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -2179,7 +2179,7 @@
         "Avoid high-potassium foods"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -2270,7 +2270,7 @@
         "Worsened diabetes"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -2301,7 +2301,7 @@
         "Edema"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_short",
       "difficulty": 1,
       "funScore": 3,
       "distractors": [
@@ -2390,7 +2390,7 @@
         "Volume overload"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -2421,7 +2421,7 @@
         "Acute glaucoma"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_short",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -2513,7 +2513,7 @@
         "Elevated blood pressure"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -2544,7 +2544,7 @@
         "Chemotherapy-induced anemia"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -2636,7 +2636,7 @@
         "Black stools"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -2666,7 +2666,7 @@
         "Desferrioxamine"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_short",
       "difficulty": 4,
       "funScore": 7,
       "distractors": [
@@ -2758,7 +2758,7 @@
         "Monitor PT/INR"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -2789,7 +2789,7 @@
         "Phytonadione"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_long",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -2881,7 +2881,7 @@
         "Thrombocytopenia"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 4,
       "funScore": 7,
       "distractors": [
@@ -2909,7 +2909,7 @@
       "correctAnswer": "Protamine sulfate",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -3000,7 +3000,7 @@
         "Retain air bubble in syringe"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -3030,7 +3030,7 @@
         "Protamine sulfate"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_long",
       "difficulty": 4,
       "funScore": 6,
       "distractors": [
@@ -3122,7 +3122,7 @@
         "Bleeding"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -3153,7 +3153,7 @@
         "DVT treatment"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -3245,7 +3245,7 @@
         "Withhold before procedures"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -3276,7 +3276,7 @@
         "Recent MI or stroke prevention"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -3369,7 +3369,7 @@
         "Tinnitus"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -3401,7 +3401,7 @@
         "Acute MI"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -3493,7 +3493,7 @@
         "Intracranial bleeding"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 4,
       "funScore": 7,
       "distractors": [
@@ -3523,7 +3523,7 @@
         "Aminocaproic acid (for severe bleeding)"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_long",
       "difficulty": 5,
       "funScore": 6,
       "distractors": [
@@ -3617,7 +3617,7 @@
         "Hypersensitivity reaction"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -3649,7 +3649,7 @@
         "Sinusitis"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -3742,7 +3742,7 @@
         "Incompatible with calcium"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -3774,7 +3774,7 @@
         "Pneumonia"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -3866,7 +3866,7 @@
         "Red neck syndrome"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 2,
       "funScore": 7,
       "distractors": [
@@ -3897,7 +3897,7 @@
         "Monitor vancomycin trough"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -3989,7 +3989,7 @@
         "Phototoxicity"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -4113,7 +4113,7 @@
         "Prolonged QT interval"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -4145,7 +4145,7 @@
         "Chlamydia"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -4238,7 +4238,7 @@
         "Kidney damage and hearing loss"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -4269,7 +4269,7 @@
         "Monitor serum drug levels"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -4363,7 +4363,7 @@
         "Severe skin reaction"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -4395,7 +4395,7 @@
         "PCP pneumonia"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -4489,7 +4489,7 @@
         "Tendinitis"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -4645,7 +4645,7 @@
         "Anaerobic infections"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -4739,7 +4739,7 @@
         "Liver toxicity"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -4770,7 +4770,7 @@
         "Give pyridoxine to prevent neuropathy"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -4863,7 +4863,7 @@
         "Orange-red body fluid discoloration"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 2,
       "funScore": 7,
       "distractors": [
@@ -4987,7 +4987,7 @@
         "Elevated liver enzymes"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -5019,7 +5019,7 @@
         "Vaginal candidiasis"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -5113,7 +5113,7 @@
         "Crystal nephropathy"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -5146,7 +5146,7 @@
         "Herpes zoster"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -5176,7 +5176,7 @@
         "Selective serotonin reuptake inhibitor"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_class_abbrev",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -5237,7 +5237,7 @@
         "Sexual side effects"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -5265,7 +5265,7 @@
       "correctAnswer": "Cyproheptadine",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -5357,7 +5357,7 @@
         "Anticholinergic toxicity"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 4,
       "distractors": [
@@ -5387,7 +5387,7 @@
         "Sodium bicarb"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_long",
       "difficulty": 4,
       "funScore": 6,
       "distractors": [
@@ -5478,7 +5478,7 @@
         "Tyramine-free diet"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 4,
       "funScore": 6,
       "distractors": [
@@ -5506,7 +5506,7 @@
       "correctAnswer": "Phentolamine",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_short",
       "difficulty": 4,
       "funScore": 5,
       "distractors": [
@@ -5598,7 +5598,7 @@
         "Lowered seizure threshold"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -5629,7 +5629,7 @@
         "Seasonal affective disorder"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -5688,7 +5688,7 @@
         "Check lithium levels"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 4,
       "funScore": 5,
       "distractors": [
@@ -5720,7 +5720,7 @@
         "Hypothyroidism"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 3,
       "funScore": 4,
       "distractors": [
@@ -5750,7 +5750,7 @@
         "Dialysis"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_short",
       "difficulty": 4,
       "funScore": 6,
       "distractors": [
@@ -5843,7 +5843,7 @@
         "Dystonia"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -5874,7 +5874,7 @@
         "Dantrolene (for NMS)"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_short",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -5963,7 +5963,7 @@
       "correctAnswer": "Agranulocytosis",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -5994,7 +5994,7 @@
         "ANC monitoring required"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_short",
       "difficulty": 4,
       "funScore": 6,
       "distractors": [
@@ -6086,7 +6086,7 @@
         "Sedation"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -6114,7 +6114,7 @@
       "correctAnswer": "Flumazenil",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -6204,7 +6204,7 @@
         "Delayed onset 2-4 weeks"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -6234,7 +6234,7 @@
         "GAD"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -6297,7 +6297,7 @@
         "Parasomnia"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -6328,7 +6328,7 @@
         "Take only if able to sleep 7-8 hours"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -6356,7 +6356,7 @@
       "correctAnswer": "Flumazenil",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -6448,7 +6448,7 @@
         "Gingival overgrowth"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -6479,7 +6479,7 @@
         "Narrow therapeutic index monitoring"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 4,
       "funScore": 5,
       "distractors": [
@@ -6572,7 +6572,7 @@
         "SIADH"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 4,
       "funScore": 6,
       "distractors": [
@@ -6602,7 +6602,7 @@
         "Monitor CBC, liver enzymes, and sodium levels"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_short",
       "difficulty": 4,
       "funScore": 5,
       "distractors": [
@@ -6695,7 +6695,7 @@
         "Pancreatitis"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -6726,7 +6726,7 @@
         "Levocarnitine"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_short",
       "difficulty": 4,
       "funScore": 6,
       "distractors": [
@@ -6819,7 +6819,7 @@
         "Mood changes"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -6849,7 +6849,7 @@
         "Assess for irritability and aggression"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 4,
       "distractors": [
@@ -6942,7 +6942,7 @@
         "Motor fluctuations"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -6972,7 +6972,7 @@
         "Avoid protein-rich meals near dose time"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -7064,7 +7064,7 @@
         "Anticholinergic toxicity"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 4,
       "distractors": [
@@ -7096,7 +7096,7 @@
         "Drug-induced EPS"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -7188,7 +7188,7 @@
         "Bradycardia"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -7218,7 +7218,7 @@
         "Administer at bedtime; educate on symptomatic treatment only"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -7311,7 +7311,7 @@
         "Sedation"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -7342,7 +7342,7 @@
         "Narcan"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_short",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -7403,7 +7403,7 @@
         "Monitor for respiratory depression; HIGH ALERT medication"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -7434,7 +7434,7 @@
         "Sedation"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -7464,7 +7464,7 @@
         "Narcan"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -7526,7 +7526,7 @@
         "Extended-release: swallow intact"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -7558,7 +7558,7 @@
         "Respiratory depression"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -7588,7 +7588,7 @@
         "Narcan"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -7680,7 +7680,7 @@
         "Respiratory depression"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 4,
       "funScore": 7,
       "distractors": [
@@ -7711,7 +7711,7 @@
         "Narcan"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -7802,7 +7802,7 @@
         "Opioid withdrawal symptoms"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -7832,7 +7832,7 @@
         "Monitor for re-sedation; may need repeat doses"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -7924,7 +7924,7 @@
         "Fasciculations"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 4,
       "funScore": 7,
       "distractors": [
@@ -7954,7 +7954,7 @@
         "Dantrium"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_short",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -8045,7 +8045,7 @@
         "Muscle weakness"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 3,
       "funScore": 4,
       "distractors": [
@@ -8075,7 +8075,7 @@
         "Must be available in every OR using triggering agents"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -8158,7 +8158,7 @@
       "correctAnswer": "Hypoglycemia",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -8189,7 +8189,7 @@
         "dextrose 50%"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_long",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -8274,7 +8274,7 @@
         "administer 30 minutes before eating"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -8304,7 +8304,7 @@
         "type 1 and type 2 diabetes"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -8361,7 +8361,7 @@
         "roll vial gently before use"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -8388,7 +8388,7 @@
       "correctAnswer": "Hypoglycemia",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -8418,7 +8418,7 @@
         "type 1 and type 2 diabetes basal insulin"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 1,
       "funScore": 3,
       "distractors": [
@@ -8475,7 +8475,7 @@
         "do not mix with other insulins"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -8502,7 +8502,7 @@
       "correctAnswer": "Hypoglycemia",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 1,
       "funScore": 3,
       "distractors": [
@@ -8532,7 +8532,7 @@
         "type 1 and type 2 diabetes once-daily basal insulin"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 1,
       "funScore": 3,
       "distractors": [
@@ -8621,7 +8621,7 @@
         "lactic acidosis"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -8737,7 +8737,7 @@
       "correctAnswer": "Hypoglycemia",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -8767,7 +8767,7 @@
         "administer 30 minutes before eating"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -8853,7 +8853,7 @@
         "lateral position due to vomiting risk"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -8883,7 +8883,7 @@
         "beta-blocker overdose"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -8971,7 +8971,7 @@
         "take on empty stomach in the morning"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -9088,7 +9088,7 @@
         "bone marrow suppression"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_short",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -9118,7 +9118,7 @@
         "CBC monitoring for agranulocytosis signs"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -9208,7 +9208,7 @@
         "SIADH-like syndrome"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -9238,7 +9238,7 @@
         "monitor fluid status and serum sodium"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -9328,7 +9328,7 @@
         "Cushingoid features"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -9358,7 +9358,7 @@
         "never stop abruptly; take with food"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -9444,7 +9444,7 @@
         "fluid retention and hypertension"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -9474,7 +9474,7 @@
         "monitor blood pressure and electrolytes"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -9560,7 +9560,7 @@
         "take with water on empty stomach; stay upright 30 minutes"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -9590,7 +9590,7 @@
         "jaw osteonecrosis"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -9678,7 +9678,7 @@
         "severe rash"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -9708,7 +9708,7 @@
         "increase fluid intake; may initially worsen gout"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -9798,7 +9798,7 @@
         "fracture risk"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -9916,7 +9916,7 @@
         "minimal drug interactions; before meals or at bedtime"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -9946,7 +9946,7 @@
         "peptic ulcer disease"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 1,
       "funScore": 3,
       "distractors": [
@@ -10005,7 +10005,7 @@
         "give with opioid therapy; increase fluid intake"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 3,
       "distractors": [
@@ -10034,7 +10034,7 @@
         "opioid-induced constipation prophylaxis"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 1,
       "funScore": 3,
       "distractors": [
@@ -10123,7 +10123,7 @@
         "monitor stool frequency and serum ammonia"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -10153,7 +10153,7 @@
         "chronic constipation"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -10212,7 +10212,7 @@
         "avoid in infectious diarrhea; C. difficile contraindication"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -10241,7 +10241,7 @@
         "diarrhea management"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 1,
       "funScore": 3,
       "distractors": [
@@ -10331,7 +10331,7 @@
         "constipation"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -10361,7 +10361,7 @@
         "administer 30 minutes before chemotherapy"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -10422,7 +10422,7 @@
         "tardive dyskinesia"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -10453,7 +10453,7 @@
         "Benadryl for acute dystonia"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -10484,7 +10484,7 @@
         "nausea and vomiting"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -10543,7 +10543,7 @@
         "swallow whole with meals; do not crush"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -10573,7 +10573,7 @@
         "cystic fibrosis malabsorption"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -10633,7 +10633,7 @@
         "blood dyscrasias"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -10663,7 +10663,7 @@
         "monitor CBC for blood dyscrasias; increase fluid intake"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 4,
       "distractors": [
@@ -10752,7 +10752,7 @@
         "tachycardia and tremor"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -10782,7 +10782,7 @@
         "use before corticosteroid inhaler; shake first"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -10870,7 +10870,7 @@
         "slower onset than albuterol; rinse mouth after use"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 4,
       "distractors": [
@@ -10931,7 +10931,7 @@
         "oral candidiasis"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -10961,7 +10961,7 @@
         "rinse mouth after use; not for acute attacks"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -10991,7 +10991,7 @@
         "allergic rhinitis maintenance"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 1,
       "funScore": 3,
       "distractors": [
@@ -11051,7 +11051,7 @@
         "suicidal ideation"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -11081,7 +11081,7 @@
         "not for acute bronchospasm; monitor for neuropsychiatric effects"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -11111,7 +11111,7 @@
         "allergic rhinitis"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -11200,7 +11200,7 @@
         "excessive sedation; dry mouth; urinary retention"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -11232,7 +11232,7 @@
         "motion sickness"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -11320,7 +11320,7 @@
         "narrow therapeutic index toxicity: tachycardia, seizures"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -11350,7 +11350,7 @@
         "monitor drug levels; many drug interactions"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -11439,7 +11439,7 @@
         "hyponatremia from water retention"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -11469,7 +11469,7 @@
         "discontinue if uterine hyperstimulation; monitor fetal HR"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -11557,7 +11557,7 @@
         "respiratory arrest; DTR loss"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -11587,7 +11587,7 @@
         "IV calcium gluconate"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "antidotes",
+      "answerTypePoolId": "antidotes_long",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -11649,7 +11649,7 @@
         "pulmonary edema"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -11679,7 +11679,7 @@
         "monitor maternal tachycardia; limit to 48-72 hours"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -11709,7 +11709,7 @@
         "oxytocin-induced hyperstimulation reversal"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -11797,7 +11797,7 @@
         "administer at 28 weeks and within 72 hours of delivery"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -11826,7 +11826,7 @@
         "Rh incompatibility prevention"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -11855,7 +11855,7 @@
         "SERM"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_class_abbrev",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -11915,7 +11915,7 @@
         "thromboembolic events"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -11945,7 +11945,7 @@
         "monitor for endometrial cancer signs; annual gynecology"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -12035,7 +12035,7 @@
         "DVT risk"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -12094,7 +12094,7 @@
         "same time every day; smokers over 35 contraindicated"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "nursing_interventions",
+      "answerTypePoolId": "nursing_interventions_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -12153,7 +12153,7 @@
         "chronic obstructive pulmonary disease"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -12212,7 +12212,7 @@
         "GI distress"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "side_effects",
+      "answerTypePoolId": "side_effects_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -12243,7 +12243,7 @@
         "ulcerative colitis"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "indications",
+      "answerTypePoolId": "indications_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -12267,6 +12267,28 @@
     }
   ],
   "answerTypePools": [
+    {
+      "id": "drug_class_abbrev",
+      "label": "Drug Class Abbreviations (3-5 chars)",
+      "factIds": [
+        "pharm-cns-fluoxetine-class",
+        "pharm-ob-tamoxifen-class"
+      ],
+      "minimumSize": 2,
+      "syntheticDistractors": [
+        "SNRI",
+        "TCA",
+        "MAOI",
+        "ARB",
+        "ACE",
+        "NSAID",
+        "PPI",
+        "CCB",
+        "BB",
+        "DMARD",
+        "LABA"
+      ]
+    },
     {
       "id": "drug_classes",
       "label": "Drug Classes",
@@ -12314,7 +12336,6 @@
         "pharm-inf-rifampin-class",
         "pharm-inf-fluconazole-class",
         "pharm-inf-acyclovir-class",
-        "pharm-cns-fluoxetine-class",
         "pharm-cns-amitriptyline-class",
         "pharm-cns-phenelzine-class",
         "pharm-cns-bupropion-class",
@@ -12371,7 +12392,6 @@
         "pharm-ob-magnesium-sulfate-class",
         "pharm-ob-terbutaline-class",
         "pharm-ob-rho-d-class",
-        "pharm-ob-tamoxifen-class",
         "pharm-ob-oral-contraceptive-class"
       ],
       "minimumSize": 5,
@@ -12475,244 +12495,253 @@
       "minimumSize": 5
     },
     {
-      "id": "side_effects",
-      "label": "Side Effects",
+      "id": "side_effects_short",
+      "label": "Side Effects (short)",
       "answerFormat": "term",
       "factIds": [
+        "pharm-cns-lithium-sideeffect",
+        "pharm-cns-bupropion-sideeffect",
         "pharm-cv-lisinopril-side-effect",
-        "pharm-cv-amlodipine-side-effect",
+        "pharm-cns-carbidopa_levodopa-sideeffect",
         "pharm-cv-diltiazem-side-effect",
-        "pharm-cv-clonidine-side-effect",
-        "pharm-cv-digoxin-side-effect",
-        "pharm-cv-amiodarone-side-effect",
-        "pharm-cv-atropine-side-effect",
-        "pharm-cv-atorvastatin-side-effect",
         "pharm-cv-furosemide-side-effect",
+        "pharm-cv-rivaroxaban-side-effect",
         "pharm-cv-spironolactone-side-effect",
-        "pharm-cv-hydrochlorothiazide-side-effect",
-        "pharm-cv-mannitol-side-effect",
         "pharm-cv-epoetin-alfa-side-effect",
         "pharm-cv-ferrous-sulfate-side-effect",
-        "pharm-cv-heparin-side-effect",
-        "pharm-cv-rivaroxaban-side-effect",
-        "pharm-cv-aspirin-side-effect",
-        "pharm-cv-alteplase-side-effect",
-        "pharm-inf-amoxicillin-sideeffect",
-        "pharm-inf-vancomycin-sideeffect",
-        "pharm-inf-doxycycline-sideeffect",
-        "pharm-inf-azithromycin-sideeffect",
-        "pharm-inf-gentamicin-sideeffect",
-        "pharm-inf-tmp-smx-sideeffect",
-        "pharm-inf-ciprofloxacin-sideeffect",
-        "pharm-inf-isoniazid-sideeffect",
-        "pharm-inf-rifampin-sideeffect",
-        "pharm-inf-fluconazole-sideeffect",
-        "pharm-inf-acyclovir-sideeffect",
-        "pharm-cns-fluoxetine-sideeffect",
-        "pharm-cns-amitriptyline-sideeffect",
-        "pharm-cns-bupropion-sideeffect",
-        "pharm-cns-lithium-sideeffect",
-        "pharm-cns-haloperidol-sideeffect",
-        "pharm-cns-clozapine-sideeffect",
-        "pharm-cns-lorazepam-sideeffect",
-        "pharm-cns-zolpidem-sideeffect",
-        "pharm-cns-phenytoin-sideeffect",
-        "pharm-cns-carbamazepine-sideeffect",
-        "pharm-cns-valproic_acid-sideeffect",
-        "pharm-cns-levetiracetam-sideeffect",
-        "pharm-cns-carbidopa_levodopa-sideeffect",
-        "pharm-cns-benztropine-sideeffect",
-        "pharm-cns-donepezil-sideeffect",
-        "pharm-cns-morphine-sideeffect",
-        "pharm-cns-hydromorphone-sideeffect",
-        "pharm-cns-oxycodone-sideeffect",
-        "pharm-cns-fentanyl-sideeffect",
-        "pharm-cns-naloxone-sideeffect",
-        "pharm-cns-succinylcholine-sideeffect",
-        "pharm-cns-dantrolene-sideeffect",
         "pharm-endo-insulin-lispro-side",
         "pharm-endo-insulin-nph-side",
         "pharm-endo-insulin-glargine-side",
-        "pharm-endo-metformin-side",
         "pharm-endo-glipizide-side",
+        "pharm-cv-hydrochlorothiazide-side-effect",
+        "pharm-cv-mannitol-side-effect",
+        "pharm-inf-ciprofloxacin-sideeffect",
+        "pharm-inf-fluconazole-sideeffect",
+        "pharm-cns-valproic_acid-sideeffect",
+        "pharm-cns-dantrolene-sideeffect",
+        "pharm-inf-azithromycin-sideeffect",
+        "pharm-cns-clozapine-sideeffect",
+        "pharm-cns-carbamazepine-sideeffect",
         "pharm-endo-propylthiouracil-side",
-        "pharm-endo-desmopressin-side",
-        "pharm-endo-prednisone-side",
+        "pharm-cv-amlodipine-side-effect",
+        "pharm-inf-vancomycin-sideeffect",
+        "pharm-inf-doxycycline-sideeffect",
+        "pharm-cv-atropine-side-effect",
+        "pharm-cv-amiodarone-side-effect",
+        "pharm-cns-fluoxetine-sideeffect"
+      ],
+      "minimumSize": 5
+    },
+    {
+      "id": "side_effects_long",
+      "label": "Side Effects (long)",
+      "answerFormat": "term",
+      "factIds": [
+        "pharm-cns-donepezil-sideeffect",
+        "pharm-cns-fentanyl-sideeffect",
+        "pharm-cns-phenytoin-sideeffect",
+        "pharm-cns-oxycodone-sideeffect",
+        "pharm-cns-lorazepam-sideeffect",
+        "pharm-cns-morphine-sideeffect",
+        "pharm-cns-hydromorphone-sideeffect",
+        "pharm-cns-succinylcholine-sideeffect",
+        "pharm-cv-atorvastatin-side-effect",
+        "pharm-cv-alteplase-side-effect",
+        "pharm-cns-amitriptyline-sideeffect",
+        "pharm-cns-zolpidem-sideeffect",
+        "pharm-cns-benztropine-sideeffect",
+        "pharm-cns-naloxone-sideeffect",
+        "pharm-inf-tmp-smx-sideeffect",
+        "pharm-cv-aspirin-side-effect",
+        "pharm-inf-acyclovir-sideeffect",
+        "pharm-cns-haloperidol-sideeffect",
+        "pharm-gir-theophylline-side",
+        "pharm-inf-gentamicin-sideeffect",
+        "pharm-gir-sulfasalazine-side",
+        "pharm-inf-amoxicillin-sideeffect",
+        "pharm-endo-metformin-side",
+        "pharm-cv-heparin-side-effect",
         "pharm-endo-fludrocortisone-side",
+        "pharm-gir-albuterol-side",
+        "pharm-cns-levetiracetam-sideeffect",
+        "pharm-gir-diphenhydramine-side",
+        "pharm-ob-terbutaline-side",
+        "pharm-inf-rifampin-sideeffect",
+        "pharm-endo-desmopressin-side",
+        "pharm-gir-fluticasone-side",
+        "pharm-ob-magnesium-sulfate-side",
+        "pharm-gir-ondansetron-side",
+        "pharm-cv-clonidine-side-effect",
+        "pharm-cv-digoxin-side-effect",
+        "pharm-inf-isoniazid-sideeffect",
+        "pharm-gir-montelukast-side",
+        "pharm-ob-oxytocin-side",
+        "pharm-gir-pancrelipase-side",
+        "pharm-ob-oral-contraceptive-side",
+        "pharm-endo-prednisone-side",
+        "pharm-ob-tamoxifen-side",
         "pharm-endo-alendronate-side",
         "pharm-endo-allopurinol-side",
         "pharm-gir-omeprazole-side",
-        "pharm-gir-ondansetron-side",
-        "pharm-gir-metoclopramide-side",
-        "pharm-gir-sulfasalazine-side",
-        "pharm-gir-albuterol-side",
-        "pharm-gir-fluticasone-side",
-        "pharm-gir-montelukast-side",
-        "pharm-gir-diphenhydramine-side",
-        "pharm-gir-theophylline-side",
-        "pharm-ob-oxytocin-side",
-        "pharm-ob-magnesium-sulfate-side",
-        "pharm-ob-terbutaline-side",
-        "pharm-ob-tamoxifen-side",
-        "pharm-ob-oral-contraceptive-side",
-        "pharm-gir-pancrelipase-side"
+        "pharm-gir-metoclopramide-side"
       ],
-      "minimumSize": 5,
-      "homogeneityExempt": true
+      "minimumSize": 5
     },
     {
-      "id": "indications",
-      "label": "Indications",
+      "id": "indications_short",
+      "label": "Indications (short)",
       "answerFormat": "term",
       "factIds": [
-        "pharm-cv-lisinopril-indication",
-        "pharm-cv-losartan-indication",
-        "pharm-cv-amlodipine-indication",
-        "pharm-cv-diltiazem-indication",
-        "pharm-cv-clonidine-indication",
-        "pharm-cv-amiodarone-indication",
-        "pharm-cv-adenosine-indication",
-        "pharm-cv-atropine-indication",
-        "pharm-cv-epinephrine-indication",
-        "pharm-cv-norepinephrine-indication",
         "pharm-cv-dopamine-indication",
         "pharm-cv-nitroglycerin-indication",
-        "pharm-cv-atorvastatin-indication",
+        "pharm-cv-epinephrine-indication",
+        "pharm-cv-lisinopril-indication",
+        "pharm-cv-amlodipine-indication",
+        "pharm-cv-clonidine-indication",
+        "pharm-cv-norepinephrine-indication",
         "pharm-cv-hydrochlorothiazide-indication",
-        "pharm-cv-mannitol-indication",
-        "pharm-cv-epoetin-alfa-indication",
-        "pharm-cv-rivaroxaban-indication",
-        "pharm-cv-clopidogrel-indication",
-        "pharm-cv-aspirin-indication",
-        "pharm-inf-amoxicillin-indication",
-        "pharm-inf-ceftriaxone-indication",
-        "pharm-inf-azithromycin-indication",
-        "pharm-inf-tmp-smx-indication",
-        "pharm-inf-metronidazole-indication",
-        "pharm-inf-fluconazole-indication",
-        "pharm-inf-acyclovir-indication",
-        "pharm-cns-bupropion-indication",
-        "pharm-cns-buspirone-indication",
-        "pharm-cns-benztropine-indication",
-        "pharm-endo-insulin-regular-indication",
-        "pharm-endo-insulin-nph-indication",
-        "pharm-endo-insulin-glargine-indication",
-        "pharm-endo-glucagon-indication",
-        "pharm-gir-famotidine-indication",
-        "pharm-gir-docusate-indication",
-        "pharm-gir-lactulose-indication",
-        "pharm-gir-loperamide-indication",
-        "pharm-gir-metoclopramide-indication",
-        "pharm-gir-pancrelipase-indication",
-        "pharm-gir-fluticasone-indication",
-        "pharm-gir-montelukast-indication",
-        "pharm-gir-diphenhydramine-indication",
-        "pharm-ob-terbutaline-indication",
-        "pharm-ob-rho-d-indication",
-        "pharm-gir-ipratropium-indication",
-        "pharm-gir-sulfasalazine-indication"
+        "pharm-cv-atorvastatin-indication",
+        "pharm-cv-mannitol-indication"
       ],
-      "minimumSize": 5,
-      "homogeneityExempt": true
+      "minimumSize": 5
     },
     {
-      "id": "nursing_interventions",
-      "label": "Nursing Interventions",
+      "id": "indications_long",
+      "label": "Indications (long)",
       "answerFormat": "term",
       "factIds": [
-        "pharm-cv-losartan-nursing",
-        "pharm-cv-metoprolol-nursing",
-        "pharm-cv-nitroprusside-nursing",
-        "pharm-cv-adenosine-nursing",
-        "pharm-cv-epinephrine-nursing",
-        "pharm-cv-norepinephrine-nursing",
-        "pharm-cv-dopamine-nursing",
-        "pharm-cv-nitroglycerin-nursing",
-        "pharm-cv-furosemide-nursing",
-        "pharm-cv-spironolactone-nursing",
-        "pharm-cv-warfarin-nursing",
-        "pharm-cv-enoxaparin-nursing",
-        "pharm-cv-clopidogrel-nursing",
-        "pharm-inf-ceftriaxone-nursing",
-        "pharm-inf-vancomycin-nursing",
-        "pharm-inf-gentamicin-nursing",
-        "pharm-inf-isoniazid-nursing",
-        "pharm-cns-phenelzine-nursing",
-        "pharm-cns-lithium-nursing",
-        "pharm-cns-clozapine-nursing",
-        "pharm-cns-buspirone-nursing",
-        "pharm-cns-zolpidem-nursing",
-        "pharm-cns-phenytoin-nursing",
-        "pharm-cns-carbamazepine-nursing",
-        "pharm-cns-levetiracetam-nursing",
-        "pharm-cns-carbidopa_levodopa-nursing",
-        "pharm-cns-donepezil-nursing",
-        "pharm-cns-hydromorphone-nursing",
-        "pharm-cns-oxycodone-nursing",
-        "pharm-cns-naloxone-nursing",
-        "pharm-cns-dantrolene-nursing",
-        "pharm-endo-insulin-regular-nursing",
-        "pharm-endo-insulin-nph-nursing",
-        "pharm-endo-insulin-glargine-nursing",
-        "pharm-endo-glipizide-nursing",
-        "pharm-endo-glucagon-nursing",
-        "pharm-endo-levothyroxine-nursing",
-        "pharm-endo-propylthiouracil-nursing",
-        "pharm-endo-desmopressin-nursing",
-        "pharm-endo-prednisone-nursing",
-        "pharm-endo-fludrocortisone-nursing",
-        "pharm-endo-alendronate-nursing",
-        "pharm-endo-allopurinol-nursing",
-        "pharm-gir-famotidine-nursing",
-        "pharm-gir-docusate-nursing",
-        "pharm-gir-lactulose-nursing",
-        "pharm-gir-loperamide-nursing",
-        "pharm-gir-ondansetron-nursing",
-        "pharm-gir-pancrelipase-nursing",
-        "pharm-gir-sulfasalazine-nursing",
-        "pharm-gir-albuterol-nursing",
-        "pharm-gir-ipratropium-nursing",
-        "pharm-gir-fluticasone-nursing",
-        "pharm-gir-montelukast-nursing",
-        "pharm-gir-theophylline-nursing",
-        "pharm-ob-oxytocin-nursing",
-        "pharm-ob-terbutaline-nursing",
-        "pharm-ob-rho-d-nursing",
-        "pharm-ob-tamoxifen-nursing",
-        "pharm-ob-oral-contraceptive-nursing"
+        "pharm-cns-bupropion-indication",
+        "pharm-cv-diltiazem-indication",
+        "pharm-cv-losartan-indication",
+        "pharm-cv-amiodarone-indication",
+        "pharm-cv-atropine-indication",
+        "pharm-gir-docusate-indication",
+        "pharm-gir-pancrelipase-indication",
+        "pharm-endo-insulin-nph-indication",
+        "pharm-endo-insulin-glargine-indication",
+        "pharm-gir-loperamide-indication",
+        "pharm-endo-insulin-regular-indication",
+        "pharm-gir-metoclopramide-indication",
+        "pharm-cv-clopidogrel-indication",
+        "pharm-inf-amoxicillin-indication",
+        "pharm-inf-azithromycin-indication",
+        "pharm-cns-buspirone-indication",
+        "pharm-gir-famotidine-indication",
+        "pharm-cv-epoetin-alfa-indication",
+        "pharm-inf-ceftriaxone-indication",
+        "pharm-inf-acyclovir-indication",
+        "pharm-gir-sulfasalazine-indication",
+        "pharm-cv-adenosine-indication",
+        "pharm-cv-aspirin-indication",
+        "pharm-inf-fluconazole-indication",
+        "pharm-cns-benztropine-indication",
+        "pharm-gir-lactulose-indication",
+        "pharm-ob-rho-d-indication",
+        "pharm-gir-fluticasone-indication",
+        "pharm-gir-montelukast-indication",
+        "pharm-cv-rivaroxaban-indication",
+        "pharm-inf-metronidazole-indication",
+        "pharm-inf-tmp-smx-indication",
+        "pharm-gir-ipratropium-indication",
+        "pharm-gir-diphenhydramine-indication",
+        "pharm-ob-terbutaline-indication",
+        "pharm-endo-glucagon-indication"
       ],
-      "minimumSize": 5,
-      "homogeneityExempt": true
+      "minimumSize": 5
     },
     {
-      "id": "antidotes",
-      "label": "Antidotes & Reversal Agents",
+      "id": "nursing_interventions_short",
+      "label": "Nursing Interventions (short)",
+      "answerFormat": "term",
+      "factIds": [
+        "pharm-cv-warfarin-nursing",
+        "pharm-cv-furosemide-nursing",
+        "pharm-cv-clopidogrel-nursing",
+        "pharm-cv-metoprolol-nursing",
+        "pharm-inf-gentamicin-nursing",
+        "pharm-cns-carbamazepine-nursing",
+        "pharm-cns-clozapine-nursing",
+        "pharm-cns-buspirone-nursing",
+        "pharm-cns-zolpidem-nursing"
+      ],
+      "minimumSize": 5
+    },
+    {
+      "id": "nursing_interventions_long",
+      "label": "Nursing Interventions (long)",
+      "answerFormat": "term",
+      "factIds": [
+        "pharm-inf-ceftriaxone-nursing",
+        "pharm-inf-isoniazid-nursing",
+        "pharm-cns-levetiracetam-nursing",
+        "pharm-cv-dopamine-nursing",
+        "pharm-cns-phenelzine-nursing",
+        "pharm-cv-losartan-nursing",
+        "pharm-cv-spironolactone-nursing",
+        "pharm-cv-enoxaparin-nursing",
+        "pharm-inf-vancomycin-nursing",
+        "pharm-cns-carbidopa_levodopa-nursing",
+        "pharm-cns-oxycodone-nursing",
+        "pharm-cns-lithium-nursing",
+        "pharm-cns-donepezil-nursing",
+        "pharm-cv-nitroprusside-nursing",
+        "pharm-cv-norepinephrine-nursing",
+        "pharm-cns-phenytoin-nursing",
+        "pharm-cv-adenosine-nursing",
+        "pharm-cv-epinephrine-nursing",
+        "pharm-cv-nitroglycerin-nursing",
+        "pharm-cns-naloxone-nursing",
+        "pharm-endo-desmopressin-nursing",
+        "pharm-endo-fludrocortisone-nursing",
+        "pharm-endo-insulin-regular-nursing",
+        "pharm-endo-allopurinol-nursing",
+        "pharm-gir-sulfasalazine-nursing",
+        "pharm-ob-oral-contraceptive-nursing",
+        "pharm-cns-hydromorphone-nursing",
+        "pharm-cns-dantrolene-nursing",
+        "pharm-gir-albuterol-nursing",
+        "pharm-ob-rho-d-nursing",
+        "pharm-gir-loperamide-nursing",
+        "pharm-ob-terbutaline-nursing",
+        "pharm-ob-tamoxifen-nursing",
+        "pharm-ob-oxytocin-nursing",
+        "pharm-endo-glipizide-nursing",
+        "pharm-endo-alendronate-nursing",
+        "pharm-gir-lactulose-nursing",
+        "pharm-endo-insulin-glargine-nursing",
+        "pharm-endo-prednisone-nursing",
+        "pharm-gir-ondansetron-nursing",
+        "pharm-endo-propylthiouracil-nursing",
+        "pharm-gir-docusate-nursing",
+        "pharm-gir-ipratropium-nursing",
+        "pharm-gir-theophylline-nursing",
+        "pharm-endo-insulin-nph-nursing",
+        "pharm-gir-famotidine-nursing",
+        "pharm-gir-fluticasone-nursing",
+        "pharm-gir-montelukast-nursing",
+        "pharm-endo-glucagon-nursing",
+        "pharm-endo-levothyroxine-nursing",
+        "pharm-gir-pancrelipase-nursing"
+      ],
+      "minimumSize": 5
+    },
+    {
+      "id": "antidotes_short",
+      "label": "Antidotes & Reversal Agents (short)",
       "answerFormat": "term",
       "factIds": [
         "pharm-cv-metoprolol-antidote",
-        "pharm-cv-nitroprusside-antidote",
-        "pharm-cv-digoxin-antidote",
-        "pharm-cv-ferrous-sulfate-antidote",
-        "pharm-cv-warfarin-antidote",
-        "pharm-cv-heparin-antidote",
-        "pharm-cv-enoxaparin-antidote",
-        "pharm-cv-alteplase-antidote",
-        "pharm-cns-fluoxetine-antidote",
-        "pharm-cns-amitriptyline-antidote",
-        "pharm-cns-phenelzine-antidote",
-        "pharm-cns-lithium-antidote",
-        "pharm-cns-haloperidol-antidote",
-        "pharm-cns-lorazepam-antidote",
-        "pharm-cns-zolpidem-antidote",
-        "pharm-cns-valproic_acid-antidote",
         "pharm-cns-morphine-antidote",
         "pharm-cns-hydromorphone-antidote",
         "pharm-cns-oxycodone-antidote",
-        "pharm-cns-fentanyl-antidote",
+        "pharm-cns-lorazepam-antidote",
+        "pharm-cns-zolpidem-antidote",
         "pharm-cns-succinylcholine-antidote",
-        "pharm-endo-insulin-lispro-antidote",
-        "pharm-gir-metoclopramide-antidote",
-        "pharm-ob-magnesium-sulfate-antidote"
+        "pharm-cns-haloperidol-antidote",
+        "pharm-cns-valproic_acid-antidote",
+        "pharm-cv-ferrous-sulfate-antidote",
+        "pharm-cns-phenelzine-antidote",
+        "pharm-cns-lithium-antidote"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
@@ -12723,8 +12752,36 @@
         "Succimer",
         "Pralidoxime",
         "Ipecac syrup"
+      ]
+    },
+    {
+      "id": "antidotes_long",
+      "label": "Antidotes & Reversal Agents (long)",
+      "answerFormat": "term",
+      "factIds": [
+        "pharm-cns-fluoxetine-antidote",
+        "pharm-endo-insulin-lispro-antidote",
+        "pharm-gir-metoclopramide-antidote",
+        "pharm-cv-heparin-antidote",
+        "pharm-cv-enoxaparin-antidote",
+        "pharm-cv-alteplase-antidote",
+        "pharm-ob-magnesium-sulfate-antidote",
+        "pharm-cv-nitroprusside-antidote",
+        "pharm-cv-digoxin-antidote",
+        "pharm-cns-amitriptyline-antidote",
+        "pharm-cv-warfarin-antidote",
+        "pharm-cns-fentanyl-antidote"
       ],
-      "homogeneityExempt": true
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Calcium gluconate",
+        "Sodium bicarbonate",
+        "Activated charcoal",
+        "Deferoxamine",
+        "Succimer",
+        "Pralidoxime",
+        "Ipecac syrup"
+      ]
     },
     {
       "id": "interactions",

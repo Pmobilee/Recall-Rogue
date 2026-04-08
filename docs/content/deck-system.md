@@ -1,7 +1,7 @@
 # Curated Deck System
 
 > **Purpose:** Explains what curated decks are, how they are structured, loaded, registered, and how player progression is tracked against them.
-> **Last verified:** 2026-04-05
+> **Last verified:** 2026-04-09
 > **Source files:** `src/data/curatedDeckStore.ts`, `src/data/deckRegistry.ts`, `src/data/deckFactIndex.ts`, `src/data/curatedDeckTypes.ts`, `src/services/deckManager.ts`, `src/services/deckOptionsService.ts`, `src/services/deckProgressService.ts`, `src/services/dbDecoder.ts`, `public/curated.db`
 
 ---
@@ -117,10 +117,10 @@ Two backfill scripts produced full coverage:
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-08 it contains **84 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-08 it contains **83 decks**:
 
 - **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar/N1–N5 Kanji, Korean Hangul/TOPIK 1–2, Spanish A1–B2
-- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**, **AP World History: Modern**, **AP Physics 1: Algebra-Based**, **Pharmacology**, **World Literature**, **AP Human Geography**
+- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**, **AP World History: Modern**, **AP Physics 1: Algebra-Based**, **Pharmacology**, **World Literature**, **AP Human Geography**, **Philosophy**
 
 ### Deck Architecture Files
 
@@ -147,6 +147,7 @@ Architecture YAML files in `data/deck-architectures/` hold the verified source d
 | `ap_human_geography_arch.yaml` | `ap_human_geography` | complete — live | 299 | CED-aligned Fall 2020; 7 units, 14 chain themes, 24 answer pools (split for length homogeneity), 7 sub-decks; 9 facts removed (duplicates across units), 1 NOT-question rewritten, concept pool split into short/medium/long tiers; 0 verify fails, 0 quiz-audit fails. 2026-04-08. |
 | *(inline generation)* | `world_cuisines` | complete — live, pool-redesigned | 141 | Pool redesign 2026-04-05 (5 pools → 9): split `technique_terms` into `person_names_food` + technique; split `country_region_names` into `civilization_names` + `compound_location_names`; added `cultural_references`; moved percentage/short-answer outliers. 0 quiz-audit fails. |
 | *(inline generation)* | `famous_inventions` | complete — live, pool-redesigned | 200 | Pool redesign 2026-04-05 (5 pools → 10): split 104-fact `term` pool into `invention_specs` (short ≤20c), `invention_details` (long), `discovery_descriptions` (narratives), `invention_dates`; split `name` into `person_inventor_names` + `invention_names`; added `tech_codes` for acronyms ≤7c; split `number` into `percentage_values` + `count_values`. 0 quiz-audit fails. |
+| *(inline generation)* | `philosophy` | complete — live | 425 | Global-canon; domain: `general_knowledge`, sub-domain: `philosophy`; 8 chain themes (Ancient Western, Classical Eastern, Medieval & Scholastic, Early Modern, Enlightenment & German Idealism, 19th Century, 20th C. Analytic, 20th C. Continental), 13 answer pools (split for length-tell avoidance), 8 sub-decks; sourced from Stanford Encyclopedia of Philosophy. |
 
 The 4 `world_wonders` architecture files total 195 facts in the live deck. They were merged by `data/decks/_wip/assemble-world-wonders.mjs`.
 
@@ -235,11 +236,11 @@ Answer quality (2 new checks):
 - Em-dash in correctAnswer (FAIL): Answer contains — — baked-in explanations create unfair length tells. Move explanation text to the explanation field.
 - Answer appears in question (WARN): correctAnswer text (>5 chars) appears verbatim in quizQuestion — self-answering question (skip vocab).
 
-Pool homogeneity (check #20, non-vocab only): Per pool, if the max/min display-length ratio of non-bracket answers exceeds 3x → FAIL (displayed); exceeds 2x → WARN. Catches pools that mix very short answers with long ones, making the correct answer visually obvious. Bracket-number answers are excluded (numerical distractors are algorithmic). NOTE: Pool-homogeneity FAIL does NOT block commits — it is informational only, since educational content inherently has name-length variation (e.g. 'Pons' vs 'Visceral and parietal pleura' in the same anatomy pool). The 3x threshold is a quality guide, not a hard gate. Use `pool-homogeneity-analysis.mjs` for detailed per-pool analysis.
+Pool homogeneity (check #20, non-vocab only): Per pool, if the max/min display-length ratio of non-bracket answers exceeds 3x → FAIL (displayed); exceeds 2x → WARN. Catches pools that mix very short answers with long ones, making the correct answer visually obvious. Bracket-number answers are excluded (numerical distractors are algorithmic). NOTE: Pool-homogeneity FAIL from `verify-all-decks.mjs` is now a hard gate — all 41 knowledge decks have 0 verify-all-decks FAIL as of 2026-04-09. Separate quiz-audit `length_mismatch` failures (from `quiz-audit.mjs --full`) are also now at 0. Use `scripts/fix-pool-heterogeneity.mjs` to auto-split heterogeneous pools; manually resolve outlier facts that cannot be auto-split. Use `pool-homogeneity-analysis.mjs` for detailed per-pool analysis.
 
 ### Unit Tests — `tests/unit/deck-content-quality.test.ts`
 
-10 Vitest tests run as part of `npx vitest run`. Hard-fail thresholds only (one test currently `.skip` pending pool remediation):
+10 Vitest tests run as part of `npx vitest run`. Hard-fail thresholds only. All 10 currently active (pool remediation 2026-04-09 resolved the previously-skipped test):
 - Answer length ≤100 chars (knowledge decks)
 - Question length ≤400 chars
 - Difficulty 1-5 (all facts)
@@ -248,15 +249,17 @@ Pool homogeneity (check #20, non-vocab only): Per pool, if the max/min display-l
 - No correctAnswer in own distractors
 - All pool/fact cross-references valid
 - No empty pools in knowledge decks
-- Pool answer-length homogeneity: max/min ratio ≤4x per pool (currently `it.skip` — unskip after remediation)
+- Pool answer-length homogeneity: max/min ratio ≤4x per pool (pools with homogeneityExempt are skipped)
 
 ### Pre-Commit Checklist
 
 After ANY deck modification:
 1. `node scripts/verify-all-decks.mjs` → 0 failures
-2. `npx vitest run tests/unit/deck-content-quality.test.ts` → 9/9 pass (10th test skipped pending pool remediation)
-3. `npm run typecheck && npm run build` → clean
-4. **Trivia Bridge (knowledge decks only):** Add deck to `deck-bridge-config.json`, run `node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs`, verify 0 collisions. Commit `bridge-curated.json` + `bridge-manifest.json` alongside the deck. Language/vocab decks are exempt. See `docs/content/trivia-bridge.md`.
+2. `node scripts/quiz-audit.mjs --full` → 0 failures (use `scripts/fix-pool-heterogeneity.mjs` to auto-split if needed)
+3. `npx vitest run tests/unit/deck-content-quality.test.ts` → 10/10 pass
+4. `npm run typecheck && npm run build` → clean
+5. **Trivia Bridge (knowledge decks only):** Add deck to `deck-bridge-config.json`, run `node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs`, verify 0 collisions. Commit `bridge-curated.json` + `bridge-manifest.json` alongside the deck. Language/vocab decks are exempt. See `docs/content/trivia-bridge.md`.
+
 
 ---
 

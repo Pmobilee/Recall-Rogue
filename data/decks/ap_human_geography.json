@@ -3764,7 +3764,7 @@
         "sovereign state"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "political_term_names",
+      "answerTypePoolId": "political_term_names_short",
       "difficulty": 1,
       "funScore": 4,
       "explanation": "The CED defines a state by four criteria: permanent population, defined territory, a functioning government, and recognition by other states. Most independent countries qualify as states under this definition.",
@@ -3796,7 +3796,7 @@
         "nation state"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "political_term_names",
+      "answerTypePoolId": "political_term_names_short",
       "difficulty": 2,
       "funScore": 6,
       "explanation": "A nation-state is an ideal in which state boundaries coincide with a single national (ethnic/cultural) group. True nation-states are rare; most modern states are multinational. Japan and Iceland are frequently cited as close examples.",
@@ -3828,7 +3828,7 @@
         "nation without a state"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "political_term_names",
+      "answerTypePoolId": "political_term_names_long",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "A stateless nation is an ethnic or cultural group that identifies as a nation but does not have its own independent state. The Kurds — spread across Turkey, Iraq, Iran, and Syria — are the most commonly cited AP exam example.",
@@ -3860,7 +3860,7 @@
         "multi-national state"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "political_term_names",
+      "answerTypePoolId": "political_term_names_long",
       "difficulty": 2,
       "funScore": 5,
       "explanation": "A multinational state contains two or more national groups. India and Russia are cited in the CED as examples. Most states in the world today are multinational rather than true nation-states.",
@@ -3892,7 +3892,7 @@
         "state sovereignty"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "political_term_names",
+      "answerTypePoolId": "political_term_names_short",
       "difficulty": 1,
       "funScore": 5,
       "explanation": "Sovereignty is the supreme authority of a state to govern itself within its own territory. It is a foundational concept in political geography and is increasingly challenged by supranational organizations and globalization.",
@@ -3924,7 +3924,7 @@
         "national self-determination"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "political_term_names",
+      "answerTypePoolId": "political_term_names_long",
       "difficulty": 2,
       "funScore": 6,
       "explanation": "Self-determination is the right of a people to determine their own form of government and political future. It underpins movements for independence and decolonization, and is recognized in the UN Charter.",
@@ -3956,7 +3956,7 @@
         "colonial rule"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "political_term_names",
+      "answerTypePoolId": "political_term_names_short",
       "difficulty": 2,
       "funScore": 6,
       "explanation": "Colonialism involves a foreign power taking control of a territory, dominating its political institutions, economy, and culture. European colonialism reshaped global boundaries, particularly in Africa and Asia, often creating borders that ignored existing ethnic and cultural divisions.",
@@ -3988,7 +3988,7 @@
         "neo-colonialism"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "political_term_names",
+      "answerTypePoolId": "political_term_names_short",
       "difficulty": 3,
       "funScore": 7,
       "explanation": "Neocolonialism occurs when wealthier countries exert economic and political influence over less powerful states without formally colonizing them. It often operates through trade imbalances, debt dependency, and multinational corporations.",
@@ -4529,7 +4529,7 @@
         "unitary government"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "political_term_names",
+      "answerTypePoolId": "political_term_names_short",
       "difficulty": 2,
       "funScore": 5,
       "explanation": "In a unitary state, the central government retains most or all political power, with local or regional governments acting only as administrative extensions. France and the UK (with devolved exceptions) are commonly cited examples. Most countries in the world have unitary systems.",
@@ -4563,7 +4563,7 @@
         "federal government"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "political_term_names",
+      "answerTypePoolId": "political_term_names_short",
       "difficulty": 2,
       "funScore": 5,
       "explanation": "A federal state distributes constitutional authority between the central government and regional units (states, provinces, cantons). The United States, Germany, Brazil, and India are federal states. Federalism can accommodate diverse regional identities within a single state.",
@@ -4974,7 +4974,7 @@
         "devolutionary process"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "political_term_names",
+      "answerTypePoolId": "political_term_names_short",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "Devolution occurs when a central government delegates authority to subnational units — regions, provinces, or autonomous areas. Examples cited in the CED include Scotland (within the UK), Catalonia (within Spain), and Quebec (within Canada). Devolution can be driven by ethnic, economic, or spatial factors.",
@@ -5108,7 +5108,7 @@
         "centripetal force"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "political_term_names",
+      "answerTypePoolId": "political_term_names_long",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "Centripetal forces bind a state together. Examples include a strong national identity, shared language or religion, economic prosperity, and effective government. The concept mirrors the physics term: centripetal force pulls toward the center. When centripetal forces dominate, states tend to be stable.",
@@ -5140,7 +5140,7 @@
         "centrifugal force"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "political_term_names",
+      "answerTypePoolId": "political_term_names_long",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "Centrifugal forces divide or weaken a state. Examples include ethnic conflict, religious differences, economic disparities between regions, and geographic barriers. When centrifugal forces dominate, states can face devolution, civil war, or fragmentation. The physics metaphor: centrifugal force pushes away from the center.",
@@ -5302,7 +5302,7 @@
         "subsistence agriculture"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "agriculture_practice_names",
+      "answerTypePoolId": "agriculture_practice_names_short",
       "difficulty": 1,
       "funScore": 4,
       "explanation": "Subsistence agriculture produces just enough food for the farm household's own consumption. It is common in less economically developed regions where market access is limited. Commercial agriculture, by contrast, produces surplus food for sale in markets.",
@@ -5609,7 +5609,7 @@
         "Central Mexico"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "unit5_agriculture_concept_terms_short",
+      "answerTypePoolId": "unit5_agriculture_concept_terms_long",
       "difficulty": 2,
       "funScore": 8,
       "explanation": "Mesoamerica — roughly modern Mexico and Central America — is where maize, squash, and beans (the 'Three Sisters') were domesticated. This hearth gave the world one of its most important staple crops: corn, which today is the most widely grown grain globally.",
@@ -5917,7 +5917,7 @@
         "HYV"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "unit5_agriculture_concept_terms_short",
+      "answerTypePoolId": "unit5_agriculture_concept_terms_long",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "High-yield variety (HYV) seeds — notably dwarf wheat developed by Norman Borlaug and IR8 miracle rice — were the centerpiece of the Green Revolution. These varieties responded dramatically to fertilizers and irrigation, producing two to three times the grain of traditional varieties and allowing double-cropping in some regions.",
@@ -5951,7 +5951,7 @@
         "slash and burn"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "agriculture_practice_names",
+      "answerTypePoolId": "agriculture_practice_names_long",
       "difficulty": 2,
       "funScore": 6,
       "explanation": "Shifting cultivation (including slash-and-burn) is a form of extensive subsistence agriculture practiced in tropical regions of Africa, South Asia, and Latin America. Farmers burn vegetation to release nutrients, grow crops for 2–3 years, then move on as fertility declines. The practice is sustainable at low population densities but not at high ones.",
@@ -5985,7 +5985,7 @@
         "nomadic pastoralism"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "agriculture_practice_names",
+      "answerTypePoolId": "agriculture_practice_names_long",
       "difficulty": 2,
       "funScore": 6,
       "explanation": "Pastoral nomads move their herds of cattle, camels, sheep, or goats across vast landscapes, following seasonal grass and water. This extensive farming system is practiced in arid and semi-arid regions of Central Asia, the Sahel, the Arabian Peninsula, and East Africa. Nomadic herders do not grow crops.",
@@ -6019,7 +6019,7 @@
         "intensive subsistence agriculture"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "agriculture_practice_names",
+      "answerTypePoolId": "agriculture_practice_names_short",
       "difficulty": 2,
       "funScore": 6,
       "explanation": "Intensive subsistence agriculture uses every available technique — transplanting seedlings, double-cropping, terracing — to maximize yields on tiny plots. It is the dominant farming system in East and South Asia, where high population density means a family may feed itself on less than one hectare of paddy rice.",
@@ -6053,7 +6053,7 @@
         "plantation farming"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "agriculture_practice_names",
+      "answerTypePoolId": "agriculture_practice_names_short",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "Plantation agriculture is an intensive commercial system concentrated in tropical areas. Crops like sugar, cotton, coffee, rubber, and bananas were historically grown on plantations using enslaved or indentured labor. Today's large export-oriented estates in Central America, Southeast Asia, and sub-Saharan Africa continue this pattern.",
@@ -6087,7 +6087,7 @@
         "Mediterranean farming"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "agriculture_practice_names",
+      "answerTypePoolId": "agriculture_practice_names_short",
       "difficulty": 3,
       "funScore": 6,
       "explanation": "Mediterranean agriculture takes advantage of the Mediterranean climate (dry summers, wet winters) and focuses on wheat, grapes, olives, and citrus. It is practiced around the Mediterranean Sea, in California, Chile, South Africa, and southern Australia. The system's emphasis on high-value specialty crops often makes it commercially oriented.",
@@ -6122,7 +6122,7 @@
         "horticulture"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "agriculture_practice_names",
+      "answerTypePoolId": "agriculture_practice_names_long",
       "difficulty": 2,
       "funScore": 6,
       "explanation": "Market gardening (truck farming) grows high-value perishables — tomatoes, lettuce, strawberries, cut flowers — on small plots near cities. It requires intensive labor and irrigation but commands high prices. In Von Thünen's model, market gardening occupies the innermost ring closest to the central market.",
@@ -6155,7 +6155,7 @@
         "commercial grain farming"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "agriculture_practice_names",
+      "answerTypePoolId": "agriculture_practice_names_long",
       "difficulty": 2,
       "funScore": 5,
       "explanation": "Commercial grain farming dominates the American and Canadian Great Plains, the Eurasian steppes, and the Argentine Pampas. Huge, highly mechanized operations grow wheat, corn, or soybeans almost exclusively for global commodity markets. This system requires very little labor relative to output because of machinery.",
@@ -6189,7 +6189,7 @@
         "mixed farming"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "agriculture_practice_names",
+      "answerTypePoolId": "agriculture_practice_names_long",
       "difficulty": 2,
       "funScore": 5,
       "explanation": "Mixed crop-livestock farming is the dominant system in the U.S. Corn Belt and much of temperate Europe. Corn and soybeans are grown to feed hogs, cattle, and poultry on the same farm. The integration creates efficiencies: manure fertilizes fields while crops provide feed, reducing reliance on external inputs.",
@@ -6223,7 +6223,7 @@
         "commercial ranching"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "agriculture_practice_names",
+      "answerTypePoolId": "agriculture_practice_names_short",
       "difficulty": 2,
       "funScore": 5,
       "explanation": "Ranching is an extensive commercial system practiced in areas too dry for crops: the American West, Argentine Pampas, Australian Outback, and the Brazilian Cerrado. Large herds of cattle, sheep, or horses graze across vast land areas. In Von Thünen's model, ranching occupies the outermost ring farthest from the market.",
@@ -6362,7 +6362,7 @@
         "industrial agriculture"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "unit5_agriculture_concept_terms_short",
+      "answerTypePoolId": "unit5_agriculture_concept_terms_long",
       "difficulty": 2,
       "funScore": 6,
       "explanation": "Agribusiness refers to the integration of agriculture into a corporate industrial system. Giant companies like Cargill and Archer Daniels Midland control inputs (seeds, chemicals), processing, and distribution, replacing small family farms. The CED notes that large-scale commercial operations are replacing small farms as part of this trend.",
@@ -6397,7 +6397,7 @@
         "food commodity chain"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "unit5_agriculture_concept_terms_short",
+      "answerTypePoolId": "unit5_agriculture_concept_terms_long",
       "difficulty": 2,
       "funScore": 6,
       "explanation": "A commodity chain traces the journey of a food product from farm to table: seed production, growing, harvesting, processing, packaging, distribution, and retail. The CED emphasizes that complex commodity chains link global production and consumption of agricultural products, meaning a single food item may travel through a dozen countries.",
@@ -6464,7 +6464,7 @@
         "food insecurity problem"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "unit5_agriculture_concept_terms_short",
+      "answerTypePoolId": "unit5_agriculture_concept_terms_long",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "Food insecurity affects hundreds of millions of people globally and results from a combination of poverty, conflict, adverse weather, poor infrastructure, and land loss to suburbanization. The CED identifies it as a key challenge of contemporary agriculture alongside food deserts and distribution problems.",
@@ -6497,7 +6497,7 @@
         "food deserts"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "unit5_agriculture_concept_terms_short",
+      "answerTypePoolId": "unit5_agriculture_concept_terms_long",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "Food deserts are areas where fresh produce and healthy foods are unavailable or unaffordable, often because supermarkets have relocated to suburban areas while fast-food restaurants remain. They disproportionately affect low-income and minority urban communities and are identified in the CED as a contemporary challenge of agriculture.",
@@ -6564,7 +6564,7 @@
         "desertification process"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "unit5_agriculture_concept_terms_short",
+      "answerTypePoolId": "unit5_agriculture_concept_terms_long",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "Desertification is the degradation of dryland ecosystems into unproductive desert-like terrain. It is most severe in the Sahel region of Africa, where overgrazing by livestock and removal of vegetation cover has left soils vulnerable to wind erosion. Climate change is expected to accelerate desertification in many regions.",
@@ -6597,7 +6597,7 @@
         "agricultural deforestation"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "unit5_agriculture_concept_terms_short",
+      "answerTypePoolId": "unit5_agriculture_concept_terms_long",
       "difficulty": 1,
       "funScore": 6,
       "explanation": "Deforestation driven by agriculture — particularly cattle ranching and soybean farming in the Amazon, and palm oil cultivation in Southeast Asia — is a leading cause of habitat loss and carbon emissions. The CED identifies deforestation as a key consequence of agricultural land-use change and landscape alteration.",
@@ -6701,7 +6701,7 @@
         "mariculture"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "agriculture_practice_names",
+      "answerTypePoolId": "agriculture_practice_names_short",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "Aquaculture is the fastest-growing food production sector globally and now supplies about half of all seafood consumed worldwide. The CED identifies it as an agricultural innovation that has been accompanied by sustainability debates, including concerns about disease spread, water pollution, and escaped non-native species.",
@@ -6736,7 +6736,7 @@
         "community-supported agriculture (CSA)"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "agriculture_practice_names",
+      "answerTypePoolId": "agriculture_practice_names_long",
       "difficulty": 3,
       "funScore": 7,
       "explanation": "Community-supported agriculture (CSA) connects urban consumers directly with local farms. Members pre-pay for a 'share' of the season's crop, receiving a box of seasonal produce each week. This arrangement shifts financial risk from farmer to consumer and builds a direct supply chain that bypasses agribusiness commodity networks.",
@@ -6770,7 +6770,7 @@
         "fair trade movement"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "agriculture_practice_names",
+      "answerTypePoolId": "agriculture_practice_names_short",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "Fair trade is a system that guarantees farmers and producers in less economically developed countries a minimum price for commodities like coffee, cocoa, and bananas, regardless of global market fluctuations. The CED identifies fair trade as a contemporary influence on patterns of food production and consumption.",
@@ -6804,7 +6804,7 @@
         "urban gardening"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "agriculture_practice_names",
+      "answerTypePoolId": "agriculture_practice_names_short",
       "difficulty": 1,
       "funScore": 7,
       "explanation": "Urban farming uses otherwise underutilized city spaces to grow food locally, reducing transportation distances and improving access to fresh produce in food deserts. The CED identifies urban farming as one of the contemporary movements influencing food production and consumption patterns, alongside CSAs, organic farming, and local-food movements.",
@@ -6873,7 +6873,7 @@
         "monoculture farming"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "agriculture_practice_names",
+      "answerTypePoolId": "agriculture_practice_names_short",
       "difficulty": 2,
       "funScore": 6,
       "explanation": "Monoculture maximizes efficiency for mechanized, large-scale commercial farming — cornfields in Iowa or wheat fields in Kansas. The CED notes that agricultural production regions are defined by the extent to which they reflect monoculture practices. However, monocultures are vulnerable to pests and disease, require heavy pesticide use, and deplete specific soil nutrients.",
@@ -6939,7 +6939,7 @@
         "city situation"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_short",
       "difficulty": 2,
       "funScore": 5,
       "explanation": "Situation describes a city's relative location — its connectivity and relationship to other places. New York's situation is excellent: at the mouth of the Hudson River, connected to interior markets. Situation is often more important than site for long-term urban growth.",
@@ -6972,7 +6972,7 @@
         "mega-city"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_short",
       "difficulty": 1,
       "funScore": 6,
       "explanation": "Megacities are urban agglomerations with populations exceeding 10 million. Examples include Tokyo, Mumbai, and Lagos. The CED notes that megacities and metacities are increasingly located in the periphery and semiperiphery, not just in wealthy core nations.",
@@ -7005,7 +7005,7 @@
         "meta-city"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_short",
       "difficulty": 2,
       "funScore": 6,
       "explanation": "Metacities have populations above 20 million. Tokyo is currently the world's largest metacity. The CED distinguishes metacities from megacities (10M+) as especially large spatial outcomes of urbanization. Both are increasingly found in the Global South.",
@@ -7038,7 +7038,7 @@
         "edge cities"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "urban_challenge_terms",
+      "answerTypePoolId": "urban_challenge_terms_short",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "Edge cities emerge at the periphery of older metropolitan areas, often near highway interchanges. They have suburban locations but urban-scale employment. The term was popularized by journalist Joel Garreau. Examples include Tysons Corner, Virginia.",
@@ -7071,7 +7071,7 @@
         "exurb"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "urban_challenge_terms",
+      "answerTypePoolId": "urban_challenge_terms_short",
       "difficulty": 2,
       "funScore": 6,
       "explanation": "Exurbs lie beyond the suburbs, typically with lower density and longer commutes to urban employment centers. Residents are often higher-income households seeking larger lots. Unlike edge cities, exurbs lack significant employment nodes of their own.",
@@ -7106,7 +7106,7 @@
         "global city"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_long",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "World cities (also called global cities) serve as command-and-control centers of the global economy. London, New York, and Tokyo are tier-one world cities. They house headquarters of multinational corporations, major financial exchanges, and international organizations.",
@@ -7204,7 +7204,7 @@
       "correctAnswer": "threshold",
       "acceptableAlternatives": [],
       "chainThemeId": 9,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_short",
       "difficulty": 3,
       "funScore": 6,
       "explanation": "Threshold is the minimum market size (population) needed to support a central place function. Low-order goods (convenience stores) have low thresholds; high-order goods (specialty hospitals) require large thresholds. Threshold and range together determine where services locate.",
@@ -7235,7 +7235,7 @@
       "correctAnswer": "range",
       "acceptableAlternatives": [],
       "chainThemeId": 9,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_short",
       "difficulty": 3,
       "funScore": 6,
       "explanation": "Range is the outer limit of a central place's market area — beyond this distance, customers will seek a closer alternative. High-order goods (e.g., major surgery) have large ranges; low-order goods (e.g., a loaf of bread) have small ranges. Range and threshold together define a service area.",
@@ -7302,7 +7302,7 @@
         "primate cities"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_long",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "A primate city is at least twice the population of the second largest city and dominates economic, political, and cultural functions. Examples include Paris (France), Bangkok (Thailand), and Mexico City (Mexico). Countries with primate cities often deviate from the rank-size rule.",
@@ -7643,7 +7643,7 @@
         "mixed use"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_long",
       "difficulty": 2,
       "funScore": 5,
       "explanation": "Mixed land use integrates residential, retail, office, and civic functions within walkable proximity. It contrasts with single-use (Euclidean) zoning that separates these activities into distinct areas. The CED identifies mixed land use as a key component of smart growth and New Urbanism.",
@@ -7674,7 +7674,7 @@
       "correctAnswer": "infrastructure",
       "acceptableAlternatives": [],
       "chainThemeId": 10,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_long",
       "difficulty": 1,
       "funScore": 4,
       "explanation": "Infrastructure is the foundational network of physical systems (roads, transit, water, sewer, broadband, power) that enables urban economic and social activity. High-quality infrastructure attracts investment and supports dense, walkable development; poor infrastructure perpetuates poverty and inequality.",
@@ -7708,7 +7708,7 @@
         "transportation-oriented development"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_long",
       "difficulty": 2,
       "funScore": 6,
       "explanation": "Transit-oriented development (TOD) clusters high-density housing, offices, and retail within a quarter-mile walking radius of rail or bus rapid transit stations. It reduces car dependence, supports ridership, and creates walkable urban environments. The CED lists TOD as a sustainable design initiative.",
@@ -7741,7 +7741,7 @@
         "new urbanism"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_long",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "New Urbanism is a planning movement that emerged in the 1980s-90s to counter suburban sprawl. It promotes compact, walkable neighborhoods with grid street patterns, mixed housing types, front porches, and nearby transit. Celebrated examples include Seaside, Florida. Critics note it can raise housing costs and create exclusionary enclaves.",
@@ -7774,7 +7774,7 @@
         "smart-growth policy"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_long",
       "difficulty": 2,
       "funScore": 6,
       "explanation": "Smart growth is a broad policy approach including urban growth boundaries, infill incentives, mixed-use zoning, and transit investment to channel urban growth inward rather than outward. It is supported by the EPA and many state governments as an alternative to unmanaged sprawl.",
@@ -7807,7 +7807,7 @@
         "green belt"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_short",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "Greenbelts are legally protected open spaces around cities that prevent outward urban expansion. London's greenbelt, established in 1938, is the most famous. Critics argue greenbelts can inflate housing prices inside the city. The CED lists greenbelts as a smart-growth response to urban sprawl.",
@@ -7838,7 +7838,7 @@
       "correctAnswer": "redlining",
       "acceptableAlternatives": [],
       "chainThemeId": 10,
-      "answerTypePoolId": "urban_challenge_terms",
+      "answerTypePoolId": "urban_challenge_terms_short",
       "difficulty": 2,
       "funScore": 9,
       "explanation": "Redlining was formally institutionalized in the 1930s by the Home Owners' Loan Corporation (HOLC), which graded neighborhoods and denied federally backed mortgages to Black and immigrant communities marked in red. The practice was outlawed by the Fair Housing Act of 1968 but created lasting patterns of urban disinvestment.",
@@ -7869,7 +7869,7 @@
       "correctAnswer": "blockbusting",
       "acceptableAlternatives": [],
       "chainThemeId": 10,
-      "answerTypePoolId": "urban_challenge_terms",
+      "answerTypePoolId": "urban_challenge_terms_long",
       "difficulty": 2,
       "funScore": 8,
       "explanation": "Blockbusting was practiced by real estate agents who would profit by inducing white homeowners to sell cheaply (through fear of integration), then reselling or renting at inflated prices to Black families desperate for housing in any neighborhood. It accelerated racial residential segregation and is now illegal.",
@@ -7900,7 +7900,7 @@
       "correctAnswer": "gentrification",
       "acceptableAlternatives": [],
       "chainThemeId": 10,
-      "answerTypePoolId": "urban_challenge_terms",
+      "answerTypePoolId": "urban_challenge_terms_long",
       "difficulty": 1,
       "funScore": 8,
       "explanation": "Gentrification transforms disinvested urban neighborhoods by attracting higher-income residents who renovate buildings and bring new businesses. It revitalizes neglected areas but often displaces long-term residents who can no longer afford rising rents. The CED notes both positive and negative consequences of gentrification.",
@@ -7931,7 +7931,7 @@
       "correctAnswer": "white flight",
       "acceptableAlternatives": [],
       "chainThemeId": 10,
-      "answerTypePoolId": "urban_challenge_terms",
+      "answerTypePoolId": "urban_challenge_terms_long",
       "difficulty": 2,
       "funScore": 8,
       "explanation": "White flight describes the post-WWII phenomenon of white middle-class families leaving cities for suburbs, accelerated by blockbusting, integration of schools, and suburbanization policy. It reduced the tax base of inner cities, worsening public services, and reinforced racial residential segregation.",
@@ -7962,7 +7962,7 @@
       "correctAnswer": "urban renewal",
       "acceptableAlternatives": [],
       "chainThemeId": 10,
-      "answerTypePoolId": "urban_challenge_terms",
+      "answerTypePoolId": "urban_challenge_terms_long",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "Urban renewal in the 1950s-70s used federal funds to clear 'slums' (often minority neighborhoods) and replace them with highways, public housing, or commercial development. Critics called it 'Negro removal.' The CED notes both positive outcomes (modernized infrastructure) and negative consequences (community destruction, displacement).",
@@ -7999,7 +7999,7 @@
         "slum"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "urban_challenge_terms",
+      "answerTypePoolId": "urban_challenge_terms_long",
       "difficulty": 1,
       "funScore": 8,
       "explanation": "Squatter settlements (favelas in Brazil, shantytowns, barrios marginales) form when rural migrants cannot afford formal housing. Residents build homes on unused land — often hazardous land unsuited for legal development. The CED notes that squatter settlements and conflicts over land tenure are growing challenges in large cities worldwide.",
@@ -8032,7 +8032,7 @@
         "zone of abandonment"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "urban_challenge_terms",
+      "answerTypePoolId": "urban_challenge_terms_long",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "Disamenity zones (zones of abandonment) are found in both the developed and developing world — Detroit's abandoned inner neighborhoods or the outer periphery of Latin American cities. The CED cites their growth as a consequence of urban economic and social challenges including housing discrimination and disinvestment.",
@@ -8063,7 +8063,7 @@
       "correctAnswer": "food desert",
       "acceptableAlternatives": [],
       "chainThemeId": 10,
-      "answerTypePoolId": "urban_challenge_terms",
+      "answerTypePoolId": "urban_challenge_terms_short",
       "difficulty": 1,
       "funScore": 8,
       "explanation": "Food deserts result from the absence of grocery stores in low-income neighborhoods, leaving residents dependent on fast food and convenience stores. They are linked to health disparities. The USDA defines a food desert as a low-income area where more than one-third of residents live more than one mile from a supermarket.",
@@ -8096,7 +8096,7 @@
         "environmental racism"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "urban_challenge_terms",
+      "answerTypePoolId": "urban_challenge_terms_long",
       "difficulty": 2,
       "funScore": 8,
       "explanation": "Environmental injustice occurs when marginalized communities bear greater exposure to pollution, industrial hazards, and climate risks than wealthier communities. Studies show that hazardous waste facilities are disproportionately sited near low-income and minority neighborhoods. The CED lists environmental injustice as a key urban challenge.",
@@ -8129,7 +8129,7 @@
         "urban heat island effect"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_long",
       "difficulty": 2,
       "funScore": 8,
       "explanation": "Urban heat islands form because asphalt, concrete, and buildings absorb and retain solar radiation, while less vegetation means less evaporative cooling. Cities can be 2-5°F warmer than surrounding rural areas. This worsens air conditioning demand, air quality, and heat-related mortality in low-income neighborhoods.",
@@ -8163,7 +8163,7 @@
         "urban growth limit"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "urban_challenge_terms",
+      "answerTypePoolId": "urban_challenge_terms_long",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "Urban growth boundaries (UGBs) are adopted by municipalities to concentrate development inside the boundary and preserve farmland and open space outside. Portland, Oregon's UGB is the most studied example in the United States. The CED identifies UGBs as a response to urban sustainability challenges.",
@@ -8196,7 +8196,7 @@
         "brownfields"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "urban_challenge_terms",
+      "answerTypePoolId": "urban_challenge_terms_short",
       "difficulty": 2,
       "funScore": 6,
       "explanation": "Brownfields are abandoned or underused industrial or commercial properties where expansion or redevelopment is complicated by real or perceived environmental contamination. Brownfield remediation and redevelopment is a smart-growth strategy that recycles urban land rather than expanding into undeveloped areas.",
@@ -8230,7 +8230,7 @@
         "sprawl"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "urban_challenge_terms",
+      "answerTypePoolId": "urban_challenge_terms_long",
       "difficulty": 1,
       "funScore": 6,
       "explanation": "Urban sprawl converts farmland and natural habitat into low-density subdivisions, strip malls, and highways at the urban fringe. It increases vehicle miles traveled, carbon emissions, and infrastructure costs while reducing walkability. The CED identifies sprawl as both a product of suburbanization and a challenge to urban sustainability.",
@@ -8261,7 +8261,7 @@
       "correctAnswer": "suburbanization",
       "acceptableAlternatives": [],
       "chainThemeId": 10,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_long",
       "difficulty": 1,
       "funScore": 5,
       "explanation": "Suburbanization accelerated in the U.S. after WWII, driven by GI Bill mortgages, the Interstate Highway System, and zoning laws separating residential from commercial land. The CED links suburbanization to the creation of edge cities, exurbs, and boomburbs, and to challenges like urban sprawl and city disinvestment.",
@@ -8294,7 +8294,7 @@
         "boom burb"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "urban_challenge_terms",
+      "answerTypePoolId": "urban_challenge_terms_short",
       "difficulty": 3,
       "funScore": 8,
       "explanation": "Boomburbs are defined as places with over 100,000 residents that have maintained double-digit population growth in recent decades but are not central cities of metropolitan areas. Examples include Mesa, Arizona and Henderson, Nevada. They represent a distinct form of urban growth that blurs city-suburb distinctions.",
@@ -8325,7 +8325,7 @@
       "correctAnswer": "inclusionary zoning",
       "acceptableAlternatives": [],
       "chainThemeId": 10,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_long",
       "difficulty": 3,
       "funScore": 7,
       "explanation": "Inclusionary zoning mandates that a share (typically 10-20%) of new residential units be priced affordably for low- and moderate-income households. The CED lists it as one response to urban economic and social challenges. Critics argue it can reduce overall housing supply by discouraging development.",
@@ -8360,7 +8360,7 @@
         "semiperiphery and periphery"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "unit6_urban_concept_terms",
+      "answerTypePoolId": "unit6_urban_concept_terms_long",
       "difficulty": 2,
       "funScore": 8,
       "explanation": "The CED explicitly notes that megacities and metacities are increasingly located in peripheral and semiperipheral countries (India, China, Nigeria, Brazil, Bangladesh). This contrasts with earlier urbanization dominated by core (MDC) cities. Cities like Lagos, Dhaka, and Kinshasa are growing faster than any European or North American city.",
@@ -8689,7 +8689,7 @@
         "agglomeration benefits"
       ],
       "chainThemeId": 11,
-      "answerTypePoolId": "unit7_economic_concept_terms_short",
+      "answerTypePoolId": "unit7_economic_concept_terms_long",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "Agglomeration occurs when businesses locate near each other to share benefits: common suppliers, specialized workers, shared infrastructure, and knowledge spillovers. Silicon Valley (tech), Detroit (auto), and Hollywood (film) are classic examples. Agglomeration economies are a key factor in Weber's Least Cost Theory.",
@@ -8722,7 +8722,7 @@
         "JIT"
       ],
       "chainThemeId": 11,
-      "answerTypePoolId": "unit7_economic_concept_terms_short",
+      "answerTypePoolId": "unit7_economic_concept_terms_long",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "Just-in-time (JIT) delivery, pioneered by Toyota in Japan, coordinates supply chains so parts arrive precisely when needed for production, eliminating warehouse costs. It requires reliable transportation and tight supplier coordination. JIT is a hallmark of post-Fordist, flexible production systems.",
@@ -9045,7 +9045,7 @@
         "neo-colonialism"
       ],
       "chainThemeId": 12,
-      "answerTypePoolId": "unit7_economic_concept_terms_short",
+      "answerTypePoolId": "unit7_economic_concept_terms_long",
       "difficulty": 2,
       "funScore": 8,
       "explanation": "Neocolonialism refers to indirect economic, political, and cultural dominance by wealthy nations over developing nations, without formal colonial rule. Examples include trade agreements that favor core nations, IMF structural adjustment conditions, multinational corporations extracting profits from LDCs, and cultural dominance through media.",
@@ -9275,7 +9275,7 @@
         "offshore outsourcing"
       ],
       "chainThemeId": 13,
-      "answerTypePoolId": "unit7_economic_concept_terms_short",
+      "answerTypePoolId": "unit7_economic_concept_terms_long",
       "difficulty": 1,
       "funScore": 6,
       "explanation": "Outsourcing refers to contracting work to external providers, often in lower-wage countries (offshoring). Call centers moved to India, manufacturing to China, software development to Eastern Europe. Outsourcing reduces costs for core nations' corporations but contributes to deindustrialization and job loss in core regions.",
@@ -9409,7 +9409,7 @@
         "post Fordism"
       ],
       "chainThemeId": 13,
-      "answerTypePoolId": "unit7_economic_concept_terms_short",
+      "answerTypePoolId": "unit7_economic_concept_terms_long",
       "difficulty": 3,
       "funScore": 8,
       "explanation": "Fordism (named for Henry Ford) was mass production: standardized products, assembly lines, large factories. Post-Fordism, emerging from the 1970s, is flexible: small batches, specialized products, just-in-time inventory, and geographic dispersal of production. Post-Fordist firms outsource components globally and respond rapidly to market changes.",
@@ -9442,7 +9442,7 @@
         "development pole"
       ],
       "chainThemeId": 13,
-      "answerTypePoolId": "unit7_economic_concept_terms_short",
+      "answerTypePoolId": "unit7_economic_concept_terms_long",
       "difficulty": 3,
       "funScore": 7,
       "explanation": "Growth pole theory (Francois Perroux, 1955) argues that economic development does not occur evenly but concentrates in specific dynamic industries or cities that radiate growth outward. Silicon Valley, Dubai, and Shenzhen are modern growth poles. Governments use growth pole strategies to stimulate lagging regions.",
@@ -9740,7 +9740,7 @@
         "lack of equal pay"
       ],
       "chainThemeId": 12,
-      "answerTypePoolId": "unit7_economic_concept_terms_short",
+      "answerTypePoolId": "unit7_economic_concept_terms_long",
       "difficulty": 2,
       "funScore": 7,
       "explanation": "CED EK SPS-7.D.2 states that although women have entered the workforce in greater numbers as economies develop, they continue to face wage inequality and lack equity in employment opportunities. Women globally earn roughly 80 cents for every dollar earned by men, with gaps largest in South Asia and parts of Africa.",
@@ -9815,18 +9815,6 @@
         "aphg_u6_rank_size_rule",
         "aphg_u7_least_cost_theory"
       ],
-      "members": [
-        "Central Place Theory",
-        "Epidemiological Transition Model",
-        "Least Cost Theory",
-        "Mercator projection",
-        "Von Thunen model",
-        "bid-rent theory",
-        "environmental determinism",
-        "gravity model",
-        "possibilism",
-        "rank-size rule"
-      ],
       "minimumSize": 5,
       "syntheticDistractors": [
         "Christaller's Hexagonal Theory",
@@ -9850,16 +9838,6 @@
         "aphg_u7_wallerstein_geographer",
         "aphg_u7_rostow_geographer"
       ],
-      "members": [
-        "Alfred Weber",
-        "Carl Sauer",
-        "Ernest Burgess",
-        "Ernst Ravenstein",
-        "Immanuel Wallerstein",
-        "Thomas Malthus",
-        "Walter Christaller",
-        "Walter Rostow"
-      ],
       "minimumSize": 5,
       "syntheticDistractors": [
         "Alfred Weber",
@@ -9870,42 +9848,19 @@
       ]
     },
     {
-      "id": "agriculture_practice_names",
-      "label": "Agriculture Practice Names",
+      "id": "agriculture_practice_names_short",
+      "label": "Agriculture Practice Names (short)",
       "answerFormat": "term",
       "factIds": [
-        "aphg_u5_subsistence_vs_commercial",
-        "aphg_u5_shifting_cultivation",
-        "aphg_u5_pastoral_nomadism",
+        "aphg_u5_ranching",
         "aphg_u5_intensive_subsistence",
         "aphg_u5_plantation_agriculture",
-        "aphg_u5_mediterranean_agriculture",
-        "aphg_u5_market_gardening",
-        "aphg_u5_commercial_grain",
-        "aphg_u5_mixed_crop_livestock",
-        "aphg_u5_ranching",
-        "aphg_u5_aquaculture",
-        "aphg_u5_csa",
         "aphg_u5_fair_trade",
-        "aphg_u5_urban_farming",
-        "aphg_u5_monoculture"
-      ],
-      "members": [
-        "Mediterranean",
-        "aquaculture",
-        "commercial grain",
-        "community-supported agriculture",
-        "fair trade",
-        "intensive",
-        "market gardening",
-        "mixed crop-livestock",
-        "monoculture",
-        "pastoral nomadism",
-        "plantation",
-        "ranching",
-        "shifting cultivation",
-        "subsistence",
-        "urban farming"
+        "aphg_u5_subsistence_vs_commercial",
+        "aphg_u5_aquaculture",
+        "aphg_u5_monoculture",
+        "aphg_u5_mediterranean_agriculture",
+        "aphg_u5_urban_farming"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
@@ -9915,7 +9870,28 @@
         "agropastoralism",
         "hydroponics"
       ],
-      "homogeneityExempt": true,
+      "homogeneityExemptNote": "AP HuG agriculture pool spans single-word practices (ranching, 8 chars) to compound systems (community-supported agriculture, 31 chars); all are CED-specified farming practice names."
+    },
+    {
+      "id": "agriculture_practice_names_long",
+      "label": "Agriculture Practice Names (long)",
+      "answerFormat": "term",
+      "factIds": [
+        "aphg_u5_market_gardening",
+        "aphg_u5_commercial_grain",
+        "aphg_u5_pastoral_nomadism",
+        "aphg_u5_shifting_cultivation",
+        "aphg_u5_mixed_crop_livestock",
+        "aphg_u5_csa"
+      ],
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "intercropping",
+        "crop rotation",
+        "polyculture",
+        "agropastoralism",
+        "hydroponics"
+      ],
       "homogeneityExemptNote": "AP HuG agriculture pool spans single-word practices (ranching, 8 chars) to compound systems (community-supported agriculture, 31 chars); all are CED-specified farming practice names."
     },
     {
@@ -9932,16 +9908,6 @@
         "aphg_u3_dialect",
         "aphg_u3_sikhism_universalizing"
       ],
-      "members": [
-        "Hinduism",
-        "Sikhism",
-        "creolization",
-        "dialect",
-        "ethnic religion",
-        "language family",
-        "lingua franca",
-        "universalizing religion"
-      ],
       "minimumSize": 5,
       "syntheticDistractors": [
         "syncretism",
@@ -9952,38 +9918,18 @@
       "homogeneityExemptNote": "AP HuG religion/language pool spans single-word terms (dialect, 7 chars) to compound terms (universalizing religion, 23 chars); all are CED-specified cultural geography terms."
     },
     {
-      "id": "political_term_names",
-      "label": "Political Term Names",
+      "id": "political_term_names_short",
+      "label": "Political Term Names (short)",
       "answerFormat": "term",
       "factIds": [
         "aphg_u4_001",
-        "aphg_u4_002",
-        "aphg_u4_003",
-        "aphg_u4_004",
+        "aphg_u4_039",
         "aphg_u4_005",
-        "aphg_u4_006",
         "aphg_u4_007",
-        "aphg_u4_008",
+        "aphg_u4_002",
         "aphg_u4_025",
         "aphg_u4_026",
-        "aphg_u4_039",
-        "aphg_u4_043",
-        "aphg_u4_044"
-      ],
-      "members": [
-        "centrifugal forces",
-        "centripetal forces",
-        "colonialism",
-        "devolution",
-        "federal state",
-        "multinational state",
-        "nation-state",
-        "neocolonialism",
-        "self-determination",
-        "sovereignty",
-        "state",
-        "stateless nation",
-        "unitary state"
+        "aphg_u4_008"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
@@ -9993,7 +9939,27 @@
         "balkanization",
         "political ecology"
       ],
-      "homogeneityExempt": true,
+      "homogeneityExemptNote": "AP HuG political terms span single-word (state, 5 chars) to compound (multinational state, 19 chars); all are CED-specified political geography terms and share the same answer pool naturally."
+    },
+    {
+      "id": "political_term_names_long",
+      "label": "Political Term Names (long)",
+      "answerFormat": "term",
+      "factIds": [
+        "aphg_u4_003",
+        "aphg_u4_006",
+        "aphg_u4_043",
+        "aphg_u4_044",
+        "aphg_u4_004"
+      ],
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "exclave",
+        "enclave",
+        "irredentism",
+        "balkanization",
+        "political ecology"
+      ],
       "homogeneityExemptNote": "AP HuG political terms span single-word (state, 5 chars) to compound (multinational state, 19 chars); all are CED-specified political geography terms and share the same answer pool naturally."
     },
     {
@@ -10009,16 +9975,6 @@
         "aphg_u6_latin_american_city_model",
         "aphg_u6_african_city_model",
         "aphg_u6_southeast_asian_city_model"
-      ],
-      "members": [
-        "African City Model",
-        "Burgess Concentric-Zone Model",
-        "Galactic City Model",
-        "Gravity Model",
-        "Harris-Ullman Multiple-Nuclei Model",
-        "Hoyt Sector Model",
-        "Latin American City Model",
-        "Southeast Asian City Model"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
@@ -10040,14 +9996,6 @@
         "aphg_u2_nir",
         "aphg_u2_imr",
         "aphg_u7_gni_per_capita"
-      ],
-      "members": [
-        "GNI per capita",
-        "crude birth rate",
-        "crude death rate",
-        "dependency ratio",
-        "infant mortality rate",
-        "total fertility rate"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
@@ -10072,15 +10020,6 @@
         "aphg_u2_idp",
         "aphg_u2_asylum_seeker",
         "aphg_u2_guest_workers"
-      ],
-      "members": [
-        "asylum seeker",
-        "chain migration",
-        "guest workers",
-        "internally displaced person",
-        "rural-to-urban migration",
-        "transhumance",
-        "transnational migration"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
@@ -10108,17 +10047,6 @@
         "aphg_u4_023",
         "aphg_u4_024"
       ],
-      "members": [
-        "antecedent boundary",
-        "consequent boundary",
-        "delimitation",
-        "demarcation",
-        "geometric boundary",
-        "relic boundary",
-        "subsequent boundary",
-        "superimposed boundaries",
-        "superimposed boundary"
-      ],
       "minimumSize": 5,
       "syntheticDistractors": [
         "natural boundary",
@@ -10138,13 +10066,6 @@
         "aphg_u3_hierarchical_diffusion",
         "aphg_u3_stimulus_diffusion",
         "aphg_u3_expansion_diffusion"
-      ],
-      "members": [
-        "contagious diffusion",
-        "expansion diffusion",
-        "hierarchical diffusion",
-        "relocation diffusion",
-        "stimulus diffusion"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
@@ -10166,13 +10087,6 @@
         "aphg_u4_015",
         "aphg_u4_016"
       ],
-      "members": [
-        "compact",
-        "elongated",
-        "fragmented",
-        "perforated",
-        "prorupt"
-      ],
       "minimumSize": 3,
       "syntheticDistractors": [
         "landlocked",
@@ -10192,11 +10106,6 @@
         "aphg_u5_metes_and_bounds",
         "aphg_u5_township_and_range",
         "aphg_u5_long_lot"
-      ],
-      "members": [
-        "long-lot",
-        "metes and bounds",
-        "township and range"
       ],
       "minimumSize": 3,
       "syntheticDistractors": [
@@ -10220,13 +10129,6 @@
         "aphg_u7_quaternary_sector",
         "aphg_u7_quinary_sector"
       ],
-      "members": [
-        "primary",
-        "quaternary",
-        "quinary",
-        "secondary",
-        "tertiary"
-      ],
       "minimumSize": 3,
       "syntheticDistractors": [
         "senary",
@@ -10249,13 +10151,6 @@
         "aphg_u7_neoliberalism",
         "aphg_u7_core_periphery_model"
       ],
-      "members": [
-        "Wallerstein's World System Theory",
-        "commodity dependence",
-        "core-periphery model",
-        "dependency theory",
-        "neoliberalism"
-      ],
       "minimumSize": 5,
       "syntheticDistractors": [
         "modernization theory",
@@ -10273,11 +10168,6 @@
         "aphg_u1_formal_region",
         "aphg_u1_functional_region",
         "aphg_u1_perceptual_region"
-      ],
-      "members": [
-        "formal region",
-        "functional region",
-        "perceptual region"
       ],
       "minimumSize": 3,
       "syntheticDistractors": [
@@ -10300,12 +10190,6 @@
         "aphg_u4_037",
         "aphg_u7_mercosur"
       ],
-      "members": [
-        "African Union",
-        "European Union",
-        "Mercosur",
-        "United Nations"
-      ],
       "minimumSize": 4,
       "syntheticDistractors": [
         "G20",
@@ -10318,42 +10202,16 @@
       "homogeneityExemptNote": "AP HuG international organizations mix common acronyms (WTO, IMF, NATO) with full names (United Nations, European Union); both forms are standard AP exam answer formats."
     },
     {
-      "id": "urban_challenge_terms",
-      "label": "Urban Challenge Terms",
+      "id": "urban_challenge_terms_short",
+      "label": "Urban Challenge Terms (short)",
       "answerFormat": "term",
       "factIds": [
-        "aphg_u6_edge_city_def",
         "aphg_u6_exurb_def",
+        "aphg_u6_boomburb",
+        "aphg_u6_edge_city_def",
         "aphg_u6_redlining",
-        "aphg_u6_blockbusting",
-        "aphg_u6_gentrification",
-        "aphg_u6_white_flight",
-        "aphg_u6_urban_renewal",
-        "aphg_u6_squatter_settlement",
-        "aphg_u6_disamenity_zone",
-        "aphg_u6_food_desert",
-        "aphg_u6_environmental_injustice",
-        "aphg_u6_urban_growth_boundary",
         "aphg_u6_brownfield",
-        "aphg_u6_suburban_sprawl",
-        "aphg_u6_boomburb"
-      ],
-      "members": [
-        "blockbusting",
-        "boomburb",
-        "brownfield",
-        "disamenity zone",
-        "edge city",
-        "environmental injustice",
-        "exurbs",
-        "food desert",
-        "gentrification",
-        "redlining",
-        "squatter settlements",
-        "urban growth boundary",
-        "urban renewal",
-        "urban sprawl",
-        "white flight"
+        "aphg_u6_food_desert"
       ],
       "minimumSize": 5,
       "syntheticDistractors": [
@@ -10363,7 +10221,31 @@
         "fiscal zoning",
         "deed restriction"
       ],
-      "homogeneityExempt": true,
+      "homogeneityExemptNote": "AP HuG urban challenge terms span single-word concepts (exurbs, 6 chars) to compound phrases (environmental injustice, 23 chars); all are CED-specified urban geography terms."
+    },
+    {
+      "id": "urban_challenge_terms_long",
+      "label": "Urban Challenge Terms (long)",
+      "answerFormat": "term",
+      "factIds": [
+        "aphg_u6_blockbusting",
+        "aphg_u6_white_flight",
+        "aphg_u6_suburban_sprawl",
+        "aphg_u6_urban_renewal",
+        "aphg_u6_gentrification",
+        "aphg_u6_disamenity_zone",
+        "aphg_u6_squatter_settlement",
+        "aphg_u6_urban_growth_boundary",
+        "aphg_u6_environmental_injustice"
+      ],
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "exclusionary zoning",
+        "eminent domain",
+        "urban heat island",
+        "fiscal zoning",
+        "deed restriction"
+      ],
       "homogeneityExemptNote": "AP HuG urban challenge terms span single-word concepts (exurbs, 6 chars) to compound phrases (environmental injustice, 23 chars); all are CED-specified urban geography terms."
     },
     {
@@ -10377,7 +10259,6 @@
         "aphg_u5_columbian_exchange_year",
         "aphg_u7_rostow_stages"
       ],
-      "members": [],
       "minimumSize": 5,
       "syntheticDistractors": []
     },
@@ -10391,13 +10272,6 @@
         "aphg_u7_wto",
         "aphg_u7_imf",
         "aphg_u7_opec"
-      ],
-      "members": [
-        "ASEAN",
-        "IMF",
-        "NATO",
-        "OPEC",
-        "WTO"
       ],
       "minimumSize": 3,
       "syntheticDistractors": [
@@ -10419,11 +10293,6 @@
         "aphg_u2_forced_migration",
         "aphg_u2_refugee"
       ],
-      "members": [
-        "forced",
-        "refugee",
-        "step"
-      ],
       "minimumSize": 3,
       "syntheticDistractors": [
         "chain",
@@ -10443,10 +10312,6 @@
       "factIds": [
         "aphg_u7_hdi",
         "aphg_u7_gii"
-      ],
-      "members": [
-        "GII",
-        "HDI"
       ],
       "minimumSize": 2,
       "syntheticDistractors": [
@@ -10468,11 +10333,6 @@
         "aphg_u3_indo_european",
         "aphg_u3_sino_tibetan",
         "aphg_u3_afro_asiatic"
-      ],
-      "members": [
-        "Afro-Asiatic",
-        "Indo-European",
-        "Sino-Tibetan"
       ],
       "minimumSize": 3,
       "homogeneityExempt": true,
@@ -10506,69 +10366,45 @@
         "aphg_u4_041",
         "aphg_u4_042"
       ],
-      "members": [
-        "Berlin Conference",
-        "balkanization",
-        "cracking",
-        "cultural",
-        "economic",
-        "ethnic",
-        "gerrymandering",
-        "governance",
-        "irredentism",
-        "packing",
-        "reapportionment",
-        "shatterbelt"
-      ],
       "minimumSize": 5,
       "homogeneityExempt": true,
       "homogeneityExemptNote": "AP unit vocabulary spans acronyms to multi-word terms by design",
       "syntheticDistractors": []
     },
     {
-      "id": "unit6_urban_concept_terms",
-      "label": "Unit 6 Urban Geography Concepts",
+      "id": "unit6_urban_concept_terms_short",
+      "label": "Unit 6 Urban Geography Concepts (short)",
       "answerFormat": "short_phrase",
       "factIds": [
-        "aphg_u6_situation_def",
-        "aphg_u6_world_city_def",
-        "aphg_u6_threshold_def",
-        "aphg_u6_primate_city_def",
-        "aphg_u6_mixed_land_use",
-        "aphg_u6_infrastructure_quality",
-        "aphg_u6_new_urbanism",
-        "aphg_u6_smart_growth",
-        "aphg_u6_greenbelt_def",
-        "aphg_u6_urban_heat_island",
-        "aphg_u6_suburbanization",
-        "aphg_u6_inclusionary_zoning",
+        "aphg_u6_range_def",
         "aphg_u6_megacity_def",
         "aphg_u6_metacity_def",
-        "aphg_u6_range_def",
-        "aphg_u6_transit_oriented_development",
-        "aphg_u6_mdcs_vs_ldcs_urbanization"
-      ],
-      "members": [
-        "New Urbanism",
-        "greenbelt",
-        "inclusionary zoning",
-        "infrastructure",
-        "megacity",
-        "metacity",
-        "mixed land use",
-        "periphery and semiperiphery",
-        "primate city",
-        "range",
-        "situation",
-        "smart growth",
-        "suburbanization",
-        "threshold",
-        "transit-oriented development",
-        "urban heat island",
-        "world cities"
+        "aphg_u6_situation_def",
+        "aphg_u6_threshold_def",
+        "aphg_u6_greenbelt_def"
       ],
       "minimumSize": 5,
-      "homogeneityExempt": true,
+      "homogeneityExemptNote": "AP unit vocabulary spans acronyms to multi-word terms by design",
+      "syntheticDistractors": []
+    },
+    {
+      "id": "unit6_urban_concept_terms_long",
+      "label": "Unit 6 Urban Geography Concepts (long)",
+      "answerFormat": "short_phrase",
+      "factIds": [
+        "aphg_u6_world_city_def",
+        "aphg_u6_primate_city_def",
+        "aphg_u6_new_urbanism",
+        "aphg_u6_smart_growth",
+        "aphg_u6_mixed_land_use",
+        "aphg_u6_infrastructure_quality",
+        "aphg_u6_suburbanization",
+        "aphg_u6_urban_heat_island",
+        "aphg_u6_inclusionary_zoning",
+        "aphg_u6_mdcs_vs_ldcs_urbanization",
+        "aphg_u6_transit_oriented_development"
+      ],
+      "minimumSize": 5,
       "homogeneityExemptNote": "AP unit vocabulary spans acronyms to multi-word terms by design",
       "syntheticDistractors": []
     },
@@ -10584,15 +10420,6 @@
         "aphg_u1_primary_vs_secondary_data",
         "aphg_u1_distance_decay",
         "aphg_u1_map_characteristics"
-      ],
-      "members": [
-        "cartogram",
-        "choropleth map",
-        "distance decay",
-        "isoline map",
-        "legend",
-        "primary source",
-        "remote sensing"
       ],
       "minimumSize": 5,
       "homogeneityExempt": true,
@@ -10616,19 +10443,6 @@
         "aphg_u1_map_scale_vs_geographic_scale",
         "aphg_u1_five_themes"
       ],
-      "members": [
-        "Five Themes of Geography",
-        "absolute location",
-        "azimuthal projection",
-        "equal-area projection",
-        "mapmaker perspective",
-        "regions can overlap",
-        "relative location",
-        "representative fraction",
-        "scale of analysis",
-        "spatial analysis",
-        "spatial interaction"
-      ],
       "minimumSize": 5,
       "homogeneityExempt": true,
       "homogeneityExemptNote": "AP unit vocabulary — multi-word phrases and compound terms",
@@ -10648,17 +10462,6 @@
         "aphg_u2_anti_natalist_policy",
         "aphg_u2_brain_drain",
         "aphg_u2_remittances"
-      ],
-      "members": [
-        "anti-natalist",
-        "birth rate",
-        "brain drain",
-        "death rate",
-        "doubling time",
-        "neo-Malthusians",
-        "pro-natalist",
-        "remittances",
-        "sex ratio"
       ],
       "minimumSize": 5,
       "homogeneityExempt": true,
@@ -10682,20 +10485,6 @@
         "aphg_u2_malthus_critics",
         "aphg_u2_women_education_fertility",
         "aphg_u2_women_dtm_progression"
-      ],
-      "members": [
-        "agricultural density",
-        "arithmetic density",
-        "chronic and degenerative diseases",
-        "cultural effects",
-        "declining fertility rates",
-        "education and status of women",
-        "infectious diseases",
-        "intervening obstacle",
-        "physiological density",
-        "population pyramid",
-        "technology and improved agriculture",
-        "working-age adults"
       ],
       "minimumSize": 5,
       "homogeneityExempt": true,
@@ -10724,24 +10513,6 @@
         "aphg_u3_nativism",
         "aphg_u3_taboo"
       ],
-      "members": [
-        "acculturation",
-        "assimilation",
-        "colonialism",
-        "culture",
-        "ethnocentrism",
-        "folk culture",
-        "globalization",
-        "hearths",
-        "isogloss",
-        "nativism",
-        "pilgrimage",
-        "placelessness",
-        "printing press",
-        "syncretism",
-        "taboo",
-        "toponyms"
-      ],
       "minimumSize": 5,
       "homogeneityExempt": true,
       "homogeneityExemptNote": "AP unit vocabulary — short terms (acronyms, single-word, brief phrases)",
@@ -10764,19 +10535,6 @@
         "aphg_u3_time_space_compression",
         "aphg_u3_mcdonaldization"
       ],
-      "members": [
-        "cultural convergence",
-        "cultural divergence",
-        "cultural homogenization",
-        "cultural landscape",
-        "cultural nationalism",
-        "cultural relativism",
-        "language divergence",
-        "material culture",
-        "multiculturalism",
-        "sequent occupance",
-        "time-space compression"
-      ],
       "minimumSize": 5,
       "homogeneityExempt": true,
       "homogeneityExemptNote": "AP unit vocabulary — multi-word phrases and compound terms",
@@ -10784,52 +10542,40 @@
     },
     {
       "id": "unit5_agriculture_concept_terms_short",
-      "label": "Unit 5 Agriculture & Rural Concepts (Short Terms)",
+      "label": "Unit 5 Agriculture & Rural Concepts (Short Terms) (short)",
       "answerFormat": "short_phrase",
       "factIds": [
+        "aphg_u5_gmos_biotechnology",
+        "aphg_u5_linear_settlement",
+        "aphg_u5_women_in_agriculture",
+        "aphg_u5_water_use_agriculture",
+        "aphg_u5_von_thunen_ring2",
         "aphg_u5_intensive_vs_extensive",
         "aphg_u5_extensive_agriculture",
         "aphg_u5_clustered_settlement",
         "aphg_u5_dispersed_settlement",
         "aphg_u5_hearth_east_asia",
-        "aphg_u5_hearth_mesoamerica",
-        "aphg_u5_diffusion_of_agriculture",
-        "aphg_u5_high_yield_varieties",
-        "aphg_u5_agribusiness",
-        "aphg_u5_commodity_chain",
-        "aphg_u5_food_insecurity",
-        "aphg_u5_food_desert",
-        "aphg_u5_desertification",
-        "aphg_u5_deforestation_agriculture",
-        "aphg_u5_linear_settlement",
-        "aphg_u5_von_thunen_ring2",
-        "aphg_u5_water_use_agriculture",
-        "aphg_u5_gmos_biotechnology",
-        "aphg_u5_women_in_agriculture"
-      ],
-      "members": [
-        "East Asia",
-        "GMOs",
-        "Mesoamerica",
-        "agribusiness",
-        "aquifer",
-        "clustered",
-        "commodity chain",
-        "deforestation",
-        "desertification",
-        "diffusion",
-        "dispersed",
-        "extensive",
-        "food desert",
-        "food insecurity",
-        "forestry",
-        "high-yield",
-        "intensive",
-        "linear",
-        "varies"
+        "aphg_u5_diffusion_of_agriculture"
       ],
       "minimumSize": 5,
-      "homogeneityExempt": true,
+      "homogeneityExemptNote": "AP unit vocabulary — short terms (acronyms, single-word, brief phrases)",
+      "syntheticDistractors": []
+    },
+    {
+      "id": "unit5_agriculture_concept_terms_long",
+      "label": "Unit 5 Agriculture & Rural Concepts (Short Terms) (long)",
+      "answerFormat": "short_phrase",
+      "factIds": [
+        "aphg_u5_high_yield_varieties",
+        "aphg_u5_hearth_mesoamerica",
+        "aphg_u5_food_desert",
+        "aphg_u5_agribusiness",
+        "aphg_u5_deforestation_agriculture",
+        "aphg_u5_commodity_chain",
+        "aphg_u5_food_insecurity",
+        "aphg_u5_desertification"
+      ],
+      "minimumSize": 5,
       "homogeneityExemptNote": "AP unit vocabulary — short terms (acronyms, single-word, brief phrases)",
       "syntheticDistractors": []
     },
@@ -10849,18 +10595,6 @@
         "aphg_u5_second_agricultural_revolution",
         "aphg_u5_green_revolution_consequences"
       ],
-      "members": [
-        "Columbian Exchange",
-        "Fertile Crescent",
-        "First Agricultural Revolution",
-        "Green Revolution",
-        "Indus River Valley",
-        "Second Agricultural Revolution",
-        "carrying capacity",
-        "economies of scale",
-        "environmental degradation and inequality",
-        "soil salinization"
-      ],
       "minimumSize": 5,
       "homogeneityExempt": true,
       "homogeneityExemptNote": "AP unit vocabulary — multi-word phrases and compound terms",
@@ -10868,38 +10602,33 @@
     },
     {
       "id": "unit7_economic_concept_terms_short",
-      "label": "Unit 7 Industrial & Economic Concepts (Short Terms)",
+      "label": "Unit 7 Industrial & Economic Concepts (Short Terms) (short)",
       "answerFormat": "short_phrase",
       "factIds": [
-        "aphg_u7_agglomeration",
-        "aphg_u7_just_in_time",
-        "aphg_u7_microloans",
-        "aphg_u7_neocolonialism",
-        "aphg_u7_outsourcing",
-        "aphg_u7_post_fordism",
-        "aphg_u7_growth_pole",
-        "aphg_u7_ecotourism",
-        "aphg_u7_fair_trade",
-        "aphg_u7_women_workforce",
+        "aphg_u7_wallerstein_core",
         "aphg_u7_industrial_rev_origin",
-        "aphg_u7_wallerstein_core"
-      ],
-      "members": [
-        "Britain",
-        "agglomeration",
-        "core",
-        "ecotourism",
-        "fair trade",
-        "growth pole",
-        "just-in-time",
-        "microloans",
-        "neocolonialism",
-        "outsourcing",
-        "post-Fordism",
-        "wage inequality"
+        "aphg_u7_microloans",
+        "aphg_u7_ecotourism",
+        "aphg_u7_fair_trade"
       ],
       "minimumSize": 5,
-      "homogeneityExempt": true,
+      "homogeneityExemptNote": "AP unit vocabulary — short terms (acronyms, single-word, brief phrases)",
+      "syntheticDistractors": []
+    },
+    {
+      "id": "unit7_economic_concept_terms_long",
+      "label": "Unit 7 Industrial & Economic Concepts (Short Terms) (long)",
+      "answerFormat": "short_phrase",
+      "factIds": [
+        "aphg_u7_outsourcing",
+        "aphg_u7_growth_pole",
+        "aphg_u7_just_in_time",
+        "aphg_u7_post_fordism",
+        "aphg_u7_agglomeration",
+        "aphg_u7_neocolonialism",
+        "aphg_u7_women_workforce"
+      ],
+      "minimumSize": 5,
       "homogeneityExemptNote": "AP unit vocabulary — short terms (acronyms, single-word, brief phrases)",
       "syntheticDistractors": []
     },
@@ -10918,17 +10647,6 @@
         "aphg_u7_sdgs",
         "aphg_u7_containerization"
       ],
-      "members": [
-        "Sustainable Development Goals",
-        "break-of-bulk point",
-        "break-of-bulk transfer",
-        "comparative advantage",
-        "cottage industry",
-        "deindustrialization",
-        "export-processing zones",
-        "special economic zones",
-        "sustainable development"
-      ],
       "minimumSize": 5,
       "homogeneityExempt": true,
       "homogeneityExemptNote": "AP unit vocabulary — multi-word phrases and compound terms",
@@ -10941,10 +10659,6 @@
       "factIds": [
         "aphg_u1_gis_definition",
         "aphg_u1_site_vs_situation"
-      ],
-      "members": [
-        "GIS",
-        "site"
       ],
       "minimumSize": 1,
       "homogeneityExempt": true,
@@ -10961,13 +10675,6 @@
         "aphg_u2_dtm_stage1",
         "aphg_u2_dtm_stage2",
         "aphg_u2_dtm_stage4"
-      ],
-      "members": [
-        "Stage 1",
-        "Stage 2",
-        "Stage 4",
-        "pull",
-        "push"
       ],
       "minimumSize": 5,
       "homogeneityExempt": true,

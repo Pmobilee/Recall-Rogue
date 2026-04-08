@@ -96,7 +96,7 @@
         "FMNH PR 2081"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "misc_concepts",
+      "answerTypePoolId": "misc_concepts_short",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "What is the name of the famous T. rex specimen on display at the Field Museum in Chicago?",
@@ -202,7 +202,7 @@
         "piscivorous"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "misc_concepts",
+      "answerTypePoolId": "misc_concepts_short",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "What was the primary diet of Spinosaurus, unlike most large theropods?",
@@ -1325,7 +1325,7 @@
         "herbivorous"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "misc_concepts",
+      "answerTypePoolId": "misc_concepts_long",
       "difficulty": 3,
       "funScore": 9,
       "quizQuestion": "Despite being a theropod in the same group as T. rex, what was Therizinosaurus's diet?",
@@ -2719,7 +2719,7 @@
         "flying reptile"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "misc_concepts",
+      "answerTypePoolId": "misc_concepts_long",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Pteranodon was a flying reptile — what group does it belong to?",
@@ -2841,7 +2841,7 @@
         "giraffe-sized"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "misc_concepts",
+      "answerTypePoolId": "misc_concepts_long",
       "difficulty": 3,
       "funScore": 9,
       "quizQuestion": "When standing on the ground, Quetzalcoatlus was roughly the same height as which modern animal?",
@@ -2913,7 +2913,7 @@
         "mosasauridae"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "misc_concepts",
+      "answerTypePoolId": "misc_concepts_long",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "Mosasaurus was a giant marine reptile more closely related to which group of modern animals than to dinosaurs?",
@@ -3038,7 +3038,7 @@
         "viviparous"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "misc_concepts",
+      "answerTypePoolId": "misc_concepts_long",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Unlike many reptiles, Ichthyosaurus gave birth how — as proven by fossils showing mothers with embryos?",
@@ -3111,7 +3111,7 @@
       "correctAnswer": "False",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "misc_concepts",
+      "answerTypePoolId": "misc_concepts_short",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "True or false: Plesiosaurus could raise its long neck high above the water surface like a swan.",
@@ -3180,7 +3180,7 @@
         "dinosaur teeth"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "misc_concepts",
+      "answerTypePoolId": "misc_concepts_short",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "Although Archaeopteryx had feathered wings like a bird, it still possessed which distinctly un-bird-like feature?",
@@ -3276,7 +3276,7 @@
         "252-201 mya"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "misc_concepts",
+      "answerTypePoolId": "misc_concepts_long",
       "difficulty": 3,
       "funScore": 5,
       "quizQuestion": "The Triassic period lasted from approximately how many million years ago to how many million years ago?",
@@ -3328,7 +3328,7 @@
         "Pangea"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "misc_concepts",
+      "answerTypePoolId": "misc_concepts_long",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "During the Triassic period, all continents were joined in which single supercontinent?",
@@ -3354,7 +3354,7 @@
         "201-145 mya"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "misc_concepts",
+      "answerTypePoolId": "misc_concepts_long",
       "difficulty": 3,
       "funScore": 5,
       "quizQuestion": "The Jurassic period spanned approximately from how many million years ago to how many million years ago?",
@@ -3405,7 +3405,7 @@
         "145-66 mya"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "misc_concepts",
+      "answerTypePoolId": "misc_concepts_short",
       "difficulty": 3,
       "funScore": 5,
       "quizQuestion": "The Cretaceous period lasted from approximately how many million years ago to how many million years ago?",
@@ -3704,7 +3704,7 @@
         "Liaoning, China"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "misc_concepts",
+      "answerTypePoolId": "misc_concepts_short",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "Where were the feathered dinosaur fossils discovered in the 1990s that revolutionized our understanding of dinosaur evolution?",
@@ -4985,22 +4985,14 @@
       ]
     },
     {
-      "id": "misc_concepts",
+      "id": "misc_concepts_short",
       "factIds": [
         "dino_trex_specimen",
         "dino_spinosaurus_diet",
-        "dino_therizinosaurus_diet",
-        "dino_quetzalcoatlus_giraffe_height",
         "dino_plesiosaurus_neck_myth",
         "dino_archaeopteryx_teeth",
-        "dino_triassic_dates",
-        "dino_triassic_pangaea",
-        "dino_jurassic_dates",
-        "dino_cretaceous_dates",
         "dino_feathered_liaoning",
-        "dino_pteranodon_not_dinosaur",
-        "dino_mosasaurus_not_dinosaur",
-        "dino_ichthyosaurus_live_birth"
+        "dino_cretaceous_dates"
       ],
       "syntheticDistractors": [
         "True",
@@ -5021,8 +5013,40 @@
         "Rodinia",
         "Gondwana"
       ],
-      "label": "Miscellaneous Concepts & Terms",
-      "homogeneityExempt": true
+      "label": "Miscellaneous Concepts & Terms (short)"
+    },
+    {
+      "id": "misc_concepts_long",
+      "factIds": [
+        "dino_quetzalcoatlus_giraffe_height",
+        "dino_triassic_dates",
+        "dino_triassic_pangaea",
+        "dino_jurassic_dates",
+        "dino_therizinosaurus_diet",
+        "dino_pteranodon_not_dinosaur",
+        "dino_ichthyosaurus_live_birth",
+        "dino_mosasaurus_not_dinosaur"
+      ],
+      "syntheticDistractors": [
+        "True",
+        "Eggs",
+        "Africa",
+        "Asia",
+        "Australia",
+        "Claws",
+        "Horns",
+        "Scales",
+        "Feathers",
+        "Carnivore",
+        "Omnivore",
+        "Lion",
+        "Elephant",
+        "Nile",
+        "Amazon",
+        "Rodinia",
+        "Gondwana"
+      ],
+      "label": "Miscellaneous Concepts & Terms (long)"
     }
   ],
   "synonymGroups": [

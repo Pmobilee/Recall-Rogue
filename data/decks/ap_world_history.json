@@ -6971,7 +6971,7 @@
       "difficulty": 3,
       "funScore": 6,
       "chainThemeId": 3,
-      "answerTypePoolId": "date_periods",
+      "answerTypePoolId": "date_descriptions",
       "examTags": {
         "exam": "AP World History: Modern",
         "unit": 4,
@@ -7527,7 +7527,7 @@
       "difficulty": 2,
       "funScore": 5,
       "chainThemeId": 3,
-      "answerTypePoolId": "date_periods",
+      "answerTypePoolId": "date_descriptions",
       "examTags": {
         "exam": "AP World History: Modern",
         "unit": 4,
@@ -12975,7 +12975,7 @@
       "difficulty": 2,
       "funScore": 8,
       "chainThemeId": 6,
-      "answerTypePoolId": "date_periods",
+      "answerTypePoolId": "date_descriptions",
       "examTags": {
         "exam": "AP World History: Modern",
         "unit": 7,
@@ -14516,7 +14516,7 @@
       "difficulty": 2,
       "funScore": 9,
       "chainThemeId": 7,
-      "answerTypePoolId": "date_periods",
+      "answerTypePoolId": "date_descriptions",
       "examTags": {
         "exam": "AP World History: Modern",
         "unit": 8,
@@ -17473,11 +17473,9 @@
         "apwh_3_027",
         "apwh_3_057",
         "apwh_3_077",
-        "apwh_4_043",
         "apwh_4_044",
         "apwh_4_045",
         "apwh_4_049",
-        "apwh_4_063",
         "apwh_5_036",
         "apwh_5_048",
         "apwh_5_049",
@@ -17486,12 +17484,10 @@
         "apwh_6_018",
         "apwh_6_041",
         "apwh_7_015",
-        "apwh_7_020",
         "apwh_7_027",
         "apwh_7_046",
         "apwh_8_012",
         "apwh_8_016",
-        "apwh_8_021",
         "apwh_9_017",
         "apwh_9_019",
         "apwh_9_044"
@@ -17526,6 +17522,25 @@
         "One ship and 18 men"
       ],
       "minimumSize": 5
+    },
+    {
+      "id": "date_descriptions",
+      "label": "Date Descriptions (text date ranges)",
+      "factIds": [
+        "apwh_4_063",
+        "apwh_4_043",
+        "apwh_7_020",
+        "apwh_8_021"
+      ],
+      "minimumSize": 1,
+      "syntheticDistractors": [
+        "Departed 1492, returned 1493",
+        "Departed 1497, returned 1499",
+        "Departed 1519, returned 1521",
+        "Departed 1600, returned 1603",
+        "Left in 1415, returned in 1420",
+        "Left in 1453, arrived 1462"
+      ]
     },
     {
       "id": "concept_terms",
