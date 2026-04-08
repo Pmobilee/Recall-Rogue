@@ -5346,7 +5346,7 @@
         "Auctioning",
         "Price discovery",
         "Black market pricing",
-        "Queue pricing",
+        "Market segmentation",
         "Competitive bidding"
       ],
       "quizQuestion": "Because a binding price ceiling creates a shortage, some mechanism other than price must allocate the scarce good, a process called ___.",
@@ -8662,10 +8662,9 @@
     },
     {
       "id": "ap_micro_3b_013",
-      "correctAnswer": "Many firms, identical products, free entry and exit, price takers, perfect information",
+      "correctAnswer": "Perfect competition",
       "acceptableAlternatives": [
-        "many sellers, homogeneous goods, free entry/exit, price taking",
-        "price takers with homogeneous products and free entry"
+        "Perfectly competitive market"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "market_structure_names",
@@ -8673,17 +8672,17 @@
       "funScore": 7,
       "ageGroup": "all",
       "distractors": [
-        "Few firms, identical products, significant barriers to entry",
-        "One firm, unique product, blocked entry",
-        "Many firms, differentiated products, free entry",
-        "Few firms, differentiated products, some barriers",
-        "Many firms, price setters, free entry",
-        "One buyer, many sellers, homogeneous goods",
-        "Many firms, identical products, blocked entry",
-        "Two firms, identical products, no barriers"
+        "Monopolistic competition",
+        "Oligopoly",
+        "Pure monopoly",
+        "Monopsony",
+        "Natural monopoly",
+        "Duopoly",
+        "Contestable market",
+        "Cartel"
       ],
-      "quizQuestion": "What are the five defining characteristics of a perfectly competitive market?",
-      "explanation": "Perfect competition requires many firms so no single one affects price, identical (homogeneous) products so buyers have no preference between sellers, free entry and exit so economic profit signals firms to enter or exit, firms are price takers who accept the market price, and all buyers and sellers have perfect information.",
+      "quizQuestion": "Which market structure is defined by many firms selling identical products with free entry and exit, where firms are price takers with perfect information?",
+      "explanation": "Perfect competition requires five conditions: many independent firms, identical (homogeneous) products, free entry and exit, price-taking behavior, and perfect information. It serves as the benchmark against which all other market structures are compared.",
       "statement": "",
       "wowFactor": "",
       "sourceName": "College Board AP Microeconomics CED, Unit 3",
