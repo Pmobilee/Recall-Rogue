@@ -87,6 +87,10 @@ CREATE TABLE IF NOT EXISTS deck_facts (
   pronunciation          TEXT,
   part_of_speech         TEXT,
   exam_tags              TEXT,   -- JSON array
+  sentence_furigana      TEXT,   -- JSON array of baked furigana segments
+  sentence_romaji        TEXT,
+  sentence_translation   TEXT,
+  grammar_point_label    TEXT,
   FOREIGN KEY (deck_id) REFERENCES decks(id)
 );
 
@@ -166,6 +170,10 @@ function factToRow(fact, deckId) {
     fact.pronunciation                               ?? null,
     fact.partOfSpeech                                ?? null,
     jsonOrNull(fact.examTags                         ?? null),
+    jsonOrNull(fact.sentenceFurigana                 ?? null),
+    fact.sentenceRomaji                              ?? null,
+    fact.sentenceTranslation                         ?? null,
+    fact.grammarPointLabel                           ?? null,
   ];
 }
 
@@ -307,7 +315,8 @@ async function main() {
       source_name, source_url, volatile,
       distractors, acceptable_alternatives, synonym_group_id,
       target_language_word, reading, language, pronunciation,
-      part_of_speech, exam_tags
+      part_of_speech, exam_tags,
+      sentence_furigana, sentence_romaji, sentence_translation, grammar_point_label
     ) VALUES (
       ?, ?, ?, ?, ?,
       ?, ?, ?,
@@ -317,7 +326,8 @@ async function main() {
       ?, ?, ?,
       ?, ?, ?,
       ?, ?, ?, ?,
-      ?, ?
+      ?, ?,
+      ?, ?, ?, ?
     )
   `);
 

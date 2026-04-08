@@ -25,11 +25,15 @@ Single source of truth for all Japanese language content in Recall Rogue. Covers
 | `japanese_n5.json` | Vocabulary | - | Shipped |
 | `japanese_n4.json` | Vocabulary | - | Shipped |
 | `japanese_n3.json` | Vocabulary | - | Shipped |
-| `japanese_n3_grammar.json` | Grammar | 670 | Shipped (audited 2026-03-29) |
-| `japanese_n4_grammar.json` | Grammar | 401 | Shipped 2026-04-02 (fill-blank, 133 points) |
 | `japanese_n5_grammar.json` | Grammar | 375 | Shipped (fill-blank, 90 points) |
+| `japanese_n4_grammar.json` | Grammar | 400 | Shipped 2026-04-02 (fill-blank, 133 points) |
+| `japanese_n3_grammar.json` | Grammar | 670 | Shipped (audited 2026-03-29) |
+| `japanese_n2_grammar.json` | Grammar | 820 | Shipped |
+| `japanese_n1_grammar.json` | Grammar | 1183 | Shipped |
 | `japanese_n2.json` | Vocabulary | - | Shipped |
 | `japanese_n1.json` | Vocabulary | - | Shipped |
+
+**All 5 grammar decks baked with furigana/romaji/translation/grammar-point label (2026-04-08)** — see "Grammar Deck Baked Rendering Data" section below.
 
 ## Source Data
 
@@ -147,6 +151,81 @@ Bold header (from explanation field) + contextual note (grammarNote field):
 - **Format**: Bold header (from explanation field) + contextual 1-2 sentence note
 - **Auto-resume**: +3000ms extra reading time when grammar note shown
 
+## Grammar Deck Baked Rendering Data (2026-04-08)
+
+### Overview
+
+All 5 grammar decks (N5–N1, 3,448 facts total) have pre-baked sentence rendering data stored directly on every fact. The renderer is now **synchronous and deterministic** — no runtime kuromoji tokenization for grammar sentences.
+
+### Baked Fields (on every grammar fact)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `sentenceFurigana` | `Array<{t:string;r?:string;g?:string}>` | Ordered segments. `t` = surface text. `r` = hiragana reading (only when `t` contains kanji). `g` = English gloss (content words only; particles, aux verbs, punctuation, and the fact's `correctAnswer` are excluded). `{t:"{___}"}` entries mark blank positions. |
+| `sentenceRomaji` | `string` | Whole-sentence romaji (e.g., `"basu ___ kuru yo"`), computed from kuromoji token readings before the furigana-collapse step so natural token boundaries get spaces. |
+| `sentenceTranslation` | `string` | First-class English translation (promoted from `quizQuestion` line 2, stripped of enclosing parens). |
+| `grammarPointLabel` | `string` | Short teaching label (e.g., `"が — subject marker particle"`), parsed from `explanation` via `/^(.+?)\s*\((.+?)\)/` with fallback to `"{correctAnswer} — grammar form"`. |
+
+### Bake Script
+
+`scripts/japanese/bake-grammar-furigana.mjs` — ES module, Node-native. Deps: `kuromoji`, `wanakana`. Reads kuromoji dict from `public/assets/kuromoji/` and JMdict from `public/assets/dict/jdict-compact.json`.
+
+Run after any grammar-deck JSON change:
+```bash
+node scripts/japanese/bake-grammar-furigana.mjs
+node scripts/verify-all-decks.mjs           # must show 0 failures
+npm run build:curated                         # rebuild curated.db
+```
+
+**Idempotent** — re-running overwrites the 4 baked fields with freshly computed values. Processes all 5 `japanese_n*_grammar.json` files automatically.
+
+Key script behavior:
+- Splits `quizQuestion` on `\n` → sentence + translation. Strips enclosing parens on translation.
+- Splits sentence on `{___}` → segments around blanks. Inserts explicit `{t:"{___}"}` markers.
+- Tokenizes each non-blank segment with kuromoji. Converts katakana readings to hiragana via `wanakana.toHiragana()`.
+- Excludes gloss for `pos === 助詞` (particle), `助動詞` (aux verb), `記号` (symbol), `接続詞` (conjunction), and the fact's `correctAnswer`.
+- Collapses adjacent plain tokens (no reading, no gloss) to minimize JSON size.
+
+### SQLite Schema (MUST sync)
+
+When editing `DeckFact` types, the curated-deck SQLite pipeline has **four touchpoints** that must stay in sync:
+
+1. `scripts/build-curated-db.mjs` — `CREATE TABLE deck_facts` schema
+2. `scripts/build-curated-db.mjs` — `factToRow()` parameter array
+3. `scripts/build-curated-db.mjs` — `INSERT_FACT` column list + VALUES placeholders
+4. `src/data/curatedDeckStore.ts` — `rowToDeckFact()` decoder
+
+Missing any one silently drops the field at runtime (typecheck passes, data is `undefined`). See `docs/gotchas.md` 2026-04-08 entry "Curated-deck new fact fields require 3-hop wiring" for the cautionary tale.
+
+### Runtime Rendering Paths
+
+**Combat quiz** (`src/ui/components/CardExpanded.svelte`):
+- Receives the 4 baked fields as props forwarded from `CardCombatOverlay.svelte`'s `QuizData` interface
+- When `isJapaneseFact && question.includes('{___}')`, passes `sentenceFurigana` to `<GrammarSentenceFurigana>` and renders translation + romaji row
+- Typing mode (`alwaysWrite`) shows `.grammar-typing-hints` panel with `grammarPointLabel` + `sentenceTranslation` above the `GrammarTypingInput`
+
+**Rest-room study** (`src/ui/components/StudyQuizOverlay.svelte`):
+- Receives the 4 fields via `QuizQuestion` (extended in `src/services/bossQuizPhase.ts`)
+- Data hops: `DeckFact` → `selectNonCombatStudyQuestion` (populates `NonCombatQuizQuestion`) → `generateStudyQuestions` in `gameFlowController.ts` (populates `QuizQuestion`) → `StudyQuizOverlay`
+- Detects grammar facts via `isJapaneseGrammarFact = !!currentQuestion?.sentenceFurigana?.length`
+- Always shows `grammarPointLabel` as teal-bordered hint in MCQ study mode (no typing path)
+
+**Renderer** (`src/ui/components/GrammarSentenceFurigana.svelte`):
+- Synchronous segment-based renderer (no kuromoji import)
+- Props: `segments`, `excludeWords`, `fallbackText`
+- `furigana` toggle → renders `<ruby>` with `<rt>` reading
+- `kanaOnly` toggle → renders `r ?? t` (hiragana replaces kanji)
+- Segments with `g` not in `excludeWords` → `word-hoverable` with tooltip (reading + gloss)
+- Reads `$deckOptions.ja.furigana` / `.kanaOnly` reactively; romaji row is rendered by parent
+
+### Dead Code: QuizOverlay.svelte (DELETED 2026-04-08)
+
+**Historical warning:** `src/ui/components/QuizOverlay.svelte` used to exist and looked like the live combat quiz. It was never imported anywhere. Future grammar/quiz work MUST grep for imports before trusting a component is on any render path:
+```bash
+grep -rn "import.*<ComponentName>\|<<ComponentName>" src/
+```
+See `docs/gotchas.md` 2026-04-08 entry for the full story.
+
 ## Build Pipeline
 
 ### Grammar Deck Build
@@ -211,13 +290,14 @@ Reference data at `data/raw/japanese/n3-vocab-validation.json`:
 
 Critical lessons from the N3 Grammar fill-blank deck build:
 
-### Quiz Rendering: THREE Components, Not One
-Grammar fill-blank questions (`{___}` pattern) must be handled in ALL quiz rendering components:
-1. **`CardExpanded.svelte`** — combat charge quiz (line ~529, has `{___}` detection via `isJapaneseFact && question.includes('{___}')`)
-2. **`QuizOverlay.svelte`** — gate quiz / non-combat (has `isGrammarFillBlank` derived)
-3. **`CardCombatOverlay.svelte`** — study mode quiz selection (uses `getStudyModeQuiz()`)
+### Quiz Rendering: TWO Live Components (updated 2026-04-08)
+Grammar fill-blank questions (`{___}` pattern) must be handled in BOTH live quiz rendering components:
+1. **`CardExpanded.svelte`** — combat charge quiz. `{___}` detection via `isJapaneseFact && question.includes('{___}')`. Receives baked `sentenceFurigana` etc. as props forwarded through `CardCombatOverlay.svelte` `QuizData`.
+2. **`StudyQuizOverlay.svelte`** — rest-room study quiz. Detects via `isJapaneseGrammarFact` derived from `currentQuestion.sentenceFurigana`. Receives baked fields via `QuizQuestion` (extended in `bossQuizPhase.ts`) through `generateStudyQuestions` in `gameFlowController.ts`.
 
-**If you add a new question format, you MUST verify it renders correctly in ALL THREE components.** Do not assume fixing one component fixes all rendering.
+~~`QuizOverlay.svelte`~~ was dead code and has been deleted (2026-04-08).
+
+**If you add a new question format, you MUST verify it renders correctly in BOTH live components AND grep for imports to ensure no newly-introduced component is orphaned.**
 
 ### Question Template Must Use Placeholders
 The `questionFormat` field in `questionTemplates[]` must be `"{quizQuestion}"` — NOT a literal instruction string. The `renderTemplate()` function in `questionTemplateSelector.ts` only substitutes `{placeholder}` patterns. A literal string like `"Complete the sentence"` passes through unchanged and replaces the actual question.

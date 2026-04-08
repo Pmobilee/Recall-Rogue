@@ -29,7 +29,7 @@
   import { RELIC_BY_ID } from '../../data/relics/index'
   import { getMaxRelicSlots, resolveChargeButtonState } from '../../services/relicEffectResolver'
   import { juiceManager } from '../../services/juiceManager'
-  import { getCombatScene, consumeSoulJarCharge, handlePendingChoice, enemyDamageEvent } from '../../services/encounterBridge'
+  import { getCombatScene, consumeSoulJarCharge, handlePendingChoice, enemyDamageEvent, coopWaitingForPartner } from '../../services/encounterBridge'
   import { factsDB } from '../../services/factsDB'
   import { getReviewStateByFactId, playerSave } from '../stores/playerData'
   import type { CombatScene } from '../../game/scenes/CombatScene'
@@ -149,6 +149,14 @@
     grammarPointHeader?: string
     /** Quiz response mode: 'choice' (default) or 'typing' (text input with romaji→hiragana). */
     quizResponseMode?: 'choice' | 'typing'
+    /** Pre-baked furigana segments for Japanese grammar sentences. */
+    sentenceFurigana?: Array<{ t: string; r?: string; g?: string }>
+    /** Pre-baked whole-sentence romaji for Japanese grammar sentences. */
+    sentenceRomaji?: string
+    /** First-class English translation for Japanese grammar sentences. */
+    sentenceTranslation?: string
+    /** Short grammar-point label shown as hint above typing input. */
+    grammarPointLabel?: string
   }
 
   let { turnState, onplaycard, onskipcard, onendturn, onusehint, onreturnhub }: Props = $props()
@@ -1409,6 +1417,10 @@
       grammarNote: fact.grammarNote,
       grammarPointHeader: fact.explanation?.includes(' — ') ? fact.explanation.split(' — ')[0] : undefined,
       quizResponseMode: fact.quizResponseMode ?? 'choice',
+      sentenceFurigana: fact.sentenceFurigana,
+      sentenceRomaji: fact.sentenceRomaji,
+      sentenceTranslation: fact.sentenceTranslation,
+      grammarPointLabel: fact.grammarPointLabel,
     }
   }
 
@@ -2747,6 +2759,10 @@
           grammarNote={committedQuizData.grammarNote}
           grammarPointHeader={committedQuizData.grammarPointHeader}
           quizResponseMode={committedQuizData.quizResponseMode}
+          sentenceFurigana={committedQuizData.sentenceFurigana}
+          sentenceRomaji={committedQuizData.sentenceRomaji}
+          sentenceTranslation={committedQuizData.sentenceTranslation}
+          grammarPointLabel={committedQuizData.grammarPointLabel}
           onanswer={handleAnswer}
           onskip={handleSkip}
           oncancel={() => {}}
@@ -2821,16 +2837,22 @@
     {#if showEndTurn}
       <button
         class="end-turn-btn"
-        class:disabled={endTurnDisabled}
-        class:end-turn-pulse={!endTurnDisabled && cardPlayStage !== 'committed' && (apCurrent === 0 || !hasPlayableCards)}
+        class:disabled={endTurnDisabled || $coopWaitingForPartner}
+        class:end-turn-pulse={!endTurnDisabled && !$coopWaitingForPartner && cardPlayStage !== 'committed' && (apCurrent === 0 || !hasPlayableCards)}
         class:has-ap-remaining={apCurrent > 0 && hasPlayableCards && !endTurnDisabled}
         data-testid="btn-end-turn"
         aria-label="End turn"
         onclick={handleEndTurn}
-        disabled={endTurnDisabled}
+        disabled={endTurnDisabled || $coopWaitingForPartner}
       >
-        END TURN
+        {$coopWaitingForPartner ? 'WAITING…' : 'END TURN'}
       </button>
+    {/if}
+
+    {#if $coopWaitingForPartner}
+      <div class="coop-waiting-banner" role="status" aria-live="polite">
+        Waiting for partner to end turn…
+      </div>
     {/if}
 
     {#if showEndTurnConfirm}
@@ -3412,6 +3434,31 @@
     font-family: inherit;
     letter-spacing: 1.5px;
     text-transform: uppercase;
+  }
+
+  /* Co-op "waiting for partner" banner: small status pill above the End Turn button. */
+  .coop-waiting-banner {
+    position: absolute;
+    right: calc(70px * var(--layout-scale, 1));
+    bottom: calc(calc(70px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
+    z-index: 9;
+    padding: calc(6px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    background: rgba(20, 30, 50, 0.92);
+    border: 1px solid rgba(125, 211, 252, 0.6);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    color: #bae6fd;
+    font-size: calc(12px * var(--text-scale, 1));
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 0 12px rgba(125, 211, 252, 0.3);
+    pointer-events: none;
+    animation: coopWaitPulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes coopWaitPulse {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 1; box-shadow: 0 0 18px rgba(125, 211, 252, 0.5); }
   }
 
   /* AP indicator positioned right of End Turn button (portrait). Slightly smaller. */

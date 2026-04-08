@@ -1,3 +1,32 @@
+### 2026-04-08 — QuizOverlay.svelte was dead code for months; grammar fixes applied to wrong component
+
+**What:** `src/ui/components/QuizOverlay.svelte` existed in the repo and looked like the central combat quiz panel (it had landscape + portrait layouts, `isGrammarFillBlank` derivations, and full charge/typing/answer rendering). An Explore agent investigating a Japanese grammar rendering bug grepped it up and confidently pointed at it as the live component. An implementation agent then patched all 5 user-reported bugs (furigana, kana-only, romaji, hover gloss, typing hints) into QuizOverlay.svelte. **Typecheck passed, build passed — but nothing worked in-game**, because `QuizOverlay.svelte` was never imported anywhere. A `grep -rn "import.*QuizOverlay\\|<QuizOverlay"` would have caught it instantly.
+
+**Live paths:**
+- **Combat quiz**: `CardCombatOverlay.svelte` → `CardExpanded.svelte` (via the committed-charge in-card overlay, NOT a separate quiz modal)
+- **Rest-room study**: `CardApp.svelte` → `StudyQuizOverlay.svelte`
+
+**Fix:** Deleted `QuizOverlay.svelte`. Re-applied all 5 grammar fixes to `CardExpanded.svelte` (threaded 4 new props from `QuizData` in `CardCombatOverlay`) and `StudyQuizOverlay.svelte` (threaded 4 new fields through `NonCombatQuizQuestion` → `QuizQuestion` in `bossQuizPhase.ts` via `generateStudyQuestions` in `gameFlowController.ts`).
+
+**Rules that would have caught this earlier:**
+1. **Never trust a component exists until you've grepped for imports.** Existing-file ≠ live-file. Specifically: `grep -rn "import.*<NAME>\\|<<NAME>" src/` before assuming a Svelte component is on any render path.
+2. **Visual verification is mandatory after grammar-path changes.** Typecheck only proves the types line up; it cannot detect "this component never mounts". The Docker visual-inspect (`scripts/docker-visual-test.sh`) with a `restStudy` + `deckId: japanese_n5_grammar` eval was the check that caught it — one screenshot showed `{___}` rendered as raw text and the investigation pivoted.
+3. **The in-card combat quiz is not a modal.** `CardExpanded.svelte` is the combat quiz UI. Future investigators: don't look for "QuizOverlay" or "QuizModal" — look for `CardExpanded`.
+
+### 2026-04-08 — Curated-deck new fact fields require 3-hop wiring: JSON → build-script → runtime decoder
+
+**What:** Added 4 new fields to Japanese grammar facts (`sentenceFurigana`, `sentenceRomaji`, `sentenceTranslation`, `grammarPointLabel`) via an offline bake script. The fields appeared in `data/decks/japanese_n*_grammar.json` and the `DeckFact` TypeScript interface. Typecheck passed. Rendering code was wired. But at runtime the fields were always `undefined`, so the grammar rendering branch never triggered — because `scripts/build-curated-db.mjs` doesn't auto-propagate unknown fields: it has an explicit column list, an explicit `factToRow()` parameter array, and an explicit `INSERT INTO deck_facts(...)` column list. Fields not in all three are silently dropped when the JSON decks are compiled to `public/curated.db`.
+
+**Chain for adding a new curated-fact field:**
+1. `src/data/curatedDeckTypes.ts` — add the field to `DeckFact` interface
+2. `data/decks/*.json` — write the field into the fact data
+3. `scripts/build-curated-db.mjs` — (a) `CREATE TABLE deck_facts` schema, (b) `factToRow()` parameter array, (c) `INSERT_FACT.prepare()` column list + VALUES placeholders
+4. `src/data/curatedDeckStore.ts` — `rowToDeckFact()` must read the new column back
+5. `npm run build:curated` — rebuild `public/curated.db`
+6. Downstream runtime consumers (e.g. `nonCombatQuizSelector.ts` that builds `NonCombatQuizQuestion`, `gameFlowController.generateStudyQuestions` that builds `QuizQuestion`, UI components)
+
+**Rule:** Any new `DeckFact` field MUST be end-to-end tested by loading a fact via `getCuratedDeckFacts()` in a browser console after running `npm run build:curated`, verifying the field is non-undefined. Typecheck alone is insufficient — the SQLite layer uses string column names, not typed bindings, so missing fields are silent.
+
 ### 2026-04-07 — Vite staticAssetCachePlugin caches SPA fallback HTML for missing assets
 
 **What:** The `staticAssetCachePlugin()` in `vite.config.ts` set `Cache-Control: public, max-age=86400` on ALL `/assets/` URL middleware responses before Vite resolved whether the file existed. When a file was missing, Vite served the SPA fallback `index.html` with `text/html` content-type — and that HTML response got cached for 24 hours. This caused deck front images (algebra, calculus, geometry, etc.) to appear broken for a full day after the files were added to disk.

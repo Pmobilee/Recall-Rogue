@@ -54,7 +54,48 @@ Read("/tmp/rr-docker-visual/{agent-id}_{scenario}_{timestamp}/result.json")
 - Both `page.screenshot()` and `__rrScreenshotFile()` work inside the container
 - `__rrLayoutDump()` works perfectly
 - Slower than native (~60-110s per test) due to software rendering
+- Requires host dev server running on port 5173 (container uses `host.docker.internal:5173`)
 - For single quick tests where no parallelism is needed, the Direct Node.js Script method below is faster
+
+### Docker `--eval` Custom JS Pattern (write to file, not inline)
+
+The `--eval` flag lets you run custom JS after scenario load. Shell-escaping long inline JS is painful — **write the JS to a temp file and read via `$(cat ...)`**:
+
+```bash
+# 1. Write your custom eval to a temp file
+cat > /tmp/rr-my-eval.js <<'EOF'
+(async () => {
+  // Must be a single async IIFE — the runner does page.evaluate(CUSTOM_EVAL)
+  const r = await window.__rrScenario.loadCustom({
+    screen: 'restStudy',
+    deckId: 'japanese_n5_grammar'
+  });
+  await new Promise(res => setTimeout(res, 2500));
+  // Write observables to document.title or globals — return values are NOT captured by the runner
+  return { ok: true };
+})()
+EOF
+
+# 2. Pass via $(cat ...) — preserves newlines and quotes
+EVAL_JS="$(cat /tmp/rr-my-eval.js)" && \
+  scripts/docker-visual-test.sh \
+    --scenario rest-site \
+    --agent-id my-test \
+    --no-build \
+    --wait 3000 \
+    --eval "$EVAL_JS"
+```
+
+**Gotchas:**
+- The eval MUST be a single expression (wrap in `(async () => { ... })()`). Top-level `await` outside a function errors with `"await is only valid in async functions"`.
+- **Return values are NOT captured** by the runner — write observations to `document.title`, `window.__rrTestSummary`, or the DOM where `__rrLayoutDump()` will pick them up.
+- To force specific `deckOptions` toggles before a scenario load, either `localStorage.setItem('card:deckOptions', ...)` OR dynamic-import the service: `const m = await import('/src/services/deckOptionsService.ts'); m.setRomajiEnabled(true);`. localStorage alone won't update the reactive Svelte store because it reads once at module init.
+- `--scenario <preset>` is required even when your `--eval` does its own `loadCustom` — pass any fast-loading preset like `rest-site` as the wrapper.
+
+### Reaching Curated-Deck Combat State (harder than study state)
+
+- **Study / rest-room quiz** (`screen: 'restStudy'` + `deckId: 'japanese_n5_grammar'`) — works out of the box. `scenarioSimulator.ts:1336` sets `run.deckMode` after bootstrap before generating questions. Hits `StudyQuizOverlay.svelte`.
+- **Combat quiz with a curated deck** — `loadCustom({screen: 'combat', deckId: ...})` does NOT set `run.deckMode`. Combat picks facts from the default trivia pool. To test combat with a curated deck you need to manually set `run.deckMode` via store mutation BEFORE `startEncounterForRoom` runs — not currently exposed via `__rrScenario`. Easier paths: (a) use the restStudy screen to verify the shared renderer components; (b) inject committed quiz data via direct store manipulation; (c) add a dedicated combat+deck preset to `scenarioSimulator.ts` if you need it repeatedly.
 
 ### Primary Method: Direct Node.js Script
 

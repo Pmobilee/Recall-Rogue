@@ -1,146 +1,128 @@
 <script lang="ts">
   /**
-   * GrammarSentenceFurigana — renders a Japanese grammar sentence segment
-   * with furigana ruby annotations, hover tooltips, and kana-only mode support.
+   * GrammarSentenceFurigana — renders a Japanese grammar sentence using
+   * pre-baked segment data (from `sentenceFurigana` on the fact).
    *
-   * Used in grammar fill-in-the-blank questions to show furigana above kanji
-   * while preserving the WordHover tooltip experience.
+   * Replaces the previous runtime kuromoji tokenization path with a
+   * synchronous segment renderer. All data is now baked offline by
+   * scripts/japanese/bake-grammar-furigana.mjs.
    *
-   * Props follow the same pattern as WordHover.svelte.
+   * Segment format: { t: string; r?: string; g?: string }
+   *   t = surface text (or "{___}" for the blank)
+   *   r = hiragana reading (only when t contains kanji)
+   *   g = English gloss from JMdict (content words only)
+   *
+   * Props:
+   *   segments     — the full sentenceFurigana array from the fact
+   *   excludeWords — words to suppress from hover tooltip (e.g. correctAnswer)
+   *   fallbackText — rendered if segments is empty (raw sentence string)
    */
 
-  import { onMount } from 'svelte'
-  import { tokenizeWithGloss, type JapaneseToken } from '../../services/japaneseTokenizer'
   import { deckOptions } from '../../services/deckOptionsService'
 
-  interface Props {
-    /** One segment of the grammar question (between {___} blanks, or after the last blank) */
-    sentence: string
-    /** Words to exclude from hover tooltip (e.g., the correct answer — don't give it away) */
-    excludeWords?: string[]
+  interface Segment {
+    t: string
+    r?: string
+    g?: string
   }
 
-  let { sentence, excludeWords = [] }: Props = $props()
+  interface Props {
+    segments: Segment[]
+    excludeWords?: string[]
+    fallbackText?: string
+  }
 
-  let tokens = $state<JapaneseToken[]>([])
-  let activeToken = $state<JapaneseToken | null>(null)
+  let { segments = [], excludeWords = [], fallbackText = '' }: Props = $props()
+
+  let activeSegment = $state<Segment | null>(null)
   let tooltipX = $state(0)
   let tooltipY = $state(0)
 
-  /** Reactively read furigana/kanaOnly/romaji from deckOptions store */
+  /** Reactively read furigana / kanaOnly from deckOptions store */
   let showFurigana = $derived.by(() => ($deckOptions as any)?.ja?.furigana ?? true)
   let showKanaOnly = $derived.by(() => ($deckOptions as any)?.ja?.kanaOnly ?? false)
 
-  onMount(async () => {
-    // Strip {___} blank and English translation before tokenizing.
-    // Take only the first line (the Japanese sentence) and replace blanks with a
-    // placeholder that kuromoji won't try to tokenize as Japanese.
-    const jpOnly = sentence.split('\n')[0].replace(/\{___\}/g, '___')
-    tokens = await tokenizeWithGloss(jpOnly)
-  })
-
   /**
-   * Whether a token contains non-kana characters that would benefit from furigana.
-   * Checks for kanji (CJK Unified Ideographs range).
+   * Whether a segment should show a hover tooltip.
+   * Requires: has an English gloss AND surface is not in excludeWords.
    */
-  function hasKanji(surface: string): boolean {
-    return /[\u4e00-\u9fff\u3400-\u4dbf]/.test(surface)
-  }
-
-  /**
-   * Whether the token's reading differs meaningfully from its surface form.
-   * Returns true when furigana would add value (i.e., the surface has kanji).
-   */
-  function needsFurigana(token: JapaneseToken): boolean {
-    return hasKanji(token.surface) && token.reading !== token.surface
-  }
-
-  /** Whether a token should show a hover tooltip. */
-  function isHoverable(token: JapaneseToken): boolean {
-    if (!token.englishGloss) return false
-    // Skip punctuation (記号 = symbol/punctuation in Japanese POS tagging)
-    if (token.pos === '記号') return false
-    // Skip whitespace tokens
-    if (token.surface.trim() === '') return false
-    // Skip the blank placeholder
-    if (token.surface === '___') return false
-    // Don't reveal the correct answer
-    if (excludeWords.some(w => w && (token.surface.includes(w) || token.basicForm.includes(w)))) return false
+  function isHoverable(seg: Segment): boolean {
+    if (!seg.g) return false
+    if (excludeWords.some(w => w && (seg.t.includes(w)))) return false
     return true
   }
 
-  function showTooltip(token: JapaneseToken, event: MouseEvent | TouchEvent) {
+  function showTooltip(seg: Segment, event: MouseEvent | TouchEvent) {
     const target = event.target as HTMLElement
     const rect = target.getBoundingClientRect()
     tooltipX = rect.left + rect.width / 2
     tooltipY = rect.top - 4
-    activeToken = token
+    activeSegment = seg
   }
 
   function hideTooltip() {
-    activeToken = null
-  }
-
-  /**
-   * Derive the display surface for a token, respecting kana-only mode.
-   * When kanaOnly is on and the token has a reading, show the reading (hiragana) instead.
-   */
-  function displaySurface(token: JapaneseToken): string {
-    if (showKanaOnly && hasKanji(token.surface) && token.reading) {
-      return token.reading
-    }
-    return token.surface
+    activeSegment = null
   }
 </script>
 
-{#if tokens.length > 0}
+{#if segments.length > 0}
   <span class="grammar-furigana-container">
-    {#each tokens as token}
-      {#if token.surface === '___'}
+    {#each segments as seg}
+      {#if seg.t === '{___}'}
         <span class="grammar-blank">______</span>
-      {:else if isHoverable(token)}
-        {#if showFurigana && !showKanaOnly && needsFurigana(token)}
+      {:else if isHoverable(seg)}
+        {#if showFurigana && !showKanaOnly && seg.r}
           <span
             class="word-hoverable"
             role="button"
             tabindex="-1"
-            onmouseenter={(e) => showTooltip(token, e)}
+            onmouseenter={(e) => showTooltip(seg, e)}
             onmouseleave={hideTooltip}
-            ontouchstart={(e) => { e.preventDefault(); showTooltip(token, e) }}
+            ontouchstart={(e) => { e.preventDefault(); showTooltip(seg, e) }}
             ontouchend={hideTooltip}
-          ><ruby>{token.surface}<rp>(</rp><rt>{token.reading}</rt><rp>)</rp></ruby></span>
+          ><ruby>{seg.t}<rp>(</rp><rt>{seg.r}</rt><rp>)</rp></ruby></span>
+        {:else if showKanaOnly && seg.r}
+          <span
+            class="word-hoverable"
+            role="button"
+            tabindex="-1"
+            onmouseenter={(e) => showTooltip(seg, e)}
+            onmouseleave={hideTooltip}
+            ontouchstart={(e) => { e.preventDefault(); showTooltip(seg, e) }}
+            ontouchend={hideTooltip}
+          ><span class="word-plain">{seg.r}</span></span>
         {:else}
           <span
             class="word-hoverable"
             role="button"
             tabindex="-1"
-            onmouseenter={(e) => showTooltip(token, e)}
+            onmouseenter={(e) => showTooltip(seg, e)}
             onmouseleave={hideTooltip}
-            ontouchstart={(e) => { e.preventDefault(); showTooltip(token, e) }}
+            ontouchstart={(e) => { e.preventDefault(); showTooltip(seg, e) }}
             ontouchend={hideTooltip}
-          >{displaySurface(token)}</span>
+          ><span class="word-plain">{seg.t}</span></span>
         {/if}
-      {:else if token.surface !== '___'}
-        {#if showFurigana && !showKanaOnly && needsFurigana(token)}
-          <ruby class="word-plain">{token.surface}<rp>(</rp><rt>{token.reading}</rt><rp>)</rp></ruby>
-        {:else}
-          <span class="word-plain">{displaySurface(token)}</span>
-        {/if}
+      {:else if showKanaOnly && seg.r}
+        <span class="word-plain">{seg.r}</span>
+      {:else if showFurigana && !showKanaOnly && seg.r}
+        <ruby class="word-plain">{seg.t}<rp>(</rp><rt>{seg.r}</rt><rp>)</rp></ruby>
+      {:else}
+        <span class="word-plain">{seg.t}</span>
       {/if}
     {/each}
   </span>
-{:else}
-  <span>{sentence.split('\n')[0]}</span>
+{:else if fallbackText}
+  <span>{fallbackText.split('\n')[0]}</span>
 {/if}
 
-{#if activeToken}
+{#if activeSegment}
   <div
     class="word-tooltip"
     style="left: {tooltipX}px; top: {tooltipY}px;"
     role="tooltip"
   >
-    <span class="word-tooltip-reading">{activeToken.reading}</span>
-    <span class="word-tooltip-gloss">{activeToken.englishGloss}</span>
+    <span class="word-tooltip-reading">{activeSegment.r ?? activeSegment.t}</span>
+    <span class="word-tooltip-gloss">{activeSegment.g}</span>
   </div>
 {/if}
 

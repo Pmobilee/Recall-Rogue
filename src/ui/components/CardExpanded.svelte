@@ -65,6 +65,14 @@
     grammarPointHeader?: string
     /** Quiz response mode: 'choice' (default multiple choice) or 'typing' (text input with romaji→hiragana). */
     quizResponseMode?: 'choice' | 'typing'
+    /** Pre-baked furigana segments for Japanese grammar sentences. When present, replaces runtime tokenization. */
+    sentenceFurigana?: Array<{ t: string; r?: string; g?: string }>
+    /** Pre-baked whole-sentence romaji for Japanese grammar sentences. */
+    sentenceRomaji?: string
+    /** First-class English translation for Japanese grammar sentences. */
+    sentenceTranslation?: string
+    /** Short grammar-point label shown as hint above typing input (e.g., "が — subject marker particle"). */
+    grammarPointLabel?: string
     onanswer: (answerIndex: number, isCorrect: boolean, speedBonus: boolean) => void
     onskip: () => void
     oncancel: () => void
@@ -94,6 +102,10 @@
     grammarNote,
     grammarPointHeader,
     quizResponseMode = 'choice',
+    sentenceFurigana,
+    sentenceRomaji,
+    sentenceTranslation,
+    grammarPointLabel,
     onanswer,
     onskip,
     oncancel,
@@ -181,6 +193,12 @@
     return $deckOptions?.ja?.kanaOnly ?? false
   })
 
+  /** Whether romaji mode is active for Japanese grammar sentences. */
+  const showRomaji = $derived.by(() => {
+    if (!isJapaneseFact) return false
+    return $deckOptions?.ja?.romaji ?? false
+  })
+
   /** Whether always-write mode is active for the current language (grammar typing instead of MC). */
   const alwaysWriteEnabled = $derived.by(() => {
     const opts = $deckOptions
@@ -202,7 +220,7 @@
 
   /**
    * Parse a Japanese question into { before, word, reading, after } parts.
-   * Mirrors parseJapaneseQuestion from QuizOverlay.
+   * Parses inline Japanese reading from question text.
    * Expects format: "What does '食べる' (たべる) mean..." or "What does '食べる' mean..."
    * Returns null if the question cannot be parsed.
    */
@@ -547,14 +565,18 @@
         size="md"
       /> {japaneseParts.after}
     {:else if isJapaneseFact && question.includes('{___}')}
-      {@const grammarParts = question.split('\n')}
-      {@const sentence = grammarParts[0]}
-      {@const translation = grammarParts[1] || ''}
-      {#each sentence.split('{___}') as segment, i}
-        {#if i > 0}<span class="grammar-blank">______</span>{/if}<GrammarSentenceFurigana sentence={segment} excludeWords={[correctAnswer]} />
-      {/each}
+      {@const fallbackSentence = question.split('\n')[0]}
+      {@const translation = sentenceTranslation || (question.split('\n')[1] || '').replace(/^\((.+)\)$/, '$1')}
+      <GrammarSentenceFurigana
+        segments={sentenceFurigana ?? []}
+        fallbackText={fallbackSentence}
+        excludeWords={[correctAnswer]}
+      />
       {#if translation}
         <p class="grammar-translation">{translation}</p>
+      {/if}
+      {#if showRomaji && sentenceRomaji}
+        <p class="grammar-romaji">{sentenceRomaji}</p>
       {/if}
     {:else if chineseParts}
       {chineseParts.before}<FuriganaText
@@ -591,6 +613,16 @@
 
   {#if effectiveResponseMode === 'typing' && !isTypingExcluded && !answersDisabled}
     {#if quizLanguageCode === 'ja'}
+      {#if grammarPointLabel || sentenceTranslation}
+        <div class="grammar-typing-hints">
+          {#if grammarPointLabel}
+            <p class="grammar-hint-label">{grammarPointLabel}</p>
+          {/if}
+          {#if sentenceTranslation}
+            <p class="grammar-hint-translation">{sentenceTranslation}</p>
+          {/if}
+        </div>
+      {/if}
       <GrammarTypingInput
         {correctAnswer}
         acceptableAlternatives={[]}
@@ -731,7 +763,7 @@
     width: calc(320px * var(--layout-scale, 1));
     max-width: min(560px, calc(100vw - 24px));
     max-height: 80vh;
-    overflow-y: auto;
+    overflow: hidden;
     overflow-x: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -754,8 +786,8 @@
     width: 58vw;
     max-width: 58vw;
     /* Vertically: fill arena above stats bar + card hand */
-    top: calc(56px * var(--layout-scale, 1));
-    bottom: calc(27vh + 36px);
+    top: calc(var(--topbar-height, 4.5vh) + calc(40px * var(--layout-scale, 1)));
+    bottom: calc(24vh + calc(16px * var(--layout-scale, 1)));
     /* Center content vertically within the panel */
     display: flex;
     flex-direction: column;
@@ -763,7 +795,7 @@
     justify-content: center;
     padding: calc(12px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     /* Layout overrides */
-    overflow-y: auto;
+    overflow: hidden;
     overflow-x: hidden;
     /* Override portrait transform/centering */
     transform: none;
@@ -1054,6 +1086,39 @@
     text-align: center;
     font-style: italic;
     line-height: 1.3;
+  }
+
+  .grammar-romaji {
+    margin: calc(4px * var(--layout-scale, 1)) 0 0;
+    font-size: calc(13px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.65);
+    text-align: center;
+    font-style: italic;
+  }
+
+  .grammar-typing-hints {
+    display: flex;
+    flex-direction: column;
+    gap: calc(4px * var(--layout-scale, 1));
+    margin-bottom: calc(8px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    background: rgba(78, 205, 196, 0.08);
+    border-left: calc(3px * var(--layout-scale, 1)) solid rgba(78, 205, 196, 0.5);
+    border-radius: calc(6px * var(--layout-scale, 1));
+  }
+
+  .grammar-hint-label {
+    margin: 0;
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #4ecdc4;
+    font-weight: 600;
+  }
+
+  .grammar-hint-translation {
+    margin: 0;
+    font-size: calc(13px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.75);
+    font-style: italic;
   }
 
   .card-answers {

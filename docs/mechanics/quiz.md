@@ -250,6 +250,53 @@ The `closeMatch` flag is consumed by `TypingInput.svelte` to conditionally apply
 
 ---
 
+## Japanese Grammar Fact Rendering (2026-04-08)
+
+Grammar fill-in-the-blank facts use pre-baked segment data stored on the fact itself, replacing the previous runtime kuromoji tokenization path.
+
+### Data Fields (on `Fact` and `DeckFact`)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `sentenceFurigana` | `Array<{t:string;r?:string;g?:string}>` | Ordered segments for the whole sentence. `t` = surface, `r` = hiragana reading (kanji only), `g` = English gloss (content words only). `{t:"{___}"}` entries mark blank positions. Baked offline by `scripts/japanese/bake-grammar-furigana.mjs`. |
+| `sentenceRomaji` | `string` | Whole-sentence romaji for the Japanese sentence. Shown when the romaji toggle is ON. |
+| `sentenceTranslation` | `string` | English translation (promoted from `quizQuestion` line 2 to a first-class field). |
+| `grammarPointLabel` | `string` | Short grammar-point label for typing-mode hint, e.g. `"が — subject marker particle"`. |
+
+### Rendering Path (`GrammarSentenceFurigana.svelte`)
+
+The component receives `fact.sentenceFurigana` as `segments` and renders synchronously:
+- `{___}` segments → `<span class="grammar-blank">______</span>`
+- Segments with `r` + `furigana` ON + `kanaOnly` OFF → `<ruby>` with `<rt>` reading
+- Segments with `r` + `kanaOnly` ON → plain hiragana text (`r`)
+- All other segments → plain surface text (`t`)
+- Segments with `g` (not in `excludeWords`) → hoverable with tooltip showing reading + gloss
+
+When `segments` is empty (un-baked fact or CardExpanded), `fallbackText` is split on `
+` and rendered plain.
+
+### Romaji Row and Typing-Mode Hints (`CardExpanded.svelte`)
+
+- `showRomaji = $derived.by(() => $deckOptions?.ja?.romaji ?? false)` — reads romaji toggle
+- When `showRomaji && fact.sentenceRomaji` — renders `<p class="grammar-romaji">` below the translation
+- In typing mode (`useTypingMode` + `fact.language === 'ja'`): a `.grammar-typing-hints` panel shows above `GrammarTypingInput` with `fact.grammarPointLabel` (teal label) and `fact.sentenceTranslation` (italic muted white). Panel is omitted when both fields are absent.
+
+### StudyQuizOverlay Grammar Rendering (2026-04-08)
+
+`StudyQuizOverlay.svelte` (rest-room study quiz) mirrors the combat grammar rendering path:
+
+- Detects grammar facts via `isJapaneseGrammarFact = !!currentQuestion?.sentenceFurigana?.length`
+- Renders `GrammarSentenceFurigana` with `segments={currentQuestion.sentenceFurigana}`, `fallbackText`, `excludeWords={[currentQuestion.correctAnswer]}`
+- Shows `sentenceTranslation` as `.grammar-translation` (italic muted)
+- Shows `sentenceRomaji` as `.grammar-romaji` when romaji toggle is ON
+- Shows `grammarPointLabel` as `.grammar-hint-label` (teal left-bordered panel) — always visible in MCQ study mode (no typing path in study mode)
+
+**Data pipeline for study mode grammar fields:**
+
+`DeckFact` (sentenceFurigana/Romaji/Translation/grammarPointLabel) → `NonCombatQuizQuestion` (forwarded by `selectNonCombatStudyQuestion` and `selectNonCombatCustomDeckQuestion`) → `QuizQuestion` (forwarded in both study + custom_deck branches of `generateStudyQuestions` in `gameFlowController.ts`) → `StudyQuizOverlay` via `questions` prop.
+
+---
+
 ## Typing Mode (Always Write Answers)
 
 ### Activation

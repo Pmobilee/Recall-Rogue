@@ -288,6 +288,10 @@ function rowToDeckFact(row: Record<string, unknown>): DeckFact {
     imageAssetPath: row['image_asset_path'] ? String(row['image_asset_path']) : undefined,
     quizMode: row['quiz_mode'] ? (String(row['quiz_mode']) as DeckFact['quizMode']) : undefined,
     quizResponseMode: row['quiz_response_mode'] ? (String(row['quiz_response_mode']) as DeckFact['quizResponseMode']) : undefined,
+    sentenceFurigana: row['sentence_furigana'] ? JSON.parse(String(row['sentence_furigana'])) : undefined,
+    sentenceRomaji: row['sentence_romaji'] ? String(row['sentence_romaji']) : undefined,
+    sentenceTranslation: row['sentence_translation'] ? String(row['sentence_translation']) : undefined,
+    grammarPointLabel: row['grammar_point_label'] ? String(row['grammar_point_label']) : undefined,
   };
 }
 

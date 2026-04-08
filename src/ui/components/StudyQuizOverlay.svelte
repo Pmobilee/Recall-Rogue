@@ -1,6 +1,8 @@
 <script lang="ts">
   import type { QuizQuestion } from '../../services/bossQuizPhase'
   import { isLandscape } from '../../stores/layoutStore'
+  import GrammarSentenceFurigana from './GrammarSentenceFurigana.svelte'
+  import { deckOptions } from '../../services/deckOptionsService'
 
   interface Props {
     questions: QuizQuestion[]
@@ -25,6 +27,14 @@
   let done = $state(false)
 
   let currentQuestion = $derived(questions[currentIndex] ?? null)
+
+  /** True when the current question has pre-baked Japanese furigana segment data. */
+  const isJapaneseGrammarFact = $derived.by(() => {
+    return !!(currentQuestion?.sentenceFurigana && currentQuestion.sentenceFurigana.length > 0)
+  })
+
+  /** Reactively read romaji toggle from deckOptions store. */
+  const showRomaji = $derived.by(() => ($deckOptions as any)?.ja?.romaji ?? false)
 
   function selectAnswer(answer: string): void {
     if (showFeedback) return
@@ -76,7 +86,27 @@
             <img src={currentQuestion.imageAssetPath} alt="Identify this" class="study-quiz-image" />
           </div>
         {/if}
-        <p class="question-text">{currentQuestion.question}</p>
+
+        {#if isJapaneseGrammarFact}
+          <p class="question-text grammar-fill-blank">
+            <GrammarSentenceFurigana
+              segments={currentQuestion.sentenceFurigana ?? []}
+              fallbackText={currentQuestion.question.split('\n')[0]}
+              excludeWords={[currentQuestion.correctAnswer]}
+            />
+          </p>
+          {#if currentQuestion.sentenceTranslation}
+            <p class="grammar-translation">{currentQuestion.sentenceTranslation}</p>
+          {/if}
+          {#if showRomaji && currentQuestion.sentenceRomaji}
+            <p class="grammar-romaji">{currentQuestion.sentenceRomaji}</p>
+          {/if}
+          {#if currentQuestion.grammarPointLabel}
+            <p class="grammar-hint-label">{currentQuestion.grammarPointLabel}</p>
+          {/if}
+        {:else}
+          <p class="question-text">{currentQuestion.question}</p>
+        {/if}
 
         {#key currentIndex}
         {#if currentQuestion.quizMode === 'image_answers' && currentQuestion.answerImagePaths?.length}
@@ -218,11 +248,50 @@
   }
 
   .question-text {
-    font-size: calc(15px * var(--layout-scale, 1));
+    font-size: calc(15px * var(--text-scale, 1));
     color: #E6EDF3;
     text-align: center;
     line-height: 1.5;
     margin: 0;
+  }
+
+  /* Grammar fill-in-blank: ensure ruby renders above kanji */
+  .grammar-fill-blank :global(ruby) {
+    ruby-position: over;
+  }
+
+  .grammar-fill-blank :global(rt) {
+    font-size: 0.6em;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .grammar-translation {
+    margin: calc(4px * var(--layout-scale, 1)) 0 0;
+    font-size: calc(12px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    font-style: italic;
+  }
+
+  .grammar-romaji {
+    margin: calc(2px * var(--layout-scale, 1)) 0 0;
+    font-size: calc(12px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    font-style: italic;
+  }
+
+  .grammar-hint-label {
+    margin: calc(8px * var(--layout-scale, 1)) 0 0;
+    padding: calc(6px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    background: rgba(124, 58, 237, 0.12);
+    border-left: calc(3px * var(--layout-scale, 1)) solid rgba(124, 58, 237, 0.6);
+    border-radius: calc(4px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
+    color: #C4A7FF;
+    font-weight: 600;
+    text-align: left;
+    align-self: stretch;
   }
 
   .study-quiz-image-container {

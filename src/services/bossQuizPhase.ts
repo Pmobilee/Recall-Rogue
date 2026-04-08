@@ -31,6 +31,14 @@ export interface QuizQuestion {
   imageAssetPath?: string;
   /** Parallel image paths for each answer choice (image_answers mode). */
   answerImagePaths?: string[];
+  /** Baked furigana segments for Japanese grammar sentences. */
+  sentenceFurigana?: Array<{ t: string; r?: string; g?: string }>;
+  /** Whole-sentence romaji (baked). */
+  sentenceRomaji?: string;
+  /** English translation for Japanese grammar sentences. */
+  sentenceTranslation?: string;
+  /** Short grammar-point label for hint display. */
+  grammarPointLabel?: string;
 }
 
 export interface QuizPhaseOutcome {

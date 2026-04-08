@@ -40,6 +40,14 @@ export interface NonCombatQuizQuestion {
   imageAssetPath?: string;
   /** Parallel image paths for each answer choice, in same order as choices (image_answers mode). */
   answerImagePaths?: string[];
+  /** Baked furigana segments for Japanese grammar sentences. */
+  sentenceFurigana?: Array<{ t: string; r?: string; g?: string }>;
+  /** Whole-sentence romaji (baked). */
+  sentenceRomaji?: string;
+  /** English translation for Japanese grammar sentences. */
+  sentenceTranslation?: string;
+  /** Short grammar-point label for hint display. */
+  grammarPointLabel?: string;
 }
 
 /**
@@ -255,6 +263,10 @@ export function selectNonCombatStudyQuestion(
     quizMode,
     imageAssetPath,
     answerImagePaths,
+    sentenceFurigana: fact.sentenceFurigana,
+    sentenceRomaji: fact.sentenceRomaji,
+    sentenceTranslation: fact.sentenceTranslation,
+    grammarPointLabel: fact.grammarPointLabel,
   };
 }
 
@@ -438,6 +450,10 @@ export function selectNonCombatCustomDeckQuestion(
     quizMode,
     imageAssetPath,
     answerImagePaths,
+    sentenceFurigana: fact.sentenceFurigana,
+    sentenceRomaji: fact.sentenceRomaji,
+    sentenceTranslation: fact.sentenceTranslation,
+    grammarPointLabel: fact.grammarPointLabel,
   };
 }
 

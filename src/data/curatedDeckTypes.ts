@@ -39,6 +39,14 @@ export interface DeckFact {
   displayAsFullForm?: boolean;
   /** The full canonical grammar point to display when displayAsFullForm is true (e.g. "てくれる" for a fragment "くれ"). */
   fullFormDisplay?: string;
+  /** Baked furigana segments for Japanese grammar sentences. Each segment has surface text `t`, optional hiragana reading `r` (only if `t` contains kanji), and optional English gloss `g` from JMdict (content words only). Produced by scripts/japanese/bake-grammar-furigana.mjs. */
+  sentenceFurigana?: Array<{ t: string; r?: string; g?: string }>;
+  /** Baked whole-sentence romaji for Japanese grammar facts. Displayed under the sentence when romaji toggle is on. */
+  sentenceRomaji?: string;
+  /** First-class English translation for Japanese grammar sentences (promoted out of `quizQuestion` line 2). */
+  sentenceTranslation?: string;
+  /** Short grammar-point label displayed as a hint in typing mode (e.g., "が — subject marker particle"). Derived from `explanation`. */
+  grammarPointLabel?: string;
   visualDescription: string;
   sourceName: string;
   sourceUrl?: string;

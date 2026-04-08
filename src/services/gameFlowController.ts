@@ -2581,6 +2581,10 @@ export function generateStudyQuestions(): QuizQuestion[] {
           quizMode: q.quizMode,
           imageAssetPath: q.imageAssetPath,
           answerImagePaths: q.answerImagePaths,
+          sentenceFurigana: q.sentenceFurigana,
+          sentenceRomaji: q.sentenceRomaji,
+          sentenceTranslation: q.sentenceTranslation,
+          grammarPointLabel: q.grammarPointLabel,
         });
       }
     }
@@ -2617,6 +2621,10 @@ export function generateStudyQuestions(): QuizQuestion[] {
           quizMode: q.quizMode,
           imageAssetPath: q.imageAssetPath,
           answerImagePaths: q.answerImagePaths,
+          sentenceFurigana: q.sentenceFurigana,
+          sentenceRomaji: q.sentenceRomaji,
+          sentenceTranslation: q.sentenceTranslation,
+          grammarPointLabel: q.grammarPointLabel,
         });
       }
     }
